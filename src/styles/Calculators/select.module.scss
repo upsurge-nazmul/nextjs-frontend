@@ -1,0 +1,161 @@
+.selectBlock {
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  transition: all 0.3s ease;
+  .leftblock {
+    width: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    align-items: center;
+    .qno {
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      transition: all 0.3s ease;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: #dbdbdb;
+      cursor: pointer;
+      p {
+        font-weight: 500;
+        font-size: 12px;
+      }
+      svg {
+        width: 20px;
+      }
+    }
+    .backRow {
+      width: 5px;
+      height: 100%;
+      border-radius: 2px;
+      background-color: #dbdbdb;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      left: 50%;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+  }
+  .rightblock {
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    flex: 1;
+    .question {
+      width: 100%;
+      font-size: 22px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .answer {
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 400;
+      color: rgb(211, 211, 211);
+    }
+    .optionWrapper {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .optionContainer {
+        display: flex;
+        align-items: center;
+        background-color: rgb(245, 245, 245);
+        border-radius: 8px;
+        margin-top: 20px;
+        height: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0 20px;
+        .option {
+          flex: 1;
+        }
+        .select {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 1px solid rgb(192, 192, 192);
+          background-color: white;
+          margin: 0 10px;
+        }
+        .selected {
+          border: 1px solid hsl(204, 59%, 72%);
+
+          background-color: rgb(183, 226, 255);
+        }
+        &:hover {
+          background-color: rgb(235, 235, 235);
+        }
+      }
+    }
+  }
+}
+
+.vertgrad {
+  background: rgb(255, 98, 99);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 98, 99, 1) 0%,
+    rgba(65, 102, 235, 1) 51%,
+    rgba(23, 209, 188, 1) 85%
+  );
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media only screen and (max-width: 860px) {
+  .selectBlock {
+    min-height: 35px;
+    .leftblock {
+      width: fit-content;
+      .qno {
+        width: 20px;
+        height: 20px;
+        p {
+          font-size: 10px;
+        }
+        svg {
+          width: 10px;
+        }
+      }
+      .backRow {
+        width: 3px;
+      }
+    }
+    .rightblock {
+      margin-left: 15px;
+      .question {
+        font-size: 14px;
+      }
+      .answer {
+        font-size: 12px;
+      }
+      .optionWrapper {
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .optionContainer {
+          margin-top: 12px;
+          height: 40px;
+          padding: 0 20px;
+          .select {
+            width: 14px;
+            height: 14px;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+}

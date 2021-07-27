@@ -1,0 +1,423 @@
+.communityPage {
+  background-color: rgba(244, 245, 247, 1);
+
+  .welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    height: 300px;
+    padding: 0 20%;
+    .left {
+      font-size: 44px;
+      .top {
+        font-weight: 400;
+      }
+      .bottom {
+        font-weight: 500;
+      }
+    }
+    .right {
+      svg {
+        width: 250px;
+      }
+    }
+  }
+  .content {
+    width: 100%;
+    height: fit-content;
+    padding: 0 20% 400px;
+    margin-top: 40px;
+    background-color: rgba(244, 245, 247, 1);
+    .main {
+      display: flex;
+
+      .left {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        padding-right: 10px;
+        .announcements {
+          background-color: #4166eb;
+          border-radius: 12px;
+          padding: 40px 60px;
+          .heading {
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            svg {
+              width: 20px;
+              margin-left: 5px;
+            }
+          }
+          .wrapper {
+            margin-top: 30px;
+            .announcement {
+              width: 100%;
+              background: #ffffff;
+              border-radius: 12px;
+              padding: 15px 23px;
+              margin-bottom: 20px;
+              .title {
+                font-size: 15px;
+                font-weight: 500;
+              }
+              .msg {
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+        .posts {
+          margin-top: 70px;
+          .heading {
+            color: rgb(0, 0, 0);
+            font-size: 24px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+          }
+          .topics {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding: 15px 0;
+            scrollbar-width: thin;
+            &::-webkit-scrollbar {
+              height: 8px;
+            }
+            .topic {
+              background: #4166eb;
+              cursor: pointer;
+              border-radius: 4px;
+              color: white;
+              margin-right: 8px;
+              padding: 8px;
+              font-size: 14px;
+              font-weight: 400;
+              min-width: fit-content;
+            }
+          }
+        }
+      }
+      .right {
+        padding-left: 10px;
+
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        .top {
+          background-color: rgb(255, 255, 255);
+          border-radius: 12px;
+          padding: 20px;
+          .communitycard {
+            padding: 20px;
+            width: 100%;
+            border-radius: 12px;
+            color: white;
+            display: flex;
+            height: 96px;
+            align-items: center;
+            margin-bottom: 20px;
+
+            .text {
+              margin-left: 15px;
+              .heading {
+                font-size: 15px;
+                font-weight: 700;
+                margin-bottom: 5px;
+              }
+              .go {
+                font-size: 11px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                svg {
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+          .quickstart {
+            background-color: rgba(23, 209, 188, 1);
+          }
+          .suggestion {
+            background-color: rgba(255, 98, 99, 1);
+          }
+          .communitybigcard {
+            padding: 20px;
+            width: 100%;
+            background-color: #fdcc03;
+            border-radius: 12px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            height: 246px;
+            .text {
+              margin-left: 15px;
+              margin-top: 10px;
+              .heading {
+                font-size: 15px;
+                font-weight: 700;
+                margin-bottom: 5px;
+              }
+              .go {
+                font-size: 11px;
+                font-weight: 500;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                svg {
+                  margin-left: 5px;
+                  path {
+                    stroke: black;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: white;
+          margin-top: 84px;
+          padding: 31px 24px;
+          border-radius: 12px;
+          .button {
+            background-color: #4166eb;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 11px 10%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: fit-content;
+            cursor: pointer;
+            border-radius: 12px;
+          }
+          .heading {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 26px;
+          }
+          .wrapper {
+            width: 100%;
+
+            .topuser {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              margin-top: 13px;
+              img {
+                width: 37px;
+                height: 37px;
+                border-radius: 50%;
+                margin-right: 16px;
+              }
+              .name {
+                font-weight: 500;
+                font-size: 14px;
+                color: #4166eb;
+                flex: 1;
+                cursor: pointer;
+              }
+              .votes {
+                color: rgba(144, 144, 144, 1);
+                font-weight: 400;
+                font-size: 10px;
+                font-family: "Roboto", sans-serif;
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .communityPage {
+    .welcome {
+      height: 150px;
+      padding: 0 3%;
+      .left {
+        font-size: 24px;
+      }
+      .right {
+        svg {
+          width: 100px;
+        }
+      }
+    }
+    .content {
+      padding: 0 3% 400px;
+      margin-top: 20px;
+      .main {
+        .left {
+          padding-right: 5px;
+          .announcements {
+            background-color: #4166eb;
+            border-radius: 12px;
+            padding: 15px 10px;
+            .heading {
+              color: white;
+              font-size: 14px;
+              font-weight: 500;
+              svg {
+                width: 10px;
+                margin-left: 3px;
+              }
+            }
+            .wrapper {
+              margin-top: 15px;
+              .announcement {
+                padding: 10px;
+                margin-bottom: 10px;
+                .title {
+                  font-size: 12px;
+                }
+                .msg {
+                  font-size: 10px;
+                  margin-top: 3px;
+                }
+              }
+            }
+          }
+          .posts {
+            margin-top: 30px;
+            .heading {
+              font-size: 14px;
+              svg {
+                width: 10px;
+                margin-left: 3px;
+              }
+            }
+            .topics {
+              margin-top: 5px;
+              padding: 10px 0;
+              &::-webkit-scrollbar {
+                height: 6px;
+              }
+              .topic {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+        .right {
+          padding-left: 5px;
+          .top {
+            padding: 8px;
+            .communitycard {
+              padding: 5px;
+              height: fit-content;
+              align-items: center;
+              margin-bottom: 20px;
+              svg {
+                width: 15px;
+              }
+              .text {
+                margin-left: 5px;
+                width: 100%;
+                .heading {
+                  font-size: 8px;
+                  font-weight: 700;
+                  margin-bottom: 2px;
+                }
+                .go {
+                  font-size: 6px;
+                  font-weight: 500;
+                  display: flex;
+                  align-items: center;
+                  cursor: pointer;
+                  svg {
+                    margin-left: 2px;
+                    width: 10px;
+                  }
+                }
+              }
+            }
+            .communitybigcard {
+              padding: 10px;
+              width: 100%;
+              height: fit-content;
+              .text {
+                margin-left: 0px;
+                margin-top: 5px;
+                .heading {
+                  font-size: 10px;
+                  margin-bottom: 3px;
+                }
+                .go {
+                  font-size: 8px;
+                  font-weight: 500;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  svg {
+                    margin-left: 5px;
+                    path {
+                      stroke: black;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .bottom {
+            margin-top: 40px;
+            padding: 12px 8px;
+            .button {
+              background-color: #4166eb;
+              color: white;
+              font-size: 10px;
+              font-weight: 500;
+              padding: 11px 10%;
+            }
+            .heading {
+              font-size: 12px;
+              margin-top: 16px;
+            }
+            .wrapper {
+              width: 100%;
+              .topuser {
+                margin-top: 10px;
+                img {
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 100%;
+                  margin-right: 3px;
+                }
+                .name {
+                  font-size: 8px;
+                  display: flex;
+                }
+                .votes {
+                  font-size: 6px;
+                  margin-right: 2px;
+                  display: flex;
+                  align-items: center;
+                  svg {
+                    width: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

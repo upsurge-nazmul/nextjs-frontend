@@ -1,0 +1,74 @@
+.faqcomponent {
+  width: 80%;
+  max-width: 828px;
+  min-width: 300px;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  .top {
+    height: 60px;
+    background: #ffffff;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    .icon {
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+    }
+    .question {
+      flex: 1;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+  }
+  .faqopened {
+    background-color: rgba(65, 102, 235, 1);
+    transition: all 0.3s ease;
+    color: white;
+  }
+  .answer {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: white;
+    padding: 0 40px;
+    color: rgba(109, 109, 109, 1);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .showanswer {
+    padding: 20px 40px;
+    height: fit-content;
+    overflow: visible;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .faqcomponent {
+    .top {
+      .icon {
+        width: 30px;
+        svg {
+          width: 10px;
+        }
+      }
+      .question {
+        flex: 1;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        font-weight: 400;
+      }
+    }
+    .answer {
+      font-size: 12px;
+    }
+  }
+}

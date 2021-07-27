@@ -1,0 +1,89 @@
+.fullAnswersheet {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  z-index: 12;
+  .back {
+    background-color: rgba(0, 0, 0, 0.486);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 4;
+  }
+  .cancelButton {
+    cursor: pointer;
+    position: fixed;
+    right: 35px;
+    top: 18vh;
+    cursor: pointer;
+  }
+  .holder {
+    position: absolute;
+    z-index: 5;
+    width: 100vw;
+    bottom: 0;
+    height: 85%;
+    background-color: rgb(231, 231, 231);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-bottom: 1px solid rgb(196, 196, 196);
+    .resultholder {
+      background-color: rgb(255, 255, 255);
+      margin-top: clamp(10px, 10vh, 20px);
+      border-radius: 8px;
+      padding: 15px;
+      .question {
+        font-weight: 500;
+      }
+    }
+    .correct {
+      background-color: rgb(195, 255, 176);
+      width: fit-content;
+      padding: 8px;
+      border-radius: 8px;
+      margin-top: 10px;
+      text-transform: capitalize;
+    }
+    .wrong {
+      background-color: #ffaeae;
+      width: fit-content;
+      padding: 8px;
+      border-radius: 8px;
+      margin-top: 10px;
+      text-transform: capitalize;
+    }
+    .correctAns {
+      background-color: rgb(236, 236, 236);
+      width: fit-content;
+      padding: 8px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .fullAnswersheet {
+    .cancelButton {
+      cursor: pointer;
+      position: fixed;
+      right: 15px;
+      top: 9vh;
+      cursor: pointer;
+      svg {
+        width: 28px;
+      }
+    }
+  }
+}

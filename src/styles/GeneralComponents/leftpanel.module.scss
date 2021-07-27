@@ -1,0 +1,67 @@
+.leftPanel {
+  z-index: 6;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  .leftPanelContent {
+    flex: 1;
+    max-width: 400px;
+    background-color: rgb(246, 246, 246);
+    position: relative;
+    padding-left: 80px;
+    padding-top: 100px;
+    .tab {
+      color: rgb(201, 63, 62);
+      font-weight: 400;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      &:hover {
+        color: rgb(114, 39, 39);
+      }
+    }
+    .activeTab {
+      font-weight: 600;
+    }
+    .cancelButton {
+      cursor: pointer;
+      position: absolute;
+      right: 35px;
+      top: 45px;
+      cursor: pointer;
+    }
+  }
+
+  .background {
+    flex: 1;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .leftPanel {
+    .leftPanelContent {
+      padding-left: 30px;
+      .tab {
+        font-size: 14px;
+      }
+      .cancelButton {
+        cursor: pointer;
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        cursor: pointer;
+        width: 20px;
+        svg {
+          width: 30px;
+        }
+      }
+    }
+
+    .background {
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,282 @@
+.blogPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .content {
+    flex: 1;
+    display: flex;
+    padding-top: 60px;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 300px;
+    .heading {
+      color: #f76160;
+      font-weight: 700;
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+    .categoryAndPosts {
+      width: 100%;
+      padding: 0 7%;
+      display: flex;
+      .posts {
+        height: 100%;
+        width: 80%;
+        overflow-y: auto;
+        margin-right: 20px;
+        .post {
+          margin-top: 30px;
+          display: flex;
+          border-bottom: 1px solid rgb(196, 196, 196);
+          .image {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 100%;
+            }
+            margin-right: 10px;
+          }
+          .textcontent {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .timeandcat {
+              color: #3d3d3d;
+              display: flex;
+              font-weight: 400;
+              font-size: 15px;
+              letter-spacing: 1px;
+
+              .space {
+                margin-left: 10px;
+                margin-right: 10px;
+              }
+            }
+            .title {
+              margin-top: 10px;
+              font-weight: 500;
+              font-size: 22px;
+              letter-spacing: 0.8px;
+            }
+            .preview {
+              margin-top: 15px;
+            }
+            .continue {
+              margin-top: 15px;
+              color: rgb(209, 68, 67);
+              cursor: pointer;
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+      .categories {
+        display: flex;
+        overflow-y: auto;
+        flex-direction: column;
+        .categoryHeading {
+          margin-top: 10px;
+          font-weight: 500;
+          font-size: 22px;
+          margin-left: 7%;
+          margin-bottom: 20px;
+          letter-spacing: 0.8px;
+        }
+        .categoryScroll {
+          .category {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-left: 15%;
+            cursor: pointer;
+          }
+          .selectedCat {
+            color: #f76160;
+            font-weight: 600;
+            font-size: 18px;
+          }
+        }
+
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid rgb(214, 214, 214);
+      }
+    }
+  }
+  .footer {
+    scroll-snap-align: start;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    min-height: 10vh;
+    position: relative;
+    .triangle {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: -23px;
+      svg {
+        transform: rotate(180deg);
+        z-index: 3;
+        width: 53px;
+        height: 24px;
+        filter: drop-shadow(rgba(255, 0, 0, 0) 0px 1px 1px);
+      }
+    }
+    .footercontent {
+      background-color: #fc6766;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      p {
+        text-align: center;
+        color: #0f0f0f;
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+.disablescroll {
+  overflow: hidden;
+  .content {
+    overflow: hidden;
+    height: 50vh;
+  }
+  .footer {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .blogPage {
+    .content {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      .heading {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .categoryAndPosts {
+        width: 100%;
+        flex-direction: column-reverse;
+        .posts {
+          padding-left: 7.5vw;
+          height: 100%;
+          width: 100%;
+          overflow-y: auto;
+          margin-right: 0px;
+          .post {
+            margin-top: 20px;
+            display: flex;
+            border-bottom: 1px solid rgb(196, 196, 196);
+            .image {
+              width: 20%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                width: 100%;
+              }
+              margin-right: 10px;
+            }
+            .textcontent {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              .timeandcat {
+                color: #3d3d3d;
+                display: flex;
+                font-weight: 400;
+                font-size: 8px;
+                letter-spacing: 1px;
+                .space {
+                  margin-left: 3px;
+                  margin-right: 3px;
+                }
+              }
+              .title {
+                margin-top: 5px;
+                font-size: 14px;
+                letter-spacing: 0.3px;
+              }
+              .preview {
+                margin-top: 5px;
+                font-size: 12px;
+              }
+              .continue {
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 20px;
+              }
+            }
+          }
+        }
+        .categories {
+          width: 100%;
+          height: 30vh;
+          .categoryHeading {
+            margin-top: 0px;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 0;
+            margin-bottom: 0px;
+            background-color: rgba(240, 240, 240, 0.404);
+            width: 100%;
+            text-align: center;
+          }
+          .categoryScroll {
+            display: flex;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            border-left: 0px;
+            padding-bottom: 20px;
+            padding-top: 10px;
+            border-bottom: 1px solid rgb(214, 214, 214);
+
+            .category {
+              font-size: 12px;
+              margin-top: 10px;
+              margin-left: 0;
+              cursor: pointer;
+            }
+            .selectedCat {
+              color: #f76160;
+              font-weight: 600;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .footer {
+      scroll-snap-align: center;
+      height: 10vh;
+      scroll-snap-stop: always;
+      .triangle {
+        top: -2.5vh;
+        height: 19px;
+        svg {
+          transform: rotate(180deg) scaleX(0.7) scaleY(0.7);
+          transform-origin: center;
+        }
+      }
+      .footercontent {
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

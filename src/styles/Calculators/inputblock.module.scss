@@ -1,0 +1,90 @@
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+  .topBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .signAndValue {
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      input {
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        background-color: rgb(241, 241, 241);
+        padding: 10px;
+        flex: 1;
+      }
+      .sign {
+        margin: 0px 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1360px) {
+  .inputBlock {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .topBlock {
+      .signAndValue {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 14px;
+        input {
+          width: 50%;
+          outline: none;
+          border: none;
+          border-radius: 8px;
+          background-color: rgb(241, 241, 241);
+          padding: 10px;
+          margin-left: 5px;
+          font-size: 14px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .inputBlock {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .topBlock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .label {
+        font-size: 12px;
+      }
+      .signAndValue {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 12px;
+        input {
+          width: 50%;
+          outline: none;
+          border: none;
+          border-radius: 8px;
+          background-color: rgb(241, 241, 241);
+          padding: 10px;
+          margin-left: 5px;
+          font-size: 12px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+.productSection {
+  scroll-snap-align: end;
+  position: relative;
+  height: 90vh;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  .left {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .circle {
+      width: 35vw;
+      height: 35vw;
+      background: #17d1bc;
+      border-radius: 100%;
+      position: relative;
+      img {
+        position: absolute;
+        bottom: 10px;
+        right: -10px;
+        width: 35vw;
+      }
+    }
+  }
+  .right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-top: 10%;
+    .heading {
+      margin-bottom: 50px;
+      font-size: 46px;
+      font-weight: 400;
+      .highlight {
+        position: relative;
+        font-weight: 700;
+        .underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: #fdcc03;
+          width: 93%;
+          height: 8px;
+        }
+      }
+    }
+    .button {
+      padding: 5px 14px;
+      font-size: 20px;
+      font-weight: 400;
+      border-radius: 10px;
+      background-color: rgba(236, 236, 236, 1);
+      margin-top: 20px;
+      width: fit-content;
+      height: 50px;
+      display: flex;
+      align-items: center;
+    }
+    .finance {
+      border-radius: 14px;
+      padding: 7px 33px;
+      font-size: 26px;
+      font-weight: 700;
+      height: 65px;
+      background: #4166eb;
+      color: white;
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-height: 800px) {
+  .productSection {
+    .right {
+      .heading {
+        font-size: 36px;
+      }
+      .button {
+        font-size: 16px;
+      }
+      .finance {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 859px) {
+  .productSection {
+    flex-direction: row-reverse;
+    position: relative;
+    z-index: 2;
+    .left {
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      z-index: -1;
+      width: 90vw;
+      justify-content: center;
+      .circle {
+        width: 90vw;
+        height: 90vw;
+        background: #17d1bc;
+        border-radius: 100%;
+        position: relative;
+        img {
+          position: absolute;
+          bottom: 10px;
+          right: -10px;
+          width: 90vw;
+        }
+      }
+    }
+    .right {
+      flex: 1;
+      align-items: center;
+      padding: 0;
+      z-index: 2;
+      padding-top: 40px;
+      .heading {
+        font-size: 36px;
+        margin-bottom: 25px;
+        .highlight {
+          .underline {
+            width: 98%;
+            height: 5px;
+          }
+        }
+      }
+      .button {
+        height: 40px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+      .finance {
+        height: 45px;
+        border-radius: 12px;
+        font-size: 18px;
+        text-align: start;
+        padding: 5px 14px;
+      }
+    }
+  }
+}

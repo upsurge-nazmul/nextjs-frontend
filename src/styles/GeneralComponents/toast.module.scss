@@ -1,0 +1,32 @@
+.toast {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  bottom: 50px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    width: 300px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    height: 100%;
+    background-color: rgb(31, 31, 31);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  .success {
+    color: rgb(216, 255, 206);
+  }
+  .error {
+    color: rgb(255, 109, 109);
+  }
+}

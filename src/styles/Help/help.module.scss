@@ -1,0 +1,242 @@
+.helpPage {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  .frontpage {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    padding: 40px 7%;
+    position: relative;
+    .left {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 5%;
+      position: relative;
+      .ballsvg {
+        left: 35%;
+        position: absolute;
+        bottom: 25px;
+        width: max-content;
+        height: max-content;
+      }
+      .heading {
+        font-size: 44px;
+        font-weight: 500;
+      }
+      .subheading {
+        font-size: 44px;
+        font-weight: 400;
+        margin-top: 5px;
+      }
+      .searchbar {
+        width: 70%;
+        display: flex;
+        height: 50px;
+        margin-top: 20px;
+        input {
+          border-radius: 8px;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border: 1px solid #898989;
+          outline: none;
+          font-weight: 400;
+          font-size: 18px;
+          flex: 1;
+          padding: 0 20px;
+          &::placeholder {
+            color: rgb(156, 156, 156);
+            font-weight: 400;
+            font-size: 18px;
+          }
+        }
+        .searchicon {
+          border-radius: 8px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          width: 20%;
+          max-width: 50px;
+          height: 100%;
+          background-color: hsl(227, 81%, 59%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          svg {
+            transition: all 0.3s ease;
+            width: 30px;
+          }
+          &:hover {
+            background-color: hsl(227, 81%, 62%);
+            svg {
+              width: 20px;
+            }
+          }
+        }
+      }
+      .red,
+      .yellow,
+      .blue {
+        border-radius: 100%;
+        bottom: 15%;
+        position: absolute;
+      }
+      .green {
+        width: 216px;
+        height: 108px;
+        bottom: 15%;
+        left: 30%;
+        position: absolute;
+        border-radius: 0 0 216px 216px;
+        background: #17d1bc;
+        transform: rotate(-43.42deg);
+      }
+      .red {
+        width: 41px;
+        height: 41px;
+        background: #ff6263;
+        left: 24%;
+      }
+      .blue {
+        width: 90px;
+        height: 90px;
+        left: 38.9%;
+        background: #4166eb;
+      }
+      .yellow {
+        width: 41px;
+        height: 41px;
+        left: 39.3%;
+        bottom: 217px;
+        background: #fdcc03;
+      }
+    }
+    .right {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        z-index: 2;
+      }
+      .back {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(23, 209, 188, 1);
+        border-radius: 50%;
+        max-width: 400px;
+        max-height: 400px;
+        width: 30vw;
+        height: 30vw;
+        z-index: -1;
+      }
+    }
+  }
+  .faqpage {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    .heading {
+      font-size: 36px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .helpPage {
+    width: 100vw;
+    height: 90vh;
+    overflow-y: auto;
+    .header {
+      .container {
+        .signin {
+          font-size: 8px;
+          width: fit-content;
+          padding: 0 10px;
+          border-radius: 8px;
+        }
+      }
+    }
+    .frontpage {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 90%;
+      min-height: 500px;
+      padding: 20px 7%;
+      position: relative;
+      .left {
+        width: 100%;
+        padding-top: 2%;
+        .ballsvg {
+          display: none;
+        }
+        .heading {
+          font-size: 36px;
+        }
+        .subheading {
+          font-size: 24px;
+        }
+        .searchbar {
+          width: 100%;
+          display: flex;
+          height: 40px;
+          margin-top: 20px;
+          input {
+            font-size: 14px;
+            padding: 0 10px;
+            &::placeholder {
+              font-size: 14px;
+            }
+          }
+          .searchicon {
+            svg {
+              width: 20px;
+            }
+            &:hover {
+              svg {
+                width: 15px;
+              }
+            }
+          }
+        }
+        .red,
+        .yellow,
+        .blue,
+        .green {
+          display: none;
+        }
+      }
+      .right {
+        width: 100%;
+        margin-top: 40px;
+        img {
+          z-index: 2;
+          width: 100%;
+        }
+        .back {
+          width: 50vw;
+          height: 50vw;
+        }
+      }
+    }
+    .faqpage {
+      padding-top: 40px;
+      .heading {
+        font-size: 26px;
+        text-align: center;
+      }
+    }
+  }
+}

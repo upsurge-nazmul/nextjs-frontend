@@ -1,0 +1,198 @@
+.calculatorComponent {
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 3vh;
+  display: flex;
+  .leftsec {
+    width: 50px;
+    position: relative;
+  }
+
+  .inputSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .buttonWrapper {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+      .nextButton,
+      .prevButton {
+        width: 120px;
+        height: 50px;
+        margin-right: 20px;
+        background-color: hsl(120, 41%, 46%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(120, 41%, 36%);
+        }
+      }
+      .prevButton {
+        color: rgb(56, 56, 56);
+        background-color: rgb(194, 194, 194);
+        &:hover {
+          background-color: hsl(0, 0%, 66%);
+        }
+      }
+    }
+
+    .inputBlockSip {
+      display: flex;
+      margin-bottom: 20px;
+      .radioButton {
+        display: flex;
+
+        p {
+          margin-left: 10px;
+        }
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .heading {
+      font-weight: 400;
+      font-size: 14px;
+      color: #3d3d3d;
+    }
+    .result {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .submitButton {
+      width: 150px;
+      height: 45px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -webkit-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -moz-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+      }
+    }
+  }
+  .chartSection {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    .chartContainer {
+      position: relative;
+      height: 90%;
+      width: 90%;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1360px) {
+  .calculatorComponent {
+    .inputSection {
+      flex: 1;
+      min-width: 40vw;
+
+      .heading {
+        font-weight: 400;
+        font-size: 14px;
+        color: #3d3d3d;
+      }
+      .result {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .chartSection {
+      margin-top: 20px;
+      flex: 1;
+      display: flex;
+      padding: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      .chartContainer {
+        position: relative;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .calculatorComponent {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    .inputSection {
+      flex: 1;
+      .submitButton {
+        width: 120px;
+        height: 40px;
+        margin: 20px 0;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .inputBlockSip {
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-around;
+        .radioButton {
+          display: flex;
+
+          p {
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 5px;
+          }
+          &:last-child {
+            margin-left: 0px;
+          }
+        }
+      }
+
+      .heading {
+        font-weight: 400;
+        font-size: 12px;
+        color: #3d3d3d;
+      }
+      .result {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .chartSection {
+      margin-top: 20px;
+      flex: 1;
+      display: flex;
+      padding: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      .chartContainer {
+        position: relative;
+        height: 50vh;
+        width: 100%;
+      }
+    }
+  }
+}
