@@ -17,7 +17,7 @@ const login = (payload) => {
 };
 
 const checktoken = (payload) => {
-  return ApiCalls.postResponse(`users/checktoken`, payload);
+  return ApiCalls.postResponse(`users/checktoken`, payload, payload.token);
 };
 const LoginApis = {
   signup,

@@ -4,6 +4,8 @@ import apple from "../../assets/apple.svg";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
+import styles from "../../styles/Auth/auth.module.scss";
+import { setCookie } from "../../actions/cookieUtils";
 
 function AuthLogin({ settoastdata }) {
   const [email, setemail] = useState("");
@@ -24,8 +26,7 @@ function AuthLogin({ settoastdata }) {
     // temp changes
     let response = await LoginApis.login({ email, password });
     if (response.data && response.data.success) {
-      localStorage.setItem("islogged", true);
-      localStorage.setItem("accesstoken", response.data.data.token);
+      setCookie("accesstoken", response.data.data.token);
       settoastdata({
         show: true,
         msg: response.data.message,
@@ -39,37 +40,37 @@ function AuthLogin({ settoastdata }) {
   }
 
   return (
-    <div className="logindetails">
+    <div className={styles.logindetails}>
       <input
         type="text"
         placeholder="Username/Email"
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />
-      <div className="passwordBox">
+      <div className={styles.passwordBox}>
         <input
           type={passhidden ? "password" : "text"}
           placeholder="Password"
           value={password}
           onChange={(e) => setpassword(e.target.value)}
         />
-        <p className="show" onClick={() => setpasshidden(!passhidden)}>
+        <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
-      <div className="button" onClick={handleSignin}>
+      <div className={styles.button} onClick={handleSignin}>
         Sign In
       </div>
-      <div className="or">OR</div>
-      <div className="google">
+      <div className={styles.or}>OR</div>
+      <div className={styles.google}>
         <img src={google.src} alt="" />
         <p>Continue with Google</p>
       </div>
-      <div className="apple">
+      <div className={styles.apple}>
         <img src={apple.src} alt="" />
         <p>Continue with Apple</p>
       </div>
-      <div className="reset">
+      <div className={styles.reset}>
         Forgot your <span>Username</span> or <span>Password</span>?
       </div>
     </div>

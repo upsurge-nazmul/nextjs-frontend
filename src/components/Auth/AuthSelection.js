@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "../../styles/Auth/auth.module.scss";
 
 function AuthSelection({ setmode, setusertype }) {
   return (
-    <div className="selection">
+    <div className={styles.selection}>
       <div
-        className="option"
+        className={styles.option}
         onClick={() => {
           setmode("learner");
           setusertype("child");
@@ -14,7 +15,7 @@ function AuthSelection({ setmode, setusertype }) {
         <h1> Learner</h1>
       </div>
       <div
-        className="option"
+        className={styles.option}
         onClick={() => {
           setusertype("parent");
           setmode("parent");

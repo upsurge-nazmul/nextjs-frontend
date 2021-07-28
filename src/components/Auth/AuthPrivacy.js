@@ -1,12 +1,13 @@
 import React from "react";
+import styles from "../../styles/Auth/auth.module.scss";
 
 function AuthPrivacy() {
   const history = useHistory();
   return (
-    <div className="privacy">
-      <h1 className="heading">Hi, welcome to Upsurge.</h1>
-      <h1 className="subheading">Your privacy matters to us.</h1>
-      <p className="details">
+    <div className={styles.privacy}>
+      <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
+      <h1 className={styles.subheading}>Your privacy matters to us.</h1>
+      <p className={styles.details}>
         Revision Date: July 24, 2020 <br />
         These Terms of Service (these “Terms”) govern your use of the Upsurge
         website (the “Site”), the Upsurge video platform and associated tools
@@ -440,7 +441,7 @@ function AuthPrivacy() {
         transmission from Upsurge, or two (2) business days after the date of
         posting.
       </p>
-      <div className="button" onClick={() => history.push("/dashboard")}>
+      <div className={styles.button} onClick={() => history.push("/dashboard")}>
         I Agree
       </div>
     </div>

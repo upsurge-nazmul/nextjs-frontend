@@ -1,0 +1,438 @@
+.dashboard {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+
+  .contentWrapper {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    max-width: calc(100vw - 300px);
+    flex-direction: column;
+    .mainContent {
+      width: 100%;
+      display: flex;
+      overflow-y: auto;
+      margin-top: 20px;
+      scrollbar-width: thin;
+      .flexLeft {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 60%;
+        padding: 0 10px 0 45px;
+        .kidsSection {
+          height: fit-content;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .heads {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            height: 64px;
+            color: rgba(106, 106, 106, 1);
+            font-size: 12px;
+            font-weight: 400;
+            .head1 {
+              margin-left: 89px;
+            }
+            .head2 {
+              margin-left: 16%;
+            }
+            .head3 {
+              margin-left: 6.5%;
+            }
+          }
+          .wrapper {
+            padding: 0 20px 10px 0px;
+          }
+        }
+        .choreSection {
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            margin-top: 20px;
+            padding: 0 20px 10px 0px;
+          }
+        }
+      }
+      .flexRight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 40%;
+        padding-right: 50px;
+        padding-left: 10px;
+        .gameSection {
+          flex: 3;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            height: fit-content;
+            align-items: center;
+            width: 100%;
+            overflow-x: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+          }
+        }
+        .liveClassSection {
+          flex: 1;
+          height: 65%;
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            width: 100%;
+            height: 80%;
+            margin-top: 20px;
+            padding: 0 20px 10px 0px;
+            /* ===== Scrollbar CSS ===== */
+            /* Firefox */
+            scrollbar-width: thin;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
+          }
+        }
+        .nokidlivesection {
+          margin-top: 0;
+          .wrapper {
+            height: 83%;
+          }
+        }
+      }
+    }
+
+    .container {
+      padding: 20px;
+      overflow-y: auto;
+      height: 80%;
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-height: 900px) {
+  .dashboard {
+    .contentWrapper {
+      .mainContent {
+        .flexLeft {
+          .kidsSection {
+            .heading {
+              font-size: 22px;
+            }
+            .heads {
+              height: 48px;
+              font-size: 11px;
+              .head1 {
+                margin-left: 12%;
+              }
+              .head2 {
+                margin-left: 11.5%;
+              }
+              .head3 {
+                margin-left: 2%;
+              }
+            }
+          }
+          .choreSection {
+            .heading {
+              font-size: 22px;
+            }
+          }
+        }
+        .flexRight {
+          .gameSection {
+            .heading {
+              font-size: 22px;
+            }
+          }
+          .liveClassSection {
+            .heading {
+              font-size: 22px;
+            }
+          }
+        }
+      }
+
+      .container {
+        padding: 20px;
+        overflow-y: auto;
+        height: 80%;
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .dashboard {
+    .contentWrapper {
+      max-width: calc(100vw - 80px);
+      .mainContent {
+        .flexRight {
+          .gameSection {
+            padding: 20px 40px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .dashboard {
+    .contentWrapper {
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        .flexLeft {
+          align-items: center;
+          width: 90%;
+          .kidsSection {
+            width: 100%;
+          }
+          .choreSection {
+            width: 100%;
+          }
+        }
+        .flexRight {
+          width: 90%;
+          margin-top: 50px;
+          .gameSection {
+            width: 100%;
+          }
+          .liveClassSection {
+            width: 100%;
+            margin-top: 40px;
+            .wrapper {
+              width: 100%;
+              height: 42vh;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .dashboard {
+    .contentWrapper {
+      max-width: calc(100vw - 55px);
+
+      .mainContent {
+        .flexLeft {
+          height: 100%;
+          width: 95%;
+        }
+        .flexRight {
+          height: 100%;
+          width: 90%;
+          margin-top: 50px;
+          .gameSection {
+            width: 100%;
+            .wrapper {
+              &::-webkit-scrollbar {
+                height: 5px;
+              }
+            }
+          }
+          .liveClassSection {
+            width: 100%;
+            margin-top: 40px;
+            .wrapper {
+              &::-webkit-scrollbar {
+                width: 1px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .dashboard {
+    .contentWrapper {
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        .flexLeft {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          width: 95%;
+          padding-left: 20px;
+          .kidsSection {
+            width: 100%;
+            margin-top: 20px;
+            .heading {
+              font-size: 16px;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 44px;
+              color: rgba(106, 106, 106, 1);
+              .head1 {
+                font-size: 8px;
+                font-weight: 400;
+                margin-left: 16%;
+              }
+              .head2 {
+                font-size: 8px;
+                font-weight: 400;
+                margin-left: 6%;
+              }
+              .head3 {
+                font-size: 8px;
+                margin-left: 3%;
+                font-weight: 400;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-bottom: 10px;
+            }
+          }
+          .choreSection {
+            width: 100%;
+            margin-top: 20px;
+
+            .heading {
+              font-weight: 500;
+              font-size: 16px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 95%;
+          padding-left: 20px;
+          padding-right: 10px;
+          .gameSection {
+            width: 100%;
+            margin-top: 0px;
+            padding: 0;
+            .heading {
+              font-size: 16px;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+              align-items: center;
+            }
+          }
+          .liveClassSection {
+            width: 100%;
+            padding: 0 0px 0 0px;
+            margin-top: 50px;
+            .heading {
+              font-size: 16px;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              width: 100%;
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+              align-items: center;
+              &::-webkit-scrollbar {
+                width: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

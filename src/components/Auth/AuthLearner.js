@@ -1,16 +1,18 @@
 import React from "react";
-import { ReactComponent as Mascot } from "../../assets/mascot.svg";
+import Mascot from "../../assets/mascot.svg";
+import styles from "../../styles/Auth/auth.module.scss";
+
 function AuthLearner() {
   return (
-    <div className="learner">
-      <div className="top">
-        <div className="left">
+    <div className={styles.learner}>
+      <div className={styles.top}>
+        <div className={styles.left}>
           <p>Howdy</p>
           <h1>learner</h1>
         </div>
-        <Mascot className="mascot" />
+        <img src={Mascot.src} className={styles.mascot} alt="" />
       </div>
-      <div className="bottom">
+      <div className={styles.bottom}>
         <p>We currently only allow parents to sign up and add their kids.</p>
         <h1>Please ask your parent to create an account for you.</h1>
       </div>

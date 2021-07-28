@@ -1,0 +1,59 @@
+.gameCard {
+  min-width: 180px;
+  width: 20vw;
+  height: 235px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+  }
+  img {
+    height: 70%;
+    object-fit: cover;
+  }
+  .contentWrapper {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+    }
+    .detail {
+      font-size: 13px;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-height: 900px) {
+  .gameCard {
+    min-width: 140px;
+    height: 180px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .gameCard {
+    width: 150px;
+    min-width: 151px;
+    height: 190px;
+    .contentWrapper {
+      .title {
+        font-size: 16px;
+      }
+      .detail {
+        font-size: 12px;
+      }
+    }
+  }
+}

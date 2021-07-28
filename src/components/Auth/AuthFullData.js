@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
-
+import styles from "../../styles/Auth/auth.module.scss";
 function AuthFullData({
   setphone,
   setpassword,
@@ -68,8 +68,8 @@ function AuthFullData({
     }
   }
   return (
-    <div className="email">
-      <div className="phoneWrapper">
+    <div className={styles.email}>
+      <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
           type="text"
@@ -78,7 +78,7 @@ function AuthFullData({
           onChange={(e) => setphone(e.target.value)}
         />
       </div>
-      <div className="nameWrapper">
+      <div className={styles.nameWrapper}>
         <input
           type="text"
           placeholder="First Name"
@@ -92,18 +92,18 @@ function AuthFullData({
           onChange={(e) => setlastName(e.target.value)}
         />
       </div>
-      <div className="passwordBox">
+      <div className={styles.passwordBox}>
         <input
           type={passhidden ? "password" : "text"}
           placeholder="Password"
           value={password}
           onChange={(e) => setpassword(e.target.value)}
         />
-        <p className="show" onClick={() => setpasshidden(!passhidden)}>
+        <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
-      <div className="button" onClick={() => handleUpdateData()}>
+      <div className={styles.button} onClick={() => handleUpdateData()}>
         Continue
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
+import styles from "../../styles/Auth/auth.module.scss";
 
 function AuthOtpComponent({
   phone,
@@ -84,12 +85,12 @@ function AuthOtpComponent({
   }
 
   return (
-    <div className="otp">
-      <div className="otpHeadWrapper">
-        <p className="text">Enter the 4-digit code sent to you at</p>
-        <p className="phone">{"+91 " + phone}</p>
+    <div className={styles.otp}>
+      <div className={styles.otpHeadWrapper}>
+        <p className={styles.text}>Enter the 4-digit code sent to you at</p>
+        <p className={styles.phone}>{"+91 " + phone}</p>
       </div>
-      <div className="otpWrapper" id="otpWrapper">
+      <div className={styles.otpWrapper} id="otpWrapper">
         {otpValues.map((item, index) => {
           console.log("active", index, activeInput === index);
           return (
@@ -117,8 +118,8 @@ function AuthOtpComponent({
           );
         })}
       </div>
-      <div className="resendButton">Resend OTP</div>
-      <div className="button" onClick={() => verifyOtp()}>
+      <div className={styles.resendButton}>Resend OTP</div>
+      <div className={styles.button} onClick={() => verifyOtp()}>
         Continue
       </div>
     </div>

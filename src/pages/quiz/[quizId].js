@@ -310,7 +310,7 @@ export async function getServerSideProps({ params, req }) {
   let quizData = {};
   let quizcards = [];
   let wrongPath = false;
-  let token = req.cookies.accessToken || "";
+  let token = req.cookies.accesstoken || "";
   if (!params.quizId) {
     router.push("/quiz/main");
   } else if (params.quizId === "main") {

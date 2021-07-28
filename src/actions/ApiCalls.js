@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getTokenCookie } from "./cookieUtils";
 // const BaseUrl = "http://3.109.44.218:4000/";
 const BaseUrl = "http://localhost:4000/";
 
@@ -7,7 +6,7 @@ const getHeader = async (formData, token) => {
   return {
     Accept: formData ? "multipart/form-data" : "application/json",
     "Content-Type": formData ? "multipart/form-data" : "application/json",
-    token: token,
+    token: token || "",
   };
 };
 
@@ -73,11 +72,11 @@ export const deleteResponse = async (url) => {
     });
 };
 
-export const postResponse = async (url, payload) => {
+export const postResponse = async (url, payload, token) => {
   const URL = BaseUrl + url;
   return axios(URL, {
     method: "POST",
-    headers: await getHeader(),
+    headers: await getHeader(false, token),
     data: payload,
   })
     .then((response) => response)

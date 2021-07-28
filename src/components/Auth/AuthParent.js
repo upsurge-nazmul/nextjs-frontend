@@ -3,6 +3,8 @@ import google from "../../assets/google.svg";
 import apple from "../../assets/apple.svg";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
+import styles from "../../styles/Auth/auth.module.scss";
+
 function AuthParent({
   setsignupmethod,
   settoastdata,
@@ -53,30 +55,30 @@ function AuthParent({
     //   });
   }
   return (
-    <div className="parent">
+    <div className={styles.parent}>
       <div
-        className="google"
+        className={styles.google}
         onClick={() => {
           setemail("randomgoogleid@gmail.com");
           setsignupmethod("google");
           handleParentSignUp("randomgoogleid@gmail.com", "google");
         }}
       >
-        <img src={google} alt="" />
+        <img src={google.src} alt="" />
         <p>Continue with Google</p>
       </div>
       <div
-        className="apple"
+        className={styles.apple}
         onClick={() => {
           setemail("randomappleid@apple.com");
           setsignupmethod("apple");
           handleParentSignUp("randomappleid@apple.com", "apple");
         }}
       >
-        <img src={apple} alt="" />
+        <img src={apple.src} alt="" />
         <p>Continue with Apple</p>
       </div>
-      <div className="or">OR</div>
+      <div className={styles.or}>OR</div>
       <input
         type="text"
         placeholder="Username/Email"
@@ -84,7 +86,7 @@ function AuthParent({
         onChange={(e) => setemail(e.target.value)}
       />
       <div
-        className="button"
+        className={styles.button}
         onClick={() => {
           setsignupmethod("email");
           handleParentSignUp(email, "email");

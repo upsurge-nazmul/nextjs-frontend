@@ -10,6 +10,8 @@ import AuthParent from "./AuthParent";
 import AuthFullData from "./AuthFullData";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
+import styles from "../../styles/Auth/auth.module.scss";
+
 function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const [userdata, setuserdata] = useState(null);
@@ -45,22 +47,22 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   }
 
   return (
-    <div className="auth">
+    <div className={styles.auth}>
       <Toast data={toastdata} />
       <AnimatePresence>
         {showauth ? (
-          <div className="authContentWrapper">
+          <div className={styles.authContentWrapper}>
             <div
-              className="background"
+              className={styles.background}
               onClick={() => setshowauth(false)}
             ></div>
             <div
-              className={`authcontainer ${
-                mode === "login" ? "loginAuth" : ""
-              } ${mode === "selection" ? "signupAuth" : ""} ${
-                mode === "learner" ? "learnerAuth" : ""
-              } ${mode === "privacy" ? "privacyAuth" : ""} ${
-                mode === "parent" ? "parentAuth" : ""
+              className={`${styles.authcontainer} ${
+                mode === "login" ? styles.loginAuth : ""
+              } ${mode === "selection" ? styles.signupAuth : ""} ${
+                mode === "learner" ? styles.learnerAuth : ""
+              } ${mode === "privacy" ? styles.privacyAuth : ""} ${
+                mode === "parent" ? styles.parentAuth : ""
               }`}
             >
               {mode !== "privacy" ? (

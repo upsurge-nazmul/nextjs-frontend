@@ -1,0 +1,201 @@
+.dashboardLeftPanel {
+  height: 100vh;
+  min-width: 300px;
+  width: 30vw;
+  max-width: 350px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5vh;
+  box-shadow: 0px 26px 74px rgba(0, 0, 0, 0.1);
+  .dashboardLogo {
+    cursor: pointer;
+  }
+  .tabContainer {
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .tab {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 15%;
+      padding-right: 15%;
+      height: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      .icon {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+      .tabtitle {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-left: 15%;
+        font-weight: bold;
+        font-size: 16px;
+        letter-spacing: 0.429323px;
+        color: #000000;
+      }
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgb(206, 206, 206) 99%
+        );
+      }
+    }
+    .activetab {
+      background: rgb(246, 246, 246);
+      background: linear-gradient(
+        90deg,
+        rgba(246, 246, 246, 1) 0%,
+        rgba(246, 246, 246, 1) 99%,
+        rgba(65, 102, 235, 1) 99%
+      );
+      svg {
+        path {
+          fill: #4166eb;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .dashboardLeftPanel {
+    height: 100vh;
+    min-width: 80px;
+    width: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 55px;
+    box-shadow: 0px 26px 74px rgba(0, 0, 0, 0.1);
+    .dashboardLogo {
+      cursor: pointer;
+      height: fit-content;
+      width: 60%;
+    }
+    .tabContainer {
+      width: 100%;
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .tab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 15%;
+        padding-right: 15%;
+        height: 60px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        .icon {
+          padding: 10px;
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+        .tabtitle {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          margin-left: 15%;
+          font-weight: bold;
+          font-size: 16px;
+          letter-spacing: 0.429323px;
+          color: #000000;
+
+          display: none;
+        }
+        &:hover {
+          background: linear-gradient(
+            90deg,
+            rgba(246, 246, 246, 1) 0%,
+            rgba(246, 246, 246, 1) 99%,
+            rgb(206, 206, 206) 99%
+          );
+        }
+      }
+      .activetab {
+        background: rgb(246, 246, 246);
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgba(65, 102, 235, 1) 99%
+        );
+        svg {
+          path {
+            fill: #4166eb;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-height: 800px) {
+  .dashboardLeftPanel {
+    max-width: 280px;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .dashboardLeftPanel {
+    height: 100vh;
+    min-width: 55px;
+    width: 55px;
+    padding-top: 30px;
+    .dashboardLogo {
+      width: 70%;
+      height: fit-content;
+    }
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .dashboardLeftPanel {
+    height: 100vh;
+    min-width: 45px;
+    width: 45px;
+    padding-top: 20px;
+    .dashboardLogo {
+      width: 70%;
+      height: fit-content;
+    }
+    .tabContainer {
+      .tab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 15%;
+        padding-right: 15%;
+        height: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        .icon {
+          padding: 10px;
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

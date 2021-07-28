@@ -12,6 +12,7 @@ import Intro from "../components/Home/Intro";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/Home/home.module.scss";
+import { getCookie } from "../actions/cookieUtils";
 
 function Home() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -20,11 +21,11 @@ function Home() {
   const [mailfromhome, setmailfromhome] = useState("");
   const history = useRouter();
   useEffect(() => {
-    if (!localStorage.getItem("accesstoken")) return;
+    if (!getCookie("accesstoken")) return;
     checktoken();
     async function checktoken() {
       let response = await LoginApis.checktoken({
-        token: localStorage.getItem("accesstoken"),
+        token: getCookie("accesstoken"),
       });
       if (response && response.data.success) {
         history.push("/dashboard");

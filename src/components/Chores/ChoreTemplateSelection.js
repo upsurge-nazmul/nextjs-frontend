@@ -1,0 +1,75 @@
+import { useRouter } from "next/dist/client/router";
+import React from "react";
+import styles from "../../styles/Chores/choretemplateselection.module.scss";
+
+function ChoreTemplateSelection({ category, setmode }) {
+  const router = useRouter();
+  const temps = [
+    {
+      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
+      name: "Wash Utensils",
+      time: "Daily Chore",
+    },
+    {
+      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
+      name: "Wash Utensils",
+      time: "Daily Chore",
+    },
+    {
+      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
+      name: "Wash Utensils",
+      time: "Daily Chore",
+    },
+  ];
+  return (
+    <div className={styles.choreTemplateSelection}>
+      <div className={styles.header}>
+        <svg
+          width="21"
+          height="16"
+          viewBox="0 0 21 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          onClick={() => setmode("category")}
+        >
+          <path
+            d="M2.0697 8.4593L3.2768 8.4593L19.6808 8.4593C19.9347 8.4593 20.1406 8.25343 20.1406 7.99957C20.1406 7.74576 19.9347 7.53984 19.6808 7.53984L3.2768 7.53984L2.06973 7.53984L2.92325 6.68629L7.42699 2.18239L7.427 2.18239C7.60655 2.00284 7.60657 1.71185 7.42707 1.53227C7.42705 1.53225 7.42703 1.53223 7.427 1.5322M2.0697 8.4593L6.42326 1.17865C6.61068 0.991386 6.85629 0.897563 7.10191 0.897563C7.34752 0.897563 7.59321 0.991386 7.78055 1.17865L7.427 1.5322M2.0697 8.4593L2.92325 9.31286L7.42715 13.8168C7.60672 13.9963 7.60672 14.2874 7.42715 14.4669C7.24766 14.6464 6.95646 14.6464 6.77697 14.4669L0.634694 8.32466L0.28114 8.67822L0.634692 8.32466C0.455121 8.14509 0.455123 7.85405 0.634692 7.67448L0.288663 7.32845L0.634698 7.67448L6.77667 1.53235M2.0697 8.4593L6.77667 1.53235M7.427 1.5322C7.33711 1.44239 7.22021 1.39756 7.10191 1.39756C6.98363 1.39756 6.86672 1.44237 6.77667 1.53235M7.427 1.5322L6.77667 1.53235"
+            fill="black"
+            stroke="black"
+          />
+        </svg>
+        <div className={styles.text}>
+          <p className={styles.heading}>Create chore from template</p>
+          <p className={styles.category}>{category}</p>
+        </div>
+      </div>
+      <div className={styles.wrapper}>
+        {temps.map((item) => {
+          return (
+            <div className={styles.card}>
+              <img src={item.image} alt="" />
+              <div className={styles.text}>
+                <p className={styles.name}>{item.name}</p>
+                <p className={styles.time}>{item.time}</p>
+              </div>
+              <div
+                className={styles.button}
+                onClick={() =>
+                  router.push({
+                    pathname: "/managechore/new",
+                    asPath: "/managechore/new",
+                    query: { state: JSON.stringify({ ...item, category }) },
+                  })
+                }
+              >
+                Use Template
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default ChoreTemplateSelection;
