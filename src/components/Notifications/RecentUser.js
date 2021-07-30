@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../styles/Notifications/recentuser.module.scss";
 
 function RecentUser() {
   const demokiddata = {
@@ -8,13 +9,13 @@ function RecentUser() {
     points: "5.6k Points",
   };
   return (
-    <div className="recentUser">
-      <img src={demokiddata.image} alt="" className="userimg" />
-      <div className="nameandpoints">
-        <p className="name">{demokiddata.name}</p>
-        <p className="points">{demokiddata.points}</p>
+    <div className={styles.recentUser}>
+      <img src={demokiddata.image} alt="" className={styles.userimg} />
+      <div className={styles.nameandpoints}>
+        <p className={styles.name}>{demokiddata.name}</p>
+        <p className={styles.points}>{demokiddata.points}</p>
       </div>
-      <div className="msg">
+      <div className={styles.msg}>
         <svg
           width="22"
           height="21"

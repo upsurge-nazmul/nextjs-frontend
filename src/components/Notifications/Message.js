@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "../../styles/Notifications/message.module.scss";
 function Message() {
   const demoMessage = {
     image:
@@ -9,14 +9,14 @@ function Message() {
     time: "16.04",
   };
   return (
-    <div className="message">
+    <div className={styles.message}>
       <img src={demoMessage.image} alt="" />
-      <div className="nameandmsg">
-        <div className="name">{demoMessage.name}</div>
-        <div className="msg">{demoMessage.msg}</div>
+      <div className={styles.nameandmsg}>
+        <div className={styles.name}>{demoMessage.name}</div>
+        <div className={styles.msg}>{demoMessage.msg}</div>
       </div>
 
-      <p className="time">{demoMessage.time}</p>
+      <p className={styles.time}>{demoMessage.time}</p>
     </div>
   );
 }

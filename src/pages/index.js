@@ -4,7 +4,6 @@ import LeftPanel from "../components/LeftPanel";
 import AboutSection from "../components/Home/AboutSection";
 import ProductSection from "../components/Home/ProductSection";
 import Why from "../components/Home/Why";
-import How from "../components/Home/How";
 import Reviews from "../components/Home/Reviews";
 import JoinUs from "../components/Home/JoinUs";
 import Footer from "../components/Home/Footer";
@@ -13,6 +12,9 @@ import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/Home/home.module.scss";
 import { getCookie } from "../actions/cookieUtils";
+import What from "../components/Home/What";
+import How from "../components/Home/How";
+import Who from "../components/Home/Who";
 
 function Home() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -54,10 +56,12 @@ function Home() {
         setauthmode={setauthmode}
         setmailfromhome={setmailfromhome}
       />
-      <AboutSection />
-      <ProductSection />
-      <Why />
       <How />
+      <AboutSection />
+      <Who />
+      <What />
+      <ProductSection />
+      {/* <Why /> */}
       <Reviews />
       <JoinUs />
       <Footer />

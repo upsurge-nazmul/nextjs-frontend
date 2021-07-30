@@ -1,0 +1,259 @@
+.notificationsPage {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  .contentWrapper {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .switch {
+      display: flex;
+      margin-top: 26px;
+      .tabs {
+        font-family: Rubik;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(194, 194, 194, 1);
+        margin-left: 46px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          color: rgb(145, 145, 145);
+        }
+      }
+      .recentHeading {
+        z-index: 15;
+        position: absolute;
+        right: 300px;
+        font-family: Rubik;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(194, 194, 194, 1);
+        transition: all 0.3s ease;
+      }
+      .selected {
+        color: #575880;
+      }
+    }
+    .wrapper {
+      display: flex;
+      padding: 0 55px 0 0;
+      .content {
+        flex: 1;
+        overflow: auto;
+        height: 75vh;
+        margin-top: 20px;
+        padding: 0 30px 10px 46px;
+        .notifications {
+          width: 100%;
+        }
+        .message {
+          max-width: none;
+          width: 100%;
+        }
+      }
+      .recentSection {
+        min-width: 400px;
+        overflow: auto;
+        height: 75vh;
+        margin-top: 20px;
+        margin-left: 30px;
+        position: relative;
+        .recentUser {
+          max-width: none;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .notificationsPage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    .contentWrapper {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .switch {
+        display: flex;
+        margin-top: 26px;
+        .tabs {
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          margin-left: 46px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgb(145, 145, 145);
+          }
+        }
+        .recentHeading {
+          z-index: 15;
+          position: absolute;
+          right: 175px;
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          transition: all 0.3s ease;
+        }
+        .selected {
+          color: #575880;
+        }
+      }
+      .wrapper {
+        display: flex;
+        padding: 0 55px 0 0;
+        .content {
+          flex: 1;
+          overflow: auto;
+          height: 75vh;
+          margin-top: 20px;
+          padding: 0 30px 10px 46px;
+          .notifications {
+            width: 100%;
+          }
+          .message {
+            max-width: none;
+            width: 100%;
+          }
+        }
+        .recentSection {
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .notificationsPage {
+    .contentWrapper {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .switch {
+        display: flex;
+        margin-top: 26px;
+        .tabs {
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          margin-left: 46px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgb(145, 145, 145);
+          }
+        }
+        .recentHeading {
+          z-index: 15;
+          position: absolute;
+          right: 175px;
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          transition: all 0.3s ease;
+        }
+        .selected {
+          color: #575880;
+        }
+      }
+      .wrapper {
+        display: flex;
+        padding: 0 55px 0 0;
+        .content {
+          flex: 1;
+          overflow: auto;
+          height: 75vh;
+          margin-top: 20px;
+          padding: 0 30px 10px 46px;
+          .notifications {
+            width: 100%;
+          }
+          .message {
+            max-width: none;
+            width: 100%;
+          }
+        }
+        .recentSection {
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .notificationsPage {
+    .contentWrapper {
+      height: 100%;
+      width: calc(100vw - 45px);
+      .switch {
+        display: flex;
+        position: relative;
+        margin-top: 20px;
+        .tabs {
+          font-size: 14px;
+          margin-left: 20px;
+        }
+        .selected {
+          color: #575880;
+        }
+        .recentHeading {
+          position: absolute;
+          top: 32px;
+          left: 20px;
+          width: 100%;
+          text-align: left;
+          font-size: 10px;
+          font-weight: 500;
+        }
+      }
+      .wrapper {
+        display: flex;
+        width: 100%;
+        padding: 0 15px 0 0;
+        flex-direction: column;
+        flex-direction: column-reverse;
+        .content {
+          overflow: auto;
+          max-height: 70vh;
+          min-height: 70vh;
+          width: 100%;
+          margin-top: 5px;
+          padding: 0 15px 80px 20px;
+          .notifications {
+            width: 100%;
+          }
+          .message {
+            max-width: none;
+            width: 100%;
+          }
+        }
+        .recentSection {
+          width: 90%;
+          min-width: 100px;
+          overflow-x: auto;
+          display: flex;
+          overflow: auto;
+          height: 70px;
+          margin-top: 40px;
+          padding: 0 20px 10px 0;
+          margin-left: 20px;
+          &::-webkit-scrollbar {
+            width: 1px;
+            height: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -42,23 +42,18 @@ function AboutSection() {
         alt=""
       />
       <div className={styles.textContent}>
-        <div className={styles.heading}>
+        {/* <div className={styles.heading}>
           Our{" "}
           <span className={styles.highlight}>
             Vision <div className={styles.underline}></div>
           </span>
-        </div>
+        </div> */}
         <p className={styles.subheading}>
-          Most people start their adult life without knowing a lot about basic
-          finance concepts and face challenges doing things like filing taxes or
-          planning for retirement.
+          “Concepts learned in games help children understand cause and effect,
+          make mistakes and get rewarded for smart choices.”
         </p>
-        <div className={styles.subheading}>
-          With Upsurge, we aim to change that by teaching these concepts at a
-          young age through games and challenges the whole family can do
-          together.
-        </div>
-        <div className={styles.button}>Enroll your kid for free</div>
+        <div className={styles.subheading2}>- Mr. Money Moustache</div>
+        {/* <div className={styles.button}>Enroll your kid for free</div> */}
       </div>
     </section>
   );

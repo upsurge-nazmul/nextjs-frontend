@@ -1,4 +1,4 @@
-.kidComponent {
+.KidCourses {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -15,13 +15,35 @@
     border-radius: 10px;
     margin-right: 15px;
   }
+  .button {
+    background: #4166eb;
+    border-radius: 8px;
+    color: white;
+    height: 65%;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    svg {
+      margin-right: 15px;
+    }
+    &:hover {
+      background-color: #ffffff;
+      color: #4166eb;
+      border: 1px solid #4166eb;
+    }
+  }
   .nameandpoints {
-    flex: 2;
+    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     justify-content: center;
     height: 100%;
+    text-align: flex-start;
     .name {
       font-size: 18px;
       text-transform: capitalize;
@@ -35,17 +57,15 @@
     }
   }
   .chore {
-    flex: 1;
-
     font-size: 38px;
     font-weight: 500;
   }
   .courseProgression {
     display: flex;
-    flex: 3;
+    width: 20%;
     flex-direction: column;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
     .name {
       font-size: 18px;
       font-weight: 400;
@@ -54,6 +74,7 @@
       width: 140px;
       background-color: rgba(229, 229, 229, 1);
       height: 7px;
+      margin-bottom: 10px;
       border-radius: 20px;
       .completion {
         height: 100%;
@@ -70,7 +91,6 @@
       }
     }
   }
-
   .more {
     flex: 1;
     max-width: 40px;

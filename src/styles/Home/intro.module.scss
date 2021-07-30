@@ -10,18 +10,19 @@
     margin-left: 7%;
     .heading {
       font-size: 46px;
-      font-weight: 400;
+      font-weight: 300;
       margin-bottom: 5px;
       .fun {
         font-weight: 700;
         position: relative;
-
+        margin-left: 10px;
+        letter-spacing: 0.01px;
         .underline {
           position: absolute;
           bottom: 0;
           left: 0;
           background-color: #fdcc03;
-          width: 93%;
+          width: 96%;
           height: 8px;
         }
       }
@@ -29,7 +30,9 @@
     .subheading {
       font-size: 20px;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.57);
+      color: hsla(0, 0%, 0%, 0.57);
+      margin-top: 15px;
+      line-height: 26px;
       .ed {
         font-weight: 700;
       }
@@ -199,6 +202,9 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
     .textContent {
       margin-top: 11%;
       width: 70%;
@@ -234,14 +240,16 @@
       }
     }
     .homesvg {
-      position: static;
+      position: absolute;
+      z-index: -1;
       width: fit-content;
       height: 90%;
       width: 75%;
       min-width: 250px;
       min-height: 400px;
       pointer-events: none;
-      margin-left: 24%;
+      top: 30%;
+      right: -10%;
       circle {
         width: 100%;
       }

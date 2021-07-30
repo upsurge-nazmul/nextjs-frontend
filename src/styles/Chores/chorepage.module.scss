@@ -355,7 +355,7 @@
       .mainContent {
         margin-top: 50px;
         .flexLeft {
-          height: 100%;
+          height: unset !important;
           width: 100%;
           padding: 0 10px 0 20px;
           .pendingChoresSection {

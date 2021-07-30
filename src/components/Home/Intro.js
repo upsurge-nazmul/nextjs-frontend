@@ -30,9 +30,13 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
       <Toast data={toastdata} />
       <div className={styles.textContent}>
         <div className={styles.heading}>
-          Learning finance can be{" "}
+          Start your child on the
+        
+        </div>
+        <div className={styles.heading}>
+          path to​
           <span className={styles.fun}>
-            fun. <div className={styles.underline}></div>
+            financial success. <div className={styles.underline}></div>
           </span>
         </div>
         <div className={styles.subheading}>

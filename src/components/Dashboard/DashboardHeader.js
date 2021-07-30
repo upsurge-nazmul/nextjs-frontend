@@ -84,7 +84,13 @@ function DashboardHeader({ mode, showback, gobackto }) {
           className={`${styles.notification} ${styles.icon} ${
             bell ? styles.bell : ""
           }`}
-          onClick={() => router.push("/notifications", { type: "request" })}
+          onClick={() =>
+            router.push({
+              asPath: "/notifications",
+              pathname: "/notifications",
+              query: { type: "request" },
+            })
+          }
           onMouseEnter={() => setbell(true)}
           onMouseLeave={() => setbell(false)}
         >
