@@ -8,6 +8,9 @@ import Pagination from "../../components/Blog/Pagination";
 import draftToHtml from "draftjs-to-html";
 import DOMPurify from "dompurify";
 import styles from "../../styles/Blog/blog.module.scss";
+import CategoryBar from "../../components/Blog/CategoryBar";
+import BlogCard from "../../components/Blog/BlogCard";
+import MoreCard from "../../components/Blog/MoreCard";
 
 function BlogPage() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -64,6 +67,61 @@ function BlogPage() {
     "December",
   ];
 
+  let blogdata = [
+    {
+      postId: "7096fb97-d559-4b73-bb4f-012a1dec77fa",
+      hideCommenting: false,
+      title: "Entrepreneurship for Children",
+      date: "2021-06-22T14:51:12.902Z",
+      content:
+        "We will soon be launching a suite of innovative and experiential modules for children to understand businesses in an engaging and effective way!",
+      slug: "entrepreneurship-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Entrepreneurship"],
+      featureFlags: {},
+    },
+    {
+      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
+      hideCommenting: false,
+      title: "Financi Education for Children",
+      date: "2021-06-22T14:49:52.928Z",
+      content:
+        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
+      slug: "finance-education-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Financial Literacy"],
+      featureFlags: {},
+    },
+    {
+      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
+      hideCommenting: false,
+      title: "Financi Education for Children",
+      date: "2021-06-22T14:49:52.928Z",
+      content:
+        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
+      slug: "finance-education-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Financial Literacy"],
+      featureFlags: {},
+    },
+    {
+      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
+      hideCommenting: false,
+      title: "Financi Education for Children",
+      date: "2021-06-22T14:49:52.928Z",
+      content:
+        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
+      slug: "finance-education-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Financial Literacy"],
+      featureFlags: {},
+    },
+  ];
+
   function getdatafromraw(rawdata) {
     let sanitized = DOMPurify.sanitize(rawdata);
     return draftToHtml(JSON.parse(sanitized));
@@ -91,100 +149,141 @@ function BlogPage() {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
-        <p className={styles.heading}>Blog Posts</p>
-        <div className={styles.categoryAndPosts}>
-          <div className={styles.posts}>
-            {blogposts.map((item) => {
-              let date = new Date(Number(item.date));
-              return (
-                <div className={styles.post}>
-                  {item.img_url && (
-                    <div className={styles.image}>
-                      <img src={item.img_url} alt="" />
-                    </div>
-                  )}
-                  <div className={styles.textcontent}>
-                    <div className={styles.timeandcat}>
-                      <p className={styles.date}>
-                        {date.getDate() +
-                          " " +
-                          months[date.getMonth()] +
-                          " " +
-                          date.getFullYear()}
-                      </p>
-                      <p className={styles.space}>|</p>
-                      <p className={styles.cat}>
-                        {item.categories.split(",")[0]}
-                      </p>
-                    </div>
-                    <div className={styles.title}>{item.title}</div>
-                    <div className={styles.preview}>
-                      {getdatafromraw(item.content).replace(/<[^>]+>/g, "")
-                        .length > 60
-                        ? getdatafromraw(item.content)
-                            .replace(/<[^>]+>/g, "")
-                            .substring(0, 60) + "..."
-                        : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
-                    </div>
-                    <div
-                      className={styles.continue}
-                      onClick={() => {
-                        setSelectedBlog(item);
-                        setOpenFull(true);
-                      }}
-                    >
-                      Continue Reading
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-            <Pagination data={pagination} setpage={setpage} page={page} />
-          </div>
-
-          <div className={styles.categories}>
-            <p className={styles.categoryHeading}>Categories</p>
-            <div className={styles.categoryScroll}>
-              <p
-                onClick={() => sortPosts("all")}
-                className={`${styles.category} ${
-                  selectedCat === "all" ? styles.selectedCat : ""
-                }`}
-              >
-                All Posts
-              </p>
-              {blogpostsbackup.map((item, index) => {
-                return (
-                  <p
-                    onClick={() => sortPosts(item.categories.split(",")[index])}
-                    className={`${styles.category} ${
-                      selectedCat === item.categories.split(",")[index]
-                        ? styles.selectedCat
-                        : ""
-                    }`}
-                  >
-                    {item.categories.split(",")[index]}
-                  </p>
-                );
-              })}
+        <p className={styles.heading}>Welcome to Upsurge Blog!</p>
+        <CategoryBar />
+        <div className={styles.postsMain}>
+          <div className={styles.left}>
+            <img src={blogdata[0].featuredImage} alt="" />
+            <div className={styles.categoryWrapper}>
+              {blogdata[0].categories.map((cat) => (
+                <p className={styles.category}>{cat}</p>
+              ))}
             </div>
+            <p className={styles.blogtitle}>{blogdata[0].title}</p>
+            <p className={styles.blogcontent}>{blogdata[0].content}</p>
+            <p className={styles.time}>5 Minutes Read</p>
+          </div>
+          <div className={styles.right}>
+            {blogdata.map((blog) => {
+              return <BlogCard data={blog} />;
+            })}
           </div>
         </div>
-      </div>
-      <section className={styles.footer}>
-        <div className={styles.triangle}>
-          <svg data-ux="SVG">
-            <g fill="#FC6766" fillRule="evenodd" width="53" height="24">
-              <path d="M26.5 24L53 0H0z"></path>
-            </g>
+        <div className={styles.more}>
+          <p className={styles.moreHeading}>More from our experts</p>
+          <div className={styles.moreWrapper}>
+            {blogdata.map((blog) => {
+              return <MoreCard data={blog} />;
+            })}
+          </div>
+        </div>
+        <div className={styles.loadmorebutton}>
+          Load More{" "}
+          <svg
+            width="16"
+            height="18"
+            viewBox="0 0 16 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 17V1"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M1 10L8 17L15 10"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
         </div>
-        <div className={styles.footercontent}>
-          <p>Copyright © 2021 upsurge India - All Rights Reserved.</p>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
 
 export default BlogPage;
+
+// <div className={styles.categoryAndPosts}>
+// <div className={styles.posts}>
+//   {blogposts.map((item) => {
+//     let date = new Date(Number(item.date));
+//     return (
+//       <div className={styles.post}>
+//         {item.img_url && (
+//           <div className={styles.image}>
+//             <img src={item.img_url} alt="" />
+//           </div>
+//         )}
+//         <div className={styles.textcontent}>
+//           <div className={styles.timeandcat}>
+//             <p className={styles.date}>
+//               {date.getDate() +
+//                 " " +
+//                 months[date.getMonth()] +
+//                 " " +
+//                 date.getFullYear()}
+//             </p>
+//             <p className={styles.space}>|</p>
+//             <p className={styles.cat}>
+//               {item.categories.split(",")[0]}
+//             </p>
+//           </div>
+//           <div className={styles.title}>{item.title}</div>
+//           <div className={styles.preview}>
+//             {getdatafromraw(item.content).replace(/<[^>]+>/g, "")
+//               .length > 60
+//               ? getdatafromraw(item.content)
+//                   .replace(/<[^>]+>/g, "")
+//                   .substring(0, 60) + "..."
+//               : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+//           </div>
+//           <div
+//             className={styles.continue}
+//             onClick={() => {
+//               setSelectedBlog(item);
+//               setOpenFull(true);
+//             }}
+//           >
+//             Continue Reading
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   })}
+//   <Pagination data={pagination} setpage={setpage} page={page} />
+// </div>
+
+// <div className={styles.categories}>
+//   <p className={styles.categoryHeading}>Categories</p>
+//   <div className={styles.categoryScroll}>
+//     <p
+//       onClick={() => sortPosts("all")}
+//       className={`${styles.category} ${
+//         selectedCat === "all" ? styles.selectedCat : ""
+//       }`}
+//     >
+//       All Posts
+//     </p>
+//     {blogpostsbackup.map((item, index) => {
+//       return (
+//         <p
+//           onClick={() => sortPosts(item.categories.split(",")[index])}
+//           className={`${styles.category} ${
+//             selectedCat === item.categories.split(",")[index]
+//               ? styles.selectedCat
+//               : ""
+//           }`}
+//         >
+//           {item.categories.split(",")[index]}
+//         </p>
+//       );
+//     })}
+//   </div>
+// </div>
+// </div>

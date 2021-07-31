@@ -1,0 +1,72 @@
+.moreCard {
+  border-radius: 18px;
+  width: calc(100% / 3 - 60px);
+  max-width: 400px;
+  margin: 0 60px 60px 0;
+  img {
+    width: 100%;
+    height: calc(100vw / 3 - 260px);
+    min-height: 150px;
+    max-height: 235px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  .categories {
+    margin-top: 20px;
+    display: flex;
+    p {
+      font-size: 14px;
+      font-weight: 700;
+      color: hsla(338, 84%, 60%, 1);
+      font-family: "Roboto";
+    }
+  }
+  .title {
+    margin-top: 3px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .content {
+    margin-top: 3px;
+  }
+  .time {
+    margin-top: 10px;
+    color: hsla(0, 0%, 52%, 1);
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .moreCard {
+    border-radius: 18px;
+    width: calc(100% / 2 - 20px);
+    margin: 0 20px 20px 0;
+    img {
+      width: 100%;
+      height: calc(100vw / 2 - 220px);
+      min-height: 125px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .categories {
+      margin-top: 10px;
+      p {
+        font-size: 10px;
+      }
+    }
+    .title {
+      font-size: 16px;
+    }
+    .content {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+    .time {
+      margin-top: 10px;
+      color: hsla(0, 0%, 52%, 1);
+      font-size: 10px;
+      font-weight: 400;
+    }
+  }
+}

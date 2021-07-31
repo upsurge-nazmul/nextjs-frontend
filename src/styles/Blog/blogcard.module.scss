@@ -1,0 +1,52 @@
+.blogcard {
+  width: 100%;
+  height: 114px;
+  display: flex;
+  margin-bottom: 30px;
+  img {
+    height: 100%;
+    width: 160px;
+    border-radius: 13px;
+    margin-right: 17px;
+    object-fit: cover;
+  }
+  .right {
+    .categories {
+      p {
+        font-size: 14px;
+        font-weight: 700;
+        color: hsla(338, 84%, 60%, 1);
+        font-family: "Roboto";
+      }
+    }
+    .title {
+      margin-top: 3px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .content {
+      margin-top: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .blogcard {
+    .right {
+      .categories {
+        p {
+          font-size: 10px;
+        }
+      }
+      .title {
+        margin-top: 3px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .content {
+        font-size: 12px;
+        margin-top: 3px;
+      }
+    }
+  }
+}
