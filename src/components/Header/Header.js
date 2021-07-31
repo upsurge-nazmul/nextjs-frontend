@@ -64,14 +64,14 @@ function Header({
           >
             Blog
           </p>
-          <p
+          {/* <p
             className={` ${
               router.pathname.indexOf("/quiz") !== -1 ? styles.activeTab : ""
             }`}
             onClick={() => router.push("/quiz/main")}
           >
             Quiz
-          </p>
+          </p> */}
           <p
             className={`${
               router.pathname.indexOf("/calculators") !== -1
@@ -100,9 +100,9 @@ function Header({
             Contact us
           </p>
         </div>
-        <div className={styles.signin} onClick={() => setshowauth(true)}>
+        {/* <div className={styles.signin} onClick={() => setshowauth(true)}>
           Signin
-        </div>
+        </div> */}
       </div>
     </div>
   );

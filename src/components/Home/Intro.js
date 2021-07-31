@@ -4,6 +4,7 @@ import validator from "validator";
 import Toast from "../Toast";
 import Image from "next/image";
 import styles from "../../styles/Home/intro.module.scss";
+import { db } from "../../../firebase";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
@@ -12,7 +13,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
     type: "success",
     msg: "",
   });
-  function handleSignup() {
+  async function handleSignup() {
     if (!validator.isEmail(email)) {
       settoastdata({
         show: true,
@@ -20,19 +21,72 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
         msg: "Enter valid email address",
       });
     } else {
-      setshowauth(true);
-      setauthmode("parent");
-      setmailfromhome(email);
+      db.collection("emails")
+        .doc(email)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            settoastdata({
+              show: true,
+              type: "error",
+              msg: "We have already registered your request.",
+            });
+          } else {
+            db.collection("emails")
+              .doc(email)
+              .set({
+                email: email,
+                date: new Date().getTime(),
+              })
+              .then(() => {
+                settoastdata({
+                  show: true,
+                  type: "success",
+                  msg: "Thanks, we'll contact you soon.",
+                });
+              })
+              .catch((err) => {
+                settoastdata({
+                  show: true,
+                  type: "error",
+                  msg: "error saving",
+                });
+              });
+          }
+        });
+
+      // let response = await LoginApis.saveemail({ email: email });
+      // if (response) {
+      //   if (response.data.success) {
+      //     settoastdata({
+      //       show: true,
+      //       type: "success",
+      //       msg: response.data.message,
+      //     });
+      //   } else {
+      //     settoastdata({
+      //       show: true,
+      //       type: "error",
+      //       msg: response.data.message,
+      //     });
+      //   }
+      // } else {
+      //   settoastdata({
+      //     show: true,
+      //     type: "error",
+      //     msg: "Error connecting to server",
+      //   });
+      // }
+      // setshowauth(true);
+      // setauthmode("parent");
+      // setmailfromhome(email);
     }
   }
   return (
     <section className={styles.intro}>
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>
-          Start your child on the
-        
-        </div>
+        <div className={styles.heading}>Start your child on the</div>
         <div className={styles.heading}>
           path to​
           <span className={styles.fun}>
