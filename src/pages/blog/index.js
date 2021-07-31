@@ -25,6 +25,7 @@ function BlogPage() {
   const [totalblogs, settotalblogs] = useState(0);
   const [pagination, setpagination] = useState(["1"]);
   useEffect(() => {
+    return;
     getData();
     async function getData() {
       setloading(true);
@@ -79,6 +80,32 @@ function BlogPage() {
       featuredImage:
         "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
       categories: ["Entrepreneurship"],
+      featureFlags: {},
+    },
+    {
+      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
+      hideCommenting: false,
+      title: "Financi Education for Children",
+      date: "2021-06-22T14:49:52.928Z",
+      content:
+        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
+      slug: "finance-education-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Financial Literacy"],
+      featureFlags: {},
+    },
+    {
+      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
+      hideCommenting: false,
+      title: "Financi Education for Children",
+      date: "2021-06-22T14:49:52.928Z",
+      content:
+        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
+      slug: "finance-education-for-children",
+      featuredImage:
+        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
+      categories: ["Financial Literacy"],
       featureFlags: {},
     },
     {
