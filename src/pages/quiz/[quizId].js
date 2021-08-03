@@ -46,6 +46,10 @@ function Quiz({ data, quizcards, wrongPath }) {
   const [openFull, setopenFull] = useState(false);
 
   useEffect(() => {
+    setquizfinished(false);
+  }, [quizId]);
+
+  useEffect(() => {
     setshowQuiz(data.showQuiz);
     setcurrentquiz(data.currentquiz);
     setcurrentquestionindex(data.currentquestionindex);
@@ -147,33 +151,6 @@ function Quiz({ data, quizcards, wrongPath }) {
       />
 
       <div className={styles.contentWrapper}>
-        <div className={styles.pathSection}>
-          {paths.map((item, index) => {
-            return (
-              <>
-                <div
-                  className={`${styles.path} ${
-                    index === paths.length - 1 ? "active" : ""
-                  }`}
-                  onClick={() => {
-                    if (item === "home") {
-                      router.push("/");
-                    } else if (item === "quiz") {
-                      router.push("/quiz/main");
-                    } else {
-                      router.push(`/${item}`);
-                    }
-                  }}
-                >
-                  {item}
-                </div>
-                {index !== paths.length - 1 ? (
-                  <div className={styles.arrow}>{">"}</div>
-                ) : null}
-              </>
-            );
-          })}
-        </div>
         {quizId === "main" ? (
           <div className={styles.quizCardsHolder}>
             {quizcards.map((item, index) => (
@@ -267,36 +244,12 @@ function Quiz({ data, quizcards, wrongPath }) {
               openFull ? styles.hideOverFlow : ""
             }`}
           >
-            <div className={styles.leftSection}>
-              <p className={styles.heading}>Result</p>
-              <p className={styles.total + " " + styles.data}>
-                Time Taken :{" "}
-                {secondsToTime((1000 * 60 * 5) / 1000 - timer / 1000)}
-              </p>
-              <p className={styles.total + " " + styles.data}>
-                Total Questions : {currentquiz?.questions.length}
-              </p>
-              <p className={styles.correct + " " + styles.data}>
-                Correct Answers : {correctAnswers}
-              </p>
-              <p className={styles.wrong + " " + styles.data}>
-                Wrong Answers : {currentquiz?.questions.length - correctAnswers}
-              </p>
-              <p
-                className={styles.answersheet + " " + styles.data}
-                onClick={() => setopenFull(true)}
-              >
-                View AnswerSheet
-              </p>
-            </div>
-            <div className={styles.chartSection}>
-              <Doughnut
-                data={chartData}
-                className={styles.chart}
-                width={100}
-                height={100}
-                options={{ maintainAspectRatio: false }}
-              />
+            <div className={styles.heading}>Quiz Completed</div>
+            <div className={styles.points}>+250</div>
+            <div className={styles.pointsdes}>XP Points</div>
+            <div className={styles.button} onClick={() => router.push("quiz")}>
+              {" "}
+              Checkout more quizzes
             </div>
           </div>
         ) : null}
