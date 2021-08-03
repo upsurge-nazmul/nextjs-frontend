@@ -87,34 +87,6 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <div className={styles.pathSection}>
-          {paths.map((item, index) => {
-            return (
-              <>
-                <div
-                  className={`${styles.path} ${
-                    index === paths.length - 1 ? styles.active : ""
-                  }
-                  }`}
-                  onClick={() => {
-                    if (item === "home") {
-                      router.push("/");
-                    } else if (item === "calculators") {
-                      router.push("/calculators/main");
-                    } else {
-                      router.push(`/calculators/${item}`);
-                    }
-                  }}
-                >
-                  {item}
-                </div>
-                {index !== paths.length - 1 ? (
-                  <div className={styles.arrow}>{">"}</div>
-                ) : null}
-              </>
-            );
-          })}
-        </div>
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>{heading}</h2>
           <h3 className={styles.subheading}>{subheading}</h3>

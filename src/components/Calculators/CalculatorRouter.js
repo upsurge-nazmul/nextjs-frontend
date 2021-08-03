@@ -32,8 +32,8 @@ function CalculatorRouter({ name }) {
       {
         label: "# of Votes",
         data: [0, 0],
-        backgroundColor: ["#F86466", "#FBCD00"],
-        borderColor: ["#F86466", "#FBCD00"],
+        backgroundColor: ["#4166EB", "#FDCC03"],
+        borderColor: ["#4166EB", "#FDCC03"],
         borderWidth: 1,
       },
     ],
@@ -77,8 +77,8 @@ function CalculatorRouter({ name }) {
         {
           label: "# of Votes",
           data: [Math.round(totalinvestment), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
+          backgroundColor: ["#4166EB", "#FDCC03"],
+          borderColor: ["#4166EB", "#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -104,8 +104,8 @@ function CalculatorRouter({ name }) {
         {
           label: "# of Votes",
           data: [Math.round(totalinvestment), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
+          backgroundColor: ["#4166EB", "#FDCC03"],
+          borderColor: ["#4166EB", "#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -126,8 +126,8 @@ function CalculatorRouter({ name }) {
         {
           label: "# of Votes",
           data: [Math.round(amount), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
+          backgroundColor: ["#4166EB", "#FDCC03"],
+          borderColor: ["#4166EB", "#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -160,8 +160,8 @@ function CalculatorRouter({ name }) {
         {
           label: "# of Votes",
           data: [Math.round(amount), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
+          backgroundColor: ["#4166EB", "#FDCC03"],
+          borderColor: ["#4166EB", "#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -192,8 +192,8 @@ function CalculatorRouter({ name }) {
         {
           label: "# of Votes",
           data: [Math.round(totalpayment), Math.round(intrest)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
+          backgroundColor: ["#4166EB", "#FDCC03"],
+          borderColor: ["#4166EB", "#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -250,6 +250,7 @@ function CalculatorRouter({ name }) {
             max={20000000}
             setvalue={setamount}
             value={amount}
+            sign={"₹"}
           />
           <InputBlock
             label={data[name]?.rate}
@@ -257,6 +258,7 @@ function CalculatorRouter({ name }) {
             max={50}
             setvalue={setrate}
             value={rate}
+            sign={"%"}
           />
           <InputBlock
             label={"Time Period"}
@@ -264,17 +266,22 @@ function CalculatorRouter({ name }) {
             max={100}
             setvalue={setyear}
             value={years}
+            sign={"Years"}
           />
           {result ? <ResultBox resultdata={resultdata} /> : null}
         </div>
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
+            <div className={styles.resultabs}>
+              <p className={styles.main}>{"₹" + resultdata.result3}</p>
+              <p className={styles.se}>per month</p>
+            </div>
             <Doughnut
               data={chartData}
               className={styles.chart}
               width={100}
               height={100}
-              options={{ maintainAspectRatio: false }}
+              options={{ maintainAspectRatio: true }}
             />
           </div>
         </div>

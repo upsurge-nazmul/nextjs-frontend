@@ -1,19 +1,21 @@
 .productSection {
   scroll-snap-align: end;
   position: relative;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
-  background-color: white;
+  background-color: hsla(48, 98%, 50%, 1);
   display: flex;
-  .left {
-    width: 55%;
+  padding-left: 10%;
+  .right {
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
     .circle {
       width: 35vw;
       height: 35vw;
-      background: #17d1bc;
+      background: #ffffff;
       border-radius: 100%;
       position: relative;
       img {
@@ -22,10 +24,38 @@
         right: -10px;
         width: 35vw;
       }
+      .green {
+        position: absolute;
+        right: -6%;
+        top: 37%;
+        width: 69px;
+        height: 69px;
+        border-radius: 50%;
+        background-color: hsla(173, 80%, 45%, 1);
+      }
+      .yellow {
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: hsla(47, 100%, 76%, 1);
+      }
+      .red {
+        position: absolute;
+        left: 5%;
+        bottom: 0;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background-color: hsla(360, 100%, 69%, 1);
+        z-index: -1;
+      }
     }
   }
-  .right {
-    width: 45%;
+  .left {
+    width: 40%;
     display: flex;
     flex-direction: column;
     padding-left: 5%;
@@ -49,10 +79,10 @@
     }
     .button {
       padding: 5px 14px;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: rgba(236, 236, 236, 1);
+      background-color: rgb(255, 255, 255);
       margin-top: 20px;
       width: fit-content;
       height: 50px;
@@ -61,12 +91,25 @@
     }
     .finance {
       border-radius: 14px;
-      padding: 7px 33px;
-      font-size: 26px;
+      padding: 15px 20px;
+      font-size: 16px;
       font-weight: 700;
-      height: 65px;
       background: #4166eb;
       color: white;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+      justify-content: center;
+      width: 280px;
+      height: fit-content;
+      p {
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        text-align: left;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -92,30 +135,58 @@
     flex-direction: row-reverse;
     position: relative;
     z-index: 2;
-    .left {
+    padding: 0;
+    .right {
       bottom: 10px;
       right: 10px;
       display: flex;
       align-items: center;
       position: absolute;
       z-index: -1;
-      width: 90vw;
+      width: 80vw;
       justify-content: center;
       .circle {
-        width: 90vw;
-        height: 90vw;
-        background: #17d1bc;
+        width: 80vw;
+        height: 80vw;
         border-radius: 100%;
         position: relative;
         img {
           position: absolute;
           bottom: 10px;
           right: -10px;
-          width: 90vw;
+          width: 80vw;
+        }
+        .green {
+          position: absolute;
+          right: -6%;
+          top: 37%;
+          width: 39px;
+          height: 39px;
+          border-radius: 50%;
+          background-color: hsla(173, 80%, 45%, 1);
+        }
+        .yellow {
+          position: absolute;
+          top: 2%;
+          left: 2%;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: hsla(47, 100%, 76%, 1);
+        }
+        .red {
+          position: absolute;
+          left: 5%;
+          bottom: 0;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background-color: hsla(360, 100%, 69%, 1);
+          z-index: -1;
         }
       }
     }
-    .right {
+    .left {
       flex: 1;
       align-items: center;
       padding: 0;
@@ -137,11 +208,15 @@
         border-radius: 12px;
       }
       .finance {
-        height: 45px;
+        height: 80px;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 16px;
         text-align: start;
         padding: 5px 14px;
+        p {
+          font-size: 12px;
+          margin-top: 5px;
+        }
       }
     }
   }

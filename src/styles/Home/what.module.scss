@@ -175,11 +175,22 @@
   }
 }
 
-@media only screen and (min-width: 860px) and (max-height: 800px) {
+@media only screen and (min-width: 860px) and (max-height: 900px) {
+  .whatSection {
+    .outside_red {
+      position: absolute;
+      background-color: #ff6263;
+      width: 23px;
+      height: 23px;
+      border-radius: 100%;
+      bottom: 25%;
+      right: 25%;
+    }
+  }
 }
 @media only screen and (max-width: 859px) {
   .whatSection {
-    height: 90vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -244,8 +255,9 @@
       height: 75%;
       display: flex;
       width: 100%;
+      flex-direction: column;
       .left {
-        width: 50%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;

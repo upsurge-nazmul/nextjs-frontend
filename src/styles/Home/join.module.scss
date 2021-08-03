@@ -3,13 +3,14 @@
   height: 60vh;
   scroll-snap-align: center;
   display: flex;
-  background: rgb(255, 255, 255);
+  background: hsla(227, 81%, 59%, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
   overflow: hidden;
+  color: white;
   .doodle {
     border-radius: 100%;
     position: absolute;
@@ -118,7 +119,7 @@
       }
     }
     .subheading {
-      color: rgba(0, 0, 0, 1);
+      color: rgb(255, 255, 255);
       margin-top: 40px;
       font-size: 20px;
       font-weight: 400;
@@ -128,8 +129,8 @@
     .button {
       margin-top: 40px;
       border-radius: 14px;
-      background: #4166eb;
-      color: white;
+      background: #ffffff;
+      color: rgb(0, 0, 0);
       font-size: 20px;
       font-weight: 500;
       padding: 11px 30px;
@@ -160,19 +161,19 @@
     position: relative;
     .dl1 {
       left: 1%;
-      top: 25%;
-      width: 50px;
-      height: 50px;
+      top: 65%;
+      width: 35px;
+      height: 35px;
     }
     .dl3 {
-      left: 15%;
-      top: 10%;
-      width: 29px;
-      height: 29px;
+      left: 8%;
+      top: 20%;
+      width: 22px;
+      height: 22px;
     }
     .dl4 {
-      left: 38%;
-      top: 13%;
+      left: 32%;
+      top: 9%;
       width: 36px;
       height: 36px;
     }
@@ -182,26 +183,26 @@
       width: 13px;
       height: 13px;
       top: 80%;
-      background: #ff6263;
+      background: #ffffff;
     }
     .dr1 {
       right: 27%;
-      top: 75%;
-      width: 71px;
-      height: 71px;
+      top: 85%;
+      width: 51px;
+      height: 51px;
     }
     .dr2 {
       right: 6%;
-      top: 92%;
-      width: 82px;
-      height: 82px;
+      top: 96%;
+      width: 32px;
+      height: 32px;
       background: #fdcc03;
     }
     .dr3 {
       right: -5%;
-      top: 35%;
-      width: 50px;
-      height: 50px;
+      top: 20%;
+      width: 40px;
+      height: 40px;
       background: #ff6263;
     }
     .dr4 {
