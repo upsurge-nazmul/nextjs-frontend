@@ -202,6 +202,7 @@ export async function getServerSideProps({ params, req }) {
       token: token,
     });
     if (response && !response.data.success) {
+      console.log(response.data);
       msg = response.data.msg;
       return { props: { isLogged: false, msg } };
     } else {
