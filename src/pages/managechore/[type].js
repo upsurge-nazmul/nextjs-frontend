@@ -13,13 +13,17 @@ function ManageChore() {
   const state = JSON.parse(router.query.state);
   console.log(state);
   const [mode, setmode] = useState(type + " Chore");
-  const [msg, setmsg] = useState(state?.message || "");
+  const [msg, setmsg] = useState(state?.message || state?.data?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    state?.name || state?.title || ""
+    state?.name || state?.title || state.data.title || ""
   );
   const [duedate, setduedate] = useState(
-    state?.due_date ? getreadabledate(state.due_date) : "" || "2021-07-21"
+    state?.due_date
+      ? getreadabledate(state.due_date)
+      : "" || state?.data?.due_date
+      ? getreadabledate(state.due_date)
+      : "" || "2021-07-21"
   );
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -41,18 +45,32 @@ function ManageChore() {
   }
   async function handleSave() {
     if (state.isineditmode) {
-      DashboardApis.editchore({
-        id: state.id,
+      let response = await DashboardApis.editchore({
+        id: state.data.id,
         message: msg,
         title: choretitle,
-        category: state?.category,
+        category: state?.data.category,
         assigned_to: "tushar",
         child_id: "test1234",
         due_date: new Date(duedate).getTime(),
         completion: "pending",
       });
+      if (response && response.data && response.data.success) {
+        settoastdata({
+          show: true,
+          message: response.data.message,
+          type: "success",
+        });
+        router.push("/chores");
+      } else {
+        settoastdata({
+          show: true,
+          message: response.data.message,
+          type: "error",
+        });
+      }
     } else {
-      DashboardApis.addchore({
+      let response = await DashboardApis.addchore({
         message: msg,
         title: choretitle,
         category: state?.category || state?.category,
@@ -61,6 +79,20 @@ function ManageChore() {
         due_date: new Date(duedate).getTime(),
         completion: "pending",
       });
+      if (response && response.data && response.data.success) {
+        settoastdata({
+          show: true,
+          message: response.data.message,
+          type: "success",
+        });
+        router.push("/chores");
+      } else {
+        settoastdata({
+          show: true,
+          message: response.data.message,
+          type: "error",
+        });
+      }
     }
   }
   return (
@@ -98,7 +130,7 @@ function ManageChore() {
               }}
             />
             <div className={styles.select}>
-              {state?.category || state?.category}{" "}
+              {state?.category || state?.data.category || " "}
               <svg
                 width="18"
                 height="14"

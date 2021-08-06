@@ -1,0 +1,104 @@
+.tribe {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  height: 80px;
+  border-radius: 12px;
+  margin-top: 20px;
+  .grpimg {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-right: 15px;
+  }
+  .nameandpoints {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-flex-start;
+    justify-content: center;
+    height: 100%;
+    .name {
+      font-size: 18px;
+      text-transform: capitalize;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .points {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(130, 130, 130, 1);
+    }
+    .msg {
+      flex: 1;
+      max-width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        svg {
+          transition: all 0.3s ease;
+          circle {
+            fill: rgb(41, 41, 41);
+          }
+        }
+      }
+    }
+  }
+  .msg {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .tribe {
+    display: flex;
+    width: 200px;
+    max-width: 200px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+    height: 50px;
+    border-radius: 8px;
+    margin-top: 0;
+    margin-right: 20px;
+    .grpimg {
+      width: 40px;
+      height: 40px;
+    }
+    .nameandpoints {
+      flex: 2;
+      display: flex;
+      justify-content: flex-flex-start;
+      justify-content: center;
+      margin-right: 10px;
+      height: 100%;
+      .name {
+        font-size: 10px;
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 0px;
+      }
+      .points {
+        font-size: 8px;
+        font-weight: 400;
+        color: rgba(130, 130, 130, 1);
+      }
+    }
+    .msg {
+      margin-right: 10px;
+      cursor: pointer;
+      svg {
+        width: 20px;
+      }
+    }
+  }
+}

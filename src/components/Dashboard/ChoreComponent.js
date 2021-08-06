@@ -112,9 +112,12 @@ function ChoreComponent({ data }) {
             <p
               className={styles.menutab}
               onClick={() =>
-                router.push("managechore/edit", {
-                  data: data,
-                  isineditmode: true,
+                router.push({
+                  pathname: "/managechore/edit",
+                  asPath: "/managechore/edit",
+                  query: {
+                    state: JSON.stringify({ data: data, isineditmode: true }),
+                  },
                 })
               }
             >
