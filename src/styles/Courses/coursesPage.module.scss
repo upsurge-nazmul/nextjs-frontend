@@ -1,0 +1,394 @@
+.coursesPage {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+
+  .contentWrapper {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .switch {
+      display: flex;
+      margin-top: 26px;
+      padding-left: 46px;
+      .tabs {
+        font-family: Rubik;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(194, 194, 194, 1);
+        margin-right: 46px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          color: rgb(145, 145, 145);
+        }
+      }
+      .recentHeading {
+        z-index: 15;
+        position: absolute;
+        right: 300px;
+        font-family: Rubik;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(194, 194, 194, 1);
+        transition: all 0.3s ease;
+      }
+      .selected {
+        color: #575880;
+      }
+    }
+    .mainContent {
+      width: 100%;
+      display: flex;
+      overflow-y: auto;
+      margin-top: 20px;
+      scrollbar-width: thin;
+      .flexLeft {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        padding: 0 10px 0 45px;
+        .availableCourses {
+          height: fit-content;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .heads {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            height: 64px;
+            color: rgba(106, 106, 106, 1);
+            font-size: 12px;
+            font-weight: 400;
+            .head1 {
+              margin-left: 89px;
+            }
+            .head2 {
+              margin-left: 16%;
+            }
+            .head3 {
+              margin-left: 6.5%;
+            }
+          }
+          .wrapper {
+            padding: 20px 20px 10px 0px;
+          }
+        }
+        .choreSection {
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            margin-top: 20px;
+            padding: 0 20px 10px 0px;
+          }
+        }
+      }
+      .flexRight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 20%;
+        padding-right: 50px;
+        padding-left: 10px;
+        .gameSection {
+          flex: 3;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            height: fit-content;
+            align-items: center;
+            width: 100%;
+            overflow-x: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+          }
+        }
+        .liveClassSection {
+          flex: 1;
+          height: 65%;
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            width: 100%;
+            height: 80%;
+            margin-top: 20px;
+            padding: 0 20px 10px 0px;
+            /* ===== Scrollbar CSS ===== */
+            /* Firefox */
+            scrollbar-width: thin;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
+          }
+        }
+        .nokidlivesection {
+          margin-top: 0;
+          .wrapper {
+            height: 83%;
+          }
+        }
+      }
+    }
+
+    .container {
+      padding: 20px;
+      overflow-y: auto;
+      height: 80%;
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .coursesPage {
+    .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      .switch {
+        display: flex;
+        margin-top: 26px;
+        padding-left: 20px;
+        .tabs {
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          margin-right: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgb(145, 145, 145);
+          }
+        }
+        .recentHeading {
+          z-index: 15;
+          position: absolute;
+          right: 175px;
+          font-family: Rubik;
+          font-weight: 500;
+          font-size: 20px;
+          color: rgba(194, 194, 194, 1);
+          transition: all 0.3s ease;
+        }
+        .selected {
+          color: #575880;
+        }
+      }
+      .mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        scrollbar-width: thin;
+        .flexLeft {
+          width: 100%;
+          padding: 0 10px 0 20px;
+          .availableCourses {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            .heading {
+              font-weight: 500;
+              font-size: 20px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 64px;
+              color: rgba(106, 106, 106, 1);
+              font-size: 12px;
+              font-weight: 400;
+              .head1 {
+                margin-left: 89px;
+              }
+              .head2 {
+                margin-left: 16%;
+              }
+              .head3 {
+                margin-left: 6.5%;
+              }
+            }
+            .wrapper {
+              padding: 20px 0px;
+            }
+          }
+          .choreSection {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .wrapper {
+              margin-top: 20px;
+              padding: 0 20px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
+          padding-right: 10px;
+          padding-left: 20px;
+          .gameSection {
+            flex: 3;
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              height: fit-content;
+              align-items: center;
+              width: 100%;
+              overflow-x: auto;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              scrollbar-width: thin;
+            }
+          }
+          .liveClassSection {
+            flex: 1;
+            height: 65%;
+            margin-top: 20px;
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              flex-direction: column;
+              overflow: auto;
+              width: 100%;
+              height: 80%;
+              margin-top: 20px;
+              padding: 0 20px 10px 0px;
+              /* ===== Scrollbar CSS ===== */
+              /* Firefox */
+              scrollbar-width: thin;
+              /* Chrome, Edge, and Safari */
+              &::-webkit-scrollbar {
+                width: 19px;
+              }
+
+              &::-webkit-scrollbar-track {
+                background: #eaeef8;
+              }
+
+              &::-webkit-scrollbar-thumb {
+                background-color: #ccd6f0;
+                border-radius: 78px;
+                border: 0px solid #ffffff;
+              }
+            }
+          }
+          .nokidlivesection {
+            margin-top: 0;
+            .wrapper {
+              height: 83%;
+            }
+          }
+        }
+      }
+
+      .container {
+        padding: 20px;
+        overflow-y: auto;
+        height: 80%;
+        width: 80%;
+      }
+    }
+  }
+}

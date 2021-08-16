@@ -21,35 +21,45 @@
       flex-wrap: wrap;
       align-content: flex-start;
       margin-top: 3vh;
-      flex-direction: column;
       width: 100%;
       .heading {
         font-size: 24px;
         font-family: "Roboto", sans-serif;
         font-weight: 700;
+        width: 100%;
+        margin-bottom: 20px;
       }
       .quizCard {
         cursor: pointer;
         background-color: rgb(255, 255, 255);
-        width: 100%;
-        height: 100px;
+        width: 251px;
+        box-shadow: 0px 14px 26px rgba(8, 60, 194, 0.15);
+        border-radius: 12px;
+        height: 284px;
         border-radius: 8px;
-        margin-top: 15px;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
+        margin-top: 15px;
         transition: all 0.3s ease;
         padding: 30px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        svg {
+          width: 100px;
+          height: 100px;
+        }
         .text {
+          margin-top: 20px;
           display: flex;
           flex-direction: column;
-          margin-left: 20px;
           flex: 1;
           font-size: 18px;
           font-family: "Roboto", sans-serif;
+          align-items: center;
           .name {
             color: #4166eb;
-            font-weight: 700;
+            font-weight: 500;
           }
           .description {
             font-weight: 400;
@@ -62,7 +72,7 @@
         .button {
           background: #17d1bc;
           border-radius: 14px;
-          width: 40%;
+          width: 100%;
           max-width: 138px;
           min-width: 70px;
           height: 41px;

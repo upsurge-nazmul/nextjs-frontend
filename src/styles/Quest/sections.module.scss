@@ -1,0 +1,90 @@
+.section {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: flex;
+  .left {
+    width: 25%;
+    border-right: 2px solid gray;
+    position: relative;
+    .sectionball {
+      position: absolute;
+      right: -13px;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+      border: 2px solid #4166eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      z-index: 2;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .sectiontitle {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .chaptersandweeks,
+    .sectionno {
+      color: #0000005c;
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+  .right {
+    flex: 1;
+    padding-top: 60px;
+    .chapter {
+      background: #ffffff;
+      border: 1px solid #0000001f;
+      width: auto;
+      position: relative;
+      margin-left: 20px;
+      margin-right: 40px;
+      .chapterball {
+        position: absolute;
+        left: -27px;
+        top: 43%;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+        .chapterno,
+        .remainingtime {
+          font-family: "Roboto";
+          margin-top: 5px;
+          font-size: 10px;
+          color: #0000004d;
+        }
+        .chaptertitle {
+          font-size: 16px;
+          margin-top: 5px;
+          font-weight: 600;
+        }
+        .progress {
+          margin-top: 5px;
+          background: #0000000d;
+          height: 5px;
+          width: auto;
+          .filler {
+            height: 100%;
+            background-color: #4166eb;
+          }
+        }
+      }
+    }
+  }
+}
