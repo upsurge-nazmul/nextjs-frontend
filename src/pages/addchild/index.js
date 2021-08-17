@@ -9,17 +9,7 @@ import styles from "../../styles/AddKid/addkid.module.scss";
 
 function AddKid({ type }) {
   const router = useRouter();
-  async function addChild() {
-    let data = {
-      name: "Tushar Kushwaha",
-      image:
-        "https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
-    };
-    let response = await DashboardApis.addkids(data);
-    if (response && response.data && response.data.success) {
-      router.push("/dashboard");
-    }
-  }
+
   let state;
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -29,10 +19,27 @@ function AddKid({ type }) {
   const [mode, setmode] = useState("Add Kid");
   const [name, setname] = useState("");
   const [dob, setdob] = useState("");
-  const [gender, setgender] = useState("");
+  const [gender, setgender] = useState("male");
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
+  async function addChild() {
+    let data = {
+      name: name,
+      gender,
+      dob: new Date(dob).getTime(),
+      image:
+        "https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
+      email: username,
+      password,
+    };
+    let response = await DashboardApis.addkids(data);
+    if (response && response.data && response.data.success) {
+      router.push("/dashboard");
+    } else {
+      console.log(response.data);
+    }
+  }
   function getreadabledate(date) {
     let fdate = new Date(Number(date));
     let month = fdate.getMonth() + 1;
@@ -149,18 +156,18 @@ function AddKid({ type }) {
               type="text"
               value={username}
               onChange={(e) => setusername(e.target.value)}
-              placeholder="Username"
-            />{" "}
+              placeholder="Email"
+            />
             <input
               type="text"
               value={password}
-              onChange={(e) => password(e.target.value)}
+              onChange={(e) => setpassword(e.target.value)}
               placeholder="Password"
-            />{" "}
+            />
             <input
               type="text"
               value={confirmpassword}
-              onChange={(e) => confirmpassword(e.target.value)}
+              onChange={(e) => setconfirmpassword(e.target.value)}
               placeholder="Confirm Password"
             />
             <div className={styles.button} onClick={addChild}>

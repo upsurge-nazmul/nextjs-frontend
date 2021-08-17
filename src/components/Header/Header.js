@@ -100,9 +100,9 @@ function Header({
             Contact us
           </p>
         </div>
-        {/* <div className={styles.signin} onClick={() => setshowauth(true)}>
+        <div className={styles.signin} onClick={() => setshowauth(true)}>
           Signin
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -445,8 +445,6 @@ function AuthPrivacy({ setmode }) {
       <div
         className={styles.button}
         onClick={() => {
-          console.log("pressed");
-          setmode("hidden");
           router.push("/dashboard");
         }}
       >
