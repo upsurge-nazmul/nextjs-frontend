@@ -216,6 +216,8 @@ async function getchores(token) {
   let response = await DashboardApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
+  } else {
+    return [];
   }
 }
 async function getgames(token) {

@@ -117,9 +117,9 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   settoastdata={settoastdata}
                   setmode={setmode}
                 />
-              ) : (
-                <AuthPrivacy />
-              )}
+              ) : mode === "privacy" ? (
+                <AuthPrivacy setmode={setmode} />
+              ) : null}
             </div>
           </div>
         ) : null}

@@ -1,10 +1,9 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import BlogApis from "../../actions/apis/BlogApis";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import FullBlog from "../../components/Blog/FullBlog";
-import Pagination from "../../components/Blog/Pagination";
 import draftToHtml from "draftjs-to-html";
 import DOMPurify from "dompurify";
 import styles from "../../styles/Blog/blog.module.scss";

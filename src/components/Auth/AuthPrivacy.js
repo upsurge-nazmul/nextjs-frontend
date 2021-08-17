@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Auth/auth.module.scss";
 
-function AuthPrivacy() {
+function AuthPrivacy({ setmode }) {
   const router = useRouter();
   return (
     <div className={styles.privacy}>
@@ -442,7 +442,14 @@ function AuthPrivacy() {
         transmission from Upsurge, or two (2) business days after the date of
         posting.
       </p>
-      <div className={styles.button} onClick={() => router.push("/dashboard")}>
+      <div
+        className={styles.button}
+        onClick={() => {
+          console.log("pressed");
+          setmode("hidden");
+          router.push("/dashboard");
+        }}
+      >
         I Agree
       </div>
     </div>
