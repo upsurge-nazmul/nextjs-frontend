@@ -33,14 +33,14 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             >
               BLOG
             </p>
-            {/* <p
+            <p
               className={`${styles.tab} ${
                 router.pathname.indexOf("/quiz") !== -1 ? styles.activeTab : ""
               }`}
               onClick={() => router.push("/quiz/main")}
             >
               QUIZ
-            </p> */}
+            </p>
             <p
               className={`${styles.tab} ${
                 router.pathname.indexOf("/calculators") !== -1

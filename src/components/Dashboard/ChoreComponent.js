@@ -18,7 +18,6 @@ function ChoreComponent({ data }) {
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const diffDays = Math.round(Math.abs((due_date - currenttime) / oneDay));
   due_date = `Due in ${diffDays} days`;
-
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
