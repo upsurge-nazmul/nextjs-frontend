@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../styles/Home/how.module.scss";
-import howimage from "../../assets/how/how.png";
 function How() {
   return (
     <div className={styles.howSection}>

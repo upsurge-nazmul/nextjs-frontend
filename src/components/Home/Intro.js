@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import HomeSvg from "../../assets/home.svg";
 import validator from "validator";
 import Toast from "../Toast";
-import Image from "next/image";
 import styles from "../../styles/Home/intro.module.scss";
 import LoginApis from "../../actions/apis/LoginApis";
 

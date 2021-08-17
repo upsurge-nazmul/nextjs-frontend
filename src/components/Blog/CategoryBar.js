@@ -7,10 +7,10 @@ function CategoryBar() {
     "Learning",
     "Savings",
     "Investments",
-    // "Finance",
-    // "Learning",
-    // "Savings",
-    // "Investments",
+    "Finance",
+    "Learning",
+    "Savings",
+    "Investments",
   ];
   const [categories, setcategories] = useState(allcategories.slice(0, 5));
   const [showfullcategories, setshowfullcategories] = useState(false);
