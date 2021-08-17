@@ -30,6 +30,9 @@
         display: flex;
         flex-direction: column;
         padding: 0 25px;
+        .usernameinput {
+          margin-top: 20px;
+        }
         input {
           height: 49px;
           margin-bottom: 20px;
@@ -82,19 +85,6 @@
 
         .select {
           border: 1px solid #898989;
-          border-radius: 8px;
-          font-family: "Roboto", sans-serif;
-          margin-bottom: 20px;
-          width: 100%;
-          color: #000000;
-          background-color: white;
-          height: 49px;
-          font-size: 14px;
-          font-weight: 400;
-          display: flex;
-          align-items: center;
-          padding: 10px 20px;
-          justify-content: space-between;
         }
         .voice {
           border: 1px solid #898989;

@@ -6,6 +6,8 @@ import Toast from "../../components/Toast";
 import Assignees from "../../components/ManageChore/Assignees";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/AddKid/addkid.module.scss";
+import { Dropdown, Selection } from "react-dropdown-now";
+import "react-dropdown-now/style.css";
 
 function AddKid({ type }) {
   const router = useRouter();
@@ -25,7 +27,7 @@ function AddKid({ type }) {
   const [confirmpassword, setconfirmpassword] = useState("");
   async function addChild() {
     let data = {
-      name: name,
+      fullname: name,
       gender,
       dob: new Date(dob).getTime(),
       image:
@@ -137,22 +139,14 @@ function AddKid({ type }) {
               }}
               placeholder="dob"
             />
-            <div className={styles.select}>
-              {"Gender"}
-              <svg
-                width="18"
-                height="14"
-                viewBox="0 0 18 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.3962 0H0.603751C0.100078 0 -0.18116 0.639064 0.130759 1.07535L8.52701 12.7751C8.76734 13.11 9.2301 13.11 9.47299 12.7751L17.8692 1.07535C18.1812 0.639064 17.8999 0 17.3962 0Z"
-                  fill="#787878"
-                />
-              </svg>
-            </div>
+            <Dropdown
+              placeholder="Gender"
+              options={["male", "female", "other"]}
+              value={gender}
+              onChange={(value) => setgender(value)}
+            />
             <input
+              className={styles.usernameinput}
               type="text"
               value={username}
               onChange={(e) => setusername(e.target.value)}
