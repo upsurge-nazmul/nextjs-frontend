@@ -1,4 +1,5 @@
 import * as ApiCalls from "../ApiCalls";
+import { getCookie } from "../cookieUtils";
 
 const signup = (payload) => {
   return ApiCalls.postResponse(`users/signup`, payload);
@@ -9,7 +10,11 @@ const setphone = (payload) => {
 };
 
 const verifyotp = (payload) => {
-  return ApiCalls.postResponse(`users/verifyotp`, payload);
+  return ApiCalls.postResponse(
+    `users/verifyotp`,
+    payload,
+    getCookie("accesstoken")
+  );
 };
 
 const login = (payload) => {
@@ -21,6 +26,9 @@ const checktoken = (payload) => {
 };
 const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
+
+const checkemail = (payload) => {
+  return ApiCalls.getResponse(`users/findByEmail`, payload);
 };
 const LoginApis = {
   signup,
@@ -29,6 +37,7 @@ const LoginApis = {
   login,
   checktoken,
   saveemail,
+  checkemail,
 };
 
 export default LoginApis;

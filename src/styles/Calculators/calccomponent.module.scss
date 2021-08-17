@@ -1,5 +1,5 @@
 .calculatorComponent {
-  border: 1px solid rgb(228, 228, 228);
+  background-color: rgb(255, 255, 255);
   border-radius: 8px;
   padding: 20px;
   margin-top: 3vh;
@@ -94,6 +94,24 @@
     padding: 20px;
     justify-content: center;
     align-items: center;
+    position: relative;
+    .resultabs {
+      position: absolute;
+      left: 50%;
+      top: 52%;
+      transform: translate(-55%);
+      font-weight: 700;
+      font-size: 24px;
+      font-family: "Roboto", sans-serif;
+      width: 150px;
+      .main {
+        text-align: center;
+      }
+      .se {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
     .chartContainer {
       position: relative;
       height: 90%;

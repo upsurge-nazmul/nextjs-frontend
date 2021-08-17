@@ -4,6 +4,7 @@ import apple from "../../assets/apple.svg";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
+import { setCookie } from "../../actions/cookieUtils";
 
 function AuthParent({
   setsignupmethod,
@@ -24,7 +25,19 @@ function AuthParent({
     }
 
     if (method === "email") {
-      setmode("email");
+      let emailcheckresponse = await LoginApis.checkemail({ email: email });
+      if (
+        emailcheckresponse &&
+        emailcheckresponse.data &&
+        !emailcheckresponse.data.success
+      )
+        setmode("email");
+      else
+        settoastdata({
+          show: true,
+          msg: emailcheckresponse.data.message,
+          type: "error",
+        });
       return;
     }
     // temp changes
@@ -41,7 +54,7 @@ function AuthParent({
         type: "error",
       });
     } else {
-      localStorage.setItem("accesstoken", response.data.data.token);
+      setCookie("accesstoken", response.data.data.token);
       setmode("email");
     }
     // axios

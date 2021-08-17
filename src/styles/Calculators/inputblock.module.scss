@@ -7,21 +7,42 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .label {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+    }
     .signAndValue {
-      width: 50%;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #898989;
       display: flex;
+      padding: 5px 20px;
+      min-width: 100px;
+      height: 45px;
+      width: fit-content;
       justify-content: space-around;
+      border-radius: 8px;
       align-items: center;
       input {
         outline: none;
         border: none;
-        border-radius: 8px;
-        background-color: rgb(241, 241, 241);
-        padding: 10px;
+        padding: 5px;
         flex: 1;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        -moz-appearance: textfield;
       }
+
       .sign {
-        margin: 0px 10px;
+        margin: 0px 0px;
+        color: rgb(153, 153, 153);
       }
     }
   }

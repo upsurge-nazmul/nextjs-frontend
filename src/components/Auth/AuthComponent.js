@@ -54,7 +54,9 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
           <div className={styles.authContentWrapper}>
             <div
               className={styles.background}
-              onClick={() => setshowauth(false)}
+              onClick={() => {
+                if (mode !== "privacy") setshowauth(false);
+              }}
             ></div>
             <div
               className={`${styles.authcontainer} ${

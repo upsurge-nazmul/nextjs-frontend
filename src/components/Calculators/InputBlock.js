@@ -7,6 +7,9 @@ function InputBlock({ label, min, max, setvalue, value, sign }) {
       <div className={styles.topBlock}>
         <p className={styles.label}>{label}</p>
         <div className={styles.signAndValue}>
+          {label === "Loan Amount" && sign && (
+            <p className={styles.sign}>{sign}</p>
+          )}
           <input
             type="number"
             value={value}
@@ -17,7 +20,9 @@ function InputBlock({ label, min, max, setvalue, value, sign }) {
                 setvalue(e.target.value);
             }}
           />
-          {sign && <p className={styles.sign}>{sign}</p>}
+          {label !== "Loan Amount" && sign && (
+            <p className={styles.sign}>{sign}</p>
+          )}
         </div>
       </div>
 

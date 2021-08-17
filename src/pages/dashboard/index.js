@@ -12,14 +12,21 @@ import NoKid from "../../components/Dashboard/NoKid";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Dashboard/dashboard.module.scss";
 
-function Dashboard({ isLogged, msg }) {
+function Dashboard({
+  isLogged,
+  msg,
+  choresdata,
+  gamesdata,
+  kidsdata,
+  liveclassdata,
+}) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("home");
   const router = useRouter();
-  const [kids, setkids] = useState([]);
-  const [familyfun, setfamilyfun] = useState([]);
-  const [chores, setchores] = useState([]);
-  const [liveclasses, setliveclasses] = useState([]);
+  const [kids, setkids] = useState(kidsdata || []);
+  const [familyfun, setfamilyfun] = useState(gamesdata || []);
+  const [chores, setchores] = useState(choresdata || []);
+  const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -37,31 +44,6 @@ function Dashboard({ isLogged, msg }) {
       router.push("/");
     }
   }, [isLogged]);
-
-  useEffect(() => {
-    getkidsdata();
-    getgames();
-    getliveclasses();
-    getchores();
-    async function getkidsdata() {
-      let response = await DashboardApis.getkids();
-      if (response.data.data) setkids(response.data.data);
-    }
-    async function getchores() {
-      let response = await DashboardApis.getpendingchores();
-      if (response.data.data) {
-        setchores(response.data.data);
-      }
-    }
-    async function getgames() {
-      let response = await DashboardApis.getgames();
-      if (response.data.data) setfamilyfun(response.data.data);
-    }
-    async function getliveclasses() {
-      let response = await DashboardApis.getliveclasses();
-      if (response.data.data) setliveclasses(response.data.data);
-    }
-  }, []);
 
   return (
     <div className={styles.dashboard}>
@@ -202,12 +184,47 @@ export async function getServerSideProps({ params, req }) {
       token: token,
     });
     if (response && !response.data.success) {
+      console.log(response.data);
       msg = response.data.msg;
       return { props: { isLogged: false, msg } };
     } else {
-      return { props: { isLogged: true } };
+      let kidsdata = await getkidsdata(token);
+      let gamesdata = await getgames(token);
+      let liveclassdata = await getliveclasses(token);
+      let choresdata = await getchores(token);
+      return {
+        props: {
+          isLogged: true,
+          choresdata,
+          gamesdata,
+          kidsdata,
+          liveclassdata,
+        },
+      };
     }
   } else {
     return { props: { isLogged: false, msg: "cannot get token" } };
   }
+}
+
+async function getkidsdata(token) {
+  let response = await DashboardApis.getkids(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getchores(token) {
+  let response = await DashboardApis.getpendingchores(null, token);
+  if (response && response.data && response.data.data) {
+    return response.data.data;
+  }
+}
+async function getgames(token) {
+  let response = await DashboardApis.getgames(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getliveclasses(token) {
+  let response = await DashboardApis.getliveclasses(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
 }

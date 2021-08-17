@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../styles/GeneralComponents/popup.module.scss";
-
-function PopUp({ heading, saveinput }) {
+import validator from "validator";
+function PopUp({ heading, saveinput, settoastdata }) {
   const [data, setdata] = useState("");
 
   useEffect(() => {
@@ -21,8 +21,16 @@ function PopUp({ heading, saveinput }) {
         <div
           className={styles.submit}
           onClick={() => {
-            localStorage.setItem("email", data);
-            saveinput(data);
+            if (validator.isEmail(data)) {
+              localStorage.setItem("email", data);
+              saveinput(data);
+            } else {
+              settoastdata({
+                show: true,
+                type: "error",
+                msg: "Enter valid Email",
+              });
+            }
           }}
         >
           Submit

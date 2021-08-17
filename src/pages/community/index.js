@@ -4,8 +4,17 @@ import retirement from "../../assets/community/retirement.png";
 import PostComponent from "../../components/Community/PostComponent";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Community/community.module.scss";
-function Community() {
+import CommunityApis from "../../actions/apis/CommunityApis";
+import Toast from "../../components/Toast";
+function Community({ topusersdata, announcementsdata, postsdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [page, setpage] = useState(2);
+  const [posts, setposts] = useState(postsdata.rows || []);
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   let tempannouncements = [
     {
       title:
@@ -21,68 +30,6 @@ function Community() {
       msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatisLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis",
     },
   ];
-  let posts = [
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-    {
-      title: "How to inspire your kids to learn about finance?",
-      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra",
-      posted_by: "Regina Thomas",
-      time: "12 Hrs Ago",
-      no_of_comments: 12,
-      votes: 300,
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-    },
-  ];
   let topics = [
     "Finance",
     "Education",
@@ -93,52 +40,41 @@ function Community() {
     "Retirement",
     "Retirement",
   ];
-  let topusers = [
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-  ];
+
+  async function getmoreposts() {
+    let postsres = await CommunityApis.getallposts({ page: page });
+    if (postsres && postsres.data && postsres.data.success)
+      setposts((prev) => [...prev, ...postsres.data.data.rows]);
+    setpage((prev) => prev + 1);
+  }
+
+  async function addpost() {
+    let newpost = {
+      title: "New Test",
+      content:
+        "took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+      comment_count: 0,
+      votes: 0,
+    };
+    let response = await CommunityApis.addpost(newpost);
+    if (response && response.data && response.data.success) {
+      setposts((prev) => [response.data.data, ...prev]);
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: response.data.message,
+      });
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: response?.data?.message || "Server Offline",
+      });
+    }
+  }
   return (
     <div className={styles.communityPage}>
+      <Toast data={toastdata} />
       <Helpheader
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -191,11 +127,11 @@ function Community() {
                 </svg>
               </div>
               <div className={styles.wrapper}>
-                {tempannouncements.map((item) => {
+                {announcementsdata.rows?.map((item) => {
                   return (
                     <div className={styles.announcement}>
-                      <p className={styles.title}>{item.title}</p>
-                      <p className={styles.msg}>{item.msg}</p>
+                      <p className={styles.title}>{item.heading}</p>
+                      <p className={styles.msg}>{item.details}</p>
                     </div>
                   );
                 })}
@@ -228,6 +164,33 @@ function Community() {
                 {posts.map((post) => {
                   return <PostComponent post={post} />;
                 })}
+                {posts.length !== postsdata.count ? (
+                  <div className={styles.loadmorebutton} onClick={getmoreposts}>
+                    Load More{" "}
+                    <svg
+                      width="16"
+                      height="18"
+                      viewBox="0 0 16 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 17V1"
+                        stroke="black"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M1 10L8 17L15 10"
+                        stroke="black"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -335,16 +298,18 @@ function Community() {
               </div>
             </div>
             <div className={styles.bottom}>
-              <div className={styles.button}>+ Start a New Topic</div>
+              <div className={styles.button} onClick={addpost}>
+                + Start a New Topic
+              </div>
               <div className={styles.heading}>Top Users</div>
               <div className={styles.wrapper}>
-                {topusers.map((user) => {
+                {topusersdata.rows?.map((user) => {
                   return (
-                    <div className={styles.topuser}>
-                      <img src={user.img_url} alt="" />
-                      <p className={styles.name}>{user.name}</p>
+                    <div className={styles.topuser} key={user.user_id}>
+                      <img src={user.user_img_url} alt="" />
+                      <p className={styles.name}>{user.user_name}</p>
                       <p className={styles.votes}>
-                        {user.votes}{" "}
+                        {user.total_votes}{" "}
                         <svg
                           width="9"
                           height="9"
@@ -372,3 +337,27 @@ function Community() {
 }
 
 export default Community;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  const propsdata = {
+    announcementsdata: { count: 0, rows: [] },
+    topusersdata: { count: 0, rows: [] },
+    postsdata: { count: 0, rows: [] },
+  };
+
+  let response = await CommunityApis.gettopusers();
+  if (response && response.data && response.data.success) {
+    propsdata.topusersdata = response.data.data;
+  }
+  let announcementres = await CommunityApis.getannouncements();
+  if (announcementres && announcementres.data && announcementres.data.success) {
+    propsdata.announcementsdata = announcementres.data.data;
+  }
+  let postsres = await CommunityApis.getallposts({ page: 1 });
+  if (postsres && postsres.data && postsres.data.success)
+    propsdata.postsdata = postsres.data.data;
+  return {
+    props: propsdata,
+  };
+}

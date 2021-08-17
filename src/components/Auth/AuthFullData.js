@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
+import { setCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Auth/auth.module.scss";
+import validator from "validator";
 function AuthFullData({
   setphone,
   setpassword,
@@ -16,6 +18,22 @@ function AuthFullData({
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   async function handleUpdateData() {
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Invalid Phone",
+      });
+      return;
+    }
+    if (!firstName || !lastName || !password) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Enter Valid Details",
+      });
+      return;
+    }
     if (signupmethod === "email") {
       let response = await LoginApis.signup({
         email: email,
@@ -39,7 +57,7 @@ function AuthFullData({
           msg: response.data.message,
           type: "success",
         });
-        localStorage.setItem("accesstoken", response.data.data.token);
+        setCookie("accesstoken", response.data.data.token);
         setmode("otp");
       }
     } else {
@@ -75,7 +93,9 @@ function AuthFullData({
           type="text"
           placeholder="Phone"
           value={phone}
-          onChange={(e) => setphone(e.target.value)}
+          onChange={(e) => {
+            if (!isNaN(e.target.value)) setphone(e.target.value);
+          }}
         />
       </div>
       <div className={styles.nameWrapper}>

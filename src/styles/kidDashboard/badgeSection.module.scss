@@ -1,0 +1,22 @@
+.badgeSection {
+  .heading {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgba(87, 88, 128, 1);
+    display: flex;
+    align-items: center;
+    svg {
+      margin-left: 10px;
+    }
+  }
+  .wrapper {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+  }
+}

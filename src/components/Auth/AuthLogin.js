@@ -23,7 +23,6 @@ function AuthLogin({ settoastdata }) {
       return;
     }
 
-    // temp changes
     let response = await LoginApis.login({ email, password });
     if (response.data && response.data.success) {
       setCookie("accesstoken", response.data.data.token);

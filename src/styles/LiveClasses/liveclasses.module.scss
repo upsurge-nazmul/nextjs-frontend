@@ -1,0 +1,56 @@
+.liveclasses {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  .mainContent {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    width: 100%;
+    .switch {
+      display: flex;
+      margin-top: 26px;
+      padding-left: 46px;
+      .tabs {
+        font-family: Rubik;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(194, 194, 194, 1);
+        margin-right: 46px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          color: rgb(145, 145, 145);
+        }
+      }
+      .selected {
+        color: #575880;
+      }
+    }
+    .wrapper {
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-top: 30px;
+      overflow-y: auto;
+      padding-right: 40px;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .liveclasses {
+    .mainContent {
+      height: 100vh;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      padding-bottom: 20vh;
+    }
+  }
+}
