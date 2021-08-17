@@ -19,12 +19,16 @@ const login = (payload) => {
 const checktoken = (payload) => {
   return ApiCalls.postResponse(`users/checktoken`, payload, payload.token);
 };
+const saveemail = (payload) => {
+  return ApiCalls.postResponse("users/saveemail", payload);
+};
 const LoginApis = {
   signup,
   setphone,
   verifyotp,
   login,
   checktoken,
+  saveemail,
 };
 
 export default LoginApis;

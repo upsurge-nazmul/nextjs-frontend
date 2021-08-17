@@ -4,7 +4,6 @@ import validator from "validator";
 import Toast from "../Toast";
 import Image from "next/image";
 import styles from "../../styles/Home/intro.module.scss";
-import { db } from "../../../firebase";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
