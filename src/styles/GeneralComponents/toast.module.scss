@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   p {
-    width: 300px;
+    min-width: 300px;
     font-size: 18px;
     font-weight: 400;
     text-align: center;
@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    padding: 20px;
     color: rgb(0, 0, 0);
     height: 100%;
     background-color: rgb(31, 31, 31);

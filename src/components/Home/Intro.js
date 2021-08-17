@@ -4,6 +4,7 @@ import validator from "validator";
 import Toast from "../Toast";
 import Image from "next/image";
 import styles from "../../styles/Home/intro.module.scss";
+import LoginApis from "../../actions/apis/LoginApis";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
@@ -20,62 +21,28 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
         msg: "Enter valid email address",
       });
     } else {
-      db.collection("emails")
-        .doc(email)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            settoastdata({
-              show: true,
-              type: "error",
-              msg: "We have already registered your request.",
-            });
-          } else {
-            db.collection("emails")
-              .doc(email)
-              .set({
-                email: email,
-                date: new Date().getTime(),
-              })
-              .then(() => {
-                settoastdata({
-                  show: true,
-                  type: "success",
-                  msg: "Thanks, we'll contact you soon.",
-                });
-              })
-              .catch((err) => {
-                settoastdata({
-                  show: true,
-                  type: "error",
-                  msg: "error saving",
-                });
-              });
-          }
+      let response = await LoginApis.saveemail({ email: email });
+      if (response) {
+        if (response.data.success) {
+          settoastdata({
+            show: true,
+            type: "success",
+            msg: response.data.message,
+          });
+        } else {
+          settoastdata({
+            show: true,
+            type: "error",
+            msg: response.data.message,
+          });
+        }
+      } else {
+        settoastdata({
+          show: true,
+          type: "error",
+          msg: "Error connecting to server",
         });
-
-      // let response = await LoginApis.saveemail({ email: email });
-      // if (response) {
-      //   if (response.data.success) {
-      //     settoastdata({
-      //       show: true,
-      //       type: "success",
-      //       msg: response.data.message,
-      //     });
-      //   } else {
-      //     settoastdata({
-      //       show: true,
-      //       type: "error",
-      //       msg: response.data.message,
-      //     });
-      //   }
-      // } else {
-      //   settoastdata({
-      //     show: true,
-      //     type: "error",
-      //     msg: "Error connecting to server",
-      //   });
-      // }
+      }
       // setshowauth(true);
       // setauthmode("parent");
       // setmailfromhome(email);

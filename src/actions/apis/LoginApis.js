@@ -26,7 +26,7 @@ const checktoken = (payload) => {
 };
 const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
-
+};
 const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
 };
