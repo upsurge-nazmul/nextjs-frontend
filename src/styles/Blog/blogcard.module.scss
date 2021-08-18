@@ -5,18 +5,20 @@
   margin-bottom: 30px;
   img {
     height: 100%;
-    width: 160px;
+    min-width: 160px;
     border-radius: 13px;
     margin-right: 17px;
     object-fit: cover;
   }
   .right {
     .categories {
+      display: flex;
       p {
         font-size: 14px;
         font-weight: 700;
         color: #4166eb;
         font-family: "Roboto";
+        margin-right: 10px;
       }
     }
     .title {

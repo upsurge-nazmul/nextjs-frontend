@@ -10,7 +10,7 @@ export function setCookie(name, value) {
     "=" +
     (value || "") +
     expires +
-    "; path=/ ; secure=true; sameSite=lax";
+    "; path=/ ; secure=true; sameSite=None";
 }
 
 export function eraseCookie(name) {

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import doodleLeft1 from "../../assets/about/doodle_l_1.png";
 import doodleLeft2 from "../../assets/about/doodle_l_2.png";
@@ -33,7 +32,7 @@ function AboutSection() {
       />
       <img
         className={`${styles.doodle} ${styles.dr2}`}
-        src={doodleRight2}
+        src={doodleRight2.src}
         alt=""
       />
       <img
@@ -42,18 +41,11 @@ function AboutSection() {
         alt=""
       />
       <div className={styles.textContent}>
-        {/* <div className={styles.heading}>
-          Our{" "}
-          <span className={styles.highlight}>
-            Vision <div className={styles.underline}></div>
-          </span>
-        </div> */}
         <p className={styles.subheading}>
           “Concepts learned in games help children understand cause and effect,
           make mistakes and get rewarded for smart choices.”
         </p>
         <div className={styles.subheading2}>- Mr. Money Moustache</div>
-        {/* <div className={styles.button}>Enroll your kid for free</div> */}
       </div>
     </section>
   );

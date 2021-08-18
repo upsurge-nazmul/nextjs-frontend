@@ -31,7 +31,7 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
         <div className={styles.heading}>
-          Join the{" "}
+          Join the
           <span className={styles.highlight}>
             club <div className={styles.underline}></div>
           </span>

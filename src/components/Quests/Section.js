@@ -10,10 +10,9 @@ function Section({ data }) {
         <p className={styles.chaptersandweeks}>{data.chaptersandweeks}</p>
       </div>
       <div className={styles.right}>
-        {data.chapters.map((chapter) => {
-          console.log(chapter.completion);
+        {data.chapters.map((chapter, index) => {
           return (
-            <div className={styles.chapter}>
+            <div className={styles.chapter} key={"chapter" + index}>
               <div
                 className={styles.chapterball}
                 style={{

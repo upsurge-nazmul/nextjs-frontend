@@ -22,7 +22,6 @@ function CoursesPage({ liveclassdata }) {
   });
   const availableCourses = ["", "", ""];
   const kiddata = ["", "", ""];
-  console.log(state);
   return (
     <div className={styles.coursesPage}>
       <DashboardLeftPanel />
@@ -57,9 +56,10 @@ function CoursesPage({ liveclassdata }) {
             <div className={styles.mainContent}>
               <div className={styles.flexLeft}>
                 <div className={styles.coursesSection}>
-                  {courses.map((data) => {
+                  {courses.map((data, index) => {
                     return (
                       <CoursesComponent
+                        key={"courseComponent" + index}
                         data={{
                           img_url: data.image,
                           course_progress: 50,
@@ -88,15 +88,15 @@ function CoursesPage({ liveclassdata }) {
                     </svg>
                   </h2>
                   <div className={styles.wrapper}>
-                    {availableCourses.map((item) => {
-                      return <AvailableCourse />;
+                    {availableCourses.map((item, index) => {
+                      return <AvailableCourse key={"available" + index} />;
                     })}
                   </div>
                 </div>
               </div>
               <div className={styles.flexRight}>
-                {kiddata.map((item) => {
-                  return <KidCards />;
+                {kiddata.map((item, index) => {
+                  return <KidCards key={"kidCard" + index} />;
                 })}
               </div>
             </div>

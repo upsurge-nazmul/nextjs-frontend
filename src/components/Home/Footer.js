@@ -3,7 +3,6 @@ import Logo from "../../assets/logo.svg";
 import Fb from "../../assets/footer/fb.svg";
 import Insta from "../../assets/footer/insta.svg";
 import Twitter from "../../assets/footer/twitter.svg";
-import Image from "next/image";
 import styles from "../../styles/Home/footer.module.scss";
 import { useRouter } from "next/dist/client/router";
 
@@ -12,7 +11,7 @@ function Footer() {
   return (
     <div className={styles.footerSection}>
       <div className={styles.left}>
-        <img src={Logo.src} className={styles.logo} />
+        <img src={Logo.src} className={styles.logo} alt="" />
         <div className={styles.bottom}>
           <p>Terms & Conditions</p>
           <p>Privacy Policy</p>
@@ -46,9 +45,9 @@ function Footer() {
           </p>
         </div>
         <div className={styles.socials}>
-          <img src={Fb.src} className={styles.social} />
-          <img src={Twitter.src} className={styles.social} />
-          <img src={Insta.src} className={styles.social} />
+          <img src={Fb.src} className={styles.social} alt="" />
+          <img src={Twitter.src} className={styles.social} alt="" />
+          <img src={Insta.src} className={styles.social} alt="" />
         </div>
       </div>
     </div>

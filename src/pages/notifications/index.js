@@ -9,7 +9,6 @@ import styles from "../../styles/Notifications/notificationsPage.module.scss";
 function NotificationsPage() {
   // 3 types request, message , community
   const router = useRouter();
-  console.log(router);
   const state = router.query ?? { type: "request" };
   const [notitype, setnotitype] = useState(state.type);
 

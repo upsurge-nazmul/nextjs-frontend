@@ -61,7 +61,6 @@ function Home() {
       <Who />
       <What />
       <ProductSection />
-      {/* <Why /> */}
       <Reviews />
       <JoinUs />
       <Footer />

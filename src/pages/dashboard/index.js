@@ -79,8 +79,10 @@ function Dashboard({
               )}{" "}
               {kids.length > 0 ? (
                 <div className={styles.wrapper}>
-                  {kids.map((item) => {
-                    return <KidComponent data={item} />;
+                  {kids.map((item, index) => {
+                    return (
+                      <KidComponent data={item} key={"kidcomponent" + index} />
+                    );
                   })}
                 </div>
               ) : (
@@ -106,8 +108,13 @@ function Dashboard({
                   </svg>
                 </h2>
                 <div className={styles.wrapper}>
-                  {chores.map((data) => {
-                    return <ChoreComponent data={data} />;
+                  {chores.map((data, index) => {
+                    return (
+                      <ChoreComponent
+                        data={data}
+                        key={"chorecomponent" + index}
+                      />
+                    );
                   })}
                 </div>
               </div>
@@ -134,8 +141,10 @@ function Dashboard({
                 </h2>
 
                 <div className={styles.wrapper}>
-                  {familyfun.map((data) => {
-                    return <GameCard data={data} />;
+                  {familyfun.map((data, index) => {
+                    return (
+                      <GameCard data={data} key={"gamecardcomponent" + index} />
+                    );
                   })}
                 </div>
               </div>
@@ -162,8 +171,10 @@ function Dashboard({
                 </svg>
               </h2>
               <div className={styles.wrapper}>
-                {liveclasses.map((data) => {
-                  return <LiveClass data={data} />;
+                {liveclasses.map((data, index) => {
+                  return (
+                    <LiveClass data={data} key={"liveclasscomponent" + index} />
+                  );
                 })}
               </div>
             </div>

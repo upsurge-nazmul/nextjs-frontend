@@ -146,7 +146,7 @@ function ManageChore() {
             </div>
             <div className={styles.msgsection}>
               <textarea
-                maxlength="200"
+                maxLength="200"
                 value={msg}
                 onChange={(e) => setmsg(e.target.value)}
               ></textarea>

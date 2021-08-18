@@ -127,9 +127,12 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
                 </svg>
               </div>
               <div className={styles.wrapper}>
-                {announcementsdata.rows?.map((item) => {
+                {announcementsdata.rows?.map((item, index) => {
                   return (
-                    <div className={styles.announcement}>
+                    <div
+                      className={styles.announcement}
+                      key={"annoncement" + index}
+                    >
                       <p className={styles.title}>{item.heading}</p>
                       <p className={styles.msg}>{item.details}</p>
                     </div>
@@ -156,13 +159,15 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
               </div>
 
               <div className={styles.topics}>
-                {topics.map((topic) => (
-                  <p className={styles.topic}>{topic}</p>
+                {topics.map((topic, index) => (
+                  <p className={styles.topic} key={"topic" + index}>
+                    {topic}
+                  </p>
                 ))}
               </div>
               <div className={styles.wrapper}>
-                {posts.map((post) => {
-                  return <PostComponent post={post} />;
+                {posts.map((post, index) => {
+                  return <PostComponent key={"post" + index} post={post} />;
                 })}
                 {posts.length !== postsdata.count ? (
                   <div className={styles.loadmorebutton} onClick={getmoreposts}>
@@ -177,16 +182,16 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
                       <path
                         d="M8 17V1"
                         stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M1 10L8 17L15 10"
                         stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   </div>
@@ -225,7 +230,7 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
                         d="M9.22247 3.29428H8.68272H1.34772C1.23421 3.29428 1.14215 3.38633 1.14215 3.49985C1.14215 3.61334 1.23422 3.70541 1.34772 3.70541H8.68272H9.22246L8.84081 4.08707L6.82697 6.10098L6.82697 6.10098C6.74669 6.18126 6.74668 6.31138 6.82694 6.39167C6.82695 6.39168 6.82696 6.39169 6.82697 6.39171M9.22247 3.29428L7.27579 6.5498C7.19199 6.63353 7.08216 6.67548 6.97234 6.67548C6.86251 6.67548 6.75265 6.63353 6.66888 6.5498M9.22247 3.29428L8.84081 2.91262L6.8269 0.898714C6.74661 0.818419 6.74661 0.688281 6.8269 0.607987C6.90716 0.527727 7.03737 0.527727 7.11763 0.607987L9.86413 3.35448C9.94442 3.43478 9.94442 3.56491 9.86413 3.64521L10.0222 3.8033L9.86412 3.64521L7.11776 6.39164M9.22247 3.29428L7.11776 6.39164M6.82697 6.39171L6.66888 6.5498M6.82697 6.39171C6.86717 6.43186 6.91944 6.45191 6.97234 6.45191C7.02522 6.45191 7.0775 6.43187 7.11776 6.39164M6.82697 6.39171L7.11776 6.39164M6.66888 6.5498C6.50128 6.38219 6.50128 6.11049 6.66888 5.94289L8.45915 4.15256M6.66888 6.5498L8.45915 4.15256M8.45915 4.15256H8.68272V3.92899L8.52462 3.7709L8.36654 3.92899H1.34772C1.11073 3.92899 0.918579 3.7368 0.918579 3.49985C0.918579 3.26286 1.11073 3.07071 1.34772 3.07071H8.36654L8.52463 3.2288L8.68272 3.07071V2.84713L8.45915 4.15256Z"
                         fill="black"
                         stroke="white"
-                        stroke-width="0.447146"
+                        strokeWidth="0.447146"
                       />
                     </svg>
                   </p>
@@ -266,7 +271,7 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
                         d="M9.22247 3.29428H8.68272H1.34772C1.23421 3.29428 1.14215 3.38633 1.14215 3.49985C1.14215 3.61334 1.23422 3.70541 1.34772 3.70541H8.68272H9.22246L8.84081 4.08707L6.82697 6.10098L6.82697 6.10098C6.74669 6.18126 6.74668 6.31138 6.82694 6.39167C6.82695 6.39168 6.82696 6.39169 6.82697 6.39171M9.22247 3.29428L7.27579 6.5498C7.19199 6.63353 7.08216 6.67548 6.97234 6.67548C6.86251 6.67548 6.75265 6.63353 6.66888 6.5498M9.22247 3.29428L8.84081 2.91262L6.8269 0.898714C6.74661 0.818419 6.74661 0.688281 6.8269 0.607987C6.90716 0.527727 7.03737 0.527727 7.11763 0.607987L9.86413 3.35448C9.94442 3.43478 9.94442 3.56491 9.86413 3.64521L10.0222 3.8033L9.86412 3.64521L7.11776 6.39164M9.22247 3.29428L7.11776 6.39164M6.82697 6.39171L6.66888 6.5498M6.82697 6.39171C6.86717 6.43186 6.91944 6.45191 6.97234 6.45191C7.02522 6.45191 7.0775 6.43187 7.11776 6.39164M6.82697 6.39171L7.11776 6.39164M6.66888 6.5498C6.50128 6.38219 6.50128 6.11049 6.66888 5.94289L8.45915 4.15256M6.66888 6.5498L8.45915 4.15256M8.45915 4.15256H8.68272V3.92899L8.52462 3.7709L8.36654 3.92899H1.34772C1.11073 3.92899 0.918579 3.7368 0.918579 3.49985C0.918579 3.26286 1.11073 3.07071 1.34772 3.07071H8.36654L8.52463 3.2288L8.68272 3.07071V2.84713L8.45915 4.15256Z"
                         fill="black"
                         stroke="white"
-                        stroke-width="0.447146"
+                        strokeWidth="0.447146"
                       />
                     </svg>
                   </p>
@@ -290,7 +295,7 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
                         d="M9.22247 3.29428H8.68272H1.34772C1.23421 3.29428 1.14215 3.38633 1.14215 3.49985C1.14215 3.61334 1.23422 3.70541 1.34772 3.70541H8.68272H9.22246L8.84081 4.08707L6.82697 6.10098L6.82697 6.10098C6.74669 6.18126 6.74668 6.31138 6.82694 6.39167C6.82695 6.39168 6.82696 6.39169 6.82697 6.39171M9.22247 3.29428L7.27579 6.5498C7.19199 6.63353 7.08216 6.67548 6.97234 6.67548C6.86251 6.67548 6.75265 6.63353 6.66888 6.5498M9.22247 3.29428L8.84081 2.91262L6.8269 0.898714C6.74661 0.818419 6.74661 0.688281 6.8269 0.607987C6.90716 0.527727 7.03737 0.527727 7.11763 0.607987L9.86413 3.35448C9.94442 3.43478 9.94442 3.56491 9.86413 3.64521L10.0222 3.8033L9.86412 3.64521L7.11776 6.39164M9.22247 3.29428L7.11776 6.39164M6.82697 6.39171L6.66888 6.5498M6.82697 6.39171C6.86717 6.43186 6.91944 6.45191 6.97234 6.45191C7.02522 6.45191 7.0775 6.43187 7.11776 6.39164M6.82697 6.39171L7.11776 6.39164M6.66888 6.5498C6.50128 6.38219 6.50128 6.11049 6.66888 5.94289L8.45915 4.15256M6.66888 6.5498L8.45915 4.15256M8.45915 4.15256H8.68272V3.92899L8.52462 3.7709L8.36654 3.92899H1.34772C1.11073 3.92899 0.918579 3.7368 0.918579 3.49985C0.918579 3.26286 1.11073 3.07071 1.34772 3.07071H8.36654L8.52463 3.2288L8.68272 3.07071V2.84713L8.45915 4.15256Z"
                         fill="black"
                         stroke="white"
-                        stroke-width="0.447146"
+                        strokeWidth="0.447146"
                       />
                     </svg>
                   </p>
@@ -303,9 +308,9 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
               </div>
               <div className={styles.heading}>Top Users</div>
               <div className={styles.wrapper}>
-                {topusersdata.rows?.map((user) => {
+                {topusersdata.rows?.map((user, index) => {
                   return (
-                    <div className={styles.topuser} key={user.user_id}>
+                    <div className={styles.topuser} key={"user" + index}>
                       <img src={user.user_img_url} alt="" />
                       <p className={styles.name}>{user.user_name}</p>
                       <p className={styles.votes}>

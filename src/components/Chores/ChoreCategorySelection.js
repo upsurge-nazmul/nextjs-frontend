@@ -40,9 +40,10 @@ function ChoreCategorySelection({ category, setcategory, setmode }) {
         </div>
       ) : (
         <div className={styles.wrapper}>
-          {templates.map((item) => {
+          {templates.map((item, index) => {
             return (
               <TemplateCard
+                key={"templatecard" + index}
                 name={item.name}
                 image={item.image}
                 selected={category}

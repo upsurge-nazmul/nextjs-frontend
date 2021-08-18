@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import draftToHtml from "draftjs-to-html";
-import DOMPurify from "dompurify";
 import styles from "../../styles/Blog/fullblog.module.scss";
 
 function FullBlog({ item, openFull, setOpenFull, rest, setSelectedBlog }) {

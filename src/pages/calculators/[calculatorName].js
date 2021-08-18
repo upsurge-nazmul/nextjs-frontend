@@ -4,6 +4,8 @@ import CalculatorRouter from "../../components/Calculators/CalculatorRouter";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Calculators/calculatorpage.module.scss";
+import homeloansvg from "../../assets/calculators/home.svg";
+import carloansvg from "../../assets/calculators/car.svg";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -44,12 +46,12 @@ function CalculatorsPage() {
     homeLoan: {
       heading: "Home Loan",
       subheading: `Map the realisation of your goals/dreams with an EMI Calculator – be it buying a dream home, a car, a vacation, etc. A loan provides the financial resource, and with an EMI facility, repayments become comfortable.`,
-      icon: "https://i.ibb.co/jkwLmjK/423483-200.png",
+      icon: homeloansvg,
     },
     carLoan: {
       heading: "Car Loan",
       subheading: `Map the realisation of your goals/dreams with an EMI Calculator – be it buying a dream home, a car, a vacation, etc. A loan provides the financial resource, and with an EMI facility, repayments become comfortable.`,
-      icon: "https://i.ibb.co/Tk1CxYT/free-car-icon-1057-thumb.png",
+      icon: carloansvg,
     },
     // education: {
     //   heading: "Education",
@@ -93,16 +95,17 @@ function CalculatorsPage() {
         </div>
         {calculatorName === "main" ? (
           <div className={styles.calculatorsList}>
-            {Object.keys(data).map((item) => {
+            {Object.keys(data).map((item, index) => {
               if (item === "main") {
                 return null;
               } else {
                 return (
                   <div
+                    key={"calccalrd" + index}
                     className={styles.calcCard}
                     onClick={() => router.push(`/calculators/${item}`)}
                   >
-                    <img src={data[item].icon} alt="calcicon" />
+                    <img src={data[item].icon.src} alt="calcicon" />
                     <p className={styles.calccardtitle}>{data[item].heading}</p>
                   </div>
                 );

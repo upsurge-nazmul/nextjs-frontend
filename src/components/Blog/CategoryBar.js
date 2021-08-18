@@ -29,11 +29,12 @@ function CategoryBar() {
     >
       <div className={styles.left}>
         <div className={styles.wrapper}>
-          {categories.map((item) => (
+          {categories.map((item, index) => (
             <div
               className={`${styles.category} ${
                 item === "All Categories" ? styles.selected : ""
               }`}
+              key={"category" + index}
             >
               {item} <div className={styles.underline}></div>
             </div>
@@ -53,16 +54,16 @@ function CategoryBar() {
             <path
               d="M7 1.00056L7 14.7148"
               stroke="#AEAEAE"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M13 7L7 0.999999L1 7"
               stroke="#AEAEAE"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         ) : (
@@ -76,16 +77,16 @@ function CategoryBar() {
             <path
               d="M7 14.7143V1"
               stroke="#AEAEAE"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M1 8.71484L7 14.7148L13 8.71484"
               stroke="#AEAEAE"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}

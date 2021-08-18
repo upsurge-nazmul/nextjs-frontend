@@ -23,11 +23,15 @@
   .categories {
     margin-top: 20px;
     display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
     p {
       font-size: 14px;
       font-weight: 700;
       color: #4166eb;
       font-family: "Roboto";
+      margin-right: 10px;
     }
   }
   .title {

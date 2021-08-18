@@ -128,8 +128,8 @@ function DashboardLeftPanel({ type }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M18.9375 0.75H11.375L10.8937 0.95625L10 1.83625L9.10625 0.95625L8.625 0.75H1.0625L0.375 1.4375V15.1875L1.0625 15.875H8.33625L9.51875 17.0438H10.4813L11.6637 15.875H18.9375L19.625 15.1875V1.4375L18.9375 0.75ZM9.3125 14.94L9.065 14.7062L8.625 14.5H1.75V2.125H8.33625L9.35375 3.1425L9.3125 14.94ZM18.25 14.5H11.375L10.8937 14.7062L10.7013 14.885V3.0875L11.6637 2.125H18.25V14.5ZM7.25 4.875H3.125V6.25H7.25V4.875ZM7.25 10.375H3.125V11.75H7.25V10.375ZM3.125 7.625H7.25V9H3.125V7.625ZM16.875 4.875H12.75V6.25H16.875V4.875ZM12.75 7.625H16.875V9H12.75V7.625ZM12.75 10.375H16.875V11.75H12.75V10.375Z"
                 fill="#4F4F4F"
               />
@@ -154,8 +154,8 @@ function DashboardLeftPanel({ type }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M18.9375 0.75H11.375L10.8937 0.95625L10 1.83625L9.10625 0.95625L8.625 0.75H1.0625L0.375 1.4375V15.1875L1.0625 15.875H8.33625L9.51875 17.0438H10.4813L11.6637 15.875H18.9375L19.625 15.1875V1.4375L18.9375 0.75ZM9.3125 14.94L9.065 14.7062L8.625 14.5H1.75V2.125H8.33625L9.35375 3.1425L9.3125 14.94ZM18.25 14.5H11.375L10.8937 14.7062L10.7013 14.885V3.0875L11.6637 2.125H18.25V14.5ZM7.25 4.875H3.125V6.25H7.25V4.875ZM7.25 10.375H3.125V11.75H7.25V10.375ZM3.125 7.625H7.25V9H3.125V7.625ZM16.875 4.875H12.75V6.25H16.875V4.875ZM12.75 7.625H16.875V9H12.75V7.625ZM12.75 10.375H16.875V11.75H12.75V10.375Z"
                 fill="#4F4F4F"
               />
@@ -180,8 +180,8 @@ function DashboardLeftPanel({ type }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M18.9375 0.75H11.375L10.8937 0.95625L10 1.83625L9.10625 0.95625L8.625 0.75H1.0625L0.375 1.4375V15.1875L1.0625 15.875H8.33625L9.51875 17.0438H10.4813L11.6637 15.875H18.9375L19.625 15.1875V1.4375L18.9375 0.75ZM9.3125 14.94L9.065 14.7062L8.625 14.5H1.75V2.125H8.33625L9.35375 3.1425L9.3125 14.94ZM18.25 14.5H11.375L10.8937 14.7062L10.7013 14.885V3.0875L11.6637 2.125H18.25V14.5ZM7.25 4.875H3.125V6.25H7.25V4.875ZM7.25 10.375H3.125V11.75H7.25V10.375ZM3.125 7.625H7.25V9H3.125V7.625ZM16.875 4.875H12.75V6.25H16.875V4.875ZM12.75 7.625H16.875V9H12.75V7.625ZM12.75 10.375H16.875V11.75H12.75V10.375Z"
                 fill="#4F4F4F"
               />
@@ -241,30 +241,30 @@ function DashboardLeftPanel({ type }) {
               <path
                 d="M1 2.8C1 2.32261 1.18964 1.86477 1.52721 1.52721C1.86477 1.18964 2.32261 1 2.8 1H17.2C17.6774 1 18.1352 1.18964 18.4728 1.52721C18.8104 1.86477 19 2.32261 19 2.8V11.8C19 12.2774 18.8104 12.7352 18.4728 13.0728C18.1352 13.4104 17.6774 13.6 17.2 13.6H2.8C2.32261 13.6 1.86477 13.4104 1.52721 13.0728C1.18964 12.7352 1 12.2774 1 11.8V2.8Z"
                 stroke="#4F4F4F"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M10 9.99961C11.4912 9.99961 12.7 8.79078 12.7 7.29961C12.7 5.80844 11.4912 4.59961 10 4.59961C8.50888 4.59961 7.30005 5.80844 7.30005 7.29961C7.30005 8.79078 8.50888 9.99961 10 9.99961Z"
                 stroke="#4F4F4F"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M1 4.6C1.95478 4.6 2.87045 4.22072 3.54558 3.54558C4.22072 2.87045 4.6 1.95478 4.6 1"
                 stroke="#4F4F4F"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M15.3999 13.6C15.3999 12.6452 15.7792 11.7295 16.4543 11.0544C17.1294 10.3793 18.0451 10 18.9999 10"
                 stroke="#4F4F4F"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 

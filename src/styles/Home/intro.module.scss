@@ -39,7 +39,7 @@
     }
     .signupBox {
       width: 23vw;
-      min-width: 325px;
+      min-width: fit-content;
       height: 50px;
       display: flex;
       overflow: hidden;
@@ -62,11 +62,13 @@
       }
       .button {
         width: 45%;
+        min-width: fit-content;
         font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 400;
+        padding: 0 20px;
         color: white;
         background-color: hsl(227, 81%, 59%);
         border-top-right-radius: 14px;

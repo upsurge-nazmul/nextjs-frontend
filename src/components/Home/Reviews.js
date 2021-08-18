@@ -2,15 +2,14 @@ import React from "react";
 import Play from "../../assets/reviews/play.svg";
 import Left from "../../assets/reviews/left.svg";
 import Right from "../../assets/reviews/right.svg";
-import Image from "next/image";
 import styles from "../../styles/Home/reviews.module.scss";
 
 function Reviews() {
   return (
     <div className={styles.reviewSection}>
       <div className={styles.left}>
-        <img src={Left.src} className={styles.leftIcon} />
-        <img src={Right.src} t className={styles.rightIcon} />
+        <img src={Left.src} className={styles.leftIcon} alt="" />
+        <img src={Right.src} className={styles.rightIcon} alt="" />
         <div className={styles.bigcard}>
           <div className={styles.video}>
             <img
@@ -18,7 +17,7 @@ function Reviews() {
               src="https://images.unsplash.com/photo-1609440082470-106df86c0f6c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=omar-lopez-Za03n9MIt4s-unsplash.jpg"
               alt=""
             />
-            <img src={Play.src} className={styles.playicon} />
+            <img src={Play.src} className={styles.playicon} alt="" />
           </div>
           <div className={styles.textsection}>
             <p className={styles.comment}>
@@ -41,7 +40,7 @@ function Reviews() {
         <div className={styles.wrapper}>
           <div className={styles.card}>
             <div className={styles.image}>
-              <img src={Play.src} className={styles.playicon} />
+              <img src={Play.src} className={styles.playicon} alt="" />
               <img
                 src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
                 alt=""
@@ -55,7 +54,7 @@ function Reviews() {
           </div>
           <div className={styles.card}>
             <div className={styles.image}>
-              <img src={Play.src} className={styles.playicon} />
+              <img src={Play.src} className={styles.playicon} alt="" />
               <img
                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
                 alt=""
@@ -69,7 +68,7 @@ function Reviews() {
           </div>
           <div className={styles.card}>
             <div className={styles.image}>
-              <img src={Play.src} className={styles.playicon} />
+              <img src={Play.src} className={styles.playicon} alt="" />
               <img
                 src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
                 alt=""

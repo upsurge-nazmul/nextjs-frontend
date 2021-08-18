@@ -44,9 +44,9 @@ function ChoreTemplateSelection({ category, setmode }) {
         </div>
       </div>
       <div className={styles.wrapper}>
-        {temps.map((item) => {
+        {temps.map((item, index) => {
           return (
-            <div className={styles.card}>
+            <div className={styles.card} key={"templatecardselection" + index}>
               <img src={item.image} alt="" />
               <div className={styles.text}>
                 <p className={styles.name}>{item.name}</p>

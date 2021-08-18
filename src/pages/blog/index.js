@@ -1,43 +1,36 @@
-
 import React, { useEffect, useState } from "react";
 import BlogApis from "../../actions/apis/BlogApis";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import FullBlog from "../../components/Blog/FullBlog";
 import draftToHtml from "draftjs-to-html";
-import DOMPurify from "dompurify";
 import styles from "../../styles/Blog/blog.module.scss";
 import CategoryBar from "../../components/Blog/CategoryBar";
 import BlogCard from "../../components/Blog/BlogCard";
 import MoreCard from "../../components/Blog/MoreCard";
+import xss from "xss";
 
-function BlogPage() {
+function BlogPage({ blogs, totalblogs, porppagination }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
   const [loading, setloading] = useState(false);
-  const [blogposts, setblogposts] = useState([]);
-  const [blogpostsbackup, setblogpostsbackup] = useState([]);
+  const [blogposts, setblogposts] = useState(blogs || []);
+  const [blogpostsbackup, setblogpostsbackup] = useState(blogposts || []);
   const [selectedCat, setSelectedCat] = useState("all");
   const [selectedBlog, setSelectedBlog] = useState("");
   const [showauth, setshowauth] = useState(false);
-  const [page, setpage] = useState(1);
-  const [totalblogs, settotalblogs] = useState(0);
-  const [pagination, setpagination] = useState(["1"]);
-  useEffect(() => {
-    return;
-    getData();
-    async function getData() {
-      setloading(true);
-      let res = await BlogApis.getblogs({ page });
-      if (res && res.data) {
-        setblogposts(res.data.data.rows);
-        settotalblogs(res.data.data.count);
-        setpagination(Array(Math.ceil(res.data.data.count / 10)).fill("page"));
-        setblogpostsbackup(res.data.data.rows);
-      }
-      setloading(false);
+  const [pagination, setpagination] = useState(porppagination || ["1"]);
+  async function getData(page) {
+    setloading(true);
+    let res = await BlogApis.getblogs({ page });
+    console.log(res.data.data.rows);
+    if (res && res.data) {
+      setblogposts(res.data.data.rows);
+      setpagination(Array(Math.ceil(res.data.data.count / 10)).fill("page"));
+      setblogpostsbackup(res.data.data.rows);
     }
-  }, [page]);
+    setloading(false);
+  }
 
   function sortPosts(cat, index) {
     if (cat !== "all") {
@@ -123,7 +116,11 @@ function BlogPage() {
   ];
 
   function getdatafromraw(rawdata) {
-    let sanitized = DOMPurify.sanitize(rawdata);
+    if (!rawdata) return "";
+    let sanitized = xss(rawdata, {
+      whiteList: ["b", "i", "strong"],
+      stripIgnoreTag: true,
+    });
     return draftToHtml(JSON.parse(sanitized));
   }
   return (
@@ -153,27 +150,48 @@ function BlogPage() {
         <CategoryBar />
         <div className={styles.postsMain}>
           <div className={styles.left}>
-            <img src={blogdata[0].featuredImage} alt="" />
+            <img src={blogposts[0].img_url} alt="" />
             <div className={styles.categoryWrapper}>
-              {blogdata[0].categories.map((cat) => (
-                <p className={styles.category}>{cat}</p>
+              {blogposts[0].categories.split(",").map((cat, index) => (
+                <p className={styles.category} key={"cat" + index}>
+                  {cat}
+                </p>
               ))}
             </div>
-            <p className={styles.blogtitle}>{blogdata[0].title}</p>
-            <p className={styles.blogcontent}>{blogdata[0].content}</p>
+            <p className={styles.blogtitle}>{blogposts[0].title}</p>
+            <p className={styles.blogcontent}>
+              {getdatafromraw(blogposts[0].content).replace(/<[^>]+>/g, "")
+                .length > 60
+                ? getdatafromraw(blogposts[0].content)
+                    .replace(/<[^>]+>/g, "")
+                    .substring(0, 60) + "..."
+                : getdatafromraw(blogposts[0].content).replace(/<[^>]+>/g, "")}
+            </p>
             <p className={styles.time}>5 Minutes Read</p>
           </div>
           <div className={styles.right}>
-            {blogdata.map((blog) => {
-              return <BlogCard data={blog} />;
+            {blogposts.map((blog, index) => {
+              return (
+                <BlogCard
+                  key={"blogcard" + index}
+                  data={blog}
+                  getdatafromraw={getdatafromraw}
+                />
+              );
             })}
           </div>
         </div>
         <div className={styles.more}>
           <p className={styles.moreHeading}>More from our experts</p>
           <div className={styles.moreWrapper}>
-            {blogdata.map((blog) => {
-              return <MoreCard data={blog} />;
+            {blogposts.map((blog, index) => {
+              return (
+                <MoreCard
+                  key={"morecard" + index}
+                  data={blog}
+                  getdatafromraw={getdatafromraw}
+                />
+              );
             })}
           </div>
         </div>
@@ -189,16 +207,16 @@ function BlogPage() {
             <path
               d="M8 17V1"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M1 10L8 17L15 10"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
@@ -208,3 +226,17 @@ function BlogPage() {
 }
 
 export default BlogPage;
+
+export async function getServerSideProps({ params, req }) {
+  let res = await BlogApis.getblogs({ page: 1 });
+  console.log(res.data.data.rows);
+  if (res && res.data && res.data.data) {
+    return {
+      props: {
+        blogs: res.data.data.rows,
+        totalblogs: res.data.data.count,
+        porppagination: Array(Math.ceil(res.data.data.count / 10)).fill("page"),
+      },
+    };
+  } else return { props: { blogs: [], totalblogs: 0, porppagination: ["1"] } };
+}
