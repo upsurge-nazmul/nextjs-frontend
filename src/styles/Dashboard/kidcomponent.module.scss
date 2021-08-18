@@ -16,12 +16,12 @@
     margin-right: 15px;
   }
   .nameandpoints {
-    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     justify-content: center;
     height: 100%;
+    flex: 2;
     .name {
       font-size: 18px;
       text-transform: capitalize;
@@ -35,17 +35,18 @@
     }
   }
   .chore {
-    flex: 1;
-
     font-size: 38px;
     font-weight: 500;
+    margin: 0 15px;
+    flex: 1;
   }
   .courseProgression {
+    flex: 1.5;
     display: flex;
-    flex: 3;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+    margin: 0 15px;
     .name {
       font-size: 18px;
       font-weight: 400;
@@ -72,13 +73,14 @@
   }
 
   .more {
-    flex: 1;
     max-width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     cursor: pointer;
+    margin-left: 15px;
+    margin-right: 20px;
     &:hover {
       svg {
         transition: all 0.3s ease;

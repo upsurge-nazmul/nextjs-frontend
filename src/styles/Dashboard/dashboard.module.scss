@@ -4,7 +4,6 @@
   width: 100vw;
   display: flex;
   overflow: hidden;
-
   .contentWrapper {
     height: 100vh;
     flex: 1;
@@ -46,14 +45,27 @@
             color: rgba(106, 106, 106, 1);
             font-size: 12px;
             font-weight: 400;
+            padding: 0 20px 0 10px;
+            .blacnkhead1 {
+              width: 64px;
+              height: 100%;
+              margin-right: 15px;
+            }
             .head1 {
-              margin-left: 89px;
+              margin-left: 0;
+              flex: 1.4;
             }
             .head2 {
-              margin-left: 16%;
+              margin: 0 15px;
+              flex: 1;
             }
             .head3 {
-              margin-left: 6.5%;
+              flex: 1.5;
+            }
+            .blacnkhead2 {
+              max-width: 40px;
+              height: 100%;
+              margin-left: 15px;
             }
           }
           .wrapper {
@@ -108,6 +120,7 @@
             padding-top: 20px;
             padding-bottom: 20px;
             scrollbar-width: thin;
+            scroll-behavior: smooth;
           }
         }
         .liveClassSection {
@@ -181,15 +194,15 @@
             .heads {
               height: 48px;
               font-size: 11px;
-              .head1 {
-                margin-left: 12%;
-              }
-              .head2 {
-                margin-left: 11.5%;
-              }
-              .head3 {
-                margin-left: 2%;
-              }
+              // .head1 {
+              //   margin-left: 12%;
+              // }
+              // .head2 {
+              //   margin-left: 11.5%;
+              // }
+              // .head3 {
+              //   margin-left: 2%;
+              // }
             }
           }
           .choreSection {
@@ -280,13 +293,22 @@
         .flexLeft {
           height: unset !important;
           width: 95%;
+          .kidsSection,
+          .choreSection {
+            .wrapper {
+              padding: 0;
+            }
+          }
         }
         .flexRight {
           height: 100%;
-          width: 90%;
-          margin-top: 50px;
+          width: 100%;
+          padding: 0 40px;
+          margin-top: 40px;
           .gameSection {
             width: 100%;
+            margin: 0;
+            padding: 0;
             .wrapper {
               &::-webkit-scrollbar {
                 height: 5px;
@@ -330,6 +352,10 @@
                 width: 15px;
               }
             }
+            .blacnkhead1 {
+              margin-right: 5px !important;
+              width: 35px !important;
+            }
             .heads {
               display: flex;
               width: 100%;
@@ -338,17 +364,20 @@
               color: rgba(106, 106, 106, 1);
               .head1 {
                 font-size: 8px;
+                flex: 1;
+                margin-left: 0;
                 font-weight: 400;
-                margin-left: 16%;
               }
               .head2 {
                 font-size: 8px;
                 font-weight: 400;
-                margin-left: 6%;
+                margin-left: -5px;
+                flex: 0.7;
+                margin-right: 0;
               }
               .head3 {
                 font-size: 8px;
-                margin-left: 3%;
+                margin-left: 0 !important;
                 font-weight: 400;
               }
             }

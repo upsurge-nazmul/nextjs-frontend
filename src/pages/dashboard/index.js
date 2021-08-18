@@ -34,6 +34,15 @@ function Dashboard({
   });
 
   useEffect(() => {
+    const scrollContainer = document.querySelector("#gamecardwrapper");
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
+    });
+  });
+
+  useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
       settoastdata({
@@ -76,9 +85,11 @@ function Dashboard({
               </h2>
               {kids.length > 0 && (
                 <div className={styles.heads}>
+                  <p className={styles.blacnkhead1}></p>
                   <p className={styles.head1}>CHILD INFO</p>
                   <p className={styles.head2}>PENDING CHORES</p>
                   <p className={styles.head3}>COURSE PROGRESS</p>
+                  <p className={styles.blacnkhead2}></p>
                 </div>
               )}{" "}
               {kids.length > 0 ? (
@@ -144,7 +155,7 @@ function Dashboard({
                   </svg>
                 </h2>
 
-                <div className={styles.wrapper}>
+                <div className={styles.wrapper} id="gamecardwrapper">
                   {familyfun.map((data, index) => {
                     return (
                       <GameCard data={data} key={"gamecardcomponent" + index} />

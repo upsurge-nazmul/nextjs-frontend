@@ -6,6 +6,7 @@
   left: 0;
   top: 0;
   display: flex;
+  overflow-y: auto;
   .leftPanelContent {
     flex: 1;
     max-width: 400px;
