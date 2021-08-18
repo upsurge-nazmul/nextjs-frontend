@@ -1,14 +1,30 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
+import LoginApis from "../../actions/apis/LoginApis";
 import { eraseCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Dashboard/dashboardheader.module.scss";
 
-function DashboardHeader({ mode, showback, gobackto }) {
+function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const [username, setusername] = useState("Tushar");
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
+
+  async function handleLogout() {
+    let res = await LoginApis.logout();
+    if (res && res.data && res.data.success) {
+      eraseCookie("accesstoken");
+      router.push("/");
+    } else {
+      settoastdata({
+        show: true,
+        msg: "Error logging out try again later or clear cache",
+        type: "error",
+      });
+    }
+  }
+
   return (
     <div className={styles.dashboardHeader}>
       <h1 className={styles.dashboardHeading}>
@@ -45,10 +61,7 @@ function DashboardHeader({ mode, showback, gobackto }) {
           }`}
           onMouseEnter={() => setrotatesetting(true)}
           onMouseLeave={() => setrotatesetting(false)}
-          onClick={() => {
-            eraseCookie("accesstoken");
-            router.push("/");
-          }}
+          onClick={handleLogout}
         >
           <svg
             enableBackground="new 0 0 32 32"

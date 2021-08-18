@@ -50,7 +50,11 @@ function Dashboard({
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
+        <DashboardHeader
+          mode={mode}
+          setmode={setmode}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.kidsSection}>

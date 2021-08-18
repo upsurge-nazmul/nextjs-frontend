@@ -5,6 +5,14 @@ const signup = (payload) => {
   return ApiCalls.postResponse(`users/signup`, payload);
 };
 
+const logout = (payload) => {
+  return ApiCalls.getResponse(
+    "users/logout",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const setphone = (payload) => {
   return ApiCalls.postResponse(`users/setphone`, payload);
 };
@@ -38,6 +46,7 @@ const LoginApis = {
   checktoken,
   saveemail,
   checkemail,
+  logout,
 };
 
 export default LoginApis;
