@@ -10,19 +10,18 @@ import styles from "../../styles/ManageChore/managechore.module.scss";
 function ManageChore() {
   const router = useRouter();
   const { type } = router.query;
-  const state = JSON.parse(router.query.state);
-  console.log(state);
+  const state = router.query.state ? JSON.parse(router.query.state) : null;
   const [mode, setmode] = useState(type + " Chore");
   const [msg, setmsg] = useState(state?.message || state?.data?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    state?.name || state?.title || state.data.title || ""
+    state?.name || state?.title || state?.data.title || ""
   );
   const [duedate, setduedate] = useState(
     state?.due_date
-      ? getreadabledate(state.due_date)
+      ? getreadabledate(state?.due_date)
       : "" || state?.data?.due_date
-      ? getreadabledate(state.due_date)
+      ? getreadabledate(state?.due_date)
       : "" || "2021-07-21"
   );
   const [toastdata, settoastdata] = useState({
@@ -44,9 +43,9 @@ function ManageChore() {
     return fdate.getFullYear() + "-" + month + "-" + day;
   }
   async function handleSave() {
-    if (state.isineditmode) {
+    if (state?.isineditmode) {
       let response = await DashboardApis.editchore({
-        id: state.data.id,
+        id: state?.data.id,
         message: msg,
         title: choretitle,
         category: state?.data.category,
