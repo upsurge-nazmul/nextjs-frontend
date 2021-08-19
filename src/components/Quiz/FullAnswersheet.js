@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import styles from "../../styles/Quiz/fullAnswersheet.module.scss";
+import styles from "../../styles/Quiz/fullAnswerSheet.module.scss";
 
 function FullAnswersheet({ openFull, setOpenFull, answersheet }) {
   return (
