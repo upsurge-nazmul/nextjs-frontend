@@ -32,9 +32,9 @@ function Select({ question, options, current, setcurrent, index, total }) {
               <path
                 d="M1.21924 6.8136L6.40783 12L16.7806 1.6272"
                 stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           )}
@@ -50,9 +50,10 @@ function Select({ question, options, current, setcurrent, index, total }) {
         {selected ? <p className={styles.answer}>{selected}</p> : null}
         {show && (
           <div className={styles.optionWrapper}>
-            {options.map((option) => {
+            {options.map((option, index) => {
               return (
                 <div
+                  key={"selectOption" + index}
                   className={styles.optionContainer}
                   onClick={() => setselected(option)}
                 >

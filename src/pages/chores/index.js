@@ -78,8 +78,8 @@ function ChoresPage() {
                 </svg>
               </h2>
               <div className={styles.wrapper}>
-                {chores.map((item) => {
-                  return <ChorePending />;
+                {chores.map((item, index) => {
+                  return <ChorePending key={"pendingchore" + index} />;
                 })}
               </div>
             </div>
@@ -112,8 +112,13 @@ function ChoresPage() {
                 </h2>
               </div>
               <div className={styles.wrapper}>
-                {allchores.map((data) => {
-                  return <ChoreComponent data={data} />;
+                {allchores.map((data, index) => {
+                  return (
+                    <ChoreComponent
+                      data={data}
+                      key={"chorecomponent" + index}
+                    />
+                  );
                 })}
               </div>
             </div>

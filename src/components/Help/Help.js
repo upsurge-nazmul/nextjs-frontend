@@ -92,8 +92,14 @@ function Help() {
 
       <div className="faqpage">
         <div className="heading">Frequently Asked Questions</div>
-        {faqs.map((item) => {
-          return <Faq question={item.question} answer={item.answer} />;
+        {faqs.map((item, index) => {
+          return (
+            <Faq
+              key={"faqitem" + index}
+              question={item.question}
+              answer={item.answer}
+            />
+          );
         })}
       </div>
     </div>

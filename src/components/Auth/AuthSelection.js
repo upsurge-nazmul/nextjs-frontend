@@ -11,7 +11,7 @@ function AuthSelection({ setmode, setusertype }) {
           setusertype("child");
         }}
       >
-        <p> I'm a </p>
+        <p> {`I'm a`} </p>
         <h1> Learner</h1>
       </div>
       <div
@@ -21,7 +21,7 @@ function AuthSelection({ setmode, setusertype }) {
           setmode("parent");
         }}
       >
-        <p> I'm a </p>
+        <p> {`I'm a`} </p>
         <h1> Parent</h1>
       </div>
     </div>

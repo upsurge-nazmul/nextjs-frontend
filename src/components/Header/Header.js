@@ -86,7 +86,6 @@ function Header({
             className={` ${
               router.pathname === "/help" ? styles.activeTab : ""
             }`}
-            className={`${router.pathname === "/help" ? styles.activeTab : ""}`}
             onClick={() => router.push("/help")}
           >
             Help

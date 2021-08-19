@@ -88,7 +88,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                 height="40px"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M17.999 4l-6.293 6.293L5.413 4 4 5.414l6.292 6.293L4 18l1.413 1.414 6.293-6.292 6.293 6.292L19.414 18l-6.294-6.293 6.294-6.293z"
                 ></path>
               </svg>

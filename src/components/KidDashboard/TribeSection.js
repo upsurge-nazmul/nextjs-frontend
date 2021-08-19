@@ -22,8 +22,8 @@ function TribeSection({ tribes }) {
       </h2>
 
       <div className={styles.wrapper}>
-        {tribes.map((tribe) => {
-          return <Tribe data={tribe} />;
+        {tribes.map((tribe, index) => {
+          return <Tribe data={tribe} key={"tribe" + index} />;
         })}
       </div>
     </div>

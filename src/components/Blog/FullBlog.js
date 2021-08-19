@@ -61,7 +61,7 @@ function FullBlog({ item, openFull, setOpenFull, rest, setSelectedBlog }) {
                 height="40px"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M17.999 4l-6.293 6.293L5.413 4 4 5.414l6.292 6.293L4 18l1.413 1.414 6.293-6.292 6.293 6.292L19.414 18l-6.294-6.293 6.294-6.293z"
                 ></path>
               </svg>
@@ -117,7 +117,7 @@ function FullBlog({ item, openFull, setOpenFull, rest, setSelectedBlog }) {
                     height="28"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M9.026 19.01c6.038 0 9.341-5.007 9.341-9.341 0-.141 0-.282-.006-.423A6.689 6.689 0 0020 7.543a6.654 6.654 0 01-1.889.519 3.303 3.303 0 001.447-1.819 6.53 6.53 0 01-2.087.794A3.277 3.277 0 0015.076 6a3.287 3.287 0 00-3.284 3.285c0 .256.032.505.083.749a9.323 9.323 0 01-6.767-3.432 3.292 3.292 0 001.018 4.386 3.32 3.32 0 01-1.486-.41v.045a3.29 3.29 0 002.632 3.22 3.198 3.198 0 01-.865.115c-.21 0-.416-.019-.614-.057a3.283 3.283 0 003.067 2.28 6.585 6.585 0 01-4.079 1.408A6.32 6.32 0 014 17.544a9.339 9.339 0 005.026 1.466z"
                     ></path>
                   </svg>
@@ -126,9 +126,10 @@ function FullBlog({ item, openFull, setOpenFull, rest, setSelectedBlog }) {
             </div>
             <div className={styles.other}>
               <h2 className={styles.morePosts}>Recent Posts</h2>
-              {rest.map((item) => {
+              {rest.map((item, index) => {
                 return (
                   <div
+                    key={"recentpost" + index}
                     className={styles.postCards}
                     onClick={() => setSelectedBlog(item)}
                   >

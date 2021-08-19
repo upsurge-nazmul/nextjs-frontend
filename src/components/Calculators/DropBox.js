@@ -13,8 +13,12 @@ function DropBox({ value, title, setvalue, options }) {
         onChange={(e) => setvalue(e.target.value)}
         value={value}
       >
-        {options.map((item) => {
-          return <option value={item}>{item}</option>;
+        {options.map((item, index) => {
+          return (
+            <option key={"dropboxoption" + index} value={item}>
+              {item}
+            </option>
+          );
         })}
       </select>
     </div>

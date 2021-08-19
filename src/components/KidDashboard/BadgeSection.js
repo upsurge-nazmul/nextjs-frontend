@@ -22,8 +22,8 @@ function BadgeSection({ badges }) {
       </h2>
 
       <div className={styles.wrapper}>
-        {badges.map((badge) => {
-          return <Badge data={badge} />;
+        {badges.map((badge, index) => {
+          return <Badge data={badge} key={"badge" + index} />;
         })}
       </div>
     </div>

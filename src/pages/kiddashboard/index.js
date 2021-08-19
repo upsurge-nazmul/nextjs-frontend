@@ -162,8 +162,8 @@ function KidDashboard({
               </h2>
 
               <div className={styles.wrapper}>
-                {familyfun.map((data) => {
-                  return <GameCard data={data} />;
+                {familyfun.map((data, index) => {
+                  return <GameCard data={data} key={"gamecard" + index} />;
                 })}
               </div>
             </div>
@@ -215,10 +215,10 @@ function KidDashboard({
                 </svg>
               </h2>
               <div className={styles.wrapper}>
-                {liveclasses.map((data) => {
-                  console.log(liveclasses);
+                {liveclasses.map((data, index) => {
                   return (
                     <KidCourses
+                      key={"gamecard" + index}
                       data={{
                         img_url: data.image,
                         course_progress: 50,

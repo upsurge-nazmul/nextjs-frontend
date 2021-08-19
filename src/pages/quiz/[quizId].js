@@ -166,7 +166,7 @@ function Quiz({ data, quizcards, wrongPath }) {
           <div className={styles.quizCardsHolder}>
             <p className={styles.heading}>Available Quizzes</p>
             {quizcards.map((item, index) => (
-              <div className={styles.quizCard}>
+              <div className={styles.quizCard} key={"quizcard" + index}>
                 <svg
                   width="64"
                   height="64"

@@ -17,6 +17,7 @@ function ProgressVerticle({ questions, current, setcurrent }) {
         .map((item, index) => {
           return (
             <div
+              key={"progressquizverticle" + index}
               className={`qno ${index <= current ? "completed grad" : ""}`}
               onClick={() => setcurrent(index)}
             >

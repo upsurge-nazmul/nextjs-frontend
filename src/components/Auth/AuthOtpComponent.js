@@ -92,12 +92,12 @@ function AuthOtpComponent({
       </div>
       <div className={styles.otpWrapper} id="otpWrapper">
         {otpValues.map((item, index) => {
-          console.log("active", index, activeInput === index);
           return (
             <input
+              key={"otpcomponent" + index}
               type="text"
               placeholder=""
-              maxlength="1"
+              maxLength="1"
               ref={
                 index === 0
                   ? inputref1

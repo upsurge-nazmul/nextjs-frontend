@@ -22,7 +22,7 @@ function Contact() {
         <p className={styles.heading}>Contact Us</p>
         <div className={styles.content}>
           <p className={styles.details}>
-            Thank you for considering us for your family's educational needs.
+            {`Thank you for considering us for your family's educational needs.`}
           </p>
           <p className={styles.details}>
             When you fill out the appointment request form, please be sure to
@@ -32,6 +32,7 @@ function Contact() {
             className={styles.button}
             href="https://wa.me/918287433304"
             target="_blank"
+            rel="noreferrer"
           >
             <div className={styles.walogo}>
               <svg viewBox="0 0 496 497">

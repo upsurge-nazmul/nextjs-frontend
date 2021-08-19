@@ -17,6 +17,7 @@ function Progress({ questions, current, setcurrent }) {
         .map((item, index) => {
           return (
             <div
+              key={"progressquiz" + index}
               className={`${styles.qno} + " " + ${
                 index <= current ? styles.completed + " " + styles.grad : ""
               }
