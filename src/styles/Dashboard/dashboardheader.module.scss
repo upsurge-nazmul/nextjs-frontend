@@ -124,6 +124,77 @@
 @media only screen and (max-width: 860px) {
   .dashboardHeader {
     height: 10vh;
+    padding: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .dashboardHeading {
+      font-size: 30px;
+      font-weight: 400;
+      margin-right: 10px;
+      span {
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      .addflex {
+        svg {
+          width: 15px;
+          margin-right: 10px;
+        }
+        display: flex;
+      }
+    }
+    .rightWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: fit-content;
+      .icon {
+        width: 22px;
+        height: 22px;
+      }
+      .settings {
+        svg {
+          width: 22px;
+        }
+      }
+      .notification {
+        position: relative;
+        svg {
+          width: 24px;
+        }
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50px;
+          background-color: rgba(255, 122, 0, 1);
+          border: 2px solid #e5e5e5;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        }
+        &:hover {
+          svg {
+            path {
+              transition: all 0.3s ease;
+              fill: rgb(80, 80, 80);
+            }
+          }
+        }
+      }
+      .avatar {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .dashboardHeader {
+    height: 10vh;
     padding: 20px;
     display: flex;
     width: 100%;

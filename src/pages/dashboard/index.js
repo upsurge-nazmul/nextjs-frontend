@@ -35,7 +35,7 @@ function Dashboard({
 
   useEffect(() => {
     const scrollContainer = document.querySelector("#gamecardwrapper");
-
+    if (!scrollContainer) return;
     scrollContainer.addEventListener("wheel", (evt) => {
       evt.preventDefault();
       scrollContainer.scrollLeft += evt.deltaY;
@@ -91,7 +91,7 @@ function Dashboard({
                   <p className={styles.head3}>COURSE PROGRESS</p>
                   <p className={styles.blacnkhead2}></p>
                 </div>
-              )}{" "}
+              )}
               {kids.length > 0 ? (
                 <div className={styles.wrapper}>
                   {kids.map((item, index) => {

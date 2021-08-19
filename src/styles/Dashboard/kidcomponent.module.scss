@@ -1,7 +1,6 @@
 .kidComponent {
   display: flex;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
   background-color: white;
   padding: 10px;
@@ -21,7 +20,8 @@
     justify-content: flex-start;
     justify-content: center;
     height: 100%;
-    flex: 2;
+    width: 26%;
+    max-width: 300px;
     .name {
       font-size: 18px;
       text-transform: capitalize;
@@ -37,11 +37,11 @@
   .chore {
     font-size: 38px;
     font-weight: 500;
-    margin: 0 15px;
     flex: 1;
+    text-align: center;
   }
   .courseProgression {
-    flex: 1.5;
+    width: 25%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -91,6 +91,96 @@
     }
   }
 }
+@media only screen and (max-width: 860px) {
+  .kidComponent {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    .kidimg {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+    .nameandpoints {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      justify-content: center;
+      height: 100%;
+      width: 26%;
+      max-width: 300px;
+      .name {
+        font-size: 18px;
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .points {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(130, 130, 130, 1);
+      }
+    }
+    .chore {
+      font-size: 28px;
+      font-weight: 500;
+      flex: 1;
+      text-align: center;
+    }
+    .courseProgression {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-around;
+      margin: 0 15px;
+      .name {
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .progressBar {
+        width: 100%;
+        background-color: rgba(229, 229, 229, 1);
+        height: 5px;
+        border-radius: 20px;
+        .completion {
+          height: 100%;
+          background-color: rgba(23, 209, 188, 1);
+        }
+      }
+      .progressText {
+        display: flex;
+        align-items: center;
+        p {
+          font-size: 11px;
+          font-weight: 400;
+          color: rgba(130, 130, 130, 1);
+          margin-left: 4px;
+        }
+        svg {
+          width: 11px;
+        }
+      }
+    }
+
+    .more {
+      max-width: 5px;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      margin-left: 15px;
+      margin-right: 10px;
+    }
+  }
+}
 @media only screen and (max-width: 500px) {
   .kidComponent {
     display: flex;
@@ -103,8 +193,8 @@
     border-radius: 10px;
     margin-bottom: 10px;
     .kidimg {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       object-fit: cover;
       border-radius: 8px;
       margin-right: 5px;
@@ -177,6 +267,7 @@
       align-items: center;
       height: 100%;
       cursor: pointer;
+      margin: 0;
       svg {
         width: 10px;
         height: 15px;
