@@ -6,11 +6,7 @@ const MAX_AGE = 60 * 60 * 24; // 8 hours
 export function setCookie(name, value) {
   let expires = "; expires=" + new Date(Date.now() + MAX_AGE * 1000);
   document.cookie =
-    name +
-    "=" +
-    (value || "") +
-    expires +
-    "; path=/ ; secure=true; sameSite=None";
+    name + "=" + (value || "") + expires + "; path=/ ; sameSite=None";
 }
 
 export function eraseCookie(name) {
