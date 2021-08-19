@@ -8,6 +8,7 @@
   height: 80px;
   border-radius: 12px;
   margin-bottom: 20px;
+  max-width: 950px;
   .kidimg {
     width: 64px;
     height: 64px;
@@ -27,6 +28,7 @@
     cursor: pointer;
     padding: 0 20px;
     transition: all 0.3s ease;
+    margin-right: 10px;
     svg {
       margin-right: 15px;
     }
@@ -38,6 +40,7 @@
   }
   .text {
     flex: 1;
+    min-width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -45,6 +48,7 @@
     height: 100%;
     text-align: flex-start;
     margin-left: 20px;
+    margin-right: 20px;
     .heading {
       font-size: 18px;
       text-transform: capitalize;
@@ -63,21 +67,22 @@
   }
   .courseProgression {
     display: flex;
-    width: 20%;
+    flex: 1;
     flex-direction: column;
     height: 100%;
-    margin-right: 20px;
+    padding-right: 20px;
     justify-content: center;
     .name {
       font-size: 18px;
       font-weight: 400;
     }
     .progressBar {
-      width: 140px;
+      width: 100%;
       background-color: rgba(229, 229, 229, 1);
       height: 7px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       border-radius: 20px;
+      overflow: hidden;
       .completion {
         height: 100%;
         background-color: rgba(23, 209, 188, 1);
@@ -95,7 +100,7 @@
   }
   .more {
     flex: 1;
-    max-width: 40px;
+    max-width: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,11 +119,7 @@
 @media only screen and (max-width: 860px) {
   .CoursesComponent {
     margin-bottom: 10px;
-    height: 60px;
-    width: 100%;
     .kidimg {
-      width: 40px;
-      height: 40px;
       object-fit: cover;
       border-radius: 10px;
       margin-right: 0px;
@@ -127,15 +128,90 @@
       background: #4166eb;
       border-radius: 8px;
       color: white;
-      height: 50%;
+      height: 55%;
       width: fit-content;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      padding: 0 5px;
+      padding: 0 8px;
       transition: all 0.3s ease;
       font-size: 12px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    .text {
+      flex: 1;
+      display: flex;
+      min-width: 100px;
+      flex-direction: column;
+      justify-content: flex-start;
+      justify-content: center;
+      height: 100%;
+      text-align: flex-start;
+      margin-left: 10px;
+      margin-right: 10px;
+      .heading {
+        font-size: 12px;
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .subheading {
+        font-size: 10px;
+        font-weight: 400;
+        color: rgba(130, 130, 130, 1);
+      }
+    }
+    .courseProgression {
+      .name {
+        font-size: 12px;
+        font-weight: 400;
+      }
+      .progressBar {
+        .completion {
+        }
+      }
+      .progressText {
+        display: flex;
+        p {
+          font-size: 10px;
+          font-weight: 400;
+          color: rgba(130, 130, 130, 1);
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .CoursesComponent {
+    margin-bottom: 10px;
+    height: 60px;
+    width: 100%;
+    padding: 5px;
+    .kidimg {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 0px;
+    }
+    .button {
+      background: #4166eb;
+      border-radius: 8px;
+      color: white;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 8px;
+      height: 65%;
+      transition: all 0.3s ease;
+      font-size: 10px;
       svg {
         margin-right: 10px;
       }
@@ -164,20 +240,14 @@
     }
     .courseProgression {
       display: flex;
-      width: 20%;
       flex-direction: column;
       height: 100%;
       margin-right: 5px;
       justify-content: center;
-      .name {
-        font-size: 12px;
-        font-weight: 400;
-      }
       .progressBar {
-        width: 50px;
         background-color: rgba(229, 229, 229, 1);
-        height: 7px;
-        margin-bottom: 10px;
+        height: 5px;
+        margin-bottom: 5px;
         border-radius: 20px;
         .completion {
           height: 100%;
@@ -186,12 +256,22 @@
       }
       .progressText {
         display: flex;
+        align-items: center;
         p {
-          font-size: 10px;
+          font-size: 8px;
           font-weight: 400;
           color: rgba(130, 130, 130, 1);
-          margin-left: 5px;
+          margin-left: 3px;
         }
+        svg {
+          width: 10px;
+        }
+      }
+    }
+    .more {
+      margin-right: 5px;
+      svg {
+        height: 16px;
       }
     }
   }
