@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Calculators/resultBlock.module.scss";
+import styles from "../../styles/Calculators/resultblock.module.scss";
 
 function ResultBox({ resultdata }) {
   function getIndianFormat(x) {
