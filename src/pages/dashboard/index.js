@@ -204,6 +204,7 @@ export default Dashboard;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
+  console.log(req.cookies);
   let msg = "";
   if (token) {
     let response = await LoginApis.checktoken({

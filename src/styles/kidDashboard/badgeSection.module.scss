@@ -20,3 +20,16 @@
     scrollbar-width: thin;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .badgeSection {
+    .heading {
+      font-size: 18px;
+      svg {
+        width: 14px;
+        margin-left: 5px;
+        padding-top: 1px;
+      }
+    }
+  }
+}

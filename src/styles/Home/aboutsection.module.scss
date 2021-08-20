@@ -142,27 +142,23 @@
       top: 68%;
     }
     .textContent {
-      .heading {
-        font-size: 36px;
-        .highlight {
-          .underline {
-            height: 5px;
-          }
-        }
-      }
       .subheading {
-        margin: 0;
-        line-height: 24.66px;
-        font-size: 16px;
-        width: 80%;
+        font-size: 20px;
       }
       .subheading2 {
-        width: 80%;
-        font-size: 13px;
-      }
-      .button {
-        border-radius: 12px;
         font-size: 16px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .about {
+    .textContent {
+      .subheading {
+        font-size: 16px;
+      }
+      .subheading2 {
+        font-size: 13px;
       }
     }
   }

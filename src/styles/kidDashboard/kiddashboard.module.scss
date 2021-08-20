@@ -363,160 +363,110 @@
   .kiddashboard {
     .contentWrapper {
       max-width: calc(100vw - 55px);
-
       .mainContent {
         .flexLeft {
-          width: 95%;
-        }
-        .flexRight {
-          height: 100%;
-          width: 90%;
-          margin-top: 50px;
+          width: 100%;
+          padding: 0 20px;
           .gameSection {
             width: 100%;
+            padding: 0;
             .wrapper {
               &::-webkit-scrollbar {
                 height: 5px;
               }
             }
           }
+          .choreSection {
+            .wrapper {
+              padding: 0;
+            }
+          }
           .liveClassSection {
             width: 100%;
-            margin-top: 40px;
+            margin-top: 20px;
             .wrapper {
+              padding: 0;
               &::-webkit-scrollbar {
                 width: 1px;
               }
             }
           }
         }
+        .flexRight {
+          height: 100%;
+          width: 100%;
+          margin-top: 30px;
+          margin-left: 0;
+          padding: 0 20px 100px;
+        }
       }
     }
   }
 }
-@media only screen and (max-width: 500px) {
+
+@media only screen and (max-width: 860px) {
   .kiddashboard {
     .contentWrapper {
+      max-width: calc(100vw - 55px);
       .mainContent {
-        display: flex;
-        flex-direction: column;
         .flexLeft {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 95%;
-          padding-left: 20px;
-          .kidsSection {
-            width: 100%;
-            margin-top: 20px;
+          width: 100%;
+          padding: 0 20px;
+          .gameSection {
             .heading {
-              font-size: 16px;
+              font-size: 18px;
               svg {
+                width: 14px;
                 margin-left: 5px;
-                width: 15px;
+                padding-top: 1px;
               }
             }
-            .heads {
-              display: flex;
-              width: 100%;
-              align-items: center;
-              height: 44px;
-              color: rgba(106, 106, 106, 1);
-              .head1 {
-                font-size: 8px;
-                font-weight: 400;
-                margin-left: 16%;
-              }
-              .head2 {
-                font-size: 8px;
-                font-weight: 400;
-                margin-left: 6%;
-              }
-              .head3 {
-                font-size: 8px;
-                margin-left: 3%;
-                font-weight: 400;
-              }
-            }
+            width: 100%;
+            padding: 0;
             .wrapper {
-              padding: 0 0px 10px 0px;
-              margin-bottom: 10px;
+              &::-webkit-scrollbar {
+                height: 5px;
+              }
             }
           }
           .choreSection {
-            width: 100%;
-            margin-top: 20px;
-
             .heading {
-              font-weight: 500;
-              font-size: 16px;
-              color: rgba(87, 88, 128, 1);
-              display: flex;
-              align-items: center;
+              font-size: 18px;
               svg {
+                width: 14px;
                 margin-left: 5px;
-                width: 15px;
+                padding-top: 1px;
               }
             }
             .wrapper {
-              overflow: auto;
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
+              padding: 0;
+            }
+          }
+          .liveClassSection {
+            .heading {
+              font-size: 18px;
+              svg {
+                width: 14px;
+                margin-left: 5px;
+                padding-top: 1px;
+              }
+            }
+            width: 100%;
+            margin-top: 20px;
+            .wrapper {
+              padding: 0;
+              &::-webkit-scrollbar {
+                width: 1px;
+              }
             }
           }
         }
         .flexRight {
-          display: flex;
-          flex-direction: column;
           height: 100%;
-          width: 95%;
-          padding-left: 20px;
-          padding-right: 10px;
-          .gameSection {
-            width: 100%;
-            margin-top: 0px;
-            padding: 0;
-            .heading {
-              font-size: 16px;
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .wrapper {
-              display: flex;
-              overflow: auto;
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
-              align-items: center;
-            }
-          }
-          .liveClassSection {
-            width: 100%;
-            padding: 0 0px 0 0px;
-            margin-top: 50px;
-            .heading {
-              font-size: 16px;
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .wrapper {
-              display: flex;
-              width: 100%;
-              overflow: auto;
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
-              align-items: center;
-              &::-webkit-scrollbar {
-                width: 5px;
-              }
-            }
-          }
+          width: 100%;
+          margin-top: 30px;
+          margin-left: 0;
+          padding: 0 20px 100px;
         }
       }
     }

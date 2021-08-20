@@ -4,9 +4,11 @@ const TOKEN_NAME = "accesstoken";
 const MAX_AGE = 60 * 60 * 24; // 8 hours
 
 export function setCookie(name, value) {
-  let expires = "; expires=" + new Date(Date.now() + MAX_AGE * 1000);
+  var exdate = new Date().getTime() + 1000 * 60 * 60 * 24 * 7 * 52;
+  var date_cookie = new Date(exdate).toUTCString();
+  let expires = "; expires=" + date_cookie;
   document.cookie =
-    name + "=" + (value || "") + expires + "; path=/ ; sameSite=None";
+    name + "=" + (value || "") + expires + "; path=/ ; sameSite=lax";
 }
 
 export function eraseCookie(name) {

@@ -40,11 +40,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 15px;
+        margin-top: 20px;
         transition: all 0.3s ease;
         padding: 30px;
         margin-right: 20px;
-        margin-bottom: 20px;
         svg {
           width: 100px;
           height: 100px;
@@ -288,12 +287,14 @@
       }
       .quizCardsHolder {
         .quizCard {
-          height: 70px;
+          height: 190px;
           padding: 20px;
+          width: calc(100% / 2 - 20px);
           svg {
-            width: 30px;
+            width: 14vw;
           }
           .text {
+            margin-top: 0px;
             .name {
               font-size: 12px;
             }
@@ -302,10 +303,12 @@
             }
           }
           .button {
-            width: 80px;
+            margin-top: 5px;
+            width: 90%;
             border-radius: 8px;
             font-size: 12px;
-            height: 35px;
+            max-height: 40px;
+            height: 40px;
             min-width: none;
           }
         }

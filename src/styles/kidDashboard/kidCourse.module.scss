@@ -8,6 +8,7 @@
   height: 80px;
   border-radius: 12px;
   margin-bottom: 20px;
+  max-width: 950px;
   .kidimg {
     width: 64px;
     height: 64px;
@@ -27,6 +28,7 @@
     cursor: pointer;
     padding: 0 20px;
     transition: all 0.3s ease;
+    margin-right: 10px;
     svg {
       margin-right: 15px;
     }
@@ -36,21 +38,24 @@
       border: 1px solid #4166eb;
     }
   }
-  .nameandpoints {
-    width: 25%;
+  .text {
+    flex: 1;
+    min-width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     justify-content: center;
     height: 100%;
     text-align: flex-start;
-    .name {
+    margin-left: 20px;
+    margin-right: 20px;
+    .heading {
       font-size: 18px;
       text-transform: capitalize;
       font-weight: 500;
       margin-bottom: 5px;
     }
-    .points {
+    .subheading {
       font-size: 14px;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
@@ -62,20 +67,22 @@
   }
   .courseProgression {
     display: flex;
-    width: 20%;
+    flex: 1;
     flex-direction: column;
     height: 100%;
+    padding-right: 20px;
     justify-content: center;
     .name {
       font-size: 18px;
       font-weight: 400;
     }
     .progressBar {
-      width: 140px;
+      width: 100%;
       background-color: rgba(229, 229, 229, 1);
       height: 7px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       border-radius: 20px;
+      overflow: hidden;
       .completion {
         height: 100%;
         background-color: rgba(23, 209, 188, 1);
@@ -93,7 +100,7 @@
   }
   .more {
     flex: 1;
-    max-width: 40px;
+    max-width: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,62 +116,143 @@
     }
   }
 }
-@media only screen and (max-width: 500px) {
-  .kidComponent {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 0 5px;
-    height: 60px;
-    border-radius: 10px;
+@media only screen and (max-width: 860px) {
+  .KidCourses {
     margin-bottom: 10px;
     .kidimg {
-      width: 40px;
-      height: 40px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-right: 5px;
+      border-radius: 10px;
+      margin-right: 0px;
     }
-    .nameandpoints {
-      flex: 2;
+    .button {
+      background: #4166eb;
+      border-radius: 8px;
+      color: white;
+      height: 55%;
+      width: fit-content;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 8px;
+      transition: all 0.3s ease;
+      font-size: 12px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    .text {
+      flex: 1;
+      display: flex;
+      min-width: 100px;
       flex-direction: column;
       justify-content: flex-start;
       justify-content: center;
       height: 100%;
-      .name {
+      text-align: flex-start;
+      margin-left: 10px;
+      margin-right: 10px;
+      .heading {
         font-size: 12px;
         text-transform: capitalize;
+        font-weight: 500;
         margin-bottom: 5px;
       }
-      .points {
+      .subheading {
+        font-size: 10px;
+        font-weight: 400;
+        color: rgba(130, 130, 130, 1);
+      }
+    }
+    .courseProgression {
+      .name {
+        font-size: 12px;
+        font-weight: 400;
+      }
+      .progressBar {
+        .completion {
+        }
+      }
+      .progressText {
+        display: flex;
+        p {
+          font-size: 10px;
+          font-weight: 400;
+          color: rgba(130, 130, 130, 1);
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .KidCourses {
+    margin-bottom: 10px;
+    height: 60px;
+    width: 100%;
+    padding: 5px;
+    .kidimg {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 0px;
+    }
+    .button {
+      background: #4166eb;
+      border-radius: 5px;
+      color: white;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px;
+      height: 55%;
+
+      transition: all 0.3s ease;
+      font-size: 8px;
+      font-weight: 500;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    .text {
+      flex: 1;
+      display: flex;
+      min-width: 75px;
+      flex-direction: column;
+      justify-content: flex-start;
+      justify-content: center;
+      height: 100%;
+      text-align: flex-start;
+      margin-left: 5px;
+      .heading {
+        font-size: 10px;
+        text-transform: capitalize;
+        font-weight: 500;
+        margin-bottom: 0px;
+      }
+      .subheading {
         font-size: 8px;
         font-weight: 400;
         color: rgba(130, 130, 130, 1);
       }
     }
-    .chore {
-      flex: 1;
-      font-size: 18px;
-      font-weight: 500;
-    }
     .courseProgression {
       display: flex;
-      flex: 3;
       flex-direction: column;
       height: 100%;
+      margin-right: 10px;
+      padding: 0;
+      padding-top: 7px;
       justify-content: center;
-      .name {
-        font-size: 12px;
-        font-weight: 400;
-        margin-bottom: 5px;
-      }
+      width: 70px;
       .progressBar {
-        width: 100%;
         background-color: rgba(229, 229, 229, 1);
-        height: 7px;
+        height: 3px;
+        margin-bottom: 2px;
         border-radius: 20px;
         .completion {
           height: 100%;
@@ -174,38 +262,21 @@
       .progressText {
         display: flex;
         align-items: center;
-        margin-top: 5px;
-        svg {
-          width: 8px;
-          margin: 0;
-        }
         p {
-          font-size: 8px;
+          font-size: 7px;
           font-weight: 400;
           color: rgba(130, 130, 130, 1);
-          margin-left: 3px;
+          margin-left: 2px;
+        }
+        svg {
+          width: 6px;
         }
       }
     }
     .more {
-      flex: 1;
-      max-width: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      cursor: pointer;
+      margin-right: 5px;
       svg {
-        width: 10px;
-        height: 15px;
-      }
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          circle {
-            fill: rgb(41, 41, 41);
-          }
-        }
+        height: 16px;
       }
     }
   }

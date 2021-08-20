@@ -13,6 +13,7 @@
     height: 64px;
     object-fit: cover;
     border-radius: 10px;
+    margin-right: 10px;
   }
   .taskAndTo {
     height: 100%;
@@ -180,6 +181,9 @@
 @media only screen and (max-width: 860px) {
   .choreComponent {
     position: relative;
+    img {
+      margin-right: 2px;
+    }
     .taskAndTo {
       height: 100%;
       display: flex;
@@ -271,6 +275,7 @@
       height: 50px;
       object-fit: cover;
       border-radius: 8px;
+      margin-right: 2px;
     }
     .taskAndTo {
       height: 100%;

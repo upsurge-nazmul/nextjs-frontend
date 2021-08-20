@@ -24,7 +24,7 @@ function AuthLogin({ settoastdata }) {
     }
 
     let response = await LoginApis.login({ email, password });
-    if (response.data && response.data.success) {
+    if (response && response.data && response.data.success) {
       setCookie("accesstoken", response.data.data.token);
       settoastdata({
         show: true,
@@ -34,7 +34,11 @@ function AuthLogin({ settoastdata }) {
       localStorage.setItem("islogged", true);
       history.push("/dashboard");
     } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
+      settoastdata({
+        show: true,
+        msg: response?.data.message || "Cannot reach server",
+        type: "error",
+      });
     }
   }
 

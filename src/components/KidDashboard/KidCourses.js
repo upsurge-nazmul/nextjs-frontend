@@ -5,8 +5,8 @@ function KidCourses({ data }) {
   return (
     <div className={styles.KidCourses}>
       <img src={data?.img_url} alt="" className={styles.kidimg} />
-      <div className={styles.nameandpoints}>
-        <p className={styles.name}>{data?.current_course}</p>
+      <div className={styles.text}>
+        <p className={styles.heading}>{data?.current_course}</p>
         <p className={styles.subheading}>{data?.subheading}</p>
       </div>
       <div className={styles.courseProgression}>

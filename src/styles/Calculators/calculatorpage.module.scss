@@ -98,6 +98,7 @@
   .contentWrapper {
     padding-top: 5vh;
     padding-left: 17%;
+    min-height: 100vh;
     padding-right: 17%;
     .headingSection {
       font-family: "Roboto";
@@ -117,7 +118,7 @@
     .calculatorsList {
       margin-top: 5vh;
       display: flex;
-      height: 70%;
+      min-height: 70vh;
       overflow: auto;
       flex-wrap: wrap;
       .calcCard {
@@ -170,6 +171,7 @@
 }
 @media only screen and (max-width: 860px) {
   .calculatorsPage {
+    height: 100%;
     .contentWrapper {
       margin-top: 0px;
       padding-left: 7%;
@@ -198,7 +200,7 @@
       .calculatorsList {
         margin-top: 3vh;
         display: flex;
-        height: 70%;
+        height: 100%;
         overflow: auto;
         flex-wrap: wrap;
         justify-content: center;

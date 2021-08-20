@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../styles/Dashboard/kidcomponent.module.scss";
 
 function KidComponent({ data }) {
-  console.log(data);
   return (
     <div className={styles.kidComponent}>
       <img src={data?.img_url} alt="" className={styles.kidimg} />

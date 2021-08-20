@@ -88,3 +88,77 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .section {
+    .left {
+      width: 28%;
+      border-right: 2px solid gray;
+      position: relative;
+      .sectionball {
+        position: absolute;
+        right: -11px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 2px solid #4166eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        z-index: 2;
+        font-size: 10px;
+        font-weight: 500;
+      }
+      .sectiontitle {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .chaptersandweeks,
+      .sectionno {
+        color: #0000005c;
+        font-size: 8px;
+        font-weight: 500;
+      }
+    }
+    .right {
+      flex: 1;
+      padding-top: 60px;
+      .chapter {
+        background: #ffffff;
+        border: 1px solid #0000001f;
+        width: auto;
+        position: relative;
+        margin-left: 20px;
+        margin-right: 40px;
+        .chapterball {
+          width: 10px;
+          height: 10px;
+        }
+        .main {
+          padding: 15px;
+          .chapterno,
+          .remainingtime {
+            font-size: 8px;
+          }
+          .chaptertitle {
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: 600;
+          }
+          .progress {
+            margin-top: 5px;
+            background: #0000000d;
+            height: 5px;
+            width: auto;
+            .filler {
+              height: 100%;
+              background-color: #4166eb;
+            }
+          }
+        }
+      }
+    }
+  }
+}
