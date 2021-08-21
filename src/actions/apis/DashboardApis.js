@@ -1,6 +1,18 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
+const getuserdata = (payload, token) => {
+  return ApiCalls.getResponse(`users/getprofile`, payload, token);
+};
+
+const updateprofile = (payload) => {
+  return ApiCalls.postResponse(
+    "users/updateprofile",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const addkids = (payload) => {
   return ApiCalls.postResponse(
     `parent/addchild`,
@@ -8,6 +20,7 @@ const addkids = (payload) => {
     getCookie("accesstoken")
   );
 };
+
 const getkids = (payload, token) => {
   return ApiCalls.getResponse(`parent/getchildren`, payload, token);
 };
@@ -55,6 +68,8 @@ const DashboardApis = {
   getpendingchores,
   getcompletedchores,
   editchore,
+  getuserdata,
+  updateprofile,
 };
 
 export default DashboardApis;

@@ -121,7 +121,10 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
             />
           </svg>
         </div>
-        <div className={styles.avatar}>
+        <div
+          className={styles.avatar}
+          onClick={() => router.push("/editprofile/parent")}
+        >
           <img
             src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
             alt=""

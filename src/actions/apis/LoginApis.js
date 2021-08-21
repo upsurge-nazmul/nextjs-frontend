@@ -38,6 +38,15 @@ const saveemail = (payload) => {
 const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
 };
+
+const genotp = (payload) => {
+  return ApiCalls.postResponse(
+    `users/generateOtp`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const LoginApis = {
   signup,
   setphone,
@@ -47,6 +56,7 @@ const LoginApis = {
   saveemail,
   checkemail,
   logout,
+  genotp,
 };
 
 export default LoginApis;
