@@ -14,7 +14,9 @@ function KidChore({ data }) {
     status: "pending",
   };
   let currenttime = new Date().getTime();
-  let due_date = new Date(Number(data.due_date)).getTime() ?? currenttime;
+  let due_date =
+    new Date(Number(data?.due_date || "Due in 3 days")).getTime() ??
+    currenttime;
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const diffDays = Math.round(Math.abs((due_date - currenttime) / oneDay));
   due_date = `Due in ${diffDays} days`;
@@ -54,7 +56,7 @@ function KidChore({ data }) {
           />
         </svg>
 
-        <p>{due_date}</p>
+        <p>{due_date || "Due in 3 days"}</p>
       </div>
       <div className={styles.button}>
         <svg

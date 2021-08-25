@@ -1,0 +1,54 @@
+.avatar {
+  width: 2vw;
+  height: 235px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 138.68px;
+  margin-bottom: 20px;
+  &:hover {
+    box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
+  }
+  img {
+    height: 70%;
+    object-fit: cover;
+  }
+  .contentWrapper {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+    }
+    .point {
+      color: #a8a8a8;
+      font-size: 13px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .avatar {
+    width: calc(100% / 2 - 20px);
+    height: 170px;
+    .contentWrapper {
+      .title {
+        font-size: 16px;
+      }
+      .point {
+        font-size: 12px;
+      }
+    }
+  }
+}

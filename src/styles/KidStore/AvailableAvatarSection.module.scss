@@ -1,0 +1,36 @@
+.AvatarSection {
+  .heading {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgba(87, 88, 128, 1);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    svg {
+      margin-left: 10px;
+    }
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .AvatarSection {
+    .heading {
+      font-size: 18px;
+      svg {
+        width: 14px;
+        margin-left: 5px;
+        padding-top: 1px;
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+  }
+}

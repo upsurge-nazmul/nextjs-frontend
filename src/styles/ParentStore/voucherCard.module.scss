@@ -1,0 +1,92 @@
+.voucherCard {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  height: 90px;
+  border-radius: 12px;
+  margin-top: 20px;
+  .userimg {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+  .nameandpoints {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    justify-content: center;
+    height: 100%;
+    .name {
+      font-size: 18px;
+      text-transform: capitalize;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .points {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(130, 130, 130, 1);
+    }
+  }
+  .nudgebutton {
+    background: hsl(227, 81%, 59%);
+    color: white;
+    border-radius: 8px;
+    height: 32px;
+    width: 77px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: hsl(227, 91%, 59%);
+      color: white;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .availablePointCard {
+    padding: 10px;
+    height: 60px;
+    margin-top: 15px;
+    .userimg {
+      width: 45px;
+      height: 45px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+    .nameandpoints {
+      .name {
+        font-size: 14px;
+      }
+      .points {
+        font-size: 12px;
+      }
+    }
+    .nudgebutton {
+      background: hsl(227, 81%, 59%);
+      color: white;
+      border-radius: 8px;
+      height: 32px;
+      width: 25%;
+      min-width: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      justify-content: center;
+      &:hover {
+        background: hsl(227, 91%, 59%);
+        color: white;
+      }
+    }
+  }
+}

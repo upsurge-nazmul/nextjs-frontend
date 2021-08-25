@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/GeneralComponents/dropdown.module.scss";
-function DropDown({ value, setvalue, options, keyprefix }) {
+function DropDown({ value, setvalue, options, keyprefix, placeholder }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
     setvalue(item);

@@ -1,0 +1,44 @@
+.requestsAndHistorySection {
+  .switch {
+    display: flex;
+    .tabs {
+      font-family: Rubik;
+      font-weight: 500;
+      font-size: 24px;
+      color: rgba(194, 194, 194, 1);
+      margin-right: 46px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        color: rgb(145, 145, 145);
+      }
+    }
+    .recentHeading {
+      z-index: 15;
+      position: absolute;
+      right: 300px;
+      font-family: Rubik;
+      font-weight: 500;
+      font-size: 24px;
+      color: rgba(194, 194, 194, 1);
+      transition: all 0.3s ease;
+    }
+    .selected {
+      color: #575880;
+    }
+  }
+  .wrapper {
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .requestsAndHistorySection {
+    .switch {
+      .tabs {
+        font-size: 18px;
+        margin-right: 15px;
+      }
+    }
+  }
+}

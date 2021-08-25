@@ -1,0 +1,362 @@
+.pendingRequest {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  height: 80px;
+  justify-content: space-between;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .taskAndTo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 1;
+    .task {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .to {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      color: #828282;
+    }
+  }
+  .points {
+    display: flex;
+    flex: 0.6;
+    p {
+      font-size: 22px;
+      font-weight: 500;
+      color: #00000038;
+    }
+    .number {
+      color: black;
+      margin-right: 10px;
+    }
+  }
+  .button {
+    min-width: fit-content;
+    padding: 0 10px;
+    background: #4166eb;
+    border-radius: 8px;
+    color: white;
+    height: 65%;
+    max-width: 91px;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    &:hover {
+      background-color: #ffffff;
+      color: #4166eb;
+      border: 1px solid #4166eb;
+    }
+  }
+  .removebutton {
+    background: rgba(255, 98, 99, 1);
+    border-radius: 8px;
+    color: white;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      fill: rgba(255, 98, 99, 1);
+
+      path {
+        fill: rgba(255, 98, 99, 1);
+      }
+      background-color: #ffffff;
+      color: rgba(255, 98, 99, 1);
+      border: 1px solid rgba(255, 98, 99, 1);
+    }
+  }
+}
+
+@media only screen and (max-width: 1378px) {
+  .pendingRequest {
+    img {
+      width: 54px;
+      height: 54px;
+    }
+    .taskAndTo {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      min-width: 70px;
+      .task {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .to {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        color: #828282;
+      }
+    }
+    .completionIcon {
+      .compIcon {
+        margin-right: 10px;
+      }
+    }
+    .time {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 400;
+      margin-right: 10px;
+      svg {
+        margin-right: 5px;
+      }
+    }
+    .button {
+      background: #4166eb;
+      border-radius: 8px;
+      color: white;
+      height: 65%;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #ffffff;
+        color: #4166eb;
+        border: 1px solid #4166eb;
+      }
+    }
+    .more {
+      flex: 1;
+      max-width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        svg {
+          transition: all 0.3s ease;
+          circle {
+            fill: rgb(41, 41, 41);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-height: 800px) {
+  .pendingRequest {
+    justify-content: start;
+    margin-bottom: 15px;
+    .taskAndTo {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      min-width: 25%;
+      flex: 1;
+      .task {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .to {
+        font-size: 12px;
+      }
+    }
+    .completionIcon {
+      margin: 0;
+      .compIcon {
+        margin: 0;
+      }
+    }
+    .time {
+      display: flex;
+      font-size: 13px;
+      font-weight: 400;
+      margin-right: 10px;
+      width: 90px;
+      height: 100%;
+      margin: 0 4%;
+      svg {
+        width: 30px;
+        margin-right: 5px;
+      }
+    }
+    .button {
+      background: #4166eb;
+      border-radius: 8px;
+      color: white;
+      height: 65%;
+      max-width: 91px;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+      margin: 0 2%;
+      &:hover {
+        background-color: #ffffff;
+        color: #4166eb;
+        border: 1px solid #4166eb;
+      }
+    }
+    .removebutton {
+      background: rgba(255, 98, 99, 1);
+      border-radius: 8px;
+      color: white;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      margin-right: 10px;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        fill: rgba(255, 98, 99, 1);
+
+        path {
+          fill: rgba(255, 98, 99, 1);
+        }
+        background-color: #ffffff;
+        color: rgba(255, 98, 99, 1);
+        border: 1px solid rgba(255, 98, 99, 1);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .pendingRequest {
+    justify-content: start;
+    margin-bottom: 15px;
+    padding: 5px;
+    height: 60px;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    .taskAndTo {
+      max-height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 5px;
+      margin-right: 5px;
+      min-width: 80px;
+      flex: 1;
+      .task {
+        font-size: 10px;
+        margin-bottom: 1px;
+      }
+      .to {
+        font-size: 8px;
+      }
+    }
+    .points {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0.6;
+      p {
+        font-size: 10px;
+        font-weight: 500;
+        color: #00000038;
+      }
+      .number {
+        color: black;
+        margin-right: 0px;
+      }
+    }
+    .completionIcon {
+      width: 10px;
+      margin: 0;
+      .compIcon {
+        margin: 0;
+        width: 10px;
+      }
+    }
+    .time {
+      display: flex;
+      font-size: 8px;
+      font-weight: 400;
+      width: fit-content;
+      height: 100%;
+      margin-right: 5px;
+      margin: 0 1%;
+      svg {
+        margin-right: 5px;
+        width: 10px;
+      }
+    }
+    .button {
+      height: 55%;
+      width: 70px;
+      margin-right: 5px;
+      font-size: 8px;
+      margin: 0 2%;
+      border-radius: 5px;
+      padding: 0 5px;
+      &:hover {
+        background-color: #ffffff;
+        color: #4166eb;
+        border: 1px solid #4166eb;
+      }
+    }
+    .removebutton {
+      background: rgba(255, 98, 99, 1);
+      border-radius: 5px;
+      color: white;
+      height: 55%;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      margin-right: 0px;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      svg {
+        width: 10px;
+      }
+      &:hover {
+        fill: rgba(255, 98, 99, 1);
+
+        path {
+          fill: rgba(255, 98, 99, 1);
+        }
+        background-color: #ffffff;
+        color: rgba(255, 98, 99, 1);
+        border: 1px solid rgba(255, 98, 99, 1);
+      }
+    }
+  }
+}
