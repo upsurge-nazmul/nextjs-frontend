@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import HomeSvg from "../../assets/home.svg";
 import validator from "validator";
 import Toast from "../Toast";
 import styles from "../../styles/Home/intro.module.scss";
 import LoginApis from "../../actions/apis/LoginApis";
+import IntroSvg from "../SVGcomponents/IntroSvg";
+import BallsSvg from "../SVGcomponents/BallsSvg";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
@@ -77,27 +78,10 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           </div>
         </div>
       </div>
-      <img src={HomeSvg.src} className={styles.homesvg} />
+      <IntroSvg className={styles.homesvg} />
       <div className={styles.ballsvg}>
-        <svg
-          width="365"
-          viewBox="0 0 365 190"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="320" cy="138" r="45" fill="#4166EB" />
-          <circle cx="20.5" cy="162.5" r="20.5" fill="#FF6263" />
-          <circle cx="308.5" cy="73.5" r="20.5" fill="#FDCC03" />
-          <path
-            d="M254.744 152.744C298.087 111.729 299.974 43.343 258.959 -0.000106646L102 148.529C143.015 191.872 211.401 193.759 254.744 152.744Z"
-            fill="#17D1BC"
-          />
-        </svg>
+        <BallsSvg />
       </div>
-      {/* 
-      <div className="red"></div>
-      <div className="yellow"></div>
-      <div className="blue"></div> */}
     </section>
   );
 }

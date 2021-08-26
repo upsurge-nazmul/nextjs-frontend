@@ -1,18 +1,13 @@
 import React from "react";
-import BackButton from "../../assets/backButton.svg";
 import styles from "../../styles/Auth/auth.module.scss";
+import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 
 function AuthHeader({ handleBack, setmode, mode }) {
   return (
     <div className={styles.headingflex}>
       <p className={styles.heading}>
         {mode !== "login" ? (
-          <img
-            src={BackButton.src}
-            className={styles.svg}
-            onClick={() => handleBack()}
-            alt=""
-          />
+          <BackButtonSvg className={styles.svg} onClick={() => handleBack()} />
         ) : null}
         {mode !== "login" ? "Sign Up" : "Login"}
       </p>

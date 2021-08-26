@@ -9,6 +9,8 @@ import CategoryBar from "../../components/Blog/CategoryBar";
 import BlogCard from "../../components/Blog/BlogCard";
 import MoreCard from "../../components/Blog/MoreCard";
 import xss from "xss";
+import ArrowDown from "../../components/SVGcomponents/ArrowDown";
+import ArrowUp from "../../components/SVGcomponents/ArrowUp";
 
 function BlogPage({ blogs, totalblogs, porppagination }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -196,29 +198,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
           </div>
         </div>
         <div className={styles.loadmorebutton}>
-          Load More{" "}
-          <svg
-            width="16"
-            height="18"
-            viewBox="0 0 16 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 17V1"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M1 10L8 17L15 10"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          Load More
+          <ArrowUp clr="black" />
         </div>
       </div>
     </div>

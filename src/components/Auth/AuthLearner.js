@@ -1,6 +1,6 @@
 import React from "react";
-import Mascot from "../../assets/mascot.svg";
 import styles from "../../styles/Auth/auth.module.scss";
+import MascotSvg from "../SVGcomponents/MascotSvg";
 
 function AuthLearner() {
   return (
@@ -10,7 +10,7 @@ function AuthLearner() {
           <p>Howdy</p>
           <h1>learner</h1>
         </div>
-        <img src={Mascot.src} className={styles.mascot} alt="" />
+        <MascotSvg className={styles.mascot} />
       </div>
       <div className={styles.bottom}>
         <p>We currently only allow parents to sign up and add their kids.</p>

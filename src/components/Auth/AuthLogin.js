@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import google from "../../assets/google.svg";
-import apple from "../../assets/apple.svg";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
+import GoogleSvg from "../SVGcomponents/GoogleSvg";
+import AppleSvg from "../SVGcomponents/AppleSvg";
 
 function AuthLogin({ settoastdata }) {
   const [email, setemail] = useState("");
@@ -66,11 +66,11 @@ function AuthLogin({ settoastdata }) {
       </div>
       <div className={styles.or}>OR</div>
       <div className={styles.google}>
-        <img src={google.src} alt="" />
+        <GoogleSvg />
         <p>Continue with Google</p>
       </div>
       <div className={styles.apple}>
-        <img src={apple.src} alt="" />
+        <AppleSvg />
         <p>Continue with Apple</p>
       </div>
       <div className={styles.reset}>

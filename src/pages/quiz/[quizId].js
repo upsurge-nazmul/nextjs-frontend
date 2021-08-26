@@ -9,6 +9,7 @@ import QuizApis from "../../actions/apis/QuizApis";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Quiz/quiz.module.scss";
 import Toast from "../../components/Toast";
+import QuizCardSvg from "../../components/SVGcomponents/QuizCardSvg";
 
 function Quiz({ data, quizcards, wrongPath }) {
   const router = useRouter();
@@ -167,18 +168,7 @@ function Quiz({ data, quizcards, wrongPath }) {
             <p className={styles.heading}>Available Quizzes</p>
             {quizcards.map((item, index) => (
               <div className={styles.quizCard} key={"quizcard" + index}>
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.6666 16.0007H5.33325V53.334C5.33325 56.2673 7.73325 58.6673 10.6666 58.6673H47.9999V53.334H10.6666V16.0007ZM53.3333 5.33398H21.3333C18.3999 5.33398 15.9999 7.73398 15.9999 10.6673V42.6673C15.9999 45.6007 18.3999 48.0007 21.3333 48.0007H53.3333C56.2666 48.0007 58.6666 45.6007 58.6666 42.6673V10.6673C58.6666 7.73398 56.2666 5.33398 53.3333 5.33398ZM53.3333 42.6673H21.3333V10.6673H53.3333V42.6673ZM36.0266 27.094C37.1199 25.1473 39.1733 24.0007 40.3733 22.294C41.6533 20.4807 40.9333 17.1207 37.3333 17.1207C34.9866 17.1207 33.8133 18.9073 33.3333 20.4007L29.6799 18.8807C30.6933 15.894 33.3866 13.334 37.3066 13.334C40.5866 13.334 42.8533 14.8273 43.9999 16.694C44.9866 18.294 45.5466 21.3073 44.0266 23.5473C42.3466 26.0273 40.7466 26.774 39.8666 28.374C39.5199 29.014 39.3866 29.4407 39.3866 31.5207H35.3333C35.3599 30.4273 35.1733 28.6407 36.0266 27.094ZM34.5333 37.2007C34.5333 35.6273 35.7866 34.4273 37.3333 34.4273C38.9066 34.4273 40.1066 35.6273 40.1066 37.2007C40.1066 38.7473 38.9333 40.0007 37.3333 40.0007C35.7866 40.0007 34.5333 38.7473 34.5333 37.2007Z"
-                    fill="#4166EB"
-                  />
-                </svg>
+                <QuizCardSvg />
                 <div className={styles.text}>
                   <p className={styles.name}>{item.name}</p>
                   <p className={styles.description}>{item.description}</p>

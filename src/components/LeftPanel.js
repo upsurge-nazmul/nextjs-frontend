@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/GeneralComponents/leftpanel.module.scss";
+import RemoveSvg from "./SVGcomponents/RemoveSvg";
 
 function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
   let router = useRouter();
@@ -81,17 +82,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                 setOpenLeftPanel(false);
               }}
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="rgb(209, 68, 67)"
-                width="40px"
-                height="40px"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M17.999 4l-6.293 6.293L5.413 4 4 5.414l6.292 6.293L4 18l1.413 1.414 6.293-6.292 6.293 6.292L19.414 18l-6.294-6.293 6.294-6.293z"
-                ></path>
-              </svg>
+              <RemoveSvg clr="rgb(209, 68, 67)" />
             </div>
           </div>
           <div

@@ -1,0 +1,22 @@
+import React from "react";
+
+export default function CoursesSvg({ className, onClick }) {
+  return (
+    <svg
+      onClick={onClick}
+      className={className}
+      width="20"
+      height="18"
+      viewBox="0 0 20 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.9375 0.75H11.375L10.8937 0.95625L10 1.83625L9.10625 0.95625L8.625 0.75H1.0625L0.375 1.4375V15.1875L1.0625 15.875H8.33625L9.51875 17.0438H10.4813L11.6637 15.875H18.9375L19.625 15.1875V1.4375L18.9375 0.75ZM9.3125 14.94L9.065 14.7062L8.625 14.5H1.75V2.125H8.33625L9.35375 3.1425L9.3125 14.94ZM18.25 14.5H11.375L10.8937 14.7062L10.7013 14.885V3.0875L11.6637 2.125H18.25V14.5ZM7.25 4.875H3.125V6.25H7.25V4.875ZM7.25 10.375H3.125V11.75H7.25V10.375ZM3.125 7.625H7.25V9H3.125V7.625ZM16.875 4.875H12.75V6.25H16.875V4.875ZM12.75 7.625H16.875V9H12.75V7.625ZM12.75 10.375H16.875V11.75H12.75V10.375Z"
+        fill="#4F4F4F"
+      />
+    </svg>
+  );
+}

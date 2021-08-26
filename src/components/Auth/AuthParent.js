@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import google from "../../assets/google.svg";
-import apple from "../../assets/apple.svg";
+import React from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
+import GoogleSvg from "../SVGcomponents/GoogleSvg";
+import AppleSvg from "../SVGcomponents/AppleSvg";
 
 function AuthParent({
   setsignupmethod,
@@ -77,7 +77,7 @@ function AuthParent({
           handleParentSignUp("randomgoogleid@gmail.com", "google");
         }}
       >
-        <img src={google.src} alt="" />
+        <GoogleSvg />
         <p>Continue with Google</p>
       </div>
       <div
@@ -88,7 +88,7 @@ function AuthParent({
           handleParentSignUp("randomappleid@apple.com", "apple");
         }}
       >
-        <img src={apple.src} alt="" />
+        <AppleSvg />
         <p>Continue with Apple</p>
       </div>
       <div className={styles.or}>OR</div>

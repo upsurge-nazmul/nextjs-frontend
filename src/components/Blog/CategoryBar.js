@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Blog/categorybar.module.scss";
+import ArrowDown from "../SVGcomponents/ArrowDown";
+import ArrowUp from "../SVGcomponents/ArrowUp";
 function CategoryBar() {
   let allcategories = [
     "All Categories",
@@ -43,53 +45,7 @@ function CategoryBar() {
       </div>
       <div className={styles.more} onClick={onClickMore}>
         {showfullcategories ? "Less" : "More"}
-        {showfullcategories ? (
-          <svg
-            width="14"
-            height="16"
-            viewBox="0 0 14 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 1.00056L7 14.7148"
-              stroke="#AEAEAE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M13 7L7 0.999999L1 7"
-              stroke="#AEAEAE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ) : (
-          <svg
-            width="14"
-            height="16"
-            viewBox="0 0 14 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 14.7143V1"
-              stroke="#AEAEAE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M1 8.71484L7 14.7148L13 8.71484"
-              stroke="#AEAEAE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
+        {showfullcategories ? <ArrowDown /> : <ArrowUp />}
       </div>
     </div>
   );

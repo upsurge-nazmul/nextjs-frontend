@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Calculators/select.module.scss";
+import SelectCircle from "../SVGcomponents/SelectCircle";
 
 function Select({ question, options, current, setcurrent, index, total }) {
   const [selected, setselected] = useState("");
@@ -19,25 +20,7 @@ function Select({ question, options, current, setcurrent, index, total }) {
     <div className={styles.selectBlock}>
       <div className={styles.leftblock}>
         <div className={styles.qno + " " + styles.vertgrad}>
-          {!selected ? (
-            <p>{index + 1}</p>
-          ) : (
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 18 13"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.21924 6.8136L6.40783 12L16.7806 1.6272"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          )}
+          {!selected ? <p>{index + 1}</p> : <SelectCircle />}
         </div>
         {index !== total ? (
           <div className={styles.backRow + " " + styles.vertgrad}></div>

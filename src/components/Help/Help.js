@@ -3,6 +3,8 @@ import HelpHeader from "./HelpHeader";
 import image from "../../assets/help/help.png";
 import Faq from "./Faq";
 import Fab from "./Fab";
+import SearchSvg from "../SVGcomponents/SearchSvg";
+import LeftPanel from "../LeftPanel";
 function Help() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
@@ -52,10 +54,15 @@ function Help() {
   console.log(image);
   return (
     <div className="helpPage">
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
       <HelpHeader
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+
       <Fab />
       <div className="frontpage">
         <div className="left">
@@ -64,19 +71,7 @@ function Help() {
           <div className="searchbar">
             <input type="text" placeholder="Type your question here . . ." />
             <div className="searchicon">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.1666 23.5006C14.6811 23.5001 17.1232 22.6583 19.104 21.1093L25.3317 27.337L27.3348 25.3338L21.1072 19.1061C22.657 17.1252 23.4993 14.6825 23.4999 12.1673C23.4999 5.9184 18.4155 0.833984 12.1666 0.833984C5.91767 0.833984 0.833252 5.9184 0.833252 12.1673C0.833252 18.4162 5.91767 23.5006 12.1666 23.5006ZM12.1666 3.66732C16.8543 3.66732 20.6666 7.47957 20.6666 12.1673C20.6666 16.8551 16.8543 20.6673 12.1666 20.6673C7.47884 20.6673 3.66659 16.8551 3.66659 12.1673C3.66659 7.47957 7.47884 3.66732 12.1666 3.66732Z"
-                  fill="white"
-                  fillOpacity="0.79"
-                />
-              </svg>
+              <SearchSvg />
             </div>
           </div>
           <div className="green"></div>

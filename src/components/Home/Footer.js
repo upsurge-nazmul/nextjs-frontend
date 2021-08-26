@@ -1,17 +1,17 @@
 import React from "react";
-import Logo from "../../assets/logo.svg";
-import Fb from "../../assets/footer/fb.svg";
-import Insta from "../../assets/footer/insta.svg";
-import Twitter from "../../assets/footer/twitter.svg";
 import styles from "../../styles/Home/footer.module.scss";
 import { useRouter } from "next/dist/client/router";
+import Logo from "../SVGcomponents/Logo";
+import Twitter from "../SVGcomponents/Twitter";
+import Fb from "../SVGcomponents/Fb";
+import Insta from "../SVGcomponents/Insta";
 
 function Footer() {
   const router = useRouter();
   return (
     <div className={styles.footerSection}>
       <div className={styles.left}>
-        <img src={Logo.src} className={styles.logo} alt="" />
+        <Logo className={styles.logo} />
         <div className={styles.bottom}>
           <p>Terms & Conditions</p>
           <p>Privacy Policy</p>
@@ -45,9 +45,9 @@ function Footer() {
           </p>
         </div>
         <div className={styles.socials}>
-          <img src={Fb.src} className={styles.social} alt="" />
-          <img src={Twitter.src} className={styles.social} alt="" />
-          <img src={Insta.src} className={styles.social} alt="" />
+          <Fb className={styles.social} />
+          <Twitter className={styles.social} alt="" />
+          <Insta className={styles.social} />
         </div>
       </div>
     </div>

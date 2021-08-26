@@ -1,6 +1,5 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
-import DropBox from "./DropBox";
 import EducationCalc from "./EducationCalc";
 import InputBlock from "./InputBlock";
 import ResultBox from "./ResultBox";
