@@ -3,7 +3,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
 import ChoreModal from "../../components/Chores/ChoreModal";
-import styles from "../../styles/tribes/tribesPage.module.scss";
+import styles from "../../styles/Tribes/tribesPage.module.scss";
 import TribeComponent from "../../components/Tribes/TribeComponent";
 import { useRouter } from "next/dist/client/router";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
