@@ -29,8 +29,13 @@ function RequestsAndHistorySection({ setshowmodal }) {
         </p>
       </div>
       <div className={styles.wrapper}>
-        {d.map((item) => {
-          return <PendingRequests setshowmodal={setshowmodal} />;
+        {d.map((item, index) => {
+          return (
+            <PendingRequests
+              key={"PendingRequests" + index}
+              setshowmodal={setshowmodal}
+            />
+          );
         })}
       </div>
     </div>

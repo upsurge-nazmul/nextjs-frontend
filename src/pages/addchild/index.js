@@ -5,8 +5,7 @@ import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../components/Toast";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/AddKid/addkid.module.scss";
-import { Dropdown, Selection } from "react-dropdown-now";
-import "react-dropdown-now/style.css";
+import DropDown from "../../components/DropDown";
 
 function AddKid({ type }) {
   const router = useRouter();
@@ -138,11 +137,11 @@ function AddKid({ type }) {
               }}
               placeholder="dob"
             />
-            <Dropdown
+            <DropDown
               placeholder="Gender"
               options={["male", "female", "other"]}
               value={gender}
-              onChange={(value) => setgender(value)}
+              setvalue={setgender}
             />
             <input
               className={styles.usernameinput}

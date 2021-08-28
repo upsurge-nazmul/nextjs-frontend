@@ -12,7 +12,7 @@ import VoucherSection from "../../components/ParentStore/VoucherSection";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import ApproveModal from "../../components/ParentStore/ApproveModal";
 
-export default function parentStore({
+export default function ParentStore({
   isLogged,
   msg,
   choresdata,

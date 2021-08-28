@@ -13,7 +13,7 @@ const unityContext = new UnityContext({
 // productName: "Don'tOverspend_Upsurge",
 // productVersion: "1.0",
 
-function index() {
+export default function GamePage() {
   const [progression, setProgression] = useState(0);
 
   useEffect(function () {
@@ -33,5 +33,3 @@ function index() {
     </div>
   );
 }
-
-export default index;

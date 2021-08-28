@@ -13,8 +13,8 @@ function AvailablePointsSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item) => (
-          <AvailablePointCard />
+        {d.map((item, index) => (
+          <AvailablePointCard key={"LivAvailablePointCardeClass" + index} />
         ))}
       </div>
     </div>

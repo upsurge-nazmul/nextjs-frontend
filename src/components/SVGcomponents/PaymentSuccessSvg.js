@@ -11,7 +11,7 @@ export default function PaymentSuccessSvg({ className, onClick }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0)">
+      <g clipPath="url(#clip0)">
         <path
           d="M129.147 211.977C162.303 211.977 189.18 184.932 189.18 151.571C189.18 118.209 162.303 91.1641 129.147 91.1641C95.9915 91.1641 69.1136 118.209 69.1136 151.571C69.1136 184.932 95.9915 211.977 129.147 211.977Z"
           fill="#17D1BC"

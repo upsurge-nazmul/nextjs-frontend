@@ -12,7 +12,7 @@ export default function PaymentSuccessBackground({ className, onClick }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g opacity="0.8">
-        <g clip-path="url(#clip0)">
+        <g clipPath="url(#clip0)">
           <path
             d="M40.2429 113.567L94.1384 113.988L94.6728 46.2367L40.7772 45.8151L40.2429 113.567Z"
             fill="#EBEBEB"
@@ -94,7 +94,7 @@ export default function PaymentSuccessBackground({ className, onClick }) {
             fill="#FAFAFA"
           />
         </g>
-        <g clip-path="url(#clip1)">
+        <g clipPath="url(#clip1)">
           <path
             d="M425.547 113.551L370.03 113.988L369.48 43.773L424.996 43.3361L425.547 113.551Z"
             fill="#EBEBEB"

@@ -14,8 +14,8 @@ export default function VoucherSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item) => (
-          <Voucher />
+        {d.map((item, index) => (
+          <Voucher key={"voucher" + index} />
         ))}
       </div>
     </div>

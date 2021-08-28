@@ -122,8 +122,7 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
             </div>
             <div className={styles.posts}>
               <div className={styles.heading}>
-                All Topics{" "}
-                <ArrowRight height="20" clr="black" width="20" height="15" />
+                All Topics <ArrowRight clr="black" width="20" height="15" />
               </div>
 
               <div className={styles.topics}>

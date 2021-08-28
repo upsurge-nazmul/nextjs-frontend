@@ -12,8 +12,8 @@ function LiveClassSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item) => (
-          <LiveClass />
+        {d.map((item, index) => (
+          <LiveClass key={"LiveClass" + index} />
         ))}
       </div>
     </div>

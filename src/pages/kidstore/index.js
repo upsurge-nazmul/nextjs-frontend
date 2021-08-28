@@ -14,7 +14,7 @@ import ApproveModal from "../../components/ParentStore/ApproveModal";
 import AvailableAvatarSection from "../../components/KidStore/AvailableAvatarSection";
 import RequestModal from "../../components/KidStore/RequestModal";
 
-export default function kidStore({
+export default function KidStore({
   isLogged,
   msg,
   choresdata,

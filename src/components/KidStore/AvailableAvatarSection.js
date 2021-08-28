@@ -12,8 +12,8 @@ export default function AvailableAvatarSection({ setshowmodal }) {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item) => (
-          <Avatar setshowmodal={setshowmodal} />
+        {d.map((item, index) => (
+          <Avatar key={"avatatr" + index} setshowmodal={setshowmodal} />
         ))}
       </div>
     </div>

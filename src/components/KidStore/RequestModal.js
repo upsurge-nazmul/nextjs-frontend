@@ -4,6 +4,7 @@ import Toast from "../Toast";
 import styles from "../../styles/KidStore/requestmodal.module.scss";
 import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
+import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 
 export default function RequestModal({ showmodal, setshowmodal }) {
   //modes will be start , category , template, assign
