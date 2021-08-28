@@ -57,6 +57,16 @@ function Header({
             Quiz
           </p>
           <p
+            className={` ${
+              router.pathname.indexOf("/gamepage") !== -1
+                ? styles.activeTab
+                : ""
+            }`}
+            onClick={() => router.push("/gamepage")}
+          >
+            Games
+          </p>
+          <p
             className={`${
               router.pathname.indexOf("/calculators") !== -1
                 ? styles.activeTab
