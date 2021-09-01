@@ -21,6 +21,7 @@ export default function KidStore({
   gamesdata,
   kidsdata,
   liveclassdata,
+  avatars,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
@@ -58,7 +59,10 @@ export default function KidStore({
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <AvailableAvatarSection setshowmodal={setshowmodal} />
+            <AvailableAvatarSection
+              avatars={avatars}
+              setshowmodal={setshowmodal}
+            />
           </div>
           <div className={styles.flexRight}>
             <AvailablePointsSection />
@@ -85,7 +89,7 @@ export async function getServerSideProps({ params, req }) {
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
-
+      let avatars = await getavatars(token);
       return {
         props: {
           isLogged: true,
@@ -93,6 +97,7 @@ export async function getServerSideProps({ params, req }) {
           gamesdata,
           kidsdata,
           liveclassdata,
+          avatars,
         },
       };
     }
@@ -118,6 +123,11 @@ async function getgames(token) {
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getavatars(token) {
+  let response = await DashboardApis.getallavatars(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

@@ -15,6 +15,7 @@ import NextChores from "../../components/KidDashboard/NextChores";
 import TribeSection from "../../components/KidDashboard/TribeSection";
 import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
+import KidApis from "../../actions/apis/KidApis";
 
 function KidDashboard({
   isLogged,
@@ -23,6 +24,7 @@ function KidDashboard({
   gamesdata,
   kidsdata,
   liveclassdata,
+  badgeData,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("home");
@@ -36,7 +38,6 @@ function KidDashboard({
     type: "success",
     msg: "",
   });
-  const badges = ["", "", ""];
   const tribes = ["", "", ""];
   useEffect(() => {
     if (isLogged === false) {
@@ -50,92 +51,6 @@ function KidDashboard({
     }
   }, [isLogged]);
 
-  let topusers = [
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-    {
-      img_url:
-        "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=24&q=80",
-      name: "Jason Smith",
-      votes: "12.5k",
-    },
-  ];
   return (
     <div className={styles.kiddashboard}>
       <DashboardLeftPanel type="kid" />
@@ -164,9 +79,9 @@ function KidDashboard({
                 </h2>
 
                 <div className={styles.wrapper}>
-                  <KidChore data={chores[0]} />
-                  <KidChore data={chores[0]} />
-                  <KidChore data={chores[0]} />
+                  {choresdata.map((chore, index) => {
+                    return <KidChore data={chore} key={chore.id} />;
+                  })}
                 </div>
               </div>
             )}
@@ -197,7 +112,7 @@ function KidDashboard({
             </div>
           </div>
           <div className={styles.flexRight}>
-            <BadgeSection badges={badges} />
+            <BadgeSection badges={badgeData} />
             <NextChores />
             <TribeSection tribes={tribes} />
           </div>
@@ -224,7 +139,8 @@ export async function getServerSideProps({ params, req }) {
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
-
+      console.log(choresdata);
+      let badgeData = await getbadges(kidsdata[0].id, token);
       return {
         props: {
           isLogged: true,
@@ -232,6 +148,7 @@ export async function getServerSideProps({ params, req }) {
           gamesdata,
           kidsdata,
           liveclassdata,
+          badgeData,
         },
       };
     }
@@ -239,6 +156,7 @@ export async function getServerSideProps({ params, req }) {
     return { props: { isLogged: false, msg: "cannot get token" } };
   }
 }
+
 async function getkidsdata(token) {
   let response = await DashboardApis.getkids(null, token);
   if (response && response.data && response.data.data)
@@ -257,6 +175,11 @@ async function getgames(token) {
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getbadges(childId, token) {
+  let response = await KidApis.getbadges({ childId }, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

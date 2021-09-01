@@ -3,7 +3,7 @@ import styles from "../../styles/KidStore/AvailableAvatarSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import Avatar from "./Avatar";
 
-export default function AvailableAvatarSection({ setshowmodal }) {
+export default function AvailableAvatarSection({ setshowmodal, avatars }) {
   const d = ["", "", "", "", "", "", "", "", "", ""];
   return (
     <div className={styles.AvatarSection}>
@@ -12,8 +12,12 @@ export default function AvailableAvatarSection({ setshowmodal }) {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item, index) => (
-          <Avatar key={"avatatr" + index} setshowmodal={setshowmodal} />
+        {avatars.map((item, index) => (
+          <Avatar
+            key={"avatatr" + index}
+            data={item}
+            setshowmodal={setshowmodal}
+          />
         ))}
       </div>
     </div>

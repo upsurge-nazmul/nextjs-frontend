@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "next-site",
+      name: "next-server",
       cwd: "/home/ubuntu/upsurgetemp",
       script: "yarn",
       args: "start",

@@ -56,6 +56,12 @@ const getpendingchores = (payload, token) => {
 const getexpiredchores = (payload, token) => {
   return ApiCalls.getResponse(`parent/getexpiredchores`, payload, token);
 };
+const getallavatars = (payload, token) => {
+  return ApiCalls.getResponse(`parent/getavailableavatars`, payload, token);
+};
+const getallbadges = (payload, token) => {
+  return ApiCalls.getResponse(`parent/getavailablebadges`, payload, token);
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -70,6 +76,8 @@ const DashboardApis = {
   editchore,
   getuserdata,
   updateprofile,
+  getallavatars,
+  getallbadges,
 };
 
 export default DashboardApis;
