@@ -9,8 +9,8 @@ import xss from "xss";
 
 export default function BlogPage({ blogdata }) {
   const router = useRouter();
-  const [heading, setHeading] = useState("");
-  const [subheading, setSubheading] = useState("");
+  const [headings, setheadings] = useState([]);
+  const [scroll, setscroll] = useState(80);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   let date = new Date(Number(blogdata.date));
@@ -43,9 +43,22 @@ export default function BlogPage({ blogdata }) {
     "December",
   ];
   useEffect(() => {
-    console.log(blogdata);
-  }, []);
+    let h1s = document.getElementsByTagName("h1");
+    if (h1s.length > 0) setheadings(Array.from(h1s));
+  }, [blogdata]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", (event) => {
+      setscroll(window.pageYOffset);
+    });
+  }, []);
+  function hanldemove(index) {
+    headings[index].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  }
   return (
     <div className={styles.blogPage}>
       <Header
@@ -106,6 +119,17 @@ export default function BlogPage({ blogdata }) {
               </svg>
             </a>
           </div>
+        </div>
+        <div className={styles.table}>
+          <p
+            className={styles.heading}
+            style={{ marginTop: scroll > 100 ? scroll - 100 : scroll }}
+          >
+            Table Of Content
+          </p>
+          {headings.map((item, index) => {
+            return <p onClick={() => hanldemove(index)}>{item.textContent}</p>;
+          })}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
-const BaseUrl = "http://localhost:4000/";
-// const BaseUrl = "http://3.109.44.218:4000/";
+// const BaseUrl = "http://localhost:4000/";
+const BaseUrl = "http://3.109.44.218:4000/";
 
 const getHeader = async (formData, token) => {
   return {
@@ -74,7 +74,6 @@ export const deleteResponse = async (url) => {
 
 export const postResponse = async (url, payload, token) => {
   const URL = BaseUrl + url;
-  console.log(URL);
   return axios(URL, {
     method: "POST",
     headers: await getHeader(false, token),
