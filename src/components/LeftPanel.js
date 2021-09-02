@@ -28,9 +28,9 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             </p>
             <p
               className={`${styles.tab} ${
-                router.pathname === "/blog" ? styles.activeTab : ""
+                router.pathname.indexOf("/blog") !== -1 ? styles.activeTab : ""
               }`}
-              onClick={() => router.push("/blog")}
+              onClick={() => router.push("/blogs")}
             >
               BLOG
             </p>

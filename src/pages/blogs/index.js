@@ -3,16 +3,17 @@ import BlogApis from "../../actions/apis/BlogApis";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import FullBlog from "../../components/Blog/FullBlog";
-import draftToHtml from "draftjs-to-html";
 import styles from "../../styles/Blog/blog.module.scss";
 import CategoryBar from "../../components/Blog/CategoryBar";
 import BlogCard from "../../components/Blog/BlogCard";
 import MoreCard from "../../components/Blog/MoreCard";
 import xss from "xss";
-import ArrowDown from "../../components/SVGcomponents/ArrowDown";
+import draftToHtml from "draftjs-to-html";
 import ArrowUp from "../../components/SVGcomponents/ArrowUp";
+import { useRouter } from "next/dist/client/router";
 
 function BlogPage({ blogs, totalblogs, porppagination }) {
+  const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
   const [loading, setloading] = useState(false);
@@ -62,68 +63,16 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
     "December",
   ];
 
-  let blogdata = [
-    {
-      postId: "7096fb97-d559-4b73-bb4f-012a1dec77fa",
-      hideCommenting: false,
-      title: "Entrepreneurship for Children",
-      date: "2021-06-22T14:51:12.902Z",
-      content:
-        "We will soon be launching a suite of innovative and experiential modules for children to understand businesses in an engaging and effective way!",
-      slug: "entrepreneurship-for-children",
-      featuredImage:
-        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
-      categories: ["Entrepreneurship"],
-      featureFlags: {},
-    },
-    {
-      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
-      hideCommenting: false,
-      title: "Financi Education for Children",
-      date: "2021-06-22T14:49:52.928Z",
-      content:
-        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
-      slug: "finance-education-for-children",
-      featuredImage:
-        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
-      categories: ["Financial Literacy"],
-      featureFlags: {},
-    },
-    {
-      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
-      hideCommenting: false,
-      title: "Financi Education for Children",
-      date: "2021-06-22T14:49:52.928Z",
-      content:
-        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
-      slug: "finance-education-for-children",
-      featuredImage:
-        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
-      categories: ["Financial Literacy"],
-      featureFlags: {},
-    },
-    {
-      postId: "d466c6ed-6ede-4435-a36d-fae1c4050d4a",
-      hideCommenting: false,
-      title: "Financi Education for Children",
-      date: "2021-06-22T14:49:52.928Z",
-      content:
-        "This is what our mission is - Helping India's youth rise and achieve financial independence. This life skill is one of the most important and oft ignored.",
-      slug: "finance-education-for-children",
-      featuredImage:
-        "https://img1.wsimg.com/isteam/ip/d8e5f7c1-24b8-4fb9-b39b-4cb141b26043/Facebook_Cover.jpg",
-      categories: ["Financial Literacy"],
-      featureFlags: {},
-    },
-  ];
-
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
       whiteList: ["b", "i", "strong"],
       stripIgnoreTag: true,
     });
-    return draftToHtml(JSON.parse(sanitized));
+    return draftToHtml(JSON.parse(sanitized))
+      .replace(/<[^>]+>/g, "")
+      .replace(/\n/g, " ")
+      .trim();
   }
   return (
     <div
@@ -151,7 +100,10 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
         <CategoryBar />
         <div className={styles.postsMain}>
-          <div className={styles.left}>
+          <div
+            className={styles.left}
+            onClick={() => router.push(`/blog/${blogposts[0].id}`)}
+          >
             <img src={blogposts[0].img_url} alt="" />
             <div className={styles.categoryWrapper}>
               {blogposts[0].categories.split(",").map((cat, index) => (
@@ -210,7 +162,6 @@ export default BlogPage;
 
 export async function getServerSideProps({ params, req }) {
   let res = await BlogApis.getblogs({ page: 1 });
-  console.log(res.data.data.rows);
   if (res && res.data && res.data.data) {
     return {
       props: {

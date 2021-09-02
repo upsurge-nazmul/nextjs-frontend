@@ -1,8 +1,17 @@
+import { useRouter } from "next/dist/client/router";
+import Router from "next/dist/next-server/server/router";
 import React from "react";
 import styles from "../../styles/Blog/blogcard.module.scss";
 function BlogCard({ data, getdatafromraw }) {
+  const router = useRouter();
+
   return (
-    <div className={styles.blogcard}>
+    <div
+      className={styles.blogcard}
+      onClick={() => {
+        router.push(`/blog/${data.id}`);
+      }}
+    >
       <img src={data.img_url} alt="" />
       <div className={styles.right}>
         <div className={styles.categories}>

@@ -42,9 +42,9 @@ function Header({
           </p>
           <p
             className={` ${
-              router.pathname === "/blog" ? styles.activeTab : ""
+              router.pathname.indexOf("/blog") !== -1 ? styles.activeTab : ""
             }`}
-            onClick={() => router.push("/blog")}
+            onClick={() => router.push("/blogs")}
           >
             Blog
           </p>
