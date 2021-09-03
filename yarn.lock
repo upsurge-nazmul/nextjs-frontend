@@ -2978,6 +2978,11 @@ react-unity-webgl@^8.4.10:
   resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.4.10.tgz#46968796fffe22def3f21a932587281164856fb3"
   integrity sha512-SiZXdtwDOfd1e4C58k7gtAvdOv2QEp0u10viryREWXSUu0/6XiJX1jJ+aiY3MhZBdQsIqM+6rvkHUyM+aG/MMg==
 
+react-use-intercom@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-use-intercom/-/react-use-intercom-1.4.0.tgz#796527728c131ebf132186385bf78f69dbcd84cc"
+  integrity sha512-HqPp7nRnftREE01i88w2kYWOV45zvJt0Of6jtHflIBa3eKl1bAs/izZUINGCJ0DOdgAdlbLweAvJlP4VTzsJjQ==
+
 react@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"

@@ -15,7 +15,8 @@ import { getCookie } from "../actions/cookieUtils";
 import What from "../components/Home/What";
 import How from "../components/Home/How";
 import Who from "../components/Home/Who";
-
+import { IntercomProvider, useIntercom } from "react-use-intercom";
+const INTERCOM_APP_ID = "a3llo6c5";
 function Home() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -36,35 +37,37 @@ function Home() {
   }, []);
 
   return (
-    <div
-      className={`${styles.homePage} ${showauth ? styles.stopscrolling : ""}`}
-    >
-      <Header
-        setOpenLeftPanel={setOpenLeftPanel}
-        showauth={showauth}
-        setshowauth={setshowauth}
-        authmode={authmode}
-        mailfromhome={mailfromhome}
-      />
-      <LeftPanel
-        openLeftPanel={openLeftPanel}
-        setOpenLeftPanel={setOpenLeftPanel}
-      />
+    <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
+      <div
+        className={`${styles.homePage} ${showauth ? styles.stopscrolling : ""}`}
+      >
+        <Header
+          setOpenLeftPanel={setOpenLeftPanel}
+          showauth={showauth}
+          setshowauth={setshowauth}
+          authmode={authmode}
+          mailfromhome={mailfromhome}
+        />
+        <LeftPanel
+          openLeftPanel={openLeftPanel}
+          setOpenLeftPanel={setOpenLeftPanel}
+        />
 
-      <Intro
-        setshowauth={setshowauth}
-        setauthmode={setauthmode}
-        setmailfromhome={setmailfromhome}
-      />
-      <How />
-      <AboutSection />
-      <Who />
-      <What />
-      <ProductSection />
-      <Reviews />
-      <JoinUs />
-      <Footer />
-    </div>
+        <Intro
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+        />
+        <How />
+        <AboutSection />
+        <Who />
+        <What />
+        <ProductSection />
+        <Reviews />
+        <JoinUs />
+        <Footer />
+      </div>
+    </IntercomProvider>
   );
 }
 
