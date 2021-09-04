@@ -19,6 +19,7 @@ export default function ParentStore({
   gamesdata,
   kidsdata,
   liveclassdata,
+  vouchers,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
@@ -61,7 +62,7 @@ export default function ParentStore({
           </div>
           <div className={styles.flexRight}>
             <AvailablePointsSection />
-            <VoucherSection />
+            <VoucherSection vouchers={vouchers} />
           </div>
         </div>
       </div>
@@ -84,7 +85,7 @@ export async function getServerSideProps({ params, req }) {
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
-
+      let vouchers = await getvouchers(token);
       return {
         props: {
           isLogged: true,
@@ -92,6 +93,7 @@ export async function getServerSideProps({ params, req }) {
           gamesdata,
           kidsdata,
           liveclassdata,
+          vouchers,
         },
       };
     }
@@ -117,6 +119,11 @@ async function getgames(token) {
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getvouchers(token) {
+  let response = await DashboardApis.getallvouchers(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

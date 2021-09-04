@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "../../styles/ParentStore/VoucherSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
-import AvailablePointCard from "./AvailablePointCard";
-import LiveClass from "./LiveClass";
 import Voucher from "./Voucher";
 
-export default function VoucherSection() {
+export default function VoucherSection({ vouchers }) {
   const d = ["", "", ""];
   return (
     <div className={styles.VoucherSection}>
@@ -14,8 +12,8 @@ export default function VoucherSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item, index) => (
-          <Voucher key={"voucher" + index} />
+        {vouchers.map((item, index) => (
+          <Voucher data={item} key={"voucher" + index} />
         ))}
       </div>
     </div>

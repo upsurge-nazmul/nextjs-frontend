@@ -12,6 +12,7 @@ import NoKid from "../../components/Dashboard/NoKid";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Dashboard/dashboard.module.scss";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
+import OtpNotVerfied from "../../components/Auth/OtpNotVerified";
 
 function Dashboard({
   isLogged,
@@ -20,6 +21,8 @@ function Dashboard({
   gamesdata,
   kidsdata,
   liveclassdata,
+  phone_verified,
+  userdata,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("home");
@@ -28,6 +31,7 @@ function Dashboard({
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
   const [liveclasses, setliveclasses] = useState(liveclassdata || []);
+  const [phoneverified, setphoneverified] = useState(phone_verified);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -59,6 +63,12 @@ function Dashboard({
     <div className={styles.dashboard}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+      {!phoneverified && (
+        <OtpNotVerfied
+          userphone={userdata.phone}
+          setphoneverified={setphoneverified}
+        />
+      )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -175,10 +185,12 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          phone_verified: response.data.data.phone_verified,
           choresdata,
           gamesdata,
           kidsdata,
           liveclassdata,
+          userdata: response.data.data,
         },
       };
     }

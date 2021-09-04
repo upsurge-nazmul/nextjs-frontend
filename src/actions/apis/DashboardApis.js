@@ -62,6 +62,9 @@ const getallavatars = (payload, token) => {
 const getallbadges = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailablebadges`, payload, token);
 };
+const getallvouchers = (payload, token) => {
+  return ApiCalls.getResponse(`parent/getavailablevouchers`, payload, token);
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -78,6 +81,7 @@ const DashboardApis = {
   updateprofile,
   getallavatars,
   getallbadges,
+  getallvouchers,
 };
 
 export default DashboardApis;

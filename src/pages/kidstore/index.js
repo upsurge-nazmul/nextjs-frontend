@@ -22,22 +22,17 @@ export default function KidStore({
   kidsdata,
   liveclassdata,
   avatars,
+  vouchers,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
   const router = useRouter();
   const [showmodal, setshowmodal] = useState(false);
-  const [kids, setkids] = useState(kidsdata || []);
-  const [familyfun, setfamilyfun] = useState(gamesdata || []);
-  const [chores, setchores] = useState(choresdata || []);
-  const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  const badges = ["", "", ""];
-  const tribes = ["", "", ""];
   useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
@@ -66,7 +61,7 @@ export default function KidStore({
           </div>
           <div className={styles.flexRight}>
             <AvailablePointsSection />
-            <VoucherSection />
+            <VoucherSection vouchers={vouchers} />
           </div>
         </div>
       </div>
@@ -90,6 +85,7 @@ export async function getServerSideProps({ params, req }) {
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
       let avatars = await getavatars(token);
+      let vouchers = await getvouchers(token);
       return {
         props: {
           isLogged: true,
@@ -98,6 +94,7 @@ export async function getServerSideProps({ params, req }) {
           kidsdata,
           liveclassdata,
           avatars,
+          vouchers,
         },
       };
     }
@@ -105,6 +102,7 @@ export async function getServerSideProps({ params, req }) {
     return { props: { isLogged: false, msg: "cannot get token" } };
   }
 }
+// getallvouchers
 async function getkidsdata(token) {
   let response = await DashboardApis.getkids(null, token);
   if (response && response.data && response.data.data)
@@ -128,6 +126,11 @@ async function getliveclasses(token) {
 }
 async function getavatars(token) {
   let response = await DashboardApis.getallavatars(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getvouchers(token) {
+  let response = await DashboardApis.getallvouchers(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }
