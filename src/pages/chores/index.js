@@ -3,8 +3,6 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import ChoreComponent from "../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import GameCard from "../../components/Dashboard/GameCard";
-import LiveClass from "../../components/Dashboard/LiveClass";
 import ChoreModal from "../../components/Chores/ChoreModal";
 import ChorePending from "../../components/Chores/ChorePending";
 import ChoreTemplate from "../../components/Chores/ChoreTemplate";

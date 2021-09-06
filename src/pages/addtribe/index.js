@@ -3,7 +3,6 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../components/Toast";
-import Assignees from "../../components/ManageChore/Assignees";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/ManageChore/managechore.module.scss";
 import AvailablePointCard from "../../components/ParentStore/AvailablePointCard";
