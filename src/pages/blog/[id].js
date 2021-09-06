@@ -128,7 +128,11 @@ export default function BlogPage({ blogdata }) {
             Table Of Content
           </p>
           {headings.map((item, index) => {
-            return <p onClick={() => hanldemove(index)}>{item.textContent}</p>;
+            return (
+              <p onClick={() => hanldemove(index)} key={index + "tableContent"}>
+                {item.textContent}
+              </p>
+            );
           })}
         </div>
       </div>

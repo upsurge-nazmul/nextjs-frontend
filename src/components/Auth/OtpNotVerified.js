@@ -17,6 +17,7 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
     let response = await LoginApis.verifyotp({ otp: OTP.toString() });
     if (response.data.success) {
       settoastdata({ show: true, msg: response.data.message, type: "success" });
+      setphoneverified(true);
     } else {
       settoastdata({ show: true, msg: response.data.message, type: "error" });
     }
@@ -26,7 +27,6 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
     let response = await LoginApis.genotp({ phone: phone });
     if (response.data.success) {
       settoastdata({ show: true, msg: response.data.message, type: "success" });
-      setphoneverified(true);
     } else {
       settoastdata({ show: true, msg: response.data.message, type: "error" });
     }
