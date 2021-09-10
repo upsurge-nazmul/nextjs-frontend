@@ -2,7 +2,16 @@ import React from "react";
 import styles from "../../styles/ParentStore/pendingreq.module.scss";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
-export default function PendingRequests({ setshowmodal }) {
+export default function PendingRequests({ setshowmodal, setbuydata }) {
+  function hanldeapprove() {
+    setbuydata({
+      name: "Avengers Avatar",
+      description: "Requested by Pulkit",
+      amount: "800",
+      type: "points",
+    });
+    setshowmodal(true);
+  }
   return (
     <div className={styles.pendingRequest}>
       <img
@@ -17,7 +26,7 @@ export default function PendingRequests({ setshowmodal }) {
         <p className={styles.number}>800</p>
         <p>Points</p>
       </div>
-      <div className={styles.button} onClick={() => setshowmodal(true)}>
+      <div className={styles.button} onClick={hanldeapprove}>
         Approve Purchase
       </div>
       <div className={styles.removebutton}>

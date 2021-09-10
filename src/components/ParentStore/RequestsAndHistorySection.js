@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/ParentStore/requestsAndHistorySection.module.scss";
 import PendingRequests from "./PendingRequests";
-function RequestsAndHistorySection({ setshowmodal }) {
+function RequestsAndHistorySection({ setshowmodal, setbuydata }) {
   const [type, settype] = useState("Requests");
   const d = ["", "", "", ""];
   return (
@@ -34,6 +34,7 @@ function RequestsAndHistorySection({ setshowmodal }) {
             <PendingRequests
               key={"PendingRequests" + index}
               setshowmodal={setshowmodal}
+              setbuydata={setbuydata}
             />
           );
         })}

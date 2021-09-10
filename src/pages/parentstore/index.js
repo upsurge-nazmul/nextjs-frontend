@@ -25,17 +25,18 @@ export default function ParentStore({
   const [mode, setmode] = useState("Store");
   const router = useRouter();
   const [showmodal, setshowmodal] = useState(false);
-  const [kids, setkids] = useState(kidsdata || []);
-  const [familyfun, setfamilyfun] = useState(gamesdata || []);
-  const [chores, setchores] = useState(choresdata || []);
-  const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  const badges = ["", "", ""];
-  const tribes = ["", "", ""];
+  const [buydata, setbuydata] = useState({
+    price: 10,
+    type: "rs",
+    name: "",
+    description: "",
+  });
+
   useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
@@ -52,13 +53,23 @@ export default function ParentStore({
     <div className={styles.parentStore}>
       <DashboardLeftPanel type="parent" />
       <Toast data={toastdata} />
-      <ApproveModal showmodal={showmodal} setshowmodal={setshowmodal} />
+      <ApproveModal
+        showmodal={showmodal}
+        setshowmodal={setshowmodal}
+        buydata={buydata}
+      />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <RequestsAndHistorySection setshowmodal={setshowmodal} />
-            <LiveClassSection />
+            <RequestsAndHistorySection
+              setbuydata={setbuydata}
+              setshowmodal={setshowmodal}
+            />
+            <LiveClassSection
+              setbuydata={setbuydata}
+              setshowmodal={setshowmodal}
+            />
           </div>
           <div className={styles.flexRight}>
             <AvailablePointsSection />

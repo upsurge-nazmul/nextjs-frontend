@@ -7,7 +7,16 @@ import ProjectSvg from "../SVGcomponents/ProjectSvg";
 import SessionSvg from "../SVGcomponents/SessionSvg";
 import PeopleSvg from "../SVGcomponents/PeopleSvg";
 import CartSvg from "../SVGcomponents/CartSvg";
-export default function LiveClass() {
+export default function LiveClass({ data, setshowmodal, setbuydata }) {
+  function handlebuy() {
+    setbuydata({
+      amount: data.amount || 100,
+      type: "rs",
+      name: data.name || "",
+      description: data.description || "",
+    });
+    setshowmodal(true);
+  }
   return (
     <div className={styles.availableCourse}>
       <HeartSvg className={styles.likeicon} />
@@ -55,7 +64,7 @@ export default function LiveClass() {
             <PeopleSvg />
             14-16 years
           </div>
-          <div className={styles.previewButton}>
+          <div className={styles.previewButton} onClick={handlebuy}>
             <CartSvg /> Register for class
           </div>
         </div>

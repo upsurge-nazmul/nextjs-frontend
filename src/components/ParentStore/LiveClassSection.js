@@ -3,8 +3,15 @@ import LiveClass from "./LiveClass";
 import styles from "../../styles/ParentStore/liveClassSections.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 
-function LiveClassSection() {
-  const d = ["", "", ""];
+function LiveClassSection({ setbuydata, setshowmodal }) {
+  const data = [
+    {
+      name: "Learn Investment Basics",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+    },
+  ];
   return (
     <div className={styles.liveClassSection}>
       <h2 className={styles.heading}>
@@ -12,8 +19,13 @@ function LiveClassSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item, index) => (
-          <LiveClass key={"LiveClass" + index} />
+        {data.map((item, index) => (
+          <LiveClass
+            setbuydata={setbuydata}
+            setshowmodal={setshowmodal}
+            data={item}
+            key={"LiveClass" + index}
+          />
         ))}
       </div>
     </div>

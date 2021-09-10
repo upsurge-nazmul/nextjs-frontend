@@ -6,8 +6,9 @@ import DropDown from "../DropDown";
 import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
+import displayRazorpay from "../../actions/RazorPay";
 
-export default function ApproveModal({ showmodal, setshowmodal }) {
+export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   //modes will be start , category , template, assign
   const [userdata, setuserdata] = useState(null);
   const [mode, setmode] = useState("category");
@@ -23,6 +24,18 @@ export default function ApproveModal({ showmodal, setshowmodal }) {
       setsuccess(false);
     }
   }, [showmodal]);
+  async function handlepay() {
+    if (buydata.type === "points") {
+      setsuccess(true);
+      return;
+    }
+    let result = await displayRazorpay(
+      buydata.name,
+      buydata.description,
+      buydata.amount,
+      setsuccess
+    );
+  }
   return (
     <div className={styles.approveModal}>
       <Toast data={toastdata} />
@@ -38,9 +51,9 @@ export default function ApproveModal({ showmodal, setshowmodal }) {
                 <BackButtonSvg />
                 <div className={styles.text}>
                   <p>
-                    Buy <span>Investment Basics</span>
+                    Buy <span>{buydata.name || "Avatar"}</span>
                   </p>
-                  <p>Course for</p>
+                  <p>{buydata.item || "Avatar"} for</p>
                 </div>
               </div>
               <DropDown
@@ -52,13 +65,17 @@ export default function ApproveModal({ showmodal, setshowmodal }) {
               />
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
-                <div className={styles.value}>800 Points</div>
+                <div className={styles.value}>
+                  {buydata.amount} {buydata.type === "points" ? "Points" : "₹"}
+                </div>
               </div>
-              <div className={styles.details}>
-                <div className={styles.label}>Available Points</div>
-                <div className={styles.value}>2.5K Points</div>
-              </div>
-              <div className={styles.button} onClick={() => setsuccess(true)}>
+              {buydata.type !== "rs" && (
+                <div className={styles.details}>
+                  <div className={styles.label}>Available Points</div>
+                  <div className={styles.value}>2.5K Points</div>
+                </div>
+              )}
+              <div className={styles.button} onClick={handlepay}>
                 Confirm Purchase
               </div>
             </div>
