@@ -67,7 +67,7 @@ function LiveClassesPage() {
           </p>
         </div>
         <div className={styles.wrapper}>
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
               <LiveClassComponent
                 data={item}

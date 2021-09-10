@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../styles/ParentStore/AvailablePointsSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import AvailablePointCard from "./AvailablePointCard";
-import LiveClass from "./LiveClass";
 
 function AvailablePointsSection() {
   const d = ["", "", ""];
