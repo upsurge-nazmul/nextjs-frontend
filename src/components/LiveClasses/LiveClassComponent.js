@@ -2,15 +2,25 @@ import React from "react";
 import styles from "../../styles/LiveClasses/liveclasscomponent.module.scss";
 import ReactStars from "react-rating-stars-component";
 import HeartSvg from "../SVGcomponents/HeartSvg";
-import ProjectSvg from "../SVGcomponents/ProjectSvg";
 import TimeHollow from "../SVGcomponents/TimeHollow";
+import ProjectSvg from "../SVGcomponents/ProjectSvg";
 import SessionSvg from "../SVGcomponents/SessionSvg";
 import PeopleSvg from "../SVGcomponents/PeopleSvg";
 import CartSvg from "../SVGcomponents/CartSvg";
-function LiveClassComponent() {
+export default function LiveClassComponent({ data, setshowmodal, setbuydata }) {
+  function handlebuy() {
+    setbuydata({
+      amount: data.amount || 100,
+      type: "rs",
+      name: data.name || "",
+      description: data.description || "",
+    });
+    setshowmodal(true);
+  }
   return (
     <div className={styles.availableCourse}>
       <HeartSvg className={styles.likeicon} />
+
       <img
         src={
           "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
@@ -54,7 +64,7 @@ function LiveClassComponent() {
             <PeopleSvg />
             14-16 years
           </div>
-          <div className={styles.previewButton}>
+          <div className={styles.previewButton} onClick={handlebuy}>
             <CartSvg /> Register for class
           </div>
         </div>
@@ -62,5 +72,3 @@ function LiveClassComponent() {
     </div>
   );
 }
-
-export default LiveClassComponent;
