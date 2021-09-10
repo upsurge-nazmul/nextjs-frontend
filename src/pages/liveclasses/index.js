@@ -73,6 +73,7 @@ function LiveClassesPage() {
                 data={item}
                 setbuydata={setbuydata}
                 setshowmodal={setshowmodal}
+                key={"LiveClass" + index}
               />
             );
           })}
