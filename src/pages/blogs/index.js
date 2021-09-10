@@ -99,7 +99,7 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
       />
       <div className={styles.content}>
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
-        <CategoryBar />
+        {blogposts.length > 0 && <CategoryBar />}
         {blogposts.length > 0 && (
           <div className={styles.postsMain}>
             <div
@@ -141,24 +141,30 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
             </div>
           </div>
         )}
-        <div className={styles.more}>
-          <p className={styles.moreHeading}>More from our experts</p>
-          <div className={styles.moreWrapper}>
-            {blogposts.map((blog, index) => {
-              return (
-                <MoreCard
-                  key={"morecard" + index}
-                  data={blog}
-                  getdatafromraw={getdatafromraw}
-                />
-              );
-            })}
+        {blogposts.length > 0 && (
+          <div className={styles.more}>
+            <p className={styles.moreHeading}>More from our experts</p>
+            <div className={styles.moreWrapper}>
+              {blogposts.map((blog, index) => {
+                return (
+                  <MoreCard
+                    key={"morecard" + index}
+                    data={blog}
+                    getdatafromraw={getdatafromraw}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className={styles.loadmorebutton}>
-          Load More
-          <ArrowUp clr="black" />
-        </div>
+        )}
+        {blogposts.length > 0 ? (
+          <div className={styles.loadmorebutton}>
+            Load More
+            <ArrowUp clr="black" />
+          </div>
+        ) : (
+          <div className={styles.loadmorebutton}>No blogs found</div>
+        )}
       </div>
     </div>
   );
