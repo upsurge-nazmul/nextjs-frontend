@@ -13,6 +13,7 @@ import ArrowUp from "../../components/SVGcomponents/ArrowUp";
 import { useRouter } from "next/dist/client/router";
 
 function BlogPage({ blogs, totalblogs, porppagination }) {
+  console.log({ blogs, totalblogs, porppagination });
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
