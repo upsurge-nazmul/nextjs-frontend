@@ -22,14 +22,13 @@ function KidDashboard({
   msg,
   choresdata,
   gamesdata,
-  kidsdata,
   liveclassdata,
   badgeData,
+  kiddata,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("home");
   const router = useRouter();
-  const [kids, setkids] = useState(kidsdata || []);
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
   const [liveclasses, setliveclasses] = useState(liveclassdata || []);
@@ -71,27 +70,23 @@ function KidDashboard({
                 })}
               </div>
             </div>
-            {kids.length > 0 && (
-              <div className={styles.choreSection}>
-                <h2 className={styles.heading}>
-                  My Chores
-                  <HeadingArrow />
-                </h2>
 
-                <div className={styles.wrapper}>
-                  {choresdata.map((chore, index) => {
-                    return <KidChore data={chore} key={chore.id} />;
-                  })}
-                </div>
-              </div>
-            )}
-            <div
-              className={`${styles.liveClassSection} ${
-                kids.length === 0 ? styles.nokidlivesection : ""
-              }`}
-            >
+            <div className={styles.choreSection}>
               <h2 className={styles.heading}>
-                My courses
+                My Chores
+                <HeadingArrow />
+              </h2>
+
+              <div className={styles.wrapper}>
+                {choresdata.map((chore, index) => {
+                  return <KidChore data={chore} key={chore.id} />;
+                })}
+              </div>
+            </div>
+
+            <div className={`${styles.liveClassSection}`}>
+              <h2 className={styles.heading}>
+                My Courses
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
@@ -131,22 +126,23 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+
     if (response && !response.data.success) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg } };
     } else {
-      let kidsdata = await getkidsdata(token);
+      let kiddata = response.data.data;
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
+      let badgeData = await getbadges(kiddata.user_id, token);
       console.log(choresdata);
-      let badgeData = await getbadges(kidsdata[0].id, token);
       return {
         props: {
           isLogged: true,
-          choresdata,
+          choresdata: choresdata.data,
           gamesdata,
-          kidsdata,
+          kiddata,
           liveclassdata,
           badgeData,
         },
@@ -157,11 +153,6 @@ export async function getServerSideProps({ params, req }) {
   }
 }
 
-async function getkidsdata(token) {
-  let response = await DashboardApis.getkids(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
 async function getchores(token) {
   let response = await DashboardApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {

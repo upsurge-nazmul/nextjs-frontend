@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import LoginApis from "../../actions/apis/LoginApis";
 import Toast from "../../components/Toast";
@@ -13,6 +13,8 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Dashboard/dashboard.module.scss";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import OtpNotVerfied from "../../components/Auth/OtpNotVerified";
+import { MainContext } from "../../context/Main";
+import EmailVerificationPending from "../../components/EmailVerificationPending";
 
 function Dashboard({
   isLogged,
@@ -22,9 +24,9 @@ function Dashboard({
   kidsdata,
   liveclassdata,
   phone_verified,
-  userdata,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
+  const { userdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [kids, setkids] = useState(kidsdata || []);
@@ -37,7 +39,6 @@ function Dashboard({
     type: "success",
     msg: "",
   });
-
   useEffect(() => {
     const scrollContainer = document.querySelector("#gamecardwrapper");
     if (!scrollContainer) return;
@@ -46,7 +47,6 @@ function Dashboard({
       scrollContainer.scrollLeft += evt.deltaY;
     });
   });
-
   useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
@@ -59,13 +59,18 @@ function Dashboard({
     }
   }, [isLogged]);
 
+  useEffect(() => {
+    if (userdata?.user_type === "child") {
+      router.push("/kiddashboard");
+    }
+  }, [userdata]);
   return (
     <div className={styles.dashboard}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
-      {!phoneverified && (
+      {userdata && userdata.user_type !== "child" && !phoneverified && (
         <OtpNotVerfied
-          userphone={userdata.phone}
+          userphone={userdata?.phone}
           setphoneverified={setphoneverified}
         />
       )}
@@ -75,6 +80,9 @@ function Dashboard({
           setmode={setmode}
           settoastdata={settoastdata}
         />
+        {userdata && !userdata.email_verified && (
+          <EmailVerificationPending settoastdata={settoastdata} />
+        )}
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.kidsSection}>

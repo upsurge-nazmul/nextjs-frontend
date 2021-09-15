@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import { setCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Auth/auth.module.scss";
+import ReactTooltip from "react-tooltip";
 import validator from "validator";
 function AuthFullData({
   setphone,
@@ -17,12 +18,26 @@ function AuthFullData({
   const [passhidden, setpasshidden] = useState(true);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [passisweak, setpassisweak] = useState(false);
+  useEffect(() => {
+    if (!validator.isStrongPassword(password)) setpassisweak(true);
+    else setpassisweak(false);
+  }, [password]);
+
   async function handleUpdateData() {
     if (!validator.isMobilePhone(phone, "en-IN")) {
       settoastdata({
         show: true,
         type: "error",
         msg: "Invalid Phone",
+      });
+      return;
+    }
+    if (passisweak) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase",
       });
       return;
     }
@@ -57,6 +72,7 @@ function AuthFullData({
           msg: response.data.message,
           type: "success",
         });
+        LoginApis.sendverificationemail();
         setCookie("accesstoken", response.data.data.token);
         setmode("otp");
       }
@@ -79,7 +95,7 @@ function AuthFullData({
       } else {
         settoastdata({
           show: true,
-          msg: "Error while creating account",
+          msg: response.data.message || "Error while creating account",
           type: "error",
         });
       }
@@ -112,11 +128,26 @@ function AuthFullData({
           onChange={(e) => setlastName(e.target.value)}
         />
       </div>
+      {password !== "" && passisweak && (
+        <>
+          <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
+            Weak password
+          </p>
+          <ReactTooltip id="weak-pass" type="dark" effect="solid">
+            <p>A strong pass is :</p>
+            <p>- At least 8 characters</p>
+            <p>- A mixture of letters and numbers</p>
+            <p>- A mixture of both uppercase and lowercase letters</p>
+            <p>- Inclusion of at least one special character</p>
+          </ReactTooltip>
+        </>
+      )}
       <div className={styles.passwordBox}>
         <input
           type={passhidden ? "password" : "text"}
           placeholder="Password"
           value={password}
+          className={password !== "" && passisweak ? styles.weakpass : ""}
           onChange={(e) => setpassword(e.target.value)}
         />
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>

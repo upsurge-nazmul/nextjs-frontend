@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
@@ -6,8 +6,10 @@ import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
+import { MainContext } from "../../context/Main";
 
 function AuthLogin({ settoastdata }) {
+  const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [passhidden, setpasshidden] = useState(true);
@@ -26,13 +28,16 @@ function AuthLogin({ settoastdata }) {
     let response = await LoginApis.login({ email, password });
     if (response && response.data && response.data.success) {
       setCookie("accesstoken", response.data.data.token);
+      setuserdata(response.data.data.userProfile);
+      setuser(response.data.data.userProfile.id);
       settoastdata({
         show: true,
         msg: response.data.message,
         type: "success",
       });
-      localStorage.setItem("islogged", true);
-      history.push("/dashboard");
+      if (response.data.data.userProfile.user_type === "parent")
+        history.push("/dashboard");
+      else history.push("/kiddashboard");
     } else {
       settoastdata({
         show: true,

@@ -1,0 +1,59 @@
+@keyframes bringdown {
+  0% {
+    right: -100px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+.menu {
+  animation: bringdown 0.3s ease;
+  position: absolute;
+  right: 0;
+  top: 72px;
+  z-index: 20;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 200px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  .heading {
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(90, 90, 90);
+  }
+  .tabs {
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 15px;
+    color: rgb(73, 73, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: rgb(245, 245, 245);
+    }
+  }
+  .button {
+    color: rgb(255, 120, 120);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgb(255, 120, 120);
+      color: white;
+    }
+  }
+}

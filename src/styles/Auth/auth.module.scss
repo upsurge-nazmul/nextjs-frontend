@@ -495,6 +495,12 @@
             width: 48%;
           }
         }
+        .weakpasstext {
+          color: rgb(255, 118, 118);
+          margin-bottom: 5px;
+          font-size: 15px;
+          width: fit-content;
+        }
         .passwordBox {
           display: flex;
           justify-content: center;
@@ -505,6 +511,9 @@
           margin-bottom: 20px;
           input {
             margin: 0;
+          }
+          .weakpass {
+            border-color: rgb(255, 118, 118);
           }
           .show {
             position: absolute;

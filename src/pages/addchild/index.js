@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
@@ -35,7 +35,17 @@ function AddKid({ type }) {
     let response = await DashboardApis.addkids(data);
     if (response && response.data && response.data.success) {
       router.push("/dashboard");
+      settoastdata({
+        type: "success",
+        msg: response.data.message,
+        show: true,
+      });
     } else {
+      settoastdata({
+        type: "error",
+        msg: response.data.message,
+        show: true,
+      });
       console.log(response.data);
     }
   }

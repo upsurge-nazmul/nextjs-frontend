@@ -26,7 +26,7 @@ function ChoreComponent({ data }) {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
     function getifclickedoutside(e) {
-      let menu = document.querySelector(".menu");
+      let menu = document.getElementById(`menu-${data.id}`);
       if (menu !== null && !menu.contains(e.target)) {
         setshowmenu(false);
       }
@@ -35,10 +35,15 @@ function ChoreComponent({ data }) {
       document.removeEventListener("mousedown", getifclickedoutside);
     };
   }, [showmenu]);
-
   return (
     <div className={styles.choreComponent}>
-      <img src={demoChore.image} alt="" />
+      <img
+        src={
+          data.image ||
+          "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
+        }
+        alt=""
+      />
       <div className={styles.taskAndTo}>
         <div className={styles.task}>{data.title}</div>
         <div className={styles.to}>{data.assigned_to}</div>
@@ -59,7 +64,7 @@ function ChoreComponent({ data }) {
 
       <div className={styles.more} onClick={() => setshowmenu(!showmenu)}>
         {showmenu ? (
-          <div className={styles.menu}>
+          <div className={styles.menu} id={`menu-${data.id}`}>
             <p
               className={styles.menutab}
               onClick={() =>

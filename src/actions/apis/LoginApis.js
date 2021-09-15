@@ -14,7 +14,11 @@ const logout = (payload) => {
 };
 
 const setphone = (payload) => {
-  return ApiCalls.postResponse(`users/setphone`, payload);
+  return ApiCalls.postResponse(
+    `users/setphone`,
+    payload,
+    getCookie("accesstoken")
+  );
 };
 
 const verifyotp = (payload) => {
@@ -39,6 +43,18 @@ const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
 };
 
+const sendverificationemail = (payload) => {
+  return ApiCalls.postResponse(
+    "users/sendemail",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const verifyemailtoken = (payload) => {
+  return ApiCalls.postResponse("users/verifyemailtoken", payload);
+};
+
 const genotp = (payload) => {
   return ApiCalls.postResponse(
     `users/generateOtp`,
@@ -57,6 +73,8 @@ const LoginApis = {
   checkemail,
   logout,
   genotp,
+  verifyemailtoken,
+  sendverificationemail,
 };
 
 export default LoginApis;

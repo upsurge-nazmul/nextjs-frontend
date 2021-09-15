@@ -44,7 +44,7 @@
     .mainContent {
       width: 100%;
       display: flex;
-      padding: 40px;
+      padding: 10px 40px 40px;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
@@ -115,7 +115,7 @@
         width: 20%;
         min-width: 250px;
         padding-right: 0px;
-        padding-left: 10px;
+        padding-left: 40px;
         .gameSection {
           flex: 3;
           .heading {
