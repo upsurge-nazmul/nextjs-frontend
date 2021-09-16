@@ -15,25 +15,6 @@ export const MainContextProider = ({ children }) => {
   const [showmenu, setshowmenu] = useState(false);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
-  useEffect(() => {
-    init();
-    async function init() {
-      let token = getCookie("accesstoken");
-      if (token) {
-        setaccesstoken(token);
-        let response = await LoginApis.checktoken({
-          token,
-        });
-        if (response && response.data.success) {
-          setuser(response.data.data.user_id);
-          setuserdata(response.data.data);
-          console.log(response.data.data);
-        } else {
-          console.log("error setting userdata");
-        }
-      }
-    }
-  }, []);
 
   return (
     <MainContext.Provider

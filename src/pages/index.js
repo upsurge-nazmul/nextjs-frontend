@@ -18,7 +18,8 @@ import Who from "../components/Home/Who";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
 const INTERCOM_APP_ID = "a3llo6c5";
-function Home() {
+function Home({ isLogged, userdata }) {
+  const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [authmode, setauthmode] = useState("");
@@ -26,10 +27,11 @@ function Home() {
   const { user } = useContext(MainContext);
   const history = useRouter();
   useEffect(() => {
-    if (user) {
+    if (userdata) {
+      setuserdata(userdata);
       history.push("/dashboard");
     }
-  }, [user]);
+  }, [userdata]);
 
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
@@ -67,3 +69,28 @@ function Home() {
 }
 
 export default Home;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return { props: { isLogged: false, msg } };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response.data.data,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

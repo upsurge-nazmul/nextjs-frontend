@@ -26,11 +26,11 @@ function EmailVerificationPending({ settoastdata }) {
     <div className={styles.main}>
       {mailsentagain ? (
         <p className={styles.text}>
-          Verification mail sent to {userdata.email}.
+          Verification mail sent to {userdata?.email}.
         </p>
       ) : (
         <p className={styles.text}>
-          Your are almost there!, we have sent an email to {userdata.email} .
+          Your are almost there!, we have sent an email to {userdata?.email} .
         </p>
       )}
       {!mailsentagain && (

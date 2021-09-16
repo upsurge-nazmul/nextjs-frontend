@@ -24,9 +24,10 @@ function Dashboard({
   kidsdata,
   liveclassdata,
   phone_verified,
+  userdatafromserver,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { userdata } = useContext(MainContext);
+  const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [kids, setkids] = useState(kidsdata || []);
@@ -48,39 +49,42 @@ function Dashboard({
     });
   });
   useEffect(() => {
-    if (isLogged === false) {
-      console.log(isLogged);
+    if (!userdatafromserver) {
       settoastdata({
         show: true,
         type: "error",
         msg: msg,
       });
       router.push("/");
+    } else {
+      setuserdata(userdatafromserver);
     }
-  }, [isLogged]);
+  }, [userdatafromserver]);
 
   useEffect(() => {
-    if (userdata?.user_type === "child") {
+    if (userdatafromserver?.user_type === "child") {
       router.push("/kiddashboard");
     }
-  }, [userdata]);
+  }, [userdatafromserver]);
   return (
     <div className={styles.dashboard}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
-      {userdata && userdata.user_type !== "child" && !phoneverified && (
-        <OtpNotVerfied
-          userphone={userdata?.phone}
-          setphoneverified={setphoneverified}
-        />
-      )}
+      {userdatafromserver &&
+        userdatafromserver.user_type !== "child" &&
+        !phoneverified && (
+          <OtpNotVerfied
+            userphone={userdatafromserver?.phone}
+            setphoneverified={setphoneverified}
+          />
+        )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        {userdata && !userdata.email_verified && (
+        {userdatafromserver && !userdatafromserver.email_verified && (
           <EmailVerificationPending settoastdata={settoastdata} />
         )}
         <div className={styles.mainContent}>
@@ -198,7 +202,7 @@ export async function getServerSideProps({ params, req }) {
           gamesdata,
           kidsdata,
           liveclassdata,
-          userdata: response.data.data,
+          userdatafromserver: response.data.data,
         },
       };
     }
