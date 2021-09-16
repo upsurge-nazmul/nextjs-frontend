@@ -99,6 +99,7 @@ function AuthFullData({
           type="text"
           placeholder="Phone"
           value={phone}
+          maxLength={10}
           onChange={(e) => {
             if (!isNaN(e.target.value)) setphone(e.target.value);
           }}
@@ -108,10 +109,12 @@ function AuthFullData({
         <input
           type="text"
           placeholder="First Name"
+          maxLength={10}
           value={firstName}
           onChange={(e) => setfirstName(e.target.value)}
         />
         <input
+          maxLength={10}
           type="text"
           placeholder="Last Name"
           value={lastName}
