@@ -22,53 +22,61 @@ export default function EditProfile({ data }) {
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
   const [dob, setdob] = useState(data?.dob || "");
-  const [gender, setgender] = useState("male");
+  const [gender, setgender] = useState(data?.gender || "male");
   const [phone, setphone] = useState(data?.phone || "");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
   const [showotp, setshowotp] = useState(false);
   const [otpverified, setotpverified] = useState(false);
   async function saveprofile() {
-    LoginApis.genotp({ phone }).then((response) => {
-      console.log(response);
-      if (response && response.data && response.data.success) {
-        settoastdata({
-          msg: "Otp sent",
-          show: true,
-          type: "success",
-        });
-        setshowotp(!showotp);
-      } else {
-        settoastdata({
-          msg: response?.data.message || "Error",
-          show: true,
-          type: "error",
-        });
-      }
-    });
+    if (data && data.phone && phone === data.phone) {
+      handleSave();
+    } else {
+      LoginApis.genotp({ phone }).then((response) => {
+        if (response && response.data && response.data.success) {
+          settoastdata({
+            msg: "Otp sent",
+            show: true,
+            type: "success",
+          });
+          setshowotp(!showotp);
+        } else {
+          settoastdata({
+            msg: response?.data.message || "Error",
+            show: true,
+            type: "error",
+          });
+        }
+      });
+    }
   }
 
   async function handleSave() {
-    let data = {};
-    if (firstname) {
-      data.first_name = firstname;
+    let updated_data = {};
+    if (firstname && firstname !== data?.first_name) {
+      updated_data.first_name = firstname;
     }
-    if (lastname) {
-      data.last_name = lastname;
+    if (lastname && lastname !== data?.last_name) {
+      updated_data.last_name = lastname;
     }
-    if (gender) {
-      data.gender = gender;
+    if ((gender && gender !== data?.gender) || !data?.gender) {
+      updated_data.gender = gender;
     }
-    if (dob) {
-      data.dob = new Date(dob).getTime();
+    if (dob && dob !== data?.dob) {
+      updated_data.dob = new Date(dob).getTime();
     }
-    if (password) {
-      data.password = password;
+    if (password && password !== data?.password) {
+      updated_data.password = password;
     }
-    if (phone) {
-      data.phone = phone;
+    if (phone && phone !== data?.phone) {
+      updated_data.phone = phone;
     }
-    let response = await DashboardApis.updateprofile(data);
+    console.log(JSON.stringify(updated_data));
+    if (JSON.stringify(updated_data) === "{}") {
+      settoastdata({ msg: "No changes were made", show: true, type: "error" });
+      return;
+    }
+    let response = await DashboardApis.updateprofile(updated_data);
     if (response && response.data && response.data.success) {
       settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
     } else {
@@ -108,11 +116,13 @@ export default function EditProfile({ data }) {
             <input
               type="text"
               value={firstname}
+              maxLength={10}
               onChange={(e) => setfirstname(e.target.value)}
               placeholder="First Name"
             />
             <input
               type="text"
+              maxLength={10}
               value={lastname}
               onChange={(e) => setlastname(e.target.value)}
               placeholder="Last Name"
@@ -121,7 +131,14 @@ export default function EditProfile({ data }) {
               type="date"
               value={dob}
               onChange={(e) => {
-                setdob(e.target.value);
+                let d = new Date();
+                d.setDate(d.getDate() - 1);
+                if (new Date(e.target.value).getTime() > d.getTime()) {
+                  settoastdata({
+                    show: true,
+                    msg: "Invalid Date of Birth",
+                  });
+                } else setdob(e.target.value);
               }}
               placeholder="dob"
             />

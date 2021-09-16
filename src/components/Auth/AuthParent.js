@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
+import GoogleLogin from "react-google-login";
+import { MainContext } from "../../context/Main";
 
 function AuthParent({
   setsignupmethod,
@@ -14,6 +16,8 @@ function AuthParent({
   setemail,
   email,
 }) {
+  const { firstName, setfirstName, lastName, setlastName } =
+    useContext(MainContext);
   async function handleParentSignUp(email, method) {
     if (!validator.isEmail(email)) {
       settoastdata({
@@ -67,19 +71,55 @@ function AuthParent({
     //
     //   });
   }
+
+  async function responsegoogle(data) {
+    if (data.profileObj) {
+      let emailcheckresponse = await LoginApis.checkemail({
+        email: data.profileObj.email,
+      });
+      if (
+        emailcheckresponse &&
+        emailcheckresponse.data &&
+        !emailcheckresponse.data.success
+      ) {
+        setfirstName(data.profileObj.givenName);
+        setlastName(data.profileObj.familyName);
+        setemail(data.profileObj.email);
+        setsignupmethod("google");
+        setmode("email");
+      } else
+        settoastdata({
+          show: true,
+          msg: emailcheckresponse.data.message,
+          type: "error",
+        });
+      return;
+    }
+  }
   return (
     <div className={styles.parent}>
-      <div
-        className={styles.google}
-        onClick={() => {
-          setemail("randomgoogleid@gmail.com");
-          setsignupmethod("google");
-          handleParentSignUp("randomgoogleid@gmail.com", "google");
-        }}
-      >
-        <GoogleSvg />
-        <p>Continue with Google</p>
-      </div>
+      <GoogleLogin
+        clientId="375248822516-a08u6u16jk762tjdjcc1nodb13dor3qj.apps.googleusercontent.com"
+        render={(renderProps) => (
+          <div
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+            className={styles.google}
+            // onClick={() => {
+            //   setemail("randomgoogleid@gmail.com");
+            //   setsignupmethod("google");
+            //   handleParentSignUp("randomgoogleid@gmail.com", "google");
+            // }}
+          >
+            <GoogleSvg />
+            <p>Continue with Google</p>
+          </div>
+        )}
+        buttonText="Login"
+        onSuccess={responsegoogle}
+        onFailure={responsegoogle}
+        cookiePolicy={"single_host_origin"}
+      />
       <div
         className={styles.apple}
         onClick={() => {

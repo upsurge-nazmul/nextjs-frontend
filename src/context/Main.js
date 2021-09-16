@@ -13,7 +13,8 @@ export const MainContextProider = ({ children }) => {
   const [userSignupMethod, setuserSignupMethod] = useState("email");
   const [email, setemail] = useState("");
   const [showmenu, setshowmenu] = useState(false);
-
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
   useEffect(() => {
     init();
     async function init() {
@@ -53,6 +54,10 @@ export const MainContextProider = ({ children }) => {
         setuserdata,
         showmenu,
         setshowmenu,
+        firstName,
+        setfirstName,
+        lastName,
+        setlastName,
       }}
     >
       {children}

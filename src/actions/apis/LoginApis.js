@@ -29,6 +29,10 @@ const verifyotp = (payload) => {
   );
 };
 
+const googlelogin = (payload) => {
+  return ApiCalls.postResponse(`users/googlelogin`, payload);
+};
+
 const login = (payload) => {
   return ApiCalls.postResponse(`users/login`, payload);
 };
@@ -62,7 +66,9 @@ const genotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const checkphone = (payload) => {
+  return ApiCalls.postResponse(`users/checkphone`, payload);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -75,6 +81,8 @@ const LoginApis = {
   genotp,
   verifyemailtoken,
   sendverificationemail,
+  checkphone,
+  googlelogin,
 };
 
 export default LoginApis;

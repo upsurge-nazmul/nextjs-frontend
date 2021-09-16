@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import { setCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Auth/auth.module.scss";
 import ReactTooltip from "react-tooltip";
 import validator from "validator";
+import { MainContext } from "../../context/Main";
 function AuthFullData({
   setphone,
   setpassword,
@@ -15,9 +16,9 @@ function AuthFullData({
   signupmethod,
   usertype,
 }) {
+  const { firstName, setfirstName, lastName, setlastName, setuserdata } =
+    useContext(MainContext);
   const [passhidden, setpasshidden] = useState(true);
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
   const [passisweak, setpassisweak] = useState(false);
   useEffect(() => {
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -30,6 +31,17 @@ function AuthFullData({
         show: true,
         type: "error",
         msg: "Invalid Phone",
+      });
+      return;
+    }
+    let checkphone = await LoginApis.checkphone({ phone });
+    if (checkphone && checkphone.data && checkphone.data.success) {
+      console.log("phone ok");
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: checkphone?.data.message || "Error connecting to server",
       });
       return;
     }
@@ -49,56 +61,34 @@ function AuthFullData({
       });
       return;
     }
-    if (signupmethod === "email") {
-      let response = await LoginApis.signup({
-        email: email,
-        signup_method: signupmethod,
-        user_type: usertype,
-        phone,
-        password,
-        first_name: firstName,
-        last_name: lastName,
-      });
+    let response = await LoginApis.signup({
+      email: email,
+      signup_method: signupmethod,
+      user_type: usertype,
+      phone,
+      password,
+      first_name: firstName,
+      last_name: lastName,
+    });
 
-      if (!response.data.success) {
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "error",
-        });
-      } else {
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "success",
-        });
-        LoginApis.sendverificationemail();
-        setCookie("accesstoken", response.data.data.token);
-        setmode("otp");
-      }
+    if (!response || !response.data.success) {
+      settoastdata({
+        show: true,
+        msg: response.data.message || "Error connecting to server",
+        type: "error",
+      });
     } else {
-      const data = {
-        phone,
-        password,
-        first_name: firstName,
-        last_name: lastName,
-      };
-      // temp changes
-      let response = await LoginApis.setphone(data);
-      if (response.data.success) {
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "success",
-        });
-        setmode("otp");
-      } else {
-        settoastdata({
-          show: true,
-          msg: response.data.message || "Error while creating account",
-          type: "error",
-        });
+      if (signupmethod === "email") {
+        LoginApis.sendverificationemail();
       }
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+      setuserdata(response.data.data.profile);
+      setCookie("accesstoken", response.data.data.token);
+      setmode("otp");
     }
   }
   return (
@@ -123,7 +113,7 @@ function AuthFullData({
         />
         <input
           type="text"
-          placeholder="Second Name"
+          placeholder="Last Name"
           value={lastName}
           onChange={(e) => setlastName(e.target.value)}
         />

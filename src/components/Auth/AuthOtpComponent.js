@@ -35,7 +35,7 @@ function AuthOtpComponent({
   return (
     <div className={styles.otp}>
       <div className={styles.otpHeadWrapper}>
-        <p className={styles.text}>Enter the 4-digit code sent to you at</p>
+        <p className={styles.text}>Enter the 6-digit code sent to you at</p>
         <p className={styles.phone}>{"+91 " + phone}</p>
       </div>
       <OtpInput

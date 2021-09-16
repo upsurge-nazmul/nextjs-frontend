@@ -12,7 +12,7 @@ import Menu from "./Menu";
 
 function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
-  const [username, setusername] = useState("Tushar");
+  const { userdata } = useContext(MainContext);
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
@@ -24,7 +24,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
-            Welcome, <span>{username}</span>
+            Welcome, <span>{userdata?.first_name || ""}</span>
           </>
         ) : (
           <span className={showback ? styles.addflex : ""}>
