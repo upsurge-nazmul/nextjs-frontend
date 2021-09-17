@@ -1,0 +1,46 @@
+@keyframes dropdown {
+  0% {
+    top: 100px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 50px;
+  }
+}
+
+.headerTabSection {
+  position: relative;
+  cursor: pointer;
+  padding: 0 20px;
+  .expander {
+    display: flex;
+    align-items: center;
+    .expandicon {
+      margin-left: 10px;
+    }
+  }
+  .tabHolder {
+    animation: dropdown 0.3s ease;
+    position: absolute;
+    top: 50px;
+    border-radius: 12px;
+    left: -20%;
+    background-color: white;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    .tabs {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      &:hover {
+        background-color: rgb(238, 238, 238);
+        border-radius: 5px;
+      }
+    }
+  }
+}
