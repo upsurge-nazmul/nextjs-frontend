@@ -13,6 +13,7 @@
   position: relative;
   cursor: pointer;
   padding: 0 20px;
+  -webkit-tap-highlight-color: transparent;
   .expander {
     display: flex;
     align-items: center;
@@ -53,5 +54,6 @@
 }
 
 .mobileTabSection {
+  padding: 0;
   margin-bottom: 20px;
 }
