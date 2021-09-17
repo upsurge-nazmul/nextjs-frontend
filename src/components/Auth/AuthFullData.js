@@ -20,7 +20,9 @@ function AuthFullData({
     useContext(MainContext);
   const [passhidden, setpasshidden] = useState(true);
   const [passisweak, setpassisweak] = useState(false);
+  const [error, seterror] = useState("");
   useEffect(() => {
+    seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
     else setpassisweak(false);
   }, [password]);
@@ -46,11 +48,9 @@ function AuthFullData({
       return;
     }
     if (passisweak) {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase",
-      });
+      seterror(
+        "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
+      );
       return;
     }
     if (!firstName || !lastName || !password) {
@@ -147,6 +147,8 @@ function AuthFullData({
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
+      {true && <p className={styles.error}>{error}</p>}
+
       <div className={styles.button} onClick={() => handleUpdateData()}>
         Continue
       </div>

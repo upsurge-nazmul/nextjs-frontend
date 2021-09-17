@@ -22,6 +22,7 @@ function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
   const [authmode, setauthmode] = useState("");
   const [mailfromhome, setmailfromhome] = useState("");
   const { user } = useContext(MainContext);
@@ -33,9 +34,22 @@ function Home({ isLogged, userdata }) {
     }
   }, [userdata]);
 
+  useEffect(() => {
+    let homepagediv = document.getElementById("home-page-main");
+    let homepageheader = document.getElementById("home-page-header");
+    let removethis = homepagediv.addEventListener("scroll", (e) => {
+      if (homepagediv.scrollTop > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    });
+    return () => removethis;
+  }, []);
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
       <div
+        id="home-page-main"
         className={`${styles.homePage} ${showauth ? styles.stopscrolling : ""}`}
       >
         <Header
@@ -44,6 +58,7 @@ function Home({ isLogged, userdata }) {
           setshowauth={setshowauth}
           authmode={authmode}
           mailfromhome={mailfromhome}
+          stickyheader={stickyheader}
         />
         <LeftPanel
           openLeftPanel={openLeftPanel}

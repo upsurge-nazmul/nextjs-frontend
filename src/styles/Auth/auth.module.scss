@@ -384,6 +384,7 @@
           max-width: 1099px;
           margin-bottom: 40px;
           padding-right: 20px;
+          white-space: pre-line;
         }
         .button {
           background: #4166eb;
@@ -403,6 +404,15 @@
             background-color: #ffffff;
             color: #4166eb;
             border: 1px solid #4166eb;
+          }
+        }
+        .disabled {
+          background: #a3a3a3;
+          &:hover {
+            transition: all 0.3s ease;
+            background: #a3a3a3;
+            color: #ffffff;
+            border: 0px solid #ffffff;
           }
         }
       }
@@ -462,6 +472,11 @@
         width: 100%;
         flex-direction: column;
         align-items: center;
+        .error {
+          font-size: 15px;
+          color: #ff6263;
+          text-align: center;
+        }
         .phoneWrapper {
           display: flex;
           border-radius: 14px;

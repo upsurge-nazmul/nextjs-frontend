@@ -50,11 +50,6 @@ function Dashboard({
   });
   useEffect(() => {
     if (!userdatafromserver) {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: msg,
-      });
       router.push("/");
     } else {
       setuserdata(userdatafromserver);
@@ -179,7 +174,6 @@ export default Dashboard;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
-  console.log(req.cookies);
   let msg = "";
   if (token) {
     let response = await LoginApis.checktoken({
@@ -188,7 +182,7 @@ export async function getServerSideProps({ params, req }) {
     if (response && !response.data.success) {
       console.log(response.data);
       msg = response.data.msg;
-      return { props: { isLogged: false, msg } };
+      return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
       let kidsdata = await getkidsdata(token);
       let gamesdata = await getgames(token);
@@ -203,6 +197,7 @@ export async function getServerSideProps({ params, req }) {
           kidsdata,
           liveclassdata,
           userdatafromserver: response.data.data,
+          msg: "",
         },
       };
     }

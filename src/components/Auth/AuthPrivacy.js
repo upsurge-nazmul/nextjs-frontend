@@ -1,24 +1,30 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import styles from "../../styles/Auth/auth.module.scss";
 
 function AuthPrivacy({ setmode }) {
   const router = useRouter();
+  const [endreached, setendreached] = useState(false);
+  useEffect(() => {
+    let privacyDiv = document.getElementById("privacy-main");
+    let removethisonexit = privacyDiv.addEventListener("scroll", (e) => {
+      // console.log(e.target);
+      // console.log(e.target.scrollTop + " " + e.target.scrollHeight);
+      if (e.target.scrollTop + e.target.offsetHeight >= e.target.scrollHeight) {
+        setendreached(true);
+      }
+    });
+    return () => removethisonexit;
+  }, []);
   return (
     <div className={styles.privacy}>
       <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
       <h1 className={styles.subheading}>Your privacy matters to us.</h1>
-      <p className={styles.details}>
+      <div className={styles.details} id="privacy-main">
         {`Revision Date: July 24, 2020 
-        These Terms of Service (these “Terms”) govern your use of the Upsurge
-        website (the “Site”), the Upsurge video platform and associated tools
-        (collectively, the “Service”) made available by Upsurge, Inc.
-        (“Upsurge”, "our", "us", or "we"). Your use of the Site and/or your
-        registration to use the Service indicates that you agree on behalf of
-        yourself or the entity that you represent (collectively, "you") to be
-        bound by these Terms as well as the Upsurge Privacy Policy. Please read
-        these Terms carefully before registering for or otherwise using the
-        Upsurge Service.
+        
+        These Terms of Service (these “Terms”) govern your use of the Upsurge website (the “Site”), the Upsurge video platform and associated tools (collectively, the “Service”) made available by Upsurge, Inc. (“Upsurge”, "our", "us", or "we"). Your use of the Site and/or your registration to use the Service indicates that you agree on behalf of yourself or the entity that you represent (collectively, "you") to be bound by these Terms as well as the Upsurge Privacy Policy. Please read these Terms carefully before registering for or otherwise using the Upsurge Service.
         
          I. Overview
         
@@ -441,11 +447,18 @@ function AuthPrivacy({ setmode }) {
         the Site. Notice will be deemed given one (1) business day after e-mail
         transmission from Upsurge, or two (2) business days after the date of
         posting.`}
-      </p>
+      </div>
+      {!endreached && (
+        <ReactTooltip id="continue-button-privacy" type="dark" effect="solid">
+          <p>Read privacy policy to unlock.</p>
+        </ReactTooltip>
+      )}
       <div
-        className={styles.button}
+        data-tip
+        data-for="continue-button-privacy"
+        className={`${styles.button} ${endreached ? "" : styles.disabled}`}
         onClick={() => {
-          router.push("/dashboard");
+          if (endreached) router.push("/dashboard");
         }}
       >
         I Agree

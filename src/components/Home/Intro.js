@@ -74,7 +74,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
             onChange={(e) => setemail(e.target.value)}
           />
           <div className={styles.button} onClick={handleSignup}>
-            Get in touch
+            Joining the Waiting List
           </div>
         </div>
       </div>

@@ -11,10 +11,14 @@ function Header({
   setshowauth,
   authmode,
   mailfromhome,
+  stickyheader,
 }) {
   const router = useRouter();
   return (
-    <div className={styles.header}>
+    <div
+      className={`${styles.header} ${stickyheader ? styles.sticky : ""}`}
+      id="home-page-header"
+    >
       <AuthPage
         showauth={showauth}
         setshowauth={setshowauth}

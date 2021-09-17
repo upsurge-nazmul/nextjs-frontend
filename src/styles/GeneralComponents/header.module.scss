@@ -4,7 +4,7 @@
   width: 100%;
   position: relative;
   scroll-snap-align: start;
-  box-shadow: 0px 26px 74px rgba(65, 153, 235, 0.06);
+  transition: all 0.3s ease;
   .container {
     width: 100%;
     display: flex;
@@ -77,6 +77,12 @@
     }
   }
 }
+.sticky {
+  position: fixed;
+  height: 80px;
+  box-shadow: 0px 26px 74px rgba(65, 153, 235, 0.06);
+  z-index: 100;
+}
 @media only screen and (min-width: 1000px) {
   .header {
     .container {
@@ -128,22 +134,23 @@
       padding-right: 7%;
       .hamburger {
         left: 7%;
+        width: 20px;
       }
       .logoContainer {
         flex: 1;
-        padding-left: 28px;
-
-        img {
+        padding-left: 38px;
+        svg {
           width: 40vw;
           max-width: 200px;
+          height: 35px;
         }
       }
       .signin {
         background-color: #4166eb;
         color: white;
-        width: 70px;
         height: 35px;
-        border-radius: 20px;
+        padding: 10px 15px;
+        border-radius: 12px;
         cursor: pointer;
         font-weight: 500;
         font-size: 12px;
@@ -158,5 +165,8 @@
         }
       }
     }
+  }
+  .sticky {
+    height: 65px;
   }
 }
