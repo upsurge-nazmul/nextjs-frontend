@@ -43,4 +43,15 @@
       }
     }
   }
+  .mobile {
+    position: unset;
+    margin: 20px 0;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.mobileTabSection {
+  margin-bottom: 20px;
 }

@@ -2,24 +2,31 @@ import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import styles from "../../styles/GeneralComponents/headerTabSections.module.scss";
 import HeaderExpandSvg from "../SVGcomponents/HeaderExpandSvg";
-function HeaderTabSection({ title, tabs }) {
+function HeaderTabSection({ mobile, title, tabs }) {
   const [showtabs, setshowtabs] = useState(false);
   const [timeout, settimeout] = useState(null);
   const router = useRouter();
   return (
     <div
-      className={styles.headerTabSection}
+      className={`${styles.headerTabSection} ${
+        mobile ? styles.mobileTabSection : ""
+      }`}
+      onClick={() => setshowtabs(!showtabs)}
       onMouseEnter={() => {
-        if (timeout) {
-          clearTimeout(timeout);
+        if (!mobile) {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          setshowtabs(true);
         }
-        setshowtabs(true);
       }}
       onMouseLeave={() => {
-        if (timeout) {
-          clearTimeout(timeout);
+        if (!mobile) {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          settimeout(setTimeout(() => setshowtabs(false), 200));
         }
-        settimeout(setTimeout(() => setshowtabs(false), 200));
       }}
     >
       <div className={styles.expander}>
@@ -27,7 +34,7 @@ function HeaderTabSection({ title, tabs }) {
         <HeaderExpandSvg className={styles.expandicon} />
       </div>
       {showtabs && (
-        <div className={styles.tabHolder}>
+        <div className={`${styles.tabHolder} ${mobile ? styles.mobile : ""}`}>
           {tabs.map((item) => {
             return (
               <p
