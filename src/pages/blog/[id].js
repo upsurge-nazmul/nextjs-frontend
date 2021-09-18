@@ -6,11 +6,13 @@ import styles from "../../styles/BlogPage/blogpage.module.scss";
 import BlogApis from "../../actions/apis/BlogApis";
 import draftToHtml from "draftjs-to-html";
 import xss from "xss";
+import Footer from "../../components/Home/Footer";
 
 export default function BlogPage({ blogdata }) {
   const router = useRouter();
   const [headings, setheadings] = useState([]);
   const [scroll, setscroll] = useState(80);
+  const [currentsection, setcurrentsection] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   let date = new Date(Number(blogdata.date));
@@ -44,13 +46,24 @@ export default function BlogPage({ blogdata }) {
   ];
   useEffect(() => {
     let h1s = document.getElementsByTagName("h1");
-    if (h1s.length > 0) setheadings(Array.from(h1s));
+    if (h1s.length > 0) {
+      setheadings(Array.from(h1s));
+      setcurrentsection(h1s[0].textContent);
+    }
   }, [blogdata]);
 
   useEffect(() => {
-    window.addEventListener("scroll", (event) => {
-      setscroll(window.pageYOffset);
+    let remove = window.addEventListener("scroll", (event) => {
+      setscroll(window.scrollY);
+      headings.forEach((item) => {
+        if (window.scrollY === 0) {
+          setcurrentsection(headings[0].textContent);
+        } else if (window.scrollY >= item.offsetTop - 100) {
+          setcurrentsection(item.textContent);
+        }
+      });
     });
+    return () => remove;
   }, []);
   function hanldemove(index) {
     headings[index].scrollIntoView({
@@ -121,21 +134,32 @@ export default function BlogPage({ blogdata }) {
           </div>
         </div>
         <div className={styles.table}>
-          <p
-            className={styles.heading}
-            style={{ marginTop: scroll > 100 ? scroll - 100 : scroll }}
-          >
-            Table Of Content
-          </p>
-          {headings.map((item, index) => {
-            return (
-              <p onClick={() => hanldemove(index)} key={index + "tableContent"}>
-                {item.textContent}
+          <div className={styles.mtcontainer}>
+            <div className={styles.movingtable}>
+              <p
+                className={styles.heading}
+                // style={{ marginTop: scroll > 100 ? scroll - 100 : scroll }}
+              >
+                Table Of Content
               </p>
-            );
-          })}
+              {headings.map((item, index) => {
+                return (
+                  <p
+                    onClick={() => hanldemove(index)}
+                    key={index + "tableContent"}
+                    className={`${
+                      item.textContent === currentsection ? styles.active : ""
+                    }`}
+                  >
+                    {item.textContent}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

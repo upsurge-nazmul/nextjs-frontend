@@ -17,32 +17,62 @@ function Footer() {
           <p>Privacy Policy</p>
         </div>
       </div>
+
       <div className={styles.right}>
         <div className={styles.column}>
-          <p className={styles.heading}>Products</p>
-          <p className={styles.subheading}>Retirement Calculator</p>
-          <p className={styles.subheading}>Finance Courses</p>
-          <p className={styles.subheading}>Finance Games</p>
-          <p className={styles.subheading}>Budget Maker</p>
-        </div>
-        <div className={styles.column}>
-          <p className={styles.heading}>About</p>
-          <p className={styles.subheading}>Our Story</p>
-          <p className={styles.subheading}>Benefits</p>
-          <p className={styles.subheading}>Team</p>
+          <p className={styles.heading}>About Us</p>
+          <p className={styles.subheading}>Our Northstar</p>
+          <p className={styles.subheading}>Life@upsurge</p>
           <p className={styles.subheading}>Careers</p>
+          <p className={styles.subheading}>FAQ’s</p>
         </div>
         <div className={styles.column}>
-          <p className={styles.heading}>Help</p>
-          <p className={styles.subheading} onClick={() => router.push("/help")}>
-            FAQs
+          <p className={styles.heading}>Benefits</p>
+          <p className={styles.subheading}>Financial Literacy</p>
+          <p className={styles.subheading}>Experiential Learning</p>
+          <p className={styles.subheading}>Entrepreneurship</p>
+          <p className={styles.subheading}>Rewards</p>
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading}>Products</p>
+          <p className={styles.subheading}>Knowledge Quest</p>
+          <p className={styles.subheading}>Games Arena</p>
+          <p className={styles.subheading}>Jobs</p>
+          <p className={styles.subheading}>Family Fun</p>
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading}>Calculators</p>
+          <p
+            className={styles.subheading}
+            onClick={() => router.push("/calculators/homeLoan")}
+          >
+            Home Loan Calculator
           </p>
           <p
             className={styles.subheading}
-            onClick={() => router.push("/contact")}
+            onClick={() => router.push("/calculators/carLoan")}
           >
-            Contact Us
+            Car Loan Calculator
           </p>
+          <p
+            className={styles.subheading}
+            // onClick={() => router.push("/calculators/carLoan")}
+          >
+            Education Loan Calculator
+          </p>
+          <p
+            className={styles.subheading}
+            // onClick={() => router.push("/calculators/carLoan")}
+          >
+            SIP Loan Calculator
+          </p>
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading}>Useful Links</p>
+          <p className={styles.subheading}>Terms and Conditions</p>
+          <p className={styles.subheading}>Privacy Policy</p>
+          <p className={styles.subheading}>Pricing</p>
+          <p className={styles.subheading}>FAQ’s</p>
         </div>
         <div className={styles.socials}>
           <Fb className={styles.social} />
