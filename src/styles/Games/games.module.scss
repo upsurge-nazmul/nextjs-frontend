@@ -1,0 +1,504 @@
+.gamePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 200px;
+  overflow: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(156, 207, 255, 0.05) 0%,
+    rgba(65, 133, 235, 0.05) 100%
+  );
+
+  .contentWrapper {
+    margin-top: 5vh;
+    padding-left: 17%;
+    padding-right: 17%;
+    .gameCardsHolder {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      margin-top: 3vh;
+      width: 100%;
+      .heading {
+        font-size: 24px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .gameCard {
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        width: 350px;
+        box-shadow: 0px 14px 26px rgba(8, 60, 194, 0.15);
+        border-radius: 12px;
+        height: 500px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        padding: 30px;
+        margin-right: 20px;
+        img {
+          width: 100%;
+          height: 150px;
+        }
+        .text {
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          font-size: 18px;
+          font-family: "Roboto", sans-serif;
+          overflow: hidden;
+          align-items: center;
+          .name {
+            color: #4166eb;
+            font-weight: 500;
+          }
+          .description {
+            font-weight: 400;
+            font-size: 16px;
+            color: #4a4a4a;
+            margin-top: 5px;
+            overflow: auto;
+            scrollbar-width: none;
+          }
+        }
+
+        .button {
+          background: #17d1bc;
+          border-radius: 14px;
+          width: 100%;
+          max-width: 138px;
+          min-width: 70px;
+          height: 41px;
+          font-size: 16px;
+          font-weight: 500;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          margin-top: 20px;
+          &:hover {
+            background-color: #16c4af;
+          }
+        }
+      }
+    }
+    .gameContainer {
+      display: flex;
+      .leftSection {
+        flex: 2;
+        .heading {
+          font-weight: 600;
+          font-size: 22px;
+        }
+        .details {
+          margin-top: 1vh;
+          font-weight: 400;
+          font-size: 15px;
+        }
+        .startButton {
+          width: 150px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(23, 209, 188, 1);
+          border-radius: 8px;
+          margin-top: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          color: white;
+          &:hover {
+            background-color: rgb(18, 182, 163);
+          }
+        }
+        .buttonwrapper {
+          display: flex;
+          align-items: center;
+          .closeButton {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(360, 100%, 69%);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            &:hover {
+              background-color: hsl(360, 100%, 59%);
+            }
+          }
+          .finishButton {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(173, 80%, 45%);
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            &:hover {
+              background-color: hsl(173, 80%, 35%);
+            }
+          }
+        }
+      }
+      .rightSection {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        .timerSection {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          .timeleft {
+            font-size: 15px;
+            font-weight: 600;
+            width: 100px;
+            text-align: center;
+          }
+          .timer {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            font-weight: 600;
+            color: rgb(255, 94, 94);
+          }
+        }
+
+        .questionsleft {
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+
+          .current {
+            width: 100px;
+            background-color: #4166eb;
+            border-radius: 8px;
+            color: rgb(243, 243, 243);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px;
+          }
+        }
+      }
+    }
+    .gameWrapper {
+      margin-top: 5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+      background-color: white;
+      padding: 0;
+      border-radius: 8px;
+    }
+    .resultSection {
+      margin-top: 5vh;
+      display: flex;
+      align-items: center;
+      height: 50vh;
+      background-color: #f3f3f367;
+      border-radius: 8px;
+      overflow: hidden;
+      justify-content: center;
+      flex-direction: column;
+      .heading {
+        color: black;
+        font-size: 24px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .points {
+        font-size: 96px;
+        font-weight: 800;
+        text-align: center;
+        color: #17d1bc;
+      }
+      .pointsdes {
+        font-size: 36px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .button {
+        background: #4166eb;
+        border-radius: 14px;
+        padding: 10px 20px;
+        color: white;
+        font-size: 16px;
+        width: 244px;
+        text-align: center;
+        height: 41px;
+        margin-top: 40px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          background-color: hsl(227, 56%, 38%);
+        }
+      }
+    }
+    .hideOverFlow {
+      overflow: hidden;
+    }
+  }
+}
+.hideOverFlow {
+  overflow: hidden;
+}
+.gameFullPage {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .heading {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: white;
+  }
+  .gameMain {
+    flex: 1;
+    width: 100%;
+    background-color: white;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1360px) {
+  .gamePage {
+    .contentWrapper {
+      margin-top: 5vh;
+      padding-left: 7%;
+      padding-right: 7%;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .gamePage {
+    .contentWrapper {
+      margin-top: 4vh;
+      padding-left: 7%;
+      width: 100%;
+      padding-right: 7%;
+      .pathSection {
+        .path {
+          font-size: 12px;
+        }
+        .arrow {
+          font-size: 12px;
+        }
+      }
+      .gameCardsHolder {
+        .gameCard {
+          height: 190px;
+          padding: 20px;
+          width: calc(100% / 2 - 20px);
+          svg {
+            width: 14vw;
+          }
+          .text {
+            margin-top: 0px;
+            .name {
+              font-size: 12px;
+            }
+            .description {
+              font-size: 10px;
+            }
+          }
+          .button {
+            margin-top: 5px;
+            width: 90%;
+            border-radius: 8px;
+            font-size: 12px;
+            max-height: 40px;
+            height: 40px;
+            min-width: none;
+          }
+        }
+      }
+      .gameContainer {
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+        .leftSection {
+          width: 100%;
+          .heading {
+            font-weight: 600;
+            font-size: 15px;
+          }
+          .details {
+            margin-top: 5px;
+            font-weight: 400;
+            font-size: 12px;
+          }
+          .startButton {
+            width: 100px;
+            height: 30px;
+            margin-top: 10px;
+          }
+          .buttonwrapper {
+            .closeButton,
+            .finishButton {
+              width: 100px;
+              height: 30px;
+              margin-top: 10px;
+              font-size: 12px;
+            }
+          }
+        }
+        .rightSection {
+          width: 100%;
+          align-items: flex-start;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 20px 0 0;
+          margin-top: 20px;
+          .timerSection {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            .timeleft {
+              font-size: 12px;
+              text-align: left;
+            }
+            .timer {
+              font-size: 14px;
+              text-align: left;
+              margin-top: 5px;
+            }
+          }
+
+          .questionsleft {
+            margin-top: 0px;
+            .current {
+              font-size: 12px;
+              width: 90px;
+              padding: 7px;
+            }
+          }
+        }
+      }
+      .gameWrapper {
+        margin-top: 30px;
+        .game {
+          .result {
+            font-size: 13px;
+            width: 100%;
+            height: 40px;
+            top: 0vh;
+            left: 0;
+            margin: 40px 0 0 0;
+            padding: 0px 20px;
+            justify-content: center;
+            .nextButton {
+              width: 100%;
+              height: 40px;
+              border-radius: 8px;
+              transition: all 0.3s ease;
+              cursor: pointer;
+            }
+          }
+          .question {
+            font-size: 16px;
+            line-height: 25px;
+            padding: 10px;
+            width: 100%;
+            margin: 0;
+          }
+          .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            .option {
+              margin: 5px;
+              height: 50px;
+              width: 100%;
+              .text {
+                text-align: center;
+                font-size: 14px;
+                padding: 10px;
+              }
+            }
+          }
+        }
+      }
+      .resultSection {
+        margin-top: 3vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 65vh;
+        background-color: #f3f3f367;
+        border-radius: 8px;
+        overflow: auto;
+        padding-bottom: 50px;
+        .leftSection {
+          width: 100%;
+          height: fit-content;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          padding-top: 20px;
+
+          .heading {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: rgb(58, 58, 58);
+          }
+          .data {
+            font-size: 14px;
+            margin-bottom: 10px;
+          }
+          .total {
+            background-color: rgb(255, 255, 255);
+          }
+          .correct {
+            background-color: rgb(139, 216, 115);
+          }
+          .wrong {
+            background-color: #ff7878;
+          }
+        }
+        .chartSection {
+          width: 100%;
+          height: 100%;
+          padding: 10px;
+        }
+      }
+      .hideOverFlow {
+        overflow: hidden;
+      }
+    }
+  }
+}

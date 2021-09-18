@@ -1,0 +1,29 @@
+.faqpageWrapper {
+  height: 100vh;
+  .faqpage {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    .heading {
+      font-size: 36px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .faqpageWrapper {
+    .faqpage {
+      padding-top: 40px;
+      .heading {
+        font-size: 26px;
+        text-align: center;
+      }
+    }
+  }
+}

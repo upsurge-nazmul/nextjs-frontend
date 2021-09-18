@@ -55,7 +55,7 @@ function Header({
               { name: "Team", pushTo: "/team" },
               { name: "Life@upsurge", pushTo: "/lifeatupsurge" },
               { name: "Careers", pushTo: "/careers" },
-              { name: "FAQ's", pushTo: "/help" },
+              { name: "FAQ's", pushTo: "/faq" },
             ]}
           />
           <HeaderTabSection
@@ -71,7 +71,7 @@ function Header({
                 pushTo: "/benefits/entrepreneurship",
               },
               { name: "Rewards", pushTo: "/benefits/rewards" },
-              { name: "Community", pushTo: "/benefits/community" },
+              { name: "Community", pushTo: "/community" },
             ]}
           />
           <HeaderTabSection
@@ -95,9 +95,9 @@ function Header({
           <HeaderTabSection
             title={"Play"}
             tabs={[
-              { name: "Games", pushTo: "/games" },
+              { name: "Games", pushTo: "/games/main" },
               {
-                name: "Quizzes",
+                name: "Gamezes",
                 pushTo: "/quiz/main",
               },
             ]}

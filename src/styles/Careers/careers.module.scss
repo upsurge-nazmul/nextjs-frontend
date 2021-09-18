@@ -1,0 +1,36 @@
+.careerPage {
+  height: 100vh;
+  .container {
+    margin: 0 14% 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .heading {
+      margin-top: 40px;
+      font-size: 40px;
+      font-weight: 500;
+      border-bottom: 2px solid rgb(206, 206, 206);
+      width: 80%;
+    }
+    .des {
+      width: 80%;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 25px;
+      color: rgb(29, 29, 29);
+      margin-bottom: 20px;
+    }
+    .wrapper {
+      margin-top: 40px;
+      width: 80%;
+      .section {
+        margin: 20px 0;
+        .sectionName {
+          font-size: 30px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
