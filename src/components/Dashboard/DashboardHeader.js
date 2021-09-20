@@ -13,7 +13,6 @@ import Menu from "./Menu";
 function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
-  const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   const { setuser, setuserdata, showmenu, setshowmenu } =
@@ -36,15 +35,6 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        <div
-          className={`${styles.settings} ${styles.icon} ${
-            rotatesetting ? styles.rotate : ""
-          }`}
-          onMouseEnter={() => setrotatesetting(true)}
-          onMouseLeave={() => setrotatesetting(false)}
-        >
-          <SettingsSvg />
-        </div>
         <div
           className={`${styles.notification} ${styles.icon} ${
             bell ? styles.bell : ""

@@ -1,0 +1,28 @@
+.cheatCodeFull {
+  height: 100vh;
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 14%;
+    align-items: center;
+    .heading {
+      font-weight: 600;
+      font-size: 40px;
+      margin-top: 50px;
+    }
+    .video {
+      width: 100%;
+      margin-top: 50px;
+      border: none;
+      height: 40vw;
+    }
+    .content {
+      margin-top: 50px;
+      font-weight: 400;
+      font-size: 20px;
+      color: rgb(44, 44, 44);
+      margin-bottom: 200px;
+    }
+  }
+}

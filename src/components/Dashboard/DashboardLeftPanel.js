@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard/dashboardleftpanel.module.scss";
 import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
+import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
 import KidSvg from "../SVGcomponents/KidsSvg";
 import Logo from "../SVGcomponents/Logo";
@@ -37,7 +38,7 @@ function DashboardLeftPanel({ type }) {
         />
       ) : (
         <MiniLogo
-          className={styles.dashboardLogo}
+          className={styles.miniLogo}
           onClick={() => router.push("/dashboard")}
         />
       )}
@@ -79,6 +80,18 @@ function DashboardLeftPanel({ type }) {
             <p className={styles.tabtitle}>My Kids</p>
           </div>
           <div
+            className={`${styles.tab} ${
+              currenttab === "/chores" ||
+              currenttab.indexOf("/managechore") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/chores")}
+          >
+            <ChoresSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Chores</p>
+          </div>
+          <div
             className={`${styles.tab}  ${
               currenttab === "/courses/home" ||
               currenttab.indexOf("/courses") !== -1
@@ -92,39 +105,14 @@ function DashboardLeftPanel({ type }) {
           </div>
           <div
             className={`${styles.tab}  ${
-              currenttab === "/quests/main" ||
-              currenttab.indexOf("/quests") !== -1
+              currenttab === "/games" || currenttab.indexOf("/games") !== -1
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/quests/main")}
+            onClick={() => router.push("/games")}
           >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Knowledge Quests</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/liveclasses" ||
-              currenttab.indexOf("/liveclasses") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/liveclasses")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Live Classes</p>
-          </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/chores" ||
-              currenttab.indexOf("/managechore") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/chores")}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
+            <GameSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Games</p>
           </div>
           <div
             className={`${styles.tab} ${
@@ -134,11 +122,6 @@ function DashboardLeftPanel({ type }) {
           >
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
-          </div>
-          <div className={styles.tab}>
-            <PaymentSvg className={styles.icon} />
-
-            <p className={styles.tabtitle}>Payments</p>
           </div>
         </div>
       )}

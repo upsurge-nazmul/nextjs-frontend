@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Dashboard/kidcomponent.module.scss";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
+import KidComponentMenu from "./KidComponentMenu";
 
 function KidComponent({ data }) {
+  const [showmenu, setshowmenu] = useState(false);
   return (
     <div className={styles.kidComponent}>
       <img src={data?.img_url} alt="" className={styles.kidimg} />
@@ -31,8 +33,13 @@ function KidComponent({ data }) {
           <p>{100 - data?.course_progress + "% Left"}</p>
         </div>
       </div>
-      <div className={styles.more}>
+      <div
+        className={styles.more}
+        id={data.id + "menu-button"}
+        onClick={() => setshowmenu(!showmenu)}
+      >
         <MenuSvg />
+        {showmenu && <KidComponentMenu data={data} setshowmenu={setshowmenu} />}
       </div>
     </div>
   );

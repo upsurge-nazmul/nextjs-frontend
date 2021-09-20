@@ -1,0 +1,46 @@
+.cheatCodeComponent {
+  width: 30%;
+  overflow: hidden;
+  img {
+    border-radius: 8px;
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+  }
+  .textcontent {
+    padding: 0 5px;
+    .categories {
+      display: flex;
+      margin: 2px 0;
+      overflow-y: auto;
+      .category {
+        margin-right: 2px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #4166eb;
+        font-family: "Roboto";
+        text-transform: uppercase;
+      }
+    }
+    .title {
+      margin-top: 5px;
+      font-size: 26px;
+      font-weight: 500;
+    }
+    .time {
+      margin-top: 5px;
+      font-size: 15px;
+      font-weight: 400;
+      color: rgb(85, 85, 85);
+    }
+    .description {
+      color: rgb(146, 146, 146);
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

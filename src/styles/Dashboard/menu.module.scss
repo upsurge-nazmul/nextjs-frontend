@@ -6,7 +6,11 @@
     right: 0;
   }
 }
-
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .menu {
   animation: bringdown 0.3s ease;
   position: absolute;
@@ -37,10 +41,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+    .editIcon {
+      width: 18px;
+      margin-right: 10px;
+      height: 18px;
+    }
+    .paymentIcon {
+      width: 18px;
+      margin-right: 10px;
+      height: 18px;
+      path {
+        stroke: #000000;
+      }
+    }
+    .settings {
+      width: 20px;
+      margin-right: 10px;
+      height: 20px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      &:hover {
+        svg {
+          transition: all 0.3s ease;
+          color: rgb(80, 80, 80);
+          path {
+          }
+        }
+      }
+    }
+    .rotate {
+      animation: rotate 1s ease infinite;
+    }
     &:hover {
       background-color: rgb(245, 245, 245);
     }
   }
+
   .button {
     color: #4166eb;
     border-radius: 8px;

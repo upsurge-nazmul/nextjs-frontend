@@ -140,7 +140,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
-          choresdata: choresdata.data,
+          choresdata: choresdata?.data || [],
           gamesdata,
           kiddata,
           liveclassdata,
