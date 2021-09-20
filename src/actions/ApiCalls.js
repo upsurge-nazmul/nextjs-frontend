@@ -1,6 +1,6 @@
 import axios from "axios";
-const BaseUrl = "http://192.168.29.204:4000/";
-// const BaseUrl = "http://13.235.23.121:4000/";
+// const BaseUrl = "http://localhost:4000/";
+const BaseUrl = "http://13.235.23.121:4000/";
 
 const getHeader = async (formData, token) => {
   return {
