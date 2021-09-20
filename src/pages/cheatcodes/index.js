@@ -39,7 +39,13 @@ function CheatCodes() {
         <div className={styles.line}></div>
         <div className={styles.wrapper}>
           {data.map((item, index) => {
-            return <CheatCodeComponent data={item} index={index} />;
+            return (
+              <CheatCodeComponent
+                data={item}
+                index={index}
+                key={"cheatcodecomponent" + index}
+              />
+            );
           })}
         </div>
       </div>

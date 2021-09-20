@@ -34,14 +34,14 @@ function CheatCodeFull() {
     <div className={styles.cheatCodeFull}>
       <Header />
       <div className={styles.container}>
-        <p className={styles.heading}>{data[cheatcodeid].title}</p>
+        <p className={styles.heading}>{data[cheatcodeid]?.title}</p>
         <iframe
           className={styles.video}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          src={data[cheatcodeid].link}
+          allowFullScreen
+          src={data[cheatcodeid]?.link}
         ></iframe>
-        <p className={styles.content}>{data[cheatcodeid].content}</p>
+        <p className={styles.content}>{data[cheatcodeid]?.content}</p>
       </div>
       <Footer />
     </div>

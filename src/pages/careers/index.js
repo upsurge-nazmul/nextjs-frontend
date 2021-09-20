@@ -44,7 +44,7 @@ function Careers() {
       <div className={styles.container}>
         <p className={styles.heading}>WHY UPSURGE ?</p>
         <p className={styles.des}>
-          It is a long established fact that a reader will be distracted by the
+          {`It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
           letters, as opposed to using 'Content here, content here', making it
@@ -52,16 +52,21 @@ function Careers() {
           page editors now use Lorem Ipsum as their default model text, and a
           search for 'lorem ipsum' will uncover many web sites still in their
           infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
+          accident, sometimes on purpose (injected humour and the like).`}
         </p>
         <p className={styles.heading}>CURRENT REQUIREMENTS</p>
         <div className={styles.wrapper}>
-          {data.map((section) => {
+          {data.map((section, index) => {
             return (
-              <div className={styles.section}>
+              <div className={styles.section} key={"Section" + index}>
                 <p className={styles.sectionName}>{section.section}</p>
-                {section.jobs.map((item) => {
-                  return <JobComponent data={item} />;
+                {section.jobs.map((item, jobindex) => {
+                  return (
+                    <JobComponent
+                      data={item}
+                      key={"section" + index + "job" + jobindex}
+                    />
+                  );
                 })}
               </div>
             );

@@ -52,9 +52,9 @@ function TeamsPage() {
           become more, you are a leader.
         </div>
         <div className={styles.wrapper}>
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
-              <div className={styles.member}>
+              <div className={styles.member} key={"teammeber" + index}>
                 <img src={item.img_url} alt="" />
                 <div className={styles.name}>{item.name}</div>
                 <div className={styles.position}>{item.position}</div>
