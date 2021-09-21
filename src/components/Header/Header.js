@@ -77,19 +77,19 @@ function Header({
           <HeaderTabSection
             title={"Products"}
             tabs={[
-              { name: "Knowledge Quest", pushTo: "/products/knowledgequests" },
+              { name: "Knowledge Quest", pushTo: "/knowledgequests" },
               {
                 name: "Games Arena",
-                pushTo: "/products/games",
+                pushTo: "/p_games",
               },
               {
                 name: "Jobs",
-                pushTo: "/products/jobs",
+                pushTo: "/jobs",
               },
-              { name: "Family Fun", pushTo: "/products/familyfun" },
-              { name: "Tribes", pushTo: "/products/tribes" },
-              { name: "Live Classes", pushTo: "/products/liveclasses" },
-              { name: "Pricing", pushTo: "/products/pricing" },
+              { name: "Family Fun", pushTo: "/familyfun" },
+              { name: "Tribes", pushTo: "/p_tribes" },
+              { name: "Live Classes", pushTo: "/p_liveclasses" },
+              { name: "Pricing", pushTo: "/pricing" },
             ]}
           />
           <HeaderTabSection

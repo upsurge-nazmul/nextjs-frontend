@@ -15,7 +15,7 @@ import styles from "../../styles/Auth/auth.module.scss";
 function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const [userdata, setuserdata] = useState(null);
-  const [mode, setmode] = useState("email");
+  const [mode, setmode] = useState("login");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -27,6 +27,16 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
     type: "success",
     msg: "",
   });
+
+  useEffect(() => {
+    if (!showauth) {
+      setmode("login");
+      setemail("");
+      setpassword("");
+      setphone("");
+      setsignupmethod("email");
+    }
+  }, [showauth]);
 
   useEffect(() => {
     if (!authmode) return;

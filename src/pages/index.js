@@ -27,6 +27,7 @@ function Home({ isLogged, userdata }) {
   const [mailfromhome, setmailfromhome] = useState("");
   const { user } = useContext(MainContext);
   const history = useRouter();
+
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);

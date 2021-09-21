@@ -106,29 +106,31 @@ function AuthFullData({
   function validatePassword(e) {
     let pass = e.target.value.trim();
     setpassword(pass);
-    setpasserror({
+    let res = {
       length: checkLength(pass),
       lower: checkLower(pass),
       upper: checkUpper(pass),
       special: checkSpecial(pass),
       number: checkNumber(pass),
-    });
+    };
+    console.log(res);
+    setpasserror(res);
   }
   function checkLength(pass) {
     return pass.length >= 8;
   }
   function checkLower(pass) {
-    return pass.search(/[a-z]/) > 0;
+    return !(pass.search(/[a-z]/) < 0);
   }
   function checkUpper(pass) {
     // password.search(/.*[A-Z].*/) > 0)
-    return pass.search(/[A-Z]/) > 0;
+    return !(pass.search(/[A-Z]/) < 0);
   }
   function checkNumber(pass) {
-    return pass.search(/[0-9]/) > 0;
+    return !(pass.search(/[0-9]/) < 0);
   }
   function checkSpecial(pass) {
-    return pass.search(/[!@#$%^&*]/) > 0;
+    return !(pass.search(/[!@#$%^&*]/) < 0);
   }
   return (
     <div className={styles.email}>
@@ -175,8 +177,35 @@ function AuthFullData({
         </>
       )}
       <div className={styles.passwordBox}>
+        {showdetailpass && (
+          <div className={styles.detailPass}>
+            <div className={styles.arrow}></div>
+            <div className={styles.tab}>
+              {passerror.length ? <CircleTick /> : <CircleWarning />}
+              <p className={styles.text}>8 Characters long</p>
+            </div>
+            <div className={styles.tab}>
+              {passerror.upper ? <CircleTick /> : <CircleWarning />}
+              <p className={styles.text}>Uppercase letter</p>
+            </div>
+            <div className={styles.tab}>
+              {passerror.lower ? <CircleTick /> : <CircleWarning />}
+              <p className={styles.text}>Lowercase letter</p>
+            </div>
+            <div className={styles.tab}>
+              {passerror.special ? <CircleTick /> : <CircleWarning />}
+              <p className={styles.text}>Special Character </p>
+            </div>
+            <div className={styles.tab}>
+              {passerror.number ? <CircleTick /> : <CircleWarning />}
+              <p className={styles.text}>Number</p>
+            </div>
+          </div>
+        )}
         <input
           type={passhidden ? "password" : "text"}
+          onFocus={() => setshowdetailpass(true)}
+          onBlur={() => setshowdetailpass(false)}
           placeholder="Password"
           value={password}
           className={password !== "" && passisweak ? styles.weakpass : ""}
@@ -186,30 +215,7 @@ function AuthFullData({
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
-      {true && (
-        <div className={styles.detailPass}>
-          <div className={styles.tab}>
-            {passerror.length ? <CircleTick /> : <CircleWarning />}
-            <p className={styles.text}>8 Characters long</p>
-          </div>
-          <div className={styles.tab}>
-            {passerror.upper ? <CircleTick /> : <CircleWarning />}
-            <p className={styles.text}>Uppercase letter</p>
-          </div>
-          <div className={styles.tab}>
-            {passerror.lower ? <CircleTick /> : <CircleWarning />}
-            <p className={styles.text}>Lowercase letter</p>
-          </div>
-          <div className={styles.tab}>
-            {passerror.special ? <CircleTick /> : <CircleWarning />}
-            <p className={styles.text}>Special Character </p>
-          </div>
-          <div className={styles.tab}>
-            {passerror.number ? <CircleTick /> : <CircleWarning />}
-            <p className={styles.text}>Number</p>
-          </div>
-        </div>
-      )}
+
       {true && <p className={styles.error}>{error}</p>}
 
       <div className={styles.button} onClick={() => handleUpdateData()}>
