@@ -5,6 +5,8 @@ import styles from "../../styles/Auth/auth.module.scss";
 import ReactTooltip from "react-tooltip";
 import validator from "validator";
 import { MainContext } from "../../context/Main";
+import CircleTick from "../SVGcomponents/CircleTick";
+import CircleWarning from "../SVGcomponents/CircleWarning";
 function AuthFullData({
   setphone,
   setpassword,
@@ -20,6 +22,15 @@ function AuthFullData({
     useContext(MainContext);
   const [passhidden, setpasshidden] = useState(true);
   const [passisweak, setpassisweak] = useState(false);
+  const [passerror, setpasserror] = useState({
+    length: false,
+    special: false,
+    lower: false,
+    upper: false,
+    number: false,
+  });
+
+  const [showdetailpass, setshowdetailpass] = useState(false);
   const [error, seterror] = useState("");
   useEffect(() => {
     seterror("");
@@ -91,6 +102,34 @@ function AuthFullData({
       setmode("otp");
     }
   }
+
+  function validatePassword(e) {
+    let pass = e.target.value.trim();
+    setpassword(pass);
+    setpasserror({
+      length: checkLength(pass),
+      lower: checkLower(pass),
+      upper: checkUpper(pass),
+      special: checkSpecial(pass),
+      number: checkNumber(pass),
+    });
+  }
+  function checkLength(pass) {
+    return pass.length >= 8;
+  }
+  function checkLower(pass) {
+    return pass.search(/[a-z]/) > 0;
+  }
+  function checkUpper(pass) {
+    // password.search(/.*[A-Z].*/) > 0)
+    return pass.search(/[A-Z]/) > 0;
+  }
+  function checkNumber(pass) {
+    return pass.search(/[0-9]/) > 0;
+  }
+  function checkSpecial(pass) {
+    return pass.search(/[!@#$%^&*]/) > 0;
+  }
   return (
     <div className={styles.email}>
       <div className={styles.phoneWrapper}>
@@ -141,12 +180,36 @@ function AuthFullData({
           placeholder="Password"
           value={password}
           className={password !== "" && passisweak ? styles.weakpass : ""}
-          onChange={(e) => setpassword(e.target.value)}
+          onChange={validatePassword}
         />
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
+      {true && (
+        <div className={styles.detailPass}>
+          <div className={styles.tab}>
+            {passerror.length ? <CircleTick /> : <CircleWarning />}
+            <p className={styles.text}>8 Characters long</p>
+          </div>
+          <div className={styles.tab}>
+            {passerror.upper ? <CircleTick /> : <CircleWarning />}
+            <p className={styles.text}>Uppercase letter</p>
+          </div>
+          <div className={styles.tab}>
+            {passerror.lower ? <CircleTick /> : <CircleWarning />}
+            <p className={styles.text}>Lowercase letter</p>
+          </div>
+          <div className={styles.tab}>
+            {passerror.special ? <CircleTick /> : <CircleWarning />}
+            <p className={styles.text}>Special Character </p>
+          </div>
+          <div className={styles.tab}>
+            {passerror.number ? <CircleTick /> : <CircleWarning />}
+            <p className={styles.text}>Number</p>
+          </div>
+        </div>
+      )}
       {true && <p className={styles.error}>{error}</p>}
 
       <div className={styles.button} onClick={() => handleUpdateData()}>
