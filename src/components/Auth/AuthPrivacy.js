@@ -11,11 +11,20 @@ function AuthPrivacy({ setmode }) {
     let removethisonexit = privacyDiv.addEventListener("scroll", (e) => {
       // console.log(e.target);
       // console.log(e.target.scrollTop + " " + e.target.scrollHeight);
-      if (e.target.scrollTop + e.target.offsetHeight >= e.target.scrollHeight) {
+      if (
+        e.target.scrollTop + e.target.offsetHeight >=
+        e.target.scrollHeight - 100
+      ) {
         setendreached(true);
       }
     });
     return () => removethisonexit;
+  }, []);
+  useEffect(() => {
+    let privacyDiv = document.getElementById("privacy-main");
+    if (privacyDiv) {
+      privacyDiv.scrollTop = 0;
+    }
   }, []);
   return (
     <div className={styles.privacy}>
