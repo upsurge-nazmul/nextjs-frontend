@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import AuthHeader from "./AuthHeader";
@@ -11,9 +11,11 @@ import AuthFullData from "./AuthFullData";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
+import { MainContext } from "../../context/Main";
 
 function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
+  const { setfirstName, setlastName } = useContext(MainContext);
   const [userdata, setuserdata] = useState(null);
   const [mode, setmode] = useState("login");
   const [phone, setphone] = useState("");
@@ -34,6 +36,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
       setemail("");
       setpassword("");
       setphone("");
+      setfirstName("");
+      setlastName("");
       setsignupmethod("email");
     }
   }, [showauth]);
