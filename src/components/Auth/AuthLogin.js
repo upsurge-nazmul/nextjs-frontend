@@ -57,7 +57,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
           history.push("/dashboard");
         else history.push("/kiddashboard");
       } else {
-        seterror("Cannot reach server");
+        seterror(response.data.message || "Cannot reach server");
       }
     } else {
       seterror("");
