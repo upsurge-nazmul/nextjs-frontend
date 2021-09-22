@@ -10,6 +10,8 @@ function AuthOtpComponent({
   setuserdata,
   settoastdata,
   setmode,
+  error,
+  seterror,
 }) {
   const [OTP, setOTP] = useState("");
 
@@ -21,7 +23,7 @@ function AuthOtpComponent({
       localStorage.setItem("islogged", true);
       setmode("privacy");
     } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
+      seterror(response.data.message || "Cannot reach server");
     }
   }
   async function resendOtp() {
@@ -29,7 +31,7 @@ function AuthOtpComponent({
     if (response.data.success) {
       settoastdata({ show: true, msg: response.data.message, type: "success" });
     } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
+      seterror(response.data.message || "Cannot reach server");
     }
   }
   return (
@@ -48,6 +50,8 @@ function AuthOtpComponent({
       <div className={styles.resendButton} onClick={resendOtp}>
         Resend OTP
       </div>
+      {error && <p className={styles.error}>{error}</p>}
+
       <div className={styles.button} onClick={() => verifyOtp()}>
         Continue
       </div>

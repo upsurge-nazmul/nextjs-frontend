@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
@@ -9,7 +9,7 @@ import AppleSvg from "../SVGcomponents/AppleSvg";
 import { MainContext } from "../../context/Main";
 import GoogleLogin from "react-google-login";
 
-function AuthLogin({ settoastdata }) {
+function AuthLogin({ settoastdata, error, seterror }) {
   const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -18,14 +18,10 @@ function AuthLogin({ settoastdata }) {
   // login Function
   async function handleSignin() {
     if (password === "" || !validator.isEmail(email)) {
-      settoastdata({
-        show: true,
-        msg: "Enter password and email",
-        type: "error",
-      });
+      seterror("Enter password and email");
       return;
     }
-
+    seterror("");
     let response = await LoginApis.login({ email, password });
     if (response && response.data && response.data.success) {
       setCookie("accesstoken", response.data.data.token);
@@ -40,11 +36,7 @@ function AuthLogin({ settoastdata }) {
         history.push("/dashboard");
       else history.push("/kiddashboard");
     } else {
-      settoastdata({
-        show: true,
-        msg: response?.data.message || "Cannot reach server",
-        type: "error",
-      });
+      seterror(response.data.message || "Cannot reach server");
     }
   }
   async function handlegoogleLogin(data) {
@@ -65,16 +57,16 @@ function AuthLogin({ settoastdata }) {
           history.push("/dashboard");
         else history.push("/kiddashboard");
       } else {
-        settoastdata({
-          show: true,
-          msg: response?.data.message || "Cannot reach server",
-          type: "error",
-        });
+        seterror("Cannot reach server");
       }
     } else {
-      settoastdata({ show: true, msg: "Error", type: "error" });
+      seterror("");
     }
   }
+
+  useEffect(() => {
+    seterror("");
+  }, [email, password]);
   return (
     <div className={styles.logindetails}>
       <input
@@ -94,6 +86,7 @@ function AuthLogin({ settoastdata }) {
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
+      {error && <p className={styles.error}>{error}</p>}
       <div className={styles.button} onClick={handleSignin}>
         Sign In
       </div>

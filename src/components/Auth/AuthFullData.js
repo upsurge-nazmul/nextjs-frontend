@@ -17,6 +17,8 @@ function AuthFullData({
   email,
   signupmethod,
   usertype,
+  seterror,
+  error,
 }) {
   const { firstName, setfirstName, lastName, setlastName, setuserdata } =
     useContext(MainContext);
@@ -31,31 +33,26 @@ function AuthFullData({
   });
 
   const [showdetailpass, setshowdetailpass] = useState(false);
-  const [error, seterror] = useState("");
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
     else setpassisweak(false);
   }, [password]);
 
+  useEffect(() => {
+    seterror("");
+  }, [password, firstName, phone]);
+
   async function handleUpdateData() {
     if (!validator.isMobilePhone(phone, "en-IN")) {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: "Invalid Phone",
-      });
+      seterror("Invalid Phone");
       return;
     }
     let checkphone = await LoginApis.checkphone({ phone });
     if (checkphone && checkphone.data && checkphone.data.success) {
       console.log("phone ok");
     } else {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: checkphone?.data.message || "Error connecting to server",
-      });
+      seterror(checkphone?.data.message || "Error connecting to server");
       return;
     }
     if (passisweak) {
@@ -64,12 +61,8 @@ function AuthFullData({
       );
       return;
     }
-    if (!firstName || !lastName || !password) {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: "Enter Valid Details",
-      });
+    if (!firstName || !password) {
+      seterror("FirstName is required");
       return;
     }
     let response = await LoginApis.signup({
@@ -83,11 +76,7 @@ function AuthFullData({
     });
 
     if (!response || !response.data.success) {
-      settoastdata({
-        show: true,
-        msg: response.data.message || "Error connecting to server",
-        type: "error",
-      });
+      seterror(response.data.message || "Error connecting to server");
     } else {
       if (signupmethod === "email") {
         LoginApis.sendverificationemail();
@@ -216,7 +205,7 @@ function AuthFullData({
         </p>
       </div>
 
-      {true && <p className={styles.error}>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.button} onClick={() => handleUpdateData()}>
         Continue

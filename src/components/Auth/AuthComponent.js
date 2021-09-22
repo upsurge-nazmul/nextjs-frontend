@@ -23,7 +23,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   const [password, setpassword] = useState("");
   const [usertype, setusertype] = useState("parent");
   const [signupmethod, setsignupmethod] = useState("email");
-
+  const [error, seterror] = useState(null);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -90,7 +90,11 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
               ) : null}
 
               {mode === "login" ? (
-                <AuthLogin settoastdata={settoastdata} />
+                <AuthLogin
+                  settoastdata={settoastdata}
+                  error={error}
+                  seterror={seterror}
+                />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
               ) : mode === "learner" ? (
@@ -100,7 +104,9 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   settoastdata={settoastdata}
                   usertype={usertype}
                   setmode={setmode}
+                  error={error}
                   setemail={setemail}
+                  seterror={seterror}
                   email={email}
                   setsignupmethod={setsignupmethod}
                 />
@@ -111,7 +117,9 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   setmode={setmode}
                   phone={phone}
                   setphone={setphone}
+                  error={error}
                   password={password}
+                  seterror={seterror}
                   setpassword={setpassword}
                   signupmethod={signupmethod}
                   usertype={usertype}
@@ -120,13 +128,17 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                 <AuthPhone
                   phone={phone}
                   setphone={setphone}
+                  error={error}
                   setmode={setmode}
+                  seterror={seterror}
                 />
               ) : mode === "otp" ? (
                 <AuthOtpComponent
                   phone={phone}
+                  error={error}
                   email={email}
                   password={password}
+                  seterror={seterror}
                   setuserdata={setuserdata}
                   settoastdata={settoastdata}
                   setmode={setmode}

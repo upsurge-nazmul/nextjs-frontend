@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -15,16 +15,14 @@ function AuthParent({
   setmode,
   setemail,
   email,
+  error,
+  seterror,
 }) {
   const { firstName, setfirstName, lastName, setlastName } =
     useContext(MainContext);
   async function handleParentSignUp(email, method) {
     if (!validator.isEmail(email)) {
-      settoastdata({
-        show: true,
-        msg: "Enter valid email address",
-        type: "error",
-      });
+      seterror("Enter valid email address");
       return;
     }
 
@@ -36,12 +34,8 @@ function AuthParent({
         !emailcheckresponse.data.success
       )
         setmode("email");
-      else
-        settoastdata({
-          show: true,
-          msg: emailcheckresponse.data.message,
-          type: "error",
-        });
+      else seterror(emailcheckresponse.data.message || "Cannot reach server");
+
       return;
     }
     // temp changes
@@ -52,11 +46,7 @@ function AuthParent({
     });
 
     if (!response.data.success) {
-      settoastdata({
-        show: true,
-        msg: response.data.message,
-        type: "error",
-      });
+      seterror(response.data.message || "Cannot reach server");
     } else {
       setCookie("accesstoken", response.data.data.token);
       setmode("email");
@@ -87,15 +77,14 @@ function AuthParent({
         setemail(data.profileObj.email);
         setsignupmethod("google");
         setmode("email");
-      } else
-        settoastdata({
-          show: true,
-          msg: emailcheckresponse.data.message,
-          type: "error",
-        });
+      } else seterror(emailcheckresponse.data.message || "Cannot reach server");
       return;
     }
   }
+
+  useEffect(() => {
+    seterror("");
+  }, [email]);
   return (
     <div className={styles.parent}>
       <GoogleLogin
@@ -138,6 +127,8 @@ function AuthParent({
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />
+      {error && <p className={styles.error}>{error}</p>}
+
       <div
         className={styles.button}
         onClick={() => {

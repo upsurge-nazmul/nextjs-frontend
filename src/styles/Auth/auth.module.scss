@@ -192,6 +192,14 @@
             background: #292929;
           }
         }
+        .error {
+          font-size: 15px;
+          color: #ff6263;
+          font-weight: 500;
+          margin-bottom: 20px;
+          width: 100%;
+          text-align: center;
+        }
         .reset {
           font-weight: 500;
           font-size: 18px;
@@ -301,6 +309,14 @@
         align-items: center;
         transition: all 0.3s ease;
         justify-content: center;
+        .error {
+          font-size: 15px;
+          color: #ff6263;
+          font-weight: 500;
+          margin-bottom: 20px;
+          width: 100%;
+          text-align: center;
+        }
         .button {
           background: #4166eb;
           border-radius: 14px;
@@ -484,6 +500,7 @@
         flex-direction: column;
         align-items: center;
         .error {
+          font-weight: 500;
           font-size: 15px;
           color: #ff6263;
           text-align: center;
@@ -643,6 +660,14 @@
         width: 100%;
         flex-direction: column;
         align-items: center;
+        .error {
+          font-size: 15px;
+          color: #ff6263;
+          font-weight: 500;
+          margin-bottom: 20px;
+          width: 100%;
+          text-align: center;
+        }
         .otpHeadWrapper {
           display: flex;
           flex-direction: column;

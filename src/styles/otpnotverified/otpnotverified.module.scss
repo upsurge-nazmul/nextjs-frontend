@@ -21,6 +21,14 @@
       border-radius: 37px;
       position: relative;
       transition: all 0.3s ease;
+      .error {
+        font-size: 15px;
+        color: #ff6263;
+        font-weight: 500;
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+      }
       .headingflex {
         font-family: Rubik;
         font-style: normal;

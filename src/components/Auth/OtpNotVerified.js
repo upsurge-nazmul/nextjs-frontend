@@ -12,14 +12,18 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
     type: "success",
     msg: "",
   });
+  const [error, seterror] = useState(null);
 
+  useEffect(() => {
+    seterror("");
+  }, [OTP]);
   async function verifyOtp() {
     let response = await LoginApis.verifyotp({ otp: OTP.toString() });
     if (response.data.success) {
       settoastdata({ show: true, msg: response.data.message, type: "success" });
       setphoneverified(true);
     } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
+      seterror(response.data.message || "Cannot connect to server");
     }
   }
 
@@ -28,7 +32,7 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
     if (response.data.success) {
       settoastdata({ show: true, msg: response.data.message, type: "success" });
     } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
+      seterror(response.data.message || "Cannot connect to server");
     }
   }
   return (
@@ -47,6 +51,8 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
               </p>
               <p className={styles.phone}>{"+91 " + phone}</p>
             </div>
+            {error && <p className={styles.error}>{error}</p>}
+
             <OtpInput
               value={OTP}
               inputStyle={{ margin: "5px", width: "50px" }}
@@ -55,9 +61,11 @@ export default function OtpNotVerfied({ userphone, setphoneverified }) {
               }}
               numInputs={6}
             />
+
             <div className={styles.resendButton} onClick={() => resendOtp()}>
               Resend OTP
             </div>
+
             <div className={styles.button} onClick={() => verifyOtp()}>
               Continue
             </div>
