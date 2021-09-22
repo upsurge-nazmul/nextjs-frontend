@@ -30,7 +30,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
 
   useEffect(() => {
     if (!showauth) {
-      setmode("privacy");
+      setmode("login");
       setemail("");
       setpassword("");
       setphone("");
