@@ -28,7 +28,6 @@
           height: fit-content;
           display: flex;
           flex-direction: column;
-
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -74,6 +73,67 @@
           }
           .wrapper {
             padding: 0 20px 10px 0px;
+          }
+          .loadallkids {
+            text-align: center;
+            color: #6d6d6d;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 10px 0;
+            &:hover {
+              font-size: 18px;
+              color: hsl(0, 0%, 0%);
+            }
+          }
+          .addmorechild {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(235, 235, 235);
+            cursor: pointer;
+            height: 70px;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            p {
+              text-align: center;
+              color: #6d6d6d;
+              transition: all 0.3s ease;
+              font-size: 16px;
+              font-weight: 500;
+            }
+            &:hover {
+              p {
+                font-size: 18px;
+                color: hsl(0, 0%, 100%);
+              }
+              box-shadow: #4166eb 0px -70px 0px 0px inset;
+            }
+          }
+          .scrollwrapper {
+            height: 300px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            padding-bottom: 0px;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
           }
         }
         .choreSection {

@@ -1,7 +1,10 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useEffect } from "react";
+import DashboardApis from "../../actions/apis/DashboardApis";
 import styles from "../../styles/Dashboard/kidmenu.module.scss";
 
-function KidComponentMenu({ data, setshowmenu }) {
+function KidComponentMenu({ data, setshowmenu, setkids, settoastdata }) {
+  const router = useRouter();
   useEffect(() => {
     function getifclickedoutside(e) {
       var menu = document.getElementById(data.id);
@@ -15,11 +18,36 @@ function KidComponentMenu({ data, setshowmenu }) {
     document.addEventListener("mousedown", getifclickedoutside);
     return () => document.addEventListener("mousedown", getifclickedoutside);
   }, []);
+  async function deletechild() {
+    let res = await DashboardApis.deletechild({ id: data.id });
+    if (res && res.data.success) {
+      setkids((prev) => prev.filter((item) => item.id !== data.id));
+      settoastdata({ show: true, type: "success", msg: "done" });
+    } else {
+      settoastdata({
+        type: "error",
+        show: true,
+        msg: res.data.message || "error deleting",
+      });
+    }
+  }
   return (
     <div className={styles.kidmenu} id={data.id}>
-      <p className={styles.tab}>View Profile</p>
-      <p className={styles.tab}>Edit Profile</p>
-      <p className={styles.tab}>Delete Profile</p>
+      <p
+        className={styles.tab}
+        onClick={() => router.push("/child/" + data.id)}
+      >
+        View Profile
+      </p>
+      <p
+        className={styles.tab}
+        onClick={() => router.push("/child/" + data.id)}
+      >
+        Edit Profile
+      </p>
+      <p className={styles.tab} onClick={deletechild}>
+        Delete Profile
+      </p>
     </div>
   );
 }

@@ -30,6 +30,7 @@ function Dashboard({
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
+  const [showall, setshowall] = useState(false);
   const [kids, setkids] = useState(kidsdata || []);
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
@@ -99,13 +100,45 @@ function Dashboard({
                 </div>
               )}
               {kids.length > 0 ? (
-                <div className={styles.wrapper}>
-                  {kids.map((item, index) => {
-                    return (
-                      <KidComponent data={item} key={"kidcomponent" + index} />
-                    );
-                  })}
-                </div>
+                <>
+                  <div className={`${styles.wrapper}`}>
+                    {showall
+                      ? kids.map((item, index) => {
+                          return (
+                            <KidComponent
+                              setkids={setkids}
+                              settoastdata={settoastdata}
+                              data={item}
+                              key={"kidcomponent" + index}
+                            />
+                          );
+                        })
+                      : kids.slice(0, 3).map((item, index) => {
+                          return (
+                            <KidComponent
+                              setkids={setkids}
+                              settoastdata={settoastdata}
+                              data={item}
+                              key={"kidcomponent" + index}
+                            />
+                          );
+                        })}
+                  </div>
+                  {kids.length > 2 && !showall && (
+                    <p
+                      className={styles.loadallkids}
+                      onClick={() => setshowall(true)}
+                    >
+                      load all
+                    </p>
+                  )}
+                  <div
+                    className={styles.addmorechild}
+                    onClick={() => router.push("/child/add")}
+                  >
+                    <p>Add child</p>
+                  </div>
+                </>
               ) : (
                 <NoKid setkids={setkids} />
               )}
@@ -113,7 +146,7 @@ function Dashboard({
             {kids.length > 0 && (
               <div className={styles.choreSection}>
                 <h2 className={styles.heading}>
-                  Chores
+                  Approvals
                   <HeadingArrow />
                 </h2>
                 <div className={styles.wrapper}>
@@ -130,27 +163,21 @@ function Dashboard({
             )}
           </div>
           <div className={styles.flexRight}>
-            {kids.length > 0 && (
-              <div className={styles.gameSection}>
-                <h2 className={styles.heading}>
-                  Family Fun
-                  <HeadingArrow />
-                </h2>
+            <div className={styles.gameSection}>
+              <h2 className={styles.heading}>
+                Family Fun
+                <HeadingArrow />
+              </h2>
 
-                <div className={styles.wrapper} id="gamecardwrapper">
-                  {familyfun.map((data, index) => {
-                    return (
-                      <GameCard data={data} key={"gamecardcomponent" + index} />
-                    );
-                  })}
-                </div>
+              <div className={styles.wrapper} id="gamecardwrapper">
+                {familyfun.map((data, index) => {
+                  return (
+                    <GameCard data={data} key={"gamecardcomponent" + index} />
+                  );
+                })}
               </div>
-            )}
-            <div
-              className={`${styles.liveClassSection} ${
-                kids.length === 0 ? styles.nokidlivesection : ""
-              }`}
-            >
+            </div>
+            <div className={`${styles.liveClassSection} `}>
               <h2 className={styles.heading}>
                 Live Classes
                 <HeadingArrow />

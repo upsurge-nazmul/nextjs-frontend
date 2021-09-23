@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/dropdown.module.scss";
 import DropDownArrow from "./SVGcomponents/DropDownArrow";
 function DropDown({ value, setvalue, options, keyprefix, placeholder }) {
@@ -13,11 +13,11 @@ function DropDown({ value, setvalue, options, keyprefix, placeholder }) {
         className={styles.selected}
         onClick={() => setshowoptions(!showoptions)}
       >
-        <p className="text">{value}</p>
+        <p className="text">{value || placeholder}</p>
         <DropDownArrow />
       </div>
       {showoptions && (
-        <div className={styles.options}>
+        <div className={styles.options} id={placeholder + "dropdown"}>
           {options.map((item, index) => {
             return (
               <p

@@ -20,7 +20,13 @@ const addkids = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const editkids = (payload) => {
+  return ApiCalls.postResponse(
+    `parent/updatechild`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getkids = (payload, token) => {
   return ApiCalls.getResponse(`parent/getchildren`, payload, token);
 };
@@ -65,6 +71,13 @@ const getallbadges = (payload, token) => {
 const getallvouchers = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailablevouchers`, payload, token);
 };
+const deletechild = (payload) => {
+  return ApiCalls.deleteResponse(
+    "parent/deletechild",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -82,6 +95,8 @@ const DashboardApis = {
   getallavatars,
   getallbadges,
   getallvouchers,
+  editkids,
+  deletechild,
 };
 
 export default DashboardApis;

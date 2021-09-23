@@ -12,10 +12,9 @@ import Menu from "./Menu";
 
 function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
-  const { userdata } = useContext(MainContext);
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
-  const { setuser, setuserdata, showmenu, setshowmenu } =
+  const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
     useContext(MainContext);
 
   return (
@@ -56,7 +55,9 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
           {showmenu && <Menu settoastdata={settoastdata} />}
           <img
             id="avatar-button"
-            src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
+            src={
+              userdata?.img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+            }
             alt=""
           />
         </div>

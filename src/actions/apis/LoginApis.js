@@ -69,6 +69,9 @@ const genotp = (payload) => {
 const checkphone = (payload) => {
   return ApiCalls.postResponse(`users/checkphone`, payload);
 };
+const getuserbyid = (payload, token) => {
+  return ApiCalls.getResponse("users/finduserbyid", payload, token);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -83,6 +86,7 @@ const LoginApis = {
   sendverificationemail,
   checkphone,
   googlelogin,
+  getuserbyid,
 };
 
 export default LoginApis;

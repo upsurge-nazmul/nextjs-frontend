@@ -22,6 +22,7 @@ function AuthFullData({
 }) {
   const { firstName, setfirstName, lastName, setlastName, setuserdata } =
     useContext(MainContext);
+  const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
   const [passisweak, setpassisweak] = useState(false);
   const [passerror, setpasserror] = useState({
@@ -32,7 +33,6 @@ function AuthFullData({
     number: false,
   });
 
-  const [showdetailpass, setshowdetailpass] = useState(false);
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);

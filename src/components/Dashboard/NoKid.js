@@ -9,7 +9,7 @@ function NoKid({ setkids }) {
   return (
     <div className={styles.noKidComponent}>
       <div className={styles.noKidtextContent}>
-        <p className={styles.noKidheading}>Ready to add your kid?</p>
+        <p className={styles.noKidheading}>Add a Kid to explore upsurge.</p>
         <p className={styles.noKidsubheading}>
           Click “Add a child” to create a new account for your child or connect
           to an existing account.
@@ -20,7 +20,7 @@ function NoKid({ setkids }) {
         </p>
         <div
           className={styles.noKidbutton}
-          onClick={() => router.push("/addchild")}
+          onClick={() => router.push("/child/add")}
         >
           Add a child
         </div>

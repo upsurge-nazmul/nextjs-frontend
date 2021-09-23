@@ -57,11 +57,12 @@ export const putResponse = async (url, payload) => {
     });
 };
 
-export const deleteResponse = async (url) => {
+export const deleteResponse = async (url, params, token) => {
   const URL = BaseUrl + url;
   return axios(URL, {
+    params,
     method: "DELETE",
-    headers: await getHeader(),
+    headers: await getHeader(false, token),
   })
     .then((response) => response)
     .catch((error) => {

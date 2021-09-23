@@ -1,9 +1,11 @@
+import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 
 function GameCard({ data }) {
+  const router = useRouter();
   return (
-    <div className={styles.gameCard}>
+    <div className={styles.gameCard} onClick={() => router.push("/gamepage")}>
       <img
         src={
           data.img ||

@@ -4,7 +4,7 @@ import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
 import KidComponentMenu from "./KidComponentMenu";
 
-function KidComponent({ data }) {
+function KidComponent({ data, setkids, settoastdata }) {
   const [showmenu, setshowmenu] = useState(false);
   return (
     <div className={styles.kidComponent}>
@@ -39,7 +39,14 @@ function KidComponent({ data }) {
         onClick={() => setshowmenu(!showmenu)}
       >
         <MenuSvg />
-        {showmenu && <KidComponentMenu data={data} setshowmenu={setshowmenu} />}
+        {showmenu && (
+          <KidComponentMenu
+            setkids={setkids}
+            data={data}
+            settoastdata={settoastdata}
+            setshowmenu={setshowmenu}
+          />
+        )}
       </div>
     </div>
   );

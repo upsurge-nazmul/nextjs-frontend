@@ -79,9 +79,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
         </div>
       </div>
       <IntroSvg className={styles.homesvg} />
-      <div className={styles.ballsvg}>
-        <BallsSvg />
-      </div>
+      <BallsSvg className={styles.ballsvg} />
     </section>
   );
 }
