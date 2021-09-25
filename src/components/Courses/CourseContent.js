@@ -11,8 +11,8 @@ function CourseContent() {
       <p className={styles.type}>Challenge</p>
       <p className={styles.title}>Plan your Savings</p>
       <div className={styles.content}>
-        {domo.map((item) => {
-          return <p>{item}</p>;
+        {domo.map((item, index) => {
+          return <p key={"content" + index}>{item}</p>;
         })}
       </div>
       <p className={styles.description}>
