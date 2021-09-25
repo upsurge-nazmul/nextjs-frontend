@@ -48,6 +48,9 @@
       margin-right: 5px;
     }
   }
+  .mobiletribe {
+    display: none;
+  }
   .button {
     background: #4166eb;
     border-radius: 8px;
@@ -337,6 +340,7 @@
       display: none;
     }
     .mobiletribe {
+      display: block;
       margin-top: 1px;
       font-style: normal;
       font-weight: normal;
