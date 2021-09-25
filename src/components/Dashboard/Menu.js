@@ -47,7 +47,6 @@ function Menu({ settoastdata }) {
   }, []);
   return (
     <div className={styles.menu} id="menu-main">
-      <p className={styles.heading}>Welcome, {userdata.first_name}</p>
       <p
         className={styles.tabs}
         onClick={() => {

@@ -1,4 +1,4 @@
-.choreComponent {
+.tribeApproval {
   display: flex;
   width: 100%;
   max-width: 950px;
@@ -65,6 +65,29 @@
       border: 1px solid #4166eb;
     }
   }
+  .removebutton {
+    background: rgba(255, 98, 99, 1);
+    border-radius: 8px;
+    color: white;
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      border: 1px solid rgba(255, 98, 99, 1);
+      background-color: #ffffff;
+      svg {
+        path {
+          fill: rgba(255, 98, 99, 1);
+        }
+      }
+    }
+  }
   .more {
     flex: 1;
     max-width: 40px;
@@ -106,7 +129,7 @@
 }
 
 @media only screen and (max-width: 1378px) {
-  .choreComponent {
+  .tribeApproval {
     .taskAndTo {
       height: 100%;
       display: flex;
@@ -179,7 +202,7 @@
 }
 
 @media only screen and (max-width: 860px) {
-  .choreComponent {
+  .tribeApproval {
     position: relative;
     img {
       margin-right: 2px;
@@ -192,7 +215,7 @@
       margin-left: 10px;
       margin-right: 5px;
       min-width: 70px;
-      width: fit-content;
+      flex: 1;
       padding-top: 5px;
       .task {
         font-size: 16px;
@@ -202,19 +225,20 @@
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
+        margin-top: 2px;
         color: #828282;
       }
     }
     .time {
       display: flex;
       align-items: center;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 400;
       margin-right: 10px;
       margin-right: 5px;
       position: absolute;
       left: 85px;
-      bottom: 10px;
+      bottom: 12px;
       color: #828282;
       svg {
         margin-right: 3px;
@@ -234,13 +258,16 @@
       }
     }
     .button {
-      flex: 0.5;
       margin: 0;
       height: 35px;
       width: fit-content;
-      padding: 5px;
-      min-width: 100px;
-      margin-right: 5%;
+      padding: 0 15px;
+      min-width: 50px;
+      font-size: 14px;
+    }
+    .removebutton {
+      margin: 0;
+      margin-left: 10px;
     }
     .more {
       max-width: 5px;
@@ -259,7 +286,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .choreComponent {
+  .tribeApproval {
     display: flex;
     width: 100%;
     align-items: center;
@@ -280,13 +307,12 @@
     .taskAndTo {
       height: 100%;
       display: flex;
-      padding: 12px 0;
+      padding: 0;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       margin-left: 5px;
       margin-right: 5px;
       min-width: 30%;
-      flex: 1;
       .task {
         font-size: 12px;
         font-weight: 500;
@@ -302,39 +328,22 @@
     .completionIcon {
       display: flex;
       align-items: center;
-      max-width: fit-content;
-      margin-right: 10px;
-      svg {
-        width: 15px;
-      }
       .compIcon {
-        width: 10px;
+        width: 15px;
+        margin-right: 5px;
       }
     }
     .time {
-      display: flex;
-      align-items: center;
-      font-size: 8px;
-      font-weight: 400;
-      margin-right: 5px;
-      position: absolute;
-      left: 60px;
-      bottom: 6px;
-      p {
-        color: #828282;
-        width: fit-content;
-      }
-      svg {
-        margin-right: 2px;
-        fill: #828282;
-        width: 7px;
-        path {
-          fill: #828282;
-        }
-      }
+      display: none;
+    }
+    .mobiletribe {
+      margin-top: 1px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      color: #828282;
     }
     .button {
-      flex: none;
       background: #4166eb;
       border-radius: 6px;
       color: white;
@@ -344,16 +353,36 @@
       cursor: pointer;
       font-size: 10px;
       transition: all 0.3s ease;
-      margin-right: 0;
       height: 30px;
-      width: fit-content;
-      max-width: unset;
-      padding: 0 10px;
-      min-width: unset;
       &:hover {
         background-color: #ffffff;
         color: #4166eb;
         border: 1px solid #4166eb;
+      }
+    }
+    .removebutton {
+      background: rgba(255, 98, 99, 1);
+      border-radius: 6px;
+      color: white;
+      height: 30px;
+      margin-left: 5px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      svg {
+        width: 10px;
+      }
+      &:hover {
+        border: 1px solid rgba(255, 98, 99, 1);
+        background-color: #ffffff;
+        svg {
+          path {
+            fill: rgba(255, 98, 99, 1);
+          }
+        }
       }
     }
     .more {
@@ -367,7 +396,7 @@
   }
 }
 @media only screen and (max-width: 370px) {
-  .choreComponent {
+  .tribeApproval {
     .taskAndTo {
       max-width: 35%;
       min-width: 35%;

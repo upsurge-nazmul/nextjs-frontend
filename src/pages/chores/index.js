@@ -8,33 +8,15 @@ import ChorePending from "../../components/Chores/ChorePending";
 import ChoreTemplate from "../../components/Chores/ChoreTemplate";
 import styles from "../../styles/Chores/chorepage.module.scss";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
+import LoginApis from "../../actions/apis/LoginApis";
 
-function ChoresPage() {
+function ChoresPage({ choresdata }) {
   const [mode, setmode] = useState("chores");
   const [chores, setchores] = useState([]);
-  const [choremode, setchoremode] = useState("");
+  const [choremode, setchoremode] = useState("inprogress");
   const [showmodal, setshowmodal] = useState(false);
-  const [allchores, setallchores] = useState([]);
-  const [backupallchores, setbackupallchores] = useState([]);
-
-  useEffect(() => {
-    getchores();
-    getallchores();
-    async function getallchores() {
-      let response = await DashboardApis.getchores();
-      if (response.data.data) {
-        setallchores(response.data.data);
-        setbackupallchores(response.data.data);
-        setchoremode("inprogress");
-      }
-    }
-    async function getchores() {
-      let response = await DashboardApis.getcompletedchores();
-      if (response.data.data) {
-        setchores(response.data.data);
-      }
-    }
-  }, []);
+  const [allchores, setallchores] = useState(choresdata || []);
+  const [backupallchores, setbackupallchores] = useState(choresdata || []);
 
   useEffect(() => {
     if (choremode === "inprogress") {
@@ -145,3 +127,39 @@ function ChoresPage() {
 }
 
 export default ChoresPage;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return { props: { isLogged: false, msg: msg || "Error" } };
+    } else {
+      let choresdata = await getchores(token);
+      return {
+        props: {
+          isLogged: true,
+          choresdata,
+          msg: "",
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", choresdata: [] },
+    };
+  }
+}
+
+async function getchores(token) {
+  let response = await DashboardApis.getchores(null, token);
+  if (response && response.data && response.data.data) {
+    return response.data.data;
+  } else {
+    return [];
+  }
+}

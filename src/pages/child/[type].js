@@ -12,7 +12,7 @@ import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 
 function AddKid({ childdata }) {
-  console.log(childdata.dob);
+  console.log(childdata);
   const router = useRouter();
   const type = router.query.type;
   let state;
@@ -39,6 +39,8 @@ function AddKid({ childdata }) {
   const [passhidden, setpasshidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
+  const [city, setcity] = useState(childdata?.city || "");
+  const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
   useEffect(() => {
@@ -86,11 +88,13 @@ function AddKid({ childdata }) {
       firstName,
       lastName,
       gender,
-      dob: new Date(dob).getTime(),
+      dob: dob,
       image:
         "https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
       email: email,
       password,
+      city,
+      school,
     };
     let response = await DashboardApis.addkids(data);
     if (response && response.data && response.data.success) {
@@ -143,8 +147,12 @@ function AddKid({ childdata }) {
     if (password && password !== childdata.password) {
       data.password = password;
     }
-    console.log(dob);
-    console.log(data);
+    if (city && city !== childdata.city) {
+      data.city = city;
+    }
+    if (school && school !== childdata.school) {
+      data.school = school;
+    }
     if (JSON.stringify(data) === JSON.stringify({ id: type, email })) {
       seterror("No changes done");
       return;
@@ -250,13 +258,27 @@ function AddKid({ childdata }) {
             />
             <DropDown
               placeholder="Gender"
-              options={["male", "female", "other"]}
+              options={["male", "female", "i prefer not to say"]}
               value={gender}
               setvalue={setgender}
             />
+            <input
+              className={`${styles.usernameinput} `}
+              type="text"
+              value={city}
+              onChange={(e) => setcity(e.target.value)}
+              placeholder="City"
+            />
+            <input
+              style={type !== "add" ? { marginBottom: 0 } : null}
+              type="text"
+              value={school}
+              onChange={(e) => setschool(e.target.value)}
+              placeholder="School"
+            />
             {type === "add" && (
               <input
-                className={`${styles.usernameinput} `}
+                className={`${styles.optional} `}
                 type="text"
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
@@ -342,7 +364,7 @@ export async function getServerSideProps({ params, req }) {
 }
 
 async function getChildData(id, token) {
-  let response = await LoginApis.getuserbyid(id, token);
+  let response = await DashboardApis.getChildDetails(id, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

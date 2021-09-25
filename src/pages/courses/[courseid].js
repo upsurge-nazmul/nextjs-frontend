@@ -7,6 +7,7 @@ import CoursesComponent from "../../components/Courses/CoursesComponent";
 import KidCards from "../../components/Courses/KidCards";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
+import ApproveModal from "../../components/ParentStore/ApproveModal";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import Toast from "../../components/Toast";
 import styles from "../../styles/Courses/coursesPage.module.scss";
@@ -21,12 +22,43 @@ function CoursesPage({ liveclassdata }) {
     type: "success",
     msg: "",
   });
-  const availableCourses = ["", "", ""];
+  const availableCourses = [
+    {
+      name: "Learn Investment Basics",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+    },
+    {
+      name: "Learn Investment Basics",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+    },
+    {
+      name: "Learn Investment Basics",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+    },
+  ];
   const kiddata = ["", "", ""];
+  const [showmodal, setshowmodal] = useState(false);
+  const [buydata, setbuydata] = useState({
+    price: 10,
+    type: "rs",
+    name: "",
+    description: "",
+  });
   return (
     <div className={styles.coursesPage}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+      <ApproveModal
+        showmodal={showmodal}
+        setshowmodal={setshowmodal}
+        buydata={buydata}
+      />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         {courseid === "home" ? (
@@ -78,7 +110,14 @@ function CoursesPage({ liveclassdata }) {
                   </h2>
                   <div className={styles.wrapper}>
                     {availableCourses.map((item, index) => {
-                      return <AvailableCourse key={"available" + index} />;
+                      return (
+                        <AvailableCourse
+                          data={item}
+                          setbuydata={setbuydata}
+                          setshowmodal={setshowmodal}
+                          key={"available" + index}
+                        />
+                      );
                     })}
                   </div>
                 </div>

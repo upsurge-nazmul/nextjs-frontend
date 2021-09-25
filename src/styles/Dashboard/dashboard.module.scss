@@ -3,16 +3,18 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   .contentWrapper {
     height: 100vh;
     flex: 1;
     display: flex;
     width: 100%;
     max-width: calc(100vw - 350px);
+    overflow: auto;
     flex-direction: column;
     .mainContent {
       width: 100%;
+      height: 100vh;
       display: flex;
       overflow-y: auto;
       margin-top: 20px;
@@ -24,6 +26,7 @@
         width: 60%;
         max-width: 950px;
         padding: 0 10px 0 45px;
+        margin-bottom: 100px;
         .kidsSection {
           height: fit-content;
           display: flex;
@@ -34,6 +37,7 @@
             color: rgba(87, 88, 128, 1);
             display: flex;
             align-items: center;
+            cursor: pointer;
             svg {
               margin-left: 10px;
             }
@@ -139,7 +143,18 @@
         .choreSection {
           margin-top: 15px;
           display: flex;
+          height: 100%;
           flex-direction: column;
+          .subheading {
+            font-weight: 500;
+            color: rgba(87, 88, 128, 1);
+            font-size: 20px;
+            margin-top: 15px;
+            width: 100%;
+            border-bottom: 1px solid rgba(87, 88, 128, 0.418);
+            padding-bottom: 5px;
+            cursor: pointer;
+          }
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -148,6 +163,19 @@
             align-items: center;
             svg {
               margin-left: 10px;
+            }
+          }
+          .loadall {
+            text-align: center;
+            color: #6d6d6d;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 10px 0;
+            &:hover {
+              font-size: 18px;
+              color: hsl(0, 0%, 0%);
             }
           }
           .wrapper {
@@ -162,10 +190,11 @@
         height: 100%;
         width: 40%;
         padding-right: 50px;
+        margin-bottom: 200px;
         padding-left: 10px;
         .gameSection {
-          flex: 3;
           .heading {
+            cursor: pointer;
             font-weight: 500;
             font-size: 25px;
             color: rgba(87, 88, 128, 1);
@@ -189,10 +218,10 @@
         }
         .liveClassSection {
           flex: 1;
-          height: 65%;
           margin-top: 20px;
           .heading {
             font-weight: 500;
+            cursor: pointer;
             font-size: 25px;
             color: rgba(87, 88, 128, 1);
             display: flex;
@@ -204,10 +233,12 @@
           .wrapper {
             display: flex;
             flex-direction: column;
-            overflow: auto;
             width: 100%;
-            height: 80%;
             margin-top: 20px;
+            overflow: auto;
+          }
+          .scrollwrapper {
+            height: 80%;
             padding: 0 20px 10px 0px;
             /* ===== Scrollbar CSS ===== */
             /* Firefox */
@@ -228,6 +259,10 @@
             }
           }
         }
+        .wrapper {
+          height: 100%;
+          overflow: auto;
+        }
         .nokidlivesection {
           margin-top: 0;
           .wrapper {
@@ -246,7 +281,7 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-height: 900px) {
+@media only screen and (min-width: 769px) and (max-height: 1000px) {
   .dashboard {
     .contentWrapper {
       .mainContent {
@@ -365,7 +400,8 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 100%;
+          height: unset;
+          margin-bottom: 0;
           width: 100%;
           padding: 0 30px;
           .kidsSection {
@@ -498,7 +534,8 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 100%;
+          height: unset;
+
           width: 100%;
           padding: 0 15px;
           .kidsSection {

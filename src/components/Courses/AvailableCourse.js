@@ -6,7 +6,16 @@ import ProjectSvg from "../SVGcomponents/ProjectSvg";
 import SessionSvg from "../SVGcomponents/SessionSvg";
 import PeopleSvg from "../SVGcomponents/PeopleSvg";
 import CartSvg from "../SVGcomponents/CartSvg";
-function AvailableCourse() {
+function AvailableCourse({ data, setshowmodal, setbuydata }) {
+  function handlebuy() {
+    setbuydata({
+      amount: data.amount || 100,
+      type: "rs",
+      name: data.name || "",
+      description: data.description || "",
+    });
+    setshowmodal(true);
+  }
   return (
     <div className={styles.availableCourse}>
       <img
@@ -26,7 +35,7 @@ function AvailableCourse() {
             </div>
           </div>
           <div className={styles.priceandreview}>
-            <p className={styles.price}>₹35</p>
+            <p className={styles.price}>₹3,500</p>
             <ReactStars
               isHalf={true}
               count={5}
@@ -43,7 +52,6 @@ function AvailableCourse() {
             <TimeHollow />3 weeks
           </div>
           <div className={styles.keyPoints}>
-
             <ProjectSvg />4 projects
           </div>
           <div className={styles.keyPoints}>
@@ -54,7 +62,7 @@ function AvailableCourse() {
             14-16 years
           </div>
           <div className={styles.previewButton}>Preview Course</div>
-          <div className={styles.cartButton}>
+          <div className={styles.cartButton} onClick={handlebuy}>
             <CartSvg />
           </div>
         </div>

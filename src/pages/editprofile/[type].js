@@ -10,6 +10,7 @@ import ChangesOtpComponent from "../../components/ChangesOtpComponent";
 import LoginApis from "../../actions/apis/LoginApis";
 
 export default function EditProfile({ data }) {
+  console.log(data);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -52,7 +53,9 @@ export default function EditProfile({ data }) {
   }
 
   async function handleSave() {
-    let updated_data = {};
+    let updated_data = {
+      email: data.email,
+    };
     if (firstname && firstname !== data?.first_name) {
       updated_data.first_name = firstname;
     }
@@ -63,7 +66,7 @@ export default function EditProfile({ data }) {
       updated_data.gender = gender;
     }
     if (dob && dob !== data?.dob) {
-      updated_data.dob = new Date(dob).getTime();
+      updated_data.dob = dob;
     }
     if (password && password !== data?.password) {
       updated_data.password = password;
@@ -71,8 +74,9 @@ export default function EditProfile({ data }) {
     if (phone && phone !== data?.phone) {
       updated_data.phone = phone;
     }
-    console.log(JSON.stringify(updated_data));
-    if (JSON.stringify(updated_data) === "{}") {
+    if (
+      JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
+    ) {
       settoastdata({ msg: "No changes were made", show: true, type: "error" });
       return;
     }
@@ -129,18 +133,27 @@ export default function EditProfile({ data }) {
             />
             <input
               type="date"
-              value={dob}
+              value={
+                dob
+                  ? new Date(parseInt(dob))?.toISOString().substr(0, 10) || ""
+                  : ""
+              }
               onChange={(e) => {
-                let d = new Date();
-                d.setDate(d.getDate() - 1);
-                if (new Date(e.target.value).getTime() > d.getTime()) {
+                if (
+                  new Date(e.target.value).getDate() >= new Date().getDate()
+                ) {
                   settoastdata({
+                    msg: "Invaild date of birth",
                     show: true,
-                    msg: "Invalid Date of Birth",
+                    type: "error",
                   });
-                } else setdob(e.target.value);
+                } else {
+                  setdob(new Date(e.target.value).getTime());
+                }
               }}
-              placeholder="dob"
+              min="1997-01-01"
+              max="2030-12-31"
+              placeholder="dd-mm-yyyy"
             />
             <DropDown
               value={gender}

@@ -4,7 +4,9 @@ import { getCookie } from "../cookieUtils";
 const getuserdata = (payload, token) => {
   return ApiCalls.getResponse(`users/getprofile`, payload, token);
 };
-
+const getChildDetails = (payload, token) => {
+  return ApiCalls.getResponse(`parent/getchilddata`, payload, token);
+};
 const updateprofile = (payload) => {
   return ApiCalls.postResponse(
     "users/updateprofile",
@@ -97,6 +99,7 @@ const DashboardApis = {
   getallvouchers,
   editkids,
   deletechild,
+  getChildDetails,
 };
 
 export default DashboardApis;

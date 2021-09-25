@@ -24,12 +24,13 @@ export default function ParentStore({
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
   const router = useRouter();
-  const [showmodal, setshowmodal] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+  const [showmodal, setshowmodal] = useState(false);
+
   const [buydata, setbuydata] = useState({
     price: 10,
     type: "rs",

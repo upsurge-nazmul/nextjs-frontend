@@ -15,6 +15,8 @@ import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import OtpNotVerfied from "../../components/Auth/OtpNotVerified";
 import { MainContext } from "../../context/Main";
 import EmailVerificationPending from "../../components/EmailVerificationPending";
+import TribeApproval from "../../components/Dashboard/TribeApproval";
+import NoApproval from "../../components/Dashboard/NoApproval";
 
 function Dashboard({
   isLogged,
@@ -26,14 +28,62 @@ function Dashboard({
   phone_verified,
   userdatafromserver,
 }) {
+  let tempchores = [
+    {
+      id: "wqe",
+      image:
+        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
+      title: "Prepare Monthly Budget",
+      assigned_to: "Assigned to Pulkit",
+      time: "Due in 3 days",
+      completion: "completed",
+      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
+    },
+    {
+      id: "wqasde",
+      image:
+        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
+      title: "Prepare Monthly Budget",
+      assigned_to: "Assigned to Pulkit",
+      time: "Due in 3 days",
+      completion: "pending",
+      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
+    },
+    {
+      id: "wqqwee",
+      image:
+        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
+      title: "Prepare Monthly Budget",
+      assigned_to: "Assigned to Pulkit",
+      time: "Due in 3 days",
+      completion: "pending",
+      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
+    },
+    {
+      id: "wqweqe",
+      image:
+        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
+      title: "Prepare Monthly Budget",
+      assigned_to: "Assigned to Pulkit",
+      time: "Due in 3 days",
+      completion: "pending",
+      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
+    },
+  ];
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [showall, setshowall] = useState(false);
+  const [showalljobs, setshowalljobs] = useState(false);
   const [kids, setkids] = useState(kidsdata || []);
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
+  const [showConfirmation, setshowConfirmation] = useState(false);
+  const [confirmationgiven, setconfirmationgiven] = useState(false);
+  // const [chores, setchores] = useState([]);
+  // const [tribes, settribes] = useState([]);
+  const [tribes, settribes] = useState(["", "", ""]);
   const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [phoneverified, setphoneverified] = useState(phone_verified);
   const [toastdata, settoastdata] = useState({
@@ -66,6 +116,7 @@ function Dashboard({
     <div className={styles.dashboard}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+
       {userdatafromserver &&
         userdatafromserver.user_type !== "child" &&
         !phoneverified && (
@@ -86,7 +137,10 @@ function Dashboard({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.kidsSection}>
-              <h2 className={styles.heading}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/mykids")}
+              >
                 My Kids
                 <HeadingArrow />
               </h2>
@@ -100,45 +154,20 @@ function Dashboard({
                 </div>
               )}
               {kids.length > 0 ? (
-                <>
-                  <div className={`${styles.wrapper}`}>
-                    {showall
-                      ? kids.map((item, index) => {
-                          return (
-                            <KidComponent
-                              setkids={setkids}
-                              settoastdata={settoastdata}
-                              data={item}
-                              key={"kidcomponent" + index}
-                            />
-                          );
-                        })
-                      : kids.slice(0, 3).map((item, index) => {
-                          return (
-                            <KidComponent
-                              setkids={setkids}
-                              settoastdata={settoastdata}
-                              data={item}
-                              key={"kidcomponent" + index}
-                            />
-                          );
-                        })}
-                  </div>
-                  {kids.length > 2 && !showall && (
-                    <p
-                      className={styles.loadallkids}
-                      onClick={() => setshowall(true)}
-                    >
-                      load all
-                    </p>
-                  )}
-                  <div
-                    className={styles.addmorechild}
-                    onClick={() => router.push("/child/add")}
-                  >
-                    <p>Add child</p>
-                  </div>
-                </>
+                <div className={`${styles.wrapper}`}>
+                  {kids.map((item, index) => {
+                    return (
+                      <KidComponent
+                        confirmationgiven={confirmationgiven}
+                        setshowConfirmation={setshowConfirmation}
+                        setkids={setkids}
+                        settoastdata={settoastdata}
+                        data={item}
+                        key={"kidcomponent" + index}
+                      />
+                    );
+                  })}
+                </div>
               ) : (
                 <NoKid setkids={setkids} />
               )}
@@ -149,22 +178,61 @@ function Dashboard({
                   Approvals
                   <HeadingArrow />
                 </h2>
-                <div className={styles.wrapper}>
-                  {chores.map((data, index) => {
-                    return (
-                      <ChoreComponent
-                        data={data}
-                        key={"chorecomponent" + index}
-                      />
-                    );
-                  })}
-                </div>
+                {chores.length > 0 || tribes.length > 0 ? (
+                  <>
+                    {chores.length > 0 && (
+                      <>
+                        <p
+                          className={styles.subheading}
+                          onClick={() => router.push("/chores")}
+                        >
+                          Chores
+                        </p>
+                        <div className={styles.wrapper}>
+                          {chores.map((data, index) => {
+                            return (
+                              <ChoreComponent
+                                data={data}
+                                key={"chorecomponent" + index}
+                              />
+                            );
+                          })}
+                        </div>
+                      </>
+                    )}
+                    {tribes.length > 0 && (
+                      <>
+                        <p
+                          className={styles.subheading}
+                          onClick={() => router.push("/tribes")}
+                        >
+                          Tribes
+                        </p>
+                        <div className={styles.wrapper}>
+                          {tribes.map((data, index) => {
+                            return (
+                              <TribeApproval
+                                data={data}
+                                key={"chorecomponent" + index}
+                              />
+                            );
+                          })}
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <NoApproval />
+                )}
               </div>
             )}
           </div>
           <div className={styles.flexRight}>
             <div className={styles.gameSection}>
-              <h2 className={styles.heading}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/games")}
+              >
                 Family Fun
                 <HeadingArrow />
               </h2>
@@ -178,14 +246,21 @@ function Dashboard({
               </div>
             </div>
             <div className={`${styles.liveClassSection} `}>
-              <h2 className={styles.heading}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/courses/home")}
+              >
                 Live Classes
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
                 {liveclasses.map((data, index) => {
                   return (
-                    <LiveClass data={data} key={"liveclasscomponent" + index} />
+                    <LiveClass
+                      data={data}
+                      index={index}
+                      key={"liveclasscomponent" + index}
+                    />
                   );
                 })}
               </div>

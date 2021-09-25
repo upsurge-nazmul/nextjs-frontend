@@ -1,16 +1,58 @@
+import { Router, useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
+import DashboardApis from "../../actions/apis/DashboardApis";
 import styles from "../../styles/Dashboard/kidcomponent.module.scss";
+import Confirmation from "../Confirmation";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
 import KidComponentMenu from "./KidComponentMenu";
 
-function KidComponent({ data, setkids, settoastdata }) {
+function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
+  const router = useRouter();
   const [showmenu, setshowmenu] = useState(false);
+  const [showConfirmation, setshowConfirmation] = useState(false);
+
+  async function deletechild() {
+    let res = await DashboardApis.deletechild({ id: data.id });
+    if (res && res.data.success) {
+      setkids((prev) => prev.filter((item) => item.id !== data.id));
+      settoastdata({ show: true, type: "success", msg: "done" });
+    } else {
+      settoastdata({
+        type: "error",
+        show: true,
+        msg: res.data.message || "error deleting",
+      });
+    }
+  }
   return (
-    <div className={styles.kidComponent}>
-      <img src={data?.img_url} alt="" className={styles.kidimg} />
+    <div
+      className={styles.kidComponent}
+      // onClick={() => router.push("/kidactivity/" + data.id)}
+    >
+      {showConfirmation && (
+        <Confirmation
+          settoastdata={settoastdata}
+          onConfirm={deletechild}
+          onCancel={() => setshowConfirmation(false)}
+          heading={"All data related to selected child will be deleted."}
+        />
+      )}
+      <img
+        onClick={() => router.push("/kidactivity/" + data.id)}
+        src={
+          data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+        }
+        alt=""
+        className={styles.kidimg}
+      />
       <div className={styles.nameandpoints}>
-        <p className={styles.name}>{data?.display_name}</p>
+        <p
+          className={styles.name}
+          onClick={() => router.push("/kidactivity/" + data.id)}
+        >
+          {data?.first_name}
+        </p>
         <p className={styles.points}>
           {data?.points > 1000
             ? Math.floor(data?.points / 1000) + "k"
@@ -45,6 +87,7 @@ function KidComponent({ data, setkids, settoastdata }) {
             data={data}
             settoastdata={settoastdata}
             setshowmenu={setshowmenu}
+            setshowConfirmation={setshowConfirmation}
           />
         )}
       </div>
