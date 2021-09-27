@@ -83,7 +83,10 @@ function Dashboard({
   const [confirmationgiven, setconfirmationgiven] = useState(false);
   // const [chores, setchores] = useState([]);
   // const [tribes, settribes] = useState([]);
-  const [tribes, settribes] = useState(["", "", ""]);
+  // const [windowDimensions, setWindowDimensions] = useState(
+  //   getWindowDimensions()
+  // );
+  const [tribes, settribes] = useState([]);
   const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [phoneverified, setphoneverified] = useState(phone_verified);
   const [toastdata, settoastdata] = useState({
@@ -112,6 +115,35 @@ function Dashboard({
       router.push("/kiddashboard");
     }
   }, [userdatafromserver]);
+
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setWindowDimensions(getWindowDimensions());
+  //   }
+
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+
+  useEffect(() => {
+    let rightpanel = document.getElementById("rightpanel");
+    let leftside = document.getElementById("leftside");
+    if (rightpanel) {
+      console.log(rightpanel.scrollHeight);
+      leftside.style.setProperty(
+        "--height",
+        rightpanel.scrollHeight - 100 + "px"
+      );
+    }
+  }, []);
+  // function getWindowDimensions() {
+  //   const { innerWidth: width, innerHeight: height } = window;
+  //   return {
+  //     width,
+  //     height,
+  //   };
+  // }
+
   return (
     <div className={styles.dashboard}>
       <DashboardLeftPanel />
@@ -135,7 +167,7 @@ function Dashboard({
           <EmailVerificationPending settoastdata={settoastdata} />
         )}
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
+          <div className={styles.flexLeft} id="leftside">
             <div className={styles.kidsSection}>
               <h2
                 className={styles.heading}
@@ -229,7 +261,7 @@ function Dashboard({
               </div>
             )}
           </div>
-          <div className={styles.flexRight}>
+          <div className={styles.flexRight} id="rightpanel">
             <div className={styles.gameSection}>
               <h2
                 className={styles.heading}
