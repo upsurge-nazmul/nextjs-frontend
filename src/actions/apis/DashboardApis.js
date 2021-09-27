@@ -1,6 +1,13 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
+const addnotification = (payload) => {
+  return ApiCalls.postResponse(
+    "users/addnotification",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getuserdata = (payload, token) => {
   return ApiCalls.getResponse(`users/getprofile`, payload, token);
 };
@@ -55,6 +62,10 @@ const editchore = (payload) => {
 const getchores = (payload, token) => {
   return ApiCalls.getResponse(`parent/getchores`, payload, token);
 };
+const getchorebyid = (payload, token) => {
+  return ApiCalls.getResponse(`parent/getchorebyid`, payload, token);
+};
+
 const getcompletedchores = (payload, token) => {
   return ApiCalls.getResponse(`parent/getcompletedchores`, payload, token);
 };
@@ -80,6 +91,13 @@ const deletechild = (payload) => {
     getCookie("accesstoken")
   );
 };
+const deletechore = (payload) => {
+  return ApiCalls.deleteResponse(
+    "parent/deletechore",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -100,6 +118,9 @@ const DashboardApis = {
   editkids,
   deletechild,
   getChildDetails,
+  getchorebyid,
+  deletechore,
+  addnotification,
 };
 
 export default DashboardApis;

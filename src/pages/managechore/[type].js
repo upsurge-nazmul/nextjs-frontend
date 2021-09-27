@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
@@ -8,49 +8,52 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/ManageChore/managechore.module.scss";
 import DropDownArrow from "../../components/SVGcomponents/DropDownArrow";
 import MicSvg from "../../components/SVGcomponents/MicSvg";
+import AddAssigneeModal from "../../components/Chores/AddAssigneeModal";
+import DropDown from "../../components/DropDown";
+import { MainContext } from "../../context/Main";
 
-function ManageChore() {
+export default function ManageChore({ choredata, childdata }) {
   const router = useRouter();
+  const { currentChoreTemplate } = useContext(MainContext);
   const { type } = router.query;
-  const state = router.query.state ? JSON.parse(router.query.state) : null;
-  const [mode, setmode] = useState(type + " Chore");
-  const [msg, setmsg] = useState(state?.message || state?.data?.message || "");
+  const [isInEditMode, setIsInEditMode] = useState(
+    type !== "new" ? true : false
+  );
+  const [mode, setmode] = useState(
+    (type !== "new" ? "Edit" : "New") + " Chore"
+  );
+  const [assignees, setassignees] = useState(childdata ? [childdata] : []);
+  const [cat, setcat] = useState(
+    !isInEditMode
+      ? currentChoreTemplate.category
+      : choredata?.category || "kitchen"
+  );
+  const [showaddmodal, setshowaddmodal] = useState(false);
+  const [msg, setmsg] = useState(choredata?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    state?.name || state?.title || state?.data.title || ""
+    !isInEditMode ? currentChoreTemplate.name : choredata?.title || ""
   );
   const [duedate, setduedate] = useState(
-    state?.due_date
-      ? getreadabledate(state?.due_date)
-      : "" || state?.data?.due_date
-      ? getreadabledate(state?.due_date)
-      : "" || "2021-07-21"
+    choredata?.due_date || new Date().getTime()
   );
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+
   useEffect(() => {
     setlettercounts(200 - msg.length);
   }, [msg]);
 
-  function getreadabledate(date) {
-    let fdate = new Date(Number(date));
-    let month = fdate.getMonth() + 1;
-    month = month < 10 ? "0" + month : month;
-    let day = fdate.getDate();
-    day = day < 10 ? "0" + day : day;
-
-    return fdate.getFullYear() + "-" + month + "-" + day;
-  }
   async function handleSave() {
-    if (state?.isineditmode) {
+    if (choredata?.isineditmode) {
       let response = await DashboardApis.editchore({
-        id: state?.data.id,
+        id: choredata?.data.id,
         message: msg,
         title: choretitle,
-        category: state?.data.category,
+        category: choredata?.data.category,
         assigned_to: "tushar",
         child_id: "test1234",
         due_date: new Date(duedate).getTime(),
@@ -71,26 +74,42 @@ function ManageChore() {
         });
       }
     } else {
-      let response = await DashboardApis.addchore({
-        message: msg,
-        title: choretitle,
-        category: state?.category || state?.category,
-        assigned_to: "tushar",
-        child_id: "test1234",
-        due_date: new Date(duedate).getTime(),
-        completion: "pending",
-      });
-      if (response && response.data && response.data.success) {
+      if (assignees.length < 1) {
         settoastdata({
           show: true,
-          message: response.data.message,
+          msg: "Add Assignee",
+          type: "error",
+        });
+        return;
+      }
+      let noerror = true;
+      for (let i = 0; i < assignees.length; i++) {
+        const assignee = assignees[i];
+        let response = await DashboardApis.addchore({
+          message: msg,
+          title: choretitle,
+          category: choredata?.category || "home",
+          assigned_to: assignee.first_name,
+          child_id: assignee.id,
+          due_date: new Date(duedate).getTime(),
+          completion: "pending",
+        });
+        if (!response || !response.data || !response.data.success) {
+          noerror = false;
+          return;
+        }
+      }
+      if (noerror) {
+        settoastdata({
+          show: true,
+          msg: "Chores added successfully",
           type: "success",
         });
         router.push("/chores");
       } else {
         settoastdata({
           show: true,
-          message: response.data.message,
+          msg: "Error saving chores",
           type: "error",
         });
       }
@@ -100,6 +119,15 @@ function ManageChore() {
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+      {showaddmodal && (
+        <AddAssigneeModal
+          assignees={assignees}
+          setassignees={setassignees}
+          onConfirm={() => setshowaddmodal(false)}
+          settoastdata={settoastdata}
+          onCancel={() => setshowaddmodal(false)}
+        />
+      )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -111,8 +139,10 @@ function ManageChore() {
           <div className={styles.imagesection}>
             <img
               src={
-                state?.image ||
-                "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
+                !isInEditMode
+                  ? currentChoreTemplate.image
+                  : choredata?.image ||
+                    "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
               }
               alt=""
             />
@@ -125,15 +155,37 @@ function ManageChore() {
             />
             <input
               type="date"
-              value={duedate}
+              value={
+                duedate
+                  ? new Date(parseInt(duedate))?.toISOString().substr(0, 10)
+                  : new Date().toISOString().substr(0, 10)
+              }
               onChange={(e) => {
-                setduedate(e.target.value);
+                if (new Date(e.target.value).getTime() < new Date().getTime()) {
+                  settoastdata({
+                    show: true,
+                    type: "error",
+                    msg: `Invaild due date`,
+                  });
+                } else {
+                  setduedate(new Date(e.target.value).getTime());
+                }
               }}
+              placeholder="dd-mm-yyyy"
             />
-            <div className={styles.select}>
-              {state?.category || state?.data.category || " "}
-              <DropDownArrow />
-            </div>
+            <DropDown
+              placeholder="Gender"
+              options={[
+                "kitchen",
+                "bathroom",
+                "garden",
+                "homework",
+                "grooming",
+                "excercise",
+              ]}
+              value={cat}
+              setvalue={setcat}
+            />
             <div className={styles.msgsection}>
               <textarea
                 maxLength="200"
@@ -152,11 +204,13 @@ function ManageChore() {
               </div>{" "}
             </div>
             <div className={styles.button} onClick={handleSave}>
-              Save Changes
+              {type !== "new" ? "Save Changes" : "Save & Assign"}
             </div>
-            <div className={`${styles.button} ${styles.delete}`}>
-              Delete Chore
-            </div>
+            {type !== "new" && (
+              <div className={`${styles.button} ${styles.delete}`}>
+                Delete Chore
+              </div>
+            )}
             <div className={`${styles.button} ${styles.template}`}>
               +Save as template
             </div>
@@ -164,14 +218,48 @@ function ManageChore() {
           <div className={styles.assignto}>
             <p className={styles.heading}>Asssigned To</p>
             <div className={styles.wrapper}>
-              <Assignees />
+              {assignees.map((item) => (
+                <Assignees data={item} key={item.id} />
+              ))}
             </div>
-            <div className={styles.button}>+Add Assignees</div>
+            {type === "new" && (
+              <div
+                className={styles.button}
+                onClick={() => setshowaddmodal(true)}
+              >
+                +Add Assignees
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  if (token && params.type !== "add") {
+    let choredata = await getChoreData({ id: params.type }, token);
+    if (choredata) {
+      let childdata = await getChildData({ id: choredata.child_id }, token);
+      if (childdata) {
+        return { props: { choredata, childdata } };
+      } else {
+        return { props: { choredata: choredata, childdata: null } };
+      }
+    } else {
+      return { props: { choredata: null, childdata: null } };
+    }
+  } else return { props: { choredata: null, childdata: null } };
+}
+async function getChildData(id, token) {
+  let response = await DashboardApis.getChildDetails(id, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
 
-export default ManageChore;
+async function getChoreData(id, token) {
+  let response = await DashboardApis.getchorebyid(id, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}

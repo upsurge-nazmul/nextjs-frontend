@@ -15,6 +15,7 @@ export const MainContextProider = ({ children }) => {
   const [showmenu, setshowmenu] = useState(false);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [currentChoreTemplate, setcurrentChoreTemplate] = useState("");
 
   return (
     <MainContext.Provider
@@ -39,6 +40,8 @@ export const MainContextProider = ({ children }) => {
         setfirstName,
         lastName,
         setlastName,
+        currentChoreTemplate,
+        setcurrentChoreTemplate,
       }}
     >
       {children}

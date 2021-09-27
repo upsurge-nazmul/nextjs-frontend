@@ -359,6 +359,9 @@
     .more {
       max-width: 5px;
       margin: 0 10px 0 10px;
+      .menuicon {
+        pointer-events: none;
+      }
       svg {
         width: 10px;
         height: 15px;

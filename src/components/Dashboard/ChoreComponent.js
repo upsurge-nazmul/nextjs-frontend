@@ -1,29 +1,31 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
+import DashboardApis from "../../actions/apis/DashboardApis";
 import styles from "../../styles/Dashboard/chorecomponent.module.scss";
+import Confirmation from "../Confirmation";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import CompletedSvg from "../SVGcomponents/CompletedSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
 import PendingSvg from "../SVGcomponents/PendingSvg";
+import ChoreComponentMenu from "./ChoreComponentMenu";
 
-function ChoreComponent({ data }) {
+function ChoreComponent({ data, settoastdata, setchores }) {
   const [showmenu, setshowmenu] = useState(false);
+  const [showConfirmation, setshowConfirmation] = useState(false);
+  const [notificationtype, setnotificationtype] = useState(
+    data.completion === "pending"
+      ? "Nudge"
+      : data.completion === "started"
+      ? "Cheer"
+      : "Applaud"
+  );
   const router = useRouter();
-  const demoChore = {
-    id: "wqe",
-    image:
-      "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
-    title: "Prepare Monthly Budget",
-    assigned_to: "Assigned to Pulkit",
-    time: "Due in 3 days",
-    completion: "pending",
-    due_date: new Date().setHours(new Date().getHours() + 24 * 7),
-  };
   let currenttime = new Date().getTime();
   let due_date = new Date(Number(data.due_date)).getTime();
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const diffDays = Math.round(Math.abs((due_date - currenttime) / oneDay));
   due_date = `Due in ${diffDays} days`;
+
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -37,8 +39,50 @@ function ChoreComponent({ data }) {
       document.removeEventListener("mousedown", getifclickedoutside);
     };
   }, [showmenu]);
+  async function deletechore() {
+    let res = await DashboardApis.deletechore({ id: data.id });
+    if (res && res.data && res.data.success) {
+      setchores((prev) => prev.filter((item) => item.id !== data.id));
+      settoastdata({
+        type: "success",
+        msg: "Deleted successfully",
+        show: true,
+      });
+    } else {
+      settoastdata({
+        type: "error",
+        msg: "Error Deleting",
+        show: true,
+      });
+    }
+    setshowConfirmation(false);
+  }
+  async function sendNotification() {
+    let res = await DashboardApis.addnotification({ type: notificationtype });
+    if (res && res.data && res.data.success) {
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: res.data.message,
+      });
+    } else {
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: res.data.message || "Error connecting to server",
+      });
+    }
+  }
   return (
     <div className={styles.choreComponent}>
+      {showConfirmation && (
+        <Confirmation
+          settoastdata={settoastdata}
+          onConfirm={deletechore}
+          onCancel={() => setshowConfirmation(false)}
+          heading={"All data related to selected chore will be deleted."}
+        />
+      )}
       <img
         src={
           data.image ||
@@ -62,34 +106,23 @@ function ChoreComponent({ data }) {
           <PendingSvg />
         ) : null}
       </div>
-      <div className={styles.button}>
-        {data.completion === "pending"
-          ? "Nudge"
-          : data.completion === "started"
-          ? "Cheer"
-          : "Applaud"}
+      <div className={styles.button} onClick={sendNotification}>
+        {notificationtype}
       </div>
 
-      <div className={styles.more} onClick={() => setshowmenu(!showmenu)}>
-        {showmenu ? (
-          <div className={styles.menu} id={`menu-${data.id}`}>
-            <p
-              className={styles.menutab}
-              onClick={() =>
-                router.push({
-                  pathname: "/managechore/edit",
-                  asPath: "/managechore/edit",
-                  query: {
-                    state: JSON.stringify({ data: data, isineditmode: true }),
-                  },
-                })
-              }
-            >
-              Edit
-            </p>
-          </div>
-        ) : null}
-        <MenuSvg />
+      <div
+        className={styles.more}
+        id={data.id + "menu-button"}
+        onClick={() => setshowmenu(!showmenu)}
+      >
+        {showmenu && (
+          <ChoreComponentMenu
+            setshowConfirmation={setshowConfirmation}
+            data={data}
+            setshowmenu={setshowmenu}
+          />
+        )}
+        <MenuSvg className={styles.menuicon} />
       </div>
     </div>
   );

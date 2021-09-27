@@ -1,4 +1,6 @@
-import React from "react";
+import { useRouter } from "next/dist/client/router";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Chores/choretemplate.module.scss";
 
 function ChoreTemplate() {
@@ -8,6 +10,9 @@ function ChoreTemplate() {
     name: "Water Plants",
     time: "Daily Chore",
   };
+  const { setcurrentChoreTemplate } = useContext(MainContext);
+
+  const router = useRouter();
   return (
     <div className={styles.choreTemplate}>
       <img src={demotemplate.image} alt="" className={styles.userimg} />
@@ -15,7 +20,15 @@ function ChoreTemplate() {
         <p className={styles.name}>{demotemplate.name}</p>
         <p className={styles.points}>{demotemplate.time}</p>
       </div>
-      <div className={styles.assignbutton}>Assign</div>
+      <div
+        className={styles.assignbutton}
+        onClick={() => {
+          setcurrentChoreTemplate(demotemplate);
+          router.push("/managechore/new");
+        }}
+      >
+        Assign
+      </div>
     </div>
   );
 }

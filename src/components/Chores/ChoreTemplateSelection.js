@@ -1,10 +1,12 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Chores/choretemplateselection.module.scss";
 import BackArrow from "../SVGcomponents/BackArrow";
 
 function ChoreTemplateSelection({ category, setmode }) {
   const router = useRouter();
+  const { setcurrentChoreTemplate } = useContext(MainContext);
   const temps = [
     {
       image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
@@ -42,13 +44,10 @@ function ChoreTemplateSelection({ category, setmode }) {
               </div>
               <div
                 className={styles.button}
-                onClick={() =>
-                  router.push({
-                    pathname: "/managechore/new",
-                    asPath: "/managechore/new",
-                    query: { state: JSON.stringify({ ...item, category }) },
-                  })
-                }
+                onClick={() => {
+                  setcurrentChoreTemplate({ ...item, category });
+                  router.push("/managechore/new");
+                }}
               >
                 Use Template
               </div>

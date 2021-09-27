@@ -193,7 +193,9 @@ function Dashboard({
                             return (
                               <ChoreComponent
                                 data={data}
-                                key={"chorecomponent" + index}
+                                setchores={setchores}
+                                settoastdata={settoastdata}
+                                key={data.id}
                               />
                             );
                           })}
