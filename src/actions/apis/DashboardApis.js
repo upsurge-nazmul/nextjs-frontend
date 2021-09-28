@@ -1,6 +1,13 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
+const approvechore = (payload) => {
+  return ApiCalls.putResponse(
+    "parent/approvechore",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const addnotification = (payload) => {
   return ApiCalls.postResponse(
     "users/addnotification",
@@ -120,6 +127,7 @@ const DashboardApis = {
   getChildDetails,
   getchorebyid,
   deletechore,
+  approvechore,
   addnotification,
 };
 

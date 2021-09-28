@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import LoginApis from "../../actions/apis/LoginApis";
 import Toast from "../../components/Toast";
@@ -16,6 +16,7 @@ import TribeSection from "../../components/KidDashboard/TribeSection";
 import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import KidApis from "../../actions/apis/KidApis";
+import { MainContext } from "../../context/Main";
 
 function KidDashboard({
   isLogged,
@@ -28,10 +29,12 @@ function KidDashboard({
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("home");
+  const { setuserdata } = useContext(MainContext);
   const router = useRouter();
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
   const [liveclasses, setliveclasses] = useState(liveclassdata || []);
+  const [badges, setbadges] = useState(["", "", ""]);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -49,7 +52,9 @@ function KidDashboard({
       router.push("/");
     }
   }, [isLogged]);
-
+  useEffect(() => {
+    setuserdata(kiddata);
+  }, []);
   return (
     <div className={styles.kiddashboard}>
       <DashboardLeftPanel type="kid" />
@@ -78,8 +83,14 @@ function KidDashboard({
               </h2>
 
               <div className={styles.wrapper}>
-                {choresdata.map((chore, index) => {
-                  return <KidChore data={chore} key={chore.id} />;
+                {chores.map((chore, index) => {
+                  return (
+                    <KidChore
+                      settoastdata={settoastdata}
+                      data={chore}
+                      key={chore.id}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -107,7 +118,7 @@ function KidDashboard({
             </div>
           </div>
           <div className={styles.flexRight}>
-            <BadgeSection badges={badgeData} />
+            <BadgeSection badges={badges} />
             <NextChores />
             <TribeSection tribes={tribes} />
           </div>
@@ -131,16 +142,15 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg } };
     } else {
-      let kiddata = response.data.data;
+      let kiddata = await getChildDetails(response.data.data.user_id, token);
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
-      let choresdata = await getchores(token);
-      let badgeData = await getbadges(kiddata.user_id, token);
-      console.log(choresdata);
+      let choresdata = await getchores(response.data.data.user_id, token);
+      let badgeData = await getbadges(response.data.data.user_id, token);
       return {
         props: {
           isLogged: true,
-          choresdata: choresdata?.data || [],
+          choresdata: choresdata || [],
           gamesdata,
           kiddata,
           liveclassdata,
@@ -152,9 +162,13 @@ export async function getServerSideProps({ params, req }) {
     return { props: { isLogged: false, msg: "cannot get token" } };
   }
 }
-
-async function getchores(token) {
-  let response = await DashboardApis.getpendingchores(null, token);
+async function getChildDetails(id, token) {
+  let response = await DashboardApis.getChildDetails({ id }, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getchores(id, token) {
+  let response = await KidApis.getchildchores({ id }, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

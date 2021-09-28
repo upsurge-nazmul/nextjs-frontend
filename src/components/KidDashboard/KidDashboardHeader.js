@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { eraseCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/kidDashboard/kidDashboardHeader.module.scss";
 import gems from "../../assets/rewards/gem.png";
@@ -7,8 +7,11 @@ import points from "../../assets/rewards/points.png";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NotificationBell from "../SVGcomponents/NotificationBell";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
+import { MainContext } from "../../context/Main";
 function KidDashboardHeader({ mode, showback, gobackto }) {
   const router = useRouter();
+  const { userdata } = useContext(MainContext);
+  console.log(userdata);
   const [username, setusername] = useState("Tushar");
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
@@ -32,11 +35,11 @@ function KidDashboardHeader({ mode, showback, gobackto }) {
       <div className={styles.rightWrapper}>
         <div className={styles.rewardBlock}>
           <img className={styles.rewardimage} src={points.src} alt="" />
-          <p className={styles.number}>12</p>
+          <p className={styles.number}>{userdata?.points || 0}</p>
         </div>
         <div className={styles.rewardBlock}>
           <img className={styles.rewardimage} src={gems.src} alt="" />
-          <p className={styles.number}>123</p>
+          <p className={styles.number}>{userdata?.gems || 0}</p>
         </div>
         <div
           className={`${styles.settings} ${styles.icon} ${

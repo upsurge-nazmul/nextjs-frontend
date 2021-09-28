@@ -25,7 +25,54 @@ function ChoreComponent({ data, settoastdata, setchores }) {
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const diffDays = Math.round(Math.abs((due_date - currenttime) / oneDay));
   due_date = `Due in ${diffDays} days`;
-
+  function completedtimeDifference() {
+    let current = new Date().getTime();
+    let previous = new Date(
+      Number(data.completed_at || data.due_date)
+    ).getTime();
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+    var elapsed = current - previous;
+    if (elapsed < msPerMinute) {
+      return "Completed " + Math.round(elapsed / 1000) + " seconds ago";
+    } else if (elapsed < msPerHour) {
+      return "Completed " + Math.round(elapsed / msPerMinute) + " minutes ago";
+    } else if (elapsed < msPerDay) {
+      return "Completed " + Math.round(elapsed / msPerHour) + " hours ago";
+    } else if (elapsed < msPerMonth) {
+      return "Completed " + Math.round(elapsed / msPerDay) + " days ago";
+    } else if (elapsed < msPerYear) {
+      return "Completed " + Math.round(elapsed / msPerMonth) + " months ago";
+    } else {
+      return "Completed " + Math.round(elapsed / msPerYear) + " years ago";
+    }
+  }
+  function duetimeDifference() {
+    let current = new Date().getTime();
+    let previous = new Date(Number(choredata?.due_date)).getTime();
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+    var elapsed = current - previous;
+    if (elapsed < msPerMinute) {
+      return "Due " + Math.round(elapsed / 1000) + " in seconds";
+    } else if (elapsed < msPerHour) {
+      return "Due " + Math.round(elapsed / msPerMinute) + " in minutes";
+    } else if (elapsed < msPerDay) {
+      return "Due " + Math.round(elapsed / msPerHour) + " in hours";
+    } else if (elapsed < msPerMonth) {
+      return "Due " + Math.round(elapsed / msPerDay) + " in days";
+    } else if (elapsed < msPerYear) {
+      return "Due " + Math.round(elapsed / msPerMonth) + " in months";
+    } else {
+      return "Due " + Math.round(elapsed / msPerYear) + " in years";
+    }
+  }
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -85,8 +132,9 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       )}
       <img
         src={
-          data.image ||
-          "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
+          data.category === "Bathroom"
+            ? "/images/chores/bathroom.jpg"
+            : "/images/chores/kitchen.png"
         }
         alt=""
       />
@@ -97,14 +145,18 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       <div className={styles.time}>
         <ClockSvg />
 
-        <p>{due_date}</p>
+        <p>
+          {data?.completion === "completed"
+            ? completedtimeDifference()
+            : duetimeDifference()}
+        </p>
       </div>
       <div className={styles.completionIcon}>
-        {data.completion === "completed" ? (
+        {data.completion === "completed" || "approval" ? (
           <CompletedSvg />
-        ) : data.completion === "pending" ? (
+        ) : (
           <PendingSvg />
-        ) : null}
+        )}
       </div>
       <div className={styles.button} onClick={sendNotification}>
         {notificationtype}

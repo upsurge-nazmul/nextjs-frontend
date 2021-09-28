@@ -9,19 +9,27 @@ import ChoreTemplate from "../../components/Chores/ChoreTemplate";
 import styles from "../../styles/Chores/chorepage.module.scss";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import LoginApis from "../../actions/apis/LoginApis";
+import Toast from "../../components/Toast";
 
 function ChoresPage({ choresdata }) {
   const [mode, setmode] = useState("chores");
   const [chores, setchores] = useState([]);
   const [choremode, setchoremode] = useState("inprogress");
   const [showmodal, setshowmodal] = useState(false);
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   const [allchores, setallchores] = useState(choresdata || []);
   const [backupallchores, setbackupallchores] = useState(choresdata || []);
-
+  useEffect(() => {
+    setchores(choresdata.filter((item) => item.completion === "approval"));
+  }, [choresdata]);
   useEffect(() => {
     if (choremode === "inprogress") {
       setallchores(
-        backupallchores.filter((item) => item.completion === "pending")
+        backupallchores.filter((item) => item.completion !== "completed")
       );
     } else if (choremode === "completed") {
       setallchores(
@@ -36,6 +44,7 @@ function ChoresPage({ choresdata }) {
   return (
     <div className={styles.choresPage}>
       <DashboardLeftPanel />
+      <Toast data={toastdata} />
       <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
@@ -48,7 +57,15 @@ function ChoresPage({ choresdata }) {
               </h2>
               <div className={styles.wrapper}>
                 {chores.map((item, index) => {
-                  return <ChorePending key={"pendingchore" + index} />;
+                  return (
+                    <ChorePending
+                      setchores={setchores}
+                      setallchores={setallchores}
+                      data={item}
+                      key={"pendingchore" + index}
+                      settoastdata={settoastdata}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -85,6 +102,7 @@ function ChoresPage({ choresdata }) {
                   return (
                     <ChoreComponent
                       data={data}
+                      settoastdata={settoastdata}
                       key={"chorecomponent" + index}
                     />
                   );

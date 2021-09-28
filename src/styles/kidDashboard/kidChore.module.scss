@@ -68,6 +68,26 @@
       border: 1px solid #4166eb;
     }
   }
+  .approval {
+    background: #4166eb;
+    border-radius: 8px;
+    color: white;
+    height: 65%;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    svg {
+      margin-right: 5px;
+      width: 15px;
+      path {
+        fill: white;
+      }
+    }
+  }
   .more {
     flex: 1;
     max-width: 40px;

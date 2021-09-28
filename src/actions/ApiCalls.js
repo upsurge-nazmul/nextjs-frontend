@@ -41,11 +41,11 @@ export const getResponse = async (url, params, token) => {
     });
 };
 
-export const putResponse = async (url, payload) => {
+export const putResponse = async (url, payload, token) => {
   const URL = BaseUrl + url;
   return axios(URL, {
     method: "PUT",
-    headers: await getHeader(),
+    headers: await getHeader(false, token),
     data: payload,
   })
     .then((response) => response)
