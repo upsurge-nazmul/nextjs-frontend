@@ -18,9 +18,11 @@
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
+      margin-bottom: 50px;
       .flexLeft {
         display: flex;
         flex-direction: column;
+        overflow: visible;
         width: 55%;
         padding: 0 10px 0 45px;
         .gameSection {
@@ -145,8 +147,6 @@
         }
         .liveClassSection {
           flex: 1;
-          height: 65%;
-          margin-top: 20px;
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -192,6 +192,7 @@
         padding-right: 50px;
         padding-left: 10px;
         margin-left: 40px;
+        margin-bottom: 200px;
         .gameSection {
           flex: 3;
           .heading {
@@ -329,7 +330,12 @@
         flex-direction: column;
         .flexLeft {
           align-items: center;
-          width: 90%;
+          padding: 0 35px 0 35px;
+          margin-bottom: 60px;
+          width: 100%;
+          .liveClassSection {
+            width: 100%;
+          }
           .kidsSection {
             width: 100%;
           }
@@ -338,11 +344,14 @@
           }
           .gameSection {
             width: 100%;
+            padding: 0;
           }
         }
         .flexRight {
-          width: 90%;
-          margin-top: 50px;
+          width: 100%;
+          margin: 0;
+          margin-top: 20px;
+          padding: 0 35px 0 35px;
           .gameSection {
             width: 100%;
           }
@@ -367,16 +376,34 @@
         .flexLeft {
           width: 100%;
           padding: 0 20px;
+          margin-bottom: 40px;
           .gameSection {
             width: 100%;
             padding: 0;
+            .heading {
+              font-size: 20px;
+              svg {
+                width: 16px;
+                margin-left: 5px;
+                padding-top: 1px;
+              }
+            }
             .wrapper {
+              padding-bottom: 0;
               &::-webkit-scrollbar {
-                height: 5px;
+                height: 12px;
               }
             }
           }
           .choreSection {
+            .heading {
+              font-size: 20px;
+              svg {
+                width: 16px;
+                margin-left: 5px;
+                padding-top: 1px;
+              }
+            }
             .wrapper {
               padding: 0;
             }
@@ -384,8 +411,18 @@
           .liveClassSection {
             width: 100%;
             margin-top: 20px;
+            .heading {
+              font-size: 20px;
+              svg {
+                width: 16px;
+                margin-left: 5px;
+                padding-top: 1px;
+              }
+            }
             .wrapper {
               padding: 0;
+              margin-top: 15px;
+              margin-bottom: 10px;
               &::-webkit-scrollbar {
                 width: 1px;
               }
@@ -404,14 +441,16 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 500px) {
   .kiddashboard {
     .contentWrapper {
       max-width: calc(100vw - 55px);
       .mainContent {
         .flexLeft {
           width: 100%;
+          margin-bottom: 40px;
           padding: 0 20px;
+          min-height: fit-content;
           .gameSection {
             .heading {
               font-size: 18px;
@@ -424,8 +463,9 @@
             width: 100%;
             padding: 0;
             .wrapper {
+              padding-bottom: 0;
               &::-webkit-scrollbar {
-                height: 5px;
+                height: 10px;
               }
             }
           }

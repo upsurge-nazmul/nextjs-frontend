@@ -5,7 +5,7 @@ import MenuSvg from "../SVGcomponents/MenuSvg";
 
 function KidCourses({ data }) {
   return (
-    <div className={styles.KidCourses}>
+    <div className={styles.KidQuests}>
       <img src={data?.img_url} alt="" className={styles.kidimg} />
       <div className={styles.text}>
         <p className={styles.heading}>{data?.current_course}</p>

@@ -17,6 +17,7 @@ import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import KidApis from "../../actions/apis/KidApis";
 import { MainContext } from "../../context/Main";
+import NoChores from "../../components/KidDashboard/NoChores";
 
 function KidDashboard({
   isLogged,
@@ -60,9 +61,35 @@ function KidDashboard({
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader mode={mode} setmode={setmode} />
+        <KidDashboardHeader
+          mode={mode}
+          setmode={setmode}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <div className={`${styles.liveClassSection}`}>
+              <h2 className={styles.heading}>
+                My Knowledge Quests
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {liveclasses.map((data, index) => {
+                  return (
+                    <KidCourses
+                      key={"gamecard" + index}
+                      data={{
+                        img_url: data.image,
+                        course_progress: 50,
+                        current_course: data.title,
+                        subheading: data.age,
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
             <div className={styles.gameSection}>
               <h2 className={styles.heading}>
                 My Games
@@ -82,44 +109,26 @@ function KidDashboard({
                 <HeadingArrow />
               </h2>
 
-              <div className={styles.wrapper}>
-                {chores.map((chore, index) => {
-                  return (
-                    <KidChore
-                      settoastdata={settoastdata}
-                      data={chore}
-                      key={chore.id}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className={`${styles.liveClassSection}`}>
-              <h2 className={styles.heading}>
-                My Courses
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {liveclasses.map((data, index) => {
-                  return (
-                    <KidCourses
-                      key={"gamecard" + index}
-                      data={{
-                        img_url: data.image,
-                        course_progress: 50,
-                        current_course: data.title,
-                        subheading: data.age,
-                      }}
-                    />
-                  );
-                })}
-              </div>
+              {chores.length > 0 ? (
+                <div className={styles.wrapper}>
+                  {chores.map((chore, index) => {
+                    return (
+                      <KidChore
+                        settoastdata={settoastdata}
+                        data={chore}
+                        key={chore.id}
+                      />
+                    );
+                  })}
+                </div>
+              ) : (
+                <NoChores />
+              )}
             </div>
           </div>
           <div className={styles.flexRight}>
             <BadgeSection badges={badges} />
-            <NextChores />
+            {/* <NextChores /> */}
             <TribeSection tribes={tribes} />
           </div>
         </div>

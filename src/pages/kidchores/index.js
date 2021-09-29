@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import ChoreComponent from "../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
@@ -13,55 +13,60 @@ import KidChore from "../../components/KidDashboard/KidChore";
 import BadgeSection from "../../components/KidDashboard/BadgeSection";
 import KidCompletedChore from "../../components/KidChorePage/KidCompletedChore";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
+import KidApis from "../../actions/apis/KidApis";
+import LoginApis from "../../actions/apis/LoginApis";
+import { duetimeDifference } from "../../helpers/timehelpers";
+import Toast from "../../components/Toast";
+import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader";
+import { MainContext } from "../../context/Main";
 
-export default function KidChoresPage() {
+export default function KidChoresPage({
+  choresdata,
+  gamesdata,
+  kiddata,
+  liveclassdata,
+  completedchores,
+}) {
+  console.log(completedchores);
   const [mode, setmode] = useState("chores");
-  const [chores, setchores] = useState(["", "", "", "", ""]);
+  const [pendingchores, setpendingchores] = useState(
+    choresdata.filter((item) => {
+      console.log(duetimeDifference(item.due_date));
+
+      return (
+        item.completion !== "complete" &&
+        duetimeDifference(item.due_date) !== "Expired"
+      );
+    })
+  );
+  const [compchores, setcompchores] = useState(completedchores);
+  const { setuserdata } = useContext(MainContext);
+
   const [choremode, setchoremode] = useState("");
   const [showmodal, setshowmodal] = useState(false);
   const [allchores, setallchores] = useState(["", ""]);
-  const [backupallchores, setbackupallchores] = useState([]);
+  const [backupallchores, setbackupallchores] = useState(choresdata);
   const badges = ["", "", ""];
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   useEffect(() => {
-    getchores();
-    getallchores();
-    async function getallchores() {
-      let response = await DashboardApis.getchores();
-      if (response.data.data) {
-        setallchores(response.data.data);
-        setbackupallchores(response.data.data);
-        setchoremode("inprogress");
-      }
-    }
-    async function getchores() {
-      let response = await DashboardApis.getcompletedchores();
-      if (response.data.data) {
-        setchores(response.data.data);
-      }
-    }
+    setuserdata(kiddata);
   }, []);
-
-  useEffect(() => {
-    if (choremode === "inprogress") {
-      setallchores(
-        backupallchores.filter((item) => item.completion === "pending")
-      );
-    } else if (choremode === "completed") {
-      setallchores(
-        backupallchores.filter((item) => item.completion === "completed")
-      );
-    } else if (choremode === "archived") {
-      setallchores(
-        backupallchores.filter((item) => item.completion === "archived")
-      );
-    }
-  }, [choremode]);
   return (
     <div className={styles.kidChoresPage}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="kid" />
+      <Toast data={toastdata} />
+
       <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
+        <KidDashboardHeader
+          mode={mode}
+          setmode={setmode}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.pendingChoresSection}>
@@ -70,8 +75,14 @@ export default function KidChoresPage() {
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {chores.map((item, index) => {
-                  return <KidChore data={item} key={"pendingchore" + index} />;
+                {pendingchores.map((item, index) => {
+                  return (
+                    <KidChore
+                      data={item}
+                      key={"pendingchore" + index}
+                      settoastdata={settoastdata}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -81,11 +92,12 @@ export default function KidChoresPage() {
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {allchores.map((data, index) => {
+                {compchores.map((data, index) => {
                   return (
-                    <KidCompletedChore
+                    <KidChore
                       data={data}
-                      key={"chorecomponent" + index}
+                      key={data.id}
+                      settoastdata={settoastdata}
                     />
                   );
                 })}
@@ -100,4 +112,66 @@ export default function KidChoresPage() {
       </div>
     </div>
   );
+}
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return { props: { isLogged: false, msg } };
+    } else {
+      let kiddata = await getChildDetails(response.data.data.user_id, token);
+      let gamesdata = await getgames(token);
+      let liveclassdata = await getliveclasses(token);
+      let choresdata = await getchores(response.data.data.user_id, token);
+      let completedchores = await getcompletedchores(
+        response.data.data.user_id,
+        token
+      );
+      return {
+        props: {
+          isLogged: true,
+          choresdata: choresdata || [],
+          gamesdata,
+          kiddata,
+          liveclassdata,
+          completedchores,
+        },
+      };
+    }
+  } else {
+    return { props: { isLogged: false, msg: "cannot get token" } };
+  }
+}
+async function getChildDetails(id, token) {
+  let response = await DashboardApis.getChildDetails({ id }, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getchores(id, token) {
+  let response = await KidApis.getchildchores({ id }, token);
+  if (response && response.data && response.data.data) {
+    return response.data.data;
+  }
+}
+async function getgames(token) {
+  let response = await DashboardApis.getgames(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getliveclasses(token) {
+  let response = await DashboardApis.getliveclasses(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+async function getcompletedchores(id, token) {
+  let response = await KidApis.getchildchores({ id, type: "completed" }, token);
+  if (response && response.data && response.data.data) {
+    return response.data.data;
+  }
 }

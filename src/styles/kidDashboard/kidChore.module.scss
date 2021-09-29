@@ -1,30 +1,26 @@
 .kidChore {
   display: flex;
-  width: fit-content;
+  width: 100%;
+  max-width: 950px;
   align-items: center;
   background-color: white;
   padding: 10px;
   height: 80px;
   border-radius: 12px;
   margin-bottom: 20px;
-  width: 100%;
-  justify-content: space-between;
   img {
     width: 64px;
     height: 64px;
     object-fit: cover;
     border-radius: 10px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .taskAndTo {
     height: 100%;
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    min-width: 20%;
+    width: 26%;
     .task {
       font-size: 18px;
       font-weight: 500;
@@ -36,13 +32,18 @@
       color: #828282;
     }
   }
+  .completionIcon {
+    flex: 0.4;
+  }
   .time {
     display: flex;
     align-items: center;
     font-size: 13px;
     font-weight: 400;
-    margin-right: 15px;
-    min-width: 20%;
+    margin-right: 10px;
+    text-align: center;
+    justify-content: center;
+    flex: 1;
     svg {
       margin-right: 5px;
     }
@@ -52,15 +53,14 @@
     border-radius: 8px;
     color: white;
     height: 65%;
-    width: fit-content;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 0 20px;
     transition: all 0.3s ease;
     svg {
-      margin-right: 15px;
+      margin-right: 10px;
     }
     &:hover {
       background-color: #ffffff;
@@ -68,17 +68,67 @@
       border: 1px solid #4166eb;
     }
   }
+  .markdonebutton {
+    background: #4166eb;
+    border-radius: 8px;
+    color: white;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+    svg {
+      margin-right: 10px;
+    }
+    &:hover {
+      background-color: #ffffff;
+      color: #4166eb;
+      border: 1px solid #4166eb;
+    }
+  }
+  .completed {
+    background: #17d1bc;
+    border-radius: 8px;
+    color: white;
+    height: 65%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .expiry {
+    background: #dbdbdb;
+    border-radius: 8px;
+    color: rgb(116, 116, 116);
+    height: 65%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    svg {
+      margin-right: 5px;
+      width: 15px;
+      path {
+        fill: white;
+      }
+    }
+  }
   .approval {
     background: #4166eb;
     border-radius: 8px;
     color: white;
     height: 65%;
-    width: fit-content;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 0 20px;
     transition: all 0.3s ease;
     svg {
       margin-right: 5px;
@@ -97,7 +147,6 @@
     height: 100%;
     cursor: pointer;
     position: relative;
-    margin-left: 40px;
     .menu {
       position: absolute;
       right: -30px;

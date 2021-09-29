@@ -12,7 +12,7 @@ function Toast({ data }) {
     settask(
       setTimeout(() => {
         setshowtoast(false);
-      }, 3000)
+      }, 2500)
     );
   }, [data]);
   return (

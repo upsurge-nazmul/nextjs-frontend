@@ -55,6 +55,18 @@ function DashboardLeftPanel({ type }) {
           </div>
           <div
             className={`${styles.tab} ${
+              currenttab === "/kidchores" ||
+              currenttab.indexOf("/managechore") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/kidchores")}
+          >
+            <ChoresSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Chores</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
               currenttab === "/kidstore" ? styles.activetab : ""
             }`}
             onClick={() => router.push("/kidstore")}

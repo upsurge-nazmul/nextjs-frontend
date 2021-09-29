@@ -1,6 +1,10 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import KidApis from "../../actions/apis/KidApis";
+import {
+  completedtimeDifference,
+  duetimeDifference,
+} from "../../helpers/timehelpers";
 import styles from "../../styles/kidDashboard/kidChore.module.scss";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
@@ -11,29 +15,6 @@ function KidChore({ data, settoastdata }) {
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data);
   const router = useRouter();
-  function timeDifference() {
-    let current = new Date().getTime();
-    let previous = new Date(Number(choredata?.due_date)).getTime();
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
-    var elapsed = current - previous;
-    if (elapsed < msPerMinute) {
-      return "Due " + Math.round(elapsed / 1000) + " in seconds";
-    } else if (elapsed < msPerHour) {
-      return "Due " + Math.round(elapsed / msPerMinute) + " in minutes";
-    } else if (elapsed < msPerDay) {
-      return "Due " + Math.round(elapsed / msPerHour) + " in hours";
-    } else if (elapsed < msPerMonth) {
-      return "Due " + Math.round(elapsed / msPerDay) + " in days";
-    } else if (elapsed < msPerYear) {
-      return "Due " + Math.round(elapsed / msPerMonth) + " in months";
-    } else {
-      return "Due " + Math.round(elapsed / msPerYear) + " in years";
-    }
-  }
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -96,14 +77,33 @@ function KidChore({ data, settoastdata }) {
       />
       <div className={styles.taskAndTo}>
         <div className={styles.task}>{choredata.title}</div>
-        <div className={styles.to}>{choredata.assigned_to}</div>
+        <div className={styles.to}>Assigned to Me</div>
       </div>
       <div className={styles.time}>
         <ClockSvg />
 
-        <p>{timeDifference()}</p>
+        <p>
+          {choredata.completion === "completed"
+            ? completedtimeDifference(choredata.completed_at)
+            : duetimeDifference(choredata?.due_date)}
+        </p>
       </div>
-      {choredata.completion === "approval" ? (
+      {choredata.completion === "completed" ? (
+        <div className={styles.completed}>Completed</div>
+      ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
+        <div
+          className={styles.expiry}
+          onClick={() =>
+            settoastdata({
+              show: true,
+              type: "success",
+              msg: "Oh oh time's up for this chore !",
+            })
+          }
+        >
+          Expired
+        </div>
+      ) : choredata.completion === "approval" ? (
         <div
           className={styles.approval}
           onClick={() =>
@@ -122,7 +122,7 @@ function KidChore({ data, settoastdata }) {
           Start
         </div>
       ) : (
-        <div className={styles.button} onClick={handleMarkForApproval}>
+        <div className={styles.markdonebutton} onClick={handleMarkForApproval}>
           <RoundedTick />
           Mark as done
         </div>

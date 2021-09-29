@@ -1,5 +1,6 @@
 import React from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import { duetimeDifference } from "../../helpers/timehelpers";
 import styles from "../../styles/Chores/chorepending.module.scss";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import CompletedSvg from "../SVGcomponents/CompletedSvg";
@@ -7,30 +8,6 @@ import PendingSvg from "../SVGcomponents/PendingSvg";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
 function ChorePending({ data, settoastdata, setchores, setallchores }) {
-  function timeDifference() {
-    let current = new Date().getTime();
-    let previous = new Date(Number(data.due_date)).getTime();
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
-    var elapsed = current - previous;
-    if (elapsed < msPerMinute) {
-      return "Completed " + Math.round(elapsed / 1000) + " seconds ago";
-    } else if (elapsed < msPerHour) {
-      return "Completed " + Math.round(elapsed / msPerMinute) + " minutes ago";
-    } else if (elapsed < msPerDay) {
-      return "Completed " + Math.round(elapsed / msPerHour) + " hours ago";
-    } else if (elapsed < msPerMonth) {
-      return "Completed " + Math.round(elapsed / msPerDay) + " days ago";
-    } else if (elapsed < msPerYear) {
-      return "Completed " + Math.round(elapsed / msPerMonth) + " months ago";
-    } else {
-      return "Completed " + Math.round(elapsed / msPerYear) + " years ago";
-    }
-  }
-
   async function handleApprove() {
     let response = await DashboardApis.approvechore({ id: data.id });
     if (response && response.data && response.data.success) {
@@ -62,15 +39,9 @@ function ChorePending({ data, settoastdata, setchores, setallchores }) {
       </div>
       <div className={styles.time}>
         <ClockSvg />
-        <p>{timeDifference()}</p>
+        <p>{duetimeDifference(data?.due_date)}</p>
       </div>
-      <div className={styles.completionIcon}>
-        {data.completion === "approval" ? (
-          <CompletedSvg className={styles.compIcon} />
-        ) : data.completion === "pending" ? (
-          <PendingSvg className={styles.compIcon} />
-        ) : null}
-      </div>
+
       <div className={styles.button} onClick={handleApprove}>
         Approve
       </div>

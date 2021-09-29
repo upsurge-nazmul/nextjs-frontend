@@ -20,6 +20,23 @@
     scrollbar-width: thin;
   }
 }
+@media only screen and (max-width: 860px) {
+  .badgeSection {
+    .heading {
+      font-size: 20px;
+      svg {
+        width: 16px;
+        margin-left: 5px;
+        padding-top: 1px;
+      }
+    }
+    .wrapper {
+      &::-webkit-scrollbar {
+        height: 12px;
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: 500px) {
   .badgeSection {
@@ -29,6 +46,11 @@
         width: 14px;
         margin-left: 5px;
         padding-top: 1px;
+      }
+    }
+    .wrapper {
+      &::-webkit-scrollbar {
+        height: 10px;
       }
     }
   }

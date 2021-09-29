@@ -8,10 +8,11 @@ import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NotificationBell from "../SVGcomponents/NotificationBell";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import { MainContext } from "../../context/Main";
-function KidDashboardHeader({ mode, showback, gobackto }) {
+import Menu from "../Dashboard/Menu";
+function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
-  const { userdata } = useContext(MainContext);
-  console.log(userdata);
+  const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
+    useContext(MainContext);
   const [username, setusername] = useState("Tushar");
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
@@ -21,7 +22,7 @@ function KidDashboardHeader({ mode, showback, gobackto }) {
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
-            Welcome, <span>{username}</span>
+            Welcome, <span>{userdata?.first_name}</span>
           </>
         ) : (
           <span className={showback ? styles.addflex : ""}>
@@ -42,19 +43,6 @@ function KidDashboardHeader({ mode, showback, gobackto }) {
           <p className={styles.number}>{userdata?.gems || 0}</p>
         </div>
         <div
-          className={`${styles.settings} ${styles.icon} ${
-            rotatesetting ? styles.rotate : ""
-          }`}
-          onMouseEnter={() => setrotatesetting(true)}
-          onMouseLeave={() => setrotatesetting(false)}
-          onClick={() => {
-            eraseCookie("accesstoken");
-            router.push("/");
-          }}
-        >
-          <SettingsSvg />
-        </div>
-        <div
           className={`${styles.notification} ${styles.icon} ${
             bell ? styles.bell : ""
           }`}
@@ -71,9 +59,12 @@ function KidDashboardHeader({ mode, showback, gobackto }) {
           {notifications.length > 0 ? <div className={styles.dot}></div> : null}
           <NotificationBell />
         </div>
-        <div className={styles.avatar}>
+        <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
+          {showmenu && <Menu settoastdata={settoastdata} menuType={"kid"} />}
           <img
-            src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
+            src={
+              userdata?.img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+            }
             alt=""
           />
         </div>

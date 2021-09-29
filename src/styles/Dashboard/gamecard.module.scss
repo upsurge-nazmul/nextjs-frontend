@@ -43,6 +43,28 @@
     min-width: 140px;
   }
 }
+@media only screen and (max-width: 860px) {
+  .gameCard {
+    width: 145px;
+    min-width: 145px;
+    height: 185px;
+    .contentWrapper {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+      }
+      .detail {
+        font-size: 12px;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 500px) {
   .gameCard {
     width: 150px;

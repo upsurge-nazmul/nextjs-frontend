@@ -7,12 +7,12 @@ import styles from "../../styles/Dashboard/menu.module.scss";
 import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
-function Menu({ settoastdata }) {
+function Menu({ settoastdata, menuType }) {
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
     useContext(MainContext);
   const router = useRouter();
   const [rotatesetting, setrotatesetting] = useState(false);
-
+  console.log(menuType);
   async function handleLogout() {
     let res = await LoginApis.logout();
     if (res && res.data && res.data.success) {
@@ -47,26 +47,30 @@ function Menu({ settoastdata }) {
   }, []);
   return (
     <div className={styles.menu} id="menu-main">
-      <p
-        className={styles.tabs}
-        onClick={() => {
-          setshowmenu(false);
-          router.push("/editprofile/parent");
-        }}
-      >
-        <EditSvg className={styles.editIcon} />
-        Edit profile
-      </p>
-      <p
-        className={styles.tabs}
-        onClick={() => {
-          setshowmenu(false);
-          router.push("/payments");
-        }}
-      >
-        <PaymentSvg className={styles.paymentIcon} />
-        Payments
-      </p>
+      {menuType !== "kid" && (
+        <p
+          className={styles.tabs}
+          onClick={() => {
+            setshowmenu(false);
+            router.push("/editprofile/parent");
+          }}
+        >
+          <EditSvg className={styles.editIcon} />
+          Edit profile
+        </p>
+      )}
+      {menuType !== "kid" && (
+        <p
+          className={styles.tabs}
+          onClick={() => {
+            setshowmenu(false);
+            router.push("/payments");
+          }}
+        >
+          <PaymentSvg className={styles.paymentIcon} />
+          Payments
+        </p>
+      )}
       <div
         className={styles.tabs}
         onMouseEnter={() => setrotatesetting(true)}
