@@ -55,6 +55,9 @@ function Benefits() {
     );
   }
   function getheight(el) {
+    if (!el) {
+      return 0;
+    }
     var top = el.offsetTop;
 
     while (el.offsetParent) {
@@ -64,6 +67,7 @@ function Benefits() {
     return top;
   }
   useEffect(() => {
+    if (sections.length === 0) return;
     let remove = (window.onscroll = function (ev) {
       let container = document.getElementById("mainbenefitscontainer");
       let right = document.getElementById("rightsection");
@@ -88,7 +92,7 @@ function Benefits() {
     });
 
     return () => remove;
-  }, []);
+  }, [sections]);
   function hanldemove(index) {
     setcurrentSection(index);
     sections[index].scrollIntoView({
@@ -106,7 +110,7 @@ function Benefits() {
             <p className={styles.description}>
               {data[currentSection].description}
             </p>
-            <p className={styles.more}>LEARN MORE -></p>
+            <p className={styles.more}>{`LEARN MORE ->`}</p>
             <div className={styles.allsections}>
               {data.map((item, index) => {
                 return (

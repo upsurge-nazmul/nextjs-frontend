@@ -183,4 +183,70 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 860px) {
+  .benefits {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    .main {
+      padding-left: 7vw;
+      padding-right: 7vw;
+      margin-top: 0vh;
+      .left {
+        .container {
+          width: 100%;
+          .title {
+            font-size: 16px;
+            line-height: 22px;
+          }
+          .description {
+            font-weight: 400;
+            transition: all 0.3s ease;
+            font-size: 10px;
+            line-height: 16px;
+            color: #000000;
+            margin-top: 10px;
+          }
+          .more {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 0.145em;
+            color: #4166eb;
+            margin-top: 7px;
+          }
+          .allsections {
+            font-weight: 400;
+            margin-top: 10px;
+            font-size: 10px;
+            .normal {
+              color: #505050;
+              border-radius: 12px;
+              padding: 10px;
+            }
+            .selected {
+              background-color: #dadada;
+              border-radius: 6px;
+              padding: 10px;
+            }
+          }
+        }
+      }
+      .right {
+        width: 40%;
+        img {
+          width: 40vw;
+          margin-top: 35vh;
+          // &:last-child {
+          //   margin-bottom: 700px;
+          // }
+        }
+        .animateimg {
+          animation: zoom 0.3s ease;
+        }
+      }
+    }
+  }
 } ;

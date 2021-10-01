@@ -56,3 +56,63 @@
     z-index: 4;
   }
 }
+@media only screen and (max-width: 860px) {
+  .intro {
+    position: absolute;
+    right: 2%;
+    top: 1px;
+    width: fit-content;
+    height: 90%;
+    width: 35%;
+    .background {
+      background-color: #d9f1ff;
+      height: 55vw;
+      width: 55vw;
+      position: absolute;
+      top: 60%;
+      z-index: 1;
+      border-radius: 100%;
+      left: 0;
+      transform: translate(-80%, 0%);
+    }
+    .dashboard {
+      height: fit-content;
+      position: absolute;
+      width: 50vh;
+      bottom: -5%;
+      object-fit: contain;
+      z-index: 2;
+      left: -85%;
+    }
+    .phone {
+      height: fit-content;
+      position: absolute;
+      width: 22vh;
+      top: 80%;
+      left: 50%;
+      object-fit: contain;
+      transform: translate(-60%, -50%);
+      z-index: 3;
+    }
+    .card1 {
+      height: fit-content;
+      position: absolute;
+      width: 22vw;
+      top: 95%;
+      left: -10%;
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+    }
+    .card2 {
+      height: fit-content;
+      position: absolute;
+      width: 18vw;
+      top: 85%;
+      left: -100px;
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+    }
+  }
+}
