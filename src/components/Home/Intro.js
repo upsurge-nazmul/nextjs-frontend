@@ -8,6 +8,7 @@ import BallsSvg from "../SVGcomponents/BallsSvg";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
+  const [showinput, setshowinput] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -52,29 +53,27 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
     <section className={styles.intro}>
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Start your child on the</div>
-        <div className={styles.heading}>
-          path to​
-          <span className={styles.fun}>
-            financial success. <div className={styles.underline}></div>
-          </span>
-        </div>
+        <div className={styles.heading}>Money, made simple.</div>
+
         <div className={styles.subheading}>
-          Upsurge is a finance learning platform for 9-16 years old kids. <br />
-          Start your kid’s <span className={styles.ed}>
-            finance education
-          </span>{" "}
-          journey today.
+          Upsurge is a movement to kickstart a financial literacy and
+          entrepreneurship revolution amongst Gen-Z, by making learning fun and
+          rewarding.
         </div>
         <div className={styles.signupBox}>
-          <input
-            type="text"
-            placeholder="parent@gmail.com"
-            value={email}
-            onChange={(e) => setemail(e.target.value)}
-          />
-          <div className={styles.button} onClick={handleSignup}>
-            Joining the Waiting List
+          {showinput && (
+            <input
+              type="text"
+              placeholder="parent@gmail.com"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+            />
+          )}
+          <div
+            className={showinput ? styles.button : styles.joinButton}
+            onClick={!showinput ? () => setshowinput(true) : handleSignup}
+          >
+            Join the Waitlist
           </div>
         </div>
       </div>

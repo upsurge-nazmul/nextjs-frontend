@@ -1,43 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Home/how.module.scss";
+import HowBlob from "../SVGcomponents/HowBlob";
 import HowSvg from "../SVGcomponents/HowSvg";
+import PauseSvg from "../SVGcomponents/PauseSvg";
+import PlaySvg from "../SVGcomponents/PlaySvg";
 function How() {
+  const [play, setplay] = useState(false);
+  const videoref = useRef();
+  const [ispaused, setispaused] = useState(false);
+  function playpause() {
+    if (!videoref.current.paused) {
+      videoref.current.pause();
+      setplay(false);
+    } else {
+      videoref.current.play();
+      setplay(true);
+    }
+  }
+
   return (
     <div className={styles.howSection}>
       <div className={styles.heading}>
-        How it{" "}
-        <span className={styles.highlight}>
-          works <div className={styles.underline}></div>{" "}
-        </span>
+        <HowBlob className={styles.blob} />
+        How it works
       </div>
       <div className={styles.container}>
-        <div className={styles.left}>
-          <HowSvg />
-        </div>
-        <div className={styles.right}>
-          <ul>
-            <li>
-              Learn through <span> interactive, fun, and experiential </span>
-              learning modules.
-            </li>
-            <li>
-              Play fun games that <span>test your knowledge</span> and compete
-              with your friends for prizes.
-            </li>
-            <li>
-              Challenge your kids to fun <span>quizzes and games</span>, and
-              track their progress on their <span>to-dos.</span>
-            </li>
-            <li>
-              <span>Get rewarded</span> for playing games and completing
-              modules, attractive redemption options -{" "}
-              <span>books, games, vouchers and educational courses.</span>
-            </li>
-          </ul>
-        </div>
+        {play ? (
+          <PauseSvg onClick={playpause} className={styles.pauseIcon} />
+        ) : (
+          <PlaySvg className={styles.playicon} onClick={playpause} />
+        )}
+
+        <video ref={videoref} src="/videos/demo.mp4"></video>
       </div>
     </div>
   );
 }
 
 export default How;
+// <iframe
+//   className={styles.video}
+//   width="560"
+//   height="315"
+//   src="https://www.youtube.com/embed/jV68yMnH01o?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0&amp;start=1&enablejsapi=1"
+//   title="YouTube video player"
+//   frameborder="0"
+//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;modestbranding"
+//   allowfullscreen
+// ></iframe>

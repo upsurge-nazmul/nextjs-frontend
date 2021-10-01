@@ -85,13 +85,22 @@ export default function ManageChore({ choredata, childdata }) {
       let noerror = true;
       for (let i = 0; i < assignees.length; i++) {
         const assignee = assignees[i];
+        let tt = new Date(duedate).getTime();
+        if (tt <= new Date().getTime()) {
+          settoastdata({
+            show: true,
+            msg: "Due date should not be the current date",
+            type: "error",
+          });
+          return;
+        }
         let response = await DashboardApis.addchore({
           message: msg,
           title: choretitle,
           category: choredata?.category || "home",
           assigned_to: assignee.first_name,
           child_id: assignee.id,
-          due_date: new Date(duedate).getTime(),
+          due_date: tt,
           completion: "pending",
         });
         if (!response || !response.data || !response.data.success) {

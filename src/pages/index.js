@@ -17,6 +17,7 @@ import How from "../components/Home/How";
 import Who from "../components/Home/Who";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
+import Benefits from "../components/Home/Benefits";
 const INTERCOM_APP_ID = "a3llo6c5";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
@@ -72,6 +73,7 @@ function Home({ isLogged, userdata }) {
           setmailfromhome={setmailfromhome}
         />
         <How />
+        <Benefits />
         <AboutSection />
         <Who />
         <What />

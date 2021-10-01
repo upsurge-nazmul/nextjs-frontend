@@ -7,11 +7,11 @@
   display: flex;
   overflow: hidden;
   .textContent {
-    margin-top: 11%;
+    margin-top: 16vh;
     margin-left: 7%;
     .heading {
-      font-size: 46px;
-      font-weight: 300;
+      font-size: 3.5vw;
+      font-weight: 900;
       margin-bottom: 5px;
       .fun {
         font-weight: 700;
@@ -24,11 +24,12 @@
       }
     }
     .subheading {
-      font-size: 20px;
+      font-size: 1vw;
       font-weight: 400;
-      color: hsla(0, 0%, 0%, 0.57);
+      color: #18191f;
       margin-top: 15px;
       line-height: 26px;
+      width: 35vw;
       .ed {
         font-weight: 700;
       }
@@ -43,8 +44,8 @@
       input {
         outline: none;
         border: none;
-        border-top-left-radius: 14px;
-        border-bottom-left-radius: 14px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
         border: 1px solid #4166eb;
         width: 55%;
         display: flex;
@@ -59,7 +60,7 @@
       .button {
         width: 45%;
         min-width: fit-content;
-        font-size: 20px;
+        font-size: 1vw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -67,8 +68,26 @@
         padding: 0 20px;
         color: white;
         background-color: hsl(227, 81%, 59%);
-        border-top-right-radius: 14px;
-        border-bottom-right-radius: 14px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(227, 100%, 59%);
+        }
+      }
+      .joinButton {
+        width: 45%;
+        min-width: fit-content;
+        font-size: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        padding: 0 20px;
+        color: white;
+        background-color: hsl(227, 81%, 59%);
+        border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s ease;
         &:hover {
@@ -107,15 +126,14 @@
     }
   }
   .ballsvg {
-    left: 35%;
+    left: 30%;
     position: absolute;
-    bottom: 25px;
-    width: 20vw;
-
+    bottom: 5%;
+    width: 15vw;
     height: max-content;
   }
 }
-@media only screen and (min-width: 861px) and (max-width: 1290px) {
+@media only screen and (min-width: 861px) and (max-width: 1290px) and (max-height: 800px) {
   .intro {
     .homesvg {
       position: absolute;
@@ -138,13 +156,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
-    }
-    .ballsvg {
-      left: 15%;
-      position: absolute;
-      bottom: 25px;
-      width: 25vw;
-      height: max-content;
     }
   }
 }
