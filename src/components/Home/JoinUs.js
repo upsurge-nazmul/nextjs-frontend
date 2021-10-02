@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Home/join.module.scss";
 
 function JoinUs() {
+  const [showinput, setshowinput] = useState(false);
   return (
     <section className={styles.joinSection}>
       <div className={`${styles.doodle} ${styles.dl1}`}>
@@ -30,17 +31,23 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>
-          Join the
-          <span className={styles.highlight}>
-            club <div className={styles.underline}></div>
-          </span>
-        </div>
+        <div className={styles.heading}>Subscribe to upsurge Newsletter.</div>
         <p className={styles.subheading}>
-          Upsurge is free to use for families of any size. We also offer paid
-          plans with additional features, live classes and priorirty support.
+          Get all the information related to Financial Literacy
         </p>
-        <div className={styles.button}>Enroll your kid for free</div>
+        <div className={styles.emailwrapper}>
+          {showinput && (
+            <input className={styles.email} type="email" placeholder="Email" />
+          )}
+          <div
+            onClick={() => setshowinput(true)}
+            className={`${styles.button} ${
+              !showinput ? styles.normalbutton : null
+            }`}
+          >
+            Subscribe
+          </div>
+        </div>
       </div>
     </section>
   );

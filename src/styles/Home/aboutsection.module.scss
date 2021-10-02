@@ -3,7 +3,7 @@
   height: 60vh;
   scroll-snap-align: center;
   display: flex;
-  background: rgb(255, 255, 255);
+  background: #fdcc03;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@
       font-style: italic;
       font-weight: 500;
       font-size: 18px;
-      color: #ababab;
+      color: #1f1f1f;
       width: 70%;
     }
     .button {
@@ -108,7 +108,7 @@
   }
 }
 
-@media only screen and (max-width: 859px) {
+@media only screen and (max-width: 860px) {
   .about {
     height: 40vh;
     overflow: hidden;

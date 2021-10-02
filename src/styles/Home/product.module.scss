@@ -1,115 +1,76 @@
 .productSection {
   scroll-snap-align: end;
   position: relative;
-  height: 100vh;
   width: 100vw;
-  background-color: hsla(48, 98%, 50%, 1);
+  background-color: rgb(255, 255, 255);
   display: flex;
+  flex-direction: column;
   overflow: hidden;
-  padding-left: 10%;
-  .right {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    .circle {
-      width: 35vw;
-      height: 35vw;
-      background: #ffffff;
-      border-radius: 100%;
-      position: relative;
-      img {
-        position: absolute;
-        bottom: 10px;
-        right: -10px;
-        width: 35vw;
-      }
-      .green {
-        position: absolute;
-        right: -6%;
-        top: 37%;
-        width: 69px;
-        height: 69px;
-        border-radius: 50%;
-        background-color: hsla(173, 80%, 45%, 1);
-      }
-      .yellow {
-        position: absolute;
-        top: 2%;
-        left: 2%;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: hsla(47, 100%, 76%, 1);
-      }
-      .red {
-        position: absolute;
-        left: 5%;
-        bottom: 0;
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background-color: hsla(360, 100%, 69%, 1);
-        z-index: -1;
-      }
-    }
+  padding: 0 10% 200px;
+  .heading {
+    margin-bottom: 50px;
+    font-size: 46px;
+    font-weight: 700;
   }
-  .left {
-    width: 40%;
+  .wrapper {
     display: flex;
-    flex-direction: column;
-    padding-left: 5%;
-    padding-top: 10%;
-    .heading {
-      margin-bottom: 50px;
-      font-size: 46px;
-      font-weight: 400;
-      .highlight {
-        position: relative;
-        font-weight: 700;
-        .underline {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          background: #fdcc03;
-          width: 93%;
-          height: 8px;
-        }
-      }
-    }
-    .button {
-      padding: 5px 14px;
-      font-size: 16px;
-      font-weight: 400;
-      border-radius: 10px;
-      background-color: rgb(255, 255, 255);
-      margin-top: 20px;
-      width: fit-content;
-      height: 50px;
-      display: flex;
-      align-items: center;
-    }
-    .finance {
-      border-radius: 14px;
-      padding: 15px 20px;
-      font-size: 16px;
-      font-weight: 700;
-      background: #4166eb;
-      color: white;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    justify-content: space-between;
+    .pillar {
+      width: 19vw;
+      border-radius: 8px;
+      padding: 100px 25px 150px;
       display: flex;
       flex-direction: column;
-      text-align: left;
-      align-items: flex-start;
-      justify-content: center;
-      width: 280px;
-      height: fit-content;
-      p {
-        font-size: 14px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-        text-align: left;
-        margin-top: 10px;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      .icon {
+        width: 50%;
+      }
+      .title {
+        font-weight: 600;
+        margin-top: 50px;
+        font-size: 26px;
+      }
+      .description {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      &:first-child {
+        background-color: #17d1bc;
+        color: white;
+        &:hover {
+          box-shadow: rgba(23, 209, 188, 0.3) 0px 19px 38px,
+            rgba(23, 209, 188, 0.22) 0px 15px 12px;
+        }
+      }
+      &:nth-child(2) {
+        background-color: rgb(255, 98, 99);
+        color: white;
+        &:hover {
+          box-shadow: rgba(255, 98, 99, 0.3) 0px 19px 38px,
+            rgba(255, 98, 99, 0.22) 0px 15px 12px;
+        }
+      }
+      &:nth-child(3) {
+        background-color: rgb(253, 204, 3);
+        color: black;
+        &:hover {
+          box-shadow: rgba(253, 204, 3, 0.3) 0px 19px 38px,
+            rgba(253, 204, 3, 0.22) 0px 15px 12px;
+        }
+      }
+      &:last-child {
+        color: rgb(255, 255, 255);
+        background-color: rgb(65, 102, 235);
+        &:hover {
+          box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+            rgba(65, 102, 235, 0.22) 0px 15px 12px;
+        }
       }
     }
   }
@@ -133,90 +94,112 @@
 
 @media only screen and (max-width: 859px) {
   .productSection {
-    flex-direction: row-reverse;
     position: relative;
     z-index: 2;
-    padding: 0;
-    .right {
-      bottom: 10px;
-      right: 10px;
-      display: flex;
-      align-items: center;
-      position: absolute;
-      z-index: -1;
-      width: 80vw;
-      justify-content: center;
-      .circle {
-        width: 80vw;
-        height: 80vw;
-        border-radius: 100%;
-        position: relative;
-        img {
-          position: absolute;
-          bottom: 10px;
-          right: -10px;
-          width: 80vw;
-        }
-        .green {
-          position: absolute;
-          right: -6%;
-          top: 37%;
-          width: 39px;
-          height: 39px;
-          border-radius: 50%;
-          background-color: hsla(173, 80%, 45%, 1);
-        }
-        .yellow {
-          position: absolute;
-          top: 2%;
-          left: 2%;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background-color: hsla(47, 100%, 76%, 1);
-        }
-        .red {
-          position: absolute;
-          left: 5%;
-          bottom: 0;
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          background-color: hsla(360, 100%, 69%, 1);
-          z-index: -1;
-        }
-      }
+    padding: 7vw;
+    height: fit-content;
+    .heading {
+      margin-bottom: 50px;
+      font-size: 32px;
+      font-weight: 700;
     }
-    .left {
-      flex: 1;
-      align-items: center;
-      padding: 0;
-      z-index: 2;
-      padding-top: 40px;
-      .heading {
-        font-size: 36px;
-        margin-bottom: 25px;
-        .highlight {
-          .underline {
-            width: 98%;
-            height: 5px;
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: flex-start;
+      justify-content: space-between;
+      .pillar {
+        width: 42vw;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        padding: 100px 25px 150px;
+        display: flex;
+        min-width: 300px;
+
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        .icon {
+          width: 50%;
+        }
+        .title {
+          font-weight: 600;
+          margin-top: 50px;
+          font-size: 26px;
+        }
+        .description {
+          font-size: 18px;
+          margin-top: 20px;
+        }
+        &:first-child {
+          background-color: #17d1bc;
+          color: white;
+          &:hover {
+            box-shadow: rgba(23, 209, 188, 0.3) 0px 19px 38px,
+              rgba(23, 209, 188, 0.22) 0px 15px 12px;
+          }
+        }
+        &:nth-child(2) {
+          background-color: rgb(255, 98, 99);
+          color: white;
+          &:hover {
+            box-shadow: rgba(255, 98, 99, 0.3) 0px 19px 38px,
+              rgba(255, 98, 99, 0.22) 0px 15px 12px;
+          }
+        }
+        &:nth-child(3) {
+          background-color: rgb(253, 204, 3);
+          color: black;
+          &:hover {
+            box-shadow: rgba(253, 204, 3, 0.3) 0px 19px 38px,
+              rgba(253, 204, 3, 0.22) 0px 15px 12px;
+          }
+        }
+        &:last-child {
+          color: rgb(255, 255, 255);
+          background-color: rgb(65, 102, 235);
+          &:hover {
+            box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+              rgba(65, 102, 235, 0.22) 0px 15px 12px;
           }
         }
       }
-      .button {
-        height: 40px;
-        font-size: 14px;
-        border-radius: 12px;
-      }
-      .finance {
-        height: 80px;
-        border-radius: 12px;
-        font-size: 16px;
-        text-align: start;
-        padding: 5px 14px;
-        p {
-          font-size: 12px;
-          margin-top: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .productSection {
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: flex-start;
+      justify-content: center;
+      .pillar {
+        width: 86vw;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        padding: 20px 25px 50px;
+        display: flex;
+        min-width: 300px;
+
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        .icon {
+          width: 40%;
+        }
+        .title {
+          margin-top: 20px;
+        }
+        .description {
+          font-size: 14px;
+          margin-top: 10px;
         }
       }
     }

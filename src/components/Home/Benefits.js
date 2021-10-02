@@ -68,9 +68,8 @@ function Benefits() {
   }
   useEffect(() => {
     if (sections.length === 0) return;
-    let remove = (window.onscroll = function (ev) {
+    const handlescroll = () => {
       let container = document.getElementById("mainbenefitscontainer");
-      let right = document.getElementById("rightsection");
       let moving = document.getElementById("movingcontainer");
       if (
         window.scrollY > container.offsetTop + 150 &&
@@ -89,9 +88,9 @@ function Benefits() {
           item.classList.remove("animateimg");
         }
       }
-    });
-
-    return () => remove;
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
   }, [sections]);
   function hanldemove(index) {
     setcurrentSection(index);
@@ -104,17 +103,33 @@ function Benefits() {
   return (
     <section className={styles.benefits} id="mainbenefitscontainer">
       <div className={styles.main}>
+        <div className={styles.mobile}>
+          {data.map((item, index) => {
+            return (
+              <div className={styles.container} key={"mobilecontainer" + index}>
+                <p className={styles.title}>{item.title}</p>
+                <img
+                  src={"/images/home/benefits/img" + (index + 1) + ".png"}
+                  alt=""
+                />
+                <p className={styles.description}>{item.description}</p>
+                <p className={styles.more}>{`LEARN MORE ->`}</p>
+              </div>
+            );
+          })}
+        </div>
         <div className={styles.left}>
           <div id="movingcontainer" className={styles.container}>
-            <p className={styles.title}>{data[currentSection].title}</p>
+            <p className={styles.title}>{data[currentSection]?.title}</p>
             <p className={styles.description}>
-              {data[currentSection].description}
+              {data[currentSection]?.description}
             </p>
             <p className={styles.more}>{`LEARN MORE ->`}</p>
             <div className={styles.allsections}>
               {data.map((item, index) => {
                 return (
                   <p
+                    key={"benefitsSection" + index}
                     onClick={() => hanldemove(index)}
                     className={
                       index === currentSection ? styles.selected : styles.normal

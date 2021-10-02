@@ -5,6 +5,8 @@ import Logo from "../SVGcomponents/Logo";
 import Twitter from "../SVGcomponents/Twitter";
 import Fb from "../SVGcomponents/Fb";
 import Insta from "../SVGcomponents/Insta";
+import YtSvg from "../SVGcomponents/YtSvg";
+import LinkedIN from "../SVGcomponents/LinkedInSvg";
 
 function Footer() {
   const router = useRouter();
@@ -12,6 +14,13 @@ function Footer() {
     <div className={styles.footerSection}>
       <div className={styles.left}>
         <Logo className={styles.logo} />
+        <div className={styles.details}>
+          <div className={styles.heading}>Surgeup Technologies Pvt Ltd.</div>
+          <p className={styles.subheadings}>
+            <a href="tel:+918287433304">+91 8287 433 304 </a>
+            <a href="mailto:karan@upsurgefi.com">| karan@upsurgefi.com</a>
+          </p>
+        </div>
         <div className={styles.bottom}>
           <p>Terms & Conditions</p>
           <p>Privacy Policy</p>
@@ -20,28 +29,30 @@ function Footer() {
 
       <div className={styles.right}>
         <div className={styles.column}>
-          <p className={styles.heading}>About Us</p>
-          <p className={styles.subheading}>Our Northstar</p>
-          <p className={styles.subheading}>Life@upsurge</p>
-          <p className={styles.subheading}>Careers</p>
-          <p className={styles.subheading}>FAQ’s</p>
-        </div>
-        <div className={styles.column}>
-          <p className={styles.heading}>Benefits</p>
-          <p className={styles.subheading}>Financial Literacy</p>
-          <p className={styles.subheading}>Experiential Learning</p>
-          <p className={styles.subheading}>Entrepreneurship</p>
-          <p className={styles.subheading}>Rewards</p>
-        </div>
-        <div className={styles.column}>
           <p className={styles.heading}>Products</p>
-          <p className={styles.subheading}>Knowledge Quest</p>
+          <p className={styles.subheading}>Knowledge Quests</p>
           <p className={styles.subheading}>Games Arena</p>
-          <p className={styles.subheading}>Jobs</p>
+          <p className={styles.subheading}>Chores</p>
           <p className={styles.subheading}>Family Fun</p>
+          <p className={styles.subheading}>Tribes</p>
+          <p className={styles.subheading}>Live Classes</p>
         </div>
         <div className={styles.column}>
-          <p className={styles.heading}>Calculators</p>
+          <p className={styles.heading}>Resources</p>
+          <p className={styles.subheading}>Goal Wizards</p>
+          <p className={styles.subheading}>Live Classes</p>
+          <p className={styles.subheading}>Tournaments</p>
+          <p className={styles.subheading}>Cheat Codes</p>
+          <p className={styles.subheading}>Articles</p>
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading}>Help & Support</p>
+          <p className={styles.subheading}>FAQ’s</p>
+          <p className={styles.subheading}>Help Center</p>
+          <p className={styles.subheading}>Contact us</p>
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading}>Financial Calculators</p>
           <p
             className={styles.subheading}
             onClick={() => router.push("/calculators/homeLoan")}
@@ -67,17 +78,19 @@ function Footer() {
             SIP Loan Calculator
           </p>
         </div>
-        <div className={styles.column}>
+        {/* <div className={styles.column}>
           <p className={styles.heading}>Useful Links</p>
           <p className={styles.subheading}>Terms and Conditions</p>
           <p className={styles.subheading}>Privacy Policy</p>
           <p className={styles.subheading}>Pricing</p>
           <p className={styles.subheading}>FAQ’s</p>
-        </div>
+        </div> */}
         <div className={styles.socials}>
           <Fb className={styles.social} />
           <Twitter className={styles.social} alt="" />
           <Insta className={styles.social} />
+          <YtSvg className={styles.socialyt} />
+          <LinkedIN className={styles.socialyt} />
         </div>
       </div>
     </div>

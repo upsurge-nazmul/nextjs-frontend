@@ -73,7 +73,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
             className={showinput ? styles.button : styles.joinButton}
             onClick={!showinput ? () => setshowinput(true) : handleSignup}
           >
-            Join the Waitlist
+            {showinput ? "Join" : "Join the Waitlist"}
           </div>
         </div>
       </div>

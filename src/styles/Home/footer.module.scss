@@ -18,13 +18,37 @@
     .logo {
       width: 180px;
     }
+    .details {
+      font-size: 18px;
+      margin-top: auto;
+      .heading {
+        font-weight: 400;
+      }
+      .subheadings {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 25px;
+        a {
+          text-decoration: none;
+          color: #4166eb;
+          transition: all 0.3s ease;
+          &:first-child {
+            margin-right: 5px;
+          }
+          &:hover {
+            color: hsl(227, 57%, 49%);
+          }
+        }
+      }
+    }
     .bottom {
+      margin-top: auto;
       display: flex;
       width: 100%;
       p {
         margin-right: 20px;
         font-size: 15px;
-        font-family: "Roboto", sans-serif;
         cursor: pointer;
         font-weight: 400;
       }
@@ -60,17 +84,28 @@
       bottom: 0px;
       right: 10%;
       display: flex;
+      height: fit-content;
+      overflow: auto;
+      align-items: center;
       .social {
         cursor: pointer;
         margin-right: 30px;
+        width: 20px;
+        height: 20px;
+      }
+      .socialyt {
+        width: 25px;
+        cursor: pointer;
+        margin-right: 30px;
+        height: 25px;
       }
     }
   }
 }
 
-@media only screen and (max-width: 859px) {
+@media only screen and (max-width: 860px) {
   .footerSection {
-    height: 40vh;
+    height: 60vh;
     .left {
       width: 40%;
       display: flex;
@@ -80,6 +115,23 @@
       .logo {
         width: 100%;
         padding-right: 20px;
+      }
+      .details {
+        font-size: 10px;
+        padding-right: 20px;
+        .heading {
+          font-weight: 600;
+          text-align: center;
+        }
+        .subheadings {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 5px;
+          a {
+            margin-top: 5px;
+          }
+        }
       }
       .bottom {
         display: flex;
@@ -94,12 +146,16 @@
     .right {
       flex: 1;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: baseline;
+      align-content: flex-start;
+      flex-wrap: wrap;
       height: 100%;
       position: relative;
       padding-top: 4%;
       .column {
-        margin-right: 10px;
+        margin-right: 0px;
+        width: 50%;
+        margin-bottom: 10px;
         .heading {
           font-size: 13px;
           margin-bottom: 15px;

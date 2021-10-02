@@ -15,7 +15,13 @@ function Header({
   stickyheader,
 }) {
   const router = useRouter();
-
+  // [
+  //   { name: "Our Northstar", pushTo: "/northstar" },
+  //   { name: "Team", pushTo: "/team" },
+  //   { name: "Life@upsurge", pushTo: "/lifeatupsurge" },
+  //   { name: "Careers", pushTo: "/careers" },
+  //   { name: "FAQ's", pushTo: "/faq" },
+  // ]
   function clickedHeader() {
     if (router.route === "/") {
       let homepagemain = document.getElementById("home-page-main");
@@ -49,32 +55,6 @@ function Header({
         </div>
         <div className={styles.nav}>
           <HeaderTabSection
-            title={"About us"}
-            tabs={[
-              { name: "Our Northstar", pushTo: "/northstar" },
-              { name: "Team", pushTo: "/team" },
-              { name: "Life@upsurge", pushTo: "/lifeatupsurge" },
-              { name: "Careers", pushTo: "/careers" },
-              { name: "FAQ's", pushTo: "/faq" },
-            ]}
-          />
-          <HeaderTabSection
-            title={"Benefits"}
-            tabs={[
-              { name: "Financial Literacy", pushTo: "/benefits/finlitracy" },
-              {
-                name: "Experiental Learning",
-                pushTo: "/benefits/explearning",
-              },
-              {
-                name: "Entrepreneurship",
-                pushTo: "/benefits/entrepreneurship",
-              },
-              { name: "Rewards", pushTo: "/benefits/rewards" },
-              { name: "Community", pushTo: "/community" },
-            ]}
-          />
-          <HeaderTabSection
             title={"Products"}
             tabs={[
               { name: "Knowledge Quest", pushTo: "/knowledgequests" },
@@ -83,38 +63,37 @@ function Header({
                 pushTo: "/p_games",
               },
               {
-                name: "Jobs",
+                name: "Chores",
                 pushTo: "/jobs",
               },
               { name: "Family Fun", pushTo: "/familyfun" },
               { name: "Tribes", pushTo: "/p_tribes" },
               { name: "Live Classes", pushTo: "/p_liveclasses" },
-              { name: "Pricing", pushTo: "/pricing" },
             ]}
           />
           <HeaderTabSection
-            title={"Play"}
+            title={"Resources"}
             tabs={[
-              { name: "Games", pushTo: "/games/main" },
-              {
-                name: "Gamezes",
-                pushTo: "/quiz/main",
-              },
-            ]}
-          />
-
-          <HeaderTabSection
-            title={"Learn"}
-            tabs={[
-              { name: "Blogs", pushTo: "/blogs" },
+              { name: "Goal Wizard", pushTo: "/goalwizard" },
+              { name: "Live Classes", pushTo: "/p_liveclasses" },
+              { name: "Tournaments", pushTo: "/tournaments" },
               {
                 name: "Cheat Codes",
                 pushTo: "/cheatcodes",
               },
+              { name: "Articles", pushTo: "/blogs" },
+            ]}
+          />
+          <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
+          <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" />
+
+          <HeaderTabSection
+            title={"More"}
+            tabs={[
+              { name: "Blogs", pushTo: "/blogs" },
+
               { name: "Financial Calculators", pushTo: "/calculators/main" },
-              { name: "Goal Wizard", pushTo: "/goalwizard" },
               { name: "Live Classes", pushTo: "/liveclasses" },
-              { name: "Tournaments", pushTo: "/tournaments" },
             ]}
           />
         </div>

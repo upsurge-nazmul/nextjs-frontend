@@ -74,11 +74,8 @@ function Home({ isLogged, userdata }) {
         />
         <How />
         <Benefits />
-        <AboutSection />
-        <Who />
-        <What />
         <ProductSection />
-        <Reviews />
+        <AboutSection />
         <JoinUs />
         <Footer />
       </div>

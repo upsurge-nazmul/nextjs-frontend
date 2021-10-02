@@ -105,19 +105,8 @@
     flex-direction: column;
     .heading {
       font-size: 46px;
-      font-weight: 400;
-      .highlight {
-        position: relative;
-        font-weight: 700;
-        .underline {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          background: #fdcc03;
-          width: 93%;
-          height: 8px;
-        }
-      }
+      font-weight: 700;
+      text-align: center;
     }
     .subheading {
       color: rgb(255, 255, 255);
@@ -127,15 +116,41 @@
       width: 80%;
       text-align: center;
     }
-    .button {
+    .emailwrapper {
+      display: flex;
       margin-top: 40px;
-      border-radius: 14px;
-      background: #ffffff;
-      color: rgb(0, 0, 0);
-      font-size: 20px;
-      font-weight: 500;
-      padding: 11px 30px;
-      cursor: pointer;
+      height: 50px;
+      align-items: center;
+      width: 100vw;
+      justify-content: center;
+      .email {
+        border: none;
+        border-radius: 8px;
+        font-size: 20px;
+        width: 60%;
+        max-width: 450px;
+        padding: 0 20px;
+        height: 100%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .button {
+        border-radius: 8px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background: #ececec;
+        color: rgb(34, 34, 34);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-weight: 500;
+        padding: 10px 30px;
+        cursor: pointer;
+      }
+      .normalbutton {
+        border-radius: 8px;
+      }
     }
   }
 }
@@ -226,9 +241,33 @@
       .subheading {
         font-size: 15px;
       }
-      .button {
-        border-radius: 12px;
-        font-size: 16px;
+      .emailwrapper {
+        display: flex;
+        margin-top: 40px;
+        height: 40px;
+        align-items: center;
+        width: 100vw;
+        padding: 0 7vw;
+        .email {
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+
+          padding: 0 20px;
+          flex: 1;
+          height: 100%;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        .button {
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          font-weight: 500;
+          padding: 10px 30px;
+          cursor: pointer;
+        }
       }
     }
   }
