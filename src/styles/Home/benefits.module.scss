@@ -127,7 +127,6 @@
 @media only screen and (min-width: 860px) and (max-height: 800px) {
   .benefits {
     display: flex;
-    position: relative;
     flex-direction: column;
     .main {
       padding-left: 15vw;
@@ -136,20 +135,17 @@
       padding-bottom: 30vh;
       display: flex;
       .left {
-        position: relative;
         width: 50%;
         display: flex;
-        overflow: hidden;
         flex: 1;
         flex-direction: column;
         .container {
-          --margin: 65%;
           display: flex;
           flex-direction: column;
           height: 400px;
           width: 400px;
           z-index: 100;
-          margin-top: var(--margin);
+          margin-top: 35vh;
           margin-bottom: 4vh;
           .title {
             font-size: 32px;

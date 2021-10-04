@@ -66,7 +66,21 @@ function Benefits() {
     }
     return top;
   }
-
+  useEffect(() => {
+    if (sections.length === 0) return;
+    const handlescroll = () => {
+      for (let i = 0; i < sections.length; i++) {
+        const item = sections[i];
+        if (isInViewport(item)) {
+          setcurrentSection(i);
+        } else {
+          item.classList.remove("animateimg");
+        }
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, [sections]);
   function hanldemove(index) {
     setcurrentSection(index);
     var element = sections[index];
