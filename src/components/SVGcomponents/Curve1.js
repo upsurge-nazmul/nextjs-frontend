@@ -11,8 +11,8 @@ function Curve1({ className }) {
       <path
         d="M-70 1C-24 57.3333 122.1 170.5 338.5 172.5C609 175 694.5 1 943 1C1191.5 1 1270.5 105 1485 66.5"
         stroke="#D7D7D7"
-        stroke-width="2"
-        stroke-dasharray="16 16"
+        strokeWidth="2"
+        strokeDasharray="16 16"
       />
     </svg>
   );
