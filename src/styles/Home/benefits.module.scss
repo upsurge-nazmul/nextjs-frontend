@@ -16,36 +16,35 @@
 }
 .benefits {
   display: flex;
-  position: relative;
   flex-direction: column;
+  position: relative;
   .main {
     padding-left: 15vw;
     padding-right: 15vw;
     margin-top: 2vh;
     padding-bottom: 30vh;
-    overflow-y: auto;
-    display: flex;
-    overflow: hidden;
     .mobile {
       display: none;
     }
     .left {
-      position: relative;
       width: 50%;
       display: flex;
       overflow: hidden;
+      position: sticky;
+      top: 0;
       flex: 1;
       padding-right: 10px;
       flex-direction: column;
+      float: left;
+      height: 100%;
       .container {
-        --margin: 65%;
         display: flex;
+        height: 100%;
         flex-direction: column;
-        height: 400px;
-        width: 400px;
         z-index: 100;
-        margin-top: var(--margin);
         margin-bottom: 4vh;
+        margin-top: 30vh;
+        width: 400px;
         .title {
           font-size: 36px;
           line-height: 44px;
@@ -82,7 +81,6 @@
             &:hover {
               transition: all 0.3s ease;
               background-color: #f7f7f7;
-              margin: 10px 0;
             }
           }
           .selected {
@@ -95,6 +93,7 @@
       }
     }
     .right {
+      float: right;
       width: 50%;
       img {
         width: 40vw;
@@ -120,9 +119,7 @@
       padding-right: 1vw;
       margin-top: 2vh;
       padding-bottom: 30vh;
-      overflow-y: auto;
       display: flex;
-      overflow: hidden;
     }
   }
 }
@@ -137,9 +134,7 @@
       padding-right: 15vw;
       margin-top: 2vh;
       padding-bottom: 30vh;
-      overflow-y: auto;
       display: flex;
-      overflow: hidden;
       .left {
         position: relative;
         width: 50%;

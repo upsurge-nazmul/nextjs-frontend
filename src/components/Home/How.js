@@ -20,18 +20,17 @@ function How() {
 
   return (
     <div className={styles.howSection}>
-      <div className={styles.heading}>
-        <HowBlob className={styles.blob} />
-        How it works
-      </div>
       <div className={styles.container}>
-        {play ? (
+        {play && !videoref.current.ended ? (
           <PauseSvg onClick={playpause} className={styles.pauseIcon} />
         ) : (
           <PlaySvg className={styles.playicon} onClick={playpause} />
         )}
 
-        <video ref={videoref} src="/videos/demo.mp4"></video>
+        <video
+          ref={videoref}
+          src="https://videomaker-prod-static.s3.amazonaws.com/project/upsurge-explainer_20211003_104717_freemium.mp4"
+        ></video>
       </div>
     </div>
   );

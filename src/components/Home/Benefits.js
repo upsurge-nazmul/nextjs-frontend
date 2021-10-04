@@ -66,39 +66,23 @@ function Benefits() {
     }
     return top;
   }
-  useEffect(() => {
-    if (sections.length === 0) return;
-    const handlescroll = () => {
-      let container = document.getElementById("mainbenefitscontainer");
-      let moving = document.getElementById("movingcontainer");
-      if (
-        window.scrollY > container.offsetTop + 150 &&
-        window.scrollY <= getheight(sections[sections.length - 1])
-      ) {
-        moving.style.setProperty(
-          "--margin",
-          `calc(${window.scrollY}px - 170vh)`
-        );
-      }
-      for (let i = 0; i < sections.length; i++) {
-        const item = sections[i];
-        if (isInViewport(item)) {
-          setcurrentSection(i);
-        } else {
-          item.classList.remove("animateimg");
-        }
-      }
-    };
-    window.addEventListener("scroll", handlescroll);
-    return () => window.removeEventListener("scroll", handlescroll);
-  }, [sections]);
+
   function hanldemove(index) {
     setcurrentSection(index);
-    sections[index].scrollIntoView({
+    var element = sections[index];
+    var headerOffset = 200;
+    var elementPosition = getheight(element);
+    var offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
       behavior: "smooth",
-      block: "start",
-      inline: "nearest",
     });
+    // sections[index].scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start",
+    //   inline: "nearest",
+    // });
   }
   return (
     <section className={styles.benefits} id="mainbenefitscontainer">
