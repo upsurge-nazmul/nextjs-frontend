@@ -28,6 +28,10 @@
     border: 3px none #ffffff;
   }
 }
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
 // * {
 //   outline: 1px solid #f00 !important;
 // }

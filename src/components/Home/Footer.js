@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Home/footer.module.scss";
 import { useRouter } from "next/dist/client/router";
 import Logo from "../SVGcomponents/Logo";
@@ -7,11 +7,15 @@ import Fb from "../SVGcomponents/Fb";
 import Insta from "../SVGcomponents/Insta";
 import YtSvg from "../SVGcomponents/YtSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
+import Terms from "./Terms";
 
 function Footer() {
+  const [showterm, setshowterm] = useState(false);
+  const [termmode, settermmode] = useState("terms");
   const router = useRouter();
   return (
     <div className={styles.footerSection}>
+      {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
       <div className={styles.left}>
         <Logo className={styles.logo} />
         <div className={styles.details}>
@@ -22,8 +26,22 @@ function Footer() {
           </p>
         </div>
         <div className={styles.bottom}>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
+          <p
+            onClick={() => {
+              settermmode("terms");
+              setshowterm(true);
+            }}
+          >
+            Terms & Conditions
+          </p>
+          <p
+            onClick={() => {
+              settermmode("privacy");
+              setshowterm(true);
+            }}
+          >
+            Privacy Policy
+          </p>
         </div>
       </div>
 

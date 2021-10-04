@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Home/benefits.module.scss";
+import Curve1 from "../SVGcomponents/Curve1";
 
 function Benefits() {
   const data = [
@@ -141,12 +142,16 @@ function Benefits() {
           </div>
         </div>
         <div id="rightsection" className={styles.right}>
-          <img
-            id="img-1"
-            className="imgsections"
-            src="/images/home/benefits/img1.png"
-            alt=""
-          />
+          <div className={styles.imgwrapper}>
+            <img
+              id="img-1"
+              className="imgsections"
+              src="/images/home/benefits/img1.png"
+              alt=""
+            />
+            <Curve1 className={styles.curve} />
+          </div>
+
           <img
             id="img-2"
             className="imgsections"

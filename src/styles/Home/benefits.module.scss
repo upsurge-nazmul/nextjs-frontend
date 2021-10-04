@@ -1,3 +1,12 @@
+@keyframes moveit {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @keyframes popouttext {
   0% {
     transform: translateY(-20%);
@@ -42,8 +51,7 @@
         height: 100%;
         flex-direction: column;
         z-index: 100;
-        margin-bottom: 4vh;
-        margin-top: 30vh;
+        margin-top: 45%;
         width: 400px;
         .title {
           font-size: 36px;
@@ -95,6 +103,17 @@
     .right {
       float: right;
       width: 50%;
+      .imgwrapper {
+        position: relative;
+        .curve {
+          position: fixed;
+          width: 100vw;
+          left: 0;
+          top: 35%;
+          z-index: -1;
+          animation: moveit 5s ease alternate infinite;
+        }
+      }
       img {
         width: 40vw;
         margin-top: 35vh;
@@ -129,8 +148,8 @@
     display: flex;
     flex-direction: column;
     .main {
-      padding-left: 15vw;
-      padding-right: 15vw;
+      padding-left: 12vw;
+      padding-right: 12vw;
       margin-top: 2vh;
       padding-bottom: 30vh;
       display: flex;
@@ -142,10 +161,8 @@
         .container {
           display: flex;
           flex-direction: column;
-          height: 400px;
-          width: 400px;
           z-index: 100;
-          margin-top: 35vh;
+          margin-top: 37%;
           margin-bottom: 4vh;
           .title {
             font-size: 32px;
