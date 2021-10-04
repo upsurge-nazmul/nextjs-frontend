@@ -215,3 +215,60 @@
     }
   }
 }
+@media only screen and (max-width: 360px) {
+  .intro {
+    scroll-snap-align: end;
+    position: relative;
+    min-height: 500px;
+    height: calc(100vh - 125px);
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    .textContent {
+      margin-top: 11%;
+      width: 80%;
+      margin-left: 7%;
+      .heading {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 50px;
+        margin-bottom: 3px;
+      }
+      .subheading {
+        font-size: 12px;
+        width: 100%;
+        line-height: 20px;
+      }
+      .signupBox {
+        width: 80vw;
+        min-width: 250px;
+        max-width: 400px;
+        height: 40px;
+        z-index: 1;
+        input {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          font-size: 12px;
+          padding-left: 10px;
+        }
+        .button,
+        .joinButton {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .ballsvg {
+      width: 25vw;
+      bottom: 30px;
+      left: 7%;
+      svg {
+        width: 100px;
+      }
+    }
+  }
+}
