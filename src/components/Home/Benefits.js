@@ -121,7 +121,21 @@ function Benefits() {
         </div>
         <div className={styles.left}>
           <div id="movingcontainer" className={styles.container}>
-            <p className={styles.title}>Benefits</p>
+            <p
+              className={styles.title}
+              style={{
+                color:
+                  currentSection === 1
+                    ? "#FDCC03"
+                    : currentSection === 2
+                    ? "#FF6263"
+                    : currentSection === 3
+                    ? "#17D1BC"
+                    : "#4166EB",
+              }}
+            >
+              Benefits
+            </p>
 
             <div className={styles.allsections}>
               {data.map((item, index) => {
@@ -132,6 +146,18 @@ function Benefits() {
                     className={
                       index === currentSection ? styles.selected : styles.normal
                     }
+                    style={{
+                      backgroundColor:
+                        index === currentSection && currentSection === 1
+                          ? "#FDCC03"
+                          : index === currentSection && currentSection === 2
+                          ? "#FF6263"
+                          : index === currentSection && currentSection === 3
+                          ? "#17D1BC"
+                          : index === currentSection
+                          ? "#4166EB"
+                          : "#ffffff",
+                    }}
                   >
                     {item.title}
                   </p>
@@ -155,7 +181,12 @@ function Benefits() {
             <div className={styles.lb3}></div>
             <div className={styles.lb4}></div> */}
             <p className={styles.description}>{data[0]?.description}</p>
-            <p className={styles.more}>{`LEARN MORE ->`}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#4166EB",
+              }}
+            >{`LEARN MORE ->`}</p>
             <Curve1 className={styles.curve} />
           </div>
           <div className={styles.imgwrapper}>
@@ -166,7 +197,10 @@ function Benefits() {
               alt=""
             />
             <p className={styles.description}>{data[1]?.description}</p>
-            <p className={styles.more}>{`LEARN MORE ->`}</p>
+            <p
+              className={styles.more}
+              style={{ color: "#FDCC03" }}
+            >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>
             <img
@@ -176,7 +210,12 @@ function Benefits() {
               alt=""
             />
             <p className={styles.description}>{data[2]?.description}</p>
-            <p className={styles.more}>{`LEARN MORE ->`}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#FF6263",
+              }}
+            >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>
             <img
@@ -186,7 +225,12 @@ function Benefits() {
               alt=""
             />
             <p className={styles.description}>{data[3]?.description}</p>
-            <p className={styles.more}>{`LEARN MORE ->`}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#17D1BC",
+              }}
+            >{`LEARN MORE ->`}</p>
           </div>
         </div>
       </div>

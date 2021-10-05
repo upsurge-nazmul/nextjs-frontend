@@ -14,6 +14,7 @@ function Footer() {
   const [showresources, setshowresources] = useState(false);
   const [showcalcs, setshowcalcs] = useState(false);
   const [showhelp, setshowhelp] = useState(false);
+  const [showmore, setshowmore] = useState(false);
   const [showproducts, setshowproducts] = useState(false);
   const [termmode, settermmode] = useState("terms");
   const router = useRouter();
@@ -176,6 +177,12 @@ function Footer() {
               </p>
             </>
           )}
+        </div>
+        <div className={styles.column}>
+          <p className={styles.heading} onClick={() => setshowmore(!showmore)}>
+            More <span>{showmore ? "-" : "+"}</span>
+          </p>
+          {showmore && <p className={styles.subheading}>About Us</p>}
         </div>
         <div className={styles.socials}>
           <Fb className={styles.social} />
