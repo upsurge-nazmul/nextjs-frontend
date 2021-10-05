@@ -144,6 +144,9 @@
         cursor: pointer;
         margin-right: 30px;
         height: 25px;
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -329,6 +332,9 @@
           cursor: pointer;
           margin-right: 30px;
           height: 35px;
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
       .bottom {
