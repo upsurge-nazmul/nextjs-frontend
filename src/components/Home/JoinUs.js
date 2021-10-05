@@ -27,17 +27,9 @@ function JoinUs() {
           Get all the information related to Financial Literacy
         </p>
         <div className={styles.emailwrapper}>
-          {showinput && (
-            <input className={styles.email} type="email" placeholder="Email" />
-          )}
-          <div
-            onClick={() => setshowinput(true)}
-            className={`${styles.button} ${
-              !showinput ? styles.normalbutton : null
-            }`}
-          >
-            Subscribe
-          </div>
+          <input className={styles.email} type="email" placeholder="Email" />
+
+          <div className={styles.button}>Subscribe</div>
         </div>
       </div>
     </section>

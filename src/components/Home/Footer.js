@@ -23,25 +23,6 @@ function Footer() {
       <div className={styles.top}>
         <div className={styles.left}>
           <Logo className={styles.logo} />
-
-          <div className={styles.bottom}>
-            <p
-              onClick={() => {
-                settermmode("terms");
-                setshowterm(true);
-              }}
-            >
-              Terms & Conditions
-            </p>
-            <p
-              onClick={() => {
-                settermmode("privacy");
-                setshowterm(true);
-              }}
-            >
-              Privacy Policy
-            </p>
-          </div>
         </div>
 
         <div className={styles.right}>
@@ -100,13 +81,9 @@ function Footer() {
               SIP Loan Calculator
             </p>
           </div>
-
-          <div className={styles.socials}>
-            <Fb className={styles.social} />
-            <Twitter className={styles.social} alt="" />
-            <Insta className={styles.social} />
-            <YtSvg className={styles.socialyt} />
-            <LinkedIN className={styles.socialyt} />
+          <div className={styles.column}>
+            <p className={styles.heading}>More</p>
+            <p className={styles.subheading}>About Us</p>
           </div>
         </div>
       </div>
@@ -235,11 +212,39 @@ function Footer() {
         </div>
       </div>
       <div className={styles.brand}>
-        <div className={styles.heading}>© Surgeup Technologies Pvt Ltd.</div>
-        <p className={styles.subheadings}>
-          Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
-          <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
-        </p>
+        <div className={styles.brandtext}>
+          <div className={styles.heading}>Surgeup Technologies Pvt Ltd.</div>
+          <p className={styles.subheadings}>
+            Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
+            <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
+          </p>
+          <div className={styles.bottom}>
+            <p
+              onClick={() => {
+                settermmode("terms");
+                setshowterm(true);
+              }}
+            >
+              Terms & Conditions
+            </p>
+            <p
+              onClick={() => {
+                settermmode("privacy");
+                setshowterm(true);
+              }}
+            >
+              Privacy Policy
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.socials}>
+          <Fb className={styles.social} />
+          <Twitter className={styles.social} alt="" />
+          <Insta className={styles.social} />
+          <YtSvg className={styles.socialyt} />
+          <LinkedIN className={styles.socialyt} />
+        </div>
       </div>
     </div>
   );
