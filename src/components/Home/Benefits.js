@@ -85,7 +85,6 @@ function Benefits() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, [sections]);
   function hanldemove(index) {
-    setcurrentSection(index);
     var element = sections[index];
     var headerOffset = 150;
     var elementPosition = getheight(element);
