@@ -51,7 +51,7 @@ function Benefits() {
     }
 
     return (
-      top < window.scrollY + window.innerHeight &&
+      top < window.scrollY + window.innerHeight - 600 &&
       left < window.scrollX + window.innerWidth &&
       top + height > window.scrollY &&
       left + width > window.scrollX

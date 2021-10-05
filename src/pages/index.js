@@ -38,8 +38,8 @@ function Home({ isLogged, userdata }) {
 
   useEffect(() => {
     let homepagediv = document.getElementById("home-page-main");
-    let homepageheader = document.getElementById("home-page-header");
     let removethis = homepagediv.addEventListener("scroll", (e) => {
+      console.log(homepagediv.screenY);
       if (homepagediv.scrollTop > 0) {
         setstickyheader(true);
       } else {
