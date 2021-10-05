@@ -8,7 +8,6 @@ import BallsSvg from "../SVGcomponents/BallsSvg";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
-  const [showinput, setshowinput] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -61,19 +60,15 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           rewarding.
         </div>
         <div className={styles.signupBox}>
-          {showinput && (
-            <input
-              type="text"
-              placeholder="parent@gmail.com"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-            />
-          )}
-          <div
-            className={showinput ? styles.button : styles.joinButton}
-            onClick={!showinput ? () => setshowinput(true) : handleSignup}
-          >
-            {showinput ? "Join" : "Join the Waitlist"}
+          <input
+            type="text"
+            placeholder="parent@gmail.com"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
+          />
+
+          <div className={styles.button} onClick={handleSignup}>
+            {"Join the Waitlist"}
           </div>
         </div>
       </div>
