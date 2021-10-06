@@ -106,3 +106,14 @@
     }
   }
 }
+@media only screen and (max-width: 860px) {
+  .howSection {
+    height: fit-content;
+    .container {
+      height: fit-content;
+      video {
+        min-height: unset;
+      }
+    }
+  }
+}

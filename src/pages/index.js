@@ -37,16 +37,15 @@ function Home({ isLogged, userdata }) {
   }, [userdata]);
 
   useEffect(() => {
-    let homepagediv = document.getElementById("home-page-main");
-    let removethis = homepagediv.addEventListener("scroll", (e) => {
-      console.log(homepagediv.screenY);
-      if (homepagediv.scrollTop > 0) {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
         setstickyheader(true);
       } else {
         setstickyheader(false);
       }
-    });
-    return () => removethis;
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>

@@ -179,19 +179,19 @@
   }
 }
 
-@media only screen and (max-width: 859px) {
+@media only screen and (max-width: 860px) {
   .joinSection {
     overflow: hidden;
     position: relative;
     .dl1 {
       left: 1%;
-      top: 65%;
+      top: 55%;
       width: 35px;
       height: 35px;
     }
     .dl3 {
-      left: 8%;
-      top: 20%;
+      left: 4%;
+      top: 17%;
       width: 22px;
       height: 22px;
     }
@@ -285,15 +285,16 @@
   .joinSection {
     overflow: hidden;
     position: relative;
+    height: 50vh;
     .dl1 {
       left: 1%;
-      top: 65%;
+      top: 50%;
       width: 35px;
       height: 35px;
     }
     .dl3 {
-      left: 8%;
-      top: 20%;
+      left: 5%;
+      top:17%;
       width: 22px;
       height: 22px;
     }
@@ -341,7 +342,7 @@
     .textContent {
       z-index: 2;
       .heading {
-        font-size: 26px;
+        font-size: 24px;
         .highlight {
           .underline {
             height: 6px;
@@ -349,20 +350,21 @@
         }
       }
       .subheading {
-        font-size: 15px;
+        margin: 10px;
+        font-size: 12px;
+        width: 70%;
       }
       .emailwrapper {
         display: flex;
-        margin-top: 40px;
+        margin-top: 20px;
         height: 40px;
         align-items: center;
-        width: 100vw;
+        width: 95vw;
         padding: 0 7vw;
         .email {
           border: none;
           border-radius: 8px;
-          font-size: 16px;
-
+          font-size: 14px;
           padding: 0 20px;
           flex: 1;
           height: 100%;
