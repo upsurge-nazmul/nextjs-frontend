@@ -183,6 +183,7 @@
   .joinSection {
     overflow: hidden;
     position: relative;
+    min-height: 400px;
     .dl1 {
       left: 1%;
       top: 55%;
@@ -294,7 +295,7 @@
     }
     .dl3 {
       left: 5%;
-      top:17%;
+      top: 17%;
       width: 22px;
       height: 22px;
     }
