@@ -47,379 +47,904 @@ export default function Terms({ setshowterm, termmode }) {
         <div className={styles.main} id="termswrapper">
           <h1 className={styles.heading}>Terms and Conditions</h1>
           <p className={styles.para}>
-            PLEASE READ THESE TERMS AND CONDITIONS (<strong>TERMS</strong>)
-            BEFORE USING THE SERVICES. By registering for an account and/or
-            purchasing a Premium Membership, you acknowledge that you have read
-            and understood these Terms, and you are in agreement with them. The
-            business, any of its business divisions and / or its subsidiaries,
-            associate companies or subsidiaries to subsidiaries or such other
-            investment companies (in India or abroad) reserve their respective
-            rights to revise these Terms and Conditions at any time by updating
-            this posting. You should visit this page periodically to re-appraise
-            yourself of the Terms and Conditions because they are binding on all
-            users of this Services.
+            <strong> Please read these terms and conditions carefully.</strong>
           </p>
           <p className={styles.para}>
-            <strong>You</strong> will refer to Adult Users (as defined below) of
-            the Services and purchasers of a Premium Membership.
+            These Terms (“Terms”) govern your use of our “Upsurge” – Made in
+            India” mobile and web application (the “Platform”) made available by
+            Surgeup Technologies Private Limited (“Upsurge”, “Company”, “we”,
+            “us” and “our”), a private company established under the laws of
+            India having its registered office at B-5/30, Safdarjung Enclave
+            Lower Ground Floor Delhi South West Delhi DL 110029. The terms “you”
+            and “yours” refer to the User of the Website or application.
           </p>
           <p className={styles.para}>
-            <strong>Adult</strong> is a person of legal age who can enter into
-            this contract by registering a membership and/or purchasing a
-            Premium Membership. You represent and warrant that you are an adult
-            and you are responsible for ensuring that any child or student
-            authorized by you to use and access the Services does so in
-            accordance with these Terms.
+            Our Services (as we have described below in detail) and these Terms
+            are compliant with the Indian Penal Code, 1860, and Information
+            Technology Act, 2000, including all amendments made to it and rules
+            framed under it. When you use our Platform, you accept and agree to
+            these Terms. However, please note that we do not represent that we
+            are compliant with laws of any country apart from the Republic of
+            India. If you wish to use our Services, please ensure that you are
+            permitted to do so, in your jurisdiction.
           </p>
           <p className={styles.para}>
-            <strong>Premium Membership</strong> will refer to a paid membership
-            to the Services.
+            You and we are required to follow certain rules while you use our
+            Platform. We have listed these rules in these Terms. Please read
+            these Terms and all other hyperlinks mentioned here carefully. Do
+            remember that by using our Platform, you agree to these Terms. Also,
+            if you are using these services outside India, please comply with
+            your local laws.
+          </p>
+          <p className={styles.heading}>1. OUR SERVICES</p>
+          <p className={styles.para}>
+            We agree to provide you with our Services. The Services includes all
+            of Upsurge’s products, features, applications, services, educational
+            games, technologies, and software that we provide to you.
           </p>
           <p className={styles.para}>
-            <strong>Services</strong> will refer to the website, apps, all
-            content accessible on the website, online games, and including but
-            not limited to, teaching resources.
+            Our community-driven Platform lets User of the Platform to upload or
+            chat or post or otherwise make available content through the
+            Platform including, without limitation, any photographs,
+            information, answer, solutions, reports, user videos, sound
+            recordings.
+          </p>
+          <p className={styles.heading}>2. ELIGIBILITY</p>
+          <p className={styles.para}>
+            You represent and warrant that you are competent and eligible to
+            enter into legally binding agreements and that you have the
+            requisite authority to bind yourself to these Terms, as determined
+            solely by the provisions of the Indian Contract Act, 1872. You may
+            not use the website or App if you are not competent to contract
+            under the Indian Contract Act, 1872, or are disqualified from doing
+            so by any other applicable law, rule or regulation currently in
+            force.
+          </p>
+          <p className={styles.heading}>3. ACCOUNTS</p>
+          <p className={styles.para}>
+            When you create an account with us, you must provide us information
+            that is accurate, complete, and current at all times. Failure to do
+            so constitutes a breach of the Terms, which may result in immediate
+            termination of your account on our Service.
           </p>
           <p className={styles.para}>
-            <strong>Registration Information</strong> refers to the User’s
-            username, password, and other information used during registration
-            to the Site.
+            You are responsible for safeguarding the password that you use to
+            access the Service and for any activities or actions under your
+            password, whether your password is with our Service or a third-party
+            service. You agree not to disclose your password to any third party.
+            You must notify us immediately upon becoming aware of any breach of
+            security or unauthorized use of your account.
           </p>
           <p className={styles.para}>
-            <strong>Users</strong> refer to Parent User, Educator User and Child
-            User.
+            You may not use as a username the name of another person or entity
+            or that is not lawfully available for use, a name or trade mark that
+            is subject to any rights of another person or entity other than you
+            without appropriate authorization, or a name that is otherwise
+            offensive, vulgar or obscene.
           </p>
-          <h1 className={styles.heading}>Table of Contents</h1>
-          <div className={styles.wrapper}>
-            {content.map((c, index) => {
-              return (
-                <div
-                  className={styles.listitem}
-                  key={"contentlist" + index}
-                  onClick={() => move(c.href)}
-                >
-                  {index + 1}. <span>{c.name}</span>
-                </div>
-              );
-            })}
-          </div>
-          <h1 className={styles.heading} id="#actype">
-            Account Types
-          </h1>
+          <p className={styles.heading}>4. ACCEPTANCE OF TERMS</p>
+          <p className={styles.subheading}>
+            <strong>Acceptance :</strong>
+          </p>
           <p className={styles.para}>
-            We currently offer three types of accounts through our services:
-            Child Account, Parent (or Legal Guardian) Account, Educator Account.
+            By signing-up to use the Platform, you acknowledge that you have
+            read these Terms and agree to be bound by them. You also acknowledge
+            that you have read our Privacy Policy and agree to be bound by it.
+            By signing up to use the Platform, you represent that you have
+            provided us with valid identifying information which may be used to
+            verify your identity. Please note that we may restrict, suspend, or
+            terminate your access at any time to the Platform if we believe you
+            have breached these Terms. We may also monitor or use certain
+            technologies to monitor your activities including your IP address to
+            verify your geographical location.
           </p>
           <p className={styles.subheading}>
-            a. <strong>Child Account (Child User)</strong>
+            <strong>Compliance with Applicable Laws :</strong>
           </p>
           <p className={styles.para}>
-            A Child User may only be created by the Parent User. A Child User
-            will have access to their account using a unique username/password
-            combination provided by the Parent User.
+            You must ensure that your use of the Platform and the Services
+            complies with Applicable Laws.
           </p>
           <p className={styles.subheading}>
-            b. <strong>Parent (or Legal Guardian) Account (Parent User)</strong>
+            <strong>Legal responsibility on behalf of minors :</strong>
           </p>
           <p className={styles.para}>
-            A Parent User is an Adult and may register with an email address,
-            Google ID or their Apple ID. A Parent User may create an account for
-            his/her child or children.
+            We understand the importance of financial education and want
+            individuals to start their journey to financial literacy under the
+            supervision of their parents/guardians from a young age. But, users
+            below the age of 18 years (“Minor(s)”) can use the Platform only
+            with the permission and under the supervision of their parent or
+            legally appointed guardian (“Parent”). As the Parent you must agree
+            to and accept these Terms and the Privacy Policy on behalf of the
+            Minor(s). Minors cannot, therefore, use the Platform unless their
+            Parent agrees to and accepts these Terms and the Privacy Policy on
+            their behalf. If you agree to these Terms and the Privacy Policy on
+            behalf of a Minor(s), you represent to us that you are their Parent.
+            As a Parent, you agree to take full financial and legal
+            responsibility for the acts and omissions of the Minor(s). A Minor’s
+            use of the Services and interaction with the Platform must be
+            supervised by the Parent. As a Parent you must take full
+            responsibility for a Minor(s) action while using the Services and
+            any interaction with the Platform, such as – setting up and using
+            the “Upsurge” Account, creating and adding members to a Family
+            (defined below). This is a crucial obligation, so we advise you not
+            to add individuals to your Family who you do not know or want to
+            take responsibility for.
           </p>
           <p className={styles.subheading}>
-            c. <strong>Educator Account (Educator User/Teacher User)</strong>
+            <strong>Compliance with Applicable Laws :</strong>
           </p>
           <p className={styles.para}>
-            An Educator account may be registered by an Adult currently employed
-            by a school, school district, licensed childcare facility or other
-            educational institution/program.
-          </p>
-          <h1 className={styles.heading} id="reg">
-            Registration
-          </h1>
-          <p className={styles.para}>
-            You are required to provide accurate and complete information when
-            registering to use the Services. You must not provide false or
-            misleading information to create an account. You must not create an
-            account for anyone other than yourself and your child/children. If
-            you are signing up for a Parent Account or Educator Account, you
-            certify that you are 18 years of age or older. You agree that your
-            information will be updated to keep it current at all times. Upsurge
-            reserves the right to refuse registration at its discretion. You are
-            responsible for keeping your username and password confidential and
-            strictly prohibited from sharing this information with anyone else.
-            You may not transfer your account to a third-party. You may not
-            share your Registration Information with any third party.
-          </p>
-          <h1 className={styles.heading} id="content">
-            Use of Content
-          </h1>
-          <p className={styles.para}>
-            All logos, brands, marks headings, labels, names, signatures,
-            numerals, shapes or any combinations thereof, appearing in this
-            site, except as otherwise noted, are properties either owned or used
-            under licence, by the business and/or its associate entities who
-            feature on this Website. The use of these properties or any other
-            content on this site, except as provided in these terms and
-            conditions or in the site content, is strictly prohibited.
-          </p>
-          <p className={styles.para}>
-            You may not sell or modify the content of this Website or reproduce,
-            display, publicly perform, distribute, or otherwise use the
-            materials in any way for any public or commercial purpose without
-            the respective organisation’s or entity’s written permission.
-          </p>
-          <h1 className={styles.heading} id="#accept">
-            Acceptable Website Use
-          </h1>
-          <p className={styles.subheading}>
-            <strong>(A) Security Rules</strong>
-          </p>
-          <p className={styles.para}>
-            Visitors are prohibited from violating or attempting to violate the
-            security of the Web site, including, without limitation, (1)
-            accessing data not intended for such user or logging into a server
-            or account which the user is not authorised to access, (2)
-            attempting to probe, scan or test the vulnerability of a system or
-            network or to breach security or authentication measures without
-            proper authorisation, (3) attempting to interfere with service to
-            any user, host or network, including, without limitation, via means
-            of submitting a virus or “Trojan horse” to the Website, overloading,
-            “flooding”, “mailbombing” or “crashing”, or (4) sending unsolicited
-            electronic mail, including promotions and/or advertising of products
-            or services. Violations of system or network security may result in
-            civil or criminal liability. The business and / or its associate
-            entities will have the right to investigate occurrences that they
-            suspect as involving such violations and will have the right to
-            involve and cooperate with, law enforcement authorities in
-            prosecuting users who are involved in such violations.
+            You must ensure that your use of the Platform and the Services
+            complies with Applicable Laws.
           </p>
           <p className={styles.subheading}>
-            <strong>(B) General Rules</strong>
+            <strong>Inquiries as to Minors :</strong>
           </p>
           <p className={styles.para}>
-            Visitors may not use the Web Site in order to transmit, distribute,
-            store or destroy material (a) that could constitute or encourage
-            conduct that would be considered a criminal offence or violate any
-            applicable law or regulation, (b) in a manner that will infringe the
-            copyright, trademark, trade secret or other intellectual property
-            rights of others or violate the privacy or publicity of other
-            personal rights of others, or (c) that is libellous, defamatory,
-            pornographic, profane, obscene, threatening, abusive or hateful.
-          </p>
-          <h1 className={styles.heading} id="online">
-            Online Learning Game
-          </h1>
-          <p className={styles.para}>
-            The online learning game allows user to play multiple different
-            challenges. The user earns virtual coins as they navigate the world
-            and play the challenges. The virtual coins cannot be exchanged for
-            real money. The virtual coins are only used within the learning
-            game.
-          </p>
-          <h1 className={styles.heading} id="membership">
-            Membership and Premium Membership Fees
-          </h1>
-          <p className={styles.para}>
-            <strong>Premium Membership Fee.</strong>
-            The basic version of the Services are provided for free. A premium
-            version of the Services is available for access with a paid Premium
-            Membership. By purchasing a Premium Membership, you agree to
-            authorize Upsurge to charge you the associated membership fee – on a
-            monthly, six-month, annual basis, or group packages (for Educator) –
-            depending on your selected Premium Membership. All fees will be
-            subject to applicable taxes. You agree that we may renew your
-            Premium Membership automatically for the same Premium Membership
-            term at the end of each previous Premium Membership term (monthly,
-            six-month, annual). The prices for Premium Memberships and other
-            charges may change without notice. The Premium Membership begins
-            from the date of purchase to the date of cancellation or expiration
-            of the term. Premium Memberships or free memberships cannot be
-            transferred or assigned to a third-party. A third-party must not be
-            granted access to the Services through your Registration
-            Information.
-          </p>
-          <p className={styles.para}>
-            <strong>Premium Membership Cancellation.</strong>
-            You may cancel the Premium Membership prior to its renewal date
-            through the Parent/Educator Dashboard or by contacting our Customer
-            Support Team. In the case of Premium group packages purchased
-            through the Educator account, these will expire at the end of the
-            term. You will have access to the account until the end of the
-            Premium Membership period. Please be aware that we do not provide
-            full or partial refunds for prepaid Premium Memberships.
-          </p>
-          <h1 className={styles.heading} id="service">
-            Service Ownership and License
-          </h1>
-          <p className={styles.para}>
-            The Services are owned and controlled by Surgeup Technologies
-            Private Limited and protected by international copyright, trademark,
-            patent, and other intellectual property rights and laws to the
-            fullest extent. You agree not to copy, reproduce, reverse-engineer,
-            create derivative works, disassemble, change, modify, or do anything
-            to exploit in any other way the Services. The purchase of a
-            subscription is a non-transferable license (<strong>License</strong>
-            ) to use the Services for the subscription term. The License does
-            not grant you any ownership rights.
-          </p>
-          <h1 className={styles.heading} id="termination">
-            Termination
-          </h1>
-          <p className={styles.para}>
-            Upsurge has the right to terminate your account at any time upon
-            failure to comply with the terms found here in Terms and Conditions.
-            Upsurge reserves the right to terminate access to the Services
-            without prior notice. Upsurge shall not be liable to you or any
-            third-party in the event of termination.
-          </p>
-          <h1 className={styles.heading} id="privacy">
-            Privacy
-          </h1>
-          <p className={styles.para}>
-            We take your privacy seriously and make best efforts to limit the
-            information we collect. Please read our <span>Privacy Policy</span>{" "}
-            for more details.
-          </p>
-          <h1 className={styles.heading} id="warranty">
-            Disclaimer of Warranties
-          </h1>
-          <p className={styles.para}>
-            The Services are provided on an “as is”, and “as available” basis
-            and without warranty of any kind, express or implied. No warranty,
-            representation, endorsement, or promise is made to the following,
-            but not limited to:
-          </p>
-          <p className={styles.subheading}>a. The Services;</p>
-          <p className={styles.subheading}>
-            b. Functionality, features, or other elements made available through
-            the Services;
+            By taking responsibility for a Minor, you authorize us to make
+            inquiries (if we choose to do so), either directly or through third
+            parties to validate the information provided about the Minor or your
+            relationship with the Minor. This could include information to
+            verify your relationship as a Parent to the Minor(s). If we are
+            unable to verify the information that you provide, we may: <br />
+            (i) refuse to establish a “Upsurge” Account (defined below) for the
+            Minor; <br />
+            (ii) close the “Upsurge” Account of a Minor; <br />
+            (iii) close the Parent’s “Upsurge” Account and
+            <br /> (iv) terminate our Services or portion(s) thereof.
           </p>
           <p className={styles.subheading}>
-            c. Any products or services linked to the Services;
-          </p>
-          <p className={styles.subheading}>
-            d. Whether the Services are available, error-free, free from harmful
-            components;
-          </p>
-          <p className={styles.subheading}>
-            e. Specific availability of the Services, and whether any defects
-            will be repaired in a certain time period and, but not limited to;
-          </p>
-          <p className={styles.subheading}>
-            f. Whether your use of the Services is lawful in any particular
-            jurisdiction.
-          </p>
-          <h1 className={styles.heading} id="damage">
-            Disclaimer of Consequential Damages
-          </h1>
-          <p className={styles.para}>
-            In no event shall Company or any parties, organizations or entities
-            associated with the corporate brand name us or otherwise, mentioned
-            at this Website be liable for any damages whatsoever (including,
-            without limitations, incidental and consequential damages, lost
-            profits, or damage to computer hardware or loss of data information
-            or business interruption) resulting from the use or inability to use
-            the Website and the Website Material, whether based on warranty,
-            contract, tort, or any other legal theory, and whether or not, such
-            organization or entities were advised of the possibility of such
-            damages.
-          </p>
-          <h1 className={styles.heading} id="liabilities">
-            Limitation of Liabilities
-          </h1>
-          <p className={styles.para}>
-            User agrees that neither Surgeup Technologies Private Limited nor
-            its group companies, directors, officers or employee shall be liable
-            for any direct or/and indirect or/and incidental or/and special
-            or/and consequential or/and exemplary damages, resulting from the
-            use or/and the inability to use the service or/and for the cost of
-            procurement of substitute goods or/and services or resulting from
-            any goods or/and data or/and information or/and services purchased
-            or/and obtained or/and messages received or/and transactions entered
-            into through or/and from the service or/and resulting from
-            unauthorized access to or/and alteration of user’s transmissions
-            or/and data or/and arising from any other matter relating to the
-            service, including but not limited to, damages for loss of profits
-            or/and use or/and data or other intangible, even if Company has been
-            advised of the possibility of such damages.
+            <strong>Scope of Use :</strong>
           </p>
           <p className={styles.para}>
-            User further agrees that Company shall not be liable for any damages
-            arising from interruption, suspension or termination of service,
-            including but not limited to direct or/and indirect or/and
-            incidental or/and special consequential or/and exemplary damages,
-            whether such interruption or/and suspension or/and termination was
-            justified or not, negligent or intentional, inadvertent or
-            advertent. User agrees that Company shall not be responsible or
-            liable to user, or anyone, for the statements or conduct of any
-            third party of the service. In sum, in no event shall Company’s
-            total liability to the User for all damages or/and losses or/and
-            causes of action exceed the amount paid by the User to Company, if
-            any, or $50, whichever is less, that is related to the cause of
-            action.
+            By using a “Upsurge” website, you are deemed to have agreed to all
+            terms, conditions, use, and notices contained or referenced herein
+            (the “Terms of Use”). “Upsurge” reserves its right, at its
+            discretion, to update or revise these Terms of Use. You should check
+            these terms of use periodically for changes. By accessing a
+            “Upsurge” site after the posting of any changes to the terms of use,
+            you acknowledge and agree to those changes, whether or not you have
+            reviewed them
           </p>
-          <h1 className={styles.heading} id="indemnity">
-            Indemnity
-          </h1>
+          <p className={styles.heading}>5. SUBSCRIPTIONS</p>
           <p className={styles.para}>
-            The User unilaterally agree to indemnify and hold harmless, without
-            objection, Surgeup Technologies Private Limited, its affiliates,
-            officers, successors and assigns, distributors, or other persons,
-            authorized users, all shareholders, directors, owners, employees,
-            and agents from and against all third party claims, actions and/or
-            demands and/or liabilities and/or losses and/or damages and/or
-            costs, including reasonable attorneys’ fees, through your use of the
-            Services, any breach by you of the Terms and Conditions arising out
-            of your use of the Services, or your violation of any rights of
-            another.
+            Some parts of the Service are billed on a subscription basis
+            ("Subscription(s)"). You will be billed in advance on a recurring
+            and periodic basis ("Billing Cycle"). Billing cycles are set on a
+            monthly or annual basis. At the end of each Billing Cycle, your
+            Subscription will automatically renew under the exact same
+            conditions unless you cancel it or Surgeup Technologies Private
+            Limited cancels it. You may cancel your Subscription renewal either
+            through your online account management page or by contacting Surgeup
+            Technologies Private Limited customer support team.
           </p>
-          <h1 className={styles.heading} id="thirdparty">
-            Third-Party Links
-          </h1>
           <p className={styles.para}>
-            The Services may provide links to third-party websites or resources.
-            We make no representations or warranties of any kind regarding the
-            quality, availability, or legality of these external sites. Upsurge
-            is not responsible for any third-party website or resources
-            contained outside of the Upsurge Services.
+            You shall provide Surgeup Technologies Private Limited with accurate
+            and complete billing information including full name, address,
+            state, zip code, telephone number, e-mail address and a valid
+            payment method information. A valid payment method is required to
+            process the payment for your Subscription.
           </p>
-          <h1 className={styles.heading} id="severability">
-            Severability
-          </h1>
           <p className={styles.para}>
-            If any term or provision of the Terms and Conditions is held to be
-            void or unenforceable, that term or provision shall be severed from
-            the Terms and Conditions. The balance of the Terms and Conditions
-            will survive and will be reasonably construed to carry out the
-            intent of the parties as evidenced by the terms of the Terms and
-            Conditions.
+            The company uses the Payment Gateway of a third party to process
+            payments and receipts, the company will not be responsible for any
+            loss caused by default of the third party.
           </p>
-          <h1 className={styles.heading} id="law">
-            Governing Law
-          </h1>
+          <p className={styles.heading}>6. FREE TRIAL</p>
           <p className={styles.para}>
-            The Terms and Conditions shall be governed by the laws of India and
-            the jurisdiction of the Courts of India.
+            Surgeup Technologies Private Limited may, at its sole discretion,
+            offer a Subscription with a free trial for a limited period ("Free
+            Trial"), you will not be charged by Surgeup Technologies Private
+            Limited until the Free Trial has expired. On the last day of the
+            Free Trial period, unless you cancelled your Subscription, you will
+            be automatically charged the applicable Subscription fees for the
+            type of Subscription you have selected at any time and without
+            notice, Surgeup Technologies Private Limited reserves the right to{" "}
+            <br />
+            (i) modify the terms and conditions of the Free Trial offer, or{" "}
+            <br />
+            (ii) cancel such Free Trial offer.
+          </p>{" "}
+          <p className={styles.heading}>7. FEE CHANGES</p>
+          <p className={styles.para}>
+            Surgeup Technologies Private Limited, in its sole discretion and at
+            any time, may modify the Subscription fees for the Subscriptions.
+            Any Subscription fee change will become effective at the end of the
+            then-current Billing Cycle.
+          </p>{" "}
+          <p className={styles.para}>
+            Surgeup Technologies Private Limited will provide you with a
+            reasonable prior notice of any change in Subscription fees to give
+            you an opportunity to terminate your Subscription before such change
+            becomes effective.
+          </p>{" "}
+          <p className={styles.para}>
+            Your continued use of the Service after the Subscription fee change
+            comes into effect constitutes your agreement to pay the modified
+            Subscription fee amount.
           </p>
-          <h1 className={styles.heading} id="assignment">
-            Assignment
-          </h1>
+          <p className={styles.heading}>8. REFUNDS</p>
           <p className={styles.para}>
-            We reserve the right to assign our rights and obligations under the
-            Terms and Conditions, or any additional terms, in whole or in part,
-            to any party at any time without prior notice.
+            Except when required by law, paid Subscription fees are
+            non-refundable.
           </p>
-          <h1 className={styles.heading} id="agreement">
-            Entire Agreement
-          </h1>
+          <p className={styles.heading}>9. UPSURGE REWARDS :</p>
           <p className={styles.para}>
-            The Terms set out here constitute the entire understanding and
-            agreement between you and Surgeup Technologies Private Limited with
-            respect to the subject matter of the Terms and Conditions. There are
-            no agreements, restrictions, representations, understandings, and
-            warranties other than those expressly outlined in the Terms and
-            Condition
+            You may win prizes while playing education games on the Platform.
+            Such prizes are subject to the specific terms and conditions
+            communicated at the time of issuance of the prize. The prize and the
+            bonus or any other amount or benefit in the Bonus Segment cannot be
+            Withdrawn, or transferred to another user.
+          </p>
+          <p className={styles.heading}>
+            10. RESTRICTIONS ON USE OF MATERIALS :
+          </p>
+          <p className={styles.para}>
+            The content of this site and any other “Upsurge” site is protected
+            by copyright and trademark laws, and is the property of “Upsurge” is
+            an initiative of Surgeup Technologies Private Limited. Any content
+            within “Upsurge” sites may be accessed only for your use. You agree
+            not to sell, license, rent, modify, distribute, copy, reproduce,
+            transmit, publicly display, publicly perform, publish, adapt, edit
+            or create works from such materials or content or in any way exploit
+            the material or content of our website. This means, you may download
+            copies of posted materials for business use only, so long as you
+            neither change nor delete any author attribution, trademark, legend
+            or copyright or other proprietary notices. When you download
+            copyrighted material, you do not obtain any ownership rights in that
+            material. As noted above, reproduction, copying, or redistribution
+            of any material within the “Upsurge” site is strictly prohibited
+            without the express written permission of “Upsurge” You also may
+            not, without “Upsurge” permission, “mirror” any materials contained
+            within any “Upsurge” site or any other service. Any unauthorized
+            user of any material contained within any “Upsurge” site may violate
+            copyright laws, trademark laws, the laws of privacy and publicity,
+            and communications regulations and statutes.
+          </p>
+          <p className={styles.heading}>11. INFORMATION :</p>
+          <p className={styles.para}>
+            The information, materials, products, and services within “Upsurge”
+            websites are subject to change.
+          </p>
+          <p className={styles.heading}>12. Child Safety Policy :</p>
+          <p className={styles.para}>
+            This policy is applicable to all persons and organizations
+            associated with “Upsurge”, referred to as “Upsurge” Stakeholders,
+            including:
+          </p>
+          <p className={styles.para}>
+            1. Employees of “Upsurge”, who maybe full-time or part-time
+            employees, permanent or temporary employee, regular permanent
+            employee or employed on contract
+          </p>
+          <p className={styles.para}>
+            2. Organizations and persons belonging to that organization, who may
+            partner and/ or work with “Upsurge” in any capacity, even for a
+            limited time period or job
+          </p>
+          <p className={styles.para}>
+            3. Volunteers who may work with “Upsurge”, in whichever capacity,
+            even for a limited period of time
+          </p>
+          <p className={styles.para}>
+            4. Children enrolled as students of “Upsurge” and their parents or
+            guardians who associate with the child in the official records of
+            “Upsurge”
+          </p>
+          <p className={styles.para}>
+            5. Children who may not be enrolled but are reached out through
+            marketing or sales of the product and their parents or guardians who
+            associate with the Child
+          </p>
+          <p className={styles.para}>
+            6. Any other person or organisations who may be officially
+            associated with “Upsurge” and its ambit of work and activity
+          </p>
+          <p className={styles.para} style={{ marginTop: "20px" }}>
+            “Upsurge” expects all its stakeholders falling within the scope of
+            this policy to adhere to the following child safety code of conduct:
+          </p>
+          <p className={styles.para}>
+            <strong>1. Expected Behaviour and Actions</strong>
+          </p>
+          <p className={styles.listelement}>
+            1. Listen to the child and, their views and opinions
+          </p>
+          <p className={styles.listelement}>
+            2. Have a non-judgmental attitude
+          </p>
+          <p className={styles.listelement}>
+            3. Treat every child with empathy and respect regardless of his/her
+            race, colour, gender, sexuality, religion, language, heritage,
+            religious belief, social origin, or any point that discriminated a
+            child
+          </p>
+          <p className={styles.listelement}>
+            4. Use appropriate language, behaviours while interacting with the
+            child
+          </p>
+          <p className={styles.listelement}>
+            5. Use appropriate language, behaviours in any online medium used by
+            the organisation to communicate or engage with children
+          </p>
+          <p className={styles.listelement}>
+            6. Create an environment that enables children to share and express
+            freely
+          </p>
+          <p className={styles.listelement}>
+            7. Always take permission and written consent from guardian before
+            taking photos or videos of a child
+          </p>
+          <p className={styles.listelement}>
+            8. Keep all personal information of children, their parents and
+            guardians confidential and secure, such information shall only be
+            shared with authorised individuals
+          </p>
+          <p className={styles.listelement}>
+            9. The live online classes and the content, including but not
+            limited to audio visual content is age appropriate and culturally
+            appropriate
+          </p>
+          <p className={styles.para}>
+            <strong>2. Prohibited Behaviours and Actions</strong>
+          </p>
+          <p className={styles.listelement}>
+            1. Do not develop, induce or support any emotional, online/offline
+            physical abuse or sexual relationship with children in any way
+          </p>
+          <p className={styles.listelement}>
+            2. Do not use or encourage the use of alcohol, drugs, cigarettes or
+            other intoxicating substance in any of your interaction with
+            children
+          </p>
+          <p className={styles.listelement}>
+            3. Do not develop any form of relationship or arrangement with
+            children including but not limited to financial, which could be
+            deemed to be exploitative or abusive
+          </p>
+          <p className={styles.listelement}>
+            4. Do not share with or show children online/offline any
+            inappropriate content including pornographic material or material
+            that encourages crime, violence, racism, sexism, self-harm, suicide,
+            cruelty
+          </p>
+          <p className={styles.listelement}>
+            5. Do not use language or behaviour towards children that is
+            inappropriate, harassing, abusive, sexually provocative, demeaning,
+            intimidating, discriminatory, or culturally insensitive.
+          </p>
+          <p className={styles.heading}>13. APPLICATION LICENSE</p>
+          <p className={styles.para}>
+            Subject to your compliance with these Terms, “Upsurge” grants you a
+            limited non-exclusive, non-transferable license to download and
+            install a copy of the Application on each mobile device or computer
+            that you own or control and run such copy of the Application solely
+            for your own personal use.
+          </p>
+          <p className={styles.listelement}>
+            <strong>Upsurge Content</strong>
+          </p>
+          <p className={styles.listelement}>
+            1. Subject to your compliance with these Terms, “Upsurge” grants you
+            a limited, non-exclusive, non-transferable license, to (a) access
+            and view any “Upsurge” Content solely for your personal and
+            non-commercial purposes and (b) access and view any M Content to
+            which you are permitted access, solely for your personal and
+            non-commercial purposes. You have no right to sublicense the license
+            rights granted in this section.
+          </p>
+          <p className={styles.listelement}>
+            2. You will not use, copy, adapt, modify, prepare derivative works
+            based upon, distribute, license, sell, transfer, publicly display,
+            publicly perform, transmit, broadcast or otherwise exploit the Site,
+            Application, Services, or Collective Content, except as expressly
+            permitted in these Terms. No licenses or rights are granted to you
+            by implication or otherwise under any intellectual property rights
+            owned or controlled by “Upsurge” or its licensors, except for the
+            licenses and rights expressly granted in these Terms.
+          </p>
+          <p className={styles.listelement}>
+            <strong>Users Content</strong>
+          </p>
+          <p className={styles.listelement}>
+            1. We may, in our sole discretion, permit you to post, upload,
+            publish, submit or transmit User Content. By making available any
+            Member Content on or through the Site, Application, Services, or
+            through “Upsurge” promotional campaigns, you hereby grant to
+            “Upsurge” a worldwide, irrevocable, perpetual (or for the term of
+            the protection), non-exclusive, transferable, royalty-free license,
+            with the right to sublicense, to use, view, copy, adapt, modify,
+            distribute, license, sell, transfer, publicly display, publicly
+            perform, transmit, stream, broadcast, access, view, and otherwise
+            exploit such Member Content on, though, by means of or to promote or
+            market the Site, Application and Services. “Upsurge” does not claim
+            any ownership rights in any such User Content and nothing in these
+            Terms will be deemed to restrict any rights that you may have to use
+            and exploit any such User Content.
+          </p>
+          <p className={styles.heading}>14. LINKS TO OTHER WEB SITES</p>
+          <p className={styles.para}>
+            Our Service may contain links to third-party web sites or services
+            that are not owned or controlled by Surgeup Technologies Private
+            Limited.
+          </p>
+          <p className={styles.para}>
+            Surgeup Technologies Private Limited has no control over, and
+            assumes no responsibility for, the content, privacy policies, or
+            practices of any third-party web sites or services. You further
+            acknowledge and agree that Surgeup Technologies Private Limited
+            shall not be responsible or liable, directly or indirectly, for any
+            damage or loss caused or alleged to be caused by or in connection
+            with use of or reliance on any such content, goods or services
+            available on or through any such web sites or services.
+          </p>
+          <p className={styles.para}>
+            We strongly advise you to read the terms and conditions and privacy
+            policies of any third-party web sites or services that you visit.
+          </p>
+          <p className={styles.heading}>15. PRIVACY POLICY</p>
+          <p className={styles.para}>
+            To effectively provide and introduce any new Services to you, we
+            collect certain information such as your phone number, your gender
+            and your name from you. We may further request and store additional
+            information. Such information is stored securely on the
+            “_____________ Web Service” cloud servers, thereby also subject to
+            the terms of the ________________ Web Service privacy policy. The
+            Upsurge Privacy Policy explains how we collect, use, share and store
+            the information collected. The Upsurge Privacy Policy also details
+            your rights under law and how you may control the data you provide
+            us.
+          </p>
+          <p className={styles.para} style={{ fontStyle: "italic" }}>
+            You provide us with some information about yourself so that we can
+            serve you better. We have described how we store and use this
+            information in the Upsurge Privacy Policy.
+          </p>
+          <p className={styles.heading}>16. GDPR COMPLIANCE STATEMENT</p>
+          <p className={styles.para}>
+            Upsurge respects and complies with the EU General Data Protection
+            Regulations (GDPR). Some of the key ways we comply with these
+            regulations are:
+          </p>
+          <p className={styles.subheading}>1. Consent</p>
+          <p className={styles.para}>
+            We explain what you’re consenting to clearly and without ‘legalese’,
+            and ask that you explicitly consent to contact from us.
+          </p>
+          <p className={styles.subheading}>2. Breach Notification</p>
+          <p className={styles.para}>
+            In the event of a breach, we will notify affected users within 72
+            hours of first having become aware of the breach.
+          </p>
+          <p className={styles.subheading}>3. Right to Access</p>
+          <p className={styles.para}>
+            Users can request confirmation as to whether or not personal data
+            concerning them is being processed, where and for what purpose.
+            Further, we shall provide a copy of the personal data, in an
+            electronic format.
+          </p>
+          <p className={styles.subheading}>4. Right to be Forgotten</p>
+          <p className={styles.para}>
+            Once we have compared your (the subjects') rights to "the public
+            interest in the availability of the data", we may delete your
+            personal data where you have requested this.
+          </p>
+          <p className={styles.subheading}>5. Data Portability</p>
+          <p className={styles.para}>
+            We allow you to receive the personal data concerning you, which we
+            will provide in a 'commonly used and machine readable format' and
+            you have the right to transmit that data to another ‘controller’.
+          </p>
+          <p className={styles.subheading}>6. Privacy by Design</p>
+          <p className={styles.para}>
+            We implement appropriate technical and organisational measures, in
+            an effective way and protect the rights of data subjects'. We hold
+            and process only the data absolutely necessary for the completion of
+            our duties (data minimisation), as well as limiting the access to
+            personal data to those needing to act out the processing
+          </p>
+          <p className={styles.heading}>17. SAFETY</p>
+          <p className={styles.para}>
+            We try hard to keep our Platform a safe place for all User. But we
+            cannot guarantee it. That is where you come in. By using the
+            Services, you agree that:
+          </p>
+          <ul>
+            <li className={styles.listelement}>
+              You will not use the Services for any purpose that is illegal or
+              prohibited in these Terms.
+            </li>
+            <li className={styles.listelement}>
+              You will not use any robot, spider, crawler, scraper, or other
+              automated means or interface to access the Services or extract
+              other user’s information.
+            </li>
+            <li className={styles.listelement}>
+              You will not use or develop any third-party applications that
+              interact with the Services or other users’ content or information
+              without our written consent.
+            </li>
+            <li className={styles.listelement}>
+              You will not use the Services in a way that could interfere with,
+              disrupt, negatively affect, or inhibit other users from fully
+              enjoying the Services, or that could damage, disable, overburden,
+              or impair the functioning of the Services.
+            </li>
+            <li className={styles.listelement}>
+              You will not post content that can be considered to infringe any
+              Intellectual Property rights of any third party.
+            </li>
+            <li className={styles.listelement}>
+              You will not falsely represent yourself as another person or
+              representative of another person to use our Services.
+            </li>
+            <li className={styles.listelement}>
+              You will not use or attempt to use another user’s account,
+              username, or password without their permission.
+            </li>
+            <li className={styles.listelement}>
+              You will not solicit login credentials from another user.
+            </li>
+            <li className={styles.listelement}>
+              You will not post content that contains or links to pornography,
+              graphic violence, threats, hate speech, or incitements to
+              violence.
+            </li>
+            <li className={styles.listelement}>
+              You will not upload viruses or other malicious code or otherwise
+              compromise the security of the Services.
+            </li>
+            <li className={styles.listelement}>
+              You will not attempt to circumvent any content-filtering
+              techniques we employ, or attempt to access areas or features of
+              the Services that you are not authorized to access.
+            </li>
+            <li className={styles.listelement}>
+              You will not probe, scan, or test the vulnerability of our
+              Services or any system or network.
+            </li>
+            <li className={styles.listelement}>
+              You will not post any content that in any way or form threatens
+              the unity, integrity, defence, security or sovereignty of India,
+              friendly relations with foreign states, or public order or causes
+              incitement to the commission of any cognisable offence or prevents
+              investigation of any offence or is insulting any other nation.
+            </li>
+            <li className={styles.listelement}>
+              You will not encourage or promote any activity that violates these
+              Terms.
+            </li>
+          </ul>
+          <p className={styles.heading}>18. YOUR COMMITMENTS</p>
+          <p className={styles.para}>
+            Providing a safe Service for a broad community requires that we all
+            do our part. In return for our commitment to provide our Services,
+            we require you to make some commitments to us. Your commitments to
+            us are:
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>
+              a. No Impersonation or False Information to be Provided
+            </strong>
+          </p>
+          <p className={styles.para}>
+            You have to use your actual name on our Platform, you are required
+            to input your correct phone number and gender to use our Services.
+            You will not falsely represent yourself as another person or
+            representative of another person to use our Services. In the event
+            you are operating a parody account for satirical or comedic
+            purposes.
+          </p>
+          <p className={styles.para}>
+            You will not lie about your details, including your age, for any
+            reason.
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>b. Device Security</strong>
+          </p>
+          <p className={styles.para}>
+            We have implemented measures to ensure that our Platform is secure.
+            However, there is no guarantee that our Platform is immune to
+            hacking and virus attacks. You will ensure that you have requisite
+            anti-malware and antivirus software on your mobile device and
+            computer to ensure its safety. You will not allow any person to use
+            your phone number, and not allow multiple accounts to be linked to
+            your phone number. You will be responsible for all content posted by
+            any account linked to your phone number.
+          </p>
+          <p className={styles.para} style={{ textDecoration: "italic" }}>
+            While we do everything, we can to secure your use of our Services,
+            keep in mind that we cannot contemplate all forms of attack on our
+            Platform. You should, as a matter of practice, ensure that your
+            mobile device and computer are not used wrongly or tampered with in
+            any way.
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>
+              c. Platform Not to be Used for Anything Unlawful or Illegal
+            </strong>
+          </p>
+          <p className={styles.para}>
+            Our Platform is designed to accommodate a multiplicity of languages
+            and cultures, as well as a diverse range of contents. To this
+            effect, we have developed various tags to classify the nature of the
+            content.
+          </p>
+          <p className={styles.para}>
+            You must therefore, correctly identify the nature of the content
+            shared by you and tag it appropriately.
+          </p>
+          <p className={styles.para}>
+            You shall not, however, use our Platform to share any content which
+            is obscene, pornographic, harmful for minors, discriminatory,
+            spreading hate speech, inciting any form of violence or hatred
+            against any persons, or of seditious in nature, or violates any laws
+            of the Republic of India, or is barred from being shared by any laws
+            of the Republic of India. We reserve the right to remove such
+            content.
+          </p>
+          <p className={styles.para} style={{ textDecoration: "italic" }}>
+            In addition to the above, please note that we may share your
+            information with appropriate law enforcement authorities if we have
+            good-faith belief that it is reasonably necessary to share your
+            personal data or information in order to comply with any legal
+            obligation or any government request; or to protect the rights or
+            prevent any harm to our property or safety, our customers, or
+            public; or to detect, prevent or otherwise address public safety,
+            fraud, security or technical issues. You understand however, that we
+            cannot be held responsible for any actions done by or to you by a
+            third party or user by way of using our Platform.
+          </p>
+          <p className={styles.para}>
+            We have developed a platform for people to come together; please do
+            not share any content which is illegal or causes any harm to the
+            well-being of members of the society or community.
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>d. Content Rights and Liabilities</strong>
+          </p>
+          <p className={styles.para}>
+            We strongly believe in the freedom of expression and allow you to
+            share photographs, user videos, sound recordings and other content
+            on our Platform. We do not have any ownership over any of the
+            content shared by you and the rights in the content remain only with
+            you. You will not use our Platform to violate or infringe upon our
+            or any third-party’s intellectual property rights. Further, if you
+            use any content developed by us, then we shall continue to own the
+            intellectual property rights in such content.
+          </p>
+          <p className={styles.para}>
+            By sharing/posting/uploading any photographs, user videos, sound
+            recordings any other content, using our Services, you grant us a
+            non-exclusive, royalty-free, transferable, sub-licensable, worldwide
+            license to host, use, distribute, run, copy, publicly perform or
+            display, translate, and create derivative works of your content
+            (consistent with your privacy and application settings). You may
+            delete your content and/or account at any point. However, your
+            content may continue to appear on the Platform if it has been shared
+            with others. To learn more about how we use information, and how to
+            control or delete your content, please read the Upsurge Privacy
+            Policy.
+            <strong>
+              You remain solely responsible for the content you post on our
+              Platform. We do not endorse and are not responsible for any
+              content shared or posted on or through our Platform, and for the
+              consequence of such sharing or posting. The presence of our logo
+              or any trademark on any content shared by you does not mean that
+              we have endorsed or sponsored your content. Further, we will not
+              be liable for or responsible for the consequences of any
+              transactions made or entered into by you with other users of the
+              Platform.
+            </strong>
+          </p>
+          <p className={styles.para} style={{ textDecoration: "italic" }}>
+            You will always have ownership and responsibilities for the content
+            you share. We will never claim that we have intellectual property
+            rights over your content, but will have a free of cost, permanent
+            license to use what you share and post on our Platform.
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>f. Intermediary Status and No Liability</strong>
+          </p>
+          <p className={styles.para}>
+            We are an intermediary under the Information Technology Act, 2000
+            and the Information Technology Act (Intermediary Guidelines) Rules,
+            2011. These Terms are published in accordance with the provisions of
+            Rule 3(1) of the Information Technology (Intermediaries Guidelines)
+            Rules, 2011 that require publishing of the rules and regulations,
+            Upsurge Privacy Policy, and upsurge Terms of Condition for accessing
+            and using our Platform.
+          </p>
+          <p className={styles.para}>
+            We do not control what people do or say and are not responsible for
+            their (or your) actions (whether online or offline). We are not
+            responsible for services and features offered by others, even if you
+            access them through our Services. Our responsibility for anything
+            that happens on our Platform is strictly governed by the laws of the
+            Republic of India and is limited to that extent. You agree that we
+            will not be responsible for any loss of profits, revenues,
+            information, or data, or consequential, special, indirect,
+            exemplary, punitive, or incidental damages arising out of or related
+            to these Terms, even if we know they are possible. This includes
+            when we delete your content, information, or account.
+          </p>
+          <p className={styles.para} style={{ textDecoration: "italic" }}>
+            We are an intermediary under Indian law. We do not control what
+            people post on our Platform but we expect everyone to comply with
+            the laws of the Republic of India.
+          </p>
+          <p
+            className={styles.subheading}
+            style={{ textDecoration: "underline" }}
+          >
+            <strong>
+              g. You Will Not Attempt to Disrupt or Jeopardize Upsurge
+            </strong>
+          </p>
+          <p className={styles.para}>
+            We have developed a community-driven platform. Therefore, you agree
+            to not interfere with, or use non-public areas of our Platform,
+            Services, and our technical delivery system. You will not introduce
+            any trojans, viruses, any other malicious software, any bots or
+            scrape our Platform for any user information. Additionally, you will
+            not probe, scan, or test the vulnerability of any system, security
+            or authentication measures implemented by us. If you tamper or
+            attempt to tamper with our technological design and architecture, we
+            may terminate your user profile. We may further report such actions
+            to the appropriate law enforcement authorities and proceed against
+            you with legal actions.
+          </p>
+          <p className={styles.para} styles={{ textDecoration: "italic" }}>
+            You will not hack into or introduce malicious software of any kind
+            onto our Platform. If you commit such actions, we may remove you
+            from the platform and even have to report your actions to the
+            police.
+          </p>
+          <p className={styles.heading}>19. PERMISSIONS YOU GIVE TO US</p>
+          <p className={styles.para}>
+            You accept these Terms and give us certain permissions so that we
+            can serve you better. Permissions you have granted us are:
+          </p>
+          <p className={styles.para}>a. Automatic Downloads and Updates</p>
+          <p className={styles.para}>
+            We are constantly updating our Platform and Services offered. To use
+            our Platform, you may need to download the Upsurge mobile
+            application to your mobile device and update it from time to time if
+            you have disabled automatic updates.
+          </p>
+          <p className={styles.para}>
+            Applications and software are constantly updated for your use and
+            you will need to install the latest version of the Upsurge mobile
+            application to your mobile device each time such an update is
+            generated.
+          </p>
+          <p className={styles.para}>b. Permission to Use Cookies</p>
+          <p className={styles.para}>
+            We may use cookies, pixel tags, web beacons, mobile device IDs,
+            flash cookies and similar files or technologies to collect and store
+            information with respect to your use of the Services and third-party
+            websites. Please see the Upsurge Policy for more information
+            regarding the use of cookies and other technologies described in
+            this section, including regarding your choices relating to such
+            technologies.
+          </p>
+          <p className={styles.para}>c. Data Retention</p>
+          <p className={styles.para}>
+            We shall have the right to retain certain information regarding your
+            usage of the Platform. Please view the Upsurge Privacy Policy for
+            further information relating to the collection, storage and use of
+            your information by us.
+          </p>
+          <p className={styles.para}>
+            You grant us the right to store and retain information relating to
+            you and provided by you. Please see the Privacy Policy for further
+            information.
+          </p>
+          <p className={styles.heading}>
+            20. OUR AGREEMENT AND WHAT HAPPENS IF WE DISAGREE
+          </p>
+          <p className={styles.para}>a. Who Has Rights Under These Terms</p>
+          <p className={styles.para}>
+            The rights and obligations under these terms are granted only to you
+            and shall not be assigned to any third party without our consent.
+            However, we are permitted to assign our rights and obligations under
+            these Terms to others. This can happen when, for example, we enter
+            into a merger with another company and create a new company.
+          </p>
+          <p className={styles.para}>b. How We Will Handle Disputes</p>
+          <p className={styles.para}>
+            In all cases, you agree that disputes will be subject to the laws of
+            the Republic of India and the courts of Delhi shall have exclusive
+            jurisdiction over all such disputes.
+          </p>
+          <p className={styles.para}>c. Grievance Officer</p>
+          <p className={styles.para}>
+            We have a Grievance Officer to address your concerns regarding data
+            safety, privacy, and Platform usage concerns. We will resolve the
+            issues raised by you within 30 (thirty) days from receiving them.
+          </p>
+          <p className={styles.para}>
+            You may contact the Grievance Officer at any of the following:
+          </p>
+          <p className={styles.para}>Address: </p>
+          <p className={styles.para}>Office Hours:.</p>
+          <p className={styles.para}>Email: </p>
+          <p className={styles.para}>
+            We have created a method for you to get in touch with us and for us
+            to address your concerns.
+          </p>
+          <p className={styles.heading}>21. LIMITATION OF LIABILITY</p>
+          <p className={styles.para}>
+            We do not assume any liability with respect to any loss or damage,
+            arising directly or indirectly due to any inaccuracy or
+            incompleteness of any information or a breach of any warranty or
+            guarantee due to the actions of any user of the Platform.
+          </p>
+          <p className={styles.para}>
+            The Platform and Services are provided on "as is" and "as available"
+            basis without any representation or warranties, express or implied
+            except otherwise specified in writing. We do not warrant the quality
+            of the Services or the Platform including its uninterrupted, timely,
+            secure or error-free provision, continued compatibility on any
+            device, or correction of any errors.
+          </p>
+          <p className={styles.para}>
+            In no event shall we, or any of our affiliates, successors, and
+            assigns, and each of their respective investors, directors,
+            officers, employees, agents, service providers, and suppliers be
+            liable for any special, incidental, punitive, direct, indirect or
+            consequential damages suffered as a consequence of a breach of the
+            Terms by another user or arising out of the use of or the reliance
+            on any of the Services or the Platform.
+          </p>
+          <p className={styles.para}>
+            In the event any exclusion contained herein is held to be invalid
+            for any reason and we or any of our affiliate entities, officers,
+            directors or employees become liable for loss or damage, then, any
+            such liability shall be limited to not exceeding the charges or
+            amounts paid to us for use of the Platform or the Services in the
+            month preceding the date of the claim.
+          </p>
+          <p className={styles.heading}>22. INDEMNIFICATION</p>
+          <p className={styles.para}>
+            You agree to indemnify, defend and hold harmless us, and our
+            subsidiaries, affiliates and agents and their respective officers,
+            directors, employees, successors and assigns from and against any
+            claim, proceeding, loss, damage, liability, cost, demand or expense
+            (including but not limited to attorney's fees) of any kind arising
+            out of: <br />
+            (i) your access to or use of the Platform and Services; <br />
+            (ii) any breach by you of your obligations under this Agreement;{" "}
+            <br />
+            (iii) your violation of the rights of any third party, including any
+            infringement of intellectual property, or of any privacy or consumer
+            protection right; <br />
+            (iv) any violation of law or contractual obligation and any claims,
+            demands, notices pursuant to such violation; <br />
+            (v) your negligence or wilful misconduct. This obligation will
+            survive termination of our Terms.
+          </p>
+          <p className={styles.para}>23. UNSOLICITED MATERIAL</p>
+          <p className={styles.para}>
+            We always appreciate feedback or other suggestions. We may use the
+            same without any restrictions or obligation to compensate you for
+            them and are under no obligation to keep them confidential.
           </p>
         </div>
       ) : (
