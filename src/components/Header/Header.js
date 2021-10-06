@@ -92,7 +92,7 @@ function Header({
             tabs={[
               { name: "Blogs", pushTo: "/blogs" },
 
-              { name: "Financial Calculators", pushTo: "/calculators/main" },
+              { name: "Financial Calculators", pushTo: "/calculators" },
               { name: "Live Classes", pushTo: "/liveclasses" },
             ]}
           />

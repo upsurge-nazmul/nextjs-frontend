@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import CalculatorRouter from "../../components/Calculators/CalculatorRouter";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
-import styles from "../../styles/Calculators/calculatorpage.module.scss";
+import styles from "../../styles/Calculators/calculatormainpage.module.scss";
 import homeloansvg from "../../assets/calculators/home.svg";
 import carloansvg from "../../assets/calculators/car.svg";
+import Footer from "../../components/Home/Footer";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -16,17 +17,8 @@ function CalculatorsPage() {
   const [showauth, setshowauth] = useState(false);
   const [paths, setpaths] = useState(["home", "calculators"]);
   useEffect(() => {
-    if (!data[calculatorName]) {
-      router.push("/calculators");
-    } else {
-      if (calculatorName !== "main") {
-        setpaths(["home", "calculators", calculatorName]);
-      } else {
-        setpaths(["home", "calculators"]);
-      }
-
-      setHeading(data[calculatorName].heading);
-      setSubheading(data[calculatorName].subheading);
+    if (calculatorName && !data[calculatorName]) {
+      router.push("/calculators/main");
     }
   }, [calculatorName]);
 
@@ -149,33 +141,45 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
+        <img className={styles.icon} src="/images/calcicon.png" alt="" />
         <div className={styles.headingSection}>
-          <h2 className={styles.heading}>{heading}</h2>
-          <h3 className={styles.subheading}>{subheading}</h3>
+          <h2 className={styles.heading}>Calculators</h2>
+          <h3 className={styles.subheading}>
+            Upsurge provides a range of calculators from Loans to Deposits. From
+            calculating your Personal Loan EMI, to checking your Home Loan
+            affordability, Upsurge gives you a whole set of calculators to help
+            you make your informed decision. As you embark on a journey to
+            fulfil your dreams with a new bike/car or a new home, the calculator
+            helps you with a better understanding of expenses. Also, before you
+            invest in a Fixed Deposit or Recurring Deposit to save and grow your
+            money, you can calculate the interest you will earn
+          </h3>
         </div>
-        {calculatorName === "main" ? (
-          <div className={styles.calculatorsList}>
-            {Object.keys(data).map((item, index) => {
-              if (item === "main") {
-                return null;
-              } else {
-                return (
-                  <div
-                    key={"calccalrd" + index}
-                    className={styles.calcCard}
-                    onClick={() => router.push(`/calculators/${item}`)}
-                  >
-                    <img src={data[item].icon.src} alt="calcicon" />
-                    <p className={styles.calccardtitle}>{data[item].heading}</p>
-                  </div>
-                );
-              }
-            })}
-          </div>
-        ) : (
-          <CalculatorRouter name={calculatorName} />
-        )}
+
+        <div className={styles.calculatorsList}>
+          {Object.keys(data).map((item, index) => {
+            if (item === "main") {
+              return null;
+            } else {
+              return (
+                <div
+                  key={"calccalrd" + index}
+                  className={styles.calcCard}
+                  onClick={() => router.push(`/calculators/${item}`)}
+                >
+                  <img src={data[item].icon} alt="calcicon" />
+                  <p className={styles.calccardtitle}>{data[item].heading}</p>
+                  <p className={styles.calccardsubtitle}>
+                    {data[item].subheading}
+                  </p>
+                  <p className={styles.date}>By Upsurge Team, 5th Aug, 2021</p>
+                </div>
+              );
+            }
+          })}
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }
