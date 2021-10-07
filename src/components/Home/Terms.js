@@ -209,7 +209,7 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.heading}>5. SUBSCRIPTIONS</p>
           <p className={styles.para}>
-            Some parts of the Service are billed on a subscription basis
+            {`Some parts of the Service are billed on a subscription basis
             ("Subscription(s)"). You will be billed in advance on a recurring
             and periodic basis ("Billing Cycle"). Billing cycles are set on a
             monthly or annual basis. At the end of each Billing Cycle, your
@@ -217,7 +217,7 @@ export default function Terms({ setshowterm, termmode }) {
             conditions unless you cancel it or Surgeup Technologies Private
             Limited cancels it. You may cancel your Subscription renewal either
             through your online account management page or by contacting Surgeup
-            Technologies Private Limited customer support team.
+            Technologies Private Limited customer support team.`}
           </p>
           <p className={styles.para}>
             You shall provide Surgeup Technologies Private Limited with accurate
@@ -233,14 +233,14 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.heading}>6. FREE TRIAL</p>
           <p className={styles.para}>
-            Surgeup Technologies Private Limited may, at its sole discretion,
+            {`Surgeup Technologies Private Limited may, at its sole discretion,
             offer a Subscription with a free trial for a limited period ("Free
             Trial"), you will not be charged by Surgeup Technologies Private
             Limited until the Free Trial has expired. On the last day of the
             Free Trial period, unless you cancelled your Subscription, you will
             be automatically charged the applicable Subscription fees for the
             type of Subscription you have selected at any time and without
-            notice, Surgeup Technologies Private Limited reserves the right to{" "}
+            notice, Surgeup Technologies Private Limited reserves the right to`}
             <br />
             (i) modify the terms and conditions of the Free Trial offer, or{" "}
             <br />
@@ -526,23 +526,23 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.subheading}>4. Right to be Forgotten</p>
           <p className={styles.para}>
-            Once we have compared your (the subjects') rights to "the public
+            {`Once we have compared your (the subjects') rights to "the public
             interest in the availability of the data", we may delete your
-            personal data where you have requested this.
+            personal data where you have requested this.`}
           </p>
           <p className={styles.subheading}>5. Data Portability</p>
           <p className={styles.para}>
-            We allow you to receive the personal data concerning you, which we
+            {`We allow you to receive the personal data concerning you, which we
             will provide in a 'commonly used and machine readable format' and
-            you have the right to transmit that data to another ‘controller’.
+            you have the right to transmit that data to another ‘controller’.`}
           </p>
           <p className={styles.subheading}>6. Privacy by Design</p>
           <p className={styles.para}>
-            We implement appropriate technical and organisational measures, in
+            {`We implement appropriate technical and organisational measures, in
             an effective way and protect the rights of data subjects'. We hold
             and process only the data absolutely necessary for the completion of
             our duties (data minimisation), as well as limiting the access to
-            personal data to those needing to act out the processing
+            personal data to those needing to act out the processing`}
           </p>
           <p className={styles.heading}>17. SAFETY</p>
           <p className={styles.para}>
@@ -897,12 +897,12 @@ export default function Terms({ setshowterm, termmode }) {
             guarantee due to the actions of any user of the Platform.
           </p>
           <p className={styles.para}>
-            The Platform and Services are provided on "as is" and "as available"
+            {`The Platform and Services are provided on "as is" and "as available"
             basis without any representation or warranties, express or implied
             except otherwise specified in writing. We do not warrant the quality
             of the Services or the Platform including its uninterrupted, timely,
             secure or error-free provision, continued compatibility on any
-            device, or correction of any errors.
+            device, or correction of any errors.`}
           </p>
           <p className={styles.para}>
             In no event shall we, or any of our affiliates, successors, and
@@ -923,12 +923,12 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.heading}>22. INDEMNIFICATION</p>
           <p className={styles.para}>
-            You agree to indemnify, defend and hold harmless us, and our
+            {`You agree to indemnify, defend and hold harmless us, and our
             subsidiaries, affiliates and agents and their respective officers,
             directors, employees, successors and assigns from and against any
             claim, proceeding, loss, damage, liability, cost, demand or expense
             (including but not limited to attorney's fees) of any kind arising
-            out of: <br />
+            out of:`} <br />
             (i) your access to or use of the Platform and Services; <br />
             (ii) any breach by you of your obligations under this Agreement;{" "}
             <br />

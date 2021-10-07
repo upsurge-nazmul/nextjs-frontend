@@ -89,17 +89,17 @@ export default function Pricing() {
           </div>
         </div>
         <div className={styles.pricewrapper}>
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
-              <div className={styles.pricecontainer}>
+              <div className={styles.pricecontainer} key={"price" + index}>
                 <p className={styles.name}>{item.name}</p>
                 <p className={styles.price}>{item.price}</p>
                 <p className={styles.description}>{item.description}</p>
                 <div className={styles.button}>Start My 15-day Trial</div>
                 <div className={styles.hr} />
                 <div className={styles.benefitswrapper}>
-                  {item.benefits.map((benefit) => {
-                    return <p>{benefit}</p>;
+                  {item.benefits.map((benefit, index) => {
+                    return <p key={"benefit" + index}>{benefit}</p>;
                   })}
                 </div>
               </div>
