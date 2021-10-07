@@ -1,0 +1,628 @@
+.aboutPage {
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .head {
+      background-color: #fbfbfb;
+      height: 350px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .heading {
+        font-size: 48px;
+        font-weight: 700;
+        text-align: center;
+      }
+      .subheading {
+        font-weight: 400;
+        margin-top: 15px;
+        font-size: 18px;
+        line-height: 32px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.78);
+        max-width: 700px;
+      }
+      .ball1 {
+        width: 160px;
+        height: 80px;
+        border-radius: 160px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        background-color: #17d1bc;
+        transform: rotate(-34deg);
+        position: absolute;
+        left: 5%;
+        top: 20%;
+      }
+      .ball2 {
+        background-color: #ff6263;
+        width: 80px;
+        border-radius: 80px;
+        height: 80px;
+        position: absolute;
+        left: 17%;
+        top: 70%;
+      }
+      .ball3 {
+        background-color: #fdcc03;
+        width: 50px;
+        border-radius: 50px;
+        height: 50px;
+        position: absolute;
+        right: 17%;
+        top: 20%;
+      }
+      .ball4 {
+        background-color: #4166eb;
+        width: 150px;
+        border-radius: 150px;
+        height: 150px;
+        position: absolute;
+        right: 7%;
+        top: 40%;
+      }
+    }
+    .secondheading {
+      font-size: 32px;
+      margin: 40px 0;
+      font-weight: 700;
+    }
+    .wrapper {
+      display: flex;
+      width: 100%;
+      margin-top: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      .role,
+      .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 4vw;
+        .name {
+          font-size: 32px;
+          margin-top: 10px;
+          font-weight: 700;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .position {
+          margin-top: 6px;
+          font-size: 18px;
+        }
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 350px;
+        }
+      }
+      .team {
+        margin: 0 2vw;
+        margin-bottom: 40px;
+        img {
+          width: 180px;
+          height: 180px;
+          border-radius: 180px;
+        }
+        .name {
+          font-size: 24px;
+        }
+      }
+    }
+    .ctc {
+      background-color: #fdcc03;
+      height: 300px;
+      min-width: 1100px;
+      border-radius: 16px;
+      width: 60%;
+      margin-bottom: 100px;
+      overflow: hidden;
+      padding: 45px;
+      position: relative;
+      .text {
+        font-size: 40px;
+        font-weight: 800;
+      }
+      .button {
+        width: 200px;
+        height: 50px;
+        background-color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        margin-top: 40px;
+      }
+      .curve {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+        width: 150px;
+      }
+      .yourname {
+        position: absolute;
+        right: 20%;
+        bottom: 0px;
+        width: 250px;
+        z-index: 2;
+      }
+      .cover {
+        position: absolute;
+        right: 0;
+        top: -20%;
+        height: 140%;
+        right: -5%;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .aboutPage {
+    .container {
+      .head {
+        background-color: #fbfbfb;
+        height: 350px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .heading {
+          font-size: 48px;
+          font-weight: 700;
+          text-align: center;
+        }
+        .subheading {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 32px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.78);
+          max-width: 582px;
+        }
+        .ball1 {
+          width: calc(8vw * 2);
+          height: 8vw;
+          border-radius: 8vw;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          background-color: #17d1bc;
+          transform: rotate(-34deg);
+          position: absolute;
+          left: 5%;
+          top: 20%;
+        }
+        .ball2 {
+          width: 5vw;
+          border-radius: 5vw;
+          height: 5vw;
+          left: 15%;
+          top: 80%;
+        }
+        .ball3 {
+          width: 7vw;
+          border-radius: 7vw;
+          height: 7vw;
+          right: 14%;
+          top: 18%;
+        }
+        .ball4 {
+          width: 11vw;
+          border-radius: 11vw;
+          height: 11vw;
+          position: absolute;
+          right: 3%;
+          top: 70%;
+        }
+      }
+
+      .ctc {
+        background-color: #fdcc03;
+        height: 250px;
+        min-width: 500px;
+        border-radius: 16px;
+        width: 90%;
+        margin-bottom: 100px;
+        overflow: hidden;
+        padding: 45px;
+        position: relative;
+        .text {
+          font-size: 30px;
+          font-weight: 800;
+        }
+        .button {
+          width: 200px;
+          height: 50px;
+          background-color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-top: 40px;
+        }
+        .curve {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(0%, 0);
+          width: 12vw;
+        }
+        .yourname {
+          position: absolute;
+          right: 20%;
+          bottom: 0px;
+          width: 15vw;
+          z-index: 2;
+        }
+        .cover {
+          position: absolute;
+          right: -15%;
+          top: 0;
+          width: 40vw;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .aboutPage {
+    .container {
+      .head {
+        height: 300px;
+        .heading {
+          margin-top: 0px;
+          font-size: 32px;
+          font-weight: 700;
+          text-align: center;
+        }
+        .subheading {
+          font-weight: 400;
+          font-size: 14px;
+          margin-top: 10px;
+          line-height: 22px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.78);
+          width: 100%;
+          padding: 0 20px;
+          max-width: 582px;
+        }
+        .ball1 {
+          left: 7%;
+          width: 12vw;
+          height: 6vw;
+        }
+        .ball4 {
+          width: 9vw;
+          border-radius: 9vw;
+          height: 9vw;
+          right: 8%;
+          top: 75%;
+        }
+      }
+      .secondheading {
+        font-size: 25px;
+      }
+      .wrapper {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        .role,
+        .team {
+          .name {
+            font-size: 26px;
+          }
+          .position {
+            font-size: 16px;
+          }
+          img {
+            width: 220px;
+            height: 220px;
+            border-radius: 220px;
+          }
+        }
+        .team {
+          margin: 0 4vw;
+          margin-bottom: 40px;
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
+          }
+          .name {
+            font-size: 16px;
+          }
+          .position {
+            font-size: 12px;
+            margin-top: 2px;
+          }
+        }
+      }
+      .ctc {
+        background-color: #fdcc03;
+        height: 250px;
+        min-width: 500px;
+        border-radius: 16px;
+        width: 90%;
+        margin-bottom: 100px;
+        overflow: hidden;
+        padding: 45px;
+        position: relative;
+        .text {
+          font-size: 30px;
+          font-weight: 800;
+        }
+        .button {
+          width: 200px;
+          height: 50px;
+          background-color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-top: 40px;
+        }
+        .curve {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(0%, 0);
+          width: 12vw;
+        }
+        .yourname {
+          position: absolute;
+          right: 20%;
+          bottom: 0px;
+          width: 15vw;
+          z-index: 2;
+        }
+        .cover {
+          position: absolute;
+          right: -15%;
+          top: 0;
+          width: 45vw;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 550px) {
+  .aboutPage {
+    .container {
+      .head {
+        height: 250px;
+        .heading {
+          font-size: 30px;
+        }
+        .subheading {
+          font-size: 12px;
+        }
+        .ball4 {
+          width: 7vw;
+          border-radius: 7vw;
+          height: 7vw;
+          right: 10%;
+          top: 80%;
+        }
+      }
+      .secondheading {
+        font-size: 22px;
+      }
+      .wrapper {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        .role,
+        .team {
+          .name {
+            font-size: 20px;
+          }
+          .position {
+            font-size: 12px;
+          }
+          img {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+          }
+        }
+        .team {
+          margin: 0 2vw;
+          margin-bottom: 20px;
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+          }
+          .name {
+            font-size: 14px;
+          }
+          .position {
+            font-size: 10px;
+          }
+        }
+      }
+      .ctc {
+        background-color: #fdcc03;
+        height: 150px;
+        min-width: 300px;
+        border-radius: 16px;
+        width: 90%;
+        margin-bottom: 100px;
+        overflow: hidden;
+        padding: 25px;
+        position: relative;
+        .text {
+          font-size: 20px;
+          font-weight: 800;
+        }
+        .button {
+          width: 100px;
+          height: 35px;
+          background-color: #fff;
+          font-size: 12px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-top: 20px;
+        }
+        .curve {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(0%, 0);
+          width: 12vw;
+        }
+        .yourname {
+          position: absolute;
+          right: 16%;
+          bottom: 0px;
+          width: 20vw;
+          z-index: 2;
+        }
+        .cover {
+          position: absolute;
+          right: -12%;
+          top: 0;
+          width: 40vw;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 390px) {
+  .aboutPage {
+    .container {
+      .head {
+        height: 230px;
+        .heading {
+          font-size: 25px;
+        }
+        .subheading {
+          font-size: 10px;
+        }
+      }
+      .wrapper {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        .role,
+        .team {
+          .name {
+            font-size: 16px;
+          }
+          .position {
+            font-size: 10px;
+          }
+          img {
+            width: 130px;
+            height: 130px;
+            border-radius: 130px;
+          }
+        }
+        .team {
+          margin: 0 5vw;
+          margin-bottom: 20px;
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+          }
+          .name {
+            font-size: 14px;
+          }
+          .position {
+            font-size: 10px;
+          }
+        }
+      }
+      .secondheading {
+        font-size: 18px;
+        margin: 20px 0;
+      }
+      .ctc {
+        background-color: #fdcc03;
+        height: 130px;
+        min-width: 300px;
+        border-radius: 12px;
+        width: 90%;
+        margin-bottom: 100px;
+        overflow: hidden;
+        padding: 25px;
+        position: relative;
+        .text {
+          font-size: 16px;
+          font-weight: 800;
+        }
+        .button {
+          width: 100px;
+          height: 35px;
+          background-color: #fff;
+          font-size: 12px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-top: 20px;
+        }
+        .curve {
+          position: absolute;
+          left: 52%;
+          top: 55%;
+          transform: translate(0%, 0);
+          width: 12vw;
+        }
+        .yourname {
+          position: absolute;
+          right: 13%;
+          bottom: 0px;
+          width: 22vw;
+          z-index: 2;
+        }
+        .cover {
+          position: absolute;
+          right: -12%;
+          top: 0;
+          width: 40vw;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

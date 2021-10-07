@@ -84,7 +84,12 @@ function Footer() {
           </div>
           <div className={styles.column}>
             <p className={styles.heading}>More</p>
-            <p className={styles.subheading}>About Us</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/about")}
+            >
+              About Us
+            </p>
           </div>
         </div>
       </div>
@@ -182,7 +187,14 @@ function Footer() {
           <p className={styles.heading} onClick={() => setshowmore(!showmore)}>
             More <span>{showmore ? "-" : "+"}</span>
           </p>
-          {showmore && <p className={styles.subheading}>About Us</p>}
+          {showmore && (
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/about")}
+            >
+              About Us
+            </p>
+          )}
         </div>
         <div className={styles.socials}>
           <Fb className={styles.social} />
