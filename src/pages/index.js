@@ -18,7 +18,7 @@ import Who from "../components/Home/Who";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
-const INTERCOM_APP_ID = "a3llo6c5";
+const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
