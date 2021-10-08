@@ -115,6 +115,13 @@
       width: 80%;
       text-align: center;
     }
+    .error {
+      margin-top: 12px;
+      font-size: 16px;
+      color: hsl(0, 0%, 100%);
+      cursor: pointer;
+      font-weight: 500;
+    }
     .emailwrapper {
       display: flex;
       margin-top: 40px;

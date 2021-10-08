@@ -32,19 +32,19 @@ function Footer() {
             <p className={styles.subheading}>Knowledge Quests</p>
             <p className={styles.subheading}>Games Arena</p>
             <p className={styles.subheading}>Chores</p>
-            <p className={styles.subheading}>Family Fun</p>
-            <p className={styles.subheading}>Tribes</p>
+            {/* <p className={styles.subheading}>Family Fun</p> */}
+            {/* <p className={styles.subheading}>Tribes</p> */}
             <p className={styles.subheading}>Live Classes</p>
           </div>
           <div className={styles.column}>
             <p className={styles.heading}>Resources</p>
-            <p className={styles.subheading}>Goal Wizards</p>
-            <p className={styles.subheading}>Live Classes</p>
-            <p className={styles.subheading}>Tournaments</p>
-            <p className={styles.subheading}>Cheat Codes</p>
-            <p className={styles.subheading}>Articles</p>
+            <p className={styles.subheading}>Game 1</p>
+            <p className={styles.subheading}>Game 2</p>
+            <p className={styles.subheading}>Game 3</p>
+            {/* <p className={styles.subheading}>Cheat Codes</p> */}
+            <p className={styles.subheading}>Quizzes</p>
           </div>
-          <div className={styles.column}>
+          {/* <div className={styles.column}>
             <p className={styles.heading}>Help & Support</p>
             <p
               className={styles.subheading}
@@ -54,7 +54,7 @@ function Footer() {
             </p>
             <p className={styles.subheading}>Help Center</p>
             <p className={styles.subheading}>Contact us</p>
-          </div>
+          </div> */}
           <div className={styles.column}>
             <p className={styles.heading}>Financial Calculators</p>
             <p
@@ -86,10 +86,24 @@ function Footer() {
             <p className={styles.heading}>More</p>
             <p
               className={styles.subheading}
+              onClick={() => router.push("/blogs")}
+            >
+              Blogs
+            </p>
+            <p
+              className={styles.subheading}
               onClick={() => router.push("/about")}
             >
               About Us
             </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/faq")}
+            >
+              FAQ’s
+            </p>
+            <p className={styles.subheading}>Help Center</p>
+            <p className={styles.subheading}>Contact us</p>
           </div>
         </div>
       </div>

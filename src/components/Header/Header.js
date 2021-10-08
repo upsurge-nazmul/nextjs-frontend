@@ -66,12 +66,16 @@ function Header({
                 name: "Chores",
                 pushTo: "/jobs",
               },
-              { name: "Family Fun", pushTo: "/familyfun" },
-              { name: "Tribes", pushTo: "/p_tribes" },
+              // { name: "Family Fun", pushTo: "/familyfun" },
+              // { name: "Tribes", pushTo: "/p_tribes" },
               { name: "Live Classes", pushTo: "/p_liveclasses" },
             ]}
           />
-          <HeaderTabSection
+          <HeaderTabSection title={"Benefits"} tabs={[]} pushTo="/benefits" />
+          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
+          <HeaderTabSection title={"Quizzes"} tabs={[]} pushTo="/quiz" />
+
+          {/* <HeaderTabSection
             title={"Resources"}
             tabs={[
               { name: "Goal Wizard", pushTo: "/goalwizard" },
@@ -83,23 +87,28 @@ function Header({
               },
               { name: "Articles", pushTo: "/blogs" },
             ]}
-          />
-          <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
-          <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" />
+          /> */}
+          {/* <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" /> */}
+          {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
 
           <HeaderTabSection
             title={"More"}
             tabs={[
+              { name: "About us", pushTo: "/about" },
+
               { name: "Blogs", pushTo: "/blogs" },
 
               { name: "Financial Calculators", pushTo: "/calculators" },
-              { name: "Live Classes", pushTo: "/liveclasses" },
+              { name: "FAQ's", pushTo: "/faq" },
+              { name: "Contact us", pushTo: "/contact" },
+
+              // { name: "Live Classes", pushTo: "/liveclasses" },
             ]}
           />
         </div>
-        <div className={styles.signin} onClick={() => setshowauth(true)}>
+        {/* <div className={styles.signin} onClick={() => setshowauth(true)}>
           Sign In
-        </div>
+        </div> */}
       </div>
     </div>
   );

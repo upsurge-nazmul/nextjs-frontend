@@ -35,6 +35,26 @@
         font-weight: 700;
       }
     }
+    .error {
+      width: 26.5vw;
+      margin-top: 12px;
+      font-size: 16px;
+      color: hsl(0, 81%, 71%);
+      cursor: pointer;
+      font-weight: 500;
+      padding-left: 10px;
+    }
+    .checkwaiting {
+      width: 26.5vw;
+      margin-top: 12px;
+      font-size: 14px;
+      color: hsl(227, 81%, 71%);
+      cursor: pointer;
+      padding-left: 10px;
+      &:hover {
+        color: #4166eb;
+      }
+    }
     .signupBox {
       width: 23vw;
       min-width: fit-content;
@@ -95,6 +115,9 @@
           background-color: hsl(227, 100%, 59%);
         }
       }
+    }
+    .errsignbox {
+      margin-top: 10px;
     }
   }
   .homesvg {

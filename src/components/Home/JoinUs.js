@@ -1,8 +1,35 @@
 import React, { useState } from "react";
 import styles from "../../styles/Home/join.module.scss";
-
+import validator from "validator";
+import LoginApis from "../../actions/apis/LoginApis";
+import { useRouter } from "next/dist/client/router";
 function JoinUs() {
-  const [showinput, setshowinput] = useState(false);
+  const [error, seterror] = useState("");
+  const [email, setemail] = useState("");
+  const router = useRouter();
+  async function handleSignup() {
+    if (!validator.isEmail(email)) {
+      seterror("Enter valid email address");
+    } else {
+      let response = await LoginApis.addtonewslettersubs({ email: email });
+      if (response) {
+        if (response.data.success) {
+          if (response.data.message === "Exists") {
+            seterror("Already subscribed");
+          } else {
+            router.push("/subscribed");
+          }
+        } else {
+          seterror(response.data.message);
+        }
+      } else {
+        seterror("Error connecting to server");
+      }
+      // setshowauth(true);
+      // setauthmode("parent");
+      // setmailfromhome(email);
+    }
+  }
   return (
     <section className={styles.joinSection}>
       <div className={`${styles.doodle} ${styles.dl1}`}>
@@ -27,10 +54,20 @@ function JoinUs() {
           Get all the information related to Financial Literacy
         </p>
         <div className={styles.emailwrapper}>
-          <input className={styles.email} type="email" placeholder="Email" />
-
-          <div className={styles.button}>Subscribe</div>
+          <input
+            className={styles.email}
+            type="email"
+            placeholder="Email"
+            onChange={(e) => {
+              seterror("");
+              setemail(e.target.value);
+            }}
+          />
+          <div className={styles.button} onClick={handleSignup}>
+            Subscribe
+          </div>
         </div>
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </section>
   );

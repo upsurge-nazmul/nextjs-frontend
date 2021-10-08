@@ -4,7 +4,9 @@ import { getCookie } from "../cookieUtils";
 const signup = (payload) => {
   return ApiCalls.postResponse(`users/signup`, payload);
 };
-
+const getwaitlistdetails = (payload) => {
+  return ApiCalls.getResponse(`users/getwaitlistdetails`, payload);
+};
 const logout = (payload) => {
   return ApiCalls.getResponse(
     "users/logout",
@@ -42,6 +44,9 @@ const checktoken = (payload) => {
 };
 const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
+};
+const addtonewslettersubs = (payload) => {
+  return ApiCalls.postResponse("users/addtonewslettersubs", payload);
 };
 const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
@@ -87,6 +92,8 @@ const LoginApis = {
   checkphone,
   googlelogin,
   getuserbyid,
+  getwaitlistdetails,
+  addtonewslettersubs,
 };
 
 export default LoginApis;

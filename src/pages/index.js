@@ -71,7 +71,8 @@ function Home({ isLogged, userdata }) {
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
         />
-        <How />
+        <Who />
+        {/* <How /> */}
         <Benefits />
         <ProductSection />
         <AboutSection />

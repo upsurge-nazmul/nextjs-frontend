@@ -3,7 +3,7 @@ import styles from "../../styles/Home/benefits.module.scss";
 import Curve1 from "../SVGcomponents/Curve1";
 import Dollar from "../SVGcomponents/Dollar";
 import IntroThunderSvg from "../SVGcomponents/IntroThunderSvg";
-
+import { motion, AnimatePresence } from "framer-motion";
 function Benefits() {
   const data = [
     {
@@ -166,71 +166,73 @@ function Benefits() {
           </div>
         </div>
         <div id="rightsection" className={styles.right}>
-          <div className={styles.imgwrapper}>
-            <img
-              id="img-1"
-              className="imgsections"
-              src="/images/home/benefits/img1.png"
-              alt=""
-            />
-            {/* <IntroThunderSvg className={styles.thunder} />
-            <Dollar className={styles.dollar} />
-            <div className={styles.lb1}></div>
-            <div className={styles.lb2}></div>
-            <div className={styles.lb3}></div>
-            <div className={styles.lb4}></div> */}
-            <p className={styles.description}>{data[0]?.description}</p>
-            <p
-              className={styles.more}
-              style={{
-                color: "#4166EB",
-              }}
-            >{`LEARN MORE ->`}</p>
-            <Curve1 className={styles.curve} />
-          </div>
-          <div className={styles.imgwrapper}>
-            <img
-              id="img-2"
-              className="imgsections"
-              src="/images/home/benefits/img2.png"
-              alt=""
-            />
-            <p className={styles.description}>{data[1]?.description}</p>
-            <p
-              className={styles.more}
-              style={{ color: "#FDCC03" }}
-            >{`LEARN MORE ->`}</p>
-          </div>
-          <div className={styles.imgwrapper}>
-            <img
-              id="img-3"
-              className="imgsections"
-              src="/images/home/benefits/img3.png"
-              alt=""
-            />
-            <p className={styles.description}>{data[2]?.description}</p>
-            <p
-              className={styles.more}
-              style={{
-                color: "#FF6263",
-              }}
-            >{`LEARN MORE ->`}</p>
-          </div>
-          <div className={styles.imgwrapper}>
-            <img
-              id="img-4"
-              className="imgsections"
-              src="/images/home/benefits/img4.png"
-              alt=""
-            />
-            <p className={styles.description}>{data[3]?.description}</p>
-            <p
-              className={styles.more}
-              style={{
-                color: "#17D1BC",
-              }}
-            >{`LEARN MORE ->`}</p>
-          </div>
+          {" "}
+          <AnimatePresence>
+            <div className={styles.imgwrapper}>
+              {
+                <>
+                  <motion.img
+                    id="img-1"
+                    className="imgsections"
+                    src="/images/home/benefits/img1.png"
+                    alt=""
+                  />
+                  <p className={styles.description}>{data[0]?.description}</p>
+                  <p
+                    className={styles.more}
+                    style={{
+                      color: "#4166EB",
+                    }}
+                  >{`LEARN MORE ->`}</p>
+                </>
+              }
+
+              <Curve1 className={styles.curve} />
+            </div>
+            <div className={styles.imgwrapper}>
+              <img
+                id="img-2"
+                className="imgsections"
+                src="/images/home/benefits/img2.png"
+                alt=""
+              />
+              <p className={styles.description}>{data[1]?.description}</p>
+              <p
+                className={styles.more}
+                style={{ color: "#FDCC03" }}
+              >{`LEARN MORE ->`}</p>
+            </div>
+            <div className={styles.imgwrapper}>
+              <img
+                id="img-3"
+                className="imgsections"
+                src="/images/home/benefits/img3.png"
+                alt=""
+              />
+              <p className={styles.description}>{data[2]?.description}</p>
+              <p
+                className={styles.more}
+                style={{
+                  color: "#FF6263",
+                }}
+              >{`LEARN MORE ->`}</p>
+            </div>
+            <div className={styles.imgwrapper}>
+              <img
+                id="img-4"
+                className="imgsections"
+                src="/images/home/benefits/img4.png"
+                alt=""
+              />
+              <p className={styles.description}>{data[3]?.description}</p>
+              <p
+                className={styles.more}
+                style={{
+                  color: "#17D1BC",
+                }}
+              >{`LEARN MORE ->`}</p>
+            </div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
