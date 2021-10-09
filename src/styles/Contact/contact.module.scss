@@ -1,124 +1,136 @@
 .contactPage {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  .intro {
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.24) 0%,
-        rgba(0, 0, 0, 0.24) 100%
-      ),
-      url("//img1.wsimg.com/isteam/stock/0nZAmB/:/rs=w:1340,h:800,cg:true,m/cr=w:1340,h:800,a:cc/fx-gs");
-    height: calc(92vh - 120px);
-    background-color: rgb(255, 255, 255);
-    flex-direction: column;
+  .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    overflow: hidden;
+    margin-top: 80px;
     .heading {
-      color: white;
-      font-weight: 600;
-      font-size: 40px;
-      margin-bottom: 60px;
+      font-size: 48px;
+      font-weight: 700;
     }
-    .content {
-      background-color: #fff;
-      width: 60vw;
-      height: 50vh;
-      max-width: 650px;
-      box-shadow: rgba(0, 0, 0, 0.18) 2px 6px 30px 0px;
+    .subheading {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 32px;
+      color: #000000c7;
+      width: 582px;
+      text-align: center;
+    }
+    .wrapper {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 50px;
-      p {
-        text-align: center;
-      }
-      .details {
-        font-weight: 400;
-        font-size: 22px;
-        margin-bottom: 20px;
-        line-height: 40px;
-      }
-      .mail {
-        font-weight: 300;
-        font-size: 22px;
-        a {
-          color: #ff4949;
-          font-weight: 400;
-          font-size: 22px;
-          text-decoration: none;
-        }
-      }
-      .button {
-        background-color: #4f6672;
-        color: white;
-        font-weight: 600;
-        font-size: 18px;
-        display: flex;
-        padding: 15px;
-        max-width: 350px;
-        max-height: 60px;
-        margin-top: 20px;
-        cursor: pointer;
-        display: flex;
-        text-decoration: none;
-        align-items: center;
-        margin-bottom: 30px;
-        transition: all 0.3s ease;
-        .walogo {
-          width: 22px;
-          margin-top: 7px;
-          margin-right: 10px;
-        }
-        &:hover {
-          background-color: #5a6f7a;
-        }
-      }
-    }
-  }
-  .footer {
-    scroll-snap-align: start;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 10vh;
-    max-height: 10vh;
-    position: relative;
-    .triangle {
+      min-height: 500px;
+      margin-top: 100px;
       width: 100%;
-      display: flex;
+      padding: 0 15vw;
       justify-content: center;
-      position: absolute;
-      top: -23px;
-      svg {
-        transform: rotate(180deg);
-        z-index: 3;
-        width: 53px;
-        height: 24px;
-        filter: drop-shadow(rgba(255, 0, 0, 0) 0px 1px 1px);
+      margin-bottom: 150px;
+      .left {
+        .segment {
+          display: flex;
+          align-items: center;
+          margin-top: 40px;
+          height: fit-content;
+          height: 95px;
+          .iconHolder {
+            width: 95px;
+            height: 95px;
+            border-radius: 95px;
+            background-color: #4166eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #4166eb;
+            .icon {
+              transition: all 0.3s ease;
+              font-size: 30px;
+              color: white;
+            }
+            &:hover {
+              background-color: #fff;
+
+              .icon {
+                font-size: 35px;
+                color: #4166eb;
+              }
+            }
+          }
+          .text {
+            font-size: 16px;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%;
+            padding-top: 12px;
+            width: 235px;
+            .top {
+              color: #4166eb;
+              margin-bottom: 10px;
+              font-size: 20px;
+              font-weight: 500;
+            }
+          }
+        }
       }
-    }
-    .content {
-      background-color: #fc6766;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      p {
-        text-align: center;
-        color: #0f0f0f;
-        font-size: 16px;
-        font-weight: 400;
-        text-transform: uppercase;
+      .right {
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        max-width: 521px;
+        margin-left: 40px;
+        height: 501px;
+        .title {
+          font-size: 24px;
+          font-weight: 500;
+        }
+        input {
+          height: 45px;
+          outline: none;
+          border: none;
+          font-size: 16px;
+          padding: 0 20px;
+          background: #ffffff;
+          margin-top: 20px;
+        }
+        textarea {
+          resize: none;
+          outline: none;
+          background: #ffffff;
+          margin-top: 20px;
+          border: none;
+          width: 100%;
+          padding: 20px;
+          height: 171px;
+        }
+        .button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12px 32px;
+          width: 180px;
+          height: 48px;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          font-size: 16px;
+          font-weight: 500;
+          margin-top: auto;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border: 1px solid #4166eb;
+          &:hover {
+            color: #4166eb;
+            background: white;
+          }
+        }
       }
     }
   }

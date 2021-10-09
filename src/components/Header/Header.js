@@ -57,22 +57,22 @@ function Header({
           <HeaderTabSection
             title={"Products"}
             tabs={[
-              { name: "Knowledge Quest", pushTo: "/knowledgequests" },
+              { name: "Knowledge Quest", pushTo: "/products/quest" },
               {
                 name: "Games Arena",
-                pushTo: "/p_games",
+                pushTo: "/products/games",
               },
               {
                 name: "Chores",
-                pushTo: "/jobs",
+                pushTo: "/products/chores",
               },
               // { name: "Family Fun", pushTo: "/familyfun" },
               // { name: "Tribes", pushTo: "/p_tribes" },
-              { name: "Live Classes", pushTo: "/p_liveclasses" },
+              { name: "Live Classes", pushTo: "/products/liveclasses" },
             ]}
           />
           <HeaderTabSection title={"Benefits"} tabs={[]} pushTo="/benefits" />
-          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
+          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" />
           <HeaderTabSection title={"Quizzes"} tabs={[]} pushTo="/quiz" />
 
           {/* <HeaderTabSection
@@ -99,7 +99,7 @@ function Header({
               { name: "Blogs", pushTo: "/blogs" },
 
               { name: "Financial Calculators", pushTo: "/calculators" },
-              { name: "FAQ's", pushTo: "/faq" },
+              { name: "FAQ's", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 
               // { name: "Live Classes", pushTo: "/liveclasses" },

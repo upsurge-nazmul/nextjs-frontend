@@ -1,6 +1,8 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
-
+const addtocontactmsgs = (payload) => {
+  return ApiCalls.postResponse(`users/addtocontactmsgs`, payload);
+};
 const signup = (payload) => {
   return ApiCalls.postResponse(`users/signup`, payload);
 };
@@ -94,6 +96,7 @@ const LoginApis = {
   getuserbyid,
   getwaitlistdetails,
   addtonewslettersubs,
+  addtocontactmsgs,
 };
 
 export default LoginApis;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HelpHeader from "../../components/Help/HelpHeader";
 import image from "../../assets/help/help.png";
 import Faq from "../../components/Help/Faq";
@@ -6,60 +6,48 @@ import Fab from "../../components/Help/Fab";
 import styles from "../../styles/Help/help.module.scss";
 import BallsSvg from "../../components/SVGcomponents/BallsSvg";
 import SearchSvg from "../../components/SVGcomponents/SearchSvg";
+import { useRouter } from "next/dist/client/router";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Home/Footer";
 
 function Help() {
+  const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
     {
       question: "How old does my kid have to be to join Upsurge?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      answer: `Anyone can open an account. You will need a parent to open an account.We would recommend that the child needs to be of minimum age of 12 years.`,
     },
     {
-      question: "Are there any free courses I can take?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question: "How will I create my child’s username ?",
+      answer: `Parents will create their children's username and password. At a later stage children can change their own password.`,
     },
     {
-      question: "Is Upsurge comliant with GDPR?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question: "Will I be able to add multiple children to my upsurge account",
+      answer: `Yes ! There is no limitation on adding children`,
     },
     {
-      question: "Are my kids personal details safe with Upsurge?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question:
+        "Will I need to give my mobile number to create an account in upsurge ?",
+      answer: `We will need your mobile number to verify your account and make sure that you and only you can access your account. When a parent creates an account, we’ll send an OTP as verification that your account is linked to the right mobile number. `,
     },
     {
-      question: "How old does my kid have to be to join Upsurge?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question:
+        "Will  I be able to  create an upsurge account, if I am not in India ?",
+      answer: `Yes ! You can create an account from any part of the world.`,
     },
     {
-      question: "Are there any free courses I can take?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
-    },
-    {
-      question: "Is Upsurge comliant with GDPR?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question: "Will my child's information be secured ?",
+      answer: `Yes, all the data pertaining to your child will be secured. `,
     },
   ];
+
   return (
     <div className={styles.helpPage}>
-      <HelpHeader
+      <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <Fab />
       <div className={styles.frontpage}>
         <div className={styles.left}>
           <div className={styles.heading}>Welcome to Upsurge!</div>
@@ -80,7 +68,7 @@ function Help() {
         </div>
       </div>
 
-      <div className={styles.faqpage}>
+      <div className={styles.faqpage} id="faq">
         <div className={styles.heading}>Frequently Asked Questions</div>
         {faqs.map((item, index) => {
           return (
@@ -92,6 +80,7 @@ function Help() {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 }

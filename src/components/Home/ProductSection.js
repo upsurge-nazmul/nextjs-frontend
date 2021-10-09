@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React from "react";
 import Image from "../../assets/product/product.png";
 import styles from "../../styles/Home/product.module.scss";
@@ -7,23 +8,28 @@ import ProductPeople from "../SVGcomponents/ProductPeople";
 import QuestSvg from "../SVGcomponents/QuestSvg";
 
 function ProductSection() {
+  const router = useRouter();
   let data = [
     {
       title: "Knowledge Quest",
+      pushTo: "/products/quests",
       description:
         "Knowledge Quest comprises byte sized interactive videos which include exercises, real life examples and a short quiz.",
     },
     {
+      pushTo: "/products/games",
       title: "Games Arena",
       description:
         "Challenge your friends over multiple games that are fun and experiential",
     },
     {
+      pushTo: "/products/chores",
       title: "Chores",
       description:
         "Help young learners become financially responsible by earning money through chores or “Jobs” assigned by parents.",
     },
     {
+      pushTo: "/products/liveclasses",
       title: "Live Classes",
       description:
         "Interactive and fun workshops by experts for young learners to understand money management and entrepreneurship.",
@@ -35,7 +41,11 @@ function ProductSection() {
       <div className={styles.wrapper}>
         {data.map((item, index) => {
           return (
-            <div className={`${styles.pillar}`} key={"pillar" + index}>
+            <div
+              className={`${styles.pillar}`}
+              key={"pillar" + index}
+              onClick={() => router.push(item.pushTo)}
+            >
               {index === 0 ? (
                 <QuestSvg className={styles.icon} />
               ) : index === 1 ? (

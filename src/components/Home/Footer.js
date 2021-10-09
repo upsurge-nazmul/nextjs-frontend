@@ -8,7 +8,7 @@ import Insta from "../SVGcomponents/Insta";
 import YtSvg from "../SVGcomponents/YtSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "./Terms";
-
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 function Footer() {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
@@ -38,9 +38,24 @@ function Footer() {
           </div>
           <div className={styles.column}>
             <p className={styles.heading}>Resources</p>
-            <p className={styles.subheading}>Game 1</p>
-            <p className={styles.subheading}>Game 2</p>
-            <p className={styles.subheading}>Game 3</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/ShoppingBudget")}
+            >
+              Shopping Budget
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/BalanceBuilder")}
+            >
+              Balance Builder
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/HighAndLow")}
+            >
+              High And Low
+            </p>
             {/* <p className={styles.subheading}>Cheat Codes</p> */}
             <p className={styles.subheading}>Quizzes</p>
           </div>
@@ -102,8 +117,13 @@ function Footer() {
             >
               FAQ’s
             </p>
-            <p className={styles.subheading}>Help Center</p>
-            <p className={styles.subheading}>Contact us</p>
+            {/* <p className={styles.subheading}>Help Center</p> */}
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/contact")}
+            >
+              Contact us
+            </p>
           </div>
         </div>
       </div>
@@ -223,6 +243,10 @@ function Footer() {
             Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
             <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
           </p>
+          <a className={styles.whatsapp} href="https://wa.me/918287433304">
+            <WhatsAppIcon className={styles.icon} />
+            Connect on whatsapp
+          </a>
           <div className={styles.wrap}>
             <p
               className={styles.terms}
@@ -251,6 +275,10 @@ function Footer() {
             Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
             <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
           </p>
+          <a className={styles.whatsapp} href="https://wa.me/918287433304">
+            <WhatsAppIcon className={styles.icon} />
+            Connect on whatsapp
+          </a>
           <div className={styles.bottom}>
             <p
               onClick={() => {

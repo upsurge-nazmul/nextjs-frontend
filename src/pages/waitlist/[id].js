@@ -1,4 +1,5 @@
-import React from "react";
+import { useRouter } from "next/dist/client/router";
+import React, { useEffect } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
@@ -10,6 +11,12 @@ import Twitter from "../../components/SVGcomponents/Twitter";
 import YtSvg from "../../components/SVGcomponents/YtSvg";
 import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function WaitList({ res }) {
+  const router = useRouter();
+  useEffect(() => {
+    if (!res.id) {
+      router.push("/");
+    }
+  });
   return (
     <div className={styles.waitlist}>
       <Header />

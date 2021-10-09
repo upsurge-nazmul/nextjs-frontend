@@ -3,11 +3,60 @@ import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import Whatsapp from "../../components/SVGcomponents/Whatsapp";
 import styles from "../../styles/Contact/contact.module.scss";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
+import EmailIcon from "@mui/icons-material/Email";
+import Footer from "../../components/Home/Footer";
+import validator from "validator";
+import Toast from "../../components/Toast";
+import LoginApis from "../../actions/apis/LoginApis";
 function Contact() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [msg, setMsg] = useState("");
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
+  async function handlesubmit() {
+    if (!name) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Name cannot be empty",
+      });
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Enter valid email address",
+      });
+      return;
+    }
+    let res = await LoginApis.addtocontactmsgs({
+      email,
+      msg,
+      name,
+    });
+    if (res && res.data.success) {
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: "Thank You, We will contact you soon.",
+      });
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Theres some error try agian later",
+      });
+    }
+  }
   return (
     <div className={styles.contactPage}>
       <Header
@@ -19,46 +68,70 @@ function Contact() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <section className={styles.intro}>
-        <p className={styles.heading}>Contact Us</p>
-        <div className={styles.content}>
-          <p className={styles.details}>
-            {`Thank you for considering us for your family's educational needs.`}
-          </p>
-          <p className={styles.details}>
-            When you fill out the appointment request form, please be sure to
-            upload the form you filled out for the current school year.
-          </p>
-          <a
-            className={styles.button}
-            href="https://wa.me/918287433304"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className={styles.walogo}>
-              <Whatsapp />
+      <Toast data={toastdata} />
+
+      <section className={styles.container}>
+        <p className={styles.heading}>Hello! We've been expecting you.</p>
+        <p className={styles.subheading}>
+          Now that you’re here, let’s start a conversation. Send us a message or
+          pick up the phone and call us directly.
+        </p>
+        <div className={styles.wrapper}>
+          <div className={styles.left}>
+            <div className={styles.segment}>
+              <div className={styles.iconHolder}>
+                <LocationOnIcon className={styles.icon} />
+              </div>
+              <div className={styles.text}>
+                <div className={styles.top}>Address</div>
+                <div className={styles.bottom}>1234, MG Road, Delhi 121001</div>
+              </div>
             </div>
-            Message us on WhatsApp
-          </a>
-          <p className={styles.details}>Surgeup Technologies</p>
-          <p className={styles.mail}>
-            <a href="tel:+918287433304">8287 433 304 </a> |{" "}
-            <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
-          </p>
+            <div className={styles.segment}>
+              <a className={styles.iconHolder} href="tel:+918287433304">
+                <PhoneInTalkIcon className={styles.icon} />
+              </a>
+              <div className={styles.text}>
+                <div className={styles.top}>Phone</div>
+                <div className={styles.bottom}>+91 8287433304</div>
+              </div>
+            </div>
+            <div className={styles.segment}>
+              <a
+                className={styles.iconHolder}
+                href="mailto:karan@upsurgefi.com"
+              >
+                <EmailIcon className={styles.icon} />
+              </a>
+              <div className={styles.text}>
+                <div className={styles.top}>Email</div>
+                <div className={styles.bottom}>karan@upsurgefi.com</div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.right}>
+            <p className={styles.title}>Send us a message</p>
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              placeholder="Your message"
+              onChange={(e) => setMsg(e.target.value)}
+            />
+            <div className={styles.button} onClick={handlesubmit}>
+              Send Message
+            </div>
+          </div>
         </div>
       </section>
-      <section className={styles.footer}>
-        <div className={styles.triangle}>
-          <svg>
-            <g fill="#FC6766" fillRule="evenodd" width="53" height="24">
-              <path d="M26.5 24L53 0H0z"></path>
-            </g>
-          </svg>
-        </div>
-        <div className={styles.content}>
-          <p>Copyright © 2021 upsurge India - All Rights Reserved.</p>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }

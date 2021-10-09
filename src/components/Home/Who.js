@@ -4,12 +4,7 @@ import whoimage from "../../assets/who/who.png";
 function Who() {
   return (
     <div className={styles.whoSection}>
-      <div className={styles.heading}>
-        <span className={styles.highlight}>
-          Who <div className={styles.underline}></div>{" "}
-        </span>
-        are we ?
-      </div>
+      <div className={styles.heading}>Who are we ?</div>
       <div className={styles.container}>
         <div className={styles.left}>
           <p>

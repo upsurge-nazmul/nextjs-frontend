@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Don'tOverspend_Upsurge</title>
+    <title>Unity WebGL Player | Shopping Budget</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -22,20 +22,19 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Don'tOverspend_Upsurge</div>
+        <div id="unity-build-title">Shopping Budget</div>
       </div>
     </div>
     <script>
-      var UnityInstance ;
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/New folder.loader.js";
+      var loaderUrl = buildUrl + "/Don't overspend.loader.js";
       var config = {
-        dataUrl: buildUrl + "/New folder.data",
-        frameworkUrl: buildUrl + "/New folder.framework.js",
-        codeUrl: buildUrl + "/New folder.wasm",
+        dataUrl: buildUrl + "/Don't overspend.data",
+        frameworkUrl: buildUrl + "/Don't overspend.framework.js",
+        codeUrl: buildUrl + "/Don't overspend.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Don'tOverspend_Upsurge",
+        companyName: "UpSurge",
+        productName: "Shopping Budget",
         productVersion: "1.0",
       };
 
@@ -66,6 +65,7 @@
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
+      canvas.style.background = "url('" + buildUrl + "/Don%27t overspend.jpg') center / cover";
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
@@ -74,9 +74,6 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-
-          UnityInstance=unityInstance;
-
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
@@ -87,6 +84,5 @@
       };
       document.body.appendChild(script);
     </script>
-    <div style="border:solid 1px black;width:200px;height:80px"onclick="UnityInstance.SendMessage('NativeHooks','WebHookData','30')">Test</div>
   </body>
 </html>

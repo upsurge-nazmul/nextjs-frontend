@@ -155,7 +155,7 @@ function Benefits() {
                           ? "#17D1BC"
                           : index === currentSection
                           ? "#4166EB"
-                          : "#ffffff",
+                          : "transparent",
                     }}
                   >
                     {item.title}
