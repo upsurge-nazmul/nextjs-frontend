@@ -312,3 +312,46 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .gamespage {
+    padding-bottom: 50px;
+    .heading {
+      font-size: 30px;
+    }
+    .subheading {
+      font-size: 12px;
+    }
+    .wrapper {
+      margin-top: 20px;
+      .left {
+        margin-top: 10px;
+        .title {
+          font-size: 26px;
+        }
+        .description {
+          font-size: 12px;
+          margin-top: 5px;
+          line-height: 18px;
+        }
+        .button {
+          padding: 12px;
+          width: 120px;
+          height: 40px;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+        .buttonWrapper {
+          margin-top: 10px;
+          .arrowl,
+          .arrowr {
+            width: 30px;
+          }
+          .arrowr {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}

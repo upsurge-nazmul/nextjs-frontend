@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Benefits/chores.module.scss";
+import styles from "../../styles/Products/chores.module.scss";
 export default function Chores({ id }) {
   return (
     <div className={styles.chores} id={id}>
@@ -10,6 +10,11 @@ export default function Chores({ id }) {
           kid, and manage their privileges, rewards and allowance.
         </div>
         <div className={styles.button}>Join the waitlist</div>
+        <img
+          className={styles.mobileimage}
+          src="/images/mobilechore.png"
+          alt=""
+        />
       </div>
       <div className={styles.bottom}>
         <div className={styles.left}>

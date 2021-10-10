@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Benefits/classes.module.scss";
+import styles from "../../styles/Products/classes.module.scss";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 
 export default function LiveClasses({ id }) {

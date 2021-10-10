@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
-import styles from "../../styles/Benefits/games.module.scss";
+import styles from "../../styles/Products/games.module.scss";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 import PauseSvg from "../SVGcomponents/PauseSvg";

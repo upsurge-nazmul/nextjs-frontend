@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Benefits/quest.module.scss";
+import styles from "../../styles/Products/quest.module.scss";
 import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 
