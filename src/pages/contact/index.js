@@ -71,7 +71,7 @@ function Contact() {
       <Toast data={toastdata} />
 
       <section className={styles.container}>
-        <p className={styles.heading}>Hello! We've been expecting you.</p>
+        <p className={styles.heading}>{`Hello! We've been expecting you.`}</p>
         <p className={styles.subheading}>
           Now that you’re here, let’s start a conversation. Send us a message or
           pick up the phone and call us directly.

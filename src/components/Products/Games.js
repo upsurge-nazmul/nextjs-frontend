@@ -102,6 +102,7 @@ export default function Games({ id }) {
                   className={`${styles.ball} ${
                     index === currentgameindex ? styles.active : null
                   }`}
+                  key={"navball" + index}
                 />
               );
             })}
