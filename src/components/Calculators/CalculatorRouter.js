@@ -6,6 +6,7 @@ import ResultBox from "./ResultBox";
 import SipLumpsumCalc from "./SipLumpsumCalc";
 import VacationCalc from "./VacationCalc";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
+import HomeCalc from "./HomeCalc";
 
 function CalculatorRouter({ name }) {
   const [mode, setmode] = useState(name);
@@ -236,6 +237,7 @@ function CalculatorRouter({ name }) {
       return "investment";
     }
   }
+  if (mode === "homeLoan") return <HomeCalc />;
   if (mode === "sip" || mode === "lumpsum") return <SipLumpsumCalc />;
   if (mode === "vacation") return <VacationCalc />;
   else if (mode === "education") return <EducationCalc />;

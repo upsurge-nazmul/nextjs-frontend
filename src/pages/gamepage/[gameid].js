@@ -47,6 +47,7 @@ export default function GamePage() {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const router = useRouter();
   const { gameid } = router.query;
@@ -63,11 +64,23 @@ export default function GamePage() {
       console.log(progression);
     });
   }, []);
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.gamePage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel

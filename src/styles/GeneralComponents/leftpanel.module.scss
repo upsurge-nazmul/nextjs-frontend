@@ -1,18 +1,18 @@
 .leftPanel {
   z-index: 6;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   position: absolute;
   left: 0;
   top: 0;
   display: flex;
   overflow-y: auto;
   .leftPanelContent {
-    flex: 1;
-    max-width: 400px;
+    max-width: 350px;
     background-color: rgb(246, 246, 246);
     position: relative;
     padding-left: 80px;
+    width: 100%;
     padding-top: 100px;
     .tab {
       color: rgb(201, 63, 62);
@@ -63,6 +63,16 @@
 
     .background {
       flex: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .leftPanel {
+    width: 100%;
+    .leftPanelContent {
+      max-width: unset;
+      width: 100vw;
     }
   }
 }

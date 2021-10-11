@@ -21,81 +21,60 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
           <div className={styles.leftPanelContent}>
             <HeaderTabSection
               mobile={true}
-              title={"About us"}
-              tabs={[
-                { name: "Our Northstar", pushTo: "/northstar" },
-                { name: "Team", pushTo: "/team" },
-                { name: "Life@upsurge", pushTo: "/lifeatupsurge" },
-                { name: "Careers", pushTo: "/careers" },
-                { name: "FAQ's", pushTo: "/help" },
-              ]}
-            />
-            <HeaderTabSection
-              mobile={true}
-              title={"Benefits"}
-              tabs={[
-                { name: "Financial Literacy", pushTo: "/benefits/finlitracy" },
-                {
-                  name: "Experiental Learning",
-                  pushTo: "/benefits/explearning",
-                },
-                {
-                  name: "Entrepreneurship",
-                  pushTo: "/benefits/entrepreneurship",
-                },
-                { name: "Rewards", pushTo: "/benefits/rewards" },
-                { name: "Community", pushTo: "/benefits/community" },
-              ]}
-            />
-            <HeaderTabSection
-              mobile={true}
               title={"Products"}
               tabs={[
                 {
                   name: "Knowledge Quest",
-                  pushTo: "/products/knowledgequests",
+                  pushTo: "/products/quest",
                 },
                 {
                   name: "Games Arena",
                   pushTo: "/products/games",
                 },
                 {
-                  name: "Jobs",
-                  pushTo: "/products/jobs",
+                  name: "Chores",
+                  pushTo: "/products/chores",
                 },
-                { name: "Family Fun", pushTo: "/products/familyfun" },
-                { name: "Tribes", pushTo: "/products/tribes" },
                 { name: "Live Classes", pushTo: "/products/liveclasses" },
-                { name: "Pricing", pushTo: "/products/pricing" },
               ]}
             />
             <HeaderTabSection
               mobile={true}
-              title={"Play"}
+              title={"Benefits"}
               tabs={[
-                { name: "Games", pushTo: "/games" },
+                { name: "Financial", pushTo: "/benefits" },
+                { name: "Experimential", pushTo: "/benefits/experimential" },
                 {
-                  name: "Quizzes",
-                  pushTo: "/quiz/main",
+                  name: "Entrepreneuership",
+                  pushTo: "/benefits/entrepreneuership",
                 },
+                { name: "Rewards", pushTo: "/benefits/rewards" },
+              ]}
+            />
+            <HeaderTabSection
+              mobile={true}
+              title={"Games"}
+              tabs={[]}
+              pushTo="/gamepage"
+            />
+            <HeaderTabSection
+              mobile={true}
+              title={"Quizzes"}
+              tabs={[]}
+              pushTo="/quiz/main"
+            />
+            <HeaderTabSection
+              mobile={true}
+              title={"More"}
+              tabs={[
+                { name: "About us", pushTo: "/about" },
+                { name: "Blogs", pushTo: "/blogs" },
+                { name: "Financial Calculators", pushTo: "/calculators" },
+                { name: "FAQ's", pushTo: "/help/faq" },
+                { name: "Contact us", pushTo: "/contact" },
               ]}
             />
 
-            <HeaderTabSection
-              mobile={true}
-              title={"Learn"}
-              tabs={[
-                { name: "Blogs", pushTo: "/blogs" },
-                {
-                  name: "Cheat Codes",
-                  pushTo: "/cheatcodes",
-                },
-                { name: "Financial Calculators", pushTo: "/calculators/main" },
-                { name: "Goal Wizard", pushTo: "/goalwizard" },
-                { name: "Live Classes", pushTo: "/liveclasses" },
-                { name: "Tournaments", pushTo: "/tournaments" },
-              ]}
-            />
             <div
               className={styles.cancelButton}
               onClick={() => {

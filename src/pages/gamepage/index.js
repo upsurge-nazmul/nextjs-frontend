@@ -12,6 +12,7 @@ export default function GamePage() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [paths, setpaths] = useState(["home", "calculators"]);
+  const [stickyheader, setstickyheader] = useState(false);
 
   const data = {
     ShoppingBudget: {
@@ -41,12 +42,24 @@ export default function GamePage() {
     },
   };
 
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.gamelist}>
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel

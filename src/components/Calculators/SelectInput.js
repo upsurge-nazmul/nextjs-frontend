@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/Calculators/select.module.scss";
 import SelectCircle from "../SVGcomponents/SelectCircle";
 
-function Select({
+export default function SelectInput({
   question,
   options,
   current,
@@ -11,15 +11,18 @@ function Select({
   total,
   setvalue,
   value,
+  sign,
+  min,
+  max,
 }) {
   const [selected, setselected] = useState(value);
   const [show, setshow] = useState(false);
 
-  useEffect(() => {
-    if (selected && index !== total) {
-      setcurrent((prev) => prev + 1);
-    }
-  }, [selected]);
+  // useEffect(() => {
+  //   if (selected && index !== total) {
+  //     setcurrent((prev) => prev + 1);
+  //   }
+  // }, [selected]);
 
   useEffect(() => {
     if (current === index) setshow(true);
@@ -41,31 +44,37 @@ function Select({
         </p>
         {selected ? <p className={styles.answer}>{selected}</p> : null}
         {show && (
-          <div className={styles.optionWrapper}>
-            {options.map((option, index) => {
-              return (
-                <div
-                  key={"selectOption" + index}
-                  className={styles.optionContainer}
-                  onClick={() => {
-                    setselected(option);
-                    setvalue(option);
+          <div className={styles.inputBlock}>
+            <div className={styles.topBlock}>
+              <div className={styles.signAndValue}>
+                <input
+                  type="number"
+                  value={selected}
+                  max={max}
+                  min={min}
+                  onChange={(e) => {
+                    if (e.target.value && !isNaN(e.target.value))
+                      setselected(e.target.value);
+                    setvalue(e.target.value);
                   }}
-                >
-                  <p className={styles.option}>{option}</p>
-                  <div
-                    className={`${styles.select} ${
-                      option === selected ? styles.selected : ""
-                    }`}
-                  ></div>
-                </div>
-              );
-            })}
+                />
+                {sign && <p className={styles.sign}>{sign}</p>}
+              </div>
+            </div>
+
+            <input
+              type="range"
+              value={selected}
+              onChange={(e) => {
+                setvalue(e.target.value);
+                setselected(e.target.value);
+              }}
+              max={max}
+              min={min}
+            />
           </div>
         )}
       </div>
     </div>
   );
 }
-
-export default Select;
