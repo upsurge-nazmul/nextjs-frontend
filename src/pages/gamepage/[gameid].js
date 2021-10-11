@@ -1,6 +1,9 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Home/Footer";
+import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/GamePage/gamepage.module.scss";
 
 // streamingAssetsUrl: "StreamingAssets",
@@ -43,6 +46,8 @@ const data = {
 export default function GamePage() {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
+  const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [showauth, setshowauth] = useState(false);
   const router = useRouter();
   const { gameid } = router.query;
   useEffect(() => {
@@ -60,7 +65,15 @@ export default function GamePage() {
   }, []);
   return (
     <div className={styles.gamePage}>
-      {/* <p className={styles.heading}>Dont Over Spend</p> */}
+      <Header
+        setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
+        setshowauth={setshowauth}
+      />
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
       {unitycontext && (
         <Unity
           className={styles.gameMain}
@@ -68,6 +81,7 @@ export default function GamePage() {
           matchWebGLToCanvasSize={true}
         />
       )}
+      <Footer />
     </div>
   );
 }
