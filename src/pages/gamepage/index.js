@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
-import styles from "../../styles/gamepage/gamelist.module.scss";
+import styles from "../../styles/GamePage/gamelist.module.scss";
 import Footer from "../../components/Home/Footer";
 
 export default function GamePage() {
