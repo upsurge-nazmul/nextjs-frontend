@@ -50,11 +50,11 @@ function CalculatorsPage() {
       subheading: `Map the realisation of your goals/dreams with an EMI Calculator – be it buying a dream home, a car, a vacation, etc. A loan provides the financial resource, and with an EMI facility, repayments become comfortable.`,
       icon: "https://i.ibb.co/w4p94JJ/md-duran-1-Vq-HRwxc-CCw-unsplash.jpg",
     },
-    vacation: {
-      heading: "Vacation Calculator",
-      subheading: `Use this calculator to find the future value of Vacation cost and monthly SIP needed to achieve this goal.`,
-      icon: "https://i.ibb.co/6rgnFFS/Untitled-design-8.png",
-    },
+    // vacation: {
+    //   heading: "Vacation Calculator",
+    //   subheading: `Use this calculator to find the future value of Vacation cost and monthly SIP needed to achieve this goal.`,
+    //   icon: "https://i.ibb.co/6rgnFFS/Untitled-design-8.png",
+    // },
     sip: {
       heading: "How much will have? - SIP Calculator",
       subheading: `Prospective investors can think that SIPs and mutual funds are the same. However, SIPs are merely a method of investing in mutual funds, the other method being a lump sum. A SIP calculator is a tool that helps you determine the returns you can avail when parking your funds in such investment tools. Systematic Investment Plan or SIP is a process of investing a fixed sum of money in mutual funds at regular intervals. SIPs usually allow you to invest weekly, quarterly, or monthly.`,
@@ -66,66 +66,66 @@ function CalculatorsPage() {
         "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
       icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
     },
-    restaurant: {
-      heading: "Start My Restaurant Calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
-    },
+    // restaurant: {
+    //   heading: "Start My Restaurant Calculator",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
+    // },
     investmentcomparison: {
       heading: "Investment Comparison Tool",
       subheading:
         "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
       icon: "https://i.ibb.co/Rh3FZW9/Untitled-design-13.png",
     },
-    Insurance: {
-      heading: "Insurance?",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/N1P7BR7/Untitled-design-14.png",
-    },
+    // Insurance: {
+    //   heading: "Insurance?",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/N1P7BR7/Untitled-design-14.png",
+    // },
     currency: {
-      heading: "Currency Converter",
+      heading: "Big mac index Currency Converter",
       subheading:
         "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
       icon: "https://i.ibb.co/PFXFVWp/Untitled-design-15.png",
     },
-    college: {
-      heading: "College Life Calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
-    },
-    standardofliving: {
-      heading: "Standard of Living calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
-    },
+    // college: {
+    //   heading: "College Life Calculator",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
+    // },
+    // standardofliving: {
+    //   heading: "Standard of Living calculator",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
+    // },
     costofraising: {
       heading: "Cost of Raising a Child",
       subheading:
         "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
       icon: "https://i.ibb.co/6bkxKJK/Untitled-design-18.png",
     },
-    unicorn: {
-      heading: "Unicorn Builder",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
-    },
-    angel: {
-      heading: "Angel Investment Calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
-    },
-    standardofliving: {
-      heading: "Standard of Living calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-      icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
-    },
+    // unicorn: {
+    //   heading: "Unicorn Builder",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
+    // },
+    // angel: {
+    //   heading: "Angel Investment Calculator",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
+    // },
+    // standardofliving: {
+    //   heading: "Standard of Living calculator",
+    //   subheading:
+    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+    //   icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
+    // },
   };
 
   return (

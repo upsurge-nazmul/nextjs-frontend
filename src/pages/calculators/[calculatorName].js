@@ -6,7 +6,8 @@ import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Calculators/calculatorpage.module.scss";
 import homeloansvg from "../../assets/calculators/home.svg";
 import carloansvg from "../../assets/calculators/car.svg";
-
+import CalcFaq from "../../components/Calculators/CalcFaq";
+import Footer from "../../components/Home/Footer";
 function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
@@ -16,15 +17,10 @@ function CalculatorsPage() {
   const [showauth, setshowauth] = useState(false);
   const [paths, setpaths] = useState(["home", "calculators"]);
   useEffect(() => {
+    console.log(calculatorName);
     if (!data[calculatorName]) {
-      router.push("/calculators");
+      return;
     } else {
-      if (calculatorName !== "main") {
-        setpaths(["home", "calculators", calculatorName]);
-      } else {
-        setpaths(["home", "calculators"]);
-      }
-
       setHeading(data[calculatorName].heading);
       setSubheading(data[calculatorName].subheading);
     }
@@ -150,32 +146,13 @@ function CalculatorsPage() {
       />
       <div className={styles.contentWrapper}>
         <div className={styles.headingSection}>
-          <h2 className={styles.heading}>{heading}</h2>
+          <h2 className={styles.heading}>{heading} Calculator</h2>
           <h3 className={styles.subheading}>{subheading}</h3>
         </div>
-        {calculatorName === "main" ? (
-          <div className={styles.calculatorsList}>
-            {Object.keys(data).map((item, index) => {
-              if (item === "main") {
-                return null;
-              } else {
-                return (
-                  <div
-                    key={"calccalrd" + index}
-                    className={styles.calcCard}
-                    onClick={() => router.push(`/calculators/${item}`)}
-                  >
-                    <img src={data[item].icon.src} alt="calcicon" />
-                    <p className={styles.calccardtitle}>{data[item].heading}</p>
-                  </div>
-                );
-              }
-            })}
-          </div>
-        ) : (
-          <CalculatorRouter name={calculatorName} />
-        )}
+        <CalculatorRouter name={calculatorName} />
+        <CalcFaq name={calculatorName} />
       </div>
+      <Footer />
     </div>
   );
 }

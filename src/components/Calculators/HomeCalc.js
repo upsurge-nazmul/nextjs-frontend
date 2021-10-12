@@ -13,7 +13,7 @@ export default function HomeCalc() {
   const [type, settype] = useState("");
   const [noofrooms, setnoofrooms] = useState("");
   const [city, setcity] = useState("");
-  const [onetimepayment, setOnetimepayment] = useState(100);
+  const [onetimepayment, setOnetimepayment] = useState(0);
   const [questions, setquestions] = useState([
     {
       title: "Select the type of house",
@@ -68,7 +68,7 @@ export default function HomeCalc() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Loan Amount", "Emi"],
+    labels: ["Intrest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",
@@ -81,13 +81,14 @@ export default function HomeCalc() {
   });
 
   useEffect(() => {
-    vacaction();
+    emi();
     setresult(true);
   }, [type, noofrooms, years, city, onetimepayment]);
 
-  function vacaction() {
-    //EMI = [P x R x (1+R)^N]/[((1+R)^N)-1]
-    // options: ["Delhi", "Bangalore", "Chennai", "Hyderabad"],
+  function emi() {
+    let monthlyrate = 12 / 12 / 100;
+    var months = years * 12;
+
     let loanamount = 0;
     if (noofrooms === "2 rooms") {
       if (city === "Delhi") {
@@ -123,30 +124,33 @@ export default function HomeCalc() {
     if (onetimepayment) {
       loanamount = loanamount - onetimepayment;
     }
-    let roi = 12 / 100;
-    let emi =
-      (loanamount * roi * Math.pow(1 + roi, years)) /
-      (Math.pow(1 + roi, years) - 1);
-    console.log("Result :" + emi);
+    let emiamount =
+      (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
+      (Math.pow(1 + monthlyrate, months) - 1);
+    let totalpayment = emiamount * months;
+    let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      ...prev,
-      heading1: "Emi",
-      result1: Math.round(emi),
+      heading1: "Total Interest Payable",
+      heading2: `Total Payment
+      (Principal + Interest)`,
+      heading3: "Loan EMI",
+      result1: Math.round(intrest),
+      result2: Math.round(totalpayment),
+      result3: Math.round(emiamount),
     }));
     setChartData((prev) => ({
       ...prev,
       datasets: [
         {
           label: "# of Votes",
-          data: [Math.round(loanamount), Math.round(emi)],
-          backgroundColor: ["#4166EB", "#FDCC03"],
-          borderColor: ["#4166EB", "#FDCC03"],
+          data: [Math.round(intrest), Math.round(loanamount)],
+          backgroundColor: ["#FDCC03", "#4166EB"],
+          borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
         },
       ],
     }));
   }
-
   return (
     <div className={styles.calculatorComponent}>
       {/* <div className="leftsec">
@@ -199,7 +203,9 @@ export default function HomeCalc() {
         {/* <div className={`${styles.submitButton} ${styles.vertgrad}`}>
           Calculate
         </div> */}
-        {false && result ? <ResultBox resultdata={resultdata} /> : null}
+        {years && type && noofrooms && city ? (
+          <ResultBox resultdata={resultdata} />
+        ) : null}
       </div>
 
       {years && type && noofrooms && city ? (

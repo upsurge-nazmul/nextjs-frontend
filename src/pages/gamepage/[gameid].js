@@ -11,6 +11,12 @@ import styles from "../../styles/GamePage/gamepage.module.scss";
 // productName: "Don'tOverspend_Upsurge",
 // productVersion: "1.0",
 const data = {
+  CoinSlide: {
+    dataUrl: "/Games/CoinSlide/Build/CoinSlide.data",
+    frameworkUrl: "/Games/CoinSlide/Build/CoinSlide.framework.js",
+    codeUrl: "/Games/CoinSlide/Build/CoinSlide.wasm",
+    loaderUrl: "/Games/CoinSlide/Build/CoinSlide.loader.js",
+  },
   ShoppingBudget: {
     dataUrl: "/Games/DontOverSpend/Build/Don't_Overspend.data",
     frameworkUrl: "/Games/DontOverSpend/Build/Don't_Overspend.framework.js",

@@ -1,18 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
+import Progress from "../Progress";
 import ResultBox from "./ResultBox";
-
-function SipLumpsumCalc() {
-  const [mode, setmode] = useState("sip");
-  const [amount, setamount] = useState(10000);
-  const [rate, setrate] = useState(10);
-  const [initialLumpsum, setinitialLumpsum] = useState(0);
-  const [result, setresult] = useState(false);
+import Select from "./Select";
+import ProgressVerticle from "../ProgressVerticle";
+import styles from "../../styles/Calculators/calccomponent.module.scss";
+import SelectInput from "./SelectInput";
+export default function HomeCalc() {
   const [years, setyear] = useState(1);
-  const [taxbracket, settaxbracket] = useState("less than 5 lacs");
-  const [investmentoptions, setinvestmentoptions] = useState("FD");
+  const [type, settype] = useState("All");
+  const [amount, setamount] = useState();
+  const [university, setuniversity] = useState("");
+  const [country, setcountry] = useState("");
+  const [course, setcourse] = useState(0);
+  const [questions, setquestions] = useState([
+    {
+      type: "input",
+      title: "Enter money needed in future.",
+      setvalue: setamount,
+      value: amount,
+      min: 1,
+      max: 10000000,
+      sign: "₹",
+    },
+    {
+      title: "Investment Duration",
+      type: "input",
+      setvalue: setyear,
+      value: years,
+      min: 1,
+      max: 80,
+      sign: "years",
+    },
+    {
+      title: "Investment Type",
+      type: "select",
+      value: type,
+      setvalue: settype,
+      options: [
+        "All",
+        "Fixed deposit",
+        "Mutual Fund",
+        "Gold",
+        "Stock market",
+        "Government Bond",
+      ],
+    },
+  ]);
+  const [result, setresult] = useState(false);
+  const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
     heading1: "Invested Amount",
     heading2: "Returns",
@@ -24,157 +62,236 @@ function SipLumpsumCalc() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Invested Amount", "Returns"],
+    labels: ["Intrest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",
         data: [0, 0],
-        backgroundColor: ["#F86466", "#FBCD00"],
-        borderColor: ["#F86466", "#FBCD00"],
+        backgroundColor: ["#4166EB", "#FDCC03"],
+        borderColor: ["#4166EB", "#FDCC03"],
         borderWidth: 1,
       },
     ],
   });
 
   useEffect(() => {
-    if (mode === "sip") sipcalc();
-    else lumpsum();
-
+    emi();
     setresult(true);
-  }, [
-    amount,
-    rate,
-    years,
-    mode,
-    initialLumpsum,
-    taxbracket,
-    investmentoptions,
-  ]);
+  }, [type, amount, years]);
 
-  function sipcalc() {
-    let monthlyRate = rate / 12 / 100;
-    var months = years * 12;
-    let totalinvestment = amount * months;
-    let futureValue =
-      (amount * (1 + monthlyRate) * (Math.pow(1 + monthlyRate, months) - 1)) /
-      monthlyRate;
-    let returnamount = futureValue - totalinvestment;
-    setresultdata((prev) => ({
-      ...prev,
-      result1: Math.round(totalinvestment),
-      result2: Math.round(returnamount),
-      result3: Math.round(futureValue + Number(initialLumpsum)),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(totalinvestment), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
-          borderWidth: 1,
-        },
-      ],
-    }));
-  }
-  function lumpsum() {
-    let wealthGained = Math.round(Math.pow(1 + rate / 100, years) * amount);
-    let returnamount = wealthGained - amount;
-    setresultdata((prev) => ({
-      ...prev,
-      result1: Math.round(amount),
-      result2: Math.round(returnamount),
-      result3: Math.round(wealthGained),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(amount), Math.round(returnamount)],
-          backgroundColor: ["#F86466", "#FBCD00"],
-          borderColor: ["#F86466", "#FBCD00"],
-          borderWidth: 1,
-        },
-      ],
-    }));
+  function emi() {
+    let fd = amount / Math.pow(1 + 5 / 100, years);
+    let mutualfund = amount / Math.pow(1 + 10.4 / 100, years);
+    let gold = amount / Math.pow(1 + 10 / 100, years);
+    let stockmarket = amount / Math.pow(1 + 13.9 / 100, years);
+    let governmentb = amount / Math.pow(1 + 3.65 / 100, years);
+    if (type === "Fixed deposit") {
+      setresultdata((prev) => ({
+        heading1: "Sip For Fixed Deposit",
+        result1: Math.round(fd),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: ["Sip For Fixed Deposit"],
+
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [Math.round(fd)],
+            backgroundColor: ["#FDCC03"],
+            borderColor: ["#FDCC03"],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    } else if (type === "Mutual Fund") {
+      setresultdata((prev) => ({
+        heading1: "Sip For Mutual Fund",
+        result1: Math.round(mutualfund),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: ["Sip For Mutual Fund"],
+        datasets: [
+          {
+            label: "Sips",
+            data: [Math.round(mutualfund)],
+            backgroundColor: ["#FDCC03"],
+            borderColor: ["#FDCC03"],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    } else if (type === "Gold") {
+      setresultdata((prev) => ({
+        heading1: "Sip For Gold",
+        result1: Math.round(gold),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: ["Sip For Gold"],
+
+        datasets: [
+          {
+            label: "Sips",
+
+            data: [Math.round(gold)],
+            backgroundColor: ["#FDCC03"],
+            borderColor: ["#FDCC03"],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    } else if (type === "Stock market") {
+      setresultdata((prev) => ({
+        heading1: "Sip For Stock Market",
+        result1: Math.round(stockmarket),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: ["Sip For Stock Market"],
+
+        datasets: [
+          {
+            label: "Sips",
+
+            data: [Math.round(stockmarket)],
+            backgroundColor: ["#FDCC03"],
+            borderColor: ["#FDCC03"],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    } else if (type === "Government Bond") {
+      setresultdata((prev) => ({
+        heading1: "Sip For Government Bond",
+        result1: Math.round(governmentb),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: ["Sip For Government Bond"],
+        datasets: [
+          {
+            label: "Sips",
+
+            data: [Math.round(governmentb)],
+            backgroundColor: ["#FDCC03"],
+            borderColor: ["#FDCC03"],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    } else {
+      setresultdata((prev) => ({
+        heading1: "Sip For Fixed Deposit",
+        heading2: `Sip For Mutual Fund`,
+        heading3: "Sip For Gold",
+        heading4: "Sip For Stock Market",
+        heading5: "Sip For Government Bond",
+        result1: Math.round(fd),
+        result2: Math.round(mutualfund),
+        result3: Math.round(gold),
+        result4: Math.round(stockmarket),
+        result5: Math.round(governmentb),
+      }));
+      setChartData((prev) => ({
+        ...prev,
+        labels: [
+          "Sip For Fixed Deposit",
+          `Sip For Mutual Fund`,
+          "Sip For Gold",
+          "Sip For Stock Market",
+          "Sip For Government Bond",
+        ],
+        datasets: [
+          {
+            label: "Sips",
+
+            data: [
+              Math.round(fd),
+              Math.round(mutualfund),
+              Math.round(gold),
+              Math.round(stockmarket),
+              Math.round(governmentb),
+            ],
+            backgroundColor: [
+              "#FDCC03",
+              "#4166EB",
+              "#17D1BC",
+              "#FF6263",
+              "#fd9903",
+            ],
+            borderColor: [
+              "#FDCC03",
+              "#4166EB",
+              "#17D1BC",
+              "#FF6263",
+              "#fd9903",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      }));
+    }
   }
   return (
-    <div className="calculatorComponent">
-      <div className="inputSection">
-        <div className="inputBlockSip">
-          <div className="radioButton">
-            <input
-              type="radio"
-              name="radio"
-              id="sip"
-              value="sip"
-              onChange={(e) => setmode(e.target.value)}
-              defaultChecked
+    <div className={styles.calculatorComponent}>
+      <div className={styles.inputSection}>
+        {questions.map((item, index) => {
+          if (type === "Indian" && item.title === "Select Region") {
+            return null;
+          } else if (type === "Foreign" && item.title === "University type") {
+            return null;
+          } else if (item.type === "select") {
+            return (
+              <Select
+                question={item.title}
+                options={item.options}
+                value={item.value}
+                setvalue={item.setvalue}
+                current={current}
+                setcurrent={setcurrent}
+                index={index}
+                total={
+                  type !== "Apartment"
+                    ? questions.length - 2
+                    : questions.length - 1
+                }
+              />
+            );
+          } else if (item.type === "input") {
+            return (
+              <SelectInput
+                question={item.title}
+                index={index}
+                value={item.value}
+                current={current}
+                setcurrent={setcurrent}
+                setvalue={item.setvalue}
+                min={item.min}
+                max={item.max}
+                sign={item.sign}
+              />
+            );
+          }
+        })}
+
+        {years && type && amount ? <ResultBox resultdata={resultdata} /> : null}
+      </div>
+
+      {years && type && amount ? (
+        <div className={styles.chartSection}>
+          <div className={styles.chartContainer}>
+            <Bar
+              data={chartData}
+              className={styles.chart}
+              width={100}
+              height={100}
+              options={{ maintainAspectRatio: false }}
             />
-            <p>SIP</p>
-          </div>
-          <div className="radioButton">
-            <input
-              type="radio"
-              name="radio"
-              id="lumpsum"
-              value="lumpsum"
-              onChange={(e) => setmode(e.target.value)}
-            />
-            <p>Lumpsum</p>
           </div>
         </div>
-        <InputBlock
-          label={"Time Period"}
-          min={1}
-          max={100}
-          setvalue={setyear}
-          value={years}
-          sign={"Yrs"}
-        />
-
-        <DropBox
-          title="Tax Bracket"
-          value={taxbracket}
-          setvalue={settaxbracket}
-          options={[
-            "less than 5 lacs",
-            "5 to 10 lacs",
-            "10 to 20 lacs",
-            "more than 20 lacs",
-          ]}
-        />
-        <DropBox
-          title="Investment Option"
-          value={investmentoptions}
-          setvalue={setinvestmentoptions}
-          options={[
-            "FD",
-            "Corporate Bonds",
-            "Govt Schemes",
-            "Index Funds",
-            "Mutual Funds",
-            "Smart Portfolio",
-          ]}
-        />
-
-        {result ? <ResultBox resultdata={resultdata} /> : null}
-      </div>
-      <div className="chartSection">
-        <div className="chartContainer">
-          <Doughnut
-            data={chartData}
-            className="chart"
-            width={100}
-            height={100}
-            options={{ maintainAspectRatio: false }}
-          />
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 }
-
-export default SipLumpsumCalc;

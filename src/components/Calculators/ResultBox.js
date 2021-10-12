@@ -18,12 +18,14 @@ function ResultBox({ resultdata }) {
             ₹ {getIndianFormat(resultdata.result1)}
           </p>
         </div>
-        <div className={styles.container}>
-          <p className={styles.heading}>{resultdata.heading2}</p>
-          <p className={styles.result}>
-            ₹ {getIndianFormat(resultdata.result2)}
-          </p>
-        </div>
+        {resultdata.result2 && (
+          <div className={styles.container}>
+            <p className={styles.heading}>{resultdata.heading2}</p>
+            <p className={styles.result}>
+              ₹ {getIndianFormat(resultdata.result2)}
+            </p>
+          </div>
+        )}
       </div>
       {resultdata.result4 ? (
         <div className={styles.topflex}>
@@ -39,14 +41,24 @@ function ResultBox({ resultdata }) {
               ₹ {getIndianFormat(resultdata.result4)}
             </p>
           </div>
+          {resultdata.result5 && (
+            <div className={styles.container}>
+              <p className={styles.heading}>{resultdata.heading5}</p>
+              <p className={styles.result}>
+                ₹ {getIndianFormat(resultdata.result5)}
+              </p>
+            </div>
+          )}
         </div>
       ) : (
-        <div className={styles.bottomContainer}>
-          <p className={styles.heading}>{resultdata.heading3}</p>
-          <p className={styles.result}>
-            ₹ {getIndianFormat(resultdata.result3)}
-          </p>
-        </div>
+        resultdata.heading3 && (
+          <div className={styles.bottomContainer}>
+            <p className={styles.heading}>{resultdata.heading3}</p>
+            <p className={styles.result}>
+              ₹ {getIndianFormat(resultdata.result3)}
+            </p>
+          </div>
+        )
       )}
     </div>
   );

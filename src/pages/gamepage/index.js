@@ -40,6 +40,11 @@ export default function GamePage() {
       description:
         "This is demo description, will be replaced with content later.",
     },
+    CoinSlide: {
+      name: "Coin Slide",
+      description:
+        "This is demo description, will be replaced with content later.",
+    },
   };
 
   useEffect(() => {

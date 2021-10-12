@@ -159,7 +159,7 @@ function VacationCalc() {
         {false && result ? <ResultBox resultdata={resultdata} /> : null}
       </div>
 
-      {false ? (
+      {true ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

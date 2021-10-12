@@ -7,9 +7,13 @@ import SipLumpsumCalc from "./SipLumpsumCalc";
 import VacationCalc from "./VacationCalc";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import HomeCalc from "./HomeCalc";
+import CarCalc from "./CarCalc";
+import BigMacCalc from "./BigMacCalc";
+import Retirement from "./RetirementCalc";
+import CostOfRaisingCalc from "./CostOfRaisingCalc";
+import InvestmentComparison from "./InvestmentComparison";
 
 function CalculatorRouter({ name }) {
-  const [mode, setmode] = useState(name);
   const [amount, setamount] = useState(10000);
   const [rate, setrate] = useState(10);
 
@@ -39,23 +43,23 @@ function CalculatorRouter({ name }) {
     ],
   });
   useEffect(() => {
-    if (mode === "sip") {
+    if (name === "sip") {
       sipcalc();
-    } else if (mode === "lumpsum") {
+    } else if (name === "lumpsum") {
       lumpsum();
     } else if (
-      mode === "eduLoan" ||
-      mode === "carLoan" ||
-      mode === "homeLoan"
+      name === "eduLoan" ||
+      name === "carLoan" ||
+      name === "homeLoan"
     ) {
       emi();
-    } else if (mode === "vacation") {
+    } else if (name === "vacation") {
       vacaction();
-    } else if (mode === "retirement") {
+    } else if (name === "retirement") {
       retirement();
     }
     setresult(true);
-  }, [amount, rate, years, mode, initialLumpsum]);
+  }, [amount, rate, years, name, initialLumpsum]);
 
   function retirement() {
     let monthlyRate = rate / 12 / 100;
@@ -230,64 +234,16 @@ function CalculatorRouter({ name }) {
     },
   };
 
-  function getCalcType() {
-    if (mode === "homeLoan" || mode === "carLoan" || mode === "eduLoan") {
-      return "loan";
-    } else {
-      return "investment";
-    }
-  }
-  if (mode === "homeLoan") return <HomeCalc />;
-  if (mode === "sip" || mode === "lumpsum") return <SipLumpsumCalc />;
-  if (mode === "vacation") return <VacationCalc />;
-  else if (mode === "education") return <EducationCalc />;
-  else
-    return (
-      <div className={styles.calculatorComponent}>
-        <div className={styles.inputSection}>
-          <InputBlock
-            label={data[mode]?.label}
-            min={500}
-            max={20000000}
-            setvalue={setamount}
-            value={amount}
-            sign={"₹"}
-          />
-          <InputBlock
-            label={data[name]?.rate}
-            min={1}
-            max={50}
-            setvalue={setrate}
-            value={rate}
-            sign={"%"}
-          />
-          <InputBlock
-            label={"Time Period"}
-            min={1}
-            max={100}
-            setvalue={setyear}
-            value={years}
-            sign={"Years"}
-          />
-          {result ? <ResultBox resultdata={resultdata} /> : null}
-        </div>
-        <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <div className={styles.resultabs}>
-              <p className={styles.main}>{"₹" + resultdata.result3}</p>
-              <p className={styles.se}>per month</p>
-            </div>
-            <Doughnut
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: true }}
-            />
-          </div>
-        </div>
-      </div>
-    );
+  if (name === "homeLoan") return <HomeCalc />;
+  if (name === "carLoan") return <CarCalc />;
+  if (name === "currency") return <BigMacCalc />;
+  if (name === "retirement") return <Retirement />;
+  if (name === "costofraising") return <CostOfRaisingCalc />;
+  if (name === "investmentcomparison") return <InvestmentComparison />;
+  if (name === "sip") return <SipLumpsumCalc />;
+  if (name === "vacation") return <VacationCalc />;
+  else if (name === "education") return <EducationCalc />;
+  else return <p></p>;
 }
 
 export default CalculatorRouter;
