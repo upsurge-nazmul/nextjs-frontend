@@ -1,7 +1,7 @@
 import axios from "axios";
 // const BaseUrl = "http://localhost:4000/";
-const BaseUrl = "http://13.235.23.121:4000/";
-
+// const BaseUrl = "http://13.235.23.121:4000/";
+const BaseUrl = "https://api.upsurgefi.com/";
 const getHeader = async (formData, token) => {
   return {
     Accept: formData ? "multipart/form-data" : "application/json",
