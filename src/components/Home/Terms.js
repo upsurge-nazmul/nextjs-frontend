@@ -987,13 +987,13 @@ export default function Terms({ setshowterm, termmode }) {
             services.
           </p>
           <p className={styles.para}>
-            By Personal Information, we mean any information that can either
+            {`By Personal Information, we mean any information that can either
             itself identify you as an individual ("Personally Identifying
             Information") or that can be connected to you indirectly by linking
             it to Personally Identifying Information. Please note that usage of
             the term Personal Information in this Privacy Policy includes
             sensitive personal data or information, wherever appropriate and/or
-            mandated under applicable laws.
+            mandated under applicable laws.`}
           </p>{" "}
           <p className={styles.heading}>COLLECTION OF INFORMATION</p>{" "}
           <p className={styles.para}>
@@ -1073,8 +1073,8 @@ export default function Terms({ setshowterm, termmode }) {
               className={styles.subheading}
               style={{ marginLeft: "20px", paddingLeft: "10px" }}
             >
-              Reviews or ratings, account settings, (including preferences set
-              in the " Account " section of our platform); and
+              {`Reviews or ratings, account settings, (including preferences set
+              in the " Account " section of our platform); and`}
             </li>
             <li
               className={styles.subheading}
@@ -1169,7 +1169,7 @@ export default function Terms({ setshowterm, termmode }) {
             SHARING AND DISCLOSING PERSONAL INFORMATION{" "}
           </p>
           <p className={styles.para}>
-            We use other companies, agents, or contractors ("Service Providers")
+            {`We use other companies, agents, or contractors ("Service Providers")
             to perform services on our behalf or to assist us with the provision
             of services to you. We engage Service Providers to provide
             marketing, advertising, communications, infrastructure, and IT
@@ -1181,7 +1181,7 @@ export default function Terms({ setshowterm, termmode }) {
             services, these Service Providers may have access to your Personal
             Information or other information. We do not authorize them to use or
             disclose your Personal Information except in connection with
-            providing their services.
+            providing their services.`}
           </p>
           <p className={styles.para}>
             Note to our customers in Europe: We transfer your Personal
@@ -1263,14 +1263,14 @@ export default function Terms({ setshowterm, termmode }) {
             interest to most users.
           </p>
           <p className={styles.para}>
-            Our platform uses "Cookies" to identify the areas of our website or
+            {`Our platform uses "Cookies" to identify the areas of our website or
             mobile application that you have visited. A Cookie is a small piece
             of data stored on your computer or mobile device by your web
             browser. We use Cookies to personalize the Content that you see on
             our platform. Most web browsers can be set to disable the use of
             Cookies. However, if you disable Cookies, you may not be able to
             access functionality on our Platform correctly or at all. We never
-            place Personally Information in Cookies.
+            place Personally Information in Cookies.`}
           </p>
           <p className={styles.heading}>THIRD PARTIES AND LINKS</p>
           <p className={styles.para}>
@@ -1382,7 +1382,7 @@ export default function Terms({ setshowterm, termmode }) {
             otherwise stated.
           </p>
           <p className={styles.para}>
-            Upsurge does not have any express burden or responsibility to
+            {`Upsurge does not have any express burden or responsibility to
             provide you with indications, markings, or anything else that may
             aid you in determining whether the material in question is
             copyrighted or trademarked. You shall be solely liable for any
@@ -1400,7 +1400,7 @@ export default function Terms({ setshowterm, termmode }) {
             material for that end user's personal use. You hereby grant Upsurge,
             the right to edit, copy, publish and distribute any material made
             available on the Platform by you. If you come across any abuse or
-            violation of these Terms, please report to karan@upsurgefi.com.
+            violation of these Terms, please report to karan@upsurgefi.com.`}
           </p>
           <p className={styles.heading}>
             YOUR RIGHTS IN RELATION TO PERSONAL INFORMATION COLLECTED BY US
