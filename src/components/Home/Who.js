@@ -8,18 +8,13 @@ function Who() {
       <div className={styles.container}>
         <div className={styles.left}>
           <p>
-            We are a{" "}
-            <span>
-              financial literacy and entrepreneurship development program
-            </span>
+            We are a financial literacy and entrepreneurship development program
             for children between the ages of 7 to 18.
           </p>
           <p>
             We believe in practical learning and have developed our own
-            curriculums and games to{" "}
-            <span>
-              make learning fun, effective and rewarding for children.
-            </span>
+            curriculums and games to make learning fun, effective and rewarding
+            for children.
           </p>
         </div>
         <div className={styles.right}>
