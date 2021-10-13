@@ -27,13 +27,25 @@ export default function Subscribed() {
           To stay up to date at all times, follow us on.
         </p>
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/">
+          <a
+            href="https://www.facebook.com/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Fb className={styles.social} />
           </a>
-          <a href="https://www.instagram.com/upsurge.india/">
+          <a
+            href="https://www.instagram.com/upsurge.india/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Insta className={styles.social} />
           </a>
-          <a href="https://www.linkedin.com/company/upsurgeindia/">
+          <a
+            href="https://www.linkedin.com/company/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <LinkedIN className={styles.socialyt} />
           </a>
           {/* <Fb className={styles.social} />
