@@ -301,13 +301,13 @@ function Footer() {
           )}
         </div>
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/" target="_blank">
+          <a href="https://www.facebook.com/upsurgeindia/" target="_blank" rel="noreferrer">
             <Fb className={styles.social} />
           </a>
           {/* <a href="">
             <Twitter className={styles.social} alt="" />
           </a> */}
-          <a href="https://www.instagram.com/upsurge.india/" target="_blank">
+          <a href="https://www.instagram.com/upsurge.india/" target="_blank" rel="noreferrer">
             <Insta className={styles.social} />
           </a>
           {/* <a href="">
@@ -316,6 +316,7 @@ function Footer() {
           <a
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
+            rel="noreferrer"
           >
             <LinkedIN className={styles.socialyt} />
           </a>
@@ -330,6 +331,7 @@ function Footer() {
             className={styles.whatsapp}
             href="https://wa.me/918287433304"
             target="_blank"
+            rel="noreferrer"
           >
             <WhatsAppIcon className={styles.icon} />
             Connect on whatsapp
@@ -366,6 +368,7 @@ function Footer() {
             className={styles.whatsapp}
             href="https://wa.me/918287433304"
             target="_blank"
+            rel="noreferrer"
           >
             <WhatsAppIcon className={styles.icon} />
             Connect on whatsapp
@@ -391,15 +394,16 @@ function Footer() {
         </div>
 
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/" target="_blank">
+          <a href="https://www.facebook.com/upsurgeindia/" target="_blank" rel="noreferrer">
             <Fb className={styles.social} />
           </a>
-          <a href="https://www.instagram.com/upsurge.india/" target="_blank">
+          <a href="https://www.instagram.com/upsurge.india/" target="_blank" rel="noreferrer">
             <Insta className={styles.social} />
           </a>
           <a
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
+            rel="noreferrer"
           >
             <LinkedIN className={styles.socialyt} />
           </a>
