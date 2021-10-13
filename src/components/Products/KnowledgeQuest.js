@@ -24,8 +24,8 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
       <div className={styles.textcontainer}>
         <div className={styles.heading}>Knowledge Quest</div>
         <div className={styles.subheading}>
-          A collection of guided lessons that help your child learn the basics
-          of finance by learning from the experts.
+          Knowledge Quest comprises byte sized interactive videos which include
+          exercises, real life examples and a short quiz.
         </div>
         <div className={styles.details}>
           <div className={styles.section}>

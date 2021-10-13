@@ -35,8 +35,13 @@ export default function About() {
             learning fun, effective and rewarding for children.
           </p>
         </div>
-        <div className={styles.secondheading}>Our Leadership</div>
-        <div className={styles.wrapper}>
+        <div className={styles.secondheading}>Vision</div>
+        <p className={styles.des}>
+          To develop financial literacy and entrepreneurship skills amongst
+          children and young adults to make them financially successful and
+          better decision makers
+        </p>
+        {/* <div className={styles.wrapper}>
           <div className={styles.role}>
             <img
               src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -54,10 +59,14 @@ export default function About() {
             <p className={styles.position}>Co-Founder</p>
           </div>
         </div>
+        */}
         <div className={styles.secondheading} style={{ marginTop: "100px" }}>
-          Our Team
+          Mission
         </div>
-        <div className={styles.wrapper} style={{ marginBottom: "100px" }}>
+        <p className={styles.des}>
+          Make learning financial literacy and entrepreneurship fun
+        </p>
+        {/* <div className={styles.wrapper} style={{ marginBottom: "100px" }}>
           <div className={styles.team}>
             <img
               src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -123,6 +132,7 @@ export default function About() {
             <p className={styles.position}>Developer</p>
           </div>
         </div>
+         */}
         <div className={styles.ctc}>
           <div className={styles.text}>
             Help us build

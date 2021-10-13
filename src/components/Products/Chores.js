@@ -8,8 +8,8 @@ export default function Chores({ id, email, setEmail, check, error }) {
       <div className={styles.top}>
         <div className={styles.heading}>Chores</div>
         <div className={styles.subheading}>
-          Upsurge enables you to set responsibilities and paid jobs for each
-          kid, and manage their privileges, rewards and allowance.
+          Young learners experience that earning money requires them to complete
+          jobs and chores given by their parents.
         </div>
         <div className={styles.signupBox}>
           {showinput && (
@@ -42,12 +42,11 @@ export default function Chores({ id, email, setEmail, check, error }) {
       <div className={styles.bottom}>
         <div className={styles.left}>
           <div className={styles.first}>
-            <div className={styles.heading}>
-              Shows Kids How Money Is Earned.
-            </div>
+            <div className={styles.heading}>Importance of Earning</div>
             <div className={styles.description}>
-              Connecting Chores with Allowance teaches kids that money is earned
-              and not simply given.
+              Upsurge teaches that money is earned and is not given simply. This
+              learning helps children to be better in time management and being
+              responsible.
             </div>
             <div className={styles.connectorl}>
               <div className={styles.ball}></div>
@@ -55,11 +54,11 @@ export default function Chores({ id, email, setEmail, check, error }) {
             </div>
           </div>
           <div className={styles.second}>
-            <div className={styles.heading}>Supports Long Term Goals.</div>
+            <div className={styles.heading}>Time Management</div>
             <div className={styles.description}>
-              Mastering delayed gratification is one of the biggest predictors
-              of future financial success! Teach kids financial responsibility
-              by providing them with incentives that differ in value.
+              Tasks can be assigned to them with a deadline and their
+              performance can be evaluated and rated on successful and timely
+              completion of such assigned tasks.
             </div>
             <div className={styles.connectorl}>
               <div className={styles.ball}></div>
@@ -72,12 +71,10 @@ export default function Chores({ id, email, setEmail, check, error }) {
         </div>
         <div className={styles.right}>
           <div className={styles.first}>
-            <div className={styles.heading}>
-              Teaches Real Life Financial Skills.
-            </div>
+            <div className={styles.heading}>Support Long term goals</div>
             <div className={styles.description}>
-              Upsurge enables you to transfer allowance and extra money kids
-              earn directly to their savings or checking account.
+              Upsurge teaches children to fulfill their long term goals by
+              dividing them into shorter goals and achieving it gradually.
             </div>
             <div className={styles.connectorr}>
               <div className={styles.ball}></div>
@@ -85,11 +82,14 @@ export default function Chores({ id, email, setEmail, check, error }) {
             </div>
           </div>
           <div className={styles.second}>
-            <div className={styles.heading}>Connects The Whole Family.</div>
+            <div className={styles.heading}>
+              Teaches real life financial skills
+            </div>
             <div className={styles.description}>
-              Upsurge lets you manage chores, allowance and rewards for the
-              whole family. Everyone get notifications when their chores are due
-              or completed and everything is connected by a family chat.
+              Incentivize and reward them for completing their tasks on time.
+              Conversely, impose small penalties for unfinished tasks. This will
+              go a long way in inculcating good habits and a sense of
+              discipline.
             </div>
             <div className={styles.connectorr}>
               <div className={styles.ball}></div>

@@ -56,7 +56,7 @@ function Footer() {
               Live Classes
             </p>
           </div>
-          <div className={styles.column}>
+          {/* <div className={styles.column}>
             <p className={styles.heading}>Resources</p>
             <p
               className={styles.subheading}
@@ -76,9 +76,9 @@ function Footer() {
             >
               High And Low
             </p>
-            {/* <p className={styles.subheading}>Cheat Codes</p> */}
+             <p className={styles.subheading}>Cheat Codes</p>
             <p className={styles.subheading}>Quizzes</p>
-          </div>
+          </div> */}
           {/* <div className={styles.column}>
             <p className={styles.heading}>Help & Support</p>
             <p
@@ -90,7 +90,7 @@ function Footer() {
             <p className={styles.subheading}>Help Center</p>
             <p className={styles.subheading}>Contact us</p>
           </div> */}
-          <div className={styles.column}>
+          {/* <div className={styles.column}>
             <p className={styles.heading}>Financial Calculators</p>
             <p
               className={styles.subheading}
@@ -116,7 +116,36 @@ function Footer() {
             >
               SIP Loan Calculator
             </p>
+          </div>*/}
+          <div className={styles.column}>
+            <p className={styles.heading}>Benefits</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/benefits")}
+            >
+              Financial Literacy
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/benefits/experimential")}
+            >
+              Experimential Learning
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/benefits/entrepreneuership")}
+            >
+              Entrepreneuership
+            </p>
+            {/* <p className={styles.subheading}>Help Center</p> */}
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/benefits/rewards")}
+            >
+              Rewards
+            </p>
           </div>
+
           <div className={styles.column}>
             <p className={styles.heading}>More</p>
             <p

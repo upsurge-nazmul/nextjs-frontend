@@ -87,7 +87,7 @@ function Header({
             ]}
             pushTo="/benefits"
           />
-          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" />
+          {/* <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" /> */}
           {/* <HeaderTabSection title={"Quizzes"} tabs={[]} pushTo="/quiz/main" /> */}
 
           {/* <HeaderTabSection
@@ -113,7 +113,7 @@ function Header({
 
               { name: "Blogs", pushTo: "/blogs" },
 
-              { name: "Financial Calculators", pushTo: "/calculators" },
+              // { name: "Financial Calculators", pushTo: "/calculators" },
               { name: "FAQ's", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 

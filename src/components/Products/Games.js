@@ -69,7 +69,8 @@ export default function Games({ id }) {
     <div className={styles.gamespage} id={id}>
       <div className={styles.heading}>Games</div>
       <div className={styles.subheading}>
-        We make digital toys that help your kid learn finance with ease.
+        The concepts learnt by the young learners via Knowledge Quest are
+        applied in the Games Arena.
       </div>
       <div className={styles.wrapper}>
         <div className={styles.left}>

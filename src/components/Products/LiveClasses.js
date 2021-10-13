@@ -8,7 +8,8 @@ export default function LiveClasses({ id }) {
       <div className={styles.top}>
         <div className={styles.heading}>Live Classes</div>
         <div className={styles.subheading}>
-          Learn from the experts in finance in live mentor-led sessions
+          Once a week live online classes allow our young learners to interact
+          with peers and instructors.
         </div>
       </div>
       <div className={styles.bottom}>

@@ -10,15 +10,11 @@ function Help() {
   const faqs = [
     {
       question: "How old does my kid have to be to join Upsurge?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      answer: `It’s never too early to build healthy financial habits! As a parent, you’ll have to open an account first and then add your children. At the moment, our knowledge quests and games are relevant for kids over the age of 10.`,
     },
     {
-      question: "Are there any free courses I can take?",
-      answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
-
-          We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+      question: "How will I create my child’s username?",
+      answer: `Once you’ve created your account as a parent, you can assign each child their own login credentials, and share it with them`,
     },
     {
       question: "Is Upsurge comliant with GDPR?",
@@ -51,7 +47,6 @@ function Help() {
           We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
   ];
-  console.log(image);
   return (
     <div className="helpPage">
       <LeftPanel

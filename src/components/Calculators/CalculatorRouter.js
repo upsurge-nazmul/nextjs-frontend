@@ -12,6 +12,7 @@ import BigMacCalc from "./BigMacCalc";
 import Retirement from "./RetirementCalc";
 import CostOfRaisingCalc from "./CostOfRaisingCalc";
 import InvestmentComparison from "./InvestmentComparison";
+import CollegeLifeCalc from "./CollegeLifeCalc";
 
 function CalculatorRouter({ name }) {
   const [amount, setamount] = useState(10000);
@@ -241,8 +242,9 @@ function CalculatorRouter({ name }) {
   if (name === "costofraising") return <CostOfRaisingCalc />;
   if (name === "investmentcomparison") return <InvestmentComparison />;
   if (name === "sip") return <SipLumpsumCalc />;
+  if (name === "college") return <CollegeLifeCalc />;
   if (name === "vacation") return <VacationCalc />;
-  else if (name === "education") return <EducationCalc />;
+  if (name === "education") return <EducationCalc />;
   else return <p></p>;
 }
 

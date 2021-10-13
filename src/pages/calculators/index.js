@@ -90,12 +90,12 @@ function CalculatorsPage() {
         "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
       icon: "https://i.ibb.co/PFXFVWp/Untitled-design-15.png",
     },
-    // college: {
-    //   heading: "College Life Calculator",
-    //   subheading:
-    //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
-    //   icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
-    // },
+    college: {
+      heading: "College Life",
+      subheading:
+        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+      icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
+    },
     // standardofliving: {
     //   heading: "Standard of Living calculator",
     //   subheading:

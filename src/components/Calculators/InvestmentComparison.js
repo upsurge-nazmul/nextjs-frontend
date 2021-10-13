@@ -66,7 +66,7 @@ export default function InvestmentComparison() {
       setvalue: setamount1,
       value: amount1,
       min: 1,
-      max: 70,
+      max: 10000000,
       sign: "₹",
     },
     {
@@ -75,7 +75,7 @@ export default function InvestmentComparison() {
       setvalue: setamount2,
       value: amount2,
       min: 1,
-      max: 70,
+      max: 10000000,
       sign: "₹",
     },
   ]);
