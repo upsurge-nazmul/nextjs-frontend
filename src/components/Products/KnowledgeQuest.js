@@ -56,6 +56,7 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
             <input
               className={styles.input}
               type="text"
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
           )}

@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 export default function Benefits() {
   const router = useRouter();
   const type = router.query.type;
+  const [stickyheader, setstickyheader] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -40,6 +41,18 @@ export default function Benefits() {
       }
     }
   }, [type]);
+
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   async function check() {
     if (!validator.isEmail(email)) {
       setError("Enter valid email address");
@@ -64,6 +77,7 @@ export default function Benefits() {
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel

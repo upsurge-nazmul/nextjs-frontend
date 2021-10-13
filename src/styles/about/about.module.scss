@@ -6,7 +6,7 @@
     align-items: center;
     .head {
       background-color: #fbfbfb;
-      height: 350px;
+      height: 50vh;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -67,10 +67,105 @@
         top: 40%;
       }
     }
+
     .secondheading {
       font-size: 32px;
       margin: 40px 0;
       font-weight: 700;
+    }
+    .visionSection {
+      background-color: #f6d935;
+      color: white;
+      width: 100vw;
+      padding: 0 0 0 7vw;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      .left {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .secondheading {
+          font-size: 50px;
+        }
+        .des {
+          font-size: 24px;
+          width: 50%;
+          font-weight: 400;
+          line-height: 34px;
+          color: black;
+          width: 100%;
+        }
+      }
+
+      .imgwrapper {
+        width: 60vw;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .missionSection {
+      background-color: #ffa06a;
+      color: white;
+      width: 100vw;
+      padding: 0 7vw 0 0;
+      height: 60vh;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      .left {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .secondheading {
+          font-size: 50px;
+        }
+        .des {
+          font-size: 24px;
+          width: 50%;
+          font-weight: 400;
+          line-height: 34px;
+          width: 100%;
+        }
+      }
+
+      .imgwrapper {
+        width: 70vw;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .thirdSection {
+      background-color: #17d1bc;
+      color: white;
+      width: 100vw;
+      padding: 0 0 0 7vw;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      .left {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        flex-direction: column;
+        .secondheading {
+          font-size: 50px;
+        }
+        .des {
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 34px;
+          width: 100%;
+        }
+      }
+
+      .imgwrapper {
+        img {
+          width: 100%;
+        }
+      }
     }
     .wrapper {
       display: flex;

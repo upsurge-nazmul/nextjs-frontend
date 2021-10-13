@@ -7,14 +7,7 @@ export default function Entrepreneuership({ id }) {
         <div className={styles.left}>
           <p className={styles.heading}>From thinker to founder</p>
           <p className={styles.subheading}>
-            {`Lorem Ipsum has been the industry's standard dummy text ever since
-    the 1500s, when an unknown printer took a galley of type and
-    scrambled it to make a type specimen book. It has survived not only
-    five centuries, but also the leap into electronic typesetting,
-    remaining essentially unchanged. It was popularised in the 1960s
-    with the release of Letraset sheets containing Lorem Ipsum passages,
-    and more recently with desktop publishing software like Aldus
-    PageMaker including versions of Lorem Ipsum.`}
+            {`Introduce young learners to the basics of starting and running a business in a fun and engaging way, definitely not the way it's taught in schools! We offer a practical program that will ignite your child’s entrepreneurial spark and empower them with the tools and knowledge to start their own business! Who knows, they might be the next unicorn founder in the news`}
           </p>
         </div>
         <div className={styles.right}>

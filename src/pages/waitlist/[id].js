@@ -36,11 +36,15 @@ export default function WaitList({ res }) {
           To stay up to date at all times, follow us on.
         </p>
         <div className={styles.socials}>
-          <Fb className={styles.social} />
-          <Twitter className={styles.social} alt="" />
-          <Insta className={styles.social} />
-          <YtSvg className={styles.socialyt} />
-          <LinkedIN className={styles.socialyt} />
+          <a href="https://www.facebook.com/upsurgeindia/">
+            <Fb className={styles.social} />
+          </a>
+          <a href="https://www.instagram.com/upsurge.india/">
+            <Insta className={styles.social} />
+          </a>
+          <a href="https://www.linkedin.com/company/upsurgeindia/">
+            <LinkedIN className={styles.socialyt} />
+          </a>
         </div>
       </div>
       <Footer />

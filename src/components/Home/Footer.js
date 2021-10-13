@@ -362,18 +362,18 @@ function Footer() {
           <a href="https://www.facebook.com/upsurgeindia/">
             <Fb className={styles.social} />
           </a>
-          {/* <a href="">
-            <Twitter className={styles.social} alt="" />
-          </a> */}
           <a href="https://www.instagram.com/upsurge.india/">
             <Insta className={styles.social} />
           </a>
-          {/* <a href="">
-            <YtSvg className={styles.socialyt} />
-          </a> */}
           <a href="https://www.linkedin.com/company/upsurgeindia/">
             <LinkedIN className={styles.socialyt} />
           </a>
+          {/* <a href="">
+            <Twitter className={styles.social} alt="" />
+          </a> */}
+          {/* <a href="">
+            <YtSvg className={styles.socialyt} />
+          </a> */}
         </div>
       </div>
     </div>

@@ -84,7 +84,9 @@ function Contact() {
               </div>
               <div className={styles.text}>
                 <div className={styles.top}>Address</div>
-                <div className={styles.bottom}>1234, MG Road, Delhi 121001</div>
+                <div className={styles.bottom}>
+                  B-5/30, Safdarjung Enclave New Delhi DL 110029 India
+                </div>
               </div>
             </div>
             <div className={styles.segment}>

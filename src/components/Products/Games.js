@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
 import styles from "../../styles/Products/games.module.scss";
@@ -15,46 +15,49 @@ export default function Games({ id }) {
     {
       name: "Shopping Budget",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Identify how much is available to spend and making purchase decisions based on that.",
       link: "/gamepage/ShoppingBudget",
     },
     {
       name: "Balance Builder",
-      description:
-        "This is demo description, will be replaced with content later.",
+      description: "Identify what is income and what is expense.",
       link: "/gamepage/BalanceBuilder",
     },
     {
       name: "High And Low",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Identify currency and arrange in ascending or descending order after adding the money.",
       link: "/gamepage/HighAndLow",
     },
     {
       name: "Money Math",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Choose what you want to buy, earn some money, and calculate  how much you have left.",
       link: "/gamepage/MoneyMath",
     },
     {
       name: "Money Manager",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Know the importance of allocating your earnings between spending, saving and donating.",
       link: "/gamepage/MoneyManager",
     },
-    {
-      name: "Coin Slide",
-      description:
-        "This is demo description, will be replaced with content later.",
-      link: "/gamepage/CoinSlide",
-    },
+    // {
+    //   name: "Coin Slide",
+    //   description:
+    //     "This is demo description, will be replaced with content later.",
+    //   link: "/gamepage/CoinSlide",
+    // },
     {
       name: "Need Or Want",
-      description:
-        "This is demo description, will be replaced with content later.",
+      description: "Identify the difference between needs and wants.",
       link: "/gamepage/NeedOrWant",
     },
   ];
+
+  useEffect(() => {
+    setpaused(true);
+  }, [currentgameindex]);
+
   function handlePlayPause() {
     console.log("pp");
     if (paused) {
@@ -76,15 +79,14 @@ export default function Games({ id }) {
         <div className={styles.left}>
           <p className={styles.title}>{games[currentgameindex].name}</p>
           <div className={styles.description}>
-            A game that lets you buy and sell virtual stocks. Learn concepts
-            like investing mutual funds and more.
+            {games[currentgameindex].description}
           </div>
-          <div
+          {/* <div
             className={styles.button}
             onClick={() => router.push(games[currentgameindex].link)}
           >
             Play Now
-          </div>
+          </div> */}
           <div className={styles.buttonWrapper}>
             <div
               className={styles.arrowl}

@@ -71,7 +71,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
           <input
             type="text"
-            placeholder="parent@gmail.com"
+            placeholder="Email"
             value={email}
             onChange={(e) => {
               seterror("");

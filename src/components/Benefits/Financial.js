@@ -9,14 +9,7 @@ export default function Financial({ id }) {
             Kickstart your kid’s financial journey
           </p>
           <p className={styles.subheading}>
-            {`Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.`}
+            {`Kickstart your child’s financial and entrepreneurial journey with our proprietary product designed by finance professionals, 3x entrepreneurs and experiential learning experts. Kids will learn through appropriately designed content and then apply these learnings to fun games to learn. Games will have weekly and monthly leaderboards, just like fantasy sports, which will promote competitive capital in children, and give them a chance to win relevant rewards.`}
           </p>
         </div>
         <div className={styles.right}>

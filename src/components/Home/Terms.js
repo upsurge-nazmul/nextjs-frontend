@@ -928,7 +928,8 @@ export default function Terms({ setshowterm, termmode }) {
             directors, employees, successors and assigns from and against any
             claim, proceeding, loss, damage, liability, cost, demand or expense
             (including but not limited to attorney's fees) of any kind arising
-            out of:`} <br />
+            out of:`}{" "}
+            <br />
             (i) your access to or use of the Platform and Services; <br />
             (ii) any breach by you of your obligations under this Agreement;{" "}
             <br />
@@ -951,278 +952,599 @@ export default function Terms({ setshowterm, termmode }) {
         <div className={styles.main} id="termswrapper">
           <h1 className={styles.heading}>Privacy Policy</h1>
           <p className={styles.para}>
-            Welcome to Upsurge. This Privacy Policy describes how we collect,
-            use, and disclose information about you, the Parent, the Child, or
-            Educator (collectively, the <strong>Users</strong> ).
+            This Privacy Policy (“Privacy Policy/Policy”) discloses the privacy
+            practices for <strong>Surgeup Technologies Private Limited</strong>{" "}
+            (“Upsurge”, “We/we” or “Us/us”) with regard to collection and use of
+            the Personal Information (defined hereunder) of the customers,
+            vendors, employees and the users (“You/you” or “Your/your”) and use
+            of the online platform “<strong>Upsurge</strong>”. This Privacy
+            Policy along with Terms of Use describes our practices regarding,
+            including your choices in relation to how we collect, store, use,
+            share and secure your Personal Information across our Website and
+            Mobile application called <strong>“Upsurge”-Made in India.</strong>
+            The website and mobile application are referred to as the{" "}
+            <strong>“Platform”</strong>
+            It also describes your choices regarding use, access and correction
+            of your Personal Information and your rights in relation to your
+            Personal Information and how to contact us or supervisory
+            authorities in the event you have a complaint.
           </p>
           <p className={styles.para}>
-            Please read this Privacy Policy carefully. By using our website,
-            applications, and online games (collectively, the
-            <strong>Services</strong>), you agree to the handling of your
-            information in accordance with this Privacy Policy.
+            By providing your consent to this Privacy Policy and accepting the
+            Terms of Use, you agree to the collection, use and transfer of your
+            Personal Information as set out in this Privacy Policy. If you do
+            not agree with the terms of this Privacy Policy, please do not
+            use/access this Website or application.
           </p>
           <p className={styles.para}>
-            The terms “We” / “Us” / “Our”/”Company” individually and
-            collectively refer to Surgeup Technologies Private Limited and the
-            terms “You” /”Your” / “Yourself” refer to the <strong>Users</strong>
-            .
+            We will review this Privacy Policy from time to time to make sure it
+            is up to date. If you are just a visitor, then please note that this
+            Privacy Policy is subject to change at any time without notice. To
+            make sure you are aware of any changes, please review this Policy
+            periodically. If you are our registered user, we will notify you
+            before we make changes to this Policy and give you the opportunity
+            to review the revised Policy before you choose to continue using our
+            services.
           </p>
           <p className={styles.para}>
-            This Privacy Policy is an electronic record in the form of an
-            electronic contract formed under the information Technology Act,
-            2000 and the rules made thereunder and the amended provisions
-            pertaining to electronic documents / records in various statutes as
-            amended by the information Technology Act, 2000. This Privacy Policy
-            does not require any physical, electronic or digital signature.
+            By Personal Information, we mean any information that can either
+            itself identify you as an individual ("Personally Identifying
+            Information") or that can be connected to you indirectly by linking
+            it to Personally Identifying Information. Please note that usage of
+            the term Personal Information in this Privacy Policy includes
+            sensitive personal data or information, wherever appropriate and/or
+            mandated under applicable laws.
+          </p>{" "}
+          <p className={styles.heading}>COLLECTION OF INFORMATION</p>{" "}
+          <p className={styles.para}>
+            As a visitor, you can browse our website or application to find out
+            more about our platform. You are not required to provide us with any
+            Personal Information as a visitor. When you visit the Website or
+            application, we collect and store certain information to improve
+            security, analyse trends and administer the Website and application
+            with a view to assist us in improving customer experience. We use
+            this information to evaluate traffic patterns on our platform so
+            that we can make it more useful to our visitors.
           </p>{" "}
           <p className={styles.para}>
-            This Privacy Policy is a legally binding document between you and
-            Surgeup Technologies Private Limited (both terms defined below). The
-            terms of this Privacy Policy will be effective upon your acceptance
-            of the same (directly or indirectly in electronic form, by clicking
-            on the I accept tab or by use of the website or by other means) and
-            will govern the relationship between you and First Pay Technologies
-            Private Limited for your use of the website “Services”.
+            We collect your Personal Information when you register with us, when
+            you express an interest in obtaining information about us or our
+            products and services, when you participate in activities on our
+            platform or otherwise contact us.
           </p>{" "}
           <p className={styles.para}>
-            This document is published and shall be construed in accordance with
-            the provisions of the Information Technology (reasonable security
-            practices and procedures and sensitive personal data of information)
-            rules, 2011 under Information Technology Act, 2000; that require
-            publishing of the Privacy Policy for collection, use, storage and
-            transfer of sensitive personal data or information.
+            We will only collect your Personal Information if we have a proper
+            reason for doing so, e.g.: to comply with our legal and regulatory
+            obligations; for the performance of our contract with you or to take
+            steps at your request before entering into a contract; for our
+            legitimate interests (where permitted by law) or those of a third
+            party; or where you have given consent.
+          </p>
+          <p className={styles.para}>
+            In some cases, we may also have a legal obligation to collect
+            Personal Information from you or may otherwise need the Personal
+            Information to protect your vital interests or those of another
+            person (for example, to prevent payment fraud or confirm your
+            identity.){" "}
+          </p>
+          <p className={styles.para}>
+            Our primary goal in collecting your Personal Information is to
+            provide you a safe, efficient, smooth, and customized experience.
+            This allows us to provide courses, study material, tutorials,
+            educational games that most likely meet your needs and to customize
+            our Platform to make your experience safer and easier. We also use
+            your Personally Identifiable Information together with other
+            information to help us better understand our users and to improve
+            the content and functionality of our Platform. The information we
+            learn from you helps us personalize and continually improve your
+            experience at our Platform. We do not voluntarily make this
+            information available to third parties, nor do we use it for any
+            other purpose, except as set out herein.
+          </p>
+          <p className={styles.para}>
+            When you visit our Platform, as part of a purchase of products and
+            services or registering on our platform, we may collect a variety of
+            Personal Information that you will voluntarily provide to us via one
+            of our contact forms, via a chat or phone session, such as:
+          </p>
+          <ul>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              Contact Information, such as name, email address, display picture,
+              mailing address, phone number, IP address, geographic location, or
+              phone number.{" "}
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              Billing Information, such as debit card number, credit card number
+              and billing address.
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              Unique Identifiers, such as username or password.
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              Reviews or ratings, account settings, (including preferences set
+              in the " Account " section of our platform); and
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              Information provided to us through our service, interaction with
+              our customer service, participation in surveys or marketing
+              promotions.
+            </li>
+          </ul>
+          <p className={styles.para}>
+            We collect information about you and your use of our service, your
+            interactions with us as well as information regarding your computer
+            or other device used to access our service. This information
+            includes your activity on our platform, details of your interactions
+            with customer service , such as the date , time and reason for
+            contacting us, transcripts of any chat conversations, and if you
+            call us , your phone number and call recordings; device IDs or other
+            unique identifiers, device and software characteristics (such as
+            type and configuration), connection information, statistics on page
+            views , referring source (for example, referral URLs), IP address
+            (which may tell us your general location), browser and standard web
+            server log information, information collected via the use of
+            cookies, web beacons and other technologies.
           </p>{" "}
           <p className={styles.para}>
-            Please read this Privacy Policy carefully by using the Services, you
-            indicate that you understand, agree and consent to this Privacy
-            Policy. If you do not agree with the terms of this Privacy Policy,
-            please do not use the Services.
-          </p>{" "}
-          <p className={styles.para}>
-            By providing us your Information or by making use of the facilities
-            provided by the Service, You hereby consent to the collection,
-            storage, processing and transfer of any or all of Your Personal
-            Information and Non-Personal Information by us as specified under
-            this Privacy Policy. You further agree that such collection, use,
-            storage and transfer of Your Information shall not cause any loss or
-            wrongful gain to you or any other person.
-          </p>
-          <h1 className={styles.heading}>What is Upsurge?</h1>
-          <p className={styles.para}>
-            Upsurge is a financial literacy education platform that teaches
-            children powerful life-changing money management skills. From our
-            entertaining and captivating digital game where students learn
-            comprehensive money concepts to our integrated curriculum for
-            teachers to connect student play with classroom learning, Surgeup
-            has created a complete program to teach financial literacy.
-            Furthermore, we support parents with supplemental material allowing
-            them to join their children in the journey to achieving financial
-            literacy.
+            If you use a feature that requires payment of a fee options like
+            NEFT, or Card will appear. In case of payments via credit or debit
+            card, we will redirect you to registered payment gateways such as
+            razorpay and other such registered gateways. You may store and save
+            your payment details like card numbers with the gateway. We do not
+            have access to this data. All payment transactions are processed
+            through secure payment gateway providers. We do not store any card
+            information (other than the last 4 digits of your card) in our
+            servers.
           </p>
           <p className={styles.para}>
-            Surgeup teaches financial literacy concepts through captivating
-            challenges designed to be played as games. Children access the
-            online game where they play a series of challenges and earn rewards
-            in the form of coins. Children can spend these coins in the virtual
-            store to buy virtual items. These virtual items can be placed within
-            the virtual world to create their own unique world.
-          </p>
-          <h1 className={styles.heading}>1. Account Users</h1>
-          <p className={styles.para}>
-            Users of the Services include Parent User, Child User and, Educator
-            User (see Terms and Conditions).
-          </p>
-          <h1 className={styles.heading}>
-            2. What Information Does Upsurge Collect?
-          </h1>
-          <p className={styles.para}>
-            Upsurge collects the following information:
-          </p>
-          <p className={styles.subheading}>
-            <strong>A. User Provided Information</strong>
-          </p>{" "}
-          <p className={styles.para}>
-            Upsurge and our third party service providers collect information
-            that Users provide when using the Services.
-          </p>
-          <p className={styles.para}>Parent User</p>
-          <p className={styles.para}>
-            A Parent User must register for an account. Parent Users are
-            required to provide information including first and last name, email
-            address, password, and country. This information is used for
-            identification purposes and allows Parent Users to access the
-            Services. Payment information will also be collected from Parent
-            Users who purchase a Premium Membership (see Terms and Conditions).
-            Upsurge does not directly store credit card information. All credit
-            card information is stored by our third party payment processor.{" "}
-          </p>
-          <p className={styles.para}>Child User</p>
-          <p className={styles.para}>
-            Upsurge only collects the minimum amount of information to allow for
-            a personalized learning experience and to facilitate monitoring from
-            parents and educators. A Parent User must sign up his/her child.
-            Upsurge will ask for a Parent User to input a child’s name, grade
-            level and create a unique username/password combination. The Child
-            user will log in with the username/password combination. If the
-            Child user loses his/her password, the parent has sole authority to
-            change the password.
-          </p>
-          <p className={styles.para}>Educator User</p>
-          <p className={styles.para}>
-            Educator Users are required to provide information including first
-            and last name, email address, password, grade level, school, and
-            country. Educators can access the Services with an email address and
-            password.
-          </p>
-          <p className={styles.subheading}>
-            B. Information Collected From Users
+            When you use one of our paid products, we track the web pages, and
+            information that has been accessed by you, and store it on our
+            servers. This enables us to track items that you have completed, and
+            those that you need to see.
           </p>
           <p className={styles.para}>
-            Upsurge and our third party service providers may also collect
-            certain information automatically while you are using our Services
-            in order to help us improve our services and provide a more
-            customized learning experience to our Users. This collected
-            information includes but is not limited to: location, device,
-            session information, browser, cookies, and game play information.
+            Upsurge can use technologies such as cookies, clear gifs, log files,
+            and flash cookies for several purposes, including to help understand
+            how you interact with our platform and services, to provide a better
+            experience.
           </p>
-          <p className={styles.subheading}>C. Cookies</p>
+          <p className={styles.heading}>USAGE AND RETENTON OF INFORMATION </p>
           <p className={styles.para}>
-            To improve the responsiveness of the sites for our users, we may use
-            “cookies”, or similar electronic tools to collect information to
-            assign each visitor a unique, random number as a User Identification
-            (User ID) to understand the user’s individual interests using the
-            Identified Computer. Unless you voluntarily identify yourself
-            (through registration, for example), we will have no way of knowing
-            who you are, even if we assign a cookie to your computer. The only
-            personal information a cookie can contain is information you supply
-            (an example of this is when you ask for our Personalised Horoscope).
-            A cookie cannot read data off your hard drive. Our advertisers may
-            also assign their own cookies to your browser (if you click on their
-            ads), a process that we do not control.{" "}
+            We use the Personal Information we collect, where it is necessary to
+            deliver the services, you have requested, where it is necessary to
+            exercise or comply with legal rights or obligations or for normal
+            business purposes of the kind set out in this Policy.
           </p>
           <p className={styles.para}>
-            Our web servers automatically collect limited information about your
-            computer’s connection to the Internet, including your IP address,
-            when you visit our site. (Your IP address is a number that lets
-            computers attached to the Internet know where to send you data —
-            such as the web pages you view.) Your IP address does not identify
-            you personally. We use this information to deliver our web pages to
-            you upon request, to tailor our site to the interests of our users,
-            to measure traffic within our site and let advertisers know the
-            geographic locations from where our visitors come.
+            We will use your Personal Information to provide, analyze,
+            administer, and improve our services, to provide you with a
+            personalized experience on our Platform (especially, by offering you
+            services that is best suited for you), to contact you about your
+            account and our services, to provide you customer service, to
+            provide you with personalized marketing and to detect, prevent,
+            mitigate and investigate fraudulent or illegal activities.
           </p>
           <p className={styles.para}>
-            All required information is service dependent and we may use the
-            above said user information to, maintain, protect, and improve its
-            services (including advertising services) and for developing new
-            services
+            We further use your Personal Information to determine your general
+            geographic location and recommendations, determine your internet
+            service provider, and help us quickly and efficiently respond to
+            inquiries and requests and enforcing our terms (such as determining
+            free trial eligibility) and communicate with you concerning our
+            service (for example by email, push notifications, text messaging
+            ,and online messaging channels), so that we can send you details
+            about new features and content available on the platform, special
+            offers, promotional announcements, surveys, and to assist you with
+            operational requests such as password reset requests.
           </p>
           <p className={styles.para}>
-            Such information will not be considered as sensitive if it is freely
-            available and accessible in the public domain or is furnished under
-            the Right to Information Act, 2005 or any other law for the time
-            being in force.
+            Upsurge is a community. We offer several features that allow members
+            to connect and communicate in public or semi-public spaces, such as
+            Forums and Teams. Please be sensible and judge before posting in
+            these community spaces or sharing your Personal Information with
+            others on Upsurge. Be aware that any Personal Information you submit
+            there can be read, collected, or used by others, or could be used to
+            send you unsolicited messages.
           </p>
-          <p className={styles.heading}>3. Links to the Other Sites</p>
           <p className={styles.para}>
-            Our policy discloses the privacy practices for our own services
-            only. Our site provides links to other websites also that are beyond
-            our control. We shall in no way be responsible in way for your use
-            of such sites.
+            Upsurge do not retain your Personal Information for longer than is
+            required for the purposes for which the information may be lawfully
+            used.
           </p>
           <p className={styles.heading}>
-            4. How Does Upsurge Keep My Information Secure?
+            SHARING AND DISCLOSING PERSONAL INFORMATION{" "}
           </p>
           <p className={styles.para}>
-            The security of your personal information is of utmost importance to
-            us. We use industry best practices and standards to safeguard the
-            information collected by the Services. Please be aware that no
-            system is 100% secure and we are not responsible for the security of
-            information transmitted over networks that are not in our control
-            such as internet and wireless networks.
+            We use other companies, agents, or contractors ("Service Providers")
+            to perform services on our behalf or to assist us with the provision
+            of services to you. We engage Service Providers to provide
+            marketing, advertising, communications, infrastructure, and IT
+            services, to personalize and optimize our service, to process credit
+            card transactions or other payment methods, to provide customer
+            service, to collect debts, to analyze and enhance data (including
+            data about users’ interactions with our service), and to process and
+            administer consumer surveys. In the course of providing such
+            services, these Service Providers may have access to your Personal
+            Information or other information. We do not authorize them to use or
+            disclose your Personal Information except in connection with
+            providing their services.
           </p>
           <p className={styles.para}>
-            We take appropriate security measures to protect against
-            unauthorized access to or unauthorized alteration, disclosure or
-            destruction of data. These include internal reviews of our data
-            collection, storage and processing practices and security measures,
-            including appropriate encryption and physical security measures to
-            guard against unauthorized access to systems where we store personal
-            data.
+            Note to our customers in Europe: We transfer your Personal
+            Information from the European Economic Area a to India. By
+            submitting your data and/or using our services, you consent to the
+            transfer, storing, and processing of your Personal Information in
+            India.
+          </p>
+          <p className={styles.heading}>SECURITY</p>
+          <p className={styles.para}>
+            We shall try to take all precautions to protect the Personal
+            Information both online and offline. We will try to protect your
+            information using technical and administrative security measures to
+            reduce the risks of loss, misuse, unauthorized access, disclosure,
+            and alteration. We have standard SSL certification which basically
+            helps us create a secure connection between our server and user to
+            render any information or action. Some of the safeguards we use are
+            firewalls and data encryption, physical access controls to our data
+            centers and information access authorization controls. Only user
+            passwords are encrypted and stored because generally users use the
+            same password on multiple sites, to prevent any kind of theft,
+            piracy, or unauthorized access. If you believe your account has been
+            abused or hacked, please contact us by sending us an email at
+            karan@upsurgefi.com.
           </p>
           <p className={styles.para}>
-            All information gathered on our Services are securely stored within
-            our controlled database. The database is stored on servers secured
-            behind a firewall; access to the servers is password-protected and
-            is strictly limited. However, as effective as our security measures
-            are, no security system is impenetrable. We cannot guarantee the
-            security of our database, nor can we guarantee that information you
-            supply will not be intercepted while being transmitted to us over
-            the Internet. And, of course, any information you include in a
-            posting to the discussion areas is available to anyone with Internet
-            access.{" "}
+            We do not sell, transfer, or rent your Personal Information to third
+            parties for their marketing purposes without your explicit consent
+            and we only use your information as described in the Privacy Policy.
+            We view protection of your privacy as a very important community
+            principle. We understand clearly that you and your Personal
+            Information is one of our most important assets.{" "}
           </p>
           <p className={styles.para}>
-            However as the internet is an ever evolving medium. We may change
-            our Privacy Policy from time to time to incorporate necessary future
-            changes. Of course, our use of any information we gather will always
-            be consistent with the policy under which the information was
-            collected, regardless of what the new policy may be.
+            We store and process your Personal Information on computers located
+            in India that are protected by physical as well as technological
+            security devices. We use third parties to verify and certify our
+            privacy principles. If you object to your Personal Information being
+            transferred or used in this way, please do not accept this Privacy
+            Policy.
+          </p>
+          <p className={styles.para}>
+            Under no circumstances, we rent, trade, transfer or share your
+            Personal Information that we have collected with any other company
+            for their marketing purposes without your consent. We reserve the
+            right to communicate your Personal Information to any third party
+            that makes a legally compliant request for its disclosure.
           </p>
           <p className={styles.heading}>
+            KEEPING YOUR PERSONAL INFORMATION SECURE
+          </p>
+          <p className={styles.para}>
+            We have appropriate security measures to prevent your Personal
+            Information from being accidentally lost or used or accessed
+            unlawfully. Processing your Personal Information will be done only
+            in an authorized manner and subject to a duty of confidentiality. We
+            also have procedures in place to deal with any suspected data
+            security breach. We will notify you about any applicable regulator
+            of a suspected data security breach where we are legally required to
+            do so.
+          </p>
+          <p className={styles.para}>
+            Notwithstanding anything contained anywhere in this Policy; we
+            cannot assure absolute security to your Personal Information and by
+            entering or by logging into our Platform, you explicitly agree not
+            to sue us for any data breach.
+          </p>
+          <p className={styles.COOKIES}>
             5. What Does Upsurge Share With Third Parties?
           </p>{" "}
           <p className={styles.para}>
-            We share the sensitive personal information to any third party
-            without obtaining the prior consent of the user in the following
-            limited circumstances:
+            We transfer cookies, which are small files containing a string of
+            character, to your IP address, giving the browser distinct
+            identification, to keep track of the user’s preferences.
+            Furthermore, these files also help in logging-in faster and they act
+            as a mechanism to determine user trends. The data thus retrieved
+            from the user’s IP address, enables us to enhance our offers,
+            including but not limited to more content in areas of greater
+            interest to most users.
           </p>
           <p className={styles.para}>
-            (a) When it is requested or required by law or by any court or
-            governmental agency or authority to disclose, for the purpose of
-            verification of identity, or for the prevention, detection,
-            investigation including cyber incidents, or for prosecution and
-            punishment of offences. These disclosures are made in good faith and
-            belief that such disclosure is reasonably necessary for enforcing
-            these Terms; for complying with the applicable laws and regulations.{" "}
+            Our platform uses "Cookies" to identify the areas of our website or
+            mobile application that you have visited. A Cookie is a small piece
+            of data stored on your computer or mobile device by your web
+            browser. We use Cookies to personalize the Content that you see on
+            our platform. Most web browsers can be set to disable the use of
+            Cookies. However, if you disable Cookies, you may not be able to
+            access functionality on our Platform correctly or at all. We never
+            place Personally Information in Cookies.
+          </p>
+          <p className={styles.heading}>THIRD PARTIES AND LINKS</p>
+          <p className={styles.para}>
+            We may pass your details to other companies in our group. We may
+            also pass your details to our agents and subcontractors to help us
+            with any of our uses of your data set out in our Privacy Policy. For
+            example, we may use third parties to assist us with delivering
+            services to you, to help us to collect payments from you, to analyse
+            data and to provide us with marketing or customer service
+            assistance.
           </p>
           <p className={styles.para}>
-            (b) We propose to share such information within its group companies
-            and officers and employees of such group companies for the purpose
-            of processing personal information on its behalf. We also ensure
-            that these recipients of such information agree to process such
-            information based on our instructions and in compliance with this
-            Privacy Policy and any other appropriate confidentiality and
-            security measures.
+            We may exchange information with third parties for the purposes of
+            fraud protection and credit risk reduction. We may transfer our
+            databases containing your Personal Information if we sell our
+            business or part of it. Other than as set out in this Privacy
+            Policy, we shall NOT sell or disclose your Personal Information to
+            third parties without obtaining your prior consent unless it is
+            necessary for the purposes set out in this Privacy Policy or unless
+            we are required to do so by law. The platform may contain
+            advertising of third parties and links to other sites or frames of
+            other sites. Please be aware that we are not responsible for the
+            privacy practices or content of those third parties or other sites,
+            nor for any third party to whom we transfer your data in accordance
+            with our Privacy Policy.
           </p>
           <p className={styles.para}>
-            Upsurge will never sell your data to third parties. Information
-            collected from users will only be disclosed to third parties
-            necessary for the operation of the business and Services such as to
-            payment processors. We do not disclose the personal information of
-            any Child User to third parties for marketing or promotional
-            purposes. Upsurge may share non-identifiable information, such as
-            data on percentage of Users, with the public for marketing purposes
-            but will not contain any specific personal information about
-            individual Users.{" "}
+            Our Platform may contain links to other websites that are not under
+            our direct control. These websites may have their own policies
+            regarding privacy. We have no control of or responsibility for
+            linked websites and provide these links solely for the convenience
+            and information of our visitors. You are accessing such linked
+            websites shall be at your own risk. These websites are not subject
+            to this Privacy Policy. You should check the privacy policies, if
+            any, of those individual websites to see how the operators of those
+            third-party websites will utilize your personal information. In
+            addition, these websites may contain a link to websites of our
+            affiliates. The websites of our affiliates are not subject to this
+            Privacy Policy, and you should check their individual privacy
+            policies to see how the operators of such websites will utilize your
+            personal information.
+          </p>
+          <p className={styles.heading}>CONSULTING</p>
+          <p className={styles.para}>
+            We use third parties to help us provide services to You including
+            the fulfilment of service, processing of payments, monitoring site
+            activity, conducting surveys, maintaining our database,
+            administering emails, and administering contents, and to provide
+            aggregate, comparative information on the performance of our
+            platform to us and a select group.{" "}
+          </p>
+          <p className={styles.heading}>CHOICE </p>
+          <p className={styles.para}>
+            It is open for you to customize our usage of your personal
+            information to communicate with you, to send you marketing
+            information, how we provide you with customized and relevant
+            advertising, and whether you want to stay signed into your account.
+          </p>
+          <p className={styles.para}>
+            If you do not wish to receive marketing communications from us, you
+            can unsubscribe from the link in the email you would receive or
+            change your communication preferences or indicate your communication
+            preferences. You can also reach us via chat, WhatsApp, call or email
+            to block promotional communication to you. Keep in mind, we do not
+            sell or rent your personal information to third parties for their
+            marketing purposes without your explicit consent.{" "}
+          </p>
+          <p className={styles.heading}>OWNERSHIP OF RIGHTS</p>
+          <p className={styles.para}>
+            All rights, including copyright, in this platform are owned by or
+            licensed to us. Any use of this Website and mobile application or
+            its contents, including copying or storing it or them in whole or
+            part, other than for your own personal, non-commercial use is
+            prohibited without our permission. You are prohibited from
+            modifying, copying, distributing, transmitting, displaying,
+            printing, publishing, selling, licensing, creating derivative works
+            or using any content available on or through our platform for
+            commercial or public purposes. You may not modify, distribute or
+            re-post something on this platform for any purpose.
+          </p>
+          <p className={styles.para}>
+            The Site contains copyrighted material, trademarks, and other
+            proprietary information, including, but not limited to, text,
+            software, photos, video, graphics, music, sound, and the entire
+            contents of Upsurge is protected by copyright as a collective work
+            under the applicable copyright laws. Upsurge owns a copyright in the
+            selection, coordination, arrangement, and enhancement of such
+            content, as well as copyright or license to use in the content
+            original to it. You may not modify, publish, transmit, participate
+            in the transfer or sale, create derivative works, or in any way
+            exploit, any of the content, in whole or in part. You may download /
+            print / save copyrighted material for your personal use only. Except
+            as otherwise expressly stated under copyright law, no copying,
+            redistribution, retransmission, publication, or commercial
+            exploitation of downloaded material without the express permission
+            of Upsurge is permitted. If copying, redistribution, or publication
+            of copyrighted material is expressly permitted by Upsurge, then no
+            changes in or deletion of author attribution, trademark legend or
+            copyright notice shall be made.
+          </p>
+          <p className={styles.para}>
+            You acknowledge that you do not acquire any ownership rights by
+            downloading copyrighted material. Trademarks that are located within
+            or on our Website or a website otherwise owned or operated in
+            conjunction with Upsurge shall not be deemed to be in the public
+            domain but rather the exclusive property of Upsurge, unless such
+            site is under license from the trademark owner thereof in which case
+            such license is for the exclusive benefit and use of Upsurge, unless
+            otherwise stated.
+          </p>
+          <p className={styles.para}>
+            Upsurge does not have any express burden or responsibility to
+            provide you with indications, markings, or anything else that may
+            aid you in determining whether the material in question is
+            copyrighted or trademarked. You shall be solely liable for any
+            damage resulting from any infringement of copyrights, trademarks,
+            proprietary rights or any other harm resulting from such a
+            submission. By submitting material to any public area of the
+            Website, you warrant that the owner of such material has expressly
+            granted Upsurge the royalty-free, perpetual, irrevocable,
+            non-exclusive right and license to use, reproduce, modify, adapt,
+            publish, translate and distribute such material (in whole or in
+            part) worldwide and/or to incorporate it in other works in any form,
+            media or technology now known or hereafter developed for the full
+            term of any copyright that may exist in such material. You also
+            permit any other end user to access, view, store or reproduce the
+            material for that end user's personal use. You hereby grant Upsurge,
+            the right to edit, copy, publish and distribute any material made
+            available on the Platform by you. If you come across any abuse or
+            violation of these Terms, please report to karan@upsurgefi.com.
           </p>
           <p className={styles.heading}>
-            6. How Do I change or Delete My Information?
+            YOUR RIGHTS IN RELATION TO PERSONAL INFORMATION COLLECTED BY US
           </p>
           <p className={styles.para}>
-            Users can view, change, or delete their account information by
-            updating the information from within the Services or contacting us
-            and make a request to delete their personal information from our
-            records. Upsurge will make best efforts to do this in a timely
-            manner.
+            You have the right to withdraw your consent at any time in writing
+            by sending an e-mail to us at karan@upsurgefi.com, in accordance
+            with the terms of this Privacy Policy. However, please note that
+            withdrawal of consent will not be retrospective in nature and shall
+            be applicable prospectively.
           </p>
-          <p className={styles.heading}>7. Changes to Our Privacy Policy</p>
           <p className={styles.para}>
-            We are committed to keeping your data secure and will follow best
-            practices and do our best to keep this Privacy Policy up-to-date.
-            Whenever the Privacy Policy is updated, we will notify you by
-            posting the revised Privacy Policy through our website, within the
-            Services, or via email.
+            You may write to us at karan@upsurgefi.com to access, review, modify
+            or correct your Personal Information or withdraw your consent to
+            provide Personal Information. We are not responsible for the
+            authenticity of the information provided by you.
+          </p>
+          <p className={styles.para}>
+            You agree and acknowledge that Your right to access, modify and/or
+            withdrawing Your consent to provide Personal Information as
+            mentioned above may be denied or limited by us, as may be required
+            under any applicable law, law enforcement requests or under any
+            judicial proceedings.{" "}
+          </p>
+          <p className={styles.para}>
+            Under Rule 5 (5) of the Rule 5 (5) of the Information Technology
+            (Reasonable Security Practices and Procedures and Sensitive Personal
+            Data or Information) Rules, 2011 (“<strong>Rules</strong>”) any data
+            (personal information and sensitive personal information) collected
+            by us from you, shall not be used for any purpose other than what
+            was specified at the time of its collection. Under Rule 5(6) of the
+            Rules, you have a right to ask us to review, correct and amend the
+            information we collect about you at any point in time. Under Rule
+            5(7) of the Rules, you also have the right to revoke your consent to
+            the collection of your information going forward. However, please
+            note that revoking your consent may negatively affect your use of
+            the Platform{" "}
+          </p>
+          <p className={styles.heading}>CONDITIONS OF USE </p>
+          <p className={styles.para}>
+            Licensee does not warrant that this Website or Mobile application,
+            its servers, or email sent by us or on our behalf are virus free. We
+            will not be liable for any damages of any kind arising from the use
+            of this platform, including, but not limited to compensatory,
+            direct, indirect, incidental, punitive, special, or consequential
+            damages, loss of data, goodwill, business opportunity, income or
+            profit, loss of or damage to property and claims of third parties.{" "}
+          </p>
+          <p className={styles.heading}>GRIEVANCE OFFICER</p>
+          <p className={styles.para}>
+            Any discrepancies and grievances with respect to processing of
+            Personal Information shall be informed to the designated Grievance
+            Officer as mentioned below:
+            <br /> Name: Karan Baweja
+            <br />
+            Designation: Grievance Officer
+            <br />
+            Grievance Officer Email ID: karan@upsurgefi.com
+          </p>
+          <p className={styles.heading}>CONSENT TO THE POLICY </p>
+          <p className={styles.para}>
+            The Terms of Use Agreement is incorporated herein by reference in
+            its entirety.
+          </p>
+          <p className={styles.heading}>GENERAL </p>
+          <p className={styles.heading}>Modification: </p>
+          <p className={styles.para}>
+            We may at any time modify the Terms of Use of our Website without
+            any prior notification to you. Should you wish to terminate your
+            account due to a modification to the Terms or the Privacy Policy,
+            you may do so email us at karan@upsurgefi.com. However, if you
+            continue to use the service you shall be deemed to have agreed to
+            accept and abide by the modified Terms of this Website.{" "}
+          </p>
+          <p className={styles.heading}>Privileged/Exclusive Service: </p>
+          <p className={styles.para}>
+            By having an Upsurge account, you have explicitly given consent for
+            us to capture images (followed by analysis), camera/mic permissions
+            to make video calls and record the same. Upsurge May Disclose
+            Information:
+          </p>
+          <ul>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              as required by law, such as to comply with a subpoena, or similar
+              legal process;{" "}
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              to enforce applicable ToU (Terms of Use), including investigation
+              of potential violations thereof;
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              when we believe in good faith (doctrine of uberrima fides) that
+              the disclosure is necessary to protect our rights, protect your
+              safety or the safety of others, investigate fraud, address
+              security or technical issues or respond to a government request;
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              with our trusted service providers who work on our behalf and do
+              not have an independent use of the information we disclose to them
+              and have agreed to and adhered to the rules set forth in this
+            </li>
+          </ul>
+          <p className={styles.heading}>Policy: </p>
+          <ul>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              to protect against imminent harm to the rights, property or safety
+              of the Application/Website or our users or the public as required
+              or permitted by law;{" "}
+            </li>
+            <li
+              className={styles.subheading}
+              style={{ marginLeft: "20px", paddingLeft: "10px" }}
+            >
+              with third party service providers in order to personalize the
+              Application/Website/Services/products for a better user experience
+              and to perform behavioral analysis;{" "}
+            </li>
+          </ul>
+          <p className={styles.heading}>Governing Law and Jurisdiction:</p>
+          <p className={styles.para}>
+            In the event of any dispute arising between the parties with respect
+            to this Agreement, the same shall be referred to the Sole Arbitrator
+            appointed by the company and the arbitration shall be in accordance
+            with Arbitration and Conciliation Act of 1996. The language of
+            arbitration proceedings shall be English. The seat and place of
+            arbitration shall be Delhi and the decision of the Arbitrator shall
+            be final and binding on both parties herein. This contract shall be
+            subject to the exclusive jurisdiction of courts in Delhi, India and
+            shall be governed by the Indian laws.
           </p>
         </div>
       )}

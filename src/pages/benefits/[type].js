@@ -11,6 +11,7 @@ import LeftPanel from "../../components/LeftPanel";
 function BenfitsPage() {
   const router = useRouter();
   const type = router.query.type;
+  const [stickyheader, setstickyheader] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -34,11 +35,25 @@ function BenfitsPage() {
       }
     }
   }, [type]);
+
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
+
   return (
     <div>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel
