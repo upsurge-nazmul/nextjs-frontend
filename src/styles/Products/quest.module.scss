@@ -87,19 +87,86 @@
         color: #1f1f1f;
       }
     }
-    .button {
+    // .button {
+    //   display: flex;
+    //   flex-direction: row;
+    //   align-items: center;
+    //   justify-content: center;
+    //   padding: 12px 32px;
+    //   width: 186px;
+    //   height: 48px;
+    //   background: #4166eb;
+    //   border-radius: 6px;
+    //   color: white;
+    //   margin-top: 34px;
+    //   cursor: pointer;
+    // }
+    .signupBox {
+      width: 23vw;
+      min-width: fit-content;
+      min-height: 50px;
+      height: 50px;
       display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: center;
-      padding: 12px 32px;
-      width: 186px;
-      height: 48px;
-      background: #4166eb;
-      border-radius: 6px;
-      color: white;
-      margin-top: 34px;
-      cursor: pointer;
+      overflow: hidden;
+      margin-top: 20px;
+      .input {
+        outline: none;
+        border: none;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border: 1px solid #4166eb;
+        width: 55%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 20px;
+        padding-left: 15px;
+        ::placeholder {
+          color: rgba(198, 198, 198, 1);
+        }
+      }
+      .button {
+        width: 45%;
+        min-width: fit-content;
+        font-size: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        height: 100%;
+        padding: 0 20px;
+        color: white;
+        background-color: hsl(227, 81%, 59%);
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(227, 100%, 59%);
+        }
+      }
+      .joinButton {
+        width: 45%;
+        min-width: fit-content;
+        font-size: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        height: 100%;
+        padding: 0 20px;
+        color: white;
+        background-color: hsl(227, 81%, 59%);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(227, 100%, 59%);
+        }
+      }
     }
   }
 }
@@ -157,13 +224,6 @@
         .concept {
           font-size: 12px;
         }
-      }
-      .button {
-        padding: 12px 22px;
-        width: 156px;
-        height: 45px;
-        margin-top: 24px;
-        font-size: 14px;
       }
     }
   }
@@ -227,13 +287,6 @@
         .concept {
           font-size: 12px;
         }
-      }
-      .button {
-        padding: 12px 22px;
-        width: 156px;
-        height: 45px;
-        margin-top: 24px;
-        font-size: 14px;
       }
     }
   }

@@ -29,12 +29,32 @@ function Footer() {
         <div className={styles.right}>
           <div className={styles.column}>
             <p className={styles.heading}>Products</p>
-            <p className={styles.subheading}>Knowledge Quests</p>
-            <p className={styles.subheading}>Games Arena</p>
-            <p className={styles.subheading}>Chores</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/products/quest")}
+            >
+              Knowledge Quests
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/products/games")}
+            >
+              Games Arena
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/products/chores")}
+            >
+              Chores
+            </p>
             {/* <p className={styles.subheading}>Family Fun</p> */}
             {/* <p className={styles.subheading}>Tribes</p> */}
-            <p className={styles.subheading}>Live Classes</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/products/liveclasses")}
+            >
+              Live Classes
+            </p>
           </div>
           <div className={styles.column}>
             <p className={styles.heading}>Resources</p>
@@ -86,13 +106,13 @@ function Footer() {
             </p>
             <p
               className={styles.subheading}
-              // onClick={() => router.push("/calculators/carLoan")}
+              onClick={() => router.push("/calculators/education")}
             >
               Education Loan Calculator
             </p>
             <p
               className={styles.subheading}
-              // onClick={() => router.push("/calculators/carLoan")}
+              onClick={() => router.push("/calculators/sip")}
             >
               SIP Loan Calculator
             </p>
@@ -231,11 +251,21 @@ function Footer() {
           )}
         </div>
         <div className={styles.socials}>
-          <Fb className={styles.social} />
-          <Twitter className={styles.social} alt="" />
-          <Insta className={styles.social} />
-          <YtSvg className={styles.socialyt} />
-          <LinkedIN className={styles.socialyt} />
+          <a href="https://www.facebook.com/upsurgeindia/">
+            <Fb className={styles.social} />
+          </a>
+          {/* <a href="">
+            <Twitter className={styles.social} alt="" />
+          </a> */}
+          <a href="https://www.instagram.com/upsurge.india/">
+            <Insta className={styles.social} />
+          </a>
+          {/* <a href="">
+            <YtSvg className={styles.socialyt} />
+          </a> */}
+          <a href="https://www.linkedin.com/company/upsurgeindia/">
+            <LinkedIN className={styles.socialyt} />
+          </a>
         </div>
         <div className={styles.bottom}>
           <p className={styles.heading}>© Surgeup Technologies Pvt Ltd.</p>
@@ -300,11 +330,21 @@ function Footer() {
         </div>
 
         <div className={styles.socials}>
-          <Fb className={styles.social} />
-          <Twitter className={styles.social} alt="" />
-          <Insta className={styles.social} />
-          <YtSvg className={styles.socialyt} />
-          <LinkedIN className={styles.socialyt} />
+          <a href="https://www.facebook.com/upsurgeindia/">
+            <Fb className={styles.social} />
+          </a>
+          {/* <a href="">
+            <Twitter className={styles.social} alt="" />
+          </a> */}
+          <a href="https://www.instagram.com/upsurge.india/">
+            <Insta className={styles.social} />
+          </a>
+          {/* <a href="">
+            <YtSvg className={styles.socialyt} />
+          </a> */}
+          <a href="https://www.linkedin.com/company/upsurgeindia/">
+            <LinkedIN className={styles.socialyt} />
+          </a>
         </div>
       </div>
     </div>

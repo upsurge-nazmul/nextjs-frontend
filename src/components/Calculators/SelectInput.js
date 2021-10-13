@@ -48,14 +48,21 @@ export default function SelectInput({
             <div className={styles.topBlock}>
               <div className={styles.signAndValue}>
                 <input
-                  type="number"
                   value={selected}
                   max={max}
                   min={min}
                   onChange={(e) => {
-                    if (e.target.value && !isNaN(e.target.value))
+                    if (!e.target.value) {
+                      setselected("");
+                      setvalue("");
+                    } else if (
+                      e.target.value &&
+                      !isNaN(e.target.value) &&
+                      e.target.value != 0
+                    ) {
                       setselected(e.target.value);
-                    setvalue(e.target.value);
+                      setvalue(e.target.value);
+                    }
                   }}
                 />
                 {sign && <p className={styles.sign}>{sign}</p>}

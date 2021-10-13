@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Products/quest.module.scss";
 import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 
-export default function KnowledgeQuest() {
+export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
+  const [showinput, setshowinput] = useState(false);
   const democoncepts = [
     "Investing",
     "Saving",
@@ -50,7 +51,27 @@ export default function KnowledgeQuest() {
             );
           })}
         </div>
-        <div className={styles.button}>Join the waitlist</div>
+        <div className={styles.signupBox}>
+          {showinput && (
+            <input
+              className={styles.input}
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          )}
+          {!showinput ? (
+            <div
+              className={styles.joinButton}
+              onClick={() => setshowinput(true)}
+            >
+              Join the waitlist
+            </div>
+          ) : (
+            <div className={styles.button} onClick={check}>
+              Join
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

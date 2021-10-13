@@ -26,19 +26,70 @@
       text-align: center;
       color: #000000f0;
     }
-    .button {
+    .signupBox {
+      width: 23vw;
+      min-width: fit-content;
+      min-height: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 32px;
-      width: 186px;
-      height: 48px;
-      background: #ffffff;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 500;
       margin-top: 20px;
-      margin-top: 20px;
+      .input {
+        outline: none;
+        border: none;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border: 1px solid hsl(0, 0%, 96%);
+        width: 55%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 20px;
+        padding-left: 15px;
+        border-right: 0;
+        ::placeholder {
+          color: rgba(198, 198, 198, 1);
+        }
+      }
+      .button {
+        width: 45%;
+        min-width: fit-content;
+        font-size: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        height: 100%;
+        padding: 0 20px;
+        background-color: hsl(0, 0%, 96%);
+        border-radius: 6px;
+        cursor: pointer;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border: 1px solid hsl(0, 0%, 96%);
+        border-left: 0;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(0, 0%, 92%);
+        }
+      }
+      .joinButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 32px;
+        width: 186px;
+        height: 48px;
+        background: #ffffff;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-top: 20px;
+      }
     }
   }
   .bottom {

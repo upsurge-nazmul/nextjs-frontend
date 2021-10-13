@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Products/chores.module.scss";
-export default function Chores({ id }) {
+export default function Chores({ id, email, setEmail, check, error }) {
+  const [showinput, setshowinput] = useState(false);
+
   return (
     <div className={styles.chores} id={id}>
       <div className={styles.top}>
@@ -9,7 +11,28 @@ export default function Chores({ id }) {
           Upsurge enables you to set responsibilities and paid jobs for each
           kid, and manage their privileges, rewards and allowance.
         </div>
-        <div className={styles.button}>Join the waitlist</div>
+        <div className={styles.signupBox}>
+          {showinput && (
+            <input
+              className={styles.input}
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          )}
+          {!showinput ? (
+            <div
+              className={styles.joinButton}
+              onClick={() => setshowinput(true)}
+            >
+              Join the waitlist
+            </div>
+          ) : (
+            <div className={styles.button} onClick={check}>
+              Join
+            </div>
+          )}
+        </div>
+
         <img
           className={styles.mobileimage}
           src="/images/mobilechore.png"

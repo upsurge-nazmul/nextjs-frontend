@@ -47,6 +47,12 @@ const data = {
     codeUrl: "/Games/SavingShuffle/Build/SavingShuffle.wasm",
     loaderUrl: "/Games/SavingShuffle/Build/SavingShuffle.loader.js",
   },
+  NeedOrWant: {
+    dataUrl: "/Games/NeedOrWant/Build/NeedOrWant.data",
+    frameworkUrl: "/Games/NeedOrWant/Build/NeedOrWant.framework.js",
+    codeUrl: "/Games/NeedOrWant/Build/NeedOrWant.wasm",
+    loaderUrl: "/Games/NeedOrWant/Build/NeedOrWant.loader.js",
+  },
 };
 
 export default function GamePage() {
@@ -95,7 +101,7 @@ export default function GamePage() {
       />
       {unitycontext && (
         <Unity
-          className={styles.gameMain}
+          className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
           unityContext={unitycontext}
           matchWebGLToCanvasSize={true}
         />

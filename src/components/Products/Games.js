@@ -42,6 +42,18 @@ export default function Games({ id }) {
         "This is demo description, will be replaced with content later.",
       link: "/gamepage/MoneyManager",
     },
+    {
+      name: "Coin Slide",
+      description:
+        "This is demo description, will be replaced with content later.",
+      link: "/gamepage/CoinSlide",
+    },
+    {
+      name: "Need Or Want",
+      description:
+        "This is demo description, will be replaced with content later.",
+      link: "/gamepage/NeedOrWant",
+    },
   ];
   function handlePlayPause() {
     console.log("pp");

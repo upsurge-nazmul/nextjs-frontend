@@ -51,9 +51,9 @@ export default function BlogPage({ blogdata }) {
       setcurrentsection(h1s[0].textContent);
     }
   }, [blogdata]);
-
   useEffect(() => {
-    let remove = window.addEventListener("scroll", (event) => {
+    if (headings.length === 0) return;
+    const handlescroll = () => {
       setscroll(window.scrollY);
       headings.forEach((item) => {
         if (window.scrollY === 0) {
@@ -62,9 +62,11 @@ export default function BlogPage({ blogdata }) {
           setcurrentsection(item.textContent);
         }
       });
-    });
-    return () => remove;
-  }, []);
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, [headings]);
+
   function hanldemove(index) {
     headings[index].scrollIntoView({
       behavior: "smooth",

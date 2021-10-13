@@ -8,13 +8,16 @@ import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Pricing/pricing.module.scss";
 import Chores from "../../components/Products/Chores";
 import LiveClasses from "../../components/Products/LiveClasses";
-
+import validator from "validator";
+import LoginApis from "../../actions/apis/LoginApis";
 export default function Benefits() {
   const router = useRouter();
   const type = router.query.type;
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
   useEffect(() => {
     const games = document.getElementById("gamessection");
     const chores = document.getElementById("choressection");
@@ -37,6 +40,25 @@ export default function Benefits() {
       }
     }
   }, [type]);
+  async function check() {
+    if (!validator.isEmail(email)) {
+      setError("Enter valid email address");
+    } else {
+      let response = await LoginApis.getwaitlistdetails({ email: email });
+      if (response) {
+        if (response.data.success) {
+          router.push("/waitlist/" + email);
+        } else {
+          setError(response.data.message);
+        }
+      } else {
+        setError("Error connecting to server");
+      }
+      // setshowauth(true);
+      // setauthmode("parent");
+      // setmailfromhome(email);
+    }
+  }
   return (
     <div className={styles.pricingPage}>
       <Header
@@ -48,9 +70,21 @@ export default function Benefits() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <KnowledgeQuest id="knowledge-quest" />
+      <KnowledgeQuest
+        email={email}
+        setEmail={setEmail}
+        check={check}
+        error={error}
+        id="knowledge-quest"
+      />
       <Games id="gamessection" />
-      <Chores id="choressection" />
+      <Chores
+        email={email}
+        check={check}
+        setEmail={setEmail}
+        error={error}
+        id="choressection"
+      />
       <LiveClasses id="classessection" />
       <Footer />
     </div>

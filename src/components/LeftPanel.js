@@ -42,8 +42,11 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               mobile={true}
               title={"Benefits"}
               tabs={[
-                { name: "Financial", pushTo: "/benefits" },
-                { name: "Experimential", pushTo: "/benefits/experimential" },
+                { name: "Financial Literacy", pushTo: "/benefits" },
+                {
+                  name: "Experimential Learning",
+                  pushTo: "/benefits/experimential",
+                },
                 {
                   name: "Entrepreneuership",
                   pushTo: "/benefits/entrepreneuership",
@@ -57,12 +60,12 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               tabs={[]}
               pushTo="/gamepage"
             />
-            <HeaderTabSection
+            {/* <HeaderTabSection
               mobile={true}
               title={"Quizzes"}
               tabs={[]}
               pushTo="/quiz/main"
-            />
+            /> */}
             <HeaderTabSection
               mobile={true}
               title={"More"}

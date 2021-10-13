@@ -19,7 +19,11 @@ function BlogCard({ data, getdatafromraw }) {
             <p key={"blogcat" + index}>{cat}</p>
           ))}
         </div>
-        <div className={styles.title}>{data.title}</div>
+        <div className={styles.title}>
+          {data.title.length < 60
+            ? data.title
+            : data.title.substring(0, 40) + "..."}
+        </div>
         <div className={styles.content}>
           {getdatafromraw(data.content).replace(/<[^>]+>/g, "").length > 60
             ? getdatafromraw(data.content)

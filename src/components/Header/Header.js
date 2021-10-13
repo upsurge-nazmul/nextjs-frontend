@@ -74,8 +74,11 @@ function Header({
           <HeaderTabSection
             title={"Benefits"}
             tabs={[
-              { name: "Financial", pushTo: "/benefits" },
-              { name: "Experimential", pushTo: "/benefits/experimential" },
+              { name: "Financial Literacy", pushTo: "/benefits" },
+              {
+                name: "Experimential Learning",
+                pushTo: "/benefits/experimential",
+              },
               {
                 name: "Entrepreneuership",
                 pushTo: "/benefits/entrepreneuership",
@@ -85,7 +88,7 @@ function Header({
             pushTo="/benefits"
           />
           <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" />
-          <HeaderTabSection title={"Quizzes"} tabs={[]} pushTo="/quiz/main" />
+          {/* <HeaderTabSection title={"Quizzes"} tabs={[]} pushTo="/quiz/main" /> */}
 
           {/* <HeaderTabSection
             title={"Resources"}

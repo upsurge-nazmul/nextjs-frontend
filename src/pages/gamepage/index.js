@@ -45,6 +45,11 @@ export default function GamePage() {
       description:
         "This is demo description, will be replaced with content later.",
     },
+    NeedOrWant: {
+      name: "Need Or Want",
+      description:
+        "This is demo description, will be replaced with content later.",
+    },
   };
 
   useEffect(() => {

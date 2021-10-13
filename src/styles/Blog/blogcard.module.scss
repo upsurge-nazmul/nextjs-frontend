@@ -13,6 +13,7 @@
     object-fit: cover;
   }
   .right {
+    flex: 1;
     .categories {
       display: flex;
       overflow-y: auto;
@@ -28,6 +29,9 @@
       margin-top: 3px;
       font-size: 16px;
       font-weight: 500;
+      height: 20px;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     .content {
       margin-top: 3px;
