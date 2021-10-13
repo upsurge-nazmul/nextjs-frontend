@@ -7,7 +7,6 @@
     padding-right: 15vw;
     margin-top: 2vh;
     padding-bottom: 30vh;
-    overflow-y: auto;
     display: flex;
     .post {
       flex: 1;
@@ -111,15 +110,19 @@
       }
     }
     .table {
-      position: relative;
+      float: right;
+      overflow: hidden;
+      position: sticky;
+      height: 100%;
       width: 250px;
       display: flex;
       flex-direction: column;
       .mtcontainer {
-        position: absolute;
         .movingtable {
           display: flex;
-          position: fixed;
+          position: sticky;
+          height: fit-content;
+          background: white;
           flex-direction: column;
           height: fit-content;
           margin-top: 20px;

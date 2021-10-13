@@ -19,25 +19,45 @@ export default function Benefits() {
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
+  function getheight(el) {
+    if (!el) {
+      return 0;
+    }
+    var top = el.offsetTop;
+
+    while (el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+    }
+    return top;
+  }
   useEffect(() => {
     const games = document.getElementById("gamessection");
     const chores = document.getElementById("choressection");
     const classes = document.getElementById("classessection");
+    function hanldemove(element, index) {
+      var headerOffset = 180;
+      var elementPosition = getheight(element);
+      var offsetPosition = elementPosition - headerOffset;
 
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      // sections[index].scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      //   inline: "nearest",
+      // });
+    }
     if (type) {
       console.log(type);
       if (type === "games") {
-        games.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(games);
       } else if (type === "chores") {
-        chores.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(chores);
       } else if (type === "liveclasses") {
-        classes.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(classes);
       }
     }
   }, [type]);

@@ -82,7 +82,6 @@ function AboutSection() {
         "The habit of saving is itself an education; it fosters every virtue, teaches self-denial, cultivates the sense of order, trains to forethought, and so broadens the mind.",
       author: "T.T. Munger",
     },
-    ,
     {
       quote:
         "Don't tell me what you value, show me your budget, and I'll tell you what you value.",

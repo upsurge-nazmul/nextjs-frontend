@@ -9,10 +9,6 @@ function CategoryBar() {
     "Learning",
     "Savings",
     "Investments",
-    "Finance",
-    "Learning",
-    "Savings",
-    "Investments",
   ];
   const [categories, setcategories] = useState(allcategories.slice(0, 5));
   const [showfullcategories, setshowfullcategories] = useState(false);
@@ -43,10 +39,12 @@ function CategoryBar() {
           ))}
         </div>
       </div>
-      <div className={styles.more} onClick={onClickMore}>
-        {showfullcategories ? "Less" : "More"}
-        {showfullcategories ? <ArrowDown /> : <ArrowUp />}
-      </div>
+      {allcategories.length > 5 && (
+        <div className={styles.more} onClick={onClickMore}>
+          {showfullcategories ? "Less" : "More"}
+          {showfullcategories ? <ArrowDown /> : <ArrowUp />}
+        </div>
+      )}
     </div>
   );
 }

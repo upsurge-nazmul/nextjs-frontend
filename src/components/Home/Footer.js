@@ -150,19 +150,19 @@ function Footer() {
             <p className={styles.heading}>More</p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/blogs")}
-            >
-              Blogs
-            </p>
-            <p
-              className={styles.subheading}
               onClick={() => router.push("/about")}
             >
               About Us
             </p>
+            {/* <p
+              className={styles.subheading}
+              onClick={() => router.push("/blogs")}
+            >
+              Blogs
+            </p> */}
             <p
               className={styles.subheading}
-              onClick={() => router.push("/faq")}
+              onClick={() => router.push("/help/faq")}
             >
               FAQ’s
             </p>
@@ -221,7 +221,7 @@ function Footer() {
             <>
               <p
                 className={styles.subheading}
-                onClick={() => router.push("/faq")}
+                onClick={() => router.push("/help/faq")}
               >
                 FAQ’s
               </p>
@@ -271,28 +271,52 @@ function Footer() {
             More <span>{showmore ? "-" : "+"}</span>
           </p>
           {showmore && (
-            <p
-              className={styles.subheading}
-              onClick={() => router.push("/about")}
-            >
-              About Us
-            </p>
+            <>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/about")}
+              >
+                About Us
+              </p>
+              {/* <p
+                className={styles.subheading}
+                onClick={() => router.push("/blogs")}
+              >
+                Blogs
+              </p> */}
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/help/faq")}
+              >
+                FAQ’s
+              </p>
+              {/* <p className={styles.subheading}>Help Center</p> */}
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/contact")}
+              >
+                Contact us
+              </p>
+            </>
           )}
         </div>
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/">
+          <a href="https://www.facebook.com/upsurgeindia/" target="_blank">
             <Fb className={styles.social} />
           </a>
           {/* <a href="">
             <Twitter className={styles.social} alt="" />
           </a> */}
-          <a href="https://www.instagram.com/upsurge.india/">
+          <a href="https://www.instagram.com/upsurge.india/" target="_blank">
             <Insta className={styles.social} />
           </a>
           {/* <a href="">
             <YtSvg className={styles.socialyt} />
           </a> */}
-          <a href="https://www.linkedin.com/company/upsurgeindia/">
+          <a
+            href="https://www.linkedin.com/company/upsurgeindia/"
+            target="_blank"
+          >
             <LinkedIN className={styles.socialyt} />
           </a>
         </div>
@@ -302,7 +326,11 @@ function Footer() {
             Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
             <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
           </p>
-          <a className={styles.whatsapp} href="https://wa.me/918287433304">
+          <a
+            className={styles.whatsapp}
+            href="https://wa.me/918287433304"
+            target="_blank"
+          >
             <WhatsAppIcon className={styles.icon} />
             Connect on whatsapp
           </a>
@@ -334,7 +362,11 @@ function Footer() {
             Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
             <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
           </p>
-          <a className={styles.whatsapp} href="https://wa.me/918287433304">
+          <a
+            className={styles.whatsapp}
+            href="https://wa.me/918287433304"
+            target="_blank"
+          >
             <WhatsAppIcon className={styles.icon} />
             Connect on whatsapp
           </a>
@@ -359,13 +391,16 @@ function Footer() {
         </div>
 
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/">
+          <a href="https://www.facebook.com/upsurgeindia/" target="_blank">
             <Fb className={styles.social} />
           </a>
-          <a href="https://www.instagram.com/upsurge.india/">
+          <a href="https://www.instagram.com/upsurge.india/" target="_blank">
             <Insta className={styles.social} />
           </a>
-          <a href="https://www.linkedin.com/company/upsurgeindia/">
+          <a
+            href="https://www.linkedin.com/company/upsurgeindia/"
+            target="_blank"
+          >
             <LinkedIN className={styles.socialyt} />
           </a>
           {/* <a href="">

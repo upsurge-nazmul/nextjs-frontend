@@ -8,11 +8,19 @@ export default function LiveClasses({ id }) {
       <div className={styles.top}>
         <div className={styles.heading}>Live Classes</div>
         <div className={styles.subheading}>
-          Once a week live online classes allow our young learners to interact
-          with peers and instructors.
+          Live online classes designed and taught by our co-founders and panel
+          of experts on various important topics around personal finance, career
+          development and entrepreneurship. Designed by experiential learning
+          professionals, these classes are fun, engaging and effective!
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div className={styles.right}>
+        <img
+          src="https://i.ibb.co/DKc0gvz/Untitled-500-x-500-px-700-x-700-px-1.png"
+          alt=""
+        />
+      </div>
+      {/* <div className={styles.bottom}>
         <div className={styles.left}>
           <PlayCircleSvg className={styles.lefticon} />
         </div>
@@ -66,7 +74,7 @@ export default function LiveClasses({ id }) {
         <div className={styles.right}>
           <PlayCircleSvg className={styles.righticon} />
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

@@ -157,12 +157,11 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
             </div>
           </div>
         )}
-        {blogposts.length > 0 ? (
-          <div className={styles.loadmorebutton}>
-            Load More
-            <ArrowUp clr="black" />
-          </div>
-        ) : (
+        {blogposts.length > 0 ? null : (
+          // <div className={styles.loadmorebutton}>
+          //   Load More
+          //   <ArrowUp clr="black" />
+          // </div>
           <div className={styles.loadmorebutton}>No blogs found</div>
         )}
       </div>

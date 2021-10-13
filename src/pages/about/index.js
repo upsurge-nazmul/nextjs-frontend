@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
@@ -10,13 +10,26 @@ import styles from "../../styles/about/about.module.scss";
 export default function About() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
 
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.aboutPage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
+        stickyheader={stickyheader}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

@@ -4,6 +4,7 @@ import Curve1 from "../SVGcomponents/Curve1";
 import Dollar from "../SVGcomponents/Dollar";
 import IntroThunderSvg from "../SVGcomponents/IntroThunderSvg";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/dist/client/router";
 function Benefits() {
   const data = [
     {
@@ -30,6 +31,7 @@ function Benefits() {
   const [scroll, setscroll] = useState(150);
   const [currentSection, setcurrentSection] = useState(0);
   const [sections, setsections] = useState([]);
+  const router = useRouter();
   useEffect(() => {
     let sections = document.getElementsByClassName("imgsections");
     if (sections.length > 0) {
@@ -43,7 +45,7 @@ function Benefits() {
     var left = el.offsetLeft;
     var width = el.offsetWidth;
     var height = el.offsetHeight;
-
+    let heightdiff = window.innerHeight * 0.6;
     while (el.offsetParent) {
       el = el.offsetParent;
       top += el.offsetTop;
@@ -51,7 +53,7 @@ function Benefits() {
     }
 
     return (
-      top < window.scrollY + window.innerHeight - 600 &&
+      top < window.scrollY + window.innerHeight - heightdiff &&
       left < window.scrollX + window.innerWidth &&
       top + height > window.scrollY &&
       left + width > window.scrollX
@@ -167,72 +169,74 @@ function Benefits() {
         </div>
         <div id="rightsection" className={styles.right}>
           {" "}
-          <AnimatePresence>
-            <div className={styles.imgwrapper}>
-              {
-                <>
-                  <motion.img
-                    id="img-1"
-                    className="imgsections"
-                    src="/images/home/benefits/img1.png"
-                    alt=""
-                  />
-                  <p className={styles.description}>{data[0]?.description}</p>
-                  <p
-                    className={styles.more}
-                    style={{
-                      color: "#4166EB",
-                    }}
-                  >{`LEARN MORE ->`}</p>
-                </>
-              }
+          <div className={styles.imgwrapper}>
+            {
+              <>
+                <motion.img
+                  id="img-1"
+                  className="imgsections"
+                  src="/images/home/benefits/img1.png"
+                  alt=""
+                />
+                <p className={styles.description}>{data[0]?.description}</p>
+                <p
+                  className={styles.more}
+                  style={{
+                    color: "#4166EB",
+                  }}
+                  onClick={() => router.push("/benefits/financial")}
+                >{`LEARN MORE ->`}</p>
+              </>
+            }
 
-              <Curve1 className={styles.curve} />
-            </div>
-            <div className={styles.imgwrapper}>
-              <img
-                id="img-2"
-                className="imgsections"
-                src="/images/home/benefits/img2.png"
-                alt=""
-              />
-              <p className={styles.description}>{data[1]?.description}</p>
-              <p
-                className={styles.more}
-                style={{ color: "#FDCC03" }}
-              >{`LEARN MORE ->`}</p>
-            </div>
-            <div className={styles.imgwrapper}>
-              <img
-                id="img-3"
-                className="imgsections"
-                src="/images/home/benefits/img3.png"
-                alt=""
-              />
-              <p className={styles.description}>{data[2]?.description}</p>
-              <p
-                className={styles.more}
-                style={{
-                  color: "#FF6263",
-                }}
-              >{`LEARN MORE ->`}</p>
-            </div>
-            <div className={styles.imgwrapper}>
-              <img
-                id="img-4"
-                className="imgsections"
-                src="/images/home/benefits/img4.png"
-                alt=""
-              />
-              <p className={styles.description}>{data[3]?.description}</p>
-              <p
-                className={styles.more}
-                style={{
-                  color: "#17D1BC",
-                }}
-              >{`LEARN MORE ->`}</p>
-            </div>
-          </AnimatePresence>
+            <Curve1 className={styles.curve} />
+          </div>
+          <div className={styles.imgwrapper}>
+            <img
+              id="img-2"
+              className="imgsections"
+              src="/images/home/benefits/img2.png"
+              alt=""
+            />
+            <p className={styles.description}>{data[1]?.description}</p>
+            <p
+              className={styles.more}
+              style={{ color: "#FDCC03" }}
+              onClick={() => router.push("/benefits/experimential")}
+            >{`LEARN MORE ->`}</p>
+          </div>
+          <div className={styles.imgwrapper}>
+            <img
+              id="img-3"
+              className="imgsections"
+              src="/images/home/benefits/img3.png"
+              alt=""
+            />
+            <p className={styles.description}>{data[2]?.description}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#FF6263",
+              }}
+              onClick={() => router.push("/benefits/entrepreneuership")}
+            >{`LEARN MORE ->`}</p>
+          </div>
+          <div className={styles.imgwrapper}>
+            <img
+              id="img-4"
+              className="imgsections"
+              src="/images/home/benefits/img4.png"
+              alt=""
+            />
+            <p className={styles.description}>{data[3]?.description}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#17D1BC",
+              }}
+              onClick={() => router.push("/benefits/rewards")}
+            >{`LEARN MORE ->`}</p>
+          </div>
         </div>
       </div>
     </section>
