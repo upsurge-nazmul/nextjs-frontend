@@ -88,7 +88,7 @@ function Benefits() {
   }, [sections]);
   function hanldemove(index) {
     var element = sections[index];
-    var headerOffset = 150;
+    var headerOffset = window.innerHeight * 0.25;
     var elementPosition = getheight(element);
     var offsetPosition = elementPosition - headerOffset;
 

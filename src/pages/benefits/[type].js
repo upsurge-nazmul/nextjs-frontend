@@ -15,23 +15,39 @@ function BenfitsPage() {
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  function getheight(el) {
+    if (!el) {
+      return 0;
+    }
+    var top = el.offsetTop;
+
+    while (el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+    }
+    return top;
+  }
   useEffect(() => {
     const experimential = document.getElementById("experimential");
     const entrepreneuership = document.getElementById("entrepreneuership");
+    function hanldemove(element, index) {
+      var headerOffset = 180;
+      var elementPosition = getheight(element);
+      var offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
     const rewards = document.getElementById("rewards");
     if (type) {
       if (type === "experimential") {
-        experimential.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(experimential);
       } else if (type === "entrepreneuership") {
-        entrepreneuership.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(entrepreneuership);
       } else if (type === "rewards") {
-        rewards.scrollIntoView({
-          behavior: "smooth",
-        });
+        hanldemove(rewards);
       }
     }
   }, [type]);

@@ -47,11 +47,11 @@ export default function Games({ id }) {
     //     "This is demo description, will be replaced with content later.",
     //   link: "/gamepage/CoinSlide",
     // },
-    {
-      name: "Need Or Want",
-      description: "Identify the difference between needs and wants.",
-      link: "/gamepage/NeedOrWant",
-    },
+    // {
+    //   name: "Need Or Want",
+    //   description: "Identify the difference between needs and wants.",
+    //   link: "/gamepage/NeedOrWant",
+    // },
   ];
 
   useEffect(() => {
