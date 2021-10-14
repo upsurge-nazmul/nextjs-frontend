@@ -187,12 +187,32 @@ function Footer() {
           </p>
           {showproducts && (
             <>
-              <p className={styles.subheading}>Knowledge Quests</p>
-              <p className={styles.subheading}>Games Arena</p>
-              <p className={styles.subheading}>Chores</p>
-              <p className={styles.subheading}>Family Fun</p>
-              <p className={styles.subheading}>Tribes</p>
-              <p className={styles.subheading}>Live Classes</p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/products/quest")}
+              >
+                Knowledge Quests
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/products/games")}
+              >
+                Games Arena
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/products/chores")}
+              >
+                Chores
+              </p>
+              {/* <p className={styles.subheading}>Family Fun</p> */}
+              {/* <p className={styles.subheading}>Tribes</p> */}
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/products/liveclasses")}
+              >
+                Live Classes
+              </p>
             </>
           )}
         </div>
@@ -201,19 +221,39 @@ function Footer() {
             className={styles.heading}
             onClick={() => setshowresources(!showresources)}
           >
-            Resources <span>{showresources ? "-" : "+"}</span>
+            Benefits <span>{showresources ? "-" : "+"}</span>
           </p>
           {showresources && (
             <>
-              <p className={styles.subheading}>Goal Wizards</p>
-              <p className={styles.subheading}>Live Classes</p>
-              <p className={styles.subheading}>Tournaments</p>
-              <p className={styles.subheading}>Cheat Codes</p>
-              <p className={styles.subheading}>Articles</p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/benefits")}
+              >
+                Financial Literacy
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/benefits/experimential")}
+              >
+                Experimential Learning
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/benefits/entrepreneuership")}
+              >
+                Entrepreneuership
+              </p>
+              {/* <p className={styles.subheading}>Help Center</p> */}
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/benefits/rewards")}
+              >
+                Rewards
+              </p>
             </>
           )}
         </div>
-        <div className={styles.column}>
+        {/* <div className={styles.column}>
           <p className={styles.heading} onClick={() => setshowhelp(!showhelp)}>
             Help & Support <span>{showhelp ? "-" : "+"}</span>
           </p>
@@ -265,7 +305,7 @@ function Footer() {
               </p>
             </>
           )}
-        </div>
+        </div> */}
         <div className={styles.column}>
           <p className={styles.heading} onClick={() => setshowmore(!showmore)}>
             More <span>{showmore ? "-" : "+"}</span>
@@ -301,13 +341,21 @@ function Footer() {
           )}
         </div>
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Fb className={styles.social} />
           </a>
           {/* <a href="">
             <Twitter className={styles.social} alt="" />
           </a> */}
-          <a href="https://www.instagram.com/upsurge.india/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/upsurge.india/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Insta className={styles.social} />
           </a>
           {/* <a href="">
@@ -394,10 +442,18 @@ function Footer() {
         </div>
 
         <div className={styles.socials}>
-          <a href="https://www.facebook.com/upsurgeindia/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Fb className={styles.social} />
           </a>
-          <a href="https://www.instagram.com/upsurge.india/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/upsurge.india/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Insta className={styles.social} />
           </a>
           <a
