@@ -57,7 +57,7 @@
       .button {
         width: 45%;
         min-width: fit-content;
-        font-size: 1vw;
+        font-size: clamp(16px, 1vw, 1vw);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -87,7 +87,6 @@
         border-radius: 6px;
         font-size: 16px;
         font-weight: 500;
-        margin-top: 20px;
         margin-top: 20px;
       }
     }
@@ -413,7 +412,6 @@
           font-size: 16px;
           font-weight: 500;
           margin-top: 20px;
-          margin-top: 20px;
         }
       }
     }
@@ -651,8 +649,6 @@
         border-radius: 6px;
         font-size: 16px;
         font-weight: 500;
-        margin-top: 20px;
-        margin-top: 20px;
       }
     }
     .bottom {
@@ -1254,6 +1250,9 @@
           margin-top: 20px;
           margin-top: 20px;
         }
+        .button {
+          margin: 0;
+        }
       }
     }
     .bottom {
@@ -1514,7 +1513,6 @@
         .button {
           width: 45%;
           min-width: fit-content;
-          font-size: 1vw;
           display: flex;
           align-items: center;
           justify-content: center;
