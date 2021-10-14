@@ -9,9 +9,11 @@ import SearchSvg from "../../components/SVGcomponents/SearchSvg";
 import { useRouter } from "next/dist/client/router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import LeftPanel from "../../components/LeftPanel";
 
 function Help() {
   const router = useRouter();
+  const [stickyheader, setstickyheader] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
     {
@@ -41,10 +43,25 @@ function Help() {
       answer: `Yes, all the data pertaining to your child will be secured. `,
     },
   ];
-
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.helpPage}>
       <Header
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+        stickyheader={stickyheader}
+      />
+      <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />

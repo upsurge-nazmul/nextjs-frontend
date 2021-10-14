@@ -9,11 +9,14 @@ import SearchSvg from "../../components/SVGcomponents/SearchSvg";
 import { useRouter } from "next/dist/client/router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import LeftPanel from "../../components/LeftPanel";
 
 function Help() {
   const router = useRouter();
   const { type } = router.query;
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
+
   const faqs = [
     {
       question: "How old does my kid have to be to join Upsurge?",
@@ -51,9 +54,25 @@ function Help() {
       behavior: "smooth",
     });
   }, [type]);
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.helpPage}>
       <Header
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+        stickyheader={stickyheader}
+      />
+      <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
