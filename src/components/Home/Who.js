@@ -22,7 +22,7 @@ function Who() {
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
-            <img src={whoimage.src} alt="" />
+            <img src="https://i.ibb.co/Qmckfjh/Untitled-design-54.png" alt="" />
           </div>
         </div>
       </div>

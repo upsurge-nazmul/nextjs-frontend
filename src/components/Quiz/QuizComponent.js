@@ -5,9 +5,9 @@ import styles from "../../styles/Quiz/quizcomponent.module.scss";
 import SimpleProgress from "../SimpleProgress";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
+import QuizApis from "../../actions/apis/QuizApis";
 
 function QuizComponent({
-  quiz,
   currentquestionindex,
   setcurrentquestionindex,
   totalQuestions,
@@ -16,6 +16,9 @@ function QuizComponent({
   setshowQuiz,
   widthHeight,
   setanswersheet,
+  question,
+  data,
+  setscore,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
@@ -24,43 +27,8 @@ function QuizComponent({
   const [timeoutf, settimeoutf] = useState(null);
   const [nexttime, setnexttime] = useState(0);
   const [nextinterval, setnextinterval] = useState(null);
-  useEffect(() => {
-    setanswered(false);
-    setresult("");
-    setShowResult(false);
-    setSelectedOption("");
-  }, [currentquestionindex]);
-
-  useEffect(() => {
-    if (!selectedOption || answered) return;
-    let obj = {};
-    if (selectedOption == quiz.correct_answer) {
-      obj = {
-        question: quiz.question,
-        result: "correct",
-      };
-      setresult("Correct Answer");
-      setcorrectAnswers((prev) => prev + 1);
-    } else {
-      obj = {
-        question: quiz.question,
-        result: "wrong",
-        correctAnswer: quiz[`option${[quiz.correct_answer]}`],
-      };
-      setresult("Wrong Answer");
-    }
-    setanswersheet((prev) => [...prev, obj]);
-    setanswered(true);
-    setShowResult(true);
-  }, [selectedOption]);
-
-  useEffect(() => {
-    clearTimeout(timeoutf);
-    clearInterval(nextinterval);
-    const root = document.documentElement;
-    root?.style.setProperty("--progressnextbutton", `${0}%`);
-  }, [currentquestionindex]);
-
+  const [currentquestion, setcurrentquestion] = useState(question);
+  const [loading, setloading] = useState(false);
   useEffect(() => {
     if (answered) {
       clearTimeout(timeoutf);
@@ -85,6 +53,24 @@ function QuizComponent({
     );
   }, [nexttime]);
 
+  async function fetchnextquestion(answer) {
+    setloading(true);
+    let res = await QuizApis.nextquestion({
+      answer,
+      question_id: question.question_id,
+      id: data.session_id,
+    });
+    if (res && res.data.success) {
+      if (res.data.data.quizcompleted) {
+        setquizfinished(true);
+        setscore(res.data.data.score);
+      }
+      setcurrentquestion(res.data.data.next_question);
+      setcurrentquestionindex((prev) => prev + 1);
+    }
+    setloading(false);
+  }
+
   // useEffect(() => {
   //   let task = setInterval(() => setShowResult(false), 3000);
   //   return () => clearInterval(task);
@@ -92,30 +78,31 @@ function QuizComponent({
   return (
     <div className={styles.quiz}>
       <SimpleProgress
-        questions={totalQuestions}
+        questions={15}
         current={currentquestionindex}
         setcurrent={setcurrentquestionindex}
       />
-      {currentquestionindex !== 0 ? (
+      {/* {currentquestionindex !== 0 ? (
         <div
           className={styles.leftbutton}
           onClick={() => setcurrentquestionindex(currentquestionindex - 1)}
         >
           <LeftArrowRound />
         </div>
-      ) : null}
-      {currentquestionindex + 1 < totalQuestions ? (
+      ) : null} */}
+      {/* {currentquestionindex + 1 < totalQuestions ? (
         <div
           className={styles.rightbutton}
           onClick={() => setcurrentquestionindex(currentquestionindex + 1)}
         >
           <RightArrowRound />
         </div>
-      ) : null}
+      ) : null} */}
+
       <div className={styles.questionno}>
         Question {currentquestionindex + 1}/{totalQuestions}
       </div>
-      <div className={styles.question}>{quiz.question}</div>
+      <div className={styles.question}>{currentquestion.question}</div>
       <div className={styles.options}>
         {new Array(4).fill("a").map((option, index) => {
           return (
@@ -125,7 +112,7 @@ function QuizComponent({
                 selectedOption === index + 1 ? styles.selected : ""
               }`}
               onClick={() => {
-                if (!answered) setSelectedOption(index + 1);
+                fetchnextquestion(index + 1);
               }}
             >
               <div className={styles.circle}>
@@ -137,7 +124,9 @@ function QuizComponent({
                   ? "C"
                   : "D"}
               </div>
-              <p className={styles.text}>{quiz[`option${index + 1}`]}</p>
+              <p className={styles.text}>
+                {currentquestion[`option${index + 1}`]}
+              </p>
             </div>
           );
         })}

@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import styles from "../styles/GeneralComponents/simpleProgress.module.scss";
 function SimpleProgress({ questions, current, setcurrent }) {
   useEffect(() => {
-    console.log(current);
     const root = document.documentElement;
     root?.style.setProperty(
       "--simpleprogress",
-      `${(current + 1 / questions) * 100}%`
+      `${((current + 1) / 15) * 100}%`
     );
   }, [current]);
   return (
