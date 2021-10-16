@@ -60,12 +60,12 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               tabs={[]}
               pushTo="/gamepage"
             /> */}
-            {/* <HeaderTabSection
+            <HeaderTabSection
               mobile={true}
-              title={"Quizzes"}
+              title={"Quiz"}
               tabs={[]}
-              pushTo="/quiz/main"
-            /> */}
+              pushTo="/quiz"
+            />
             <HeaderTabSection
               mobile={true}
               title={"More"}
