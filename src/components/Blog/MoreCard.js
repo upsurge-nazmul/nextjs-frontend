@@ -12,7 +12,7 @@ function MoreCard({ data, getdatafromraw }) {
     >
       <img src={data.img_url} alt="" />
       <div className={styles.categories}>
-        {data.categories.split(",").map((cat, index) => {
+        {data.categories?.split(",").map((cat, index) => {
           return <p key={"morecat" + index}>{cat}</p>;
         })}
       </div>

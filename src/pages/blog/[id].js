@@ -113,7 +113,10 @@ export default function BlogPage({ blogdata }) {
           <div className={styles.share}>
             Share this post :
             <a
-              href="https://www.facebook.com/sharer/sharer.php?u=https://upsurgefi.com/blog"
+              href={
+                "https://www.facebook.com/sharer/sharer.php?u=https://upsurgefi.com/blog/" +
+                blogdata.id
+              }
               target="_blank"
               rel="noreferrer"
             >
@@ -122,7 +125,10 @@ export default function BlogPage({ blogdata }) {
               </svg>
             </a>
             <a
-              href="https://twitter.com/share?url=https://upsurgefi.com/blog"
+              href={
+                "https://twitter.com/share?url=https://upsurgefi.com/blog/" +
+                blogdata.id
+              }
               target="_blank"
               rel="noreferrer"
             >
@@ -136,28 +142,26 @@ export default function BlogPage({ blogdata }) {
           </div>
         </div>
         <div className={styles.table}>
-          <div className={styles.mtcontainer}>
-            <div className={styles.movingtable}>
-              <p
-                className={styles.heading}
-                // style={{ marginTop: scroll > 100 ? scroll - 100 : scroll }}
-              >
-                Table Of Content
-              </p>
-              {headings.map((item, index) => {
-                return (
-                  <p
-                    onClick={() => hanldemove(index)}
-                    key={index + "tableContent"}
-                    className={`${
-                      item.textContent === currentsection ? styles.active : ""
-                    }`}
-                  >
-                    {item.textContent}
-                  </p>
-                );
-              })}
-            </div>
+          <div className={styles.movingtable}>
+            <p
+              className={styles.heading}
+              // style={{ marginTop: scroll > 100 ? scroll - 100 : scroll }}
+            >
+              Table Of Content
+            </p>
+            {headings.map((item, index) => {
+              return (
+                <p
+                  onClick={() => hanldemove(index)}
+                  key={index + "tableContent"}
+                  className={`${
+                    item.textContent === currentsection ? styles.active : ""
+                  }`}
+                >
+                  {item.textContent}
+                </p>
+              );
+            })}
           </div>
         </div>
       </div>

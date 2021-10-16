@@ -67,6 +67,10 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
     "December",
   ];
 
+  useEffect(() => {
+    setblogposts(blogs);
+    setblogpostsbackup(blogs);
+  }, [blogs]);
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
@@ -191,7 +195,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
 export default BlogPage;
 
 export async function getServerSideProps({ params, req }) {
-  let res = await BlogApis.getblogs({ page: 1 });
+  let res = await BlogApis.getblogs({ page: 1, category: params.category });
+  console.log(res.data);
   if (res && res.data && res.data.data) {
     return {
       props: {
