@@ -14,6 +14,7 @@ function CategoryBar({ selectedCat, sortPosts }) {
   const [categories, setcategories] = useState(allcategories.slice(0, 5));
   const [showfullcategories, setshowfullcategories] = useState(false);
   const router = useRouter();
+  const category = router.query.category || "";
   function onClickMore() {
     setshowfullcategories(!showfullcategories);
     if (showfullcategories) {
@@ -31,7 +32,10 @@ function CategoryBar({ selectedCat, sortPosts }) {
           {categories.map((item, index) => (
             <div
               className={`${styles.category} ${
-                item === "All Categories" ? styles.selected : ""
+                item === "All Categories" && !category
+                  ? styles.selected
+                  : item.toLowerCase() === category.toLowerCase() &&
+                    styles.selected
               }`}
               key={"category" + index}
               onClick={() => {
