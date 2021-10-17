@@ -113,7 +113,7 @@ function Header({
 
               { name: "Blogs", pushTo: "/blogs" },
 
-              // { name: "Financial Calculators", pushTo: "/calculators" },
+              { name: "Financial Calculators", pushTo: "/calculators" },
               { name: "FAQ's", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 

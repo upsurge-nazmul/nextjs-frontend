@@ -90,7 +90,7 @@ function Footer() {
             <p className={styles.subheading}>Help Center</p>
             <p className={styles.subheading}>Contact us</p>
           </div> */}
-          {/* <div className={styles.column}>
+          <div className={styles.column}>
             <p className={styles.heading}>Financial Calculators</p>
             <p
               className={styles.subheading}
@@ -116,7 +116,7 @@ function Footer() {
             >
               SIP Loan Calculator
             </p>
-          </div>*/}
+          </div>
           <div className={styles.column}>
             <p className={styles.heading}>Benefits</p>
             <p
@@ -253,23 +253,6 @@ function Footer() {
             </>
           )}
         </div>
-        {/* <div className={styles.column}>
-          <p className={styles.heading} onClick={() => setshowhelp(!showhelp)}>
-            Help & Support <span>{showhelp ? "-" : "+"}</span>
-          </p>
-          {showhelp && (
-            <>
-              <p
-                className={styles.subheading}
-                onClick={() => router.push("/help/faq")}
-              >
-                FAQ’s
-              </p>
-              <p className={styles.subheading}>Help Center</p>
-              <p className={styles.subheading}>Contact us</p>
-            </>
-          )}
-        </div>
         <div className={styles.column}>
           <p
             className={styles.heading}
@@ -305,7 +288,25 @@ function Footer() {
               </p>
             </>
           )}
-        </div> */}
+        </div>
+        {/* <div className={styles.column}>
+          <p className={styles.heading} onClick={() => setshowhelp(!showhelp)}>
+            Help & Support <span>{showhelp ? "-" : "+"}</span>
+          </p>
+          {showhelp && (
+            <>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/help/faq")}
+              >
+                FAQ’s
+              </p>
+              <p className={styles.subheading}>Help Center</p>
+              <p className={styles.subheading}>Contact us</p>
+            </>
+          )}
+        </div>
+         */}
         <div className={styles.column}>
           <p className={styles.heading} onClick={() => setshowmore(!showmore)}>
             More <span>{showmore ? "-" : "+"}</span>
