@@ -62,7 +62,7 @@ function QuizComponent({
     setloading(true);
     let res = await QuizApis.nextquestion({
       answer,
-      question_id: question.question_id,
+      question_id: currentquestion.question_id,
       id: data.session_id,
     });
     if (res && res.data.success) {

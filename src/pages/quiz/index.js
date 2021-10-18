@@ -19,7 +19,7 @@ function Quiz({ data }) {
   const [quizdata, setquizdata] = useState(data);
   const [currentquiz, setcurrentquiz] = useState(data);
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
-  const [timer, settimer] = useState(1000 * 60 * 15);
+  const [timer, settimer] = useState(1000 * 60 * 30);
   const [task, settask] = useState("");
   const [quizfinished, setquizfinished] = useState(false);
   const [showauth, setshowauth] = useState(false);

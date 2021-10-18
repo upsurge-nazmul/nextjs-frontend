@@ -404,6 +404,8 @@
       .right {
         width: 50%;
         .imgwrapper {
+          margin-top: 35vh;
+
           .description {
             font-weight: 400;
             transition: all 0.3s ease;
@@ -422,7 +424,6 @@
         }
         img {
           width: 30vw;
-          margin-top: 35vh;
           // &:last-child {
           //   margin-bottom: 700px;
           // }
