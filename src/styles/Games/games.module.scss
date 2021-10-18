@@ -281,14 +281,6 @@
     font-weight: 500;
     color: white;
   }
-  .gameWrapper {
-    aspect-ratio: 16/9;
-    width: 50%;
-    overflow: hidden;
-    .gameMain {
-      background-color: white;
-    }
-  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1360px) {
