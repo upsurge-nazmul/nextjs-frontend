@@ -69,6 +69,7 @@ export default function BlogsSection() {
         {blogs.map((item, index) => {
           return (
             <div
+              key={item.id}
               className={styles.moreCard}
               onClick={() => {
                 router.push(`/blog/${item.id}`);
