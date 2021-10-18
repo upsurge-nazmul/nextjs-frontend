@@ -10,6 +10,7 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Quiz/quiz.module.scss";
 import Toast from "../../components/Toast";
 import QuizCardSvg from "../../components/SVGcomponents/QuizCardSvg";
+import Footer from "../../components/Home/Footer";
 
 function Quiz({ data }) {
   const router = useRouter();
@@ -23,6 +24,7 @@ function Quiz({ data }) {
   const [quizfinished, setquizfinished] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [score, setscore] = useState(0);
+  const [currentcolor, setcurrentcolor] = useState(0);
   const [chartData, setChartData] = useState({
     labels: ["Correct Answers", "Wrong Answers"],
     datasets: [
@@ -48,6 +50,7 @@ function Quiz({ data }) {
   const [answersheet, setanswersheet] = useState([]);
   const [openFull, setopenFull] = useState(false);
   const [currentquestionindex, setcurrentquestionindex] = useState(0);
+  const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
 
   useEffect(() => {
     setshowQuiz(data ? true : false);
@@ -111,16 +114,17 @@ function Quiz({ data }) {
     let divisor_for_seconds = divisor_for_minutes % 60;
     let seconds = Math.ceil(divisor_for_seconds);
     return (
-      (hours !== 0 ? hours + "hr : " : "") +
-      (minutes !== 0 ? minutes + "min : " : "") +
+      (hours !== 0 ? hours + " hr : " : "") +
+      (minutes !== 0 ? minutes + " min : " : "") +
       seconds +
-      "s"
+      " s"
     );
   }
 
   return (
     <div
       className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""}`}
+      style={{ backgroundColor: colorarray[currentcolor] }}
     >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
@@ -147,17 +151,94 @@ function Quiz({ data }) {
       />
 
       <div className={styles.contentWrapper}>
+        <div
+          className={styles.prop1}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
+          }}
+        />
+        <div
+          className={styles.prop2}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
+          }}
+        />
+        <div
+          className={styles.prop3}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
+          }}
+        />
+        <div className={styles.prop4} />
         <div className={styles.quizContainer}>
-          <div className={styles.leftSection}></div>
+          <div className={styles.leftSection}>
+            <p
+              className={styles.heading}
+              style={{
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#000000",
+              }}
+            >
+              Adaptive Quiz
+            </p>
+            <p
+              className={styles.details}
+              style={{
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#000000",
+              }}
+            >
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old.{" "}
+            </p>
+            <p
+              className={styles.current}
+              style={{
+                backgroundColor:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#4166EB",
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#000000"
+                    : "#ffffff",
+              }}
+            >
+              {`${currentquestionindex + 1} / ${15}`}
+            </p>
+          </div>
           {showQuiz && !quizfinished ? (
             <div className={styles.rightSection}>
               <div className={styles.timerSection}>
-                <p className={styles.timeleft}>Time Left</p>
-                <p className={styles.timer}>{secondsToTime(timer / 1000)}</p>
-              </div>
-              <div className={styles.questionsleft}>
-                <p className={styles.current}>
-                  {`${currentquestionindex + 1} / ${15}`}
+                <p
+                  className={styles.timeleft}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  Time Left
+                </p>
+                <p
+                  className={styles.timer}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  {secondsToTime(timer / 1000)}
                 </p>
               </div>
             </div>
@@ -177,6 +258,9 @@ function Quiz({ data }) {
               setshowQuiz={setshowQuiz}
               setanswersheet={setanswersheet}
               setscore={setscore}
+              currentcolor={currentcolor}
+              setcurrentcolor={setcurrentcolor}
+              colorarray={colorarray}
             />
           </div>
         ) : null}
@@ -198,6 +282,7 @@ function Quiz({ data }) {
           </div>
         ) : null}
       </div>
+      <Footer />
     </div>
   );
 }

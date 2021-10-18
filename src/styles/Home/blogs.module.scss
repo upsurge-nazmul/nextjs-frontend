@@ -1,0 +1,202 @@
+.blogSection {
+  scroll-snap-align: end;
+  position: relative;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 100px 10% 200px;
+  .heading {
+    margin-bottom: 50px;
+    font-size: 46px;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    &:hover {
+      color: rgb(121, 121, 121);
+    }
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    justify-content: space-between;
+    .moreCard {
+      width: 19vw;
+      border-radius: 8px;
+      padding: 20px 25px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: linear-gradient(
+          0deg,
+          rgba(241, 248, 255, 0.2),
+          rgba(241, 248, 255, 0.2)
+        ),
+        #ffffff;
+      box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+      img {
+        width: 100%;
+        height: calc(100vw / 3 - 260px);
+        min-height: 200px;
+        max-height: 235px;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+      .categories {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        overflow: hidden;
+        p {
+          font-size: 14px;
+          font-weight: 700;
+          color: #4166eb;
+          font-family: "Roboto";
+          margin-right: 10px;
+        }
+      }
+      .title {
+        font-weight: 600;
+        margin-top: 5px;
+        font-size: 20px;
+        text-align: left;
+        width: 100%;
+      }
+      .content {
+        font-size: 16px;
+        text-align: left;
+        margin-top: 10px;
+      }
+      .time {
+        margin-top: 10px;
+        color: hsla(0, 0%, 52%, 1);
+        text-align: left;
+        width: 100%;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .blogSection {
+    .wrapper {
+      justify-content: space-around;
+      .moreCard {
+        padding-top: 80px;
+        padding-bottom: 100px;
+        margin-bottom: 20px;
+        .title {
+          font-size: 20px;
+          min-height: 50px;
+        }
+        .description {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-height: 800px) {
+  .blogSection {
+    .right {
+      .heading {
+        font-size: 36px;
+      }
+      .button {
+        font-size: 16px;
+      }
+      .finance {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .blogSection {
+    position: relative;
+    z-index: 2;
+    padding: 7vw;
+    height: fit-content;
+    .heading {
+      margin-bottom: 50px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: flex-start;
+      justify-content: space-around;
+      .moreCard {
+        width: 42vw;
+        margin: 0;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        padding: 40px 25px 50px;
+        display: flex;
+        min-width: 300px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        .title {
+          font-size: 18px;
+          min-height: unset;
+        }
+        .content {
+          font-size: 14px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .blogSection {
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: flex-start;
+      justify-content: center;
+      .moreCard {
+        width: 86vw;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        padding: 20px 25px 50px;
+        display: flex;
+        min-width: 300px;
+
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        .icon {
+          width: 40%;
+        }
+        .title {
+        }
+        .description {
+          font-size: 14px;
+          margin-top: 5px;
+        }
+        .time {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

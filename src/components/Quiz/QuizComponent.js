@@ -19,6 +19,9 @@ function QuizComponent({
   question,
   data,
   setscore,
+  setcurrentcolor,
+  currentcolor,
+  colorarray,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
@@ -29,6 +32,7 @@ function QuizComponent({
   const [nextinterval, setnextinterval] = useState(null);
   const [currentquestion, setcurrentquestion] = useState(question);
   const [loading, setloading] = useState(false);
+
   useEffect(() => {
     if (answered) {
       clearTimeout(timeoutf);
@@ -54,6 +58,7 @@ function QuizComponent({
   }, [nexttime]);
 
   async function fetchnextquestion(answer) {
+    setcurrentcolor((currentcolor + 1) % colorarray.length);
     setloading(true);
     let res = await QuizApis.nextquestion({
       answer,
@@ -78,6 +83,7 @@ function QuizComponent({
   return (
     <div className={styles.quiz}>
       <SimpleProgress
+        clr={colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"}
         questions={15}
         current={currentquestionindex}
         setcurrent={setcurrentquestionindex}

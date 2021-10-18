@@ -14,11 +14,17 @@
     font-weight: 500;
     color: white;
   }
-  .gameMain {
-    height: 80vh;
-    width: 100%;
-    background-color: white;
+  .gameWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    .gameMain {
+      width: 1280px;
+      height: 720px;
+      background-color: white;
+    }
   }
+
   .sticky {
     margin-top: 100px;
     height: 80vh;

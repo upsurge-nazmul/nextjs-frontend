@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import LeftPanel from "../components/LeftPanel";
 import AboutSection from "../components/Home/AboutSection";
 import ProductSection from "../components/Home/ProductSection";
+import BlogsSection from "../components/Home/BlogsSection";
 import Why from "../components/Home/Why";
 import Reviews from "../components/Home/Reviews";
 import JoinUs from "../components/Home/JoinUs";
@@ -76,6 +77,7 @@ function Home({ isLogged, userdata }) {
         <Benefits />
         <ProductSection />
         <AboutSection />
+        <BlogsSection />
         <JoinUs />
         <Footer />
       </div>

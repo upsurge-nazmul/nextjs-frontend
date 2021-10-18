@@ -281,10 +281,13 @@
     font-weight: 500;
     color: white;
   }
-  .gameMain {
-    flex: 1;
-    width: 100%;
-    background-color: white;
+  .gameWrapper {
+    aspect-ratio: 16/9;
+    width: 50%;
+    overflow: hidden;
+    .gameMain {
+      background-color: white;
+    }
   }
 }
 

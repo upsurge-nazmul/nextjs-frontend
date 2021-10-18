@@ -42,10 +42,10 @@ const data = {
     loaderUrl: "/Games/MoneyMath/Build/MoneyMath.loader.js",
   },
   MoneyManager: {
-    dataUrl: "/Games/SavingShuffle/Build/SavingShuffle.data",
-    frameworkUrl: "/Games/SavingShuffle/Build/SavingShuffle.framework.js",
-    codeUrl: "/Games/SavingShuffle/Build/SavingShuffle.wasm",
-    loaderUrl: "/Games/SavingShuffle/Build/SavingShuffle.loader.js",
+    dataUrl: "/Games/MoneyManager/Build/MoneyManager.data",
+    frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
+    codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
+    loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
   },
   NeedOrWant: {
     dataUrl: "/Games/NeedOrWant/Build/NeedOrWant.data",
@@ -99,13 +99,16 @@ export default function GamePage() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      {unitycontext && (
-        <Unity
-          className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
-          unityContext={unitycontext}
-          matchWebGLToCanvasSize={true}
-        />
-      )}
+      <div className={styles.gameWrapper}>
+        {unitycontext && (
+          <Unity
+            className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
+            unityContext={unitycontext}
+            matchWebGLToCanvasSize={true}
+          />
+        )}
+      </div>
+
       <Footer />
     </div>
   );

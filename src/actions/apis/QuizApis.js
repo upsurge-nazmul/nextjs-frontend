@@ -23,6 +23,7 @@ const startquiz = (payload, token) => {
 const nextquestion = (payload, token) => {
   return ApiCalls.getResponse("quiz/nextquestion", payload, token);
 };
+
 //getchores
 const QuizApis = {
   getallquiz,

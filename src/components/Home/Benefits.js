@@ -112,10 +112,27 @@ function Benefits() {
             return (
               <div className={styles.container} key={"mobilecontainer" + index}>
                 <p className={styles.title}>{item.title}</p>
-                <img
-                  src={"/images/home/benefits/img" + (index + 1) + ".png"}
-                  alt=""
-                />
+                <div className={styles.imgwrapper}>
+                  {index === 0 ? (
+                    <>
+                      <IntroThunderSvg className={styles.thunder} />
+                      <Dollar className={styles.dollar} />
+                    </>
+                  ) : index === 1 || index === 3 ? (
+                    <StarSvg className={styles.thunder} />
+                  ) : (
+                    <BlubSvg className={styles.thunder} />
+                  )}
+                  <div className={styles.lb1}></div>
+                  <div className={styles.lb2}></div>
+                  <div className={styles.lb3}></div>
+                  <div className={styles.lb4}></div>
+                  <img
+                    src={"/images/home/benefits/img" + (index + 1) + ".png"}
+                    alt=""
+                  />
+                </div>
+
                 <p className={styles.description}>{item.description}</p>
                 <p className={styles.more}>{`LEARN MORE ->`}</p>
               </div>
@@ -246,7 +263,7 @@ function Benefits() {
               src="/images/home/benefits/img4.png"
               alt=""
             />
-            <StarSvg className={styles.thunder} clr="#17D1BC" />
+            <StarSvg className={styles.thunder} clr="#fdcc03" />
             <div className={styles.lb1}></div>
             <div className={styles.lb2}></div>
             <div className={styles.lb3}></div>

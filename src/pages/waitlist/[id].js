@@ -6,9 +6,7 @@ import Footer from "../../components/Home/Footer";
 import Fb from "../../components/SVGcomponents/Fb";
 import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
-import Logo from "../../components/SVGcomponents/Logo";
-import Twitter from "../../components/SVGcomponents/Twitter";
-import YtSvg from "../../components/SVGcomponents/YtSvg";
+
 import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function WaitList({ res }) {
   const router = useRouter();

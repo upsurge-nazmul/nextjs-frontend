@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Blog/morecard.module.scss";
 function MoreCard({ data, getdatafromraw }) {
+  console.log(data);
   const router = useRouter();
   return (
     <div

@@ -62,7 +62,6 @@
     right: 2%;
     top: 1px;
     width: fit-content;
-    height: 90%;
     z-index: -1;
     width: 35%;
     .background {
@@ -90,6 +89,7 @@
       position: absolute;
       width: 22vh;
       top: 80%;
+      height: 30vh;
       left: 50%;
       object-fit: contain;
       transform: translate(-60%, -50%);
@@ -123,7 +123,7 @@
     right: 2%;
     top: 1px;
     width: fit-content;
-    height: 90%;
+    height: 100%;
     z-index: -1;
     width: 35%;
     .background {

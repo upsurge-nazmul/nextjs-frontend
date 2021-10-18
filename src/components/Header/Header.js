@@ -88,7 +88,7 @@ function Header({
             ]}
             pushTo="/benefits"
           />
-          {/* <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" /> */}
+          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/gamepage" />
           <HeaderTabSection title={"Quiz"} tabs={[]} pushTo="/quiz" />
 
           {/* <HeaderTabSection
