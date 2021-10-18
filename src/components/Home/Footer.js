@@ -23,7 +23,7 @@ function Footer() {
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
       <div className={styles.top}>
         <div className={styles.left}>
-          <Logo className={styles.logo} />
+          <Logo className={styles.logo} onClick={() => router.push("/")} />
         </div>
 
         <div className={styles.right}>
@@ -177,7 +177,7 @@ function Footer() {
         </div>
       </div>
       <div className={styles.mobiletop}>
-        <Logo className={styles.logo} />
+        <Logo className={styles.logo} onClick={() => router.push("/")} />
         <div className={styles.column}>
           <p
             className={styles.heading}
