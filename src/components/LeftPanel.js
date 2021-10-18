@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/GeneralComponents/leftpanel.module.scss";
@@ -7,6 +7,7 @@ import HeaderTabSection from "./Header/HeaderTabSection";
 
 function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
   let router = useRouter();
+  const [current, setcurrent] = useState("");
   return (
     <AnimatePresence>
       {openLeftPanel && (
@@ -21,6 +22,8 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
           <div className={styles.leftPanelContent}>
             <HeaderTabSection
               mobile={true}
+              current={current}
+              setcurrent={setcurrent}
               title={"Products"}
               tabs={[
                 {
@@ -40,6 +43,8 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             />
             <HeaderTabSection
               mobile={true}
+              current={current}
+              setcurrent={setcurrent}
               title={"Benefits"}
               tabs={[
                 { name: "Financial Literacy", pushTo: "/benefits" },
@@ -63,11 +68,15 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             <HeaderTabSection
               mobile={true}
               title={"Quiz"}
+              current={current}
+              setcurrent={setcurrent}
               tabs={[]}
               pushTo="/quiz"
             />
             <HeaderTabSection
               mobile={true}
+              current={current}
+              setcurrent={setcurrent}
               title={"More"}
               tabs={[
                 { name: "About us", pushTo: "/about" },

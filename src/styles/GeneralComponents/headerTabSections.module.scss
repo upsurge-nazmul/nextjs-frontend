@@ -20,6 +20,10 @@
     .expandicon {
       margin-left: 10px;
     }
+    .reverseexpandicon {
+      margin-left: 10px;
+      transform: rotate(180deg);
+    }
   }
   .tabHolder {
     animation: dropdown 0.3s ease;
@@ -59,4 +63,21 @@
 .mobileTabSection {
   padding: 0;
   margin-bottom: 20px;
+  .expander {
+    font-size: 15px;
+    .expandicon,
+    .reverseexpandicon {
+      width: 10px;
+    }
+  }
+  .tabHolder {
+    margin-top: 10px;
+    width: 100%;
+    .tabs {
+      margin: 0;
+      width: 100%;
+      text-align: left;
+      font-size: 13px;
+    }
+  }
 }

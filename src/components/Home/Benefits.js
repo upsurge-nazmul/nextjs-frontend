@@ -5,6 +5,8 @@ import Dollar from "../SVGcomponents/Dollar";
 import IntroThunderSvg from "../SVGcomponents/IntroThunderSvg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
+import StarSvg from "../SVGcomponents/StarSvg";
+import BlubSvg from "../SVGcomponents/BulbSvg";
 function Benefits() {
   const data = [
     {
@@ -178,6 +180,12 @@ function Benefits() {
                   src="/images/home/benefits/img1.png"
                   alt=""
                 />
+                <IntroThunderSvg className={styles.thunder} />
+                <Dollar className={styles.dollar} />
+                <div className={styles.lb1}></div>
+                <div className={styles.lb2}></div>
+                <div className={styles.lb3}></div>
+                <div className={styles.lb4}></div>
                 <p className={styles.description}>{data[0]?.description}</p>
                 <p
                   className={styles.more}
@@ -198,6 +206,11 @@ function Benefits() {
               src="/images/home/benefits/img2.png"
               alt=""
             />
+            <StarSvg className={styles.thunder} />
+            <div className={styles.lb1}></div>
+            <div className={styles.lb2}></div>
+            <div className={styles.lb3}></div>
+            <div className={styles.lb4}></div>
             <p className={styles.description}>{data[1]?.description}</p>
             <p
               className={styles.more}
@@ -212,6 +225,11 @@ function Benefits() {
               src="/images/home/benefits/img3.png"
               alt=""
             />
+            <BlubSvg className={styles.thunder} />
+            <div className={styles.lb1}></div>
+            <div className={styles.lb2}></div>
+            <div className={styles.lb3}></div>
+            <div className={styles.lb4}></div>
             <p className={styles.description}>{data[2]?.description}</p>
             <p
               className={styles.more}
@@ -228,6 +246,11 @@ function Benefits() {
               src="/images/home/benefits/img4.png"
               alt=""
             />
+            <StarSvg className={styles.thunder} clr="#17D1BC" />
+            <div className={styles.lb1}></div>
+            <div className={styles.lb2}></div>
+            <div className={styles.lb3}></div>
+            <div className={styles.lb4}></div>
             <p className={styles.description}>{data[3]?.description}</p>
             <p
               className={styles.more}

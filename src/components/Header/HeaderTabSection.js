@@ -2,7 +2,14 @@ import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import styles from "../../styles/GeneralComponents/headerTabSections.module.scss";
 import HeaderExpandSvg from "../SVGcomponents/HeaderExpandSvg";
-function HeaderTabSection({ mobile, title, tabs, pushTo }) {
+function HeaderTabSection({
+  mobile,
+  title,
+  tabs,
+  pushTo,
+  current,
+  setcurrent,
+}) {
   const [showtabs, setshowtabs] = useState(false);
   const [timeout, settimeout] = useState(null);
   const router = useRouter();
@@ -12,6 +19,13 @@ function HeaderTabSection({ mobile, title, tabs, pushTo }) {
         mobile ? styles.mobileTabSection : ""
       }`}
       onClick={() => {
+        if (mobile) {
+          if (current === title) {
+            setcurrent("");
+          } else {
+            setcurrent(title);
+          }
+        }
         setshowtabs(!showtabs);
         if (tabs.length === 0 && pushTo) {
           router.push(pushTo);
@@ -36,23 +50,53 @@ function HeaderTabSection({ mobile, title, tabs, pushTo }) {
     >
       <div className={styles.expander}>
         {title}
-        {tabs.length > 0 && <HeaderExpandSvg className={styles.expandicon} />}
+        {tabs.length > 0 && (
+          <HeaderExpandSvg
+            className={`${
+              current === title || showtabs
+                ? styles.reverseexpandicon
+                : styles.expandicon
+            }`}
+          />
+        )}
       </div>
-      {tabs.length > 0 && showtabs && (
-        <div className={`${styles.tabHolder} ${mobile ? styles.mobile : ""}`}>
-          {tabs.map((item) => {
-            return (
-              <p
-                key={title + "-" + item.name}
-                className={styles.tabs}
-                onClick={() => router.push(item.pushTo)}
-              >
-                {item.name}
-              </p>
-            );
-          })}
-        </div>
-      )}
+      {mobile
+        ? tabs.length > 0 &&
+          current === title && (
+            <div
+              className={`${styles.tabHolder} ${mobile ? styles.mobile : ""}`}
+            >
+              {tabs.map((item) => {
+                return (
+                  <p
+                    key={title + "-" + item.name}
+                    className={styles.tabs}
+                    onClick={() => router.push(item.pushTo)}
+                  >
+                    {item.name}
+                  </p>
+                );
+              })}
+            </div>
+          )
+        : tabs.length > 0 &&
+          showtabs && (
+            <div
+              className={`${styles.tabHolder} ${mobile ? styles.mobile : ""}`}
+            >
+              {tabs.map((item) => {
+                return (
+                  <p
+                    key={title + "-" + item.name}
+                    className={styles.tabs}
+                    onClick={() => router.push(item.pushTo)}
+                  >
+                    {item.name}
+                  </p>
+                );
+              })}
+            </div>
+          )}
     </div>
   );
 }

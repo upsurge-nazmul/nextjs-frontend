@@ -9,10 +9,12 @@
   overflow-y: auto;
   .leftPanelContent {
     max-width: 350px;
+    min-width: 250px;
     background-color: rgb(246, 246, 246);
     position: relative;
-    padding-left: 80px;
-    width: 100%;
+    padding: 0 80px;
+    min-height: fit-content;
+    width: max-content;
     padding-top: 100px;
     .tab {
       color: rgb(201, 63, 62);

@@ -9,13 +9,16 @@
 
 @keyframes float {
   0% {
-    transform: translatey(0px);
+    transform: translate(0px, 0px) rotate(135deg);
+  }
+  25% {
+    transform: translate(10px, -10px) rotate(140deg);
   }
   50% {
-    transform: translatey(-10px);
+    transform: translate(15px, 5px) rotate(150deg);
   }
   100% {
-    transform: translatey(0px);
+    transform: translate(0px, 0px) rotate(135deg);
   }
 }
 
@@ -128,6 +131,7 @@
         .lb4 {
           position: absolute;
           border-radius: 100%;
+          animation: float 10s ease infinite both;
         }
         .lb1 {
           background-color: #fdcc03;
@@ -135,16 +139,17 @@
           height: 55px;
           left: -2%;
           top: 30%;
+          animation-delay: 1s;
         }
         .lb2 {
           bottom: 15%;
           left: 30%;
-          transform: rotate(135deg);
           height: 40px;
           background-color: #17d1bc;
           width: 80px;
           border-radius: 80px;
           border-bottom-left-radius: 0;
+          animation-delay: 3s;
           border-bottom-right-radius: 0;
         }
         .lb3 {
@@ -152,12 +157,14 @@
           width: 35px;
           height: 35px;
           right: 2%;
+          animation-delay: 1s;
           bottom: 12%;
         }
         .lb4 {
           background-color: #4166eb;
           width: 65px;
           height: 65px;
+          animation-delay: 5s;
           right: 2%;
           top: 12%;
         }
@@ -200,6 +207,128 @@
           top: 35%;
           z-index: -1;
           animation: moveit 5s ease alternate infinite;
+        }
+        &:nth-child(2) {
+          .thunder {
+            top: 49%;
+            left: 8%;
+          }
+          .lb1 {
+            background-color: #fdcc03;
+            width: 55px;
+            height: 55px;
+            top: unset;
+            left: 27%;
+            bottom: 17%;
+            animation-delay: 1s;
+            z-index: -1;
+          }
+          .lb2 {
+            bottom: unset;
+            top: 15%;
+            left: 8%;
+            height: 50px;
+            background-color: #4166eb;
+            width: 100px;
+            border-radius: 100px;
+            border-bottom-left-radius: 0;
+            animation-delay: 3s;
+            border-bottom-right-radius: 0;
+          }
+          .lb3 {
+            display: none;
+          }
+          .lb4 {
+            background-color: #17d1bc;
+            width: 35px;
+            height: 35px;
+            animation-delay: 5s;
+            right: 8%;
+            top: 32%;
+          }
+        }
+        &:nth-child(3) {
+          .thunder {
+            width: 45px;
+            top: 1%;
+            left: unset;
+            right: 23%;
+          }
+          .lb1 {
+            background-color: #4166eb;
+            width: 55px;
+            height: 55px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 1s;
+          }
+          .lb2 {
+            bottom: 20%;
+            left: 10%;
+            height: 50px;
+            background-color: #ff6263;
+            width: 100px;
+            border-radius: 100px;
+            border-bottom-left-radius: 0;
+            animation-delay: 3s;
+            z-index: -1;
+            border-bottom-right-radius: 0;
+          }
+          .lb3 {
+            display: none;
+          }
+          .lb4 {
+            background-color: #fdcc03;
+            width: 30px;
+            height: 30px;
+            animation-delay: 5s;
+            right: 8%;
+            top: 50%;
+          }
+        }
+        &:nth-child(4) {
+          .thunder {
+            width: 45px;
+            top: 1%;
+            left: unset;
+            right: 23%;
+            color: #17d1bc;
+            path: {
+              stroke: #17d1bc;
+              background-color: #17d1bc;
+            }
+          }
+          .lb1 {
+            background-color: #17d1bc;
+            width: 55px;
+            height: 55px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 1s;
+          }
+          .lb2 {
+            bottom: 20%;
+            left: 10%;
+            height: 50px;
+            background-color: #17d1bc;
+            width: 100px;
+            border-radius: 100px;
+            border-bottom-left-radius: 0;
+            animation-delay: 3s;
+            z-index: -1;
+            border-bottom-right-radius: 0;
+          }
+          .lb3 {
+            display: none;
+          }
+          .lb4 {
+            background-color: #17d1bc;
+            width: 30px;
+            height: 30px;
+            animation-delay: 5s;
+            right: 8%;
+            top: 50%;
+          }
         }
       }
       img {

@@ -15,6 +15,7 @@ function Header({
   stickyheader,
 }) {
   const router = useRouter();
+
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
