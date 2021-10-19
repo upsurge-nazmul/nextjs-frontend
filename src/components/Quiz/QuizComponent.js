@@ -16,6 +16,7 @@ function QuizComponent({
   setshowQuiz,
   widthHeight,
   setanswersheet,
+  quizfinished,
   question,
   data,
   setscore,

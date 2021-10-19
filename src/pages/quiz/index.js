@@ -149,43 +149,45 @@ function Quiz({ data }) {
         answersheet={answersheet}
       />
 
-  {  !started &&  <div className={styles.startscreen}>
-        <div className={styles.background} />
-        <div className={styles.right}>
-          <Jasper className={styles.jasper} />
+      {!started && (
+        <div className={styles.startscreen}>
+          <div className={styles.background} />
+          <div className={styles.right}>
+            <Jasper className={styles.jasper} />
 
-          <div className={styles.heading}>
-            How to calculate your Money Quotient
-          </div>
-          <ul>
-            <li className={styles.text} style={{ paddingTop: "40px" }}>
-              You will be asked 15 questions and have to choose the option which
-              you think is correct.
-            </li>
-            <li className={styles.text}>
-              The aim of this quiz is to help you see where you stand when it
-              comes to understanding your personal finances, banking, saving,
-              investments, and money!{" "}
-            </li>
-            <li className={styles.text}>
-              This is a dynamic quiz that adapts the difficulty level according
-              to your answers. The tougher questions you get right, the more
-              points you will get.{" "}
-            </li>
-            <li className={styles.text}>
-              {`Let's start and see how you do on our Money Quotient Don't forget
+            <div className={styles.heading}>
+              How to calculate your Money Quotient
+            </div>
+            <ul>
+              <li className={styles.text} style={{ paddingTop: "40px" }}>
+                You will be asked 15 questions and have to choose the option
+                which you think is correct.
+              </li>
+              <li className={styles.text}>
+                The aim of this quiz is to help you see where you stand when it
+                comes to understanding your personal finances, banking, saving,
+                investments, and money!{" "}
+              </li>
+              <li className={styles.text}>
+                This is a dynamic quiz that adapts the difficulty level
+                according to your answers. The tougher questions you get right,
+                the more points you will get.{" "}
+              </li>
+              <li className={styles.text}>
+                {`Let's start and see how you do on our Money Quotient Don't forget
               to enjoy and learn ;)`}
-            </li>
-            <li className={styles.text}>
-              {` Alright, let's see what your money quotient is. Good luck!`}
-            </li>
-          </ul>
+              </li>
+              <li className={styles.text}>
+                {` Alright, let's see what your money quotient is. Good luck!`}
+              </li>
+            </ul>
 
-          <div className={styles.button} onClick={() => setstarted(true)}>
-            Start
+            <div className={styles.button} onClick={() => setstarted(true)}>
+              Start
+            </div>
           </div>
         </div>
-      </div>}
+      )}
 
       <div className={styles.contentWrapper}>
         <div
@@ -237,21 +239,23 @@ function Quiz({ data }) {
               difficulty level according to your answers. The tougher questions
               you get right, the more points you will get.
             </p>
-            <p
-              className={styles.current}
-              style={{
-                backgroundColor:
-                  colorarray[currentcolor] === "#4166EB"
-                    ? "#ffffff"
-                    : "#4166EB",
-                color:
-                  colorarray[currentcolor] === "#4166EB"
-                    ? "#000000"
-                    : "#ffffff",
-              }}
-            >
-              {`${currentquestionindex + 1} / ${15}`}
-            </p>
+            {!quizfinished && (
+              <p
+                className={styles.current}
+                style={{
+                  backgroundColor:
+                    colorarray[currentcolor] === "#4166EB"
+                      ? "#ffffff"
+                      : "#4166EB",
+                  color:
+                    colorarray[currentcolor] === "#4166EB"
+                      ? "#000000"
+                      : "#ffffff",
+                }}
+              >
+                {`${currentquestionindex + 1} / ${15}`}
+              </p>
+            )}
           </div>
           {showQuiz && !quizfinished ? (
             <div className={styles.rightSection}>
@@ -293,6 +297,7 @@ function Quiz({ data }) {
               currentquestionindex={currentquestionindex}
               setcurrentquestionindex={setcurrentquestionindex}
               setquizfinished={setquizfinished}
+              quizfinished={quizfinished}
               setshowQuiz={setshowQuiz}
               setanswersheet={setanswersheet}
               setscore={setscore}
