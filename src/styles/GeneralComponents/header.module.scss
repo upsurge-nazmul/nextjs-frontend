@@ -5,6 +5,7 @@
   position: relative;
   scroll-snap-align: start;
   transition: all 0.3s ease;
+  z-index: 5;
   .container {
     width: 100%;
     display: flex;

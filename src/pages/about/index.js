@@ -4,6 +4,7 @@ import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import CurveJobSection from "../../components/SVGcomponents/CurveJobSection";
+import Jasper from "../../components/SVGcomponents/Jasper";
 import YourPhotoSvg from "../../components/SVGcomponents/YourPhotoSvg";
 import styles from "../../styles/about/about.module.scss";
 
@@ -91,10 +92,7 @@ export default function About() {
             </p>
           </div>
           <div className={styles.imgwrapper}>
-            <img
-              src="https://i.ibb.co/Xpd6HLk/Whats-App-Image-2021-10-13-at-7-34-07-PM-removebg-preview.png"
-              alt=""
-            />
+            <Jasper className={styles.jasper} />
           </div>
         </div>
 

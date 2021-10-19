@@ -9,11 +9,15 @@ const getblogwithid = (payload) => {
 const gethomeblogs = (payload) => {
   return ApiCalls.getResponse(`blogs/gethomeblogs`, payload);
 };
+const getallblogs = (payload) => {
+  return ApiCalls.getResponse(`blogs/getallblogs`, payload);
+};
 //getchores
 const BlogApis = {
   getblogs,
   getblogwithid,
   gethomeblogs,
+  getallblogs,
 };
 
 export default BlogApis;

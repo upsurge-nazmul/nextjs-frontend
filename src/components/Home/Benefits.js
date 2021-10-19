@@ -134,13 +134,30 @@ function Benefits() {
                 </div>
 
                 <p className={styles.description}>{item.description}</p>
-                <p className={styles.more}>{`LEARN MORE ->`}</p>
+                <p
+                  className={styles.more}
+                  onClick={() => {
+                    if (index === 0) {
+                      router.push("/benefits/financial");
+                    } else if (index === 1) {
+                      router.push("/benefits/experimential");
+                    } else if (index === 2) {
+                      router.push("/benefits/entrepreneuership");
+                    } else {
+                      router.push("/benefits/rewards");
+                    }
+                  }}
+                >{`LEARN MORE ->`}</p>
               </div>
             );
           })}
         </div>
         <div className={styles.left}>
           <div id="movingcontainer" className={styles.container}>
+            <div className={styles.prop1} />
+            <div className={styles.prop2} />
+            <div className={styles.prop3} />
+            <div className={styles.prop4} />
             <p
               className={styles.title}
               style={{

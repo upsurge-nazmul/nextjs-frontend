@@ -6,6 +6,8 @@ import LoginApis from "../../actions/apis/LoginApis";
 import IntroSvg from "../SVGcomponents/IntroSvg";
 import BallsSvg from "../SVGcomponents/BallsSvg";
 import { useRouter } from "next/dist/client/router";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
@@ -56,6 +58,8 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   }
   return (
     <section className={styles.intro}>
+      <Curve2 className={styles.curve} />
+
       <Toast data={toastdata} />
       <div className={styles.textContent}>
         <div className={styles.heading}>Money, made simple.</div>

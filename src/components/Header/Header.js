@@ -24,12 +24,7 @@ function Header({
   //   { name: "FAQ's", pushTo: "/faq" },
   // ]
   function clickedHeader() {
-    if (router.route === "/") {
-      let homepagemain = document.getElementById("home-page-main");
-      homepagemain.scrollTop = 0;
-    } else {
-      router.push("/");
-    }
+    router.push("/");
   }
   return (
     <div
@@ -111,10 +106,8 @@ function Header({
             title={"More"}
             tabs={[
               { name: "About us", pushTo: "/about" },
-
               { name: "Blogs", pushTo: "/blogs" },
-
-              { name: "Financial Calculators", pushTo: "/calculators" },
+              // { name: "Financial Calculators", pushTo: "/calculators" },
               { name: "FAQ's", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 

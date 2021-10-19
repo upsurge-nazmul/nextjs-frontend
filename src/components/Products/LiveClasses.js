@@ -10,13 +10,16 @@ export default function LiveClasses({ id }) {
         <div className={styles.subheading}>
           Live online classes designed and taught by our co-founders and panel
           of experts on various important topics around personal finance, career
-          development and entrepreneurship. Designed by experiential learning
-          professionals, these classes are fun, engaging and effective!
+          development and entrepreneurship. <br />
+          Designed by experiential learning professionals, these classes are
+          fun, engaging and effective!
         </div>
       </div>
       <div className={styles.right}>
+        <img src="/images/home/liveclass.png" alt="" />
         <img
-          src="https://i.ibb.co/DKc0gvz/Untitled-500-x-500-px-700-x-700-px-1.png"
+          className={styles.hoverimg}
+          src="/images/home/liveclassgirl.png"
           alt=""
         />
       </div>

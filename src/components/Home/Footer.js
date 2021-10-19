@@ -56,29 +56,7 @@ function Footer() {
               Live Classes
             </p>
           </div>
-          {/* <div className={styles.column}>
-            <p className={styles.heading}>Resources</p>
-            <p
-              className={styles.subheading}
-              onClick={() => router.push("/gamepage/ShoppingBudget")}
-            >
-              Shopping Budget
-            </p>
-            <p
-              className={styles.subheading}
-              onClick={() => router.push("/gamepage/BalanceBuilder")}
-            >
-              Balance Builder
-            </p>
-            <p
-              className={styles.subheading}
-              onClick={() => router.push("/gamepage/HighAndLow")}
-            >
-              High And Low
-            </p>
-             <p className={styles.subheading}>Cheat Codes</p>
-            <p className={styles.subheading}>Quizzes</p>
-          </div> */}
+
           {/* <div className={styles.column}>
             <p className={styles.heading}>Help & Support</p>
             <p
@@ -90,7 +68,7 @@ function Footer() {
             <p className={styles.subheading}>Help Center</p>
             <p className={styles.subheading}>Contact us</p>
           </div> */}
-          <div className={styles.column}>
+          {/* <div className={styles.column}>
             <p className={styles.heading}>Financial Calculators</p>
             <p
               className={styles.subheading}
@@ -116,7 +94,7 @@ function Footer() {
             >
               SIP Loan Calculator
             </p>
-          </div>
+          </div> */}
           <div className={styles.column}>
             <p className={styles.heading}>Benefits</p>
             <p
@@ -145,7 +123,33 @@ function Footer() {
               Rewards
             </p>
           </div>
-
+          <div className={styles.column}>
+            <p className={styles.heading}>Resources</p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/ShoppingBudget")}
+            >
+              Shopping Budget
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/BalanceBuilder")}
+            >
+              Balance Builder
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/gamepage/HighAndLow")}
+            >
+              High And Low
+            </p>
+            <p
+              className={styles.subheading}
+              onClick={() => router.push("/quiz")}
+            >
+              Quiz
+            </p>
+          </div>
           <div className={styles.column}>
             <p className={styles.heading}>More</p>
             <p
@@ -253,7 +257,7 @@ function Footer() {
             </>
           )}
         </div>
-        <div className={styles.column}>
+        {/* <div className={styles.column}>
           <p
             className={styles.heading}
             onClick={() => setshowcalcs(!showcalcs)}
@@ -288,7 +292,7 @@ function Footer() {
               </p>
             </>
           )}
-        </div>
+        </div> */}
         {/* <div className={styles.column}>
           <p className={styles.heading} onClick={() => setshowhelp(!showhelp)}>
             Help & Support <span>{showhelp ? "-" : "+"}</span>

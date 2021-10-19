@@ -61,7 +61,6 @@
     .left {
       width: 50%;
       display: flex;
-      overflow: hidden;
       position: sticky;
       top: 0;
       flex: 1;
@@ -79,6 +78,50 @@
         background: #f7f7f7;
         border-radius: 12px;
         padding: 20px 0;
+        .prop1,
+        .prop2,
+        .prop3,
+        .prop4 {
+          position: absolute;
+          border-radius: 100%;
+          animation: float 10s ease infinite both;
+        }
+        .prop1 {
+          background-color: #fdcc03;
+          width: 55px;
+          height: 55px;
+          left: -10%;
+          top: 35%;
+          animation-delay: 1s;
+          z-index: 2;
+        }
+        .prop2 {
+          bottom: -20%;
+          left: -5%;
+          height: 60px;
+          background-color: #17d1bc;
+          width: 120px;
+          border-radius: 120px;
+          border-bottom-left-radius: 0;
+          animation-delay: 3s;
+          border-bottom-right-radius: 0;
+        }
+        .prop3 {
+          background-color: #ff6263;
+          width: 35px;
+          height: 35px;
+          right: 15%;
+          animation-delay: 1s;
+          bottom: -15%;
+        }
+        .prop4 {
+          background-color: #4166eb;
+          width: 65px;
+          height: 65px;
+          animation-delay: 5s;
+          right: 32%;
+          top: 25%;
+        }
         .title {
           font-size: 44px;
           line-height: 44px;
@@ -109,6 +152,8 @@
             background-color: #4166eb;
             color: white;
             cursor: pointer;
+            font-size: 20px;
+            font-weight: 600;
             padding: 20px;
             padding-left: 40px;
           }
@@ -204,7 +249,7 @@
           position: fixed;
           width: 100vw;
           left: 0;
-          top: 35%;
+          top: 25%;
           z-index: -1;
           animation: moveit 5s ease alternate infinite;
         }
@@ -706,6 +751,7 @@
             color: #4166eb;
             margin-top: 15px;
             text-align: center;
+            cursor: pointer;
           }
           .allsections {
             font-weight: 400;
