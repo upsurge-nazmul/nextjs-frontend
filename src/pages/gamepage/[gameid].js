@@ -4,6 +4,8 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
+import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
+import Jasper from "../../components/SVGcomponents/Jasper";
 import styles from "../../styles/GamePage/gamepage.module.scss";
 
 // streamingAssetsUrl: "StreamingAssets",
@@ -59,16 +61,46 @@ export default function GamePage() {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [widthHeight, setwidthHeight] = useState({
+    width: 1280,
+    height: 720,
+  });
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const router = useRouter();
+  const [info, setinfo] = useState({
+    device: "computer",
+    orientation: "desktop",
+  });
   const { gameid } = router.query;
+  function handleOnClickFullscreen() {
+    unitycontext.setFullscreen(true);
+  }
+
+  useEffect(() => {
+    console.log(info);
+  }, [info]);
   useEffect(() => {
     if (gameid) {
       console.log(gameid);
       setunitycontext(new UnityContext(data[gameid]));
     }
   }, [gameid]);
+  useEffect(() => {
+    function updateSize() {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      document.documentElement.style.setProperty("--width", w + "px");
+      document.documentElement.style.setProperty("--height", h + "px");
+      setwidthHeight({
+        width: w,
+        height: h,
+      });
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
   useEffect(function () {
     if (!unitycontext) return;
     unitycontext.on("progress", function (progression) {
@@ -87,12 +119,13 @@ export default function GamePage() {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
   return (
     <div className={styles.gamePage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
-        stickyheader={stickyheader}
+        stickyheader={widthHeight.width > 860 ? stickyheader : false}
         setshowauth={setshowauth}
       />
       <LeftPanel
@@ -100,12 +133,28 @@ export default function GamePage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.gameWrapper}>
-        {unitycontext && (
-          <Unity
-            className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
-            unityContext={unitycontext}
-            matchWebGLToCanvasSize={true}
-          />
+        {widthHeight.width < 860 ? (
+          <div className={styles.mobileerr}>
+            <div className={styles.box}>
+              <BrokenGameConroller className={styles.jasper} />
+              <p className={styles.heading}>Oh no!</p>
+              <p>
+                {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
+              </p>
+              <div className={styles.button}>Go back</div>
+            </div>
+
+            {/* <Jasper className={styles.jasper} /> */}
+          </div>
+        ) : (
+          unitycontext && (
+            <Unity
+              className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
+              unityContext={unitycontext}
+              matchWebGLToCanvasSize={true}
+            />
+          )
         )}
       </div>
 

@@ -148,178 +148,179 @@ function Quiz({ data }) {
         setOpenFull={setopenFull}
         answersheet={answersheet}
       />
-      {!started ? (
-        <div className={styles.startscreen}>
-          <div className={styles.background} />
-          <div className={styles.left}>
-            <Jasper className={styles.jasper} />
-            {/* <img src="/images/home/jasper.png" alt="" /> */}
+
+  {  !started &&  <div className={styles.startscreen}>
+        <div className={styles.background} />
+        <div className={styles.right}>
+          <Jasper className={styles.jasper} />
+
+          <div className={styles.heading}>
+            How to calculate your Money Quotient
           </div>
-          <div className={styles.right}>
-            <div className={styles.heading}>
-              How to calculate your Money Quotient
-            </div>
-            <p className={styles.text}>
+          <ul>
+            <li className={styles.text} style={{ paddingTop: "40px" }}>
               You will be asked 15 questions and have to choose the option which
               you think is correct.
-            </p>
-            <p className={styles.text}>
+            </li>
+            <li className={styles.text}>
               The aim of this quiz is to help you see where you stand when it
               comes to understanding your personal finances, banking, saving,
               investments, and money!{" "}
-            </p>
-            <p className={styles.text}>
+            </li>
+            <li className={styles.text}>
               This is a dynamic quiz that adapts the difficulty level according
               to your answers. The tougher questions you get right, the more
               points you will get.{" "}
-            </p>
-            <p className={styles.text}>
+            </li>
+            <li className={styles.text}>
               {`Let's start and see how you do on our Money Quotient Don't forget
               to enjoy and learn ;)`}
-            </p>
-            <p className={styles.text}>
+            </li>
+            <li className={styles.text}>
               {` Alright, let's see what your money quotient is. Good luck!`}
-            </p>
-            <div className={styles.button} onClick={() => setstarted(true)}>
-              Start
-            </div>
+            </li>
+          </ul>
+
+          <div className={styles.button} onClick={() => setstarted(true)}>
+            Start
           </div>
         </div>
-      ) : (
-        <div className={styles.contentWrapper}>
-          <div
-            className={styles.prop1}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
-            }}
-          />
-          <div
-            className={styles.prop2}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
-            }}
-          />
-          <div
-            className={styles.prop3}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
-            }}
-          />
-          <div className={styles.prop4} />
-          <div className={styles.quizContainer}>
-            <div className={styles.leftSection}>
-              <p
-                className={styles.heading}
-                style={{
-                  color:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#ffffff"
-                      : "#000000",
-                }}
-              >
-                Money Quotient Quiz
-              </p>
-              <p
-                className={styles.details}
-                style={{
-                  color:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#ffffff"
-                      : "#000000",
-                }}
-              >
-                You will be asked 15 questions and have to choose the option
-                which you think is correct.This is a dynamic quiz that adapts
-                the difficulty level according to your answers. The tougher
-                questions you get right, the more points you will get.
-              </p>
-              <p
-                className={styles.current}
-                style={{
-                  backgroundColor:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#ffffff"
-                      : "#4166EB",
-                  color:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#000000"
-                      : "#ffffff",
-                }}
-              >
-                {`${currentquestionindex + 1} / ${15}`}
-              </p>
-            </div>
-            {showQuiz && !quizfinished ? (
-              <div className={styles.rightSection}>
-                <div className={styles.timerSection}>
-                  <p
-                    className={styles.timeleft}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Time Left
-                  </p>
-                  <p
-                    className={styles.timer}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    {secondsToTime(timer / 1000)}
-                  </p>
-                </div>
-              </div>
-            ) : null}
+      </div>}
+
+      <div className={styles.contentWrapper}>
+        <div
+          className={styles.prop1}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
+          }}
+        />
+        <div
+          className={styles.prop2}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
+          }}
+        />
+        <div
+          className={styles.prop3}
+          style={{
+            backgroundColor:
+              colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
+          }}
+        />
+        <div className={styles.prop4} />
+        <div className={styles.quizContainer}>
+          <div className={styles.leftSection}>
+            <p
+              className={styles.heading}
+              style={{
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#000000",
+              }}
+            >
+              Money Quotient Quiz
+            </p>
+            <p
+              className={styles.details}
+              style={{
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#000000",
+              }}
+            >
+              You will be asked 15 questions and have to choose the option which
+              you think is correct.This is a dynamic quiz that adapts the
+              difficulty level according to your answers. The tougher questions
+              you get right, the more points you will get.
+            </p>
+            <p
+              className={styles.current}
+              style={{
+                backgroundColor:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#ffffff"
+                    : "#4166EB",
+                color:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#000000"
+                    : "#ffffff",
+              }}
+            >
+              {`${currentquestionindex + 1} / ${15}`}
+            </p>
           </div>
           {showQuiz && !quizfinished ? (
-            <div className={styles.quizWrapper}>
-              <QuizComponent
-                data={data}
-                widthHeight={widthHeight}
-                setcorrectAnswers={setcorrectAnswers}
-                question={currentquestion}
-                totalQuestions={15}
-                currentquestionindex={currentquestionindex}
-                setcurrentquestionindex={setcurrentquestionindex}
-                setquizfinished={setquizfinished}
-                setshowQuiz={setshowQuiz}
-                setanswersheet={setanswersheet}
-                setscore={setscore}
-                currentcolor={currentcolor}
-                setcurrentcolor={setcurrentcolor}
-                colorarray={colorarray}
-              />
-            </div>
-          ) : null}
-          {quizfinished ? (
-            <div
-              className={`${styles.resultSection}  ${
-                openFull ? styles.hideOverFlow : ""
-              }`}
-            >
-              <div className={styles.heading}>Quiz Completed</div>
-              <div className={styles.points}>+{score}</div>
-              <div className={styles.pointsdes}>XP Points</div>
-              <div
-                className={styles.button}
-                onClick={() => window.location.reload(false)}
-              >
-                Play Again
+            <div className={styles.rightSection}>
+              <div className={styles.timerSection}>
+                <p
+                  className={styles.timeleft}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  Time Left
+                </p>
+                <p
+                  className={styles.timer}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  {secondsToTime(timer / 1000)}
+                </p>
               </div>
             </div>
           ) : null}
         </div>
-      )}
+        {showQuiz && !quizfinished ? (
+          <div className={styles.quizWrapper}>
+            <QuizComponent
+              data={data}
+              widthHeight={widthHeight}
+              setcorrectAnswers={setcorrectAnswers}
+              question={currentquestion}
+              totalQuestions={15}
+              currentquestionindex={currentquestionindex}
+              setcurrentquestionindex={setcurrentquestionindex}
+              setquizfinished={setquizfinished}
+              setshowQuiz={setshowQuiz}
+              setanswersheet={setanswersheet}
+              setscore={setscore}
+              currentcolor={currentcolor}
+              setcurrentcolor={setcurrentcolor}
+              colorarray={colorarray}
+            />
+          </div>
+        ) : null}
+        {quizfinished ? (
+          <div
+            className={`${styles.resultSection}  ${
+              openFull ? styles.hideOverFlow : ""
+            }`}
+          >
+            <div className={styles.heading}>Quiz Completed</div>
+            <div className={styles.points}>+{score}</div>
+            <div className={styles.pointsdes}>XP Points</div>
+            <div
+              className={styles.button}
+              onClick={() => window.location.reload(false)}
+            >
+              Play Again
+            </div>
+          </div>
+        ) : null}
+      </div>
+
       <Footer />
     </div>
   );

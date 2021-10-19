@@ -111,30 +111,33 @@ function QuizComponent({
       <div className={styles.question}>{currentquestion.question}</div>
       <div className={styles.options}>
         {new Array(4).fill("a").map((option, index) => {
-          return (
-            <div
-              key={"quizoption" + index}
-              className={`${styles.option + " " + styles.grad}  ${
-                selectedOption === index + 1 ? styles.selected : ""
-              }`}
-              onClick={() => {
-                fetchnextquestion(index + 1);
-              }}
-            >
-              <div className={styles.circle}>
-                {index === 0
-                  ? "A"
-                  : index === 1
-                  ? "B"
-                  : index === 2
-                  ? "C"
-                  : "D"}
+          if (!currentquestion[`option${index + 1}`]) {
+            return null;
+          } else
+            return (
+              <div
+                key={"quizoption" + index}
+                className={`${styles.option + " " + styles.grad}  ${
+                  selectedOption === index + 1 ? styles.selected : ""
+                }`}
+                onClick={() => {
+                  fetchnextquestion(index + 1);
+                }}
+              >
+                <div className={styles.circle}>
+                  {index === 0
+                    ? "A"
+                    : index === 1
+                    ? "B"
+                    : index === 2
+                    ? "C"
+                    : "D"}
+                </div>
+                <p className={styles.text}>
+                  {currentquestion[`option${index + 1}`]}
+                </p>
               </div>
-              <p className={styles.text}>
-                {currentquestion[`option${index + 1}`]}
-              </p>
-            </div>
-          );
+            );
         })}
       </div>
     </div>
