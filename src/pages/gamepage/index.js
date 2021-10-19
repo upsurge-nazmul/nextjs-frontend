@@ -7,48 +7,43 @@ import Footer from "../../components/Home/Footer";
 
 export default function GamePage() {
   const router = useRouter();
-  const [heading, setHeading] = useState("");
-  const [subheading, setSubheading] = useState("");
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const [paths, setpaths] = useState(["home", "calculators"]);
   const [stickyheader, setstickyheader] = useState(false);
 
   const data = {
     ShoppingBudget: {
       name: "Shopping Budget",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Identify how much is available to spend and making purchase decisions based on that.",
     },
     BalanceBuilder: {
       name: "Balance Builder",
-      description:
-        "This is demo description, will be replaced with content later.",
+      description: "Identify what is income and what is expense.",
     },
     HighAndLow: {
       name: "High And Low",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Identify currency and arrange in ascending or descending order after adding the money.",
     },
     MoneyMath: {
       name: "Money Math",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Choose what you want to buy, earn some money, and calculate  how much you have left.",
     },
     MoneyManager: {
       name: "Money Manager",
       description:
-        "This is demo description, will be replaced with content later.",
+        "Know the importance of allocating your earnings between spending, saving and donating.",
     },
-    CoinSlide: {
-      name: "Coin Slide",
-      description:
-        "This is demo description, will be replaced with content later.",
-    },
+    // CoinSlide: {
+    //   name: "Coin Slide",
+    //   description:
+    //     "This is demo description, will be replaced with content later.",
+    // },
     NeedOrWant: {
       name: "Need Or Want",
-      description:
-        "This is demo description, will be replaced with content later.",
+      description: "Identify the difference between needs and wants.",
     },
   };
 
