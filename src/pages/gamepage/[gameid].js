@@ -49,6 +49,12 @@ const data = {
     codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
     loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
   },
+  MoneySlide: {
+    dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
+    frameworkUrl: "/Games/MoneySlide/Build/MoneySlide.framework.js",
+    codeUrl: "/Games/MoneySlide/Build/MoneySlide.wasm",
+    loaderUrl: "/Games/MoneySlide/Build/MoneySlide.loader.js",
+  },
   NeedOrWant: {
     dataUrl: "/Games/NeedOrWant/Build/NeedOrWant.data",
     frameworkUrl: "/Games/NeedOrWant/Build/NeedOrWant.framework.js",
@@ -142,7 +148,9 @@ export default function GamePage() {
                 {`This game is not yet available for phones & tablets. Please use
                 a laptop or PC to play it.`}
               </p>
-              <div className={styles.button}>Go back</div>
+              <div className={styles.button} onClick={() => router.push("/")}>
+                Go back
+              </div>
             </div>
 
             {/* <Jasper className={styles.jasper} /> */}

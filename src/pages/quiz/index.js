@@ -11,6 +11,10 @@ import styles from "../../styles/Quiz/quiz.module.scss";
 import Toast from "../../components/Toast";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import Footer from "../../components/Home/Footer";
+import LoginApis from "../../actions/apis/LoginApis";
+import validator from "validator";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 function Quiz({ data }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -22,6 +26,7 @@ function Quiz({ data }) {
   const [task, settask] = useState("");
   const [quizfinished, setquizfinished] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [error, setError] = useState("");
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
   const [chartData, setChartData] = useState({
@@ -41,7 +46,7 @@ function Quiz({ data }) {
     msg: "",
   });
   const [correctAnswers, setcorrectAnswers] = useState(0);
-  const [email, setemail] = useState("");
+  const [email, setEmail] = useState("");
   const [widthHeight, setwidthHeight] = useState({
     width: 0,
     height: 0,
@@ -119,7 +124,25 @@ function Quiz({ data }) {
       " s"
     );
   }
-
+  async function handleSignup() {
+    if (!validator.isEmail(email)) {
+      seterror("Enter valid email address");
+    } else {
+      let response = await LoginApis.saveemail({ email: email });
+      if (response) {
+        if (response.data.success) {
+          router.push("/waitlist/" + email);
+        } else {
+          seterror(response.data.message);
+        }
+      } else {
+        seterror("Error connecting to server");
+      }
+      // setshowauth(true);
+      // setauthmode("parent");
+      // setmailfromhome(email);
+    }
+  }
   return (
     <div
       className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""}`}
@@ -151,7 +174,6 @@ function Quiz({ data }) {
 
       {!started && (
         <div className={styles.startscreen}>
-          <div className={styles.background} />
           <div className={styles.right}>
             <Jasper className={styles.jasper} />
 
@@ -214,47 +236,49 @@ function Quiz({ data }) {
         <div className={styles.prop4} />
         <div className={styles.quizContainer}>
           <div className={styles.leftSection}>
-            <p
-              className={styles.heading}
-              style={{
-                color:
-                  colorarray[currentcolor] === "#4166EB"
-                    ? "#ffffff"
-                    : "#000000",
-              }}
-            >
-              Money Quotient Quiz
-            </p>
-            <p
-              className={styles.details}
-              style={{
-                color:
-                  colorarray[currentcolor] === "#4166EB"
-                    ? "#ffffff"
-                    : "#000000",
-              }}
-            >
-              You will be asked 15 questions and have to choose the option which
-              you think is correct.This is a dynamic quiz that adapts the
-              difficulty level according to your answers. The tougher questions
-              you get right, the more points you will get.
-            </p>
             {!quizfinished && (
-              <p
-                className={styles.current}
-                style={{
-                  backgroundColor:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#ffffff"
-                      : "#4166EB",
-                  color:
-                    colorarray[currentcolor] === "#4166EB"
-                      ? "#000000"
-                      : "#ffffff",
-                }}
-              >
-                {`${currentquestionindex + 1} / ${15}`}
-              </p>
+              <>
+                <p
+                  className={styles.heading}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  Money Quotient Quiz
+                </p>
+                <p
+                  className={styles.details}
+                  style={{
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#000000",
+                  }}
+                >
+                  You will be asked 15 questions and have to choose the option
+                  which you think is correct.This is a dynamic quiz that adapts
+                  the difficulty level according to your answers. The tougher
+                  questions you get right, the more points you will get.
+                </p>
+                <p
+                  className={styles.current}
+                  style={{
+                    backgroundColor:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#ffffff"
+                        : "#4166EB",
+                    color:
+                      colorarray[currentcolor] === "#4166EB"
+                        ? "#000000"
+                        : "#ffffff",
+                  }}
+                >
+                  {`${currentquestionindex + 1} / ${15}`}
+                </p>
+              </>
             )}
           </div>
           {showQuiz && !quizfinished ? (
@@ -313,9 +337,48 @@ function Quiz({ data }) {
               openFull ? styles.hideOverFlow : ""
             }`}
           >
-            <div className={styles.heading}>Quiz Completed</div>
-            <div className={styles.points}>+{score}</div>
-            <div className={styles.pointsdes}>XP Points</div>
+            <Jasper className={styles.jasper} />
+            <div className={styles.background}>
+              <div className={styles.curvecontainer}>
+                <Curve1 className={styles.curve1} />
+                <Curve2 className={styles.curve2} />
+              </div>
+            </div>
+
+            <p
+              className={styles.heading}
+              style={{
+                color:
+                  score < 50 ? "#4166EB" : score < 80 ? "#FDCC03" : "#17D1BC",
+              }}
+            >
+              {score < 50
+                ? "Money Rookie"
+                : score < 80
+                ? "Money Ninja"
+                : "Money Master"}
+            </p>
+            <p className={styles.subheading}>
+              {score < 50
+                ? "Looks like you are a Money Rookie! Don’t worry, that’s what we’re here for! Join upsurge’s waiting list and subscribe to our newsletter to start your journey towards financial freedom today."
+                : score < 80
+                ? "You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. "
+                : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
+            </p>
+            <div className={styles.points}>You scored : {score}%</div>
+            {/* <div className={styles.pointsdes}>XP Points</div> */}
+            <div className={styles.signupBox}>
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <div className={styles.normalbutton} onClick={handleSignup}>
+                Join the waitlist
+              </div>
+            </div>
             <div
               className={styles.button}
               onClick={() => window.location.reload(false)}

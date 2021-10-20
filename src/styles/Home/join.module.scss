@@ -65,8 +65,8 @@
     background: #ff6263;
   }
   .dr1 {
-    right: 27%;
-    top: 70%;
+    right: 22%;
+    top: 10%;
     width: 91px;
     height: 91px;
     background: #fff;
@@ -92,11 +92,11 @@
     background: #ff6263;
   }
   .dr4 {
-    right: 22%;
-    top: 25%;
-    width: 53px;
-    height: 53px;
-    background: #4166eb;
+    background-color: white;
+    width: 20px;
+    right: 8%;
+    top: 10%;
+    height: 20px;
   }
   .textContent {
     display: flex;
@@ -109,7 +109,7 @@
     }
     .subheading {
       color: rgb(255, 255, 255);
-      margin-top: 40px;
+      margin-top: 2vh;
       font-size: 20px;
       font-weight: 400;
       width: 80%;
@@ -133,7 +133,7 @@
         border: none;
         border-radius: 8px;
         font-size: 20px;
-        width: 60%;
+        width: 30%;
         max-width: 450px;
         padding: 0 20px;
         height: 100%;
@@ -147,7 +147,10 @@
         background: #ececec;
         color: rgb(34, 34, 34);
         font-size: 18px;
+        width: 20%;
+        max-width: 200px;
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 100%;
         font-weight: 500;
@@ -169,8 +172,15 @@
       height: 60px;
     }
     .dr1 {
-      right: 15%;
-      top: 65%;
+      right: 20%;
+      top: 10%;
+    }
+    .dr4 {
+      background-color: white;
+      width: 20px;
+      right: 8%;
+      top: 10%;
+      height: 20px;
     }
     .textContent {
       .heading {

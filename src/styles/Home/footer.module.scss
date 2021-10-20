@@ -1,61 +1,109 @@
 .footerSection {
   width: 100%;
-  min-height: 50vh;
+  min-height: fit-content;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  background: #f4f5f7;
+  background: rgb(244, 245, 247);
   position: relative;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   padding: 4% 7% 10px;
   .top {
     display: flex;
     width: 100%;
     align-items: center;
-
+    height: 100%;
     .left {
       width: 30%;
       display: flex;
-      height: 100%;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       .logo {
         width: 180px;
         cursor: pointer;
+        height: fit-content;
       }
-      .details {
-        font-size: 18px;
-        margin-top: auto;
+      .brandtext {
+        margin-top: 2vh;
         .heading {
-          font-weight: 400;
+          font-size: 15px;
         }
         .subheadings {
+          font-size: 15px;
+          margin-top: 10px;
           display: flex;
           align-items: center;
-          flex-wrap: wrap;
-          margin-top: 25px;
           a {
             text-decoration: none;
             color: #4166eb;
-            transition: all 0.3s ease;
+            margin-right: 5px;
+            &:last-child {
+              margin: 0;
+              margin-left: 5px;
+            }
+          }
+        }
+        .whatsapp {
+          background-color: #25d366;
+          padding: 15px;
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          color: white;
+          font-weight: 500;
+          margin-top: 10px;
+          text-decoration: none;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          .icon {
+            font-size: 22px;
+            margin-right: 8px;
+          }
+          &:hover {
+            background-color: #075e54;
+          }
+        }
+        .bottom {
+          font-size: 14px;
+          margin-top: 10px;
+          display: flex;
+          p {
+            cursor: pointer;
             &:first-child {
-              margin-right: 5px;
+              margin-right: 10px;
             }
             &:hover {
-              color: hsl(227, 57%, 49%);
+              text-decoration: underline;
             }
           }
         }
       }
-      .bottom {
-        margin-top: auto;
+      .socials {
         display: flex;
-        width: 100%;
-        p {
-          margin-right: 20px;
-          font-size: 15px;
+        height: fit-content;
+        overflow: auto;
+        align-items: center;
+        margin-top: 20px;
+        .social {
           cursor: pointer;
-          font-weight: 400;
+          margin-right: 30px;
+          width: 20px;
+          height: 20px;
+        }
+        .socialyt {
+          width: 25px;
+          cursor: pointer;
+          margin-right: 30px;
+          height: 25px;
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }

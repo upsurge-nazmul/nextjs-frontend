@@ -10,6 +10,8 @@ import Footer from "../../components/Home/Footer";
 import validator from "validator";
 import Toast from "../../components/Toast";
 import LoginApis from "../../actions/apis/LoginApis";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 function Contact() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -69,7 +71,8 @@ function Contact() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <Toast data={toastdata} />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <section className={styles.container}>
         <p className={styles.heading}>{`Hello! We've been expecting you.`}</p>
         <p className={styles.subheading}>

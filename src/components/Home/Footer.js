@@ -24,6 +24,65 @@ function Footer() {
       <div className={styles.top}>
         <div className={styles.left}>
           <Logo className={styles.logo} onClick={() => router.push("/")} />
+          <div className={styles.brandtext}>
+            <a
+              className={styles.whatsapp}
+              href="https://wa.me/918287433304"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon className={styles.icon} />
+              Connect on whatsapp
+            </a>
+            <div className={styles.bottom}>
+              <p
+                onClick={() => {
+                  settermmode("terms");
+                  setshowterm(true);
+                }}
+              >
+                Terms & Conditions
+              </p>
+              <p
+                onClick={() => {
+                  settermmode("privacy");
+                  setshowterm(true);
+                }}
+              >
+                Privacy Policy
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.socials}>
+            <a
+              href="https://www.facebook.com/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Fb className={styles.social} />
+            </a>
+            <a
+              href="https://www.instagram.com/upsurge.india/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Insta className={styles.social} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedIN className={styles.socialyt} />
+            </a>
+            {/* <a href="">
+            <Twitter className={styles.social} alt="" />
+          </a> */}
+            {/* <a href="">
+            <YtSvg className={styles.socialyt} />
+          </a> */}
+          </div>
         </div>
 
         <div className={styles.right}>
@@ -375,11 +434,6 @@ function Footer() {
           </a>
         </div>
         <div className={styles.bottom}>
-          <p className={styles.heading}>© Surgeup Technologies Pvt Ltd.</p>
-          <p className={styles.subheadings}>
-            Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
-            <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
-          </p>
           <a
             className={styles.whatsapp}
             href="https://wa.me/918287433304"
@@ -410,72 +464,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.brand}>
-        <div className={styles.brandtext}>
-          <div className={styles.heading}>Surgeup Technologies Pvt Ltd.</div>
-          <p className={styles.subheadings}>
-            Contact us at <a href="tel:+918287433304">{": +91 8287433304 "}</a>|
-            <a href="mailto:karan@upsurgefi.com">karan@upsurgefi.com</a>
-          </p>
-          <a
-            className={styles.whatsapp}
-            href="https://wa.me/918287433304"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <WhatsAppIcon className={styles.icon} />
-            Connect on whatsapp
-          </a>
-          <div className={styles.bottom}>
-            <p
-              onClick={() => {
-                settermmode("terms");
-                setshowterm(true);
-              }}
-            >
-              Terms & Conditions
-            </p>
-            <p
-              onClick={() => {
-                settermmode("privacy");
-                setshowterm(true);
-              }}
-            >
-              Privacy Policy
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.socials}>
-          <a
-            href="https://www.facebook.com/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Fb className={styles.social} />
-          </a>
-          <a
-            href="https://www.instagram.com/upsurge.india/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Insta className={styles.social} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LinkedIN className={styles.socialyt} />
-          </a>
-          {/* <a href="">
-            <Twitter className={styles.social} alt="" />
-          </a> */}
-          {/* <a href="">
-            <YtSvg className={styles.socialyt} />
-          </a> */}
-        </div>
-      </div>
+      <div className={styles.brand}></div>
     </div>
   );
 }

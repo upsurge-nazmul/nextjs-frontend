@@ -1,3 +1,12 @@
+@keyframes moveit {
+  0% {
+    transform: translateY(-20%) scaleX(-1);
+  }
+  100% {
+    transform: translateY(0) scaleX(-1);
+  }
+}
+
 .questSection {
   display: flex;
   flex-direction: column;
@@ -5,6 +14,24 @@
   position: relative;
   padding-bottom: 40px;
   overflow: hidden;
+  .curve2 {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 60%;
+    z-index: -1;
+    transform: scaleX(-1);
+    animation: moveit 5s ease alternate infinite;
+    animation-delay: 2s;
+  }
+  .curve1 {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 25%;
+    z-index: -1;
+    animation: moveit 5s ease alternate infinite;
+  }
   .kidimg {
     width: 20vw;
     right: 40%;

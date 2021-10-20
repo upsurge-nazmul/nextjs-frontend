@@ -58,7 +58,7 @@ export default function About() {
             </p>
           </div>
           <div className={styles.imgwrapper}>
-            <img src="https://i.ibb.co/jLjKJ4x/Untitled-design-32.png" alt="" />
+            <img src="/images/home/girlvision.png" alt="" />
           </div>
         </div>
         <div className={styles.missionSection}>
@@ -73,7 +73,7 @@ export default function About() {
           </div>
           <div className={styles.imgwrapper}>
             <img
-              src="https://i.ibb.co/Tq2s48b/Untitled-design-33-removebg-preview.png"
+              src="https://i.ibb.co/wc7Dh1d/Untitled-design-57-removebg.png"
               alt=""
             />
           </div>

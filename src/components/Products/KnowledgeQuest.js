@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Products/quest.module.scss";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 
@@ -17,6 +19,8 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
   ];
   return (
     <div className={styles.questSection}>
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <img src="/images/benefits_quest.png" alt="" />
       <img className={styles.kidimg} src="/images/benefitquestkid.png" alt="" />
       <PetalSvgQuest className={styles.petal} />
