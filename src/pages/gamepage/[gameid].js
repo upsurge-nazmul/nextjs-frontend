@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
+import GameApis from "../../actions/apis/GameApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
@@ -72,6 +73,7 @@ export default function GamePage() {
     height: 720,
   });
   const [stickyheader, setstickyheader] = useState(false);
+  const [errorshown, seterrorshown] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const router = useRouter();
   const [info, setinfo] = useState({
@@ -84,8 +86,13 @@ export default function GamePage() {
   }
 
   useEffect(() => {
-    console.log(info);
-  }, [info]);
+    if (gameid) {
+      logclick();
+    }
+    async function logclick() {
+      let res = await GameApis.loggameclick({ id: gameid });
+    }
+  }, [gameid]);
   useEffect(() => {
     if (gameid) {
       console.log(gameid);
@@ -125,7 +132,18 @@ export default function GamePage() {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
-
+  useEffect(() => {
+    if (!gameid) {
+      return;
+    }
+    if (!errorshown && widthHeight.width < 860) {
+      logerror();
+      seterrorshown(true);
+    }
+    async function logerror() {
+      await GameApis.loggameerror({ id: gameid });
+    }
+  }, [widthHeight, gameid]);
   return (
     <div className={styles.gamePage}>
       <Header
