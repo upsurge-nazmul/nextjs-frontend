@@ -5,6 +5,8 @@ import Faq from "./Faq";
 import Fab from "./Fab";
 import SearchSvg from "../SVGcomponents/SearchSvg";
 import LeftPanel from "../LeftPanel";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 function Help() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
@@ -57,7 +59,8 @@ function Help() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <Fab />
       <div className="frontpage">
         <div className="left">

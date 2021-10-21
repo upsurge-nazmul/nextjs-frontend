@@ -9,6 +9,8 @@ import YtSvg from "../SVGcomponents/YtSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "./Terms";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 function Footer() {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
@@ -21,6 +23,12 @@ function Footer() {
   return (
     <div className={styles.footerSection}>
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
+      <div className={styles.background}>
+        <div className={styles.curvecontainer}>
+          <Curve1 className={styles.curve1} />
+          <Curve2 className={styles.curve2} />
+        </div>
+      </div>
       <div className={styles.top}>
         <div className={styles.left}>
           <Logo className={styles.logo} onClick={() => router.push("/")} />

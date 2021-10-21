@@ -368,7 +368,6 @@
       flex-direction: column;
       align-items: center;
       transition: all 0.3s ease;
-      background-color: white;
       padding: 0;
       border-radius: 8px;
     }
@@ -377,6 +376,7 @@
       display: flex;
       align-items: center;
       height: 50vh;
+      min-height: max-content;
       margin-top: 20vh;
       border-radius: 8px;
       justify-content: center;
@@ -634,6 +634,72 @@
         }
       }
     }
+    .contentWrapper {
+      .resultSection {
+        margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        height: max-content;
+        padding: 40px 0;
+        min-height: max-content;
+        margin-top: 20vh;
+        border-radius: 8px;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        .jasper {
+          position: absolute;
+          z-index: -1;
+          top: -20vh;
+          width: 150px;
+        }
+        .heading {
+          font-size: 46px;
+          font-weight: 800;
+          text-align: center;
+          color: #17d1bc;
+        }
+        .subheading {
+          color: black;
+          margin: 10px 0;
+          font-size: 18px;
+          font-weight: 400;
+          text-align: center;
+          width: 80%;
+        }
+        .points {
+          font-size: 26px;
+          font-weight: 600;
+          text-align: center;
+          color: #131313;
+          margin-top: 20px;
+        }
+        .pointsdes {
+          font-size: 36px;
+          font-weight: 500;
+          text-align: center;
+        }
+        .button {
+          background: #4166eb;
+          border-radius: 14px;
+          padding: 10px 20px;
+          color: white;
+          font-size: 16px;
+          width: 220px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          margin-top: 40px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          &:hover {
+            background-color: hsl(227, 56%, 38%);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -887,10 +953,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 50vh;
-        border-radius: 8px;
+        height: max-content;
+        border-radius: 12px;
         margin-top: 20vh;
-        padding: 0 10vw;
+        padding: 40px 10vw;
         .jasper {
           position: absolute;
           z-index: -1;
@@ -956,6 +1022,89 @@
           width: 100%;
           height: 100%;
           padding: 10px;
+        }
+      }
+      .hideOverFlow {
+        overflow: hidden;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  .quizPage {
+    .contentWrapper {
+      margin-top: 4vh;
+      padding-left: 7%;
+      width: 100%;
+      padding-right: 7%;
+      .prop1,
+      .prop2,
+      .prop3,
+      .prop4 {
+        display: none;
+      }
+      .pathSection {
+        .path {
+          font-size: 12px;
+        }
+        .arrow {
+          font-size: 12px;
+        }
+      }
+
+      .resultSection {
+        margin-top: 3vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: max-content;
+        border-radius: 12px;
+        margin-top: 20vh;
+        padding: 30px 5vw;
+        .jasper {
+          position: absolute;
+          z-index: -1;
+          width: 100px;
+        }
+        .heading {
+          font-size: 20px;
+        }
+        .subheading {
+          font-size: 12px;
+          width: 100%;
+          margin: 5px 0;
+        }
+        .points {
+          font-size: 14px;
+          margin-top: 5px;
+        }
+        .button {
+          height: 40px;
+          width: 70%;
+          font-size: 14px;
+          border-radius: 8px;
+          margin-top: 20px;
+        }
+        .signupBox {
+          width: 100%;
+          min-width: unset;
+          max-width: unset;
+          height: 40px;
+          .input {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-size: 12px;
+            font-size: 14px;
+            height: 40px;
+            padding-left: 10px;
+          }
+          .normalbutton {
+            height: 40px;
+            font-size: 12px;
+            min-width: unset;
+            width: 140px;
+            padding: 5px;
+          }
         }
       }
       .hideOverFlow {

@@ -6,6 +6,8 @@ import SimpleProgress from "../SimpleProgress";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
 import QuizApis from "../../actions/apis/QuizApis";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 
 function QuizComponent({
   currentquestionindex,
@@ -89,6 +91,12 @@ function QuizComponent({
         current={currentquestionindex}
         setcurrent={setcurrentquestionindex}
       />
+      <div className={styles.background}>
+        <div className={styles.curvecontainer}>
+          <Curve1 className={styles.curve1} />
+          <Curve2 className={styles.curve2} />
+        </div>
+      </div>
       {/* {currentquestionindex !== 0 ? (
         <div
           className={styles.leftbutton}
