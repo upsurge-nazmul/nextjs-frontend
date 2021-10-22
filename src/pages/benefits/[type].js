@@ -6,6 +6,7 @@ import Financial from "../../components/Benefits/Financial";
 import Rewards from "../../components/Benefits/RewardsSection";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 
 function BenfitsPage() {
@@ -80,6 +81,8 @@ function BenfitsPage() {
       <Experimential id="experimential" />
       <Entrepreneuership id="entrepreneuership" />
       <Rewards id="rewards" />
+      <JoinUs />
+
       <Footer />
     </div>
   );

@@ -6,6 +6,7 @@ import Financial from "../../components/Benefits/Financial";
 import Rewards from "../../components/Benefits/RewardsSection";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
@@ -45,7 +46,7 @@ function BenfitsPage() {
       <Experimential />
       <Entrepreneuership />
       <Rewards />
-
+      <JoinUs />
       <Footer />
     </div>
   );
