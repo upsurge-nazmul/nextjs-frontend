@@ -19,6 +19,7 @@ import Who from "../components/Home/Who";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
+import JasperSection from "../components/Home/JasperSection";
 const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
@@ -76,6 +77,7 @@ function Home({ isLogged, userdata }) {
         {/* <How /> */}
         <Benefits />
         <ProductSection />
+        <JasperSection />
         <AboutSection />
         <BlogsSection />
         <JoinUs />
