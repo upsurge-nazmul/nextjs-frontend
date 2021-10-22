@@ -4,6 +4,10 @@ export default function Entrepreneuership({ id }) {
   return (
     <div className={styles.main} id={id}>
       <div className={styles.container}>
+        <div className={styles.green}></div>
+        <div className={styles.blue}></div>
+        <div className={styles.white}></div>
+        <div className={styles.yellow}></div>
         <div className={styles.left}>
           <p className={styles.heading}>From thinker to founder</p>
           <p className={styles.subheading}>
@@ -12,9 +16,6 @@ export default function Entrepreneuership({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.imageblock}>
-            <div className={styles.green}></div>
-            <div className={styles.white}></div>
-            <div className={styles.yellow}></div>
             <img src="https://i.ibb.co/gdj2Bry/Untitled-design-25.png" alt="" />
           </div>
         </div>

@@ -7,7 +7,9 @@ import Rewards from "../../components/Benefits/RewardsSection";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
-
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
+import styles from "../../styles/Benefits/benefits.module.scss";
 function BenfitsPage() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
@@ -26,7 +28,7 @@ function BenfitsPage() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div>
+    <div className={styles.main}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
@@ -37,6 +39,8 @@ function BenfitsPage() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <Financial />
       <Experimential />
       <Entrepreneuership />

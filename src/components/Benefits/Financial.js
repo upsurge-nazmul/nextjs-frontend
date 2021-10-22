@@ -4,6 +4,10 @@ export default function Financial({ id }) {
   return (
     <div className={styles.main} id={id}>
       <div className={styles.container}>
+        <div className={styles.green}></div>
+        <div className={styles.blue}></div>
+        <div className={styles.white}></div>
+        <div className={styles.yellow}></div>
         <div className={styles.left}>
           <p className={styles.heading}>
             Kickstart your kid’s financial journey
@@ -14,9 +18,6 @@ export default function Financial({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.imageblock}>
-            <div className={styles.green}></div>
-            <div className={styles.white}></div>
-            <div className={styles.yellow}></div>
             <img src="https://i.ibb.co/X2fdvVq/Untitled-design-23.png" alt="" />
           </div>
         </div>
