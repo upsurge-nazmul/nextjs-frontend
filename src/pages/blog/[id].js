@@ -7,6 +7,8 @@ import BlogApis from "../../actions/apis/BlogApis";
 import draftToHtml from "draftjs-to-html";
 import xss from "xss";
 import Footer from "../../components/Home/Footer";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 
 export default function BlogPage({ blogdata }) {
   const router = useRouter();
@@ -86,6 +88,8 @@ export default function BlogPage({ blogdata }) {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <div className={styles.post}>
           <div className={styles.textcontent}>

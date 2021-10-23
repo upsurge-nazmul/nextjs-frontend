@@ -21,7 +21,6 @@ export default function JasperSection() {
             the UniCoins they've earned for real prizes!`}
           </p>
         </div>
-        <BubbleSvg className={styles.bubble} />
       </div>
       <Jasper className={styles.jasperimg} />
     </div>

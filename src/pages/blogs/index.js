@@ -12,6 +12,8 @@ import draftToHtml from "draftjs-to-html";
 import ArrowUp from "../../components/SVGcomponents/ArrowUp";
 import { useRouter } from "next/dist/client/router";
 import Footer from "../../components/Home/Footer";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 
 function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const router = useRouter();
@@ -111,6 +113,8 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         showauth={showauth}
         setshowauth={setshowauth}
       />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <FullBlog
         item={selectedBlog}
         openFull={openFull}
