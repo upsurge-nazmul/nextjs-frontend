@@ -1,14 +1,13 @@
 .jasper {
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   position: relative;
   .leftpart {
     width: 50%;
     margin-left: 15%;
-    margin-top: 2%;
+    margin-top: 0;
     position: relative;
     min-width: 800px;
-
     .text {
       position: absolute;
       top: 0;
@@ -102,8 +101,9 @@
 
 @media only screen and (max-width: 1500px) {
   .jasper {
+    height: 50vh;
     .leftpart {
-      margin-top: 15%;
+      margin-top: 0;
       margin-left: 5%;
       .text {
         position: absolute;
@@ -138,8 +138,8 @@
 }
 @media only screen and (max-width: 1200px) {
   .jasper {
+    height: 40vh;
     .leftpart {
-      margin-top: 20%;
       margin-left: 5%;
       min-width: 550px;
       .text {
@@ -182,12 +182,58 @@
     }
   }
 }
+@media only screen and (max-width: 1000px) {
+  .jasper {
+    height: 40vh;
+    .leftpart {
+      margin-left: 5%;
+      min-width: 450px;
+      .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 10% 8%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .bottomarrow {
+          display: block;
+          width: 50px;
+          position: absolute;
+          bottom: 5%;
+          right: -12%;
+          z-index: 1;
+          transform: rotate(270deg);
+        }
+        .heading {
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+        .subheading {
+          font-size: 14px;
+          font-weight: 400;
+          margin-top: 5px;
+        }
+      }
+      .bubble {
+      }
+    }
+    .jasperimg {
+      width: 220px;
+      position: absolute;
+      bottom: -120px;
+      right: 10%;
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .jasper {
-    height: 60vh;
+    height: 55vh;
     .leftpart {
       margin-top: 10%;
-      margin-left: 5%;
+      margin-left: 10%;
       min-width: 300px;
 
       .text {
@@ -203,12 +249,12 @@
         border-radius: 20px;
         .bottomarrow {
           display: unset;
-          width: 50px;
           position: absolute;
-          bottom: -32%;
-          right: 5%;
+          bottom: -23%;
+          left: 40%;
           z-index: 1;
-          transform: scaleX(-1);
+          width: 40px;
+          transform: scaleX(1);
         }
 
         .heading {
@@ -230,13 +276,13 @@
       width: 120px;
       position: absolute;
       bottom: -70px;
-      right: 2%;
+      right: 15%;
     }
   }
 }
 @media only screen and (max-width: 350px) {
   .jasper {
-    height: 70vh;
+    height: 45vh;
     display: flex;
     justify-content: center;
     .leftpart {
@@ -284,7 +330,7 @@
       width: 120px;
       position: absolute;
       bottom: -70px;
-      right: 2%;
+      right: 42%;
     }
   }
 }
