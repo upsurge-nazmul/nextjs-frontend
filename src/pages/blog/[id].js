@@ -105,9 +105,9 @@ export default function BlogPage({ blogdata }) {
               <p className={styles.cat}>{blogdata.categories.split(",")[0]}</p>
             </div>
             <div className={styles.title}>{blogdata.title}</div>
-            {blogdata.img_url && (
+            {blogdata?.img_url && (
               <div className={styles.image}>
-                <img src={blogdata.img_url} alt="" />
+                <img src={blogdata?.img_url} alt="" />
               </div>
             )}
             <div className={styles.preview}>

@@ -133,7 +133,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
               className={styles.left}
               onClick={() => router.push(`/blog/${blogposts[0].id}`)}
             >
-              <img src={highlightblogs[0].img_url} alt="" />
+              <img src={highlightblogs[0]?.img_url} alt="" />
               <div className={styles.categoryWrapper}>
                 {highlightblogs[0].categories.split(",").map((cat, index) => (
                   <p className={styles.category} key={"cat" + index}>

@@ -12,7 +12,7 @@ function BlogCard({ data, getdatafromraw }) {
         router.push(`/blog/${data.id}`);
       }}
     >
-      <img src={data.img_url} alt="" />
+      <img src={data?.img_url} alt="" />
       <div className={styles.right}>
         <div className={styles.categories}>
           {data.categories.split(",").map((cat, index) => (
