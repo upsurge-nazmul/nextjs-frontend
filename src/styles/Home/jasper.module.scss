@@ -231,6 +231,7 @@
 @media only screen and (max-width: 860px) {
   .jasper {
     height: 55vh;
+    min-height: 452px;
     .leftpart {
       margin-top: 10%;
       margin-left: 10%;
@@ -286,7 +287,7 @@
     display: flex;
     justify-content: center;
     .leftpart {
-      margin-top: 0%;
+      margin-top: 5%;
       margin-left: 0%;
       min-width: unset;
       width: 90%;
