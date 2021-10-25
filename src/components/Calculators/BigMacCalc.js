@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
-import DropBox from "./DropBox";
-import InputBlock from "./InputBlock";
-import Progress from "../Progress";
 import ResultBox from "./ResultBox";
 import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 export default function BigMacCalc() {
@@ -13,7 +9,6 @@ export default function BigMacCalc() {
   const [type, settype] = useState("");
   const [university, setuniversity] = useState("");
   const [country, setcountry] = useState("");
-  const [course, setcourse] = useState(0);
   const [questions, setquestions] = useState([
     {
       type: "input",

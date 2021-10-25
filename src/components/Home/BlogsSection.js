@@ -3,13 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import xss from "xss";
 import BlogApis from "../../actions/apis/BlogApis";
-import Image from "../../assets/product/product.png";
 import styles from "../../styles/Home/blogs.module.scss";
-import MoreCard from "../Blog/MoreCard";
-import ProductChoresSvg from "../SVGcomponents/ProductChoresSvg";
-import ProductGameSvg from "../SVGcomponents/ProductGameSvg";
-import ProductPeople from "../SVGcomponents/ProductPeople";
-import QuestSvg from "../SVGcomponents/QuestSvg";
 
 export default function BlogsSection() {
   const router = useRouter();

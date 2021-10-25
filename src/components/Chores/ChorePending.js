@@ -3,8 +3,6 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import { duetimeDifference } from "../../helpers/timehelpers";
 import styles from "../../styles/Chores/chorepending.module.scss";
 import ClockSvg from "../SVGcomponents/ClockSvg";
-import CompletedSvg from "../SVGcomponents/CompletedSvg";
-import PendingSvg from "../SVGcomponents/PendingSvg";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
 function ChorePending({ data, settoastdata, setchores, setallchores }) {

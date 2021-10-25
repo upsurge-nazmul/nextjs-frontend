@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/Home/jasper.module.scss";
 import BottomArrowBubble from "../SVGcomponents/BottomArrowBubble";
-import BubbleSvg from "../SVGcomponents/BubbleSvg";
 import Jasper from "../SVGcomponents/Jasper";
 export default function JasperSection() {
   return (

@@ -1,5 +1,4 @@
 import { useRouter } from "next/dist/client/router";
-import Router from "next/dist/next-server/server/router";
 import React from "react";
 import styles from "../../styles/Blog/blogcard.module.scss";
 function BlogCard({ data, getdatafromraw }) {

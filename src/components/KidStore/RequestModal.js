@@ -8,9 +8,7 @@ import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 
 export default function RequestModal({ showmodal, setshowmodal }) {
   //modes will be start , category , template, assign
-  const [userdata, setuserdata] = useState(null);
-  const [mode, setmode] = useState("category");
-  const [selectedchild, setselectedchild] = useState("Pihu Mehta");
+
   const [success, setsuccess] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,

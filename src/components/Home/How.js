@@ -1,13 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Home/how.module.scss";
-import HowBlob from "../SVGcomponents/HowBlob";
-import HowSvg from "../SVGcomponents/HowSvg";
 import PauseSvg from "../SVGcomponents/PauseSvg";
 import PlaySvg from "../SVGcomponents/PlaySvg";
 function How() {
   const [play, setplay] = useState(false);
   const videoref = useRef();
-  const [ispaused, setispaused] = useState(false);
   function playpause() {
     if (!videoref.current.paused) {
       videoref.current.pause();

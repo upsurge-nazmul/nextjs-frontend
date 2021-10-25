@@ -1,6 +1,5 @@
 import { useRouter } from "next/dist/client/router";
 import React from "react";
-import Image from "../../assets/product/product.png";
 import styles from "../../styles/Home/product.module.scss";
 import ProductChoresSvg from "../SVGcomponents/ProductChoresSvg";
 import ProductGameSvg from "../SVGcomponents/ProductGameSvg";
