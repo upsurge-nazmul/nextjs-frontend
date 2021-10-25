@@ -17,7 +17,7 @@ export default function PartnerSection() {
         partner brands.
       </div>
       <div className={styles.wrapper}>
-        <Marquee gradientWidth={100} gradientColor={[65, 102, 235]}>
+        <Marquee gradientWidth={100} gradientColor={[23, 209, 188]}>
           {partners.map((item) => {
             return <img className={styles.img} src={item} />;
           })}
