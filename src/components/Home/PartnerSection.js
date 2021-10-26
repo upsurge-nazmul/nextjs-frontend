@@ -18,8 +18,15 @@ export default function PartnerSection() {
       </div>
       <div className={styles.wrapper}>
         <Marquee gradientWidth={100} gradientColor={[23, 209, 188]}>
-          {partners.map((item) => {
-            return <img className={styles.img} src={item} />;
+          {partners.map((item, index) => {
+            return (
+              <img
+                key={"partner" + index}
+                className={styles.img}
+                src={item}
+                alt=""
+              />
+            );
           })}
         </Marquee>
       </div>
