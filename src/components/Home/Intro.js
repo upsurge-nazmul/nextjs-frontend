@@ -61,12 +61,12 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
 
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Money, made simple.</div>
+        <div className={styles.heading}>Money, made easy.</div>
 
         <div className={styles.subheading}>
-          Upsurge is a movement to kickstart a financial literacy and
-          entrepreneurship revolution amongst Gen-Z, by making learning fun and
-          rewarding.
+          Upsurge is a movement to kickstart a financial literacy &
+          entrepreneurship revolution amongst the Gen-Z, by making learning fun
+          and rewarding.
         </div>
         <p className={styles.error} onClick={handleSignup}>
           {error}

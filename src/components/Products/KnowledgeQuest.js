@@ -26,10 +26,11 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
       <PetalSvgQuest className={styles.petal} />
       <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
-        <div className={styles.heading}>Knowledge Quest</div>
+        <div className={styles.heading}>Knowledge Quests</div>
         <div className={styles.subheading}>
-          Knowledge Quest comprises byte sized interactive videos which include
-          exercises, real life examples and a short quiz.
+          Interactive courses that cover fundamentals of finance, including
+          earning, budgeting, saving, and investing, and entrepreneurship and
+          include exercises, real-life examples and short quizzes.
         </div>
         <div className={styles.details}>
           <div className={styles.section}>

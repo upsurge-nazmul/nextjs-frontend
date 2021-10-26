@@ -14,11 +14,9 @@ export default function Experimential({ id }) {
           </p>
         </div>
         <div className={styles.right}>
+          <p className={styles.heading}>Learning by doing</p>
           <p className={styles.subheading}>
-            {`Through games, simulators and activities that have been designed by our experiential learning experts, children are able to experience the importance of money management in a virtual environment. 
-
-Playing games reinforces the concepts that the child has learned, and at the same time brings an element of fun to financial literacy and entrepreneurship. And we all know that children learn best when they are having fun!
-`}
+            {`We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill in your children, healthy money habits that will last a lifetime.`}
           </p>
         </div>
       </div>

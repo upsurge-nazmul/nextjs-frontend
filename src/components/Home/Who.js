@@ -8,13 +8,21 @@ function Who() {
       <div className={styles.container}>
         <div className={styles.left}>
           <p>
-            We are a financial literacy and entrepreneurship development program
-            for children between the ages of 7 to 18.
+            Upsurge is India’s first financial literacy and entrepreneurship
+            development platform for the 8 to 18 year-olds. These are critical
+            life skills that are being ignored in school and college, and we are
+            here to change that!
+          </p>
+          <p>
+            Only 25% of Indians are financially literate, and it is our mission
+            to ensure that the next generation is equipped to not only manage
+            their money effectively, but also invest it, grow their wealth and
+            achieve their financial goals.
           </p>
           <p>
             We believe in practical learning and have developed our own
-            curriculums and games to make learning fun, effective and rewarding
-            for children.
+            curriculum & games to teach real-world finance and entrepreneurship
+            in a fun, relevant, and rewarding way.
           </p>
         </div>
         <div className={styles.right}>

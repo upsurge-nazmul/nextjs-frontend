@@ -21,6 +21,7 @@ import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
 import JasperSection from "../components/Home/JasperSection";
 import PartnerSection from "../components/Home/PartnerSection";
+import TestiMonial from "../components/Home/TestiMonial";
 const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
@@ -82,6 +83,7 @@ function Home({ isLogged, userdata }) {
         <JasperSection />
         <AboutSection />
         <BlogsSection />
+        <TestiMonial />
         <JoinUs />
         <Footer />
       </div>
