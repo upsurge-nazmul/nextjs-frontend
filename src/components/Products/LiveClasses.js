@@ -6,11 +6,13 @@ export default function LiveClasses({ id }) {
   return (
     <div className={styles.liveClasses} id={id}>
       <div className={styles.top}>
-        <div className={styles.heading}>Live Events</div>
+        <div className={styles.heading}>Live Classes</div>
         <div className={styles.subheading}>
-          Engaging fun workshops and courses for children, by experts and our
-          founders, around important topics such as money management, career
-          development and entrepreneurship.
+          Live online classes designed and taught by our co-founders and panel
+          of experts on various important topics around personal finance, career
+          development and entrepreneurship. <br />
+          Designed by experiential learning professionals, these classes are
+          fun, engaging and effective!
         </div>
       </div>
       <div className={styles.right}>

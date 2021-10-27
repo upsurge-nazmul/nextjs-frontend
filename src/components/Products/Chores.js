@@ -8,10 +8,8 @@ export default function Chores({ id, email, setEmail, check, error }) {
       <div className={styles.top}>
         <div className={styles.heading}>Chores</div>
         <div className={styles.subheading}>
-          Fun and rewarding way for parents to reinforce good financial
-          behaviors in children by assigning jobs to them and rewarding them
-          with UniCoins – which will help them understand that they have to work
-          to earn money!
+          Young learners experience that earning money requires them to complete
+          jobs and chores given by their parents.
         </div>
         <div className={styles.signupBox}>
           {showinput && (
