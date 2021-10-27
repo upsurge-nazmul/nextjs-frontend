@@ -50,19 +50,11 @@
   .completed {
     transition: all 0.3s ease;
     color: white;
+    background-color: rgba(65, 102, 235, 1);
   }
 }
 .grad {
-  background: rgb(255, 98, 99);
-  background: linear-gradient(
-    68deg,
-    rgba(255, 98, 99, 1) 0%,
-    rgba(65, 102, 235, 1) 51%,
-    rgba(23, 209, 188, 1) 85%
-  );
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: rgba(65, 102, 235, 1);
 }
 
 @media only screen and (max-width: 860px) {

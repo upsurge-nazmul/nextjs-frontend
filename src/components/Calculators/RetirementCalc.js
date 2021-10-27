@@ -8,6 +8,8 @@ import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcDropdown from "./BigCalcDropdown";
+import BigCalcInput from "./BigCalcInput";
 export default function Retirement() {
   const [money, setmoney] = useState(1);
   const [type, settype] = useState(0);
@@ -18,27 +20,24 @@ export default function Retirement() {
     {
       title: "Expected age of retirement",
       type: "select",
-      value: type,
-      setvalue: settype,
+      code: "type",
       options: [40, 45, 60, 65],
     },
     {
       title: "Current age",
       type: "input",
-      value: age,
-      setvalue: setage,
+      code: "age",
       min: 18,
       max: 79,
-      sign: "years",
+      posttitle: "years",
     },
     {
       title: "Money required monthly",
       type: "input",
-      setvalue: setmoney,
-      value: money,
+      code: "money",
       min: 1,
       max: 10000000,
-      sign: "₹",
+      pretitle: "₹",
     },
   ]);
   const [result, setresult] = useState(false);
@@ -65,15 +64,23 @@ export default function Retirement() {
       },
     ],
   });
+  const [calcdata, setcalcdata] = useState({
+    age: 1,
+    type: 40,
+    money: 0,
+  });
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
     setresult(true);
-  }, [type, age, money, country]);
+  }, [calcdata, current]);
 
   function emi() {
-    let remaininglife = 80 - age;
-    let monthlyinvestment = (money * remaininglife) / type;
+    let remaininglife = 80 - calcdata.age;
+    let monthlyinvestment = (calcdata.money * remaininglife) / calcdata.type;
 
     setresultdata((prev) => ({
       heading1: "",
@@ -86,7 +93,7 @@ export default function Retirement() {
       datasets: [
         {
           label: "# of Votes",
-          data: [Math.round(monthlyinvestment), Math.round(money)],
+          data: [Math.round(monthlyinvestment), Math.round(calcdata.money)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
@@ -96,50 +103,95 @@ export default function Retirement() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (type === "Indian" && item.title === "Select Region") {
-            return null;
-          } else if (type === "Foreign" && item.title === "age type") {
-            return null;
-          } else if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={
-                  type !== "Apartment"
-                    ? questions.length - 2
-                    : questions.length - 1
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
                 }
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
+          <ResultBox resultdata={resultdata} />
+        </div>
+      )}
 
-        {money && type && age ? <ResultBox resultdata={resultdata} /> : null}
-      </div>
-
-      {money && type && age ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

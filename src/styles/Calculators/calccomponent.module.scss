@@ -1,9 +1,9 @@
 .calculatorComponent {
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
-  padding: 20px;
+  padding: 40px;
   margin-top: 3vh;
-  min-height: 500px;
+  min-height: max-content;
   display: flex;
   .leftsec {
     width: 50px;
@@ -46,7 +46,30 @@
         }
       }
     }
-
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+      .next,
+      .previous {
+        padding: 12px 32px;
+        width: 131px;
+        display: flex;
+        align-items: center;
+        color: white;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        height: 48px;
+        background: #a6a6a6;
+        border-radius: 6px;
+      }
+      .next {
+        background-color: rgba(65, 102, 235, 1);
+      }
+    }
     .inputBlockSip {
       display: flex;
       margin-bottom: 20px;

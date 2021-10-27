@@ -4,6 +4,11 @@ import ResultBox from "./ResultBox";
 import Select from "./Select";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcDropdown from "./BigCalcDropdown";
+import BigCalcInput from "./BigCalcInput";
+import Progress from "../Progress";
+import InputBlock from "./InputBlock";
+import DropBox from "./DropBox";
 export default function BigMacCalc() {
   const [inrmoney, setyear] = useState(1);
   const [type, settype] = useState("");
@@ -13,8 +18,7 @@ export default function BigMacCalc() {
     {
       type: "input",
       title: "Enter the amount",
-      setvalue: setyear,
-      value: inrmoney,
+      code: "inrmoney",
       min: 1,
       max: 10000000,
       sign: "₹",
@@ -22,8 +26,7 @@ export default function BigMacCalc() {
     {
       title: "Select Country",
       type: "select",
-      value: country,
-      setvalue: setcountry,
+      code: "country",
       options: ["Australia", "UK", "US", "Singapore", "Japan", "Canada"],
     },
   ]);
@@ -51,34 +54,40 @@ export default function BigMacCalc() {
       },
     ],
   });
+  const [calcdata, setcalcdata] = useState({
+    inrmoney: 1,
+    country: "UK",
+  });
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
-    setresult(true);
-  }, [type, university, inrmoney, country]);
+  }, [calcdata, current]);
 
   function emi() {
     let bigmac = 0;
-    if (country === "Singapore") {
+    if (calcdata.country === "Singapore") {
       bigmac = 4.31;
-    } else if (country === "UK") {
+    } else if (calcdata.country === "UK") {
       bigmac = 4.75;
-    } else if (country === "US") {
+    } else if (calcdata.country === "US") {
       bigmac = 5.65;
-    } else if (country === "Canada") {
+    } else if (calcdata.country === "Canada") {
       bigmac = 5.31;
-    } else if (country === "Australia") {
+    } else if (calcdata.country === "Australia") {
       bigmac = 4.79;
-    } else if (country === "Japan") {
+    } else if (calcdata.country === "Japan") {
       bigmac = 3.55;
     }
     let ratio = 2.55 / bigmac;
-    var money = inrmoney * ratio;
+    var money = calcdata.inrmoney * ratio;
 
     setresultdata((prev) => ({
       heading1: "Total Money (INR)",
       heading2: `Worth in ${country}`,
-      result1: Math.round(inrmoney),
+      result1: Math.round(calcdata.inrmoney),
       result2: Math.round(money),
     }));
     setChartData((prev) => ({
@@ -97,50 +106,95 @@ export default function BigMacCalc() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (type === "Indian" && item.title === "Select Region") {
-            return null;
-          } else if (type === "Foreign" && item.title === "University type") {
-            return null;
-          } else if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={
-                  type !== "Apartment"
-                    ? questions.length - 2
-                    : questions.length - 1
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
                 }
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
+          <ResultBox resultdata={resultdata} />
+        </div>
+      )}
 
-        {inrmoney && country ? <ResultBox resultdata={resultdata} /> : null}
-      </div>
-
-      {inrmoney && country ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

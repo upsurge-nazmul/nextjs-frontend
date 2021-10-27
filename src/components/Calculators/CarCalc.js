@@ -8,39 +8,41 @@ import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcInput from "./BigCalcInput";
+import BigCalcDropdown from "./BigCalcDropdown";
 export default function CarCalc() {
-  const [years, setyear] = useState(1);
-  const [type, settype] = useState("");
-  const [noofrooms, setnoofrooms] = useState("");
-  const [city, setcity] = useState("");
-  const [onetimepayment, setOnetimepayment] = useState(0);
+  const [calcdata, setcalcdata] = useState({
+    years: 1,
+    type: "Sedan",
+    onetimepayment: 0,
+  });
   const [questions, setquestions] = useState([
     {
       title: "Select he type of car",
       type: "select",
-      value: type,
-      setvalue: settype,
+      code: "type",
       options: ["Sedan", "Sports", "SUV", "Luxury", "Hatchback"],
     },
     {
       type: "input",
       title: "Enter the tenure of the loan",
-      setvalue: setyear,
-      value: years,
+      code: "years",
       min: 1,
       max: 70,
-      sign: "years",
+      posttitle: "years",
     },
     {
       type: "input",
       title: "Enter the down Payment",
       min: 0,
       max: 1000000,
-      setvalue: setOnetimepayment,
-      value: onetimepayment,
-      sign: "₹",
+      code: "onetimepayment",
+      pretitle: "₹",
     },
   ]);
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
+
   const [result, setresult] = useState(false);
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
@@ -67,29 +69,30 @@ export default function CarCalc() {
   });
 
   useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
     setresult(true);
-  }, [type, years, onetimepayment]);
+  }, [calcdata, current]);
 
   function emi() {
     let monthlyrate = 12 / 12 / 100;
-    var months = years * 12;
+    var months = calcdata.years * 12;
 
     let loanamount = 0;
     // Sedan, sports car, SUV, Luxury car, Hatchback
-    if (type === "Sedan") {
+    if (calcdata.type === "Sedan") {
       loanamount = 1000000;
-    } else if (type === "Sports") {
+    } else if (calcdata.type === "Sports") {
       loanamount = 8000000;
-    } else if (type === "SUV") {
+    } else if (calcdata.type === "SUV") {
       loanamount = 1600000;
-    } else if (type === "Luxury") {
+    } else if (calcdata.type === "Luxury") {
       loanamount = 4100000;
-    } else if (type === "Hatchback") {
+    } else if (calcdata.type === "Hatchback") {
       loanamount = 700000;
     }
-    if (onetimepayment) {
-      loanamount = loanamount - onetimepayment;
+    if (calcdata.onetimepayment) {
+      loanamount = loanamount - calcdata.onetimepayment;
     }
     let emiamount =
       (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
@@ -120,48 +123,95 @@ export default function CarCalc() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={
-                  type !== "Apartment"
-                    ? questions.length - 2
-                    : questions.length - 1
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
                 }
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
-        {/* <div className={`${styles.submitButton} ${styles.vertgrad}`}>
-          Calculate
-        </div> */}
-        {years && type ? <ResultBox resultdata={resultdata} /> : null}
-      </div>
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
+          <ResultBox resultdata={resultdata} />
+        </div>
+      )}
 
-      {years && type ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

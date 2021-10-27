@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -10,40 +10,77 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function CostOfRaisingCalc() {
-  const [marriage, setmarriage] = useState();
-  const [type, settype] = useState("");
-  const [school, setschool] = useState();
-  const [university, setuniversity] = useState("");
-  const [college, setcollege] = useState("");
-  const [extra, setextra] = useState(0);
+export default function EducationInvestmentCalc() {
   const [questions, setquestions] = useState([
     {
-      title: "Select the city tier for school expenses",
+      title: "Select the type of university ",
       type: "select",
-      code: "school",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "type",
+      options: ["Indian", "Foreign"],
     },
     {
-      title: "Select the city tier for marriage expenses",
+      title: "University type",
       type: "select",
-      code: "marriage",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "university",
+      options: ["Public", "Private"],
     },
     {
-      title: "Select the city tier for college expenses",
+      title: "Select Region",
       type: "select",
-      code: "college",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "country",
+      options: ["US", "Australia", "Europe", "Asia"],
     },
     {
-      title: "Select the city tier for extra expenses",
+      title: "Select Course",
       type: "select",
-      code: "extra",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "course",
+      options: ["MBA", "Masters", "Undergrad"],
+    },
+
+    {
+      type: "input",
+      title: "Years remaining in admission",
+      code: "years",
+      min: 1,
+      max: 70,
+      posttitle: "years",
     },
   ]);
-  const [result, setresult] = useState(false);
+  const backupquestions = [
+    {
+      title: "Select the type of university ",
+      type: "select",
+      code: "type",
+      options: ["Indian", "Foreign"],
+    },
+    {
+      title: "University type",
+      type: "select",
+      code: "university",
+      options: ["Public", "Private"],
+    },
+    {
+      title: "Select Region",
+      type: "select",
+      code: "country",
+      options: ["US", "Australia", "Europe", "Asia"],
+    },
+    {
+      title: "Select Course",
+      type: "select",
+      code: "course",
+      options: ["MBA", "Masters", "Undergrad"],
+    },
+
+    {
+      type: "input",
+      title: "Years remaining in admission",
+      code: "years",
+      min: 1,
+      max: 70,
+      posttitle: "years",
+    },
+  ];
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
     heading1: "Invested Amount",
@@ -56,7 +93,7 @@ export default function CostOfRaisingCalc() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Total Expense"],
+    labels: ["Monthly Investment"],
     datasets: [
       {
         label: "# of Votes",
@@ -67,69 +104,98 @@ export default function CostOfRaisingCalc() {
       },
     ],
   });
-
   const [calcdata, setcalcdata] = useState({
-    school: "Tier 2",
-    marriage: "Tier 2",
-    extra: "Tier 2",
-    college: "Tier 2",
+    years: 1,
+    type: "Indian",
+    university: "Public",
+    country: "US",
+    course: "MBA",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
-
+  useEffect(() => {
+    if (calcdata.type !== "Indian") {
+      setquestions(
+        backupquestions.filter((item) => item.code !== "university")
+      );
+    } else {
+      setquestions(backupquestions.filter((item) => item.code !== "country"));
+    }
+  }, [calcdata]);
   useEffect(() => {
     setcurrentquestion(questions[current]);
     emi();
-    setresult(true);
   }, [calcdata, current]);
-
   function emi() {
-    let schoolexpense = 0;
-    let collegeexpense = 0;
-    let marriageexpense = 0;
-    let extraeexpense = 0;
-    if (calcdata.school === "Tier 1") {
-      schoolexpense = 1512000;
-    } else if (calcdata.school === "Tier 2") {
-      schoolexpense = 648000;
+    let loanamount = 0;
+    if (calcdata.type === "Indian") {
+      if (calcdata.university === "Private") {
+        if (calcdata.course === "MBA") {
+          loanamount = 4500000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 400000;
+        } else {
+          loanamount = 2000000;
+        }
+      } else {
+        if (calcdata.course === "MBA") {
+          loanamount = 2400000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 400000;
+        } else {
+          loanamount = 1000000;
+        }
+      }
     } else {
-      schoolexpense = 216000;
+      if (calcdata.country === "Australia") {
+        if (calcdata.course === "MBA") {
+          loanamount = 3750000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 1500000;
+        } else {
+          loanamount = 8000000;
+        }
+      } else if (calcdata.country === "Europe") {
+        if (calcdata.course === "MBA") {
+          loanamount = 4500000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 500000;
+        } else {
+          loanamount = 500000;
+        }
+      } else if (calcdata.country === "Asia") {
+        if (calcdata.course === "MBA") {
+          loanamount = 7000000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 1950000;
+        } else {
+          loanamount = 4000000;
+        }
+      } else {
+        if (calcdata.course === "MBA") {
+          loanamount = 15000000;
+        } else if (calcdata.course === "Masters") {
+          loanamount = 3000000;
+        } else {
+          loanamount = 9000000;
+        }
+      }
     }
-    if (calcdata.college === "Tier 1") {
-      collegeexpense = 2000000;
-    } else if (calcdata.school === "Tier 2") {
-      collegeexpense = 1500000;
-    } else {
-      collegeexpense = 1000000;
-    }
-    if (calcdata.marriage === "Tier 1") {
-      marriageexpense = 4000000;
-    } else if (calcdata.school === "Tier 2") {
-      marriageexpense = 2000000;
-    } else {
-      marriageexpense = 800000;
-    }
-    if (calcdata.extra === "Tier 1") {
-      extraeexpense = 1080000;
-    } else if (calcdata.school === "Tier 2") {
-      extraeexpense = 864000;
-    } else {
-      extraeexpense = 648000;
-    }
-    let res = extraeexpense + schoolexpense + collegeexpense + marriageexpense;
+
+    let monthlyinvestment = loanamount / (12 * calcdata.years);
 
     setresultdata((prev) => ({
-      heading1: "Total Expense",
-      result1: Math.round(res),
+      heading1: "Monthly Investment",
+      result1: Math.round(monthlyinvestment),
     }));
     setChartData((prev) => ({
       ...prev,
       datasets: [
         {
-          label: "# of Votes",
-          data: [Math.round(res)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
+          label: "Monthly Investment",
+          data: [Math.round(monthlyinvestment)],
+          backgroundColor: ["#FDCC03"],
+          borderColor: ["#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -228,7 +294,7 @@ export default function CostOfRaisingCalc() {
       {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <Bar
               data={chartData}
               className={styles.chart}
               width={100}

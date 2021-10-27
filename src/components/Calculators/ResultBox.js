@@ -22,7 +22,8 @@ function ResultBox({ resultdata }) {
           <div className={styles.container}>
             <p className={styles.heading}>{resultdata.heading2}</p>
             <p className={styles.result}>
-              ₹ {getIndianFormat(resultdata.result2)}
+              {resultdata.result2sign ? resultdata.result2sign : "₹"}{" "}
+              {getIndianFormat(resultdata.result2)}
             </p>
           </div>
         )}

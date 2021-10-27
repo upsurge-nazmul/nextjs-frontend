@@ -11,41 +11,36 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
-export default function HomeCalc({ data }) {
+export default function RestroCalc({ data }) {
   const [questions, setquestions] = useState([
     {
-      title: "Select the type of house",
+      title: "Type of restaurant",
       type: "select",
-      options: ["Apartment", "Bungalow"],
+      options: [
+        "Indian",
+        "Chi-Indian",
+        "Asian",
+        "Continental",
+        "Burgers",
+        "Pizzas",
+      ],
       code: "type",
     },
     {
-      title: "No Of Rooms",
+      title: "Select property type",
       type: "select",
-      options: ["2 rooms", "3 rooms", "4 rooms"],
-      code: "noofrooms",
+      options: ["Owned", "Leased from CloudKitchen Companies"],
+      code: "property",
     },
     {
-      title: "Select the City",
+      title: "Select the size of restaurant",
       type: "select",
-      options: ["Delhi", "Bangalore", "Chennai", "Hyderabad"],
-      code: "city",
-    },
-    {
-      type: "input",
-      title: "Enter One-Time Payment",
-      min: 0,
-      max: 1000000,
-      pretitle: "₹",
-      code: "onetimepayment",
-    },
-    {
-      type: "input",
-      title: "Enter the tenure of the loan",
-      min: 1,
-      max: 70,
-      posttitle: "years",
-      code: "years",
+      options: [
+        "Small (250 sq. ft)",
+        "Medium (500 sq. ft)",
+        "Big (750 sq. ft)",
+      ],
+      code: "size",
     },
   ]);
 
@@ -74,11 +69,9 @@ export default function HomeCalc({ data }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    years: 1,
-    type: "Apartment",
-    noofrooms: "2 rooms",
-    city: "Delhi",
-    onetimepayment: 0,
+    type: "Indian",
+    size: "Small (250 sq. ft)",
+    property: "Owned",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -92,62 +85,78 @@ export default function HomeCalc({ data }) {
   function emi() {
     let monthlyrate = 12 / 12 / 100;
     var months = calcdata.years * 12;
-
-    let loanamount = 0;
-    if (calcdata.noofrooms === "2 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 4500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 6000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 3500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 5000000;
-      }
-    } else if (calcdata.noofrooms === "3 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 7500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 10000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 6500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 8000000;
+    let brandingcost = 90000;
+    let equipmentcost = 0;
+    let rent = 0;
+    let foodcost = 0.3;
+    let ticketsize = 0;
+    let discount = 0.05;
+    let commision = 0.22;
+    if (calcdata.property === "Owned") {
+      if (calcdata.size === "Small (250 sq. ft)") {
+        equipmentcost = 1500 * (250 / 2);
+        rent = 100 * 250;
+      } else if (calcdata.size === "Medium (500 sq. ft)") {
+        equipmentcost = 1500 * (500 / 2);
+        rent = 100 * 500;
+      } else {
+        equipmentcost = 1500 * (750 / 2);
+        rent = 100 * 750;
       }
     } else {
-      if (calcdata.city === "Delhi") {
-        loanamount = 12500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 20000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 18000000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 20000000;
+      if (calcdata.size === "Small (250 sq. ft)") {
+        equipmentcost = 800 * (250 / 2);
+        rent = 150 * 250;
+      } else if (calcdata.size === "Medium (500 sq. ft)") {
+        equipmentcost = 800 * (500 / 2);
+        rent = 150 * 500;
+      } else {
+        equipmentcost = 800 * (750 / 2);
+        rent = 150 * 750;
       }
     }
-    if (calcdata.onetimepayment) {
-      loanamount = loanamount - calcdata.onetimepayment;
+    let workingcapital = 0;
+
+    if (calcdata.type === "Indian") {
+      workingcapital = 70000;
+      ticketsize = 500;
+    } else if (calcdata.type === "Chi-Indian") {
+      workingcapital = 60000;
+      ticketsize = 400;
+    } else if (calcdata.type === "Asian") {
+      workingcapital = 87500;
+      ticketsize = 700;
+    } else if (calcdata.type === "Continental") {
+      workingcapital = 87500;
+      ticketsize = 300;
+    } else if (calcdata.type === "Burgers") {
+      workingcapital = 50000;
+      ticketsize = 300;
+      equipmentcost = equipmentcost - 50000;
+    } else {
+      workingcapital = 50000;
+      ticketsize = 400;
+      equipmentcost = equipmentcost - 50000;
     }
-    let emiamount =
-      (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
-      (Math.pow(1 + monthlyrate, months) - 1);
-    let totalpayment = emiamount * months;
-    let intrest = totalpayment - loanamount;
+    workingcapital = workingcapital + brandingcost;
+    let Lumpsum = equipmentcost + 6 * workingcapital + 6 * rent;
+    let totalmonthly = workingcapital + rent;
+    let orders =
+      (totalmonthly / ticketsize) * (1 - foodcost - discount - commision);
+
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
-      (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest),
-      result2: Math.round(totalpayment),
-      result3: Math.round(emiamount),
+      heading1: "Lumpsum Required to start today",
+      heading2: `Break-even analysis`,
+      result2sign: " ",
+      result1: Math.round(Lumpsum),
+      result2: Math.round(orders),
     }));
     setChartData((prev) => ({
       ...prev,
       datasets: [
         {
           label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
+          data: [Math.round(Lumpsum), Math.round(orders)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,

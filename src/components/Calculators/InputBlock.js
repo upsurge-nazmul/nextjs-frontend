@@ -13,7 +13,7 @@ function InputBlock({ label, min, max, setvalue, value, sign }) {
           <input
             type="number"
             value={value}
-            max={max}
+            max={max ?? 100000000000}
             min={min}
             onChange={(e) => {
               if (e.target.value && !isNaN(e.target.value))

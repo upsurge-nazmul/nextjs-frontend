@@ -8,53 +8,79 @@ import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcDropdown from "./BigCalcDropdown";
+import BigCalcInput from "./BigCalcInput";
 export default function HomeCalc() {
-  const [years, setyear] = useState(1);
-  const [type, settype] = useState("");
-  const [university, setuniversity] = useState("");
-  const [country, setcountry] = useState("");
-  const [course, setcourse] = useState(0);
   const [questions, setquestions] = useState([
     {
       title: "Select the type of university ",
       type: "select",
-      value: type,
-      setvalue: settype,
+      code: "type",
       options: ["Indian", "Foreign"],
     },
     {
       title: "University type",
       type: "select",
-      value: university,
-      setvalue: setuniversity,
+      code: "university",
       options: ["Public", "Private"],
     },
     {
       title: "Select Region",
       type: "select",
-      value: country,
-      setvalue: setcountry,
+      code: "country",
       options: ["US", "Australia", "Europe", "Asia"],
     },
     {
       title: "Select Course",
       type: "select",
-      value: course,
-      setvalue: setcourse,
+      code: "course",
       options: ["MBA", "Masters", "Undergrad"],
     },
 
     {
       type: "input",
       title: "Enter the loan repayment duration",
-      setvalue: setyear,
-      value: years,
+      code: "years",
       min: 1,
       max: 70,
-      sign: "years",
+      posttitle: "years",
     },
   ]);
-  const [result, setresult] = useState(false);
+  const backupquestions = [
+    {
+      title: "Select the type of university ",
+      type: "select",
+      code: "type",
+      options: ["Indian", "Foreign"],
+    },
+    {
+      title: "University type",
+      type: "select",
+      code: "university",
+      options: ["Public", "Private"],
+    },
+    {
+      title: "Select Region",
+      type: "select",
+      code: "country",
+      options: ["US", "Australia", "Europe", "Asia"],
+    },
+    {
+      title: "Select Course",
+      type: "select",
+      code: "course",
+      options: ["MBA", "Masters", "Undergrad"],
+    },
+
+    {
+      type: "input",
+      title: "Enter the loan repayment duration",
+      code: "years",
+      min: 1,
+      max: 70,
+      posttitle: "years",
+    },
+  ];
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
     heading1: "Invested Amount",
@@ -78,67 +104,83 @@ export default function HomeCalc() {
       },
     ],
   });
-
+  const [calcdata, setcalcdata] = useState({
+    years: 1,
+    type: "Indian",
+    university: "Public",
+    country: "US",
+    course: "MBA",
+  });
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
   useEffect(() => {
+    if (calcdata.type !== "Indian") {
+      setquestions(
+        backupquestions.filter((item) => item.code !== "university")
+      );
+    } else {
+      setquestions(backupquestions.filter((item) => item.code !== "country"));
+    }
+  }, [calcdata]);
+  useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
-    setresult(true);
-  }, [type, university, years, country]);
-
+  }, [calcdata, current]);
   function emi() {
     let monthlyrate = 10 / 12 / 100;
-    if (university === "Private") {
+    if (calcdata.university === "Private") {
       monthlyrate = 14 / 12 / 100;
     }
-    var months = years * 12;
+    var months = calcdata.years * 12;
 
     let loanamount = 0;
-    if (type === "Indian") {
-      if (university === "Private") {
-        if (course === "MBA") {
+    if (calcdata.type === "Indian") {
+      if (calcdata.university === "Private") {
+        if (calcdata.course === "MBA") {
           loanamount = 4500000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 400000;
         } else {
           loanamount = 2000000;
         }
       } else {
-        if (course === "MBA") {
+        if (calcdata.course === "MBA") {
           loanamount = 2400000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 400000;
         } else {
           loanamount = 1000000;
         }
       }
     } else {
-      if (country === "Australia") {
-        if (course === "MBA") {
+      if (calcdata.country === "Australia") {
+        if (calcdata.course === "MBA") {
           loanamount = 3750000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 1500000;
         } else {
           loanamount = 8000000;
         }
-      } else if (country === "Europe") {
-        if (course === "MBA") {
+      } else if (calcdata.country === "Europe") {
+        if (calcdata.course === "MBA") {
           loanamount = 4500000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 500000;
         } else {
           loanamount = 500000;
         }
-      } else if (country === "Asia") {
-        if (course === "MBA") {
+      } else if (calcdata.country === "Asia") {
+        if (calcdata.course === "MBA") {
           loanamount = 7000000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 1950000;
         } else {
           loanamount = 4000000;
         }
       } else {
-        if (course === "MBA") {
+        if (calcdata.course === "MBA") {
           loanamount = 15000000;
-        } else if (course === "Masters") {
+        } else if (calcdata.course === "Masters") {
           loanamount = 3000000;
         } else {
           loanamount = 9000000;
@@ -175,54 +217,95 @@ export default function HomeCalc() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (type === "Indian" && item.title === "Select Region") {
-            return null;
-          } else if (type === "Foreign" && item.title === "University type") {
-            return null;
-          } else if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={
-                  type !== "Apartment"
-                    ? questions.length - 2
-                    : questions.length - 1
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
                 }
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
-
-        {(years && type && course && university) ||
-        (years && type && course && country) ? (
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
           <ResultBox resultdata={resultdata} />
-        ) : null}
-      </div>
+        </div>
+      )}
 
-      {(years && type && course && university) ||
-      (years && type && course && country) ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -11,44 +11,127 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
-export default function HomeCalc({ data }) {
+export default function Angel({ data }) {
   const [questions, setquestions] = useState([
     {
-      title: "Select the type of house",
+      title: "Select Industry type",
       type: "select",
-      options: ["Apartment", "Bungalow"],
+      options: [
+        "E-commerce",
+        "F&B (Food and Beverages)",
+        "Consumer Brands",
+        "SaaS (Software as a service)",
+        "AI & ML (Artificial Intelligence and Machine Learning)",
+      ],
       code: "type",
     },
     {
-      title: "No Of Rooms",
+      title: "Is your Startup generating revenue right now?",
       type: "select",
-      options: ["2 rooms", "3 rooms", "4 rooms"],
-      code: "noofrooms",
+      options: ["Yes", "No"],
+      code: "revenue",
     },
     {
-      title: "Select the City",
-      type: "select",
-      options: ["Delhi", "Bangalore", "Chennai", "Hyderabad"],
-      code: "city",
-    },
-    {
+      title: "Enter the revenue for this year",
       type: "input",
-      title: "Enter One-Time Payment",
-      min: 0,
-      max: 1000000,
+      code: "rev1",
+      min: 1000,
       pretitle: "₹",
-      code: "onetimepayment",
     },
     {
+      title: "Enter the revenue for next year",
       type: "input",
-      title: "Enter the tenure of the loan",
-      min: 1,
-      max: 70,
-      posttitle: "years",
-      code: "years",
+      code: "rev2",
+      pretitle: "₹",
+    },
+    {
+      title: "Enter the revenue for next year",
+      type: "input",
+      code: "rev3",
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 1",
+      type: "input",
+      code: "erev1",
+      min: 1000,
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 2",
+      type: "input",
+      code: "erev2",
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 3",
+      type: "input",
+      code: "erev3",
+      pretitle: "₹",
     },
   ]);
-
+  const backupquestions = [
+    {
+      title: "Select Industry type",
+      type: "select",
+      options: [
+        "E-commerce",
+        "F&B (Food and Beverages)",
+        "Consumer Brands",
+        "SaaS (Software as a service)",
+        "AI & ML (Artificial Intelligence and Machine Learning)",
+      ],
+      code: "type",
+    },
+    {
+      title: "Is your Startup generating revenue right now?",
+      type: "select",
+      options: ["Yes", "No"],
+      code: "revenue",
+    },
+    {
+      title: "Enter the revenue for this year",
+      type: "input",
+      code: "rev1",
+      pretitle: "₹",
+      min: 1000,
+    },
+    {
+      title: "Enter the revenue for next year",
+      type: "input",
+      code: "rev2",
+      min: 1000,
+      pretitle: "₹",
+    },
+    {
+      title: "Enter the revenue for next year",
+      type: "input",
+      code: "rev3",
+      min: 1000,
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 1",
+      type: "input",
+      min: 1000,
+      code: "erev1",
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 2",
+      type: "input",
+      code: "erev2",
+      min: 1000,
+      pretitle: "₹",
+    },
+    {
+      title: "Enter expected revenue for year 3",
+      type: "input",
+      code: "erev3",
+      min: 1000,
+      pretitle: "₹",
+    },
+  ];
   const [result, setresult] = useState(false);
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
@@ -62,10 +145,10 @@ export default function HomeCalc({ data }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Intrest", "Loan Amount"],
+    labels: ["Valuation"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "Valuation",
         data: [0, 0],
         backgroundColor: ["#4166EB", "#FDCC03"],
         borderColor: ["#4166EB", "#FDCC03"],
@@ -74,15 +157,37 @@ export default function HomeCalc({ data }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    years: 1,
-    type: "Apartment",
-    noofrooms: "2 rooms",
-    city: "Delhi",
-    onetimepayment: 0,
+    type: "E-commerce",
+    revenue: "No",
+    property: "Owned",
+    rev1: 1000,
+    rev2: 1000,
+    rev3: 1000,
+    erev1: 1000,
+    erev2: 1000,
+    erev3: 1000,
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
-
+  useEffect(() => {
+    if (calcdata.revenue === "Yes") {
+      setquestions(
+        backupquestions.filter(
+          (item) =>
+            item.code !== "erev1" &&
+            item.code !== "erev2" &&
+            item.code !== "erev3"
+        )
+      );
+    } else {
+      setquestions(
+        backupquestions.filter(
+          (item) =>
+            item.code !== "rev1" && item.code !== "rev2" && item.code !== "rev3"
+        )
+      );
+    }
+  }, [calcdata]);
   useEffect(() => {
     setcurrentquestion(questions[current]);
     emi();
@@ -90,64 +195,43 @@ export default function HomeCalc({ data }) {
   }, [calcdata, current]);
 
   function emi() {
-    let monthlyrate = 12 / 12 / 100;
-    var months = calcdata.years * 12;
+    let valuation = 0;
+    if (calcdata.type === "E-commerce") {
+      valuation = 2;
+    } else if (calcdata.type === "F&B (Food and Beverages)") {
+      valuation = 5;
+    } else if (calcdata.type === "Consumer Brands") {
+      valuation = 7;
+    } else if (calcdata.type === "SaaS (Software as a service)") {
+      valuation = 8;
+    } else if (
+      calcdata.type === "AI & ML (Artificial Intelligence and Machine Learning)"
+    ) {
+      valuation = 10;
+    }
+    let growthrate = 0;
+    let investment = 0;
+    if (calcdata.revenue === "Yes") {
+      growthrate =
+        (calcdata.rev2 / calcdata.rev1 + calcdata.rev3 / calcdata.rev2) / 2;
 
-    let loanamount = 0;
-    if (calcdata.noofrooms === "2 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 4500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 6000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 3500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 5000000;
-      }
-    } else if (calcdata.noofrooms === "3 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 7500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 10000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 6500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 8000000;
-      }
+      investment = calcdata.rev1 * valuation * (1 + growthrate / 2);
     } else {
-      if (calcdata.city === "Delhi") {
-        loanamount = 12500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 20000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 18000000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 20000000;
-      }
+      growthrate =
+        (calcdata.erev2 / calcdata.erev1 + calcdata.erev3 / calcdata.erev2) / 2;
+      investment = calcdata.erev1 * valuation * (1 + growthrate / 2) * 0.8;
     }
-    if (calcdata.onetimepayment) {
-      loanamount = loanamount - calcdata.onetimepayment;
-    }
-    let emiamount =
-      (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
-      (Math.pow(1 + monthlyrate, months) - 1);
-    let totalpayment = emiamount * months;
-    let intrest = totalpayment - loanamount;
+
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
-      (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest),
-      result2: Math.round(totalpayment),
-      result3: Math.round(emiamount),
+      heading1: "Valuation of your startup at which you can raise investment",
+      result1: Math.round(investment),
     }));
     setChartData((prev) => ({
       ...prev,
       datasets: [
         {
-          label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
+          label: "Valuation",
+          data: [Math.round(investment)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
@@ -241,7 +325,7 @@ export default function HomeCalc({ data }) {
                     label={item.title}
                     sign={item.sign}
                     min={item.min}
-                    max={item.max}
+                    max={item.max ?? 10000000}
                     value={calcdata[item.code]}
                     setvalue={(e) =>
                       setcalcdata((prev) => ({ ...prev, [item.code]: e }))
@@ -257,7 +341,7 @@ export default function HomeCalc({ data }) {
         {showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
-              <Doughnut
+              <Bar
                 data={chartData}
                 className={styles.chart}
                 width={100}

@@ -8,6 +8,8 @@ import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcDropdown from "./BigCalcDropdown";
+import BigCalcInput from "./BigCalcInput";
 export default function InvestmentComparison() {
   const [year1, setyear1] = useState(1);
   const [year2, setyear2] = useState(1);
@@ -19,8 +21,7 @@ export default function InvestmentComparison() {
     {
       title: "Select the First Investment Type",
       type: "select",
-      value: type1,
-      setvalue: settype1,
+      code: "type1",
       options: [
         "Fixed deposit",
         "Mutual Fund",
@@ -32,8 +33,7 @@ export default function InvestmentComparison() {
     {
       title: "Select the Second Investment Type",
       type: "select",
-      value: type2,
-      setvalue: settype2,
+      code: "type2",
       options: [
         "Fixed deposit",
         "Mutual Fund",
@@ -45,38 +45,34 @@ export default function InvestmentComparison() {
     {
       type: "input",
       title: "Enter the time duration of the first investment ?",
-      setvalue: setyear1,
-      value: year1,
+      code: "year1",
       min: 1,
       max: 70,
-      sign: "years",
+      posttitle: "years",
     },
     {
       type: "input",
       title: "Enter the time duration of the second investment ?",
-      setvalue: setyear2,
-      value: year2,
+      code: "year2",
       min: 1,
       max: 70,
-      sign: "years",
+      posttitle: "years",
     },
     {
       type: "input",
       title: "Enter the principal amount invested in the first investment?",
-      setvalue: setamount1,
-      value: amount1,
+      code: "amount1",
       min: 1,
       max: 10000000,
-      sign: "₹",
+      pretitle: "₹",
     },
     {
       type: "input",
       title: "Enter the principal amount invested in the second investment?",
-      setvalue: setamount2,
-      value: amount2,
+      code: "amount2",
       min: 1,
       max: 10000000,
-      sign: "₹",
+      pretitle: "₹",
     },
   ]);
   const [result, setresult] = useState(false);
@@ -103,48 +99,62 @@ export default function InvestmentComparison() {
       },
     ],
   });
+  const [calcdata, setcalcdata] = useState({
+    year1: 1,
+    year2: 1,
+    type1: "Fixed deposit",
+    type2: "Fixed deposit",
+    amount1: 1000,
+    amount2: 1000,
+  });
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
     setresult(true);
-  }, [type1, type2, amount1, amount2, year1, year2]);
+  }, [calcdata, current]);
 
   function emi() {
     let intrest1 = 0;
     let intrest2 = 0;
-    if (type1 === "Fixed deposit") {
+    if (calcdata.type1 === "Fixed deposit") {
       intrest1 = 5 / 100;
-    } else if (type1 === "Mutual Fund") {
+    } else if (calcdata.type1 === "Mutual Fund") {
       intrest1 = 10.4 / 100;
-    } else if (type1 === "Gold") {
+    } else if (calcdata.type1 === "Gold") {
       intrest1 = 10 / 100;
-    } else if (type1 === "Stock market") {
+    } else if (calcdata.type1 === "Stock market") {
       intrest1 = 13.9 / 100;
     } else {
       intrest1 = 3.65 / 100;
     }
-    if (type2 === "Fixed deposit") {
+    if (calcdata.type2 === "Fixed deposit") {
       intrest2 = 5 / 100;
-    } else if (type2 === "Mutual Fund") {
+    } else if (calcdata.type2 === "Mutual Fund") {
       intrest2 = 10.4 / 100;
-    } else if (type2 === "Gold") {
+    } else if (calcdata.type2 === "Gold") {
       intrest2 = 10 / 100;
-    } else if (type2 === "Stock market") {
+    } else if (calcdata.type2 === "Stock market") {
       intrest2 = 13.9 / 100;
     } else {
       intrest2 = 3.65 / 100;
     }
-    let result1 = amount1 * Math.pow(1 + intrest1, year1);
-    let result2 = amount2 * Math.pow(1 + intrest2, year2);
+    let result1 = calcdata.amount1 * Math.pow(1 + intrest1, calcdata.year1);
+    let result2 = calcdata.amount2 * Math.pow(1 + intrest2, calcdata.year2);
     setresultdata((prev) => ({
-      heading1: "Total Amount for " + type1,
-      heading2: "Total Amount for " + type2,
+      heading1: "Total Amount for " + calcdata.type1,
+      heading2: "Total Amount for " + calcdata.type2,
       result1: Math.round(result1),
       result2: Math.round(result2),
     }));
     setChartData((prev) => ({
       ...prev,
-      labels: ["Total Amount for " + type1, "Total Amount for " + type2],
+      labels: [
+        "Total Amount for " + calcdata.type1,
+        "Total Amount for " + calcdata.type2,
+      ],
       datasets: [
         {
           data: [Math.round(result1), Math.round(result2)],
@@ -157,44 +167,95 @@ export default function InvestmentComparison() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={questions.length - 1}
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
-
-        {year1 && year2 && type1 && type2 && amount1 && amount2 ? (
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
+                }
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
           <ResultBox resultdata={resultdata} />
-        ) : null}
-      </div>
+        </div>
+      )}
 
-      {year1 && year2 && type1 && type2 && amount1 && amount2 ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

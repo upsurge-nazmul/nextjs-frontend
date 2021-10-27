@@ -105,12 +105,20 @@ function CalcFaq({ name }) {
           "Apart from earning interest on your investment and therefore increasing your net worth, investment also provides a safety net for unforeseen situations. At times, we need money immediately, if we don't have money invested we will have to take loans from loan sharks at a very high-interest rate. Some people get into a debt trap in situations like these and never be able to repay them and have financial freedom.",
       },
     ],
-    // carLoan: [
-    //   {
-    //     question: "",
-    //     answer: "",
-    //   },
-    // ],
+    restaurant: [
+      {
+        question:
+          "Is the restaurant business a capital-intensive business, if yes then why?",
+        answer:
+          "Yes restaurant is a capital-intensive business. A restaurant is a physical business that needs to meet various costs to keep it up and running and therefore requires a lot of capital such as rent, salary, delivery cost, maintenance, production, and electricity cost. Compare this to a software business where major cost is just the human resource expense and you will get an idea of why a restaurant is capital-intensive.",
+      },
+      {
+        question:
+          "What are the major factors that influence the success of a restaurant?",
+        answer:
+          "Many factors play an important role in restaurant success such as Location, enthusiastic locals, Number of travelers visiting that location,  per capita income of those visiting the place (it should be close to your target customer… low medium, or high depending on your restaurant status), competing restaurants in the vicinity, review of your previous customers and word of mouth publicity, the effectiveness of your advertising campaigns, the cost of operations and the average order values, commission percentage of various online food platforms to name a few.",
+      },
+    ],
   };
   const [currentfaqs, setcurrentfaqs] = useState([]);
 

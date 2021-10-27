@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -10,40 +10,71 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function CostOfRaisingCalc() {
-  const [marriage, setmarriage] = useState();
-  const [type, settype] = useState("");
-  const [school, setschool] = useState();
-  const [university, setuniversity] = useState("");
-  const [college, setcollege] = useState("");
-  const [extra, setextra] = useState(0);
+export default function Standard() {
   const [questions, setquestions] = useState([
     {
-      title: "Select the city tier for school expenses",
+      title: "Select City",
       type: "select",
-      code: "school",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "city",
+      options: ["Delhi", "Mumbai", "Bangalore", "Chennai", "Hyderabad"],
     },
     {
-      title: "Select the city tier for marriage expenses",
+      title: "Select home type",
       type: "select",
-      code: "marriage",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "type",
+      options: ["Shared", "Personal"],
     },
     {
-      title: "Select the city tier for college expenses",
-      type: "select",
-      code: "college",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      title: "How frequently you dine out ?",
+      type: "input",
+      code: "dineout",
     },
     {
-      title: "Select the city tier for extra expenses",
+      title: "Select preferred transport",
       type: "select",
-      code: "extra",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
+      code: "transport",
+      options: ["Public", "Private"],
+    },
+
+    {
+      type: "input",
+      title: "Select transport vehicle",
+      code: "vehicle",
+      options: ["Car", "Bike"],
     },
   ]);
-  const [result, setresult] = useState(false);
+  const backupquestions = [
+    {
+      title: "Select City",
+      type: "select",
+      code: "city",
+      options: ["Delhi", "Mumbai", "Bangalore", "Chennai", "Hyderabad"],
+    },
+    {
+      title: "Select home type",
+      type: "select",
+      code: "type",
+      options: ["Shared", "Personal"],
+    },
+    {
+      title: "How frequently you dine out ?",
+      type: "input",
+      code: "dineout",
+    },
+    {
+      title: "Select preferred transport",
+      type: "select",
+      code: "transport",
+      options: ["Public", "Private"],
+    },
+
+    {
+      type: "input",
+      title: "Select transport vehicle",
+      code: "vehicle",
+      options: ["Car", "Bike"],
+    },
+  ];
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
     heading1: "Invested Amount",
@@ -56,7 +87,7 @@ export default function CostOfRaisingCalc() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Total Expense"],
+    labels: ["Monthly Investment"],
     datasets: [
       {
         label: "# of Votes",
@@ -67,69 +98,132 @@ export default function CostOfRaisingCalc() {
       },
     ],
   });
-
   const [calcdata, setcalcdata] = useState({
-    school: "Tier 2",
-    marriage: "Tier 2",
-    extra: "Tier 2",
-    college: "Tier 2",
+    city: "Delhi",
+    type: "Shared",
+    transport: "Public",
+    dineout: 1,
+    vehicle: "Bike",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
-
+  useEffect(() => {
+    if (calcdata.transport !== "Private") {
+      setquestions(backupquestions.filter((item) => item.code !== "vehicle"));
+    } else {
+      setquestions(questions);
+    }
+  }, [calcdata]);
   useEffect(() => {
     setcurrentquestion(questions[current]);
     emi();
-    setresult(true);
   }, [calcdata, current]);
-
   function emi() {
-    let schoolexpense = 0;
-    let collegeexpense = 0;
-    let marriageexpense = 0;
-    let extraeexpense = 0;
-    if (calcdata.school === "Tier 1") {
-      schoolexpense = 1512000;
-    } else if (calcdata.school === "Tier 2") {
-      schoolexpense = 648000;
-    } else {
-      schoolexpense = 216000;
+    let loanamount = 0;
+    let groceries = 2500;
+    let misc = 0;
+    let rent = 0;
+    let transport = 0;
+    if (calcdata.city === "Delhi" || calcdata.city === "Mumbai") {
+      groceries = 3000;
     }
-    if (calcdata.college === "Tier 1") {
-      collegeexpense = 2000000;
-    } else if (calcdata.school === "Tier 2") {
-      collegeexpense = 1500000;
+
+    if (calcdata.city === "Delhi") {
+      misc = 4000;
+      if (calcdata.transport === "Public") {
+        transport = 3000;
+      } else {
+        if (calcdata.vehicle === "Car") {
+          transport = 10000;
+        } else {
+          transport = 3000;
+        }
+      }
+      if (calcdata.type === "Shared") {
+        rent = 5000;
+      } else {
+        rent = 12500;
+      }
+    } else if (calcdata.city === "Mumbai") {
+      misc = 7000;
+      if (calcdata.transport === "Public") {
+        transport = 3000;
+      } else {
+        if (calcdata.vehicle === "Car") {
+          transport = 10000;
+        } else {
+          transport = 3000;
+        }
+      }
+      if (calcdata.type === "Shared") {
+        rent = 9000;
+      } else {
+        rent = 20000;
+      }
+    } else if (calcdata.city === "Bangalore") {
+      misc = 6000;
+      if (calcdata.transport === "Public") {
+        transport = 3000;
+      } else {
+        if (calcdata.vehicle === "Car") {
+          transport = 8000;
+        } else {
+          transport = 3000;
+        }
+      }
+      if (calcdata.type === "Shared") {
+        rent = 7000;
+      } else {
+        rent = 10000;
+      }
+    } else if (calcdata.city === "Chennai") {
+      misc = 5000;
+      if (calcdata.transport === "Public") {
+        transport = 1500;
+      } else {
+        if (calcdata.vehicle === "Car") {
+          transport = 6000;
+        } else {
+          transport = 3000;
+        }
+      }
+      if (calcdata.type === "Shared") {
+        rent = 4000;
+      } else {
+        rent = 7000;
+      }
     } else {
-      collegeexpense = 1000000;
+      misc = 5000;
+      if (calcdata.transport === "Public") {
+        transport = 2000;
+      } else {
+        if (calcdata.vehicle === "Car") {
+          transport = 10000;
+        } else {
+          transport = 3000;
+        }
+      }
+      if (calcdata.type === "Shared") {
+        rent = 3500;
+      } else {
+        rent = 8000;
+      }
     }
-    if (calcdata.marriage === "Tier 1") {
-      marriageexpense = 4000000;
-    } else if (calcdata.school === "Tier 2") {
-      marriageexpense = 2000000;
-    } else {
-      marriageexpense = 800000;
-    }
-    if (calcdata.extra === "Tier 1") {
-      extraeexpense = 1080000;
-    } else if (calcdata.school === "Tier 2") {
-      extraeexpense = 864000;
-    } else {
-      extraeexpense = 648000;
-    }
-    let res = extraeexpense + schoolexpense + collegeexpense + marriageexpense;
+
+    let total = 600 * calcdata.dineout + groceries + misc + rent + transport;
 
     setresultdata((prev) => ({
-      heading1: "Total Expense",
-      result1: Math.round(res),
+      heading1: "Monthly Expense",
+      result1: Math.round(total),
     }));
     setChartData((prev) => ({
       ...prev,
       datasets: [
         {
-          label: "# of Votes",
-          data: [Math.round(res)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
+          label: "Monthly Expense",
+          data: [Math.round(total)],
+          backgroundColor: ["#FDCC03"],
+          borderColor: ["#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -228,7 +322,7 @@ export default function CostOfRaisingCalc() {
       {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <Bar
               data={chartData}
               className={styles.chart}
               width={100}

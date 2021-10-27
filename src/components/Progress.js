@@ -23,9 +23,7 @@ function Progress({ questions, current, setcurrent }) {
               }
               }`}
               onClick={() => setcurrent(index)}
-            >
-              <p>{index + 1}</p>
-            </div>
+            ></div>
           );
         })}
     </div>

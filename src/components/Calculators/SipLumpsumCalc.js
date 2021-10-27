@@ -8,6 +8,8 @@ import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
+import BigCalcDropdown from "./BigCalcDropdown";
+import BigCalcInput from "./BigCalcInput";
 export default function HomeCalc() {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("All");
@@ -19,26 +21,23 @@ export default function HomeCalc() {
     {
       type: "input",
       title: "Enter money needed in future.",
-      setvalue: setamount,
-      value: amount,
+      code: "amount",
       min: 1,
       max: 10000000,
-      sign: "₹",
+      pretitle: "₹",
     },
     {
       title: "Investment Duration",
       type: "input",
-      setvalue: setyear,
-      value: years,
+      code: "years",
       min: 1,
       max: 80,
-      sign: "years",
+      posttitle: "years",
     },
     {
       title: "Investment Type",
       type: "select",
-      value: type,
-      setvalue: settype,
+      code: "type",
       options: [
         "All",
         "Fixed deposit",
@@ -73,19 +72,29 @@ export default function HomeCalc() {
       },
     ],
   });
+  const [calcdata, setcalcdata] = useState({
+    years: 1,
+    type: "All",
+    amount: 1000,
+  });
+  const [currentquestion, setcurrentquestion] = useState(questions[0]);
+  const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    setcurrentquestion(questions[current]);
     emi();
     setresult(true);
-  }, [type, amount, years]);
+  }, [calcdata, current]);
 
   function emi() {
-    let fd = amount / Math.pow(1 + 5 / 100, years);
-    let mutualfund = amount / Math.pow(1 + 10.4 / 100, years);
-    let gold = amount / Math.pow(1 + 10 / 100, years);
-    let stockmarket = amount / Math.pow(1 + 13.9 / 100, years);
-    let governmentb = amount / Math.pow(1 + 3.65 / 100, years);
-    if (type === "Fixed deposit") {
+    let fd = calcdata.amount / Math.pow(1 + 5 / 100, calcdata.years);
+    let mutualfund = calcdata.amount / Math.pow(1 + 10.4 / 100, calcdata.years);
+    let gold = calcdata.amount / Math.pow(1 + 10 / 100, calcdata.years);
+    let stockmarket =
+      calcdata.amount / Math.pow(1 + 13.9 / 100, calcdata.years);
+    let governmentb =
+      calcdata.amount / Math.pow(1 + 3.65 / 100, calcdata.years);
+    if (calcdata.type === "Fixed deposit") {
       setresultdata((prev) => ({
         heading1: "Sip For Fixed Deposit",
         result1: Math.round(fd),
@@ -104,7 +113,7 @@ export default function HomeCalc() {
           },
         ],
       }));
-    } else if (type === "Mutual Fund") {
+    } else if (calcdata.type === "Mutual Fund") {
       setresultdata((prev) => ({
         heading1: "Sip For Mutual Fund",
         result1: Math.round(mutualfund),
@@ -122,7 +131,7 @@ export default function HomeCalc() {
           },
         ],
       }));
-    } else if (type === "Gold") {
+    } else if (calcdata.type === "Gold") {
       setresultdata((prev) => ({
         heading1: "Sip For Gold",
         result1: Math.round(gold),
@@ -142,7 +151,7 @@ export default function HomeCalc() {
           },
         ],
       }));
-    } else if (type === "Stock market") {
+    } else if (calcdata.type === "Stock market") {
       setresultdata((prev) => ({
         heading1: "Sip For Stock Market",
         result1: Math.round(stockmarket),
@@ -162,7 +171,7 @@ export default function HomeCalc() {
           },
         ],
       }));
-    } else if (type === "Government Bond") {
+    } else if (calcdata.type === "Government Bond") {
       setresultdata((prev) => ({
         heading1: "Sip For Government Bond",
         result1: Math.round(governmentb),
@@ -236,50 +245,95 @@ export default function HomeCalc() {
   }
   return (
     <div className={styles.calculatorComponent}>
-      <div className={styles.inputSection}>
-        {questions.map((item, index) => {
-          if (type === "Indian" && item.title === "Select Region") {
-            return null;
-          } else if (type === "Foreign" && item.title === "University type") {
-            return null;
-          } else if (item.type === "select") {
-            return (
-              <Select
-                question={item.title}
-                options={item.options}
-                value={item.value}
-                setvalue={item.setvalue}
-                current={current}
-                setcurrent={setcurrent}
-                index={index}
-                total={
-                  type !== "Apartment"
-                    ? questions.length - 2
-                    : questions.length - 1
+      {!showresult && (
+        <div className={styles.inputSection}>
+          <Progress
+            questions={questions.length}
+            current={current}
+            setcurrent={setcurrent}
+          />
+          {currentquestion.type === "select" ? (
+            <BigCalcDropdown
+              title={currentquestion.title}
+              options={currentquestion.options}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              code={currentquestion.code}
+            />
+          ) : (
+            <BigCalcInput
+              title={currentquestion.title}
+              value={calcdata[currentquestion.code]}
+              setvalue={setcalcdata}
+              minvalue={currentquestion.min}
+              pretitle={currentquestion.pretitle}
+              posttitle={currentquestion.posttitle}
+              code={currentquestion.code}
+            />
+          )}
+          <div className={styles.buttons}>
+            <p
+              className={styles.previous}
+              onClick={() => {
+                if (current !== 0) {
+                  setcurrent(current - 1);
                 }
-              />
-            );
-          } else if (item.type === "input") {
-            return (
-              <SelectInput
-                question={item.title}
-                index={index}
-                value={item.value}
-                current={current}
-                setcurrent={setcurrent}
-                setvalue={item.setvalue}
-                min={item.min}
-                max={item.max}
-                sign={item.sign}
-              />
-            );
-          }
-        })}
+              }}
+            >
+              Previous
+            </p>
+            <p
+              className={styles.next}
+              onClick={() => {
+                if (current !== questions.length - 1) {
+                  setcurrent(current + 1);
+                } else {
+                  setshowresult(true);
+                }
+              }}
+            >
+              Next
+            </p>
+          </div>
+        </div>
+      )}
+      {showresult && (
+        <div className={styles.postresultinputs}>
+          {questions.map((item) => {
+            if (item.type === "select") {
+              return (
+                <DropBox
+                  title={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                  options={item.options}
+                />
+              );
+            } else {
+              return (
+                <InputBlock
+                  label={item.title}
+                  sign={item.sign}
+                  min={item.min}
+                  max={item.max}
+                  value={calcdata[item.code]}
+                  setvalue={(e) =>
+                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                  }
+                />
+              );
+            }
+          })}
+          <ResultBox resultdata={resultdata} />
+        </div>
+      )}
 
-        {years && type && amount ? <ResultBox resultdata={resultdata} /> : null}
-      </div>
-
-      {years && type && amount ? (
+      {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Bar
