@@ -245,6 +245,79 @@
       padding-left: 7%;
       padding-right: 7%;
       padding-top: 15px;
+      .waitinglist {
+        width: 100%;
+        height: max-content;
+        background: linear-gradient(270.33deg, #0047ff 4.32%, #00b2ff 100.13%);
+        overflow: hidden;
+        border-radius: 15px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        .left {
+          flex: unset;
+          height: 60px;
+          overflow: hidden;
+          position: relative;
+          img {
+            position: absolute;
+            object-fit: cover;
+            right: 0;
+          }
+        }
+        .midflex {
+          flex: unset;
+          min-width: unset;
+          width: 100%;
+          font-size: 12px;
+          height: 60px;
+          color: rgba(255, 255, 255, 1);
+          font-weight: 400;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          padding: 0 4%;
+        }
+        .right {
+          flex: unset;
+          height: 60px;
+          overflow: hidden;
+          position: relative;
+          .background {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+          }
+          .text {
+            color: white;
+            font-weight: 400;
+            font-size: 12px;
+            width: 100%;
+            padding-right: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            position: absolute;
+            z-index: 4;
+            p {
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              text-align: center;
+            }
+            span {
+              font-weight: 700;
+              display: flex;
+              min-width: fit-content;
+              margin-right: 8px;
+            }
+          }
+        }
+      }
       .pathSection {
         .path {
           font-size: 12px;
@@ -252,9 +325,12 @@
       }
       .headingSection {
         margin-top: 20px;
+        .mainheading {
+          font-size: 24px;
+        }
         .heading {
           font-weight: 700;
-          font-size: 20px;
+          font-size: 16px;
           margin-bottom: 10px;
           width: 100%;
         }
