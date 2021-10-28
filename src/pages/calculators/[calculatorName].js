@@ -180,7 +180,13 @@ function CalculatorsPage() {
             ></img>
             <div className={styles.text}>
               <p>
-                <span>Click here</span> to join the
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => router.push("/")}
+                >
+                  Click here
+                </span>{" "}
+                to join the
               </p>
               <p>Upsurge waiting list.</p>
             </div>

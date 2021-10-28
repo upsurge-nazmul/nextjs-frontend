@@ -48,7 +48,7 @@ export default function CollegeLifeCalc() {
       code: "years",
       min: 1,
       max: 70,
-      sign: "years",
+      posttitle: "years",
     },
   ]);
   const backupquestions = [

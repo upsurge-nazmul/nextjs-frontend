@@ -187,6 +187,7 @@ export default function HomeCalc({ data }) {
                 value={calcdata[currentquestion.code]}
                 setvalue={setcalcdata}
                 minvalue={currentquestion.min}
+                maxvalue={currentquestion.max}
                 pretitle={currentquestion.pretitle}
                 posttitle={currentquestion.posttitle}
                 code={currentquestion.code}

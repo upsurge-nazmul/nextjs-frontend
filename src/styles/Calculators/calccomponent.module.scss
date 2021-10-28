@@ -143,6 +143,12 @@
       width: 90%;
     }
   }
+  .postresultinputs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1360px) {

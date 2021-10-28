@@ -8,6 +8,7 @@ export default function BigCalcInput({
   setvalue,
   minvalue,
   code,
+  maxvalue,
 }) {
   return (
     <div className={styles.bigcalcinput}>
@@ -16,7 +17,10 @@ export default function BigCalcInput({
         {pretitle && <p className={styles.pretitle}>{pretitle}</p>}
         <input
           className={styles.input}
-          type="text"
+          style={{
+            paddingLeft: posttitle ? "10%" : "0",
+          }}
+          type="number"
           value={value}
           onChange={(e) => {
             if (!e.target.value) {
@@ -26,7 +30,14 @@ export default function BigCalcInput({
               }));
               return;
             }
-            if (e.target.value === " ") {
+            if (minvalue && e.target.value < minvalue) {
+              return;
+            }
+            if (maxvalue && e.target.value > maxvalue) {
+              return;
+            }
+
+            if (e.target.value === " " || e.target.value < 0) {
               return;
             }
             setvalue((prev) => ({ ...prev, [code]: parseInt(e.target.value) }));

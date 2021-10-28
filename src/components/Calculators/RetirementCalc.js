@@ -67,7 +67,7 @@ export default function Retirement() {
   const [calcdata, setcalcdata] = useState({
     age: 1,
     type: 40,
-    money: 0,
+    money: 5000,
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -80,13 +80,16 @@ export default function Retirement() {
 
   function emi() {
     let remaininglife = 80 - calcdata.age;
-    let monthlyinvestment = (calcdata.money * remaininglife) / calcdata.type;
+    let monthlyinvestment =
+      (calcdata.money * remaininglife) / (calcdata.type - calcdata.age);
 
     setresultdata((prev) => ({
       heading1: "",
-      result1: `${Math.round(
-        monthlyinvestment
-      )} Should be your monthly investment and should grow each year with 7%.`,
+      result1: `${
+        Math.round(monthlyinvestment).toLocaleString("en-IN", {
+          currency: "INR",
+        }) // "12,34,567.80"
+      } Should be your monthly investment and should grow each year with 7%.`,
     }));
     setChartData((prev) => ({
       ...prev,
@@ -191,7 +194,7 @@ export default function Retirement() {
         </div>
       )}
 
-      {showresult ? (
+      {/* {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut
@@ -203,7 +206,7 @@ export default function Retirement() {
             />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

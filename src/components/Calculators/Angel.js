@@ -45,7 +45,7 @@ export default function Angel({ data }) {
       pretitle: "₹",
     },
     {
-      title: "Enter the revenue for next year",
+      title: "Enter the revenue for next to next year",
       type: "input",
       code: "rev3",
       pretitle: "₹",
@@ -104,7 +104,7 @@ export default function Angel({ data }) {
       pretitle: "₹",
     },
     {
-      title: "Enter the revenue for next year",
+      title: "Enter the revenue for next to next year",
       type: "input",
       code: "rev3",
       min: 1000,

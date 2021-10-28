@@ -22,11 +22,14 @@
         font-family: "Roboto", sans-serif;
         font-size: 14px;
         font-weight: 400;
+        width: 50%;
       }
       .result {
         font-family: "Roboto", sans-serif;
         font-size: 24px;
         font-weight: 700;
+        flex: 1;
+        text-align: center;
       }
     }
   }
@@ -41,11 +44,15 @@
       font-family: "Roboto", sans-serif;
       font-size: 14px;
       font-weight: 400;
+      min-width: fit-content;
+      width: 50%;
     }
     .result {
       font-family: "Roboto", sans-serif;
       font-size: 24px;
       font-weight: 700;
+      flex: 1;
+      text-align: center;
     }
   }
 }

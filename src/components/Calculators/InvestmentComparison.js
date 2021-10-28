@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -91,7 +91,7 @@ export default function InvestmentComparison() {
     labels: ["Intrest", "Loan Amount"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "Investment Comparison",
         data: [0, 0],
         backgroundColor: ["#4166EB", "#FDCC03"],
         borderColor: ["#4166EB", "#FDCC03"],
@@ -157,6 +157,7 @@ export default function InvestmentComparison() {
       ],
       datasets: [
         {
+          label: "Investment Comparison",
           data: [Math.round(result1), Math.round(result2)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
@@ -258,7 +259,7 @@ export default function InvestmentComparison() {
       {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <Bar
               data={chartData}
               className={styles.chart}
               width={100}

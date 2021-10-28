@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import ResultBox from "./ResultBox";
 import Select from "./Select";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
@@ -92,11 +92,11 @@ export default function BigMacCalc() {
     }));
     setChartData((prev) => ({
       ...prev,
-      labels: ["Total Money (INR)", `Worth in ${country}`],
+      labels: ["Total Money (INR)", `Worth in ${calcdata.country}`],
       datasets: [
         {
-          label: "# of Votes",
-          data: [Math.round(money), Math.round(inrmoney)],
+          label: "Worth Comparision",
+          data: [Math.round(calcdata.inrmoney), Math.round(money)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
@@ -197,7 +197,7 @@ export default function BigMacCalc() {
       {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <Bar
               data={chartData}
               className={styles.chart}
               width={100}

@@ -2,28 +2,21 @@ import React from "react";
 import styles from "../../styles/Calculators/resultblock.module.scss";
 
 function ResultBox({ resultdata }) {
-  function getIndianFormat(x) {
-    x = x.toString();
-    var lastThree = x.substring(x.length - 3);
-    var otherNumbers = x.substring(0, x.length - 3);
-    if (otherNumbers != "") lastThree = "," + lastThree;
-    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-  }
   return (
     <div className={styles.resultBox}>
       <div className={styles.topflex}>
         <div className={styles.container}>
-          <p className={styles.heading}>{resultdata.heading1}</p>
-          <p className={styles.result}>
-            ₹ {getIndianFormat(resultdata.result1)}
-          </p>
+          {resultdata.heading1 && (
+            <p className={styles.heading}>{resultdata.heading1}</p>
+          )}
+          <p className={styles.result}>₹ {resultdata.result1}</p>
         </div>
         {resultdata.result2 && (
           <div className={styles.container}>
             <p className={styles.heading}>{resultdata.heading2}</p>
             <p className={styles.result}>
               {resultdata.result2sign ? resultdata.result2sign : "₹"}{" "}
-              {getIndianFormat(resultdata.result2)}
+              {resultdata.result2}
             </p>
           </div>
         )}
@@ -32,22 +25,16 @@ function ResultBox({ resultdata }) {
         <div className={styles.topflex}>
           <div className={styles.container}>
             <p className={styles.heading}>{resultdata.heading3}</p>
-            <p className={styles.result}>
-              ₹ {getIndianFormat(resultdata.result3)}
-            </p>
+            <p className={styles.result}>₹ {resultdata.result3}</p>
           </div>
           <div className={styles.container}>
             <p className={styles.heading}>{resultdata.heading4}</p>
-            <p className={styles.result}>
-              ₹ {getIndianFormat(resultdata.result4)}
-            </p>
+            <p className={styles.result}>₹ {resultdata.result4}</p>
           </div>
           {resultdata.result5 && (
             <div className={styles.container}>
               <p className={styles.heading}>{resultdata.heading5}</p>
-              <p className={styles.result}>
-                ₹ {getIndianFormat(resultdata.result5)}
-              </p>
+              <p className={styles.result}>₹ {resultdata.result5}</p>
             </div>
           )}
         </div>
@@ -55,9 +42,7 @@ function ResultBox({ resultdata }) {
         resultdata.heading3 && (
           <div className={styles.bottomContainer}>
             <p className={styles.heading}>{resultdata.heading3}</p>
-            <p className={styles.result}>
-              ₹ {getIndianFormat(resultdata.result3)}
-            </p>
+            <p className={styles.result}>₹ {resultdata.result3}</p>
           </div>
         )
       )}

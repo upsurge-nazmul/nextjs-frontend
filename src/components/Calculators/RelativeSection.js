@@ -1,7 +1,14 @@
+import { useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
 export default function RelativeSection({ data, cards }) {
+  const router = useRouter();
+  function relate(item) {
+    router.push(`/calculators/${item}`);
+    let x = document.getElementById("home-page-header");
+    x.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <div className={styles.main}>
       <p className={styles.heading}>Related Calculators</p>
@@ -14,7 +21,7 @@ export default function RelativeSection({ data, cards }) {
               <div
                 key={"relativecalc" + index}
                 className={styles.calcCard}
-                onClick={() => router.push(`/calculators/${item}`)}
+                onClick={() => relate(item)}
               >
                 <img src={data[item].icon} alt="calcicon" />
                 <p className={styles.calccardtitle}>{data[item].heading}</p>

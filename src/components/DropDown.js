@@ -16,8 +16,25 @@ function DropDown({
     setvalue(item);
     setshowoptions(false);
   }
+
+  useEffect(() => {
+    function getifclickedoutside(e) {
+      console.log(e.target);
+      let elmnt = document.getElementById("dropdown" + options[0]);
+      console.log(elmnt);
+      if (elmnt !== null && !elmnt.contains(e.target)) {
+        setshowoptions(false);
+      }
+    }
+    document.addEventListener("mousedown", getifclickedoutside);
+    return () => {
+      document.removeEventListener("mousedown", getifclickedoutside);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <div className={styles.dropdown}>
+    <div id={"dropdown" + options[0]} className={styles.dropdown}>
       <div
         className={styles.selected}
         onClick={() => setshowoptions(!showoptions)}
@@ -29,9 +46,11 @@ function DropDown({
             fontSize: fontSize ? fontSize : "16px",
           }}
         >
-          {value || placeholder}
+          {value?.length > 25
+            ? value.substring(0, 25) + "..."
+            : value || placeholder}
         </p>
-        <DropDownArrow />
+        <DropDownArrow className={styles.svg} />
       </div>
       {showoptions && (
         <div className={styles.options} id={placeholder + "dropdown"}>

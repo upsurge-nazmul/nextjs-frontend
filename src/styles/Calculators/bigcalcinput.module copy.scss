@@ -1,0 +1,38 @@
+.bigcalcinput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  .heading {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .inputwrapper {
+    font-family: "Roboto", sans-serif;
+    font-size: 44px;
+    margin-top: 10px;
+    font-weight: 500;
+    display: flex;
+    .input {
+      background-color: transparent;
+      border: none;
+      font-size: 44px;
+      font-weight: 500;
+      margin: 0 8px;
+      width: 150px;
+      text-align: center;
+      max-width: fit-content;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+    .pretitle,
+    .posttitle {
+      font-size: 44px;
+      font-weight: 400;
+      color: #a5a5a5;
+    }
+  }
+}
