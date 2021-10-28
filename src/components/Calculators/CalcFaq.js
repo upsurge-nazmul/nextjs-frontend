@@ -119,6 +119,41 @@ function CalcFaq({ name }) {
           "Many factors play an important role in restaurant success such as Location, enthusiastic locals, Number of travelers visiting that location,  per capita income of those visiting the place (it should be close to your target customer… low medium, or high depending on your restaurant status), competing restaurants in the vicinity, review of your previous customers and word of mouth publicity, the effectiveness of your advertising campaigns, the cost of operations and the average order values, commission percentage of various online food platforms to name a few.",
       },
     ],
+    unicorn: [
+      {
+        question: "How many unicorns have been created in India this year?",
+        answer:
+          "As of now, 28 unicorns have been created this year. This number has grown from 10 last year and 9 a year before that. This shows a maturing Indian start-up ecosystem and possibilities for various new upcoming budding startups.",
+      },
+      {
+        question:
+          "Why is the revenue requirement different for various different types of startups?",
+        answer:
+          "It is true that some startups require very low revenues to reach high valuations compared to other startups. This does not mean that investors do not wish to profit from these startups but that the expectations are different from these types of startups. For example- Artificial Intelligence startups might need a fraction of revenue to reach a unicorn valuation compared to F&B startups simply because investors expect artificial intelligence to be a thing of the future and expect to recoup losses and make profits then compared to F&B which is up and running. ",
+      },
+      {
+        question: "What is a usual lifecycle of a unicorn startup?",
+        answer: `It starts with Ideation. The founders usually identify a set of problems and work on solving it. They build the initial solution for the same. It gains some traction and acceptance in the target user base. Next is Series A funding by various venture capitalists. They put in their money to fund the idea and make it grow hoping to make profits when it does. What follows next are rounds and rounds of high user growth and more and more funding. By the latest rounds of fundings startups usually manage to reach a unicorn valuation. Once this milestone is reached, many startups turn to the general public for the next round of funding and to offer their investors an exit option - Going public (in other words issuing IPO - Initial Public Offering)`,
+      },
+    ],
+    angel: [
+      {
+        question: "What is an Angel Investor?",
+        answer:
+          "An angel investor is usually a high net worth individual who provides backing and funding to small startups for some ownership in their company at the initial stage of a life cycle of a startup. These are high-risk high-return investments.",
+      },
+      {
+        question: "Why are angel investors called angels?",
+        answer:
+          "Angel investors are known as “Angels” as they often invest in risky, unproven business ventures for which other sources of funds, such as bank loans and formal venture capital are not easily available",
+      },
+      {
+        question:
+          "What is usually considered as more important by angel investors - growth or profit?",
+        answer:
+          "Angel investors usually are more interested in seeing growth rather than profit because, in today’s startup ecosystem, growth is valued much more by everyone in it. This means for the profitable exit of the investor, they need to show high growth potential to other investors as well as the general public. Usually, the belief is when the startup will mature they will automatically start seeing profits.",
+      },
+    ],
   };
   const [currentfaqs, setcurrentfaqs] = useState([]);
 

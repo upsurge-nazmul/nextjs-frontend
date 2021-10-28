@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
 export default function RelativeSection({ data, cards }) {
+  console.log(data, cards);
   const router = useRouter();
   function relate(item) {
     router.push(`/calculators/${item}`);
@@ -24,9 +25,9 @@ export default function RelativeSection({ data, cards }) {
                 onClick={() => relate(item)}
               >
                 <img src={data[item].icon} alt="calcicon" />
-                <p className={styles.calccardtitle}>{data[item].heading}</p>
+                <p className={styles.calccardtitle}>{data[item]?.heading}</p>
                 <p className={styles.calccardsubtitle}>
-                  {data[item].subheading}
+                  {data[item]?.subheading}
                 </p>
                 <p className={styles.date}>By Upsurge Team, 5th Aug, 2021</p>
               </div>

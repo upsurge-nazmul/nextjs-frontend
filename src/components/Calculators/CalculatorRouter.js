@@ -17,8 +17,11 @@ import RestroCalc from "./RestroCalc";
 import Angel from "./Angel";
 import EducationInvestmentCalc from "./EducationInvestmentCalc";
 import Standard from "./Standard";
+import Unicorn from "./Unicorn";
+import { useRouter } from "next/dist/client/router";
 
 function CalculatorRouter({ name, calcdata }) {
+  const router = useRouter();
   if (name === "homeLoan") return <HomeCalc data={calcdata} />;
   if (name === "carLoan") return <CarCalc data={calcdata} />;
   if (name === "currency") return <BigMacCalc data={calcdata} />;
@@ -35,7 +38,10 @@ function CalculatorRouter({ name, calcdata }) {
   if (name === "restaurant") return <RestroCalc data={calcdata} />;
   if (name === "angel") return <Angel data={calcdata} />;
   if (name === "standardofliving") return <Standard data={calcdata} />;
-  else return <p></p>;
+  if (name === "unicorn") return <Unicorn data={calcdata} />;
+  else {
+    return <p>No calc found</p>;
+  }
 }
 
 export default CalculatorRouter;
