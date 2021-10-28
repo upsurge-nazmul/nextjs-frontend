@@ -66,13 +66,14 @@ function Header({
               // { name: "Tribes", pushTo: "/p_tribes" },
               { name: "Live Classes", pushTo: "/products/liveclasses" },
             ]}
+            pushTo="/products"
           />
           <HeaderTabSection
             title={"Benefits"}
             tabs={[
               { name: "Financial Literacy", pushTo: "/benefits" },
               {
-                name: "Experimential Learning",
+                name: "Experiential Learning",
                 pushTo: "/benefits/experimential",
               },
               {
@@ -108,7 +109,7 @@ function Header({
               { name: "About us", pushTo: "/about" },
               { name: "Blogs", pushTo: "/blogs" },
               { name: "Financial Calculators", pushTo: "/calculators" },
-              { name: "FAQ's", pushTo: "/help/faq" },
+              { name: "FAQs", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 
               // { name: "Live Classes", pushTo: "/liveclasses" },

@@ -49,7 +49,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               tabs={[
                 { name: "Financial Literacy", pushTo: "/benefits" },
                 {
-                  name: "Experimential Learning",
+                  name: "Experiential Learning",
                   pushTo: "/benefits/experimential",
                 },
                 {
@@ -84,7 +84,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                 { name: "About us", pushTo: "/about" },
                 { name: "Blogs", pushTo: "/blogs" },
                 { name: "Financial Calculators", pushTo: "/calculators" },
-                { name: "FAQ's", pushTo: "/help/faq" },
+                { name: "FAQs", pushTo: "/help/faq" },
                 { name: "Contact us", pushTo: "/contact" },
               ]}
             />

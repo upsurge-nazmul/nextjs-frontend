@@ -130,7 +130,7 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/faq")}
             >
-              FAQ’s
+              FAQs
             </p>
             <p className={styles.subheading}>Help Center</p>
             <p className={styles.subheading}>Contact us</p>
@@ -235,7 +235,7 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/help/faq")}
             >
-              FAQ’s
+              FAQs
             </p>
             {/* <p className={styles.subheading}>Help Center</p> */}
             <p
@@ -370,7 +370,7 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/help/faq")}
               >
-                FAQ’s
+                FAQs
               </p>
               <p className={styles.subheading}>Help Center</p>
               <p className={styles.subheading}>Contact us</p>
@@ -400,7 +400,7 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/help/faq")}
               >
-                FAQ’s
+                FAQs
               </p>
               {/* <p className={styles.subheading}>Help Center</p> */}
               <p

@@ -27,7 +27,7 @@ function HeaderTabSection({
           }
         }
         setshowtabs(!showtabs);
-        if (tabs.length === 0 && pushTo) {
+        if (pushTo) {
           router.push(pushTo);
         }
       }}
