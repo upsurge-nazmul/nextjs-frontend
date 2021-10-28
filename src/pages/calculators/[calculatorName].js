@@ -99,8 +99,7 @@ function CalculatorsPage() {
     college: {
       relative: ["education", "unicorn", "restaurant"],
       heading: "College Life",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+      subheading: `This calculator gives you expected monthly expense of your college life based on various different parameters.`,
       icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
     },
     costofraising: {
@@ -113,21 +112,20 @@ function CalculatorsPage() {
     unicorn: {
       relative: ["restaurant", "currency", "angel"],
       heading: "Unicorn Builder",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation 
+        Restaurant - This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.`,
       icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
     },
     angel: {
       heading: "Angel Investment Calculator",
-      subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+      subheading: `This calculator tells you the valuation of your startup at which you can raise funding from angel investors`,
       relative: ["restaurant", "standardofliving", "unicorn"],
       icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
     },
     standardofliving: {
       heading: "Standard of Living calculator",
       subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+        "This calculator gives you the expected expense of your lifestyle in various different cities based on various different factors.",
       icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
       relative: ["college", "carLoan", "homeLoan"],
     },
