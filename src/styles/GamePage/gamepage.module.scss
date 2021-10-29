@@ -18,6 +18,60 @@
     display: flex;
     justify-content: center;
     padding: 20px 0;
+    .gamedata {
+      width: 100%;
+      padding: 0 7vw;
+      display: flex;
+      height: 60vh;
+      max-height: 501px;
+      margin: 10vh 0;
+      .left {
+        width: 50%;
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 40px;
+        .heading {
+          color: black;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+        }
+        .input {
+          background: #fff;
+          font-size: 16px;
+          border: none;
+          height: 45px;
+          width: 90%;
+          padding: 0 20px;
+          margin-top: 20px;
+          &::placeholder {
+            color: rgba(206, 206, 206, 1);
+          }
+        }
+        .startbutton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 165px;
+          height: 48px;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          transition: all 0.3s ease;
+          margin-top: 40px;
+          cursor: pointer;
+          &:hover {
+            background: hsl(227, 59%, 51%);
+          }
+        }
+      }
+      .right {
+        width: 50%;
+        img {
+          height: 100%;
+        }
+      }
+    }
     .mobileerr {
       width: 100%;
       display: flex;

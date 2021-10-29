@@ -11,11 +11,8 @@ import Footer from "../../components/Home/Footer";
 function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
-  const [heading, setHeading] = useState("");
-  const [subheading, setSubheading] = useState("");
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const [paths, setpaths] = useState(["home", "calculators"]);
   useEffect(() => {
     if (calculatorName && !data[calculatorName]) {
       router.push("/calculators/main");

@@ -74,6 +74,7 @@ export default function GamePage() {
   });
   const [stickyheader, setstickyheader] = useState(false);
   const [errorshown, seterrorshown] = useState(false);
+  const [showgame, setshowgame] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const router = useRouter();
   const [info, setinfo] = useState({
@@ -172,6 +173,24 @@ export default function GamePage() {
             </div>
 
             {/* <Jasper className={styles.jasper} /> */}
+          </div>
+        ) : !showgame ? (
+          <div className={styles.gamedata}>
+            <div className={styles.left}>
+              <p className={styles.heading}>We need a few more details</p>
+              <input type="text" className={styles.input} placeholder="Name" />
+              <input type="text" className={styles.input} placeholder="Email" />
+              <input type="text" className={styles.input} placeholder="Phone" />
+              <div
+                className={styles.startbutton}
+                onClick={() => setshowgame(true)}
+              >
+                Start Playing
+              </div>
+            </div>
+            <div className={styles.right}>
+              <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            </div>
           </div>
         ) : (
           unitycontext && (
