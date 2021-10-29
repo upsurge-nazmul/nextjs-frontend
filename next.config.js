@@ -1,5 +1,8 @@
 module.exports = {
-    serverRuntimeConfig: {
-        PROJECT_ROOT: __dirname
-    }
-}
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
+  },
+  images: {
+    domains: ["i.ibb.co"],
+  },
+};

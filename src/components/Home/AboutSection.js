@@ -210,7 +210,7 @@ function AboutSection() {
         showStatus={false}
         showThumbs={false}
         showArrows={false}
-        width={"100vw"}
+        width={"80vw"}
       >
         {randomquotes.map((item, index) => {
           return (

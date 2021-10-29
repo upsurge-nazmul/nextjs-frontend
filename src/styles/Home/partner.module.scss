@@ -42,6 +42,9 @@
     margin-top: 50px;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .img {
       width: 20vw;
       min-width: 300px;
@@ -101,8 +104,8 @@
       flex: 1;
       margin-top: 50px;
       .img {
-        min-width: unset;
-        width: 150px;
+        min-width: 150px;
+        max-width: 150px;
         height: 80px;
         object-fit: contain;
         padding: 20px;

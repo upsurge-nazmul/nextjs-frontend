@@ -107,6 +107,7 @@ export default function LeaderBoard() {
             return (
               <div
                 className={styles.row}
+                key={item.name + index}
                 style={{
                   backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
                 }}

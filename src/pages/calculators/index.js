@@ -1,12 +1,10 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
-import CalculatorRouter from "../../components/Calculators/CalculatorRouter";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Calculators/calculatormainpage.module.scss";
-import homeloansvg from "../../assets/calculators/home.svg";
-import carloansvg from "../../assets/calculators/car.svg";
 import Footer from "../../components/Home/Footer";
+import Image from "next/image";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -146,7 +144,19 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <img className={styles.icon} src="/images/calcicon.png" alt="" />
+        <div
+          className={styles.icon}
+          style={{ position: "relative", height: "150px" }}
+        >
+          <Image
+            layout="fill"
+            src="/images/calcicon.png"
+            alt=""
+            priority
+            objectFit="contain"
+          />
+        </div>
+
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>Calculators</h2>
           <h3 className={styles.subheading}>
@@ -172,7 +182,14 @@ function CalculatorsPage() {
                   className={styles.calcCard}
                   onClick={() => router.push(`/calculators/${item}`)}
                 >
-                  <img src={data[item].icon} alt="" />
+                  <div className={styles.cardimg}>
+                    <Image
+                      src={data[item].icon}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
                   <p className={styles.calccardtitle}>{data[item].heading}</p>
                   <p className={styles.calccardsubtitle}>
                     {data[item].subheading}
