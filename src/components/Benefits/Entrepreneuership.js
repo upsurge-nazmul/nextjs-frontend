@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../styles/Benefits/entrepreneuership.module.scss";
+import Image from "next/image";
+
 export default function Entrepreneuership({ id }) {
   return (
     <div className={styles.main} id={id}>
@@ -16,7 +18,14 @@ export default function Entrepreneuership({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.imageblock}>
-            <img src="https://i.ibb.co/gdj2Bry/Untitled-design-25.png" alt="" />
+            <div className={styles.wrap}>
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src="https://i.ibb.co/gdj2Bry/Untitled-design-25.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Benefits/financial.module.scss";
+import Image from "next/image";
 export default function Financial({ id }) {
   return (
     <div className={styles.main} id={id}>
@@ -18,7 +19,14 @@ export default function Financial({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.imageblock}>
-            <img src="https://i.ibb.co/X2fdvVq/Untitled-design-23.png" alt="" />
+            <div className={styles.wrap}>
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src="https://i.ibb.co/X2fdvVq/Untitled-design-23.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>

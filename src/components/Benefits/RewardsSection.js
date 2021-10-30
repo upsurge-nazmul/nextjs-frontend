@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "../../styles/Benefits/rewardssection.module.scss";
+import Image from "next/image";
 export default function RewardsSection({ id }) {
   return (
     <div className={styles.main} id={id}>
       <div className={styles.container}>
         <div className={styles.background}>
-          <img src="/images/coinfalling.png" alt="" />
+          <div className={styles.wrap}>
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src="https://i.ibb.co/JQSknVG/coinfalling.png"
+              alt=""
+            />
+          </div>
         </div>
         <div className={styles.left}>
           <p className={styles.heading}>Reward your kids</p>
