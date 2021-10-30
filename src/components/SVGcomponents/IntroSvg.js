@@ -13,6 +13,7 @@ export default function IntroSvg({ className, onClick, clr }) {
             alt=""
             layout="fill"
             objectFit="contain"
+            quality="100"
             placeholder="blur"
             blurDataURL="https://i.ibb.co/FmynNnH/dashboard.png"
           />
@@ -26,6 +27,7 @@ export default function IntroSvg({ className, onClick, clr }) {
             alt=""
             layout="fill"
             blurDataURL="https://i.ibb.co/R9LxyYJ/phone.png"
+            quality="100"
             placeholder="blur"
             priority
             objectFit="contain"

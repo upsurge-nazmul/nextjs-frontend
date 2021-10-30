@@ -45,6 +45,10 @@
     &::-webkit-scrollbar {
       display: none;
     }
+    ::-webkit-scrollbar {
+      width: 0; /* Remove scrollbar space */
+      background: transparent; /* Optional: just make scrollbar invisible */
+    }
     .img {
       width: 20vw;
       min-width: 300px;
