@@ -13,30 +13,30 @@ function ProductSection() {
       title: "Knowledge Quest",
       pushTo: "/products/quests",
       description:
-        "Knowledge Quest comprises byte sized interactive videos which include exercises, real life examples and a short quiz.",
+        "Interactive courses that cover fundamentals of finance, including earning, budgeting, saving, and investing, and entrepreneurship and include exercises, real-life examples and short quizzes.",
     },
     {
       pushTo: "/products/games",
       title: "Games Arena",
       description:
-        "Challenge your friends over multiple games that are fun and experiential",
+        "Our platform with multiple proprietary games where children can apply financial concepts to real-experiences based games and understand finance, investing, and entrepreneurship in a fun and compelling way.",
     },
     {
       pushTo: "/products/chores",
       title: "Chores",
       description:
-        "Help young learners become financially responsible by earning money through chores or “Jobs” assigned by parents.",
+        "Fun and rewarding way for parents to reinforce good financial behaviors in children by assigning jobs to them and rewarding them with UniCoins – which will help them understand that they have to work to earn money!",
     },
     {
       pushTo: "/products/liveclasses",
       title: "Live Classes",
       description:
-        "Interactive and fun workshops by experts for young learners to understand money management and entrepreneurship.",
+        "Engaging fun workshops and courses for children, by experts and our founders, around important topics such as money management, career development and entrepreneurship.",
     },
   ];
   return (
     <section className={styles.productSection}>
-      <div className={styles.heading}>Products</div>
+      <div className={styles.heading}>Our Products</div>
       <div className={styles.wrapper}>
         {data.map((item, index) => {
           return (

@@ -3,6 +3,6 @@ module.exports = {
     PROJECT_ROOT: __dirname,
   },
   images: {
-    domains: ["i.ibb.co"],
+    domains: ["i.ibb.co", "images.unsplash.com"],
   },
 };

@@ -7,27 +7,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import StarSvg from "../SVGcomponents/StarSvg";
 import BlubSvg from "../SVGcomponents/BulbSvg";
+import Image from "next/image";
 function Benefits() {
   const data = [
     {
-      title: "Kickstart your child’s financial journey.",
+      title: "Kickstart your child’s financial journey",
       description:
-        "Money lessons through games,courses and live classes designed by experts.",
+        "Financial literacy is a life-skill and the earlier your children start, the easier it will be for them to achieve their financial goals. Through our games, courses and live classes, all designed by experts, children will understand money, saving, investing and entrepreneurship like never before!",
+      img: "https://i.ibb.co/4P607VW/img1.png",
     },
     {
       title: "Learning by doing",
       description:
-        "Engaging games,quizzes and activities will teach your kids money habits that will last a lifetime.",
+        "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
+      img: "https://i.ibb.co/Wxcb7GW/img2.png",
     },
     {
       title: "Developing entrepreneurial mindsets.",
       description:
-        "Equip your children with the necessary skills to set them on the path of becoming future entrepreneurs.",
+        "Equip your children with the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
+      img: "https://i.ibb.co/9Zb0PcR/img3.png",
     },
     {
       title: "Earn real rewards",
       description:
-        "Whenever your child completes a task successfully, they get rewarded with Unicoins, which can be redeemed for books, games, vouchers and educational courses.",
+        "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Whenever your child completes a task, course or game, they get rewarded with Unicoins, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
+      img: "https://i.ibb.co/7QxSzHM/img4.png",
     },
   ];
   const [scroll, setscroll] = useState(150);
@@ -127,10 +132,14 @@ function Benefits() {
                   <div className={styles.lb2}></div>
                   <div className={styles.lb3}></div>
                   <div className={styles.lb4}></div>
-                  <img
-                    src={"/images/home/benefits/img" + (index + 1) + ".png"}
-                    alt=""
-                  />
+                  <div className={styles.wrap}>
+                    <Image
+                      src={item.img}
+                      alt=""
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </div>
                 </div>
 
                 <p className={styles.description}>{item.description}</p>
@@ -171,7 +180,7 @@ function Benefits() {
                     : "#4166EB",
               }}
             >
-              Benefits
+              Why upsurge?
             </p>
 
             <div className={styles.allsections}>
@@ -208,12 +217,17 @@ function Benefits() {
           <div className={styles.imgwrapper}>
             {
               <>
-                <motion.img
-                  id="img-1"
-                  className="imgsections"
-                  src="/images/home/benefits/img1.png"
-                  alt=""
-                />
+                <div className={styles.wrap}>
+                  <Image
+                    id="img-1"
+                    className="imgsections"
+                    src={data[0].img}
+                    alt=""
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
+
                 <IntroThunderSvg className={styles.thunder} />
                 <Dollar className={styles.dollar} />
                 <div className={styles.lb1}></div>
@@ -234,12 +248,17 @@ function Benefits() {
             <Curve1 className={styles.curve} />
           </div>
           <div className={styles.imgwrapper}>
-            <img
-              id="img-2"
-              className="imgsections"
-              src="/images/home/benefits/img2.png"
-              alt=""
-            />
+            <div className={styles.wrap}>
+              <Image
+                id="img-2"
+                className="imgsections"
+                src={data[1].img}
+                objectFit="contain"
+                alt=""
+                layout="fill"
+              />
+            </div>
+
             <StarSvg className={styles.thunder} />
             <div className={styles.lb1}></div>
             <div className={styles.lb2}></div>
@@ -253,12 +272,16 @@ function Benefits() {
             >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>
-            <img
-              id="img-3"
-              className="imgsections"
-              src="/images/home/benefits/img3.png"
-              alt=""
-            />
+            <div className={styles.wrap}>
+              <Image
+                id="img-3"
+                className="imgsections"
+                src={data[2].img}
+                objectFit="contain"
+                alt=""
+                layout="fill"
+              />
+            </div>
             <BlubSvg className={styles.thunder} />
             <div className={styles.lb1}></div>
             <div className={styles.lb2}></div>
@@ -274,12 +297,17 @@ function Benefits() {
             >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>
-            <img
-              id="img-4"
-              className="imgsections"
-              src="/images/home/benefits/img4.png"
-              alt=""
-            />
+            <div className={styles.wrap}>
+              <Image
+                id="img-4"
+                className="imgsections"
+                src={data[3].img}
+                alt=""
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+
             <StarSvg className={styles.thunder} clr="#fdcc03" />
             <div className={styles.lb1}></div>
             <div className={styles.lb2}></div>

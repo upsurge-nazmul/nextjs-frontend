@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Home/who.module.scss";
-import whoimage from "../../assets/who/who.png";
+import Image from "next/image";
 function Who() {
   return (
     <div className={styles.whoSection}>
@@ -30,7 +30,12 @@ function Who() {
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
-            <img src="https://i.ibb.co/Qmckfjh/Untitled-design-54.png" alt="" />
+            <Image
+              src="https://i.ibb.co/Qmckfjh/Untitled-design-54.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
         </div>
       </div>

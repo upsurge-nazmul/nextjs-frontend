@@ -149,11 +149,12 @@ function CalculatorsPage() {
           style={{ position: "relative", height: "150px" }}
         >
           <Image
-            layout="fill"
-            src="/images/calcicon.png"
+            src="https://i.ibb.co/KwbW1s2/calcicon.png"
             alt=""
             priority
+            layout="fill"
             objectFit="contain"
+            quality="100"
           />
         </div>
 

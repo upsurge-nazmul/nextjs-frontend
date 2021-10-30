@@ -3,6 +3,7 @@ import styles from "../../styles/Home/join.module.scss";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
+import Image from "next/image";
 function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
@@ -33,17 +34,32 @@ function JoinUs() {
   return (
     <section className={styles.joinSection}>
       <div className={`${styles.doodle} ${styles.dl1}`}>
-        <img src="https://i.ibb.co/yRsxh0y/Untitled-design-4.png" alt="" />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src="https://i.ibb.co/yRsxh0y/Untitled-design-4.png"
+          alt=""
+        />
       </div>
       <div className={`${styles.doodle} ${styles.dl2}`} />
       <div className={`${styles.doodle} ${styles.dl3}`} />
       <div className={`${styles.doodle} ${styles.dl4}`}>
-        <img src="https://i.ibb.co/GtLBxMY/Untitled-design-7.png" alt="" />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src="https://i.ibb.co/GtLBxMY/Untitled-design-7.png"
+          alt=""
+        />
       </div>
       <div className={`${styles.doodle} ${styles.dl5}`} />
 
       <div className={`${styles.doodle} ${styles.dr1}`}>
-        <img src="https://i.ibb.co/92nwnTL/Untitled-design-6.png" alt="" />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src="https://i.ibb.co/92nwnTL/Untitled-design-6.png"
+          alt=""
+        />
       </div>
       <div className={`${styles.doodle} ${styles.dr2}`} />
       <div className={`${styles.doodle} ${styles.dr3}`} />

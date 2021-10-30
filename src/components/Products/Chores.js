@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Products/chores.module.scss";
+import Image from "next/image";
 export default function Chores({ id, email, setEmail, check, error }) {
   const [showinput, setshowinput] = useState(false);
 
@@ -33,12 +34,14 @@ export default function Chores({ id, email, setEmail, check, error }) {
             </div>
           )}
         </div>
-
-        <img
-          className={styles.mobileimage}
-          src="/images/mobilechore.png"
-          alt=""
-        />
+        <div className={styles.mobileimage}>
+          <Image
+            objectFit="contain"
+            layout="fill"
+            src="/images/mobilechore.png"
+            alt=""
+          />
+        </div>
       </div>
       <div className={styles.bottom}>
         <div className={styles.left}>
@@ -68,7 +71,14 @@ export default function Chores({ id, email, setEmail, check, error }) {
           </div>
         </div>
         <div className={styles.mid}>
-          <img src="/images/mobilechore.png" alt="" />
+          <div className={styles.image}>
+            <Image
+              objectFit="contain"
+              layout="fill"
+              src="https://i.ibb.co/RCDhkjY/mobilechore.png"
+              alt=""
+            />
+          </div>
         </div>
         <div className={styles.right}>
           <div className={styles.first}>

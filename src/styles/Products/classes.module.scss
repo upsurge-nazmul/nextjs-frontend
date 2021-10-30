@@ -19,7 +19,7 @@
       color: rgb(0, 0, 0);
     }
     .subheading {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 400;
       margin-top: 10%;
       margin-top: 10px;
@@ -31,8 +31,9 @@
   .right {
     flex: 1;
     position: relative;
-    img {
+    .liveclassimg {
       width: 40vw;
+      height: 60vh;
     }
     .hoverimg {
       position: absolute;
@@ -147,13 +148,13 @@
         font-size: 40px;
       }
       .subheading {
-        font-size: 18px;
+        font-size: 16px;
         margin-top: 20px;
         line-height: 24px;
       }
     }
     .right {
-      img {
+      .liveclassimg {
         width: 40vw;
       }
     }
@@ -284,8 +285,9 @@
       justify-content: center;
       display: flex;
       margin: 40px 0;
-      img {
-        width: 60%;
+      .liveclassimg {
+        width: 80vw;
+        height: 30vh;
         min-width: 280px;
       }
       .hoverimg {

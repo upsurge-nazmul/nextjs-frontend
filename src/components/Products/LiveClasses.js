@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/Products/classes.module.scss";
-import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
-
+import Image from "next/image";
 export default function LiveClasses({ id }) {
   return (
     <div className={styles.liveClasses} id={id}>
@@ -16,68 +15,23 @@ export default function LiveClasses({ id }) {
         </div>
       </div>
       <div className={styles.right}>
-        <img src="/images/home/liveclass.png" alt="" />
-        <img
-          className={styles.hoverimg}
-          src="/images/home/liveclassgirl.png"
-          alt=""
-        />
+        <div className={styles.liveclassimg}>
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src="https://i.ibb.co/WFBWc53/liveclass.png"
+            alt=""
+          />
+        </div>
+        <div className={styles.hoverimg}>
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src="https://i.ibb.co/LxjRv60/liveclassgirl.png"
+            alt=""
+          />
+        </div>
       </div>
-      {/* <div className={styles.bottom}>
-        <div className={styles.left}>
-          <PlayCircleSvg className={styles.lefticon} />
-        </div>
-        <div className={styles.mid}>
-          <div className={styles.container}>
-            <img
-              src="https://images.unsplash.com/photo-1521133573892-e44906baee46?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFsbHMlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.heading}>
-              The basics of economy: Where does money originate?
-            </p>
-            <p className={styles.description}>
-              This is a sample description of the above element. It can be
-              modified as per client needs.
-            </p>
-            <p className={styles.by}>By Anand Singh</p>
-            <div className={styles.button}>Register</div>
-          </div>
-          <div className={styles.container}>
-            <img
-              src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
-              alt=""
-            />
-            <p className={styles.heading}>
-              The basics of economy: Where does money originate?
-            </p>
-            <p className={styles.description}>
-              This is a sample description of the above element. It can be
-              modified as per client needs.
-            </p>
-            <p className={styles.by}>By Anand Singh</p>
-            <div className={styles.button}>Register</div>
-          </div>
-          <div className={styles.container}>
-            <img
-              src="https://images.unsplash.com/photo-1521133573892-e44906baee46?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFsbHMlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.heading}>
-              The basics of economy: Where does money originate?
-            </p>
-            <p className={styles.description}>
-              This is a sample description of the above element. It can be
-              modified as per client needs.
-            </p>
-            <p className={styles.by}>By Anand Singh</p>
-            <div className={styles.button}>Register</div>
-          </div>
-        </div>
-        <div className={styles.right}>
-          <PlayCircleSvg className={styles.righticon} />
-        </div>
-      </div>*/}
     </div>
   );
 }

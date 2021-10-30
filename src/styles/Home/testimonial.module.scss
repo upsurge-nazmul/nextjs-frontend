@@ -66,11 +66,12 @@
     display: flex;
     height: 100%;
     justify-content: center;
-    img {
+    .image {
+      position: relative;
       width: 25vw;
       height: 25vw;
-      object-fit: cover;
       border-radius: 100%;
+      overflow: hidden;
     }
   }
 }

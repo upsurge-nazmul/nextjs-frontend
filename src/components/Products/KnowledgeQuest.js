@@ -4,7 +4,7 @@ import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
 import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
-
+import Image from "next/image";
 export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
@@ -21,8 +21,28 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
     <div className={styles.questSection}>
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <img src="/images/benefits_quest.png" alt="" />
-      <img className={styles.kidimg} src="/images/benefitquestkid.png" alt="" />
+      <div className={styles.lap}>
+        <div className={styles.wrap}>
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src="https://i.ibb.co/TRmWrMg/benefits-quest.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div className={styles.kidimg}>
+        <div className={styles.wrap}>
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src="https://i.ibb.co/ZYDVsdX/Mask-Group.png"
+            alt=""
+          />
+        </div>
+      </div>
+
       <PetalSvgQuest className={styles.petal} />
       <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
