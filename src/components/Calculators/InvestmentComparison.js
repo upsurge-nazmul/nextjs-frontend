@@ -88,7 +88,7 @@ export default function InvestmentComparison() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Intrest", "Loan Amount"],
+    labels: ["interest", "Loan Amount"],
     datasets: [
       {
         label: "Investment Comparison",

@@ -61,7 +61,7 @@ export default function HomeCalc() {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Intrest", "Loan Amount"],
+    labels: ["interest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",
