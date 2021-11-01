@@ -14,31 +14,31 @@ export default function TestiMonial() {
       quote:
         "We were fortunate enough to get access to upsurge for testing, and both my children absolutely loved it. The chore management feature has them competing against each other to finish their chores first and earn more unicoins, and the games have them competing against each other! And of course, they are learning very important money skills that were never taught to us.",
       name: "Sophia",
-      img: "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+      img: "https://i.ibb.co/pr16J3R/Untitled-design-70.png",
     },
     {
       quote:
         "When I heard that there’s someone teaching personal finance to children, I got in touch with upsurge to get access. While they were under testing, they gave us access and my son has been loving the courses and the games. In fact, some of the games and activities that are meant for the family to play together are currently a favorite in our home.",
-      name: "Sonam ",
-      img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+      name: "Sonam",
+      img: "https://i.ibb.co/3Fs2HBY/Untitled-design-68.png",
     },
     {
       quote:
         "My 17-year-old daughter, after going through the knowledge quests and playing the investment games has started investing Rs. 2,500 a month in mutual funds! I couldn’t have imagined this a few months ago!",
       name: "Radha",
-      img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+      img: "https://i.ibb.co/zHj2M7d/Untitled-design-69.png",
     },
     {
       quote:
         "Within a month of starting upsurge, my son has become so involved with household budgets and money in general! He discusses business news with us, and wants to become a electric vehicle entrepreneur in the long term (just like his hero Mr. Musk)",
       name: "Pradeep",
-      img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+      img: "https://i.ibb.co/NrKD6QS/Untitled-design-72.png",
     },
     {
       quote:
         "The Knowledge Quests are designed really well - easy to understand concepts, real examples and fun activities make sure that my daughter is learning and having fun.",
       name: "Mayur",
-      img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+      img: "https://i.ibb.co/dmGDbz9/Untitled-design-71.png",
     },
   ];
   const [currenttestimonial, setcurrenttestimonial] = useState(0);
