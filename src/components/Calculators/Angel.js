@@ -35,7 +35,7 @@ export default function Angel({ data }) {
       title: "Enter the revenue for this year",
       type: "input",
       code: "rev1",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
     {
@@ -54,7 +54,7 @@ export default function Angel({ data }) {
       title: "Enter expected revenue for year 1",
       type: "input",
       code: "erev1",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
     {
@@ -94,26 +94,26 @@ export default function Angel({ data }) {
       type: "input",
       code: "rev1",
       pretitle: "₹",
-      min: 1000,
+      min: 1,
     },
     {
       title: "Enter the revenue for next year",
       type: "input",
       code: "rev2",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
     {
       title: "Enter the revenue for next to next year",
       type: "input",
       code: "rev3",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
     {
       title: "Enter expected revenue for year 1",
       type: "input",
-      min: 1000,
+      min: 1,
       code: "erev1",
       pretitle: "₹",
     },
@@ -121,14 +121,14 @@ export default function Angel({ data }) {
       title: "Enter expected revenue for year 2",
       type: "input",
       code: "erev2",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
     {
       title: "Enter expected revenue for year 3",
       type: "input",
       code: "erev3",
-      min: 1000,
+      min: 1,
       pretitle: "₹",
     },
   ];
@@ -213,12 +213,14 @@ export default function Angel({ data }) {
     let investment = 0;
     if (calcdata.revenue === "Yes") {
       growthrate =
-        (calcdata.rev2 / calcdata.rev1 + calcdata.rev3 / calcdata.rev2) / 2;
+        (calcdata.rev2 / calcdata.rev1 + calcdata.rev3 / calcdata.rev2) / 2 - 1;
 
       investment = calcdata.rev1 * valuation * (1 + growthrate / 2);
     } else {
       growthrate =
-        (calcdata.erev2 / calcdata.erev1 + calcdata.erev3 / calcdata.erev2) / 2;
+        (calcdata.erev2 / calcdata.erev1 + calcdata.erev3 / calcdata.erev2) /
+          2 -
+        1;
       investment = calcdata.erev1 * valuation * (1 + growthrate / 2) * 0.8;
     }
 

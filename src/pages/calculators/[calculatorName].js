@@ -19,8 +19,8 @@ function CalculatorsPage() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [paths, setpaths] = useState(["home", "calculators"]);
+  const [error, seterror] = useState("");
   useEffect(() => {
-    console.log(calculatorName);
     if (!data[calculatorName]) {
       return;
     } else {
@@ -39,11 +39,13 @@ function CalculatorsPage() {
     carLoan: {
       heading: "Car Loan",
       subheading: `User will get to know the EMI amount they'll have to pay for various different types of cars`,
+      relative: ["homeLoan", "restaurant", "education"],
       icon: "https://i.ibb.co/znVZd67/sven-d-a4-S6-KUu-Leo-M-unsplash.jpg",
     },
     education: {
       heading: "Education",
       subheading: `This calculator gives user a fair estimate of the EMI they'll have to pay for pursuing various degrees`,
+      relative: ["costofraising", "educationinvestments", "college"],
       icon: "https://i.ibb.co/w4p94JJ/md-duran-1-Vq-HRwxc-CCw-unsplash.jpg",
     },
     // vacation: {
@@ -52,7 +54,7 @@ function CalculatorsPage() {
     //   icon: "https://i.ibb.co/6rgnFFS/Untitled-design-8.png",
     // },
     sip: {
-      heading: "Financing Calculator",
+      heading: "Financing",
       subheading: `It tells how much money you need to invest monthly in various different assets to reach a target saving amount`,
       relative: ["investmentcomparison", "retirement", "costofraising"],
       icon: "https://i.ibb.co/b1Dxh2v/Untitled-design-9.png",
@@ -64,16 +66,16 @@ function CalculatorsPage() {
       icon: "https://i.ibb.co/8BdyXNb/Untitled-design-66.png",
     },
     retirement: {
-      heading: "Retirement Calculator",
+      heading: "Retirement",
       subheading:
         "It calculates how much user needs to save in order to get the monthly amount that user desires after retirement",
       icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
       relative: ["sip", "investmentcomparison", "homeLoan"],
     },
     restaurant: {
-      heading: "Start My Restaurant Calculator",
+      heading: "Start My Restaurant",
       subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+        "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
       relative: ["currency", "angel", "unicorn"],
       icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
     },
@@ -112,18 +114,17 @@ function CalculatorsPage() {
     unicorn: {
       relative: ["restaurant", "currency", "angel"],
       heading: "Unicorn Builder",
-      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation 
-        Restaurant - This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.`,
+      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation`,
       icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
     },
     angel: {
-      heading: "Angel Investment Calculator",
+      heading: "Angel Investment",
       subheading: `This calculator tells you the valuation of your startup at which you can raise funding from angel investors`,
       relative: ["restaurant", "standardofliving", "unicorn"],
       icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
     },
     standardofliving: {
-      heading: "Standard of Living calculator",
+      heading: "Standard of Living",
       subheading:
         "This calculator gives you the expected expense of your lifestyle in various different cities based on various different factors.",
       icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
@@ -185,9 +186,16 @@ function CalculatorsPage() {
           <h1 className={styles.mainheading}>{heading} Calculator</h1>
           <h2 className={styles.heading}>How it works</h2>
           <h3 className={styles.subheading}>{subheading}</h3>
+          <h3 className={styles.subheading} style={{ color: "red" }}>
+            {error}
+          </h3>
         </div>
 
-        <CalculatorRouter name={calculatorName} calcdata={data} />
+        <CalculatorRouter
+          seterror={seterror}
+          name={calculatorName}
+          calcdata={data}
+        />
         <CalcFaq name={calculatorName} />
         <RelativeSection
           data={data}

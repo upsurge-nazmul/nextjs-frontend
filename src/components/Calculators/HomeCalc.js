@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
-export default function HomeCalc({ data }) {
+export default function HomeCalc({ data, seterror }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of house",
@@ -35,7 +35,7 @@ export default function HomeCalc({ data }) {
       type: "input",
       title: "Enter One-Time Payment",
       min: 0,
-      max: 1000000,
+      max: 10000000,
       pretitle: "₹",
       code: "onetimepayment",
     },
@@ -92,7 +92,6 @@ export default function HomeCalc({ data }) {
   function emi() {
     let monthlyrate = 12 / 12 / 100;
     var months = calcdata.years * 12;
-
     let loanamount = 0;
     if (calcdata.noofrooms === "2 rooms") {
       if (calcdata.city === "Delhi") {
@@ -125,9 +124,21 @@ export default function HomeCalc({ data }) {
         loanamount = 20000000;
       }
     }
+
     if (calcdata.onetimepayment) {
       loanamount = loanamount - calcdata.onetimepayment;
+      if (loanamount < 0) {
+        setcalcdata((prev) => ({
+          ...prev,
+          onetimepayment: 0,
+        }));
+        seterror("Onetime payment cannot be greater than loan amount");
+        return;
+      } else {
+        seterror("");
+      }
     }
+
     let emiamount =
       (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
       (Math.pow(1 + monthlyrate, months) - 1);

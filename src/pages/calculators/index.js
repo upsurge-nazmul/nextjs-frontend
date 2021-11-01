@@ -73,7 +73,7 @@ function CalculatorsPage() {
     restaurant: {
       heading: "Start My Restaurant Calculator",
       subheading:
-        "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
+        "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
       relative: ["currency", "angel", "unicorn"],
       icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
     },
@@ -111,8 +111,7 @@ function CalculatorsPage() {
     },
     unicorn: {
       heading: "Unicorn Builder",
-      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation 
-        Restaurant - This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.`,
+      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation.`,
       icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
     },
     angel: {

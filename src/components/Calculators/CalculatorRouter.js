@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import React from "react";
 import EducationCalc from "./EducationCalc";
-import InputBlock from "./InputBlock";
-import ResultBox from "./ResultBox";
 import SipLumpsumCalc from "./SipLumpsumCalc";
 import VacationCalc from "./VacationCalc";
-import styles from "../../styles/Calculators/calccomponent.module.scss";
 import HomeCalc from "./HomeCalc";
 import CarCalc from "./CarCalc";
 import BigMacCalc from "./BigMacCalc";
@@ -20,25 +16,37 @@ import Standard from "./Standard";
 import Unicorn from "./Unicorn";
 import { useRouter } from "next/dist/client/router";
 
-function CalculatorRouter({ name, calcdata }) {
+function CalculatorRouter({ name, calcdata, seterror }) {
   const router = useRouter();
-  if (name === "homeLoan") return <HomeCalc data={calcdata} />;
-  if (name === "carLoan") return <CarCalc data={calcdata} />;
-  if (name === "currency") return <BigMacCalc data={calcdata} />;
-  if (name === "retirement") return <Retirement data={calcdata} />;
-  if (name === "costofraising") return <CostOfRaisingCalc data={calcdata} />;
+  if (name === "homeLoan")
+    return <HomeCalc seterror={seterror} data={calcdata} />;
+  if (name === "carLoan")
+    return <CarCalc seterror={seterror} data={calcdata} />;
+  if (name === "currency")
+    return <BigMacCalc seterror={seterror} data={calcdata} />;
+  if (name === "retirement")
+    return <Retirement seterror={seterror} data={calcdata} />;
+  if (name === "costofraising")
+    return <CostOfRaisingCalc seterror={seterror} data={calcdata} />;
   if (name === "investmentcomparison")
-    return <InvestmentComparison data={calcdata} />;
-  if (name === "sip") return <SipLumpsumCalc data={calcdata} />;
-  if (name === "college") return <CollegeLifeCalc data={calcdata} />;
-  if (name === "vacation") return <VacationCalc data={calcdata} />;
-  if (name === "education") return <EducationCalc data={calcdata} />;
+    return <InvestmentComparison seterror={seterror} data={calcdata} />;
+  if (name === "sip")
+    return <SipLumpsumCalc seterror={seterror} data={calcdata} />;
+  if (name === "college")
+    return <CollegeLifeCalc seterror={seterror} data={calcdata} />;
+  if (name === "vacation")
+    return <VacationCalc seterror={seterror} data={calcdata} />;
+  if (name === "education")
+    return <EducationCalc seterror={seterror} data={calcdata} />;
   if (name === "educationinvestments")
-    return <EducationInvestmentCalc data={calcdata} />;
-  if (name === "restaurant") return <RestroCalc data={calcdata} />;
-  if (name === "angel") return <Angel data={calcdata} />;
-  if (name === "standardofliving") return <Standard data={calcdata} />;
-  if (name === "unicorn") return <Unicorn data={calcdata} />;
+    return <EducationInvestmentCalc seterror={seterror} data={calcdata} />;
+  if (name === "restaurant")
+    return <RestroCalc seterror={seterror} data={calcdata} />;
+  if (name === "angel") return <Angel seterror={seterror} data={calcdata} />;
+  if (name === "standardofliving")
+    return <Standard seterror={seterror} data={calcdata} />;
+  if (name === "unicorn")
+    return <Unicorn seterror={seterror} data={calcdata} />;
   else {
     return <p>No calc found</p>;
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -57,11 +57,11 @@ export default function RestroCalc({ data }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["interest", "Loan Amount"],
+    labels: ["Lumpsum Required to start today"],
     datasets: [
       {
-        label: "# of Votes",
-        data: [0, 0],
+        label: "Lumpsum Required to start today",
+        data: [0],
         backgroundColor: ["#4166EB", "#FDCC03"],
         borderColor: ["#4166EB", "#FDCC03"],
         borderWidth: 1,
@@ -146,7 +146,7 @@ export default function RestroCalc({ data }) {
 
     setresultdata((prev) => ({
       heading1: "Lumpsum Required to start today",
-      heading2: `Break-even analysis`,
+      heading2: `Break-even analysis (Orders)`,
       result2sign: " ",
       result1: Math.round(Lumpsum),
       result2: Math.round(orders),
@@ -155,10 +155,10 @@ export default function RestroCalc({ data }) {
       ...prev,
       datasets: [
         {
-          label: "# of Votes",
-          data: [Math.round(Lumpsum), Math.round(orders)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
+          label: "Lumpsum Required to start today",
+          data: [Math.round(Lumpsum)],
+          backgroundColor: ["#FDCC03"],
+          borderColor: ["#FDCC03"],
           borderWidth: 1,
         },
       ],
@@ -266,7 +266,7 @@ export default function RestroCalc({ data }) {
         {showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
-              <Doughnut
+              <Bar
                 data={chartData}
                 className={styles.chart}
                 width={100}

@@ -10,12 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function Retirement() {
-  const [money, setmoney] = useState(1);
-  const [type, settype] = useState(0);
-  const [age, setage] = useState(18);
-  const [country, setcountry] = useState("");
-  const [course, setcourse] = useState(0);
+export default function Retirement({ seterror }) {
   const [questions, setquestions] = useState([
     {
       title: "Expected age of retirement",
@@ -27,7 +22,7 @@ export default function Retirement() {
       title: "Current age",
       type: "input",
       code: "age",
-      min: 18,
+      min: 1,
       max: 79,
       posttitle: "years",
     },
@@ -65,7 +60,7 @@ export default function Retirement() {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    age: 1,
+    age: 18,
     type: 40,
     money: 5000,
   });
@@ -79,6 +74,11 @@ export default function Retirement() {
   }, [calcdata, current]);
 
   function emi() {
+    if (calcdata.age < 18) {
+      seterror("Age cannot be less than 18");
+    } else {
+      seterror("");
+    }
     let remaininglife = 80 - calcdata.age;
     let monthlyinvestment =
       (calcdata.money * remaininglife) / (calcdata.type - calcdata.age);
