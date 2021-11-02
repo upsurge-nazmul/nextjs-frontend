@@ -10,7 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcInput from "./BigCalcInput";
 import BigCalcDropdown from "./BigCalcDropdown";
-export default function CarCalc() {
+export default function CarCalc({ seterror }) {
   const [calcdata, setcalcdata] = useState({
     years: 1,
     type: "Sedan",
@@ -69,12 +69,16 @@ export default function CarCalc() {
   });
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    if (!calcdata.years) {
+      seterror("Tenure of the loan cannot be less than 1 year");
+    }
     let monthlyrate = 12 / 12 / 100;
     var months = calcdata.years * 12;
 

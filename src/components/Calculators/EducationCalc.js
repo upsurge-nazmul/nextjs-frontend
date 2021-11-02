@@ -10,7 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function HomeCalc() {
+export default function HomeCalc({ seterror }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of university ",
@@ -123,10 +123,14 @@ export default function HomeCalc() {
     }
   }, [calcdata]);
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
   }, [calcdata, current]);
   function emi() {
+    if (!calcdata.years) {
+      seterror("Tenure of the loan cannot be less than 1 year");
+    }
     let monthlyrate = 10 / 12 / 100;
     if (calcdata.university === "Private") {
       monthlyrate = 14 / 12 / 100;

@@ -10,7 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function CollegeLifeCalc() {
+export default function CollegeLifeCalc({ seterror }) {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("");
   const [university, setuniversity] = useState("");
@@ -131,12 +131,16 @@ export default function CollegeLifeCalc() {
   }, [calcdata]);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    if (!calcdata.years) {
+      seterror("The loan repayment duration cannot be less than 1 year");
+    }
     let monthlyrate = 10 / 12 / 100;
     if (university === "Private") {
       monthlyrate = 14 / 12 / 100;

@@ -42,7 +42,7 @@ function CalculatorsPage() {
       icon: "https://i.ibb.co/znVZd67/sven-d-a4-S6-KUu-Leo-M-unsplash.jpg",
     },
     education: {
-      heading: "Education",
+      heading: "Education Loan",
       subheading: `This calculator gives user a fair estimate of the EMI they'll have to pay for pursuing various degrees`,
       icon: "https://i.ibb.co/w4p94JJ/md-duran-1-Vq-HRwxc-CCw-unsplash.jpg",
     },

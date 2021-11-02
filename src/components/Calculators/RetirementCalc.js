@@ -68,6 +68,7 @@ export default function Retirement({ seterror }) {
   const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
@@ -76,8 +77,9 @@ export default function Retirement({ seterror }) {
   function emi() {
     if (calcdata.age < 18) {
       seterror("Age cannot be less than 18");
-    } else {
-      seterror("");
+    }
+    if (!calcdata.money) {
+      seterror("Money required monthly is required");
     }
     let remaininglife = 80 - calcdata.age;
     let monthlyinvestment =

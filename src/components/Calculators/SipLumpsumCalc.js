@@ -10,7 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function HomeCalc() {
+export default function HomeCalc({ seterror }) {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("All");
   const [amount, setamount] = useState();
@@ -81,12 +81,19 @@ export default function HomeCalc() {
   const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    if (!calcdata.years) {
+      seterror("Investment Duration cannot be less than 1 year");
+    }
+    if (!calcdata.amount) {
+      seterror("Money needed in future is required");
+    }
     let fd = calcdata.amount / Math.pow(1 + 5 / 100, calcdata.years);
     let mutualfund = calcdata.amount / Math.pow(1 + 10.4 / 100, calcdata.years);
     let gold = calcdata.amount / Math.pow(1 + 10 / 100, calcdata.years);

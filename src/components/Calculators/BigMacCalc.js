@@ -9,7 +9,7 @@ import BigCalcInput from "./BigCalcInput";
 import Progress from "../Progress";
 import InputBlock from "./InputBlock";
 import DropBox from "./DropBox";
-export default function BigMacCalc() {
+export default function BigMacCalc({ seterror }) {
   const [inrmoney, setyear] = useState(1);
   const [type, settype] = useState("");
   const [university, setuniversity] = useState("");
@@ -62,11 +62,15 @@ export default function BigMacCalc() {
   const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
   }, [calcdata, current]);
 
   function emi() {
+    if (!calcdata.inrmoney) {
+      seterror("Amount is required");
+    }
     let bigmac = 0;
     if (calcdata.country === "Singapore") {
       bigmac = 4.31;

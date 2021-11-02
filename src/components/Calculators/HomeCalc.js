@@ -84,12 +84,16 @@ export default function HomeCalc({ data, seterror }) {
   const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    if (!calcdata.years) {
+      seterror("Tenure of the loan cannot be less than 1 year");
+    }
     let monthlyrate = 12 / 12 / 100;
     var months = calcdata.years * 12;
     let loanamount = 0;

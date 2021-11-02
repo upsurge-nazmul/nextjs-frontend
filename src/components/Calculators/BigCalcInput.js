@@ -23,18 +23,6 @@ export default function BigCalcInput({
           type="number"
           value={value}
           onChange={(e) => {
-            if (!e.target.value) {
-              setvalue((prev) => ({
-                ...prev,
-                [code]: 0,
-              }));
-              return;
-            }
-            if (minvalue && e.target.value < minvalue) {
-              console.log(e.target.value);
-
-              return;
-            }
             if (maxvalue && e.target.value > maxvalue) {
               return;
             }

@@ -10,7 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function EducationInvestmentCalc() {
+export default function EducationInvestmentCalc({ seterror }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of university ",
@@ -123,10 +123,14 @@ export default function EducationInvestmentCalc() {
     }
   }, [calcdata]);
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
   }, [calcdata, current]);
   function emi() {
+    if (!calcdata.years) {
+      seterror("Years remaining in admission cannot be less than 1 year");
+    }
     let loanamount = 0;
     if (calcdata.type === "Indian") {
       if (calcdata.university === "Private") {
