@@ -9,14 +9,17 @@ import xss from "xss";
 import Footer from "../../components/Home/Footer";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import BlogCard from "../../components/Blog/BlogCard";
+import MoreCard from "../../components/Blog/MoreCard";
 
-export default function BlogPage({ blogdata }) {
+export default function BlogPage({ blogdata, related }) {
   const router = useRouter();
   const [headings, setheadings] = useState([]);
   const [scroll, setscroll] = useState(80);
   const [currentsection, setcurrentsection] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [relatedBlogs, setrelatedBlogs] = useState(related || []);
   let date = new Date(Number(blogdata.date));
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -76,6 +79,7 @@ export default function BlogPage({ blogdata }) {
       inline: "nearest",
     });
   }
+
   return (
     <div className={styles.blogPage}>
       <Header
@@ -169,13 +173,33 @@ export default function BlogPage({ blogdata }) {
           </div>
         </div>
       </div>
+      <div className={styles.relatedBlogs}>
+        <p className={styles.heading}>Related Blogs</p>
+        <div className={styles.wrapper}>
+          {relatedBlogs.map((item) => {
+            return (
+              <MoreCard
+                key={item.id}
+                data={item}
+                getdatafromraw={getdatafromraw}
+              />
+            );
+          })}
+        </div>
+      </div>
       <Footer />
     </div>
   );
 }
 export async function getServerSideProps({ params, req }) {
   let blogdata = await getBlog({ id: params.id });
-  return { props: { blogdata: blogdata } };
+  let related = [];
+  console.log(blogdata.data);
+  let res = await BlogApis.getblogs({ page: 1, category: blogdata.category });
+  if (res && res.data && res.data.data) {
+    related = res.data.data.rows;
+  }
+  return { props: { blogdata: blogdata, related } };
 }
 
 async function getBlog(id) {

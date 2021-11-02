@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameApis from "../../actions/apis/GameApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
@@ -76,16 +77,20 @@ export default function GamePage() {
   const [errorshown, seterrorshown] = useState(false);
   const [showgame, setshowgame] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [name, setname] = useState("");
+  const [phone, setphone] = useState("");
+  const [email, setemail] = useState("");
+  const [nickname, setnickname] = useState("");
   const router = useRouter();
   const [info, setinfo] = useState({
     device: "computer",
     orientation: "desktop",
   });
-  const { gameid } = router.query;
+  const { gameid, id } = router.query;
   function handleOnClickFullscreen() {
     unitycontext.setFullscreen(true);
   }
-
+  const gamesWithAuth = ["Ludo", "FinCricket"];
   useEffect(() => {
     if (gameid) {
       logclick();
@@ -145,6 +150,47 @@ export default function GamePage() {
       await GameApis.loggameerror({ id: gameid });
     }
   }, [widthHeight, gameid]);
+  useEffect(() => {
+    if (id) {
+      checktoken();
+    }
+    async function checktoken() {
+      let res = await FreeGameApis.usertoken({
+        playertoken: id,
+      });
+      if (res && res.data.success) {
+        setshowgame(true);
+      } else {
+        alert("Id not valid");
+      }
+    }
+  }, [id]);
+  async function startgame() {
+    if (!name) {
+      alert("Name is required");
+      return;
+    }
+    if (!email) {
+      alert("Email is required");
+    }
+    let res = await FreeGameApis.presign({
+      playernickname: nickname,
+      playername: name,
+      playeremail: email,
+      number: phone,
+    });
+    if (res) {
+      if (res.data.success) {
+        router.push({
+          pathname: "/gamepage/" + gameid,
+          query: { id: res.data.data.token },
+        });
+      }
+    } else {
+      alert("error connecting server");
+    }
+  }
+
   return (
     <div className={styles.gamePage}>
       <Header
@@ -178,14 +224,46 @@ export default function GamePage() {
           <div className={styles.gamedata}>
             <div className={styles.left}>
               <p className={styles.heading}>We need a few more details</p>
-              <input type="text" className={styles.input} placeholder="Name" />
-              <input type="text" className={styles.input} placeholder="Email" />
-              <input type="text" className={styles.input} placeholder="Phone" />
-              <div
-                className={styles.startbutton}
-                onClick={() => setshowgame(true)}
-              >
-                Start Playing
+              <input
+                type="text"
+                className={styles.input}
+                value={name}
+                onChange={(e) => setname(e.target.value)}
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                className={styles.input}
+                value={nickname}
+                onChange={(e) => setnickname(e.target.value)}
+                placeholder="Nickname"
+              />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                className={styles.input}
+                placeholder="Email"
+              />
+              <input
+                value={phone}
+                type="text"
+                onChange={(e) => setphone(e.target.value)}
+                className={styles.input}
+                placeholder="Phone (optional)"
+              />
+              <div className={styles.buttons}>
+                <div className={styles.startbutton} onClick={startgame}>
+                  Start Playing
+                </div>
+                {!gamesWithAuth.includes(gameid) && (
+                  <div
+                    className={styles.skipbutton}
+                    onClick={() => setshowgame(true)}
+                  >
+                    Skip
+                  </div>
+                )}
               </div>
             </div>
             <div className={styles.right}>

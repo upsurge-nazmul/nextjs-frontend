@@ -27,7 +27,7 @@ export default function WaitList({ res }) {
         <div className={styles.line}></div>
 
         <p className={styles.heading2}>
-          Thank you, you have been added to our wait list.
+          Thank you, you have been added to our waiting list.
         </p>
 
         <p className={styles.subheading}>
