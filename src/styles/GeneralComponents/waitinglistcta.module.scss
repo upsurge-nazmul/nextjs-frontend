@@ -1,0 +1,139 @@
+.waitinglist {
+  width: 100%;
+  height: 96px;
+  background: linear-gradient(270.33deg, #0047ff 4.32%, #00b2ff 100.13%);
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  margin-bottom: 30px;
+  .left {
+    flex: 1;
+    position: relative;
+    img {
+      position: absolute;
+      right: 0;
+    }
+  }
+  .midflex {
+    flex: 1;
+    min-width: fit-content;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 4%;
+  }
+  .right {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    .background {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+    }
+    .text {
+      color: white;
+      font-weight: 400;
+      font-size: 22px;
+      padding-left: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: absolute;
+      z-index: 4;
+      p {
+        display: flex;
+        justify-content: left;
+        width: 100%;
+      }
+      span {
+        font-weight: 700;
+        display: flex;
+        min-width: fit-content;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .waitinglist {
+    width: 100%;
+    height: max-content;
+    background: linear-gradient(270.33deg, #0047ff 4.32%, #00b2ff 100.13%);
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    .left {
+      flex: unset;
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+      img {
+        position: absolute;
+        object-fit: cover;
+        right: 0;
+      }
+    }
+    .midflex {
+      flex: unset;
+      min-width: unset;
+      width: 100%;
+      font-size: 12px;
+      height: 60px;
+      color: rgba(255, 255, 255, 1);
+      font-weight: 400;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 4%;
+    }
+    .right {
+      flex: unset;
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+      .background {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+      }
+      .text {
+        color: white;
+        font-weight: 400;
+        font-size: 12px;
+        width: 100%;
+        padding-right: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: absolute;
+        z-index: 4;
+        p {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          text-align: center;
+        }
+        span {
+          font-weight: 700;
+          display: flex;
+          min-width: fit-content;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}

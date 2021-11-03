@@ -192,17 +192,20 @@
 }
 @media only screen and (min-width: 860px) and (max-height: 900px) {
   .whoSection {
+    padding: 5% 7%;
     .heading {
+      margin: 0;
       font-size: 40px;
       padding-right: 0px;
       color: white;
     }
     .container {
+      margin-top: 40px;
       .left {
-        padding-top: 8%;
-
+        margin: 0;
         p {
           font-size: 18px;
+          line-height: 26px;
         }
       }
       .right {

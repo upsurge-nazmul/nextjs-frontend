@@ -11,6 +11,7 @@ import Footer from "../../components/Home/Footer";
 import BigCalcInput from "../../components/Calculators/BigCalcInput";
 import BigCalcDropdown from "../../components/Calculators/BigCalcDropdown";
 import RelativeSection from "../../components/Calculators/RelativeSection";
+import WaitingListCta from "../../components/WaitingListCta";
 function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
@@ -151,38 +152,7 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <div className={styles.waitinglist}>
-          <div className={styles.left}>
-            <img
-              src="https://i.ibb.co/rstCXKx/rupixen-com-5lw6-CLBZl-Cg-unsplash.png"
-              alt=""
-            />
-          </div>
-
-          <div className={styles.midflex}>
-            <p>Want your kids to be financially independent?</p>
-            <p>Join the Upsurge platform today.</p>
-          </div>
-          <div className={styles.right}>
-            <img
-              className={styles.background}
-              src="https://i.ibb.co/94m1jJg/unsplash-ROQz-KIAd-Y78.png"
-              alt=""
-            ></img>
-            <div className={styles.text}>
-              <p>
-                <span
-                  style={{ cursor: "pointer" }}
-                  onClick={() => router.push("/")}
-                >
-                  Click here
-                </span>{" "}
-                to join the
-              </p>
-              <p>Upsurge waiting list.</p>
-            </div>
-          </div>
-        </div>
+        <WaitingListCta />
         <div className={styles.headingSection}>
           <h1 className={styles.mainheading}>{heading} Calculator</h1>
           <h2 className={styles.heading}>How it works</h2>

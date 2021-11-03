@@ -14,7 +14,8 @@ function CategoryBar({ selectedCat, sortPosts }) {
   const [categories, setcategories] = useState(allcategories.slice(0, 5));
   const [showfullcategories, setshowfullcategories] = useState(false);
   const router = useRouter();
-  const category = router.query.category || "";
+  const category = router.query.category || selectedCat || "";
+  console.log(selectedCat);
   function onClickMore() {
     setshowfullcategories(!showfullcategories);
     if (showfullcategories) {

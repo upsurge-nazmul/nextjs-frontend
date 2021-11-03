@@ -29,6 +29,9 @@
     z-index: -1;
     animation: moveit 5s ease alternate infinite;
   }
+  .ctawrapper {
+    padding: 0 14vw;
+  }
   .contentWrapper {
     padding-left: 14vw;
     padding-right: 14vw;
@@ -204,6 +207,9 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    .ctawrapper {
+      padding: 0 7vw;
+    }
     .contentWrapper {
       padding: 0 7vw;
       margin-top: 2vh;
@@ -361,6 +367,9 @@
   .blogPage {
     display: flex;
     flex-direction: column;
+    .ctawrapper {
+      padding: 0 20px;
+    }
     .contentWrapper {
       padding-left: 20px;
       padding-right: 20px;

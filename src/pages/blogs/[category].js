@@ -12,6 +12,8 @@ import draftToHtml from "draftjs-to-html";
 import ArrowUp from "../../components/SVGcomponents/ArrowUp";
 import { useRouter } from "next/dist/client/router";
 import Footer from "../../components/Home/Footer";
+import JoinUs from "../../components/Home/JoinUs";
+import WaitingListCta from "../../components/WaitingListCta";
 
 function BlogPage({ blogs, totalblogs, porppagination }) {
   const router = useRouter();
@@ -115,6 +117,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
+        <WaitingListCta />
+
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
 
         <CategoryBar selectedCat={selectedCat} sortPosts={sortPosts} />
@@ -187,6 +191,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
           <div className={styles.loadmorebutton}>No blogs found</div>
         )}
       </div>
+      <JoinUs />
+
       <Footer />
     </div>
   );

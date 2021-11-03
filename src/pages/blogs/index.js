@@ -14,6 +14,8 @@ import { useRouter } from "next/dist/client/router";
 import Footer from "../../components/Home/Footer";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import JoinUs from "../../components/Home/JoinUs";
+import WaitingListCta from "../../components/WaitingListCta";
 
 function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const router = useRouter();
@@ -123,6 +125,8 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
+        <WaitingListCta />
+
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
 
         <CategoryBar selectedCat={selectedCat} sortPosts={sortPosts} />
@@ -206,6 +210,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
           <div className={styles.loadmorebutton}>No blogs found</div>
         )} */}
       </div>
+      <JoinUs />
       <Footer />
     </div>
   );

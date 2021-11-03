@@ -9,8 +9,10 @@ import xss from "xss";
 import Footer from "../../components/Home/Footer";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
-import BlogCard from "../../components/Blog/BlogCard";
+import CategoryBar from "../../components/Blog/CategoryBar";
 import MoreCard from "../../components/Blog/MoreCard";
+import WaitingListCta from "../../components/WaitingListCta";
+import JoinUs from "../../components/Home/JoinUs";
 
 export default function BlogPage({ blogdata, related }) {
   const router = useRouter();
@@ -94,6 +96,11 @@ export default function BlogPage({ blogdata, related }) {
       />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
+      <div className={styles.ctawrapper}>
+        <WaitingListCta />
+        <CategoryBar selectedCat={blogdata.categories} />
+      </div>
+
       <div className={styles.contentWrapper}>
         <div className={styles.post}>
           <div className={styles.textcontent}>
@@ -187,6 +194,7 @@ export default function BlogPage({ blogdata, related }) {
           })}
         </div>
       </div>
+      <JoinUs />
       <Footer />
     </div>
   );
@@ -194,8 +202,11 @@ export default function BlogPage({ blogdata, related }) {
 export async function getServerSideProps({ params, req }) {
   let blogdata = await getBlog({ id: params.id });
   let related = [];
-  console.log(blogdata.data);
-  let res = await BlogApis.getblogs({ page: 1, category: blogdata.category });
+  let res = await BlogApis.getblogs({
+    page: 1,
+    category: blogdata.category,
+    limit: 3,
+  });
   if (res && res.data && res.data.data) {
     related = res.data.data.rows;
   }
