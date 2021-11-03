@@ -7,6 +7,82 @@
   position: relative;
   display: flex;
   margin-bottom: 30px;
+  .popup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .background {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.308);
+      height: 100%;
+    }
+    .main {
+      z-index: 101;
+      padding: 40px;
+      border-radius: 12px;
+      background-color: white;
+      .error {
+        color: rgb(255, 91, 91);
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 16px;
+      }
+      .heading {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      input {
+        height: 45px;
+        padding: 0 20px;
+        font-size: 18px;
+        border-radius: 8px;
+        border: none;
+        background-color: rgb(245, 245, 245);
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        .join,
+        .skip {
+          width: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          font-size: 16px;
+          color: white;
+          height: 40px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        .join {
+          background-color: rgba(65, 102, 235, 1);
+          &:hover {
+            background-color: hsl(227, 57%, 50%);
+          }
+        }
+        .skip {
+          background-color: #a6a6a6;
+          &:hover {
+            background-color: #8d8c8c;
+          }
+        }
+      }
+    }
+  }
   .left {
     flex: 1;
     position: relative;
@@ -73,6 +149,32 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    .popup {
+      .main {
+        padding: 20px;
+        width: 80%;
+        .error {
+          margin-bottom: 15px;
+          font-size: 14px;
+        }
+        .heading {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+        input {
+          font-size: 14px;
+        }
+        .buttons {
+          margin-top: 20px;
+          .join,
+          .skip {
+            font-size: 14px;
+
+            height: 40px;
+          }
+        }
+      }
+    }
     .left {
       flex: unset;
       height: 60px;
