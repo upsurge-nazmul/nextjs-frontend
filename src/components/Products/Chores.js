@@ -38,7 +38,7 @@ export default function Chores({ id, email, setEmail, check, error }) {
           <Image
             objectFit="contain"
             layout="fill"
-            src="/images/mobilechore.png"
+            src="https://i.ibb.co/RCDhkjY/mobilechore.png"
             alt=""
           />
         </div>

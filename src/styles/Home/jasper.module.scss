@@ -53,19 +53,24 @@
 
 @media only screen and (max-width: 1500px) {
   .jasper {
-    height: 70vh;
+    height: 50vh;
+    min-height: 480px;
     .leftpart {
       margin-top: 0;
-      margin-left: 5%;
+      margin-left: 10%;
       .text {
         position: absolute;
         top: 0;
         left: 0;
         z-index: 2;
-        padding: 8%;
+        padding: 6%;
+        max-width: 700px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        .bottomarrow {
+          right: -8%;
+        }
         .heading {
           font-size: 24px;
           font-weight: 700;
@@ -84,7 +89,7 @@
       width: 250px;
       position: absolute;
       bottom: -120px;
-      right: 5%;
+      right: 10%;
     }
   }
 }
@@ -141,9 +146,10 @@
 }
 @media only screen and (max-width: 1200px) {
   .jasper {
-    height: 60vh;
+    height: 40vh;
+    min-height: 420px;
     .leftpart {
-      margin-left: 5%;
+      margin-left: 7%;
       min-width: 550px;
       .text {
         position: absolute;
@@ -181,13 +187,12 @@
       width: 240px;
       position: absolute;
       bottom: -120px;
-      right: 10%;
+      right: 7%;
     }
   }
 }
 @media only screen and (max-width: 1000px) {
   .jasper {
-    height: 55vh;
     .leftpart {
       margin-left: 5%;
       min-width: 450px;
@@ -233,19 +238,23 @@
 }
 @media only screen and (max-width: 860px) {
   .jasper {
-    height: 55vh;
-    min-height: 500px;
+    height: 60vh;
+    min-height: 580px;
+    padding: 60px 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .leftpart {
-      margin-top: 10%;
-      margin-left: 10%;
+      margin: 0;
       min-width: 300px;
-
+      width: 100%;
       .text {
         position: relative;
         top: 0;
         left: 0;
+        max-width: unset;
         z-index: 2;
-        padding: 10% 10% 10% 8%;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -254,7 +263,7 @@
         .bottomarrow {
           display: unset;
           position: absolute;
-          bottom: -20%;
+          bottom: -55px;
           left: 40%;
           z-index: 1;
           width: 40px;
@@ -268,6 +277,7 @@
         }
         .subheading {
           font-size: 12px;
+          line-height: 20px;
           font-weight: 400;
           margin-top: 2px;
         }
@@ -277,10 +287,12 @@
       }
     }
     .jasperimg {
-      width: 120px;
+      width: 170px;
       position: absolute;
-      bottom: -70px;
-      right: 15%;
+      bottom: -80px;
+      right: 0;
+      left: 50%;
+      transform: translateX(-40%);
     }
   }
 }
