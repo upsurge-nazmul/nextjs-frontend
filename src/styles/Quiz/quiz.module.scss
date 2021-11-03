@@ -955,6 +955,7 @@
         align-items: center;
         height: max-content;
         border-radius: 12px;
+        min-height: unset;
         margin-top: 20vh;
         padding: 40px 10vw;
         .jasper {
@@ -1060,6 +1061,7 @@
         height: max-content;
         border-radius: 12px;
         margin-top: 20vh;
+        min-height: unset;
         padding: 30px 5vw;
         .jasper {
           position: absolute;
