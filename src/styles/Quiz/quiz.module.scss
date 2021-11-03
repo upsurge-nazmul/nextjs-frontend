@@ -376,7 +376,7 @@
       display: flex;
       align-items: center;
       height: 50vh;
-      min-height: max-content;
+      min-height: 680px;
       margin-top: 20vh;
       border-radius: 8px;
       justify-content: center;
@@ -642,7 +642,7 @@
         height: max-content;
         padding: 40px 0;
         min-height: max-content;
-        margin-top: 20vh;
+        margin-top: 200px;
         border-radius: 8px;
         justify-content: center;
         flex-direction: column;
@@ -650,7 +650,7 @@
         .jasper {
           position: absolute;
           z-index: -1;
-          top: -20vh;
+          top: -180px;
           width: 150px;
         }
         .heading {
