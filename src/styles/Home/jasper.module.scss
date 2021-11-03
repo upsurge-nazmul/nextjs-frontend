@@ -296,9 +296,69 @@
     }
   }
 }
+@media only screen and (max-width: 550px) {
+  .jasper {
+    height: 60vh;
+    min-height: 650px;
+    padding: 60px 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .leftpart {
+      margin: 0;
+      min-width: 300px;
+      width: 100%;
+      .text {
+        position: relative;
+        top: 0;
+        left: 0;
+        max-width: unset;
+        z-index: 2;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0px 4px 20px rgba(0, 71, 255, 0.14);
+        border-radius: 20px;
+        .bottomarrow {
+          display: unset;
+          position: absolute;
+          bottom: -55px;
+          left: 40%;
+          z-index: 1;
+          width: 40px;
+          transform: scaleX(1);
+        }
+
+        .heading {
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 5px;
+        }
+        .subheading {
+          font-size: 12px;
+          line-height: 20px;
+          font-weight: 400;
+          margin-top: 2px;
+        }
+      }
+      .bubble {
+        display: nope;
+      }
+    }
+    .jasperimg {
+      width: 150px;
+      position: absolute;
+      bottom: -80px;
+      right: 0;
+      left: 50%;
+      transform: translateX(-20%);
+    }
+  }
+}
 @media only screen and (max-width: 350px) {
   .jasper {
-    height: 45vh;
+    height: 65vh;
     display: flex;
     justify-content: center;
     .leftpart {

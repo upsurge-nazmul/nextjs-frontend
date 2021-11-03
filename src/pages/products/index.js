@@ -10,6 +10,7 @@ import Chores from "../../components/Products/Chores";
 import LiveClasses from "../../components/Products/LiveClasses";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
+import JoinUs from "../../components/Home/JoinUs";
 export default function Products() {
   const router = useRouter();
   const type = router.query.type;
@@ -120,6 +121,8 @@ export default function Products() {
         id="choressection"
       />
       <LiveClasses id="classessection" />
+
+      <JoinUs />
       <Footer />
     </div>
   );
