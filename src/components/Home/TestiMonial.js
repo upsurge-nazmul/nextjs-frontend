@@ -8,7 +8,7 @@ export default function TestiMonial() {
       quote:
         "I am so glad someone is trying to teach our kids money management. Being a mother of 2 daughters, I want them to be much more financially independent and savvy than I am. Kudos upsurge for taking up this cause!",
       name: "Divya",
-      img: "https://i.ibb.co/9vdwJyX/Untitled-design-65.png",
+      img: "https://i.ibb.co/V3wybQw/Untitled-design-73.png",
     },
     {
       quote:
@@ -32,13 +32,13 @@ export default function TestiMonial() {
       quote:
         "Within a month of starting upsurge, my son has become so involved with household budgets and money in general! He discusses business news with us, and wants to become a electric vehicle entrepreneur in the long term (just like his hero Mr. Musk)",
       name: "Pradeep",
-      img: "https://i.ibb.co/NrKD6QS/Untitled-design-72.png",
+      img: "https://i.ibb.co/1d8H4Fx/Untitled-design-74.png",
     },
     {
       quote:
         "The Knowledge Quests are designed really well - easy to understand concepts, real examples and fun activities make sure that my daughter is learning and having fun.",
       name: "Mayur",
-      img: "https://i.ibb.co/dmGDbz9/Untitled-design-71.png",
+      img: "https://i.ibb.co/jrDjgyK/Untitled-design-75.png",
     },
   ];
   const [currenttestimonial, setcurrenttestimonial] = useState(0);

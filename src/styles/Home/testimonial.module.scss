@@ -76,6 +76,87 @@
   }
 }
 
+@media only screen and (max-height: 900px) and (min-width: 900px) {
+  .testimonial {
+    height: max-content;
+    width: 100vw;
+    display: flex;
+    padding: 0 10vw;
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: flex-end;
+      position: relative;
+      padding: 20px 0 0 20px;
+      margin-top: 4%;
+      .quotesvg {
+        width: 70px;
+        position: absolute;
+        z-index: -1;
+        opacity: 0.3;
+        left: -2.5%;
+        top: -10px;
+      }
+      .quote {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 400;
+        padding-right: 40px;
+      }
+      .name {
+        font-size: 20px;
+        line-height: 28px;
+        color: #2ec5ce;
+        font-weight: 700;
+        width: 100%;
+        margin-top: 48px;
+      }
+      .des {
+        font-size: 18px;
+        line-height: 26px;
+        color: #18191f;
+        font-weight: 400;
+        width: 100%;
+        margin-top: 5px;
+      }
+      .navbar {
+        display: flex;
+        margin-top: 20vh;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-bottom: 40px;
+        .ball {
+          width: 10px;
+          height: 10px;
+          background-color: rgba(217, 219, 225, 1);
+          border-radius: 10px;
+          transition: all 0.3s ease;
+          margin: 0 10px;
+        }
+        .active {
+          height: 10px;
+          border-radius: 10px;
+          background-color: rgba(46, 197, 206, 1);
+        }
+      }
+    }
+    .right {
+      width: fit-content;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      .image {
+        position: relative;
+        width: 25vw;
+        height: 25vw;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .testimonial {
     height: max-content;
