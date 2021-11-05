@@ -194,19 +194,19 @@ function Footer() {
             <p className={styles.heading}>Resources</p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/gamepage/ShoppingBudget")}
+              onClick={() => router.push("/games/ShoppingBudget")}
             >
               Shopping Budget
             </p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/gamepage/BalanceBuilder")}
+              onClick={() => router.push("/games/BalanceBuilder")}
             >
               Balance Builder
             </p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/gamepage/HighAndLow")}
+              onClick={() => router.push("/games/HighAndLow")}
             >
               High And Low
             </p>

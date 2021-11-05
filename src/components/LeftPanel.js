@@ -65,7 +65,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               current={current}
               setcurrent={setcurrent}
               tabs={[]}
-              pushTo="/gamepage"
+              pushTo="/games"
             />
             <HeaderTabSection
               mobile={true}

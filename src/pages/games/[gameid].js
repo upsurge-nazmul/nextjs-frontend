@@ -156,9 +156,10 @@ export default function GamePage() {
     }
     async function checktoken() {
       let res = await FreeGameApis.usertoken({
-        playertoken: id,
+        game_token: id,
       });
       if (res && res.data.success) {
+        console.log("success");
         setshowgame(true);
       } else {
         alert("Id not valid");
@@ -182,8 +183,8 @@ export default function GamePage() {
     if (res) {
       if (res.data.success) {
         router.push({
-          pathname: "/gamepage/" + gameid,
-          query: { id: res.data.data.token },
+          pathname: "/games/" + gameid,
+          query: { id: res.data.data },
         });
       }
     } else {
