@@ -94,18 +94,19 @@
   .midflex {
     flex: 1;
     min-width: fit-content;
-    font-size: 22px;
     color: rgba(255, 255, 255, 1);
     font-weight: 400;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 4%;
+    font-size: clamp(16px, 1.2vw, 22px);
   }
   .right {
     flex: 1;
     overflow: hidden;
     position: relative;
+    min-width: 200px;
     .background {
       z-index: 1;
       position: absolute;
@@ -114,7 +115,7 @@
     .text {
       color: white;
       font-weight: 400;
-      font-size: 22px;
+      font-size: clamp(14px, 1.2vw, 22px);
       padding-left: 20%;
       display: flex;
       flex-direction: column;
@@ -126,6 +127,7 @@
       p {
         display: flex;
         justify-content: left;
+        align-items: center;
         width: 100%;
       }
       span {

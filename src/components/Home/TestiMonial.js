@@ -59,39 +59,44 @@ export default function TestiMonial() {
 
   return (
     <div className={styles.testimonial}>
-      <div className={styles.left}>
-        <QuoteSvg className={styles.quotesvg} />
+      <p className={styles.heading}>Testimonials</p>
+      <div className={styles.wrapper}>
+        <div className={styles.left}>
+          <QuoteSvg className={styles.quotesvg} />
 
-        <p
-          className={styles.quote}
-          onMouseOver={() => setmouseon(true)}
-          onMouseLeave={() => setmouseon(false)}
-        >
-          {testimonials[currenttestimonial].quote}
-        </p>
-        <p className={styles.name}>- {testimonials[currenttestimonial].name}</p>
-        <p className={styles.des}>{testimonials[currenttestimonial].des}</p>
-        <div className={styles.navbar}>
-          {testimonials.map((item, index) => {
-            return (
-              <div
-                className={`${styles.ball} ${
-                  index === currenttestimonial ? styles.active : null
-                }`}
-                key={"testimonial" + index}
-              />
-            );
-          })}
+          <p
+            className={styles.quote}
+            onMouseOver={() => setmouseon(true)}
+            onMouseLeave={() => setmouseon(false)}
+          >
+            {testimonials[currenttestimonial].quote}
+          </p>
+          <p className={styles.name}>
+            - {testimonials[currenttestimonial].name}
+          </p>
+          <p className={styles.des}>{testimonials[currenttestimonial].des}</p>
+          <div className={styles.navbar}>
+            {testimonials.map((item, index) => {
+              return (
+                <div
+                  className={`${styles.ball} ${
+                    index === currenttestimonial ? styles.active : null
+                  }`}
+                  key={"testimonial" + index}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.image}>
-          <Image
-            src={testimonials[currenttestimonial].img}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+        <div className={styles.right}>
+          <div className={styles.image}>
+            <Image
+              src={testimonials[currenttestimonial].img}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
       </div>
     </div>
