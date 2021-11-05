@@ -5,6 +5,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameApis from "../../actions/apis/GameApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../styles/GamePage/gamepage.module.scss";
@@ -280,6 +281,7 @@ export default function GamePage() {
           )
         )}
       </div>
+      <JoinUs />
 
       <Footer />
     </div>

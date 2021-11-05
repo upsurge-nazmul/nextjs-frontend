@@ -2,20 +2,22 @@
   width: 100vw;
   height: 60vh;
   position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 0 7vw;
   .leftpart {
-    width: 50%;
-    margin-left: 12%;
-    margin-top: 4%;
+    width: 800px;
+    max-width: 800px;
     position: relative;
-    min-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 40px;
     .text {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
       padding: 6% 8%;
       background-color: white;
       border-radius: 42px;
+      max-width: 850px;
       box-shadow: 0px 4px 20px rgba(0, 71, 255, 0.14);
       display: flex;
       flex-direction: column;
@@ -24,8 +26,8 @@
         display: block;
         width: 50px;
         position: absolute;
-        bottom: 5%;
-        right: -6.3%;
+        bottom: 18vh;
+        right: -60px;
         z-index: 1;
         transform: rotate(270deg);
       }
@@ -43,41 +45,59 @@
     .bubble {
     }
   }
-  .jasperimg {
+  .rightpart {
     width: 300px;
-    position: absolute;
-    bottom: -120px;
-    right: 16%;
+    position: relative;
+    .jasperimg {
+      width: 100%;
+      max-width: 250px;
+      position: absolute;
+      bottom: -120px;
+      right: 0;
+    }
   }
 }
-
-@media only screen and (max-width: 1500px) {
+@media only screen and (min-width: 860px) and (max-height: 900px) {
   .jasper {
-    height: 50vh;
-    min-height: 480px;
+    width: 100vw;
+    height: 65vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0 7vw;
     .leftpart {
-      margin-top: 0;
-      margin-left: 10%;
+      width: 700px;
+      max-width: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 40px;
       .text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        padding: 6%;
-        max-width: 700px;
+        padding: 5% 7%;
+        background-color: white;
+        border-radius: 42px;
+        max-width: 850px;
+        box-shadow: 0px 4px 20px rgba(0, 71, 255, 0.14);
         display: flex;
         flex-direction: column;
         justify-content: center;
         .bottomarrow {
-          right: -8%;
+          display: block;
+          width: 50px;
+          position: absolute;
+          bottom: 18vh;
+          right: -60px;
+          z-index: 1;
+          transform: rotate(270deg);
         }
         .heading {
-          font-size: 24px;
+          font-size: 22px;
           font-weight: 700;
-          margin-bottom: 20px;
+          margin-bottom: 0px;
         }
         .subheading {
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 400;
           margin-top: 10px;
         }
@@ -85,165 +105,69 @@
       .bubble {
       }
     }
-    .jasperimg {
-      width: 250px;
-      position: absolute;
-      bottom: -120px;
-      right: 10%;
+    .rightpart {
+      width: 300px;
+      position: relative;
+      .jasperimg {
+        width: 100%;
+        max-width: 220px;
+        position: absolute;
+        bottom: -120px;
+        right: 0;
+      }
     }
   }
 }
 
-@media only screen and (max-height: 900px) and (min-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .jasper {
-    height: 65vh;
     .leftpart {
-      width: 50%;
-      margin-left: 7%;
-      padding-left: 0;
-      margin-top: 2% !important;
-      position: relative;
       .text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        padding: 60px 50px;
-        justify-content: center;
         .bottomarrow {
           display: block;
           width: 50px;
           position: absolute;
-          bottom: 5%;
+          bottom: 16vh;
+          right: -60px;
           z-index: 1;
-          right: -7%;
           transform: rotate(270deg);
         }
         .heading {
-          font-size: 20px;
+          font-size: 22px;
           font-weight: 700;
-          margin-bottom: 20px;
+          margin-bottom: 0px;
         }
         .subheading {
           font-size: 16px;
           font-weight: 400;
-          margin-top: 0px;
+          margin-top: 10px;
         }
       }
-
       .bubble {
       }
     }
-    .jasperimg {
-      width: 220px;
-      position: absolute;
-      bottom: -120px;
-      right: 10%;
-    }
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .jasper {
-    height: 40vh;
-    min-height: 420px;
-    .leftpart {
-      margin-left: 7%;
-      min-width: 550px;
-      .text {
+    .rightpart {
+      width: 500px;
+      position: relative;
+      .jasperimg {
+        width: 300px;
         position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        padding: 10% 8%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .bottomarrow {
-          display: block;
-          width: 50px;
-          position: absolute;
-          bottom: 5%;
-          right: -10%;
-          z-index: 1;
-          transform: rotate(270deg);
-        }
-        .heading {
-          font-size: 18px;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-        .subheading {
-          font-size: 14px;
-          font-weight: 400;
-          margin-top: 5px;
-        }
+        bottom: -120px;
+        right: 16%;
       }
-      .bubble {
-      }
-    }
-    .jasperimg {
-      width: 240px;
-      position: absolute;
-      bottom: -120px;
-      right: 7%;
-    }
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .jasper {
-    .leftpart {
-      margin-left: 5%;
-      min-width: 450px;
-      .text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        padding: 10% 8%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .bottomarrow {
-          display: block;
-          width: 50px;
-          position: absolute;
-          bottom: 5%;
-          right: -12%;
-          z-index: 1;
-          transform: rotate(270deg);
-        }
-        .heading {
-          font-size: 18px;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-        .subheading {
-          font-size: 14px;
-          font-weight: 400;
-          margin-top: 5px;
-        }
-      }
-      .bubble {
-      }
-    }
-    .jasperimg {
-      width: 220px;
-      position: absolute;
-      bottom: -120px;
-      right: 10%;
     }
   }
 }
 @media only screen and (max-width: 860px) {
   .jasper {
-    height: 60vh;
-    min-height: 580px;
+    height: max-content;
+    min-height: max-content;
+    max-height: unset;
     padding: 60px 7vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     .leftpart {
       margin: 0;
       min-width: 300px;
@@ -286,24 +210,31 @@
         display: nope;
       }
     }
-    .jasperimg {
-      width: 170px;
-      position: absolute;
-      bottom: -80px;
-      right: 0;
-      left: 50%;
-      transform: translateX(-40%);
+    .rightpart {
+      width: 100%;
+      height: 50%;
+      min-height: 190px;
+      .jasperimg {
+        width: 170px;
+        position: absolute;
+        bottom: -170px;
+        right: 10vw;
+        left: unset;
+        transform: translateX(0);
+      }
     }
   }
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 500px) {
   .jasper {
-    height: 60vh;
-    min-height: 650px;
+    height: max-content;
+    min-height: max-content;
+    max-height: unset;
     padding: 60px 7vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     .leftpart {
       margin: 0;
       min-width: 300px;
@@ -346,57 +277,18 @@
         display: nope;
       }
     }
-    .jasperimg {
-      width: 150px;
-      position: absolute;
-      bottom: -80px;
-      right: 0;
-      left: 50%;
-      transform: translateX(-20%);
-    }
-  }
-}
-@media only screen and (max-width: 350px) {
-  .jasper {
-    height: 65vh;
-    display: flex;
-    justify-content: center;
-    .leftpart {
-      margin-top: 5%;
-      margin-left: 0%;
-      min-width: unset;
-      width: 90%;
-      .text {
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        padding: 10% 10% 10% 8%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-shadow: 0px 4px 20px rgba(0, 71, 255, 0.14);
-        border-radius: 20px;
-
-        .heading {
-          font-size: 16px;
-          font-weight: 700;
-          margin-bottom: 5px;
-        }
-        .subheading {
-          font-size: 12px;
-          font-weight: 400;
-          margin-top: 2px;
-        }
+    .rightpart {
+      width: 100%;
+      height: 50%;
+      min-height: 160px;
+      .jasperimg {
+        width: 140px;
+        position: absolute;
+        bottom: -140px;
+        right: 10vw;
+        left: unset;
+        transform: translateX(0);
       }
-      .bubble {
-        display: nope;
-      }
-    }
-    .jasperimg {
-      width: 120px;
-      position: absolute;
-      bottom: -70px;
     }
   }
 }

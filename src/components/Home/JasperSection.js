@@ -24,7 +24,9 @@ export default function JasperSection() {
           </p>
         </div>
       </div>
-      <Jasper className={styles.jasperimg} />
+      <div className={styles.rightpart}>
+        <Jasper className={styles.jasperimg} />
+      </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import JoinUs from "../../components/Home/JoinUs";
 
 function Help() {
   const router = useRouter();
@@ -111,6 +112,8 @@ function Help() {
           );
         })}
       </div>
+      <JoinUs />
+
       <Footer />
     </div>
   );
