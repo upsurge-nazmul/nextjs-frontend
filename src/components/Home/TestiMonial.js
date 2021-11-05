@@ -20,7 +20,7 @@ export default function TestiMonial() {
       quote:
         "When I heard that there’s someone teaching personal finance to children, I got in touch with upsurge to get access. While they were under testing, they gave us access and my son has been loving the courses and the games. In fact, some of the games and activities that are meant for the family to play together are currently a favorite in our home.",
       name: "Sonam",
-      img: "https://i.ibb.co/3Fs2HBY/Untitled-design-68.png",
+      img: "https://i.ibb.co/VxJpGXj/Untitled-design-76.png",
     },
     {
       quote:
