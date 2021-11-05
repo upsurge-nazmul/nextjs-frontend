@@ -74,21 +74,6 @@ function Quiz({ data }) {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  useEffect(() => {
-    if (!currentquiz) return;
-    let arr = [
-      {
-        label: "# of Votes",
-        data: [correctAnswers, currentquiz.questions.length - correctAnswers],
-        backgroundColor: ["rgba(23, 209, 188, 1)", "rgba(255, 98, 99, 1)"],
-        borderWidth: 1,
-      },
-    ];
-    setChartData((prev) => ({
-      ...prev,
-      datasets: arr,
-    }));
-  }, [correctAnswers, currentquestionindex]);
 
   useEffect(() => {
     if (showQuiz && started) {

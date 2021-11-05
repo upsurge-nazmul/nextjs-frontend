@@ -14,11 +14,6 @@ function QuizComponent({
   setcurrentquestionindex,
   totalQuestions,
   setquizfinished,
-  setcorrectAnswers,
-  setshowQuiz,
-  widthHeight,
-  setanswersheet,
-  quizfinished,
   question,
   data,
   setscore,
@@ -28,8 +23,6 @@ function QuizComponent({
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
-  const [result, setresult] = useState("");
-  const [showResult, setShowResult] = useState(false);
   const [timeoutf, settimeoutf] = useState(null);
   const [nexttime, setnexttime] = useState(0);
   const [nextinterval, setnextinterval] = useState(null);
@@ -61,7 +54,7 @@ function QuizComponent({
   }, [nexttime]);
 
   async function fetchnextquestion(answer) {
-    setcurrentcolor((currentcolor + 1) % colorarray.length);
+    if (loading) return;
     setloading(true);
     let res = await QuizApis.nextquestion({
       answer,
@@ -74,6 +67,7 @@ function QuizComponent({
         setscore(res.data.data.score);
       }
       setcurrentquestion(res.data.data.next_question);
+      setcurrentcolor((currentcolor + 1) % colorarray.length);
       setcurrentquestionindex((prev) => prev + 1);
     }
     setloading(false);
