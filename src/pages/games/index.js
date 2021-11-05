@@ -6,6 +6,7 @@ import styles from "../../styles/GamePage/gamelist.module.scss";
 import Footer from "../../components/Home/Footer";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import JoinUs from "../../components/Home/JoinUs";
 
 export default function GamePage() {
   const router = useRouter();
@@ -107,6 +108,7 @@ export default function GamePage() {
           })}
         </div>
       </div>
+      <JoinUs />
       <Footer />
     </div>
   );

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "../styles/GeneralComponents/waitinglistcta.module.scss";
 import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
+import Jasper from "./SVGcomponents/Jasper";
 export default function WaitingListCta() {
   const router = useRouter();
   const [show, setshow] = useState(false);
@@ -36,20 +37,24 @@ export default function WaitingListCta() {
             onClick={() => setshow(false)}
           ></div>
           <div className={styles.main}>
-            {error && <p className={styles.error}>{error}</p>}
-            <p className={styles.heading}>Join the Waiting List</p>
-            <input
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-              type="text"
-              placeholder="Enter your email"
-            />
-            <div className={styles.buttons}>
-              <div className={styles.skip} onClick={() => setshow(false)}>
-                Skip
-              </div>
-              <div className={styles.join} onClick={handleSignup}>
-                Join
+            <Jasper className={styles.jasper} />
+
+            <div className={styles.data}>
+              {error && <p className={styles.error}>{error}</p>}
+              <p className={styles.heading}>Join the Waiting List</p>
+              <input
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                type="text"
+                placeholder="Enter your email"
+              />
+              <div className={styles.buttons}>
+                <div className={styles.skip} onClick={() => setshow(false)}>
+                  Skip
+                </div>
+                <div className={styles.join} onClick={handleSignup}>
+                  Join
+                </div>
               </div>
             </div>
           </div>

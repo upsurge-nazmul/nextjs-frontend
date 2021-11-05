@@ -7,7 +7,6 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
-import Jasper from "../../components/SVGcomponents/Jasper";
 import styles from "../../styles/GamePage/gamepage.module.scss";
 
 // streamingAssetsUrl: "StreamingAssets",

@@ -27,9 +27,24 @@
     }
     .main {
       z-index: 101;
-      padding: 40px;
-      border-radius: 12px;
-      background-color: white;
+      position: relative;
+      margin-top: 5%;
+      .data {
+        width: 100%;
+        background-color: white;
+        z-index: 5;
+        border-radius: 12px;
+        padding: 40px;
+        height: 100%;
+      }
+      .jasper {
+        position: absolute;
+        z-index: -1;
+        top: -180px;
+        width: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
       .error {
         color: rgb(255, 91, 91);
         margin-bottom: 20px;
@@ -39,6 +54,7 @@
       .heading {
         font-size: 18px;
         font-weight: 600;
+        z-index: 1;
         text-align: center;
         margin-bottom: 20px;
       }
@@ -153,26 +169,29 @@
     margin-bottom: 30px;
     .popup {
       .main {
-        padding: 20px;
         width: 80%;
-        .error {
-          margin-bottom: 15px;
-          font-size: 14px;
-        }
-        .heading {
-          font-size: 16px;
-          margin-bottom: 15px;
-        }
-        input {
-          font-size: 14px;
-        }
-        .buttons {
-          margin-top: 20px;
-          .join,
-          .skip {
+        .data {
+          padding: 20px;
+          .error {
+            margin-bottom: 15px;
             font-size: 14px;
+          }
+          .heading {
+            font-size: 16px;
+            margin-bottom: 15px;
+          }
+          input {
+            font-size: 14px;
+            width: 100%;
+          }
+          .buttons {
+            margin-top: 20px;
+            .join,
+            .skip {
+              font-size: 14px;
 
-            height: 40px;
+              height: 40px;
+            }
           }
         }
       }
