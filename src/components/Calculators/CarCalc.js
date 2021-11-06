@@ -18,7 +18,7 @@ export default function CarCalc({ seterror }) {
   });
   const [questions, setquestions] = useState([
     {
-      title: "Select he type of car",
+      title: "Select the type of car",
       type: "select",
       code: "type",
       options: ["Sedan", "Sports", "SUV", "Luxury", "Hatchback"],
