@@ -16,7 +16,7 @@ export default function BigCalcDropdown({
       <div className={styles.inputwrapper}>
         <DropDown
           color="black"
-          fontSize="44px"
+          fontSize="30px"
           bold
           value={value}
           setvalue={(e) => setvalue((prev) => ({ ...prev, [code]: e }))}
