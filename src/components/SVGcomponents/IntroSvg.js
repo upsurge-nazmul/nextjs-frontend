@@ -14,8 +14,6 @@ export default function IntroSvg({ className, onClick, clr }) {
             layout="fill"
             objectFit="contain"
             quality="100"
-            placeholder="blur"
-            blurDataURL="https://i.ibb.co/FmynNnH/dashboard.png"
           />
         </div>
       </div>
@@ -26,9 +24,7 @@ export default function IntroSvg({ className, onClick, clr }) {
             src="https://i.ibb.co/R9LxyYJ/phone.png"
             alt=""
             layout="fill"
-            blurDataURL="https://i.ibb.co/R9LxyYJ/phone.png"
             quality="100"
-            placeholder="blur"
             priority
             objectFit="contain"
           />
