@@ -78,7 +78,13 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg;
-      return { props: { isLogged: false, msg } };
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
     } else {
       let kidsdata = await getkidsdata(token);
       let gamesdata = await getgames(token);
@@ -99,7 +105,13 @@ export async function getServerSideProps({ params, req }) {
       };
     }
   } else {
-    return { props: { isLogged: false, msg: "cannot get token" } };
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
   }
 }
 // getallvouchers

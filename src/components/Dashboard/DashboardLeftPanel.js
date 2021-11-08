@@ -105,23 +105,23 @@ function DashboardLeftPanel({ type }) {
           </div>
           <div
             className={`${styles.tab}  ${
-              currenttab === "/courses/home" ||
-              currenttab.indexOf("/courses") !== -1
+              currenttab === "/courses" || currenttab.indexOf("/courses") !== -1
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/courses/home")}
+            onClick={() => router.push("/courses")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Courses</p>
           </div>
           <div
             className={`${styles.tab}  ${
-              currenttab === "/games" || currenttab.indexOf("/games") !== -1
+              currenttab === "/gamepage" ||
+              currenttab.indexOf("/gamepage") !== -1
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/games")}
+            onClick={() => router.push("/gamepage")}
           >
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>

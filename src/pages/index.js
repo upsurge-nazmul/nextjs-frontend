@@ -22,6 +22,7 @@ import Benefits from "../components/Home/Benefits";
 import JasperSection from "../components/Home/JasperSection";
 import PartnerSection from "../components/Home/PartnerSection";
 import TestiMonial from "../components/Home/TestiMonial";
+import Toast from "../components/Toast";
 const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
@@ -29,14 +30,18 @@ function Home({ isLogged, userdata }) {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [authmode, setauthmode] = useState("");
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   const [mailfromhome, setmailfromhome] = useState("");
   const { user } = useContext(MainContext);
-  const history = useRouter();
-
+  const router = useRouter();
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
-      history.push("/dashboard");
+      router.push("/dashboard");
     }
   }, [userdata]);
 
@@ -51,6 +56,24 @@ function Home({ isLogged, userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  useEffect(() => {
+    if (router.query.err) {
+      if (router.query.err === "01") {
+        settoastdata({
+          show: true,
+          type: "error",
+          msg: "Please login first.",
+        });
+      }
+      if (router.query.err === "02") {
+        settoastdata({
+          show: true,
+          type: "error",
+          msg: "Your token has expired. Please login again.",
+        });
+      }
+    }
+  }, [router.query]);
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
       <div
@@ -69,6 +92,7 @@ function Home({ isLogged, userdata }) {
           openLeftPanel={openLeftPanel}
           setOpenLeftPanel={setOpenLeftPanel}
         />
+        <Toast data={toastdata} />
 
         <Intro
           setshowauth={setshowauth}

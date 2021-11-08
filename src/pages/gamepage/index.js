@@ -7,6 +7,7 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Dashboard/gamespage.module.scss";
 import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 function Games() {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -117,3 +118,37 @@ function Games() {
 }
 
 export default Games;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
+}

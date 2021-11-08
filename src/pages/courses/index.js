@@ -61,75 +61,70 @@ function CoursesPage({ liveclassdata }) {
       />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        {courseid === "home" ? (
-          <>
-            <div className={styles.switch}>
-              <p
-                className={`${styles.tabs} ${
-                  state === "inprogress" ? styles.selected : ""
-                }`}
-                onClick={() => {
-                  if (state !== "inprogress") setstate("inprogress");
-                }}
-              >
-                In Progress
-              </p>
-              <p
-                className={`${styles.tabs} ${
-                  state === "completed" ? styles.selected : ""
-                }`}
-                onClick={() => {
-                  if (state !== "completed") setstate("completed");
-                }}
-              >
-                Completed
-              </p>
+        <div className={styles.switch}>
+          <p
+            className={`${styles.tabs} ${
+              state === "inprogress" ? styles.selected : ""
+            }`}
+            onClick={() => {
+              if (state !== "inprogress") setstate("inprogress");
+            }}
+          >
+            In Progress
+          </p>
+          <p
+            className={`${styles.tabs} ${
+              state === "completed" ? styles.selected : ""
+            }`}
+            onClick={() => {
+              if (state !== "completed") setstate("completed");
+            }}
+          >
+            Completed
+          </p>
+        </div>
+        <div className={styles.mainContent}>
+          <div className={styles.flexLeft}>
+            <div className={styles.coursesSection}>
+              {courses.map((data, index) => {
+                return (
+                  <CoursesComponent
+                    key={"courseComponent" + index}
+                    data={{
+                      img_url: data.image,
+                      course_progress: 50,
+                      current_course: data.title,
+                      subheading: data.age,
+                    }}
+                  />
+                );
+              })}
             </div>
-
-            <div className={styles.mainContent}>
-              <div className={styles.flexLeft}>
-                <div className={styles.coursesSection}>
-                  {courses.map((data, index) => {
-                    return (
-                      <CoursesComponent
-                        key={"courseComponent" + index}
-                        data={{
-                          img_url: data.image,
-                          course_progress: 50,
-                          current_course: data.title,
-                          subheading: data.age,
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-                <div className={`${styles.availableCourses} `}>
-                  <h2 className={styles.heading}>
-                    Available Courses
-                    <HeadingArrow />
-                  </h2>
-                  <div className={styles.wrapper}>
-                    {availableCourses.map((item, index) => {
-                      return (
-                        <AvailableCourse
-                          data={item}
-                          setbuydata={setbuydata}
-                          setshowmodal={setshowmodal}
-                          key={"available" + index}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flexRight}>
-                {kiddata.map((item, index) => {
-                  return <KidCards key={"kidCard" + index} />;
+            <div className={`${styles.availableCourses} `}>
+              <h2 className={styles.heading}>
+                Available Courses
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {availableCourses.map((item, index) => {
+                  return (
+                    <AvailableCourse
+                      data={item}
+                      setbuydata={setbuydata}
+                      setshowmodal={setshowmodal}
+                      key={"available" + index}
+                    />
+                  );
                 })}
               </div>
             </div>
-          </>
-        ) : null}
+          </div>
+          <div className={styles.flexRight}>
+            {kiddata.map((item, index) => {
+              return <KidCards key={"kidCard" + index} />;
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -146,7 +141,13 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg;
-      return { props: { isLogged: false, msg } };
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
     } else {
       let kidsdata = await getkidsdata(token);
       let gamesdata = await getgames(token);
@@ -164,7 +165,13 @@ export async function getServerSideProps({ params, req }) {
       };
     }
   } else {
-    return { props: { isLogged: false, msg: "cannot get token" } };
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
   }
 }
 async function getkidsdata(token) {

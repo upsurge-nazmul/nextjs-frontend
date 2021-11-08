@@ -6,6 +6,7 @@ import RecentUser from "../../components/Notifications/RecentUser";
 import Message from "../../components/Notifications/Message";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Notifications/notificationsPage.module.scss";
+import LoginApis from "../../actions/apis/LoginApis";
 function NotificationsPage() {
   // 3 types request, message , community
   const router = useRouter();
@@ -110,3 +111,37 @@ function NotificationsPage() {
 }
 
 export default NotificationsPage;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
+}
