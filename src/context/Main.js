@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import LoginApis from "../actions/apis/LoginApis";
-import { getCookie, getTokenCookie } from "../actions/cookieUtils";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import "../firebase";
 
 export const MainContext = createContext();
 
@@ -16,10 +16,26 @@ export const MainContextProider = ({ children }) => {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [currentChoreTemplate, setcurrentChoreTemplate] = useState("");
+  const [show, setShow] = useState(false);
+  const [notification, setNotification] = useState({ title: "", body: "" });
+  useEffect(() => {
+    let messaging = getMessaging();
+    getToken(messaging);
+    onMessage(messaging, (payload) => {
+      setShow(true);
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body,
+      });
+      console.log(payload);
+    });
+  }, []);
 
   return (
     <MainContext.Provider
       value={{
+        notification,
+        setNotification,
         user,
         setuser,
         authmode,

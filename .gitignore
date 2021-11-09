@@ -7,7 +7,7 @@
 /randomdata
 # testing
 /coverage
-
+firebase.js
 # next.js
 /.next/
 /out/
