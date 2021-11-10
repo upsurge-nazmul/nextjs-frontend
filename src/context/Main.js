@@ -20,7 +20,6 @@ export const MainContextProider = ({ children }) => {
   const [notification, setNotification] = useState({ title: "", body: "" });
   useEffect(() => {
     let messaging = getMessaging();
-    getToken(messaging);
     onMessage(messaging, (payload) => {
       setShow(true);
       setNotification({

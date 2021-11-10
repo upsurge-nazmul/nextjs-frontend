@@ -18,6 +18,8 @@ import EmailVerificationPending from "../../components/EmailVerificationPending"
 import TribeApproval from "../../components/Dashboard/TribeApproval";
 import NoApproval from "../../components/Dashboard/NoApproval";
 import Loading from "../../components/Loading";
+import NotificationApis from "../../actions/apis/NotificationApis";
+import { getMessaging, getToken } from "@firebase/messaging";
 
 function Dashboard({
   isLogged,
@@ -120,6 +122,16 @@ function Dashboard({
       );
     }
   }, []);
+
+  useEffect(() => {
+    saveNotificationToken();
+    async function saveNotificationToken() {
+      let messaging = getMessaging();
+      let token = await getToken(messaging);
+      let response = await NotificationApis.addToken({ type: "web", token });
+    }
+  }, []);
+
   if (!userdatafromserver) {
     return <Loading />;
   } else
