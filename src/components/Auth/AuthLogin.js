@@ -105,7 +105,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
             // }}
           >
             <GoogleSvg />
-            <p>Continue with Google</p>
+            <p style={{ pointerEvents: "none" }}>Continue with Google</p>
           </div>
         )}
         onSuccess={handlegoogleLogin}

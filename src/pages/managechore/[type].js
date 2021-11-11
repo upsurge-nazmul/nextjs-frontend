@@ -11,6 +11,7 @@ import MicSvg from "../../components/SVGcomponents/MicSvg";
 import AddAssigneeModal from "../../components/Chores/AddAssigneeModal";
 import DropDown from "../../components/DropDown";
 import { MainContext } from "../../context/Main";
+import ChoreApis from "../../actions/apis/ChoreApis";
 
 export default function ManageChore({ choredata, childdata }) {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function ManageChore({ choredata, childdata }) {
 
   async function handleSave() {
     if (choredata?.isineditmode) {
-      let response = await DashboardApis.editchore({
+      let response = await ChoreApis.editchore({
         id: choredata?.data.id,
         message: msg,
         title: choretitle,
@@ -94,7 +95,7 @@ export default function ManageChore({ choredata, childdata }) {
           });
           return;
         }
-        let response = await DashboardApis.addchore({
+        let response = await ChoreApis.addchore({
           message: msg,
           title: choretitle,
           category: choredata?.category || "home",
@@ -262,13 +263,13 @@ export async function getServerSideProps({ params, req }) {
   } else return { props: { choredata: null, childdata: null } };
 }
 async function getChildData(id, token) {
-  let response = await DashboardApis.getChildDetails(id, token);
+  let response = await ChoreApis.getChildDetails(id, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }
 
 async function getChoreData(id, token) {
-  let response = await DashboardApis.getchorebyid(id, token);
+  let response = await ChoreApis.getchorebyid(id, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

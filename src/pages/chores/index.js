@@ -12,6 +12,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import Toast from "../../components/Toast";
 import { useRouter } from "next/dist/client/router";
 import Loading from "../../components/Loading";
+import ChoreApis from "../../actions/apis/ChoreApis";
 
 function ChoresPage({ choresdata, isLogged }) {
   const [mode, setmode] = useState("chores");
@@ -197,7 +198,7 @@ export async function getServerSideProps({ params, req }) {
 }
 
 async function getchores(token) {
-  let response = await DashboardApis.getchores(null, token);
+  let response = await ChoreApis.getchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   } else {

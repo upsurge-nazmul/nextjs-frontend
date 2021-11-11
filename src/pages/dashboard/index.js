@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import LoginApis from "../../actions/apis/LoginApis";
+import ChoreApis from "../../actions/apis/ChoreApis";
 import Toast from "../../components/Toast";
 import ChoreComponent from "../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
@@ -339,7 +340,7 @@ async function getkidsdata(token) {
     return response.data.data;
 }
 async function getchores(token) {
-  let response = await DashboardApis.getpendingchores(null, token);
+  let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   } else {

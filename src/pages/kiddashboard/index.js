@@ -18,6 +18,8 @@ import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
 import KidApis from "../../actions/apis/KidApis";
 import { MainContext } from "../../context/Main";
 import NoChores from "../../components/KidDashboard/NoChores";
+import { getMessaging, getToken } from "@firebase/messaging";
+import NotificationApis from "../../actions/apis/NotificationApis";
 
 function KidDashboard({
   isLogged,
@@ -55,6 +57,14 @@ function KidDashboard({
   }, [isLogged]);
   useEffect(() => {
     setuserdata(kiddata);
+  }, []);
+  useEffect(() => {
+    saveNotificationToken();
+    async function saveNotificationToken() {
+      let messaging = getMessaging();
+      let token = await getToken(messaging);
+      let response = await NotificationApis.addToken({ type: "web", token });
+    }
   }, []);
   return (
     <div className={styles.kiddashboard}>

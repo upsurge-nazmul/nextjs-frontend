@@ -1,13 +1,6 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
-const approvechore = (payload) => {
-  return ApiCalls.putResponse(
-    "parent/approvechore",
-    payload,
-    getCookie("accesstoken")
-  );
-};
 const addnotification = (payload) => {
   return ApiCalls.postResponse(
     "users/addnotification",
@@ -52,36 +45,6 @@ const getgames = (payload, token) => {
 const getliveclasses = (payload, token) => {
   return ApiCalls.getResponse(`parent/getliveclasses`, payload, token);
 };
-const addchore = (payload) => {
-  return ApiCalls.postResponse(
-    `parent/addchore`,
-    payload,
-    getCookie("accesstoken")
-  );
-};
-const editchore = (payload) => {
-  return ApiCalls.postResponse(
-    `parent/editchore`,
-    payload,
-    getCookie("accesstoken")
-  );
-};
-const getchores = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getchores`, payload, token);
-};
-const getchorebyid = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getchorebyid`, payload, token);
-};
-
-const getcompletedchores = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getcompletedchores`, payload, token);
-};
-const getpendingchores = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getpendingchores`, payload, token);
-};
-const getexpiredchores = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getexpiredchores`, payload, token);
-};
 const getallavatars = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailableavatars`, payload, token);
 };
@@ -98,25 +61,13 @@ const deletechild = (payload) => {
     getCookie("accesstoken")
   );
 };
-const deletechore = (payload) => {
-  return ApiCalls.deleteResponse(
-    "parent/deletechore",
-    payload,
-    getCookie("accesstoken")
-  );
-};
+
 //getchores
 const DashboardApis = {
   addkids,
   getkids,
   getgames,
   getliveclasses,
-  addchore,
-  getchores,
-  getexpiredchores,
-  getpendingchores,
-  getcompletedchores,
-  editchore,
   getuserdata,
   updateprofile,
   getallavatars,
@@ -125,9 +76,6 @@ const DashboardApis = {
   editkids,
   deletechild,
   getChildDetails,
-  getchorebyid,
-  deletechore,
-  approvechore,
   addnotification,
 };
 
