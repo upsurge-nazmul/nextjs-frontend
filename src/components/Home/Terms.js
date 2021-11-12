@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import styles from "../../styles/Home/terms.module.scss";
-
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 export default function Terms({ setshowterm, termmode }) {
   const router = useRouter();
   function move(id) {
@@ -43,6 +43,9 @@ export default function Terms({ setshowterm, termmode }) {
         className={styles.background}
         onClick={() => setshowterm(false)}
       ></div>
+      <div className={styles.cross} onClick={() => setshowterm(false)}>
+        <CancelOutlinedIcon className={styles.icon} />
+      </div>
       {termmode === "terms" ? (
         <div className={styles.main} id="termswrapper">
           <h1 className={styles.heading}>Terms and Conditions</h1>

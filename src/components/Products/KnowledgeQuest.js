@@ -37,7 +37,7 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/ZYDVsdX/Mask-Group.png"
+            src="https://i.ibb.co/LpXvzTy/1280-1280-x-720-px-2.png"
             alt=""
           />
         </div>

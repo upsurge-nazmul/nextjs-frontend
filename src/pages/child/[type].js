@@ -9,10 +9,12 @@ import DropDown from "../../components/DropDown";
 import CircleTick from "../../components/SVGcomponents/CircleTick";
 import CircleWarning from "../../components/SVGcomponents/CircleWarning";
 import validator from "validator";
-import LoginApis from "../../actions/apis/LoginApis";
-
+import DatePicker from "react-datepicker";
+import { getMonth, getYear } from "date-fns";
+import range from "lodash/range";
+// import required css from library
+import "react-datepicker/dist/react-datepicker.css";
 function AddKid({ childdata }) {
-  console.log(childdata);
   const router = useRouter();
   const type = router.query.type;
   let state;
@@ -22,7 +24,9 @@ function AddKid({ childdata }) {
     msg: "",
   });
   const [mode, setmode] = useState(type === "add" ? "Add Child" : "Edit Child");
-  const [dob, setdob] = useState(childdata?.dob || "");
+  const [dob, setdob] = useState(
+    childdata?.dob ? new Date(childdata?.dob) : new Date()
+  );
   const [gender, setgender] = useState(childdata?.gender || "");
   const [email, setemail] = useState(childdata?.email || "");
   const [password, setpassword] = useState("");
@@ -88,7 +92,7 @@ function AddKid({ childdata }) {
       firstName,
       lastName,
       gender,
-      dob: dob,
+      dob: new Date(dob).getTime(),
       image:
         "https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
       email: email,
@@ -198,6 +202,21 @@ function AddKid({ childdata }) {
   function checkSpecial(pass) {
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
+  const years = range(1990, getYear(new Date()) + 5, 1);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
@@ -236,7 +255,68 @@ function AddKid({ childdata }) {
                 onChange={(e) => setlastName(e.target.value)}
               />
             </div>
-            <input
+            <DatePicker
+              renderCustomHeader={({
+                date,
+                changeYear,
+                changeMonth,
+                decreaseMonth,
+                increaseMonth,
+                prevMonthButtonDisabled,
+                nextMonthButtonDisabled,
+              }) => (
+                <div
+                  style={{
+                    margin: 10,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <button
+                    onClick={decreaseMonth}
+                    disabled={prevMonthButtonDisabled}
+                  >
+                    {"<"}
+                  </button>
+                  <select
+                    value={date.getFullYear()}
+                    onChange={({ target: { value } }) => changeYear(value)}
+                  >
+                    {years.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={months[getMonth(date)]}
+                    onChange={({ target: { value } }) =>
+                      changeMonth(months.indexOf(value))
+                    }
+                  >
+                    {months.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <button
+                    onClick={increaseMonth}
+                    disabled={nextMonthButtonDisabled}
+                  >
+                    {">"}
+                  </button>
+                </div>
+              )}
+              selected={dob}
+              showFullMonthYearPicker
+              allowSameDay={false}
+              onChange={(date) => setdob(date)}
+              dateFormat="dd/MM/yyyy"
+            />
+            {/* <input
               type="date"
               value={
                 dob
@@ -252,10 +332,10 @@ function AddKid({ childdata }) {
                   setdob(new Date(e.target.value).getTime());
                 }
               }}
-              min="1997-01-01"
-              max="2030-12-31"
+              min="01-01-1997"
+              max="31-12-2030"
               placeholder="dd-mm-yyyy"
-            />
+            /> */}
             <DropDown
               placeholder="Gender"
               options={["male", "female", "i prefer not to say"]}

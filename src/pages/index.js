@@ -64,6 +64,7 @@ function Home({ isLogged, userdata }) {
           type: "error",
           msg: "Please login first.",
         });
+        router.push("/");
       }
       if (router.query.err === "02") {
         settoastdata({
@@ -71,6 +72,7 @@ function Home({ isLogged, userdata }) {
           type: "error",
           msg: "Your token has expired. Please login again.",
         });
+        router.push("/");
       }
     }
   }, [router.query]);

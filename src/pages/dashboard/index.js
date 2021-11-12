@@ -132,7 +132,18 @@ function Dashboard({
       let response = await NotificationApis.addToken({ type: "web", token });
     }
   }, []);
-
+  useEffect(() => {
+    if (router.query.err) {
+      if (router.query.err === "03") {
+        settoastdata({
+          show: true,
+          type: "error",
+          msg: "Please add a child first",
+        });
+        router.push("/dashboard");
+      }
+    }
+  }, [router.query]);
   if (!userdatafromserver) {
     return <Loading />;
   } else

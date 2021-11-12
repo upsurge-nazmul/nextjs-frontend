@@ -11,6 +11,7 @@ import AvailablePointsSection from "../../components/ParentStore/AvailablePoints
 import VoucherSection from "../../components/ParentStore/VoucherSection";
 import DashboardHeader from "../../components/Dashboard/DashboardHeader";
 import ApproveModal from "../../components/ParentStore/ApproveModal";
+import ChoreApis from "../../actions/apis/ChoreApis";
 
 export default function ParentStore({
   isLogged,
@@ -131,7 +132,7 @@ async function getkidsdata(token) {
     return response.data.data;
 }
 async function getchores(token) {
-  let response = await DashboardApis.getpendingchores(null, token);
+  let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

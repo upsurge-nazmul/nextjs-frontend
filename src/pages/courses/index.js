@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
+import ChoreApis from "../../actions/apis/ChoreApis";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import LoginApis from "../../actions/apis/LoginApis";
 import AvailableCourse from "../../components/Courses/AvailableCourse";
@@ -180,7 +181,7 @@ async function getkidsdata(token) {
     return response.data.data;
 }
 async function getchores(token) {
-  let response = await DashboardApis.getpendingchores(null, token);
+  let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

@@ -164,6 +164,17 @@ export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";
   if (token) {
+    let kidsdata = await getkidsdata(token);
+    if (kidsdata && !kidsdata.length > 0) {
+      return {
+        props: { isLogged: true, msg: msg || "Error" },
+        redirect: {
+          permanent: false,
+          destination: "/dashboard?err=03",
+          state: "err=03",
+        },
+      };
+    }
     let response = await LoginApis.checktoken({
       token: token,
     });
@@ -196,7 +207,11 @@ export async function getServerSideProps({ params, req }) {
     };
   }
 }
-
+async function getkidsdata(token) {
+  let response = await DashboardApis.getkids(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
 async function getchores(token) {
   let response = await ChoreApis.getchores(null, token);
   if (response && response.data && response.data.data) {

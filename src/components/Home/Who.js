@@ -31,7 +31,7 @@ function Who() {
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
             <Image
-              src="https://i.ibb.co/Qmckfjh/Untitled-design-54.png"
+              src="https://i.ibb.co/xhM7W8k/Untitled-design-77.png"
               alt=""
               layout="fill"
               objectFit="cover"
