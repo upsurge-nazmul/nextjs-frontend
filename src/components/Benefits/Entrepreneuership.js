@@ -22,7 +22,7 @@ export default function Entrepreneuership({ id }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src="https://i.ibb.co/gdj2Bry/Untitled-design-25.png"
+                src="https://i.ibb.co/MhPZK9K/1920-x-1080-px-1.png"
                 alt=""
               />
             </div>

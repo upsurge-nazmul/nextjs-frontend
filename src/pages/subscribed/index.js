@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
@@ -10,9 +10,26 @@ import Twitter from "../../components/SVGcomponents/Twitter";
 import YtSvg from "../../components/SVGcomponents/YtSvg";
 import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function Subscribed() {
+  const [showauth, setshowauth] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.waitlist}>
-      <Header />
+      <Header
+        stickyheader={stickyheader}
+        showauth={showauth}
+        setshowauth={setshowauth}
+      />
       <div className={styles.container}>
         <div className={styles.green}></div>
         <div className={styles.white}></div>

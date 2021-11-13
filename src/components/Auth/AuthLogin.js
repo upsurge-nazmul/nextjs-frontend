@@ -8,6 +8,7 @@ import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
 import { MainContext } from "../../context/Main";
 import GoogleLogin from "react-google-login";
+import { GClientId } from "../../../config";
 
 function AuthLogin({ settoastdata, error, seterror }) {
   const { setuserdata, setuser } = useContext(MainContext);
@@ -92,7 +93,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
       </div>
       <div className={styles.or}>OR</div>
       <GoogleLogin
-        clientId="375248822516-a08u6u16jk762tjdjcc1nodb13dor3qj.apps.googleusercontent.com"
+        clientId={GClientId}
         render={(renderProps) => (
           <div
             onClick={renderProps.onClick}

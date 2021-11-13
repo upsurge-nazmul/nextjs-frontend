@@ -42,7 +42,11 @@ function AuthOtpComponent({
       </div>
       <OtpInput
         value={OTP}
-        inputStyle={{ margin: "5px", width: "50px" }}
+        inputStyle={{
+          margin: "5px",
+          width: "clamp(40px,10vw,50px)",
+          height: "60px",
+        }}
         onChange={(otp) => setOTP(otp)}
         numInputs={6}
         containerStyle={{ "justify-content": "center", "margin-top": "20px" }}

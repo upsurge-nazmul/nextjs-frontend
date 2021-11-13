@@ -23,7 +23,7 @@ export default function Financial({ id }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src="https://i.ibb.co/X2fdvVq/Untitled-design-23.png"
+                src="https://i.ibb.co/Sd5LLFV/1920-x-1080-px.png"
                 alt=""
               />
             </div>

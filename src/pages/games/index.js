@@ -85,7 +85,8 @@ export default function GamePage() {
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>Games</h2>
           <h3 className={styles.subheading}>
-            We make digital toys that help your kid learn finance with ease.
+            The concepts learnt by the young learners via Knowledge Quest are
+            applied in the Games Arena.
           </h3>
         </div>
 

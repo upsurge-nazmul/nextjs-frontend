@@ -9,7 +9,7 @@ import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../styles/GamePage/gamepage.module.scss";
-
+import validator from "validator";
 // streamingAssetsUrl: "StreamingAssets",
 // companyName: "DefaultCompany",
 // productName: "Don'tOverspend_Upsurge",
@@ -64,7 +64,43 @@ const data = {
     loaderUrl: "/Games/NeedOrWant/Build/NeedOrWant.loader.js",
   },
 };
-
+const specialchars = [
+  "#",
+  "$",
+  "%",
+  "*",
+  "&",
+  "(",
+  "@",
+  "_",
+  ")",
+  "+",
+  "-",
+  "&&",
+  "||",
+  "!",
+  "(",
+  ")",
+  "{",
+  "}",
+  "[",
+  "]",
+  "^",
+  "~",
+  "*",
+  "?",
+  ":",
+  "1",
+  "0",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+];
 export default function GamePage() {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
@@ -80,6 +116,7 @@ export default function GamePage() {
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
+  const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
   const router = useRouter();
   const [info, setinfo] = useState({
@@ -166,13 +203,25 @@ export default function GamePage() {
       }
     }
   }, [id]);
+  useEffect(() => {
+    seterror("");
+  }, [phone, email, name, nickname]);
   async function startgame() {
     if (!name) {
-      alert("Name is required");
+      seterror("Name is required");
       return;
     }
     if (!email) {
-      alert("Email is required");
+      seterror("Email is required");
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      seterror("Please enter valid email address");
+      return;
+    }
+    if (phone && !validator.isMobilePhone(phone)) {
+      seterror("Please enter valid phone number");
+      return;
     }
     let res = await FreeGameApis.presign({
       playernickname: nickname,
@@ -225,11 +274,32 @@ export default function GamePage() {
           <div className={styles.gamedata}>
             <div className={styles.left}>
               <p className={styles.heading}>We need a few more details</p>
+              <p className={styles.error}>{error}</p>
               <input
                 type="text"
                 className={styles.input}
                 value={name}
-                onChange={(e) => setname(e.target.value)}
+                onChange={(e) => {
+                  if (
+                    e.target.value.length > 1 &&
+                    e.target.value[e.target.value.length - 1] === " "
+                  ) {
+                    setname(e.target.value);
+                  }
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setname("");
+                    return;
+                  }
+                  if (
+                    specialchars.includes(
+                      e.target.value[e.target.value.length - 1].toString()
+                    )
+                  ) {
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1]))
+                    setname(e.target.value);
+                }}
                 placeholder="Name"
               />
               <input
@@ -249,7 +319,17 @@ export default function GamePage() {
               <input
                 value={phone}
                 type="text"
-                onChange={(e) => setphone(e.target.value)}
+                maxLength={10}
+                onChange={(e) => {
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setphone("");
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1])) {
+                    return;
+                  }
+                  setphone(e.target.value);
+                }}
                 className={styles.input}
                 placeholder="Phone (optional)"
               />

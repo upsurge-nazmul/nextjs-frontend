@@ -7,6 +7,7 @@ import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
+import { GClientId } from "../../../config";
 
 function AuthParent({
   setsignupmethod,
@@ -88,7 +89,7 @@ function AuthParent({
   return (
     <div className={styles.parent}>
       <GoogleLogin
-        clientId="375248822516-a08u6u16jk762tjdjcc1nodb13dor3qj.apps.googleusercontent.com"
+        clientId={GClientId}
         render={(renderProps) => (
           <div
             onClick={renderProps.onClick}
