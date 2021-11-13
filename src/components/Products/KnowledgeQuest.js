@@ -42,7 +42,8 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
           />
         </div>
       </div>
-
+      <div className={styles.green} />
+      <div className={styles.yellow} />
       <PetalSvgQuest className={styles.petal} />
       <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
