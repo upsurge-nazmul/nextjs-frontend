@@ -9,6 +9,9 @@ const signup = (payload) => {
 const getwaitlistdetails = (payload) => {
   return ApiCalls.getResponse(`users/getwaitlistdetails`, payload);
 };
+const unsub = (payload) => {
+  return ApiCalls.postResponse(`users/unsubscribe`, payload);
+};
 const logout = (payload) => {
   return ApiCalls.getResponse(
     "users/logout",
@@ -97,6 +100,7 @@ const LoginApis = {
   getwaitlistdetails,
   addtonewslettersubs,
   addtocontactmsgs,
+  unsub,
 };
 
 export default LoginApis;

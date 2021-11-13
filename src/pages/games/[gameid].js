@@ -113,6 +113,7 @@ export default function GamePage() {
   const [errorshown, seterrorshown] = useState(false);
   const [showgame, setshowgame] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [removeBorder, setremoveBorder] = useState(false);
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
@@ -240,6 +241,11 @@ export default function GamePage() {
       alert("error connecting server");
     }
   }
+  useEffect(() => {
+    if (showgame) {
+      setTimeout(() => setremoveBorder(true), 10000);
+    }
+  }, [showgame]);
 
   return (
     <div className={styles.gamePage}>
@@ -354,7 +360,9 @@ export default function GamePage() {
         ) : (
           unitycontext && (
             <Unity
-              className={`${styles.gameMain} ${stickyheader && styles.sticky}`}
+              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+                removeBorder ? styles.removeborder : ""
+              }`}
               unityContext={unitycontext}
               matchWebGLToCanvasSize={true}
             />

@@ -5,6 +5,7 @@ import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Calculators/calculatormainpage.module.scss";
 import Footer from "../../components/Home/Footer";
 import Image from "next/image";
+import JoinUs from "../../components/Home/JoinUs";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -201,6 +202,7 @@ function CalculatorsPage() {
           })}
         </div>
       </div>
+      <JoinUs />
       <Footer />
     </div>
   );

@@ -121,6 +121,23 @@
         }
       }
     }
+    .goback {
+      border-radius: 8px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4166eb;
+      font-weight: 600;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: hsl(0, 0%, 94%);
+      }
+    }
   }
 }
 

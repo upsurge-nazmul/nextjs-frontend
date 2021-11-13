@@ -129,11 +129,14 @@
       align-items: center;
       width: 100vw;
       justify-content: center;
+      form {
+        height: 100%;
+      }
       .email {
         border: none;
         border-radius: 8px;
         font-size: 20px;
-        width: 30%;
+        width: 100%;
         max-width: 450px;
         padding: 0 20px;
         height: 100%;

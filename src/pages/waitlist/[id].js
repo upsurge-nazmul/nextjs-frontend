@@ -73,6 +73,9 @@ export default function WaitList({ res }) {
             <LinkedIN className={styles.socialyt} />
           </a>
         </div>
+        <div className={styles.goback} onClick={() => router.push("/")}>
+          Go Back
+        </div>
       </div>
       <Footer />
     </div>

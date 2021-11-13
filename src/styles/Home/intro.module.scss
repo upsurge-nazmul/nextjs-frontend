@@ -80,13 +80,18 @@
       display: flex;
       overflow: hidden;
       margin-top: 20px;
+      form {
+        display: flex;
+        width: 55%;
+        flex: 1;
+      }
       input {
         outline: none;
         border: none;
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
         border: 1px solid #4166eb;
-        width: 55%;
+        width: 100%;
         display: flex;
         align-items: center;
         font-weight: 400;

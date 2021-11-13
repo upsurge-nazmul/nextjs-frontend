@@ -149,6 +149,10 @@
       width: calc(16vw * 4);
       height: calc(9vw * 4);
       background-color: white;
+      border: 2px solid black;
+    }
+    .removeborder {
+      border: none;
     }
   }
 

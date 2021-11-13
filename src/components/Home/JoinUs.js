@@ -8,7 +8,8 @@ function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
   const router = useRouter();
-  async function handleSignup() {
+  async function handleSignup(e) {
+    e.preventDefault();
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
@@ -70,15 +71,17 @@ function JoinUs() {
           Get all the information related to Financial Literacy
         </p>
         <div className={styles.emailwrapper}>
-          <input
-            className={styles.email}
-            type="email"
-            placeholder="Email"
-            onChange={(e) => {
-              seterror("");
-              setemail(e.target.value);
-            }}
-          />
+          <form onSubmit={(e) => handleSignup(e)}>
+            <input
+              className={styles.email}
+              type="email"
+              placeholder="Email"
+              onChange={(e) => {
+                seterror("");
+                setemail(e.target.value);
+              }}
+            />
+          </form>
           <div className={styles.button} onClick={handleSignup}>
             Subscribe
           </div>

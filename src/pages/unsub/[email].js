@@ -1,15 +1,18 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
+import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import Fb from "../../components/SVGcomponents/Fb";
 import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
+
 import styles from "../../styles/waitlist/waitlist.module.scss";
-export default function Subscribed() {
+export default function Unsub({ unsubbed }) {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -33,10 +36,21 @@ export default function Subscribed() {
         <div className={styles.white}></div>
         <div className={styles.ball4}></div>
         <div className={styles.yellow}></div>
-        <p className={styles.heading3}>Subscription Confirmed </p>
-        <div className={styles.line}></div>
+        {unsubbed === "done" && (
+          <p
+            className={styles.heading}
+            style={{ fontSize: "50px", marginBottom: "20px", zIndex: "100" }}
+          >
+            We hope to see you soon.
+          </p>
+        )}
+        {unsubbed === "done" && <div className={styles.line}></div>}
 
-        <p className={styles.heading2}>Thank you for subscribing!</p>
+        <p className={styles.heading2}>
+          {unsubbed === "done"
+            ? "You have been removed from our Newsletter Subscription."
+            : `${router.query.email} is either invalid or not subscribed.`}
+        </p>
 
         <p className={styles.subheading}>
           To stay up to date at all times, follow us on.
@@ -63,11 +77,6 @@ export default function Subscribed() {
           >
             <LinkedIN className={styles.socialyt} />
           </a>
-          {/* <Fb className={styles.social} />
-          <Twitter className={styles.social} alt="" />
-          <Insta className={styles.social} />
-          <YtSvg className={styles.socialyt} />
-          <LinkedIN className={styles.socialyt} /> */}
         </div>
         <div className={styles.goback} onClick={() => router.push("/")}>
           Go Back
@@ -76,4 +85,13 @@ export default function Subscribed() {
       <Footer />
     </div>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  let res = await LoginApis.unsub({ email: params.email });
+  if (res && res.data && res.data.success) {
+    return { props: { unsubbed: "done" } };
+  } else {
+    return { props: { unsubbed: "error" } };
+  }
 }

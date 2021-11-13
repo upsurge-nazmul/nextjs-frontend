@@ -12,6 +12,7 @@ import BigCalcInput from "../../components/Calculators/BigCalcInput";
 import BigCalcDropdown from "../../components/Calculators/BigCalcDropdown";
 import RelativeSection from "../../components/Calculators/RelativeSection";
 import WaitingListCta from "../../components/WaitingListCta";
+import JoinUs from "../../components/Home/JoinUs";
 function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
@@ -173,6 +174,8 @@ function CalculatorsPage() {
           cards={data[calculatorName]?.relative ?? []}
         />
       </div>
+      <JoinUs />
+
       <Footer />
     </div>
   );

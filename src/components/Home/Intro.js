@@ -17,7 +17,8 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
     type: "success",
     msg: "",
   });
-  async function handleSignup() {
+  async function handleSignup(e) {
+    e.preventDefault();
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
@@ -72,16 +73,17 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           {error}
         </p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              seterror("");
-              setemail(e.target.value);
-            }}
-          />
-
+          <form onSubmit={(e) => handleSignup(e)}>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                seterror("");
+                setemail(e.target.value);
+              }}
+            />
+          </form>
           <div className={styles.button} onClick={handleSignup}>
             {"Join the Waitlist"}
           </div>
