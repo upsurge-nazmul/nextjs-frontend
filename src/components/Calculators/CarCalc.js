@@ -57,7 +57,7 @@ export default function CarCalc({ seterror }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["interest", "Loan Amount"],
+    labels: ["Interest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",

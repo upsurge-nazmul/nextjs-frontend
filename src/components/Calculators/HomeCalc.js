@@ -20,7 +20,7 @@ export default function HomeCalc({ data, seterror }) {
       code: "type",
     },
     {
-      title: "No Of Rooms",
+      title: "No Of Bedrooms",
       type: "select",
       options: ["2 rooms", "3 rooms", "4 rooms"],
       code: "noofrooms",
@@ -33,7 +33,7 @@ export default function HomeCalc({ data, seterror }) {
     },
     {
       type: "input",
-      title: "Enter One-Time Payment",
+      title: "Enter Down-Payment",
       min: 0,
       max: 10000000,
       pretitle: "₹",
@@ -64,7 +64,7 @@ export default function HomeCalc({ data, seterror }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["interest", "Loan Amount"],
+    labels: ["Interest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",
@@ -131,7 +131,7 @@ export default function HomeCalc({ data, seterror }) {
       }
     }
     let onetimequestion = questions[3];
-    onetimequestion.max = loanamount;
+    onetimequestion.max = loanamount / 5;
     let updatedarr = questions;
     updatedarr[3] = onetimequestion;
     setquestions(updatedarr);
@@ -142,7 +142,7 @@ export default function HomeCalc({ data, seterror }) {
           ...prev,
           onetimepayment: 0,
         }));
-        seterror("Onetime payment cannot be greater than loan amount");
+        seterror("down payment cannot be greater than loan amount");
         return;
       } else {
         seterror("");
@@ -155,17 +155,21 @@ export default function HomeCalc({ data, seterror }) {
     let totalpayment = emiamount * months;
     let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
+      heading2: "Total Interest Payable",
+      heading3: `Total Payment
       (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest).toLocaleString("en-IN", {
+      heading4: "Loan EMI",
+      heading1: "The indicative value for home is",
+      result1: Math.round(loanamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result2: Math.round(totalpayment).toLocaleString("en-IN", {
+      result2: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(intrest).toLocaleString("en-IN", {
+      result3: Math.round(totalpayment).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result4: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));

@@ -10,7 +10,7 @@ function ResultBox({ resultdata }) {
             <p className={styles.heading}>{resultdata.heading1}</p>
           )}
           <p className={styles.result}>
-            {resultdata.heading1 && "₹"}
+            {resultdata.heading1 && "₹ "}
             {resultdata.result1}
           </p>
         </div>
@@ -40,32 +40,26 @@ function ResultBox({ resultdata }) {
             </p>
           </div>
         )}
+        {resultdata.result4 && (
+          <div className={styles.container}>
+            {resultdata.heading4 && (
+              <p className={styles.heading}>{resultdata.heading4}</p>
+            )}
+            <p className={styles.result}>
+              {resultdata.result4sign
+                ? resultdata.result4sign
+                : resultdata.heading4 && "₹"}{" "}
+              {resultdata.result4}
+            </p>
+          </div>
+        )}
+        {resultdata.result5 && (
+          <div className={styles.container}>
+            <p className={styles.heading}>{resultdata.heading5}</p>
+            <p className={styles.result}>₹ {resultdata.result5}</p>
+          </div>
+        )}
       </div>
-      {resultdata.result4 ? (
-        <div className={styles.topflex}>
-          <div className={styles.container}>
-            <p className={styles.heading}>{resultdata.heading3}</p>
-            <p className={styles.result}>₹ {resultdata.result3}</p>
-          </div>
-          <div className={styles.container}>
-            <p className={styles.heading}>{resultdata.heading4}</p>
-            <p className={styles.result}>₹ {resultdata.result4}</p>
-          </div>
-          {resultdata.result5 && (
-            <div className={styles.container}>
-              <p className={styles.heading}>{resultdata.heading5}</p>
-              <p className={styles.result}>₹ {resultdata.result5}</p>
-            </div>
-          )}
-        </div>
-      ) : (
-        resultdata.heading3 && (
-          <div className={styles.bottomContainer}>
-            <p className={styles.heading}>{resultdata.heading3}</p>
-            <p className={styles.result}>₹ {resultdata.result3}</p>
-          </div>
-        )
-      )}
     </div>
   );
 }
