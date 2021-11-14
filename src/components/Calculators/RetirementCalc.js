@@ -22,17 +22,18 @@ export default function Retirement({ seterror }) {
       title: "Current age",
       type: "input",
       code: "age",
-      min: 1,
-      max: 79,
+      min: 15,
+      max: 65,
       posttitle: "years",
     },
     {
       title: "Money required monthly",
       type: "input",
       code: "money",
-      min: 1,
+      min: 10000,
       max: 10000000,
       pretitle: "₹",
+      range: true,
     },
   ]);
   const [result, setresult] = useState(false);
@@ -62,7 +63,7 @@ export default function Retirement({ seterror }) {
   const [calcdata, setcalcdata] = useState({
     age: 18,
     type: 40,
-    money: 5000,
+    money: 10000,
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -75,12 +76,17 @@ export default function Retirement({ seterror }) {
   }, [calcdata, current]);
 
   function emi() {
-    if (calcdata.age < 18) {
+    if (calcdata.age < 15) {
       seterror("Age cannot be less than 18");
     }
     if (!calcdata.money) {
       seterror("Money required monthly is required");
     }
+    let onetimequestion = questions[1];
+    onetimequestion.max = calcdata.type - 5;
+    let updatedarr = questions;
+    updatedarr[1] = onetimequestion;
+    setquestions(updatedarr);
     let remaininglife = 80 - calcdata.age;
     let monthlyinvestment =
       (calcdata.money * remaininglife) / (calcdata.type - calcdata.age);
@@ -127,22 +133,28 @@ export default function Retirement({ seterror }) {
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
               minvalue={currentquestion.min}
+              maxvalue={currentquestion.max}
+              range={currentquestion.range}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {

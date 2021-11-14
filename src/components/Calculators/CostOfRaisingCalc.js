@@ -119,20 +119,10 @@ export default function CostOfRaisingCalc() {
     let res = extraeexpense + schoolexpense + collegeexpense + marriageexpense;
 
     setresultdata((prev) => ({
-      heading1: "Total Expense",
-      result1: Math.round(res),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(res)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      result1: `Total Expense ₹${Math.round(res).toLocaleString("en-IN", {
+        currency: "INR",
+      })}`,
     }));
   }
   return (
@@ -164,16 +154,20 @@ export default function CostOfRaisingCalc() {
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {
@@ -224,20 +218,6 @@ export default function CostOfRaisingCalc() {
           <ResultBox resultdata={resultdata} />
         </div>
       )}
-
-      {showresult ? (
-        <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <Doughnut
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }

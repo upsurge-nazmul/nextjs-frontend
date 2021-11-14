@@ -35,13 +35,13 @@ function CalculatorsPage() {
   const data = {
     homeLoan: {
       heading: "Home Loan",
-      subheading: `User will get to know the EMI amount they'll have to pay for various different types of homes`,
+      subheading: `Users will get to know the EMI amount they'll have to pay for various types of homes.`,
       relative: ["carLoan", "restaurant", "education"],
       icon: "https://i.ibb.co/BT5h1vf/Untitled-design-10.png",
     },
     carLoan: {
       heading: "Car Loan",
-      subheading: `User will get to know the EMI amount they'll have to pay for various different types of cars`,
+      subheading: `Users will get to know the EMI amount they'll have to pay for various types of cars.`,
       relative: ["homeLoan", "restaurant", "education"],
       icon: "https://i.ibb.co/znVZd67/sven-d-a4-S6-KUu-Leo-M-unsplash.jpg",
     },
@@ -58,7 +58,7 @@ function CalculatorsPage() {
     // },
     sip: {
       heading: "Financing",
-      subheading: `It tells how much money you need to invest monthly in various different assets to reach a target saving amount`,
+      subheading: `It tells how much money you need to invest monthly in various assets to reach a targeted saving amount.`,
       relative: ["investmentcomparison", "retirement", "costofraising"],
       icon: "https://i.ibb.co/b1Dxh2v/Untitled-design-9.png",
     },
@@ -71,12 +71,12 @@ function CalculatorsPage() {
     retirement: {
       heading: "Retirement",
       subheading:
-        "It calculates how much user needs to save in order to get the monthly amount that user desires after retirement",
+        "It calculates how much a user needs to save in order to get a desired monthly amount after retirement.",
       icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
       relative: ["sip", "investmentcomparison", "homeLoan"],
     },
     restaurant: {
-      heading: "Start My Restaurant",
+      heading: "Start My Cloud Kitchen",
       subheading:
         "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
       relative: ["currency", "angel", "unicorn"],
@@ -85,7 +85,7 @@ function CalculatorsPage() {
     investmentcomparison: {
       heading: "Investment Comparison Tool",
       relative: ["sip", "currency", "angel"],
-      subheading: "It compares the various different investment opportunities",
+      subheading: "It compares the various investment opportunities.",
       icon: "https://i.ibb.co/Rh3FZW9/Untitled-design-13.png",
     },
     // Insurance: {
@@ -98,7 +98,7 @@ function CalculatorsPage() {
       heading: "Big mac index Currency Converter",
       relative: ["educationinvestments", "angel", "restaurant"],
       subheading:
-        "This calculator converts rupees in terms of much it's actually worth in different countries",
+        "This calculator converts rupees in terms of how much it's actually worth in different countries.",
       icon: "https://i.ibb.co/PFXFVWp/Untitled-design-15.png",
     },
     college: {
@@ -129,7 +129,7 @@ function CalculatorsPage() {
     standardofliving: {
       heading: "Standard of Living",
       subheading:
-        "This calculator gives you the expected expense of your lifestyle in various different cities based on various different factors.",
+        "This calculator gives you the expected expense of your lifestyle in different cities based on various factors.",
       icon: "https://i.ibb.co/02Mxj02/Untitled-design-17.png",
       relative: ["college", "carLoan", "homeLoan"],
     },

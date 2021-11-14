@@ -9,6 +9,7 @@ export default function BigCalcInput({
   minvalue,
   code,
   maxvalue,
+  range,
 }) {
   return (
     <div className={styles.bigcalcinput}>
@@ -32,10 +33,29 @@ export default function BigCalcInput({
             }
             setvalue((prev) => ({ ...prev, [code]: parseInt(e.target.value) }));
           }}
-          minvalue={minvalue ?? 0}
+          min={minvalue ?? 0}
         />
         {posttitle && <p className={styles.posttitle}>{posttitle}</p>}
       </div>
+      {range && (
+        <input
+          className={styles.range}
+          type="range"
+          value={value}
+          step={1000}
+          max={maxvalue}
+          onChange={(e) => {
+            if (maxvalue && e.target.value > maxvalue) {
+              return;
+            }
+
+            if (e.target.value === " " || e.target.value < 0) {
+              return;
+            }
+            setvalue((prev) => ({ ...prev, [code]: parseInt(e.target.value) }));
+          }}
+        />
+      )}
     </div>
   );
 }

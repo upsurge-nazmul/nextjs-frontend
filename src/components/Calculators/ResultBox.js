@@ -9,14 +9,34 @@ function ResultBox({ resultdata }) {
           {resultdata.heading1 && (
             <p className={styles.heading}>{resultdata.heading1}</p>
           )}
-          <p className={styles.result}>₹ {resultdata.result1}</p>
+          <p className={styles.result}>
+            {resultdata.heading1 && "₹"}
+            {resultdata.result1}
+          </p>
         </div>
         {resultdata.result2 && (
           <div className={styles.container}>
-            <p className={styles.heading}>{resultdata.heading2}</p>
+            {resultdata.heading2 && (
+              <p className={styles.heading}>{resultdata.heading2}</p>
+            )}
             <p className={styles.result}>
-              {resultdata.result2sign ? resultdata.result2sign : "₹"}{" "}
+              {resultdata.result2sign
+                ? resultdata.result2sign
+                : resultdata.heading2 && "₹"}{" "}
               {resultdata.result2}
+            </p>
+          </div>
+        )}
+        {resultdata.result3 && (
+          <div className={styles.container}>
+            {resultdata.heading3 && (
+              <p className={styles.heading}>{resultdata.heading3}</p>
+            )}
+            <p className={styles.result}>
+              {resultdata.result3sign
+                ? resultdata.result3sign
+                : resultdata.heading3 && "₹"}{" "}
+              {resultdata.result3}
             </p>
           </div>
         )}

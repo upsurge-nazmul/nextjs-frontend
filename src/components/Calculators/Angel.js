@@ -35,39 +35,55 @@ export default function Angel({ data }) {
       title: "Enter the revenue for this year",
       type: "input",
       code: "rev1",
-      min: 1,
+      min: 100000,
+      max: 100000000,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter the revenue for next year",
       type: "input",
+      min: 100000,
+      max: 100000000,
       code: "rev2",
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter the revenue for next to next year",
       type: "input",
+      min: 100000,
+      max: 100000000,
       code: "rev3",
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 1",
       type: "input",
       code: "erev1",
-      min: 1,
+      max: 100000000,
+      min: 0,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 2",
       type: "input",
+      min: 0,
       code: "erev2",
+      max: 100000000,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 3",
       type: "input",
+      max: 100000000,
+      min: 0,
       code: "erev3",
       pretitle: "₹",
+      range: true,
     },
   ]);
   const backupquestions = [
@@ -93,43 +109,55 @@ export default function Angel({ data }) {
       title: "Enter the revenue for this year",
       type: "input",
       code: "rev1",
+      min: 100000,
+      max: 100000000,
       pretitle: "₹",
-      min: 1,
+      range: true,
     },
     {
       title: "Enter the revenue for next year",
       type: "input",
+      min: 100000,
+      max: 100000000,
       code: "rev2",
-      min: 1,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter the revenue for next to next year",
       type: "input",
+      min: 100000,
+      max: 100000000,
       code: "rev3",
-      min: 1,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 1",
       type: "input",
-      min: 1,
+      max: 100000000,
+      min: 0,
       code: "erev1",
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 2",
       type: "input",
       code: "erev2",
-      min: 1,
+      max: 100000000,
+      min: 0,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Enter expected revenue for year 3",
       type: "input",
       code: "erev3",
-      min: 1,
+      max: 100000000,
+      min: 0,
       pretitle: "₹",
+      range: true,
     },
   ];
   const [result, setresult] = useState(false);
@@ -225,20 +253,12 @@ export default function Angel({ data }) {
     }
 
     setresultdata((prev) => ({
-      heading1: "Valuation of your startup at which you can raise investment",
-      result1: Math.round(investment),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "Valuation",
-          data: [Math.round(investment)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      result1: `Valuation of your startup at which you can raise investment : ₹${Math.round(
+        investment
+      ).toLocaleString("en-IN", {
+        currency: "INR",
+      })}`,
     }));
   }
   return (
@@ -276,19 +296,25 @@ export default function Angel({ data }) {
                 pretitle={currentquestion.pretitle}
                 posttitle={currentquestion.posttitle}
                 code={currentquestion.code}
+                range={currentquestion.range}
+                maxvalue={currentquestion.max}
               />
             )}
             <div className={styles.buttons}>
-              <p
-                className={styles.previous}
-                onClick={() => {
-                  if (current !== 0) {
-                    setcurrent(current - 1);
-                  }
-                }}
-              >
-                Previous
-              </p>
+              {current !== 0 ? (
+                <p
+                  className={styles.previous}
+                  onClick={() => {
+                    if (current !== 0) {
+                      setcurrent(current - 1);
+                    }
+                  }}
+                >
+                  Previous
+                </p>
+              ) : (
+                <p></p>
+              )}
               <p
                 className={styles.next}
                 onClick={() => {
@@ -327,7 +353,7 @@ export default function Angel({ data }) {
                     label={item.title}
                     sign={item.sign}
                     min={item.min}
-                    max={item.max ?? 10000000}
+                    max={item.max ?? 100000000}
                     value={calcdata[item.code]}
                     setvalue={(e) =>
                       setcalcdata((prev) => ({ ...prev, [item.code]: e }))
@@ -339,20 +365,6 @@ export default function Angel({ data }) {
             <ResultBox resultdata={resultdata} />
           </div>
         )}
-
-        {showresult ? (
-          <div className={styles.chartSection}>
-            <div className={styles.chartContainer}>
-              <Bar
-                data={chartData}
-                className={styles.chart}
-                width={100}
-                height={100}
-                options={{ maintainAspectRatio: false }}
-              />
-            </div>
-          </div>
-        ) : null}
       </div>
     </>
   );

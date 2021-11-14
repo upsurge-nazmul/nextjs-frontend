@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { PolarArea } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -57,11 +57,11 @@ export default function RestroCalc({ data }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["Lumpsum Required to start today"],
+    labels: ["Orders", "Lumpsum Required to start today"],
     datasets: [
       {
-        label: "Lumpsum Required to start today",
-        data: [0],
+        label: ["Orders", "Lumpsum Required to start today"],
+        data: [0, 0],
         backgroundColor: ["#4166EB", "#FDCC03"],
         borderColor: ["#4166EB", "#FDCC03"],
         borderWidth: 1,
@@ -142,26 +142,25 @@ export default function RestroCalc({ data }) {
     let Lumpsum = equipmentcost + 6 * workingcapital + 6 * rent;
     let totalmonthly = workingcapital + rent;
     let orders =
-      (totalmonthly / ticketsize) * (1 - foodcost - discount - commision);
+      totalmonthly / (ticketsize * (1 - foodcost - discount - commision));
 
     setresultdata((prev) => ({
-      heading1: "Lumpsum Required to start today",
-      heading2: `Break-even analysis (Orders)`,
-      result2sign: " ",
-      result1: Math.round(Lumpsum),
-      result2: Math.round(orders),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "Lumpsum Required to start today",
-          data: [Math.round(Lumpsum)],
-          backgroundColor: ["#FDCC03"],
-          borderColor: ["#FDCC03"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      heading2: ``,
+      heading3: ``,
+      result1: `${Math.round(Lumpsum).toLocaleString("en-IN", {
+        currency: "INR",
+      })} lumpsum amount is required to start today`,
+      result2: `Monthly expenditure : ₹ ${Math.round(
+        totalmonthly
+      ).toLocaleString("en-IN", {
+        currency: "INR",
+      })}`,
+      result3: `Break-even analysis (Orders) : ${Math.round(
+        orders
+      ).toLocaleString("en-IN", {
+        currency: "INR",
+      })}`,
     }));
   }
   return (
@@ -202,16 +201,20 @@ export default function RestroCalc({ data }) {
               />
             )}
             <div className={styles.buttons}>
-              <p
-                className={styles.previous}
-                onClick={() => {
-                  if (current !== 0) {
-                    setcurrent(current - 1);
-                  }
-                }}
-              >
-                Previous
-              </p>
+              {current !== 0 ? (
+                <p
+                  className={styles.previous}
+                  onClick={() => {
+                    if (current !== 0) {
+                      setcurrent(current - 1);
+                    }
+                  }}
+                >
+                  Previous
+                </p>
+              ) : (
+                <p></p>
+              )}
               <p
                 className={styles.next}
                 onClick={() => {
@@ -263,10 +266,10 @@ export default function RestroCalc({ data }) {
           </div>
         )}
 
-        {showresult ? (
+        {/* {showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
-              <Bar
+              <PolarArea
                 data={chartData}
                 className={styles.chart}
                 width={100}
@@ -275,7 +278,7 @@ export default function RestroCalc({ data }) {
               />
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );

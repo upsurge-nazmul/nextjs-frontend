@@ -28,6 +28,8 @@ export default function Standard() {
       title: "How frequently you dine out ?",
       type: "input",
       code: "dineout",
+      min: 0,
+      max: 100,
     },
     {
       title: "Select preferred transport",
@@ -60,6 +62,8 @@ export default function Standard() {
       title: "How frequently you dine out ?",
       type: "input",
       code: "dineout",
+      min: 0,
+      max: 100,
     },
     {
       title: "Select preferred transport",
@@ -213,20 +217,10 @@ export default function Standard() {
     let total = 600 * calcdata.dineout + groceries + misc + rent + transport;
 
     setresultdata((prev) => ({
-      heading1: "Monthly Expense",
-      result1: Math.round(total),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "Monthly Expense",
-          data: [Math.round(total)],
-          backgroundColor: ["#FDCC03"],
-          borderColor: ["#FDCC03"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      result1: `Monthly Expense: ₹ ${Math.round(total).toLocaleString("en-IN", {
+        currency: "INR",
+      })}`,
     }));
   }
   return (
@@ -255,19 +249,24 @@ export default function Standard() {
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              maxvalue={currentquestion.max}
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {
@@ -318,20 +317,6 @@ export default function Standard() {
           <ResultBox resultdata={resultdata} />
         </div>
       )}
-
-      {showresult ? (
-        <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <Bar
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }

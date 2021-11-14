@@ -77,7 +77,7 @@ export default function HomeCalc({ seterror }) {
       title: "Enter the loan repayment duration",
       code: "years",
       min: 1,
-      max: 70,
+      max: 7,
       posttitle: "years",
     },
   ];
@@ -93,7 +93,7 @@ export default function HomeCalc({ seterror }) {
     result4: "",
   });
   const [chartData, setChartData] = useState({
-    labels: ["interest", "Loan Amount"],
+    labels: ["Interest", "Loan Amount"],
     datasets: [
       {
         label: "# of Votes",
@@ -202,9 +202,15 @@ export default function HomeCalc({ seterror }) {
       heading2: `Total Payment
       (Principal + Interest)`,
       heading3: "Loan EMI",
-      result1: Math.round(intrest),
-      result2: Math.round(totalpayment),
-      result3: Math.round(emiamount),
+      result1: Math.round(intrest).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result2: Math.round(totalpayment).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result3: Math.round(emiamount).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
     }));
     setChartData((prev) => ({
       ...prev,
@@ -241,6 +247,7 @@ export default function HomeCalc({ seterror }) {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
@@ -248,16 +255,20 @@ export default function HomeCalc({ seterror }) {
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {

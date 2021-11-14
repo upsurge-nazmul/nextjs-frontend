@@ -28,7 +28,7 @@ export default function CarCalc({ seterror }) {
       title: "Enter the tenure of the loan",
       code: "years",
       min: 1,
-      max: 70,
+      max: 10,
       posttitle: "years",
     },
     {
@@ -38,6 +38,7 @@ export default function CarCalc({ seterror }) {
       max: 1000000,
       code: "onetimepayment",
       pretitle: "₹",
+      range: true,
     },
   ]);
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
@@ -95,6 +96,11 @@ export default function CarCalc({ seterror }) {
     } else if (calcdata.type === "Hatchback") {
       loanamount = 700000;
     }
+    let onetimequestion = questions[2];
+    onetimequestion.max = loanamount;
+    let updatedarr = questions;
+    updatedarr[2] = onetimequestion;
+    setquestions(updatedarr);
     if (calcdata.onetimepayment) {
       loanamount = loanamount - calcdata.onetimepayment;
     }
@@ -108,9 +114,15 @@ export default function CarCalc({ seterror }) {
       heading2: `Total Payment
       (Principal + Interest)`,
       heading3: "Loan EMI",
-      result1: Math.round(intrest),
-      result2: Math.round(totalpayment),
-      result3: Math.round(emiamount),
+      result1: Math.round(intrest).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result2: Math.round(totalpayment).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result3: Math.round(emiamount).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
     }));
     setChartData((prev) => ({
       ...prev,
@@ -147,23 +159,29 @@ export default function CarCalc({ seterror }) {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {

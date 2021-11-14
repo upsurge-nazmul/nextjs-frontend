@@ -47,7 +47,7 @@ export default function InvestmentComparison() {
       title: "Enter the time duration of the first investment ?",
       code: "year1",
       min: 1,
-      max: 70,
+      max: 80,
       posttitle: "years",
     },
     {
@@ -55,7 +55,7 @@ export default function InvestmentComparison() {
       title: "Enter the time duration of the second investment ?",
       code: "year2",
       min: 1,
-      max: 70,
+      max: 80,
       posttitle: "years",
     },
     {
@@ -65,6 +65,7 @@ export default function InvestmentComparison() {
       min: 1,
       max: 10000000,
       pretitle: "₹",
+      range: true,
     },
     {
       type: "input",
@@ -73,6 +74,7 @@ export default function InvestmentComparison() {
       min: 1,
       max: 10000000,
       pretitle: "₹",
+      range: true,
     },
   ]);
   const [result, setresult] = useState(false);
@@ -146,8 +148,12 @@ export default function InvestmentComparison() {
     setresultdata((prev) => ({
       heading1: "Total Amount for " + calcdata.type1,
       heading2: "Total Amount for " + calcdata.type2,
-      result1: Math.round(result1),
-      result2: Math.round(result2),
+      result1: Math.round(result1).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result2: Math.round(result2).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
     }));
     setChartData((prev) => ({
       ...prev,
@@ -188,6 +194,8 @@ export default function InvestmentComparison() {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
+              range={currentquestion.range}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
@@ -195,16 +203,20 @@ export default function InvestmentComparison() {
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {

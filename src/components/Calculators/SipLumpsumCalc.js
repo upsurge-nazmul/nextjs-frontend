@@ -25,6 +25,7 @@ export default function HomeCalc({ seterror }) {
       min: 1,
       max: 10000000,
       pretitle: "₹",
+      range: true,
     },
     {
       title: "Investment Duration",
@@ -161,7 +162,9 @@ export default function HomeCalc({ seterror }) {
     } else if (calcdata.type === "Stock market") {
       setresultdata((prev) => ({
         heading1: "Sip For Stock Market",
-        result1: Math.round(stockmarket),
+        result1: Math.round(stockmarket).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
       }));
       setChartData((prev) => ({
         ...prev,
@@ -190,7 +193,11 @@ export default function HomeCalc({ seterror }) {
           {
             label: "Sips",
 
-            data: [Math.round(governmentb)],
+            data: [
+              Math.round(governmentb).toLocaleString("en-IN", {
+                currency: "INR",
+              }),
+            ],
             backgroundColor: ["#FDCC03"],
             borderColor: ["#FDCC03"],
             borderWidth: 1,
@@ -204,11 +211,21 @@ export default function HomeCalc({ seterror }) {
         heading3: "Sip For Gold",
         heading4: "Sip For Stock Market",
         heading5: "Sip For Government Bond",
-        result1: Math.round(fd),
-        result2: Math.round(mutualfund),
-        result3: Math.round(gold),
-        result4: Math.round(stockmarket),
-        result5: Math.round(governmentb),
+        result1: Math.round(fd).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
+        result2: Math.round(mutualfund).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
+        result3: Math.round(gold).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
+        result4: Math.round(stockmarket).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
+        result5: Math.round(governmentb).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
       }));
       setChartData((prev) => ({
         ...prev,
@@ -272,23 +289,29 @@ export default function HomeCalc({ seterror }) {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {

@@ -77,7 +77,7 @@ export default function EducationInvestmentCalc({ seterror }) {
       title: "Years remaining in admission",
       code: "years",
       min: 1,
-      max: 70,
+      max: 30,
       posttitle: "years",
     },
   ];
@@ -189,20 +189,10 @@ export default function EducationInvestmentCalc({ seterror }) {
     let monthlyinvestment = loanamount / (12 * calcdata.years);
 
     setresultdata((prev) => ({
-      heading1: "Monthly Investment",
-      result1: Math.round(monthlyinvestment),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "Monthly Investment",
-          data: [Math.round(monthlyinvestment)],
-          backgroundColor: ["#FDCC03"],
-          borderColor: ["#FDCC03"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      result1: `${Math.round(monthlyinvestment).toLocaleString("en-IN", {
+        currency: "INR",
+      })} should be your monthly investment.`,
     }));
   }
   return (
@@ -227,6 +217,7 @@ export default function EducationInvestmentCalc({ seterror }) {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
@@ -295,7 +286,7 @@ export default function EducationInvestmentCalc({ seterror }) {
         </div>
       )}
 
-      {showresult ? (
+      {/* {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Bar
@@ -307,7 +298,7 @@ export default function EducationInvestmentCalc({ seterror }) {
             />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

@@ -21,7 +21,8 @@ export default function BigMacCalc({ seterror }) {
       code: "inrmoney",
       min: 1,
       max: 10000000,
-      sign: "₹",
+      pretitle: "₹",
+      range: true,
     },
     {
       title: "Select Country",
@@ -89,10 +90,14 @@ export default function BigMacCalc({ seterror }) {
     var money = calcdata.inrmoney * ratio;
 
     setresultdata((prev) => ({
-      heading1: "Total Money (INR)",
-      heading2: `Worth in ${country}`,
-      result1: Math.round(calcdata.inrmoney),
-      result2: Math.round(money),
+      heading1: "Total Money",
+      heading2: `Worth in ${calcdata.country}`,
+      result1: Math.round(calcdata.inrmoney).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result2: Math.round(money).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
     }));
     setChartData((prev) => ({
       ...prev,
@@ -130,23 +135,29 @@ export default function BigMacCalc({ seterror }) {
               title={currentquestion.title}
               value={calcdata[currentquestion.code]}
               setvalue={setcalcdata}
+              maxvalue={currentquestion.max}
               minvalue={currentquestion.min}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>
-            <p
-              className={styles.previous}
-              onClick={() => {
-                if (current !== 0) {
-                  setcurrent(current - 1);
-                }
-              }}
-            >
-              Previous
-            </p>
+            {current !== 0 ? (
+              <p
+                className={styles.previous}
+                onClick={() => {
+                  if (current !== 0) {
+                    setcurrent(current - 1);
+                  }
+                }}
+              >
+                Previous
+              </p>
+            ) : (
+              <p></p>
+            )}
             <p
               className={styles.next}
               onClick={() => {
