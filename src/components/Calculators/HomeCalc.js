@@ -160,7 +160,11 @@ export default function HomeCalc({ data, seterror }) {
       (Principal + Interest)`,
       heading4: "Loan EMI",
       heading1: "The indicative value for home is",
-      result1: Math.round(loanamount).toLocaleString("en-IN", {
+      result1: Math.round(
+        calcdata.onetimepayment
+          ? parseInt(calcdata.onetimepayment) + parseInt(loanamount)
+          : loanamount
+      ).toLocaleString("en-IN", {
         currency: "INR",
       }),
       result2: Math.round(intrest).toLocaleString("en-IN", {

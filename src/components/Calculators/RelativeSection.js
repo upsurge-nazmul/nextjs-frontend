@@ -3,12 +3,11 @@ import React from "react";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
 export default function RelativeSection({ data, cards }) {
-  console.log(data, cards);
   const router = useRouter();
   function relate(item) {
     router.push(`/calculators/${item}`);
     let x = document.getElementById("home-page-header");
-    x.scrollIntoView({ behavior: "smooth" });
+    x.scrollIntoView();
   }
   return (
     <div className={styles.main}>
