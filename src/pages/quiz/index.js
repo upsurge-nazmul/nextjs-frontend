@@ -15,10 +15,49 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import JoinUs from "../../components/Home/JoinUs";
-function Quiz({ data }) {
+import LeaderBoard from "../../components/LeaderBoard";
+const specialchars = [
+  "#",
+  "$",
+  "%",
+  "*",
+  "&",
+  "(",
+  "@",
+  "_",
+  ")",
+  "+",
+  "-",
+  "&&",
+  "||",
+  "!",
+  "(",
+  ")",
+  "{",
+  "}",
+  "[",
+  "]",
+  "^",
+  "~",
+  "*",
+  "?",
+  ":",
+  "1",
+  "0",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+];
+function Quiz({ leaderboard }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showQuiz, setshowQuiz] = useState(false);
+  const [data, setdata] = useState(null);
   const [currentquiz, setcurrentquiz] = useState(data);
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
   const [timer, settimer] = useState(1000 * 60 * 15);
@@ -50,8 +89,11 @@ function Quiz({ data }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
+  const [quiztoken, setquiztoken] = useState("");
   useEffect(() => {
     setshowQuiz(data ? true : false);
+    if (!data) return;
+    setcurrentquestion(data.next_question);
     setcurrentquiz(data);
   }, [data]);
 
@@ -142,16 +184,17 @@ function Quiz({ data }) {
       seterror("Please enter valid phone number");
       return;
     }
-    let res = await FreeGameApis.presign({
-      playernickname: nickname,
-      playername: name,
-      playeremail: email,
-      number: phone,
+    let response = await QuizApis.startquiz({
+      name: name,
+      nickname: nickname,
+      phone: phone,
+      email: email,
     });
-    if (res) {
+    if (response && response.data && response.data.success) {
       setshowmain(true);
+      setdata(response.data.data);
     } else {
-      alert("error connecting server");
+      seterror(response.data?.message || "Error connecting to server");
     }
   }
   useEffect(() => {
@@ -273,12 +316,12 @@ function Quiz({ data }) {
               className={styles.input}
               value={nickname}
               onChange={(e) => setnickname(e.target.value)}
-              placeholder="Nickname"
+              placeholder="Nickname (optional)"
             />
             <input
               type="text"
               value={email}
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className={styles.input}
               placeholder="Email"
             />
@@ -302,12 +345,6 @@ function Quiz({ data }) {
             <div className={styles.buttons}>
               <div className={styles.startbutton} onClick={startgame}>
                 Start Playing
-              </div>
-              <div
-                className={styles.skipbutton}
-                onClick={() => setshowmain(true)}
-              >
-                Skip
               </div>
             </div>
           </div>
@@ -495,22 +532,20 @@ function Quiz({ data }) {
           ) : null}
         </div>
       )}
+      <LeaderBoard title="Quiz" data={leaderboard || []} />
       <JoinUs />
       <Footer />
     </div>
   );
 }
 
-export async function getServerSideProps({ params, req }) {
-  let quizData = {};
-  let response = await QuizApis.startquiz();
-  if (response && response.data && response.data.success) {
-    return { props: { data: response.data.data } };
+export async function getServerSideProps() {
+  let res = await QuizApis.leaderboard();
+  if (res && res.data && res.data.success) {
+    return { props: { leaderboard: res.data.data } };
   } else {
-    return { props: { data: null } };
+    return { props: { leaderboard: [] } };
   }
-
-  // Pass data to the page via props
 }
 
 export default Quiz;

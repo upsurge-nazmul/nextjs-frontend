@@ -17,13 +17,15 @@ const getallquestions = (payload, token) => {
 };
 
 const startquiz = (payload, token) => {
-  return ApiCalls.getResponse("quiz/start", payload, token);
+  return ApiCalls.postResponse("quiz/start", payload, token);
 };
 
 const nextquestion = (payload, token) => {
   return ApiCalls.getResponse("quiz/nextquestion", payload, token);
 };
-
+const leaderboard = (payload, token) => {
+  return ApiCalls.getResponse("quiz/leaderboard", payload);
+};
 //getchores
 const QuizApis = {
   getallquiz,
@@ -32,6 +34,7 @@ const QuizApis = {
   getquestionswithids,
   startquiz,
   nextquestion,
+  leaderboard,
 };
 
 export default QuizApis;

@@ -19,6 +19,10 @@ function HeaderTabSection({
         mobile ? styles.mobileTabSection : ""
       }`}
       onClick={() => {
+        if (pushTo === "/quiz" && router.pathname === "/quiz") {
+          window.location.reload();
+          return;
+        }
         if (mobile) {
           if (current === title) {
             setcurrent("");
