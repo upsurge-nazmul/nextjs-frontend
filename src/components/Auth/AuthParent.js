@@ -83,9 +83,7 @@ function AuthParent({
     }
   }
 
-  async function handleAppleAuth(data) {
-    
-  }
+  async function handleAppleAuth(data) {}
 
   useEffect(() => {
     seterror("");
@@ -115,7 +113,7 @@ function AuthParent({
         cookiePolicy={"single_host_origin"}
       />
       <AppleLogin
-        clientId={apple_client_id}
+        clientId={apple_client_id || ""}
         redirectURI="https://redirectUrl.com"
         usePopup
         scope="name email"
