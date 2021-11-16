@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import changetoint from "../../helpers/currency";
 export default function Retirement({ seterror }) {
   const [questions, setquestions] = useState([
     {
@@ -77,10 +78,10 @@ export default function Retirement({ seterror }) {
 
   function emi() {
     if (calcdata.age < 15) {
-      seterror("Age cannot be less than 18");
+      seterror("Age cannot be less than 15");
     }
-    if (!calcdata.money) {
-      seterror("Money required monthly is required");
+    if (!changetoint(calcdata.money) || changetoint(calcdata.money) < 10000) {
+      seterror("Money required monthly should be greater than 10,000");
     }
     let onetimequestion = questions[1];
     onetimequestion.max = calcdata.type - 5;
@@ -89,7 +90,8 @@ export default function Retirement({ seterror }) {
     setquestions(updatedarr);
     let remaininglife = 80 - calcdata.age;
     let monthlyinvestment =
-      (calcdata.money * remaininglife) / (calcdata.type - calcdata.age);
+      (changetoint(calcdata.money) * remaininglife) /
+      (calcdata.type - calcdata.age);
 
     setresultdata((prev) => ({
       heading1: "",
@@ -102,7 +104,10 @@ export default function Retirement({ seterror }) {
       datasets: [
         {
           label: "# of Votes",
-          data: [Math.round(monthlyinvestment), Math.round(calcdata.money)],
+          data: [
+            Math.round(monthlyinvestment),
+            Math.round(changetoint(calcdata.money)),
+          ],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
@@ -191,13 +196,13 @@ export default function Retirement({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

@@ -10,13 +10,8 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function InvestmentComparison() {
-  const [year1, setyear1] = useState(1);
-  const [year2, setyear2] = useState(1);
-  const [type1, settype1] = useState("");
-  const [type2, settype2] = useState("");
-  const [amount1, setamount1] = useState();
-  const [amount2, setamount2] = useState();
+import changetoint from "../../helpers/currency";
+export default function InvestmentComparison({ seterror }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the First Investment Type",
@@ -48,6 +43,7 @@ export default function InvestmentComparison() {
       code: "year1",
       min: 1,
       max: 80,
+      range: true,
       posttitle: "years",
     },
     {
@@ -56,14 +52,15 @@ export default function InvestmentComparison() {
       code: "year2",
       min: 1,
       max: 80,
+      range: true,
       posttitle: "years",
     },
     {
       type: "input",
       title: "Enter the principal amount invested in the first investment?",
       code: "amount1",
-      min: 1,
-      max: 10000000,
+      min: 1000,
+      max: 100000000,
       pretitle: "₹",
       range: true,
     },
@@ -71,8 +68,8 @@ export default function InvestmentComparison() {
       type: "input",
       title: "Enter the principal amount invested in the second investment?",
       code: "amount2",
-      min: 1,
-      max: 10000000,
+      min: 1000,
+      max: 100000000,
       pretitle: "₹",
       range: true,
     },
@@ -119,6 +116,14 @@ export default function InvestmentComparison() {
   }, [calcdata, current]);
 
   function emi() {
+    if (calcdata.year1 <= 0) {
+      seterror("Duration of the first investment shoud be greater than 0");
+      return;
+    }
+    if (calcdata.year2 <= 0) {
+      seterror("Duration of the second investment shoud be greater than 0");
+      return;
+    }
     let intrest1 = 0;
     let intrest2 = 0;
     if (calcdata.type1 === "Fixed deposit") {
@@ -143,8 +148,10 @@ export default function InvestmentComparison() {
     } else {
       intrest2 = 3.65 / 100;
     }
-    let result1 = calcdata.amount1 * Math.pow(1 + intrest1, calcdata.year1);
-    let result2 = calcdata.amount2 * Math.pow(1 + intrest2, calcdata.year2);
+    let result1 =
+      changetoint(calcdata.amount1) * Math.pow(1 + intrest1, calcdata.year1);
+    let result2 =
+      changetoint(calcdata.amount2) * Math.pow(1 + intrest2, calcdata.year2);
     setresultdata((prev) => ({
       heading1: "Total Amount for " + calcdata.type1,
       heading2: "Total Amount for " + calcdata.type2,
@@ -253,13 +260,13 @@ export default function InvestmentComparison() {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

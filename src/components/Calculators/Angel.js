@@ -11,7 +11,8 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
-export default function Angel({ data }) {
+import changetoint from "../../helpers/currency";
+export default function Angel({ data, seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select Industry type",
@@ -188,9 +189,9 @@ export default function Angel({ data }) {
     type: "E-commerce",
     revenue: "No",
     property: "Owned",
-    rev1: 1000,
-    rev2: 1000,
-    rev3: 1000,
+    rev1: 100000,
+    rev2: 100000,
+    rev3: 100000,
     erev1: 1000,
     erev2: 1000,
     erev3: 1000,
@@ -215,14 +216,40 @@ export default function Angel({ data }) {
         )
       );
     }
-  }, [calcdata]);
+  }, [calcdata.revenue]);
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    console.log(calcdata);
+    if (calcdata.rev1 == "") {
+      seterror("Revenue for year 1 is required");
+      return;
+    }
+    if (calcdata.rev2 == "") {
+      seterror("Revenue for year 2 is required");
+      return;
+    }
+    if (calcdata.rev3 == "") {
+      seterror("Revenue for year 3 is required");
+      return;
+    }
+    if (calcdata.erev1 === "") {
+      seterror("Expected revenue for year 1 is required");
+      return;
+    }
+    if (calcdata.erev2 == "") {
+      seterror("Expected revenue for year 2 is required");
+      return;
+    }
+    if (calcdata.erev3 == "") {
+      seterror("Expected revenue for year 3 is required");
+      return;
+    }
     let valuation = 0;
     if (calcdata.type === "E-commerce") {
       valuation = 2;
@@ -241,15 +268,21 @@ export default function Angel({ data }) {
     let investment = 0;
     if (calcdata.revenue === "Yes") {
       growthrate =
-        (calcdata.rev2 / calcdata.rev1 + calcdata.rev3 / calcdata.rev2) / 2 - 1;
-
-      investment = calcdata.rev1 * valuation * (1 + growthrate / 2);
-    } else {
-      growthrate =
-        (calcdata.erev2 / calcdata.erev1 + calcdata.erev3 / calcdata.erev2) /
+        (changetoint(calcdata.rev2) / changetoint(calcdata.rev1) +
+          changetoint(calcdata.rev3) / changetoint(calcdata.rev2)) /
           2 -
         1;
-      investment = calcdata.erev1 * valuation * (1 + growthrate / 2) * 0.8;
+
+      investment =
+        changetoint(calcdata.rev1) * valuation * (1 + growthrate / 2);
+    } else {
+      growthrate =
+        (changetoint(calcdata.erev2) / changetoint(calcdata.erev1) +
+          changetoint(calcdata.erev3) / changetoint(calcdata.erev2)) /
+          2 -
+        1;
+      investment =
+        changetoint(calcdata.erev1) * valuation * (1 + growthrate / 2) * 0.8;
     }
 
     setresultdata((prev) => ({
@@ -318,10 +351,12 @@ export default function Angel({ data }) {
               <p
                 className={styles.next}
                 onClick={() => {
-                  if (current !== questions.length - 1) {
-                    setcurrent(current + 1);
-                  } else {
-                    setshowresult(true);
+                  if (!error) {
+                    if (current !== questions.length - 1) {
+                      setcurrent(current + 1);
+                    } else {
+                      setshowresult(true);
+                    }
                   }
                 }}
               >
@@ -351,13 +386,13 @@ export default function Angel({ data }) {
                 return (
                   <InputBlock
                     label={item.title}
-                    sign={item.sign}
-                    min={item.min}
-                    max={item.max ?? 100000000}
+                    posttitle={item.posttitle}
+                    pretitle={item.pretitle}
+                    minvalue={item.min}
+                    maxvalue={item.max}
+                    code={item.code}
                     value={calcdata[item.code]}
-                    setvalue={(e) =>
-                      setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                    }
+                    setvalue={setcalcdata}
                   />
                 );
               }

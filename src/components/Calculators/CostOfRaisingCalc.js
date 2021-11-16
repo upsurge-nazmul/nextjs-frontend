@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import changetoint from "../../helpers/currency";
 export default function CostOfRaisingCalc() {
   const [marriage, setmarriage] = useState();
   const [type, settype] = useState("");
@@ -97,21 +98,21 @@ export default function CostOfRaisingCalc() {
     }
     if (calcdata.college === "Tier 1") {
       collegeexpense = 2000000;
-    } else if (calcdata.school === "Tier 2") {
+    } else if (calcdata.college === "Tier 2") {
       collegeexpense = 1500000;
     } else {
       collegeexpense = 1000000;
     }
     if (calcdata.marriage === "Tier 1") {
       marriageexpense = 4000000;
-    } else if (calcdata.school === "Tier 2") {
+    } else if (calcdata.marriage === "Tier 2") {
       marriageexpense = 2000000;
     } else {
       marriageexpense = 800000;
     }
     if (calcdata.extra === "Tier 1") {
       extraeexpense = 1080000;
-    } else if (calcdata.school === "Tier 2") {
+    } else if (calcdata.extra === "Tier 2") {
       extraeexpense = 864000;
     } else {
       extraeexpense = 648000;
@@ -209,7 +210,12 @@ export default function CostOfRaisingCalc() {
                   max={item.max}
                   value={calcdata[item.code]}
                   setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                    setcalcdata((prev) => ({
+                      ...prev,
+                      [item.code]: changetoint(e).toLocaleString("en-IN", {
+                        currency: "INR",
+                      }),
+                    }))
                   }
                 />
               );

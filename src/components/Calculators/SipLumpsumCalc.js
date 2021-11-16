@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import changetoint from "../../helpers/currency";
 export default function HomeCalc({ seterror }) {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("All");
@@ -22,8 +23,8 @@ export default function HomeCalc({ seterror }) {
       type: "input",
       title: "Enter money needed in future.",
       code: "amount",
-      min: 1,
-      max: 10000000,
+      min: 10000,
+      max: 100000000,
       pretitle: "₹",
       range: true,
     },
@@ -34,6 +35,7 @@ export default function HomeCalc({ seterror }) {
       min: 1,
       max: 80,
       posttitle: "years",
+      range: true,
     },
     {
       title: "Investment Type",
@@ -76,7 +78,7 @@ export default function HomeCalc({ seterror }) {
   const [calcdata, setcalcdata] = useState({
     years: 1,
     type: "All",
-    amount: 1000,
+    amount: 10000,
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -89,19 +91,22 @@ export default function HomeCalc({ seterror }) {
   }, [calcdata, current]);
 
   function emi() {
-    if (!calcdata.years) {
+    if (!calcdata.years || calcdata.years <= 0) {
       seterror("Investment Duration cannot be less than 1 year");
     }
-    if (!calcdata.amount) {
-      seterror("Money needed in future is required");
+    if (!changetoint(calcdata.amount) || changetoint(calcdata.amount) <= 1000) {
+      seterror("Money needed in future shoud be greater than 10,000");
     }
-    let fd = calcdata.amount / Math.pow(1 + 5 / 100, calcdata.years);
-    let mutualfund = calcdata.amount / Math.pow(1 + 10.4 / 100, calcdata.years);
-    let gold = calcdata.amount / Math.pow(1 + 10 / 100, calcdata.years);
+    let fd =
+      changetoint(calcdata.amount) / Math.pow(1 + 5 / 100, calcdata.years);
+    let mutualfund =
+      changetoint(calcdata.amount) / Math.pow(1 + 10.4 / 100, calcdata.years);
+    let gold =
+      changetoint(calcdata.amount) / Math.pow(1 + 10 / 100, calcdata.years);
     let stockmarket =
-      calcdata.amount / Math.pow(1 + 13.9 / 100, calcdata.years);
+      changetoint(calcdata.amount) / Math.pow(1 + 13.9 / 100, calcdata.years);
     let governmentb =
-      calcdata.amount / Math.pow(1 + 3.65 / 100, calcdata.years);
+      changetoint(calcdata.amount) / Math.pow(1 + 3.65 / 100, calcdata.years);
     if (calcdata.type === "Fixed deposit") {
       setresultdata((prev) => ({
         heading1: "Sip For Fixed Deposit",
@@ -339,7 +344,12 @@ export default function HomeCalc({ seterror }) {
                   max={item.max}
                   value={calcdata[item.code]}
                   setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                    setcalcdata((prev) => ({
+                      ...prev,
+                      [item.code]: changetoint(e).toLocaleString("en-IN", {
+                        currency: "INR",
+                      }),
+                    }))
                   }
                   options={item.options}
                 />
@@ -348,13 +358,13 @@ export default function HomeCalc({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  maxvalue={item.max}
+                  setvalue={setcalcdata}
                 />
               );
             }

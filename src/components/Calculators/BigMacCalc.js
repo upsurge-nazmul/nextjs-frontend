@@ -9,6 +9,7 @@ import BigCalcInput from "./BigCalcInput";
 import Progress from "../Progress";
 import InputBlock from "./InputBlock";
 import DropBox from "./DropBox";
+import changetoint from "../../helpers/currency";
 export default function BigMacCalc({ seterror }) {
   const [inrmoney, setyear] = useState(1);
   const [type, settype] = useState("");
@@ -19,7 +20,7 @@ export default function BigMacCalc({ seterror }) {
       type: "input",
       title: "Enter the amount",
       code: "inrmoney",
-      min: 1,
+      min: 100,
       max: 10000000,
       pretitle: "₹",
       range: true,
@@ -56,7 +57,7 @@ export default function BigMacCalc({ seterror }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    inrmoney: 1,
+    inrmoney: 100,
     country: "UK",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
@@ -69,8 +70,11 @@ export default function BigMacCalc({ seterror }) {
   }, [calcdata, current]);
 
   function emi() {
-    if (!calcdata.inrmoney) {
-      seterror("Amount is required");
+    if (
+      !changetoint(calcdata.inrmoney) ||
+      changetoint(calcdata.inrmoney) < 100
+    ) {
+      seterror("Amount should not be less than 100");
     }
     let bigmac = 0;
     if (calcdata.country === "Singapore") {
@@ -87,14 +91,17 @@ export default function BigMacCalc({ seterror }) {
       bigmac = 3.55;
     }
     let ratio = 2.55 / bigmac;
-    var money = calcdata.inrmoney * ratio;
+    var money = changetoint(calcdata.inrmoney) * ratio;
 
     setresultdata((prev) => ({
       heading1: "Total Money",
       heading2: `Worth in ${calcdata.country}`,
-      result1: Math.round(calcdata.inrmoney).toLocaleString("en-IN", {
-        currency: "INR",
-      }),
+      result1: Math.round(changetoint(calcdata.inrmoney)).toLocaleString(
+        "en-IN",
+        {
+          currency: "INR",
+        }
+      ),
       result2: Math.round(money).toLocaleString("en-IN", {
         currency: "INR",
       }),
@@ -105,7 +112,7 @@ export default function BigMacCalc({ seterror }) {
       datasets: [
         {
           label: "Worth Comparision",
-          data: [Math.round(calcdata.inrmoney), Math.round(money)],
+          data: [Math.round(changetoint(calcdata.inrmoney)), Math.round(money)],
           backgroundColor: ["#FDCC03", "#4166EB"],
           borderColor: ["#FDCC03", "#4166EB"],
           borderWidth: 1,
@@ -194,13 +201,13 @@ export default function BigMacCalc({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

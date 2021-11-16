@@ -11,6 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
+import changetoint from "../../helpers/currency";
 export default function RestroCalc({ data }) {
   const [questions, setquestions] = useState([
     {
@@ -29,7 +30,7 @@ export default function RestroCalc({ data }) {
     {
       title: "Select property type",
       type: "select",
-      options: ["Owned", "Leased from CloudKitchen Companies"],
+      options: ["Owned", "Leased from Cloud Kitchen Companies"],
       code: "property",
     },
     {
@@ -256,7 +257,12 @@ export default function RestroCalc({ data }) {
                     max={item.max}
                     value={calcdata[item.code]}
                     setvalue={(e) =>
-                      setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                      setcalcdata((prev) => ({
+                        ...prev,
+                        [item.code]: changetoint(e).toLocaleString("en-IN", {
+                          currency: "INR",
+                        }),
+                      }))
                     }
                   />
                 );

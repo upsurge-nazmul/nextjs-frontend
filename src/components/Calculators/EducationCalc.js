@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import changetoint from "../../helpers/currency";
 export default function HomeCalc({ seterror }) {
   const [questions, setquestions] = useState([
     {
@@ -34,16 +35,22 @@ export default function HomeCalc({ seterror }) {
       title: "Select Course",
       type: "select",
       code: "course",
-      options: ["MBA", "Masters", "Undergrad"],
+      options: ["MBA", "Masters", "Undergraduate degree"],
     },
-
+    {
+      title: "Select Bank Type",
+      type: "select",
+      code: "bank",
+      options: ["Public", "Private"],
+    },
     {
       type: "input",
       title: "Enter the loan repayment duration",
       code: "years",
       min: 1,
-      max: 70,
+      max: 7,
       posttitle: "years",
+      range: true,
     },
   ]);
   const backupquestions = [
@@ -69,9 +76,14 @@ export default function HomeCalc({ seterror }) {
       title: "Select Course",
       type: "select",
       code: "course",
-      options: ["MBA", "Masters", "Undergrad"],
+      options: ["MBA", "Masters", "Undergraduate degree"],
     },
-
+    {
+      title: "Select Bank Type",
+      type: "select",
+      code: "bank",
+      options: ["Public", "Private"],
+    },
     {
       type: "input",
       title: "Enter the loan repayment duration",
@@ -79,6 +91,7 @@ export default function HomeCalc({ seterror }) {
       min: 1,
       max: 7,
       posttitle: "years",
+      range: true,
     },
   ];
   const [current, setcurrent] = useState(0);
@@ -110,6 +123,7 @@ export default function HomeCalc({ seterror }) {
     university: "Public",
     country: "US",
     course: "MBA",
+    bank: "Public",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -121,21 +135,21 @@ export default function HomeCalc({ seterror }) {
     } else {
       setquestions(backupquestions.filter((item) => item.code !== "country"));
     }
-  }, [calcdata]);
+  }, [calcdata.type]);
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
     emi();
   }, [calcdata, current]);
   function emi() {
-    if (!calcdata.years) {
+    if (!calcdata.years || calcdata.years <= 0) {
       seterror("Tenure of the loan cannot be less than 1 year");
     }
     let monthlyrate = 10 / 12 / 100;
-    if (calcdata.university === "Private") {
+    if (calcdata.bank === "Private") {
       monthlyrate = 14 / 12 / 100;
     }
-    var months = calcdata.years * 12;
+    var months = changetoint(calcdata.years) * 12;
 
     let loanamount = 0;
     if (calcdata.type === "Indian") {
@@ -252,6 +266,7 @@ export default function HomeCalc({ seterror }) {
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>
@@ -291,7 +306,8 @@ export default function HomeCalc({ seterror }) {
               return (
                 <DropBox
                   title={item.title}
-                  sign={item.sign}
+                  pretitle={item.pretitle}
+                  posttitle={currentquestion.posttitle}
                   min={item.min}
                   max={item.max}
                   value={calcdata[item.code]}
@@ -305,13 +321,13 @@ export default function HomeCalc({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

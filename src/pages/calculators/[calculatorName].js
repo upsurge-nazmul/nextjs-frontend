@@ -57,19 +57,19 @@ function CalculatorsPage() {
     //   icon: "https://i.ibb.co/6rgnFFS/Untitled-design-8.png",
     // },
     sip: {
-      heading: "Financing",
+      heading: "Financing Calculator",
       subheading: `It tells how much money you need to invest monthly in various assets to reach a targeted saving amount.`,
       relative: ["investmentcomparison", "retirement", "costofraising"],
       icon: "https://i.ibb.co/b1Dxh2v/Untitled-design-9.png",
     },
     educationinvestments: {
-      heading: "Education investment",
+      heading: "Education investment Calculator",
       subheading: `This calculator gives an estimate of how much money you need to save monthly to afford different education programs`,
       relative: ["college", "costofraising", "education"],
       icon: "https://i.ibb.co/8BdyXNb/Untitled-design-66.png",
     },
     retirement: {
-      heading: "Retirement",
+      heading: "Retirement Calculator",
       subheading:
         "It calculates how much a user needs to save in order to get a desired monthly amount after retirement.",
       icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
@@ -141,7 +141,7 @@ function CalculatorsPage() {
     }
   }, [calculatorName]);
   return (
-    <div className={styles.calculatorsPage}>
+    <div className={styles.calculatorsPage} id="calc-page">
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -155,7 +155,7 @@ function CalculatorsPage() {
       <div className={styles.contentWrapper}>
         <WaitingListCta />
         <div className={styles.headingSection}>
-          <h1 className={styles.mainheading}>{heading} Calculator</h1>
+          <h1 className={styles.mainheading}>{heading}</h1>
           <h2 className={styles.heading}>How it works</h2>
           <h3 className={styles.subheading}>{subheading}</h3>
           <h3 className={styles.subheading} style={{ color: "red" }}>
@@ -165,6 +165,7 @@ function CalculatorsPage() {
 
         <CalculatorRouter
           seterror={seterror}
+          error={error}
           name={calculatorName}
           calcdata={data}
         />

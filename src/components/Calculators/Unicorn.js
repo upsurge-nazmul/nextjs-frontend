@@ -11,6 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
+import changetoint from "../../helpers/currency";
 export default function Unicorn({ data }) {
   const [questions, setquestions] = useState([
     {
@@ -77,13 +78,13 @@ export default function Unicorn({ data }) {
     ) {
       valuation = 10;
     }
-    let revenue = 1000000000 / valuation;
+    let revenue = 74446000000 / valuation;
 
     setresultdata((prev) => ({
       heading1: "",
-      result1: `${Math.round(revenue).toLocaleString("en-IN", {
+      result1: `Revenue of ₹ ${Math.round(revenue).toLocaleString("en-IN", {
         currency: "INR",
-      })} revenue needs to be reached `,
+      })} needs to be reached`,
     }));
   }
   return (
@@ -124,16 +125,20 @@ export default function Unicorn({ data }) {
               />
             )}
             <div className={styles.buttons}>
-              <p
-                className={styles.previous}
-                onClick={() => {
-                  if (current !== 0) {
-                    setcurrent(current - 1);
-                  }
-                }}
-              >
-                Previous
-              </p>
+              {current !== 0 ? (
+                <p
+                  className={styles.previous}
+                  onClick={() => {
+                    if (current !== 0) {
+                      setcurrent(current - 1);
+                    }
+                  }}
+                >
+                  Previous
+                </p>
+              ) : (
+                <p></p>
+              )}
               <p
                 className={styles.next}
                 onClick={() => {
@@ -175,7 +180,12 @@ export default function Unicorn({ data }) {
                     max={item.max ?? 10000000}
                     value={calcdata[item.code]}
                     setvalue={(e) =>
-                      setcalcdata((prev) => ({ ...prev, [item.code]: e }))
+                      setcalcdata((prev) => ({
+                        ...prev,
+                        [item.code]: changetoint(e).toLocaleString("en-IN", {
+                          currency: "INR",
+                        }),
+                      }))
                     }
                   />
                 );

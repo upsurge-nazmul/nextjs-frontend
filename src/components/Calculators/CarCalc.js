@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcInput from "./BigCalcInput";
 import BigCalcDropdown from "./BigCalcDropdown";
+import changetoint from "../../helpers/currency";
 export default function CarCalc({ seterror }) {
   const [calcdata, setcalcdata] = useState({
     years: 1,
@@ -97,12 +98,12 @@ export default function CarCalc({ seterror }) {
       loanamount = 700000;
     }
     let onetimequestion = questions[2];
-    onetimequestion.max = loanamount;
+    onetimequestion.max = loanamount / 2;
     let updatedarr = questions;
     updatedarr[2] = onetimequestion;
     setquestions(updatedarr);
     if (calcdata.onetimepayment) {
-      loanamount = loanamount - calcdata.onetimepayment;
+      loanamount = loanamount - changetoint(calcdata.onetimepayment);
     }
     let emiamount =
       (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
@@ -110,17 +111,25 @@ export default function CarCalc({ seterror }) {
     let totalpayment = emiamount * months;
     let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
+      heading1: "The indicative value for car is",
+      result1: Math.round(
+        changetoint(calcdata.onetimepayment)
+          ? changetoint(calcdata.onetimepayment) + parseInt(loanamount)
+          : loanamount
+      ).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      heading2: "Total Interest Payable",
+      heading3: `Total Payment
       (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest).toLocaleString("en-IN", {
+      heading4: "Loan EMI",
+      result2: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result2: Math.round(totalpayment).toLocaleString("en-IN", {
+      result3: Math.round(totalpayment).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(emiamount).toLocaleString("en-IN", {
+      result4: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));
@@ -218,13 +227,13 @@ export default function CarCalc({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

@@ -10,7 +10,8 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-export default function Standard() {
+import changetoint from "../../helpers/currency";
+export default function Standard({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select City",
@@ -25,14 +26,14 @@ export default function Standard() {
       options: ["Shared", "Personal"],
     },
     {
-      title: "How frequently you dine out ?",
+      title: "How frequently do you dine out ?",
       type: "input",
       code: "dineout",
       min: 0,
       max: 100,
     },
     {
-      title: "Select preferred transport",
+      title: "Select preferred mode of transport?",
       type: "select",
       code: "transport",
       options: ["Public", "Private"],
@@ -59,21 +60,21 @@ export default function Standard() {
       options: ["Shared", "Personal"],
     },
     {
-      title: "How frequently you dine out ?",
+      title: "How frequently do you dine out ?",
       type: "input",
       code: "dineout",
       min: 0,
       max: 100,
     },
     {
-      title: "Select preferred transport",
+      title: "Select preferred mode of transport?",
       type: "select",
       code: "transport",
       options: ["Public", "Private"],
     },
 
     {
-      type: "input",
+      type: "select",
       title: "Select transport vehicle",
       code: "vehicle",
       options: ["Car", "Bike"],
@@ -107,23 +108,27 @@ export default function Standard() {
     type: "Shared",
     transport: "Public",
     dineout: 1,
-    vehicle: "Bike",
+    vehicle: "Car",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
+
+  useEffect(() => {
+    seterror("");
+    setcurrentquestion(questions[current]);
+    emi();
+  }, [calcdata, current]);
   useEffect(() => {
     if (calcdata.transport !== "Private") {
       setquestions(backupquestions.filter((item) => item.code !== "vehicle"));
     } else {
-      setquestions(questions);
+      setquestions(backupquestions);
     }
-  }, [calcdata]);
-  useEffect(() => {
-    setcurrentquestion(questions[current]);
-    emi();
-  }, [calcdata, current]);
+  }, [calcdata.transport]);
   function emi() {
-    let loanamount = 0;
+    if (calcdata.dineout === "") {
+      seterror("No. of dinouts is required.");
+    }
     let groceries = 2500;
     let misc = 0;
     let rent = 0;
@@ -214,7 +219,8 @@ export default function Standard() {
       }
     }
 
-    let total = 600 * calcdata.dineout + groceries + misc + rent + transport;
+    let total =
+      600 * changetoint(calcdata.dineout) + groceries + misc + rent + transport;
 
     setresultdata((prev) => ({
       heading1: "",
@@ -270,10 +276,12 @@ export default function Standard() {
             <p
               className={styles.next}
               onClick={() => {
-                if (current !== questions.length - 1) {
-                  setcurrent(current + 1);
-                } else {
-                  setshowresult(true);
+                if (!error) {
+                  if (current !== questions.length - 1) {
+                    setcurrent(current + 1);
+                  } else {
+                    setshowresult(true);
+                  }
                 }
               }}
             >
@@ -303,13 +311,13 @@ export default function Standard() {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }

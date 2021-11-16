@@ -19,9 +19,7 @@ function DropDown({
 
   useEffect(() => {
     function getifclickedoutside(e) {
-      console.log(e.target);
       let elmnt = document.getElementById("dropdown" + options[0]);
-      console.log(elmnt);
       if (elmnt !== null && !elmnt.contains(e.target)) {
         setshowoptions(false);
       }

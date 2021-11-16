@@ -11,7 +11,7 @@ function CalcFaq({ name }) {
       {
         question:
           "What is the time duration of mortgage (home loan) usually for houses?",
-        answer: ` Again, it depends on the buyer and the country. In India, the most popular mortgage duration is 10 years, whereas in developed countries like the US has the most popular duration as 30 years*`,
+        answer: `In India, the most popular mortgage duration is 10 years, whereas developed countries like the US have the most popular duration of 30 years.`,
       },
       {
         question: "Should we rent a house or buy one on EMI?",
@@ -57,12 +57,12 @@ function CalcFaq({ name }) {
       {
         question: "What is Big Mac index based on?",
         answer:
-          "As the name suggests, Big Mac index is based on the cost of Big Mac burger in various countries.",
+          "As the name suggests, the Big Mac index is based on the cost of Big Mac burgers in various countries.",
       },
       {
         question: "How reliable is Big Mac Index?",
         answer:
-          "Historically Big mac index has served as a great indicator of Purchasing Power parity of various countries in the past. It has been widely accepted by economists as a quick way to judge various countries currency.",
+          "Historically big mac index has served as a great indicator of Purchasing Power parity of various countries in the past. It has been widely accepted by economists as a quick way to judge various countries' currency.",
       },
     ],
     retirement: [
@@ -110,7 +110,7 @@ function CalcFaq({ name }) {
         question:
           "Is the restaurant business a capital-intensive business, if yes then why?",
         answer:
-          "Yes restaurant is a capital-intensive business. A restaurant is a physical business that needs to meet various costs to keep it up and running and therefore requires a lot of capital such as rent, salary, delivery cost, maintenance, production, and electricity cost. Compare this to a software business where major cost is just the human resource expense and you will get an idea of why a restaurant is capital-intensive.",
+          "Yes, a restaurant is a capital-intensive business. A restaurant is a physical business that needs to meet various costs to keep it up and running and therefore requires a lot of capital such as rent, salary, delivery cost, maintenance, production, and electricity cost. Compare this to a software business where the major cost is just the human resource expense and you will get an idea of why a restaurant is capital-intensive.",
       },
       {
         question:
@@ -133,7 +133,7 @@ function CalcFaq({ name }) {
       },
       {
         question: "What is a usual lifecycle of a unicorn startup?",
-        answer: `It starts with Ideation. The founders usually identify a set of problems and work on solving it. They build the initial solution for the same. It gains some traction and acceptance in the target user base. Next is Series A funding by various venture capitalists. They put in their money to fund the idea and make it grow hoping to make profits when it does. What follows next are rounds and rounds of high user growth and more and more funding. By the latest rounds of fundings startups usually manage to reach a unicorn valuation. Once this milestone is reached, many startups turn to the general public for the next round of funding and to offer their investors an exit option - Going public (in other words issuing IPO - Initial Public Offering)`,
+        answer: `It starts with Ideation. The founders usually identify a set of problems and work on solving them. They build the initial solution for the same. It gains some traction and acceptance in the target user base. Next is Series A funding by various venture capitalists. They put in their money to fund the idea and make it grow hoping to make profits when it does. What follows next are rounds and rounds of high user growth and more and more funding. By the latest rounds of fundings startups usually manage to reach a unicorn valuation. Once this milestone is reached, many startups turn to the general public for the next round of funding and to offer their investors an exit option - Going public (in other words issuing IPO - Initial Public Offering)`,
       },
     ],
     angel: [

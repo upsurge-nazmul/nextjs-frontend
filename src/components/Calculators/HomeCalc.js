@@ -11,6 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
+import changetoint from "../../helpers/currency";
 export default function HomeCalc({ data, seterror }) {
   const [questions, setquestions] = useState([
     {
@@ -20,10 +21,16 @@ export default function HomeCalc({ data, seterror }) {
       code: "type",
     },
     {
-      title: "No Of Bedrooms",
+      title: "No. Of Bedrooms",
       type: "select",
       options: ["2 rooms", "3 rooms", "4 rooms"],
       code: "noofrooms",
+    },
+    {
+      title: "Select the size of Bungalow",
+      type: "select",
+      options: ["7 BHK", "11 BHK", "16 BHK"],
+      code: "sizebunglow",
     },
     {
       title: "Select the City",
@@ -50,7 +57,50 @@ export default function HomeCalc({ data, seterror }) {
       range: false,
     },
   ]);
-
+  const backupquestions = [
+    {
+      title: "Select the type of house",
+      type: "select",
+      options: ["Apartment", "Bungalow"],
+      code: "type",
+    },
+    {
+      title: "No. Of Bedrooms",
+      type: "select",
+      options: ["2 rooms", "3 rooms", "4 rooms"],
+      code: "noofrooms",
+    },
+    {
+      title: "Select the size of Bungalow",
+      type: "select",
+      options: ["7 BHK", "11 BHK", "16 BHK"],
+      code: "sizebunglow",
+    },
+    {
+      title: "Select the City",
+      type: "select",
+      options: ["Delhi", "Bangalore", "Chennai", "Hyderabad"],
+      code: "city",
+    },
+    {
+      type: "input",
+      title: "Enter Down-Payment",
+      min: 0,
+      max: 100000000,
+      pretitle: "₹",
+      range: true,
+      code: "onetimepayment",
+    },
+    {
+      type: "input",
+      title: "Enter the tenure of the loan",
+      min: 5,
+      max: 30,
+      posttitle: "years",
+      code: "years",
+      range: false,
+    },
+  ];
   const [result, setresult] = useState(false);
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
@@ -81,6 +131,7 @@ export default function HomeCalc({ data, seterror }) {
     noofrooms: "2 rooms",
     city: "Delhi",
     onetimepayment: 0,
+    sizebunglow: "7 BHK",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -91,6 +142,15 @@ export default function HomeCalc({ data, seterror }) {
     emi();
     setresult(true);
   }, [calcdata, current]);
+  useEffect(() => {
+    if (calcdata.type !== "Apartment") {
+      setquestions(backupquestions.filter((item) => item.code !== "noofrooms"));
+    } else {
+      setquestions(
+        backupquestions.filter((item) => item.code !== "sizebunglow")
+      );
+    }
+  }, [calcdata.type]);
 
   function emi() {
     if (!calcdata.years) {
@@ -99,49 +159,82 @@ export default function HomeCalc({ data, seterror }) {
     let monthlyrate = 12 / 12 / 100;
     var months = calcdata.years * 12;
     let loanamount = 0;
-    if (calcdata.noofrooms === "2 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 4500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 6000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 3500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 5000000;
-      }
-    } else if (calcdata.noofrooms === "3 rooms") {
-      if (calcdata.city === "Delhi") {
-        loanamount = 7500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 10000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 6500000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 8000000;
+    if (calcdata.type === "Apartment") {
+      if (calcdata.noofrooms === "2 rooms") {
+        if (calcdata.city === "Delhi") {
+          loanamount = 4500000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 6000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 3500000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 5000000;
+        }
+      } else if (calcdata.noofrooms === "3 rooms") {
+        if (calcdata.city === "Delhi") {
+          loanamount = 7500000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 10000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 6500000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 8000000;
+        }
+      } else {
+        if (calcdata.city === "Delhi") {
+          loanamount = 12500000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 20000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 18000000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 20000000;
+        }
       }
     } else {
-      if (calcdata.city === "Delhi") {
-        loanamount = 12500000;
-      } else if (calcdata.city === "Bangalore") {
-        loanamount = 20000000;
-      } else if (calcdata.city === "Chennai") {
-        loanamount = 18000000;
-      } else if (calcdata.city === "Hyderabad") {
-        loanamount = 20000000;
+      if (calcdata.sizebunglow === "7 BHK") {
+        if (calcdata.city === "Delhi") {
+          loanamount = 60000000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 55000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 50000000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 50000000;
+        }
+      } else if (calcdata.sizebunglow === "11 BHK") {
+        if (calcdata.city === "Delhi") {
+          loanamount = 100000000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 70000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 80000000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 75000000;
+        }
+      } else {
+        if (calcdata.city === "Delhi") {
+          loanamount = 200000000;
+        } else if (calcdata.city === "Bangalore") {
+          loanamount = 110000000;
+        } else if (calcdata.city === "Chennai") {
+          loanamount = 130000000;
+        } else if (calcdata.city === "Hyderabad") {
+          loanamount = 120000000;
+        }
       }
     }
-    let onetimequestion = questions[3];
-    onetimequestion.max = loanamount / 5;
-    let updatedarr = questions;
-    updatedarr[3] = onetimequestion;
-    setquestions(updatedarr);
-    if (calcdata.onetimepayment) {
-      loanamount = loanamount - calcdata.onetimepayment;
+    let indx = questions.findIndex(
+      (item) => item.title === "Enter Down-Payment"
+    );
+    questions[indx].max = loanamount / 5;
+    setquestions(questions);
+    console.log(indx);
+
+    if (changetoint(calcdata.onetimepayment)) {
+      loanamount = loanamount - changetoint(calcdata.onetimepayment);
       if (loanamount < 0) {
-        setcalcdata((prev) => ({
-          ...prev,
-          onetimepayment: 0,
-        }));
+        console.log(questions[3]);
         seterror("down payment cannot be greater than loan amount");
         return;
       } else {
@@ -161,8 +254,8 @@ export default function HomeCalc({ data, seterror }) {
       heading4: "Loan EMI",
       heading1: "The indicative value for home is",
       result1: Math.round(
-        calcdata.onetimepayment
-          ? parseInt(calcdata.onetimepayment) + parseInt(loanamount)
+        changetoint(calcdata.onetimepayment)
+          ? changetoint(calcdata.onetimepayment) + parseInt(loanamount)
           : loanamount
       ).toLocaleString("en-IN", {
         currency: "INR",
@@ -261,13 +354,14 @@ export default function HomeCalc({ data, seterror }) {
         )}
         {showresult && (
           <div className={styles.postresultinputs}>
-            {questions.map((item) => {
+            {questions.map((item, index) => {
               if (item.type === "select") {
                 return (
                   <DropBox
                     title={item.title}
                     sign={item.sign}
                     min={item.min}
+                    key={"input" + index}
                     max={item.max}
                     value={calcdata[item.code]}
                     setvalue={(e) =>
@@ -280,13 +374,14 @@ export default function HomeCalc({ data, seterror }) {
                 return (
                   <InputBlock
                     label={item.title}
-                    sign={item.sign}
-                    min={item.min}
-                    max={item.max}
+                    key={"input" + index}
+                    posttitle={item.posttitle}
+                    pretitle={item.pretitle}
+                    setvalue={setcalcdata}
+                    minvalue={item.min}
+                    maxvalue={item.max}
+                    code={item.code}
                     value={calcdata[item.code]}
-                    setvalue={(e) =>
-                      setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                    }
                   />
                 );
               }

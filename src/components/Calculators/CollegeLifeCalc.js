@@ -10,6 +10,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import changetoint from "../../helpers/currency";
 export default function CollegeLifeCalc({ seterror }) {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("");
@@ -44,11 +45,12 @@ export default function CollegeLifeCalc({ seterror }) {
 
     {
       type: "input",
-      title: "Enter the loan repayment duration",
-      code: "years",
-      min: 1,
-      max: 70,
-      posttitle: "years",
+      title: "Enter estimated monthly earning",
+      code: "earnings",
+      min: 1000,
+      max: 10000000,
+      range: "years",
+      pretitle: "₹",
     },
   ]);
   const backupquestions = [
@@ -79,11 +81,12 @@ export default function CollegeLifeCalc({ seterror }) {
 
     {
       type: "input",
-      title: "Enter the loan repayment duration",
-      code: "years",
-      min: 1,
-      max: 7,
-      sign: "years",
+      title: "Enter estimated monthly earning",
+      code: "earnings",
+      min: 1000,
+      max: 10000000,
+      range: "years",
+      pretitle: "₹",
     },
   ];
   const [result, setresult] = useState(false);
@@ -111,7 +114,7 @@ export default function CollegeLifeCalc({ seterror }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    years: 1,
+    earnings: 1000,
     type: "Indian",
     university: "Public",
     course: "MBA",
@@ -128,7 +131,7 @@ export default function CollegeLifeCalc({ seterror }) {
     } else {
       setquestions(backupquestions.filter((item) => item.code !== "country"));
     }
-  }, [calcdata]);
+  }, [calcdata.type]);
 
   useEffect(() => {
     seterror("");
@@ -138,8 +141,8 @@ export default function CollegeLifeCalc({ seterror }) {
   }, [calcdata, current]);
 
   function emi() {
-    if (!calcdata.years) {
-      seterror("The loan repayment duration cannot be less than 1 year");
+    if (calcdata.earnings === "") {
+      seterror("Estimated earnings is required");
     }
     let monthlyrate = 10 / 12 / 100;
     if (university === "Private") {
@@ -166,73 +169,62 @@ export default function CollegeLifeCalc({ seterror }) {
           loanamount = 1000000;
         }
       }
+      loanamount = loanamount + 10000;
     } else {
       if (calcdata.country === "Australia") {
         if (calcdata.course === "MBA") {
-          loanamount = 3750000;
+          loanamount = 156250;
         } else if (calcdata.course === "Masters") {
-          loanamount = 1500000;
+          loanamount = 62500;
         } else {
-          loanamount = 8000000;
+          loanamount = 166667;
         }
+        loanamount = loanamount + 25000;
       } else if (calcdata.country === "Europe") {
         if (calcdata.course === "MBA") {
-          loanamount = 4500000;
+          loanamount = 187500;
         } else if (calcdata.course === "Masters") {
-          loanamount = 500000;
+          loanamount = 20833;
         } else {
-          loanamount = 500000;
+          loanamount = 10417;
         }
+        loanamount = loanamount + 60000;
       } else if (calcdata.country === "Asia") {
         if (calcdata.course === "MBA") {
-          loanamount = 7000000;
+          loanamount = 291667;
         } else if (calcdata.course === "Masters") {
-          loanamount = 1950000;
+          loanamount = 81250;
         } else {
-          loanamount = 4000000;
+          loanamount = 83333;
         }
+        loanamount = loanamount + 45000;
       } else {
         if (calcdata.course === "MBA") {
-          loanamount = 15000000;
+          loanamount = 625000;
         } else if (calcdata.course === "Masters") {
-          loanamount = 3000000;
+          loanamount = 125000;
         } else {
-          loanamount = 9000000;
+          loanamount = 187500;
         }
+        loanamount = loanamount + 60000;
       }
     }
 
-    let emiamount =
-      (loanamount * monthlyrate * Math.pow(1 + monthlyrate, months)) /
-      (Math.pow(1 + monthlyrate, months) - 1);
-    let totalpayment = emiamount * months;
-    let intrest = totalpayment - loanamount;
+    let res = loanamount - changetoint(calcdata.earnings);
+
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
-      (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest).toLocaleString("en-IN", {
-        currency: "INR",
-      }),
-      result2: Math.round(totalpayment).toLocaleString("en-IN", {
-        currency: "INR",
-      }),
-      result3: Math.round(emiamount).toLocaleString("en-IN", {
-        currency: "INR",
-      }),
-    }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
+      heading1: "",
+      result1:
+        res > 0
+          ? `You will have to take a loan of ₹ ${Math.round(res).toLocaleString(
+              "en-IN",
+              { currency: "INR" }
+            )}`
+          : `Congratulations, You will save ₹ ${Math.round(
+              Math.abs(res)
+            ).toLocaleString("en-IN", {
+              currency: "INR",
+            })} each month during your college life`,
     }));
   }
   return (
@@ -315,13 +307,13 @@ export default function CollegeLifeCalc({ seterror }) {
               return (
                 <InputBlock
                   label={item.title}
-                  sign={item.sign}
-                  min={item.min}
-                  max={item.max}
+                  posttitle={item.posttitle}
+                  pretitle={item.pretitle}
+                  minvalue={item.min}
+                  maxvalue={item.max}
+                  code={item.code}
                   value={calcdata[item.code]}
-                  setvalue={(e) =>
-                    setcalcdata((prev) => ({ ...prev, [item.code]: e }))
-                  }
+                  setvalue={setcalcdata}
                 />
               );
             }
@@ -329,20 +321,6 @@ export default function CollegeLifeCalc({ seterror }) {
           <ResultBox resultdata={resultdata} />
         </div>
       )}
-
-      {showresult ? (
-        <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <Doughnut
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
