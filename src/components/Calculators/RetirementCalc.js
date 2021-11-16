@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
-export default function Retirement({ seterror }) {
+export default function Retirement({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Expected age of retirement",
@@ -163,10 +163,12 @@ export default function Retirement({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
-                if (current !== questions.length - 1) {
-                  setcurrent(current + 1);
-                } else {
-                  setshowresult(true);
+                if (!error) {
+                  if (current !== questions.length - 1) {
+                    setcurrent(current + 1);
+                  } else {
+                    setshowresult(true);
+                  }
                 }
               }}
             >

@@ -7,7 +7,7 @@ import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
-import { GClientId } from "../../../config";
+import { apple_client_id, GClientId } from "../../../config";
 
 function AuthParent({
   setsignupmethod,
@@ -83,6 +83,10 @@ function AuthParent({
     }
   }
 
+  async function handleAppleAuth(data) {
+    
+  }
+
   useEffect(() => {
     seterror("");
   }, [email]);
@@ -110,17 +114,22 @@ function AuthParent({
         onFailure={responsegoogle}
         cookiePolicy={"single_host_origin"}
       />
-      <div
-        className={styles.apple}
-        onClick={() => {
-          setemail("randomappleid@apple.com");
-          setsignupmethod("apple");
-          handleParentSignUp("randomappleid@apple.com", "apple");
+      <AppleLogin
+        clientId={apple_client_id}
+        redirectURI="https://redirectUrl.com"
+        usePopup
+        scope="name email"
+        callback={handleAppleAuth}
+        render={(r) => {
+          console.log(r);
+          return (
+            <div className={styles.apple} onClick={r.onClick}>
+              <AppleSvg />
+              <p>Continue with Apple</p>
+            </div>
+          );
         }}
-      >
-        <AppleSvg />
-        <p>Continue with Apple</p>
-      </div>
+      />
       <div className={styles.or}>OR</div>
       <input
         type="text"

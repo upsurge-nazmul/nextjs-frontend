@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
-export default function HomeCalc({ seterror }) {
+export default function HomeCalc({ seterror, error }) {
   const [years, setyear] = useState(1);
   const [type, settype] = useState("All");
   const [amount, setamount] = useState();
@@ -320,10 +320,12 @@ export default function HomeCalc({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
-                if (current !== questions.length - 1) {
-                  setcurrent(current + 1);
-                } else {
-                  setshowresult(true);
+                if (!error) {
+                  if (current !== questions.length - 1) {
+                    setcurrent(current + 1);
+                  } else {
+                    setshowresult(true);
+                  }
                 }
               }}
             >

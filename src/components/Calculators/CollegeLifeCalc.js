@@ -11,12 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
-export default function CollegeLifeCalc({ seterror }) {
-  const [years, setyear] = useState(1);
-  const [type, settype] = useState("");
-  const [university, setuniversity] = useState("");
-  const [country, setcountry] = useState("");
-  const [course, setcourse] = useState(0);
+export default function CollegeLifeCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of university ",
@@ -145,7 +140,7 @@ export default function CollegeLifeCalc({ seterror }) {
       seterror("Estimated earnings is required");
     }
     let monthlyrate = 10 / 12 / 100;
-    if (university === "Private") {
+    if (calcdata.university === "Private") {
       monthlyrate = 14 / 12 / 100;
     }
     var months = calcdata.years * 12;
@@ -154,19 +149,19 @@ export default function CollegeLifeCalc({ seterror }) {
     if (calcdata.type === "Indian") {
       if (calcdata.university === "Private") {
         if (calcdata.course === "MBA") {
-          loanamount = 4500000;
+          loanamount = 187500;
         } else if (calcdata.course === "Masters") {
-          loanamount = 400000;
+          loanamount = 16667;
         } else {
-          loanamount = 2000000;
+          loanamount = 41667;
         }
       } else {
         if (calcdata.course === "MBA") {
-          loanamount = 2400000;
+          loanamount = 100000;
         } else if (calcdata.course === "Masters") {
-          loanamount = 400000;
+          loanamount = 16666;
         } else {
-          loanamount = 1000000;
+          loanamount = 20834;
         }
       }
       loanamount = loanamount + 10000;
@@ -274,6 +269,7 @@ export default function CollegeLifeCalc({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
+                if (error) return;
                 if (current !== questions.length - 1) {
                   setcurrent(current + 1);
                 } else {

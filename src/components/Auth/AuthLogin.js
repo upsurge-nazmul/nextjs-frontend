@@ -8,8 +8,8 @@ import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import AppleSvg from "../SVGcomponents/AppleSvg";
 import { MainContext } from "../../context/Main";
 import GoogleLogin from "react-google-login";
-import { GClientId } from "../../../config";
-
+import { apple_client_id, GClientId } from "../../../config";
+import AppleLogin from "react-apple-login";
 function AuthLogin({ settoastdata, error, seterror }) {
   const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -113,10 +113,25 @@ function AuthLogin({ settoastdata, error, seterror }) {
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
       />
-      <div className={styles.apple}>
-        <AppleSvg />
-        <p>Continue with Apple</p>
-      </div>
+      <AppleLogin
+        clientId={apple_client_id}
+        redirectURI="https://redirectUrl.com"
+        usePopup
+        scope="name email"
+        callback={(response) => {
+          console.log(response);
+        }}
+        render={(r) => {
+          console.log(r);
+          return (
+            <div className={styles.apple} onClick={r.onClick}>
+              <AppleSvg />
+              <p>Continue with Apple</p>
+            </div>
+          );
+        }}
+      />
+
       <div className={styles.reset}>
         Forgot your <span>Username</span> or <span>Password</span>?
       </div>

@@ -10,11 +10,7 @@ import Progress from "../Progress";
 import InputBlock from "./InputBlock";
 import DropBox from "./DropBox";
 import changetoint from "../../helpers/currency";
-export default function BigMacCalc({ seterror }) {
-  const [inrmoney, setyear] = useState(1);
-  const [type, settype] = useState("");
-  const [university, setuniversity] = useState("");
-  const [country, setcountry] = useState("");
+export default function BigMacCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       type: "input",
@@ -168,6 +164,7 @@ export default function BigMacCalc({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
+                if (error) return;
                 if (current !== questions.length - 1) {
                   setcurrent(current + 1);
                 } else {

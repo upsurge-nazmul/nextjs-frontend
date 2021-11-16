@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
-export default function InvestmentComparison({ seterror }) {
+export default function InvestmentComparison({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the First Investment Type",
@@ -110,18 +110,44 @@ export default function InvestmentComparison({ seterror }) {
   const [showresult, setshowresult] = useState(false);
 
   useEffect(() => {
+    seterror("");
     setcurrentquestion(questions[current]);
     emi();
     setresult(true);
   }, [calcdata, current]);
 
   function emi() {
+    console.log(changetoint(calcdata.amount1) <= 1000);
     if (calcdata.year1 <= 0) {
       seterror("Duration of the first investment shoud be greater than 0");
       return;
     }
     if (calcdata.year2 <= 0) {
       seterror("Duration of the second investment shoud be greater than 0");
+      return;
+    }
+    if (calcdata.amount1 === "") {
+      seterror(
+        "The principal amount invested in the first investment is required"
+      );
+      return;
+    }
+    if (calcdata.amount2 === "") {
+      seterror(
+        "The principal amount invested in the second investment is required"
+      );
+      return;
+    }
+    if (changetoint(calcdata.amount1) < 1000) {
+      seterror(
+        "The principal amount invested in the first investment cannot be less than 1,000"
+      );
+      return;
+    }
+    if (changetoint(calcdata.amount2) < 1000) {
+      seterror(
+        "The principal amount invested in the second investment cannot be less than 1,000"
+      );
       return;
     }
     let intrest1 = 0;
@@ -227,6 +253,7 @@ export default function InvestmentComparison({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
+                if (error) return;
                 if (current !== questions.length - 1) {
                   setcurrent(current + 1);
                 } else {
