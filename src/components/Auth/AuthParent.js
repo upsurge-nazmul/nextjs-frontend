@@ -8,6 +8,7 @@ import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
 import { apple_client_id, GClientId } from "../../../config";
+import AppleLogin from "react-apple-login";
 
 function AuthParent({
   setsignupmethod,
