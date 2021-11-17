@@ -1,51 +1,88 @@
 import React, { useState } from "react";
 import TemplateCard from "./TemplateCard";
-import kitchenImage from "../../assets/template/kitchen.png";
-import gardenImage from "../../assets/template/garden.png";
-import groomingImage from "../../assets/template/grooming.png";
-import homeworkImage from "../../assets/template/homework.png";
-import bathroomImage from "../../assets/template/bathroom.png";
-import workoutImage from "../../assets/template/workout.png";
 import styles from "../../styles/Chores/chorecategoryselection.module.scss";
 import DownArrowFilled from "../SVGcomponents/DownArrowFilled";
+import BackArrow from "../SVGcomponents/BackArrow";
+import { useRouter } from "next/dist/client/router";
+import { choretemplates } from "../../helpers/choretemplates";
 
-function ChoreCategorySelection({ category, setcategory, setmode }) {
+function ChoreCategorySelection({ setmode }) {
   const [showtemps, setshowtemps] = useState(false);
-  const templates = [
-    { name: "Kitchen", image: kitchenImage },
-    { name: "Bathroom", image: bathroomImage },
-    { name: "Garden", image: gardenImage },
-    { name: "Homework", image: homeworkImage },
-    { name: "Grooming", image: groomingImage },
-    { name: "Exercise", image: workoutImage },
-  ];
-
+  const router = useRouter();
+  const [showfull, setshowfull] = useState(false);
+  const [selectedcat, setselectedcat] = useState("HouseHold");
   return (
     <div className={styles.choreCategorySelection}>
-      <h2>Create chore from template</h2>
-      {!showtemps ? (
-        <div className={styles.select} onClick={() => setshowtemps(true)}>
-          Select a category
-          <DownArrowFilled />
+      {!showfull ? (
+        <div className={styles.catselection}>
+          <h2>Create chore from template</h2>
+          {!showtemps ? (
+            <div className={styles.select} onClick={() => setshowtemps(true)}>
+              Select a category
+              <DownArrowFilled />
+            </div>
+          ) : (
+            <div className={styles.wrapper}>
+              {choretemplates.map((item, index) => {
+                return (
+                  <TemplateCard
+                    key={"templatecard" + index}
+                    name={item.name}
+                    image={item.image}
+                    selected={selectedcat}
+                    setselected={setselectedcat}
+                  />
+                );
+              })}
+            </div>
+          )}
+          <div className={styles.button} onClick={() => setshowfull(true)}>
+            Continue
+          </div>
         </div>
       ) : (
-        <div className={styles.wrapper}>
-          {templates.map((item, index) => {
-            return (
-              <TemplateCard
-                key={"templatecard" + index}
-                name={item.name}
-                image={item.image}
-                selected={category}
-                setselected={setcategory}
-              />
-            );
-          })}
+        <div className={styles.choreTemplateSelection}>
+          <div className={styles.header}>
+            <BackArrow onClick={() => setshowfull(false)} />
+            <div className={styles.text}>
+              <p className={styles.heading}>Create chore from template</p>
+              <p className={styles.category}>{selectedcat}</p>
+            </div>
+          </div>
+          <div className={styles.wrapper}>
+            {choretemplates[
+              choretemplates.findIndex((item) => item.name === selectedcat)
+            ].templates.map((item, index) => {
+              console.log(item);
+              return (
+                <div
+                  className={styles.card}
+                  key={"templatecardselection" + index}
+                >
+                  <img src={item.img} alt="" />
+                  <div className={styles.text}>
+                    <p className={styles.name}>{item.name}</p>
+                    <p className={styles.time}>{item.time}</p>
+                  </div>
+                  <div
+                    className={styles.button}
+                    onClick={() => {
+                      router.push(
+                        "/managechore/new?template=" +
+                          item.name.replace(/ /g, "-") +
+                          "&templatecat=" +
+                          selectedcat
+                      );
+                    }}
+                  >
+                    Use Template
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
-      <div className={styles.button} onClick={() => setmode("template")}>
-        Continue
-      </div>
     </div>
   );
 }

@@ -12,11 +12,23 @@ import AddAssigneeModal from "../../components/Chores/AddAssigneeModal";
 import DropDown from "../../components/DropDown";
 import { MainContext } from "../../context/Main";
 import ChoreApis from "../../actions/apis/ChoreApis";
+import { choretemplates } from "../../helpers/choretemplates";
 
 export default function ManageChore({ choredata, childdata }) {
+  console.log(choretemplates);
   const router = useRouter();
   const { currentChoreTemplate } = useContext(MainContext);
-  const { type } = router.query;
+  const { type, template, templatecat } = router.query;
+  const templatename = template.replace(/-/g, " ");
+  const currentcatarray =
+    choretemplates[
+      choretemplates.findIndex((item) => item.name === templatecat)
+    ].templates;
+
+  const currentchoretemplate =
+    currentcatarray[
+      currentcatarray.findIndex((item) => item.name === templatename)
+    ];
   const [isInEditMode, setIsInEditMode] = useState(
     type !== "new" ? true : false
   );
@@ -25,15 +37,13 @@ export default function ManageChore({ choredata, childdata }) {
   );
   const [assignees, setassignees] = useState(childdata ? [childdata] : []);
   const [cat, setcat] = useState(
-    !isInEditMode
-      ? currentChoreTemplate.category
-      : choredata?.category || "kitchen"
+    !isInEditMode ? templatecat : choredata?.category || "HouseHold"
   );
   const [showaddmodal, setshowaddmodal] = useState(false);
   const [msg, setmsg] = useState(choredata?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    !isInEditMode ? currentChoreTemplate.name : choredata?.title || ""
+    !isInEditMode ? currentchoretemplate.name : choredata?.title || ""
   );
   const [duedate, setduedate] = useState(
     choredata?.due_date || new Date().getTime()
@@ -150,7 +160,7 @@ export default function ManageChore({ choredata, childdata }) {
             <img
               src={
                 !isInEditMode
-                  ? currentChoreTemplate.image
+                  ? currentchoretemplate.img
                   : choredata?.image ||
                     "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
               }
@@ -184,14 +194,14 @@ export default function ManageChore({ choredata, childdata }) {
               placeholder="dd-mm-yyyy"
             />
             <DropDown
-              placeholder="Gender"
+              placeholder="Household"
               options={[
-                "kitchen",
-                "bathroom",
-                "garden",
-                "homework",
-                "grooming",
-                "excercise",
+                "Household",
+                "Hobbies",
+                "School Work",
+                "Fitness",
+                "Upsurge Money Matters",
+                "Personal",
               ]}
               value={cat}
               setvalue={setcat}
