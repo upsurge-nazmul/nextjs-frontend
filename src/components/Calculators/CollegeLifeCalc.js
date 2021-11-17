@@ -149,7 +149,7 @@ export default function CollegeLifeCalc({ seterror, error }) {
     if (calcdata.type === "Indian") {
       if (calcdata.university === "Private") {
         if (calcdata.course === "MBA") {
-          loanamount = 187500;
+          loanamount = 145834;
         } else if (calcdata.course === "Masters") {
           loanamount = 16667;
         } else {

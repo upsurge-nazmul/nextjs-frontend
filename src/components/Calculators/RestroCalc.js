@@ -149,9 +149,12 @@ export default function RestroCalc({ data }) {
       heading1: "",
       heading2: ``,
       heading3: ``,
-      result1: `${Math.round(Lumpsum).toLocaleString("en-IN", {
-        currency: "INR",
-      })} lumpsum amount is required to start today`,
+      result1: `Lumpsum amount of ₹${Math.round(Lumpsum).toLocaleString(
+        "en-IN",
+        {
+          currency: "INR",
+        }
+      )} is required to start today`,
       result2: `Monthly expenditure : ₹ ${Math.round(
         totalmonthly
       ).toLocaleString("en-IN", {

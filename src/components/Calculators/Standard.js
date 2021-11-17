@@ -127,7 +127,7 @@ export default function Standard({ seterror, error }) {
   }, [calcdata.transport]);
   function emi() {
     if (calcdata.dineout === "") {
-      seterror("No. of dinouts is required.");
+      seterror("No. of dining outs are required");
     }
     let groceries = 2500;
     let misc = 0;

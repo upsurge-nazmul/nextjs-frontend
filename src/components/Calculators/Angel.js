@@ -223,33 +223,58 @@ export default function Angel({ data, seterror, error }) {
     emi();
     setresult(true);
   }, [calcdata, current]);
-
+  useEffect(() => {
+    setcalcdata((prev) => ({
+      ...prev,
+      rev1: 100000,
+      rev2: 100000,
+      rev3: 100000,
+      erev1: 1000,
+      erev2: 1000,
+      erev3: 1000,
+    }));
+  }, [calcdata.revenue]);
   function emi() {
-    console.log(calcdata);
-    if (calcdata.rev1 == "") {
-      seterror("Revenue for year 1 is required");
-      return;
+    if (calcdata.revenue !== "No") {
+      if (calcdata.rev1 == "") {
+        seterror("Revenue for year 1 is required");
+        return;
+      }
+      if (calcdata.rev2 == "") {
+        seterror("Revenue for year 2 is required");
+        return;
+      }
+      if (calcdata.rev3 == "") {
+        seterror("Revenue for year 3 is required");
+        return;
+      }
+      if (calcdata.rev1 < 100000) {
+        seterror("Revenue for year 1 cannot be less than 1,00,000");
+        return;
+      }
+      if (calcdata.rev2 < 100000) {
+        seterror("Revenue for year 2 cannot be less than 1,00,000");
+        return;
+      }
+      if (calcdata.rev3 < 100000) {
+        seterror("Revenue for year 3 cannot be less than 1,00,000");
+        return;
+      }
+    } else {
+      if (calcdata.erev1 === "") {
+        seterror("Expected revenue for year 1 is required");
+        return;
+      }
+      if (calcdata.erev2 == "") {
+        seterror("Expected revenue for year 2 is required");
+        return;
+      }
+      if (calcdata.erev3 == "") {
+        seterror("Expected revenue for year 3 is required");
+        return;
+      }
     }
-    if (calcdata.rev2 == "") {
-      seterror("Revenue for year 2 is required");
-      return;
-    }
-    if (calcdata.rev3 == "") {
-      seterror("Revenue for year 3 is required");
-      return;
-    }
-    if (calcdata.erev1 === "") {
-      seterror("Expected revenue for year 1 is required");
-      return;
-    }
-    if (calcdata.erev2 == "") {
-      seterror("Expected revenue for year 2 is required");
-      return;
-    }
-    if (calcdata.erev3 == "") {
-      seterror("Expected revenue for year 3 is required");
-      return;
-    }
+
     let valuation = 0;
     if (calcdata.type === "E-commerce") {
       valuation = 2;
@@ -397,7 +422,7 @@ export default function Angel({ data, seterror, error }) {
                 );
               }
             })}
-            <ResultBox resultdata={resultdata} />
+            {!error && <ResultBox resultdata={resultdata} />}
           </div>
         )}
       </div>

@@ -90,11 +90,11 @@ export default function CostOfRaisingCalc() {
     let marriageexpense = 0;
     let extraeexpense = 0;
     if (calcdata.school === "Tier 1") {
-      schoolexpense = 1512000;
+      schoolexpense = 1920000;
     } else if (calcdata.school === "Tier 2") {
-      schoolexpense = 648000;
+      schoolexpense = 1344000;
     } else {
-      schoolexpense = 216000;
+      schoolexpense = 768000;
     }
     if (calcdata.college === "Tier 1") {
       collegeexpense = 2000000;

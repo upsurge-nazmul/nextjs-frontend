@@ -38,7 +38,7 @@ export default function HomeCalc({ seterror, error }) {
       options: ["MBA", "Masters", "Undergraduate degree"],
     },
     {
-      title: "Select Bank Type",
+      title: "Select the bank offering you education loan",
       type: "select",
       code: "bank",
       options: ["Public", "Private"],
@@ -79,7 +79,7 @@ export default function HomeCalc({ seterror, error }) {
       options: ["MBA", "Masters", "Undergraduate degree"],
     },
     {
-      title: "Select Bank Type",
+      title: "Select the bank offering you education loan",
       type: "select",
       code: "bank",
       options: ["Public", "Private"],
@@ -145,7 +145,7 @@ export default function HomeCalc({ seterror, error }) {
     if (!calcdata.years || calcdata.years <= 0) {
       seterror("Tenure of the loan cannot be less than 1 year");
     }
-    let monthlyrate = 10 / 12 / 100;
+    let monthlyrate = 12 / 12 / 100;
     if (calcdata.bank === "Private") {
       monthlyrate = 14 / 12 / 100;
     }
@@ -153,9 +153,14 @@ export default function HomeCalc({ seterror, error }) {
 
     let loanamount = 0;
     if (calcdata.type === "Indian") {
+      if (calcdata.bank === "Private") {
+        monthlyrate = 10.5 / 12 / 100;
+      } else {
+        monthlyrate = 8.5 / 12 / 100;
+      }
       if (calcdata.university === "Private") {
         if (calcdata.course === "MBA") {
-          loanamount = 4500000;
+          loanamount = 3500000;
         } else if (calcdata.course === "Masters") {
           loanamount = 400000;
         } else {
@@ -334,11 +339,11 @@ export default function HomeCalc({ seterror, error }) {
               );
             }
           })}
-          <ResultBox resultdata={resultdata} />
+          {!error && <ResultBox resultdata={resultdata} />}
         </div>
       )}
 
-      {showresult ? (
+      {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut

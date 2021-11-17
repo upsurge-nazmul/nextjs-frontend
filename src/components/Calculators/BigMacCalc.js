@@ -209,11 +209,11 @@ export default function BigMacCalc({ seterror, error }) {
               );
             }
           })}
-          <ResultBox resultdata={resultdata} />
+          {!error && <ResultBox resultdata={resultdata} />}
         </div>
       )}
 
-      {showresult ? (
+      {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Bar

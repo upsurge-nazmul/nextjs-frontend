@@ -34,7 +34,7 @@ export default function CarCalc({ seterror }) {
     },
     {
       type: "input",
-      title: "Enter the down Payment",
+      title: "Enter Down-Payment",
       min: 0,
       max: 1000000,
       code: "onetimepayment",
@@ -81,7 +81,7 @@ export default function CarCalc({ seterror }) {
     if (!calcdata.years) {
       seterror("Tenure of the loan cannot be less than 1 year");
     }
-    let monthlyrate = 12 / 12 / 100;
+    let monthlyrate = 8 / 12 / 100;
     var months = calcdata.years * 12;
 
     let loanamount = 0;
@@ -90,10 +90,12 @@ export default function CarCalc({ seterror }) {
       loanamount = 1000000;
     } else if (calcdata.type === "Sports") {
       loanamount = 8000000;
+      monthlyrate = 7 / 12 / 100;
     } else if (calcdata.type === "SUV") {
       loanamount = 1600000;
     } else if (calcdata.type === "Luxury") {
       loanamount = 4100000;
+      monthlyrate = 7 / 12 / 100;
     } else if (calcdata.type === "Hatchback") {
       loanamount = 700000;
     }

@@ -59,7 +59,7 @@ function CalculatorsPage() {
       icon: "https://i.ibb.co/b1Dxh2v/Untitled-design-9.png",
     },
     educationinvestments: {
-      heading: "Education investment",
+      heading: "Education Investment",
       subheading: `This calculator gives an estimate of how much money you need to save monthly to afford different education programs`,
       relative: ["college", "costofraising", "education"],
       icon: "https://i.ibb.co/8BdyXNb/Untitled-design-66.png",
@@ -91,7 +91,7 @@ function CalculatorsPage() {
     //   icon: "https://i.ibb.co/N1P7BR7/Untitled-design-14.png",
     // },
     currency: {
-      heading: "Big mac index Currency Converter",
+      heading: "Big Mac Index Currency Converter",
       relative: ["educationinvestments", "angel", "restaurant"],
       subheading:
         "This calculator converts rupees in terms of how much it's actually worth in different countries.",

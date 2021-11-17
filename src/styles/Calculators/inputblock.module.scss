@@ -12,21 +12,23 @@
       font-family: "Roboto", sans-serif;
       font-size: 16px;
       font-weight: 500;
+      margin-right: 20px;
     }
     .signAndValue {
       background-color: rgb(255, 255, 255);
       border: 1px solid #898989;
       display: flex;
       padding: 5px 20px;
-      min-width: 100px;
+      min-width: 150px;
+      max-width: 150px;
       height: 45px;
-      width: fit-content;
       justify-content: space-around;
       border-radius: 8px;
       align-items: center;
       input {
         outline: none;
         border: none;
+        max-width: 85px;
         padding: 5px;
         text-align: center;
         flex: 1;
@@ -44,33 +46,6 @@
       .sign {
         margin: 0px 0px;
         color: rgb(153, 153, 153);
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1360px) {
-  .inputBlock {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    .topBlock {
-      .signAndValue {
-        width: 50%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 14px;
-        input {
-          width: 50%;
-          outline: none;
-          border: none;
-          border-radius: 8px;
-          padding: 10px;
-          margin-left: 5px;
-          font-size: 14px;
-          margin-right: 5px;
-        }
       }
     }
   }

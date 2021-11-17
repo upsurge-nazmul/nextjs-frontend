@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
-export default function EducationInvestmentCalc({ seterror }) {
+export default function EducationInvestmentCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of university ",
@@ -191,9 +191,11 @@ export default function EducationInvestmentCalc({ seterror }) {
 
     setresultdata((prev) => ({
       heading1: "",
-      result1: `${Math.round(monthlyinvestment).toLocaleString("en-IN", {
+      result1: `Your monthly investment should be ₹${Math.round(
+        monthlyinvestment
+      ).toLocaleString("en-IN", {
         currency: "INR",
-      })} should be your monthly investment.`,
+      })}`,
     }));
   }
   return (
@@ -239,6 +241,7 @@ export default function EducationInvestmentCalc({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
+                if (error) return;
                 if (current !== questions.length - 1) {
                   setcurrent(current + 1);
                 } else {
@@ -283,23 +286,9 @@ export default function EducationInvestmentCalc({ seterror }) {
               );
             }
           })}
-          <ResultBox resultdata={resultdata} />
+          {!error && <ResultBox resultdata={resultdata} />}
         </div>
       )}
-
-      {/* {showresult ? (
-        <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <Bar
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
-        </div>
-      ) : null} */}
     </div>
   );
 }
