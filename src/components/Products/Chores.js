@@ -14,12 +14,14 @@ export default function Chores({ id, email, setEmail, check, error }) {
         </div>
         <div className={styles.signupBox}>
           {showinput && (
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <form onSubmit={check}>
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </form>
           )}
           {!showinput ? (
             <div

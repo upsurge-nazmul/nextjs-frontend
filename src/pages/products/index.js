@@ -75,10 +75,11 @@ export default function Products() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   async function check() {
+    e.preventDefault();
     if (!validator.isEmail(email)) {
       setError("Enter valid email address");
     } else {
-      let response = await LoginApis.getwaitlistdetails({ email: email });
+      let response = await LoginApis.saveemail({ email: email });
       if (response) {
         if (response.data.success) {
           router.push("/waitlist/" + email);
