@@ -54,7 +54,7 @@ export default function HomeCalc({ data, seterror, error }) {
       max: 30,
       posttitle: "years",
       code: "years",
-      range: false,
+      range: true,
     },
   ]);
   const backupquestions = [
@@ -98,7 +98,7 @@ export default function HomeCalc({ data, seterror, error }) {
       max: 30,
       posttitle: "years",
       code: "years",
-      range: false,
+      range: true,
     },
   ];
   const [result, setresult] = useState(false);
@@ -126,7 +126,7 @@ export default function HomeCalc({ data, seterror, error }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    years: 1,
+    years: 5,
     type: "Apartment",
     noofrooms: "2 rooms",
     city: "Delhi",
@@ -157,8 +157,8 @@ export default function HomeCalc({ data, seterror, error }) {
       seterror("Tenure of the loan cannot be less than 1 year");
       return;
     }
-    if (changetoint(calcdata.years) === 0) {
-      seterror("Tenure of the loan cannot be less than 1 year");
+    if (changetoint(calcdata.years) < 5) {
+      seterror("Tenure of the loan cannot be less than 5 year");
       return;
     }
     if (calcdata.onetimepayment === "") {

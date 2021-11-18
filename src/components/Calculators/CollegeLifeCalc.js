@@ -80,8 +80,8 @@ export default function CollegeLifeCalc({ seterror, error }) {
       code: "earnings",
       min: 1000,
       max: 10000000,
-      range: "years",
       pretitle: "₹",
+      range: true,
     },
   ];
   const [result, setresult] = useState(false);
@@ -249,6 +249,7 @@ export default function CollegeLifeCalc({ seterror, error }) {
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>

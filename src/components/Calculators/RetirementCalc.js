@@ -24,6 +24,7 @@ export default function Retirement({ seterror, error }) {
       type: "input",
       code: "age",
       min: 15,
+      range: true,
       max: 65,
       posttitle: "years",
     },
@@ -62,7 +63,7 @@ export default function Retirement({ seterror, error }) {
     ],
   });
   const [calcdata, setcalcdata] = useState({
-    age: 18,
+    age: 15,
     type: 40,
     money: 10000,
   });
@@ -142,6 +143,7 @@ export default function Retirement({ seterror, error }) {
               range={currentquestion.range}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
+              range={currentquestion.range}
               code={currentquestion.code}
             />
           )}

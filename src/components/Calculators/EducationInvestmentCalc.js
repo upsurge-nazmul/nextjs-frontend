@@ -80,6 +80,7 @@ export default function EducationInvestmentCalc({ seterror, error }) {
       min: 1,
       max: 30,
       posttitle: "years",
+      range: true,
     },
   ];
   const [current, setcurrent] = useState(0);
@@ -225,6 +226,7 @@ export default function EducationInvestmentCalc({ seterror, error }) {
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>

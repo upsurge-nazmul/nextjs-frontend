@@ -31,6 +31,7 @@ export default function Standard({ seterror, error }) {
       code: "dineout",
       min: 0,
       max: 100,
+      range: true,
     },
     {
       title: "Select preferred mode of transport?",
@@ -65,6 +66,7 @@ export default function Standard({ seterror, error }) {
       code: "dineout",
       min: 0,
       max: 100,
+      range: true,
     },
     {
       title: "Select preferred mode of transport?",
@@ -256,6 +258,7 @@ export default function Standard({ seterror, error }) {
               posttitle={currentquestion.posttitle}
               code={currentquestion.code}
               maxvalue={currentquestion.max}
+              range={currentquestion.range}
             />
           )}
           <div className={styles.buttons}>
