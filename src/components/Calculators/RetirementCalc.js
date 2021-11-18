@@ -143,7 +143,6 @@ export default function Retirement({ seterror, error }) {
               range={currentquestion.range}
               pretitle={currentquestion.pretitle}
               posttitle={currentquestion.posttitle}
-              range={currentquestion.range}
               code={currentquestion.code}
             />
           )}
