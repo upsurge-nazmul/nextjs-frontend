@@ -114,7 +114,7 @@ function AuthParent({
         cookiePolicy={"single_host_origin"}
       />
       <AppleLogin
-        clientId={apple_client_id || ""}
+        clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
         usePopup
         scope="name email"
