@@ -12,7 +12,7 @@ import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
 import changetoint from "../../helpers/currency";
-export default function HomeCalc({ data, seterror }) {
+export default function HomeCalc({ data, seterror, error }) {
   const [questions, setquestions] = useState([
     {
       title: "Select the type of house",
@@ -155,6 +155,15 @@ export default function HomeCalc({ data, seterror }) {
   function emi() {
     if (!calcdata.years) {
       seterror("Tenure of the loan cannot be less than 1 year");
+      return;
+    }
+    if (changetoint(calcdata.years) === 0) {
+      seterror("Tenure of the loan cannot be less than 1 year");
+      return;
+    }
+    if (!calcdata.onetimepayment) {
+      seterror("Down-Payment cannot be null");
+      return;
     }
     let monthlyrate = 8.5 / 12 / 100;
     var months = calcdata.years * 12;
@@ -340,6 +349,7 @@ export default function HomeCalc({ data, seterror }) {
               <p
                 className={styles.next}
                 onClick={() => {
+                  if (error) return;
                   if (current !== questions.length - 1) {
                     setcurrent(current + 1);
                   } else {
@@ -386,11 +396,11 @@ export default function HomeCalc({ data, seterror }) {
                 );
               }
             })}
-            <ResultBox resultdata={resultdata} />
+            {!error && <ResultBox resultdata={resultdata} />}
           </div>
         )}
 
-        {showresult ? (
+        {!error && showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
               <Doughnut

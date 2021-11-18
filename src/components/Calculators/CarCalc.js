@@ -11,7 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcInput from "./BigCalcInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import changetoint from "../../helpers/currency";
-export default function CarCalc({ seterror }) {
+export default function CarCalc({ seterror, error }) {
   const [calcdata, setcalcdata] = useState({
     years: 1,
     type: "Sedan",
@@ -80,6 +80,15 @@ export default function CarCalc({ seterror }) {
   function emi() {
     if (!calcdata.years) {
       seterror("Tenure of the loan cannot be less than 1 year");
+      return;
+    }
+    if (changetoint(calcdata.years) === 0) {
+      seterror("Tenure of the loan cannot be less than 1 year");
+      return;
+    }
+    if (!calcdata.onetimepayment) {
+      seterror("Down-Payment cannot be null");
+      return;
     }
     let monthlyrate = 8 / 12 / 100;
     var months = calcdata.years * 12;
@@ -196,6 +205,7 @@ export default function CarCalc({ seterror }) {
             <p
               className={styles.next}
               onClick={() => {
+                if (error) return;
                 if (current !== questions.length - 1) {
                   setcurrent(current + 1);
                 } else {
@@ -240,11 +250,11 @@ export default function CarCalc({ seterror }) {
               );
             }
           })}
-          <ResultBox resultdata={resultdata} />
+          {!error && <ResultBox resultdata={resultdata} />}
         </div>
       )}
 
-      {showresult ? (
+      {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
             <Doughnut
