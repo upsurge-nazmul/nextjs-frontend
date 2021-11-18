@@ -153,7 +153,7 @@ export default function HomeCalc({ data, seterror, error }) {
   }, [calcdata.type]);
 
   function emi() {
-    if (!calcdata.years) {
+    if (calcdata.years === "") {
       seterror("Tenure of the loan cannot be less than 1 year");
       return;
     }
@@ -161,7 +161,7 @@ export default function HomeCalc({ data, seterror, error }) {
       seterror("Tenure of the loan cannot be less than 1 year");
       return;
     }
-    if (!calcdata.onetimepayment) {
+    if (calcdata.onetimepayment === "") {
       seterror("Down-Payment cannot be null");
       return;
     }
