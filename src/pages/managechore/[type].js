@@ -6,16 +6,17 @@ import Toast from "../../components/Toast";
 import Assignees from "../../components/ManageChore/Assignees";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/ManageChore/managechore.module.scss";
-import DropDownArrow from "../../components/SVGcomponents/DropDownArrow";
+import CustomDatePicker from "../../components/CustomDatePicker";
 import MicSvg from "../../components/SVGcomponents/MicSvg";
 import AddAssigneeModal from "../../components/Chores/AddAssigneeModal";
 import DropDown from "../../components/DropDown";
 import { MainContext } from "../../context/Main";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import { choretemplates } from "../../helpers/choretemplates";
+import { Recorder } from "react-voice-recorder";
+import "react-voice-recorder/dist/index.css";
 
 export default function ManageChore({ choredata, childdata }) {
-  console.log(choretemplates);
   const router = useRouter();
   const { currentChoreTemplate } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
@@ -45,19 +46,43 @@ export default function ManageChore({ choredata, childdata }) {
   const [choretitle, setchoretitle] = useState(
     !isInEditMode ? currentchoretemplate.name : choredata?.title || ""
   );
-  const [duedate, setduedate] = useState(
-    choredata?.due_date || new Date().getTime()
-  );
+  const [duedate, setduedate] = useState(choredata?.due_date || new Date());
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-
+  const [showrecorder, setshowrecorder] = useState(false);
+  const [audioDetails, setaudioDetails] = useState({
+    url: null,
+    blob: null,
+    chunks: null,
+    duration: { h: null, m: null, s: null },
+  });
   useEffect(() => {
     setlettercounts(200 - msg.length);
   }, [msg]);
-
+  function startRecord() {
+    setrecordState(RecordState.START);
+  }
+  function resetRecord() {
+    setaudioDetails({
+      url: null,
+      blob: null,
+      chunks: null,
+      duration: { h: null, m: null, s: null },
+    });
+  }
+  function stopRecord(data) {
+    setaudioDetails(data);
+  }
+  function handleAudioUpload(file) {
+    console.log(file);
+    console.log(audioDetails);
+  }
+  function onStop(audioData) {
+    console.log("audioData", audioData);
+  }
   async function handleSave() {
     if (choredata?.isineditmode) {
       let response = await ChoreApis.editchore({
@@ -173,7 +198,8 @@ export default function ManageChore({ choredata, childdata }) {
               value={choretitle}
               onChange={(e) => setchoretitle(e.target.value)}
             />
-            <input
+            <CustomDatePicker value={duedate} setvalue={setduedate} />
+            {/* <input
               type="date"
               value={
                 duedate
@@ -192,7 +218,7 @@ export default function ManageChore({ choredata, childdata }) {
                 }
               }}
               placeholder="dd-mm-yyyy"
-            />
+            /> */}
             <DropDown
               placeholder="Household"
               options={[
@@ -211,18 +237,37 @@ export default function ManageChore({ choredata, childdata }) {
                 maxLength="200"
                 value={msg}
                 onChange={(e) => setmsg(e.target.value)}
+                placeholder="message goes here...."
               ></textarea>
               <p className={styles.lettersleft}>
                 {lettercounts + " characters left"}
               </p>
             </div>
+            {showrecorder ? (
+              <Recorder
+                record={true}
+                title={"Record Audio Message"}
+                audioURL={audioDetails.url}
+                showUIAudio
+                hideHeader
+                handleAudioStop={(data) => stopRecord(data)}
+                // handleOnChange={(value) =>
+                //   this.handleOnChange(value, "firstname")
+                // }
+                handleAudioUpload={(data) => handleAudioUpload(data)}
+                handleReset={() => resetRecord()}
+              />
+            ) : (
+              <div
+                className={styles.voice}
+                onClick={() => setshowrecorder(true)}
+              >
+                <div className={styles.icon}>
+                  <MicSvg />
+                </div>{" "}
+              </div>
+            )}
 
-            <div className={styles.voice}>
-              Add voice note{" "}
-              <div className={styles.icon}>
-                <MicSvg />
-              </div>{" "}
-            </div>
             <div className={styles.button} onClick={handleSave}>
               {type !== "new" ? "Save Changes" : "Save & Assign"}
             </div>

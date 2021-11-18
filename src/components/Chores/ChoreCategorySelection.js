@@ -16,26 +16,21 @@ function ChoreCategorySelection({ setmode }) {
       {!showfull ? (
         <div className={styles.catselection}>
           <h2>Create chore from template</h2>
-          {!showtemps ? (
-            <div className={styles.select} onClick={() => setshowtemps(true)}>
-              Select a category
-              <DownArrowFilled />
-            </div>
-          ) : (
-            <div className={styles.wrapper}>
-              {choretemplates.map((item, index) => {
-                return (
-                  <TemplateCard
-                    key={"templatecard" + index}
-                    name={item.name}
-                    image={item.image}
-                    selected={selectedcat}
-                    setselected={setselectedcat}
-                  />
-                );
-              })}
-            </div>
-          )}
+
+          <div className={styles.wrapper}>
+            {choretemplates.map((item, index) => {
+              return (
+                <TemplateCard
+                  key={"templatecard" + index}
+                  name={item.name}
+                  image={item.image}
+                  selected={selectedcat}
+                  setselected={setselectedcat}
+                />
+              );
+            })}
+          </div>
+
           <div className={styles.button} onClick={() => setshowfull(true)}>
             Continue
           </div>

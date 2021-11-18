@@ -35,6 +35,7 @@
     "react-tooltip": "^4.2.21",
     "react-unity-webgl": "^8.4.10",
     "react-use-intercom": "^1.4.0",
+    "react-voice-recorder": "^2.1.2",
     "sass": "^1.36.0",
     "validator": "^13.6.0",
     "xss": "^1.0.9"

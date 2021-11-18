@@ -12,8 +12,8 @@ import validator from "validator";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear } from "date-fns";
 import range from "lodash/range";
-// import required css from library
-import "react-datepicker/dist/react-datepicker.css";
+
+import CustomDatePicker from "../../components/CustomDatePicker";
 function AddKid({ childdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -62,6 +62,10 @@ function AddKid({ childdata }) {
     }
     if (!dob) {
       seterror("Please enter date of birth");
+      return;
+    }
+    if (dob < new Date()) {
+      seterror("Date cannot be set to less than current date");
       return;
     }
     if (!gender) {
@@ -255,7 +259,8 @@ function AddKid({ childdata }) {
                 onChange={(e) => setlastName(e.target.value)}
               />
             </div>
-            <DatePicker
+            <CustomDatePicker value={dob} setvalue={setdob} />
+            {/* <DatePicker
               renderCustomHeader={({
                 date,
                 changeYear,
@@ -315,7 +320,7 @@ function AddKid({ childdata }) {
               allowSameDay={false}
               onChange={(date) => setdob(date)}
               dateFormat="dd/MM/yyyy"
-            />
+            /> */}
             {/* <input
               type="date"
               value={
