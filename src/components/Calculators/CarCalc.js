@@ -30,6 +30,7 @@ export default function CarCalc({ seterror, error }) {
       code: "years",
       min: 1,
       max: 10,
+      range: true,
       posttitle: "years",
     },
     {
@@ -90,7 +91,7 @@ export default function CarCalc({ seterror, error }) {
       seterror("Down-Payment cannot be null");
       return;
     }
-    
+
     let monthlyrate = 8 / 12 / 100;
     var months = calcdata.years * 12;
 
