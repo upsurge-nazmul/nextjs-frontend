@@ -132,17 +132,21 @@ export default function CarCalc({ seterror, error }) {
       ).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      heading2: "Total Interest Payable",
-      heading3: `Total Payment
+      heading3: "Total Interest Payable",
+      heading4: `Total Payment
       (Principal + Interest)`,
-      heading4: "Loan EMI",
-      result2: Math.round(intrest).toLocaleString("en-IN", {
+      heading5: "Loan EMI",
+      result3: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(totalpayment).toLocaleString("en-IN", {
+      result4: Math.round(totalpayment).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result4: Math.round(emiamount).toLocaleString("en-IN", {
+      result5: Math.round(emiamount).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      heading2: "Principal Amount",
+      result2: parseInt(loanamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));

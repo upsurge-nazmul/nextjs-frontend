@@ -4,8 +4,7 @@ import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
-import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
+import { ResponsivePie } from "@nivo/pie";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
@@ -257,11 +256,15 @@ export default function HomeCalc({ data, seterror, error }) {
     let totalpayment = emiamount * months;
     let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      heading2: "Total Interest Payable",
-      heading3: `Total Payment
+      heading3: "Total Interest Payable",
+      heading4: `Total Payment
       (Principal + Interest)`,
-      heading4: "Loan EMI",
+      heading5: "Loan EMI",
       heading1: "The indicative value for home is",
+      heading2: "Principal Amount",
+      result2: parseInt(loanamount).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
       result1: Math.round(
         changetoint(calcdata.onetimepayment)
           ? changetoint(calcdata.onetimepayment) + parseInt(loanamount)
@@ -269,13 +272,13 @@ export default function HomeCalc({ data, seterror, error }) {
       ).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result2: Math.round(intrest).toLocaleString("en-IN", {
+      result3: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(totalpayment).toLocaleString("en-IN", {
+      result4: Math.round(totalpayment).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result4: Math.round(emiamount).toLocaleString("en-IN", {
+      result5: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));
@@ -403,6 +406,151 @@ export default function HomeCalc({ data, seterror, error }) {
         {!error && showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
+              {/* <ResponsivePie
+                data={[
+                  {
+                    id: "make",
+                    label: "make",
+                    value: 317,
+                    color: "hsl(61, 70%, 50%)",
+                  },
+                  {
+                    id: "rust",
+                    label: "rust",
+                    value: 307,
+                    color: "hsl(41, 70%, 50%)",
+                  },
+                  {
+                    id: "python",
+                    label: "python",
+                    value: 165,
+                    color: "hsl(234, 70%, 50%)",
+                  },
+                  {
+                    id: "scala",
+                    label: "scala",
+                    value: 579,
+                    color: "hsl(136, 70%, 50%)",
+                  },
+                  {
+                    id: "java",
+                    label: "java",
+                    value: 212,
+                    color: "hsl(46, 70%, 50%)",
+                  },
+                ]}
+                margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+                startAngle={-180}
+                padAngle={0.7}
+                cornerRadius={3}
+                activeOuterRadiusOffset={8}
+                borderWidth={1}
+                borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+                arcLinkLabelsSkipAngle={10}
+                arcLinkLabelsTextColor="#333333"
+                arcLinkLabelsThickness={2}
+                arcLinkLabelsColor={{ from: "color" }}
+                arcLabelsSkipAngle={10}
+                arcLabelsTextColor={{
+                  from: "color",
+                  modifiers: [["darker", 2]],
+                }}
+                defs={[
+                  {
+                    id: "dots",
+                    type: "patternDots",
+                    background: "inherit",
+                    color: "rgba(255, 255, 255, 0.3)",
+                    size: 4,
+                    padding: 1,
+                    stagger: true,
+                  },
+                  {
+                    id: "lines",
+                    type: "patternLines",
+                    background: "inherit",
+                    color: "rgba(255, 255, 255, 0.3)",
+                    rotation: -45,
+                    lineWidth: 6,
+                    spacing: 10,
+                  },
+                ]}
+                fill={[
+                  {
+                    match: {
+                      id: "ruby",
+                    },
+                    id: "dots",
+                  },
+                  {
+                    match: {
+                      id: "c",
+                    },
+                    id: "dots",
+                  },
+                  {
+                    match: {
+                      id: "go",
+                    },
+                    id: "dots",
+                  },
+                  {
+                    match: {
+                      id: "python",
+                    },
+                    id: "dots",
+                  },
+                  {
+                    match: {
+                      id: "scala",
+                    },
+                    id: "lines",
+                  },
+                  {
+                    match: {
+                      id: "lisp",
+                    },
+                    id: "lines",
+                  },
+                  {
+                    match: {
+                      id: "elixir",
+                    },
+                    id: "lines",
+                  },
+                  {
+                    match: {
+                      id: "javascript",
+                    },
+                    id: "lines",
+                  },
+                ]}
+                legends={[
+                  {
+                    anchor: "bottom",
+                    direction: "row",
+                    justify: false,
+                    translateX: 0,
+                    translateY: 56,
+                    itemsSpacing: 0,
+                    itemWidth: 100,
+                    itemHeight: 18,
+                    itemTextColor: "#999",
+                    itemDirection: "left-to-right",
+                    itemOpacity: 1,
+                    symbolSize: 18,
+                    symbolShape: "circle",
+                    effects: [
+                      {
+                        on: "hover",
+                        style: {
+                          itemTextColor: "#000",
+                        },
+                      },
+                    ],
+                  },
+                ]}
+              /> */}
               <Doughnut
                 data={chartData}
                 className={styles.chart}

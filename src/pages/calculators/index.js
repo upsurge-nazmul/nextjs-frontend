@@ -71,13 +71,13 @@ function CalculatorsPage() {
     //   icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
     //   relative: ["sip", "investmentcomparison", "homeLoan"],
     // },
-    // restaurant: {
-    //   heading: "Start My Cloud Kitchen Calculator",
-    //   subheading:
-    //     "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
-    //   relative: ["currency", "angel", "unicorn"],
-    //   icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
-    // },
+    restaurant: {
+      heading: "Start My Cloud Kitchen Calculator",
+      subheading:
+        "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
+      relative: ["currency", "angel", "unicorn"],
+      icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
+    },
     // investmentcomparison: {
     //   heading: "Investment Comparison Tool",
     //   relative: ["sip", "currency", "angel"],

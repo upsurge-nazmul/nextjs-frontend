@@ -23,7 +23,7 @@ export default function HomeCalc({ seterror, error }) {
       range: true,
     },
     {
-      title: "Investment Duration",
+      title: "When will you need the money ?",
       type: "input",
       code: "years",
       min: 1,
@@ -122,12 +122,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Mutual Fund") {
       setresultdata((prev) => ({
-        heading1: "SIP For Mutual Fund",
+        heading1: "SIP/Lumpsum For Mutual Fund",
         result1: Math.round(mutualfund),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["SIP For Mutual Fund"],
+        labels: ["SIP/Lumpsum For Mutual Fund"],
         datasets: [
           {
             label: "Sips",
@@ -140,12 +140,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Gold") {
       setresultdata((prev) => ({
-        heading1: "SIP For Gold",
+        heading1: "SIP/Lumpsum  For Gold",
         result1: Math.round(gold),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["SIP For Gold"],
+        labels: ["SIP/Lumpsum  For Gold"],
 
         datasets: [
           {
@@ -160,14 +160,14 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Stock market") {
       setresultdata((prev) => ({
-        heading1: "SIP For Stock Market",
+        heading1: "SIP/Lumpsum  For Stock Market",
         result1: Math.round(stockmarket).toLocaleString("en-IN", {
           currency: "INR",
         }),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["SIP For Stock Market"],
+        labels: ["SIP/Lumpsum  For Stock Market"],
 
         datasets: [
           {
@@ -182,12 +182,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Government Bond") {
       setresultdata((prev) => ({
-        heading1: "SIP For Government Bond",
+        heading1: "SIP/Lumpsum  For Government Bond",
         result1: Math.round(governmentb),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["SIP For Government Bond"],
+        labels: ["SIP/Lumpsum  For Government Bond"],
         datasets: [
           {
             label: "Sips",
@@ -205,11 +205,11 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else {
       setresultdata((prev) => ({
-        heading1: "SIP For Fixed Deposit",
-        heading2: `SIP For Mutual Fund`,
-        heading3: "SIP For Gold",
-        heading4: "SIP For Stock Market",
-        heading5: "SIP For Government Bond",
+        heading1: "SIP/Lumpsum at 5% For Fixed Deposit",
+        heading2: `SIP/Lumpsum at 10.8% For Mutual Fund`,
+        heading3: "SIP/Lumpsum at 10% For Gold",
+        heading4: "SIP/Lumpsum at 13.9% For Stock Market",
+        heading5: "SIP/Lumpsum at 3.65% For Government Bond",
         result1: Math.round(fd).toLocaleString("en-IN", {
           currency: "INR",
         }),
@@ -229,15 +229,15 @@ export default function HomeCalc({ seterror, error }) {
       setChartData((prev) => ({
         ...prev,
         labels: [
-          "SIP For Fixed Deposit",
-          `SIP For Mutual Fund`,
-          "SIP For Gold",
-          "SIP For Stock Market",
-          "SIP For Government Bond",
+          "SIP/Lumpsum  For Fixed Deposit",
+          `SIP/Lumpsum  For Mutual Fund`,
+          "SIP/Lumpsum  For Gold",
+          "SIP/Lumpsum  For Stock Market",
+          "SIP/Lumpsum  For Government Bond",
         ],
         datasets: [
           {
-            label: "Sips",
+            label: "SIP/Lumpsum",
 
             data: [
               Math.round(fd),

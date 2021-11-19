@@ -207,7 +207,13 @@ export default function EducationInvestmentCalc({ seterror, error }) {
 
     setresultdata((prev) => ({
       heading1: "",
-      result1: `Your monthly investment should be ₹${Math.round(
+      result1: `To save ₹${loanamount.toLocaleString("en-IN", {
+        currency: "INR",
+      })} in ${
+        changetoint(calcdata.years) > 1
+          ? calcdata.years + " years"
+          : calcdata.years + " year"
+      } your monthly investment should be ₹${Math.round(
         monthlyinvestment
       ).toLocaleString("en-IN", {
         currency: "INR",
