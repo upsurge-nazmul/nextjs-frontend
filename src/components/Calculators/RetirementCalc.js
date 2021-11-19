@@ -96,9 +96,9 @@ export default function Retirement({ seterror, error }) {
 
     setresultdata((prev) => ({
       heading1: "",
-      result1: `${Math.round(monthlyinvestment).toLocaleString("en-IN", {
+      result1: `₹ ${Math.round(monthlyinvestment).toLocaleString("en-IN", {
         currency: "INR",
-      })} Should be your monthly investment and should grow each year with 7%.`,
+      })} should be your monthly investment and should grow each year with 7%.`,
     }));
     setChartData((prev) => ({
       ...prev,

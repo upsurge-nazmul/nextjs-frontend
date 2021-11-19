@@ -8,6 +8,11 @@
 }
 
 .aboutPage {
+  .teamheading {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+  }
   .curve2 {
     position: fixed;
     width: 100vw;
@@ -146,8 +151,10 @@
         justify-content: center;
         flex-direction: column;
         max-width: 45%;
-        .secondheading {
-          font-size: 50px;
+        .heading {
+          font-size: 40px;
+          margin: 10px 0;
+          font-weight: 700;
         }
         .des {
           font-size: 22px;
@@ -182,15 +189,17 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        width: 60%;
-        .secondheading {
-          font-size: 50px;
+        width: 50%;
+        .heading {
+          font-size: 40px;
+          margin: 10px 0;
+          font-weight: 700;
         }
         .des {
           font-size: 22px;
-          width: 50%;
+          width: 60%;
           font-weight: 400;
-          line-height: 34px;
+          line-height: 32px;
           width: 100%;
         }
       }
@@ -243,7 +252,7 @@
     .wrapper {
       display: flex;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 80px;
       justify-content: center;
       flex-wrap: wrap;
       max-width: 1200px;
@@ -252,7 +261,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 4vw;
+        margin: 20px 2vw;
         .name {
           font-size: 32px;
           margin-top: 10px;
@@ -266,11 +275,34 @@
           margin-top: 6px;
           font-size: 18px;
         }
-        img {
-          width: 300px;
-          height: 300px;
+        .img {
+          width: 250px;
+          height: 250px;
           object-fit: cover;
-          border-radius: 350px;
+          border-radius: 250px;
+          cursor: pointer;
+          overflow: hidden;
+          position: relative;
+          &:hover {
+            .hover {
+              transition: all 0.3s ease;
+              position: absolute;
+              border-radius: 250px;
+              width: 250px;
+              height: 250px;
+              background-color: rgba(67, 149, 255, 0.39);
+              z-index: 100;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .linkedin {
+                color: white;
+                fill: white;
+                width: 60px;
+                height: 60px;
+              }
+            }
+          }
         }
       }
       .team {
@@ -500,8 +532,8 @@
           flex-direction: column;
           max-width: unset;
           width: 80%;
-          .secondheading {
-            font-size: 32px;
+          .heading {
+            text-align: center;
           }
           .des {
             font-size: 14px;
@@ -540,8 +572,8 @@
           justify-content: center;
           flex-direction: column;
           width: 80%;
-          .secondheading {
-            font-size: 50px;
+          .heading {
+            text-align: center;
           }
           .des {
             font-size: 14px;

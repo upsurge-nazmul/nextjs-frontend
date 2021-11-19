@@ -66,7 +66,7 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Subscribe to upsurge Newsletter.</div>
+        <div className={styles.heading}>Subscribe to upsurge newsletter.</div>
         <p className={styles.subheading}>
           Get all the information related to Financial Literacy
         </p>

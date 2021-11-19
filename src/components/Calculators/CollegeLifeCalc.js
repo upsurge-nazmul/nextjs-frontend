@@ -40,7 +40,7 @@ export default function CollegeLifeCalc({ seterror, error }) {
 
     {
       type: "input",
-      title: "Enter estimated monthly earning",
+      title: "Enter estimated monthly earning(during college)",
       code: "earnings",
       min: 1000,
       max: 10000000,
@@ -76,7 +76,7 @@ export default function CollegeLifeCalc({ seterror, error }) {
 
     {
       type: "input",
-      title: "Enter estimated monthly earning",
+      title: "Enter estimated monthly earning(during college)",
       code: "earnings",
       min: 1000,
       max: 10000000,

@@ -7,11 +7,11 @@ export default function LiveClasses({ id }) {
       <div className={styles.top}>
         <div className={styles.heading}>Live Classes</div>
         <div className={styles.subheading}>
-          Live online classes designed and taught by our co-founders and panel
-          of experts on various important topics around personal finance, career
-          development and entrepreneurship. <br />
-          Designed by experiential learning professionals, these classes are
-          fun, engaging and effective!
+          Live online courses and workshops, designed and taught by our
+          co-founders and experts, on important topics around personal finance,
+          career development and entrepreneurship. <br />
+          These are designed with an experiential focus and are fun, engaging
+          and effective!
         </div>
       </div>
       <div className={styles.right}>

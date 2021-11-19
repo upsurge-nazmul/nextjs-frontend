@@ -35,7 +35,7 @@ export default function EducationInvestmentCalc({ seterror, error }) {
       title: "Select Course",
       type: "select",
       code: "course",
-      options: ["MBA", "Masters", "Undergrad"],
+      options: ["MBA", "Masters", "Undergradate degree"],
     },
 
     {
@@ -43,7 +43,8 @@ export default function EducationInvestmentCalc({ seterror, error }) {
       title: "Years remaining in admission",
       code: "years",
       min: 1,
-      max: 70,
+      max: 6,
+      range: true,
       posttitle: "years",
     },
   ]);
@@ -78,7 +79,7 @@ export default function EducationInvestmentCalc({ seterror, error }) {
       title: "Years remaining in admission",
       code: "years",
       min: 1,
-      max: 30,
+      max: 6,
       posttitle: "years",
       range: true,
     },
@@ -123,7 +124,21 @@ export default function EducationInvestmentCalc({ seterror, error }) {
     } else {
       setquestions(backupquestions.filter((item) => item.code !== "country"));
     }
-  }, [calcdata]);
+  }, [calcdata.type]);
+  useEffect(() => {
+    if (calcdata.course === "Undergrad") {
+      let x = questions[questions.findIndex((item) => item.code === "years")];
+      x.max = 18;
+      questions[questions.findIndex((item) => item.code === "years")] = x;
+      setquestions(questions);
+    } else {
+      let x = questions[questions.findIndex((item) => item.code === "years")];
+      x.max = 6;
+      questions[questions.findIndex((item) => item.code === "years")] = x;
+      setquestions(questions);
+    }
+    setcalcdata((prev) => ({ ...prev, years: 1 }));
+  }, [calcdata.course]);
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);

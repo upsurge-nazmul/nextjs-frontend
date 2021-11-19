@@ -8,13 +8,12 @@ import Image from "next/image";
 export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
+    "Money",
+    "Career Development",
+    "Budgeting",
     "Investing",
-    "Saving",
-    "Assets",
-    "Mutual Funds",
-    "Investing",
-    "Saving",
-    "Assets",
+    "Banks & Payments",
+    "Insurance",
     "Mutual Funds",
   ];
   return (
@@ -49,20 +48,25 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
       <div className={styles.textcontainer}>
         <div className={styles.heading}>Knowledge Quest</div>
         <div className={styles.subheading}>
-          Knowledge Quest comprises byte sized interactive videos which include
-          exercises, real life examples and a short quiz.
+          Interactive courses that cover fundamentals of finance, including
+          earning, budgeting, saving, investing, and entrepreneurship. These
+          bite-sized courses are about 10 minutes each and include exercises,
+          real-life examples and short quizzes to make sure that the child
+          understands the concepts. These courses have been designed in
+          collaboration with CAs, Investment Bankers, Experiential instructors
+          and design thinking experts from some of the top colleges globally.
         </div>
         <div className={styles.details}>
           <div className={styles.section}>
-            <p className={styles.number}>34</p>
-            <p className={styles.name}>session</p>
+            <p className={styles.number}>60</p>
+            <p className={styles.name}>courses</p>
           </div>
           <div className={styles.section}>
-            <p className={styles.number}>4</p>
+            <p className={styles.number}>12</p>
             <p className={styles.name}>projects</p>
           </div>
           <div className={styles.section}>
-            <p className={styles.number}>3</p>
+            <p className={styles.number}>70</p>
             <p className={styles.name}>challenges</p>
           </div>
         </div>

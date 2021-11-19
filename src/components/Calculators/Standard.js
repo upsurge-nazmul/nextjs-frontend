@@ -26,7 +26,7 @@ export default function Standard({ seterror, error }) {
       options: ["Shared", "Personal"],
     },
     {
-      title: "How frequently do you dine out ?",
+      title: "How frequently do you dine out monthly?",
       type: "input",
       code: "dineout",
       min: 0,
@@ -61,7 +61,7 @@ export default function Standard({ seterror, error }) {
       options: ["Shared", "Personal"],
     },
     {
-      title: "How frequently do you dine out ?",
+      title: "How frequently do you dine out monthly?",
       type: "input",
       code: "dineout",
       min: 0,

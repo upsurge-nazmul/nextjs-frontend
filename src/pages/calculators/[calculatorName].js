@@ -170,10 +170,10 @@ function CalculatorsPage() {
           calcdata={data}
         />
         <CalcFaq name={calculatorName} />
-        <RelativeSection
+        {/* <RelativeSection
           data={data}
           cards={data[calculatorName]?.relative ?? []}
-        />
+        /> */}
       </div>
       <JoinUs />
 

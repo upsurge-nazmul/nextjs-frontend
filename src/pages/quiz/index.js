@@ -532,7 +532,7 @@ function Quiz({ leaderboard }) {
           ) : null}
         </div>
       )}
-      <LeaderBoard title="Quiz" data={leaderboard || []} />
+      {/* <LeaderBoard title="Quiz" data={leaderboard || []} /> */}
       <JoinUs />
       <Footer />
     </div>

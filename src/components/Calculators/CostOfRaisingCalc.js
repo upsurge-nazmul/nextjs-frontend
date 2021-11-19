@@ -12,12 +12,6 @@ import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
 export default function CostOfRaisingCalc() {
-  const [marriage, setmarriage] = useState();
-  const [type, settype] = useState("");
-  const [school, setschool] = useState();
-  const [university, setuniversity] = useState("");
-  const [college, setcollege] = useState("");
-  const [extra, setextra] = useState(0);
   const [questions, setquestions] = useState([
     {
       title: "Select the city tier for school expenses",
@@ -26,15 +20,15 @@ export default function CostOfRaisingCalc() {
       options: ["Tier 1", "Tier 2", "Tier 3"],
     },
     {
-      title: "Select the city tier for marriage expenses",
-      type: "select",
-      code: "marriage",
-      options: ["Tier 1", "Tier 2", "Tier 3"],
-    },
-    {
       title: "Select the city tier for college expenses",
       type: "select",
       code: "college",
+      options: ["Tier 1", "Tier 2", "Tier 3"],
+    },
+    {
+      title: "Select the city tier for marriage expenses",
+      type: "select",
+      code: "marriage",
       options: ["Tier 1", "Tier 2", "Tier 3"],
     },
     {

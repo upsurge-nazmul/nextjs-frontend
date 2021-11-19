@@ -12,12 +12,6 @@ import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
 export default function HomeCalc({ seterror, error }) {
-  const [years, setyear] = useState(1);
-  const [type, settype] = useState("All");
-  const [amount, setamount] = useState();
-  const [university, setuniversity] = useState("");
-  const [country, setcountry] = useState("");
-  const [course, setcourse] = useState(0);
   const [questions, setquestions] = useState([
     {
       type: "input",
@@ -57,7 +51,7 @@ export default function HomeCalc({ seterror, error }) {
     heading1: "Invested Amount",
     heading2: "Returns",
     heading3: "Total Value",
-    heading4: "Monthy Sip",
+    heading4: "Monthy SIP",
     result1: "",
     result2: "",
     result3: "",
@@ -109,12 +103,12 @@ export default function HomeCalc({ seterror, error }) {
       changetoint(calcdata.amount) / Math.pow(1 + 3.65 / 100, calcdata.years);
     if (calcdata.type === "Fixed deposit") {
       setresultdata((prev) => ({
-        heading1: "Sip For Fixed Deposit",
+        heading1: "SIP For Fixed Deposit",
         result1: Math.round(fd),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["Sip For Fixed Deposit"],
+        labels: ["SIP For Fixed Deposit"],
 
         datasets: [
           {
@@ -128,12 +122,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Mutual Fund") {
       setresultdata((prev) => ({
-        heading1: "Sip For Mutual Fund",
+        heading1: "SIP For Mutual Fund",
         result1: Math.round(mutualfund),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["Sip For Mutual Fund"],
+        labels: ["SIP For Mutual Fund"],
         datasets: [
           {
             label: "Sips",
@@ -146,12 +140,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Gold") {
       setresultdata((prev) => ({
-        heading1: "Sip For Gold",
+        heading1: "SIP For Gold",
         result1: Math.round(gold),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["Sip For Gold"],
+        labels: ["SIP For Gold"],
 
         datasets: [
           {
@@ -166,14 +160,14 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Stock market") {
       setresultdata((prev) => ({
-        heading1: "Sip For Stock Market",
+        heading1: "SIP For Stock Market",
         result1: Math.round(stockmarket).toLocaleString("en-IN", {
           currency: "INR",
         }),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["Sip For Stock Market"],
+        labels: ["SIP For Stock Market"],
 
         datasets: [
           {
@@ -188,12 +182,12 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else if (calcdata.type === "Government Bond") {
       setresultdata((prev) => ({
-        heading1: "Sip For Government Bond",
+        heading1: "SIP For Government Bond",
         result1: Math.round(governmentb),
       }));
       setChartData((prev) => ({
         ...prev,
-        labels: ["Sip For Government Bond"],
+        labels: ["SIP For Government Bond"],
         datasets: [
           {
             label: "Sips",
@@ -211,11 +205,11 @@ export default function HomeCalc({ seterror, error }) {
       }));
     } else {
       setresultdata((prev) => ({
-        heading1: "Sip For Fixed Deposit",
-        heading2: `Sip For Mutual Fund`,
-        heading3: "Sip For Gold",
-        heading4: "Sip For Stock Market",
-        heading5: "Sip For Government Bond",
+        heading1: "SIP For Fixed Deposit",
+        heading2: `SIP For Mutual Fund`,
+        heading3: "SIP For Gold",
+        heading4: "SIP For Stock Market",
+        heading5: "SIP For Government Bond",
         result1: Math.round(fd).toLocaleString("en-IN", {
           currency: "INR",
         }),
@@ -235,11 +229,11 @@ export default function HomeCalc({ seterror, error }) {
       setChartData((prev) => ({
         ...prev,
         labels: [
-          "Sip For Fixed Deposit",
-          `Sip For Mutual Fund`,
-          "Sip For Gold",
-          "Sip For Stock Market",
-          "Sip For Government Bond",
+          "SIP For Fixed Deposit",
+          `SIP For Mutual Fund`,
+          "SIP For Gold",
+          "SIP For Stock Market",
+          "SIP For Government Bond",
         ],
         datasets: [
           {

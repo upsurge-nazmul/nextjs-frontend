@@ -164,7 +164,7 @@ export default function RestroCalc({ data }) {
         orders
       ).toLocaleString("en-IN", {
         currency: "INR",
-      })}`,
+      })} per month`,
     }));
   }
   return (
