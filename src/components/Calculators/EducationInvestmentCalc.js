@@ -116,15 +116,7 @@ export default function EducationInvestmentCalc({ seterror, error }) {
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
-  useEffect(() => {
-    if (calcdata.type !== "Indian") {
-      setquestions(
-        backupquestions.filter((item) => item.code !== "university")
-      );
-    } else {
-      setquestions(backupquestions.filter((item) => item.code !== "country"));
-    }
-  }, [calcdata.type]);
+
   useEffect(() => {
     if (calcdata.course === "Undergrad") {
       let x = questions[questions.findIndex((item) => item.code === "years")];
@@ -139,6 +131,15 @@ export default function EducationInvestmentCalc({ seterror, error }) {
     }
     setcalcdata((prev) => ({ ...prev, years: 1 }));
   }, [calcdata.course]);
+  useEffect(() => {
+    if (calcdata.type !== "Indian") {
+      setquestions(
+        backupquestions.filter((item) => item.code !== "university")
+      );
+    } else {
+      setquestions(backupquestions.filter((item) => item.code !== "country"));
+    }
+  }, [calcdata.type]);
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
