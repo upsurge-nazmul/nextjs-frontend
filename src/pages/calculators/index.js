@@ -64,13 +64,13 @@ function CalculatorsPage() {
       relative: ["college", "costofraising", "education"],
       icon: "https://i.ibb.co/8BdyXNb/Untitled-design-66.png",
     },
-    // retirement: {
-    //   heading: "Retirement Calculator",
-    //   subheading:
-    //     "It calculates how much a user needs to save in order to get a desired monthly amount after retirement.",
-    //   icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
-    //   relative: ["sip", "investmentcomparison", "homeLoan"],
-    // },
+    retirement: {
+      heading: "Retirement Calculator",
+      subheading:
+        "It calculates how much a user needs to save in order to get a desired monthly amount after retirement.",
+      icon: "https://i.ibb.co/dtLHTYJ/Untitled-design-11.png",
+      relative: ["sip", "investmentcomparison", "homeLoan"],
+    },
     restaurant: {
       heading: "Start My Cloud Kitchen Calculator",
       subheading:
@@ -78,50 +78,50 @@ function CalculatorsPage() {
       relative: ["currency", "angel", "unicorn"],
       icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
     },
-    // investmentcomparison: {
-    //   heading: "Investment Comparison Tool",
-    //   relative: ["sip", "currency", "angel"],
-    //   subheading: "It compares the various investment opportunities.",
-    //   icon: "https://i.ibb.co/Rh3FZW9/Untitled-design-13.png",
-    // },
+    investmentcomparison: {
+      heading: "Investment Comparison Tool",
+      relative: ["sip", "currency", "angel"],
+      subheading: "It compares the various investment opportunities.",
+      icon: "https://i.ibb.co/Rh3FZW9/Untitled-design-13.png",
+    },
     // Insurance: {
     //   heading: "Insurance?",
     //   subheading:
     //     "The calculator uses rules of compound interest to determine the total corpus you will be able to accumulate as per the investments made post-maturity.",
     //   icon: "https://i.ibb.co/N1P7BR7/Untitled-design-14.png",
     // },
-    // currency: {
-    //   heading: "Big Mac Index Currency Converter",
-    //   relative: ["educationinvestments", "angel", "restaurant"],
-    //   subheading:
-    //     "This calculator converts rupees in terms of how much it's actually worth in different countries.",
-    //   icon: "https://i.ibb.co/PFXFVWp/Untitled-design-15.png",
-    // },
-    // college: {
-    //   relative: ["education", "unicorn", "restaurant"],
-    //   heading: "College Life",
-    //   subheading: `This calculator gives you expected monthly expense of your college life based on various different parameters.`,
-    //   icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
-    // },
-    // costofraising: {
-    //   relative: ["education", "educationinvestments", "standardofliving"],
-    //   heading: "Cost of Raising a Child",
-    //   subheading:
-    //     "This tells the expected amount user will have to spend throughout life for raising single child",
-    //   icon: "https://i.ibb.co/6bkxKJK/Untitled-design-18.png",
-    // },
-    // unicorn: {
-    //   heading: "Unicorn Builder",
-    //   subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation.`,
-    //   icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
-    // },
-    // angel: {
-    //   heading: "Angel Investment Calculator",
-    //   subheading: `This calculator tells you the valuation of your startup at which you can raise funding from angel investors
-    //    Standard of living of bachelor- This calculator gives you the expected expense of your lifestyle in various different cities based on various different factors.`,
-    //   relative: ["restaurant", "standardofliving", "unicorn"],
-    //   icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
-    // },
+    currency: {
+      heading: "Big Mac Index Currency Converter",
+      relative: ["educationinvestments", "angel", "restaurant"],
+      subheading:
+        "This calculator converts rupees in terms of how much it's actually worth in different countries.",
+      icon: "https://i.ibb.co/PFXFVWp/Untitled-design-15.png",
+    },
+    college: {
+      relative: ["education", "unicorn", "restaurant"],
+      heading: "College Life",
+      subheading: `This calculator gives you expected monthly expense of your college life based on various different parameters.`,
+      icon: "https://i.ibb.co/9p2mMZW/Untitled-design-16.png",
+    },
+    costofraising: {
+      relative: ["education", "educationinvestments", "standardofliving"],
+      heading: "Cost of Raising a Child",
+      subheading:
+        "This tells the expected amount user will have to spend throughout life for raising single child",
+      icon: "https://i.ibb.co/6bkxKJK/Untitled-design-18.png",
+    },
+    unicorn: {
+      heading: "Unicorn Builder",
+      subheading: `This Calculator tells you how much revenue your startup needs to generate in order to reach a billion dollar valuation.`,
+      icon: "https://i.ibb.co/s9vbfqQ/Untitled-design-19.png",
+    },
+    angel: {
+      heading: "Angel Investment Calculator",
+      subheading: `This calculator tells you the valuation of your startup at which you can raise funding from angel investors
+       Standard of living of bachelor- This calculator gives you the expected expense of your lifestyle in various different cities based on various different factors.`,
+      relative: ["restaurant", "standardofliving", "unicorn"],
+      icon: "https://i.ibb.co/wSzwgHT/Untitled-design-20.png",
+    },
     standardofliving: {
       heading: "Standard of Living calculator",
       subheading:
