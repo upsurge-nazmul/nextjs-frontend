@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { BarExtendedDatum, ResponsiveBar } from "@nivo/bar";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -13,6 +13,12 @@ import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
 export default function HomeCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
+    {
+      title: "Investment Method",
+      type: "select",
+      code: "method",
+      options: ["SIP", "Lumpsum"],
+    },
     {
       type: "input",
       title: "Enter money needed in future.",
@@ -57,22 +63,38 @@ export default function HomeCalc({ seterror, error }) {
     result3: "",
     result4: "",
   });
-  const [chartData, setChartData] = useState({
-    labels: ["interest", "Loan Amount"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [0, 0],
-        backgroundColor: ["#4166EB", "#FDCC03"],
-        borderColor: ["#4166EB", "#FDCC03"],
-        borderWidth: 1,
-      },
-    ],
-  });
+  const [chartData, setChartData] = useState([
+    {
+      type: "Fixed Deposit",
+      value: 161,
+      color: "#FDCC03",
+    },
+    {
+      type: "Mutual Fund",
+      value: 161,
+      color: "#4166EB",
+    },
+    {
+      type: "Gold",
+      value: 161,
+      color: "#17D1BC",
+    },
+    {
+      type: "Stock Market",
+      value: 161,
+      color: "#FF6263",
+    },
+    {
+      type: "Government Bond",
+      value: 161,
+      color: "#ff9900",
+    },
+  ]);
   const [calcdata, setcalcdata] = useState({
     years: 1,
     type: "All",
     amount: 10000,
+    method: "SIP",
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
@@ -91,125 +113,157 @@ export default function HomeCalc({ seterror, error }) {
     if (!changetoint(calcdata.amount) || changetoint(calcdata.amount) <= 1000) {
       seterror("Money needed in future shoud be greater than 10,000");
     }
-    let fd =
-      changetoint(calcdata.amount) / Math.pow(1 + 5 / 100, calcdata.years);
-    let mutualfund =
-      changetoint(calcdata.amount) / Math.pow(1 + 10.4 / 100, calcdata.years);
-    let gold =
-      changetoint(calcdata.amount) / Math.pow(1 + 10 / 100, calcdata.years);
-    let stockmarket =
-      changetoint(calcdata.amount) / Math.pow(1 + 13.9 / 100, calcdata.years);
-    let governmentb =
-      changetoint(calcdata.amount) / Math.pow(1 + 3.65 / 100, calcdata.years);
+    let fd = 0;
+    let mutualfund = 0;
+    let gold = 0;
+    let stockmarket = 0;
+    let governmentb = 0;
+    if (calcdata.method === "SIP") {
+      fd =
+        changetoint(calcdata.amount) /
+        (Math.pow(1 + 5 / 100, calcdata.years) * ((1 + 5 / 100) / (5 / 100)));
+      mutualfund =
+        changetoint(calcdata.amount) /
+        (Math.pow(1 + 10.4 / 100, calcdata.years) *
+          ((1 + 5 / 100) / (5 / 100)));
+      gold =
+        changetoint(calcdata.amount) /
+        (Math.pow(1 + 10 / 100, calcdata.years) * ((1 + 5 / 100) / (5 / 100)));
+      stockmarket =
+        changetoint(calcdata.amount) /
+        (Math.pow(1 + 13.9 / 100, calcdata.years) *
+          ((1 + 5 / 100) / (5 / 100)));
+      governmentb =
+        changetoint(calcdata.amount) /
+        (Math.pow(1 + 3.65 / 100, calcdata.years) *
+          ((1 + 5 / 100) / (5 / 100)));
+    } else {
+      fd = changetoint(calcdata.amount) / Math.pow(1 + 5 / 100, calcdata.years);
+      mutualfund =
+        changetoint(calcdata.amount) / Math.pow(1 + 10.4 / 100, calcdata.years);
+      gold =
+        changetoint(calcdata.amount) / Math.pow(1 + 10 / 100, calcdata.years);
+      stockmarket =
+        changetoint(calcdata.amount) / Math.pow(1 + 13.9 / 100, calcdata.years);
+      governmentb =
+        changetoint(calcdata.amount) / Math.pow(1 + 3.65 / 100, calcdata.years);
+    }
     if (calcdata.type === "Fixed deposit") {
       setresultdata((prev) => ({
-        heading1: "SIP For Fixed Deposit",
-        result1: Math.round(fd),
-      }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: ["SIP For Fixed Deposit"],
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 5% For Fixed Deposit`,
 
-        datasets: [
-          {
-            label: "# of Votes",
-            data: [Math.round(fd)],
-            backgroundColor: ["#FDCC03"],
-            borderColor: ["#FDCC03"],
-            borderWidth: 1,
-          },
-        ],
+        result1: Math.round(fd).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
       }));
+      setChartData([
+        {
+          type: "Fixed Deposit",
+          value: Math.round(fd),
+          color: "#FDCC03",
+        },
+      ]);
     } else if (calcdata.type === "Mutual Fund") {
       setresultdata((prev) => ({
-        heading1: "SIP/Lumpsum For Mutual Fund",
-        result1: Math.round(mutualfund),
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 10.8% For Mutual Fund`,
+        result1: Math.round(mutualfund).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
       }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: ["SIP/Lumpsum For Mutual Fund"],
-        datasets: [
-          {
-            label: "Sips",
-            data: [Math.round(mutualfund)],
-            backgroundColor: ["#FDCC03"],
-            borderColor: ["#FDCC03"],
-            borderWidth: 1,
-          },
-        ],
-      }));
+      setChartData([
+        {
+          type: "Mutual Fund",
+          value: Math.round(mutualfund),
+          color: "#4166EB",
+        },
+      ]);
     } else if (calcdata.type === "Gold") {
       setresultdata((prev) => ({
-        heading1: "SIP/Lumpsum  For Gold",
-        result1: Math.round(gold),
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 10% For Gold`,
+        result1: Math.round(gold).toLocaleString("en-IN", {
+          currency: "INR",
+        }),
       }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: ["SIP/Lumpsum  For Gold"],
-
-        datasets: [
-          {
-            label: "Sips",
-
-            data: [Math.round(gold)],
-            backgroundColor: ["#FDCC03"],
-            borderColor: ["#FDCC03"],
-            borderWidth: 1,
-          },
-        ],
-      }));
+      setChartData([
+        {
+          type: "Fixed Deposit",
+          value: Math.round(fd),
+          color: "#FDCC03",
+        },
+        {
+          type: "Mutual Fund",
+          value: Math.round(mutualfund),
+          color: "#4166EB",
+        },
+        {
+          type: "Gold",
+          value: Math.round(gold),
+          color: "#17D1BC",
+        },
+        {
+          type: "Stocks",
+          value: Math.round(stockmarket),
+          color: "#FF6263",
+        },
+        {
+          type: "Government Bond",
+          value: Math.round(governmentb),
+          color: "#ff9900",
+        },
+      ]);
     } else if (calcdata.type === "Stock market") {
       setresultdata((prev) => ({
-        heading1: "SIP/Lumpsum  For Stock Market",
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 13.9% For Stock Market`,
         result1: Math.round(stockmarket).toLocaleString("en-IN", {
           currency: "INR",
         }),
       }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: ["SIP/Lumpsum  For Stock Market"],
-
-        datasets: [
-          {
-            label: "Sips",
-
-            data: [Math.round(stockmarket)],
-            backgroundColor: ["#FDCC03"],
-            borderColor: ["#FDCC03"],
-            borderWidth: 1,
-          },
-        ],
-      }));
+      setChartData([
+        {
+          type: "Stocks",
+          value: Math.round(stockmarket),
+          color: "#FF6263",
+        },
+      ]);
     } else if (calcdata.type === "Government Bond") {
       setresultdata((prev) => ({
-        heading1: "SIP/Lumpsum  For Government Bond",
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 3.65% For Government Bond`,
         result1: Math.round(governmentb),
       }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: ["SIP/Lumpsum  For Government Bond"],
-        datasets: [
-          {
-            label: "Sips",
-
-            data: [
-              Math.round(governmentb).toLocaleString("en-IN", {
-                currency: "INR",
-              }),
-            ],
-            backgroundColor: ["#FDCC03"],
-            borderColor: ["#FDCC03"],
-            borderWidth: 1,
-          },
-        ],
-      }));
+      setChartData([
+        {
+          type: "Government Bond",
+          value: Math.round(governmentb),
+          color: "#ff9900",
+        },
+      ]);
     } else {
       setresultdata((prev) => ({
-        heading1: "SIP/Lumpsum at 5% For Fixed Deposit",
-        heading2: `SIP/Lumpsum at 10.8% For Mutual Fund`,
-        heading3: "SIP/Lumpsum at 10% For Gold",
-        heading4: "SIP/Lumpsum at 13.9% For Stock Market",
-        heading5: "SIP/Lumpsum at 3.65% For Government Bond",
+        heading1: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 5% For Fixed Deposit`,
+        heading2: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 10.8% For Mutual Fund`,
+        heading3: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 10% For Gold`,
+        heading4: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 13.9% For Stock Market`,
+        heading5: `${
+          calcdata.method === "SIP" ? "SIP" : "Lumpsum"
+        } at 3.65% For Government Bond`,
         result1: Math.round(fd).toLocaleString("en-IN", {
           currency: "INR",
         }),
@@ -226,44 +280,33 @@ export default function HomeCalc({ seterror, error }) {
           currency: "INR",
         }),
       }));
-      setChartData((prev) => ({
-        ...prev,
-        labels: [
-          "SIP/Lumpsum  For Fixed Deposit",
-          `SIP/Lumpsum  For Mutual Fund`,
-          "SIP/Lumpsum  For Gold",
-          "SIP/Lumpsum  For Stock Market",
-          "SIP/Lumpsum  For Government Bond",
-        ],
-        datasets: [
-          {
-            label: "SIP/Lumpsum",
-
-            data: [
-              Math.round(fd),
-              Math.round(mutualfund),
-              Math.round(gold),
-              Math.round(stockmarket),
-              Math.round(governmentb),
-            ],
-            backgroundColor: [
-              "#FDCC03",
-              "#4166EB",
-              "#17D1BC",
-              "#FF6263",
-              "#fd9903",
-            ],
-            borderColor: [
-              "#FDCC03",
-              "#4166EB",
-              "#17D1BC",
-              "#FF6263",
-              "#fd9903",
-            ],
-            borderWidth: 1,
-          },
-        ],
-      }));
+      setChartData([
+        {
+          type: "Fixed Deposit",
+          value: Math.round(fd),
+          color: "#FDCC03",
+        },
+        {
+          type: "Mutual Fund",
+          value: Math.round(mutualfund),
+          color: "#4166EB",
+        },
+        {
+          type: "Gold",
+          value: Math.round(gold),
+          color: "#17D1BC",
+        },
+        {
+          type: "Stocks",
+          value: Math.round(stockmarket),
+          color: "#FF6263",
+        },
+        {
+          type: "Government Bond",
+          value: Math.round(governmentb),
+          color: "#ff9900",
+        },
+      ]);
     }
   }
   return (
@@ -342,9 +385,7 @@ export default function HomeCalc({ seterror, error }) {
                   setvalue={(e) =>
                     setcalcdata((prev) => ({
                       ...prev,
-                      [item.code]: changetoint(e).toLocaleString("en-IN", {
-                        currency: "INR",
-                      }),
+                      [item.code]: e,
                     }))
                   }
                   options={item.options}
@@ -372,12 +413,31 @@ export default function HomeCalc({ seterror, error }) {
       {showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Bar
+            <ResponsiveBar
               data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
+              colors={{ datum: "data.color" }}
+              keys={["value"]}
+              indexBy="type"
+              margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+              padding={0.2}
+              valueScale={{ type: "linear" }}
+              borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+              axisTop={null}
+              valueFormat={(value) =>
+                changetoint(value).toLocaleString("en-IN", {
+                  currency: "INR",
+                })
+              }
+              axisRight={null}
+              axisBottom={{
+                tickSize: 10,
+                tickPadding: 5,
+                tickRotation: 0,
+                legend: "",
+                legendPosition: "middle",
+                legendOffset: 32,
+              }}
+              label={false}
             />
           </div>
         </div>
