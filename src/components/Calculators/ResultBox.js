@@ -19,6 +19,7 @@ function ResultBox({
             {<p className={styles.bsign}>{"₹"}</p>}
             <input
               type="text"
+              className={styles.inputbox}
               value={resultdata.result1}
               onChange={(e) => {
                 if (
@@ -56,6 +57,7 @@ function ResultBox({
               )}
               <input
                 type="text"
+                className={styles.inputbox}
                 value={resultdata.result2}
                 onChange={(e) => {
                   if (
@@ -95,6 +97,7 @@ function ResultBox({
               )}
               <input
                 type="text"
+                className={styles.inputbox}
                 value={resultdata.result3}
                 onChange={(e) => {
                   if (

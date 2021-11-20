@@ -23,13 +23,13 @@
         font-size: 14px;
         font-weight: 400;
         width: 50%;
+        flex: 1;
       }
       .result,
       input {
         font-family: "Roboto", sans-serif;
         font-size: 24px;
         font-weight: 700;
-        flex: 1;
         text-align: center;
       }
       .bsign {
@@ -44,7 +44,7 @@
         align-items: center;
         justify-content: center;
       }
-      input {
+      .inputbox {
         border: none;
         background-color: #ecececb7;
         padding: 10px;
@@ -52,6 +52,8 @@
         border-radius: 12px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        width: 50%;
+        max-width: 200px;
         &:focus {
           outline: none;
         }
@@ -92,6 +94,15 @@
       display: flex;
       justify-content: space-between;
       text-align: center;
+      .container {
+        .heading {
+          text-align: left;
+        }
+        .inputbox,
+        .result {
+          font-size: 18px;
+        }
+      }
     }
     .bottomContainer {
       text-align: center;

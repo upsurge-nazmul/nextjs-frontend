@@ -140,6 +140,7 @@
       position: relative;
       height: 90%;
       width: 90%;
+      min-width: 0;
     }
   }
   .postresultinputs {
@@ -196,11 +197,11 @@
 
     .chartSection {
       flex: 1;
-      min-width: 450px;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      width: 100%;
       .resultabs {
         position: absolute;
         left: 50%;
@@ -221,9 +222,8 @@
       .chartContainer {
         position: relative;
         height: 90%;
-        min-width: 450px;
-
-        width: 90%;
+        min-width: 400px;
+        width: 100%;
       }
     }
     .postresultinputs {
