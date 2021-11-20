@@ -45,24 +45,50 @@ function ResultBox({
             </p>
           </div>
         )}
-        {resultdata.result2 && (
-          <div className={styles.container}>
-            {resultdata.heading2 && (
-              <p className={styles.heading}>{resultdata.heading2}</p>
-            )}
-            <p className={styles.result}>
-              {resultdata.result2sign
-                ? resultdata.result2sign
-                : resultdata.heading2 && "₹"}{" "}
-              {resultdata.result2}
-            </p>
-          </div>
-        )}
+        {resultdata.result2 !== undefined &&
+          (resultdata.editable2 ? (
+            <div className={styles.container}>
+              {resultdata.heading2 && (
+                <p className={styles.heading}>{resultdata.heading2}</p>
+              )}
+              {resultdata.sign2 && (
+                <p className={styles.bsign}>{resultdata.sign2}</p>
+              )}
+              <input
+                type="text"
+                value={resultdata.result2}
+                onChange={(e) => {
+                  if (
+                    resultdata.max2 &&
+                    changetoint(e.target.value) > resultdata.max2
+                  ) {
+                    return;
+                  }
+                  setediteddata((prev) => ({
+                    ...prev,
+                    [resultdata.changecode2]: e.target.value,
+                  }));
+                }}
+              />
+            </div>
+          ) : (
+            <div className={styles.container}>
+              {resultdata.heading2 && (
+                <p className={styles.heading}>{resultdata.heading2}</p>
+              )}
+              <p className={styles.result}>
+                {resultdata.result2sign
+                  ? resultdata.result2sign
+                  : resultdata.heading2 && "₹"}{" "}
+                {resultdata.result2}
+              </p>
+            </div>
+          ))}
         {resultdata.result3 !== undefined &&
           (resultdata.editable3 ? (
             <div className={styles.container}>
               {resultdata.heading3 && (
-                <p className={styles.heading}>{resultdata.heading1}</p>
+                <p className={styles.heading}>{resultdata.heading3}</p>
               )}
               {resultdata.sign3 && (
                 <p className={styles.bsign}>{resultdata.sign3}</p>

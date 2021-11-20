@@ -7,7 +7,8 @@ import ResultBox from "./ResultBox";
 import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
-import SelectInput from "./SelectInput";
+import { ResponsivePie } from "@nivo/pie";
+import { animated } from "@react-spring/web";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
@@ -94,6 +95,7 @@ export default function HomeCalc({ seterror, error }) {
       range: true,
     },
   ];
+  const [editedata, setediteddata] = useState(null);
   const [current, setcurrent] = useState(0);
   const [resultdata, setresultdata] = useState({
     heading1: "Invested Amount",
@@ -136,77 +138,132 @@ export default function HomeCalc({ seterror, error }) {
       setquestions(backupquestions.filter((item) => item.code !== "country"));
     }
   }, [calcdata.type]);
+
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
     emi();
   }, [calcdata, current]);
+
+  useEffect(() => {
+    setediteddata(null);
+  }, [
+    calcdata.type,
+    calcdata.country,
+    calcdata.course,
+    calcdata.university,
+    calcdata.bank,
+  ]);
+  useEffect(() => {
+    if (editedata) {
+      seterror("");
+      emi();
+    }
+  }, [editedata]);
+
   function emi() {
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      if (editedata.principal === "") {
+        seterror("Cost of Course cannot be null");
+      }
+      if (changetoint(editedata.principal) < 100000) {
+        seterror("Cost of Course cannot be less than 1,00,000");
+      }
+      if (changetoint(editedata.principal) > 200000000) {
+        seterror("Cost of Course cannot be less than 20,00,00,000");
+      }
+    }
     if (!calcdata.years || calcdata.years <= 0) {
       seterror("Tenure of the loan cannot be less than 1 year");
     }
-    let monthlyrate = 12 / 12 / 100;
+    let rr = 12;
     if (calcdata.bank === "Private") {
-      monthlyrate = 14 / 12 / 100;
+      rr = 14;
     }
+    if (editedata)
+      if (editedata.rate !== undefined && editedata.rate !== null) {
+        rr = editedata.rate;
+
+        if (editedata.rate === "" || editedata.rate < 1) {
+          seterror("Rate cannot be less than 1");
+        }
+      }
+    let monthlyrate = rr / 12 / 100;
+
     var months = changetoint(calcdata.years) * 12;
 
     let loanamount = 0;
-    if (calcdata.type === "Indian") {
-      if (calcdata.bank === "Private") {
-        monthlyrate = 10.5 / 12 / 100;
-      } else {
-        monthlyrate = 8.5 / 12 / 100;
-      }
-      if (calcdata.university === "Private") {
-        if (calcdata.course === "MBA") {
-          loanamount = 3500000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 400000;
-        } else {
-          loanamount = 2000000;
-        }
-      } else {
-        if (calcdata.course === "MBA") {
-          loanamount = 2400000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 400000;
-        } else {
-          loanamount = 1000000;
-        }
-      }
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      loanamount =
+        editedata.principal === "" ? "" : changetoint(editedata.principal);
     } else {
-      if (calcdata.country === "Australia") {
-        if (calcdata.course === "MBA") {
-          loanamount = 3750000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 1500000;
+      if (calcdata.type === "Indian") {
+        if (calcdata.bank === "Private") {
+          rr = 10.5;
+          monthlyrate = 10.5 / 12 / 100;
         } else {
-          loanamount = 8000000;
+          rr = 8.5;
+
+          monthlyrate = 8.5 / 12 / 100;
         }
-      } else if (calcdata.country === "Europe") {
-        if (calcdata.course === "MBA") {
-          loanamount = 4500000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 500000;
+        if (calcdata.university === "Private") {
+          if (calcdata.course === "MBA") {
+            loanamount = 3500000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 400000;
+          } else {
+            loanamount = 2000000;
+          }
         } else {
-          loanamount = 500000;
-        }
-      } else if (calcdata.country === "Asia") {
-        if (calcdata.course === "MBA") {
-          loanamount = 7000000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 1950000;
-        } else {
-          loanamount = 4000000;
+          if (calcdata.course === "MBA") {
+            loanamount = 2400000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 400000;
+          } else {
+            loanamount = 1000000;
+          }
         }
       } else {
-        if (calcdata.course === "MBA") {
-          loanamount = 15000000;
-        } else if (calcdata.course === "Masters") {
-          loanamount = 3000000;
+        if (calcdata.country === "Australia") {
+          if (calcdata.course === "MBA") {
+            loanamount = 3750000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 1500000;
+          } else {
+            loanamount = 8000000;
+          }
+        } else if (calcdata.country === "Europe") {
+          if (calcdata.course === "MBA") {
+            loanamount = 4500000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 500000;
+          } else {
+            loanamount = 500000;
+          }
+        } else if (calcdata.country === "Asia") {
+          if (calcdata.course === "MBA") {
+            loanamount = 7000000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 1950000;
+          } else {
+            loanamount = 4000000;
+          }
         } else {
-          loanamount = 9000000;
+          if (calcdata.course === "MBA") {
+            loanamount = 15000000;
+          } else if (calcdata.course === "Masters") {
+            loanamount = 3000000;
+          } else {
+            loanamount = 9000000;
+          }
         }
       }
     }
@@ -217,33 +274,73 @@ export default function HomeCalc({ seterror, error }) {
     let totalpayment = emiamount * months;
     let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      heading1: "Total Interest Payable",
-      heading2: `Total Payment
+      heading1: "Cost of Course",
+      result1: Math.round(loanamount).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      editable1: true,
+      max1: 200000000,
+      min1: 100000,
+      changecode1: "principal",
+      heading2: "Interest Rate",
+      result2: rr,
+      sign2: "%",
+      editable2: true,
+      max2: 20,
+      changecode2: "rate",
+      min2: 5,
+      heading3: "Total Interest Payable",
+      heading4: `Total Payment
       (Principal + Interest)`,
-      heading3: "Loan EMI",
-      result1: Math.round(intrest).toLocaleString("en-IN", {
+      heading5: "Loan EMI",
+      result3: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result2: Math.round(totalpayment).toLocaleString("en-IN", {
+      result4: Math.round(totalpayment).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(emiamount).toLocaleString("en-IN", {
+      result5: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
-    }));
+    setChartData([
+      {
+        id: "Interest",
+        label: "Interest",
+        value: Math.round(intrest),
+        color: "rgb(253, 204, 3)",
+      },
+      {
+        id: "Loan Amount",
+        label: "Loan Amount",
+        value: Math.round(loanamount),
+        color: "#4166EB",
+        tcolor: "#fff",
+      },
+    ]);
   }
+  const CenteredMetric = ({ dataWithArc, centerX, centerY }) => {
+    let total = 0;
+    dataWithArc.forEach((datum) => {
+      total += datum.value;
+    });
+
+    return (
+      <text
+        x={centerX}
+        y={centerY}
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{
+          fontSize: "clamp(14px,1vw,16px)",
+          fontWeight: 600,
+        }}
+      >
+        {"Total : ₹" + resultdata.result4}
+      </text>
+    );
+  };
+
   return (
     <div className={styles.calculatorComponent}>
       {!showresult && (
@@ -339,19 +436,115 @@ export default function HomeCalc({ seterror, error }) {
               );
             }
           })}
-          {!error && <ResultBox resultdata={resultdata} />}
+          {(!error || setediteddata) && (
+            <ResultBox setediteddata={setediteddata} resultdata={resultdata} />
+          )}
         </div>
       )}
 
       {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <ResponsivePie
               data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
+              margin={{ top: 0, right: 80, bottom: 80, left: 80 }}
+              startAngle={-180}
+              padAngle={0.7}
+              innerRadius={0.5}
+              cornerRadius={3}
+              activeOuterRadiusOffset={8}
+              colors={{ datum: "data.color" }}
+              borderWidth={1}
+              animate
+              valueFormat={(value) =>
+                changetoint(value).toLocaleString("en-IN", {
+                  currency: "INR",
+                })
+              }
+              borderColor={{ from: "color", modifiers: [["opacity", 0.2]] }}
+              arcLinkLabelsSkipAngle={10}
+              arcLinkLabelsTextColor="#000000"
+              arcLinkLabelsThickness={5}
+              theme={{ fontSize: "15px", color: "black" }}
+              arcLinkLabelsColor={{ from: "color" }}
+              arcLabelsSkipAngle={10}
+              enableArcLinkLabels={false}
+              arcLabelsTextColor={{
+                from: "data.tcolor",
+              }}
+              layers={[
+                "arcs",
+                "arcLabels",
+                "arcLinkLabels",
+                "legends",
+                CenteredMetric,
+              ]}
+              legends={[
+                {
+                  anchor: "bottom",
+                  direction: "row",
+                  justify: false,
+                  translateX: 0,
+                  translateY: 56,
+                  itemsSpacing: 0,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  itemTextColor: "#000000",
+                  itemDirection: "left-to-right",
+                  itemOpacity: 1,
+                  symbolSize: 18,
+                  symbolShape: "circle",
+                  effects: [
+                    {
+                      on: "hover",
+                      style: {
+                        itemTextColor: "#000",
+                      },
+                    },
+                  ],
+                },
+              ]}
+              arcLabelsComponent={({ datum, label, style }) => (
+                <animated.g
+                  transform={style.transform}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <text
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fill={style.textColor}
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 800,
+                    }}
+                  >
+                    {(
+                      (changetoint(label) / changetoint(resultdata.result4)) *
+                      100
+                    ).toFixed(2) + "%"}
+                  </text>
+                </animated.g>
+              )}
+              defs={[
+                {
+                  id: "dots",
+                  type: "patternDots",
+                  background: "inherit",
+                  color: "rgb(255, 255, 255)",
+                  size: 1,
+                  padding: 1,
+                  stagger: false,
+                },
+                {
+                  id: "lines",
+                  type: "patternLines",
+                  background: "inherit",
+                  color: "rgba(255, 255, 255, 0.3)",
+                  rotation: -45,
+                  lineWidth: 6,
+                  spacing: 10,
+                },
+              ]}
             />
           </div>
         </div>

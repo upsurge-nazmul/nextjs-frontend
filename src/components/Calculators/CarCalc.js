@@ -7,7 +7,9 @@ import ResultBox from "./ResultBox";
 import Select from "./Select";
 import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
-import SelectInput from "./SelectInput";
+import { ResponsivePie } from "@nivo/pie";
+import { animated } from "@react-spring/web";
+
 import BigCalcInput from "./BigCalcInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import changetoint from "../../helpers/currency";
@@ -45,6 +47,7 @@ export default function CarCalc({ seterror, error }) {
   ]);
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
+  const [editedata, setediteddata] = useState(null);
 
   const [result, setresult] = useState(false);
   const [current, setcurrent] = useState(0);
@@ -78,7 +81,32 @@ export default function CarCalc({ seterror, error }) {
     setresult(true);
   }, [calcdata, current]);
 
+  useEffect(() => {
+    setediteddata(null);
+  }, [calcdata.type]);
+  useEffect(() => {
+    if (editedata) {
+      seterror("");
+      emi();
+    }
+  }, [editedata]);
+
   function emi() {
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      if (editedata.principal === "") {
+        seterror("Indicative value cannot be null");
+      }
+      if (changetoint(editedata.principal) < 100000) {
+        seterror("Indicative value cannot be less than 1,00,000");
+      }
+      if (changetoint(editedata.principal) > 200000000) {
+        seterror("Indicative value cannot be less than 20,00,00,000");
+      }
+    }
     if (calcdata.years === "") {
       seterror("Tenure of the loan cannot be less than 1 year");
       return;
@@ -91,25 +119,53 @@ export default function CarCalc({ seterror, error }) {
       seterror("Down-Payment cannot be null");
       return;
     }
+    let rr = 8;
+    if (editedata)
+      if (editedata.rate !== undefined && editedata.rate !== null) {
+        rr = editedata.rate;
 
-    let monthlyrate = 8 / 12 / 100;
+        if (editedata.rate === "" || editedata.rate < 1) {
+          seterror("Rate cannot be less than 1");
+        }
+      }
+    let monthlyrate = rr / 12 / 100;
     var months = calcdata.years * 12;
 
     let loanamount = 0;
     // Sedan, sports car, SUV, Luxury car, Hatchback
-    if (calcdata.type === "Sedan") {
-      loanamount = 1000000;
-    } else if (calcdata.type === "Sports") {
-      loanamount = 8000000;
-      monthlyrate = 7 / 12 / 100;
-    } else if (calcdata.type === "SUV") {
-      loanamount = 1600000;
-    } else if (calcdata.type === "Luxury") {
-      loanamount = 4100000;
-      monthlyrate = 7 / 12 / 100;
-    } else if (calcdata.type === "Hatchback") {
-      loanamount = 700000;
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      loanamount =
+        editedata.principal === "" ? "" : changetoint(editedata.principal);
+      if (calcdata.onetimepayment) {
+        if (changetoint(calcdata.onetimepayment) > loanamount) {
+          setcalcdata((prev) => ({
+            ...prev,
+            onetimepayment: loanamount / 2 < 0 ? 0 : loanamount / 2,
+          }));
+        }
+      }
+    } else {
+      if (calcdata.type === "Sedan") {
+        loanamount = 1000000;
+      } else if (calcdata.type === "Sports") {
+        loanamount = 8000000;
+        monthlyrate = 7 / 12 / 100;
+        rr = 7;
+      } else if (calcdata.type === "SUV") {
+        loanamount = 1600000;
+      } else if (calcdata.type === "Luxury") {
+        loanamount = 4100000;
+        monthlyrate = 7 / 12 / 100;
+        rr = 7;
+      } else if (calcdata.type === "Hatchback") {
+        loanamount = 700000;
+      }
     }
+
     let onetimequestion = questions[2];
     onetimequestion.max = loanamount / 2;
     let updatedarr = questions;
@@ -132,17 +188,28 @@ export default function CarCalc({ seterror, error }) {
       ).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      heading3: "Total Interest Payable",
-      heading4: `Total Payment
+      editable1: true,
+      max1: 50000000,
+      min1: 100000,
+      changecode1: "principal",
+      heading3: "Interest Rate",
+      result3: rr,
+      sign3: "%",
+      editable3: true,
+      max3: 20,
+      changecode3: "rate",
+      min3: 5,
+      heading4: "Total Interest Payable",
+      heading5: `Total Payment
       (Principal + Interest)`,
-      heading5: "Loan EMI",
-      result3: Math.round(intrest).toLocaleString("en-IN", {
+      heading6: "Loan EMI",
+      result4: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result4: Math.round(totalpayment).toLocaleString("en-IN", {
+      result5: Math.round(totalpayment).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result5: Math.round(emiamount).toLocaleString("en-IN", {
+      result6: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
       heading2: "Principal Amount",
@@ -150,19 +217,44 @@ export default function CarCalc({ seterror, error }) {
         currency: "INR",
       }),
     }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
-    }));
+    setChartData([
+      {
+        id: "Interest",
+        label: "Interest",
+        value: Math.round(intrest),
+        color: "rgb(253, 204, 3)",
+      },
+      {
+        id: "Loan Amount",
+        label: "Loan Amount",
+        value: Math.round(loanamount),
+        color: "#4166EB",
+        tcolor: "#fff",
+      },
+    ]);
   }
+  const CenteredMetric = ({ dataWithArc, centerX, centerY }) => {
+    let total = 0;
+    dataWithArc.forEach((datum) => {
+      total += datum.value;
+    });
+
+    return (
+      <text
+        x={centerX}
+        y={centerY}
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{
+          fontSize: "clamp(14px,1vw,16px)",
+          fontWeight: 600,
+        }}
+      >
+        {"Total : ₹" + resultdata.result4}
+      </text>
+    );
+  };
+
   return (
     <div className={styles.calculatorComponent}>
       {!showresult && (
@@ -256,19 +348,119 @@ export default function CarCalc({ seterror, error }) {
               );
             }
           })}
-          {!error && <ResultBox resultdata={resultdata} />}
+          {(!error || setediteddata) && (
+            <ResultBox
+              setediteddata={setediteddata}
+              calcfunction={emi}
+              resultdata={resultdata}
+            />
+          )}
         </div>
       )}
 
       {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Doughnut
+            <ResponsivePie
               data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
+              margin={{ top: 0, right: 80, bottom: 80, left: 80 }}
+              startAngle={-180}
+              padAngle={0.7}
+              innerRadius={0.5}
+              cornerRadius={3}
+              activeOuterRadiusOffset={8}
+              colors={{ datum: "data.color" }}
+              borderWidth={1}
+              animate
+              valueFormat={(value) =>
+                changetoint(value).toLocaleString("en-IN", {
+                  currency: "INR",
+                })
+              }
+              borderColor={{ from: "color", modifiers: [["opacity", 0.2]] }}
+              arcLinkLabelsSkipAngle={10}
+              arcLinkLabelsTextColor="#000000"
+              arcLinkLabelsThickness={5}
+              theme={{ fontSize: "15px", color: "black" }}
+              arcLinkLabelsColor={{ from: "color" }}
+              arcLabelsSkipAngle={10}
+              enableArcLinkLabels={false}
+              arcLabelsTextColor={{
+                from: "data.tcolor",
+              }}
+              layers={[
+                "arcs",
+                "arcLabels",
+                "arcLinkLabels",
+                "legends",
+                CenteredMetric,
+              ]}
+              legends={[
+                {
+                  anchor: "bottom",
+                  direction: "row",
+                  justify: false,
+                  translateX: 0,
+                  translateY: 56,
+                  itemsSpacing: 0,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  itemTextColor: "#000000",
+                  itemDirection: "left-to-right",
+                  itemOpacity: 1,
+                  symbolSize: 18,
+                  symbolShape: "circle",
+                  effects: [
+                    {
+                      on: "hover",
+                      style: {
+                        itemTextColor: "#000",
+                      },
+                    },
+                  ],
+                },
+              ]}
+              arcLabelsComponent={({ datum, label, style }) => (
+                <animated.g
+                  transform={style.transform}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <text
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fill={style.textColor}
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 800,
+                    }}
+                  >
+                    {(
+                      (changetoint(label) / changetoint(resultdata.result5)) *
+                      100
+                    ).toFixed(2) + "%"}
+                  </text>
+                </animated.g>
+              )}
+              defs={[
+                {
+                  id: "dots",
+                  type: "patternDots",
+                  background: "inherit",
+                  color: "rgb(255, 255, 255)",
+                  size: 1,
+                  padding: 1,
+                  stagger: false,
+                },
+                {
+                  id: "lines",
+                  type: "patternLines",
+                  background: "inherit",
+                  color: "rgba(255, 255, 255, 0.3)",
+                  rotation: -45,
+                  lineWidth: 6,
+                  spacing: 10,
+                },
+              ]}
             />
           </div>
         </div>

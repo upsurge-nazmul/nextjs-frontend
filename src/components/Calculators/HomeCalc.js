@@ -323,7 +323,6 @@ export default function HomeCalc({ data, seterror, error }) {
       max3: 20,
       changecode3: "rate",
       min3: 5,
-      changecode1: "principal",
       heading4: "Total Interest Payable",
       result4: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
@@ -484,8 +483,8 @@ export default function HomeCalc({ data, seterror, error }) {
             {(!error || setediteddata) && (
               <ResultBox
                 setediteddata={setediteddata}
-                resultdata={resultdata}
                 calcfunction={emi}
+                resultdata={resultdata}
               />
             )}
           </div>
@@ -568,7 +567,7 @@ export default function HomeCalc({ data, seterror, error }) {
                       }}
                     >
                       {(
-                        (changetoint(label) / changetoint(resultdata.result4)) *
+                        (changetoint(label) / changetoint(resultdata.result5)) *
                         100
                       ).toFixed(2) + "%"}
                     </text>
