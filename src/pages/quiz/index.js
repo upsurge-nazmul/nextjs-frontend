@@ -167,7 +167,9 @@ function Quiz({ leaderboard }) {
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
-  async function startgame() {
+  async function startgame(e) {
+    console.log("hehe");
+    e?.preventDefault();
     if (!name) {
       seterror("Name is required");
       return;
@@ -286,7 +288,7 @@ function Quiz({ leaderboard }) {
             <p className={styles.error}>{error}</p>
             <form
               onKeyPress={(e) => {
-                if (e.key === "Enter") startgame();
+                if (e.key === "Enter") startgame(e);
               }}
             >
               <input
