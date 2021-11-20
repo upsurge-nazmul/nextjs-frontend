@@ -6,7 +6,7 @@ import Progress from "../Progress";
 import ResultBox from "./ResultBox";
 import { ResponsivePie } from "@nivo/pie";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
-import SelectInput from "./SelectInput";
+import { animated } from "@react-spring/web";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
@@ -134,7 +134,7 @@ export default function HomeCalc({ data, seterror, error }) {
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
-
+  const [editedata, setediteddata] = useState(null);
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
@@ -150,8 +150,32 @@ export default function HomeCalc({ data, seterror, error }) {
       );
     }
   }, [calcdata.type]);
+  useEffect(() => {
+    setediteddata(null);
+  }, [calcdata.type, calcdata.city, calcdata.sizebunglow, calcdata.noofrooms]);
+  useEffect(() => {
+    if (editedata) {
+      seterror("");
+      emi();
+    }
+  }, [editedata]);
 
   function emi() {
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      if (editedata.principal === "") {
+        seterror("Indicative value cannot be null");
+      }
+      if (changetoint(editedata.principal) < 100000) {
+        seterror("Indicative value cannot be less than 1,00,000");
+      }
+      if (changetoint(editedata.principal) > 200000000) {
+        seterror("Indicative value cannot be less than 20,00,00,000");
+      }
+    }
     if (calcdata.years === "") {
       seterror("Tenure of the loan cannot be less than 1 year");
       return;
@@ -164,74 +188,94 @@ export default function HomeCalc({ data, seterror, error }) {
       seterror("Down-Payment cannot be null");
       return;
     }
-    let monthlyrate = 8.5 / 12 / 100;
-    var months = calcdata.years * 12;
-    let loanamount = 0;
-    if (calcdata.type === "Apartment") {
-      if (calcdata.noofrooms === "2 rooms") {
-        if (calcdata.city === "Delhi") {
-          loanamount = 4500000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 6000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 3500000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 5000000;
-        }
-      } else if (calcdata.noofrooms === "3 rooms") {
-        if (calcdata.city === "Delhi") {
-          loanamount = 7500000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 10000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 6500000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 8000000;
-        }
-      } else {
-        if (calcdata.city === "Delhi") {
-          loanamount = 12500000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 20000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 18000000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 20000000;
+    let rr = 8.5;
+    if (editedata)
+      if (editedata.rate !== undefined && editedata.rate !== null) {
+        rr = editedata.rate;
+
+        if (editedata.rate === "" || editedata.rate < 1) {
+          seterror("Rate cannot be less than 1");
         }
       }
+    let monthlyrate = rr / 12 / 100;
+
+    var months = calcdata.years * 12;
+    let loanamount = 0;
+    if (
+      editedata &&
+      editedata.principal !== undefined &&
+      editedata.principal !== null
+    ) {
+      loanamount =
+        editedata.principal === "" ? "" : changetoint(editedata.principal);
     } else {
-      if (calcdata.sizebunglow === "7 BHK") {
-        if (calcdata.city === "Delhi") {
-          loanamount = 60000000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 55000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 50000000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 50000000;
-        }
-      } else if (calcdata.sizebunglow === "11 BHK") {
-        if (calcdata.city === "Delhi") {
-          loanamount = 100000000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 70000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 80000000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 75000000;
+      if (calcdata.type === "Apartment") {
+        if (calcdata.noofrooms === "2 rooms") {
+          if (calcdata.city === "Delhi") {
+            loanamount = 4500000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 6000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 3500000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 5000000;
+          }
+        } else if (calcdata.noofrooms === "3 rooms") {
+          if (calcdata.city === "Delhi") {
+            loanamount = 7500000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 10000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 6500000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 8000000;
+          }
+        } else {
+          if (calcdata.city === "Delhi") {
+            loanamount = 12500000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 20000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 18000000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 20000000;
+          }
         }
       } else {
-        if (calcdata.city === "Delhi") {
-          loanamount = 200000000;
-        } else if (calcdata.city === "Bangalore") {
-          loanamount = 110000000;
-        } else if (calcdata.city === "Chennai") {
-          loanamount = 130000000;
-        } else if (calcdata.city === "Hyderabad") {
-          loanamount = 120000000;
+        if (calcdata.sizebunglow === "7 BHK") {
+          if (calcdata.city === "Delhi") {
+            loanamount = 60000000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 55000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 50000000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 50000000;
+          }
+        } else if (calcdata.sizebunglow === "11 BHK") {
+          if (calcdata.city === "Delhi") {
+            loanamount = 100000000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 70000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 80000000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 75000000;
+          }
+        } else {
+          if (calcdata.city === "Delhi") {
+            loanamount = 200000000;
+          } else if (calcdata.city === "Bangalore") {
+            loanamount = 110000000;
+          } else if (calcdata.city === "Chennai") {
+            loanamount = 130000000;
+          } else if (calcdata.city === "Hyderabad") {
+            loanamount = 120000000;
+          }
         }
       }
     }
+
     let indx = questions.findIndex(
       (item) => item.title === "Enter Down-Payment"
     );
@@ -256,15 +300,11 @@ export default function HomeCalc({ data, seterror, error }) {
     let totalpayment = emiamount * months;
     let intrest = totalpayment - loanamount;
     setresultdata((prev) => ({
-      heading3: "Total Interest Payable",
-      heading4: `Total Payment
-      (Principal + Interest)`,
-      heading5: "Loan EMI",
       heading1: "The indicative value for home is",
-      heading2: "Principal Amount",
-      result2: parseInt(loanamount).toLocaleString("en-IN", {
-        currency: "INR",
-      }),
+      editable1: true,
+      max1: 200000000,
+      min1: 100000,
+      changecode1: "principal",
       result1: Math.round(
         changetoint(calcdata.onetimepayment)
           ? changetoint(calcdata.onetimepayment) + parseInt(loanamount)
@@ -272,29 +312,71 @@ export default function HomeCalc({ data, seterror, error }) {
       ).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result3: Math.round(intrest).toLocaleString("en-IN", {
+      heading2: "Principal Amount",
+      result2: parseInt(loanamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result4: Math.round(totalpayment).toLocaleString("en-IN", {
+      heading3: "Interest Rate",
+      result3: rr,
+      sign3: "%",
+      editable3: true,
+      max3: 20,
+      changecode3: "rate",
+      min3: 5,
+      changecode1: "principal",
+      heading4: "Total Interest Payable",
+      result4: Math.round(intrest).toLocaleString("en-IN", {
         currency: "INR",
       }),
-      result5: Math.round(emiamount).toLocaleString("en-IN", {
+      heading5: `Total Payment
+      (Principal + Interest)`,
+      heading6: "Loan EMI",
+
+      result5: Math.round(totalpayment).toLocaleString("en-IN", {
+        currency: "INR",
+      }),
+      result6: Math.round(emiamount).toLocaleString("en-IN", {
         currency: "INR",
       }),
     }));
-    setChartData((prev) => ({
-      ...prev,
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [Math.round(intrest), Math.round(loanamount)],
-          backgroundColor: ["#FDCC03", "#4166EB"],
-          borderColor: ["#FDCC03", "#4166EB"],
-          borderWidth: 1,
-        },
-      ],
-    }));
+    setChartData([
+      {
+        id: "Interest",
+        label: "Interest",
+        value: Math.round(intrest),
+        color: "rgb(253, 204, 3)",
+      },
+      {
+        id: "Loan Amount",
+        label: "Loan Amount",
+        value: Math.round(loanamount),
+        color: "#4166EB",
+        tcolor: "#fff",
+      },
+    ]);
   }
+  const CenteredMetric = ({ dataWithArc, centerX, centerY }) => {
+    let total = 0;
+    dataWithArc.forEach((datum) => {
+      total += datum.value;
+    });
+
+    return (
+      <text
+        x={centerX}
+        y={centerY}
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{
+          fontSize: "clamp(14px,1vw,16px)",
+          fontWeight: 600,
+        }}
+      >
+        {"Total : ₹" + resultdata.result4}
+      </text>
+    );
+  };
+
   return (
     <>
       <div className={styles.calculatorComponent}>
@@ -399,131 +481,52 @@ export default function HomeCalc({ data, seterror, error }) {
                 );
               }
             })}
-            {!error && <ResultBox resultdata={resultdata} />}
+            {(!error || setediteddata) && (
+              <ResultBox
+                setediteddata={setediteddata}
+                resultdata={resultdata}
+                calcfunction={emi}
+              />
+            )}
           </div>
         )}
 
         {!error && showresult ? (
           <div className={styles.chartSection}>
             <div className={styles.chartContainer}>
-              {/* <ResponsivePie
-                data={[
-                  {
-                    id: "make",
-                    label: "make",
-                    value: 317,
-                    color: "hsl(61, 70%, 50%)",
-                  },
-                  {
-                    id: "rust",
-                    label: "rust",
-                    value: 307,
-                    color: "hsl(41, 70%, 50%)",
-                  },
-                  {
-                    id: "python",
-                    label: "python",
-                    value: 165,
-                    color: "hsl(234, 70%, 50%)",
-                  },
-                  {
-                    id: "scala",
-                    label: "scala",
-                    value: 579,
-                    color: "hsl(136, 70%, 50%)",
-                  },
-                  {
-                    id: "java",
-                    label: "java",
-                    value: 212,
-                    color: "hsl(46, 70%, 50%)",
-                  },
-                ]}
-                margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+              <ResponsivePie
+                data={chartData}
+                margin={{ top: 0, right: 80, bottom: 80, left: 80 }}
                 startAngle={-180}
                 padAngle={0.7}
+                innerRadius={0.5}
                 cornerRadius={3}
                 activeOuterRadiusOffset={8}
+                colors={{ datum: "data.color" }}
                 borderWidth={1}
-                borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+                animate
+                valueFormat={(value) =>
+                  changetoint(value).toLocaleString("en-IN", {
+                    currency: "INR",
+                  })
+                }
+                borderColor={{ from: "color", modifiers: [["opacity", 0.2]] }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#333333"
-                arcLinkLabelsThickness={2}
+                arcLinkLabelsTextColor="#000000"
+                arcLinkLabelsThickness={5}
+                theme={{ fontSize: "15px", color: "black" }}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
+                enableArcLinkLabels={false}
                 arcLabelsTextColor={{
-                  from: "color",
-                  modifiers: [["darker", 2]],
+                  from: "data.tcolor",
                 }}
-                defs={[
-                  {
-                    id: "dots",
-                    type: "patternDots",
-                    background: "inherit",
-                    color: "rgba(255, 255, 255, 0.3)",
-                    size: 4,
-                    padding: 1,
-                    stagger: true,
-                  },
-                  {
-                    id: "lines",
-                    type: "patternLines",
-                    background: "inherit",
-                    color: "rgba(255, 255, 255, 0.3)",
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10,
-                  },
-                ]}
-                fill={[
-                  {
-                    match: {
-                      id: "ruby",
-                    },
-                    id: "dots",
-                  },
-                  {
-                    match: {
-                      id: "c",
-                    },
-                    id: "dots",
-                  },
-                  {
-                    match: {
-                      id: "go",
-                    },
-                    id: "dots",
-                  },
-                  {
-                    match: {
-                      id: "python",
-                    },
-                    id: "dots",
-                  },
-                  {
-                    match: {
-                      id: "scala",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "lisp",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "elixir",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "javascript",
-                    },
-                    id: "lines",
-                  },
+                layers={[
+                  "arcs",
+                  "arcLabels",
+                  "arcLinkLabels",
+                  "legends",
+                  CenteredMetric,
                 ]}
                 legends={[
                   {
@@ -535,7 +538,7 @@ export default function HomeCalc({ data, seterror, error }) {
                     itemsSpacing: 0,
                     itemWidth: 100,
                     itemHeight: 18,
-                    itemTextColor: "#999",
+                    itemTextColor: "#000000",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
                     symbolSize: 18,
@@ -550,14 +553,55 @@ export default function HomeCalc({ data, seterror, error }) {
                     ],
                   },
                 ]}
-              /> */}
-              <Doughnut
+                arcLabelsComponent={({ datum, label, style }) => (
+                  <animated.g
+                    transform={style.transform}
+                    style={{ pointerEvents: "none" }}
+                  >
+                    <text
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fill={style.textColor}
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 800,
+                      }}
+                    >
+                      {(
+                        (changetoint(label) / changetoint(resultdata.result4)) *
+                        100
+                      ).toFixed(2) + "%"}
+                    </text>
+                  </animated.g>
+                )}
+                defs={[
+                  {
+                    id: "dots",
+                    type: "patternDots",
+                    background: "inherit",
+                    color: "rgb(255, 255, 255)",
+                    size: 1,
+                    padding: 1,
+                    stagger: false,
+                  },
+                  {
+                    id: "lines",
+                    type: "patternLines",
+                    background: "inherit",
+                    color: "rgba(255, 255, 255, 0.3)",
+                    rotation: -45,
+                    lineWidth: 6,
+                    spacing: 10,
+                  },
+                ]}
+              />
+              {/* <Doughnut
                 data={chartData}
                 className={styles.chart}
                 width={100}
                 height={100}
                 options={{ maintainAspectRatio: false }}
-              />
+              /> */}
             </div>
           </div>
         ) : null}

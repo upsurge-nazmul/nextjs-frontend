@@ -116,7 +116,6 @@
   .chartSection {
     flex: 1;
     display: flex;
-    padding: 20px;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -181,7 +180,60 @@
     }
   }
 }
+@media only screen and (max-width: 1500px) {
+  .calculatorComponent {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 40px;
+    padding-right: 0;
+    margin-top: 3vh;
+    min-height: max-content;
+    display: flex;
+    .leftsec {
+      width: 50px;
+      position: relative;
+    }
 
+    .chartSection {
+      flex: 1;
+      min-width: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .resultabs {
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        transform: translate(-55%);
+        font-weight: 700;
+        font-size: 24px;
+        font-family: "Roboto", sans-serif;
+        width: 150px;
+        .main {
+          text-align: center;
+        }
+        .se {
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+      .chartContainer {
+        position: relative;
+        height: 90%;
+        min-width: 450px;
+
+        width: 90%;
+      }
+    }
+    .postresultinputs {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .calculatorComponent {
     border: 1px solid rgb(228, 228, 228);

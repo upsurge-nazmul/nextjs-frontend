@@ -24,12 +24,37 @@
         font-weight: 400;
         width: 50%;
       }
-      .result {
+      .result,
+      input {
         font-family: "Roboto", sans-serif;
         font-size: 24px;
         font-weight: 700;
         flex: 1;
         text-align: center;
+      }
+      .bsign {
+        padding-left: 20px;
+        border-radius: 12px;
+        min-height: 45px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 100%;
+        background-color: #ecececb7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        border: none;
+        background-color: #ecececb7;
+        padding: 10px;
+        height: 45px;
+        border-radius: 12px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
