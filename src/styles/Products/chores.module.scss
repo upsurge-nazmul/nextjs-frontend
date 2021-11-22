@@ -294,11 +294,11 @@
   }
 }
 
-@media only screen and (max-width: 1024px) and (min-height: 1024px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .chores {
     display: flex;
     flex-direction: column;
-    background-color: #fd9903;
+    background-color: #fdcc03;
     height: 90vh;
     overflow: hidden;
     .top {
@@ -331,7 +331,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 10px;
         .input {
           outline: none;
           border: none;
