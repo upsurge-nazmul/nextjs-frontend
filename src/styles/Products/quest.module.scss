@@ -320,12 +320,12 @@
     flex-direction: column;
     position: relative;
     .kidimg {
-      width: 15vw;
+      width: 204px;
       right: 0;
       left: 60%;
       bottom: 22vh;
       .wrap {
-        width: 15vw;
+        width: 204px;
       }
     }
     .green {
@@ -351,8 +351,10 @@
       right: 25vw;
     }
     .lap {
-      right: -18vw;
+      right: 0;
+      left: 55vw;
       bottom: 6vh;
+      width: 920px;
     }
     .textcontainer {
       width: 50%;
