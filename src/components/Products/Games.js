@@ -84,10 +84,7 @@ export default function Games({ id }) {
           <div className={styles.description}>
             {games[currentgameindex].description}
           </div>
-          <div
-            className={styles.button}
-            onClick={() => router.push("/gamepage")}
-          >
+          <div className={styles.button} onClick={() => router.push("/games")}>
             Play Now
           </div>
           <div className={styles.buttonWrapper}>
