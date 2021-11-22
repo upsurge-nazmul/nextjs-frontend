@@ -108,7 +108,7 @@ function Header({
             tabs={[
               { name: "About us", pushTo: "/about" },
               { name: "Blogs", pushTo: "/blogs" },
-              { name: "Financial Calculators", pushTo: "/calculators" },
+              // { name: "Financial Calculators", pushTo: "/calculators" },
               { name: "FAQs", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 
@@ -116,9 +116,9 @@ function Header({
             ]}
           />
         </div>
-        <div className={styles.signin} onClick={() => setshowauth(true)}>
+        {/* <div className={styles.signin} onClick={() => setshowauth(true)}>
           Sign In
-        </div>
+        </div> */}
       </div>
     </div>
   );

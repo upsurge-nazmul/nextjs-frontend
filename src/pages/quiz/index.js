@@ -197,6 +197,18 @@ function Quiz({ leaderboard }) {
       seterror(response.data?.message || "Error connecting to server");
     }
   }
+  async function skipgame() {
+    let response = await QuizApis.startquiz({
+      name: "Guest",
+      nickname: "Guest",
+    });
+    if (response && response.data && response.data.success) {
+      setshowmain(true);
+      setdata(response.data.data);
+    } else {
+      seterror(response.data?.message || "Error connecting to server");
+    }
+  }
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -351,6 +363,9 @@ function Quiz({ leaderboard }) {
             <div className={styles.buttons}>
               <div className={styles.startbutton} onClick={startgame}>
                 Start Playing
+              </div>
+              <div className={styles.skipbutton} onClick={skipgame}>
+                Skip
               </div>
             </div>
           </div>
