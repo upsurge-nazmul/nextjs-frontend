@@ -40,6 +40,7 @@ export default function ManageChore({ choredata, childdata }) {
   const [cat, setcat] = useState(
     !isInEditMode ? templatecat : choredata?.category || "HouseHold"
   );
+  const [interval, setinterval] = useState("One Time");
   const [showaddmodal, setshowaddmodal] = useState(false);
   const [msg, setmsg] = useState(choredata?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
@@ -199,26 +200,13 @@ export default function ManageChore({ choredata, childdata }) {
               onChange={(e) => setchoretitle(e.target.value)}
             />
             <CustomDatePicker value={duedate} setvalue={setduedate} />
-            {/* <input
-              type="date"
-              value={
-                duedate
-                  ? new Date(parseInt(duedate))?.toISOString().substr(0, 10)
-                  : new Date().toISOString().substr(0, 10)
-              }
-              onChange={(e) => {
-                if (new Date(e.target.value).getTime() < new Date().getTime()) {
-                  settoastdata({
-                    show: true,
-                    type: "error",
-                    msg: `Invaild due date`,
-                  });
-                } else {
-                  setduedate(new Date(e.target.value).getTime());
-                }
-              }}
-              placeholder="dd-mm-yyyy"
-            /> */}
+            <DropDown
+              placeholder="One Time"
+              options={["Daily", "One Time"]}
+              margin="0 0 20px 0"
+              value={interval}
+              setvalue={setinterval}
+            />
             <DropDown
               placeholder="Household"
               options={[

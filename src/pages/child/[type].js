@@ -16,6 +16,7 @@ import range from "lodash/range";
 import CustomDatePicker from "../../components/CustomDatePicker";
 function AddKid({ childdata }) {
   const router = useRouter();
+  console.log(childdata?.dob);
   const type = router.query.type;
   let state;
   const [toastdata, settoastdata] = useState({
@@ -25,7 +26,7 @@ function AddKid({ childdata }) {
   });
   const [mode, setmode] = useState(type === "add" ? "Add Child" : "Edit Child");
   const [dob, setdob] = useState(
-    childdata?.dob ? new Date(childdata?.dob) : new Date()
+    childdata?.dob ? new Date(Number(childdata?.dob)) : new Date()
   );
   const [gender, setgender] = useState(childdata?.gender || "");
   const [email, setemail] = useState(childdata?.email || "");

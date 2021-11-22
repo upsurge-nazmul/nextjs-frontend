@@ -32,48 +32,7 @@ function Dashboard({
   phone_verified,
   userdatafromserver,
 }) {
-  let tempchores = [
-    {
-      id: "wqe",
-      image:
-        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
-      title: "Prepare Monthly Budget",
-      assigned_to: "Assigned to Pulkit",
-      time: "Due in 3 days",
-      completion: "completed",
-      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
-    },
-    {
-      id: "wqasde",
-      image:
-        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
-      title: "Prepare Monthly Budget",
-      assigned_to: "Assigned to Pulkit",
-      time: "Due in 3 days",
-      completion: "pending",
-      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
-    },
-    {
-      id: "wqqwee",
-      image:
-        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
-      title: "Prepare Monthly Budget",
-      assigned_to: "Assigned to Pulkit",
-      time: "Due in 3 days",
-      completion: "pending",
-      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
-    },
-    {
-      id: "wqweqe",
-      image:
-        "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g",
-      title: "Prepare Monthly Budget",
-      assigned_to: "Assigned to Pulkit",
-      time: "Due in 3 days",
-      completion: "pending",
-      due_date: new Date().setHours(new Date().getHours() + 24 * 7),
-    },
-  ];
+
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");

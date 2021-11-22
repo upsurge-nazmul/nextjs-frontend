@@ -87,7 +87,14 @@ function DashboardLeftPanel({ type }) {
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
-          <div className={styles.tab}>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/mykids" || currenttab.indexOf("/mykids") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/mykids")}
+          >
             <KidSvg className={styles.icon} />
             <p className={styles.tabtitle}>My Kids</p>
           </div>

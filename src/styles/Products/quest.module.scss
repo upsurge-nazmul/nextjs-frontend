@@ -351,20 +351,21 @@
       right: 25vw;
     }
     .lap {
-      bottom: 3vh;
       right: -18vw;
+      bottom: 6vh;
     }
     .textcontainer {
       width: 50%;
       margin-left: 7%;
       margin-top: 1%;
+      padding-top: 5vh;
       .heading {
         font-size: 40px;
       }
       .subheading {
         font-size: 16px;
         line-height: 28px;
-        max-width: 550px;
+        max-width: 650px;
       }
       .details {
         margin-top: 20px;

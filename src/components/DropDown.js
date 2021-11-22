@@ -9,7 +9,7 @@ function DropDown({
   placeholder,
   color,
   fontSize,
-  bold,
+  margin,
 }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
@@ -32,7 +32,11 @@ function DropDown({
   }, []);
 
   return (
-    <div id={"dropdown" + options[0]} className={styles.dropdown}>
+    <div
+      id={"dropdown" + options[0]}
+      className={styles.dropdown}
+      style={{ margin: margin ? margin : "0" }}
+    >
       <div
         className={styles.selected}
         onClick={() => setshowoptions(!showoptions)}
