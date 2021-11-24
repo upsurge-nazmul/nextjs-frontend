@@ -200,13 +200,18 @@ export default function ManageChore({ choredata, childdata }) {
               value={choretitle}
               onChange={(e) => setchoretitle(e.target.value)}
             />
-            <CustomDatePicker value={duedate} setvalue={setduedate} />
+
             <DropDown
               placeholder="One Time"
-              options={["Daily", "One Time"]}
+              options={["One Time", "Daily"]}
               margin="0 0 20px 0"
               value={interval}
               setvalue={setinterval}
+            />
+            <CustomDatePicker
+              value={duedate}
+              setvalue={setduedate}
+              onlydate={interval !== "One Time"}
             />
             <DropDown
               placeholder="Household"
