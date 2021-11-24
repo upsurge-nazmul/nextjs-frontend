@@ -13,6 +13,7 @@ import Toast from "../../components/Toast";
 import { useRouter } from "next/dist/client/router";
 import Loading from "../../components/Loading";
 import ChoreApis from "../../actions/apis/ChoreApis";
+import { choretemplates } from "../../helpers/choretemplates";
 
 function ChoresPage({ choresdata, isLogged }) {
   const [mode, setmode] = useState("chores");
@@ -146,9 +147,16 @@ function ChoresPage({ choresdata, isLogged }) {
                 <div className={styles.subheading}>or</div>
                 <div className={styles.subheading}>Use a Template</div>
                 <div className={styles.wrapper}>
-                  <ChoreTemplate />
-                  <ChoreTemplate />
-                  <ChoreTemplate />
+                  {choretemplates[0].templates.slice(0, 3).map((item) => {
+                    return (
+                      <ChoreTemplate
+                        image={item.img}
+                        name={item.name}
+                        title={item.time}
+                        cat={[choretemplates[0].name]}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>

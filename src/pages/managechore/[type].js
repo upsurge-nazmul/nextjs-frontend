@@ -18,18 +18,19 @@ import "react-voice-recorder/dist/index.css";
 
 export default function ManageChore({ choredata, childdata }) {
   const router = useRouter();
-  const { currentChoreTemplate } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
   const templatename = template.replace(/-/g, " ");
-  const currentcatarray =
+  const [currentcatarray, setcurrentcatarray] = useState(
     choretemplates[
       choretemplates.findIndex((item) => item.name === templatecat)
-    ].templates;
+    ].templates
+  );
 
-  const currentchoretemplate =
+  const [currentchoretemplate, setcurrentchoretemplate] = useState(
     currentcatarray[
       currentcatarray.findIndex((item) => item.name === templatename)
-    ];
+    ]
+  );
   const [isInEditMode, setIsInEditMode] = useState(
     type !== "new" ? true : false
   );
@@ -45,7 +46,7 @@ export default function ManageChore({ choredata, childdata }) {
   const [msg, setmsg] = useState(choredata?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    !isInEditMode ? currentchoretemplate.name : choredata?.title || ""
+    !isInEditMode ? currentchoretemplate?.name : choredata?.title || ""
   );
   const [duedate, setduedate] = useState(choredata?.due_date || new Date());
   const [toastdata, settoastdata] = useState({
@@ -186,7 +187,7 @@ export default function ManageChore({ choredata, childdata }) {
             <img
               src={
                 !isInEditMode
-                  ? currentchoretemplate.img
+                  ? currentchoretemplate?.img
                   : choredata?.image ||
                     "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
               }

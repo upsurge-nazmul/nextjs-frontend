@@ -3828,10 +3828,10 @@ react-transition-group@^4.4.2:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-unity-webgl@^8.4.10:
-  version "8.4.10"
-  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.4.10.tgz#46968796fffe22def3f21a932587281164856fb3"
-  integrity sha512-SiZXdtwDOfd1e4C58k7gtAvdOv2QEp0u10viryREWXSUu0/6XiJX1jJ+aiY3MhZBdQsIqM+6rvkHUyM+aG/MMg==
+react-unity-webgl@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.6.0.tgz#849372be654260334c5a574260e2cd1ddf7615c2"
+  integrity sha512-CQrzJX9+Cd/jCRX0gEIoHl8YR5mqRT7L1TtGmqewLUKeMUJawHJIuWfmFFcMI++6+qqgQNqxkb2CmQutVcMDXg==
 
 react-use-intercom@^1.4.0:
   version "1.4.0"

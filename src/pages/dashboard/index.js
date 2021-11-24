@@ -32,7 +32,6 @@ function Dashboard({
   phone_verified,
   userdatafromserver,
 }) {
-
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
@@ -241,7 +240,7 @@ function Dashboard({
                   })}
                 </div>
               </div>
-              <div className={`${styles.liveClassSection} `}>
+              {/* <div className={`${styles.liveClassSection} `}>
                 <h2
                   className={styles.heading}
                   onClick={() => router.push("/courses/home")}
@@ -260,7 +259,7 @@ function Dashboard({
                     );
                   })}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

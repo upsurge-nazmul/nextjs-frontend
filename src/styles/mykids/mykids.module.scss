@@ -451,6 +451,48 @@
           height: 100%;
           width: 100%;
           padding: 0 00px 0 20px;
+          .kidsSection {
+            width: 100%;
+            margin-top: 15px;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .blacnkhead1 {
+            }
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 44px;
+              color: rgba(106, 106, 106, 1);
+              .head1 {
+                font-size: 10px;
+                flex: 1;
+                margin-left: 0;
+                font-weight: 400;
+              }
+              .head2 {
+                font-size: 10px;
+                font-weight: 400;
+                flex: 0.7;
+                margin-right: 0;
+              }
+              .head3 {
+                font-size: 10px;
+                margin-left: 15px;
+                font-weight: 400;
+                width: 26%;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-bottom: 10px;
+            }
+          }
           .pendingChoresSection {
             .wrapper {
               padding: 0 20px 0 0;
@@ -484,6 +526,127 @@
           height: unset !important;
           width: 100%;
           padding: 0 10px 0 20px;
+          .pendingChoresSection {
+            .heading {
+              font-size: 16px;
+            }
+            .wrapper {
+              padding: 0 5px 0 0;
+            }
+          }
+          .choreSection {
+            .headingWrapper {
+              .heading {
+                font-size: 16px;
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+        .flexRight {
+          height: 100%;
+          width: 100%;
+          margin-top: 0px;
+          padding: 0 10px 0 20px;
+          .templateSection {
+            width: 100%;
+            margin-top: 40px;
+            .heading {
+              font-size: 16px;
+            }
+            .button {
+              height: 45px;
+            }
+            .subheading {
+              font-size: 10px;
+              margin-right: 20px;
+            }
+            .wrapper {
+              padding: 0 20px 0 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .mykids {
+    padding-right: 0px;
+    width: 100vw;
+    .contentWrapper {
+      .mainContent {
+        margin-top: 20px;
+        .flexLeft {
+          height: unset !important;
+          width: 100%;
+          padding: 0 10px 0 20px;
+          .kidsSection {
+            width: 100%;
+            margin-top: 15px;
+            .heading {
+              font-size: 18px;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .heads {
+              padding: 0 5px;
+              height: 40px;
+              .blacnkhead1 {
+                width: 50px;
+                height: 100%;
+                margin-right: 5px;
+              }
+              .head1 {
+                margin-left: 0;
+                width: 30%;
+                font-size: 7px;
+                max-width: unset;
+              }
+              .head2 {
+                flex: 1;
+                font-size: 7px;
+                text-align: center;
+              }
+              .head3 {
+                width: 37%;
+                font-size: 7px;
+                margin: 0px;
+              }
+              .blacnkhead2 {
+                margin: 0;
+                flex: 1;
+                max-width: 20px;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-bottom: 10px;
+            }
+          }
+          .choreSection {
+            width: 100%;
+            margin-top: 0px;
+            .heading {
+              font-weight: 500;
+              font-size: 18px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+            }
+          }
           .pendingChoresSection {
             .heading {
               font-size: 16px;

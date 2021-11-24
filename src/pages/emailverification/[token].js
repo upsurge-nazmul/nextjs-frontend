@@ -44,6 +44,7 @@ export async function getServerSideProps({ params, req }) {
   let response = await LoginApis.verifyemailtoken({
     token: params.token,
   });
+  console.log(response);
   if (response && response.data && response.data.success) {
     return {
       props: {
@@ -51,5 +52,11 @@ export async function getServerSideProps({ params, req }) {
         msg: response.data.message,
       },
     };
-  } else return { props: { emailVerified: false, msg: response.data.message } };
+  } else
+    return {
+      props: {
+        emailVerified: false,
+        msg: response?.data?.message || "Cannot reach server",
+      },
+    };
 }

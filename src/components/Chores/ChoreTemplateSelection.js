@@ -3,27 +3,10 @@ import React, { useContext } from "react";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Chores/choretemplateselection.module.scss";
 import BackArrow from "../SVGcomponents/BackArrow";
-
 function ChoreTemplateSelection({ category, setmode }) {
   const router = useRouter();
   const { setcurrentChoreTemplate } = useContext(MainContext);
-  const temps = [
-    {
-      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
-      name: "Wash Utensils",
-      time: "Daily Chore",
-    },
-    {
-      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
-      name: "Wash Utensils",
-      time: "Daily Chore",
-    },
-    {
-      image: "https://static.toiimg.com/photo/msid-80881978/80881978.jpg",
-      name: "Wash Utensils",
-      time: "Daily Chore",
-    },
-  ];
+
   return (
     <div className={styles.choreTemplateSelection}>
       <div className={styles.header}>

@@ -37,7 +37,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
         history.push("/dashboard");
       else history.push("/kiddashboard");
     } else {
-      seterror(response.data.message || "Cannot reach server");
+      seterror(response?.data.message || "Cannot reach server");
     }
   }
   async function handlegoogleLogin(data) {
@@ -58,7 +58,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
           history.push("/dashboard");
         else history.push("/kiddashboard");
       } else {
-        seterror(response.data.message || "Cannot reach server");
+        seterror(response?.data.message || "Cannot reach server");
       }
     } else {
       seterror("");

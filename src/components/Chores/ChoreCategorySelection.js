@@ -48,7 +48,6 @@ function ChoreCategorySelection({ setmode }) {
             {choretemplates[
               choretemplates.findIndex((item) => item.name === selectedcat)
             ].templates.map((item, index) => {
-              console.log(item);
               return (
                 <div
                   className={styles.card}
