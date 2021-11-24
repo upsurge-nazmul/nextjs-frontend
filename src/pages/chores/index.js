@@ -147,16 +147,19 @@ function ChoresPage({ choresdata, isLogged }) {
                 <div className={styles.subheading}>or</div>
                 <div className={styles.subheading}>Use a Template</div>
                 <div className={styles.wrapper}>
-                  {choretemplates[0].templates.slice(0, 3).map((item) => {
-                    return (
-                      <ChoreTemplate
-                        image={item.img}
-                        name={item.name}
-                        title={item.time}
-                        cat={[choretemplates[0].name]}
-                      />
-                    );
-                  })}
+                  {choretemplates[0].templates
+                    .slice(0, 3)
+                    .map((item, index) => {
+                      return (
+                        <ChoreTemplate
+                          key={"choretemp" + index}
+                          image={item.img}
+                          name={item.name}
+                          title={item.time}
+                          cat={[choretemplates[0].name]}
+                        />
+                      );
+                    })}
                 </div>
               </div>
             </div>
