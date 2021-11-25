@@ -116,9 +116,9 @@ function Header({
             ]}
           />
         </div>
-        {/* <div className={styles.signin} onClick={() => setshowauth(true)}>
+        <div className={styles.signin} onClick={() => setshowauth(true)}>
           Sign In
-        </div> */}
+        </div>
       </div>
     </div>
   );

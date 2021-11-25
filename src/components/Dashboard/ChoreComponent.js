@@ -91,7 +91,9 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         alt=""
       />
       <div className={styles.taskAndTo}>
-        <div className={styles.task}>{data.title}</div>
+        <div className={styles.task}>
+          {data.title} {data.is_reoccurring && "(Daily)"}
+        </div>
         <div className={styles.to}>{data.assigned_to}</div>
       </div>
       <div className={styles.time}>

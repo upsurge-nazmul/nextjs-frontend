@@ -31,12 +31,16 @@ export default function KidChoresPage({
   const [mode, setmode] = useState("chores");
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
-      console.log(duetimeDifference(item.due_date));
-
-      return (
-        item.completion !== "complete" &&
-        duetimeDifference(item.due_date) !== "Expired"
-      );
+      if (item.is_reoccurring) {
+        return (
+          item.latest_chore.completion !== "complete" &&
+          duetimeDifference(item.latest_chore.due_date) !== "Expired"
+        );
+      } else
+        return (
+          item.completion !== "complete" &&
+          duetimeDifference(item.due_date) !== "Expired"
+        );
     })
   );
   const [compchores, setcompchores] = useState(completedchores);

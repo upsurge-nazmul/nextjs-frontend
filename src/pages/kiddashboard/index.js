@@ -200,6 +200,7 @@ async function getChildDetails(id, token) {
 }
 async function getchores(id, token) {
   let response = await KidApis.getchildchores({ id }, token);
+  console.log(response.data);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

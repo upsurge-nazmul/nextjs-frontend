@@ -19,17 +19,19 @@ import "react-voice-recorder/dist/index.css";
 export default function ManageChore({ choredata, childdata }) {
   const router = useRouter();
   const { type, template, templatecat } = router.query;
-  const templatename = template.replace(/-/g, " ");
+  const templatename = template?.replace(/-/g, " ");
   const [currentcatarray, setcurrentcatarray] = useState(
     choretemplates[
       choretemplates.findIndex((item) => item.name === templatecat)
-    ].templates
+    ]?.templates
   );
 
   const [currentchoretemplate, setcurrentchoretemplate] = useState(
-    currentcatarray[
-      currentcatarray.findIndex((item) => item.name === templatename)
-    ]
+    template
+      ? currentcatarray[
+          currentcatarray?.findIndex((item) => item.name === templatename)
+        ]
+      : null
   );
   const [isInEditMode, setIsInEditMode] = useState(
     type !== "new" ? true : false
@@ -48,7 +50,11 @@ export default function ManageChore({ choredata, childdata }) {
   const [choretitle, setchoretitle] = useState(
     !isInEditMode ? currentchoretemplate?.name : choredata?.title || ""
   );
-  const [duedate, setduedate] = useState(choredata?.due_date || new Date());
+  const [duedate, setduedate] = useState(
+    choredata
+      ? new Date(Number(choredata.due_date))
+      : new Date().setHours(new Date().getHours() + 1)
+  );
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -64,6 +70,10 @@ export default function ManageChore({ choredata, childdata }) {
   useEffect(() => {
     setlettercounts(200 - msg.length);
   }, [msg]);
+  useEffect(() => {
+    console.log(duedate);
+  }, [duedate]);
+
   function startRecord() {
     setrecordState(RecordState.START);
   }
@@ -96,6 +106,7 @@ export default function ManageChore({ choredata, childdata }) {
         child_id: "test1234",
         due_date: new Date(duedate).getTime(),
         completion: "pending",
+        is_reoccurring: interval !== "One Time" ? true : false,
       });
       if (response && response.data && response.data.success) {
         settoastdata({
@@ -139,6 +150,7 @@ export default function ManageChore({ choredata, childdata }) {
           assigned_to: assignee.first_name,
           child_id: assignee.id,
           due_date: tt,
+          is_reoccurring: interval !== "One Time" ? true : false,
           completion: "pending",
         });
         if (!response || !response.data || !response.data.success) {
@@ -299,6 +311,8 @@ export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   if (token && params.type !== "add") {
     let choredata = await getChoreData({ id: params.type }, token);
+    console.log(choredata);
+
     if (choredata) {
       let childdata = await getChildData({ id: choredata.child_id }, token);
       if (childdata) {
@@ -312,7 +326,7 @@ export async function getServerSideProps({ params, req }) {
   } else return { props: { choredata: null, childdata: null } };
 }
 async function getChildData(id, token) {
-  let response = await ChoreApis.getChildDetails(id, token);
+  let response = await DashboardApis.getChildDetails(id, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

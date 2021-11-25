@@ -32,7 +32,10 @@ function KidChore({ data, settoastdata }) {
     if (choredata.completion === "started") {
       return;
     }
-    let response = await KidApis.markchorestarted({ choreId: choredata.id });
+    let response = await KidApis.markchorestarted({
+      choreId: choredata.id,
+      is_reoccurring: choredata.is_reoccurring,
+    });
     if (response && response.data && response.data.success) {
       settoastdata({ show: true, type: "success", msg: "done" });
       setchoredata((prev) => ({ ...prev, completion: "started" }));
@@ -56,11 +59,10 @@ function KidChore({ data, settoastdata }) {
       settoastdata({ show: true, type: "success", msg: "done" });
       setchoredata((prev) => ({ ...prev, completion: "approval" }));
     } else {
-      console.log(response);
       settoastdata({
         show: true,
         type: "error",
-        msg: response?.data.message || "cannot reach server",
+        msg: response?.data?.message || "cannot reach server",
       });
     }
   }
@@ -76,19 +78,68 @@ function KidChore({ data, settoastdata }) {
         alt=""
       />
       <div className={styles.taskAndTo}>
-        <div className={styles.task}>{choredata.title}</div>
+        <div className={styles.task}>
+          {choredata.title} {choredata.is_reoccurring && "(Daily)"}
+        </div>
         <div className={styles.to}>Assigned to Me</div>
       </div>
       <div className={styles.time}>
         <ClockSvg />
 
         <p>
-          {choredata.completion === "completed"
+          {choredata.is_reoccurring
+            ? choredata.latest_chore.completion === "completed"
+              ? completedtimeDifference(choredata.latest_chore.completed_at)
+              : duetimeDifference(choredata?.latest_chore.due_date)
+            : choredata.completion === "completed"
             ? completedtimeDifference(choredata.completed_at)
             : duetimeDifference(choredata?.due_date)}
         </p>
       </div>
-      {choredata.completion === "completed" ? (
+      {choredata.is_reoccurring ? (
+        choredata.latest_chore.completion === "completed" ? (
+          <div className={styles.completed}>Completed</div>
+        ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
+          <div
+            className={styles.expiry}
+            onClick={() =>
+              settoastdata({
+                show: true,
+                type: "success",
+                msg: "Oh oh time's up for this chore !",
+              })
+            }
+          >
+            Expired
+          </div>
+        ) : choredata.latest_chore.completion === "approval" ? (
+          <div
+            className={styles.approval}
+            onClick={() =>
+              settoastdata({
+                show: true,
+                type: "success",
+                msg: "Waiting for approval !",
+              })
+            }
+          >
+            <PendingSvg />
+            Approval
+          </div>
+        ) : choredata.latest_chore.completion === "pending" ? (
+          <div className={styles.button} onClick={handleMarkStart}>
+            Start
+          </div>
+        ) : (
+          <div
+            className={styles.markdonebutton}
+            onClick={handleMarkForApproval}
+          >
+            <RoundedTick />
+            Mark as done
+          </div>
+        )
+      ) : choredata.completion === "completed" ? (
         <div className={styles.completed}>Completed</div>
       ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
         <div

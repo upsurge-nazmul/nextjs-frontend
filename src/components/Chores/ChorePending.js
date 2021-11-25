@@ -1,4 +1,5 @@
 import React from "react";
+import ChoreApis from "../../actions/apis/ChoreApis";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import { duetimeDifference } from "../../helpers/timehelpers";
 import styles from "../../styles/Chores/chorepending.module.scss";
@@ -7,7 +8,7 @@ import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
 function ChorePending({ data, settoastdata, setchores, setallchores }) {
   async function handleApprove() {
-    let response = await DashboardApis.approvechore({ id: data.id });
+    let response = await ChoreApis.approvechore({ id: data.id });
     if (response && response.data && response.data.success) {
       settoastdata({ show: true, type: "success", msg: "done" });
       setchores((prev) => prev.filter((item) => item.id !== data.id));

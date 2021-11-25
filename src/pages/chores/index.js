@@ -36,12 +36,35 @@ function ChoresPage({ choresdata, isLogged }) {
   }, [isLogged]);
   useEffect(() => {
     setdataloaded(true);
-    setchores(choresdata.filter((item) => item.completion === "approval"));
+    setchores(
+      choresdata.filter((item) => {
+        if (item.is_reoccurring) {
+          return item.latest_chore.completion === "approval";
+        } else return item.completion === "approval";
+      })
+    );
+    setallchores(
+      choresdata.filter((item) => {
+        if (item.is_reoccurring) {
+          return item.latest_chore.completion !== "approval";
+        } else return item.completion !== "approval";
+      })
+    );
   }, [choresdata]);
   useEffect(() => {
     if (choremode === "inprogress") {
       setallchores(
-        backupallchores.filter((item) => item.completion !== "completed")
+        backupallchores.filter((item) => {
+          if (item.is_reoccurring) {
+            return (
+              item.latest_chore.completion !== "completed" &&
+              item.latest_chore.completion !== "approval"
+            );
+          } else
+            return (
+              item.completion !== "completed" && item.completion !== "approval"
+            );
+        })
       );
     } else if (choremode === "completed") {
       setallchores(
