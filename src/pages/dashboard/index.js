@@ -136,6 +136,7 @@ function Dashboard({
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
+          {userdatafromserver && userdatafromserver.is_waiting_active === false?
           <div className={styles.mainContent}>
             <div className={styles.flexLeft} id="leftside">
               <div className={styles.kidsSection}>
@@ -270,7 +271,9 @@ function Dashboard({
                 </div>
               </div> */}
             </div>
-          </div>
+          </div>: 
+          <div className={styles.mainContent}></div>
+          }
         </div>
       </div>
     );
