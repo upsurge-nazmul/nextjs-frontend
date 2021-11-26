@@ -62,7 +62,16 @@ function KidDashboard({
     saveNotificationToken();
     async function saveNotificationToken() {
       let messaging = getMessaging();
-      let token = await getToken(messaging);
+      let token = "";
+      try {
+        token = await getToken(messaging);
+      } catch (err) {
+        settoastdata({
+          show: true,
+          msg: "Notifications Blocked",
+          type: "error",
+        });
+      }
       let response = await NotificationApis.addToken({ type: "web", token });
     }
   }, []);

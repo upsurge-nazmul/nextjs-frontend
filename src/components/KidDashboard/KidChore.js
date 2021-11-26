@@ -15,6 +15,15 @@ function KidChore({ data, settoastdata }) {
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data);
   const router = useRouter();
+  const [duedate, setduedate] = useState(
+    choredata.is_reoccurring
+      ? choredata.latest_chore.completion === "completed"
+        ? completedtimeDifference(choredata.latest_chore.completed_at)
+        : duetimeDifference(choredata?.latest_chore.due_date)
+      : choredata.completion === "completed"
+      ? completedtimeDifference(choredata.completed_at)
+      : duetimeDifference(choredata?.due_date)
+  );
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -28,6 +37,26 @@ function KidChore({ data, settoastdata }) {
       document.removeEventListener("mousedown", getifclickedoutside);
     };
   }, [showmenu]);
+  useEffect(() => {
+    let x = setInterval(() => {
+      if (duedate === "Expired") {
+        if (x) {
+          clearInterval(x);
+        }
+        return;
+      }
+      setduedate(
+        choredata.is_reoccurring
+          ? choredata.latest_chore.completion === "completed"
+            ? completedtimeDifference(choredata.latest_chore.completed_at)
+            : duetimeDifference(choredata?.latest_chore.due_date)
+          : choredata.completion === "completed"
+          ? completedtimeDifference(choredata.completed_at)
+          : duetimeDifference(choredata?.due_date)
+      );
+    }, 1000 * 60);
+    return () => clearInterval(x);
+  }, []);
   async function handleMarkStart() {
     if (choredata.completion === "started") {
       return;
@@ -38,7 +67,15 @@ function KidChore({ data, settoastdata }) {
     });
     if (response && response.data && response.data.success) {
       settoastdata({ show: true, type: "success", msg: "done" });
-      setchoredata((prev) => ({ ...prev, completion: "started" }));
+      if (choredata.is_reoccurring) {
+        setchoredata((prev) => ({
+          ...prev,
+          latest_chore: {
+            ...prev.latest_chore,
+            completion: "started",
+          },
+        }));
+      } else setchoredata((prev) => ({ ...prev, completion: "started" }));
     } else {
       console.log(response);
       settoastdata({
@@ -57,7 +94,15 @@ function KidChore({ data, settoastdata }) {
     });
     if (response && response.data && response.data.success) {
       settoastdata({ show: true, type: "success", msg: "done" });
-      setchoredata((prev) => ({ ...prev, completion: "approval" }));
+      if (choredata.is_reoccurring) {
+        setchoredata((prev) => ({
+          ...prev,
+          latest_chore: {
+            ...prev.latest_chore,
+            completion: "approval",
+          },
+        }));
+      } else setchoredata((prev) => ({ ...prev, completion: "approval" }));
     } else {
       settoastdata({
         show: true,
@@ -71,7 +116,7 @@ function KidChore({ data, settoastdata }) {
     <div className={styles.kidChore}>
       <img
         src={
-          choredata.category === "Bathroom"
+          choredata.img_url || choredata.category === "Bathroom"
             ? "/images/chores/bathroom.jpg"
             : "/images/chores/kitchen.png"
         }
@@ -99,7 +144,8 @@ function KidChore({ data, settoastdata }) {
       {choredata.is_reoccurring ? (
         choredata.latest_chore.completion === "completed" ? (
           <div className={styles.completed}>Completed</div>
-        ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
+        ) : duetimeDifference(choredata?.latest_chore.due_date) ===
+          "Expired" ? (
           <div
             className={styles.expiry}
             onClick={() =>

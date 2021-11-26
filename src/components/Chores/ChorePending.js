@@ -26,19 +26,29 @@ function ChorePending({ data, settoastdata, setchores, setallchores }) {
     <div className={styles.chorePending}>
       <img
         src={
-          data.category === "Bathroom"
+          data.img_url || data.category === "Bathroom"
             ? "/images/chores/bathroom.jpg"
             : "/images/chores/kitchen.png"
         }
         alt=""
       />
       <div className={styles.taskAndTo}>
-        <div className={styles.task}>{data.title}</div>
+        <div className={styles.task}>
+          {data.title} {data.is_reoccurring && "(Daily)"}
+        </div>
         <div className={styles.to}>{data.assigned_to}</div>
       </div>
       <div className={styles.time}>
         <ClockSvg />
-        <p>{duetimeDifference(data?.due_date)}</p>
+        <p>
+          {data.is_reoccurring
+            ? data.latest_chore.completion === "completed"
+              ? completedtimeDifference(data.latest_chore.completed_at)
+              : duetimeDifference(data?.latest_chore.due_date)
+            : data.completion === "completed"
+            ? completedtimeDifference(data.completed_at)
+            : duetimeDifference(data?.due_date)}
+        </p>
       </div>
 
       <div className={styles.button} onClick={handleApprove}>

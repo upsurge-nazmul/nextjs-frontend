@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import NotificationApis from "../../actions/apis/NotificationApis";
 import {
   completedtimeDifference,
   duetimeDifference,
@@ -15,13 +16,29 @@ import ChoreComponentMenu from "./ChoreComponentMenu";
 
 function ChoreComponent({ data, settoastdata, setchores }) {
   const [showmenu, setshowmenu] = useState(false);
+  const [choredata, setchoredata] = useState(data || null);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [notificationtype, setnotificationtype] = useState(
-    data.completion === "pending"
+    data.is_reoccurring
+      ? data.latest_chore.completion === "pending"
+        ? "Nudge"
+        : data.latest_chore.completion === "started"
+        ? "Cheer"
+        : "Applaud"
+      : data.completion === "pending"
       ? "Nudge"
       : data.completion === "started"
       ? "Cheer"
       : "Applaud"
+  );
+  const [duedate, setduedate] = useState(
+    choredata.is_reoccurring
+      ? choredata.latest_chore.completion === "completed"
+        ? completedtimeDifference(choredata.latest_chore.completed_at)
+        : duetimeDifference(choredata?.latest_chore.due_date)
+      : choredata.completion === "completed"
+      ? completedtimeDifference(choredata.completed_at)
+      : duetimeDifference(choredata?.due_date)
   );
   const router = useRouter();
 
@@ -38,6 +55,26 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       document.removeEventListener("mousedown", getifclickedoutside);
     };
   }, [showmenu]);
+  useEffect(() => {
+    let x = setInterval(() => {
+      if (duedate === "Expired") {
+        if (x) {
+          clearInterval(x);
+        }
+        return;
+      }
+      setduedate(
+        choredata.is_reoccurring
+          ? choredata.latest_chore.completion === "completed"
+            ? completedtimeDifference(choredata.latest_chore.completed_at)
+            : duetimeDifference(choredata?.latest_chore.due_date)
+          : choredata.completion === "completed"
+          ? completedtimeDifference(choredata.completed_at)
+          : duetimeDifference(choredata?.due_date)
+      );
+    }, 1000 * 60);
+    return () => clearInterval(x);
+  }, []);
   async function deletechore() {
     let res = await DashboardApis.deletechore({ id: data.id });
     if (res && res.data && res.data.success) {
@@ -57,7 +94,16 @@ function ChoreComponent({ data, settoastdata, setchores }) {
     setshowConfirmation(false);
   }
   async function sendNotification() {
-    let res = await DashboardApis.addnotification({ type: notificationtype });
+    let res = await NotificationApis.addnotification({
+      type: notificationtype,
+      receiver_id: data.child_id,
+      msg:
+        notificationtype === "Nudge"
+          ? "Complete chore : " + data.title
+          : notificationtype === "Cheer"
+          ? "For starting chore : " + data.title
+          : "For completing chore : " + data.title,
+    });
     if (res && res.data && res.data.success) {
       settoastdata({
         show: true,
@@ -83,11 +129,7 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         />
       )}
       <img
-        src={
-          data.category === "Bathroom"
-            ? "/images/chores/bathroom.jpg"
-            : "/images/chores/kitchen.png"
-        }
+        src={data.is_reoccurring ? data.latest_chore.img_url : data.img_url}
         alt=""
       />
       <div className={styles.taskAndTo}>
@@ -99,11 +141,7 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       <div className={styles.time}>
         <ClockSvg />
 
-        <p>
-          {data?.completion === "completed"
-            ? completedtimeDifference(data.completed_at || data.due_date)
-            : duetimeDifference(data?.due_date)}
-        </p>
+        <p>{duedate}</p>
       </div>
       <div className={styles.completionIcon}>
         {data.completion === "completed" || data.completion === "approval" ? (
@@ -112,9 +150,11 @@ function ChoreComponent({ data, settoastdata, setchores }) {
           <PendingSvg />
         )}
       </div>
-      <div className={styles.button} onClick={sendNotification}>
-        {notificationtype}
-      </div>
+      {duedate !== "Expired" && (
+        <div className={styles.button} onClick={sendNotification}>
+          {notificationtype}
+        </div>
+      )}
 
       <div
         className={styles.more}

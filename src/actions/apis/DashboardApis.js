@@ -1,13 +1,6 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
-const addnotification = (payload) => {
-  return ApiCalls.postResponse(
-    "users/addnotification",
-    payload,
-    getCookie("accesstoken")
-  );
-};
 const getuserdata = (payload, token) => {
   return ApiCalls.getResponse(`users/getprofile`, payload, token);
 };
@@ -76,7 +69,6 @@ const DashboardApis = {
   editkids,
   deletechild,
   getChildDetails,
-  addnotification,
 };
 
 export default DashboardApis;

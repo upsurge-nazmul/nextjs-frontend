@@ -96,7 +96,7 @@ export default function ManageChore({ choredata, childdata }) {
     console.log("audioData", audioData);
   }
   async function handleSave() {
-    if (choredata?.isineditmode) {
+    if (isInEditMode) {
       let response = await ChoreApis.editchore({
         id: choredata?.data.id,
         message: msg,
@@ -146,10 +146,11 @@ export default function ManageChore({ choredata, childdata }) {
         let response = await ChoreApis.addchore({
           message: msg,
           title: choretitle,
-          category: choredata?.category || "home",
+          category: cat,
           assigned_to: assignee.first_name,
           child_id: assignee.id,
           due_date: tt,
+          img_url: currentchoretemplate?.img,
           is_reoccurring: interval !== "One Time" ? true : false,
           completion: "pending",
         });

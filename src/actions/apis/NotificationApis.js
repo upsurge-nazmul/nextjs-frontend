@@ -8,8 +8,16 @@ const addToken = (payload) => {
     getCookie("accesstoken")
   );
 };
+const addnotification = (payload) => {
+  return ApiCalls.postResponse(
+    "notification/addnotification",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const NotificationApis = {
   addToken,
+  addnotification,
 };
 
 export default NotificationApis;
