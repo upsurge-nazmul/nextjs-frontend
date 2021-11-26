@@ -10,7 +10,8 @@
 # next.js
 /.next/
 /out/
-
+src/firebase.js
+config.js
 # production
 /build
 
