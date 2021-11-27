@@ -150,7 +150,7 @@ export default function GamePage() {
       let xx = await db.games.where({ id: gameid }).toArray();
       let context = data[gameid];
       if (xx.length > 0) {
-        if (xx[0].version !== data[gameid].version) {
+        if (xx[0].version !== context.version) {
           x();
           return;
         }
