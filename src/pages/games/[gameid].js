@@ -10,6 +10,7 @@ import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
+import { db } from "../../db";
 // streamingAssetsUrl: "StreamingAssets",
 // companyName: "DefaultCompany",
 // productName: "Don'tOverspend_Upsurge",
@@ -139,8 +140,119 @@ export default function GamePage() {
   }, [gameid]);
   useEffect(() => {
     if (gameid) {
-      console.log(gameid);
-      setunitycontext(new UnityContext(data[gameid]));
+      checkifcacheexist();
+    }
+    async function checkifcacheexist() {
+      console.log("raa");
+      let xx = await db.games.where({ id: gameid }).toArray();
+      let context = data[gameid];
+      console.log(xx);
+      if (xx.length > 0) {
+        let wasm = xx[0].wasm;
+        let data = xx[0].data;
+        let framework = xx[0].framework;
+        let loader = xx[0].loader;
+        console.log(wasm.stream());
+        if (wasm) {
+          context.codeUrl = window.URL.createObjectURL(wasm);
+        }
+        if (data) {
+          context.dataUrl = window.URL.createObjectURL(data);
+        }
+        if (framework) {
+          context.frameworkUrl = window.URL.createObjectURL(framework);
+        }
+        if (loader) {
+          context.loaderUrl = window.URL.createObjectURL(loader);
+        }
+      } else {
+        x();
+      }
+      console.log(new UnityContext(context));
+      setunitycontext(new UnityContext(context));
+    }
+    async function x() {
+      fetch(data[gameid].dataUrl, {
+        method: "GET",
+      })
+        .then((response) => response.blob())
+        .then(async (blob) => {
+          // Create blob link to download
+          let xx = await db.games.where({ id: gameid }).toArray();
+          if (xx.length > 0) {
+            await db.games.update(gameid, {
+              data: blob,
+              date: new Date().getTime(),
+            });
+          } else {
+            await db.games.add({
+              id: gameid,
+              data: blob,
+              date: new Date().getTime(),
+            });
+          }
+        });
+
+      fetch(data[gameid].dataUrl, {
+        method: "GET",
+      })
+        .then((response) => response.blob())
+        .then(async (blob) => {
+          // Create blob link to download
+          let xx = await db.games.where({ id: gameid }).toArray();
+          if (xx.length > 0) {
+            await db.games.update(gameid, {
+              wasm: blob,
+              date: new Date().getTime(),
+            });
+          } else {
+            await db.games.add({
+              id: gameid,
+              wasm: blob,
+              date: new Date().getTime(),
+            });
+          }
+        });
+      fetch(data[gameid].frameworkUrl, {
+        method: "GET",
+      })
+        .then((response) => response.blob())
+        .then(async (blob) => {
+          // Create blob link to download
+          let xx = await db.games.where({ id: gameid }).toArray();
+          if (xx.length > 0) {
+            await db.games.update(gameid, {
+              framework: blob,
+              date: new Date().getTime(),
+            });
+          } else {
+            await db.games.add({
+              id: gameid,
+              framework: blob,
+              date: new Date().getTime(),
+            });
+          }
+        });
+      fetch(data[gameid].loaderUrl, {
+        method: "GET",
+      })
+        .then((response) => response.blob())
+        .then(async (blob) => {
+          // Create blob link to download
+          let xx = await db.games.where({ id: gameid }).toArray();
+          if (xx.length > 0) {
+            await db.games.update(gameid, {
+              loader: blob,
+              date: new Date().getTime(),
+            });
+          } else {
+            await db.games.add({
+              id: gameid,
+              loader: blob,
+              date: new Date().getTime(),
+            });
+          }
+        });
     }
   }, [gameid]);
   useEffect(() => {
@@ -162,7 +274,7 @@ export default function GamePage() {
     if (!unitycontext) return;
     unitycontext.on("progress", function (progression) {
       setProgression(progression);
-      console.log(progression);
+      console.log("progression", progression);
     });
   }, []);
   useEffect(() => {
