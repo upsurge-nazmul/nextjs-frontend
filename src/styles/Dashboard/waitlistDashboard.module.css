@@ -1,0 +1,63 @@
+.cover {
+  min-width: 180px;
+  display: flex;
+  flex :1;
+  background-color: #4166eb;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+.heading {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #fff;
+    align-self: center;
+    font-weight: 900;
+}
+.restBlock {
+    margin-left: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.restName {
+    font-size: 24px;
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.restNameSub {
+    font-size: 16px;
+    color: #fff;
+}
+.socials {
+    margin-top: 20px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+.social {
+    cursor: pointer;
+    margin-right: 40px;
+    width: 24px;
+    height: 24px;
+}
+.social path, .social circle, .socialyt path{
+    fill: #fff;
+}
+.socialyt {
+    width: 24px;
+    cursor: pointer;
+    margin-right: 30px;
+    height: 24px;
+}
+
+.socialyt:last-child {
+    margin-right: 0;
+
+}
+
