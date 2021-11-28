@@ -20,6 +20,7 @@ import TribeApproval from "../../components/Dashboard/TribeApproval";
 import NoApproval from "../../components/Dashboard/NoApproval";
 import Loading from "../../components/Loading";
 import NotificationApis from "../../actions/apis/NotificationApis";
+import WaitlistComponent from "../../components/Dashboard/WaitlistComponent";
 import { getMessaging, getToken } from "@firebase/messaging";
 
 function Dashboard({
@@ -36,6 +37,8 @@ function Dashboard({
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
+  const [waitlistNum, setwaitlistNum] = useState(0);
+  
   const [kids, setkids] = useState(kidsdata || []);
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
@@ -136,8 +139,9 @@ function Dashboard({
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
-          {userdatafromserver && userdatafromserver.is_waiting_active === true?
+          {userdatafromserver && userdatafromserver.is_waiting_active === false?
           <div className={styles.mainContent}>
+            
             <div className={styles.flexLeft} id="leftside">
               <div className={styles.kidsSection}>
                 <h2
@@ -272,7 +276,16 @@ function Dashboard({
               </div> */}
             </div>
           </div>: 
-          <div className={styles.mainContent}></div>
+          <div className={styles.mainContent}>
+            <div className={styles.flexLeft} id="leftside">
+              <div className={styles.kidsSection}>
+                <WaitlistComponent email={userdatafromserver.email} waitNum={userdatafromserver.waiting_number}/>
+              </div>
+            </div>
+            <div className={styles.flexRight} id="rightpanel">
+
+            </div>
+          </div>
           }
         </div>
       </div>
@@ -288,8 +301,10 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    console.log(response.data);
+
     if (response && !response.data.success) {
-      console.log(response.data);
+      console.log(response.data)
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
