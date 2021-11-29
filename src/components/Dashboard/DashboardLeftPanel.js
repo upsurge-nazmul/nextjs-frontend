@@ -11,7 +11,7 @@ import MiniLogo from "../SVGcomponents/MiniLogo";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
 
-function DashboardLeftPanel({ type }) {
+function DashboardLeftPanel({ type, hidelogo }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
@@ -31,7 +31,7 @@ function DashboardLeftPanel({ type }) {
   }, []);
   return (
     <div className={styles.dashboardLeftPanel}>
-      {width > 1300 ? (
+      {hidelogo ? null : width > 1300 ? (
         <Logo
           className={styles.dashboardLogo}
           onClick={() => router.push("/dashboard")}

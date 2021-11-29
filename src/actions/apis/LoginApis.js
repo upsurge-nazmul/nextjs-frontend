@@ -82,6 +82,16 @@ const checkphone = (payload) => {
 const getuserbyid = (payload, token) => {
   return ApiCalls.getResponse("users/finduserbyid", payload, token);
 };
+const refer = (payload) => {
+  return ApiCalls.postResponse(
+    `users/refer`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const refersignup = (payload) => {
+  return ApiCalls.postResponse("users/referSignup", payload);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -101,6 +111,8 @@ const LoginApis = {
   addtonewslettersubs,
   addtocontactmsgs,
   unsub,
+  refer,
+  refersignup,
 };
 
 export default LoginApis;

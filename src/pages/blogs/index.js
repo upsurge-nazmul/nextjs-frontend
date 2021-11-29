@@ -57,20 +57,6 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
       setblogposts(blogpostsbackup);
     }
   }
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -220,7 +206,6 @@ export default BlogPage;
 
 export async function getServerSideProps({ params, req }) {
   let res = await BlogApis.getallblogs();
-  console.log(res.data);
   let res2 = await BlogApis.gethomeblogs();
   let highlightblogs = [];
   if (res2 && res2.data && res2.data.success) {
