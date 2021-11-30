@@ -139,7 +139,7 @@ function Dashboard({
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
-          {userdatafromserver && userdatafromserver.is_waiting_active === false?
+          {userdatafromserver && userdatafromserver.is_waiting_active === true?
           <div className={styles.mainContent}>
             
             <div className={styles.flexLeft} id="leftside">
