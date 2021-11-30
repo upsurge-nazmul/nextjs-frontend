@@ -6,7 +6,6 @@ import Footer from "../../components/Home/Footer";
 import Fb from "../../components/SVGcomponents/Fb";
 import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
-
 import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function WaitList({ res }) {
   const [showauth, setshowauth] = useState(false);

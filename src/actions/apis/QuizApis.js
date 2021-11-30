@@ -1,4 +1,5 @@
 import * as ApiCalls from "../ApiCalls";
+import { getCookie } from "../cookieUtils";
 // ,"/quiz/addquiz","/quiz/getallquiz","/quiz/getquiz","/quiz/addquestion"
 const getallquiz = (payload, token) => {
   return ApiCalls.getResponse(`quiz/getallquiz`, payload, token);
@@ -19,7 +20,13 @@ const getallquestions = (payload, token) => {
 const startquiz = (payload, token) => {
   return ApiCalls.postResponse("quiz/start", payload, token);
 };
-
+const startwaitlistquiz = (payload, token) => {
+  return ApiCalls.postResponse(
+    "quiz/startwaitlistquiz",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const nextquestion = (payload, token) => {
   return ApiCalls.getResponse("quiz/nextquestion", payload, token);
 };
@@ -35,6 +42,7 @@ const QuizApis = {
   startquiz,
   nextquestion,
   leaderboard,
+  startwaitlistquiz,
 };
 
 export default QuizApis;
