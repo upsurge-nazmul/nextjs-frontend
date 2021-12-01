@@ -1,13 +1,17 @@
 import { useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Blog/morecard.module.scss";
-function MoreCard({ data, getdatafromraw }) {
+function MoreCard({ data, getdatafromraw, pushto }) {
   const router = useRouter();
   return (
     <div
       className={styles.moreCard}
       onClick={() => {
-        router.push(`/blog/${data.id}`);
+        if (pushto) {
+          router.push(pushto + `${data.id}`);
+        } else {
+          router.push(`/blog/${data.id}`);
+        }
       }}
     >
       <img src={data.img_url} alt="" />

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "../../styles/Blog/categorybar.module.scss";
 import ArrowDown from "../SVGcomponents/ArrowDown";
 import ArrowUp from "../SVGcomponents/ArrowUp";
-function CategoryBar({ selectedCat, sortPosts }) {
+function CategoryBar({ selectedCat, sortPosts, col, pushto }) {
   let allcategories = [
     "All Categories",
     "Finance",
@@ -15,7 +15,6 @@ function CategoryBar({ selectedCat, sortPosts }) {
   const [showfullcategories, setshowfullcategories] = useState(false);
   const router = useRouter();
   const category = router.query.category || selectedCat || "";
-  console.log(selectedCat);
   function onClickMore() {
     setshowfullcategories(!showfullcategories);
     if (showfullcategories) {
@@ -32,6 +31,7 @@ function CategoryBar({ selectedCat, sortPosts }) {
         <div className={styles.wrapper}>
           {categories.map((item, index) => (
             <div
+              style={{ backgroundColor: col ? col : "white" }}
               className={`${styles.category} ${
                 item === "All Categories" && !category
                   ? styles.selected
@@ -43,7 +43,9 @@ function CategoryBar({ selectedCat, sortPosts }) {
                 if (item === "All Categories") {
                   router.push("/blogs");
                 } else {
-                  router.push("/blogs/" + item.toLowerCase());
+                  if (pushto) {
+                    router.push(pushto + item.toLowerCase());
+                  } else router.push("/blogs/" + item.toLowerCase());
                 }
               }}
             >

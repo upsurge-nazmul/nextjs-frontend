@@ -11,7 +11,7 @@ import MiniLogo from "../SVGcomponents/MiniLogo";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
 
-function DashboardLeftPanel({ type, hidelogo }) {
+function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
@@ -30,7 +30,7 @@ function DashboardLeftPanel({ type, hidelogo }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   return (
-    <div className={styles.dashboardLeftPanel}>
+    <div className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed}`}>
       {hidelogo ? null : width > 1300 ? (
         <Logo
           className={styles.dashboardLogo}
@@ -77,72 +77,138 @@ function DashboardLeftPanel({ type, hidelogo }) {
           </div>
         </div>
       ) : (
-        <div className={styles.tabContainer}>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard")}
-          >
-            <HomeSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Dashboard</p>
+        (type = "waitlist" ? (
+          <div className={styles.tabContainer}>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/w" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard/w")}
+            >
+              <HomeSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Dashboard</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/w/leaderboards"
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/dashboard/w/leaderboards")}
+            >
+              <KidSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Leaderboards</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/w/games" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard/w/games")}
+            >
+              <GameSvg className={styles.icon} />
+
+              <p className={styles.tabtitle}>Games</p>
+            </div>
+            <div
+              className={`${styles.tab}  ${
+                currenttab === "/dashboard/w/quiz" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard/w/quiz")}
+            >
+              <CoursesSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Quiz</p>
+            </div>
+            <div
+              className={`${styles.tab}  ${
+                currenttab === "/dashboard/w/blogs" ||
+                currenttab.indexOf("dashboard/w/blog/") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/dashboard/w/blogs")}
+            >
+              <GameSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Blogs</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard/w/rewards")}
+            >
+              <StoreSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Rewards</p>
+            </div>
           </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/mykids" || currenttab.indexOf("/mykids") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/mykids")}
-          >
-            <KidSvg className={styles.icon} />
-            <p className={styles.tabtitle}>My Kids</p>
+        ) : (
+          <div className={styles.tabContainer}>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard")}
+            >
+              <HomeSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Dashboard</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/mykids" || currenttab.indexOf("/mykids") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/mykids")}
+            >
+              <KidSvg className={styles.icon} />
+              <p className={styles.tabtitle}>My Kids</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/chores" ||
+                currenttab.indexOf("/managechore") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/chores")}
+            >
+              <ChoresSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Chores</p>
+            </div>
+            <div
+              className={`${styles.tab}  ${
+                currenttab === "/courses" ||
+                currenttab.indexOf("/courses") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/courses")}
+            >
+              <CoursesSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Courses</p>
+            </div>
+            <div
+              className={`${styles.tab}  ${
+                currenttab === "/gamepage" ||
+                currenttab.indexOf("/gamepage") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              onClick={() => router.push("/gamepage")}
+            >
+              <GameSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Games</p>
+            </div>
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/parentstore" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/parentstore")}
+            >
+              <StoreSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Store</p>
+            </div>
           </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/chores" ||
-              currenttab.indexOf("/managechore") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/chores")}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/courses" || currenttab.indexOf("/courses") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/courses")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Courses</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/gamepage" ||
-              currenttab.indexOf("/gamepage") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/gamepage")}
-          >
-            <GameSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Games</p>
-          </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/parentstore" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/parentstore")}
-          >
-            <StoreSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Store</p>
-          </div>
-        </div>
+        ))
       )}
     </div>
   );

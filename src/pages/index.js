@@ -41,7 +41,11 @@ function Home({ isLogged, userdata }) {
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
-      router.push("/dashboard");
+      if (userdata.is_waiting_active) {
+        router.push("/dashboard/w");
+      } else {
+        router.push("/dashboard");
+      }
     }
   }, [userdata]);
 

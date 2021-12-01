@@ -38,7 +38,7 @@ function Dashboard({
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [waitlistNum, setwaitlistNum] = useState(0);
-  
+
   const [kids, setkids] = useState(kidsdata || []);
   const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
@@ -139,154 +139,139 @@ function Dashboard({
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
-          {userdatafromserver && userdatafromserver.is_waiting_active === true?
-          <div className={styles.mainContent}>
-            
-            <div className={styles.flexLeft} id="leftside">
-              <div className={styles.kidsSection}>
-                <h2
-                  className={styles.heading}
-                  onClick={() => router.push("/mykids")}
-                >
-                  My Kids
-                  <HeadingArrow />
-                </h2>
+          {userdatafromserver &&
+          userdatafromserver.is_waiting_active !== true ? (
+            <div className={styles.mainContent}>
+              <div className={styles.flexLeft} id="leftside">
+                <div className={styles.kidsSection}>
+                  <h2
+                    className={styles.heading}
+                    onClick={() => router.push("/mykids")}
+                  >
+                    My Kids
+                    <HeadingArrow />
+                  </h2>
+                  {kids.length > 0 && (
+                    <div className={styles.heads}>
+                      <p className={styles.blacnkhead1}></p>
+                      <p className={styles.head1}>CHILD INFO</p>
+                      <p className={styles.head2}>PENDING CHORES</p>
+                      <p className={styles.head3}>COURSE PROGRESS</p>
+                      <p className={styles.blacnkhead2}></p>
+                    </div>
+                  )}
+                  {kids.length > 0 ? (
+                    <div className={`${styles.wrapper}`}>
+                      {kids.map((item, index) => {
+                        return (
+                          <KidComponent
+                            confirmationgiven={confirmationgiven}
+                            setshowConfirmation={setshowConfirmation}
+                            setkids={setkids}
+                            settoastdata={settoastdata}
+                            data={item}
+                            key={"kidcomponent" + index}
+                          />
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <NoKid setkids={setkids} />
+                  )}
+                </div>
                 {kids.length > 0 && (
-                  <div className={styles.heads}>
-                    <p className={styles.blacnkhead1}></p>
-                    <p className={styles.head1}>CHILD INFO</p>
-                    <p className={styles.head2}>PENDING CHORES</p>
-                    <p className={styles.head3}>COURSE PROGRESS</p>
-                    <p className={styles.blacnkhead2}></p>
+                  <div className={styles.choreSection}>
+                    <h2 className={styles.heading}>
+                      Approvals
+                      <HeadingArrow />
+                    </h2>
+                    {chores.length > 0 || tribes.length > 0 ? (
+                      <>
+                        {chores.length > 0 && (
+                          <>
+                            <p
+                              className={styles.subheading}
+                              onClick={() => router.push("/chores")}
+                            >
+                              Chores
+                            </p>
+                            <div className={styles.wrapper}>
+                              {chores.map((data, index) => {
+                                return (
+                                  <ChoreComponent
+                                    data={data}
+                                    setchores={setchores}
+                                    settoastdata={settoastdata}
+                                    key={data.id}
+                                  />
+                                );
+                              })}
+                            </div>
+                          </>
+                        )}
+                        {tribes.length > 0 && (
+                          <>
+                            <p
+                              className={styles.subheading}
+                              onClick={() => router.push("/tribes")}
+                            >
+                              Tribes
+                            </p>
+                            <div className={styles.wrapper}>
+                              {tribes.map((data, index) => {
+                                return (
+                                  <TribeApproval
+                                    data={data}
+                                    key={"chorecomponent" + index}
+                                  />
+                                );
+                              })}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <NoApproval />
+                    )}
                   </div>
                 )}
-                {kids.length > 0 ? (
-                  <div className={`${styles.wrapper}`}>
-                    {kids.map((item, index) => {
+              </div>
+              <div className={styles.flexRight} id="rightpanel">
+                <div className={styles.gameSection}>
+                  <h2
+                    className={styles.heading}
+                    onClick={() => router.push("/games")}
+                  >
+                    Family Fun
+                    <HeadingArrow />
+                  </h2>
+
+                  <div className={styles.wrapper} id="gamecardwrapper">
+                    {familyfun.map((data, index) => {
                       return (
-                        <KidComponent
-                          confirmationgiven={confirmationgiven}
-                          setshowConfirmation={setshowConfirmation}
-                          setkids={setkids}
-                          settoastdata={settoastdata}
-                          data={item}
-                          key={"kidcomponent" + index}
+                        <GameCard
+                          data={data}
+                          key={"gamecardcomponent" + index}
                         />
                       );
                     })}
                   </div>
-                ) : (
-                  <NoKid setkids={setkids} />
-                )}
-              </div>
-              {kids.length > 0 && (
-                <div className={styles.choreSection}>
-                  <h2 className={styles.heading}>
-                    Approvals
-                    <HeadingArrow />
-                  </h2>
-                  {chores.length > 0 || tribes.length > 0 ? (
-                    <>
-                      {chores.length > 0 && (
-                        <>
-                          <p
-                            className={styles.subheading}
-                            onClick={() => router.push("/chores")}
-                          >
-                            Chores
-                          </p>
-                          <div className={styles.wrapper}>
-                            {chores.map((data, index) => {
-                              return (
-                                <ChoreComponent
-                                  data={data}
-                                  setchores={setchores}
-                                  settoastdata={settoastdata}
-                                  key={data.id}
-                                />
-                              );
-                            })}
-                          </div>
-                        </>
-                      )}
-                      {tribes.length > 0 && (
-                        <>
-                          <p
-                            className={styles.subheading}
-                            onClick={() => router.push("/tribes")}
-                          >
-                            Tribes
-                          </p>
-                          <div className={styles.wrapper}>
-                            {tribes.map((data, index) => {
-                              return (
-                                <TribeApproval
-                                  data={data}
-                                  key={"chorecomponent" + index}
-                                />
-                              );
-                            })}
-                          </div>
-                        </>
-                      )}
-                    </>
-                  ) : (
-                    <NoApproval />
-                  )}
-                </div>
-              )}
-            </div>
-            <div className={styles.flexRight} id="rightpanel">
-              <div className={styles.gameSection}>
-                <h2
-                  className={styles.heading}
-                  onClick={() => router.push("/games")}
-                >
-                  Family Fun
-                  <HeadingArrow />
-                </h2>
-
-                <div className={styles.wrapper} id="gamecardwrapper">
-                  {familyfun.map((data, index) => {
-                    return (
-                      <GameCard data={data} key={"gamecardcomponent" + index} />
-                    );
-                  })}
                 </div>
               </div>
-              {/* <div className={`${styles.liveClassSection} `}>
-                <h2
-                  className={styles.heading}
-                  onClick={() => router.push("/courses/home")}
-                >
-                  Live Classes
-                  <HeadingArrow />
-                </h2>
-                <div className={styles.wrapper}>
-                  {liveclasses.map((data, index) => {
-                    return (
-                      <LiveClass
-                        data={data}
-                        index={index}
-                        key={"liveclasscomponent" + index}
-                      />
-                    );
-                  })}
+            </div>
+          ) : (
+            <div className={styles.mainContent}>
+              <div className={styles.flexLeft} id="leftside">
+                <div className={styles.kidsSection}>
+                  <WaitlistComponent
+                    email={userdatafromserver.email}
+                    waitNum={userdatafromserver.waiting_number}
+                  />
                 </div>
-              </div> */}
-            </div>
-          </div>: 
-          <div className={styles.mainContent}>
-            <div className={styles.flexLeft} id="leftside">
-              <div className={styles.kidsSection}>
-                <WaitlistComponent email={userdatafromserver.email} waitNum={userdatafromserver.waiting_number}/>
               </div>
+              <div className={styles.flexRight} id="rightpanel"></div>
             </div>
-            <div className={styles.flexRight} id="rightpanel">
-
-            </div>
-          </div>
-          }
+          )}
         </div>
       </div>
     );
@@ -304,7 +289,7 @@ export async function getServerSideProps({ params, req }) {
     console.log(response.data);
 
     if (response && !response.data.success) {
-      console.log(response.data)
+      console.log(response.data);
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {

@@ -22,7 +22,8 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
-            Welcome, <span>{userdata?.first_name || ""}</span>
+            Welcome,{" "}
+            <span>{userdata?.first_name || userdata?.email || ""}</span>
           </>
         ) : (
           <span className={showback ? styles.addflex : ""}>

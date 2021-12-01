@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import LeftPanel from "../../components/LeftPanel";
-import QuizComponent from "../../components/Quiz/QuizComponent";
-import FullAnswersheet from "../../components/Quiz/FullAnswersheet";
-import QuizApis from "../../actions/apis/QuizApis";
+import Header from "../../../../components/Header/Header";
+import LeftPanel from "../../../../components/LeftPanel";
+import QuizComponent from "../../../../components/Quiz/QuizComponent";
+import FullAnswersheet from "../../../../components/Quiz/FullAnswersheet";
+import QuizApis from "../../../../actions/apis/QuizApis";
 import { useRouter } from "next/dist/client/router";
-import Toast from "../../components/Toast";
-import Jasper from "../../components/SVGcomponents/Jasper";
-import Footer from "../../components/Home/Footer";
-import LoginApis from "../../actions/apis/LoginApis";
+import Toast from "../../../../components/Toast";
+import Jasper from "../../../../components/SVGcomponents/Jasper";
+import Footer from "../../../../components/Home/Footer";
+import LoginApis from "../../../../actions/apis/LoginApis";
 import validator from "validator";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
-import FreeGameApis from "../../actions/apis/FreeGameApis";
-import JoinUs from "../../components/Home/JoinUs";
-import LeaderBoard from "../../components/LeaderBoard";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
+import Curve1 from "../../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../../components/SVGcomponents/Curve2";
+import FreeGameApis from "../../../../actions/apis/FreeGameApis";
+import JoinUs from "../../../../components/Home/JoinUs";
+import LeaderBoard from "../../../../components/LeaderBoard";
+import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 const specialchars = [
   "#",
   "$",
@@ -53,9 +53,9 @@ const specialchars = [
   "8",
   "9",
 ];
-import { MainContext } from "../../context/Main";
-import styles from "../../styles/Dashboard/quiz.module.scss";
-import PopUp from "../../components/PopUp";
+import { MainContext } from "../../../../context/Main";
+import styles from "../../../../styles/WaitlistDashboard/quiz.module.scss";
+import PopUp from "../../../../components/PopUp";
 export default function TestQuiz({ first_name }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -252,9 +252,16 @@ export default function TestQuiz({ first_name }) {
                 {` Alright, let's see what your money quotient is. Good luck!`}
               </li>
             </ul>
-
-            <div className={styles.button} onClick={startgame}>
-              Start
+            <div className={styles.buttons}>
+              <div className={styles.startbutton} onClick={startgame}>
+                Start
+              </div>
+              <div
+                className={styles.skipbutton}
+                onClick={() => router.push("/dashboard/w")}
+              >
+                Go Back
+              </div>
             </div>
           </div>
         </div>
