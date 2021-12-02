@@ -1,0 +1,64 @@
+.leaderboard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 40px;
+  .heading {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .section {
+    background-color: #4166eb;
+    border-radius: 10px;
+    color: white;
+    .subheading {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      padding: 15px 40px;
+      text-align: center;
+      border-bottom: 1px solid white;
+    }
+  }
+  .table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px 0 20px 0;
+    .row {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      font-size: 16px;
+      padding: 0 40px;
+      .rank {
+        width: 100px;
+        text-align: left;
+      }
+      .name {
+        width: 60%;
+      }
+      .score {
+        width: 30%;
+        text-align: right;
+      }
+      &:first-child,
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        .rank {
+          font-weight: 700;
+        }
+        .name {
+          font-weight: 700;
+        }
+        .score {
+          font-weight: 700;
+        }
+      }
+      &:first-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

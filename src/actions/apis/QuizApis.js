@@ -33,6 +33,16 @@ const nextquestion = (payload, token) => {
 const leaderboard = (payload, token) => {
   return ApiCalls.getResponse("quiz/leaderboard", payload);
 };
+const todaysquestion = (payload, token) => {
+  return ApiCalls.getResponse("users/todayQuestion", payload, token);
+};
+const submittodaysquestion = (payload) => {
+  return ApiCalls.postResponse(
+    "users/todayQuestionResponse",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const QuizApis = {
   getallquiz,
@@ -43,6 +53,8 @@ const QuizApis = {
   nextquestion,
   leaderboard,
   startwaitlistquiz,
+  todaysquestion,
+  submittodaysquestion,
 };
 
 export default QuizApis;

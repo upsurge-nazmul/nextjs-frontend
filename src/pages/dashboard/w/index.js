@@ -2,17 +2,30 @@ import { getMessaging, getToken } from "@firebase/messaging";
 import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
+import BlogApis from "../../../actions/apis/BlogApis";
 import NotificationApis from "../../../actions/apis/NotificationApis";
+import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import UnicoinsSummary from "../../../components/Dashboard/UnicoinsSummary";
 import WaitlistComponent from "../../../components/Dashboard/WaitlistComponent";
 import Loading from "../../../components/Loading";
 import Toast from "../../../components/Toast";
+import Leaderboards from "../../../components/WaitlistDashboard/Leaderboards";
+import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/waitlistdashboard.module.scss";
-export default function WaitlistDashboard({ userdatafromserver }) {
+import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
+import Refer from "../../../components/WaitlistDashboard/Refer";
+export default function WaitlistDashboard({
+  userdatafromserver,
+  todaysquestion,
+  blogdata,
+  leaderboard,
+}) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
+  const [blogs, setblogs] = useState(blogdata || []);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -103,8 +116,16 @@ export default function WaitlistDashboard({ userdatafromserver }) {
                   waitNum={userdatafromserver.waiting_number}
                 />
               </div>
+              <Leaderboards data={leaderboard} />
             </div>
-            <div className={styles.flexRight} id="rightpanel"></div>
+            <div className={styles.flexRight} id="rightpanel">
+              <UnicoinsSummary
+                unicoins={userdatafromserver.num_unicoins || 0}
+              />
+              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              <Refer settoastdata={settoastdata} />
+              <WaitlistBlogs blogs={blogs} />
+            </div>
           </div>
         </div>
       </div>
@@ -122,10 +143,16 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
+      let tq = await QuizApis.todaysquestion(null, token);
+      let blogs = await BlogApis.gethomeblogs();
+      let leaderboard = await QuizApis.leaderboard();
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          todaysquestion: tq.data.success ? tq.data.data : null,
+          blogdata: blogs.data.data || [],
+          leaderboard: leaderboard.data.data || [],
           msg: "",
         },
       };

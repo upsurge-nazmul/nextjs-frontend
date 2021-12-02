@@ -19,6 +19,13 @@
       margin-top: 20px;
       padding: 0 40px;
       scrollbar-width: thin;
+      .flexLeft {
+        width: 60%;
+        padding-right: 20px;
+      }
+      .flexRight {
+        flex: 1;
+      }
     }
   }
 }

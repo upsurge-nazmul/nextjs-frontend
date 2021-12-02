@@ -1,0 +1,56 @@
+.waitlistblog {
+  background-color: #fdcc03;
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+  .heading {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .wrapper {
+    .blog {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .img {
+        position: relative;
+        min-width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+      .right {
+        .categories {
+          color: white;
+          color: rgb(59, 59, 59);
+          font-size: 12px;
+        }
+        .title {
+          font-size: 16px;
+          font-weight: 500;
+        }
+        .content {
+          font-size: 12px;
+          color: rgb(59, 59, 59);
+        }
+        .time {
+          font-size: 10px;
+          color: rgb(59, 59, 59);
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}
