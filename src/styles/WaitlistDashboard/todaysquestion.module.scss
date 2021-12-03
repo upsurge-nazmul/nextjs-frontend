@@ -83,3 +83,47 @@
     }
   }
 }
+
+@media only screen and (max-width: 860px) {
+  .todaysquestion {
+    display: flex;
+    flex-direction: column;
+    background-color: #17d1bc;
+    color: white;
+    border-radius: 12px;
+    width: 100%;
+    padding: 30px 20px 20px;
+    .heading {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .answered {
+      font-weight: 400;
+      font-size: 14px;
+      margin-top: 12px;
+      background-color: #27bdab;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .question {
+      font-weight: 500;
+      font-size: 22px;
+      margin-top: 12px;
+    }
+    .options {
+      .option {
+        font-size: 14px;
+        background-color: #27bdab;
+        padding: 10px;
+        border-radius: 6px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(173, 67%, 41%);
+        }
+      }
+    }
+  }
+}

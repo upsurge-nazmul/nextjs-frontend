@@ -38,26 +38,95 @@
     justify-content: flex-start;
     align-items: center;
   }
+  .socialyt {
+    width: 24px;
+    cursor: pointer;
+    margin-right: 30px;
+    height: 24px;
+    path {
+      fill: #fff;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
   .social {
     cursor: pointer;
     margin-right: 40px;
     width: 24px;
     height: 24px;
+    path,
+    circle {
+      fill: #fff;
+    }
   }
 }
 
-.social path,
-.social circle,
-.socialyt path {
-  fill: #fff;
-}
-.socialyt {
-  width: 24px;
-  cursor: pointer;
-  margin-right: 30px;
-  height: 24px;
-}
-
-.socialyt:last-child {
-  margin-right: 0;
+@media only screen and (max-width: 860px) {
+  .cover {
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #4166eb;
+    border-radius: 10px;
+    padding: 20px 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    .heading {
+      font-size: 40px;
+      color: #fff;
+      align-self: center;
+      font-weight: 900;
+    }
+    .restBlock {
+      margin-left: 0px;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    .restName {
+      font-size: 22px;
+      line-height: 24px;
+      color: #fff;
+      margin-top: 10px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .restNameSub {
+      font-size: 14px;
+      margin-top: 5px;
+      text-align: center;
+      color: #fff;
+    }
+    .socials {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
+    }
+    .socialyt {
+      width: 20px;
+      cursor: pointer;
+      margin-right: 0px;
+      height: 24px;
+      path {
+        fill: #fff;
+      }
+    }
+    .social {
+      cursor: pointer;
+      margin-right: 40px;
+      width: 20px;
+      height: 20px;
+      path,
+      circle {
+        fill: #fff;
+      }
+    }
+  }
 }
