@@ -19,7 +19,7 @@ export default function TodaysQuestion({ data }) {
   }
   return (
     <div className={styles.todaysquestion}>
-      <p className={styles.heading}>Today's question</p>
+      <p className={styles.heading}>{"Today's question"}</p>
       {answered ? (
         <p className={styles.answered}>Answered.</p>
       ) : (
