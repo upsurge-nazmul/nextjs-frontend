@@ -23,6 +23,7 @@
   flex-direction: column;
   overflow: auto;
   overflow-x: hidden;
+  height: 100vh;
   position: relative;
   background: #fdcc03;
   z-index: 2;
@@ -186,7 +187,7 @@
 
       .buttons {
         display: flex;
-        margin-top: 40px;
+        margin: 20px 0;
 
         .startbutton {
           display: flex;
@@ -226,6 +227,8 @@
   }
   .container {
     display: flex;
+    height: 100%;
+    overflow-y: auto;
     .contentWrapper {
       margin-top: 5vh;
       padding-left: 17%;
@@ -882,408 +885,350 @@
           background-color: white;
           margin-left: 50px;
         }
-        .button {
-          width: 130px;
-          min-height: 40px;
-          margin: 20px 0;
-          background: #4166eb;
-          border-radius: 6px;
-          color: white;
+
+        .buttons {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #4166eb;
-          cursor: pointer;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: white;
-            color: #4166eb;
+          margin-top: 0px;
+          .startbutton {
+            width: 30vw;
+            min-height: 40px;
+            margin: 20px 0;
+            height: 45px;
+            border-radius: 6px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s ease;
+          }
+          .skipbutton {
+            width: 30vw;
+            height: 45px;
+            min-height: 40px;
+            margin: 20px 0;
+            font-size: 12px;
+            border-radius: 6px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 20px;
           }
         }
       }
     }
-    .contentWrapper {
-      margin-top: 4vh;
-      padding-left: 7%;
-      width: 100%;
-      padding-right: 7%;
-      .prop1,
-      .prop2,
-      .prop3,
-      .prop4 {
-        display: none;
-      }
-      .pathSection {
-        .path {
-          font-size: 12px;
+    .container {
+      .contentWrapper {
+        margin-top: 4vh;
+        padding-left: 20px;
+        width: 100%;
+        padding-right: 20px;
+        .prop1,
+        .prop2,
+        .prop3,
+        .prop4 {
+          display: none;
         }
-        .arrow {
-          font-size: 12px;
-        }
-      }
-      .quizCardsHolder {
-        .quizCard {
-          height: 190px;
-          padding: 20px;
-          width: calc(100% / 2 - 20px);
-          svg {
-            width: 14vw;
+        .pathSection {
+          .path {
+            font-size: 12px;
           }
-          .text {
-            margin-top: 0px;
-            .name {
+          .arrow {
+            font-size: 12px;
+          }
+        }
+        .quizCardsHolder {
+          .quizCard {
+            height: 190px;
+            padding: 20px;
+            width: calc(100% / 2 - 20px);
+            svg {
+              width: 14vw;
+            }
+            .text {
+              margin-top: 0px;
+              .name {
+                font-size: 12px;
+              }
+              .description {
+                font-size: 10px;
+              }
+            }
+            .button {
+              margin-top: 5px;
+              width: 90%;
+              border-radius: 8px;
+              font-size: 12px;
+              max-height: 40px;
+              height: 40px;
+              min-width: none;
+            }
+          }
+        }
+        .quizContainer {
+          display: flex;
+          margin-top: 0px;
+          flex-direction: column;
+          padding: 0;
+          .leftSection {
+            width: 100%;
+            .heading {
+              font-weight: 600;
+              font-size: 15px;
+            }
+            .details {
+              margin-top: 5px;
+              font-weight: 400;
               font-size: 12px;
             }
-            .description {
-              font-size: 10px;
-            }
-          }
-          .button {
-            margin-top: 5px;
-            width: 90%;
-            border-radius: 8px;
-            font-size: 12px;
-            max-height: 40px;
-            height: 40px;
-            min-width: none;
-          }
-        }
-      }
-      .quizContainer {
-        display: flex;
-        margin-top: 20px;
-        flex-direction: column;
-        .leftSection {
-          width: 100%;
-          .heading {
-            font-weight: 600;
-            font-size: 15px;
-          }
-          .details {
-            margin-top: 5px;
-            font-weight: 400;
-            font-size: 12px;
-          }
-          .startButton {
-            width: 100px;
-            height: 30px;
-            margin-top: 10px;
-          }
-          .buttonwrapper {
-            .closeButton,
-            .finishButton {
+            .startButton {
               width: 100px;
               height: 30px;
               margin-top: 10px;
-              font-size: 12px;
             }
-          }
-        }
-        .rightSection {
-          width: 100%;
-          align-items: flex-start;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 20px 0 0;
-          margin-top: 20px;
-          .timerSection {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            .timeleft {
-              font-size: 12px;
-              text-align: left;
-            }
-            .timer {
-              font-size: 14px;
-              text-align: left;
-              margin-top: 5px;
-            }
-          }
-
-          .questionsleft {
-            margin-top: 0px;
             .current {
-              font-size: 12px;
-              width: 90px;
-              padding: 7px;
-            }
-          }
-        }
-      }
-      .quizWrapper {
-        margin-top: 30px;
-        .quiz {
-          .result {
-            font-size: 13px;
-            width: 100%;
-            height: 40px;
-            top: 0vh;
-            left: 0;
-            margin: 40px 0 0 0;
-            padding: 0px 20px;
-            justify-content: center;
-            .nextButton {
-              width: 100%;
+              width: 100px;
               height: 40px;
-              border-radius: 8px;
-              transition: all 0.3s ease;
-              cursor: pointer;
+              font-size: 12px;
+              margin-top: 10px;
+            }
+            .buttonwrapper {
+              .closeButton,
+              .finishButton {
+                width: 100px;
+                height: 30px;
+                margin-top: 10px;
+                font-size: 12px;
+              }
             }
           }
-          .question {
-            font-size: 16px;
-            line-height: 25px;
-            padding: 10px;
+          .rightSection {
             width: 100%;
-            margin: 0;
-          }
-          .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: flex-start;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px 0 0;
             margin-top: 20px;
-            .option {
-              margin: 5px;
-              height: 50px;
-              width: 100%;
-              .text {
-                text-align: center;
+            .timerSection {
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
+              flex-direction: column;
+              .timeleft {
+                font-size: 12px;
+                text-align: left;
+              }
+              .timer {
                 font-size: 14px;
-                padding: 10px;
+                text-align: left;
+                margin-top: 5px;
+              }
+            }
+            .questionsleft {
+              margin-top: 0px;
+              .current {
+                font-size: 12px;
+                width: 90px;
+                padding: 7px;
               }
             }
           }
         }
-      }
-      .resultSection {
-        margin-top: 3vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: max-content;
-        border-radius: 12px;
-        min-height: unset;
-        margin-top: 20vh;
-        padding: 40px 10vw;
-        .jasper {
-          position: absolute;
-          z-index: -1;
-          width: 150px;
-        }
-        .signupBox {
-          width: 80vw;
-          min-width: 250px;
-          max-width: 400px;
-          height: 40px;
-          input {
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            font-size: 12px;
-            font-size: 14px;
-            padding-left: 10px;
-          }
-          .normalbutton {
-            font-size: 14px;
-          }
-        }
-        .heading {
-          font-size: 40px;
-        }
-        .subheading {
-          font-size: 18px;
+        .quizWrapper {
+          margin-top: 10px;
           width: 100%;
+          .quiz {
+            .result {
+              font-size: 13px;
+              width: 100%;
+              height: 40px;
+              top: 0vh;
+              left: 0;
+              margin: 40px 0 0 0;
+              padding: 0px 20px;
+              justify-content: center;
+              .nextButton {
+                width: 100%;
+                height: 40px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              }
+            }
+            .question {
+              font-size: 16px;
+              line-height: 25px;
+              padding: 10px;
+              width: 100%;
+              margin: 0;
+            }
+            .options {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              margin-top: 20px;
+              .option {
+                margin: 5px;
+                height: 50px;
+                width: 100%;
+                .text {
+                  text-align: center;
+                  font-size: 14px;
+                  padding: 10px;
+                }
+              }
+            }
+          }
         }
-        .points {
-          font-size: 20px;
-        }
-        .leftSection {
-          width: 100%;
-          height: fit-content;
+        .resultSection {
+          margin-top: 3vh;
           display: flex;
-          justify-content: center;
           flex-direction: column;
           align-items: center;
-          padding: 10px;
-          padding-top: 20px;
-
+          height: max-content;
+          border-radius: 12px;
+          min-height: unset;
+          margin-top: 20vh;
+          padding: 40px 10vw;
+          .jasper {
+            position: absolute;
+            z-index: -1;
+            width: 150px;
+          }
+          .signupBox {
+            width: 80vw;
+            min-width: 250px;
+            max-width: 400px;
+            height: 40px;
+            input {
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+              font-size: 12px;
+              font-size: 14px;
+              padding-left: 10px;
+            }
+            .normalbutton {
+              font-size: 14px;
+            }
+          }
           .heading {
+            font-size: 40px;
+          }
+          .subheading {
+            font-size: 18px;
+            width: 100%;
+          }
+          .points {
             font-size: 20px;
-            margin-bottom: 20px;
-            font-weight: 500;
-            color: rgb(58, 58, 58);
           }
-          .data {
-            font-size: 14px;
-            margin-bottom: 10px;
-          }
-          .total {
-            background-color: rgb(255, 255, 255);
-          }
-          .correct {
-            background-color: rgb(139, 216, 115);
-          }
-          .wrong {
-            background-color: #ff7878;
-          }
-        }
-        .chartSection {
-          width: 100%;
-          height: 100%;
-          padding: 10px;
-        }
-      }
-      .hideOverFlow {
-        overflow: hidden;
-      }
-    }
-    .gamedata {
-      width: 100%;
-      padding: 0 7vw;
-      display: flex;
-      height: 66vh;
-      max-height: 500px;
-      margin: 10vh 0;
-      background-color: white;
-      .left {
-        width: 100%;
-        background: #f9f9f9;
-        border-radius: 12px;
-        padding: 20px;
-        min-width: unset;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .error {
-          color: rgb(238, 79, 79);
-          font-size: 16px;
-        }
-        .headingmain {
-          font-size: 25px;
-          text-align: center;
-          width: 100%;
-          justify-content: center;
-        }
-        .input {
-          background: #fff;
-          font-size: 16px;
-          border: none;
-          height: 45px;
-          width: 100%;
-          padding: 0 20px;
-          margin-top: 20px;
-          &::placeholder {
-            color: rgb(0, 0, 0);
-          }
-        }
-        .buttons {
-          display: flex;
-          margin-top: 40px;
-          .startbutton {
-            width: 120px;
-            font-size: 14px;
-            height: 45px;
-          }
-          .skipbutton {
-            width: 120px;
-            height: 45px;
-            font-size: 14px;
-          }
-        }
-      }
-      .right {
-        display: none;
-        width: 50%;
-        img {
-          height: 100%;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 350px) {
-  .quizPage {
-    .contentWrapper {
-      margin-top: 4vh;
-      padding-left: 7%;
-      width: 100%;
-      padding-right: 7%;
-      .prop1,
-      .prop2,
-      .prop3,
-      .prop4 {
-        display: none;
-      }
-      .pathSection {
-        .path {
-          font-size: 12px;
-        }
-        .arrow {
-          font-size: 12px;
-        }
-      }
+          .leftSection {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            padding-top: 20px;
 
-      .resultSection {
-        margin-top: 3vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: max-content;
-        border-radius: 12px;
-        margin-top: 20vh;
-        min-height: unset;
-        padding: 30px 5vw;
-        .jasper {
-          position: absolute;
-          z-index: -1;
-          width: 100px;
-        }
-        .heading {
-          font-size: 20px;
-        }
-        .subheading {
-          font-size: 12px;
-          width: 100%;
-          margin: 5px 0;
-        }
-        .points {
-          font-size: 14px;
-          margin-top: 5px;
-        }
-        .button {
-          height: 40px;
-          width: 70%;
-          font-size: 14px;
-          border-radius: 8px;
-          margin-top: 20px;
-        }
-        .signupBox {
-          width: 100%;
-          min-width: unset;
-          max-width: unset;
-          height: 40px;
-          .input {
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            font-size: 12px;
-            font-size: 14px;
-            height: 40px;
-            padding-left: 10px;
+            .heading {
+              font-size: 20px;
+              margin-bottom: 20px;
+              font-weight: 500;
+              color: rgb(58, 58, 58);
+            }
+            .data {
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+            .total {
+              background-color: rgb(255, 255, 255);
+            }
+            .correct {
+              background-color: rgb(139, 216, 115);
+            }
+            .wrong {
+              background-color: #ff7878;
+            }
           }
-          .normalbutton {
-            height: 40px;
-            font-size: 12px;
-            min-width: unset;
-            width: 140px;
-            padding: 5px;
+          .chartSection {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
           }
+        }
+        .hideOverFlow {
+          overflow: hidden;
         }
       }
-      .hideOverFlow {
-        overflow: hidden;
+      .gamedata {
+        width: 100%;
+        padding: 0 2vw;
+        display: flex;
+        height: 66vh;
+        max-height: 500px;
+        margin: 10vh 0;
+        background-color: white;
+        .left {
+          width: 100%;
+          background: #f9f9f9;
+          border-radius: 12px;
+          padding: 20px;
+          min-width: unset;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .error {
+            color: rgb(238, 79, 79);
+            font-size: 16px;
+          }
+          .headingmain {
+            font-size: 25px;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+          }
+          .input {
+            background: #fff;
+            font-size: 16px;
+            border: none;
+            height: 45px;
+            width: 100%;
+            padding: 0 20px;
+            margin-top: 20px;
+            &::placeholder {
+              color: rgb(0, 0, 0);
+            }
+          }
+          .buttons {
+            display: flex;
+            margin-top: 40px;
+            .startbutton {
+              width: 120px;
+              font-size: 14px;
+              height: 45px;
+            }
+            .skipbutton {
+              width: 120px;
+              height: 45px;
+              font-size: 14px;
+            }
+          }
+        }
+        .right {
+          display: none;
+          width: 50%;
+          img {
+            height: 100%;
+          }
+        }
       }
     }
   }

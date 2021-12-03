@@ -92,7 +92,7 @@ export default function TestQuiz({ first_name }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
-  const [quiztoken, setquiztoken] = useState("");
+  const [err, seterr] = useState("");
   useEffect(() => {
     setshowQuiz(data ? true : false);
     if (!data) return;
@@ -183,11 +183,7 @@ export default function TestQuiz({ first_name }) {
       setdata(response.data.data);
       setstarted(true);
     } else {
-      settoastdata({
-        type: "error",
-        show: true,
-        msg: response.data?.message || "Error connecting to server",
-      });
+      seterror(response.data?.message || "Error connecting to server");
     }
   }
   async function skipgame() {
@@ -252,6 +248,14 @@ export default function TestQuiz({ first_name }) {
                 {` Alright, let's see what your money quotient is. Good luck!`}
               </li>
             </ul>
+            {error && (
+              <p
+                className={styles.text}
+                style={{ textAlign: "center", color: "#ff7575" }}
+              >
+                {error}
+              </p>
+            )}
             <div className={styles.buttons}>
               <div className={styles.startbutton} onClick={startgame}>
                 Start

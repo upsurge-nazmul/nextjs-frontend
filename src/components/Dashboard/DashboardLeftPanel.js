@@ -1,14 +1,17 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard/dashboardleftpanel.module.scss";
+import BlogSvg from "../SVGcomponents/BlogSvg";
 import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
 import KidSvg from "../SVGcomponents/KidsSvg";
+import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
+import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
 
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
@@ -96,7 +99,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               }`}
               onClick={() => router.push("/dashboard/w/leaderboards")}
             >
-              <KidSvg className={styles.icon} />
+              <LeaderboardSvg className={styles.icon} />
               <p className={styles.tabtitle}>Leaderboards</p>
             </div>
             <div
@@ -115,7 +118,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               }`}
               onClick={() => router.push("/dashboard/w/quiz")}
             >
-              <CoursesSvg className={styles.icon} />
+              <QuizIconSvg className={styles.icon} />
               <p className={styles.tabtitle}>Quiz</p>
             </div>
             <div
@@ -127,7 +130,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               }`}
               onClick={() => router.push("/dashboard/w/blogs")}
             >
-              <GameSvg className={styles.icon} />
+              <BlogSvg className={styles.icon} />
               <p className={styles.tabtitle}>Blogs</p>
             </div>
             <div

@@ -19,7 +19,7 @@ export default function Test({
   highlightblogs,
 }) {
   const router = useRouter();
-  const [mode, setmode] = useState("home");
+  const [mode, setmode] = useState("Blogs");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",

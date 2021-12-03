@@ -88,9 +88,9 @@ function Dashboard({
   useEffect(() => {
     saveNotificationToken();
     async function saveNotificationToken() {
-      let messaging = getMessaging();
-      let token = "";
       try {
+        let messaging = getMessaging();
+        let token = "";
         token = await getToken(messaging);
       } catch (err) {
         settoastdata({

@@ -19,15 +19,19 @@ export const MainContextProider = ({ children }) => {
   const [show, setShow] = useState(false);
   const [notification, setNotification] = useState({ title: "", body: "" });
   useEffect(() => {
-    let messaging = getMessaging();
-    onMessage(messaging, (payload) => {
-      setShow(true);
-      setNotification({
-        title: payload.notification.title,
-        body: payload.notification.body,
+    try {
+      let messaging = getMessaging();
+      onMessage(messaging, (payload) => {
+        setShow(true);
+        setNotification({
+          title: payload.notification.title,
+          body: payload.notification.body,
+        });
+        console.log(payload);
       });
-      console.log(payload);
-    });
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   return (
