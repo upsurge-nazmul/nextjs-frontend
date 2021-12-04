@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-export default function Reward({ data }) {
+export default function Reward({ data, unicoin }) {
   const [prices, setprices] = useState(data.valueDenominations.split(",")[0]);
   const [quantity, setquantity] = useState(0);
   return (
     <div className={styles.reward}>
+      <div className={styles.gray}></div>
       <img src={data.imageUrl} alt="" />
       <p className={styles.name}>{data.name}</p>
       <div className={styles.quantityandprice}>
