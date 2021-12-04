@@ -10,6 +10,7 @@ function DropDown({
   color,
   fontSize,
   margin,
+  presign,
 }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
@@ -48,6 +49,7 @@ function DropDown({
             fontSize: fontSize ? fontSize : "16px",
           }}
         >
+          {presign ? presign : ""}
           {value?.length > 25
             ? value.substring(0, 25) + "..."
             : value || placeholder}
