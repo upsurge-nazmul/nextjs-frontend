@@ -43,6 +43,9 @@ const submittodaysquestion = (payload) => {
     getCookie("accesstoken")
   );
 };
+const highestscore = (payload, token) => {
+  return ApiCalls.getResponse("quiz/highestscore", payload, token);
+};
 //getchores
 const QuizApis = {
   getallquiz,
@@ -55,6 +58,7 @@ const QuizApis = {
   startwaitlistquiz,
   todaysquestion,
   submittodaysquestion,
+  highestscore,
 };
 
 export default QuizApis;

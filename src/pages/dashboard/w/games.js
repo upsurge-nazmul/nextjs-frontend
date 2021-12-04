@@ -4,7 +4,7 @@ import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import GameCard from "../../../components/Dashboard/GameCard";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../../styles/Dashboard/gamespage.module.scss";
+import styles from "../../../styles/WaitlistDashboard/games.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
@@ -12,6 +12,7 @@ function Games() {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
+  const [recent_games, setrecent_games] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -42,7 +43,67 @@ function Games() {
       });
     };
   }, []);
-  let arr = ["x", "x", "x", "x", "x"];
+  const data = {
+    ShoppingBudget: {
+      name: "Shopping Budget",
+      description:
+        "Identify how much is available to spend and making purchase decisions based on that.",
+    },
+    BalanceBuilder: {
+      name: "Balance Builder",
+      description: "Identify what is income and what is expense.",
+    },
+    HighAndLow: {
+      name: "High And Low",
+      description:
+        "Identify currency and arrange in ascending or descending order after adding the money.",
+    },
+    MoneyMath: {
+      name: "Money Math",
+      description:
+        "Choose what you want to buy, earn some money, and calculate  how much you have left.",
+    },
+    MoneyManager: {
+      name: "Money Manager",
+      description:
+        "Know the importance of allocating your earnings between spending, saving and donating.",
+    },
+    MoneySlide: {
+      name: "Money Slide",
+      description:
+        "Identify different types of Money notes and coins and achieve the desired target.",
+    },
+    NeedOrWant: {
+      name: "Need Or Want",
+      description: "Identify the difference between needs and wants.",
+    },
+  };
+  useEffect(() => {
+    let x = localStorage.getItem("recent_games");
+    if (x) {
+      setrecent_games(JSON.parse(x));
+    }
+  }, []);
+  function handlegameclick(title) {
+    let x = localStorage.getItem("recent_games");
+    if (x) {
+      x = JSON.parse(x);
+      if (!x.includes(title)) {
+        if (x.length === 3) {
+          x[2] = x[1];
+          x[1] = x[0];
+          x[0] = title;
+        } else {
+          x.push(title);
+        }
+        setrecent_games(x);
+        localStorage.setItem("recent_games", JSON.stringify(x));
+      }
+    } else {
+      localStorage.setItem("recent_games", JSON.stringify([title]));
+    }
+    router.push("/games/" + title);
+  }
   return (
     <div className={styles.gamesPage}>
       <DashboardLeftPanel />
@@ -62,8 +123,10 @@ function Games() {
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper} id="gamecardwrapper2">
-                {arr.map((item, index) => {
-                  return <GameCard data={item} key={"kidcomponent" + index} />;
+                {recent_games.map((item, index) => {
+                  return (
+                    <GameCard data={data[item]} key={"kidcomponent" + index} />
+                  );
                 })}
               </div>
             </div>
@@ -73,39 +136,15 @@ function Games() {
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {arr.map((data, index) => {
+                {Object.keys(data).map((item, index) => {
                   return (
-                    <GameCard data={data} key={"chorecomponent" + index} />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div className={styles.flexRight}>
-            <div className={styles.familyfunSection}>
-              <h2 className={styles.heading}>
-                Family Fun
-                <HeadingArrow />
-              </h2>
-
-              <div className={styles.wrapper} id="gamecardwrapper1">
-                {arr.map((data, index) => {
-                  return (
-                    <GameCard data={data} key={"gamecardcomponent" + index} />
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className={`${styles.simulatorsSection} `}>
-              <h2 className={styles.heading}>
-                Simulators
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {arr.map((data, index) => {
-                  return (
-                    <GameCard data={data} key={"liveclasscomponent" + index} />
+                    <GameCard
+                      onCLick={() =>
+                        handlegameclick(data[item].name.replace(/ /g, ""))
+                      }
+                      data={data[item]}
+                      key={"chorecomponent" + index}
+                    />
                   );
                 })}
               </div>

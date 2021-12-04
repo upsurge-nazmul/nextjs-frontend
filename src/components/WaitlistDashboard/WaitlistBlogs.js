@@ -23,7 +23,11 @@ export default function WaitlistBlogs({ blogs }) {
       <div className={styles.wrapper}>
         {blogs.map((item) => {
           return (
-            <div className={styles.blog} key={item.id}>
+            <div
+              className={styles.blog}
+              key={item.id}
+              onClick={() => router.push("/dashboard/w/blog/" + item.id)}
+            >
               <div className={styles.img}>
                 <Image src={item.img_url} layout="fill" objectFit="cover" />
               </div>
@@ -36,10 +40,10 @@ export default function WaitlistBlogs({ blogs }) {
                 <div className={styles.title}>{item.title}</div>
                 <div className={styles.content}>
                   {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
-                  100
+                  250
                     ? getdatafromraw(item.content)
                         .replace(/<[^>]+>/g, "")
-                        .substring(0, 100) + "..."
+                        .substring(0, 250) + "..."
                     : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
                 </div>
                 <div className={styles.time}>5 Minutes Read</div>

@@ -2,20 +2,23 @@ import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 
-function GameCard({ data }) {
+function GameCard({ data, onCLick }) {
   const router = useRouter();
   return (
-    <div className={styles.gameCard} onClick={() => router.push("/gamepage")}>
+    <div
+      className={styles.gameCard}
+      onClick={onCLick ? onCLick : () => router.push("/gamepage")}
+    >
       <img
         src={
-          data.img ||
+          (data.name && `/images/games/${data.name.replace(/ /g, "")}.jpg`) ||
           "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
         }
         alt=""
       />
       <div className={styles.contentWrapper}>
-        <p className={styles.title}>{data.title || "Test Card"}</p>
-        <p className={styles.detail}>{data.detail || "Test Card"}</p>
+        <p className={styles.title}>{data.name || "Test Card"}</p>
+        <p className={styles.detail}>{data.description || "Test Card"}</p>
       </div>
     </div>
   );

@@ -15,13 +15,96 @@
       width: 100%;
       height: fit-content;
       display: flex;
+      flex-direction: column;
       overflow-y: auto;
       margin-top: 20px;
       padding: 0 40px;
       scrollbar-width: thin;
-      .flexLeft {
-        width: 60%;
-        padding-right: 20px;
+      .flexTop {
+        width: 100%;
+        display: flex;
+        margin-bottom: 40px;
+        justify-content: space-evenly;
+        height: fit-content;
+        .uniblock,
+        .waitlistblock,
+        .gameblock,
+        .quizblock {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-right: 20px;
+          border-radius: 10px;
+          padding: 20px;
+          min-width: 220px;
+          color: white;
+          .heading {
+            font-size: 40px;
+            color: #fff;
+            margin-top: 10px;
+            align-self: center;
+            font-weight: 800;
+          }
+          .subheading {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 31px;
+          }
+        }
+        .gameblock {
+          margin: 0;
+          background-color: rgba(23, 209, 188, 1);
+          .blocks {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 10px;
+            .block {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              flex: 1;
+              .border {
+                width: 2px;
+                height: 40px;
+                border-radius: 2px;
+                position: absolute;
+                right: -5px;
+                bottom: -5px;
+                z-index: 2;
+                background-color: white;
+              }
+            }
+            .heading {
+              font-size: 14px;
+              font-weight: 500;
+            }
+            .subheading {
+              font-size: 40px;
+              font-weight: 800;
+            }
+          }
+          .subheading {
+            margin-top: 20px;
+          }
+        }
+        .quizblock {
+          background-color: rgba(253, 204, 3, 1);
+        }
+        .waitlistblock {
+          background-color: rgba(65, 102, 235, 1);
+        }
+        .uniblock {
+          background-color: rgba(255, 98, 99, 1);
+        }
+      }
+      .flexMid {
+        width: 100%;
+        display: flex;
       }
       .flexRight {
         width: 40%;
@@ -29,7 +112,128 @@
     }
   }
 }
-
+@media only screen and (max-width: 1000px) {
+  .waitlistdashboard {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: auto;
+    .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      .mainContent {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        padding: 0 40px;
+        scrollbar-width: thin;
+        .flexTop {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          height: fit-content;
+          .uniblock,
+          .waitlistblock,
+          .gameblock,
+          .quizblock {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 220px;
+            color: white;
+            .heading {
+              font-size: 40px;
+              color: #fff;
+              margin-top: 10px;
+              align-self: center;
+              font-weight: 800;
+            }
+            .subheading {
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 22px;
+              margin-top: 31px;
+            }
+          }
+          .gameblock {
+            margin: 0;
+            height: 152px;
+            background-color: rgba(23, 209, 188, 1);
+            .blocks {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              margin-bottom: 10px;
+              .block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                flex: 1;
+                .border {
+                  width: 2px;
+                  height: 40px;
+                  border-radius: 2px;
+                  position: absolute;
+                  right: -5px;
+                  bottom: -5px;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              .heading {
+                font-size: 14px;
+                font-weight: 500;
+              }
+              .subheading {
+                font-size: 40px;
+                font-weight: 800;
+              }
+            }
+            .subheading {
+              margin-top: 20px;
+            }
+          }
+          .quizblock {
+            height: 152px;
+            background-color: rgba(253, 204, 3, 1);
+          }
+          .waitlistblock {
+            height: 152px;
+            background-color: rgba(65, 102, 235, 1);
+          }
+          .uniblock {
+            background-color: rgba(255, 98, 99, 1);
+            margin: 0 20px;
+            height: 152px;
+          }
+        }
+        .flexMid {
+          width: 100%;
+          display: flex;
+        }
+        .flexRight {
+          width: 40%;
+        }
+      }
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
@@ -53,7 +257,329 @@
         margin-top: 20px;
         padding: 0 20px;
         scrollbar-width: thin;
-        .flexLeft {
+        .flexTop {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          height: fit-content;
+          .uniblock,
+          .waitlistblock,
+          .gameblock,
+          .quizblock {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 220px;
+            color: white;
+            .heading {
+              font-size: 40px;
+              color: #fff;
+              margin-top: 10px;
+              align-self: center;
+              font-weight: 800;
+            }
+            .subheading {
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 22px;
+              margin-top: 31px;
+            }
+          }
+          .gameblock {
+            height: 152px;
+            margin: 0;
+            background-color: rgba(23, 209, 188, 1);
+            .blocks {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              margin-bottom: 10px;
+              .block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                flex: 1;
+                .border {
+                  width: 2px;
+                  height: 40px;
+                  border-radius: 2px;
+                  position: absolute;
+                  right: -5px;
+                  bottom: -5px;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              .heading {
+                font-size: 14px;
+                font-weight: 500;
+              }
+              .subheading {
+                font-size: 40px;
+                font-weight: 800;
+              }
+            }
+            .subheading {
+              margin-top: 20px;
+            }
+          }
+          .quizblock {
+            height: 152px;
+            background-color: rgba(253, 204, 3, 1);
+          }
+          .waitlistblock {
+            height: 152px;
+            background-color: rgba(65, 102, 235, 1);
+          }
+          .uniblock {
+            background-color: rgba(255, 98, 99, 1);
+            height: 152px;
+            margin: 0 20px;
+          }
+        }
+        .flexRight {
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+  .waitlistdashboard {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: auto;
+    .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      .mainContent {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        padding: 0 20px;
+        scrollbar-width: thin;
+        .flexTop {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          height: fit-content;
+          .uniblock,
+          .waitlistblock,
+          .gameblock,
+          .quizblock {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 220px;
+            color: white;
+            .heading {
+              font-size: 40px;
+              color: #fff;
+              margin-top: 10px;
+              align-self: center;
+              font-weight: 800;
+            }
+            .subheading {
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 22px;
+              margin-top: 31px;
+            }
+          }
+          .gameblock {
+            height: 152px;
+            margin: 0;
+            background-color: rgba(23, 209, 188, 1);
+            .blocks {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              margin-bottom: 10px;
+              .block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                flex: 1;
+                .border {
+                  width: 2px;
+                  height: 40px;
+                  border-radius: 2px;
+                  position: absolute;
+                  right: -5px;
+                  bottom: -5px;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              .heading {
+                font-size: 14px;
+                font-weight: 500;
+              }
+              .subheading {
+                font-size: 40px;
+                font-weight: 800;
+              }
+            }
+            .subheading {
+              margin-top: 20px;
+            }
+          }
+          .quizblock {
+            height: 152px;
+            margin-right: 20px;
+            background-color: rgba(253, 204, 3, 1);
+          }
+          .waitlistblock {
+            height: 152px;
+            background-color: rgba(65, 102, 235, 1);
+            margin-right: 20px;
+          }
+          .uniblock {
+            background-color: rgba(255, 98, 99, 1);
+            height: 152px;
+            margin: 0;
+          }
+        }
+        .flexMid {
+          flex-direction: column;
+          width: 100%;
+          padding-right: 0px;
+        }
+        .flexRight {
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 570px) {
+  .waitlistdashboard {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: auto;
+    .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      .mainContent {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        padding: 0 20px;
+        scrollbar-width: thin;
+        .flexTop {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          height: fit-content;
+          .uniblock,
+          .waitlistblock,
+          .gameblock,
+          .quizblock {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 220px;
+            width: 100%;
+            color: white;
+            .heading {
+              font-size: 40px;
+              color: #fff;
+              margin-top: 10px;
+              align-self: center;
+              font-weight: 800;
+            }
+            .subheading {
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 22px;
+              margin-top: 31px;
+            }
+          }
+          .gameblock {
+            height: 152px;
+            margin: 0;
+            background-color: rgba(23, 209, 188, 1);
+            .blocks {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              margin-bottom: 10px;
+              .block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                flex: 1;
+                .border {
+                  width: 2px;
+                  height: 40px;
+                  border-radius: 2px;
+                  position: absolute;
+                  right: -5px;
+                  bottom: -5px;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              .heading {
+                font-size: 14px;
+                font-weight: 500;
+              }
+              .subheading {
+                font-size: 40px;
+                font-weight: 800;
+              }
+            }
+            .subheading {
+              margin-top: 20px;
+            }
+          }
+        }
+        .flexMid {
+          flex-direction: column;
           width: 100%;
           padding-right: 0px;
         }

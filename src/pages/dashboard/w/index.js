@@ -7,11 +7,8 @@ import NotificationApis from "../../../actions/apis/NotificationApis";
 import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import UnicoinsSummary from "../../../components/Dashboard/UnicoinsSummary";
-import WaitlistComponent from "../../../components/Dashboard/WaitlistComponent";
 import Loading from "../../../components/Loading";
 import Toast from "../../../components/Toast";
-import Leaderboards from "../../../components/WaitlistDashboard/Leaderboards";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/waitlistdashboard.module.scss";
@@ -22,6 +19,7 @@ export default function WaitlistDashboard({
   todaysquestion,
   blogdata,
   leaderboard,
+  highestquizscore,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
@@ -109,21 +107,43 @@ export default function WaitlistDashboard({
             settoastdata={settoastdata}
           />
           <div className={styles.mainContent}>
-            <div className={styles.flexLeft} id="leftside">
-              <div className={styles.kidsSection}>
-                <WaitlistComponent
-                  email={userdatafromserver.email}
-                  waitNum={userdatafromserver.waiting_number}
-                />
+            <div className={styles.flexTop} id="leftside">
+              <div className={styles.waitlistblock}>
+                <p className={styles.heading}>
+                  {`#${userdatafromserver.waiting_number}`}
+                </p>
+                <p className={styles.subheading}>Waitlist Number</p>
               </div>
-              <Leaderboards data={leaderboard} />
+              <div className={styles.uniblock}>
+                <p className={styles.heading}>
+                  {userdatafromserver.num_unicoins || 0}
+                </p>
+                <p className={styles.subheading}>Earned Unicoins</p>
+              </div>
+              <div className={styles.quizblock}>
+                <p className={styles.heading}>{highestquizscore}</p>
+                <p className={styles.subheading}>Quiz Score</p>
+              </div>
+              <div className={styles.gameblock}>
+                <div className={styles.blocks}>
+                  <div className={styles.block}>
+                    <div className={styles.border}></div>
+                    <p className={styles.heading}>Money Run</p>
+                    <p className={styles.subheading}>0</p>
+                  </div>
+                  <div className={styles.block}>
+                    <p className={styles.heading}>Ludo</p>
+                    <p className={styles.subheading}>0</p>
+                  </div>
+                </div>
+                <p className={styles.subheading}>Game Scores</p>
+              </div>
             </div>
-            <div className={styles.flexRight} id="rightpanel">
-              <UnicoinsSummary
-                unicoins={userdatafromserver.num_unicoins || 0}
-              />
+            <div className={styles.flexMid}>
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
               <Refer settoastdata={settoastdata} />
+            </div>
+            <div className={styles.flexBottom} id="rightpanel">
               <WaitlistBlogs blogs={blogs} />
             </div>
           </div>
@@ -146,6 +166,9 @@ export async function getServerSideProps({ params, req }) {
       let tq = await QuizApis.todaysquestion(null, token);
       let blogs = await BlogApis.gethomeblogs();
       let leaderboard = await QuizApis.leaderboard();
+      let highestquizscore = await QuizApis.highestscore({
+        email: response.data.data.email,
+      });
       return {
         props: {
           isLogged: true,
@@ -153,6 +176,7 @@ export async function getServerSideProps({ params, req }) {
           todaysquestion: tq.data.success ? tq.data.data : null,
           blogdata: blogs.data.data || [],
           leaderboard: leaderboard.data.data || [],
+          highestquizscore: highestquizscore.data.data.score || 0,
           msg: "",
         },
       };
