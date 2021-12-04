@@ -33,7 +33,9 @@ function AuthLogin({ settoastdata, error, seterror }) {
         msg: response.data.message,
         type: "success",
       });
-      if (response.data.data.userProfile.user_type === "parent")
+      if (response.data.data.userProfile.is_waiting_active) {
+        history.push("/dashboard/w");
+      } else if (response.data.data.userProfile.user_type === "parent")
         history.push("/dashboard");
       else history.push("/kiddashboard");
     } else {
