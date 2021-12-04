@@ -3,7 +3,7 @@ import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../components/Toast";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
-export default function leaderboards() {
+export default function Rewards() {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
