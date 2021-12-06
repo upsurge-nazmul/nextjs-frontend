@@ -9,12 +9,21 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
     "Money",
-    "Career Development",
+    "Entrepreneurship",
+    "Earning",
+    "Saving",
+    "Spending",
     "Budgeting",
     "Investing",
-    "Banks & Payments",
+    "Borrowing",
     "Insurance",
-    "Mutual Funds",
+    "Banking",
+    "Payments",
+    "Stock Markets",
+    "Real Estate",
+    "Gold",
+    "Retirement Funds",
+    "Career Development",
   ];
   return (
     <div className={styles.questSection}>
@@ -48,13 +57,18 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
       <div className={styles.textcontainer}>
         <div className={styles.heading}>Knowledge Quest</div>
         <div className={styles.subheading}>
-          Interactive courses that cover fundamentals of finance, including
-          earning, budgeting, saving, investing, and entrepreneurship. These
-          bite-sized courses are about 10 minutes each and include exercises,
-          real-life examples and short quizzes to make sure that the child
-          understands the concepts. These courses have been designed in
-          collaboration with CAs, Investment Bankers, Experiential instructors
-          and design thinking experts from some of the top colleges globally.
+          Kickstart your child’s journey towards financial independence and
+          entrepreneurship with our proprietary product designed by
+          entrepreneurs, investment bankers, and experiential learning experts
+          from top global universities.
+        </div>
+        <div className={styles.subheading}>
+          Knowledge Quests comprise of interactive courses that cover
+          fundamentals of financial literacy, including earning, budgeting,
+          spending, saving, investing, borrowing, risk management, career
+          development, and entrepreneurship. These bite-sized courses are about
+          10 minutes each and include exercises, real-life examples, and short
+          quizzes to make sure that the child understands the concepts.
         </div>
         <div className={styles.details}>
           <div className={styles.section}>

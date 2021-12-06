@@ -11,10 +11,10 @@ export default function Financial({ id }) {
         <div className={styles.yellow}></div>
         <div className={styles.left}>
           <p className={styles.heading}>
-            Kickstart your kid’s financial journey
+            Kickstart your child’s financial journey
           </p>
           <p className={styles.subheading}>
-            {`Kickstart your child’s financial and entrepreneurial journey with our proprietary product designed by finance professionals, 3x entrepreneurs and experiential learning experts. Kids will learn through appropriately designed content and then apply these learnings to fun games to learn. Games will have weekly and monthly leaderboards, just like fantasy sports, which will promote competitive capital in children, and give them a chance to win relevant rewards.`}
+            {`Kickstart your child’s financial and entrepreneurial journey with our proprietary product designed by finance professionals, 3x entrepreneurs, and experiential learning experts. Kids will learn through our curated interactive content and then apply these learnings to fun games to learn. Games will have weekly and monthly leaderboards to motivate children and give them a chance to win rewards.`}
           </p>
         </div>
         <div className={styles.right}>

@@ -66,9 +66,11 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Subscribe to upsurge newsletter.</div>
+        <div className={styles.heading}>Subscribe to upsurge newspaper</div>
         <p className={styles.subheading}>
-          Get all the information related to Financial Literacy
+          Subscribe to our fortnightly journal and get your child access to the
+          latest happenings in the world of finance, business, and career
+          development
         </p>
         <div className={styles.emailwrapper}>
           <form onSubmit={(e) => handleSignup(e)}>

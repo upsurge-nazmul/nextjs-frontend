@@ -103,7 +103,6 @@ export default function GamePage() {
                 <p className={styles.calccardsubtitle}>
                   {data[item].description}
                 </p>
-                <p className={styles.date}>By Upsurge Team, 5th Aug, 2021</p>
               </div>
             );
           })}

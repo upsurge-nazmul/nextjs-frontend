@@ -17,7 +17,7 @@ export default function Experimential({ id }) {
           <p className={styles.subheading}>
             {`Through games, simulators and activities that have been designed by our experiential learning experts, children are able to experience the importance of money management in a virtual environment. 
 
-Playing games reinforces the concepts that the child has learned, and at the same time brings an element of fun to financial literacy and entrepreneurship. And we all know that children learn best when they are having fun!
+Playing games reinforces the concepts that the child has learned, and at the same time brings an element of fun to financial literacy and entrepreneurship. And we all know that children learn best when they are having fun.
 `}
           </p>
         </div>

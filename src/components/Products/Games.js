@@ -70,13 +70,15 @@ export default function Games({ id }) {
   }
   return (
     <div className={styles.gamespage} id={id}>
-      <div className={styles.heading}>Games</div>
+      <div className={styles.heading}>Games Arena</div>
       <div className={styles.subheading}>
-        Our platform has multiple games where children can apply financial
-        concepts to real-experiences based games and understand finance,
-        investing, and entrepreneurship in a fun and compelling way. Through our
-        leaderboards, they can compete against their peers across the countries,
-        and their performances will be rewarded with UniCoins.
+        Enable your child to experience the importance of money management in a
+        virtual environment. Our platform has multiple games to reinforce
+        concepts and help the child understand personal finance, and
+        entrepreneurship in a fun and compelling way. Through our leaderboards,
+        they can compete against their peers across countries, and their
+        performances will be rewarded with UniCoins which can be redeemed to get
+        discounts on some of their favorite brands
       </div>
       <div className={styles.wrapper}>
         <div className={styles.left}>

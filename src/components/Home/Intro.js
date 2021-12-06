@@ -65,7 +65,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
         <div className={styles.heading}>Money, made easy.</div>
 
         <div className={styles.subheading}>
-          Upsurge is a movement to kickstart a financial literacy &
+          upsurge is a movement to kickstart a financial literacy &
           entrepreneurship revolution amongst the Gen-Z, by making learning fun
           and rewarding.
         </div>

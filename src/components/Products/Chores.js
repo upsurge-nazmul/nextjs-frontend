@@ -9,10 +9,10 @@ export default function Chores({ id, email, setEmail, check, error }) {
       <div className={styles.top}>
         <div className={styles.heading}>Chores</div>
         <div className={styles.subheading}>
-          A fun and engaging way for parents to reinforce good financial
+          A fun and engaging way for parents to develop prudent financial
           behaviors in children by assigning them jobs and rewarding them with
-          UniCoins – which will help them understand that they have to work to
-          earn money!
+          UniCoins – this helps them understand that they have to work to
+          fulfill their tasks to earn money.
         </div>
         <div className={styles.signupBox}>
           {showinput && (
@@ -52,9 +52,9 @@ export default function Chores({ id, email, setEmail, check, error }) {
           <div className={styles.first}>
             <div className={styles.heading}>Importance of Earning</div>
             <div className={styles.description}>
-              Upsurge teaches that money is earned and is not given simply. This
-              learning helps children to be better in time management and being
-              responsible.
+              upsurge teaches that money needs to be earned. It is not simply
+              given. This learning helps children learn discipline, become
+              responsible and develop time-management skills
             </div>
             <div className={styles.connectorl}>
               <div className={styles.ball}></div>
@@ -86,10 +86,10 @@ export default function Chores({ id, email, setEmail, check, error }) {
         </div>
         <div className={styles.right}>
           <div className={styles.first}>
-            <div className={styles.heading}>Support Long term goals</div>
+            <div className={styles.heading}>Support long-term goals</div>
             <div className={styles.description}>
-              Upsurge teaches children to fulfill their long term goals by
-              dividing them into shorter goals and achieving it gradually.
+              upsurge teaches children to fulfill their long-term goals by
+              dividing them into shorter goals and achieving them gradually.
             </div>
             <div className={styles.connectorr}>
               <div className={styles.ball}></div>
