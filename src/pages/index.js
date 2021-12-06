@@ -78,6 +78,14 @@ function Home({ isLogged, userdata }) {
         });
         router.push("/");
       }
+      if (router.query.err == "invalid-pass-link") {
+        settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid password link",
+        });
+        router.push("/");
+      }
     }
   }, [router.query]);
   return (

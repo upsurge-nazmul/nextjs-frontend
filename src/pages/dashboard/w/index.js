@@ -14,6 +14,9 @@ import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/waitlistdashboard.module.scss";
 import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
 import Refer from "../../../components/WaitlistDashboard/Refer";
+import RewardSvg from "../../../components/SVGcomponents/RewardSvg";
+import QuizIconSvg from "../../../components/SVGcomponents/QuizIconSvg";
+import GameSvg from "../../../components/SVGcomponents/GameSvg";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
@@ -108,35 +111,83 @@ export default function WaitlistDashboard({
           />
           <div className={styles.mainContent}>
             <div className={styles.flexTop} id="leftside">
-              <div className={styles.waitlistblock}>
-                <p className={styles.heading}>
-                  {`#${userdatafromserver.waiting_number}`}
-                </p>
-                <p className={styles.subheading}>Waitlist Number</p>
-              </div>
-              <div className={styles.uniblock}>
-                <p className={styles.heading}>
-                  {userdatafromserver.num_unicoins || 0}
-                </p>
-                <p className={styles.subheading}>Earned Unicoins</p>
-              </div>
-              <div className={styles.quizblock}>
-                <p className={styles.heading}>{highestquizscore}</p>
-                <p className={styles.subheading}>Quiz Score</p>
-              </div>
-              <div className={styles.gameblock}>
-                <div className={styles.blocks}>
-                  <div className={styles.block}>
-                    <div className={styles.border}></div>
-                    <p className={styles.heading}>Money Run</p>
-                    <p className={styles.subheading}>0</p>
+              <div className={styles.flipcard}>
+                <div className={styles.inner}>
+                  <div className={styles.front}>
+                    <div className={`${styles.waitlistblock} `}>
+                      <p className={styles.heading}>
+                        {`#${userdatafromserver.waiting_number}`}
+                      </p>
+                      <p className={styles.subheading}>Waitlist Number</p>
+                    </div>
                   </div>
-                  <div className={styles.block}>
-                    <p className={styles.heading}>Ludo</p>
-                    <p className={styles.subheading}>0</p>
+                  <div
+                    className={`${styles.back} ${styles.waitlistback}`}
+                  ></div>
+                </div>
+              </div>
+              <div className={styles.flipcard}>
+                <div className={styles.inner}>
+                  <div className={styles.front}>
+                    <div className={styles.uniblock}>
+                      <p className={styles.heading}>
+                        {userdatafromserver.num_unicoins || 0}
+                      </p>
+                      <p className={styles.subheading}>Earned Unicoins</p>
+                    </div>
+                  </div>
+                  <div
+                    className={`${styles.back} ${styles.rewardback}`}
+                    onClick={() => router.push("/dashboard/w/rewards")}
+                  >
+                    <RewardSvg className={styles.reward} />
+                    <p className={styles.text}>Check rewards</p>
                   </div>
                 </div>
-                <p className={styles.subheading}>Game Scores</p>
+              </div>
+              <div className={styles.flipcard}>
+                <div className={styles.inner}>
+                  <div className={styles.front}>
+                    <div className={styles.quizblock}>
+                      <p className={styles.heading}>{highestquizscore}</p>
+                      <p className={styles.subheading}>Quiz Score</p>
+                    </div>
+                  </div>
+                  <div
+                    className={`${styles.back} ${styles.quizback}`}
+                    onClick={() => router.push("/dashboard/w/quiz")}
+                  >
+                    <QuizIconSvg className={styles.icon} />
+                    <p className={styles.text}>Play quiz</p>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.flipcard}>
+                <div className={styles.inner}>
+                  <div className={styles.front}>
+                    <div className={styles.gameblock}>
+                      <div className={styles.blocks}>
+                        <div className={styles.block}>
+                          <div className={styles.border}></div>
+                          <p className={styles.heading}>Money Run</p>
+                          <p className={styles.subheading}>0</p>
+                        </div>
+                        <div className={styles.block}>
+                          <p className={styles.heading}>Ludo</p>
+                          <p className={styles.subheading}>0</p>
+                        </div>
+                      </div>
+                      <p className={styles.subheading}>Game Scores</p>
+                    </div>
+                  </div>
+                  <div
+                    className={`${styles.back} ${styles.gameback}`}
+                    onClick={() => router.push("/dashboard/w/games")}
+                  >
+                    <GameSvg className={styles.gameicon} />
+                    <p className={styles.text}>Play games</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className={styles.flexMid}>
@@ -174,9 +225,9 @@ export async function getServerSideProps({ params, req }) {
           isLogged: true,
           userdatafromserver: response.data.data,
           todaysquestion: tq.data.success ? tq.data.data : null,
-          blogdata: blogs.data.data || [],
-          leaderboard: leaderboard.data.data || [],
-          highestquizscore: highestquizscore.data.data.score || 0,
+          blogdata: blogs?.data.data || [],
+          leaderboard: leaderboard?.data.data || [],
+          highestquizscore: highestquizscore?.data?.data?.score || 0,
           msg: "",
         },
       };

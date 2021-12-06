@@ -12,6 +12,7 @@ import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
+import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
 
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
@@ -139,7 +140,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               }`}
               onClick={() => router.push("/dashboard/w/rewards")}
             >
-              <StoreSvg className={styles.icon} />
+              <RewardSvg className={styles.icon} />
               <p className={styles.tabtitle}>Rewards</p>
             </div>
           </div>

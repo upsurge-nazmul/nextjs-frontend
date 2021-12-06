@@ -286,10 +286,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
-    console.log(response.data);
-
     if (response && !response.data.success) {
-      console.log(response.data);
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {

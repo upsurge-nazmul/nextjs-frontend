@@ -92,6 +92,14 @@ const refer = (payload) => {
 const refersignup = (payload) => {
   return ApiCalls.postResponse("users/referSignup", payload);
 };
+
+const checkpasslink = (payload) => {
+  return ApiCalls.getResponse("users/checkpasslink", payload);
+};
+
+const generatepass = (payload) => {
+  return ApiCalls.postResponse("users/generatepassword", payload);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -113,6 +121,8 @@ const LoginApis = {
   unsub,
   refer,
   refersignup,
+  checkpasslink,
+  generatepass,
 };
 
 export default LoginApis;

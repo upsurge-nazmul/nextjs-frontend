@@ -9,6 +9,7 @@ import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
 import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
+import { useRouter } from "next/dist/client/router";
 
 function AuthParent({
   setsignupmethod,
@@ -22,6 +23,28 @@ function AuthParent({
 }) {
   const { firstName, setfirstName, lastName, setlastName } =
     useContext(MainContext);
+  const router = useRouter();
+  async function handleSignup(e) {
+    e.preventDefault();
+    if (!validator.isEmail(email)) {
+      seterror("Enter valid email address");
+    } else {
+      let response = await LoginApis.saveemail({ email: email });
+      if (response) {
+        if (response.data.success) {
+          router.push("/waitlist/" + email);
+        } else {
+          seterror(response.data.message);
+        }
+      } else {
+        seterror("Error connecting to server");
+      }
+      // setshowauth(true);
+      // setauthmode("parent");
+      // setmailfromhome(email);
+    }
+  }
+
   async function handleParentSignUp(email, method) {
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
@@ -91,7 +114,7 @@ function AuthParent({
   }, [email]);
   return (
     <div className={styles.parent}>
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
           <div
@@ -129,7 +152,7 @@ function AuthParent({
           );
         }}
       />
-      <div className={styles.or}>OR</div>
+      <div className={styles.or}>OR</div> */}
       <input
         type="text"
         placeholder="Username/Email"
@@ -140,9 +163,10 @@ function AuthParent({
 
       <div
         className={styles.button}
-        onClick={() => {
-          setsignupmethod("email");
-          handleParentSignUp(email, "email");
+        onClick={(e) => {
+          handleSignup(e);
+          // setsignupmethod("email");
+          // handleParentSignUp(email, "email");
         }}
       >
         Continue

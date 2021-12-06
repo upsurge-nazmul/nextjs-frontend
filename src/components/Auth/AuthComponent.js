@@ -52,7 +52,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //for back button in auth
   function handleBack() {
     if (mode === "learner" || mode === "parent") {
-      setmode("selection");
+      setmode("login");
     } else if (mode === "phone" || mode === "email" || mode === "otp") {
       setmode("parent");
     } else {

@@ -3,10 +3,8 @@ import React from "react";
 export default function QuizIconSvg({ className, onClick }) {
   return (
     <svg
-      width="20"
       onClick={onClick}
       className={className}
-      height="20"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
