@@ -15,7 +15,7 @@ export default function Products() {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
-
+  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
@@ -79,16 +79,17 @@ export default function Products() {
     if (!validator.isEmail(email)) {
       setError("Enter valid email address");
     } else {
-      let response = await LoginApis.saveemail({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          setError(response.data.message);
-        }
-      } else {
-        setError("Error connecting to server");
-      }
+      setshowwaitlistblock(true);
+      // let response = await LoginApis.saveemail({ email: email });
+      // if (response) {
+      //   if (response.data.success) {
+      //     router.push("/waitlist/" + email);
+      //   } else {
+      //     setError(response.data.message);
+      //   }
+      // } else {
+      //   setError("Error connecting to server");
+      // }
       // setshowauth(true);
       // setauthmode("parent");
       // setmailfromhome(email);
@@ -111,6 +112,8 @@ export default function Products() {
         setEmail={setEmail}
         check={check}
         error={error}
+        showwaitlistblock={showwaitlistblock}
+        setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
       />
       <Games id="gamessection" />
@@ -119,6 +122,8 @@ export default function Products() {
         check={check}
         setEmail={setEmail}
         error={error}
+        showwaitlistblock={showwaitlistblock}
+        setshowwaitlistblock={setshowwaitlistblock}
         id="choressection"
       />
       <LiveClasses id="classessection" />

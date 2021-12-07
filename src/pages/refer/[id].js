@@ -35,9 +35,8 @@ export default function ReferPage() {
   async function checkrefer() {
     const res = await LoginApis.refersignup({ refid: id, firstName, lastName });
     if (res && res.data && res.data.success) {
-      setsuccess(true);
+      router.push("/generatepass/" + res.data.data);
     } else {
-      setsuccess(false);
       settoastdata({
         show: true,
         msg: res.data.message || "Error connecting to server",

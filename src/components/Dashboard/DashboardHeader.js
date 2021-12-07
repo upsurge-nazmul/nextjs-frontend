@@ -16,7 +16,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [notifications, setnotifications] = useState(["s"]);
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
     useContext(MainContext);
-
+  console.log(userdata);
   return (
     <div className={styles.dashboardHeader}>
       <h1 className={styles.dashboardHeading}>

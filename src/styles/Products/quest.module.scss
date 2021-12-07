@@ -325,7 +325,7 @@
       width: 204px;
       right: 0;
       left: 60%;
-      bottom: 22vh;
+      bottom: 28vh;
       .wrap {
         width: 204px;
       }
@@ -344,31 +344,31 @@
     }
     .petal {
       width: 3vw;
-      top: 30vh;
+      top: 28vh;
       left: 55%;
     }
     .petal2 {
       width: 2.5vw;
-      bottom: 27vh;
+      bottom: 30vh;
       right: 25vw;
     }
     .lap {
       right: 0;
       left: 55vw;
-      bottom: 6vh;
+      bottom: 10vh;
       width: 920px;
     }
     .textcontainer {
       width: 50%;
       margin-left: 7%;
-      margin-top: 0px;
-      padding-top: 10px;
+      margin-top: 10px;
+      padding-top: 0px;
       .heading {
-        font-size: 40px;
+        font-size: 36px;
       }
       .subheading {
-        font-size: 16px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 22px;
         max-width: 650px;
         margin: 0;
         &:nth-child(2) {
@@ -376,7 +376,7 @@
         }
       }
       .details {
-        margin-top: 20px;
+        margin-top: 10px;
         width: 250px;
         .section {
           .number {
@@ -388,14 +388,86 @@
         }
       }
       .secondheading {
-        margin-top: 24px;
+        margin-top: 14px;
         font-size: 20px;
       }
       .conceptswrapper {
         margin-top: 10px;
         width: 600px;
         .concept {
-          font-size: 12px;
+          font-size: 11px;
+        }
+      }
+      .signupBox {
+        width: 23vw;
+        min-width: fit-content;
+        min-height: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-top: 20px;
+        form {
+          display: flex;
+          width: 55%;
+          height: 100%;
+          flex: 1;
+        }
+        .input {
+          outline: none;
+          border: none;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+          border: 1px solid #4166eb;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          font-weight: 400;
+          font-size: 14px;
+          padding-left: 15px;
+          ::placeholder {
+            color: rgba(198, 198, 198, 1);
+          }
+        }
+        .button {
+          width: 45%;
+          min-width: fit-content;
+          font-size: 1vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 500;
+          height: 100%;
+          padding: 0 20px;
+          color: white;
+          background-color: hsl(227, 81%, 59%);
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: hsl(227, 100%, 59%);
+          }
+        }
+        .joinButton {
+          width: 150px;
+          min-width: fit-content;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 400;
+          height: 100%;
+          padding: 0 10px;
+          color: white;
+          background-color: hsl(227, 81%, 59%);
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: hsl(227, 100%, 59%);
+          }
         }
       }
     }

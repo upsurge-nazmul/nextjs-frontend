@@ -5,7 +5,16 @@ import Curve2 from "../SVGcomponents/Curve2";
 import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 import Image from "next/image";
-export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
+import WaitlistPopUp from "../WaitlistPopUp";
+export default function KnowledgeQuest({
+  id,
+  email,
+  setEmail,
+  check,
+  error,
+  showwaitlistblock,
+  setshowwaitlistblock,
+}) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
     "Money",
@@ -29,6 +38,13 @@ export default function KnowledgeQuest({ id, email, setEmail, check, error }) {
     <div className={styles.questSection}>
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
+      {showwaitlistblock && (
+        <WaitlistPopUp
+          email={email}
+          setemail={setEmail}
+          setshowpopup={setshowwaitlistblock}
+        />
+      )}
       <div className={styles.lap}>
         <div className={styles.wrap}>
           <Image

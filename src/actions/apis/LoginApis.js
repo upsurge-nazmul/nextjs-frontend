@@ -90,7 +90,7 @@ const refer = (payload) => {
   );
 };
 const refersignup = (payload) => {
-  return ApiCalls.postResponse("users/referSignup", payload);
+  return ApiCalls.postResponse("users/refersignup", payload);
 };
 
 const checkpasslink = (payload) => {

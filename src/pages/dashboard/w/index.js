@@ -224,7 +224,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
-          todaysquestion: tq.data.success ? tq.data.data : null,
+          todaysquestion: tq?.data?.success ? tq.data.data : null,
           blogdata: blogs?.data.data || [],
           leaderboard: leaderboard?.data.data || [],
           highestquizscore: highestquizscore?.data?.data?.score || 0,

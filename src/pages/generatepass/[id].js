@@ -57,10 +57,6 @@ export default function GenPass() {
     else setpassisweak(false);
   }, [password]);
   async function checkrefer() {
-    if (!firstName) {
-      seterr("First name is required");
-      return;
-    }
     if (!password) {
       seterr("Password is required");
       return;
@@ -76,8 +72,6 @@ export default function GenPass() {
       return;
     }
     const res = await LoginApis.generatepass({
-      firstName,
-      lastName,
       id: router.query.id,
       password: password,
     });
@@ -144,21 +138,7 @@ export default function GenPass() {
             ? "Your login credentials have been updated, please login."
             : "We require some details"}
         </p>
-        {!success && (
-          <div className={styles.name}>
-            <input
-              type="text"
-              placeholder="First name*"
-              value={firstName}
-              onChange={(e) => setfirstName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Last name"
-              onChange={(e) => setlastName(e.target.value)}
-            />
-          </div>
-        )}
+
         {!success && (
           <div className={styles.name}>
             <div className={styles.passwordBox}>

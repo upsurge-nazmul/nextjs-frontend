@@ -346,6 +346,7 @@ export default function GamePage() {
       playername: name,
       playeremail: email,
       number: phone,
+      game: gameid,
     });
     if (res) {
       if (res.data.success) {

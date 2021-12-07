@@ -75,6 +75,10 @@ function Menu({ settoastdata, menuType }) {
         className={styles.tabs}
         onMouseEnter={() => setrotatesetting(true)}
         onMouseLeave={() => setrotatesetting(false)}
+        onClick={() => {
+          setshowmenu(false);
+          router.push("/editprofile/parent");
+        }}
       >
         <div
           className={`${styles.settings} ${styles.icon} ${

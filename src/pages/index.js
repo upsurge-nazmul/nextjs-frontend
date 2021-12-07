@@ -117,7 +117,7 @@ function Home({ isLogged, userdata }) {
         {/* <How /> */}
         <Benefits />
         <ProductSection />
-        {/* <PartnerSection /> */}
+        <PartnerSection />
         <JasperSection />
         <AboutSection />
         <BlogsSection />

@@ -18,7 +18,9 @@ export default function EditProfile({ data }) {
     msg: "",
   });
   const [userdata, setuserdata] = useState(null);
-  const [type, settype] = useState(router.query.type || "parent");
+  const [type, settype] = useState(
+    data.is_waiting_active ? "waitlist" : router.query.type || "parent"
+  );
   const [mode, setmode] = useState("Edit Profile");
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
@@ -30,7 +32,10 @@ export default function EditProfile({ data }) {
   const [showotp, setshowotp] = useState(false);
   const [otpverified, setotpverified] = useState(false);
   async function saveprofile() {
-    if (data && data.phone && phone === data.phone) {
+    if (
+      (data && data.phone && phone === data.phone) ||
+      (type === "waitlist" && !phone)
+    ) {
       handleSave();
     } else {
       LoginApis.genotp({ phone }).then((response) => {
@@ -104,7 +109,7 @@ export default function EditProfile({ data }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={"dashboard"}
+          gobackto={type === "waitlist" ? "dashboard/w" : "dashboard"}
         />
         <div className={styles.mainContent}>
           <div className={styles.imagesection}>

@@ -15,7 +15,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [passhidden, setpasshidden] = useState(true);
-  const history = useRouter();
+  const router = useRouter();
   // login Function
   async function handleSignin() {
     if (password === "" || !validator.isEmail(email)) {
@@ -33,11 +33,12 @@ function AuthLogin({ settoastdata, error, seterror }) {
         msg: response.data.message,
         type: "success",
       });
+      console.log(response.data.data);
       if (response.data.data.userProfile.is_waiting_active) {
-        history.push("/dashboard/w");
+        router.push("/dashboard/w");
       } else if (response.data.data.userProfile.user_type === "parent")
-        history.push("/dashboard");
-      else history.push("/kiddashboard");
+        router.push("/dashboard");
+      else router.push("/kiddashboard");
     } else {
       seterror(response?.data.message || "Cannot reach server");
     }
@@ -57,8 +58,8 @@ function AuthLogin({ settoastdata, error, seterror }) {
           type: "success",
         });
         if (response.data.data.userProfile.user_type === "parent")
-          history.push("/dashboard");
-        else history.push("/kiddashboard");
+          router.push("/dashboard");
+        else router.push("/kiddashboard");
       } else {
         seterror(response?.data.message || "Cannot reach server");
       }

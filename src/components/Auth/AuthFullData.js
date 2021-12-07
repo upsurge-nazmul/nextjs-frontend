@@ -7,6 +7,7 @@ import validator from "validator";
 import { MainContext } from "../../context/Main";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
+import { useRouter } from "next/dist/client/router";
 function AuthFullData({
   setphone,
   setpassword,
@@ -32,7 +33,7 @@ function AuthFullData({
     upper: false,
     number: false,
   });
-
+  const router = useRouter();
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -55,40 +56,50 @@ function AuthFullData({
       seterror(checkphone?.data.message || "Error connecting to server");
       return;
     }
-    if (passisweak) {
-      seterror(
-        "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
-      );
-      return;
-    }
-    if (!firstName || !password) {
+    // if (passisweak) {
+    //   seterror(
+    //     "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
+    //   );
+    //   return;
+    // }
+    if (
+      !firstName
+      //  || !password
+    ) {
       seterror("FirstName is required");
       return;
     }
-    let response = await LoginApis.signup({
+    // let response = await LoginApis.signup({
+    //   email: email,
+    //   signup_method: signupmethod,
+    //   user_type: usertype,
+    //   phone,
+    //   password,
+    //   first_name: firstName,
+    //   last_name: lastName,
+    // });
+    let response = await LoginApis.saveemail({
       email: email,
-      signup_method: signupmethod,
-      user_type: usertype,
-      phone,
-      password,
-      first_name: firstName,
-      last_name: lastName,
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
     });
 
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      if (signupmethod === "email") {
-        LoginApis.sendverificationemail();
-      }
-      settoastdata({
-        show: true,
-        msg: response.data.message,
-        type: "success",
-      });
-      setuserdata(response.data.data.profile);
-      setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      // if (signupmethod === "email") {
+      //   LoginApis.sendverificationemail();
+      // }
+      router.push("/waitlist/" + email);
+      // settoastdata({
+      //   show: true,
+      //   msg: response.data.message,
+      //   type: "success",
+      // });
+      // setuserdata(response.data.data.profile);
+      // setCookie("accesstoken", response.data.data.token);
+      // setmode("otp");
     }
   }
 
@@ -165,7 +176,7 @@ function AuthFullData({
           </ReactTooltip>
         </>
       )}
-      <div className={styles.passwordBox}>
+      {/* <div className={styles.passwordBox}>
         {showdetailpass && (
           <div className={styles.detailPass}>
             <div className={styles.arrow}></div>
@@ -203,7 +214,7 @@ function AuthFullData({
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
         </p>
-      </div>
+      </div> */}
 
       {error && <p className={styles.error}>{error}</p>}
 

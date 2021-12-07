@@ -2,11 +2,12 @@
   width: 100vw;
   height: fit-content;
   background-color: #ff6263;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   color: rgb(255, 255, 255);
   padding: 5vh 10vw 5vh;
   display: flex;
   position: relative;
+  margin-top: 80px;
   flex-direction: column;
   .heading {
     font-size: 46px;
@@ -50,14 +51,13 @@
       background: transparent; /* Optional: just make scrollbar invisible */
     }
     .img {
-      width: 20vw;
-      min-width: 300px;
-      height: 20vh;
+      width: 200px;
+      min-width: 200px;
+      height: 200px;
       object-fit: contain;
-      padding: 20px;
       background-color: rgb(255, 255, 255);
-      border-radius: 20px;
-      margin: 0 10px;
+      border-radius: 10px;
+      margin: 0 20px;
     }
   }
 }

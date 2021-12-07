@@ -29,16 +29,17 @@ function AuthParent({
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
-      let response = await LoginApis.saveemail({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          seterror(response.data.message);
-        }
-      } else {
-        seterror("Error connecting to server");
-      }
+      setmode("email");
+      // let response = await LoginApis.saveemail({ email: email });
+      // if (response) {
+      //   if (response.data.success) {
+      //     router.push("/waitlist/" + email);
+      //   } else {
+      //     seterror(response.data.message);
+      //   }
+      // } else {
+      //   seterror("Error connecting to server");
+      // }
       // setshowauth(true);
       // setauthmode("parent");
       // setmailfromhome(email);
