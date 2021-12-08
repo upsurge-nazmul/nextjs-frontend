@@ -105,7 +105,10 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             </div>
             <div
               className={`${styles.tab} ${
-                currenttab === "/dashboard/w/games" ? styles.activetab : ""
+                currenttab === "/dashboard/w/games" ||
+                currenttab.indexOf("dashboard/w/game") !== -1
+                  ? styles.activetab
+                  : ""
               }`}
               onClick={() => router.push("/dashboard/w/games")}
             >

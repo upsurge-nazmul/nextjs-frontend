@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QuizApis from "../../actions/apis/QuizApis";
 import styles from "../../styles/WaitlistDashboard/todaysquestion.module.scss";
+import TickSvg from "../SVGcomponents/TickSvg";
 export default function TodaysQuestion({ data }) {
   const [answered, setanswerd] = useState(data === "Answered" ? true : false);
   const [loading, setloading] = useState(false);
@@ -21,7 +22,10 @@ export default function TodaysQuestion({ data }) {
     <div className={styles.todaysquestion}>
       <p className={styles.heading}>{"Today's question"}</p>
       {answered ? (
-        <p className={styles.answered}>Answered.</p>
+        <>
+          <TickSvg className={styles.tick} />
+          <p className={styles.answered}>Answered</p>
+        </>
       ) : (
         <>
           <p className={styles.question}>Q. {data.question}</p>

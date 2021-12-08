@@ -102,7 +102,7 @@ function Games() {
     } else {
       localStorage.setItem("recent_games", JSON.stringify([title]));
     }
-    router.push("/games/" + title);
+    router.push("/dashboard/w/game/" + title);
   }
   return (
     <div className={styles.gamesPage}>
@@ -125,7 +125,13 @@ function Games() {
               <div className={styles.wrapper} id="gamecardwrapper2">
                 {recent_games.map((item, index) => {
                   return (
-                    <GameCard data={data[item]} key={"kidcomponent" + index} />
+                    <GameCard
+                      onCLick={() =>
+                        handlegameclick(data[item].name.replace(/ /g, ""))
+                      }
+                      data={data[item]}
+                      key={"kidcomponent" + index}
+                    />
                   );
                 })}
               </div>
