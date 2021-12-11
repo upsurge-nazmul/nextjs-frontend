@@ -214,6 +214,24 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
+      if (!response.data.data.is_waiting_active) {
+        if (response.data.data.user_type === "parent") {
+          return {
+            props: { isLogged: false, msg: msg || "Error" },
+            redirect: {
+              permanent: false,
+              destination: "/dashboard/p",
+            },
+          };
+        } else
+          return {
+            props: { isLogged: false, msg: msg || "Error" },
+            redirect: {
+              permanent: false,
+              destination: "/dashboard/k",
+            },
+          };
+      }
       let tq = await QuizApis.todaysquestion(null, token);
       let blogs = await BlogApis.gethomeblogs();
       let leaderboard = await QuizApis.leaderboard();

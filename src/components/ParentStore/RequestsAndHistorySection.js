@@ -3,7 +3,8 @@ import styles from "../../styles/ParentStore/requestsAndHistorySection.module.sc
 import PendingRequests from "./PendingRequests";
 function RequestsAndHistorySection({ setshowmodal, setbuydata }) {
   const [type, settype] = useState("Requests");
-  const d = ["", "", "", ""];
+  const [history, sethistory] = useState([]);
+  const d = ["", ""];
   return (
     <div className={styles.requestsAndHistorySection}>
       <div className={styles.switch}>

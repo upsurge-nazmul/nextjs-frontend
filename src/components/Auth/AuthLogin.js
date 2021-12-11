@@ -94,7 +94,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
       <div className={styles.button} onClick={handleSignin}>
         Sign In
       </div>
-      {/* <div className={styles.or}>OR</div>
+      <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -133,7 +133,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
             </div>
           );
         }}
-      /> */}
+      />
 
       <div className={styles.reset}>
         Forgot your <span>Username</span> or <span>Password</span>?

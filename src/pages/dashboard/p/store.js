@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import Toast from "../../components/Toast";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import LoginApis from "../../../actions/apis/LoginApis";
+import Toast from "../../../components/Toast";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/ParentStore/parentstore.module.scss";
-import RequestsAndHistorySection from "../../components/ParentStore/RequestsAndHistorySection";
-import LiveClassSection from "../../components/ParentStore/LiveClassSection";
-import AvailablePointsSection from "../../components/ParentStore/AvailablePointsSection";
-import VoucherSection from "../../components/ParentStore/VoucherSection";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import ApproveModal from "../../components/ParentStore/ApproveModal";
-import ChoreApis from "../../actions/apis/ChoreApis";
+import styles from "../../../styles/ParentStore/parentstore.module.scss";
+import RequestsAndHistorySection from "../../../components/ParentStore/RequestsAndHistorySection";
+import LiveClassSection from "../../../components/ParentStore/LiveClassSection";
+import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
+import VoucherSection from "../../../components/ParentStore/VoucherSection";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import ApproveModal from "../../../components/ParentStore/ApproveModal";
+import ChoreApis from "../../../actions/apis/ChoreApis";
 
 export default function ParentStore({
   isLogged,
@@ -21,6 +21,7 @@ export default function ParentStore({
   kidsdata,
   liveclassdata,
   vouchers,
+  userdatafromserver,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
@@ -68,14 +69,13 @@ export default function ParentStore({
               setbuydata={setbuydata}
               setshowmodal={setshowmodal}
             />
-            <LiveClassSection
-              setbuydata={setbuydata}
-              setshowmodal={setshowmodal}
-            />
+            <AvailablePointsSection />
           </div>
           <div className={styles.flexRight}>
-            <AvailablePointsSection />
-            <VoucherSection vouchers={vouchers} />
+            <VoucherSection
+              vouchers={vouchers}
+              unicoins={userdatafromserver.num_unicoins}
+            />
           </div>
         </div>
       </div>
@@ -113,6 +113,7 @@ export async function getServerSideProps({ params, req }) {
           kidsdata,
           liveclassdata,
           vouchers,
+          userdatafromserver: response.data.data,
         },
       };
     }

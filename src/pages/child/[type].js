@@ -107,7 +107,7 @@ function AddKid({ childdata }) {
     };
     let response = await DashboardApis.addkids(data);
     if (response && response.data && response.data.success) {
-      router.push("/dashboard");
+      router.push("/dashboard/p");
       settoastdata({
         type: "success",
         msg: response.data.message,

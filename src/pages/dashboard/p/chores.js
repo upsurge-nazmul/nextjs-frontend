@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import ChoreComponent from "../../components/Dashboard/ChoreComponent";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import ChoreModal from "../../components/Chores/ChoreModal";
-import ChorePending from "../../components/Chores/ChorePending";
-import ChoreTemplate from "../../components/Chores/ChoreTemplate";
-import styles from "../../styles/Chores/chorepage.module.scss";
-import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
-import LoginApis from "../../actions/apis/LoginApis";
-import Toast from "../../components/Toast";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import ChoreModal from "../../../components/Chores/ChoreModal";
+import ChoreTemplate from "../../../components/Chores/ChoreTemplate";
+import styles from "../../../styles/Chores/chorepage.module.scss";
+import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import LoginApis from "../../../actions/apis/LoginApis";
+import Toast from "../../../components/Toast";
 import { useRouter } from "next/dist/client/router";
-import Loading from "../../components/Loading";
-import ChoreApis from "../../actions/apis/ChoreApis";
-import { choretemplates } from "../../helpers/choretemplates";
+import Loading from "../../../components/Loading";
+import { choretemplates } from "../../../helpers/choretemplates";
+import ChoreApis from "../../../actions/apis/ChoreApis";
+import ChorePending from "../../../components/Chores/ChorePending";
 
 function ChoresPage({ choresdata, isLogged }) {
   const [mode, setmode] = useState("chores");
@@ -204,7 +204,7 @@ export async function getServerSideProps({ params, req }) {
         props: { isLogged: true, msg: msg || "Error" },
         redirect: {
           permanent: false,
-          destination: "/dashboard?err=03",
+          destination: "/dashboard/p?err=03",
           state: "err=03",
         },
       };

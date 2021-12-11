@@ -13,16 +13,15 @@
     .mainContent {
       width: 100%;
       display: flex;
+      flex-direction: column;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
       .flexLeft {
         display: flex;
-        flex-direction: column;
-        width: 70%;
-        padding: 0 10px 0 45px;
+        width: 100%;
+        padding: 0 45px 0 45px;
         .gameSection {
-          flex: 3;
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -186,7 +185,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 30%;
+        width: 100%;
         padding-right: 50px;
         padding-left: 10px;
         margin-left: 40px;
@@ -312,6 +311,7 @@
       .mainContent {
         flex-direction: column;
         .flexLeft {
+          flex-direction: column;
           width: 100%;
           padding: 0 20px;
           .gameSection {

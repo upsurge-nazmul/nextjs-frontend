@@ -1,4 +1,6 @@
 .requestsAndHistorySection {
+  margin-right: 40px;
+  width: 70%;
   .switch {
     display: flex;
     .tabs {
@@ -34,6 +36,7 @@
 
 @media only screen and (max-width: 860px) {
   .requestsAndHistorySection {
+    width: 100%;
     .switch {
       .tabs {
         font-size: 18px;

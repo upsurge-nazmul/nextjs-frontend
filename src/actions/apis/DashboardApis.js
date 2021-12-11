@@ -45,7 +45,14 @@ const getallbadges = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailablebadges`, payload, token);
 };
 const getallvouchers = (payload, token) => {
-  return ApiCalls.getResponse(`parent/getavailablevouchers`, payload, token);
+  return ApiCalls.postResponse(`voucher/vouchers`, payload, token);
+};
+const ordervouchers = (payload) => {
+  return ApiCalls.postResponse(
+    "voucher/order",
+    payload,
+    getCookie("accesstoken")
+  );
 };
 const deletechild = (payload) => {
   return ApiCalls.deleteResponse(
@@ -69,6 +76,7 @@ const DashboardApis = {
   editkids,
   deletechild,
   getChildDetails,
+  ordervouchers,
 };
 
 export default DashboardApis;

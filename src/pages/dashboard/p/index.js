@@ -1,27 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import ChoreApis from "../../actions/apis/ChoreApis";
-import Toast from "../../components/Toast";
-import ChoreComponent from "../../components/Dashboard/ChoreComponent";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import GameCard from "../../components/Dashboard/GameCard";
-import KidComponent from "../../components/Dashboard/KidComponent";
-import LiveClass from "../../components/Dashboard/LiveClass";
-import NoKid from "../../components/Dashboard/NoKid";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/Dashboard/dashboard.module.scss";
-import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
-import OtpNotVerfied from "../../components/Auth/OtpNotVerified";
-import { MainContext } from "../../context/Main";
-import EmailVerificationPending from "../../components/EmailVerificationPending";
-import TribeApproval from "../../components/Dashboard/TribeApproval";
-import NoApproval from "../../components/Dashboard/NoApproval";
-import Loading from "../../components/Loading";
-import NotificationApis from "../../actions/apis/NotificationApis";
-import WaitlistComponent from "../../components/Dashboard/WaitlistComponent";
+import styles from "../../../styles/Dashboard/dashboard.module.scss";
+import LoginApis from "../../../actions/apis/LoginApis";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import ChoreApis from "../../../actions/apis/ChoreApis";
+import { MainContext } from "../../../context/Main";
 import { getMessaging, getToken } from "@firebase/messaging";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import Toast from "../../../components/Toast";
+import OtpNotVerfied from "../../../components/Auth/OtpNotVerified";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import EmailVerificationPending from "../../../components/EmailVerificationPending";
+import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import KidComponent from "../../../components/Dashboard/KidComponent";
+import NoKid from "../../../components/Dashboard/NoKid";
+import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
+import NoApproval from "../../../components/Dashboard/NoApproval";
+import TribeApproval from "../../../components/Dashboard/TribeApproval";
 
 function Dashboard({
   isLogged,
@@ -88,18 +83,14 @@ function Dashboard({
   useEffect(() => {
     saveNotificationToken();
     async function saveNotificationToken() {
+      let token = "";
       try {
         let messaging = getMessaging();
-        let token = "";
         token = await getToken(messaging);
+        await NotificationApis.addToken({ type: "web", token });
       } catch (err) {
-        settoastdata({
-          show: true,
-          msg: "Notifications Blocked",
-          type: "error",
-        });
+        console.log("notifications blocked");
       }
-      let response = await NotificationApis.addToken({ type: "web", token });
     }
   }, []);
   useEffect(() => {
@@ -110,7 +101,7 @@ function Dashboard({
           type: "error",
           msg: "Please add a child first",
         });
-        router.push("/dashboard");
+        router.push("/dashboard/p");
       }
     }
   }, [router.query]);
@@ -139,8 +130,7 @@ function Dashboard({
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
-          {userdatafromserver &&
-          userdatafromserver.is_waiting_active !== true ? (
+          {userdatafromserver && (
             <div className={styles.mainContent}>
               <div className={styles.flexLeft} id="leftside">
                 <div className={styles.kidsSection}>
@@ -237,7 +227,7 @@ function Dashboard({
                 )}
               </div>
               <div className={styles.flexRight} id="rightpanel">
-                <div className={styles.gameSection}>
+                {/* <div className={styles.gameSection}>
                   <h2
                     className={styles.heading}
                     onClick={() => router.push("/games")}
@@ -256,20 +246,8 @@ function Dashboard({
                       );
                     })}
                   </div>
-                </div>
+                </div> */}
               </div>
-            </div>
-          ) : (
-            <div className={styles.mainContent}>
-              <div className={styles.flexLeft} id="leftside">
-                <div className={styles.kidsSection}>
-                  <WaitlistComponent
-                    email={userdatafromserver.email}
-                    waitNum={userdatafromserver.waiting_number}
-                  />
-                </div>
-              </div>
-              <div className={styles.flexRight} id="rightpanel"></div>
             </div>
           )}
         </div>
