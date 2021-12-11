@@ -77,6 +77,10 @@ function Games() {
       name: "Need Or Want",
       description: "Identify the difference between needs and wants.",
     },
+    Ludo: {
+      name: "Ludo",
+      description: "ludo ludo ludo.",
+    },
   };
   useEffect(() => {
     let x = localStorage.getItem("recent_games");

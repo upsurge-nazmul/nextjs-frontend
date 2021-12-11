@@ -48,6 +48,10 @@ export default function GamePage() {
       name: "Need Or Want",
       description: "Identify the difference between needs and wants.",
     },
+    Ludo: {
+      name: "Ludo",
+      description: "ludo ludo ludo.",
+    },
   };
 
   useEffect(() => {
