@@ -143,7 +143,7 @@ export default function GoalWizard({ choresdata, kidsdata }) {
           </div>
 
           <div className={styles.flexRight}>
-            {allchores.length > 0 && (
+            {kids.length > 0 && (
               <div
                 className={`${styles.templateSection} ${
                   false ? styles.nokidlivesection : ""
@@ -217,8 +217,8 @@ async function getkidsdata(token) {
 }
 async function getchores(token) {
   let response = await ChoreApis.getchores(null, token);
-  if (response && response.data && response.data.data) {
-    return response.data.data.data;
+  if (response && response.data && response.data.success) {
+    return response.data.data;
   } else {
     return [];
   }

@@ -126,14 +126,6 @@ function ChoresPage({ choresdata, isLogged }) {
                   >
                     Completed
                   </h2>
-                  <h2
-                    className={`${styles.heading} ${
-                      choremode === "archived" ? styles.activechore : ""
-                    }`}
-                    onClick={() => setchoremode("archived")}
-                  >
-                    Archived
-                  </h2>
                 </div>
                 <div className={styles.wrapper}>
                   {allchores.map((data, index) => {

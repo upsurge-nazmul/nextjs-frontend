@@ -114,7 +114,7 @@ export default function ManageChore({ choredata, childdata }) {
           message: response.data.message,
           type: "success",
         });
-        router.push("/chores");
+        router.push("/dashboard/p/chores");
       } else {
         settoastdata({
           show: true,
@@ -165,7 +165,7 @@ export default function ManageChore({ choredata, childdata }) {
           msg: "Chores added successfully",
           type: "success",
         });
-        router.push("/chores");
+        router.push("/dashboard/p/chores");
       } else {
         settoastdata({
           show: true,
@@ -193,7 +193,7 @@ export default function ManageChore({ choredata, childdata }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={"chores"}
+          gobackto={"/dashboard/p/chores"}
         />
         <div className={styles.mainContent}>
           <div className={styles.imagesection}>

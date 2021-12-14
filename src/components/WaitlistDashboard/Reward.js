@@ -4,7 +4,7 @@ import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
 export default function Reward({ data, unicoin, email, phone }) {
   const [prices, setprices] = useState(data.valueDenominations?.split(",")[0]);
-  const [quantity, setquantity] = useState(0);
+  const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
   async function redeem() {
     if (quantity < 1) {
@@ -38,7 +38,7 @@ export default function Reward({ data, unicoin, email, phone }) {
           setvalue={setprices}
         />
         <DropDown
-          options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+          options={[1, 2, 3, 4, 5]}
           value={quantity}
           setvalue={setquantity}
           placeholder={"0"}
