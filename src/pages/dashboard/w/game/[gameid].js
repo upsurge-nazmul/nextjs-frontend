@@ -380,7 +380,7 @@ export default function GamePage() {
 
   return (
     <div className={styles.gamePage}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <DashboardHeader

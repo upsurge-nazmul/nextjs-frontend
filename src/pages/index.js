@@ -44,7 +44,8 @@ function Home({ isLogged, userdata }) {
       if (userdata.is_waiting_active) {
         router.push("/dashboard/w");
       } else {
-        router.push("/dashboard");
+        if (userdata.user_type === "parent") router.push("/dashboard/p");
+        else router.push("/dashboard/k");
       }
     }
   }, [userdata]);
