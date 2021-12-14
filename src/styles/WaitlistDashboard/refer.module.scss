@@ -1,11 +1,12 @@
 .refer {
-  padding: 20px 40px 40px;
+  padding: 20px 40px 30px;
   background-color: #4166eb;
   flex: 1;
   color: white;
   border-radius: 10px;
   margin-bottom: 20px;
   display: flex;
+  min-height: 350px;
   flex-direction: column;
   .heading {
     font-size: 35px;
@@ -13,11 +14,13 @@
   }
   .subheading {
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
   }
   .err {
+    margin-bottom: 10px;
     font-size: 14px;
+    color: rgb(255, 255, 255);
   }
   .img {
     width: 100%;
@@ -26,7 +29,7 @@
     overflow: hidden;
     object-fit: cover;
     opacity: 0.5;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     position: relative;
   }
   .bottom {
@@ -59,7 +62,7 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-height: 900px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .refer {
     padding: 15px 30px;
     background-color: #4166eb;
@@ -75,7 +78,6 @@
     }
     .bottom {
       display: flex;
-      margin-top: 100px;
       input {
         flex: 1;
         min-width: 100px;

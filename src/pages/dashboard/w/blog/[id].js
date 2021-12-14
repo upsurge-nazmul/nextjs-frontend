@@ -57,9 +57,16 @@ export default function BlogPage({ blogdata, related }) {
   ];
   useEffect(() => {
     let h1s = document.getElementsByTagName("h1");
+    let mainheading = document.getElementById("blogheading");
     if (h1s.length > 0) {
-      setheadings(Array.from(h1s));
-      setcurrentsection(h1s[0].textContent);
+      let xx = Array.from(h1s);
+      if (mainheading) {
+        xx[0] = mainheading;
+      } else {
+        xx.shift();
+      }
+      setheadings(xx);
+      setcurrentsection(xx[0].textContent);
     }
   }, [blogdata]);
   useEffect(() => {
@@ -69,7 +76,7 @@ export default function BlogPage({ blogdata, related }) {
       headings.forEach((item) => {
         if (window.scrollY === 0) {
           setcurrentsection(headings[0].textContent);
-        } else if (window.scrollY >= item.offsetTop - 100) {
+        } else if (window.scrollY >= item.offsetTop - 200) {
           setcurrentsection(item.textContent);
         }
       });
@@ -114,7 +121,9 @@ export default function BlogPage({ blogdata, related }) {
                   {blogdata.categories.split(",")[0]}
                 </p>
               </div>
-              <div className={styles.title}>{blogdata.title}</div>
+              <div className={styles.title} id="blogheading">
+                {blogdata.title}
+              </div>
               {blogdata?.img_url && (
                 <div className={styles.image}>
                   <img src={blogdata?.img_url} alt="" />
@@ -188,6 +197,7 @@ export default function BlogPage({ blogdata, related }) {
                   key={item.id}
                   data={item}
                   getdatafromraw={getdatafromraw}
+                  pushto="/dashboard/w/blog/"
                 />
               );
             })}

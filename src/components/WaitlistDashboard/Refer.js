@@ -23,7 +23,6 @@ export default function Refer({ settoastdata }) {
       <p className={styles.subheading}>
         Earn 5 unicoins for each friend joining our platform.
       </p>
-      {err && <p className={styles.err}>{err}</p>}
       <div className={styles.img}>
         <Image
           objectFit="cover"
@@ -32,6 +31,7 @@ export default function Refer({ settoastdata }) {
           alt=""
         />
       </div>
+      {err && <p className={styles.err}>{err}</p>}
 
       <div className={styles.bottom}>
         <input
