@@ -54,6 +54,14 @@ const ordervouchers = (payload) => {
     getCookie("accesstoken")
   );
 };
+
+const getuservouchers = (payload) => {
+  return ApiCalls.getResponse(
+    "voucher/uservouchers",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const deletechild = (payload) => {
   return ApiCalls.deleteResponse(
     "parent/deletechild",
@@ -77,6 +85,7 @@ const DashboardApis = {
   deletechild,
   getChildDetails,
   ordervouchers,
+  getuservouchers,
 };
 
 export default DashboardApis;

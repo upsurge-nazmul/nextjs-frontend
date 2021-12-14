@@ -26,6 +26,7 @@ export default function ParentStore({
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
   const router = useRouter();
+  const [history, sethistory] = useState([]);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -52,6 +53,13 @@ export default function ParentStore({
     }
   }, [isLogged]);
 
+  async function getUserVouchers() {
+    let res = await DashboardApis.getuservouchers();
+    if (res && res.data.success) {
+      sethistory(res.data.data);
+    }
+  }
+
   return (
     <div className={styles.parentStore}>
       <DashboardLeftPanel type="parent" />
@@ -75,6 +83,8 @@ export default function ParentStore({
             <VoucherSection
               vouchers={vouchers}
               unicoins={userdatafromserver.num_unicoins}
+              email={userdatafromserver.email}
+              phone={userdatafromserver.phone}
             />
           </div>
         </div>

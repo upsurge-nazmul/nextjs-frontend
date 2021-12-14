@@ -1,34 +1,30 @@
 import React, { useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
+import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-export default function Reward({ data, unicoin }) {
+export default function Reward({ data, unicoin, email, phone }) {
   const [prices, setprices] = useState(data.valueDenominations?.split(",")[0]);
   const [quantity, setquantity] = useState(0);
-  console.log(
-    Number(data.valueDenominations.split(",")[0]),
-    Number(data.valueDenominations.split(",")[0]) < unicoin
-  );
+  const [showpopup, setshowpopup] = useState(false);
   async function redeem() {
     if (quantity < 1) {
-      alert("quantity must be greater than zero");
+      alert("Please select a quantity to redeem");
       return;
     }
-    let res = await DashboardApis.ordervouchers({
-      productId: data.productId,
-      denomination: prices,
-      quantity,
-      vendor: "xoxo",
-    });
-    console.log(res.data);
-    if (res && res.data.success) {
-      alert("Success");
-    } else {
-      alert("Error");
-    }
+    setshowpopup(true);
   }
   return (
     <div className={styles.reward}>
+      {showpopup && (
+        <VoucherRedeem
+          userdata_email={email}
+          userdata_phone={phone}
+          quantity={quantity}
+          prices={prices}
+          data={data}
+          setshowpopup={setshowpopup}
+        />
+      )}
       {Number(data.valueDenominations.split(",")[0]) > unicoin && (
         <div className={styles.gray}></div>
       )}

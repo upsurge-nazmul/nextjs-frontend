@@ -3,18 +3,6 @@ import styles from "../../styles/Home/partner.module.scss";
 import Marquee from "react-fast-marquee";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 export default function PartnerSection() {
-  const partners = [
-    "https://1000logos.net/wp-content/uploads/2021/06/Zomato-logo.png",
-    "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-    "https://logos-world.net/wp-content/uploads/2020/11/Flipkart-Logo.png",
-    "https://cdn.thewire.in/wp-content/uploads/2021/01/31155736/Myntra_logo.png",
-    "https://getlogovector.com/wp-content/uploads/2020/11/byjus-logo-vector.png",
-    "https://1000logos.net/wp-content/uploads/2021/06/Zomato-logo.png",
-    "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-    "https://logos-world.net/wp-content/uploads/2020/11/Flipkart-Logo.png",
-    "https://cdn.thewire.in/wp-content/uploads/2021/01/31155736/Myntra_logo.png",
-    "https://getlogovector.com/wp-content/uploads/2020/11/byjus-logo-vector.png",
-  ];
   const rewards = [
     {
       productId: 228,
