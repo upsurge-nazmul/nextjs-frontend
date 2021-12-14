@@ -110,7 +110,7 @@ function Games() {
   }
   return (
     <div className={styles.gamesPage}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
 
       <div className={styles.contentWrapper}>

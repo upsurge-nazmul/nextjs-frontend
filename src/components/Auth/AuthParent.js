@@ -115,7 +115,7 @@ function AuthParent({
   }, [email]);
   return (
     <div className={styles.parent}>
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
           <div
@@ -153,7 +153,7 @@ function AuthParent({
           );
         }}
       />
-      <div className={styles.or}>OR</div>
+      <div className={styles.or}>OR</div> */}
       <input
         type="text"
         placeholder="Username/Email"
@@ -165,9 +165,9 @@ function AuthParent({
       <div
         className={styles.button}
         onClick={(e) => {
-          // handleSignup(e);
-          setsignupmethod("email");
-          handleParentSignUp(email, "email");
+          handleSignup(e);
+          // setsignupmethod("email");
+          // handleParentSignUp(email, "email");
         }}
       >
         Continue

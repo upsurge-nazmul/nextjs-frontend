@@ -17,6 +17,7 @@ import NoKid from "../../../components/Dashboard/NoKid";
 import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import NoApproval from "../../../components/Dashboard/NoApproval";
 import TribeApproval from "../../../components/Dashboard/TribeApproval";
+import Loading from "../../../components/Loading";
 
 function Dashboard({
   isLogged,
@@ -268,6 +269,23 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
+      if (response.data.data.is_waiting_active) {
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/w",
+          },
+        };
+      }
+      if (response.data.data.user_type !== "parent")
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/k",
+          },
+        };
       let kidsdata = await getkidsdata(token);
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
