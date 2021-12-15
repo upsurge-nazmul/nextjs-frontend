@@ -75,7 +75,7 @@ function AuthLogin({ settoastdata, error, seterror }) {
     <div className={styles.logindetails}>
       <input
         type="text"
-        placeholder="Username/Email"
+        placeholder="Email address"
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />
