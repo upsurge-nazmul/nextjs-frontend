@@ -116,7 +116,7 @@ export default function KnowledgeQuest({
               className={styles.joinButton}
               onClick={() => setshowwaitlistblock(true)}
             >
-              Join the waitlist
+              Get early access
             </div>
           ) : (
             <div className={styles.button} onClick={check}>

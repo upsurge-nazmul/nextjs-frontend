@@ -80,7 +80,7 @@ export default function WaitlistPopUp({
         <p className={styles.heading}>We need some more information</p>
         <input
           type="text"
-          placeholder="youremail@gmail.com"
+          placeholder="Email address*"
           value={email}
           setvalue={setemail}
           onChange={(e) => {

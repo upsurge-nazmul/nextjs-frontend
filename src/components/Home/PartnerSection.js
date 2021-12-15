@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../styles/Home/partner.module.scss";
 import Marquee from "react-fast-marquee";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
+import { useRouter } from "next/dist/client/router";
 export default function PartnerSection() {
   const rewards = [
     {
@@ -338,8 +339,8 @@ export default function PartnerSection() {
       exchangeRate: null,
     },
   ];
+  const router = useRouter();
   function handlemove(direction) {
-    console.log(direction);
     let partnerwrapper = document.getElementById("partnerwrapper");
     if (direction === "right") {
       partnerwrapper.scrollLeft += 300;
@@ -349,7 +350,12 @@ export default function PartnerSection() {
   }
   return (
     <div className={styles.partner}>
-      <div className={styles.heading}>Our UniCoin Reward Partners</div>
+      <div
+        className={styles.heading}
+        onClick={() => router.push("/benefits/rewards")}
+      >
+        Our UniCoin Reward Partners
+      </div>
       <div className={styles.subheading}>
         Collect UniCoin and redeem them for special gifts and deals with our
         partner brands.
@@ -366,6 +372,7 @@ export default function PartnerSection() {
         {rewards.map((item, index) => {
           return (
             <img
+              onClick={() => router.push("/benefits/rewards")}
               key={"partner" + index}
               className={styles.img}
               src={item.imageUrl}
