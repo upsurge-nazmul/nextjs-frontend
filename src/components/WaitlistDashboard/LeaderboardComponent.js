@@ -28,7 +28,7 @@ export default function LeaderboardComponent({ data, highest }) {
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
         <p className={`${styles.heading} ${styles.selected}`}>{selected}</p>
-        <p
+        {/* <p
           className={styles.heading}
           onClick={() =>
             setselected(selected === "Quiz" ? "Money Run" : "Quiz")
@@ -49,7 +49,7 @@ export default function LeaderboardComponent({ data, highest }) {
           }
         >
           {gettext(3)}
-        </p>
+        </p> */}
       </div>
       <div className={styles.section}>
         <p className={styles.subheading}>{selected}</p>

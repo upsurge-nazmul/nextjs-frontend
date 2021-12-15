@@ -11,71 +11,8 @@ import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConrol
 import styles from "../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
 import { db } from "../../db";
-const data = {
-  CoinSlide: {
-    dataUrl: "/Games/CoinSlide/Build/CoinSlide.data",
-    frameworkUrl: "/Games/CoinSlide/Build/CoinSlide.framework.js",
-    codeUrl: "/Games/CoinSlide/Build/CoinSlide.wasm",
-    loaderUrl: "/Games/CoinSlide/Build/CoinSlide.loader.js",
-    version: "1.0",
-  },
-  ShoppingBudget: {
-    dataUrl: "/Games/DontOverSpend/Build/Don't_Overspend.data",
-    frameworkUrl: "/Games/DontOverSpend/Build/Don't_Overspend.framework.js",
-    codeUrl: "/Games/DontOverSpend/Build/Don't_Overspend.wasm",
-    loaderUrl: "/Games/DontOverSpend/Build/Don't_Overspend.loader.js",
-    version: "1.0",
-  },
-  BalanceBuilder: {
-    dataUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.data",
-    frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
-    codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
-    loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.0",
-  },
-  HighAndLow: {
-    dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
-    frameworkUrl: "/Games/HighAndLow/Build/HighAndLow.framework.js",
-    codeUrl: "/Games/HighAndLow/Build/HighAndLow.wasm",
-    loaderUrl: "/Games/HighAndLow/Build/HighAndLow.loader.js",
-    version: "1.0",
-  },
-  MoneyMath: {
-    dataUrl: "/Games/MoneyMath/Build/MoneyMath.data",
-    frameworkUrl: "/Games/MoneyMath/Build/MoneyMath.framework.js",
-    codeUrl: "/Games/MoneyMath/Build/MoneyMath.wasm",
-    loaderUrl: "/Games/MoneyMath/Build/MoneyMath.loader.js",
-    version: "1.0",
-  },
-  MoneyManager: {
-    dataUrl: "/Games/MoneyManager/Build/MoneyManager.data",
-    frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
-    codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
-    loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
-    version: "1.0",
-  },
-  MoneySlide: {
-    dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
-    frameworkUrl: "/Games/MoneySlide/Build/MoneySlide.framework.js",
-    codeUrl: "/Games/MoneySlide/Build/MoneySlide.wasm",
-    loaderUrl: "/Games/MoneySlide/Build/MoneySlide.loader.js",
-    version: "1.0",
-  },
-  NeedOrWant: {
-    dataUrl: "/Games/NeedOrWant/Build/NeedOrWant.data",
-    frameworkUrl: "/Games/NeedOrWant/Build/NeedOrWant.framework.js",
-    codeUrl: "/Games/NeedOrWant/Build/NeedOrWant.wasm",
-    loaderUrl: "/Games/NeedOrWant/Build/NeedOrWant.loader.js",
-    version: "1.0",
-  },
-  Ludo: {
-    dataUrl: "/Games/Ludo/Build/Ludo.data",
-    frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
-    codeUrl: "/Games/Ludo/Build/Ludo.wasm",
-    loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-};
+import { Game_Unity_Data } from "../../static_data/Game_Data";
+
 const specialchars = [
   "#",
   "$",
@@ -155,7 +92,7 @@ export default function GamePage() {
     }
     async function checkifcacheexist() {
       let xx = await db.games.where({ id: gameid }).toArray();
-      let context = data[gameid];
+      let context = Game_Unity_Data[gameid];
       if (xx.length > 0) {
         if (xx[0].version !== context.version) {
           x();
@@ -184,7 +121,7 @@ export default function GamePage() {
       setunitycontext(new UnityContext(context));
     }
     async function x() {
-      fetch(data[gameid].dataUrl, {
+      fetch(Game_Unity_Data[gameid].dataUrl, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -194,18 +131,18 @@ export default function GamePage() {
           if (xx.length > 0) {
             await db.games.update(gameid, {
               data: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           } else {
             await db.games.add({
               id: gameid,
               data: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           }
         });
 
-      fetch(data[gameid].codeUrl, {
+      fetch(Game_Unity_Data[gameid].codeUrl, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -215,17 +152,17 @@ export default function GamePage() {
           if (xx.length > 0) {
             await db.games.update(gameid, {
               wasm: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           } else {
             await db.games.add({
               id: gameid,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
               wasm: blob,
             });
           }
         });
-      fetch(data[gameid].frameworkUrl, {
+      fetch(Game_Unity_Data[gameid].frameworkUrl, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -235,17 +172,17 @@ export default function GamePage() {
           if (xx.length > 0) {
             await db.games.update(gameid, {
               framework: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           } else {
             await db.games.add({
               id: gameid,
               framework: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           }
         });
-      fetch(data[gameid].loaderUrl, {
+      fetch(Game_Unity_Data[gameid].loaderUrl, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -255,13 +192,13 @@ export default function GamePage() {
           if (xx.length > 0) {
             await db.games.update(gameid, {
               loader: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           } else {
             await db.games.add({
               id: gameid,
               loader: blob,
-              version: data[gameid].version,
+              version: Game_Unity_Data[gameid].version,
             });
           }
         });

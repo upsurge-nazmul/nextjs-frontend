@@ -11,14 +11,14 @@ function GameCard({ data, onCLick }) {
     >
       <img
         src={
-          (data.name && `/images/games/${data.name.replace(/ /g, "")}.jpg`) ||
+          (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.jpg`) ||
           "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
         }
         alt=""
       />
       <div className={styles.contentWrapper}>
-        <p className={styles.title}>{data.name || "Test Card"}</p>
-        <p className={styles.detail}>{data.description || "Test Card"}</p>
+        <p className={styles.title}>{data?.name || "Test Card"}</p>
+        <p className={styles.detail}>{data?.description || "Test Card"}</p>
       </div>
     </div>
   );
