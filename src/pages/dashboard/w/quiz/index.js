@@ -56,6 +56,7 @@ const specialchars = [
 import { MainContext } from "../../../../context/Main";
 import styles from "../../../../styles/WaitlistDashboard/quiz.module.scss";
 import PopUp from "../../../../components/PopUp";
+import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 export default function TestQuiz({ first_name }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -73,6 +74,7 @@ export default function TestQuiz({ first_name }) {
   const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState(first_name);
   const [nickname, setnickname] = useState("");
+  const [mode, setmode] = useState("home");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -280,184 +282,201 @@ export default function TestQuiz({ first_name }) {
         />
       )}
       <div className={styles.container}>
-        <DashboardLeftPanel />
+        <DashboardLeftPanel type="waitlist" />
         <div className={styles.contentWrapper}>
-          <div
-            className={styles.prop1}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
-            }}
+          <DashboardHeader
+            mode={mode}
+            setmode={setmode}
+            settoastdata={settoastdata}
           />
-          <div
-            className={styles.prop2}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
-            }}
-          />
-          <div
-            className={styles.prop3}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
-            }}
-          />
-          <div className={styles.prop4} />
-          <div className={styles.quizContainer}>
-            <div className={styles.leftSection}>
-              {!quizfinished && (
-                <>
-                  <p
-                    className={styles.heading}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Money Quotient Quiz
-                  </p>
-                  <p
-                    className={styles.details}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    You will be asked 15 questions and have to choose the option
-                    which you think is correct.This is a dynamic quiz that
-                    adapts the difficulty level according to your answers. The
-                    tougher questions you get right, the more points you will
-                    get.
-                  </p>
-                  <p
-                    className={styles.current}
-                    style={{
-                      backgroundColor:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#4166EB",
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#000000"
-                          : "#ffffff",
-                    }}
-                  >
-                    {`${currentquestionindex + 1} / ${15}`}
-                  </p>
-                </>
-              )}
+          <div className={styles.maincontent}>
+            <div
+              className={styles.prop1}
+              style={{
+                backgroundColor:
+                  colorarray[currentcolor] === "#17D1BC"
+                    ? "#FDCC03"
+                    : "#17D1BC",
+              }}
+            />
+            <div
+              className={styles.prop2}
+              style={{
+                backgroundColor:
+                  colorarray[currentcolor] === "#FF6263"
+                    ? "#FDCC03"
+                    : "#FF6263",
+              }}
+            />
+            <div
+              className={styles.prop3}
+              style={{
+                backgroundColor:
+                  colorarray[currentcolor] === "#4166EB"
+                    ? "#FDCC03"
+                    : "#4166EB",
+              }}
+            />
+            <div className={styles.prop4} />
+            <div className={styles.quizContainer}>
+              <div className={styles.leftSection}>
+                {!quizfinished && (
+                  <>
+                    <p
+                      className={styles.heading}
+                      style={{
+                        color:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#ffffff"
+                            : "#000000",
+                      }}
+                    >
+                      Money Quotient Quiz
+                    </p>
+                    <p
+                      className={styles.details}
+                      style={{
+                        color:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#ffffff"
+                            : "#000000",
+                      }}
+                    >
+                      You will be asked 15 questions and have to choose the
+                      option which you think is correct.This is a dynamic quiz
+                      that adapts the difficulty level according to your
+                      answers. The tougher questions you get right, the more
+                      points you will get.
+                    </p>
+                    <p
+                      className={styles.current}
+                      style={{
+                        backgroundColor:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#ffffff"
+                            : "#4166EB",
+                        color:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#000000"
+                            : "#ffffff",
+                      }}
+                    >
+                      {`${currentquestionindex + 1} / ${15}`}
+                    </p>
+                  </>
+                )}
+              </div>
+              {showQuiz && !quizfinished ? (
+                <div className={styles.rightSection}>
+                  <div className={styles.timerSection}>
+                    <p
+                      className={styles.timeleft}
+                      style={{
+                        color:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#ffffff"
+                            : "#000000",
+                      }}
+                    >
+                      Time Left
+                    </p>
+                    <p
+                      className={styles.timer}
+                      style={{
+                        color:
+                          colorarray[currentcolor] === "#4166EB"
+                            ? "#ffffff"
+                            : "#000000",
+                      }}
+                    >
+                      {secondsToTime(timer / 1000)}
+                    </p>
+                  </div>
+                </div>
+              ) : null}
             </div>
             {showQuiz && !quizfinished ? (
-              <div className={styles.rightSection}>
-                <div className={styles.timerSection}>
-                  <p
-                    className={styles.timeleft}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Time Left
-                  </p>
-                  <p
-                    className={styles.timer}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    {secondsToTime(timer / 1000)}
-                  </p>
+              <div className={styles.quizWrapper}>
+                <QuizComponent
+                  data={data}
+                  widthHeight={widthHeight}
+                  setcorrectAnswers={setcorrectAnswers}
+                  question={currentquestion}
+                  totalQuestions={15}
+                  currentquestionindex={currentquestionindex}
+                  setcurrentquestionindex={setcurrentquestionindex}
+                  setquizfinished={setquizfinished}
+                  quizfinished={quizfinished}
+                  setshowQuiz={setshowQuiz}
+                  setanswersheet={setanswersheet}
+                  setscore={setscore}
+                  currentcolor={currentcolor}
+                  setcurrentcolor={setcurrentcolor}
+                  colorarray={colorarray}
+                />
+              </div>
+            ) : null}
+            {quizfinished ? (
+              <div
+                className={`${styles.resultSection}  ${
+                  openFull ? styles.hideOverFlow : ""
+                }`}
+              >
+                <Jasper className={styles.jasper} />
+                <div className={styles.background}>
+                  <div className={styles.curvecontainer}>
+                    <Curve1 className={styles.curve1} />
+                    <Curve2 className={styles.curve2} />
+                  </div>
+                </div>
+
+                <p
+                  className={styles.heading}
+                  style={{
+                    color:
+                      score < 50
+                        ? "#4166EB"
+                        : score < 80
+                        ? "#FDCC03"
+                        : "#17D1BC",
+                  }}
+                >
+                  {score < 50
+                    ? "Money Rookie"
+                    : score < 80
+                    ? "Money Ninja"
+                    : "Money Master"}
+                </p>
+                <p className={styles.subheading}>
+                  {score < 50
+                    ? "Looks like you are a Money Rookie! Don’t worry, that’s what we’re here for! Join upsurge’s waiting list and subscribe to our newsletter to start your journey towards financial freedom today."
+                    : score < 80
+                    ? "You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. "
+                    : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
+                </p>
+                <div className={styles.points}>You scored : {score}%</div>
+                {/* <div className={styles.pointsdes}>XP Points</div> */}
+                <div className={styles.signupBox}>
+                  <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+
+                  <div className={styles.normalbutton} onClick={handleSignup}>
+                    Join the waitlist
+                  </div>
+                </div>
+                <div
+                  className={styles.button}
+                  onClick={() => window.location.reload(false)}
+                >
+                  Play Again
                 </div>
               </div>
             ) : null}
           </div>
-          {showQuiz && !quizfinished ? (
-            <div className={styles.quizWrapper}>
-              <QuizComponent
-                data={data}
-                widthHeight={widthHeight}
-                setcorrectAnswers={setcorrectAnswers}
-                question={currentquestion}
-                totalQuestions={15}
-                currentquestionindex={currentquestionindex}
-                setcurrentquestionindex={setcurrentquestionindex}
-                setquizfinished={setquizfinished}
-                quizfinished={quizfinished}
-                setshowQuiz={setshowQuiz}
-                setanswersheet={setanswersheet}
-                setscore={setscore}
-                currentcolor={currentcolor}
-                setcurrentcolor={setcurrentcolor}
-                colorarray={colorarray}
-              />
-            </div>
-          ) : null}
-          {quizfinished ? (
-            <div
-              className={`${styles.resultSection}  ${
-                openFull ? styles.hideOverFlow : ""
-              }`}
-            >
-              <Jasper className={styles.jasper} />
-              <div className={styles.background}>
-                <div className={styles.curvecontainer}>
-                  <Curve1 className={styles.curve1} />
-                  <Curve2 className={styles.curve2} />
-                </div>
-              </div>
-
-              <p
-                className={styles.heading}
-                style={{
-                  color:
-                    score < 50 ? "#4166EB" : score < 80 ? "#FDCC03" : "#17D1BC",
-                }}
-              >
-                {score < 50
-                  ? "Money Rookie"
-                  : score < 80
-                  ? "Money Ninja"
-                  : "Money Master"}
-              </p>
-              <p className={styles.subheading}>
-                {score < 50
-                  ? "Looks like you are a Money Rookie! Don’t worry, that’s what we’re here for! Join upsurge’s waiting list and subscribe to our newsletter to start your journey towards financial freedom today."
-                  : score < 80
-                  ? "You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. "
-                  : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
-              </p>
-              <div className={styles.points}>You scored : {score}%</div>
-              {/* <div className={styles.pointsdes}>XP Points</div> */}
-              <div className={styles.signupBox}>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <div className={styles.normalbutton} onClick={handleSignup}>
-                  Join the waitlist
-                </div>
-              </div>
-              <div
-                className={styles.button}
-                onClick={() => window.location.reload(false)}
-              >
-                Play Again
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
     </div>

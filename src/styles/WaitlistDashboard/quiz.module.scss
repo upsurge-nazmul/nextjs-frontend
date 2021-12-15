@@ -248,11 +248,22 @@
     height: 100%;
     overflow-y: auto;
     .contentWrapper {
-      margin-top: 5vh;
-      padding-left: 17%;
-      position: relative;
-      padding-right: 17%;
-      padding-bottom: 100px;
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      .maincontent {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 30px;
+        padding: 0 45px;
+        scrollbar-width: thin;
+      }
       .prop1 {
         background-color: #17d1bc;
         width: 10vw;

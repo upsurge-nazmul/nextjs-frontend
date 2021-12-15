@@ -13,7 +13,8 @@ function AuthHeader({ handleBack, setmode, mode }) {
       </p>
       {mode === "login" ? (
         <p className={styles.changemode}>
-          No Account? <span onClick={() => setmode("parent")}>Join</span>
+          No Account?{" "}
+          <span onClick={() => setmode("parent")}>Get early access</span>
         </p>
       ) : (
         <p className={styles.changemode}>

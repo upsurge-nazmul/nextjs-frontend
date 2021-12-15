@@ -62,7 +62,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           and rewarding.
         </div>
         <div className={styles.button} onClick={handleSignup}>
-          {"Join the Waitlist"}
+          {"Get early access"}
         </div>
         {/* <p className={styles.checkwaiting} onClick={check}>
           Check your waitlist number

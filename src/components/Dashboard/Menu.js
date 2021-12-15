@@ -7,12 +7,11 @@ import styles from "../../styles/Dashboard/menu.module.scss";
 import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
-function Menu({ settoastdata, menuType }) {
+function Menu({ settoastdata, menuType, waitilistmenu }) {
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
     useContext(MainContext);
   const router = useRouter();
   const [rotatesetting, setrotatesetting] = useState(false);
-  console.log(menuType);
   async function handleLogout() {
     let res = await LoginApis.logout();
     if (res && res.data && res.data.success) {
@@ -59,7 +58,7 @@ function Menu({ settoastdata, menuType }) {
           Edit profile
         </p>
       )}
-      {menuType !== "kid" && (
+      {menuType !== "kid" && !waitilistmenu && (
         <p
           className={styles.tabs}
           onClick={() => {
@@ -71,24 +70,26 @@ function Menu({ settoastdata, menuType }) {
           Payments
         </p>
       )}
-      <div
-        className={styles.tabs}
-        onMouseEnter={() => setrotatesetting(true)}
-        onMouseLeave={() => setrotatesetting(false)}
-        onClick={() => {
-          setshowmenu(false);
-          router.push("/editprofile/parent");
-        }}
-      >
+      {!waitilistmenu && (
         <div
-          className={`${styles.settings} ${styles.icon} ${
-            rotatesetting ? styles.rotate : ""
-          }`}
+          className={styles.tabs}
+          onMouseEnter={() => setrotatesetting(true)}
+          onMouseLeave={() => setrotatesetting(false)}
+          onClick={() => {
+            setshowmenu(false);
+            router.push("/editprofile/parent");
+          }}
         >
-          <SettingsSvg />
+          <div
+            className={`${styles.settings} ${styles.icon} ${
+              rotatesetting ? styles.rotate : ""
+            }`}
+          >
+            <SettingsSvg />
+          </div>
+          Settings
         </div>
-        Settings
-      </div>
+      )}
 
       <div className={styles.button} onClick={handleLogout}>
         Log out

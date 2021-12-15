@@ -16,7 +16,6 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [notifications, setnotifications] = useState(["s"]);
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
     useContext(MainContext);
-  console.log(userdata);
   return (
     <div className={styles.dashboardHeader}>
       <h1 className={styles.dashboardHeading}>
@@ -35,25 +34,34 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        <div
-          className={`${styles.notification} ${styles.icon} ${
-            bell ? styles.bell : ""
-          }`}
-          onClick={() =>
-            router.push({
-              asPath: "/notifications",
-              pathname: "/notifications",
-              query: { type: "request" },
-            })
-          }
-          onMouseEnter={() => setbell(true)}
-          onMouseLeave={() => setbell(false)}
-        >
-          {notifications.length > 0 ? <div className={styles.dot}></div> : null}
-          <NotificationBell />
-        </div>
+        {!userdata?.is_waiting_active && (
+          <div
+            className={`${styles.notification} ${styles.icon} ${
+              bell ? styles.bell : ""
+            }`}
+            onClick={() =>
+              router.push({
+                asPath: "/notifications",
+                pathname: "/notifications",
+                query: { type: "request" },
+              })
+            }
+            onMouseEnter={() => setbell(true)}
+            onMouseLeave={() => setbell(false)}
+          >
+            {notifications.length > 0 ? (
+              <div className={styles.dot}></div>
+            ) : null}
+            <NotificationBell />
+          </div>
+        )}
         <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
-          {showmenu && <Menu settoastdata={settoastdata} />}
+          {showmenu && (
+            <Menu
+              settoastdata={settoastdata}
+              waitilistmenu={userdata?.is_waiting_active}
+            />
+          )}
           <img
             id="avatar-button"
             src={
