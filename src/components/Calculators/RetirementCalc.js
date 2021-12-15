@@ -17,7 +17,7 @@ export default function Retirement({ seterror, error }) {
       title: "Expected age of retirement",
       type: "select",
       code: "type",
-      options: [40, 45, 60, 65],
+      options: [40, 45, 50, 55, 60, 65],
     },
     {
       title: "Current age",

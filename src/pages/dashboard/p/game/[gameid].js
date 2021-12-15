@@ -68,13 +68,13 @@ const data = {
     loaderUrl: "/Games/NeedOrWant/Build/NeedOrWant.loader.js",
     version: "1.0",
   },
-  Ludo: {
-    dataUrl: "/Games/Ludo/Build/Ludo.data",
-    frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
-    codeUrl: "/Games/Ludo/Build/Ludo.wasm",
-    loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "1.0",
-  },
+  // Ludo: {
+  //   dataUrl: "/Games/Ludo/Build/Ludo.data",
+  //   frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
+  //   codeUrl: "/Games/Ludo/Build/Ludo.wasm",
+  //   loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
+  //   version: "1.0",
+  // },
 };
 const specialchars = [
   "#",

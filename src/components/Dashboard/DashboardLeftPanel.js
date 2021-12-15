@@ -14,7 +14,7 @@ import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
-
+import CalcSvg from "../SVGcomponents/CalcSvg";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
@@ -129,6 +129,18 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quiz</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/w/calculators" ||
+              currenttab.indexOf("/dashboard/w/calculator") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/calculators")}
+          >
+            <CalcSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Calculators</p>
           </div>
           <div
             className={`${styles.tab}  ${

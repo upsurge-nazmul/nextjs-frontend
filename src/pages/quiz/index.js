@@ -366,9 +366,9 @@ function Quiz({ leaderboard }) {
               <div className={styles.startbutton} onClick={startgame}>
                 Start Playing
               </div>
-              <div className={styles.skipbutton} onClick={skipgame}>
+              {/* <div className={styles.skipbutton} onClick={skipgame}>
                 Skip
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={styles.right}>
@@ -555,7 +555,7 @@ function Quiz({ leaderboard }) {
           ) : null}
         </div>
       )}
-      {/* <LeaderBoard title="Quiz" data={leaderboard || []} /> */}
+      <LeaderBoard title="Quiz" data={leaderboard || []} />
       <JoinUs />
       <Footer />
     </div>
