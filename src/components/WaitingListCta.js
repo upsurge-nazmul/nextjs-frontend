@@ -5,7 +5,7 @@ import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import Jasper from "./SVGcomponents/Jasper";
 import WaitlistPopUp from "./WaitlistPopUp";
-export default function WaitingListCta({ setshowwaitlistblock }) {
+export default function WaitingListCta() {
   const router = useRouter();
   const [show, setshow] = useState(false);
   const [error, seterror] = useState("");
