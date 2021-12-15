@@ -97,40 +97,69 @@
   .calcs {
     .contentWrapper {
       .mainContent {
-        .flexLeft {
-          .recentSection {
-            .heading {
-              font-size: 22px;
+        margin-top: 0;
+        .calculatorsList {
+          display: flex;
+          min-height: 70vh;
+          overflow: auto;
+          flex-wrap: wrap;
+          .calcCard {
+            background: linear-gradient(
+                0deg,
+                rgba(241, 248, 255, 0.2),
+                rgba(241, 248, 255, 0.2)
+              ),
+              #ffffff;
+            box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            width: 280px;
+            height: 390px;
+            font-family: "Roboto";
+            font-weight: 500;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            margin-left: 0;
+            margin-top: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 20px;
+            .calccardtitle {
+              font-size: 18px;
+              font-weight: 500;
+              width: 100%;
+              text-align: left;
             }
-            .heads {
-              height: 48px;
-              font-size: 11px;
-              // .head1 {
-              //   margin-left: 12%;
-              // }
-              // .head2 {
-              //   margin-left: 11.5%;
-              // }
-              // .head3 {
-              //   margin-left: 2%;
-              // }
+            .calccardsubtitle {
+              margin-top: 10px;
+              font-size: 12px;
+              font-weight: 400;
+              width: 100%;
+              text-align: left;
+              overflow: auto;
+              scrollbar-width: thin;
             }
-          }
-          .availableSection {
-            .heading {
-              font-size: 22px;
+            .date {
+              font-size: 11.4839px;
+              margin-top: 6px;
+              text-align: left;
+              width: 100%;
+              color: #848484;
             }
-          }
-        }
-        .flexRight {
-          .familyfunSection {
-            .heading {
-              font-size: 22px;
+            border: 1px solid rgb(255, 255, 255);
+
+            &:hover {
+              border: 1px solid rgb(187, 187, 187);
             }
-          }
-          .simulatorsSection {
-            .heading {
-              font-size: 22px;
+            .cardimg {
+              height: 225px;
+              width: 100%;
+              margin-bottom: 20px;
+              object-fit: cover;
+              border-radius: 18px;
             }
           }
         }

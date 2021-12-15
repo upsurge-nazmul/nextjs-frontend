@@ -253,7 +253,8 @@ function Quiz({ leaderboard }) {
         setOpenFull={setopenFull}
         answersheet={answersheet}
       />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       {showmain && !started && (
         <div className={styles.startscreen}>
           <div className={styles.right}>
@@ -555,7 +556,9 @@ function Quiz({ leaderboard }) {
           ) : null}
         </div>
       )}
-      <LeaderBoard title="Quiz" data={leaderboard || []} />
+      {(!showmain || quizfinished) && (
+        <LeaderBoard title="Quiz" data={leaderboard || []} />
+      )}
       <JoinUs />
       <Footer />
     </div>

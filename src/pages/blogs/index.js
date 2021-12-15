@@ -16,6 +16,7 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
+import WaitlistPopUp from "../../components/WaitlistPopUp";
 
 function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const router = useRouter();
@@ -29,7 +30,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const [showauth, setshowauth] = useState(false);
   const [pagination, setpagination] = useState(porppagination || ["1"]);
   const [page, setpage] = useState(1);
-
+ 
   async function getData(page) {
     setloading(true);
     let res = await BlogApis.getblogs({ page });
@@ -101,6 +102,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         showauth={showauth}
         setshowauth={setshowauth}
       />
+
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
       <FullBlog
@@ -111,7 +113,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
-        <WaitingListCta />
+        <WaitingListCta/>
 
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
 

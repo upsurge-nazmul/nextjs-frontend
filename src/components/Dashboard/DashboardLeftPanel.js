@@ -10,7 +10,6 @@ import KidSvg from "../SVGcomponents/KidsSvg";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
-import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";

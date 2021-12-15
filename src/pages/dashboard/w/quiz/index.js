@@ -216,6 +216,8 @@ export default function TestQuiz({ first_name }) {
         backgroundColor: !showmain ? "White" : colorarray[currentcolor],
       }}
     >
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <Toast data={toastdata} />
       {!showmain && (
         <div className={styles.startscreen}>

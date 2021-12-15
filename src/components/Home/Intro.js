@@ -21,24 +21,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   });
   async function handleSignup(e) {
     e.preventDefault();
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-    } else {
-      setshowwaitlistblock(true);
-      // let response = await LoginApis.saveemail({ email: email });
-      // if (response) {
-      //   if (response.data.success) {
-      //     router.push("/waitlist/" + email);
-      //   } else {
-      //     seterror(response.data.message);
-      //   }
-      // } else {
-      //   seterror("Error connecting to server");
-      // }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
-    }
+    setshowwaitlistblock(true);
   }
   async function check() {
     if (!validator.isEmail(email)) {
@@ -78,28 +61,12 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           entrepreneurship revolution amongst the Gen-Z, by making learning fun
           and rewarding.
         </div>
-        <p className={styles.error} onClick={handleSignup}>
-          {error}
-        </p>
-        <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-          <form onSubmit={(e) => handleSignup(e)}>
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                seterror("");
-                setemail(e.target.value);
-              }}
-            />
-          </form>
-          <div className={styles.button} onClick={handleSignup}>
-            {"Join the Waitlist"}
-          </div>
+        <div className={styles.button} onClick={handleSignup}>
+          {"Join the Waitlist"}
         </div>
-        <p className={styles.checkwaiting} onClick={check}>
+        {/* <p className={styles.checkwaiting} onClick={check}>
           Check your waitlist number
-        </p>
+        </p> */}
       </div>
       <IntroSvg className={styles.homesvg} />
       <BallsSvg className={styles.ballsvg} />

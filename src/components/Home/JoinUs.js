@@ -4,36 +4,21 @@ import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
+import WaitlistPopUp from "../WaitlistPopUp";
 function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
-  const router = useRouter();
-  async function handleSignup(e) {
-    e.preventDefault();
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-    } else {
-      let response = await LoginApis.addtonewslettersubs({ email: email });
-      if (response) {
-        if (response.data.success) {
-          if (response.data.message === "Exists") {
-            seterror("Already subscribed");
-          } else {
-            router.push("/subscribed");
-          }
-        } else {
-          seterror(response.data.message);
-        }
-      } else {
-        seterror("Error connecting to server");
-      }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
-    }
-  }
+  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   return (
     <section className={styles.joinSection}>
+      {showwaitlistblock && (
+        <WaitlistPopUp
+          subscribe={true}
+          email={email}
+          setemail={setemail}
+          setshowpopup={setshowwaitlistblock}
+        />
+      )}
       <div className={`${styles.doodle} ${styles.dl1}`}>
         <Image
           layout="fill"
@@ -73,22 +58,13 @@ function JoinUs() {
           development
         </p>
         <div className={styles.emailwrapper}>
-          <form onSubmit={(e) => handleSignup(e)}>
-            <input
-              className={styles.email}
-              type="email"
-              placeholder="Email"
-              onChange={(e) => {
-                seterror("");
-                setemail(e.target.value);
-              }}
-            />
-          </form>
-          <div className={styles.button} onClick={handleSignup}>
+          <div
+            className={styles.button}
+            onClick={() => setshowwaitlistblock(true)}
+          >
             Subscribe
           </div>
         </div>
-        {error && <p className={styles.error}>{error}</p>}
       </div>
     </section>
   );

@@ -27,6 +27,24 @@
   position: relative;
   background: #fdcc03;
   z-index: 2;
+  .curve2 {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 60%;
+    z-index: -1;
+    transform: scaleX(-1);
+    animation: moveit 5s ease alternate infinite;
+    animation-delay: 2s;
+  }
+  .curve1 {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 25%;
+    z-index: -1;
+    animation: moveit 5s ease alternate infinite;
+  }
   .gamedata {
     width: 100%;
     padding: 0 7vw;

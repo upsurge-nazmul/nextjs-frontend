@@ -111,20 +111,10 @@ export default function KnowledgeQuest({
           })}
         </div>
         <div className={styles.signupBox}>
-          {showinput && (
-            <form onSubmit={check}>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </form>
-          )}
           {!showinput ? (
             <div
               className={styles.joinButton}
-              onClick={() => setshowinput(true)}
+              onClick={() => setshowwaitlistblock(true)}
             >
               Join the waitlist
             </div>

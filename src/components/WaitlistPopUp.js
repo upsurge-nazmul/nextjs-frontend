@@ -4,13 +4,22 @@ import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 
-export default function WaitlistPopUp({ email, setemail, setshowpopup }) {
+export default function WaitlistPopUp({
+  email,
+  setemail,
+  setshowpopup,
+  subscribe,
+}) {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [error, seterror] = useState("");
   const [phone, setphone] = useState("");
   const router = useRouter();
   async function handleUpdateData() {
+    if (!validator.isEmail(email)) {
+      seterror("Invalid Email");
+      return;
+    }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
       return;
@@ -26,17 +35,39 @@ export default function WaitlistPopUp({ email, setemail, setshowpopup }) {
       seterror("First name is required");
       return;
     }
-    let response = await LoginApis.saveemail({
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-    });
-
-    if (!response || !response.data.success) {
-      seterror(response.data.message || "Error connecting to server");
+    if (subscribe) {
+      let response = await LoginApis.addtonewslettersubs({
+        email: email,
+        first_name: firstName,
+        phone: phone,
+        last_name: lastName,
+      });
+      if (response) {
+        if (response.data.success) {
+          if (response.data.message === "Exists") {
+            seterror("Email already subscribed, please use another email");
+          } else {
+            router.push("/subscribed");
+          }
+        } else {
+          seterror(response.data.message);
+        }
+      } else {
+        seterror("Error connecting to server");
+      }
     } else {
-      router.push("/waitlist/" + email);
+      let response = await LoginApis.saveemail({
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+      });
+
+      if (!response || !response.data.success) {
+        seterror(response.data.message || "Error connecting to server");
+      } else {
+        router.push("/waitlist/" + email);
+      }
     }
   }
   return (

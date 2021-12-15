@@ -48,6 +48,11 @@
         width: 40px;
         height: 40px;
         object-fit: contain;
+        g {
+          path {
+            fill: #4f4f4f;
+          }
+        }
       }
       .tabtitle {
         flex: 1;
@@ -79,6 +84,11 @@
       svg {
         path {
           fill: #4166eb;
+        }
+        g {
+          path {
+            fill: #4166eb !important;
+          }
         }
       }
       rect,
@@ -164,9 +174,66 @@
   }
 }
 
-@media only screen and (min-width: 860px) and (max-height: 800px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .dashboardLeftPanel {
     max-width: 280px;
+    min-width: 280px;
+    width: 280px;
+    .dashboardLogo {
+      cursor: pointer;
+      width: 150px;
+    }
+    .tabContainer {
+      margin-top: 80px;
+      .tab {
+        margin-bottom: 15px;
+        .icon {
+          width: 35px;
+          height: 35px;
+        }
+        .tabtitle {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          margin-left: 15%;
+          font-weight: 600;
+          font-size: 14px;
+          letter-spacing: 0.429323px;
+          color: #000000;
+        }
+        &:hover {
+          background: linear-gradient(
+            90deg,
+            rgba(246, 246, 246, 1) 0%,
+            rgba(246, 246, 246, 1) 99%,
+            rgb(206, 206, 206) 99%
+          );
+        }
+      }
+      .activetab {
+        background: rgb(246, 246, 246);
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgba(65, 102, 235, 1) 99%
+        );
+        svg {
+          path {
+            fill: #4166eb;
+          }
+          g {
+            path {
+              fill: #4166eb !important;
+            }
+          }
+        }
+        rect,
+        circle {
+          stroke: #4166eb;
+        }
+      }
+    }
   }
 }
 

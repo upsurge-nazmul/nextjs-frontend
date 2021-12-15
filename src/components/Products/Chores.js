@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import styles from "../../styles/Products/chores.module.scss";
 import Image from "next/image";
-export default function Chores({ id, email, setEmail, check, error }) {
+import WaitlistPopUp from "../WaitlistPopUp";
+export default function Chores({
+  id,
+  email,
+  setEmail,
+  check,
+  error,
+  setshowwaitlistblock,
+  showwaitlistblock,
+}) {
   const [showinput, setshowinput] = useState(false);
 
   return (
     <div className={styles.chores} id={id}>
+      {showwaitlistblock && (
+        <WaitlistPopUp
+          email={email}
+          setemail={setEmail}
+          setshowpopup={setshowwaitlistblock}
+        />
+      )}
       <div className={styles.top}>
         <div className={styles.heading}>Chores</div>
         <div className={styles.subheading}>
@@ -15,20 +31,10 @@ export default function Chores({ id, email, setEmail, check, error }) {
           fulfill their tasks to earn money.
         </div>
         <div className={styles.signupBox}>
-          {showinput && (
-            <form onSubmit={check}>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </form>
-          )}
           {!showinput ? (
             <div
               className={styles.joinButton}
-              onClick={() => setshowinput(true)}
+              onClick={() => setshowwaitlistblock(true)}
             >
               Join the waitlist
             </div>

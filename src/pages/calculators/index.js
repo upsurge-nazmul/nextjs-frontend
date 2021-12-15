@@ -7,6 +7,8 @@ import Footer from "../../components/Home/Footer";
 import Image from "next/image";
 import JoinUs from "../../components/Home/JoinUs";
 import { Calc_Data } from "../../static_data/Calc_Data";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -32,6 +34,8 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
+        <Curve1 className={styles.curve1} />
+        <Curve2 className={styles.curve2} />
         <div
           className={styles.icon}
           style={{ position: "relative", height: "150px" }}
