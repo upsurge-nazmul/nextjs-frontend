@@ -51,7 +51,7 @@ function HeaderTabSection({
     >
       <div className={styles.expander}>
         <span
-          onCLick={() => {
+          onClick={() => {
             if (pushTo) {
               router.push(pushTo);
             }
