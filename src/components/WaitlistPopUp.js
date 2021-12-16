@@ -11,11 +11,11 @@ export default function WaitlistPopUp({
   setshowpopup,
   subscribe,
 }) {
-  const [firstName, setfirstName] = useState("t");
+  const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [error, seterror] = useState("");
   const [OTP, setOTP] = useState("");
-  const [phone, setphone] = useState("7987606986");
+  const [phone, setphone] = useState("");
   const [mode, setmode] = useState("data"); // data and otp
   const router = useRouter();
   useEffect(() => {
