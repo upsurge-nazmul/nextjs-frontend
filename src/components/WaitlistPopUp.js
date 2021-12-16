@@ -10,6 +10,7 @@ export default function WaitlistPopUp({
   setemail,
   setshowpopup,
   subscribe,
+  settoastdata,
 }) {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -92,7 +93,9 @@ export default function WaitlistPopUp({
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      setmode("otp");
+      if (mode === "otp") {
+        settoastdata({ type: "success", msg: "OTP sent", show: true });
+      } else setmode("otp");
     }
   }
 

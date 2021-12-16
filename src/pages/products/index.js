@@ -11,6 +11,7 @@ import LiveClasses from "../../components/Products/LiveClasses";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
+import Toast from "../../components/Toast";
 export default function Products() {
   const router = useRouter();
   const type = router.query.type;
@@ -20,6 +21,11 @@ export default function Products() {
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   function getheight(el) {
     if (!el) {
       return 0;
@@ -103,6 +109,7 @@ export default function Products() {
         stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
+      <Toast data={toastdata} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -113,6 +120,7 @@ export default function Products() {
         check={check}
         error={error}
         showwaitlistblock={showwaitlistblock}
+        settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
       />
@@ -123,6 +131,7 @@ export default function Products() {
         setEmail={setEmail}
         error={error}
         showwaitlistblock={showwaitlistblock}
+        settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
         id="choressection"
       />

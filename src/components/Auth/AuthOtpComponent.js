@@ -80,7 +80,7 @@ function AuthOtpComponent({
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      setmode("otp");
+      settoastdata({ type: "success", msg: "OTP sent", show: true });
     }
   }
   // async function verifyOtp() {

@@ -13,6 +13,7 @@ export default function KnowledgeQuest({
   check,
   error,
   showwaitlistblock,
+  settoastdata,
   setshowwaitlistblock,
 }) {
   const [showinput, setshowinput] = useState(false);
@@ -42,6 +43,7 @@ export default function KnowledgeQuest({
         <WaitlistPopUp
           email={email}
           setemail={setEmail}
+          settoastdata={settoastdata}
           setshowpopup={setshowwaitlistblock}
         />
       )}

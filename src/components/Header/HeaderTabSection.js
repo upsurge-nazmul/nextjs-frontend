@@ -31,9 +31,6 @@ function HeaderTabSection({
           }
         }
         setshowtabs(!showtabs);
-        if (pushTo) {
-          router.push(pushTo);
-        }
       }}
       onMouseEnter={() => {
         if (!mobile) {
@@ -53,7 +50,15 @@ function HeaderTabSection({
       }}
     >
       <div className={styles.expander}>
-        {title}
+        <span
+          onCLick={() => {
+            if (pushTo) {
+              router.push(pushTo);
+            }
+          }}
+        >
+          {title}
+        </span>
         {tabs.length > 0 && (
           <HeaderExpandSvg
             className={`${

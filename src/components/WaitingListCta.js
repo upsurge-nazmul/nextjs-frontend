@@ -44,9 +44,9 @@ export default function WaitingListCta() {
             >
               Click here
             </span>{" "}
-            to join the
+            to get
           </p>
-          <p>Upsurge waiting list.</p>
+          <p>early access.</p>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ export default function Chores({
   error,
   setshowwaitlistblock,
   showwaitlistblock,
+  settoastdata,
 }) {
   const [showinput, setshowinput] = useState(false);
 
@@ -19,6 +20,7 @@ export default function Chores({
         <WaitlistPopUp
           email={email}
           setemail={setEmail}
+          settoastdata={settoastdata}
           setshowpopup={setshowwaitlistblock}
         />
       )}
