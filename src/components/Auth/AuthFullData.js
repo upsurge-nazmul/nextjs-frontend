@@ -102,7 +102,39 @@ function AuthFullData({
       // setmode("otp");
     }
   }
-
+  async function genotp() {
+    if (!validator.isEmail(email)) {
+      seterror("Invalid Email");
+      return;
+    }
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      seterror("Invalid Phone");
+      return;
+    }
+    let checkphone = await LoginApis.checkphone({ phone });
+    if (checkphone && checkphone.data && checkphone.data.success) {
+      console.log("phone ok");
+    } else {
+      seterror(checkphone?.data.message || "Error connecting to server");
+      return;
+    }
+    if (!firstName) {
+      seterror("First name is required");
+      return;
+    }
+    let response = await LoginApis.getearlyaccess({
+      email: email,
+      first_name: firstName,
+      phone: phone,
+      last_name: lastName,
+    });
+    if (!response || !response.data.success) {
+      seterror(response.data.message || "Error connecting to server");
+    } else {
+      console.log(response.data.message);
+      setmode("otp");
+    }
+  }
   function validatePassword(e) {
     let pass = e.target.value.trim();
     setpassword(pass);
@@ -218,7 +250,7 @@ function AuthFullData({
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <div className={styles.button} onClick={() => handleUpdateData()}>
+      <div className={styles.button} onClick={() => genotp()}>
         Continue
       </div>
     </div>
