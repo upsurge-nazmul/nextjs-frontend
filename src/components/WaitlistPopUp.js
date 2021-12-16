@@ -35,6 +35,7 @@ export default function WaitlistPopUp({
         if (response.data.success) {
           if (response.data.message === "Exists") {
             seterror("Email already subscribed, please use another email");
+            setmode("data");
           } else {
             router.push("/subscribed");
           }
@@ -55,6 +56,7 @@ export default function WaitlistPopUp({
 
       if (!response || !response.data.success) {
         seterror(response.data.message || "Error connecting to server");
+        setmode("data");
       } else {
         router.push("/waitlist/" + email);
       }
