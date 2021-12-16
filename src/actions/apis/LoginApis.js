@@ -100,6 +100,10 @@ const checkpasslink = (payload) => {
 const generatepass = (payload) => {
   return ApiCalls.postResponse("users/generatepassword", payload);
 };
+
+const getearlyaccess = (payload) => {
+  return ApiCalls.postResponse("users/getearlyaccess", payload);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -123,6 +127,7 @@ const LoginApis = {
   refersignup,
   checkpasslink,
   generatepass,
+  getearlyaccess,
 };
 
 export default LoginApis;

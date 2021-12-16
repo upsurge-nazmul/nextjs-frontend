@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/waitlistpopup.module.scss";
 import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
+import OtpInput from "react-otp-input";
 
 export default function WaitlistPopUp({
   email,
@@ -10,37 +11,25 @@ export default function WaitlistPopUp({
   setshowpopup,
   subscribe,
 }) {
-  const [firstName, setfirstName] = useState("");
+  const [firstName, setfirstName] = useState("t");
   const [lastName, setlastName] = useState("");
   const [error, seterror] = useState("");
-  const [phone, setphone] = useState("");
+  const [OTP, setOTP] = useState("");
+  const [phone, setphone] = useState("7987606986");
+  const [mode, setmode] = useState("data"); // data and otp
   const router = useRouter();
+  useEffect(() => {
+    seterror("");
+  }, [firstName, lastName, phone, mode]);
+
   async function handleUpdateData() {
-    if (!validator.isEmail(email)) {
-      seterror("Invalid Email");
-      return;
-    }
-    if (!validator.isMobilePhone(phone, "en-IN")) {
-      seterror("Invalid Phone");
-      return;
-    }
-    let checkphone = await LoginApis.checkphone({ phone });
-    if (checkphone && checkphone.data && checkphone.data.success) {
-      console.log("phone ok");
-    } else {
-      seterror(checkphone?.data.message || "Error connecting to server");
-      return;
-    }
-    if (!firstName) {
-      seterror("First name is required");
-      return;
-    }
     if (subscribe) {
       let response = await LoginApis.addtonewslettersubs({
         email: email,
         first_name: firstName,
         phone: phone,
         last_name: lastName,
+        otp: OTP,
       });
       if (response) {
         if (response.data.success) {
@@ -61,6 +50,7 @@ export default function WaitlistPopUp({
         firstName: firstName,
         lastName: lastName,
         phone: phone,
+        otp: OTP,
       });
 
       if (!response || !response.data.success) {
@@ -70,56 +60,119 @@ export default function WaitlistPopUp({
       }
     }
   }
+
+  async function genotp() {
+    if (!validator.isEmail(email)) {
+      seterror("Invalid Email");
+      return;
+    }
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      seterror("Invalid Phone");
+      return;
+    }
+    let checkphone = await LoginApis.checkphone({ phone });
+    if (checkphone && checkphone.data && checkphone.data.success) {
+      console.log("phone ok");
+    } else {
+      seterror(checkphone?.data.message || "Error connecting to server");
+      return;
+    }
+    if (!firstName) {
+      seterror("First name is required");
+      return;
+    }
+    let response = await LoginApis.getearlyaccess({
+      email: email,
+      first_name: firstName,
+      phone: phone,
+      last_name: lastName,
+    });
+    if (!response || !response.data.success) {
+      seterror(response.data.message || "Error connecting to server");
+    } else {
+      setmode("otp");
+    }
+  }
+
   return (
     <div className={styles.waitlistpopup}>
       <div
         className={styles.background}
         onClick={() => setshowpopup(false)}
       ></div>
-      <div className={styles.block}>
-        <p className={styles.heading}>We need some more information</p>
-        <input
-          type="text"
-          placeholder="Email address*"
-          value={email}
-          setvalue={setemail}
-          onChange={(e) => {
-            setemail(e.target.value);
-          }}
-        />
-        <div className={styles.phoneWrapper}>
-          <p>+91</p>{" "}
+      {mode !== "otp" ? (
+        <div className={styles.block}>
+          <p className={styles.heading}>We need some more information</p>
           <input
             type="text"
-            placeholder="Phone*"
-            value={phone}
-            maxLength={10}
+            placeholder="Email address*"
+            value={email}
+            setvalue={setemail}
             onChange={(e) => {
-              if (!isNaN(e.target.value)) setphone(e.target.value);
+              setemail(e.target.value);
             }}
           />
+          <div className={styles.phoneWrapper}>
+            <p>+91</p>{" "}
+            <input
+              type="text"
+              placeholder="Phone*"
+              value={phone}
+              maxLength={10}
+              onChange={(e) => {
+                if (!isNaN(e.target.value)) setphone(e.target.value);
+              }}
+            />
+          </div>
+          <div className={styles.nameWrapper}>
+            <input
+              type="text"
+              placeholder="First Name*"
+              maxLength={10}
+              value={firstName}
+              onChange={(e) => setfirstName(e.target.value)}
+            />
+            <input
+              maxLength={10}
+              type="text"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setlastName(e.target.value)}
+            />
+          </div>
+          {error && <p className={styles.error}>{error}</p>}
+          <div className={styles.button} onClick={() => genotp()}>
+            Join
+          </div>
         </div>
-        <div className={styles.nameWrapper}>
-          <input
-            type="text"
-            placeholder="First Name*"
-            maxLength={10}
-            value={firstName}
-            onChange={(e) => setfirstName(e.target.value)}
-          />
-          <input
-            maxLength={10}
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setlastName(e.target.value)}
-          />
+      ) : (
+        <div className={styles.otpblock}>
+          <div className={styles.otpHeadWrapper}>
+            <p className={styles.text}>Enter the 6-digit code sent to you at</p>
+            <p className={styles.phone}>{"+91 " + phone}</p>
+          </div>
+          <div className={styles.otpWrapper} id="otpWrapper">
+            <OtpInput
+              value={OTP}
+              inputStyle={{ margin: "5px", width: "50px" }}
+              onChange={(otp) => setOTP(otp)}
+              numInputs={6}
+              containerStyle={{
+                "justify-content": "center",
+                "margin-top": "20px",
+              }}
+            />
+          </div>
+          {error && <p className={styles.error}>{error}</p>}
+
+          <div className={styles.resendButton} onClick={genotp}>
+            Resend OTP
+          </div>
+          <div className={styles.button} onClick={() => handleUpdateData()}>
+            Continue
+          </div>
         </div>
-        {error && <p className={styles.error}>{error}</p>}
-        <div className={styles.button} onClick={() => handleUpdateData()}>
-          Join
-        </div>
-      </div>
+      )}
     </div>
   );
 }
