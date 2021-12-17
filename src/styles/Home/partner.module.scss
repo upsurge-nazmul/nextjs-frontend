@@ -107,15 +107,15 @@
       padding: 0 10vw;
     }
     .wrapper {
-      width: 80%;
+      width: 90%;
       flex: 1;
-      margin-top: 50px;
+      margin-top: 30px;
       .img {
-        min-width: 150px;
-        max-width: 150px;
-        height: 80px;
+        min-width: 120px;
+        z-index: 100;
+        max-width: 120px;
+        height: 120px;
         object-fit: contain;
-        padding: 20px;
         background-color: rgb(255, 255, 255);
         border-radius: 6px;
         margin: 0 8px;

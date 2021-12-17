@@ -53,7 +53,10 @@ function AuthParent({
     }
 
     if (method === "email") {
-      let emailcheckresponse = await LoginApis.checkemail({ email: email });
+      let emailcheckresponse = await LoginApis.checkemail({
+        email: email,
+        waitlist: true,
+      });
       if (
         emailcheckresponse &&
         emailcheckresponse.data &&

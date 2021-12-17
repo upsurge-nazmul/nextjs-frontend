@@ -236,21 +236,8 @@
         width: 100%;
         line-height: 20px;
       }
-      .signupBox {
-        width: 80vw;
-        min-width: 250px;
-        max-width: 400px;
-        height: 40px;
-        input {
-          border-top-left-radius: 10px;
-          border-bottom-left-radius: 10px;
-          font-size: 12px;
-          padding-left: 10px;
-        }
-        .button,
-        .joinButton {
-          font-size: 14px;
-        }
+      .button {
+        font-size: 14px;
       }
       .checkwaiting {
         width: 100%;

@@ -73,6 +73,13 @@ export default function WaitlistPopUp({
       seterror("Invalid Phone");
       return;
     }
+    let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+    if (checkemail && checkemail.data && !checkemail.data.success) {
+      console.log("email ok");
+    } else {
+      seterror(checkemail?.data.message || "Error connecting to server");
+      return;
+    }
     let checkphone = await LoginApis.checkphone({ phone });
     if (checkphone && checkphone.data && checkphone.data.success) {
       console.log("phone ok");

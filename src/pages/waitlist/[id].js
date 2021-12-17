@@ -43,9 +43,11 @@ export default function WaitList({ res }) {
         <div className={styles.line}></div>
 
         <p className={styles.heading2}>
-          Thank you, you have been added to our waiting list.
+          Thank you, you have early access to our platform now.
         </p>
-
+        <p className={styles.heading3}>
+          For more information, please check your email.
+        </p>
         <p className={styles.subheading}>
           To stay up to date at all times, follow us on.
         </p>
