@@ -1,0 +1,10 @@
+.customdate {
+  z-index: 2;
+  .test {
+    border: none;
+    input {
+      background-color: transparent;
+      z-index: -1;
+    }
+  }
+}

@@ -1,65 +1,20 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import Header from "../../../../components/Header/Header";
-import LeftPanel from "../../../../components/LeftPanel";
-import QuizComponent from "../../../../components/Quiz/QuizComponent";
-import FullAnswersheet from "../../../../components/Quiz/FullAnswersheet";
-import QuizApis from "../../../../actions/apis/QuizApis";
+import React, { useContext, useEffect, useState } from "react";
+import QuizComponent from "../../../components/Quiz/QuizComponent";
+import QuizApis from "../../../actions/apis/QuizApis";
 import { useRouter } from "next/dist/client/router";
-import Toast from "../../../../components/Toast";
-import Jasper from "../../../../components/SVGcomponents/Jasper";
-import Footer from "../../../../components/Home/Footer";
-import LoginApis from "../../../../actions/apis/LoginApis";
+import Toast from "../../../components/Toast";
+import Jasper from "../../../components/SVGcomponents/Jasper";
+import LoginApis from "../../../actions/apis/LoginApis";
 import validator from "validator";
-import Curve1 from "../../../../components/SVGcomponents/Curve1";
-import Curve2 from "../../../../components/SVGcomponents/Curve2";
-import FreeGameApis from "../../../../actions/apis/FreeGameApis";
-import JoinUs from "../../../../components/Home/JoinUs";
-import LeaderBoard from "../../../../components/LeaderBoard";
-import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-const specialchars = [
-  "#",
-  "$",
-  "%",
-  "*",
-  "&",
-  "(",
-  "@",
-  "_",
-  ")",
-  "+",
-  "-",
-  "&&",
-  "||",
-  "!",
-  "(",
-  ")",
-  "{",
-  "}",
-  "[",
-  "]",
-  "^",
-  "~",
-  "*",
-  "?",
-  ":",
-  "1",
-  "0",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
-import { MainContext } from "../../../../context/Main";
-import styles from "../../../../styles/WaitlistDashboard/quiz.module.scss";
-import PopUp from "../../../../components/PopUp";
-import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-export default function TestQuiz({ first_name }) {
+import Curve1 from "../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../components/SVGcomponents/Curve2";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import { MainContext } from "../../../context/Main";
+import styles from "../../../styles/WaitlistDashboard/quiz.module.scss";
+import PopUp from "../../../components/PopUp";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+export default function TestQuiz({ first_name, userdatafromserver }) {
   const router = useRouter();
-  const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showQuiz, setshowQuiz] = useState(false);
   const [data, setdata] = useState(null);
   const [currentquiz, setcurrentquiz] = useState(data);
@@ -68,10 +23,8 @@ export default function TestQuiz({ first_name }) {
   const [task, settask] = useState("");
   const [stickyheader, setstickyheader] = useState(false);
   const [quizfinished, setquizfinished] = useState(false);
-  const [showauth, setshowauth] = useState(false);
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState(first_name);
   const [nickname, setnickname] = useState("");
   const [mode, setmode] = useState("home");
@@ -93,8 +46,12 @@ export default function TestQuiz({ first_name }) {
   const [currentquestionindex, setcurrentquestionindex] = useState(0);
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [started, setstarted] = useState(false);
+  const { setuserdata } = useContext(MainContext);
   const [showmain, setshowmain] = useState(false);
-  const [err, seterr] = useState("");
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
+
   useEffect(() => {
     setshowQuiz(data ? true : false);
     if (!data) return;
@@ -490,7 +447,12 @@ export async function getServerSideProps({ req }) {
       token: token,
     });
     if (response && response.data.success) {
-      return { props: { first_name: response.data.data.first_name } };
+      return {
+        props: {
+          first_name: response.data.data.first_name,
+          userdatafromserver: response.data.data,
+        },
+      };
     } else {
       return {
         props: {

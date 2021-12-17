@@ -1,0 +1,71 @@
+.modernInputBox {
+  height: 49px;
+  margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  input {
+    z-index: 0;
+  }
+  .dateplaceholder,
+  .placeholder {
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    color: #4f4f4f;
+    transition: all 0.3s ease;
+    padding-left: 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .dateplaceholder {
+    z-index: 5;
+  }
+  .placeholderlifted {
+    position: absolute;
+    background: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    padding: 0 5px;
+    color: #4f4f4f;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(244, 245, 247, 1) 50%,
+      rgba(244, 245, 247, 1) 100%
+    );
+    left: 15px;
+    top: -8px;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    z-index: 3;
+    border-radius: 12px;
+  }
+  input {
+    height: 49px;
+    width: 100%;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    border: 1px solid #030303;
+    border-radius: 8px;
+    padding: 0 20px;
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .modernInputBox {
+    margin-bottom: 10px;
+    .placeholder {
+      font-size: 12px;
+      padding: 0 15px;
+    }
+    .placeholderlifted {
+      left: 10px;
+      top: -6px;
+    }
+  }
+}

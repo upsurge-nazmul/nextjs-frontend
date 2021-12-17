@@ -91,7 +91,9 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/w" ? styles.activetab : ""
+              currenttab === "/dashboard/w" || "dashboard/w/editprofile"
+                ? styles.activetab
+                : ""
             }`}
             onClick={() => router.push("/dashboard/w")}
           >

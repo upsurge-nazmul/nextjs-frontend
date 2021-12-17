@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 
 import xss from "xss";
@@ -12,14 +12,18 @@ import BlogCard from "../../../../components/Blog/BlogCard";
 import MoreCard from "../../../../components/Blog/MoreCard";
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-export default function Test({
+import LoginApis from "../../../../actions/apis/LoginApis";
+import { MainContext } from "../../../../context/Main";
+export default function Blogs({
   blogs,
   totalblogs,
   porppagination,
   highlightblogs,
+  userdatafromserver,
 }) {
   const router = useRouter();
   const [mode, setmode] = useState("Blogs");
+
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -28,6 +32,11 @@ export default function Test({
   const [blogposts, setblogposts] = useState(blogs || []);
   const [blogpostsbackup, setblogpostsbackup] = useState(blogposts || []);
   const [selectedCat, setSelectedCat] = useState("All Categories");
+  const { setuserdata } = useContext(MainContext);
+
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   function sortPosts(cat, index) {
     if (cat !== "All Categories") {
       setSelectedCat(cat);
@@ -151,21 +160,55 @@ export default function Test({
     </div>
   );
 }
-
 export async function getServerSideProps({ params, req }) {
-  let res = await BlogApis.getallblogs();
-  let res2 = await BlogApis.gethomeblogs();
-  let highlightblogs = [];
-  if (res2 && res2.data && res2.data.success) {
-    highlightblogs = res2.data.data;
-  }
-  if (res && res.data && res.data.data) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      let res = await BlogApis.getallblogs();
+      let res2 = await BlogApis.gethomeblogs();
+      let highlightblogs = [];
+      if (res2 && res2.data && res2.data.success) {
+        highlightblogs = res2.data.data;
+      }
+      if (res && res.data && res.data.data) {
+        return {
+          props: {
+            blogs: res.data.data.rows,
+            totalblogs: res.data.data.count,
+            userdatafromserver: response.data.data,
+            highlightblogs,
+          },
+        };
+      } else
+        return {
+          props: {
+            blogs: [],
+            totalblogs: 0,
+            highlightblogs,
+            userdatafromserver: response.data.data,
+          },
+        };
+    }
+  } else {
     return {
-      props: {
-        blogs: res.data.data.rows,
-        totalblogs: res.data.data.count,
-        highlightblogs,
+      props: { msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
       },
     };
-  } else return { props: { blogs: [], totalblogs: 0, highlightblogs } };
+  }
 }

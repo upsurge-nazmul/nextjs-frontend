@@ -9,7 +9,7 @@ import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import { Game_Data } from "../../../static_data/Game_Data";
-function Games() {
+function Games({ userdatafromserver }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -20,6 +20,9 @@ function Games() {
     type: "success",
     msg: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   useEffect(() => {
     const scrollContainer1 = document.querySelector("#gamecardwrapper1");
     const scrollContainer2 = document.querySelector("#gamecardwrapper2");
@@ -151,6 +154,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          userdatafromserver: response.data.data,
         },
       };
     }

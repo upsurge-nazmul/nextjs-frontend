@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../components/Toast";
 import LeaderboardComponent from "../../../components/WaitlistDashboard/LeaderboardComponent";
+import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
-export default function Leaderboards({ leaderboard, highestquizscore }) {
+export default function Leaderboards({
+  userdatafromserver,
+  leaderboard,
+  highestquizscore,
+}) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
   const [mode, setmode] = useState("Leaderboards");
-
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   return (
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />

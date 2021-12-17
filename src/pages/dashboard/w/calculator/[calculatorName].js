@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CalculatorRouter from "../../../../components/Calculators/CalculatorRouter";
 import Header from "../../../../components/Header/Header";
 import LeftPanel from "../../../../components/LeftPanel";
@@ -12,22 +12,25 @@ import { Calc_Data } from "../../../../static_data/Calc_Data";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
+import { MainContext } from "../../../../context/Main";
+import LoginApis from "../../../../actions/apis/LoginApis";
 
-function CalculatorsPage() {
+export default function CalculatorsPage({ userdatafromserver }) {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [heading, setHeading] = useState("");
   const [subheading, setSubheading] = useState("");
   const [mode, setmode] = useState("Calculators");
-  const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  const [showauth, setshowauth] = useState(false);
-  const [paths, setpaths] = useState(["home", "calculators"]);
+  const { setuserdata } = useContext(MainContext);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   useEffect(() => {
     seterror("");
     if (!Calc_Data[calculatorName]) {
@@ -81,4 +84,36 @@ function CalculatorsPage() {
   );
 }
 
-export default CalculatorsPage;
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          userdatafromserver: response.data.data,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
+}

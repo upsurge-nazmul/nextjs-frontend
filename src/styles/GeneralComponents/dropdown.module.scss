@@ -22,9 +22,38 @@
     justify-content: space-evenly;
     align-items: center;
     cursor: pointer;
+    position: relative;
     text-transform: capitalize;
     p {
       margin-right: auto;
+    }
+    .placeholder {
+      position: absolute;
+      font-family: "Roboto", sans-serif;
+      font-size: 18px;
+      color: #4f4f4f;
+      transition: all 0.3s ease;
+      padding-left: 10px;
+    }
+    .placeholderlifted {
+      position: absolute;
+      background: rgb(255, 255, 255);
+      transition: all 0.3s ease;
+      padding: 0 5px;
+      color: #4f4f4f;
+      background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(244, 245, 247, 1) 50%,
+        rgba(244, 245, 247, 1) 100%
+      );
+      left: 8px;
+      top: -8px;
+      font-family: "Roboto", sans-serif;
+      font-size: 12px;
+      z-index: 100px;
+      border-radius: 12px;
     }
     .svg {
       width: 13px;
@@ -173,9 +202,13 @@
       cursor: pointer;
       text-transform: capitalize;
       margin-right: 0px;
+      .placeholderlifted {
+        left: 5px;
+        top: -12px;
+      }
       p {
         margin-right: 10px;
-        font-size: 20px !important;
+        font-size: 20px;
       }
       .svg {
         width: 12px;

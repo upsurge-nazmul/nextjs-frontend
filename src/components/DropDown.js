@@ -43,6 +43,11 @@ function DropDown({
         onClick={() => setshowoptions(!showoptions)}
       >
         <p
+          className={`${value ? styles.placeholderlifted : styles.placeholder}`}
+        >
+          {placeholder}
+        </p>
+        <p
           className={styles.text}
           style={{
             color: color ? color : "#6d6d6d",

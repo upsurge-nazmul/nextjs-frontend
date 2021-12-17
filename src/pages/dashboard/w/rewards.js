@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import XoxoApis from "../../../actions/apis/XoxoApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
@@ -6,6 +6,7 @@ import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel
 import DropDown from "../../../components/DropDown";
 import Toast from "../../../components/Toast";
 import Reward from "../../../components/WaitlistDashboard/Reward";
+import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/rewardspage.module.scss";
 export default function Rewards({ userdatafromserver, vouchers }) {
   const [toastdata, settoastdata] = useState({
@@ -13,6 +14,10 @@ export default function Rewards({ userdatafromserver, vouchers }) {
     type: "success",
     msg: "",
   });
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   const [mode, setmode] = useState("Rewards");
   const rewards = [
     {

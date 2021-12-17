@@ -51,7 +51,9 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           className={styles.tabs}
           onClick={() => {
             setshowmenu(false);
-            router.push("/editprofile/parent");
+            if (waitilistmenu) {
+              router.push("/dashboard/w/editprofile");
+            } else router.push("/editprofile/parent");
           }}
         >
           <EditSvg className={styles.editIcon} />

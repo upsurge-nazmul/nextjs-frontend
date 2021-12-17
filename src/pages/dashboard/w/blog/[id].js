@@ -1,26 +1,26 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../../../styles/WaitlistDashboard/blogmain.module.scss";
 import BlogApis from "../../../../actions/apis/BlogApis";
 import draftToHtml from "draftjs-to-html";
 import xss from "xss";
-import Footer from "../../../../components/Home/Footer";
-import Curve1 from "../../../../components/SVGcomponents/Curve1";
-import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import MoreCard from "../../../../components/Blog/MoreCard";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-import Toast from "../../../../components/Toast";
+import { MainContext } from "../../../../context/Main";
+import LoginApis from "../../../../actions/apis/LoginApis";
 
-export default function BlogPage({ blogdata, related }) {
+export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
   const [headings, setheadings] = useState([]);
-  const [mode, setmode] = useState("home");
+  const [mode, setmode] = useState("Blogs");
   const [scroll, setscroll] = useState(80);
   const [currentsection, setcurrentsection] = useState(null);
-  const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  const [showauth, setshowauth] = useState(false);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   let date = new Date(Number(blogdata.date));
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -208,17 +208,49 @@ export default function BlogPage({ blogdata, related }) {
   );
 }
 export async function getServerSideProps({ params, req }) {
-  let blogdata = await getBlog({ id: params.id });
-  let related = [];
-  let res = await BlogApis.getblogs({
-    page: 1,
-    category: blogdata.category,
-    limit: 3,
-  });
-  if (res && res.data && res.data.data) {
-    related = res.data.data.rows;
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      let blogdata = await getBlog({ id: params.id });
+      let related = [];
+      let res = await BlogApis.getblogs({
+        page: 1,
+        category: blogdata.category,
+        limit: 3,
+      });
+      if (res && res.data && res.data.data) {
+        related = res.data.data.rows;
+      }
+      return {
+        props: {
+          blogdata: blogdata,
+          related,
+          userdatafromserver: response.data.data,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
   }
-  return { props: { blogdata: blogdata, related } };
 }
 
 async function getBlog(id) {

@@ -35,13 +35,14 @@ export default function Reward({ data, unicoin, email, phone }) {
           options={data.valueDenominations?.split(",") || ["test"]}
           value={prices}
           presign={"INR "}
+          placeholder={"Price"}
           setvalue={setprices}
         />
         <DropDown
           options={[1, 2, 3, 4, 5]}
           value={quantity}
           setvalue={setquantity}
-          placeholder={"0"}
+          placeholder={"Quantity"}
         />
       </div>
       <div className={styles.button} onClick={redeem}>

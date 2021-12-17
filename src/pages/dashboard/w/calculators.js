@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../components/Toast";
@@ -7,8 +7,9 @@ import { MainContext } from "../../../context/Main";
 import { Calc_Data } from "../../../static_data/Calc_Data";
 import styles from "../../../styles/WaitlistDashboard/calcs.module.scss";
 import Image from "next/image";
+import LoginApis from "../../../actions/apis/LoginApis";
 
-export default function Calculators() {
+export default function Calculators({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Calculators");
   const [recent_games, setrecent_games] = useState([]);
@@ -18,6 +19,9 @@ export default function Calculators() {
     type: "success",
     msg: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   return (
     <div className={styles.calcs}>
       <DashboardLeftPanel type="waitlist" />
@@ -69,4 +73,38 @@ export default function Calculators() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          userdatafromserver: response.data.data,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
 }

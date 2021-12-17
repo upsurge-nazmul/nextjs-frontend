@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogApis from "../../../../actions/apis/BlogApis";
-import Header from "../../../../components/Header/Header";
-import LeftPanel from "../../../../components/LeftPanel";
-import FullBlog from "../../../../components/Blog/FullBlog";
 import styles from "../../../../styles/WaitlistDashboard/blogs.module.scss";
-
 import CategoryBar from "../../../../components/Blog/CategoryBar";
 import BlogCard from "../../../../components/Blog/BlogCard";
 import MoreCard from "../../../../components/Blog/MoreCard";
@@ -12,18 +8,16 @@ import xss from "xss";
 import draftToHtml from "draftjs-to-html";
 import ArrowUp from "../../../../components/SVGcomponents/ArrowUp";
 import { useRouter } from "next/dist/client/router";
-import Footer from "../../../../components/Home/Footer";
-import JoinUs from "../../../../components/Home/JoinUs";
-import WaitingListCta from "../../../../components/WaitingListCta";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
+import { MainContext } from "../../../../context/Main";
+import LoginApis from "../../../../actions/apis/LoginApis";
 
-function BlogPage({ blogs, totalblogs, porppagination }) {
+function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   const router = useRouter();
-  const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
-  const [mode, setmode] = useState("home");
+  const [mode, setmode] = useState("Blogs");
   const [loading, setloading] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -33,10 +27,12 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
   const [blogposts, setblogposts] = useState(blogs || []);
   const [blogpostsbackup, setblogpostsbackup] = useState(blogposts || []);
   const [selectedCat, setSelectedCat] = useState("All Categories");
-  const [selectedBlog, setSelectedBlog] = useState("");
-  const [showauth, setshowauth] = useState(false);
   const [pagination, setpagination] = useState(porppagination || ["1"]);
   const [page, setpage] = useState(1);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
   async function getData(page) {
     setloading(true);
     let res = await BlogApis.getblogs({ page });
@@ -198,16 +194,48 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
 }
 
 export default BlogPage;
-
 export async function getServerSideProps({ params, req }) {
-  let res = await BlogApis.getblogs({ page: 1, category: params.category });
-  console.log(res.data);
-  if (res && res.data && res.data.data) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      let res = await BlogApis.getblogs({ page: 1, category: params.category });
+      if (res && res.data && res.data.data) {
+        return {
+          props: {
+            blogs: res.data.data.rows,
+            totalblogs: res.data.data.count,
+            userdatafromserver: response.data.data,
+          },
+        };
+      } else
+        return {
+          props: {
+            blogs: [],
+            totalblogs: 0,
+            userdatafromserver: response.data.data,
+          },
+        };
+    }
+  } else {
     return {
-      props: {
-        blogs: res.data.data.rows,
-        totalblogs: res.data.data.count,
+      props: { msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
       },
     };
-  } else return { props: { blogs: [], totalblogs: 0 } };
+  }
 }

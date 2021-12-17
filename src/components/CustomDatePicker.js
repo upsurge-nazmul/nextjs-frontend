@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear } from "date-fns";
 import range from "lodash/range";
+import styles from "../styles/GeneralComponents/customdate.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
 const years = range(1990, getYear(new Date()) + 5, 1);
 const months = [
@@ -18,10 +19,15 @@ const months = [
   "November",
   "December",
 ];
-export default function CustomDatePicker({ value, setvalue, onlydate }) {
+export default function CustomDatePicker({
+  value,
+  setvalue,
+  onlytime,
+  onlydate,
+}) {
   return (
-    <div>
-      {onlydate ? (
+    <div className={styles.customdate}>
+      {onlytime ? (
         <DatePicker
           selected={value}
           onChange={(date) => setvalue(date)}
@@ -33,7 +39,9 @@ export default function CustomDatePicker({ value, setvalue, onlydate }) {
         />
       ) : (
         <DatePicker
-          showTimeSelect
+          showTimeSelect={!onlydate}
+          className={styles.test}
+          calendarClassName={styles.cal}
           renderCustomHeader={({
             date,
             changeYear,
@@ -120,7 +128,7 @@ export default function CustomDatePicker({ value, setvalue, onlydate }) {
           onChange={(date) => {
             setvalue(date);
           }}
-          dateFormat="dd/MM/yyyy h:mm aa"
+          dateFormat={onlydate ? "dd/MM/yyyy" : "dd/MM/yyyy h:mm aa"}
         />
       )}
     </div>
