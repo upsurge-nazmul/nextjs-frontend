@@ -45,7 +45,7 @@ export default function WaitList({ res }) {
         <p className={styles.heading2}>
           Thank you, you have early access to our platform now.
         </p>
-        <p className={styles.heading3}>
+        <p className={styles.subheading2}>
           For more information, please check your email.
         </p>
         <p className={styles.subheading}>
