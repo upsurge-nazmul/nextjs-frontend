@@ -29,6 +29,7 @@ export default function OTPCustomComponent({ size, setotp }) {
             id={"Character" + index}
             autoComplete="off"
             type="text"
+            key={"otpinput" + index}
             maxLength="1"
             onFocus={() => {
               if (currentfocused !== index) {
