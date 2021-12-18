@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import OtpInput from "react-otp-input";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -109,11 +108,7 @@ function AuthOtpComponent({
         <p className={styles.text}>Enter the 6-digit code sent to you at</p>
         <p className={styles.phone}>{"+91 " + phone}</p>
       </div>
-      <OTPCustomComponent
-        otp={OTP}
-        setotp={setOTP}
-        size={6}
-      />
+      <OTPCustomComponent setotp={setOTP} size={6} />
       <div className={styles.resendButton} onClick={genotp}>
         Resend OTP
       </div>

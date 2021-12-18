@@ -4,6 +4,7 @@ import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import OtpInput from "react-otp-input";
+import OTPCustomComponent from "./OTPCustomComponent";
 
 export default function WaitlistPopUp({
   email,
@@ -17,7 +18,7 @@ export default function WaitlistPopUp({
   const [error, seterror] = useState("");
   const [OTP, setOTP] = useState("");
   const [phone, setphone] = useState("");
-  const [mode, setmode] = useState("data"); // data and otp
+  const [mode, setmode] = useState("otp"); // data and otp
   const router = useRouter();
   useEffect(() => {
     seterror("");
@@ -164,17 +165,7 @@ export default function WaitlistPopUp({
             <p className={styles.phone}>{"+91 " + phone}</p>
           </div>
           <div className={styles.otpWrapper} id="otpWrapper">
-            <OtpInput
-              value={OTP}
-              inputStyle={{ margin: "5px", width: "50px" }}
-              onChange={(otp) => setOTP(otp)}
-              isInputNum={true}
-              numInputs={6}
-              containerStyle={{
-                "justify-content": "center",
-                "margin-top": "20px",
-              }}
-            />
+            <OTPCustomComponent setotp={setOTP} size={6} />
           </div>
           {error && <p className={styles.error}>{error}</p>}
 

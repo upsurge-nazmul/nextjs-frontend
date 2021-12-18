@@ -8,7 +8,9 @@
     margin: 5px;
     width: clamp(40px, 10vw, 50px) !important;
     height: 60px;
+    border: 1px solid #898989 !important;
     display: flex;
+    border-radius: 14px !important;
     align-items: center;
     justify-content: center;
     &:focus {

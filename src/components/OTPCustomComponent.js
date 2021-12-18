@@ -1,18 +1,25 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/GeneralComponents/otp.module.scss";
-export default function OTPCustomComponent({ size, otp, setotp }) {
+export default function OTPCustomComponent({ size, setotp }) {
   const [otpdata, setotpdata] = useState(new Array(size).fill(""));
-  const ref = useRef();
   const [currentfocused, setcurrentfocused] = useState(0);
-  useEffect(() => {
-    console.log(otpdata);
-  }, [otpdata]);
   useEffect(() => {
     let first = document.getElementById("Character0");
     if (first) {
       first.focus();
     }
   }, []);
+
+  useEffect(() => {
+    setotp(getstring());
+    function getstring() {
+      let res = "";
+      for (let i = 0; i < otpdata.length; i++) {
+        res = res + otpdata[i];
+      }
+      return res;
+    }
+  }, [otpdata]);
 
   return (
     <div className={styles.otpwrapper}>
