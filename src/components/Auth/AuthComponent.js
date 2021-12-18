@@ -32,7 +32,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
 
   useEffect(() => {
     if (!showauth) {
-      setmode("otp");
+      setmode("login");
       setemail("");
       setpassword("");
       setphone("");
