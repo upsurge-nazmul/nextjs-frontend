@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import Toast from "../../components/Toast";
+import DashboardApis from "../../../../actions/apis/DashboardApis";
+import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
+import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
+import Toast from "../../../../components/Toast";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/AddKid/addkid.module.scss";
-import DropDown from "../../components/DropDown";
-import CircleTick from "../../components/SVGcomponents/CircleTick";
-import CircleWarning from "../../components/SVGcomponents/CircleWarning";
+import styles from "../../../../styles/AddKid/addkid.module.scss";
+import DropDown from "../../../../components/DropDown";
+import CircleTick from "../../../../components/SVGcomponents/CircleTick";
+import CircleWarning from "../../../../components/SVGcomponents/CircleWarning";
 import validator from "validator";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear } from "date-fns";
 import range from "lodash/range";
 
-import CustomDatePicker from "../../components/CustomDatePicker";
+import CustomDatePicker from "../../../../components/CustomDatePicker";
+import ModernInputBox from "../../../../components/ModernInputBox";
 function AddKid({ childdata }) {
   const router = useRouter();
   console.log(childdata?.dob);
@@ -28,7 +29,7 @@ function AddKid({ childdata }) {
   const [dob, setdob] = useState(
     childdata?.dob ? new Date(Number(childdata?.dob)) : new Date()
   );
-  const [gender, setgender] = useState(childdata?.gender || "");
+  const [gender, setgender] = useState(childdata?.gender || "Male");
   const [email, setemail] = useState(childdata?.email || "");
   const [password, setpassword] = useState("");
   const [image, setimage] = useState("");
@@ -65,7 +66,7 @@ function AddKid({ childdata }) {
       seterror("Please enter date of birth");
       return;
     }
-    if (dob < new Date()) {
+    if (new Date(dob).getTime() > new Date().getTime()) {
       seterror("Date cannot be set to less than current date");
       return;
     }
@@ -245,129 +246,50 @@ function AddKid({ childdata }) {
           </div>
           <div className={styles.details}>
             <div className={styles.nameWrapper}>
-              <input
-                type="text"
-                placeholder="First Name"
-                maxLength={10}
+              <ModernInputBox
                 value={firstName}
-                onChange={(e) => setfirstName(e.target.value)}
-              />
-              <input
                 maxLength={10}
-                type="text"
-                placeholder="Last Name"
+                setvalue={setfirstName}
+                placeholder="First name"
+                extraclass={styles.margin}
+              />
+              <ModernInputBox
                 value={lastName}
-                onChange={(e) => setlastName(e.target.value)}
+                maxLength={10}
+                setvalue={setlastName}
+                placeholder="Last name"
               />
             </div>
-            <CustomDatePicker value={dob} setvalue={setdob} />
-            {/* <DatePicker
-              renderCustomHeader={({
-                date,
-                changeYear,
-                changeMonth,
-                decreaseMonth,
-                increaseMonth,
-                prevMonthButtonDisabled,
-                nextMonthButtonDisabled,
-              }) => (
-                <div
-                  style={{
-                    margin: 10,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <button
-                    onClick={decreaseMonth}
-                    disabled={prevMonthButtonDisabled}
-                  >
-                    {"<"}
-                  </button>
-                  <select
-                    value={date.getFullYear()}
-                    onChange={({ target: { value } }) => changeYear(value)}
-                  >
-                    {years.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-
-                  <select
-                    value={months[getMonth(date)]}
-                    onChange={({ target: { value } }) =>
-                      changeMonth(months.indexOf(value))
-                    }
-                  >
-                    {months.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-
-                  <button
-                    onClick={increaseMonth}
-                    disabled={nextMonthButtonDisabled}
-                  >
-                    {">"}
-                  </button>
-                </div>
-              )}
-              selected={dob}
-              showFullMonthYearPicker
-              allowSameDay={false}
-              onChange={(date) => setdob(date)}
-              dateFormat="dd/MM/yyyy"
-            /> */}
-            {/* <input
+            <ModernInputBox
+              value={dob}
+              setvalue={setdob}
               type="date"
-              value={
-                dob
-                  ? new Date(parseInt(dob))?.toISOString().substr(0, 10) || ""
-                  : ""
-              }
-              onChange={(e) => {
-                if (
-                  new Date(e.target.value).getDate() >= new Date().getDate()
-                ) {
-                  seterror("Invaild date of birth");
-                } else {
-                  setdob(new Date(e.target.value).getTime());
-                }
-              }}
-              min="01-01-1997"
-              max="31-12-2030"
-              placeholder="dd-mm-yyyy"
-            /> */}
+              placeholder="Date of birth"
+            />
+
             <DropDown
               placeholder="Gender"
               options={["male", "female", "i prefer not to say"]}
               value={gender}
               setvalue={setgender}
             />
-            <input
-              className={`${styles.usernameinput} `}
-              type="text"
+            <ModernInputBox
               value={city}
-              onChange={(e) => setcity(e.target.value)}
+              setvalue={setcity}
               placeholder="City"
+              extrastyle={{ marginTop: "20px" }}
             />
-            <input
-              style={type !== "add" ? { marginBottom: 0 } : null}
-              type="text"
+            <ModernInputBox
               value={school}
-              onChange={(e) => setschool(e.target.value)}
+              setvalue={setschool}
               placeholder="School"
+              extrastyle={type !== "add" ? { marginBottom: 0 } : null}
             />
+
             {type === "add" && (
-              <input
-                className={`${styles.optional} `}
-                type="text"
+              <ModernInputBox
                 value={email}
-                onChange={(e) => setemail(e.target.value)}
+                setvalue={setemail}
                 placeholder="Email"
               />
             )}
@@ -401,14 +323,17 @@ function AddKid({ childdata }) {
                   </div>
                 </div>
               )}
-              <input
-                type={passhidden ? "password" : "text"}
+              <ModernInputBox
                 value={password}
-                onFocus={() => setshowdetailpass(true)}
-                className={password !== "" && passisweak ? styles.weakpass : ""}
                 onBlur={() => setshowdetailpass(false)}
-                onChange={validatePassword}
+                onChange={(e) => validatePassword(e)}
+                onFocus={() => setshowdetailpass(true)}
                 placeholder="Password"
+                secure={passhidden}
+                extrastyle={{ marginBottom: "0px" }}
+                extraclass={
+                  password !== "" && passisweak ? styles.weakpass : ""
+                }
               />
               <p
                 className={styles.show}
@@ -418,10 +343,9 @@ function AddKid({ childdata }) {
               </p>
             </div>
 
-            <input
-              type="password"
+            <ModernInputBox
               value={confirmpassword}
-              onChange={(e) => setconfirmpassword(e.target.value)}
+              setvalue={setconfirmpassword}
               placeholder="Confirm Password"
             />
             {error && <p className={styles.error}>{error}</p>}

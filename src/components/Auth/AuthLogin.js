@@ -33,12 +33,11 @@ function AuthLogin({ settoastdata, error, seterror }) {
         msg: response.data.message,
         type: "success",
       });
-      console.log(response.data.data);
       if (response.data.data.userProfile.is_waiting_active) {
         router.push("/dashboard/w");
       } else if (response.data.data.userProfile.user_type === "parent")
         router.push("/dashboard/p");
-      else router.push("/kiddashboard");
+      else router.push("/dashboard/k");
     } else {
       seterror(response?.data.message || "Cannot reach server");
     }

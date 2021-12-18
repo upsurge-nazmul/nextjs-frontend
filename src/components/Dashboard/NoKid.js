@@ -20,7 +20,7 @@ function NoKid({ setkids }) {
         </p>
         <div
           className={styles.noKidbutton}
-          onClick={() => router.push("/child/add")}
+          onClick={() => router.push("/dashboard/p/child/add")}
         >
           Add a child
         </div>

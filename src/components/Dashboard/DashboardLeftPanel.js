@@ -57,30 +57,27 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${
-              currenttab === "/kiddashboard" ? styles.activetab : ""
+              currenttab === "/dashboard/k" ? styles.activetab : ""
             }`}
-            onClick={() => router.push("/kiddashboard")}
+            onClick={() => router.push("/dashboard/k")}
           >
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
           <div
             className={`${styles.tab} ${
-              currenttab === "/kidchores" ||
-              currenttab.indexOf("/managechore") !== -1
-                ? styles.activetab
-                : ""
+              currenttab === "/dashboard/k/chores" ? styles.activetab : ""
             }`}
-            onClick={() => router.push("/kidchores")}
+            onClick={() => router.push("/dashboard/k/chores")}
           >
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
           <div
             className={`${styles.tab} ${
-              currenttab === "/kidstore" ? styles.activetab : ""
+              currenttab === "/dashboard/k/store" ? styles.activetab : ""
             }`}
-            onClick={() => router.push("/kidstore")}
+            onClick={() => router.push("/dashboard/k/store")}
           >
             <StoreSvg className={styles.icon} />
 
@@ -91,7 +88,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/w" || "dashboard/w/editprofile"
+              currenttab === "/dashboard/w" || "/dashboard/w/editprofile"
                 ? styles.activetab
                 : ""
             }`}

@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import Toast from "../../components/Toast";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import LoginApis from "../../../actions/apis/LoginApis";
+import Toast from "../../../components/Toast";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/KidStore/kidstore.module.scss";
-import RequestsAndHistorySection from "../../components/ParentStore/RequestsAndHistorySection";
-import LiveClassSection from "../../components/ParentStore/LiveClassSection";
-import AvailablePointsSection from "../../components/ParentStore/AvailablePointsSection";
-import VoucherSection from "../../components/ParentStore/VoucherSection";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import ApproveModal from "../../components/ParentStore/ApproveModal";
-import AvailableAvatarSection from "../../components/KidStore/AvailableAvatarSection";
-import RequestModal from "../../components/KidStore/RequestModal";
+import styles from "../../../styles/KidStore/kidstore.module.scss";
+import RequestsAndHistorySection from "../../../components/ParentStore/RequestsAndHistorySection";
+import LiveClassSection from "../../../components/ParentStore/LiveClassSection";
+import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
+import VoucherSection from "../../../components/ParentStore/VoucherSection";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import ApproveModal from "../../../components/ParentStore/ApproveModal";
+import AvailableAvatarSection from "../../../components/KidStore/AvailableAvatarSection";
+import RequestModal from "../../../components/KidStore/RequestModal";
+import ChoreApis from "../../../actions/apis/ChoreApis";
 
 export default function KidStore({
   isLogged,
@@ -121,7 +122,7 @@ async function getkidsdata(token) {
     return response.data.data;
 }
 async function getchores(token) {
-  let response = await DashboardApis.getpendingchores(null, token);
+  let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

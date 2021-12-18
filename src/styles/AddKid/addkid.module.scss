@@ -31,7 +31,9 @@
         align-items: center;
         justify-content: space-between;
         input {
-          width: 49%;
+        }
+        .margin {
+          margin-right: 10px !important;
         }
       }
       .error {

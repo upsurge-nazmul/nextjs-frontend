@@ -31,13 +31,13 @@ function KidComponentMenu({
     <div className={styles.kidmenu} id={data.id}>
       <p
         className={styles.tab}
-        onClick={() => router.push("/child/" + data.id)}
+        onClick={() => router.push("/dashboard/p/child/" + data.id)}
       >
         View Profile
       </p>
       <p
         className={styles.tab}
-        onClick={() => router.push("/child/" + data.id)}
+        onClick={() => router.push("/dashboard/p/child/" + data.id)}
       >
         Edit Profile
       </p>

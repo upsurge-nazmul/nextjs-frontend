@@ -1,25 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import Toast from "../../components/Toast";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import LoginApis from "../../../actions/apis/LoginApis";
+import Toast from "../../../components/Toast";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/kidDashboard/kiddashboard.module.scss";
-import ProfileSection from "../../components/KidDashboard/ProfileSection";
-import KidChore from "../../components/KidDashboard/KidChore";
-import KidCourses from "../../components/KidDashboard/KidCourses";
-import GameCard from "../../components/Dashboard/GameCard";
-import Badge from "../../components/KidDashboard/Badge";
-import BadgeSection from "../../components/KidDashboard/BadgeSection";
-import NextChores from "../../components/KidDashboard/NextChores";
-import TribeSection from "../../components/KidDashboard/TribeSection";
-import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader";
-import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
-import KidApis from "../../actions/apis/KidApis";
-import { MainContext } from "../../context/Main";
-import NoChores from "../../components/KidDashboard/NoChores";
+import styles from "../../../styles/kidDashboard/kiddashboard.module.scss";
+import ProfileSection from "../../../components/KidDashboard/ProfileSection";
+import KidChore from "../../../components/KidDashboard/KidChore";
+import KidCourses from "../../../components/KidDashboard/KidCourses";
+import GameCard from "../../../components/Dashboard/GameCard";
+import Badge from "../../../components/KidDashboard/Badge";
+import BadgeSection from "../../../components/KidDashboard/BadgeSection";
+import NextChores from "../../../components/KidDashboard/NextChores";
+import TribeSection from "../../../components/KidDashboard/TribeSection";
+import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import KidApis from "../../../actions/apis/KidApis";
+import { MainContext } from "../../../context/Main";
+import NoChores from "../../../components/KidDashboard/NoChores";
 import { getMessaging, getToken } from "@firebase/messaging";
-import NotificationApis from "../../actions/apis/NotificationApis";
+import NotificationApis from "../../../actions/apis/NotificationApis";
 
 function KidDashboard({
   isLogged,
@@ -176,6 +176,25 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      if (response.data.data.is_waiting_active) {
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/w",
+          },
+        };
+      }
+      if (response.data.data.user_type === "parent") {
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/p",
+          },
+        };
+      }
+
       let kiddata = await getChildDetails(response.data.data.user_id, token);
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);

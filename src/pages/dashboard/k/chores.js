@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import ChoreComponent from "../../components/Dashboard/ChoreComponent";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import GameCard from "../../components/Dashboard/GameCard";
-import LiveClass from "../../components/Dashboard/LiveClass";
-import ChoreModal from "../../components/Chores/ChoreModal";
-import ChorePending from "../../components/Chores/ChorePending";
-import ChoreTemplate from "../../components/Chores/ChoreTemplate";
-import styles from "../../styles/kidchores/kidchores.module.scss";
-import KidChore from "../../components/KidDashboard/KidChore";
-import BadgeSection from "../../components/KidDashboard/BadgeSection";
-import KidCompletedChore from "../../components/KidChorePage/KidCompletedChore";
-import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
-import KidApis from "../../actions/apis/KidApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import { duetimeDifference } from "../../helpers/timehelpers";
-import Toast from "../../components/Toast";
-import KidDashboardHeader from "../../components/KidDashboard/KidDashboardHeader";
-import { MainContext } from "../../context/Main";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import GameCard from "../../../components/Dashboard/GameCard";
+import LiveClass from "../../../components/Dashboard/LiveClass";
+import ChoreModal from "../../../components/Chores/ChoreModal";
+import ChorePending from "../../../components/Chores/ChorePending";
+import ChoreTemplate from "../../../components/Chores/ChoreTemplate";
+import styles from "../../../styles/kidchores/kidchores.module.scss";
+import KidChore from "../../../components/KidDashboard/KidChore";
+import BadgeSection from "../../../components/KidDashboard/BadgeSection";
+import KidCompletedChore from "../../../components/KidChorePage/KidCompletedChore";
+import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import KidApis from "../../../actions/apis/KidApis";
+import LoginApis from "../../../actions/apis/LoginApis";
+import { duetimeDifference } from "../../../helpers/timehelpers";
+import Toast from "../../../components/Toast";
+import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import { MainContext } from "../../../context/Main";
 
 export default function KidChoresPage({
   choresdata,

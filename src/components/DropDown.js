@@ -55,9 +55,7 @@ function DropDown({
           }}
         >
           {presign ? presign : ""}
-          {value?.length > 25
-            ? value.substring(0, 25) + "..."
-            : value || placeholder}
+          {value?.length > 25 ? value.substring(0, 25) + "..." : value}
         </p>
         <DropDownArrow className={styles.svg} />
       </div>

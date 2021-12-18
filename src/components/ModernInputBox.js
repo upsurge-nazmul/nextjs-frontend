@@ -9,9 +9,13 @@ export default function ModernInputBox({
   extrastyle,
   secure,
   type,
+  onFocus,
+  onBlur,
+  onChange,
+  extraclass,
 }) {
   return (
-    <div className={styles.modernInputBox} style={extrastyle}>
+    <div className={`${styles.modernInputBox} `} style={extrastyle}>
       <p
         className={`${
           value
@@ -27,11 +31,14 @@ export default function ModernInputBox({
         <CustomDatePicker value={value} setvalue={setvalue} onlydate={true} />
       ) : (
         <input
+          onBlur={onBlur}
+          onFocus={onFocus}
           name="hidden"
+          className={`${extraclass ? extraclass : ""}`}
           type={secure ? "password" : "text"}
           value={value}
           maxLength={maxLength || 32676}
-          onChange={(e) => setvalue(e.target.value)}
+          onChange={onChange ? onChange : (e) => setvalue(e.target.value)}
         />
       )}
     </div>
