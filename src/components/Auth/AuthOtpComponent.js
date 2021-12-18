@@ -5,6 +5,7 @@ import { MainContext } from "../../context/Main";
 import styles from "../../styles/Auth/auth.module.scss";
 import { useRouter } from "next/dist/client/router";
 import validator from "validator";
+import OTPCustomComponent from "../OTPCustomComponent";
 function AuthOtpComponent({
   phone,
   email,
@@ -108,16 +109,10 @@ function AuthOtpComponent({
         <p className={styles.text}>Enter the 6-digit code sent to you at</p>
         <p className={styles.phone}>{"+91 " + phone}</p>
       </div>
-      <OtpInput
-        value={OTP}
-        inputStyle={{
-          margin: "5px",
-          width: "clamp(40px,10vw,50px)",
-          height: "60px",
-        }}
-        onChange={(otp) => setOTP(otp)}
-        numInputs={6}
-        containerStyle={{ "justify-content": "center", "margin-top": "20px" }}
+      <OTPCustomComponent
+        otp={OTP}
+        setotp={setOTP}
+        size={6}
       />
       <div className={styles.resendButton} onClick={genotp}>
         Resend OTP

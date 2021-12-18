@@ -168,6 +168,7 @@ export default function WaitlistPopUp({
               value={OTP}
               inputStyle={{ margin: "5px", width: "50px" }}
               onChange={(otp) => setOTP(otp)}
+              isInputNum={true}
               numInputs={6}
               containerStyle={{
                 "justify-content": "center",
