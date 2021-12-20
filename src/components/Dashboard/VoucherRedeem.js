@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/ParentStore/voucherpopup.module.scss";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
+import Loader from "../Loader";
 
 export default function VoucherRedeem({
   userdata_email,
@@ -18,7 +19,12 @@ export default function VoucherRedeem({
   const [error, seterror] = useState("");
   const [phone, setphone] = useState(userdata_phone || "");
   const [success, setsuccess] = useState(false);
+  const [interval, setinterval] = useState(null);
+  const [progress, setprogress] = useState(0);
   const router = useRouter();
+  useEffect(() => {
+    handleUpdateData();
+  }, []);
   async function handleUpdateData() {
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid phone number");
@@ -28,12 +34,24 @@ export default function VoucherRedeem({
       seterror("Quantity must be greater than zero");
       return;
     }
+    setinterval(
+      setInterval(() => {
+        setprogress((prev) => {
+          if (prev + 1 > 90) {
+            return 90;
+          }
+          return prev + 1;
+        });
+      }, 100)
+    );
     let res = await DashboardApis.ordervouchers({
       productId: data.productId,
       denomination: prices,
       quantity,
       vendor: "xoxo",
     });
+    setprogress(100);
+    clearInterval(interval);
     if (res && res.data.success) {
       setsuccess(true);
     } else {
@@ -50,7 +68,9 @@ export default function VoucherRedeem({
       <div className={styles.block}>
         {!success ? (
           <>
-            <p className={styles.heading}>
+            <p className={styles.heading}>Processing....</p>
+            <Loader progress={progress + "%"} />
+            {/* <p className={styles.heading}>
               Please check below information before proceeding.
             </p>
             <input
@@ -77,7 +97,7 @@ export default function VoucherRedeem({
             {error && <p className={styles.error}>{error}</p>}
             <div className={styles.button} onClick={() => handleUpdateData()}>
               Proceed
-            </div>
+            </div> */}
           </>
         ) : (
           <div className={styles.approveModalcontainer}>

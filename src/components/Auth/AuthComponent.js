@@ -8,6 +8,7 @@ import AuthSelection from "./AuthSelection";
 import AuthLearner from "./AuthLearner";
 import AuthParent from "./AuthParent";
 import AuthFullData from "./AuthFullData";
+import AuthResetPass from "./AuthResetPass";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -92,6 +93,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
               {mode === "login" ? (
                 <AuthLogin
                   settoastdata={settoastdata}
+                  setmode={setmode}
                   error={error}
                   seterror={seterror}
                 />
@@ -145,6 +147,17 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                 />
               ) : mode === "privacy" ? (
                 <AuthPrivacy setmode={setmode} />
+              ) : mode === "reset" ? (
+                <AuthResetPass
+                  settoastdata={settoastdata}
+                  usertype={usertype}
+                  setmode={setmode}
+                  error={error}
+                  setemail={setemail}
+                  seterror={seterror}
+                  email={email}
+                  setsignupmethod={setsignupmethod}
+                />
               ) : null}
             </div>
           </div>

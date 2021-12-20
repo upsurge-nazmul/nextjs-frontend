@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { unicoin_value } from "../../../../config";
 import LoginApis from "../../../actions/apis/LoginApis";
 import XoxoApis from "../../../actions/apis/XoxoApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
@@ -367,7 +368,8 @@ export default function Rewards({ userdatafromserver, vouchers }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.head}>
-            You currently have {userdatafromserver.num_unicoins} Unicoins.
+            You currently have {userdatafromserver.num_unicoins} Unicoins or INR
+            {" " + Number(userdatafromserver.num_unicoins) / unicoin_value}.
           </div>
           <div className={styles.wrapper}>
             {rewards.map((item) => {
@@ -375,6 +377,8 @@ export default function Rewards({ userdatafromserver, vouchers }) {
                 <Reward
                   data={item}
                   key={item.productId}
+                  email={userdatafromserver.email}
+                  phone={userdatafromserver.phone}
                   unicoin={userdatafromserver.num_unicoins}
                 />
               );

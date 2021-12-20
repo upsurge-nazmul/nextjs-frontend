@@ -17,6 +17,7 @@ import Refer from "../../../components/WaitlistDashboard/Refer";
 import RewardSvg from "../../../components/SVGcomponents/RewardSvg";
 import QuizIconSvg from "../../../components/SVGcomponents/QuizIconSvg";
 import GameSvg from "../../../components/SVGcomponents/GameSvg";
+import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
@@ -26,8 +27,10 @@ export default function WaitlistDashboard({
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
+  const [showdetails, setshowdetails] = useState(false);
   const [blogs, setblogs] = useState(blogdata || []);
   const router = useRouter();
+  const [current, setcurrent] = useState("earlyaccess");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -109,6 +112,13 @@ export default function WaitlistDashboard({
             setmode={setmode}
             settoastdata={settoastdata}
           />
+          {showdetails && (
+            <DetailsPopUp
+              setshowdetails={setshowdetails}
+              current={current}
+              earlyaccessno={userdatafromserver.waiting_number}
+            />
+          )}
           <div className={styles.mainContent}>
             <div className={styles.flexTop} id="leftside">
               <div className={styles.flipcard}>
@@ -123,17 +133,38 @@ export default function WaitlistDashboard({
                   </div>
                   <div
                     className={`${styles.back} ${styles.waitlistback}`}
-                  ></div>
+                    onClick={() => {
+                      setcurrent("earlyaccess");
+                      setshowdetails(true);
+                    }}
+                  >
+                    <RewardSvg className={styles.reward} />
+                    <p className={styles.text}>Check currect rewards</p>
+                  </div>
                 </div>
               </div>
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.uniblock}>
-                      <p className={styles.heading}>
-                        {userdatafromserver.num_unicoins || 0}
-                      </p>
-                      <p className={styles.subheading}>Earned Unicoins</p>
+                      <div className={styles.blocks}>
+                        <div className={styles.block}>
+                          <div className={styles.border}></div>
+                          <p className={styles.heading}>Earned Unicoins</p>
+                          <p className={styles.subheading}>
+                            {userdatafromserver.num_unicoins || 0}
+                          </p>
+                        </div>
+                        <div className={styles.block}>
+                          <p className={styles.heading}>INR</p>
+                          <p className={styles.subheading}>
+                            {Math.round(
+                              Number(userdatafromserver.num_unicoins) / 5
+                            ) || 0}
+                          </p>
+                        </div>
+                      </div>
+                      <p className={styles.subheading}>Rewards</p>
                     </div>
                   </div>
                   <div
@@ -141,7 +172,7 @@ export default function WaitlistDashboard({
                     onClick={() => router.push("/dashboard/w/rewards")}
                   >
                     <RewardSvg className={styles.reward} />
-                    <p className={styles.text}>Check rewards</p>
+                    <p className={styles.text}>Redeem rewards</p>
                   </div>
                 </div>
               </div>
@@ -149,7 +180,14 @@ export default function WaitlistDashboard({
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.quizblock}>
-                      <p className={styles.heading}>{highestquizscore}</p>
+                      <p className={styles.heading}>{highestquizscore}%</p>
+                      <p className={styles.subheading2}>
+                        {highestquizscore < 50
+                          ? "Money Rookie"
+                          : highestquizscore < 80
+                          ? "Money Ninja"
+                          : "Money Master"}
+                      </p>
                       <p className={styles.subheading}>Quiz Score</p>
                     </div>
                   </div>
@@ -166,26 +204,23 @@ export default function WaitlistDashboard({
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.gameblock}>
-                      <div className={styles.blocks}>
-                        <div className={styles.block}>
-                          <div className={styles.border}></div>
-                          <p className={styles.heading}>Money Run</p>
-                          <p className={styles.subheading}>0</p>
-                        </div>
-                        <div className={styles.block}>
-                          <p className={styles.heading}>Ludo</p>
-                          <p className={styles.subheading}>0</p>
-                        </div>
+                      <div className={styles.block}>
+                        <p className={styles.heading}>
+                          {userdatafromserver.num_refers || 0}
+                        </p>
+                        <p className={styles.subheading}>Completed referrals</p>
                       </div>
-                      <p className={styles.subheading}>Game Scores</p>
                     </div>
                   </div>
                   <div
                     className={`${styles.back} ${styles.gameback}`}
-                    onClick={() => router.push("/dashboard/w/games")}
+                    onClick={() => {
+                      setcurrent("refferal");
+                      setshowdetails(true);
+                    }}
                   >
                     <GameSvg className={styles.gameicon} />
-                    <p className={styles.text}>Play games</p>
+                    <p className={styles.text}>Know more</p>
                   </div>
                 </div>
               </div>
@@ -245,7 +280,9 @@ export async function getServerSideProps({ params, req }) {
           todaysquestion: tq?.data?.success ? tq.data.data : null,
           blogdata: blogs?.data.data || [],
           leaderboard: leaderboard?.data.data || [],
-          highestquizscore: highestquizscore?.data?.data?.score || 0,
+          highestquizscore: highestquizscore?.data?.data?.score
+            ? Math.round(highestquizscore.data.data.score / 0.72)
+            : 0,
           msg: "",
         },
       };

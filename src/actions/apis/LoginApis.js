@@ -104,6 +104,10 @@ const generatepass = (payload) => {
 const getearlyaccess = (payload) => {
   return ApiCalls.postResponse("users/getearlyaccess", payload);
 };
+
+const resetpass = (payload) => {
+  return ApiCalls.postResponse("users/resetpassword", payload);
+};
 const LoginApis = {
   signup,
   setphone,
@@ -128,6 +132,7 @@ const LoginApis = {
   checkpasslink,
   generatepass,
   getearlyaccess,
+  resetpass,
 };
 
 export default LoginApis;

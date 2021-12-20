@@ -20,6 +20,7 @@ function QuizComponent({
   setcurrentcolor,
   currentcolor,
   colorarray,
+  userlogged,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
@@ -60,6 +61,7 @@ function QuizComponent({
       answer,
       question_id: currentquestion.question_id,
       id: data.session_id,
+      user_logged: userlogged,
     });
     if (res && res.data.success) {
       if (res.data.data.quizcompleted) {

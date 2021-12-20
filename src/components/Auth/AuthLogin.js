@@ -10,7 +10,8 @@ import { MainContext } from "../../context/Main";
 import GoogleLogin from "react-google-login";
 import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
-function AuthLogin({ settoastdata, error, seterror }) {
+import ModernInputBox from "../ModernInputBox";
+function AuthLogin({ settoastdata, error, seterror, setmode }) {
   const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -72,18 +73,24 @@ function AuthLogin({ settoastdata, error, seterror }) {
   }, [email, password]);
   return (
     <div className={styles.logindetails}>
-      <input
+      <ModernInputBox
+        placeholder="Email address"
+        value={email}
+        setvalue={setemail}
+      />
+      {/* <input
         type="text"
         placeholder="Email address"
         value={email}
         onChange={(e) => setemail(e.target.value)}
-      />
+      /> */}
       <div className={styles.passwordBox}>
-        <input
-          type={passhidden ? "password" : "text"}
+        <ModernInputBox
           placeholder="Password"
           value={password}
-          onChange={(e) => setpassword(e.target.value)}
+          setvalue={setpassword}
+          secure={passhidden}
+          extrastyle={{ margin: 0 }}
         />
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
@@ -134,8 +141,8 @@ function AuthLogin({ settoastdata, error, seterror }) {
         }}
       /> */}
 
-      <div className={styles.reset}>
-        Forgot your <span>Username</span> or <span>Password</span>?
+      <div className={styles.reset} onClick={() => setmode("reset")}>
+        <span> Forgot password?</span>
       </div>
     </div>
   );

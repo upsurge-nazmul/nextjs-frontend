@@ -13,7 +13,7 @@ import validator from "validator";
 import CircleWarning from "../../components/SVGcomponents/CircleWarning";
 export default function GenPass() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, reset } = router.query;
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [showdetailpass, setshowdetailpass] = useState(false);
@@ -130,14 +130,20 @@ export default function GenPass() {
         <div className={styles.ball4}></div>
         <div className={styles.yellow}></div>
         <p className={styles.heading3}>
-          {success ? "Thank You!" : "Welcome to upsurge!"}
+          {success
+            ? "Thank You!"
+            : reset
+            ? "Reset password"
+            : "Welcome to upsurge!"}
         </p>
         <div className={styles.line}></div>
-        <p className={styles.heading2}>
-          {success
-            ? "Your login credentials have been updated, please login."
-            : "We require some details"}
-        </p>
+        {(!reset || success) && (
+          <p className={styles.heading2}>
+            {success
+              ? "Your login credentials have been updated, please login."
+              : "We require some details"}
+          </p>
+        )}
 
         {!success && (
           <div className={styles.name}>
@@ -197,7 +203,7 @@ export default function GenPass() {
 
         {!success && (
           <div className={styles.join} onClick={checkrefer}>
-            Join
+            {reset ? "Reset" : "Join"}
           </div>
         )}
         <p className={styles.subheading}>
@@ -243,7 +249,6 @@ export default function GenPass() {
 export async function getServerSideProps({ params, req }) {
   let id = params.id;
   let linkvalid = await LoginApis.checkpasslink({ id: id });
-  console.log(linkvalid.data);
   if (linkvalid && linkvalid.data.success) {
     return {
       props: { linkvalid: true },

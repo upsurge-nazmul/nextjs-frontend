@@ -21,6 +21,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
   const [timer, settimer] = useState(1000 * 60 * 15);
   const [task, settask] = useState("");
+  const [lastplayed, setlastplayed] = useState("");
   const [stickyheader, setstickyheader] = useState(false);
   const [quizfinished, setquizfinished] = useState(false);
   const [score, setscore] = useState(0);
@@ -107,25 +108,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
       " s"
     );
   }
-  async function handleSignup() {
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-    } else {
-      let response = await LoginApis.saveemail({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          seterror(response.data.message);
-        }
-      } else {
-        seterror("Error connecting to server");
-      }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
-    }
-  }
+
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
@@ -142,21 +125,15 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
       setdata(response.data.data);
       setstarted(true);
     } else {
+      if (response?.data?.data?.playedonce) {
+        setlastplayed(response.data.data.lastplayed);
+        seterror(response.data.data.nexttime);
+        return;
+      }
       seterror(response.data?.message || "Error connecting to server");
     }
   }
-  async function skipgame() {
-    let response = await QuizApis.startquiz({
-      name: "Guest",
-      nickname: "Guest",
-    });
-    if (response && response.data && response.data.success) {
-      setshowmain(true);
-      setdata(response.data.data);
-    } else {
-      seterror(response.data?.message || "Error connecting to server");
-    }
-  }
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -209,6 +186,14 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
                 {` Alright, let's see what your money quotient is. Good luck!`}
               </li>
             </ul>
+            {lastplayed && (
+              <p
+                className={styles.text}
+                style={{ textAlign: "center", color: "#ff7575" }}
+              >
+                {lastplayed}
+              </p>
+            )}
             {error && (
               <p
                 className={styles.text}
@@ -218,11 +203,14 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
               </p>
             )}
             <div className={styles.buttons}>
-              <div className={styles.startbutton} onClick={startgame}>
-                Start
-              </div>
+              {!error && (
+                <div className={styles.startbutton} onClick={startgame}>
+                  Start
+                </div>
+              )}
               <div
-                className={styles.skipbutton}
+                className={`${styles.skipbutton}`}
+                style={error ? { margin: 0, backgroundColor: "#4166EB" } : {}}
                 onClick={() => router.push("/dashboard/w")}
               >
                 Go Back
@@ -370,6 +358,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
                   currentcolor={currentcolor}
                   setcurrentcolor={setcurrentcolor}
                   colorarray={colorarray}
+                  userlogged={true}
                 />
               </div>
             ) : null}
@@ -412,25 +401,6 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
                     : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
                 </p>
                 <div className={styles.points}>You scored : {score}%</div>
-                {/* <div className={styles.pointsdes}>XP Points</div> */}
-                <div className={styles.signupBox}>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-
-                  <div className={styles.normalbutton} onClick={handleSignup}>
-                    Join the waitlist
-                  </div>
-                </div>
-                <div
-                  className={styles.button}
-                  onClick={() => window.location.reload(false)}
-                >
-                  Play Again
-                </div>
               </div>
             ) : null}
           </div>

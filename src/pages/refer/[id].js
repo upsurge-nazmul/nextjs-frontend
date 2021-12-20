@@ -8,11 +8,14 @@ import Fb from "../../components/SVGcomponents/Fb";
 import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import Toast from "../../components/Toast";
+import validator from "validator";
+
 export default function ReferPage() {
   const router = useRouter();
   const { id } = router.query;
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [phone, setphone] = useState("");
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [success, setsuccess] = useState(false);
@@ -33,7 +36,22 @@ export default function ReferPage() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   async function checkrefer() {
-    const res = await LoginApis.refersignup({ refid: id, firstName, lastName });
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      settoastdata({
+        show: true,
+        msg: "Please enter valid phone number",
+        type: "error",
+      });
+      return;
+    }
+
+    const res = await LoginApis.refersignup({
+      refid: id,
+      firstName,
+      lastName,
+      phone,
+    });
+
     if (res && res.data && res.data.success) {
       router.push("/generatepass/" + res.data.data);
     } else {
@@ -79,6 +97,15 @@ export default function ReferPage() {
               type="text"
               placeholder="Last name"
               onChange={(e) => setlastName(e.target.value)}
+            />
+          </div>
+        )}
+        {!success && (
+          <div className={styles.name}>
+            <input
+              type="text"
+              placeholder="Phone*"
+              onChange={(e) => setphone(e.target.value)}
             />
           </div>
         )}

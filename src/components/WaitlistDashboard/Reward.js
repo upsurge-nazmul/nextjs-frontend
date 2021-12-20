@@ -25,7 +25,7 @@ export default function Reward({ data, unicoin, email, phone }) {
           setshowpopup={setshowpopup}
         />
       )}
-      {Number(data.valueDenominations.split(",")[0]) > unicoin && (
+      {Number(data.valueDenominations.split(",")[0]) > unicoin / 30 && (
         <div className={styles.gray}></div>
       )}
       <img src={data.imageUrl} alt="" />

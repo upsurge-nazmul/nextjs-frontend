@@ -88,7 +88,8 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/w" || "/dashboard/w/editprofile"
+              currenttab === "/dashboard/w" ||
+              currenttab === "/dashboard/w/editprofile"
                 ? styles.activetab
                 : ""
             }`}

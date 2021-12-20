@@ -149,6 +149,24 @@
         .gameblock {
           margin: 0;
           background-color: rgba(23, 209, 188, 1);
+        }
+        .quizblock {
+          background-color: rgba(253, 204, 3, 1);
+          .subheading2 {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 22px;
+            margin-top: 10px;
+          }
+          .subheading {
+            margin-top: 10px;
+          }
+        }
+        .waitlistblock {
+          background-color: rgba(65, 102, 235, 1);
+        }
+        .uniblock {
+          background-color: rgba(255, 98, 99, 1);
           .blocks {
             display: flex;
             justify-content: space-around;
@@ -183,15 +201,6 @@
           .subheading {
             margin-top: 20px;
           }
-        }
-        .quizblock {
-          background-color: rgba(253, 204, 3, 1);
-        }
-        .waitlistblock {
-          background-color: rgba(65, 102, 235, 1);
-        }
-        .uniblock {
-          background-color: rgba(255, 98, 99, 1);
         }
       }
       .flexMid {
@@ -515,7 +524,13 @@
             }
           }
           .quizblock {
-            background-color: rgba(253, 204, 3, 1);
+            .subheading {
+              margin: 5px;
+            }
+            .subheading2 {
+              font-size: 16px;
+              margin-top: 10px;
+            }
           }
           .waitlistblock {
             background-color: rgba(65, 102, 235, 1);

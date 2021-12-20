@@ -1,0 +1,24 @@
+.loader {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgb(194, 194, 194);
+  position: relative;
+  margin-top: 20px;
+  .progress {
+    background: rgb(65, 102, 235);
+    background: linear-gradient(
+      90deg,
+      rgba(65, 102, 235, 1) 0%,
+      rgba(253, 204, 3, 1) 38%,
+      rgba(255, 98, 99, 1) 69%,
+      rgba(23, 209, 188, 1) 100%
+    );
+    height: 10px;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+  }
+}

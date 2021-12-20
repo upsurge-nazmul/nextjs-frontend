@@ -3,8 +3,10 @@ import QuizApis from "../../actions/apis/QuizApis";
 import styles from "../../styles/WaitlistDashboard/todaysquestion.module.scss";
 import TickSvg from "../SVGcomponents/TickSvg";
 export default function TodaysQuestion({ data }) {
-  const [answered, setanswerd] = useState(data === "Answered" ? true : false);
+  const [answered, setanswerd] = useState(data.is_answered);
   const [loading, setloading] = useState(false);
+  const [err, seterr] = useState("");
+  const [is_correct, setis_correct] = useState(data.is_correct || false);
   async function submittodaysquestion(option) {
     setloading(true);
     let res = await QuizApis.submittodaysquestion({
@@ -13,8 +15,9 @@ export default function TodaysQuestion({ data }) {
     });
     if (res && res.data && res.data.success) {
       setanswerd(true);
+      setis_correct(res.data.data);
     } else {
-      alert("Cannot connect to server");
+      seterr("Cannot connect to server");
     }
     setloading(false);
   }
@@ -24,7 +27,9 @@ export default function TodaysQuestion({ data }) {
       {answered ? (
         <>
           <TickSvg className={styles.tick} />
-          <p className={styles.answered}>Answered</p>
+          <p className={styles.answered}>
+            {is_correct ? "Correct answer" : "Wrong answer"}
+          </p>
         </>
       ) : (
         <>
