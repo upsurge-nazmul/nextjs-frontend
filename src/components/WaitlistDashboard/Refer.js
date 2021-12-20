@@ -24,7 +24,7 @@ export default function Refer({ settoastdata }) {
         Earn 10 unicoins for each friend joining our platform.
       </p>
       <p className={styles.subheading} style={{ marginTop: "0px" }}>
-        For every 5th successful refferal you'll get additional 25 unicoins.
+        {`For every 5th successful refferal you'll get additional 25 unicoins.`}
       </p>
       <div className={styles.img}>
         <Image
