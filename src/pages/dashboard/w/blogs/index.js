@@ -88,7 +88,7 @@ export default function Blogs({
               <div
                 className={styles.left}
                 onClick={() =>
-                  router.push(`/dashboard/w/blog/${blogposts[0].id}`)
+                  router.push(`/dashboard/w/blog/${highlightblogs[0].id}`)
                 }
               >
                 <img src={highlightblogs[0]?.img_url} alt="" />

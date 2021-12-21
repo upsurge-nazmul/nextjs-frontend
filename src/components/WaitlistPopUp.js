@@ -3,8 +3,8 @@ import styles from "../styles/GeneralComponents/waitlistpopup.module.scss";
 import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
-import OtpInput from "react-otp-input";
 import OTPCustomComponent from "./OTPCustomComponent";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 export default function WaitlistPopUp({
   email,
@@ -113,8 +113,12 @@ export default function WaitlistPopUp({
         className={styles.background}
         onClick={() => setshowpopup(false)}
       ></div>
+
       {mode !== "otp" ? (
         <div className={styles.block}>
+          <div className={styles.cross} onClick={() => setshowpopup(false)}>
+            <CancelOutlinedIcon className={styles.icon} />
+          </div>
           <p className={styles.heading}>We need some more information</p>
           <input
             type="text"
@@ -160,6 +164,9 @@ export default function WaitlistPopUp({
         </div>
       ) : (
         <div className={styles.otpblock}>
+          <div className={styles.cross} onClick={() => setshowpopup(false)}>
+            <CancelOutlinedIcon className={styles.icon} />
+          </div>
           <div className={styles.otpHeadWrapper}>
             <p className={styles.text}>Enter the 6-digit code sent to you at</p>
             <p className={styles.phone}>{"+91 " + phone}</p>

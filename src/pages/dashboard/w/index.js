@@ -77,11 +77,7 @@ export default function WaitlistDashboard({
       try {
         token = await getToken(messaging);
       } catch (err) {
-        settoastdata({
-          show: true,
-          msg: "Notifications Blocked",
-          type: "error",
-        });
+        console.log("Notification blocked");
       }
       let response = await NotificationApis.addToken({ type: "web", token });
     }
@@ -151,13 +147,24 @@ export default function WaitlistDashboard({
                         <div className={styles.block}>
                           <div className={styles.border}></div>
                           <p className={styles.heading}>Earned Unicoins</p>
-                          <p className={styles.subheading}>
+                          <p
+                            className={`${styles.subheading} ${
+                              userdatafromserver.num_unicoins?.length > 4 &&
+                              styles.subheadingsmall
+                            }`}
+                          >
                             {userdatafromserver.num_unicoins || 0}
                           </p>
                         </div>
                         <div className={styles.block}>
                           <p className={styles.heading}>INR</p>
-                          <p className={styles.subheading}>
+                          <p
+                            className={`${styles.subheading} ${
+                              Math.round(
+                                Number(userdatafromserver.num_unicoins) / 5
+                              ).toString().length > 4 && styles.subheadingsmall
+                            }`}
+                          >
                             {Math.round(
                               Number(userdatafromserver.num_unicoins) / 5
                             ) || 0}

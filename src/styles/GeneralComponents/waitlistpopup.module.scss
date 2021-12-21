@@ -21,6 +21,27 @@
     border-radius: 14px;
     z-index: 2;
     padding: 40px;
+    position: relative;
+    .cross {
+      position: absolute;
+      top: 0;
+      right: -100px;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
     .heading {
       font-size: 24px;
       margin-bottom: 20px;
@@ -111,7 +132,27 @@
     border-radius: 14px;
     z-index: 2;
     padding: 40px;
-
+    position: relative;
+    .cross {
+      position: absolute;
+      top: 0;
+      right: -100px;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
     .otpHeadWrapper {
       margin-top: 10px;
       display: flex;

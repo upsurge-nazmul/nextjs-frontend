@@ -25,6 +25,11 @@
       fill: #17d1bc;
     }
   }
+  .wrongtick {
+    path {
+      fill: #ff6263;
+    }
+  }
   .answered {
     background-color: #27bdab;
     margin-top: 20px;
@@ -36,6 +41,9 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+  }
+  .wronganswered {
+    background-color: #dd5454;
   }
   .question {
     font-weight: 500;
@@ -59,6 +67,9 @@
   }
 }
 
+.wronganswer {
+  background-color: #ff6263;
+}
 @media only screen and (min-width: 769px) and (max-height: 900px) {
   .todaysquestion {
     display: flex;

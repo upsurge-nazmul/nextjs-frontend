@@ -69,7 +69,6 @@ function Quiz({ leaderboard }) {
   const [currentcolor, setcurrentcolor] = useState(0);
   const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState("");
-  const [nickname, setnickname] = useState("");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -166,12 +165,23 @@ function Quiz({ leaderboard }) {
   }
   useEffect(() => {
     seterror("");
-  }, [phone, email, name, nickname]);
+  }, [phone, email, name]);
   async function startgame(e) {
-    console.log("hehe");
     e?.preventDefault();
     if (!name) {
       seterror("Name is required");
+      return;
+    }
+    if (checkLength(name)) {
+      seterror("Name should contain atleast 3 characters");
+      return;
+    }
+    if (checkSpecial(name)) {
+      seterror("Name should not contain any special characters");
+      return;
+    }
+    if (checkNumber(name)) {
+      seterror("Name should not contain any number");
       return;
     }
     if (!email) {
@@ -188,7 +198,6 @@ function Quiz({ leaderboard }) {
     }
     let response = await QuizApis.startquiz({
       name: name,
-      nickname: nickname,
       phone: phone,
       email: email,
     });
@@ -199,18 +208,17 @@ function Quiz({ leaderboard }) {
       seterror(response.data?.message || "Error connecting to server");
     }
   }
-  async function skipgame() {
-    let response = await QuizApis.startquiz({
-      name: "Guest",
-      nickname: "Guest",
-    });
-    if (response && response.data && response.data.success) {
-      setshowmain(true);
-      setdata(response.data.data);
-    } else {
-      seterror(response.data?.message || "Error connecting to server");
-    }
+
+  function checkLength(name) {
+    return name.length <= 2;
   }
+  function checkNumber(name) {
+    return name.search(/[0-9]/) > 0;
+  }
+  function checkSpecial(name) {
+    return name.search(/[!@#$%^&*]/) > 0;
+  }
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -329,21 +337,14 @@ function Quiz({ leaderboard }) {
                   if (isNaN(e.target.value[e.target.value.length - 1]))
                     setname(e.target.value);
                 }}
-                placeholder="Name"
-              />
-              <input
-                type="text"
-                className={styles.input}
-                value={nickname}
-                onChange={(e) => setnickname(e.target.value)}
-                placeholder="Nickname (optional)"
+                placeholder="Name*"
               />
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.input}
-                placeholder="Email"
+                placeholder="Email*"
               />
               <input
                 value={phone}

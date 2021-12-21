@@ -1,6 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
-import ReactTooltip from "react-tooltip";
+import React from "react";
 import styles from "../../styles/Home/terms.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 export default function Terms({ setshowterm, termmode }) {

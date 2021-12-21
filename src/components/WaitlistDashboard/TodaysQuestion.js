@@ -22,12 +22,22 @@ export default function TodaysQuestion({ data }) {
     setloading(false);
   }
   return (
-    <div className={styles.todaysquestion}>
+    <div
+      className={`${styles.todaysquestion} ${
+        !is_correct && answered && styles.wronganswer
+      }`}
+    >
       <p className={styles.heading}>{"Today's question"}</p>
       {answered ? (
         <>
-          <TickSvg className={styles.tick} />
-          <p className={styles.answered}>
+          <TickSvg
+            className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
+          />
+          <p
+            className={`${styles.answered} ${
+              !is_correct && styles.wronganswered
+            }`}
+          >
             {is_correct ? "Correct answer" : "Wrong answer"}
           </p>
         </>

@@ -67,7 +67,6 @@ export default function GamePage() {
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
-  const [nickname, setnickname] = useState("");
   const router = useRouter();
   const [info, setinfo] = useState({
     device: "computer",
@@ -267,7 +266,7 @@ export default function GamePage() {
   }, [id]);
   useEffect(() => {
     seterror("");
-  }, [phone, email, name, nickname]);
+  }, [phone, email, name]);
   async function startgame() {
     if (!name) {
       seterror("Name is required");
@@ -286,7 +285,6 @@ export default function GamePage() {
       return;
     }
     let res = await FreeGameApis.presign({
-      playernickname: nickname,
       playername: name,
       playeremail: email,
       number: phone,
@@ -368,21 +366,14 @@ export default function GamePage() {
                   if (isNaN(e.target.value[e.target.value.length - 1]))
                     setname(e.target.value);
                 }}
-                placeholder="Name"
-              />
-              <input
-                type="text"
-                className={styles.input}
-                value={nickname}
-                onChange={(e) => setnickname(e.target.value)}
-                placeholder="Nickname"
+                placeholder="Name*"
               />
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
                 className={styles.input}
-                placeholder="Email"
+                placeholder="Email*"
               />
               <input
                 value={phone}

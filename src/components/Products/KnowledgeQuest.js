@@ -84,9 +84,7 @@ export default function KnowledgeQuest({
           Knowledge Quests comprise of interactive courses that cover
           fundamentals of financial literacy, including earning, budgeting,
           spending, saving, investing, borrowing, risk management, career
-          development, and entrepreneurship. These bite-sized courses are about
-          10 minutes each and include exercises, real-life examples, and short
-          quizzes to make sure that the child understands the concepts.
+          development, and entrepreneurship.
         </div>
         <div className={styles.details}>
           <div className={styles.section}>

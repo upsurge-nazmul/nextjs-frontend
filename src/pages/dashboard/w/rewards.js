@@ -368,8 +368,13 @@ export default function Rewards({ userdatafromserver, vouchers }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.head}>
-            You currently have {userdatafromserver.num_unicoins} Unicoins or INR
-            {" " + Number(userdatafromserver.num_unicoins) / unicoin_value}.
+            You currently have {userdatafromserver.num_unicoins || 0} Unicoins
+            or INR
+            {" " +
+              (Math.round(
+                Number(userdatafromserver.num_unicoins) / unicoin_value
+              ) || 0)}
+            .
           </div>
           <div className={styles.wrapper}>
             {rewards.map((item) => {

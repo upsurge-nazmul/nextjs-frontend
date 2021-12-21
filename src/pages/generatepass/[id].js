@@ -15,10 +15,10 @@ export default function GenPass() {
   const router = useRouter();
   const { id, reset } = router.query;
   const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
+  const [confirmpasshidden, setconfirmpasshidden] = useState(true);
   const [stickyheader, setstickyheader] = useState(false);
   const [success, setsuccess] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
@@ -74,6 +74,7 @@ export default function GenPass() {
     const res = await LoginApis.generatepass({
       id: router.query.id,
       password: password,
+      reset: reset ? true : false,
     });
     if (res && res.data && res.data.success) {
       setsuccess(true);
@@ -190,13 +191,21 @@ export default function GenPass() {
                 {passhidden ? "Show" : "Hide"}
               </p>
             </div>
-
-            <input
-              type="text"
-              placeholder="Confirm Password*"
-              value={confirmpassword}
-              onChange={(e) => setconfirmpassword(e.target.value)}
-            />
+            <div className={styles.passwordBox}>
+              <input
+                type={confirmpasshidden ? "password" : "text"}
+                placeholder="Confirm Password*"
+                value={confirmpassword}
+                className={password !== confirmpassword ? styles.weakpass : ""}
+                onChange={(e) => setconfirmpassword(e.target.value)}
+              />
+              <p
+                className={styles.show}
+                onClick={() => setconfirmpasshidden(!confirmpasshidden)}
+              >
+                {confirmpasshidden ? "Show" : "Hide"}
+              </p>
+            </div>
           </div>
         )}
         {err && <p className={styles.err}>{err}</p>}

@@ -29,7 +29,12 @@ function AuthParent({
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
-      setmode("email");
+      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+      if (checkemail && checkemail.data && !checkemail.data.success) {
+        setmode("email");
+      } else {
+        seterror(checkemail?.data.message || "Error connecting to server");
+      }
       // let response = await LoginApis.saveemail({ email: email });
       // if (response) {
       //   if (response.data.success) {

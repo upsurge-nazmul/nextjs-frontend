@@ -30,7 +30,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const [showauth, setshowauth] = useState(false);
   const [pagination, setpagination] = useState(porppagination || ["1"]);
   const [page, setpage] = useState(1);
- 
+
   async function getData(page) {
     setloading(true);
     let res = await BlogApis.getblogs({ page });
@@ -113,7 +113,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
-        <WaitingListCta/>
+        <WaitingListCta />
 
         <p className={styles.heading}>Welcome to Upsurge Blog!</p>
 
@@ -123,7 +123,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
           <div className={styles.postsMain}>
             <div
               className={styles.left}
-              onClick={() => router.push(`/blog/${blogposts[0].id}`)}
+              onClick={() => router.push(`/blog/${highlightblogs[0].id}`)}
             >
               <img src={highlightblogs[0]?.img_url} alt="" />
               <div className={styles.categoryWrapper}>

@@ -65,7 +65,7 @@ export default function LeaderboardComponent({ data, highest }) {
                 className={styles.row}
                 key={data.id ?? item.name + index}
                 style={{
-                  backgroundColor: index % 2 == 0 ? "#00000034" : "transparent",
+                  backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
                 }}
               >
                 <p className={styles.rank}>{index + 1}</p>
@@ -78,8 +78,8 @@ export default function LeaderboardComponent({ data, highest }) {
             className={styles.row}
             key={"sdaoijwq"}
             style={{
-              backgroundColor:
-                data.length % 2 == 0 ? "#00000034" : "transparent",
+              backgroundColor: data.length % 2 == 0 ? "#D9F2FF" : "#ffffff",
+              padding: "20px 40px",
             }}
           >
             <p className={styles.rank}>Your highest</p>

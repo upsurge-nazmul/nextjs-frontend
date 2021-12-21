@@ -25,9 +25,7 @@ export default function EditProfile({ data }) {
   const [mode, setmode] = useState("Edit Profile");
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
-  const [dob, setdob] = useState(
-    data?.dob ? new Date(Number(data.dob)) : new Date()
-  );
+  const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
   const [gender, setgender] = useState(data?.gender || "male");
   const [phone, setphone] = useState(data?.phone || "");
   const [password, setpassword] = useState("");
