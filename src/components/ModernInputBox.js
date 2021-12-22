@@ -15,7 +15,12 @@ export default function ModernInputBox({
   extraclass,
 }) {
   return (
-    <div className={`${styles.modernInputBox} `} style={extrastyle}>
+    <div
+      className={`${styles.modernInputBox} ${
+        type === "date" && styles.modernInputBoxdate
+      }`}
+      style={extrastyle}
+    >
       <p
         className={`${
           value

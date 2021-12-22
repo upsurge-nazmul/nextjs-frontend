@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
-import Whatsapp from "../../components/SVGcomponents/Whatsapp";
 import styles from "../../styles/Contact/contact.module.scss";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
@@ -12,6 +11,7 @@ import Toast from "../../components/Toast";
 import LoginApis from "../../actions/apis/LoginApis";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import LogoFullWhte from "../../components/SVGcomponents/LogoFullWhte";
 function Contact() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -81,6 +81,17 @@ function Contact() {
         </p>
         <div className={styles.wrapper}>
           <div className={styles.left}>
+            <div className={styles.segment}>
+              <div className={styles.iconHolder}>
+                <LogoFullWhte className={styles.logoicon} />
+              </div>
+              <div className={styles.text}>
+                <div className={styles.top}>Company</div>
+                <div className={styles.bottom}>
+                  Surgeup Technologies Private Limited.
+                </div>
+              </div>
+            </div>
             <div className={styles.segment}>
               <div className={styles.iconHolder}>
                 <LocationOnIcon className={styles.icon} />

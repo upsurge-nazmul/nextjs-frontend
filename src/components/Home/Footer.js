@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import styles from "../../styles/Home/footer.module.scss";
 import { useRouter } from "next/dist/client/router";
 import Logo from "../SVGcomponents/Logo";
-import Twitter from "../SVGcomponents/Twitter";
 import Fb from "../SVGcomponents/Fb";
 import Insta from "../SVGcomponents/Insta";
-import YtSvg from "../SVGcomponents/YtSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "./Terms";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -472,7 +470,9 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.brand}></div>
+      <div className={styles.bottombar}>
+        © Surgeup Technologies Private Limited. 2021
+      </div>
     </div>
   );
 }

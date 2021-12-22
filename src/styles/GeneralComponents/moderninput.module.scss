@@ -55,7 +55,9 @@
     margin: 0 !important;
   }
 }
-
+.modernInputBoxdate {
+  z-index: 500;
+}
 @media only screen and (max-width: 860px) {
   .modernInputBox {
     margin-bottom: 10px;

@@ -76,9 +76,18 @@
               font-size: 30px;
               color: white;
             }
+            .logoicon {
+              transition: all 0.3s ease;
+              width: 30px;
+            }
             &:hover {
               background-color: #fff;
-
+              .logoicon {
+                width: 34px;
+                path {
+                  fill: #4166eb;
+                }
+              }
               .icon {
                 font-size: 35px;
                 color: #4166eb;
@@ -101,6 +110,9 @@
               font-weight: 500;
             }
           }
+          &:first-child {
+            margin-top: 0;
+          }
         }
       }
       .right {
@@ -112,7 +124,6 @@
         flex: 1;
         max-width: 521px;
         margin-left: 40px;
-        height: 501px;
         .title {
           font-size: 24px;
           font-weight: 500;
@@ -205,9 +216,14 @@
                 font-size: 4vw;
                 color: white;
               }
+              .logoicon {
+                width: 3vw;
+              }
               &:hover {
                 background-color: #fff;
-
+                .logoicon {
+                  width: 4vw;
+                }
                 .icon {
                   font-size: 35px;
                   color: #4166eb;

@@ -87,25 +87,29 @@ function Games({ userdatafromserver }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={styles.recentSection}>
-              <h2 className={styles.heading}>
-                Recently Played
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper} id="gamecardwrapper2">
-                {recent_games.map((item, index) => {
-                  return (
-                    <GameCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
-                      data={Game_Data[item]}
-                      key={"kidcomponent" + index}
-                    />
-                  );
-                })}
+            {recent_games.length > 0 && (
+              <div className={styles.recentSection}>
+                <h2 className={styles.heading}>
+                  Recently Played
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper} id="gamecardwrapper2">
+                  {recent_games.map((item, index) => {
+                    return (
+                      <GameCard
+                        onCLick={() =>
+                          handlegameclick(
+                            Game_Data[item].name.replace(/ /g, "")
+                          )
+                        }
+                        data={Game_Data[item]}
+                        key={"kidcomponent" + index}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games

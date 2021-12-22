@@ -60,6 +60,7 @@
       }
       .name {
         width: 60%;
+        text-transform: capitalize;
       }
       .score {
         width: 30%;
@@ -81,6 +82,20 @@
       }
       &:first-child {
         margin-bottom: 10px;
+      }
+      &:nth-child(5) {
+        background-color: #4166eb !important;
+        color: white;
+      }
+      &:nth-child(4) {
+        background-color: #fdcc03 !important;
+      }
+      &:nth-child(3) {
+        background-color: #ff6263 !important;
+        color: white;
+      }
+      &:nth-child(2) {
+        background-color: #17d1bc !important;
       }
     }
   }

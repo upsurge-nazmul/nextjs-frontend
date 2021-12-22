@@ -7,7 +7,11 @@ import Toast from "../../../components/Toast";
 import LeaderboardComponent from "../../../components/WaitlistDashboard/LeaderboardComponent";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
-export default function Leaderboards({ userdatafromserver, leaderboard }) {
+export default function Leaderboards({
+  userdatafromserver,
+  leaderboard,
+  highestquizscore,
+}) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -32,7 +36,9 @@ export default function Leaderboards({ userdatafromserver, leaderboard }) {
         <div className={styles.mainContent}>
           <LeaderboardComponent
             data={leaderboard}
-            highest={userdatafromserver.quiz_rank}
+            quiz_rank={userdatafromserver.quiz_rank}
+            highest={highestquizscore}
+            first_name={userdatafromserver.first_name}
           />
         </div>
       </div>
@@ -52,11 +58,17 @@ export async function getServerSideProps({ params, req }) {
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
       let leaderboard = await QuizApis.leaderboard();
+      let highestquizscore = await QuizApis.highestscore({
+        email: response.data.data.email,
+      });
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
           leaderboard: leaderboard.data.data || [],
+          highestquizscore: highestquizscore.data.success
+            ? highestquizscore.data.data.score
+            : 0,
           msg: "",
         },
       };

@@ -108,6 +108,7 @@
         ul {
           li {
             list-style-type: circle !important;
+            margin: 0 !important;
             &::before {
               content: "•";
             }
@@ -281,6 +282,8 @@
           ul {
             li {
               list-style-type: circle !important;
+              margin: 0 !important;
+
               &::before {
                 content: "•";
               }

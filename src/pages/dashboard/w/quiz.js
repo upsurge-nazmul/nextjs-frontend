@@ -126,8 +126,18 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
       setstarted(true);
     } else {
       if (response?.data?.data?.playedonce) {
-        setlastplayed(response.data.data.lastplayed);
-        seterror(response.data.data.nexttime);
+        let last = new Date(Number(response.data.data.lastplayed));
+        let next = new Date(Number(response.data.data.nexttime));
+        setlastplayed(
+          `You last played at : ${last.getDate()}-${
+            last.getMonth() + 1
+          }-${last.getFullYear()} ${last.toLocaleTimeString()}`
+        );
+        seterror(
+          `You can now play at : ${next.getDate()}-${
+            next.getMonth() + 1
+          }-${next.getFullYear()} ${next.toLocaleTimeString()}`
+        );
         return;
       }
       seterror(response.data?.message || "Error connecting to server");
@@ -189,7 +199,11 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
             {lastplayed && (
               <p
                 className={styles.text}
-                style={{ textAlign: "center", color: "#ff7575" }}
+                style={{
+                  textAlign: "center",
+                  color: "#ff7575",
+                  paddingBottom: 0,
+                }}
               >
                 {lastplayed}
               </p>
@@ -387,16 +401,16 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
                         : "#17D1BC",
                   }}
                 >
-                  {score < 50
+                  {score <= 40
                     ? "Money Rookie"
-                    : score < 80
+                    : score <= 80
                     ? "Money Ninja"
                     : "Money Master"}
                 </p>
                 <p className={styles.subheading}>
-                  {score < 50
+                  {score <= 40
                     ? "Looks like you are a Money Rookie! Don’t worry, that’s what we’re here for! Join upsurge’s waiting list and subscribe to our newsletter to start your journey towards financial freedom today."
-                    : score < 80
+                    : score <= 80
                     ? "You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. "
                     : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
                 </p>

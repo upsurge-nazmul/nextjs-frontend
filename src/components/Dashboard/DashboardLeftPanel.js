@@ -144,7 +144,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/w/blogs" ||
-              currenttab.indexOf("dashboard/w/blog/") !== -1
+              currenttab.indexOf("dashboard/w/blog") !== -1
                 ? styles.activetab
                 : ""
             }`}
