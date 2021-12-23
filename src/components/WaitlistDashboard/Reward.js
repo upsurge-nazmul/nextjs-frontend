@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-export default function Reward({ data, unicoin, email, phone }) {
+export default function Reward({ data, unicoin, email, phone, balance }) {
   const [prices, setprices] = useState(data.valueDenominations?.split(",")[0]);
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
@@ -25,7 +25,7 @@ export default function Reward({ data, unicoin, email, phone }) {
           setshowpopup={setshowpopup}
         />
       )}
-      {Number(data.valueDenominations.split(",")[0]) > unicoin / 30 && (
+      {Number(data.valueDenominations.split(",")[0]) > balance && (
         <div className={styles.gray}></div>
       )}
       <img src={data.imageUrl} alt="" />

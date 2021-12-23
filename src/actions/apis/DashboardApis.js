@@ -70,6 +70,14 @@ const deletechild = (payload) => {
   );
 };
 
+const convertUnicoins = (payload) => {
+  return ApiCalls.postResponse(
+    "users/convertunicoins",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 //getchores
 const DashboardApis = {
   addkids,
@@ -86,6 +94,7 @@ const DashboardApis = {
   getChildDetails,
   ordervouchers,
   getuservouchers,
+  convertUnicoins,
 };
 
 export default DashboardApis;

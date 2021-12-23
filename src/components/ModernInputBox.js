@@ -13,6 +13,9 @@ export default function ModernInputBox({
   onBlur,
   onChange,
   extraclass,
+  maxValue,
+  placeholderClass,
+  numOnly,
 }) {
   return (
     <div
@@ -28,7 +31,7 @@ export default function ModernInputBox({
             : type === "date"
             ? styles.dateplaceholder
             : styles.placeholder
-        } `}
+        } ${value && placeholderClass}`}
       >
         {placeholder}
       </p>
@@ -43,7 +46,22 @@ export default function ModernInputBox({
           type={secure ? "password" : "text"}
           value={value}
           maxLength={maxLength || 32676}
-          onChange={onChange ? onChange : (e) => setvalue(e.target.value)}
+          onChange={
+            onChange
+              ? onChange
+              : (e) => {
+                  if (
+                    (maxValue || maxValue === 0) &&
+                    Number(e.target.value) > maxValue
+                  ) {
+                    return;
+                  }
+                  if (numOnly && isNaN(e.target.value)) {
+                    return;
+                  }
+                  setvalue(e.target.value);
+                }
+          }
         />
       )}
     </div>

@@ -4,7 +4,7 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import XoxoApis from "../../../actions/apis/XoxoApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import DropDown from "../../../components/DropDown";
+import RedeemSection from "../../../components/Dashboard/RedeemSection";
 import Toast from "../../../components/Toast";
 import Reward from "../../../components/WaitlistDashboard/Reward";
 import { MainContext } from "../../../context/Main";
@@ -367,15 +367,11 @@ export default function Rewards({ userdatafromserver, vouchers }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <div className={styles.head}>
-            You currently have {userdatafromserver.num_unicoins || 0} Unicoins
-            or INR
-            {" " +
-              (Math.round(
-                Number(userdatafromserver.num_unicoins) / unicoin_value
-              ) || 0)}
-            .
-          </div>
+          <RedeemSection
+            unicoins={Number(userdatafromserver.num_unicoins) || 0}
+            balance={Number(userdatafromserver.num_balance)}
+            settoastdata={settoastdata}
+          />
           <div className={styles.wrapper}>
             {rewards.map((item) => {
               return (
@@ -384,7 +380,8 @@ export default function Rewards({ userdatafromserver, vouchers }) {
                   key={item.productId}
                   email={userdatafromserver.email}
                   phone={userdatafromserver.phone}
-                  unicoin={userdatafromserver.num_unicoins}
+                  balance={Number(userdatafromserver.num_balance)}
+                  unicoin={Number(userdatafromserver.num_unicoins)}
                 />
               );
             })}
