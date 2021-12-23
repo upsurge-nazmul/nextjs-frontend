@@ -160,14 +160,11 @@ export default function WaitlistDashboard({
                           <p className={styles.heading}>INR</p>
                           <p
                             className={`${styles.subheading} ${
-                              Math.round(
-                                Number(userdatafromserver.num_unicoins) / 5
-                              ).toString().length > 4 && styles.subheadingsmall
+                              Number(userdatafromserver.num_balance).toString()
+                                .length > 4 && styles.subheadingsmall
                             }`}
                           >
-                            {Math.round(
-                              Number(userdatafromserver.num_unicoins) / 5
-                            ) || 0}
+                            {Number(userdatafromserver.num_balance) || 0}
                           </p>
                         </div>
                       </div>
