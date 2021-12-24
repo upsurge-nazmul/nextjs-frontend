@@ -1,0 +1,35 @@
+.vouchercode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.342);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+  }
+  .main {
+    width: 500px;
+    min-height: 200px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px;
+    .code {
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.1);
+      height: 49px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

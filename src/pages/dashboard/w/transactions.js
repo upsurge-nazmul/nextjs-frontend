@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import LoginApis from "../../../actions/apis/LoginApis";
-import Image from "next/image";
 import styles from "../../../styles/Dashboard/transactions.module.scss";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../components/Toast";
