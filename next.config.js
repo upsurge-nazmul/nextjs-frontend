@@ -3,7 +3,7 @@ module.exports = {
     PROJECT_ROOT: __dirname,
   },
   images: {
-    domains: ["i.ibb.co", "images.unsplash.com"],
+    domains: ["i.ibb.co", "images.unsplash.com", "res.cloudinary.com"],
   },
   swcMinify: true,
 };

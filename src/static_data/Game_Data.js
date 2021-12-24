@@ -36,6 +36,10 @@ export const Game_Data = {
   //     name: "Ludo",
   //     description: "ludo ludo ludo.",
   //   },
+  // ShoppingMall: {
+  //   name: "ShoppingMall",
+  //   description: "ShoppingMall",
+  // },
 };
 
 export const Game_Unity_Data = {
@@ -100,6 +104,13 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
+    version: "1.0",
+  },
+  ShoppingMall: {
+    dataUrl: "/Games/ShoppingMall/Build/ShoppingMall.data",
+    frameworkUrl: "/Games/ShoppingMall/Build/ShoppingMall.framework.js",
+    codeUrl: "/Games/ShoppingMall/Build/ShoppingMall.wasm",
+    loaderUrl: "/Games/ShoppingMall/Build/ShoppingMall.loader.js",
     version: "1.0",
   },
 };

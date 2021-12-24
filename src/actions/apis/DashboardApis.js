@@ -55,11 +55,11 @@ const ordervouchers = (payload) => {
   );
 };
 
-const getuservouchers = (payload) => {
+const getuservouchers = (payload, token) => {
   return ApiCalls.getResponse(
     "voucher/uservouchers",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 const deletechild = (payload) => {

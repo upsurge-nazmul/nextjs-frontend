@@ -72,6 +72,18 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           Payments
         </p>
       )}
+      {waitilistmenu && (
+        <p
+          className={styles.tabs}
+          onClick={() => {
+            setshowmenu(false);
+            router.push("/dashboard/w/transactions");
+          }}
+        >
+          <PaymentSvg className={styles.paymentIcon} />
+          Transactions
+        </p>
+      )}
       {!waitilistmenu && (
         <div
           className={styles.tabs}

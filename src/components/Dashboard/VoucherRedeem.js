@@ -15,6 +15,7 @@ export default function VoucherRedeem({
   prices,
   data,
 }) {
+  console.log(data);
   const [email, setemail] = useState(userdata_email || "");
   const [error, seterror] = useState("");
   const [phone, setphone] = useState(userdata_phone || "");
@@ -49,6 +50,8 @@ export default function VoucherRedeem({
       denomination: prices,
       quantity,
       vendor: "xoxo",
+      name: data.name,
+      img_url: data.imageUrl,
     });
     setprogress(100);
     clearInterval(interval);
