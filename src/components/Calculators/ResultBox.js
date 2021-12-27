@@ -7,6 +7,7 @@ function ResultBox({
   calcfunction,
   setchangesfromresult,
   setediteddata,
+  onlyText,
 }) {
   return (
     <div className={styles.resultBox}>
@@ -40,7 +41,7 @@ function ResultBox({
             {resultdata.heading1 && (
               <p className={styles.heading}>{resultdata.heading1}</p>
             )}
-            <p className={styles.result}>
+            <p className={`${styles.result} ${onlyText && styles.onlytext}`}>
               {resultdata.heading1 && "₹ "}
               {resultdata.result1}
             </p>
@@ -78,11 +79,11 @@ function ResultBox({
               {resultdata.heading2 && (
                 <p className={styles.heading}>{resultdata.heading2}</p>
               )}
-              <p className={styles.result}>
+              <p className={`${styles.result} ${onlyText && styles.onlytext}`}>
                 {resultdata.result2sign
                   ? resultdata.result2sign
                   : resultdata.heading2 && "₹"}{" "}
-                {resultdata.result2}
+                {resultdata.result2 === "NaN" ? 0 : resultdata.result2}
               </p>
             </div>
           ))}
@@ -98,7 +99,7 @@ function ResultBox({
               <input
                 type="text"
                 className={styles.inputbox}
-                value={resultdata.result3}
+                value={resultdata.result3 === "NaN" ? 0 : resultdata.result3}
                 onChange={(e) => {
                   if (
                     resultdata.max3 &&
@@ -118,7 +119,7 @@ function ResultBox({
               {resultdata.heading3 && (
                 <p className={styles.heading}>{resultdata.heading3}</p>
               )}
-              <p className={styles.result}>
+              <p className={`${styles.result} ${onlyText && styles.onlytext}`}>
                 {resultdata.result3sign
                   ? resultdata.result3sign
                   : resultdata.heading3 && "₹"}{" "}
@@ -135,14 +136,16 @@ function ResultBox({
               {resultdata.result4sign
                 ? resultdata.result4sign
                 : resultdata.heading4 && "₹"}{" "}
-              {resultdata.result4}
+              {resultdata.result4 === "NaN" ? 0 : resultdata.result4}
             </p>
           </div>
         )}
         {resultdata.result5 && (
           <div className={styles.container}>
             <p className={styles.heading}>{resultdata.heading5}</p>
-            <p className={styles.result}>₹ {resultdata.result5}</p>
+            <p className={`${styles.result} ${onlyText && styles.onlytext}`}>
+              ₹ {resultdata.result5 === "NaN" ? 0 : resultdata.result5}
+            </p>
           </div>
         )}
       </div>

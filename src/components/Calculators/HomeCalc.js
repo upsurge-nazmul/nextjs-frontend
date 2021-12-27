@@ -480,6 +480,7 @@ export default function HomeCalc({ data, seterror, error }) {
                 );
               }
             })}
+            {error && <p className={styles.error}>{error}</p>}
             {(!error || setediteddata) && (
               <ResultBox
                 setediteddata={setediteddata}

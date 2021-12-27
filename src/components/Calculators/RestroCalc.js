@@ -271,7 +271,7 @@ export default function RestroCalc({ data }) {
                 );
               }
             })}
-            <ResultBox resultdata={resultdata} />
+            <ResultBox resultdata={resultdata} onlyText />
           </div>
         )}
 

@@ -1,8 +1,9 @@
 import { useRouter } from "next/dist/client/router";
 import React from "react";
+import { Calc_Data } from "../../static_data/Calc_Data";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
-export default function RelativeSection({ data, cards }) {
+export default function RelativeSection({ cards }) {
   const router = useRouter();
   function relate(item) {
     router.push(`/calculators/${item}`);
@@ -17,18 +18,22 @@ export default function RelativeSection({ data, cards }) {
           if (item === "main") {
             return null;
           } else {
+            if (!Calc_Data[item]) {
+              return null;
+            }
             return (
               <div
                 key={"relativecalc" + index}
                 className={styles.calcCard}
                 onClick={() => relate(item)}
               >
-                <img src={data[item].icon} alt="calcicon" />
-                <p className={styles.calccardtitle}>{data[item]?.heading}</p>
-                <p className={styles.calccardsubtitle}>
-                  {data[item]?.subheading}
+                <img src={Calc_Data[item].icon} alt="calcicon" />
+                <p className={styles.calccardtitle}>
+                  {Calc_Data[item]?.heading}
                 </p>
-                <p className={styles.date}>By Upsurge Team, 5th Aug, 2021</p>
+                <p className={styles.calccardsubtitle}>
+                  {Calc_Data[item]?.subheading}
+                </p>
               </div>
             );
           }

@@ -9,7 +9,13 @@
     width: 50px;
     position: relative;
   }
-
+  .error {
+    margin-top: 1vh;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ff3a3a;
+    line-height: 22px;
+  }
   .inputSection {
     flex: 1;
     display: flex;

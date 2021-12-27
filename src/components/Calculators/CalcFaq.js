@@ -102,7 +102,7 @@ function CalcFaq({ name }) {
       {
         question: "Why should we have a habit of investing?",
         answer:
-          "Apart from earning interest on your investment and therefore increasing your net worth, investment also provides a safety net for unforeseen situations. At times, we need money immediately, if we don't have money invested we will have to take loans from loan sharks at a very high-interest rate. Some people get into a debt trap in situations like these and never be able to repay them and have financial freedom.",
+          "Apart from earning interest on your investment and therefore increasing your net worth, investment also provides a safety net for unforeseen situations. At times, we need money immediately, if we don't have money invested we will have to take loans from private lenders at a very high-interest rate. Some people get into a debt trap in situations like these and never be able to repay them and have financial freedom.",
       },
       {
         question:

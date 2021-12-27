@@ -47,13 +47,11 @@
     background-color: white;
     width: 60vw;
     height: 80vh;
-    border-radius: 12px;
     z-index: 10;
     padding: 40px 60px;
     overflow-y: auto;
     padding-bottom: 200px;
     position: relative;
-
     .wrapper {
       display: flex;
       flex-direction: column;
@@ -159,7 +157,6 @@
       background-color: white;
       width: 80vw;
       height: 80vh;
-      border-radius: 12px;
       z-index: 10;
       padding: 20px 20px;
       overflow-y: auto;

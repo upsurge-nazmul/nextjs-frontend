@@ -562,7 +562,7 @@ function Quiz({ leaderboard }) {
         </div>
       )}
       {(!showmain || quizfinished) && (
-        <LeaderBoard title="Quiz" data={leaderboard || []} />
+        <LeaderBoard title="Money Quotient" data={leaderboard || []} />
       )}
       <JoinUs />
       <Footer />

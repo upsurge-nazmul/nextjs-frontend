@@ -52,9 +52,9 @@ export default function Terms({ setshowterm, termmode }) {
             <strong> Please read these terms and conditions carefully.</strong>
           </p>
           <p className={styles.para}>
-            These Terms (“Terms”) govern your use of our “Upsurge” – Made in
+            These Terms (“Terms”) govern your use of our “upsurge” – Made in
             India” mobile and web application (the “Platform”) made available by
-            Surgeup Technologies Private Limited (“Upsurge”, “Company”, “we”,
+            Surgeup Technologies Private Limited (“upsurge”, “Company”, “we”,
             “us” and “our”), a private company established under the laws of
             India having its registered office at B-5/30, Safdarjung Enclave
             Lower Ground Floor Delhi South West Delhi DL 110029. The terms “you”
@@ -81,7 +81,7 @@ export default function Terms({ setshowterm, termmode }) {
           <p className={styles.heading}>1. OUR SERVICES</p>
           <p className={styles.para}>
             We agree to provide you with our Services. The Services includes all
-            of Upsurge’s products, features, applications, services, educational
+            of upsurge’s products, features, applications, services, educational
             games, technologies, and software that we provide to you.
           </p>
           <p className={styles.para}>
@@ -168,7 +168,7 @@ export default function Terms({ setshowterm, termmode }) {
             supervised by the Parent. As a Parent you must take full
             responsibility for a Minor(s) action while using the Services and
             any interaction with the Platform, such as – setting up and using
-            the “Upsurge” Account, creating and adding members to a Family
+            the “upsurge” Account, creating and adding members to a Family
             (defined below). This is a crucial obligation, so we advise you not
             to add individuals to your Family who you do not know or want to
             take responsibility for.
@@ -190,22 +190,22 @@ export default function Terms({ setshowterm, termmode }) {
             relationship with the Minor. This could include information to
             verify your relationship as a Parent to the Minor(s). If we are
             unable to verify the information that you provide, we may: <br />
-            (i) refuse to establish a “Upsurge” Account (defined below) for the
+            (i) refuse to establish a “upsurge” Account (defined below) for the
             Minor; <br />
-            (ii) close the “Upsurge” Account of a Minor; <br />
-            (iii) close the Parent’s “Upsurge” Account and
+            (ii) close the “upsurge” Account of a Minor; <br />
+            (iii) close the Parent’s “upsurge” Account and
             <br /> (iv) terminate our Services or portion(s) thereof.
           </p>
           <p className={styles.subheading}>
             <strong>Scope of Use :</strong>
           </p>
           <p className={styles.para}>
-            By using a “Upsurge” website, you are deemed to have agreed to all
+            By using a “upsurge” website, you are deemed to have agreed to all
             terms, conditions, use, and notices contained or referenced herein
-            (the “Terms of Use”). “Upsurge” reserves its right, at its
+            (the “Terms of Use”). “upsurge” reserves its right, at its
             discretion, to update or revise these Terms of Use. You should check
             these terms of use periodically for changes. By accessing a
-            “Upsurge” site after the posting of any changes to the terms of use,
+            “upsurge” site after the posting of any changes to the terms of use,
             you acknowledge and agree to those changes, whether or not you have
             reviewed them
           </p>
@@ -283,10 +283,10 @@ export default function Terms({ setshowterm, termmode }) {
             10. RESTRICTIONS ON USE OF MATERIALS :
           </p>
           <p className={styles.para}>
-            The content of this site and any other “Upsurge” site is protected
-            by copyright and trademark laws, and is the property of “Upsurge” is
+            The content of this site and any other “upsurge” site is protected
+            by copyright and trademark laws, and is the property of “upsurge” is
             an initiative of Surgeup Technologies Private Limited. Any content
-            within “Upsurge” sites may be accessed only for your use. You agree
+            within “upsurge” sites may be accessed only for your use. You agree
             not to sell, license, rent, modify, distribute, copy, reproduce,
             transmit, publicly display, publicly perform, publish, adapt, edit
             or create works from such materials or content or in any way exploit
@@ -296,43 +296,43 @@ export default function Terms({ setshowterm, termmode }) {
             or copyright or other proprietary notices. When you download
             copyrighted material, you do not obtain any ownership rights in that
             material. As noted above, reproduction, copying, or redistribution
-            of any material within the “Upsurge” site is strictly prohibited
-            without the express written permission of “Upsurge” You also may
-            not, without “Upsurge” permission, “mirror” any materials contained
-            within any “Upsurge” site or any other service. Any unauthorized
-            user of any material contained within any “Upsurge” site may violate
+            of any material within the “upsurge” site is strictly prohibited
+            without the express written permission of “upsurge” You also may
+            not, without “upsurge” permission, “mirror” any materials contained
+            within any “upsurge” site or any other service. Any unauthorized
+            user of any material contained within any “upsurge” site may violate
             copyright laws, trademark laws, the laws of privacy and publicity,
             and communications regulations and statutes.
           </p>
           <p className={styles.heading}>11. INFORMATION :</p>
           <p className={styles.para}>
-            The information, materials, products, and services within “Upsurge”
+            The information, materials, products, and services within “upsurge”
             websites are subject to change.
           </p>
           <p className={styles.heading}>12. Child Safety Policy :</p>
           <p className={styles.para}>
             This policy is applicable to all persons and organizations
-            associated with “Upsurge”, referred to as “Upsurge” Stakeholders,
+            associated with “upsurge”, referred to as “upsurge” Stakeholders,
             including:
           </p>
           <p className={styles.para}>
-            1. Employees of “Upsurge”, who maybe full-time or part-time
+            1. Employees of “upsurge”, who maybe full-time or part-time
             employees, permanent or temporary employee, regular permanent
             employee or employed on contract
           </p>
           <p className={styles.para}>
             2. Organizations and persons belonging to that organization, who may
-            partner and/ or work with “Upsurge” in any capacity, even for a
+            partner and/ or work with “upsurge” in any capacity, even for a
             limited time period or job
           </p>
           <p className={styles.para}>
-            3. Volunteers who may work with “Upsurge”, in whichever capacity,
+            3. Volunteers who may work with “upsurge”, in whichever capacity,
             even for a limited period of time
           </p>
           <p className={styles.para}>
-            4. Children enrolled as students of “Upsurge” and their parents or
+            4. Children enrolled as students of “upsurge” and their parents or
             guardians who associate with the child in the official records of
-            “Upsurge”
+            “upsurge”
           </p>
           <p className={styles.para}>
             5. Children who may not be enrolled but are reached out through
@@ -341,10 +341,10 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.para}>
             6. Any other person or organisations who may be officially
-            associated with “Upsurge” and its ambit of work and activity
+            associated with “upsurge” and its ambit of work and activity
           </p>
           <p className={styles.para} style={{ marginTop: "20px" }}>
-            “Upsurge” expects all its stakeholders falling within the scope of
+            “upsurge” expects all its stakeholders falling within the scope of
             this policy to adhere to the following child safety code of conduct:
           </p>
           <p className={styles.para}>
@@ -418,19 +418,19 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.heading}>13. APPLICATION LICENSE</p>
           <p className={styles.para}>
-            Subject to your compliance with these Terms, “Upsurge” grants you a
+            Subject to your compliance with these Terms, “upsurge” grants you a
             limited non-exclusive, non-transferable license to download and
             install a copy of the Application on each mobile device or computer
             that you own or control and run such copy of the Application solely
             for your own personal use.
           </p>
           <p className={styles.listelement}>
-            <strong>Upsurge Content</strong>
+            <strong>upsurge Content</strong>
           </p>
           <p className={styles.listelement}>
-            1. Subject to your compliance with these Terms, “Upsurge” grants you
+            1. Subject to your compliance with these Terms, “upsurge” grants you
             a limited, non-exclusive, non-transferable license, to (a) access
-            and view any “Upsurge” Content solely for your personal and
+            and view any “upsurge” Content solely for your personal and
             non-commercial purposes and (b) access and view any M Content to
             which you are permitted access, solely for your personal and
             non-commercial purposes. You have no right to sublicense the license
@@ -443,7 +443,7 @@ export default function Terms({ setshowterm, termmode }) {
             Application, Services, or Collective Content, except as expressly
             permitted in these Terms. No licenses or rights are granted to you
             by implication or otherwise under any intellectual property rights
-            owned or controlled by “Upsurge” or its licensors, except for the
+            owned or controlled by “upsurge” or its licensors, except for the
             licenses and rights expressly granted in these Terms.
           </p>
           <p className={styles.listelement}>
@@ -453,14 +453,14 @@ export default function Terms({ setshowterm, termmode }) {
             1. We may, in our sole discretion, permit you to post, upload,
             publish, submit or transmit User Content. By making available any
             Member Content on or through the Site, Application, Services, or
-            through “Upsurge” promotional campaigns, you hereby grant to
-            “Upsurge” a worldwide, irrevocable, perpetual (or for the term of
+            through “upsurge” promotional campaigns, you hereby grant to
+            “upsurge” a worldwide, irrevocable, perpetual (or for the term of
             the protection), non-exclusive, transferable, royalty-free license,
             with the right to sublicense, to use, view, copy, adapt, modify,
             distribute, license, sell, transfer, publicly display, publicly
             perform, transmit, stream, broadcast, access, view, and otherwise
             exploit such Member Content on, though, by means of or to promote or
-            market the Site, Application and Services. “Upsurge” does not claim
+            market the Site, Application and Services. “upsurge” does not claim
             any ownership rights in any such User Content and nothing in these
             Terms will be deemed to restrict any rights that you may have to use
             and exploit any such User Content.
@@ -493,19 +493,19 @@ export default function Terms({ setshowterm, termmode }) {
             information. Such information is stored securely on the
             “_____________ Web Service” cloud servers, thereby also subject to
             the terms of the ________________ Web Service privacy policy. The
-            Upsurge Privacy Policy explains how we collect, use, share and store
-            the information collected. The Upsurge Privacy Policy also details
+            upsurge Privacy Policy explains how we collect, use, share and store
+            the information collected. The upsurge Privacy Policy also details
             your rights under law and how you may control the data you provide
             us.
           </p>
           <p className={styles.para} style={{ fontStyle: "italic" }}>
             You provide us with some information about yourself so that we can
             serve you better. We have described how we store and use this
-            information in the Upsurge Privacy Policy.
+            information in the upsurge Privacy Policy.
           </p>
           <p className={styles.heading}>16. GDPR COMPLIANCE STATEMENT</p>
           <p className={styles.para}>
-            Upsurge respects and complies with the EU General Data Protection
+            upsurge respects and complies with the EU General Data Protection
             Regulations (GDPR). Some of the key ways we comply with these
             regulations are:
           </p>
@@ -738,7 +738,7 @@ export default function Terms({ setshowterm, termmode }) {
             delete your content and/or account at any point. However, your
             content may continue to appear on the Platform if it has been shared
             with others. To learn more about how we use information, and how to
-            control or delete your content, please read the Upsurge Privacy
+            control or delete your content, please read the upsurge Privacy
             Policy.
             <strong>
               You remain solely responsible for the content you post on our
@@ -770,7 +770,7 @@ export default function Terms({ setshowterm, termmode }) {
             2011. These Terms are published in accordance with the provisions of
             Rule 3(1) of the Information Technology (Intermediaries Guidelines)
             Rules, 2011 that require publishing of the rules and regulations,
-            Upsurge Privacy Policy, and upsurge Terms of Condition for accessing
+            upsurge Privacy Policy, and upsurge Terms of Condition for accessing
             and using our Platform.
           </p>
           <p className={styles.para}>
@@ -796,7 +796,7 @@ export default function Terms({ setshowterm, termmode }) {
             style={{ textDecoration: "underline" }}
           >
             <strong>
-              g. You Will Not Attempt to Disrupt or Jeopardize Upsurge
+              g. You Will Not Attempt to Disrupt or Jeopardize upsurge
             </strong>
           </p>
           <p className={styles.para}>
@@ -826,13 +826,13 @@ export default function Terms({ setshowterm, termmode }) {
           <p className={styles.para}>a. Automatic Downloads and Updates</p>
           <p className={styles.para}>
             We are constantly updating our Platform and Services offered. To use
-            our Platform, you may need to download the Upsurge mobile
+            our Platform, you may need to download the upsurge mobile
             application to your mobile device and update it from time to time if
             you have disabled automatic updates.
           </p>
           <p className={styles.para}>
             Applications and software are constantly updated for your use and
-            you will need to install the latest version of the Upsurge mobile
+            you will need to install the latest version of the upsurge mobile
             application to your mobile device each time such an update is
             generated.
           </p>
@@ -841,7 +841,7 @@ export default function Terms({ setshowterm, termmode }) {
             We may use cookies, pixel tags, web beacons, mobile device IDs,
             flash cookies and similar files or technologies to collect and store
             information with respect to your use of the Services and third-party
-            websites. Please see the Upsurge Policy for more information
+            websites. Please see the upsurge Policy for more information
             regarding the use of cookies and other technologies described in
             this section, including regarding your choices relating to such
             technologies.
@@ -849,7 +849,7 @@ export default function Terms({ setshowterm, termmode }) {
           <p className={styles.para}>c. Data Retention</p>
           <p className={styles.para}>
             We shall have the right to retain certain information regarding your
-            usage of the Platform. Please view the Upsurge Privacy Policy for
+            usage of the Platform. Please view the upsurge Privacy Policy for
             further information relating to the collection, storage and use of
             your information by us.
           </p>
@@ -956,14 +956,14 @@ export default function Terms({ setshowterm, termmode }) {
           <p className={styles.para}>
             This Privacy Policy (“Privacy Policy/Policy”) discloses the privacy
             practices for <strong>Surgeup Technologies Private Limited</strong>{" "}
-            (“Upsurge”, “We/we” or “Us/us”) with regard to collection and use of
+            (“upsurge”, “We/we” or “Us/us”) with regard to collection and use of
             the Personal Information (defined hereunder) of the customers,
             vendors, employees and the users (“You/you” or “Your/your”) and use
-            of the online platform “<strong>Upsurge</strong>”. This Privacy
+            of the online platform “<strong>upsurge</strong>”. This Privacy
             Policy along with Terms of Use describes our practices regarding,
             including your choices in relation to how we collect, store, use,
             share and secure your Personal Information across our Website and
-            Mobile application called <strong>“Upsurge”-Made in India.</strong>
+            Mobile application called <strong>“upsurge”-Made in India.</strong>
             The website and mobile application are referred to as the{" "}
             <strong>“Platform”</strong>
             It also describes your choices regarding use, access and correction
@@ -1120,7 +1120,7 @@ export default function Terms({ setshowterm, termmode }) {
             those that you need to see.
           </p>
           <p className={styles.para}>
-            Upsurge can use technologies such as cookies, clear gifs, log files,
+            upsurge can use technologies such as cookies, clear gifs, log files,
             and flash cookies for several purposes, including to help understand
             how you interact with our platform and services, to provide a better
             experience.
@@ -1154,16 +1154,16 @@ export default function Terms({ setshowterm, termmode }) {
             operational requests such as password reset requests.
           </p>
           <p className={styles.para}>
-            Upsurge is a community. We offer several features that allow members
+            upsurge is a community. We offer several features that allow members
             to connect and communicate in public or semi-public spaces, such as
             Forums and Teams. Please be sensible and judge before posting in
             these community spaces or sharing your Personal Information with
-            others on Upsurge. Be aware that any Personal Information you submit
+            others on upsurge. Be aware that any Personal Information you submit
             there can be read, collected, or used by others, or could be used to
             send you unsolicited messages.
           </p>
           <p className={styles.para}>
-            Upsurge do not retain your Personal Information for longer than is
+            upsurge do not retain your Personal Information for longer than is
             required for the purposes for which the information may be lawfully
             used.
           </p>
@@ -1252,7 +1252,7 @@ export default function Terms({ setshowterm, termmode }) {
             to sue us for any data breach.
           </p>
           <p className={styles.COOKIES}>
-            5. What Does Upsurge Share With Third Parties?
+            5. What Does upsurge Share With Third Parties?
           </p>{" "}
           <p className={styles.para}>
             We transfer cookies, which are small files containing a string of
@@ -1357,8 +1357,8 @@ export default function Terms({ setshowterm, termmode }) {
             The Site contains copyrighted material, trademarks, and other
             proprietary information, including, but not limited to, text,
             software, photos, video, graphics, music, sound, and the entire
-            contents of Upsurge is protected by copyright as a collective work
-            under the applicable copyright laws. Upsurge owns a copyright in the
+            contents of upsurge is protected by copyright as a collective work
+            under the applicable copyright laws. upsurge owns a copyright in the
             selection, coordination, arrangement, and enhancement of such
             content, as well as copyright or license to use in the content
             original to it. You may not modify, publish, transmit, participate
@@ -1368,8 +1368,8 @@ export default function Terms({ setshowterm, termmode }) {
             as otherwise expressly stated under copyright law, no copying,
             redistribution, retransmission, publication, or commercial
             exploitation of downloaded material without the express permission
-            of Upsurge is permitted. If copying, redistribution, or publication
-            of copyrighted material is expressly permitted by Upsurge, then no
+            of upsurge is permitted. If copying, redistribution, or publication
+            of copyrighted material is expressly permitted by upsurge, then no
             changes in or deletion of author attribution, trademark legend or
             copyright notice shall be made.
           </p>
@@ -1377,14 +1377,14 @@ export default function Terms({ setshowterm, termmode }) {
             You acknowledge that you do not acquire any ownership rights by
             downloading copyrighted material. Trademarks that are located within
             or on our Website or a website otherwise owned or operated in
-            conjunction with Upsurge shall not be deemed to be in the public
-            domain but rather the exclusive property of Upsurge, unless such
+            conjunction with upsurge shall not be deemed to be in the public
+            domain but rather the exclusive property of upsurge, unless such
             site is under license from the trademark owner thereof in which case
-            such license is for the exclusive benefit and use of Upsurge, unless
+            such license is for the exclusive benefit and use of upsurge, unless
             otherwise stated.
           </p>
           <p className={styles.para}>
-            {`Upsurge does not have any express burden or responsibility to
+            {`upsurge does not have any express burden or responsibility to
             provide you with indications, markings, or anything else that may
             aid you in determining whether the material in question is
             copyrighted or trademarked. You shall be solely liable for any
@@ -1392,14 +1392,14 @@ export default function Terms({ setshowterm, termmode }) {
             proprietary rights or any other harm resulting from such a
             submission. By submitting material to any public area of the
             Website, you warrant that the owner of such material has expressly
-            granted Upsurge the royalty-free, perpetual, irrevocable,
+            granted upsurge the royalty-free, perpetual, irrevocable,
             non-exclusive right and license to use, reproduce, modify, adapt,
             publish, translate and distribute such material (in whole or in
             part) worldwide and/or to incorporate it in other works in any form,
             media or technology now known or hereafter developed for the full
             term of any copyright that may exist in such material. You also
             permit any other end user to access, view, store or reproduce the
-            material for that end user's personal use. You hereby grant Upsurge,
+            material for that end user's personal use. You hereby grant upsurge,
             the right to edit, copy, publish and distribute any material made
             available on the Platform by you. If you come across any abuse or
             violation of these Terms, please report to karan@upsurgefi.com.`}
@@ -1479,9 +1479,9 @@ export default function Terms({ setshowterm, termmode }) {
           </p>
           <p className={styles.heading}>Privileged/Exclusive Service: </p>
           <p className={styles.para}>
-            By having an Upsurge account, you have explicitly given consent for
+            By having an upsurge account, you have explicitly given consent for
             us to capture images (followed by analysis), camera/mic permissions
-            to make video calls and record the same. Upsurge May Disclose
+            to make video calls and record the same. upsurge May Disclose
             Information:
           </p>
           <ul>

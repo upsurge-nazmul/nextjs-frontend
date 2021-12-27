@@ -9,6 +9,7 @@ import Footer from "../../components/Home/Footer";
 import WaitingListCta from "../../components/WaitingListCta";
 import JoinUs from "../../components/Home/JoinUs";
 import { Calc_Data } from "../../static_data/Calc_Data";
+import RelativeSection from "../../components/Calculators/RelativeSection";
 
 function CalculatorsPage() {
   const router = useRouter();
@@ -52,9 +53,6 @@ function CalculatorsPage() {
           <h1 className={styles.mainheading}>{heading}</h1>
           <h2 className={styles.heading}>How it works</h2>
           <h3 className={styles.subheading}>{subheading}</h3>
-          <h3 className={styles.subheading} style={{ color: "red" }}>
-            {error}
-          </h3>
         </div>
 
         <CalculatorRouter
@@ -64,10 +62,7 @@ function CalculatorsPage() {
           calcCalc_Data={Calc_Data}
         />
         <CalcFaq name={calculatorName} />
-        {/* <RelativeSection
-          Calc_Data={Calc_Data}
-          cards={Calc_Data[calculatorName]?.relative ?? []}
-        /> */}
+        <RelativeSection cards={Calc_Data[calculatorName]?.relative ?? []} />
       </div>
       <JoinUs />
 

@@ -75,16 +75,13 @@ export default function KnowledgeQuest({
       <div className={styles.textcontainer}>
         <div className={styles.heading}>Knowledge Quest</div>
         <div className={styles.subheading}>
-          Kickstart your child’s journey towards financial independence and
-          entrepreneurship with our proprietary product designed by
-          entrepreneurs, investment bankers, and experiential learning experts
-          from top global universities.
+          {`Interactive courses that cover fundamentals of finance, including
+          earning, budgeting, saving, investing, and entrepreneurship.`}
         </div>
         <div className={styles.subheading}>
-          Knowledge Quests comprise of interactive courses that cover
-          fundamentals of financial literacy, including earning, budgeting,
-          spending, saving, investing, borrowing, risk management, career
-          development, and entrepreneurship.
+          {`These bite-sized courses are about 10 minutes each and include
+          exercises, real-life examples and short quizzes to make sure that the
+          child understands the concepts.`}
         </div>
         <div className={styles.details}>
           <div className={styles.section}>
