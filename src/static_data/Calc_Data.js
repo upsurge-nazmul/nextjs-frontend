@@ -8,11 +8,13 @@ export const Calc_Data = {
   carLoan: {
     heading: "Car Loan",
     subheading: `Users will get to know the EMI amount they'll have to pay for various types of cars.`,
+    relative: ["sip", "restaurant", "education"],
     icon: "https://i.ibb.co/znVZd67/sven-d-a4-S6-KUu-Leo-M-unsplash.jpg",
   },
   education: {
     heading: "Education Loan",
     subheading: `This calculator gives user a fair estimate of the EMI they'll have to pay for pursuing various degrees`,
+    relative: ["carLoan", "restaurant", "homeLoan"],
     icon: "https://i.ibb.co/w4p94JJ/md-duran-1-Vq-HRwxc-CCw-unsplash.jpg",
   },
   // vacation: {
@@ -23,7 +25,7 @@ export const Calc_Data = {
   sip: {
     heading: "Financing Calculator",
     subheading: `It tells how much money you need to invest monthly in various assets to reach a targeted saving amount.`,
-    relative: ["investmentcomparison", "retirement", "costofraising"],
+    relative: ["carLoan", "restaurant", "homeLoan"],
     icon: "https://i.ibb.co/b1Dxh2v/Untitled-design-9.png",
   },
   //   educationinvestments: {
@@ -43,7 +45,7 @@ export const Calc_Data = {
     heading: "Start My Cloud Kitchen Calculator",
     subheading:
       "This calculator tells you the lump sum amount you need in order to start your restaurant. Apart from that, it also gives you the break even analysis for your restaurant.",
-    relative: ["currency", "angel", "unicorn"],
+    relative: ["carLoan", "carLoan", "homeLoan"],
     icon: "https://i.ibb.co/zFrz17r/Untitled-design-12.png",
   },
   //   investmentcomparison: {
