@@ -22,7 +22,9 @@
     background-color: white;
     border-radius: 12px;
     padding: 40px;
-    .code {
+
+    .code,
+    .show {
       border-radius: 8px;
       background-color: rgba(0, 0, 0, 0.1);
       height: 49px;
@@ -30,6 +32,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      .copy {
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+        z-index: 2;
+        color: rgb(70, 70, 70);
+        transition: all 0.3s ease;
+        &:hover {
+          color: rgb(36, 36, 36);
+        }
+      }
+    }
+    .show {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.164);
+      }
+    }
+    .detail {
+      margin-top: 5px;
+      font-size: 14px;
+      &:nth-child(2) {
+        margin-top: 10px;
+      }
     }
   }
 }

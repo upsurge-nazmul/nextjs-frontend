@@ -6,7 +6,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
 import Loader from "../Loader";
-
+import CancelIcon from "@mui/icons-material/Cancel";
 export default function VoucherRedeem({
   userdata_email,
   userdata_phone,
@@ -14,8 +14,8 @@ export default function VoucherRedeem({
   setshowpopup,
   prices,
   data,
+  setuser_balance,
 }) {
-  console.log(data);
   const [email, setemail] = useState(userdata_email || "");
   const [error, seterror] = useState("");
   const [phone, setphone] = useState(userdata_phone || "");
@@ -27,6 +27,7 @@ export default function VoucherRedeem({
     handleUpdateData();
   }, []);
   async function handleUpdateData() {
+    seterror("");
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid phone number");
       return;
@@ -56,10 +57,14 @@ export default function VoucherRedeem({
     setprogress(100);
     clearInterval(interval);
     if (res && res.data.success) {
-      setsuccess(true);
+      console.log(res.data.data);
+      if (res.data.data.updated_balance) {
+        setuser_balance(res.data.data.updated_balance);
+      } else setuser_balance((prev) => prev - prices);
     } else {
-      seterror(res.data.message || "Error connecting to server");
+      seterror(res?.data?.message || "Error connecting to server");
     }
+    setsuccess(true);
   }
   return (
     <div className={styles.waitlistpopup}>
@@ -102,6 +107,25 @@ export default function VoucherRedeem({
               Proceed
             </div> */}
           </>
+        ) : error ? (
+          <div className={styles.approveModalcontainer}>
+            <div className={styles.heading}>
+              <div className={styles.text}>
+                <p>Oops!</p>
+                <p className={styles.payment}>
+                  {error || `There was some issue, please try again later.`}
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.svgholder}>
+              <CancelIcon className={styles.cancelicon} />
+              <PaymentSuccessBackground className={styles.backsvg} />
+            </div>
+            <div className={styles.button} onClick={() => setshowpopup(false)}>
+              Done
+            </div>
+          </div>
         ) : (
           <div className={styles.approveModalcontainer}>
             <div className={styles.heading}>

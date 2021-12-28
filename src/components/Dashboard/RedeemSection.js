@@ -4,12 +4,18 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import ModernInputBox from "../../components/ModernInputBox";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import { unicoin_value } from "../../../config";
-export default function RedeemSection({ unicoins, balance, settoastdata }) {
+export default function RedeemSection({
+  unicoins,
+  balance,
+  settoastdata,
+  user_unicoin,
+  setuser_unicoin,
+  user_balance,
+  setuser_balance,
+}) {
   const [showinput, setshowinput] = useState(false);
   const [unicointoconvert, setunicointoconvert] = useState("");
   const [err, seterr] = useState("");
-  const [user_unicoin, setuser_unicoin] = useState(unicoins);
-  const [user_balance, setuser_balance] = useState(balance);
   async function convert() {
     seterr("");
     if (unicointoconvert > user_unicoin) {

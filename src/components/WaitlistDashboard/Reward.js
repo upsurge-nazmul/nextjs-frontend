@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-export default function Reward({ data, unicoin, email, phone, balance }) {
+import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+export default function Reward({
+  data,
+  setuser_balance,
+  email,
+  phone,
+  balance,
+}) {
   const [prices, setprices] = useState(data.valueDenominations?.split(",")[0]);
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
@@ -23,6 +30,7 @@ export default function Reward({ data, unicoin, email, phone, balance }) {
           prices={prices}
           data={data}
           setshowpopup={setshowpopup}
+          setuser_balance={setuser_balance}
         />
       )}
       {Number(data.valueDenominations.split(",")[0]) > balance && (
@@ -35,12 +43,14 @@ export default function Reward({ data, unicoin, email, phone, balance }) {
           options={data.valueDenominations?.split(",") || ["test"]}
           value={prices}
           presign={"INR "}
+          keyprefix={data.name + "price"}
           placeholder={"Price"}
           setvalue={setprices}
         />
         <DropDown
           options={[1, 2, 3, 4, 5]}
           value={quantity}
+          keyprefix={data.name + "quantity"}
           setvalue={setquantity}
           placeholder={"Quantity"}
         />

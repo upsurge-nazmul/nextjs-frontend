@@ -20,7 +20,9 @@ function DropDown({
 
   useEffect(() => {
     function getifclickedoutside(e) {
-      let elmnt = document.getElementById("dropdown" + options[0]);
+      let elmnt = document.getElementById(
+        keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]
+      );
       if (elmnt !== null && !elmnt.contains(e.target)) {
         setshowoptions(false);
       }
@@ -34,7 +36,7 @@ function DropDown({
 
   return (
     <div
-      id={"dropdown" + options[0]}
+      id={keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]}
       className={styles.dropdown}
       style={{ margin: margin ? margin : "0" }}
     >
@@ -67,7 +69,10 @@ function DropDown({
                 className={`${styles.option} ${
                   item === value ? styles.selectedOption : null
                 }`}
-                onClick={() => handleChange(item)}
+                onClick={() => {
+                  console.log(item);
+                  handleChange(item);
+                }}
                 key={
                   keyprefix
                     ? keyprefix + "dropdownoption" + index

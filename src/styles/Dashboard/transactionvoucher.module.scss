@@ -7,10 +7,12 @@
   align-items: center;
   margin-bottom: 10px;
   .imgwrapper {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     position: relative;
     margin-right: 10px;
+    border-radius: 6px;
+    overflow: hidden;
   }
   .data {
     display: flex;
@@ -25,6 +27,7 @@
     .status {
       color: rgb(70, 70, 70);
       font-size: 14px;
+      margin-top: 5px;
     }
   }
   .details {

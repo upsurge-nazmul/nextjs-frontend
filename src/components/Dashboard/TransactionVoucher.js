@@ -11,6 +11,7 @@ export default function TransactionVoucher({ data, settoastdata }) {
         <VoucherCode
           data={data.response.vouchers[0]}
           setshowcode={setshowcode}
+          settoastdata={settoastdata}
         />
       )}
 
@@ -18,29 +19,31 @@ export default function TransactionVoucher({ data, settoastdata }) {
         <Image src={data?.img_url} layout="fill" objectFit="contain" />
       </div>
       <div className={styles.data}>
-        <p className={styles.name}>{data.name}</p>
-        <p className={styles.vendor}>Vendor : {data.vendor}</p>
-        <p className={styles.status}>Status : {data.response.orderStatus}</p>
+        <p className={styles.name}>{data?.name}</p>
+        <p className={styles.vendor}>Vendor : {data?.vendor}</p>
+        <p className={styles.status}>
+          Status : {data?.response.deliveryStatus}
+        </p>
         <p className={styles.time}>
           Date :{" "}
-          {new Date(Number(data.timestamp)).getDate() +
+          {new Date(Number(data?.timestamp)).getDate() +
             "-" +
-            new Date(Number(data.timestamp)).getMonth() +
+            new Date(Number(data?.timestamp)).getMonth() +
             "-" +
-            new Date(Number(data.timestamp)).getFullYear() +
+            new Date(Number(data?.timestamp)).getFullYear() +
             " " +
-            new Date(Number(data.timestamp)).getHours() +
+            new Date(Number(data?.timestamp)).getHours() +
             ":" +
-            new Date(Number(data.timestamp)).getMinutes()}
+            new Date(Number(data?.timestamp)).getMinutes()}
         </p>
       </div>
       <div
         className={styles.details}
         onClick={() => {
-          if (data.response.orderStatus !== "complete") {
+          if (data?.response.deliveryStatus !== "delivered") {
             settoastdata({
               show: true,
-              msg: "Order not yet completed",
+              msg: "Order delivery is pending",
               type: "error",
             });
           } else setshowcode(true);
