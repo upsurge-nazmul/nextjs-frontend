@@ -119,5 +119,11 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/LudoTest/Build/Ludo.wasm",
     loaderUrl: "/Games/LudoTest/Build/Ludo.loader.js",
     version: "1.0",
+  },LudoTest2: {
+    dataUrl: "/Games/LudoTest2/Build/Ludo.data",
+    frameworkUrl: "/Games/LudoTest2/Build/Ludo.framework.js",
+    codeUrl: "/Games/LudoTest2/Build/Ludo.wasm",
+    loaderUrl: "/Games/LudoTest2/Build/Ludo.loader.js",
+    version: "1.0",
   },
 };
