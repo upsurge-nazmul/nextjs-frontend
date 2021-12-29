@@ -128,10 +128,32 @@ export const Game_Unity_Data = {
     version: "1.0",
   },
   LudoTest3: {
-    dataUrl: "/Games/LudoTest3/Build/webgl.data",
-    frameworkUrl: "/Games/LudoTest3/Build/webgl.framework.js",
-    codeUrl: "/Games/LudoTest3/Build/webgl.wasm",
-    loaderUrl: "/Games/LudoTest3/Build/webgl.loader.js",
+    dataUrl: "/Games/LudoTest3/Build/Ludo.data",
+    frameworkUrl: "/Games/LudoTest3/Build/Ludo.framework.js",
+    codeUrl: "/Games/LudoTest3/Build/Ludo.wasm",
+    loaderUrl: "/Games/LudoTest3/Build/Ludo.loader.js",
+    version: "1.0",
+  },
+  LudoTest4: {
+    dataUrl: "/Games/LudoTest4/Build/webgl.data",
+    frameworkUrl: "/Games/LudoTest4/Build/webgl.framework.js",
+    codeUrl: "/Games/LudoTest4/Build/webgl.wasm",
+    loaderUrl: "/Games/LudoTest4/Build/webgl.loader.js",
+    version: "1.0",
+  },
+  ShoppingTest1: {
+    dataUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.data",
+    frameworkUrl:
+      "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.framework.js",
+    codeUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.wasm",
+    loaderUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.loader.js",
+    version: "1.0",
+  },
+  LudoTest5: {
+    dataUrl: "/Games/LudoTest5/Build/webgl.data",
+    frameworkUrl: "/Games/LudoTest5/Build/webgl.framework.js",
+    codeUrl: "/Games/LudoTest5/Build/webgl.wasm",
+    loaderUrl: "/Games/LudoTest5/Build/webgl.loader.js",
     version: "1.0",
   },
 };
