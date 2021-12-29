@@ -131,5 +131,17 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/LudoTest3/Build/Ludo.wasm",
     loaderUrl: "/Games/LudoTest3/Build/Ludo.loader.js",
     version: "1.0",
+  },LudoTest4: {
+    dataUrl: "/Games/LudoTest4/Build/webgl.data",
+    frameworkUrl: "/Games/LudoTest4/Build/webgl.framework.js",
+    codeUrl: "/Games/LudoTest4/Build/webgl.wasm",
+    loaderUrl: "/Games/LudoTest4/Build/webgl.loader.js",
+    version: "1.0",
+  },ShoppingTest1: {
+    dataUrl: "/Games/LudoTest4/Build/ShoppingMall_WebglBuild.data",
+    frameworkUrl: "/Games/LudoTest4/Build/ShoppingMall_WebglBuild.framework.js",
+    codeUrl: "/Games/LudoTest4/Build/ShoppingMall_WebglBuild.wasm",
+    loaderUrl: "/Games/LudoTest4/Build/ShoppingMall_WebglBuild.loader.js",
+    version: "1.0",
   },
 };
