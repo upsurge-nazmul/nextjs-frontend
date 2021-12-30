@@ -14,6 +14,8 @@ import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { MainContext } from "../../../../context/Main";
+import Curve1 from "../../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../../components/SVGcomponents/Curve2";
 export default function Blogs({
   blogs,
   totalblogs,
@@ -66,7 +68,8 @@ export default function Blogs({
     <div className={styles.blogs}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -80,7 +83,7 @@ export default function Blogs({
             selectedCat={selectedCat}
             sortPosts={sortPosts}
             pushto="/dashboard/w/blogs/"
-            col="#f4f5f7"
+            col="transparent"
           />
 
           {highlightblogs.length > 0 && (

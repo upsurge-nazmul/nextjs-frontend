@@ -114,9 +114,9 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             onClick={() => router.push("/dashboard/w/leaderboards")}
           >
             <LeaderboardSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Leaderboards</p>
+            <p className={styles.tabtitle}>Leaderboard</p>
           </div>
-          <div
+          {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/games" ||
               currenttab.indexOf("dashboard/w/game") !== -1
@@ -128,7 +128,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <GameSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Games</p>
-          </div>
+          </div> */}
           <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/w/quiz" ? styles.activetab : ""

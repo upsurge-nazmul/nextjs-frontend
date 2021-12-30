@@ -7,6 +7,8 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import PartnerSection from "../../../components/Home/PartnerSection";
+import Curve1 from "../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../components/SVGcomponents/Curve2";
 import TickSvg from "../../../components/SVGcomponents/TickSvg";
 import Toast from "../../../components/Toast";
 import Reward from "../../../components/WaitlistDashboard/Reward";
@@ -56,6 +58,8 @@ export default function Rewards({ userdatafromserver, vouchers }) {
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}

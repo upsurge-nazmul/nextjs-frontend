@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import Curve1 from "../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../components/SVGcomponents/Curve2";
 import TickSvg from "../../../components/SVGcomponents/TickSvg";
 import Toast from "../../../components/Toast";
 import { MainContext } from "../../../context/Main";
@@ -17,37 +19,19 @@ export default function Pricing({ userdatafromserver }) {
       name: "Monthly",
       price: "₹599",
       description: "per child, per month",
-      benefits: [
-        "5 Social Profiles",
-        "5 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 Support",
-      ],
+      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
     },
     {
       name: "Half-Yearly",
-      price: "₹2,899",
+      price: "₹499",
       description: "per child, per month (billed every 6 months)",
-      benefits: [
-        "10 Social Profiles",
-        "25 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 VIP Support",
-      ],
+      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
     },
     {
       name: "Yearly",
-      price: "₹4,799",
+      price: "₹399",
       description: "per child, per month (billed annually)",
-      benefits: [
-        "100 Social Profiles",
-        "100 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 VIP Support",
-      ],
+      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
     },
   ];
   const [mode, setmode] = useState("Pricing");
@@ -59,7 +43,8 @@ export default function Pricing({ userdatafromserver }) {
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -68,7 +53,7 @@ export default function Pricing({ userdatafromserver }) {
         />
         <div className={styles.mainContent}>
           <p className={styles.heading}>
-            Start your kids’ journey in the <br />
+            Start your kid’s journey in the <br />
             finance world today.
           </p>
           <div className={styles.featurewrapper}>
@@ -127,6 +112,8 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          userdatafromserver: response.data.data,
+
           msg: "",
         },
       };

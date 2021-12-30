@@ -13,6 +13,8 @@ import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import Curve1 from "../../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../../components/SVGcomponents/Curve2";
 
 function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   const router = useRouter();
@@ -104,6 +106,8 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
     <div className={`${styles.blogs} ${openFull ? styles.disablescroll : ""}`}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -117,7 +121,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
             pushto="/dashboard/w/blogs/"
             selectedCat={selectedCat}
             sortPosts={sortPosts}
-            col="#f4f5f7"
+            col="transparent"
           />
 
           {blogposts.length > 0 && (

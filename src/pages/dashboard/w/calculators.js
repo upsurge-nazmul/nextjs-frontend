@@ -8,6 +8,8 @@ import { Calc_Data } from "../../../static_data/Calc_Data";
 import styles from "../../../styles/WaitlistDashboard/calcs.module.scss";
 import Image from "next/image";
 import LoginApis from "../../../actions/apis/LoginApis";
+import Curve1 from "../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../components/SVGcomponents/Curve2";
 
 export default function Calculators({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
@@ -26,7 +28,8 @@ export default function Calculators({ userdatafromserver }) {
     <div className={styles.calcs}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}

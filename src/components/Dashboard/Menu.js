@@ -2,8 +2,10 @@ import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import { eraseCookie } from "../../actions/cookieUtils";
+import LiveHelpRoundedIcon from "@mui/icons-material/LiveHelpRounded";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Dashboard/menu.module.scss";
+import EmailIcon from "@mui/icons-material/Email";
 import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
@@ -77,11 +79,23 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           className={styles.tabs}
           onClick={() => {
             setshowmenu(false);
-            router.push("/dashboard/w/transactions");
+            router.push("/dashboard/w/contact");
           }}
         >
-          <PaymentSvg className={styles.paymentIcon} />
-          Transactions
+          <EmailIcon className={styles.contacticon} />
+          Contact us
+        </p>
+      )}
+      {waitilistmenu && (
+        <p
+          className={styles.tabs}
+          onClick={() => {
+            setshowmenu(false);
+            router.push("/dashboard/w/faq");
+          }}
+        >
+          <LiveHelpRoundedIcon className={styles.contacticon} />
+          FAQ
         </p>
       )}
       {!waitilistmenu && (

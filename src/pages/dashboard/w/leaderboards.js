@@ -3,6 +3,8 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import Curve1 from "../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../components/SVGcomponents/Curve2";
 import Toast from "../../../components/Toast";
 import LeaderboardComponent from "../../../components/WaitlistDashboard/LeaderboardComponent";
 import { MainContext } from "../../../context/Main";
@@ -17,7 +19,7 @@ export default function Leaderboards({
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState("Leaderboards");
+  const [mode, setmode] = useState("Leaderboard");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -26,7 +28,8 @@ export default function Leaderboards({
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}

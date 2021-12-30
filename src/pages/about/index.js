@@ -6,8 +6,6 @@ import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/about/about.module.scss";
-import Image from "next/image";
-import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import Jasper from "../../components/SVGcomponents/Jasper";
 export default function About() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);

@@ -9,6 +9,8 @@ import MoreCard from "../../../../components/Blog/MoreCard";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import Curve1 from "../../../../components/SVGcomponents/Curve1";
+import Curve2 from "../../../../components/SVGcomponents/Curve2";
 
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
@@ -97,7 +99,8 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
     <div className={styles.blogs}>
       <DashboardLeftPanel type="waitlist" fixed={true} />
       {/* <Toast data={toastdata} /> */}
-
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
