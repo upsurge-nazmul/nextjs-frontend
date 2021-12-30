@@ -25,7 +25,7 @@
         display: flex;
         margin-bottom: 40px;
         justify-content: space-evenly;
-        height: fit-content;
+        z-index: 2;
         .flipcard {
           background-color: transparent;
           margin-right: 20px;
@@ -33,6 +33,7 @@
           border-radius: 10px;
           min-width: 220px;
           height: 180px;
+          z-index: 10;
           border: 1px solid #f1f1f1;
           perspective: 1000px;
           cursor: pointer;
@@ -42,7 +43,7 @@
             border-radius: 10px;
             height: 100%;
             text-align: center;
-            transition: transform 0.8s;
+            transition: transform 0.5s;
             transform-style: preserve-3d;
             .front,
             .back {
@@ -93,7 +94,7 @@
               .gameicon {
                 background-color: rgb(21, 187, 168);
                 fill: white;
-                width: 80px;
+                font-size: 80px;
                 path {
                   fill: white;
                 }
@@ -169,43 +170,6 @@
         }
         .uniblock {
           background-color: rgba(255, 98, 99, 1);
-          .blocks {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-bottom: 10px;
-            .block {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              position: relative;
-              flex: 1;
-              .border {
-                width: 2px;
-                height: 40px;
-                border-radius: 2px;
-                position: absolute;
-                right: -5px;
-                bottom: -5px;
-                background-color: white;
-              }
-            }
-            .heading {
-              font-size: 14px;
-              font-weight: 500;
-            }
-            .subheading {
-              font-size: 40px;
-              font-weight: 800;
-            }
-            .subheadingsmall {
-              font-size: 26px;
-            }
-          }
-          .subheading {
-            margin-top: 20px;
-          }
         }
       }
       .flexMid {

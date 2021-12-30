@@ -3,11 +3,9 @@ import { unicoin_value } from "../../../../config";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import XoxoApis from "../../../actions/apis/XoxoApis";
-import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import PartnerSection from "../../../components/Home/PartnerSection";
-import TickSvg from "../../../components/SVGcomponents/TickSvg";
+import RedeemSection from "../../../components/Dashboard/RedeemSection";
 import Toast from "../../../components/Toast";
 import Reward from "../../../components/WaitlistDashboard/Reward";
 import { MainContext } from "../../../context/Main";
@@ -18,29 +16,6 @@ export default function Rewards({ userdatafromserver, vouchers }) {
     type: "success",
     msg: "",
   });
-  const data = [
-    {
-      name: "0-200",
-      benefits: [
-        "Finance master class",
-        "Financial dictionary",
-        "upsurge cap & bottle",
-      ],
-    },
-    {
-      name: "200-400",
-      benefits: ["Financial dictionary", "upsurge cap", "upsurge bottle"],
-    },
-    {
-      name: "400+",
-      benefits: [
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
-      ],
-    },
-  ];
-
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -56,6 +31,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
+
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -63,36 +39,25 @@ export default function Rewards({ userdatafromserver, vouchers }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <PartnerSection dashboard={true} />
-          <p className={styles.heading}>Know more about your rewards.</p>
-          <div className={styles.featurewrapper}>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Earn UniCoins by money quotient
-            </div>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Earn UniCoins by inviting friends
-            </div>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Earn UniCoins by plaing daily quiz
-            </div>
-          </div>
+          <RedeemSection
+            user_balance={user_balance}
+            setuser_balance={setuser_balance}
+            user_unicoin={user_unicoin}
+            setuser_unicoin={setuser_unicoin}
+            settoastdata={settoastdata}
+          />
           <div className={styles.wrapper}>
-            {data.map((item, index) => {
+            {vouchers.map((item) => {
               return (
-                <div className={styles.pricecontainer} key={"price" + index}>
-                  <p className={styles.name}>Benefits for rank</p>
-                  <p className={styles.price}>{item.name}</p>
-                  <p className={styles.description}>{item.description}</p>
-                  <div className={styles.hr} />
-                  <div className={styles.benefitswrapper}>
-                    {item.benefits.map((benefit, index) => {
-                      return <p key={"benefit" + index}>{benefit}</p>;
-                    })}
-                  </div>
-                </div>
+                <Reward
+                  data={item.data}
+                  key={item.id}
+                  email={userdatafromserver.email}
+                  phone={userdatafromserver.phone}
+                  balance={user_balance}
+                  unicoin={user_unicoin}
+                  setuser_balance={setuser_balance}
+                />
               );
             })}
           </div>

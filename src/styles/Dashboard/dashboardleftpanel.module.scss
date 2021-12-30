@@ -97,6 +97,108 @@
       }
     }
   }
+  .bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    .logo {
+      width: 180px;
+      cursor: pointer;
+      height: fit-content;
+    }
+    .brandtext {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      .socials {
+        margin-bottom: 10px;
+      }
+      .copyright {
+        font-size: 12px;
+      }
+      .heading {
+        font-size: 15px;
+      }
+      .subheadings {
+        font-size: 15px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        a {
+          text-decoration: none;
+          color: #4166eb;
+          margin-right: 5px;
+          &:last-child {
+            margin: 0;
+            margin-left: 5px;
+          }
+        }
+      }
+      .whatsapp {
+        background-color: #21d864;
+        padding: 15px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        color: white;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        .icon {
+          font-size: 22px;
+          margin-right: 8px;
+        }
+        &:hover {
+          background-color: #075e54;
+        }
+      }
+      .terms {
+        display: flex;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        p {
+          cursor: pointer;
+          &:first-child {
+            margin-right: 10px;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .socials {
+      display: flex;
+      height: fit-content;
+      overflow: auto;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      .social {
+        cursor: pointer;
+        margin-right: 30px;
+        width: 20px;
+        height: 20px;
+      }
+      .socialyt {
+        width: 25px;
+        cursor: pointer;
+        margin-right: 30px;
+        height: 25px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
 .fixed {
   position: fixed;

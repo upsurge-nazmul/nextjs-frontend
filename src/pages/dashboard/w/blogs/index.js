@@ -74,7 +74,7 @@ export default function Blogs({
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <p className={styles.heading}>Welcome to Upsurge Blog!</p>
+          <p className={styles.heading}>Welcome to upsurge Blog!</p>
 
           <CategoryBar
             selectedCat={selectedCat}

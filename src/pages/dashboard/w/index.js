@@ -15,6 +15,7 @@ import styles from "../../../styles/WaitlistDashboard/waitlistdashboard.module.s
 import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import RewardSvg from "../../../components/SVGcomponents/RewardSvg";
+import InfoIcon from "@mui/icons-material/Info";
 import QuizIconSvg from "../../../components/SVGcomponents/QuizIconSvg";
 import GameSvg from "../../../components/SVGcomponents/GameSvg";
 import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
@@ -143,32 +144,10 @@ export default function WaitlistDashboard({
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.uniblock}>
-                      <div className={styles.blocks}>
-                        <div className={styles.block}>
-                          <div className={styles.border}></div>
-                          <p className={styles.heading}>Earned Unicoins</p>
-                          <p
-                            className={`${styles.subheading} ${
-                              userdatafromserver.num_unicoins?.length > 4 &&
-                              styles.subheadingsmall
-                            }`}
-                          >
-                            {userdatafromserver.num_unicoins || 0}
-                          </p>
-                        </div>
-                        <div className={styles.block}>
-                          <p className={styles.heading}>INR</p>
-                          <p
-                            className={`${styles.subheading} ${
-                              Number(userdatafromserver.num_balance).toString()
-                                .length > 4 && styles.subheadingsmall
-                            }`}
-                          >
-                            {Number(userdatafromserver.num_balance) || 0}
-                          </p>
-                        </div>
-                      </div>
-                      <p className={styles.subheading}>Rewards</p>
+                      <p className={styles.heading}>
+                        {userdatafromserver.num_unicoins || 0}
+                      </p>
+                      <p className={styles.subheading}>Earned Unicoins</p>
                     </div>
                   </div>
                   <div
@@ -223,7 +202,7 @@ export default function WaitlistDashboard({
                       setshowdetails(true);
                     }}
                   >
-                    <GameSvg className={styles.gameicon} />
+                    <InfoIcon className={styles.gameicon} />
                     <p className={styles.text}>Know more</p>
                   </div>
                 </div>

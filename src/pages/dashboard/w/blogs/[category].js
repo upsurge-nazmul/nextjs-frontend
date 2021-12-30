@@ -111,7 +111,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <p className={styles.heading}>Welcome to Upsurge Blog!</p>
+          <p className={styles.heading}>Welcome to upsurge Blog!</p>
 
           <CategoryBar
             pushto="/dashboard/w/blogs/"

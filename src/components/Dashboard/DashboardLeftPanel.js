@@ -7,6 +7,7 @@ import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
 import KidSvg from "../SVGcomponents/KidsSvg";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
@@ -14,11 +15,17 @@ import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
+import LinkedIN from "../SVGcomponents/LinkedInSvg";
+import Insta from "../SVGcomponents/Insta";
+import Fb from "../SVGcomponents/Fb";
+import Terms from "../Home/Terms";
+import PricingSvg from "../SVGcomponents/PricingSvg";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
-
+  const [showterm, setshowterm] = useState(false);
+  const [termmode, settermmode] = useState("terms");
   useEffect(() => {
     setcurrenttab(router.pathname);
   }, [router]);
@@ -34,6 +41,8 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
   }, []);
   return (
     <div className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed}`}>
+      {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
+
       {hidelogo ? null : width > 1300 ? (
         <Logo
           className={styles.dashboardLogo}
@@ -162,6 +171,15 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <RewardSvg className={styles.icon} />
             <p className={styles.tabtitle}>Rewards</p>
           </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/pricing" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/pricing")}
+          >
+            <PricingSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Pricing</p>
+          </div>
         </div>
       ) : (
         <div className={styles.tabContainer}>
@@ -229,6 +247,63 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
         </div>
       )}
+      <div className={styles.bottom}>
+        <div className={styles.brandtext}>
+          <div className={styles.socials}>
+            <a
+              href="https://www.facebook.com/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Fb className={styles.social} />
+            </a>
+            <a
+              href="https://www.instagram.com/upsurge.india/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Insta className={styles.social} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedIN className={styles.socialyt} />
+            </a>
+          </div>
+          <a
+            className={styles.whatsapp}
+            href="https://wa.me/918287433304"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon className={styles.icon} />
+            Connect on whatsapp
+          </a>
+          <div className={styles.terms}>
+            <p
+              onClick={() => {
+                settermmode("terms");
+                setshowterm(true);
+              }}
+            >
+              Terms & Conditions
+            </p>
+            <p
+              onClick={() => {
+                settermmode("privacy");
+                setshowterm(true);
+              }}
+            >
+              Privacy Policy
+            </p>
+          </div>
+          <div className={styles.copyright}>
+            © Surgeup Technologies Private Limited. {new Date().getFullYear()}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

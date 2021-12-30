@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import HelpHeader from "../../components/Help/HelpHeader";
 import image from "../../assets/help/help.png";
 import Faq from "../../components/Help/Faq";
-import Fab from "../../components/Help/Fab";
 import styles from "../../styles/Help/help.module.scss";
 import BallsSvg from "../../components/SVGcomponents/BallsSvg";
 import SearchSvg from "../../components/SVGcomponents/SearchSvg";
@@ -20,7 +18,7 @@ function Help() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
     {
-      question: "How old does my kid have to be to join Upsurge?",
+      question: "How old does my kid have to be to join upsurge?",
       answer: `Anyone can open an account. You will need a parent to open an account.We would recommend that the child needs to be of minimum age of 12 years.`,
     },
     {
@@ -72,7 +70,7 @@ function Help() {
       <Curve2 className={styles.curve2} />
       <div className={styles.frontpage}>
         <div className={styles.left}>
-          <div className={styles.heading}>Welcome to Upsurge!</div>
+          <div className={styles.heading}>Welcome to upsurge!</div>
           <div className={styles.subheading}>What do you need help with?</div>
           <div className={styles.searchbar}>
             <input type="text" placeholder="Type your question here . . ." />

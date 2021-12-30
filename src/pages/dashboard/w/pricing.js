@@ -1,18 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { unicoin_value } from "../../../../config";
-import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
-import XoxoApis from "../../../actions/apis/XoxoApis";
-import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import PartnerSection from "../../../components/Home/PartnerSection";
 import TickSvg from "../../../components/SVGcomponents/TickSvg";
 import Toast from "../../../components/Toast";
-import Reward from "../../../components/WaitlistDashboard/Reward";
 import { MainContext } from "../../../context/Main";
-import styles from "../../../styles/WaitlistDashboard/rewardspage.module.scss";
-export default function Rewards({ userdatafromserver, vouchers }) {
+import styles from "../../../styles/WaitlistDashboard/pricing.module.scss";
+export default function Pricing({ userdatafromserver }) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -20,42 +14,52 @@ export default function Rewards({ userdatafromserver, vouchers }) {
   });
   const data = [
     {
-      name: "0-200",
+      name: "Monthly",
+      price: "₹599",
+      description: "per child, per month",
       benefits: [
-        "Finance master class",
-        "Financial dictionary",
-        "upsurge cap & bottle",
+        "5 Social Profiles",
+        "5 Scheduled Posts Per Profile",
+        "400+ Templates",
+        "Calendar View",
+        "24/7 Support",
       ],
     },
     {
-      name: "200-400",
-      benefits: ["Financial dictionary", "upsurge cap", "upsurge bottle"],
+      name: "Half-Yearly",
+      price: "₹2,899",
+      description: "per child, per month (billed every 6 months)",
+      benefits: [
+        "10 Social Profiles",
+        "25 Scheduled Posts Per Profile",
+        "400+ Templates",
+        "Calendar View",
+        "24/7 VIP Support",
+      ],
     },
     {
-      name: "400+",
+      name: "Yearly",
+      price: "₹4,799",
+      description: "per child, per month (billed annually)",
       benefits: [
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
+        "100 Social Profiles",
+        "100 Scheduled Posts Per Profile",
+        "400+ Templates",
+        "Calendar View",
+        "24/7 VIP Support",
       ],
     },
   ];
-
+  const [mode, setmode] = useState("Pricing");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const [mode, setmode] = useState("Rewards");
-  const [user_unicoin, setuser_unicoin] = useState(
-    Number(userdatafromserver.num_unicoins) || 0
-  );
-  const [user_balance, setuser_balance] = useState(
-    Number(userdatafromserver.num_balance) || 0
-  );
   return (
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
+
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -63,28 +67,30 @@ export default function Rewards({ userdatafromserver, vouchers }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <PartnerSection dashboard={true} />
-          <p className={styles.heading}>Know more about your rewards.</p>
+          <p className={styles.heading}>
+            Start your kids’ journey in the <br />
+            finance world today.
+          </p>
           <div className={styles.featurewrapper}>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
-              Earn UniCoins by money quotient
+              Free 15-day trial
             </div>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
-              Earn UniCoins by inviting friends
+              Add upto 5 kids
             </div>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
-              Earn UniCoins by plaing daily quiz
+              Cancel Anytime
             </div>
           </div>
-          <div className={styles.wrapper}>
+          <div className={styles.pricewrapper}>
             {data.map((item, index) => {
               return (
                 <div className={styles.pricecontainer} key={"price" + index}>
-                  <p className={styles.name}>Benefits for rank</p>
-                  <p className={styles.price}>{item.name}</p>
+                  <p className={styles.name}>{item.name}</p>
+                  <p className={styles.price}>{item.price}</p>
                   <p className={styles.description}>{item.description}</p>
                   <div className={styles.hr} />
                   <div className={styles.benefitswrapper}>
@@ -111,36 +117,26 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg;
-      return { props: { isLogged: false, msg: msg || "Error" } };
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
     } else {
-      let res = await DashboardApis.getallvouchers(null, token);
       return {
         props: {
           isLogged: true,
-          userdatafromserver: response.data.data,
-          vouchers:
-            fixVoucherArray(
-              res.data.data,
-              Number(response.data.data.num_balance)
-            ) || [],
           msg: "",
         },
       };
     }
   } else {
-    return { props: { isLogged: false, msg: "cannot get token" } };
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
   }
-}
-
-function fixVoucherArray(array, balance) {
-  let newarray = [];
-  let available = [];
-  for (let i = 0; i < array.length; i++) {
-    if (Number(array[i].data.valueDenominations.split(",")[0]) > balance) {
-      newarray.push(array[i]);
-    } else {
-      available.push(array[i]);
-    }
-  }
-  return [...available, ...newarray];
 }

@@ -25,6 +25,7 @@ export default function DetailsPopUp({
         rewards: [
           "Avail discount on joining upsurge",
           "Earn bonus unicoins !!!",
+          "Other exciting rewards",
         ],
         foot: "Earn more unicoins to get more exciting rewards.",
       },

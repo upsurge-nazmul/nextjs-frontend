@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "../../styles/Home/partner.module.scss";
-import Marquee from "react-fast-marquee";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
-export default function PartnerSection() {
+export default function PartnerSection({ dashboard }) {
   const rewards = [
     {
       productId: 228,
@@ -349,7 +348,7 @@ export default function PartnerSection() {
     }
   }
   return (
-    <div className={styles.partner}>
+    <div className={`${dashboard ? styles.dashboard : styles.partner}`}>
       <div
         className={styles.heading}
         onClick={() => router.push("/benefits/rewards")}
@@ -357,8 +356,10 @@ export default function PartnerSection() {
         Our UniCoin Reward Partners
       </div>
       <div className={styles.subheading}>
-        Collect UniCoin and redeem them for special gifts and deals with our
-        partner brands.
+        {dashboard
+          ? "Collect as many UniCoins and redeem them for special gifts and deals with our partner brands in our product"
+          : `Collect UniCoin and redeem them for special gifts and deals with our
+        partner brands.`}
       </div>
       <PlayCircleSvg
         className={styles.leftarrow}

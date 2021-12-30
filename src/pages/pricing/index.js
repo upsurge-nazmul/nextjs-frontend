@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 import TickSvg from "../../components/SVGcomponents/TickSvg";
 import styles from "../../styles/Pricing/pricing.module.scss";
 
 export default function Pricing() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  // const [stickyheader, setstickyheader] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const data = [
     {
       name: "Monthly",
-      price: "$20",
+      price: "₹599",
       description: "per child, per month",
       benefits: [
         "5 Social Profiles",
@@ -24,7 +27,7 @@ export default function Pricing() {
     },
     {
       name: "Half-Yearly",
-      price: "$15",
+      price: "₹2,899",
       description: "per child, per month (billed every 6 months)",
       benefits: [
         "10 Social Profiles",
@@ -36,7 +39,7 @@ export default function Pricing() {
     },
     {
       name: "Yearly",
-      price: "$10",
+      price: "₹4,799",
       description: "per child, per month (billed annually)",
       benefits: [
         "100 Social Profiles",
@@ -47,28 +50,31 @@ export default function Pricing() {
       ],
     },
   ];
-  // useEffect(() => {
-  //   const handlescroll = () => {
-  //     if (window.scrollY > 1) {
-  //       setstickyheader(true);
-  //     } else {
-  //       setstickyheader(false);
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handlescroll);
-  //   return () => window.removeEventListener("scroll", handlescroll);
-  // }, []);
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 1) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   return (
     <div className={styles.pricingPage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
       <div className={styles.container}>
         <p className={styles.heading}>
           Start your kids’ journey in the <br />
@@ -107,6 +113,7 @@ export default function Pricing() {
           })}
         </div>
       </div>
+      <JoinUs />
       <Footer />
     </div>
   );

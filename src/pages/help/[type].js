@@ -22,7 +22,7 @@ function Help() {
 
   const faqs = [
     {
-      question: "How old does my kid have to be to join Upsurge?",
+      question: "How old does my kid have to be to join upsurge?",
       answer: `It’s never too early to build healthy financial habits! As a parent, you’ll have to open an account first and then add your children. At the moment, our knowledge quests and games are relevant for kids over the age of 10.`,
     },
     {
@@ -83,7 +83,7 @@ function Help() {
       <Curve2 className={styles.curve2} />
       <div className={styles.frontpage}>
         <div className={styles.left}>
-          <div className={styles.heading}>Welcome to Upsurge!</div>
+          <div className={styles.heading}>Welcome to upsurge!</div>
           <div className={styles.subheading}>What do you need help with?</div>
           <div className={styles.searchbar}>
             <input type="text" placeholder="Type your question here . . ." />

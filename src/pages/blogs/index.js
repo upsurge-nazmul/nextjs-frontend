@@ -115,7 +115,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
       <div className={styles.content}>
         <WaitingListCta />
 
-        <p className={styles.heading}>Welcome to Upsurge Blog!</p>
+        <p className={styles.heading}>Welcome to upsurge Blog!</p>
 
         <CategoryBar selectedCat={selectedCat} sortPosts={sortPosts} />
 

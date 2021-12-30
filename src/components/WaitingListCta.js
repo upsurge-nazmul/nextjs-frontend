@@ -28,7 +28,7 @@ export default function WaitingListCta() {
       )}
       <div className={styles.midflex}>
         <p>Want your kids to be financially independent?</p>
-        <p>Join the Upsurge platform today.</p>
+        <p>Join the upsurge platform today.</p>
       </div>
       <div className={styles.right}>
         <img

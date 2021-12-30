@@ -471,7 +471,7 @@ function Footer() {
         </div>
       </div>
       <div className={styles.bottombar}>
-        © Surgeup Technologies Private Limited. 2021
+        © Surgeup Technologies Private Limited. {new Date().getFullYear()}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function Refer({ settoastdata }) {
       settoastdata({ show: true, msg: "Invite sent", type: "success" });
       setemail("");
     } else {
-      seterr(res.data.message || "Cannot connect to server");
+      seterr(res?.data?.message || "Cannot connect to server");
     }
   }
   return (
@@ -39,7 +39,7 @@ export default function Refer({ settoastdata }) {
       <div className={styles.bottom}>
         <input
           type="text"
-          placeholder="email@example.com"
+          placeholder="email@example.com, email2@example.com, ...."
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />

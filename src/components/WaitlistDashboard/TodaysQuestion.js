@@ -33,6 +33,11 @@ export default function TodaysQuestion({ data }) {
           <TickSvg
             className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
           />
+          <p className={styles.msg}>
+            {is_correct
+              ? "Congratulations, please come back tomorrow for a new question."
+              : "Thanks for attempting, please come back tomorrow for a new question."}
+          </p>
           <p
             className={`${styles.answered} ${
               !is_correct && styles.wronganswered

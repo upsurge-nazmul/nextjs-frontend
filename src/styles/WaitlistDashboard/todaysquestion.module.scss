@@ -30,6 +30,10 @@
       fill: #ff6263;
     }
   }
+  .msg {
+    width: 100%;
+    text-align: center;
+  }
   .answered {
     background-color: #27bdab;
     margin-top: 20px;
@@ -112,7 +116,6 @@
   .todaysquestion {
     display: flex;
     flex-direction: column;
-    background-color: #17d1bc;
     color: white;
     border-radius: 12px;
     width: 100%;
@@ -126,9 +129,11 @@
       font-weight: 400;
       font-size: 14px;
       margin-top: 12px;
-      background-color: #27bdab;
       padding: 10px;
       border-radius: 6px;
+    }
+    .msg {
+      font-size: 12px;
     }
     .question {
       font-weight: 500;
