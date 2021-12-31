@@ -49,14 +49,14 @@ function Help() {
       answer: `Yes, all the data pertaining to your child will be completely secured and used only to analyze their performance so that we can share the same with you. We do not collect any other data, other than what they do on our platform.`,
     },
   ];
-  useEffect(() => {
-    if (!type) return;
-    let faq = document.getElementById("faq");
-    if (!faq) return;
-    faq.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, [type]);
+  // useEffect(() => {
+  //   if (!type) return;
+  //   let faq = document.getElementById("faq");
+  //   if (!faq) return;
+  //   faq.scrollIntoView({
+  //     behavior: "smooth",
+  //   });
+  // }, [type]);
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -81,7 +81,7 @@ function Help() {
       />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <div className={styles.frontpage}>
+      {/* <div className={styles.frontpage}>
         <div className={styles.left}>
           <div className={styles.heading}>Welcome to upsurge!</div>
           <div className={styles.subheading}>What do you need help with?</div>
@@ -99,7 +99,7 @@ function Help() {
           <div className={styles.back}></div>
           <img src={image.src} alt="" />
         </div>
-      </div>
+      </div> */}
       <div className={styles.faqpage} id="faq">
         <div className={styles.heading}>Frequently Asked Questions</div>
         {faqs.map((item, index) => {

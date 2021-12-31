@@ -16,7 +16,9 @@ export default function ModernInputBox({
   maxValue,
   placeholderClass,
   numOnly,
+  disabled,
 }) {
+  console.log(value);
   return (
     <div
       className={`${styles.modernInputBox} ${
@@ -36,7 +38,7 @@ export default function ModernInputBox({
         {placeholder}
       </p>
       {type === "date" ? (
-        <CustomDatePicker value={value} setvalue={setvalue} onlydate={true} />
+        <CustomDatePicker value={value} setvalue={onChange} onlydate={true} />
       ) : (
         <input
           onBlur={onBlur}
@@ -45,6 +47,7 @@ export default function ModernInputBox({
           className={`${extraclass ? extraclass : ""}`}
           type={secure ? "password" : "text"}
           value={value}
+          disabled={disabled}
           maxLength={maxLength || 32676}
           onChange={
             onChange

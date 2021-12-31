@@ -53,7 +53,7 @@ const specialchars = [
   "8",
   "9",
 ];
-function Quiz({ leaderboard }) {
+function Quiz() {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showQuiz, setshowQuiz] = useState(false);
@@ -69,6 +69,7 @@ function Quiz({ leaderboard }) {
   const [currentcolor, setcurrentcolor] = useState(0);
   const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState("");
+  const [username, setusername] = useState("");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -561,22 +562,11 @@ function Quiz({ leaderboard }) {
           ) : null}
         </div>
       )}
-      {(!showmain || quizfinished) && (
-        <LeaderBoard title="Money Quotient" data={leaderboard || []} />
-      )}
+
       <JoinUs />
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  let res = await QuizApis.leaderboard();
-  if (res && res.data && res.data.success) {
-    return { props: { leaderboard: res.data.data } };
-  } else {
-    return { props: { leaderboard: [] } };
-  }
 }
 
 export default Quiz;

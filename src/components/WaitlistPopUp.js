@@ -15,6 +15,7 @@ export default function WaitlistPopUp({
 }) {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [username, setusername] = useState("");
   const [error, seterror] = useState("");
   const [OTP, setOTP] = useState("");
   const [phone, setphone] = useState("");
@@ -22,7 +23,7 @@ export default function WaitlistPopUp({
   const router = useRouter();
   useEffect(() => {
     seterror("");
-  }, [firstName, lastName, phone, mode]);
+  }, [firstName, lastName, phone, mode, username]);
 
   async function handleUpdateData() {
     if (subscribe) {
@@ -54,6 +55,7 @@ export default function WaitlistPopUp({
         lastName: lastName,
         phone: phone,
         otp: OTP,
+        user_name: username,
       });
 
       if (!response || !response.data.success) {
@@ -70,10 +72,23 @@ export default function WaitlistPopUp({
       seterror("Invalid Email");
       return;
     }
+    if (!username) {
+      seterror("Username is required");
+      return;
+    }
+    if (username.length > 8) {
+      seterror("Username cannot contain more than 8 characters");
+      return;
+    }
+    if (username.length < 4) {
+      seterror("Username cannot contain less than 4 characters");
+      return;
+    }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
       return;
     }
+
     let checkemail = await LoginApis.checkemail({ email, waitlist: true });
     if (checkemail && checkemail.data && !checkemail.data.success) {
       console.log("email ok");
@@ -97,6 +112,7 @@ export default function WaitlistPopUp({
       first_name: firstName,
       phone: phone,
       last_name: lastName,
+      user_name: username,
     });
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
@@ -127,6 +143,16 @@ export default function WaitlistPopUp({
             setvalue={setemail}
             onChange={(e) => {
               setemail(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Username*"
+            value={username}
+            maxLength={8}
+            setvalue={setusername}
+            onChange={(e) => {
+              setusername(e.target.value);
             }}
           />
           <div className={styles.phoneWrapper}>

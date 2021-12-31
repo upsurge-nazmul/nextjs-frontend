@@ -26,7 +26,8 @@ export default function EditProfile({ data }) {
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
   const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
-  const [gender, setgender] = useState(data?.gender || "male");
+  console.log("dob", data);
+  const [gender, setgender] = useState(data?.gender || "");
   const [phone, setphone] = useState(data?.phone || "");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
@@ -76,7 +77,7 @@ export default function EditProfile({ data }) {
     if ((gender && gender !== data?.gender) || !data?.gender) {
       updated_data.gender = gender;
     }
-    if (dob && new Date(dob).getTime() !== data?.dob) {
+    if (dob && new Date(dob) !== data?.dob) {
       updated_data.dob = new Date(dob).getTime();
     }
     if (password && password !== data?.password) {
@@ -132,6 +133,7 @@ export default function EditProfile({ data }) {
               maxLength={10}
               setvalue={setfirstname}
               placeholder="First name"
+              disabled
             />
             <ModernInputBox
               maxLength={10}
@@ -181,7 +183,17 @@ export default function EditProfile({ data }) {
               type="date"
               placeholder="Date of birth"
               value={dob}
-              setvalue={setdob}
+              onChange={(e) => {
+                if (e.getTime() >= new Date().getTime()) {
+                  settoastdata({
+                    msg: "Invaild date of birth",
+                    show: true,
+                    type: "error",
+                  });
+                } else {
+                  setdob(e);
+                }
+              }}
             />
             <ModernInputBox
               value={password}

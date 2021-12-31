@@ -10,7 +10,6 @@ import ChangesOtpComponent from "../../components/ChangesOtpComponent";
 import LoginApis from "../../actions/apis/LoginApis";
 
 export default function EditProfile({ data }) {
-  console.log(data);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
