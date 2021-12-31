@@ -8,6 +8,7 @@
   position: relative;
   margin-top: 80px;
   flex-direction: column;
+
   .heading {
     font-size: 46px;
     font-weight: 700;
@@ -17,6 +18,9 @@
     margin-top: 1vh;
     font-size: 22px;
     font-weight: 400;
+  }
+  .hidecursor {
+    cursor: default;
   }
   .leftarrow {
     position: absolute;
@@ -92,6 +96,9 @@
     transform: scaleX(-1);
     z-index: 2;
     cursor: pointer;
+  }
+  .hidecursor {
+    cursor: default !important;
   }
   .rightarrow {
     position: absolute;

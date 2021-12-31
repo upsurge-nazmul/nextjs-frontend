@@ -350,12 +350,17 @@ export default function PartnerSection({ dashboard }) {
   return (
     <div className={`${dashboard ? styles.dashboard : styles.partner}`}>
       <div
-        className={styles.heading}
-        onClick={() => router.push("/benefits/rewards")}
+        className={`${styles.heading} ${dashboard && styles.hidecursor}`}
+        onClick={() => {
+          if (dashboard) {
+            return;
+          }
+          router.push("/benefits/rewards");
+        }}
       >
         Our UniCoin Reward Partners
       </div>
-      <div className={styles.subheading}>
+      <div className={`${styles.subheading} ${dashboard && styles.hidecursor}`}>
         {dashboard
           ? "Collect as many UniCoins and redeem them for special gifts and deals with our partner brands in our product"
           : `Collect UniCoin and redeem them for special gifts and deals with our
@@ -369,13 +374,21 @@ export default function PartnerSection({ dashboard }) {
         className={styles.rightarrow}
         onClick={() => handlemove("right")}
       />
-      <div className={styles.wrapper} id="partnerwrapper">
+      <div
+        className={`${styles.wrapper} ${dashboard && styles.hidecursor}`}
+        id="partnerwrapper"
+      >
         {rewards.map((item, index) => {
           return (
             <img
-              onClick={() => router.push("/benefits/rewards")}
+              onClick={() => {
+                if (dashboard) {
+                  return;
+                }
+                router.push("/benefits/rewards");
+              }}
               key={"partner" + index}
-              className={styles.img}
+              className={`${styles.img} ${dashboard && styles.hidecursor}`}
               src={item.imageUrl}
               alt=""
             />
