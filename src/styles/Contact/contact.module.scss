@@ -68,7 +68,6 @@
             align-items: center;
             justify-content: center;
             margin-right: 25px;
-            cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid #4166eb;
             .icon {
@@ -80,6 +79,9 @@
               transition: all 0.3s ease;
               width: 30px;
             }
+          }
+          .animate {
+            cursor: pointer;
             &:hover {
               background-color: #fff;
               .logoicon {

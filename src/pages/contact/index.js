@@ -104,7 +104,10 @@ function Contact() {
               </div>
             </div>
             <div className={styles.segment}>
-              <a className={styles.iconHolder} href="tel:+918287433304">
+              <a
+                className={`${styles.iconHolder} ${styles.animate}`}
+                href="tel:+918287433304"
+              >
                 <PhoneInTalkIcon className={styles.icon} />
               </a>
               <div className={styles.text}>
@@ -114,7 +117,7 @@ function Contact() {
             </div>
             <div className={styles.segment}>
               <a
-                className={styles.iconHolder}
+                className={`${styles.iconHolder} ${styles.animate}`}
                 href="mailto:karan@upsurgefi.com"
               >
                 <EmailIcon className={styles.icon} />

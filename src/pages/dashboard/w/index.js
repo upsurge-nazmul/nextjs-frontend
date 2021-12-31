@@ -113,7 +113,10 @@ export default function WaitlistDashboard({
             <DetailsPopUp
               setshowdetails={setshowdetails}
               current={current}
-              earlyaccessno={userdatafromserver.waiting_number}
+              earlyaccessno={
+                userdatafromserver.waitlist_rank ||
+                userdatafromserver.waiting_number
+              }
             />
           )}
           <div className={styles.mainContent}>
@@ -123,7 +126,10 @@ export default function WaitlistDashboard({
                   <div className={styles.front}>
                     <div className={`${styles.waitlistblock} `}>
                       <p className={styles.heading}>
-                        {`#${userdatafromserver.waiting_number}`}
+                        {`#${
+                          userdatafromserver.waitlist_rank ||
+                          userdatafromserver.waiting_number
+                        }`}
                       </p>
                       <p className={styles.subheading}>Waitlist Number</p>
                     </div>

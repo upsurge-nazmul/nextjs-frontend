@@ -39,7 +39,7 @@ export default function Refer({ settoastdata }) {
       <div className={styles.bottom}>
         <input
           type="text"
-          placeholder="email@example.com, email2@example.com, ...."
+          placeholder="email1@example.com, email2@example.com, ...."
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />
