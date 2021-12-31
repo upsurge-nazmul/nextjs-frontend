@@ -25,17 +25,45 @@
           object-fit: cover;
         }
       }
+
       .details {
         flex: 1;
         display: flex;
         flex-direction: column;
         padding: 0 25px;
+        .row {
+          display: flex;
+          align-items: center;
+          &:first-child {
+            input {
+              &:nth-child(2) {
+                margin: 0;
+                margin-right: 10px !important;
+              }
+            }
+          }
+          &:nth-child(2) {
+            margin-bottom: 20px;
+            div {
+              margin: 0;
+              max-width: 266px;
+
+              &:nth-child(2) {
+                margin-left: 10px !important;
+              }
+            }
+          }
+          &:nth-child(3) {
+            p {
+              margin-right: 10px !important;
+            }
+          }
+        }
         .usernameinput {
           margin-top: 20px;
         }
         input {
           height: 49px;
-          margin-bottom: 20px;
           font-size: 18px;
           font-family: "Roboto", sans-serif;
           font-weight: 500;
@@ -45,7 +73,6 @@
         }
         input[type="date"] {
           height: 49px;
-          margin-bottom: 20px;
           font-family: "Roboto", sans-serif;
           border: 1px solid #898989;
           border-radius: 8px;
@@ -124,19 +151,39 @@
           border-radius: 8px;
           color: white;
           width: 100%;
+          max-width: 350px;
           margin-bottom: 18px;
-          height: 63px;
+          height: 49px;
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 18px;
           transition: all 0.3s ease;
           &:hover {
             background-color: #f4f5f7;
             color: #4166eb;
             border: 1px solid #4166eb;
+          }
+        }
+        .changepass {
+          background: #797979;
+          border-radius: 8px;
+          color: white;
+          width: 100%;
+          max-width: 350px;
+          margin-bottom: 18px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 18px;
+          transition: all 0.3s ease;
+          &:hover {
+            background: #5e5e5e;
           }
         }
         .delete {
@@ -183,6 +230,31 @@
 
             border: 1px solid #1b1b1b;
           }
+        }
+      }
+    }
+    .avatars {
+      margin-top: 20px;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .heading {
+        font-size: 30px;
+        font-weight: 700;
+        width: 100%;
+        text-align: left;
+      }
+      .wrapper {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        img {
+          width: 150px;
+          height: 150px;
+          margin: 10px;
+          cursor: pointer;
         }
       }
     }
