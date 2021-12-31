@@ -68,16 +68,16 @@ function Help() {
       />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      {/* <div className={styles.frontpage}>
+      <div className={styles.frontpage}>
         <div className={styles.left}>
           <div className={styles.heading}>Welcome to upsurge!</div>
           <div className={styles.subheading}>What do you need help with?</div>
-          <div className={styles.searchbar}>
+          {/* <div className={styles.searchbar}>
             <input type="text" placeholder="Type your question here . . ." />
             <div className={styles.searchicon}>
               <SearchSvg />
             </div>
-          </div>
+          </div> */}
           <div className={styles.ballsvg}>
             <BallsSvg />
           </div>
@@ -86,7 +86,7 @@ function Help() {
           <div className={styles.back}></div>
           <img src={image.src} alt="" />
         </div>
-      </div> */}
+      </div>
 
       <div className={styles.faqpage} id="faq">
         <div className={styles.heading}>Frequently Asked Questions</div>
