@@ -9,11 +9,11 @@ import DropDown from "../../../components/DropDown";
 import ChangesOtpComponent from "../../../components/ChangesOtpComponent";
 import LoginApis from "../../../actions/apis/LoginApis";
 import ModernInputBox from "../../../components/ModernInputBox";
-import CustomDatePicker from "../../../components/CustomDatePicker";
 import { MainContext } from "../../../context/Main";
 import ChangePassPopUp from "../../../components/ChangePassPopUp";
-
+import validator from "validator";
 export default function EditProfile({ data }) {
+  console.log(data);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -26,7 +26,7 @@ export default function EditProfile({ data }) {
   );
   const [mode, setmode] = useState("Edit Profile");
   const [img, setimg] = useState(
-    data?.img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+    data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
@@ -57,6 +57,17 @@ export default function EditProfile({ data }) {
           );
           return;
         }
+      }
+      if (!validator.isMobilePhone(phone, "en-IN")) {
+        seterror("Invalid Phone");
+        return;
+      }
+      let checkphone = await LoginApis.checkphone({ phone });
+      if (checkphone && checkphone.data && checkphone.data.success) {
+        console.log("phone ok");
+      } else {
+        seterror(checkphone?.data.message || "Error connecting to server");
+        return;
       }
       LoginApis.genotp({ phone }).then((response) => {
         if (response && response.data && response.data.success) {
@@ -132,6 +143,10 @@ export default function EditProfile({ data }) {
     if (phone && phone !== data?.phone) {
       updated_data.phone = phone;
     }
+    if (img && img !== data?.user_img_url) {
+      updated_data.user_img_url = img;
+    }
+    console.log(updated_data);
     if (
       JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
     ) {
@@ -147,30 +162,30 @@ export default function EditProfile({ data }) {
     }
   }
   const avatars = [
-    "girl1",
-    "girl2",
-    "girl3",
-    "girl4",
-    "girl5",
-    "girl6",
-    "girl7",
-    "girl8",
-    "girl9",
-    "girl10",
-    "girl11",
     "girl12",
-    "girl13",
-    "boy1",
-    "boy2",
-    "boy3",
+    "girl10",
     "boy4",
-    "boy5",
-    "boy6",
-    "boy7",
-    "boy8",
+    "girl4",
     "boy10",
-    "boy11",
+    "girl1",
+    "girl5",
+    "boy2",
+    "girl2",
+    "boy8",
+    "girl7",
+    "boy6",
+    "boy3",
+    "girl9",
     "boy12",
+    "girl8",
+    "boy7",
+    "girl13",
+    "girl11",
+    "boy5",
+    "boy11",
+    "girl6",
+    "boy1",
+    "girl3",
   ];
   return (
     <div className={styles.manageChore}>
@@ -212,17 +227,19 @@ export default function EditProfile({ data }) {
               />
             </div>
             <div className={styles.row}>
-              <DropDown
-                value={gender}
-                options={["male", "female", "other"]}
-                setvalue={setgender}
-                placeholder="Gender"
-              />
               <ModernInputBox
                 maxLength={10}
                 value={phone}
                 setvalue={setphone}
+                disabled
                 placeholder="Phone"
+                numOnly
+              />
+              <DropDown
+                value={gender}
+                options={["male", "female", "other", "Don't want to disclose"]}
+                setvalue={setgender}
+                placeholder="Gender"
               />
               <ModernInputBox
                 type="date"
@@ -241,7 +258,36 @@ export default function EditProfile({ data }) {
                 }}
               />
             </div>
+            {error && <p className={styles.error}>{error}</p>}
             <div className={styles.row}>
+              <div
+                className={styles.button}
+                style={{ marginRight: "10px" }}
+                onClick={saveprofile}
+              >
+                Save Changes
+              </div>
+              <p
+                className={styles.changepass}
+                onClick={() => setshowpopup(true)}
+              >
+                Change phone
+              </p>
+              {showpopup && (
+                <ChangePassPopUp
+                  setpassword={setpassword}
+                  password={password}
+                  confirmpassword={confirmpassword}
+                  setconfirmpassword={setconfirmpassword}
+                  setshowpopup={setshowpopup}
+                  handleSave={handleSave}
+                  saveprofile={saveprofile}
+                  settoastdata={settoastdata}
+                  phone={phone}
+                  error={error}
+                  seterror={seterror}
+                />
+              )}
               <p
                 className={styles.changepass}
                 onClick={() => setshowpopup(true)}
@@ -263,10 +309,6 @@ export default function EditProfile({ data }) {
                   seterror={seterror}
                 />
               )}
-
-              <div className={styles.button} onClick={saveprofile}>
-                Save Changes
-              </div>
             </div>
           </div>
         </div>

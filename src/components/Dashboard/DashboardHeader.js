@@ -65,7 +65,8 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
           <img
             id="avatar-button"
             src={
-              userdata?.img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+              userdata?.user_img_url ||
+              "https://i.ibb.co/v3vVV8r/default-avatar.png"
             }
             alt=""
           />

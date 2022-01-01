@@ -9,7 +9,7 @@ export const Game_Data = {
     description: "Identify what is income and what is expense.",
   },
   HighAndLow: {
-    name: "High And Low",
+    name: "High and Low",
     description:
       "Identify currency and arrange in ascending or descending order after adding the money.",
   },
@@ -29,7 +29,7 @@ export const Game_Data = {
       "Identify different types of Money notes and coins and achieve the desired target.",
   },
   NeedOrWant: {
-    name: "Need Or Want",
+    name: "Need or Want",
     description: "Identify the difference between needs and wants.",
   },
   //   Ludo: {
@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "1.1",
+    version: "1.2",
   },
   ShoppingMall: {
     dataUrl: "/Games/ShoppingMall/Build/ShoppingMall.data",
@@ -113,47 +113,12 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/ShoppingMall/Build/ShoppingMall.loader.js",
     version: "1.0",
   },
-  LudoTest: {
-    dataUrl: "/Games/LudoTest/Build/Ludo.data",
-    frameworkUrl: "/Games/LudoTest/Build/Ludo.framework.js",
-    codeUrl: "/Games/LudoTest/Build/Ludo.wasm",
-    loaderUrl: "/Games/LudoTest/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-  LudoTest2: {
-    dataUrl: "/Games/LudoTest2/Build/Ludo.data",
-    frameworkUrl: "/Games/LudoTest2/Build/Ludo.framework.js",
-    codeUrl: "/Games/LudoTest2/Build/Ludo.wasm",
-    loaderUrl: "/Games/LudoTest2/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-  LudoTest3: {
-    dataUrl: "/Games/LudoTest3/Build/Ludo.data",
-    frameworkUrl: "/Games/LudoTest3/Build/Ludo.framework.js",
-    codeUrl: "/Games/LudoTest3/Build/Ludo.wasm",
-    loaderUrl: "/Games/LudoTest3/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-  LudoTest4: {
-    dataUrl: "/Games/LudoTest4/Build/webgl.data",
-    frameworkUrl: "/Games/LudoTest4/Build/webgl.framework.js",
-    codeUrl: "/Games/LudoTest4/Build/webgl.wasm",
-    loaderUrl: "/Games/LudoTest4/Build/webgl.loader.js",
-    version: "1.0",
-  },
   ShoppingTest1: {
     dataUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.data",
     frameworkUrl:
       "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.framework.js",
     codeUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.wasm",
     loaderUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.loader.js",
-    version: "1.0",
-  },
-  LudoTest5: {
-    dataUrl: "/Games/LudoTest5/Build/webgl.data",
-    frameworkUrl: "/Games/LudoTest5/Build/webgl.framework.js",
-    codeUrl: "/Games/LudoTest5/Build/webgl.wasm",
-    loaderUrl: "/Games/LudoTest5/Build/webgl.loader.js",
     version: "1.0",
   },
 };

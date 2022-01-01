@@ -21,7 +21,7 @@
         img {
           width: 168px;
           height: 168px;
-          border-radius: 12px;
+          border-radius: 100%;
           object-fit: cover;
         }
       }
@@ -34,6 +34,7 @@
         .row {
           display: flex;
           align-items: center;
+
           &:first-child {
             input {
               &:nth-child(2) {
@@ -43,7 +44,7 @@
             }
           }
           &:nth-child(2) {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             div {
               margin: 0;
               max-width: 266px;
@@ -54,10 +55,32 @@
             }
           }
           &:nth-child(3) {
-            p {
+            margin-top: 10px;
+            .button {
+              max-width: 250px;
+            }
+            .changepass {
+              max-width: 250px;
+
               margin-right: 10px !important;
             }
           }
+          &:nth-child(4) {
+            .button {
+              max-width: 250px;
+            }
+            .changepass {
+              max-width: 250px;
+
+              margin-right: 10px !important;
+            }
+          }
+        }
+        .error {
+          color: rgb(255, 83, 83);
+          font-size: 14px;
+          padding-left: 5px;
+          margin-bottom: 10px;
         }
         .usernameinput {
           margin-top: 20px;

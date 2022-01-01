@@ -24,7 +24,7 @@ export default function Games({ id }) {
       link: "/gamepage/BalanceBuilder",
     },
     {
-      name: "High And Low",
+      name: "High and Low",
       description:
         "Identify currency and arrange in ascending or descending order after adding the money.",
       link: "/gamepage/HighAndLow",
@@ -48,7 +48,7 @@ export default function Games({ id }) {
     //   link: "/gamepage/CoinSlide",
     // },
     {
-      name: "Need Or Want",
+      name: "Need or Want",
       description: "Identify the difference between needs and wants.",
       link: "/gamepage/NeedOrWant",
     },
