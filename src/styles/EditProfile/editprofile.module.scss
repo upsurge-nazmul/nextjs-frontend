@@ -56,22 +56,20 @@
           }
           &:nth-child(3) {
             margin-top: 10px;
-            .button {
+            div,
+            p {
               max-width: 250px;
             }
             .changepass {
-              max-width: 250px;
-
               margin-right: 10px !important;
             }
           }
           &:nth-child(4) {
-            .button {
+            div,
+            p {
               max-width: 250px;
             }
             .changepass {
-              max-width: 250px;
-
               margin-right: 10px !important;
             }
           }
@@ -308,13 +306,13 @@
         .imagesection {
           width: fit-content;
           display: flex;
+          justify-content: center;
           width: 100%;
           margin-bottom: 20px;
-          padding-left: 20px;
+          padding-left: 0px;
           img {
             width: 128px;
             height: 128px;
-            border-radius: 12px;
             object-fit: cover;
           }
         }
@@ -330,12 +328,6 @@
             font-size: 12px;
             padding: 0 10px;
           }
-          input[type="date"] {
-            font-size: 12px;
-            padding: 0 10px;
-            margin-bottom: 15px;
-            font-weight: 400;
-          }
           .msgsection {
             height: 120px;
             margin-bottom: 15px;
@@ -349,7 +341,6 @@
               font-size: 12px;
             }
           }
-
           .select {
             margin-bottom: 15px;
             height: 45px;
@@ -389,6 +380,63 @@
               border: 1px solid #1b1b1b;
             }
           }
+          .row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            &:first-child {
+              input {
+                &:nth-child(2) {
+                  margin: 0;
+                  margin-right: 0px !important;
+                }
+              }
+            }
+            &:nth-child(2) {
+              margin-bottom: 10px;
+              div {
+                margin: 0;
+                max-width: unset;
+
+                &:nth-child(2) {
+                  margin-top: 10px;
+                  margin-left: 0px !important;
+                }
+              }
+            }
+            &:nth-child(3) {
+              margin-top: 5px;
+              div,
+              p {
+                max-width: unset;
+              }
+              .button {
+                margin-right: 0 !important;
+                height: 49px;
+              }
+              .changepass {
+                margin-right: 0px !important;
+                font-size: 14px;
+                height: 49px;
+              }
+            }
+            &:nth-child(4) {
+              margin-top: 5px;
+              div,
+              p {
+                max-width: unset;
+              }
+              .button {
+                margin-right: 0 !important;
+                height: 49px;
+              }
+              .changepass {
+                margin-right: 0px !important;
+                font-size: 14px;
+                height: 49px;
+              }
+            }
+          }
         }
         .assignto {
           width: 100%;
@@ -406,6 +454,31 @@
             font-size: 14px;
             font-weight: 500;
             margin-top: 15px;
+          }
+        }
+      }
+      .avatars {
+        margin-top: 20px;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .heading {
+          font-size: 20px;
+          font-weight: 600;
+          width: 100%;
+          text-align: center;
+        }
+        .wrapper {
+          margin-top: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          img {
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            cursor: pointer;
           }
         }
       }

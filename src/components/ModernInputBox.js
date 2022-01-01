@@ -17,13 +17,13 @@ export default function ModernInputBox({
   placeholderClass,
   numOnly,
   disabled,
+  wrapperclassname,
 }) {
-  console.log(value);
   return (
     <div
       className={`${styles.modernInputBox} ${
         type === "date" && styles.modernInputBoxdate
-      }`}
+      } ${wrapperclassname && wrapperclassname}`}
       style={extrastyle}
     >
       <p

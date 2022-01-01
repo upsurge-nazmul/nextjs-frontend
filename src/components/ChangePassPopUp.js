@@ -19,6 +19,8 @@ export default function ChangePassPopUp({
   phone,
   error,
   seterror,
+  showpassotp,
+  setshowpassotp,
   saveprofile,
 }) {
   const [OTP, setOTP] = useState("");
@@ -52,7 +54,7 @@ export default function ChangePassPopUp({
         onClick={() => setshowpopup(false)}
       ></div>
 
-      {mode !== "otp" ? (
+      {!showpassotp ? (
         <div className={styles.block}>
           <div className={styles.cross} onClick={() => setshowpopup(false)}>
             <CancelOutlinedIcon className={styles.icon} />
@@ -92,7 +94,7 @@ export default function ChangePassPopUp({
           <div className={styles.resendButton} onClick={genotp}>
             Resend OTP
           </div>
-          <div className={styles.button} onClick={() => handleSave()}>
+          <div className={styles.button} onClick={() => handleSave(OTP)}>
             Continue
           </div>
         </div>

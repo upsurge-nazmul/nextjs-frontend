@@ -73,7 +73,7 @@
     left: 0;
     border: 1px solid #898989;
     margin-top: 10px;
-    z-index: 10;
+    z-index: 505;
     position: absolute;
     left: 50%;
     top: 49px;
@@ -189,9 +189,11 @@
     font-weight: 500;
     border: 1px solid #898989;
     border-radius: 8px;
+    z-index: 505;
     background-color: white;
     position: relative;
     margin-top: 20px;
+    width: 100%;
     .selected {
       display: flex;
       height: 35px;
@@ -223,7 +225,9 @@
       border-radius: 8px;
       border: 1px solid #898989;
       margin-top: 20px;
+      width: fit-content;
       z-index: 10;
+
       .option {
         height: max-content;
         width: 100%;

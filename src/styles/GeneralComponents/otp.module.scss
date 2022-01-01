@@ -6,8 +6,9 @@
   margin: 20px 0;
   input {
     margin: 5px;
+    padding: 0 !important;
     width: clamp(40px, 10vw, 50px) !important;
-    height: 60px;
+    height: 60px !important;
     border: 1px solid #898989 !important;
     display: flex;
     border-radius: 14px !important;

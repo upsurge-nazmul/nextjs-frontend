@@ -12,8 +12,8 @@ import ModernInputBox from "../../../components/ModernInputBox";
 import { MainContext } from "../../../context/Main";
 import ChangePassPopUp from "../../../components/ChangePassPopUp";
 import validator from "validator";
+import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 export default function EditProfile({ data }) {
-  console.log(data);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -33,17 +33,21 @@ export default function EditProfile({ data }) {
   const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
   const [gender, setgender] = useState(data?.gender || "");
   const [phone, setphone] = useState(data?.phone || "");
+  const [changephone, setchangephone] = useState("");
+  const [confirmphone, setconfirmphone] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
-  const [showotp, setshowotp] = useState(false);
+  const [showpassotp, setshowpassotp] = useState(false);
+  const [showphoneotp, setshowphoneotp] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
+  const [showphonepopup, setshowphonepopup] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
 
   useEffect(() => {
     setuserdata(data);
   }, []);
   async function saveprofile() {
-    if (data && data.phone && phone === data.phone && !password) {
+    if (data && data.phone && changephone === data.phone && !password) {
       handleSave();
     } else {
       if (password) {
@@ -58,33 +62,48 @@ export default function EditProfile({ data }) {
           return;
         }
       }
-      if (!validator.isMobilePhone(phone, "en-IN")) {
+      if (changephone && changephone !== confirmphone) {
+        seterror("Phone does not match");
+        return;
+      }
+      if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
         seterror("Invalid Phone");
         return;
       }
-      let checkphone = await LoginApis.checkphone({ phone });
-      if (checkphone && checkphone.data && checkphone.data.success) {
-        console.log("phone ok");
-      } else {
-        seterror(checkphone?.data.message || "Error connecting to server");
-        return;
-      }
-      LoginApis.genotp({ phone }).then((response) => {
-        if (response && response.data && response.data.success) {
-          settoastdata({
-            msg: "Otp sent",
-            show: true,
-            type: "success",
-          });
-          setshowotp(!showotp);
+      if (changephone) {
+        let checkphone = await LoginApis.checkphone({
+          phone: changephone,
+        });
+        if (checkphone && checkphone.data && checkphone.data.success) {
+          console.log("phone ok");
         } else {
-          settoastdata({
-            msg: response?.data.message || "Error",
-            show: true,
-            type: "error",
-          });
+          seterror(checkphone?.data.message || "Error connecting to server");
+          return;
         }
-      });
+      }
+      LoginApis.genotp({ phone: changephone ? changephone : phone }).then(
+        (response) => {
+          if (response && response.data && response.data.success) {
+            if (changephone) {
+              setshowphoneotp(true);
+            }
+            if (password) {
+              setshowpassotp(true);
+            }
+            settoastdata({
+              msg: "Otp sent",
+              show: true,
+              type: "success",
+            });
+          } else {
+            settoastdata({
+              msg: response?.data.message || "Error",
+              show: true,
+              type: "error",
+            });
+          }
+        }
+      );
     }
   }
   function validatePassword(pass) {
@@ -121,10 +140,13 @@ export default function EditProfile({ data }) {
   function checkSpecial(pass) {
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
-  async function handleSave() {
+  async function handleSave(OTP) {
     let updated_data = {
       email: data.email,
     };
+    if (OTP) {
+      updated_data.otp = OTP;
+    }
     if (firstname && firstname !== data?.first_name) {
       updated_data.first_name = firstname;
     }
@@ -139,14 +161,14 @@ export default function EditProfile({ data }) {
     }
     if (password && password !== data?.password) {
       updated_data.password = password;
-    }
-    if (phone && phone !== data?.phone) {
       updated_data.phone = phone;
+    }
+    if (changephone && changephone !== data?.phone) {
+      updated_data.phone = changephone;
     }
     if (img && img !== data?.user_img_url) {
       updated_data.user_img_url = img;
     }
-    console.log(updated_data);
     if (
       JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
     ) {
@@ -156,9 +178,20 @@ export default function EditProfile({ data }) {
     let response = await DashboardApis.updateprofile(updated_data);
     if (response && response.data && response.data.success) {
       setshowpopup(false);
+      setshowphonepopup(false);
+      if (changephone) {
+        setphone(changephone);
+        setchangephone("");
+        setconfirmphone("");
+      }
       settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
     } else {
-      settoastdata({ msg: "Error", show: true, type: "error" });
+      seterror(response.data.message || "Cannot reach server");
+      settoastdata({
+        msg: response.data.message || "Error",
+        show: true,
+        type: "error",
+      });
     }
   }
   const avatars = [
@@ -191,14 +224,6 @@ export default function EditProfile({ data }) {
     <div className={styles.manageChore}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
-      {showotp && (
-        <ChangesOtpComponent
-          phone={phone}
-          onBack={() => setshowotp(false)}
-          settoastdata={settoastdata}
-          handleSave={handleSave}
-        />
-      )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -211,7 +236,7 @@ export default function EditProfile({ data }) {
             <img src={img} alt="" />
           </div>
           <div className={styles.details}>
-            <div className={styles.row}>
+            <div className={`${styles.row}`}>
               <ModernInputBox
                 value={firstname}
                 maxLength={10}
@@ -240,6 +265,7 @@ export default function EditProfile({ data }) {
                 options={["male", "female", "other", "Don't want to disclose"]}
                 setvalue={setgender}
                 placeholder="Gender"
+                margin="10px 0"
               />
               <ModernInputBox
                 type="date"
@@ -269,21 +295,22 @@ export default function EditProfile({ data }) {
               </div>
               <p
                 className={styles.changepass}
-                onClick={() => setshowpopup(true)}
+                onClick={() => setshowphonepopup(true)}
               >
                 Change phone
               </p>
-              {showpopup && (
-                <ChangePassPopUp
-                  setpassword={setpassword}
-                  password={password}
-                  confirmpassword={confirmpassword}
-                  setconfirmpassword={setconfirmpassword}
-                  setshowpopup={setshowpopup}
+              {showphonepopup && (
+                <ChangePhonePopUp
+                  setchangephone={setchangephone}
+                  changephone={changephone}
+                  confirmphone={confirmphone}
+                  setconfirmphone={setconfirmphone}
+                  setshowpopup={setshowphonepopup}
                   handleSave={handleSave}
                   saveprofile={saveprofile}
                   settoastdata={settoastdata}
-                  phone={phone}
+                  showphoneotp={showphoneotp}
+                  setshowphoneotp={setshowphoneotp}
                   error={error}
                   seterror={seterror}
                 />
@@ -304,6 +331,8 @@ export default function EditProfile({ data }) {
                   handleSave={handleSave}
                   saveprofile={saveprofile}
                   settoastdata={settoastdata}
+                  showpassotp={showpassotp}
+                  setshowpassotp={setshowpassotp}
                   phone={phone}
                   error={error}
                   seterror={seterror}
