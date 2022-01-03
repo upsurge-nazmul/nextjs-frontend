@@ -106,12 +106,19 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
     version: "1.2",
   },
+  Fishing: {
+    dataUrl: "/Games/Fishing/Build/Fishing.data",
+    frameworkUrl: "/Games/Fishing/Build/Fishing.framework.js",
+    codeUrl: "/Games/Fishing/Build/Fishing.wasm",
+    loaderUrl: "/Games/Fishing/Build/Fishing.loader.js",
+    version: "1.0",
+  },
   Farming: {
     dataUrl: "/Games/Farming/Build/Farming.data",
     frameworkUrl: "/Games/Farming/Build/Farming.framework.js",
     codeUrl: "/Games/Farming/Build/Farming.wasm",
     loaderUrl: "/Games/Farming/Build/Farming.loader.js",
-    version: "1.0",
+    version: "1.1",
   },
   ShoppingMall: {
     dataUrl: "/Games/ShoppingMall/Build/ShoppingMall.data",
