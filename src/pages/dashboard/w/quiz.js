@@ -233,13 +233,6 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
           </div>
         </div>
       )}
-      {!first_name && (
-        <PopUp
-          heading={"Enter your name"}
-          saveinput={setname}
-          settoastdata={settoastdata}
-        />
-      )}
       <div className={styles.container}>
         <DashboardLeftPanel type="waitlist" />
         <div className={styles.contentWrapper}>
