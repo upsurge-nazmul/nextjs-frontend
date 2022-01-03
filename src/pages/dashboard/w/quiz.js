@@ -26,9 +26,9 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
   const [quizfinished, setquizfinished] = useState(false);
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [name, setname] = useState(first_name);
+  const [name, setname] = useState(userdatafromserver?.first_name || "");
   const [nickname, setnickname] = useState("");
-  const [mode, setmode] = useState("home");
+  const [mode, setmode] = useState("Quiz");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -51,7 +51,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
   const [showmain, setshowmain] = useState(false);
   useEffect(() => {
     setuserdata(userdatafromserver);
-  }, []);
+  }, [userdatafromserver]);
 
   useEffect(() => {
     setshowQuiz(data ? true : false);
@@ -433,7 +433,6 @@ export async function getServerSideProps({ req }) {
     if (response && response.data.success) {
       return {
         props: {
-          first_name: response.data.data.first_name,
           userdatafromserver: response.data.data,
         },
       };
