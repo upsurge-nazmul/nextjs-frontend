@@ -8,16 +8,17 @@
 }
 
 .footerSection {
+  display: none;
   width: 100%;
   min-height: fit-content;
   scroll-snap-align: center;
-  display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   padding: 0;
+  min-height: 150px;
   .background {
     position: absolute;
     top: 0;
@@ -276,134 +277,10 @@
     color: rgb(59, 59, 59);
   }
 }
-@media only screen and (min-width: 860px) and (max-height: 800px) {
-  .footerSection {
-    width: 100%;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    background: #f4f5f7;
-    position: relative;
-    overflow: hidden;
-    .top {
-      display: flex;
-      width: 100%;
-      align-items: center;
-
-      .left {
-        width: 30%;
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        justify-content: space-between;
-        .logo {
-          width: 180px;
-        }
-        .details {
-          font-size: 18px;
-          margin-top: auto;
-          .heading {
-            font-weight: 400;
-          }
-          .subheadings {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 25px;
-            a {
-              text-decoration: none;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:first-child {
-                margin-right: 5px;
-              }
-              &:hover {
-                color: hsl(227, 57%, 49%);
-              }
-            }
-          }
-        }
-        .bottom {
-          margin-top: auto;
-          display: flex;
-          width: 100%;
-          p {
-            margin-right: 20px;
-            font-size: 15px;
-            cursor: pointer;
-            font-weight: 400;
-          }
-        }
-      }
-      .right {
-        flex: 1;
-        display: flex;
-        justify-content: space-evenly;
-        height: 100%;
-        position: relative;
-        .column {
-          display: flex;
-          flex-direction: column;
-          .heading {
-            font-size: 17px;
-            margin-bottom: 10px;
-            margin-bottom: 25px;
-            color: rgba(65, 102, 235, 1);
-            font-weight: 400;
-          }
-          .subheading {
-            font-size: 15px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            font-weight: 400;
-          }
-        }
-      }
-    }
-    .mobiletop {
-      display: none;
-    }
-    .brand {
-      display: flex;
-      width: 100%;
-      .heading {
-        font-size: 15px;
-      }
-      .subheadings {
-        font-size: 15px;
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        a {
-          text-decoration: none;
-          color: #4166eb;
-          margin-right: 5px;
-          &:last-child {
-            margin: 0;
-            margin-left: 5px;
-          }
-        }
-      }
-      .socials {
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 20px;
-          height: 20px;
-        }
-        .socialyt {
-          width: 25px;
-          cursor: pointer;
-          margin-right: 30px;
-          height: 25px;
-        }
-      }
-    }
-  }
-}
 @media only screen and (max-width: 860px) {
   .footerSection {
     height: max-content;
+    display: flex;
     .top {
       display: none;
     }
@@ -465,12 +342,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 50px;
+        margin-top: 20px;
         font-size: 16px;
         justify-content: space-around;
         p {
-          font-size: 16px;
-          margin-bottom: 10px;
+          font-size: 12px;
+          margin-bottom: 0px;
         }
         .whatsapp {
           background-color: #25d366;
@@ -484,7 +361,7 @@
           font-weight: 500;
           margin-bottom: 10px;
           text-decoration: none;
-          font-size: 12px;
+          font-size: 14px;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
@@ -520,93 +397,14 @@
         }
       }
     }
-  }
-}
-@media only screen and (max-width: 400px) {
-  .footerSection {
-    .mobiletop {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
 
-      .column {
-        width: 100%;
-        border-bottom: 1px solid black;
-        padding: 0 10px;
-        margin-top: 20px;
-        .subheading {
-          font-size: 12px;
-          color: rgb(17, 17, 17);
-          margin-bottom: 10px;
-          &:nth-child(2) {
-            margin-top: 10px;
-          }
-        }
-        .heading {
-          width: 100%;
-          font-size: 14px;
-          display: flex;
-          justify-content: space-between;
-          padding-bottom: 10px;
-        }
-      }
-      .socials {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-        margin-top: 50px;
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 20px;
-          height: 20px;
-        }
-        .socialyt {
-          width: 25px;
-          cursor: pointer;
-          margin-right: 30px;
-          height: 25px;
-        }
-      }
-      .bottom {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 50px;
-        font-size: 12px;
-        justify-content: space-around;
-        p {
-          font-size: 12px;
-          margin-bottom: 10px;
-        }
-        .subheadings {
-          font-size: 10px;
-          display: flex;
-          align-items: center;
-          a {
-            text-decoration: none;
-            font-size: 10px;
-            color: #4166eb;
-            margin-right: 5px;
-            &:last-child {
-              margin: 0;
-              margin-left: 5px;
-            }
-          }
-        }
-        .wrap {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 10px;
-          .terms {
-            margin-right: 10px;
-          }
-        }
-      }
+    .bottombar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 0px;
+      font-size: 12px;
+      color: rgb(59, 59, 59);
     }
   }
 }

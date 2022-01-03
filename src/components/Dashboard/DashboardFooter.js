@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Dashboard/dashboardfooter.module.scss";
 import { useRouter } from "next/dist/client/router";
-import Logo from "../SVGcomponents/Logo";
-import Fb from "../SVGcomponents/Fb";
-import Insta from "../SVGcomponents/Insta";
-import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "../Home/Terms";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Curve1 from "../SVGcomponents/Curve1";
@@ -56,7 +52,6 @@ export default function DashboardFooter() {
         </div>
       </div>
       <div className={styles.mobiletop}>
-        <Logo className={styles.logo} onClick={() => router.push("/")} />
         <div className={styles.bottom}>
           <a
             className={styles.whatsapp}

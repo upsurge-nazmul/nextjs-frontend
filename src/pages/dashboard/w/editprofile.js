@@ -13,6 +13,7 @@ import { MainContext } from "../../../context/Main";
 import ChangePassPopUp from "../../../components/ChangePassPopUp";
 import validator from "validator";
 import ChangePhonePopUp from "../../../components/ChangePhonePopup";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 export default function EditProfile({ data }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -29,6 +30,7 @@ export default function EditProfile({ data }) {
     data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
+  const [username, setusername] = useState(data?.user_name || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
   const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
   const [gender, setgender] = useState(data?.gender || "");
@@ -356,6 +358,7 @@ export default function EditProfile({ data }) {
             })}
           </div>
         </div>
+        <DashboardFooter />
       </div>
     </div>
   );

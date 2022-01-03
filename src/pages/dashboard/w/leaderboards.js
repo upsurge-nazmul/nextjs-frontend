@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import QuizApis from "../../../actions/apis/QuizApis";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Curve1 from "../../../components/SVGcomponents/Curve1";
@@ -44,6 +45,7 @@ export default function Leaderboards({
             first_name={userdatafromserver.first_name}
           />
         </div>
+        <DashboardFooter />
       </div>
     </div>
   );

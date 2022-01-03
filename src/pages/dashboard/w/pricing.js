@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Curve1 from "../../../components/SVGcomponents/Curve1";
@@ -87,6 +88,7 @@ export default function Pricing({ userdatafromserver }) {
               );
             })}
           </div>
+          <DashboardFooter />
         </div>
       </div>
     </div>

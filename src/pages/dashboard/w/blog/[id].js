@@ -11,6 +11,7 @@ import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
+import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
 
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
@@ -206,6 +207,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
             })}
           </div>
         </div>
+        <DashboardFooter />
       </div>
     </div>
   );

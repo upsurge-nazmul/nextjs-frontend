@@ -19,6 +19,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import QuizIconSvg from "../../../components/SVGcomponents/QuizIconSvg";
 import GameSvg from "../../../components/SVGcomponents/GameSvg";
 import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
@@ -220,6 +221,7 @@ export default function WaitlistDashboard({
             </div>
             <div className={styles.flexBottom} id="rightpanel">
               <WaitlistBlogs blogs={blogs} />
+              <DashboardFooter />
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ import LogoFullWhte from "../../../components/SVGcomponents/LogoFullWhte";
 import Toast from "../../../components/Toast";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/aboutus.module.scss";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 export default function Contact({ userdatafromserver }) {
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -147,6 +148,7 @@ export default function Contact({ userdatafromserver }) {
             </div>
           </div>
         </div>
+        <DashboardFooter />
       </div>
     </div>
   );

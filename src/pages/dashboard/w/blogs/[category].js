@@ -15,6 +15,7 @@ import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
+import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
 
 function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   const router = useRouter();
@@ -196,6 +197,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
             <div className={styles.loadmorebutton}>No blogs found</div>
           )}
         </div>
+        <DashboardFooter />
       </div>
     </div>
   );

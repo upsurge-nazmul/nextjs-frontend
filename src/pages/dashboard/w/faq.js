@@ -14,6 +14,7 @@ import Toast from "../../../components/Toast";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/faq.module.scss";
 import Faq from "../../../components/Help/Faq";
+import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 export default function Contact({ userdatafromserver }) {
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -78,6 +79,7 @@ export default function Contact({ userdatafromserver }) {
               />
             );
           })}
+          <DashboardFooter />
         </div>
       </div>
     </div>
