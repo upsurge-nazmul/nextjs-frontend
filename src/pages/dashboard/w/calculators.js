@@ -65,16 +65,13 @@ export default function Calculators({ userdatafromserver }) {
                     <p className={styles.calccardsubtitle}>
                       {Calc_Data[item].subheading}
                     </p>
-                    <p className={styles.date}>
-                      By Upsurge Team, 5th Aug, 2021
-                    </p>
                   </div>
                 );
               }
             })}
+            <DashboardFooter />
           </div>
         </div>
-        <DashboardFooter />
       </div>
     </div>
   );

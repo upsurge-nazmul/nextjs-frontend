@@ -5,13 +5,11 @@ import { useRouter } from "next/dist/client/router";
 import Toast from "../../../components/Toast";
 import Jasper from "../../../components/SVGcomponents/Jasper";
 import LoginApis from "../../../actions/apis/LoginApis";
-import validator from "validator";
 import Curve1 from "../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../components/SVGcomponents/Curve2";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/quiz.module.scss";
-import PopUp from "../../../components/PopUp";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 export default function TestQuiz({ first_name, userdatafromserver }) {
   const router = useRouter();
@@ -188,6 +186,18 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
                 according to your answers. The tougher questions you get right,
                 the more points you will get.{" "}
               </li>
+              <li
+                className={styles.text}
+              >{`You will get 10 UniCoins if your score is between 1% and 40%`}</li>
+              <li
+                className={styles.text}
+              >{`You will get 25 UniCoins if your score is between 41% and 80%`}</li>
+              <li
+                className={styles.text}
+              >{`You will get 50 UniCoins if your score is between 81% and 99%`}</li>
+              <li
+                className={styles.text}
+              >{`You will get 60 UniCoins if your score is 100%`}</li>
               <li className={styles.text}>
                 {`Let's start and see how you do on our Money Quotient Don't forget
               to enjoy and learn ;)`}

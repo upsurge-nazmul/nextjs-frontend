@@ -147,8 +147,8 @@ export default function Contact({ userdatafromserver }) {
               </div>
             </div>
           </div>
+          <DashboardFooter />
         </div>
-        <DashboardFooter />
       </div>
     </div>
   );

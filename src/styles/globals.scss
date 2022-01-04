@@ -10,7 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
   /* ===== Scrollbar CSS ===== */
   /* Firefox */
-  scrollbar-width: auto;
+  scrollbar-width: thin;
   scrollbar-color: #ccd6f0 #eaeef8;
   /* Chrome, Edge, and Safari */
   &::-webkit-scrollbar {
