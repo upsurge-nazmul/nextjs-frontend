@@ -118,7 +118,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Farming/Build/Farming.framework.js",
     codeUrl: "/Games/Farming/Build/Farming.wasm",
     loaderUrl: "/Games/Farming/Build/Farming.loader.js",
-    version: "1.1",
+    version: "1.2",
   },
   ShoppingMall: {
     dataUrl: "/Games/ShoppingMall/Build/ShoppingMall.data",
