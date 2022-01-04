@@ -135,4 +135,11 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.loader.js",
     version: "1.0",
   },
+  Balance: {
+    dataUrl: "/Games/balance/Build/New folder.data",
+    frameworkUrl: "/Games/balance/Build/New folder.framework.js",
+    codeUrl: "/Games/balance/Build/New folder.wasm",
+    loaderUrl: "/Games/balance/Build/New folder.loader.js",
+    version: "1.0",
+  }
 };
