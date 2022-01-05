@@ -156,7 +156,7 @@ export default function GoalWizard({ choresdata, kidsdata }) {
                 <div
                   className={styles.button}
                   onClick={() => {
-                    router.push("/child/add");
+                    router.push("/dashboard/p/child/add");
                   }}
                 >
                   New Child

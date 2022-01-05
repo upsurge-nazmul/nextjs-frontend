@@ -215,6 +215,18 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab}  ${
+              currenttab === "/dashboard/p/blogs" ||
+              currenttab.indexOf("dashboard/p/blog") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/p/blogs")}
+          >
+            <BlogSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Blogs</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
               currenttab === "/courses" || currenttab.indexOf("/courses") !== -1
                 ? styles.activetab
                 : ""

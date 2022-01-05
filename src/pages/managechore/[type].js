@@ -53,7 +53,7 @@ export default function ManageChore({ choredata, childdata }) {
   const [duedate, setduedate] = useState(
     choredata
       ? new Date(Number(choredata.due_date))
-      : new Date().setHours(new Date().getHours() + 1)
+      : new Date(new Date().setHours(new Date().getHours() + 1))
   );
   const [toastdata, settoastdata] = useState({
     show: false,

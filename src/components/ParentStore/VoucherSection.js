@@ -8,7 +8,7 @@ export default function VoucherSection({ vouchers, unicoins, email, phone }) {
   return (
     <div className={styles.VoucherSection}>
       <h2 className={styles.heading}>
-        Vouchers
+        Rewards
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>

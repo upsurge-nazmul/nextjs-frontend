@@ -24,23 +24,6 @@ function AuthOtpComponent({
   useEffect(() => {
     seterror("");
   }, [password, firstName, phone, mode]);
-  async function handleUpdateData() {
-    let response = await LoginApis.saveemail({
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-      otp: OTP,
-      user_name: username,
-    });
-
-    if (!response || !response.data.success) {
-      seterror(response.data.message || "Error connecting to server");
-      setmode("data");
-    } else {
-      router.push("/waitlist/" + email);
-    }
-  }
 
   async function genotp() {
     if (!validator.isEmail(email)) {
@@ -95,17 +78,17 @@ function AuthOtpComponent({
       settoastdata({ type: "success", msg: "OTP sent", show: true });
     }
   }
-  // async function verifyOtp() {
-  //   let response = await LoginApis.verifyotp({ otp: OTP });
-  //   if (response.data.success) {
-  //     setuserdata(response.data.data.user);
-  //     settoastdata({ show: true, msg: response.data.message, type: "success" });
-  //     localStorage.setItem("islogged", true);
-  //     setmode("privacy");
-  //   } else {
-  //     seterror(response.data.message || "Cannot reach server");
-  //   }
-  // }
+  async function verifyOtp() {
+    let response = await LoginApis.verifyotp({ otp: OTP });
+    if (response.data.success) {
+      setuserdata(response.data.data.user);
+      settoastdata({ show: true, msg: response.data.message, type: "success" });
+      localStorage.setItem("islogged", true);
+      setmode("privacy");
+    } else {
+      seterror(response.data.message || "Cannot reach server");
+    }
+  }
   // async function resendOtp() {
   //   let response = await LoginApis.genotp({ phone: phone });
   //   if (response.data.success) {
@@ -126,7 +109,7 @@ function AuthOtpComponent({
       </div>
       {error && <p className={styles.error}>{error}</p>}
 
-      <div className={styles.button} onClick={() => handleUpdateData()}>
+      <div className={styles.button} onClick={() => verifyOtp()}>
         Continue
       </div>
     </div>

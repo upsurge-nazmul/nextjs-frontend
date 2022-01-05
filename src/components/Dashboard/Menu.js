@@ -55,14 +55,14 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
             setshowmenu(false);
             if (waitilistmenu) {
               router.push("/dashboard/w/editprofile");
-            } else router.push("/editprofile/parent");
+            } else router.push("/dashboard/p/editprofile");
           }}
         >
           <EditSvg className={styles.editIcon} />
           Edit profile
         </p>
       )}
-      {menuType !== "kid" && !waitilistmenu && (
+      {/* {menuType !== "kid" && !waitilistmenu && (
         <p
           className={styles.tabs}
           onClick={() => {
@@ -73,7 +73,7 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           <PaymentSvg className={styles.paymentIcon} />
           Payments
         </p>
-      )}
+      )} */}
       {waitilistmenu && (
         <p
           className={styles.tabs}
@@ -98,7 +98,7 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           FAQ
         </p>
       )}
-      {!waitilistmenu && (
+      {/* {!waitilistmenu && (
         <div
           className={styles.tabs}
           onMouseEnter={() => setrotatesetting(true)}
@@ -117,7 +117,7 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           </div>
           Settings
         </div>
-      )}
+      )} */}
 
       <div className={styles.button} onClick={handleLogout}>
         Log out
