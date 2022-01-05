@@ -119,11 +119,7 @@ function AuthOtpComponent({
         <p className={styles.text}>Enter the 6-digit code sent to you at</p>
         <p className={styles.phone}>{"+91 " + phone}</p>
       </div>
-      <OTPCustomComponent
-        setotp={setOTP}
-        size={6}
-        inputstyle={{ padding: "20px !important" }}
-      />
+      <OTPCustomComponent setotp={setOTP} size={6} />
       <div className={styles.resendButton} onClick={genotp}>
         Resend OTP
       </div>
