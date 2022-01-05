@@ -23,6 +23,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [usertype, setusertype] = useState("parent");
+  const [username, setusername] = useState("");
   const [signupmethod, setsignupmethod] = useState("email");
   const [error, seterror] = useState(null);
   const [toastdata, settoastdata] = useState({
@@ -125,6 +126,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   setpassword={setpassword}
                   signupmethod={signupmethod}
                   usertype={usertype}
+                  username={username}
+                  setusername={setusername}
                 />
               ) : mode === "phone" ? (
                 <AuthPhone
@@ -144,6 +147,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   setuserdata={setuserdata}
                   settoastdata={settoastdata}
                   setmode={setmode}
+                  username={username}
+                  setusername={setusername}
                 />
               ) : mode === "privacy" ? (
                 <AuthPrivacy setmode={setmode} />

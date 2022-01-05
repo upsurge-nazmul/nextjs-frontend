@@ -14,10 +14,13 @@ function AuthFullData({
   phone,
   password,
   settoastdata,
+  mode,
   setmode,
   email,
   signupmethod,
   usertype,
+  username,
+  setusername,
   seterror,
   error,
 }) {
@@ -107,8 +110,28 @@ function AuthFullData({
       seterror("Invalid Email");
       return;
     }
+    if (!username) {
+      seterror("Username is required");
+      return;
+    }
+    if (username.length > 8) {
+      seterror("Username cannot contain more than 8 characters");
+      return;
+    }
+    if (username.length < 4) {
+      seterror("Username cannot contain less than 4 characters");
+      return;
+    }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
+      return;
+    }
+
+    let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+    if (checkemail && checkemail.data && !checkemail.data.success) {
+      console.log("email ok");
+    } else {
+      seterror(checkemail?.data.message || "Error connecting to server");
       return;
     }
     let checkphone = await LoginApis.checkphone({ phone });
@@ -127,12 +150,14 @@ function AuthFullData({
       first_name: firstName,
       phone: phone,
       last_name: lastName,
+      user_name: username,
     });
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      console.log(response.data.message);
-      setmode("otp");
+      if (mode === "otp") {
+        settoastdata({ type: "success", msg: "OTP sent", show: true });
+      } else setmode("otp");
     }
   }
   function validatePassword(e) {
@@ -194,7 +219,14 @@ function AuthFullData({
           onChange={(e) => setlastName(e.target.value)}
         />
       </div>
-      {password !== "" && passisweak && (
+      <input
+        type="text"
+        placeholder="Username"
+        maxLength={8}
+        value={username}
+        onChange={(e) => setusername(e.target.value)}
+      />
+      {/* {password !== "" && passisweak && (
         <>
           <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
             Weak password
@@ -207,7 +239,7 @@ function AuthFullData({
             <p>- Inclusion of at least one special character</p>
           </ReactTooltip>
         </>
-      )}
+      )} */}
       {/* <div className={styles.passwordBox}>
         {showdetailpass && (
           <div className={styles.detailPass}>

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/GeneralComponents/otp.module.scss";
-export default function OTPCustomComponent({ size, setotp }) {
+export default function OTPCustomComponent({ size, setotp, inputstyle }) {
   const [otpdata, setotpdata] = useState(new Array(size).fill(""));
   const [currentfocused, setcurrentfocused] = useState(0);
   useEffect(() => {
@@ -28,6 +28,7 @@ export default function OTPCustomComponent({ size, setotp }) {
           <input
             id={"Character" + index}
             autoComplete="off"
+            style={inputstyle}
             type="text"
             key={"otpinput" + index}
             maxLength="1"
