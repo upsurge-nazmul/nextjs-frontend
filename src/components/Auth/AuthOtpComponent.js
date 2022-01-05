@@ -20,6 +20,9 @@ function AuthOtpComponent({
   const { firstName, setfirstName, lastName, setlastName } =
     useContext(MainContext);
   const router = useRouter();
+  useEffect(() => {
+    seterror("");
+  }, [password, firstName, phone, mode]);
   async function handleUpdateData() {
     let response = await LoginApis.saveemail({
       email: email,

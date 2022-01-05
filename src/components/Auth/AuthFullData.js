@@ -45,7 +45,7 @@ function AuthFullData({
 
   useEffect(() => {
     seterror("");
-  }, [password, firstName, phone]);
+  }, [password, username, firstName, phone, mode]);
 
   async function handleUpdateData() {
     if (!validator.isMobilePhone(phone, "en-IN")) {
