@@ -118,6 +118,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   email={email}
                   settoastdata={settoastdata}
                   setmode={setmode}
+                  mode={mode}
                   phone={phone}
                   setphone={setphone}
                   error={error}
@@ -141,6 +142,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                 <AuthOtpComponent
                   phone={phone}
                   error={error}
+                  mode={mode}
                   email={email}
                   password={password}
                   seterror={seterror}

@@ -141,5 +141,12 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/balance/Build/New folder.wasm",
     loaderUrl: "/Games/balance/Build/New folder.loader.js",
     version: "1.0",
-  }
+  },
+  MoneyGame: {
+    dataUrl: "/Games/MoneyGame/Build/MoneyGame.data",
+    frameworkUrl: "/Games/MoneyGame/Build/MoneyGame.framework.js",
+    codeUrl: "/Games/MoneyGame/Build/MoneyGame.wasm",
+    loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
+    version: "1.0",
+  },
 };
