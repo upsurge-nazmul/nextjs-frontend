@@ -4,9 +4,12 @@ import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 export default function PartnerSection({ dashboard }) {
   const rewards = [
+    "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpKqn4rb_wjxfwd.jpg",
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpyswS28_w9hfz7.jpg",
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpyYVFl1_lisbnd.png",
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpgzwRG4_mwhnz0.png",
+    "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/phpNsJMuh_s3ah3y.png",
+    "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/php7Z2XTZ_kfbtfw.png",
   ];
   const router = useRouter();
   function handlemove(direction) {
