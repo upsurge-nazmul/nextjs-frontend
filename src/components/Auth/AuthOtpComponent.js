@@ -11,6 +11,7 @@ function AuthOtpComponent({
   password,
   setuserdata,
   settoastdata,
+  mode,
   setmode,
   error,
   seterror,
