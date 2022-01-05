@@ -78,12 +78,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         value={email}
         setvalue={setemail}
       />
-      {/* <input
-        type="text"
-        placeholder="Email address"
-        value={email}
-        onChange={(e) => setemail(e.target.value)}
-      /> */}
       <div className={styles.passwordBox}>
         <ModernInputBox
           placeholder="Password"
@@ -100,7 +94,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       <div className={styles.button} onClick={handleSignin}>
         Sign In
       </div>
-      {/* <div className={styles.or}>OR</div>
+      <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -108,11 +102,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
             className={styles.google}
-            // onClick={() => {
-            //   setemail("randomgoogleid@gmail.com");
-            //   setsignupmethod("google");
-            //   handleParentSignUp("randomgoogleid@gmail.com", "google");
-            // }}
           >
             <GoogleSvg />
             <p style={{ pointerEvents: "none" }}>Continue with Google</p>
@@ -122,7 +111,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
       />
-      <AppleLogin
+      {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
         usePopup
@@ -140,7 +129,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           );
         }}
       /> */}
-
       <div className={styles.reset} onClick={() => setmode("reset")}>
         <span> Forgot password?</span>
       </div>

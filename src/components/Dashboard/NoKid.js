@@ -14,10 +14,6 @@ function NoKid({ setkids }) {
           Click “Add a child” to create a new account for your child or connect
           to an existing account.
         </p>
-        <p className={styles.noKidsubheading}>
-          <span className={styles.link}>Learn more</span> about how to get your
-          child set up
-        </p>
         <div
           className={styles.noKidbutton}
           onClick={() => router.push("/dashboard/p/child/add")}

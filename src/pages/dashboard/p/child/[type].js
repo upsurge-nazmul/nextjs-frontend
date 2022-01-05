@@ -17,7 +17,6 @@ import CustomDatePicker from "../../../../components/CustomDatePicker";
 import ModernInputBox from "../../../../components/ModernInputBox";
 function AddKid({ childdata }) {
   const router = useRouter();
-  console.log(childdata?.dob);
   const type = router.query.type;
   let state;
   const [toastdata, settoastdata] = useState({
@@ -27,12 +26,12 @@ function AddKid({ childdata }) {
   });
   const [mode, setmode] = useState(type === "add" ? "Add Child" : "Edit Child");
   const [dob, setdob] = useState(
-    childdata?.dob ? new Date(Number(childdata?.dob)) : new Date()
+    childdata?.dob ? new Date(Number(childdata?.dob)) : ""
   );
   const [gender, setgender] = useState(childdata?.gender || "Male");
   const [email, setemail] = useState(childdata?.email || "");
   const [password, setpassword] = useState("");
-  const [image, setimage] = useState("");
+  const [img, setimg] = useState("");
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -49,6 +48,32 @@ function AddKid({ childdata }) {
   const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
+  const avatars = [
+    "girl12",
+    "girl10",
+    "boy4",
+    "girl4",
+    "boy10",
+    "girl1",
+    "girl5",
+    "boy2",
+    "girl2",
+    "boy8",
+    "girl7",
+    "boy6",
+    "boy3",
+    "girl9",
+    "boy12",
+    "girl8",
+    "boy7",
+    "girl13",
+    "girl11",
+    "boy5",
+    "boy11",
+    "girl6",
+    "boy1",
+    "girl3",
+  ];
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -64,10 +89,6 @@ function AddKid({ childdata }) {
     }
     if (!dob) {
       seterror("Please enter date of birth");
-      return;
-    }
-    if (new Date(dob).getTime() > new Date().getTime()) {
-      seterror("Date cannot be set to less than current date");
       return;
     }
     if (!gender) {
@@ -99,8 +120,7 @@ function AddKid({ childdata }) {
       lastName,
       gender,
       dob: new Date(dob).getTime(),
-      image:
-        "https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
+      image: img || "https://i.ibb.co/v3vVV8r/default-avatar.png",
       email: email,
       password,
       city,
@@ -115,6 +135,8 @@ function AddKid({ childdata }) {
         show: true,
       });
     } else {
+      console.log(response.data);
+
       seterror(response.data.message || "error");
     }
   }
@@ -151,8 +173,8 @@ function AddKid({ childdata }) {
     if (dob && dob !== childdata.dob) {
       data.dob = dob;
     }
-    if (image && image !== childdata.image) {
-      data.image = image;
+    if (img && img !== childdata.image) {
+      data.image = img;
     }
     if (password && password !== childdata.password) {
       data.password = password;
@@ -237,10 +259,7 @@ function AddKid({ childdata }) {
         <div className={styles.mainContent}>
           <div className={styles.imagesection}>
             <img
-              src={
-                state?.image ||
-                "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
-              }
+              src={img || "https://i.ibb.co/v3vVV8r/default-avatar.png"}
               alt=""
             />
           </div>
@@ -261,10 +280,20 @@ function AddKid({ childdata }) {
               />
             </div>
             <ModernInputBox
-              value={dob}
-              setvalue={setdob}
               type="date"
               placeholder="Date of birth"
+              value={dob}
+              onChange={(e) => {
+                if (e.getTime() >= new Date().getTime()) {
+                  settoastdata({
+                    msg: "Invaild date of birth",
+                    show: true,
+                    type: "error",
+                  });
+                } else {
+                  setdob(e);
+                }
+              }}
             />
 
             <DropDown
@@ -356,6 +385,21 @@ function AddKid({ childdata }) {
             >
               {type === "add" ? "Add Child" : "Save Changes"}
             </div>
+          </div>
+        </div>
+        <div className={styles.avatars}>
+          <p className={styles.heading}>Select your avatar</p>
+          <div className={styles.wrapper}>
+            {avatars.map((item) => {
+              return (
+                <img
+                  onClick={() => setimg("/images/avatars/" + item + ".png")}
+                  key={"avatar" + item}
+                  src={"/images/avatars/" + item + ".png"}
+                  alt=""
+                />
+              );
+            })}
           </div>
         </div>
       </div>
