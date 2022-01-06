@@ -326,6 +326,14 @@ export default function GamePage({ userdatafromserver }) {
               />
             )
           )}
+          {/* {unitycontext && (
+            <LeaderboardComponent
+              data={leaderboard}
+              quiz_rank={userdatafromserver.quiz_rank}
+              highest={highestquizscore}
+              first_name={userdatafromserver.first_name}
+            />
+          )} */}
         </div>
       </div>
     </div>
