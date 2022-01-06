@@ -147,6 +147,11 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyGame/Build/MoneyGame.framework.js",
     codeUrl: "/Games/MoneyGame/Build/MoneyGame.wasm",
     loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
+  },LudoNew: {
+    dataUrl: "/Games/LudoNew/Build/Ludo.data",
+    frameworkUrl: "/Games/LudoNew/Build/Ludo.framework.js",
+    codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
+    loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
     version: "1.0",
   },
 };
