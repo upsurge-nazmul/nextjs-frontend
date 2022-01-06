@@ -46,6 +46,7 @@ export default function LeaderboardComponent({
   }
   async function y() {
     let ddd = await QuizApis.leaderboard();
+    setleaderboarddata([]);
     setleaderboarddata(ddd?.data?.data || []);
   }
   return (
