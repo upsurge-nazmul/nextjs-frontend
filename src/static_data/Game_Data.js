@@ -149,4 +149,13 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
     version: "1.0",
   },
+  Ludos3: {
+    dataUrl: "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.data",
+    frameworkUrl:
+      "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.framework.js",
+    codeUrl: "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.wasm",
+    loaderUrl:
+      "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.loader.js",
+    version: "1.0",
+  },
 };
