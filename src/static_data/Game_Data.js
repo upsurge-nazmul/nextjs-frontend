@@ -158,4 +158,11 @@ export const Game_Unity_Data = {
       "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.loader.js",
     version: "1.0",
   },
+  LudoNew: {
+    dataUrl: "/Games/LudoNew/Build/Ludo.data",
+    frameworkUrl: "/Games/LudoNew/Build/Ludo.framework.js",
+    codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
+    loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
+    version: "1.0",
+  },
 };
