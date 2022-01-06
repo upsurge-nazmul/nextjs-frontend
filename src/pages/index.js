@@ -146,7 +146,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
-          userdata: response.data.data,
+          userdata: response?.data?.data,
         },
       };
     }
