@@ -245,7 +245,7 @@ function Dashboard({
                       return (
                         <div
                           className={styles.gameitem}
-                          onCLick={() =>
+                          onClick={() =>
                             router.push(
                               "/dashboard/p/game/" +
                                 Game_Data[item].name.replace(/ /g, "")

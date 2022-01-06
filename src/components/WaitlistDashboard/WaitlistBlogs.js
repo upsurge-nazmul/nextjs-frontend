@@ -29,7 +29,7 @@ export default function WaitlistBlogs({ blogs }) {
               onClick={() => router.push("/dashboard/w/blog/" + item.id)}
             >
               <div className={styles.img}>
-                <Image src={item.img_url} layout="fill" objectFit="cover" />
+                <Image src={item.img_url} layout="fill" objectFit="cover" alt='temp'/>
               </div>
               <div className={styles.right}>
                 <div className={styles.categories}>
