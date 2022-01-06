@@ -253,7 +253,7 @@ export default function EditProfile({ data }) {
               />
               <ModernInputBox
                 maxLength={10}
-                value={lastname}
+                value={lastname || ""}
                 setvalue={setlastname}
                 placeholder="Last Name"
               />

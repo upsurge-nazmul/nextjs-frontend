@@ -89,13 +89,14 @@ function Games({ userdatafromserver, token }) {
             query: { id: res.data.data },
           });
         } else {
-          alert(res.data.message);
+          console.log(res.data.message);
         }
       } else {
-        alert("error connecting server");
+        console.log("error connecting server");
       }
+    } else {
+      router.push("/dashboard/w/game/" + title);
     }
-    router.push("/dashboard/w/game/" + title);
   }
   return (
     <div className={styles.gamesPage}>
