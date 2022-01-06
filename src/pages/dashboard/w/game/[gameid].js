@@ -13,8 +13,10 @@ import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import { Game_Unity_Data } from "../../../../static_data/Game_Data";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import { useContext } from "react";
+import { MainContext } from "../../../../context/Main";
 
-export default function GamePage() {
+export default function GamePage({ userdatafromserver }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -41,6 +43,7 @@ export default function GamePage() {
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
   const [mode, setmode] = useState(gameid);
+  const { userdata, setuserdata } = useContext(MainContext);
 
   const [info, setinfo] = useState({
     device: "computer",
@@ -50,6 +53,12 @@ export default function GamePage() {
     unitycontext.setFullscreen(true);
   }
   const gamesWithAuth = ["Ludo", "FinCricket"];
+
+  useEffect(() => {
+    if (userdatafromserver) {
+      setuserdata(userdatafromserver);
+    }
+  }, [userdatafromserver]);
   useEffect(() => {
     if (gameid) {
       logclick();
