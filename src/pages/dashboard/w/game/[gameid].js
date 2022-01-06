@@ -12,44 +12,8 @@ import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPa
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import { Game_Unity_Data } from "../../../../static_data/Game_Data";
+import LoginApis from "../../../../actions/apis/LoginApis";
 
-const specialchars = [
-  "#",
-  "$",
-  "%",
-  "*",
-  "&",
-  "(",
-  "@",
-  "_",
-  ")",
-  "+",
-  "-",
-  "&&",
-  "||",
-  "!",
-  "(",
-  ")",
-  "{",
-  "}",
-  "[",
-  "]",
-  "^",
-  "~",
-  "*",
-  "?",
-  ":",
-  "1",
-  "0",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
 export default function GamePage() {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
@@ -357,4 +321,39 @@ export default function GamePage() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdatafromserver: response.data.data,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
 }

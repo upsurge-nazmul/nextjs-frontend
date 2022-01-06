@@ -49,7 +49,12 @@ export default function EditProfile({ data }) {
     setuserdata(data);
   }, []);
   async function saveprofile() {
-    if (data && data.phone && changephone === data.phone && !password) {
+    if (
+      data &&
+      data.phone &&
+      (!changephone || changephone === data.phone) &&
+      !password
+    ) {
       handleSave();
     } else {
       if (password) {
@@ -197,30 +202,30 @@ export default function EditProfile({ data }) {
     }
   }
   const avatars = [
-    "girl12",
-    "girl10",
-    "boy4",
-    "girl4",
-    "boy10",
-    "girl1",
-    "girl5",
-    "boy2",
-    "girl2",
-    "boy8",
-    "girl7",
-    "boy6",
-    "boy3",
-    "girl9",
-    "boy12",
-    "girl8",
-    "boy7",
-    "girl13",
-    "girl11",
-    "boy5",
-    "boy11",
-    "girl6",
-    "boy1",
-    "girl3",
+    "3",
+    "14",
+    "24",
+    "21",
+    "2",
+    "11",
+    "15",
+    "10",
+    "1",
+    "17",
+    "9",
+    "22",
+    "8",
+    "5",
+    "23",
+    "13",
+    "4",
+    "6",
+    "12",
+    "7",
+    "20",
+    "19",
+    "18",
+    "16",
   ];
   return (
     <div className={styles.manageChore}>

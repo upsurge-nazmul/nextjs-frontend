@@ -8,8 +8,9 @@ import styles from "../../../styles/WaitlistDashboard/games.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
+import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../static_data/Game_Data";
-function Games({ userdatafromserver }) {
+function Games({ userdatafromserver, token }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -54,7 +55,7 @@ function Games({ userdatafromserver }) {
       setrecent_games(JSON.parse(x));
     }
   }, []);
-  function handlegameclick(title) {
+  async function handlegameclick(title) {
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);
@@ -71,6 +72,28 @@ function Games({ userdatafromserver }) {
       }
     } else {
       localStorage.setItem("recent_games", JSON.stringify([title]));
+    }
+    if (title === "Ludo") {
+      let res = await FreeGameApis.presign({
+        user_name: userdatafromserver.user_name,
+        email: userdatafromserver.email,
+        phone: userdatafromserver.phone,
+        token: token,
+        game: title,
+        postlogin: true,
+      });
+      if (res) {
+        if (res.data.success) {
+          router.push({
+            pathname: "/dashboard/w/game/" + title,
+            query: { id: res.data.data },
+          });
+        } else {
+          alert(res.data.message);
+        }
+      } else {
+        alert("error connecting server");
+      }
     }
     router.push("/dashboard/w/game/" + title);
   }
@@ -159,6 +182,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          token: token,
         },
       };
     }

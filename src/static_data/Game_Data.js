@@ -32,10 +32,10 @@ export const Game_Data = {
     name: "Need or Want",
     description: "Identify the difference between needs and wants.",
   },
-  //   Ludo: {
-  //     name: "Ludo",
-  //     description: "ludo ludo ludo.",
-  //   },
+  Ludo: {
+    name: "Ludo",
+    description: "ludo ludo ludo.",
+  },
   // ShoppingMall: {
   //   name: "ShoppingMall",
   //   description: "ShoppingMall",
@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "1.5",
+    version: "1.6",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",
