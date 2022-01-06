@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
+import QuizApis from "../../actions/apis/QuizApis";
+import { getCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/WaitlistDashboard/leaderboard.module.scss";
 export default function LeaderboardComponent({
   for_game,
@@ -8,6 +12,8 @@ export default function LeaderboardComponent({
   first_name,
 }) {
   const [selected, setselected] = useState(for_game ? "Leaderboard" : "Quiz");
+  const [leaderboarddata, setleaderboarddata] = useState(data || []);
+  const [backup, setbackup] = useState([]);
   function gettext(num) {
     if (num === 2) {
       if (selected === "Quiz") {
@@ -30,32 +36,35 @@ export default function LeaderboardComponent({
       }
     }
   }
+
+  async function getludoleaderboard() {
+    let leaderboard = await FreeGameApis.getludoleaderboard(
+      null,
+      getCookie("accesstoken")
+    );
+    setleaderboarddata(leaderboard?.data?.data || []);
+  }
+  async function y() {
+    let ddd = await QuizApis.leaderboard();
+    setleaderboarddata(ddd?.data?.data || []);
+  }
   return (
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
         <p className={`${styles.heading} ${styles.selected}`}>{selected}</p>
-        {/* <p
-          className={styles.heading}
-          onClick={() =>
-            setselected(selected === "Quiz" ? "Money Run" : "Quiz")
-          }
-        >
-          {gettext(2)}
-        </p>
         <p
           className={styles.heading}
-          onClick={() =>
-            setselected(
-              selected === "Quiz"
-                ? "Ludo"
-                : selected === "Money Run"
-                ? "Ludo"
-                : "Money Run"
-            )
-          }
+          onClick={() => {
+            if (selected === "Quiz") {
+              getludoleaderboard();
+            } else {
+              y();
+            }
+            setselected(selected === "Quiz" ? "Ludo" : "Quiz");
+          }}
         >
-          {gettext(3)}
-        </p> */}
+          {selected === "Quiz" ? "Ludo" : "Quiz"}
+        </p>
       </div>
       <div className={styles.section}>
         <p className={styles.subheading}>{selected}</p>
@@ -65,7 +74,7 @@ export default function LeaderboardComponent({
             <p className={styles.name}>Name</p>
             <p className={styles.score}>Score</p>
           </div>
-          {data.map((item, index) => {
+          {leaderboarddata.map((item, index) => {
             return (
               <div
                 className={styles.row}
@@ -83,7 +92,7 @@ export default function LeaderboardComponent({
               </div>
             );
           })}
-          {quiz_rank > 15 && (
+          {selected === "Quiz" && quiz_rank > 15 && (
             <div
               className={styles.row}
               key={"sdaoijwq"}

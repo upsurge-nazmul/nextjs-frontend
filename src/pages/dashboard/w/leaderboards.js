@@ -40,9 +40,9 @@ export default function Leaderboards({
         <div className={styles.mainContent}>
           <LeaderboardComponent
             data={leaderboard}
-            quiz_rank={userdatafromserver.quiz_rank}
+            quiz_rank={userdatafromserver?.quiz_rank}
             highest={highestquizscore}
-            first_name={userdatafromserver.first_name}
+            first_name={userdatafromserver?.first_name}
           />
         </div>
         <DashboardFooter />

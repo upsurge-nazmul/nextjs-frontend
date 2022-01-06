@@ -16,8 +16,7 @@ import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
 import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
 
-export default function GamePage({ userdatafromserver, leaderboard }) {
-  console.log(leaderboard);
+export default function GamePage({ userdatafromserver }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -327,11 +326,6 @@ export default function GamePage({ userdatafromserver, leaderboard }) {
               />
             )
           )}
-          <div className={styles.leaderboard}>
-            {unitycontext && (
-              <LeaderboardComponent data={leaderboard} for_game="ludo" />
-            )}
-          </div>
         </div>
       </div>
     </div>
@@ -355,12 +349,10 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let leaderboard = await FreeGameApis.getludoleaderboard(null, token);
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
-          leaderboard: leaderboard?.data?.data || [],
         },
       };
     }
