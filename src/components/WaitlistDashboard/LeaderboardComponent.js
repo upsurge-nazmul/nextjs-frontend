@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/WaitlistDashboard/leaderboard.module.scss";
 export default function LeaderboardComponent({
+  for_game,
   data,
   highest,
   quiz_rank,

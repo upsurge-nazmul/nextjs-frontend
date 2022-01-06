@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
-
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../../../styles/WaitlistDashboard/gamepage.module.scss";
 import validator from "validator";
@@ -15,8 +14,9 @@ import { Game_Unity_Data } from "../../../../static_data/Game_Data";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
+import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
 
-export default function GamePage({ userdatafromserver }) {
+export default function GamePage({ userdatafromserver, leaderboard }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -326,14 +326,11 @@ export default function GamePage({ userdatafromserver }) {
               />
             )
           )}
-          {/* {unitycontext && (
-            <LeaderboardComponent
-              data={leaderboard}
-              quiz_rank={userdatafromserver.quiz_rank}
-              highest={highestquizscore}
-              first_name={userdatafromserver.first_name}
-            />
-          )} */}
+          {/* <div className={styles.leaderboard}>
+            {unitycontext && (
+              <LeaderboardComponent data={leaderboard} for_game="ludo" />
+            )}
+          </div> */}
         </div>
       </div>
     </div>
@@ -357,10 +354,12 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      // let leaderboard = await FreeGameApis.getludoleaderboard(null, token);
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          // leaderboard: leaderboard?.data?.data || [],
         },
       };
     }
