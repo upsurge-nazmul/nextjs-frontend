@@ -7,7 +7,7 @@ export default function LeaderboardComponent({
   quiz_rank,
   first_name,
 }) {
-  const [selected, setselected] = useState("Quiz");
+  const [selected, setselected] = useState(for_game ? "Leaderboard" : "Quiz");
   function gettext(num) {
     if (num === 2) {
       if (selected === "Quiz") {

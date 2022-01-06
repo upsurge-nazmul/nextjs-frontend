@@ -21,7 +21,7 @@ const usertoken = (payload) => {
   return ApiCalls.postResponse("users/usertoken", payload);
 };
 const getludoleaderboard = (payload, token) => {
-  return ApiCalls.getResponse("/games/ludo/leaderboard", payload, token);
+  return ApiCalls.getResponse("games/ludo/leaderboard", payload, token);
 };
 //getchores
 const FreeGameApis = {
