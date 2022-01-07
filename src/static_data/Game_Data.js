@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "2.6",
+    version: "2.8",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",
@@ -118,7 +118,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Farming/Build/Farming.framework.js",
     codeUrl: "/Games/Farming/Build/Farming.wasm",
     loaderUrl: "/Games/Farming/Build/Farming.loader.js",
-    version: "1.2",
+    version: "1.3",
   },
   ShoppingMall: {
     dataUrl: "/Games/ShoppingMall/Build/ShoppingMall.data",
