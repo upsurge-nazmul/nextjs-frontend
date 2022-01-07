@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "2.3",
+    version: "2.4",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",
@@ -147,7 +147,8 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyGame/Build/MoneyGame.framework.js",
     codeUrl: "/Games/MoneyGame/Build/MoneyGame.wasm",
     loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
-  },LudoNew: {
+  },
+  LudoNew: {
     dataUrl: "/Games/LudoNew/Build/Ludo.data",
     frameworkUrl: "/Games/LudoNew/Build/Ludo.framework.js",
     codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
@@ -169,11 +170,12 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
     loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
     version: "1.0",
-  },LudoLatest: {
-     dataUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.data",
+  },
+  LudoLatest: {
+    dataUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.data",
     frameworkUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.framework.js",
     codeUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.wasm",
     loaderUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.loader.js",
     version: "1.0",
-  }
+  },
 };
