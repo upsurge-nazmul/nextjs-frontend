@@ -17,6 +17,7 @@
       flex: 1;
       display: flex;
       .imagesection {
+        border-radius: 100%;
         width: fit-content;
         img {
           width: 168px;
@@ -58,7 +59,6 @@
             margin-top: 10px;
             div,
             p {
-              max-width: 250px;
             }
             .changepass {
               margin-right: 10px !important;

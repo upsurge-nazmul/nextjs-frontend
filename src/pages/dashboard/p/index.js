@@ -18,12 +18,17 @@ import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import NoApproval from "../../../components/Dashboard/NoApproval";
 import TribeApproval from "../../../components/Dashboard/TribeApproval";
 import Loading from "../../../components/Loading";
+import GameCard from "../../../components/Dashboard/GameCard";
+import { Game_Data } from "../../../static_data/Game_Data";
+import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
+import BlogApis from "../../../actions/apis/BlogApis";
+import DashboardBlogs from "../../../components/Dashboard/DashboardBlogs";
 
 function Dashboard({
   isLogged,
   msg,
+  blogdata,
   choresdata,
-  gamesdata,
   kidsdata,
   liveclassdata,
   phone_verified,
@@ -34,9 +39,7 @@ function Dashboard({
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [waitlistNum, setwaitlistNum] = useState(0);
-
   const [kids, setkids] = useState(kidsdata || []);
-  const [familyfun, setfamilyfun] = useState(gamesdata || []);
   const [chores, setchores] = useState(choresdata || []);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [confirmationgiven, setconfirmationgiven] = useState(false);
@@ -51,9 +54,10 @@ function Dashboard({
   useEffect(() => {
     const scrollContainer = document.querySelector("#gamecardwrapper");
     if (!scrollContainer) return;
+
     scrollContainer.addEventListener("wheel", (evt) => {
       evt.preventDefault();
-      scrollContainer.scrollLeft += evt.deltaY;
+      scrollContainer.scrollLeft += evt.deltaY * 5;
     });
   });
   useEffect(() => {
@@ -76,7 +80,7 @@ function Dashboard({
     if (rightpanel) {
       leftside.style.setProperty(
         "--height",
-        rightpanel.scrollHeight - 100 + "px"
+        rightpanel.scrollHeight - 20 + "px"
       );
     }
   }, []);
@@ -228,7 +232,7 @@ function Dashboard({
                 )}
               </div>
               <div className={styles.flexRight} id="rightpanel">
-                {/* <div className={styles.gameSection}>
+                <div className={styles.gameSection}>
                   <h2
                     className={styles.heading}
                     onClick={() => router.push("/games")}
@@ -236,18 +240,32 @@ function Dashboard({
                     Family Fun
                     <HeadingArrow />
                   </h2>
-
                   <div className={styles.wrapper} id="gamecardwrapper">
-                    {familyfun.map((data, index) => {
+                    {Object.keys(Game_Data).map((item, index) => {
                       return (
-                        <GameCard
-                          data={data}
-                          key={"gamecardcomponent" + index}
-                        />
+                        <div
+                          className={styles.gameitem}
+                          onClick={() =>
+                            router.push(
+                              "/dashboard/p/game/" +
+                                Game_Data[item].name.replace(/ /g, "")
+                            )
+                          }
+                          key={"familyfum" + index}
+                        >
+                          <img src={`/images/games/${item}.jpg`} alt="" />
+                          <p className={styles.calccardtitle}>
+                            {Game_Data[item].name}
+                          </p>
+                          <p className={styles.calccardsubtitle}>
+                            {Game_Data[item].description}
+                          </p>
+                        </div>
                       );
                     })}
                   </div>
-                </div> */}
+                </div>
+                <DashboardBlogs blogs={blogdata} />
               </div>
             </div>
           )}
@@ -287,16 +305,16 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       let kidsdata = await getkidsdata(token);
-      let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
+      let blogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
       return {
         props: {
           isLogged: true,
           phone_verified: response.data.data.phone_verified,
           choresdata,
-          gamesdata,
           kidsdata,
+          blogdata: blogs?.data.data || [],
           liveclassdata,
           userdatafromserver: response.data.data,
           msg: "",
@@ -320,11 +338,6 @@ async function getchores(token) {
   } else {
     return [];
   }
-}
-async function getgames(token) {
-  let response = await DashboardApis.getgames(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);

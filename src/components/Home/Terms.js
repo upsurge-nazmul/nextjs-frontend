@@ -1207,7 +1207,7 @@ export default function Terms({ setshowterm, termmode }) {
             same password on multiple sites, to prevent any kind of theft,
             piracy, or unauthorized access. If you believe your account has been
             abused or hacked, please contact us by sending us an email at
-            karan@upsurgefi.com.
+            karan@upsurge.in.
           </p>
           <p className={styles.para}>
             We do not sell, transfer, or rent your Personal Information to third
@@ -1402,21 +1402,21 @@ export default function Terms({ setshowterm, termmode }) {
             material for that end user's personal use. You hereby grant upsurge,
             the right to edit, copy, publish and distribute any material made
             available on the Platform by you. If you come across any abuse or
-            violation of these Terms, please report to karan@upsurgefi.com.`}
+            violation of these Terms, please report to karan@upsurge.in.`}
           </p>
           <p className={styles.heading}>
             YOUR RIGHTS IN RELATION TO PERSONAL INFORMATION COLLECTED BY US
           </p>
           <p className={styles.para}>
             You have the right to withdraw your consent at any time in writing
-            by sending an e-mail to us at karan@upsurgefi.com, in accordance
-            with the terms of this Privacy Policy. However, please note that
+            by sending an e-mail to us at karan@upsurge.in, in accordance with
+            the terms of this Privacy Policy. However, please note that
             withdrawal of consent will not be retrospective in nature and shall
             be applicable prospectively.
           </p>
           <p className={styles.para}>
-            You may write to us at karan@upsurgefi.com to access, review, modify
-            or correct your Personal Information or withdraw your consent to
+            You may write to us at karan@upsurge.in to access, review, modify or
+            correct your Personal Information or withdraw your consent to
             provide Personal Information. We are not responsible for the
             authenticity of the information provided by you.
           </p>
@@ -1460,7 +1460,7 @@ export default function Terms({ setshowterm, termmode }) {
             <br />
             Designation: Grievance Officer
             <br />
-            Grievance Officer Email ID: karan@upsurgefi.com
+            Grievance Officer Email ID: karan@upsurge.in
           </p>
           <p className={styles.heading}>CONSENT TO THE POLICY </p>
           <p className={styles.para}>
@@ -1473,9 +1473,9 @@ export default function Terms({ setshowterm, termmode }) {
             We may at any time modify the Terms of Use of our Website without
             any prior notification to you. Should you wish to terminate your
             account due to a modification to the Terms or the Privacy Policy,
-            you may do so email us at karan@upsurgefi.com. However, if you
-            continue to use the service you shall be deemed to have agreed to
-            accept and abide by the modified Terms of this Website.{" "}
+            you may do so email us at karan@upsurge.in. However, if you continue
+            to use the service you shall be deemed to have agreed to accept and
+            abide by the modified Terms of this Website.{" "}
           </p>
           <p className={styles.heading}>Privileged/Exclusive Service: </p>
           <p className={styles.para}>

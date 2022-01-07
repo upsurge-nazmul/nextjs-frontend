@@ -467,7 +467,7 @@ function AuthPrivacy({ setmode }) {
         data-for="continue-button-privacy"
         className={`${styles.button} ${endreached ? "" : styles.disabled}`}
         onClick={() => {
-          if (endreached) router.push("/dashboard");
+          if (endreached) router.push("/dashboard/p");
         }}
       >
         I Agree

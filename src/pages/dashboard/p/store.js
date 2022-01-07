@@ -72,13 +72,13 @@ export default function ParentStore({
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
+          {/* <div className={styles.flexLeft}>
             <RequestsAndHistorySection
               setbuydata={setbuydata}
               setshowmodal={setshowmodal}
             />
             <AvailablePointsSection />
-          </div>
+          </div> */}
           <div className={styles.flexRight}>
             <VoucherSection
               vouchers={vouchers}
