@@ -94,7 +94,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       <div className={styles.button} onClick={handleSignin}>
         Sign In
       </div>
-      <div className={styles.or}>OR</div>
+      {/* <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -110,7 +110,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         onSuccess={handlegoogleLogin}
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
-      />
+      /> */}
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
