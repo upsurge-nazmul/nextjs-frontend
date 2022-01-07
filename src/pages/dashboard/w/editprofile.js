@@ -44,10 +44,36 @@ export default function EditProfile({ data }) {
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
-
+  const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
+  const girl_avatars = [
+    "14",
+    "24",
+    "21",
+    "15",
+    "17",
+    "22",
+    "23",
+    "13",
+    "12",
+    "20",
+    "19",
+    "18",
+    "16",
+  ];
+  const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   useEffect(() => {
     setuserdata(data);
   }, []);
+  useEffect(() => {
+    console.log(gender);
+    if (gender === "male") {
+      setavatars(boy_avatars);
+    } else if (gender === "female") {
+      setavatars(girl_avatars);
+    } else {
+      setavatars([...boy_avatars, ...girl_avatars]);
+    }
+  }, [gender]);
   async function saveprofile() {
     if (
       data &&
@@ -201,32 +227,7 @@ export default function EditProfile({ data }) {
       });
     }
   }
-  const avatars = [
-    "3",
-    "14",
-    "24",
-    "21",
-    "2",
-    "11",
-    "15",
-    "10",
-    "1",
-    "17",
-    "9",
-    "22",
-    "8",
-    "5",
-    "23",
-    "13",
-    "4",
-    "6",
-    "12",
-    "7",
-    "20",
-    "19",
-    "18",
-    "16",
-  ];
+
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel type="waitlist" />

@@ -308,7 +308,10 @@ export default function GamePage({ userdatafromserver }) {
                   {`This game is not yet available for phones & tablets. Please use
                 a laptop or PC to play it.`}
                 </p>
-                <div className={styles.button} onClick={() => router.push("/")}>
+                <div
+                  className={styles.button}
+                  onClick={() => router.push("/dashboard/w")}
+                >
                   Go back
                 </div>
               </div>
