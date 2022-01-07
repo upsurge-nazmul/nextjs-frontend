@@ -169,5 +169,11 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
     loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
     version: "1.0",
-  },
+  },LudoLatest: {
+     dataUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.data",
+    frameworkUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.framework.js",
+    codeUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.wasm",
+    loaderUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.loader.js",
+    version: "1.0",
+  }
 };
