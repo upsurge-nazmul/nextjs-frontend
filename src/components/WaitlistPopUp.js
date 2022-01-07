@@ -60,7 +60,6 @@ export default function WaitlistPopUp({
 
       if (!response || !response.data.success) {
         seterror(response.data.message || "Error connecting to server");
-        setmode("data");
       } else {
         router.push("/waitlist/" + email);
       }

@@ -145,26 +145,20 @@ function AuthFullData({
       seterror("First name is required");
       return;
     }
-    let response = await LoginApis.signup({
+    let response = await LoginApis.getearlyaccess({
       email: email,
-      signup_method: signupmethod,
-      user_type: usertype,
-      phone,
-      password,
       first_name: firstName,
+      phone: phone,
       last_name: lastName,
+      user_name: username,
     });
-
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      settoastdata({
-        show: true,
-        msg: response.data.message,
-        type: "success",
-      });
-      setuserdata(response.data.data.profile);
-      setCookie("accesstoken", response.data.data.token);
+      console.log("sadasdasd");
+      if (mode === "otp") {
+        settoastdata({ type: "success", msg: "OTP sent", show: true });
+      }
       setmode("otp");
     }
   }
