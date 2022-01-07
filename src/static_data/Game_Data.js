@@ -171,11 +171,11 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
     version: "1.0",
   },
-  LudoLatest: {
-    dataUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.data",
-    frameworkUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.framework.js",
-    codeUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.wasm",
-    loaderUrl: "/Games/Ludo001/Build/Ludo_WebglBuild.loader.js",
+  CleanUp: {
+    dataUrl: "/Games/CleanUp/Build/CleanUp.data",
+    frameworkUrl: "/Games/CleanUp/Build/CleanUp.framework.js",
+    codeUrl: "/Games/CleanUp/Build/CleanUp.wasm",
+    loaderUrl: "/Games/CleanUp/Build/CleanUp.loader.js",
     version: "1.0",
   },
 };
