@@ -125,7 +125,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/ShoppingMall/Build/ShoppingMall.framework.js",
     codeUrl: "/Games/ShoppingMall/Build/ShoppingMall.wasm",
     loaderUrl: "/Games/ShoppingMall/Build/ShoppingMall.loader.js",
-    version: "1.0",
+    version: "1.1",
   },
   ShoppingTest1: {
     dataUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.data",
