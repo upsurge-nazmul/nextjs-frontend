@@ -62,8 +62,12 @@ export async function getServerSideProps({ params, req }) {
       token: token,
     });
     if (response && !response.data.success) {
-      msg = response.data.msg;
-      return { props: { isLogged: false, msg: msg || "Error" } };
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
     } else {
       let leaderboard = await QuizApis.leaderboard();
       let highestquizscore = await QuizApis.highestscore({

@@ -75,7 +75,10 @@ function Games({ userdatafromserver, token }) {
     }
     if (title === "Ludo") {
       let res = await FreeGameApis.presign({
-        user_name: userdatafromserver.user_name,
+        user_name:
+          userdatafromserver.user_name ||
+          userdatafromserver.first_name ||
+          userdatafromserver.last_name,
         email: userdatafromserver.email,
         phone: userdatafromserver.phone,
         token: token,

@@ -43,6 +43,8 @@ export default function LeaderboardComponent({
       null,
       getCookie("accesstoken")
     );
+    console.log(leaderboard.data.data);
+
     setleaderboarddata(leaderboard?.data?.data || []);
   }
   async function y() {
