@@ -202,13 +202,15 @@ export default function GamePage({ userdatafromserver }) {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  useEffect(function () {
-    if (!unitycontext) return;
-    unitycontext.on("progress", function (progression) {
-      setProgression(progression);
-      console.log("progression", progression);
-    });
-  }, []);
+  useEffect(
+    function () {
+      if (!unitycontext) return;
+      unitycontext.on("Exit", function () {
+        router.push("/dashboard/w/games");
+      });
+    },
+    [unitycontext]
+  );
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
