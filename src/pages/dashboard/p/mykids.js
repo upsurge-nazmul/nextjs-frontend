@@ -11,8 +11,13 @@ import LeftPanel from "../../../components/LeftPanel";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import styles from "../../../styles/mykids/mykids.module.scss";
+import Toast from "../../../components/Toast";
 
-export default function GoalWizard({ choresdata, kidsdata }) {
+export default function GoalWizard({
+  choresdata,
+  kidsdata,
+  userdatafromserver,
+}) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [kids, setkids] = useState(kidsdata || []);
@@ -53,6 +58,7 @@ export default function GoalWizard({ choresdata, kidsdata }) {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <Toast data={toastdata} />
       <DashboardLeftPanel />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
@@ -95,51 +101,6 @@ export default function GoalWizard({ choresdata, kidsdata }) {
                 <NoKid setkids={setkids} />
               )}
             </div>
-            {allchores.length > 0 && (
-              <div className={styles.choreSection}>
-                <h2 className={styles.heading}>
-                  Chores
-                  <HeadingArrow />
-                </h2>
-                <div className={styles.headingWrapper}>
-                  <h2
-                    className={`${styles.heading} ${
-                      choremode === "inprogress" ? styles.activechore : ""
-                    }`}
-                    onClick={() => setchoremode("inprogress")}
-                  >
-                    In Progress
-                  </h2>
-                  <h2
-                    className={`${styles.heading} ${
-                      choremode === "completed" ? styles.activechore : ""
-                    }`}
-                    onClick={() => setchoremode("completed")}
-                  >
-                    Completed
-                  </h2>
-                  <h2
-                    className={`${styles.heading} ${
-                      choremode === "archived" ? styles.activechore : ""
-                    }`}
-                    onClick={() => setchoremode("archived")}
-                  >
-                    Archived
-                  </h2>
-                </div>
-                <div className={styles.wrapper}>
-                  {allchores?.map((data, index) => {
-                    return (
-                      <ChoreComponent
-                        data={data}
-                        settoastdata={settoastdata}
-                        key={"chorecomponent" + index}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
 
           <div className={styles.flexRight}>
@@ -154,8 +115,18 @@ export default function GoalWizard({ choresdata, kidsdata }) {
                   <HeadingArrow />
                 </h2>
                 <div
-                  className={styles.button}
+                  className={`${styles.button} ${
+                    userdatafromserver.num_kids === 5 && styles.maximumlimit
+                  }`}
                   onClick={() => {
+                    if (userdatafromserver.num_kids === 5) {
+                      settoastdata({
+                        type: "error",
+                        show: true,
+                        msg: "Maximum child limit reached",
+                      });
+                      return;
+                    }
                     router.push("/dashboard/p/child/add");
                   }}
                 >
@@ -195,6 +166,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           choresdata: choresdata || [],
+          userdatafromserver: response.data.data,
           kidsdata,
           msg: "",
         },

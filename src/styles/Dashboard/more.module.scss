@@ -1,0 +1,116 @@
+.morekid {
+  width: 100%;
+  max-width: 850px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  margin-top: 30px;
+  .morekidtextContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 0 10%;
+    .morekidheading {
+      font-weight: 700;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 6px;
+      color: black !important;
+    }
+    .morekidsubheading {
+      font-weight: 400;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 2px;
+    }
+    .link {
+      font-weight: 700;
+      margin-top: 15px;
+      font-size: 15px;
+      color: rgba(65, 102, 235, 1);
+    }
+    .morekidbutton {
+      width: 129px;
+      min-height: 30px;
+      height: 20%;
+      max-height: 50px;
+      background: #4166eb;
+      border-radius: 14px;
+      color: white;
+      font-weight: 500;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #ffffff;
+        color: #4166eb;
+        border: 1px solid #4166eb;
+      }
+    }
+  }
+  img {
+    height: 55%;
+    object-fit: cover;
+    width: 100%;
+    mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 2%, #ffffff 10%);
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .morekid {
+    height: 60vh;
+    margin-top: 20px;
+    .morekidtextContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 0 5%;
+      .morekidheading {
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+        color: black !important;
+      }
+      .morekidsubheading {
+        font-weight: 400;
+        font-size: 11px;
+        text-align: center;
+        margin-bottom: 2px;
+        margin-top: 10px;
+      }
+      .link {
+        font-size: 11px;
+        font-weight: 700;
+        color: rgba(65, 102, 235, 1);
+      }
+      .morekidbutton {
+        width: 110px;
+        min-height: 25px;
+        height: 15%;
+        font-size: 14px;
+      }
+    }
+    img {
+      height: 45%;
+      object-fit: cover;
+      width: 100%;
+      mask-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 2%,
+        #ffffff 10%
+      );
+    }
+  }
+}

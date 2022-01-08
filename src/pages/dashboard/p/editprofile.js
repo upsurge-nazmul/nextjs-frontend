@@ -44,7 +44,32 @@ export default function EditProfile({ data }) {
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
-
+  const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
+  const girl_avatars = [
+    "14",
+    "24",
+    "21",
+    "15",
+    "17",
+    "22",
+    "23",
+    "13",
+    "12",
+    "20",
+    "19",
+    "18",
+    "16",
+  ];
+  const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
+  useEffect(() => {
+    if (gender === "male") {
+      setavatars(boy_avatars);
+    } else if (gender === "female") {
+      setavatars(girl_avatars);
+    } else {
+      setavatars([...boy_avatars, ...girl_avatars]);
+    }
+  }, [gender]);
   useEffect(() => {
     setuserdata(data);
   }, []);
@@ -204,32 +229,7 @@ export default function EditProfile({ data }) {
       });
     }
   }
-  const avatars = [
-    "girl12",
-    "girl10",
-    "boy4",
-    "girl4",
-    "boy10",
-    "girl1",
-    "girl5",
-    "boy2",
-    "girl2",
-    "boy8",
-    "girl7",
-    "boy6",
-    "boy3",
-    "girl9",
-    "boy12",
-    "girl8",
-    "boy7",
-    "girl13",
-    "girl11",
-    "boy5",
-    "boy11",
-    "girl6",
-    "boy1",
-    "girl3",
-  ];
+
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel type="waitlist" />
@@ -393,6 +393,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           data: response.data.data,
+          
         },
       };
     }

@@ -48,32 +48,32 @@ function AddKid({ childdata }) {
   const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
-  const avatars = [
-    "girl12",
-    "girl10",
-    "boy4",
-    "girl4",
-    "boy10",
-    "girl1",
-    "girl5",
-    "boy2",
-    "girl2",
-    "boy8",
-    "girl7",
-    "boy6",
-    "boy3",
-    "girl9",
-    "boy12",
-    "girl8",
-    "boy7",
-    "girl13",
-    "girl11",
-    "boy5",
-    "boy11",
-    "girl6",
-    "boy1",
-    "girl3",
+  const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
+  const girl_avatars = [
+    "14",
+    "24",
+    "21",
+    "15",
+    "17",
+    "22",
+    "23",
+    "13",
+    "12",
+    "20",
+    "19",
+    "18",
+    "16",
   ];
+  const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
+  useEffect(() => {
+    if (gender === "male") {
+      setavatars(boy_avatars);
+    } else if (gender === "female") {
+      setavatars(girl_avatars);
+    } else {
+      setavatars([...boy_avatars, ...girl_avatars]);
+    }
+  }, [gender]);
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -171,10 +171,10 @@ function AddKid({ childdata }) {
       data.gender = gender;
     }
     if (dob && dob !== childdata.dob) {
-      data.dob = dob;
+      data.dob = dob.getTime();
     }
     if (img && img !== childdata.image) {
-      data.image = img;
+      data.user_img_url = img;
     }
     if (password && password !== childdata.password) {
       data.password = password;
@@ -189,6 +189,7 @@ function AddKid({ childdata }) {
       seterror("No changes done");
       return;
     }
+    console.log(data);
     let response = await DashboardApis.editkids(data);
     if (response && response.data && response.data.success) {
       settoastdata({
@@ -200,7 +201,6 @@ function AddKid({ childdata }) {
       seterror(response.data.message || "error");
     }
   }
-
   function validatePassword(e) {
     let pass = e.target.value.trim();
     setpassword(pass);
@@ -254,7 +254,7 @@ function AddKid({ childdata }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={"dashboard"}
+          gobackto={"/dashboard/p"}
         />
         <div className={styles.mainContent}>
           <div className={styles.imagesection}>
