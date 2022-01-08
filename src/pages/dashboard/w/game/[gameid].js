@@ -53,9 +53,7 @@ export default function GamePage({ userdatafromserver }) {
     unitycontext.setFullscreen(true);
   }
   const gamesWithAuth = ["Ludo", "FinCricket"];
-  useEffect(() => {
-    console.log("sss");
-  }, []);
+
   useEffect(() => {
     if (userdatafromserver) {
       setuserdata(userdatafromserver);
@@ -208,8 +206,15 @@ export default function GamePage({ userdatafromserver }) {
       unitycontext.on("Exit", function () {
         router.push("/dashboard/w/games");
       });
+      unitycontext.on("progress", function (progression) {
+        console.log(progression);
+      });
       unitycontext.on("Error", function (code, url, vendor) {
+        console.log(code, url, vendor);
         router.push("/dashboard/w/games");
+      });
+      unitycontext.on("error", function (message) {
+        console.log(message);
       });
     },
     [unitycontext]
@@ -246,7 +251,6 @@ export default function GamePage({ userdatafromserver }) {
         game_token: id,
       });
       if (res && res.data.success) {
-        console.log("success");
         setshowgame(true);
       } else {
         alert("Id not valid");

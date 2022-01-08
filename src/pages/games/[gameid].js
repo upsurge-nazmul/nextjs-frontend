@@ -316,6 +316,9 @@ export default function GamePage() {
         console.log("debug");
         router.push("/games");
       });
+      unitycontext.on("progress", function (progression) {
+        console.log(progression);
+      });
       unitycontext.on("Exit", function () {
         router.push("/games");
       });
