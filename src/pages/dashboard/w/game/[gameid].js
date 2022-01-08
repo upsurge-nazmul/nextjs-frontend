@@ -53,7 +53,9 @@ export default function GamePage({ userdatafromserver }) {
     unitycontext.setFullscreen(true);
   }
   const gamesWithAuth = ["Ludo", "FinCricket"];
-
+  useEffect(() => {
+    console.log("sss");
+  }, []);
   useEffect(() => {
     if (userdatafromserver) {
       setuserdata(userdatafromserver);

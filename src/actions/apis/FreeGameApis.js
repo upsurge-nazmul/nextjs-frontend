@@ -23,6 +23,9 @@ const usertoken = (payload) => {
 const getludoleaderboard = (payload, token) => {
   return ApiCalls.getResponse("games/ludo/leaderboard", payload, token);
 };
+const getludohighscore = (payload, token) => {
+  return ApiCalls.getResponse("games/ludo/gethighestscore", payload, token);
+};
 //getchores
 const FreeGameApis = {
   leaderboard,
@@ -32,6 +35,7 @@ const FreeGameApis = {
   updatescore,
   usertoken,
   getludoleaderboard,
+  getludohighscore,
 };
 
 export default FreeGameApis;

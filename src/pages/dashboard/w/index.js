@@ -5,6 +5,7 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import BlogApis from "../../../actions/apis/BlogApis";
 import NotificationApis from "../../../actions/apis/NotificationApis";
 import QuizApis from "../../../actions/apis/QuizApis";
+import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Loading from "../../../components/Loading";
@@ -20,12 +21,14 @@ import QuizIconSvg from "../../../components/SVGcomponents/QuizIconSvg";
 import GameSvg from "../../../components/SVGcomponents/GameSvg";
 import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
+import LeaderboardSvg from "../../../components/SVGcomponents/LeaderboardSvg";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
   blogdata,
   leaderboard,
   highestquizscore,
+  highestludoscore,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
@@ -196,21 +199,20 @@ export default function WaitlistDashboard({
                     <div className={styles.gameblock}>
                       <div className={styles.block}>
                         <p className={styles.heading}>
-                          {userdatafromserver.num_refers || 0}
+                          {highestludoscore || 0}
                         </p>
-                        <p className={styles.subheading}>Completed referrals</p>
+                        <p className={styles.subheading}>Ludo Score</p>
                       </div>
                     </div>
                   </div>
                   <div
                     className={`${styles.back} ${styles.gameback}`}
                     onClick={() => {
-                      setcurrent("refferal");
-                      setshowdetails(true);
+                      router.push("/dashboard/w/leaderboards?ludo=true");
                     }}
                   >
-                    <InfoIcon className={styles.gameicon} />
-                    <p className={styles.text}>Know more</p>
+                    <LeaderboardSvg className={styles.leaderboard} />
+                    <p className={styles.text}>Ludo Leaderboard</p>
                   </div>
                 </div>
               </div>
@@ -264,6 +266,8 @@ export async function getServerSideProps({ params, req }) {
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
+      let ludoscore = await FreeGameApis.getludohighscore(null, token);
+      console.log(ludoscore.data);
       return {
         props: {
           isLogged: true,
@@ -274,6 +278,7 @@ export async function getServerSideProps({ params, req }) {
           highestquizscore: highestquizscore?.data?.data?.score
             ? Math.round(highestquizscore.data.data.score / 0.72)
             : 0,
+          highestludoscore: ludoscore?.data?.data || 0,
           msg: "",
         },
       };

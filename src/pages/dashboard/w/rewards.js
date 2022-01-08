@@ -68,7 +68,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
         <div className={styles.mainContent}>
           <PartnerSection dashboard={true} />
           <p className={styles.heading} style={{ userSelect: "none" }}>
-            Know more about your rewards.
+            Know more about your Early Access rewards.
           </p>
           <div className={styles.featurewrapper}>
             <div className={styles.feature}>

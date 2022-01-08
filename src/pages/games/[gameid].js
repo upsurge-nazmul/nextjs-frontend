@@ -306,7 +306,18 @@ export default function GamePage() {
       setTimeout(() => setremoveBorder(true), 10000);
     }
   }, [showgame]);
-
+  useEffect(
+    function () {
+      if (!unitycontext) return;
+      unitycontext.on("GameOver", function (userName, score) {
+        console.log(userName, score);
+      });
+      unitycontext.on("debug", function (message) {
+        console.log("debug");
+      });
+    },
+    [unitycontext]
+  );
   return (
     <div className={styles.gamePage}>
       <Header

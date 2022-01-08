@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "2.8",
+    version: "2.9",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",
@@ -148,34 +148,18 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/MoneyGame/Build/MoneyGame.wasm",
     loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
   },
-  LudoNew: {
-    dataUrl: "/Games/LudoNew/Build/Ludo.data",
-    frameworkUrl: "/Games/LudoNew/Build/Ludo.framework.js",
-    codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
-    loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-  Ludos3: {
-    dataUrl: "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.data",
-    frameworkUrl:
-      "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.framework.js",
-    codeUrl: "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.wasm",
-    loaderUrl:
-      "https://testupsurge.s3.ap-south-1.amazonaws.com/Build/Ludo.loader.js",
-    version: "1.0",
-  },
-  LudoNew: {
-    dataUrl: "/Games/LudoNew/Build/Ludo.data",
-    frameworkUrl: "/Games/LudoNew/Build/Ludo.framework.js",
-    codeUrl: "/Games/LudoNew/Build/Ludo.wasm",
-    loaderUrl: "/Games/LudoNew/Build/Ludo.loader.js",
-    version: "1.0",
-  },
   CleanUp: {
     dataUrl: "/Games/CleanUp/Build/CleanUp.data",
     frameworkUrl: "/Games/CleanUp/Build/CleanUp.framework.js",
     codeUrl: "/Games/CleanUp/Build/CleanUp.wasm",
     loaderUrl: "/Games/CleanUp/Build/CleanUp.loader.js",
     version: "1.0",
+  },
+  EventDemo_v1: {
+    dataUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.data",
+    frameworkUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.framework.js",
+    codeUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.wasm",
+    loaderUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.loader.js",
+    version: "1.1",
   },
 };

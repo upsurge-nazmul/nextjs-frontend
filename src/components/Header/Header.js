@@ -100,7 +100,7 @@ function Header({
               { name: "Articles", pushTo: "/blogs" },
             ]}
           /> */}
-          {/* <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" /> */}
+          <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
           {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
 
           <HeaderTabSection

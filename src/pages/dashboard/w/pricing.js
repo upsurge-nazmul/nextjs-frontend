@@ -26,13 +26,26 @@ export default function Pricing({ userdatafromserver }) {
       name: "Half-Yearly",
       price: "₹499",
       description: "per child, per month (billed every 6 months)",
-      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
+      benefits: [
+        "1000 UniCoins bonus",
+        "Masterclass videos",
+        "Knowledge Quest",
+        "Games Arena",
+        "Family Fun",
+      ],
     },
     {
       name: "Yearly",
       price: "₹399",
       description: "per child, per month (billed annually)",
-      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
+      benefits: [
+        "2500 UniCoins bonus",
+        "Masterclass sessions and videos",
+        "Career development session",
+        "Knowledge Quest",
+        "Games Arena",
+        "Family Fun",
+      ],
     },
   ];
   const [mode, setmode] = useState("Pricing");

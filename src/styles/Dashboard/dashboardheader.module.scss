@@ -95,6 +95,7 @@
       position: relative;
       border-radius: 50px;
       cursor: pointer;
+      user-select: none;
       transition: all 0.3s ease;
       outline-color: rgb(214, 214, 214);
       img {

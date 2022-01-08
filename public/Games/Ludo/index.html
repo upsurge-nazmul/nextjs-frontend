@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1024 height=576></canvas>
+      <canvas id="unity-canvas" width=2056 height=1080></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -56,11 +56,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Ludo_WebglBuild.loader.js";
+      var loaderUrl = buildUrl + "/Ludo.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Ludo_WebglBuild.data",
-        frameworkUrl: buildUrl + "/Ludo_WebglBuild.framework.js",
-        codeUrl: buildUrl + "/Ludo_WebglBuild.wasm",
+        dataUrl: buildUrl + "/Ludo.data",
+        frameworkUrl: buildUrl + "/Ludo.framework.js",
+        codeUrl: buildUrl + "/Ludo.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "UpSurge",
         productName: "UpSurge - Ludo Final",
@@ -82,8 +82,8 @@
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
-        canvas.style.width = "1024px";
-        canvas.style.height = "576px";
+        canvas.style.width = "2056px";
+        canvas.style.height = "1080px";
       }
       loadingBar.style.display = "block";
 

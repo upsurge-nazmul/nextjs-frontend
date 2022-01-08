@@ -17,36 +17,31 @@ export default function Pricing() {
       name: "Monthly",
       price: "₹599",
       description: "per child, per month",
-      benefits: [
-        "5 Social Profiles",
-        "5 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 Support",
-      ],
+      benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
     },
     {
       name: "Half-Yearly",
-      price: "₹2,899",
+      price: "₹499",
       description: "per child, per month (billed every 6 months)",
       benefits: [
-        "10 Social Profiles",
-        "25 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 VIP Support",
+        "1000 UniCoins bonus",
+        "Masterclass videos",
+        "Knowledge Quest",
+        "Games Arena",
+        "Family Fun",
       ],
     },
     {
       name: "Yearly",
-      price: "₹4,799",
+      price: "₹399",
       description: "per child, per month (billed annually)",
       benefits: [
-        "100 Social Profiles",
-        "100 Scheduled Posts Per Profile",
-        "400+ Templates",
-        "Calendar View",
-        "24/7 VIP Support",
+        "2500 UniCoins bonus",
+        "Masterclass sessions and videos",
+        "Career development session",
+        "Knowledge Quest",
+        "Games Arena",
+        "Family Fun",
       ],
     },
   ];
@@ -75,9 +70,9 @@ export default function Pricing() {
       />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <div className={styles.container}>
+      <div className={styles.mainContent}>
         <p className={styles.heading}>
-          Start your kids’ journey in the <br />
+          Start your kid’s journey in the <br />
           finance world today.
         </p>
         <div className={styles.featurewrapper}>
@@ -101,7 +96,6 @@ export default function Pricing() {
                 <p className={styles.name}>{item.name}</p>
                 <p className={styles.price}>{item.price}</p>
                 <p className={styles.description}>{item.description}</p>
-                <div className={styles.button}>Start My 15-day Trial</div>
                 <div className={styles.hr} />
                 <div className={styles.benefitswrapper}>
                   {item.benefits.map((benefit, index) => {
