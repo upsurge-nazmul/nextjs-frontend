@@ -62,14 +62,14 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
     codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
     loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.4",
+    version: "1.5",
   },
   HighAndLow: {
     dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
     frameworkUrl: "/Games/HighAndLow/Build/HighAndLow.framework.js",
     codeUrl: "/Games/HighAndLow/Build/HighAndLow.wasm",
     loaderUrl: "/Games/HighAndLow/Build/HighAndLow.loader.js",
-    version: "1.0",
+    version: "1.1",
   },
   MoneyMath: {
     dataUrl: "/Games/MoneyMath/Build/MoneyMath.data",
@@ -83,7 +83,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
     codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
     loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
-    version: "1.0",
+    version: "1.1",
   },
   MoneySlide: {
     dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
@@ -127,14 +127,6 @@ export const Game_Unity_Data = {
     loaderUrl: "/Games/ShoppingMall/Build/ShoppingMall.loader.js",
     version: "1.1",
   },
-  ShoppingTest1: {
-    dataUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.data",
-    frameworkUrl:
-      "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.framework.js",
-    codeUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.wasm",
-    loaderUrl: "/Games/ShoppingTest1/Build/ShoppingMall_WebglBuild.loader.js",
-    version: "1.0",
-  },
   Balance: {
     dataUrl: "/Games/balance/Build/New folder.data",
     frameworkUrl: "/Games/balance/Build/New folder.framework.js",
@@ -147,19 +139,13 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyGame/Build/MoneyGame.framework.js",
     codeUrl: "/Games/MoneyGame/Build/MoneyGame.wasm",
     loaderUrl: "/Games/MoneyGame/Build/MoneyGame.loader.js",
+    version: "1.1",
   },
   CleanUp: {
     dataUrl: "/Games/CleanUp/Build/CleanUp.data",
     frameworkUrl: "/Games/CleanUp/Build/CleanUp.framework.js",
     codeUrl: "/Games/CleanUp/Build/CleanUp.wasm",
     loaderUrl: "/Games/CleanUp/Build/CleanUp.loader.js",
-    version: "1.0",
-  },
-  EventDemo_v1: {
-    dataUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.data",
-    frameworkUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.framework.js",
-    codeUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.wasm",
-    loaderUrl: "/Games/EventDemo_v1/Build/EventDemo_v1.loader.js",
     version: "1.1",
   },
 };
