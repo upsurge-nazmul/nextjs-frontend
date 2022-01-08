@@ -65,7 +65,6 @@ export default function EditProfile({ data }) {
     setuserdata(data);
   }, []);
   useEffect(() => {
-    console.log(gender);
     if (gender === "male") {
       setavatars(boy_avatars);
     } else if (gender === "female") {
@@ -212,6 +211,9 @@ export default function EditProfile({ data }) {
     if (response && response.data && response.data.success) {
       setshowpopup(false);
       setshowphonepopup(false);
+      if (img && img !== data?.user_img_url) {
+        setuserdata((prev) => ({ ...prev, user_img_url: img }));
+      }
       if (changephone) {
         setphone(changephone);
         setchangephone("");

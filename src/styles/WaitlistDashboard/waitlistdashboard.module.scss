@@ -116,6 +116,16 @@
                   fill: white;
                 }
               }
+              .leaderboard {
+                width: 50px;
+                height: 50px;
+                rect {
+                  stroke: white;
+                }
+                path {
+                  fill: white;
+                }
+              }
             }
             .waitlistback {
               background-color: rgba(65, 102, 235, 1);

@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
@@ -13,7 +14,7 @@ export default function LeaderboardComponent({
 }) {
   const [selected, setselected] = useState(for_game ? "Leaderboard" : "Quiz");
   const [leaderboarddata, setleaderboarddata] = useState(data || []);
-  const [backup, setbackup] = useState([]);
+  const router = useRouter();
   function gettext(num) {
     if (num === 2) {
       if (selected === "Quiz") {
@@ -49,6 +50,12 @@ export default function LeaderboardComponent({
     setleaderboarddata([]);
     setleaderboarddata(ddd?.data?.data || []);
   }
+  useEffect(() => {
+    if (router.query.ludo) {
+      getludoleaderboard();
+      setselected("Ludo");
+    }
+  }, []);
   return (
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
@@ -86,7 +93,7 @@ export default function LeaderboardComponent({
               >
                 <p className={styles.rank}>{index + 1}</p>
                 <p className={styles.name}>
-                  {item.nick_name || item.name}{" "}
+                  {item.nick_name || item.name || item.first_name}{" "}
                   {Number(quiz_rank) === index + 1 && "(you)"}
                 </p>
                 <p className={styles.score}>{item.score}</p>

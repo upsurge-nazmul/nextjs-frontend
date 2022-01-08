@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import QuizApis from "../../../actions/apis/QuizApis";
@@ -22,9 +23,11 @@ export default function Leaderboards({
   });
   const [mode, setmode] = useState("Leaderboard");
   const { setuserdata } = useContext(MainContext);
+  const router = useRouter();
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
+
   return (
     <div className={styles.leaderboard}>
       <DashboardLeftPanel type="waitlist" />
