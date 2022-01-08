@@ -102,6 +102,7 @@ export default function GamePage({ userdatafromserver }) {
       setunitycontext(new UnityContext(context));
     }
     async function x() {
+      console.log("version updated or not found, downloading...");
       fetch(Game_Unity_Data[gameid].dataUrl, {
         method: "GET",
       })
