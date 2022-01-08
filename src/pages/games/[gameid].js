@@ -312,8 +312,12 @@ export default function GamePage() {
       unitycontext.on("GameOver", function (userName, score) {
         console.log(userName, score);
       });
-      unitycontext.on("debug", function (message) {
+      unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
+        router.push("/games");
+      });
+      unitycontext.on("Exit", function () {
+        router.push("/games");
       });
     },
     [unitycontext]

@@ -21,6 +21,9 @@
   text-align: center;
   transition: all 0.3s ease;
   padding: 20px;
+  .contentWrapper {
+    width: 100%;
+  }
   .title {
     font-size: 18px;
     font-weight: 500;

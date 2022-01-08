@@ -208,6 +208,9 @@ export default function GamePage({ userdatafromserver }) {
       unitycontext.on("Exit", function () {
         router.push("/dashboard/w/games");
       });
+      unitycontext.on("Error", function (code, url, vendor) {
+        router.push("/dashboard/w/games");
+      });
     },
     [unitycontext]
   );

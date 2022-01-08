@@ -34,7 +34,7 @@ export const Game_Data = {
   },
   Ludo: {
     name: "Ludo",
-    description: "ludo ludo ludo.",
+    description: "Financial Ludo for young adults.",
   },
   // ShoppingMall: {
   //   name: "ShoppingMall",
