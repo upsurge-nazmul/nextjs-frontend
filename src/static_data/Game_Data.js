@@ -62,7 +62,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
     codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
     loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.6",
+    version: "1.7",
   },
   HighAndLow: {
     dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
