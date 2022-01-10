@@ -1,17 +1,17 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
-import ChoreApis from "../../actions/apis/ChoreApis";
-import DashboardApis from "../../actions/apis/DashboardApis";
-import LoginApis from "../../actions/apis/LoginApis";
-import AvailableCourse from "../../components/Courses/AvailableCourse";
-import CoursesComponent from "../../components/Courses/CoursesComponent";
-import KidCards from "../../components/Courses/KidCards";
-import DashboardHeader from "../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../components/Dashboard/DashboardLeftPanel";
-import ApproveModal from "../../components/ParentStore/ApproveModal";
-import HeadingArrow from "../../components/SVGcomponents/HeadingArrow";
-import Toast from "../../components/Toast";
-import styles from "../../styles/Courses/coursesPage.module.scss";
+import ChoreApis from "../../../actions/apis/ChoreApis";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import LoginApis from "../../../actions/apis/LoginApis";
+import AvailableCourse from "../../../components/Courses/AvailableCourse";
+import CoursesComponent from "../../../components/Courses/CoursesComponent";
+import KidCards from "../../../components/Courses/KidCards";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
+import ApproveModal from "../../../components/ParentStore/ApproveModal";
+import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import Toast from "../../../components/Toast";
+import styles from "../../../styles/Courses/coursesPage.module.scss";
 function CoursesPage({ liveclassdata }) {
   const [mode, setmode] = useState("Courses");
   const router = useRouter();
@@ -103,7 +103,7 @@ function CoursesPage({ liveclassdata }) {
             </div>
             <div className={`${styles.availableCourses} `}>
               <h2 className={styles.heading}>
-                Available Courses
+                Preview Courses
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
@@ -120,11 +120,11 @@ function CoursesPage({ liveclassdata }) {
               </div>
             </div>
           </div>
-          <div className={styles.flexRight}>
+          {/* <div className={styles.flexRight}>
             {kiddata.map((item, index) => {
               return <KidCards key={"kidCard" + index} />;
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

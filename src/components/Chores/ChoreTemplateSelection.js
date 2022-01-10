@@ -29,7 +29,7 @@ function ChoreTemplateSelection({ category, setmode }) {
                 className={styles.button}
                 onClick={() => {
                   setcurrentChoreTemplate({ ...item, category });
-                  router.push("/managechore/new");
+                  router.push("/dashboard/p/managechore/new");
                 }}
               >
                 Use Template

@@ -31,7 +31,7 @@ function AddKid({ childdata }) {
   const [gender, setgender] = useState(childdata?.gender || "Male");
   const [email, setemail] = useState(childdata?.email || "");
   const [password, setpassword] = useState("");
-  const [img, setimg] = useState("");
+  const [img, setimg] = useState(childdata?.user_img_url || "");
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,

@@ -62,18 +62,18 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           Edit profile
         </p>
       )}
-      {/* {menuType !== "kid" && !waitilistmenu && (
+      {menuType !== "kid" && !waitilistmenu && (
         <p
           className={styles.tabs}
           onClick={() => {
             setshowmenu(false);
-            router.push("/payments");
+            router.push("/dashboard/p/payments");
           }}
         >
           <PaymentSvg className={styles.paymentIcon} />
           Payments
         </p>
-      )} */}
+      )}
       {waitilistmenu && (
         <p
           className={styles.tabs}
