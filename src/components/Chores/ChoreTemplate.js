@@ -18,7 +18,7 @@ function ChoreTemplate({ image, name, time, cat }) {
         className={styles.assignbutton}
         onClick={() => {
           router.push(
-            "/managechore/new?template=" +
+            "/dashboard/p/managechore/new?template=" +
               name.replace(/ /g, "-") +
               "&templatecat=" +
               cat

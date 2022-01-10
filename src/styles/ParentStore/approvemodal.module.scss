@@ -49,6 +49,14 @@
             }
           }
         }
+        .flextext {
+          display: flex;
+          p {
+            &:nth-child(2) {
+              margin-left: 10px;
+            }
+          }
+        }
       }
       .svgholder {
         display: flex;

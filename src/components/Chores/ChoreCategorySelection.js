@@ -62,7 +62,7 @@ function ChoreCategorySelection({ setmode }) {
                     className={styles.button}
                     onClick={() => {
                       router.push(
-                        "/managechore/new?template=" +
+                        "/dashboard/p/managechore/new?template=" +
                           item.name.replace(/ /g, "-") +
                           "&templatecat=" +
                           selectedcat
