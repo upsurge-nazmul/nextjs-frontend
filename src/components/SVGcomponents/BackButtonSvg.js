@@ -5,8 +5,6 @@ function BackButtonSvg({ className, onClick }) {
     <svg
       onClick={onClick}
       className={className}
-      width="22.75"
-      height="22.75"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

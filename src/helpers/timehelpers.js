@@ -45,3 +45,11 @@ export function duetimeDifference(diff) {
     return "Due " + Math.round(elapsed / msPerYear) + " in years";
   }
 }
+
+export function getIndianTime(timestamp, sign) {
+  const date = new Date(timestamp);
+  console.log(date.getFullYear());
+  return `${date.getDate()}${sign ? sign : "/"}${
+    date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
+  }${sign ? sign : "/"}${date.getFullYear()}`;
+}

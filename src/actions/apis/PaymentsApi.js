@@ -15,9 +15,22 @@ const savereceipt = (payload) => {
     getCookie("accesstoken")
   );
 };
+
+const subscribe = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/subscribe",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const getpricing = (payload) => {
+  return ApiCalls.getResponse("payments/getpricing", payload);
+};
 const PaymentsApi = {
   createorder,
   savereceipt,
+  subscribe,
+  getpricing,
 };
 
 export default PaymentsApi;

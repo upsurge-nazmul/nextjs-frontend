@@ -18,18 +18,19 @@ export default async function displayRazorpay(
   name,
   description,
   amount,
-  setsuccess
+  setsuccess,
+  type,
+  seterror
 ) {
   const ress = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
   let transactionComplete = false;
   if (!ress) {
-    alert("Razorpay SDK failed to load. Are you online?");
+    seterror("Razorpay SDK failed to load. Are you online?");
     return;
   }
-
-  const res = await PaymentsApi.createorder({ amount });
+  const res = await PaymentsApi.createorder({ amount, type, name });
   if (!res.data.success) {
-    alert("error creating order");
+    seterror(res?.data?.message ?? "error creating order");
     return;
   }
   const options = {
@@ -52,9 +53,16 @@ export default async function displayRazorpay(
         },
       });
       if (saveresponse.data.success) {
+        if (type === "Subscription") {
+          PaymentsApi.subscribe({
+            receipt_id: res.data.data.receipt,
+            amount: amount,
+            subscription: name,
+          });
+        }
         setsuccess(true);
       } else {
-        alert("saving receipt failed");
+        seterror("saving receipt failed");
       }
     },
     prefill: {

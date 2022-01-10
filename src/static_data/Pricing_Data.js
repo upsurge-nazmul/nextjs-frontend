@@ -1,13 +1,15 @@
 export const pricing_data = [
   {
     name: "Monthly",
-    price: "₹599",
+    price: 599,
+    total: 599,
     description: "per child, per month",
     benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
   },
   {
     name: "Half-Yearly",
-    price: "₹499",
+    total: 2994,
+    price: 499,
     description: "per child, per month (billed every 6 months)",
     benefits: [
       "1000 UniCoins bonus",
@@ -19,7 +21,8 @@ export const pricing_data = [
   },
   {
     name: "Yearly",
-    price: "₹399",
+    total: 4788,
+    price: 399,
     description: "per child, per month (billed annually)",
     benefits: [
       "2500 UniCoins bonus",
