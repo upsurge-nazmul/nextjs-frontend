@@ -78,6 +78,8 @@
     left: 50%;
     top: 49px;
     transform: translateX(-50%);
+    max-height: 500px;
+    overflow-y: auto;
     .option {
       width: 100%;
       border-bottom: 1px solid #e9e9e9;

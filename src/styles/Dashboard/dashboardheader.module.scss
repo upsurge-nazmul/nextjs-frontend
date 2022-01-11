@@ -7,10 +7,10 @@
 @keyframes bell {
   0%,
   100% {
-    transform: rotate(45deg);
+    transform: rotate(25deg);
   }
   50% {
-    transform: rotate(-45deg);
+    transform: rotate(-25deg);
   }
 }
 .dashboardHeader {
@@ -65,7 +65,7 @@
       animation: rotate 1s ease infinite;
     }
     .bell {
-      animation: bell 0.5s ease infinite;
+      animation: bell 0.2s ease-in-out;
     }
     .notification {
       position: relative;

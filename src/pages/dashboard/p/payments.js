@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import Toast from "../../../components/Toast";
@@ -16,6 +16,7 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import PaymentsApi from "../../../actions/apis/PaymentsApi";
+import { MainContext } from "../../../context/Main";
 export default function Payments({ pricing_details, userdatafromserver }) {
   const [mode, setmode] = useState("Payments");
   const router = useRouter();
@@ -29,13 +30,16 @@ export default function Payments({ pricing_details, userdatafromserver }) {
     msg: "",
   });
   const [showmodal, setshowmodal] = useState(false);
-
   const [buydata, setbuydata] = useState({
     price: 10,
     type: "rs",
     name: "",
     description: "",
   });
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   function handleClick(index) {
     setbuydata({
       price: pricing_data[index].price,
@@ -118,14 +122,34 @@ export default function Payments({ pricing_details, userdatafromserver }) {
                 </p>
               </div>
               <div className={styles.hr} />
-              <p className={styles.benefitheading}>Current Benefits</p>
-              <ul className={styles.benefitswrapper}>
-                {pricing_data[
-                  pricing_data.findIndex((item) => item.name === current_plan)
-                ].benefits.map((benefit, index) => {
-                  return <li key={"benefit" + index}>{benefit}</li>;
-                })}
-              </ul>
+              <div className={styles.bottom}>
+                <div className={styles.left}>
+                  <p className={styles.benefitheading}>Current Benefits</p>
+                  <ul className={styles.benefitswrapper}>
+                    {pricing_data[
+                      pricing_data.findIndex(
+                        (item) => item.name === current_plan
+                      )
+                    ].benefits.map((benefit, index) => {
+                      return <li key={"benefit" + index}>{benefit}</li>;
+                    })}
+                  </ul>
+                </div>
+                <div className={styles.right}>
+                  <div
+                    className={styles.invoice}
+                    onClick={() => {
+                      if (userdatafromserver.plan_invoice_id)
+                        router.push(
+                          "/dashboard/invoice/" +
+                            userdatafromserver.plan_invoice_id
+                        );
+                    }}
+                  >
+                    Invoice
+                  </div>
+                </div>
+              </div>
             </div>
           )}
           <div className={styles.pricewrapper}>
@@ -146,6 +170,8 @@ export default function Payments({ pricing_details, userdatafromserver }) {
                       ? current_plan === "Free"
                         ? "Buy"
                         : "Switch"
+                      : current_plan === "Free"
+                      ? "Buy"
                       : "Renew"}
                   </div>
                   <div className={styles.hr} />

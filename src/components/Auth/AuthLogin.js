@@ -34,7 +34,9 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         msg: response.data.message,
         type: "success",
       });
-      if (response.data.data.userProfile.is_waiting_active) {
+      if (router.query.next) {
+        router.push(router.query.next);
+      } else if (response.data.data.userProfile.is_waiting_active) {
         router.push("/dashboard/w");
       } else if (response.data.data.userProfile.user_type === "parent")
         router.push("/dashboard/p");

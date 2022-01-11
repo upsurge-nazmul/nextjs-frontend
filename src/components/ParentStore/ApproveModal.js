@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Toast from "../Toast";
 import styles from "../../styles/ParentStore/approvemodal.module.scss";
 import DropDown from "../DropDown";
@@ -8,10 +8,11 @@ import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
 import displayRazorpay from "../../actions/RazorPay";
 import { useRouter } from "next/dist/client/router";
+import { MainContext } from "../../context/Main";
 
 export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   //modes will be start , category , template, assign
-  const [userdata, setuserdata] = useState(null);
+  const { userdata } = useContext(MainContext);
   const [error, seterror] = useState("");
   const [selectedchild, setselectedchild] = useState("Pihu Mehta");
   const [success, setsuccess] = useState(false);
@@ -31,7 +32,16 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
       setsuccess(true);
       return;
     }
+    if (!userdata.state) {
+      seterror("Please set state in edit profile.");
+      return;
+    }
     let result = await displayRazorpay(
+      {
+        name: userdata.first_name + " " + userdata.last_name,
+        email: userdata.email,
+        contact: userdata.phone,
+      },
       buydata.name,
       buydata.description,
       buydata.total ? buydata.total : buydata.price,
@@ -100,6 +110,14 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                 </div>
               )}
               {error && <p className={styles.error}>{error}</p>}
+              {error && error === "Please set state in edit profile." && (
+                <p
+                  className={styles.btn}
+                  onClick={() => router.push("/dashboard/p/editprofile")}
+                >
+                  go to edit profile
+                </p>
+              )}
               <div className={styles.button} onClick={handlepay}>
                 Confirm Purchase
               </div>

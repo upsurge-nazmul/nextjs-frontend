@@ -14,6 +14,7 @@ import ChangePassPopUp from "../../../components/ChangePassPopUp";
 import validator from "validator";
 import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
+import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 export default function EditProfile({ data }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -31,6 +32,7 @@ export default function EditProfile({ data }) {
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [username, setusername] = useState(data?.user_name || "");
+  const [state, setstate] = useState(data?.state || "");
   const [lastname, setlastname] = useState(data?.last_name || "");
   const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
   const [gender, setgender] = useState(data?.gender || "");
@@ -195,6 +197,9 @@ export default function EditProfile({ data }) {
       updated_data.password = password;
       updated_data.phone = phone;
     }
+    if (state && state !== data?.state) {
+      updated_data.state = state;
+    }
     if (changephone && changephone !== data?.phone) {
       updated_data.phone = changephone;
     }
@@ -232,7 +237,7 @@ export default function EditProfile({ data }) {
 
   return (
     <div className={styles.manageChore}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel />
       <Toast data={toastdata} />
       {showphonepopup && (
         <ChangePhonePopUp
@@ -309,6 +314,13 @@ export default function EditProfile({ data }) {
                 setvalue={setgender}
                 placeholder="Gender"
                 margin="10px 0"
+              />
+              <DropDown
+                value={state}
+                options={STATES_ARR}
+                setvalue={setstate}
+                placeholder="State"
+                margin="0px 0 0 10px"
               />
               <ModernInputBox
                 type="date"
@@ -393,7 +405,6 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           data: response.data.data,
-          
         },
       };
     }
