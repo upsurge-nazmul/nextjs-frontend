@@ -15,6 +15,7 @@ export default function ReferPage() {
   const { id } = router.query;
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [username, setusername] = useState("");
   const [phone, setphone] = useState("");
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -36,6 +37,18 @@ export default function ReferPage() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   async function checkrefer() {
+    if (!username) {
+      seterror("Username is required");
+      return;
+    }
+    if (username.length > 8) {
+      seterror("Username cannot contain more than 8 characters");
+      return;
+    }
+    if (username.length < 4) {
+      seterror("Username cannot contain less than 4 characters");
+      return;
+    }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       settoastdata({
         show: true,
@@ -50,6 +63,7 @@ export default function ReferPage() {
       firstName,
       lastName,
       phone,
+      username,
     });
 
     if (res && res.data && res.data.success) {
@@ -102,6 +116,11 @@ export default function ReferPage() {
         )}
         {!success && (
           <div className={styles.name}>
+            <input
+              type="text"
+              placeholder="Username*"
+              onChange={(e) => setusername(e.target.value)}
+            />
             <input
               type="text"
               placeholder="Phone*"
