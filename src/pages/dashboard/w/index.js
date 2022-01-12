@@ -239,9 +239,13 @@ export async function getServerSideProps({ params, req }) {
       token: token,
     });
     if (response && !response.data.success) {
-      msg = response.data.msg;
+      msg = response.data.message;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
+      console.log(response);
+      if (!response) {
+        return { props: { isLogged: false, msg: "Error" } };
+      }
       if (!response.data.data.is_waiting_active) {
         if (response.data.data.user_type === "parent") {
           return {
@@ -267,7 +271,6 @@ export async function getServerSideProps({ params, req }) {
         email: response.data.data.email,
       });
       let ludoscore = await FreeGameApis.getludohighscore(null, token);
-      console.log(ludoscore.data);
       return {
         props: {
           isLogged: true,
