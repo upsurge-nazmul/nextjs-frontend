@@ -87,7 +87,6 @@ export default function WaitlistPopUp({
       seterror("Invalid Phone");
       return;
     }
-
     let checkemail = await LoginApis.checkemail({ email, waitlist: true });
     if (checkemail && checkemail.data && !checkemail.data.success) {
       console.log("email ok");

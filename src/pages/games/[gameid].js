@@ -93,6 +93,7 @@ export default function GamePage() {
       let xx = await db.games.where({ id: gameid }).toArray();
       let context = Game_Unity_Data[gameid];
       if (xx.length > 0) {
+        console.log("found cache");
         if (xx[0].version !== context.version) {
           x();
           return;

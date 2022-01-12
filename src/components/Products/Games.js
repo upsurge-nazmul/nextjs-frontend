@@ -17,40 +17,53 @@ export default function Games({ id }) {
       description:
         "Identify how much is available to spend and making purchase decisions based on that.",
       link: "/gamepage/ShoppingBudget",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
     },
     {
       name: "Balance Builder",
       description: "Identify what is income and what is expense.",
       link: "/gamepage/BalanceBuilder",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/BalanceBuilder.mp4",
     },
     {
       name: "High and Low",
       description:
         "Identify currency and arrange in ascending or descending order after adding the money.",
       link: "/gamepage/HighAndLow",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/HighAndLow.mp4",
     },
     {
       name: "Money Math",
       description:
         "Choose what you want to buy, earn some money, and calculate  how much you have left.",
       link: "/gamepage/MoneyMath",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyMath.mp4",
     },
     {
       name: "Money Manager",
       description:
         "Know the importance of allocating your earnings between spending, saving and donating.",
       link: "/gamepage/MoneyManager",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyManager.mp4",
     },
     // {
     //   name: "Coin Slide",
     //   description:
     //     "This is demo description, will be replaced with content later.",
     //   link: "/gamepage/CoinSlide",
+    //video:"https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/CoinSlide.mp4"
     // },
     {
       name: "Need or Want",
       description: "Identify the difference between needs and wants.",
       link: "/gamepage/NeedOrWant",
+      video:
+        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/NeedOrWant.mp4",
     },
   ];
 
@@ -137,14 +150,7 @@ export default function Games({ id }) {
               </div>
             )}
 
-            <video
-              ref={videoref}
-              src={`/videos/Games/${games[currentgameindex].name.replace(
-                / /g,
-                ""
-              )}.mp4`}
-              alt=""
-            />
+            <video ref={videoref} src={games[currentgameindex].video} alt="" />
           </div>
         </div>
       </div>

@@ -83,7 +83,7 @@ export default function GamePage({ userdatafromserver }) {
         let data = xx[0].data;
         let framework = xx[0].framework;
         let loader = xx[0].loader;
-
+        console.log("found cache");
         if (data) {
           context.dataUrl = window.URL.createObjectURL(data);
         }
