@@ -62,7 +62,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
     codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
     loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.8",
+    version: "1.9",
   },
   HighAndLow: {
     dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
@@ -83,7 +83,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
     codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
     loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
-    version: "1.1",
+    version: "1.2",
   },
   MoneySlide: {
     dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
@@ -104,7 +104,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
     codeUrl: "/Games/Ludo/Build/Ludo.wasm",
     loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "4.3",
+    version: "4.4",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",

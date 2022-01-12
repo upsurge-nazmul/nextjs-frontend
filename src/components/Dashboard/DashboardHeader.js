@@ -9,15 +9,20 @@ import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NotificationBell from "../SVGcomponents/NotificationBell";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import Menu from "./Menu";
+import NotificationMenu from "./NotificationMenu";
 
 function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
+  const [shownotifications, setshownotifications] = useState(false);
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
     useContext(MainContext);
   return (
     <div className={styles.dashboardHeader}>
+      {shownotifications && (
+        <NotificationMenu setshownotifications={setshownotifications} />
+      )}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -34,18 +39,13 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        {!userdata?.is_waiting_active && (
+        {
           <div
+            id="notification-btn"
             className={`${styles.notification} ${styles.icon} ${
               bell ? styles.bell : ""
             }`}
-            onClick={() =>
-              router.push({
-                asPath: "/notifications",
-                pathname: "/notifications",
-                query: { type: "request" },
-              })
-            }
+            onClick={() => setshownotifications(true)}
             onMouseEnter={() => setbell(true)}
             onMouseLeave={() => setbell(false)}
           >
@@ -54,7 +54,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
             ) : null}
             <NotificationBell />
           </div>
-        )}
+        }
         <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
           {showmenu && (
             <Menu
