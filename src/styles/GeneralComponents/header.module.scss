@@ -59,6 +59,7 @@
       color: white;
       width: clamp(100px, 10vw, max-content);
       height: clamp(40px, 7vh, 41px);
+      min-width: 90px;
       padding: 0 20px;
       border-radius: 14px;
       cursor: pointer;
