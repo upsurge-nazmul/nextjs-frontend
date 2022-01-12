@@ -51,7 +51,7 @@ export default function NotificationMenu({ setshownotifications }) {
         {notifications.map((item, index) => {
           return <NotificationComponent data={item} key={item.id} />;
         })}
-        {showmore ? (
+        {notifications.length > 0 && showmore ? (
           <div
             className={styles.more}
             onClick={() => setpage((prev) => prev + 1)}
@@ -59,7 +59,11 @@ export default function NotificationMenu({ setshownotifications }) {
             Load more
           </div>
         ) : (
-          <div className={styles.more_close}>no more notifications</div>
+          <div className={styles.more_close}>
+            {notifications.length > 0
+              ? "no more notifications"
+              : "no notifications"}
+          </div>
         )}
       </div>
     </div>
