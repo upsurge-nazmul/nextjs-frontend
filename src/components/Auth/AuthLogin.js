@@ -33,11 +33,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       setCookie("accesstoken", response.data.data.token);
       setuserdata(response.data.data.userProfile);
       setuser(response.data.data.userProfile.id);
-      settoastdata({
-        show: true,
-        msg: response.data.message,
-        type: "success",
-      });
+
       if (response.data.data.userProfile.is_waiting_active) {
         router.push("/dashboard/w");
       } else if (response.data.data.userProfile.user_type === "parent")
