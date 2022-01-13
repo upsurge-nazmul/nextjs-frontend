@@ -8,6 +8,7 @@ import { MainContext } from "../../context/Main";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
 import { useRouter } from "next/dist/client/router";
+import Spinner from "../Spinner";
 function AuthFullData({
   setphone,
   setpassword,
@@ -28,6 +29,7 @@ function AuthFullData({
     useContext(MainContext);
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
+  const [loading, setloading] = useState(false);
   const [passisweak, setpassisweak] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
@@ -106,24 +108,30 @@ function AuthFullData({
     }
   }
   async function genotp() {
+    setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Invalid Email");
+      setloading(false);
       return;
     }
     if (!username) {
       seterror("Username is required");
+      setloading(false);
       return;
     }
     if (username.length > 8) {
       seterror("Username cannot contain more than 8 characters");
+      setloading(false);
       return;
     }
     if (username.length < 4) {
       seterror("Username cannot contain less than 4 characters");
+      setloading(false);
       return;
     }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
+      setloading(false);
       return;
     }
 
@@ -132,6 +140,7 @@ function AuthFullData({
       console.log("email ok");
     } else {
       seterror(checkemail?.data.message || "Error connecting to server");
+      setloading(false);
       return;
     }
     let checkphone = await LoginApis.checkphone({ phone });
@@ -139,10 +148,12 @@ function AuthFullData({
       console.log("phone ok");
     } else {
       seterror(checkphone?.data.message || "Error connecting to server");
+      setloading(false);
       return;
     }
     if (!firstName) {
       seterror("First name is required");
+      setloading(false);
       return;
     }
     let response = await LoginApis.getearlyaccess({
@@ -161,6 +172,7 @@ function AuthFullData({
       }
       setmode("otp");
     }
+    setloading(false);
   }
   function validatePassword(e) {
     let pass = e.target.value.trim();
@@ -192,7 +204,14 @@ function AuthFullData({
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
   return (
-    <div className={styles.email}>
+    <div
+      className={styles.email}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          genotp();
+        }
+      }}
+    >
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
@@ -284,9 +303,15 @@ function AuthFullData({
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <div className={styles.button} onClick={() => genotp()}>
-        Continue
-      </div>
+      {!loading ? (
+        <div className={`${styles.button}`} onClick={genotp}>
+          Continue
+        </div>
+      ) : (
+        <div className={`${styles.button} ${styles.spinner_btn}`}>
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 }

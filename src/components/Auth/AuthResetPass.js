@@ -24,6 +24,7 @@ export default function AuthResetPass({
 }) {
   const { firstName, setfirstName, lastName, setlastName } =
     useContext(MainContext);
+  const [loading, setloading] = useState(false);
   const router = useRouter();
   async function ResetPass(e) {
     e.preventDefault();

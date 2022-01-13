@@ -150,6 +150,13 @@
             border: 1px solid #4166eb;
           }
         }
+        .spinner_btn {
+          &:hover {
+            background: #4166eb;
+            color: white;
+            border: none;
+          }
+        }
         .or {
           margin-bottom: 18px;
           font-weight: 300;
@@ -338,6 +345,13 @@
             border: 1px solid #4166eb;
           }
         }
+        .spinner_btn {
+          &:hover {
+            background: #4166eb;
+            color: white;
+            border: none;
+          }
+        }
         .or {
           margin-bottom: 18px;
           font-weight: 300;
@@ -493,6 +507,13 @@
             background-color: #ffffff;
             color: #4166eb;
             border: 1px solid #4166eb;
+          }
+        }
+        .spinner_btn {
+          &:hover {
+            background: #4166eb;
+            color: white;
+            border: none;
           }
         }
       }
@@ -656,6 +677,13 @@
             border: 1px solid #4166eb;
           }
         }
+        .spinner_btn {
+          &:hover {
+            background: #4166eb;
+            color: white;
+            border: none;
+          }
+        }
       }
       .otp {
         width: 100%;
@@ -722,6 +750,13 @@
             background-color: #ffffff;
             color: #4166eb;
             border: 1px solid #4166eb;
+          }
+        }
+        .spinner_btn {
+          &:hover {
+            background: #4166eb;
+            color: white;
+            border: none;
           }
         }
       }

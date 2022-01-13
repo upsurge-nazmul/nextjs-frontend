@@ -125,6 +125,13 @@
         border: 1px solid #4166eb;
       }
     }
+    .loadin_btn {
+      &:hover {
+        background: #4166eb;
+        color: white;
+        border: none;
+      }
+    }
   }
   .otpblock {
     background-color: white;

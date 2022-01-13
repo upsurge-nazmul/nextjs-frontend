@@ -5,6 +5,7 @@ import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import OTPCustomComponent from "./OTPCustomComponent";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import Spinner from "./Spinner";
 
 export default function WaitlistPopUp({
   email,
@@ -17,15 +18,18 @@ export default function WaitlistPopUp({
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
   const [error, seterror] = useState("");
+  const [loading, setloading] = useState(false);
   const [OTP, setOTP] = useState("");
   const [phone, setphone] = useState("");
   const [mode, setmode] = useState("data"); // data and otp
+  const [resetotp, setresetotp] = useState(0);
   const router = useRouter();
   useEffect(() => {
     seterror("");
-  }, [firstName, lastName, phone, mode, username]);
+  }, [firstName, lastName, phone, mode, username, OTP]);
 
   async function handleUpdateData() {
+    setloading(true);
     if (subscribe) {
       let response = await LoginApis.addtonewslettersubs({
         email: email,
@@ -64,27 +68,35 @@ export default function WaitlistPopUp({
         router.push("/waitlist/" + email);
       }
     }
+    setloading(false);
   }
 
   async function genotp() {
+    setOTP("");
+    setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Invalid Email");
+      setloading(false);
       return;
     }
     if (!username) {
       seterror("Username is required");
+      setloading(false);
       return;
     }
     if (username.length > 8) {
       seterror("Username cannot contain more than 8 characters");
+      setloading(false);
       return;
     }
     if (username.length < 4) {
       seterror("Username cannot contain less than 4 characters");
+      setloading(false);
       return;
     }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
+      setloading(false);
       return;
     }
     let checkemail = await LoginApis.checkemail({ email, waitlist: true });
@@ -92,6 +104,7 @@ export default function WaitlistPopUp({
       console.log("email ok");
     } else {
       seterror(checkemail?.data.message || "Error connecting to server");
+      setloading(false);
       return;
     }
     let checkphone = await LoginApis.checkphone({ phone });
@@ -99,10 +112,12 @@ export default function WaitlistPopUp({
       console.log("phone ok");
     } else {
       seterror(checkphone?.data.message || "Error connecting to server");
+      setloading(false);
       return;
     }
     if (!firstName) {
       seterror("First name is required");
+      setloading(false);
       return;
     }
     let response = await LoginApis.getearlyaccess({
@@ -119,10 +134,19 @@ export default function WaitlistPopUp({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       } else setmode("otp");
     }
+    setloading(false);
   }
 
   return (
-    <div className={styles.waitlistpopup}>
+    <div
+      className={styles.waitlistpopup}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          if (mode !== "otp") genotp();
+          else handleUpdateData();
+        }
+      }}
+    >
       <div
         className={styles.background}
         onClick={() => setshowpopup(false)}
@@ -182,9 +206,15 @@ export default function WaitlistPopUp({
             />
           </div>
           {error && <p className={styles.error}>{error}</p>}
-          <div className={styles.button} onClick={() => genotp()}>
-            Join
-          </div>
+          {!loading ? (
+            <div className={styles.button} onClick={() => genotp()}>
+              Join
+            </div>
+          ) : (
+            <div className={`${styles.button} ${styles.loadin_btn}`}>
+              <Spinner />
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles.otpblock}>
@@ -196,16 +226,28 @@ export default function WaitlistPopUp({
             <p className={styles.phone}>{"+91 " + phone}</p>
           </div>
           <div className={styles.otpWrapper} id="otpWrapper">
-            <OTPCustomComponent setotp={setOTP} size={6} />
+            <OTPCustomComponent resetotp={resetotp} setotp={setOTP} size={6} />
           </div>
           {error && <p className={styles.error}>{error}</p>}
 
-          <div className={styles.resendButton} onClick={genotp}>
+          <div
+            className={styles.resendButton}
+            onClick={() => {
+              setresetotp((prev) => prev + 1);
+              genotp();
+            }}
+          >
             Resend OTP
           </div>
-          <div className={styles.button} onClick={() => handleUpdateData()}>
-            Continue
-          </div>
+          {!loading ? (
+            <div className={styles.button} onClick={() => handleUpdateData()}>
+              Continue
+            </div>
+          ) : (
+            <div className={`${styles.button} ${styles.loadin_btn}`}>
+              <Spinner />
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/GeneralComponents/otp.module.scss";
-export default function OTPCustomComponent({ size, setotp }) {
+export default function OTPCustomComponent({ resetotp, size, setotp }) {
   const [otpdata, setotpdata] = useState(new Array(size).fill(""));
   const [currentfocused, setcurrentfocused] = useState(0);
   useEffect(() => {
@@ -9,7 +9,11 @@ export default function OTPCustomComponent({ size, setotp }) {
       first.focus();
     }
   }, []);
-
+  useEffect(() => {
+    if (resetotp) {
+      setotpdata(new Array(size).fill(""));
+    }
+  }, [resetotp]);
   useEffect(() => {
     setotp(getstring());
     function getstring() {

@@ -11,16 +11,20 @@ import GoogleLogin from "react-google-login";
 import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
 import ModernInputBox from "../ModernInputBox";
+import Spinner from "../Spinner";
 function AuthLogin({ settoastdata, error, seterror, setmode }) {
   const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [passhidden, setpasshidden] = useState(true);
+  const [loading, setloading] = useState(false);
   const router = useRouter();
   // login Function
   async function handleSignin() {
+    setloading(true);
     if (password === "" || !validator.isEmail(email)) {
       seterror("Enter password and email");
+      setloading(false);
       return;
     }
     seterror("");
@@ -42,6 +46,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
     } else {
       seterror(response?.data.message || "Cannot reach server");
     }
+    setloading(false);
   }
   async function handlegoogleLogin(data) {
     if (data.tokenId) {
@@ -72,7 +77,14 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
     seterror("");
   }, [email, password]);
   return (
-    <div className={styles.logindetails}>
+    <div
+      className={styles.logindetails}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          handleSignin();
+        }
+      }}
+    >
       <ModernInputBox
         placeholder="Email address"
         value={email}
@@ -97,9 +109,15 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         </p>
       </div>
       {error && <p className={styles.error}>{error}</p>}
-      <div className={styles.button} onClick={handleSignin}>
-        Sign In
-      </div>
+      {!loading ? (
+        <div className={`${styles.button}`} onClick={handleSignin}>
+          Sign In
+        </div>
+      ) : (
+        <div className={`${styles.button} ${styles.spinner_btn}`}>
+          <Spinner />
+        </div>
+      )}
       {/* <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
@@ -140,7 +158,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           );
         }}
       /> */}
-
       <div className={styles.reset} onClick={() => setmode("reset")}>
         <span> Forgot password?</span>
       </div>

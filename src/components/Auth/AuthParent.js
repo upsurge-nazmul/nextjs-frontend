@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -10,6 +10,7 @@ import { MainContext } from "../../context/Main";
 import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
 import { useRouter } from "next/dist/client/router";
+import Spinner from "../Spinner";
 
 function AuthParent({
   setsignupmethod,
@@ -24,8 +25,11 @@ function AuthParent({
   const { firstName, setfirstName, lastName, setlastName } =
     useContext(MainContext);
   const router = useRouter();
+  const [loading, setloading] = useState(false);
+
   async function handleSignup(e) {
-    e.preventDefault();
+    e?.preventDefault();
+    setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
@@ -49,6 +53,7 @@ function AuthParent({
       // setauthmode("parent");
       // setmailfromhome(email);
     }
+    setloading(false);
   }
 
   async function handleParentSignUp(email, method) {
@@ -122,7 +127,14 @@ function AuthParent({
     seterror("");
   }, [email]);
   return (
-    <div className={styles.parent}>
+    <div
+      className={styles.parent}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          handleSignup();
+        }
+      }}
+    >
       {/* <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -170,16 +182,15 @@ function AuthParent({
       />
       {error && <p className={styles.error}>{error}</p>}
 
-      <div
-        className={styles.button}
-        onClick={(e) => {
-          handleSignup(e);
-          // setsignupmethod("email");
-          // handleParentSignUp(email, "email");
-        }}
-      >
-        Continue
-      </div>
+      {!loading ? (
+        <div className={`${styles.button}`} onClick={handleSignup}>
+          Continue
+        </div>
+      ) : (
+        <div className={`${styles.button} ${styles.spinner_btn}`}>
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 }
