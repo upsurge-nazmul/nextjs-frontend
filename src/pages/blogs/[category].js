@@ -26,7 +26,19 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
   const [selectedBlog, setSelectedBlog] = useState("");
   const [showauth, setshowauth] = useState(false);
   const [pagination, setpagination] = useState(porppagination || ["1"]);
+  const [stickyheader, setstickyheader] = useState(false);
   const [page, setpage] = useState(1);
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   async function getData(page) {
     setloading(true);
     let res = await BlogApis.getblogs({ page });
@@ -101,6 +113,7 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
+        stickyheader={stickyheader}
         setshowauth={setshowauth}
       />
       <LeftPanel

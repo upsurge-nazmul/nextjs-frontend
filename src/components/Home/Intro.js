@@ -50,6 +50,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           email={email}
           setemail={setemail}
           setshowpopup={setshowwaitlistblock}
+          showpopup={showwaitlistblock}
           settoastdata={settoastdata}
         />
       )}

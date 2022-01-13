@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthPage from "../Auth/AuthComponent";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/GeneralComponents/header.module.scss";
@@ -26,6 +26,14 @@ function Header({
   function clickedHeader() {
     router.push("/");
   }
+  useEffect(() => {
+    if (showauth) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+    return () => (document.body.style.overflowY = "auto");
+  }, [showauth]);
   return (
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""}`}

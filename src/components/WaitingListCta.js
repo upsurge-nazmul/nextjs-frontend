@@ -23,6 +23,7 @@ export default function WaitingListCta() {
         <WaitlistPopUp
           email={email}
           setemail={setEmail}
+          showpopup={showwaitlistblock}
           setshowpopup={setshowwaitlistblock}
         />
       )}

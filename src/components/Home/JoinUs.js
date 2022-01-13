@@ -16,6 +16,7 @@ function JoinUs() {
           subscribe={true}
           email={email}
           setemail={setemail}
+          showpopup={showwaitlistblock}
           setshowpopup={setshowwaitlistblock}
         />
       )}

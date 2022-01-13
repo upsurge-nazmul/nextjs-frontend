@@ -10,6 +10,7 @@ import Spinner from "./Spinner";
 export default function WaitlistPopUp({
   email,
   setemail,
+  showpopup,
   setshowpopup,
   subscribe,
   settoastdata,
@@ -70,7 +71,15 @@ export default function WaitlistPopUp({
     }
     setloading(false);
   }
-
+  useEffect(() => {
+    if (showpopup) {
+      document.body.style.overflow = "hidden";
+      document.body.scrollTo(0, 0);
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+    return () => (document.body.style.overflowY = "auto");
+  }, [showpopup]);
   async function genotp() {
     setOTP("");
     setloading(true);

@@ -20,9 +20,21 @@ export default function BlogPage({ blogdata, related }) {
   const [scroll, setscroll] = useState(80);
   const [currentsection, setcurrentsection] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
   let date = new Date(Number(blogdata.date));
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 0) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
