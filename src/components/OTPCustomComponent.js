@@ -107,6 +107,22 @@ export default function OTPCustomComponent({ resetotp, size, setotp }) {
                   }
                 }
               }
+              if (e.key === "Backspace") {
+                if (otpdata[index]) {
+                  let newotparray = JSON.parse(JSON.stringify(otpdata));
+                  newotparray[index] = "";
+                  setotpdata(newotparray);
+                }
+                if (!(currentfocused === 0)) {
+                  let nextcomp = document.getElementById(
+                    "Character" + (currentfocused - 1)
+                  );
+                  setcurrentfocused((prev) => prev - 1);
+                  if (nextcomp) {
+                    nextcomp.focus();
+                  }
+                }
+              }
             }}
           />
         );
