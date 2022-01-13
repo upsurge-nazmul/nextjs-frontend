@@ -47,7 +47,7 @@ export default function ModernInputBox({
           className={`${extraclass ? extraclass : ""}`}
           type={secure ? "password" : "text"}
           value={value}
-          autocomplete="off"
+          autoComplete="off"
           disabled={disabled}
           maxLength={maxLength || 32676}
           onChange={
