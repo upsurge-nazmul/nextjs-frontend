@@ -28,6 +28,9 @@
     z-index: -1;
     animation: moveit 5s ease alternate infinite;
   }
+  .cats {
+    padding: 0 40px;
+  }
   .contentWrapper {
     flex: 1;
     margin-left: 350px;
@@ -387,6 +390,9 @@
 }
 @media only screen and (max-width: 860px) {
   .blogs {
+    .cats {
+      padding: 0 20px;
+    }
     .contentWrapper {
       margin-left: 45px;
       .mainContent {

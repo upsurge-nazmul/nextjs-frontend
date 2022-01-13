@@ -123,12 +123,15 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        <CategoryBar
-          selectedCat={blogdata.categories}
-          sortPosts={sortPosts}
-          pushto="/dashboard/w/blogs/"
-          col="transparent"
-        />
+        <div className={styles.cats}>
+          <CategoryBar
+            selectedCat={blogdata.categories}
+            sortPosts={sortPosts}
+            pushto="/dashboard/w/blogs/"
+            col="transparent"
+          />
+        </div>
+
         <div className={styles.mainContent}>
           <div className={styles.post}>
             <div className={styles.textcontent}>
