@@ -18,6 +18,10 @@ export const MainContextProider = ({ children }) => {
   const [currentChoreTemplate, setcurrentChoreTemplate] = useState("");
   const [show, setShow] = useState(false);
   const [notification, setNotification] = useState({ title: "", body: "" });
+  const [widthHeight, setwidthHeight] = useState({
+    width: 1280,
+    height: 720,
+  });
   useEffect(() => {
     try {
       let messaging = getMessaging();
@@ -33,7 +37,19 @@ export const MainContextProider = ({ children }) => {
       console.log(err);
     }
   }, []);
-
+  useEffect(() => {
+    function updateSize() {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      setwidthHeight({
+        width: w,
+        height: h,
+      });
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
   return (
     <MainContext.Provider
       value={{
@@ -61,6 +77,8 @@ export const MainContextProider = ({ children }) => {
         setlastName,
         currentChoreTemplate,
         setcurrentChoreTemplate,
+        widthHeight,
+        setwidthHeight,
       }}
     >
       {children}

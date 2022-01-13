@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
@@ -11,7 +11,9 @@ import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
 import changetoint from "../../helpers/currency";
+import { MainContext } from "../../context/Main";
 export default function HomeCalc({ data, seterror, error }) {
+  const { widthHeight } = useContext(MainContext);
   const [questions, setquestions] = useState([
     {
       title: "Select the type of house",
@@ -496,7 +498,12 @@ export default function HomeCalc({ data, seterror, error }) {
             <div className={styles.chartContainer}>
               <ResponsivePie
                 data={chartData}
-                margin={{ top: 0, right: 80, bottom: 80, left: 80 }}
+                margin={{
+                  top: 0,
+                  right: widthHeight.width < 860 ? 0 : 80,
+                  bottom: widthHeight.width < 860 ? 0 : 80,
+                  left: widthHeight.width < 860 ? 0 : 80,
+                }}
                 startAngle={-180}
                 padAngle={0.7}
                 innerRadius={0.5}

@@ -242,7 +242,6 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.message;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
-      console.log(response);
       if (!response) {
         return { props: { isLogged: false, msg: "Error" } };
       }

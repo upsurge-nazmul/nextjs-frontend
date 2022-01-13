@@ -178,7 +178,7 @@ export default function GenPass() {
                 type={passhidden ? "password" : "text"}
                 onFocus={() => setshowdetailpass(true)}
                 onBlur={() => setshowdetailpass(false)}
-                autoComplete="asdaasdasdwqe"
+                autocomplete="off"
                 placeholder="Password*"
                 value={password}
                 className={password !== "" && passisweak ? styles.weakpass : ""}

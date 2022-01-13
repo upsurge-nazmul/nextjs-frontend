@@ -19,6 +19,7 @@ function Help() {
   const { type } = router.query;
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
+  const [showauth, setshowauth] = useState(false);
 
   const faqs = [
     {
@@ -99,6 +100,8 @@ function Help() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
         stickyheader={stickyheader}
+        showauth={showauth}
+        setshowauth={setshowauth}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
