@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -55,7 +55,14 @@ export default function AuthResetPass({
     seterror("");
   }, [email]);
   return (
-    <div className={styles.parent}>
+    <div
+      className={styles.parent}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          ResetPass(e);
+        }
+      }}
+    >
       <ModernInputBox
         placeholder="Email address"
         value={email}
