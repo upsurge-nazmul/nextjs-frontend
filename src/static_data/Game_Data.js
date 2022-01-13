@@ -100,11 +100,13 @@ export const Game_Unity_Data = {
     version: "1.0",
   },
   Ludo: {
-    dataUrl: "/Games/Ludo/Build/Ludo.data",
-    frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
-    codeUrl: "/Games/Ludo/Build/Ludo.wasm",
-    loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-    version: "5.1",
+    dataUrl: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.data",
+    frameworkUrl:
+      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.framework.js",
+    codeUrl: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.wasm",
+    loaderUrl:
+      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.loader.js",
+    version: "5.2",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",

@@ -4,17 +4,13 @@ import LeftPanel from "../components/LeftPanel";
 import AboutSection from "../components/Home/AboutSection";
 import ProductSection from "../components/Home/ProductSection";
 import BlogsSection from "../components/Home/BlogsSection";
-import Why from "../components/Home/Why";
-import Reviews from "../components/Home/Reviews";
+import Head from "next/head";
 import JoinUs from "../components/Home/JoinUs";
 import Footer from "../components/Home/Footer";
 import Intro from "../components/Home/Intro";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/Home/home.module.scss";
-import { getCookie } from "../actions/cookieUtils";
-import What from "../components/Home/What";
-import How from "../components/Home/How";
 import Who from "../components/Home/Who";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
@@ -95,6 +91,13 @@ function Home({ isLogged, userdata }) {
         id="home-page-main"
         className={`${styles.homePage} ${showauth ? styles.stopscrolling : ""}`}
       >
+        <Head>
+          <title>upsurge | money, made easy.</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <Header
           setOpenLeftPanel={setOpenLeftPanel}
           showauth={showauth}
