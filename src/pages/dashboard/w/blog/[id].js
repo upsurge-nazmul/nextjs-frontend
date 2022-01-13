@@ -12,6 +12,7 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
+import CategoryBar from "../../../../components/Blog/CategoryBar";
 
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
@@ -58,6 +59,20 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
     "November",
     "December",
   ];
+  function sortPosts(cat, index) {
+    if (cat !== "All Categories") {
+      setSelectedCat(cat);
+      setblogposts(
+        blogpostsbackup.filter((item) =>
+          item.categories.split(",").includes(cat.toLowerCase())
+        )
+      );
+    } else {
+      setSelectedCat("All Categories");
+      setblogposts(blogpostsbackup);
+    }
+  }
+
   useEffect(() => {
     let h1s = document.getElementsByTagName("h1");
     let mainheading = document.getElementById("blogheading");
@@ -108,7 +123,12 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
           setmode={setmode}
           settoastdata={settoastdata}
         />
-
+        <CategoryBar
+          selectedCat={blogdata.categories}
+          sortPosts={sortPosts}
+          pushto="/dashboard/w/blogs/"
+          col="transparent"
+        />
         <div className={styles.mainContent}>
           <div className={styles.post}>
             <div className={styles.textcontent}>
