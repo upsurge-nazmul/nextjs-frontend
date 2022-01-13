@@ -77,13 +77,21 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             />
             <HeaderTabSection
               mobile={true}
+              title={"Pricing"}
+              current={current}
+              setcurrent={setcurrent}
+              tabs={[]}
+              pushTo="/pricing"
+            />
+            <HeaderTabSection
+              mobile={true}
               current={current}
               setcurrent={setcurrent}
               title={"More"}
               tabs={[
                 { name: "About us", pushTo: "/about" },
                 { name: "Blogs", pushTo: "/blogs" },
-                // { name: "Financial Calculators", pushTo: "/calculators" },
+                { name: "Financial Calculators", pushTo: "/calculators" },
                 { name: "FAQs", pushTo: "/help/faq" },
                 { name: "Contact us", pushTo: "/contact" },
               ]}

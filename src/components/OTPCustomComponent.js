@@ -32,7 +32,7 @@ export default function OTPCustomComponent({ resetotp, size, setotp }) {
           <input
             id={"Character" + index}
             autoComplete="off"
-            type="text"
+            type="number"
             key={"otpinput" + index}
             maxLength="1"
             onFocus={() => {

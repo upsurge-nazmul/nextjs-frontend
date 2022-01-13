@@ -418,7 +418,7 @@ export default function HomeCalc({ seterror, error }) {
               colors={{ datum: "data.color" }}
               keys={["value"]}
               indexBy="type"
-              margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+              margin={{ top: 0, right: 0, bottom: 50, left: 60 }}
               padding={0.2}
               valueScale={{ type: "linear" }}
               borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
@@ -430,12 +430,11 @@ export default function HomeCalc({ seterror, error }) {
               }
               axisRight={null}
               axisBottom={{
-                tickSize: 10,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "",
+                tickSize: 8,
+                tickPadding: 8,
+                tickRotation: -15,
                 legendPosition: "middle",
-                legendOffset: 32,
+                legendOffset: 48,
               }}
               label={false}
             />

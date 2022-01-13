@@ -78,12 +78,13 @@ export default function CalculatorsPage({ userdatafromserver }) {
             calcCalc_Data={Calc_Data}
           />
           <CalcFaq name={calculatorName} />
+          <DashboardFooter />
+
           {/* <RelativeSection
           Calc_Data={Calc_Data}
           cards={Calc_Data[calculatorName]?.relative ?? []}
         /> */}
         </div>
-        <DashboardFooter />
       </div>
     </div>
   );

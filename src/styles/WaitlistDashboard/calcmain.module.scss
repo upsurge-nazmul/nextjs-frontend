@@ -77,6 +77,7 @@
   .calcs {
     .contentWrapper {
       .mainContent {
+        padding: 0 20px;
         .flexLeft {
           .recentSection {
             .heading {
@@ -104,6 +105,8 @@
         }
         .flexRight {
           .familyfunSection {
+            padding: 20px 40px;
+
             .heading {
               font-size: 22px;
             }
@@ -129,7 +132,6 @@
 @media only screen and (max-width: 1300px) {
   .calcs {
     .contentWrapper {
-      max-width: calc(100vw - 80px);
       .mainContent {
         .flexRight {
           .familyfunSection {
@@ -180,7 +182,7 @@
 }
 // for tablets
 @media only screen and (max-width: 860px) {
-  .gamesPage {
+  .calcs {
     .contentWrapper {
       width: 100%;
       max-width: calc(100vw - 55px);
@@ -188,6 +190,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        padding: 15px;
         .flexLeft {
           display: flex;
           flex-direction: column;

@@ -45,8 +45,8 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       else router.push("/dashboard/k");
     } else {
       seterror(response?.data.message || "Cannot reach server");
+      setloading(false);
     }
-    setloading(false);
   }
   async function handlegoogleLogin(data) {
     if (data.tokenId) {
