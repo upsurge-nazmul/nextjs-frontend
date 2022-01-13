@@ -21,7 +21,7 @@ export default function WaitlistPopUp({
   const [loading, setloading] = useState(false);
   const [OTP, setOTP] = useState("");
   const [phone, setphone] = useState("");
-  const [mode, setmode] = useState("otp"); // data and otp
+  const [mode, setmode] = useState("data"); // data and otp
   const [resetotp, setresetotp] = useState(0);
   const router = useRouter();
   useEffect(() => {
