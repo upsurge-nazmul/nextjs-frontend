@@ -51,7 +51,7 @@ function Help() {
     },
   ];
   function hanldemove(element, index) {
-    var headerOffset = 180;
+    var headerOffset = 150;
     var elementPosition = getheight(element);
     var offsetPosition = elementPosition - headerOffset;
 
@@ -82,7 +82,7 @@ function Help() {
     let faq = document.getElementById("faq");
     if (!faq) return;
     hanldemove(faq);
-  }, [type]);
+  }, [router]);
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {

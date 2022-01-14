@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QuizApis from "../../actions/apis/QuizApis";
 import styles from "../../styles/WaitlistDashboard/todaysquestion.module.scss";
+import RemoveSvg from "../SVGcomponents/RemoveSvg";
 import TickSvg from "../SVGcomponents/TickSvg";
 export default function TodaysQuestion({ data }) {
   const [answered, setanswerd] = useState(data.is_answered);
@@ -30,9 +31,15 @@ export default function TodaysQuestion({ data }) {
       <p className={styles.heading}>{"Today's question"}</p>
       {answered ? (
         <>
-          <TickSvg
-            className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
-          />
+          {is_correct ? (
+            <TickSvg
+              className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
+            />
+          ) : (
+            <RemoveSvg
+              className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
+            />
+          )}
           <p className={styles.msg}>
             {is_correct
               ? "Congratulations, please come back tomorrow for a new question."

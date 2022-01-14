@@ -66,7 +66,7 @@ export default function Products() {
         hanldemove(classes);
       }
     }
-  }, [type]);
+  }, [router]);
 
   useEffect(() => {
     const handlescroll = () => {

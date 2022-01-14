@@ -25,6 +25,22 @@
       fill: #17d1bc;
     }
   }
+  .wrongsvg {
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 100%;
+    margin: auto;
+    g {
+      width: 100%;
+      height: 100%;
+    }
+    path {
+      fill: #ff6263;
+    }
+  }
   .wrongtick {
     path {
       fill: #ff6263;

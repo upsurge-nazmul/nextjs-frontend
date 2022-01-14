@@ -51,7 +51,7 @@ function BenfitsPage() {
         hanldemove(rewards);
       }
     }
-  }, [type]);
+  }, [router]);
 
   useEffect(() => {
     const handlescroll = () => {
