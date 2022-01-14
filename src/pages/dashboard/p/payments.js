@@ -13,20 +13,15 @@ import Curve2 from "../../../components/SVGcomponents/Curve2";
 import TickSvg from "../../../components/SVGcomponents/TickSvg";
 import { pricing_data } from "../../../static_data/Pricing_Data";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
-
-export default function Payments({
-  isLogged,
-  msg,
-  choresdata,
-  gamesdata,
-  kidsdata,
-  liveclassdata,
-  vouchers,
-  userdatafromserver,
-}) {
-  // modes are different pages like home,kids,store,payments,notifications
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { getIndianTime } from "../../../helpers/timehelpers";
+import PaymentsApi from "../../../actions/apis/PaymentsApi";
+export default function Payments({ pricing_details, userdatafromserver }) {
   const [mode, setmode] = useState("Payments");
   const router = useRouter();
+  const [current_plan, setcurrent_plan] = useState(
+    userdatafromserver.plan_name || "Free"
+  );
   const [history, sethistory] = useState([]);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -43,7 +38,8 @@ export default function Payments({
   });
   function handleClick(index) {
     setbuydata({
-      price: pricing_data[index].price.replace("₹", ""),
+      price: pricing_data[index].price,
+      total: pricing_data[index].total,
       type: "rs",
       name: pricing_data[index].name,
       description: pricing_data[index].description,
@@ -51,17 +47,6 @@ export default function Payments({
     });
     setshowmodal(true);
   }
-  useEffect(() => {
-    if (isLogged === false) {
-      console.log(isLogged);
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: msg,
-      });
-      router.push("/");
-    }
-  }, [isLogged]);
 
   async function getUserVouchers() {
     let res = await DashboardApis.getuservouchers();
@@ -88,26 +73,63 @@ export default function Payments({
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <p className={styles.heading}>
-            Start your kid’s journey in the <br />
-            finance world today.
-          </p>
-          <div className={styles.featurewrapper}>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Free 15-day trial
+          {current_plan === "Free" && (
+            <p className={styles.heading}>
+              Start your kid’s journey in the <br />
+              finance world today.
+            </p>
+          )}
+          {current_plan === "Free" && (
+            <div className={styles.featurewrapper}>
+              <div className={styles.feature}>
+                <TickSvg className={styles.tick} />
+                Free 15-day trial
+              </div>
+              <div className={styles.feature}>
+                <TickSvg className={styles.tick} />
+                Add upto 5 kids
+              </div>
+              <div className={styles.feature}>
+                <TickSvg className={styles.tick} />
+                Cancel Anytime
+              </div>
             </div>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Add upto 5 kids
+          )}
+          {current_plan !== "Free" && (
+            <div className={styles.currentplan}>
+              <div className={styles.head}>
+                <CheckCircleIcon className={styles.tick} />
+                <div className={styles.right}>
+                  <p className={styles.text}>CURRENT PLAN</p>
+                  <p className={styles.planheading}>{current_plan}</p>
+                </div>
+                <p className={styles.expiry}>
+                  ₹{userdatafromserver.plan_amount || 2994}{" "}
+                  {current_plan === "Half-Yearly"
+                    ? "per 6 Months"
+                    : current_plan === "Yearly"
+                    ? "per 12 Months"
+                    : "/Month"}
+                  , Expires on{" "}
+                  {getIndianTime(
+                    Number(userdatafromserver.plan_expiry) ||
+                      new Date().getTime()
+                  )}
+                </p>
+              </div>
+              <div className={styles.hr} />
+              <p className={styles.benefitheading}>Current Benefits</p>
+              <ul className={styles.benefitswrapper}>
+                {pricing_data[
+                  pricing_data.findIndex((item) => item.name === current_plan)
+                ].benefits.map((benefit, index) => {
+                  return <li key={"benefit" + index}>{benefit}</li>;
+                })}
+              </ul>
             </div>
-            <div className={styles.feature}>
-              <TickSvg className={styles.tick} />
-              Cancel Anytime
-            </div>
-          </div>
+          )}
           <div className={styles.pricewrapper}>
-            {pricing_data.map((item, index) => {
+            {pricing_details.map((item, index) => {
               return (
                 <div className={styles.pricecontainer} key={"price" + index}>
                   <p className={styles.name}>{item.name}</p>
@@ -120,7 +142,11 @@ export default function Payments({
                     }
                     ${index === 2 && styles.thirdbtn}`}
                   >
-                    Buy
+                    {current_plan !== "Free" && current_plan !== item.name
+                      ? current_plan === "Free"
+                        ? "Buy"
+                        : "Switch"
+                      : "Renew"}
                   </div>
                   <div className={styles.hr} />
                   <div className={styles.benefitswrapper}>
@@ -156,19 +182,10 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let kidsdata = await getkidsdata(token);
-      let gamesdata = await getgames(token);
-      let liveclassdata = await getliveclasses(token);
-      let choresdata = await getchores(token);
-      let vouchers = await getvouchers(token);
+      const pricing_details = await getpricing();
       return {
         props: {
-          isLogged: true,
-          choresdata,
-          gamesdata,
-          kidsdata,
-          liveclassdata,
-          vouchers,
+          pricing_details,
           userdatafromserver: response.data.data,
         },
       };
@@ -183,29 +200,8 @@ export async function getServerSideProps({ params, req }) {
     };
   }
 }
-async function getkidsdata(token) {
-  let response = await DashboardApis.getkids(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getchores(token) {
-  let response = await ChoreApis.getpendingchores(null, token);
-  if (response && response.data && response.data.data) {
-    return response.data.data;
-  }
-}
-async function getgames(token) {
-  let response = await DashboardApis.getgames(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getliveclasses(token) {
-  let response = await DashboardApis.getliveclasses(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getvouchers(token) {
-  let response = await DashboardApis.getallvouchers(null, token);
+async function getpricing() {
+  let response = await PaymentsApi.getpricing();
   if (response && response.data && response.data.data)
     return response.data.data;
 }

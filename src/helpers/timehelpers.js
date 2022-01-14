@@ -70,3 +70,11 @@ export function getRelativeTime(previous) {
     return Math.round(elapsed / msPerYear) + " years ago";
   }
 }
+
+export function getIndianTime(timestamp, sign) {
+  const date = new Date(timestamp);
+  console.log(date.getFullYear());
+  return `${date.getDate()}${sign ? sign : "/"}${
+    date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
+  }${sign ? sign : "/"}${date.getFullYear()}`;
+}

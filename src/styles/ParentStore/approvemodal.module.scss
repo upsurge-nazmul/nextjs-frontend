@@ -24,13 +24,26 @@
       .dropdownx {
         width: 100%;
       }
+      .error {
+        margin-top: 20px;
+        color: rgb(255, 65, 65);
+      }
       .heading {
         display: flex;
         width: 100%;
         margin-bottom: 30px;
         svg {
           margin-right: 10px;
-          padding-top: 5px;
+          width: 25px;
+          cursor: pointer;
+          path {
+            transition: all 0.3s ease;
+          }
+          &:hover {
+            path {
+              fill: rgb(44, 44, 44);
+            }
+          }
         }
         .text {
           font-weight: 500;
@@ -103,7 +116,7 @@
         color: white;
         font-weight: 500;
         cursor: pointer;
-        margin-top: 55px;
+        margin-top: 30px;
       }
     }
     .background {
