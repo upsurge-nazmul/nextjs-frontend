@@ -191,6 +191,9 @@ export default function EditProfile({ data }) {
         setchangephone("");
         setconfirmphone("");
       }
+      if (img) {
+        setuserdata((prev) => ({ ...prev, user_img_url: img }));
+      }
       settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
     } else {
       seterror(response.data.message || "Cannot reach server");
