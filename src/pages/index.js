@@ -65,7 +65,9 @@ function Home({ isLogged, userdata }) {
           type: "error",
           msg: "Please login first.",
         });
-        router.push("/");
+        if (router.query.next) {
+          router.push("/?next=" + router.query.next);
+        } else router.push("/");
       }
       if (router.query.err === "02") {
         settoastdata({
@@ -73,7 +75,9 @@ function Home({ isLogged, userdata }) {
           type: "error",
           msg: "Your token has expired. Please login again.",
         });
-        router.push("/");
+        if (router.query.next) {
+          router.push("/?next=" + router.query.next);
+        } else router.push("/");
       }
       if (router.query.err == "invalid-pass-link") {
         settoastdata({
@@ -142,14 +146,15 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+
     if (response && !response.data.success) {
       msg = response.data.msg || "";
-      return { props: { isLogged: false, msg } };
+      return { props: {} };
     } else {
       return {
         props: {
           isLogged: true,
-          userdata: response?.data?.data,
+          userdata: response?.data?.data || null,
         },
       };
     }

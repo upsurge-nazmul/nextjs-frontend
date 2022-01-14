@@ -15,6 +15,7 @@ function loadScript(src) {
 }
 
 export default async function displayRazorpay(
+  prefill,
   name,
   description,
   amount,
@@ -50,6 +51,7 @@ export default async function displayRazorpay(
           id: res.data.data.receipt,
           amount: res.data.data.amount / 100,
           currency: res.data.data.currency,
+          name: `${name}${type === "Subscription" ? " Subscription" : ""}`,
         },
       });
       if (saveresponse.data.success) {
@@ -58,6 +60,7 @@ export default async function displayRazorpay(
             receipt_id: res.data.data.receipt,
             amount: amount,
             subscription: name,
+            invoice_id: saveresponse.data.data,
           });
         }
         setsuccess(true);
@@ -65,11 +68,7 @@ export default async function displayRazorpay(
         seterror("saving receipt failed");
       }
     },
-    prefill: {
-      name: "tushar",
-      email: "sdfdsjfh2@ndsfdf.com",
-      contact: "9899999999",
-    },
+    prefill: prefill,
     theme: { color: "#4166EB" },
   };
   const paymentObject = new window.Razorpay(options);

@@ -45,7 +45,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
             className={`${styles.notification} ${styles.icon} ${
               bell ? styles.bell : ""
             }`}
-            onClick={() => setshownotifications(true)}
+            onClick={() => setshownotifications(!shownotifications)}
             onMouseEnter={() => setbell(true)}
             onMouseLeave={() => setbell(false)}
           >

@@ -24,6 +24,14 @@
       .dropdownx {
         width: 100%;
       }
+      .btn {
+        color: rgb(65, 132, 255);
+        margin-top: 10px;
+        cursor: pointer;
+        &:hover {
+          color: hsl(219, 63%, 52%);
+        }
+      }
       .error {
         margin-top: 20px;
         color: rgb(255, 65, 65);
