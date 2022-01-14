@@ -4,14 +4,14 @@ import validator from "validator";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
-import GoogleSvg from "../SVGcomponents/GoogleSvg";
-import AppleSvg from "../SVGcomponents/AppleSvg";
 import { MainContext } from "../../context/Main";
+import ModernInputBox from "../ModernInputBox";
+import Spinner from "../Spinner";
 import GoogleLogin from "react-google-login";
 import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
-import ModernInputBox from "../ModernInputBox";
-import Spinner from "../Spinner";
+import AppleSvg from "../SVGcomponents/AppleSvg";
+import GoogleSvg from "../SVGcomponents/GoogleSvg";
 function AuthLogin({ settoastdata, error, seterror, setmode }) {
   const { setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -92,12 +92,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         value={email}
         setvalue={setemail}
       />
-      {/* <input
-        type="text"
-        placeholder="Email address"
-        value={email}
-        onChange={(e) => setemail(e.target.value)}
-      /> */}
       <div className={styles.passwordBox}>
         <ModernInputBox
           placeholder="Password"
@@ -120,7 +114,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           <Spinner />
         </div>
       )}
-      {/* <div className={styles.or}>OR</div>
+      <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -159,7 +153,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
             </div>
           );
         }}
-      /> */}
+      />
       <div className={styles.reset} onClick={() => setmode("reset")}>
         <span> Forgot password?</span>
       </div>
