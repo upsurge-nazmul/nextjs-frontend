@@ -257,6 +257,14 @@
               background-color: #4bdbcd;
             }
           }
+          .maximumlimit {
+            background: #adadad;
+            user-select: none;
+            cursor: default;
+            &:hover {
+              background: #adadad;
+            }
+          }
           .subheading {
             color: rgba(157, 157, 157, 1);
             font-size: 14px;

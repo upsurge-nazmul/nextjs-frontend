@@ -62,6 +62,15 @@ export default function EditProfile({ data }) {
   ];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   useEffect(() => {
+    if (gender === "male") {
+      setavatars(boy_avatars);
+    } else if (gender === "female") {
+      setavatars(girl_avatars);
+    } else {
+      setavatars([...boy_avatars, ...girl_avatars]);
+    }
+  }, [gender]);
+  useEffect(() => {
     setuserdata(data);
   }, []);
   useEffect(() => {
