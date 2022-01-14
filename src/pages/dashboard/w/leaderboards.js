@@ -16,6 +16,7 @@ export default function Leaderboards({
   leaderboard,
   highestquizscore,
 }) {
+  console.log(userdatafromserver);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -26,7 +27,7 @@ export default function Leaderboards({
   const router = useRouter();
   useEffect(() => {
     setuserdata(userdatafromserver);
-  }, []);
+  }, [userdatafromserver]);
 
   return (
     <div className={styles.leaderboard}>
