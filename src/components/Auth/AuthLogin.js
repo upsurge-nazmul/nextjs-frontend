@@ -33,10 +33,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       setCookie("accesstoken", response.data.data.token);
       setuserdata(response.data.data.userProfile);
       setuser(response.data.data.userProfile.id);
-<<<<<<< HEAD
-
-      if (response.data.data.userProfile.is_waiting_active) {
-=======
       settoastdata({
         show: true,
         msg: response.data.message,
@@ -45,7 +41,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       if (router.query.next) {
         router.push(router.query.next);
       } else if (response.data.data.userProfile.is_waiting_active) {
->>>>>>> 8316104 (added notifiations)
         router.push("/dashboard/w");
       } else if (response.data.data.userProfile.user_type === "parent")
         router.push("/dashboard/p");
