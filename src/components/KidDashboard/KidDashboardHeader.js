@@ -9,6 +9,7 @@ import NotificationBell from "../SVGcomponents/NotificationBell";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import { MainContext } from "../../context/Main";
 import Menu from "../Dashboard/Menu";
+import NotificationMenu from "../Dashboard/NotificationMenu";
 function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
@@ -16,9 +17,13 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [username, setusername] = useState("Tushar");
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
+  const [shownotifications, setshownotifications] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   return (
     <div className={styles.kiddashboardHeader}>
+      {shownotifications && (
+        <NotificationMenu setshownotifications={setshownotifications} />
+      )}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -43,16 +48,11 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
           <p className={styles.number}>{userdata?.gems || 0}</p>
         </div>
         <div
+          id="notification-btn"
           className={`${styles.notification} ${styles.icon} ${
             bell ? styles.bell : ""
           }`}
-          onClick={() =>
-            router.push({
-              asPath: "/notifications",
-              pathname: "/notifications",
-              query: { type: "request" },
-            })
-          }
+          onClick={() => setshownotifications(!shownotifications)}
           onMouseEnter={() => setbell(true)}
           onMouseLeave={() => setbell(false)}
         >

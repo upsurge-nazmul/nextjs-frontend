@@ -28,8 +28,8 @@ export const MainContextProider = ({ children }) => {
       onMessage(messaging, (payload) => {
         setShow(true);
         setNotification({
-          title: payload.notification.title,
-          body: payload.notification.body,
+          title: payload.notification?.title,
+          body: payload.notification?.body,
         });
         console.log(payload);
       });
