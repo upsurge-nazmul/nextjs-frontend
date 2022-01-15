@@ -18,6 +18,7 @@ export default function Products() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [authmode, setauthmode] = useState("");
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
@@ -107,6 +108,10 @@ export default function Products() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        showauth={showauth}
       />
       <Toast data={toastdata} />
 
@@ -121,6 +126,10 @@ export default function Products() {
         showwaitlistblock={showwaitlistblock}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        showauth={showauth}
         error={error}
         id="knowledge-quest"
       />
@@ -130,6 +139,10 @@ export default function Products() {
         check={check}
         setEmail={setEmail}
         showwaitlistblock={showwaitlistblock}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        showauth={showauth}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
         error={error}

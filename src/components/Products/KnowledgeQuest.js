@@ -6,6 +6,7 @@ import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
+
 export default function KnowledgeQuest({
   id,
   email,
@@ -15,6 +16,9 @@ export default function KnowledgeQuest({
   showwaitlistblock,
   settoastdata,
   setshowwaitlistblock,
+  authmode,
+  setauthmode,
+  setshowauth,
 }) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
@@ -35,6 +39,7 @@ export default function KnowledgeQuest({
     "Retirement Funds",
     "Career Development",
   ];
+  
   return (
     <div className={styles.questSection}>
       <Curve1 className={styles.curve1} />
@@ -111,9 +116,12 @@ export default function KnowledgeQuest({
           {!showinput ? (
             <div
               className={styles.joinButton}
-              onClick={() => setshowwaitlistblock(true)}
+              onClick={() => {
+                setauthmode("parent");
+                setshowauth(true);
+              }}
             >
-              Get early access
+              Sign up for free
             </div>
           ) : (
             <div className={styles.button} onClick={check}>

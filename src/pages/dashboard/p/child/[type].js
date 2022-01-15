@@ -28,7 +28,7 @@ function AddKid({ childdata }) {
   const [dob, setdob] = useState(
     childdata?.dob ? new Date(Number(childdata?.dob)) : ""
   );
-  const [gender, setgender] = useState(childdata?.gender || "Male");
+  const [gender, setgender] = useState(childdata?.gender);
   const [email, setemail] = useState(childdata?.email || "");
   const [password, setpassword] = useState("");
   const [img, setimg] = useState(childdata?.user_img_url || "");
@@ -298,7 +298,7 @@ function AddKid({ childdata }) {
 
             <DropDown
               placeholder="Gender"
-              options={["male", "female", "i prefer not to say"]}
+              options={["male", "female", "other", "Don't want to disclose"]}
               value={gender}
               setvalue={setgender}
             />

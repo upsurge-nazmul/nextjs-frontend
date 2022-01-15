@@ -73,26 +73,7 @@
         color: #4166eb;
       }
     }
-    .button {
-      width: 12vw;
-      min-width: fit-content;
-      font-size: 1vw;
-      height: 50px;
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 500;
-      padding: 0 20px;
-      color: white;
-      background-color: hsl(227, 81%, 59%);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: hsl(227, 100%, 59%);
-      }
-    }
+
     .signupBox {
       width: 23vw;
       min-width: fit-content;
@@ -122,18 +103,19 @@
         }
       }
 
-      .joinButton {
-        width: 45%;
+      .button {
+        width: 12vw;
         min-width: fit-content;
-        font-size: 1vw;
+        font-size: clamp(12px, 1vw, 18px);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 400;
+        font-weight: 500;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
         padding: 0 20px;
         color: white;
         background-color: hsl(227, 81%, 59%);
-        border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s ease;
         &:hover {
@@ -237,7 +219,7 @@
         line-height: 20px;
       }
       .button {
-        font-size: 14px;
+        font-size: 16px;
       }
       .checkwaiting {
         width: 100%;
@@ -297,7 +279,7 @@
         }
         .button,
         .joinButton {
-          font-size: 14px;
+          font-size: 10px;
         }
       }
     }

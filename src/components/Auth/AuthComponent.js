@@ -18,7 +18,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName } = useContext(MainContext);
   const [userdata, setuserdata] = useState(null);
-  const [mode, setmode] = useState("login");
+  const [mode, setmode] = useState(authmode || "login");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -34,7 +34,9 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
 
   useEffect(() => {
     if (!showauth) {
-      setmode("login");
+      if (!authmode) {
+        setmode("login");
+      }
       setemail("");
       setpassword("");
       setphone("");

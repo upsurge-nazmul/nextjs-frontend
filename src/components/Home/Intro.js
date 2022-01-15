@@ -8,52 +8,39 @@ import BallsSvg from "../SVGcomponents/BallsSvg";
 import { useRouter } from "next/dist/client/router";
 import Curve2 from "../SVGcomponents/Curve2";
 import WaitlistPopUp from "../WaitlistPopUp";
+import Spinner from "../Spinner";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome }) {
   const [email, setemail] = useState("");
-  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
-  const router = useRouter();
+  const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  async function handleSignup(e) {
-    e.preventDefault();
-    setshowwaitlistblock(true);
-  }
-  async function check() {
+
+  async function check(e) {
+    e?.preventDefault();
+    setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
+      setloading(false);
     } else {
-      let response = await LoginApis.getwaitlistdetails({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          seterror(response.data.message);
-        }
+      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+      if (checkemail && checkemail.data && !checkemail.data.success) {
+        setshowauth(true);
+        setauthmode("email");
+        setmailfromhome(email);
       } else {
-        seterror("Error connecting to server");
+        seterror(checkemail?.data.message || "Error connecting to server");
       }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
+      setloading(false);
     }
   }
   return (
     <section className={styles.intro}>
       <Curve2 className={styles.curve} />
-      {showwaitlistblock && (
-        <WaitlistPopUp
-          email={email}
-          setemail={setemail}
-          setshowpopup={setshowwaitlistblock}
-          showpopup={showwaitlistblock}
-          settoastdata={settoastdata}
-        />
-      )}
       <Toast data={toastdata} />
       <div className={styles.textContent}>
         <div className={styles.heading}>Money, made easy.</div>
@@ -63,12 +50,29 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           entrepreneurship revolution amongst the Gen-Z, by making learning fun
           and rewarding.
         </div>
-        <div className={styles.button} onClick={handleSignup}>
-          {"Get early access"}
+        <p className={styles.error}>{error}</p>
+        <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
+          <form onSubmit={(e) => check(e)}>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                seterror("");
+                setemail(e.target.value);
+              }}
+            />
+          </form>
+          {!loading ? (
+            <div className={`${styles.button}`} onClick={check}>
+              Sign up for free
+            </div>
+          ) : (
+            <div className={`${styles.button} ${styles.spinner_btn}`}>
+              <Spinner />
+            </div>
+          )}
         </div>
-        {/* <p className={styles.checkwaiting} onClick={check}>
-          Check your waitlist number
-        </p> */}
       </div>
       <IntroSvg className={styles.homesvg} />
       <BallsSvg className={styles.ballsvg} />

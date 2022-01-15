@@ -20,6 +20,7 @@ export default function Products() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
+  const [authmode, setauthmode] = useState("");
   const [email, setEmail] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -101,6 +102,7 @@ export default function Products() {
       // setmailfromhome(email);
     }
   }
+
   return (
     <div className={styles.pricingPage}>
       <Header
@@ -108,6 +110,8 @@ export default function Products() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        authmode={authmode}
+        setauthmode={setauthmode}
       />
       <Toast data={toastdata} />
       <LeftPanel
@@ -118,6 +122,10 @@ export default function Products() {
         email={email}
         setEmail={setEmail}
         check={check}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        showauth={showauth}
         error={error}
         showwaitlistblock={showwaitlistblock}
         settoastdata={settoastdata}
@@ -129,7 +137,11 @@ export default function Products() {
         email={email}
         check={check}
         setEmail={setEmail}
+        showauth={showauth}
+        authmode={authmode}
+        setauthmode={setauthmode}
         error={error}
+        setshowauth={setshowauth}
         showwaitlistblock={showwaitlistblock}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}

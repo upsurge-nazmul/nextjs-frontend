@@ -61,6 +61,7 @@ export default function EditProfile({ data }) {
     "19",
     "18",
     "16",
+    "25",
   ];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   useEffect(() => {

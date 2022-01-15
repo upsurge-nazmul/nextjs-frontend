@@ -11,6 +11,9 @@ export default function Chores({
   setshowwaitlistblock,
   showwaitlistblock,
   settoastdata,
+  authmode,
+  setauthmode,
+  setshowauth,
 }) {
   const [showinput, setshowinput] = useState(false);
 
@@ -36,9 +39,12 @@ export default function Chores({
           {!showinput ? (
             <div
               className={styles.joinButton}
-              onClick={() => setshowwaitlistblock(true)}
+              onClick={() => {
+                setauthmode("parent");
+                setshowauth(true);
+              }}
             >
-              Get early access
+              Sign up for free
             </div>
           ) : (
             <div className={styles.button} onClick={check}>
