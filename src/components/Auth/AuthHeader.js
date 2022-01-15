@@ -5,32 +5,21 @@ import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 function AuthHeader({ handleBack, setmode, mode }) {
   return (
     <div className={styles.headingflex}>
-      <p
-        className={`${styles.heading} ${
-          mode === "reset" && styles.forgetheading
-        }`}
-      >
+      <p className={styles.heading}>
         {mode !== "login" ? (
           <BackButtonSvg className={styles.svg} onClick={() => handleBack()} />
         ) : null}
-        {mode !== "login"
-          ? mode === "reset"
-            ? "Forgot password"
-            : " Join"
-          : "Login"}
+        {mode !== "login" ? "Join" : "Login"}
       </p>
-      {mode !== "reset" && mode === "login" ? (
+      {mode === "login" ? (
         <p className={styles.changemode}>
-          No Account?{" "}
-          <span onClick={() => setmode("parent")}>Get early access</span>
+          No Account? <span onClick={() => setmode("parent")}>Join</span>
         </p>
       ) : (
-        mode !== "reset" && (
-          <p className={styles.changemode}>
-            Already have an account?{" "}
-            <span onClick={() => setmode("login")}>Sign In</span>
-          </p>
-        )
+        <p className={styles.changemode}>
+          Already have an account?{" "}
+          <span onClick={() => setmode("login")}>Sign In</span>
+        </p>
       )}
     </div>
   );

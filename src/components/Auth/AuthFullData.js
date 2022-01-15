@@ -50,8 +50,11 @@ function AuthFullData({
   }, [password, username, firstName, phone, mode]);
 
   async function handleUpdateData() {
+    setloading(true);
+
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
+      setloading(false);
       return;
     }
     let checkphone = await LoginApis.checkphone({ phone });
@@ -59,52 +62,46 @@ function AuthFullData({
       console.log("phone ok");
     } else {
       seterror(checkphone?.data.message || "Error connecting to server");
+      setloading(false);
       return;
     }
-    // if (passisweak) {
-    //   seterror(
-    //     "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
-    //   );
-    //   return;
-    // }
-    if (
-      !firstName
-      //  || !password
-    ) {
+    if (passisweak) {
+      seterror(
+        "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
+      );
+      setloading(false);
+      return;
+    }
+    if (!firstName || !password) {
       seterror("FirstName is required");
+      setloading(false);
       return;
     }
-    // let response = await LoginApis.signup({
-    //   email: email,
-    //   signup_method: signupmethod,
-    //   user_type: usertype,
-    //   phone,
-    //   password,
-    //   first_name: firstName,
-    //   last_name: lastName,
-    // });
-    let response = await LoginApis.saveemail({
+    let response = await LoginApis.signup({
       email: email,
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
+      signup_method: signupmethod,
+      user_type: usertype,
+      phone,
+      password,
+      first_name: firstName,
+      last_name: lastName,
     });
 
     if (!response || !response.data.success) {
+      setloading(false);
       seterror(response.data.message || "Error connecting to server");
     } else {
-      // if (signupmethod === "email") {
-      //   LoginApis.sendverificationemail();
-      // }
-      router.push("/waitlist/" + email);
-      // settoastdata({
-      //   show: true,
-      //   msg: response.data.message,
-      //   type: "success",
-      // });
-      // setuserdata(response.data.data.profile);
-      // setCookie("accesstoken", response.data.data.token);
-      // setmode("otp");
+      if (signupmethod === "email") {
+        LoginApis.sendverificationemail();
+      }
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+      setuserdata(response.data.data.profile);
+      setCookie("accesstoken", response.data.data.token);
+      setmode("otp");
     }
   }
   async function genotp() {
@@ -208,7 +205,7 @@ function AuthFullData({
       className={styles.email}
       onKeyPress={(e) => {
         if (e.key === "Enter") {
-          genotp();
+          handleUpdateData();
         }
       }}
     >
@@ -247,7 +244,7 @@ function AuthFullData({
         value={username}
         onChange={(e) => setusername(e.target.value)}
       />
-      {/* {password !== "" && passisweak && (
+      {password !== "" && passisweak && (
         <>
           <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
             Weak password
@@ -260,8 +257,8 @@ function AuthFullData({
             <p>- Inclusion of at least one special character</p>
           </ReactTooltip>
         </>
-      )} */}
-      {/* <div className={styles.passwordBox}>
+      )}
+      <div className={styles.passwordBox}>
         {showdetailpass && (
           <div className={styles.detailPass}>
             <div className={styles.arrow}></div>
@@ -299,12 +296,12 @@ function AuthFullData({
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}
         </p>
-      </div> */}
+      </div>
 
       {error && <p className={styles.error}>{error}</p>}
 
       {!loading ? (
-        <div className={`${styles.button}`} onClick={genotp}>
+        <div className={`${styles.button}`} onClick={handleUpdateData}>
           Continue
         </div>
       ) : (

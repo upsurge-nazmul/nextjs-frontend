@@ -53,7 +53,8 @@
             cursor: pointer;
             position: absolute;
             left: 0;
-            margin-left: 27px;
+            margin-left: 20px;
+            width: 30px;
             transition: all 0.3s ease;
             &:hover {
               path {

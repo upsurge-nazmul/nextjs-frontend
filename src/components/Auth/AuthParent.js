@@ -90,15 +90,6 @@ function AuthParent({
       setCookie("accesstoken", response.data.data.token);
       setmode("email");
     }
-    // axios
-    //   .post(SIGNUP_URL, {
-    //     email: email,
-    //     signup_method: method,
-    //     user_type: usertype,
-    //   })
-    //   .then((result) => {
-    //
-    //   });
   }
 
   async function responsegoogle(data) {
