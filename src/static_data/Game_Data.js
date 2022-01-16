@@ -113,7 +113,7 @@ export const Game_Unity_Data = {
     codeUrl: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.wasm",
     loaderUrl:
       "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/Ludo.loader.js",
-    version: "5.5",
+    version: "5.6",
   },
   Fishing: {
     dataUrl: "/Games/Fishing/Build/Fishing.data",
