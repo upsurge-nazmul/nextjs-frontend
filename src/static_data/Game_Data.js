@@ -4,10 +4,10 @@ export const Game_Data = {
   //   description:
   //     "Identify how much is available to spend and making purchase decisions based on that.",
   // },
-  // BalanceBuilder: {
-  //   name: "Balance Builder",
-  //   description: "Identify what is income and what is expense.",
-  // },
+  BalanceBuilder: {
+    name: "Balance Builder",
+    description: "Identify what is income and what is expense.",
+  },
   // HighAndLow: {
   //   name: "High and Low",
   //   description:
@@ -18,11 +18,11 @@ export const Game_Data = {
   //   description:
   //     "Choose what you want to buy, earn some money, and calculate  how much you have left.",
   // },
-  // MoneyManager: {
-  //   name: "Money Manager",
-  //   description:
-  //     "Know the importance of allocating your earnings between spending, saving and donating.",
-  // },
+  MoneyManager: {
+    name: "Money Manager",
+    description:
+      "Know the importance of allocating your earnings between spending, saving and donating.",
+  },
   // MoneySlide: {
   //   name: "Money Slide",
   //   description:
@@ -58,11 +58,11 @@ export const Game_Unity_Data = {
     version: "1.0",
   },
   BalanceBuilder: {
-    dataUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.data",
-    frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
-    codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
-    loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.9",
+    dataUrl: "/Games/BalanceBuilder/Build/WebGL.data",
+    frameworkUrl: "/Games/BalanceBuilder/Build/WebGL.framework.js",
+    codeUrl: "/Games/BalanceBuilder/Build/WebGL.wasm",
+    loaderUrl: "/Games/BalanceBuilder/Build/WebGL.loader.js",
+    version: "2.0",
   },
   HighAndLow: {
     dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
@@ -83,7 +83,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
     codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
     loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
-    version: "1.2",
+    version: "1.4",
   },
   MoneySlide: {
     dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
