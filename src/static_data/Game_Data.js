@@ -83,7 +83,7 @@ export const Game_Unity_Data = {
     frameworkUrl: "/Games/MoneyManager/Build/WebGL.framework.js",
     codeUrl: "/Games/MoneyManager/Build/WebGL.wasm",
     loaderUrl: "/Games/MoneyManager/Build/WebGL.loader.js",
-    version: "1.4",
+    version: "1.5",
   },
   MoneySlide: {
     dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
