@@ -6,11 +6,14 @@ const loggameclick = (payload) => {
 const loggameerror = (payload) => {
   return ApiCalls.postResponse(`analytics/loggameerror`, payload);
 };
-
+const gamedata = (payload) => {
+  return ApiCalls.getResponse("games/gamedata", payload);
+};
 //getchores
 const GameApis = {
   loggameclick,
   loggameerror,
+  gamedata,
 };
 
 export default GameApis;

@@ -50,7 +50,7 @@ const specialchars = [
   "8",
   "9",
 ];
-export default function GamePage() {
+export default function GamePage({ gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -90,12 +90,12 @@ export default function GamePage() {
       checkifcacheexist();
     }
     async function checkifcacheexist() {
-      let xx = await db.games.where({ id: gameid }).toArray();
-      let context = Game_Unity_Data[gameid];
+      let xx = await db.games.where("id").equals(gameid).toArray();
+      let context = gamedata;
       if (xx.length > 0) {
-        console.log("found cache");
         if (xx[0].version !== context.version) {
           x();
+          setunitycontext(new UnityContext(context));
           return;
         }
         let wasm = xx[0].wasm;
@@ -115,95 +115,60 @@ export default function GamePage() {
         if (loader) {
           context.loaderUrl = window.URL.createObjectURL(loader);
         }
+        setunitycontext(new UnityContext(context));
       } else {
         x();
+        setunitycontext(new UnityContext(context));
       }
-      setunitycontext(new UnityContext(context));
     }
     async function x() {
-      fetch(Game_Unity_Data[gameid].dataUrl, {
+      let updateData = {
+        version: gamedata.version,
+        id: gameid,
+      };
+      console.log("downloading data");
+      let datares = await fetch(gamedata.dataUrl, {
         method: "GET",
-      })
-        .then((response) => response.blob())
-        .then(async (blob) => {
-          // Create blob link to download
-          let xx = await db.games.where({ id: gameid }).toArray();
-          if (xx.length > 0) {
-            await db.games.update(gameid, {
-              data: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          } else {
-            await db.games.add({
-              id: gameid,
-              data: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          }
-        });
+      });
+      let datablob = await datares.blob();
+      updateData.data = datablob;
+      console.log("downloading code");
+      let coderes = await fetch(gamedata.codeUrl, {
+        method: "GET",
+      });
+      let codeblob = await coderes.blob();
+      updateData.wasm = codeblob;
+      console.log("downloading framework");
+      let frameworkres = await fetch(gamedata.frameworkUrl, {
+        method: "GET",
+      });
+      let frameworkblob = await frameworkres.blob();
+      updateData.framework = frameworkblob;
+      console.log("downloading loader");
+      let loaderres = await fetch(gamedata.loaderUrl, {
+        method: "GET",
+      });
+      let loaderblob = await loaderres.blob();
+      updateData.loader = loaderblob;
 
-      fetch(Game_Unity_Data[gameid].codeUrl, {
-        method: "GET",
-      })
-        .then((response) => response.blob())
-        .then(async (blob) => {
-          // Create blob link to download
-          let xx = await db.games.where({ id: gameid }).toArray();
-          if (xx.length > 0) {
-            await db.games.update(gameid, {
-              wasm: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          } else {
-            await db.games.add({
-              id: gameid,
-              version: Game_Unity_Data[gameid].version,
-              wasm: blob,
-            });
-          }
-        });
-      fetch(Game_Unity_Data[gameid].frameworkUrl, {
-        method: "GET",
-      })
-        .then((response) => response.blob())
-        .then(async (blob) => {
-          // Create blob link to download
-          let xx = await db.games.where({ id: gameid }).toArray();
-          if (xx.length > 0) {
-            await db.games.update(gameid, {
-              framework: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          } else {
-            await db.games.add({
-              id: gameid,
-              framework: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          }
-        });
-      fetch(Game_Unity_Data[gameid].loaderUrl, {
-        method: "GET",
-      })
-        .then((response) => response.blob())
-        .then(async (blob) => {
-          // Create blob link to download
-          let xx = await db.games.where({ id: gameid }).toArray();
-          if (xx.length > 0) {
-            await db.games.update(gameid, {
-              loader: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          } else {
-            await db.games.add({
-              id: gameid,
-              loader: blob,
-              version: Game_Unity_Data[gameid].version,
-            });
-          }
-        });
+      let previos_game_data = await db.games
+        .where("id")
+        .equals(gameid)
+        .toArray();
+      if (previos_game_data.length > 0) {
+        console.log("updating game in indexedDb");
+        await db.games.update(gameid, updateData);
+      } else {
+        console.log("adding game in indexedDb");
+
+        try {
+          await db.games.add(updateData);
+        } catch (err) {
+          console.log(err);
+        }
+      }
     }
-  }, [gameid]);
+  }, [router]);
   useEffect(() => {
     function updateSize() {
       let w = window.innerWidth;
@@ -258,7 +223,6 @@ export default function GamePage() {
         game_token: id,
       });
       if (res && res.data.success) {
-        console.log("success");
         setshowgame(true);
       } else {
         alert("Id not valid");
@@ -429,16 +393,16 @@ export default function GamePage() {
               <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
             </div>
           </div>
+        ) : gamedata && unitycontext ? (
+          <Unity
+            className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+              removeBorder ? styles.removeborder : ""
+            }`}
+            unityContext={unitycontext}
+            matchWebGLToCanvasSize={true}
+          />
         ) : (
-          unitycontext && (
-            <Unity
-              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
-                removeBorder ? styles.removeborder : ""
-              }`}
-              unityContext={unitycontext}
-              matchWebGLToCanvasSize={true}
-            />
-          )
+          <p>Incorrect url, game not found.</p>
         )}
       </div>
       <JoinUs />
@@ -446,4 +410,12 @@ export default function GamePage() {
       <Footer />
     </div>
   );
+}
+
+export async function getServerSideProps({ params, req }) {
+  let gamedata = await GameApis.gamedata({ id: params.gameid });
+  if (gamedata && gamedata.data && gamedata.data.data) {
+    return { props: { gamedata: gamedata.data.data } };
+  }
+  return { props: { gamedata: null } };
 }
