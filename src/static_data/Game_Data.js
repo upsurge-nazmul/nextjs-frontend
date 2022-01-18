@@ -4,10 +4,10 @@ export const Game_Data = {
   //   description:
   //     "Identify how much is available to spend and making purchase decisions based on that.",
   // },
-  BalanceBuilder: {
-    name: "Balance Builder",
-    description: "Identify what is income and what is expense.",
-  },
+  // BalanceBuilder: {
+  //   name: "Balance Builder",
+  //   description: "Identify what is income and what is expense.",
+  // },
   // HighAndLow: {
   //   name: "High and Low",
   //   description:
@@ -18,11 +18,11 @@ export const Game_Data = {
   //   description:
   //     "Choose what you want to buy, earn some money, and calculate  how much you have left.",
   // },
-  MoneyManager: {
-    name: "Money Manager",
-    description:
-      "Know the importance of allocating your earnings between spending, saving and donating.",
-  },
+  // MoneyManager: {
+  //   name: "Money Manager",
+  //   description:
+  //     "Know the importance of allocating your earnings between spending, saving and donating.",
+  // },
   // MoneySlide: {
   //   name: "Money Slide",
   //   description:

@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
 import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
 
-export default function GamePage({ userdatafromserver }) {
+export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -295,16 +295,16 @@ export default function GamePage({ userdatafromserver }) {
 
               {/* <Jasper className={styles.jasper} /> */}
             </div>
+          ) : gamedata && unitycontext ? (
+            <Unity
+              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+                removeBorder ? styles.removeborder : ""
+              }`}
+              unityContext={unitycontext}
+              matchWebGLToCanvasSize={true}
+            />
           ) : (
-            unitycontext && (
-              <Unity
-                className={`${styles.gameMain} ${
-                  removeBorder ? styles.removeborder : ""
-                }`}
-                unityContext={unitycontext}
-                matchWebGLToCanvasSize={true}
-              />
-            )
+            <p>Incorrect url, game not found.</p>
           )}
         </div>
       </div>
@@ -329,10 +329,15 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let gamedata = await GameApis.gamedata({ id: params.gameid });
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          gamedata:
+            gamedata && gamedata.data && gamedata.data.data
+              ? gamedata.data.data
+              : null,
         },
       };
     }
