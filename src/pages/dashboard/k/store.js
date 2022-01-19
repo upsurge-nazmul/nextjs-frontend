@@ -22,6 +22,7 @@ export default function KidStore({
   gamesdata,
   kidsdata,
   liveclassdata,
+  userdatafromserver,
   avatars,
   vouchers,
 }) {
@@ -33,6 +34,10 @@ export default function KidStore({
     show: false,
     type: "success",
     msg: "",
+  });
+  const [data, setdata] = useState({
+    name: "",
+    price: "",
   });
   useEffect(() => {
     if (isLogged === false) {
@@ -50,7 +55,12 @@ export default function KidStore({
     <div className={styles.kidStore}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-      <RequestModal showmodal={showmodal} setshowmodal={setshowmodal} />
+      <RequestModal
+        data={data}
+        showmodal={showmodal}
+        setshowmodal={setshowmodal}
+        availableUnicoins={userdatafromserver?.num_unicoins || 0}
+      />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
@@ -58,6 +68,7 @@ export default function KidStore({
             <AvailableAvatarSection
               avatars={avatars}
               setshowmodal={setshowmodal}
+              setdata={setdata}
             />
           </div>
           <div className={styles.flexRight}>
@@ -96,6 +107,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          userdatafromserver: response.data.data,
           choresdata,
           gamesdata,
           kidsdata,

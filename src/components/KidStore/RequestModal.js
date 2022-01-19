@@ -5,11 +5,18 @@ import styles from "../../styles/KidStore/requestmodal.module.scss";
 import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
+import KidApis from "../../actions/apis/KidApis";
 
-export default function RequestModal({ showmodal, setshowmodal }) {
+export default function RequestModal({
+  showmodal,
+  setshowmodal,
+  data,
+  availableUnicoins,
+}) {
   //modes will be start , category , template, assign
 
   const [success, setsuccess] = useState(false);
+  const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -20,6 +27,14 @@ export default function RequestModal({ showmodal, setshowmodal }) {
       setsuccess(false);
     }
   }, [showmodal]);
+  async function buyAvatar() {
+    let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
+    if (response && response.data && response.data.success) {
+      setsuccess(true);
+    } else {
+      seterror(response?.data.message || "Error connecting to server");
+    }
+  }
   return (
     <div className={styles.requestModal}>
       <Toast data={toastdata} />
@@ -35,19 +50,19 @@ export default function RequestModal({ showmodal, setshowmodal }) {
                 <BackButtonSvg />
                 <div className={styles.text}>
                   <p>
-                    Buy <span>Avatar</span> Avatar
+                    Buy <span>{data.name}</span> Avatar
                   </p>
                 </div>
               </div>
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
-                <div className={styles.value}>800 Points</div>
+                <div className={styles.value}>{data.price} Unicoins</div>
               </div>
               <div className={styles.details}>
-                <div className={styles.label}>Available Points</div>
-                <div className={styles.value}>2.5K Points</div>
+                <div className={styles.label}>Available Unicoins</div>
+                <div className={styles.value}>{availableUnicoins} Unicoins</div>
               </div>
-              <div className={styles.button} onClick={() => setsuccess(true)}>
+              <div className={styles.button} onClick={() => buyAvatar()}>
                 Request Parent
               </div>
             </div>
