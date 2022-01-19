@@ -217,6 +217,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             className={`${styles.tab}  ${
               currenttab === "/dashboard/p/blogs" ||
               currenttab.indexOf("dashboard/p/blog") !== -1
+<<<<<<< HEAD
                 ? styles.activetab
                 : ""
             }`}
@@ -232,6 +233,23 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
+=======
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/p/blogs")}
+          >
+            <BlogSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Blogs</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/p/courses" ||
+              currenttab.indexOf("/dashboard/p/courses") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+>>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
             onClick={() => router.push("/dashboard/p/courses")}
           >
             <CoursesSvg className={styles.icon} />

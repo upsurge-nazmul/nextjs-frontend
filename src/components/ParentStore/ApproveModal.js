@@ -50,6 +50,10 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
       seterror("Please set state in edit profile.");
       return;
     }
+    if (!userdata.state) {
+      seterror("Please set state in edit profile.");
+      return;
+    }
     let result = await displayRazorpay(
       {
         name: userdata.first_name + " " + userdata.last_name,
