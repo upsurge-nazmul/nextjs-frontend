@@ -6,6 +6,7 @@ import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import KidApis from "../../actions/apis/KidApis";
+import Spinner from "../Spinner";
 
 export default function RequestModal({
   showmodal,
@@ -16,6 +17,7 @@ export default function RequestModal({
   //modes will be start , category , template, assign
 
   const [success, setsuccess] = useState(false);
+  const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -62,9 +64,15 @@ export default function RequestModal({
                 <div className={styles.label}>Available Unicoins</div>
                 <div className={styles.value}>{availableUnicoins} Unicoins</div>
               </div>
-              <div className={styles.button} onClick={() => buyAvatar()}>
-                Request Parent
-              </div>
+              {!loading ? (
+                <div className={styles.button} onClick={() => buyAvatar()}>
+                  Request Parent
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
             </div>
           </div>
         ) : showmodal && success ? (
