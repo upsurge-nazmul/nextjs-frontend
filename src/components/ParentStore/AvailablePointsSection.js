@@ -3,8 +3,7 @@ import styles from "../../styles/ParentStore/AvailablePointsSection.module.scss"
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import AvailablePointCard from "./AvailablePointCard";
 
-function AvailablePointsSection() {
-  const d = ["", "", ""];
+function AvailablePointsSection({ kidsdata }) {
   return (
     <div className={styles.AvailablePointsSection}>
       <h2 className={styles.heading}>
@@ -12,8 +11,8 @@ function AvailablePointsSection() {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {d.map((item, index) => (
-          <AvailablePointCard key={"LivAvailablePointCardeClass" + index} />
+        {kidsdata.map((item, index) => (
+          <AvailablePointCard key={item.id} data={item} />
         ))}
       </div>
     </div>

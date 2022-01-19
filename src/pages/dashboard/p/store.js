@@ -22,11 +22,13 @@ export default function ParentStore({
   liveclassdata,
   vouchers,
   userdatafromserver,
+  requests,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
   const router = useRouter();
   const [history, sethistory] = useState([]);
+  const [childRequests, setChildRequests] = useState(requests || []);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -72,13 +74,15 @@ export default function ParentStore({
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
-          {/* <div className={styles.flexLeft}>
+          <div className={styles.flexLeft}>
             <RequestsAndHistorySection
+              childRequests={childRequests}
+              setChildRequests={setChildRequests}
               setbuydata={setbuydata}
               setshowmodal={setshowmodal}
             />
-            <AvailablePointsSection />
-          </div> */}
+            <AvailablePointsSection kidsdata={kidsdata} />
+          </div>
           <div className={styles.flexRight}>
             <VoucherSection
               vouchers={vouchers}
@@ -115,6 +119,7 @@ export async function getServerSideProps({ params, req }) {
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
       let vouchers = await getvouchers(token);
+      let requests = await getrequests(token);
       return {
         props: {
           isLogged: true,
@@ -124,6 +129,7 @@ export async function getServerSideProps({ params, req }) {
           liveclassdata,
           vouchers,
           userdatafromserver: response.data.data,
+          requests,
         },
       };
     }
@@ -160,6 +166,12 @@ async function getliveclasses(token) {
 }
 async function getvouchers(token) {
   let response = await DashboardApis.getallvouchers(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+}
+
+async function getrequests(token) {
+  let response = await DashboardApis.getchildrequests(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
 }

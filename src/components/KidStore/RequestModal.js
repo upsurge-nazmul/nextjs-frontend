@@ -26,15 +26,25 @@ export default function RequestModal({
   });
   useEffect(() => {
     if (!showmodal) {
+      seterror("");
+      setloading(false);
       setsuccess(false);
     }
   }, [showmodal]);
   async function buyAvatar() {
+    setloading(true);
+    seterror("");
+    if (data.price > availableUnicoins) {
+      seterror("Insufficient unicoins");
+      setloading(false);
+      return;
+    }
     let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
     if (response && response.data && response.data.success) {
       setsuccess(true);
     } else {
       seterror(response?.data.message || "Error connecting to server");
+      setloading(false);
     }
   }
   return (
@@ -64,6 +74,7 @@ export default function RequestModal({
                 <div className={styles.label}>Available Unicoins</div>
                 <div className={styles.value}>{availableUnicoins} Unicoins</div>
               </div>
+              {error && <p className={styles.error}>{error}</p>}
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
                   Request Parent

@@ -9,11 +9,13 @@ import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground"
 import displayRazorpay from "../../actions/RazorPay";
 import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
-
+import DashbardApis from "../../actions/apis/DashboardApis";
+import Spinner from "../Spinner";
 export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   //modes will be start , category , template, assign
   const { userdata } = useContext(MainContext);
   const [error, seterror] = useState("");
+  const [loading, setloading] = useState(false);
   const [selectedchild, setselectedchild] = useState("Pihu Mehta");
   const [success, setsuccess] = useState(false);
   const router = useRouter();
@@ -25,11 +27,23 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   useEffect(() => {
     if (!showmodal) {
       setsuccess(false);
+      seterror("");
+      setloading(false);
     }
   }, [showmodal]);
   async function handlepay() {
-    if (buydata.type === "points") {
-      setsuccess(true);
+    if (buydata.item === "avatar") {
+      setloading(true);
+      let response = await DashbardApis.completerequest({
+        request_id: buydata.request_id,
+        type: "avatar",
+      });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
+      } else {
+        seterror(response.data.message || "Error connecting to server");
+        setloading(false);
+      }
       return;
     }
     if (!userdata.state) {
@@ -79,7 +93,7 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                   </p>
                 </div>
               </div>
-              {buydata.item !== "Subscription" && (
+              {buydata.item !== "Subscription" && buydata.item !== "avatar" && (
                 <DropDown
                   className={styles.dropdownx}
                   placeholder="Select child"
@@ -99,14 +113,17 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                   </div>
                 )}
                 <div className={styles.value}>
-                  {buydata.type === "points" ? "Points" : "₹"}
+                  {buydata.type === "points" ? "" : "₹"}
                   {buydata.total ? buydata.total : buydata.price}{" "}
+                  {buydata.type === "points" ? "UniCoins" : "₹"}
                 </div>
               </div>
               {buydata.type !== "rs" && (
                 <div className={styles.details}>
-                  <div className={styles.label}>Available Points</div>
-                  <div className={styles.value}>2.5K Points</div>
+                  <div className={styles.label}>Available UniCoins</div>
+                  <div className={styles.value}>
+                    {buydata.available_points} UniCoins
+                  </div>
                 </div>
               )}
               {error && <p className={styles.error}>{error}</p>}
@@ -118,9 +135,15 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                   go to edit profile
                 </p>
               )}
-              <div className={styles.button} onClick={handlepay}>
-                Confirm Purchase
-              </div>
+              {!loading ? (
+                <div className={styles.button} onClick={handlepay}>
+                  Confirm Purchase
+                </div>
+              ) : (
+                <div className={styles.button}>
+                  <Spinner />
+                </div>
+              )}
             </div>
           </div>
         ) : showmodal && success ? (

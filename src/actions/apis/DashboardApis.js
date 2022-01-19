@@ -7,6 +7,9 @@ const getuserdata = (payload, token) => {
 const getChildDetails = (payload, token) => {
   return ApiCalls.getResponse(`parent/getchilddata`, payload, token);
 };
+const getchildrequests = (payload, token) => {
+  return ApiCalls.getResponse(`parent/childrequests`, payload, token);
+};
 const updateprofile = (payload) => {
   return ApiCalls.postResponse(
     "users/updateprofile",
@@ -77,7 +80,13 @@ const convertUnicoins = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const completerequest = (payload) => {
+  return ApiCalls.postResponse(
+    "parent/completerequest",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -95,6 +104,8 @@ const DashboardApis = {
   ordervouchers,
   getuservouchers,
   convertUnicoins,
+  getchildrequests,
+  completerequest,
 };
 
 export default DashboardApis;
