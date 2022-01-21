@@ -11,9 +11,10 @@ function AvailablePointsSection({ kidsdata }) {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {kidsdata.map((item, index) => (
-          <AvailablePointCard key={item.id} data={item} />
-        ))}
+        {kidsdata &&
+          kidsdata.map((item, index) => (
+            <AvailablePointCard key={item.id} data={item} />
+          ))}
       </div>
     </div>
   );

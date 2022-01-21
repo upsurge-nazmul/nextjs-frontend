@@ -72,7 +72,7 @@ export default function KidStore({
             />
           </div>
           <div className={styles.flexRight}>
-            <AvailablePointsSection />
+            <AvailablePointsSection kidsdata={[userdatafromserver]} />
             <VoucherSection vouchers={vouchers} />
           </div>
         </div>

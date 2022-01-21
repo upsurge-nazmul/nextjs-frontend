@@ -46,17 +46,6 @@ export function duetimeDifference(diff) {
   }
 }
 
-<<<<<<< HEAD
-=======
-export function getIndianTime(timestamp, sign) {
-  const date = new Date(timestamp);
-  console.log(date.getFullYear());
-  return `${date.getDate()}${sign ? sign : "/"}${
-    date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
-  }${sign ? sign : "/"}${date.getFullYear()}`;
-}
-
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
 export function getRelativeTime(previous) {
   let current = new Date().getTime();
   var msPerMinute = 60 * 1000;
@@ -81,7 +70,6 @@ export function getRelativeTime(previous) {
     return Math.round(elapsed / msPerYear) + " years ago";
   }
 }
-<<<<<<< HEAD
 
 export function getIndianTime(timestamp, sign) {
   const date = new Date(timestamp);
@@ -90,5 +78,3 @@ export function getIndianTime(timestamp, sign) {
     date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
   }${sign ? sign : "/"}${date.getFullYear()}`;
 }
-=======
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
