@@ -10,6 +10,7 @@ import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import { MainContext } from "../../context/Main";
 import Menu from "../Dashboard/Menu";
 import NotificationMenu from "../Dashboard/NotificationMenu";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
@@ -32,7 +33,11 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
         ) : (
           <span className={showback ? styles.addflex : ""}>
             {showback ? (
-              <BigBackArrow onClick={() => router.push("/" + gobackto)} />
+              <BigBackArrow
+                onClick={() =>
+                  router.push("/" + (gobackto ? gobackto : "/dashboard/k"))
+                }
+              />
             ) : null}
             {mode}
           </span>
@@ -40,12 +45,8 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
       </h1>
       <div className={styles.rightWrapper}>
         <div className={styles.rewardBlock}>
-          <img className={styles.rewardimage} src={points.src} alt="" />
-          <p className={styles.number}>{userdata?.points || 0}</p>
-        </div>
-        <div className={styles.rewardBlock}>
-          <img className={styles.rewardimage} src={gems.src} alt="" />
-          <p className={styles.number}>{userdata?.gems || 0}</p>
+          <UniCoinSvg className={styles.svg} />
+          <p className={styles.number}>{userdata?.num_unicoins || 0}</p>
         </div>
         <div
           id="notification-btn"
@@ -60,10 +61,11 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
           <NotificationBell />
         </div>
         <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
-          {showmenu && <Menu settoastdata={settoastdata} menuType={"kid"} />}
+          {showmenu && <Menu settoastdata={settoastdata} menuType={"child"} />}
           <img
             src={
-              userdata?.img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+              userdata?.user_img_url ||
+              "https://i.ibb.co/v3vVV8r/default-avatar.png"
             }
             alt=""
           />

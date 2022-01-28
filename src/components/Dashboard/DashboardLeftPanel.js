@@ -18,6 +18,7 @@ import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
 import Fb from "../SVGcomponents/Fb";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
@@ -81,6 +82,51 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/quest" ||
+              currenttab.indexOf("/dashboard/k/quest") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/quest")}
+          >
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Knowledge Quest</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/quiz" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/quiz")}
+          >
+            <QuizIconSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Money Quotient</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/games" ||
+              currenttab.indexOf("/dashboard/k/game") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/games")}
+          >
+            <GameSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Games</p>
+          </div>
+          <div
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/tribes" ||
+              currenttab.indexOf("/dashboard/k/tribes") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/tribes")}
+          >
+            <PeopleOutlineIcon className={styles.icon} />
+            <p className={styles.tabtitle}>Tribes</p>
           </div>
           <div
             className={`${styles.tab} ${

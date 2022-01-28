@@ -17,7 +17,13 @@ const updateprofile = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const updatechildprofile = (payload) => {
+  return ApiCalls.postResponse(
+    "users/updatechildprofile",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const addkids = (payload) => {
   return ApiCalls.postResponse(
     `parent/addchild`,
@@ -87,6 +93,10 @@ const completerequest = (payload) => {
     getCookie("accesstoken")
   );
 };
+
+const searchuser = (payload, token) => {
+  return ApiCalls.getResponse("users/searchuser", payload, token);
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -106,6 +116,8 @@ const DashboardApis = {
   convertUnicoins,
   getchildrequests,
   completerequest,
+  updatechildprofile,
+  searchuser,
 };
 
 export default DashboardApis;

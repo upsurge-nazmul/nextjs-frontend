@@ -1,5 +1,6 @@
 .AvailablePointsSection {
   flex: 1;
+  margin-left: 20px;
   .heading {
     font-weight: 500;
     font-size: 25px;
@@ -15,6 +16,8 @@
 
 @media only screen and (max-width: 860px) {
   .AvailablePointsSection {
+    margin-left: 0px;
+
     .heading {
       font-size: 18px;
       svg {

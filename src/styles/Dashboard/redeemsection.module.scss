@@ -3,8 +3,10 @@
   border-radius: 12px;
   padding: 25px 40px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   .left {
+    margin-left: 20px;
+    width: 100%;
     .heading {
       font-size: 30px;
       font-weight: 600;
@@ -12,6 +14,7 @@
     .coinflex {
       display: flex;
       margin-top: 10px;
+      align-items: center;
       .unicoins,
       .rupees {
         background-color: rgb(255, 255, 255);
@@ -23,8 +26,12 @@
           font-size: 24px;
         }
       }
+      .or {
+        font-weight: 600;
+        margin: 0 20px;
+        font-size: 24px;
+      }
       .unicoins {
-        margin-right: 20px;
       }
     }
     .converstiondetails {

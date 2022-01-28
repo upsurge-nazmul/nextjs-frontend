@@ -19,6 +19,7 @@ import { duetimeDifference } from "../../../helpers/timehelpers";
 import Toast from "../../../components/Toast";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import { MainContext } from "../../../context/Main";
+import NoChores from "../../../components/KidDashboard/NoChores";
 
 export default function KidChoresPage({
   choresdata,
@@ -79,34 +80,40 @@ export default function KidChoresPage({
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {pendingchores.map((item, index) => {
-                  return (
-                    <KidChore
-                      data={item}
-                      key={"pendingchore" + index}
-                      settoastdata={settoastdata}
-                    />
-                  );
-                })}
+                {pendingchores?.length > 0 ? (
+                  pendingchores.map((item, index) => {
+                    return (
+                      <KidChore
+                        data={item}
+                        key={"pendingchore" + index}
+                        settoastdata={settoastdata}
+                      />
+                    );
+                  })
+                ) : (
+                  <NoChores />
+                )}
               </div>
             </div>
-            <div className={styles.choreSection}>
-              <h2 className={styles.heading}>
-                Completed Chores
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {compchores.map((data, index) => {
-                  return (
-                    <KidChore
-                      data={data}
-                      key={data.id}
-                      settoastdata={settoastdata}
-                    />
-                  );
-                })}
+            {compchores.length > 0 && (
+              <div className={styles.choreSection}>
+                <h2 className={styles.heading}>
+                  Completed Chores
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper}>
+                  {compchores.map((data, index) => {
+                    return (
+                      <KidChore
+                        data={data}
+                        key={data.id}
+                        settoastdata={settoastdata}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className={styles.flexRight}>

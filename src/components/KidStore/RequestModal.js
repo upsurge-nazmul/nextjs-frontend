@@ -67,12 +67,20 @@ export default function RequestModal({
                 </div>
               </div>
               <div className={styles.details}>
+                <div className={styles.label}>Available Unicoins</div>
+                <div className={styles.value}>{availableUnicoins} Unicoins</div>
+              </div>
+              <div className={styles.details}>
                 <div className={styles.label}>Price</div>
                 <div className={styles.value}>{data.price} Unicoins</div>
               </div>
               <div className={styles.details}>
-                <div className={styles.label}>Available Unicoins</div>
-                <div className={styles.value}>{availableUnicoins} Unicoins</div>
+                <div className={styles.label}>
+                  Available Unicoins post purchase
+                </div>
+                <div className={styles.value}>
+                  {availableUnicoins - data.price} Unicoins
+                </div>
               </div>
               {error && <p className={styles.error}>{error}</p>}
               {!loading ? (

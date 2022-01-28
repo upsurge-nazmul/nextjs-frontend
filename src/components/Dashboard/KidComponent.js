@@ -39,7 +39,7 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
         />
       )}
       <img
-        onClick={() => router.push("/kidactivity/" + data.id)}
+        onClick={() => router.push("/dashboard/p/child-activity/" + data.id)}
         src={
           data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
         }
@@ -49,7 +49,7 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
       <div className={styles.nameandpoints}>
         <p
           className={styles.name}
-          onClick={() => router.push("/kidactivity/" + data.id)}
+          onClick={() => router.push("/dashboard/p/child-activity/" + data.id)}
         >
           {data?.first_name}
         </p>

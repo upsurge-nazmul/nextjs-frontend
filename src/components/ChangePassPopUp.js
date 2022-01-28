@@ -22,13 +22,17 @@ export default function ChangePassPopUp({
   showpassotp,
   setshowpassotp,
   saveprofile,
+  email,
+  isEmailOtp,
 }) {
   const [OTP, setOTP] = useState("");
   const [mode, setmode] = useState("data"); // data and otp
   useEffect(() => {
     seterror("");
   }, [password, mode, confirmpassword]);
-
+  useEffect(() => {
+    setmode("data");
+  }, []);
   async function genotp() {
     LoginApis.genotp({ phone }).then((response) => {
       if (response && response.data && response.data.success) {
@@ -84,7 +88,9 @@ export default function ChangePassPopUp({
           </div>
           <div className={styles.otpHeadWrapper}>
             <p className={styles.text}>Enter the 6-digit code sent to you at</p>
-            <p className={styles.phone}>{"+91 " + phone}</p>
+            <p className={styles.phone}>
+              {isEmailOtp ? email : +"91 " + phone}
+            </p>
           </div>
           <div className={styles.otpWrapper} id="otpWrapper">
             <OTPCustomComponent setotp={setOTP} size={6} />

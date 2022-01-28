@@ -1,6 +1,7 @@
 import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
+import GameSvg from "../SVGcomponents/GameSvg";
 
 function GameCard({ data, onCLick }) {
   const router = useRouter();
@@ -19,6 +20,10 @@ function GameCard({ data, onCLick }) {
       <div className={styles.contentWrapper}>
         <p className={styles.title}>{data?.name || "Test Card"}</p>
         <p className={styles.detail}>{data?.description || "Test Card"}</p>
+        <div className={styles.chatbtn}>
+          Play
+          <GameSvg className={styles.icon} />
+        </div>
       </div>
     </div>
   );

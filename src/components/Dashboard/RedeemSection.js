@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Dashboard/redeemsection.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import ModernInputBox from "../../components/ModernInputBox";
 import DashboardApis from "../../actions/apis/DashboardApis";
-import { unicoin_value } from "../../../config";
+import { UniCoinValue, unicoin_value } from "../../../config";
+import { MainContext } from "../../context/Main";
 export default function RedeemSection({
   unicoins,
   balance,
@@ -16,6 +17,7 @@ export default function RedeemSection({
   const [showinput, setshowinput] = useState(false);
   const [unicointoconvert, setunicointoconvert] = useState("");
   const [err, seterr] = useState("");
+  const { userdata } = useContext(MainContext);
   async function convert() {
     seterr("");
     if (unicointoconvert > user_unicoin) {
@@ -46,19 +48,23 @@ export default function RedeemSection({
   }, [unicointoconvert]);
   return (
     <div className={styles.head}>
+      <Jasper className={styles.jasper} />
       <div className={styles.left}>
-        <p className={styles.heading}>You currently have,</p>
+        <p className={styles.heading}>You currently have</p>
         <div className={styles.coinflex}>
           <p className={styles.unicoins}>
-            <span>{user_unicoin}</span> Unicoins
+            <span>{userdata?.num_unicoins ?? 0}</span> Unicoins
           </p>
+          <p className={styles.or}>or</p>
           <p className={styles.rupees}>
-            <span>{user_balance || 0}</span> Rupees
+            <span>
+              {userdata?.num_unicoins
+                ? (Number(userdata.num_unicoins) / UniCoinValue).toFixed(2)
+                : 0}
+            </span>{" "}
+            Rupees
           </p>
         </div>
-        <p className={styles.converstiondetails}>
-          *{`${unicoin_value} unicoins is equal to 1 rupee.`}
-        </p>
         {err && <p className={styles.converstiondetails}>{err}</p>}
         <div className={styles.converstiondiv}>
           {showinput && (
@@ -75,7 +81,7 @@ export default function RedeemSection({
               placeholder="Unicoins to convert"
             />
           )}
-          <div
+          {/* <div
             className={styles.converbutton}
             style={{ marginLeft: !showinput ? 0 : "15px" }}
             onClick={(e) => {
@@ -87,10 +93,9 @@ export default function RedeemSection({
             }}
           >
             {!showinput ? "Convert unicoins" : "Convert"}
-          </div>
+          </div> */}
         </div>
       </div>
-      <Jasper className={styles.jasper} />
     </div>
   );
 }

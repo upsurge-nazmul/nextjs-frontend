@@ -14,6 +14,10 @@ import ApproveModal from "../../../components/ParentStore/ApproveModal";
 import AvailableAvatarSection from "../../../components/KidStore/AvailableAvatarSection";
 import RequestModal from "../../../components/KidStore/RequestModal";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import { useContext } from "react";
+import { MainContext } from "../../../context/Main";
+import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import RedeemSection from "../../../components/Dashboard/RedeemSection";
 
 export default function KidStore({
   isLogged,
@@ -28,6 +32,7 @@ export default function KidStore({
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
+  const { userdata, setuserdata } = useContext(MainContext);
   const router = useRouter();
   const [showmodal, setshowmodal] = useState(false);
   const [toastdata, settoastdata] = useState({
@@ -39,6 +44,9 @@ export default function KidStore({
     name: "",
     price: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
@@ -62,8 +70,11 @@ export default function KidStore({
         availableUnicoins={userdatafromserver?.num_unicoins || 0}
       />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
+        <KidDashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
+          <div className={styles.redeem}>
+            <RedeemSection />
+          </div>
           <div className={styles.flexLeft}>
             <AvailableAvatarSection
               avatars={avatars}
@@ -72,7 +83,6 @@ export default function KidStore({
             />
           </div>
           <div className={styles.flexRight}>
-            <AvailablePointsSection kidsdata={[userdatafromserver]} />
             <VoucherSection vouchers={vouchers} />
           </div>
         </div>

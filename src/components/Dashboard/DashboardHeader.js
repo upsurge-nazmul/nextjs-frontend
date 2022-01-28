@@ -18,6 +18,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [shownotifications, setshownotifications] = useState(false);
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
     useContext(MainContext);
+
   return (
     <div className={styles.dashboardHeader}>
       {shownotifications && (
@@ -60,6 +61,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
             <Menu
               settoastdata={settoastdata}
               waitilistmenu={userdata?.is_waiting_active}
+              menuType={userdata?.user_type}
             />
           )}
           <img

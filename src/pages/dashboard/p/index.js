@@ -141,7 +141,7 @@ function Dashboard({
                 <div className={styles.kidsSection}>
                   <h2
                     className={styles.heading}
-                    onClick={() => router.push("/mykids")}
+                    onClick={() => router.push("/dashboard/p/mykids")}
                   >
                     My Kids
                     <HeadingArrow />
@@ -176,7 +176,10 @@ function Dashboard({
                 </div>
                 {kids.length > 0 && (
                   <div className={styles.choreSection}>
-                    <h2 className={styles.heading}>
+                    <h2
+                      className={styles.heading}
+                      onClick={() => router.push("/dashboard/p/chores")}
+                    >
                       Approvals
                       <HeadingArrow />
                     </h2>
@@ -186,7 +189,7 @@ function Dashboard({
                           <>
                             <p
                               className={styles.subheading}
-                              onClick={() => router.push("/chores")}
+                              onClick={() => router.push("/dashboard/p/chores")}
                             >
                               Chores
                             </p>
@@ -208,7 +211,7 @@ function Dashboard({
                           <>
                             <p
                               className={styles.subheading}
-                              onClick={() => router.push("/tribes")}
+                              onClick={() => router.push("/dashboard/p/tribes")}
                             >
                               Tribes
                             </p>
@@ -235,7 +238,7 @@ function Dashboard({
                 <div className={styles.gameSection}>
                   <h2
                     className={styles.heading}
-                    onClick={() => router.push("/games")}
+                    onClick={() => router.push("/dashboard/p/games")}
                   >
                     Family Fun
                     <HeadingArrow />

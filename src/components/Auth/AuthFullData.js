@@ -159,6 +159,7 @@ function AuthFullData({
       user_type: usertype,
       phone,
       password,
+      username,
       first_name: firstName,
       last_name: lastName,
     });

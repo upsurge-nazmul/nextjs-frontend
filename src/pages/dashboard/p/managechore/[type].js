@@ -149,6 +149,7 @@ export default function ManageChore({ choredata, childdata }) {
           category: cat,
           assigned_to: assignee.first_name,
           child_id: assignee.id,
+          family_id: assignee.family_id,
           due_date: tt,
           img_url: currentchoretemplate?.img,
           is_reoccurring: interval !== "One Time" ? true : false,
@@ -312,8 +313,6 @@ export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   if (token && params.type !== "add") {
     let choredata = await getChoreData({ id: params.type }, token);
-    console.log(choredata);
-
     if (choredata) {
       let childdata = await getChildData({ id: choredata.child_id }, token);
       if (childdata) {

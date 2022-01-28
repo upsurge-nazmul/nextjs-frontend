@@ -53,6 +53,9 @@
     border-radius: 8px;
     padding: 0 20px;
     margin: 0 !important;
+    &:focus {
+      outline: none;
+    }
   }
 }
 .modernInputBoxdate {

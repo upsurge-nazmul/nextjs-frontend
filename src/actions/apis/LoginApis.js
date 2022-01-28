@@ -108,6 +108,14 @@ const getearlyaccess = (payload) => {
 const resetpass = (payload) => {
   return ApiCalls.postResponse("users/resetpassword", payload);
 };
+
+const genemailotp = (payload) => {
+  return ApiCalls.postResponse(
+    "users/generateemailotp",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const LoginApis = {
   signup,
   setphone,
@@ -133,6 +141,7 @@ const LoginApis = {
   generatepass,
   getearlyaccess,
   resetpass,
+  genemailotp,
 };
 
 export default LoginApis;

@@ -27,7 +27,6 @@ function AuthOtpComponent({
   const router = useRouter();
   useEffect(() => {
     seterror("");
-<<<<<<< HEAD
   }, [password, firstName, phone, mode, OTP]);
 
   async function verifyOtp() {
@@ -45,9 +44,6 @@ function AuthOtpComponent({
   }
   async function resendOtp() {
     setloading(true);
-=======
-  }, [password, firstName, phone, mode]);
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
 
     let response = await LoginApis.genotp({ phone: phone });
     if (response.data.success) {
@@ -57,19 +53,7 @@ function AuthOtpComponent({
       seterror(response.data.message || "Cannot reach server");
     }
   }
-<<<<<<< HEAD
-=======
-  async function verifyOtp() {
-    let response = await LoginApis.verifyotp({ otp: OTP });
-    if (response.data.success) {
-      setuserdata(response.data.data.user);
-      settoastdata({ show: true, msg: response.data.message, type: "success" });
-      localStorage.setItem("islogged", true);
-      setmode("privacy");
-    } else {
-      seterror(response.data.message || "Cannot reach server");
-    }
-  }
+
   // async function resendOtp() {
   //   let response = await LoginApis.genotp({ phone: phone });
   //   if (response.data.success) {
@@ -78,7 +62,6 @@ function AuthOtpComponent({
   //     seterror(response.data.message || "Cannot reach server");
   //   }
   // }
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
   return (
     <div
       className={styles.otp}
@@ -94,7 +77,6 @@ function AuthOtpComponent({
       </div>
       <OTPCustomComponent resetotp={resetotp} setotp={setOTP} size={6} />
       {error && <p className={styles.error}>{error}</p>}
-<<<<<<< HEAD
       <div
         className={styles.resendButton}
         onClick={() => {
@@ -103,11 +85,6 @@ function AuthOtpComponent({
         }}
       >
         Resend OTP
-=======
-
-      <div className={styles.button} onClick={() => verifyOtp()}>
-        Continue
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
       </div>
       {!loading ? (
         <div className={`${styles.button}`} onClick={verifyOtp}>

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../styles/kidDashboard/tribeSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
-import Tribe from "./Tribe";
+import Tribe from "./TribeCard";
+import TribeCardSmall from "./TribeCardSmall";
 function TribeSection({ tribes }) {
   return (
     <div className={styles.tribeSection}>
@@ -12,7 +13,7 @@ function TribeSection({ tribes }) {
 
       <div className={styles.wrapper}>
         {tribes.map((tribe, index) => {
-          return <Tribe data={tribe} key={"tribe" + index} />;
+          return <TribeCardSmall data={tribe} key={"tribe" + index} />;
         })}
       </div>
     </div>

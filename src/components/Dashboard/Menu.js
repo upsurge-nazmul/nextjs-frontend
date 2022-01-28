@@ -10,6 +10,7 @@ import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 function Menu({ settoastdata, menuType, waitilistmenu }) {
+  console.log(menuType);
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
     useContext(MainContext);
   const router = useRouter();
@@ -48,21 +49,21 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
   }, []);
   return (
     <div className={styles.menu} id="menu-main">
-      {menuType !== "kid" && (
-        <p
-          className={styles.tabs}
-          onClick={() => {
-            setshowmenu(false);
-            if (waitilistmenu) {
-              router.push("/dashboard/w/editprofile");
-            } else router.push("/dashboard/p/editprofile");
-          }}
-        >
-          <EditSvg className={styles.editIcon} />
-          Edit profile
-        </p>
-      )}
-      {menuType !== "kid" && !waitilistmenu && (
+      <p
+        className={styles.tabs}
+        onClick={() => {
+          setshowmenu(false);
+          if (waitilistmenu) {
+            router.push("/dashboard/w/editprofile");
+          } else if (menuType === "child") {
+            router.push("/dashboard/k/editprofile");
+          } else router.push("/dashboard/p/editprofile");
+        }}
+      >
+        <EditSvg className={styles.editIcon} />
+        Edit profile
+      </p>
+      {menuType !== "child" && !waitilistmenu && (
         <p
           className={styles.tabs}
           onClick={() => {

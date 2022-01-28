@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/kidDashboard/tribe.module.scss";
 import ChatSvg from "../SVGcomponents/ChatSvg";
 
-function Tribe({ data }) {
+export default function TribeCard({ data }) {
   const demokiddata = {
     image:
       "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQARtruuFZD4r-jkj2vo99Ql8CfWfaFpb7a5zMzyEtm46plv9bRRq5RrCHDsDIGgr2wOeSezORZU6aGohCb4tU",
@@ -16,11 +16,10 @@ function Tribe({ data }) {
         <p className={styles.name}>{demokiddata.name}</p>
         <p className={styles.points}>{demokiddata.members}</p>
       </div>
-      <div className={styles.msg}>
-        <ChatSvg clr="#4166EB" />
+      <div className={styles.chatbtn}>
+        Chat
+        <ChatSvg clr="#ffffff" />
       </div>
     </div>
   );
 }
-
-export default Tribe;

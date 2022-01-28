@@ -56,8 +56,9 @@ function KidDashboard({
     }
   }, [isLogged]);
   useEffect(() => {
+    if (!kiddata) return;
     setuserdata(kiddata);
-  }, []);
+  }, [kiddata]);
   useEffect(() => {
     saveNotificationToken();
     async function saveNotificationToken() {
@@ -88,7 +89,10 @@ function KidDashboard({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={`${styles.liveClassSection}`}>
-              <h2 className={styles.heading}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/k/quest")}
+              >
                 My Knowledge Quests
                 <HeadingArrow />
               </h2>
@@ -108,26 +112,14 @@ function KidDashboard({
                 })}
               </div>
             </div>
-
-            <div className={styles.gameSection}>
-              <h2 className={styles.heading}>
-                My Games
-                <HeadingArrow />
-              </h2>
-
-              <div className={styles.wrapper}>
-                {familyfun.map((data, index) => {
-                  return <GameCard data={data} key={"gamecard" + index} />;
-                })}
-              </div>
-            </div>
-
             <div className={styles.choreSection}>
-              <h2 className={styles.heading}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/k/chores")}
+              >
                 My Chores
                 <HeadingArrow />
               </h2>
-
               {chores.length > 0 ? (
                 <div className={styles.wrapper}>
                   {chores.map((chore, index) => {
@@ -206,7 +198,7 @@ export async function getServerSideProps({ params, req }) {
           choresdata: choresdata || [],
           gamesdata,
           kiddata,
-          liveclassdata,
+          liveclassdata: liveclassdata.slice(2),
           badgeData,
         },
       };

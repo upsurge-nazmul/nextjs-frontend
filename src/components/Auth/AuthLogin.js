@@ -105,7 +105,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
         </p>
       </div>
       {error && <p className={styles.error}>{error}</p>}
-<<<<<<< HEAD
       {!loading ? (
         <div className={`${styles.button}`} onClick={handleSignin}>
           Sign In
@@ -115,11 +114,6 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           <Spinner />
         </div>
       )}
-=======
-      <div className={styles.button} onClick={handleSignin}>
-        Sign In
-      </div>
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
       <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
@@ -154,11 +148,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
             </div>
           );
         }}
-<<<<<<< HEAD
-      />
-=======
       /> */}
->>>>>>> b19c9d4431a35ef9db693cb1385c374b97cdbfe8
       <div className={styles.reset} onClick={() => setmode("reset")}>
         <span> Forgot password?</span>
       </div>

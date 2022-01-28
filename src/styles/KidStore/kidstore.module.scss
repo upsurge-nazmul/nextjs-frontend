@@ -14,228 +14,26 @@
     .mainContent {
       width: 100%;
       display: flex;
+      flex-direction: column;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
+      .redeem {
+        padding: 0 40px 0 40px;
+        margin-bottom: 40px;
+      }
       .flexLeft {
         display: flex;
-        flex-direction: column;
-        width: 70%;
-        padding: 0 10px 0 45px;
-        .gameSection {
-          flex: 3;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            height: fit-content;
-            align-items: center;
-            width: 100%;
-            overflow-x: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: thin;
-          }
-        }
-        .kidsSection {
-          height: fit-content;
-          display: flex;
-          flex-direction: column;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .heads {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            height: 64px;
-            color: rgba(106, 106, 106, 1);
-            font-size: 12px;
-            font-weight: 400;
-            .head1 {
-              margin-left: 89px;
-            }
-            .head2 {
-              margin-left: 16%;
-            }
-            .head3 {
-              margin-left: 6.5%;
-            }
-          }
-          .wrapper {
-            padding: 0 20px 10px 0px;
-          }
-        }
-        .choreSection {
-          margin-top: 15px;
-          display: flex;
-          flex-direction: column;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            margin-top: 20px;
-            width: 100%;
-            scrollbar-width: thin;
-            overflow-y: auto;
-            padding-right: 30px;
-            &::-webkit-scrollbar {
-              width: 19px;
-            }
-
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-            .topuser {
-              display: flex;
-              align-items: center;
-              width: 100%;
-              margin-top: 13px;
-              img {
-                width: 37px;
-                height: 37px;
-                border-radius: 50%;
-                margin-right: 16px;
-              }
-              .name {
-                font-weight: 500;
-                font-size: 16px;
-                color: #4166eb;
-                flex: 1;
-                cursor: pointer;
-              }
-              .votes {
-                color: rgba(144, 144, 144, 1);
-                font-weight: 400;
-                font-size: 10px;
-                font-family: "Roboto", sans-serif;
-                margin-right: 5px;
-              }
-            }
-          }
-        }
-        .liveClassSection {
-          flex: 1;
-          height: 65%;
-          margin-top: 20px;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            width: 100%;
-            margin-top: 20px;
-            padding: 0 20px 10px 0px;
-            /* ===== Scrollbar CSS ===== */
-            /* Firefox */
-            scrollbar-width: thin;
-            /* Chrome, Edge, and Safari */
-            &::-webkit-scrollbar {
-              width: 19px;
-            }
-
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
+        width: 100%;
+        padding: 0 40px 0 45px;
       }
       .flexRight {
         display: flex;
-        flex-direction: column;
         height: 100%;
-        width: 30%;
+        width: 100%;
         padding-right: 50px;
         padding-left: 10px;
         margin-left: 40px;
-        .gameSection {
-          flex: 3;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            height: fit-content;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            overflow-x: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: thin;
-            padding-right: 2%;
-            &::-webkit-scrollbar {
-              width: 19px;
-            }
-
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
-
-        .nokidlivesection {
-          margin-top: 0;
-          .wrapper {
-            height: 83%;
-          }
-        }
       }
     }
 

@@ -71,7 +71,7 @@
       }
       .details {
         font-family: Roboto;
-        font-size: 24px;
+        font-size: 20px;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -83,7 +83,7 @@
         .value {
           font-weight: 700;
         }
-        &:nth-child(3) {
+        &:nth-child(4) {
           margin-bottom: 20px;
         }
       }

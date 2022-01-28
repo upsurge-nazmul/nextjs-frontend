@@ -27,7 +27,7 @@
           height: fit-content;
           display: flex;
           flex-direction: column;
-
+          height: 50vh;
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -64,6 +64,7 @@
           .wrapper {
             padding: 0 30px 10px 10px;
             margin-bottom: 20px;
+            flex: 1;
           }
         }
         .choreSection {

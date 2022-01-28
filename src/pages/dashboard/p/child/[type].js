@@ -43,6 +43,7 @@ function AddKid({ childdata }) {
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
+  const [userName, setuserName] = useState(childdata?.user_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
   const [city, setcity] = useState(childdata?.city || "");
   const [school, setschool] = useState(childdata?.school || "");
@@ -85,6 +86,10 @@ function AddKid({ childdata }) {
   async function addChild() {
     if (!firstName) {
       seterror("First name is required");
+      return;
+    }
+    if (!userName) {
+      seterror("User name is required");
       return;
     }
     if (!dob) {
@@ -145,6 +150,10 @@ function AddKid({ childdata }) {
       seterror("First name is required");
       return;
     }
+    if (!userName) {
+      seterror("User name is required");
+      return;
+    }
     if (password && passisweak) {
       seterror("Weak password");
       return;
@@ -166,6 +175,9 @@ function AddKid({ childdata }) {
     }
     if (lastName && lastName !== childdata.last_name) {
       data.last_name = lastName;
+    }
+    if (userName && userName !== childdata.user_name) {
+      data.user_name = userName;
     }
     if (gender && gender !== childdata.gender) {
       data.gender = gender;
@@ -189,7 +201,6 @@ function AddKid({ childdata }) {
       seterror("No changes done");
       return;
     }
-    console.log(data);
     let response = await DashboardApis.editkids(data);
     if (response && response.data && response.data.success) {
       settoastdata({
@@ -279,6 +290,13 @@ function AddKid({ childdata }) {
                 placeholder="Last name"
               />
             </div>
+            <ModernInputBox
+              value={userName}
+              maxLength={10}
+              setvalue={setuserName}
+              placeholder="Username"
+              extraclass={styles.margin}
+            />
             <ModernInputBox
               type="date"
               placeholder="Date of birth"
