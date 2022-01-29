@@ -93,7 +93,7 @@ export default function ManageTribe({ userdatafromserver, token }) {
             <div className={styles.memberwrapper}>
               {selectedmembers.map((item) => {
                 return (
-                  <div className={styles.member}>
+                  <div className={styles.member} key={item.id}>
                     <img src={item.user_img_url} alt="" />
                     <p className={styles.name}>
                       {item.first_name + " " + item.last_name}
