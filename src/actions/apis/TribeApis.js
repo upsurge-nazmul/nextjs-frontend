@@ -23,6 +23,10 @@ const getTribePosts = (payload, token) => {
 const likePost = (payload, token) => {
   return ApiCalls.postResponse(`tribes/likepost`, payload, token);
 };
+
+const addcomment = (payload, token) => {
+  return ApiCalls.postResponse("tribes/addcomment", payload, token);
+};
 //getchores
 const TribeApis = {
   createtribe,
@@ -31,6 +35,7 @@ const TribeApis = {
   addpost,
   getTribePosts,
   likePost,
+  addcomment,
 };
 
 export default TribeApis;

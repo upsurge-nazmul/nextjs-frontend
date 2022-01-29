@@ -93,6 +93,36 @@ export default function Games({
       });
     }
   }
+  async function handleCommentClick(id, comment) {
+    let res = await TribeApis.addcomment(
+      { post_id: id, comment },
+      getCookie("accesstoken")
+    );
+    if (res && res.data && res.data.success) {
+      let postindex = posts.rows.findIndex((item) => item.id === id);
+      posts.rows[postindex].comments.rows = [
+        res.data.data,
+        ...posts.rows[postindex].comments?.rows,
+      ];
+      posts.rows[postindex].comments.count =
+        posts.rows[postindex].comments.count + 1;
+      setposts((prev) => ({
+        rows: posts.rows,
+        count: prev.count,
+      }));
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: res?.data?.message,
+      });
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: res?.data?.message || "Unable to connet to server",
+      });
+    }
+  }
   return (
     <div className={styles.tribepage}>
       <DashboardLeftPanel type="kid" />
@@ -138,6 +168,7 @@ export default function Games({
                     data={data}
                     key={data.id}
                     handleLike={handleLike}
+                    handleCommentClick={handleCommentClick}
                   />
                 );
               })}
