@@ -5,10 +5,10 @@ import styles from "../styles/GeneralComponents/invoice.module.scss";
 export default function Invoice({ handlesave, data }) {
   return (
     <div className={styles.invoiceBox}>
-      <table cellspacing="0" cellpadding="0">
+      <table cellSpacing="0" cellPadding="0">
         <tbody>
           <tr className="top">
-            <td colspan="8">
+            <td colSpan="8">
               <table>
                 <tbody>
                   <tr>
@@ -111,7 +111,7 @@ export default function Invoice({ handlesave, data }) {
           </tr>
 
           <tr>
-            <td colspan="8" className="sig-container" align="right">
+            <td colSpan="8" className="sig-container" align="right">
               <p style={{ textAlign: "left" }}>
                 <em>
                   This is a system generated invoice and does not require a

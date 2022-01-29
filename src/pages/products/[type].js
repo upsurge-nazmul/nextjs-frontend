@@ -105,9 +105,7 @@ export default function Products() {
     <div className={styles.pricingPage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
-        showauth={showauth}
         stickyheader={stickyheader}
-        setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
         setshowauth={setshowauth}
