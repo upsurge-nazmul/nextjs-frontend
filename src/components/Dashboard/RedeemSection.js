@@ -3,7 +3,7 @@ import styles from "../../styles/Dashboard/redeemsection.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import ModernInputBox from "../../components/ModernInputBox";
 import DashboardApis from "../../actions/apis/DashboardApis";
-import { UniCoinValue, unicoin_value } from "../../../config";
+import { UniCoinValue } from "../../../config";
 import { MainContext } from "../../context/Main";
 export default function RedeemSection({
   unicoins,
