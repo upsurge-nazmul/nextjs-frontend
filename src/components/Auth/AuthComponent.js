@@ -8,7 +8,6 @@ import AuthSelection from "./AuthSelection";
 import AuthLearner from "./AuthLearner";
 import AuthParent from "./AuthParent";
 import AuthFullData from "./AuthFullData";
-import AuthResetPass from "./AuthResetPass";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
@@ -18,12 +17,11 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName } = useContext(MainContext);
   const [userdata, setuserdata] = useState(null);
-  const [mode, setmode] = useState(authmode || "login");
+  const [mode, setmode] = useState("login");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [usertype, setusertype] = useState("parent");
-  const [username, setusername] = useState("");
   const [signupmethod, setsignupmethod] = useState("email");
   const [error, seterror] = useState(null);
   const [toastdata, settoastdata] = useState({
@@ -34,9 +32,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
 
   useEffect(() => {
     if (!showauth) {
-      if (!authmode) {
-        setmode("login");
-      }
+      setmode("login");
       setemail("");
       setpassword("");
       setphone("");
@@ -56,7 +52,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //for back button in auth
   function handleBack() {
     if (mode === "learner" || mode === "parent") {
-      setmode("login");
+      setmode("selection");
     } else if (mode === "phone" || mode === "email" || mode === "otp") {
       setmode("parent");
     } else {
@@ -96,7 +92,6 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
               {mode === "login" ? (
                 <AuthLogin
                   settoastdata={settoastdata}
-                  setmode={setmode}
                   error={error}
                   seterror={seterror}
                 />
@@ -120,7 +115,6 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   email={email}
                   settoastdata={settoastdata}
                   setmode={setmode}
-                  mode={mode}
                   phone={phone}
                   setphone={setphone}
                   error={error}
@@ -129,8 +123,6 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   setpassword={setpassword}
                   signupmethod={signupmethod}
                   usertype={usertype}
-                  username={username}
-                  setusername={setusername}
                 />
               ) : mode === "phone" ? (
                 <AuthPhone
@@ -144,29 +136,15 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                 <AuthOtpComponent
                   phone={phone}
                   error={error}
-                  mode={mode}
                   email={email}
                   password={password}
                   seterror={seterror}
                   setuserdata={setuserdata}
                   settoastdata={settoastdata}
                   setmode={setmode}
-                  username={username}
-                  setusername={setusername}
                 />
               ) : mode === "privacy" ? (
                 <AuthPrivacy setmode={setmode} />
-              ) : mode === "reset" ? (
-                <AuthResetPass
-                  settoastdata={settoastdata}
-                  usertype={usertype}
-                  setmode={setmode}
-                  error={error}
-                  setemail={setemail}
-                  seterror={seterror}
-                  email={email}
-                  setsignupmethod={setsignupmethod}
-                />
               ) : null}
             </div>
           </div>

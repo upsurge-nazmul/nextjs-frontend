@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/kidDashboard/tribe.module.scss";
 import ChatSvg from "../SVGcomponents/ChatSvg";
 
-export default function TribeCard({ data }) {
+export default function TribeCard({ data, onClick }) {
   const demokiddata = {
     image:
       "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQARtruuFZD4r-jkj2vo99Ql8CfWfaFpb7a5zMzyEtm46plv9bRRq5RrCHDsDIGgr2wOeSezORZU6aGohCb4tU",
@@ -11,10 +11,21 @@ export default function TribeCard({ data }) {
   };
   return (
     <div className={styles.tribe}>
-      <img src={demokiddata.image} alt="" className={styles.grpimg} />
-      <div className={styles.nameandpoints}>
-        <p className={styles.name}>{demokiddata.name}</p>
-        <p className={styles.points}>{demokiddata.members}</p>
+      <img
+        onClick={onClick}
+        src={
+          data.tribe_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+        }
+        alt=""
+        className={styles.grpimg}
+      />
+      <div className={styles.nameandpoints} onClick={onClick}>
+        <p className={styles.name}>{data.name}</p>
+        <p className={styles.points}>
+          {data?.description.length > 60
+            ? data.description.substring(0, 60) + "..."
+            : ""}
+        </p>
       </div>
       <div className={styles.chatbtn}>
         Chat

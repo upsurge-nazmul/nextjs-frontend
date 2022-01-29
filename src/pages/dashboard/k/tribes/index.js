@@ -12,7 +12,9 @@ import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import TribeCard from "../../../../components/KidDashboard/TribeCard";
-export default function Games({ userdatafromserver, token }) {
+import TribeApis from "../../../../actions/apis/TribeApis";
+export default function Games({ userdatafromserver, token, tribes }) {
+  console.log(tribes);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Tribes");
@@ -26,7 +28,6 @@ export default function Games({ userdatafromserver, token }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const tribes = ["", "", ""];
   return (
     <div className={styles.tribepage}>
       <DashboardLeftPanel type="kid" />
@@ -57,17 +58,17 @@ export default function Games({ userdatafromserver, token }) {
                 {tribes.map((item, index) => {
                   return (
                     <TribeCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
+                      data={item}
+                      key={item.id}
+                      onClick={() =>
+                        router.push("/dashboard/k/tribes/" + item.id)
                       }
-                      data={Game_Data[item]}
-                      key={"kidcomponent" + index}
                     />
                   );
                 })}
               </div>
             </div>
-            <div className={styles.availableSection}>
+            {/* <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Recent Tribe Games
                 <HeadingArrow />
@@ -85,7 +86,7 @@ export default function Games({ userdatafromserver, token }) {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Popular Tribes
@@ -119,6 +120,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    let usertribes = await TribeApis.getTribes(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -133,6 +135,10 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          tribes:
+            usertribes && usertribes.data && usertribes.data.success
+              ? usertribes.data.data
+              : [],
           token: token,
         },
       };

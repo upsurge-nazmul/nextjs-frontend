@@ -8,9 +8,11 @@
   padding: 15px;
   border-radius: 6px;
   margin-right: 20px;
+  overflow: hidden;
   .grpimg {
     width: 100%;
     height: auto;
+    max-height: 130px;
     object-fit: cover;
     cursor: pointer;
     border-radius: 6px;
@@ -22,6 +24,7 @@
     width: 100%;
     margin-top: 20px;
     cursor: pointer;
+    flex: 1;
     .name {
       font-size: 18px;
       text-transform: capitalize;
@@ -32,6 +35,7 @@
       font-size: 14px;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
+      overflow-y: auto;
     }
   }
   .chatbtn {

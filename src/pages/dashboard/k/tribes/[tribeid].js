@@ -4,18 +4,20 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import GameCard from "../../../../components/Dashboard/GameCard";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../../../styles/kidDashboard/games.module.scss";
+import styles from "../../../../styles/kidDashboard/tribemainpage.module.scss";
 import HeadingArrow from "../../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
+import TribeApis from "../../../../actions/apis/TribeApis";
 import { Game_Data } from "../../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import TribeCard from "../../../../components/KidDashboard/TribeCard";
-export default function Games({ userdatafromserver, token }) {
+export default function Games({ userdatafromserver, tribedetails }) {
   // modes are different pages like home,kids,store,payments,notifications
+  console.log(tribedetails);
   const { setuserdata } = useContext(MainContext);
-  const [mode, setmode] = useState("Tribes");
+  const [mode, setmode] = useState("Tribe");
   const [recent_games, setrecent_games] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -26,9 +28,8 @@ export default function Games({ userdatafromserver, token }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const tribes = ["", "", ""];
   return (
-    <div className={styles.gamesPage}>
+    <div className={styles.tribepage}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
 
@@ -40,64 +41,21 @@ export default function Games({ userdatafromserver, token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={styles.recentSection}>
-              <h2 className={styles.heading}>
-                My Tribes
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper} id="gamecardwrapper2">
-                {tribes.map((item, index) => {
-                  return (
-                    <TribeCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
-                      data={Game_Data[item]}
-                      key={"kidcomponent" + index}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.availableSection}>
-              <h2 className={styles.heading}>
-                Recent Tribe Games
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {Object.keys(Game_Data).map((item, index) => {
-                  return (
-                    <GameCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
-                      data={Game_Data[item]}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.availableSection}>
-              <h2 className={styles.heading}>
-                Popular Tribes
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {Object.keys(Game_Data).map((item, index) => {
-                  return (
-                    <TribeCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
-                      data={Game_Data[item]}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
+            <div className={styles.top}>
+              <img
+                src={
+                  tribedetails.tribe_img_url ||
+                  "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                }
+                alt=""
+              />
+              <div className={styles.right}>
+                <p className={styles.name}>{tribedetails.name}</p>
+                <p className={styles.description}>{tribedetails.description}</p>
               </div>
             </div>
           </div>
+          <div className={styles.flexRight}></div>
         </div>
       </div>
     </div>
@@ -121,10 +79,18 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let tribedata = await TribeApis.gettribedetail(
+        { id: params.tribeid },
+        token
+      );
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          tribedetails:
+            tribedata && tribedata.data && tribedata.data.success
+              ? tribedata.data.data
+              : null,
           token: token,
         },
       };
