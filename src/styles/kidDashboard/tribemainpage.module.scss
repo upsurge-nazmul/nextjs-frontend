@@ -18,31 +18,62 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 100%;
+        width: 70%;
         padding: 0 40px 0 45px;
         .top {
           display: flex;
+          height: fit-content;
+          width: 100%;
           .right {
             margin-left: 40px;
             .description {
               height: 100px;
-              width: 50vw;
-              margin-top: 20px;
+              margin-top: 10px;
               line-height: 22px;
               color: rgb(37, 37, 37);
               font-weight: 400;
             }
             .name {
               font-weight: 500;
-              font-size: 26px;
+              font-size: 28px;
             }
           }
 
           img {
             border-radius: 6px;
             width: 180px;
-            height: 180px;
           }
+        }
+        .postdiv {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          .postarea {
+            border-radius: 6px;
+            outline: none;
+            border: none;
+            resize: none;
+            margin-top: 20px;
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+          }
+          .postbtn {
+            border-radius: 6px;
+            background-color: #4166eb;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            justify-content: center;
+            width: 130px;
+            height: 45px;
+            color: white;
+          }
+        }
+        .tribehead {
+          font-size: 26px;
+          line-height: 56px;
+          font-weight: 500;
         }
         .recentSection {
           height: fit-content;
@@ -117,7 +148,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 40%;
+        width: 30%;
         padding-right: 50px;
         padding-left: 10px;
         .familyfunSection {
