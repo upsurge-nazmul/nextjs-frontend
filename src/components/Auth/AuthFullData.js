@@ -305,7 +305,7 @@ function AuthFullData({
       {error && <p className={styles.error}>{error}</p>}
 
       {!loading ? (
-        <div className={`${styles.button}`} onClick={handleUpdateData}>
+        <div className={`${styles.button}`} onClick={genotp}>
           Continue
         </div>
       ) : (

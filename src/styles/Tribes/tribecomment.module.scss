@@ -1,0 +1,128 @@
+.comment {
+  margin-top: 10px;
+  border-radius: 6px;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  width: 100%;
+  .lefticonsection {
+    position: relative;
+    .vertical {
+      width: 2px;
+      height: 100%;
+      border-radius: 2px;
+
+      background-color: rgb(107, 107, 107);
+    }
+    .horizontal {
+      height: 2px;
+      border-radius: 2px;
+      background-color: rgb(107, 107, 107);
+      width: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 100%;
+    }
+    margin-right: 10px;
+  }
+  .rightsection {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    flex-direction: column;
+    .top {
+      display: flex;
+      align-items: center;
+      img {
+        height: 60px;
+        width: 60px;
+        border-radius: 100px;
+        margin-right: 10px;
+      }
+
+      .name {
+        font-size: 14px;
+      }
+      .timestamp {
+        margin-left: auto;
+        font-size: 10px;
+      }
+    }
+    .commentdata {
+      margin-top: 10px;
+      font-size: 14px;
+      padding-left: 10px;
+    }
+    .bottomBar {
+      margin-top: 10px;
+      padding-left: 5px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      input {
+        outline: none;
+        height: 25px;
+        padding: 0 10px;
+        border-radius: 4px;
+        margin-right: 10px;
+        border: 1px solid rgb(192, 192, 192);
+      }
+      .replyBtn {
+        font-size: 12px;
+        background-color: rgb(209, 209, 209);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    .minicomment {
+      border-top: 1px solid rgb(185, 185, 185);
+      margin-top: 20px;
+      display: flex;
+      padding-top: 20px;
+      align-items: center;
+
+      .commentbtn {
+        margin-left: 20px;
+        height: 35px;
+        background-color: rgb(216, 216, 216);
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+    }
+    .subcomments {
+      width: 100%;
+    }
+  }
+}
+
+.subcomment {
+  margin: 0;
+  padding: 0;
+  &:first-child {
+    margin-top: 10px;
+    .lefticonsection {
+      .vertical {
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
+      }
+    }
+  }
+  &:last-child {
+    .lefticonsection {
+      .vertical {
+        width: 2px;
+        height: 50px;
+        border-radius: 2px;
+        background-color: rgb(107, 107, 107);
+      }
+      .horizontal {
+        transform: translateY(0);
+        top: 50px;
+      }
+    }
+  }
+}

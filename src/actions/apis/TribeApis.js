@@ -27,6 +27,10 @@ const likePost = (payload, token) => {
 const addcomment = (payload, token) => {
   return ApiCalls.postResponse("tribes/addcomment", payload, token);
 };
+
+const leaderboard = (payload, token) => {
+  return ApiCalls.getResponse(`tribes/leaderboard`, payload, token);
+};
 //getchores
 const TribeApis = {
   createtribe,
@@ -36,6 +40,7 @@ const TribeApis = {
   getTribePosts,
   likePost,
   addcomment,
+  leaderboard,
 };
 
 export default TribeApis;

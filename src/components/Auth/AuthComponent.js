@@ -21,6 +21,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [username, setusername] = useState("");
   const [usertype, setusertype] = useState("parent");
   const [signupmethod, setsignupmethod] = useState("email");
   const [error, seterror] = useState(null);
@@ -120,6 +121,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   error={error}
                   password={password}
                   seterror={seterror}
+                  setusername={setusername}
+                  username={username}
                   setpassword={setpassword}
                   signupmethod={signupmethod}
                   usertype={usertype}

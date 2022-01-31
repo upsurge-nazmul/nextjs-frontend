@@ -5,6 +5,7 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentIcon from "@mui/icons-material/Comment";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
+import TribeComment from "./TribeComment";
 export default function TribePost({ data, handleLike, handleCommentClick }) {
   const [showcommentbar, setshowcommentbar] = useState(false);
   const [comment, setcomment] = useState("");
@@ -60,18 +61,13 @@ export default function TribePost({ data, handleLike, handleCommentClick }) {
             </div>
             {data.comments.count > 0 &&
               data.comments.rows.map((commentdata) => {
-                console.log("comment", commentdata);
                 return (
-                  <div key={commentdata.id} className={styles.comment}>
-                    <div className={styles.top}>
-                      <img src={commentdata.user_img_url} alt="" />
-                      <p className={styles.name}>{commentdata.first_name}</p>
-                      <p className={styles.timestamp}>
-                        {getRelativeTime(Number(commentdata.timestamp))}
-                      </p>
-                    </div>
-                    <p className={styles.commentdata}>{commentdata.comment}</p>
-                  </div>
+                  <TribeComment
+                    key={commentdata.id}
+                    postId={data.id}
+                    data={commentdata}
+                    handleCommentClick={handleCommentClick}
+                  />
                 );
               })}
           </div>

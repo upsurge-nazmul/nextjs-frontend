@@ -20,8 +20,8 @@ export default function Games({
   userdatafromserver,
   tribedetails,
   tribeposts,
+  tribeleaderboard,
 }) {
-  console.log(tribeposts);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Tribe");
@@ -74,17 +74,19 @@ export default function Games({
     let res = await TribeApis.likePost({ id }, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
       let postindex = posts.rows.findIndex((item) => item.id === id);
-      posts.rows[postindex].is_liked = true;
-      posts.rows[postindex].likes = posts.rows[postindex].likes + 1;
+
+      if (res.data.data === "Disliked") {
+        posts.rows[postindex].is_liked = false;
+        posts.rows[postindex].likes =
+          posts.rows[postindex].likes > 0 ? posts.rows[postindex].likes - 1 : 0;
+      } else {
+        posts.rows[postindex].is_liked = true;
+        posts.rows[postindex].likes = posts.rows[postindex].likes + 1;
+      }
       setposts((prev) => ({
         rows: posts.rows,
         count: prev.count,
       }));
-      settoastdata({
-        show: true,
-        type: "success",
-        msg: res?.data?.message,
-      });
     } else {
       settoastdata({
         show: true,
@@ -93,19 +95,52 @@ export default function Games({
       });
     }
   }
-  async function handleCommentClick(id, comment) {
-    let res = await TribeApis.addcomment(
-      { post_id: id, comment },
-      getCookie("accesstoken")
-    );
+  async function handleCommentClick(id, comment, super_comment_id) {
+    let modal = { post_id: id, comment };
+    if (super_comment_id) {
+      modal.super_comment_id = super_comment_id;
+    }
+    let res = await TribeApis.addcomment(modal, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
       let postindex = posts.rows.findIndex((item) => item.id === id);
-      posts.rows[postindex].comments.rows = [
-        res.data.data,
-        ...posts.rows[postindex].comments?.rows,
-      ];
-      posts.rows[postindex].comments.count =
-        posts.rows[postindex].comments.count + 1;
+      if (super_comment_id) {
+        let supercommentindex = posts.rows[postindex].comments.rows.findIndex(
+          (item) => item.id === super_comment_id
+        );
+        if (supercommentindex === -1) {
+          router.reload();
+          return;
+        }
+        posts.rows[postindex].comments.rows[
+          supercommentindex
+        ].sub_comments.rows = [
+          {
+            ...res.data.data,
+            user_img_url: userdatafromserver.user_img_url,
+            first_name: userdatafromserver.first_name,
+            last_name: userdatafromserver.last_name,
+          },
+          ...posts.rows[postindex].comments.rows[supercommentindex].sub_comments
+            .rows,
+        ];
+        posts.rows[postindex].comments.rows[
+          supercommentindex
+        ].sub_comments.count =
+          posts.rows[postindex].comments.rows[supercommentindex].sub_comments
+            .count + 1;
+      } else {
+        posts.rows[postindex].comments.rows = [
+          {
+            ...res.data.data,
+            user_img_url: userdatafromserver.user_img_url,
+            first_name: userdatafromserver.first_name,
+            last_name: userdatafromserver.last_name,
+          },
+          ...posts.rows[postindex].comments?.rows,
+        ];
+        posts.rows[postindex].comments.count =
+          posts.rows[postindex].comments.count + 1;
+      }
       setposts((prev) => ({
         rows: posts.rows,
         count: prev.count,
@@ -123,6 +158,7 @@ export default function Games({
       });
     }
   }
+
   return (
     <div className={styles.tribepage}>
       <DashboardLeftPanel type="kid" />
@@ -175,7 +211,7 @@ export default function Games({
             </div>
           </div>
           <div className={styles.flexRight}>
-            <TribeLeaderboard />
+            <TribeLeaderboard data={tribeleaderboard} />
           </div>
         </div>
       </div>
@@ -208,6 +244,10 @@ export async function getServerSideProps({ params, req }) {
         { id: params.tribeid },
         token
       );
+      let tribeleaderboard = await TribeApis.leaderboard(
+        { id: params.tribeid },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -220,6 +260,12 @@ export async function getServerSideProps({ params, req }) {
             tribeposts && tribeposts.data && tribeposts.data.success
               ? tribeposts.data.data
               : { rows: [], count: 0 },
+          tribeleaderboard:
+            tribeleaderboard &&
+            tribeleaderboard.data &&
+            tribeleaderboard.data.success
+              ? tribeleaderboard.data.data
+              : [],
           token: token,
         },
       };
