@@ -56,6 +56,7 @@ export default function TribeComment({
             {data.sub_comments.rows.map((subcomment, index) => {
               return (
                 <TribeComment
+                  key={subcomment.id}
                   subcomment={true}
                   data={subcomment}
                   postId={postId}

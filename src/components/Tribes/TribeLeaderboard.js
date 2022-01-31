@@ -8,7 +8,7 @@ export default function TribeLeaderboard({ data }) {
       <div className={styles.wrapper}>
         {data.map((item) => {
           return (
-            <div className={styles.row}>
+            <div className={styles.row} key={item.id}>
               <img src={item.user_img_url} alt="" />
               <div className={styles.right}>
                 <p className={styles.name}>
