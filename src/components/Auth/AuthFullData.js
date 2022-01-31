@@ -167,10 +167,10 @@ function AuthFullData({
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
-      console.log("sadasdasd");
       if (mode === "otp") {
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
+      setCookie("accesstoken", response.data.data.token);
       setmode("otp");
     }
     setloading(false);

@@ -31,7 +31,7 @@ function AuthOtpComponent({
 
   async function verifyOtp() {
     setloading(true);
-    let response = await LoginApis.verifyotp({ otp: OTP });
+    let response = await LoginApis.verifyotp({ otp: OTP, phone });
     if (response.data.success) {
       setuserdata(response.data.data.user);
       settoastdata({ show: true, msg: response.data.message, type: "success" });
