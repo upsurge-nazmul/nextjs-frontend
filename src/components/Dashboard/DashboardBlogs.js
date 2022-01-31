@@ -20,7 +20,10 @@ export default function DashboardBlogs({ blogs }) {
   }
   return (
     <div className={styles.dashboardblogs}>
-      <h2 className={styles.heading} onClick={() => router.push("/games")}>
+      <h2
+        className={styles.heading}
+        onClick={() => router.push("/dashboard/p/blogs")}
+      >
         Blogs
         <HeadingArrow />
       </h2>

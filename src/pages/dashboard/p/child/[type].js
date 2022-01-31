@@ -124,6 +124,7 @@ function AddKid({ childdata }) {
       firstName,
       lastName,
       gender,
+      username: userName,
       dob: new Date(dob).getTime(),
       image: img || "https://i.ibb.co/v3vVV8r/default-avatar.png",
       email: email,

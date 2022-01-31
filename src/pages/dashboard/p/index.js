@@ -235,39 +235,6 @@ function Dashboard({
                 )}
               </div>
               <div className={styles.flexRight} id="rightpanel">
-                <div className={styles.gameSection}>
-                  <h2
-                    className={styles.heading}
-                    onClick={() => router.push("/dashboard/p/games")}
-                  >
-                    Family Fun
-                    <HeadingArrow />
-                  </h2>
-                  <div className={styles.wrapper} id="gamecardwrapper">
-                    {Object.keys(Game_Data).map((item, index) => {
-                      return (
-                        <div
-                          className={styles.gameitem}
-                          onClick={() =>
-                            router.push(
-                              "/dashboard/p/game/" +
-                                Game_Data[item].name.replace(/ /g, "")
-                            )
-                          }
-                          key={"familyfum" + index}
-                        >
-                          <img src={`/images/games/${item}.jpg`} alt="" />
-                          <p className={styles.calccardtitle}>
-                            {Game_Data[item].name}
-                          </p>
-                          <p className={styles.calccardsubtitle}>
-                            {Game_Data[item].description}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
                 <DashboardBlogs blogs={blogdata} />
               </div>
             </div>
