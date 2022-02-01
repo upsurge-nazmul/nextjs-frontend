@@ -15,8 +15,12 @@ import ChoreApis from "../../../../actions/apis/ChoreApis";
 import { choretemplates } from "../../../../helpers/choretemplates";
 import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
-
-export default function ManageChore({ choredata, childdata }) {
+import LoginApis from "../../../../actions/apis/LoginApis";
+export default function ManageChore({
+  choredata,
+  childdata,
+  userdatafromserver,
+}) {
   const router = useRouter();
   const { type, template, templatecat } = router.query;
   const templatename = template?.replace(/-/g, " ");
@@ -127,6 +131,17 @@ export default function ManageChore({ choredata, childdata }) {
         settoastdata({
           show: true,
           msg: "Add Assignee",
+          type: "error",
+        });
+        return;
+      }
+      if (
+        !userdatafromserver.plan_name ||
+        userdatafromserver.plan_name === "Free"
+      ) {
+        settoastdata({
+          show: true,
+          msg: "Please buy a subscription first",
           type: "error",
         });
         return;
@@ -311,19 +326,56 @@ export default function ManageChore({ choredata, childdata }) {
 }
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
-  if (token && params.type !== "add") {
-    let choredata = await getChoreData({ id: params.type }, token);
-    if (choredata) {
-      let childdata = await getChildData({ id: choredata.child_id }, token);
-      if (childdata) {
-        return { props: { choredata, childdata } };
-      } else {
-        return { props: { choredata: choredata, childdata: null } };
-      }
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg: msg || "Error" },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
     } else {
-      return { props: { choredata: null, childdata: null } };
+      if (params.type !== "add") {
+        let choredata = await getChoreData({ id: params.type }, token);
+        if (choredata) {
+          let childdata = await getChildData({ id: choredata.child_id }, token);
+          if (childdata) {
+            return {
+              props: {
+                choredata,
+                childdata,
+                userdatafromserver: response.data.data,
+              },
+            };
+          } else {
+            return { props: { choredata: choredata, childdata: null } };
+          }
+        } else {
+          return { props: { choredata: null, childdata: null } };
+        }
+      } else {
+        return {
+          props: {
+            choredata: null,
+            childdata: null,
+            userdatafromserver: response.data.data,
+          },
+        };
+      }
     }
-  } else return { props: { choredata: null, childdata: null } };
+  } else
+    return {
+      props: { isLogged: false, msg: "cannot get token", choresdata: [] },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
 }
 async function getChildData(id, token) {
   let response = await DashboardApis.getChildDetails(id, token);

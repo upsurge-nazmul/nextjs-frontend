@@ -16,7 +16,8 @@ import ChoreApis from "../../../actions/apis/ChoreApis";
 import ChorePending from "../../../components/Chores/ChorePending";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 
-function ChoresPage({ choresdata, isLogged }) {
+function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
+  console.log(userdatafromserver);
   const [mode, setmode] = useState("chores");
   const router = useRouter();
   const [dataloaded, setdataloaded] = useState(false);
@@ -165,7 +166,17 @@ function ChoresPage({ choresdata, isLogged }) {
                 <div
                   className={styles.button}
                   onClick={() => {
-                    setshowmodal(true);
+                    if (
+                      !userdatafromserver.plan_name ||
+                      userdatafromserver.plan_name === "Free"
+                    ) {
+                      settoastdata({
+                        show: true,
+                        msg: "Please buy a subscription first",
+                        type: "error",
+                      });
+                      return;
+                    } else setshowmodal(true);
                   }}
                 >
                   New Chore
@@ -230,6 +241,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           choresdata,
+          userdatafromserver: response.data.data,
           msg: "",
         },
       };
