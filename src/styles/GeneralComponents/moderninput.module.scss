@@ -8,6 +8,15 @@
   input {
     z-index: 0;
   }
+  .tooltip {
+    position: absolute;
+    right: 10px;
+    color: rgb(138, 138, 138);
+    .infoicon {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
   .dateplaceholder,
   .placeholder {
     position: absolute;

@@ -1,22 +1,24 @@
 .choresPage {
   background-color: #f4f5f7;
-  height: 100vh;
   width: 100vw;
   display: flex;
   overflow: hidden;
-
+  height: 100%;
   .contentWrapper {
-    height: 100vh;
+    height: 100%;
     flex: 1;
     display: flex;
+    max-height: 100vh;
     width: 100%;
     max-width: calc(100vw - 300px);
     flex-direction: column;
+    overflow-y: auto;
     .mainContent {
       width: 100%;
       display: flex;
       overflow-y: auto;
-      margin-top: 20px;
+      padding-top: 20px;
+      height: 100%;
       scrollbar-width: thin;
       .flexLeft {
         display: flex;
@@ -27,8 +29,8 @@
         .pendingChoresSection {
           height: fit-content;
           display: flex;
+          height: 50%;
           flex-direction: column;
-
           .heading {
             font-weight: 500;
             font-size: 25px;
@@ -64,6 +66,9 @@
           }
           .wrapper {
             padding: 0 20px 10px 0px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             margin-bottom: 20px;
           }
         }
@@ -71,6 +76,7 @@
           margin-top: 15px;
           display: flex;
           flex-direction: column;
+          height: 50%;
           .headingWrapper {
             display: flex;
             .heading {
@@ -92,6 +98,8 @@
           }
 
           .wrapper {
+            display: flex;
+            height: 100%;
             margin-top: 20px;
             padding: 0 20px 10px 0px;
           }

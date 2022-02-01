@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "../styles/GeneralComponents/moderninput.module.scss";
 import CustomDatePicker from "./CustomDatePicker";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ReactTooltip from "react-tooltip";
+import { onlyText } from "../helpers/validationHelpers";
 export default function ModernInputBox({
   value,
   setvalue,
@@ -18,6 +21,9 @@ export default function ModernInputBox({
   numOnly,
   disabled,
   wrapperclassname,
+  textOnly,
+  tooltip,
+  tooltipid,
 }) {
   return (
     <div
@@ -63,10 +69,21 @@ export default function ModernInputBox({
                   if (numOnly && isNaN(e.target.value)) {
                     return;
                   }
+                  if (textOnly && !onlyText(e.target.value)) {
+                    return;
+                  }
                   setvalue(e.target.value);
                 }
           }
         />
+      )}
+      {tooltip && (
+        <div data-tip data-for={tooltipid} className={styles.tooltip}>
+          <InfoOutlinedIcon className={styles.infoicon} />
+          <ReactTooltip id={tooltipid} type="dark" effect="solid">
+            <p>{tooltip}</p>
+          </ReactTooltip>
+        </div>
       )}
     </div>
   );

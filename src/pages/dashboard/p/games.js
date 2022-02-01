@@ -122,10 +122,7 @@ function Games() {
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.recentSection}>
-              <h2 className={styles.heading}>
-                Recently Played
-                <HeadingArrow />
-              </h2>
+              <h2 className={styles.heading}>Recently Played</h2>
               <div className={styles.wrapper} id="gamecardwrapper2">
                 {recent_games.map((item, index) => {
                   return (
@@ -141,10 +138,7 @@ function Games() {
               </div>
             </div>
             <div className={styles.availableSection}>
-              <h2 className={styles.heading}>
-                Available Games
-                <HeadingArrow />
-              </h2>
+              <h2 className={styles.heading}>Available Games</h2>
               <div className={styles.wrapper}>
                 {Object.keys(data).map((item, index) => {
                   return (
@@ -152,6 +146,7 @@ function Games() {
                       onCLick={() =>
                         handlegameclick(data[item].name.replace(/ /g, ""))
                       }
+                      cardstyle={{ marginBottom: "20px", height: "320px" }}
                       data={data[item]}
                       key={"chorecomponent" + index}
                     />

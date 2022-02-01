@@ -47,10 +47,10 @@ export default function DashboardBlogs({ blogs }) {
                 <div className={styles.title}>{item.title}</div>
                 <div className={styles.content}>
                   {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
-                  250
+                  150
                     ? getdatafromraw(item.content)
                         .replace(/<[^>]+>/g, "")
-                        .substring(0, 250) + "..."
+                        .substring(0, 150) + "..."
                     : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
                 </div>
               </div>

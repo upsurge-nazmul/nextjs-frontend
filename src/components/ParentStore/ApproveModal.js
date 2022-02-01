@@ -7,6 +7,7 @@ import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground";
 import displayRazorpay from "../../actions/RazorPay";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
 import DashbardApis from "../../actions/apis/DashboardApis";
@@ -81,6 +82,9 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
               className={styles.background}
               onClick={() => setshowmodal(false)}
             ></div>
+            <div className={styles.cross} onClick={() => setshowmodal(false)}>
+              <CancelOutlinedIcon className={styles.icon} />
+            </div>
             <div className={styles.approveModalcontainer}>
               <div className={styles.heading}>
                 <BackButtonSvg

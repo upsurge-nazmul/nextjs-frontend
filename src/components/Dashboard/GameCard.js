@@ -3,11 +3,12 @@ import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 import GameSvg from "../SVGcomponents/GameSvg";
 
-function GameCard({ data, onCLick }) {
+function GameCard({ data, onCLick, cardstyle }) {
   const router = useRouter();
   return (
     <div
       className={styles.gameCard}
+      style={cardstyle}
       onClick={onCLick ? onCLick : () => router.push("/gamepage")}
     >
       <img
@@ -18,8 +19,12 @@ function GameCard({ data, onCLick }) {
         alt=""
       />
       <div className={styles.contentWrapper}>
-        <p className={styles.title}>{data?.name || "Test Card"}</p>
-        <p className={styles.detail}>{data?.description || "Test Card"}</p>
+        <p className={styles.title}>{data?.name || ""}</p>
+        <p className={styles.detail}>
+          {data?.description.length > 50
+            ? data.description.substring(0, 50) + "..."
+            : data.description || ""}
+        </p>
         <div className={styles.chatbtn}>
           Play
           <GameSvg className={styles.icon} />

@@ -13,17 +13,17 @@
     flex-direction: column;
     .mainContent {
       width: 100%;
-      height: max-content;
+      height: 100%;
       display: flex;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
+      padding-bottom: 20px;
       .flexLeft {
         display: flex;
-        --height: 100vh;
+        height: 100%;
         align-items: stretch;
         flex-direction: column;
-        height: var(--height);
         width: 60%;
         max-width: 950px;
         padding: 0 10px 0 45px;
@@ -332,7 +332,15 @@
         }
       }
     }
-
+    .nokidmaincontent {
+      height: fit-content;
+      .flexLeft {
+        height: 100%;
+        .kidsSection {
+          height: 100%;
+        }
+      }
+    }
     .container {
       padding: 20px;
       overflow-y: auto;

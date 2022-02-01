@@ -18,6 +18,7 @@ import { getIndianTime } from "../../../helpers/timehelpers";
 import PaymentsApi from "../../../actions/apis/PaymentsApi";
 import { MainContext } from "../../../context/Main";
 export default function Payments({ pricing_details, userdatafromserver }) {
+  console.log(userdatafromserver);
   const [mode, setmode] = useState("Payments");
   const router = useRouter();
   const [current_plan, setcurrent_plan] = useState(

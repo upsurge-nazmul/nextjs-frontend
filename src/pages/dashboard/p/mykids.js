@@ -12,6 +12,10 @@ import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import styles from "../../../styles/mykids/mykids.module.scss";
 import Toast from "../../../components/Toast";
+import { Calc_Data } from "../../../static_data/Calc_Data";
+import Image from "next/image";
+import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
+import FillSpace from "../../../components/Dashboard/FillSpace";
 
 export default function GoalWizard({
   choresdata,
@@ -66,19 +70,18 @@ export default function GoalWizard({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.kidsSection}>
-              <h2
+              {/* <h2
                 className={styles.heading}
                 onClick={() => router.push("/mykids")}
               >
                 My Kids
-                <HeadingArrow />
-              </h2>
+              </h2> */}
               {kids.length > 0 && (
                 <div className={styles.heads}>
                   <p className={styles.blacnkhead1}></p>
                   <p className={styles.head1}>CHILD INFO</p>
                   <p className={styles.head2}>PENDING CHORES</p>
-                  <p className={styles.head3}>COURSE PROGRESS</p>
+                  <p className={styles.head3}>QUEST PROGRESS</p>
                   <p className={styles.blacnkhead2}></p>
                 </div>
               )}
@@ -96,6 +99,9 @@ export default function GoalWizard({
                       />
                     );
                   })}
+                  <FillSpace
+                    text={`You can add ${5 - kids.length} more children`}
+                  />
                 </div>
               ) : (
                 <NoKid setkids={setkids} />
@@ -110,10 +116,7 @@ export default function GoalWizard({
                   false ? styles.nokidlivesection : ""
                 }`}
               >
-                <h2 className={styles.heading}>
-                  Add New Child
-                  <HeadingArrow />
-                </h2>
+                <h2 className={styles.heading}>Add New Child</h2>
                 <div
                   className={`${styles.button} ${
                     userdatafromserver.num_kids === 5 && styles.maximumlimit
@@ -132,10 +135,24 @@ export default function GoalWizard({
                 >
                   New Child
                 </div>
-
-                <div className={styles.wrapper}></div>
               </div>
             )}
+            <div className={`${styles.calcSection}`}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/p/calculators")}
+              >
+                Calculators
+                <HeadingArrow className={styles.icon} />
+              </h2>
+              <div className={styles.wrapper}>
+                {Object.keys(Calc_Data).map((item) => {
+                  return (
+                    <MiniCalcCard data={Calc_Data[item]} key={item} id={item} />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

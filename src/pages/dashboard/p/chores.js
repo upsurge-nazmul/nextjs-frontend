@@ -14,6 +14,7 @@ import Loading from "../../../components/Loading";
 import { choretemplates } from "../../../helpers/choretemplates";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import ChorePending from "../../../components/Chores/ChorePending";
+import FillSpace from "../../../components/Dashboard/FillSpace";
 
 function ChoresPage({ choresdata, isLogged }) {
   const [mode, setmode] = useState("chores");
@@ -89,10 +90,7 @@ function ChoresPage({ choresdata, isLogged }) {
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
-                <h2 className={styles.heading}>
-                  Pending For Approval
-                  <HeadingArrow />
-                </h2>
+                <h2 className={styles.heading}>Pending For Approval</h2>
                 <div className={styles.wrapper}>
                   {chores.map((item, index) => {
                     return (
@@ -105,6 +103,12 @@ function ChoresPage({ choresdata, isLogged }) {
                       />
                     );
                   })}
+                  {chores.length === 0 && (
+                    <FillSpace
+                      text="No pending approvals"
+                      extrastyle={{ margin: "0" }}
+                    />
+                  )}
                 </div>
               </div>
 
@@ -137,6 +141,16 @@ function ChoresPage({ choresdata, isLogged }) {
                       />
                     );
                   })}
+                  {allchores.length === 0 && (
+                    <FillSpace
+                      text={
+                        choremode === "inprogress"
+                          ? "No chores in progress"
+                          : "No completed chores found."
+                      }
+                      extrastyle={{ margin: "0" }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -147,10 +161,7 @@ function ChoresPage({ choresdata, isLogged }) {
                   false ? styles.nokidlivesection : ""
                 }`}
               >
-                <h2 className={styles.heading}>
-                  Create Chores
-                  <HeadingArrow />
-                </h2>
+                <h2 className={styles.heading}>Create Chores</h2>
                 <div
                   className={styles.button}
                   onClick={() => {

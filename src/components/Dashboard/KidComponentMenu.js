@@ -31,9 +31,9 @@ function KidComponentMenu({
     <div className={styles.kidmenu} id={data.id}>
       <p
         className={styles.tab}
-        onClick={() => router.push("/dashboard/p/child/" + data.id)}
+        onClick={() => router.push("/dashboard/p/child-activity/" + data.id)}
       >
-        View Profile
+        View Activity
       </p>
       <p
         className={styles.tab}

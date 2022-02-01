@@ -150,6 +150,7 @@ function Games({ userdatafromserver, token }) {
                         handlegameclick(Game_Data[item].name.replace(/ /g, ""))
                       }
                       data={Game_Data[item]}
+                      cardstyle={{ marginBottom: "20px" }}
                       key={"chorecomponent" + index}
                     />
                   );

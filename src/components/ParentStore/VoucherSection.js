@@ -7,10 +7,7 @@ import Voucher from "./Voucher";
 export default function VoucherSection({ vouchers, unicoins, email, phone }) {
   return (
     <div className={styles.VoucherSection}>
-      <h2 className={styles.heading}>
-        Rewards
-        <HeadingArrow />
-      </h2>
+      <h2 className={styles.heading}>Rewards</h2>
       <div className={styles.wrapper}>
         {vouchers.map((item, index) => (
           <Reward

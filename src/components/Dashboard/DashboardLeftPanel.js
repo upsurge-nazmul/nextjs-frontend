@@ -11,6 +11,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
+import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
@@ -21,6 +22,7 @@ import Fb from "../SVGcomponents/Fb";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
+import LeftPannelToggle from "./LeftPannelToggle";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
@@ -240,7 +242,10 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/p/mykids" ? styles.activetab : ""
+              currenttab === "/dashboard/p/mykids" ||
+              currenttab.indexOf("/dashboard/p/child") !== -1
+                ? styles.activetab
+                : ""
             }`}
             onClick={() => router.push("/dashboard/p/mykids")}
           >
@@ -258,18 +263,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/p/blogs" ||
-              currenttab.indexOf("dashboard/p/blog") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/p/blogs")}
-          >
-            <BlogSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Blogs</p>
           </div>
           <div
             className={`${styles.tab}  ${
@@ -304,6 +297,33 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
           </div>
+          <LeftPannelToggle
+            name="Resources"
+            currenttab={currenttab}
+            isActive={
+              currenttab.indexOf("/dashboard/p/blog") !== -1 ||
+              currenttab.indexOf("/dashboard/p/calculator") !== -1 ||
+              currenttab.indexOf("/dashboard/p/quiz") !== -1
+            }
+            items={[
+              {
+                name: "Blogs",
+                pushto: "/dashboard/p/blogs",
+                icon: <BlogSvg />,
+              },
+              {
+                name: "Calculators",
+                pushto: "/dashboard/p/calculators",
+                icon: <CalcSvg />,
+              },
+              {
+                name: "Money Quotient",
+                pushto: "/dashboard/p/quiz",
+                icon: <QuizIconSvg />,
+              },
+            ]}
+            icon={<AssessmentOutlinedIcon />}
+          />
         </div>
       )}
       <div className={styles.bottom}>

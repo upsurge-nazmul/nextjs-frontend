@@ -8,6 +8,26 @@
     justify-content: center;
     align-items: center;
     padding-top: 7vh;
+    .cross {
+      position: fixed;
+      top: 35%;
+      right: 31%;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
     .approveModalcontainer {
       display: flex;
       align-items: center;

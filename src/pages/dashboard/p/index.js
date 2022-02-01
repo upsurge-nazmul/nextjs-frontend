@@ -136,7 +136,11 @@ function Dashboard({
             <EmailVerificationPending settoastdata={settoastdata} />
           )}
           {userdatafromserver && (
-            <div className={styles.mainContent}>
+            <div
+              className={`${styles.mainContent} ${
+                kids.length === 0 && styles.nokidmaincontent
+              }`}
+            >
               <div className={styles.flexLeft} id="leftside">
                 <div className={styles.kidsSection}>
                   <h2
@@ -151,7 +155,7 @@ function Dashboard({
                       <p className={styles.blacnkhead1}></p>
                       <p className={styles.head1}>CHILD INFO</p>
                       <p className={styles.head2}>PENDING CHORES</p>
-                      <p className={styles.head3}>COURSE PROGRESS</p>
+                      <p className={styles.head3}>QUEST PROGRESS</p>
                       <p className={styles.blacnkhead2}></p>
                     </div>
                   )}

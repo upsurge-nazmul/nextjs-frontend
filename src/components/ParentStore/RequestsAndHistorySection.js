@@ -12,10 +12,7 @@ function RequestsAndHistorySection({
   const [history, sethistory] = useState([]);
   return (
     <div className={styles.requestsAndHistorySection}>
-      <h2 className={styles.heading}>
-        Requests
-        <HeadingArrow />
-      </h2>
+      <h2 className={styles.heading}>Requests</h2>
       <div className={styles.wrapper}>
         {childRequests.length > 0 ? (
           childRequests.map((item, index) => {

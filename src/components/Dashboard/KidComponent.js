@@ -57,7 +57,7 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
           {data?.points > 1000
             ? Math.floor(data?.points / 1000) + "k"
             : data?.points}
-          {" points"}
+          {" UniCoins"}
         </p>
       </div>
       <p className={styles.chore}>{data?.pending_chores}</p>

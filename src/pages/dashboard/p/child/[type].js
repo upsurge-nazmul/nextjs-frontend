@@ -15,16 +15,19 @@ import range from "lodash/range";
 
 import CustomDatePicker from "../../../../components/CustomDatePicker";
 import ModernInputBox from "../../../../components/ModernInputBox";
+import Cities_Data from "../../../../static_data/Cities_Data";
+import CitySearch from "../../../../components/CitySearch";
 function AddKid({ childdata }) {
   const router = useRouter();
   const type = router.query.type;
-  let state;
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState(type === "add" ? "Add Child" : "Edit Child");
+  const [mode, setmode] = useState(
+    type === "add" ? "Add Child Details" : "Edit Child Details"
+  );
   const [dob, setdob] = useState(
     childdata?.dob ? new Date(Number(childdata?.dob)) : ""
   );
@@ -46,25 +49,12 @@ function AddKid({ childdata }) {
   const [userName, setuserName] = useState(childdata?.user_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
   const [city, setcity] = useState(childdata?.city || "");
+  const [state, setstate] = useState(childdata?.state || "");
   const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
-  const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
-  const girl_avatars = [
-    "14",
-    "24",
-    "21",
-    "15",
-    "17",
-    "22",
-    "23",
-    "13",
-    "12",
-    "20",
-    "19",
-    "18",
-    "16",
-  ];
+  const boy_avatars = ["1", "2", "3", "4", "5"];
+  const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   useEffect(() => {
     if (gender === "male") {
@@ -124,6 +114,7 @@ function AddKid({ childdata }) {
       firstName,
       lastName,
       gender,
+      state,
       username: userName,
       dob: new Date(dob).getTime(),
       image: img || "https://i.ibb.co/v3vVV8r/default-avatar.png",
@@ -188,6 +179,10 @@ function AddKid({ childdata }) {
     }
     if (img && img !== childdata.image) {
       data.user_img_url = img;
+    }
+    if (city && city !== childdata.city) {
+      data.city = city;
+      data.state = state;
     }
     if (password && password !== childdata.password) {
       data.password = password;
@@ -281,11 +276,13 @@ function AddKid({ childdata }) {
                 value={firstName}
                 maxLength={10}
                 setvalue={setfirstName}
+                textOnly={true}
                 placeholder="First name"
                 extraclass={styles.margin}
               />
               <ModernInputBox
                 value={lastName}
+                textOnly={true}
                 maxLength={10}
                 setvalue={setlastName}
                 placeholder="Last name"
@@ -321,17 +318,30 @@ function AddKid({ childdata }) {
               value={gender}
               setvalue={setgender}
             />
-            <ModernInputBox
-              value={city}
-              setvalue={setcity}
+            <CitySearch
               placeholder="City"
+              textOnly={true}
+              options={Cities_Data}
+              value={city}
               extrastyle={{ marginTop: "20px" }}
+              setvalue={setcity}
+              setstate={setstate}
+            />
+            <ModernInputBox
+              value={state}
+              setvalue={setstate}
+              placeholder="State"
+              disabled={true}
             />
             <ModernInputBox
               value={school}
               setvalue={setschool}
               placeholder="School"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
+              tooltipid={"school-tooltip"}
+              tooltip={
+                "School is required to put your child in related circles."
+              }
             />
 
             {type === "add" && (
@@ -412,9 +422,11 @@ function AddKid({ childdata }) {
             {avatars.map((item) => {
               return (
                 <img
-                  onClick={() => setimg("/images/avatars/" + item + ".png")}
+                  onClick={() =>
+                    setimg("/images/free-child-avatars/" + item + ".png")
+                  }
                   key={"avatar" + item}
-                  src={"/images/avatars/" + item + ".png"}
+                  src={"/images/free-child-avatars/" + item + ".png"}
                   alt=""
                 />
               );
