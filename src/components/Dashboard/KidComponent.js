@@ -54,16 +54,16 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
           {data?.first_name}
         </p>
         <p className={styles.points}>
-          {data?.points > 1000
-            ? Math.floor(data?.points / 1000) + "k"
-            : data?.points}
+          {data?.num_unicoins > 1000
+            ? Math.floor(data?.num_unicoins / 1000) + "k"
+            : data?.num_unicoins}
           {" UniCoins"}
         </p>
       </div>
       <p className={styles.chore}>{data?.pending_chores}</p>
 
       <div className={styles.courseProgression}>
-        <p className={styles.name}>{data?.current_course || "No course"}</p>
+        <p className={styles.name}>{data?.current_course || "No quest"}</p>
         <div className={styles.progressBar}>
           <div
             className={styles.completion}

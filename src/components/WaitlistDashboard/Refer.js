@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Image from "next/image";
 import styles from "../../styles/WaitlistDashboard/refer.module.scss";
-export default function Refer({ settoastdata }) {
+export default function Refer({ settoastdata, parent }) {
   const [email, setemail] = useState("");
   const [err, seterr] = useState("");
   useEffect(() => {
@@ -20,10 +20,15 @@ export default function Refer({ settoastdata }) {
   return (
     <div className={styles.refer}>
       <p className={styles.heading}>Invite your friends</p>
-      <p className={styles.subheading} style={{ marginBottom: "3px" }}>
-        Earn 10 unicoins for each friend joining our platform.
+      <p className={styles.subheading}>
+        Earn 10 UniCoins for each friend joining our platform.
       </p>
-      <p className={styles.subheading} style={{ marginTop: "0px" }}>
+      {parent && (
+        <p className={styles.subheading}>
+          UniCoins earned will be equally divided in your children.
+        </p>
+      )}
+      <p className={styles.subheading}>
         {`For every 5th successful refferal you'll get additional 25 unicoins.`}
       </p>
       <div className={styles.img}>

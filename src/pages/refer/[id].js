@@ -9,6 +9,7 @@ import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import Toast from "../../components/Toast";
 import validator from "validator";
+import { onlyNum } from "../../helpers/validationHelpers";
 
 export default function ReferPage() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function ReferPage() {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [success, setsuccess] = useState(false);
+  const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -124,10 +126,17 @@ export default function ReferPage() {
             <input
               type="text"
               placeholder="Phone*"
-              onChange={(e) => setphone(e.target.value)}
+              maxLength={10}
+              value={phone}
+              onChange={(e) => {
+                if (onlyNum(e.target.value)) {
+                  setphone(e.target.value);
+                }
+              }}
             />
           </div>
         )}
+        {error && <p className={styles.error}>{error}</p>}
         {!success && (
           <div className={styles.join} onClick={checkrefer}>
             Join

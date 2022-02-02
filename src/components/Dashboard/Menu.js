@@ -9,6 +9,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
+import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 function Menu({ settoastdata, menuType, waitilistmenu }) {
   console.log(menuType);
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
@@ -64,16 +65,28 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
         Edit profile
       </p>
       {menuType !== "child" && !waitilistmenu && (
-        <p
-          className={styles.tabs}
-          onClick={() => {
-            setshowmenu(false);
-            router.push("/dashboard/p/payments");
-          }}
-        >
-          <PaymentSvg className={styles.paymentIcon} />
-          Payments
-        </p>
+        <>
+          <p
+            className={styles.tabs}
+            onClick={() => {
+              setshowmenu(false);
+              router.push("/dashboard/p/payments");
+            }}
+          >
+            <PaymentSvg className={styles.paymentIcon} />
+            Payments
+          </p>
+          <p
+            className={styles.tabs}
+            onClick={() => {
+              setshowmenu(false);
+              router.push("/dashboard/p/invite");
+            }}
+          >
+            <GroupAddOutlinedIcon className={styles.editIcon} />
+            Invite
+          </p>
+        </>
       )}
       {waitilistmenu && (
         <p

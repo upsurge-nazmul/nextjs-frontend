@@ -289,9 +289,11 @@
       width: 150px;
     }
     .tabContainer {
-      margin-top: 80px;
+      margin-top: 20px;
+      margin-bottom: 00px;
+      justify-content: center;
       .tab {
-        margin-bottom: 15px;
+        height: 45px;
         .icon {
           width: 35px;
           height: 35px;

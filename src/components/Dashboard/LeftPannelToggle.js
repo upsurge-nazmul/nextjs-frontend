@@ -13,7 +13,9 @@ export default function LeftPannelToggle({
   const router = useRouter();
   return (
     <div
-      className={`${styles.leftpaneltoggle} ${open ? styles.openedpanel : ""} ${isActive && styles.activepanel}`}
+      className={`${styles.leftpaneltoggle} ${open ? styles.openedpanel : ""} ${
+        isActive && styles.activepanel
+      }`}
     >
       <div className={styles.top} onClick={() => setopen(!open)}>
         {icon && icon}
@@ -28,13 +30,10 @@ export default function LeftPannelToggle({
                 className={`${styles.subtab}  ${
                   currenttab === item.pushto ? styles.activetab : ""
                 }`}
+                onClick={() => router.push(item.pushto)}
               >
                 {item.icon && item.icon}
-                <p
-                  key={item.name}
-                  className={styles.tabtitle}
-                  onClick={() => router.push(item.pushto)}
-                >
+                <p key={item.name} className={styles.tabtitle}>
                   {item.name}
                 </p>
               </div>

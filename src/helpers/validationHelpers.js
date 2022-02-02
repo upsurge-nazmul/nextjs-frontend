@@ -7,3 +7,7 @@ export function onlyText(data) {
   }
   return true;
 }
+
+export function onlyNum(data) {
+  return !isNaN(data);
+}

@@ -6,7 +6,7 @@ import AvailablePointCard from "./AvailablePointCard";
 function AvailablePointsSection({ kidsdata }) {
   return (
     <div className={styles.AvailablePointsSection}>
-      <h2 className={styles.heading}>Available Points</h2>
+      <h2 className={styles.heading}>Available UniCoins</h2>
       <div className={styles.wrapper}>
         {kidsdata &&
           kidsdata.map((item, index) => (

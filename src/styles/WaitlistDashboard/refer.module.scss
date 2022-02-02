@@ -6,7 +6,7 @@
   border-radius: 10px;
   margin-bottom: 20px;
   display: flex;
-  min-height: 350px;
+  min-height: 500px;
   flex-direction: column;
   .heading {
     font-size: 35px;
@@ -14,7 +14,6 @@
   }
   .subheading {
     font-size: 16px;
-    margin-bottom: 10px;
     margin-top: 10px;
   }
   .err {
@@ -30,10 +29,12 @@
     object-fit: cover;
     opacity: 0.5;
     margin-bottom: 10px;
+    margin-top: 20px;
     position: relative;
   }
   .bottom {
     display: flex;
+    margin-top: 10px;
     flex-direction: column;
     input {
       flex: 1;
