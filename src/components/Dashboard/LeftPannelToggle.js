@@ -31,6 +31,7 @@ export default function LeftPannelToggle({
                   currenttab === item.pushto ? styles.activetab : ""
                 }`}
                 onClick={() => router.push(item.pushto)}
+                key={"toggle" + item.tabtitle}
               >
                 {item.icon && item.icon}
                 <p key={item.name} className={styles.tabtitle}>
