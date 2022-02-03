@@ -103,7 +103,7 @@ export default function ModernInputBox({
             return (
               <p
                 className={styles.option}
-                id={item.id}
+                key={item.id}
                 onClick={() => {
                   setvalue(item.name);
                   setshowsuggestion(false);
