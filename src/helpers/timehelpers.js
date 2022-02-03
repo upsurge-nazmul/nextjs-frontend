@@ -78,3 +78,16 @@ export function getIndianTime(timestamp, sign) {
     date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
   }${sign ? sign : "/"}${date.getFullYear()}`;
 }
+
+export function getMonthsLeft(diff) {
+  let current = new Date().getTime();
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var elapsed = Number(diff) - current;
+  if (elapsed < 0) {
+    return 0;
+  }
+  return Math.round(elapsed / msPerMonth);
+}

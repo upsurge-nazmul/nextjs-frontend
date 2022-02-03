@@ -19,6 +19,7 @@ export default async function displayRazorpay(
   name,
   description,
   amount,
+  old_sub_id,
   setsuccess,
   type,
   seterror
@@ -61,6 +62,7 @@ export default async function displayRazorpay(
             amount: amount,
             subscription: name,
             invoice_id: saveresponse.data.data,
+            old_sub_id: old_sub_id ? old_sub_id : false,
           });
         }
         setsuccess(true);

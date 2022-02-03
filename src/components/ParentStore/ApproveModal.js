@@ -63,7 +63,12 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
       },
       buydata.name,
       buydata.description,
-      buydata.total ? buydata.total : buydata.price,
+      buydata.gstprice
+        ? buydata.gstprice
+        : buydata.total
+        ? buydata.total
+        : buydata.price,
+      buydata.old_sub_id,
       setsuccess,
       buydata.item,
       seterror
@@ -123,9 +128,52 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                 <div className={styles.value}>
                   {buydata.type === "points" ? "" : "₹"}
                   {buydata.total ? buydata.total : buydata.price}{" "}
-                  {buydata.type === "points" ? "UniCoins" : "₹"}
+                  {buydata.type === "points" ? "UniCoins" : ""}
                 </div>
               </div>
+              {buydata.discount && (
+                <div className={styles.details}>
+                  <div className={styles.label}>Discount</div>
+                  <div className={styles.value}>{buydata.discount_detail}</div>
+                  <div className={styles.value}>
+                    {buydata.type === "points" ? "" : "₹"}
+                    {buydata.discount_price}{" "}
+                    {buydata.type === "points" ? "UniCoins" : ""}
+                  </div>
+                </div>
+              )}
+              {buydata.discount && (
+                <div className={styles.details}>
+                  <div className={styles.label}>Total</div>
+                  <div className={styles.value}></div>
+                  <div className={styles.value}>
+                    {buydata.type === "points" ? "" : "₹"}
+                    {buydata.total - buydata.discount_price}{" "}
+                    {buydata.type === "points" ? "UniCoins" : ""}
+                  </div>
+                </div>
+              )}
+              {buydata.type !== "points" && (
+                <div className={styles.details}>
+                  <div className={styles.label}>Tax</div>
+                  {buydata.total && (
+                    <div className={styles.value}>
+                      ₹
+                      {(
+                        (buydata.discount_price
+                          ? buydata.total - buydata.discount_price
+                          : buydata.total) * 0.18
+                      ).toFixed(2)}
+                      {"(18%)"}
+                    </div>
+                  )}
+                  <div className={styles.value}>
+                    {buydata.type === "points" ? "" : "₹"}
+                    {buydata.gstprice ? buydata.gstprice : buydata.total}{" "}
+                    {buydata.type === "points" ? "UniCoins" : ""}
+                  </div>
+                </div>
+              )}
               {buydata.type !== "rs" && (
                 <div className={styles.details}>
                   <div className={styles.label}>Available UniCoins</div>

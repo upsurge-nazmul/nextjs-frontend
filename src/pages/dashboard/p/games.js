@@ -79,7 +79,7 @@ function Games() {
     },
     Ludo: {
       name: "Ludo",
-      description: "ludo ludo ludo.",
+      description: "Financial Ludo for young adults.",
     },
   };
   useEffect(() => {
@@ -121,22 +121,24 @@ function Games() {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={styles.recentSection}>
-              <h2 className={styles.heading}>Recently Played</h2>
-              <div className={styles.wrapper} id="gamecardwrapper2">
-                {recent_games.map((item, index) => {
-                  return (
-                    <GameCard
-                      onCLick={() =>
-                        handlegameclick(data[item].name.replace(/ /g, ""))
-                      }
-                      data={data[item]}
-                      key={"kidcomponent" + index}
-                    />
-                  );
-                })}
+            {recent_games?.length > 0 && (
+              <div className={styles.recentSection}>
+                <h2 className={styles.heading}>Recently Played</h2>
+                <div className={styles.wrapper} id="gamecardwrapper2">
+                  {recent_games.map((item, index) => {
+                    return (
+                      <GameCard
+                        onCLick={() =>
+                          handlegameclick(data[item].name.replace(/ /g, ""))
+                        }
+                        data={data[item]}
+                        key={"kidcomponent" + index}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>Available Games</h2>
               <div className={styles.wrapper}>
@@ -146,7 +148,6 @@ function Games() {
                       onCLick={() =>
                         handlegameclick(data[item].name.replace(/ /g, ""))
                       }
-                      cardstyle={{ marginBottom: "20px", height: "320px" }}
                       data={data[item]}
                       key={"chorecomponent" + index}
                     />

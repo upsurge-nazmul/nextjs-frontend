@@ -19,7 +19,7 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
 
-export default function Invite({ choresdata, kidsdata, userdatafromserver }) {
+export default function Invite({ kidsdata, userdatafromserver }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
   const [mode, setmode] = useState("Invite and earn");
@@ -38,15 +38,19 @@ export default function Invite({ choresdata, kidsdata, userdatafromserver }) {
       <DashboardLeftPanel />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        <p className={styles.error}>Please add children before inviting.</p>
+        {(!kidsdata || kidsdata.length === 0) && (
+          <p className={styles.error}>Please add children before inviting.</p>
+        )}
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <Refer settoastdata={settoastdata} parent={true} />
           </div>
 
-          <div className={styles.flexRight}>
-            <AvailablePointsSection kidsdata={kidsdata} />
-          </div>
+          {kidsdata && (
+            <div className={styles.flexRight}>
+              <AvailablePointsSection kidsdata={kidsdata} />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -4,6 +4,8 @@ import CustomDatePicker from "./CustomDatePicker";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ReactTooltip from "react-tooltip";
 import { onlyText } from "../helpers/validationHelpers";
+import { useState } from "react";
+import { capitalize } from "../helpers/generalfunctions";
 export default function ModernInputBox({
   value,
   setvalue,
@@ -24,7 +26,11 @@ export default function ModernInputBox({
   textOnly,
   tooltip,
   tooltipid,
+  suggestions,
+  showincaps,
+  autoComplete,
 }) {
+  const [showsuggestion, setshowsuggestion] = useState(false);
   return (
     <div
       className={`${styles.modernInputBox} ${
@@ -48,12 +54,18 @@ export default function ModernInputBox({
       ) : (
         <input
           onBlur={onBlur}
-          onFocus={onFocus}
+          onFocus={
+            onFocus
+              ? onFocus
+              : () => {
+                  if (suggestions) setshowsuggestion(true);
+                }
+          }
           name="hidden"
           className={`${extraclass ? extraclass : ""}`}
           type={secure ? "password" : "text"}
-          value={value}
-          autoComplete="off"
+          value={showincaps ? capitalize(value) : value}
+          autoComplete={autoComplete ? "on" : "new-password"}
           disabled={disabled}
           maxLength={maxLength || 32676}
           onChange={
@@ -83,6 +95,35 @@ export default function ModernInputBox({
           <ReactTooltip id={tooltipid} type="dark" effect="solid">
             <p>{tooltip}</p>
           </ReactTooltip>
+        </div>
+      )}
+      {showsuggestion && (value || suggestions.length > 0) && (
+        <div className={styles.options}>
+          {suggestions.map((item) => {
+            return (
+              <p
+                className={styles.option}
+                id={item.id}
+                onClick={() => {
+                  setvalue(item.name);
+                  setshowsuggestion(false);
+                }}
+              >
+                {item.name}
+              </p>
+            );
+          })}
+          {value && suggestions.length === 0 && (
+            <p
+              className={styles.option}
+              id={"addnewschool"}
+              onClick={() => {
+                setshowsuggestion(false);
+              }}
+            >
+              {value}
+            </p>
+          )}
         </div>
       )}
     </div>

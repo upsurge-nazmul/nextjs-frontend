@@ -1,6 +1,8 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
-
+const getschools = (payload, token) => {
+  return ApiCalls.getResponse("users/schools", payload, token);
+};
 const getuserdata = (payload, token) => {
   return ApiCalls.getResponse(`users/getprofile`, payload, token);
 };
@@ -118,6 +120,7 @@ const DashboardApis = {
   completerequest,
   updatechildprofile,
   searchuser,
+  getschools,
 };
 
 export default DashboardApis;

@@ -17,6 +17,7 @@ import CustomDatePicker from "../../../../components/CustomDatePicker";
 import ModernInputBox from "../../../../components/ModernInputBox";
 import Cities_Data from "../../../../static_data/Cities_Data";
 import CitySearch from "../../../../components/CitySearch";
+import { getCookie } from "../../../../actions/cookieUtils";
 function AddKid({ childdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -52,6 +53,7 @@ function AddKid({ childdata }) {
   const [state, setstate] = useState(childdata?.state || "");
   const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
+  const [schoolresults, setschoolresults] = useState([]);
   const [confirmpassword, setconfirmpassword] = useState("");
   const boy_avatars = ["1", "2", "3", "4", "5"];
   const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
@@ -252,6 +254,21 @@ function AddKid({ childdata }) {
     "November",
     "December",
   ];
+  useEffect(() => {
+    if (school) searchSchool();
+    else setschoolresults([]);
+  }, [school]);
+  async function searchSchool() {
+    let res = await DashboardApis.getschools(
+      { query: school },
+      getCookie("accesstoken")
+    );
+    if (res?.data.success) {
+      setschoolresults(res.data.data);
+    } else {
+      setschoolresults([]);
+    }
+  }
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
@@ -336,12 +353,14 @@ function AddKid({ childdata }) {
             <ModernInputBox
               value={school}
               setvalue={setschool}
+              showincaps
               placeholder="School"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
               tooltipid={"school-tooltip"}
               tooltip={
                 "School is required to put your child in related circles."
               }
+              suggestions={schoolresults}
             />
 
             {type === "add" && (

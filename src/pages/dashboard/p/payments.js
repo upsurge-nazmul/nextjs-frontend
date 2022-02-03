@@ -14,11 +14,15 @@ import TickSvg from "../../../components/SVGcomponents/TickSvg";
 import { pricing_data } from "../../../static_data/Pricing_Data";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { getIndianTime } from "../../../helpers/timehelpers";
+import {
+  getdaysleft,
+  getIndianTime,
+  getMonthsLeft,
+  getRelativeTime,
+} from "../../../helpers/timehelpers";
 import PaymentsApi from "../../../actions/apis/PaymentsApi";
 import { MainContext } from "../../../context/Main";
 export default function Payments({ pricing_details, userdatafromserver }) {
-  console.log(userdatafromserver);
   const [mode, setmode] = useState("Payments");
   const router = useRouter();
   const [current_plan, setcurrent_plan] = useState(
@@ -41,15 +45,47 @@ export default function Payments({ pricing_details, userdatafromserver }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
-  function handleClick(index) {
-    setbuydata({
-      price: pricing_data[index].price,
-      total: pricing_data[index].total,
-      type: "rs",
-      name: pricing_data[index].name,
-      description: pricing_data[index].description,
-      item: "Subscription",
-    });
+  function handleClick(index, type) {
+    if (type === "upgrade") {
+      let currentplanindex = pricing_data.findIndex(
+        (item) => item.name === current_plan
+      );
+      let monthsLeft = getMonthsLeft(userdatafromserver.plan_expiry);
+      setbuydata({
+        old_sub_id: userdatafromserver.plan_id,
+        price: pricing_data[index].price,
+        total: pricing_data[index].total,
+        gstprice:
+          Number(
+            pricing_data[index].total -
+              pricing_data[currentplanindex].price * monthsLeft
+          ) +
+          Number(
+            (
+              (pricing_data[index].total -
+                pricing_data[currentplanindex].price * monthsLeft) *
+              0.18
+            ).toFixed(2)
+          ),
+        discount: true,
+        discount_detail: `${monthsLeft} x ₹${pricing_data[currentplanindex].price}`,
+        discount_price: pricing_data[currentplanindex].price * monthsLeft,
+        type: "rs",
+        name: pricing_data[index].name,
+        description: pricing_data[index].description,
+        item: "Subscription",
+      });
+    } else {
+      setbuydata({
+        price: pricing_data[index].price,
+        total: pricing_data[index].total,
+        gstprice: pricing_data[index].gstprice,
+        type: "rs",
+        name: pricing_data[index].name,
+        description: pricing_data[index].description,
+        item: "Subscription",
+      });
+    }
     setshowmodal(true);
   }
 
@@ -153,38 +189,52 @@ export default function Payments({ pricing_details, userdatafromserver }) {
               </div>
             </div>
           )}
-          <div className={styles.pricewrapper}>
-            {pricing_details.map((item, index) => {
-              return (
-                <div className={styles.pricecontainer} key={"price" + index}>
-                  <p className={styles.name}>{item.name}</p>
-                  <p className={styles.price}>{item.price}</p>
-                  <p className={styles.description}>{item.description}</p>
-                  <div
-                    onClick={() => handleClick(index)}
-                    className={`${styles.button} ${
-                      index === 1 && styles.secondbtn
-                    }
-                    ${index === 2 && styles.thirdbtn}`}
-                  >
-                    {current_plan !== "Free" && current_plan !== item.name
-                      ? current_plan === "Free"
+          {current_plan !== "Yearly" && (
+            <div className={styles.pricewrapper}>
+              {pricing_details.map((item, index) => {
+                if (current_plan === "Half-Yearly") {
+                  if (item.name === "Monthly") return;
+                }
+                return (
+                  <div className={styles.pricecontainer} key={"price" + index}>
+                    <p className={styles.name}>{item.name}</p>
+                    <p className={styles.price}>{item.price}</p>
+                    <p className={styles.description}>{item.description}</p>
+                    <div
+                      onClick={() => {
+                        if (current_plan !== item.name) {
+                          if (current_plan === "Free") {
+                            handleClick(index);
+                          } else {
+                            handleClick(index, "upgrade");
+                          }
+                        }
+                      }}
+                      className={`${styles.button} ${
+                        index === 1 && styles.secondbtn
+                      }
+                    ${index === 2 && styles.thirdbtn}
+                    ${current_plan === item.name && styles.disablehoverbtn}`}
+                    >
+                      {current_plan !== "Free" && current_plan !== item.name
+                        ? current_plan === "Free"
+                          ? "Buy"
+                          : "Switch"
+                        : current_plan === "Free"
                         ? "Buy"
-                        : "Switch"
-                      : current_plan === "Free"
-                      ? "Buy"
-                      : "Renew"}
+                        : "Current Plan"}
+                    </div>
+                    <div className={styles.hr} />
+                    <div className={styles.benefitswrapper}>
+                      {item.benefits.map((benefit, index) => {
+                        return <p key={"benefit" + index}>{benefit}</p>;
+                      })}
+                    </div>
                   </div>
-                  <div className={styles.hr} />
-                  <div className={styles.benefitswrapper}>
-                    {item.benefits.map((benefit, index) => {
-                      return <p key={"benefit" + index}>{benefit}</p>;
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
           <DashboardFooter />
         </div>
       </div>
