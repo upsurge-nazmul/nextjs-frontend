@@ -23,6 +23,7 @@ import { Game_Data } from "../../../static_data/Game_Data";
 import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
 import BlogApis from "../../../actions/apis/BlogApis";
 import DashboardBlogs from "../../../components/Dashboard/DashboardBlogs";
+import FillSpace from "../../../components/Dashboard/FillSpace";
 
 function Dashboard({
   isLogged,
@@ -143,13 +144,22 @@ function Dashboard({
             >
               <div className={styles.flexLeft} id="leftside">
                 <div className={styles.kidsSection}>
-                  <h2
-                    className={styles.heading}
-                    onClick={() => router.push("/dashboard/p/mykids")}
-                  >
-                    My Kids
-                    <HeadingArrow />
-                  </h2>
+                  <div className={styles.head}>
+                    <h2
+                      className={styles.heading}
+                      onClick={() => router.push("/dashboard/p/mykids")}
+                    >
+                      My Kids
+                      <HeadingArrow />
+                    </h2>
+                    <div
+                      className={styles.btn}
+                      onClick={() => router.push("/dashboard/p/child/add")}
+                    >
+                      + Add child
+                    </div>
+                  </div>
+
                   {kids.length > 0 && (
                     <div className={styles.heads}>
                       <p className={styles.blacnkhead1}></p>
@@ -233,7 +243,10 @@ function Dashboard({
                         )}
                       </>
                     ) : (
-                      <NoApproval />
+                      <FillSpace
+                        text="Currently there are no Approval pending."
+                        extrastyle={{ marginTop: 0 }}
+                      />
                     )}
                   </div>
                 )}

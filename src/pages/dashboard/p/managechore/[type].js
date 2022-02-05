@@ -340,7 +340,7 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      if (params.type !== "add") {
+      if (params.type !== "new") {
         let choredata = await getChoreData({ id: params.type }, token);
         if (choredata) {
           let childdata = await getChildData({ id: choredata.child_id }, token);
@@ -353,7 +353,13 @@ export async function getServerSideProps({ params, req }) {
               },
             };
           } else {
-            return { props: { choredata: choredata, childdata: null } };
+            return {
+              props: {
+                choredata: choredata,
+                childdata: null,
+                userdatafromserver: response.data.data,
+              },
+            };
           }
         } else {
           return { props: { choredata: null, childdata: null } };

@@ -22,9 +22,120 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 60%;
+        width: 50%;
         padding: 0 10px 0 45px;
-
+        .headsection {
+          .topblock {
+            display: flex;
+            img {
+              width: 250px;
+              height: 250px;
+              object-fit: cover;
+              border-radius: 100%;
+              background-color: white;
+              margin-right: 20px;
+            }
+            .right {
+              .username {
+                padding: 5px 20px;
+                background-color: white;
+                border-radius: 12px;
+                align-items: center;
+                width: fit-content;
+                display: flex;
+                margin-top: 10px;
+                height: 50px;
+                font-weight: bold;
+              }
+              .rewardblock {
+                background-color: white;
+                padding: 15px 20px;
+                border-radius: 12px;
+                display: flex;
+                width: fit-content;
+                margin-top: 20px;
+                height: 50px;
+                align-items: center;
+                .svg {
+                  width: 30px;
+                  margin-right: 15px;
+                }
+                font-weight: 500;
+              }
+            }
+          }
+          .tribes {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            .tribe {
+              background-color: white;
+              border-radius: 6px;
+              display: flex;
+              align-items: center;
+              height: 40px;
+              padding: 0 20px;
+            }
+          }
+          .name {
+            font-weight: 500;
+            margin-top: 20px;
+            text-transform: capitalize;
+            font-size: 20px;
+          }
+        }
+        .leaderboardsection {
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            .element {
+              padding: 20px;
+              width: 45%;
+              height: 250px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              border-radius: 10px;
+              .rank {
+                font-weight: 700;
+                font-size: 36px;
+              }
+              .section {
+                font-size: 18px;
+              }
+              &:first-child {
+                background-color: #4166eb;
+                color: white;
+              }
+              &:nth-child(2) {
+                background-color: #fdcc03;
+                color: white;
+              }
+              &:nth-child(3) {
+                background-color: #ff6263;
+                color: white;
+              }
+              &:nth-child(4) {
+                background-color: #17d1bc;
+                color: white;
+              }
+            }
+          }
+        }
         .pendingChoresSection {
           height: fit-content;
           display: flex;
@@ -68,6 +179,14 @@
             margin-bottom: 20px;
           }
         }
+      }
+      .flexRight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 50%;
+        padding-right: 50px;
+        padding-left: 10px;
         .choreSection {
           margin-top: 15px;
           display: flex;
@@ -106,20 +225,10 @@
           }
 
           .wrapper {
-            margin-top: 20px;
             padding: 0 20px 10px 0px;
           }
         }
-      }
-      .flexRight {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 40%;
-        padding-right: 50px;
-        padding-left: 10px;
-        .templateSection {
-          flex: 4;
+        .questsection {
           margin-top: 20px;
           .heading {
             font-weight: 500;
@@ -127,66 +236,31 @@
             color: rgba(87, 88, 128, 1);
             display: flex;
             align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
             svg {
               margin-left: 10px;
             }
           }
-          .button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #17d1bc;
-            border-radius: 8px;
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            height: 63px;
-            margin-right: 40px;
-            margin-top: 18px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            &:hover {
-              background-color: #4bdbcd;
-            }
-          }
-          .subheading {
-            color: rgba(157, 157, 157, 1);
-            font-size: 14px;
-            font-weight: 500;
-            text-align: center;
-            margin-top: 12px;
-          }
-          .wrapper {
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            width: 100%;
-            height: 83%;
-            margin-top: 20px;
-            padding: 0 30px 10px 10px;
-            /* ===== Scrollbar CSS ===== */
-            /* Firefox */
-            scrollbar-width: thin;
-            /* Chrome, Edge, and Safari */
-            &::-webkit-scrollbar {
-              width: 19px;
-            }
-
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-          }
         }
-        .nokidlivesection {
-          margin-top: 0;
+        .gamessection {
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            svg {
+              margin-left: 10px;
+            }
+          }
           .wrapper {
-            height: 83%;
+            display: flex;
+            gap: 20px;
+            overflow-y: auto;
+            margin-bottom: 20px;
           }
         }
       }

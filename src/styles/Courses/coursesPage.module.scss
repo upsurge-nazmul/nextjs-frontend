@@ -66,26 +66,11 @@
               margin-left: 10px;
             }
           }
-          .heads {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            height: 64px;
-            color: rgba(106, 106, 106, 1);
-            font-size: 12px;
-            font-weight: 400;
-            .head1 {
-              margin-left: 89px;
-            }
-            .head2 {
-              margin-left: 16%;
-            }
-            .head3 {
-              margin-left: 6.5%;
-            }
-          }
           .wrapper {
             padding: 20px 20px 10px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
           }
         }
         .choreSection {

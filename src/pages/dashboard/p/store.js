@@ -12,6 +12,7 @@ import VoucherSection from "../../../components/ParentStore/VoucherSection";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import ApproveModal from "../../../components/ParentStore/ApproveModal";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import VoucherApis from "../../../actions/apis/VoucherApis";
 
 export default function ParentStore({
   isLogged,
@@ -27,7 +28,7 @@ export default function ParentStore({
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Store");
   const router = useRouter();
-  const [history, sethistory] = useState([]);
+  const [searchresult, setsearchresult] = useState([]);
   const [childRequests, setChildRequests] = useState(requests || []);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -55,10 +56,10 @@ export default function ParentStore({
     }
   }, [isLogged]);
 
-  async function getUserVouchers() {
-    let res = await DashboardApis.getuservouchers();
+  async function SearchVoucher() {
+    let res = await VoucherApis.searchvoucher({ query });
     if (res && res.data.success) {
-      sethistory(res.data.data);
+      setsearchresult(res.data.data);
     }
   }
 

@@ -9,6 +9,7 @@ import HomeSvg from "../SVGcomponents/HomeSvg";
 import KidSvg from "../SVGcomponents/KidsSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
@@ -23,6 +24,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
+import GroupsIcon from "@mui/icons-material/Groups";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
   const [width, setwidth] = useState(1000);
@@ -266,15 +268,15 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab}  ${
-              currenttab === "/dashboard/p/courses" ||
-              currenttab.indexOf("/dashboard/p/courses") !== -1
+              currenttab === "/dashboard/p/quests" ||
+              currenttab.indexOf("/dashboard/p/quest") !== -1
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/p/courses")}
+            onClick={() => router.push("/dashboard/p/quests")}
           >
             <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Courses</p>
+            <p className={styles.tabtitle}>Quests</p>
           </div>
           <div
             className={`${styles.tab}  ${
@@ -297,13 +299,23 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
           </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/p/partners" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/p/partners")}
+          >
+            <GroupsOutlinedIcon className={styles.partnericon} />
+            <p className={styles.tabtitle}>Partners</p>
+          </div>
           <LeftPannelToggle
             name="Resources"
             currenttab={currenttab}
             isActive={
               currenttab.indexOf("/dashboard/p/blog") !== -1 ||
               currenttab.indexOf("/dashboard/p/calculator") !== -1 ||
-              currenttab.indexOf("/dashboard/p/quiz") !== -1
+              currenttab.indexOf("/dashboard/p/quiz") !== -1 ||
+              currenttab.indexOf("/dashboard/p/dailyquestion") !== -1
             }
             items={[
               {
@@ -319,6 +331,11 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               {
                 name: "Money Quotient",
                 pushto: "/dashboard/p/quiz",
+                icon: <QuizIconSvg />,
+              },
+              {
+                name: "Question a day",
+                pushto: "/dashboard/p/dailyquestion",
                 icon: <QuizIconSvg />,
               },
             ]}

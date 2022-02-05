@@ -1,6 +1,43 @@
 .VoucherSection {
   margin-top: 20px;
-  padding-right: 40px;
+  .headwrapper {
+    display: flex;
+    justify-content: space-between;
+    .heading {
+      font-weight: 500;
+      font-size: 25px;
+      color: rgba(87, 88, 128, 1);
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      svg {
+        margin-left: 10px;
+      }
+    }
+    .inputwrapper {
+      background-color: rgb(219, 219, 219);
+      border-radius: 6px;
+      height: 45px;
+      overflow: hidden;
+      width: 50%;
+      max-width: 380px;
+      display: flex;
+      align-items: center;
+      padding-right: 15px;
+      input {
+        background-color: transparent;
+        border: none;
+        color: rgb(14, 14, 14);
+        height: 100%;
+        padding: 0 15px;
+        flex: 1;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
   .heading {
     font-weight: 500;
     font-size: 25px;
@@ -17,6 +54,12 @@
     flex-wrap: wrap;
     flex: 1;
     justify-content: space-between;
+    .noreward {
+      margin: auto;
+      margin-top: 15%;
+      color: rgb(109, 109, 109);
+      font-size: 14px;
+    }
   }
 }
 @media only screen and (max-width: 860px) {

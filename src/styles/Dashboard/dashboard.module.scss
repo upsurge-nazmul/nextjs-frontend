@@ -30,18 +30,37 @@
         .kidsSection {
           display: flex;
           flex-direction: column;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            width: fit-content;
+          .head {
             display: flex;
             align-items: center;
-            cursor: pointer;
-            svg {
-              margin-left: 10px;
+            justify-content: space-between;
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              width: fit-content;
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .btn {
+              margin-right: 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 10px 20px;
+              font-weight: 400;
+              font-size: 16px;
+              border-radius: 6px;
+              background-color: #4166eb;
+              color: white;
+              cursor: pointer;
             }
           }
+
           .heads {
             display: flex;
             width: 100%;

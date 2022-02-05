@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/ParentStore/requestsAndHistorySection.module.scss";
+import FillSpace from "../Dashboard/FillSpace";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import PendingRequests from "./PendingRequests";
 function RequestsAndHistorySection({
@@ -26,7 +27,7 @@ function RequestsAndHistorySection({
             );
           })
         ) : (
-          <div className={styles.norequest}>No requests</div>
+          <FillSpace text="No requests" extrastyle={{ marginTop: 0 }} />
         )}
       </div>
     </div>

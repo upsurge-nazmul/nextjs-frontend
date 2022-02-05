@@ -8,6 +8,10 @@ const getTribes = (payload, token) => {
   return ApiCalls.getResponse(`tribes/gettribes`, payload, token);
 };
 
+const userTribes = (payload, token) => {
+  return ApiCalls.getResponse(`tribes/usertribes`, payload, token);
+};
+
 const gettribedetail = (payload, token) => {
   return ApiCalls.getResponse(`tribes/gettribedetail`, payload, token);
 };
@@ -41,6 +45,7 @@ const TribeApis = {
   likePost,
   addcomment,
   leaderboard,
+  userTribes,
 };
 
 export default TribeApis;

@@ -10,13 +10,37 @@ import HeadingArrow from "../../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import ChoreApis from "../../../../actions/apis/ChoreApis";
+import TribeApis from "../../../../actions/apis/TribeApis";
 import { getCookie } from "../../../../actions/cookieUtils";
-export default function ChildActivity({ pendingchores }) {
-  // modes are different pages like home,kids,store,payments,notifications
+import DashboardApis from "../../../../actions/apis/DashboardApis";
+import UniCoinSvg from "../../../../components/SVGcomponents/UniCoinSvg";
+import FillSpace from "../../../../components/Dashboard/FillSpace";
+import QuizApis from "../../../../actions/apis/QuizApis";
+export default function ChildActivity({
+  pendingchores,
+  childdetail,
+  highestquizscore,
+  childTribes,
+}) {
   const { setuserdata } = useContext(MainContext);
-  const [mode, setmode] = useState("Child Activity");
+  const [mode, setmode] = useState(
+    childdetail.first_name + "'s progress report" || "Child Activity"
+  );
+  const games = [
+    // {
+    //   id: "Test",
+    //   name: "Ludo",
+    //   description: "Financial Ludo for young adults.",
+    // },
+    // {
+    //   id: "Test2",
+    //   name: "Ludo",
+    //   description: "Financial Ludo for young adults.",
+    // },
+  ];
   const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(pendingchores ?? []);
+  const [quests, setquests] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -56,29 +80,60 @@ export default function ChildActivity({ pendingchores }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <div className={styles.headsection}>
+              <div className={styles.topblock}>
+                <img src={childdetail.user_img_url} alt="" />
+                <div className={styles.right}>
+                  <div className={styles.rewardblock}>
+                    <UniCoinSvg className={styles.svg} />
+                    <p className={styles.number}>
+                      {childdetail?.num_unicoins || 0} UniCoins
+                    </p>
+                  </div>
+                  <p className={styles.username}>@{childdetail.user_name}</p>
+                </div>
+              </div>
+              <div className={styles.tribes}>
+                {childTribes.map((tribe) => (
+                  <div className={styles.tribe} key={tribe.id}>
+                    <img src={tribe.tribe_img_url} alt="" />
+                    <p className={styles.name}>{tribe.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.leaderboardsection}>
+              <h2 className={styles.heading}>Leaderboards</h2>
+              <div className={styles.wrapper}>
+                <div className={styles.element}>
+                  <p className={styles.rank}>250</p>
+                  <p className={styles.section}>Money ace</p>
+                </div>
+                <div className={styles.element}>
+                  <p className={styles.rank}>{highestquizscore ?? 0}</p>
+                  <p className={styles.section}>Money Quotient</p>
+                </div>
+                <div className={styles.element}>
+                  <p className={styles.rank}>2</p>
+                  <p className={styles.section}>Quests</p>
+                </div>
+                <div className={styles.element}>
+                  <p className={styles.rank}>100</p>
+                  <p className={styles.section}>Stock simulator</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.flexRight}>
             <div className={styles.choreSection}>
-              <h2 className={styles.mainheading}>
+              <h2
+                className={styles.mainheading}
+                onClick={() => router.push("/dashboard/p/chores")}
+              >
                 Chores
                 <HeadingArrow />
               </h2>
-              <div className={styles.headingWrapper}>
-                <h2
-                  className={`${styles.heading} ${
-                    choremode === "inprogress" ? styles.activechore : ""
-                  }`}
-                  onClick={() => setchoremode("inprogress")}
-                >
-                  In Progress
-                </h2>
-                <h2
-                  className={`${styles.heading} ${
-                    choremode === "completed" ? styles.activechore : ""
-                  }`}
-                  onClick={() => setchoremode("completed")}
-                >
-                  Completed
-                </h2>
-              </div>
+
               <div className={styles.wrapper}>
                 {chorearray.map((data, index) => {
                   return (
@@ -89,6 +144,43 @@ export default function ChildActivity({ pendingchores }) {
                     />
                   );
                 })}
+                {chorearray.length === 0 && (
+                  <FillSpace
+                    text={"No chores in progress"}
+                    extrastyle={{ margin: 0 }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={styles.questsection}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/p/quests")}
+              >
+                Quests
+                <HeadingArrow />
+              </h2>
+              <div className="wrapper">
+                {quests.length === 0 && (
+                  <FillSpace
+                    text={"No quest in progress"}
+                    extrastyle={{ margin: 0 }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={styles.gamessection}>
+              <h2 className={styles.heading}>Recently played games</h2>
+              <div className={styles.wrapper}>
+                {games.map((game) => {
+                  return <GameCard data={game} key={game.id} />;
+                })}
+                {games.length === 0 && (
+                  <FillSpace
+                    text={"No recent games"}
+                    extrastyle={{ margin: "0" }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -121,12 +213,38 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let childdetail = await DashboardApis.getChildDetails(
+        {
+          id: params.childid,
+        },
+        token
+      );
+      let highestquizscore = await QuizApis.highestscore({
+        email: response.data.data.email,
+      });
+      let userTribes = await TribeApis.userTribes(
+        {
+          userId: params.childid,
+        },
+        token
+      );
       return {
         props: {
           isLogged: true,
           pendingchores:
             pendinchores && pendinchores.data && pendinchores.data.data
               ? pendinchores.data.data
+              : [],
+          childdetail:
+            childdetail && childdetail.data && childdetail.data.data
+              ? childdetail.data.data
+              : [],
+          highestquizscore: highestquizscore?.data.success
+            ? highestquizscore.data.data.score
+            : 0,
+          childTribes:
+            userTribes && userTribes.data && userTribes.data.success
+              ? userTribes.data.data
               : [],
         },
       };

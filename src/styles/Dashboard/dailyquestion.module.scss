@@ -1,0 +1,791 @@
+.invitepage {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  .error {
+    margin: 0 40px;
+    color: #f4f5f7;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background-color: #ff6263;
+  }
+  .contentWrapper {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .mainContent {
+      width: 100%;
+      display: flex;
+      overflow-y: auto;
+      height: fit-content;
+      margin-top: 20px;
+      scrollbar-width: thin;
+      .flexLeft {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 400px;
+        width: 60%;
+        padding: 0 10px 0 45px;
+        .kidsSection {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .heads {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            height: 64px;
+            color: rgba(106, 106, 106, 1);
+            font-size: 12px;
+            font-weight: 400;
+            padding: 0 10px;
+            .blacnkhead1 {
+              width: 64px;
+              height: 100%;
+              margin-right: 15px;
+            }
+            .head1 {
+              margin-left: 0;
+              width: 26%;
+              max-width: 300px;
+            }
+            .head2 {
+              flex: 1;
+              text-align: center;
+            }
+            .head3 {
+              width: 28%;
+              margin: 0 15px 0 0;
+            }
+            .blacnkhead2 {
+              max-width: 40px;
+              margin-left: 15px;
+              margin-right: 20px;
+            }
+          }
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px 10px 0px;
+            height: 100%;
+          }
+          .loadallkids {
+            text-align: center;
+            color: #6d6d6d;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 10px 0;
+            &:hover {
+              font-size: 18px;
+              color: hsl(0, 0%, 0%);
+            }
+          }
+          .addmorechild {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(235, 235, 235);
+            cursor: pointer;
+            height: 70px;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            p {
+              text-align: center;
+              color: #6d6d6d;
+              transition: all 0.3s ease;
+              font-size: 16px;
+              font-weight: 500;
+            }
+            &:hover {
+              p {
+                font-size: 18px;
+                color: hsl(0, 0%, 100%);
+              }
+              box-shadow: #4166eb 0px -70px 0px 0px inset;
+            }
+          }
+          .scrollwrapper {
+            height: 300px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            padding-bottom: 0px;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
+          }
+        }
+        .pendingChoresSection {
+          height: fit-content;
+          display: flex;
+          flex-direction: column;
+
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .heads {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            height: 64px;
+            color: rgba(106, 106, 106, 1);
+            .head1 {
+              font-size: 12px;
+              font-weight: 400;
+              margin-left: 12%;
+            }
+            .head2 {
+              font-size: 12px;
+              font-weight: 400;
+              margin-left: 16.5%;
+            }
+            .head3 {
+              font-size: 12px;
+              margin-left: 8%;
+              font-weight: 400;
+            }
+          }
+          .wrapper {
+            padding: 0 20px 10px 0px;
+            margin-bottom: 20px;
+          }
+        }
+        .choreSection {
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .headingWrapper {
+            display: flex;
+            .heading {
+              font-weight: 400;
+              font-size: 22px;
+              color: #a7a7a7;
+              display: flex;
+              align-items: center;
+              margin-right: 30px;
+              cursor: pointer;
+              &:hover {
+                color: #8f8f8f;
+              }
+            }
+            .activechore {
+              font-weight: 500;
+              color: rgba(87, 88, 128, 1);
+            }
+          }
+
+          .wrapper {
+            margin-top: 20px;
+            padding: 0 20px 10px 0px;
+          }
+        }
+      }
+      .flexRight {
+        display: flex;
+        height: fit-content;
+        flex-direction: column;
+        width: 40%;
+        padding-right: 50px;
+        padding-left: 10px;
+        .templateSection {
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #17d1bc;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            height: 63px;
+            margin-right: 40px;
+            margin-top: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &:hover {
+              background-color: #4bdbcd;
+            }
+          }
+          .maximumlimit {
+            background: #adadad;
+            user-select: none;
+            cursor: default;
+            &:hover {
+              background: #adadad;
+            }
+          }
+          .subheading {
+            color: rgba(157, 157, 157, 1);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 12px;
+          }
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            width: 100%;
+            height: 83%;
+            margin-top: 20px;
+            padding: 0 30px 10px 10px;
+            /* ===== Scrollbar CSS ===== */
+            /* Firefox */
+            scrollbar-width: thin;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
+          }
+        }
+        .calcSection {
+          flex: 4;
+          margin-top: 20px;
+          .heading {
+            font-weight: 500;
+            font-size: 25px;
+            color: rgba(87, 88, 128, 1);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            svg {
+              margin-left: 10px;
+            }
+          }
+          .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #17d1bc;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            height: 63px;
+            margin-right: 40px;
+            margin-top: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &:hover {
+              background-color: #4bdbcd;
+            }
+          }
+          .maximumlimit {
+            background: #adadad;
+            user-select: none;
+            cursor: default;
+            &:hover {
+              background: #adadad;
+            }
+          }
+          .subheading {
+            color: rgba(157, 157, 157, 1);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 12px;
+          }
+          .wrapper {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            width: 100%;
+            height: 83%;
+            margin-top: 20px;
+            padding: 0 30px 10px 10px;
+            /* ===== Scrollbar CSS ===== */
+            /* Firefox */
+            scrollbar-width: thin;
+            /* Chrome, Edge, and Safari */
+            &::-webkit-scrollbar {
+              width: 19px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #eaeef8;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccd6f0;
+              border-radius: 78px;
+              border: 0px solid #ffffff;
+            }
+          }
+        }
+        .nokidlivesection {
+          margin-top: 0;
+          .wrapper {
+            height: 83%;
+          }
+        }
+      }
+    }
+
+    .container {
+      padding: 20px;
+      overflow-y: auto;
+      height: 80%;
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .invitepage {
+    .contentWrapper {
+      max-width: calc(100vw - 55px);
+      .mainContent {
+        .flexRight {
+          .gameSection {
+            padding: 20px 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-height: 800px) {
+  .invitepage {
+    .error {
+      margin: 0 25px;
+      font-size: 14px;
+      background-color: #ff6263;
+    }
+    .contentWrapper {
+      .mainContent {
+        width: 100%;
+        display: flex;
+        overflow-y: auto;
+        margin-top: 20px;
+        scrollbar-width: thin;
+        .flexLeft {
+          width: 65%;
+          padding: 0 10px 0 25px;
+          .pendingChoresSection {
+            .heading {
+              font-size: 22px;
+            }
+            .wrapper {
+              padding: 0 10px 10px 0px;
+              margin-bottom: 20px;
+            }
+          }
+          .choreSection {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            .headingWrapper {
+              .heading {
+                font-size: 22px;
+                align-items: center;
+                margin-right: 25px;
+              }
+            }
+
+            .wrapper {
+              margin-top: 20px;
+              padding: 0 20px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
+          width: 35%;
+          .templateSection {
+            flex: 4;
+            margin-top: 20px;
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .button {
+              font-size: 16px;
+              font-weight: 500;
+              height: 53px;
+            }
+            .subheading {
+              margin-right: 40px;
+            }
+            .wrapper {
+              display: flex;
+              flex-direction: column;
+              overflow: auto;
+              width: 100%;
+              height: 83%;
+              margin-top: 0px;
+              padding: 0 40px 10px 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .invitepage {
+    .contentWrapper {
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        .flexLeft {
+          align-items: center;
+          width: 100%;
+          padding-right: 40px;
+          height: unset;
+          .kidsSection {
+            width: 100%;
+          }
+          .pendingChoresSection {
+            width: 100%;
+          }
+          .choreSection {
+            width: 100%;
+          }
+        }
+        .flexRight {
+          width: 100%;
+          padding: 0 40px 0 40px;
+          margin-top: 0px;
+          .templateSection {
+            width: 100%;
+            margin-top: 40px;
+            .button {
+              margin-right: 20px;
+            }
+            .wrapper {
+              width: 100%;
+              height: 45vh;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .invitepage {
+    .contentWrapper {
+      .mainContent {
+        .flexLeft {
+          height: 100%;
+          width: 100%;
+          padding: 0 00px 0 20px;
+          .kidsSection {
+            width: 100%;
+            margin-top: 15px;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .blacnkhead1 {
+            }
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 44px;
+              color: rgba(106, 106, 106, 1);
+              .head1 {
+                font-size: 10px;
+                flex: 1;
+                margin-left: 0;
+                font-weight: 400;
+              }
+              .head2 {
+                font-size: 10px;
+                font-weight: 400;
+                flex: 0.7;
+                margin-right: 0;
+              }
+              .head3 {
+                font-size: 10px;
+                margin-left: 15px;
+                font-weight: 400;
+                width: 26%;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-bottom: 10px;
+            }
+          }
+          .pendingChoresSection {
+            .wrapper {
+              padding: 0 20px 0 0;
+            }
+          }
+        }
+        .flexRight {
+          height: 100%;
+          width: 100%;
+          margin-top: 50px;
+          .gameSection {
+            width: 100%;
+          }
+          .templateSection {
+            width: 100%;
+            margin-top: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 790px) {
+  .invitepage {
+    padding-right: 0px;
+    width: 100vw;
+    .contentWrapper {
+      .mainContent {
+        margin-top: 50px;
+        .flexLeft {
+          height: unset !important;
+          width: 100%;
+          padding: 0 10px 0 20px;
+          .pendingChoresSection {
+            .heading {
+              font-size: 16px;
+            }
+            .wrapper {
+              padding: 0 5px 0 0;
+            }
+          }
+          .choreSection {
+            .headingWrapper {
+              .heading {
+                font-size: 16px;
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+        .flexRight {
+          height: 100%;
+          width: 100%;
+          margin-top: 0px;
+          padding: 0 10px 0 20px;
+          .templateSection {
+            width: 100%;
+            margin-top: 40px;
+            .heading {
+              font-size: 16px;
+            }
+            .button {
+              height: 45px;
+            }
+            .subheading {
+              font-size: 10px;
+              margin-right: 20px;
+            }
+            .wrapper {
+              padding: 0 20px 0 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .invitepage {
+    padding-right: 0px;
+    width: 100vw;
+    .contentWrapper {
+      .mainContent {
+        margin-top: 20px;
+        .flexLeft {
+          height: unset !important;
+          width: 100%;
+          padding: 0 10px 0 20px;
+          .kidsSection {
+            width: 100%;
+            margin-top: 15px;
+            .heading {
+              font-size: 18px;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .heads {
+              padding: 0 5px;
+              height: 40px;
+              .blacnkhead1 {
+                width: 50px;
+                height: 100%;
+                margin-right: 5px;
+              }
+              .head1 {
+                margin-left: 0;
+                width: 30%;
+                font-size: 7px;
+                max-width: unset;
+              }
+              .head2 {
+                flex: 1;
+                font-size: 7px;
+                text-align: center;
+              }
+              .head3 {
+                width: 37%;
+                font-size: 7px;
+                margin: 0px;
+              }
+              .blacnkhead2 {
+                margin: 0;
+                flex: 1;
+                max-width: 20px;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-bottom: 10px;
+            }
+          }
+          .choreSection {
+            width: 100%;
+            margin-top: 0px;
+            .heading {
+              font-weight: 500;
+              font-size: 18px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+            }
+          }
+          .pendingChoresSection {
+            .heading {
+              font-size: 16px;
+            }
+            .wrapper {
+              padding: 0 5px 0 0;
+            }
+          }
+          .choreSection {
+            .headingWrapper {
+              .heading {
+                font-size: 16px;
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+        .flexRight {
+          height: 100%;
+          width: 100%;
+          margin-top: 0px;
+          padding: 0 10px 0 20px;
+          .templateSection {
+            width: 100%;
+            margin-top: 40px;
+            .heading {
+              font-size: 16px;
+            }
+            .button {
+              height: 45px;
+            }
+            .subheading {
+              font-size: 10px;
+              margin-right: 20px;
+            }
+            .wrapper {
+              padding: 0 20px 0 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,11 +9,12 @@ import KidCards from "../../../components/Courses/KidCards";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import ApproveModal from "../../../components/ParentStore/ApproveModal";
+import QuestCard from "../../../components/Quests/QuestCard";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import Toast from "../../../components/Toast";
 import styles from "../../../styles/Courses/coursesPage.module.scss";
 function CoursesPage({ liveclassdata }) {
-  const [mode, setmode] = useState("Courses");
+  const [mode, setmode] = useState("Knowledge Quest");
   const router = useRouter();
   const { courseid } = router.query;
   const [state, setstate] = useState("inprogress");
@@ -25,22 +26,44 @@ function CoursesPage({ liveclassdata }) {
   });
   const availableCourses = [
     {
-      name: "Learn Investment Basics",
+      name: "Personal Finance & Business 101",
       description:
         "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
       amount: 3500,
+      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
+      id: "asd-1",
     },
     {
-      name: "Learn Investment Basics",
+      name: "Personal Finance & Business 101",
       description:
         "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
       amount: 3500,
+      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
+      id: "asd-12",
     },
     {
-      name: "Learn Investment Basics",
+      name: "Personal Finance & Business 101",
       description:
         "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
       amount: 3500,
+      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
+      id: "asd-13",
+    },
+    {
+      name: "Personal Finance & Business 101",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
+      id: "asd-1",
+    },
+    {
+      name: "Personal Finance & Business 101",
+      description:
+        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+      amount: 3500,
+      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
+      id: "asd-12",
     },
   ];
   const kiddata = ["", "", ""];
@@ -62,58 +85,18 @@ function CoursesPage({ liveclassdata }) {
       />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        <div className={styles.switch}>
-          <p
-            className={`${styles.tabs} ${
-              state === "inprogress" ? styles.selected : ""
-            }`}
-            onClick={() => {
-              if (state !== "inprogress") setstate("inprogress");
-            }}
-          >
-            In Progress
-          </p>
-          <p
-            className={`${styles.tabs} ${
-              state === "completed" ? styles.selected : ""
-            }`}
-            onClick={() => {
-              if (state !== "completed") setstate("completed");
-            }}
-          >
-            Completed
-          </p>
-        </div>
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={styles.coursesSection}>
-              {courses.map((data, index) => {
-                return (
-                  <CoursesComponent
-                    key={"courseComponent" + index}
-                    data={{
-                      img_url: data.image,
-                      course_progress: 50,
-                      current_course: data.title,
-                      subheading: data.age,
-                    }}
-                  />
-                );
-              })}
-            </div>
             <div className={`${styles.availableCourses} `}>
-              <h2 className={styles.heading}>
-                Preview Courses
-                <HeadingArrow />
-              </h2>
+              <h2 className={styles.heading}>Preview Quests</h2>
               <div className={styles.wrapper}>
                 {availableCourses.map((item, index) => {
                   return (
-                    <AvailableCourse
+                    <QuestCard
                       data={item}
                       setbuydata={setbuydata}
                       setshowmodal={setshowmodal}
-                      key={"available" + index}
+                      key={item.id}
                     />
                   );
                 })}

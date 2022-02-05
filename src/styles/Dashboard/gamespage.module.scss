@@ -9,8 +9,48 @@
     flex: 1;
     display: flex;
     width: 100%;
-    max-width: calc(100vw - 350px);
     flex-direction: column;
+    .banner {
+      min-height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      background-color: #fff;
+      margin-bottom: 20px;
+      img {
+        height: 100%;
+        width: 70%;
+        object-fit: cover;
+      }
+      .right {
+        flex: 1;
+        display: flex;
+        min-width: 400px;
+        padding: 40px;
+        flex-direction: column;
+        .name {
+          font-size: 32px;
+          font-weight: 600;
+        }
+        .description {
+          font-size: 16px;
+          color: rgb(37, 37, 37);
+          margin-top: 10px;
+        }
+        .play {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          background-color: #4166eb;
+          color: white;
+          padding: 15px 40px;
+          font-size: 18px;
+          margin-top: auto;
+          cursor: pointer;
+        }
+      }
+    }
     .mainContent {
       width: 100%;
       display: flex;
@@ -48,6 +88,7 @@
             padding-bottom: 20px;
             scrollbar-width: thin;
             scroll-behavior: smooth;
+            gap: 20px;
           }
         }
         .availableSection {
@@ -73,6 +114,7 @@
             padding-top: 20px;
             padding-bottom: 20px;
             scrollbar-width: thin;
+            gap: 20px;
             scroll-behavior: smooth;
           }
         }
@@ -157,6 +199,46 @@
     .contentWrapper {
       .mainContent {
         .flexLeft {
+          .banner {
+            min-height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            background-color: #fff;
+            img {
+              height: 100%;
+              width: 70%;
+              object-fit: cover;
+            }
+            .right {
+              flex: 1;
+              display: flex;
+              min-width: 350px;
+              padding: 20px;
+              flex-direction: column;
+              .name {
+                font-size: 26px;
+                font-weight: 600;
+              }
+              .description {
+                font-size: 14px;
+                color: rgb(37, 37, 37);
+                margin-top: 10px;
+              }
+              .play {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 6px;
+                background-color: #4166eb;
+                color: white;
+                padding: 15px 40px;
+                font-size: 14px;
+                margin-top: auto;
+                cursor: pointer;
+              }
+            }
+          }
           .recentSection {
             .heading {
               font-size: 22px;
