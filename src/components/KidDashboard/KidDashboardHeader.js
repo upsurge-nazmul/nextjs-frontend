@@ -11,6 +11,7 @@ import { MainContext } from "../../context/Main";
 import Menu from "../Dashboard/Menu";
 import NotificationMenu from "../Dashboard/NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { UniCoinValue } from "../../../config";
 function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
   const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
@@ -46,7 +47,13 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
       <div className={styles.rightWrapper}>
         <div className={styles.rewardBlock}>
           <UniCoinSvg className={styles.svg} />
-          <p className={styles.number}>{userdata?.num_unicoins || 0}</p>
+          <p className={styles.number}>
+            {userdata?.num_unicoins
+              ? userdata?.num_unicoins > UniCoinValue
+                ? userdata.num_unicoins / UniCoinValue + "K"
+                : userdata.num_unicoins
+              : 0}
+          </p>
         </div>
         <div
           id="notification-btn"

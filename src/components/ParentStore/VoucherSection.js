@@ -5,7 +5,13 @@ import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import Reward from "../WaitlistDashboard/Reward";
 import Voucher from "./Voucher";
 import SearchIcon from "@mui/icons-material/Search";
-export default function VoucherSection({ vouchers, unicoins, email, phone }) {
+export default function VoucherSection({
+  vouchers,
+  unicoins,
+  email,
+  phone,
+  kidsdata,
+}) {
   const [items, setitems] = useState(vouchers);
   const [query, setquery] = useState("");
   async function SearchVoucher() {
@@ -43,6 +49,7 @@ export default function VoucherSection({ vouchers, unicoins, email, phone }) {
             unicoin={unicoins}
             email={email}
             phone={phone}
+            kidsdata={kidsdata}
           />
         ))}
         {items.length === 0 && (

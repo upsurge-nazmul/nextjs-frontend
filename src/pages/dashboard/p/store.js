@@ -90,6 +90,7 @@ export default function ParentStore({
               unicoins={userdatafromserver.num_unicoins}
               email={userdatafromserver.email}
               phone={userdatafromserver.phone}
+              kidsdata={kidsdata}
             />
           </div>
         </div>

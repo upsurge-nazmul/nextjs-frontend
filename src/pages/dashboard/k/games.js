@@ -56,6 +56,16 @@ function Games({ userdatafromserver, token }) {
       setrecent_games(JSON.parse(x));
     }
   }, []);
+  async function updaterecentgames(gamearr) {
+    let gamestring = "";
+    for (let i = 0; i < gamearr.length; i++) {
+      if (i !== gamearr.length - 1) {
+        gamestring += gamearr[i] + ",";
+      } else gamestring += gamearr[i];
+    }
+
+    let res = await FreeGameApis.updateRecentGames({ games: gamestring });
+  }
   async function handlegameclick(title) {
     let x = localStorage.getItem("recent_games");
     if (x) {
@@ -69,9 +79,12 @@ function Games({ userdatafromserver, token }) {
           x.push(title);
         }
         setrecent_games(x);
+        updaterecentgames(x);
         localStorage.setItem("recent_games", JSON.stringify(x));
       }
     } else {
+      updaterecentgames([title]);
+
       localStorage.setItem("recent_games", JSON.stringify([title]));
     }
     if (title === "Ludo") {
@@ -183,11 +196,17 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let recentgames = await FreeGameApis.getrecentGames(null, token);
+
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
           token: token,
+          recentgames:
+            recentgames && recentgames.data && recentgames.data.success
+              ? recentgames.data.data
+              : [],
         },
       };
     }

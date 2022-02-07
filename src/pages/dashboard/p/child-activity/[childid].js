@@ -10,17 +10,20 @@ import HeadingArrow from "../../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import ChoreApis from "../../../../actions/apis/ChoreApis";
+import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import TribeApis from "../../../../actions/apis/TribeApis";
 import { getCookie } from "../../../../actions/cookieUtils";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
 import UniCoinSvg from "../../../../components/SVGcomponents/UniCoinSvg";
 import FillSpace from "../../../../components/Dashboard/FillSpace";
 import QuizApis from "../../../../actions/apis/QuizApis";
+import { Game_Data } from "../../../../static_data/Game_Data";
 export default function ChildActivity({
   pendingchores,
   childdetail,
   highestquizscore,
   childTribes,
+  recentgames,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState(
@@ -172,10 +175,10 @@ export default function ChildActivity({
             <div className={styles.gamessection}>
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
-                {games.map((game) => {
-                  return <GameCard data={game} key={game.id} />;
+                {recentgames.map((game) => {
+                  return <GameCard data={Game_Data[game]} key={game.id} />;
                 })}
-                {games.length === 0 && (
+                {recentgames.length === 0 && (
                   <FillSpace
                     text={"No recent games"}
                     extrastyle={{ margin: "0" }}
@@ -228,6 +231,10 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let recentgames = await FreeGameApis.getrecentGames(
+        { id: params.childid },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -245,6 +252,10 @@ export async function getServerSideProps({ params, req }) {
           childTribes:
             userTribes && userTribes.data && userTribes.data.success
               ? userTribes.data.data
+              : [],
+          recentgames:
+            recentgames && recentgames.data && recentgames.data.success
+              ? recentgames.data.data
               : [],
         },
       };

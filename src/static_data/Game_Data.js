@@ -1,45 +1,45 @@
 export const Game_Data = {
-  // ShoppingBudget: {
-  //   name: "Shopping Budget",
-  //   description:
-  //     "Identify how much is available to spend and making purchase decisions based on that.",
-  // },
-  // BalanceBuilder: {
-  //   name: "Balance Builder",
-  //   description: "Identify what is income and what is expense.",
-  // },
-  // HighAndLow: {
-  //   name: "High and Low",
-  //   description:
-  //     "Identify currency and arrange in ascending or descending order after adding the money.",
-  // },
-  // MoneyMath: {
-  //   name: "Money Math",
-  //   description:
-  //     "Choose what you want to buy, earn some money, and calculate  how much you have left.",
-  // },
-  // MoneyManager: {
-  //   name: "Money Manager",
-  //   description:
-  //     "Know the importance of allocating your earnings between spending, saving and donating.",
-  // },
-  // MoneySlide: {
-  //   name: "Money Slide",
-  //   description:
-  //     "Identify different types of Money notes and coins and achieve the desired target.",
-  // },
-  // NeedOrWant: {
-  //   name: "Need or Want",
-  //   description: "Identify the difference between needs and wants.",
-  // },
+  ShoppingBudget: {
+    name: "Shopping Budget",
+    description:
+      "Identify how much is available to spend and making purchase decisions based on that.",
+  },
+  BalanceBuilder: {
+    name: "Balance Builder",
+    description: "Identify what is income and what is expense.",
+  },
+  HighAndLow: {
+    name: "High and Low",
+    description:
+      "Identify currency and arrange in ascending or descending order after adding the money.",
+  },
+  MoneyMath: {
+    name: "Money Math",
+    description:
+      "Choose what you want to buy, earn some money, and calculate  how much you have left.",
+  },
+  MoneyManager: {
+    name: "Money Manager",
+    description:
+      "Know the importance of allocating your earnings between spending, saving and donating.",
+  },
+  MoneySlide: {
+    name: "Money Slide",
+    description:
+      "Identify different types of Money notes and coins and achieve the desired target.",
+  },
+  NeedOrWant: {
+    name: "Need or Want",
+    description: "Identify the difference between needs and wants.",
+  },
   Ludo: {
     name: "Ludo",
     description: "Financial Ludo for young adults.",
   },
-  // ShoppingMall: {
-  //   name: "ShoppingMall",
-  //   description: "ShoppingMall",
-  // },
+  ShoppingMall: {
+    name: "ShoppingMall",
+    description: "ShoppingMall",
+  },
 };
 
 export const Game_Unity_Data = {

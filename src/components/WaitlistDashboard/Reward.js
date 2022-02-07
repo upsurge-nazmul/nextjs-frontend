@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import { UniCoinValue } from "../../../config";
 export default function Reward({
   data,
   setuser_balance,
   email,
   phone,
   balance,
+  kidsdata,
 }) {
-  const [prices, setprices] = useState(data.valueDenominations?.split(",")[0]);
+  const [prices, setprices] = useState([]);
+  const [selectedprice, setselectedprice] = useState(
+    data.valueDenominations?.split(",")[0] * UniCoinValue
+  );
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
   async function redeem() {
@@ -20,6 +25,17 @@ export default function Reward({
     }
     setshowpopup(true);
   }
+  useEffect(() => {
+    let values = data.valueDenominations?.split(",");
+    let unicoinvalues = [];
+    values.forEach((item) => {
+      unicoinvalues.push(Number(item) * UniCoinValue);
+    });
+    console.log(values);
+    console.log(unicoinvalues);
+    setprices(unicoinvalues);
+    setselectedprice(unicoinvalues[0]);
+  }, []);
   return (
     <div className={styles.reward}>
       {showpopup && (
@@ -27,25 +43,23 @@ export default function Reward({
           userdata_email={email}
           userdata_phone={phone}
           quantity={quantity}
-          prices={prices}
+          prices={selectedprice}
           data={data}
           setshowpopup={setshowpopup}
           setuser_balance={setuser_balance}
+          kidsdata={kidsdata}
         />
-      )}
-      {Number(data.valueDenominations.split(",")[0]) > balance && (
-        <div className={styles.gray}></div>
       )}
       <img src={data.imageUrl} alt="" />
       <p className={styles.name}>{data.name}</p>
       <div className={styles.quantityandprice}>
         <DropDown
-          options={data.valueDenominations?.split(",") || ["test"]}
-          value={prices}
-          presign={"INR "}
+          options={prices}
+          value={selectedprice}
+          shorter={true}
           keyprefix={data.name + "price"}
-          placeholder={"Price"}
-          setvalue={setprices}
+          placeholder={"UniCoins"}
+          setvalue={(value) => setselectedprice(value)}
         />
         <DropDown
           options={[1, 2, 3, 4, 5]}

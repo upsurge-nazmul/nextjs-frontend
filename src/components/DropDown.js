@@ -11,6 +11,10 @@ function DropDown({
   fontSize,
   margin,
   presign,
+  postsign,
+  className,
+  shorter,
+  onChange
 }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
@@ -37,7 +41,7 @@ function DropDown({
   return (
     <div
       id={keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]}
-      className={styles.dropdown}
+      className={`${styles.dropdown} ${className}`}
       style={{ margin: margin ? margin : "0" }}
     >
       <div
@@ -57,7 +61,12 @@ function DropDown({
           }}
         >
           {presign ? presign : ""}
-          {value?.length > 25 ? value.substring(0, 25) + "..." : value}
+          {shorter
+            ? value / 1000 + "K"
+            : value?.length > 25
+            ? value.substring(0, 25) + "..."
+            : value}
+          {postsign ? " " + postsign : ""}
         </p>
         <DropDownArrow className={styles.svg} />
       </div>
@@ -79,7 +88,7 @@ function DropDown({
                     : "dropdownoption" + index
                 }
               >
-                {item}
+                {shorter ? item / 1000 + "K" : item}
               </p>
             );
           })}

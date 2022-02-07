@@ -8,7 +8,8 @@ import styles from "../../../styles/Dashboard/gamespage.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
-function Games() {
+import FreeGameApis from "../../../actions/apis/FreeGameApis";
+function Games({ recentgames }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -84,10 +85,22 @@ function Games() {
   };
   useEffect(() => {
     let x = localStorage.getItem("recent_games");
-    if (x) {
-      setrecent_games(JSON.parse(x));
+    let gamearr = JSON.parse(x);
+    if (gamearr) {
+      setrecent_games(gamearr);
     }
   }, []);
+
+  async function updaterecentgames(gamearr) {
+    let gamestring = "";
+    for (let i = 0; i < gamearr.length; i++) {
+      if (i !== gamearr.length - 1) {
+        gamestring += gamearr[i] + ",";
+      } else gamestring += gamearr[i];
+    }
+
+    let res = await FreeGameApis.updateRecentGames({ games: gamestring });
+  }
   function handlegameclick(title) {
     let x = localStorage.getItem("recent_games");
     if (x) {
@@ -100,10 +113,12 @@ function Games() {
         } else {
           x.push(title);
         }
+        updaterecentgames(x);
         setrecent_games(x);
         localStorage.setItem("recent_games", JSON.stringify(x));
       }
     } else {
+      updaterecentgames([title]);
       localStorage.setItem("recent_games", JSON.stringify([title]));
     }
     router.push("/dashboard/p/game/" + title);
@@ -141,11 +156,11 @@ function Games() {
                 </p>
               </div>
             </div>
-            {recent_games?.length > 0 && (
+            {recentgames?.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
-                  {recent_games.map((item, index) => {
+                  {recentgames.map((item, index) => {
                     return (
                       <GameCard
                         onCLick={() =>
@@ -201,8 +216,13 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let recentgames = await FreeGameApis.getrecentGames(null, token);
       return {
         props: {
+          recentgames:
+            recentgames && recentgames.data && recentgames.data.success
+              ? recentgames.data.data
+              : [],
           isLogged: true,
         },
       };
