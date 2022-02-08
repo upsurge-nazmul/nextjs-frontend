@@ -13,11 +13,6 @@ export default function MiniCalcCard({ data, id }) {
         <Image src={data.icon} layout="fill" objectFit="cover" />
       </div>
       <div className={styles.right}>
-        {/* <div className={styles.categories}>
-      {item.categories?.split(",").map((cat, index) => {
-        return <p key={"morecat" + index}>{cat}</p>;
-      })}
-    </div> */}
         <div className={styles.title}>{data.heading}</div>
         <div className={styles.content}>
           {data.subheading.length > 250

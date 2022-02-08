@@ -19,6 +19,18 @@
       .imagesection {
         border-radius: 100%;
         width: fit-content;
+        .imagesetter {
+          position: absolute;
+          width: 168px;
+          height: 168px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          cursor: pointer;
+          background-color: rgba(26, 26, 26, 0.527);
+          color: white;
+        }
         img {
           width: 168px;
           height: 168px;

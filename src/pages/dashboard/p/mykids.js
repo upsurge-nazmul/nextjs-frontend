@@ -70,12 +70,6 @@ export default function GoalWizard({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.kidsSection}>
-              {/* <h2
-                className={styles.heading}
-                onClick={() => router.push("/mykids")}
-              >
-                My Kids
-              </h2> */}
               {kids.length > 0 && (
                 <div className={styles.heads}>
                   <p className={styles.blacnkhead1}></p>

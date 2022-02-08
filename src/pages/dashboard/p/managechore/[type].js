@@ -20,6 +20,7 @@ export default function ManageChore({
   choredata,
   childdata,
   userdatafromserver,
+  templatedata,
 }) {
   const router = useRouter();
   const { type, template, templatecat } = router.query;
@@ -47,12 +48,18 @@ export default function ManageChore({
   const [cat, setcat] = useState(
     !isInEditMode ? templatecat : choredata?.category || "HouseHold"
   );
-  const [interval, setinterval] = useState("One Time");
+  const [interval, setinterval] = useState(
+    templatedata?.is_reoccurring ? "Daily" : "One Time"
+  );
   const [showaddmodal, setshowaddmodal] = useState(false);
   const [msg, setmsg] = useState(choredata?.message || "");
   const [lettercounts, setlettercounts] = useState(200);
   const [choretitle, setchoretitle] = useState(
-    !isInEditMode ? currentchoretemplate?.name : choredata?.title || ""
+    !isInEditMode
+      ? templatedata
+        ? templatedata.name
+        : currentchoretemplate?.name
+      : choredata?.title || ""
   );
   const [duedate, setduedate] = useState(
     choredata
@@ -191,6 +198,39 @@ export default function ManageChore({
       }
     }
   }
+  async function handleSaveTemplate() {
+    if (
+      !userdatafromserver.plan_name ||
+      userdatafromserver.plan_name === "Free"
+    ) {
+      settoastdata({
+        show: true,
+        msg: "Please buy a subscription first",
+        type: "error",
+      });
+      return;
+    }
+    let response = await ChoreApis.addtemplate({
+      name: choretitle,
+      category: cat,
+      img_url: currentchoretemplate?.img,
+      is_reoccurring: interval !== "One Time" ? true : false,
+    });
+
+    if (response && response.data && response.data.success) {
+      settoastdata({
+        show: true,
+        msg: "Template added successfully",
+        type: "success",
+      });
+    } else {
+      settoastdata({
+        show: true,
+        msg: response.data.message || "Error saving chore template",
+        type: "error",
+      });
+    }
+  }
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
@@ -216,7 +256,9 @@ export default function ManageChore({
             <img
               src={
                 !isInEditMode
-                  ? currentchoretemplate?.img
+                  ? templatedata
+                    ? templatedata.img_url
+                    : currentchoretemplate?.img
                   : choredata?.image ||
                     "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQTFWtjP3S55GF9SiB8xsodk5w2QO5MichphEj4JcYRpo-Eewh5WdqGZH6G1OtIgoB-PmyPDWcx-9ieyysbz5g"
               }
@@ -299,7 +341,10 @@ export default function ManageChore({
                 Delete Chore
               </div>
             )}
-            <div className={`${styles.button} ${styles.template}`}>
+            <div
+              className={`${styles.button} ${styles.template}`}
+              onClick={handleSaveTemplate}
+            >
               +Save as template
             </div>
           </div>
@@ -365,10 +410,26 @@ export async function getServerSideProps({ params, req }) {
           return { props: { choredata: null, childdata: null } };
         }
       } else {
+        if (req.__NEXT_INIT_QUERY.templateid) {
+          let res = await ChoreApis.gettemplatedetail(
+            { id: req.__NEXT_INIT_QUERY.templateid },
+            token
+          );
+          return {
+            props: {
+              choredata: null,
+              childdata: null,
+              userdatafromserver: response.data.data,
+              templatedata:
+                res && res.data && res.data.success ? res.data.data : null,
+            },
+          };
+        }
         return {
           props: {
             choredata: null,
             childdata: null,
+            templatedata: null,
             userdatafromserver: response.data.data,
           },
         };

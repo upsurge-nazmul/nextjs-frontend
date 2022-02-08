@@ -66,6 +66,25 @@ const markchoreforapproval = (payload, token) => {
     getCookie("accesstoken")
   );
 };
+
+const gettemplates = (payload, token) => {
+  return ApiCalls.getResponse("chore/choretemplates", payload, token);
+};
+const addtemplate = (payload) => {
+  return ApiCalls.postResponse(
+    `chore/addtemplate`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const gettemplatedetail = (payload, token) => {
+  return ApiCalls.getResponse("chore/templatedetail", payload, token);
+};
+
+const deletetemplate = (payload, token) => {
+  return ApiCalls.deleteResponse("chore/deletetemplate", payload, token);
+};
 //getchores
 const ChoreApis = {
   addchore,
@@ -81,6 +100,10 @@ const ChoreApis = {
   getcompletedchildchores,
   markchorestarted,
   markchoreforapproval,
+  addtemplate,
+  gettemplates,
+  gettemplatedetail,
+  deletetemplate,
 };
 
 export default ChoreApis;

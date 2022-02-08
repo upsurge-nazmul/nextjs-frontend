@@ -180,16 +180,16 @@
           font-family: "Roboto", sans-serif;
           font-size: 18px;
           font-weight: 500;
-          color: #000000;
-          background: #d2d2d2;
+          color: #ffffff;
+          background: #4166eb;
           transition: all 0.3s ease;
           cursor: pointer;
           margin-top: 20px;
           &:hover {
-            color: #1b1b1b;
+            color: #4166eb;
             background-color: #f4f5f7;
 
-            border: 1px solid #1b1b1b;
+            border: 1px solid #4166eb;
           }
         }
       }

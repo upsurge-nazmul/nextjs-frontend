@@ -45,6 +45,8 @@ export default function EditProfile({ data }) {
   const [showphoneotp, setshowphoneotp] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
+  const [showimgsetter, setshowimgsetter] = useState(false);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
   const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
   const girl_avatars = [
@@ -280,7 +282,20 @@ export default function EditProfile({ data }) {
           gobackto={type === "waitlist" ? "dashboard/w" : "dashboard"}
         />
         <div className={styles.mainContent}>
-          <div className={styles.imagesection}>
+          {showavatarmodal && <AvatarSelector />}
+          <div
+            className={styles.imagesection}
+            onMouseEnter={() => setshowimgsetter(true)}
+            onMouseLeave={() => setshowimgsetter(false)}
+          >
+            {showimgsetter && (
+              <div
+                className={styles.imagesetter}
+                onClick={() => setshowavatarmodal(true)}
+              >
+                Choose avatar
+              </div>
+            )}
             <img src={img} alt="" />
           </div>
           <div className={styles.details}>

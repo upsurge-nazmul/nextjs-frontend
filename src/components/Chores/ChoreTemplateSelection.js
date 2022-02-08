@@ -1,5 +1,7 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import ChoreApis from "../../actions/apis/ChoreApis";
+import { getCookie } from "../../actions/cookieUtils";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Chores/choretemplateselection.module.scss";
 import BackArrow from "../SVGcomponents/BackArrow";
@@ -34,6 +36,7 @@ function ChoreTemplateSelection({ category, setmode }) {
               >
                 Use Template
               </div>
+              
             </div>
           );
         })}

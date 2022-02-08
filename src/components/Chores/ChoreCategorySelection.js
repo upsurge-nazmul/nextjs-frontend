@@ -1,16 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TemplateCard from "./TemplateCard";
 import styles from "../../styles/Chores/chorecategoryselection.module.scss";
 import DownArrowFilled from "../SVGcomponents/DownArrowFilled";
 import BackArrow from "../SVGcomponents/BackArrow";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import { useRouter } from "next/dist/client/router";
 import { choretemplates } from "../../helpers/choretemplates";
+import ChoreApis from "../../actions/apis/ChoreApis";
+import { getCookie } from "../../actions/cookieUtils";
 
 function ChoreCategorySelection({ setmode }) {
   const [showtemps, setshowtemps] = useState(false);
   const router = useRouter();
   const [showfull, setshowfull] = useState(false);
   const [selectedcat, setselectedcat] = useState("HouseHold");
+  const [temps, settemps] = useState([]);
+  useEffect(() => {
+    let arr =
+      choretemplates[
+        choretemplates.findIndex((item) => item.name === selectedcat)
+      ].templates;
+    gettemplates();
+    async function gettemplates() {
+      let res = await ChoreApis.gettemplates(
+        { category: selectedcat },
+        getCookie("accesstoken")
+      );
+      console.log(res.data.data);
+      if (res && res.data && res.data.success) {
+        settemps([...res.data.data, ...arr]);
+      } else {
+        settemps(arr);
+      }
+    }
+  }, [selectedcat]);
+
+  async function handledelete(id) {
+    let res = await ChoreApis.deletetemplate({ id }, getCookie("accesstoken"));
+    if (res && res.data && res.data.success) {
+      settemps((prev) => prev.filter((item) => item.id !== id));
+    }
+  }
+
   return (
     <div className={styles.choreCategorySelection}>
       {!showfull ? (
@@ -45,18 +76,25 @@ function ChoreCategorySelection({ setmode }) {
             </div>
           </div>
           <div className={styles.wrapper}>
-            {choretemplates[
-              choretemplates.findIndex((item) => item.name === selectedcat)
-            ].templates.map((item, index) => {
+            {temps.map((item, index) => {
               return (
                 <div
                   className={styles.card}
-                  key={"templatecardselection" + index}
+                  key={item.id || "templatecardselection" + index}
                 >
-                  <img src={item.img} alt="" />
+                  <img src={item.img || item.img_url} alt="" />
                   <div className={styles.text}>
                     <p className={styles.name}>{item.name}</p>
                     <p className={styles.time}>{item.time}</p>
+                    {item.id && (
+                      <div
+                        className={styles.delete}
+                        onClick={() => handledelete(item.id)}
+                      >
+                        Delete{" "}
+                        <DeleteRoundedIcon className={styles.deleteicon} />
+                      </div>
+                    )}
                   </div>
                   <div
                     className={styles.button}
@@ -65,7 +103,8 @@ function ChoreCategorySelection({ setmode }) {
                         "/dashboard/p/managechore/new?template=" +
                           item.name.replace(/ /g, "-") +
                           "&templatecat=" +
-                          selectedcat
+                          selectedcat +
+                          (item.id ? "&templateid=" + item.id : "")
                       );
                     }}
                   >
