@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
+import ChoreApis from "../../actions/apis/ChoreApis";
 import KidApis from "../../actions/apis/KidApis";
 import {
   completedtimeDifference,
@@ -61,7 +62,7 @@ function KidChore({ data, settoastdata }) {
     if (choredata.completion === "started") {
       return;
     }
-    let response = await KidApis.markchorestarted({
+    let response = await ChoreApis.markchorestarted({
       choreId: choredata.id,
       is_reoccurring: choredata.is_reoccurring,
     });
@@ -89,7 +90,7 @@ function KidChore({ data, settoastdata }) {
     if (choredata.completion === "approval") {
       return;
     }
-    let response = await KidApis.markchoreforapproval({
+    let response = await ChoreApis.markchoreforapproval({
       choreId: choredata.id,
     });
     if (response && response.data && response.data.success) {

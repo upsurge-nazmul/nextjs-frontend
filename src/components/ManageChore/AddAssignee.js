@@ -1,4 +1,5 @@
 import React from "react";
+import { UniCoinValue } from "../../../config";
 import styles from "../../styles/ManageChore/addassignees.module.scss";
 
 export function AddAssignees({ data, added, setassignees }) {
@@ -13,7 +14,12 @@ export function AddAssignees({ data, added, setassignees }) {
       />
       <div className={styles.nameandpoints}>
         <p className={styles.name}>{data.first_name}</p>
-        <p className={styles.points}>{data.points} Points</p>
+        <p className={styles.points}>
+          {data.num_unicoins > UniCoinValue
+            ? data.num_unicoins / UniCoinValue + "K "
+            : data.num_unicoins + " "}
+          UniCoins
+        </p>
       </div>
       {added ? (
         <div

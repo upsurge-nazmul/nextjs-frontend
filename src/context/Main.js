@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import "../firebase";
+import NotificationApis from "../actions/apis/NotificationApis";
 
 export const MainContext = createContext();
 
@@ -17,7 +18,10 @@ export const MainContextProider = ({ children }) => {
   const [lastName, setlastName] = useState("");
   const [currentChoreTemplate, setcurrentChoreTemplate] = useState("");
   const [show, setShow] = useState(false);
-  const [notification, setNotification] = useState({ title: "", body: "" });
+  const [notification, setNotification] = useState({
+    title: "Test",
+    body: "This is body",
+  });
   const [widthHeight, setwidthHeight] = useState({
     width: 1280,
     height: 720,
@@ -28,13 +32,28 @@ export const MainContextProider = ({ children }) => {
       onMessage(messaging, (payload) => {
         setShow(true);
         setNotification({
-          title: payload.notification?.title,
-          body: payload.notification?.body,
+          title: payload.data?.title,
+          body: payload.data?.body,
+          data: payload.data,
+          show: true,
         });
         console.log(payload);
       });
     } catch (err) {
       console.log(err);
+    }
+  }, []);
+  useEffect(() => {
+    saveNotificationToken();
+    async function saveNotificationToken() {
+      let token = "";
+      try {
+        let messaging = getMessaging();
+        token = await getToken(messaging);
+        await NotificationApis.addToken({ type: "web", token });
+      } catch (err) {
+        console.log("notifications blocked");
+      }
     }
   }, []);
   useEffect(() => {

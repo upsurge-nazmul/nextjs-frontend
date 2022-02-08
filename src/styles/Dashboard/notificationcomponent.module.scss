@@ -24,6 +24,33 @@
     .msg {
       font-size: 12px;
     }
+    .action {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      .approve {
+        margin-right: 5px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background-color: #17d1bc;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .cancel {
+        padding: 5px 10px;
+        border-radius: 4px;
+        background-color: #ff6263;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
   }
   .right {
     width: fit-content;

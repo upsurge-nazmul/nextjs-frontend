@@ -52,6 +52,20 @@ const deletechore = (payload) => {
     getCookie("accesstoken")
   );
 };
+const markchorestarted = (payload, token) => {
+  return ApiCalls.postResponse(
+    `chore/markchorestarted`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const markchoreforapproval = (payload, token) => {
+  return ApiCalls.postResponse(
+    `chore/markchoreforapproval`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const ChoreApis = {
   addchore,
@@ -65,6 +79,8 @@ const ChoreApis = {
   getchorebyid,
   getpendingchildchore,
   getcompletedchildchores,
+  markchorestarted,
+  markchoreforapproval,
 };
 
 export default ChoreApis;

@@ -17,7 +17,6 @@ import ChorePending from "../../../components/Chores/ChorePending";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
-  console.log(userdatafromserver);
   const [mode, setmode] = useState("chores");
   const router = useRouter();
   const [dataloaded, setdataloaded] = useState(false);
@@ -87,7 +86,11 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
         <Toast data={toastdata} />
         <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
         <div className={styles.contentWrapper}>
-          <DashboardHeader mode={mode} setmode={setmode} />
+          <DashboardHeader
+            mode={mode}
+            setmode={setmode}
+            settoastdata={settoastdata}
+          />
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>

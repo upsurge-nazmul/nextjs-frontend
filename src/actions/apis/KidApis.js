@@ -19,26 +19,11 @@ const getbadges = (payload, token) => {
 const getchildchores = (payload, token) => {
   return ApiCalls.getResponse(`kid/getchildchores`, payload, token);
 };
-const markchorestarted = (payload, token) => {
-  return ApiCalls.postResponse(
-    `kid/markchorestarted`,
-    payload,
-    getCookie("accesstoken")
-  );
-};
-const markchoreforapproval = (payload, token) => {
-  return ApiCalls.postResponse(
-    `kid/markchoreforapproval`,
-    payload,
-    getCookie("accesstoken")
-  );
-};
+
 const KidApis = {
   getbadges,
   getavatars,
   getchildchores,
-  markchorestarted,
-  markchoreforapproval,
   buyavatar,
 };
 

@@ -4,7 +4,7 @@ import draftToHtml from "draftjs-to-html";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/WaitlistDashboard/waitlistblog.module.scss";
 import Image from "next/image";
-export default function WaitlistBlogs({ blogs }) {
+export default function WaitlistBlogs({ blogs, pushTo }) {
   const router = useRouter();
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -26,10 +26,17 @@ export default function WaitlistBlogs({ blogs }) {
             <div
               className={styles.blog}
               key={item.id}
-              onClick={() => router.push("/dashboard/w/blog/" + item.id)}
+              onClick={() => {
+                router.push((pushTo ? pushTo : "/dashboard/w/blog/") + item.id);
+              }}
             >
               <div className={styles.img}>
-                <Image src={item.img_url} layout="fill" objectFit="cover" alt='temp'/>
+                <Image
+                  src={item.img_url}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="temp"
+                />
               </div>
               <div className={styles.right}>
                 <div className={styles.categories}>

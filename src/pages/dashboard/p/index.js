@@ -87,19 +87,6 @@ function Dashboard({
   }, []);
 
   useEffect(() => {
-    saveNotificationToken();
-    async function saveNotificationToken() {
-      let token = "";
-      try {
-        let messaging = getMessaging();
-        token = await getToken(messaging);
-        await NotificationApis.addToken({ type: "web", token });
-      } catch (err) {
-        console.log("notifications blocked");
-      }
-    }
-  }, []);
-  useEffect(() => {
     if (router.query.err) {
       if (router.query.err === "03") {
         settoastdata({
@@ -243,10 +230,7 @@ function Dashboard({
                         )}
                       </>
                     ) : (
-                      <FillSpace
-                        text="Currently there are no Approval pending."
-                        extrastyle={{ marginTop: 0 }}
-                      />
+                      <FillSpace text="Currently there are no Approval pending." />
                     )}
                   </div>
                 )}

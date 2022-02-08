@@ -3,7 +3,10 @@ import styles from "../../styles/Dashboard/notificationmenu.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import NotificationApis from "../../actions/apis/NotificationApis";
 import NotificationComponent from "../Dashboard/NotificationComponent";
-export default function NotificationMenu({ setshownotifications }) {
+export default function NotificationMenu({
+  setshownotifications,
+  settoastdata,
+}) {
   let [notifications, setnotifications] = useState([]);
   const [page, setpage] = useState(1);
   const [showmore, setshowmore] = useState(true);
@@ -49,7 +52,13 @@ export default function NotificationMenu({ setshownotifications }) {
       </div>
       <div className={styles.wrapper}>
         {notifications.map((item, index) => {
-          return <NotificationComponent data={item} key={item.id} />;
+          return (
+            <NotificationComponent
+              data={item}
+              key={item.id}
+              settoastdata={settoastdata}
+            />
+          );
         })}
         {showmore ? (
           <div

@@ -22,7 +22,10 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   return (
     <div className={styles.dashboardHeader}>
       {shownotifications && (
-        <NotificationMenu setshownotifications={setshownotifications} />
+        <NotificationMenu
+          setshownotifications={setshownotifications}
+          settoastdata={settoastdata}
+        />
       )}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (

@@ -6,7 +6,6 @@
   border-radius: 10px;
   margin-bottom: 20px;
   display: flex;
-  min-height: 500px;
   flex-direction: column;
   .heading {
     font-size: 35px;
@@ -70,12 +69,16 @@
     color: white;
     border-radius: 10px;
     .heading {
-      font-size: 28px;
-      margin-bottom: 15px;
+      font-size: 26px;
+      margin-bottom: 2px;
+    }
+    .subheading {
+      font-size: 14px;
+      margin-top: 5px;
     }
     .err {
       font-size: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     .bottom {
       display: flex;

@@ -18,6 +18,7 @@ import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
+import PartnerSection from "../../../components/Home/PartnerSection";
 
 export default function Invite({ kidsdata, userdatafromserver }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -42,15 +43,13 @@ export default function Invite({ kidsdata, userdatafromserver }) {
           <p className={styles.error}>Please add children before inviting.</p>
         )}
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
+          <div className={styles.flexTop}>
             <Refer settoastdata={settoastdata} parent={true} />
+            {kidsdata && <AvailablePointsSection kidsdata={kidsdata} />}
           </div>
-
-          {kidsdata && (
-            <div className={styles.flexRight}>
-              <AvailablePointsSection kidsdata={kidsdata} />
-            </div>
-          )}
+          <div className={styles.flexBottom}>
+            <PartnerSection dashboard={true} />
+          </div>
         </div>
       </div>
     </div>

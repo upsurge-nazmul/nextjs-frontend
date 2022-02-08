@@ -17,11 +17,17 @@ import Image from "next/image";
 import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
-import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 import QuizApis from "../../../actions/apis/QuizApis";
+import DashboardBlogs from "../../../components/Dashboard/DashboardBlogs";
+import BlogApis from "../../../actions/apis/BlogApis";
+import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
 
-export default function DailyQuestion({ userdatafromserver, todaysquestion }) {
+export default function DailyQuestion({
+  userdatafromserver,
+  todaysquestion,
+  blogdata,
+}) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
   const [mode, setmode] = useState("Question a day");
@@ -40,10 +46,13 @@ export default function DailyQuestion({ userdatafromserver, todaysquestion }) {
       <DashboardLeftPanel />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
+          <div className={styles.flexTop}>
             {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+            <Refer settoastdata={settoastdata} />
+          </div>
+          <div className={styles.flexBottom} id="rightpanel">
+            <WaitlistBlogs blogs={blogdata} pushTo="/dashboard/p/blog/" />
           </div>
         </div>
       </div>
@@ -69,11 +78,13 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let tq = await QuizApis.todaysquestion(null, token);
+      let blogs = await BlogApis.gethomeblogs();
 
       return {
         props: {
           isLogged: true,
           todaysquestion: tq?.data?.success ? tq.data.data : null,
+          blogdata: blogs?.data.data || [],
           userdatafromserver: response.data.data,
         },
       };
