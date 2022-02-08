@@ -37,7 +37,6 @@ export const MainContextProider = ({ children }) => {
           data: payload.data,
           show: true,
         });
-        console.log(payload);
       });
     } catch (err) {
       console.log(err);
