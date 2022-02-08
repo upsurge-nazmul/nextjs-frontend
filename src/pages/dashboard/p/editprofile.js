@@ -15,6 +15,7 @@ import validator from "validator";
 import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
+import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
 export default function EditProfile({ data }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -282,7 +283,14 @@ export default function EditProfile({ data }) {
           gobackto={type === "waitlist" ? "dashboard/w" : "dashboard"}
         />
         <div className={styles.mainContent}>
-          {showavatarmodal && <AvatarSelector />}
+          {showavatarmodal && (
+            <AvatarSelector
+              avatars={avatars}
+              setshow={setshowavatarmodal}
+              value={img}
+              setvalue={setimg}
+            />
+          )}
           <div
             className={styles.imagesection}
             onMouseEnter={() => setshowimgsetter(true)}
@@ -379,21 +387,7 @@ export default function EditProfile({ data }) {
             </div>
           </div>
         </div>
-        <div className={styles.avatars}>
-          <p className={styles.heading}>Select your avatar</p>
-          <div className={styles.wrapper}>
-            {avatars.map((item) => {
-              return (
-                <img
-                  onClick={() => setimg("/images/avatars/" + item + ".png")}
-                  key={"avatar" + item}
-                  src={"/images/avatars/" + item + ".png"}
-                  alt=""
-                />
-              );
-            })}
-          </div>
-        </div>
+
         <DashboardFooter />
       </div>
     </div>
