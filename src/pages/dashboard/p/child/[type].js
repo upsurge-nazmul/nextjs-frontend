@@ -15,9 +15,9 @@ import range from "lodash/range";
 
 import CustomDatePicker from "../../../../components/CustomDatePicker";
 import ModernInputBox from "../../../../components/ModernInputBox";
-import Cities_Data from "../../../../static_data/Cities_Data";
 import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
+import { Cities_Data } from "../../../../static_data/Cities_Data";
 function AddKid({ childdata }) {
   const router = useRouter();
   const type = router.query.type;

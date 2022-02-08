@@ -29,20 +29,9 @@ export default function ChildActivity({
   const [mode, setmode] = useState(
     childdetail.first_name + "'s progress report" || "Child Activity"
   );
-  const games = [
-    // {
-    //   id: "Test",
-    //   name: "Ludo",
-    //   description: "Financial Ludo for young adults.",
-    // },
-    // {
-    //   id: "Test2",
-    //   name: "Ludo",
-    //   description: "Financial Ludo for young adults.",
-    // },
-  ];
+
   const [choremode, setchoremode] = useState("inprogress");
-  const [chorearray, setchorearray] = useState(pendingchores ?? []);
+  const [chorearray, setchorearray] = useState(pendingchores.rows ?? []);
   const [quests, setquests] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -52,7 +41,7 @@ export default function ChildActivity({
   });
   useEffect(() => {
     if (choremode === "inprogress") {
-      setchorearray(pendingchores);
+      setchorearray(pendingchores.rows);
     } else {
       x();
     }
@@ -239,7 +228,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           pendingchores:
-            pendinchores && pendinchores.data && pendinchores.data.data
+            pendinchores && pendinchores.data && pendinchores.data.success
               ? pendinchores.data.data
               : [],
           childdetail:
