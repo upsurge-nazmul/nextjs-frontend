@@ -12,7 +12,7 @@ function ChoreTemplate({ image, name, time, cat }) {
       <img src={image} alt="" className={styles.userimg} />
       <div className={styles.nameandpoints}>
         <p className={styles.name}>{name}</p>
-        <p className={styles.points}>{time}</p>
+        <p className={styles.points}>One time</p>
       </div>
       <div
         className={styles.assignbutton}

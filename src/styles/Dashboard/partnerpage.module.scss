@@ -74,388 +74,157 @@
   }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .partnerpage {
-    .contentWrapper {
-      max-width: calc(100vw - 55px);
-      .mainContent {
-        .flexRight {
-          .gameSection {
-            padding: 20px 40px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 860px) and (max-height: 800px) {
-  .partnerpage {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
     .error {
-      margin: 0 25px;
-      font-size: 14px;
+      margin: 0 40px;
+      color: #f4f5f7;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 12px;
       background-color: #ff6263;
     }
     .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
       .mainContent {
         width: 100%;
         display: flex;
         overflow-y: auto;
+        height: fit-content;
         margin-top: 20px;
         scrollbar-width: thin;
         .flexLeft {
-          width: 65%;
-          padding: 0 10px 0 25px;
-          .pendingChoresSection {
-            .heading {
-              font-size: 22px;
-            }
-            .wrapper {
-              padding: 0 10px 10px 0px;
-              margin-bottom: 20px;
-            }
-          }
-          .choreSection {
-            margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
+          padding: 0 10px 0 26px;
+          .wrapper {
             display: flex;
-            flex-direction: column;
-            .headingWrapper {
-              .heading {
-                font-size: 22px;
-                align-items: center;
-                margin-right: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+            img {
+              width: calc(100% / 3 - 20px);
+              object-fit: contain;
+              background-color: white;
+              border-radius: 12px;
+              border: 1px solid rgb(207, 207, 207);
+              padding: 0 20px;
+              &:first-child {
+                background-color: white;
+              }
+              &:nth-child(2) {
+                background-color: white;
+              }
+              &:nth-child(3) {
+                background-color: rgb(0, 0, 0);
+              }
+              &:nth-child(4) {
+                background-color: white;
+              }
+              &:nth-child(5) {
+                background-color: white;
+              }
+              &:nth-child(6) {
+                background-color: rgb(0, 0, 0);
               }
             }
+          }
+        }
+      }
 
-            .wrapper {
-              margin-top: 20px;
-              padding: 0 20px 10px 0px;
-            }
-          }
-        }
-        .flexRight {
-          width: 35%;
-          .templateSection {
-            flex: 4;
-            margin-top: 20px;
-            .heading {
-              font-weight: 500;
-              font-size: 25px;
-              color: rgba(87, 88, 128, 1);
-              display: flex;
-              align-items: center;
-              svg {
-                margin-left: 10px;
-              }
-            }
-            .button {
-              font-size: 16px;
-              font-weight: 500;
-              height: 53px;
-            }
-            .subheading {
-              margin-right: 40px;
-            }
-            .wrapper {
-              display: flex;
-              flex-direction: column;
-              overflow: auto;
-              width: 100%;
-              height: 83%;
-              margin-top: 0px;
-              padding: 0 40px 10px 0px;
-            }
-          }
-        }
+      .container {
+        padding: 20px;
+        overflow-y: auto;
+        height: 80%;
+        width: 80%;
       }
     }
   }
 }
-@media only screen and (max-width: 1100px) {
+
+@media only screen and (max-width: 860px) {
   .partnerpage {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    .error {
+      margin: 0 40px;
+      color: #f4f5f7;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      background-color: #ff6263;
+    }
     .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
       .mainContent {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        .flexLeft {
-          align-items: center;
-          width: 100%;
-          padding-right: 40px;
-          height: unset;
-          .kidsSection {
-            width: 100%;
-          }
-          .pendingChoresSection {
-            width: 100%;
-          }
-          .choreSection {
-            width: 100%;
-          }
-        }
-        .flexRight {
-          width: 100%;
-          padding: 0 40px 0 40px;
-          margin-top: 0px;
-          .templateSection {
-            width: 100%;
-            margin-top: 40px;
-            .button {
-              margin-right: 20px;
-            }
-            .wrapper {
-              width: 100%;
-              height: 45vh;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 900px) {
-  .partnerpage {
-    .contentWrapper {
-      .mainContent {
-        .flexLeft {
-          height: 100%;
-          width: 100%;
-          padding: 0 00px 0 20px;
-          .kidsSection {
-            width: 100%;
-            margin-top: 15px;
-            .heading {
-              font-size: clamp(16px, 20px, 26px);
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .blacnkhead1 {
-            }
-            .heads {
-              display: flex;
-              width: 100%;
-              align-items: center;
-              height: 44px;
-              color: rgba(106, 106, 106, 1);
-              .head1 {
-                font-size: 10px;
-                flex: 1;
-                margin-left: 0;
-                font-weight: 400;
-              }
-              .head2 {
-                font-size: 10px;
-                font-weight: 400;
-                flex: 0.7;
-                margin-right: 0;
-              }
-              .head3 {
-                font-size: 10px;
-                margin-left: 15px;
-                font-weight: 400;
-                width: 26%;
-              }
-            }
-            .wrapper {
-              padding: 0 0px 10px 0px;
-              margin-bottom: 10px;
-            }
-          }
-          .pendingChoresSection {
-            .wrapper {
-              padding: 0 20px 0 0;
-            }
-          }
-        }
-        .flexRight {
-          height: 100%;
-          width: 100%;
-          margin-top: 50px;
-          .gameSection {
-            width: 100%;
-          }
-          .templateSection {
-            width: 100%;
-            margin-top: 40px;
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 790px) {
-  .partnerpage {
-    padding-right: 0px;
-    width: 100vw;
-    .contentWrapper {
-      .mainContent {
-        margin-top: 50px;
-        .flexLeft {
-          height: unset !important;
-          width: 100%;
-          padding: 0 10px 0 20px;
-          .pendingChoresSection {
-            .heading {
-              font-size: 16px;
-            }
-            .wrapper {
-              padding: 0 5px 0 0;
-            }
-          }
-          .choreSection {
-            .headingWrapper {
-              .heading {
-                font-size: 16px;
-                margin-right: 15px;
-              }
-            }
-          }
-        }
-        .flexRight {
-          height: 100%;
-          width: 100%;
-          margin-top: 0px;
-          padding: 0 10px 0 20px;
-          .templateSection {
-            width: 100%;
-            margin-top: 40px;
-            .heading {
-              font-size: 16px;
-            }
-            .button {
-              height: 45px;
-            }
-            .subheading {
-              font-size: 10px;
-              margin-right: 20px;
-            }
-            .wrapper {
-              padding: 0 20px 0 0px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 500px) {
-  .partnerpage {
-    padding-right: 0px;
-    width: 100vw;
-    .contentWrapper {
-      .mainContent {
+        overflow-y: auto;
+        height: fit-content;
         margin-top: 20px;
+        scrollbar-width: thin;
         .flexLeft {
-          height: unset !important;
-          width: 100%;
-          padding: 0 10px 0 20px;
-          .kidsSection {
-            width: 100%;
-            margin-top: 15px;
-            .heading {
-              font-size: 18px;
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .heads {
-              padding: 0 5px;
-              height: 40px;
-              .blacnkhead1 {
-                width: 50px;
-                height: 100%;
-                margin-right: 5px;
-              }
-              .head1 {
-                margin-left: 0;
-                width: 30%;
-                font-size: 7px;
-                max-width: unset;
-              }
-              .head2 {
-                flex: 1;
-                font-size: 7px;
-                text-align: center;
-              }
-              .head3 {
-                width: 37%;
-                font-size: 7px;
-                margin: 0px;
-              }
-              .blacnkhead2 {
-                margin: 0;
-                flex: 1;
-                max-width: 20px;
-              }
-            }
-            .wrapper {
-              padding: 0 0px 10px 0px;
-              margin-bottom: 10px;
-            }
-          }
-          .choreSection {
-            width: 100%;
-            margin-top: 0px;
-            .heading {
-              font-weight: 500;
-              font-size: 18px;
-              color: rgba(87, 88, 128, 1);
-              display: flex;
-              align-items: center;
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .wrapper {
-              overflow: auto;
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
-            }
-          }
-          .pendingChoresSection {
-            .heading {
-              font-size: 16px;
-            }
-            .wrapper {
-              padding: 0 5px 0 0;
-            }
-          }
-          .choreSection {
-            .headingWrapper {
-              .heading {
-                font-size: 16px;
-                margin-right: 15px;
-              }
-            }
-          }
-        }
-        .flexRight {
+          display: flex;
+          flex-direction: column;
           height: 100%;
           width: 100%;
-          margin-top: 0px;
-          padding: 0 10px 0 20px;
-          .templateSection {
-            width: 100%;
-            margin-top: 40px;
-            .heading {
-              font-size: 16px;
-            }
-            .button {
-              height: 45px;
-            }
-            .subheading {
-              font-size: 10px;
-              margin-right: 20px;
-            }
-            .wrapper {
-              padding: 0 20px 0 0px;
+          padding: 0 10px 0 10px;
+          .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            img {
+              width: 100%;
+              object-fit: contain;
+              background-color: white;
+              border-radius: 12px;
+              border: 1px solid rgb(207, 207, 207);
+              padding: 0 15px;
+              &:first-child {
+                background-color: white;
+              }
+              &:nth-child(2) {
+                background-color: white;
+              }
+              &:nth-child(3) {
+                background-color: rgb(0, 0, 0);
+              }
+              &:nth-child(4) {
+                background-color: white;
+              }
+              &:nth-child(5) {
+                background-color: white;
+              }
+              &:nth-child(6) {
+                background-color: rgb(0, 0, 0);
+              }
             }
           }
         }
+      }
+
+      .container {
+        padding: 20px;
+        overflow-y: auto;
+        height: 80%;
+        width: 80%;
       }
     }
   }

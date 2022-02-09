@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "../../styles/GeneralComponents/avatarselector.module.scss";
 import TickSvg from "../SVGcomponents/TickSvg";
-export default function AvatarSelector({ avatars, setvalue, value, setshow }) {
+export default function AvatarSelector({
+  avatars,
+  setvalue,
+  value,
+  setshow,
+  dirlink,
+}) {
   return (
     <div className={styles.avatarselector}>
       <div className={styles.background} onClick={() => setshow(false)} />
@@ -14,16 +20,26 @@ export default function AvatarSelector({ avatars, setvalue, value, setshow }) {
                 className={styles.avatar}
                 key={avatar}
                 onClick={() => {
-                  setvalue("/images/avatars/" + avatar + ".png");
+                  setvalue(
+                    (dirlink ? dirlink : "/images/avatars/") + avatar + ".png"
+                  );
                   setshow(false);
                 }}
               >
-                {value === "/images/avatars/" + avatar + ".png" && (
+                {value ===
+                  (dirlink ? dirlink : "/images/avatars/") +
+                    avatar +
+                    ".png" && (
                   <div className={styles.selected}>
                     <TickSvg className={styles.tick} />
                   </div>
                 )}
-                <img src={"/images/avatars/" + avatar + ".png"} alt="" />
+                <img
+                  src={
+                    (dirlink ? dirlink : "/images/avatars/") + avatar + ".png"
+                  }
+                  alt=""
+                />
               </div>
             );
           })}

@@ -226,7 +226,6 @@
       .flexRight {
         display: flex;
         height: fit-content;
-
         flex-direction: column;
         width: 40%;
         padding-right: 50px;
@@ -401,7 +400,7 @@
       .mainContent {
         width: 100%;
         display: flex;
-        overflow-y: auto;
+        overflow: auto;
         margin-top: 0px;
         scrollbar-width: thin;
         .flexLeft {

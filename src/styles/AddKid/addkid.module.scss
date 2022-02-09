@@ -18,12 +18,28 @@
       display: flex;
       max-width: 1000px;
       .imagesection {
+        border-radius: 100%;
         width: fit-content;
+        height: fit-content;
+        .imagesetter {
+          position: absolute;
+          width: 168px;
+          height: 168px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          cursor: pointer;
+          overflow: hidden;
+          background-color: rgba(26, 26, 26, 0.527);
+          color: white;
+        }
         img {
           width: 168px;
           height: 168px;
           border-radius: 100%;
           object-fit: cover;
+          background-color: white;
         }
       }
       .nameWrapper {
@@ -350,15 +366,25 @@
         display: flex;
         flex-direction: column;
         .imagesection {
-          width: fit-content;
-          display: flex;
-          width: 100%;
-          margin-bottom: 20px;
-          padding-left: 20px;
+          border-radius: 100%;
+          margin: 0 auto 20px;
+          .imagesetter {
+            position: absolute;
+            width: 128px;
+            height: 128px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            font-size: 12px;
+            cursor: pointer;
+            background-color: rgba(26, 26, 26, 0.527);
+            color: white;
+          }
           img {
             width: 128px;
             height: 128px;
-            border-radius: 12px;
+            border-radius: 100%;
             object-fit: cover;
           }
         }

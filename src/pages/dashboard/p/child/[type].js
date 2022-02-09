@@ -18,6 +18,7 @@ import ModernInputBox from "../../../../components/ModernInputBox";
 import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
+import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 function AddKid({ childdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -54,6 +55,8 @@ function AddKid({ childdata }) {
   const [school, setschool] = useState(childdata?.school || "");
   const [passisweak, setpassisweak] = useState(false);
   const [schoolresults, setschoolresults] = useState([]);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
+  const [showimgsetter, setshowimgsetter] = useState(false);
   const [confirmpassword, setconfirmpassword] = useState("");
   const boy_avatars = ["1", "2", "3", "4", "5"];
   const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
@@ -273,6 +276,15 @@ function AddKid({ childdata }) {
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+      {showavatarmodal && (
+        <AvatarSelector
+          avatars={avatars}
+          setshow={setshowavatarmodal}
+          value={img}
+          setvalue={setimg}
+          dirlink={"/images/free-child-avatars/"}
+        />
+      )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -281,7 +293,19 @@ function AddKid({ childdata }) {
           gobackto={"/dashboard/p"}
         />
         <div className={styles.mainContent}>
-          <div className={styles.imagesection}>
+          <div
+            className={styles.imagesection}
+            onMouseEnter={() => setshowimgsetter(true)}
+            onMouseLeave={() => setshowimgsetter(false)}
+          >
+            {showimgsetter && (
+              <div
+                className={styles.imagesetter}
+                onClick={() => setshowavatarmodal(true)}
+              >
+                Choose avatar
+              </div>
+            )}
             <img
               src={img || "https://i.ibb.co/v3vVV8r/default-avatar.png"}
               alt=""
@@ -353,7 +377,6 @@ function AddKid({ childdata }) {
             <ModernInputBox
               value={school}
               setvalue={setschool}
-              showincaps
               placeholder="School"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
               tooltipid={"school-tooltip"}
@@ -433,23 +456,6 @@ function AddKid({ childdata }) {
             >
               {type === "add" ? "Add Child" : "Save Changes"}
             </div>
-          </div>
-        </div>
-        <div className={styles.avatars}>
-          <p className={styles.heading}>Select your avatar</p>
-          <div className={styles.wrapper}>
-            {avatars.map((item) => {
-              return (
-                <img
-                  onClick={() =>
-                    setimg("/images/free-child-avatars/" + item + ".png")
-                  }
-                  key={"avatar" + item}
-                  src={"/images/free-child-avatars/" + item + ".png"}
-                  alt=""
-                />
-              );
-            })}
           </div>
         </div>
       </div>
