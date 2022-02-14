@@ -1,85 +1,70 @@
 import React, { useContext, useEffect, useState } from "react";
-import DashboardApis from "../../../actions/apis/DashboardApis";
-import LoginApis from "../../../actions/apis/LoginApis";
 import Toast from "../../../components/Toast";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import { useRouter } from "next/dist/client/router";
-import styles from "../../../styles/kidDashboard/kiddashboard.module.scss";
-import ProfileSection from "../../../components/KidDashboard/ProfileSection";
-import KidChore from "../../../components/KidDashboard/KidChore";
-import KidCourses from "../../../components/KidDashboard/KidCourses";
 import GameCard from "../../../components/Dashboard/GameCard";
-import Badge from "../../../components/KidDashboard/Badge";
-import BadgeSection from "../../../components/KidDashboard/BadgeSection";
-import NextChores from "../../../components/KidDashboard/NextChores";
-import TribeSection from "../../../components/KidDashboard/TribeSection";
-import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import { useRouter } from "next/dist/client/router";
+import styles from "../../../styles/ChildActivity/childactivity.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
-import KidApis from "../../../actions/apis/KidApis";
 import { MainContext } from "../../../context/Main";
-import NoChores from "../../../components/KidDashboard/NoChores";
-import { getMessaging, getToken } from "@firebase/messaging";
-import NotificationApis from "../../../actions/apis/NotificationApis";
-
-function KidDashboard({
-  isLogged,
-  msg,
-  choresdata,
-  gamesdata,
-  liveclassdata,
-  badgeData,
-  kiddata,
+import LoginApis from "../../../actions/apis/LoginApis";
+import ChoreApis from "../../../actions/apis/ChoreApis";
+import FreeGameApis from "../../../actions/apis/FreeGameApis";
+import TribeApis from "../../../actions/apis/TribeApis";
+import { getCookie } from "../../../actions/cookieUtils";
+import DashboardApis from "../../../actions/apis/DashboardApis";
+import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
+import FillSpace from "../../../components/Dashboard/FillSpace";
+import QuizApis from "../../../actions/apis/QuizApis";
+import { Game_Data } from "../../../static_data/Game_Data";
+import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+export default function ChildActivity({
+  pendingchores,
+  childdetail,
+  highestquizscore,
+  childTribes,
+  recentgames,
 }) {
-  // modes are different pages like home,kids,store,payments,notifications
-  const [mode, setmode] = useState("home");
   const { setuserdata } = useContext(MainContext);
+  const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
+
+  const [choremode, setchoremode] = useState("inprogress");
+  const [chorearray, setchorearray] = useState(pendingchores || []);
+  const [quests, setquests] = useState([]);
   const router = useRouter();
-  const [familyfun, setfamilyfun] = useState(gamesdata || []);
-  const [chores, setchores] = useState(choresdata || []);
-  const [liveclasses, setliveclasses] = useState(liveclassdata || []);
-  const [badges, setbadges] = useState(["", "", ""]);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  const tribes = ["", "", ""];
   useEffect(() => {
-    if (isLogged === false) {
-      console.log(isLogged);
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: msg,
-      });
-      router.push("/");
-    }
-  }, [isLogged]);
-  useEffect(() => {
-    if (!kiddata) return;
-    setuserdata(kiddata);
-  }, [kiddata]);
-  useEffect(() => {
-    saveNotificationToken();
-    async function saveNotificationToken() {
-      let messaging = getMessaging();
-      let token = "";
-      try {
-        token = await getToken(messaging);
-      } catch (err) {
-        settoastdata({
-          show: true,
-          msg: "Notifications Blocked",
-          type: "error",
-        });
+    if (choremode === "inprogress") {
+      if (pendingchores.rows) {
+        setchorearray(pendingchores.rows);
       }
-      let response = await NotificationApis.addToken({ type: "web", token });
+    } else {
+      x();
     }
-  }, []);
+    async function x() {
+      let res = await ChoreApis.getcompletedchildchores(
+        {
+          child_id: router.query.childid,
+        },
+        getCookie("accesstoken")
+      );
+      if (res && res.data && res.data.success) {
+        setchorearray(res.data.data);
+      } else {
+        setchorearray([]);
+      }
+    }
+  }, [choremode]);
   return (
-    <div className={styles.kiddashboard}>
+    <div className={styles.childactivity}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
+
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
           mode={mode}
@@ -88,67 +73,127 @@ function KidDashboard({
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={`${styles.liveClassSection}`}>
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/quest")}
-              >
-                My Knowledge Quests
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {liveclasses.map((data, index) => {
-                  return (
-                    <KidCourses
-                      key={"gamecard" + index}
-                      data={{
-                        img_url: data.image,
-                        course_progress: 50,
-                        current_course: data.title,
-                        subheading: data.age,
-                      }}
+            <div className={styles.headsection}>
+              <div className={styles.topblock}>
+                <img src={childdetail.user_img_url} alt="" />
+                <div className={styles.right}>
+                  <div className={styles.rewardblock}>
+                    <UniCoinSvg className={styles.svg} />
+                    <p className={styles.number}>
+                      {childdetail?.num_unicoins || 0} UniCoins
+                    </p>
+                  </div>
+                  <p className={styles.username}>@{childdetail.user_name}</p>
+                </div>
+              </div>
+              <div className={styles.tribes}>
+                {childTribes.map((tribe) => (
+                  <div
+                    className={styles.tribe}
+                    key={tribe.id}
+                    onClick={() =>
+                      router.push("/dashboard/k/tribes/" + tribe.id)
+                    }
+                  >
+                    <img
+                      src={
+                        tribe.tribe_img_url ||
+                        "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                      }
+                      alt=""
                     />
-                  );
-                })}
+                    <p className={styles.name}>{tribe.name}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className={styles.choreSection}>
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/chores")}
-              >
-                My Chores
-                <HeadingArrow />
-              </h2>
-              {chores.length > 0 ? (
-                <div className={styles.wrapper}>
-                  {chores.map((chore, index) => {
-                    return (
-                      <KidChore
-                        settoastdata={settoastdata}
-                        data={chore}
-                        key={chore.id}
-                      />
-                    );
-                  })}
+            <div className={styles.leaderboardsection}>
+              <h2 className={styles.heading}>Leaderboards</h2>
+              <div className={styles.wrapper}>
+                <div className={styles.element}>
+                  <p className={styles.rank}>250</p>
+                  <p className={styles.section}>Money ace</p>
                 </div>
-              ) : (
-                <NoChores />
-              )}
+                <div className={styles.element}>
+                  <p className={styles.rank}>{highestquizscore ?? 0}</p>
+                  <p className={styles.section}>Money Quotient</p>
+                </div>
+                <div className={styles.element}>
+                  <p className={styles.rank}>2</p>
+                  <p className={styles.section}>Quests</p>
+                </div>
+                <div className={styles.element}>
+                  <p className={styles.rank}>100</p>
+                  <p className={styles.section}>Stock simulator</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles.flexRight}>
-            <BadgeSection badges={badges} />
-            {/* <NextChores /> */}
-            <TribeSection tribes={tribes} />
+            <div className={styles.choreSection}>
+              <h2
+                className={styles.mainheading}
+                onClick={() => router.push("/dashboard/p/chores")}
+              >
+                Chores
+                <HeadingArrow />
+              </h2>
+
+              <div className={styles.wrapper}>
+                {chorearray.map((data, index) => {
+                  return (
+                    <ChoreComponent
+                      data={data}
+                      settoastdata={settoastdata}
+                      key={"chorecomponent" + index}
+                    />
+                  );
+                })}
+                {chorearray.length === 0 && (
+                  <FillSpace
+                    text={"No chores in progress"}
+                    extrastyle={{ margin: 0 }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={styles.questsection}>
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/p/quests")}
+              >
+                Quests
+                <HeadingArrow />
+              </h2>
+              <div className="wrapper">
+                {quests.length === 0 && (
+                  <FillSpace
+                    text={"No quest in progress"}
+                    extrastyle={{ margin: 0 }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={styles.gamessection}>
+              <h2 className={styles.heading}>Recently played games</h2>
+              <div className={styles.wrapper}>
+                {recentgames.map((game) => {
+                  return <GameCard data={Game_Data[game]} key={game.id} />;
+                })}
+                {recentgames.length === 0 && (
+                  <FillSpace
+                    text={"No recent games"}
+                    extrastyle={{ margin: "0" }}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default KidDashboard;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
@@ -157,7 +202,6 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
-
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -168,38 +212,48 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      if (response.data.data.is_waiting_active) {
-        return {
-          props: { isLogged: false, msg: msg || "Error" },
-          redirect: {
-            permanent: false,
-            destination: "/dashboard/w",
-          },
-        };
-      }
-      if (response.data.data.user_type === "parent") {
-        return {
-          props: { isLogged: false, msg: msg || "Error" },
-          redirect: {
-            permanent: false,
-            destination: "/dashboard/p",
-          },
-        };
-      }
+      let pendinchores = await ChoreApis.getpendingchildchore(
+        {
+          child_id: response.data.data.user_id,
+        },
+        token
+      );
 
-      let kiddata = await getChildDetails(response.data.data.user_id, token);
-      let gamesdata = await getgames(token);
-      let liveclassdata = await getliveclasses(token);
-      let choresdata = await getchores(response.data.data.user_id, token);
-      let badgeData = await getbadges(response.data.data.user_id, token);
+      let highestquizscore = await QuizApis.highestscore({
+        email: response.data.data.email,
+      });
+      let userTribes = await TribeApis.userTribes(
+        {
+          userId: response.data.data.user_id,
+        },
+        token
+      );
+      let recentgames = await FreeGameApis.getrecentGames(
+        { id: response.data.data.user_id },
+        token
+      );
       return {
         props: {
           isLogged: true,
-          choresdata: choresdata || [],
-          gamesdata,
-          kiddata,
-          liveclassdata: liveclassdata.slice(2),
-          badgeData,
+          pendingchores:
+            pendinchores && pendinchores.data && pendinchores.data.success
+              ? pendinchores.data.data
+              : [],
+          childdetail:
+            response && response.data && response.data.data
+              ? response.data.data
+              : [],
+          highestquizscore: highestquizscore?.data.success
+            ? highestquizscore.data.data.score
+            : 0,
+          childTribes:
+            userTribes && userTribes.data && userTribes.data.success
+              ? userTribes.data.data
+              : [],
+          recentgames:
+            recentgames && recentgames.data && recentgames.data.success
+              ? recentgames.data.data
+              : [],
         },
       };
     }
@@ -212,31 +266,4 @@ export async function getServerSideProps({ params, req }) {
       },
     };
   }
-}
-async function getChildDetails(id, token) {
-  let response = await DashboardApis.getChildDetails({ id }, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getchores(id, token) {
-  let response = await KidApis.getchildchores({ id }, token);
-  console.log(response.data);
-  if (response && response.data && response.data.data) {
-    return response.data.data;
-  }
-}
-async function getgames(token) {
-  let response = await DashboardApis.getgames(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getliveclasses(token) {
-  let response = await DashboardApis.getliveclasses(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-}
-async function getbadges(childId, token) {
-  let response = await KidApis.getbadges({ childId }, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
 }

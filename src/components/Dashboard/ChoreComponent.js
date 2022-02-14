@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
+import ChoreApis from "../../actions/apis/ChoreApis";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import NotificationApis from "../../actions/apis/NotificationApis";
 import {
@@ -76,7 +77,7 @@ function ChoreComponent({ data, settoastdata, setchores }) {
     return () => clearInterval(x);
   }, []);
   async function deletechore() {
-    let res = await DashboardApis.deletechore({ id: data.id });
+    let res = await ChoreApis.deletechore({ id: data.id });
     if (res && res.data && res.data.success) {
       setchores((prev) => prev.filter((item) => item.id !== data.id));
       settoastdata({

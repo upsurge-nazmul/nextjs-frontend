@@ -18,9 +18,10 @@ import ModernInputBox from "../../../../components/ModernInputBox";
 import AddTribeMemberModal from "../../../../components/KidDashboard/AddTribeMemberModal";
 import TribeApis from "../../../../actions/apis/TribeApis";
 import { getCookie } from "../../../../actions/cookieUtils";
+import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 export default function ManageTribe({ userdatafromserver, token }) {
   const router = useRouter();
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, userdata } = useContext(MainContext);
   const [mode, setmode] = useState(router.query.type + " Tribe");
   const [name, setname] = useState("");
   const [img_url, setimg_url] = useState(
@@ -34,22 +35,53 @@ export default function ManageTribe({ userdatafromserver, token }) {
     type: "success",
     msg: "",
   });
+  const [avatars, setavatars] = useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+  ]);
+  const [showimgsetter, setshowimgsetter] = useState(false);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
   async function handleSave() {
-    const res = await TribeApis.createtribe(
-      {
-        name: name,
-        description: description,
-        members: selectedmembers,
-        tribe_img_url: img_url,
-      },
-      getCookie("accesstoken")
-    );
-    console.log(res.data);
+    let model = {
+      name: name,
+      description: description,
+      members: selectedmembers,
+      tribe_img_url: img_url,
+    };
+    const res = await TribeApis.createtribe(model, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
       alert("done");
+      // router.push("/dashboard/k/tribes");
     } else {
       alert("error");
     }
@@ -74,7 +106,32 @@ export default function ManageTribe({ userdatafromserver, token }) {
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.top}>
-              <img src={img_url} alt="" />
+              {showavatarmodal && (
+                <AvatarSelector
+                  avatars={avatars}
+                  setshow={setshowavatarmodal}
+                  value={img_url}
+                  dirlink={"/images/tribe_avatars/"}
+                  setvalue={setimg_url}
+                  extension=".svg"
+                  tribe={true}
+                />
+              )}
+              <div
+                className={styles.imagesection}
+                onMouseEnter={() => setshowimgsetter(true)}
+                onMouseLeave={() => setshowimgsetter(false)}
+              >
+                {showimgsetter && (
+                  <div
+                    className={styles.imagesetter}
+                    onClick={() => setshowavatarmodal(true)}
+                  >
+                    Choose avatar
+                  </div>
+                )}
+                <img className={styles.avatarimg} src={img_url} alt="" />
+              </div>
               <div className={styles.right}>
                 <ModernInputBox
                   value={name}

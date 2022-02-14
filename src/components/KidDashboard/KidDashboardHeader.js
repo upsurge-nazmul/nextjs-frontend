@@ -70,6 +70,7 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
         <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
           {showmenu && <Menu settoastdata={settoastdata} menuType={"child"} />}
           <img
+            id="avatar-button"
             src={
               userdata?.user_img_url ||
               "https://i.ibb.co/v3vVV8r/default-avatar.png"

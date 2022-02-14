@@ -24,12 +24,16 @@
     .task {
       font-size: 18px;
       font-weight: 500;
+      text-transform: capitalize;
     }
     .to {
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
       color: #828282;
+      span {
+        text-transform: capitalize;
+      }
     }
   }
   .completionIcon {

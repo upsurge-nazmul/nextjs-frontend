@@ -14,11 +14,16 @@ export default function DetailsPopUp({
           "Finance master class",
           "Financial dictionary",
           "upsurge cap & bottle",
+          "20% discount on yearly subscription",
         ],
         foot: "Earn more unicoins to stay top in the waiting list !",
       },
       400: {
-        rewards: ["Financial dictionary", "upsurge cap & bottle"],
+        rewards: [
+          "Financial dictionary",
+          "upsurge cap & bottle",
+          "20% discount on yearly subscription",
+        ],
         foot: "Earn more unicoins to get more exciting rewards.",
       },
       rest: {
@@ -26,6 +31,7 @@ export default function DetailsPopUp({
           "Avail discount on joining upsurge",
           "Earn bonus unicoins !!!",
           "Other exciting rewards",
+          "20% discount on yearly subscription",
         ],
         foot: "Earn more unicoins to get more exciting rewards.",
       },

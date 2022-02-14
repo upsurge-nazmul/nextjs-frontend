@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import DashboardApis from "../../actions/apis/DashboardApis";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import QuizApis from "../../actions/apis/QuizApis";
 import { getCookie } from "../../actions/cookieUtils";
@@ -11,70 +12,93 @@ export default function LeaderboardComponent({
   highest,
   quiz_rank,
   first_name,
+  parent,
+  kid,
 }) {
-  const [selected, setselected] = useState(for_game ? "Leaderboard" : "Quiz");
+  const [selected, setselected] = useState(for_game ? for_game : "Quiz");
   const [leaderboarddata, setleaderboarddata] = useState(data || []);
   const router = useRouter();
-  function gettext(num) {
-    if (num === 2) {
-      if (selected === "Quiz") {
-        return "Money Run";
-      }
-      if (selected === "Money Run") {
-        return "Quiz";
-      } else {
-        return "Quiz";
-      }
-    }
-    if (num === 3) {
-      if (selected === "Quiz") {
-        return "Ludo";
-      }
-      if (selected === "Money Run") {
-        return "Ludo";
-      } else {
-        return "Money Run";
-      }
-    }
-  }
-
+  const [optionsbackup, setoptionsbackup] = useState([
+    "Overall",
+    "Quiz",
+    "Ludo",
+  ]);
+  const [options, setoptions] = useState(optionsbackup);
   async function getludoleaderboard() {
     let leaderboard = await FreeGameApis.getludoleaderboard(
       null,
       getCookie("accesstoken")
     );
-    console.log(leaderboard.data.data);
-
+    setleaderboarddata([]);
     setleaderboarddata(leaderboard?.data?.data || []);
   }
-  async function y() {
-    let ddd = await QuizApis.leaderboard();
+  async function getquizleaderboard() {
+    let leaderboard = await QuizApis.leaderboard({
+      onlychild: kid ? true : false,
+    });
     setleaderboarddata([]);
-    setleaderboarddata(ddd?.data?.data || []);
+    setleaderboarddata(leaderboard?.data?.data || []);
   }
+  async function getoverallleaderboard() {
+    let leaderboard = await DashboardApis.getoverallleaderboard(
+      null,
+      getCookie("accesstoken")
+    );
+    setleaderboarddata([]);
+    setleaderboarddata(leaderboard?.data?.data || []);
+  }
+
+  async function changeleaderboard(type) {
+    setselected(type);
+    setoptions(optionsbackup.filter((item) => item !== type));
+    if (type === "Ludo") {
+      getludoleaderboard();
+    } else if (type === "Quiz") {
+      getquizleaderboard();
+    } else if (type === "Money Ace") {
+      setleaderboarddata([]);
+    } else if (type === "Stock Market Simulator") {
+      setleaderboarddata([]);
+    } else {
+      getoverallleaderboard();
+    }
+  }
+
   useEffect(() => {
     if (router.query.ludo) {
       getludoleaderboard();
       setselected("Ludo");
     }
+    if (parent) {
+      setoptions([]);
+    } else if (kid) {
+      setoptionsbackup([
+        "Overall",
+        "Quiz",
+        "Money Ace",
+        "Stock Market Simulator",
+      ]);
+      setoptions(["Quiz", "Money Ace", "Stock Market Simulator"]);
+    } else {
+      setoptions(optionsbackup.filter((item) => item !== selected));
+    }
   }, []);
+
   return (
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
         <p className={`${styles.heading} ${styles.selected}`}>{selected}</p>
-        <p
-          className={styles.heading}
-          onClick={() => {
-            if (selected === "Quiz") {
-              getludoleaderboard();
-            } else {
-              y();
-            }
-            setselected(selected === "Quiz" ? "Ludo" : "Quiz");
-          }}
-        >
-          {selected === "Quiz" ? "Ludo" : "Quiz"}
-        </p>
+        {options.map((item) => (
+          <p
+            className={styles.heading}
+            key={item}
+            onClick={() => {
+              changeleaderboard(item);
+            }}
+          >
+            {item}
+          </p>
+        ))}
       </div>
       <div className={styles.section}>
         <p className={styles.subheading}>{selected}</p>
@@ -95,10 +119,18 @@ export default function LeaderboardComponent({
               >
                 <p className={styles.rank}>{index + 1}</p>
                 <p className={styles.name}>
-                  {item.nick_name || item.name || item.first_name}{" "}
+                  {item.user_name ||
+                    item.nickname ||
+                    item.name ||
+                    item.first_name}{" "}
                   {Number(quiz_rank) === index + 1 && "(you)"}
                 </p>
-                <p className={styles.score}>{item.score}</p>
+                <p className={styles.score}>
+                  {item.score ??
+                    (item.num_unicoins > 1000
+                      ? item.num_unicoins / 1000 + "K "
+                      : item.num_unicoins)}
+                </p>
               </div>
             );
           })}

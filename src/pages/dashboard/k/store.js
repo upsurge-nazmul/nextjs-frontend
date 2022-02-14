@@ -83,7 +83,11 @@ export default function KidStore({
             />
           </div>
           <div className={styles.flexRight}>
-            <VoucherSection vouchers={vouchers} />
+            <VoucherSection
+              vouchers={vouchers}
+              kid={true}
+              unicoins={userdatafromserver.num_unicoins}
+            />
           </div>
         </div>
       </div>

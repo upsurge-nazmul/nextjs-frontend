@@ -7,13 +7,38 @@ export default function AvatarSelector({
   value,
   setshow,
   dirlink,
+  purchasedAvatars,
+  extension,
+  tribe,
 }) {
   return (
     <div className={styles.avatarselector}>
       <div className={styles.background} onClick={() => setshow(false)} />
       <div className={styles.main}>
-        <p className={styles.heading}>Select your avatar</p>
+        <p className={styles.heading}>
+          Select{tribe ? " tribe " : " your "}avatar
+        </p>
         <div className={styles.wrapper}>
+          {purchasedAvatars &&
+            purchasedAvatars.map((item) => {
+              return (
+                <div
+                  className={styles.avatar}
+                  key={item}
+                  onClick={() => {
+                    setvalue(item.img_url);
+                    setshow(false);
+                  }}
+                >
+                  {value === item.img_url && (
+                    <div className={styles.selected}>
+                      <TickSvg className={styles.tick} />
+                    </div>
+                  )}
+                  <img src={item.img_url} alt="" />
+                </div>
+              );
+            })}
           {avatars.map((avatar) => {
             return (
               <div
@@ -21,7 +46,9 @@ export default function AvatarSelector({
                 key={avatar}
                 onClick={() => {
                   setvalue(
-                    (dirlink ? dirlink : "/images/avatars/") + avatar + ".png"
+                    (dirlink ? dirlink : "/images/avatars/") +
+                      avatar +
+                      (extension ? extension : ".png")
                   );
                   setshow(false);
                 }}
@@ -36,7 +63,9 @@ export default function AvatarSelector({
                 )}
                 <img
                   src={
-                    (dirlink ? dirlink : "/images/avatars/") + avatar + ".png"
+                    (dirlink ? dirlink : "/images/avatars/") +
+                    avatar +
+                    (extension ? extension : ".png")
                   }
                   alt=""
                 />

@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
+import DashboardApis from "../../../actions/apis/DashboardApis";
 import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
@@ -15,8 +16,8 @@ export default function Leaderboards({
   userdatafromserver,
   leaderboard,
   highestquizscore,
+  overallleaderboard,
 }) {
-  console.log(userdatafromserver);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -43,10 +44,11 @@ export default function Leaderboards({
         />
         <div className={styles.mainContent}>
           <LeaderboardComponent
-            data={leaderboard}
+            data={overallleaderboard}
             quiz_rank={userdatafromserver?.quiz_rank}
             highest={highestquizscore}
             first_name={userdatafromserver?.first_name}
+            for_game="Overall"
           />
         </div>
         <DashboardFooter />
@@ -74,11 +76,16 @@ export async function getServerSideProps({ params, req }) {
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
+      let overallleaderboard = await DashboardApis.getoverallleaderboard(
+        null,
+        token
+      );
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
           leaderboard: leaderboard.data.data || [],
+          overallleaderboard: overallleaderboard.data.data || [],
           highestquizscore: highestquizscore.data.success
             ? highestquizscore.data.data.score
             : 0,

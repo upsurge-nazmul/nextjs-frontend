@@ -11,6 +11,7 @@ export default function VoucherSection({
   email,
   phone,
   kidsdata,
+  kid,
 }) {
   const [items, setitems] = useState(vouchers);
   const [query, setquery] = useState("");
@@ -46,7 +47,8 @@ export default function VoucherSection({
           <Reward
             data={item.data}
             key={item.id}
-            unicoin={unicoins}
+            kid={kid ? true : false}
+            unicoins={unicoins}
             email={email}
             phone={phone}
             kidsdata={kidsdata}

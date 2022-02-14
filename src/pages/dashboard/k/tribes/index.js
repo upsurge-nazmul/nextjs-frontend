@@ -13,8 +13,13 @@ import { Game_Data } from "../../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import TribeCard from "../../../../components/KidDashboard/TribeCard";
 import TribeApis from "../../../../actions/apis/TribeApis";
-export default function Games({ userdatafromserver, token, tribes }) {
-  console.log(tribes);
+export default function Games({
+  userdatafromserver,
+  token,
+  tribes,
+  populartribes,
+}) {
+  console.log(populartribes);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Tribes");
@@ -40,10 +45,10 @@ export default function Games({ userdatafromserver, token, tribes }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
-            <div className={styles.recentSection}>
+          <div className={styles.flexTop}>
+            <div className={styles.mytribesSection}>
               <div className={styles.heading}>
-                <div className="left">
+                <div className={styles.left}>
                   My Tribes
                   <HeadingArrow />
                 </div>
@@ -68,39 +73,20 @@ export default function Games({ userdatafromserver, token, tribes }) {
                 })}
               </div>
             </div>
-            {/* <div className={styles.availableSection}>
-              <h2 className={styles.heading}>
-                Recent Tribe Games
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {Object.keys(Game_Data).map((item, index) => {
-                  return (
-                    <GameCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
-                      data={Game_Data[item]}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-              </div>
-            </div> */}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Popular Tribes
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {Object.keys(Game_Data).map((item, index) => {
+                {populartribes.map((item, index) => {
                   return (
                     <TribeCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
+                      onClick={() =>
+                        router.push("/dashboard/k/tribes/" + item.id)
                       }
-                      data={Game_Data[item]}
-                      key={"chorecomponent" + index}
+                      data={item}
+                      key={"pupular" + item.id}
                     />
                   );
                 })}
@@ -121,6 +107,7 @@ export async function getServerSideProps({ params, req }) {
       token: token,
     });
     let usertribes = await TribeApis.getTribes(null, token);
+    let populartribes = await TribeApis.popularTribes(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -138,6 +125,10 @@ export async function getServerSideProps({ params, req }) {
           tribes:
             usertribes && usertribes.data && usertribes.data.success
               ? usertribes.data.data
+              : [],
+          populartribes:
+            populartribes && populartribes.data && populartribes.data.success
+              ? populartribes.data.data
               : [],
           token: token,
         },

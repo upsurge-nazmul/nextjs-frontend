@@ -86,6 +86,31 @@ function ChoreCategorySelection({ setmode }) {
                   <div className={styles.text}>
                     <p className={styles.name}>{item.name}</p>
                     <p className={styles.time}>{item.time}</p>
+                    <div className={styles.mobilediv}>
+                      {item.id && (
+                        <div
+                          className={styles.delete}
+                          onClick={() => handledelete(item.id)}
+                        >
+                          Delete{" "}
+                          <DeleteRoundedIcon className={styles.deleteicon} />
+                        </div>
+                      )}
+                      <div
+                        className={styles.button}
+                        onClick={() => {
+                          router.push(
+                            "/dashboard/p/managechore/new?template=" +
+                              item.name.replace(/ /g, "-") +
+                              "&templatecat=" +
+                              selectedcat +
+                              (item.id ? "&templateid=" + item.id : "")
+                          );
+                        }}
+                      >
+                        Use Template
+                      </div>
+                    </div>
                     {item.id && (
                       <div
                         className={styles.delete}

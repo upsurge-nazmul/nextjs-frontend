@@ -4,6 +4,7 @@ import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { UniCoinValue } from "../../../config";
+import RequestModal from "../KidStore/RequestModal";
 export default function Reward({
   data,
   setuser_balance,
@@ -11,6 +12,8 @@ export default function Reward({
   phone,
   balance,
   kidsdata,
+  kid,
+  unicoins,
 }) {
   const [prices, setprices] = useState([]);
   const [selectedprice, setselectedprice] = useState(
@@ -31,25 +34,37 @@ export default function Reward({
     values.forEach((item) => {
       unicoinvalues.push(Number(item) * UniCoinValue);
     });
-    console.log(values);
-    console.log(unicoinvalues);
     setprices(unicoinvalues);
     setselectedprice(unicoinvalues[0]);
   }, []);
   return (
     <div className={styles.reward}>
-      {showpopup && (
-        <VoucherRedeem
-          userdata_email={email}
-          userdata_phone={phone}
-          quantity={quantity}
-          prices={selectedprice}
-          data={data}
-          setshowpopup={setshowpopup}
-          setuser_balance={setuser_balance}
-          kidsdata={kidsdata}
-        />
-      )}
+      {showpopup &&
+        (!kid ? (
+          <VoucherRedeem
+            userdata_email={email}
+            userdata_phone={phone}
+            quantity={quantity}
+            prices={selectedprice}
+            data={data}
+            setshowpopup={setshowpopup}
+            setuser_balance={setuser_balance}
+            kidsdata={kidsdata}
+          />
+        ) : (
+          <RequestModal
+            showmodal={showpopup}
+            setshowmodal={setshowpopup}
+            data={{
+              name: data.name,
+              type: "voucher",
+              price: selectedprice,
+              id: data.productId,
+            }}
+            availableUnicoins={unicoins}
+          />
+        ))}
+
       <img src={data.imageUrl} alt="" />
       <p className={styles.name}>{data.name}</p>
       <div className={styles.quantityandprice}>

@@ -17,6 +17,7 @@ import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
 export default function EditProfile({ data, childavatars }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -47,23 +48,11 @@ export default function EditProfile({ data, childavatars }) {
   const [showphoneotp, setshowphoneotp] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
+  const [showimgsetter, setshowimgsetter] = useState(false);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
-  const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
-  const girl_avatars = [
-    "14",
-    "24",
-    "21",
-    "15",
-    "17",
-    "22",
-    "23",
-    "13",
-    "12",
-    "20",
-    "19",
-    "18",
-    "16",
-  ];
+  const boy_avatars = ["1", "2", "3", "4", "5"];
+  const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   useEffect(() => {
     if (gender === "male") {
@@ -238,7 +227,29 @@ export default function EditProfile({ data, childavatars }) {
       <div className={styles.contentWrapper}>
         <KidDashboardHeader mode={mode} setmode={setmode} showback={true} />
         <div className={styles.mainContent}>
-          <div className={styles.imagesection}>
+          {showavatarmodal && (
+            <AvatarSelector
+              avatars={avatars}
+              setshow={setshowavatarmodal}
+              value={img}
+              dirlink={"/images/free-child-avatars/"}
+              purchasedAvatars={childavatars}
+              setvalue={setimg}
+            />
+          )}
+          <div
+            className={styles.imagesection}
+            onMouseEnter={() => setshowimgsetter(true)}
+            onMouseLeave={() => setshowimgsetter(false)}
+          >
+            {showimgsetter && (
+              <div
+                className={styles.imagesetter}
+                onClick={() => setshowavatarmodal(true)}
+              >
+                Choose avatar
+              </div>
+            )}
             <img src={img} alt="" />
           </div>
           <div className={styles.details}>
@@ -306,40 +317,6 @@ export default function EditProfile({ data, childavatars }) {
                 Change password
               </p>
             </div>
-          </div>
-        </div>
-
-        <div className={styles.avatars}>
-          {childavatars.length > 0 && (
-            <>
-              <p className={styles.heading}>Purchased avatars</p>
-              <div className={styles.wrapper}>
-                {childavatars.map((item) => {
-                  return (
-                    <img
-                      onClick={() => setimg(item.img_url)}
-                      key={"avatar" + item}
-                      src={item.img_url}
-                      alt=""
-                    />
-                  );
-                })}
-              </div>
-            </>
-          )}
-
-          <p className={styles.heading}>Free avatars</p>
-          <div className={styles.wrapper}>
-            {avatars.map((item) => {
-              return (
-                <img
-                  onClick={() => setimg("/images/avatars/" + item + ".png")}
-                  key={"avatar" + item}
-                  src={"/images/avatars/" + item + ".png"}
-                  alt=""
-                />
-              );
-            })}
           </div>
         </div>
         <DashboardFooter />

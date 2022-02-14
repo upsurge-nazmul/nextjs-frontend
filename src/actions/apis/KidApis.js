@@ -19,12 +19,19 @@ const getbadges = (payload, token) => {
 const getchildchores = (payload, token) => {
   return ApiCalls.getResponse(`kid/getchildchores`, payload, token);
 };
-
+const buyvoucher = (payload, token) => {
+  return ApiCalls.postResponse(
+    `kid/buyvoucher`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const KidApis = {
   getbadges,
   getavatars,
   getchildchores,
   buyavatar,
+  buyvoucher,
 };
 
 export default KidApis;

@@ -1,4 +1,5 @@
 import React from "react";
+import { UniCoinValue } from "../../../config";
 import styles from "../../styles/Tribes/tribeleaderboard.module.scss";
 
 export default function TribeLeaderboard({ data }) {
@@ -14,7 +15,12 @@ export default function TribeLeaderboard({ data }) {
                 <p className={styles.name}>
                   {item.first_name + " " + item.last_name}
                 </p>
-                <p className={styles.unicoins}>{item.num_unicoins} UniCoins</p>
+                <p className={styles.unicoins}>
+                  {Number(item.num_unicoins) / UniCoinValue > 1000
+                    ? Number(item.num_unicoins) / UniCoinValue + "K"
+                    : Number(item.num_unicoins)}{" "}
+                  UniCoins
+                </p>
               </div>
             </div>
           );

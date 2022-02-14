@@ -31,7 +31,7 @@ export default function ChildActivity({
   );
 
   const [choremode, setchoremode] = useState("inprogress");
-  const [chorearray, setchorearray] = useState(pendingchores.rows ?? []);
+  const [chorearray, setchorearray] = useState(pendingchores || []);
   const [quests, setquests] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -41,7 +41,9 @@ export default function ChildActivity({
   });
   useEffect(() => {
     if (choremode === "inprogress") {
-      setchorearray(pendingchores.rows);
+      if (pendingchores.rows) {
+        setchorearray(pendingchores.rows);
+      }
     } else {
       x();
     }
@@ -88,7 +90,13 @@ export default function ChildActivity({
               <div className={styles.tribes}>
                 {childTribes.map((tribe) => (
                   <div className={styles.tribe} key={tribe.id}>
-                    <img src={tribe.tribe_img_url} alt="" />
+                    <img
+                      src={
+                        tribe.tribe_img_url ||
+                        "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                      }
+                      alt=""
+                    />
                     <p className={styles.name}>{tribe.name}</p>
                   </div>
                 ))}

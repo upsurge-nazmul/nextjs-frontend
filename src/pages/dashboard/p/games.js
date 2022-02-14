@@ -148,12 +148,12 @@ function Games({ recentgames }) {
                   normal distribution of letters, as opposed to using 'Content
                   here, content here', making it look like readable English.`}
                 </p>
-                <p
+                {/* <p
                   className={styles.play}
                   onClick={() => router.push("/dashboard/p/game/MoneyAce")}
                 >
                   Play game
-                </p>
+                </p> */}
               </div>
             </div>
             {recentgames?.length > 0 && (

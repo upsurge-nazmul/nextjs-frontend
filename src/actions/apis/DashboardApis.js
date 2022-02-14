@@ -99,6 +99,14 @@ const completerequest = (payload) => {
 const searchuser = (payload, token) => {
   return ApiCalls.getResponse("users/searchuser", payload, token);
 };
+
+const markwelcomecomplete = (payload, token) => {
+  return ApiCalls.putResponse("users/markwelcomecomplete", payload, token);
+};
+
+const getoverallleaderboard = (payload, token) => {
+  return ApiCalls.getResponse("users/overallleaderboard", payload, token);
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -121,6 +129,8 @@ const DashboardApis = {
   updatechildprofile,
   searchuser,
   getschools,
+  markwelcomecomplete,
+  getoverallleaderboard,
 };
 
 export default DashboardApis;

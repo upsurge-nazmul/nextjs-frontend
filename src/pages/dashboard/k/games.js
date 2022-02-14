@@ -128,12 +128,28 @@ function Games({ userdatafromserver, token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <div className={styles.banner}>
+              <img src="/images/games/MoneyAce.png" alt="" />
+              <div className={styles.right}>
+                <p className={styles.name}>Money Ace</p>
+                <p className={styles.description}>
+                  {`It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.`}
+                </p>
+                <p
+                  className={styles.play}
+                  onClick={() => router.push("/dashboard/p/game/MoneyAce")}
+                >
+                  Play game
+                </p>
+              </div>
+            </div>
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
-                <h2 className={styles.heading}>
-                  Recently Played
-                  <HeadingArrow />
-                </h2>
+                <h2 className={styles.heading}>Recently Played</h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
                   {recent_games.map((item, index) => {
                     return (

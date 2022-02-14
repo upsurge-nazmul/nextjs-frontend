@@ -34,7 +34,7 @@ export default function TribePost({ data, handleLike, handleCommentClick }) {
           <div
             className={styles.commentbtn}
             onClick={() => {
-              if (data.comments?.count === 0)
+              if (!data.comments || data.comments.count === 0)
                 setshowcommentbar(!showcommentbar);
             }}
           >
@@ -42,7 +42,7 @@ export default function TribePost({ data, handleLike, handleCommentClick }) {
             {data.comments?.count || 0})
           </div>
         </div>
-        {(showcommentbar || data.comments.count > 0) && (
+        {(showcommentbar || data.comments?.count > 0) && (
           <div className={styles.commentssection}>
             <div className={styles.main}>
               <input
@@ -59,7 +59,7 @@ export default function TribePost({ data, handleLike, handleCommentClick }) {
                 Comment
               </div>
             </div>
-            {data.comments.count > 0 &&
+            {data.comments?.count > 0 &&
               data.comments.rows.map((commentdata) => {
                 return (
                   <TribeComment

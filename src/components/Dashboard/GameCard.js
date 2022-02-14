@@ -22,8 +22,8 @@ function GameCard({ data, onCLick, cardstyle }) {
         <p className={styles.title}>{data?.name || ""}</p>
         <p className={styles.detail}>
           {data?.description.length > 50
-            ? data.description.substring(0, 50) + "..."
-            : data.description || ""}
+            ? data?.description.substring(0, 50) + "..."
+            : data?.description || ""}
         </p>
         <div className={styles.chatbtn}>
           Play

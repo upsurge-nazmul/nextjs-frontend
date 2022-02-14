@@ -47,7 +47,7 @@ const getexpiredchores = (payload, token) => {
 };
 const deletechore = (payload) => {
   return ApiCalls.deleteResponse(
-    "parent/deletechore",
+    "chore/deletechore",
     payload,
     getCookie("accesstoken")
   );

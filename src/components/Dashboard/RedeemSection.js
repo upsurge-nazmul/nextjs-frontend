@@ -53,9 +53,16 @@ export default function RedeemSection({
         <p className={styles.heading}>You currently have</p>
         <div className={styles.coinflex}>
           <p className={styles.unicoins}>
-            <span>{userdata?.num_unicoins ?? 0}</span> Unicoins
+            <span>
+              {userdata
+                ? userdata.num_unicoins > 1000
+                  ? userdata?.num_unicoins / UniCoinValue + "K "
+                  : userdata.num_unicoins
+                : 0}
+            </span>{" "}
+            Unicoins
           </p>
-          <p className={styles.or}>or</p>
+          {/* <p className={styles.or}>or</p>
           <p className={styles.rupees}>
             <span>
               {userdata?.num_unicoins
@@ -63,7 +70,7 @@ export default function RedeemSection({
                 : 0}
             </span>{" "}
             Rupees
-          </p>
+          </p> */}
         </div>
         {err && <p className={styles.converstiondetails}>{err}</p>}
         <div className={styles.converstiondiv}>

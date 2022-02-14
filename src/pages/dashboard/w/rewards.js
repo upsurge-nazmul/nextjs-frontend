@@ -26,11 +26,17 @@ export default function Rewards({ userdatafromserver, vouchers }) {
         "Finance master class",
         "Financial dictionary",
         "upsurge cap & bottle",
+        "20% discount on yearly subscription",
       ],
     },
     {
       name: "200-400",
-      benefits: ["Financial dictionary", "upsurge cap", "upsurge bottle"],
+      benefits: [
+        "Financial dictionary",
+        "upsurge cap",
+        "upsurge bottle",
+        "20% discount on yearly subscription",
+      ],
     },
     {
       name: "400+",
@@ -38,6 +44,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
         "Avail discount on joining upsurge",
         "Earn bonus unicoins",
         "Other exciting rewards",
+        "20% discount on yearly subscription",
       ],
     },
   ];

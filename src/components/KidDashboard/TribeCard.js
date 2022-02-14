@@ -9,6 +9,7 @@ export default function TribeCard({ data, onClick }) {
     name: "Mehra Tribe",
     members: "Aadvik, Pihu & 6 others",
   };
+  console.log(data);
   return (
     <div className={styles.tribe}>
       <img
@@ -22,15 +23,15 @@ export default function TribeCard({ data, onClick }) {
       <div className={styles.nameandpoints} onClick={onClick}>
         <p className={styles.name}>{data.name}</p>
         <p className={styles.points}>
-          {data?.description.length > 60
-            ? data.description.substring(0, 60) + "..."
-            : ""}
+          {data?.description?.length > 60
+            ? data.description?.substring(0, 60) + "..."
+            : data.description}
         </p>
       </div>
-      <div className={styles.chatbtn}>
+      {/* <div className={styles.chatbtn}>
         Chat
         <ChatSvg clr="#ffffff" />
-      </div>
+      </div> */}
     </div>
   );
 }

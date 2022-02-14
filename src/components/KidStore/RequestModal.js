@@ -7,6 +7,7 @@ import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground"
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import KidApis from "../../actions/apis/KidApis";
 import Spinner from "../Spinner";
+import { UniCoinValue } from "../../../config";
 
 export default function RequestModal({
   showmodal,
@@ -15,7 +16,7 @@ export default function RequestModal({
   availableUnicoins,
 }) {
   //modes will be start , category , template, assign
-
+  console.log(data);
   const [success, setsuccess] = useState(false);
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -39,12 +40,25 @@ export default function RequestModal({
       setloading(false);
       return;
     }
-    let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
-    if (response && response.data && response.data.success) {
-      setsuccess(true);
+    if (data.type && data.type === "voucher") {
+      let response = await KidApis.buyvoucher({
+        voucher_id: data.id,
+        price: data.price,
+      });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
+      } else {
+        seterror(response?.data.message || "Error connecting to server");
+        setloading(false);
+      }
     } else {
-      seterror(response?.data.message || "Error connecting to server");
-      setloading(false);
+      let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
+      } else {
+        seterror(response?.data.message || "Error connecting to server");
+        setloading(false);
+      }
     }
   }
   return (
@@ -62,24 +76,38 @@ export default function RequestModal({
                 <BackButtonSvg />
                 <div className={styles.text}>
                   <p>
-                    Buy <span>{data.name}</span> Avatar
+                    Buy <span>{data.name}</span>{" "}
+                    {data.type !== "voucher" ? "Avatar" : "Voucher"}
                   </p>
                 </div>
               </div>
               <div className={styles.details}>
                 <div className={styles.label}>Available Unicoins</div>
-                <div className={styles.value}>{availableUnicoins} Unicoins</div>
+                <div className={styles.value}>
+                  {availableUnicoins > 1000
+                    ? availableUnicoins / UniCoinValue + "K "
+                    : availableUnicoins}{" "}
+                  Unicoins
+                </div>
               </div>
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
-                <div className={styles.value}>{data.price} Unicoins</div>
+                <div className={styles.value}>
+                  {data.price > 1000
+                    ? data.price / UniCoinValue + "K "
+                    : data.price}{" "}
+                  Unicoins
+                </div>
               </div>
               <div className={styles.details}>
                 <div className={styles.label}>
                   Available Unicoins post purchase
                 </div>
                 <div className={styles.value}>
-                  {availableUnicoins - data.price} Unicoins
+                  {availableUnicoins - data.price > 1000
+                    ? (availableUnicoins - data.price) / UniCoinValue + "K "
+                    : availableUnicoins - data.price}{" "}
+                  Unicoins
                 </div>
               </div>
               {error && <p className={styles.error}>{error}</p>}

@@ -1,26 +1,29 @@
 .tribepage {
   background-color: #f4f5f7;
   height: 100vh;
+  width: 100vw;
   display: flex;
   overflow: hidden;
   .contentWrapper {
     height: 100vh;
+    flex: 1;
     display: flex;
+    max-width: calc(100% - 350px);
     flex-direction: column;
-    width: 100%;
     .mainContent {
-      width: 100%;
       display: flex;
+      overflow: hidden;
       overflow-y: auto;
       margin-top: 20px;
+      padding: 0 40px 0 45px;
       scrollbar-width: thin;
-      .flexLeft {
+      flex: 1;
+      .flexTop {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        overflow: hidden;
         width: 100%;
-        padding: 0 40px 0 45px;
-        .recentSection {
+        .mytribesSection {
           height: fit-content;
           width: 100%;
           display: flex;
@@ -54,7 +57,7 @@
             display: flex;
             height: fit-content;
             align-items: center;
-            width: 100%;
+            width: inherit;
             overflow-x: auto;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -78,9 +81,9 @@
           }
           .wrapper {
             display: flex;
-            flex-wrap: wrap;
             height: fit-content;
-            width: 100%;
+            align-items: center;
+            width: inherit;
             overflow-x: auto;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -168,8 +171,8 @@
   .tribepage {
     .contentWrapper {
       .mainContent {
-        .flexLeft {
-          .recentSection {
+        .flexTop {
+          .mytribesSection {
             .heading {
               font-size: 22px;
             }
@@ -237,10 +240,10 @@
       .mainContent {
         display: flex;
         flex-direction: column;
-        .flexLeft {
+        .flexTop {
           align-items: center;
           width: 100%;
-          .recentSection {
+          .mytribesSection {
             width: 100%;
           }
           .availableSection {
@@ -279,14 +282,14 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        .flexLeft {
+        .flexTop {
           display: flex;
           flex-direction: column;
           align-items: center;
           height: 100%;
           width: 100%;
           padding: 0 30px;
-          .recentSection {
+          .mytribesSection {
             width: 100%;
             margin-top: 15px;
             .heading {
@@ -412,14 +415,14 @@
   .tribepage {
     .contentWrapper {
       .mainContent {
-        .flexLeft {
+        .flexTop {
           display: flex;
           flex-direction: column;
           align-items: center;
           height: 100%;
           width: 100%;
           padding: 0 15px;
-          .recentSection {
+          .mytribesSection {
             width: 100%;
             margin-top: 15px;
             .heading {

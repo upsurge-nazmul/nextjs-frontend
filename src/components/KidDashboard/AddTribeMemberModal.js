@@ -19,8 +19,6 @@ export default function AddTribeMemberModal({
       { query: searchquery },
       getCookie("accesstoken")
     );
-    console.log(res.data);
-
     if (res && res.data && res.data.success) {
       if (res.data.data.length > 0) {
         setsearchresults(res.data.data);
@@ -47,7 +45,7 @@ export default function AddTribeMemberModal({
               }
             }}
           />
-          <SearchIcon className={styles.icon} />
+          <SearchIcon className={styles.icon} onClick={searchusers} />
         </div>
         <div className={styles.searchwrapper}>
           {searchresults.map((item) => {

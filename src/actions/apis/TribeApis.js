@@ -35,6 +35,21 @@ const addcomment = (payload, token) => {
 const leaderboard = (payload, token) => {
   return ApiCalls.getResponse(`tribes/leaderboard`, payload, token);
 };
+
+const popularTribes = (payload, token) => {
+  return ApiCalls.getResponse("tribes/populartribes", payload, token);
+};
+
+const getchorefeed = (payload, token) => {
+  return ApiCalls.getResponse("tribes/tribechorefeed", payload, token);
+};
+
+const gettriberequests = (payload, token) => {
+  return ApiCalls.getResponse("tribes/getjoinrequests", payload, token);
+};
+const approveaddrequest = (payload, token) => {
+  return ApiCalls.getResponse("tribes/approveaddrequest", payload, token);
+};
 //getchores
 const TribeApis = {
   createtribe,
@@ -46,6 +61,10 @@ const TribeApis = {
   addcomment,
   leaderboard,
   userTribes,
+  popularTribes,
+  getchorefeed,
+  gettriberequests,
+  approveaddrequest,
 };
 
 export default TribeApis;

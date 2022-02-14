@@ -30,6 +30,7 @@
     .addflex {
       svg {
         margin-right: 10px;
+        cursor: pointer;
       }
       display: flex;
     }
@@ -88,7 +89,7 @@
     }
     .notification {
       position: relative;
-
+      margin-left: 20px;
       .dot {
         width: 10px;
         height: 10px;

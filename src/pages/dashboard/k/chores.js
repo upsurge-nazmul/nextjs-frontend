@@ -20,6 +20,7 @@ import Toast from "../../../components/Toast";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import { MainContext } from "../../../context/Main";
 import NoChores from "../../../components/KidDashboard/NoChores";
+import FillSpace from "../../../components/Dashboard/FillSpace";
 
 export default function KidChoresPage({
   choresdata,
@@ -91,7 +92,7 @@ export default function KidChoresPage({
                     );
                   })
                 ) : (
-                  <NoChores />
+                  <FillSpace text="Currently there are no Chores pending." />
                 )}
               </div>
             </div>

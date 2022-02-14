@@ -75,7 +75,7 @@
           margin-top: 15px;
           display: flex;
           flex-direction: column;
-          height: 50%;
+          margin-bottom: 150px;
           .headingWrapper {
             display: flex;
             .heading {
@@ -309,61 +309,37 @@
     }
   }
 }
-@media only screen and (max-width: 900px) {
-  .choresPage {
-    .contentWrapper {
-      .mainContent {
-        .flexLeft {
-          height: 100%;
-          width: 100%;
-          padding: 0 00px 0 20px;
-          .pendingChoresSection {
-            .wrapper {
-              padding: 0 20px 0 0;
-            }
-          }
-        }
-        .flexRight {
-          height: 100%;
-          width: 100%;
-          margin-top: 50px;
-          .gameSection {
-            width: 100%;
-          }
-          .templateSection {
-            width: 100%;
-            margin-top: 40px;
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 790px) {
+
+@media only screen and (max-width: 860px) {
   .choresPage {
     padding-right: 0px;
     width: 100vw;
     .contentWrapper {
       .mainContent {
-        margin-top: 50px;
+        margin-top: 0px;
+        padding: 0;
         .flexLeft {
           height: unset !important;
           width: 100%;
-          padding: 0 10px 0 20px;
+          padding: 0 20px 0 20px;
           .pendingChoresSection {
             .heading {
               font-size: 16px;
             }
             .wrapper {
-              padding: 0 5px 0 0;
+              padding: 0;
             }
           }
           .choreSection {
+            margin-bottom: 0px;
             .headingWrapper {
               .heading {
                 font-size: 16px;
                 margin-right: 15px;
               }
+            }
+            .wrapper {
+              padding: 0;
             }
           }
         }
@@ -380,6 +356,7 @@
             }
             .button {
               height: 45px;
+              font-size: 14px;
             }
             .subheading {
               font-size: 10px;

@@ -22,6 +22,30 @@
         padding: 0 40px 0 45px;
         .top {
           display: flex;
+          .imagesection {
+            border-radius: 100%;
+            height: fit-content;
+            width: fit-content;
+            .imagesetter {
+              position: absolute;
+              width: 168px;
+              height: 168px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 100%;
+              cursor: pointer;
+              background-color: rgba(26, 26, 26, 0.527);
+              color: white;
+            }
+            .avatarimg {
+              width: 168px;
+              height: 168px;
+              border-radius: 100%;
+              object-fit: cover;
+            }
+          }
+
           .right {
             margin-top: 10px;
             margin-left: 40px;
@@ -43,12 +67,6 @@
                 border-color: rgb(179, 179, 179);
               }
             }
-          }
-
-          img {
-            border-radius: 6px;
-            width: 180px;
-            height: 180px;
           }
         }
         .memeberheading {

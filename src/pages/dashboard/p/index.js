@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../../styles/Dashboard/dashboard.module.scss";
 import LoginApis from "../../../actions/apis/LoginApis";
+import TribeApis from "../../../actions/apis/TribeApis";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import { MainContext } from "../../../context/Main";
@@ -34,7 +35,9 @@ function Dashboard({
   liveclassdata,
   phone_verified,
   userdatafromserver,
+  triberequests,
 }) {
+  console.log(triberequests);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
@@ -132,13 +135,7 @@ function Dashboard({
               <div className={styles.flexLeft} id="leftside">
                 <div className={styles.kidsSection}>
                   <div className={styles.head}>
-                    <h2
-                      className={styles.heading}
-                      onClick={() => router.push("/dashboard/p/mykids")}
-                    >
-                      My Kids
-                      <HeadingArrow />
-                    </h2>
+                    <h2 className={styles.heading}>My Kids</h2>
                     <div
                       className={styles.btn}
                       onClick={() => router.push("/dashboard/p/child/add")}
@@ -184,7 +181,7 @@ function Dashboard({
                       Approvals
                       <HeadingArrow />
                     </h2>
-                    {chores.length > 0 || tribes.length > 0 ? (
+                    {chores.length > 0 || triberequests.length > 0 ? (
                       <>
                         {chores.length > 0 && (
                           <>
@@ -208,7 +205,7 @@ function Dashboard({
                             </div>
                           </>
                         )}
-                        {tribes.length > 0 && (
+                        {triberequests.length > 0 && (
                           <>
                             <p
                               className={styles.subheading}
@@ -217,11 +214,11 @@ function Dashboard({
                               Tribes
                             </p>
                             <div className={styles.wrapper}>
-                              {tribes.map((data, index) => {
+                              {triberequests.map((data, index) => {
                                 return (
                                   <TribeApproval
                                     data={data}
-                                    key={"chorecomponent" + index}
+                                    key={data.id || "chorecomponent" + index}
                                   />
                                 );
                               })}
@@ -279,6 +276,7 @@ export async function getServerSideProps({ params, req }) {
       let liveclassdata = await getliveclasses(token);
       let blogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
+      let triberequests = await gettriberequests(token);
       return {
         props: {
           isLogged: true,
@@ -287,6 +285,7 @@ export async function getServerSideProps({ params, req }) {
           kidsdata,
           blogdata: blogs?.data.data || [],
           liveclassdata,
+          triberequests,
           userdatafromserver: response.data.data,
           msg: "",
         },
@@ -301,6 +300,7 @@ async function getkidsdata(token) {
   let response = await DashboardApis.getkids(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getchores(token) {
   let response = await ChoreApis.getpendingchores(null, token);
@@ -314,4 +314,12 @@ async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
+}
+
+async function gettriberequests(token) {
+  let response = await TribeApis.gettriberequests(null, token);
+  if (response && response.data && response.data.success)
+    return response.data.data;
+  else return [];
 }

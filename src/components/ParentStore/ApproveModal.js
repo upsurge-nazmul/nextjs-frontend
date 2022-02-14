@@ -12,6 +12,7 @@ import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
 import DashbardApis from "../../actions/apis/DashboardApis";
 import Spinner from "../Spinner";
+import { UniCoinValue } from "../../../config";
 export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   //modes will be start , category , template, assign
   const { userdata } = useContext(MainContext);
@@ -38,6 +39,20 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
       let response = await DashbardApis.completerequest({
         request_id: buydata.request_id,
         type: "avatar",
+      });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
+      } else {
+        seterror(response.data.message || "Error connecting to server");
+        setloading(false);
+      }
+      return;
+    }
+    if (buydata.item === "voucher_request") {
+      setloading(true);
+      let response = await DashbardApis.completerequest({
+        request_id: buydata.request_id,
+        type: "voucher",
       });
       if (response && response.data && response.data.success) {
         setsuccess(true);
@@ -101,20 +116,24 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                     Buy <span>{buydata.name || "Avatar"}</span>
                   </p>
                   <p>
-                    {buydata.item || "Avatar"}{" "}
+                    {buydata.item !== "voucher_request"
+                      ? buydata.item
+                      : "Voucher"}
                     {buydata.item === "Subscription" ?? "for"}
                   </p>
                 </div>
               </div>
-              {buydata.item !== "Subscription" && buydata.item !== "avatar" && (
-                <DropDown
-                  className={styles.dropdownx}
-                  placeholder="Select child"
-                  options={["Pihu Mehta", "Rohan Mehta"]}
-                  value={selectedchild}
-                  setvalue={setselectedchild}
-                />
-              )}
+              {buydata.item !== "Subscription" &&
+                buydata.item !== "avatar" &&
+                buydata.item !== "voucher_request" && (
+                  <DropDown
+                    className={styles.dropdownx}
+                    placeholder="Select child"
+                    options={["Pihu Mehta", "Rohan Mehta"]}
+                    value={selectedchild}
+                    setvalue={setselectedchild}
+                  />
+                )}
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
                 {buydata.total && (
@@ -178,7 +197,10 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                 <div className={styles.details}>
                   <div className={styles.label}>Available UniCoins</div>
                   <div className={styles.value}>
-                    {buydata.available_points} UniCoins
+                    {buydata.available_points > UniCoinValue
+                      ? buydata.available_points / UniCoinValue + "K "
+                      : buydata.available_points}{" "}
+                    UniCoins
                   </div>
                 </div>
               )}

@@ -101,15 +101,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab}  ${
-              currenttab === "/dashboard/k/quiz" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/quiz")}
-          >
-            <QuizIconSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Money Quotient</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
               currenttab === "/dashboard/k/games" ||
               currenttab.indexOf("/dashboard/k/game") !== -1
                 ? styles.activetab
@@ -142,6 +133,45 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
 
             <p className={styles.tabtitle}>Store</p>
           </div>
+          <LeftPannelToggle
+            name="Resources"
+            currenttab={currenttab}
+            isActive={
+              currenttab.indexOf("/dashboard/k/blog") !== -1 ||
+              currenttab.indexOf("/dashboard/k/calculator") !== -1 ||
+              currenttab.indexOf("/dashboard/k/quiz") !== -1 ||
+              currenttab.indexOf("/dashboard/k/dailyquestion") !== -1 ||
+              currenttab.indexOf("/dashboard/k/leaderboards") !== -1
+            }
+            items={[
+              {
+                name: "Blogs",
+                pushto: "/dashboard/k/blogs",
+                icon: <BlogSvg />,
+              },
+              {
+                name: "Calculators",
+                pushto: "/dashboard/k/calculators",
+                icon: <CalcSvg />,
+              },
+              {
+                name: "Quiz",
+                pushto: "/dashboard/k/quiz",
+                icon: <QuizIconSvg />,
+              },
+              {
+                name: "Leaderboards",
+                pushto: "/dashboard/k/leaderboards",
+                icon: <LeaderboardSvg />,
+              },
+              {
+                name: "Question a day",
+                pushto: "/dashboard/k/dailyquestion",
+                icon: <QuizIconSvg />,
+              },
+            ]}
+            icon={<AssessmentOutlinedIcon />}
+          />
         </div>
       ) : type === "waitlist" ? (
         <div className={styles.tabContainer}>
@@ -242,7 +272,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
-          <div
+          {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/mykids" ||
               currenttab.indexOf("/dashboard/p/child") !== -1
@@ -253,7 +283,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <KidSvg className={styles.icon} />
             <p className={styles.tabtitle}>My Kids</p>
-          </div>
+          </div> */}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/chores" ||
@@ -315,7 +345,8 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               currenttab.indexOf("/dashboard/p/blog") !== -1 ||
               currenttab.indexOf("/dashboard/p/calculator") !== -1 ||
               currenttab.indexOf("/dashboard/p/quiz") !== -1 ||
-              currenttab.indexOf("/dashboard/p/dailyquestion") !== -1
+              currenttab.indexOf("/dashboard/p/dailyquestion") !== -1 ||
+              currenttab.indexOf("/dashboard/p/leaderboard") !== -1
             }
             items={[
               {
@@ -328,10 +359,16 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 pushto: "/dashboard/p/calculators",
                 icon: <CalcSvg />,
               },
+
               {
-                name: "Money Quotient",
+                name: "Quiz",
                 pushto: "/dashboard/p/quiz",
                 icon: <QuizIconSvg />,
+              },
+              {
+                name: "Quiz leaderboard",
+                pushto: "/dashboard/p/leaderboard",
+                icon: <LeaderboardSvg />,
               },
               {
                 name: "Question a day",

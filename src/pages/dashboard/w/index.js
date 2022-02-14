@@ -22,6 +22,7 @@ import GameSvg from "../../../components/SVGcomponents/GameSvg";
 import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import LeaderboardSvg from "../../../components/SVGcomponents/LeaderboardSvg";
+import WelcomeUser from "../../../components/WelcomeUser";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
@@ -34,6 +35,9 @@ export default function WaitlistDashboard({
   const [mode, setmode] = useState("home");
   const [showdetails, setshowdetails] = useState(false);
   const [blogs, setblogs] = useState(blogdata || []);
+  const [showjasper, setshowjasper] = useState(
+    userdatafromserver && !userdatafromserver.welcome_shown
+  );
   const router = useRouter();
   const [current, setcurrent] = useState("earlyaccess");
   const [toastdata, settoastdata] = useState({
@@ -107,6 +111,12 @@ export default function WaitlistDashboard({
       <div className={styles.waitlistdashboard}>
         <DashboardLeftPanel type="waitlist" />
         <Toast data={toastdata} />
+        {showjasper && (
+          <WelcomeUser
+            name={userdatafromserver.first_name}
+            setshow={setshowjasper}
+          />
+        )}
         <div className={styles.contentWrapper}>
           <DashboardHeader
             mode={mode}

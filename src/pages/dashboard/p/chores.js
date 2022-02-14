@@ -139,6 +139,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
                   {allchores.map((data, index) => {
                     return (
                       <ChoreComponent
+                        setchores={setallchores}
                         data={data}
                         settoastdata={settoastdata}
                         key={"chorecomponent" + index}

@@ -16,11 +16,13 @@ import TribeCard from "../../../../components/KidDashboard/TribeCard";
 import TribeLeaderboard from "../../../../components/Tribes/TribeLeaderboard";
 import { getCookie } from "../../../../actions/cookieUtils";
 import TribePost from "../../../../components/Tribes/TribePost";
+import TribeChore from "../../../../components/Tribes/TribeChore";
 export default function Games({
   userdatafromserver,
   tribedetails,
   tribeposts,
   tribeleaderboard,
+  tribefeed,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -43,15 +45,14 @@ export default function Games({
     };
     let res = await TribeApis.addpost(model, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
+      console.log(res.data.data);
       setposts((prev) => ({
         rows: [
           {
             ...res.data.data,
             user_img_url: userdatafromserver.user_img_url,
-            name:
-              userdatafromserver.first_name +
-              " " +
-              userdatafromserver.last_name,
+            first_name: userdatafromserver.first_name,
+            last_name: userdatafromserver.last_name,
           },
           ...prev.rows,
         ],
@@ -129,17 +130,30 @@ export default function Games({
           posts.rows[postindex].comments.rows[supercommentindex].sub_comments
             .count + 1;
       } else {
-        posts.rows[postindex].comments.rows = [
-          {
-            ...res.data.data,
-            user_img_url: userdatafromserver.user_img_url,
-            first_name: userdatafromserver.first_name,
-            last_name: userdatafromserver.last_name,
-          },
-          ...posts.rows[postindex].comments?.rows,
-        ];
-        posts.rows[postindex].comments.count =
-          posts.rows[postindex].comments.count + 1;
+        if (posts.rows[postindex].comments) {
+          posts.rows[postindex].comments.rows = [
+            {
+              ...res.data.data,
+              user_img_url: userdatafromserver.user_img_url,
+              first_name: userdatafromserver.first_name,
+              last_name: userdatafromserver.last_name,
+            },
+            ...posts.rows[postindex].comments?.rows,
+          ];
+          posts.rows[postindex].comments.count =
+            posts.rows[postindex].comments.count + 1;
+        } else {
+          posts.rows[postindex].comments = { rows: [], count: 0 };
+          posts.rows[postindex].comments.rows = [
+            {
+              ...res.data.data,
+              user_img_url: userdatafromserver.user_img_url,
+              first_name: userdatafromserver.first_name,
+              last_name: userdatafromserver.last_name,
+            },
+          ];
+          posts.rows[postindex].comments.count = 1;
+        }
       }
       setposts((prev) => ({
         rows: posts.rows,
@@ -169,6 +183,8 @@ export default function Games({
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
+          showback
+          gobackto="/dashboard/k/tribes"
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
@@ -182,10 +198,12 @@ export default function Games({
               />
               <div className={styles.right}>
                 <p className={styles.name}>{tribedetails.name}</p>
-                <p className={styles.description}>{tribedetails.description}</p>
+                <p className={styles.description}>
+                  {tribedetails.description || "no description available."}
+                </p>
               </div>
             </div>
-            <div className={styles.postdiv}>
+            {/* <div className={styles.postdiv}>
               <textarea
                 className={styles.postarea}
                 placeholder={"Create some awesome post...."}
@@ -195,12 +213,12 @@ export default function Games({
               <div className={styles.postbtn} onClick={handlepost}>
                 Create Post
               </div>
-            </div>
+            </div> */}
             <p className={styles.tribehead}>My Tribe Feed</p>
             <div className={styles.wrapper}>
-              {posts.rows.map((data) => {
+              {tribefeed.rows.map((data) => {
                 return (
-                  <TribePost
+                  <TribeChore
                     data={data}
                     key={data.id}
                     handleLike={handleLike}
@@ -248,6 +266,10 @@ export async function getServerSideProps({ params, req }) {
         { id: params.tribeid },
         token
       );
+      let tribefeed = await TribeApis.getchorefeed(
+        { id: params.tribeid },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -260,12 +282,17 @@ export async function getServerSideProps({ params, req }) {
             tribeposts && tribeposts.data && tribeposts.data.success
               ? tribeposts.data.data
               : { rows: [], count: 0 },
+          tribefeed:
+            tribefeed && tribefeed.data && tribefeed.data.success
+              ? tribefeed.data.data
+              : { rows: [], count: 0 },
           tribeleaderboard:
             tribeleaderboard &&
             tribeleaderboard.data &&
             tribeleaderboard.data.success
               ? tribeleaderboard.data.data
               : [],
+
           token: token,
         },
       };
