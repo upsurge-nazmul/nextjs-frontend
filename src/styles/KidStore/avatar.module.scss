@@ -1,34 +1,39 @@
 .avatar {
-  height: 235px;
+  height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
   margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  max-width: 145px;
+  max-width: 150px;
+  min-width: 150px;
   margin-bottom: 20px;
+  padding: 10px;
   &:hover {
     box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
     -webkit-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
     -moz-box-shadow: 5px 5px 31px -14px rgba(0, 0, 0, 0.62);
   }
   img {
-    height: 70%;
+    height: 130px;
+    width: 130px;
     object-fit: cover;
+    border-radius: 100%;
   }
   .contentWrapper {
     flex: 1;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     .title {
       font-style: normal;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 18px;
     }
     .point {
       color: #a8a8a8;

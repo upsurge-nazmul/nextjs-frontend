@@ -117,7 +117,6 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
     }
     let response = await QuizApis.startwaitlistquiz({
       name: name,
-      
     });
     if (response && response.data && response.data.success) {
       setshowmain(true);
