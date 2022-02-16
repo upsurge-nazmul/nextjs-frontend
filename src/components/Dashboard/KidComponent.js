@@ -67,12 +67,16 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
         <div className={styles.progressBar}>
           <div
             className={styles.completion}
-            style={{ width: `${data?.course_progress}%` }}
+            style={{ width: `${data?.course_progress || 0}%` }}
           ></div>
         </div>
         <div className={styles.progressText}>
           <ClockSvg />
-          <p>{100 - data?.course_progress + "% Left"}</p>
+          {data?.current_course ? (
+            <p>{100 - data?.course_progress || 0 + "% Left"}</p>
+          ) : (
+            <p>not started yet</p>
+          )}
         </div>
       </div>
       <div

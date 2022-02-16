@@ -61,6 +61,15 @@ export default function ChildActivity({
       }
     }
   }, [choremode]);
+  useEffect(() => {
+    const scrollContainer = document.querySelector("#tribewrapper");
+    if (!scrollContainer) return;
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY * 5;
+    });
+  }, []);
   return (
     <div className={styles.childactivity}>
       <DashboardLeftPanel />
@@ -76,7 +85,11 @@ export default function ChildActivity({
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
               <div className={styles.topblock}>
-                <img src={childdetail.user_img_url} alt="" />
+                <img
+                  className={styles.avatar}
+                  src={childdetail.user_img_url}
+                  alt=""
+                />
                 <div className={styles.right}>
                   <div className={styles.rewardblock}>
                     <UniCoinSvg className={styles.svg} />
@@ -85,9 +98,19 @@ export default function ChildActivity({
                     </p>
                   </div>
                   <p className={styles.username}>@{childdetail.user_name}</p>
+                  <div className={styles.badge}>
+                    <img
+                      src={"/images/badges/badge_" + childdetail.level + ".svg"}
+                      alt=""
+                    />
+                    <p className={styles.level}>Level {childdetail.level}</p>
+                  </div>
                 </div>
               </div>
-              <div className={styles.tribes}>
+              <div className={styles.tribeheading}>
+                <h2 className={styles.mainheading}>Tribes</h2>
+              </div>
+              <div className={styles.tribes} id="tribewrapper">
                 {childTribes.map((tribe) => (
                   <div className={styles.tribe} key={tribe.id}>
                     <img
@@ -232,6 +255,7 @@ export async function getServerSideProps({ params, req }) {
         { id: params.childid },
         token
       );
+
       return {
         props: {
           isLogged: true,

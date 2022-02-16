@@ -13,8 +13,8 @@ const buyavatar = (payload, token) => {
   );
 };
 
-const getbadges = (payload, token) => {
-  return ApiCalls.getResponse(`kid/getbadges`, payload, token);
+const getlevel = (payload, token) => {
+  return ApiCalls.getResponse(`kid/getlevel`, payload, token);
 };
 const getchildchores = (payload, token) => {
   return ApiCalls.getResponse(`kid/getchildchores`, payload, token);
@@ -27,7 +27,7 @@ const buyvoucher = (payload, token) => {
   );
 };
 const KidApis = {
-  getbadges,
+  getlevel,
   getavatars,
   getchildchores,
   buyavatar,

@@ -19,17 +19,23 @@ import AddTribeMemberModal from "../../../../components/KidDashboard/AddTribeMem
 import TribeApis from "../../../../actions/apis/TribeApis";
 import { getCookie } from "../../../../actions/cookieUtils";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
-export default function ManageTribe({ userdatafromserver, token }) {
+export default function ManageTribe({
+  userdatafromserver,
+  tribedetails,
+  members,
+}) {
   const router = useRouter();
   const { setuserdata, userdata } = useContext(MainContext);
-  const [mode, setmode] = useState(router.query.type + " Tribe");
-  const [name, setname] = useState("");
-  const [img_url, setimg_url] = useState(
-    "https://i.ibb.co/v3vVV8r/default-avatar.png"
+  const [mode, setmode] = useState(
+    router.query.type === "create" ? "Create Tribe" : "Edit Tribe"
   );
-  const [description, setdescription] = useState("");
+  const [name, setname] = useState(tribedetails?.name);
+  const [img_url, setimg_url] = useState(
+    tribedetails?.tribe_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+  );
+  const [description, setdescription] = useState(tribedetails?.description);
   const [showtribemodal, setshowtribemodal] = useState(false);
-  const [selectedmembers, setselectedmembers] = useState([]);
+  const [selectedmembers, setselectedmembers] = useState(members || []);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -72,18 +78,55 @@ export default function ManageTribe({ userdatafromserver, token }) {
     setuserdata(userdatafromserver);
   }, []);
   async function handleSave() {
+    if (!name) {
+      settoastdata({
+        show: true,
+        msg: "Name is required",
+        type: "error",
+      });
+      return;
+    }
+    if (!description.trim()) {
+      settoastdata({
+        show: true,
+        msg: "Description is required",
+        type: "error",
+      });
+      return;
+    }
+    if (selectedmembers.length === 0) {
+      settoastdata({
+        show: true,
+        msg: "Atleast 1 member is required",
+        type: "error",
+      });
+      return;
+    }
+    if (img_url === "https://i.ibb.co/v3vVV8r/default-avatar.png") {
+      settoastdata({
+        show: true,
+        msg: "Please choose an avatar",
+        type: "error",
+      });
+      return;
+    }
     let model = {
+      id: tribedetails.id,
       name: name,
       description: description,
       members: selectedmembers,
       tribe_img_url: img_url,
     };
-    const res = await TribeApis.createtribe(model, getCookie("accesstoken"));
+    const res = await TribeApis.updatetribe(model, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
-      alert("done");
-      // router.push("/dashboard/k/tribes");
+      settoastdata({ show: true, msg: res.data.message, type: "success" });
+      router.push("/dashboard/k/tribes");
     } else {
-      alert("error");
+      settoastdata({
+        show: true,
+        msg: res.data.message || "Error connecting to server",
+        type: "error",
+      });
     }
   }
   return (
@@ -143,6 +186,7 @@ export default function ManageTribe({ userdatafromserver, token }) {
                 <textarea
                   onChange={(e) => setdescription(e.target.value)}
                   placeholder="Description"
+                  value={description}
                 />
               </div>
             </div>
@@ -194,10 +238,31 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let tribedata = await TribeApis.gettribedetail(
+        { id: params.type },
+        token
+      );
+      let pendingMembers = await TribeApis.getpendingmembers(
+        { id: params.type },
+        token
+      );
+      let members = await TribeApis.members({ id: params.type }, token);
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          members:
+            members && members.data && members.data.success
+              ? members.data.data
+              : null,
+          tribedetails:
+            tribedata && tribedata.data && tribedata.data.success
+              ? tribedata.data.data
+              : null,
+          pendingmembers:
+            pendingMembers && pendingMembers.data && pendingMembers.data.success
+              ? pendingMembers.data.data
+              : null,
           token: token,
         },
       };

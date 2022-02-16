@@ -9,6 +9,7 @@ import styles from "../../../styles/ChildActivity/childactivity.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
+import KidApis from "../../../actions/apis/KidApis";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import TribeApis from "../../../actions/apis/TribeApis";
@@ -18,20 +19,23 @@ import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import QuizApis from "../../../actions/apis/QuizApis";
 import { Game_Data } from "../../../static_data/Game_Data";
+import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import LevelComponent from "../../../components/Dashboard/LevelComponent";
 export default function ChildActivity({
   pendingchores,
   childdetail,
   highestquizscore,
   childTribes,
   recentgames,
+  currentLevel,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
-
   const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(pendingchores || []);
   const [quests, setquests] = useState([]);
+  const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -60,11 +64,20 @@ export default function ChildActivity({
       }
     }
   }, [choremode]);
+  useEffect(() => {
+    const scrollContainer = document.querySelector("#tribewrapper");
+    if (!scrollContainer) return;
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY * 5;
+    });
+  }, []);
   return (
     <div className={styles.childactivity}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-
+      {showlevels && <LevelComponent setshow={setshowlevels} />}
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
           mode={mode}
@@ -75,37 +88,69 @@ export default function ChildActivity({
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
               <div className={styles.topblock}>
-                <img src={childdetail.user_img_url} alt="" />
+                <img
+                  className={styles.avatar}
+                  src={childdetail.user_img_url}
+                  alt=""
+                />
                 <div className={styles.right}>
                   <div className={styles.rewardblock}>
                     <UniCoinSvg className={styles.svg} />
                     <p className={styles.number}>
-                      {childdetail?.num_unicoins || 0} UniCoins
+                      {childdetail.num_unicoins
+                        ? childdetail.num_unicoins > UniCoinValue
+                          ? childdetail.num_unicoins / UniCoinValue + "K "
+                          : childdetail.num_unicoins
+                        : 0}{" "}
+                      UniCoins
                     </p>
                   </div>
                   <p className={styles.username}>@{childdetail.user_name}</p>
-                </div>
-              </div>
-              <div className={styles.tribes}>
-                {childTribes.map((tribe) => (
                   <div
-                    className={styles.tribe}
-                    key={tribe.id}
-                    onClick={() =>
-                      router.push("/dashboard/k/tribes/" + tribe.id)
-                    }
+                    className={styles.badge}
+                    onClick={() => setshowlevels(true)}
                   >
                     <img
-                      src={
-                        tribe.tribe_img_url ||
-                        "https://i.ibb.co/v3vVV8r/default-avatar.png"
-                      }
+                      src={"/images/badges/badge_" + currentLevel + ".svg"}
                       alt=""
                     />
-                    <p className={styles.name}>{tribe.name}</p>
+                    <p className={styles.level}>Level {currentLevel}</p>
                   </div>
-                ))}
+                </div>
               </div>
+              {childTribes.length > 0 && (
+                <>
+                  <div className={styles.tribeheading}>
+                    <h2
+                      className={styles.mainheading}
+                      onClick={() => router.push("/dashboard/k/tribes")}
+                    >
+                      Tribes
+                      <HeadingArrow />
+                    </h2>
+                  </div>
+                  <div className={styles.tribes} id="tribewrapper">
+                    {childTribes.map((tribe) => (
+                      <div
+                        className={styles.tribe}
+                        key={tribe.id}
+                        onClick={() =>
+                          router.push("/dashboard/k/tribes/" + tribe.id)
+                        }
+                      >
+                        <img
+                          src={
+                            tribe.tribe_img_url ||
+                            "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                          }
+                          alt=""
+                        />
+                        <p className={styles.name}>{tribe.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
             <div className={styles.leaderboardsection}>
               <h2 className={styles.heading}>Leaderboards</h2>
@@ -232,6 +277,12 @@ export async function getServerSideProps({ params, req }) {
         { id: response.data.data.user_id },
         token
       );
+      let currentLevel = await KidApis.getlevel(
+        {
+          id: response.data.data.user_id,
+        },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -239,6 +290,10 @@ export async function getServerSideProps({ params, req }) {
             pendinchores && pendinchores.data && pendinchores.data.success
               ? pendinchores.data.data
               : [],
+          currentLevel:
+            currentLevel && currentLevel.data && currentLevel.data.success
+              ? currentLevel.data.data
+              : 1,
           childdetail:
             response && response.data && response.data.data
               ? response.data.data

@@ -67,11 +67,12 @@
     }
     .progressText {
       display: flex;
+      align-items: center;
       p {
         font-size: 13px;
         font-weight: 400;
         color: rgba(130, 130, 130, 1);
-        margin-left: 10px;
+        margin-left: 5px;
       }
     }
   }

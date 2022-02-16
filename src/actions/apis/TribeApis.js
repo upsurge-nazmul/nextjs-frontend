@@ -50,6 +50,25 @@ const gettriberequests = (payload, token) => {
 const approveaddrequest = (payload, token) => {
   return ApiCalls.getResponse("tribes/approveaddrequest", payload, token);
 };
+
+const rejectrequest = (payload, token) => {
+  return ApiCalls.getResponse("tribes/rejectrequest", payload, token);
+};
+
+const getTribeStatus = (payload, token) => {
+  return ApiCalls.getResponse("tribes/getstatus", payload, token);
+};
+const getpendingmembers = (payload, token) => {
+  return ApiCalls.getResponse("tribes/getpendingmembers", payload, token);
+};
+
+const members = (payload, token) => {
+  return ApiCalls.getResponse("tribes/members", payload, token);
+};
+
+const updatetribe = (payload, token) => {
+  return ApiCalls.putResponse("tribes/updatetribe", payload, token);
+};
 //getchores
 const TribeApis = {
   createtribe,
@@ -65,6 +84,11 @@ const TribeApis = {
   getchorefeed,
   gettriberequests,
   approveaddrequest,
+  rejectrequest,
+  getTribeStatus,
+  getpendingmembers,
+  members,
+  updatetribe,
 };
 
 export default TribeApis;

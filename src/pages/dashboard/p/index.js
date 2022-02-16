@@ -37,7 +37,6 @@ function Dashboard({
   userdatafromserver,
   triberequests,
 }) {
-  console.log(triberequests);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
@@ -55,6 +54,13 @@ function Dashboard({
     type: "success",
     msg: "",
   });
+  const [tribeRequestsFromServer, setTribeRequestsFromServer] = useState(
+    triberequests || []
+  );
+
+  useEffect(() => {
+    console.log(tribeRequestsFromServer);
+  }, [tribeRequestsFromServer]);
   useEffect(() => {
     const scrollContainer = document.querySelector("#gamecardwrapper");
     if (!scrollContainer) return;
@@ -181,7 +187,7 @@ function Dashboard({
                       Approvals
                       <HeadingArrow />
                     </h2>
-                    {chores.length > 0 || triberequests.length > 0 ? (
+                    {chores.length > 0 || tribeRequestsFromServer.length > 0 ? (
                       <>
                         {chores.length > 0 && (
                           <>
@@ -205,7 +211,7 @@ function Dashboard({
                             </div>
                           </>
                         )}
-                        {triberequests.length > 0 && (
+                        {tribeRequestsFromServer.length > 0 && (
                           <>
                             <p
                               className={styles.subheading}
@@ -214,11 +220,13 @@ function Dashboard({
                               Tribes
                             </p>
                             <div className={styles.wrapper}>
-                              {triberequests.map((data, index) => {
+                              {tribeRequestsFromServer.map((data, index) => {
                                 return (
                                   <TribeApproval
                                     data={data}
                                     key={data.id || "chorecomponent" + index}
+                                    settoastdata={settoastdata}
+                                    settribes={setTribeRequestsFromServer}
                                   />
                                 );
                               })}

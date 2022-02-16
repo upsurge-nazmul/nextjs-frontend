@@ -17,12 +17,15 @@ import TribeLeaderboard from "../../../../components/Tribes/TribeLeaderboard";
 import { getCookie } from "../../../../actions/cookieUtils";
 import TribePost from "../../../../components/Tribes/TribePost";
 import TribeChore from "../../../../components/Tribes/TribeChore";
+import FillSpace from "../../../../components/Dashboard/FillSpace";
+import TribePendingSection from "../../../../components/Tribes/TribePendingSection";
 export default function Games({
   userdatafromserver,
   tribedetails,
   tribeposts,
   tribeleaderboard,
   tribefeed,
+  pendingmembers,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -172,7 +175,6 @@ export default function Games({
       });
     }
   }
-
   return (
     <div className={styles.tribepage}>
       <DashboardLeftPanel type="kid" />
@@ -197,7 +199,21 @@ export default function Games({
                 alt=""
               />
               <div className={styles.right}>
-                <p className={styles.name}>{tribedetails.name}</p>
+                <div className={styles.head}>
+                  <p className={styles.name}>{tribedetails.name}</p>
+                  {tribedetails.owner_id === userdatafromserver.user_id && (
+                    <p
+                      className={styles.edit}
+                      onClick={() =>
+                        router.push(
+                          "/dashboard/k/managetribe/" + tribedetails.id
+                        )
+                      }
+                    >
+                      edit tribe
+                    </p>
+                  )}
+                </div>
                 <p className={styles.description}>
                   {tribedetails.description || "no description available."}
                 </p>
@@ -223,13 +239,20 @@ export default function Games({
                     key={data.id}
                     handleLike={handleLike}
                     handleCommentClick={handleCommentClick}
+                    memberdata={tribeleaderboard}
                   />
                 );
               })}
+              {tribefeed.rows.length === 0 && (
+                <FillSpace text="No updates found." />
+              )}
             </div>
           </div>
           <div className={styles.flexRight}>
             <TribeLeaderboard data={tribeleaderboard} />
+            {pendingmembers?.length > 0 && (
+              <TribePendingSection data={pendingmembers} />
+            )}
           </div>
         </div>
       </div>
@@ -270,6 +293,10 @@ export async function getServerSideProps({ params, req }) {
         { id: params.tribeid },
         token
       );
+      let pendingMembers = await TribeApis.getpendingmembers(
+        { id: params.tribeid },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -277,6 +304,10 @@ export async function getServerSideProps({ params, req }) {
           tribedetails:
             tribedata && tribedata.data && tribedata.data.success
               ? tribedata.data.data
+              : null,
+          pendingmembers:
+            pendingMembers && pendingMembers.data && pendingMembers.data.success
+              ? pendingMembers.data.data
               : null,
           tribeposts:
             tribeposts && tribeposts.data && tribeposts.data.success

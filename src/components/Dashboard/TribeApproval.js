@@ -9,7 +9,7 @@ import MenuSvg from "../SVGcomponents/MenuSvg";
 import PendingSvg from "../SVGcomponents/PendingSvg";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
-export default function TribeApproval({ data }) {
+export default function TribeApproval({ data, settoastdata, settribes }) {
   const [showmenu, setshowmenu] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -31,7 +31,30 @@ export default function TribeApproval({ data }) {
       getCookie("accesstoken")
     );
     if (res && res.data && res.data.success) {
-      alert("done");
+      settoastdata({ show: true, type: "success", msg: "Done" });
+      settribes((prev) => prev.filter((item) => item.id !== data.id));
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: res?.data?.message || "Error connecting to server",
+      });
+    }
+  }
+  async function hanldereject() {
+    let res = await TribeApis.rejectrequest(
+      { id: data.id, type: data.type },
+      getCookie("accesstoken")
+    );
+    if (res && res.data && res.data.success) {
+      settoastdata({ show: true, type: "success", msg: "Done" });
+      settribes((prev) => prev.filter((item) => item.id !== data.id));
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: res?.data?.message || "Error connecting to server",
+      });
     }
   }
   return (
@@ -56,7 +79,7 @@ export default function TribeApproval({ data }) {
       <div className={styles.button} onClick={hanldeapprove}>
         Approve
       </div>
-      <div className={styles.removebutton}>
+      <div className={styles.removebutton} onClick={hanldereject}>
         <RemoveSvg />
       </div>
     </div>

@@ -3,13 +3,6 @@ import styles from "../../styles/kidDashboard/tribe.module.scss";
 import ChatSvg from "../SVGcomponents/ChatSvg";
 
 export default function TribeCard({ data, onClick }) {
-  const demokiddata = {
-    image:
-      "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQARtruuFZD4r-jkj2vo99Ql8CfWfaFpb7a5zMzyEtm46plv9bRRq5RrCHDsDIGgr2wOeSezORZU6aGohCb4tU",
-    name: "Mehra Tribe",
-    members: "Aadvik, Pihu & 6 others",
-  };
-  console.log(data);
   return (
     <div className={styles.tribe}>
       <img
@@ -21,7 +14,9 @@ export default function TribeCard({ data, onClick }) {
         className={styles.grpimg}
       />
       <div className={styles.nameandpoints} onClick={onClick}>
-        <p className={styles.name}>{data.name}</p>
+        <p className={styles.name}>
+          {data.name} {data.pending && "(pending)"}
+        </p>
         <p className={styles.points}>
           {data?.description?.length > 60
             ? data.description?.substring(0, 60) + "..."
