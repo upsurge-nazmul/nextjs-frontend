@@ -33,7 +33,9 @@ export default function ChildActivity({
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
   const [choremode, setchoremode] = useState("inprogress");
-  const [chorearray, setchorearray] = useState(pendingchores || []);
+  const [chorearray, setchorearray] = useState(
+    pendingchores?.rows ? pendingchores.rows : []
+  );
   const [quests, setquests] = useState([]);
   const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
@@ -263,16 +265,17 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
-
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
+
       let userTribes = await TribeApis.userTribes(
         {
           userId: response.data.data.user_id,
         },
         token
       );
+
       let recentgames = await FreeGameApis.getrecentGames(
         { id: response.data.data.user_id },
         token

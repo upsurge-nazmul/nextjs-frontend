@@ -21,6 +21,7 @@ import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHea
 import { MainContext } from "../../../context/Main";
 import NoChores from "../../../components/KidDashboard/NoChores";
 import FillSpace from "../../../components/Dashboard/FillSpace";
+import LevelComponent from "../../../components/Dashboard/LevelComponent";
 
 export default function KidChoresPage({
   choresdata,
@@ -28,6 +29,7 @@ export default function KidChoresPage({
   kiddata,
   liveclassdata,
   completedchores,
+  currentLevel,
 }) {
   console.log(completedchores);
   const [mode, setmode] = useState("chores");
@@ -51,7 +53,7 @@ export default function KidChoresPage({
   const [choremode, setchoremode] = useState("");
   const [showmodal, setshowmodal] = useState(false);
   const [allchores, setallchores] = useState(["", ""]);
-  const [backupallchores, setbackupallchores] = useState(choresdata);
+  const [showlevels, setshowlevels] = useState(false);
   const badges = ["", "", ""];
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -65,6 +67,7 @@ export default function KidChoresPage({
     <div className={styles.kidChoresPage}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
+      {showlevels && <LevelComponent setshow={setshowlevels} />}
 
       <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
       <div className={styles.contentWrapper}>
@@ -76,10 +79,7 @@ export default function KidChoresPage({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.pendingChoresSection}>
-              <h2 className={styles.heading}>
-                In Progress
-                <HeadingArrow />
-              </h2>
+              <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
                 {pendingchores?.length > 0 ? (
                   pendingchores.map((item, index) => {
@@ -98,10 +98,7 @@ export default function KidChoresPage({
             </div>
             {compchores.length > 0 && (
               <div className={styles.choreSection}>
-                <h2 className={styles.heading}>
-                  Completed Chores
-                  <HeadingArrow />
-                </h2>
+                <h2 className={styles.heading}>Completed Chores</h2>
                 <div className={styles.wrapper}>
                   {compchores.map((data, index) => {
                     return (
@@ -118,7 +115,22 @@ export default function KidChoresPage({
           </div>
 
           <div className={styles.flexRight}>
-            <BadgeSection badges={badges} />
+            <div className={styles.badgeSection}>
+              <h2 className={styles.heading}>Current Badge</h2>
+
+              <div className={styles.wrapper}>
+                <div
+                  className={styles.badge}
+                  onClick={() => setshowlevels(true)}
+                >
+                  <img
+                    src={"/images/badges/badge_" + currentLevel + ".svg"}
+                    alt=""
+                  />
+                  <p className={styles.level}>Level {currentLevel}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -151,11 +163,21 @@ export async function getServerSideProps({ params, req }) {
         response.data.data.user_id,
         token
       );
+      let currentLevel = await KidApis.getlevel(
+        {
+          id: response.data.data.user_id,
+        },
+        token
+      );
       return {
         props: {
           isLogged: true,
           choresdata: choresdata || [],
           gamesdata,
+          currentLevel:
+            currentLevel && currentLevel.data && currentLevel.data.success
+              ? currentLevel.data.data
+              : 1,
           kiddata,
           liveclassdata,
           completedchores,

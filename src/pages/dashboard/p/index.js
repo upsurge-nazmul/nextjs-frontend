@@ -32,7 +32,6 @@ function Dashboard({
   blogdata,
   choresdata,
   kidsdata,
-  liveclassdata,
   phone_verified,
   userdatafromserver,
   triberequests,
@@ -47,7 +46,6 @@ function Dashboard({
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [confirmationgiven, setconfirmationgiven] = useState(false);
   const [tribes, settribes] = useState([]);
-  const [liveclasses, setliveclasses] = useState(liveclassdata || []);
   const [phoneverified, setphoneverified] = useState(phone_verified);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -281,7 +279,6 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       let kidsdata = await getkidsdata(token);
-      let liveclassdata = await getliveclasses(token);
       let blogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
       let triberequests = await gettriberequests(token);
@@ -292,7 +289,6 @@ export async function getServerSideProps({ params, req }) {
           choresdata,
           kidsdata,
           blogdata: blogs?.data.data || [],
-          liveclassdata,
           triberequests,
           userdatafromserver: response.data.data,
           msg: "",
@@ -317,12 +313,6 @@ async function getchores(token) {
   } else {
     return [];
   }
-}
-async function getliveclasses(token) {
-  let response = await DashboardApis.getliveclasses(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-  else return null;
 }
 
 async function gettriberequests(token) {

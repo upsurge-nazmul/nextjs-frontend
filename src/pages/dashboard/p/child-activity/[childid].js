@@ -31,7 +31,9 @@ export default function ChildActivity({
   );
 
   const [choremode, setchoremode] = useState("inprogress");
-  const [chorearray, setchorearray] = useState(pendingchores || []);
+  const [chorearray, setchorearray] = useState(
+    pendingchores?.rows ? pendingchores.rows : []
+  );
   const [quests, setquests] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -107,9 +109,11 @@ export default function ChildActivity({
                   </div>
                 </div>
               </div>
-              <div className={styles.tribeheading}>
-                <h2 className={styles.mainheading}>Tribes</h2>
-              </div>
+              {childTribes.length > 0 && (
+                <div className={styles.tribeheading}>
+                  <h2 className={styles.mainheading}>Tribes</h2>
+                </div>
+              )}
               <div className={styles.tribes} id="tribewrapper">
                 {childTribes.map((tribe) => (
                   <div className={styles.tribe} key={tribe.id}>
