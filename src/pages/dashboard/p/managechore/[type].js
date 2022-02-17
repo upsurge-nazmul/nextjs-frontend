@@ -16,6 +16,7 @@ import { choretemplates } from "../../../../helpers/choretemplates";
 import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import { uploadaudiotos3 } from "../../../../helpers/aws";
 export default function ManageChore({
   choredata,
   childdata,
@@ -78,6 +79,9 @@ export default function ManageChore({
     chunks: null,
     duration: { h: null, m: null, s: null },
   });
+  const [audiouploadedurl, setaudiouploadedurl] = useState(
+    choredata?.voice_note || ""
+  );
   useEffect(() => {
     setlettercounts(200 - msg.length);
   }, [msg]);
@@ -99,9 +103,10 @@ export default function ManageChore({
   function stopRecord(data) {
     setaudioDetails(data);
   }
-  function handleAudioUpload(file) {
-    console.log(file);
-    console.log(audioDetails);
+  async function handleAudioUpload(file) {
+    if (!file) return;
+    let url = await uploadaudiotos3(userdatafromserver.user_id, file);
+    setaudiouploadedurl(url);
   }
   function onStop(audioData) {
     console.log("audioData", audioData);
@@ -172,6 +177,7 @@ export default function ManageChore({
           assigned_to: assignee.first_name,
           child_id: assignee.id,
           family_id: assignee.family_id,
+          voice_note: audiouploadedurl,
           due_date: tt,
           img_url: currentchoretemplate?.img,
           is_reoccurring: interval !== "One Time" ? true : false,
@@ -297,6 +303,7 @@ export default function ManageChore({
               value={cat}
               setvalue={setcat}
             />
+
             <div className={styles.msgsection}>
               <textarea
                 maxLength="200"
@@ -308,6 +315,11 @@ export default function ManageChore({
                 {lettercounts + " characters left"}
               </p>
             </div>
+            {audiouploadedurl && (
+              <audio controls className={styles.audioc}>
+                <source src={audiouploadedurl} type="audio/ogg"></source>
+              </audio>
+            )}
             {showrecorder ? (
               <Recorder
                 record={true}
@@ -323,14 +335,16 @@ export default function ManageChore({
                 handleReset={() => resetRecord()}
               />
             ) : (
-              <div
-                className={styles.voice}
-                onClick={() => setshowrecorder(true)}
-              >
-                <div className={styles.icon}>
-                  <MicSvg />
-                </div>{" "}
-              </div>
+              !audiouploadedurl && (
+                <div
+                  className={styles.voice}
+                  onClick={() => setshowrecorder(true)}
+                >
+                  <div className={styles.icon}>
+                    <MicSvg />
+                  </div>{" "}
+                </div>
+              )
             )}
 
             <div className={styles.button} onClick={handleSave}>

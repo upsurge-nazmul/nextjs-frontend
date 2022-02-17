@@ -17,6 +17,7 @@
     "@nivo/bar": "^0.74.0",
     "@nivo/core": "^0.74.0",
     "@nivo/pie": "^0.74.0",
+    "aws-sdk": "^2.1075.0",
     "axios": "^0.21.1",
     "chart.js": "^3.5.0",
     "cookie": "^0.4.1",
@@ -45,6 +46,7 @@
     "react-use-intercom": "^1.4.0",
     "react-voice-recorder": "^2.1.2",
     "sass": "^1.36.0",
+    "uuid": "^8.3.2",
     "validator": "^13.6.0",
     "xss": "^1.0.9"
   },

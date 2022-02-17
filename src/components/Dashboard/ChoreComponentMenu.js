@@ -28,7 +28,7 @@ export default function ChoreComponentMenu({
     <div className={styles.choremenu} id={data.id}>
       <p
         className={styles.tab}
-        onClick={() => router.push("/managechore/" + data.id)}
+        onClick={() => router.push("/dashboard/p/managechore/" + data.id)}
       >
         Edit Chore
       </p>
