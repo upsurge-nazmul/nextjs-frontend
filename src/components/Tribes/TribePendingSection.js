@@ -1,6 +1,6 @@
 import React from "react";
 import { UniCoinValue } from "../../../config";
-import styles from "../../styles/Tribes/tribeleaderboard.module.scss";
+import styles from "../../styles/Tribes/tribelpendingsection.module.scss";
 
 export default function TribePendingSection({ data }) {
   return (
@@ -15,12 +15,7 @@ export default function TribePendingSection({ data }) {
                 <p className={styles.name}>
                   {item.first_name + " " + item.last_name}
                 </p>
-                <p className={styles.unicoins}>
-                  {Number(item.num_unicoins) / UniCoinValue > 1000
-                    ? Number(item.num_unicoins) / UniCoinValue + "K"
-                    : Number(item.num_unicoins)}{" "}
-                  UniCoins
-                </p>
+                <p className={styles.unicoins}>Approval Pending..</p>
               </div>
             </div>
           );
