@@ -22,6 +22,7 @@ import { Game_Data } from "../../../static_data/Game_Data";
 import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
+import KidChore from "../../../components/KidDashboard/KidChore";
 export default function ChildActivity({
   pendingchores,
   childdetail,
@@ -33,9 +34,7 @@ export default function ChildActivity({
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
   const [choremode, setchoremode] = useState("inprogress");
-  const [chorearray, setchorearray] = useState(
-    pendingchores?.rows ? pendingchores.rows : []
-  );
+  const [chorearray, setchorearray] = useState(pendingchores);
   const [quests, setquests] = useState([]);
   const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
@@ -46,8 +45,8 @@ export default function ChildActivity({
   });
   useEffect(() => {
     if (choremode === "inprogress") {
-      if (pendingchores.rows) {
-        setchorearray(pendingchores.rows);
+      if (pendingchores) {
+        setchorearray(pendingchores);
       }
     } else {
       x();
@@ -189,7 +188,7 @@ export default function ChildActivity({
               <div className={styles.wrapper}>
                 {chorearray.map((data, index) => {
                   return (
-                    <ChoreComponent
+                    <KidChore
                       data={data}
                       settoastdata={settoastdata}
                       key={"chorecomponent" + index}
@@ -265,6 +264,7 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      console.log(pendinchores.data);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });

@@ -31,7 +31,6 @@ export default function KidChoresPage({
   completedchores,
   currentLevel,
 }) {
-  console.log(completedchores);
   const [mode, setmode] = useState("chores");
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
@@ -201,6 +200,7 @@ async function getChildDetails(id, token) {
 }
 async function getchores(id, token) {
   let response = await KidApis.getchildchores({ id }, token);
+
   if (response && response.data && response.data.data) {
     return response.data.data;
   }

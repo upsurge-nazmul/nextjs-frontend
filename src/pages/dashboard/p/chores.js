@@ -15,6 +15,7 @@ import { choretemplates } from "../../../helpers/choretemplates";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import ChorePending from "../../../components/Chores/ChorePending";
 import FillSpace from "../../../components/Dashboard/FillSpace";
+import RejectChore from "../../../components/Dashboard/RejectChore";
 
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   const [mode, setmode] = useState("chores");
@@ -23,6 +24,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   const [chores, setchores] = useState([]);
   const [choremode, setchoremode] = useState("inprogress");
   const [showmodal, setshowmodal] = useState(false);
+  const [deleteid, setdeleteid] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -84,6 +86,15 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
       <div className={styles.choresPage}>
         <DashboardLeftPanel />
         <Toast data={toastdata} />
+        {deleteid && (
+          <RejectChore
+            setid={setdeleteid}
+            id={deleteid}
+            settoastdata={settoastdata}
+            setchores={setchores}
+            setallchores={setallchores}
+          />
+        )}
         <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
         <div className={styles.contentWrapper}>
           <DashboardHeader
@@ -104,6 +115,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
                         data={item}
                         key={"pendingchore" + index}
                         settoastdata={settoastdata}
+                        setid={setdeleteid}
                       />
                     );
                   })}

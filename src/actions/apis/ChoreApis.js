@@ -85,6 +85,10 @@ const gettemplatedetail = (payload, token) => {
 const deletetemplate = (payload, token) => {
   return ApiCalls.deleteResponse("chore/deletetemplate", payload, token);
 };
+
+const rejectchore = (payload, token) => {
+  return ApiCalls.putResponse("chore/rejectchore", payload, token);
+};
 //getchores
 const ChoreApis = {
   addchore,
@@ -104,6 +108,7 @@ const ChoreApis = {
   gettemplates,
   gettemplatedetail,
   deletetemplate,
+  rejectchore,
 };
 
 export default ChoreApis;

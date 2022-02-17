@@ -6,7 +6,7 @@ import styles from "../../styles/Chores/chorepending.module.scss";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
-function ChorePending({ data, settoastdata, setchores, setallchores }) {
+function ChorePending({ data, settoastdata, setchores, setallchores, setid }) {
   async function handleApprove() {
     let response = await ChoreApis.approvechore({ id: data.id });
     if (response && response.data && response.data.success) {
@@ -21,6 +21,9 @@ function ChorePending({ data, settoastdata, setchores, setallchores }) {
         msg: response.data.message || "Cannot reach server",
       });
     }
+  }
+  async function handleReject() {
+    setid(data.id);
   }
   return (
     <div className={styles.chorePending}>
@@ -54,7 +57,7 @@ function ChorePending({ data, settoastdata, setchores, setallchores }) {
       <div className={styles.button} onClick={handleApprove}>
         Approve
       </div>
-      <div className={styles.removebutton}>
+      <div className={styles.removebutton} onClick={handleReject}>
         <RemoveSvg />
       </div>
     </div>
