@@ -4,9 +4,15 @@ import Header from "../../components/Header/Header";
 import styles from "../../styles/emailverification/emailverification.module.scss";
 
 export default function Verification({ emailVerified, msg }) {
+  const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [showauth, setshowauth] = useState(false);
   return (
     <div className={styles.mainPage}>
-      <Header />
+      <Header
+        setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
+        setshowauth={setshowauth}
+      />
       <div className={styles.wrapper}>
         {emailVerified ? (
           <>
