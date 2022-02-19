@@ -260,12 +260,15 @@ export default function EditProfile({ data, childavatars }) {
                 setvalue={setfirstname}
                 placeholder="First name"
                 disabled
+                textOnly
               />
               <ModernInputBox
                 maxLength={10}
                 value={lastname}
                 setvalue={setlastname}
                 placeholder="Last Name"
+                textOnly
+                disabled
               />
             </div>
             <div className={styles.row}>

@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear } from "date-fns";
+import moment from "moment";
 import range from "lodash/range";
 import styles from "../styles/GeneralComponents/customdate.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,11 +20,13 @@ const months = [
   "November",
   "December",
 ];
+
 export default function CustomDatePicker({
   value,
   setvalue,
   onlytime,
   onlydate,
+  maxdate,
 }) {
   return (
     <div className={styles.customdate}>
@@ -125,6 +128,7 @@ export default function CustomDatePicker({
           selected={value}
           showFullMonthYearPicker
           allowSameDay={false}
+          maxDate={maxdate ? maxdate : moment().toDate()}
           onChange={(date) => {
             setvalue(date);
           }}

@@ -6,6 +6,8 @@ import { useRouter } from "next/dist/client/router";
 import OTPCustomComponent from "./OTPCustomComponent";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import ModernInputBox from "./ModernInputBox";
+import DashboardApis from "../actions/apis/DashboardApis";
+import { validatePassword } from "../helpers/validationHelpers";
 
 export default function ChangePassPopUp({
   password,
@@ -17,8 +19,6 @@ export default function ChangePassPopUp({
   settoastdata,
   handleSave,
   phone,
-  error,
-  seterror,
   showpassotp,
   setshowpassotp,
   saveprofile,
@@ -26,7 +26,9 @@ export default function ChangePassPopUp({
   isEmailOtp,
 }) {
   const [OTP, setOTP] = useState("");
-  const [mode, setmode] = useState("data"); // data and otp
+  const [mode, setmode] = useState("data");
+  const [error, seterror] = useState("");
+  const [showotp, setshowotp] = useState(false);
   useEffect(() => {
     seterror("");
   }, [password, mode, confirmpassword]);
@@ -34,14 +36,24 @@ export default function ChangePassPopUp({
     setmode("data");
   }, []);
   async function genotp() {
-    LoginApis.genotp({ phone }).then((response) => {
+    if (password !== confirmpassword) {
+      seterror("Passwords do not match");
+      return;
+    }
+    if (!validatePassword(password)) {
+      seterror(
+        "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
+      );
+      return;
+    }
+    DashboardApis.createVerificationOtp().then((response) => {
       if (response && response.data && response.data.success) {
         settoastdata({
           msg: "Otp sent",
           show: true,
           type: "success",
         });
-        setmode("otp");
+        setshowotp(true);
       } else {
         settoastdata({
           msg: response?.data.message || "Error",
@@ -51,14 +63,19 @@ export default function ChangePassPopUp({
       }
     });
   }
+
   return (
     <div className={styles.changepass}>
       <div
         className={styles.background}
-        onClick={() => setshowpopup(false)}
+        onClick={() => {
+          setpassword("");
+          setconfirmpassword("");
+          setshowpopup(false);
+        }}
       ></div>
 
-      {!showpassotp ? (
+      {!showotp ? (
         <div className={styles.block}>
           <div className={styles.cross} onClick={() => setshowpopup(false)}>
             <CancelOutlinedIcon className={styles.icon} />
@@ -77,7 +94,7 @@ export default function ChangePassPopUp({
             secure={true}
           />
           {error && <p className={styles.error}>{error}</p>}
-          <div className={styles.button} onClick={() => saveprofile()}>
+          <div className={styles.button} onClick={() => genotp()}>
             Change
           </div>
         </div>

@@ -9,6 +9,7 @@ import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
 import { useRouter } from "next/dist/client/router";
 import Spinner from "../Spinner";
+import { onlyText } from "../../helpers/validationHelpers";
 function AuthFullData({
   setphone,
   setpassword,
@@ -131,15 +132,6 @@ function AuthFullData({
       setloading(false);
       return;
     }
-
-    let checkemail = await LoginApis.checkemail({ email, waitlist: true });
-    if (checkemail && checkemail.data && !checkemail.data.success) {
-      console.log("email ok");
-    } else {
-      seterror(checkemail?.data.message || "Error connecting to server");
-      setloading(false);
-      return;
-    }
     let checkphone = await LoginApis.checkphone({ phone });
     if (checkphone && checkphone.data && checkphone.data.success) {
       console.log("phone ok");
@@ -185,7 +177,6 @@ function AuthFullData({
       special: checkSpecial(pass),
       number: checkNumber(pass),
     };
-    console.log(res);
     setpasserror(res);
   }
   function checkLength(pass) {
@@ -231,14 +222,18 @@ function AuthFullData({
           placeholder="First Name"
           maxLength={10}
           value={firstName}
-          onChange={(e) => setfirstName(e.target.value)}
+          onChange={(e) => {
+            setfirstName(onlyText(e.target.value));
+          }}
         />
         <input
           maxLength={10}
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={(e) => setlastName(e.target.value)}
+          onChange={(e) => {
+            setlastName(onlyText(e.target.value));
+          }}
         />
       </div>
       <input

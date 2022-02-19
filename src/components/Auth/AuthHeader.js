@@ -9,18 +9,24 @@ function AuthHeader({ handleBack, setmode, mode }) {
         {mode !== "login" ? (
           <BackButtonSvg className={styles.svg} onClick={() => handleBack()} />
         ) : null}
-        {mode !== "login" ? "Signup" : "Login"}
+        {mode !== "login"
+          ? mode === "reset"
+            ? "Forgot password"
+            : "Signup"
+          : "Login"}
       </p>
-      {mode === "login" ? (
-        <p className={styles.changemode}>
-          No Account? <span onClick={() => setmode("selection")}>Sign up</span>
-        </p>
-      ) : (
-        <p className={styles.changemode}>
-          Already have an account?{" "}
-          <span onClick={() => setmode("login")}>Sign In</span>
-        </p>
-      )}
+      {mode !== "reset" &&
+        (mode === "login" ? (
+          <p className={styles.changemode}>
+            No Account?{" "}
+            <span onClick={() => setmode("selection")}>Sign up</span>
+          </p>
+        ) : (
+          <p className={styles.changemode}>
+            Already have an account?{" "}
+            <span onClick={() => setmode("login")}>Sign In</span>
+          </p>
+        ))}
     </div>
   );
 }

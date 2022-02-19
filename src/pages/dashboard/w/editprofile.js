@@ -261,6 +261,7 @@ export default function EditProfile({ data }) {
                 maxLength={10}
                 setvalue={setfirstname}
                 placeholder="First name"
+                textOnly
                 disabled
               />
               <ModernInputBox
@@ -268,6 +269,7 @@ export default function EditProfile({ data }) {
                 value={lastname || ""}
                 setvalue={setlastname}
                 placeholder="Last Name"
+                textOnly
               />
             </div>
             <div className={styles.row}>

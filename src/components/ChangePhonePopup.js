@@ -49,7 +49,11 @@ export default function ChangePassPopUp({
     <div className={styles.changepass}>
       <div
         className={styles.background}
-        onClick={() => setshowpopup(false)}
+        onClick={() => {
+          setchangephone("");
+          setconfirmphone("");
+          setshowpopup(false);
+        }}
       ></div>
 
       {!showphoneotp ? (

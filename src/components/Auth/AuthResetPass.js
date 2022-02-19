@@ -11,6 +11,7 @@ import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
 import { useRouter } from "next/dist/client/router";
 import ModernInputBox from "../ModernInputBox";
+import Spinner from "../Spinner";
 
 export default function AuthResetPass({
   setsignupmethod,
@@ -28,6 +29,7 @@ export default function AuthResetPass({
   const router = useRouter();
   async function ResetPass(e) {
     e.preventDefault();
+    setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
@@ -45,9 +47,7 @@ export default function AuthResetPass({
       } else {
         seterror("Error connecting to server");
       }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
+      setloading(false);
     }
   }
 
@@ -69,14 +69,20 @@ export default function AuthResetPass({
         setvalue={setemail}
       />
       {error && <p className={styles.error}>{error}</p>}
-      <div
-        className={styles.button}
-        onClick={(e) => {
-          ResetPass(e);
-        }}
-      >
-        Reset password
-      </div>
+      {!loading ? (
+        <div
+          className={styles.button}
+          onClick={(e) => {
+            ResetPass(e);
+          }}
+        >
+          Reset password
+        </div>
+      ) : (
+        <div className={`${styles.button} ${styles.spinner_btn}`}>
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 }

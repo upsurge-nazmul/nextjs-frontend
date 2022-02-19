@@ -81,7 +81,8 @@ export default function ModernInputBox({
                   if (numOnly && isNaN(e.target.value)) {
                     return;
                   }
-                  if (textOnly && !onlyText(e.target.value)) {
+                  if (textOnly) {
+                    setvalue(onlyText(e.target.value));
                     return;
                   }
                   setvalue(e.target.value);

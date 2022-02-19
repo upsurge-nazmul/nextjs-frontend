@@ -107,6 +107,14 @@ const markwelcomecomplete = (payload, token) => {
 const getoverallleaderboard = (payload, token) => {
   return ApiCalls.getResponse("users/overallleaderboard", payload, token);
 };
+
+const createVerificationOtp = (payload) => {
+  return ApiCalls.postResponse(
+    "users/createVerificationOtp",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -131,6 +139,7 @@ const DashboardApis = {
   getschools,
   markwelcomecomplete,
   getoverallleaderboard,
+  createVerificationOtp,
 };
 
 export default DashboardApis;

@@ -72,6 +72,21 @@ export default function AvatarSelector({
               </div>
             );
           })}
+          <div
+            className={styles.avatar}
+            key={"default-avatar"}
+            onClick={() => {
+              setvalue("https://i.ibb.co/v3vVV8r/default-avatar.png");
+              setshow(false);
+            }}
+          >
+            {value === "https://i.ibb.co/v3vVV8r/default-avatar.png" && (
+              <div className={styles.selected}>
+                <TickSvg className={styles.tick} />
+              </div>
+            )}
+            <img src={"https://i.ibb.co/v3vVV8r/default-avatar.png"} alt="" />
+          </div>
         </div>
       </div>
     </div>

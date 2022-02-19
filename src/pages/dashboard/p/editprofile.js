@@ -16,7 +16,7 @@ import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
-export default function EditProfile({ data }) {
+export default function EditProfile({ data, minDate }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -78,6 +78,9 @@ export default function EditProfile({ data }) {
   useEffect(() => {
     setuserdata(data);
   }, []);
+  useEffect(() => {
+    seterror("");
+  }, [dob]);
   async function saveprofile() {
     if (
       data &&
@@ -194,6 +197,11 @@ export default function EditProfile({ data }) {
       updated_data.gender = gender;
     }
     if (dob && new Date(dob) !== data?.dob) {
+      if (dob > minDate) {
+        console.log(dob, minDate);
+        seterror("Dob of parent cannot be more than childs dob.");
+        return;
+      }
       updated_data.dob = new Date(dob).getTime();
     }
     if (password && password !== data?.password) {
@@ -280,7 +288,7 @@ export default function EditProfile({ data }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={type === "waitlist" ? "dashboard/w" : "dashboard"}
+          gobackto={"dashboard/p"}
         />
         <div className={styles.mainContent}>
           {showavatarmodal && (
@@ -314,12 +322,15 @@ export default function EditProfile({ data }) {
                 setvalue={setfirstname}
                 placeholder="First name"
                 disabled
+                textOnly
               />
               <ModernInputBox
                 maxLength={10}
                 value={lastname}
                 setvalue={setlastname}
                 placeholder="Last Name"
+                disabled
+                textOnly
               />
             </div>
             <div className={styles.row}>
@@ -411,9 +422,18 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let kidsdata = await getkidsdata(token);
+      let minDate = new Date().getTime();
+      for (let i = 0; i < kidsdata.length; i++) {
+        const dob = kidsdata[i].dob;
+        if (dob && Number(dob) < minDate) {
+          minDate = Number(dob);
+        }
+      }
       return {
         props: {
           data: response.data.data,
+          minDate,
         },
       };
     }
@@ -426,4 +446,10 @@ export async function getServerSideProps({ params, req }) {
       },
     };
   }
+}
+async function getkidsdata(token) {
+  let response = await DashboardApis.getkids(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+  else return null;
 }

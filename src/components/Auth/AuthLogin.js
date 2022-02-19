@@ -22,8 +22,18 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
   // login Function
   async function handleSignin() {
     setloading(true);
-    if (password === "" || !validator.isEmail(email)) {
-      seterror("Enter password and email");
+    if (!password) {
+      seterror("Please enter your password");
+      setloading(false);
+      return;
+    }
+    if (!email) {
+      seterror("Please enter your email address");
+      setloading(false);
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      seterror("Invalid email address");
       setloading(false);
       return;
     }
@@ -65,8 +75,8 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           type: "success",
         });
         if (response.data.data.userProfile.user_type === "parent")
-          router.push("/dashboard");
-        else router.push("/kiddashboard");
+          router.push("/dashboard/p");
+        else router.push("/dashboard/k");
       } else {
         seterror(response?.data.message || "Cannot reach server");
       }

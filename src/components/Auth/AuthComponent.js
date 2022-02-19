@@ -12,6 +12,7 @@ import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
 import { MainContext } from "../../context/Main";
+import AuthResetPass from "./AuthResetPass";
 
 function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
@@ -95,6 +96,7 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   settoastdata={settoastdata}
                   error={error}
                   seterror={seterror}
+                  setmode={setmode}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -148,6 +150,12 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                 />
               ) : mode === "privacy" ? (
                 <AuthPrivacy setmode={setmode} />
+              ) : mode === "reset" ? (
+                <AuthResetPass
+                  error={error}
+                  seterror={seterror}
+                  settoastdata={settoastdata}
+                />
               ) : null}
             </div>
           </div>
