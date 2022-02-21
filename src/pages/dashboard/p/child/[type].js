@@ -339,8 +339,14 @@ function AddKid({ childdata }) {
             <ModernInputBox
               type="date"
               placeholder="Date of birth"
+              disabled={true}
               value={dob}
               onChange={(e) => {
+                console.log(e);
+                if (!e) {
+                  return;
+                }
+                console.log(e);
                 if (e.getTime() >= new Date().getTime()) {
                   settoastdata({
                     msg: "Invaild date of birth",

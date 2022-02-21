@@ -76,7 +76,10 @@ export default function CitySearch({
                 if (numOnly && isNaN(e.target.value)) {
                   return;
                 }
-                if (textOnly && !onlyText(e.target.value)) {
+                if (textOnly) {
+                  setshowdropdown(true);
+                  sortcities(e.target.value);
+                  setvalue(onlyText(e.target.value));
                   return;
                 }
                 setshowdropdown(true);
