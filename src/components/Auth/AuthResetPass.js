@@ -28,10 +28,11 @@ export default function AuthResetPass({
   const [loading, setloading] = useState(false);
   const router = useRouter();
   async function ResetPass(e) {
-    e.preventDefault();
+    e?.preventDefault();
     setloading(true);
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
+      setloading(false);
     } else {
       let response = await LoginApis.resetpass({ email: email });
       if (response) {

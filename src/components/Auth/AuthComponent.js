@@ -155,6 +155,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   error={error}
                   seterror={seterror}
                   settoastdata={settoastdata}
+                  setemail={setemail}
+                  email={email}
                 />
               ) : null}
             </div>
