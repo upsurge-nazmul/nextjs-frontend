@@ -36,12 +36,6 @@ const getpendingchores = (payload, token) => {
   return ApiCalls.getResponse(`chore/getpendingchores`, payload, token);
 };
 
-const getcompletedchildchores = (payload, token) => {
-  return ApiCalls.getResponse(`chore/completedchildchore`, payload, token);
-};
-const getpendingchildchore = (payload, token) => {
-  return ApiCalls.getResponse(`chore/pendingchildchore`, payload, token);
-};
 const getexpiredchores = (payload, token) => {
   return ApiCalls.getResponse(`chore/getexpiredchores`, payload, token);
 };
@@ -89,6 +83,9 @@ const deletetemplate = (payload, token) => {
 const rejectchore = (payload, token) => {
   return ApiCalls.putResponse("chore/rejectchore", payload, token);
 };
+const getchildchores = (payload, token) => {
+  return ApiCalls.getResponse(`chore/getchildchores`, payload, token);
+};
 //getchores
 const ChoreApis = {
   addchore,
@@ -100,8 +97,6 @@ const ChoreApis = {
   deletechore,
   approvechore,
   getchorebyid,
-  getpendingchildchore,
-  getcompletedchildchores,
   markchorestarted,
   markchoreforapproval,
   addtemplate,
@@ -109,6 +104,7 @@ const ChoreApis = {
   gettemplatedetail,
   deletetemplate,
   rejectchore,
+  getchildchores,
 };
 
 export default ChoreApis;

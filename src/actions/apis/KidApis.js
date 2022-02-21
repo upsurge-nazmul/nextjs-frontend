@@ -16,9 +16,7 @@ const buyavatar = (payload, token) => {
 const getlevel = (payload, token) => {
   return ApiCalls.getResponse(`kid/getlevel`, payload, token);
 };
-const getchildchores = (payload, token) => {
-  return ApiCalls.getResponse(`kid/getchildchores`, payload, token);
-};
+
 const buyvoucher = (payload, token) => {
   return ApiCalls.postResponse(
     `kid/buyvoucher`,
@@ -29,7 +27,6 @@ const buyvoucher = (payload, token) => {
 const KidApis = {
   getlevel,
   getavatars,
-  getchildchores,
   buyavatar,
   buyvoucher,
 };

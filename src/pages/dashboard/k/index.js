@@ -52,9 +52,10 @@ export default function ChildActivity({
       x();
     }
     async function x() {
-      let res = await ChoreApis.getcompletedchildchores(
+      let res = await ChoreApis.getchildchores(
         {
-          child_id: router.query.childid,
+          id: router.query.childid,
+          type: "completed",
         },
         getCookie("accesstoken")
       );
@@ -258,9 +259,10 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let pendinchores = await ChoreApis.getpendingchildchore(
+      let pendinchores = await ChoreApis.getchildchores(
         {
-          child_id: response.data.data.user_id,
+          id: response.data.data.user_id,
+          type: "pending",
         },
         token
       );

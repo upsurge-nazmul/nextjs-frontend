@@ -29,8 +29,6 @@ export default function ChildActivity({
   const [mode, setmode] = useState(
     childdetail.first_name + "'s progress report" || "Child Activity"
   );
-
-  const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(
     pendingchores?.rows ? pendingchores.rows : []
   );
@@ -41,28 +39,7 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
-  useEffect(() => {
-    if (choremode === "inprogress") {
-      if (pendingchores.rows) {
-        setchorearray(pendingchores.rows);
-      }
-    } else {
-      x();
-    }
-    async function x() {
-      let res = await ChoreApis.getcompletedchildchores(
-        {
-          child_id: router.query.childid,
-        },
-        getCookie("accesstoken")
-      );
-      if (res && res.data && res.data.success) {
-        setchorearray(res.data.data);
-      } else {
-        setchorearray([]);
-      }
-    }
-  }, [choremode]);
+
   useEffect(() => {
     const scrollContainer = document.querySelector("#tribewrapper");
     if (!scrollContainer) return;
@@ -234,10 +211,8 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let pendinchores = await ChoreApis.getpendingchildchore(
-        {
-          child_id: params.childid,
-        },
+      let pendinchores = await ChoreApis.getchildchores(
+        { id: params.childid, type: "pending" },
         token
       );
       let childdetail = await DashboardApis.getChildDetails(

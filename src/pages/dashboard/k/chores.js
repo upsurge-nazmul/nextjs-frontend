@@ -22,6 +22,7 @@ import { MainContext } from "../../../context/Main";
 import NoChores from "../../../components/KidDashboard/NoChores";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
+import ChoreApis from "../../../actions/apis/ChoreApis";
 
 export default function KidChoresPage({
   choresdata,
@@ -199,8 +200,7 @@ async function getChildDetails(id, token) {
     return response.data.data;
 }
 async function getchores(id, token) {
-  let response = await KidApis.getchildchores({ id }, token);
-
+  let response = await ChoreApis.getchildchores({ id }, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
   }
@@ -216,7 +216,10 @@ async function getliveclasses(token) {
     return response.data.data;
 }
 async function getcompletedchores(id, token) {
-  let response = await KidApis.getchildchores({ id, type: "completed" }, token);
+  let response = await ChoreApis.getchildchores(
+    { id, type: "completed" },
+    token
+  );
   if (response && response.data && response.data.data) {
     return response.data.data;
   }
