@@ -270,6 +270,7 @@ export default function EditProfile({ data }) {
                 setvalue={setlastname}
                 placeholder="Last Name"
                 textOnly
+                disabled
               />
             </div>
             <div className={styles.row}>

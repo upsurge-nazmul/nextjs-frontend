@@ -9,10 +9,12 @@ import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
+import VideoModal from "../../../components/VideoModal";
 function Games({ recentgames }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
+  const [showvideomodal, setshowvideomodal] = useState(false);
   const [recent_games, setrecent_games] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -138,22 +140,26 @@ function Games({ recentgames }) {
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.banner}>
+              {showvideomodal && (
+                <VideoModal
+                  source={
+                    "https://vod-progressive.akamaized.net/exp=1645457640~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1061%2F26%2F655305103%2F3009171108.mp4~hmac=70a9ebb527bd2ef08e8c21552e37e84603e4c22e7f75c931f7b486ba6cbfdccc/vimeo-prod-skyfire-std-us/01/1061/26/655305103/3009171108.mp4?filename=pexels-nothing-ahead-10505868.mp4&download=1"
+                  }
+                  onBack={() => setshowvideomodal(false)}
+                />
+              )}
               <img src="/images/games/MoneyAce.png" alt="" />
               <div className={styles.right}>
                 <p className={styles.name}>Money Ace</p>
                 <p className={styles.description}>
-                  {`It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.`}
+                  {`The purpose of this game is to help users experience and understand the 4 pillars of money management - earn, spend, save, invest. - where the user can go to understand some aspects of money management and play games and games to earn money.`}
                 </p>
-                {/* <p
+                <p
                   className={styles.play}
-                  onClick={() => router.push("/dashboard/p/game/MoneyAce")}
+                  onClick={() => setshowvideomodal(true)}
                 >
-                  Play game
-                </p> */}
+                  More Details
+                </p>
               </div>
             </div>
             {recentgames?.length > 0 && (

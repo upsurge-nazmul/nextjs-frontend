@@ -21,7 +21,6 @@
         display: flex;
         background-color: #fff;
         margin-bottom: 20px;
-        max-width: 100%;
         img {
           height: 100%;
           width: 70%;
@@ -30,8 +29,7 @@
         .right {
           flex: 1;
           display: flex;
-          min-width: unset;
-          width: 400px;
+          min-width: 400px;
           padding: 40px;
           flex-direction: column;
           .name {

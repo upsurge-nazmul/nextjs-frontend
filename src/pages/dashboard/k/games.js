@@ -133,11 +133,7 @@ function Games({ userdatafromserver, token }) {
               <div className={styles.right}>
                 <p className={styles.name}>Money Ace</p>
                 <p className={styles.description}>
-                  {`It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.`}
+                  {`The purpose of this game is to help users experience and understand the 4 pillars of money management - earn, spend, save, invest. - where the user can go to understand some aspects of money management and play games and games to earn money.`}
                 </p>
                 <p
                   className={styles.play}
