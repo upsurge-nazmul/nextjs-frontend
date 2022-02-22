@@ -1,0 +1,264 @@
+.dashboard {
+  width: 100%;
+  height: 100%;
+  background-color: #5ec796;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    .container {
+      display: flex;
+      flex: 1;
+      background-color: #5ec796;
+      padding: 40px;
+      height: 100%;
+      .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-content: flex-start;
+        justify-content: center;
+        .card {
+          background: #0f0c29; /* fallback for old browsers */
+          background: -webkit-linear-gradient(
+            to right,
+            #24243e,
+            #302b63,
+            #0f0c29
+          ); /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(
+            to right,
+            #24243e,
+            #302b63,
+            #0f0c29
+          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+          width: 400px;
+          height: fit-content;
+          border-radius: 20px;
+          padding: 25px;
+          color: white;
+          position: relative;
+          .logo {
+            display: flex;
+            position: absolute;
+            right: 20px;
+            width: 70px;
+            div {
+              width: 40px;
+              height: 40px;
+              border-radius: 40px;
+              background-color: rgba(255, 255, 255, 0.445);
+              position: absolute;
+              &:last-child {
+                margin-left: 25px;
+              }
+            }
+          }
+          .head {
+            font-family: "Itim", cursive;
+            font-size: 14px;
+          }
+          .balance {
+            font-size: 18px;
+            margin-top: 10px;
+            font-family: "Itim", cursive;
+            font-weight: 500;
+          }
+          .number {
+            font-size: 18px;
+            margin-top: 30px;
+            letter-spacing: 4px;
+            font-family: "Itim", cursive;
+            display: flex;
+            align-items: center;
+          }
+          .valids {
+            display: flex;
+            margin-top: 20px;
+            gap: 30px;
+            .valid {
+              display: flex;
+              flex-direction: column;
+              .heading {
+                font-size: 12px;
+                font-family: "Itim", cursive;
+                color: rgb(158, 158, 158);
+              }
+              .value {
+                font-size: 12px;
+                margin-top: 5px;
+                font-family: "Itim", cursive;
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+        .bankinfo {
+          display: flex;
+          flex-direction: column;
+          width: 400px;
+          background: #396afc; /* fallback for old browsers */
+          background: -webkit-linear-gradient(
+            to right,
+            #2948ff,
+            #396afc
+          ); /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(
+            to right,
+            #2948ff,
+            #396afc
+          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+          height: fit-content;
+          padding: 25px;
+          border-radius: 20px;
+          gap: 13px;
+          .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+              font-size: 14px;
+              font-family: "Itim", cursive;
+              color: white;
+              &:last-child {
+                border-radius: 8px;
+                background-color: rgba(54, 54, 54, 0.233);
+                padding: 6px;
+                width: 200px;
+                text-align: center;
+              }
+            }
+          }
+        }
+        .gauge {
+          width: 400px;
+          background: white;
+          border-radius: 20px;
+          padding: 20px;
+          background: #cb356b; /* fallback for old browsers */
+          background: -webkit-linear-gradient(
+            to right,
+            #bd3f32,
+            #cb356b
+          ); /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(
+            to right,
+            #bd3f32,
+            #cb356b
+          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+          .meter {
+            width: 60%;
+          }
+          .heading {
+            font-size: 14px;
+            color: white;
+            width: 100%;
+            text-align: center;
+            font-family: "Itim", cursive;
+            margin-bottom: 20px;
+          }
+        }
+        .passbook {
+          width: 400px;
+          background: white;
+          border-radius: 20px;
+          padding: 20px;
+          .heading {
+            font-size: 24px;
+            color: rgb(0, 0, 0);
+            width: 100%;
+            text-align: center;
+            font-family: "Itim", cursive;
+          }
+        }
+      }
+    }
+  }
+  .logo {
+    opacity: 0.8;
+  }
+  .details {
+    display: flex;
+    position: absolute;
+    z-index: 3;
+    top: 10px;
+    left: 20px;
+    align-items: center;
+    .avatar {
+      border-radius: 100%;
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      border: 2px solid white;
+    }
+    .right {
+      color: rgb(0, 0, 0);
+      display: flex;
+      flex-direction: column;
+      .fullname {
+        text-transform: capitalize;
+        font-weight: 500;
+        font-family: "Itim", cursive;
+      }
+      .username {
+        font-family: "Itim", cursive;
+        font-size: 12px;
+      }
+    }
+  }
+  .start {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    border-radius: 8px;
+    background-color: #4166eb;
+    color: white;
+    padding: 15px 25px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .banner {
+    width: 100%;
+    height: 100%;
+  }
+  .gradientt {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    top: 0;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+  .gradientb {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.24971987085849967) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}

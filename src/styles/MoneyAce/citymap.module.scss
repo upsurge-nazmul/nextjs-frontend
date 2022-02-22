@@ -1,0 +1,32 @@
+.citymap {
+  flex: 1;
+  width: fit-content;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  svg {
+    z-index: 1;
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      background-color: #398a7e42;
+      padding: 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #ffffff42;
+        padding: 15px;
+      }
+    }
+  }
+}

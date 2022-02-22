@@ -1,0 +1,162 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  justify-content: space-between;
+  z-index: 20;
+  position: relative;
+  background-color: #5ec796;
+  .settingsmodal {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: calc(9vw * 3.99);
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.404);
+    }
+    .main {
+      z-index: 15;
+      background-color: #5ec796;
+      width: 450px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      padding-bottom: 50px;
+      position: relative;
+      .closebtn {
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        position: absolute;
+        right: -5px;
+        background-color: #5ec796;
+        top: -20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        cursor: pointer;
+        .close {
+          color: white;
+          font-size: 30px;
+          font-weight: bold;
+        }
+      }
+      p {
+        font-family: "Itim", cursive;
+        color: white;
+      }
+      .heading {
+        font-size: 40px;
+      }
+      .subheading {
+        font-size: 30px;
+        margin-top: 20px;
+        border-bottom: 1px solid white;
+      }
+      .container {
+        color: white;
+        font-family: "Itim", cursive;
+        display: flex;
+        margin-top: 15px;
+        font-size: 28px;
+        align-items: center;
+        width: 80%;
+        justify-content: space-around;
+        .checkbox {
+          color: white;
+        }
+        .slider {
+          color: white;
+          margin: 0 20px;
+        }
+      }
+    }
+  }
+  .left {
+    display: flex;
+    .avatarblock {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      position: relative;
+      .avatar {
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+      }
+      .icon {
+        position: absolute;
+        bottom: -10px;
+        right: -5px;
+        transform: rotate(-15deg);
+        font-size: 30px;
+        cursor: pointer;
+        background-color: #5ec796;
+        border-radius: 100%;
+        color: rgb(29, 29, 29);
+      }
+      .notificationbox {
+        position: absolute;
+        bottom: -15px;
+        right: -10px;
+        border: 2px solid white;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: rgb(230, 32, 65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: white;
+        font-family: "Itim", cursive;
+        cursor: pointer;
+        font-weight: 900;
+      }
+    }
+
+    .right {
+      color: rgb(0, 0, 0);
+      display: flex;
+      flex-direction: column;
+      .fullname {
+        font-family: "Itim", cursive;
+        text-transform: capitalize;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .username {
+        font-family: "Itim", cursive;
+        font-size: 16px;
+        color: rgb(65, 65, 65);
+      }
+    }
+  }
+  .gamelogo {
+    height: 100%;
+    padding-right: 10%;
+  }
+  .settings {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+  }
+}

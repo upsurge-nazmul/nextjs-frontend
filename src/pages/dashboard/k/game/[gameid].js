@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
-
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../../../styles/WaitlistDashboard/gamepage.module.scss";
 import validator from "validator";

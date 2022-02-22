@@ -1,0 +1,46 @@
+.leftpanel {
+  height: 100%;
+  width: 100px;
+  background-color: #5ec796;
+  padding: 40px 20px 0 20px;
+  .icon {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    &:hover {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  .tab {
+    border: 1px solid #5ec796;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Itim", cursive;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: flex;
+    .newtask {
+      border: 2px solid white;
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      background-color: rgb(230, 32, 65);
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+    }
+    &:hover {
+      background-color: hsl(173, 80%, 40%);
+    }
+  }
+  .active {
+    background-color: hsl(173, 88%, 53%);
+  }
+}

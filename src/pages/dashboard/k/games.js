@@ -137,7 +137,7 @@ function Games({ userdatafromserver, token }) {
                 </p>
                 <p
                   className={styles.play}
-                  onClick={() => router.push("/dashboard/p/game/MoneyAce")}
+                  onClick={() => router.push("/dashboard/k/moneyace")}
                 >
                   Play game
                 </p>
