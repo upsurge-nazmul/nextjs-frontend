@@ -48,7 +48,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
     <div className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed}`}>
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
-      {hidelogo ? null : width > 1300 ? (
+      {hidelogo ? null : width > 900 ? (
         <Logo
           className={styles.dashboardLogo}
           onClick={() => {
