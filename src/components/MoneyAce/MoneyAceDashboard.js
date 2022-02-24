@@ -8,6 +8,7 @@ import MoneyAceHeader from "./MoneyAceHeader";
 import MoneyAceLeftPanel from "./MoneyAceLeftPanel";
 import GaugeChart from "react-gauge-chart";
 import PassBook from "./PassBook";
+import InvestmentHub from "./InvestmentHub";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -19,7 +20,7 @@ export default function MoneyAceDashboard({
   volume,
   setvolume,
 }) {
-  const [currenttab, setcurrenttab] = useState("dashboard");
+  const [currenttab, setcurrenttab] = useState("investmenthub");
   const ref = useRef();
   useEffect(() => {
     if (muted) {
@@ -109,9 +110,11 @@ export default function MoneyAceDashboard({
               </div>
             </div>
           ) : currenttab === "citymap" ? (
-            <CityMap />
+            <CityMap setcurrenttab={setcurrenttab} />
           ) : currenttab === "passbook" ? (
-            <PassBook />
+            <PassBook setcurrenttab={setcurrenttab} />
+          ) : currenttab === "investmenthub" ? (
+            <InvestmentHub setcurrenttab={setcurrenttab} />
           ) : null}
         </div>
       </div>

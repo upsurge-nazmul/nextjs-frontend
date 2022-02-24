@@ -5,6 +5,7 @@ import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
 import { ResponsivePie } from "@nivo/pie";
+
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import { animated } from "@react-spring/web";
 import BigCalcDropdown from "./BigCalcDropdown";

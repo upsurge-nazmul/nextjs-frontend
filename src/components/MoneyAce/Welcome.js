@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import styles from "../../styles/MoneyAce/welcome.module.scss";
 import MoneyAceHeader from "./MoneyAceHeader";
 import PlaySvg from "../SVGcomponents/MoneyAce/ui/PlaySvg";
+import { useRouter } from "next/dist/client/router";
+import ExitSvg from "../SVGcomponents/MoneyAce/ui/ExitSvg";
 
 export default function Welcome({
   avatarUrl,
@@ -14,6 +16,7 @@ export default function Welcome({
   setvolume,
 }) {
   const ref = useRef();
+  const router = useRouter();
   useEffect(() => {
     if (muted) {
       ref.current.pause();
@@ -40,6 +43,9 @@ export default function Welcome({
       />
       <div className={styles.start} onClick={() => setstage("dashboard")}>
         <PlaySvg className={styles.playicon} />
+      </div>
+      <div className={styles.back} onClick={() => router.push("/dashboard/p")}>
+        <ExitSvg className={styles.playicon} />
       </div>
       <img
         className={styles.banner}

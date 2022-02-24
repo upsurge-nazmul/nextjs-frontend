@@ -21,7 +21,7 @@ export default function MoneyAceHeader({
   return (
     <div
       className={styles.header}
-      style={{ backgroundColor: hidebackground ? "transparent" : "#5ec796" }}
+      // style={{ backgroundColor: hidebackground ? "transparent" : "#5ec796" }}
     >
       {showsettings && (
         <div className={styles.settingsmodal}>
@@ -49,6 +49,9 @@ export default function MoneyAceHeader({
               />
             </div>
           </div>
+          <div className={styles.bgborder}>
+            <div className={styles.closeborder} />
+          </div>
         </div>
       )}
       <div className={styles.left}>
@@ -56,9 +59,9 @@ export default function MoneyAceHeader({
           <img src={avatarUrl} alt="" className={styles.avatar} />
           <EmailRoundedIcon
             className={styles.icon}
-            style={{
-              backgroundColor: hidebackground ? "transparent" : "#9DDA9F",
-            }}
+            // style={{
+            //   backgroundColor: hidebackground ? "transparent" : "#9DDA9F",
+            // }}
           />
           <div className={styles.notificationbox}>2</div>
         </div>

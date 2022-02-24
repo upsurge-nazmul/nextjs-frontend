@@ -9,12 +9,16 @@ import OfficeSvg from "../SVGcomponents/MoneyAce/OfficeSvg";
 import FarmSvg from "../SVGcomponents/MoneyAce/FarmSvg";
 import HouseSvg from "../SVGcomponents/MoneyAce/HouseSvg";
 
-export default function CityMap() {
+export default function CityMap({ setcurrenttab }) {
   return (
     <div className={styles.citymap}>
       <div className={styles.wrapper}>
         <BankSvg className={`${styles.bank} ${styles.icon}`} />
-        <Hub className={`${styles.hub} ${styles.icon}`} />
+        <Hub
+          className={`${styles.hub} ${styles.icon}`}
+          onClick={() => setcurrenttab("investmenthub")}
+          
+        />
         <SchoolSvg className={`${styles.school} ${styles.icon}`} />
         <FishPondSvg className={`${styles.fish} ${styles.icon}`} />
         <SuperMarketSvg className={`${styles.supermarket} ${styles.icon}`} />

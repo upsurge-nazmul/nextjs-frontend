@@ -7,7 +7,6 @@
   justify-content: space-between;
   z-index: 20;
   position: relative;
-  background-color: #5ec796;
   .settingsmodal {
     top: 0;
     left: 0;
@@ -25,14 +24,26 @@
       background-color: rgba(0, 0, 0, 0.404);
     }
     .main {
-      z-index: 15;
-      background-color: #5ec796;
+      z-index: 1;
       width: 450px;
       border-radius: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
+      border: 2px solid white;
+      background: linear-gradient(
+        360deg,
+        #9dda9f,
+        #95d79d,
+        #8dd59c,
+        #84d29a,
+        #7bcf99,
+        #72cd98,
+        #68ca97,
+        #5ec796
+      );
+      background: 0.5;
       padding-bottom: 50px;
       position: relative;
       .closebtn {
@@ -41,17 +52,29 @@
         border-radius: 70px;
         position: absolute;
         right: -5px;
-        background-color: #5ec796;
         top: -20px;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 5px;
         cursor: pointer;
+        background: linear-gradient(
+          360deg,
+          #9dda9f,
+          #95d79d,
+          #8dd59c,
+          #84d29a,
+          #7bcf99,
+          #72cd98,
+          #68ca97,
+          #5ec796
+        );
+
         .close {
           color: white;
           font-size: 30px;
           font-weight: bold;
+          z-index: -1;
         }
       }
       p {
@@ -83,6 +106,10 @@
           margin: 0 20px;
         }
       }
+    }
+    .bgborder {
+      border: 2px solid white;
+      z-index: -1;
     }
   }
   .left {
