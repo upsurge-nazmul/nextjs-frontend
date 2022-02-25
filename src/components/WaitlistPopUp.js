@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 import OTPCustomComponent from "./OTPCustomComponent";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Spinner from "./Spinner";
+import { onlyText } from "../helpers/validationHelpers";
 
 export default function WaitlistPopUp({
   email,
@@ -83,8 +84,13 @@ export default function WaitlistPopUp({
   async function genotp() {
     setOTP("");
     setloading(true);
+    if (!email) {
+      seterror("Email is required");
+      setloading(false);
+      return;
+    }
     if (!validator.isEmail(email)) {
-      seterror("Invalid Email");
+      seterror("Please enter a valid email");
       setloading(false);
       return;
     }
@@ -204,14 +210,14 @@ export default function WaitlistPopUp({
               placeholder="First Name*"
               maxLength={10}
               value={firstName}
-              onChange={(e) => setfirstName(e.target.value)}
+              onChange={(e) => setfirstName(onlyText(e.target.value))}
             />
             <input
               maxLength={10}
               type="text"
               placeholder="Last Name"
               value={lastName}
-              onChange={(e) => setlastName(e.target.value)}
+              onChange={(e) => setlastName(onlyText(e.target.value))}
             />
           </div>
           {error && <p className={styles.error}>{error}</p>}
