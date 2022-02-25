@@ -245,7 +245,7 @@ export default function GamePage({ gamedata }) {
       seterror("Please enter valid email address");
       return;
     }
-    if (phone && !validator.isMobilePhone(phone)) {
+    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
       seterror("Please enter valid phone number");
       return;
     }
