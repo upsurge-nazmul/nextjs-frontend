@@ -19,6 +19,15 @@ export default function Moneyace({ userdatafromserver }) {
   const [volume, setvolume] = useState(1);
   const [stage, setstage] = useState("welcome");
   const [muted, setmuted] = useState(false);
+  const [canvassize, setcanvassize] = useState({ width: 800, height: 800 });
+  useEffect(() => {
+    function handleResize() {
+      let x = document.getElementById("GameCanvas");
+      setcanvassize({ width: x.clientWidth, height: x.clientHeight });
+    }
+    window.addEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (!userdatafromserver) return;
     setuserdata(userdatafromserver);
@@ -30,7 +39,7 @@ export default function Moneyace({ userdatafromserver }) {
       <div className={styles.contentWrapper}>
         <KidDashboardHeader mode={"Money Ace"} settoastdata={settoastdata} />
         <div className={styles.mainContent}>
-          <div className={styles.gameMain}>
+          <div className={styles.gameMain} id="GameCanvas">
             {stage === "welcome" ? (
               <Welcome
                 muted={muted}
@@ -52,6 +61,7 @@ export default function Moneyace({ userdatafromserver }) {
                 setmuted={setmuted}
                 setvolume={setvolume}
                 volume={volume}
+                canvassize={canvassize}
                 avatarUrl={userdatafromserver.user_img_url}
                 username={userdatafromserver.user_name}
                 fullName={

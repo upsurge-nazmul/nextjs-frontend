@@ -19,6 +19,7 @@ export default function MoneyAceDashboard({
   setmuted,
   volume,
   setvolume,
+  canvassize,
 }) {
   const [currenttab, setcurrenttab] = useState("investmenthub");
   const ref = useRef();
@@ -114,7 +115,10 @@ export default function MoneyAceDashboard({
           ) : currenttab === "passbook" ? (
             <PassBook setcurrenttab={setcurrenttab} />
           ) : currenttab === "investmenthub" ? (
-            <InvestmentHub setcurrenttab={setcurrenttab} />
+            <InvestmentHub
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+            />
           ) : null}
         </div>
       </div>
