@@ -12,6 +12,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import LogoFullWhte from "../../components/SVGcomponents/LogoFullWhte";
+import { onlyText } from "../../helpers/validationHelpers";
 function Contact() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -29,6 +30,22 @@ function Contact() {
         show: true,
         type: "error",
         msg: "Name cannot be empty",
+      });
+      return;
+    }
+    if (!email) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Email is required",
+      });
+      return;
+    }
+    if (!msg) {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: "Please enter your message",
       });
       return;
     }
@@ -133,7 +150,8 @@ function Contact() {
             <input
               type="text"
               placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(onlyText(e.target.value))}
             />
             <input
               type="text"
