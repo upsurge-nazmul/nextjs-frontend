@@ -192,9 +192,6 @@ function AddKid({ childdata }) {
     if (password && password !== childdata.password) {
       data.password = password;
     }
-    if (city && city !== childdata.city) {
-      data.city = city;
-    }
     if (school && school !== childdata.school) {
       data.school = school;
     }
