@@ -13,11 +13,13 @@ export default function CityMap({ setcurrenttab }) {
   return (
     <div className={styles.citymap}>
       <div className={styles.wrapper}>
-        <BankSvg className={`${styles.bank} ${styles.icon}`} />
+        <BankSvg
+          onClick={() => setcurrenttab("bank")}
+          className={`${styles.bank} ${styles.icon}`}
+        />
         <Hub
           className={`${styles.hub} ${styles.icon}`}
           onClick={() => setcurrenttab("investmenthub")}
-          
         />
         <SchoolSvg className={`${styles.school} ${styles.icon}`} />
         <FishPondSvg className={`${styles.fish} ${styles.icon}`} />

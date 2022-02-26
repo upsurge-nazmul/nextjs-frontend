@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import styles from "../../styles/MoneyAce/investmenthub.module.scss";
+import styles from "../../styles/MoneyAce/bank.module.scss";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
+import { Checkbox, Slider } from "@mui/material";
 import HTMLFlipBook from "react-pageflip";
-export default function InvestmentHub({ setcurrenttab, canvassize }) {
+
+export default function Bank({ setcurrenttab, canvassize }) {
+  const [showopenacc, setshowopenacc] = useState(false);
+  const [gender, setgender] = useState("");
   const data = [
     {
       id: "stocks",
@@ -365,7 +369,7 @@ export default function InvestmentHub({ setcurrenttab, canvassize }) {
     "Due to increase in GDP growth rates in USA, global crude prices are witnessing an uptick.",
   ];
   return (
-    <div className={styles.investmenthub}>
+    <div className={styles.bank}>
       {mode === "bulletin" && (
         <div className={styles.bulletin}>
           <div className={styles.pageholder}>
@@ -583,6 +587,48 @@ export default function InvestmentHub({ setcurrenttab, canvassize }) {
         </div>
       )}
       <div className={styles.main}>
+        {showopenacc && (
+          <div className={styles.openacc}>
+            <div
+              className={styles.background}
+              onClick={() => setshowopenacc(false)}
+            />
+            <div className={styles.main}>
+              <p className={styles.formheading}>Upsurge Banking Form</p>
+              <div className={styles.form}>
+                <div className={styles.row}>
+                  <p>Your name</p>
+                  <input />
+                </div>
+                <div className={styles.row}>
+                  <div className={styles.chkbx}>
+                    <input
+                      type="checkbox"
+                      checked={gender === "Male"}
+                      onChange={(event) => {
+                        if (event.target.checked) setgender("Male");
+                        else setgender("");
+                      }}
+                    />
+                    Male
+                    <input
+                      type="checkbox"
+                      checked={gender === "Female"}
+                      onChange={(event) => {
+                        console.log(event);
+                        if (event.target.checked) setgender("Female");
+                        else setgender("");
+                      }}
+                    />
+                    Female
+                  </div>
+                </div>
+                <div className={styles.submit}>Submit</div>
+              </div>
+              <div className={styles.row}></div>
+            </div>
+          </div>
+        )}
         <img
           className={styles.bgimage}
           src="/images/backgrounds/laptop.png"
@@ -590,168 +636,26 @@ export default function InvestmentHub({ setcurrenttab, canvassize }) {
         />
 
         <div className={styles.bg}>
-          {mode === "passbook" ? (
-            <>
-              <p className={styles.heading}>
-                <BigBackArrow
-                  onClick={() => setmode("all")}
-                  className={styles.headingicon}
-                />
-                Passbook
-              </p>
-              <div className={styles.headwrapper}>
-                {entities.map((item) => {
-                  return (
-                    <div
-                      className={`${styles.entity} ${
-                        passbookfilter === item && styles.selectedentity
-                      }`}
-                      key={item}
-                      onClick={() => {
-                        if (passbookfilter === item) {
-                          return setpassbookfilter("all");
-                        }
-                        setpassbookfilter(item);
-                      }}
-                    >
-                      {item}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className={styles.wrapper}>
-                <div className={styles.hrow}>
-                  <p>Date</p>
-                  <p>Particulars</p>
-                  <p className={styles.debitcred}>
-                    <span className={styles.debt}>Debit</span> /{" "}
-                    <span className={styles.cred}>Credit</span>
-                    {` (₹)`}
-                  </p>
-                  <p>{`Balance(₹)`}</p>
-                </div>
-                <div className={styles.row}>
-                  <p>22/02/2022</p>
-                  <p>Stocks</p>
-                  <p>500</p>
-                  <p>2500</p>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <p className={styles.heading}>
-                <BigBackArrow
-                  onClick={() => setcurrenttab("citymap")}
-                  className={styles.headingicon}
-                />
-                Investment Hub
-                <div
-                  className={styles.bulletinbtn}
-                  onClick={() => setmode("bulletin")}
-                >
-                  <NewspaperRoundedIcon className={styles.bulletinicon} />
-                </div>
-              </p>
-              <div className={styles.headwrapper}>
-                {entities.map((item) => {
-                  return (
-                    <div
-                      className={`${styles.entity} ${
-                        mode === item && styles.selectedentity
-                      }`}
-                      key={item}
-                      onClick={() => {
-                        if (mode === item) {
-                          return setmode("all");
-                        }
-                        setmode(item);
-                      }}
-                    >
-                      {item}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className={styles.bottomcontainer}>
-                <div className={styles.graph}>
-                  <ResponsiveLine
-                    data={data}
-                    margin={{ top: 40, right: 50, bottom: 60, left: 60 }}
-                    xScale={{ type: "point" }}
-                    colors={{ datum: "color" }}
-                    yScale={{
-                      type: "linear",
-                      min: "auto",
-                      max: "auto",
-                      stacked: true,
-                      reverse: false,
-                    }}
-                    yFormat=" >-.2f"
-                    axisTop={null}
-                    axisRight={null}
-                    axisBottom={{
-                      orient: "bottom",
-                      tickSize: 5,
-                      tickPadding: 5,
-                      tickRotation: 0,
-                      legend: "Month",
-                      legendOffset: 40,
-                      legendPosition: "middle",
-                    }}
-                    axisLeft={{
-                      orient: "left",
-                      tickSize: 5,
-                      tickPadding: 5,
-                      tickRotation: 0,
-                      legend: "Amount",
-                      legendOffset: -50,
-                      legendPosition: "middle",
-                    }}
-                    pointSize={10}
-                    pointColor={{ theme: "background" }}
-                    pointBorderWidth={2}
-                    pointBorderColor={{ from: "serieColor" }}
-                    pointLabelYOffset={-12}
-                    useMesh={true}
-                  />
-                </div>
-                <div className={styles.buttons}>
-                  {mode !== "all" && (
-                    <>
-                      <div className={styles.button}>Buy</div>
-                      <div className={styles.button}>Sell</div>
-                    </>
-                  )}
-                  <div
-                    className={styles.passbookbtn}
-                    onClick={() => {
-                      if (mode !== "all") {
-                        setpassbookfilter(mode);
-                      }
-                      setmode("passbook");
-                    }}
-                  >
-                    Passbook
-                  </div>
-                  <div className={styles.portfolio}>
-                    <p className={styles.heading}>Portfolio</p>
-                    {demoPortfolio.map((item, index) => {
-                      if (mode !== "all" && mode !== item.name) {
-                        return null;
-                      }
-                      return (
-                        <div className={styles.row} key={"portfolio" + index}>
-                          <p>{item.name}</p>
-                          <p>{item.value}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+          <p className={styles.heading}>
+            <BigBackArrow
+              onClick={() => setcurrenttab("citymap")}
+              className={styles.headingicon}
+            />
+            Bank
+            <div
+              className={styles.bulletinbtn}
+              onClick={() => setmode("bulletin")}
+            >
+              <NewspaperRoundedIcon className={styles.bulletinicon} />
+            </div>
+          </p>
+
+          <div className={styles.btnwrapper}>
+            <div className={styles.button}>Quiz</div>
+            <div className={styles.button} onClick={() => setshowopenacc(true)}>
+              Open account
+            </div>
+          </div>
         </div>
       </div>
     </div>

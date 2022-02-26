@@ -9,6 +9,7 @@ import MoneyAceLeftPanel from "./MoneyAceLeftPanel";
 import GaugeChart from "react-gauge-chart";
 import PassBook from "./PassBook";
 import InvestmentHub from "./InvestmentHub";
+import Bank from "./Bank";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -119,6 +120,8 @@ export default function MoneyAceDashboard({
               setcurrenttab={setcurrenttab}
               canvassize={canvassize}
             />
+          ) : currenttab === "bank" ? (
+            <Bank setcurrenttab={setcurrenttab} canvassize={canvassize} />
           ) : null}
         </div>
       </div>

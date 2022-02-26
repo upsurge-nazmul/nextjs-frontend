@@ -36,7 +36,7 @@
           margin-right: 10px;
           cursor: pointer;
         }
-        .bulletin {
+        .bulletinbtn {
           cursor: pointer;
           font-size: 14px;
           font-weight: 500;
@@ -335,6 +335,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      .close {
+        color: rgb(235, 64, 64);
+        background: white;
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+      }
     }
   }
 }
