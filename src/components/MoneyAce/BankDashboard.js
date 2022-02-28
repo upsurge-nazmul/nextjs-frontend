@@ -1,358 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { ResponsiveLine } from "@nivo/line";
-import styles from "../../styles/MoneyAce/bank.module.scss";
+import styles from "../../styles/MoneyAce/bankdashboard.module.scss";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
-import { Checkbox, Slider } from "@mui/material";
 import HTMLFlipBook from "react-pageflip";
-
-export default function Bank({ setcurrenttab, canvassize }) {
+import BankDialog from "./BankDialog";
+export default function BankDashboard({ setcurrenttab, canvassize }) {
   const [showopenacc, setshowopenacc] = useState(false);
   const [gender, setgender] = useState("");
-  const data = [
-    {
-      id: "stocks",
-      color: "#17D1BC",
-      data: [
-        {
-          x: "plane",
-          y: 258,
-        },
-        {
-          x: "helicopter",
-          y: 155,
-        },
-        {
-          x: "boat",
-          y: 244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 45,
-        },
-        {
-          x: "others",
-          y: 194,
-        },
-      ],
-    },
-    {
-      id: "Real Estate",
-      color: "#FF6263",
-      data: [
-        {
-          x: "plane",
-          y: 2528,
-        },
-        {
-          x: "helicopter",
-          y: 1255,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 45,
-        },
-        {
-          x: "others",
-          y: 194,
-        },
-      ],
-    },
-    {
-      id: "Gold",
-      color: "#FDCC03",
-      data: [
-        {
-          x: "plane",
-          y: 2528,
-        },
-        {
-          x: "helicopter",
-          y: 1255,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 425,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "FD",
-      color: "#4166EB",
-      data: [
-        {
-          x: "plane",
-          y: 2228,
-        },
-        {
-          x: "helicopter",
-          y: 1555,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 2212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 2926,
-        },
-        {
-          x: "moto",
-          y: 1106,
-        },
-        {
-          x: "bicycle",
-          y: 1010,
-        },
-        {
-          x: "horse",
-          y: 1011,
-        },
-        {
-          x: "skateboard",
-          y: 4125,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "Retirement",
-      color: "#90d117",
-      data: [
-        {
-          x: "plane",
-          y: 200,
-        },
-        {
-          x: "helicopter",
-          y: 200,
-        },
-        {
-          x: "boat",
-          y: 200,
-        },
-        {
-          x: "train",
-          y: 1212,
-        },
-        {
-          x: "subway",
-          y: 200,
-        },
-        {
-          x: "bus",
-          y: 1561,
-        },
-        {
-          x: "car",
-          y: 200,
-        },
-        {
-          x: "moto",
-          y: 1106,
-        },
-        {
-          x: "bicycle",
-          y: 200,
-        },
-        {
-          x: "horse",
-          y: 1011,
-        },
-        {
-          x: "skateboard",
-          y: 4125,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "Fund Saving",
-      color: "#ff8762",
-      data: [
-        {
-          x: "plane",
-          y: 100,
-        },
-        {
-          x: "helicopter",
-          y: 100,
-        },
-        {
-          x: "boat",
-          y: 100,
-        },
-        {
-          x: "train",
-          y: 100,
-        },
-        {
-          x: "subway",
-          y: 100,
-        },
-        {
-          x: "bus",
-          y: 100,
-        },
-        {
-          x: "car",
-          y: 100,
-        },
-        {
-          x: "moto",
-          y: 100,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 100,
-        },
-        {
-          x: "skateboard",
-          y: 100,
-        },
-        {
-          x: "others",
-          y: 100,
-        },
-      ],
-    },
-  ];
-  const entities = [
-    "Stocks",
-    "Real Estate",
-    "Gold",
-    "FD",
-    "Retirement",
-    "Saving Account",
-  ];
   const [mode, setmode] = useState("all");
   const [passbookfilter, setpassbookfilter] = useState("all");
-  const demoPortfolio = [
-    { name: "Stocks", value: 800 },
-    { name: "Real Estate", value: 800 },
-    { name: "Gold", value: 800 },
-    { name: "FD", value: 800 },
-    { name: "Retirement", value: 800 },
-    { name: "Saving Account", value: 800 },
-  ];
+  const [dialogdata, setdialogdata] = useState(null);
   const demodata = [
     "GDP grew at 7.5% during the year",
     "Inflation was recorded at 7% during the year",
@@ -368,6 +25,14 @@ export default function Bank({ setcurrenttab, canvassize }) {
     "GDP growth rates in USA are on an uptrend and US Dollar (USD) is appreciating against other global currencies",
     "Due to increase in GDP growth rates in USA, global crude prices are witnessing an uptick.",
   ];
+  function getdialogdata(type) {
+    if (type === "deposit") {
+      setdialogdata({
+        title: "Please enter a amount for deposit",
+        btntext: "continue",
+      });
+    }
+  }
   return (
     <div className={styles.bank}>
       {mode === "bulletin" && (
@@ -587,60 +252,14 @@ export default function Bank({ setcurrenttab, canvassize }) {
         </div>
       )}
       <div className={styles.main}>
-        {showopenacc && (
-          <div className={styles.openacc}>
-            <div
-              className={styles.background}
-              onClick={() => setshowopenacc(false)}
-            />
-            <div className={styles.main}>
-              <p className={styles.formheading}>Upsurge Banking Form</p>
-              <div className={styles.form}>
-                <div className={styles.row}>
-                  <p>Your name</p>
-                  <input />
-                </div>
-                <div className={styles.row}>
-                  <div className={styles.chkbx}>
-                    <input
-                      type="checkbox"
-                      checked={gender === "Male"}
-                      onChange={(event) => {
-                        if (event.target.checked) setgender("Male");
-                        else setgender("");
-                      }}
-                    />
-                    Male
-                    <input
-                      type="checkbox"
-                      checked={gender === "Female"}
-                      onChange={(event) => {
-                        console.log(event);
-                        if (event.target.checked) setgender("Female");
-                        else setgender("");
-                      }}
-                    />
-                    Female
-                  </div>
-                </div>
-                <div
-                  className={styles.submit}
-                  onClick={() => setcurrenttab("bankDashboard")}
-                >
-                  Submit
-                </div>
-              </div>
-              <div className={styles.row}></div>
-            </div>
-          </div>
-        )}
         <img
           className={styles.bgimage}
           src="/images/backgrounds/laptop.png"
           alt=""
         />
-
         <div className={styles.bg}>
+          {dialogdata && <BankDialog data={dialogdata} />}
+
           <p className={styles.heading}>
             <BigBackArrow
               onClick={() => setcurrenttab("citymap")}
@@ -656,10 +275,21 @@ export default function Bank({ setcurrenttab, canvassize }) {
           </p>
 
           <div className={styles.btnwrapper}>
-            <div className={styles.button}>Quiz</div>
-            <div className={styles.button} onClick={() => setshowopenacc(true)}>
-              Open account
+            <div className={styles.button}>Passbook</div>
+            <div
+              className={styles.button}
+              onClick={() => getdialogdata("deposit")}
+            >
+              Deposit
             </div>
+            <div
+              className={styles.button}
+              onClick={() => getdialogdata("withdraw")}
+            >
+              Withdraw
+            </div>
+            <div className={styles.button}>ATM</div>
+            <div className={styles.button}>UPI</div>
           </div>
         </div>
       </div>

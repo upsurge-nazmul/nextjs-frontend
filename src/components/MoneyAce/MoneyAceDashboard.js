@@ -10,6 +10,7 @@ import GaugeChart from "react-gauge-chart";
 import PassBook from "./PassBook";
 import InvestmentHub from "./InvestmentHub";
 import Bank from "./Bank";
+import BankDashboard from "./BankDashboard";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -22,7 +23,7 @@ export default function MoneyAceDashboard({
   setvolume,
   canvassize,
 }) {
-  const [currenttab, setcurrenttab] = useState("investmenthub");
+  const [currenttab, setcurrenttab] = useState("dashboard");
   const ref = useRef();
   useEffect(() => {
     if (muted) {
@@ -122,6 +123,11 @@ export default function MoneyAceDashboard({
             />
           ) : currenttab === "bank" ? (
             <Bank setcurrenttab={setcurrenttab} canvassize={canvassize} />
+          ) : currenttab === "bankDashboard" ? (
+            <BankDashboard
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+            />
           ) : null}
         </div>
       </div>
