@@ -13,7 +13,6 @@ function JoinUs() {
     <section className={styles.joinSection}>
       {showwaitlistblock && (
         <WaitlistPopUp
-          subscribe={true}
           email={email}
           setemail={setemail}
           showpopup={showwaitlistblock}
@@ -52,18 +51,17 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Subscribe to upsurge newspaper</div>
+        <div className={styles.heading}>Sign up for Early Access</div>
         <p className={styles.subheading}>
-          Subscribe to our fortnightly journal and get your child access to the
-          latest happenings in the world of finance, business, and career
-          development
+          {`We can’t wait to have you onboard and start your child’s journey
+          towards financial freedom.`}
         </p>
         <div className={styles.emailwrapper}>
           <div
             className={styles.button}
             onClick={() => setshowwaitlistblock(true)}
           >
-            Subscribe
+            Sign up
           </div>
         </div>
       </div>
