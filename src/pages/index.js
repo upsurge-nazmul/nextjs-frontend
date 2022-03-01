@@ -12,6 +12,7 @@ import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/Home/home.module.scss";
 import Who from "../components/Home/Who";
+import Values from "../components/Home/Values";
 import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
@@ -20,6 +21,7 @@ import PartnerSection from "../components/Home/PartnerSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
 const INTERCOM_APP_ID = "tk23vd4p";
+
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -121,6 +123,7 @@ function Home({ isLogged, userdata }) {
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
         />
+        <Values />
         <Who />
         {/* <How /> */}
         <Benefits />

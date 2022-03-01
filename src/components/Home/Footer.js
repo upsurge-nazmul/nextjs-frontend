@@ -12,7 +12,7 @@ import Curve2 from "../SVGcomponents/Curve2";
 function Footer() {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
-  const [showcalcs, setshowcalcs] = useState(false);
+  const [showbenefits, setshowbenefits] = useState(false);
   const [showhelp, setshowhelp] = useState(false);
   const [showmore, setshowmore] = useState(false);
   const [showproducts, setshowproducts] = useState(false);
@@ -192,21 +192,21 @@ function Footer() {
             <p className={styles.heading}>Resources</p>
             <p
               className={styles.subheading}
-              // onClick={() => router.push("/games/ShoppingBudget")}
+              onClick={() => router.push("/calculators/education")}
             >
-              Shopping Budget
+              Education loan calculator
             </p>
             <p
               className={styles.subheading}
-              // onClick={() => router.push("/games/BalanceBuilder")}
+              onClick={() => router.push("/calculators/homeLoan")}
             >
-              Balance Builder
+              Home loan calculator
             </p>
             <p
               className={styles.subheading}
-              // onClick={() => router.push("/games/HighAndLow")}
+              onClick={() => router.push("/calculators/carLoan")}
             >
-              High And Low
+              Car loan calculator
             </p>
             <p
               className={styles.subheading}
@@ -288,11 +288,11 @@ function Footer() {
         <div className={styles.column}>
           <p
             className={styles.heading}
-            onClick={() => setshowresources(!showresources)}
+            onClick={() => setshowbenefits(!showbenefits)}
           >
-            Benefits <span>{showresources ? "-" : "+"}</span>
+            Benefits <span>{showbenefits ? "-" : "+"}</span>
           </p>
-          {showresources && (
+          {showbenefits && (
             <>
               <p
                 className={styles.subheading}
@@ -318,6 +318,42 @@ function Footer() {
                 onClick={() => router.push("/benefits/rewards")}
               >
                 Rewards
+              </p>
+            </>
+          )}
+        </div>
+        <div className={styles.column}>
+          <p
+            className={styles.heading}
+            onClick={() => setshowresources(!showresources)}
+          >
+            Resources <span>{showresources ? "-" : "+"}</span>
+          </p>
+          {showresources && (
+            <>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/calculators/education")}
+              >
+                Education loan calculator
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/calculators/homeLoan")}
+              >
+                Home loan calculator
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/calculators/carLoan")}
+              >
+                Car loan calculator
+              </p>
+              <p
+                className={styles.subheading}
+                onClick={() => router.push("/quiz")}
+              >
+                Quiz
               </p>
             </>
           )}

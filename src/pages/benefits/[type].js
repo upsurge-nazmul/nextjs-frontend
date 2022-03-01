@@ -8,6 +8,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
+import Values from "../../components/Home/Values";
 
 function BenfitsPage() {
   const router = useRouter();
@@ -77,6 +78,7 @@ function BenfitsPage() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <Values insidebenefits />
       <Financial id="financialsection" />
       <Experimential id="experimential" />
       <Entrepreneuership id="entrepreneuership" />

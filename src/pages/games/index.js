@@ -15,7 +15,6 @@ export default function GamePage() {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
 
-
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -61,14 +60,13 @@ export default function GamePage() {
             return (
               <div
                 key={"game" + index}
-                className={styles.calcCard}
-                onClick={() => router.push(`/games/${item}`)}
+                className={styles.gameCard}
+                // onClick={() => router.push(`/games/${item}`)}
               >
                 <img src={`/images/games/${item}.jpg`} alt="calcicon" />
-                <p className={styles.calccardtitle}>{Game_Data[item].name}</p>
-                <p className={styles.calccardsubtitle}>
-                  {Game_Data[item].description}
-                </p>
+                <p className={styles.title}>{Game_Data[item].name}</p>
+                <p className={styles.detail}>{Game_Data[item].description}</p>
+                <p className={styles.button}>Coming Soon....</p>
               </div>
             );
           })}

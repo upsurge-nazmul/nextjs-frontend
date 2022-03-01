@@ -36,10 +36,10 @@ export const Game_Data = {
     name: "Ludo",
     description: "Financial Ludo for young adults.",
   },
-  ShoppingMall: {
-    name: "ShoppingMall",
-    description: "ShoppingMall",
-  },
+  // ShoppingMall: {
+  //   name: "ShoppingMall",
+  //   description: "ShoppingMall",
+  // },
 };
 
 export const Game_Unity_Data = {

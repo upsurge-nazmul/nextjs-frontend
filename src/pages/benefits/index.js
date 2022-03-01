@@ -11,6 +11,7 @@ import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/Benefits/benefits.module.scss";
+import Values from "../../components/Home/Values";
 function BenfitsPage() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
@@ -42,6 +43,7 @@ function BenfitsPage() {
       />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
+      <Values insidebenefits />
       <Financial />
       <Experimential />
       <Entrepreneuership />
