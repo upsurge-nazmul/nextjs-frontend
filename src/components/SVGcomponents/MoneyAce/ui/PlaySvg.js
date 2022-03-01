@@ -7,7 +7,7 @@ export default function PlaySvg({ onClick, className }) {
       height="357"
       className={className}
       onClick={onClick}
-      viewBox="0 0 372 357"
+      viewBox="0 0 372 357 "
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
