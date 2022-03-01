@@ -65,7 +65,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
           </form>
           {!loading ? (
             <div className={`${styles.button}`} onClick={check}>
-              Join waiting
+              Join early access
             </div>
           ) : (
             <div className={`${styles.button} ${styles.spinner_btn}`}>
