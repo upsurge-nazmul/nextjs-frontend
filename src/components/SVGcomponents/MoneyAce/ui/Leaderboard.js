@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function LeaderBoardSvg({ onClick, className }) {
+export default function Leaderboard({ onClick, className }) {
   return (
     <svg
       width="372"
       height="357"
       className={className}
       onClick={onClick}
-      viewBox="0 0 372 357"
+      viewBox="0 0 372 357 "
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
