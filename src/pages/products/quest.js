@@ -20,7 +20,11 @@ export default function Products() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
+<<<<<<< HEAD:src/pages/products/quest.js
   const [authmode, setauthmode] = useState("");
+=======
+  const [showpopup, setshowpopup] = useState(false);
+>>>>>>> 13dd647fdaca085d5747f60da8c0497c52ba4bac:src/pages/products/[type].js
   const [email, setEmail] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
