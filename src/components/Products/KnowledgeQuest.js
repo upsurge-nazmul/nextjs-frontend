@@ -19,6 +19,7 @@ export default function KnowledgeQuest({
   authmode,
   setauthmode,
   setshowauth,
+  setshowpopup,
 }) {
   const [showinput, setshowinput] = useState(false);
   const democoncepts = [
@@ -39,7 +40,7 @@ export default function KnowledgeQuest({
     "Retirement Funds",
     "Career Development",
   ];
-  
+
   return (
     <div className={styles.questSection}>
       <Curve1 className={styles.curve1} />
@@ -117,11 +118,11 @@ export default function KnowledgeQuest({
             <div
               className={styles.joinButton}
               onClick={() => {
-                setauthmode("parent");
-                setshowauth(true);
+                // setauthmode("parent");
+                setshowpopup(true);
               }}
             >
-              Sign up for free
+              Join Waitlist
             </div>
           ) : (
             <div className={styles.button} onClick={check}>
