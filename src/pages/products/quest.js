@@ -20,11 +20,7 @@ export default function Products() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
-<<<<<<< HEAD:src/pages/products/quest.js
-  const [authmode, setauthmode] = useState("");
-=======
   const [showpopup, setshowpopup] = useState(false);
->>>>>>> 13dd647fdaca085d5747f60da8c0497c52ba4bac:src/pages/products/[type].js
   const [email, setEmail] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -61,6 +57,11 @@ export default function Products() {
         setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        showpopup={showpopup}
+        settoastdata={settoastdata}
+        showauth={showauth}
+        setshowpopup={setshowpopup}
       />
       <Toast data={toastdata} />
       <LeftPanel
@@ -78,6 +79,11 @@ export default function Products() {
         setshowpopup={setshowpopup}
         error={error}
         showwaitlistblock={showwaitlistblock}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showauth={showauth}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
