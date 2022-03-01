@@ -19,6 +19,7 @@ export default function Products() {
   const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [authmode, setauthmode] = useState("");
   const [error, setError] = useState("");
   const [showpopup, setshowpopup] = useState(false);
   const [email, setEmail] = useState("");
