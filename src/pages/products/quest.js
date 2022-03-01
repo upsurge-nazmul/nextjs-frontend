@@ -54,7 +54,6 @@ export default function Products() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         stickyheader={stickyheader}
-        setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
         showpopup={showpopup}
@@ -73,14 +72,9 @@ export default function Products() {
         authmode={authmode}
         setauthmode={setauthmode}
         setshowauth={setshowauth}
-        showauth={showauth}
         setshowpopup={setshowpopup}
         error={error}
         showwaitlistblock={showwaitlistblock}
-        authmode={authmode}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
-        setshowpopup={setshowpopup}
         showauth={showauth}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
