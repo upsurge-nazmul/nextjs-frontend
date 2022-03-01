@@ -11,7 +11,7 @@ export default function EntrepreneurSvg({ className, onClick }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_54_228)">
+      <g clipPath="url(#clip0_54_228)">
         <path
           d="M387.805 405.1H434.617C458.613 405.1 478.066 424.549 478.066 448.549V504.393H233.172V448.549C233.172 424.549 252.625 405.1 276.621 405.1H323.434"
           fill="#515F75"
