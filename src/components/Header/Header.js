@@ -5,7 +5,7 @@ import styles from "../../styles/GeneralComponents/header.module.scss";
 import Logo from "../SVGcomponents/Logo";
 import HamSvg from "../SVGcomponents/HamSvg";
 import HeaderTabSection from "./HeaderTabSection";
-
+import WaitlistPopUp from "../WaitlistPopUp";
 function Header({
   setOpenLeftPanel,
   showauth,
@@ -13,9 +13,12 @@ function Header({
   authmode,
   mailfromhome,
   stickyheader,
+  showpopup,
+  setshowpopup,
+  settoastdata,
 }) {
   const router = useRouter();
-
+  const [email, setemail] = useState(mailfromhome || "");
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
@@ -34,6 +37,11 @@ function Header({
     }
     return () => (document.body.style.overflowY = "auto");
   }, [showauth]);
+  useEffect(() => {
+    if (mailfromhome) {
+      setemail(mailfromhome);
+    }
+  }, [mailfromhome]);
   return (
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""}`}
@@ -45,6 +53,15 @@ function Header({
         authmode={authmode}
         mailfromhome={mailfromhome}
       />
+      {showpopup && (
+        <WaitlistPopUp
+          email={email}
+          setemail={setemail}
+          setshowpopup={setshowpopup}
+          showpopup={showpopup}
+          settoastdata={settoastdata}
+        />
+      )}
       <div className={styles.container}>
         <div
           className={styles.hamburger}
@@ -124,8 +141,8 @@ function Header({
             ]}
           />
         </div>
-        <div className={styles.signin} onClick={() => setshowauth(true)}>
-          Sign In
+        <div className={styles.signin} onClick={() => setshowpopup(true)}>
+          Join Waitlist
         </div>
       </div>
     </div>

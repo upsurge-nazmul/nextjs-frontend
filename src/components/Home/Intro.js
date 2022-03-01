@@ -10,7 +10,7 @@ import Curve2 from "../SVGcomponents/Curve2";
 import WaitlistPopUp from "../WaitlistPopUp";
 import Spinner from "../Spinner";
 
-function Intro({ setshowauth, setauthmode, setmailfromhome }) {
+function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -29,8 +29,8 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
-        setshowauth(true);
-        setauthmode("email");
+        setshowpopup(true);
+        // setauthmode("email");
         setmailfromhome(email);
       } else {
         seterror(checkemail?.data.message || "Error connecting to server");
@@ -65,7 +65,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome }) {
           </form>
           {!loading ? (
             <div className={`${styles.button}`} onClick={check}>
-              Sign up for free
+              Join waiting
             </div>
           ) : (
             <div className={`${styles.button} ${styles.spinner_btn}`}>

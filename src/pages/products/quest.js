@@ -71,6 +71,7 @@ export default function Products() {
         setauthmode={setauthmode}
         setshowauth={setshowauth}
         showauth={showauth}
+        setshowpopup={setshowpopup}
         error={error}
         showwaitlistblock={showwaitlistblock}
         settoastdata={settoastdata}

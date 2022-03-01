@@ -34,6 +34,7 @@ function Home({ isLogged, userdata }) {
     msg: "",
   });
   const [mailfromhome, setmailfromhome] = useState("");
+  const [showpopup, setshowpopup] = useState(false);
   const { user } = useContext(MainContext);
   const router = useRouter();
   useEffect(() => {
@@ -111,6 +112,9 @@ function Home({ isLogged, userdata }) {
           authmode={authmode}
           mailfromhome={mailfromhome}
           stickyheader={stickyheader}
+          showpopup={showpopup}
+          setshowpopup={setshowpopup}
+          settoastdata={settoastdata}
         />
         <LeftPanel
           openLeftPanel={openLeftPanel}
@@ -122,6 +126,7 @@ function Home({ isLogged, userdata }) {
           setshowauth={setshowauth}
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
+          setshowpopup={setshowpopup}
         />
         <Values />
         <Who />

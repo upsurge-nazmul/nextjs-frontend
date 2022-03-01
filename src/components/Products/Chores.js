@@ -14,6 +14,7 @@ export default function Chores({
   authmode,
   setauthmode,
   setshowauth,
+  setshowpopup,
 }) {
   const [showinput, setshowinput] = useState(false);
 
@@ -40,11 +41,11 @@ export default function Chores({
             <div
               className={styles.joinButton}
               onClick={() => {
-                setauthmode("parent");
-                setshowauth(true);
+                // setauthmode("parent");
+                setshowpopup(true);
               }}
             >
-              Sign up for free
+              Join Waitlist
             </div>
           ) : (
             <div className={styles.button} onClick={check}>

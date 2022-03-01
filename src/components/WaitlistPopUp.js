@@ -123,7 +123,7 @@ export default function WaitlistPopUp({
     if (checkemail && checkemail.data && !checkemail.data.success) {
       console.log("email ok");
     } else {
-      seterror(checkemail?.data.message || "Error connecting to server");
+      seterror(checkemail?.data?.message || "Error connecting to server");
       setloading(false);
       return;
     }
