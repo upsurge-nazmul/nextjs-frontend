@@ -31,7 +31,7 @@ function Benefits() {
     {
       title: "Earn real rewards",
       description:
-        "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Whenever your child completes a task, course or game, they get rewarded with Unicoins, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
+        "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
       img: "https://i.ibb.co/b2Vwv46/a4.png",
     },
   ];
