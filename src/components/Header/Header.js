@@ -142,7 +142,7 @@ function Header({
           />
         </div>
         <div className={styles.signin} onClick={() => setshowpopup(true)}>
-          Join Waitlist
+          Join us
         </div>
       </div>
     </div>
