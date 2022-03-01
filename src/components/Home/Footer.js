@@ -33,7 +33,7 @@ function Footer() {
           <div className={styles.brandtext}>
             <a
               className={styles.whatsapp}
-              href="https://wa.me/918287433304"
+              href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"
             >
@@ -478,7 +478,7 @@ function Footer() {
         <div className={styles.bottom}>
           <a
             className={styles.whatsapp}
-            href="https://wa.me/918287433304"
+            href="https://wa.me/918851117926"
             target="_blank"
             rel="noreferrer"
           >

@@ -123,13 +123,13 @@ function Contact() {
             <div className={styles.segment}>
               <a
                 className={`${styles.iconHolder} ${styles.animate}`}
-                href="tel:+918287433304"
+                href="tel:+918851117926"
               >
                 <PhoneInTalkIcon className={styles.icon} />
               </a>
               <div className={styles.text}>
                 <div className={styles.top}>Phone</div>
-                <div className={styles.bottom}>+91 8287433304</div>
+                <div className={styles.bottom}>+91 8851117926</div>
               </div>
             </div>
             <div className={styles.segment}>

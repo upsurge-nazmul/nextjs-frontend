@@ -12,6 +12,7 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/Benefits/benefits.module.scss";
 import Values from "../../components/Home/Values";
+import Skills from "../../components/Benefits/Skills";
 function BenfitsPage() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
@@ -48,6 +49,7 @@ function BenfitsPage() {
       <Experimential />
       <Entrepreneuership />
       <Rewards />
+      <Skills />
       <JoinUs />
       <Footer />
     </div>

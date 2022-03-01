@@ -1,7 +1,7 @@
 .liveClasses {
   display: flex;
   background-color: #17d1bc;
-  height: 50vh;
+  height: 90vh;
   min-height: max-content;
   padding: 0 0 0 7vw;
   align-items: center;
@@ -20,7 +20,7 @@
       color: rgb(0, 0, 0);
     }
     .subheading {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 400;
       margin-top: 10px;
       line-height: 32px;
@@ -32,8 +32,8 @@
     flex: 1;
     position: relative;
     .liveclassimg {
-      width: 40vw;
-      height: 40vh;
+      width: 50vw;
+      height: 60vh;
     }
     .hoverimg {
       position: absolute;

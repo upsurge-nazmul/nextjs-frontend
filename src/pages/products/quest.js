@@ -18,69 +18,16 @@ export default function Products() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  const [authmode, setauthmode] = useState("");
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
+  const [authmode, setauthmode] = useState("");
   const [email, setEmail] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  function getheight(el) {
-    if (!el) {
-      return 0;
-    }
-    var top = el.offsetTop;
-
-    while (el.offsetParent) {
-      el = el.offsetParent;
-      top += el.offsetTop;
-    }
-    return top;
-  }
-  useEffect(() => {
-    const games = document.getElementById("gamessection");
-    const chores = document.getElementById("choressection");
-    const classes = document.getElementById("classessection");
-    function hanldemove(element, index) {
-      var headerOffset = 180;
-      var elementPosition = getheight(element);
-      var offsetPosition = elementPosition - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      // sections[index].scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "start",
-      //   inline: "nearest",
-      // });
-    }
-    if (type) {
-      if (type === "games") {
-        hanldemove(games);
-      } else if (type === "chores") {
-        hanldemove(chores);
-      } else if (type === "liveclasses") {
-        hanldemove(classes);
-      }
-    }
-  }, [router]);
-
-  useEffect(() => {
-    const handlescroll = () => {
-      if (window.scrollY > 0) {
-        setstickyheader(true);
-      } else {
-        setstickyheader(false);
-      }
-    };
-    window.addEventListener("scroll", handlescroll);
-    return () => window.removeEventListener("scroll", handlescroll);
-  }, []);
-  async function check(e) {
+  async function check() {
     e.preventDefault();
     if (!validator.isEmail(email)) {
       setError("Enter valid email address");
@@ -105,14 +52,13 @@ export default function Products() {
     <div className={styles.pricingPage}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
         stickyheader={stickyheader}
+        setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
-        setshowauth={setshowauth}
-        showauth={showauth}
       />
       <Toast data={toastdata} />
-
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -121,34 +67,17 @@ export default function Products() {
         email={email}
         setEmail={setEmail}
         check={check}
-        showwaitlistblock={showwaitlistblock}
-        settoastdata={settoastdata}
-        setshowwaitlistblock={setshowwaitlistblock}
         authmode={authmode}
         setauthmode={setauthmode}
         setshowauth={setshowauth}
         showauth={showauth}
         error={error}
+        showwaitlistblock={showwaitlistblock}
+        settoastdata={settoastdata}
+        setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
       />
-      <Games id="gamessection" />
-      <Chores
-        email={email}
-        check={check}
-        setEmail={setEmail}
-        showwaitlistblock={showwaitlistblock}
-        authmode={authmode}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
-        showauth={showauth}
-        settoastdata={settoastdata}
-        setshowwaitlistblock={setshowwaitlistblock}
-        error={error}
-        id="choressection"
-      />
-      <LiveClasses id="classessection" />
       <JoinUs />
-
       <Footer />
     </div>
   );

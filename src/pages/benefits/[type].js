@@ -9,6 +9,7 @@ import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import Values from "../../components/Home/Values";
+import Skills from "../../components/Benefits/Skills";
 
 function BenfitsPage() {
   const router = useRouter();
@@ -32,6 +33,7 @@ function BenfitsPage() {
   useEffect(() => {
     const experimential = document.getElementById("experimential");
     const entrepreneuership = document.getElementById("entrepreneuership");
+    const skills = document.getElementById("skills");
     function hanldemove(element, index) {
       var headerOffset = 180;
       var elementPosition = getheight(element);
@@ -50,6 +52,8 @@ function BenfitsPage() {
         hanldemove(entrepreneuership);
       } else if (type === "rewards") {
         hanldemove(rewards);
+      } else if (type === "skills") {
+        hanldemove(skills);
       }
     }
   }, [router]);
@@ -83,8 +87,8 @@ function BenfitsPage() {
       <Experimential id="experimential" />
       <Entrepreneuership id="entrepreneuership" />
       <Rewards id="rewards" />
+      <Skills id="skills" />
       <JoinUs />
-
       <Footer />
     </div>
   );

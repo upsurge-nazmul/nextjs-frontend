@@ -34,6 +34,17 @@ function Benefits() {
         "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
       img: "https://i.ibb.co/b2Vwv46/a4.png",
     },
+    {
+      title: "Develop 21st Century Skills & Knowledge",
+      description: `While jobs change, the skills needed to succeed remain the same.Skills are
+        Problem Solving,
+        Promote life-long learning by making it fun,
+        Confidence to step out of their comfort zone & take risks,
+        Resilience and
+        Driven to Innovate & Create.
+        `,
+      img: "https://i.ibb.co/QJqjtQn/xasda.png",
+    },
   ];
   const [scroll, setscroll] = useState(150);
   const [currentSection, setcurrentSection] = useState(0);
@@ -152,6 +163,8 @@ function Benefits() {
                       router.push("/benefits/experimential");
                     } else if (index === 2) {
                       router.push("/benefits/entrepreneuership");
+                    } else if (index === 3) {
+                      router.push("/benefits/rewards");
                     } else {
                       router.push("/benefits/rewards");
                     }
@@ -177,6 +190,8 @@ function Benefits() {
                     ? "#FF6263"
                     : currentSection === 3
                     ? "#17D1BC"
+                    : currentSection === 4
+                    ? "#FFA733"
                     : "#4166EB",
               }}
             >
@@ -200,6 +215,8 @@ function Benefits() {
                           ? "#FF6263"
                           : index === currentSection && currentSection === 3
                           ? "#17D1BC"
+                          : index === currentSection && currentSection === 4
+                          ? "#FFA733"
                           : index === currentSection
                           ? "#4166EB"
                           : "transparent",
@@ -320,6 +337,32 @@ function Benefits() {
                 color: "#17D1BC",
               }}
               onClick={() => router.push("/benefits/rewards")}
+            >{`LEARN MORE ->`}</p>
+          </div>
+          <div className={styles.imgwrapper}>
+            <div className={styles.wrap}>
+              <Image
+                id="img-5"
+                className="imgsections"
+                src={data[4].img}
+                alt=""
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+
+            <StarSvg className={styles.thunder} clr="#fdcc03" />
+            <div className={styles.lb1}></div>
+            <div className={styles.lb2}></div>
+            <div className={styles.lb3}></div>
+            <div className={styles.lb4}></div>
+            <p className={styles.description}>{data[4]?.description}</p>
+            <p
+              className={styles.more}
+              style={{
+                color: "#FFA733",
+              }}
+              onClick={() => router.push("/benefits/skills")}
             >{`LEARN MORE ->`}</p>
           </div>
         </div>
