@@ -33,8 +33,8 @@ export default function Values({ insidebenefits }) {
       }`}
     >
       <div className={styles.heading}>
-        Through upsurge, we wish to create a money-wise generation where
-        students will create value by{" "}
+        Through upsurge, we wish to create a money-wise generation by helping
+        students{" "}
       </div>
       {widthHeight.width < 860 && insidebenefits ? (
         <div className={styles.mobilesection}>
@@ -67,14 +67,14 @@ export default function Values({ insidebenefits }) {
             )}
             <p>
               {current === 1
-                ? `Understanding how ‘money’ works in the 21st century`
+                ? `Understand how ‘money’ works in the 21st century`
                 : current === 2
-                ? `Learning to wisely manage money & be fiscally responsible`
+                ? `Learn to wisely manage money & be fiscally responsible `
                 : current === 3
-                ? `Practicing profitable Investing & multiplying their money`
+                ? `Practice profitable Investing & multiply their money `
                 : current === 4
-                ? `Developing an entrepreneurial & growth mindset`
-                : `Understanding, evaluating & starting businesses`}
+                ? `Develop an entrepreneurial & growth mindset `
+                : `Understand, evaluate & start businesses`}
             </p>
           </div>
         </div>
@@ -86,21 +86,21 @@ export default function Values({ insidebenefits }) {
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Understanding how ‘money’ works in the 21st century</p>
+              <p>Understand how ‘money’ works in the 21st century</p>
             </div>
             <div className={styles.holder}>
               <ManageMoney
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Learning to wisely manage money & be fiscally responsible</p>
+              <p>Learn to wisely manage money & be fiscally responsible </p>
             </div>
             <div className={styles.holder}>
               <BudgetSvg
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Practicing profitable Investing & multiplying their money</p>
+              <p>Practice profitable Investing & multiply their money </p>
             </div>
           </div>
           <div className={styles.lowSection}>
@@ -109,14 +109,14 @@ export default function Values({ insidebenefits }) {
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>{`Developing an entrepreneurial & growth mindset`}</p>
+              <p>{`Develop an entrepreneurial & growth mindset `}</p>
             </div>
             <div className={styles.holder}>
               <BusinessSvg
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>{`Understanding, evaluating & starting businesses`}</p>
+              <p>{`Understand, evaluate & start businesses`}</p>
             </div>
           </div>
         </>
