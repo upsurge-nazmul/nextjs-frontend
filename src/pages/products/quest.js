@@ -77,6 +77,11 @@ export default function Products() {
         setshowpopup={setshowpopup}
         error={error}
         showwaitlistblock={showwaitlistblock}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showauth={showauth}
         settoastdata={settoastdata}
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
