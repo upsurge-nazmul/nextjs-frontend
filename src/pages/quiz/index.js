@@ -69,7 +69,7 @@ function Quiz() {
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
   const [showgame, setshowgame] = useState(false);
-  const [name, setname] = useState("");
+  const [name, setname] = useState(router.query.name || "");
   const [username, setusername] = useState("");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
@@ -79,7 +79,7 @@ function Quiz() {
     msg: "",
   });
   const [correctAnswers, setcorrectAnswers] = useState(0);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(router.query.email || "");
   const [widthHeight, setwidthHeight] = useState({
     width: 0,
     height: 0,
@@ -91,6 +91,11 @@ function Quiz() {
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
   const [quiztoken, setquiztoken] = useState("");
+
+  function reload() {
+    router.push("/quiz?email=" + email + "&name=" + name);
+    window.location.reload();
+  }
   useEffect(() => {
     setshowQuiz(data ? true : false);
     if (!data) return;
@@ -131,6 +136,21 @@ function Quiz() {
     }
   }, [timer, quizfinished, showQuiz]);
 
+  useEffect(async () => {
+    if (router.query.name && router.query.email) {
+      let response = await QuizApis.startquiz({
+        name: router.query.name,
+        phone: phone,
+        email: router.query.email,
+      });
+      if (response && response.data && response.data.success) {
+        setshowmain(true);
+        setdata(response.data.data);
+      } else {
+        seterror(response.data?.message || "Error connecting to server");
+      }
+    }
+  }, [router]);
   function secondsToTime(secs) {
     let hours = Math.floor(secs / (60 * 60));
 
@@ -168,40 +188,59 @@ function Quiz() {
   useEffect(() => {
     seterror("");
   }, [phone, email, name]);
-  async function startgame(e) {
+  async function startgame(e, n_name, n_email) {
     e?.preventDefault();
-    if (!name) {
-      seterror("Name is required");
-      return;
-    }
-    if (checkLength(name)) {
-      seterror("Name should contain atleast 3 characters");
-      return;
-    }
-    if (checkSpecial(name)) {
-      seterror("Name should not contain any special characters");
-      return;
-    }
-    if (checkNumber(name)) {
-      seterror("Name should not contain any number");
-      return;
-    }
-    if (!email) {
-      seterror("Email is required");
-      return;
-    }
-    if (!validator.isEmail(email)) {
-      seterror("Please enter valid email address");
-      return;
-    }
-    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
-      seterror("Please enter valid phone number");
-      return;
+    if (n_name && n_email) {
+      if (checkLength(n_name)) {
+        seterror("Name should contain atleast 3 characters");
+        return;
+      }
+      if (checkSpecial(n_name)) {
+        seterror("Name should not contain any special characters");
+        return;
+      }
+      if (checkNumber(n_name)) {
+        seterror("Name should not contain any number");
+        return;
+      }
+      if (!validator.isEmail(n_email)) {
+        seterror("Please enter valid email address");
+        return;
+      }
+    } else {
+      if (!name) {
+        seterror("Name is required");
+        return;
+      }
+      if (checkLength(name)) {
+        seterror("Name should contain atleast 3 characters");
+        return;
+      }
+      if (checkSpecial(name)) {
+        seterror("Name should not contain any special characters");
+        return;
+      }
+      if (checkNumber(name)) {
+        seterror("Name should not contain any number");
+        return;
+      }
+      if (!email) {
+        seterror("Email is required");
+        return;
+      }
+      if (!validator.isEmail(email)) {
+        seterror("Please enter valid email address");
+        return;
+      }
+      if (phone && !validator.isMobilePhone(phone, "en-IN")) {
+        seterror("Please enter valid phone number");
+        return;
+      }
     }
     let response = await QuizApis.startquiz({
-      name: name,
+      name: n_name || name,
       phone: phone,
-      email: email,
+      email: n_email || email,
     });
     if (response && response.data && response.data.success) {
       setshowmain(true);
@@ -555,10 +594,7 @@ function Quiz() {
                   Join the waitlist
                 </div>
               </div>
-              <div
-                className={styles.button}
-                onClick={() => window.location.reload(false)}
-              >
+              <div className={styles.button} onClick={reload}>
                 Play Again
               </div>
             </div>
