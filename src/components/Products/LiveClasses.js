@@ -5,13 +5,22 @@ export default function LiveClasses({ id }) {
   return (
     <div className={styles.liveClasses} id={id}>
       <div className={styles.top}>
-        <div className={styles.heading}>Live Classes</div>
+        <div className={styles.heading}>Live Classes & Events</div>
         <div className={styles.subheading}>
           Live online courses and workshops, designed and taught by our
           co-founders and experts, on important topics around personal finance,
-          career development and entrepreneurship. <br />
+          career development, and entrepreneurship.
+        </div>
+        <div className={styles.subheading}>
           These are designed with an experiential focus and are fun, engaging
-          and effective!
+          and effective! The workshops & classes are supplemented with activity
+          sheets, live games, and project work.
+          <div className={styles.subheading}>
+            Students who do well in projects will get certificates, scholarships
+            & even internships Specially designed events such as upsurge
+            Olympics & Summer Startup Summit to give exposure to high school
+            students
+          </div>
         </div>
       </div>
       <div className={styles.right}>

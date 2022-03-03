@@ -14,25 +14,25 @@ function Benefits() {
       title: "Kickstart your child’s financial journey",
       description:
         "Financial literacy is a life-skill and the earlier your children start, the easier it will be for them to achieve their financial goals. Through our games, courses and live classes, all designed by experts, children will understand money, saving, investing and entrepreneurship like never before!",
-      img: "https://i.ibb.co/chtTz7S/a1.png",
+      img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit1+(1).png",
     },
     {
       title: "Learning by doing",
       description:
         "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
-      img: "https://i.ibb.co/t3bR8gL/a2.png",
+      img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit2+(1).png",
     },
     {
       title: "Developing entrepreneurial mindsets.",
       description:
         "Equip your children with the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
-      img: "https://i.ibb.co/YLL9L7V/a3.png",
+      img: "https://i.ibb.co/BCxXFzJ/benefit3.png",
     },
     {
       title: "Earn real rewards",
       description:
         "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
-      img: "https://i.ibb.co/b2Vwv46/a4.png",
+      img: "https://i.ibb.co/9T7H3sG/Maskz-Group.png",
     },
     {
       title: "Develop 21st Century Skills & Knowledge",
@@ -43,7 +43,7 @@ function Benefits() {
         Resilience and
         Driven to Innovate & Create.
         `,
-      img: "https://i.ibb.co/QJqjtQn/xasda.png",
+      img: "https://i.ibb.co/hf1LDRh/benefit4.png",
     },
   ];
   const [scroll, setscroll] = useState(150);
