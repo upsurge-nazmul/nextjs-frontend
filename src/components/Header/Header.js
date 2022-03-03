@@ -106,6 +106,8 @@ function Header({
                 pushTo: "/benefits/entrepreneuership",
               },
               { name: "Rewards", pushTo: "/benefits/rewards" },
+              { name: "Skills & Knowledge", pushTo: "/benefits/skills" },
+              ,
             ]}
             pushTo="/benefits"
           />
