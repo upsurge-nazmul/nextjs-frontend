@@ -46,9 +46,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
         <div className={styles.heading}>Money, made easy.</div>
 
         <div className={styles.subheading}>
-          upsurge is a movement to kickstart a financial literacy &
-          entrepreneurship revolution amongst the Gen-Z, by making learning fun
-          and rewarding.
+          {`upsurge is a movement to kickstart a financial literacy & entrepreneurship revolution amongst the Gen-Z through games, experiential learning & rewards.`}
         </div>
         <p className={styles.error}>{error}</p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>

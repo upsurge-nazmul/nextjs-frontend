@@ -36,13 +36,8 @@ function Benefits() {
     },
     {
       title: "Develop 21st Century Skills & Knowledge",
-      description: `While jobs change, the skills needed to succeed remain the same.Skills are
-        Problem Solving,
-        Promote life-long learning by making it fun,
-        Confidence to step out of their comfort zone & take risks,
-        Resilience and
-        Driven to Innovate & Create.
-        `,
+      description: `
+      While jobs & roles change, the skills needed to succeed remain the same. Our offerings help students gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
       img: "https://i.ibb.co/hf1LDRh/benefit4.png",
     },
   ];
