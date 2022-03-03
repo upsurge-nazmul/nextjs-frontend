@@ -57,8 +57,8 @@ export default function Products() {
         stickyheader={stickyheader}
         authmode={authmode}
         setauthmode={setauthmode}
-        showpopup={showpopup}
         settoastdata={settoastdata}
+        showpopup={showpopup}
         setshowpopup={setshowpopup}
       />
       <Toast data={toastdata} />

@@ -18,6 +18,7 @@ function Contact() {
   const [showauth, setshowauth] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [showpopup, setshowpopup] = useState(false);
   const [msg, setMsg] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -82,6 +83,8 @@ function Contact() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

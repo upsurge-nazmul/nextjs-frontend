@@ -11,6 +11,7 @@ import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function Unsub({ unsubbed }) {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -30,6 +31,8 @@ export default function Unsub({ unsubbed }) {
         stickyheader={stickyheader}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <div className={styles.container}>
         <div className={styles.green}></div>

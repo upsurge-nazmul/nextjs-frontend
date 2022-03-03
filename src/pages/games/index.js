@@ -14,6 +14,7 @@ export default function GamePage() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -34,6 +35,8 @@ export default function GamePage() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        showpopup={showpopup}
+        setshowpopup={setshowpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

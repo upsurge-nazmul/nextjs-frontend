@@ -15,6 +15,7 @@ function BenfitsPage() {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -76,7 +77,8 @@ function BenfitsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         stickyheader={stickyheader}
-        setshowauth={setshowauth}
+        setshowauth={setshowauth}        showpopup={showpopup}
+        setshowpopup={setshowpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

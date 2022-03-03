@@ -11,7 +11,7 @@ function ProductSection() {
   let data = [
     {
       title: "Knowledge Quest",
-      pushTo: "/products/quests",
+      pushTo: "/products/quest",
       description:
         "Interactive courses that cover fundamentals of finance, including earning, budgeting, saving, and investing, and entrepreneurship and include exercises, real-life examples and short quizzes.",
     },

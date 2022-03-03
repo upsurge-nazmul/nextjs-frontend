@@ -15,6 +15,7 @@ import JoinUs from "../../components/Home/JoinUs";
 function Help() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
     {
@@ -61,6 +62,8 @@ function Help() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
         stickyheader={stickyheader}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

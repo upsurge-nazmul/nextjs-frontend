@@ -45,7 +45,7 @@ export default function Chores({
                 setshowpopup(true);
               }}
             >
-              Join Waitlist
+              Join early access
             </div>
           ) : (
             <div className={styles.button} onClick={check}>

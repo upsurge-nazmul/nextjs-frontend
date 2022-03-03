@@ -91,7 +91,29 @@ function Quiz() {
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
   const [quiztoken, setquiztoken] = useState("");
+  useEffect(() => {
+    router.beforePopState(({ as }) => {
+      if (as !== router.asPath) {
+        router.push("/quiz");
+        setcurrentquestionindex(0);
+        setquizfinished(false);
+        settimer(1000 * 60 * 5);
+        setcorrectAnswers(0);
+        clearInterval(task);
+        setshowQuiz(false);
+        setshowmain(false);
+        return false;
 
+        // Will run when leaving the current page; on back/forward actions
+        // Add your logic here, like toggling the modal state
+      }
+      return true;
+    });
+
+    return () => {
+      router.beforePopState(() => true);
+    };
+  }, [router]);
   function reload() {
     router.push("/quiz?email=" + email + "&name=" + name);
     window.location.reload();

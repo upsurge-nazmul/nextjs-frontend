@@ -20,6 +20,7 @@ function Help() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
 
   const faqs = [
     {
@@ -101,7 +102,8 @@ function Help() {
         setOpenLeftPanel={setOpenLeftPanel}
         stickyheader={stickyheader}
         showauth={showauth}
-        setshowauth={setshowauth}
+        setshowauth={setshowauth}       setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

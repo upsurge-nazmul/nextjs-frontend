@@ -27,6 +27,7 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
   const [showauth, setshowauth] = useState(false);
   const [pagination, setpagination] = useState(porppagination || ["1"]);
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [page, setpage] = useState(1);
   useEffect(() => {
     const handlescroll = () => {
@@ -115,6 +116,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

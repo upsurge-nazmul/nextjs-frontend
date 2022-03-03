@@ -16,6 +16,7 @@ import Skills from "../../components/Benefits/Skills";
 function BenfitsPage() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -37,6 +38,8 @@ function BenfitsPage() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        showpopup={showpopup}
+        setshowpopup={setshowpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

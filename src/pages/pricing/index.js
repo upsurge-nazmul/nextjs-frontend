@@ -11,6 +11,7 @@ import styles from "../../styles/Pricing/pricing.module.scss";
 export default function Pricing() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const data = [
     {
@@ -63,6 +64,8 @@ export default function Pricing() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

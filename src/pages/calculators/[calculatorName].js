@@ -19,6 +19,7 @@ function CalculatorsPage() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [paths, setpaths] = useState(["home", "calculators"]);
+  const [showpopup, setshowpopup] = useState(false);
   const [error, seterror] = useState("");
   useEffect(() => {
     seterror("");
@@ -42,6 +43,8 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

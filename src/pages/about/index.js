@@ -10,6 +10,7 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 export default function About() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const team = [
     {
@@ -61,6 +62,8 @@ export default function About() {
         showauth={showauth}
         setshowauth={setshowauth}
         stickyheader={stickyheader}
+        showpopup={showpopup}
+        setshowpopup={setshowpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

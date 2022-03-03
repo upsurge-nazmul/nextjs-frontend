@@ -122,7 +122,7 @@ export default function KnowledgeQuest({
                 setshowpopup(true);
               }}
             >
-              Join Waitlist
+              Join early access
             </div>
           ) : (
             <div className={styles.button} onClick={check}>

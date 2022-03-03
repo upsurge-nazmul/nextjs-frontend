@@ -20,6 +20,7 @@ export default function BlogPage({ blogdata, related }) {
   const [scroll, setscroll] = useState(80);
   const [currentsection, setcurrentsection] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
@@ -108,6 +109,8 @@ export default function BlogPage({ blogdata, related }) {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}

@@ -13,6 +13,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
+  const [showpopup, setshowpopup] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   useEffect(() => {
@@ -28,6 +29,8 @@ function CalculatorsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
