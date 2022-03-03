@@ -116,7 +116,7 @@ function Home({ isLogged, userdata }) {
           setshowpopup={setshowpopup}
           settoastdata={settoastdata}
         />
-        
+
         <LeftPanel
           openLeftPanel={openLeftPanel}
           setOpenLeftPanel={setOpenLeftPanel}
@@ -129,7 +129,7 @@ function Home({ isLogged, userdata }) {
           setmailfromhome={setmailfromhome}
           setshowpopup={setshowpopup}
         />
-        <Values />
+        <Values insidebenefits />
         <Who />
         {/* <How /> */}
         <Benefits />
