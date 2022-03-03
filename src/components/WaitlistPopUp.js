@@ -109,6 +109,11 @@ export default function WaitlistPopUp({
       setloading(false);
       return;
     }
+    if (!phone) {
+      seterror("Please enter phone number");
+      setloading(false);
+      return;
+    }
     if (!validator.isMobilePhone(phone, "en-IN")) {
       seterror("Invalid Phone");
       setloading(false);
