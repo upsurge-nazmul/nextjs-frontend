@@ -62,6 +62,7 @@ function Quiz() {
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
   const [timer, settimer] = useState(1000 * 60 * 15);
   const [task, settask] = useState("");
+  const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [quizfinished, setquizfinished] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -193,7 +194,7 @@ function Quiz() {
       seterror("Please enter valid email address");
       return;
     }
-    if (phone && !validator.isMobilePhone(phone)) {
+    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
       seterror("Please enter valid phone number");
       return;
     }
@@ -242,6 +243,8 @@ function Quiz() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         stickyheader={stickyheader}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
         setshowauth={setshowauth}
       />
       <Toast data={toastdata} />

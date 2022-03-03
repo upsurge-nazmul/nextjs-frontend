@@ -20,7 +20,7 @@ export default function Products() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [error, setError] = useState("");
-  const [authmode, setauthmode] = useState("");
+  const [showpopup, setshowpopup] = useState(false);
   const [email, setEmail] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -57,6 +57,9 @@ export default function Products() {
         setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
+        showpopup={showpopup}
+        settoastdata={settoastdata}
+        setshowpopup={setshowpopup}
       />
       <Toast data={toastdata} />
       <LeftPanel
