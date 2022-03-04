@@ -19,6 +19,7 @@ export default function Games({ id }) {
       link: "/gamepage/ShoppingBudget",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
+      img: "/images/games/ShoppingBudget.jpg",
     },
     {
       name: "Balance Builder",
@@ -26,6 +27,7 @@ export default function Games({ id }) {
       link: "/gamepage/BalanceBuilder",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/BalanceBuilder.mp4",
+      img: "/images/games/BalanceBuilder.jpg",
     },
     {
       name: "High and Low",
@@ -34,6 +36,7 @@ export default function Games({ id }) {
       link: "/gamepage/HighAndLow",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/HighAndLow.mp4",
+      img: "/images/games/HighandLow.jpg",
     },
     {
       name: "Money Math",
@@ -42,6 +45,7 @@ export default function Games({ id }) {
       link: "/gamepage/MoneyMath",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyMath.mp4",
+      img: "/images/games/MoneyMath.jpg",
     },
     {
       name: "Money Manager",
@@ -50,6 +54,7 @@ export default function Games({ id }) {
       link: "/gamepage/MoneyManager",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyManager.mp4",
+      img: "/images/games/MoneyManager.jpg",
     },
     // {
     //   name: "Coin Slide",
@@ -64,6 +69,7 @@ export default function Games({ id }) {
       link: "/gamepage/NeedOrWant",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/NeedOrWant.mp4",
+      img: "/images/games/NeedorWant.jpg",
     },
   ];
 
@@ -99,9 +105,9 @@ export default function Games({ id }) {
           <div className={styles.description}>
             {games[currentgameindex].description}
           </div>
-          <div className={styles.button} onClick={() => router.push("/games")}>
+          {/* <div className={styles.button} onClick={() => router.push("/games")}>
             Play Now
-          </div>
+          </div> */}
           <div className={styles.buttonWrapper}>
             <div
               className={styles.arrowl}
@@ -140,7 +146,7 @@ export default function Games({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.container}>
-            {!paused ? (
+            {/* {!paused ? (
               <div onClick={handlePlayPause}>
                 <PauseSvg className={styles.pauseIcon} />
               </div>
@@ -148,9 +154,12 @@ export default function Games({ id }) {
               <div className={styles.playIcon} onClick={handlePlayPause}>
                 <PlayCircleSvg />
               </div>
-            )}
-
-            <video ref={videoref} src={games[currentgameindex].video} alt="" />
+            )} */}
+            <img
+              className={styles.gameimg}
+              src={games[currentgameindex].img}
+              alt="calcicon"
+            />
           </div>
         </div>
       </div>
