@@ -36,6 +36,10 @@ function CalculatorsPage() {
       router.push("/calculators");
     }
   }, [calculatorName]);
+  useEffect(() => {
+    let x = document.getElementById("calc-page");
+    x.scrollTop = 0;
+  }, [router]);
   return (
     <div className={styles.calculatorsPage} id="calc-page">
       <Header

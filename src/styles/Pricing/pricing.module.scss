@@ -42,6 +42,7 @@
       justify-content: center;
       margin-top: 40px;
       width: 100%;
+
       .feature {
         display: flex;
         align-items: center;
@@ -70,8 +71,8 @@
       width: 100%;
       margin-top: 40px;
       .pricecontainer {
-        width: 300px;
-        height: 450px;
+        width: 330px;
+        height: 570px;
         left: 244px;
         top: 495px;
         background: #ffffff;
@@ -135,6 +136,7 @@
           flex-direction: column;
           align-items: center;
           text-align: center;
+
           p {
             font-size: 14px;
             font-weight: 500;

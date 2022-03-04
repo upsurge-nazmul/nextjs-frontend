@@ -116,7 +116,6 @@ function Quiz() {
   }, [router]);
   function reload() {
     router.push("/quiz?email=" + email + "&name=" + name);
-    window.location.reload();
   }
   useEffect(() => {
     setshowQuiz(data ? true : false);
@@ -166,8 +165,14 @@ function Quiz() {
         email: router.query.email,
       });
       if (response && response.data && response.data.success) {
-        setshowmain(true);
         setdata(response.data.data);
+        setcurrentquestionindex(0);
+        setquizfinished(false);
+        settimer(1000 * 60 * 5);
+        setcorrectAnswers(0);
+        clearInterval(task);
+        setshowQuiz(true);
+        setshowmain(true);
       } else {
         seterror(response.data?.message || "Error connecting to server");
       }
@@ -307,6 +312,7 @@ function Quiz() {
         setshowpopup={setshowpopup}
         showpopup={showpopup}
         setshowauth={setshowauth}
+        mailfromhome={email}
       />
       <Toast data={toastdata} />
       {/* {quizId !== "main" && !email ? (
@@ -612,7 +618,10 @@ function Quiz() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <div className={styles.normalbutton} onClick={handleSignup}>
+                <div
+                  className={styles.normalbutton}
+                  onClick={() => setshowpopup(true)}
+                >
                   Join the waitlist
                 </div>
               </div>

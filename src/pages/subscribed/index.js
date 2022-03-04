@@ -8,6 +8,7 @@ import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import styles from "../../styles/waitlist/waitlist.module.scss";
 export default function Subscribed() {
   const [showauth, setshowauth] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -27,6 +28,8 @@ export default function Subscribed() {
         stickyheader={stickyheader}
         showauth={showauth}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <div className={styles.container}>
         <div className={styles.green}></div>
