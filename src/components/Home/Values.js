@@ -34,7 +34,7 @@ export default function Values({ insidebenefits }) {
     >
       <div className={styles.heading}>
         Through upsurge, we wish to create a money-wise generation by helping
-        students{" "}
+        children{" "}
       </div>
       {widthHeight.width < 860 && insidebenefits ? (
         <div className={styles.mobilesection}>

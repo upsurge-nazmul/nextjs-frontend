@@ -66,7 +66,10 @@ export default function GamePage() {
                 className={styles.gameCard}
                 // onClick={() => router.push(`/games/${item}`)}
               >
-                <img src={`/images/games/${item}.jpg`} alt="calcicon" />
+                <img
+                  src={Game_Data[item].img || `/images/games/${item}.png`}
+                  alt="calcicon"
+                />
                 <p className={styles.title}>{Game_Data[item].name}</p>
                 <p className={styles.detail}>{Game_Data[item].description}</p>
                 <p className={styles.button}>Coming Soon....</p>

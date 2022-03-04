@@ -18,6 +18,7 @@ import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
 import JasperSection from "../components/Home/JasperSection";
 import PartnerSection from "../components/Home/PartnerSection";
+import FaqSection from "../components/Home/FaqSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
 const INTERCOM_APP_ID = "tk23vd4p";
@@ -139,6 +140,7 @@ function Home({ isLogged, userdata }) {
         <AboutSection />
         <BlogsSection />
         <TestiMonial />
+        <FaqSection />
         <JoinUs />
         <Footer />
       </div>

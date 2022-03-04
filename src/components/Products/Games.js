@@ -19,7 +19,7 @@ export default function Games({ id }) {
       link: "/gamepage/ShoppingBudget",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
-      img: "/images/games/ShoppingBudget.jpg",
+      img: "/images/games/ShoppingBudget_prev_ui.png",
     },
     {
       name: "Balance Builder",
@@ -27,8 +27,9 @@ export default function Games({ id }) {
       link: "/gamepage/BalanceBuilder",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/BalanceBuilder.mp4",
-      img: "/images/games/BalanceBuilder.jpg",
+      img: "/images/games/BalanceBuilder.png",
     },
+
     {
       name: "High and Low",
       description:
@@ -36,7 +37,7 @@ export default function Games({ id }) {
       link: "/gamepage/HighAndLow",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/HighAndLow.mp4",
-      img: "/images/games/HighandLow.jpg",
+      img: "/images/games/HighandLow.png",
     },
     {
       name: "Money Math",
@@ -45,7 +46,7 @@ export default function Games({ id }) {
       link: "/gamepage/MoneyMath",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyMath.mp4",
-      img: "/images/games/MoneyMath.jpg",
+      img: "/images/games/MoneyMath.png",
     },
     {
       name: "Money Manager",
@@ -54,7 +55,13 @@ export default function Games({ id }) {
       link: "/gamepage/MoneyManager",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyManager.mp4",
-      img: "/images/games/MoneyManager.jpg",
+      img: "/images/games/MoneyManager.png",
+    },
+    {
+      name: "Money Slide",
+      description:
+        "Identify different types of Money notes and coins and achieve the desired target.",
+      img: "/images/games/MoneySlide.png",
     },
     // {
     //   name: "Coin Slide",
@@ -69,7 +76,12 @@ export default function Games({ id }) {
       link: "/gamepage/NeedOrWant",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/NeedOrWant.mp4",
-      img: "/images/games/NeedorWant.jpg",
+      img: "/images/games/NeedorWant.png",
+    },
+    {
+      name: "Ludo",
+      description: "Financial Ludo for young adults.",
+      img: "/images/games/Ludo.jpg",
     },
   ];
 

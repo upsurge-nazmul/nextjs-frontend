@@ -36,8 +36,7 @@ function Benefits() {
     },
     {
       title: "Develop 21st Century Skills & Knowledge",
-      description: `
-      While jobs & roles change, the skills needed to succeed remain the same. Our offerings help students gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
+      description: `While jobs & roles change, the skills needed to succeed remain the same. Our offerings help children gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
       img: "https://i.ibb.co/hf1LDRh/benefit4.png",
     },
   ];
