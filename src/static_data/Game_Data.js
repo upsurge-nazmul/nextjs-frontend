@@ -3,7 +3,6 @@ export const Game_Data = {
     name: "Shopping Budget",
     description:
       "Identify how much is available to spend and making purchase decisions based on that.",
-    img: "/images/games/ShoppingBudget.jpg",
   },
   BalanceBuilder: {
     name: "Balance Builder",

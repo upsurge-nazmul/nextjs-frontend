@@ -19,7 +19,7 @@ export default function Games({ id }) {
       link: "/gamepage/ShoppingBudget",
       video:
         "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
-      img: "/images/games/ShoppingBudget_prev_ui.png",
+      img: "/images/games/ShoppingBudget.png",
     },
     {
       name: "Balance Builder",
