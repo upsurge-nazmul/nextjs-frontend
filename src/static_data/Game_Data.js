@@ -12,6 +12,7 @@ export const Game_Data = {
     name: "High and Low",
     description:
       "Identify currency and arrange in ascending or descending order after adding the money.",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
   },
   MoneyMath: {
     name: "Money Math",
@@ -31,6 +32,7 @@ export const Game_Data = {
   NeedOrWant: {
     name: "Need or Want",
     description: "Identify the difference between needs and wants.",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
   },
   Ludo: {
     name: "Ludo",
