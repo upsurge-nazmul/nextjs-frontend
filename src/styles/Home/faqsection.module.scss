@@ -36,8 +36,9 @@
     padding: 5vh 7vw;
     height: fit-content;
     height: 90vh;
-    min-height: 95vh;
+    min-height: max-content;
     align-items: center;
+    margin: 100px 0;
     justify-content: space-between;
     .left {
       flex: 1;
