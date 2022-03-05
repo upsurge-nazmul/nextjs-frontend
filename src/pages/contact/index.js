@@ -138,13 +138,13 @@ function Contact() {
             <div className={styles.segment}>
               <a
                 className={`${styles.iconHolder} ${styles.animate}`}
-                href="mailto:karan@upsurgefi.com"
+                href="mailto:hello@upsurge.in"
               >
                 <EmailIcon className={styles.icon} />
               </a>
               <div className={styles.text}>
                 <div className={styles.top}>Email</div>
-                <div className={styles.bottom}>karan@upsurgefi.com</div>
+                <div className={styles.bottom}>hello@upsurge.in</div>
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@ import PauseSvg from "../SVGcomponents/PauseSvg";
 export default function Games({ id }) {
   const router = useRouter();
   const [currentgameindex, setcurrentgameindex] = useState(0);
+  const [moneyaceindex, setmoneyaceindex] = useState(0);
   const [paused, setpaused] = useState(true);
   const videoref = useRef();
   const games = [
@@ -85,7 +86,14 @@ export default function Games({ id }) {
       img: "/images/games/Ludo.jpg",
     },
   ];
-
+  const moneyacess = [
+    "/images/games/MoneyAce.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_1.jpeg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_2.jpeg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_3.jpeg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_4.jpeg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_5.jpeg",
+  ];
   useEffect(() => {
     setpaused(true);
   }, [currentgameindex]);
@@ -112,7 +120,7 @@ export default function Games({ id }) {
         performances will be rewarded with UniCoins which can be redeemed to get
         discounts on some of their favorite brands
       </div>
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} ${styles.mawrapper}`}>
         <div className={styles.left}>
           <p className={styles.title}>Money Ace</p>
           <div className={styles.description}>
@@ -126,9 +134,9 @@ export default function Games({ id }) {
               className={styles.arrowl}
               onClick={() => {
                 if (currentgameindex - 1 < 0) {
-                  setcurrentgameindex(games.length - 1);
+                  setmoneyaceindex(moneyacess.length - 1);
                 } else {
-                  setcurrentgameindex(currentgameindex - 1);
+                  setmoneyaceindex(moneyaceindex - 1);
                 }
               }}
             >
@@ -138,18 +146,18 @@ export default function Games({ id }) {
             <div
               className={styles.arrowr}
               onClick={() =>
-                setcurrentgameindex((currentgameindex + 1) % games.length)
+                setmoneyaceindex((moneyaceindex + 1) % moneyacess.length)
               }
             >
               <PlayCircleSvg />
             </div>
           </div>
           <div className={styles.navbar}>
-            {games.map((item, index) => {
+            {moneyacess.map((item, index) => {
               return (
                 <div
                   className={`${styles.ball} ${
-                    index === currentgameindex ? styles.active : null
+                    index === moneyaceindex ? styles.active : null
                   }`}
                   key={"navball" + index}
                 />
@@ -159,19 +167,10 @@ export default function Games({ id }) {
         </div>
         <div className={styles.right}>
           <div className={styles.container}>
-            {/* {!paused ? (
-              <div onClick={handlePlayPause}>
-                <PauseSvg className={styles.pauseIcon} />
-              </div>
-            ) : (
-              <div className={styles.playIcon} onClick={handlePlayPause}>
-                <PlayCircleSvg />
-              </div>
-            )} */}
             <img
               className={styles.gameimg}
-              src={games[currentgameindex].img}
-              alt="calcicon"
+              src={moneyacess[moneyaceindex]}
+              alt=""
             />
           </div>
         </div>
