@@ -22,7 +22,6 @@ import FaqSection from "../components/Home/FaqSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
 const INTERCOM_APP_ID = "tk23vd4p";
-
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
