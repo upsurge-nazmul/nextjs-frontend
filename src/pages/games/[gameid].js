@@ -270,10 +270,10 @@ export default function GamePage({ gamedata }) {
     }
   }
   useEffect(() => {
-    if (showgame) {
-      setTimeout(() => setremoveBorder(true), 10000);
+    if (progression === 1) {
+      setremoveBorder(true);
     }
-  }, [showgame]);
+  }, [progression]);
   useEffect(
     function () {
       if (!unitycontext) return;
