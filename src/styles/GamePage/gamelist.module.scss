@@ -233,6 +233,35 @@
             }
           }
         }
+        .activebutton {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 45px;
+          width: 100%;
+          border-radius: 6px;
+          background-color: #4266eb;
+          color: white;
+          font-size: 14px;
+          margin-top: auto;
+          cursor: pointer;
+          svg {
+            margin-left: 10px;
+            width: 22px;
+            fill: white;
+            path {
+              fill: white;
+            }
+          }
+          &:hover {
+            svg {
+              transition: all 0.3s ease;
+              circle {
+                fill: rgb(41, 41, 41);
+              }
+            }
+          }
+        }
         .date {
           font-size: 11.4839px;
           margin-top: 6px;

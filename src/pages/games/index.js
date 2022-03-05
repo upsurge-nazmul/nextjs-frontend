@@ -72,7 +72,18 @@ export default function GamePage() {
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
                 <p className={styles.detail}>{Game_Data[item].description}</p>
-                <p className={styles.button}>Coming Soon....</p>
+                {item === "Ludo" ? (
+                  <p className={styles.button}>Coming Soon....</p>
+                ) : (
+                  <p
+                    className={styles.activebutton}
+                    onClick={() => {
+                      router.push("/games/" + item);
+                    }}
+                  >
+                    Play
+                  </p>
+                )}
               </div>
             );
           })}
