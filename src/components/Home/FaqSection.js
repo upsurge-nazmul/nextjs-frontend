@@ -5,7 +5,7 @@ export default function FaqSection() {
   const faqs = [
     {
       question: "What do we do?",
-      answer: `We teach money management and Entrepreneurship skills to students of age 8 to18 yrs`,
+      answer: `We teach money management and Entrepreneurship skills to students of age 8 to 18 yrs`,
     },
     {
       question: "How old does my kid have to be to join upsurge?",
