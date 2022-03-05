@@ -45,6 +45,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               mobile={true}
               current={current}
               setcurrent={setcurrent}
+              setpanel={setOpenLeftPanel}
               title={"Benefits"}
               tabs={[
                 { name: "Financial Literacy", pushTo: "/benefits" },

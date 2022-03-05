@@ -9,6 +9,7 @@ function HeaderTabSection({
   pushTo,
   current,
   setcurrent,
+  setpanel,
 }) {
   const [showtabs, setshowtabs] = useState(false);
   const [timeout, settimeout] = useState(null);
@@ -78,7 +79,12 @@ function HeaderTabSection({
                   <p
                     key={title + "-" + item.name}
                     className={styles.tabs}
-                    onClick={() => router.push(item.pushTo)}
+                    onClick={() => {
+                      if (setpanel) {
+                        setpanel(false);
+                      }
+                      router.push(item.pushTo);
+                    }}
                   >
                     {item.name}
                   </p>
@@ -96,7 +102,9 @@ function HeaderTabSection({
                   <p
                     key={title + "-" + item.name}
                     className={styles.tabs}
-                    onClick={() => router.push(item.pushTo)}
+                    onClick={() => {
+                      router.push(item.pushTo);
+                    }}
                   >
                     {item.name}
                   </p>
