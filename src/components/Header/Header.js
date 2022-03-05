@@ -66,7 +66,7 @@ function Header({
         <div
           className={styles.hamburger}
           onClick={() => {
-            setOpenLeftPanel(true);
+            setOpenLeftPanel((prev) => !prev);
           }}
         >
           <HamSvg />

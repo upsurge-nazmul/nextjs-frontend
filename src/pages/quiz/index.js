@@ -139,11 +139,6 @@ function Quiz() {
   }, []);
 
   useEffect(() => {
-    if (showQuiz && started) {
-      settask(setInterval(() => settimer((prev) => prev - 1000), 1000));
-    }
-  }, [showQuiz, started]);
-  useEffect(() => {
     if (timer <= 0) {
       alert("Time over,try again");
       setcurrentquestionindex(0);
@@ -173,11 +168,19 @@ function Quiz() {
         clearInterval(task);
         setshowQuiz(true);
         setshowmain(true);
+        setstarted(true);
+        settask(setInterval(() => settimer((prev) => prev - 1000), 1000));
       } else {
         seterror(response.data?.message || "Error connecting to server");
       }
     }
   }, [router]);
+
+  useEffect(() => {
+    if (showQuiz && started) {
+      settask(setInterval(() => settimer((prev) => prev - 1000), 1000));
+    }
+  }, [showQuiz, started]);
   function secondsToTime(secs) {
     let hours = Math.floor(secs / (60 * 60));
 

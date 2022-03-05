@@ -62,9 +62,7 @@ function HeaderTabSection({
         {tabs.length > 0 && (
           <HeaderExpandSvg
             className={`${
-              current === title || showtabs
-                ? styles.reverseexpandicon
-                : styles.expandicon
+              current === title ? styles.reverseexpandicon : styles.expandicon
             }`}
           />
         )}
