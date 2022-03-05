@@ -12,6 +12,8 @@ import styles from "../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
 import { db } from "../../db";
 import { Game_Unity_Data } from "../../static_data/Game_Data";
+import Loader from "../../components/Loader";
+import Spinner from "../../components/Spinner";
 
 const specialchars = [
   "#",
@@ -122,6 +124,7 @@ export default function GamePage({ gamedata }) {
       }
     }
     async function x() {
+      if (!gamedata) return;
       let updateData = {
         version: gamedata.version,
         id: gameid,
@@ -245,7 +248,7 @@ export default function GamePage({ gamedata }) {
       seterror("Please enter valid email address");
       return;
     }
-    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
+    if (phone && !validator.isMobilePhone(phone)) {
       seterror("Please enter valid phone number");
       return;
     }
@@ -282,7 +285,8 @@ export default function GamePage({ gamedata }) {
         router.push("/games");
       });
       unitycontext.on("progress", function (progression) {
-        console.log(progression);
+        setProgression(progression);
+        console.log(progression * 100);
       });
       unitycontext.on("Exit", function () {
         router.push("/games");
@@ -303,6 +307,17 @@ export default function GamePage({ gamedata }) {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.gameWrapper}>
+        {/*  */}
+        {showgame && progression < 1 && (
+          <div className={styles.loaderwrapper}>
+            <Spinner
+              progress={`${progression * 100}%`}
+              additionalClass={styles.loader}
+              color="#4266EB"
+            />
+            <p>Loading {Math.round(progression * 100)}%</p>
+          </div>
+        )}
         {widthHeight.width < 860 ? (
           <div className={styles.mobileerr}>
             <div className={styles.box}>
@@ -319,7 +334,7 @@ export default function GamePage({ gamedata }) {
 
             {/* <Jasper className={styles.jasper} /> */}
           </div>
-        ) : !showgame ? (
+        ) : gamedata && !showgame ? (
           <div className={styles.gamedata}>
             <div className={styles.left}>
               <p className={styles.heading}>We need a few more details</p>
