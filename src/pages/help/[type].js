@@ -20,6 +20,7 @@ function Help() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [current, setcurrent] = useState("");
   const [showpopup, setshowpopup] = useState(false);
 
   const faqs = [
@@ -102,7 +103,8 @@ function Help() {
         setOpenLeftPanel={setOpenLeftPanel}
         stickyheader={stickyheader}
         showauth={showauth}
-        setshowauth={setshowauth}       setshowpopup={setshowpopup}
+        setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
         showpopup={showpopup}
       />
       <LeftPanel
@@ -138,6 +140,8 @@ function Help() {
               key={"faq" + index}
               question={item.question}
               answer={item.answer}
+              current={current}
+              setcurrent={setcurrent}
             />
           );
         })}

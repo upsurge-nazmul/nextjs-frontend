@@ -16,6 +16,7 @@ function Help() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
+  const [current, setcurrent] = useState("");
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const faqs = [
     {
@@ -99,6 +100,8 @@ function Help() {
               key={"faq" + index}
               question={item.question}
               answer={item.answer}
+              current={current}
+              setcurrent={setcurrent}
             />
           );
         })}

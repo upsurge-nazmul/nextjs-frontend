@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Home/faqsection.module.scss";
 import Faq from "../Help/Faq";
 export default function FaqSection() {
@@ -62,6 +62,8 @@ export default function FaqSection() {
         "We have a 14 day no question asked refund policy if you enroll with us for 6 months or longer.",
     },
   ];
+  const [current, setcurrent] = useState("");
+
   return (
     <div className={styles.faqsection}>
       <div className={styles.left}>
@@ -78,6 +80,8 @@ export default function FaqSection() {
               key={"faq" + index}
               question={item.question}
               answer={item.answer}
+              current={current}
+              setcurrent={setcurrent}
             />
           );
         })}
