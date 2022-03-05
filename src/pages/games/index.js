@@ -15,7 +15,7 @@ export default function GamePage() {
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-
+  const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -68,11 +68,13 @@ export default function GamePage() {
               >
                 <img
                   src={Game_Data[item].img || `/images/games/${item}.png`}
-                  alt="calcicon"
+                  alt=""
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
                 <p className={styles.detail}>{Game_Data[item].description}</p>
-                {item === "Ludo" ? (
+                <p className={styles.button}>Coming Soon....</p>
+
+                {/* {comingsoongames.includes(item) ? (
                   <p className={styles.button}>Coming Soon....</p>
                 ) : (
                   <p
@@ -83,7 +85,7 @@ export default function GamePage() {
                   >
                     Play
                   </p>
-                )}
+                )} */}
               </div>
             );
           })}

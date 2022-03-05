@@ -187,13 +187,7 @@ export default function GamePage({ gamedata }) {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  useEffect(function () {
-    if (!unitycontext) return;
-    unitycontext.on("progress", function (progression) {
-      setProgression(progression);
-      console.log("progression", progression);
-    });
-  }, []);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
