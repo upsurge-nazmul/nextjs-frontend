@@ -64,11 +64,12 @@ export default function Games({ id }) {
       img: "/images/games/MoneySlide.png",
     },
     // {
-    //   name: "Coin Slide",
+    //   name: "Money Ace",
     //   description:
     //     "This is demo description, will be replaced with content later.",
     //   link: "/gamepage/CoinSlide",
-    //video:"https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/CoinSlide.mp4"
+    //   video:
+    //     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/CoinSlide.mp4",
     // },
     {
       name: "Need or Want",
@@ -110,6 +111,70 @@ export default function Games({ id }) {
         they can compete against their peers across countries, and their
         performances will be rewarded with UniCoins which can be redeemed to get
         discounts on some of their favorite brands
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.left}>
+          <p className={styles.title}>Money Ace</p>
+          <div className={styles.description}>
+            {`Money Ace, our first feature game, is India’s first investment game for teenagers. Starting as a 14 year old in Surge City, you have to complete your homework & responsibilities to earn your pocket money, take on side-gigs to earn some more money, and invest across different options including stocks, deposits and crypto. Every Sunday we will reward the players who have created the most wealth for themselves through games, quizzes and smart allocation!`}
+          </div>
+          {/* <div className={styles.button} onClick={() => router.push("/games")}>
+            Play Now
+          </div> */}
+          <div className={styles.buttonWrapper}>
+            <div
+              className={styles.arrowl}
+              onClick={() => {
+                if (currentgameindex - 1 < 0) {
+                  setcurrentgameindex(games.length - 1);
+                } else {
+                  setcurrentgameindex(currentgameindex - 1);
+                }
+              }}
+            >
+              <PlayCircleSvg />
+            </div>
+
+            <div
+              className={styles.arrowr}
+              onClick={() =>
+                setcurrentgameindex((currentgameindex + 1) % games.length)
+              }
+            >
+              <PlayCircleSvg />
+            </div>
+          </div>
+          <div className={styles.navbar}>
+            {games.map((item, index) => {
+              return (
+                <div
+                  className={`${styles.ball} ${
+                    index === currentgameindex ? styles.active : null
+                  }`}
+                  key={"navball" + index}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.container}>
+            {/* {!paused ? (
+              <div onClick={handlePlayPause}>
+                <PauseSvg className={styles.pauseIcon} />
+              </div>
+            ) : (
+              <div className={styles.playIcon} onClick={handlePlayPause}>
+                <PlayCircleSvg />
+              </div>
+            )} */}
+            <img
+              className={styles.gameimg}
+              src={games[currentgameindex].img}
+              alt="calcicon"
+            />
+          </div>
+        </div>
       </div>
       <div className={styles.wrapper}>
         <div className={styles.left}>

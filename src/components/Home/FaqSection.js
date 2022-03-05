@@ -64,9 +64,11 @@ export default function FaqSection() {
   ];
   return (
     <div className={styles.faqsection}>
-      <div className={styles.heading}>
-        Frequently <br /> Asked <br />
-        Questions
+      <div className={styles.left}>
+        <div className={styles.heading}>
+          Frequently <br /> Asked <br />
+          Questions
+        </div>
       </div>
       <div className={styles.mobilehead}>Frequently Asked Questions</div>
       <div className={styles.wrapper}>
