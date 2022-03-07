@@ -57,7 +57,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
               value={email}
               onChange={(e) => {
                 seterror("");
-                setemail(e.target.value);
+                setemail(e.target.value.trim());
               }}
             />
           </form>

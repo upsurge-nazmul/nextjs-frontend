@@ -1,0 +1,776 @@
+@keyframes moveit {
+  0% {
+    transform: translateY(-20%) scaleX(-1);
+  }
+  100% {
+    transform: translateY(0) scaleX(-1);
+  }
+}
+@keyframes boat {
+  0% {
+    transform: translateY(-2%) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(2%) rotate(2deg);
+  }
+}
+.questPage {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .curve2 {
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    top: 60%;
+    z-index: -1;
+    transform: scaleX(-1);
+    animation: moveit 5s ease alternate infinite;
+    animation-delay: 2s;
+  }
+  .curve1 {
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    top: 25%;
+    z-index: -1;
+    animation: moveit 5s ease alternate infinite;
+  }
+  .mainContent {
+    width: 100%;
+    padding: 0 7vw 60px;
+    .mainhead {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 25px;
+      margin-top: 20px;
+      height: 219px;
+      position: relative;
+      img {
+        object-fit: cover;
+        width: 136px;
+        height: 137px;
+        border-radius: 25px;
+        margin-right: 30px;
+      }
+      .right {
+        .questheading {
+          color: #232323;
+          font-size: 32px;
+          font-weight: 600;
+        }
+        .age {
+          color: #000000cf;
+          font-family: "Roboto";
+          font-size: 14px;
+          margin-top: 10px;
+          font-weight: 500;
+        }
+        .details {
+          display: flex;
+          color: #232323;
+          font-family: "Roboto";
+          font-size: 14px;
+          font-weight: 400;
+          margin-top: 10px;
+          svg {
+            margin-right: 5px;
+          }
+          .students {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+          }
+          .projects {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      .creditandweeks {
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
+        color: #232323;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: right;
+      }
+    }
+    .maincontent {
+      display: flex;
+      .left {
+        flex: 1;
+        margin-right: 40px;
+        .heading {
+          color: #4166eb;
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 600;
+        }
+        .about,
+        .content {
+          margin-top: 10px;
+          font-family: "Roboto";
+          font-size: 14px;
+          font-weight: 400;
+        }
+        .map {
+          width: 100%;
+          background-color: #4d5dfb;
+          background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
+          margin-top: 20px;
+          aspect-ratio: 16/9;
+          display: flex;
+          position: relative;
+          .bg {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+          }
+          .boat {
+            width: 20%;
+            height: 30%;
+            position: absolute;
+            top: -20%;
+            animation: boat 3s ease alternate infinite;
+            left: 105%;
+            z-index: 2;
+          }
+          .island1 {
+            position: absolute;
+            top: 15%;
+            left: clamp(1.5vw, 1.5vw, 100px);
+            cursor: pointer;
+            height: 30%;
+            z-index: 2;
+            width: auto;
+            .container {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              .title {
+                color: black;
+                z-index: 2;
+                position: absolute;
+                width: 70%;
+                background-color: rgba(71, 71, 71, 0.5);
+                color: white;
+                border-radius: 12px;
+                font-size: clamp(10px, 1vw, 14px);
+                padding: clamp(10px, 1vw, 14px);
+                top: 30%;
+                left: 40%;
+                text-align: center;
+                transform: translateY(-50%, -50%);
+              }
+              svg {
+                width: 100%;
+                height: 100%;
+              }
+              .boat {
+                width: 50%;
+                position: absolute;
+                top: -20%;
+                animation: boat 3s ease alternate infinite;
+                left: 105%;
+                z-index: 2;
+              }
+            }
+          }
+          .island2 {
+            position: absolute;
+            bottom: 2vh;
+            right: clamp(5vw, 10vw, 100px);
+            cursor: pointer;
+            height: 10vw;
+            width: 10vw;
+            z-index: 2;
+            .container {
+              position: relative;
+              width: 200px;
+              height: 100%;
+              .boat {
+                width: 50%;
+                position: absolute;
+                top: 10%;
+                animation: boat 3s ease alternate infinite;
+                left: -35%;
+                z-index: 2;
+              }
+              .title {
+                color: black;
+                z-index: 2;
+                position: absolute;
+                width: 70%;
+                background-color: rgba(71, 71, 71, 0.5);
+                color: white;
+                border-radius: 12px;
+                font-size: clamp(10px, 1vw, 14px);
+                padding: clamp(10px, 1vw, 14px);
+                top: 30%;
+                right: 0%;
+
+                text-align: center;
+                transform: translateY(-50%, -50%);
+              }
+              svg {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+              }
+            }
+          }
+          .island2disabled {
+            filter: grayscale(100%);
+          }
+        }
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          .button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            background-color: #4166eb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: #4d5dfb;
+            }
+            &:first-child {
+              background-color: gray;
+              &:hover {
+                background-color: #4d4d4d;
+              }
+            }
+          }
+        }
+      }
+      .right {
+        width: 20vw;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        .buttonwrapper {
+          display: flex;
+          justify-content: flex-end;
+          .bookmarkbutton {
+            width: 129px;
+            height: 42px;
+            border: 1px solid #000000;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 20px;
+            svg {
+              margin-right: 5px;
+            }
+          }
+          .startbutton {
+            color: white;
+            background-color: #4166eb;
+            width: 129px;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+            flex: 1;
+            width: 100%;
+          }
+        }
+        .details {
+          display: flex;
+          justify-content: space-around;
+          font-weight: 500;
+          margin-top: 40px;
+          .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .number {
+              font-size: 36px;
+            }
+            .name {
+              font-size: 14px;
+            }
+          }
+        }
+        .heading {
+          color: #4166eb;
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 600;
+        }
+        .conceptswrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          margin-top: 20px;
+          .concept {
+            width: fit-content;
+            height: fit-content;
+            padding: 10px 20px;
+            background: #f4f5f7;
+            border: 0.5px solid #9d9d9d;
+            border-radius: 4px;
+            margin: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .questPage {
+    .mainContent {
+      width: 100%;
+      padding: 0 40px;
+      margin-top: 20px;
+      .mainhead {
+        padding: 15px 15px;
+        border-radius: 20px;
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 94%;
+        margin-right: 20px;
+        img {
+          width: 15vw;
+          height: 10vh;
+          border-radius: 20px;
+          margin-right: 10px;
+        }
+        .right {
+          .questheading {
+            font-size: 3vw;
+          }
+          .age {
+            font-size: 1.5vw;
+            margin-top: 5px;
+          }
+          .details {
+            display: flex;
+
+            flex-direction: column;
+            color: #232323;
+            font-family: "Roboto";
+            font-size: 1.5vw;
+            font-weight: 400;
+            margin-top: 10px;
+            svg {
+              width: 1.5vw;
+              margin-right: 5px;
+            }
+            .students {
+              margin-top: 5px;
+              align-items: center;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        .creditandweeks {
+          font-size: 2vw;
+        }
+      }
+      .maincontent {
+        display: flex;
+        padding-bottom: 50px;
+        margin-left: 20px;
+        .left {
+          flex: 1;
+          width: 100%;
+          .heading {
+            font-size: 20px;
+          }
+          .about,
+          .content {
+            margin-top: 10px;
+            font-family: "Roboto";
+            font-size: 14px;
+            font-weight: 400;
+          }
+          .map {
+            width: 100%;
+            background-color: #4d5dfb;
+            background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
+            margin-top: 20px;
+            aspect-ratio: 16/9;
+            display: flex;
+            position: relative;
+            .bg {
+              width: 100%;
+              height: 100%;
+              z-index: 1;
+            }
+            .boat {
+              width: 20%;
+              height: 30%;
+              position: absolute;
+              top: -20%;
+              animation: boat 3s ease alternate infinite;
+              left: 105%;
+              z-index: 2;
+            }
+            .island1 {
+              position: absolute;
+              top: 15%;
+              left: 5%;
+              cursor: pointer;
+              height: 30%;
+              z-index: 2;
+              width: 15vw;
+              .container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                .title {
+                  color: black;
+                  z-index: 2;
+                  position: absolute;
+                  width: 80px;
+                  background-color: rgba(71, 71, 71, 0.5);
+                  color: white;
+                  border-radius: 6px;
+                  font-size: 8px;
+                  padding: 2px;
+                  top: 30%;
+                  left: 40%;
+                  text-align: center;
+                  transform: translateY(-50%, -50%);
+                }
+                svg {
+                  width: 100%;
+                  height: 100%;
+                }
+                .boat {
+                  width: 50%;
+                  position: absolute;
+                  top: -20%;
+                  animation: boat 3s ease alternate infinite;
+                  left: 105%;
+                  z-index: 2;
+                }
+              }
+            }
+            .island2 {
+              position: absolute;
+              bottom: 2vh;
+              right: 30%;
+              cursor: pointer;
+              height: 30%;
+              width: 15vw;
+              z-index: 2;
+              .container {
+                position: relative;
+                width: 200px;
+                height: 100%;
+
+                .title {
+                  color: black;
+                  z-index: 2;
+                  position: absolute;
+                  width: 40%;
+                  background-color: rgba(71, 71, 71, 0.5);
+                  color: white;
+                  border-radius: 8px;
+                  font-size: 8px;
+                  padding: 2px;
+                  top: 10%;
+                  left: 30%;
+                  text-align: center;
+                  transform: translateY(-50%, -50%);
+                }
+                svg {
+                  width: 100%;
+                  height: 100%;
+                  cursor: pointer;
+                }
+                .boat {
+                  width: 22%;
+                  position: absolute;
+                  top: 10%;
+                  animation: boat 3s ease alternate infinite;
+                  left: 5%;
+                  z-index: 2;
+                }
+              }
+            }
+            .island2disabled {
+              filter: grayscale(100%);
+            }
+          }
+        }
+        .right {
+          width: 25vw;
+          margin-right: 20px;
+          .buttonwrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .bookmarkbutton {
+              width: 80%;
+              height: 42px;
+              border: 1px solid #000000;
+              border-radius: 12px;
+              display: flex;
+              margin-bottom: 20px;
+              align-items: center;
+              justify-content: center;
+              font-size: 14px;
+              font-weight: 500;
+              cursor: pointer;
+              margin-right: 0px;
+              svg {
+                margin-right: 5px;
+              }
+            }
+            .startbutton {
+              color: white;
+              background-color: #4166eb;
+              width: 80%;
+              height: 42px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 14px;
+              cursor: pointer;
+              font-weight: 500;
+            }
+          }
+          .details {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: 500;
+            margin-top: 40px;
+            .section {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              .number {
+                font-size: 30px;
+                text-align: center;
+              }
+              .name {
+                font-size: 12px;
+              }
+            }
+          }
+          .heading {
+            font-size: 20px;
+          }
+          .conceptswrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            margin-top: 20px;
+            .concept {
+              width: fit-content;
+              height: fit-content;
+              padding: 10px 20px;
+              background: #f4f5f7;
+              border: 0.5px solid #9d9d9d;
+              border-radius: 4px;
+              margin: 5px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .questPage {
+    width: 100%;
+    .mainContent {
+      width: 100%;
+      padding: 0 20px;
+      margin-top: 20px;
+      .mainhead {
+        padding: 0;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-left: 0px;
+        width: unset;
+        margin-right: 0px;
+        flex-direction: column;
+        img {
+          width: 100%;
+          height: 15vh;
+          border-radius: 10px;
+          margin-right: 0px;
+          object-fit: contain;
+        }
+        .right {
+          margin-top: 10px;
+          width: 100%;
+          .questheading {
+            font-size: 16px;
+          }
+          .age {
+            font-size: 10px;
+            margin-top: 5px;
+          }
+          .details {
+            font-size: 8px;
+            font-weight: 400;
+            margin-top: 7px;
+            svg {
+              width: 1.5vw;
+              margin-right: 5px;
+            }
+            .students {
+              margin-top: 0px;
+              align-items: center;
+              margin-bottom: 0px;
+            }
+          }
+        }
+        .creditandweeks {
+          font-size: 10px;
+          right: 15px;
+          bottom: 15px;
+        }
+      }
+      .maincontent {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 00px;
+        .left {
+          flex: 1;
+          .heading {
+            font-size: 18px;
+          }
+          .about,
+          .content {
+            margin-top: 10px;
+            font-family: "Roboto";
+            font-size: 12px;
+            font-weight: 400;
+          }
+          .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            .button {
+              padding: 8px 20px;
+              border-radius: 6px;
+              font-size: 12px;
+              color: white;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              &:hover {
+                background-color: #4d5dfb;
+              }
+              &:first-child {
+                background-color: gray;
+                &:hover {
+                  background-color: #4d4d4d;
+                }
+              }
+            }
+          }
+        }
+        .right {
+          width: 100%;
+          padding-right: 10px;
+          margin-right: 20px;
+          .buttonwrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            .bookmarkbutton {
+              width: 47%;
+              height: 35px;
+              border: 1px solid #000000;
+              border-radius: 12px;
+              display: flex;
+              margin-bottom: 0px;
+              align-items: center;
+              justify-content: center;
+              font-size: 12px;
+              font-weight: 500;
+              cursor: pointer;
+              margin-right: 0px;
+              svg {
+                width: 12px;
+                margin-right: 5px;
+              }
+            }
+            .startbutton {
+              color: white;
+              background-color: #4166eb;
+              width: 47%;
+              height: 35px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 12px;
+              cursor: pointer;
+              font-weight: 500;
+            }
+          }
+          .details {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: 500;
+            margin-top: 20px;
+            .section {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              .number {
+                font-size: 25px;
+                text-align: center;
+              }
+              .name {
+                font-size: 10px;
+              }
+            }
+          }
+          .heading {
+            font-size: 18px;
+          }
+          .conceptswrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            margin-top: 5px;
+            .concept {
+              width: fit-content;
+              height: fit-content;
+              padding: 5px 15px;
+              background: #f4f5f7;
+              border: 0.5px solid #9d9d9d;
+              border-radius: 4px;
+              margin: 10px;
+              margin-left: 0;
+              margin-bottom: 0;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

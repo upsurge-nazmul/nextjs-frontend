@@ -557,7 +557,12 @@
       position: absolute;
     }
     .textcontainer {
-      width: 100%;
+      width: auto;
+      margin-right: 7%;
+      .conceptswrapper {
+        background-color: white;
+        width: 100%;
+      }
       .heading {
         font-size: 32px;
       }

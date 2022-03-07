@@ -184,14 +184,14 @@ export default function WaitlistPopUp({
             value={email}
             setvalue={setemail}
             onChange={(e) => {
-              setemail(e.target.value);
+              setemail(e.target.value.trim());
             }}
           />
           <input
             type="text"
             placeholder="Username*"
             value={username}
-            maxLength={8}
+            maxLength={12}
             setvalue={setusername}
             onChange={(e) => {
               setusername(e.target.value);

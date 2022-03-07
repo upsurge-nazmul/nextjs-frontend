@@ -12,6 +12,7 @@ import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
+import KnowledgeQuestMainSection from "../../components/Products/KnowledgeQuestMainSection";
 export default function Products() {
   const router = useRouter();
   const type = router.query.type;
@@ -81,6 +82,21 @@ export default function Products() {
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
       />
+      {/* <KnowledgeQuestMainSection
+        email={email}
+        setEmail={setEmail}
+        check={check}
+        authmode={authmode}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        error={error}
+        showwaitlistblock={showwaitlistblock}
+        showauth={showauth}
+        settoastdata={settoastdata}
+        setshowwaitlistblock={setshowwaitlistblock}
+        id="knowledge-quest-main"
+      /> */}
       <JoinUs />
       <Footer />
     </div>
