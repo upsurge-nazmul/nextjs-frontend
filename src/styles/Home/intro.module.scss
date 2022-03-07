@@ -205,7 +205,7 @@
     overflow: hidden;
     .textContent {
       margin-top: 11%;
-      width: 70%;
+      width: 80%;
       margin-left: 7%;
       .heading {
         font-size: 42px;
@@ -214,7 +214,7 @@
         margin-bottom: 5px;
       }
       .subheading {
-        font-size: 12px;
+        font-size: 14px;
         width: 100%;
         line-height: 20px;
       }
@@ -224,6 +224,23 @@
       .checkwaiting {
         width: 100%;
         font-size: 12px;
+      }
+      .signupBox {
+        width: 100%;
+        min-width: fit-content;
+        height: 50px;
+        display: flex;
+        overflow: hidden;
+        margin-top: 20px;
+        form {
+          display: flex;
+          width: 55%;
+          flex: 1;
+        }
+        input {
+          flex: 1;
+          font-size: 16px;
+        }
       }
     }
 
@@ -237,7 +254,7 @@
     }
   }
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 400px) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -249,10 +266,21 @@
     position: relative;
     z-index: 2;
     overflow: hidden;
+    .error {
+    }
     .textContent {
       margin-top: 11%;
-      width: 100%;
+      width: 90%;
       margin-left: 7%;
+      .error {
+        width: fit-content;
+        margin-top: 12px;
+        font-size: 12px;
+        color: hsl(0, 81%, 71%);
+        cursor: pointer;
+        font-weight: 500;
+        padding-left: 0px;
+      }
       .heading {
         font-size: 42px;
         font-weight: 700;
