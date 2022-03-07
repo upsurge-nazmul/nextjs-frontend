@@ -58,13 +58,13 @@ export default function KnowledgeQuest({
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/TRmWrMg/benefits-quest.png"
+            src="https://i.ibb.co/vx1Sxm4/Group-232.png"
             alt=""
           />
         </div>
       </div>
 
-      <div className={styles.kidimg}>
+      {/* <div className={styles.kidimg}>
         <div className={styles.wrap}>
           <Image
             layout="fill"
@@ -73,7 +73,7 @@ export default function KnowledgeQuest({
             alt=""
           />
         </div>
-      </div>
+      </div> */}
       <div className={styles.green} />
       <div className={styles.yellow} />
       <PetalSvgQuest className={styles.petal} />
