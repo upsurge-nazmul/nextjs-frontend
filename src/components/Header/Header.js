@@ -78,7 +78,7 @@ function Header({
           <HeaderTabSection
             title={"Products"}
             tabs={[
-              { name: "Knowledge Quest", pushTo: "/products/quest" },
+              { name: "Knowledge Quests", pushTo: "/products/quest" },
               {
                 name: "Games Arena",
                 pushTo: "/products/games",
