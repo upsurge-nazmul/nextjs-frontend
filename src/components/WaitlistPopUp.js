@@ -194,7 +194,7 @@ export default function WaitlistPopUp({
             maxLength={12}
             setvalue={setusername}
             onChange={(e) => {
-              setusername(e.target.value);
+              setusername(e.target.value.trim());
             }}
           />
           <div className={styles.phoneWrapper}>
