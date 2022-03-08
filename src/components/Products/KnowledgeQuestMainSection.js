@@ -36,11 +36,12 @@ export default function KnowledgeQuestMainSection({
       <div className={styles.container}>
         <div className={styles.heading}>Available Quests</div>
         <div className={styles.wrapper}>
-          {quests.map((item) => {
+          {quests.map((index, item) => {
             return (
               <div
                 className={styles.quest}
                 onClick={() => router.push("/quest/dd")}
+                key={"quest" + index}
               >
                 <img src={item.image} alt="" />
                 <p className={styles.title}>{item.name}</p>
