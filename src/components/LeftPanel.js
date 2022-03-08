@@ -27,18 +27,18 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               title={"Products"}
               tabs={[
                 {
-                  name: "Knowledge Quests",
+                  name: "Knowledge quests",
                   pushTo: "/products/quest",
                 },
                 {
-                  name: "Games Arena",
+                  name: "Games arena",
                   pushTo: "/products/games",
                 },
                 {
                   name: "Chores",
                   pushTo: "/products/chores",
                 },
-                { name: "Live Classes", pushTo: "/products/liveclasses" },
+                { name: "Live classes", pushTo: "/products/liveclasses" },
               ]}
             />
             <HeaderTabSection
@@ -48,9 +48,9 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               setpanel={setOpenLeftPanel}
               title={"Benefits"}
               tabs={[
-                { name: "Financial Literacy", pushTo: "/benefits" },
+                { name: "Financial literacy", pushTo: "/benefits" },
                 {
-                  name: "Experiential Learning",
+                  name: "Experiential learning",
                   pushTo: "/benefits/experimential",
                 },
                 {
@@ -58,7 +58,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                   pushTo: "/benefits/entrepreneuership",
                 },
                 { name: "Rewards", pushTo: "/benefits/rewards" },
-                { name: "21st Century Skills", pushTo: "/benefits/skills" },
+                { name: "21st century skills", pushTo: "/benefits/skills" },
               ]}
             />
             <HeaderTabSection
@@ -93,7 +93,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               tabs={[
                 { name: "About us", pushTo: "/about" },
                 { name: "Blogs", pushTo: "/blogs" },
-                { name: "Financial Calculators", pushTo: "/calculators" },
+                { name: "Financial calculators", pushTo: "/calculators" },
                 { name: "FAQs", pushTo: "/help/faq" },
                 { name: "Contact us", pushTo: "/contact" },
               ]}

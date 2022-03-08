@@ -53,8 +53,8 @@ export default function GamePage() {
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>Games</h2>
           <h3 className={styles.subheading}>
-            The concepts learnt by the young learners via Knowledge Quest are
-            applied in the Games Arena.
+            The concepts learnt by the young learners via knowledge quests are
+            applied in the games arena.
           </h3>
         </div>
 

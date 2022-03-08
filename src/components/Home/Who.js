@@ -8,7 +8,7 @@ function Who() {
       <div className={styles.container}>
         <div className={styles.left}>
           <p>
-            Upsurge is India’s first financial literacy and entrepreneurship
+            upsurge is India’s first financial literacy and entrepreneurship
             development platform for the 8 to 18 year-olds. These are critical
             life skills that are being ignored in school and college, and we are
             here to change that!

@@ -58,7 +58,7 @@ export default function KnowledgeQuest({
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/vx1Sxm4/Group-232.png"
+            src="https://i.ibb.co/JBkMLXQ/Group-232.png"
             alt=""
           />
         </div>

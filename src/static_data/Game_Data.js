@@ -1,36 +1,36 @@
 export const Game_Data = {
   ShoppingBudget: {
-    name: "Shopping Budget",
+    name: "Shopping budget",
     description:
       "Identify how much is available to spend and making purchase decisions based on that.",
   },
   BalanceBuilder: {
-    name: "Balance Builder",
+    name: "Balance builder",
     description: "Identify what is income and what is expense.",
   },
   HighAndLow: {
-    name: "High and Low",
+    name: "High and low",
     description:
       "Identify currency and arrange in ascending or descending order after adding the money.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
   },
   MoneyMath: {
-    name: "Money Math",
+    name: "Money maths",
     description:
       "Choose what you want to buy, earn some money, and calculate  how much you have left.",
   },
   MoneyManager: {
-    name: "Money Manager",
+    name: "Money manager",
     description:
       "Know the importance of allocating your earnings between spending, saving and donating.",
   },
   MoneySlide: {
-    name: "Money Slide",
+    name: "Money slide",
     description:
       "Identify different types of Money notes and coins and achieve the desired target.",
   },
   NeedOrWant: {
-    name: "Need or Want",
+    name: "Need and want",
     description: "Identify the difference between needs and wants.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
   },

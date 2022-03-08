@@ -38,7 +38,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     flex-direction: column;
-    min-width: fit-content;
+    min-width: max-content;
     width: 200px;
     padding: 15px;
     .tabs {
@@ -46,7 +46,6 @@
       width: 100%;
       min-width: fit-content;
       padding: 10px;
-      text-align: center;
       &:hover {
         background-color: rgb(238, 238, 238);
         border-radius: 5px;

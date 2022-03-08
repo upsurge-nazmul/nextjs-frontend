@@ -78,9 +78,9 @@ function Header({
           <HeaderTabSection
             title={"Products"}
             tabs={[
-              { name: "Knowledge Quests", pushTo: "/products/quest" },
+              { name: "Knowledge quests", pushTo: "/products/quest" },
               {
-                name: "Games Arena",
+                name: "Games arena",
                 pushTo: "/products/games",
               },
               {
@@ -89,16 +89,16 @@ function Header({
               },
               // { name: "Family Fun", pushTo: "/familyfun" },
               // { name: "Tribes", pushTo: "/p_tribes" },
-              { name: "Live Classes", pushTo: "/products/liveclasses" },
+              { name: "Live classes", pushTo: "/products/liveclasses" },
             ]}
             pushTo="/products"
           />
           <HeaderTabSection
             title={"Benefits"}
             tabs={[
-              { name: "Financial Literacy", pushTo: "/benefits" },
+              { name: "Financial literacy", pushTo: "/benefits" },
               {
-                name: "Experiential Learning",
+                name: "Experiential learning",
                 pushTo: "/benefits/experimential",
               },
               {
@@ -106,7 +106,7 @@ function Header({
                 pushTo: "/benefits/entrepreneuership",
               },
               { name: "Rewards", pushTo: "/benefits/rewards" },
-              { name: "21st Century Skills", pushTo: "/benefits/skills" },
+              { name: "21st century skills", pushTo: "/benefits/skills" },
               ,
             ]}
             pushTo="/benefits"
@@ -135,7 +135,7 @@ function Header({
             tabs={[
               { name: "About us", pushTo: "/about" },
               { name: "Blogs", pushTo: "/blogs" },
-              { name: "Financial Calculators", pushTo: "/calculators" },
+              { name: "Financial calculators", pushTo: "/calculators" },
               { name: "FAQs", pushTo: "/help/faq" },
               { name: "Contact us", pushTo: "/contact" },
 

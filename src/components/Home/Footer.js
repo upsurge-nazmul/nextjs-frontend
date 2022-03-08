@@ -38,7 +38,7 @@ function Footer() {
               rel="noreferrer"
             >
               <WhatsAppIcon className={styles.icon} />
-              Connect on whatsapp
+              Connect on WhatsApp
             </a>
             <div className={styles.bottom}>
               <p
@@ -47,7 +47,7 @@ function Footer() {
                   setshowterm(true);
                 }}
               >
-                Terms & Conditions
+                Terms & conditions
               </p>
               <p
                 onClick={() => {
@@ -55,7 +55,7 @@ function Footer() {
                   setshowterm(true);
                 }}
               >
-                Privacy Policy
+                Privacy policy
               </p>
             </div>
           </div>
@@ -98,13 +98,13 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/products/quest")}
             >
-              Knowledge Quests
+              Knowledge quests
             </p>
             <p
               className={styles.subheading}
               onClick={() => router.push("/products/games")}
             >
-              Games Arena
+              Games arena
             </p>
             <p
               className={styles.subheading}
@@ -118,7 +118,7 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/products/liveclasses")}
             >
-              Live Classes
+              Live classes
             </p>
           </div>
 
@@ -166,13 +166,13 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/benefits")}
             >
-              Financial Literacy
+              Financial literacy
             </p>
             <p
               className={styles.subheading}
               onClick={() => router.push("/benefits/experimential")}
             >
-              Experimential Learning
+              Experiential learning
             </p>
             <p
               className={styles.subheading}
@@ -221,7 +221,7 @@ function Footer() {
               className={styles.subheading}
               onClick={() => router.push("/about")}
             >
-              About Us
+              About us
             </p>
             <p
               className={styles.subheading}
@@ -260,13 +260,13 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/products/quest")}
               >
-                Knowledge Quests
+                Knowledge quests
               </p>
               <p
                 className={styles.subheading}
                 onClick={() => router.push("/products/games")}
               >
-                Games Arena
+                Games arena
               </p>
               <p
                 className={styles.subheading}
@@ -280,7 +280,7 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/products/liveclasses")}
               >
-                Live Classes
+                Live classes
               </p>
             </>
           )}
@@ -298,13 +298,13 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/benefits")}
               >
-                Financial Literacy
+                Financial literacy
               </p>
               <p
                 className={styles.subheading}
                 onClick={() => router.push("/benefits/experimential")}
               >
-                Experimential Learning
+                Experiential learning
               </p>
               <p
                 className={styles.subheading}
@@ -422,7 +422,7 @@ function Footer() {
                 className={styles.subheading}
                 onClick={() => router.push("/about")}
               >
-                About Us
+                About us
               </p>
               <p
                 className={styles.subheading}
@@ -483,7 +483,7 @@ function Footer() {
             rel="noreferrer"
           >
             <WhatsAppIcon className={styles.icon} />
-            Connect on whatsapp
+            Connect on WhatsApp
           </a>
           <div className={styles.wrap}>
             <p
@@ -493,7 +493,7 @@ function Footer() {
                 setshowterm(true);
               }}
             >
-              Terms & Conditions
+              Terms & conditions
             </p>
             <p
               onClick={() => {
@@ -501,7 +501,7 @@ function Footer() {
                 setshowterm(true);
               }}
             >
-              Privacy Policy
+              Privacy policy
             </p>
           </div>
         </div>
