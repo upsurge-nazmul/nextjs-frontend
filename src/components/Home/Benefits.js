@@ -35,7 +35,7 @@ function Benefits() {
       img: "https://i.ibb.co/9T7H3sG/Maskz-Group.png",
     },
     {
-      title: "Develop 21st Century Skills & Knowledge",
+      title: "Develop 21st century skills & knowledge",
       description: `While jobs & roles change, the skills needed to succeed remain the same. Our offerings help children gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
       img: "https://i.ibb.co/hf1LDRh/benefit4.png",
     },

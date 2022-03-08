@@ -10,14 +10,14 @@ function ProductSection() {
   const router = useRouter();
   let data = [
     {
-      title: "Knowledge Quest",
+      title: "Knowledge quest",
       pushTo: "/products/quest",
       description:
         "Interactive courses that cover fundamentals of finance, including earning, budgeting, saving, and investing, and entrepreneurship and include exercises, real-life examples and short quizzes.",
     },
     {
       pushTo: "/products/games",
-      title: "Games Arena",
+      title: "Games arena",
       description:
         "Our platform with multiple proprietary games where children can apply financial concepts to real-experiences based games and understand finance, investing, and entrepreneurship in a fun and compelling way.",
     },
@@ -29,7 +29,7 @@ function ProductSection() {
     },
     {
       pushTo: "/products/liveclasses",
-      title: "Live Classes",
+      title: "Live classes",
       description:
         "Engaging fun workshops and courses for children, by experts and our founders, around important topics such as money management, career development and entrepreneurship.",
     },

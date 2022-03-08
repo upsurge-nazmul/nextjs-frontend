@@ -110,7 +110,7 @@ export default function Games({ id }) {
   }
   return (
     <div className={styles.gamespage} id={id}>
-      <div className={styles.heading}>Games Arena</div>
+      <div className={styles.heading}>Games arena</div>
       <div className={styles.subheading}>
         Enable your child to experience the importance of money management in a
         virtual environment. Our platform has multiple games to reinforce

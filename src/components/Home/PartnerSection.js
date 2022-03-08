@@ -31,7 +31,7 @@ export default function PartnerSection({ dashboard }) {
           router.push("/benefits/rewards");
         }}
       >
-        Our UniCoin Reward Partners
+        Our UniCoin reward partners
       </div>
       <div className={`${styles.subheading} ${dashboard && styles.hidecursor}`}>
         {dashboard

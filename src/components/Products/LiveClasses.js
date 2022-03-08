@@ -5,7 +5,7 @@ export default function LiveClasses({ id }) {
   return (
     <div className={styles.liveClasses} id={id}>
       <div className={styles.top}>
-        <div className={styles.heading}>Live Classes & Events</div>
+        <div className={styles.heading}>Live classes & events</div>
         <div className={styles.subheading}>
           Live online courses and workshops, designed and taught by our
           co-founders and experts, on important topics around personal finance,

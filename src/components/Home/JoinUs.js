@@ -51,7 +51,7 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Sign up for Early Access</div>
+        <div className={styles.heading}>Sign up for early access</div>
         <p className={styles.subheading}>
           {`We can’t wait to have you onboard and start your child’s journey
           towards financial freedom.`}

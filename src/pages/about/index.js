@@ -83,7 +83,7 @@ export default function About() {
           <div className={styles.ball2} />
           <div className={styles.ball3} />
           <div className={styles.ball4} />
-          <p className={styles.heading}>About Us</p>
+          <p className={styles.heading}>About us</p>
           <p className={styles.subheading}>
             We are a family-focused financial platform that offers financial
             education for children through interactive educational content,
@@ -92,7 +92,7 @@ export default function About() {
         </div>
         <div className={styles.visionSection}>
           <div className={styles.left}>
-            <p className={styles.heading}>Our Goal = Financial Freedom</p>
+            <p className={styles.heading}>Our goal = financial freedom</p>
             <p className={styles.des}>
               Financial Freedom is not being very rich or having 5 cars.
               Financial Freedom put simply is when you do not HAVE to work to
