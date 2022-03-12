@@ -75,6 +75,9 @@ export default function GamePage() {
                 <p
                   className={styles.activebutton}
                   onClick={() => {
+                    if (Game_Data[item].pushto) {
+                      return router.push(Game_Data[item].pushto);
+                    }
                     router.push("/games/" + item);
                   }}
                 >

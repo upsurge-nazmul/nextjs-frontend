@@ -3,6 +3,8 @@ export const Game_Data = {
     name: "Shopping budget",
     description:
       "Identify how much is available to spend and making purchase decisions based on that.",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
+    pushto: "/games/DontOverspend",
   },
   BalanceBuilder: {
     name: "Balance builder",
