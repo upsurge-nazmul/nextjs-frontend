@@ -180,7 +180,23 @@
     height: 80vh;
   }
 }
-
+@media only screen and (min-width: 1500px) {
+  .gamePage {
+    .gameWrapper {
+      .gameMain {
+        // width: 1280px;
+        // height: 720px;
+        width: calc(16vh * 9);
+        height: calc(9vh * 9);
+        background-color: white;
+        border: 2px solid black;
+      }
+      .removeborder {
+        border: none;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .gamePage {
     width: 100vw;
