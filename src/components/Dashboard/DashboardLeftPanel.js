@@ -48,7 +48,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
     <div className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed}`}>
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
-      {hidelogo ? null : width > 900 ? (
+      {hidelogo ? null : width > 1300 ? (
         <Logo
           className={styles.dashboardLogo}
           onClick={() => {
@@ -188,13 +188,16 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/leaderboards" ? styles.activetab : ""
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/w/quest" ||
+              currenttab.indexOf("/dashboard/w/quest") !== -1
+                ? styles.activetab
+                : ""
             }`}
-            onClick={() => router.push("/dashboard/w/leaderboards")}
+            onClick={() => router.push("/dashboard/w/quest")}
           >
-            <LeaderboardSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Leaderboard</p>
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Knowledge Quest</p>
           </div>
           <div
             className={`${styles.tab} ${
@@ -208,39 +211,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <GameSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Games</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/w/quiz" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/w/quiz")}
-          >
-            <QuizIconSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Quiz</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/w/calculators" ||
-              currenttab.indexOf("/dashboard/w/calculator") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/w/calculators")}
-          >
-            <CalcSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Calculators</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/w/blogs" ||
-              currenttab.indexOf("dashboard/w/blog") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/w/blogs")}
-          >
-            <BlogSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Blogs</p>
           </div>
           <div
             className={`${styles.tab} ${
@@ -260,6 +230,39 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <PricingSvg className={styles.icon} />
             <p className={styles.tabtitle}>Pricing</p>
           </div>
+          <LeftPannelToggle
+            name="Resources"
+            currenttab={currenttab}
+            isActive={
+              currenttab.indexOf("/dashboard/w/blog") !== -1 ||
+              currenttab.indexOf("/dashboard/w/calculator") !== -1 ||
+              currenttab.indexOf("/dashboard/w/quiz") !== -1 ||
+              currenttab.indexOf("/dashboard/w/leaderboards") !== -1
+            }
+            items={[
+              {
+                name: "Blogs",
+                pushto: "/dashboard/w/blogs",
+                icon: <BlogSvg />,
+              },
+              {
+                name: "Calculators",
+                pushto: "/dashboard/w/calculators",
+                icon: <CalcSvg />,
+              },
+              {
+                name: "Quiz",
+                pushto: "/dashboard/w/quiz",
+                icon: <QuizIconSvg />,
+              },
+              {
+                name: "Leaderboards",
+                pushto: "/dashboard/w/leaderboards",
+                icon: <LeaderboardSvg />,
+              },
+            ]}
+            icon={<AssessmentOutlinedIcon />}
+          />
         </div>
       ) : (
         <div className={styles.tabContainer}>

@@ -1,0 +1,392 @@
+.quiz {
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  height: fit-content;
+  padding-top: 10px;
+  background: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  margin-top: 40px;
+  .resultSection {
+    padding: 5vh 0;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    .jasper {
+      z-index: 1;
+      width: 5vw;
+    }
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(255, 255, 255);
+      overflow: hidden;
+      z-index: -1;
+      .curvecontainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .curve2 {
+          position: absolute;
+          width: 100vw;
+          left: 0;
+          top: 60%;
+          z-index: 1;
+          transform: scaleX(-1);
+          animation: moveit 5s ease alternate infinite;
+          animation-delay: 2s;
+        }
+        .curve1 {
+          position: absolute;
+          width: 100vw;
+          left: 0;
+          top: 25%;
+          z-index: 1;
+          animation: moveit 5s ease alternate infinite;
+        }
+      }
+    }
+
+    .signupBox {
+      width: 23vw;
+      min-width: fit-content;
+      min-height: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      .input {
+        outline: none;
+        border: none;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border: 1px solid #4166eb5e;
+        width: 55%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 20px;
+        padding-left: 15px;
+        border-right: 0;
+        ::placeholder {
+          color: rgba(198, 198, 198, 1);
+        }
+      }
+      .normalbutton {
+        width: 45%;
+        min-width: fit-content;
+        font-size: clamp(16px, 1vw, 1vw);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        height: 100%;
+        padding: 0 20px;
+        background-color: #4166eb;
+        color: white;
+        border-radius: 12px;
+        cursor: pointer;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border: 1px solid #4166eb5e;
+        border-left: 0;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(227, 57%, 47%);
+        }
+      }
+      .joinButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 32px;
+        width: 186px;
+        height: 48px;
+        background: #ffffff;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 20px;
+      }
+    }
+    .heading {
+      font-size: 56px;
+      font-weight: 800;
+      text-align: center;
+      color: #17d1bc;
+    }
+    .subheading {
+      color: black;
+      margin: 10px 0;
+      font-size: 22px;
+      font-weight: 400;
+      text-align: center;
+      width: 80%;
+    }
+    .points {
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+      color: #131313;
+      margin-top: 20px;
+    }
+    .pointsdes {
+      font-size: 36px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .button {
+      background: #4166eb;
+      border-radius: 14px;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      width: 220px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &:hover {
+        background-color: hsl(227, 56%, 38%);
+      }
+    }
+  }
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    z-index: -1;
+    .curvecontainer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .curve2 {
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        top: 60%;
+        z-index: 1;
+        transform: scaleX(-1);
+        animation: moveit 5s ease alternate infinite;
+        animation-delay: 2s;
+      }
+      .curve1 {
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        top: 25%;
+        z-index: 1;
+        animation: moveit 5s ease alternate infinite;
+      }
+    }
+  }
+
+  .progressBarWrapper {
+    margin-top: 20px;
+  }
+  .rightbutton {
+    position: absolute;
+    right: -150px;
+    top: 45%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    svg {
+      path {
+        transition: all 0.3s ease;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: hsl(227, 55%, 40%);
+        }
+      }
+    }
+  }
+  .leftbutton {
+    position: absolute;
+    left: -150px;
+    top: 45%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    svg {
+      path {
+        transition: all 0.3s ease;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: hsl(227, 55%, 40%);
+        }
+      }
+    }
+  }
+  .result {
+    font-size: 16px;
+    font-weight: 400;
+    width: 97%;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-left: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    .nextButton {
+      background-color: rgb(39, 39, 39);
+      width: 20%;
+      height: 50px;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      color: rgb(255, 255, 255);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+      p {
+        z-index: 3;
+      }
+      .nextpercent {
+        width: var(--progressnextbutton);
+        max-width: 100%;
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: black;
+        border-radius: 8px;
+      }
+      &:hover {
+        background-color: rgb(0, 0, 0);
+      }
+    }
+    .finishButton {
+      background-color: rgb(207, 207, 207);
+      mix-blend-mode: overlay;
+      p {
+        color: rgb(68, 68, 68);
+      }
+      &:hover {
+        background-color: rgb(16, 192, 171);
+      }
+    }
+  }
+  .questionno {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+  }
+  .question {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 40px;
+    min-height: 25%;
+    height: fit-content;
+    padding: 0px 20px 40px;
+    color: rgb(15, 15, 15);
+    width: 100%;
+    border-bottom: 2px solid #d7e7fb;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+    padding-bottom: 5vh;
+    .option {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      box-shadow: 0px 4px 0px #c1dcff;
+      min-height: 75px;
+      height: fit-content;
+      border-radius: 8px;
+      width: 45%;
+      max-width: 500px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 25px;
+      .circle {
+        background-color: #d9eaff;
+        min-width: 25px;
+        min-height: 25px;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4166eb;
+        font-size: 12px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        text-align: center;
+      }
+      &:hover {
+        box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -webkit-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -moz-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+      }
+      .text {
+        text-align: center;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        padding: 10px;
+        letter-spacing: 0.5px;
+      }
+    }
+    .correct {
+      background-color: rgb(178, 255, 178);
+    }
+    .wrong {
+      background-color: rgb(255, 231, 231);
+    }
+    .selected {
+      background-color: #4166eb;
+      .circle {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .text {
+        color: white;
+      }
+    }
+  }
+}
