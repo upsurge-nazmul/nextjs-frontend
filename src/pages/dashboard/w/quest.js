@@ -21,7 +21,6 @@ import PeopleSvg from "../../../components/SVGcomponents/PeopleSvg";
 import ProjectSvg from "../../../components/SVGcomponents/ProjectSvg";
 import IslandSvg from "../../../components/SVGcomponents/IslandSvg";
 import Island2Svg from "../../../components/SVGcomponents/Island2Svg";
-import KQBG1 from "../../../components/SVGcomponents/KQBG1";
 import BoatSvg from "../../../components/SVGcomponents/BoatSvg";
 import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
