@@ -22,6 +22,7 @@ import GameSvg from "../../../components/SVGcomponents/GameSvg";
 import DetailsPopUp from "../../../components/WaitlistDashboard/DetailsPopUp";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import LeaderboardSvg from "../../../components/SVGcomponents/LeaderboardSvg";
+import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
 import WelcomeUser from "../../../components/WelcomeUser";
 export default function WaitlistDashboard({
   userdatafromserver,
@@ -156,7 +157,7 @@ export default function WaitlistDashboard({
                     }}
                   >
                     <RewardSvg className={styles.reward} />
-                    <p className={styles.text}>Check currect rewards</p>
+                    <p className={styles.text}>Check current rewards</p>
                   </div>
                 </div>
               </div>
@@ -164,9 +165,13 @@ export default function WaitlistDashboard({
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.uniblock}>
-                      <p className={styles.heading}>
-                        {userdatafromserver.num_unicoins || 0}
-                      </p>
+                      <div className={styles.top}>
+                        <UniCoinSvg className={styles.icon} />
+                        <p className={styles.heading}>
+                          {userdatafromserver.num_unicoins || 0}
+                        </p>
+                      </div>
+
                       <p className={styles.subheading}>Earned Unicoins</p>
                     </div>
                   </div>

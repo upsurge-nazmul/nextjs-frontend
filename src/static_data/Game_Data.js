@@ -1,44 +1,44 @@
 export const Game_Data = {
   ShoppingBudget: {
     name: "Shopping budget",
-    description:
-      "Identify how much is available to spend and making purchase decisions based on that.",
+    description: "Can stay within your budget at the mall?",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
     pushto: "/games/DontOverspend",
   },
   BalanceBuilder: {
     name: "Balance builder",
-    description: "Identify what is income and what is expense.",
+    description: "How does your bank balance change with different events?",
   },
   HighAndLow: {
     name: "High and low",
     description:
-      "Identify currency and arrange in ascending or descending order after adding the money.",
+      "Check how much money each column has, and arrange it in ascending or descending order.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
   },
   MoneyMath: {
     name: "Money maths",
     description:
-      "Choose what you want to buy, earn some money, and calculate  how much you have left.",
+      "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
+    img: "/images/games/MoneyMath.png",
   },
   MoneyManager: {
     name: "Money manager",
-    description:
-      "Know the importance of allocating your earnings between spending, saving and donating.",
+    description: "Ean money, & divide it between Saving, Expenses & Charity.",
   },
   MoneySlide: {
     name: "Money slide",
-    description:
-      "Identify different types of Money notes and coins and achieve the desired target.",
+    description: "Fill each piggy-bank with the right amount of money.",
   },
   NeedOrWant: {
     name: "Need and want",
-    description: "Identify the difference between needs and wants.",
+    description:
+      "What is the difference between a need & a want? Let’s play to find out.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
   },
   Ludo: {
     name: "Ludo",
-    description: "Financial Ludo for young adults.",
+    description:
+      "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
     img: "/images/games/Ludo.jpg",
   },
   // ShoppingMall: {

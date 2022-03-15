@@ -11,7 +11,6 @@ import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 function Menu({ settoastdata, menuType, waitilistmenu }) {
-  console.log(menuType);
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
     useContext(MainContext);
   const router = useRouter();

@@ -21,7 +21,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
   });
   const data = [
     {
-      name: "0-200",
+      name: "1-10",
       benefits: [
         "Finance master class",
         "Financial dictionary",
@@ -30,7 +30,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       ],
     },
     {
-      name: "200-400",
+      name: "11-60",
       benefits: [
         "Financial dictionary",
         "upsurge cap",
@@ -39,7 +39,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       ],
     },
     {
-      name: "400+",
+      name: "61-160",
       benefits: [
         "Avail discount on joining upsurge",
         "Earn bonus unicoins",
@@ -73,6 +73,27 @@ export default function Rewards({ userdatafromserver, vouchers }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
+          <div className={styles.des}>
+            <p className={styles.desheading}>upsurge reward program</p>
+            <p className={styles.description}>
+              {`It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use Lorem Ipsum as their default
+            model text, and a search for 'lorem ipsum' will uncover many web
+            sites still in their infancy. Various versions have evolved over the
+            years, sometimes by accident, sometimes on purpose (injected humour
+            and the like).`}
+            </p>
+            <p className={styles.descriptionbold}>
+              {`* You can increase your rank by playing games, completing knowledge quests, playing money quotient, reading blogs, inviting friends etc.`}
+            </p>
+            <p className={styles.descriptionbold}>
+              {`* All the UniCoins collected during earlyaccess, will be given as bonus on joining upsurge.`}
+            </p>
+          </div>
           <PartnerSection dashboard={true} />
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Know more about your Early Access rewards.

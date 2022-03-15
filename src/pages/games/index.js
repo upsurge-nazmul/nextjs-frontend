@@ -53,8 +53,10 @@ export default function GamePage() {
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>Games</h2>
           <h3 className={styles.subheading}>
-            The concepts learnt by the young learners via knowledge quests are
-            applied in the games arena.
+            {`On upsurge, children (and parents) are encouraged to play games
+            based on topics around entrepreneurship & money management, so that
+            they can learn by doing and making decisions. Here are some of our
+            games that you and your child can play together.`}
           </h3>
         </div>
 

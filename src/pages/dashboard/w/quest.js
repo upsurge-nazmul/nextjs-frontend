@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DashboardApis from "../../../actions/apis/DashboardApis";
+import KnowledgeQuestApi from "../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../actions/apis/LoginApis";
 import Toast from "../../../components/Toast";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
@@ -29,18 +29,22 @@ const democoncepts = [
   "Investing",
   "Saving",
   "Assets",
-  "Mutual Funds",
-  "Investing",
-  "Saving",
-  "Assets",
-  "Mutual Funds",
+  "Credit Cards",
+  "Debit Cards",
+  "Banking",
+  "Money",
 ];
-export default function KidStore({ isLogged, msg, userdatafromserver }) {
+export default function KidStore({
+  isLogged,
+  msg,
+  userdatafromserver,
+  levelfromserver,
+}) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Knowledge Quest");
   const [questmode, setquestmode] = useState("map");
   const { userdata, setuserdata } = useContext(MainContext);
-  const [currentlevel, setcurrentlevel] = useState(1);
+  const [currentlevel, setcurrentlevel] = useState(levelfromserver);
   const router = useRouter();
   const [showmodal, setshowmodal] = useState(false);
   const [quizId, setquizId] = useState("");
@@ -56,12 +60,6 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
-  useEffect(() => {
-    let level = localStorage.getItem("kq-money-level");
-    if (level) {
-      setcurrentlevel(level);
-    }
-  }, []);
   useEffect(() => {
     let parent = document.getElementById("map");
     let child = document.getElementById("kqc" + currentlevel);
@@ -89,8 +87,8 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
             />
             <div className={styles.right}>
               <p className={styles.questheading}>Money Quest</p>
-              <p className={styles.age}>Age 10-12</p>
-              <div className={styles.details}>
+              <p className={styles.age}>Age 10-16</p>
+              {/* <div className={styles.details}>
                 <div className={styles.students}>
                   <PeopleSvg />
                   345 students enrolled
@@ -99,11 +97,11 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   <ProjectSvg />
                   37 published projects
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.creditandweeks}>
-              <p className={styles.weeks}>3 weeks</p>
-              <p className={styles.credits}>430 Credits Required</p>
+              <p className={styles.weeks}>2 weeks</p>
+              <p className={styles.credits}>200 UniCoins</p>
             </div>
           </div>
           <div className={styles.mainwrapper}>
@@ -126,7 +124,19 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                 Follow the course content to learn more about Investing.
               </p>
               {questmode === "map" ? (
-                <div className={styles.map} id="map">
+                <div
+                  className={`${styles.map} ${
+                    currentlevel >= 6 && styles.blockscroll
+                  }`}
+                  id="map"
+                >
+                  {currentlevel >= 6 && (
+                    <img
+                      className={styles.stamp}
+                      src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
+                      alt=""
+                    />
+                  )}
                   <img
                     src="https://i.ibb.co/r21r8V1/mainmap.jpg"
                     className={styles.bg}
@@ -134,8 +144,8 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   <p
                     id="kqc1"
                     className={`${styles.kqc} ${styles.kqc1} ${
-                      currentlevel >= 1 && styles.activekqc
-                    }`}
+                      currentlevel === 1 && styles.activekqc
+                    } ${currentlevel > 1 && styles.completedkqc}`}
                     onClick={() => {
                       if (!(currentlevel >= 1)) {
                         return;
@@ -147,9 +157,9 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   </p>
                   <p
                     id="kqc2"
-                    className={`${styles.kqc} ${styles.kqc2} ${
-                      currentlevel >= 2 && styles.activekqc
-                    }`}
+                    className={`${styles.kqc} ${styles.kqc2}  ${
+                      currentlevel == 2 && styles.activekqc
+                    } ${currentlevel > 2 && styles.completedkqc}`}
                     onClick={() => {
                       if (!(currentlevel >= 2)) {
                         return;
@@ -162,9 +172,9 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   </p>
                   <p
                     id="kqc3"
-                    className={`${styles.kqc} ${styles.kqc3} ${
-                      currentlevel >= 3 && styles.activekqc
-                    }`}
+                    className={`${styles.kqc} ${styles.kqc3}  ${
+                      currentlevel == 3 && styles.activekqc
+                    } ${currentlevel > 3 && styles.completedkqc}`}
                     onClick={() => {
                       if (!(currentlevel >= 3)) {
                         return;
@@ -176,9 +186,9 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   </p>
                   <p
                     id="kqc4"
-                    className={`${styles.kqc} ${styles.kqc4} ${
-                      currentlevel >= 4 && styles.activekqc
-                    }`}
+                    className={`${styles.kqc} ${styles.kqc4}  ${
+                      currentlevel == 4 && styles.activekqc
+                    } ${currentlevel > 4 && styles.completedkqc}`}
                     onClick={() => {
                       if (!(currentlevel >= 2)) {
                         return;
@@ -191,16 +201,16 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                   </p>
                   <p
                     id="kqc5"
-                    className={`${styles.kqc} ${styles.kqc5} ${
-                      currentlevel >= 5 && styles.activekqc
-                    }`}
+                    className={`${styles.kqc} ${styles.kqc5}  ${
+                      currentlevel == 5 && styles.activekqc
+                    } ${currentlevel > 5 && styles.completedkqc}`}
                   >
                     Introduction to Money Management
                   </p>
                   <p
-                    className={`${styles.kqc} ${styles.kqc6} ${
-                      currentlevel >= 6 && styles.activekqc
-                    }`}
+                    className={`${styles.kqc} ${styles.kqc6}  ${
+                      currentlevel == 6 && styles.activekqc
+                    } ${currentlevel > 6 && styles.completedkqc}`}
                     onClick={() => {
                       if (!(currentlevel >= 6)) {
                         return;
@@ -249,12 +259,18 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                       className={styles.button}
                       onClick={() => {
                         if (questmode === "bank-visit") {
+                          KnowledgeQuestApi.update({
+                            level: 4,
+                            id: "money-quest",
+                          });
                           setcurrentlevel(4);
-                          localStorage.setItem("kq-money-level", 4);
                         }
                         if (questmode === "KnowingYourMoney") {
+                          KnowledgeQuestApi.update({
+                            level: 2,
+                            id: "money-quest",
+                          });
                           setcurrentlevel(2);
-                          localStorage.setItem("kq-money-level", 2);
                         }
                         setquestmode("map");
                       }}
@@ -287,17 +303,17 @@ export default function KidStore({ isLogged, msg, userdatafromserver }) {
                 </div>
               </div>
               <div className={styles.details}>
-                <div className={styles.section}>
+                {/* <div className={styles.section}>
                   <p className={styles.number}>34</p>
                   <p className={styles.name}>session</p>
-                </div>
+                </div> */}
                 <div className={styles.section}>
-                  <p className={styles.number}>4</p>
-                  <p className={styles.name}>projects</p>
+                  <p className={styles.number}>3</p>
+                  <p className={styles.name}>Courses</p>
                 </div>
                 <div className={styles.section}>
                   <p className={styles.number}>3</p>
-                  <p className={styles.name}>challenges</p>
+                  <p className={styles.name}>Activities</p>
                 </div>
               </div>
               <p className={styles.heading}>Concepts Covered</p>
@@ -335,10 +351,19 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let level = await KnowledgeQuestApi.initiate(
+        { id: "money-quest" },
+        token
+      );
+      console.log(level.data);
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          levelfromserver:
+            level && level.data && level.data.success
+              ? level.data.data.level
+              : 1,
         },
       };
     }

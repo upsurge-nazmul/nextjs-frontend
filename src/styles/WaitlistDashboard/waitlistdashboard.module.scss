@@ -197,6 +197,23 @@
         }
         .uniblock {
           background-color: rgba(255, 98, 99, 1);
+          .top {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+
+            .heading {
+              margin-top: 0;
+            }
+            .icon {
+              width: 28px;
+              fill: white;
+              margin-right: 10px;
+              path {
+                fill: white;
+              }
+            }
+          }
         }
       }
       .flexMid {

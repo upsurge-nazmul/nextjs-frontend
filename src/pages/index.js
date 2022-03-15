@@ -152,11 +152,12 @@ export default Home;
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";
+  console.log(token);
   if (token) {
     let response = await LoginApis.checktoken({
       token: token,
     });
-
+    console.log(response.data);
     if (response && !response.data.success) {
       msg = response.data.msg || "";
       return { props: {} };

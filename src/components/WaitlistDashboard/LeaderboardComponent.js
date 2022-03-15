@@ -50,7 +50,6 @@ export default function LeaderboardComponent({
 
   async function changeleaderboard(type) {
     setselected(type);
-    setoptions(optionsbackup.filter((item) => item !== type));
     if (type === "Ludo") {
       getludoleaderboard();
     } else if (type === "Quiz") {
@@ -69,28 +68,17 @@ export default function LeaderboardComponent({
       getludoleaderboard();
       setselected("Ludo");
     }
-    if (parent) {
-      setoptions([]);
-    } else if (kid) {
-      setoptionsbackup([
-        "Overall",
-        "Quiz",
-        "Money Ace",
-        "Stock Market Simulator",
-      ]);
-      setoptions(["Quiz", "Money Ace", "Stock Market Simulator"]);
-    } else {
-      setoptions(optionsbackup.filter((item) => item !== selected));
-    }
   }, []);
 
   return (
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
-        <p className={`${styles.heading} ${styles.selected}`}>{selected}</p>
+        {/* <p className={`${styles.heading} ${styles.selected}`}>{selected}</p> */}
         {options.map((item) => (
           <p
-            className={styles.heading}
+            className={`${styles.heading} ${
+              selected === item && styles.selected
+            }`}
             key={item}
             onClick={() => {
               changeleaderboard(item);

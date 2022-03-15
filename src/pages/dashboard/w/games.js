@@ -129,7 +129,7 @@ function Games({ userdatafromserver, token }) {
               <div className={styles.right}>
                 <p className={styles.name}>Money Ace</p>
                 <p className={styles.description}>
-                  {`The purpose of this game is to help users experience and understand the 4 pillars of money management - earn, spend, save, invest. - where the user can go to understand some aspects of money management and play games and games to earn money.`}
+                  {`Our flagship game, Money Ace is India’s first game to give children the chance to understand life, personal finance & investing in an age-relevant manner. Do your chores, take-up side gigs, save money, upskill & invest across 5 FDs, Stock Markets, Gold, Real Estate & Crypto! The users who create the most wealth every week get great rewards!`}
                 </p>
                 <p
                   className={styles.play}
@@ -154,6 +154,7 @@ function Games({ userdatafromserver, token }) {
                             Game_Data[item].name.replace(/ /g, "")
                           )
                         }
+                        reward={200}
                         data={Game_Data[item]}
                         key={"kidcomponent" + index}
                       />
@@ -171,9 +172,8 @@ function Games({ userdatafromserver, token }) {
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
-                      }
+                      onCLick={() => handlegameclick(item)}
+                      reward={200}
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}
                     />

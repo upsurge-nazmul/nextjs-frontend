@@ -2,9 +2,11 @@ import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 import GameSvg from "../SVGcomponents/GameSvg";
+import UnicoinSvg from "../SVGcomponents/UnicoinSvg";
 
-function GameCard({ data, onCLick, cardstyle }) {
+function GameCard({ data, onCLick, cardstyle, reward }) {
   const router = useRouter();
+  if (!data) return null;
   return (
     <div
       className={styles.gameCard}
@@ -13,7 +15,8 @@ function GameCard({ data, onCLick, cardstyle }) {
     >
       <img
         src={
-          (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.jpg`) ||
+          data?.img ||
+          (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
           "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
         }
         alt=""
@@ -25,6 +28,12 @@ function GameCard({ data, onCLick, cardstyle }) {
             ? data?.description.substring(0, 50) + "..."
             : data?.description || ""}
         </p>
+        {reward && (
+          <p className={styles.reward}>
+            <UnicoinSvg className={styles.icon} />
+            {reward}
+          </p>
+        )}
         <div className={styles.chatbtn}>
           Play
           <GameSvg className={styles.icon} />

@@ -46,10 +46,11 @@ export default function WaitList({ res }) {
         <div className={styles.line}></div>
 
         <p className={styles.heading2}>
-          Thank you, you have early access to our platform now.
+          Thank you for joining us on our mission!
         </p>
         <p className={styles.subheading2}>
-          For more information, please check your email.
+          You will receive an email with your login information & next steps in
+          a few days. We can’t wait to have you on upsurge!
         </p>
         <p className={styles.subheading}>
           To stay up to date at all times, follow us on.

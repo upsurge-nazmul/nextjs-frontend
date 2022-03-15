@@ -13,6 +13,7 @@ import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
 import CategoryBar from "../../../../components/Blog/CategoryBar";
+import { getCookie } from "../../../../actions/cookieUtils";
 
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
@@ -59,6 +60,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
     "November",
     "December",
   ];
+  const rewarded = false;
   function sortPosts(cat, index) {
     if (cat !== "All Categories") {
       setSelectedCat(cat);
@@ -110,14 +112,43 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
       inline: "nearest",
     });
   }
+  useEffect(() => {
+    if (rewarded) {
+      window.removeEventListener("scroll", checkposition);
+      return;
+    }
+    let element = document.getElementById("share-div");
+    let removethisonexit = window.addEventListener("scroll", checkposition);
+    function checkposition() {
+      var position = element.getBoundingClientRect();
+      // checking whether fully visible
+      if (position.top >= 0 && position.bottom <= window.innerHeight) {
+        givereward();
+        rewarded = true;
+      }
+    }
+    return () => removethisonexit;
+  }, []);
 
+  async function givereward() {
+    if (rewarded) {
+      return;
+    }
+    let res = await BlogApis.blogreward(
+      { id: router.query.id },
+      getCookie("accesstoken")
+    );
+    if (res && res.data && res.data.success) {
+      console.log("rewarded");
+    }
+  }
   return (
     <div className={styles.blogs}>
       <DashboardLeftPanel type="waitlist" fixed={true} />
       {/* <Toast data={toastdata} /> */}
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <div className={styles.contentWrapper}>
+      <div className={styles.contentWrapper} id="blog-div">
         <DashboardHeader
           mode={mode}
           setmode={setmode}
@@ -160,7 +191,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
                 {RawHTML({ children: getdatafromraw(blogdata.content) })}
               </div>
             </div>
-            <div className={styles.share}>
+            <div className={styles.share} id="share-div">
               Share this post :
               <a
                 href={

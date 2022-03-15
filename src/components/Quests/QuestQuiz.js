@@ -115,16 +115,37 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
 
           <div className={styles.points}>You scored : {score * 100}</div>
 
-          <div
-            className={styles.button}
-            onClick={() => {
-              localStorage.setItem("kq-money-level", Number(level) + 1);
-              setlevel(Number(level) + 1);
-              setmode("map");
-            }}
-          >
-            Finish
-          </div>
+          {score === 0 ? (
+            <div
+              className={styles.button}
+              onClick={() => {
+                setscore(0);
+                setcurrentquestionindex(0);
+                setcompleted(false);
+                setselectedOption(null);
+              }}
+            >
+              Retry
+            </div>
+          ) : (
+            <div
+              className={styles.button}
+              onClick={() => {
+                KnowledgeQuestApi.updatequizdata({
+                  id: "money-quest",
+                  quiz_data: { [quizId]: score },
+                });
+                KnowledgeQuestApi.update({
+                  level: Number(level) + 1,
+                  id: "money-quest",
+                });
+                setlevel(Number(level) + 1);
+                setmode("map");
+              }}
+            >
+              Finish
+            </div>
+          )}
         </div>
       )}
     </div>

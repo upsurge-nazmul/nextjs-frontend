@@ -7,9 +7,29 @@ const getquestions = (payload, token) => {
 const checkanswer = (payload, token) => {
   return ApiCalls.getResponse(`knowledgequest/checkanswer`, payload, token);
 };
+const initiate = (payload, token) => {
+  return ApiCalls.getResponse(`knowledgequest/initiate`, payload, token);
+};
+const update = (payload, token) => {
+  return ApiCalls.putResponse(
+    `knowledgequest/update`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const updatequizdata = (payload, token) => {
+  return ApiCalls.putResponse(
+    `knowledgequest/updatequizdata`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const KidApis = {
   getquestions,
   checkanswer,
+  initiate,
+  update,
+  updatequizdata,
 };
 
 export default KidApis;
