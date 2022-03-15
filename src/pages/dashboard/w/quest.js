@@ -5,23 +5,11 @@ import Toast from "../../../components/Toast";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../../styles/Quest/questpage.module.scss";
-import RequestsAndHistorySection from "../../../components/ParentStore/RequestsAndHistorySection";
-import LiveClassSection from "../../../components/ParentStore/LiveClassSection";
-import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
-import VoucherSection from "../../../components/ParentStore/VoucherSection";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
-import ApproveModal from "../../../components/ParentStore/ApproveModal";
-import AvailableAvatarSection from "../../../components/KidStore/AvailableAvatarSection";
 import RequestModal from "../../../components/KidStore/RequestModal";
-import ChoreApis from "../../../actions/apis/ChoreApis";
 import { useContext } from "react";
 import { MainContext } from "../../../context/Main";
-import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
-import PeopleSvg from "../../../components/SVGcomponents/PeopleSvg";
-import ProjectSvg from "../../../components/SVGcomponents/ProjectSvg";
-import IslandSvg from "../../../components/SVGcomponents/IslandSvg";
-import Island2Svg from "../../../components/SVGcomponents/Island2Svg";
-import BoatSvg from "../../../components/SVGcomponents/BoatSvg";
+import BoatIcon from "../../../components/SVGcomponents/BoatIcon";
 import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
 const democoncepts = [
@@ -220,7 +208,7 @@ export default function KidStore({
                   >
                     Activity/Quiz
                   </p>
-                  <BoatSvg
+                  <BoatIcon
                     id="boat"
                     className={`${styles.boat} ${
                       styles["boat" + currentlevel]

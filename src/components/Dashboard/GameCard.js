@@ -2,7 +2,7 @@ import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 import GameSvg from "../SVGcomponents/GameSvg";
-import UnicoinSvg from "../SVGcomponents/UnicoinSvg";
+import UnicoinSvg from "../SVGcomponents/UniCoinSvg";
 
 function GameCard({ data, onCLick, cardstyle, reward }) {
   const router = useRouter();

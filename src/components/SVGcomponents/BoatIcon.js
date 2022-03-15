@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BoatSvg({ className, onClick }) {
+export default function BoatIcon({ className, onClick }) {
   return (
     <svg
       width="515"
