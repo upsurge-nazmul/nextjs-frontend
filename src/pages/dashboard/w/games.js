@@ -116,6 +116,12 @@ function Games({ userdatafromserver, token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <p className={styles.gameheading}>About upsurge games</p>
+            <p
+              className={styles.description}
+            >{`On upsurge, children (and parents) are encouraged to play games based on topics around entrepreneurship & money management, so that they can learn by doing and making decisions. 
+Here are some of our games that you and your child can play together. 
+`}</p>
             <div className={styles.banner}>
               {showvideomodal && (
                 <VideoModal

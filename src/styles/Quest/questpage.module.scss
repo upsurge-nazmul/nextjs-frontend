@@ -89,17 +89,29 @@
           .about,
           .content {
             margin-top: 10px;
-            font-family: "Roboto";
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 400;
+            line-height: 24px;
+          }
+          .contentDetails {
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+            .contentheading {
+              font-size: 20px;
+              font-weight: 600;
+            }
+            .contentdes {
+              margin-top: 2px;
+              font-size: 16px;
+              font-weight: 400;
+            }
           }
           .map {
             width: 100%;
             margin-top: 20px;
-            aspect-ratio: 16/9;
             display: flex;
             position: relative;
-            overflow-y: auto;
             align-items: flex-start;
             .stamp {
               position: absolute;
@@ -133,24 +145,24 @@
               color: rgb(0, 61, 18);
             }
             .kqc1 {
-              bottom: -7%;
+              bottom: 10%;
               width: 160px;
               right: 38%;
             }
             .kqc2 {
-              bottom: 12%;
+              bottom: 30%;
               right: 52%;
             }
             .kqc3 {
-              bottom: 33%;
+              bottom: 50%;
               right: 65%;
             }
             .kqc4 {
-              bottom: 55%;
+              bottom: 65%;
               right: 42%;
             }
             .kqc5 {
-              bottom: 12%;
+              bottom: 32%;
               width: 160px;
               right: 5%;
             }
@@ -178,7 +190,7 @@
               right: 50%;
             }
             .boat3 {
-              bottom: -5%;
+              bottom: 20%;
               right: 85%;
               transform: rotateY(180deg);
             }
@@ -284,6 +296,9 @@
               filter: grayscale(100%);
             }
           }
+          .course {
+            aspect-ratio: 16/9;
+          }
           .blockscroll {
             overflow-y: hidden;
           }
@@ -320,6 +335,7 @@
           .buttonwrapper {
             display: flex;
             justify-content: flex-end;
+            margin-top: 20px;
             .bookmarkbutton {
               width: 129px;
               height: 42px;

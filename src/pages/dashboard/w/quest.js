@@ -13,13 +13,13 @@ import BoatIcon from "../../../components/SVGcomponents/BoatIcon";
 import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
 const democoncepts = [
-  "Investing",
-  "Saving",
-  "Assets",
-  "Credit Cards",
-  "Debit Cards",
-  "Banking",
   "Money",
+  "Currency",
+  "Banking",
+  "Payments",
+  "Money Management",
+  "Quiz",
+  "Activity",
 ];
 export default function KidStore({
   isLogged,
@@ -44,6 +44,32 @@ export default function KidStore({
     name: "",
     price: "",
   });
+  const content = [
+    {
+      name: "Money & Barter System",
+      des: "Children will understand how & why Money was invented, it’s evolution, and uses",
+    },
+    {
+      name: "Money & Barter System - Activity",
+      des: "Children will understand how & why Money was invented, it’s evolution, and uses",
+    },
+    {
+      name: "Ira goes to the bank",
+      des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
+    },
+    {
+      name: "Ira goes to the bank - Activity",
+      des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
+    },
+    {
+      name: "How to manage your money",
+      des: "Children will understand how & why Money was invented, it’s evolution, and uses ",
+    },
+    {
+      name: "How to manage your money - Activity",
+      des: "Children will understand how & why Money was invented, it’s evolution, and uses ",
+    },
+  ];
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -73,7 +99,7 @@ export default function KidStore({
               alt=""
             />
             <div className={styles.right}>
-              <p className={styles.questheading}>Money Quest</p>
+              <p className={styles.questheading}>upsurge Quest</p>
               <p className={styles.age}>Age 10-16</p>
               {/* <div className={styles.details}>
                 <div className={styles.students}>
@@ -95,21 +121,22 @@ export default function KidStore({
             <div className={styles.left}>
               <p className={styles.heading}>About the Quest</p>
               <p className={styles.about}>
-                {`Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, But also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.`}
+                {`This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.`}
               </p>
               <p className={styles.heading}>Knowledge Quest Content</p>
               <p className={styles.content}>
                 Follow the course content to learn more about Investing.
               </p>
+              {questmode !== "map" && (
+                <div className={styles.contentDetails}>
+                  <p className={styles.contentheading}>
+                    {content[currentlevel - 1].name}
+                  </p>
+                  <p className={styles.contentdes}>
+                    {content[currentlevel - 1].des}
+                  </p>
+                </div>
+              )}
               {questmode === "map" ? (
                 <div
                   className={`${styles.map} ${
@@ -140,7 +167,7 @@ export default function KidStore({
                       setquestmode("KnowingYourMoney");
                     }}
                   >
-                    Course - Introduction to money
+                    {`Money & Barter System`}
                   </p>
                   <p
                     id="kqc2"
@@ -155,7 +182,7 @@ export default function KidStore({
                       setquestmode("quiz");
                     }}
                   >
-                    Money Quiz
+                    Activity
                   </p>
                   <p
                     id="kqc3"
@@ -192,7 +219,7 @@ export default function KidStore({
                       currentlevel == 5 && styles.activekqc
                     } ${currentlevel > 5 && styles.completedkqc}`}
                   >
-                    Introduction to Money Management
+                    How to manage your money
                   </p>
                   <p
                     className={`${styles.kqc} ${styles.kqc6}  ${
@@ -206,7 +233,7 @@ export default function KidStore({
                       setquestmode("quiz");
                     }}
                   >
-                    Activity/Quiz
+                    Activity
                   </p>
                   <BoatIcon
                     id="boat"
@@ -225,7 +252,7 @@ export default function KidStore({
               ) : (
                 <iframe
                   id="iframe"
-                  className={styles.map}
+                  className={`${styles.map} ${styles.course}`}
                   src={
                     questmode === "KnowingYourMoney"
                       ? "/quests/KnowingYourMoney/story.html"
@@ -269,26 +296,6 @@ export default function KidStore({
               )}
             </div>
             <div className={styles.right}>
-              <div className={styles.buttonwrapper}>
-                {/* <div className={styles.bookmarkbutton}>
-                <BookMarkSvg />
-                Bookmark
-              </div> */}
-                <div
-                  className={styles.startbutton}
-                  onClick={() => {
-                    setquestmode("KnowingYourMoney");
-                    let elemnt = document.getElementById("iframe");
-                    if (!elemnt) {
-                      elemnt = document.getElementById("map");
-                    }
-                    elemnt = elemnt.offsetTop;
-                    window.scrollTo({ top: elemnt - 250, behavior: "smooth" });
-                  }}
-                >
-                  Start quest
-                </div>
-              </div>
               <div className={styles.details}>
                 {/* <div className={styles.section}>
                   <p className={styles.number}>34</p>
@@ -312,6 +319,22 @@ export default function KidStore({
                     </div>
                   );
                 })}
+              </div>
+              <div className={styles.buttonwrapper}>
+                <div
+                  className={styles.startbutton}
+                  onClick={() => {
+                    setquestmode("KnowingYourMoney");
+                    let elemnt = document.getElementById("iframe");
+                    if (!elemnt) {
+                      elemnt = document.getElementById("map");
+                    }
+                    elemnt = elemnt.offsetTop;
+                    window.scrollTo({ top: elemnt - 250, behavior: "smooth" });
+                  }}
+                >
+                  Start quest
+                </div>
               </div>
             </div>
           </div>
