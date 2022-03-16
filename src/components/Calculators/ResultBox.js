@@ -55,12 +55,6 @@ function ResultBox({
                 className={styles.inputbox}
                 value={resultdata.result2}
                 onChange={(e) => {
-                  if (
-                    resultdata.max2 &&
-                    changetoint(e.target.value) > resultdata.max2
-                  ) {
-                    return;
-                  }
                   setediteddata((prev) => ({
                     ...prev,
                     [resultdata.changecode2]: e.target.value,
@@ -95,12 +89,6 @@ function ResultBox({
                 className={styles.inputbox}
                 value={resultdata.result3 === "NaN" ? 0 : resultdata.result3}
                 onChange={(e) => {
-                  if (
-                    resultdata.max3 &&
-                    changetoint(e.target.value) > resultdata.max3
-                  ) {
-                    return;
-                  }
                   setediteddata((prev) => ({
                     ...prev,
                     [resultdata.changecode3]: e.target.value,
