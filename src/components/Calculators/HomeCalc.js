@@ -164,11 +164,7 @@ export default function HomeCalc({ data, seterror, error }) {
   }, [editedata]);
 
   function emi() {
-    if (
-      editedata &&
-      editedata.principal !== undefined &&
-      editedata.principal !== null
-    ) {
+    if (editedata) {
       if (editedata.principal === "") {
         seterror("Indicative value cannot be null");
       }

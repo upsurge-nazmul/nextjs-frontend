@@ -23,12 +23,6 @@ function ResultBox({
               className={styles.inputbox}
               value={resultdata.result1}
               onChange={(e) => {
-                if (
-                  resultdata.max1 &&
-                  changetoint(e.target.value) > resultdata.max1
-                ) {
-                  return;
-                }
                 setediteddata((prev) => ({
                   ...prev,
                   [resultdata.changecode1]: e.target.value,

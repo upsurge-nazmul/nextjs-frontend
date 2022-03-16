@@ -69,14 +69,13 @@ export default function GamePage({ gamedata }) {
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
+  const [isfullscreen, setisfullscreen] = useState(false);
   const router = useRouter();
-  const [info, setinfo] = useState({
-    device: "computer",
-    orientation: "desktop",
-  });
+  const [showpopup, setshowpopup] = useState(false);
   const { gameid, id } = router.query;
   function handleOnClickFullscreen() {
     unitycontext.setFullscreen(true);
+    setisfullscreen(true);
   }
   const gamesWithAuth = ["Ludo", "FinCricket"];
   useEffect(() => {
@@ -242,7 +241,7 @@ export default function GamePage({ gamedata }) {
       seterror("Please enter valid email address");
       return;
     }
-    if (phone && !validator.isMobilePhone(phone)) {
+    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
       seterror("Please enter valid phone number");
       return;
     }
@@ -288,6 +287,7 @@ export default function GamePage({ gamedata }) {
     },
     [unitycontext]
   );
+
   return (
     <div className={styles.gamePage}>
       <Header
@@ -295,12 +295,40 @@ export default function GamePage({ gamedata }) {
         showauth={showauth}
         stickyheader={widthHeight.width > 860 ? stickyheader : false}
         setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <div className={styles.gameWrapper}>
+      {unitycontext &&
+      progression === 1 &&
+      widthHeight.width <= 860 &&
+      widthHeight.height < widthHeight.width ? (
+        <div className={styles.start}>
+          <p className={styles.btn} onClick={handleOnClickFullscreen}>
+            Start
+          </p>
+        </div>
+      ) : (
+        widthHeight.width <= 860 && (
+          <div className={styles.mobilespinner}>
+            <Spinner
+              progress={`${progression * 100}%`}
+              additionalClass={styles.loader}
+              color="#4266EB"
+            />
+            <p>Loading {Math.round(progression * 100)}%</p>
+          </div>
+        )
+      )}
+      <div
+        className={`${styles.gameWrapper} ${
+          widthHeight.width <= 860 && styles.mobilewrapper
+        }`}
+        id="unity-wrapper"
+      >
         {/*  */}
         {showgame && progression < 1 && (
           <div className={styles.loaderwrapper}>
@@ -312,15 +340,12 @@ export default function GamePage({ gamedata }) {
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
         )}
-        {widthHeight.width < 860 ? (
+        {widthHeight.width < 860 && widthHeight.height > widthHeight.width ? (
           <div className={styles.mobileerr}>
             <div className={styles.box}>
               <BrokenGameConroller className={styles.jasper} />
-              <p className={styles.heading}>Oh no!</p>
-              <p>
-                {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
-              </p>
+              <p className={styles.heading}>Please switch to landscape mode</p>
+              <p>{`This game only playable in landscape mode.`}</p>
               <div className={styles.button} onClick={() => router.push("/")}>
                 Go back
               </div>
@@ -328,7 +353,7 @@ export default function GamePage({ gamedata }) {
 
             {/* <Jasper className={styles.jasper} /> */}
           </div>
-        ) : gamedata && !showgame ? (
+        ) : gamedata && !showgame && widthHeight.width > 860 ? (
           <div className={styles.gamedata}>
             <div className={styles.left}>
               <p className={styles.heading}>We need a few more details</p>
@@ -407,6 +432,17 @@ export default function GamePage({ gamedata }) {
             className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
               removeBorder ? styles.removeborder : ""
             }`}
+            style={
+              widthHeight.width > 860
+                ? {
+                    visibility: "visible",
+                  }
+                : {
+                    visibility: isfullscreen ? "visible" : "hidden",
+                    position: !isfullscreen ? "absolute" : "static",
+                    pointerEvents: !isfullscreen ? "none" : "unset",
+                  }
+            }
             unityContext={unitycontext}
             matchWebGLToCanvasSize={true}
           />
