@@ -10,6 +10,8 @@ import NotificationBell from "../SVGcomponents/NotificationBell";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import Menu from "./Menu";
 import NotificationMenu from "./NotificationMenu";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { UniCoinValue } from "../../../config";
 
 function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
@@ -43,6 +45,16 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
         )}
       </h1>
       <div className={styles.rightWrapper}>
+        <div className={styles.rewardBlock}>
+          <UniCoinSvg className={styles.svg} />
+          <p className={styles.number}>
+            {userdata?.num_unicoins
+              ? userdata?.num_unicoins > UniCoinValue
+                ? userdata.num_unicoins / UniCoinValue + "K"
+                : userdata.num_unicoins
+              : 0}
+          </p>
+        </div>
         {
           <div
             id="notification-btn"

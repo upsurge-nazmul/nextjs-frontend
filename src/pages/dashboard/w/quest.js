@@ -12,6 +12,8 @@ import { MainContext } from "../../../context/Main";
 import BoatIcon from "../../../components/SVGcomponents/BoatIcon";
 import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
+import GameApis from "../../../actions/apis/GameApis";
+import GameFrame from "../../../components/Quests/GameFrame";
 const democoncepts = [
   "Money",
   "Currency",
@@ -22,8 +24,7 @@ const democoncepts = [
   "Activity",
 ];
 export default function KidStore({
-  isLogged,
-  msg,
+  gamedata,
   userdatafromserver,
   levelfromserver,
 }) {
@@ -33,6 +34,7 @@ export default function KidStore({
   const { userdata, setuserdata } = useContext(MainContext);
   const [currentlevel, setcurrentlevel] = useState(levelfromserver);
   const router = useRouter();
+  const [showgame, setshowgame] = useState(false);
   const [showmodal, setshowmodal] = useState(false);
   const [quizId, setquizId] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -73,13 +75,14 @@ export default function KidStore({
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
-  useEffect(() => {
-    let parent = document.getElementById("map");
-    let child = document.getElementById("kqc" + currentlevel);
-    if (parent && child) {
-      scrollParentToChild(parent, child, 100);
-    }
-  }, [questmode]);
+  // useEffect(() => {
+  //   if (questmode === map) return;
+  //   let parent = document.getElementById("quest-main");
+  //   let child = document.getElementById("map");
+  //   if (parent && child) {
+  //     scrollParentToChild(parent, child, 0);
+  //   }
+  // }, [questmode]);
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="waitlist" />
@@ -92,7 +95,7 @@ export default function KidStore({
       />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        <div className={styles.mainContent}>
+        <div className={styles.mainContent} id="quest-main">
           <div className={styles.mainhead}>
             <img
               src="https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
@@ -123,6 +126,16 @@ export default function KidStore({
               <p className={styles.about}>
                 {`This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.`}
               </p>
+              <p className={styles.heading}>Concepts Covered</p>
+              <div className={styles.conceptswrapper}>
+                {democoncepts.map((concept, index) => {
+                  return (
+                    <div className={styles.concept} key={"concept" + index}>
+                      {concept}
+                    </div>
+                  );
+                })}
+              </div>
               <p className={styles.heading}>Knowledge Quest Content</p>
               <p className={styles.content}>
                 Follow the course content to learn more about Investing.
@@ -144,7 +157,7 @@ export default function KidStore({
                   }`}
                   id="map"
                 >
-                  {currentlevel >= 6 && (
+                  {currentlevel > 6 && (
                     <img
                       className={styles.stamp}
                       src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
@@ -229,8 +242,8 @@ export default function KidStore({
                       if (!(currentlevel >= 6)) {
                         return;
                       }
-                      setquizId("debit-credit-card");
-                      setquestmode("quiz");
+                      setshowgame(true);
+                      setquestmode("game");
                     }}
                   >
                     Activity
@@ -249,6 +262,8 @@ export default function KidStore({
                   setmode={setquestmode}
                   level={currentlevel}
                 />
+              ) : showgame ? (
+                <GameFrame gamedata={gamedata} setmode={setquestmode} />
               ) : (
                 <iframe
                   id="iframe"
@@ -260,7 +275,7 @@ export default function KidStore({
                   }
                 ></iframe>
               )}
-              {questmode !== "map" && (
+              {(questmode !== "map" || showgame) && (
                 <div className={styles.buttons}>
                   <div
                     className={styles.button}
@@ -268,7 +283,7 @@ export default function KidStore({
                   >
                     Go back
                   </div>
-                  {questmode !== "quiz" && (
+                  {questmode !== "quiz" && currentlevel < 7 && (
                     <div
                       className={styles.button}
                       onClick={() => {
@@ -286,6 +301,14 @@ export default function KidStore({
                           });
                           setcurrentlevel(2);
                         }
+                        if (questmode === "game") {
+                          KnowledgeQuestApi.update({
+                            level: 7,
+                            id: "money-quest",
+                          });
+                          setcurrentlevel(7);
+                          setshowgame(false);
+                        }
                         setquestmode("map");
                       }}
                     >
@@ -294,48 +317,6 @@ export default function KidStore({
                   )}
                 </div>
               )}
-            </div>
-            <div className={styles.right}>
-              <div className={styles.details}>
-                {/* <div className={styles.section}>
-                  <p className={styles.number}>34</p>
-                  <p className={styles.name}>session</p>
-                </div> */}
-                <div className={styles.section}>
-                  <p className={styles.number}>3</p>
-                  <p className={styles.name}>Courses</p>
-                </div>
-                <div className={styles.section}>
-                  <p className={styles.number}>3</p>
-                  <p className={styles.name}>Activities</p>
-                </div>
-              </div>
-              <p className={styles.heading}>Concepts Covered</p>
-              <div className={styles.conceptswrapper}>
-                {democoncepts.map((concept, index) => {
-                  return (
-                    <div className={styles.concept} key={"concept" + index}>
-                      {concept}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className={styles.buttonwrapper}>
-                <div
-                  className={styles.startbutton}
-                  onClick={() => {
-                    setquestmode("KnowingYourMoney");
-                    let elemnt = document.getElementById("iframe");
-                    if (!elemnt) {
-                      elemnt = document.getElementById("map");
-                    }
-                    elemnt = elemnt.offsetTop;
-                    window.scrollTo({ top: elemnt - 250, behavior: "smooth" });
-                  }}
-                >
-                  Start quest
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -365,7 +346,7 @@ export async function getServerSideProps({ params, req }) {
         { id: "money-quest" },
         token
       );
-      console.log(level.data);
+      let gamedata = await GameApis.gamedata({ id: "NeedOrWant" });
       return {
         props: {
           isLogged: true,
@@ -374,6 +355,10 @@ export async function getServerSideProps({ params, req }) {
             level && level.data && level.data.success
               ? level.data.data.level
               : 1,
+          gamedata:
+            gamedata && gamedata?.data && gamedata?.data.success
+              ? gamedata.data.data
+              : null,
         },
       };
     }

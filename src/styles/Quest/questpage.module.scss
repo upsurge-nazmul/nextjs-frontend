@@ -79,12 +79,26 @@
         display: flex;
         .left {
           flex: 1;
-          margin-right: 40px;
           .heading {
             color: #4166eb;
             margin-top: 20px;
             font-size: 24px;
             font-weight: 600;
+          }
+          .conceptswrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            margin-top: 20px;
+            gap: 20px;
+            .concept {
+              width: fit-content;
+              height: fit-content;
+              padding: 8px 15px;
+              background: #f4f5f7;
+              border: 0.5px solid #9d9d9d;
+              border-radius: 4px;
+            }
           }
           .about,
           .content {
@@ -142,6 +156,7 @@
             }
             .completedkqc {
               background-color: rgb(81, 235, 102);
+              cursor: pointer;
               color: rgb(0, 61, 18);
             }
             .kqc1 {
@@ -186,27 +201,27 @@
               right: 22%;
             }
             .boat2 {
-              bottom: 25%;
-              right: 50%;
+              bottom: 20%;
+              right: 65%;
             }
             .boat3 {
-              bottom: 20%;
-              right: 85%;
+              bottom: 44%;
+              right: 56%;
               transform: rotateY(180deg);
             }
             .boat4 {
-              bottom: 50%;
-              right: 55%;
+              bottom: 40%;
+              right: 45%;
               transform: rotateY(180deg);
             }
             .boat5 {
-              bottom: 2%;
-              right: 25%;
+              bottom: 12%;
+              right: 22%;
               transform: rotateY(180deg);
             }
             .boat6 {
-              bottom: 60%;
-              right: 20%;
+              bottom: 68%;
+              right: 18%;
             }
             .island1 {
               position: absolute;

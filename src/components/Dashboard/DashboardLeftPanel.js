@@ -201,6 +201,18 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab} ${
+              currenttab === "/dashboard/w/quiz" ||
+              currenttab.indexOf("/dashboard/w/quiz") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/quiz")}
+          >
+            <QuizIconSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Money Quotient</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
               currenttab === "/dashboard/w/games" ||
               currenttab.indexOf("dashboard/w/game") !== -1
                 ? styles.activetab
@@ -212,6 +224,20 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
 
             <p className={styles.tabtitle}>Games</p>
           </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/leaderboards" ||
+              currenttab.indexOf("/dashboard/w/leaderboards") !== -1
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/leaderboards")}
+          >
+            <LeaderboardSvg className={styles.icon} />
+
+            <p className={styles.tabtitle}>Leaderboards</p>
+          </div>
+
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
@@ -235,9 +261,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             currenttab={currenttab}
             isActive={
               currenttab.indexOf("/dashboard/w/blog") !== -1 ||
-              currenttab.indexOf("/dashboard/w/calculator") !== -1 ||
-              currenttab.indexOf("/dashboard/w/quiz") !== -1 ||
-              currenttab.indexOf("/dashboard/w/leaderboards") !== -1
+              currenttab.indexOf("/dashboard/w/calculator") !== -1
             }
             items={[
               {
@@ -249,16 +273,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 name: "Calculators",
                 pushto: "/dashboard/w/calculators",
                 icon: <CalcSvg />,
-              },
-              {
-                name: "Quiz",
-                pushto: "/dashboard/w/quiz",
-                icon: <QuizIconSvg />,
-              },
-              {
-                name: "Leaderboards",
-                pushto: "/dashboard/w/leaderboards",
-                icon: <LeaderboardSvg />,
               },
             ]}
             icon={<AssessmentOutlinedIcon />}

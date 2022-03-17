@@ -270,8 +270,8 @@ export default function GamePage({ gamedata }) {
   useEffect(
     function () {
       if (!unitycontext) return;
-      unitycontext.on("GameOver", function (userName, score) {
-        console.log(userName, score);
+      unitycontext.on("Score", function (score) {
+        console.log(score);
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
