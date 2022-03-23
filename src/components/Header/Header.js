@@ -143,8 +143,8 @@ function Header({
             ]}
           />
         </div>
-        <div className={styles.signin} onClick={() => setshowpopup(true)}>
-          Join us
+        <div className={styles.signin} onClick={() => setshowauth(true)}>
+          Sign in
         </div>
       </div>
     </div>

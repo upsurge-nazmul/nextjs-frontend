@@ -15,7 +15,7 @@ function AuthHeader({ handleBack, setmode, mode }) {
             : "Signup"
           : "Login"}
       </p>
-      {mode !== "reset" &&
+      {/* {mode !== "reset" &&
         (mode === "login" ? (
           <p className={styles.changemode}>
             No Account?{" "}
@@ -26,7 +26,7 @@ function AuthHeader({ handleBack, setmode, mode }) {
             Already have an account?{" "}
             <span onClick={() => setmode("login")}>Sign In</span>
           </p>
-        ))}
+        ))} */}
     </div>
   );
 }
