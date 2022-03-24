@@ -54,6 +54,12 @@ function Header({
       {showticker && (
         <div className={styles.ticker}>
           <p>Join our Early Access program today to win exciting prizes!</p>
+          <div
+            className={styles.btn}
+            onClick={() => router.push("/earlyaccess")}
+          >
+            Explore
+          </div>
           <CloseRoundedIcon
             className={styles.cross}
             onClick={() => setshowticker(false)}

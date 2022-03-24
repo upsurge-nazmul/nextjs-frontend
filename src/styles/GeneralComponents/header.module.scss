@@ -18,6 +18,19 @@
     font-size: 16px;
     align-items: center;
     font-weight: 500;
+    .btn {
+      font-size: 14px;
+      border-radius: 5px;
+      margin-left: 10px;
+      background-color: rgb(255, 255, 255);
+      color: #4166eb;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.829);
+      }
+    }
     .cross {
       position: absolute;
       right: 40px;
