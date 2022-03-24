@@ -25,7 +25,7 @@ export default function Blogs({
   userdatafromserver,
 }) {
   const router = useRouter();
-  const [mode, setmode] = useState("Blogs");
+  const [mode, setmode] = useState("");
 
   const [toastdata, settoastdata] = useState({
     show: false,

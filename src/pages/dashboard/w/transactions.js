@@ -13,7 +13,7 @@ export default function Transactions({ userdatafromserver, vouchers }) {
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState("Transactions");
+  const [mode, setmode] = useState("");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);

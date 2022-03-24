@@ -10,6 +10,7 @@ import PartnerSection from "../../../components/Home/PartnerSection";
 import Curve1 from "../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../components/SVGcomponents/Curve2";
 import TickSvg from "../../../components/SVGcomponents/TickSvg";
+import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
 import Toast from "../../../components/Toast";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/rewardspage.module.scss";
@@ -21,8 +22,9 @@ export default function Rewards({ userdatafromserver, vouchers }) {
   });
   const data = [
     {
-      name: "1-10",
+      name: "1-5",
       benefits: [
+        "3 months of free access to upsurge",
         "Finance master class",
         "Financial dictionary",
         "upsurge cap & bottle",
@@ -30,8 +32,9 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       ],
     },
     {
-      name: "11-60",
+      name: "6-25",
       benefits: [
+        "Get annual subscription at ₹2399",
         "Financial dictionary",
         "upsurge cap",
         "upsurge bottle",
@@ -39,8 +42,19 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       ],
     },
     {
-      name: "61-160",
+      name: "26-100",
       benefits: [
+        "Get annual subscription at ₹2999",
+        "Avail discount on joining upsurge",
+        "Earn bonus unicoins",
+        "Other exciting rewards",
+        "20% discount on yearly subscription",
+      ],
+    },
+    {
+      name: "100+",
+      benefits: [
+        "Get annual subscription at ₹3599",
         "Avail discount on joining upsurge",
         "Earn bonus unicoins",
         "Other exciting rewards",
@@ -48,12 +62,22 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       ],
     },
   ];
-
+  const annualpricing = [
+    "Knowledge Quests",
+    "Games Arena",
+    "Chore Management",
+    "Family Fun Games & Activities",
+    "2,500 UniCoin Bonus - Redeemable for discount vouchers",
+    "Higher Education Counselling Masterclass",
+    "1 free session with your choice of an expert from our panel",
+    "Rich Dad, Poor Dad - the personal finance bible & more fun goodies!",
+    ,
+  ];
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const [mode, setmode] = useState("Rewards");
+  const [mode, setmode] = useState("");
   const [user_unicoin, setuser_unicoin] = useState(
     Number(userdatafromserver.num_unicoins) || 0
   );
@@ -76,25 +100,21 @@ export default function Rewards({ userdatafromserver, vouchers }) {
           <div className={styles.des}>
             <p className={styles.desheading}>upsurge reward program</p>
             <p className={styles.description}>
-              {`It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).`}
+              {`At upsurge, everything is a game and you can win rewards everywhere!
+Explore our platform and collect as many UniCoins by playing the games, taking the money quotient quiz, completing the knowledge quest & inviting your friends.
+`}
             </p>
-            <p className={styles.descriptionbold}>
+            <p className={styles.description}>
+              {`Not only do you stand a chance to win all the prizes below, but you will also retain all the UniCoins you’ve earned when you join upsurge.
+`}
+            </p>
+            {/* <p className={styles.descriptionbold}>
               {`* You can increase your rank by playing games, completing knowledge quests, playing money quotient, reading blogs, inviting friends etc.`}
             </p>
             <p className={styles.descriptionbold}>
               {`* All the UniCoins collected during earlyaccess, will be given as bonus on joining upsurge.`}
-            </p>
+            </p> */}
           </div>
-          <PartnerSection dashboard={true} />
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Know more about your Early Access rewards.
           </p>
@@ -129,7 +149,36 @@ export default function Rewards({ userdatafromserver, vouchers }) {
               );
             })}
           </div>
+          <div className={styles.des2}>
+            <p className={styles.desheading}>Benefits of annual subscription</p>
+            <div className={styles.wrapper}>
+              {annualpricing.map((item) => {
+                return <p id={item}>{item}</p>;
+              })}
+            </div>
+          </div>
+          <div className={styles.des3}>
+            <div className={styles.coinbg}>
+              <img src="https://i.ibb.co/JQSknVG/coinfalling.png" alt="" />
+            </div>
+            <p className={styles.desheading}>
+              UniCoins
+              <UniCoinSvg className={styles.icon} />
+            </p>
+            <p className={styles.description}>
+              UniCoin is the currency you earn throughout upsurge, by completing
+              quests, chores & games, & which you can redeem across a catalogue
+              of brands like the ones listed below.
+            </p>
+            <p className={styles.description}>
+              We also have a panel of upsurge Gurus, (experts in college
+              admissions, career development, fitness, dance, music, etc.) you
+              can avail free sessions with using UniCoins.
+            </p>
+          </div>
+          <PartnerSection dashboard={true} />
         </div>
+
         <DashboardFooter />
       </div>
     </div>

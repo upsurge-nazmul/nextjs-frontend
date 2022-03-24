@@ -21,7 +21,7 @@ export default function Contact({ userdatafromserver }) {
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState("Faqs");
+  const [mode, setmode] = useState("");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);

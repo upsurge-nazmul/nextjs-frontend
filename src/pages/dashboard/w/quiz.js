@@ -26,7 +26,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
   const [currentcolor, setcurrentcolor] = useState(0);
   const [name, setname] = useState(userdatafromserver?.first_name || "");
   const [nickname, setnickname] = useState("");
-  const [mode, setmode] = useState("Quiz");
+  const [mode, setmode] = useState("");
   const [phone, setphone] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -188,16 +188,16 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
               </li>
               <li
                 className={styles.text}
-              >{`You will get 10 UniCoins if your score is between 1% and 40%`}</li>
+              >{`You will get 100 UniCoins if your score is between 1% and 40%`}</li>
               <li
                 className={styles.text}
-              >{`You will get 25 UniCoins if your score is between 41% and 80%`}</li>
+              >{`You will get 250 UniCoins if your score is between 41% and 80%`}</li>
               <li
                 className={styles.text}
-              >{`You will get 50 UniCoins if your score is between 81% and 99%`}</li>
+              >{`You will get 500 UniCoins if your score is between 81% and 99%`}</li>
               <li
                 className={styles.text}
-              >{`You will get 60 UniCoins if your score is 100%`}</li>
+              >{`You will get 600 UniCoins if your score is 100%`}</li>
               <li className={styles.text}>
                 {`Let's start and see how you do on our Money Quotient Don't forget
               to enjoy and learn ;)`}

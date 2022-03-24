@@ -29,7 +29,7 @@ export default function KidStore({
   levelfromserver,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const [mode, setmode] = useState("Knowledge Quest");
+  const [mode, setmode] = useState("");
   const [questmode, setquestmode] = useState("map");
   const { userdata, setuserdata } = useContext(MainContext);
   const [currentlevel, setcurrentlevel] = useState(levelfromserver);
@@ -116,8 +116,7 @@ export default function KidStore({
               </div> */}
             </div>
             <div className={styles.creditandweeks}>
-              <p className={styles.weeks}>2 weeks</p>
-              <p className={styles.credits}>200 UniCoins</p>
+              <p className={styles.credits}>1000 UniCoins</p>
             </div>
           </div>
           <div className={styles.mainwrapper}>

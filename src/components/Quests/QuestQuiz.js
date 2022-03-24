@@ -133,7 +133,7 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
               onClick={() => {
                 KnowledgeQuestApi.updatequizdata({
                   id: "money-quest",
-                  quiz_data: { [quizId]: score },
+                  score,
                 });
                 KnowledgeQuestApi.update({
                   level: Number(level) + 1,

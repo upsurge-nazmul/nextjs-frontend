@@ -20,7 +20,7 @@ import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
 function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   const router = useRouter();
   const [openFull, setOpenFull] = useState(false);
-  const [mode, setmode] = useState("Blogs");
+  const [mode, setmode] = useState("");
   const [loading, setloading] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,

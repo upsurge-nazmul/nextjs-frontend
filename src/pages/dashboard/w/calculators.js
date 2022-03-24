@@ -14,7 +14,7 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 
 export default function Calculators({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
-  const [mode, setmode] = useState("Calculators");
+  const [mode, setmode] = useState("");
   const [recent_games, setrecent_games] = useState([]);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({

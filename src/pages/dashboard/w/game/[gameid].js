@@ -42,7 +42,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
-  const [mode, setmode] = useState(gameid);
+  const [mode, setmode] = useState("");
   const { userdata, setuserdata } = useContext(MainContext);
 
   const [info, setinfo] = useState({

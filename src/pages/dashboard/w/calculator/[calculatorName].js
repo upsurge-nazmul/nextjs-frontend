@@ -23,7 +23,7 @@ export default function CalculatorsPage({ userdatafromserver }) {
   const { calculatorName } = router.query;
   const [heading, setHeading] = useState("");
   const [subheading, setSubheading] = useState("");
-  const [mode, setmode] = useState("Calculators");
+  const [mode, setmode] = useState("");
   const { setuserdata } = useContext(MainContext);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({

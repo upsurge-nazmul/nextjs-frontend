@@ -58,7 +58,7 @@ export default function Pricing({ userdatafromserver }) {
       ],
     },
   ];
-  const [mode, setmode] = useState("Pricing");
+  const [mode, setmode] = useState("");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -77,8 +77,7 @@ export default function Pricing({ userdatafromserver }) {
         />
         <div className={styles.mainContent}>
           <p className={styles.heading}>
-            Start your kid’s journey in the <br />
-            finance world today.
+            Start your journey with upsurge today!
           </p>
           <div className={styles.featurewrapper}>
             <div className={styles.feature}>
@@ -87,7 +86,7 @@ export default function Pricing({ userdatafromserver }) {
             </div>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
-              Add upto 5 kids
+              Add upto 3 kids
             </div>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />

@@ -23,7 +23,7 @@ export default function Leaderboards({
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState("Leaderboard");
+  const [mode, setmode] = useState("Early Access Leaderboard");
   const { setuserdata } = useContext(MainContext);
   const router = useRouter();
   useEffect(() => {

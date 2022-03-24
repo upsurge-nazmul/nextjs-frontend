@@ -18,7 +18,7 @@ import { getCookie } from "../../../../actions/cookieUtils";
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
   const [headings, setheadings] = useState([]);
-  const [mode, setmode] = useState("Blogs");
+  const [mode, setmode] = useState("");
   const [scroll, setscroll] = useState(80);
   const [currentsection, setcurrentsection] = useState(null);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
