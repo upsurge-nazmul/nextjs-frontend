@@ -15,8 +15,9 @@
     max-height: 40px;
     justify-content: center;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     align-items: center;
+    font-weight: 500;
     .cross {
       position: absolute;
       right: 40px;
@@ -134,7 +135,7 @@
   .header {
     height: 100px;
     .ticker {
-      font-size: 12px;
+      font-size: 14px;
       padding: 8px;
     }
     .container {
@@ -164,7 +165,7 @@
     z-index: 105;
   }
   .stickywithannouncement {
-    height: 100px;
+    height: 110px;
   }
 }
 

@@ -8,19 +8,26 @@ function Who() {
       <div className={styles.container}>
         <div className={styles.left}>
           <p>
-            Fast Company recently stated, “to change the world, we need a
-            generation of new minds equipped with new ways of thinking. Design
-            thinking can achieve this.”
+            {`upsurge is India’s 1st learning focussed gaming platform that aims
+            to inspire & empower students with modern skills & knowledge, in a
+            fun & experiential way through games, immersive learning & real
+            rewards. We believe in practical learning and have developed our own
+            curriculum & content in collaboration with entrepreneurs, and
+            experiential learning and financial experts.`}
           </p>
           <p>
-            “Five years from now, over one-third of skills (35%) that are
-            considered important in today’s workforce will have changed. Complex
-            problem solving, critical thinking, and creativity will be the top
-            three skills for future jobs” – World Economic Forum
+            {`Starting with entrepreneurship & money management, critical life
+            skills that are ignored in school, we are here to help elevate the
+            next generation & help them achieve their financial success. In
+            fact, money is taught in schools to children as young as 5 in some
+            countries!`}
           </p>
           <p>
-            Our landscape is changing, it’s time to prepare our children and
-            teens for the future.
+            {`Only 25% of Indians are financially literate, and it is our mission
+            to give wings to a financial literacy & entrepreneurship movement in
+            India by equipping and empowering the youth. The world as we know it
+            is evolving, and the earlier we equip our children with these
+            skills, the better!`}
           </p>
         </div>
         <div className={styles.right}>
