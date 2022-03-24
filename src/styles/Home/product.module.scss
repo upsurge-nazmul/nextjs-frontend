@@ -16,10 +16,11 @@
     flex-wrap: wrap;
     justify-items: flex-start;
     justify-content: space-between;
+    gap: 20px;
     .pillar {
-      width: 19vw;
+      width: 25vw;
       border-radius: 8px;
-      padding: 100px 25px 150px;
+      padding: 60px 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,16 +28,23 @@
       cursor: pointer;
       transition: all 0.3s ease;
       .icon {
-        width: 50%;
+        width: 40%;
+        path: {
+          fill: white;
+        }
       }
       .title {
         font-weight: 600;
         margin-top: 50px;
+        text-align: left;
         font-size: 26px;
+        width: 100%;
       }
       .description {
-        font-size: 18px;
-        margin-top: 20px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 10px;
+        text-align: left;
       }
       &:first-child {
         background-color: #17d1bc;
@@ -54,17 +62,45 @@
             rgba(255, 98, 99, 0.22) 0px 15px 12px;
         }
       }
-      &:nth-child(3) {
+      &:last-child {
         background-color: rgb(253, 204, 3);
-        color: black;
+        color: rgb(255, 255, 255);
         &:hover {
           box-shadow: rgba(253, 204, 3, 0.3) 0px 19px 38px,
             rgba(253, 204, 3, 0.22) 0px 15px 12px;
         }
       }
-      &:last-child {
+    }
+  }
+  .wrapper2 {
+    margin-top: 40px;
+    .pillar {
+      .icon {
+        font-size: 20vw;
+        height: fit-content;
+      }
+
+      &:first-child {
         color: rgb(255, 255, 255);
         background-color: rgb(65, 102, 235);
+
+        &:hover {
+          box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+            rgba(65, 102, 235, 0.22) 0px 15px 12px;
+        }
+      }
+      &:nth-child(2) {
+        background-color: rgb(255, 127, 76);
+        color: white;
+        &:hover {
+          box-shadow: rgba(255, 127, 76, 0.781) 0px 19px 38px,
+            rgba(255, 127, 76, 0.432) 0px 15px 12px;
+        }
+      }
+
+      &:last-child {
+        color: rgb(255, 255, 255);
+        background-color: rgb(65, 187, 235);
         &:hover {
           box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
             rgba(65, 102, 235, 0.22) 0px 15px 12px;
@@ -74,37 +110,23 @@
   }
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .productSection {
     .wrapper {
-      justify-content: space-around;
       .pillar {
-        padding-top: 80px;
-        padding-bottom: 100px;
-        margin-bottom: 20px;
         .title {
-          font-size: 20px;
-          height: 50px;
+          font-weight: 600;
+          margin-top: 50px;
+          text-align: left;
+          font-size: 22px;
+          width: 100%;
         }
         .description {
-          font-size: 16px;
+          font-size: 14px;
+          line-height: 24px;
+          margin-top: 10px;
+          text-align: left;
         }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 860px) and (max-height: 800px) {
-  .productSection {
-    .right {
-      .heading {
-        font-size: 36px;
-      }
-      .button {
-        font-size: 16px;
-      }
-      .finance {
-        font-size: 22px;
       }
     }
   }
@@ -128,11 +150,9 @@
       justify-items: flex-start;
       justify-content: space-around;
       .pillar {
-        width: 42vw;
+        width: 100%;
         margin: 0;
-        margin-bottom: 20px;
         border-radius: 8px;
-        padding: 100px 25px 150px;
         display: flex;
         min-width: 300px;
         flex-direction: column;
@@ -141,7 +161,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         .icon {
-          width: 50%;
+          width: 30%;
         }
         .title {
           font-weight: 600;
@@ -186,38 +206,28 @@
         }
       }
     }
+    .wrapper2 {
+      margin-top: 10px;
+    }
   }
 }
 
 @media only screen and (max-width: 700px) {
   .productSection {
     .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-items: flex-start;
-      justify-content: center;
       .pillar {
-        width: 86vw;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        padding: 20px 25px 50px;
-        display: flex;
-        min-width: 300px;
-
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
+        padding: 30px 20px;
         .icon {
-          width: 40%;
+          width: 30%;
         }
         .title {
+          font-size: 18px;
           margin-top: 20px;
         }
         .description {
-          font-size: 14px;
-          margin-top: 10px;
+          font-size: 12px;
+          margin-top: 5px;
+          line-height: 20px;
         }
       }
     }

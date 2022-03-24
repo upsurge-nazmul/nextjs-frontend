@@ -5,40 +5,53 @@ import ProductChoresSvg from "../SVGcomponents/ProductChoresSvg";
 import ProductGameSvg from "../SVGcomponents/ProductGameSvg";
 import ProductPeople from "../SVGcomponents/ProductPeople";
 import QuestSvg from "../SVGcomponents/QuestSvg";
-
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 function ProductSection() {
   const router = useRouter();
   let data = [
     {
-      title: "Knowledge quest",
+      title: "Knowledge Quest",
       pushTo: "/products/quest",
       description:
-        "Interactive courses that cover fundamentals of finance, including earning, budgeting, saving, and investing, and entrepreneurship and include exercises, real-life examples and short quizzes.",
+        "Interactive gamified lessons that cover fundamentals of entrepreneurship & personal finance, and include activities, games, stories and quizzes.",
     },
     {
       pushTo: "/products/games",
-      title: "Games arena",
+      title: "Games Arena",
       description:
-        "Our platform with multiple proprietary games where children can apply financial concepts to real-experiences based games and understand finance, investing, and entrepreneurship in a fun and compelling way.",
+        "A platform of our proprietary games where children can get hands-on experience in applying concepts to games and competing with other students.",
     },
     {
       pushTo: "/products/chores",
       title: "Chores",
       description:
-        "Fun and rewarding way for parents to reinforce good financial behaviors in children by assigning jobs to them and rewarding them with UniCoins – which will help them understand that they have to work to earn money!",
+        "Fun & rewarding way for parents to reinforce good financial behaviors by assigning jobs and rewarding children with UniCoins!",
     },
     {
       pushTo: "/products/liveclasses",
-      title: "Live classes",
+      title: "Live Workshops",
       description:
-        "Engaging fun workshops and courses for children, by experts and our founders, around important topics such as money management, career development and entrepreneurship.",
+        "Live online & offline workshops, designed and delivered by our experts, on entrepreneurship and personal finance.",
+    },
+    {
+      pushTo: "",
+      title: "Competition & Challenges",
+      description:
+        "Offline games & competitions to give children the opportunities to gain recognition, build their profiles for higher studies & gain competitive capital.",
+    },
+    {
+      pushTo: "",
+      title: "Books & Board Games",
+      description:
+        "Range of book-sets & board games, focused on building modern skills & knowledge, with integrated AR features for families to enjoy together.",
     },
   ];
   return (
     <section className={styles.productSection}>
       <div className={styles.heading}>Our Products</div>
       <div className={styles.wrapper}>
-        {data.map((item, index) => {
+        {data.splice(0, 3).map((item, index) => {
           return (
             <div
               className={`${styles.pillar}`}
@@ -51,6 +64,29 @@ function ProductSection() {
                 <ProductGameSvg className={styles.icon} />
               ) : index === 2 ? (
                 <ProductChoresSvg className={styles.icon} />
+              ) : (
+                <ProductPeople className={styles.icon} />
+              )}
+              <p className={styles.title}>{item.title}</p>
+              <p className={styles.description}>{item.description}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div className={`${styles.wrapper} ${styles.wrapper2}`}>
+        {data.map((item, index) => {
+          return (
+            <div
+              className={`${styles.pillar}`}
+              key={"pillar" + index}
+              onClick={() => router.push(item.pushTo)}
+            >
+              {index === 0 ? (
+                <ProductPeople className={styles.icon} />
+              ) : index === 1 ? (
+                <EmojiEventsIcon className={styles.icon} />
+              ) : index === 2 ? (
+                <DashboardIcon className={styles.icon} />
               ) : (
                 <ProductPeople className={styles.icon} />
               )}

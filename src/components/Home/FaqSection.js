@@ -24,10 +24,9 @@ export default function FaqSection() {
       `,
     },
     {
-      question: `What will children learn?
-        We aim to empower students with the life skills such as 
-        `,
-      answer: `Functioning of money in 21st Century
+      question: `What will children learn?`,
+      answer: `We aim to empower students with the life skills such as
+      Functioning of money in 21st Century
       Money Management
       Investing and growing money
       Build and execute a Business

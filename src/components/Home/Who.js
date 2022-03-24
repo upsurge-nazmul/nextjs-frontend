@@ -8,21 +8,19 @@ function Who() {
       <div className={styles.container}>
         <div className={styles.left}>
           <p>
-            upsurge is India’s first financial literacy and entrepreneurship
-            development platform for the 8 to 18 year-olds. These are critical
-            life skills that are being ignored in school and college, and we are
-            here to change that!
+            Fast Company recently stated, “to change the world, we need a
+            generation of new minds equipped with new ways of thinking. Design
+            thinking can achieve this.”
           </p>
           <p>
-            Only 25% of Indians are financially literate, and it is our mission
-            to ensure that the next generation is equipped to not only manage
-            their money effectively, but also invest it, grow their wealth and
-            achieve their financial goals.
+            “Five years from now, over one-third of skills (35%) that are
+            considered important in today’s workforce will have changed. Complex
+            problem solving, critical thinking, and creativity will be the top
+            three skills for future jobs” – World Economic Forum
           </p>
           <p>
-            We believe in practical learning and have developed our own
-            curriculum & games to teach real-world finance and entrepreneurship
-            in a fun, relevant, and rewarding way.
+            Our landscape is changing, it’s time to prepare our children and
+            teens for the future.
           </p>
         </div>
         <div className={styles.right}>

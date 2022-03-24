@@ -116,6 +116,7 @@
           margin-top: 10px;
           display: flex;
           p {
+            text-transform: capitalize;
             cursor: pointer;
             &:first-child {
               margin-right: 10px;
@@ -170,6 +171,7 @@
           font-size: 15px;
           margin-bottom: 20px;
           cursor: pointer;
+          text-transform: capitalize;
           font-weight: 400;
         }
       }

@@ -7,6 +7,7 @@
   top: 0;
   display: flex;
   overflow-y: auto;
+  z-index: 500;
   .leftPanelContent {
     max-width: 350px;
     min-width: 250px;

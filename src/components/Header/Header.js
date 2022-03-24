@@ -4,6 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/GeneralComponents/header.module.scss";
 import Logo from "../SVGcomponents/Logo";
 import HamSvg from "../SVGcomponents/HamSvg";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderTabSection from "./HeaderTabSection";
 import WaitlistPopUp from "../WaitlistPopUp";
 function Header({
@@ -19,6 +20,7 @@ function Header({
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
+  const [showticker, setshowticker] = useState(true);
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
@@ -44,9 +46,20 @@ function Header({
   }, [mailfromhome]);
   return (
     <div
-      className={`${styles.header} ${stickyheader ? styles.sticky : ""}`}
+      className={`${styles.header} ${stickyheader ? styles.sticky : ""} ${
+        showticker && styles.stickywithannouncement
+      }`}
       id="home-page-header"
     >
+      {showticker && (
+        <div className={styles.ticker}>
+          <p>Join our Early Access program today to win exciting prizes!</p>
+          <CloseRoundedIcon
+            className={styles.cross}
+            onClick={() => setshowticker(false)}
+          />
+        </div>
+      )}
       <AuthPage
         showauth={showauth}
         setshowauth={setshowauth}
