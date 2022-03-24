@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 /randomdata
+public/sitemap-0.xml
+public/robots.txt
+public/sitemap.xml
 # testing
 /coverage
 # next.js

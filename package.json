@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "postbuild": "next-sitemap --config sitemapconfig.js",
+    "build": "next build && next-sitemap --config sitemapconfig.js && pm2 reload all",
     "start": "next start",
     "lint": "next lint"
   },
