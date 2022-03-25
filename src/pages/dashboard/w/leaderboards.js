@@ -43,6 +43,9 @@ export default function Leaderboards({
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
+          <p className={styles.headline}>
+            Earn UniCoins and rise up the leaderboard to win exciting prizes!
+          </p>
           <LeaderboardComponent
             data={overallleaderboard}
             quiz_rank={userdatafromserver?.quiz_rank}

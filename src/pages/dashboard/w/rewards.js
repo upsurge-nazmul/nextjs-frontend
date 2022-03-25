@@ -25,40 +25,40 @@ export default function Rewards({ userdatafromserver, vouchers }) {
       name: "1-5",
       benefits: [
         "3 months of free access to upsurge",
-        "Finance master class",
-        "Financial dictionary",
-        "upsurge cap & bottle",
-        "20% discount on yearly subscription",
+        // "Finance master class",
+        // "Financial dictionary",
+        // "upsurge cap & bottle",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "6-25",
       benefits: [
         "Get annual subscription at ₹2399",
-        "Financial dictionary",
-        "upsurge cap",
-        "upsurge bottle",
-        "20% discount on yearly subscription",
+        // "Financial dictionary",
+        // "upsurge cap",
+        // "upsurge bottle",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "26-100",
       benefits: [
         "Get annual subscription at ₹2999",
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
-        "20% discount on yearly subscription",
+        // "Avail discount on joining upsurge",
+        // "Earn bonus unicoins",
+        // "Other exciting rewards",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "100+",
       benefits: [
         "Get annual subscription at ₹3599",
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
-        "20% discount on yearly subscription",
+        // "Avail discount on joining upsurge",
+        // "Earn bonus unicoins",
+        // "Other exciting rewards",
+        // "20% discount on yearly subscription",
       ],
     },
   ];
@@ -77,7 +77,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const [mode, setmode] = useState("");
+  const [mode, setmode] = useState("upsurge Early Access Rewards");
   const [user_unicoin, setuser_unicoin] = useState(
     Number(userdatafromserver.num_unicoins) || 0
   );

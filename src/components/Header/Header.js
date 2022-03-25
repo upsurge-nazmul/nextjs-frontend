@@ -110,7 +110,7 @@ function Header({
               },
               // { name: "Family Fun", pushTo: "/familyfun" },
               // { name: "Tribes", pushTo: "/p_tribes" },
-              { name: "Live classes", pushTo: "/products/liveclasses" },
+              { name: "Live workshops", pushTo: "/products/liveclasses" },
             ]}
             pushTo="/products"
           />

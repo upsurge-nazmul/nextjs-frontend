@@ -8,6 +8,7 @@ import QuizApis from "../../../actions/apis/QuizApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import FormatListBulletedRoundedIcon from "@mui/icons-material/FormatListBulletedRounded";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Loading from "../../../components/Loading";
 import Toast from "../../../components/Toast";
@@ -212,7 +213,9 @@ export default function WaitlistDashboard({
                     className={`${styles.back} ${styles.quizback}`}
                     onClick={() => setshowtodo(true)}
                   >
-                    <QuizIconSvg className={styles.icon} />
+                    <FormatListBulletedRoundedIcon
+                      className={styles.fonticon}
+                    />
                     <p className={styles.text}>Open ToDo</p>
                   </div>
                 </div>

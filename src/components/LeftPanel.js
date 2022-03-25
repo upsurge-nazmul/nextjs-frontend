@@ -38,7 +38,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                   name: "Chores",
                   pushTo: "/products/chores",
                 },
-                { name: "Live classes", pushTo: "/products/liveclasses" },
+                { name: "Live workshops", pushTo: "/products/liveclasses" },
               ]}
             />
             <HeaderTabSection

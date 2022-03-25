@@ -115,7 +115,9 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
             </div>
           </div>
 
-          <div className={styles.points}>You scored : {score * 100}</div>
+          <div className={styles.points}>
+            You scored : {score}/{questions.length}
+          </div>
 
           {score === 0 ? (
             <div

@@ -14,7 +14,7 @@ import VideoModal from "../../../components/VideoModal";
 function Games({ userdatafromserver, token }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
-  const [mode, setmode] = useState("");
+  const [mode, setmode] = useState("Games Arena");
   const [showvideomodal, setshowvideomodal] = useState(false);
   const [recent_games, setrecent_games] = useState([]);
   const router = useRouter();

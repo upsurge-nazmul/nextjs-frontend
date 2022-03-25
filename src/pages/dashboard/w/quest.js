@@ -57,15 +57,15 @@ export default function KidStore({
       des: "Children will understand how & why Money was invented, it’s evolution, and uses",
     },
     {
-      name: "Ira goes to the bank",
+      name: "Ira's visit to the bank",
       des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
     },
     {
-      name: "Ira goes to the bank - Activity",
+      name: "Banking quiz",
       des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
     },
     {
-      name: "How to manage your money",
+      name: "What is money?",
       des: "Children will understand how & why Money was invented, it’s evolution, and uses ",
     },
     {
@@ -180,7 +180,7 @@ export default function KidStore({
                       setquestmode("KnowingYourMoney");
                     }}
                   >
-                    {`Money & Barter System`}
+                    {`Kiara goes around the world`}
                   </p>
                   <p
                     id="kqc2"
@@ -195,7 +195,7 @@ export default function KidStore({
                       setquestmode("quiz");
                     }}
                   >
-                    Activity
+                    Money Quiz
                   </p>
                   <p
                     id="kqc3"
@@ -209,7 +209,7 @@ export default function KidStore({
                       setquestmode("bank-visit");
                     }}
                   >
-                    Ira goes to the bank
+                    Ira's visit to the bank
                   </p>
                   <p
                     id="kqc4"
@@ -224,7 +224,7 @@ export default function KidStore({
                       setquestmode("quiz");
                     }}
                   >
-                    Activity
+                    Banking Quiz
                   </p>
                   <p
                     id="kqc5"
@@ -232,7 +232,7 @@ export default function KidStore({
                       currentlevel == 5 && styles.activekqc
                     } ${currentlevel > 5 && styles.completedkqc}`}
                   >
-                    How to manage your money
+                    What is money?
                   </p>
                   <p
                     className={`${styles.kqc} ${styles.kqc6}  ${
@@ -246,7 +246,7 @@ export default function KidStore({
                       setquestmode("game");
                     }}
                   >
-                    Activity
+                    Digital Banking & payments
                   </p>
                   <BoatIcon
                     id="boaticon"
