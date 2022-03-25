@@ -31,8 +31,9 @@ export default function Earlyaccess() {
   });
   const data = [
     {
-      name: "1-10",
+      name: "1-5",
       benefits: [
+        "3 months of free access to upsurge",
         "Finance master class",
         "Financial dictionary",
         "upsurge cap & bottle",
@@ -40,8 +41,9 @@ export default function Earlyaccess() {
       ],
     },
     {
-      name: "11-60",
+      name: "6-25",
       benefits: [
+        "Get annual subscription at ₹2399",
         "Financial dictionary",
         "upsurge cap",
         "upsurge bottle",
@@ -49,8 +51,19 @@ export default function Earlyaccess() {
       ],
     },
     {
-      name: "61-160",
+      name: "26-100",
       benefits: [
+        "Get annual subscription at ₹2999",
+        "Avail discount on joining upsurge",
+        "Earn bonus unicoins",
+        "Other exciting rewards",
+        "20% discount on yearly subscription",
+      ],
+    },
+    {
+      name: "100+",
+      benefits: [
+        "Get annual subscription at ₹3599",
         "Avail discount on joining upsurge",
         "Earn bonus unicoins",
         "Other exciting rewards",
@@ -164,7 +177,6 @@ export default function Earlyaccess() {
         </div>
       </div>
       <div className={styles.rest}>
-        <HowEarlyAccess />
         <div className={styles.rewards}>
           <PartnerSection dashboard={true} />
           <p className={styles.heading} style={{ userSelect: "none" }}>
@@ -202,6 +214,7 @@ export default function Earlyaccess() {
             })}
           </div>
         </div>
+        <HowEarlyAccess />
         <TestiMonial />
         <FaqSection />
         <JoinUs />

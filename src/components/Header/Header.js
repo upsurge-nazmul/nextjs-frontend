@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AuthPage from "../Auth/AuthComponent";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/GeneralComponents/header.module.scss";
@@ -6,6 +6,7 @@ import Logo from "../SVGcomponents/Logo";
 import HamSvg from "../SVGcomponents/HamSvg";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderTabSection from "./HeaderTabSection";
+import { MainContext } from "../../context/Main";
 import WaitlistPopUp from "../WaitlistPopUp";
 function Header({
   setOpenLeftPanel,
@@ -21,6 +22,7 @@ function Header({
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
   const [showticker, setshowticker] = useState(true);
+  const { userdata } = useContext(MainContext);
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
@@ -47,11 +49,11 @@ function Header({
   return (
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""} ${
-        showticker && styles.stickywithannouncement
+        showticker && !userdata && styles.stickywithannouncement
       }`}
       id="home-page-header"
     >
-      {showticker && (
+      {showticker && !userdata && (
         <div className={styles.ticker}>
           <p>Join our Early Access program today to win exciting prizes!</p>
           <div
@@ -162,8 +164,23 @@ function Header({
             ]}
           />
         </div>
-        <div className={styles.signin} onClick={() => setshowauth(true)}>
-          Sign in
+        <div
+          className={`${styles.signin} ${styles.dashboardbtn}`}
+          onClick={() => {
+            if (userdata) {
+              if (userdata.waitlist_active) {
+                router.push("/dashboard/w");
+              } else if (userdata.user_type === "parent") {
+                router.push("/dashboard/p");
+              } else {
+                router.push("/dashboard/k");
+              }
+              return;
+            }
+            setshowauth(true);
+          }}
+        >
+          {userdata ? "Go to Dashboard" : "Sign in"}
         </div>
       </div>
     </div>

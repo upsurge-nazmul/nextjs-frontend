@@ -40,12 +40,6 @@ function Home({ isLogged, userdata }) {
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
-      if (userdata.is_waiting_active) {
-        router.push("/dashboard/w");
-      } else {
-        if (userdata.user_type === "parent") router.push("/dashboard/p");
-        else router.push("/dashboard/k");
-      }
     }
   }, [userdata]);
 
@@ -152,12 +146,10 @@ export default Home;
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";
-  console.log(token);
   if (token) {
     let response = await LoginApis.checktoken({
       token: token,
     });
-    console.log(response.data);
     if (response && !response.data.success) {
       msg = response.data.msg || "";
       return { props: {} };

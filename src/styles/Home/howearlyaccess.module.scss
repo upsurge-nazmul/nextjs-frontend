@@ -106,6 +106,116 @@
   }
 }
 
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .page {
+    width: 100vw;
+    padding: 0% 10% 40px;
+    .heading {
+      font-size: 50px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .subheading {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(20, 20, 20, 0.473);
+    }
+    .steptophead {
+      padding: 40px 20px;
+      background-color: #4166eb;
+      color: white;
+      width: fit-content;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      flex: 1;
+      align-items: center;
+      display: flex;
+      margin-top: 3%;
+      justify-content: center;
+      font-weight: 500;
+    }
+    .wrapper {
+      width: 100%;
+      display: flex;
+      margin-top: 20px;
+      gap: 20px;
+      .left {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        gap: 20px;
+        .stephead {
+          padding: 15px 20px;
+          width: fit-content;
+          background-color: rgb(255, 163, 87);
+          border-radius: 6px;
+          color: white;
+          width: 100%;
+          font-weight: 500;
+          font-size: 20px;
+          text-align: center;
+          flex: 1;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .flexwrapper {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        gap: 20px;
+        .stepsubhead {
+          padding: 40px 20px;
+          border-radius: 6px;
+          font-size: 1.1vw;
+          width: calc(50% - 10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          text-align: center;
+          height: 20vh;
+          flex-direction: column;
+          font-weight: 500;
+          p {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+          }
+          .icon {
+            min-height: 35px;
+            width: 35px;
+            margin-bottom: 20px;
+          }
+          .fonticon {
+            width: unset;
+            height: 60%;
+            margin-bottom: 20px;
+          }
+          &:first-child {
+            background-color: #17d1bc;
+          }
+          &:nth-child(2) {
+            background-color: #ff6263;
+          }
+          &:nth-child(3) {
+            background-color: #fdcc03;
+          }
+          &:nth-child(4) {
+            background-color: #4190eb;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 860px) {
   .page {
     width: 100vw;
