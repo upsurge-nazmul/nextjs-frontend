@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/WaitlistDashboard/todolist.module.scss";
 export default function TodoList({ data, hide, completed, total }) {
-  console.log(hide);
   return (
     <div className={styles.todolist}>
       <div className={styles.background} onClick={hide}></div>

@@ -189,6 +189,23 @@
   .header {
     scroll-snap-align: start;
     height: 100px;
+    .ticker {
+      padding-right: 10%;
+      text-align: center;
+      .btn {
+        font-size: 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+        background-color: rgb(255, 255, 255);
+        color: #4166eb;
+        padding: 2.5px 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsla(0, 0%, 100%, 0.829);
+        }
+      }
+    }
     .container {
       padding-left: 7%;
       padding-right: 7%;
