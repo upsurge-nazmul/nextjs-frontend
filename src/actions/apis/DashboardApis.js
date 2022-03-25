@@ -115,6 +115,13 @@ const createVerificationOtp = (payload) => {
     getCookie("accesstoken")
   );
 };
+const getTodo = (payload, token) => {
+  return ApiCalls.getResponse(
+    "users/todo",
+    payload,
+    token || getCookie("accesstoken")
+  );
+};
 //getchores
 const DashboardApis = {
   addkids,
@@ -140,6 +147,7 @@ const DashboardApis = {
   markwelcomecomplete,
   getoverallleaderboard,
   createVerificationOtp,
+  getTodo,
 };
 
 export default DashboardApis;

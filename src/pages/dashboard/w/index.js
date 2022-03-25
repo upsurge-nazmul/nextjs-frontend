@@ -6,6 +6,7 @@ import BlogApis from "../../../actions/apis/BlogApis";
 import NotificationApis from "../../../actions/apis/NotificationApis";
 import QuizApis from "../../../actions/apis/QuizApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
+import DashboardApis from "../../../actions/apis/DashboardApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Loading from "../../../components/Loading";
@@ -24,6 +25,7 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import LeaderboardSvg from "../../../components/SVGcomponents/LeaderboardSvg";
 import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
 import WelcomeUser from "../../../components/WelcomeUser";
+import TodoList from "../../../components/WaitlistDashboard/TodoList";
 export default function WaitlistDashboard({
   userdatafromserver,
   todaysquestion,
@@ -31,10 +33,14 @@ export default function WaitlistDashboard({
   leaderboard,
   highestquizscore,
   highestludoscore,
+  tododatafromserver,
 }) {
+  console.log(tododatafromserver);
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
+  const [tododata, settododata] = useState(tododatafromserver);
   const [showdetails, setshowdetails] = useState(false);
+  const [showtodo, setshowtodo] = useState(false);
   const [blogs, setblogs] = useState(blogdata || []);
   const [showjasper, setshowjasper] = useState(
     userdatafromserver && !userdatafromserver.welcome_shown
@@ -118,6 +124,14 @@ export default function WaitlistDashboard({
             setshow={setshowjasper}
           />
         )}
+        {showtodo && (
+          <TodoList
+            data={tododata.list}
+            total={tododata.total}
+            completed={tododata.completed}
+            hide={() => setshowtodo(!showtodo)}
+          />
+        )}
         <div className={styles.contentWrapper}>
           <DashboardHeader
             mode={mode}
@@ -188,23 +202,20 @@ export default function WaitlistDashboard({
                 <div className={styles.inner}>
                   <div className={styles.front}>
                     <div className={styles.quizblock}>
-                      <p className={styles.heading}>{highestquizscore}%</p>
-                      <p className={styles.subheading2}>
-                        {highestquizscore < 50
-                          ? "Money Rookie"
-                          : highestquizscore < 80
-                          ? "Money Ninja"
-                          : "Money Master"}
+                      <p className={styles.heading}>
+                        {tododata
+                          ? tododata.completed + "/" + tododata.total
+                          : "All clear"}
                       </p>
-                      <p className={styles.subheading}>Quiz Score</p>
+                      <p className={styles.subheading}>ToDo List</p>
                     </div>
                   </div>
                   <div
                     className={`${styles.back} ${styles.quizback}`}
-                    onClick={() => router.push("/dashboard/w/quiz")}
+                    onClick={() => setshowtodo(true)}
                   >
                     <QuizIconSvg className={styles.icon} />
-                    <p className={styles.text}>Play quiz</p>
+                    <p className={styles.text}>Open ToDo</p>
                   </div>
                 </div>
               </div>
@@ -281,6 +292,7 @@ export async function getServerSideProps({ params, req }) {
       let tq = await QuizApis.todaysquestion(null, token);
       let blogs = await BlogApis.gethomeblogs();
       let leaderboard = await QuizApis.leaderboard();
+      let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
@@ -289,6 +301,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
+          tododatafromserver: tododata?.data?.data || null,
           todaysquestion: tq?.data?.success ? tq.data.data : null,
           blogdata: blogs?.data.data || [],
           leaderboard: leaderboard?.data.data || [],
