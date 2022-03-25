@@ -9,7 +9,9 @@ import EmailIcon from "@mui/icons-material/Email";
 import EditSvg from "../SVGcomponents/EditSvg";
 import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
+import { getfullname } from "../../helpers/generalfunctions";
 function Menu({ settoastdata, menuType, waitilistmenu }) {
   const { userdata, showmenu, setshowmenu, setuser, setuserdata } =
     useContext(MainContext);
@@ -49,7 +51,26 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
   }, []);
   return (
     <div className={styles.menu} id="menu-main">
-      <p
+      <div className={styles.top}>
+        <p className={styles.heading}>
+          {getfullname(userdata?.first_name, userdata?.last_name)}
+        </p>
+        <p
+          className={styles.subheading}
+          onClick={() => {
+            setshowmenu(false);
+            if (waitilistmenu) {
+              router.push("/dashboard/w/editprofile");
+            } else if (menuType === "child") {
+              router.push("/dashboard/k/editprofile");
+            } else router.push("/dashboard/p/editprofile");
+          }}
+        >
+          Edit profile
+        </p>
+        <div className={styles.arrow}></div>
+      </div>
+      {/* <p
         className={styles.tabs}
         onClick={() => {
           setshowmenu(false);
@@ -62,7 +83,7 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
       >
         <EditSvg className={styles.editIcon} />
         Edit profile
-      </p>
+      </p> */}
       {menuType !== "child" && !waitilistmenu && (
         <>
           <p
@@ -131,9 +152,11 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
           Settings
         </div>
       )} */}
-
-      <div className={styles.button} onClick={handleLogout}>
-        Log out
+      <div className={styles.tabgrp}>
+        <div className={styles.button} onClick={handleLogout}>
+          <LogoutRoundedIcon className={styles.icon} />
+          Log out
+        </div>
       </div>
     </div>
   );

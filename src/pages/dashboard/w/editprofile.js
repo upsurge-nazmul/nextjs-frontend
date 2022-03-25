@@ -25,7 +25,7 @@ export default function EditProfile({ data }) {
   const [type, settype] = useState(
     data.is_waiting_active ? "waitlist" : router.query.type || "parent"
   );
-  const [mode, setmode] = useState("");
+  const [mode, setmode] = useState("Edit Profile");
   const [img, setimg] = useState(
     data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
   );

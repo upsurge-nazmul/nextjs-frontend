@@ -26,4 +26,7 @@ function capitalize(string) {
   if (!string) return;
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
-export { copyToClipboard, capitalize };
+function getfullname(firstname, lastname) {
+  return (firstname + " " + (lastname || "")).trim();
+}
+export { copyToClipboard, capitalize, getfullname };
