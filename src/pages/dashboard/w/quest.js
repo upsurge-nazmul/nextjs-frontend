@@ -209,7 +209,7 @@ export default function KidStore({
                       setquestmode("bank-visit");
                     }}
                   >
-                    Ira's visit to the bank
+                    {`Ira's visit to the bank`}
                   </p>
                   <p
                     id="kqc4"
