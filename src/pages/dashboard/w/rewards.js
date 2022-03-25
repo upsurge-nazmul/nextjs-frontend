@@ -153,7 +153,7 @@ Explore our platform and collect as many UniCoins by playing the games, taking t
             <p className={styles.desheading}>Benefits of annual subscription</p>
             <div className={styles.wrapper}>
               {annualpricing.map((item) => {
-                return <p id={item}>{item}</p>;
+                return <p key={item}>{item}</p>;
               })}
             </div>
           </div>
