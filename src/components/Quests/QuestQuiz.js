@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Quest/questquiz.module.scss";
 import SimpleProgress from "../SimpleProgress";
 import Curve1 from "../SVGcomponents/Curve1";
@@ -6,11 +6,13 @@ import Curve2 from "../SVGcomponents/Curve2";
 import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { getCookie } from "../../actions/cookieUtils";
 import Jasper from "../SVGcomponents/Jasper";
+import { MainContext } from "../../context/Main";
 export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
   const [currentquestionindex, setcurrentquestionindex] = useState(0);
   const [loading, setloading] = useState(true);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [error, seterror] = useState("");
   const [completed, setcompleted] = useState("");
   const [questions, setquestions] = useState([]);
@@ -133,12 +135,19 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
               onClick={() => {
                 KnowledgeQuestApi.updatequizdata({
                   id: "money-quest",
-                  score,
+                  score: score / questions.length,
                 });
                 KnowledgeQuestApi.update({
                   level: Number(level) + 1,
                   id: "money-quest",
                 });
+                setuserdata((prev) => ({
+                  ...prev,
+                  num_unicoins:
+                    Number(prev.num_unicoins) +
+                    150 +
+                    (score === questions.length ? 25 : 0),
+                }));
                 setlevel(Number(level) + 1);
                 setmode("map");
               }}

@@ -37,6 +37,7 @@ export default function KidStore({
   const [showgame, setshowgame] = useState(false);
   const [showmodal, setshowmodal] = useState(false);
   const [quizId, setquizId] = useState("");
+
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -75,14 +76,14 @@ export default function KidStore({
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
-  // useEffect(() => {
-  //   if (questmode === map) return;
-  //   let parent = document.getElementById("quest-main");
-  //   let child = document.getElementById("map");
-  //   if (parent && child) {
-  //     scrollParentToChild(parent, child, 0);
-  //   }
-  // }, [questmode]);
+  useEffect(() => {
+    let parent = document.getElementById("quest-main");
+    let child = document.getElementById("boaticon");
+    console.log(child);
+    if (parent && child) {
+      scrollParentToChild(parent, child, 0);
+    }
+  }, [questmode]);
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="waitlist" />
@@ -248,7 +249,7 @@ export default function KidStore({
                     Activity
                   </p>
                   <BoatIcon
-                    id="boat"
+                    id="boaticon"
                     className={`${styles.boat} ${
                       styles["boat" + currentlevel]
                     }`}
@@ -291,6 +292,10 @@ export default function KidStore({
                             level: 4,
                             id: "money-quest",
                           });
+                          setuserdata((prev) => ({
+                            ...prev,
+                            num_unicoins: Number(prev.num_unicoins) + 100,
+                          }));
                           setcurrentlevel(4);
                         }
                         if (questmode === "KnowingYourMoney") {
@@ -298,6 +303,10 @@ export default function KidStore({
                             level: 2,
                             id: "money-quest",
                           });
+                          setuserdata((prev) => ({
+                            ...prev,
+                            num_unicoins: Number(prev.num_unicoins) + 100,
+                          }));
                           setcurrentlevel(2);
                         }
                         if (questmode === "game") {
@@ -307,6 +316,10 @@ export default function KidStore({
                           });
                           setcurrentlevel(7);
                           setshowgame(false);
+                          setuserdata((prev) => ({
+                            ...prev,
+                            num_unicoins: Number(prev.num_unicoins) + 450,
+                          }));
                         }
                         setquestmode("map");
                       }}
@@ -345,6 +358,7 @@ export async function getServerSideProps({ params, req }) {
         { id: "money-quest" },
         token
       );
+      console.log(level.data);
       let gamedata = await GameApis.gamedata({ id: "NeedOrWant" });
       return {
         props: {

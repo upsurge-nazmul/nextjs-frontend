@@ -50,7 +50,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
           <p className={styles.number}>
             {userdata?.num_unicoins
               ? userdata?.num_unicoins > UniCoinValue
-                ? userdata.num_unicoins / UniCoinValue + "K"
+                ? (userdata.num_unicoins / UniCoinValue).toFixed(1) + "K"
                 : userdata.num_unicoins
               : 0}
           </p>

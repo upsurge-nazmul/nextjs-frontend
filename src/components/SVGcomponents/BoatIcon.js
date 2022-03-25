@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function BoatIcon({ className, onClick }) {
+export default function BoatIcon({ id, className, onClick }) {
   return (
     <svg
+      id={id}
       width="515"
       height="411"
       className={className}
