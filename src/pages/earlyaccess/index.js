@@ -179,6 +179,8 @@ export default function Earlyaccess() {
       <div className={styles.rest}>
         <div className={styles.rewards}>
           <PartnerSection dashboard={true} />
+          <HowEarlyAccess />
+
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Know more about your Early Access rewards.
           </p>
@@ -214,7 +216,6 @@ export default function Earlyaccess() {
             })}
           </div>
         </div>
-        <HowEarlyAccess />
         <TestiMonial />
         <FaqSection />
         <JoinUs />

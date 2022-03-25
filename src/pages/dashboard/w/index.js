@@ -35,7 +35,6 @@ export default function WaitlistDashboard({
   highestludoscore,
   tododatafromserver,
 }) {
-  console.log(tododatafromserver);
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const [tododata, settododata] = useState(tododatafromserver);
@@ -166,8 +165,7 @@ export default function WaitlistDashboard({
                   <div
                     className={`${styles.back} ${styles.waitlistback}`}
                     onClick={() => {
-                      setcurrent("earlyaccess");
-                      setshowdetails(true);
+                      router.push("/dashboard/w/rewards");
                     }}
                   >
                     <RewardSvg className={styles.reward} />

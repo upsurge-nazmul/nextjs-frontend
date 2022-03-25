@@ -11,13 +11,10 @@ export default function HowEarlyAccess() {
         Join our Early Access Program & stand a chance to win attractive prizes
       </p>
       <p className={styles.subheading}>How the early access program works</p>
-      <p className={styles.steptophead}>Sign up for our Early Access Program</p>
+      <p className={styles.steptophead}>
+        Earn UniCoins to rise up the leaderboard by
+      </p>
       <div className={styles.wrapper}>
-        <div className={styles.left}>
-          <p className={styles.stephead}>
-            Earn UniCoins to rise up the leaderboard by
-          </p>
-        </div>
         <div className={styles.flexwrapper}>
           <div className={styles.stepsubhead}>
             <ProductGameSvg className={styles.icon} />
