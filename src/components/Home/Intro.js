@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import validator from "validator";
 import Toast from "../Toast";
 import styles from "../../styles/Home/intro.module.scss";
@@ -9,8 +9,10 @@ import { useRouter } from "next/dist/client/router";
 import Curve2 from "../SVGcomponents/Curve2";
 import WaitlistPopUp from "../WaitlistPopUp";
 import Spinner from "../Spinner";
+import { MainContext } from "../../context/Main";
 
 function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
+  const { userdata, setuserdata } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -19,7 +21,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     type: "success",
     msg: "",
   });
-
+  const router = useRouter();
   async function check(e) {
     e?.preventDefault();
     setloading(true);
@@ -49,28 +51,48 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
           {`upsurge is India’s first gaming platform for children, focused on promoting entrepreneurship, financial literacy & modern skills using games, immersive knowledge quests & real rewards!`}
         </div>
         <p className={styles.error}>{error}</p>
-        <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-          <form onSubmit={(e) => check(e)}>
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                seterror("");
-                setemail(e.target.value.trim());
-              }}
-            />
-          </form>
-          {!loading ? (
-            <div className={`${styles.button}`} onClick={check}>
-              Join early access
-            </div>
-          ) : (
-            <div className={`${styles.button} ${styles.spinner_btn}`}>
-              <Spinner />
-            </div>
-          )}
-        </div>
+        {userdata ? (
+          <div
+            className={styles.gotobutton}
+            onClick={() => {
+              if (userdata) {
+                if (userdata.waitlist_active) {
+                  router.push("/dashboard/w");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p");
+                } else {
+                  router.push("/dashboard/k");
+                }
+                return;
+              }
+            }}
+          >
+            Go to dashboard
+          </div>
+        ) : (
+          <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
+            <form onSubmit={(e) => check(e)}>
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => {
+                  seterror("");
+                  setemail(e.target.value.trim());
+                }}
+              />
+            </form>
+            {!loading ? (
+              <div className={`${styles.button}`} onClick={check}>
+                Join early access
+              </div>
+            ) : (
+              <div className={`${styles.button} ${styles.spinner_btn}`}>
+                <Spinner />
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <IntroSvg className={styles.homesvg} />
       <BallsSvg className={styles.ballsvg} />

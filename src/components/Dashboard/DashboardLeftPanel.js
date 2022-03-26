@@ -52,18 +52,21 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         <Logo
           className={styles.dashboardLogo}
           onClick={() => {
-            if (type === "kid") router.push("/dashboard/k");
-            if (type === "waitlist") router.push("/dashboard/w");
-            else router.push("/dashboard/p");
+            router.push("/");
+            // if (type === "kid") router.push("/dashboard/k");
+            // if (type === "waitlist") router.push("/dashboard/w");
+            // else router.push("/dashboard/p");
           }}
         />
       ) : (
         <MiniLogo
           className={styles.miniLogo}
           onClick={() => {
-            if (type === "kid") router.push("/dashboard/k");
-            if (type === "waitlist") router.push("/dashboard/w");
-            else router.push("/dashboard/p");
+            router.push("/");
+
+            // if (type === "kid") router.push("/dashboard/k");
+            // if (type === "waitlist") router.push("/dashboard/w");
+            // else router.push("/dashboard/p");
           }}
         />
       )}

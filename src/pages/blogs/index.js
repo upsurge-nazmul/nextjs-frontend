@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogApis from "../../actions/apis/BlogApis";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
@@ -17,6 +17,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
 import WaitlistPopUp from "../../components/WaitlistPopUp";
+import { MainContext } from "../../context/Main";
 
 function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const router = useRouter();
@@ -32,6 +33,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const [page, setpage] = useState(1);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
+  const { userdata, setuserdata } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -57,8 +59,6 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   }
 
   function sortPosts(cat, index) {
-    console.log(cat.toLowerCase());
-    console.log(blogposts);
     if (cat !== "All Categories") {
       setSelectedCat(cat);
       setblogposts(
@@ -129,7 +129,7 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
-        <WaitingListCta />
+        {!userdata && <WaitingListCta />}
 
         <p className={styles.heading}>Welcome to upsurge Blog!</p>
 

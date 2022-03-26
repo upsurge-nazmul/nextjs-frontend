@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogApis from "../../actions/apis/BlogApis";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
@@ -14,6 +14,7 @@ import { useRouter } from "next/dist/client/router";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
+import { MainContext } from "../../context/Main";
 
 function BlogPage({ blogs, totalblogs, porppagination }) {
   const router = useRouter();
@@ -29,6 +30,8 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [page, setpage] = useState(1);
+  const { userdata, setuserdata } = useContext(MainContext);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -133,7 +136,7 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
         rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
       />
       <div className={styles.content}>
-        <WaitingListCta />
+        {!userdata && <WaitingListCta />}
 
         <p className={styles.heading}>Welcome to upsurge Blog!</p>
 

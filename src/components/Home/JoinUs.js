@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/Home/join.module.scss";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
+import { MainContext } from "../../context/Main";
 function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
+  const { userdata, setuserdata } = useContext(MainContext);
   const [showwaitlistblock, setshowwaitlistblock] = useState(false);
+  const router = useRouter();
   return (
     <section className={styles.joinSection}>
       {showwaitlistblock && (
@@ -51,17 +54,35 @@ function JoinUs() {
       <div className={`${styles.doodle} ${styles.dr3}`} />
       <div className={`${styles.doodle} ${styles.dr4}`} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Sign up for early access</div>
+        <div className={styles.heading}>
+          {userdata
+            ? "Thank you for joining early access"
+            : "Sign up for early access"}
+        </div>
         <p className={styles.subheading}>
-          {`We can’t wait to have you onboard and start your child’s journey
+          {userdata
+            ? `You can head back to dashboard using the button below.`
+            : `We can’t wait to have you onboard and start your child’s journey
           towards financial freedom.`}
         </p>
         <div className={styles.emailwrapper}>
           <div
-            className={styles.button}
-            onClick={() => setshowwaitlistblock(true)}
+            className={`${styles.button} ${userdata && styles.gotobutton}`}
+            onClick={() => {
+              if (userdata) {
+                if (userdata.waitlist_active) {
+                  router.push("/dashboard/w");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p");
+                } else {
+                  router.push("/dashboard/k");
+                }
+                return;
+              }
+              setshowwaitlistblock(true);
+            }}
           >
-            Sign up
+            {userdata ? "Go to Dashboard" : "Sign up"}
           </div>
         </div>
       </div>

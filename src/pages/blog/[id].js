@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/BlogPage/blogpage.module.scss";
@@ -13,6 +13,7 @@ import CategoryBar from "../../components/Blog/CategoryBar";
 import MoreCard from "../../components/Blog/MoreCard";
 import WaitingListCta from "../../components/WaitingListCta";
 import JoinUs from "../../components/Home/JoinUs";
+import { MainContext } from "../../context/Main";
 
 export default function BlogPage({ blogdata, related }) {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function BlogPage({ blogdata, related }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
   let date = new Date(Number(blogdata.date));
   useEffect(() => {
@@ -119,7 +121,7 @@ export default function BlogPage({ blogdata, related }) {
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
       <div className={styles.ctawrapper}>
-        <WaitingListCta />
+        {!userdata && <WaitingListCta />}
         <CategoryBar selectedCat={blogdata.categories} />
       </div>
 

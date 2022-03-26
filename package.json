@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap --config sitemapconfig.js && pm2 reload all",
+    "devbuild": "next build",
     "start": "next start",
     "lint": "next lint"
   },
