@@ -136,11 +136,16 @@
     border-radius: 12px;
     width: 100%;
     padding: 30px 20px 20px;
-    min-height: 300px;
+    min-height: fit-content;
     .heading {
       font-size: 26px;
       font-weight: 700;
       margin-bottom: 10px;
+    }
+    .wrongtick {
+      margin: 10px auto;
+      height: 60px;
+      width: 60px;
     }
     .answered {
       font-weight: 400;
@@ -154,7 +159,7 @@
     }
     .question {
       font-weight: 500;
-      font-size: 22px;
+      font-size: 20px;
       margin-top: 12px;
     }
     .options {

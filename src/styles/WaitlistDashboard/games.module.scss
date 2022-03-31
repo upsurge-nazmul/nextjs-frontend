@@ -538,6 +538,16 @@
   .gamesPage {
     .contentWrapper {
       .mainContent {
+        .gameheading {
+          font-size: 22px;
+          font-weight: 600;
+          text-align: left;
+          width: 100%;
+        }
+        .description {
+          font-size: 12px;
+          line-height: 20px;
+        }
         .flexLeft {
           display: flex;
           flex-direction: column;

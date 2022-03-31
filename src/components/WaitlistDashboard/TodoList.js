@@ -9,7 +9,7 @@ export default function TodoList({ data, hide, completed, total }) {
       <Jasper className={styles.jasper} />
       <div className={styles.main}>
         <div className={styles.head}>
-          <p className={styles.heading}>ToDo List</p>
+          <p className={styles.heading}>Milestones</p>
           <p className={styles.subheading}>
             {completed}/{total}
           </p>
@@ -30,7 +30,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Complete knowledge quest</p>
+            <p>Go on the upsurge quest</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -43,7 +43,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Complete money quotient</p>
+            <p>Take the Money Quotient Quiz</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -56,7 +56,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Play ludo</p>
+            <p>Play upsurge ludo</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -69,7 +69,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Solve daily quiz</p>
+            <p>Answer daily challenges</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -82,7 +82,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Send invite to your closest friend</p>
+            <p>Invite your closest friends</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -91,16 +91,14 @@ export default function TodoList({ data, hide, completed, total }) {
           >
             <input type="checkbox" className={styles.checkbox} />
             <span className={styles.check}>
-              {data.invited_more_friends && (
+              {data.play_games && (
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Send invite to your 5 friends</p>
+            <p>Play Games in then Arena</p>
           </div>
           <div
-            className={`${styles.todo} ${
-              data.changed_avatar && styles.completed
-            }`}
+            className={`${styles.todo} ${data.used_calc && styles.completed}`}
           >
             <input type="checkbox" className={styles.checkbox} />
             <span className={styles.check}>
@@ -108,7 +106,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Change your avatar</p>
+            <p>Check upsurge calculators</p>
           </div>
         </div>
       </div>

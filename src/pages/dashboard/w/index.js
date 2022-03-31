@@ -206,7 +206,7 @@ export default function WaitlistDashboard({
                           ? tododata.completed + "/" + tododata.total
                           : "All clear"}
                       </p>
-                      <p className={styles.subheading}>ToDo List</p>
+                      <p className={styles.subheading}>Complete Milestones</p>
                     </div>
                   </div>
                   <div
@@ -216,7 +216,7 @@ export default function WaitlistDashboard({
                     <FormatListBulletedRoundedIcon
                       className={styles.fonticon}
                     />
-                    <p className={styles.text}>Open ToDo</p>
+                    <p className={styles.text}>Open Milestones</p>
                   </div>
                 </div>
               </div>

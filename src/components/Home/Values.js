@@ -17,13 +17,14 @@ export default function Values({ insidebenefits }) {
     if (!insidebenefits) {
       return;
     }
+    if (interval) {
+      return;
+    }
     if (widthHeight.width > 860) {
       if (interval) clearInterval(interval);
       return;
     }
-    console.log("interval starts", widthHeight);
     setinterval(setInterval(() => setcurrent((prev) => (prev + 1) % 5), 2000));
-
     return () => clearInterval(interval);
   }, [widthHeight]);
   return (
