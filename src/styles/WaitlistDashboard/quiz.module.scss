@@ -45,94 +45,7 @@
     z-index: -1;
     animation: moveit 5s ease alternate infinite;
   }
-  .gamedata {
-    width: 100%;
-    padding: 0 7vw;
-    display: flex;
-    height: 66vh;
-    max-height: 500px;
-    margin: 10vh 0;
-    background-color: white;
-    .left {
-      width: 50%;
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 40px;
-      min-width: 550px;
-      .error {
-        color: rgb(238, 79, 79);
-        font-size: 16px;
-      }
-      .headingmain {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 32px;
-        font-weight: 500;
-        color: black;
-        justify-content: flex-start;
-        margin-bottom: 10px;
-        width: 100%;
-        height: 10%;
-      }
-      .input {
-        background: #fff;
-        font-size: 16px;
-        border: none;
-        height: 45px;
-        width: 90%;
-        padding: 0 20px;
-        margin-top: 20px;
-        &::placeholder {
-          color: rgb(0, 0, 0);
-        }
-      }
-      .buttons {
-        display: flex;
-        margin-top: 40px;
 
-        .startbutton {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 165px;
-          height: 48px;
-          background: #4166eb;
-          border-radius: 6px;
-          color: white;
-          transition: all 0.3s ease;
-          margin-bottom: 20px;
-          cursor: pointer;
-          &:hover {
-            background: hsl(227, 59%, 51%);
-          }
-        }
-        .skipbutton {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 165px;
-          height: 48px;
-          background: #616161;
-          margin-bottom: 20px;
-          border-radius: 6px;
-          color: white;
-          transition: all 0.3s ease;
-          margin-left: 30px;
-          cursor: pointer;
-          &:hover {
-            background: hsl(0, 0%, 30%);
-          }
-        }
-      }
-    }
-    .right {
-      width: 50%;
-      img {
-        height: 100%;
-      }
-    }
-  }
   .startscreen {
     background-color: #36363657;
     opacity: 1;
@@ -971,10 +884,10 @@
     }
     .container {
       .contentWrapper {
-        margin-top: 4vh;
-        padding-left: 20px;
+        margin-top: 0;
+        padding-left: 0px;
         width: 100%;
-        padding-right: 20px;
+        padding-right: 0px;
         .prop1,
         .prop2,
         .prop3,
@@ -1210,70 +1123,11 @@
             padding: 10px;
           }
         }
+        .maincontent {
+          padding: 15px;
+        }
         .hideOverFlow {
           overflow: hidden;
-        }
-      }
-      .gamedata {
-        width: 100%;
-        padding: 0 2vw;
-        display: flex;
-        height: 66vh;
-        max-height: 500px;
-        margin: 10vh 0;
-        background-color: white;
-        .left {
-          width: 100%;
-          background: #f9f9f9;
-          border-radius: 12px;
-          padding: 20px;
-          min-width: unset;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .error {
-            color: rgb(238, 79, 79);
-            font-size: 16px;
-          }
-          .headingmain {
-            font-size: 25px;
-            text-align: center;
-            width: 100%;
-            justify-content: center;
-          }
-          .input {
-            background: #fff;
-            font-size: 16px;
-            border: none;
-            height: 45px;
-            width: 100%;
-            padding: 0 20px;
-            margin-top: 20px;
-            &::placeholder {
-              color: rgb(0, 0, 0);
-            }
-          }
-          .buttons {
-            display: flex;
-            margin-top: 40px;
-            .startbutton {
-              width: 120px;
-              font-size: 14px;
-              height: 45px;
-            }
-            .skipbutton {
-              width: 120px;
-              height: 45px;
-              font-size: 14px;
-            }
-          }
-        }
-        .right {
-          display: none;
-          width: 50%;
-          img {
-            height: 100%;
-          }
         }
       }
     }
