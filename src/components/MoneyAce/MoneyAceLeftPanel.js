@@ -3,7 +3,7 @@ import styles from "../../styles/MoneyAce/leftpanel.module.scss";
 import HomeSvg from "../SVGcomponents/MoneyAce/ui/HomeSvg";
 import TasksSvg from "../SVGcomponents/MoneyAce/ui/TasksSvg";
 import GameSvg from "../SVGcomponents/MoneyAce/ui/GameSvg";
-import Leaderboard from "../SVGcomponents/MoneyAce/ui/Leaderboard";
+import LeaderboardIcon from "../SVGcomponents/MoneyAce/ui/LeaderboardIcon";
 import BackSvg from "../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function MoneyAceLeftPanel({
   currenttab,
@@ -25,7 +25,7 @@ export default function MoneyAceLeftPanel({
         className={styles.icon}
         onClick={() => setcurrenttab("citymap")}
       />
-      <Leaderboard
+      <LeaderboardIcon
         className={styles.icon}
         onClick={() => setcurrenttab("leaderboard")}
       />

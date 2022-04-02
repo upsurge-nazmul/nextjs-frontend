@@ -139,9 +139,9 @@ Here are some of our games that you and your child can play together.
                 </p>
                 <p
                   className={styles.play}
-                  onClick={() => setshowvideomodal(true)}
+                  onClick={() => router.push("/dashboard/w/moneyace")}
                 >
-                  More Details
+                  Play
                 </p>
               </div>
             </div>

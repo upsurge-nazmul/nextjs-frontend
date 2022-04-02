@@ -1,340 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
 import styles from "../../styles/MoneyAce/bank.module.scss";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
 import { Checkbox, Slider } from "@mui/material";
 import HTMLFlipBook from "react-pageflip";
+import BackSvg from "../SVGcomponents/MoneyAce/ui/BackSvg";
+import BankDialog from "./BankDialog";
+import { onlyNum, removenonnumber } from "../../helpers/validationHelpers";
+import BankCards from "./BankCards";
+import { MainContext } from "../../context/Main";
+import { getIndianTime, getReadableDob } from "../../helpers/timehelpers";
+import MoneyAceApis from "../../actions/apis/MoneyAceApis";
+import { getfullname } from "../../helpers/generalfunctions";
+import Bulletin from "./Bulletin";
+export default function Bank({
+  setcurrenttab,
+  canvassize,
+  moneyacedata,
+  setmoneyacedata,
+}) {
+  const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
+    useContext(MainContext);
+  const [passbookdata, setpassbookdata] = useState([]);
+  const [accountopened, setacoountopened] = useState(
+    moneyacedata?.account_number
+  );
+  const [showcard, setshowcard] = useState(false);
+  const [showwhat, setshowwhat] = useState("");
 
-export default function Bank({ setcurrenttab, canvassize }) {
-  const [showopenacc, setshowopenacc] = useState(false);
-  const [gender, setgender] = useState("");
-  const data = [
-    {
-      id: "stocks",
-      color: "#17D1BC",
-      data: [
-        {
-          x: "plane",
-          y: 258,
-        },
-        {
-          x: "helicopter",
-          y: 155,
-        },
-        {
-          x: "boat",
-          y: 244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 45,
-        },
-        {
-          x: "others",
-          y: 194,
-        },
-      ],
-    },
-    {
-      id: "Real Estate",
-      color: "#FF6263",
-      data: [
-        {
-          x: "plane",
-          y: 2528,
-        },
-        {
-          x: "helicopter",
-          y: 1255,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 45,
-        },
-        {
-          x: "others",
-          y: 194,
-        },
-      ],
-    },
-    {
-      id: "Gold",
-      color: "#FDCC03",
-      data: [
-        {
-          x: "plane",
-          y: 2528,
-        },
-        {
-          x: "helicopter",
-          y: 1255,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 296,
-        },
-        {
-          x: "moto",
-          y: 106,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 101,
-        },
-        {
-          x: "skateboard",
-          y: 425,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "FD",
-      color: "#4166EB",
-      data: [
-        {
-          x: "plane",
-          y: 2228,
-        },
-        {
-          x: "helicopter",
-          y: 1555,
-        },
-        {
-          x: "boat",
-          y: 2244,
-        },
-        {
-          x: "train",
-          y: 2212,
-        },
-        {
-          x: "subway",
-          y: 213,
-        },
-        {
-          x: "bus",
-          y: 156,
-        },
-        {
-          x: "car",
-          y: 2926,
-        },
-        {
-          x: "moto",
-          y: 1106,
-        },
-        {
-          x: "bicycle",
-          y: 1010,
-        },
-        {
-          x: "horse",
-          y: 1011,
-        },
-        {
-          x: "skateboard",
-          y: 4125,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "Retirement",
-      color: "#90d117",
-      data: [
-        {
-          x: "plane",
-          y: 200,
-        },
-        {
-          x: "helicopter",
-          y: 200,
-        },
-        {
-          x: "boat",
-          y: 200,
-        },
-        {
-          x: "train",
-          y: 1212,
-        },
-        {
-          x: "subway",
-          y: 200,
-        },
-        {
-          x: "bus",
-          y: 1561,
-        },
-        {
-          x: "car",
-          y: 200,
-        },
-        {
-          x: "moto",
-          y: 1106,
-        },
-        {
-          x: "bicycle",
-          y: 200,
-        },
-        {
-          x: "horse",
-          y: 1011,
-        },
-        {
-          x: "skateboard",
-          y: 4125,
-        },
-        {
-          x: "others",
-          y: 154,
-        },
-      ],
-    },
-    {
-      id: "Fund Saving",
-      color: "#ff8762",
-      data: [
-        {
-          x: "plane",
-          y: 100,
-        },
-        {
-          x: "helicopter",
-          y: 100,
-        },
-        {
-          x: "boat",
-          y: 100,
-        },
-        {
-          x: "train",
-          y: 100,
-        },
-        {
-          x: "subway",
-          y: 100,
-        },
-        {
-          x: "bus",
-          y: 100,
-        },
-        {
-          x: "car",
-          y: 100,
-        },
-        {
-          x: "moto",
-          y: 100,
-        },
-        {
-          x: "bicycle",
-          y: 100,
-        },
-        {
-          x: "horse",
-          y: 100,
-        },
-        {
-          x: "skateboard",
-          y: 100,
-        },
-        {
-          x: "others",
-          y: 100,
-        },
-      ],
-    },
-  ];
   const entities = [
     "Stocks",
     "Real Estate",
@@ -343,6 +37,7 @@ export default function Bank({ setcurrenttab, canvassize }) {
     "Retirement",
     "Saving Account",
   ];
+  const [dialogdata, setdialogdata] = useState(null);
   const [mode, setmode] = useState("all");
   const [passbookfilter, setpassbookfilter] = useState("all");
   const demoPortfolio = [
@@ -368,301 +63,228 @@ export default function Bank({ setcurrenttab, canvassize }) {
     "GDP growth rates in USA are on an uptrend and US Dollar (USD) is appreciating against other global currencies",
     "Due to increase in GDP growth rates in USA, global crude prices are witnessing an uptick.",
   ];
+
+  async function handleopenaccount() {
+    let response = await MoneyAceApis.openBankAccount();
+    if (response && response.data && response.data.success) {
+      setmoneyacedata((prev) => ({ ...prev, ...response.data.data }));
+      setacoountopened(true);
+    }
+  }
+  useEffect(() => {
+    loadpassbook();
+    async function loadpassbook() {
+      let response = await MoneyAceApis.getBankPassbook();
+      if (response && response.data && response.data.success) {
+        setpassbookdata(response.data.data);
+      }
+    }
+  }, []);
   return (
     <div className={styles.bank}>
       {mode === "bulletin" && (
-        <div className={styles.bulletin}>
-          <div className={styles.pageholder}>
-            <div className={styles.close} onClick={() => setmode("all")}>
-              close
-            </div>
-            <HTMLFlipBook
-              width={canvassize.width}
-              height={canvassize.height + 50}
-              size="stretch"
-              maxWidth={600}
-            >
-              <div className={styles.page}>
-                <div className={styles.pagecontent}>
-                  <p className={styles.pageno}>Page : 1</p>
-                  <p className={styles.heading}>FINANCIAL BULLETIN</p>
-                  <p className={styles.lowpdetail}>WRITTEN BY: UPSURGE</p>
-                  <p className={styles.highpdetail}>
-                    {`PREVIOUS YEAR’S ECONOMICS PERFORMANCE`}
-                  </p>
-                  <div className={styles.table}>
-                    <p className={styles.tableheading}>Economic indicator</p>
-                    <div className={styles.row}>
-                      <p>GDP growth %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Inflation %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Intrest rates %</p>
-                      <p>7%</p>
-                    </div>
-                    <p className={styles.tableheading}>Asset returns</p>
-                    <div className={styles.row}>
-                      <p>Stock market index</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Real estate price</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Gold price (per 10g)</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>FD rate %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Retirement funds rate %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Savings rate %</p>
-                      <p>7%</p>
-                    </div>
-                  </div>
-                  <ul className={styles.list}>
-                    {demodata.map((item) => {
-                      return <li key={item}>{item}</li>;
-                    })}
-                  </ul>
-                </div>
-              </div>
-              <div className={styles.page}>
-                {" "}
-                <div className={styles.pagecontent}>
-                  <p className={styles.pageno}>Page : 2</p>
-                  <p className={styles.heading}>FINANCIAL BULLETIN</p>
-                  <p className={styles.lowpdetail}>WRITTEN BY: UPSURGE</p>
-                  <p className={styles.highpdetail}>
-                    {`CURRENT YEAR'S ECONOMIC OUTLOOK`}
-                  </p>
-                  <div className={styles.table}>
-                    <p className={styles.tableheading}>Economic indicator</p>
-                    <div className={styles.row}>
-                      <p>GDP growth %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Inflation %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Intrest rates %</p>
-                      <p>7%</p>
-                    </div>
-                    <p className={styles.tableheading}>Asset returns</p>
-                    <div className={styles.row}>
-                      <p>Stock market index</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Real estate price</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Gold price (per 10g)</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>FD rate %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Retirement funds rate %</p>
-                      <p>7%</p>
-                    </div>
-                    <div className={styles.row}>
-                      <p>Savings rate %</p>
-                      <p>7%</p>
-                    </div>
-                  </div>
-                  <p className={styles.subheading}>International News</p>
-                  <div className={styles.news}>
-                    <div className={styles.left}>
-                      <ul className={styles.list}>
-                        {data_international.map((item) => {
-                          return <li key={item}>{item}</li>;
-                        })}
-                      </ul>
-                    </div>
-                    <div className={styles.right}>
-                      <img
-                        className={styles.img}
-                        src="https://i.ibb.co/HnqL613/Dark-Green-Modern-Gradient-Wave-Linktree-Background-1-2.png"
-                        alt=""
-                      ></img>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.page}>
-                {" "}
-                <div className={styles.pagecontent}>
-                  <p className={styles.pageno}>Page : 3</p>
-                  <p className={styles.heading}>FINANCIAL BULLETIN</p>
-                  <p className={styles.lowpdetail}>WRITTEN BY: UPSURGE</p>
-                  <p className={styles.highpdetail}>
-                    {`CURRENT YEAR'S ECONOMIC OUTLOOK`}
-                  </p>
-                  <p className={styles.subheading}>Domestic News</p>
-                  <div className={styles.news}>
-                    <div className={styles.left}>
-                      <ul className={styles.list}>
-                        {data_international.map((item) => {
-                          return <li key={item}>{item}</li>;
-                        })}
-                      </ul>
-                    </div>
-                    <div className={styles.right}>
-                      <img
-                        className={styles.img}
-                        src="https://i.ibb.co/txm6fXb/Dark-Green-Modern-Gradient-Wave-Linktree-Background-3-4.png"
-                        alt=""
-                      ></img>
-                    </div>
-                  </div>
-                  <p className={styles.subheading}>
-                    Economic outlook for the year
-                  </p>
-                  <div className={styles.news}>
-                    <div className={styles.left}>
-                      <ul className={styles.list}>
-                        {data_international.map((item) => {
-                          return <li key={item}>{item}</li>;
-                        })}
-                      </ul>
-                    </div>
-                    <div className={styles.right}>
-                      <img
-                        className={styles.img}
-                        src="https://i.ibb.co/dpL0bjb/Dark-Green-Modern-Gradient-Wave-Linktree-Background-4-1.png"
-                        alt=""
-                      ></img>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.page}>
-                {" "}
-                <div className={styles.pagecontent}>
-                  <p className={styles.pageno}>Page : 4</p>
-                  <p className={styles.heading}>FINANCIAL BULLETIN</p>
-                  <p className={styles.lowpdetail}>WRITTEN BY: UPSURGE</p>
-                  <p className={styles.highpdetail}>
-                    {`CURRENT YEAR'S ECONOMIC OUTLOOK`}
-                  </p>
-                  <p className={styles.subheading}>
-                    Consensus estimates for various asset classes
-                  </p>
-                  <div className={styles.news}>
-                    <div className={styles.left}>
-                      <ul className={styles.list}>
-                        {data_international.map((item) => {
-                          return <li key={item}>{item}</li>;
-                        })}
-                      </ul>
-                    </div>
-                    <div className={styles.right}>
-                      <img
-                        className={styles.img}
-                        src="https://i.ibb.co/23BXcFC/Dark-Green-Modern-Gradient-Wave-Linktree-Background-2-1.png"
-                        alt=""
-                      ></img>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </HTMLFlipBook>
-          </div>
-        </div>
+        <Bulletin setmode={setmode} canvassize={canvassize} />
+      )}
+      {showwhat && (
+        <BankDialog
+          title={dialogdata.title}
+          btntext={dialogdata.btntext}
+          showwhat={showwhat}
+          setdialog={setshowwhat}
+        />
+      )}
+      {showcard && (
+        <BankCards
+          setshowcard={setshowcard}
+          moneyacedata={moneyacedata}
+          setmoneyacedata={setmoneyacedata}
+        />
       )}
       <div className={styles.main}>
-        {showopenacc && (
+        <p className={styles.heading}>
+          <img
+            className={styles.headingicon}
+            onClick={() => setcurrenttab("citymap")}
+            src="https://i.ibb.co/MsY3sDZ/Bank.png"
+            alt=""
+          />
+          Bank
+          {accountopened ? (
+            <p className={styles.name}>
+              {getfullname(userdata.first_name, userdata.last_name)}
+            </p>
+          ) : (
+            <p className={styles.whiteheading}>ACCOUNT</p>
+          )}
+          {accountopened && (
+            <p className={styles.accno}>A/c - {moneyacedata.account_number}</p>
+          )}
+          <div
+            className={styles.bulletinbtn}
+            onClick={() => setmode("bulletin")}
+          >
+            <NewspaperRoundedIcon className={styles.bulletinicon} />
+          </div>
+        </p>
+        {accountopened && (
+          <div className={styles.container}>
+            <div className={styles.headRow}>
+              <div className={styles.rowitem}>#</div>
+              <div className={styles.rowitem}>Date</div>
+              <div className={styles.rowitem}>Description</div>
+              <div className={styles.rowitem}>Debit</div>
+              <div className={styles.rowitem}>Credit</div>
+              <div className={styles.rowitem}>Balance</div>
+            </div>
+            <div className={styles.rows}>
+              {passbookdata.map((row, index) => {
+                return (
+                  <div className={styles.row} key={row.id}>
+                    <div className={styles.rowitem}>
+                      {index + 1 < 10 ? "0" + (index + 1) : index + 1}
+                    </div>
+                    <div className={styles.rowitem}>
+                      {getIndianTime(row.timestamp)}
+                    </div>
+                    <div className={styles.rowitem}>{row.particulars}</div>
+                    <div className={styles.rowitem}>
+                      {row.withdraw_money ? "-" + row.withdraw_money : "-"}
+                    </div>
+                    <div className={styles.rowitem}>
+                      {row.deposit_money ? row.deposit_money : "-"}
+                    </div>
+                    <div className={styles.rowitem}>₹{row.account_balance}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        {!accountopened && (
           <div className={styles.openacc}>
-            <div
-              className={styles.background}
-              onClick={() => setshowopenacc(false)}
-            />
             <div className={styles.main}>
-              <p className={styles.formheading}>Upsurge Banking Form</p>
+              <div className={styles.heading}>
+                <div className={styles.namewrapper}>
+                  <img
+                    src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
+                    alt=""
+                  />
+                  <p>
+                    {moneyacedata.account_number
+                      ? "Account details"
+                      : "upsurge banking form"}
+                  </p>
+                </div>
+              </div>
               <div className={styles.form}>
                 <div className={styles.row}>
                   <p>Your name</p>
-                  <input />
+                  <input
+                    value={(
+                      userdata.first_name +
+                      " " +
+                      (userdata.last_name || "")
+                    ).trim()}
+                    type="text"
+                  />
+                </div>
+                <div className={styles.row}>
+                  <p>Your Dob</p>
+                  <input value={getIndianTime(userdata.dob)} type="text" />
                 </div>
                 <div className={styles.row}>
                   <div className={styles.chkbx}>
-                    <input
-                      type="checkbox"
-                      checked={gender === "Male"}
-                      onChange={(event) => {
-                        if (event.target.checked) setgender("Male");
-                        else setgender("");
-                      }}
-                    />
-                    Male
-                    <input
-                      type="checkbox"
-                      checked={gender === "Female"}
-                      onChange={(event) => {
-                        console.log(event);
-                        if (event.target.checked) setgender("Female");
-                        else setgender("");
-                      }}
-                    />
-                    Female
+                    {userdata.gender === "male" ? (
+                      <img
+                        className={styles.Checkbox}
+                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        className={styles.Checkbox}
+                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
+                        alt=""
+                      />
+                    )}
+                    <p>Male</p>
+                    {userdata.gender === "female" ? (
+                      <img
+                        className={styles.Checkbox}
+                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        className={styles.Checkbox}
+                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
+                        alt=""
+                      />
+                    )}
+                    <p>Female</p>
                   </div>
                 </div>
                 <div
                   className={styles.submit}
-                  onClick={() => setcurrenttab("bankDashboard")}
+                  onClick={() => {
+                    if (moneyacedata.account_number) {
+                      setacoountopened(true);
+                      return;
+                    }
+                    handleopenaccount();
+                  }}
                 >
-                  Submit
+                  <p>{moneyacedata.account_number ? "Close" : "Submit"}</p>
                 </div>
               </div>
               <div className={styles.row}></div>
             </div>
           </div>
         )}
-        <img
-          className={styles.bgimage}
-          src="/images/backgrounds/laptop.png"
-          alt=""
-        />
-
-        <div className={styles.bg}>
-          <p className={styles.heading}>
-            <BigBackArrow
-              onClick={() => setcurrenttab("citymap")}
-              className={styles.headingicon}
-            />
-            Bank
-            <div
-              className={styles.bulletinbtn}
-              onClick={() => setmode("bulletin")}
-            >
-              <NewspaperRoundedIcon className={styles.bulletinicon} />
-            </div>
-          </p>
-
-          <div className={styles.btnwrapper}>
-            <div className={styles.button}>Quiz</div>
-            <div className={styles.button} onClick={() => setshowopenacc(true)}>
-              Open account
-            </div>
-          </div>
-        </div>
       </div>
+      {accountopened && (
+        <div className={styles.bottomrow}>
+          <div className={styles.btn} onClick={() => setacoountopened(false)}>
+            <p>Account</p>
+          </div>
+          <div className={styles.btn} onClick={() => setshowcard(true)}>
+            <p>Cards</p>
+          </div>
+
+          <div className={styles.space}></div>
+          <div
+            className={styles.btn}
+            onClick={() => {
+              setshowwhat("deposit");
+              setdialogdata({
+                title: "Please enter amount to deposit",
+                btntext: "Deposit",
+              });
+            }}
+          >
+            <p>Deposit</p>
+          </div>
+          <div
+            className={styles.btn}
+            onClick={() => {
+              setshowwhat("withdraw");
+              setdialogdata({
+                title: "Please enter amount to withdraw",
+                btntext: "Withdraw",
+              });
+            }}
+          >
+            <p>Withdraw</p>
+          </div>
+          {/* <div className={styles.btn} >
+          <p>Transfer</p>
+        </div> */}
+        </div>
+      )}
+      <BackSvg
+        className={styles.back}
+        onClick={() => setcurrenttab("dashboard")}
+      />
     </div>
   );
 }

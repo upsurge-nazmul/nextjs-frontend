@@ -4,6 +4,7 @@ import MoneyAceHeader from "./MoneyAceHeader";
 import PlaySvg from "../SVGcomponents/MoneyAce/ui/PlaySvg";
 import { useRouter } from "next/dist/client/router";
 import ExitSvg from "../SVGcomponents/MoneyAce/ui/ExitSvg";
+import InfoSvg from "../SVGcomponents/MoneyAce/ui/InfoSvg";
 
 export default function Welcome({
   avatarUrl,
@@ -14,6 +15,7 @@ export default function Welcome({
   setmuted,
   volume,
   setvolume,
+  moneyacedata,
 }) {
   const ref = useRef();
   const router = useRouter();
@@ -34,6 +36,7 @@ export default function Welcome({
         avatarUrl={avatarUrl}
         username={username}
         fullName={fullName}
+        moneyacedata={moneyacedata}
         muted={muted}
         setmuted={setmuted}
         volume={volume}
@@ -41,15 +44,23 @@ export default function Welcome({
         hidelogo
         hidebackground
       />
+      <img
+        className={styles.logo}
+        src="https://i.ibb.co/58rg3qk/MA2.png"
+        alt=""
+      />
       <div className={styles.start} onClick={() => setstage("dashboard")}>
-        <PlaySvg className={styles.playicon} />
+        <PlaySvg className={styles.icon} />
+      </div>
+      <div className={styles.info} onClick={() => setstage("dashboard")}>
+        <InfoSvg className={styles.icon} />
       </div>
       <div className={styles.back} onClick={() => router.push("/dashboard/p")}>
-        <ExitSvg className={styles.playicon} />
+        <ExitSvg className={styles.icon} />
       </div>
       <img
         className={styles.banner}
-        src={"/images/games/MoneyAce.png"}
+        src="https://i.ibb.co/V99wfCj/Main-Screen-BG.png"
         alt=""
       />
     </div>
