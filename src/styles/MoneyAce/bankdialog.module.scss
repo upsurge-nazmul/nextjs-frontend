@@ -15,44 +15,151 @@
     background-color: rgba(0, 0, 0, 0.404);
   }
   .main {
-    background-color: white;
     width: 50%;
     height: fit-content;
     border-radius: 20px;
+    background-color: rgba(36, 36, 36, 1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 4px solid #72a2e7;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    height: 40%;
+    height: fit-content;
     justify-content: space-around;
+    filter: drop-shadow(0px 5px 10px rgb(29, 29, 29));
     .heading {
-      font-size: 18px;
-      font-weight: 500;
+      font-size: 28px;
+      font-weight: 800;
       margin-top: 10px;
+      color: #ffd500;
+      font-family: "Fira Sans", sans-serif;
+      margin: 5% 0;
+    }
+    .err {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ff6969;
+      margin-bottom: 3%;
+      font-family: "Fira Sans", sans-serif;
     }
     input {
-      border-radius: 20px;
+      border-radius: 12px;
       outline: none;
       border: none;
       border: 1px solid rgb(119, 119, 119);
+      font-family: "Fira Sans", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
       padding: 5px 20px;
+      height: 50px;
       width: 50%;
+      background-color: rgba(128, 128, 128, 0.288);
+      margin-bottom: 3%;
     }
     .submit {
       margin: 0 auto;
-      background-color: #72a2e7;
+      background: rgb(255, 213, 0);
+      font-weight: 900;
+      font-size: 16px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 213, 0, 1) 0%,
+        rgba(255, 175, 0, 1) 100%
+      );
       padding: 10px 20px;
       border-radius: 10px;
       color: white;
       margin-top: 10px;
       transition: all 0.3s ease;
-      margin-bottom: 10px;
+      margin-bottom: 5%;
       cursor: pointer;
+      p {
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+      }
       &:hover {
         background-color: hsl(215, 52%, 50%);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .bankdialog {
+    .main {
+      width: 50%;
+      height: fit-content;
+      border-radius: 20px;
+      background-color: rgba(36, 36, 36, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      height: fit-content;
+      justify-content: space-around;
+      filter: drop-shadow(0px 5px 10px rgb(29, 29, 29));
+      .heading {
+        font-size: 2vw;
+        font-weight: 800;
+        margin-top: 10px;
+        color: #ffd500;
+        font-family: "Fira Sans", sans-serif;
+        margin: 5% 0;
+        text-align: center;
+      }
+      .err {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ff6969;
+        margin-bottom: 3%;
+        font-family: "Fira Sans", sans-serif;
+      }
+      input {
+        border-radius: 12px;
+        outline: none;
+        border: none;
+        border: 1px solid rgb(119, 119, 119);
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.5vw;
+        font-weight: 800;
+        color: white;
+        padding: 5px 15px;
+        height: 35px;
+        width: 50%;
+        background-color: rgba(128, 128, 128, 0.288);
+        margin-bottom: 3%;
+      }
+      .submit {
+        margin: 0 auto;
+        background: rgb(255, 213, 0);
+        font-weight: 900;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 213, 0, 1) 0%,
+          rgba(255, 175, 0, 1) 100%
+        );
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+        margin-bottom: 5%;
+        cursor: pointer;
+        p {
+          font-family: "Fira Sans", sans-serif;
+          font-weight: 800;
+          font-size: 1.2vw;
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+        }
+        &:hover {
+          background-color: hsl(215, 52%, 50%);
+        }
       }
     }
   }

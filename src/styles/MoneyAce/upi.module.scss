@@ -1,0 +1,665 @@
+.upi {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 4%;
+  .back {
+    position: absolute;
+    width: 3vw;
+    z-index: 2;
+    top: 18%;
+    height: fit-content;
+    cursor: pointer;
+  }
+  .main {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .heading {
+      font-size: 20px;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-weight: 900;
+      font-family: "Fira Sans", sans-serif;
+      font-size: clamp(14px, 1.5vw, 20px);
+      color: #ffd500;
+      .headingicon {
+        width: 4vw;
+        cursor: pointer;
+      }
+      .bulletinbtn {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        transition: all 0.3s ease;
+        padding: 2px 10px;
+        border-radius: 6px;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        background: rgb(255, 213, 0);
+        font-weight: 900;
+        font-size: 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 213, 0, 1) 0%,
+          rgba(255, 175, 0, 1) 100%
+        );
+        .bulletinicon {
+          width: 15px;
+          color: white;
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+        }
+        &:hover {
+          background-color: rgb(236, 236, 236);
+        }
+      }
+    }
+    .upidiv {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      .subheading {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 2vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 20px);
+        color: #ffffff;
+      }
+      .wrapper {
+        border-radius: 12px;
+        background-color: rgba(0, 0, 0, 0.35);
+        width: 70%;
+        padding: 2% 5%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .row {
+          display: flex;
+          align-items: center;
+          margin-bottom: 5%;
+          gap: 20px;
+          img {
+            width: 40px;
+            cursor: pointer;
+          }
+          p {
+            font-weight: 900;
+            font-family: "Fira Sans", sans-serif;
+            font-size: 24px;
+            color: #ffd500;
+            flex: 1;
+          }
+          input {
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            border: 1px solid rgb(119, 119, 119);
+            font-family: "Fira Sans", sans-serif;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            padding: 5px 20px;
+            height: 45px;
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.4);
+          }
+          .upiinput {
+            position: absolute;
+            right: 10%;
+            font-weight: 700;
+            color: white;
+            font-family: "Fira Sans", sans-serif;
+            font-size: 14px;
+          }
+        }
+        .bottomrow {
+          display: flex;
+          justify-content: space-around;
+          gap: 10px;
+          margin-top: 5vh;
+          .space {
+            flex: 1;
+          }
+          .btn {
+            background: rgb(255, 213, 0);
+            font-weight: 900;
+            font-size: 16px;
+            color: white;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 213, 0, 1) 0%,
+              rgba(255, 175, 0, 1) 100%
+            );
+            padding: 12px;
+            border-radius: 6px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
+            width: 6vw;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            p {
+              font-family: "Fira Sans", sans-serif;
+              filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .upi {
+    padding-bottom: 3%;
+
+    .main {
+      .heading {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 20px);
+        color: #ffd500;
+        .headingicon {
+          width: 4vw;
+          cursor: pointer;
+        }
+        .bulletinbtn {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          transition: all 0.3s ease;
+          padding: 2px 10px;
+          border-radius: 6px;
+          position: absolute;
+          top: 0px;
+          right: 0;
+          background: rgb(255, 213, 0);
+          font-weight: 900;
+          font-size: 16px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 213, 0, 1) 0%,
+            rgba(255, 175, 0, 1) 100%
+          );
+          .bulletinicon {
+            width: 15px;
+            color: white;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          &:hover {
+            background-color: rgb(236, 236, 236);
+          }
+        }
+      }
+      .upidiv {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        .subheading {
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 2vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          font-weight: 900;
+          font-family: "Fira Sans", sans-serif;
+          color: #ffffff;
+        }
+        .wrapper {
+          border-radius: 12px;
+          background-color: rgba(0, 0, 0, 0.35);
+          width: 60%;
+          padding: 2% 3%;
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            img {
+              width: 40px;
+              cursor: pointer;
+            }
+            p {
+              font-weight: 900;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 18px;
+              color: #ffd500;
+              flex: 1;
+            }
+            input {
+              border-radius: 20px;
+              outline: none;
+              border: none;
+              border: 1px solid rgb(119, 119, 119);
+              font-family: "Fira Sans", sans-serif;
+              text-align: left;
+              font-size: 14px;
+              font-weight: 800;
+              color: white;
+              padding: 5px 20px;
+              height: 45px;
+              flex: 1;
+              background-color: rgba(0, 0, 0, 0.4);
+            }
+            .upiinput {
+              position: absolute;
+              right: 10%;
+              font-weight: 700;
+              color: white;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 14px;
+            }
+          }
+          .err {
+            width: 100%;
+            text-align: center;
+            font-family: "Fira Sans", sans;
+            font-size: 1vw;
+            font-weight: 700;
+            color: rgb(255, 93, 93);
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          .bottomrow {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 10px;
+            .space {
+              flex: 1;
+            }
+            .btn {
+              background: rgb(255, 213, 0);
+              font-weight: 900;
+              font-size: 14px;
+              color: white;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 213, 0, 1) 0%,
+                rgba(255, 175, 0, 1) 100%
+              );
+              padding: 12px;
+              border-radius: 6px;
+              filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
+              width: 6vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              height: 35px;
+              p {
+                font-family: "Fira Sans", sans-serif;
+                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .upi {
+    padding-bottom: 3%;
+
+    .main {
+      .heading {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 20px);
+        color: #ffd500;
+        .headingicon {
+          width: 4vw;
+          cursor: pointer;
+        }
+        .bulletinbtn {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          transition: all 0.3s ease;
+          padding: 2px 10px;
+          border-radius: 6px;
+          position: absolute;
+          top: 0px;
+          right: 0;
+          background: rgb(255, 213, 0);
+          font-weight: 900;
+          font-size: 16px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 213, 0, 1) 0%,
+            rgba(255, 175, 0, 1) 100%
+          );
+          .bulletinicon {
+            width: 15px;
+            color: white;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          &:hover {
+            background-color: rgb(236, 236, 236);
+          }
+        }
+      }
+      .upidiv {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        .subheading {
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 2vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          font-weight: 900;
+          font-family: "Fira Sans", sans-serif;
+          color: #ffffff;
+        }
+        .wrapper {
+          border-radius: 12px;
+          background-color: rgba(0, 0, 0, 0.35);
+          width: 60%;
+          padding: 2% 3%;
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            img {
+              width: 40px;
+              cursor: pointer;
+            }
+            p {
+              font-weight: 900;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 18px;
+              color: #ffd500;
+              flex: 1;
+            }
+            input {
+              border-radius: 20px;
+              outline: none;
+              border: none;
+              border: 1px solid rgb(119, 119, 119);
+              font-family: "Fira Sans", sans-serif;
+              text-align: left;
+              font-size: 14px;
+              font-weight: 800;
+              color: white;
+              padding: 5px 20px;
+              height: 45px;
+              flex: 1;
+              background-color: rgba(0, 0, 0, 0.4);
+            }
+            .upiinput {
+              position: absolute;
+              right: 10%;
+              font-weight: 700;
+              color: white;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 14px;
+            }
+          }
+          .err {
+            width: 100%;
+            text-align: center;
+            font-family: "Fira Sans", sans;
+            font-size: 1vw;
+            font-weight: 700;
+            color: rgb(255, 93, 93);
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          .bottomrow {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 10px;
+            .space {
+              flex: 1;
+            }
+            .btn {
+              background: rgb(255, 213, 0);
+              font-weight: 900;
+              font-size: 14px;
+              color: white;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 213, 0, 1) 0%,
+                rgba(255, 175, 0, 1) 100%
+              );
+              padding: 12px;
+              border-radius: 6px;
+              filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
+              width: 6vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              height: 35px;
+              p {
+                font-family: "Fira Sans", sans-serif;
+                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .upi {
+    padding-bottom: 3%;
+
+    .main {
+      .heading {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 20px);
+        color: #ffd500;
+        .headingicon {
+          width: 4vw;
+          cursor: pointer;
+        }
+        .bulletinbtn {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          transition: all 0.3s ease;
+          padding: 2px 10px;
+          border-radius: 6px;
+          position: absolute;
+          top: 0px;
+          right: 0;
+          background: rgb(255, 213, 0);
+          font-weight: 900;
+          font-size: 16px;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 213, 0, 1) 0%,
+            rgba(255, 175, 0, 1) 100%
+          );
+          .bulletinicon {
+            width: 15px;
+            color: white;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          &:hover {
+            background-color: rgb(236, 236, 236);
+          }
+        }
+      }
+      .upidiv {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        .subheading {
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 2vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          font-weight: 900;
+          font-family: "Fira Sans", sans-serif;
+          color: #ffffff;
+        }
+        .wrapper {
+          border-radius: 12px;
+          background-color: rgba(0, 0, 0, 0.35);
+          width: 60%;
+          padding: 2% 3%;
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            img {
+              width: 40px;
+              cursor: pointer;
+            }
+            p {
+              font-weight: 900;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 18px;
+              color: #ffd500;
+              flex: 1;
+            }
+            input {
+              border-radius: 20px;
+              outline: none;
+              border: none;
+              border: 1px solid rgb(119, 119, 119);
+              font-family: "Fira Sans", sans-serif;
+              text-align: left;
+              font-size: 14px;
+              font-weight: 800;
+              color: white;
+              padding: 5px 20px;
+              height: 45px;
+              flex: 1;
+              background-color: rgba(0, 0, 0, 0.4);
+            }
+            .upiinput {
+              position: absolute;
+              right: 10%;
+              font-weight: 700;
+              color: white;
+              font-family: "Fira Sans", sans-serif;
+              font-size: 14px;
+            }
+          }
+          .err {
+            width: 100%;
+            text-align: center;
+            font-family: "Fira Sans", sans;
+            font-size: 1vw;
+            font-weight: 700;
+            color: rgb(255, 93, 93);
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          }
+          .bottomrow {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 10px;
+            .space {
+              flex: 1;
+            }
+            .btn {
+              background: rgb(255, 213, 0);
+              font-weight: 900;
+              font-size: 14px;
+              color: white;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 213, 0, 1) 0%,
+                rgba(255, 175, 0, 1) 100%
+              );
+              padding: 12px;
+              border-radius: 6px;
+              filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
+              width: 6vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              height: 35px;
+              p {
+                font-family: "Fira Sans", sans-serif;
+                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

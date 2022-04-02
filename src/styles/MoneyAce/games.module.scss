@@ -1,0 +1,340 @@
+.gamepage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  .wrapper {
+    height: 80%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 40px;
+    scrollbar-width: thin;
+    scrollbar-color: #c0c0c0 #454545;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #454545;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #c0c0c0;
+      border-radius: 20px;
+      border: 0px none #ffffff;
+    }
+    .game {
+      background: rgb(248, 248, 248);
+      background: linear-gradient(
+        180deg,
+        rgb(248, 248, 248) 0%,
+        rgba(182, 182, 182, 1) 100%
+      );
+      min-width: 300px;
+      height: 100%;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      .name {
+        color: #ffae00;
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        background: -webkit-linear-gradient(#ffbf00, #ffbf66);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .des {
+        margin-bottom: 20px;
+        color: gray;
+        font-weight: 600;
+        font-family: "Fira Sans", sans-serif;
+        font-size: 14px;
+        font-style: italic;
+      }
+      img {
+        flex: 1;
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+        border-radius: 12px;
+        background: rgb(182, 182, 182);
+        background: linear-gradient(
+          180deg,
+          rgba(182, 182, 182, 1) 0%,
+          rgba(231, 231, 231, 1) 100%
+        );
+        padding: 20px;
+      }
+    }
+  }
+  .back {
+    width: 3vw;
+    height: fit-content;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .gamepage {
+    margin-top: 10px;
+    .wrapper {
+      height: 80%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #c0c0c0 #454545;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #454545;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 20px;
+        border: 0px none #ffffff;
+      }
+      .game {
+        background: rgb(248, 248, 248);
+        background: linear-gradient(
+          180deg,
+          rgb(248, 248, 248) 0%,
+          rgba(182, 182, 182, 1) 100%
+        );
+        min-width: 200px;
+        height: 100%;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        .name {
+          color: #ffae00;
+          font-family: "Fira Sans", sans-serif;
+          font-weight: 900;
+          font-size: 1.2vw;
+          margin-bottom: 5px;
+          text-transform: capitalize;
+          background: -webkit-linear-gradient(#ffbf00, #ffbf66);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .des {
+          margin-bottom: 20px;
+          color: gray;
+          font-weight: 600;
+          font-family: "Fira Sans", sans-serif;
+          font-size: 0.8vw;
+          font-style: italic;
+        }
+        img {
+          flex: 1;
+          object-fit: contain;
+          width: 100%;
+          border-radius: 12px;
+          background: rgb(182, 182, 182);
+          background: linear-gradient(
+            180deg,
+            rgba(182, 182, 182, 1) 0%,
+            rgba(231, 231, 231, 1) 100%
+          );
+          padding: 20px;
+        }
+      }
+    }
+    .back {
+      width: 3vw;
+      height: fit-content;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .gamepage {
+    margin-top: 10px;
+    .wrapper {
+      height: 80%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #c0c0c0 #454545;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #454545;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 20px;
+        border: 0px none #ffffff;
+      }
+      .game {
+        background: rgb(248, 248, 248);
+        background: linear-gradient(
+          180deg,
+          rgb(248, 248, 248) 0%,
+          rgba(182, 182, 182, 1) 100%
+        );
+        min-width: 200px;
+        height: 100%;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        .name {
+          color: #ffae00;
+          font-family: "Fira Sans", sans-serif;
+          font-weight: 900;
+          font-size: 1.2vw;
+          margin-bottom: 5px;
+          text-transform: capitalize;
+          background: -webkit-linear-gradient(#ffbf00, #ffbf66);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .des {
+          margin-bottom: 20px;
+          color: gray;
+          font-weight: 600;
+          font-family: "Fira Sans", sans-serif;
+          font-size: 0.8vw;
+          font-style: italic;
+        }
+        img {
+          flex: 1;
+          object-fit: contain;
+          width: 100%;
+          border-radius: 12px;
+          background: rgb(182, 182, 182);
+          background: linear-gradient(
+            180deg,
+            rgba(182, 182, 182, 1) 0%,
+            rgba(231, 231, 231, 1) 100%
+          );
+          padding: 20px;
+        }
+      }
+    }
+    .back {
+      width: 3vw;
+      height: fit-content;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .gamepage {
+    margin-top: 10px;
+    .wrapper {
+      height: 80%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #c0c0c0 #454545;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #454545;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 20px;
+        border: 0px none #ffffff;
+      }
+      .game {
+        background: rgb(248, 248, 248);
+        background: linear-gradient(
+          180deg,
+          rgb(248, 248, 248) 0%,
+          rgba(182, 182, 182, 1) 100%
+        );
+        min-width: 150px;
+        height: 100%;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        .name {
+          color: #ffae00;
+          font-family: "Fira Sans", sans-serif;
+          font-weight: 900;
+          font-size: 1.2vw;
+          margin-bottom: 5px;
+          text-transform: capitalize;
+          background: -webkit-linear-gradient(#ffbf00, #ffbf66);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .des {
+          margin-bottom: 20px;
+          color: gray;
+          font-weight: 600;
+          font-family: "Fira Sans", sans-serif;
+          font-size: 0.8vw;
+          font-style: italic;
+        }
+        img {
+          flex: 1;
+          object-fit: contain;
+          width: 100%;
+          border-radius: 12px;
+          background: rgb(182, 182, 182);
+          background: linear-gradient(
+            180deg,
+            rgba(182, 182, 182, 1) 0%,
+            rgba(231, 231, 231, 1) 100%
+          );
+          padding: 20px;
+        }
+      }
+    }
+    .back {
+      width: 3vw;
+      height: fit-content;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  }
+}

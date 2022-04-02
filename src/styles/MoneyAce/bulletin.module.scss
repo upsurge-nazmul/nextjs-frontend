@@ -1,0 +1,375 @@
+.bulletin {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.432);
+  width: 100%;
+  z-index: 20;
+  .page {
+    background: url("https://i.ibb.co/hZjrjqS/Rectangle-53.png");
+    height: 100%;
+    background-size: cover;
+    .pagecontent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+      height: 100%;
+      .pageno {
+        font-size: 12px;
+        bottom: 20px;
+        right: 20px;
+        position: absolute;
+      }
+      .heading {
+        font-weight: bold;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+      }
+      .subheading {
+        font-weight: bold;
+        font-size: 14px;
+        width: 100%;
+        margin-top: 15px;
+      }
+      .lowpdetail {
+        width: 100%;
+        font-size: 12px;
+        font-weight: 400;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+      .highpdetail {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        border-bottom: 1px solid black;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        background-color: #fff;
+        font-size: 12px;
+        .tableheading {
+          background-color: #97928d;
+          font-weight: 500;
+          padding: 5px;
+        }
+        .row {
+          display: flex;
+          padding: 2px 5px;
+          justify-content: space-between;
+        }
+      }
+      .news {
+        display: flex;
+        margin-top: 20px;
+        .left,
+        .right {
+          flex: 1;
+        }
+        .right {
+          .img {
+          }
+        }
+      }
+      .list {
+        font-size: 12px;
+        width: 100%;
+        padding: 0 15px;
+        margin-top: 10px;
+        li {
+          margin-top: 5px;
+        }
+      }
+      .img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .pageholder {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .close {
+      color: rgb(235, 64, 64);
+      background: white;
+      border-radius: 6px;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .bulletin {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.432);
+    width: 100%;
+    z-index: 20;
+    .page {
+      background: url("https://i.ibb.co/hZjrjqS/Rectangle-53.png");
+      height: 100% !important;
+      background-size: cover;
+      top: 0 !important;
+      .pagecontent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        .pageno {
+          font-size: 1vw;
+          bottom: 10px;
+          right: 10px;
+          position: absolute;
+        }
+        .heading {
+          font-weight: bold;
+          font-size: 1.5vw;
+          width: 100%;
+          text-align: center;
+        }
+        .subheading {
+          font-weight: bold;
+          font-size: 1.1vw;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .lowpdetail {
+          font-size: 1vw;
+          margin-top: 5px;
+          padding-left: 10px;
+        }
+        .highpdetail {
+          width: 100%;
+          font-size: 1.3vw;
+          font-weight: 600;
+          border-bottom: 1px solid black;
+          text-align: center;
+          margin-top: 5px;
+        }
+        .table {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 10px;
+          background-color: #fff;
+          font-size: 1vw;
+          .tableheading {
+            background-color: #97928d;
+            font-weight: 500;
+            padding: 2.5px;
+          }
+          .row {
+            display: flex;
+            padding: 1px 2.5px;
+            justify-content: space-between;
+          }
+        }
+        .news {
+          display: flex;
+          margin-top: 20px;
+          .left,
+          .right {
+            flex: 1;
+          }
+          .right {
+            .img {
+            }
+          }
+        }
+        .list {
+          font-size: 1vw;
+          width: 100%;
+          padding: 0 10px;
+          margin-top: 10px;
+          li {
+            margin-top: 2.5px;
+          }
+        }
+        .img {
+          width: 100%;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 6px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .pageholder {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      .close {
+        color: rgb(235, 64, 64);
+        background: white;
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        font-size: 1vw;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      div {
+        &:last-child {
+          flex: 1;
+          div {
+            flex: 1;
+            padding-bottom: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .bulletin {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.432);
+    width: 100%;
+    z-index: 20;
+    .page {
+      background: url("https://i.ibb.co/hZjrjqS/Rectangle-53.png");
+      height: 100%;
+      background-size: cover;
+      .pagecontent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        .pageno {
+          font-size: 1vw;
+          bottom: 10px;
+          right: 10px;
+          position: absolute;
+        }
+        .heading {
+          font-weight: bold;
+          font-size: 1.5vw;
+          width: 100%;
+          text-align: center;
+        }
+        .subheading {
+          font-weight: bold;
+          font-size: 1.1vw;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .lowpdetail {
+          font-size: 1vw;
+          margin-top: 5px;
+          padding-left: 10px;
+        }
+        .highpdetail {
+          width: 100%;
+          font-size: 1.3vw;
+          font-weight: 600;
+          border-bottom: 1px solid black;
+          text-align: center;
+          margin-top: 5px;
+        }
+        .table {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 10px;
+          background-color: #fff;
+          font-size: 1vw;
+          .tableheading {
+            background-color: #97928d;
+            font-weight: 500;
+            padding: 2.5px;
+          }
+          .row {
+            display: flex;
+            padding: 1px 2.5px;
+            justify-content: space-between;
+          }
+        }
+        .news {
+          display: flex;
+          margin-top: 20px;
+          .left,
+          .right {
+            flex: 1;
+          }
+          .right {
+            .img {
+            }
+          }
+        }
+        .list {
+          font-size: 1vw;
+          width: 100%;
+          padding: 0 10px;
+          margin-top: 10px;
+          li {
+            margin-top: 2.5px;
+          }
+        }
+        .img {
+          width: 100%;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 6px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .pageholder {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .close {
+        color: rgb(235, 64, 64);
+        background: white;
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        font-size: 1vw;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+}

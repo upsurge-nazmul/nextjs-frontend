@@ -1,0 +1,294 @@
+.storeitem {
+  background: rgba(248, 248, 248, 0.404);
+  background: linear-gradient(
+    180deg,
+    rgba(248, 248, 248, 0.4) 0%,
+    rgba(182, 182, 182, 0.4) 100%
+  );
+  min-width: 200px;
+  border-radius: 20px;
+  padding: 20px 15px;
+  display: flex;
+  filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.685));
+  flex-direction: column;
+  cursor: pointer;
+  .name {
+    color: #ffffff;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+    text-align: center;
+  }
+  .imagediv {
+    background: rgba(6, 26, 71, 0.712);
+    border-radius: 12px;
+    display: flex;
+    height: 72%;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20%;
+    padding-top: 15%;
+    .price {
+      color: #ffffff;
+      font-family: "Fira Sans", sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      margin-bottom: 5px;
+      text-transform: capitalize;
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+      text-align: center;
+    }
+    img {
+      flex: 1;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      max-height: 200px;
+      padding: 20px;
+      margin-top: auto;
+    }
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    width: 100%;
+    justify-content: space-between;
+    img {
+      width: 30px;
+      cursor: pointer;
+    }
+    p {
+      font-weight: 900;
+      font-family: "Fira Sans", sans-serif;
+      font-size: 24px;
+      color: #ffd500;
+      flex: 1;
+    }
+    input {
+      border-radius: 20px;
+      outline: none;
+      border: none;
+      border: 1px solid rgb(119, 119, 119);
+      font-family: "Fira Sans", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      max-width: 60%;
+      color: white;
+      padding: 5px 20px;
+      height: 45px;
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .storeitem {
+    border-radius: 12px;
+    padding: 10px;
+    min-width: unset;
+    width: 12vw;
+    .name {
+      font-size: 1.2vw;
+    }
+    .imagediv {
+      border-radius: 8px;
+      height: 65%;
+      padding-bottom: 5%;
+      padding-top: 10%;
+      .price {
+        color: #ffffff;
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 900;
+        font-size: 1vw;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+        text-align: center;
+      }
+      img {
+        flex: 1;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        max-height: 200px;
+        padding: 0px;
+        margin-top: auto;
+      }
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+      width: 100%;
+      justify-content: space-between;
+      img {
+        width: 1.5vw;
+        cursor: pointer;
+      }
+      p {
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.3vw;
+        color: #ffd500;
+        flex: 1;
+      }
+      input {
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        border: 1px solid rgb(119, 119, 119);
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.2vw;
+        font-weight: 800;
+        max-width: 60%;
+        color: white;
+        padding: 5px 20px;
+        height: 2vw;
+        flex: 1;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .storeitem {
+    border-radius: 12px;
+    padding: 10px;
+    min-width: unset;
+    width: 12vw;
+    .name {
+      font-size: 1.2vw;
+    }
+    .imagediv {
+      border-radius: 8px;
+      height: 65%;
+      padding-bottom: 5%;
+      padding-top: 10%;
+      .price {
+        color: #ffffff;
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 900;
+        font-size: 1vw;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+        text-align: center;
+      }
+      img {
+        flex: 1;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        max-height: 200px;
+        padding: 0px;
+        margin-top: auto;
+      }
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+      width: 100%;
+      justify-content: space-between;
+      img {
+        width: 1.5vw;
+        cursor: pointer;
+      }
+      p {
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.3vw;
+        color: #ffd500;
+        flex: 1;
+      }
+      input {
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        border: 1px solid rgb(119, 119, 119);
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.2vw;
+        font-weight: 800;
+        max-width: 60%;
+        color: white;
+        padding: 5px 20px;
+        height: 2vw;
+        flex: 1;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .storeitem {
+    border-radius: 12px;
+    padding: 10px;
+    min-width: unset;
+    width: 12vw;
+    .name {
+      font-size: 1.2vw;
+    }
+    .imagediv {
+      border-radius: 8px;
+      height: 65%;
+      padding-bottom: 5%;
+      padding-top: 10%;
+      .price {
+        color: #ffffff;
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 900;
+        font-size: 1vw;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+        text-align: center;
+      }
+      img {
+        flex: 1;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        max-height: 200px;
+        padding: 0px;
+        margin-top: auto;
+      }
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+      width: 100%;
+      justify-content: space-between;
+      img {
+        width: 1.5vw;
+        cursor: pointer;
+      }
+      p {
+        font-weight: 900;
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.3vw;
+        color: #ffd500;
+        flex: 1;
+      }
+      input {
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        border: 1px solid rgb(119, 119, 119);
+        font-family: "Fira Sans", sans-serif;
+        font-size: 1.2vw;
+        font-weight: 800;
+        max-width: 60%;
+        color: white;
+        padding: 5px 20px;
+        height: 2vw;
+        flex: 1;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+}

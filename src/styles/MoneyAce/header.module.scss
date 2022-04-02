@@ -1,128 +1,57 @@
+@keyframes slidefromtop {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100px;
+  height: 10vh;
   padding: 20px;
   justify-content: space-between;
   z-index: 20;
+  animation: slidefromtop 1s ease forwards;
   position: relative;
-  .settingsmodal {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    height: calc(9vw * 3.99);
-    z-index: 15;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.404);
-    }
-    .main {
-      z-index: 1;
-      width: 450px;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      border: 2px solid white;
-      background: linear-gradient(
-        360deg,
-        #9dda9f,
-        #95d79d,
-        #8dd59c,
-        #84d29a,
-        #7bcf99,
-        #72cd98,
-        #68ca97,
-        #5ec796
-      );
-      background: 0.5;
-      padding-bottom: 50px;
-      position: relative;
-      .closebtn {
-        width: 70px;
-        height: 70px;
-        border-radius: 70px;
-        position: absolute;
-        right: -5px;
-        top: -20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5px;
-        cursor: pointer;
-        background: linear-gradient(
-          360deg,
-          #9dda9f,
-          #95d79d,
-          #8dd59c,
-          #84d29a,
-          #7bcf99,
-          #72cd98,
-          #68ca97,
-          #5ec796
-        );
 
-        .close {
-          color: white;
-          font-size: 30px;
-          font-weight: bold;
-          z-index: -1;
-        }
-      }
-      p {
-        font-family: "Itim", cursive;
-        color: white;
-      }
-      .heading {
-        font-size: 40px;
-      }
-      .subheading {
-        font-size: 30px;
-        margin-top: 20px;
-        border-bottom: 1px solid white;
-      }
-      .container {
-        color: white;
-        font-family: "Itim", cursive;
-        display: flex;
-        margin-top: 15px;
-        font-size: 28px;
-        align-items: center;
-        width: 80%;
-        justify-content: space-around;
-        .checkbox {
-          color: white;
-        }
-        .slider {
-          color: white;
-          margin: 0 20px;
-        }
-      }
-    }
-    .bgborder {
-      border: 2px solid white;
-      z-index: -1;
-    }
-  }
   .left {
     display: flex;
+    align-items: center;
     .avatarblock {
-      width: 60px;
-      height: 60px;
+      width: 3vw;
       margin-right: 20px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      cursor: pointer;
+      align-items: center;
       .avatar {
         border-radius: 100%;
-        width: 100%;
-        height: 100%;
+        width: 3vw;
+        height: 3vw;
+        border: 2px solid white;
+        object-fit: cover;
+        background-color: white;
+      }
+      .username {
+        color: white;
+        font-style: italic;
+        text-transform: capitalize;
+        font-size: 1vw;
+        font-weight: 700;
+        margin-top: 5px;
       }
       .icon {
         position: absolute;
@@ -149,7 +78,7 @@
         justify-content: center;
         font-size: 12px;
         color: white;
-        font-family: "Itim", cursive;
+        font-family: "Fira Sans", sans-serif;
         cursor: pointer;
         font-weight: 900;
       }
@@ -160,13 +89,13 @@
       display: flex;
       flex-direction: column;
       .fullname {
-        font-family: "Itim", cursive;
+        font-family: "Fira Sans", sans-serif;
         text-transform: capitalize;
         font-size: 18px;
         font-weight: 500;
       }
       .username {
-        font-family: "Itim", cursive;
+        font-family: "Fira Sans", sans-serif;
         font-size: 16px;
         color: rgb(65, 65, 65);
       }
@@ -175,15 +104,17 @@
   .gamelogo {
     height: 100%;
     padding-right: 10%;
+    min-height: 35px;
   }
   .settings {
-    width: 70px;
-    height: 70px;
+    width: 3vw;
     display: flex;
     border-radius: 100%;
     align-items: center;
     justify-content: center;
     color: white;
+    object-fit: contain;
     cursor: pointer;
+    height: fit-content;
   }
 }
