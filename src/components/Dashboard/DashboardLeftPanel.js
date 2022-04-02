@@ -217,7 +217,8 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/games" ||
-              currenttab.indexOf("dashboard/w/game") !== -1
+              currenttab.indexOf("dashboard/w/game") !== -1 ||
+              currenttab.indexOf("dashboard/w/moneyace") !== -1
                 ? styles.activetab
                 : ""
             }`}
@@ -331,7 +332,8 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/p/games" ||
-              currenttab.indexOf("/dashboard/p/game") !== -1
+              currenttab.indexOf("/dashboard/p/game") !== -1 ||
+              currenttab.indexOf("dashboard/w/moneyace") !== -1
                 ? styles.activetab
                 : ""
             }`}
