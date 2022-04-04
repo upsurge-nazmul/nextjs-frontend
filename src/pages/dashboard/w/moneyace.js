@@ -23,7 +23,6 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
     type: "success",
     msg: "",
   });
-  const [showFullScreen, setShowFullScreen] = useState(false);
   const [volume, setvolume] = useState(1);
   const [stage, setstage] = useState("welcome");
   const [unitycontext, setunitycontext] = useState(null);

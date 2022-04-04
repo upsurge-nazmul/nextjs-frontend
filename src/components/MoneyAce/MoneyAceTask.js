@@ -33,7 +33,14 @@ export default function MoneyAceTask({
         if (res.data.success) {
           router.push(
             {
-              pathname: "/dashboard/k/moneyace",
+              pathname:
+                "/dashboard/" +
+                (userdata.is_waiting_active
+                  ? "w"
+                  : userdata.user_type === "kid"
+                  ? "k"
+                  : "p") +
+                "/moneyace",
               query: { id: res.data.data },
             },
             undefined,

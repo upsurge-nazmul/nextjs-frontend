@@ -59,7 +59,7 @@ export default function MoneyAceDashboard({
         getCookie("accesstoken")
       );
       if (res && res.data && res.data.success) {
-        setmoneyacedata(res.data.data);
+        if (setmoneyacedata) setmoneyacedata(res.data.data);
       }
     }
   }, [currenttab]);
@@ -128,19 +128,19 @@ export default function MoneyAceDashboard({
                     <div className={styles.col}>
                       <p className={styles.head}>INHAND CASH</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata.inhand_money || 0}
+                        ₹{moneyacedata?.inhand_money || 0}
                       </p>
                     </div>{" "}
                     <div className={styles.col}>
                       <p className={styles.head}>BANK BALANCE</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata.account_balance || 0}
+                        ₹{moneyacedata?.account_balance || 0}
                       </p>
                     </div>{" "}
                     <div className={styles.col}>
                       <p className={styles.head}>INVESTMENTS</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata.total_investment || 0}
+                        ₹{moneyacedata?.total_investment || 0}
                       </p>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function MoneyAceDashboard({
                     </div>{" "}
                     <div className={styles.col}>
                       <p className={styles.head}>GOLD</p>
-                      <p className={styles.val}>₹{moneyacedata.inhand_money}</p>
+                      <p className={styles.val}>₹{moneyacedata?.inhand_money}</p>
                     </div>
                   </div> */}
                 </div>
@@ -170,7 +170,7 @@ export default function MoneyAceDashboard({
                     </div>
                   </div>
                   <div className={styles.taskwrapper}>
-                    {tasks.map((item, index) => {
+                    {tasks?.map((item, index) => {
                       return (
                         <MoneyAceTask
                           key={item.id}
