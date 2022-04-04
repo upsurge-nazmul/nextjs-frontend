@@ -60,7 +60,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
     "November",
     "December",
   ];
-  const rewarded = false;
+  let rewarded = false;
   function sortPosts(cat, index) {
     if (cat !== "All Categories") {
       setSelectedCat(cat);
