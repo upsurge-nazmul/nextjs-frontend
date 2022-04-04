@@ -502,7 +502,6 @@
 @media only screen and (max-width: 860px) {
   .upi {
     padding-bottom: 3%;
-
     .main {
       .heading {
         font-weight: 500;
@@ -521,27 +520,26 @@
         }
         .bulletinbtn {
           cursor: pointer;
-          font-size: 14px;
           font-weight: 500;
           display: flex;
           align-items: center;
           margin-left: auto;
           transition: all 0.3s ease;
-          padding: 2px 10px;
+          padding: 0px 10px;
           border-radius: 6px;
           position: absolute;
           top: 0px;
           right: 0;
           background: rgb(255, 213, 0);
           font-weight: 900;
-          font-size: 16px;
+          font-size: 1vw;
           background: linear-gradient(
             180deg,
             rgba(255, 213, 0, 1) 0%,
             rgba(255, 175, 0, 1) 100%
           );
           .bulletinicon {
-            width: 15px;
+            width: 1.2vw;
             color: white;
             filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
           }
@@ -556,7 +554,7 @@
         height: 100%;
         align-items: center;
         .subheading {
-          font-size: 18px;
+          font-size: 1.4vw;
           font-weight: 500;
           margin-top: 2vh;
           display: flex;
@@ -588,7 +586,7 @@
             p {
               font-weight: 900;
               font-family: "Fira Sans", sans-serif;
-              font-size: 18px;
+              font-size: 1.4vw;
               color: #ffd500;
               flex: 1;
             }
@@ -599,12 +597,10 @@
               border: 1px solid rgb(119, 119, 119);
               font-family: "Fira Sans", sans-serif;
               text-align: left;
-              font-size: 14px;
-              font-weight: 800;
-              color: white;
-              padding: 5px 20px;
-              height: 45px;
-              flex: 1;
+              font-size: 1.2vw;
+              padding: 5px 10px;
+              height: 8vh;
+              width: 50%;
               background-color: rgba(0, 0, 0, 0.4);
             }
             .upiinput {
@@ -613,7 +609,7 @@
               font-weight: 700;
               color: white;
               font-family: "Fira Sans", sans-serif;
-              font-size: 14px;
+              font-size: 1.2vw;
             }
           }
           .err {
@@ -636,7 +632,6 @@
             .btn {
               background: rgb(255, 213, 0);
               font-weight: 900;
-              font-size: 14px;
               color: white;
               background: linear-gradient(
                 180deg,
@@ -651,8 +646,9 @@
               justify-content: center;
               align-items: center;
               cursor: pointer;
-              height: 35px;
+              height: 7vh;
               p {
+                font-size: 1.2vw;
                 font-family: "Fira Sans", sans-serif;
                 filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
               }
