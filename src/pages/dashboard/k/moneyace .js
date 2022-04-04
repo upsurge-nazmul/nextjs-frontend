@@ -169,7 +169,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   );
   return (
     <div className={styles.moneyAce}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div
         className={`${styles.contentWrapper} ${
