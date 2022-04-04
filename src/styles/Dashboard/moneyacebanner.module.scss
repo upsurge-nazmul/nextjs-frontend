@@ -1,0 +1,134 @@
+.banner {
+  min-height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 20px;
+  .left {
+    flex: 1;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .right {
+    display: flex;
+    width: 40%;
+    padding: 40px;
+    flex-direction: column;
+    .name {
+      font-size: 32px;
+      font-weight: 600;
+    }
+    .description {
+      font-size: 16px;
+      color: rgb(37, 37, 37);
+      margin-top: 10px;
+      line-height: 24px;
+    }
+    .play {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background-color: #4166eb;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      margin-top: auto;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .banner {
+    width: 100%;
+    min-height: 380px;
+    height: 35vh;
+    border-radius: 12px;
+    overflow: visible;
+    display: flex;
+    background-color: #fff;
+    .left {
+      width: 60%;
+    }
+    .right {
+      display: flex;
+      min-width: 350px;
+      padding: 20px;
+      flex-direction: column;
+      .name {
+        font-size: 2vw;
+        font-weight: 600;
+      }
+      .description {
+        font-size: 1.1vw;
+        color: rgb(37, 37, 37);
+        margin-top: 10px;
+      }
+      .play {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background-color: #4166eb;
+        color: white;
+        padding: 15px 40px;
+        font-size: 14px;
+        margin-top: auto;
+        cursor: pointer;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .banner {
+    min-height: unset;
+    height: max-content;
+    border-radius: 12px;
+    flex-direction: column;
+    overflow: visible;
+    display: flex;
+    background-color: #fff;
+    margin-bottom: 20px;
+    img {
+      height: 200px;
+      min-height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .right {
+      width: 100%;
+      display: flex;
+      min-width: unset;
+      min-height: fit-content;
+      padding: 20px;
+      flex-direction: column;
+      .name {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .description {
+        font-size: 12px;
+        color: rgb(37, 37, 37);
+        margin-top: 5px;
+      }
+      .play {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background-color: #4166eb;
+        color: white;
+        padding: 12px 20px;
+        font-size: 12px;
+        margin-top: auto;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    }
+  }
+}

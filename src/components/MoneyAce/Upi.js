@@ -56,7 +56,7 @@ export default function Upi({
         </p>
         <div className={styles.upidiv}>
           <p className={styles.subheading}>UPI</p>
-          {moneyacedata?.is_upi_claim ? (
+          {moneyacedata?.is_upi_claim && false ? (
             <div className={styles.wrapper}>
               <div className={styles.row}>
                 <p>UPI id</p>

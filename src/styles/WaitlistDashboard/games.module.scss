@@ -210,14 +210,16 @@
       .mainContent {
         .flexLeft {
           .banner {
-            min-height: 350px;
+            width: 100%;
+            min-height: 380px;
+            height: 35vh;
             border-radius: 12px;
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             background-color: #fff;
             img {
               height: 100%;
-              width: 70%;
+              width: 60%;
               object-fit: cover;
             }
             .right {

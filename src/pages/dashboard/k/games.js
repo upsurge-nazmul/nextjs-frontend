@@ -11,6 +11,7 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
+import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 function Games({ userdatafromserver, token }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -128,21 +129,7 @@ function Games({ userdatafromserver, token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div className={styles.banner}>
-              <img src="/images/games/MoneyAce.png" alt="" />
-              <div className={styles.right}>
-                <p className={styles.name}>Money Ace</p>
-                <p className={styles.description}>
-                  {`The purpose of this game is to help users experience and understand the 4 pillars of money management - earn, spend, save, invest. - where the user can go to understand some aspects of money management and play games and games to earn money.`}
-                </p>
-                <p
-                  className={styles.play}
-                  onClick={() => router.push("/dashboard/k/moneyace")}
-                >
-                  Play game
-                </p>
-              </div>
-            </div>
+            <MoneyAceBanner type="k" />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>

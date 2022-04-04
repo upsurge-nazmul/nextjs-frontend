@@ -39,30 +39,6 @@ export default function Bank({
   ];
   const [dialogdata, setdialogdata] = useState(null);
   const [mode, setmode] = useState("all");
-  const [passbookfilter, setpassbookfilter] = useState("all");
-  const demoPortfolio = [
-    { name: "Stocks", value: 800 },
-    { name: "Real Estate", value: 800 },
-    { name: "Gold", value: 800 },
-    { name: "FD", value: 800 },
-    { name: "Retirement", value: 800 },
-    { name: "Saving Account", value: 800 },
-  ];
-  const demodata = [
-    "GDP grew at 7.5% during the year",
-    "Inflation was recorded at 7% during the year",
-    "Interest rate on bank lending was 11% per annum during the year",
-    "Stock indices moved down by 21% during the year",
-    "Real estate prices moved up by 8% during the year",
-    "Gold prices moved down by 1% during the year",
-    "Interest rate on Fixed Deposits was 8% per annum during the year",
-    "Interest rate on retirement funds was 9% per annum during the year",
-    "Interest rate on Savings Account was 4% per annum during the year",
-  ];
-  const data_international = [
-    "GDP growth rates in USA are on an uptrend and US Dollar (USD) is appreciating against other global currencies",
-    "Due to increase in GDP growth rates in USA, global crude prices are witnessing an uptick.",
-  ];
 
   async function handleopenaccount() {
     let response = await MoneyAceApis.openBankAccount();
@@ -104,7 +80,6 @@ export default function Bank({
         <p className={styles.heading}>
           <img
             className={styles.headingicon}
-            onClick={() => setcurrenttab("citymap")}
             src="https://i.ibb.co/MsY3sDZ/Bank.png"
             alt=""
           />

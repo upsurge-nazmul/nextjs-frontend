@@ -150,6 +150,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
     function () {
       if (!unitycontext) return;
       unitycontext.on("GameOver", function (userName, score) {
+        console.log("Game COmpleted", score);
         MoneyAceApis.updatescore({ score: score, gameId: gamedata.id });
       });
       unitycontext.on("Error", function (code, url, vendor) {

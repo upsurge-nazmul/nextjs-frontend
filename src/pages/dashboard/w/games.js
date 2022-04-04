@@ -11,6 +11,7 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../static_data/Game_Data";
 import VideoModal from "../../../components/VideoModal";
+import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 function Games({ userdatafromserver, token }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -122,29 +123,7 @@ function Games({ userdatafromserver, token }) {
             >{`On upsurge, children (and parents) are encouraged to play games based on topics around entrepreneurship & money management, so that they can learn by doing and making decisions. 
 Here are some of our games that you and your child can play together. 
 `}</p>
-            <div className={styles.banner}>
-              {showvideomodal && (
-                <VideoModal
-                  source={
-                    "https://vod-progressive.akamaized.net/exp=1645457640~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1061%2F26%2F655305103%2F3009171108.mp4~hmac=70a9ebb527bd2ef08e8c21552e37e84603e4c22e7f75c931f7b486ba6cbfdccc/vimeo-prod-skyfire-std-us/01/1061/26/655305103/3009171108.mp4?filename=pexels-nothing-ahead-10505868.mp4&download=1"
-                  }
-                  onBack={() => setshowvideomodal(false)}
-                />
-              )}
-              <img src="/images/games/MoneyAce.png" alt="" />
-              <div className={styles.right}>
-                <p className={styles.name}>Money Ace</p>
-                <p className={styles.description}>
-                  {`Our flagship game, Money Ace is India’s first game to give children the chance to understand life, personal finance & investing in an age-relevant manner. Do your chores, take-up side gigs, save money, upskill & invest across 5 FDs, Stock Markets, Gold, Real Estate & Crypto! The users who create the most wealth every week get great rewards!`}
-                </p>
-                <p
-                  className={styles.play}
-                  onClick={() => router.push("/dashboard/w/moneyace")}
-                >
-                  Play
-                </p>
-              </div>
-            </div>
+            <MoneyAceBanner type="w" />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>

@@ -6,6 +6,9 @@ export function onlyNum(data) {
   return !isNaN(data);
 }
 
+export function removenonnumber(data) {
+  return data.replace(/[^0-9.]/g, "");
+}
 export function validatePassword(pass) {
   if (!checkLength(pass)) {
     return false;
