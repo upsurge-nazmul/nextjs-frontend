@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/Auth/auth.module.scss";
 import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
 
-function AuthHeader({ handleBack, setmode, mode }) {
+function AuthHeader({ handleBack, setmode, mode, setshowpopup, setshowauth }) {
   return (
     <div className={styles.headingflex}>
       <p className={styles.heading}>
@@ -15,18 +15,25 @@ function AuthHeader({ handleBack, setmode, mode }) {
             : "Signup"
           : "Login"}
       </p>
-      {/* {mode !== "reset" &&
+      {mode !== "reset" &&
         (mode === "login" ? (
           <p className={styles.changemode}>
             No Account?{" "}
-            <span onClick={() => setmode("selection")}>Sign up</span>
+            <span
+              onClick={() => {
+                setshowauth(false);
+                setshowpopup(true);
+              }}
+            >
+              Sign up
+            </span>
           </p>
         ) : (
           <p className={styles.changemode}>
             Already have an account?{" "}
             <span onClick={() => setmode("login")}>Sign In</span>
           </p>
-        ))} */}
+        ))}
     </div>
   );
 }

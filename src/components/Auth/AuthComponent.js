@@ -14,7 +14,13 @@ import styles from "../../styles/Auth/auth.module.scss";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 
-function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
+function AuthComponent({
+  showauth,
+  setshowauth,
+  authmode,
+  mailfromhome,
+  setshowpopup,
+}) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName } = useContext(MainContext);
   const [userdata, setuserdata] = useState(null);
@@ -88,6 +94,8 @@ function AuthComponent({ showauth, setshowauth, authmode, mailfromhome }) {
                   setmode={setmode}
                   handleBack={handleBack}
                   mode={mode}
+                  setshowpopup={setshowpopup}
+                  setshowauth={setshowauth}
                 />
               ) : null}
 

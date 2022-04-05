@@ -73,6 +73,7 @@ function Header({
         setshowauth={setshowauth}
         authmode={authmode}
         mailfromhome={mailfromhome}
+        setshowpopup={setshowpopup}
       />
       {showpopup && (
         <WaitlistPopUp
