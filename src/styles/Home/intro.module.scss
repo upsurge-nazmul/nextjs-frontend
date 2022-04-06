@@ -27,6 +27,20 @@
   .textContent {
     margin-top: 16vh;
     margin-left: 7%;
+    .knowmore {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      text-decoration: underline;
+      color: #4166eb;
+      cursor: pointer;
+      font-size: clamp(12px, 1vw, 16px);
+      .infoicon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+    }
     .heading {
       font-size: 3.5vw;
       font-weight: 700;

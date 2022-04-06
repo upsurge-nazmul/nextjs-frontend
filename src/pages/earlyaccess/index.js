@@ -225,6 +225,14 @@ export default function Earlyaccess() {
               );
             })}
           </div>
+          <div className={styles.des2}>
+            <p className={styles.desheading}>Benefits of annual subscription</p>
+            <div className={styles.wrapper}>
+              {annualpricing.map((item) => {
+                return <p key={item}>{item}</p>;
+              })}
+            </div>
+          </div>
           <PartnerSection dashboard={true} />
         </div>
         <TestiMonial />

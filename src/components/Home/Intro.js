@@ -10,7 +10,7 @@ import Curve2 from "../SVGcomponents/Curve2";
 import WaitlistPopUp from "../WaitlistPopUp";
 import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
-
+import InfoIcon from "@mui/icons-material/Info";
 function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -46,7 +46,6 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <Toast data={toastdata} />
       <div className={styles.textContent}>
         <div className={styles.heading}>Money, made easy.</div>
-
         <div className={styles.subheading}>
           {`upsurge is India’s first gaming platform for children, focused on promoting entrepreneurship, financial literacy & modern skills using games, immersive knowledge quests & real rewards!`}
         </div>
@@ -93,7 +92,15 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             )}
           </div>
         )}
+        <div
+          className={`${styles.knowmore}`}
+          onClick={() => router.push("/earlyaccess")}
+        >
+          <InfoIcon className={styles.infoicon} />
+          Know more about early access
+        </div>
       </div>
+
       <IntroSvg className={styles.homesvg} />
       <BallsSvg className={styles.ballsvg} />
     </section>
