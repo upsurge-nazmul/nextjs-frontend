@@ -34,42 +34,53 @@ export default function Earlyaccess() {
       name: "1-5",
       benefits: [
         "3 months of free access to upsurge",
-        "Finance master class",
-        "Financial dictionary",
-        "upsurge cap & bottle",
-        "20% discount on yearly subscription",
+        // "Finance master class",
+        // "Financial dictionary",
+        // "upsurge cap & bottle",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "6-25",
       benefits: [
         "Get annual subscription at ₹2399",
-        "Financial dictionary",
-        "upsurge cap",
-        "upsurge bottle",
-        "20% discount on yearly subscription",
+        // "Financial dictionary",
+        // "upsurge cap",
+        // "upsurge bottle",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "26-100",
       benefits: [
         "Get annual subscription at ₹2999",
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
-        "20% discount on yearly subscription",
+        // "Avail discount on joining upsurge",
+        // "Earn bonus unicoins",
+        // "Other exciting rewards",
+        // "20% discount on yearly subscription",
       ],
     },
     {
       name: "100+",
       benefits: [
         "Get annual subscription at ₹3599",
-        "Avail discount on joining upsurge",
-        "Earn bonus unicoins",
-        "Other exciting rewards",
-        "20% discount on yearly subscription",
+        // "Avail discount on joining upsurge",
+        // "Earn bonus unicoins",
+        // "Other exciting rewards",
+        // "20% discount on yearly subscription",
       ],
     },
+  ];
+  const annualpricing = [
+    "Knowledge Quests",
+    "Games Arena",
+    "Chore Management",
+    "Family Fun Games & Activities",
+    "2,500 UniCoin Bonus - Redeemable for discount vouchers",
+    "Higher Education Counselling Masterclass",
+    "1 free session with your choice of an expert from our panel",
+    "Rich Dad, Poor Dad - the personal finance bible & more fun goodies!",
+    ,
   ];
   const router = useRouter();
   async function check(e) {
@@ -183,7 +194,7 @@ export default function Earlyaccess() {
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Know more about your Early Access rewards.
           </p>
-          <div className={styles.featurewrapper}>
+          {/* <div className={styles.featurewrapper}>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
               Earn UniCoins by money quotient
@@ -196,7 +207,7 @@ export default function Earlyaccess() {
               <TickSvg className={styles.tick} />
               Earn UniCoins by plaing daily quiz
             </div>
-          </div>
+          </div> */}
           <div className={styles.wrapper}>
             {data.map((item, index) => {
               return (

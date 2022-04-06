@@ -118,7 +118,7 @@ Explore our platform and collect as many UniCoins by playing the games, taking t
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Know more about your Early Access rewards.
           </p>
-          <div className={styles.featurewrapper}>
+          {/* <div className={styles.featurewrapper}>
             <div className={styles.feature}>
               <TickSvg className={styles.tick} />
               Earn UniCoins by money quotient
@@ -131,7 +131,7 @@ Explore our platform and collect as many UniCoins by playing the games, taking t
               <TickSvg className={styles.tick} />
               Earn UniCoins by plaing daily quiz
             </div>
-          </div>
+          </div> */}
           <div className={styles.wrapper}>
             {data.map((item, index) => {
               return (

@@ -234,7 +234,7 @@
         gap: 20px;
         .pricecontainer {
           flex: 1;
-          height: 410px;
+          height: 300px;
           border-radius: 12px;
           background: #ffffff;
           border: 1px solid #dbdbdb;
@@ -573,7 +573,7 @@
           gap: 20px;
           .pricecontainer {
             flex: 1;
-            height: 410px;
+            height: 300px;
             border-radius: 12px;
             background: #ffffff;
             border: 1px solid #dbdbdb;
@@ -882,7 +882,7 @@
           gap: 10px;
           .pricecontainer {
             flex: 1;
-            height: 422px;
+            height: 260px;
             border-radius: 12px;
             background: #ffffff;
             border: 1px solid #dbdbdb;
@@ -1196,8 +1196,8 @@
           flex-wrap: wrap;
           justify-content: space-around;
           .pricecontainer {
-            width: 350px;
-            height: 410px;
+            min-width: 40%;
+            height: 300px;
             border-radius: 12px;
             left: 244px;
             top: 495px;
@@ -1212,11 +1212,11 @@
             padding: 36px;
             .name {
               font-weight: 700;
-              font-size: 24px;
+              font-size: 20px;
             }
             .price {
               margin-top: 12px;
-              font-size: 64px;
+              font-size: 44px;
               font-weight: 800;
             }
             .description {
@@ -1278,7 +1278,6 @@
               background: #ff6263;
               margin: 0;
               color: #ffffffe3;
-              margin: 0 0px 40px;
               .price {
                 font-size: 45px;
               }
@@ -1514,8 +1513,9 @@
           flex-wrap: wrap;
           justify-content: space-around;
           .pricecontainer {
+            min-width: unset;
             width: 350px;
-            height: 410px;
+            height: 300px;
             border-radius: 12px;
             left: 244px;
             top: 495px;
