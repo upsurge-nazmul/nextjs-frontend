@@ -85,7 +85,7 @@ export default function ModernInputBox({
                     setvalue(onlyText(e.target.value));
                     return;
                   }
-                  setvalue(e.target.value);
+                  setvalue(e.target.value.trim());
                 }
           }
         />

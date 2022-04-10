@@ -99,11 +99,6 @@ export default function WaitlistPopUp({
       setloading(false);
       return;
     }
-    if (username.length > 8) {
-      seterror("Username cannot contain more than 8 characters");
-      setloading(false);
-      return;
-    }
     if (username.length < 4) {
       seterror("Username cannot contain less than 4 characters");
       setloading(false);

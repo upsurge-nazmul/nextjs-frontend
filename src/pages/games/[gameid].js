@@ -349,6 +349,7 @@ export default function GamePage({ gamedata }) {
 
       if (!fullscreenElement) {
         setisfullscreen(false);
+        router.push("/games");
       }
     }
   }, []);
