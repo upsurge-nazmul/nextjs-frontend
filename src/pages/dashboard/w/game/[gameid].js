@@ -15,10 +15,12 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
 import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
+import Spinner from "../../../../components/Spinner";
 
 export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
+  const [isfullscreen, setisfullscreen] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [widthHeight, setwidthHeight] = useState({
     width: 1280,
@@ -226,45 +228,74 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
-  async function startgame() {
-    if (!name) {
-      seterror("Name is required");
-      return;
-    }
-    if (!email) {
-      seterror("Email is required");
-      return;
-    }
-    if (!validator.isEmail(email)) {
-      seterror("Please enter valid email address");
-      return;
-    }
-    if (phone && !validator.isMobilePhone(phone)) {
-      seterror("Please enter valid phone number");
-      return;
-    }
-    let res = await FreeGameApis.presign({
-      playernickname: nickname,
-      playername: name,
-      playeremail: email,
-      number: phone,
-      game: gameid,
-    });
-    if (res) {
-      if (res.data.success) {
-        router.push({
-          pathname: "/games/" + gameid,
-          query: { id: res.data.data },
-        });
-      }
-    } else {
-      alert("error connecting server");
-    }
-  }
+
   useEffect(() => {
     setTimeout(() => setremoveBorder(true), 10000);
   }, []);
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+    } else {
+      let element = document.getElementById("unity-wrapper");
+      console.log(element);
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+      setisfullscreen(true);
+    }
+  }
+  useEffect(() => {
+    window.screen.orientation.onchange = function () {
+      if (this.type.startsWith("landscape")) {
+        movetofull();
+      } else {
+        document.webkitExitFullscreen();
+      }
+    };
+  }, []);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+
+      if (!fullscreenElement) {
+        router.push("/dashboard/w/games");
+        setisfullscreen(false);
+      }
+    }
+  }, []);
   return (
     <div className={styles.gamePage}>
       <DashboardLeftPanel type="waitlist" />
@@ -275,16 +306,39 @@ export default function GamePage({ userdatafromserver, gamedata }) {
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        <div className={styles.mainContent}>
-          {widthHeight.width < 860 ? (
+        {unitycontext &&
+        progression === 1 &&
+        widthHeight.width <= 860 &&
+        widthHeight.height < widthHeight.width &&
+        !isfullscreen ? (
+          <div className={styles.start}>
+            <p className={styles.btn} onClick={movetofull}>
+              Start
+            </p>
+          </div>
+        ) : (
+          widthHeight.width <= 860 &&
+          widthHeight.height < widthHeight.width && (
+            <div className={styles.mobilespinner}>
+              <Spinner
+                progress={`${progression * 100}%`}
+                additionalClass={styles.loader}
+                color="#4266EB"
+                topcolor="white"
+              />
+              <p>Loading {Math.round(progression * 100)}%</p>
+            </div>
+          )
+        )}
+        <div className={styles.mainContent} id="unity-wrapper">
+          {widthHeight.width < 860 && widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
                 <BrokenGameConroller className={styles.jasper} />
-                <p className={styles.heading}>Oh no!</p>
-                <p>
-                  {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
+                <p className={styles.heading}>
+                  Please switch to landscape mode
                 </p>
+                <p>{`This game only playable in landscape mode.`}</p>
                 <div
                   className={styles.button}
                   onClick={() => router.push("/dashboard/w")}
@@ -292,15 +346,30 @@ export default function GamePage({ userdatafromserver, gamedata }) {
                   Go back
                 </div>
               </div>
-
-              {/* <Jasper className={styles.jasper} /> */}
             </div>
           ) : gamedata && unitycontext ? (
             <Unity
               className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
                 removeBorder ? styles.removeborder : ""
-              }`}
+              }
+              ${
+                widthHeight.width < 860 &&
+                widthHeight.height < widthHeight.width &&
+                styles.mobilegame
+              }
+              `}
               unityContext={unitycontext}
+              style={
+                widthHeight.width > 860
+                  ? {
+                      visibility: "visible",
+                    }
+                  : {
+                      visibility: isfullscreen ? "visible" : "hidden",
+                      position: !isfullscreen ? "absolute" : "static",
+                      pointerEvents: !isfullscreen ? "none" : "unset",
+                    }
+              }
               matchWebGLToCanvasSize={true}
             />
           ) : (

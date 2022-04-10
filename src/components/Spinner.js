@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/GeneralComponents/spinner.module.scss";
-export default function Spinner({ additionalClass, color }) {
+export default function Spinner({ additionalClass, color, topcolor }) {
   return (
     <div className={`${styles.spinner} ${additionalClass}`}>
       <div className={styles.spinnerInner}>
@@ -8,7 +8,7 @@ export default function Spinner({ additionalClass, color }) {
           style={{
             border: "3px solid " + color || "white",
             borderTopColor: color || "rgb(255, 255, 255)",
-            borderTopColor: "transparent",
+            borderTopColor: topcolor || "transparent",
           }}
         ></div>
       </div>

@@ -58,7 +58,8 @@ function Games({ userdatafromserver, token }) {
       setrecent_games(JSON.parse(x));
     }
   }, []);
-  async function handlegameclick(title) {
+  async function handlegameclick(title, pushto) {
+    alert(pushto);
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);
@@ -91,7 +92,7 @@ function Games({ userdatafromserver, token }) {
       if (res) {
         if (res.data.success) {
           router.push({
-            pathname: "/dashboard/w/game/" + title,
+            pathname: "/dashboard/w/game/" + (pushto ? pushto : title),
             query: { id: res.data.data },
           });
         } else {
@@ -101,7 +102,7 @@ function Games({ userdatafromserver, token }) {
         console.log("error connecting server");
       }
     } else {
-      router.push("/dashboard/w/game/" + title);
+      router.push("/dashboard/w/game/" + (pushto ? pushto : title));
     }
   }
   return (
@@ -136,7 +137,10 @@ Here are some of our games that you and your child can play together.
                       <GameCard
                         onCLick={() =>
                           handlegameclick(
-                            Game_Data[item].name.replace(/ /g, "")
+                            item,
+                            Game_Data[item].pushto.split("/")[
+                              Game_Data[item].pushto.split("/").length - 1
+                            ]
                           )
                         }
                         reward={200}
@@ -157,7 +161,14 @@ Here are some of our games that you and your child can play together.
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() => handlegameclick(item)}
+                      onCLick={() =>
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto.split("/")[
+                            Game_Data[item].pushto.split("/").length - 1
+                          ]
+                        )
+                      }
                       reward={200}
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}

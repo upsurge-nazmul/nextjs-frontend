@@ -14,6 +14,32 @@
     font-weight: 500;
     color: white;
   }
+  .start {
+    background-color: #4166eb;
+    height: 40px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 12px;
+    margin: 15vh auto;
+  }
+  .mobilespinner {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    border-radius: 12px;
+    margin: 15vh auto;
+    flex-direction: column;
+    .loader {
+      width: 50px;
+      height: 50px;
+    }
+  }
   .gameWrapper {
     display: flex;
     justify-content: center;
@@ -44,6 +70,7 @@
       height: 66vh;
       max-height: 500px;
       margin: 10vh 0;
+
       .left {
         width: 50%;
         background: #f9f9f9;
@@ -174,10 +201,17 @@
       border: none;
     }
   }
-
+  .nopadding {
+    padding: 0 !important;
+  }
   .sticky {
     margin-top: 100px;
     height: 80vh;
+  }
+  .mobilegame {
+    width: 90% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
   }
 }
 @media only screen and (min-width: 1500px) {

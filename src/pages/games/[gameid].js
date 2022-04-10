@@ -10,6 +10,7 @@ import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { db } from "../../db";
 import { Game_Unity_Data } from "../../static_data/Game_Data";
 import Loader from "../../components/Loader";
@@ -73,6 +74,7 @@ export default function GamePage({ gamedata }) {
   const router = useRouter();
   const [showpopup, setshowpopup] = useState(false);
   const { gameid, id } = router.query;
+  const handlefullscren = useFullScreenHandle();
   function handleOnClickFullscreen() {
     unitycontext.setFullscreen(true);
     setisfullscreen(true);
@@ -287,7 +289,69 @@ export default function GamePage({ gamedata }) {
     },
     [unitycontext]
   );
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+    } else {
+      let element = document.getElementById("unity-wrapper");
+      console.log(element);
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+      setisfullscreen(true);
+    }
+  }
+  useEffect(() => {
+    window.screen.orientation.onchange = function () {
+      if (this.type.startsWith("landscape")) {
+        movetofull();
+      } else {
+        document.webkitExitFullscreen();
+      }
+    };
+  }, []);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+      }
+    }
+  }, []);
   return (
     <div className={styles.gamePage}>
       <Header
@@ -307,17 +371,19 @@ export default function GamePage({ gamedata }) {
       widthHeight.width <= 860 &&
       widthHeight.height < widthHeight.width ? (
         <div className={styles.start}>
-          <p className={styles.btn} onClick={handleOnClickFullscreen}>
+          <p className={styles.btn} onClick={movetofull}>
             Start
           </p>
         </div>
       ) : (
-        widthHeight.width <= 860 && (
+        widthHeight.width <= 860 &&
+        widthHeight.height < widthHeight.width && (
           <div className={styles.mobilespinner}>
             <Spinner
               progress={`${progression * 100}%`}
               additionalClass={styles.loader}
               color="#4266EB"
+              topcolor="white"
             />
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
@@ -326,10 +392,9 @@ export default function GamePage({ gamedata }) {
       <div
         className={`${styles.gameWrapper} ${
           widthHeight.width <= 860 && styles.mobilewrapper
-        }`}
+        } ${isfullscreen && styles.nopadding}`}
         id="unity-wrapper"
       >
-        {/*  */}
         {showgame && progression < 1 && (
           <div className={styles.loaderwrapper}>
             <Spinner
@@ -429,9 +494,16 @@ export default function GamePage({ gamedata }) {
           </div>
         ) : gamedata && unitycontext ? (
           <Unity
+            id="gameunity"
             className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
               removeBorder ? styles.removeborder : ""
-            }`}
+            }
+              ${
+                widthHeight.width < 860 &&
+                widthHeight.height < widthHeight.width &&
+                styles.mobilegame
+              }
+              `}
             style={
               widthHeight.width > 860
                 ? {
