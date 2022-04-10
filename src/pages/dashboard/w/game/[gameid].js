@@ -202,7 +202,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
     if (!gameid) {
       return;
     }
-    if (!errorshown && widthHeight.width < 860) {
+    if (!errorshown && widthHeight.width < 900) {
       logerror();
       seterrorshown(true);
     }
@@ -308,7 +308,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         />
         {unitycontext &&
         progression === 1 &&
-        widthHeight.width <= 860 &&
+        widthHeight.width <= 900 &&
         widthHeight.height < widthHeight.width &&
         !isfullscreen ? (
           <div className={styles.start}>
@@ -317,7 +317,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
             </p>
           </div>
         ) : (
-          widthHeight.width <= 860 &&
+          widthHeight.width <= 900 &&
           widthHeight.height < widthHeight.width && (
             <div className={styles.mobilespinner}>
               <Spinner
@@ -331,7 +331,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
           )
         )}
         <div className={styles.mainContent} id="unity-wrapper">
-          {widthHeight.width < 860 && widthHeight.height > widthHeight.width ? (
+          {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
                 <BrokenGameConroller className={styles.jasper} />
@@ -353,14 +353,14 @@ export default function GamePage({ userdatafromserver, gamedata }) {
                 removeBorder ? styles.removeborder : ""
               }
               ${
-                widthHeight.width < 860 &&
+                widthHeight.width < 900 &&
                 widthHeight.height < widthHeight.width &&
                 styles.mobilegame
               }
               `}
               unityContext={unitycontext}
               style={
-                widthHeight.width > 860
+                widthHeight.width > 900
                   ? {
                       visibility: "visible",
                     }
