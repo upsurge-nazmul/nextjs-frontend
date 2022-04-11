@@ -169,3 +169,47 @@
     }
   }
 }
+@media only screen and (max-width: 860px) and (orientation: landscape) {
+  .about {
+    height: fit-content;
+    overflow: hidden;
+    z-index: 2;
+    .doodle {
+      width: 8vw;
+      z-index: -1;
+    }
+    .dl1 {
+      left: 10%;
+      top: 6%;
+    }
+    .dl2 {
+      left: 0%;
+      top: 25%;
+    }
+    .dl3 {
+      left: 5%;
+      top: 75%;
+    }
+    .dr1 {
+      right: 10%;
+      width: 8vw;
+      top: 15%;
+    }
+    .dr2 {
+      right: 2%;
+      top: 38%;
+    }
+    .dr3 {
+      right: 5%;
+      top: 68%;
+    }
+    .textContent {
+      .subheading {
+        font-size: 20px;
+      }
+      .subheading2 {
+        font-size: 16px;
+      }
+    }
+  }
+}

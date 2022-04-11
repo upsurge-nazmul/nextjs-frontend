@@ -579,3 +579,174 @@
     padding-bottom: 300px;
   }
 }
+
+@media screen and (orientation: landscape) and (max-width: 860px) {
+  .questSection {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+    position: relative;
+    .kidimg {
+      width: 204px;
+      right: 0;
+      left: 60%;
+      bottom: 28vh;
+      .wrap {
+        width: 204px;
+      }
+    }
+    .green {
+      left: 45%;
+      bottom: 40%;
+      width: 2.5vw;
+      height: 2.5vw;
+    }
+    .yellow {
+      left: 55%;
+      bottom: 25%;
+      width: 1.5vw;
+      height: 1.5vw;
+    }
+    .petal {
+      width: 3vw;
+      top: 28vh;
+      left: 55%;
+    }
+    .petal2 {
+      width: 2.5vw;
+      bottom: 30vh;
+      right: 25vw;
+    }
+    .lap {
+      right: -25vw;
+      top: 10vh;
+      width: fit-content;
+      height: 90vh;
+      .wrap {
+        width: fit-content;
+        height: 100%;
+        min-width: 70vw;
+        width: auto;
+      }
+    }
+    .textcontainer {
+      width: 50%;
+      margin-left: 7%;
+      margin-top: 20px;
+      padding-top: 0px;
+      .heading {
+        font-size: 24px;
+      }
+      .subheading {
+        font-size: 12px;
+        line-height: 22px;
+        max-width: 650px;
+        margin: 0;
+        &:nth-child(2) {
+          margin-top: 5px;
+        }
+      }
+      .details {
+        margin-top: 10px;
+        width: 250px;
+        .section {
+          .number {
+            font-size: 26px;
+          }
+          .name {
+            font-size: 12px;
+          }
+        }
+      }
+      .secondheading {
+        margin-top: 14px;
+        font-size: 20px;
+      }
+      .conceptswrapper {
+        margin-top: 10px;
+        width: 45vw;
+        overflow-x: auto;
+        height: fit-content;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        .concept {
+          font-size: 11px;
+          margin: 0;
+        }
+      }
+      .signupBox {
+        width: 23vw;
+        min-width: fit-content;
+        min-height: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-top: 20px;
+        form {
+          display: flex;
+          width: 55%;
+          height: 100%;
+          flex: 1;
+        }
+        .input {
+          outline: none;
+          border: none;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+          border: 1px solid #4166eb;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          font-weight: 400;
+          font-size: 14px;
+          padding-left: 15px;
+          ::placeholder {
+            color: rgba(198, 198, 198, 1);
+          }
+        }
+        .button {
+          width: 45%;
+          min-width: fit-content;
+          font-size: 1vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 500;
+          height: 100%;
+          padding: 0 20px;
+          color: white;
+          background-color: hsl(227, 81%, 59%);
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: hsl(227, 100%, 59%);
+          }
+        }
+        .joinButton {
+          width: 150px;
+          min-width: fit-content;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 400;
+          height: 100%;
+          padding: 0 10px;
+          color: white;
+          background-color: hsl(227, 81%, 59%);
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: hsl(227, 100%, 59%);
+          }
+        }
+      }
+    }
+  }
+}

@@ -587,7 +587,7 @@
       .mobileimage {
         position: relative;
         display: block;
-        height: 100vh;
+        height: 70vh;
         width: 100vw;
         margin-top: 20px;
       }
@@ -647,7 +647,9 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 50vh;
+      height: 30vh;
+      max-height: 100px;
+      margin-top: 0px;
       .left {
         flex-direction: row;
         flex-wrap: wrap;
@@ -765,23 +767,26 @@
     background-color: #fdcc03;
     height: fit-content;
     overflow: hidden;
+    max-height: 170vh;
     padding-bottom: 100px;
-
     .bottom {
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+      min-height: 500px;
       .left {
         flex-direction: column;
+        max-height: 28vh;
         .first {
-          width: 50%;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
           text-align: right;
           width: 100%;
+          justify-content: flex-start;
+          max-height: 15vh;
           position: relative;
+          padding: 0;
           .heading {
             font-size: 16px;
             text-align: center;
@@ -798,13 +803,14 @@
         }
         .second {
           flex: 1;
-          margin-top: 20px;
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: right;
           position: relative;
           width: 100%;
+          justify-content: flex-start;
+          max-height: 15vh;
           .heading {
             text-align: center;
             font-size: 16px;
@@ -825,8 +831,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
-        margin-top: 30px;
+        justify-content: flex-start;
+        margin-top: 0px;
+        max-height: 28vh;
         .first {
           flex: 1;
           display: flex;
@@ -884,7 +891,6 @@
         position: relative;
         min-width: unset;
         z-index: 2;
-        display: flex;
         justify-content: center;
         img {
           object-fit: contain;
@@ -1482,6 +1488,68 @@
         img {
           object-fit: cover;
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 860px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    height: 110vh;
+    overflow: hidden;
+    min-height: 800px;
+    .top {
+      height: fit-content;
+      .heading {
+        font-size: 4vw;
+      }
+      .subheading {
+        font-size: clamp(14px, 1vw, 16px);
+        font-weight: 400;
+        margin-top: 10px;
+        max-width: 632px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000f0;
+      }
+      .button {
+        padding: 5px 16px;
+        width: 166px;
+        height: 45px;
+        font-size: clamp(14px, 1vw, 16px);
+      }
+      .signupBox {
+        margin-top: 20px;
+
+        .joinButton {
+          padding: 5px 20px;
+          margin: 0;
+          height: 40px;
+          width: fit-content;
+          font-size: clamp(14px, 1vw, 16px);
+        }
+      }
+    }
+    .bottom {
+      height: 90vh;
+      min-height: unset;
+      margin-top: 20vh;
+      .left {
+        max-height: 30vh;
+      }
+      .right {
+        max-height: 30vh;
+      }
+      .mid {
+        display: none;
+        .image {
+          width: 100%;
+          min-width: 400px;
+          height: 130vh;
+          position: relative;
         }
       }
     }

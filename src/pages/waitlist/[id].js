@@ -45,13 +45,14 @@ export default function WaitList({ res }) {
         <p className={styles.heading}>{`#${res?.id}`}</p>
         <div className={styles.line}></div>
 
-        <p className={styles.heading2}>
-          Thank you for joining us on our mission!
-        </p>
+        <p className={styles.heading2}>Welcome onboard!</p>
         <p className={styles.subheading2}>
-          You will receive an email with your login information & next steps in
-          a few days. We can’t wait to have you on upsurge!
+          You can click below to start your journey & do check your email for
+          some resources & a welcome package!
         </p>
+        <div className={styles.goback} onClick={() => setshowauth(true)}>
+          Sign in
+        </div>
         <p className={styles.subheading}>
           To stay up to date at all times, follow us on.
         </p>

@@ -7,7 +7,8 @@ import OTPCustomComponent from "./OTPCustomComponent";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Spinner from "./Spinner";
 import { onlyText } from "../helpers/validationHelpers";
-
+import CircleTick from "./SVGcomponents/CircleTick";
+import CircleWarning from "./SVGcomponents/CircleWarning";
 export default function WaitlistPopUp({
   email,
   setemail,
@@ -18,17 +19,28 @@ export default function WaitlistPopUp({
 }) {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [password, setpassword] = useState("");
   const [username, setusername] = useState("");
   const [error, seterror] = useState("");
   const [loading, setloading] = useState(false);
+  const [passisweak, setpassisweak] = useState(false);
+  const [showdetailpass, setshowdetailpass] = useState(false);
+  const [passhidden, setpasshidden] = useState(true);
   const [OTP, setOTP] = useState("");
   const [phone, setphone] = useState("");
   const [mode, setmode] = useState("data"); // data and otp
   const [resetotp, setresetotp] = useState(0);
   const router = useRouter();
+  const [passerror, setpasserror] = useState({
+    length: false,
+    special: false,
+    lower: false,
+    upper: false,
+    number: false,
+  });
   useEffect(() => {
     seterror("");
-  }, [firstName, lastName, phone, mode, username, OTP]);
+  }, [firstName, lastName, phone, mode, username, OTP, password]);
 
   async function handleUpdateData() {
     setloading(true);
@@ -62,6 +74,7 @@ export default function WaitlistPopUp({
         phone: phone,
         otp: OTP,
         user_name: username,
+        password,
       });
 
       if (!response || !response.data.success) {
@@ -114,6 +127,11 @@ export default function WaitlistPopUp({
       setloading(false);
       return;
     }
+    if (!password) {
+      seterror("Password cannot be empty");
+      setloading(false);
+      return;
+    }
     let checkemail = await LoginApis.checkemail({ email, waitlist: true });
     if (checkemail && checkemail.data && !checkemail.data.success) {
       console.log("email ok");
@@ -151,7 +169,34 @@ export default function WaitlistPopUp({
     }
     setloading(false);
   }
-
+  function validatePassword(e) {
+    let pass = e.target.value.trim();
+    setpassword(pass);
+    let res = {
+      length: checkLength(pass),
+      lower: checkLower(pass),
+      upper: checkUpper(pass),
+      special: checkSpecial(pass),
+      number: checkNumber(pass),
+    };
+    setpasserror(res);
+  }
+  function checkLength(pass) {
+    return pass.length >= 8;
+  }
+  function checkLower(pass) {
+    return !(pass.search(/[a-z]/) < 0);
+  }
+  function checkUpper(pass) {
+    // password.search(/.*[A-Z].*/) > 0)
+    return !(pass.search(/[A-Z]/) < 0);
+  }
+  function checkNumber(pass) {
+    return !(pass.search(/[0-9]/) < 0);
+  }
+  function checkSpecial(pass) {
+    return !(pass.search(/[!@#$%^&*]/) < 0);
+  }
   return (
     <div
       className={styles.waitlistpopup}
@@ -219,6 +264,49 @@ export default function WaitlistPopUp({
               value={lastName}
               onChange={(e) => setlastName(onlyText(e.target.value))}
             />
+          </div>
+          <div className={styles.passwordBox}>
+            {showdetailpass && (
+              <div className={styles.detailPass}>
+                <div className={styles.arrow}></div>
+                <div className={styles.tab}>
+                  {passerror.length ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>8 Characters long</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.upper ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Uppercase letter</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.lower ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Lowercase letter</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.special ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Special Character </p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.number ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Number</p>
+                </div>
+              </div>
+            )}
+            <input
+              type={passhidden ? "password" : "text"}
+              onFocus={() => setshowdetailpass(true)}
+              onBlur={() => setshowdetailpass(false)}
+              placeholder="Password"
+              autoComplete="asd"
+              value={password}
+              className={password !== "" && passisweak ? styles.weakpass : ""}
+              onChange={validatePassword}
+            />
+            <p
+              className={styles.show}
+              onClick={() => setpasshidden(!passhidden)}
+            >
+              {passhidden ? "Show" : "Hide"}
+            </p>
           </div>
           {error && <p className={styles.error}>{error}</p>}
           {!loading ? (

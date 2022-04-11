@@ -635,6 +635,7 @@ function Quiz() {
           ) : null}
         </div>
       )}
+      <div className={styles.whitespace}></div>
 
       <JoinUs />
       <Footer />

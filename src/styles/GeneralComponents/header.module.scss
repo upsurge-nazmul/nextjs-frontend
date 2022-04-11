@@ -264,3 +264,15 @@
     height: 100px;
   }
 }
+
+@media only screen and (max-width: 860px) and (orientation: landscape) {
+  .header {
+    height: clamp(60px, 20vh, 89px);
+  }
+  .sticky {
+    height: 60px;
+  }
+  .stickywithannouncement {
+    height: 100px;
+  }
+}

@@ -28,10 +28,10 @@ function AuthFullData({
 }) {
   const { firstName, setfirstName, lastName, setlastName, setuserdata } =
     useContext(MainContext);
+  const [passisweak, setpassisweak] = useState(false);
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
   const [loading, setloading] = useState(false);
-  const [passisweak, setpassisweak] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,

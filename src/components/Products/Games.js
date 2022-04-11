@@ -120,15 +120,12 @@ export default function Games({ id }) {
         performances will be rewarded with UniCoins which can be redeemed to get
         discounts on some of their favorite brands
       </div>
-      <div className={`${styles.wrapper} ${styles.mawrapper}`}>
+      {/* <div className={`${styles.wrapper} ${styles.mawrapper}`}>
         <div className={styles.left}>
           <p className={styles.title}>Money Ace</p>
           <div className={styles.description}>
             {`Money Ace, our first feature game, is India’s first investment game for teenagers. Starting as a 14 year old in Surge City, you have to complete your homework & responsibilities to earn your pocket money, take on side-gigs to earn some more money, and invest across different options including stocks, deposits and crypto. Every Sunday we will reward the players who have created the most wealth for themselves through games, quizzes and smart allocation!`}
           </div>
-          {/* <div className={styles.button} onClick={() => router.push("/games")}>
-            Play Now
-          </div> */}
           <div className={styles.buttonWrapper}>
             <div
               className={styles.arrowl}
@@ -174,7 +171,7 @@ export default function Games({ id }) {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <p className={styles.title}>{games[currentgameindex].name}</p>

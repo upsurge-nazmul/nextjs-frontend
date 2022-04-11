@@ -540,3 +540,63 @@
     }
   }
 }
+@media screen and (orientation: landscape) and (max-width: 860px) {
+  .gamespage {
+    height: unset;
+    .heading {
+      font-size: 4vw;
+      margin-top: 50px;
+    }
+    .subheading {
+      font-size: clamp(14px, 1vw, 16px);
+      line-height: 20px;
+    }
+    .wrapper {
+      margin-top: 30px;
+      margin-bottom: 0px;
+      flex-direction: row;
+      padding-top: 40px;
+      .left {
+        width: 50vw;
+        padding-right: 20px;
+        margin: 0;
+        .title {
+          font-size: 3vw;
+        }
+        .description {
+          font-size: clamp(12px, 1vw, 14px);
+          line-height: 20px;
+        }
+        .button {
+          width: 127px;
+          height: 42px;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+        .buttonWrapper {
+          margin-top: 20px;
+
+          .arrowl,
+          .arrowr {
+            width: 40px;
+          }
+        }
+      }
+      .right {
+        .container {
+          max-height: 400px;
+          margin-top: 12vh;
+          video {
+          }
+          .playIcon,
+          .pauseIcon {
+            width: 50px;
+          }
+          .pauseIcon {
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+}

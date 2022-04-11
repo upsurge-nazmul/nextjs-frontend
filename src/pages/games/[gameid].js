@@ -15,6 +15,7 @@ import { db } from "../../db";
 import { Game_Unity_Data } from "../../static_data/Game_Data";
 import Loader from "../../components/Loader";
 import Spinner from "../../components/Spinner";
+import GameLandscapeInfo from "../../components/Home/GameLandscapeInfo";
 
 const specialchars = [
   "#",
@@ -72,6 +73,7 @@ export default function GamePage({ gamedata }) {
   const [error, seterror] = useState("");
   const [isfullscreen, setisfullscreen] = useState(false);
   const router = useRouter();
+  const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const { gameid, id } = router.query;
   const handlefullscren = useFullScreenHandle();
@@ -367,6 +369,9 @@ export default function GamePage({ gamedata }) {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      {showgamelandscapeinfo && (
+        <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+      )}
       {unitycontext &&
       progression === 1 &&
       widthHeight.width <= 900 &&
@@ -409,11 +414,17 @@ export default function GamePage({ gamedata }) {
         {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
           <div className={styles.mobileerr}>
             <div className={styles.box}>
-              <BrokenGameConroller className={styles.jasper} />
+              <img
+                src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                className={styles.jasper}
+              />
               <p className={styles.heading}>Please switch to landscape mode</p>
               <p>{`This game only playable in landscape mode.`}</p>
-              <div className={styles.button} onClick={() => router.push("/")}>
-                Go back
+              <div
+                className={styles.button}
+                onClick={() => setshowgamelandscapeinfo(true)}
+              >
+                Know more
               </div>
             </div>
 
@@ -479,14 +490,12 @@ export default function GamePage({ gamedata }) {
                 <div className={styles.startbutton} onClick={startgame}>
                   Start Playing
                 </div>
-                {!gamesWithAuth.includes(gameid) && (
-                  <div
-                    className={styles.skipbutton}
-                    onClick={() => setshowgame(true)}
-                  >
-                    Skip
-                  </div>
-                )}
+                <div
+                  className={styles.skipbutton}
+                  onClick={() => setshowgame(true)}
+                >
+                  Skip
+                </div>
               </div>
             </div>
             <div className={styles.right}>

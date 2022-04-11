@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
@@ -9,11 +9,13 @@ import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import { ResponsivePie } from "@nivo/pie";
 import { animated } from "@react-spring/web";
-
+import { MainContext } from "../../context/Main";
 import BigCalcInput from "./BigCalcInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import changetoint from "../../helpers/currency";
 export default function CarCalc({ seterror, error }) {
+  const { widthHeight } = useContext(MainContext);
+
   const [calcdata, setcalcdata] = useState({
     years: 1,
     type: "Sedan",
@@ -363,7 +365,12 @@ export default function CarCalc({ seterror, error }) {
           <div className={styles.chartContainer}>
             <ResponsivePie
               data={chartData}
-              margin={{ top: 0, right: 80, bottom: 80, left: 80 }}
+              margin={{
+                top: 0,
+                right: widthHeight.width > 860 ? 80 : 10,
+                bottom: widthHeight.width > 860 ? 80 : 10,
+                left: widthHeight.width > 860 ? 80 : 10,
+              }}
               startAngle={-180}
               padAngle={0.7}
               innerRadius={0.5}

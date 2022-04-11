@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
@@ -11,6 +11,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { animated } from "@react-spring/web";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
+import { MainContext } from "../../context/Main";
 import changetoint from "../../helpers/currency";
 export default function HomeCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
@@ -129,6 +130,7 @@ export default function HomeCalc({ seterror, error }) {
   });
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
+  const { widthHeight } = useContext(MainContext);
   useEffect(() => {
     if (calcdata.type !== "Indian") {
       setquestions(
@@ -447,7 +449,12 @@ export default function HomeCalc({ seterror, error }) {
           <div className={styles.chartContainer}>
             <ResponsivePie
               data={chartData}
-              margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
+              margin={{
+                top: 10,
+                right: widthHeight.width > 860 ? 80 : 10,
+                bottom: widthHeight.width > 860 ? 80 : 10,
+                left: widthHeight.width > 860 ? 80 : 10,
+              }}
               startAngle={-180}
               padAngle={0.7}
               innerRadius={0.5}

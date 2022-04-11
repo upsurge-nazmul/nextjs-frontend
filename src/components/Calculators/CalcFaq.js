@@ -162,7 +162,7 @@ function CalcFaq({ name }) {
     ],
   };
   const [currentfaqs, setcurrentfaqs] = useState([]);
-
+  const [current, setcurrent] = useState("");
   useEffect(() => {
     if (faqs[name]) {
       setcurrentfaqs(faqs[name]);
@@ -179,6 +179,8 @@ function CalcFaq({ name }) {
               key={"faq" + index}
               question={item.question}
               answer={item.answer}
+              setcurrent={setcurrent}
+              current={current}
             />
           );
         })}

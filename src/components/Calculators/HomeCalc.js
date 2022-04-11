@@ -497,9 +497,9 @@ export default function HomeCalc({ data, seterror, error }) {
                 data={chartData}
                 margin={{
                   top: 0,
-                  right: widthHeight.width < 860 ? 0 : 80,
-                  bottom: widthHeight.width < 860 ? 0 : 80,
-                  left: widthHeight.width < 860 ? 0 : 80,
+                  right: widthHeight.width > 860 ? 80 : 10,
+                  bottom: widthHeight.width > 860 ? 80 : 10,
+                  left: widthHeight.width > 860 ? 80 : 10,
                 }}
                 startAngle={-180}
                 padAngle={0.7}

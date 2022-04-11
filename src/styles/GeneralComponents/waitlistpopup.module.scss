@@ -48,6 +48,96 @@
       font-weight: 600;
       color: #000;
     }
+    .passwordBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 59px;
+      position: relative;
+      margin-bottom: 20px;
+      z-index: 1;
+      .detailPass {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        top: -185px;
+        padding-top: 15px;
+        right: 50%;
+        z-index: 2;
+        transform: translateX(50%);
+        animation: fade 0.3s ease;
+        .arrow {
+          position: absolute;
+          bottom: 0;
+          right: 22.5%;
+          transform: rotate(45deg);
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background-color: white;
+          z-index: -1;
+          width: 100px;
+          height: 100px;
+        }
+        .tab {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          background-color: white;
+          padding: 0 20px;
+          padding-bottom: 10px;
+          border-radius: 12px;
+          z-index: 2;
+          &:last-child {
+            padding-bottom: 20px;
+          }
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+          p {
+            margin-left: 6px;
+            font-size: 15px;
+          }
+        }
+        .white {
+          background-color: white;
+          width: 100%;
+          border-radius: 12px;
+          height: 15px;
+        }
+      }
+      input {
+        margin: 0;
+      }
+      .weakpass {
+        border-color: rgb(255, 118, 118);
+      }
+      .show {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 19px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        text-align: right;
+        color: #4166eb;
+        transition: all 0.3s ease;
+        &:hover {
+          color: #2751e9;
+        }
+      }
+    }
+
     input {
       flex: 1;
       border: 1px solid #898989;
@@ -662,6 +752,227 @@
         cursor: pointer;
         font-weight: 500;
         font-size: 16px;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        &:hover {
+          background-color: #ffffff;
+          color: #4166eb;
+          border: 1px solid #4166eb;
+        }
+      }
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 860px) {
+  .waitlistpopup {
+    .block {
+      background-color: white;
+      width: 50vw;
+      border-radius: 14px;
+      z-index: 5;
+      padding: 30px;
+      position: relative;
+      height: 95vh;
+      margin-top: 0px;
+      overflow-y: auto;
+      .cross {
+        position: fixed;
+        top: 20px;
+        right: 100px;
+        z-index: 100;
+        background-color: white;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        .icon {
+          font-size: 4vw;
+          color: rgb(255, 109, 109);
+          transition: all 0.3s ease;
+          &:hover {
+            color: hsl(0, 75%, 65%);
+            cursor: pointer;
+          }
+        }
+      }
+      .heading {
+        font-size: clamp(14px, 2vw, 16px);
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #000;
+      }
+      input {
+        flex: 1;
+        border: 1px solid #898989;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        height: 40px;
+        width: 100%;
+        font-size: clamp(12px, 1vw, 14px);
+        padding: 15px;
+      }
+      .error {
+        font-weight: 500;
+        font-size: 15px;
+        color: #ff6263;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .phoneWrapper {
+        display: flex;
+        border-radius: 8px;
+        border: 1px solid #898989;
+        overflow: hidden;
+        width: 100%;
+        height: 45px;
+        p {
+          font-size: clamp(12px, 1vw, 14px);
+          border-right: 1px solid #898989;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #000;
+          font-family: "Roboto", sans-serif;
+        }
+        input {
+          flex: 1;
+          border: none;
+          font-size: clamp(12px, 1vw, 14px);
+          border-radius: 0;
+          margin-bottom: 0;
+          padding: 15px;
+        }
+      }
+      .nameWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        input {
+          font-size: clamp(12px, 1vw, 14px);
+          flex: 1;
+          &:first-child {
+            margin-right: 20px;
+          }
+        }
+      }
+      .button {
+        background: #4166eb;
+        border-radius: 8px;
+        color: white;
+        width: 100%;
+        max-width: 480px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: clamp(14px, 1.2vw, 16px);
+        transition: all 0.3s ease;
+        margin-top: 5px;
+        &:hover {
+          background-color: #ffffff;
+          color: #4166eb;
+          border: 1px solid #4166eb;
+        }
+      }
+      .loadin_btn {
+        &:hover {
+          background: #4166eb;
+          color: white;
+          border: none;
+        }
+      }
+    }
+    .otpblock {
+      background-color: white;
+      width: 550px;
+      border-radius: 14px;
+      z-index: 2;
+      padding: 40px;
+      position: relative;
+      .cross {
+        position: absolute;
+        top: 0;
+        right: -100px;
+        z-index: 100;
+        background-color: white;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 40px;
+          color: rgb(255, 109, 109);
+          transition: all 0.3s ease;
+          &:hover {
+            color: hsl(0, 75%, 65%);
+            cursor: pointer;
+          }
+        }
+      }
+      .otpHeadWrapper {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        justify-content: center;
+        .text {
+          font-size: 20px;
+          font-weight: 400;
+          text-align: center;
+        }
+        .phone {
+          font-size: 20px;
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+      .error {
+        font-weight: 500;
+        font-size: 15px;
+        color: #ff6263;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .otpWrapper {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: 20px;
+        input {
+          width: 60px;
+          height: 60px;
+          font-size: 20px;
+          margin: 0 6px;
+          text-align: center;
+          border-radius: 8px;
+          border: 1px solid rgb(46, 46, 46);
+        }
+      }
+      .resendButton {
+        color: rgba(65, 102, 235, 1);
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .button {
+        background: #4166eb;
+        border-radius: 14px;
+        color: white;
+        width: 100%;
+        height: 63px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 20px;
         transition: all 0.3s ease;
         margin-top: 20px;
         &:hover {

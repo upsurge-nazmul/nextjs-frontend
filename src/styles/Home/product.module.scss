@@ -233,3 +233,99 @@
     }
   }
 }
+
+@media only screen and (max-width: 860px) and (orientation: landscape) {
+  .productSection {
+    .heading {
+      margin-bottom: 10vh;
+      font-size: 4vw;
+    }
+    .wrapper {
+      gap: 5px;
+      .pillar {
+        min-width: 100px;
+        width: 28vw;
+        padding: 30px 15px;
+        .icon {
+          width: 40%;
+          path: {
+            fill: white;
+          }
+        }
+        .title {
+          font-weight: 600;
+          margin-top: 50px;
+          text-align: left;
+          font-size: clamp(14px, 2vw, 18px);
+          width: 100%;
+        }
+        .description {
+          font-size: clamp(12px, 1.2vw, 14px);
+          line-height: 16px;
+          margin-top: 10px;
+          text-align: left;
+        }
+        &:first-child {
+          background-color: #17d1bc;
+          color: white;
+          &:hover {
+            box-shadow: rgba(23, 209, 188, 0.3) 0px 19px 38px,
+              rgba(23, 209, 188, 0.22) 0px 15px 12px;
+          }
+        }
+        &:nth-child(2) {
+          background-color: rgb(255, 98, 99);
+          color: white;
+          &:hover {
+            box-shadow: rgba(255, 98, 99, 0.3) 0px 19px 38px,
+              rgba(255, 98, 99, 0.22) 0px 15px 12px;
+          }
+        }
+        &:last-child {
+          background-color: rgb(253, 204, 3);
+          color: rgb(255, 255, 255);
+          &:hover {
+            box-shadow: rgba(253, 204, 3, 0.3) 0px 19px 38px,
+              rgba(253, 204, 3, 0.22) 0px 15px 12px;
+          }
+        }
+      }
+    }
+    .wrapper2 {
+      margin-top: 5vh;
+      .pillar {
+        .icon {
+          font-size: 20vw;
+          height: fit-content;
+        }
+
+        &:first-child {
+          color: rgb(255, 255, 255);
+          background-color: rgb(65, 102, 235);
+
+          &:hover {
+            box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+              rgba(65, 102, 235, 0.22) 0px 15px 12px;
+          }
+        }
+        &:nth-child(2) {
+          background-color: rgb(255, 127, 76);
+          color: white;
+          &:hover {
+            box-shadow: rgba(255, 127, 76, 0.781) 0px 19px 38px,
+              rgba(255, 127, 76, 0.432) 0px 15px 12px;
+          }
+        }
+
+        &:last-child {
+          color: rgb(255, 255, 255);
+          background-color: rgb(65, 187, 235);
+          &:hover {
+            box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+              rgba(65, 102, 235, 0.22) 0px 15px 12px;
+          }
+        }
+      }
+    }
+  }
+}

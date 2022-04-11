@@ -19,7 +19,10 @@ function Footer() {
   const [termmode, settermmode] = useState("terms");
   const router = useRouter();
   return (
-    <div className={styles.footerSection}>
+    <div
+      className={styles.footerSection}
+      style={{ zIndex: showterm ? 500 : 99 }}
+    >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
       <div className={styles.background}>
         <div className={styles.curvecontainer}>
@@ -496,6 +499,7 @@ function Footer() {
               Terms & conditions
             </p>
             <p
+              className={styles.terms}
               onClick={() => {
                 settermmode("privacy");
                 setshowterm(true);
