@@ -174,8 +174,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       unitycontext.on("Exit", function () {
         router.push("/dashboard/w/games");
       });
-      unitycontext.on("progress", function (progression) {
-        console.log(progression);
+      unitycontext.on("progress", function (progress) {
+        console.log(progress);
+        setProgression(progress);
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log(code, url, vendor);
