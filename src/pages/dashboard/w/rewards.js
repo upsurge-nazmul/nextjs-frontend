@@ -202,10 +202,12 @@ export async function getServerSideProps({ params, req }) {
           isLogged: true,
           userdatafromserver: response.data.data,
           vouchers:
-            fixVoucherArray(
-              res.data.data,
-              Number(response.data.data.num_balance)
-            ) || [],
+            res && res.data
+              ? fixVoucherArray(
+                  res.data.data,
+                  Number(response.data.data.num_balance)
+                ) || []
+              : null,
           msg: "",
         },
       };
