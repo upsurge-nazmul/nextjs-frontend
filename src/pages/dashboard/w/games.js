@@ -59,7 +59,6 @@ function Games({ userdatafromserver, token }) {
     }
   }, []);
   async function handlegameclick(title, pushto) {
-    alert(pushto);
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);
@@ -138,8 +137,8 @@ Here are some of our games that you and your child can play together.
                         onCLick={() =>
                           handlegameclick(
                             item,
-                            Game_Data[item].pushto.split("/")[
-                              Game_Data[item].pushto.split("/").length - 1
+                            Game_Data[item]?.pushto?.split("/")[
+                              Game_Data[item]?.pushto?.split("/").length - 1
                             ]
                           )
                         }
@@ -164,8 +163,8 @@ Here are some of our games that you and your child can play together.
                       onCLick={() =>
                         handlegameclick(
                           item,
-                          Game_Data[item].pushto.split("/")[
-                            Game_Data[item].pushto.split("/").length - 1
+                          Game_Data[item]?.pushto?.split("/")[
+                            Game_Data[item]?.pushto?.split("/").length - 1
                           ]
                         )
                       }
