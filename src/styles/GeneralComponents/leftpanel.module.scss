@@ -6,13 +6,16 @@
   left: 0;
   top: 0;
   display: flex;
-  overflow-y: auto;
   z-index: 500;
+  overflow-x: hidden;
   .leftPanelContent {
+    height: 100vh;
     max-width: 350px;
     min-width: 250px;
+    min-height: 100%;
     background-color: rgb(246, 246, 246);
     position: relative;
+    overflow-y: auto;
     padding: 0 80px;
     min-height: fit-content;
     width: max-content;

@@ -853,15 +853,15 @@
         height: 300px;
         .heading {
           margin-top: 0px;
-          font-size: 32px;
+          font-size: 8vw;
           font-weight: 700;
           text-align: center;
         }
         .subheading {
           font-weight: 400;
-          font-size: 14px;
+          font-size: clamp(12px, 1.5vw, 14px);
           margin-top: 10px;
-          line-height: 22px;
+          line-height: 20px;
           text-align: center;
           color: rgba(0, 0, 0, 0.78);
           width: 100%;
@@ -897,13 +897,16 @@
           max-width: unset;
           width: 80%;
           .heading {
+            font-size: 8vw;
             text-align: center;
           }
           .des {
-            font-size: 14px;
+            font-size: clamp(12px, 1.5vw, 14px);
+
             width: 50%;
             font-weight: 400;
-            line-height: 24px;
+            line-height: 20px;
+
             text-align: center;
             width: 100%;
           }
@@ -938,12 +941,13 @@
           width: 80%;
           .heading {
             text-align: center;
+            font-size: 8vw;
           }
           .des {
-            font-size: 14px;
+            font-size: clamp(12px, 1.5vw, 14px);
             width: 50%;
             font-weight: 400;
-            line-height: 24px;
+            line-height: 20px;
             width: 100%;
             text-align: center;
           }
@@ -980,9 +984,9 @@
             font-size: 50px;
           }
           .des {
-            font-size: 14px;
+            font-size: clamp(12px, 1.5vw, 14px);
             font-weight: 400;
-            line-height: 24px;
+            line-height: 20px;
             width: 100%;
           }
         }
@@ -1201,17 +1205,161 @@
     }
   }
 }
-@media only screen and (max-width: 390px) {
+
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
   .aboutPage {
     .container {
       .head {
-        height: 230px;
+        height: 300px;
         .heading {
-          font-size: 25px;
+          margin-top: 0px;
+          font-size: 4vw;
+          font-weight: 700;
+          text-align: center;
         }
         .subheading {
-          font-size: 10px;
+          font-weight: 400;
+          font-size: 14px;
+          margin-top: 10px;
+          line-height: 22px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.78);
+          width: 100%;
+          padding: 0 20px;
+          max-width: 582px;
         }
+        .ball1 {
+          left: 7%;
+          width: 12vw;
+          height: 6vw;
+        }
+        .ball4 {
+          width: 9vw;
+          border-radius: 9vw;
+          height: 9vw;
+          right: 8%;
+          top: 75%;
+        }
+      }
+      .visionSection {
+        width: 100vw;
+        padding: 0;
+        padding-top: 5vh;
+        height: unset;
+        min-height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          max-width: unset;
+          width: 80%;
+          .heading {
+            text-align: center;
+          }
+          .des {
+            font-size: 14px;
+            width: 50%;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: center;
+            width: 100%;
+          }
+        }
+
+        .imgwrapper {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          height: 30vh;
+          margin-top: 5vh;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+      .missionSection {
+        width: 100vw;
+        padding: 0;
+        padding-top: 5vh;
+        height: unset;
+        min-height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 80%;
+          .heading {
+            text-align: center;
+          }
+          .des {
+            font-size: 14px;
+            width: 50%;
+            font-weight: 400;
+            line-height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+        .imgwrapper {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          height: 30vh;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+      .thirdSection {
+        background-color: #17d1bc;
+        color: white;
+        width: 100vw;
+        padding: 50px 0 50px 0;
+        height: max-content;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          width: 70%;
+          flex-direction: column;
+          .secondheading {
+            font-size: 50px;
+          }
+          .des {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            width: 100%;
+          }
+        }
+
+        .imgwrapper {
+          margin: 0;
+          padding: 0;
+          margin-bottom: 20px;
+          .jasper {
+            width: 100%;
+            height: 30vh;
+            object-fit: contain;
+          }
+        }
+      }
+      .secondheading {
+        font-size: 25px;
       }
       .wrapper {
         display: flex;
@@ -1223,82 +1371,334 @@
         .role,
         .team {
           .name {
-            font-size: 16px;
+            font-size: 26px;
           }
           .position {
-            font-size: 10px;
+            font-size: 16px;
           }
           img {
-            width: 130px;
-            height: 130px;
-            border-radius: 130px;
+            width: 220px;
+            height: 220px;
+            border-radius: 220px;
           }
         }
         .team {
-          margin: 0 5vw;
-          margin-bottom: 20px;
+          margin: 0 4vw;
+          margin-bottom: 40px;
           img {
-            width: 100px;
-            height: 100px;
-            border-radius: 100px;
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
           }
           .name {
-            font-size: 14px;
+            font-size: 16px;
           }
           .position {
-            font-size: 10px;
+            font-size: 12px;
+            margin-top: 2px;
           }
         }
-      }
-      .secondheading {
-        font-size: 18px;
-        margin: 20px 0;
       }
       .ctc {
         background-color: #fdcc03;
-        height: 130px;
-        min-width: 300px;
-        border-radius: 12px;
+        height: 250px;
+        min-width: 500px;
+        border-radius: 16px;
         width: 90%;
         margin-bottom: 100px;
         overflow: hidden;
-        padding: 25px;
+        padding: 45px;
         position: relative;
         .text {
-          font-size: 16px;
+          font-size: 30px;
           font-weight: 800;
         }
         .button {
-          width: 100px;
-          height: 35px;
+          width: 200px;
+          height: 50px;
           background-color: #fff;
-          font-size: 12px;
+          font-size: 16px;
           font-weight: 500;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 6px;
-          margin-top: 20px;
+          margin-top: 40px;
         }
         .curve {
           position: absolute;
-          left: 52%;
-          top: 55%;
+          left: 50%;
+          top: 50%;
           transform: translate(0%, 0);
           width: 12vw;
         }
         .yourname {
           position: absolute;
-          right: 13%;
+          right: 20%;
           bottom: 0px;
-          width: 22vw;
+          width: 15vw;
           z-index: 2;
         }
         .cover {
           position: absolute;
-          right: -12%;
+          right: -15%;
           top: 0;
-          width: 40vw;
+          width: 45vw;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+  .aboutPage {
+    .container {
+      .head {
+        height: 50vh;
+        .heading {
+          margin-top: 0px;
+          font-size: 2.5vw;
+          font-weight: 700;
+          text-align: center;
+        }
+        .subheading {
+          font-weight: 400;
+          font-size: clamp(12px, 1.5vw, 14px);
+          margin-top: 10px;
+          line-height: 22px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.78);
+          width: 100%;
+          padding: 0 20px;
+          max-width: 582px;
+        }
+        .ball1 {
+          left: 7%;
+          width: 6vw;
+          height: 3vw;
+        }
+        .ball2 {
+          width: 4vw;
+          height: 4vw;
+        }
+        .ball3 {
+          width: 3vw;
+          height: 3vw;
+        }
+        .ball4 {
+          width: 5vw;
+          border-radius: 9vw;
+          height: 5vw;
+          right: 8%;
+          top: 75%;
+        }
+      }
+      .visionSection {
+        width: 100vw;
+        padding: 0;
+        padding-top: 5vh;
+        height: unset;
+        min-height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          max-width: unset;
+          width: 80%;
+          .heading {
+            text-align: center;
+            font-size: 2.5vw;
+          }
+          .des {
+            font-size: clamp(12px, 1.5vw, 14px);
+            width: 50%;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: center;
+            width: 100%;
+          }
+        }
+
+        .imgwrapper {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          height: 50vh;
+          margin-top: 5vh;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+      .missionSection {
+        width: 100vw;
+        padding: 0;
+        padding-top: 5vh;
+        height: unset;
+        min-height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 80%;
+          .heading {
+            font-size: 2.5vw;
+            text-align: center;
+          }
+          .des {
+            font-size: clamp(12px, 1.5vw, 14px);
+            width: 50%;
+            font-weight: 400;
+            line-height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+        .imgwrapper {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          height: 50vh;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+      .thirdSection {
+        background-color: #17d1bc;
+        color: white;
+        width: 100vw;
+        padding: 50px 0 50px 0;
+        height: max-content;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        .left {
+          display: flex;
+          justify-content: center;
+          width: 70%;
+          flex-direction: column;
+          margin-top: 5vh;
+          .secondheading {
+            font-size: 50px;
+          }
+          .des {
+            font-size: clamp(12px, 1.5vw, 14px);
+            font-weight: 400;
+            line-height: 24px;
+            width: 100%;
+          }
+        }
+
+        .imgwrapper {
+          margin: 0;
+          padding: 0;
+          .jasper {
+            width: 100%;
+            height: 40vh;
+            object-fit: contain;
+          }
+        }
+      }
+      .secondheading {
+        font-size: 25px;
+      }
+      .wrapper {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        .role,
+        .team {
+          .name {
+            font-size: 26px;
+          }
+          .position {
+            font-size: 16px;
+          }
+          img {
+            width: 220px;
+            height: 220px;
+            border-radius: 220px;
+          }
+        }
+        .team {
+          margin: 0 4vw;
+          margin-bottom: 40px;
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
+          }
+          .name {
+            font-size: 16px;
+          }
+          .position {
+            font-size: 12px;
+            margin-top: 2px;
+          }
+        }
+      }
+      .ctc {
+        background-color: #fdcc03;
+        height: 250px;
+        min-width: 500px;
+        border-radius: 16px;
+        width: 90%;
+        margin-bottom: 100px;
+        overflow: hidden;
+        padding: 45px;
+        position: relative;
+        .text {
+          font-size: 30px;
+          font-weight: 800;
+        }
+        .button {
+          width: 200px;
+          height: 50px;
+          background-color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-top: 40px;
+        }
+        .curve {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(0%, 0);
+          width: 12vw;
+        }
+        .yourname {
+          position: absolute;
+          right: 20%;
+          bottom: 0px;
+          width: 15vw;
+          z-index: 2;
+        }
+        .cover {
+          position: absolute;
+          right: -15%;
+          top: 0;
+          width: 45vw;
           height: 100%;
           object-fit: cover;
         }

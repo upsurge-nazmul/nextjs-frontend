@@ -86,7 +86,7 @@ function Header({
       )}
       <div className={styles.container}>
         <div
-          className={styles.hamburger}
+          className={`${styles.hamburger} ${showticker && styles.hamticker}`}
           onClick={() => {
             setOpenLeftPanel((prev) => !prev);
           }}

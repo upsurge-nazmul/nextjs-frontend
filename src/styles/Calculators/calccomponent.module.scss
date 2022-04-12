@@ -309,3 +309,208 @@
     }
   }
 }
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .calculatorComponent {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .postresultinputs {
+      min-width: unset;
+      width: 100%;
+    }
+    .inputSection {
+      flex: 1;
+      width: 100%;
+      .submitButton {
+        width: 120px;
+        height: 40px;
+        margin: 20px 0;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .inputBlockSip {
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-around;
+        .radioButton {
+          display: flex;
+
+          p {
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 5px;
+          }
+          &:last-child {
+            margin-left: 0px;
+          }
+        }
+      }
+
+      .heading {
+        font-weight: 400;
+        font-size: 12px;
+        color: #3d3d3d;
+      }
+      .result {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .chartSection {
+      flex: 1;
+      display: flex;
+      padding: 0px;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      .chartContainer {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .calculatorComponent {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .postresultinputs {
+      min-width: unset;
+      width: 100%;
+    }
+    .inputSection {
+      flex: 1;
+      width: 100%;
+      .submitButton {
+        width: 120px;
+        height: 40px;
+        margin: 20px 0;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .inputBlockSip {
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-around;
+        .radioButton {
+          display: flex;
+
+          p {
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 5px;
+          }
+          &:last-child {
+            margin-left: 0px;
+          }
+        }
+      }
+
+      .heading {
+        font-weight: 400;
+        font-size: 12px;
+        color: #3d3d3d;
+      }
+      .result {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .chartSection {
+      flex: 1;
+      display: flex;
+      padding: 0px;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      .chartContainer {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+      }
+    }
+  }
+}
+@media only screen and (orientation: portrait) and (min-width: 1000px) {
+  .calculatorComponent {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .postresultinputs {
+      min-width: unset;
+      width: 100%;
+    }
+    .inputSection {
+      flex: 1;
+      width: 100%;
+      .submitButton {
+        width: 120px;
+        height: 40px;
+        margin: 20px 0;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .inputBlockSip {
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-around;
+        .radioButton {
+          display: flex;
+
+          p {
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 5px;
+          }
+          &:last-child {
+            margin-left: 0px;
+          }
+        }
+      }
+
+      .heading {
+        font-weight: 400;
+        font-size: 12px;
+        color: #3d3d3d;
+      }
+      .result {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .chartSection {
+      flex: 1;
+      display: flex;
+      padding: 0px;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      .chartContainer {
+        position: relative;
+        height: 50vh;
+        width: 100%;
+      }
+    }
+  }
+}

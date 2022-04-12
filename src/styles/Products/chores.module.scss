@@ -11,6 +11,7 @@
     height: 22vh;
     .mobileimage {
       display: none;
+      pointer-events: none;
     }
     .heading {
       font-size: 46px;
@@ -87,6 +88,7 @@
         width: 186px;
         height: 48px;
         background: #ffffff;
+        min-width: fit-content;
         border-radius: 6px;
         cursor: pointer;
         font-size: 16px;
@@ -282,6 +284,7 @@
     .mid {
       flex: 1;
       overflow: hidden;
+      pointer-events: none;
       position: relative;
       min-width: 550px;
       z-index: 2;
@@ -566,335 +569,6 @@
           min-width: 400px;
           height: 130vh;
           position: relative;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
-  .chores {
-    display: flex;
-    flex-direction: column;
-    background-color: #fdcc03;
-    height: 100vh;
-    overflow: hidden;
-    .top {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: fit-content;
-      margin-top: 30px;
-      .mobileimage {
-        position: relative;
-        display: block;
-        height: 70vh;
-        width: 100vw;
-        margin-top: 20px;
-      }
-      .heading {
-        font-size: 40px;
-        font-weight: 700;
-        margin-top: 2%;
-      }
-      .subheading {
-        font-size: 14px;
-        font-weight: 400;
-        margin-top: 10px;
-        max-width: 632px;
-        width: 90%;
-        line-height: 22px;
-        text-align: center;
-        color: #000000f0;
-      }
-      .button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 22px;
-        width: 156px;
-        height: 40px;
-        background: #ffffff;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
-        margin-top: 20px;
-        margin-top: 20px;
-      }
-
-      .signupBox {
-        width: 80vw;
-        min-width: 250px;
-        max-width: 400px;
-        height: 40px;
-        min-height: 40px;
-        input {
-          border-top-left-radius: 10px;
-          border-bottom-left-radius: 10px;
-          font-size: 12px;
-          padding-left: 10px;
-          &::placeholder {
-            font-size: 14px;
-          }
-        }
-        .button,
-        .joinButton {
-          font-size: 14px;
-          margin: 0;
-        }
-      }
-    }
-    .bottom {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 30vh;
-      max-height: 100px;
-      margin-top: 0px;
-      .left {
-        flex-direction: row;
-        flex-wrap: wrap;
-        .first {
-          width: 50%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: right;
-          width: 100%;
-          position: relative;
-          .heading {
-            font-size: 16px;
-            text-align: left;
-          }
-          .description {
-            margin-top: 2px;
-            text-align: left;
-            font-size: 12px;
-          }
-          .connectorl {
-            display: none;
-          }
-        }
-        .second {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          text-align: right;
-          position: relative;
-          width: 100%;
-          .heading {
-            font-size: 16px;
-          }
-          .description {
-            margin-top: 2px;
-            font-size: 12px;
-          }
-          .connectorl {
-            display: none;
-          }
-        }
-      }
-      .right {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-top: 30px;
-        .first {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: center;
-          position: relative;
-          text-align: left;
-          width: 100%;
-          .heading {
-            font-size: 16px;
-          }
-          .description {
-            margin-top: 2px;
-            font-size: 12px;
-          }
-          .connectorr {
-            display: none;
-          }
-        }
-        .second {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          position: relative;
-          text-align: right;
-          width: 100%;
-          .connectorr {
-            display: none;
-          }
-          .heading {
-            font-size: 16px;
-          }
-          .description {
-            margin-top: 2px;
-            font-size: 12px;
-          }
-        }
-      }
-      .mid {
-        display: none;
-        flex: unset;
-        width: 0vw;
-        overflow: hidden;
-        position: relative;
-        min-width: unset;
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        img {
-          object-fit: contain;
-          width: 100%;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 720px) {
-  .chores {
-    display: flex;
-    flex-direction: column;
-    background-color: #fdcc03;
-    height: fit-content;
-    overflow: hidden;
-    max-height: 170vh;
-    padding-bottom: 100px;
-    .bottom {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 500px;
-      .left {
-        flex-direction: column;
-        max-height: 28vh;
-        .first {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: right;
-          width: 100%;
-          justify-content: flex-start;
-          max-height: 15vh;
-          position: relative;
-          padding: 0;
-          .heading {
-            font-size: 16px;
-            text-align: center;
-          }
-          .description {
-            margin-top: 2px;
-            text-align: center;
-            font-size: 12px;
-            width: 80%;
-          }
-          .connectorl {
-            display: none;
-          }
-        }
-        .second {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: right;
-          position: relative;
-          width: 100%;
-          justify-content: flex-start;
-          max-height: 15vh;
-          .heading {
-            text-align: center;
-            font-size: 16px;
-          }
-          .description {
-            margin-top: 2px;
-            text-align: center;
-            font-size: 12px;
-            width: 80%;
-          }
-          .connectorl {
-            display: none;
-          }
-        }
-      }
-      .right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        margin-top: 0px;
-        max-height: 28vh;
-        .first {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          justify-content: center;
-          position: relative;
-          text-align: left;
-          width: 100%;
-          .heading {
-            font-size: 16px;
-            text-align: center;
-          }
-          .description {
-            margin-top: 2px;
-            text-align: center;
-            width: 80%;
-            font-size: 12px;
-          }
-          .connectorr {
-            display: none;
-          }
-        }
-        .second {
-          flex: 1;
-          margin-top: 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          position: relative;
-          text-align: right;
-          width: 100%;
-          .connectorr {
-            display: none;
-          }
-          .heading {
-            font-size: 16px;
-            text-align: center;
-          }
-          .description {
-            text-align: center;
-            margin-top: 2px;
-            width: 80%;
-            font-size: 12px;
-          }
-        }
-      }
-      .mid {
-        display: none;
-        flex: unset;
-        width: 0vw;
-        overflow: hidden;
-        position: relative;
-        min-width: unset;
-        z-index: 2;
-        justify-content: center;
-        img {
-          object-fit: contain;
-          width: 100%;
         }
       }
     }
@@ -1280,10 +954,11 @@
           align-items: center;
           justify-content: center;
           padding: 12px 32px;
-          width: 186px;
+          width: 206px;
           height: 48px;
           background: #ffffff;
           border-radius: 6px;
+          min-width: fit-content;
           font-size: 16px;
           font-weight: 500;
           margin-top: 20px;
@@ -1493,18 +1168,355 @@
     }
   }
 }
-
-@media only screen and (orientation: landscape) and (max-width: 860px) {
+@media only screen and (max-width: 860px) {
   .chores {
     display: flex;
     flex-direction: column;
-    height: 110vh;
+    background-color: #fdcc03;
+    height: 100vh;
     overflow: hidden;
-    min-height: 800px;
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: fit-content;
+      margin-top: 30px;
+      .mobileimage {
+        position: relative;
+        display: block;
+        height: 70vh;
+        width: 100vw;
+        margin-top: 20px;
+      }
+      .heading {
+        font-size: 40px;
+        font-weight: 700;
+        margin-top: 2%;
+      }
+      .subheading {
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 10px;
+        max-width: 632px;
+        width: 90%;
+        line-height: 22px;
+        text-align: center;
+        color: #000000f0;
+      }
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        width: 156px;
+        height: 40px;
+        background: #ffffff;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-top: 20px;
+      }
+
+      .signupBox {
+        width: 80vw;
+        min-width: 250px;
+        max-width: 400px;
+        height: 40px;
+        min-height: 40px;
+        input {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          font-size: 12px;
+          padding-left: 10px;
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+        .button,
+        .joinButton {
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+    }
+    .bottom {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 30vh;
+      max-height: 100px;
+      margin-top: 0px;
+      .left {
+        flex-direction: row;
+        flex-wrap: wrap;
+        .first {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: right;
+          width: 100%;
+          position: relative;
+          .heading {
+            font-size: 16px;
+            text-align: left;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: left;
+            font-size: 12px;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+          position: relative;
+          width: 100%;
+          .heading {
+            font-size: 16px;
+          }
+          .description {
+            margin-top: 2px;
+            font-size: 12px;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+      }
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        .first {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          position: relative;
+          text-align: left;
+          width: 100%;
+          .heading {
+            font-size: 16px;
+          }
+          .description {
+            margin-top: 2px;
+            font-size: 12px;
+          }
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          position: relative;
+          text-align: right;
+          width: 100%;
+          .connectorr {
+            display: none;
+          }
+          .heading {
+            font-size: 16px;
+          }
+          .description {
+            margin-top: 2px;
+            font-size: 12px;
+          }
+        }
+      }
+      .mid {
+        display: none;
+        flex: unset;
+        width: 0vw;
+        overflow: hidden;
+        position: relative;
+        min-width: unset;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        img {
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 720px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdcc03;
+    height: fit-content;
+    overflow: hidden;
+    max-height: 170vh;
+    padding-bottom: 100px;
+    .bottom {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 500px;
+      .left {
+        flex-direction: column;
+        max-height: 28vh;
+        .first {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: right;
+          width: 100%;
+          justify-content: flex-start;
+          max-height: 15vh;
+          position: relative;
+          padding: 0;
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            font-size: 12px;
+            width: 80%;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: right;
+          position: relative;
+          width: 100%;
+          justify-content: flex-start;
+          max-height: 15vh;
+          .heading {
+            text-align: center;
+            font-size: 16px;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            font-size: 12px;
+            width: 80%;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+      }
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 0px;
+        max-height: 28vh;
+        .first {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          justify-content: center;
+          position: relative;
+          text-align: left;
+          width: 100%;
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            width: 80%;
+            font-size: 12px;
+          }
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          flex: 1;
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          position: relative;
+          text-align: right;
+          width: 100%;
+          .connectorr {
+            display: none;
+          }
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            text-align: center;
+            margin-top: 2px;
+            width: 80%;
+            font-size: 12px;
+          }
+        }
+      }
+      .mid {
+        display: none;
+        flex: unset;
+        width: 0vw;
+        overflow: hidden;
+        position: relative;
+        min-width: unset;
+        z-index: 2;
+        justify-content: center;
+        img {
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    overflow: hidden;
+    min-height: fit-content;
+    padding-bottom: 10vh;
     .top {
       height: fit-content;
       .heading {
         font-size: 4vw;
+      }
+      .mobileimage {
+        position: relative;
+        display: block;
+        height: 80vh;
+        width: 50vw;
+        margin-top: 20px;
       }
       .subheading {
         font-size: clamp(14px, 1vw, 16px);
@@ -1534,14 +1546,36 @@
       }
     }
     .bottom {
-      height: 90vh;
+      height: fit-content;
       min-height: unset;
-      margin-top: 20vh;
+      margin-top: 20px;
+      justify-content: space-between;
+      gap: 4vw;
       .left {
-        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
       }
       .right {
-        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
       }
       .mid {
         display: none;
@@ -1550,6 +1584,246 @@
           min-width: 400px;
           height: 130vh;
           position: relative;
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+    min-height: 800px;
+    padding-bottom: 10vh;
+    .top {
+      height: fit-content;
+      .heading {
+        font-size: 4vw;
+      }
+      .mobileimage {
+        position: relative;
+        display: block;
+        height: 80vh;
+        width: 50vw;
+        margin-top: 20px;
+      }
+      .subheading {
+        font-size: clamp(14px, 1vw, 16px);
+        font-weight: 400;
+        margin-top: 10px;
+        max-width: 632px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000f0;
+      }
+      .button {
+        padding: 5px 16px;
+        width: 166px;
+        height: 45px;
+        font-size: clamp(14px, 1vw, 16px);
+      }
+      .signupBox {
+        margin-top: 20px;
+
+        .joinButton {
+          padding: 5px 20px;
+          margin: 0;
+          height: 40px;
+          width: fit-content;
+          font-size: clamp(14px, 1vw, 16px);
+        }
+      }
+    }
+    .bottom {
+      height: fit-content;
+      min-height: unset;
+      margin-top: 20px;
+      justify-content: space-between;
+      gap: 4vw;
+      .left {
+        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
+      }
+      .right {
+        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
+      }
+      .mid {
+        display: none;
+        .image {
+          width: 100%;
+          min-width: 400px;
+          height: 130vh;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 720px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdcc03;
+    height: fit-content;
+    overflow: hidden;
+    max-height: 200vh;
+    padding-bottom: 0px;
+    min-height: 950px;
+    .bottom {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 500px;
+      .left {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        max-height: fit-content;
+        flex: unset;
+        .first {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: right;
+          width: 100%;
+          justify-content: flex-start;
+          max-height: fit-content;
+          height: fit-content;
+          position: relative;
+          padding: 0;
+          flex: unset;
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            font-size: 12px;
+            width: 80%;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: right;
+          position: relative;
+          width: 100%;
+          flex: unset;
+          justify-content: flex-start;
+          max-height: fit-content;
+          margin-top: 10px;
+          .heading {
+            text-align: center;
+            font-size: 16px;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            font-size: 12px;
+            width: 80%;
+          }
+          .connectorl {
+            display: none;
+          }
+        }
+      }
+      .right {
+        flex: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 0px;
+        max-height: fit-content;
+        .first {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          justify-content: center;
+          position: relative;
+          text-align: left;
+          width: 100%;
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            margin-top: 2px;
+            text-align: center;
+            width: 80%;
+            font-size: 12px;
+          }
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          flex: 1;
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          position: relative;
+          text-align: right;
+          width: 100%;
+          .connectorr {
+            display: none;
+          }
+          .heading {
+            font-size: 16px;
+            text-align: center;
+          }
+          .description {
+            text-align: center;
+            margin-top: 2px;
+            width: 80%;
+            font-size: 12px;
+          }
+        }
+      }
+      .mid {
+        display: none;
+        flex: unset;
+        width: 0vw;
+        overflow: hidden;
+        position: relative;
+        min-width: unset;
+        z-index: 2;
+        justify-content: center;
+        img {
+          object-fit: contain;
+          width: 100%;
         }
       }
     }
