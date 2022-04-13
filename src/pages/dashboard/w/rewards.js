@@ -77,7 +77,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
-  const [mode, setmode] = useState("Upsurge Early Access Rewards");
+  const [mode, setmode] = useState("upsurge Early Access Rewards");
   const [user_unicoin, setuser_unicoin] = useState(
     Number(userdatafromserver.num_unicoins) || 0
   );
