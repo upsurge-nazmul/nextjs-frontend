@@ -778,7 +778,6 @@
             min-height: 10vh;
             font-size: 500;
             color: #ffffff;
-
             text-align: center;
             width: 70%;
             height: 30px;
@@ -793,7 +792,6 @@
             width: 100%;
             color: #4166eb;
             font-size: clamp(12px, 1.5vw, 14px);
-
             font-weight: 700;
             margin-top: 30px;
             transition: all 0.3s ease;
@@ -816,10 +814,8 @@
             align-items: center;
             p {
               font-size: clamp(12px, 1.5vw, 14px);
-
               font-weight: 500;
               color: #ffffffe7;
-
               margin-bottom: 12px;
             }
           }
@@ -831,7 +827,6 @@
           }
           &:nth-child(2) {
             background: #ff6263;
-
             margin: 0 1vw 40px;
           }
         }

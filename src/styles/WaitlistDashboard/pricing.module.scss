@@ -409,7 +409,7 @@
           width: 100%;
           margin-top: 40px;
           .pricecontainer {
-            width: 280px;
+            width: 80%;
             height: fit-content;
             left: 244px;
             top: 495px;
@@ -497,7 +497,7 @@
     }
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (orientation: portrait) and (max-width: 500px) {
   .leaderboard {
     height: 100vh;
     width: 100vw;
@@ -662,7 +662,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 600px) {
+@media only screen and (orientation: landscape) and (max-height: 900px) {
   .leaderboard {
     height: 100vh;
     width: 100vw;
@@ -737,8 +737,9 @@
           width: 100%;
           margin-top: 40px;
           .pricecontainer {
-            width: auto;
-            height: fit-content;
+            width: unset;
+            flex: 1;
+            height: 570px;
             left: 244px;
             top: 495px;
             background: #ffffff;
@@ -751,22 +752,24 @@
             align-items: center;
             margin-bottom: 40px;
             color: #ffffff;
-            padding: 12px;
+            padding: 30px;
             .name {
               font-weight: 700;
-              font-size: 18px;
+              font-size: 2.5vw;
             }
             .price {
               margin-top: 12px;
-              font-size: 36px;
+              font-size: clamp(40px, 5vw, 60px);
               font-weight: 800;
             }
             .description {
               margin-top: 6px;
-              font-size: 12px;
+              font-size: clamp(10px, 1vw, 12px);
+              min-height: 10vh;
+              font-size: 500;
               color: #ffffff;
               text-align: center;
-              width: 200px;
+              width: 70%;
               height: 30px;
             }
             .button {
@@ -778,7 +781,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: clamp(12px, 1.5vw, 14px);
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -799,12 +802,10 @@
               display: flex;
               flex-direction: column;
               align-items: center;
-              max-width: 180px;
               p {
-                font-size: 10px;
+                font-size: clamp(12px, 1.5vw, 14px);
                 font-weight: 500;
                 color: #ffffffe7;
-
                 margin-bottom: 12px;
               }
             }
@@ -816,8 +817,7 @@
             }
             &:nth-child(2) {
               background: #ff6263;
-
-              margin: 0 20px 40px;
+              margin: 0 1vw 40px;
             }
           }
         }
