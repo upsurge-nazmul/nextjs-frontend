@@ -148,8 +148,11 @@ export default function WaitlistDashboard({
               }
             />
           )}
+          {/* Main body */}
           <div className={styles.mainContent}>
+            {/* Top Section */}
             <div className={styles.flexTop} id="leftside">
+              {/* Waitlist card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
                   <div className={styles.front}>
@@ -174,6 +177,7 @@ export default function WaitlistDashboard({
                   </div>
                 </div>
               </div>
+              {/* Unicoins card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
                   <div className={styles.front}>
@@ -197,6 +201,7 @@ export default function WaitlistDashboard({
                   </div>
                 </div>
               </div>
+              {/* Milestone card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
                   <div className={styles.front}>
@@ -220,6 +225,7 @@ export default function WaitlistDashboard({
                   </div>
                 </div>
               </div>
+              {/* Ludo score card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
                   <div className={styles.front}>
@@ -244,10 +250,12 @@ export default function WaitlistDashboard({
                 </div>
               </div>
             </div>
+            {/* Mid section */}
             <div className={styles.flexMid}>
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
               <Refer settoastdata={settoastdata} />
             </div>
+            {/* Bottom section */}
             <div className={styles.flexBottom} id="rightpanel">
               <WaitlistBlogs blogs={blogs} />
               <DashboardFooter />

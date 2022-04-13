@@ -128,7 +128,7 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 860px)  {
   .todaysquestion {
     display: flex;
     flex-direction: column;
@@ -160,6 +160,57 @@
     .question {
       font-weight: 500;
       font-size: 20px;
+      margin-top: 12px;
+    }
+    .options {
+      .option {
+        font-size: 14px;
+        background-color: #27bdab;
+        padding: 10px;
+        border-radius: 6px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(173, 67%, 41%);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 600px)  {
+  .todaysquestion {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-radius: 12px;
+    width: 100%;
+    padding: 30px 20px 20px;
+    margin-bottom: 0;
+    .heading {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .wrongtick {
+      margin: 10px auto;
+      height: 60px;
+      width: 60px;
+    }
+    .answered {
+      font-weight: 400;
+      font-size: 14px;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .msg {
+      font-size: 12px;
+    }
+    .question {
+      font-weight: 500;
+      font-size: 18px;
       margin-top: 12px;
     }
     .options {

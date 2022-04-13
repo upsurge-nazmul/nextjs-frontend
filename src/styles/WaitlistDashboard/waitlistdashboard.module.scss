@@ -222,7 +222,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and  (orientation: portrait) and (max-width: 1000px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -607,7 +607,7 @@
     }
   }
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 860px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -729,7 +729,7 @@
     }
   }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (orientation: portrait) and (max-width: 800px) {
   .waitlistdashboard {
     .contentWrapper {
       .mainContent {
@@ -747,7 +747,7 @@
     }
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (orientation: portrait) and (max-width: 700px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -866,7 +866,7 @@
     }
   }
 }
-@media only screen and (max-width: 570px) {
+@media only screen and (orientation: portrait) and (max-width: 570px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -984,6 +984,98 @@
         .flexRight {
           width: 100%;
           margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 600px) {
+  .waitlistdashboard {
+    background-color: #f4f5f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: auto;
+    .contentWrapper {
+      height: 100vh;
+      flex: 1;
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      .mainContent {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        padding: 0 20px;
+        scrollbar-width: thin;
+        .flexTop {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          height: fit-content;
+          margin-bottom: 5px;
+          .flipcard {
+            background-color: transparent;
+            margin: 6px;
+            flex: 1;
+            border-radius: 10px;
+            min-width: 100px;
+            height: 140px;
+            border: 1px solid #f1f1f1;
+            cursor: pointer;
+          }
+          .uniblock,
+          .waitlistblock,
+          .gameblock,
+          .quizblock {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0px;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 100px;
+            color: white;
+            .heading {
+              font-size: 30px;
+              color: #fff;
+              margin-top: 10px;
+              align-self: center;
+              font-weight: 800;
+            }
+            .subheading {
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 22px;
+              margin-top: 15px;
+            }
+          }
+          .gameblock {
+            background-color: rgba(23, 209, 188, 1);
+          }
+          .quizblock {
+            background-color: rgba(253, 204, 3, 1);
+          }
+          .waitlistblock {
+            background-color: rgba(65, 102, 235, 1);
+          }
+          .uniblock {
+            background-color: rgba(255, 98, 99, 1);
+          }
+        }
+        .flexMid {
+          min-height: fit-content;
+        }
+        .flexBottom {
+          width: 100%;
+          margin-top: 0px;
         }
       }
     }
