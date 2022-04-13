@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -223,6 +225,7 @@
     }
   }
 }
+
 @media only screen and (max-width: 860px) {
   .intro {
     scroll-snap-align: end;
@@ -273,6 +276,77 @@
         input {
           flex: 1;
           font-size: 16px;
+        }
+      }
+    }
+
+    .ballsvg {
+      width: 25vw;
+      bottom: 30px;
+      left: 7%;
+      svg {
+        width: 100px;
+      }
+    }
+  }
+}
+//tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .intro {
+    scroll-snap-align: end;
+    position: relative;
+    min-height: 500px;
+    height: calc(100vh - 80px);
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    .textContent {
+      margin-top: 8%;
+      width: 100%;
+      margin-left: 0%;
+      padding-left: 7%;
+      padding-right: 7%;
+      .heading {
+        font-size: clamp(20px, 6vw, 45px);
+        font-weight: 700;
+        line-height: 50px;
+        margin-bottom: 5px;
+      }
+      .subheading {
+        font-size: $tablet-subheading;
+        width: 100%;
+        line-height: $tablet-subheading-line;
+      }
+      .button {
+        font-size: $tablet-subheading;
+      }
+      .checkwaiting {
+        width: 100%;
+        font-size: $tablet-subheading;
+      }
+      .signupBox {
+        width: 80%;
+        min-width: fit-content;
+        height: 50px;
+        display: flex;
+        overflow: hidden;
+        margin-top: 20px;
+        .button {
+          min-width: 40%;
+          font-size: clamp(16px, 2.1vw, 20px);
+        }
+        form {
+          display: flex;
+          width: 55%;
+          flex: 1;
+        }
+        input {
+          flex: 1;
+          font-size: $tablet-subheading;
         }
       }
     }

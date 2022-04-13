@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .blogSection {
   scroll-snap-align: end;
   position: relative;
@@ -163,7 +165,48 @@
     }
   }
 }
-
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .blogSection {
+    position: relative;
+    z-index: 2;
+    padding: 7vw;
+    height: fit-content;
+    .heading {
+      margin-bottom: 3vh;
+      font-size: $tablet-heading;
+      font-weight: 700;
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: flex-start;
+      justify-content: space-around;
+      .moreCard {
+        width: 42vw;
+        margin: 0;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        padding: 40px 25px 50px;
+        display: flex;
+        min-width: 300px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        .title {
+          font-size: $tablet-subheading;
+          line-height: $tablet-subheading-line;
+          min-height: unset;
+        }
+        .content {
+          line-height: $tablet-smallsubheading-line;
+          font-size: $tablet-smallsubheading;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
 @media only screen and (max-width: 700px) {
   .blogSection {
     .wrapper {

@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .productSection {
   scroll-snap-align: end;
   position: relative;
@@ -230,6 +232,57 @@
           line-height: 20px;
         }
       }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .productSection {
+    position: relative;
+    z-index: 2;
+    padding: 7vw;
+    padding-bottom: 0;
+    height: fit-content;
+    .heading {
+      margin-bottom: 50px;
+      font-size: $tablet-heading;
+      font-weight: 700;
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-items: center;
+      justify-content: space-between;
+      gap: 3vh;
+      .pillar {
+        width: 100%;
+        min-width: unset;
+        margin: 0;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        .icon {
+          width: 30%;
+        }
+        .title {
+          font-weight: 600;
+          margin-top: 50px;
+          font-size: $tablet-smallheading;
+          text-align: center;
+        }
+        .description {
+          font-size: $tablet-subheading;
+          line-height: $tablet-subheading-line;
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+    }
+    .wrapper2 {
+      margin-top: 3vh;
     }
   }
 }

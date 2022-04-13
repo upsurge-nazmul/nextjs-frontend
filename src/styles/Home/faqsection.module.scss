@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .faqsection {
   display: flex;
   color: black;
@@ -87,7 +89,39 @@
     }
   }
 }
-
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .faqsection {
+    display: flex;
+    color: black;
+    padding: 0 7vw;
+    height: fit-content;
+    min-height: fit-content;
+    align-items: center;
+    padding-bottom: 5vh;
+    flex-direction: column;
+    .left {
+      display: none;
+    }
+    .heading {
+      font-weight: bold;
+      font-size: $tablet-heading;
+      flex: 1;
+      display: none;
+    }
+    .mobilehead {
+      font-weight: bold;
+      font-size: $tablet-heading;
+      display: block;
+      margin: 40px 0;
+    }
+    .wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
 @media only screen and (max-height: 500px) and (orientation: landscape) {
   .faqsection {
     display: flex;

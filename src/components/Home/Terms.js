@@ -6,7 +6,6 @@ export default function Terms({ setshowterm, termmode }) {
   const router = useRouter();
   function move(id) {
     let element = document.querySelector(id);
-    console.log(element, id);
     if (!element) {
       return;
     }
@@ -943,7 +942,7 @@ export default function Terms({ setshowterm, termmode }) {
             (v) your negligence or wilful misconduct. This obligation will
             survive termination of our Terms.
           </p>
-          <p className={styles.para}>23. UNSOLICITED MATERIAL</p>
+          <p className={styles.heading}>23. UNSOLICITED MATERIAL</p>
           <p className={styles.para}>
             We always appreciate feedback or other suggestions. We may use the
             same without any restrictions or obligation to compensate you for

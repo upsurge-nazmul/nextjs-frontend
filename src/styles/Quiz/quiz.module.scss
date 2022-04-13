@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes float {
   0% {
     transform: translatey(-20px, 0px) rotate(-25deg);
@@ -1283,6 +1285,1520 @@
       }
       .hideOverFlow {
         overflow: hidden;
+      }
+    }
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .quizPage {
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative;
+    background: #fdcc03;
+    z-index: 2;
+
+    .gamedata {
+      width: 100%;
+      padding: 0 5vw;
+      display: flex;
+      height: fit-content;
+      max-height: 500px;
+      margin: 0;
+      .left {
+        width: 50vw;
+        background: #f9f9f96e;
+        border-radius: 12px;
+        padding: 40px;
+        min-width: unset;
+        .error {
+          color: rgb(238, 79, 79);
+          font-size: $mobile-smallsubheading;
+        }
+        .headingmain {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $mobile-heading;
+          font-weight: 500;
+          color: black;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+          height: 10%;
+        }
+        .input {
+          background: #fff;
+          font-size: $mobile-smallsubheading;
+          border: none;
+          height: 45px;
+          width: 90%;
+          padding: 0 20px;
+          margin-top: 20px;
+          &::placeholder {
+            color: rgb(0, 0, 0);
+          }
+        }
+        .buttons {
+          display: flex;
+          margin-top: 40px;
+
+          .startbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: unset;
+            height: unset;
+            background: #4166eb;
+            border-radius: 6px;
+            color: white;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            font-size: $mobile-detail;
+            margin-bottom: 20px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(227, 59%, 51%);
+            }
+          }
+          .skipbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 165px;
+            height: 48px;
+            background: #616161;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            color: white;
+            transition: all 0.3s ease;
+            margin-left: 30px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(0, 0%, 30%);
+            }
+          }
+        }
+      }
+      .right {
+        width: 50%;
+        align-items: center;
+        display: flex;
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }
+    }
+    .startscreen {
+      background-color: #36363657;
+      opacity: 1;
+      background-size: 80px 80px;
+      background-repeat: repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      align-items: center;
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      // .background {
+      //   background-color: #17d1bc;
+      //   height: 35%;
+      //   width: 100%;
+      //   position: absolute;
+      //   top: 0;
+      //   z-index: 0;
+      //   left: 0;
+      // }
+      .left {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .right {
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        width: 100%;
+        max-width: 500px;
+        height: 60vh;
+        border-radius: 20px;
+        background-color: white;
+        z-index: 5;
+        .jasper {
+          width: 20%;
+          height: 50%;
+          object-fit: contain;
+          position: absolute;
+          z-index: -1;
+          top: -22vh;
+          right: 0;
+        }
+        .heading {
+          font-size: $mobile-heading;
+          color: white;
+          font-weight: 700;
+          background-color: #4166eb;
+          border-radius: 20px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          padding: 15px 30px;
+          text-align: center;
+          width: 100%;
+        }
+        ul {
+          overflow-y: auto;
+        }
+        .text {
+          padding: 5px 40px 5px 0;
+          font-size: $mobile-smallsubheading;
+          font-weight: 500;
+          background-color: white;
+          margin-left: 50px;
+          &:first-child {
+            padding-top: 20px !important;
+          }
+        }
+        .button {
+          width: fit-content;
+          min-height: fit-content;
+          padding: 8px 15px;
+          margin: 15px 0;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #4166eb;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: $mobile-detail;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: white;
+            color: #4166eb;
+          }
+        }
+      }
+    }
+    .contentWrapper {
+      margin-top: 5vh;
+      padding-left: 7%;
+      position: relative;
+      padding-right: 7%;
+      padding-bottom: 100px;
+      .prop1 {
+        background-color: #17d1bc;
+        width: 10vw;
+        height: 5vw;
+        border-radius: 10vw;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        position: absolute;
+        right: 10%;
+        top: 30%;
+        transform: rotate(-25deg);
+        animation: float 8s ease infinite both;
+        animation-delay: 0.5s;
+        z-index: -1;
+      }
+      .prop2 {
+        background-color: #ff6263;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 5vw;
+        position: absolute;
+        left: 10%;
+        animation-delay: 0.7s;
+        top: 30%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .prop3 {
+        background-color: #4166eb;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 2vw;
+        position: absolute;
+        right: 10%;
+        animation-delay: 0.2s;
+        top: 80%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .prop4 {
+        background-color: #ffff;
+        width: 4vw;
+        height: 4vw;
+        border-radius: 4vw;
+        left: 10%;
+        position: absolute;
+        top: 80%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .quizCardsHolder {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        margin-top: 3vh;
+        width: 100%;
+        .heading {
+          font-size: $mobile-heading;
+          font-weight: 700;
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .quizCard {
+          cursor: pointer;
+          background-color: rgb(255, 255, 255);
+          width: 251px;
+          box-shadow: 0px 14px 26px rgba(8, 60, 194, 0.15);
+          border-radius: 12px;
+          height: 284px;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 20px;
+          transition: all 0.3s ease;
+          padding: 30px;
+          margin-right: 20px;
+          svg {
+            width: 100px;
+            height: 100px;
+          }
+          .text {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            font-size: 18px;
+            font-family: "Roboto", sans-serif;
+            align-items: center;
+            .name {
+              color: #4166eb;
+              font-weight: 500;
+            }
+            .description {
+              font-weight: 400;
+              font-size: 16px;
+              color: #4a4a4a;
+              margin-top: 5px;
+            }
+          }
+
+          .button {
+            background: #17d1bc;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 138px;
+            min-width: 70px;
+            height: 41px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: #16c4af;
+            }
+          }
+        }
+      }
+      .quizContainer {
+        display: flex;
+        .leftSection {
+          flex: 2;
+          .current {
+            width: fit-content;
+            background-color: #4166eb;
+            border-radius: 8px;
+            color: rgb(243, 243, 243);
+            text-align: center;
+            font-size: $mobile-detail;
+            font-weight: 500;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+          }
+          .heading {
+            font-weight: 600;
+            font-size: $mobile-heading;
+          }
+          .details {
+            margin-top: 1vh;
+            font-weight: 400;
+            font-size: $mobile-smallsubheading;
+          }
+          .startButton {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(23, 209, 188, 1);
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            &:hover {
+              background-color: rgb(18, 182, 163);
+            }
+          }
+          .buttonwrapper {
+            display: flex;
+            align-items: center;
+            .closeButton {
+              width: 150px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: hsl(360, 100%, 69%);
+              border-radius: 8px;
+              margin-top: 20px;
+              margin-right: 20px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              color: white;
+              &:hover {
+                background-color: hsl(360, 100%, 59%);
+              }
+            }
+            .finishButton {
+              width: 150px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: hsl(173, 80%, 45%);
+              border-radius: 8px;
+              margin-top: 20px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              color: white;
+              &:hover {
+                background-color: hsl(173, 80%, 35%);
+              }
+            }
+          }
+        }
+        .rightSection {
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+          flex-direction: column;
+          justify-content: center;
+          .timerSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 100%;
+            padding-right: 20px;
+            .timeleft {
+              font-size: $mobile-smallsubheading;
+              width: 100%;
+              font-weight: 600;
+              text-align: right;
+            }
+            .timer {
+              text-align: right;
+              font-size: $mobile-subheading;
+              width: 100%;
+              font-weight: 700;
+              color: rgb(0, 0, 0);
+            }
+          }
+
+          .questionsleft {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      .quizWrapper {
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        padding: 0;
+        border-radius: 8px;
+      }
+      .resultSection {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        min-height: fit-content;
+        margin-top: 30vh;
+        border-radius: 8px;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        padding: 40px;
+        border-radius: 8px;
+        .jasper {
+          position: absolute;
+          z-index: -1;
+          top: -30vh;
+          width: 10vw;
+        }
+        .background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          border-radius: 8px;
+          height: 100%;
+          background-color: rgb(255, 255, 255);
+          overflow: hidden;
+          z-index: -1;
+        }
+        .signupBox {
+          width: 23vw;
+          min-width: fit-content;
+          min-height: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+          .input {
+            outline: none;
+            border: none;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border: 1px solid #4166eb5e;
+            width: 55%;
+            height: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: $mobile-subheading;
+            padding-left: 15px;
+            border-right: 0;
+            ::placeholder {
+              color: rgba(198, 198, 198, 1);
+            }
+          }
+          .normalbutton {
+            width: 45%;
+            min-width: fit-content;
+            font-size: $mobile-smallsubheading;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            height: 100%;
+            padding: 0 20px;
+            background-color: #4166eb;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border: 1px solid #4166eb5e;
+            border-left: 0;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: hsl(227, 57%, 47%);
+            }
+          }
+          .joinButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            width: 186px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 6px;
+            font-size: $mobile-subheading;
+
+            font-weight: 500;
+            margin-top: 20px;
+          }
+        }
+        .heading {
+          font-size: $mobile-bigheading;
+          font-weight: 800;
+          text-align: center;
+          color: #17d1bc;
+        }
+        .subheading {
+          color: black;
+          margin: 10px 0;
+          font-size: $mobile-subheading;
+          font-weight: 400;
+          text-align: center;
+          width: 80%;
+        }
+        .points {
+          font-size: $mobile-heading;
+          font-weight: 600;
+          text-align: center;
+          color: #131313;
+          margin-top: 10px;
+        }
+        .pointsdes {
+          font-size: 36px;
+          font-weight: 500;
+          text-align: center;
+        }
+        .button {
+          background: #4166eb;
+          border-radius: 8px;
+          padding: 10px 20px;
+          color: white;
+          font-size: $mobile-subheading;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: unset;
+          width: unset;
+          margin-top: 40px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          &:hover {
+            background-color: hsl(227, 56%, 38%);
+          }
+        }
+      }
+      .hideOverFlow {
+        overflow: hidden;
+      }
+    }
+    .whitespace {
+      background: white;
+      width: 100%;
+      height: 10vh;
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .quizPage {
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative;
+    background: #fdcc03;
+    z-index: 2;
+    .curve2 {
+      position: fixed;
+      width: 100vw;
+      left: 0;
+      top: 60%;
+      z-index: -1;
+      transform: scaleX(-1);
+      animation: moveit 5s ease alternate infinite;
+      animation-delay: 2s;
+    }
+    .curve1 {
+      position: fixed;
+      width: 100vw;
+      left: 0;
+      top: 25%;
+      z-index: -1;
+      animation: moveit 5s ease alternate infinite;
+    }
+    .gamedata {
+      width: 100%;
+      padding: 0 5vw;
+      display: flex;
+      height: fit-content;
+      max-height: 500px;
+      margin: 0;
+      .left {
+        width: 50vw;
+        background: #f9f9f96e;
+        border-radius: 12px;
+        padding: 40px;
+        min-width: unset;
+        .error {
+          color: rgb(238, 79, 79);
+          font-size: $mobile-smallsubheading;
+        }
+        .headingmain {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $mobile-heading;
+          font-weight: 500;
+          color: black;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+          height: 10%;
+        }
+        .input {
+          background: #fff;
+          font-size: $mobile-smallsubheading;
+          border: none;
+          height: 45px;
+          width: 90%;
+          padding: 0 20px;
+          margin-top: 20px;
+          &::placeholder {
+            color: rgb(0, 0, 0);
+          }
+        }
+        .buttons {
+          display: flex;
+          margin-top: 40px;
+
+          .startbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: unset;
+            height: unset;
+            background: #4166eb;
+            border-radius: 6px;
+            color: white;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            font-size: $mobile-detail;
+            margin-bottom: 20px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(227, 59%, 51%);
+            }
+          }
+          .skipbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 165px;
+            height: 48px;
+            background: #616161;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            color: white;
+            transition: all 0.3s ease;
+            margin-left: 30px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(0, 0%, 30%);
+            }
+          }
+        }
+      }
+      .right {
+        width: 50%;
+        align-items: center;
+        display: flex;
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }
+    }
+    .startscreen {
+      background-color: #36363657;
+      opacity: 1;
+      background-size: 80px 80px;
+      background-repeat: repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      align-items: center;
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      // .background {
+      //   background-color: #17d1bc;
+      //   height: 35%;
+      //   width: 100%;
+      //   position: absolute;
+      //   top: 0;
+      //   z-index: 0;
+      //   left: 0;
+      // }
+      .left {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .right {
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        width: 100%;
+        max-width: 500px;
+        height: 60vh;
+        border-radius: 20px;
+        background-color: white;
+        z-index: 5;
+        .jasper {
+          width: 20%;
+          height: 50%;
+          object-fit: contain;
+          position: absolute;
+          z-index: -1;
+          top: -22vh;
+          right: 0;
+        }
+        .heading {
+          font-size: $mobile-heading;
+          color: white;
+          font-weight: 700;
+          background-color: #4166eb;
+          border-radius: 20px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          padding: 15px 30px;
+          text-align: center;
+          width: 100%;
+        }
+        ul {
+          overflow-y: auto;
+        }
+        .text {
+          padding: 5px 40px 5px 0;
+          font-size: $mobile-smallsubheading;
+          font-weight: 500;
+          background-color: white;
+          margin-left: 50px;
+          &:first-child {
+            padding-top: 20px !important;
+          }
+        }
+        .button {
+          width: fit-content;
+          min-height: fit-content;
+          padding: 8px 15px;
+          margin: 15px 0;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #4166eb;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: $mobile-detail;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: white;
+            color: #4166eb;
+          }
+        }
+      }
+    }
+    .contentWrapper {
+      margin-top: 5vh;
+      padding-left: 7%;
+      position: relative;
+      padding-right: 7%;
+      padding-bottom: 100px;
+      .prop1 {
+        background-color: #17d1bc;
+        width: 10vw;
+        height: 5vw;
+        border-radius: 10vw;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        position: absolute;
+        right: 10%;
+        top: 30%;
+        transform: rotate(-25deg);
+        animation: float 8s ease infinite both;
+        animation-delay: 0.5s;
+        z-index: -1;
+      }
+      .prop2 {
+        background-color: #ff6263;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 5vw;
+        position: absolute;
+        left: 10%;
+        animation-delay: 0.7s;
+        top: 30%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .prop3 {
+        background-color: #4166eb;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 2vw;
+        position: absolute;
+        right: 10%;
+        animation-delay: 0.2s;
+        top: 80%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .prop4 {
+        background-color: #ffff;
+        width: 4vw;
+        height: 4vw;
+        border-radius: 4vw;
+        left: 10%;
+        position: absolute;
+        top: 80%;
+        animation: float 8s ease infinite both;
+        z-index: -1;
+      }
+      .quizCardsHolder {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        margin-top: 3vh;
+        width: 100%;
+        .heading {
+          font-size: $mobile-heading;
+          font-weight: 700;
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .quizCard {
+          cursor: pointer;
+          background-color: rgb(255, 255, 255);
+          width: 251px;
+          box-shadow: 0px 14px 26px rgba(8, 60, 194, 0.15);
+          border-radius: 12px;
+          height: 284px;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 20px;
+          transition: all 0.3s ease;
+          padding: 30px;
+          margin-right: 20px;
+          svg {
+            width: 100px;
+            height: 100px;
+          }
+          .text {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            font-size: 18px;
+            font-family: "Roboto", sans-serif;
+            align-items: center;
+            .name {
+              color: #4166eb;
+              font-weight: 500;
+            }
+            .description {
+              font-weight: 400;
+              font-size: 16px;
+              color: #4a4a4a;
+              margin-top: 5px;
+            }
+          }
+
+          .button {
+            background: #17d1bc;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 138px;
+            min-width: 70px;
+            height: 41px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: #16c4af;
+            }
+          }
+        }
+      }
+      .quizContainer {
+        display: flex;
+        .leftSection {
+          flex: 2;
+          .current {
+            width: fit-content;
+            background-color: #4166eb;
+            border-radius: 8px;
+            color: rgb(243, 243, 243);
+            text-align: center;
+            font-size: $mobile-detail;
+            font-weight: 500;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+          }
+          .heading {
+            font-weight: 600;
+            font-size: $mobile-heading;
+          }
+          .details {
+            margin-top: 1vh;
+            font-weight: 400;
+            font-size: $mobile-smallsubheading;
+          }
+          .startButton {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(23, 209, 188, 1);
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            &:hover {
+              background-color: rgb(18, 182, 163);
+            }
+          }
+          .buttonwrapper {
+            display: flex;
+            align-items: center;
+            .closeButton {
+              width: 150px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: hsl(360, 100%, 69%);
+              border-radius: 8px;
+              margin-top: 20px;
+              margin-right: 20px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              color: white;
+              &:hover {
+                background-color: hsl(360, 100%, 59%);
+              }
+            }
+            .finishButton {
+              width: 150px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: hsl(173, 80%, 45%);
+              border-radius: 8px;
+              margin-top: 20px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              color: white;
+              &:hover {
+                background-color: hsl(173, 80%, 35%);
+              }
+            }
+          }
+        }
+        .rightSection {
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+          flex-direction: column;
+          justify-content: center;
+          .timerSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 100%;
+            padding-right: 20px;
+            .timeleft {
+              font-size: $mobile-smallsubheading;
+              width: 100%;
+              font-weight: 600;
+              text-align: right;
+            }
+            .timer {
+              text-align: right;
+              font-size: $mobile-subheading;
+              width: 100%;
+              font-weight: 700;
+              color: rgb(0, 0, 0);
+            }
+          }
+
+          .questionsleft {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      .quizWrapper {
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        padding: 0;
+        border-radius: 8px;
+      }
+      .resultSection {
+        margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        height: 50vh;
+        min-height: 680px;
+        margin-top: 20vh;
+        border-radius: 8px;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        .jasper {
+          position: absolute;
+          z-index: -1;
+          top: -20vh;
+          width: 150px;
+        }
+        .background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgb(255, 255, 255);
+          overflow: hidden;
+          z-index: -1;
+          .curvecontainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            .curve2 {
+              position: absolute;
+              width: 100vw;
+              left: 0;
+              top: 60%;
+              z-index: 1;
+              transform: scaleX(-1);
+              animation: moveit 5s ease alternate infinite;
+              animation-delay: 2s;
+            }
+            .curve1 {
+              position: absolute;
+              width: 100vw;
+              left: 0;
+              top: 25%;
+              z-index: 1;
+              animation: moveit 5s ease alternate infinite;
+            }
+          }
+        }
+
+        .signupBox {
+          width: 23vw;
+          min-width: fit-content;
+          min-height: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          .input {
+            outline: none;
+            border: none;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border: 1px solid #4166eb5e;
+            width: 55%;
+            height: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: 20px;
+            padding-left: 15px;
+            border-right: 0;
+            ::placeholder {
+              color: rgba(198, 198, 198, 1);
+            }
+          }
+          .normalbutton {
+            width: 45%;
+            min-width: fit-content;
+            font-size: clamp(16px, 1vw, 1vw);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            height: 100%;
+            padding: 0 20px;
+            background-color: #4166eb;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border: 1px solid #4166eb5e;
+            border-left: 0;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: hsl(227, 57%, 47%);
+            }
+          }
+          .joinButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            width: 186px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+          }
+        }
+        .heading {
+          font-size: 56px;
+          font-weight: 800;
+          text-align: center;
+          color: #17d1bc;
+        }
+        .subheading {
+          color: black;
+          margin: 10px 0;
+          font-size: 22px;
+          font-weight: 400;
+          text-align: center;
+          width: 80%;
+        }
+        .points {
+          font-size: 26px;
+          font-weight: 600;
+          text-align: center;
+          color: #131313;
+          margin-top: 20px;
+        }
+        .pointsdes {
+          font-size: 36px;
+          font-weight: 500;
+          text-align: center;
+        }
+        .button {
+          background: #4166eb;
+          border-radius: 14px;
+          padding: 10px 20px;
+          color: white;
+          font-size: 16px;
+          width: 220px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          margin-top: 40px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          &:hover {
+            background-color: hsl(227, 56%, 38%);
+          }
+        }
+      }
+      .hideOverFlow {
+        overflow: hidden;
+      }
+    }
+    .whitespace {
+      background: white;
+      width: 100%;
+      height: 10vh;
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .quizPage {
+    .gamedata {
+      width: 100%;
+      padding: 0 7vw;
+      display: flex;
+      height: 66vh;
+      max-height: unset;
+      margin: 5vh 0;
+      flex-direction: column;
+      .left {
+        width: 100%;
+        border-radius: 12px;
+        padding: 40px;
+        min-width: 50vw;
+        margin-bottom: 20px;
+        .error {
+          color: rgb(238, 79, 79);
+          font-size: 16px;
+        }
+        .headingmain {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $tablet-subheading;
+          font-weight: 500;
+          color: black;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+          height: unset;
+          text-align: center;
+        }
+        .input {
+          background: #fff;
+          font-size: $tablet-smallsubheading;
+          border: none;
+          height: 45px;
+          width: 90%;
+          padding: 0 20px;
+          margin-top: 20px;
+          border-radius: 8px;
+          &::placeholder {
+            color: rgb(0, 0, 0);
+          }
+        }
+        .buttons {
+          display: flex;
+          margin-top: 40px;
+
+          .startbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: unset;
+            height: unset;
+            padding: 10px 20px;
+            background: #4166eb;
+            border-radius: 6px;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: $tablet-smallsubheading;
+            margin-bottom: 20px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(227, 59%, 51%);
+            }
+          }
+          .skipbutton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 165px;
+            height: 48px;
+            background: #616161;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            color: white;
+            transition: all 0.3s ease;
+            margin-left: 30px;
+            cursor: pointer;
+            &:hover {
+              background: hsl(0, 0%, 30%);
+            }
+          }
+        }
+      }
+      .right {
+        width: unset;
+        flex: 1;
+        display: block;
+        align-items: center;
+        display: flex;
+        height: 30vh;
+        img {
+          height: unset;
+          width: 100%;
+        }
+      }
+    }
+    .startscreen {
+      opacity: 1;
+      background-size: 80px 80px;
+      background-repeat: repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      align-items: center;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      // .background {
+      //   background-color: #17d1bc;
+      //   height: 35%;
+      //   width: 100%;
+      //   position: absolute;
+      //   top: 0;
+      //   z-index: 0;
+      //   left: 0;
+      // }
+      .left {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .right {
+        margin-top: 15vh;
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        width: 100%;
+        max-width: 700px;
+        border-radius: 40px;
+        background-color: white;
+        z-index: 5;
+        .jasper {
+          width: 15%;
+          height: 80%;
+          object-fit: contain;
+          position: absolute;
+          z-index: -1;
+          top: -23vh;
+          right: 2%;
+        }
+        .heading {
+          font-size: $tablet-subheading;
+          color: white;
+          font-weight: 700;
+          background-color: #4166eb;
+          border-radius: 40px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          padding: 20px 40px;
+          text-align: center;
+          width: 100%;
+        }
+        .text {
+          padding: 10px 40px 10px 0;
+          font-size: $tablet-subheading;
+
+          font-weight: 500;
+          background-color: white;
+          margin-left: 50px;
+        }
+        .button {
+          width: 130px;
+          height: 40px;
+          margin: 20px 0;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #4166eb;
+          cursor: pointer;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: white;
+            color: #4166eb;
+          }
+        }
+      }
+    }
+    .contentWrapper {
+      .resultSection {
+        margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        height: max-content;
+        padding: 40px 0;
+        min-height: max-content;
+        margin-top: 200px;
+        border-radius: 8px;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        .jasper {
+          position: absolute;
+          z-index: -1;
+          top: -180px;
+          width: 150px;
+        }
+        .heading {
+          font-size: 46px;
+          font-weight: 800;
+          text-align: center;
+          color: #17d1bc;
+        }
+        .subheading {
+          color: black;
+          margin: 10px 0;
+          font-size: 18px;
+          font-weight: 400;
+          text-align: center;
+          width: 80%;
+        }
+        .points {
+          font-size: 26px;
+          font-weight: 600;
+          text-align: center;
+          color: #131313;
+          margin-top: 20px;
+        }
+        .pointsdes {
+          font-size: 36px;
+          font-weight: 500;
+          text-align: center;
+        }
+        .button {
+          background: #4166eb;
+          border-radius: 14px;
+          padding: 10px 20px;
+          color: white;
+          font-size: 16px;
+          width: 220px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          margin-top: 40px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          &:hover {
+            background-color: hsl(227, 56%, 38%);
+          }
+        }
       }
     }
   }

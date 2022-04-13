@@ -829,3 +829,99 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .blogPage {
+    display: flex;
+    flex-direction: column;
+    .ctawrapper {
+      padding: 0 20px;
+    }
+    .contentWrapper {
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-top: 2vh;
+      padding-bottom: 10vh;
+      overflow-y: auto;
+      .post {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .image {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          img {
+            width: 100%;
+            border-radius: 8px;
+            height: 50vh;
+            object-fit: cover;
+            margin-top: 20px;
+          }
+        }
+        .textcontent {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .timeandcat {
+            color: #3d3d3d;
+            display: flex;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 20px;
+            .space {
+              margin-left: 10px;
+              margin-right: 10px;
+            }
+          }
+          .title {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 2.5vw;
+            letter-spacing: 0.4px;
+          }
+          .preview {
+            margin-top: 15px;
+            overflow: auto;
+          }
+          .continue {
+            margin-top: 15px;
+            color: rgb(209, 68, 67);
+            cursor: pointer;
+            margin-bottom: 30px;
+          }
+        }
+        .share {
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          font-size: 18px;
+          font-weight: 400;
+          svg {
+            cursor: pointer;
+            margin-left: 20px;
+            transform: scale(1.5);
+          }
+        }
+      }
+      .table {
+        display: none;
+      }
+    }
+    .relatedBlogs {
+      padding: 40px 20px;
+      .heading {
+        text-align: center;
+      }
+      .wrapper {
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
+  }
+}

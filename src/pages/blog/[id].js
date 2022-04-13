@@ -213,6 +213,7 @@ export default function BlogPage({ blogdata, related }) {
             return (
               <MoreCard
                 key={item.id}
+                tabletcard={true}
                 data={item}
                 getdatafromraw={getdatafromraw}
               />

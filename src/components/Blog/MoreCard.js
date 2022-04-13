@@ -1,11 +1,11 @@
 import { useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Blog/morecard.module.scss";
-function MoreCard({ data, getdatafromraw, pushto }) {
+function MoreCard({ data, getdatafromraw, pushto, tabletcard }) {
   const router = useRouter();
   return (
     <div
-      className={styles.moreCard}
+      className={`${styles.moreCard} ${tabletcard && styles.tabletcard}`}
       onClick={() => {
         if (pushto) {
           router.push(pushto + `${data.id}`);

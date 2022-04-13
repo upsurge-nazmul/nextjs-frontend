@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .faqcomponent {
   width: 90%;
   max-width: 828px;
@@ -123,6 +125,30 @@
     }
     .answer {
       font-size: 14px;
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .faqcomponent {
+    z-index: 99;
+    .top {
+      .icon {
+        width: 30px;
+        svg {
+          width: 10px;
+        }
+      }
+      .question {
+        flex: 1;
+        font-size: $tablet-subheading;
+        line-height: $tablet-subheading-line;
+        transition: all 0.3s ease;
+        font-weight: 400;
+      }
+    }
+    .answer {
+      font-size: $tablet-subheading;
+      line-height: $tablet-subheading-line;
     }
   }
 }

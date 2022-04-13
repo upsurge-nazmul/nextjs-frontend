@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .partner {
   height: fit-content;
   background-color: #ff6263;
@@ -320,6 +322,126 @@
         height: 80px;
         object-fit: contain;
         background-color: rgb(255, 255, 255);
+        border-radius: 6px;
+        margin: 0 8px;
+      }
+    }
+  }
+  .dashboard {
+    height: fit-content;
+    margin-bottom: 0px;
+    padding: 3vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    min-height: 340px;
+    .leftarrow {
+      position: absolute;
+      left: 40px;
+      width: 40px;
+      top: 80%;
+      transform: scaleX(-1);
+      z-index: 2;
+      cursor: pointer;
+    }
+    .rightarrow {
+      position: absolute;
+      right: unset;
+      left: 100px;
+      top: 80%;
+      width: 40px;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .heading {
+      font-size: 24px;
+      font-weight: 700;
+      padding: 0 30px;
+      width: 100%;
+    }
+    .subheading {
+      margin-top: 1vh;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 0 30px;
+    }
+    .wrapper {
+      width: 100%;
+      flex: unset;
+      height: fit-content;
+      padding: 0 30px;
+      margin-top: 20px;
+      .img {
+        min-width: 120px;
+        z-index: 100;
+        max-width: 120px;
+        height: 80px;
+        object-fit: contain;
+        background-color: rgb(255, 255, 255);
+        border-radius: 6px;
+        margin: 0 8px;
+      }
+    }
+  }
+}
+//tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .partner {
+    height: fit-content;
+    margin-bottom: 0px;
+    padding: 3vh 0 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    height: fit-content;
+    min-height: 350px;
+    .leftarrow {
+      position: absolute;
+      left: 7vw;
+      width: 40px;
+      top: 85%;
+      transform: scaleX(-1);
+      z-index: 2;
+      cursor: pointer;
+    }
+    .rightarrow {
+      position: absolute;
+      right: unset;
+      left: 14vw;
+      top: 85%;
+      width: 40px;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .heading {
+      font-size: $tablet-smallheading;
+      font-weight: 700;
+      padding: 0 7vw;
+      text-align: left;
+      width: 100%;
+    }
+    .subheading {
+      margin-top: 1vh;
+      font-size: $tablet-subheading;
+      line-height: $tablet-subheading-line;
+      font-weight: 400;
+      padding: 0 7vw;
+    }
+    .wrapper {
+      width: 90%;
+      flex: 1;
+      margin: 3vh 0;
+      .img {
+        min-width: unset;
+        z-index: 100;
+        max-width: unset;
+        height: 10vh;
+        width: auto;
+        aspect-ratio: 13/8.65;
+        object-fit: contain;
+        background-color: rgba(255, 255, 255, 0);
         border-radius: 6px;
         margin: 0 8px;
       }

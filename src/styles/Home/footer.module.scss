@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -491,6 +493,136 @@
           transition: all 0.3s ease;
           .icon {
             font-size: 18px;
+            margin-right: 5px;
+          }
+          &:hover {
+            background-color: #075e54;
+          }
+        }
+        .subheadings {
+          font-size: clamp(12px, 3vw, 16px);
+          display: flex;
+          align-items: center;
+          a {
+            text-decoration: none;
+            color: #4166eb;
+            margin-right: 5px;
+            &:last-child {
+              margin: 0;
+              margin-left: 5px;
+            }
+          }
+        }
+        .wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          .terms {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .bottombar {
+      margin: 10px 0;
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .footerSection {
+    height: max-content;
+    .top {
+      display: none;
+    }
+    .brand {
+      display: none;
+    }
+    .mobiletop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .logo {
+        margin-bottom: 3vh;
+      }
+      .column {
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding: 0 10px;
+        margin-top: 20px;
+        .subheading {
+          margin-bottom: 10px;
+          text-transform: capitalize;
+          margin-left: 10px;
+          font-size: $tablet-smallsubheading;
+          list-style: $tablet-smallsubheading-line;
+          &:nth-child(2) {
+            margin-top: 10px;
+          }
+        }
+        .heading {
+          width: 100%;
+          font-size: $tablet-subheading;
+          list-style: $tablet-subheading-line;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 10px;
+        }
+      }
+      .socials {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 40px;
+        .social {
+          cursor: pointer;
+          margin-right: 30px;
+          width: 30px;
+          height: 30px;
+        }
+        .socialyt {
+          width: 35px;
+          cursor: pointer;
+          margin-right: 30px;
+          height: 35px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        font-size: 16px;
+        justify-content: space-around;
+        p {
+          font-size: $tablet-subheading;
+          list-style: $tablet-subheading-line;
+          margin-bottom: 10px;
+        }
+        .whatsapp {
+          background-color: #25d366;
+          padding: 2vw;
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          color: white;
+          font-weight: 500;
+          margin-bottom: 10px;
+          text-decoration: none;
+          font-size: $tablet-smallsubheading;
+          list-style: $tablet-smallsubheading-line;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          .icon {
+            font-size: $tablet-subheading;
             margin-right: 5px;
           }
           &:hover {

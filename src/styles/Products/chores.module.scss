@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .chores {
   display: flex;
   flex-direction: column;
@@ -1824,6 +1826,100 @@
         img {
           object-fit: contain;
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .chores {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+    min-height: 1400px;
+    padding: 2vh 0;
+    .top {
+      height: fit-content;
+      .heading {
+        font-size: $tablet-heading;
+      }
+      .mobileimage {
+        position: relative;
+        display: block;
+        height: 80vh;
+        width: 50vw;
+        margin-top: 20px;
+      }
+      .subheading {
+        font-size: $tablet-subheading;
+        line-height: $tablet-subheading-line;
+        font-weight: 400;
+        margin-top: 10px;
+        max-width: 80%;
+        text-align: center;
+        color: #000000f0;
+      }
+      .button {
+        padding: 5px 10px;
+        width: unset;
+        height: unset;
+        font-size: $tablet-subheading;
+      }
+      .signupBox {
+        margin-top: 20px;
+
+        .joinButton {
+          padding: 5px 20px;
+          margin: 0;
+          height: 40px;
+          width: fit-content;
+          font-size: clamp(14px, 1vw, 16px);
+        }
+      }
+    }
+    .bottom {
+      height: fit-content;
+      min-height: unset;
+      margin-top: 20px;
+      justify-content: space-between;
+      gap: 4vw;
+      .left {
+        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorl {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
+      }
+      .right {
+        max-height: 30vh;
+        .first,
+        .second {
+          min-height: 50px;
+          justify-content: flex-start;
+          .connectorr {
+            display: none;
+          }
+        }
+        .second {
+          margin-top: 2vh;
+        }
+      }
+      .mid {
+        display: none;
+        .image {
+          width: 100%;
+          min-width: 400px;
+          height: 130vh;
+          position: relative;
         }
       }
     }
