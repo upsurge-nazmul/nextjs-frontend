@@ -451,9 +451,24 @@ export default function HomeCalc({ seterror, error }) {
               data={chartData}
               margin={{
                 top: 10,
-                right: widthHeight.width > 860 ? 80 : 10,
-                bottom: widthHeight.width > 860 ? 80 : 10,
-                left: widthHeight.width > 860 ? 80 : 10,
+                right:
+                  widthHeight.width > 860
+                    ? widthHeight.height < 500
+                      ? 0
+                      : 80
+                    : 10,
+                bottom:
+                  widthHeight.width > 860
+                    ? widthHeight.height < 500
+                      ? 0
+                      : 80
+                    : 10,
+                left:
+                  widthHeight.width > 860
+                    ? widthHeight.height < 500
+                      ? 0
+                      : 80
+                    : 10,
               }}
               startAngle={-180}
               padAngle={0.7}

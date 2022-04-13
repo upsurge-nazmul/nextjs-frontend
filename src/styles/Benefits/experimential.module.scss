@@ -370,3 +370,142 @@
     }
   }
 }
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: end;
+    padding: 0 10% 40px;
+    background: #17d1bc;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    .geo {
+      position: absolute;
+      bottom: 0;
+      width: 20vw;
+      left: 15%;
+    }
+    .container {
+      display: flex;
+      height: fit-content;
+      width: 100%;
+      align-items: center;
+      margin: 60px 0;
+      color: black;
+      .left {
+        height: fit-content;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        .text {
+          font-size: 2.5vw;
+          font-weight: 300;
+          padding-right: 50px;
+          color: rgb(255, 255, 255);
+          width: 100%;
+          text-align: right;
+          margin-bottom: 2px;
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        width: 60%;
+        padding-top: 0%;
+        justify-content: center;
+        .heading {
+          font-size: 2.5vw;
+          margin-bottom: 10px;
+        }
+        .subheading {
+          font-size: clamp(12px, 1.5vw, 14px);
+          line-height: 20px;
+          /* or 200% */
+
+          text-align: justify;
+          font-feature-settings: "salt" on, "liga" off;
+
+          color: rgba(0, 0, 0, 0.78);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: end;
+    padding: 0 10% 40px;
+    background: #17d1bc;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    .geo {
+      position: absolute;
+      bottom: 0;
+      width: 20vw;
+      left: 15%;
+    }
+    .container {
+      display: flex;
+      height: fit-content;
+      width: 100%;
+      align-items: center;
+      margin: 60px 0;
+      color: black;
+      .left {
+        height: fit-content;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        .text {
+          font-size: 2.5vw;
+          font-weight: 300;
+          padding-right: 50px;
+          color: rgb(255, 255, 255);
+          width: 100%;
+          text-align: right;
+          margin-bottom: 2px;
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        width: 60%;
+        padding-top: 0%;
+        justify-content: center;
+        .heading {
+          font-size: 2.5vw;
+          margin-bottom: 10px;
+        }
+        .subheading {
+          font-size: clamp(12px, 1.5vw, 14px);
+          line-height: 20px;
+          /* or 200% */
+
+          text-align: justify;
+          font-feature-settings: "salt" on, "liga" off;
+
+          color: rgba(0, 0, 0, 0.78);
+        }
+      }
+    }
+  }
+}

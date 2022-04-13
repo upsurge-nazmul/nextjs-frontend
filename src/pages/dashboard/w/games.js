@@ -59,7 +59,6 @@ function Games({ userdatafromserver, token }) {
     }
   }, []);
   async function handlegameclick(title, pushto) {
-    alert(pushto);
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);

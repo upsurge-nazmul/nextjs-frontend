@@ -70,7 +70,7 @@ function JoinUs() {
             className={`${styles.button} ${userdata && styles.gotobutton}`}
             onClick={() => {
               if (userdata) {
-                if (userdata.waitlist_active) {
+                if (userdata.is_waiting_active) {
                   router.push("/dashboard/w");
                 } else if (userdata.user_type === "parent") {
                   router.push("/dashboard/p");

@@ -586,6 +586,72 @@
         .container {
           max-height: 400px;
           margin-top: 12vh;
+          .gameimg {
+            width: 20vw;
+            height: 50vh;
+          }
+          .playIcon,
+          .pauseIcon {
+            width: 50px;
+          }
+          .pauseIcon {
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .gamespage {
+    height: unset;
+    .heading {
+      font-size: 2.5vw;
+      margin-top: 50px;
+    }
+    .subheading {
+      font-size: clamp(12px, 1.5vw, 14px);
+      line-height: 20px;
+    }
+    .wrapper {
+      margin-top: 20px;
+      margin-bottom: 0px;
+      flex-direction: row;
+      padding-top: 40px;
+      .left {
+        width: 50vw;
+        padding-right: 20px;
+        margin: 0;
+        .title {
+          font-size: 2vw;
+        }
+        .description {
+          font-size: clamp(12px, 1vw, 14px);
+          line-height: 20px;
+        }
+        .button {
+          width: 127px;
+          height: 42px;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+        .buttonWrapper {
+          margin-top: 20px;
+
+          .arrowl,
+          .arrowr {
+            width: 40px;
+          }
+        }
+      }
+      .right {
+        .container {
+          max-height: 200px;
+          margin-top: 6vh;
+          .gameimg {
+            width: 20vw;
+            height: 50vh;
+          }
           video {
           }
           .playIcon,

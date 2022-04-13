@@ -127,7 +127,7 @@
         padding-bottom: 10px;
         .category {
           height: 30px;
-          font-size: 10px;
+          font-size: clamp(12px, 1.5vw, 14px);
           margin: 0;
           margin-right: 5px;
           padding: 0;
@@ -163,6 +163,176 @@
       color: hsla(0, 0%, 0%, 0.5);
       font-family: "Roboto", sans-serif;
       font-size: 10px;
+      font-weight: 700;
+      width: 60px;
+      transition: all 0.3s ease;
+      svg {
+        width: 8px;
+        path {
+          height: 5px;
+          transition: all 0.3s ease;
+        }
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: hsla(0, 0%, 0%, 0.685);
+          }
+        }
+        color: hsla(0, 0%, 0%, 0.685);
+      }
+    }
+  }
+
+  .fullCategories {
+    .left {
+      flex: 1;
+      .wrapper {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+        transition: all 0.3s ease;
+        animation: expand 0.3s ease;
+      }
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .categoryBar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.3s ease;
+    .left {
+      flex: 1;
+      width: 80%;
+      .wrapper {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        .category {
+          height: 30px;
+          font-size: clamp(12px, 1.5vw, 14px);
+          margin: 0;
+          margin-right: 5px;
+          padding: 0;
+          min-width: fit-content;
+          .underline {
+            display: none;
+          }
+          &:hover {
+            color: hsla(0, 0%, 0%, 0.685);
+          }
+        }
+        .selected {
+          color: black;
+          .underline {
+            margin: 0 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin-top: 5px;
+            width: 80%;
+            height: 2px;
+          }
+        }
+      }
+    }
+    .more {
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      align-items: center;
+      justify-content: space-around;
+      background-color: white;
+      color: hsla(0, 0%, 0%, 0.5);
+      font-family: "Roboto", sans-serif;
+      font-size: clamp(12px, 1.5vw, 14px);
+      font-weight: 700;
+      width: 60px;
+      transition: all 0.3s ease;
+      svg {
+        width: 8px;
+        path {
+          height: 5px;
+          transition: all 0.3s ease;
+        }
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: hsla(0, 0%, 0%, 0.685);
+          }
+        }
+        color: hsla(0, 0%, 0%, 0.685);
+      }
+    }
+  }
+
+  .fullCategories {
+    .left {
+      flex: 1;
+      .wrapper {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+        transition: all 0.3s ease;
+        animation: expand 0.3s ease;
+      }
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .categoryBar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.3s ease;
+    .left {
+      flex: 1;
+      width: 80%;
+      .wrapper {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        .category {
+          height: 30px;
+          font-size: clamp(12px, 1.5vw, 14px);
+          margin: 0;
+          margin-right: 5px;
+          padding: 0;
+          min-width: fit-content;
+          .underline {
+            display: none;
+          }
+          &:hover {
+            color: hsla(0, 0%, 0%, 0.685);
+          }
+        }
+        .selected {
+          color: black;
+          .underline {
+            margin: 0 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin-top: 5px;
+            width: 80%;
+            height: 2px;
+          }
+        }
+      }
+    }
+    .more {
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      align-items: center;
+      justify-content: space-around;
+      background-color: white;
+      color: hsla(0, 0%, 0%, 0.5);
+      font-family: "Roboto", sans-serif;
+      font-size: clamp(12px, 1.5vw, 14px);
       font-weight: 700;
       width: 60px;
       transition: all 0.3s ease;
