@@ -223,7 +223,7 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 860px) {
   .blogs {
     width: 100%;
     .contentWrapper {
@@ -279,6 +279,167 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+          }
+        }
+        .loadmorebutton {
+          font-size: 14px;
+          svg {
+            margin-left: 8px;
+            width: 10px;
+          }
+        }
+        .categoryAndPosts {
+          width: 100%;
+          padding: 0 7%;
+          display: flex;
+          .posts {
+            height: 100%;
+            width: 80%;
+            overflow-y: auto;
+            margin-right: 20px;
+            .post {
+              margin-top: 30px;
+              display: flex;
+              border-bottom: 1px solid rgb(196, 196, 196);
+              .image {
+                width: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                  width: 100%;
+                }
+                margin-right: 10px;
+              }
+              .textcontent {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                .timeandcat {
+                  color: #3d3d3d;
+                  display: flex;
+                  font-weight: 400;
+                  font-size: 15px;
+                  letter-spacing: 1px;
+
+                  .space {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                  }
+                }
+                .title {
+                  margin-top: 10px;
+                  font-weight: 500;
+                  font-size: 22px;
+                  letter-spacing: 0.8px;
+                }
+                .preview {
+                  margin-top: 15px;
+                }
+                .continue {
+                  margin-top: 15px;
+                  color: rgb(209, 68, 67);
+                  cursor: pointer;
+                  margin-bottom: 30px;
+                }
+              }
+            }
+          }
+          .categories {
+            display: flex;
+            overflow-y: auto;
+            flex-direction: column;
+            .categoryHeading {
+              margin-top: 10px;
+              font-weight: 500;
+              font-size: 22px;
+              margin-left: 7%;
+              margin-bottom: 20px;
+              letter-spacing: 0.8px;
+            }
+            .categoryScroll {
+              .category {
+                font-size: 18px;
+                margin-top: 20px;
+                margin-left: 15%;
+                cursor: pointer;
+              }
+              .selectedCat {
+                color: #f76160;
+                font-weight: 600;
+                font-size: 18px;
+              }
+            }
+
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgb(214, 214, 214);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 600px) {
+  .blogs {
+    width: 100%;
+    .contentWrapper {
+      .mainContent {
+        padding: 0 2% 80px;
+        .heading {
+          color: #000000;
+          font-weight: 700;
+          font-size: 2.5vw;
+          margin-bottom: 30px;
+          width: 100%;
+          text-align: center;
+        }
+        .postsMain {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 30px;
+          .left {
+            flex: 1;
+            img {
+              height: 200px;
+            }
+            .categoryWrapper {
+              margin-top: 15px;
+              .category {
+                font-size: 10px;
+              }
+            }
+            .blogtitle {
+              font-size: 16px;
+            }
+            .blogcontent {
+              font-size: 12px;
+            }
+            .time {
+              margin-top: 8px;
+              font-size: 10px;
+            }
+          }
+          .right {
+            margin-top: 30px;
+            padding-left: 0px;
+            width: 100%;
+          }
+        }
+        .more {
+          margin-top: 10px;
+          .moreHeading {
+            font-size: 22px;
+            margin-bottom: 35px;
+          }
+          .moreWrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
           }
         }
         .loadmorebutton {
