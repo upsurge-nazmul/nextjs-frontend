@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .leaderboard {
   border-radius: 10px;
   margin-top: 40px;
@@ -101,23 +103,113 @@
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 900px) {
   .leaderboard {
-    background-color: white;
     border-radius: 10px;
     padding: 20px 20px;
+    margin: 0;
+    .holder {
+      align-items: center;
+      gap: 10px;
+      .heading {
+        font-size: $mobile-smallsubheading;
+        margin: 0;
+        height: fit-content;
+      }
+      .selected {
+        font-size: $mobile-subheading;
+        margin: 0;
+        height: fit-content;
+      }
+    }
     .heading {
-      font-size: 24px;
+      font-size: $mobile-heading;
       font-weight: 700;
       margin-bottom: 20px;
     }
     .section {
       border-radius: 10px;
       .subheading {
-        font-size: 16px;
+        font-size: $mobile-subheading;
         font-weight: 500;
         margin-bottom: 20px;
         padding: 15px 40px;
+        text-align: center;
+        border-bottom: 1px solid white;
+      }
+    }
+    .table {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0px 0 20px 0;
+      .row {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        font-size: $mobile-detail;
+        border-radius: 10px;
+        padding: 0 20px;
+        .rank {
+          width: 100px;
+          text-align: left;
+        }
+        .name {
+          width: 60%;
+        }
+        .score {
+          width: 30%;
+          text-align: right;
+        }
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+          .rank {
+            font-weight: 700;
+          }
+          .name {
+            font-weight: 700;
+          }
+          .score {
+            font-weight: 700;
+          }
+        }
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .leaderboard {
+    background-color: white;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 20px;
+    .holder {
+      align-items: center;
+      gap: 10px;
+      .heading {
+        font-size: $mobile-subheading;
+        margin: 0;
+        padding: 0;
+        height: fit-content;
+      }
+      .selected {
+        font-size: $mobile-heading;
+        margin: 0;
+        height: fit-content;
+      }
+    }
+    .section {
+      border-radius: 10px;
+      .subheading {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 0;
+        padding: 15px;
         text-align: center;
         border-bottom: 1px solid white;
       }
@@ -167,18 +259,25 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 900px) {
+@media only screen and (orientation: landscape) and (max-height: 500px) {
   .leaderboard {
     background-color: white;
     margin-top: 5px;
     border-radius: 10px;
-    padding: 20px 20px;
+    padding: 20px;
     .holder {
-      margin-bottom: 0;
+      align-items: center;
+      gap: 10px;
       .heading {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 5px;
+        font-size: $mobile-subheading;
+        margin: 0;
+        padding: 0;
+        height: fit-content;
+      }
+      .selected {
+        font-size: $mobile-heading;
+        margin: 0;
+        height: fit-content;
       }
     }
     .section {

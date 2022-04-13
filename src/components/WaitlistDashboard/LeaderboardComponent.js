@@ -89,7 +89,7 @@ export default function LeaderboardComponent({
         ))}
       </div>
       <div className={styles.section}>
-        <p className={styles.subheading}>{selected}</p>
+        {/* <p className={styles.subheading}>{selected}</p> */}
         <div className={styles.table}>
           <div className={styles.row}>
             <p className={styles.rank}>Rank</p>

@@ -14,6 +14,7 @@ import ChangePassPopUp from "../../../components/ChangePassPopUp";
 import validator from "validator";
 import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
+import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
 export default function EditProfile({ data }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -43,7 +44,9 @@ export default function EditProfile({ data }) {
   const [showphoneotp, setshowphoneotp] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
+  const [showimgsetter, setshowimgsetter] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
   const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
   const girl_avatars = [
     "14",
@@ -251,7 +254,28 @@ export default function EditProfile({ data }) {
           gobackto={type === "waitlist" ? "dashboard/w" : "dashboard"}
         />
         <div className={styles.mainContent}>
-          <div className={styles.imagesection}>
+          {showavatarmodal && (
+            <AvatarSelector
+              avatars={avatars}
+              setshow={setshowavatarmodal}
+              value={img}
+              setvalue={setimg}
+            />
+          )}
+          <div
+            className={styles.imagesection}
+            onMouseEnter={() => setshowimgsetter(true)}
+            onMouseLeave={() => setshowimgsetter(false)}
+            onClick={() => setshowavatarmodal(true)}
+          >
+            {showimgsetter && (
+              <div
+                className={styles.imagesetter}
+                onClick={() => setshowavatarmodal(true)}
+              >
+                Choose avatar
+              </div>
+            )}
             <img src={img} alt="" />
           </div>
           <div className={styles.details}>
@@ -361,21 +385,6 @@ export default function EditProfile({ data }) {
                 />
               )}
             </div>
-          </div>
-        </div>
-        <div className={styles.avatars}>
-          <p className={styles.heading}>Select your avatar</p>
-          <div className={styles.wrapper}>
-            {avatars.map((item) => {
-              return (
-                <img
-                  onClick={() => setimg("/images/avatars/" + item + ".png")}
-                  key={"avatar" + item}
-                  src={"/images/avatars/" + item + ".png"}
-                  alt=""
-                />
-              );
-            })}
           </div>
         </div>
         <DashboardFooter />

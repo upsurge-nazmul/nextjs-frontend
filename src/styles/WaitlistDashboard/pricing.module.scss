@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -371,7 +373,7 @@
         margin-top: 20px;
         .heading {
           margin-top: 30px;
-          font-size: 32px;
+          font-size: $mobile-heading;
           font-weight: 900;
           text-align: center;
         }
@@ -386,7 +388,7 @@
             align-items: center;
             width: 300px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: $mobile-heading;
             text-align: center;
             justify-content: center;
             &:nth-child(2) {
@@ -534,7 +536,7 @@
         margin-top: 20px;
         .heading {
           margin-top: 30px;
-          font-size: 24px;
+          font-size: $mobile-heading;
           font-weight: 900;
           text-align: center;
         }
@@ -550,7 +552,7 @@
             align-items: center;
             width: 300px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: $mobile-smallsubheading;
             text-align: center;
             justify-content: center;
             &:nth-child(2) {
@@ -573,7 +575,7 @@
           width: 100%;
           margin-top: 20px;
           .pricecontainer {
-            width: 280px;
+            width: 100%;
             height: fit-content;
             left: 244px;
             top: 495px;
@@ -585,23 +587,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             color: #ffffff;
             padding: 30px;
             .name {
               font-weight: 700;
-              font-size: 24px;
+              font-size: $mobile-subheading;
             }
             .price {
               margin-top: 12px;
-              font-size: 64px;
+              font-size: $mobile-xbigheading;
               font-weight: 800;
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: $mobile-smallsubheading;
               color: #ffffff;
-
               text-align: center;
               width: 70%;
               height: 30px;
@@ -637,11 +638,10 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: $mobile-smallsubheading;
                 font-weight: 500;
                 color: #ffffffe7;
                 text-align: center;
-
                 margin-bottom: 12px;
               }
             }
@@ -653,7 +653,7 @@
             }
             &:nth-child(2) {
               background: #ff6263;
-              margin: 0 0px 40px;
+              margin: 0 0px 20px;
             }
           }
         }

@@ -39,7 +39,6 @@
           object-fit: cover;
         }
       }
-
       .details {
         flex: 1;
         display: flex;
@@ -449,6 +448,9 @@
                 margin-right: 0px !important;
                 font-size: 14px;
                 height: 49px;
+                &:last-child {
+                  margin-bottom: 0;
+                }
               }
             }
             &:nth-child(4) {

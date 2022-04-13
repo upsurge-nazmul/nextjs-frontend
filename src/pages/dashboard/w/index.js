@@ -155,7 +155,12 @@ export default function WaitlistDashboard({
               {/* Waitlist card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
-                  <div className={styles.front}>
+                  <div
+                    className={styles.front}
+                    onClick={() => {
+                      router.push("/dashboard/w/rewards");
+                    }}
+                  >
                     <div className={`${styles.waitlistblock} `}>
                       <p className={styles.heading}>
                         {`#${
@@ -180,7 +185,10 @@ export default function WaitlistDashboard({
               {/* Unicoins card */}
               <div className={styles.flipcard}>
                 <div className={styles.inner}>
-                  <div className={styles.front}>
+                  <div
+                    className={styles.front}
+                    onClick={() => router.push("/dashboard/w/rewards")}
+                  >
                     <div className={styles.uniblock}>
                       <div className={styles.top}>
                         <UniCoinSvg className={styles.icon} />
@@ -203,7 +211,7 @@ export default function WaitlistDashboard({
               </div>
               {/* Milestone card */}
               <div className={styles.flipcard}>
-                <div className={styles.inner}>
+                <div className={styles.inner} onClick={() => setshowtodo(true)}>
                   <div className={styles.front}>
                     <div className={styles.quizblock}>
                       <p className={styles.heading}>
@@ -214,10 +222,7 @@ export default function WaitlistDashboard({
                       <p className={styles.subheading}>Complete Milestones</p>
                     </div>
                   </div>
-                  <div
-                    className={`${styles.back} ${styles.quizback}`}
-                    onClick={() => setshowtodo(true)}
-                  >
+                  <div className={`${styles.back} ${styles.quizback}`}>
                     <FormatListBulletedRoundedIcon
                       className={styles.fonticon}
                     />
@@ -227,7 +232,12 @@ export default function WaitlistDashboard({
               </div>
               {/* Ludo score card */}
               <div className={styles.flipcard}>
-                <div className={styles.inner}>
+                <div
+                  className={styles.inner}
+                  onClick={() => {
+                    router.push("/dashboard/w/leaderboards?ludo=true");
+                  }}
+                >
                   <div className={styles.front}>
                     <div className={styles.gameblock}>
                       <div className={styles.block}>
@@ -238,12 +248,7 @@ export default function WaitlistDashboard({
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={`${styles.back} ${styles.gameback}`}
-                    onClick={() => {
-                      router.push("/dashboard/w/leaderboards?ludo=true");
-                    }}
-                  >
+                  <div className={`${styles.back} ${styles.gameback}`}>
                     <LeaderboardSvg className={styles.leaderboard} />
                     <p className={styles.text}>Ludo Leaderboard</p>
                   </div>

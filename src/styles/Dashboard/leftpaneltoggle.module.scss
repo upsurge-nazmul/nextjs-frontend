@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .leftpaneltoggle {
   width: 100%;
   display: flex;
@@ -377,5 +379,281 @@
   }
   .openedpanel {
     padding-bottom: 10px;
+  }
+}
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .leftpaneltoggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 15%;
+      padding-right: 15%;
+      height: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      svg {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        g {
+          path {
+            fill: #4f4f4f;
+          }
+        }
+      }
+      .tabtitle {
+        display: none;
+      }
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgb(206, 206, 206) 99%
+        );
+      }
+    }
+    .wrapper {
+      padding-left: 15%;
+      padding-right: 15%;
+      width: 100%;
+      .subtab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 15%;
+        border-radius: 6px;
+        padding-right: 15%;
+        background-color: rgb(226, 226, 226);
+        height: 40px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        svg {
+          padding: 8px;
+          width: 30px;
+          height: 30px;
+          object-fit: contain;
+          path {
+            fill: #4f4f4f;
+          }
+          g {
+            path {
+              fill: #4f4f4f;
+            }
+          }
+          rect,
+          circle {
+            stroke: #4f4f4f;
+          }
+        }
+        .tabtitle {
+          display: none;
+        }
+        &:hover {
+          background-color: rgb(196, 196, 196);
+        }
+      }
+      .activetab {
+        background: #4166eb;
+        &:hover {
+          background: #4166eb;
+        }
+        .tabtitle {
+          color: #ffffff;
+        }
+        svg {
+          path {
+            fill: #ffffff;
+          }
+          g {
+            path {
+              fill: #ffffff;
+            }
+          }
+        }
+        rect,
+        circle {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+
+  .openedpanel {
+    background-color: rgb(240, 240, 240);
+    border-radius: 6px;
+    padding-bottom: 20px;
+  }
+
+  .activepanel {
+    background: rgb(246, 246, 246);
+    background: linear-gradient(
+      90deg,
+      rgba(246, 246, 246, 1) 0%,
+      rgba(246, 246, 246, 1) 99%,
+      rgba(65, 102, 235, 1) 99%
+    );
+    svg {
+      path {
+        fill: #4166eb;
+      }
+      g {
+        path {
+          fill: #4166eb;
+        }
+      }
+    }
+    rect,
+    circle {
+      stroke: #4166eb;
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .leftpaneltoggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 15%;
+      padding-right: 15%;
+      height: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      svg {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        g {
+          path {
+            fill: #4f4f4f;
+          }
+        }
+      }
+      .tabtitle {
+        display: none;
+      }
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgb(206, 206, 206) 99%
+        );
+      }
+    }
+    .wrapper {
+      padding-left: 15%;
+      padding-right: 15%;
+      width: 100%;
+      .subtab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 15%;
+        border-radius: 6px;
+        padding-right: 15%;
+        background-color: rgb(226, 226, 226);
+        height: 40px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        svg {
+          padding: 8px;
+          width: 30px;
+          height: 30px;
+          object-fit: contain;
+          path {
+            fill: #4f4f4f;
+          }
+          g {
+            path {
+              fill: #4f4f4f;
+            }
+          }
+          rect,
+          circle {
+            stroke: #4f4f4f;
+          }
+        }
+        .tabtitle {
+          display: none;
+        }
+        &:hover {
+          background-color: rgb(196, 196, 196);
+        }
+      }
+      .activetab {
+        background: #4166eb;
+        &:hover {
+          background: #4166eb;
+        }
+        .tabtitle {
+          color: #ffffff;
+        }
+        svg {
+          path {
+            fill: #ffffff;
+          }
+          g {
+            path {
+              fill: #ffffff;
+            }
+          }
+        }
+        rect,
+        circle {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+
+  .openedpanel {
+    background-color: rgb(240, 240, 240);
+    border-radius: 6px;
+    padding-bottom: 20px;
+  }
+
+  .activepanel {
+    background: rgb(246, 246, 246);
+    background: linear-gradient(
+      90deg,
+      rgba(246, 246, 246, 1) 0%,
+      rgba(246, 246, 246, 1) 99%,
+      rgba(65, 102, 235, 1) 99%
+    );
+    svg {
+      path {
+        fill: #4166eb;
+      }
+      g {
+        path {
+          fill: #4166eb;
+        }
+      }
+    }
+    rect,
+    circle {
+      stroke: #4166eb;
+    }
   }
 }

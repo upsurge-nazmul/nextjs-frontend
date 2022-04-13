@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes float {
   0% {
     transform: translatey(-20px, 0px) rotate(-25deg);
@@ -1134,7 +1136,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 600px) {
+@media only screen and (orientation: landscape) and (max-height: 500px) {
   .quizPage {
     .startscreen {
       background-color: #36363657;
@@ -1145,7 +1147,7 @@
       display: flex;
       justify-content: center;
       width: 100vw;
-      align-items: center;
+      align-items: flex-end;
       position: fixed;
       z-index: 100;
       top: 0;
@@ -1160,20 +1162,23 @@
         max-width: 700px;
         border-radius: 25px;
         max-height: 90%;
+        height: 65vh;
         background-color: white;
         z-index: 5;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-bottom: 3vh;
         .jasper {
-          width: 20%;
-          height: 80%;
+          width: 18vw;
+          height: 40vh;
           object-fit: contain;
           position: absolute;
           z-index: -1;
-          top: 6vh;
-          left: 70vw;
+          margin-top: 2%;
+          left: 50%;
+          transform: translateX(-50%);
         }
         .heading {
-          font-size: 18px;
+          font-size: $mobile-heading;
           color: white;
           font-weight: 700;
           background-color: #4166eb;
@@ -1189,20 +1194,23 @@
           flex: 1;
         }
         .text {
-          padding: 10px 40px 10px 0;
-          font-size: 12px;
+          padding: 0px 40px 10px 0;
+          font-size: $mobile-detail;
           font-weight: 500;
           background-color: white;
           margin-left: 50px;
+          &:first-child {
+            padding-top: 3vh !important;
+          }
         }
 
         .buttons {
           display: flex;
-          margin-top: 0px;
+          margin: 2vh 0 3vh;
           .startbutton {
             width: 30vw;
             min-height: 40px;
-            margin: 20px 0;
+            margin: 0;
             height: 45px;
             border-radius: 6px;
             color: white;
@@ -1218,7 +1226,7 @@
             width: 30vw;
             height: 45px;
             min-height: 40px;
-            margin: 20px 0;
+            margin: 0;
             font-size: 12px;
             border-radius: 6px;
             color: white;
@@ -1251,34 +1259,6 @@
           }
           .arrow {
             font-size: 12px;
-          }
-        }
-        .quizCardsHolder {
-          .quizCard {
-            height: 190px;
-            padding: 20px;
-            width: calc(100% / 2 - 20px);
-            svg {
-              width: 14vw;
-            }
-            .text {
-              margin-top: 0px;
-              .name {
-                font-size: 12px;
-              }
-              .description {
-                font-size: 10px;
-              }
-            }
-            .button {
-              margin-top: 5px;
-              width: 90%;
-              border-radius: 8px;
-              font-size: 12px;
-              max-height: 40px;
-              height: 40px;
-              min-width: none;
-            }
           }
         }
         .quizContainer {
@@ -1410,7 +1390,8 @@
           .jasper {
             position: absolute;
             z-index: -1;
-            width: 150px;
+            width: 10vw;
+            top: -25vh;
           }
           .signupBox {
             width: 80vw;
@@ -1476,6 +1457,338 @@
         }
         .maincontent {
           padding: 15px;
+          margin: 0;
+        }
+        .hideOverFlow {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .quizPage {
+    .startscreen {
+      background-color: #36363657;
+      opacity: 1;
+      background-size: 80px 80px;
+      background-repeat: repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      align-items: flex-end;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      .right {
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        width: 70%;
+        max-width: 700px;
+        border-radius: 25px;
+        max-height: 90%;
+        height: 65vh;
+        background-color: white;
+        z-index: 5;
+        margin-top: 0px;
+        margin-bottom: 3vh;
+        .jasper {
+          width: 18vw;
+          height: 40vh;
+          object-fit: contain;
+          position: absolute;
+          z-index: -1;
+          margin-top: 2%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .heading {
+          font-size: $mobile-heading;
+          color: white;
+          font-weight: 700;
+          background-color: #4166eb;
+          border-radius: 25px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          padding: 20px 20px;
+          text-align: center;
+          width: 100%;
+        }
+        ul {
+          overflow-y: auto;
+          flex: 1;
+        }
+        .text {
+          padding: 0px 40px 10px 0;
+          font-size: $mobile-detail;
+          font-weight: 500;
+          background-color: white;
+          margin-left: 50px;
+          &:first-child {
+            padding-top: 3vh !important;
+          }
+        }
+
+        .buttons {
+          display: flex;
+          margin: 2vh 0 3vh;
+          .startbutton {
+            width: 30vw;
+            min-height: 40px;
+            margin: 0;
+            height: 45px;
+            border-radius: 6px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s ease;
+          }
+          .skipbutton {
+            width: 30vw;
+            height: 45px;
+            min-height: 40px;
+            margin: 0;
+            font-size: 12px;
+            border-radius: 6px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+    .container {
+      .contentWrapper {
+        margin-top: 0;
+        padding-left: 0px;
+        width: 100%;
+        padding-right: 0px;
+        .prop1,
+        .prop2,
+        .prop3,
+        .prop4 {
+          display: none;
+        }
+        .pathSection {
+          .path {
+            font-size: 12px;
+          }
+          .arrow {
+            font-size: 12px;
+          }
+        }
+        .quizContainer {
+          display: flex;
+          margin-top: 0px;
+          flex-direction: column;
+          padding: 0;
+          .leftSection {
+            width: 100%;
+            .heading {
+              font-weight: 600;
+              font-size: 15px;
+            }
+            .details {
+              margin-top: 5px;
+              font-weight: 400;
+              font-size: 12px;
+            }
+            .startButton {
+              width: 100px;
+              height: 30px;
+              margin-top: 10px;
+            }
+            .current {
+              width: 100px;
+              height: 40px;
+              font-size: 12px;
+              margin-top: 10px;
+            }
+            .buttonwrapper {
+              .closeButton,
+              .finishButton {
+                width: 100px;
+                height: 30px;
+                margin-top: 10px;
+                font-size: 12px;
+              }
+            }
+          }
+          .rightSection {
+            width: 100%;
+            align-items: flex-start;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px 0 0;
+            margin-top: 20px;
+            .timerSection {
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
+              flex-direction: column;
+              .timeleft {
+                font-size: 12px;
+                text-align: left;
+              }
+              .timer {
+                font-size: 14px;
+                text-align: left;
+                margin-top: 5px;
+              }
+            }
+            .questionsleft {
+              margin-top: 0px;
+              .current {
+                font-size: 12px;
+                width: 90px;
+                padding: 7px;
+              }
+            }
+          }
+        }
+        .quizWrapper {
+          margin-top: 10px;
+          width: 100%;
+          .quiz {
+            .result {
+              font-size: 13px;
+              width: 100%;
+              height: 40px;
+              top: 0vh;
+              left: 0;
+              margin: 40px 0 0 0;
+              padding: 0px 20px;
+              justify-content: center;
+              .nextButton {
+                width: 100%;
+                height: 40px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              }
+            }
+            .question {
+              font-size: 16px;
+              line-height: 25px;
+              padding: 10px;
+              width: 100%;
+              margin: 0;
+            }
+            .options {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              margin-top: 20px;
+              .option {
+                margin: 5px;
+                height: 50px;
+                width: 100%;
+                .text {
+                  text-align: center;
+                  font-size: 14px;
+                  padding: 10px;
+                }
+              }
+            }
+          }
+        }
+        .resultSection {
+          margin-top: 3vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: max-content;
+          border-radius: 12px;
+          min-height: unset;
+          margin-top: 20vh;
+          padding: 40px 10vw;
+          .jasper {
+            position: absolute;
+            z-index: -1;
+            width: 10vw;
+            top: -25vh;
+          }
+          .signupBox {
+            width: 80vw;
+            min-width: 250px;
+            max-width: 400px;
+            height: 40px;
+            input {
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+              font-size: 12px;
+              font-size: 14px;
+              padding-left: 10px;
+            }
+            .normalbutton {
+              font-size: 14px;
+            }
+          }
+          .heading {
+            font-size: 40px;
+          }
+          .subheading {
+            font-size: 18px;
+            width: 100%;
+          }
+          .points {
+            font-size: 20px;
+          }
+          .leftSection {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            padding-top: 20px;
+
+            .heading {
+              font-size: 20px;
+              margin-bottom: 20px;
+              font-weight: 500;
+              color: rgb(58, 58, 58);
+            }
+            .data {
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+            .total {
+              background-color: rgb(255, 255, 255);
+            }
+            .correct {
+              background-color: rgb(139, 216, 115);
+            }
+            .wrong {
+              background-color: #ff7878;
+            }
+          }
+          .chartSection {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+          }
+        }
+        .maincontent {
+          padding: 15px;
+          margin: 0;
         }
         .hideOverFlow {
           overflow: hidden;

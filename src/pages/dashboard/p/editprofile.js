@@ -47,8 +47,8 @@ export default function EditProfile({ data, minDate }) {
   const [showpopup, setshowpopup] = useState(false);
   const [showphonepopup, setshowphonepopup] = useState(false);
   const [showimgsetter, setshowimgsetter] = useState(false);
-  const [showavatarmodal, setshowavatarmodal] = useState(false);
   const { userdata, setuserdata } = useContext(MainContext);
+  const [showavatarmodal, setshowavatarmodal] = useState(false);
   const boy_avatars = ["3", "2", "11", "10", "1", "9", "8", "5", "4", "6", "7"];
   const girl_avatars = [
     "14",

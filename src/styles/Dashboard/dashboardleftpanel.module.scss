@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .dashboardLeftPanel {
   height: 100vh;
   min-width: 350px;
@@ -389,6 +391,178 @@
           width: 40px;
           height: 40px;
           object-fit: contain;
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .dashboardLeftPanel {
+    height: 100vh;
+    min-width: 80px;
+    width: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    box-shadow: 0px 26px 74px rgba(0, 0, 0, 0.1);
+    .miniLogo {
+      width: 50%;
+      height: fit-content;
+    }
+    .bottom {
+      display: none;
+    }
+    .tabContainer {
+      width: 100%;
+      margin-top: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      .tab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        height: fit-content;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+        .icon {
+          padding: 10px;
+          width: 60%;
+          height: auto;
+          aspect-ratio: 1;
+          object-fit: contain;
+        }
+        .tabtitle {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          margin-left: 15%;
+          font-weight: bold;
+          font-size: 16px;
+          letter-spacing: 0.429323px;
+          color: #000000;
+
+          display: none;
+        }
+        &:hover {
+          background: linear-gradient(
+            90deg,
+            rgba(246, 246, 246, 1) 0%,
+            rgba(246, 246, 246, 1) 99%,
+            rgb(206, 206, 206) 99%
+          );
+        }
+      }
+      .activetab {
+        background: rgb(246, 246, 246);
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgba(65, 102, 235, 1) 99%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba(65, 102, 235, 1) 5%,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%
+        );
+        svg {
+          path {
+            fill: #4166eb;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .dashboardLeftPanel {
+    height: 100vh;
+    min-width: 80px;
+    width: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    box-shadow: 0px 26px 74px rgba(0, 0, 0, 0.1);
+    .miniLogo {
+      width: 50%;
+      height: fit-content;
+    }
+    .bottom {
+      display: none;
+    }
+    .tabContainer {
+      width: 100%;
+      margin-top: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      .tab {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        height: fit-content;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+        .icon {
+          padding: 10px;
+          width: 60%;
+          height: auto;
+          aspect-ratio: 1;
+          object-fit: contain;
+        }
+        .tabtitle {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          margin-left: 15%;
+          font-weight: bold;
+          font-size: 16px;
+          letter-spacing: 0.429323px;
+          color: #000000;
+
+          display: none;
+        }
+        &:hover {
+          background: linear-gradient(
+            90deg,
+            rgba(246, 246, 246, 1) 0%,
+            rgba(246, 246, 246, 1) 99%,
+            rgb(206, 206, 206) 99%
+          );
+        }
+      }
+      .activetab {
+        background: rgb(246, 246, 246);
+        background: linear-gradient(
+          90deg,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%,
+          rgba(65, 102, 235, 1) 99%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba(65, 102, 235, 1) 5%,
+          rgba(246, 246, 246, 1) 0%,
+          rgba(246, 246, 246, 1) 99%
+        );
+        svg {
+          path {
+            fill: #4166eb;
+          }
         }
       }
     }

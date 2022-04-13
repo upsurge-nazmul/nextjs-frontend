@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes rotate {
   to {
     transform: rotate(360deg);
@@ -185,8 +187,8 @@
           width: 24px;
         }
         .dot {
-          width: 10px;
-          height: 10px;
+          width: 5px;
+          height: 5px;
           border-radius: 50px;
           background-color: rgba(255, 122, 0, 1);
           border: 2px solid #e5e5e5;
@@ -210,7 +212,6 @@
     }
   }
 }
-
 @media only screen and (max-width: 500px) {
   .dashboardHeader {
     height: 10vh;
@@ -244,6 +245,16 @@
         width: 18px;
         height: 18px;
       }
+      .rewardBlock {
+        margin-right: 13vw;
+        .svg {
+          min-width: 20px;
+          min-height: 20px;
+        }
+        .number {
+          font-size: 12px;
+        }
+      }
       .settings {
         svg {
           width: 16px;
@@ -255,8 +266,8 @@
           width: 13px;
         }
         .dot {
-          width: 10px;
-          height: 10px;
+          width: 8px;
+          height: 8px;
           border-radius: 50px;
           background-color: rgba(255, 122, 0, 1);
           border: 2px solid #e5e5e5;
@@ -276,6 +287,154 @@
       .avatar {
         width: 30px;
         height: 30px;
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .dashboardHeader {
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .dashboardHeading {
+      font-size: $mobile-heading;
+      font-weight: 400;
+      margin-right: 10px;
+      span {
+        font-weight: 500;
+      }
+      .addflex {
+        svg {
+          width: 15px;
+          margin-right: 10px;
+        }
+        display: flex;
+      }
+    }
+    .rightWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: fit-content;
+      .icon {
+        width: $mobile-smallsubheading;
+        height: $mobile-smallsubheading;
+      }
+      .rewardBlock {
+        .svg {
+          min-width: $mobile-smallsubheading;
+          min-height: $mobile-smallsubheading;
+        }
+        .number {
+          font-size: $mobile-smallsubheading;
+        }
+      }
+      .settings {
+        svg {
+          width: $mobile-smallsubheading;
+        }
+      }
+      .notification {
+        position: relative;
+        svg {
+          width: $mobile-heading;
+        }
+        .dot {
+          width: 10px;
+          height: 10px;
+          top: -2px;
+          right: -2px;
+        }
+        &:hover {
+          svg {
+            path {
+              transition: all 0.3s ease;
+              fill: rgb(80, 80, 80);
+            }
+          }
+        }
+      }
+      .avatar {
+        width: 5vw;
+        height: 5vw;
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .dashboardHeader {
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .dashboardHeading {
+      font-size: $mobile-heading;
+      font-weight: 400;
+      margin-right: 10px;
+      span {
+        font-weight: 500;
+      }
+      .addflex {
+        svg {
+          width: 15px;
+          margin-right: 10px;
+        }
+        display: flex;
+      }
+    }
+    .rightWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: fit-content;
+      .icon {
+        width: $mobile-smallsubheading;
+        height: $mobile-smallsubheading;
+      }
+      .rewardBlock {
+        .svg {
+          min-width: $mobile-smallsubheading;
+          min-height: $mobile-smallsubheading;
+        }
+        .number {
+          font-size: $mobile-smallsubheading;
+        }
+      }
+      .settings {
+        svg {
+          width: $mobile-smallsubheading;
+        }
+      }
+      .notification {
+        position: relative;
+        svg {
+          width: $mobile-heading;
+        }
+        .dot {
+          width: 10px;
+          height: 10px;
+          top: -2px;
+          right: -2px;
+        }
+        &:hover {
+          svg {
+            path {
+              transition: all 0.3s ease;
+              fill: rgb(80, 80, 80);
+            }
+          }
+        }
+      }
+      .avatar {
+        width: 5vw;
+        height: 5vw;
       }
     }
   }

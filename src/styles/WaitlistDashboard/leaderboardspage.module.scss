@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -39,6 +41,7 @@
     .mainContent {
       width: 100%;
       padding: 0 40px;
+      height: 100%;
       margin-top: 20px;
       .headline {
         background-color: #4166eb;
@@ -52,21 +55,54 @@
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 900px) {
   .leaderboard {
     .contentWrapper {
       .mainContent {
         padding: 0 20px;
+        .headline {
+          background-color: #4166eb;
+          color: white;
+          font-size: $mobile-detail;
+          padding: 10px 20px;
+          border-radius: 6px;
+          text-align: center;
+        }
       }
     }
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 900px) {
+@media only screen and (orientation: landscape) and (max-width: 900px) {
   .leaderboard {
     .contentWrapper {
       .mainContent {
         padding: 0 20px;
+        .headline {
+          background-color: #4166eb;
+          color: white;
+          font-size: $mobile-detail;
+          padding: 10px 20px;
+          border-radius: 6px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .leaderboard {
+    .contentWrapper {
+      .mainContent {
+        padding: 0 20px;
+        .headline {
+          background-color: #4166eb;
+          color: white;
+          font-size: $mobile-detail;
+          padding: 10px 20px;
+          border-radius: 6px;
+          text-align: center;
+        }
       }
     }
   }
