@@ -31,7 +31,6 @@
     animation: moveit 5s ease alternate infinite;
   }
   .contentWrapper {
-    height: 100vh;
     flex: 1;
     display: flex;
     width: 100%;
@@ -40,7 +39,6 @@
     .mainContent {
       width: 100%;
       padding: 0 40px;
-      height: 100vh;
       margin-top: 20px;
       .headline {
         background-color: #4166eb;
@@ -54,7 +52,17 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 860px) {
+  .leaderboard {
+    .contentWrapper {
+      .mainContent {
+        padding: 0 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 900px) {
   .leaderboard {
     .contentWrapper {
       .mainContent {
