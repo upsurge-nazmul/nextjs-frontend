@@ -427,7 +427,7 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (orientation: portrait) and (max-width: 900px) {
   .questPage {
     .contentWrapper {
       .mainContent {
@@ -496,6 +496,7 @@
           }
         }
         .mainwrapper {
+          margin-bottom: 20px;
           .left {
             flex: 1;
             .heading {
@@ -609,7 +610,7 @@
     }
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (orientation: portrait) and (max-width: 700px) {
   .questPage {
     .contentWrapper {
       .mainContent {
@@ -922,6 +923,189 @@
             .heading {
               font-size: 18px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-height: 900px) {
+  .questPage {
+    .contentWrapper {
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+
+        .mainhead {
+          display: flex;
+          align-items: center;
+          background-color: white;
+          border-radius: 25px;
+          margin-top: 0px;
+          height: 219px;
+          position: relative;
+          padding: 30px;
+          img {
+            object-fit: cover;
+            width: 136px;
+            height: 137px;
+            border-radius: 25px;
+            margin-right: 30px;
+          }
+          .right {
+            .questheading {
+              color: #232323;
+              font-size: 24px;
+              font-weight: 600;
+            }
+            .age {
+              color: #000000cf;
+              font-family: "Roboto";
+              font-size: 12px;
+              margin-top: 10px;
+              font-weight: 500;
+            }
+            .details {
+              display: flex;
+              color: #232323;
+              font-family: "Roboto";
+              font-size: 12px;
+              font-weight: 400;
+              margin-top: 10px;
+              svg {
+                margin-right: 5px;
+              }
+              .students {
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+              }
+              .projects {
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+          .creditandweeks {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #232323;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: right;
+          }
+        }
+        .mainwrapper {
+          margin-bottom: 20px;
+          .left {
+            flex: 1;
+            .heading {
+              font-size: 20px;
+            }
+            .about,
+            .content {
+              margin-top: 10px;
+              font-family: "Roboto";
+              font-size: 14px;
+              font-weight: 400;
+            }
+          }
+          .right {
+            width: 25vw;
+            margin-right: 20px;
+            .buttonwrapper {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .bookmarkbutton {
+                width: 80%;
+                height: 42px;
+                border: 1px solid #000000;
+                border-radius: 12px;
+                display: flex;
+                margin-bottom: 20px;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                margin-right: 0px;
+                svg {
+                  margin-right: 5px;
+                }
+              }
+              .startbutton {
+                color: white;
+                background-color: #4166eb;
+                width: 80%;
+                height: 42px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                cursor: pointer;
+                font-weight: 500;
+              }
+            }
+            .details {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              font-weight: 500;
+              margin-top: 40px;
+              .section {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .number {
+                  font-size: 30px;
+                  text-align: center;
+                }
+                .name {
+                  font-size: 12px;
+                }
+              }
+            }
+            .heading {
+              font-size: 20px;
+            }
+            .conceptswrapper {
+              display: flex;
+              flex-wrap: wrap;
+              align-content: flex-start;
+              margin-top: 20px;
+              .concept {
+                width: fit-content;
+                height: fit-content;
+                padding: 10px 20px;
+                background: #f4f5f7;
+                border: 0.5px solid #9d9d9d;
+                border-radius: 4px;
+                margin: 5px;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      .mainwrapper {
+        .conceptswrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          gap: 5px !important;
+          .concept {
+            width: fit-content;
+            height: fit-content;
+            padding: 8px 15px;
+            background: #f4f5f7;
+            border: 0.5px solid #9d9d9d;
+            border-radius: 4px;
+            font-size: 12px;
           }
         }
       }
