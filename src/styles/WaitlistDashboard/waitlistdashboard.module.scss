@@ -222,7 +222,7 @@
   }
 }
 
-@media only screen and  (orientation: portrait) and (max-width: 1000px) {
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -990,7 +990,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 600px) {
+@media only screen and (orientation: landscape) and (max-height: 900px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
