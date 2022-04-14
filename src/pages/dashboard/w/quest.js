@@ -180,7 +180,7 @@ export default function KidStore({
                       setquestmode("KnowingYourMoney");
                     }}
                   >
-                    {`Kiara goes around the world`}
+                    {`What is money?`}
                   </p>
                   <p
                     id="kqc2"
@@ -231,8 +231,14 @@ export default function KidStore({
                     className={`${styles.kqc} ${styles.kqc5}  ${
                       currentlevel == 5 && styles.activekqc
                     } ${currentlevel > 5 && styles.completedkqc}`}
+                    onClick={() => {
+                      if (!(currentlevel >= 5)) {
+                        return;
+                      }
+                      setquestmode("KiarasBudgetTrip");
+                    }}
                   >
-                    What is money?
+                    Kiara's Budget Trip
                   </p>
                   <p
                     className={`${styles.kqc} ${styles.kqc6}  ${
@@ -271,6 +277,8 @@ export default function KidStore({
                   src={
                     questmode === "KnowingYourMoney"
                       ? "/quests/KnowingYourMoney/story.html"
+                      : questmode === "KiarasBudgetTrip"
+                      ? "/quests/KiarasBudgetTrip/story.html"
                       : "/quests/bankvisit/story.html"
                   }
                 ></iframe>
@@ -308,6 +316,17 @@ export default function KidStore({
                             num_unicoins: Number(prev.num_unicoins) + 100,
                           }));
                           setcurrentlevel(2);
+                        }
+                        if (questmode === "KiarasBudgetTrip") {
+                          KnowledgeQuestApi.update({
+                            level: 6,
+                            id: "money-quest",
+                          });
+                          setuserdata((prev) => ({
+                            ...prev,
+                            num_unicoins: Number(prev.num_unicoins) + 100,
+                          }));
+                          setcurrentlevel(6);
                         }
                         if (questmode === "game") {
                           KnowledgeQuestApi.update({
