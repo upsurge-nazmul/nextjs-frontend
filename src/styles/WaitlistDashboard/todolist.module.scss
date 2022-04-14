@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .todolist {
   width: 100vw;
   height: 100vh;
@@ -321,24 +323,25 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 900px) {
+@media only screen and (orientation: landscape) and (max-height: 500px) {
   .todolist {
     align-items: flex-end;
     .jasper {
       position: absolute;
       z-index: -1;
-      width: 120px;
+      width: 10vw;
       top: 1%;
     }
     .main {
       width: 100%;
+      max-width: 500px;
       border-radius: 8px;
       z-index: 2;
       padding: 20px;
       position: relative;
       padding-bottom: 60px;
       height: 70vh;
-      overflow: auto;
+      overflow: hidden;
       .head {
         display: flex;
         justify-content: space-between;
@@ -361,10 +364,115 @@
       flex-direction: column;
       margin-top: 20px;
       gap: 20px;
-      overflow-x: auto;
+      overflow-y: auto;
+      padding-bottom: 50px;
+      height: 100%;
       .todo {
         display: flex;
-        font-size: 18px;
+        font-size: $mobile-subheading;
+        .check {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          border-radius: 100px;
+          background-color: rgba(255, 255, 255, 0.3);
+          border: 2px solid #17d1bc;
+          box-shadow: 0px 0px 0px 0px #17d1bc inset;
+          transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
+
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 4;
+            position: absolute;
+            transform: scale(0);
+            background-size: 50%;
+            background-image: url("https://s6.picofile.com/d/8392306668/bacc888c-bed7-41a9-bf24-f6ff0718f471/checkmark.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            transition-delay: 0.2s !important;
+            transition: all 0.25s cubic-bezier(0, 1.05, 0.72, 1.07);
+          }
+        }
+        .checkbox {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+        }
+      }
+      .completed {
+        .check {
+          border-color: #17d1bc;
+          box-shadow: 0px 0px 0px 15px #17d1bc inset;
+          .checkicon {
+            color: white;
+            font-size: 30px;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+          }
+          &::after {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .todolist {
+    align-items: flex-end;
+    .jasper {
+      position: absolute;
+      z-index: -1;
+      width: 10vw;
+      top: 1%;
+    }
+    .main {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+      z-index: 2;
+      padding: 20px;
+      position: relative;
+      padding-bottom: 60px;
+      height: 70vh;
+      overflow: hidden;
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        .heading {
+          font-weight: 700;
+          font-size: 24px;
+        }
+        .subheading {
+          padding: 10px 20px;
+          font-weight: 700;
+          border-radius: 6px;
+          background-color: rgba(235, 235, 235, 0.534);
+        }
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      gap: 20px;
+      overflow-y: auto;
+      padding-bottom: 50px;
+      height: 100%;
+      .todo {
+        display: flex;
+        font-size: $mobile-subheading;
         .check {
           width: 20px;
           height: 20px;
