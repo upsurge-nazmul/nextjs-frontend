@@ -238,7 +238,7 @@ export default function KidStore({
                       setquestmode("KiarasBudgetTrip");
                     }}
                   >
-                    Kiara's Budget Trip
+                    {`Kiara's Budget Trip`}
                   </p>
                   <p
                     className={`${styles.kqc} ${styles.kqc6}  ${
