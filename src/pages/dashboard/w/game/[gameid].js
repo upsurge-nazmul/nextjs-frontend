@@ -342,7 +342,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
                 <p>{`This game only playable in landscape mode.`}</p>
                 <div
                   className={styles.button}
-                  onClick={() => router.push("/dashboard/w")}
+                  onClick={() => router.push("/dashboard/w/games")}
                 >
                   Go back
                 </div>

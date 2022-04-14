@@ -192,3 +192,23 @@
     }
   }
 }
+
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
+  .gamePage {
+    .contentWrapper {
+      .mainContent {
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .gameMain {
+          width: calc(20vw * 4);
+          height: calc(12vw * 4);
+          background-color: white;
+          border: 2px solid black;
+          margin-top: 5vh;
+        }
+      }
+    }
+  }
+}
