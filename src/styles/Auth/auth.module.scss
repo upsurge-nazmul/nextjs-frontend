@@ -1425,8 +1425,9 @@
         background-color: white;
         height: fit-content;
         width: 50vw;
+        min-width: 300px;
         max-width: 589px;
-        padding: 20px 30px;
+        padding: 20px;
         border-radius: 12px;
         position: relative;
         transition: all 0.3s ease;
@@ -1439,12 +1440,12 @@
           width: 100%;
           display: flex;
           justify-content: space-between;
-          margin-bottom: 20px;
+          margin-bottom: 5vh;
           align-items: center;
           .heading,
           .forgetheading {
             font-weight: 500;
-            font-size: 2.5vw;
+            font-size: $mobile-heading;
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
@@ -1566,7 +1567,7 @@
           .google,
           .apple {
             border-radius: 14px;
-            width: 70%;
+            width: 100%;
             display: flex;
             align-items: center;
             height: 45px;
@@ -2217,7 +2218,8 @@
         height: fit-content;
         width: 50vw;
         max-width: 589px;
-        padding: 20px 30px;
+        min-width: 300px;
+        padding: 20px;
         border-radius: 12px;
         position: relative;
         transition: all 0.3s ease;
@@ -2230,12 +2232,12 @@
           width: 100%;
           display: flex;
           justify-content: space-between;
-          margin-bottom: 20px;
+          margin-bottom: 5vh;
           align-items: center;
           .heading,
           .forgetheading {
             font-weight: 500;
-            font-size: 2.5vw;
+            font-size: $mobile-heading;
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
@@ -2357,7 +2359,7 @@
           .google,
           .apple {
             border-radius: 14px;
-            width: 70%;
+            width: 100%;
             display: flex;
             align-items: center;
             height: 45px;
