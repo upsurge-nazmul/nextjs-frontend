@@ -14,6 +14,7 @@ import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
 import GameApis from "../../../actions/apis/GameApis";
 import GameFrame from "../../../components/Quests/GameFrame";
+import BrokenGameConroller from "../../../components/SVGcomponents/BrokenGameConroller";
 const democoncepts = [
   "Money",
   "Currency",
@@ -31,12 +32,13 @@ export default function KidStore({
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("");
   const [questmode, setquestmode] = useState("map");
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, widthHeight } = useContext(MainContext);
   const [currentlevel, setcurrentlevel] = useState(levelfromserver);
   const router = useRouter();
   const [showgame, setshowgame] = useState(false);
   const [showmodal, setshowmodal] = useState(false);
   const [quizId, setquizId] = useState("");
+  const [isfullscreen, setisfullscreen] = useState(false);
 
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -84,6 +86,48 @@ export default function KidStore({
       scrollParentToChild(parent, child, 0);
     }
   }, [questmode]);
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+    } else {
+      let element = document.getElementById("unity-wrapper");
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+      setisfullscreen(true);
+    }
+  }
+  // useEffect(() => {
+  //   window.screen.orientation.onchange = function () {
+  //     if (this.type.startsWith("landscape")) {
+  //       movetofull();
+  //     } else {
+  //       document.webkitExitFullscreen();
+  //     }
+  //   };
+  // }, []);
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="waitlist" />
@@ -136,9 +180,8 @@ export default function KidStore({
                   );
                 })}
               </div>
-              <p className={styles.heading}>Knowledge Quest Content</p>
-              <p className={styles.content}>
-                Follow the course content to learn more about Investing.
+              <p className={styles.heading}>
+                {`Click on “What is money?” to start your quest`}
               </p>
               {questmode !== "map" && (
                 <div className={styles.contentDetails}>
@@ -150,139 +193,163 @@ export default function KidStore({
                   </p>
                 </div>
               )}
-              {questmode === "map" ? (
-                <div
-                  className={`${styles.map} ${
-                    currentlevel >= 6 && styles.blockscroll
-                  }`}
-                  id="map"
-                >
-                  {currentlevel > 6 && (
-                    <img
-                      className={styles.stamp}
-                      src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
-                      alt=""
-                    />
-                  )}
-                  <img
-                    src="https://i.ibb.co/r21r8V1/mainmap.jpg"
-                    className={styles.bg}
-                  />
-                  <p
-                    id="kqc1"
-                    className={`${styles.kqc} ${styles.kqc1} ${
-                      currentlevel === 1 && styles.activekqc
-                    } ${currentlevel > 1 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 1)) {
-                        return;
-                      }
-                      setquestmode("KnowingYourMoney");
-                    }}
-                  >
-                    {`What is money?`}
-                  </p>
-                  <p
-                    id="kqc2"
-                    className={`${styles.kqc} ${styles.kqc2}  ${
-                      currentlevel == 2 && styles.activekqc
-                    } ${currentlevel > 2 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 2)) {
-                        return;
-                      }
-                      setquizId("introduction-to-money");
-                      setquestmode("quiz");
-                    }}
-                  >
-                    Money Quiz
-                  </p>
-                  <p
-                    id="kqc3"
-                    className={`${styles.kqc} ${styles.kqc3}  ${
-                      currentlevel == 3 && styles.activekqc
-                    } ${currentlevel > 3 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 3)) {
-                        return;
-                      }
-                      setquestmode("bank-visit");
-                    }}
-                  >
-                    {`Ira's visit to the bank`}
-                  </p>
-                  <p
-                    id="kqc4"
-                    className={`${styles.kqc} ${styles.kqc4}  ${
-                      currentlevel == 4 && styles.activekqc
-                    } ${currentlevel > 4 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 2)) {
-                        return;
-                      }
-                      setquizId("visit-to-bank");
-                      setquestmode("quiz");
-                    }}
-                  >
-                    Banking Quiz
-                  </p>
-                  <p
-                    id="kqc5"
-                    className={`${styles.kqc} ${styles.kqc5}  ${
-                      currentlevel == 5 && styles.activekqc
-                    } ${currentlevel > 5 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 5)) {
-                        return;
-                      }
-                      setquestmode("KiarasBudgetTrip");
-                    }}
-                  >
-                    {`Kiara's Budget Trip`}
-                  </p>
-                  <p
-                    className={`${styles.kqc} ${styles.kqc6}  ${
-                      currentlevel == 6 && styles.activekqc
-                    } ${currentlevel > 6 && styles.completedkqc}`}
-                    onClick={() => {
-                      if (!(currentlevel >= 6)) {
-                        return;
-                      }
-                      setshowgame(true);
-                      setquestmode("game");
-                    }}
-                  >
-                    Digital Banking & payments
-                  </p>
-                  <BoatIcon
-                    id="boaticon"
-                    className={`${styles.boat} ${
-                      styles["boat" + currentlevel]
-                    }`}
-                  />
-                </div>
-              ) : questmode === "quiz" ? (
-                <QuestQuiz
-                  quizId={quizId}
-                  setlevel={setcurrentlevel}
-                  setmode={setquestmode}
-                  level={currentlevel}
-                />
-              ) : showgame ? (
-                <GameFrame gamedata={gamedata} setmode={setquestmode} />
-              ) : (
-                <iframe
-                  id="iframe"
-                  className={`${styles.map} ${styles.course}`}
-                  src={
-                    questmode === "KnowingYourMoney"
-                      ? "/quests/KnowingYourMoney/story.html"
-                      : questmode === "KiarasBudgetTrip"
-                      ? "/quests/KiarasBudgetTrip/story.html"
-                      : "/quests/bankvisit/story.html"
-                  }
-                ></iframe>
-              )}
+              <div className={styles.mainWrapper} id="unity-wrapper">
+                {widthHeight.width < 900 &&
+                widthHeight.height > widthHeight.width ? (
+                  <div className={styles.mobileerr}>
+                    <div className={styles.box}>
+                      <BrokenGameConroller className={styles.jasper} />
+                      <p className={styles.heading}>
+                        Please switch to landscape mode
+                      </p>
+                      <p>{`We recommend changing your display to landscape mode to best enjoy the quest`}</p>
+                      <div
+                        className={styles.button}
+                        onClick={() => router.push("/dashboard/w")}
+                      >
+                        Go back
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    {questmode === "map" ? (
+                      <div
+                        className={`${styles.map} ${
+                          currentlevel >= 6 && styles.blockscroll
+                        }`}
+                        id="map"
+                      >
+                        {currentlevel > 6 && (
+                          <img
+                            className={styles.stamp}
+                            src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
+                            alt=""
+                          />
+                        )}
+                        <img
+                          src="https://i.ibb.co/r21r8V1/mainmap.jpg"
+                          className={styles.bg}
+                        />
+                        <p
+                          id="kqc1"
+                          className={`${styles.kqc} ${styles.kqc1} ${
+                            currentlevel === 1 && styles.activekqc
+                          } ${currentlevel > 1 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 1)) {
+                              return;
+                            }
+                            setquestmode("KnowingYourMoney");
+                          }}
+                        >
+                          {`What is money?`}
+                        </p>
+                        <p
+                          id="kqc2"
+                          className={`${styles.kqc} ${styles.kqc2}  ${
+                            currentlevel == 2 && styles.activekqc
+                          } ${currentlevel > 2 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 2)) {
+                              return;
+                            }
+                            setquizId("introduction-to-money");
+                            setquestmode("quiz");
+                          }}
+                        >
+                          Money Quiz
+                        </p>
+                        <p
+                          id="kqc3"
+                          className={`${styles.kqc} ${styles.kqc3}  ${
+                            currentlevel == 3 && styles.activekqc
+                          } ${currentlevel > 3 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 3)) {
+                              return;
+                            }
+                            setquestmode("bank-visit");
+                          }}
+                        >
+                          {`Ira's visit to the bank`}
+                        </p>
+                        <p
+                          id="kqc4"
+                          className={`${styles.kqc} ${styles.kqc4}  ${
+                            currentlevel == 4 && styles.activekqc
+                          } ${currentlevel > 4 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 2)) {
+                              return;
+                            }
+                            setquizId("visit-to-bank");
+                            setquestmode("quiz");
+                          }}
+                        >
+                          Banking Quiz
+                        </p>
+                        <p
+                          id="kqc5"
+                          className={`${styles.kqc} ${styles.kqc5}  ${
+                            currentlevel == 5 && styles.activekqc
+                          } ${currentlevel > 5 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 5)) {
+                              return;
+                            }
+                            setquestmode("KiarasBudgetTrip");
+                          }}
+                        >
+                          {`Kiara's Budget Trip`}
+                        </p>
+                        <p
+                          className={`${styles.kqc} ${styles.kqc6}  ${
+                            currentlevel == 6 && styles.activekqc
+                          } ${currentlevel > 6 && styles.completedkqc}`}
+                          onClick={() => {
+                            if (!(currentlevel >= 6)) {
+                              return;
+                            }
+                            setshowgame(true);
+                            setquestmode("game");
+                          }}
+                        >
+                          Digital Banking & payments
+                        </p>
+                        <BoatIcon
+                          id="boaticon"
+                          className={`${styles.boat} ${
+                            styles["boat" + currentlevel]
+                          }`}
+                        />
+                      </div>
+                    ) : questmode === "quiz" ? (
+                      <QuestQuiz
+                        quizId={quizId}
+                        setlevel={setcurrentlevel}
+                        setmode={setquestmode}
+                        level={currentlevel}
+                      />
+                    ) : showgame ? (
+                      <GameFrame gamedata={gamedata} setmode={setquestmode} />
+                    ) : (
+                      <iframe
+                        id="iframe"
+                        className={`${styles.map} ${styles.course}`}
+                        src={
+                          questmode === "KnowingYourMoney"
+                            ? "/quests/KnowingYourMoney/story.html"
+                            : questmode === "KiarasBudgetTrip"
+                            ? "/quests/KiarasBudgetTrip/story.html"
+                            : "/quests/bankvisit/story.html"
+                        }
+                      ></iframe>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {(questmode !== "map" || showgame) && (
                 <div className={styles.buttons}>
                   <div
