@@ -298,7 +298,14 @@ export default function GamePage({ gamedata, userdata }) {
         router.push("/games");
       });
       unitycontext.on("Fullscreen", function () {
-        movetofull();
+        console.log(isfullscreen);
+        if (isfullscreen) {
+          unitycontext.setFullscreen(false);
+          setisfullscreen(false);
+        } else {
+          unitycontext.setFullscreen(true);
+          setisfullscreen(true);
+        }
       });
     },
     [unitycontext]
@@ -363,7 +370,7 @@ export default function GamePage({ gamedata, userdata }) {
 
       if (!fullscreenElement) {
         setisfullscreen(false);
-        router.push("/games");
+        // router.push("/games");
       }
     }
   }, []);

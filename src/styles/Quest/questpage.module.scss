@@ -195,6 +195,7 @@
               z-index: 2;
               transition: all 0.3s ease;
               height: fit-content;
+              pointer-events: none;
             }
             .boat1 {
               bottom: 1%;
@@ -220,7 +221,7 @@
               transform: rotateY(180deg);
             }
             .boat6 {
-              bottom: 68%;
+              bottom: 62%;
               right: 18%;
             }
             .island1 {

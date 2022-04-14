@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/WaitlistDashboard/todolist.module.scss";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import Jasper from "../SVGcomponents/Jasper";
+import { useRouter } from "next/dist/client/router";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
+import { MainContext } from "../../context/Main";
+import { getCookie } from "../../actions/cookieUtils";
 export default function TodoList({ data, hide, completed, total }) {
+  const router = useRouter();
+  const { userdata } = useContext(MainContext);
+  async function hanldeludo() {
+    let res = await FreeGameApis.presign({
+      user_name:
+        userdata.user_name || userdata.first_name || userdata.last_name,
+      email: userdata.email,
+      phone: userdata.phone,
+      token: getCookie("accesstoken"),
+      game: "Ludo",
+      postlogin: true,
+    });
+    if (res) {
+      if (res.data.success) {
+        router.push({
+          pathname: "/dashboard/w/game/Ludo",
+          query: { id: res.data.data },
+        });
+      } else {
+        console.log(res.data.message);
+      }
+    } else {
+      console.log("error connecting server");
+    }
+  }
   return (
     <div className={styles.todolist}>
       <div className={styles.background} onClick={hide}></div>
@@ -30,7 +59,9 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Go on the upsurge quest</p>
+            <p onClick={() => router.push("/dashboard/w/quest")}>
+              Go on the upsurge quest
+            </p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -43,7 +74,9 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Take the Money Quotient Quiz</p>
+            <p onClick={() => router.push("/dashboard/w/quiz")}>
+              Take the Money Quotient Quiz
+            </p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -56,7 +89,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Play upsurge ludo</p>
+            <p onClick={hanldeludo}>Play upsurge ludo</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -69,7 +102,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Answer daily challenges</p>
+            <p onClick={hide}>Answer daily challenges</p>
           </div>
           <div
             className={`${styles.todo} ${
@@ -82,12 +115,10 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Invite your closest friends</p>
+            <p onClick={hide}>Invite your closest friends</p>
           </div>
           <div
-            className={`${styles.todo} ${
-              data.invited_more_friends && styles.completed
-            }`}
+            className={`${styles.todo} ${data.play_games && styles.completed}`}
           >
             <input type="checkbox" className={styles.checkbox} />
             <span className={styles.check}>
@@ -95,18 +126,22 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Play Games in then Arena</p>
+            <p onClick={() => router.push("/dashboard/w/games")}>
+              Play Games in then Arena
+            </p>
           </div>
           <div
             className={`${styles.todo} ${data.used_calc && styles.completed}`}
           >
             <input type="checkbox" className={styles.checkbox} />
             <span className={styles.check}>
-              {data.changed_avatar && (
+              {data.used_calc && (
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p>Check upsurge calculators</p>
+            <p onClick={() => router.push("/dashboard/w/calculators")}>
+              Check upsurge calculators
+            </p>
           </div>
         </div>
       </div>

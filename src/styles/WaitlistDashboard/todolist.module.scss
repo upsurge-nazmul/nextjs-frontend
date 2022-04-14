@@ -90,6 +90,13 @@
         visibility: hidden;
         position: absolute;
       }
+      p {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+          color: rgb(0, 102, 255);
+        }
+      }
     }
     .completed {
       .check {
@@ -105,6 +112,12 @@
         &::after {
           opacity: 1;
           transform: scale(1);
+        }
+      }
+      p {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
