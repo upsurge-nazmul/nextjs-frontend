@@ -338,3 +338,50 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    height: 100px;
+    .ticker {
+      font-size: 14px;
+      padding: 8px;
+    }
+    .container {
+      padding-left: 5%;
+      padding-right: 5%;
+      .hamburger {
+        left: 7%;
+        display: block;
+        svg {
+          width: 3vw;
+          height: 3vw;
+        }
+      }
+      .logoContainer {
+        cursor: pointer;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 12vw;
+        img {
+          width: 20vw;
+          max-width: 250px;
+        }
+      }
+      .nav {
+        display: none;
+      }
+    }
+  }
+  .sticky {
+    position: fixed;
+    height: 80px;
+    top: 0;
+    box-shadow: 0px 26px 74px rgba(65, 153, 235, 0.06);
+    z-index: 105;
+  }
+  .stickywithannouncement {
+    height: 110px;
+  }
+}
