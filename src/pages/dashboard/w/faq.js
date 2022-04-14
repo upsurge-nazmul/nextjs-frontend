@@ -22,6 +22,7 @@ export default function Contact({ userdatafromserver }) {
     msg: "",
   });
   const [mode, setmode] = useState("");
+  const [current, setcurrent] = useState("");
   const { setuserdata } = useContext(MainContext);
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -76,6 +77,8 @@ export default function Contact({ userdatafromserver }) {
                 key={"faq" + index}
                 question={item.question}
                 answer={item.answer}
+                current={current}
+                setcurrent={setcurrent}
               />
             );
           })}
