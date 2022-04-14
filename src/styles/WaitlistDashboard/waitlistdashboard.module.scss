@@ -253,11 +253,14 @@
           flex-wrap: wrap;
           justify-content: space-evenly;
           height: fit-content;
+          margin-bottom: 20px;
+          gap: 10px;
           .flipcard {
-            margin-bottom: 20px;
-            &:nth-child(3) {
-              margin: 0;
-            }
+            background-color: transparent;
+            margin: 0;
+            flex: 1;
+            min-width: 100px;
+            height: 170px;
           }
           .uniblock,
           .waitlistblock,
@@ -270,8 +273,8 @@
             margin-right: 0px;
             margin-bottom: 0px;
             border-radius: 10px;
-            padding: 20px;
-            min-width: 220px;
+            padding: 12px;
+            min-width: 100px;
             color: white;
             margin: 0;
             .heading {
@@ -609,6 +612,7 @@
     }
   }
 }
+
 @media only screen and (orientation: portrait) and (max-width: 860px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
@@ -638,11 +642,14 @@
           flex-wrap: wrap;
           justify-content: space-evenly;
           height: fit-content;
-          margin-bottom: 5px;
+          margin-bottom: 10px;
+          gap: 5px;
           .flipcard {
-            &:nth-child(3) {
-              margin-right: 0px;
-            }
+            background-color: transparent;
+            margin: 0;
+            flex: 1;
+            min-width: 100px;
+            height: 170px;
           }
           .uniblock,
           .waitlistblock,
@@ -654,8 +661,8 @@
             align-items: center;
             margin-right: 0px;
             border-radius: 10px;
-            padding: 20px;
-            min-width: 220px;
+            padding: 12px;
+            min-width: 100px;
             color: white;
             .heading {
               font-size: 40px;
@@ -731,24 +738,7 @@
     }
   }
 }
-@media only screen and (orientation: portrait) and (max-width: 800px) {
-  .waitlistdashboard {
-    .contentWrapper {
-      .mainContent {
-        .flexTop {
-          .flipcard {
-            &:nth-child(2) {
-              margin-right: 0px;
-            }
-            &:nth-child(3) {
-              margin-right: 20px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
+
 @media only screen and (orientation: portrait) and (max-width: 700px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
@@ -868,6 +858,7 @@
     }
   }
 }
+
 @media only screen and (orientation: portrait) and (max-width: 570px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
@@ -992,6 +983,7 @@
   }
 }
 
+// landscape mobile
 @media only screen and (orientation: landscape) and (max-height: 500px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
@@ -1122,7 +1114,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-width: 900px) {
+@media only screen and (orientation: landscape) and (max-height: 900px) {
   .waitlistdashboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -1151,7 +1143,7 @@
           flex-wrap: wrap;
           justify-content: space-evenly;
           height: fit-content;
-          margin-bottom: 5px;
+          margin-bottom: 10px;
           gap: 5px;
           .flipcard {
             background-color: transparent;

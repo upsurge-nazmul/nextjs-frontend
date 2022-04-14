@@ -58,7 +58,7 @@
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
   .waitlistblog {
     overflow: hidden;
     width: 100%;
@@ -71,16 +71,22 @@
       margin-bottom: 20px;
     }
     .wrapper {
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
       .blog {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         background-color: rgba(0, 0, 0, 0.05);
         border-radius: 8px;
         padding: 10px 10px;
         cursor: pointer;
         transition: all 0.3s ease;
+        flex: 1;
+        min-width: 40%;
         &:hover {
           background-color: rgba(0, 0, 0, 0.1);
         }

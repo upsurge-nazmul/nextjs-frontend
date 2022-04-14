@@ -278,7 +278,8 @@
     color: rgb(59, 59, 59);
   }
 }
-@media only screen and (orientation: portrait) and (max-width: 860px) {
+
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
   .footerSection {
     height: max-content;
     display: flex;
