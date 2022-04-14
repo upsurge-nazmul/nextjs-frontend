@@ -185,6 +185,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       unitycontext.on("error", function (message) {
         console.log(message);
       });
+      unitycontext.on("Fullscreen", function () {
+        movetofull();
+      });
     },
     [unitycontext]
   );

@@ -28,6 +28,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const [unitycontext, setunitycontext] = useState(null);
   const [gamedata, setgamedata] = useState(null);
   const [progression, setProgression] = useState(0);
+  const [isfullscreen, setisfullscreen] = useState(false);
   const [muted, setmuted] = useState(false);
   const [tasks, settasks] = useState([]);
   const [canvassize, setcanvassize] = useState({ width: 800, height: 800 });
@@ -165,9 +166,46 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
       unitycontext.on("Exit", function () {
         router.reload();
       });
+      unitycontext.on("Fullscreen", function () {
+        movetofull();
+      });
     },
     [unitycontext]
   );
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+    } else {
+      let element = document.getElementById("unity-wrapper");
+      console.log(element);
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+      setisfullscreen(true);
+    }
+  }
   return (
     <div className={styles.moneyAce}>
       <DashboardLeftPanel type="waitlist" />
