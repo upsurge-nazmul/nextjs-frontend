@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .liveClasses {
   display: flex;
   background-color: #17d1bc;
@@ -669,6 +671,137 @@
             width: 128px;
             cursor: pointer;
             height: 48px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .liveClasses {
+    display: flex;
+    flex-direction: column;
+    background-color: #17d1bc;
+    height: max-content;
+    width: 100vw;
+    padding: 0px;
+    min-height: fit-content;
+    .top {
+      padding: 0 20px;
+      margin-top: 20px;
+      width: 100%;
+      .heading {
+        text-align: center;
+        width: 100%;
+        font-size: $tablet-heading;
+      }
+      .subheading {
+        line-height: $tablet-midsubheading-line;
+        font-size: $tablet-midsubheading;
+        width: 100%;
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+    .right {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin: 40px 0;
+      .liveclassimg {
+        width: 80vw;
+        height: 30vh;
+        min-width: 280px;
+      }
+      .hoverimg {
+        display: none;
+      }
+    }
+    .bottom {
+      height: max-content;
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      height: max-content;
+      flex: 1;
+      .left {
+        display: none;
+        width: 0px;
+        .lefticon {
+          display: none;
+        }
+      }
+      .right {
+        display: none;
+        width: 0px;
+        .righticon {
+          display: none;
+        }
+      }
+      .mid {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        height: max-content;
+        overflow-x: auto;
+        flex: 1;
+        margin-right: 20px;
+        padding-bottom: 50px;
+        margin-top: 50px;
+        .container {
+          width: 25%;
+          background-color: #fff;
+          border-radius: 12px;
+          padding: 20px;
+          min-width: 250px;
+          max-width: unset;
+          margin: 0;
+          margin-right: 20px;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          min-height: 350px;
+          max-height: 450px;
+          align-items: center;
+          img {
+            width: 100%;
+            max-height: 170px;
+            border-radius: 18px;
+            flex: 1;
+            object-fit: cover;
+          }
+          .heading {
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+          }
+          .description,
+          .by {
+            font-size: 12px;
+            margin-top: 10px;
+            width: 100%;
+            font-weight: 400;
+          }
+          .by {
+            margin-top: 10px;
+            color: #848484;
+          }
+          .button {
+            margin-top: 20px;
+            margin-bottom: auto;
+            background: #4166eb;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 12px 22px;
+            width: 50%;
+            font-size: 12px;
+            height: 20%;
           }
         }
       }
