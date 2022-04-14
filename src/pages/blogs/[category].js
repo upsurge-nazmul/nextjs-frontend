@@ -15,8 +15,9 @@ import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
 import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 
-function BlogPage({ blogs, totalblogs, porppagination }) {
+function BlogPage({ blogs, totalblogs, porppagination, userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
@@ -30,7 +31,12 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [page, setpage] = useState(1);
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -220,14 +226,35 @@ function BlogPage({ blogs, totalblogs, porppagination }) {
 export default BlogPage;
 
 export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
   let res = await BlogApis.getblogs({ page: 1, category: params.category });
-  console.log(res.data);
-  if (res && res.data && res.data.data) {
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return {
+        props: {
+          blogs: [],
+          userdata: null,
+          totalblogs: 0,
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+          blogs: res.data.data.rows,
+          totalblogs: res.data.data.count,
+        },
+      };
+    }
+  } else {
     return {
-      props: {
-        blogs: res.data.data.rows,
-        totalblogs: res.data.data.count,
-      },
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
     };
-  } else return { props: { blogs: [], totalblogs: 0 } };
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Contact/contact.module.scss";
@@ -13,7 +13,8 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import LogoFullWhte from "../../components/SVGcomponents/LogoFullWhte";
 import { onlyText } from "../../helpers/validationHelpers";
-function Contact() {
+import { MainContext } from "../../context/Main";
+function Contact({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [email, setEmail] = useState("");
@@ -25,6 +26,13 @@ function Contact() {
     type: "success",
     msg: "",
   });
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   async function handlesubmit() {
     if (!name) {
       settoastdata({
@@ -177,3 +185,27 @@ function Contact() {
 }
 
 export default Contact;
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

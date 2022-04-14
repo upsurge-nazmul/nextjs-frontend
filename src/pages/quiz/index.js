@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import QuizComponent from "../../components/Quiz/QuizComponent";
@@ -16,6 +16,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import JoinUs from "../../components/Home/JoinUs";
 import LeaderBoard from "../../components/LeaderBoard";
+import { MainContext } from "../../context/Main";
 const specialchars = [
   "#",
   "$",
@@ -53,7 +54,7 @@ const specialchars = [
   "8",
   "9",
 ];
-function Quiz() {
+function Quiz({ userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showQuiz, setshowQuiz] = useState(false);
@@ -91,6 +92,13 @@ function Quiz() {
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
   const [quiztoken, setquiztoken] = useState("");
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     router.beforePopState(({ as }) => {
       if (as !== router.asPath) {
@@ -644,3 +652,28 @@ function Quiz() {
 }
 
 export default Quiz;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

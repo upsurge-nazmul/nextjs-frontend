@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Entrepreneuership from "../../components/Benefits/Entrepreneuership";
 import Experimential from "../../components/Benefits/Experimential";
 import Financial from "../../components/Benefits/Financial";
@@ -13,13 +13,22 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/Benefits/benefits.module.scss";
 import Values from "../../components/Home/Values";
 import Skills from "../../components/Benefits/Skills";
-function BenfitsPage() {
+import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
+function BenfitsPage({ userdata }) {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -60,3 +69,27 @@ function BenfitsPage() {
 }
 
 export default BenfitsPage;
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

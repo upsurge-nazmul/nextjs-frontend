@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CalculatorRouter from "../../components/Calculators/CalculatorRouter";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
@@ -10,8 +10,10 @@ import WaitingListCta from "../../components/WaitingListCta";
 import JoinUs from "../../components/Home/JoinUs";
 import { Calc_Data } from "../../static_data/Calc_Data";
 import RelativeSection from "../../components/Calculators/RelativeSection";
+import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 
-function CalculatorsPage() {
+function CalculatorsPage({ userdata }) {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [heading, setHeading] = useState("");
@@ -21,6 +23,13 @@ function CalculatorsPage() {
   const [paths, setpaths] = useState(["home", "calculators"]);
   const [showpopup, setshowpopup] = useState(false);
   const [error, seterror] = useState("");
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     seterror("");
     if (!Calc_Data[calculatorName]) {
@@ -79,3 +88,28 @@ function CalculatorsPage() {
 }
 
 export default CalculatorsPage;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

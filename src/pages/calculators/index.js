@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Calculators/calculatormainpage.module.scss";
@@ -9,13 +9,22 @@ import JoinUs from "../../components/Home/JoinUs";
 import { Calc_Data } from "../../static_data/Calc_Data";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
+import LoginApis from "../../actions/apis/LoginApis";
+import { MainContext } from "../../context/Main";
 
-function CalculatorsPage() {
+function CalculatorsPage({ userdata }) {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [showpopup, setshowpopup] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     if (calculatorName && !Calc_Data[calculatorName]) {
       router.push("/calculators/main");
@@ -106,3 +115,28 @@ function CalculatorsPage() {
 }
 
 export default CalculatorsPage;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

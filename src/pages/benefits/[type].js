@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Entrepreneuership from "../../components/Benefits/Entrepreneuership";
 import Experimential from "../../components/Benefits/Experimential";
 import Financial from "../../components/Benefits/Financial";
@@ -10,8 +10,10 @@ import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import Values from "../../components/Home/Values";
 import Skills from "../../components/Benefits/Skills";
+import LoginApis from "../../actions/apis/LoginApis";
+import { MainContext } from "../../context/Main";
 
-function BenfitsPage() {
+function BenfitsPage({ userdata }) {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
@@ -19,6 +21,13 @@ function BenfitsPage() {
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   function getheight(el) {
     if (!el) {
       return 0;
@@ -77,7 +86,8 @@ function BenfitsPage() {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         stickyheader={stickyheader}
-        setshowauth={setshowauth}        showpopup={showpopup}
+        setshowauth={setshowauth}
+        showpopup={showpopup}
         setshowpopup={setshowpopup}
       />
       <LeftPanel
@@ -97,3 +107,28 @@ function BenfitsPage() {
 }
 
 export default BenfitsPage;
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

@@ -14,8 +14,9 @@ import MoreCard from "../../components/Blog/MoreCard";
 import WaitingListCta from "../../components/WaitingListCta";
 import JoinUs from "../../components/Home/JoinUs";
 import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 
-export default function BlogPage({ blogdata, related }) {
+export default function BlogPage({ blogdata, related, userdata }) {
   const router = useRouter();
   const [headings, setheadings] = useState([]);
   const [scroll, setscroll] = useState(80);
@@ -24,9 +25,15 @@ export default function BlogPage({ blogdata, related }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { setuserdata } = useContext(MainContext);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
   let date = new Date(Number(blogdata.date));
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -227,6 +234,7 @@ export default function BlogPage({ blogdata, related }) {
   );
 }
 export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
   let blogdata = await getBlog({ id: params.id });
   let related = [];
   let res = await BlogApis.getblogs({
@@ -237,9 +245,36 @@ export async function getServerSideProps({ params, req }) {
   if (res && res.data && res.data.data) {
     related = res.data.data.rows;
   }
-  return { props: { blogdata: blogdata, related } };
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+          blogdata,
+          related,
+        },
+      };
+    }
+  } else {
+    return {
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userdata: null,
+        blogdata,
+        related,
+      },
+    };
+  }
 }
-
 async function getBlog(id) {
   let response = await BlogApis.getblogwithid(id);
   if (response && response.data && response.data.data)
