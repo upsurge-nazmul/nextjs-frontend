@@ -53,7 +53,9 @@
 }
 .tabletcard {
 }
-@media only screen and (max-width: 860px) {
+
+// phone portrait
+@media only screen and (orientation: portrait) and (max-width: 700px) {
   .moreCard {
     border-radius: 18px;
     width: calc(100%);
@@ -87,7 +89,45 @@
     }
   }
 }
-@media screen and (orientation: landscape) and (max-height: 500px) {
+
+// tab portrait
+@media only screen and (orientation: portrait) and (min-width: 701px) and (max-width: 1024px) {
+  .moreCard {
+    border-radius: 18px;
+    min-width: 48%;
+    margin: 0;
+    padding: 20px;
+    img {
+      width: 100%;
+      height: 150px;
+      min-height: 125px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .categories {
+      margin-top: 10px;
+      p {
+        font-size: 10px;
+      }
+    }
+    .title {
+      font-size: clamp(12px, 1.5vw, 14px);
+    }
+    .content {
+      font-size: clamp(10px, 1vw, 12px);
+      margin-top: 3px;
+    }
+    .time {
+      margin-top: 5px;
+      color: hsla(0, 0%, 52%, 1);
+      font-size: clamp(10px, 1vw, 12px);
+      font-weight: 400;
+    }
+  }
+}
+
+// phone landscape
+@media only screen and (orientation: landscape) and (max-height: 700px) {
   .moreCard {
     border-radius: 18px;
     width: 27.9vw;
@@ -121,10 +161,12 @@
     }
   }
 }
-@media screen and (orientation: landscape) and (max-width: 900px) {
+
+// tab landscape
+@media only screen and (orientation: landscape) and (min-height: 701px) and (max-height: 1024px) {
   .moreCard {
     border-radius: 18px;
-    width: 27.9vw;
+    width: 32%;
     margin: 0;
     padding: 20px;
     img {
@@ -152,89 +194,6 @@
       color: hsla(0, 0%, 52%, 1);
       font-size: clamp(10px, 1vw, 12px);
       font-weight: 400;
-    }
-  }
-}
-@media screen and (orientation: portrait) and (min-width: 1000px) {
-  .moreCard {
-    border-radius: 18px;
-    width: 27.9vw;
-    margin: 0;
-    padding: 20px;
-    img {
-      width: 100%;
-      height: 150px;
-      min-height: 125px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-    .categories {
-      margin-top: 10px;
-      p {
-        font-size: 10px;
-      }
-    }
-    .title {
-      font-size: clamp(12px, 1.5vw, 14px);
-    }
-    .content {
-      font-size: clamp(10px, 1vw, 12px);
-      margin-top: 3px;
-    }
-    .time {
-      margin-top: 5px;
-      color: hsla(0, 0%, 52%, 1);
-      font-size: clamp(10px, 1vw, 12px);
-      font-weight: 400;
-    }
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .moreCard {
-    border-radius: 12px;
-    width: 42vw;
-    margin: 0;
-    margin-bottom: 20px;
-    padding: 20px;
-    height: 400px;
-    max-width: unset;
-    img {
-      width: 100%;
-      height: 200px;
-      min-height: 125px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-    .categories {
-      margin-top: 10px;
-      p {
-        font-size: $tablet-detail;
-      }
-    }
-    .title {
-      font-size: $tablet-midsubheading;
-      line-height: $tablet-midsubheading-line;
-    }
-    .content {
-      font-size: $tablet-smallsubheading;
-      margin-top: 3px;
-    }
-    .time {
-      margin-top: 5px;
-      color: hsla(0, 0%, 52%, 1);
-      font-size: clamp(10px, 1vw, 12px);
-      font-weight: 400;
-    }
-  }
-  .tabletcard {
-    width: 80%;
-    height: fit-content;
-    img {
-      width: 100%;
-      height: 300px;
-      min-height: 125px;
-      border-radius: 12px;
-      object-fit: cover;
     }
   }
 }
