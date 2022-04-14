@@ -112,9 +112,11 @@
 .modernInputBoxdate {
   z-index: 500;
 }
+
 @media only screen and (max-width: 860px) {
   .modernInputBox {
     margin-bottom: 10px;
+    width: 100%;
     .placeholder {
       font-size: 12px;
       padding: 0 15px;
