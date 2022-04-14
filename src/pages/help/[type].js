@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HelpHeader from "../../components/Help/HelpHeader";
 import image from "../../assets/help/help.png";
 import Faq from "../../components/Help/Faq";
@@ -13,8 +13,10 @@ import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
+import LoginApis from "../../actions/apis/LoginApis";
+import { MainContext } from "../../context/Main";
 
-function Help() {
+function Help({ userdata }) {
   const router = useRouter();
   const { type } = router.query;
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -22,6 +24,12 @@ function Help() {
   const [showauth, setshowauth] = useState(false);
   const [current, setcurrent] = useState("");
   const [showpopup, setshowpopup] = useState(false);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
 
   const faqs = [
     {
@@ -154,3 +162,27 @@ function Help() {
 }
 
 export default Help;
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
+}

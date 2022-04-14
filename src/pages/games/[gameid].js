@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameApis from "../../actions/apis/GameApis";
@@ -16,6 +16,8 @@ import { Game_Unity_Data } from "../../static_data/Game_Data";
 import Loader from "../../components/Loader";
 import Spinner from "../../components/Spinner";
 import GameLandscapeInfo from "../../components/Home/GameLandscapeInfo";
+import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 
 const specialchars = [
   "#",
@@ -54,7 +56,7 @@ const specialchars = [
   "8",
   "9",
 ];
-export default function GamePage({ gamedata }) {
+export default function GamePage({ gamedata, userdata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -76,6 +78,13 @@ export default function GamePage({ gamedata }) {
   const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const { gameid, id } = router.query;
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   const handlefullscren = useFullScreenHandle();
   function handleOnClickFullscreen() {
     unitycontext.setFullscreen(true);
@@ -540,9 +549,33 @@ export default function GamePage({ gamedata }) {
 }
 
 export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
   let gamedata = await GameApis.gamedata({ id: params.gameid });
-  if (gamedata && gamedata.data && gamedata.data.data) {
-    return { props: { gamedata: gamedata.data.data } };
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+          gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userdata: null,
+        gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+      },
+    };
   }
-  return { props: { gamedata: null } };
 }

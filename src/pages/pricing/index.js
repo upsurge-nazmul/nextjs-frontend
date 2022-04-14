@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
@@ -6,9 +7,10 @@ import LeftPanel from "../../components/LeftPanel";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import TickSvg from "../../components/SVGcomponents/TickSvg";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Pricing/pricing.module.scss";
 
-export default function Pricing() {
+export default function Pricing({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
@@ -55,6 +57,13 @@ export default function Pricing() {
       ],
     },
   ];
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 1) {
@@ -123,4 +132,28 @@ export default function Pricing() {
       <Footer />
     </div>
   );
+}
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
 }

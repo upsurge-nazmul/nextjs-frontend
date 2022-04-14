@@ -18,8 +18,15 @@ import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
 import WaitlistPopUp from "../../components/WaitlistPopUp";
 import { MainContext } from "../../context/Main";
+import LoginApis from "../../actions/apis/LoginApis";
 
-function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
+function BlogPage({
+  blogs,
+  totalblogs,
+  porppagination,
+  highlightblogs,
+  userdata,
+}) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [openFull, setOpenFull] = useState(false);
@@ -33,7 +40,12 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
   const [page, setpage] = useState(1);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -223,19 +235,42 @@ function BlogPage({ blogs, totalblogs, porppagination, highlightblogs }) {
 export default BlogPage;
 
 export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
   let res = await BlogApis.getallblogs();
   let res2 = await BlogApis.gethomeblogs();
   let highlightblogs = [];
   if (res2 && res2.data && res2.data.success) {
     highlightblogs = res2.data.data;
   }
-  if (res && res.data && res.data.data) {
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return {
+        props: {
+          blogs: [],
+          userdata: null,
+          totalblogs: 0,
+          highlightblogs,
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+          blogs: res.data.data.rows,
+          totalblogs: res.data.data.count,
+          highlightblogs,
+        },
+      };
+    }
+  } else {
     return {
-      props: {
-        blogs: res.data.data.rows,
-        totalblogs: res.data.data.count,
-        highlightblogs,
-      },
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
     };
-  } else return { props: { blogs: [], totalblogs: 0, highlightblogs } };
+  }
 }

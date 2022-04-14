@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
@@ -7,7 +7,9 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/about/about.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
-export default function About() {
+import LoginApis from "../../actions/apis/LoginApis";
+import { MainContext } from "../../context/Main";
+export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
@@ -44,6 +46,13 @@ export default function About() {
       link: "",
     },
   ];
+  const { setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    if (userdata) {
+      setuserdata(userdata);
+    }
+  }, [userdata]);
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -345,4 +354,28 @@ export default function About() {
       <Footer />
     </div>
   );
+}
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg || "";
+      return { props: {} };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdata: response?.data?.data || null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token", userdata: null },
+    };
+  }
 }
