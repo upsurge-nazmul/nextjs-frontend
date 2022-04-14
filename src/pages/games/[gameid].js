@@ -297,6 +297,9 @@ export default function GamePage({ gamedata, userdata }) {
       unitycontext.on("Exit", function () {
         router.push("/games");
       });
+      unitycontext.on("Fullscreen", function () {
+        movetofull();
+      });
     },
     [unitycontext]
   );
