@@ -427,7 +427,8 @@
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 900px) {
+// tab screen portrait
+@media only screen and (orientation: portrait) and (max-width: 912px) {
   .questPage {
     .contentWrapper {
       .mainContent {
@@ -610,6 +611,8 @@
     }
   }
 }
+
+// mobile screen portrait
 @media only screen and (orientation: portrait) and (max-width: 700px) {
   .questPage {
     .contentWrapper {
@@ -929,7 +932,8 @@
     }
   }
 }
-@media only screen and (orientation: landscape) and (max-height: 900px) {
+
+@media only screen and (orientation: landscape) and (max-height: 912px) {
   .questPage {
     .contentWrapper {
       .mainContent {
