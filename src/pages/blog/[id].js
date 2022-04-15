@@ -252,7 +252,7 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg || "";
-      return { props: {} };
+      return { props: { blogdata, related } };
     } else {
       return {
         props: {
