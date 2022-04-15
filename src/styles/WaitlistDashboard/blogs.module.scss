@@ -100,7 +100,6 @@
       .more {
         width: 100%;
         margin-top: 60px;
-
         .moreHeading {
           color: #000000;
           font-weight: 700;
@@ -111,7 +110,8 @@
         .moreWrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
+          gap: 3vw;
         }
       }
       .loadmorebutton {
@@ -703,7 +703,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-height: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .blogs {
     width: 100%;
     .contentWrapper {

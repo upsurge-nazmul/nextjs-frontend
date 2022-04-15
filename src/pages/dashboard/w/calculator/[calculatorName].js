@@ -21,7 +21,7 @@ import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
 export default function CalculatorsPage({ userdatafromserver }) {
   const router = useRouter();
   const { calculatorName } = router.query;
-  const [heading, setHeading] = useState("");
+  const [heading, setHeading] = useState("Calculators");
   const [subheading, setSubheading] = useState("");
   const [mode, setmode] = useState("");
   const { setuserdata } = useContext(MainContext);
