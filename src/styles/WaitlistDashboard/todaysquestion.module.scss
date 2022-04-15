@@ -131,6 +131,7 @@
   }
 }
 
+// portrait mobile
 @media only screen and (orientation: portrait) and (max-width: 570px) {
   .todaysquestion {
     display: flex;
@@ -143,7 +144,7 @@
     margin-right: 0;
     margin-bottom: 20px;
     .heading {
-      font-size: $tablet-smallheading;
+      font-size: $mobile-bigheading;
       font-weight: 700;
       margin-bottom: 10px;
     }
@@ -201,13 +202,13 @@
     }
     .question {
       font-weight: 500;
-      font-size: $tablet-subheading;
+      font-size: $mobile-subheading;
       margin-top: 12px;
       margin-bottom: 20px;
     }
     .options {
       .option {
-        font-size: $tablet-smallsubheading;
+        font-size: $mobile-detail;
         background-color: #27bdab;
         padding: 10px;
         border-radius: 6px;
@@ -222,6 +223,7 @@
   }
 }
 
+// portrait tab
 @media only screen and (orientation: portrait) and (min-width: 571px) and (max-width: 1024px) {
   .todaysquestion {
     display: flex;
@@ -313,6 +315,7 @@
   }
 }
 
+// landscape mobile
 @media only screen and (orientation: landscape) and (max-height: 500px) {
   .todaysquestion {
     display: flex;
@@ -354,9 +357,8 @@
       margin: 5px 0;
     }
     .options {
-      margin: auto;
       .option {
-        font-size: 14px;
+        font-size: $mobile-detail;
         background-color: #27bdab;
         padding: 10px;
         border-radius: 6px;
@@ -371,7 +373,8 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (max-width: 900px) {
+// landscape tab
+@media only screen and (orientation: landscape) and (max-width: 900px) and (min-height: 500px) {
   .todaysquestion {
     display: flex;
     flex-direction: column;
