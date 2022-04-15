@@ -251,9 +251,9 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg || "";
       return {
         props: {
-          blogs: [],
           userdata: null,
-          totalblogs: 0,
+          totalblogs: res?.data?.data?.count,
+          blogs: res?.data?.data?.rows,
           highlightblogs,
         },
       };
@@ -262,8 +262,8 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdata: response?.data?.data || null,
-          blogs: res.data.data.rows,
-          totalblogs: res.data.data.count,
+          totalblogs: res?.data?.data?.count,
+          blogs: res?.data?.data?.rows,
           highlightblogs,
         },
       };
@@ -275,7 +275,8 @@ export async function getServerSideProps({ params, req }) {
         msg: "cannot get token",
         userdata: null,
         highlightblogs,
-        blogs: res.data.data.rows,
+        totalblogs: res?.data?.data?.count,
+        blogs: res?.data?.data?.rows,
       },
     };
   }
