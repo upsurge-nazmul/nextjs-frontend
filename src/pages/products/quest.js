@@ -63,6 +63,7 @@ export default function Products({ userdata }) {
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         stickyheader={stickyheader}
+        setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
         settoastdata={settoastdata}
