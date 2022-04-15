@@ -147,7 +147,7 @@ function BlogPage({
 
         <CategoryBar selectedCat={selectedCat} sortPosts={sortPosts} />
 
-        {highlightblogs.length > 0 && (
+        {highlightblogs?.length > 0 && (
           <div className={styles.postsMain}>
             <div
               className={styles.left}
@@ -270,7 +270,13 @@ export async function getServerSideProps({ params, req }) {
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userdata: null,
+        highlightblogs,
+        blogs: res.data.data.rows,
+      },
     };
   }
 }
