@@ -343,6 +343,7 @@
         .flexMid {
           width: 100%;
           display: flex;
+          min-height: unset;
         }
         .flexRight {
           width: 40%;
