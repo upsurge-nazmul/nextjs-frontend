@@ -572,7 +572,11 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg || "";
-      return { props: {} };
+      return {
+        props: {
+          gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+        },
+      };
     } else {
       return {
         props: {
