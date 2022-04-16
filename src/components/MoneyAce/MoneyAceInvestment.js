@@ -47,6 +47,7 @@ export default function MoneyAceInvestment({
       let res = await MoneyAceApis.getassetvalues();
       if (res && res.data && res.data.success) {
         setassetchartdata(res.data.data.chart_data);
+        console.log(res.data.data.chart_data);
         let d = res.data.data.current;
         setassetdata([
           { name: "Stocks", value: d.stock_value },
@@ -92,11 +93,12 @@ export default function MoneyAceInvestment({
                   colors={{ datum: "color" }}
                   axisTop={null}
                   axisRight={null}
+                  enableArea
                   axisBottom={{
                     orient: "bottom",
                     tickSize: 5,
                     tickPadding: 5,
-                    tickRotation: -30,
+                    tickRotation: -15,
                     legend: "Month",
                     legendOffset: 40,
                     legendPosition: "middle",
@@ -129,8 +131,8 @@ export default function MoneyAceInvestment({
                       },
                     },
                   }}
+                  useMesh
                   pointSize={10}
-                  enablePointLabel
                   pointBorderWidth={2}
                   pointBorderColor={{ from: "serieColor" }}
                   pointLabelYOffset={-12}

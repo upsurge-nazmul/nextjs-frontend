@@ -72,8 +72,7 @@ export function getRelativeTime(previous) {
 }
 
 export function getIndianTime(timestamp, sign) {
-  const date = new Date(timestamp);
-  console.log(date.getFullYear());
+  const date = new Date(Number(timestamp));
   return `${date.getDate()}${sign ? sign : "/"}${
     date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
   }${sign ? sign : "/"}${date.getFullYear()}`;
@@ -90,4 +89,11 @@ export function getMonthsLeft(diff) {
     return 0;
   }
   return Math.round(elapsed / msPerMonth);
+}
+
+export function getMonthYearOnly(timestamp) {
+  const date = new Date(Number(timestamp));
+  return `${
+    date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
+  }/${date.getFullYear().toString().substring(2)}`;
 }
