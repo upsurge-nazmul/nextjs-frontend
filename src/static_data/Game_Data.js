@@ -4,6 +4,7 @@ export const Game_Data = {
     description: "Can stay within your budget at the mall?",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
     pushto: "/games/DontOverspend",
+    changedId: "DontOverspend",
   },
   BalanceBuilder: {
     name: "Balance builder",
