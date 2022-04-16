@@ -18,7 +18,7 @@ import Spinner from "../../components/Spinner";
 import GameLandscapeInfo from "../../components/Home/GameLandscapeInfo";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
-
+let fullscreenenabled = false;
 const specialchars = [
   "#",
   "$",
@@ -298,12 +298,13 @@ export default function GamePage({ gamedata, userdata }) {
         router.push("/games");
       });
       unitycontext.on("Fullscreen", function () {
-        console.log(isfullscreen);
-        if (isfullscreen) {
+        if (fullscreenenabled) {
           unitycontext.setFullscreen(false);
+          fullscreenenabled = false;
           setisfullscreen(false);
         } else {
           unitycontext.setFullscreen(true);
+          fullscreenenabled = true;
           setisfullscreen(true);
         }
       });
@@ -329,6 +330,7 @@ export default function GamePage({ gamedata, userdata }) {
         document.msExitFullscreen();
       }
       setisfullscreen(false);
+      fullscreenenabled = false;
     } else {
       let element = document.getElementById("unity-wrapper");
       console.log(element);
@@ -342,6 +344,7 @@ export default function GamePage({ gamedata, userdata }) {
         element.msRequestFullscreen();
       }
       setisfullscreen(true);
+      fullscreenenabled = true;
     }
   }
   useEffect(() => {
@@ -370,6 +373,7 @@ export default function GamePage({ gamedata, userdata }) {
 
       if (!fullscreenElement) {
         setisfullscreen(false);
+        fullscreenenabled = false;
         // router.push("/games");
       }
     }
@@ -568,7 +572,11 @@ export async function getServerSideProps({ params, req }) {
     });
     if (response && !response.data.success) {
       msg = response.data.msg || "";
-      return { props: {} };
+      return {
+        props: {
+          gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+        },
+      };
     } else {
       return {
         props: {
