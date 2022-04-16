@@ -494,7 +494,7 @@
 }
 
 // phone portrait
-@media only screen and (orientation: portrait) and (max-width: 600px) {
+@media only screen and (orientation: portrait) and (max-width: 570px) {
   .leaderboard {
     background-color: #f4f5f7;
     height: 100vh;
@@ -780,7 +780,7 @@
 }
 
 // tab portrait
-@media only screen and (orientation: portrait) and (max-width: 1024px) {
+@media only screen and (orientation: portrait) and (min-width: 571px) and (max-width: 1024px) {
   .leaderboard {
     background-color: #f4f5f7;
     height: 100vh;

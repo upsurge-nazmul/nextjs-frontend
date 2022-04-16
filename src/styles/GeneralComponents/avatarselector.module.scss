@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .avatarselector {
   position: fixed;
   width: 100vw;
@@ -29,6 +31,7 @@
     .heading {
       font-size: 22px;
       font-weight: 500;
+      text-align: center;
     }
     .wrapper {
       width: 100%;
@@ -72,16 +75,16 @@
   .avatarselector {
     .main {
       width: 90vw;
-      height: 70vh;
+      height: fit-content;
       background-color: white;
       z-index: 5;
       border-radius: 12px;
-      padding: 20px 30px;
+      padding: 30px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       .heading {
-        font-size: 22px;
+        font-size: $tablet-smallheading;
         font-weight: 500;
         text-align: center;
       }
@@ -96,7 +99,7 @@
         overflow-y: auto;
         flex: 1;
         .avatar {
-          width: calc(100% / 2 - 20px);
+          width: calc(100% / 4 - 20px);
           height: auto;
           aspect-ratio: 1/1;
           cursor: pointer;
