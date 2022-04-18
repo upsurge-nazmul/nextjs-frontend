@@ -259,6 +259,23 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      if (response.data.data.is_waiting_active) {
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/w",
+          },
+        };
+      }
+      if (response.data.data.user_type !== "parent")
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/k",
+          },
+        };
       let pendinchores = await ChoreApis.getchildchores(
         {
           id: response.data.data.user_id,
@@ -266,7 +283,6 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
-      console.log(pendinchores.data);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });

@@ -5,6 +5,14 @@
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
+  .back{
+    width: 3rem;
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    height: fit-content;
+    cursor: pointer;
+  }
   .heading {
     font-weight: 900;
     font-family: "Fira Sans", sans-serif;

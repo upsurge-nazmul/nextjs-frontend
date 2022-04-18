@@ -23,7 +23,7 @@ export default function MoneyAceGamesPage({ setcurrenttab, canvassize }) {
               key={game}
               onClick={() =>
                 router.push(
-                  "/dashboard/k/game/" + (Game_Data[game].changedId || game)
+                  "/dashboard/w/game/" + (Game_Data[game].changedId || game)
                 )
               }
             >
