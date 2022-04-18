@@ -103,7 +103,6 @@
         background-color: #4166eb;
         justify-content: center;
         padding: 40px 0;
-        height: 100%;
         .box {
           width: 80%;
           background-color: white;
@@ -113,8 +112,10 @@
           align-items: center;
           justify-content: center;
           .jasper {
-            width: 50%;
+            width: 80%;
             margin-top: 20px;
+            background-color: #4166eb;
+            border-radius: 12px;
           }
           p {
             width: 80%;

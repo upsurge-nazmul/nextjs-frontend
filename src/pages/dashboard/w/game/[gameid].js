@@ -16,6 +16,7 @@ import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
 import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
 import Spinner from "../../../../components/Spinner";
+import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
 
 export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
@@ -41,6 +42,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   const [removeBorder, setremoveBorder] = useState(false);
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
+  const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
@@ -305,6 +307,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
+        {showgamelandscapeinfo && (
+          <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+        )}
         <DashboardHeader
           mode={mode}
           setmode={setmode}
@@ -338,16 +343,19 @@ export default function GamePage({ userdatafromserver, gamedata }) {
           {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
+                <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
                 <p className={styles.heading}>
                   Please switch to landscape mode
                 </p>
                 <p>{`This game only playable in landscape mode.`}</p>
                 <div
                   className={styles.button}
-                  onClick={() => router.push("/dashboard/w/games")}
+                  onClick={() => setshowgamelandscapeinfo(true)}
                 >
-                  Go back
+                  Know more
                 </div>
               </div>
             </div>
