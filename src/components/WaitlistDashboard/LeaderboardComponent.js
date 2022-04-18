@@ -1,10 +1,11 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import QuizApis from "../../actions/apis/QuizApis";
 import { getCookie } from "../../actions/cookieUtils";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/WaitlistDashboard/leaderboard.module.scss";
 export default function LeaderboardComponent({
   for_game,
@@ -23,12 +24,14 @@ export default function LeaderboardComponent({
     "Quiz",
     "Ludo",
   ]);
+  const { userdata } = useContext(MainContext);
   const [options, setoptions] = useState(optionsbackup);
   async function getludoleaderboard() {
     let leaderboard = await FreeGameApis.getludoleaderboard(
       null,
       getCookie("accesstoken")
     );
+    console.log(leaderboard?.data?.data);
     setleaderboarddata([]);
     setleaderboarddata(leaderboard?.data?.data || []);
   }
@@ -110,7 +113,7 @@ export default function LeaderboardComponent({
                     item.nickname ||
                     item.name ||
                     item.first_name}{" "}
-                  {Number(quiz_rank) === index + 1 && "(you)"}
+                  {item.id === userdata?.user_id && "(you)"}
                 </p>
                 <p className={styles.score}>
                   {item.score ??
