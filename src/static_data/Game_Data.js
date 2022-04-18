@@ -8,6 +8,7 @@ export const Game_Data = {
   },
   BalanceBuilder: {
     name: "Balance builder",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/BalanceBuilder.png",
     description: "How does your bank balance change with different events?",
   },
   HighAndLow: {
@@ -24,10 +25,12 @@ export const Game_Data = {
   },
   MoneyManager: {
     name: "Money manager",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
     description: "Ean money, & divide it between Saving, Expenses & Charity.",
   },
   MoneySlide: {
     name: "Money slide",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
     description: "Fill each piggy-bank with the right amount of money.",
   },
   NeedOrWant: {
