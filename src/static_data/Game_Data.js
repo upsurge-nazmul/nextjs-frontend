@@ -33,12 +33,12 @@ export const Game_Data = {
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
     description: "Fill each piggy-bank with the right amount of money.",
   },
-  NeedOrWant: {
-    name: "Need and want",
-    description:
-      "What is the difference between a need & a want? Let’s play to find out.",
-    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
-  },
+  // NeedOrWant: {
+  //   name: "Need and want",
+  //   description:
+  //     "What is the difference between a need & a want? Let’s play to find out.",
+  //   img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
+  // },
   Ludo: {
     name: "Ludo",
     description:
