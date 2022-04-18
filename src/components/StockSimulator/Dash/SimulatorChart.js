@@ -1,7 +1,6 @@
 import { Line } from "react-chartjs-2";
-import simulatorData from "./data.json";
 
-export default function SimulatorChart() {
+export default function SimulatorChart({ simulatorData, width = "600px" }) {
   const options = {
     responsive: true,
     plugins: {
@@ -37,10 +36,12 @@ export default function SimulatorChart() {
     ],
   };
   return (
-    <Line
-      options={options}
-      data={data}
-      fallbackContent={"Something went wrong"}
-    />
+    <div style={{ height: "100%", width }}>
+      <Line
+        options={options}
+        data={data}
+        fallbackContent={"Something went wrong"}
+      />
+    </div>
   );
 }
