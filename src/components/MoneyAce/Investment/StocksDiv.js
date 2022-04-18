@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import { MainContext } from "../../../context/Main";
+import { toIndianFormat } from "../../../helpers/currency";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import { removenonnumber } from "../../../helpers/validationHelpers";
 import styles from "../../../styles/MoneyAce/stockdiv.module.scss";
+import BackSvg from "../../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function StocksDiv({
   setcurrentmode,
   settoastdata,
   setmoneyacedata,
+  setcurrenttab,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -84,23 +87,35 @@ export default function StocksDiv({
   if (mode === "main")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrentmode("main");
+          }}
+        />
         <p className={styles.heading}>STOCK</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>Nifty</p>
-            <input type="text" value={stockdata?.current_index_price} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(stockdata?.current_index_price)}
+            />
           </div>
           <div className={styles.row}>
             <p>Last year returns </p>
-            <input type="text" value={stockdata?.return_on_investment} />
+            <input type="text" value={stockdata?.return_on_investment + " %"} />
           </div>
           <div className={styles.row}>
             <p>Portfolio value</p>
-            <input type="text" value={stockdata?.total_investment} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(stockdata?.total_investment)}
+            />
           </div>
           <div className={styles.row}>
             <p>Portfolio returns</p>
-            <input type="text" value={stockdata?.portfolio_roi || 0} />
+            <input type="text" value={(stockdata?.portfolio_roi || 0) + " %"} />
           </div>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -115,16 +130,32 @@ export default function StocksDiv({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "sell")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>SELL STOCKS</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
-              Current stock index price is ₹{stockdata?.current_index_price}
+              Current stock index price is ₹
+              {" " + toIndianFormat(stockdata?.current_index_price)}
             </p>
           </div>
           <div className={styles.row}>
@@ -165,7 +196,10 @@ export default function StocksDiv({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -174,11 +208,18 @@ export default function StocksDiv({
   if (mode === "buy")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>BUY STOCKS</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
-              Current stock index price is ₹{stockdata?.current_index_price}
+              Current stock index price is ₹{" "}
+              {toIndianFormat(stockdata?.current_index_price)}
             </p>
           </div>
           <div className={styles.row}>
@@ -220,7 +261,10 @@ export default function StocksDiv({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -229,6 +273,12 @@ export default function StocksDiv({
   if (mode === "portfolio")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>PORTFOLIO</p>
         <div className={styles.scrollwrapper}>
           <div className={styles.headRow}>
@@ -246,10 +296,17 @@ export default function StocksDiv({
                   <div className={styles.rowitem}>
                     {getIndianTime(row.timestamp)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.invested_amount}</div>
-                  <div className={styles.rowitem}>₹{row.current_value}</div>
                   <div className={styles.rowitem}>
-                    {Number(row.current_value) / Number(row.invested_amount)}
+                    ₹ {toIndianFormat(row.invested_amount)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    ₹ {toIndianFormat(row.current_value)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    {(
+                      Number(row.current_value) / Number(row.invested_amount)
+                    ).toFixed(2)}{" "}
+                    %
                   </div>
                 </div>
               );
@@ -259,7 +316,10 @@ export default function StocksDiv({
 
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />

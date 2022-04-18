@@ -74,12 +74,12 @@ export default function LeaderboardComponent({
     <div className={styles.leaderboard}>
       <div className={styles.holder}>
         {/* <p className={`${styles.heading} ${styles.selected}`}>{selected}</p> */}
-        {options.map((item) => (
+        {options.map((item, index) => (
           <p
             className={`${styles.heading} ${
               selected === item && styles.selected
             }`}
-            key={item}
+            key={item + index}
             onClick={() => {
               changeleaderboard(item);
             }}
@@ -89,7 +89,6 @@ export default function LeaderboardComponent({
         ))}
       </div>
       <div className={styles.section}>
-        {/* <p className={styles.subheading}>{selected}</p> */}
         <div className={styles.table}>
           <div className={styles.row}>
             <p className={styles.rank}>Rank</p>
@@ -100,7 +99,7 @@ export default function LeaderboardComponent({
             return (
               <div
                 className={styles.row}
-                key={data.id ?? item.name + index}
+                key={item?.id || item.name + index}
                 style={{
                   backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
                 }}
@@ -125,7 +124,7 @@ export default function LeaderboardComponent({
           {selected === "Quiz" && quiz_rank > 15 && (
             <div
               className={styles.row}
-              key={"sdaoijwq"}
+              key={"sdaoijwqz"}
               style={{
                 backgroundColor: data.length % 2 == 0 ? "#D9F2FF" : "#ffffff",
                 padding: "20px 40px",

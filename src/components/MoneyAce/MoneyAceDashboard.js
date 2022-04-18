@@ -19,6 +19,7 @@ import Upi from "./Upi";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import { getCookie } from "../../actions/cookieUtils";
 import DailyReward from "./DailyReward";
+import { toIndianFormat } from "../../helpers/currency";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -39,6 +40,8 @@ export default function MoneyAceDashboard({
   const [currenttab, setcurrenttab] = useState("dashboard");
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
+  const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
+
   const ref = useRef();
   useEffect(() => {
     if (muted) {
@@ -128,19 +131,19 @@ export default function MoneyAceDashboard({
                     <div className={styles.col}>
                       <p className={styles.head}>INHAND CASH</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata?.inhand_money || 0}
+                        ₹{toIndianFormat(moneyacedata?.inhand_money || 0)}
                       </p>
                     </div>{" "}
                     <div className={styles.col}>
                       <p className={styles.head}>BANK BALANCE</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata?.account_balance || 0}
+                        ₹{toIndianFormat(moneyacedata?.account_balance || 0)}
                       </p>
                     </div>{" "}
                     <div className={styles.col}>
                       <p className={styles.head}>INVESTMENTS</p>
                       <p className={styles.val}>
-                        ₹{moneyacedata?.total_investment || 0}
+                        ₹{toIndianFormat(moneyacedata?.total_investment || 0)}
                       </p>
                     </div>
                   </div>
@@ -220,6 +223,8 @@ export default function MoneyAceDashboard({
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
               settoastdata={settoastdata}
+              setcurrentmode={setinvestmentcurrentmode}
+              currentmode={investmentcurrentmode}
             />
           ) : currenttab === "Bank" ? (
             <Bank
