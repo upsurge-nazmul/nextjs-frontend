@@ -1,0 +1,28 @@
+.left {
+  display: flex;
+  align-items: center;
+  .avatarblock {
+    width: 3vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    .avatar {
+      border-radius: 100%;
+      width: 3vw;
+      height: 3vw;
+      border: 2px solid white;
+      object-fit: cover;
+      background-color: white;
+    }
+    .username {
+      color: white;
+      font-style: italic;
+      text-transform: capitalize;
+      font-size: 1vw;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+  }
+}

@@ -1,3 +1,44 @@
 .watchlist {
+  display: flex;
+  flex-direction: row;
   flex: 1;
+  gap: 10px 20px;
+  align-items: center;
+  .listItem {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    .closeButton {
+      height: fit-content;
+      width: fit-content;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 10px;
+    }
+    .colorCode {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+    .info {
+      .symbol {
+        font-size: 14px;
+        font-weight: 600;
+        color: #676767;
+      }
+      .value {
+        font-size: 14px;
+      }
+    }
+  }
+  .addButton {
+    button {
+      border: none;
+      background-color: transparent;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
 }
