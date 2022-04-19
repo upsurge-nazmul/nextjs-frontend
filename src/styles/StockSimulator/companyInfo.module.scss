@@ -1,0 +1,32 @@
+.companyInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .selectArea {
+    select {
+      width: 300px;
+      border-color: #676767;
+      border-radius: 4px;
+      font-size: 16px;
+      padding: 6px 4px;
+    }
+  }
+  .volumeArea {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 0 6px;
+  }
+  .infoArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+    .infoItem {
+      display: flex;
+      flex-direction: row;
+      gap: 0 6px;
+    }
+  }
+}

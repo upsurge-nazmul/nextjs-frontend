@@ -7,6 +7,9 @@ import Toast from "../../../components/Toast";
 import styles from "../../../styles/kidDashboard/stocksimulator.module.scss";
 import Logo from "../../../components/SVGcomponents/Logo";
 import SimulatorProfile from "../../../components/StockSimulator/SimulatorProfile";
+import SimulatorMonthlyData from "./monthly.json";
+import SimulatorDailyData from "./daily.json";
+import CompanyData from "./companies.json";
 
 export default function StockSimulator({ userdatafromserver }) {
   const [toastdata, settoastdata] = useState({
@@ -27,11 +30,15 @@ export default function StockSimulator({ userdatafromserver }) {
             //     router.push("/");
             //   }}
           />
-          <Watchlist />
+          <Watchlist companyData={CompanyData} />
           <SimulatorProfile avatarUrl={userdatafromserver.user_img_url} />
         </div>
         <div className={styles.bottomSection}>
-          <SimulatorDash />
+          <SimulatorDash
+            simulatorDailyData={SimulatorDailyData}
+            simulatorMonthlyData={SimulatorMonthlyData}
+            companyData={CompanyData}
+          />
         </div>
       </div>
     </div>

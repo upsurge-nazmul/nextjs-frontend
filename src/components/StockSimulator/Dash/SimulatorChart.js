@@ -1,6 +1,9 @@
 import { Line } from "react-chartjs-2";
 
-export default function SimulatorChart({ simulatorData, width = "600px" }) {
+export default function SimulatorChart({
+  simulatorMonthlyData = [],
+  width = "600px",
+}) {
   const options = {
     responsive: true,
     plugins: {
@@ -20,14 +23,16 @@ export default function SimulatorChart({ simulatorData, width = "600px" }) {
     },
   };
 
-  const labels = simulatorData.map((item, i) => `${i + 1}/04`);
+  const labels = simulatorMonthlyData.map((item, i) => `${i + 1}/04`);
 
   const data = {
     labels,
     datasets: [
       {
-        label: simulatorData[0].Symbol,
-        data: simulatorData.map((item) => item.Last),
+        label: simulatorMonthlyData.length
+          ? simulatorMonthlyData[0].Symbol
+          : "",
+        data: simulatorMonthlyData.map((item) => item.Last),
         fill: true,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",

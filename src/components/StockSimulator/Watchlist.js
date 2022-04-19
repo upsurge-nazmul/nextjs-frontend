@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
-import company_data from "./companies.json";
 
-export default function Watchlist() {
-  const [watchlistData, setWatchlistData] = useState(company_data.slice(0, 3));
+export default function Watchlist({ companyData }) {
+  const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
   const colors = [
     "aqua",
     "burlywood",
@@ -25,7 +24,7 @@ export default function Watchlist() {
     <div className={styles.watchlist}>
       {watchlistData && watchlistData.length
         ? watchlistData.map((item, i) => {
-            let rand = Math.floor(Math.random() * colors.length);
+            // let rand = Math.floor(Math.random() * colors.length);
             return (
               <div className={styles.listItem} key={i}>
                 <button
@@ -36,13 +35,13 @@ export default function Watchlist() {
                 </button>
                 <div
                   style={{
-                    backgroundColor: colors[rand],
+                    backgroundColor: colors[i],
                   }}
                   className={styles.colorCode}
                 />
                 <div className={styles.info}>
                   <p className={styles.symbol}>{item.symbol}</p>
-                  <p className={styles.value} style={{ color: colors[rand] }}>
+                  <p className={styles.value} style={{ color: colors[i] }}>
                     $250
                   </p>
                 </div>
