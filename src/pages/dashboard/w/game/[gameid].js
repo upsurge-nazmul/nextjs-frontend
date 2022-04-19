@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
-import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../../../styles/WaitlistDashboard/gamepage.module.scss";
-import validator from "validator";
 import { db } from "../../../../db";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
@@ -321,9 +319,14 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         widthHeight.height < widthHeight.width &&
         !isfullscreen ? (
           <div className={styles.start}>
-            <p className={styles.btn} onClick={movetofull}>
-              Start
-            </p>
+            <div className={styles.box}>
+              <p className={styles.name}>
+                This game can only be played on fullscreen in your phone.
+              </p>
+              <p className={styles.btn} onClick={movetofull}>
+                Go to fullscreen
+              </p>
+            </div>
           </div>
         ) : (
           widthHeight.width <= 900 &&

@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import { MainContext } from "../../../context/Main";
+import { toIndianFormat } from "../../../helpers/currency";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import { removenonnumber } from "../../../helpers/validationHelpers";
 import styles from "../../../styles/MoneyAce/fddiv.module.scss";
+import BackSvg from "../../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function RetirementDiv({
   setcurrentmode,
   settoastdata,
   setmoneyacedata,
   moneyacedata,
+  setcurrenttab,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -17,7 +20,7 @@ export default function RetirementDiv({
   const [err, seterr] = useState("");
   const [portfoliodata, setportfoliodata] = useState([]);
   const [amount, setamount] = useState(1000);
-  const [year, setyear] = useState(1);
+  const [year, setyear] = useState(5);
   useEffect(() => {
     if (mode !== "main") return;
     getdata();
@@ -73,6 +76,12 @@ export default function RetirementDiv({
   if (mode === "main")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrentmode("main");
+          }}
+        />{" "}
         <p className={styles.heading}>RETIREMENT FUND</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
@@ -81,11 +90,17 @@ export default function RetirementDiv({
           </div>
           <div className={styles.row}>
             <p>Account balance</p>
-            <input type="text" value={"₹ " + moneyacedata?.account_balance} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(moneyacedata?.account_balance)}
+            />
           </div>
           <div className={styles.row}>
             <p>Current value retirement fund</p>
-            <input type="text" value={"₹ " + fddata?.total_investment} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(fddata?.total_investment)}
+            />
           </div>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -97,11 +112,26 @@ export default function RetirementDiv({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "buy")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />{" "}
         <p className={styles.heading}>NEW RETIREMENT FUND</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
@@ -110,7 +140,7 @@ export default function RetirementDiv({
           <div className={styles.row}>
             <input
               type="text"
-              value={amount}
+              value={"₹ " + amount}
               onChange={(e) => setamount(removenonnumber(e.target.value))}
               placeholder="Enter amount.."
             />
@@ -120,8 +150,10 @@ export default function RetirementDiv({
           </div>
           <p className={styles.total}>
             ₹{" "}
-            {Number(amount) +
-              amount * ((1 + fddata?.return_on_investment / 100) * year - 1) +
+            {toIndianFormat(
+              Number(amount) +
+                amount * ((1 + fddata?.return_on_investment / 100) * 5 - 1)
+            ) +
               " at " +
               fddata?.return_on_investment +
               " % interest after 5 years"}
@@ -131,22 +163,31 @@ export default function RetirementDiv({
             <div className={styles.btn} onClick={handlebuy}>
               <p>Buy</p>
             </div>
-            <img
-              className={styles.homebtn}
-              onClick={() => setmode("main")}
-              src="https://i.ibb.co/kmfyw9t/homepng.png"
-              alt=""
-            />
             <div className={styles.btn} onClick={() => setmode("main")}>
               <p>Cancel</p>
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "portfolio")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>CURRENT RETIREMENT FUNDS</p>
         <div className={styles.scrollwrapper}>
           <div className={styles.headRow}>
@@ -165,11 +206,15 @@ export default function RetirementDiv({
                   <div className={styles.rowitem}>
                     {getIndianTime(row.timestamp)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.invested_amount}</div>
+                  <div className={styles.rowitem}>
+                    ₹{toIndianFormat(row.invested_amount)}
+                  </div>
                   <div className={styles.rowitem}>
                     {getIndianTime(row.maturity_date)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.maturity_value}</div>
+                  <div className={styles.rowitem}>
+                    ₹{toIndianFormat(row.maturity_value)}
+                  </div>
                   <div className={styles.rowitem}>
                     {row.interest_rate * 10}%
                   </div>
@@ -178,10 +223,12 @@ export default function RetirementDiv({
             })}
           </div>
         </div>
-
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />

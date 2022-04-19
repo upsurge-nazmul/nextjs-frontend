@@ -9,7 +9,7 @@ export function toIndianFormat(value) {
   return value
     ? value.toLocaleString("en-IN", {
         currency: "INR",
-        minimumFractionDigits: 2,
+        minimumFractionDigits: 1,
         maximumFractionDigits: 2,
       })
     : 0;
