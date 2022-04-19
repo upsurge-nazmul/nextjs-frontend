@@ -229,7 +229,7 @@ export default function RealEstate({
             </p>
           </div>
           <div className={styles.row}>
-            <p style={{ textAlign: "center" }}>Lockin period of 5 years</p>
+            <p style={{ textAlign: "center" }}>Lockin period of 3 years</p>
           </div>
           <div className={styles.row}>
             <img
@@ -290,6 +290,7 @@ export default function RealEstate({
           <div className={styles.headRow}>
             <div className={styles.rowitem}>Quantity</div>
             <div className={styles.rowitem}>Date</div>
+            <div className={styles.rowitem}>Maturity date</div>
             <div className={styles.rowitem}>Invested amount</div>
             <div className={styles.rowitem}>Current value</div>
             <div className={styles.rowitem}>ROI</div>
@@ -303,6 +304,9 @@ export default function RealEstate({
                     {getIndianTime(row.timestamp)}
                   </div>
                   <div className={styles.rowitem}>
+                    {getIndianTime(row.maturity_date)}
+                  </div>
+                  <div className={styles.rowitem}>
                     ₹{" " + toIndianFormat(row.invested_amount)}
                   </div>
                   <div className={styles.rowitem}>
@@ -310,8 +314,11 @@ export default function RealEstate({
                   </div>
                   <div className={styles.rowitem}>
                     {(
-                      Number(row.current_value) / Number(row.invested_amount)
-                    ).toFixed(2) + " %"}
+                      (Number(row.current_value) -
+                        Number(row.invested_amount)) /
+                      Number(row.invested_amount)
+                    ).toFixed(2)}{" "}
+                    %
                   </div>
                 </div>
               );

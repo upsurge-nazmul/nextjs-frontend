@@ -129,6 +129,15 @@ export default function Golddiv({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "sell")
@@ -282,8 +291,11 @@ export default function Golddiv({
                   </div>
                   <div className={styles.rowitem}>
                     {(
-                      Number(row.current_value) / Number(row.invested_amount)
-                    ).toFixed(2) + " %"}
+                      (Number(row.current_value) -
+                        Number(row.invested_amount)) /
+                      Number(row.invested_amount)
+                    ).toFixed(2)}{" "}
+                    %
                   </div>
                 </div>
               );

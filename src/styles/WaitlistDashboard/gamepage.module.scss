@@ -2,6 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   .contentWrapper {
     flex: 1;
     display: flex;
@@ -117,6 +118,10 @@
             background-color: #4166eb;
             border-radius: 12px;
           }
+          .broken{
+            padding: 20px;
+            width: 80%;
+          }
           p {
             width: 80%;
             margin-top: 10px;
@@ -168,14 +173,46 @@
   }
   .start {
     background-color: #4166eb;
-    height: 40px;
-    width: 100px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border-radius: 12px;
-    margin: 15vh auto;
+    flex-direction: column;      
+
+    .box{
+      background-color: white;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      height: fit-content;
+      width: 60%;
+      height: fit-content;
+
+      img{
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius:12px;
+      }
+      .name{
+        text-align: center;
+        margin-top: 2vh;
+      }
+      .btn{
+        background-color: #4166eb;
+padding: 15px 20px;
+color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+          border-radius: 12px;
+          margin-top: 5vh;
+      }
+    }
+
   }
   .mobilespinner {
     height: fit-content;

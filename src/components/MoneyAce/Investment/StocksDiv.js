@@ -304,7 +304,9 @@ export default function StocksDiv({
                   </div>
                   <div className={styles.rowitem}>
                     {(
-                      Number(row.current_value) / Number(row.invested_amount)
+                      (Number(row.current_value) -
+                        Number(row.invested_amount)) /
+                      Number(row.invested_amount)
                     ).toFixed(2)}{" "}
                     %
                   </div>

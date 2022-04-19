@@ -41,7 +41,6 @@ export default function MoneyAceDashboard({
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
-
   const ref = useRef();
   useEffect(() => {
     if (muted) {
