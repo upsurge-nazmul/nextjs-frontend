@@ -41,13 +41,13 @@ export default function CompanyInfo({
               })
             : ""}
         </select>
+        {companyInfo && (
+          <div className={styles.volumeArea}>
+            <span>Volume</span>
+            <span>{companyInfo.Volume || "2250$"}</span>
+          </div>
+        )}
       </div>
-      {companyInfo && (
-        <div className={styles.volumeArea}>
-          <span>Volume</span>
-          <span>{companyInfo.Volume || "2250$"}</span>
-        </div>
-      )}
       {companyInfo && (
         <div className={styles.infoArea}>
           <div className={styles.infoItem}>

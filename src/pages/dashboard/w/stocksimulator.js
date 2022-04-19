@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
+import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import SimulatorDash from "../../../components/StockSimulator/Dash";
 import Watchlist from "../../../components/StockSimulator/Watchlist";
@@ -26,10 +27,13 @@ export default function StockSimulator({ userdatafromserver }) {
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
+        <KidDashboardHeader
+          mode={"Stock Simulator"}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
             <Logo className={styles.stocksimulatorlogo} onClick={() => {}} />
-            <Watchlist companyData={CompanyData} />
             <SimulatorProfile
               avatarUrl={userdatafromserver.user_img_url}
               actionMethod={() => setMode("portfolio")}
@@ -37,11 +41,14 @@ export default function StockSimulator({ userdatafromserver }) {
           </div>
           <div className={styles.bottomSection}>
             {mode === "dash" && (
-              <SimulatorDash
-                simulatorDailyData={SimulatorDailyData}
-                simulatorMonthlyData={SimulatorMonthlyData}
-                companyData={CompanyData}
-              />
+              <div>
+                <Watchlist companyData={CompanyData} />
+                <SimulatorDash
+                  simulatorDailyData={SimulatorDailyData}
+                  simulatorMonthlyData={SimulatorMonthlyData}
+                  companyData={CompanyData}
+                />
+              </div>
             )}
             {mode === "portfolio" && (
               <Portfolio

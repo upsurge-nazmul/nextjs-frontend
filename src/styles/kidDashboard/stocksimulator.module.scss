@@ -8,20 +8,22 @@
   .contentWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding: 20px;
     .mainContent {
-      width: 80%;
-      height: 80%;
+      width: 60%;
+      height: 60%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      padding-top: 15vh;
       .topSection {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         padding-bottom: 20px;
         .stocksimulatorlogo {
           width: auto;

@@ -2,6 +2,7 @@ import { Line } from "react-chartjs-2";
 
 export default function SimulatorChart({
   simulatorMonthlyData = [],
+  height = "fit-content",
   width = "600px",
 }) {
   const options = {
@@ -41,7 +42,7 @@ export default function SimulatorChart({
     ],
   };
   return (
-    <div style={{ height: "fit-content", width }}>
+    <div style={{ height, width }}>
       <Line
         options={options}
         data={data}

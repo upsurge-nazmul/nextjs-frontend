@@ -19,9 +19,10 @@ export default function SimulatorDash({
         />
         <SimulatorChart
           simulatorMonthlyData={simulatorMonthlyData}
-          width="100%"
+          height="300px"
+          width="600px"
         />
-        <ChartDuration defaultDuration={30} width="100%" />
+        <ChartDuration defaultDuration={30} width="600px" />
       </div>
       <div className={styles.dashRight}>
         <SimulatorOptions />
