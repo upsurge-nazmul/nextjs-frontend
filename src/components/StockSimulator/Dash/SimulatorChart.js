@@ -36,7 +36,7 @@ export default function SimulatorChart({ simulatorData, width = "600px" }) {
     ],
   };
   return (
-    <div style={{ height: "100%", width }}>
+    <div style={{ height: "fit-content", width }}>
       <Line
         options={options}
         data={data}

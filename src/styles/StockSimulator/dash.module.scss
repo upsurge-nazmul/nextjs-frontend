@@ -1,5 +1,10 @@
 .simulatorDash {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
+  .dashLeft {
+    flex: 1;
+  }
+  .dashRight {
+  }
 }
