@@ -11,42 +11,46 @@ import Portfolio from "../../../components/StockSimulator/Portfolio";
 import SimulatorMonthlyData from "./monthly.json";
 import SimulatorDailyData from "./daily.json";
 import CompanyData from "./companies.json";
+import UserData from "./userData.json";
 
 export default function StockSimulator({ userdatafromserver }) {
-  const [mode, setMode] = useState("portfolio");
+  const [mode, setMode] = useState("dash");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
 
-  console.log(mode);
-
   return (
     <div className={styles.stockSimulator}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <div className={styles.topSection}>
-          <Logo className={styles.stocksimulatorlogo} onClick={() => {}} />
-          <Watchlist companyData={CompanyData} />
-          <SimulatorProfile
-            avatarUrl={userdatafromserver.user_img_url}
-            actionMethod={() => setMode("portfolio")}
-          />
-        </div>
-        {mode === "dash" && (
-          <div className={styles.bottomSection}>
-            <SimulatorDash
-              simulatorDailyData={SimulatorDailyData}
-              simulatorMonthlyData={SimulatorMonthlyData}
-              companyData={CompanyData}
+        <div className={styles.mainContent}>
+          <div className={styles.topSection}>
+            <Logo className={styles.stocksimulatorlogo} onClick={() => {}} />
+            <Watchlist companyData={CompanyData} />
+            <SimulatorProfile
+              avatarUrl={userdatafromserver.user_img_url}
+              actionMethod={() => setMode("portfolio")}
             />
           </div>
-        )}
-        {mode === "portfolio" && (
-          <Portfolio actionMethod={() => setMode("dash")} />
-        )}
+          <div className={styles.bottomSection}>
+            {mode === "dash" && (
+              <SimulatorDash
+                simulatorDailyData={SimulatorDailyData}
+                simulatorMonthlyData={SimulatorMonthlyData}
+                companyData={CompanyData}
+              />
+            )}
+            {mode === "portfolio" && (
+              <Portfolio
+                actionMethod={() => setMode("dash")}
+                userData={UserData[0]}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export default function SimulatorDash({
         <CompanyInfo
           companyData={companyData}
           simulatorDailyData={simulatorDailyData}
+          width="100%"
         />
         <SimulatorChart
           simulatorMonthlyData={simulatorMonthlyData}

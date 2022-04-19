@@ -1,10 +1,12 @@
 .simulatorDash {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
   .dashLeft {
     flex: 1;
   }
   .dashRight {
+    width: fit-content;
   }
 }

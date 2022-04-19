@@ -6,23 +6,31 @@
   height: 100vh;
   font-family: "Fira Sans", sans-serif;
   .contentWrapper {
-    flex: 1;
     display: flex;
-    width: 100%;
-    overflow: auto;
-    height: 100%;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
     padding: 20px;
-    .topSection {
+    .mainContent {
+      width: 80%;
+      height: 80%;
       display: flex;
-      flex-direction: row;
-      padding-bottom: 20px;
-      .stocksimulatorlogo {
-        width: auto;
+      flex-direction: column;
+      .topSection {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 20px;
+        .stocksimulatorlogo {
+          width: auto;
+        }
       }
-    }
-    .bottomSection {
-      width: 100%;
+      .bottomSection {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

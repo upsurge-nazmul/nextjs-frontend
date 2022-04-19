@@ -8,7 +8,7 @@ export default function SimulatorChart({
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
       title: {
         display: false,

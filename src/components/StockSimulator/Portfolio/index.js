@@ -2,13 +2,13 @@ import styles from "../../../styles/StockSimulator/portfolio.module.scss";
 import Description from "./Description";
 import Holdings from "./Holdings";
 
-export default function Portfolio({ actionMethod }) {
+export default function Portfolio({ userData, actionMethod }) {
   return (
     <div className={styles.portfolio}>
       <div className={styles.main}>
         <p className={styles.heading}>Portfolio</p>
-        <Holdings />
-        <Description />
+        <Holdings userData={userData} />
+        <Description userData={userData} />
       </div>
       <div className={styles.footerArea}>
         <img
