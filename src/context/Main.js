@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import "../firebase";
 import NotificationApis from "../actions/apis/NotificationApis";
+import { isMobile } from "react-device-detect";
 
 export const MainContext = createContext();
 
@@ -18,6 +19,7 @@ export const MainContextProider = ({ children }) => {
   const [lastName, setlastName] = useState("");
   const [currentChoreTemplate, setcurrentChoreTemplate] = useState("");
   const [show, setShow] = useState(false);
+  const [mobileMode, setmobileMode] = useState(false);
   const [notification, setNotification] = useState({
     title: "Test",
     body: "This is body",
@@ -26,6 +28,9 @@ export const MainContextProider = ({ children }) => {
     width: 1280,
     height: 720,
   });
+  useEffect(() => {
+    setmobileMode(isMobile);
+  }, [isMobile]);
   useEffect(() => {
     try {
       let messaging = getMessaging();
@@ -71,6 +76,7 @@ export const MainContextProider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
+        mobileMode,
         notification,
         setNotification,
         user,
