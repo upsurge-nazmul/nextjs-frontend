@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
+import { getRandomColor } from "../../helpers/color";
 
 export default function Watchlist({ companyData }) {
   const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
@@ -27,7 +28,7 @@ export default function Watchlist({ companyData }) {
     <div className={styles.watchlist}>
       {watchlistData && watchlistData.length
         ? watchlistData.map((item, i) => {
-            // let rand = Math.floor(Math.random() * colors.length);
+            let randColor = getRandomColor();
             return (
               <div className={styles.listItem} key={i}>
                 <button
@@ -38,13 +39,13 @@ export default function Watchlist({ companyData }) {
                 </button>
                 <div
                   style={{
-                    backgroundColor: colors[i],
+                    backgroundColor: randColor,
                   }}
                   className={styles.colorCode}
                 />
                 <div className={styles.info}>
                   <p className={styles.symbol}>{item.symbol}</p>
-                  <p className={styles.value} style={{ color: colors[i] }}>
+                  <p className={styles.value} style={{ color: randColor }}>
                     {"$" + item.value}
                   </p>
                 </div>
@@ -56,7 +57,14 @@ export default function Watchlist({ companyData }) {
         <button onClick={handleAdd}>+</button>
       </div>
       {openList && (
-        <AddWatchlist {...{ action: setOpenList, data: companyData }} />
+        <AddWatchlist
+          {...{
+            action: setOpenList,
+            options: companyData,
+            data: watchlistData,
+            setData: setWatchlistData,
+          }}
+        />
       )}
     </div>
   );

@@ -5,6 +5,8 @@
   gap: 10px 20px;
   align-items: center;
   padding: 20px 0;
+  max-width: 80vw;
+  overflow-y: auto;
   .listItem {
     display: flex;
     flex-direction: row;

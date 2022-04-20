@@ -1,8 +1,13 @@
 import { useState } from "react";
 import styles from "../../styles/StockSimulator/addWatchlist.module.scss";
 
-export default function AddWatchlist({ action, data = [] }) {
-  const [addedItems, setAddedItems] = useState([]);
+export default function AddWatchlist({
+  action,
+  options = [],
+  data = [],
+  setData = () => {},
+}) {
+  const [addedItems, setAddedItems] = useState(data);
 
   const handleAddItem = (value) => {
     setAddedItems((prev) => {
@@ -16,23 +21,32 @@ export default function AddWatchlist({ action, data = [] }) {
     setAddedItems((prev) => prev.filter((item) => item !== value));
   };
 
+  const handleSubmit = (values) => {
+    if (values && values.length) {
+      setData(values);
+    }
+    action(null);
+  };
+
   return (
     <div className={styles.addWatchlist}>
       <div className={styles.background} onClick={() => action(null)} />
       <div className={styles.main}>
+        <div className={styles.titleArea}>
+          <p>Available companies</p>
+        </div>
         <div className={styles.listArea}>
-          {data.length &&
-            data.map((item) => {
+          {options.length &&
+            options.map((item) => {
               return (
-                <div
-                  key={item.symbol}
-                  className={styles.listItem}
-                  onClick={() => handleAddItem(item)}
-                >
+                <div key={item.symbol} className={styles.listItem}>
                   <span className={styles.itemName}>{item.name}</span>
                   <span className={styles.otherItem}>{item.symbol}</span>
                   <span className={styles.otherItem}>{"$" + item.value}</span>
-                  <span className={styles.addButton}>
+                  <span
+                    className={styles.addButton}
+                    onClick={() => handleAddItem(item)}
+                  >
                     <span>+</span>
                   </span>
                 </div>
@@ -48,16 +62,18 @@ export default function AddWatchlist({ action, data = [] }) {
                     onClick={() => handleRemoveItem(item)}
                   >
                     <span className={styles.addedItemName}>{item.name}</span>
-                    <span className={styles.closeButton}>
+                    {/* <span className={styles.closeButton}>
                       <span>x</span>
-                    </span>
+                    </span> */}
                   </div>
                 );
               })
             : ""}
         </div>
         <div className={styles.footer}>
-          <button>Submit</button>
+          <button onClick={() => handleSubmit(addedItems)}>
+            Add To Watchlist
+          </button>
         </div>
       </div>
     </div>
