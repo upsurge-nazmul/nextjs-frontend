@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
+import AddWatchlist from "./AddWatchlist";
 
 export default function Watchlist({ companyData }) {
   const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
+  const [openList, setOpenList] = useState(false);
   const colors = [
     "aqua",
     "burlywood",
@@ -18,6 +20,7 @@ export default function Watchlist({ companyData }) {
 
   const handleAdd = () => {
     console.log("Add button clicked");
+    setOpenList((prev) => !prev);
   };
 
   return (
@@ -42,7 +45,7 @@ export default function Watchlist({ companyData }) {
                 <div className={styles.info}>
                   <p className={styles.symbol}>{item.symbol}</p>
                   <p className={styles.value} style={{ color: colors[i] }}>
-                    $250
+                    {"$" + item.value}
                   </p>
                 </div>
               </div>
@@ -52,6 +55,9 @@ export default function Watchlist({ companyData }) {
       <div className={styles.addButton}>
         <button onClick={handleAdd}>+</button>
       </div>
+      {openList && (
+        <AddWatchlist {...{ action: setOpenList, data: companyData }} />
+      )}
     </div>
   );
 }
