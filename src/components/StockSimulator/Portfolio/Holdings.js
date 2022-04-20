@@ -6,11 +6,8 @@ export default function Holdings() {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
-      },
-      datalabels: {
         display: true,
-        color: "white",
+        position: "right",
       },
     },
   };
@@ -37,6 +34,7 @@ export default function Holdings() {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
+        borderRadius: 5,
       },
     ],
   };

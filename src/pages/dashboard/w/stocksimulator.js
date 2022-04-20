@@ -14,8 +14,10 @@ import SimulatorDailyData from "./daily.json";
 import CompanyData from "./companies.json";
 import UserData from "./userData.json";
 
+const MODES = ["dash", "portfolio"];
+
 export default function StockSimulator({ userdatafromserver }) {
-  const [mode, setMode] = useState("dash");
+  const [mode, setMode] = useState(MODES[0]);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -36,11 +38,11 @@ export default function StockSimulator({ userdatafromserver }) {
             <Logo className={styles.stocksimulatorlogo} onClick={() => {}} />
             <SimulatorProfile
               avatarUrl={userdatafromserver.user_img_url}
-              actionMethod={() => setMode("portfolio")}
+              actionMethod={() => setMode(MODES[1])}
             />
           </div>
           <div className={styles.bottomSection}>
-            {mode === "dash" && (
+            {mode === MODES[0] && (
               <div>
                 <Watchlist companyData={CompanyData} />
                 <SimulatorDash
@@ -50,9 +52,9 @@ export default function StockSimulator({ userdatafromserver }) {
                 />
               </div>
             )}
-            {mode === "portfolio" && (
+            {mode === MODES[1] && (
               <Portfolio
-                actionMethod={() => setMode("dash")}
+                actionMethod={() => setMode(MODES[0])}
                 userData={UserData[0]}
               />
             )}
