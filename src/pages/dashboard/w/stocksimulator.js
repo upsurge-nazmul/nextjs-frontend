@@ -34,13 +34,13 @@ export default function StockSimulator({ userdatafromserver }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <div className={styles.topSection}>
+          {/* <div className={styles.topSection}>
             <Logo className={styles.stocksimulatorlogo} onClick={() => {}} />
             <SimulatorProfile
               avatarUrl={userdatafromserver.user_img_url}
               actionMethod={() => setMode(MODES[1])}
             />
-          </div>
+          </div> */}
           <div className={styles.bottomSection}>
             {mode === MODES[0] && (
               <div>

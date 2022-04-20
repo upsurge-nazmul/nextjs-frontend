@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
+import Select from "./Select";
 
 export default function CompanyInfo({
   companyData = [],
@@ -17,30 +18,16 @@ export default function CompanyInfo({
     }
   }, [simulatorDailyData]);
 
-  const handleChange = (e) => {
-    setSelectedCompany(e.target.value);
-  };
-
   return (
     <div className={styles.companyInfo}>
       <div className={styles.selectArea}>
-        <select
-          name="companies"
-          id="companies"
-          value={selectedCompany}
-          onChange={handleChange}
-          className={styles.companySelect}
-        >
-          {companyData.length
-            ? companyData.map((comp, i) => {
-                return (
-                  <option value={comp.symbol} key={i}>
-                    {comp.name}
-                  </option>
-                );
-              })
-            : ""}
-        </select>
+        <Select
+          {...{
+            value: selectedCompany,
+            setvalue: setSelectedCompany,
+            options: companyData,
+          }}
+        />
         {companyInfo && (
           <div className={styles.volumeArea}>
             <span>Volume</span>

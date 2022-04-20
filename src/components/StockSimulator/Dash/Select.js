@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/GeneralComponents/dropdown.module.scss";
-import DropDownArrow from "./SVGcomponents/DropDownArrow";
+import styles from "../../../styles/StockSimulator/select.module.scss";
+import DropDownArrow from "../../SVGcomponents/DropDownArrow";
+
 function DropDown({
   value,
   setvalue,
@@ -10,15 +11,13 @@ function DropDown({
   color,
   fontSize,
   margin,
-  presign,
-  postsign,
   className,
   shorter,
   onChange,
 }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
-    setvalue(item);
+    setvalue(item.symbol);
     setshowoptions(false);
   }
 
@@ -60,13 +59,7 @@ function DropDown({
             fontSize: fontSize ? fontSize : "16px",
           }}
         >
-          {presign ? presign : ""}
-          {shorter
-            ? value / 1000 + "K"
-            : value?.length > 25
-            ? value.substring(0, 25) + "..."
-            : value}
-          {postsign ? " " + postsign : ""}
+          {options.find((option) => option.symbol === value).name}
         </p>
         <DropDownArrow className={styles.svg} />
       </div>
@@ -88,7 +81,7 @@ function DropDown({
                     : "dropdownoption" + index
                 }
               >
-                {shorter ? item / 1000 + "K" : item}
+                {item.name}
               </p>
             );
           })}
