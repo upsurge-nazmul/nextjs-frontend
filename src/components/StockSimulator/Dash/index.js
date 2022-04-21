@@ -20,13 +20,20 @@ export default function SimulatorDash({
   return (
     <div className={styles.simulatorDash}>
       <div className={styles.dashLeft}>
-        <Select
-          {...{
-            value: selectedCompany,
-            setvalue: setSelectedCompany,
-            options: companyData,
-          }}
-        />
+        <div className={styles.chartOptionArea}>
+          <div className={styles.selectArea}>
+            <Select
+              {...{
+                value: selectedCompany,
+                setvalue: setSelectedCompany,
+                options: companyData,
+              }}
+            />
+          </div>
+          <div className={styles.switchArea}>
+            <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
+          </div>
+        </div>
         <SimulatorChart
           simulatorMonthlyData={simulatorMonthlyData}
           chartMode={chartMode}
@@ -42,7 +49,6 @@ export default function SimulatorDash({
           simulatorDailyData={simulatorDailyData}
         />
         <SimulatorOptions />
-        <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
       </div>
     </div>
   );

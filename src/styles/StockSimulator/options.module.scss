@@ -1,19 +1,59 @@
 .simulatorOptoins {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 10px;
-  width: 150px;
+  width: 100%;
+  font-family: "Inter", sans-serif !important;
   .optionsTitle {
     font-size: 16px;
     color: #676767;
     font-weight: 600;
   }
   .quantityInput {
-    font-size: 16px;
-    font-weight: 600;
-    padding: 6px 4px;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    input {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 6px;
+      width: 100%;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-width: 1px;
+      border-color: #333;
+      color: #333;
+      outline: none;
+      flex: 1;
+      :focus-visible {
+        border-width: 1px;
+        outline: none;
+      }
+    }
+    .inputButtonArea {
+      display: flex;
+      flex-direction: column;
+      width: 20px;
+      .inputIncrease {
+        border: 1px solid #333;
+        border-left: none;
+        border-top-right-radius: 8px;
+        text-align: center;
+        background-color: rgb(243, 239, 239);
+        color: #333;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .inputDescrease {
+        @extend .inputIncrease !optional;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 8px;
+      }
+    }
   }
   button {
     display: flex;

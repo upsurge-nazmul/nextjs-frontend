@@ -18,31 +18,35 @@ export default function CompanyInfo({
 
   return (
     <div className={styles.companyInfo}>
-      <div className={styles.selectArea}>
-        {companyInfo && (
-          <div className={styles.volumeArea}>
-            <span>Volume</span>
-            <span>{companyInfo.Volume || "2250$"}</span>
-          </div>
-        )}
-      </div>
       {companyInfo && (
         <div className={styles.infoArea}>
+          <div className={styles.volumeArea}>
+            <span className={styles.volumeTitle}>Volume</span>
+            <span className={`${styles.volumeValue} ${styles.greenText}`}>
+              {"$" + companyInfo.Volume.toFixed(2)}
+            </span>
+          </div>
           <div className={styles.infoItem}>
             <span>O</span>
-            <span>{companyInfo.Open.toFixed(2)}</span>
+            <span className={styles.greenText}>
+              {companyInfo.Open.toFixed(2)}
+            </span>
           </div>
           <div className={styles.infoItem}>
             <span>H</span>
-            <span>{companyInfo.High.toFixed(2)}</span>
+            <span className={styles.redText}>
+              {companyInfo.High.toFixed(2)}
+            </span>
           </div>
           <div className={styles.infoItem}>
             <span>L</span>
-            <span>{companyInfo.Low.toFixed(2)}</span>
+            <span className={styles.redText}>{companyInfo.Low.toFixed(2)}</span>
           </div>
           <div className={styles.infoItem}>
             <span>C</span>
-            <span>{companyInfo.Close.toFixed(2)}</span>
+            <span className={styles.redText}>
+              {companyInfo.Close.toFixed(2)}
+            </span>
           </div>
         </div>
       )}

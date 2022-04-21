@@ -18,10 +18,24 @@ export default function SimulatorOptions({ price = 0 }) {
       <div className={styles.quantityInput}>
         <input
           type="number"
-          className={styles.quantityInput}
+          // className={styles.quantityInput}
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
+        <div className={styles.inputButtonArea}>
+          <div
+            className={styles.inputIncrease}
+            onClick={() => setQuantity((prev) => prev + 1)}
+          >
+            +
+          </div>
+          <div
+            className={styles.inputDescrease}
+            onClick={() => setQuantity((prev) => prev - 1)}
+          >
+            -
+          </div>
+        </div>
       </div>
       <button className={styles.buyButton} onClick={handleBuy}>
         <div className={styles.buttonTitle}>Buy</div>
