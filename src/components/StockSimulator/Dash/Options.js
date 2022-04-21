@@ -4,6 +4,7 @@ import styles from "../../../styles/StockSimulator/options.module.scss";
 export default function SimulatorOptions({ companyDetails }) {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
+  const [tradeMode, setTradeMode] = useState("");
 
   useEffect(() => {
     if (companyDetails) {
@@ -13,10 +14,23 @@ export default function SimulatorOptions({ companyDetails }) {
 
   const handleBuy = () => {
     console.log("Buy Rs", quantity * price);
+    setTradeMode("Buy");
   };
 
   const handleSell = () => {
     console.log("Sell Rs", quantity * price);
+    setTradeMode("Sell");
+  };
+
+  const handleCancel = () => {
+    setTradeMode("");
+    setQuantity(0);
+  };
+
+  const handleProceed = () => {
+    console.log("Finally trade happens here for ", quantity * price, "$");
+    setTradeMode("");
+    setQuantity(0);
   };
 
   return (
@@ -68,6 +82,29 @@ export default function SimulatorOptions({ companyDetails }) {
           </span>
         </div>
       </button>
+      {tradeMode && (
+        <div className={styles.tradePopup}>
+          <div
+            className={styles.popupBackground}
+            // onClick={() => setTradeMode("")}
+          />
+          <div className={styles.popupBody}>
+            <div className={styles.messageArea}>
+              <p className={styles.message}>
+                Are you sure, you want to {tradeMode} for {quantity * price} ?
+              </p>
+            </div>
+            <div className={styles.tradeActionArea}>
+              <button className={styles.cancelButton} onClick={handleCancel}>
+                Cancel
+              </button>
+              <button className={styles.proceedButton} onClick={handleProceed}>
+                Proceed
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
