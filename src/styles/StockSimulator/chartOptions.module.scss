@@ -10,7 +10,7 @@ $switch-bg: rgb(92, 93, 104);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid $switch-bg;
+    border: 1px solid $switch-bg;
     color: $switch-bg;
     padding: 10px;
     &:first-child {
@@ -27,5 +27,7 @@ $switch-bg: rgb(92, 93, 104);
     background-color: $switch-bg;
     border: 2px solid $switch-bg;
     color: #fff;
+    border: 1px solid $switch-bg;
+    box-shadow: 5px 5px 15px 5px #ccc;
   }
 }

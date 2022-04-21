@@ -29,6 +29,7 @@
       color: #333;
       outline: none;
       flex: 1;
+      box-shadow: 3px 4px 15px 0px #ccc;
       :focus-visible {
         border-width: 1px;
         outline: none;
@@ -66,6 +67,8 @@
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
+    box-shadow: 6px 3px 12px 2px #ccc;
+    transition: 0.5s;
     .buttonTitle {
       flex: 0.5;
       height: fit-content;
@@ -96,9 +99,17 @@
   .buyButton {
     background-color: #27ae60;
     color: #fff;
+    &:hover {
+      background-color: #1bbe5f;
+      box-shadow: 3px 4px 15px 0px #ccc;
+    }
   }
   .sellButton {
     background-color: #eb5757;
     color: #fff;
+    &:hover {
+      background-color: #e73c3c;
+      box-shadow: 3px 4px 15px 0px #ccc;
+    }
   }
 }

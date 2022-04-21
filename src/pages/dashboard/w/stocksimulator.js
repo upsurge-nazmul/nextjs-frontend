@@ -36,10 +36,10 @@ export default function StockSimulator({ userdatafromserver }) {
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
             <Watchlist companyData={CompanyData} />
-            <SimulatorProfile
+            {/* <SimulatorProfile
               avatarUrl={userdatafromserver.user_img_url}
               actionMethod={() => setMode(MODES[1])}
-            />
+            /> */}
           </div>
           <div className={styles.bottomSection}>
             {mode === MODES[0] && (
