@@ -70,7 +70,6 @@ function DropDown({
                   item === value ? styles.selectedOption : null
                 }`}
                 onClick={() => {
-                  console.log(item);
                   handleChange(item);
                 }}
                 key={

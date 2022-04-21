@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SimulatorChart from "./SimulatorChart";
 import styles from "../../../styles/StockSimulator/dash.module.scss";
 import SimulatorOptions from "./Options";
@@ -15,7 +15,17 @@ export default function SimulatorDash({
   companyData,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
-  const [selectedCompany, setSelectedCompany] = useState(companyData[0].symbol);
+  const [selectedSymbol, setSelectedSymbol] = useState(companyData[0].symbol);
+  const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
+
+  useEffect(() => {
+    if (simulatorDailyData.length) {
+      let currentCompany = simulatorDailyData.find(
+        (item) => item.Symbol === selectedSymbol
+      );
+      setSelectedCompany(currentCompany);
+    }
+  }, [selectedSymbol, simulatorDailyData]);
 
   return (
     <div className={styles.simulatorDash}>
@@ -24,8 +34,8 @@ export default function SimulatorDash({
           <div className={styles.selectArea}>
             <Select
               {...{
-                value: selectedCompany,
-                setvalue: setSelectedCompany,
+                value: selectedSymbol,
+                setvalue: setSelectedSymbol,
                 options: companyData,
               }}
             />
@@ -44,11 +54,10 @@ export default function SimulatorDash({
         <ChartDuration defaultDuration={30} width="95%" />
       </div>
       <div className={styles.dashRight}>
-        <CompanyInfo
-          selectedCompany={selectedCompany}
-          simulatorDailyData={simulatorDailyData}
-        />
-        <SimulatorOptions />
+        {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
+        {selectedCompany && (
+          <SimulatorOptions companyDetails={selectedCompany} />
+        )}
       </div>
     </div>
   );

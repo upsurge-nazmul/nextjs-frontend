@@ -1,21 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
 
-export default function CompanyInfo({
-  selectedCompany,
-  simulatorDailyData = [],
-}) {
-  const [companyInfo, setCompanyInfo] = useState();
-
-  useEffect(() => {
-    if (simulatorDailyData.length) {
-      let currentCompany = simulatorDailyData.find(
-        (item) => item.Symbol === selectedCompany
-      );
-      setCompanyInfo(currentCompany);
-    }
-  }, [selectedCompany, simulatorDailyData]);
-
+export default function CompanyInfo({ companyInfo }) {
   return (
     <div className={styles.companyInfo}>
       {companyInfo && (

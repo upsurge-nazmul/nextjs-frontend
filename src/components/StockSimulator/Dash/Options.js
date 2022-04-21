@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/options.module.scss";
 
-export default function SimulatorOptions({ price = 0 }) {
+export default function SimulatorOptions({ companyDetails }) {
   const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+
+  useEffect(() => {
+    if (companyDetails) {
+      setPrice(companyDetails.Close);
+    }
+  }, [companyDetails]);
 
   const handleBuy = () => {
     console.log("Buy Rs", quantity * price);
@@ -40,15 +47,25 @@ export default function SimulatorOptions({ price = 0 }) {
       <button className={styles.buyButton} onClick={handleBuy}>
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
-          <span>Price {price}</span>
-          <span>Total {quantity * price}</span>
+          <span>
+            <span>Price</span> <span>{"$" + price.toFixed(2)}</span>
+          </span>
+          <span>
+            <span>Total</span>{" "}
+            <span>{"$" + (quantity * price).toFixed(2)}</span>
+          </span>
         </div>
       </button>
       <button className={styles.sellButton} onClick={handleSell}>
         <div className={styles.buttonTitle}>Sell</div>
         <div className={styles.buttonInfo}>
-          <span>Price {price}</span>
-          <span>Total {quantity * price}</span>
+          <span>
+            <span>Price</span> <span>{"$" + price.toFixed(2)}</span>
+          </span>
+          <span>
+            <span>Total</span>{" "}
+            <span>{"$" + (quantity * price).toFixed(2)}</span>
+          </span>
         </div>
       </button>
     </div>
