@@ -23,14 +23,16 @@ function ApexChart({ chartData, width = "600px", height = "600px" }) {
         },
       ],
       options: {
-        // chart: {
-        //   type: "candlestick",
-        //   height: 350,
-        // },
-        title: {
-          text: "CandleStick Chart",
-          align: "left",
+        chart: {
+          type: "candlestick",
+          toolbar: {
+            show: false,
+          },
         },
+        // title: {
+        //   text: "CandleStick Chart",
+        //   align: "left",
+        // },
         xaxis: {
           type: "datetime",
         },

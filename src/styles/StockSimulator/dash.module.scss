@@ -5,12 +5,9 @@
   gap: 10px;
   .dashLeft {
     flex: 1;
-    .charts {
-      height: 600px;
-      width: 800px;
-    }
   }
   .dashRight {
     width: fit-content;
+    max-width: 200px;
   }
 }

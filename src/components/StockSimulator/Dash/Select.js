@@ -12,8 +12,6 @@ function DropDown({
   fontSize,
   margin,
   className,
-  shorter,
-  onChange,
 }) {
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {

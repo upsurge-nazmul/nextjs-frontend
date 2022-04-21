@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
-import Select from "./Select";
 
 export default function CompanyInfo({
-  companyData = [],
+  selectedCompany,
   simulatorDailyData = [],
 }) {
-  const [selectedCompany, setSelectedCompany] = useState(companyData[0].symbol);
   const [companyInfo, setCompanyInfo] = useState();
 
   useEffect(() => {
@@ -16,18 +14,11 @@ export default function CompanyInfo({
       );
       setCompanyInfo(currentCompany);
     }
-  }, [simulatorDailyData]);
+  }, [selectedCompany, simulatorDailyData]);
 
   return (
     <div className={styles.companyInfo}>
       <div className={styles.selectArea}>
-        <Select
-          {...{
-            value: selectedCompany,
-            setvalue: setSelectedCompany,
-            options: companyData,
-          }}
-        />
         {companyInfo && (
           <div className={styles.volumeArea}>
             <span>Volume</span>

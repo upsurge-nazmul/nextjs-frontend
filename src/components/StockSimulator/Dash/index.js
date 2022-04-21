@@ -5,6 +5,7 @@ import SimulatorOptions from "./Options";
 import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
+import Select from "./Select";
 
 const ChartModeOptions = ["candlestick", "line"];
 
@@ -14,24 +15,32 @@ export default function SimulatorDash({
   companyData,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
+  const [selectedCompany, setSelectedCompany] = useState(companyData[0].symbol);
 
   return (
     <div className={styles.simulatorDash}>
       <div className={styles.dashLeft}>
-        <CompanyInfo
-          companyData={companyData}
-          simulatorDailyData={simulatorDailyData}
-          width="100%"
+        <Select
+          {...{
+            value: selectedCompany,
+            setvalue: setSelectedCompany,
+            options: companyData,
+          }}
         />
         <SimulatorChart
           simulatorMonthlyData={simulatorMonthlyData}
           chartMode={chartMode}
           ChartModeOptions={ChartModeOptions}
-          styles={styles}
+          width="95%"
+          height="600px"
         />
-        <ChartDuration defaultDuration={30} width="600px" />
+        <ChartDuration defaultDuration={30} width="95%" />
       </div>
       <div className={styles.dashRight}>
+        <CompanyInfo
+          selectedCompany={selectedCompany}
+          simulatorDailyData={simulatorDailyData}
+        />
         <SimulatorOptions />
         <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
       </div>

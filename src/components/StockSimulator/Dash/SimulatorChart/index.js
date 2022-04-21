@@ -6,7 +6,8 @@ export default function SimulatorChart({
   simulatorMonthlyData = [],
   chartMode,
   ChartModeOptions,
-  styles,
+  width = "100%",
+  height = "100%",
 }) {
   const [candlestickData, setCandlestickData] = useState();
   const [lineChartData, setLineChartData] = useState();
@@ -27,63 +28,45 @@ export default function SimulatorChart({
 
   useEffect(() => {
     if (simulatorMonthlyData && simulatorMonthlyData.length) {
-      let openingValues = [];
       let closingValues = [];
-      let highValues = [];
-      let lowValues = [];
       for (let item of simulatorMonthlyData) {
         let xAxisValue = item.Date;
-
-        openingValues.push({
-          x: xAxisValue,
-          y: item.Open,
-        });
         closingValues.push({
           x: xAxisValue,
           y: item.Close,
         });
-        highValues.push({
-          x: xAxisValue,
-          y: item.High,
-        });
-        lowValues.push({
-          x: xAxisValue,
-          y: item.Low,
-        });
       }
       setLineChartData([
-        // {
-        //   id: "Open",
-        //   color: "hsl(309, 70%, 50%)",
-        //   data: openingValues,
-        // },
+        ,
         {
           id: "Close",
           color: "hsl(64, 70%, 50%)",
           data: closingValues,
         },
-        // {
-        //   id: "High",
-        //   color: "hsl(360, 70%, 50%)",
-        //   data: highValues,
-        // },
-        // {
-        //   id: "Low",
-        //   color: "hsl(140, 70%, 50%)",
-        //   data: lowValues,
-        // },
       ]);
     }
   }, [simulatorMonthlyData]);
 
   return (
-    <div className={styles.charts}>
+    <div>
       {chartMode === ChartModeOptions[0] ? (
         <>
-          {candlestickData && <CandlestickChart chartData={candlestickData} />}
+          {candlestickData && (
+            <CandlestickChart
+              chartData={candlestickData}
+              width={width}
+              height={height}
+            />
+          )}
         </>
       ) : chartMode === ChartModeOptions[1] ? (
-        <>{lineChartData && <LineChart chartData={lineChartData} />}</>
+        <>
+          {lineChartData && (
+            <div style={{ height, width }}>
+              <LineChart chartData={lineChartData} />
+            </div>
+          )}
+        </>
       ) : (
         ""
       )}
