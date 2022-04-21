@@ -9,6 +9,7 @@ export default function SimulatorChart({
   styles,
 }) {
   const [candlestickData, setCandlestickData] = useState();
+  const [lineChartData, setLineChartData] = useState();
 
   useEffect(() => {
     // Format expected in Apexchart Candlestick: [open, heigh, low, close]
@@ -16,13 +17,62 @@ export default function SimulatorChart({
       let values = [];
       for (let item of simulatorMonthlyData) {
         values.push({
-          x: new Date(Math.random() * 1538879400000).toLocaleDateString(
-            "en-US"
-          ),
+          x: item.Date,
           y: [item.Open, item.High, item.Low, item.Close],
         });
       }
       setCandlestickData(values);
+    }
+  }, [simulatorMonthlyData]);
+
+  useEffect(() => {
+    if (simulatorMonthlyData && simulatorMonthlyData.length) {
+      let openingValues = [];
+      let closingValues = [];
+      let highValues = [];
+      let lowValues = [];
+      for (let item of simulatorMonthlyData) {
+        let xAxisValue = item.Date;
+
+        openingValues.push({
+          x: xAxisValue,
+          y: item.Open,
+        });
+        closingValues.push({
+          x: xAxisValue,
+          y: item.Close,
+        });
+        highValues.push({
+          x: xAxisValue,
+          y: item.High,
+        });
+        lowValues.push({
+          x: xAxisValue,
+          y: item.Low,
+        });
+      }
+      setLineChartData([
+        // {
+        //   id: "Open",
+        //   color: "hsl(309, 70%, 50%)",
+        //   data: openingValues,
+        // },
+        {
+          id: "Close",
+          color: "hsl(64, 70%, 50%)",
+          data: closingValues,
+        },
+        // {
+        //   id: "High",
+        //   color: "hsl(360, 70%, 50%)",
+        //   data: highValues,
+        // },
+        // {
+        //   id: "Low",
+        //   color: "hsl(140, 70%, 50%)",
+        //   data: lowValues,
+        // },
+      ]);
     }
   }, [simulatorMonthlyData]);
 
@@ -33,11 +83,7 @@ export default function SimulatorChart({
           {candlestickData && <CandlestickChart chartData={candlestickData} />}
         </>
       ) : chartMode === ChartModeOptions[1] ? (
-        <>
-          {simulatorMonthlyData && (
-            <LineChart chartData={simulatorMonthlyData} />
-          )}
-        </>
+        <>{lineChartData && <LineChart chartData={lineChartData} />}</>
       ) : (
         ""
       )}

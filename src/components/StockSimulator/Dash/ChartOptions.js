@@ -7,11 +7,6 @@ export default function ChartOptions({
   setChartMode,
   ChartModeOptions,
 }) {
-  console.log({
-    chartMode,
-    setChartMode,
-    ChartModeOptions,
-  });
   return (
     <div className={styles.chartOptionsArea}>
       <div
