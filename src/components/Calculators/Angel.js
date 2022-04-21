@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
-import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
-import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-import RelativeSection from "./RelativeSection";
 import changetoint from "../../helpers/currency";
 export default function Angel({ data, seterror, error }) {
   const [questions, setquestions] = useState([

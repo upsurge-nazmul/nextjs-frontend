@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameApis from "../../actions/apis/GameApis";
@@ -60,6 +60,7 @@ const specialchars = [
 export default function GamePage({ gamedata, userdata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
+  const unityref = useRef(unitycontext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const { mobileMode, widthHeight } = useContext(MainContext);
   const [stickyheader, setstickyheader] = useState(false);
@@ -84,10 +85,16 @@ export default function GamePage({ gamedata, userdata }) {
   }, [userdata]);
 
   const handlefullscren = useFullScreenHandle();
-  function handleOnClickFullscreen() {
-    unitycontext.setFullscreen(true);
-    setisfullscreen(true);
+  function handleOnClickFullscreenUnity() {
+    unityref.current?.send(
+      "FullscreenController",
+      "UpdateScreen",
+      fullscreenenabled ? 1 : 0
+    );
   }
+  useEffect(() => {
+    unityref.current = unitycontext;
+  }, [unitycontext]);
   const gamesWithAuth = ["Ludo", "FinCricket"];
   useEffect(() => {
     if (gameid) {
@@ -334,9 +341,9 @@ export default function GamePage({ gamedata, userdata }) {
       }
       setisfullscreen(false);
       fullscreenenabled = false;
+      handleOnClickFullscreenUnity();
     } else {
       let element = document.getElementById("unity-wrapper");
-      console.log(element);
       if (element.requestFullscreen) {
         element.requestFullscreen();
       } else if (element.mozRequestFullScreen) {
@@ -348,6 +355,7 @@ export default function GamePage({ gamedata, userdata }) {
       }
       setisfullscreen(true);
       fullscreenenabled = true;
+      handleOnClickFullscreenUnity();
     }
   }
 
@@ -356,31 +364,42 @@ export default function GamePage({ gamedata, userdata }) {
   //     if (this.type.startsWith("landscape")) {
   //       movetofull();
   //     } else {
+  //       fullscreenenabled = false;
+  //       handleOnClickFullscreenUnity();
   //       document.webkitExitFullscreen();
   //     }
   //   };
   // }, []);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+        fullscreenenabled = false;
+        handleOnClickFullscreenUnity();
+        // router.push("/games");
+      }
+    }
+  }, []);
+
   // useEffect(() => {
-  //   document.addEventListener("fullscreenchange", onFullScreenChange, false);
-  //   document.addEventListener(
-  //     "webkitfullscreenchange",
-  //     onFullScreenChange,
-  //     false
-  //   );
-  //   document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
-
-  //   function onFullScreenChange() {
-  //     var fullscreenElement =
-  //       document.fullscreenElement ||
-  //       document.mozFullScreenElement ||
-  //       document.webkitFullscreenElement;
-
-  //     if (!fullscreenElement) {
-  //       setisfullscreen(false);
-  //       fullscreenenabled = false;
-  //       // router.push("/games");
+  //   document.addEventListener("keydown", function (e) {
+  //     if (e.key == "Escape") {
+  //       handleOnClickFullscreenUnity();
+  //       //add your code here
   //     }
-  //   }
+  //   });
   // }, []);
   return (
     <div className={styles.gamePage}>

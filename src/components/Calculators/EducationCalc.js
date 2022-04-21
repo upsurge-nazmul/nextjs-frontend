@@ -1,11 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Doughnut } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
-import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import { ResponsivePie } from "@nivo/pie";
 import { animated } from "@react-spring/web";

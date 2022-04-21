@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
 import ResultBox from "./ResultBox";
 import Select from "./Select";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
@@ -216,13 +215,13 @@ export default function BigMacCalc({ seterror, error }) {
       {!error && showresult ? (
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            <Bar
+            {/* <Bar
               data={chartData}
               className={styles.chart}
               width={100}
               height={100}
               options={{ maintainAspectRatio: false }}
-            />
+            /> */}
           </div>
         </div>
       ) : null}

@@ -2,7 +2,13 @@ import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
 // bank apis
-
+const investmentrecords = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/investmentrecords",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getassetvalues = (payload) => {
   return ApiCalls.getResponse(
     "games/moneyace/getassetvalues",
@@ -294,6 +300,7 @@ const MoneyAceApis = {
   getpurchases,
   getdailyreward,
   updatescore,
+  investmentrecords,
 };
 
 export default MoneyAceApis;
