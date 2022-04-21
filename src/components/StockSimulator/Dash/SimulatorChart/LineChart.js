@@ -1,10 +1,6 @@
 import { Line } from "react-chartjs-2";
 
-export default function SimulatorChart({
-  simulatorMonthlyData = [],
-  height = "fit-content",
-  width = "600px",
-}) {
+export default function LineChart({ chartData }) {
   const options = {
     responsive: true,
     plugins: {
@@ -24,16 +20,14 @@ export default function SimulatorChart({
     },
   };
 
-  const labels = simulatorMonthlyData.map((item, i) => `${i + 1}/04`);
+  const labels = chartData.map((item, i) => `${i + 1}/04`);
 
   const data = {
     labels,
     datasets: [
       {
-        label: simulatorMonthlyData.length
-          ? simulatorMonthlyData[0].Symbol
-          : "",
-        data: simulatorMonthlyData.map((item) => item.Last),
+        label: chartData.length ? chartData[0].Symbol : "",
+        data: chartData.map((item) => item.Last),
         fill: true,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -42,12 +36,10 @@ export default function SimulatorChart({
     ],
   };
   return (
-    <div style={{ height, width }}>
-      <Line
-        options={options}
-        data={data}
-        fallbackContent={"Something went wrong"}
-      />
-    </div>
+    <Line
+      options={options}
+      data={data}
+      fallbackContent={"Something went wrong"}
+    />
   );
 }
