@@ -1,6 +1,10 @@
 import { Line } from "react-chartjs-2";
 
-export default function LineChart({ chartData }) {
+export default function LineChart({
+  chartData,
+  width = "600px",
+  height = "600px",
+}) {
   const options = {
     responsive: true,
     plugins: {
@@ -36,10 +40,12 @@ export default function LineChart({ chartData }) {
     ],
   };
   return (
-    <Line
-      options={options}
-      data={data}
-      fallbackContent={"Something went wrong"}
-    />
+    <div style={{ height, width }}>
+      <Line
+        options={options}
+        data={data}
+        fallbackContent={"Something went wrong"}
+      />
+    </div>
   );
 }
