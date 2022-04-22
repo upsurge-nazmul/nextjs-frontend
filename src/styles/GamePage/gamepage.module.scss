@@ -16,15 +16,15 @@
   }
   .start {
     background-color: #4166eb;
-    height: 40px;
-    width: 100px;
+    height: 70vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 12px;
-    margin: 15vh auto;      
+      margin: 0;      
     .box {
+      height: 80%;
       width: 80%;
       background-color: white;
       border-radius: 30px;
@@ -32,12 +32,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .jasper {
-        width: 80%;
+      .btn {
+        width: fit-content;
         margin-top: 20px;
         background-color: #4166eb;
-        border-radius: 12px;
-      }         .broken{
+        border-radius: 8px;
+        color: white;
+        padding: 10px 15px;
+      }         
+      .broken{
         padding: 20px;
         width: 80%;
       }
@@ -65,6 +68,7 @@
         margin: 20px 0;
       }
     }
+    
   }
   .mobilespinner {
     height: fit-content;
