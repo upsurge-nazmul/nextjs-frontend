@@ -3,6 +3,7 @@ import DashboardApis from "../actions/apis/DashboardApis";
 import { getCookie } from "../actions/cookieUtils";
 import styles from "../styles/GeneralComponents/welcome.module.scss";
 import BottomArrowBubble from "./SVGcomponents/BottomArrowBubble";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Curve1 from "./SVGcomponents/Curve1";
 import Curve2 from "./SVGcomponents/Curve2";
 import Jasper from "./SVGcomponents/Jasper";
@@ -18,6 +19,9 @@ export default function WelcomeUser({ name, setshow }) {
     <div className={styles.welcomemodal}>
       <div className={styles.background} onClick={handleclick}></div>
       <div className={styles.main}>
+        <div className={styles.cross} onClick={() => setshow(false)}>
+          <CancelOutlinedIcon className={styles.icon} />
+        </div>
         <Curve1 className={styles.curve1} />
         <Curve2 className={styles.curve2} />
         <div className={styles.leftpart}>
