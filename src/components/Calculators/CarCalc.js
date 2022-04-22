@@ -72,7 +72,6 @@ export default function CarCalc({ seterror, error }) {
       },
     ],
   });
-
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
@@ -253,9 +252,13 @@ export default function CarCalc({ seterror, error }) {
       </text>
     );
   };
-
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.calculatorComponent}>
+    <div
+      className={`${styles.calculatorComponent} ${
+        theme === "dark" && styles.darkcalculatorComponent
+      }`}
+    >
       {!showresult && (
         <div className={styles.inputSection}>
           <Progress

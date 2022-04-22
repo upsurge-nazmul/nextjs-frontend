@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Progress from "../Progress";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Quiz/quizcomponent.module.scss";
 import SimpleProgress from "../SimpleProgress";
-import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
-import RightArrowRound from "../SVGcomponents/RightArrowRound";
 import QuizApis from "../../actions/apis/QuizApis";
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
-
+import { MainContext } from "../../context/Main";
 function QuizComponent({
   currentquestionindex,
   setcurrentquestionindex,
@@ -29,7 +25,7 @@ function QuizComponent({
   const [nextinterval, setnextinterval] = useState(null);
   const [currentquestion, setcurrentquestion] = useState(question);
   const [loading, setloading] = useState(false);
-
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     if (answered) {
       clearTimeout(timeoutf);
@@ -80,7 +76,7 @@ function QuizComponent({
   //   return () => clearInterval(task);
   // }, [showResult]);
   return (
-    <div className={styles.quiz}>
+    <div className={`${styles.quiz} ${theme === "dark" && styles.darkquiz}`}>
       <SimpleProgress
         clr={colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"}
         questions={15}

@@ -57,7 +57,7 @@ export default function Pricing({ userdata }) {
       ],
     },
   ];
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -76,7 +76,11 @@ export default function Pricing({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div className={styles.pricingPage}>
+    <div
+      className={`${styles.pricingPage} ${
+        theme === "dark" && styles.darkpricingPage
+      }`}
+    >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

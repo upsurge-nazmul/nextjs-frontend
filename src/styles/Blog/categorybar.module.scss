@@ -1,3 +1,5 @@
+@use  "../variables/colors.scss" as *;
+
 .categoryBar {
   display: flex;
   width: 100%;
@@ -92,6 +94,80 @@
       align-items: center;
       transition: all 0.3s ease;
       animation: expand 0.3s ease;
+    }
+  }
+}
+.darkstyles{
+  .left {
+    .wrapper {
+    .category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background-color: $d-main !important;
+        color: $d-text2;
+        font-family: "Roboto", sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        position: relative;
+        margin: 10px;
+        padding: 0 20px;
+
+        width: calc(100% / 6);
+        min-width: fit-content;
+        cursor: pointer;
+        .underline {
+          display: none;
+        }
+        &:hover {
+          color: $d-text1;
+
+        }
+      }
+      .selected {
+        color: $d-text2;
+        .underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          margin-top: 5px;
+          width: 100%;
+          display: flex;
+          height: 4px;
+        }
+        &:hover {
+          color: $d-text1;
+        }
+      }
+    }
+  }
+  .more {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: "100%";
+    background-color: white;
+    color: hsla(0, 0%, 0%, 0.5);
+    font-family: "Roboto", sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    width: calc(100% / 6);
+    transition: all 0.3s ease;
+    svg {
+      path {
+        transition: all 0.3s ease;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          stroke: hsla(0, 0%, 0%, 0.685);
+        }
+      }
+      color: hsla(0, 0%, 0%, 0.685);
     }
   }
 }

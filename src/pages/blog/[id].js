@@ -25,7 +25,7 @@ export default function BlogPage({ blogdata, related, userdata }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   const [relatedBlogs, setrelatedBlogs] = useState(related || []);
   let date = new Date(Number(blogdata.date));
   useEffect(() => {
@@ -112,7 +112,9 @@ export default function BlogPage({ blogdata, related, userdata }) {
   }
 
   return (
-    <div className={styles.blogPage}>
+    <div
+      className={`${styles.blogPage} ${theme === "dark" && styles.darkstyles}`}
+    >
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

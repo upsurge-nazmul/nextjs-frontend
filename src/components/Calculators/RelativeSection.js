@@ -1,17 +1,19 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import { Calc_Data } from "../../static_data/Calc_Data";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
 export default function RelativeSection({ cards }) {
   const router = useRouter();
+  const { theme } = useContext(MainContext);
   function relate(item) {
     router.push(`/calculators/${item}`);
     let x = document.getElementById("home-page-header");
     x.scrollIntoView();
   }
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} ${theme === "dark" && styles.darkstyles}`}>
       <p className={styles.heading}>Related Calculators</p>
       <div className={styles.relativecalcs}>
         {cards.map((item, index) => {

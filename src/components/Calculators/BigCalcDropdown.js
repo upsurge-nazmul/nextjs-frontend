@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Calculators/bigcalcinput.module.scss";
 import DropDown from "../DropDown";
 export default function BigCalcDropdown({
@@ -10,8 +11,13 @@ export default function BigCalcDropdown({
   placeholder,
   code,
 }) {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.bigcalcinput}>
+    <div
+      className={`${styles.bigcalcinput} ${
+        theme === "dark" && styles.darkstyles
+      }`}
+    >
       <p className={styles.heading}>{title}</p>
       <div className={styles.inputwrapper}>
         <DropDown

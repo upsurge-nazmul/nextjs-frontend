@@ -18,7 +18,7 @@ function CalculatorsPage({ userdata }) {
   const [showpopup, setshowpopup] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -32,7 +32,11 @@ function CalculatorsPage({ userdata }) {
   }, [calculatorName]);
 
   return (
-    <div className={styles.calculatorsPage}>
+    <div
+      className={`${styles.calculatorsPage} ${
+        theme === "dark" && styles.darkcalculatorsPage
+      }`}
+    >
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
