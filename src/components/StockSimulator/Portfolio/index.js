@@ -48,8 +48,85 @@ export default function Portfolio({ userData }) {
             </div>
           </div>
         )}
-        {tab === TABS[1].value && <Performance />}
-        {tab === TABS[2].value && <Trades />}
+        {tab === TABS[1].value && (
+          // 32.77	31.24	25	819.25	 	+38.25		Buy
+          <Performance
+            performanceData={[
+              {
+                id: 1,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+              {
+                id: 2,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+              {
+                id: 3,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+            ]}
+          />
+        )}
+        {tab === TABS[2].value && (
+          <Trades
+            tradesData={[
+              {
+                id: 1,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+              {
+                id: 2,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+              {
+                id: 3,
+                symbol: "ACC",
+                desc: "Full name of the company",
+                current_price: 32.27,
+                purchase_price: 31.24,
+                qty: 25,
+                total_value: 819.25,
+                total_gain_: 38.25,
+                trade_action: "buy",
+              },
+            ]}
+          />
+        )}
       </div>
       <div className={styles.footerArea}>
         <Navigation options={TABS} action={setTab} active={tab} />

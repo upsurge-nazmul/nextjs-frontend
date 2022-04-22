@@ -26,7 +26,7 @@ const MODES = [
 ];
 
 export default function StockSimulator() {
-  const [mode, setMode] = useState(MODES[2].value);
+  const [mode, setMode] = useState(MODES[0].value);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",

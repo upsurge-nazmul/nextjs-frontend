@@ -6,9 +6,16 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  .headingArea {
+    text-align: center;
+    padding: 10px 0;
+    .heading {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
   .container {
     border-radius: 12px;
-    background-color: rgba(0, 0, 0, 0.35);
     height: 64%;
     padding: 20px;
     margin-top: 10px;
@@ -19,24 +26,12 @@
       .rowitem {
         font-weight: 500;
         font-size: 20px;
-        color: #ffffff79;
+        color: #333;
         font-family: "Fira Sans", sans-serif;
-        font-style: italic;
         text-align: left;
         flex: 0.5;
         border-bottom: 1px solid #ffffff79;
         padding-bottom: 5px;
-        // &:first-child {
-        //   text-align: left;
-        //   flex: 0.5;
-        // }
-        // &:nth-child(2) {
-        //   text-align: left;
-        // }
-        // &:nth-child(3) {
-        //   text-align: left;
-        //   flex: 1.5;
-        // }
       }
     }
     .rows {
@@ -49,10 +44,10 @@
       padding-right: 20px;
       margin-top: 10px;
       &::-webkit-scrollbar {
-        width: 16px;
+        width: 8px;
       }
       &::-webkit-scrollbar-track {
-        background: #454545;
+        background: #fff;
       }
       &::-webkit-scrollbar-thumb {
         background-color: #c0c0c0;
@@ -65,9 +60,8 @@
         .rowitem {
           font-weight: 400;
           font-size: 16px;
-          color: #ffffffbb;
+          color: #333;
           font-family: "Fira Sans", sans-serif;
-          text-align: right;
           flex: 0.5;
           border-bottom: 1px solid #9b9b9b79;
           padding-bottom: 5px;
