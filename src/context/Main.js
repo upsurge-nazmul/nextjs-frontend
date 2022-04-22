@@ -28,6 +28,28 @@ export const MainContextProider = ({ children }) => {
     width: 1280,
     height: 720,
   });
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+    setTheme(
+      window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+    );
+  }, []);
+  useEffect(() => {
+    const modeMe = (e) => {
+      console.log("theme", e);
+      setTheme(e.matches ? "dark" : "light");
+    };
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", modeMe);
+    return window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .removeListener(modeMe);
+  }, []);
   useEffect(() => {
     setmobileMode(isMobile);
   }, [isMobile]);
@@ -103,6 +125,8 @@ export const MainContextProider = ({ children }) => {
         setcurrentChoreTemplate,
         widthHeight,
         setwidthHeight,
+        theme,
+        setTheme,
       }}
     >
       {children}

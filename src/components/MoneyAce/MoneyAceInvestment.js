@@ -49,9 +49,9 @@ export default function MoneyAceInvestment({
     async function loadassetdata() {
       let res = await MoneyAceApis.investmentrecords();
       if (res && res.data && res.data.success) {
-        setassetchartdata(res.data.data);
+        setassetchartdata(res.data.data.chartdata);
         // console.log(res.data.data.chart_data);
-        let d = res.data.data;
+        let d = res.data.data.chartdata;
         console.log(d);
         if (d[0].data.length === 0 || d[1].data.length === 0) {
           setassetdata([
@@ -89,7 +89,10 @@ export default function MoneyAceInvestment({
                   d[1].data[d[1].data.length - 1].y
               ),
           },
-          // { name: "FD", value: d.fd_value },
+          {
+            name: "Average market return",
+            value: res.data.data.market_average + " %",
+          },
           // { name: "Retirement", value: d.retirementfund_value },
           // { name: "Saving Account", value: d.saving_value },
           // { name: "Crypto", value: d.crypto_value },
