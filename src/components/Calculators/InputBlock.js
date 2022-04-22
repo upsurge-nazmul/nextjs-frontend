@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MainContext } from "../../context/Main";
 import changetoint from "../../helpers/currency";
 import styles from "../../styles/Calculators/inputblock.module.scss";
 
@@ -12,6 +13,7 @@ function InputBlock({
   posttitle,
   code,
 }) {
+  const { theme } = useContext(MainContext);
   const [rangevalue, setrangevalue] = useState(changetoint(value));
   useEffect(() => {
     setrangevalue(changetoint(value));
@@ -150,7 +152,11 @@ function InputBlock({
     }
   }
   return (
-    <div className={styles.inputBlock}>
+    <div
+      className={`${styles.inputBlock} ${
+        theme === "dark" && styles.darkstyles
+      }`}
+    >
       <div className={styles.topBlock}>
         <p className={styles.label}>{label}</p>
         <div className={styles.signAndValue}>

@@ -92,7 +92,7 @@ function Quiz({ userdata }) {
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
   const [quiztoken, setquiztoken] = useState("");
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -311,9 +311,15 @@ function Quiz({ userdata }) {
   }, []);
   return (
     <div
-      className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""}`}
+      className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""} ${
+        theme === "dark" && styles.darkquizPage
+      }`}
       style={{
-        backgroundColor: !showmain ? "White" : colorarray[currentcolor],
+        backgroundColor: !showmain
+          ? theme === "dark"
+            ? "#111111"
+            : "White"
+          : colorarray[currentcolor],
       }}
     >
       <Header

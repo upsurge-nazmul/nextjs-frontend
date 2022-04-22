@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -123,6 +125,182 @@
         width: 14px;
       }
     }
+    .categoryAndPosts {
+      width: 100%;
+      padding: 0 7%;
+      display: flex;
+      .posts {
+        height: 100%;
+        width: 80%;
+        overflow-y: auto;
+        margin-right: 20px;
+        .post {
+          margin-top: 30px;
+          display: flex;
+          border-bottom: 1px solid rgb(196, 196, 196);
+          .image {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 100%;
+            }
+            margin-right: 10px;
+          }
+          .textcontent {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .timeandcat {
+              color: #3d3d3d;
+              display: flex;
+              font-weight: 400;
+              font-size: 15px;
+              letter-spacing: 1px;
+
+              .space {
+                margin-left: 10px;
+                margin-right: 10px;
+              }
+            }
+            .title {
+              margin-top: 10px;
+              font-weight: 500;
+              font-size: 22px;
+              letter-spacing: 0.8px;
+            }
+            .preview {
+              margin-top: 15px;
+            }
+            .continue {
+              margin-top: 15px;
+              color: rgb(209, 68, 67);
+              cursor: pointer;
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+      .categories {
+        display: flex;
+        overflow-y: auto;
+        flex-direction: column;
+        .categoryHeading {
+          margin-top: 10px;
+          font-weight: 500;
+          font-size: 22px;
+          margin-left: 7%;
+          margin-bottom: 20px;
+          letter-spacing: 0.8px;
+        }
+        .categoryScroll {
+          .category {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-left: 15%;
+            cursor: pointer;
+          }
+          .selectedCat {
+            color: #f76160;
+            font-weight: 600;
+            font-size: 18px;
+          }
+        }
+
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid rgb(214, 214, 214);
+      }
+    }
+  }
+  .footer {
+    scroll-snap-align: start;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    min-height: 10vh;
+    position: relative;
+    .triangle {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: -23px;
+      svg {
+        transform: rotate(180deg);
+        z-index: 3;
+        width: 53px;
+        height: 24px;
+        filter: drop-shadow(rgba(255, 0, 0, 0) 0px 1px 1px);
+      }
+    }
+    .footercontent {
+      background-color: #fc6766;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      p {
+        text-align: center;
+        color: #0f0f0f;
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+.darkblogpage{
+  .curve2 {
+   opacity: 0.2;
+  }
+  .curve1 {
+    opacity: 0.2;
+  }
+  .content {
+    .heading {
+      color: $d-text1;
+    }
+    .postsMain {
+      .left {
+        .blogtitle {
+          color: $d-text1;
+        }
+        .blogcontent {
+          color: $d-text2;
+        }
+        .time {
+          color: $d-text2;
+        }
+      }.right {
+        .blogcard{
+.right{
+  .title {
+    color: $d-text1;
+  }
+  .content {
+    color: $d-text2;
+  }
+  .time {
+    color: $d-text2;
+  }
+}
+        }
+       
+      }
+    }
+    .more {
+      .moreHeading {
+        color: $d-text1;
+      }
+    }
+
     .categoryAndPosts {
       width: 100%;
       padding: 0 7%;

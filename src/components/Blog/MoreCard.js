@@ -1,11 +1,15 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Blog/morecard.module.scss";
 function MoreCard({ data, getdatafromraw, pushto, tabletcard }) {
   const router = useRouter();
+  const { theme } = useContext(MainContext);
   return (
     <div
-      className={`${styles.moreCard} ${tabletcard && styles.tabletcard}`}
+      className={`${styles.moreCard} ${tabletcard && styles.tabletcard} ${
+        theme === "dark" && styles.darkmorecard
+      }`}
       onClick={() => {
         if (pushto) {
           router.push(pushto + `${data.id}`);

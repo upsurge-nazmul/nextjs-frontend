@@ -1,3 +1,5 @@
+@use  "../variables/colors.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -205,6 +207,60 @@
           color: #848484;
         }
         border: 1px solid rgb(255, 255, 255);
+
+        &:hover {
+          border: 1px solid rgb(187, 187, 187);
+        }
+        .cardimg {
+          height: 225px;
+          width: 100%;
+          margin-bottom: 20px;
+          object-fit: cover;
+          border-radius: 18px;
+          position: relative;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+.darkcalculatorsPage{
+  .contentWrapper {
+    .curve2 {
+      opacity: 0.2;
+    }
+    .curve1 {
+      opacity: 0.2;
+    }
+    .icon {
+      width: 145px;
+      border-radius: 100%;
+      overflow: hidden;
+      background:white;
+    }
+    .headingSection {
+    
+      .heading {
+       color:$d-text1;
+      }
+      .subheading {
+        color:$d-text2;
+      }
+    }
+    .calculatorsList {
+     
+      .calcCard {
+        background: none;
+        border: 1px solid $d-light;
+        background-color:$d-moredark;
+        box-shadow: 0px 13.3978px 24.8817px rgba(0, 0, 0, 0.15);
+        .calccardtitle {
+          color: $d-text1;
+        }
+        .calccardsubtitle {
+          color: $d-text2;
+        }
+       
 
         &:hover {
           border: 1px solid rgb(187, 187, 187);

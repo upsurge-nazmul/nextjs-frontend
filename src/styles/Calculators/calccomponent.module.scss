@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 .calculatorComponent {
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
@@ -160,7 +162,123 @@
     align-items: center;
   }
 }
+.darkcalculatorComponent {
+  background-color: $d-moredark;
+  
+  .inputSection {
+   
+    .buttonWrapper {
+     
+      .nextButton,
+      .prevButton {
+     
+        color: $d-moredark;
+        
+      }
+      .prevButton {
+        color: $d-moredark;
+        
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+      .next,
+      .previous {
+        color: $d-moredark;
+        
+      }
+      .next {
+        background-color: rgba(65, 102, 235, 1);
+      }
+    }
+    .inputBlockSip {
+      display: flex;
+      margin-bottom: 20px;
+      .radioButton {
+        display: flex;
 
+        p {
+          margin-left: 10px;
+        }
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .heading {
+      font-weight: 400;
+      font-size: 14px;
+      color: $d-text1;
+        
+    }
+    .result {
+      font-size: 18px;
+      color: $d-text2;
+      font-weight: 500;
+    }
+    .submitButton {
+      width: 150px;
+      height: 45px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      background-color: #4166eb;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -webkit-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+        -moz-box-shadow: 5px 15px 31px -14px rgba(0, 0, 0, 0.62);
+      }
+    }
+  }
+  .chartSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+    .resultabs {
+      position: absolute;
+      left: 50%;
+      top: 52%;
+      transform: translate(-55%);
+      font-weight: 700;
+      font-size: 24px;
+      font-family: "Roboto", sans-serif;
+      width: 150px;
+      .main {
+        text-align: center;
+      }
+      .se {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    .chartContainer {
+      position: relative;
+      height: 90%;
+      width: 90%;
+      min-width: 0;
+    }
+  }
+  .postresultinputs {
+    flex: 1;
+    min-width: 460px;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 @media only screen and (min-width: 769px) and (max-width: 1360px) {
   .calculatorComponent {
     .inputSection {

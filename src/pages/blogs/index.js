@@ -40,7 +40,7 @@ function BlogPage({
   const [page, setpage] = useState(1);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -114,7 +114,9 @@ function BlogPage({
   }
   return (
     <div
-      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""}`}
+      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""} ${
+        theme === "dark" && styles.darkblogpage
+      }`}
     >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
@@ -133,13 +135,7 @@ function BlogPage({
 
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <FullBlog
-        item={selectedBlog}
-        openFull={openFull}
-        setOpenFull={setOpenFull}
-        setSelectedBlog={setSelectedBlog}
-        rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
-      />
+
       <div className={styles.content}>
         {!userdata && <WaitingListCta />}
 

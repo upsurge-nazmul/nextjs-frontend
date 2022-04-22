@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Calculators/calcFaq.module.scss";
 import Faq from "../Help/Faq";
 function CalcFaq({ name }) {
@@ -163,6 +164,7 @@ function CalcFaq({ name }) {
   };
   const [currentfaqs, setcurrentfaqs] = useState([]);
   const [current, setcurrent] = useState("");
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     if (faqs[name]) {
       setcurrentfaqs(faqs[name]);
@@ -171,7 +173,9 @@ function CalcFaq({ name }) {
   if (currentfaqs.length === 0) return null;
   else
     return (
-      <div className={styles.faqpage}>
+      <div
+        className={`${styles.faqpage} ${theme === "dark" && styles.darkstyles}`}
+      >
         <div className={styles.heading}>Frequently Asked Questions</div>
         {currentfaqs.map((item, index) => {
           return (

@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 @keyframes float {
   0% {
@@ -646,6 +647,196 @@
   }
   .whitespace {
     background: white;
+    width: 100%;
+    height: 10vh;
+  }
+}
+.darkquizPage{
+  .curve2 {
+   opacity: 0.2;
+  }
+  .curve1 {
+opacity: 0.2;
+  }
+  .gamedata {
+    .left {
+      background: $d-moredark;
+      .headingmain {
+        color: $d-text1;
+      }
+      .input {
+        background: $d-main;
+        color: $d-text2;
+        &::placeholder {
+          color: $d-text2;
+        }
+      }
+      .buttons {
+        .startbutton {
+          color: $d-moredark;
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .startscreen {
+    opacity: 1;
+    background-size: 80px 80px;
+    background-repeat: repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    // .background {
+    //   background-color: #17d1bc;
+    //   height: 35%;
+    //   width: 100%;
+    //   position: absolute;
+    //   top: 0;
+    //   z-index: 0;
+    //   left: 0;
+    // }
+    .left {
+      width: 40%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .right {
+      position: relative;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: black;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 40px;
+      background-color: white;
+      z-index: 5;
+      .jasper {
+        width: 20%;
+        height: 80%;
+        object-fit: contain;
+        position: absolute;
+        z-index: -1;
+        top: -22vh;
+        right: 0;
+      }
+      .heading {
+        font-size: 26px;
+        color: white;
+        font-weight: 700;
+        background-color: #4166eb;
+        border-radius: 40px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        padding: 20px 40px;
+        text-align: center;
+        width: 100%;
+      }
+      .text {
+        padding: 10px 40px 10px 0;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: white;
+        margin-left: 50px;
+      }
+      .button {
+        width: 142px;
+        height: 48px;
+        margin: 20px 0;
+        background: #4166eb;
+        border-radius: 6px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #4166eb;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: white;
+          color: #4166eb;
+        }
+      }
+    }
+  }
+  .contentWrapper {
+    .quizContainer {
+      .leftSection {
+        .current {
+          color: $d-moredark !important;
+        }
+       
+      }
+
+    }
+
+    .resultSection {
+      .background {
+        background-color: $d-moredark;
+        .curvecontainer {
+          .curve2 {
+          opacity:0.2;
+          }
+          .curve1 {
+           opacity:0.2;
+          }
+        }
+      }
+
+      .signupBox {
+
+        .input {
+          color: $d-text2;
+         background-color:$d-main;
+          ::placeholder {
+            color: $d-text2;
+          }
+        }
+        .normalbutton {
+          color: $d-moredark;
+        }
+        .joinButton {
+          color: $d-moredark;
+        }
+      }
+      .heading {
+        font-size: 56px;
+        font-weight: 800;
+        text-align: center;
+        color: #17d1bc;
+      }
+      .subheading {
+        color: $d-text2;
+        
+      }
+      .points {
+        color: $d-text1;
+      }
+     
+      .button {
+        color: $d-moredark;
+      }
+    }
+    .hideOverFlow {
+      overflow: hidden;
+    }
+  }
+  .whitespace {
+    background: $d-moredark;
     width: 100%;
     height: 10vh;
   }

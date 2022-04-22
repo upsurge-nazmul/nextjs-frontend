@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
@@ -7,6 +7,7 @@ import styles from "../../styles/Calculators/calccomponent.module.scss";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
+import { MainContext } from "../../context/Main";
 export default function RestroCalc({ data }) {
   const [questions, setquestions] = useState([
     {
@@ -162,9 +163,14 @@ export default function RestroCalc({ data }) {
       })} per month`,
     }));
   }
+  const { theme } = useContext(MainContext);
   return (
     <>
-      <div className={styles.calculatorComponent}>
+      <div
+        className={`${styles.calculatorComponent} ${
+          theme === "dark" && styles.darkcalculatorComponent
+        }`}
+      >
         {/* <div className="leftsec">
         <ProgressVerticle
           questions={questions.length}

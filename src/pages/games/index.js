@@ -18,7 +18,7 @@ export default function GamePage({ userdata }) {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -37,7 +37,11 @@ export default function GamePage({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div className={styles.gamelist}>
+    <div
+      className={`${styles.gamelist} ${
+        theme === "dark" && styles.darkgamelist
+      }`}
+    >
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

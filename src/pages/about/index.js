@@ -46,7 +46,7 @@ export default function About({ userdata }) {
       link: "",
     },
   ];
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -65,7 +65,11 @@ export default function About({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div className={styles.aboutPage}>
+    <div
+      className={`${styles.aboutPage} ${
+        theme === "dark" && styles.darkaboutPage
+      }`}
+    >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

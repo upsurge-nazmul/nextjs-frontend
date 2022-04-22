@@ -48,7 +48,7 @@ function Help({ userdata }) {
       answer: `Yes, all the data pertaining to your child will be secured. `,
     },
   ];
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -67,7 +67,9 @@ function Help({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div className={styles.helpPage}>
+    <div
+      className={`${styles.helpPage} ${theme === "dark" && styles.darkstyles}`}
+    >
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
