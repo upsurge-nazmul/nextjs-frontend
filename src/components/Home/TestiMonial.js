@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import QuoteSvg from "../SVGcomponents/QuoteSvg";
 import Image from "next/image";
 import styles from "../../styles/Home/testimonial.module.scss";
+import { MainContext } from "../../context/Main";
 export default function TestiMonial() {
   const testimonials = [
     {
@@ -44,6 +45,7 @@ export default function TestiMonial() {
   const [currenttestimonial, setcurrenttestimonial] = useState(0);
   const [mouseon, setmouseon] = useState(false);
   const [timeout, settimeout] = useState(null);
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     if (mouseon && timeout) {
       clearTimeout(timeout);
@@ -58,7 +60,11 @@ export default function TestiMonial() {
   }, [currenttestimonial, mouseon]);
 
   return (
-    <div className={styles.testimonial}>
+    <div
+      className={`${styles.testimonial} ${
+        theme === "dark" && styles.darktestimonial
+      }`}
+    >
       <p className={styles.heading}>Testimonials</p>
       <div className={styles.wrapper}>
         <div className={styles.left}>

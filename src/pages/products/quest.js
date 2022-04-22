@@ -30,7 +30,7 @@ export default function Products({ userdata }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -58,7 +58,11 @@ export default function Products({ userdata }) {
     }
   }
   return (
-    <div className={styles.pricingPage}>
+    <div
+      className={`${styles.pricingPage} ${
+        theme === "dark" && styles.darkquest
+      }`}
+    >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

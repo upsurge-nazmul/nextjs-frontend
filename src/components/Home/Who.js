@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Home/who.module.scss";
 import Image from "next/image";
+import { MainContext } from "../../context/Main";
 function Who() {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.whoSection}>
+    <div
+      className={`${styles.whoSection} ${
+        theme === "dark" && styles.darkwhoSection
+      }`}
+    >
       <div className={styles.heading}>Who are we ?</div>
       <div className={styles.container}>
         <div className={styles.left}>

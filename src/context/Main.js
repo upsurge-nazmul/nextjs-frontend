@@ -51,6 +51,13 @@ export const MainContextProider = ({ children }) => {
       .removeListener(modeMe);
   }, []);
   useEffect(() => {
+    if (theme === "dark") {
+      document.body.style.background = "#111111";
+    } else {
+      document.body.style.background = "#ffffff";
+    }
+  }, [theme]);
+  useEffect(() => {
     setmobileMode(isMobile);
   }, [isMobile]);
   useEffect(() => {

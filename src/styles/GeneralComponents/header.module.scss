@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 .header {
   background-color: white;
   height: clamp(125px, 20vh, 89px);
@@ -115,6 +117,28 @@
     }
   }
 }
+.darkheader{
+  background-color: $d-moredark;
+  .ticker {
+    color: $d-main;
+    .btn {
+      background-color:  $d-moredark;
+      color: $d-text2;
+      &:hover{
+      background-color:  $d-light;
+      color: $d-text1;
+      }
+    }
+  }
+  .container{
+    .signin{
+    color: $d-moredark; &:hover{
+      background-color:  $d-main;
+      color: $d-text1;
+      }
+    }
+  }
+}
 .sticky {
   position: fixed;
   top: 0;
@@ -196,14 +220,10 @@
         font-size: 10px;
         border-radius: 5px;
         margin-left: 10px;
-        background-color: rgb(255, 255, 255);
-        color: #4166eb;
         padding: 2.5px 5px;
         cursor: pointer;
         transition: all 0.3s ease;
-        &:hover {
-          background-color: hsla(0, 0%, 100%, 0.829);
-        }
+
       }
     }
     .container {
@@ -225,8 +245,6 @@
         }
       }
       .signin {
-        background-color: #4166eb;
-        color: white;
         height: 35px;
         padding: 10px 15px;
         border-radius: 12px;
@@ -237,11 +255,7 @@
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease;
-        &:hover {
-          background-color: #ffffff;
-          color: #4166eb;
-          border: 1px solid #4166eb;
-        }
+
       }
     }
   }

@@ -22,7 +22,7 @@ function BenfitsPage({ userdata }) {
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -41,7 +41,7 @@ function BenfitsPage({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} ${theme === "dark" && styles.darkmain}`}>
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

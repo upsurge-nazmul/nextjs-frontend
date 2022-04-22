@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Home/faqsection.module.scss";
 import Faq from "../Help/Faq";
 export default function FaqSection() {
@@ -62,9 +63,13 @@ export default function FaqSection() {
     },
   ];
   const [current, setcurrent] = useState("");
-
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.faqsection}>
+    <div
+      className={`${styles.faqsection} ${
+        theme === "dark" && styles.darkfaqsection
+      }`}
+    >
       <div className={styles.left}>
         <div className={styles.heading}>
           Frequently <br /> Asked <br />

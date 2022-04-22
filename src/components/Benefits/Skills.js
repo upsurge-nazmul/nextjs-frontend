@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Benefits/skills.module.scss";
 import Image from "next/image";
+import { MainContext } from "../../context/Main";
 export default function Skills({ id }) {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.main} id={id}>
+    <div
+      className={`${styles.main} ${theme === "dark" && styles.darkmain}`}
+      id={id}
+    >
       <div className={styles.container}>
         <div className={styles.green}></div>
         <div className={styles.blue}></div>
