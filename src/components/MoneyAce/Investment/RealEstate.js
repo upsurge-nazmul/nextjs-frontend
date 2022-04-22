@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import { MainContext } from "../../../context/Main";
+import { toIndianFormat } from "../../../helpers/currency";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import { removenonnumber } from "../../../helpers/validationHelpers";
 import styles from "../../../styles/MoneyAce/realestatediv.module.scss";
+import BackSvg from "../../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function RealEstate({
   setcurrentmode,
   settoastdata,
   setmoneyacedata,
+  setcurrenttab,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -83,26 +86,44 @@ export default function RealEstate({
   if (mode === "main")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrentmode("main");
+          }}
+        />
         <p className={styles.heading}>REAL ESTATE</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>Real Estate Index</p>
             <input
               type="text"
-              value={realestatedata?.current_realestate_price}
+              value={
+                "₹ " +
+                toIndianFormat(realestatedata?.current_realestate_price || 0)
+              }
             />
           </div>
           <div className={styles.row}>
             <p>Last year returns </p>
-            <input type="text" value={realestatedata?.return_on_investment} />
+            <input
+              type="text"
+              value={realestatedata?.return_on_investment + " %"}
+            />
           </div>
           <div className={styles.row}>
             <p>Portfolio value</p>
-            <input type="text" value={realestatedata?.total_investment} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(realestatedata?.total_investment)}
+            />
           </div>
           <div className={styles.row}>
             <p>Portfolio returns</p>
-            <input type="text" value={realestatedata?.portfolio_roi || 0} />
+            <input
+              type="text"
+              value={(realestatedata?.portfolio_roi || 0) + " %"}
+            />
           </div>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -117,17 +138,32 @@ export default function RealEstate({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "sell")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>SELL REAL ESTATE</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
               Current REAL ESTATE index price is ₹
-              {realestatedata?.current_realestate_price}
+              {toIndianFormat(realestatedata?.current_realestate_price)}
             </p>
           </div>
           <div className={styles.row}>
@@ -149,7 +185,10 @@ export default function RealEstate({
             />
           </div>
           <p className={styles.total}>
-            ₹ {Number(realestatedata?.current_realestate_price) * amount}
+            ₹{" "}
+            {toIndianFormat(
+              Number(realestatedata?.current_realestate_price) * amount
+            )}
           </p>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -163,7 +202,10 @@ export default function RealEstate({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -172,16 +214,22 @@ export default function RealEstate({
   if (mode === "buy")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>BUY REAL ESTATE</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
               Current REAL ESTATE index price is ₹
-              {realestatedata?.current_realestate_price}
+              {toIndianFormat(realestatedata?.current_realestate_price)}
             </p>
           </div>
           <div className={styles.row}>
-            <p style={{ textAlign: "center" }}>Lockin period of 5 years</p>
+            <p style={{ textAlign: "center" }}>Lockin period of 3 years</p>
           </div>
           <div className={styles.row}>
             <img
@@ -202,7 +250,10 @@ export default function RealEstate({
             />
           </div>
           <p className={styles.total}>
-            ₹ {Number(realestatedata?.current_realestate_price) * amount}
+            ₹{" "}
+            {toIndianFormat(
+              Number(realestatedata?.current_realestate_price) * amount
+            )}
           </p>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -216,7 +267,10 @@ export default function RealEstate({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -225,11 +279,18 @@ export default function RealEstate({
   if (mode === "portfolio")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>PORTFOLIO</p>
         <div className={styles.scrollwrapper}>
           <div className={styles.headRow}>
             <div className={styles.rowitem}>Quantity</div>
             <div className={styles.rowitem}>Date</div>
+            <div className={styles.rowitem}>Maturity date</div>
             <div className={styles.rowitem}>Invested amount</div>
             <div className={styles.rowitem}>Current value</div>
             <div className={styles.rowitem}>ROI</div>
@@ -242,20 +303,34 @@ export default function RealEstate({
                   <div className={styles.rowitem}>
                     {getIndianTime(row.timestamp)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.invested_amount}</div>
-                  <div className={styles.rowitem}>₹{row.current_value}</div>
                   <div className={styles.rowitem}>
-                    {Number(row.current_value) / Number(row.invested_amount)}
+                    {getIndianTime(row.maturity_date)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    ₹{" " + toIndianFormat(row.invested_amount)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    ₹{" " + toIndianFormat(row.current_value)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    {(
+                      (Number(row.current_value) -
+                        Number(row.invested_amount)) /
+                      Number(row.invested_amount)
+                    ).toFixed(2)}{" "}
+                    %
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
-
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />

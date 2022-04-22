@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import { MainContext } from "../../../context/Main";
+import { toIndianFormat } from "../../../helpers/currency";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import { removenonnumber } from "../../../helpers/validationHelpers";
 import styles from "../../../styles/MoneyAce/realestatediv.module.scss";
+import BackSvg from "../../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function Golddiv({
   setcurrentmode,
   settoastdata,
   setmoneyacedata,
+  setcurrenttab,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -83,23 +86,35 @@ export default function Golddiv({
   if (mode === "main")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrentmode("main");
+          }}
+        />
         <p className={styles.heading}>GOLD</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>Gold price</p>
-            <input type="text" value={golddata?.current_gold_price} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(golddata?.current_gold_price)}
+            />
           </div>
           <div className={styles.row}>
             <p>Last year returns </p>
-            <input type="text" value={golddata?.return_on_investment} />
+            <input type="text" value={golddata?.return_on_investment + " %"} />
           </div>
           <div className={styles.row}>
             <p>Portfolio value</p>
-            <input type="text" value={golddata?.total_investment} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(golddata?.total_investment)}
+            />
           </div>
           <div className={styles.row}>
             <p>Portfolio returns</p>
-            <input type="text" value={golddata?.portfolio_roi || 0} />
+            <input type="text" value={(golddata?.portfolio_roi || 0) + " %"} />
           </div>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -114,17 +129,32 @@ export default function Golddiv({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "sell")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>SELL GOLD</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
-              Current GOLD price per gram is ₹{golddata?.current_gold_price} per
-              gram
+              Current GOLD price per gram is ₹
+              {" " + toIndianFormat(golddata?.current_gold_price)} per gram
             </p>
           </div>
           <div className={styles.row}>
@@ -146,7 +176,7 @@ export default function Golddiv({
             />
           </div>
           <p className={styles.total}>
-            ₹ {Number(golddata?.current_gold_price) * amount}
+            ₹ {toIndianFormat(Number(golddata?.current_gold_price) * amount)}
           </p>
           <div className={styles.bottom}>
             <div className={styles.btn} onClick={handlesell}>
@@ -159,7 +189,10 @@ export default function Golddiv({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -168,11 +201,18 @@ export default function Golddiv({
   if (mode === "buy")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>BUY GOLD</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
             <p>
-              Current GOLD price is ₹{golddata?.current_gold_price} per gram
+              Current GOLD price is ₹
+              {" " + toIndianFormat(golddata?.current_gold_price)} per gram
             </p>
           </div>
           <div className={styles.row}>
@@ -194,7 +234,7 @@ export default function Golddiv({
             />
           </div>
           <p className={styles.total}>
-            ₹ {Number(golddata?.current_gold_price) * amount}
+            ₹ {toIndianFormat(Number(golddata?.current_gold_price) * amount)}
           </p>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -208,7 +248,10 @@ export default function Golddiv({
         </div>
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />
@@ -217,6 +260,12 @@ export default function Golddiv({
   if (mode === "portfolio")
     return (
       <div className={styles.stockdiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>PORTFOLIO</p>
         <div className={styles.scrollwrapper}>
           <div className={styles.headRow}>
@@ -234,10 +283,19 @@ export default function Golddiv({
                   <div className={styles.rowitem}>
                     {getIndianTime(row.timestamp)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.invested_amount}</div>
-                  <div className={styles.rowitem}>₹{row.current_value}</div>
                   <div className={styles.rowitem}>
-                    {Number(row.current_value) / Number(row.invested_amount)}
+                    ₹ {toIndianFormat(row.invested_amount)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    ₹ {toIndianFormat(row.current_value)}
+                  </div>
+                  <div className={styles.rowitem}>
+                    {(
+                      (Number(row.current_value) -
+                        Number(row.invested_amount)) /
+                      Number(row.invested_amount)
+                    ).toFixed(2)}{" "}
+                    %
                   </div>
                 </div>
               );
@@ -247,7 +305,10 @@ export default function Golddiv({
 
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />

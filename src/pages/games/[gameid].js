@@ -5,6 +5,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameApis from "../../actions/apis/GameApis";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
+import { isMobile } from "react-device-detect";
 import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
 import BrokenGameConroller from "../../components/SVGcomponents/BrokenGameConroller";
@@ -60,10 +61,7 @@ export default function GamePage({ gamedata, userdata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  const [widthHeight, setwidthHeight] = useState({
-    width: 1280,
-    height: 720,
-  });
+  const { mobileMode, widthHeight } = useContext(MainContext);
   const [stickyheader, setstickyheader] = useState(false);
   const [errorshown, seterrorshown] = useState(false);
   const [showgame, setshowgame] = useState(false);
@@ -184,21 +182,6 @@ export default function GamePage({ gamedata, userdata }) {
       }
     }
   }, [router]);
-  useEffect(() => {
-    function updateSize() {
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-      document.documentElement.style.setProperty("--width", w + "px");
-      document.documentElement.style.setProperty("--height", h + "px");
-      setwidthHeight({
-        width: w,
-        height: h,
-      });
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -367,37 +350,38 @@ export default function GamePage({ gamedata, userdata }) {
       fullscreenenabled = true;
     }
   }
-  useEffect(() => {
-    window.screen.orientation.onchange = function () {
-      if (this.type.startsWith("landscape")) {
-        movetofull();
-      } else {
-        document.webkitExitFullscreen();
-      }
-    };
-  }, []);
-  useEffect(() => {
-    document.addEventListener("fullscreenchange", onFullScreenChange, false);
-    document.addEventListener(
-      "webkitfullscreenchange",
-      onFullScreenChange,
-      false
-    );
-    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
-    function onFullScreenChange() {
-      var fullscreenElement =
-        document.fullscreenElement ||
-        document.mozFullScreenElement ||
-        document.webkitFullscreenElement;
+  // useEffect(() => {
+  //   window.screen.orientation.onchange = function () {
+  //     if (this.type.startsWith("landscape")) {
+  //       movetofull();
+  //     } else {
+  //       document.webkitExitFullscreen();
+  //     }
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   document.addEventListener("fullscreenchange", onFullScreenChange, false);
+  //   document.addEventListener(
+  //     "webkitfullscreenchange",
+  //     onFullScreenChange,
+  //     false
+  //   );
+  //   document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
-      if (!fullscreenElement) {
-        setisfullscreen(false);
-        fullscreenenabled = false;
-        // router.push("/games");
-      }
-    }
-  }, []);
+  //   function onFullScreenChange() {
+  //     var fullscreenElement =
+  //       document.fullscreenElement ||
+  //       document.mozFullScreenElement ||
+  //       document.webkitFullscreenElement;
+
+  //     if (!fullscreenElement) {
+  //       setisfullscreen(false);
+  //       fullscreenenabled = false;
+  //       // router.push("/games");
+  //     }
+  //   }
+  // }, []);
   return (
     <div className={styles.gamePage}>
       <Header
@@ -415,7 +399,7 @@ export default function GamePage({ gamedata, userdata }) {
       {showgamelandscapeinfo && (
         <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
       )}
-      {unitycontext &&
+      {/* {unitycontext &&
       progression === 1 &&
       widthHeight.width <= 900 &&
       widthHeight.height < widthHeight.width ? (
@@ -437,14 +421,14 @@ export default function GamePage({ gamedata, userdata }) {
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
         )
-      )}
+      )} */}
       <div
         className={`${styles.gameWrapper} ${
           widthHeight.width <= 900 && styles.mobilewrapper
         } ${isfullscreen && styles.nopadding}`}
         id="unity-wrapper"
       >
-        {showgame && progression < 1 && (
+        {!mobileMode && showgame && progression < 1 && (
           <div className={styles.loaderwrapper}>
             <Spinner
               progress={`${progression * 100}%`}
@@ -454,9 +438,20 @@ export default function GamePage({ gamedata, userdata }) {
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
         )}
-        {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
+        {/* {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? ( */}
+        {mobileMode ? (
           <div className={styles.mobileerr}>
             <div className={styles.box}>
+              <BrokenGameConroller className={styles.broken} />
+              <p className={styles.heading}>Oh no!</p>
+              <p>
+                {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
+              </p>
+              <div className={styles.button} onClick={() => router.push("/")}>
+                Go back
+              </div>
+              {/* <div className={styles.box}>
               <img
                 src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                 className={styles.jasper}
@@ -468,7 +463,7 @@ export default function GamePage({ gamedata, userdata }) {
                 onClick={() => setshowgamelandscapeinfo(true)}
               >
                 Know more
-              </div>
+              </div> */}
             </div>
 
             {/* <Jasper className={styles.jasper} /> */}

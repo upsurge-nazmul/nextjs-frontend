@@ -24,10 +24,11 @@ export default function MoneyAceInvestment({
   moneyacedata,
   setmoneyacedata,
   settoastdata,
+  currentmode,
+  setcurrentmode,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
-  const [currentmode, setcurrentmode] = useState("main");
   const [accountopened, setacoountopened] = useState(
     moneyacedata?.is_demat_account_open
   );
@@ -47,6 +48,7 @@ export default function MoneyAceInvestment({
       let res = await MoneyAceApis.getassetvalues();
       if (res && res.data && res.data.success) {
         setassetchartdata(res.data.data.chart_data);
+        console.log(res.data.data.chart_data);
         let d = res.data.data.current;
         setassetdata([
           { name: "Stocks", value: d.stock_value },
@@ -64,6 +66,14 @@ export default function MoneyAceInvestment({
     <div className={styles.investment}>
       {mode === "bulletin" && (
         <Bulletin canvassize={canvassize} setmode={setmode} />
+      )}
+      {currentmode === "main" && (
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrenttab("dashboard");
+          }}
+        />
       )}
       <div className={styles.main}>
         <p className={styles.heading}>
@@ -92,11 +102,12 @@ export default function MoneyAceInvestment({
                   colors={{ datum: "color" }}
                   axisTop={null}
                   axisRight={null}
+                  enableArea
                   axisBottom={{
                     orient: "bottom",
                     tickSize: 5,
                     tickPadding: 5,
-                    tickRotation: -30,
+                    tickRotation: -15,
                     legend: "Month",
                     legendOffset: 40,
                     legendPosition: "middle",
@@ -129,8 +140,8 @@ export default function MoneyAceInvestment({
                       },
                     },
                   }}
+                  useMesh
                   pointSize={10}
-                  enablePointLabel
                   pointBorderWidth={2}
                   pointBorderColor={{ from: "serieColor" }}
                   pointLabelYOffset={-12}
@@ -175,12 +186,14 @@ export default function MoneyAceInvestment({
           ) : currentmode === "stock" ? (
             <StocksDiv
               setcurrentmode={setcurrentmode}
+              setcurrenttab={setcurrenttab}
               settoastdata={settoastdata}
               setmoneyacedata={setmoneyacedata}
             />
           ) : currentmode === "realestate" ? (
             <RealEstate
               setcurrentmode={setcurrentmode}
+              setcurrenttab={setcurrenttab}
               settoastdata={settoastdata}
               setmoneyacedata={setmoneyacedata}
             />
@@ -188,6 +201,7 @@ export default function MoneyAceInvestment({
             <FDdiv
               setcurrentmode={setcurrentmode}
               settoastdata={settoastdata}
+              setcurrenttab={setcurrenttab}
               setmoneyacedata={setmoneyacedata}
               moneyacedata={moneyacedata}
             />
@@ -195,6 +209,7 @@ export default function MoneyAceInvestment({
             <Golddiv
               setcurrentmode={setcurrentmode}
               settoastdata={settoastdata}
+              setcurrenttab={setcurrenttab}
               setmoneyacedata={setmoneyacedata}
               moneyacedata={moneyacedata}
             />
@@ -203,6 +218,7 @@ export default function MoneyAceInvestment({
               setcurrentmode={setcurrentmode}
               settoastdata={settoastdata}
               setmoneyacedata={setmoneyacedata}
+              setcurrenttab={setcurrenttab}
               moneyacedata={moneyacedata}
             />
           ) : null)}
@@ -318,7 +334,7 @@ export default function MoneyAceInvestment({
           </div>
         </div>
       )}
-      <BackSvg
+      {/* <BackSvg
         className={styles.back}
         onClick={() => {
           if (currentmode !== "main") {
@@ -327,7 +343,7 @@ export default function MoneyAceInvestment({
           }
           setcurrenttab("dashboard");
         }}
-      />
+      /> */}
     </div>
   );
 }

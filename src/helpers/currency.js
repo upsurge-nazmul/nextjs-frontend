@@ -4,3 +4,13 @@ export default function changetoint(value) {
     ? 0
     : parseInt(value.toString().replace(/,/g, ""));
 }
+
+export function toIndianFormat(value) {
+  return value
+    ? value.toLocaleString("en-IN", {
+        currency: "INR",
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 2,
+      })
+    : 0;
+}

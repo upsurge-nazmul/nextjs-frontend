@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import { MainContext } from "../../../context/Main";
+import { toIndianFormat } from "../../../helpers/currency";
 import { getIndianTime } from "../../../helpers/timehelpers";
 import { removenonnumber } from "../../../helpers/validationHelpers";
 import styles from "../../../styles/MoneyAce/fddiv.module.scss";
+import BackSvg from "../../SVGcomponents/MoneyAce/ui/BackSvg";
 export default function FDdiv({
   setcurrentmode,
   settoastdata,
   setmoneyacedata,
   moneyacedata,
+  setcurrenttab,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -73,6 +76,12 @@ export default function FDdiv({
   if (mode === "main")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setcurrentmode("main");
+          }}
+        />
         <p className={styles.heading}>FIXED DEPOSIT</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
@@ -81,11 +90,17 @@ export default function FDdiv({
           </div>
           <div className={styles.row}>
             <p>Account balance</p>
-            <input type="text" value={"₹ " + moneyacedata?.account_balance} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(moneyacedata?.account_balance)}
+            />
           </div>
           <div className={styles.row}>
             <p>{`Current value of FD's`}</p>
-            <input type="text" value={"₹ " + fddata?.total_investment} />
+            <input
+              type="text"
+              value={"₹ " + toIndianFormat(fddata?.total_investment)}
+            />
           </div>
           {err && <p className={styles.error}>{err}</p>}
           <div className={styles.bottom}>
@@ -97,26 +112,41 @@ export default function FDdiv({
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "buy")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>NEW FIXED DEPOSIT</p>
         <div className={styles.wrapper}>
           <div className={styles.row}>
-            <p>Enter amount</p>
+            <p>{`Enter amount`}</p>
           </div>
           <div className={styles.row}>
             <input
               type="text"
-              value={amount}
+              value={"₹ " + amount}
               onChange={(e) => setamount(removenonnumber(e.target.value))}
               placeholder="Enter amount.."
             />
           </div>
           <div className={styles.row}>
-            <p>Enter tenure</p>
+            <p>{`Enter tenure`}</p>
           </div>
           <div className={styles.row}>
             <img
@@ -126,7 +156,7 @@ export default function FDdiv({
             />
             <input
               type="text"
-              value={year}
+              value={year + " yrs"}
               onChange={(e) => setyear(removenonnumber(e.target.value))}
               placeholder="Enter tenure..."
             />
@@ -141,8 +171,10 @@ export default function FDdiv({
           </div>
           <p className={styles.total}>
             ₹{" "}
-            {Number(amount) +
-              amount * ((1 + fddata?.return_on_investment / 100) * year - 1) +
+            {toIndianFormat(
+              Number(amount) +
+                amount * ((1 + fddata?.return_on_investment / 100) * year - 1)
+            ) +
               " at " +
               fddata?.return_on_investment +
               " % interest p.a"}
@@ -152,22 +184,32 @@ export default function FDdiv({
             <div className={styles.btn} onClick={handlebuy}>
               <p>Buy</p>
             </div>
-            <img
-              className={styles.homebtn}
-              onClick={() => setmode("main")}
-              src="https://i.ibb.co/kmfyw9t/homepng.png"
-              alt=""
-            />
+
             <div className={styles.btn} onClick={() => setmode("main")}>
               <p>Cancel</p>
             </div>
           </div>
         </div>
+        <img
+          className={styles.homebtn}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
+          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          alt=""
+        />
       </div>
     );
   if (mode === "portfolio")
     return (
       <div className={styles.fddiv}>
+        <BackSvg
+          className={styles.back}
+          onClick={() => {
+            setmode("main");
+          }}
+        />
         <p className={styles.heading}>CURRENT FIXED DEPOSITS</p>
         <div className={styles.scrollwrapper}>
           <div className={styles.headRow}>
@@ -186,11 +228,15 @@ export default function FDdiv({
                   <div className={styles.rowitem}>
                     {getIndianTime(row.fd_date)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.invested_amount}</div>
+                  <div className={styles.rowitem}>
+                    ₹{toIndianFormat(row.invested_amount)}
+                  </div>
                   <div className={styles.rowitem}>
                     {getIndianTime(row.maturity_date)}
                   </div>
-                  <div className={styles.rowitem}>₹{row.maturity_value}</div>
+                  <div className={styles.rowitem}>
+                    ₹{toIndianFormat(row.maturity_value)}
+                  </div>
                   <div className={styles.rowitem}>
                     {row.interest_rate * 10}%
                   </div>
@@ -199,10 +245,12 @@ export default function FDdiv({
             })}
           </div>
         </div>
-
         <img
           className={styles.homebtn}
-          onClick={() => setmode("main")}
+          onClick={() => {
+            setcurrentmode("main");
+            setcurrenttab("dashboard");
+          }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"
           alt=""
         />

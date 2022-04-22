@@ -14,6 +14,7 @@ import { getIndianTime, getReadableDob } from "../../helpers/timehelpers";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import { getfullname } from "../../helpers/generalfunctions";
 import Bulletin from "./Bulletin";
+import { toIndianFormat } from "../../helpers/currency";
 export default function Bank({
   setcurrenttab,
   canvassize,
@@ -123,12 +124,18 @@ export default function Bank({
                     </div>
                     <div className={styles.rowitem}>{row.particulars}</div>
                     <div className={styles.rowitem}>
-                      {row.withdraw_money ? "-" + row.withdraw_money : "-"}
+                      {row.withdraw_money
+                        ? "-₹" + toIndianFormat(row.withdraw_money)
+                        : "-"}
                     </div>
                     <div className={styles.rowitem}>
-                      {row.deposit_money ? row.deposit_money : "-"}
+                      {row.deposit_money
+                        ? "₹" + toIndianFormat(row.deposit_money)
+                        : "-"}
                     </div>
-                    <div className={styles.rowitem}>₹{row.account_balance}</div>
+                    <div className={styles.rowitem}>
+                      ₹{toIndianFormat(row.account_balance)}
+                    </div>
                   </div>
                 );
               })}

@@ -3,29 +3,22 @@ import React, { useEffect, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
-import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import styles from "../../../../styles/WaitlistDashboard/gamepage.module.scss";
-import validator from "validator";
 import { db } from "../../../../db";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-import { Game_Unity_Data } from "../../../../static_data/Game_Data";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";
-import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
-import Spinner from "../../../../components/Spinner";
+import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
+import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 
 export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const [isfullscreen, setisfullscreen] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
-  const [widthHeight, setwidthHeight] = useState({
-    width: 1280,
-    height: 720,
-  });
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -41,11 +34,13 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   const [removeBorder, setremoveBorder] = useState(false);
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
+  const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
   const [mode, setmode] = useState("Games Arena");
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, mobileMode, widthHeight } =
+    useContext(MainContext);
 
   const [info, setinfo] = useState({
     device: "computer",
@@ -153,21 +148,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       }
     }
   }, [router]);
-  useEffect(() => {
-    function updateSize() {
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-      document.documentElement.style.setProperty("--width", w + "px");
-      document.documentElement.style.setProperty("--height", h + "px");
-      setwidthHeight({
-        width: w,
-        height: h,
-      });
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+
   useEffect(
     function () {
       if (!unitycontext) return;
@@ -270,85 +251,81 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       setisfullscreen(true);
     }
   }
-  useEffect(() => {
-    window.screen.orientation.onchange = function () {
-      if (this.type.startsWith("landscape")) {
-        movetofull();
-      } else {
-        document.webkitExitFullscreen();
-      }
-    };
-  }, []);
-  useEffect(() => {
-    document.addEventListener("fullscreenchange", onFullScreenChange, false);
-    document.addEventListener(
-      "webkitfullscreenchange",
-      onFullScreenChange,
-      false
-    );
-    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+  // useEffect(() => {
+  //   window.screen.orientation.onchange = function () {
+  //     if (this.type.startsWith("landscape")) {
+  //       movetofull();
+  //     } else {
+  //       document.webkitExitFullscreen();
+  //     }
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   document.addEventListener("fullscreenchange", onFullScreenChange, false);
+  //   document.addEventListener(
+  //     "webkitfullscreenchange",
+  //     onFullScreenChange,
+  //     false
+  //   );
+  //   document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
-    function onFullScreenChange() {
-      var fullscreenElement =
-        document.fullscreenElement ||
-        document.mozFullScreenElement ||
-        document.webkitFullscreenElement;
+  //   function onFullScreenChange() {
+  //     var fullscreenElement =
+  //       document.fullscreenElement ||
+  //       document.mozFullScreenElement ||
+  //       document.webkitFullscreenElement;
 
-      if (!fullscreenElement) {
-        router.push("/dashboard/w/games");
-        setisfullscreen(false);
-      }
-    }
-  }, []);
+  //     if (!fullscreenElement) {
+  //       router.push("/dashboard/w/games");
+  //       setisfullscreen(false);
+  //     }
+  //   }
+  // }, []);
   return (
     <div className={styles.gamePage}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
+        {showgamelandscapeinfo && (
+          <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+        )}
         <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        {unitycontext &&
-        progression === 1 &&
-        widthHeight.width <= 900 &&
-        widthHeight.height < widthHeight.width &&
-        !isfullscreen ? (
-          <div className={styles.start}>
-            <p className={styles.btn} onClick={movetofull}>
-              Start
-            </p>
-          </div>
-        ) : (
-          widthHeight.width <= 900 &&
-          widthHeight.height < widthHeight.width && (
-            <div className={styles.mobilespinner}>
-              <Spinner
-                progress={`${progression * 100}%`}
-                additionalClass={styles.loader}
-                color="#4266EB"
-                topcolor="white"
-              />
-              <p>Loading {Math.round(progression * 100)}%</p>
-            </div>
-          )
-        )}
+
         <div className={styles.mainContent} id="unity-wrapper">
-          {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
+          {/* {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? ( */}
+          {mobileMode ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
+                <BrokenGameConroller className={styles.broken} />
+                <p className={styles.heading}>Oh no!</p>
+                <p>
+                  {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
+                </p>
+                <div
+                  className={styles.button}
+                  onClick={() => router.push("/dashboard/w")}
+                >
+                  Go back
+                </div>
+                {/* <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
                 <p className={styles.heading}>
                   Please switch to landscape mode
                 </p>
                 <p>{`This game only playable in landscape mode.`}</p>
                 <div
                   className={styles.button}
-                  onClick={() => router.push("/dashboard/w/games")}
+                  onClick={() => setshowgamelandscapeinfo(true)}
                 >
-                  Go back
-                </div>
+                  Know more
+                </div> */}
               </div>
             </div>
           ) : gamedata && unitycontext ? (

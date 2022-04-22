@@ -430,7 +430,8 @@
     }
   }
 }
-@media only screen and (max-height: 500px) and (orientation: landscape) {
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -613,8 +614,7 @@
     }
   }
 }
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media only screen and (max-height: 500px) and (orientation: landscape) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -635,7 +635,7 @@
     }
     .textContent {
       margin-top: 6vh;
-      margin-left: 7%;
+      margin-left: 0;
       .knowmore {
         display: flex;
         align-items: center;
