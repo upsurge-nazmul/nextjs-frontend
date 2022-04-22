@@ -6,18 +6,26 @@ import SimulatorDash from "../../../components/StockSimulator/Dash";
 import Watchlist from "../../../components/StockSimulator/Watchlist";
 import Toast from "../../../components/Toast";
 import styles from "../../../styles/kidDashboard/stocksimulator.module.scss";
-import Logo from "../../../components/SVGcomponents/Logo";
-import SimulatorProfile from "../../../components/StockSimulator/SimulatorProfile";
 import Portfolio from "../../../components/StockSimulator/Portfolio";
+import Navigation from "../../../components/StockSimulator/Navigation";
+
+import DashboardSvg from "../../../components/SVGcomponents/StockSimulator/DashboardSvg";
+import PortfolioSvg from "../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
+import LeaderboardSvg from "../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
+
 import SimulatorMonthlyData from "./monthly.json";
 import SimulatorDailyData from "./daily.json";
 import CompanyData from "./companies.json";
 import UserData from "./userData.json";
 
-const MODES = ["dash", "portfolio"];
+const MODES = [
+  { name: "Dashboard", value: "dashboard", icon: <DashboardSvg /> },
+  { name: "Portfolio", value: "portfolio", icon: <PortfolioSvg /> },
+  { name: "Leaderboard", value: "leaderboard", icon: <LeaderboardSvg /> },
+];
 
-export default function StockSimulator({ userdatafromserver }) {
-  const [mode, setMode] = useState(MODES[0]);
+export default function StockSimulator() {
+  const [mode, setMode] = useState(MODES[0].value);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -36,13 +44,10 @@ export default function StockSimulator({ userdatafromserver }) {
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
             <Watchlist companyData={CompanyData} />
-            {/* <SimulatorProfile
-              avatarUrl={userdatafromserver.user_img_url}
-              actionMethod={() => setMode(MODES[1])}
-            /> */}
+            <Navigation options={MODES} action={setMode} active={mode} />
           </div>
           <div className={styles.bottomSection}>
-            {mode === MODES[0] && (
+            {mode === MODES[0].value && (
               <div>
                 <SimulatorDash
                   simulatorDailyData={SimulatorDailyData}
@@ -51,9 +56,9 @@ export default function StockSimulator({ userdatafromserver }) {
                 />
               </div>
             )}
-            {mode === MODES[1] && (
+            {mode === MODES[1].value && (
               <Portfolio
-                actionMethod={() => setMode(MODES[0])}
+                actionMethod={() => setMode(MODES[0].value)}
                 userData={UserData[0]}
               />
             )}
