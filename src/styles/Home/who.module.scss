@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .whoSection {
   min-height: fit-content;
@@ -94,7 +95,37 @@
     }
   }
 }
+.darkwhoSection {
+  .heading {
+    color: $d-moredark;
+  }
+  .container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    color: $d-moredark;
+    .left {
+      height: fit-content;
+      padding-right: 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      height: 100%;
+      justify-content: center;
+      p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 40px;
+        line-height: 32px;
+        span {
+          font-weight: 500;
+        }
+      }
+    }
 
+  }
+}
 @media only screen and (max-width: 1000px) {
   .whoSection {
     min-height: fit-content;

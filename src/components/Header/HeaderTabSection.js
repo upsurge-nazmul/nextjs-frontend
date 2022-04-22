@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/GeneralComponents/headerTabSections.module.scss";
 import HeaderExpandSvg from "../SVGcomponents/HeaderExpandSvg";
 function HeaderTabSection({
@@ -11,6 +12,7 @@ function HeaderTabSection({
   setcurrent,
   setpanel,
 }) {
+  const { theme } = useContext(MainContext);
   const [showtabs, setshowtabs] = useState(false);
   const [timeout, settimeout] = useState(null);
   const router = useRouter();
@@ -18,7 +20,7 @@ function HeaderTabSection({
     <div
       className={`${styles.headerTabSection} ${
         mobile ? styles.mobileTabSection : ""
-      }`}
+      } ${theme === "dark" && styles.darkheadertab}`}
       onClick={() => {
         if (pushTo === "/quiz" && router.pathname === "/quiz") {
           window.location.reload();

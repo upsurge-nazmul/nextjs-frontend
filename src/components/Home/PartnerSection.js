@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Home/partner.module.scss";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
+import { MainContext } from "../../context/Main";
 export default function PartnerSection({ dashboard }) {
   const rewards = [
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpKqn4rb_wjxfwd.jpg",
@@ -11,6 +12,7 @@ export default function PartnerSection({ dashboard }) {
     "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/phpNsJMuh_s3ah3y.png",
     "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/php7Z2XTZ_kfbtfw.png",
   ];
+  const { theme } = useContext(MainContext);
   const router = useRouter();
   function handlemove(direction) {
     let partnerwrapper = document.getElementById("partnerwrapper");
@@ -21,7 +23,11 @@ export default function PartnerSection({ dashboard }) {
     }
   }
   return (
-    <div className={`${dashboard ? styles.dashboard : styles.partner}`}>
+    <div
+      className={`${dashboard ? styles.dashboard : styles.partner} ${
+        theme === "dark" && styles.darkpartner
+      }`}
+    >
       <div
         className={`${styles.heading} ${dashboard && styles.hidecursor}`}
         onClick={() => {

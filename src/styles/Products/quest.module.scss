@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 @keyframes moveit {
   0% {
@@ -255,7 +256,47 @@
     }
   }
 }
-
+.darkquestSection {
+  .curve2 {
+    opacity: 0.2;
+  }
+  .curve1 {
+    opacity: 0.2;
+  }
+  .textcontainer {
+    .heading {
+      color: $d-text1;
+    }
+    .subheading {
+      color: $d-text2;
+    }
+    .details {
+      .section {
+        .number {
+      color: $d-text1;
+        }
+        .name {
+      color: $d-text2;
+        }
+      }
+    }
+    .secondheading {
+      color: #4166eb;
+    }
+    .conceptswrapper {
+      .concept {
+        background: $d-main;
+        border: 0.5px solid $d-light;
+        color: $d-text2;
+      }
+    }
+    .signupBox {
+      .joinButton {
+        color: $d-moredark;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 1200px) {
   .questSection {
     display: flex;

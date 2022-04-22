@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Help/faq.module.scss";
 import FaqClosedArrow from "../SVGcomponents/FaqClosedArrow";
 import FaqOpenArrow from "../SVGcomponents/FaqOpenArrow";
 
 function Faq({ question, answer, current, setcurrent }) {
+  const { theme } = useContext(MainContext);
+
   return (
-    <div className={styles.faqcomponent}>
+    <div
+      className={`${styles.faqcomponent} ${
+        theme === "dark" && styles.darkfaqcomponent
+      }`}
+    >
       <div
         className={`${styles.top} ${
           current === question ? styles.faqopened : ""

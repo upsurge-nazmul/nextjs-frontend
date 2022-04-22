@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Benefits/experimential.module.scss";
 import GeoObjectsSvg from "../SVGcomponents/GeoObjectsSvg";
 export default function Experimential({ id }) {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.main} id={id}>
+    <div
+      className={`${styles.main} ${theme === "dark" && styles.darkmain}`}
+      id={id}
+    >
       <GeoObjectsSvg className={styles.geo} />
       <div className={styles.container}>
         <div className={styles.left}>
