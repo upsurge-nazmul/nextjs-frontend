@@ -241,38 +241,58 @@ export default function GamePage({ gamedata, userdata }) {
   useEffect(() => {
     seterror("");
   }, [phone, email, name]);
-  async function startgame() {
-    if (!name) {
-      seterror("Name is required");
-      return;
-    }
-    if (!email) {
-      seterror("Email is required");
-      return;
-    }
-    if (!validator.isEmail(email)) {
-      seterror("Please enter valid email address");
-      return;
-    }
-    if (phone && !validator.isMobilePhone(phone, "en-IN")) {
-      seterror("Please enter valid phone number");
-      return;
-    }
-    let res = await FreeGameApis.presign({
-      playername: name,
-      playeremail: email,
-      number: phone,
-      game: gameid,
-    });
-    if (res) {
-      if (res.data.success) {
-        router.push({
-          pathname: "/games/" + gameid,
-          query: { id: res.data.data },
-        });
+  async function startgame(tempdata) {
+    if (tempdata) {
+      let res = await FreeGameApis.presign({
+        playername: "Anonymous",
+        playeremail: "tempuser@upsurge.in",
+        number: "",
+        game: gameid,
+      });
+      if (res) {
+        if (res.data.success) {
+          router.push({
+            pathname: "/games/" + gameid,
+            query: { id: res.data.data },
+          });
+        }
+      } else {
+        alert("error connecting server");
       }
     } else {
-      alert("error connecting server");
+      if (!name) {
+        seterror("Name is required");
+        return;
+      }
+      if (!email) {
+        seterror("Email is required");
+        return;
+      }
+      if (!validator.isEmail(email)) {
+        seterror("Please enter valid email address");
+        return;
+      }
+      if (phone && !validator.isMobilePhone(phone, "en-IN")) {
+        seterror("Please enter valid phone number");
+        return;
+      }
+
+      let res = await FreeGameApis.presign({
+        playername: name,
+        playeremail: email,
+        number: phone,
+        game: gameid,
+      });
+      if (res) {
+        if (res.data.success) {
+          router.push({
+            pathname: "/games/" + gameid,
+            query: { id: res.data.data },
+          });
+        }
+      } else {
+        alert("error connecting server");
+      }
     }
   }
   useEffect(() => {
@@ -515,7 +535,7 @@ export default function GamePage({ gamedata, userdata }) {
                 </div>
                 <div
                   className={styles.skipbutton}
-                  onClick={() => setshowgame(true)}
+                  onClick={() => startgame(true)}
                 >
                   Skip
                 </div>
