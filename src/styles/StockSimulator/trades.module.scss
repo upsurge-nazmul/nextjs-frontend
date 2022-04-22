@@ -1,0 +1,89 @@
+.performance {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .container {
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.35);
+    height: 64%;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    .headRow {
+      display: flex;
+      .rowitem {
+        font-weight: 500;
+        font-size: 20px;
+        color: #ffffff79;
+        font-family: "Fira Sans", sans-serif;
+        font-style: italic;
+        text-align: left;
+        flex: 0.5;
+        border-bottom: 1px solid #ffffff79;
+        padding-bottom: 5px;
+        // &:first-child {
+        //   text-align: left;
+        //   flex: 0.5;
+        // }
+        // &:nth-child(2) {
+        //   text-align: left;
+        // }
+        // &:nth-child(3) {
+        //   text-align: left;
+        //   flex: 1.5;
+        // }
+      }
+    }
+    .rows {
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      scrollbar-width: thin;
+      scrollbar-color: #c0c0c0 #454545;
+      padding-right: 20px;
+      margin-top: 10px;
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #454545;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 20px;
+        border: 0px none #ffffff;
+      }
+      .row {
+        display: flex;
+        margin-top: 10px;
+        .rowitem {
+          font-weight: 400;
+          font-size: 16px;
+          color: #ffffffbb;
+          font-family: "Fira Sans", sans-serif;
+          text-align: right;
+          flex: 0.5;
+          border-bottom: 1px solid #9b9b9b79;
+          padding-bottom: 5px;
+          //   &:first-child {
+          //     text-align: left;
+          //     flex: 0.5;
+          //   }
+          //   &:nth-child(2) {
+          //     text-align: left;
+          //   }
+          //   &:nth-child(3) {
+          //     text-align: left;
+          //     flex: 1.5;
+          //   }
+        }
+      }
+    }
+  }
+}

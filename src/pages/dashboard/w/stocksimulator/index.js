@@ -26,7 +26,7 @@ const MODES = [
 ];
 
 export default function StockSimulator() {
-  const [mode, setMode] = useState(MODES[0].value);
+  const [mode, setMode] = useState(MODES[1].value);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -57,12 +57,7 @@ export default function StockSimulator() {
                 />
               </div>
             )}
-            {mode === MODES[1].value && (
-              <Portfolio
-                actionMethod={() => setMode(MODES[0].value)}
-                userData={UserData[0]}
-              />
-            )}
+            {mode === MODES[1].value && <Portfolio userData={UserData[0]} />}
             {mode === MODES[2].value && <Leaderboard />}
           </div>
         </div>

@@ -1,27 +1,58 @@
+import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
-import Description from "./Description";
+import Navigation from "../Navigation";
 import Holdings from "./Holdings";
 import Performance from "./Performance";
+import Trades from "./Trades";
+import PortfolioChart from "./PortfolioChart";
 
-export default function Portfolio({ userData, actionMethod }) {
+const TABS = [
+  { name: "Charts", value: "charts", icon: "" },
+  { name: "Performance", value: "performance", icon: "" },
+  { name: "Trades", value: "trades", icon: "" },
+];
+
+export default function Portfolio({ userData }) {
+  const [tab, setTab] = useState(TABS[0].value);
+  const [portfolioChartData, setPortfolioChartData] = useState();
+
+  useEffect(() => {
+    let values = [];
+    for (let i = 0; i < 100; i++) {
+      values.push({
+        x: i + 1,
+        y: 1000000 + Math.random() * 1000,
+      });
+    }
+    setPortfolioChartData([
+      {
+        id: "Portfolio",
+        color: "hsl(247, 70%, 50%)",
+        data: values,
+      },
+    ]);
+  }, []);
+
   return (
     <div className={styles.portfolio}>
       <div className={styles.main}>
-        <div className={styles.left}>
-          <Holdings userData={userData} />
-          <Description userData={userData} />
-        </div>
-        <div className={styles.right}>
-          <Performance />
-        </div>
+        {tab === TABS[0].value && (
+          <div className={styles.content}>
+            <div className={styles.left}>
+              <p className={styles.caption}>Portfolio</p>
+              <PortfolioChart chartData={portfolioChartData} />
+            </div>
+            <div className={styles.right}>
+              <p className={styles.caption}>Holdings</p>
+              <Holdings userData={userData} />
+            </div>
+          </div>
+        )}
+        {tab === TABS[1].value && <Performance />}
+        {tab === TABS[2].value && <Trades />}
       </div>
       <div className={styles.footerArea}>
-        <img
-          className={styles.homebtn}
-          onClick={actionMethod}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
-          alt=""
-        />
+        <Navigation options={TABS} action={setTab} active={tab} />
       </div>
     </div>
   );

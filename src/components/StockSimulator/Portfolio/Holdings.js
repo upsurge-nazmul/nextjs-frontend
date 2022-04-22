@@ -1,47 +1,68 @@
-import styles from "../../../styles/StockSimulator/holdings.module.scss";
-import { Doughnut } from "react-chartjs-2";
+import { ResponsivePieCanvas } from "@nivo/pie";
 
 export default function Holdings() {
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: "right",
-      },
+  const data = [
+    {
+      id: "Company1",
+      label: "Company1",
+      value: 244,
+      color: "hsl(328, 70%, 50%)",
     },
-  };
-  const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
-        borderRadius: 5,
-      },
-    ],
-  };
+    {
+      id: "Company2",
+      label: "Company2",
+      value: 115,
+      color: "hsl(204, 70%, 50%)",
+    },
+    {
+      id: "Others",
+      label: "Others",
+      value: 474,
+      color: "hsl(177, 70%, 50%)",
+    },
+  ];
 
   return (
-    <div className={styles.holdings}>
-      <Doughnut data={data} options={options} />
-    </div>
+    <ResponsivePieCanvas
+      data={data}
+      margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+      innerRadius={0.5}
+      padAngle={0.7}
+      cornerRadius={3}
+      activeOuterRadiusOffset={8}
+      colors={{ scheme: "paired" }}
+      borderColor={{
+        from: "color",
+        modifiers: [["darker", 0.6]],
+      }}
+      arcLinkLabelsSkipAngle={10}
+      arcLinkLabelsTextColor="#333333"
+      arcLinkLabelsThickness={2}
+      arcLinkLabelsColor={{ from: "color" }}
+      arcLabelsSkipAngle={10}
+      arcLabelsTextColor="#333333"
+      defs={[
+        {
+          id: "dots",
+          type: "patternDots",
+          background: "inherit",
+          color: "rgba(255, 255, 255, 0.3)",
+          size: 4,
+          padding: 1,
+          stagger: true,
+        },
+        {
+          id: "lines",
+          type: "patternLines",
+          background: "inherit",
+          color: "rgba(255, 255, 255, 0.3)",
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10,
+        },
+      ]}
+      fill={[]}
+      legends={[]}
+    />
   );
 }

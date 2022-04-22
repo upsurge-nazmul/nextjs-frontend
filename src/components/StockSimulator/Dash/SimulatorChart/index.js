@@ -37,7 +37,6 @@ export default function SimulatorChart({
         });
       }
       setLineChartData([
-        ,
         {
           id: "Close",
           color: "hsl(64, 70%, 50%)",

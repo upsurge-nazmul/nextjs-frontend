@@ -9,27 +9,29 @@
     flex-direction: column;
     flex: 1;
     width: 100%;
-    .left {
+    .content {
       display: flex;
       flex-direction: row;
-    }
-    .right {
-      flex: 1;
+      width: 100%;
+      .left {
+        flex: 2;
+        height: 600px;
+        text-align: center;
+      }
+      .right {
+        flex: 1;
+        height: 300px;
+        text-align: center;
+      }
+      .caption {
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(65, 63, 63);
+      }
     }
   }
   .footerArea {
     height: fit-content;
     width: fit-content;
-    .homebtn {
-      width: 60px;
-      height: 60px;
-      margin-top: auto;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 10px;
-      &:hover {
-        opacity: 0.9;
-      }
-    }
   }
 }
