@@ -25,7 +25,7 @@ export default function Holdings() {
   return (
     <ResponsivePieCanvas
       data={data}
-      margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+      margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}

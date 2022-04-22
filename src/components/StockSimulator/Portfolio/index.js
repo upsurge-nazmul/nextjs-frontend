@@ -7,9 +7,9 @@ import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
 
 const TABS = [
-  { name: "Charts", value: "charts", icon: "" },
-  { name: "Performance", value: "performance", icon: "" },
-  { name: "Trades", value: "trades", icon: "" },
+  { name: "Charts", value: "charts", icon: "Charts" },
+  { name: "Performance", value: "performance", icon: "Performance History" },
+  { name: "Trades", value: "trades", icon: "Trades History" },
 ];
 
 export default function Portfolio({ userData }) {
@@ -129,7 +129,12 @@ export default function Portfolio({ userData }) {
         )}
       </div>
       <div className={styles.footerArea}>
-        <Navigation options={TABS} action={setTab} active={tab} />
+        <Navigation
+          options={TABS}
+          action={setTab}
+          active={tab}
+          shape="square"
+        />
       </div>
     </div>
   );

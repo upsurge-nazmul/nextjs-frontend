@@ -2,6 +2,9 @@ $main-color: #ff6263;
 $hover-color: #f10d0d;
 $text-color: #fff;
 
+$square-main-color: rgb(94, 8, 94);
+$square-hover-color: rgba(94, 8, 94, 0.63);
+
 .navigation {
   min-width: 100px;
   width: fit-content;
@@ -31,6 +34,51 @@ $text-color: #fff;
     @extend .navItem;
     box-shadow: 3px 3px 10px 5px rgb(219, 216, 216);
     background-color: $main-color;
+    color: $text-color;
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
+
+.squareNavigation {
+  @extend .navigation;
+  gap: 0px;
+  .squareNav {
+    border: 2px solid $square-main-color;
+    // border-radius: 8px;
+    color: $square-main-color;
+    cursor: pointer;
+    height: 50px;
+    width: 200px;
+    // box-shadow: 3px 3px 5px 1px rgb(219, 216, 216);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      display: flex;
+      justify-content: center;
+      color: inherit;
+    }
+    &:hover {
+      color: $square-hover-color;
+    }
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-right: none;
+    }
+    &:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-left: none;
+    }
+  }
+  .activeSqNav {
+    @extend .squareNav;
+    box-shadow: 3px 3px 10px 5px rgb(219, 216, 216);
+    background-color: $square-main-color;
     color: $text-color;
     &:hover {
       color: $text-color;
