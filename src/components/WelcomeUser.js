@@ -10,7 +10,7 @@ import Jasper from "./SVGcomponents/Jasper";
 export default function WelcomeUser({ name, setshow }) {
   async function handleclick() {
     let res = await DashboardApis.markwelcomecomplete(
-      null,
+      {},
       getCookie("accesstoken")
     );
     setshow(false);
@@ -19,7 +19,7 @@ export default function WelcomeUser({ name, setshow }) {
     <div className={styles.welcomemodal}>
       <div className={styles.background} onClick={handleclick}></div>
       <div className={styles.main}>
-        <div className={styles.cross} onClick={() => setshow(false)}>
+        <div className={styles.cross} onClick={handleclick}>
           <CancelOutlinedIcon className={styles.icon} />
         </div>
         <Curve1 className={styles.curve1} />

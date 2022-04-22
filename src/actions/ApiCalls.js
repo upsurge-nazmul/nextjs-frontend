@@ -50,7 +50,8 @@ export const putResponse = async (url, payload, token) => {
   })
     .then((response) => response)
     .catch((error) => {
-      if (error.response.status === 403 && !error.response.success) {
+      console.log(error);
+      if (error?.response?.status === 403 && !error.response.success) {
         ///     logout()
         window.location.href = "/";
       } else return error;
