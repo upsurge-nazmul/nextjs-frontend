@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import QuizComponent from "../../components/Quiz/QuizComponent";
-import { Doughnut } from "react-chartjs-2";
 import PopUp from "../../components/PopUp";
 import FullAnswersheet from "../../components/Quiz/FullAnswersheet";
 import QuizApis from "../../actions/apis/QuizApis";
