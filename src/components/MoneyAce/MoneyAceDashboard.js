@@ -6,7 +6,6 @@ import Logo from "../SVGcomponents/Logo";
 import CityMap from "./CityMap";
 import MoneyAceHeader from "./MoneyAceHeader";
 import MoneyAceLeftPanel from "./MoneyAceLeftPanel";
-import GaugeChart from "react-gauge-chart";
 import PassBook from "./PassBook";
 import InvestmentHub from "./InvestmentHub";
 import Bank from "./Bank";
