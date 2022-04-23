@@ -27,19 +27,21 @@ export default function WelcomeUser({ name, setshow }) {
         <div className={styles.leftpart}>
           <div className={styles.text}>
             <BottomArrowBubble className={styles.bottomarrow} />
-            <p className={styles.heading}>{`Hi ${name}, wassup !`}</p>
+            <p className={styles.heading}>{`Hi ${name}`}</p>
+            <p className={styles.subheading}>{`Welcome to upsurge!`}</p>
             <p className={styles.subheading}>
-              {`Since I am a Unicorn (no, not the billion $$ kind) and so it only
-            makes sense that I am the resident money expert here at upsurge. I
-            will be your mentor throughout the platform, where children will get
-            to understand money, investing, and entrepreneurship like never
-            before.`}
+              {`I am Jasper, the resident unicorn and I will be your guide throughout upsurge! 
+Thank you for signing up for our Early Access Program. Here you will get a taste of what we have in store for your and your children, and there are prizes to be won!
+`}
             </p>
             <p className={styles.subheading}>
-              {`They can go on knowledge quests, play one of the many games
-            in the Arena, or earn UniCoins by completing chores. They can then
-            redeem the UniCoins they've earned for real prizes from brands they
-            (and you) love!`}
+              {`Complete the games, activities, quizzes & tasks, and earn UniCoins - our platform currency. Those with the most UniCoins at the end will get free access to our platform & many other exciting prizes! 
+`}
+            </p>
+            <p className={styles.subheading}>
+              {`You can click on milestones to get started and track your progress. 
+Hope you have a rewarding time at upsurge! 
+`}
             </p>
           </div>
         </div>
