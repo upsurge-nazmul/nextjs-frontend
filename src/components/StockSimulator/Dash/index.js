@@ -8,6 +8,13 @@ import ChartOptions from "./ChartOptions";
 import Select from "./Select";
 
 const ChartModeOptions = ["candlestick", "line"];
+const ChartDurations = [
+  { name: "1 Month", value: 30 },
+  { name: "3 Months", value: 90 },
+  { name: "6 Months", value: 180 },
+  { name: "1 Year", value: 365 },
+  { name: "5 Years", value: 1825 },
+];
 
 export default function SimulatorDash({
   simulatorDailyData,
@@ -16,6 +23,9 @@ export default function SimulatorDash({
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedSymbol, setSelectedSymbol] = useState(companyData[0].symbol);
+  const [selectedDuration, setSelectedDuration] = useState(
+    ChartDurations[0].value
+  );
   const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
 
   useEffect(() => {
@@ -51,7 +61,12 @@ export default function SimulatorDash({
           width="95%"
           height="600px"
         />
-        <ChartDuration defaultDuration={30} width="95%" />
+        <ChartDuration
+          value={selectedDuration}
+          action={setSelectedDuration}
+          options={ChartDurations}
+          width="95%"
+        />
       </div>
       <div className={styles.dashRight}>
         {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
