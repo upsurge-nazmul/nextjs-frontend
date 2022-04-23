@@ -11,6 +11,7 @@ import { onlyNum, removenonnumber } from "../../helpers/validationHelpers";
 import BankCards from "./BankCards";
 import { MainContext } from "../../context/Main";
 import { getIndianTime } from "../../helpers/timehelpers";
+import { toIndianFormat } from "../../helpers/currency";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import StocksDiv from "./Investment/StocksDiv";
 import RealEstate from "./Investment/RealEstate";
@@ -43,25 +44,59 @@ export default function MoneyAceInvestment({
     }
   }
   useEffect(() => {
+    if (mode !== "all") return;
     loadassetdata();
     async function loadassetdata() {
-      let res = await MoneyAceApis.getassetvalues();
+      let res = await MoneyAceApis.investmentrecords();
       if (res && res.data && res.data.success) {
-        setassetchartdata(res.data.data.chart_data);
-        console.log(res.data.data.chart_data);
-        let d = res.data.data.current;
+        setassetchartdata(res.data.data);
+        // console.log(res.data.data.chart_data);
+        let d = res.data.data;
+        console.log(d);
+        if (d[0].data.length === 0 || d[1].data.length === 0) {
+          setassetdata([
+            {
+              name: "Current Value",
+              value: "₹" + 0,
+            },
+            {
+              name: "Total investment",
+              value: "₹" + 0,
+            },
+            {
+              name: "Total return",
+              value: "₹" + 0,
+            },
+          ]);
+          return;
+        }
+
         setassetdata([
-          { name: "Stocks", value: d.stock_value },
-          { name: "Real Estate", value: d.realestate_value },
-          { name: "Gold", value: d.gold_value },
-          { name: "FD", value: d.fd_value },
-          { name: "Retirement", value: d.retirementfund_value },
-          { name: "Saving Account", value: d.saving_value },
-          { name: "Crypto", value: d.crypto_value },
+          {
+            name: "Current Value",
+            value: "₹" + toIndianFormat(d[0].data[d[0].data.length - 1].y),
+          },
+          {
+            name: "Total investment",
+            value: "₹" + toIndianFormat(d[1].data[d[1].data.length - 1].y),
+          },
+          {
+            name: "Total return",
+            value:
+              "₹" +
+              toIndianFormat(
+                d[0].data[d[0].data.length - 1].y -
+                  d[1].data[d[1].data.length - 1].y
+              ),
+          },
+          // { name: "FD", value: d.fd_value },
+          // { name: "Retirement", value: d.retirementfund_value },
+          // { name: "Saving Account", value: d.saving_value },
+          // { name: "Crypto", value: d.crypto_value },
         ]);
       }
     }
-  }, []);
+  }, [mode]);
   return (
     <div className={styles.investment}>
       {mode === "bulletin" && (

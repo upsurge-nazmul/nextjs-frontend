@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
+=======
+>>>>>>> 54df0da (added fullscreen)
 import ResultBox from "./ResultBox";
 import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 function VacationCalc() {
   const [years, setyear] = useState(1);
