@@ -3,8 +3,12 @@ import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
 import { getRandomColor } from "../../helpers/color";
 
-export default function Watchlist({ companyData }) {
-  const [watchlistData, setWatchlistData] = useState();
+export default function Watchlist({
+  companyData,
+  action = () => {},
+  active = "",
+}) {
+  const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
   const [openList, setOpenList] = useState(false);
 
   const handleClose = (value) => {
@@ -22,7 +26,15 @@ export default function Watchlist({ companyData }) {
         watchlistData.map((item, i) => {
           let randColor = getRandomColor();
           return (
-            <div className={styles.listItem} key={i}>
+            <div
+              className={
+                item.symbol === active ? styles.activeItem : styles.listItem
+              }
+              key={i}
+              onClick={() => {
+                action(item.symbol);
+              }}
+            >
               <button
                 className={styles.closeButton}
                 onClick={() => handleClose(item.symbol)}

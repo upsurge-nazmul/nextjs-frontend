@@ -6,11 +6,12 @@ export default function Navigation({ options = [], active = "" }) {
   return (
     <div className={styles.navigation}>
       {options.length &&
-        options.map((item) => {
+        options.map((item, i) => {
           return (
             <Link
               href={`/dashboard/w/stocksimulator/[page]`}
               as={`/dashboard/w/stocksimulator/${item.value}`}
+              key={i}
             >
               <div
                 key={item.value}

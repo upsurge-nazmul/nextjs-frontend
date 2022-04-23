@@ -29,6 +29,7 @@ const MODES = [
 export default function StockSimulator() {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
+  const [selectedSymbol, setSelectedSymbol] = useState(CompanyData[0].symbol);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -38,6 +39,13 @@ export default function StockSimulator() {
   useEffect(() => {
     setMode(router.query.page);
   }, [router.query.page]);
+
+  const handleWatchlistClick = (value) => {
+    setSelectedSymbol(value);
+    if (mode !== MODES[0].value) {
+      router.push(`/dashboard/w/stocksimulator/${MODES[0].value}`);
+    }
+  };
 
   return (
     <div className={styles.stockSimulator}>
@@ -50,7 +58,11 @@ export default function StockSimulator() {
         />
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
-            <Watchlist companyData={CompanyData} />
+            <Watchlist
+              companyData={CompanyData}
+              action={handleWatchlistClick}
+              active={selectedSymbol}
+            />
             <Navigation options={MODES} action={setMode} active={mode} />
           </div>
           <div className={styles.bottomSection}>
@@ -60,6 +72,8 @@ export default function StockSimulator() {
                   simulatorDailyData={SimulatorDailyData}
                   simulatorMonthlyData={SimulatorMonthlyData}
                   companyData={CompanyData}
+                  selectedSymbol={selectedSymbol}
+                  setSelectedSymbol={setSelectedSymbol}
                 />
               </div>
             )}

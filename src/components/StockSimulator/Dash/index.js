@@ -20,9 +20,10 @@ export default function SimulatorDash({
   simulatorDailyData,
   simulatorMonthlyData,
   companyData,
+  selectedSymbol,
+  setSelectedSymbol,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
-  const [selectedSymbol, setSelectedSymbol] = useState(companyData[0].symbol);
   const [selectedDuration, setSelectedDuration] = useState(
     ChartDurations[0].value
   );
