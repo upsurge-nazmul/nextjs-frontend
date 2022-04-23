@@ -10,7 +10,8 @@ import JoinUs from "../../components/Home/JoinUs";
 import { Game_Data } from "../../static_data/Game_Data";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
-
+import { isMobile } from "react-device-detect";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
 export default function GamePage({ userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -36,6 +37,33 @@ export default function GamePage({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  async function handleclick(item) {
+    if (item === "Ludo" && isMobile) {
+      let res = await FreeGameApis.presign({
+        playername: "Anonymous",
+        playeremail: "tempuser@upsurge.in",
+        number: "",
+        game: item,
+      });
+      if (res) {
+        if (res.data.success) {
+          router.push({
+            pathname: "/games/Ludo",
+            query: { id: res.data.data },
+          });
+        } else {
+          console.log(res.data.message);
+        }
+      } else {
+        console.log("error connecting server");
+      }
+    } else {
+      if (Game_Data[item]?.pushto) {
+        return router.push(Game_Data[item].pushto);
+      }
+      router.push("/games/" + item);
+    }
+  }
   return (
     <div className={styles.gamelist}>
       <Header
@@ -85,12 +113,7 @@ export default function GamePage({ userdata }) {
                 <p className={styles.detail}>{Game_Data[item].description}</p>
                 <p
                   className={styles.activebutton}
-                  onClick={() => {
-                    if (Game_Data[item].pushto) {
-                      return router.push(Game_Data[item].pushto);
-                    }
-                    router.push("/games/" + item);
-                  }}
+                  onClick={() => handleclick(item)}
                 >
                   Play
                 </p>
