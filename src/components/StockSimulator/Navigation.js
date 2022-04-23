@@ -1,8 +1,9 @@
+import Link from "next/link";
+
 import styles from "../../styles/StockSimulator/navigations.module.scss";
 
 export default function Navigation({
   options = [],
-  action = () => {},
   active = "",
   shape = "circle",
 }) {
@@ -19,23 +20,27 @@ export default function Navigation({
       {options.length &&
         options.map((item) => {
           return (
-            <div
-              key={item.value}
-              className={
-                shape === "circle"
-                  ? item.value === active
-                    ? styles.activeNav
-                    : styles.navItem
-                  : shape === "square"
-                  ? item.value === active
-                    ? styles.activeSqNav
-                    : styles.squareNav
-                  : ""
-              }
-              onClick={() => action(item.value)}
+            <Link
+              href={`/dashboard/w/stocksimulator/[page]`}
+              as={`/dashboard/w/stocksimulator/${item.value}`}
             >
-              <div className={styles.icon}>{item.icon}</div>
-            </div>
+              <div
+                key={item.value}
+                className={
+                  shape === "circle"
+                    ? item.value === active
+                      ? styles.activeNav
+                      : styles.navItem
+                    : shape === "square"
+                    ? item.value === active
+                      ? styles.activeSqNav
+                      : styles.squareNav
+                    : ""
+                }
+              >
+                <div className={styles.icon}>{item.icon}</div>
+              </div>
+            </Link>
           );
         })}
     </div>

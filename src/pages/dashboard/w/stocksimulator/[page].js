@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
@@ -26,12 +27,17 @@ const MODES = [
 ];
 
 export default function StockSimulator() {
-  const [mode, setMode] = useState(MODES[0].value);
+  const router = useRouter();
+  const [mode, setMode] = useState(router.query.page);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+
+  useEffect(() => {
+    setMode(router.query.page);
+  }, [router.query.page]);
 
   return (
     <div className={styles.stockSimulator}>
