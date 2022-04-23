@@ -5,15 +5,7 @@ import { getRandomColor } from "../../helpers/color";
 
 export default function Watchlist({ companyData }) {
   const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
-  const [openList, setOpenList] = useState(false);
-  const colors = [
-    "aqua",
-    "burlywood",
-    "blueviolet",
-    "cornflowerblue",
-    "coral",
-    "olivedrab",
-  ];
+  const [openList, setOpenList] = useState(true);
 
   const handleClose = (value) => {
     setWatchlistData((prev) => prev.filter((item) => item.symbol !== value));

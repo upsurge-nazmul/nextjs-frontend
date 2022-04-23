@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/addWatchlist.module.scss";
 
 export default function AddWatchlist({
@@ -8,6 +8,20 @@ export default function AddWatchlist({
   setData = () => {},
 }) {
   const [addedItems, setAddedItems] = useState(data);
+  const [searchParam, setSearchParam] = useState("");
+  const [filteredOptoins, setFilteredOptions] = useState(options);
+
+  useEffect(() => {
+    if (searchParam && options.length) {
+      setFilteredOptions(() =>
+        options.filter((item) =>
+          item.name.toLowerCase().startsWith(searchParam.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredOptions(options);
+    }
+  }, [searchParam, options]);
 
   const handleAddItem = (value) => {
     setAddedItems((prev) => {
@@ -30,14 +44,27 @@ export default function AddWatchlist({
 
   return (
     <div className={styles.addWatchlist}>
-      <div className={styles.background} onClick={() => action(null)} />
+      <div
+        className={styles.background}
+        onClick={() => {
+          action(null);
+          setSearchParam("");
+        }}
+      />
       <div className={styles.main}>
         <div className={styles.titleArea}>
           <p>Available companies</p>
         </div>
+        <div className={styles.searchArea}>
+          <input
+            placeholder="Search..."
+            value={searchParam}
+            onChange={(e) => setSearchParam(e.target.value)}
+          />
+        </div>
         <div className={styles.listArea}>
-          {options.length &&
-            options.map((item) => {
+          {filteredOptoins.length ? (
+            filteredOptoins.map((item) => {
               return (
                 <div key={item.symbol} className={styles.listItem}>
                   <span className={styles.itemName}>{item.name}</span>
@@ -51,7 +78,12 @@ export default function AddWatchlist({
                   </span>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className={styles.noData}>
+              <p>No Data Available</p>
+            </div>
+          )}
         </div>
         <div className={styles.addedItemsArea}>
           {addedItems.length

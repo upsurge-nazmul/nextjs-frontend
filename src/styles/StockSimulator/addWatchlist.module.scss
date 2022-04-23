@@ -17,7 +17,6 @@
   .main {
     width: 650px;
     height: fit-content;
-    max-height: 80vh;
     border-radius: 20px;
     background-color: #eee;
     display: flex;
@@ -34,12 +33,28 @@
         font-size: 20px;
         font-weight: 700;
         color: #333;
-        filter: drop-shadow(0px 2px 5px rgb(124, 121, 121));
+      }
+    }
+    .searchArea {
+      padding: 4px;
+      width: 100%;
+      input {
+        outline: none;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 4px;
+        border-radius: 8px;
+        color: #494646;
+        font-weight: 600;
+        border: 2px solid #898989;
+        :focus-visible {
+          outline: none;
+        }
       }
     }
     .listArea {
       overflow-y: auto;
-      flex: 1;
+      height: 500px;
       .listItem {
         background-color: #ddd;
         font-family: "Fira Sans", sans-serif;
@@ -79,13 +94,19 @@
           }
         }
       }
+      .noData {
+        padding: 20px 0;
+        text-align: center;
+        color: #333;
+        font-size: 18px;
+        font-weight: 400;
+      }
     }
     .addedItemsArea {
       margin-top: 20px;
       padding: 10px 20px;
       width: 100%;
-      min-height: 100px;
-      max-height: 40%;
+      height: 100px;
       overflow-y: auto;
       border: 2px solid #ccc;
       .addedItem {
