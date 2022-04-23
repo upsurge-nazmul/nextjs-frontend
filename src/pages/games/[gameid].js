@@ -360,28 +360,28 @@ export default function GamePage({ gamedata, userdata }) {
   //     }
   //   };
   // }, []);
-  // useEffect(() => {
-  //   document.addEventListener("fullscreenchange", onFullScreenChange, false);
-  //   document.addEventListener(
-  //     "webkitfullscreenchange",
-  //     onFullScreenChange,
-  //     false
-  //   );
-  //   document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
 
-  //   function onFullScreenChange() {
-  //     var fullscreenElement =
-  //       document.fullscreenElement ||
-  //       document.mozFullScreenElement ||
-  //       document.webkitFullscreenElement;
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
 
-  //     if (!fullscreenElement) {
-  //       setisfullscreen(false);
-  //       fullscreenenabled = false;
-  //       // router.push("/games");
-  //     }
-  //   }
-  // }, []);
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+        fullscreenenabled = false;
+        // router.push("/games");
+      }
+    }
+  }, []);
   return (
     <div className={styles.gamePage}>
       <Header
@@ -547,7 +547,7 @@ export default function GamePage({ gamedata, userdata }) {
               }
               `}
             style={
-              widthHeight.width > 900
+              widthHeight.width > 900 && !isMobile
                 ? {
                     visibility: "visible",
                   }
