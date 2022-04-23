@@ -87,16 +87,17 @@ export default function AddWatchlist({
         </div>
         <div className={styles.addedItemsArea}>
           {addedItems.length
-            ? addedItems.map((item) => {
+            ? addedItems.map((item, i) => {
                 return (
                   <div
                     className={styles.addedItem}
                     onClick={() => handleRemoveItem(item)}
+                    key={i}
                   >
                     <span className={styles.addedItemName}>{item.name}</span>
-                    {/* <span className={styles.closeButton}>
+                    <span className={styles.closeButton}>
                       <span>x</span>
-                    </span> */}
+                    </span>
                   </div>
                 );
               })

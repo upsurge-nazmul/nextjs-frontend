@@ -4,8 +4,8 @@ import AddWatchlist from "./AddWatchlist";
 import { getRandomColor } from "../../helpers/color";
 
 export default function Watchlist({ companyData }) {
-  const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
-  const [openList, setOpenList] = useState(true);
+  const [watchlistData, setWatchlistData] = useState();
+  const [openList, setOpenList] = useState(false);
 
   const handleClose = (value) => {
     setWatchlistData((prev) => prev.filter((item) => item.symbol !== value));
@@ -18,33 +18,37 @@ export default function Watchlist({ companyData }) {
 
   return (
     <div className={styles.watchlist}>
-      {watchlistData && watchlistData.length
-        ? watchlistData.map((item, i) => {
-            let randColor = getRandomColor();
-            return (
-              <div className={styles.listItem} key={i}>
-                <button
-                  className={styles.closeButton}
-                  onClick={() => handleClose(item.symbol)}
-                >
-                  x
-                </button>
-                <div
-                  style={{
-                    backgroundColor: randColor,
-                  }}
-                  className={styles.colorCode}
-                />
-                <div className={styles.info}>
-                  <p className={styles.symbol}>{item.symbol}</p>
-                  <p className={styles.value} style={{ color: randColor }}>
-                    {"$" + item.value}
-                  </p>
-                </div>
+      {watchlistData && watchlistData.length ? (
+        watchlistData.map((item, i) => {
+          let randColor = getRandomColor();
+          return (
+            <div className={styles.listItem} key={i}>
+              <button
+                className={styles.closeButton}
+                onClick={() => handleClose(item.symbol)}
+              >
+                x
+              </button>
+              <div
+                style={{
+                  backgroundColor: randColor,
+                }}
+                className={styles.colorCode}
+              />
+              <div className={styles.info}>
+                <p className={styles.symbol}>{item.symbol}</p>
+                <p className={styles.value} style={{ color: randColor }}>
+                  {"$" + item.value}
+                </p>
               </div>
-            );
-          })
-        : ""}
+            </div>
+          );
+        })
+      ) : (
+        <div className={styles.noWatchlist} onClick={handleAdd}>
+          <p>Watchlist is empty</p>
+        </div>
+      )}
       <div className={styles.addButton}>
         <button onClick={handleAdd}>+</button>
       </div>

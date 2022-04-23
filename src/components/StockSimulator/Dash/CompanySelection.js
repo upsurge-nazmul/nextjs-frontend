@@ -46,6 +46,8 @@ function CompanySelection({
 
   const handleChange = (item) => {
     setvalue(item.symbol);
+    setSearchParam("");
+    setFilteredOptions(options);
     setshowoptions(false);
   };
 
