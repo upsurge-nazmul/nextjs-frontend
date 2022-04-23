@@ -15,8 +15,8 @@ export default function Holdings() {
       color: "hsl(204, 70%, 50%)",
     },
     {
-      id: "Others",
-      label: "Others",
+      id: "Rest",
+      label: "Rest",
       value: 474,
       color: "hsl(177, 70%, 50%)",
     },
