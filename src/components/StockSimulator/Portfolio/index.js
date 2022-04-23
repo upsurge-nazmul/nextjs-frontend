@@ -18,7 +18,7 @@ export default function Portfolio({ userData }) {
 
   useEffect(() => {
     let values = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 30; i++) {
       values.push({
         x: i + 1,
         y: 1000000 + Math.random() * 1000,

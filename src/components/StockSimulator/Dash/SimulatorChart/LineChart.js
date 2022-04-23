@@ -55,7 +55,7 @@ export default function LineChart({ chartData }) {
   return (
     <ResponsiveLine
       data={chartData}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 0, right: 0, bottom: 80, left: 80 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -73,7 +73,7 @@ export default function LineChart({ chartData }) {
         tickPadding: 5,
         tickRotation: 28,
         legend: "Date",
-        legendOffset: 50,
+        legendOffset: 70,
         legendPosition: "middle",
       }}
       axisLeft={{
@@ -82,15 +82,17 @@ export default function LineChart({ chartData }) {
         tickPadding: 5,
         tickRotation: 0,
         legend: "count",
-        legendOffset: -40,
+        legendOffset: -60,
         legendPosition: "middle",
       }}
-      pointSize={10}
+      pointSize={6}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
-      pointLabelYOffset={-12}
       enableArea={true}
+      areaBaselineValue={20}
+      enableGridX={false}
+      enableGridY={true}
       useMesh={true}
       legends={[]}
     />
