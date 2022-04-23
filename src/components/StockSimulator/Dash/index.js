@@ -5,7 +5,7 @@ import SimulatorOptions from "./Options";
 import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
-import Select from "./Select";
+import CompanySelection from "./CompanySelection";
 
 const ChartModeOptions = ["candlestick", "line"];
 const ChartDurations = [
@@ -42,7 +42,7 @@ export default function SimulatorDash({
       <div className={styles.dashLeft}>
         <div className={styles.chartOptionArea}>
           <div className={styles.selectArea}>
-            <Select
+            <CompanySelection
               {...{
                 value: selectedSymbol,
                 setvalue: setSelectedSymbol,
