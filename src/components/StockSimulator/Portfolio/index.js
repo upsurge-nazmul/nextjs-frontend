@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
-import Navigation from "../Navigation";
+import Tabs from "../Tabs";
 import Holdings from "./Holdings";
 import Performance from "./Performance";
 import Trades from "./Trades";
@@ -123,12 +123,7 @@ export default function Portfolio({ userData }) {
         )}
       </div>
       <div className={styles.footerArea}>
-        <Navigation
-          options={TABS}
-          action={setTab}
-          active={tab}
-          shape="square"
-        />
+        <Tabs options={TABS} action={setTab} active={tab} shape="square" />
       </div>
     </div>
   );

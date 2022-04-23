@@ -2,21 +2,9 @@ import Link from "next/link";
 
 import styles from "../../styles/StockSimulator/navigations.module.scss";
 
-export default function Navigation({
-  options = [],
-  active = "",
-  shape = "circle",
-}) {
+export default function Navigation({ options = [], active = "" }) {
   return (
-    <div
-      className={
-        shape === "circle"
-          ? styles.navigation
-          : shape === "square"
-          ? styles.squareNavigation
-          : ""
-      }
-    >
+    <div className={styles.navigation}>
       {options.length &&
         options.map((item) => {
           return (
@@ -27,15 +15,7 @@ export default function Navigation({
               <div
                 key={item.value}
                 className={
-                  shape === "circle"
-                    ? item.value === active
-                      ? styles.activeNav
-                      : styles.navItem
-                    : shape === "square"
-                    ? item.value === active
-                      ? styles.activeSqNav
-                      : styles.squareNav
-                    : ""
+                  item.value === active ? styles.activeNav : styles.navItem
                 }
               >
                 <div className={styles.icon}>{item.icon}</div>
