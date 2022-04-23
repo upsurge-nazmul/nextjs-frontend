@@ -399,14 +399,19 @@ export default function GamePage({ gamedata, userdata }) {
       {showgamelandscapeinfo && (
         <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
       )}
-      {/* {unitycontext &&
+      {unitycontext &&
       progression === 1 &&
       widthHeight.width <= 900 &&
       widthHeight.height < widthHeight.width ? (
         <div className={styles.start}>
-          <p className={styles.btn} onClick={movetofull}>
-            Start
-          </p>
+          <div className={styles.box}>
+            <p className={styles.name}>
+              This game can only be played on fullscreen in your phone.
+            </p>
+            <p className={styles.btn} onClick={movetofull}>
+              Go to fullscreen
+            </p>
+          </div>
         </div>
       ) : (
         widthHeight.width <= 900 &&
@@ -421,14 +426,14 @@ export default function GamePage({ gamedata, userdata }) {
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
         )
-      )} */}
+      )}
       <div
         className={`${styles.gameWrapper} ${
           widthHeight.width <= 900 && styles.mobilewrapper
         } ${isfullscreen && styles.nopadding}`}
         id="unity-wrapper"
       >
-        {!mobileMode && showgame && progression < 1 && (
+        {!isMobile && showgame && progression < 1 && (
           <div className={styles.loaderwrapper}>
             <Spinner
               progress={`${progression * 100}%`}
@@ -438,20 +443,9 @@ export default function GamePage({ gamedata, userdata }) {
             <p>Loading {Math.round(progression * 100)}%</p>
           </div>
         )}
-        {/* {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? ( */}
-        {mobileMode ? (
+        {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
           <div className={styles.mobileerr}>
             <div className={styles.box}>
-              <BrokenGameConroller className={styles.broken} />
-              <p className={styles.heading}>Oh no!</p>
-              <p>
-                {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
-              </p>
-              <div className={styles.button} onClick={() => router.push("/")}>
-                Go back
-              </div>
-              {/* <div className={styles.box}>
               <img
                 src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                 className={styles.jasper}
@@ -463,7 +457,7 @@ export default function GamePage({ gamedata, userdata }) {
                 onClick={() => setshowgamelandscapeinfo(true)}
               >
                 Know more
-              </div> */}
+              </div>
             </div>
 
             {/* <Jasper className={styles.jasper} /> */}
