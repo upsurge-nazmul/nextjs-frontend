@@ -16,7 +16,6 @@ import DashboardSvg from "../../../../components/SVGcomponents/StockSimulator/Da
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
 import LeaderboardSvg from "../../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
 
-import CompanyData from "./companies.json";
 import UserData from "./userData.json";
 import Leaderboard from "../../../../components/StockSimulator/Leaderboard";
 
@@ -29,7 +28,8 @@ const MODES = [
 export default function StockSimulator({ token }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
-  const [selectedSymbol, setSelectedSymbol] = useState(CompanyData[0].symbol);
+  const [companyData, setCompanyData] = useState();
+  const [selectedSymbol, setSelectedSymbol] = useState();
   const [simulatorDailyData, setSimulatorDailyData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -40,6 +40,21 @@ export default function StockSimulator({ token }) {
   useEffect(() => {
     setMode(router.query.page);
   }, [router.query.page]);
+
+  useEffect(() => {
+    async function fetchCompanies() {
+      let allCompanies = await SimulatorApis.getStocks({
+        payload: {
+          from: getTodaysDateRange().from,
+          to: getTodaysDateRange().to,
+        },
+        token,
+      });
+      setCompanyData(allCompanies.data.data.rows);
+      setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+    }
+    fetchCompanies();
+  }, [token]);
 
   useEffect(() => {
     async function fetchStocks() {
@@ -53,7 +68,9 @@ export default function StockSimulator({ token }) {
       });
       setSimulatorDailyData(dailyStocks.data.data.rows);
     }
-    fetchStocks();
+    if (selectedSymbol) {
+      fetchStocks();
+    }
   }, [token, selectedSymbol]);
 
   const handleWatchlistClick = (value) => {
@@ -65,7 +82,7 @@ export default function StockSimulator({ token }) {
 
   return (
     <div className={styles.stockSimulator}>
-      <DashboardLeftPanel type='waitlist' />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
@@ -74,12 +91,14 @@ export default function StockSimulator({ token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
-            <Watchlist
-              token={token}
-              companyData={CompanyData}
-              action={handleWatchlistClick}
-              active={selectedSymbol}
-            />
+            {selectedSymbol && (
+              <Watchlist
+                token={token}
+                companyData={companyData}
+                action={handleWatchlistClick}
+                active={selectedSymbol}
+              />
+            )}
             <Navigation options={MODES} action={setMode} active={mode} />
           </div>
           <div className={styles.bottomSection}>
@@ -89,7 +108,7 @@ export default function StockSimulator({ token }) {
                   <SimulatorDash
                     token={token}
                     simulatorDailyData={simulatorDailyData}
-                    companyData={CompanyData}
+                    companyData={companyData}
                     selectedSymbol={selectedSymbol}
                     setSelectedSymbol={setSelectedSymbol}
                   />
