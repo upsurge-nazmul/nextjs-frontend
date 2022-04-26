@@ -32,7 +32,7 @@ export default function SimulatorDash({
   useEffect(() => {
     if (simulatorDailyData.length) {
       let currentCompany = simulatorDailyData.find(
-        (item) => item.Symbol === selectedSymbol
+        (item) => item.symbol === selectedSymbol
       );
       setSelectedCompany(currentCompany);
     }
@@ -59,14 +59,14 @@ export default function SimulatorDash({
           simulatorMonthlyData={simulatorMonthlyData}
           chartMode={chartMode}
           ChartModeOptions={ChartModeOptions}
-          width="95%"
-          height="600px"
+          width='95%'
+          height='600px'
         />
         <ChartDuration
           value={selectedDuration}
           action={setSelectedDuration}
           options={ChartDurations}
-          width="95%"
+          width='95%'
         />
       </div>
       <div className={styles.dashRight}>

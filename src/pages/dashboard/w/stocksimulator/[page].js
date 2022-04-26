@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import SimulatorApis from "../../../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import SimulatorDash from "../../../../components/StockSimulator/Dash";
@@ -9,27 +10,31 @@ import Toast from "../../../../components/Toast";
 import Portfolio from "../../../../components/StockSimulator/Portfolio";
 import Navigation from "../../../../components/StockSimulator/Navigation";
 import styles from "../../../../styles/StockSimulator/stocksimulator.module.scss";
+import {
+  getTodaysDateRange,
+  getDateRange,
+} from "../../../../helpers/timehelpers";
 
 import DashboardSvg from "../../../../components/SVGcomponents/StockSimulator/DashboardSvg";
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
 import LeaderboardSvg from "../../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
 
 import SimulatorMonthlyData from "./monthly.json";
-import SimulatorDailyData from "./daily.json";
 import CompanyData from "./companies.json";
 import UserData from "./userData.json";
 import Leaderboard from "../../../../components/StockSimulator/Leaderboard";
 
 const MODES = [
-  { name: "Dashboard", value: "dashboard", icon: <DashboardSvg /> },
+  { name: "Home", value: "home", icon: <DashboardSvg /> },
   { name: "Portfolio", value: "portfolio", icon: <PortfolioSvg /> },
   { name: "Leaderboard", value: "leaderboard", icon: <LeaderboardSvg /> },
 ];
 
-export default function StockSimulator() {
+export default function StockSimulator({ token }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
   const [selectedSymbol, setSelectedSymbol] = useState(CompanyData[0].symbol);
+  const [simulatorDailyData, setSimulatorDailyData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -40,6 +45,21 @@ export default function StockSimulator() {
     setMode(router.query.page);
   }, [router.query.page]);
 
+  useEffect(() => {
+    async function fetchStocks() {
+      console.log("!!!!!!!!!!!!!!", getDateRange("3 months"));
+      let dailyStocks = await SimulatorApis.getStocks({
+        payload: {
+          from: getTodaysDateRange().from,
+          to: getTodaysDateRange().to,
+        },
+        token,
+      });
+      setSimulatorDailyData(dailyStocks.data.data.rows);
+    }
+    fetchStocks();
+  }, [token]);
+
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
     if (mode !== MODES[0].value) {
@@ -49,7 +69,7 @@ export default function StockSimulator() {
 
   return (
     <div className={styles.stockSimulator}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel type='waitlist' />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
@@ -59,6 +79,7 @@ export default function StockSimulator() {
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
             <Watchlist
+              token={token}
               companyData={CompanyData}
               action={handleWatchlistClick}
               active={selectedSymbol}
@@ -68,13 +89,15 @@ export default function StockSimulator() {
           <div className={styles.bottomSection}>
             {mode === MODES[0].value && (
               <div>
-                <SimulatorDash
-                  simulatorDailyData={SimulatorDailyData}
-                  simulatorMonthlyData={SimulatorMonthlyData}
-                  companyData={CompanyData}
-                  selectedSymbol={selectedSymbol}
-                  setSelectedSymbol={setSelectedSymbol}
-                />
+                {simulatorDailyData && (
+                  <SimulatorDash
+                    simulatorDailyData={simulatorDailyData}
+                    simulatorMonthlyData={SimulatorMonthlyData}
+                    companyData={CompanyData}
+                    selectedSymbol={selectedSymbol}
+                    setSelectedSymbol={setSelectedSymbol}
+                  />
+                )}
               </div>
             )}
             {mode === MODES[1].value && <Portfolio userData={UserData[0]} />}
@@ -118,7 +141,10 @@ export async function getServerSideProps({ params, req }) {
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
-        props: { isLogged: false, msg },
+        props: {
+          isLogged: false,
+          msg,
+        },
         redirect: {
           permanent: false,
           destination: "/?err=02",
@@ -131,6 +157,7 @@ export async function getServerSideProps({ params, req }) {
             response && response.data && response.data.data
               ? response.data.data
               : [],
+          token,
         },
       };
     }

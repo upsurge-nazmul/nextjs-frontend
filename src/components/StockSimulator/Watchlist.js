@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
 import { getRandomColor } from "../../helpers/color";
+import LoginApis from "../../actions/apis/LoginApis";
+import SimulatorApis from "../../actions/apis/SimulatorApis";
 
 export default function Watchlist({
+  token,
   companyData,
   action = () => {},
   active = "",
 }) {
-  const [watchlistData, setWatchlistData] = useState(companyData.slice(0, 3));
+  const [watchlistData, setWatchlistData] = useState();
   const [openList, setOpenList] = useState(false);
+
+  useEffect(() => {
+    async function fetchWatchlist() {
+      let watchlist = await SimulatorApis.getWatchlist({ token });
+      setWatchlistData(watchlist.data.data.rows);
+    }
+    fetchWatchlist();
+  }, [token]);
 
   const handleClose = (value) => {
     setWatchlistData((prev) => prev.filter((item) => item.symbol !== value));
@@ -20,17 +31,18 @@ export default function Watchlist({
     setOpenList((prev) => !prev);
   };
 
+  // console.log("@@@@@@@@@@", watchlistData);
+
   return (
     <div className={styles.watchlist}>
       {watchlistData && watchlistData.length ? (
-        watchlistData.map((item, i) => {
-          let randColor = getRandomColor();
+        watchlistData.map((item) => {
           return (
             <div
               className={
                 item.symbol === active ? styles.activeItem : styles.listItem
               }
-              key={i}
+              key={item.id}
               onClick={() => {
                 action(item.symbol);
               }}
@@ -43,14 +55,14 @@ export default function Watchlist({
               </button>
               <div
                 style={{
-                  backgroundColor: randColor,
+                  backgroundColor: item.color,
                 }}
                 className={styles.colorCode}
               />
               <div className={styles.info}>
                 <p className={styles.symbol}>{item.symbol}</p>
-                <p className={styles.value} style={{ color: randColor }}>
-                  {"$" + item.value}
+                <p className={styles.value} style={{ color: item.color }}>
+                  {"$" + item.current_value}
                 </p>
               </div>
             </div>

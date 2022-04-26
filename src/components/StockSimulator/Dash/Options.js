@@ -8,7 +8,7 @@ export default function SimulatorOptions({ companyDetails }) {
 
   useEffect(() => {
     if (companyDetails) {
-      setPrice(companyDetails.Close);
+      setPrice(parseFloat(companyDetails.close));
     }
   }, [companyDetails]);
 
@@ -38,7 +38,7 @@ export default function SimulatorOptions({ companyDetails }) {
       <p className={styles.optionsTitle}>Quantity</p>
       <div className={styles.quantityInput}>
         <input
-          type="number"
+          type='number'
           // className={styles.quantityInput}
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}

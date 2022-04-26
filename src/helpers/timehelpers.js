@@ -91,3 +91,60 @@ export function getMonthsLeft(diff) {
   }
   return Math.round(elapsed / msPerMonth);
 }
+
+export function getTodaysDateRange() {
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  return {
+    from: `${year}-${month}-${day + 1}`,
+    to: `${year}-${month}-${day}`,
+  };
+}
+
+export function getDateRange(range = "1 month") {
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  switch (range) {
+    case "3 months":
+      let currentMonth3 = month - 2;
+      let currentYear3 = year;
+      if (currentMonth3 <= 0) {
+        currentMonth3 = 12 + currentMonth3;
+        currentYear3 = currentYear3 - 1;
+      }
+      return {
+        from: `${currentYear3}-${currentMonth3}-${1}`,
+        to: `${currentYear3}-${month}-${31}`,
+      };
+    case "6 months":
+      let currentMonth6 = month - 5;
+      let currentYear6 = year;
+      if (currentMonth6 <= 0) {
+        currentMonth6 = 12 + currentMonth6;
+        currentYear6 = currentYear6 - 1;
+      }
+      return {
+        from: `${currentYear6}-${currentMonth6}-${1}`,
+        to: `${currentYear6}-${month}-${31}`,
+      };
+    case "1 year":
+      return {
+        from: `${year}-${1}-${1}`,
+        to: `${year}-${12}-${31}`,
+      };
+    case "5 years":
+      return {
+        from: `${year - 4}-${1}-${1}`,
+        to: `${year}-${12}-${31}`,
+      };
+    default:
+      return {
+        from: `${year}-${month}-${1}`,
+        to: `${year}-${month}-${31}`,
+      };
+  }
+}
