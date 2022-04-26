@@ -103,13 +103,13 @@ export function getTodaysDateRange() {
   };
 }
 
-export function getDateRange(range = "1 month") {
+export function getDateRange(range = "1 Month") {
   let date = new Date();
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
   let day = date.getDate();
   switch (range) {
-    case "3 months":
+    case "3 Months":
       let currentMonth3 = month - 2;
       let currentYear3 = year;
       if (currentMonth3 <= 0) {
@@ -117,10 +117,10 @@ export function getDateRange(range = "1 month") {
         currentYear3 = currentYear3 - 1;
       }
       return {
-        from: `${currentYear3}-${currentMonth3}-${1}`,
-        to: `${currentYear3}-${month}-${31}`,
+        from: `${year}-${month}-${31}`,
+        to: `${currentYear3}-${currentMonth3}-${1}`,
       };
-    case "6 months":
+    case "6 Months":
       let currentMonth6 = month - 5;
       let currentYear6 = year;
       if (currentMonth6 <= 0) {
@@ -128,23 +128,23 @@ export function getDateRange(range = "1 month") {
         currentYear6 = currentYear6 - 1;
       }
       return {
-        from: `${currentYear6}-${currentMonth6}-${1}`,
-        to: `${currentYear6}-${month}-${31}`,
+        from: `${year}-${month}-${31}`,
+        to: `${currentYear6}-${currentMonth6}-${1}`,
       };
-    case "1 year":
+    case "1 Year":
       return {
-        from: `${year}-${1}-${1}`,
-        to: `${year}-${12}-${31}`,
+        from: `${year}-${12}-${31}`,
+        to: `${year}-${1}-${1}`,
       };
-    case "5 years":
+    case "5 Years":
       return {
-        from: `${year - 4}-${1}-${1}`,
-        to: `${year}-${12}-${31}`,
+        from: `${year}-${12}-${31}`,
+        to: `${year - 4}-${1}-${1}`,
       };
     default:
       return {
-        from: `${year}-${month}-${1}`,
-        to: `${year}-${month}-${31}`,
+        from: `${year}-${month}-${31}`,
+        to: `${year}-${month}-${1}`,
       };
   }
 }

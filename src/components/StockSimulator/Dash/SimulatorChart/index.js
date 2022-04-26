@@ -18,8 +18,8 @@ export default function SimulatorChart({
       let values = [];
       for (let item of simulatorMonthlyData) {
         values.push({
-          x: item.Date,
-          y: [item.Open, item.High, item.Low, item.Close],
+          x: item.date,
+          y: [item.open, item.high, item.low, item.close],
         });
       }
       setCandlestickData(values);
@@ -30,10 +30,10 @@ export default function SimulatorChart({
     if (simulatorMonthlyData && simulatorMonthlyData.length) {
       let closingValues = [];
       for (let item of simulatorMonthlyData) {
-        let xAxisValue = item.Date;
+        let xAxisValue = item.date;
         closingValues.push({
           x: xAxisValue,
-          y: item.Close,
+          y: item.close,
         });
       }
       setLineChartData([

@@ -10,16 +10,12 @@ import Toast from "../../../../components/Toast";
 import Portfolio from "../../../../components/StockSimulator/Portfolio";
 import Navigation from "../../../../components/StockSimulator/Navigation";
 import styles from "../../../../styles/StockSimulator/stocksimulator.module.scss";
-import {
-  getTodaysDateRange,
-  getDateRange,
-} from "../../../../helpers/timehelpers";
+import { getTodaysDateRange } from "../../../../helpers/timehelpers";
 
 import DashboardSvg from "../../../../components/SVGcomponents/StockSimulator/DashboardSvg";
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
 import LeaderboardSvg from "../../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
 
-import SimulatorMonthlyData from "./monthly.json";
 import CompanyData from "./companies.json";
 import UserData from "./userData.json";
 import Leaderboard from "../../../../components/StockSimulator/Leaderboard";
@@ -47,18 +43,18 @@ export default function StockSimulator({ token }) {
 
   useEffect(() => {
     async function fetchStocks() {
-      console.log("!!!!!!!!!!!!!!", getDateRange("3 months"));
       let dailyStocks = await SimulatorApis.getStocks({
         payload: {
           from: getTodaysDateRange().from,
           to: getTodaysDateRange().to,
+          symbol: selectedSymbol,
         },
         token,
       });
       setSimulatorDailyData(dailyStocks.data.data.rows);
     }
     fetchStocks();
-  }, [token]);
+  }, [token, selectedSymbol]);
 
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
@@ -91,8 +87,8 @@ export default function StockSimulator({ token }) {
               <div>
                 {simulatorDailyData && (
                   <SimulatorDash
+                    token={token}
                     simulatorDailyData={simulatorDailyData}
-                    simulatorMonthlyData={SimulatorMonthlyData}
                     companyData={CompanyData}
                     selectedSymbol={selectedSymbol}
                     setSelectedSymbol={setSelectedSymbol}

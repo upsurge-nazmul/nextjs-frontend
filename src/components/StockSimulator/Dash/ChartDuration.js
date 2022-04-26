@@ -16,8 +16,8 @@ export default function ChartDuration({
         return (
           <div key={i} className={styles.durationItem}>
             <button
-              onClick={() => handleDurationSelection(duration.value)}
-              className={value === duration.value ? styles.active : ""}
+              onClick={() => handleDurationSelection(duration.name)}
+              className={value === duration.name ? styles.active : ""}
             >
               {duration.name}
             </button>

@@ -6,6 +6,8 @@ import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
+import { getTodaysDateRange, getDateRange } from "../../../helpers/timehelpers";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 const ChartModeOptions = ["candlestick", "line"];
 const ChartDurations = [
@@ -17,17 +19,33 @@ const ChartDurations = [
 ];
 
 export default function SimulatorDash({
+  token,
   simulatorDailyData,
-  simulatorMonthlyData,
   companyData,
   selectedSymbol,
   setSelectedSymbol,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedDuration, setSelectedDuration] = useState(
-    ChartDurations[0].value
+    ChartDurations[0].name
   );
   const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
+  const [simulatorMonthlyData, setSimulatorMonthlyData] = useState();
+
+  useEffect(() => {
+    async function fetchStocks() {
+      let monthlyStocks = await SimulatorApis.getStocks({
+        payload: {
+          from: getDateRange(selectedDuration).from,
+          to: getDateRange(selectedDuration).to,
+          symbol: selectedSymbol,
+        },
+        token,
+      });
+      setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+    }
+    fetchStocks();
+  }, [token, selectedSymbol, selectedDuration]);
 
   useEffect(() => {
     if (simulatorDailyData.length) {
@@ -55,13 +73,15 @@ export default function SimulatorDash({
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
           </div>
         </div>
-        <SimulatorChart
-          simulatorMonthlyData={simulatorMonthlyData}
-          chartMode={chartMode}
-          ChartModeOptions={ChartModeOptions}
-          width='95%'
-          height='600px'
-        />
+        {simulatorMonthlyData && (
+          <SimulatorChart
+            simulatorMonthlyData={simulatorMonthlyData}
+            chartMode={chartMode}
+            ChartModeOptions={ChartModeOptions}
+            width='95%'
+            height='600px'
+          />
+        )}
         <ChartDuration
           value={selectedDuration}
           action={setSelectedDuration}
