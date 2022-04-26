@@ -92,15 +92,22 @@ export function getMonthsLeft(diff) {
   return Math.round(elapsed / msPerMonth);
 }
 
-export function getTodaysDateRange() {
+export function getTodaysDateRange(yesterday = false) {
   let date = new Date();
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
   let day = date.getDate();
-  return {
-    from: `${year}-${month}-${day + 1}`,
-    to: `${year}-${month}-${day}`,
-  };
+  if (yesterday) {
+    return {
+      from: `${year}-${month}-${day + 1}`,
+      to: `${year}-${month}-${day - 1}`,
+    };
+  } else {
+    return {
+      from: `${year}-${month}-${day + 1}`,
+      to: `${year}-${month}-${day}`,
+    };
+  }
 }
 
 export function getDateRange(range = "1 Month") {

@@ -15,6 +15,23 @@
       .selectArea {
         flex: 1;
       }
+      .buttonArea {
+        width: fit-content;
+        margin: 0 15px;
+        button {
+          font-size: 18px;
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          color: #fff;
+          background-color: #294ed6;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          box-shadow: 6px 3px 12px 2px #ccc;
+          transition: 0.5s;
+        }
+      }
       .switchArea {
         width: 100px;
       }

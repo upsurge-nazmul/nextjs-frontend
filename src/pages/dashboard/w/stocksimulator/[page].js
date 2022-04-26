@@ -25,12 +25,13 @@ const MODES = [
   { name: "Leaderboard", value: "leaderboard", icon: <LeaderboardSvg /> },
 ];
 
-export default function StockSimulator({ token }) {
+export default function StockSimulator({ userdatafromserver, token }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
   const [companyData, setCompanyData] = useState();
   const [selectedSymbol, setSelectedSymbol] = useState();
   const [simulatorDailyData, setSimulatorDailyData] = useState();
+  const [watchlistData, setWatchlistData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -50,8 +51,20 @@ export default function StockSimulator({ token }) {
         },
         token,
       });
-      setCompanyData(allCompanies.data.data.rows);
-      setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+      if (allCompanies.data.data.rows.length) {
+        setCompanyData(allCompanies.data.data.rows);
+        setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+      } else {
+        let allCompanies = await SimulatorApis.getStocks({
+          payload: {
+            from: getTodaysDateRange(true).from,
+            to: getTodaysDateRange(true).to,
+          },
+          token,
+        });
+        setCompanyData(allCompanies.data.data.rows);
+        setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+      }
     }
     fetchCompanies();
   }, [token]);
@@ -66,12 +79,35 @@ export default function StockSimulator({ token }) {
         },
         token,
       });
-      setSimulatorDailyData(dailyStocks.data.data.rows);
+      if (dailyStocks.data.data.rows.length) {
+        setSimulatorDailyData(dailyStocks.data.data.rows);
+      } else {
+        let dailyStocks = await SimulatorApis.getStocks({
+          payload: {
+            from: getTodaysDateRange(true).from,
+            to: getTodaysDateRange(true).to,
+            symbol: selectedSymbol,
+          },
+          token,
+        });
+        setSimulatorDailyData(dailyStocks.data.data.rows);
+      }
     }
     if (selectedSymbol) {
       fetchStocks();
     }
   }, [token, selectedSymbol]);
+
+  useEffect(() => {
+    async function fetchWatchlist() {
+      let watchlist = await SimulatorApis.getWatchlist({
+        payload: { userId: userdatafromserver.user_id },
+        token,
+      });
+      setWatchlistData(watchlist.data.data.rows);
+    }
+    fetchWatchlist();
+  }, [token]);
 
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
@@ -93,7 +129,8 @@ export default function StockSimulator({ token }) {
           <div className={styles.topSection}>
             {selectedSymbol && (
               <Watchlist
-                token={token}
+                watchlistData={watchlistData}
+                setWatchlistData={setWatchlistData}
                 companyData={companyData}
                 action={handleWatchlistClick}
                 active={selectedSymbol}
@@ -111,6 +148,8 @@ export default function StockSimulator({ token }) {
                     companyData={companyData}
                     selectedSymbol={selectedSymbol}
                     setSelectedSymbol={setSelectedSymbol}
+                    userData={userdatafromserver}
+                    setWatchlistData={setWatchlistData}
                   />
                 )}
               </div>

@@ -2,7 +2,15 @@ import * as ApiCalls from "../ApiCalls";
 
 // watchlist apis
 const getWatchlist = ({ payload, token }) => {
-  return ApiCalls.getResponse("stocksimulator/watchlist", payload, token);
+  return ApiCalls.getResponse(
+    `stocksimulator/watchlist?userId=${payload.userId}`,
+    payload,
+    token
+  );
+};
+
+const addToWatchlist = ({ payload, token }) => {
+  return ApiCalls.postResponse("stocksimulator/watchlist/add", payload, token);
 };
 
 // stock apis
@@ -24,5 +32,6 @@ const getStocks = ({ payload, token }) => {
 
 export default {
   getWatchlist,
+  addToWatchlist,
   getStocks,
 };

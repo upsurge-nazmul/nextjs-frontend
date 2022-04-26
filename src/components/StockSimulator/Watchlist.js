@@ -1,26 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
-import { getRandomColor } from "../../helpers/color";
-import LoginApis from "../../actions/apis/LoginApis";
-import SimulatorApis from "../../actions/apis/SimulatorApis";
 
 export default function Watchlist({
-  token,
+  watchlistData,
+  setWatchlistData,
   companyData,
   action = () => {},
   active = "",
 }) {
-  const [watchlistData, setWatchlistData] = useState();
   const [openList, setOpenList] = useState(false);
-
-  useEffect(() => {
-    async function fetchWatchlist() {
-      let watchlist = await SimulatorApis.getWatchlist({ token });
-      setWatchlistData(watchlist.data.data.rows);
-    }
-    fetchWatchlist();
-  }, [token]);
 
   const handleClose = (value) => {
     setWatchlistData((prev) => prev.filter((item) => item.symbol !== value));
@@ -30,8 +19,6 @@ export default function Watchlist({
     console.log("Add button clicked");
     setOpenList((prev) => !prev);
   };
-
-  // console.log("@@@@@@@@@@", watchlistData);
 
   return (
     <div className={styles.watchlist}>
@@ -73,9 +60,9 @@ export default function Watchlist({
           <p>Watchlist is empty</p>
         </div>
       )}
-      <div className={styles.addButton}>
+      {/* <div className={styles.addButton}>
         <button onClick={handleAdd}>+</button>
-      </div>
+      </div> */}
       {openList && (
         <AddWatchlist
           {...{

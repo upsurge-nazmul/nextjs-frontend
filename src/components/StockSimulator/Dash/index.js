@@ -24,6 +24,8 @@ export default function SimulatorDash({
   companyData,
   selectedSymbol,
   setSelectedSymbol,
+  userData,
+  setWatchlistData,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedDuration, setSelectedDuration] = useState(
@@ -56,6 +58,23 @@ export default function SimulatorDash({
     }
   }, [selectedSymbol, simulatorDailyData]);
 
+  const handleAddToWatchlist = async () => {
+    let watchlistItem = {
+      userId: userData.user_id,
+      name: selectedCompany.name,
+      symbol: selectedCompany.symbol,
+      current_value: selectedCompany.close,
+    };
+    let addedItem = await SimulatorApis.addToWatchlist({
+      payload: watchlistItem,
+      token,
+    });
+    if (addedItem.data.data) {
+      setWatchlistData((prev) => [...prev, addedItem.data.data]);
+    }
+    console.log("@@@@@@@@", selectedCompany, addedItem);
+  };
+
   return (
     <div className={styles.simulatorDash}>
       <div className={styles.dashLeft}>
@@ -68,6 +87,9 @@ export default function SimulatorDash({
                 options: companyData,
               }}
             />
+          </div>
+          <div className={styles.buttonArea}>
+            <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
           </div>
           <div className={styles.switchArea}>
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
