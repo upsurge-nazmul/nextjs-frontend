@@ -43,7 +43,7 @@ function ApexChart({ chartData, width = "600px", height = "600px" }) {
         },
       },
     });
-  }, []);
+  }, [chartData]);
 
   return (
     <div id="chart">

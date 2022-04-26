@@ -6,7 +6,7 @@ import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
-import { getTodaysDateRange, getDateRange } from "../../../helpers/timehelpers";
+import { getDateRange } from "../../../helpers/timehelpers";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 const ChartModeOptions = ["candlestick", "line"];
@@ -78,15 +78,15 @@ export default function SimulatorDash({
             simulatorMonthlyData={simulatorMonthlyData}
             chartMode={chartMode}
             ChartModeOptions={ChartModeOptions}
-            width='95%'
-            height='600px'
+            width="95%"
+            height="600px"
           />
         )}
         <ChartDuration
           value={selectedDuration}
           action={setSelectedDuration}
           options={ChartDurations}
-          width='95%'
+          width="95%"
         />
       </div>
       <div className={styles.dashRight}>
