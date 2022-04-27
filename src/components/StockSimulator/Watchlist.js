@@ -69,7 +69,7 @@ export default function Watchlist({
           className={styles.noWatchlist}
           // onClick={handleAdd}
         >
-          <p>Watchlist is empty</p>
+          <p></p>
         </div>
       )}
       {/* <div className={styles.addButton}>

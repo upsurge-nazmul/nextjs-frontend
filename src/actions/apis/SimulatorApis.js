@@ -34,9 +34,20 @@ const getStocks = ({ payload, token }) => {
   }
 };
 
+// buy and sell apis
+const buyStock = ({ payload, token }) => {
+  return ApiCalls.postResponse("stocksimulator/buy", payload, token);
+};
+
+const sellStock = ({ payload, token }) => {
+  return ApiCalls.postResponse("stocksimulator/sell", payload, token);
+};
+
 export default {
   getWatchlist,
   addToWatchlist,
   removeFromWatchlist,
   getStocks,
+  buyStock,
+  sellStock,
 };

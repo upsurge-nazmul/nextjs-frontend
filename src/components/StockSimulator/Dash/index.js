@@ -113,7 +113,11 @@ export default function SimulatorDash({
       <div className={styles.dashRight}>
         {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
         {selectedCompany && (
-          <SimulatorOptions companyDetails={selectedCompany} />
+          <SimulatorOptions
+            companyDetails={selectedCompany}
+            userData={userData}
+            token={token}
+          />
         )}
       </div>
     </div>
