@@ -72,7 +72,6 @@ export default function SimulatorDash({
     if (addedItem.data.data) {
       setWatchlistData((prev) => [...prev, addedItem.data.data]);
     }
-    console.log("@@@@@@@@", selectedCompany, addedItem);
   };
 
   return (

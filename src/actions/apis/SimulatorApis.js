@@ -2,15 +2,19 @@ import * as ApiCalls from "../ApiCalls";
 
 // watchlist apis
 const getWatchlist = ({ payload, token }) => {
-  return ApiCalls.getResponse(
-    `stocksimulator/watchlist?userId=${payload.userId}`,
-    payload,
-    token
-  );
+  return ApiCalls.getResponse(`stocksimulator/watchlist`, payload, token);
 };
 
 const addToWatchlist = ({ payload, token }) => {
   return ApiCalls.postResponse("stocksimulator/watchlist/add", payload, token);
+};
+
+const removeFromWatchlist = ({ payload, token }) => {
+  return ApiCalls.deleteResponse(
+    `stocksimulator/watchlist/delete`,
+    payload,
+    token
+  );
 };
 
 // stock apis
@@ -33,5 +37,6 @@ const getStocks = ({ payload, token }) => {
 export default {
   getWatchlist,
   addToWatchlist,
+  removeFromWatchlist,
   getStocks,
 };

@@ -134,6 +134,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
                 companyData={companyData}
                 action={handleWatchlistClick}
                 active={selectedSymbol}
+                token={token}
               />
             )}
             <Navigation options={MODES} action={setMode} active={mode} />

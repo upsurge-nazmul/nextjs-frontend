@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SimulatorApis from "../../actions/apis/SimulatorApis";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
 
@@ -8,17 +9,25 @@ export default function Watchlist({
   companyData,
   action = () => {},
   active = "",
+  token,
 }) {
   const [openList, setOpenList] = useState(false);
 
-  const handleClose = (value) => {
-    setWatchlistData((prev) => prev.filter((item) => item.symbol !== value));
+  const handleClose = async (value) => {
+    let deletedItem = await SimulatorApis.removeFromWatchlist({
+      payload: { id: value },
+      token,
+    });
+    console.log(deletedItem);
+    if (deletedItem.data.success) {
+      setWatchlistData((prev) => prev.filter((item) => item.id !== value));
+    }
   };
 
-  const handleAdd = () => {
-    console.log("Add button clicked");
-    setOpenList((prev) => !prev);
-  };
+  // const handleAdd = () => {
+  //   console.log("Add button clicked");
+  //   setOpenList((prev) => !prev);
+  // };
 
   return (
     <div className={styles.watchlist}>
@@ -36,7 +45,7 @@ export default function Watchlist({
             >
               <button
                 className={styles.closeButton}
-                onClick={() => handleClose(item.symbol)}
+                onClick={() => handleClose(item.id)}
               >
                 x
               </button>
@@ -56,7 +65,10 @@ export default function Watchlist({
           );
         })
       ) : (
-        <div className={styles.noWatchlist} onClick={handleAdd}>
+        <div
+          className={styles.noWatchlist}
+          // onClick={handleAdd}
+        >
           <p>Watchlist is empty</p>
         </div>
       )}
