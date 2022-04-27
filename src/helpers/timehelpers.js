@@ -155,3 +155,12 @@ export function getDateRange(range = "1 Month") {
       };
   }
 }
+
+export const getNormalDateFromUtc = (utc, dayBefore = 0) => {
+  // 2022-04-27T04:57:05.676Z to 2022-04-27
+  utc = new Date(utc);
+  let y = utc.getFullYear();
+  let m = ("0" + (utc.getMonth() + 1)).slice(-2);
+  let d = ("0" + (utc.getDate() - dayBefore)).slice(-2);
+  return y + "-" + m + "-" + d;
+};

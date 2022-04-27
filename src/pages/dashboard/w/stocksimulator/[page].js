@@ -155,7 +155,13 @@ export default function StockSimulator({ userdatafromserver, token }) {
                 )}
               </div>
             )}
-            {mode === MODES[1].value && <Portfolio userData={UserData[0]} />}
+            {mode === MODES[1].value && (
+              <Portfolio
+                UserData={UserData[0]}
+                userData={userdatafromserver}
+                token={token}
+              />
+            )}
             {mode === MODES[2].value && (
               <Leaderboard
                 data={[

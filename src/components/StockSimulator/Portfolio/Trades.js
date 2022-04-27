@@ -1,4 +1,5 @@
 import styles from "../../../styles/StockSimulator/trades.module.scss";
+import { getNormalDateFromUtc } from "../../../helpers/timehelpers";
 
 export default function Performance({ tradesData = [] }) {
   return (
@@ -19,12 +20,14 @@ export default function Performance({ tradesData = [] }) {
           {tradesData.map((row, index) => {
             return (
               <div className={styles.row} key={index}>
-                <div className={styles.rowitem}>{row.date}</div>
+                <div className={styles.rowitem}>
+                  {getNormalDateFromUtc(row.date)}
+                </div>
                 <div className={styles.rowitem}>{row.symbol}</div>
                 <div className={styles.rowitem}>{row.trade_type}</div>
-                <div className={styles.rowitem}>{row.qty}</div>
+                <div className={styles.rowitem}>{row.quantity}</div>
                 <div className={styles.rowitem}>{row.price}</div>
-                <div className={styles.rowitem}>{row.total_cash_value}</div>
+                <div className={styles.rowitem}>{row.total_value}</div>
               </div>
             );
           })}

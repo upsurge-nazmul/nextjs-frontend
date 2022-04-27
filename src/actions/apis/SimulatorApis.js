@@ -34,6 +34,19 @@ const getStocks = ({ payload, token }) => {
   }
 };
 
+// user apis
+const getUserStocks = ({ payload, token }) => {
+  return ApiCalls.getResponse("stocksimulator/userStocks", payload, token);
+};
+
+const getUserTrades = ({ payload, token }) => {
+  return ApiCalls.getResponse("stocksimulator/userTrades", payload, token);
+};
+
+const getUserRecords = ({ payload, token }) => {
+  return ApiCalls.getResponse("stocksimulator/records", payload, token);
+};
+
 // buy and sell apis
 const buyStock = ({ payload, token }) => {
   return ApiCalls.postResponse("stocksimulator/buy", payload, token);
@@ -48,6 +61,9 @@ export default {
   addToWatchlist,
   removeFromWatchlist,
   getStocks,
+  getUserStocks,
+  getUserRecords,
+  getUserTrades,
   buyStock,
   sellStock,
 };
