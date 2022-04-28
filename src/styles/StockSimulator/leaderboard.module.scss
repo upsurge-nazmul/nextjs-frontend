@@ -56,6 +56,8 @@
       height: 40px;
       font-size: 16px;
       padding: 0 40px;
+      font-size: 18px;
+      font-weight: 700;
       .rank {
         width: 100px;
         text-align: left;
@@ -67,20 +69,6 @@
       .score {
         width: 30%;
         text-align: right;
-      }
-      &:first-child,
-      &:nth-child(2),
-      &:nth-child(3),
-      &:nth-child(4) {
-        .rank {
-          font-weight: 700;
-        }
-        .name {
-          font-weight: 700;
-        }
-        .score {
-          font-weight: 700;
-        }
       }
       &:first-child {
         margin-bottom: 10px;

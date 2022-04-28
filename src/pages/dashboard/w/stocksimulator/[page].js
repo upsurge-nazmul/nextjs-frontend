@@ -158,27 +158,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
               <Portfolio userData={userdatafromserver} token={token} />
             )}
             {mode === MODES[2].value && (
-              <Leaderboard
-                data={[
-                  {
-                    id: "3392fd6d-c961-432a-85c9-a5ea302b4bcb",
-                    user_img_url: null,
-                    first_name: "Karan",
-                    last_name: "Baweja",
-                    user_name: "kbaweja",
-                    num_unicoins: "1395",
-                  },
-                  {
-                    id: "9c9b0e5f-8ff7-49ce-bda1-42c8e0ad4c18",
-                    user_img_url: "/images/avatars/11.png",
-                    first_name: "TUSHAR",
-                    last_name: "undefined",
-                    user_name: "tushx3",
-                    num_unicoins: "625",
-                  },
-                ]}
-                personal_rank={2}
-              />
+              <Leaderboard token={token} userData={userdatafromserver} />
             )}
           </div>
         </div>

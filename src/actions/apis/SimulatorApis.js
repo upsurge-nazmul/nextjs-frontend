@@ -56,6 +56,10 @@ const sellStock = ({ payload, token }) => {
   return ApiCalls.postResponse("stocksimulator/sell", payload, token);
 };
 
+const getLeaderboard = ({ payload, token }) => {
+  return ApiCalls.getResponse("stocksimulator/leaderboard", payload, token);
+};
+
 export default {
   getWatchlist,
   addToWatchlist,
@@ -66,4 +70,5 @@ export default {
   getUserTrades,
   buyStock,
   sellStock,
+  getLeaderboard,
 };
