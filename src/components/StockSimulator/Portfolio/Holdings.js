@@ -1,68 +1,69 @@
-import { ResponsivePieCanvas } from "@nivo/pie";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
-export default function Holdings() {
-  const data = [
-    {
-      id: "Company1",
-      label: "Company1",
-      value: 244,
-      color: "hsl(328, 70%, 50%)",
-    },
-    {
-      id: "Company2",
-      label: "Company2",
-      value: 115,
-      color: "hsl(204, 70%, 50%)",
-    },
-    {
-      id: "Rest",
-      label: "Rest",
-      value: 474,
-      color: "hsl(177, 70%, 50%)",
-    },
-  ];
+export default function Holdings({
+  chartData,
+  width = "600px",
+  height = "600px",
+}) {
+  const [state, setState] = useState();
+
+  useEffect(() => {
+    if (chartData && chartData.length) {
+      let data = [];
+      let labels = [];
+
+      for (let item of chartData) {
+        data.push(item.amount);
+        labels.push(item.name);
+      }
+      setState({
+        series: data,
+        options: {
+          chart: {
+            type: "donut",
+          },
+          labels: labels,
+          dataLabels: {
+            enabled: true,
+          },
+          legend: {
+            position: "bottom",
+            showForSingleSeries: true,
+            horizontalAlign: "center",
+          },
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
+          ],
+        },
+      });
+    }
+  }, [chartData]);
 
   return (
-    <ResponsivePieCanvas
-      data={data}
-      margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
-      innerRadius={0.5}
-      padAngle={0.7}
-      cornerRadius={3}
-      activeOuterRadiusOffset={8}
-      colors={{ scheme: "paired" }}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", 0.6]],
-      }}
-      arcLinkLabelsSkipAngle={10}
-      arcLinkLabelsTextColor="#333333"
-      arcLinkLabelsThickness={2}
-      arcLinkLabelsColor={{ from: "color" }}
-      arcLabelsSkipAngle={10}
-      arcLabelsTextColor="#333333"
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      fill={[]}
-      legends={[]}
-    />
+    <div id="chart">
+      {state && (
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="donut"
+          width={width}
+          height={height}
+        />
+      )}
+    </div>
   );
 }

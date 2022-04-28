@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
 import Tabs from "../Tabs";
-// import Holdings from "./Holdings";
+import Holdings from "./Holdings";
 import Performance from "./Performance";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
@@ -16,6 +16,7 @@ const TABS = [
 export default function Portfolio({ userData, token }) {
   const [tab, setTab] = useState(TABS[0].value);
   const [portfolioChartData, setPortfolioChartData] = useState();
+  const [holdingsData, setHoldingsData] = useState();
   const [records, setRecords] = useState();
   const [performanceData, setPerformanceData] = useState();
   const [tradeData, setTradeData] = useState();
@@ -48,9 +49,19 @@ export default function Portfolio({ userData, token }) {
         setTradeData(trds.data.data.rows);
       }
     }
+    async function fetchUserHoldings() {
+      let hlds = await SimulatorApis.getUserHoldings({
+        payload: { user_id: userData.user_id },
+        token,
+      });
+      if (hlds.data.success) {
+        setHoldingsData(hlds.data.data);
+      }
+    }
     fetchUserRecords();
     fetchUserStocks();
     fetchUserTrades();
+    fetchUserHoldings();
   }, [token]);
 
   useEffect(() => {
@@ -78,10 +89,20 @@ export default function Portfolio({ userData, token }) {
                 <PortfolioChart chartData={portfolioChartData} width="100%" />
               </div>
             )}
-            {/* <div className={styles.right}>
-              <p className={styles.caption}>Holdings</p>
-              <Holdings userData={UserData} />
-            </div> */}
+            {holdingsData && (
+              <div className={styles.right}>
+                <p className={styles.caption}>Holdings</p>
+                <div className={styles.holdingsArea}>
+                  <div className={styles.holding}>
+                    <span className={styles.label}>Current Holdings </span>
+                    <span className={styles.value}>
+                      Rs {parseFloat(holdingsData[0].amount).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+                <Holdings chartData={holdingsData} width="100%" />
+              </div>
+            )}
           </div>
         )}
         {tab === TABS[1].value && (

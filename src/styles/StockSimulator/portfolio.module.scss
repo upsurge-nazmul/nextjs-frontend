@@ -25,11 +25,25 @@
         div {
           text-align: center;
         }
-      }
-      .caption {
-        font-size: 20px;
-        font-weight: 700;
-        color: rgb(65, 63, 63);
+        .caption {
+          font-size: 20px;
+          font-weight: 700;
+          color: rgb(65, 63, 63);
+        }
+        .holdingsArea {
+          padding: 20px 0 10px;
+          .label {
+            font-size: 13px;
+            font-weight: 400;
+            color: #333;
+          }
+          .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: rgb(97, 94, 94);
+            font-style: italic;
+          }
+        }
       }
     }
   }

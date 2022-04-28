@@ -47,6 +47,10 @@ const getUserRecords = ({ payload, token }) => {
   return ApiCalls.getResponse("stocksimulator/records", payload, token);
 };
 
+const getUserHoldings = ({ payload, token }) => {
+  return ApiCalls.getResponse("stocksimulator/holdings", payload, token);
+};
+
 // buy and sell apis
 const buyStock = ({ payload, token }) => {
   return ApiCalls.postResponse("stocksimulator/buy", payload, token);
@@ -67,6 +71,7 @@ export default {
   getStocks,
   getUserStocks,
   getUserRecords,
+  getUserHoldings,
   getUserTrades,
   buyStock,
   sellStock,
