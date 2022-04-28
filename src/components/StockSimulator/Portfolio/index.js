@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
 import Tabs from "../Tabs";
-import Holdings from "./Holdings";
+// import Holdings from "./Holdings";
 import Performance from "./Performance";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
@@ -19,23 +19,6 @@ export default function Portfolio({ UserData, userData, token }) {
   const [records, setRecords] = useState();
   const [performanceData, setPerformanceData] = useState();
   const [tradeData, setTradeData] = useState();
-
-  useEffect(() => {
-    let values = [];
-    for (let i = 0; i < 30; i++) {
-      values.push({
-        x: i + 1,
-        y: 1000000 + Math.random() * 1000,
-      });
-    }
-    setPortfolioChartData([
-      {
-        id: "Portfolio",
-        color: "hsl(247, 70%, 50%)",
-        data: values,
-      },
-    ]);
-  }, []);
 
   useEffect(() => {
     async function fetchUserRecords() {
@@ -70,17 +53,31 @@ export default function Portfolio({ UserData, userData, token }) {
     fetchUserTrades();
   }, [token]);
 
-  console.log("userStocks", records, performanceData, tradeData);
+  useEffect(() => {
+    if (records && records.length) {
+      let values = [];
+      for (let record of records) {
+        values.push([
+          new Date(record.date),
+          parseFloat(record.current_cash_portfolio) +
+            parseFloat(record.current_stock_portfolio),
+        ]);
+      }
+      setPortfolioChartData(values);
+    }
+  }, [records]);
 
   return (
     <div className={styles.portfolio}>
       <div className={styles.main}>
         {tab === TABS[0].value && (
           <div className={styles.content}>
-            <div className={styles.left}>
-              <p className={styles.caption}>Portfolio</p>
-              <PortfolioChart chartData={portfolioChartData} />
-            </div>
+            {portfolioChartData && portfolioChartData.length && (
+              <div className={styles.left}>
+                <p className={styles.caption}>Portfolio</p>
+                <PortfolioChart chartData={portfolioChartData} width="100%" />
+              </div>
+            )}
             {/* <div className={styles.right}>
               <p className={styles.caption}>Holdings</p>
               <Holdings userData={UserData} />

@@ -1,50 +1,79 @@
-import { ResponsiveLine } from "@nivo/line";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
-export default function LineChart({ chartData }) {
+const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
+  const [state, setState] = useState();
+  const [minDate, setMinDate] = useState();
+  const [maxDate, setMaxDate] = useState();
+
+  useEffect(() => {
+    setState({
+      series: [
+        {
+          data: chartData,
+        },
+      ],
+      options: {
+        chart: {
+          type: "area",
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        markers: {
+          size: 4,
+          style: "hollow",
+        },
+        xaxis: {
+          type: "datetime",
+          min: new Date(minDate).getTime(),
+          max: new Date(maxDate).getTime(),
+          // tickAmount: 6,
+        },
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
+          },
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 100],
+          },
+        },
+      },
+    });
+  }, [chartData, minDate, maxDate]);
+
+  useEffect(() => {
+    let y = new Date().getFullYear();
+    let m = ("0" + (new Date().getMonth() + 1)).slice(-2);
+    setMinDate(`${y}-${m}-01`);
+    setMaxDate(`${y}-${m}-31`);
+  }, []);
+
   return (
-    <ResponsiveLine
-      data={chartData}
-      margin={{ top: 50, right: 20, bottom: 50, left: 60 }}
-      xScale={{ type: "point" }}
-      yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto",
-        stacked: true,
-        reverse: false,
-      }}
-      yFormat=" >-.2f"
-      curve="natural"
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        orient: "bottom",
-        tickSize: 12,
-        tickPadding: 5,
-        tickRotation: 28,
-        legend: "Date",
-        legendOffset: 40,
-        legendPosition: "middle",
-      }}
-      axisLeft={{
-        orient: "left",
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "count",
-        legendOffset: -55,
-        legendPosition: "middle",
-      }}
-      pointSize={5}
-      pointColor={{ theme: "background" }}
-      pointBorderWidth={2}
-      pointBorderColor={{ from: "serieColor" }}
-      pointLabelYOffset={-12}
-      enableArea={false}
-      enableGridX={false}
-      enableGridY={true}
-      useMesh={true}
-      legends={[]}
-    />
+    <div id="chart">
+      {state && (
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="area"
+          width={width}
+          height={height}
+        />
+      )}
+    </div>
   );
-}
+};
+
+export default ApexChart;
