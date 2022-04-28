@@ -16,7 +16,6 @@ import DashboardSvg from "../../../../components/SVGcomponents/StockSimulator/Da
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
 import LeaderboardSvg from "../../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
 
-import UserData from "./userData.json";
 import Leaderboard from "../../../../components/StockSimulator/Leaderboard";
 
 const MODES = [
@@ -101,7 +100,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
   useEffect(() => {
     async function fetchWatchlist() {
       let watchlist = await SimulatorApis.getWatchlist({
-        payload: { userId: userdatafromserver.user_id },
+        payload: { user_id: userdatafromserver.user_id },
         token,
       });
       setWatchlistData(watchlist.data.data.rows);
@@ -156,11 +155,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
               </div>
             )}
             {mode === MODES[1].value && (
-              <Portfolio
-                UserData={UserData[0]}
-                userData={userdatafromserver}
-                token={token}
-              />
+              <Portfolio userData={userdatafromserver} token={token} />
             )}
             {mode === MODES[2].value && (
               <Leaderboard

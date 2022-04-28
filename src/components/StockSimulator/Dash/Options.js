@@ -17,7 +17,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
     console.log("buy Rs", quantity * price, companyDetails);
     const boughtStock = await SimulatorApis.buyStock({
       payload: {
-        userId: userData.user_id,
+        user_id: userData.user_id,
         name: companyDetails.name,
         symbol: companyDetails.symbol,
         date: companyDetails.date,
@@ -34,7 +34,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
     console.log("Sell Rs", quantity * price, companyDetails);
     const soldStock = await SimulatorApis.sellStock({
       payload: {
-        userId: userData.user_id,
+        user_id: userData.user_id,
         name: companyDetails.name,
         symbol: companyDetails.symbol,
         date: companyDetails.date,

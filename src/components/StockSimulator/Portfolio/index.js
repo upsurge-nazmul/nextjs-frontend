@@ -13,7 +13,7 @@ const TABS = [
   { name: "Trades", value: "trades", icon: "Trades History" },
 ];
 
-export default function Portfolio({ UserData, userData, token }) {
+export default function Portfolio({ userData, token }) {
   const [tab, setTab] = useState(TABS[0].value);
   const [portfolioChartData, setPortfolioChartData] = useState();
   const [records, setRecords] = useState();
@@ -23,7 +23,7 @@ export default function Portfolio({ UserData, userData, token }) {
   useEffect(() => {
     async function fetchUserRecords() {
       let recs = await SimulatorApis.getUserRecords({
-        payload: { userId: userData.user_id },
+        payload: { user_id: userData.user_id },
         token,
       });
       if (recs.data.success) {
@@ -32,7 +32,7 @@ export default function Portfolio({ UserData, userData, token }) {
     }
     async function fetchUserStocks() {
       let stcks = await SimulatorApis.getUserStocks({
-        payload: { userId: userData.user_id },
+        payload: { user_id: userData.user_id },
         token,
       });
       if (stcks.data.success) {
@@ -41,7 +41,7 @@ export default function Portfolio({ UserData, userData, token }) {
     }
     async function fetchUserTrades() {
       let trds = await SimulatorApis.getUserTrades({
-        payload: { userId: userData.user_id },
+        payload: { user_id: userData.user_id },
         token,
       });
       if (trds.data.success) {

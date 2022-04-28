@@ -60,7 +60,7 @@ export default function SimulatorDash({
 
   const handleAddToWatchlist = async () => {
     let watchlistItem = {
-      userId: userData.user_id,
+      user_id: userData.user_id,
       name: selectedCompany.name,
       symbol: selectedCompany.symbol,
       current_value: selectedCompany.close,
