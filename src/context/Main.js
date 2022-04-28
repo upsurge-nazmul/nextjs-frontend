@@ -29,34 +29,35 @@ export const MainContextProider = ({ children }) => {
     height: 720,
   });
   const [theme, setTheme] = useState("light");
-  useEffect(() => {
-    setTheme(
-      window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-    );
-  }, []);
-  useEffect(() => {
-    const modeMe = (e) => {
-      console.log("theme", e);
-      setTheme(e.matches ? "dark" : "light");
-    };
+  // useEffect(() => {
+  //   setTheme(
+  //     window.matchMedia &&
+  //       window.matchMedia("(prefers-color-scheme: dark)").matches
+  //       ? "dark"
+  //       : "light"
+  //   );
+  // }, []);
+  // useEffect(() => {
+  //   const modeMe = (e) => {
+  //     console.log("theme", e);
+  //     setTheme(e.matches ? "dark" : "light");
+  //   };
 
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", modeMe);
-    return window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .removeListener(modeMe);
-  }, []);
-  useEffect(() => {
-    if (theme === "dark") {
-      document.body.style.background = "#111111";
-    } else {
-      document.body.style.background = "#ffffff";
-    }
-  }, [theme]);
+  //   window
+  //     .matchMedia("(prefers-color-scheme: dark)")
+  //     .addEventListener("change", modeMe);
+  //   return window
+  //     .matchMedia("(prefers-color-scheme: dark)")
+  //     .removeListener(modeMe);
+  // }, []);
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.body.style.background = "#111111";
+  //   } else {
+  //     document.body.style.background = "#ffffff";
+  //   }
+  // }, [theme]);
+
   useEffect(() => {
     setmobileMode(isMobile);
   }, [isMobile]);

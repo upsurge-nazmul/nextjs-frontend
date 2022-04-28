@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function MiniLogo({ className, onClick }) {
+export default function MiniLogo({ className, onClick, dark }) {
   return (
     <svg
       width="118"

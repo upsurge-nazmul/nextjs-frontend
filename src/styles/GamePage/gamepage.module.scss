@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .gamePage {
   width: 100vw;
   padding: 0;
@@ -5,26 +7,15 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  .heading {
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-weight: 500;
-    color: white;
-  }
-  .start {
-    background-color: #4166eb;
-    height: 70vh;
+  .mobileerr {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    background-color: #4166eb;
     justify-content: center;
-    color: white;
-      margin: 0;      
+    padding: 40px 0;
     .box {
-      height: 80%;
       width: 80%;
       background-color: white;
       border-radius: 30px;
@@ -32,15 +23,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .btn {
-        width: fit-content;
+      .jasper {
+        width: 80%;
         margin-top: 20px;
         background-color: #4166eb;
-        border-radius: 8px;
-        color: white;
-        padding: 10px 15px;
-      }         
-      .broken{
+        border-radius: 12px;
+      }
+      .broken {
         padding: 20px;
         width: 80%;
       }
@@ -68,8 +57,174 @@
         margin: 20px 0;
       }
     }
-    
   }
+  .heading {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: white;
+  }
+  .mobilegamedata {
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    height: 90vh;
+    max-height: unset;
+    min-height: fit-content;
+    margin: 10vh 0;
+    .left {
+      width: 50%;
+      border-radius: 12px;
+      padding: 20px;
+      height: 80vh;
+
+      .error {
+        color: rgb(238, 79, 79);
+        font-size: 16px;
+      }
+      .heading {
+        color: black;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        width: 100%;
+      }
+      .input {
+        background: #fff;
+        font-size: 14px;
+        border: none;
+        height: 45px;
+        width: 90%;
+        padding: 0 20px;
+        margin-top: 20px;
+        &::placeholder {
+          color: rgb(0, 0, 0);
+        }
+      }
+      .buttons {
+        display: flex;
+        margin-top: 40px;
+
+        .startbutton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 165px;
+          height: 48px;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          font-size: 14px;
+          transition: all 0.3s ease;
+          margin-bottom: 20px;
+          cursor: pointer;
+          &:hover {
+            background: hsl(227, 59%, 51%);
+          }
+        }
+        .skipbutton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 165px;
+          height: 48px;
+          background: #616161;
+          margin-bottom: 20px;
+          font-size: 14px;
+          border-radius: 6px;
+          color: white;
+          transition: all 0.3s ease;
+          margin-left: 30px;
+          cursor: pointer;
+          &:hover {
+            background: hsl(0, 0%, 30%);
+          }
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .start {
+    background-color: #4166eb;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0;
+    .box {
+      height: 80%;
+      width: 80%;
+      background-color: white;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .btn {
+        width: fit-content;
+        margin-top: 20px;
+        background-color: #4166eb;
+        border-radius: 8px;
+        color: white;
+        padding: 10px 15px;
+      }
+      .broken {
+        padding: 20px;
+        width: 80%;
+      }
+      p {
+        width: 80%;
+        margin-top: 10px;
+        text-align: center;
+        color: #464646;
+      }
+      .heading {
+        font-size: 20px;
+        margin-top: 20px;
+        color: black;
+        font-weight: 600;
+      }
+      .button {
+        background-color: #4166eb;
+        width: 150px;
+        height: 50px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin: 20px 0;
+      }
+    }
+  }
+  .mobileloaderwrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 0;
+    .loader {
+      width: 50px;
+      height: 50px;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
   .mobilespinner {
     height: fit-content;
     width: fit-content;
@@ -212,7 +367,8 @@
           margin-top: 20px;
           background-color: #4166eb;
           border-radius: 12px;
-        }         .broken{
+        }
+        .broken {
           padding: 20px;
           width: 80%;
         }
@@ -301,6 +457,61 @@
       font-weight: 500;
       color: white;
     }
+    .gameWrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      .gameMain {
+        // width: 1280px;
+        // height: 720px;
+        width: 100vw;
+        height: calc(100vw * 9 / 16);
+      }
+    }
+
+    .sticky {
+      margin-top: 100px;
+      height: 80vh;
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .gamePage {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .heading {
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-weight: 500;
+      color: white;
+    }
+    .gameWrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      .gameMain {
+        // width: 1280px;
+        // height: 720px;
+        width: 100vw;
+        height: calc(100vw * 9 / 16);
+      }
+    }
+
+    .sticky {
+      margin-top: 100px;
+      height: 80vh;
+    }
+  }
+}
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .gamePage {
     .gameWrapper {
       display: flex;
       justify-content: center;

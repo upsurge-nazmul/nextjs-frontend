@@ -14,7 +14,7 @@ import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const router = useRouter();
-  const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
+  const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
   const [username, setusername] = useState("Tushar");
   const [rotatesetting, setrotatesetting] = useState(false);
@@ -22,7 +22,11 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [shownotifications, setshownotifications] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   return (
-    <div className={styles.kiddashboardHeader}>
+    <div
+      className={`${styles.kiddashboardHeader} ${
+        theme === "dark" && styles.darkstyles
+      }`}
+    >
       {shownotifications && (
         <NotificationMenu setshownotifications={setshownotifications} />
       )}

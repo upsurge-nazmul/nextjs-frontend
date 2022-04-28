@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import styles from "../../styles/MoneyAce/dashboard.module.scss";
@@ -19,6 +19,8 @@ import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import { getCookie } from "../../actions/cookieUtils";
 import DailyReward from "./DailyReward";
 import { toIndianFormat } from "../../helpers/currency";
+import { MainContext } from "../../context/Main";
+import { useRouter } from "next/router";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -40,6 +42,8 @@ export default function MoneyAceDashboard({
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
+  const { theme } = useContext(MainContext);
+  const router = useRouter();
   const ref = useRef();
   useEffect(() => {
     if (muted) {
@@ -86,6 +90,26 @@ export default function MoneyAceDashboard({
     }
   }, []);
 
+  async function handlenextday() {
+    let res = await MoneyAceApis.nextday();
+    if (res && res.data && res.data.success) {
+      alert("done");
+      router.reload();
+    } else {
+      alert("something went wrong");
+    }
+  }
+
+  async function handlereset() {
+    let res = await MoneyAceApis.resetdata();
+    if (res && res.data && res.data.success) {
+      alert("done");
+      router.reload();
+    } else {
+      alert("something went wrong");
+    }
+  }
+
   return (
     <div className={styles.dashboard}>
       <audio ref={ref} src="/audio/dashboard.wav" autoPlay loop />
@@ -112,6 +136,10 @@ export default function MoneyAceDashboard({
             currenttab !== "dashboard" && styles.notdashboardcontainer
           }`}
         >
+          <div className={styles.devoptions}>
+            <p onClick={handlereset}>Reset All</p>
+            <p onClick={handlenextday}>Next Day</p>
+          </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
               <div className={styles.top}>

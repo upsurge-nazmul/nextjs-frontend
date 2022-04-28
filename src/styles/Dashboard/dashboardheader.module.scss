@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 @keyframes rotate {
   to {
@@ -136,7 +137,54 @@
     }
   }
 }
+.darkdashboardheader {
+  .dashboardHeading {
+    color: $d-text2;
+    span {
+      color: $d-text2;
+    }
+  
+  }
+  .rightWrapper {
+    .rewardBlock {
+      .svg {
+        path {
+          fill: $d-text2;
+        }
+      }
+      .number {
+        color: $d-text2;
+      }
+    }
 
+
+    .notification {
+      .dot {
+        border: 2px solid $d-main;
+      }
+      svg {
+        path {
+          fill: $d-text2;
+        }
+      }
+      &:hover {
+        svg {
+          path {
+          }
+        }
+      }
+    }
+    .avatar {
+
+      outline-color: $d-light;
+
+      &:hover {
+        outline: 1px solid $d-light;
+
+      }
+    }
+  }
+}
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .dashboardHeader {
     padding: 46px 26px 46px 26px;
@@ -439,5 +487,3 @@
     }
   }
 }
-
-

@@ -264,6 +264,16 @@ const updatescore = (payload) => {
   );
 };
 
+// temp dev apis
+
+const resetdata = (payload) => {
+  return ApiCalls.getResponse("games/moneyace/reset?pass=noaccess", payload);
+};
+
+const nextday = (payload) => {
+  return ApiCalls.getResponse("games/moneyace/gonext?pass=noaccess", payload);
+};
+
 const MoneyAceApis = {
   getMoneyAceData,
   getBankingDetails,
@@ -301,6 +311,8 @@ const MoneyAceApis = {
   getdailyreward,
   updatescore,
   investmentrecords,
+  resetdata,
+  nextday,
 };
 
 export default MoneyAceApis;
