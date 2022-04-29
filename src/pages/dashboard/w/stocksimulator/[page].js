@@ -150,6 +150,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
                     selectedSymbol={selectedSymbol}
                     setSelectedSymbol={setSelectedSymbol}
                     userData={userdatafromserver}
+                    watchlistData={watchlistData}
                     setWatchlistData={setWatchlistData}
                   />
                 )}

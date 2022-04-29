@@ -25,6 +25,7 @@ export default function SimulatorDash({
   selectedSymbol,
   setSelectedSymbol,
   userData,
+  watchlistData,
   setWatchlistData,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
@@ -33,6 +34,8 @@ export default function SimulatorDash({
   );
   const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
   const [simulatorMonthlyData, setSimulatorMonthlyData] = useState();
+  const [showAddToWatchlistButton, setShowAddToWatchlistButton] =
+    useState(true);
 
   useEffect(() => {
     async function fetchStocks() {
@@ -57,6 +60,19 @@ export default function SimulatorDash({
       setSelectedCompany(currentCompany);
     }
   }, [selectedSymbol, simulatorDailyData]);
+
+  useEffect(() => {
+    if (selectedCompany && watchlistData && watchlistData.length) {
+      let selectedCompanyExistsInWatchlist = watchlistData.filter(
+        (d) => d.symbol === selectedCompany.symbol
+      );
+      if (selectedCompanyExistsInWatchlist.length) {
+        setShowAddToWatchlistButton(false);
+      } else {
+        setShowAddToWatchlistButton(true);
+      }
+    }
+  }, [selectedCompany, watchlistData]);
 
   const handleAddToWatchlist = async () => {
     let watchlistItem = {
@@ -87,9 +103,11 @@ export default function SimulatorDash({
               }}
             />
           </div>
-          <div className={styles.buttonArea}>
-            <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
-          </div>
+          {showAddToWatchlistButton && (
+            <div className={styles.buttonArea}>
+              <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+            </div>
+          )}
           <div className={styles.switchArea}>
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
           </div>
@@ -99,15 +117,15 @@ export default function SimulatorDash({
             simulatorMonthlyData={simulatorMonthlyData}
             chartMode={chartMode}
             ChartModeOptions={ChartModeOptions}
-            width="95%"
-            height="600px"
+            width='95%'
+            height='600px'
           />
         )}
         <ChartDuration
           value={selectedDuration}
           action={setSelectedDuration}
           options={ChartDurations}
-          width="95%"
+          width='95%'
         />
       </div>
       <div className={styles.dashRight}>
