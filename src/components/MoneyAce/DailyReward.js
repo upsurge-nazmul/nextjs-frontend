@@ -27,10 +27,8 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
               </div>
             ) : (
               <div className={styles.giftopened}>
-                <p className={styles.head}>₹{data?.reward}</p>
-                <p className={styles.subhead}>
-                  Yay! you have won ₹{data?.reward}
-                </p>
+                <p className={styles.head}>{data?.text}</p>
+                <p className={styles.subhead}>Yay! you have won {data?.text}</p>
               </div>
             )}
           </div>
@@ -38,11 +36,22 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
         <img
           className={styles.homebtn}
           onClick={() => {
-            setmoneyacedata((prev) => ({
-              ...prev,
-              account_balance:
-                Number(prev.account_balance) + Number(data.reward),
-            }));
+            if (
+              Number(data.reward) === 0 ||
+              Number(data.reward) === 5 ||
+              Number(data.reward) === 6
+            ) {
+              setmoneyacedata((prev) => ({
+                ...prev,
+                account_balance:
+                  Number(prev.account_balance) +
+                  (Number(data.reward) === 0
+                    ? 200
+                    : Number(data.reward) === 5
+                    ? 2000
+                    : 2200),
+              }));
+            }
             setshowdaily(false);
           }}
           src="https://i.ibb.co/kmfyw9t/homepng.png"

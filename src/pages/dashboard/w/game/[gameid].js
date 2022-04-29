@@ -46,7 +46,6 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   const [nickname, setnickname] = useState("");
   const [mode, setmode] = useState("Games Arena");
   const { userdata, setuserdata } = useContext(MainContext);
-
   const [info, setinfo] = useState({
     device: "computer",
     orientation: "desktop",
@@ -232,7 +231,6 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
-
   useEffect(() => {
     setTimeout(() => setremoveBorder(true), 10000);
   }, []);
