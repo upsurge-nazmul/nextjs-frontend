@@ -4,7 +4,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
+const ApexChart = ({ chartData, className }) => {
   const [state, setState] = useState();
   const [minDate, setMinDate] = useState();
   const [maxDate, setMaxDate] = useState();
@@ -67,14 +67,14 @@ const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
   }, []);
 
   return (
-    <div id="chart">
+    <div id="chart" className={className}>
       {state && (
         <ReactApexChart
           options={state.options}
           series={state.series}
           type="area"
-          width={width}
-          height={height}
+          width="100%"
+          height="100%"
         />
       )}
     </div>

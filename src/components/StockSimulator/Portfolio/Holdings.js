@@ -4,11 +4,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export default function Holdings({
-  chartData,
-  width = "600px",
-  height = "600px",
-}) {
+export default function Holdings({ chartData, className }) {
   const [state, setState] = useState();
 
   useEffect(() => {
@@ -54,14 +50,14 @@ export default function Holdings({
   }, [chartData]);
 
   return (
-    <div id="chart">
+    <div id="chart" className={className}>
       {state && (
         <ReactApexChart
           options={state.options}
           series={state.series}
           type="donut"
-          width={width}
-          height={height}
+          width="100%"
+          height="100%"
         />
       )}
     </div>

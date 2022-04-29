@@ -1,17 +1,12 @@
 import styles from "../../../styles/StockSimulator/chartDuration.module.scss";
 
-export default function ChartDuration({
-  value,
-  action,
-  options = [],
-  width = "500px",
-}) {
+export default function ChartDuration({ value, action, options = [] }) {
   const handleDurationSelection = (value) => {
     action(value);
   };
 
   return (
-    <div className={styles.durationArea} style={{ width }}>
+    <div className={styles.durationArea}>
       {options.map((duration, i) => {
         return (
           <div key={i} className={styles.durationItem}>

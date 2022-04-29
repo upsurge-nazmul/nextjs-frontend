@@ -36,6 +36,13 @@
         width: 100px;
       }
     }
+    .chartArea {
+      width: 95%;
+      .charts {
+        width: 100%;
+        height: 400px;
+      }
+    }
   }
   .dashRight {
     width: 100%;

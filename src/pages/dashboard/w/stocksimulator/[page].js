@@ -117,7 +117,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
 
   return (
     <div className={styles.stockSimulator}>
-      <DashboardLeftPanel type='waitlist' />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader

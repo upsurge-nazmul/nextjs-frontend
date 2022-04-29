@@ -4,7 +4,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-function ApexChart({ chartData, width = "600px", height = "600px" }) {
+function ApexChart({ chartData, className }) {
   /**
      * Single data exampale:
      * {
@@ -52,14 +52,14 @@ function ApexChart({ chartData, width = "600px", height = "600px" }) {
   }, [chartData]);
 
   return (
-    <div id="chart">
+    <div id="chart" className={className}>
       {state && (
         <ReactApexChart
           options={state.options}
           series={state.series}
           type="candlestick"
-          width={width}
-          height={height}
+          width="100%"
+          height="100%"
         />
       )}
     </div>

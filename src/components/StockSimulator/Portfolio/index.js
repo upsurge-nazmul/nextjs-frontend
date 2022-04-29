@@ -86,7 +86,10 @@ export default function Portfolio({ userData, token }) {
             <div className={styles.left}>
               <p className={styles.caption}>Portfolio</p>
               {portfolioChartData && portfolioChartData.length && (
-                <PortfolioChart chartData={portfolioChartData} width="100%" />
+                <PortfolioChart
+                  chartData={portfolioChartData}
+                  className={styles.portfolioChart}
+                />
               )}
             </div>
             <div className={styles.right}>
@@ -101,7 +104,10 @@ export default function Portfolio({ userData, token }) {
                       </span>
                     </div>
                   </div>
-                  <Holdings chartData={holdingsData} width="100%" />
+                  <Holdings
+                    chartData={holdingsData}
+                    className={styles.holdingsChart}
+                  />
                 </>
               )}
             </div>

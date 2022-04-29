@@ -113,20 +113,20 @@ export default function SimulatorDash({
           </div>
         </div>
         {simulatorMonthlyData && (
-          <SimulatorChart
-            simulatorMonthlyData={simulatorMonthlyData}
-            chartMode={chartMode}
-            ChartModeOptions={ChartModeOptions}
-            width='95%'
-            height='600px'
-          />
+          <div className={styles.chartArea}>
+            <SimulatorChart
+              simulatorMonthlyData={simulatorMonthlyData}
+              chartMode={chartMode}
+              ChartModeOptions={ChartModeOptions}
+              className={styles.charts}
+            />
+            <ChartDuration
+              value={selectedDuration}
+              action={setSelectedDuration}
+              options={ChartDurations}
+            />
+          </div>
         )}
-        <ChartDuration
-          value={selectedDuration}
-          action={setSelectedDuration}
-          options={ChartDurations}
-          width='95%'
-        />
       </div>
       <div className={styles.dashRight}>
         {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}

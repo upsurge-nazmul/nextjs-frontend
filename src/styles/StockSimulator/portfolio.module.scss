@@ -20,13 +20,19 @@
       }
       .left {
         flex: 2;
-        height: 600px;
+        height: fit-content;
         text-align: center;
+        height: 400px;
+        .portfolioChart {
+          width: 100%;
+          height: 400px;
+        }
       }
       .right {
         flex: 1;
-        height: 600px;
+        height: fit-content;
         text-align: center;
+        height: 400px;
         div {
           text-align: center;
         }
@@ -43,6 +49,10 @@
             color: rgb(97, 94, 94);
             font-style: italic;
           }
+        }
+        .holdingsChart {
+          width: 100%;
+          height: 400px;
         }
       }
     }

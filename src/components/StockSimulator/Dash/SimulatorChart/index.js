@@ -6,8 +6,7 @@ export default function SimulatorChart({
   simulatorMonthlyData = [],
   chartMode,
   ChartModeOptions,
-  width = "100%",
-  height = "100%",
+  className,
 }) {
   const [candlestickData, setCandlestickData] = useState();
   const [lineChartData, setLineChartData] = useState();
@@ -60,28 +59,25 @@ export default function SimulatorChart({
   }, [simulatorMonthlyData]);
 
   return (
-    <div>
+    <>
       {chartMode === ChartModeOptions[0] ? (
         <>
           {candlestickData && (
             <CandlestickChart
               chartData={candlestickData}
-              width={width}
-              height={height}
+              className={className}
             />
           )}
         </>
       ) : chartMode === ChartModeOptions[1] ? (
         <>
           {lineChartData && (
-            <div style={{ height, width }}>
-              <LineChart chartData={lineChartData} width="100%" />
-            </div>
+            <LineChart chartData={lineChartData} className={className} />
           )}
         </>
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
