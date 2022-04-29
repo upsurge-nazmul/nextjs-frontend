@@ -26,23 +26,36 @@ export default function SimulatorChart({
     }
   }, [simulatorMonthlyData]);
 
+  // useEffect(() => {
+  //   if (simulatorMonthlyData && simulatorMonthlyData.length) {
+  //     let closingValues = [];
+  //     for (let item of simulatorMonthlyData) {
+  //       let xAxisValue = item.date;
+  //       closingValues.push({
+  //         x: xAxisValue,
+  //         y: item.close,
+  //       });
+  //     }
+  //     setLineChartData([
+  //       {
+  //         id: "Close",
+  //         color: "hsl(64, 70%, 50%)",
+  //         data: closingValues,
+  //       },
+  //     ]);
+  //   }
+  // }, [simulatorMonthlyData]);
   useEffect(() => {
     if (simulatorMonthlyData && simulatorMonthlyData.length) {
       let closingValues = [];
       for (let item of simulatorMonthlyData) {
-        let xAxisValue = item.date;
+        let xAxisValue = new Date(item.date);
         closingValues.push({
           x: xAxisValue,
-          y: item.close,
+          y: parseFloat(item.close),
         });
       }
-      setLineChartData([
-        {
-          id: "Close",
-          color: "hsl(64, 70%, 50%)",
-          data: closingValues,
-        },
-      ]);
+      setLineChartData(closingValues);
     }
   }, [simulatorMonthlyData]);
 
@@ -62,7 +75,7 @@ export default function SimulatorChart({
         <>
           {lineChartData && (
             <div style={{ height, width }}>
-              <LineChart chartData={lineChartData} />
+              <LineChart chartData={lineChartData} width="100%" />
             </div>
           )}
         </>
