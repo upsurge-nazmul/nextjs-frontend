@@ -37,8 +37,14 @@ function ApexChart({ chartData, width = "600px", height = "600px" }) {
           type: "datetime",
         },
         yaxis: {
-          tooltip: {
-            enabled: true,
+          labels: {
+            formatter: (value) => value.toFixed(2),
+          },
+          tooltip: { enabled: true },
+        },
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
           },
         },
       },

@@ -83,26 +83,28 @@ export default function Portfolio({ userData, token }) {
       <div className={styles.main}>
         {tab === TABS[0].value && (
           <div className={styles.content}>
-            {portfolioChartData && portfolioChartData.length && (
-              <div className={styles.left}>
-                <p className={styles.caption}>Portfolio</p>
+            <div className={styles.left}>
+              <p className={styles.caption}>Portfolio</p>
+              {portfolioChartData && portfolioChartData.length && (
                 <PortfolioChart chartData={portfolioChartData} width="100%" />
-              </div>
-            )}
-            {holdingsData && (
-              <div className={styles.right}>
-                <p className={styles.caption}>Holdings</p>
-                <div className={styles.holdingsArea}>
-                  <div className={styles.holding}>
-                    <span className={styles.label}>Current Holdings </span>
-                    <span className={styles.value}>
-                      Rs {parseFloat(holdingsData[0].amount).toFixed(2)}
-                    </span>
+              )}
+            </div>
+            <div className={styles.right}>
+              {holdingsData && (
+                <>
+                  <p className={styles.caption}>Holdings</p>
+                  <div className={styles.holdingsArea}>
+                    <div className={styles.holding}>
+                      <span className={styles.label}>Current Holdings </span>
+                      <span className={styles.value}>
+                        Rs {parseFloat(holdingsData[0].amount).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <Holdings chartData={holdingsData} width="100%" />
-              </div>
-            )}
+                  <Holdings chartData={holdingsData} width="100%" />
+                </>
+              )}
+            </div>
           </div>
         )}
         {tab === TABS[1].value && (

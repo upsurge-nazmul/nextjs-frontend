@@ -36,6 +36,11 @@ const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
           max: new Date(maxDate).getTime(),
           // tickAmount: 6,
         },
+        yaxis: {
+          labels: {
+            formatter: (value) => value.toFixed(2),
+          },
+        },
         tooltip: {
           x: {
             format: "dd MMM yyyy",

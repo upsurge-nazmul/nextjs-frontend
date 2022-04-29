@@ -6,6 +6,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
   const [state, setState] = useState();
+  const COLORS = ["#17d1bc"];
 
   useEffect(() => {
     setState({
@@ -15,6 +16,7 @@ const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
         },
       ],
       options: {
+        colors: COLORS,
         chart: {
           type: "area",
           toolbar: {
@@ -23,14 +25,23 @@ const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
         },
         dataLabels: {
           enabled: false,
+          style: {
+            colors: COLORS,
+          },
         },
         markers: {
           size: 4,
           style: "hollow",
+          colors: COLORS,
         },
         xaxis: {
           type: "datetime",
           // tickAmount: 6,
+        },
+        yaxis: {
+          labels: {
+            formatter: (value) => value.toFixed(2),
+          },
         },
         tooltip: {
           x: {
@@ -39,6 +50,7 @@ const ApexChart = ({ chartData, width = "600px", height = "600px" }) => {
         },
         fill: {
           type: "gradient",
+          colors: COLORS,
           gradient: {
             shadeIntensity: 1,
             opacityFrom: 0.7,
