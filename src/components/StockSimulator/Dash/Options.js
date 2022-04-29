@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import styles from "../../../styles/StockSimulator/options.module.scss";
+import CircularProgress from "@mui/material/CircularProgress";
 import Popup from "../Popup";
 
 export default function SimulatorOptions({ companyDetails, userData, token }) {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [tradeMode, setTradeMode] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [tradeMsg, setTradeMsg] = useState("");
 
   useEffect(() => {
     if (companyDetails) {
@@ -29,10 +32,13 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
       token,
     });
     console.log("bought stocks", boughtStock);
+    if (boughtStock.data.status === 200) setIsLoading(false);
+    if (boughtStock.data.message) setTradeMsg(boughtStock.data.message);
   };
 
   const handleSell = async () => {
     console.log("Sell Rs", quantity * price, companyDetails);
+    setIsLoading(true);
     const soldStock = await SimulatorApis.sellStock({
       payload: {
         user_id: userData.user_id,
@@ -45,12 +51,16 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
       },
       token,
     });
-    console.log("bought stocks", soldStock);
+    console.log("sold stocks", soldStock);
+    if (soldStock.data.status === 200) setIsLoading(false);
+    if (soldStock.data.message) setTradeMsg(soldStock.data.message);
   };
 
   const handleCancel = () => {
     setTradeMode("");
     setQuantity(0);
+    setIsLoading(false);
+    setTradeMsg("");
   };
 
   const handleProceed = () => {
@@ -61,8 +71,6 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
     if (tradeMode === "sell") {
       handleSell();
     }
-    setTradeMode("");
-    setQuantity(0);
   };
 
   return (
@@ -120,19 +128,29 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
       {tradeMode && (
         <Popup
           actions={{
+            cancelText: tradeMsg ? "Close" : "Cancel",
             isCancel: true,
             handleCancel: handleCancel,
-            isProceed: quantity > 0,
+            proceedText: "Proceed",
+            isProceed: quantity > 0 && !tradeMsg,
             handleProceed: handleProceed,
           }}
           title='Confirmation'
         >
-          {quantity > 0 ? (
-            <p className={styles.popupMessage}>
-              Are you sure, you want to {tradeMode} for {quantity * price} ?
-            </p>
+          {!isLoading && !tradeMsg ? (
+            <div>
+              {quantity > 0 ? (
+                <p className={styles.popupMessage}>
+                  Are you sure, you want to {tradeMode} for {quantity * price} ?
+                </p>
+              ) : (
+                <p className={styles.popupMessage}>Please add quantity</p>
+              )}
+            </div>
+          ) : tradeMsg ? (
+            <p className={styles.popupMessage}>{tradeMsg} </p>
           ) : (
-            <p className={styles.popupMessage}>Please add quantity</p>
+            <CircularProgress />
           )}
         </Popup>
       )}

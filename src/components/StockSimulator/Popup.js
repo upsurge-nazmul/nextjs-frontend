@@ -2,7 +2,10 @@ import styles from "../../styles/StockSimulator/popup.module.scss";
 
 export default function Popup({
   title = "",
-  actions,
+  actions = {
+    cancelText: "Cancel",
+    proceedText: "Proceed",
+  },
   onOutsideClick = () => {},
   children,
 }) {
@@ -20,7 +23,7 @@ export default function Popup({
               className={styles.cancelButton}
               onClick={actions.handleCancel}
             >
-              Cancel
+              {actions.cancelText}
             </button>
           ) : (
             ""
@@ -30,7 +33,7 @@ export default function Popup({
               className={styles.proceedButton}
               onClick={actions.handleProceed}
             >
-              Proceed
+              {actions.proceedText}
             </button>
           ) : (
             ""
