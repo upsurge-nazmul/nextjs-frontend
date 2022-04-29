@@ -117,7 +117,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
 
   return (
     <div className={styles.stockSimulator}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel type='waitlist' />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
@@ -134,6 +134,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
                 action={handleWatchlistClick}
                 active={selectedSymbol}
                 token={token}
+                settoastdata={settoastdata}
               />
             )}
             <Navigation options={MODES} action={setMode} active={mode} />

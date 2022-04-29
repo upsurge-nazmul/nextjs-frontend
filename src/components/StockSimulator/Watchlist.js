@@ -2,6 +2,7 @@ import { useState } from "react";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
+import Popup from "./Popup";
 
 export default function Watchlist({
   watchlistData,
@@ -10,17 +11,26 @@ export default function Watchlist({
   action = () => {},
   active = "",
   token,
+  settoastdata,
 }) {
   const [openList, setOpenList] = useState(false);
+  const [deleteItem, setDeleteItem] = useState();
 
-  const handleClose = async (value) => {
+  const handleRemoveItem = async () => {
     let deletedItem = await SimulatorApis.removeFromWatchlist({
-      payload: { id: value },
+      payload: { id: deleteItem.id },
       token,
     });
-    console.log(deletedItem);
     if (deletedItem.data.success) {
-      setWatchlistData((prev) => prev.filter((item) => item.id !== value));
+      setWatchlistData((prev) =>
+        prev.filter((item) => item.id !== deleteItem.id)
+      );
+      setDeleteItem();
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: deletedItem.data.message,
+      });
     }
   };
 
@@ -45,7 +55,7 @@ export default function Watchlist({
             >
               <button
                 className={styles.closeButton}
-                onClick={() => handleClose(item.id)}
+                onClick={() => setDeleteItem(item)}
               >
                 x
               </button>
@@ -84,6 +94,21 @@ export default function Watchlist({
             setData: setWatchlistData,
           }}
         />
+      )}
+      {deleteItem && (
+        <Popup
+          actions={{
+            cancelText: "Cancel",
+            isCancel: true,
+            handleCancel: () => setDeleteItem(),
+            proceedText: "Yes",
+            isProceed: true,
+            handleProceed: handleRemoveItem,
+          }}
+          onOutsideClick={() => setDeleteItem()}
+        >
+          <p>Do you want to remove {deleteItem.name} from your watchlist? </p>
+        </Popup>
       )}
     </div>
   );

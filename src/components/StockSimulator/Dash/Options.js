@@ -148,7 +148,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
               )}
             </div>
           ) : tradeMsg ? (
-            <p className={styles.popupMessage}>{tradeMsg} </p>
+            <p className={styles.popupMessage}>{tradeMsg}</p>
           ) : (
             <CircularProgress />
           )}

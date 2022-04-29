@@ -4,7 +4,11 @@ export default function Popup({
   title = "",
   actions = {
     cancelText: "Cancel",
+    isCancel: true,
+    handleCancel: () => {},
     proceedText: "Proceed",
+    isProceed: false,
+    handleProceed: () => {},
   },
   onOutsideClick = () => {},
   children,
