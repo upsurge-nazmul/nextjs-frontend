@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import styles from "../../../styles/StockSimulator/options.module.scss";
+import Popup from "../Popup";
 
 export default function SimulatorOptions({ companyDetails, userData, token }) {
   const [quantity, setQuantity] = useState(0);
@@ -69,7 +70,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
       <p className={styles.optionsTitle}>Quantity</p>
       <div className={styles.quantityInput}>
         <input
-          type="number"
+          type='number'
           // className={styles.quantityInput}
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
@@ -117,38 +118,23 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         </div>
       </button>
       {tradeMode && (
-        <div className={styles.tradePopup}>
-          <div
-            className={styles.popupBackground}
-            // onClick={() => setTradeMode("")}
-          />
-          <div className={styles.popupBody}>
-            <div className={styles.messageArea}>
-              {quantity > 0 ? (
-                <p className={styles.message}>
-                  Are you sure, you want to {tradeMode} for {quantity * price} ?
-                </p>
-              ) : (
-                <p className={styles.message}>Please add quantity</p>
-              )}
-            </div>
-            <div className={styles.tradeActionArea}>
-              <button className={styles.cancelButton} onClick={handleCancel}>
-                Cancel
-              </button>
-              {quantity > 0 ? (
-                <button
-                  className={styles.proceedButton}
-                  onClick={handleProceed}
-                >
-                  Proceed
-                </button>
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-        </div>
+        <Popup
+          actions={{
+            isCancel: true,
+            handleCancel: handleCancel,
+            isProceed: quantity > 0,
+            handleProceed: handleProceed,
+          }}
+          title='Confirmation'
+        >
+          {quantity > 0 ? (
+            <p className={styles.popupMessage}>
+              Are you sure, you want to {tradeMode} for {quantity * price} ?
+            </p>
+          ) : (
+            <p className={styles.popupMessage}>Please add quantity</p>
+          )}
+        </Popup>
       )}
     </div>
   );
