@@ -18,11 +18,15 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   const [shownotifications, setshownotifications] = useState(false);
-  const { setuser, userdata, setuserdata, showmenu, setshowmenu } =
+  const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
   return (
-    <div className={styles.dashboardHeader}>
+    <div
+      className={`${styles.dashboardHeader} ${
+        theme === "dark" && styles.darkdashboardheader
+      }`}
+    >
       {shownotifications && (
         <NotificationMenu
           setshownotifications={setshownotifications}

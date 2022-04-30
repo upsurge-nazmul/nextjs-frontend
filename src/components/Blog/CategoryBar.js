@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Blog/categorybar.module.scss";
 import ArrowDown from "../SVGcomponents/ArrowDown";
 import ArrowUp from "../SVGcomponents/ArrowUp";
@@ -13,6 +14,7 @@ function CategoryBar({ selectedCat, sortPosts, col, pushto }) {
   ];
   const [categories, setcategories] = useState(allcategories.slice(0, 5));
   const [showfullcategories, setshowfullcategories] = useState(false);
+  const { theme } = useContext(MainContext);
   const router = useRouter();
   const category = router.query.category || selectedCat || "";
   function onClickMore() {
@@ -25,7 +27,7 @@ function CategoryBar({ selectedCat, sortPosts, col, pushto }) {
     <div
       className={`${styles.categoryBar} ${
         showfullcategories ? styles.fullCategories : ""
-      }`}
+      } ${theme === "dark" && styles.darkstyles}`}
     >
       <div className={styles.left}>
         <div className={styles.wrapper}>

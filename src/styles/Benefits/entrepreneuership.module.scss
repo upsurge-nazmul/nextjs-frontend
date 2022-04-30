@@ -1,3 +1,6 @@
+@use "../variables/colors.scss" as *;
+
+
 .main {
   height: 80vh;
   display: flex;
@@ -108,7 +111,20 @@
     }
   }
 }
+.darkmain{
+  .container {
+    .left {
+      background-color: $d-moredark;
+      .heading {
+      color: $d-text1;
+      }
+      .subheading {
+      color: $d-text2;
+      }
+    }
 
+  }
+}
 @media only screen and (min-width: 860px) and (max-height: 900px) {
   .main {
     .container {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Home/benefits.module.scss";
 import Curve1 from "../SVGcomponents/Curve1";
 import Dollar from "../SVGcomponents/Dollar";
@@ -8,6 +8,7 @@ import { useRouter } from "next/dist/client/router";
 import StarSvg from "../SVGcomponents/StarSvg";
 import BlubSvg from "../SVGcomponents/BulbSvg";
 import Image from "next/image";
+import { MainContext } from "../../context/Main";
 function Benefits() {
   const data = [
     {
@@ -44,6 +45,7 @@ function Benefits() {
   const [currentSection, setcurrentSection] = useState(0);
   const [sections, setsections] = useState([]);
   const router = useRouter();
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     let sections = document.getElementsByClassName("imgsections");
     if (sections.length > 0) {
@@ -115,7 +117,12 @@ function Benefits() {
     // });
   }
   return (
-    <section className={styles.benefits} id="mainbenefitscontainer">
+    <section
+      className={`${styles.benefits} ${
+        theme === "dark" && styles.darkbenefits
+      }`}
+      id="mainbenefitscontainer"
+    >
       <div className={styles.main}>
         <div className={styles.mobile}>
           {data.map((item, index) => {

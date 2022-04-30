@@ -1,3 +1,5 @@
+@use "../variables/colors.scss"as *;
+
 .dropBox {
   display: flex;
   margin-bottom: 30px;
@@ -28,6 +30,35 @@
       width: 100%;
       outline: none;
       border: none;
+    }
+  }
+}
+.darkstyles{
+  .title {
+    color: $d-text2;
+  }
+  .selectwrapper {
+    width: 45%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: $d-main;
+    border: 1px solid $d-light;
+    min-width: 100px;
+    max-width: 150px;
+    padding: 10px;
+    height: 45px;
+    color: $d-text1;
+    cursor: pointer;
+    select {
+      background-color: $d-main;
+      width: 100%;
+      outline: none;
+        color: $d-text2;
+        border: none;
+      option{
+        color: $d-text2;
+      }
     }
   }
 }

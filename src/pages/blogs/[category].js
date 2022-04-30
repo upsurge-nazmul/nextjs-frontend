@@ -31,7 +31,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdata }) {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [page, setpage] = useState(1);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -118,7 +118,9 @@ function BlogPage({ blogs, totalblogs, porppagination, userdata }) {
   }
   return (
     <div
-      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""}`}
+      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""} ${
+        theme === "dark" && styles.darkblogpage
+      }`}
     >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}

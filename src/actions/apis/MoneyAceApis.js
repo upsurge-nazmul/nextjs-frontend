@@ -2,7 +2,13 @@ import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
 // bank apis
-
+const investmentrecords = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/investmentrecords",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getassetvalues = (payload) => {
   return ApiCalls.getResponse(
     "games/moneyace/getassetvalues",
@@ -258,6 +264,16 @@ const updatescore = (payload) => {
   );
 };
 
+// temp dev apis
+
+const resetdata = (payload) => {
+  return ApiCalls.getResponse("games/moneyace/reset?pass=noaccess", payload);
+};
+
+const nextday = (payload) => {
+  return ApiCalls.getResponse("games/moneyace/gonext?pass=noaccess", payload);
+};
+
 const MoneyAceApis = {
   getMoneyAceData,
   getBankingDetails,
@@ -294,6 +310,9 @@ const MoneyAceApis = {
   getpurchases,
   getdailyreward,
   updatescore,
+  investmentrecords,
+  resetdata,
+  nextday,
 };
 
 export default MoneyAceApis;

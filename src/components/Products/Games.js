@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
 import styles from "../../styles/Products/games.module.scss";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 import PauseSvg from "../SVGcomponents/PauseSvg";
+import { MainContext } from "../../context/Main";
 
 export default function Games({ id }) {
   const router = useRouter();
@@ -94,6 +95,7 @@ export default function Games({ id }) {
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_4.jpeg",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_5.jpeg",
   ];
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     setpaused(true);
   }, [currentgameindex]);
@@ -109,7 +111,12 @@ export default function Games({ id }) {
     }
   }
   return (
-    <div className={styles.gamespage} id={id}>
+    <div
+      className={`${styles.gamespage} ${
+        theme === "dark" && styles.darkgamepage
+      }`}
+      id={id}
+    >
       <div className={styles.heading}>Games arena</div>
       <div className={styles.subheading}>
         Enable your child to experience the importance of money management in a

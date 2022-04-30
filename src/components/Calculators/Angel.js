@@ -6,7 +6,6 @@ import ResultBox from "./ResultBox";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
-import RelativeSection from "./RelativeSection";
 import changetoint from "../../helpers/currency";
 export default function Angel({ data, seterror, error }) {
   const [questions, setquestions] = useState([

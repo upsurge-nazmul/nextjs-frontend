@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .faqsection {
   display: flex;
@@ -30,11 +31,21 @@
     display: none;
   }
 }
+.darkfaqsection {
+  .left {
+    .heading {
+      color:$d-text2;
+    }
 
+  }
+  .mobilehead{
+    color:$d-text2;
+  }
+  
+}
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .faqsection {
     display: flex;
-    color: black;
     padding: 5vh 7vw;
     height: fit-content;
     height: 90vh;
@@ -62,7 +73,6 @@
 @media only screen and (max-width: 860px) {
   .faqsection {
     display: flex;
-    color: black;
     padding: 0 10vw;
     height: fit-content;
     min-height: 85vh;
@@ -92,7 +102,6 @@
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .faqsection {
     display: flex;
-    color: black;
     padding: 0 7vw;
     height: fit-content;
     min-height: fit-content;
@@ -125,7 +134,6 @@
 @media only screen and (max-height: 500px) and (orientation: landscape) {
   .faqsection {
     display: flex;
-    color: black;
     padding: 0 7vw;
     height: fit-content;
     min-height: fit-content;
@@ -155,7 +163,6 @@
 @media only screen and (max-width: 900px) and (orientation: landscape) {
   .faqsection {
     display: flex;
-    color: black;
     padding: 0 7vw;
     height: fit-content;
     min-height: fit-content;

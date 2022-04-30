@@ -19,6 +19,21 @@
       flex: 1;
       padding: 40px;
       width: 100%;
+      .devoptions {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        p {
+          background-color: rgb(224, 224, 224);
+          padding: 2px;
+          cursor: pointer;
+          font-size: clamp(10px, 1vw, 14px);
+          border-radius: 2px;
+        }
+      }
       .wrapper {
         display: flex;
         flex: 1;

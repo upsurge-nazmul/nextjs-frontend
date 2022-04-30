@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 .modernInputBox {
   height: 49px;
   margin-bottom: 20px;
@@ -112,7 +114,39 @@
 .modernInputBoxdate {
   z-index: 500;
 }
-
+.darkinputbox {
+  .tooltip {
+    position: absolute;
+    right: 10px;
+    color: rgb(138, 138, 138);
+    .infoicon {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+  .placeholderlifted {
+    background: $d-main;
+    color: $d-midlight;
+  }
+  input {
+    background:$d-moredark;
+    color:$d-text2;
+  }
+  .options {
+ 
+    background-color: $d-main;
+    border: 1px solid $d-light;
+  
+    .option {
+      border-bottom: 1px solid $d-light;
+      color: $d-text2;
+      &:hover {
+      color: $d-text1;
+      background-color: $d-moredark;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .modernInputBox {
     margin-bottom: 10px;

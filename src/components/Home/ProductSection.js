@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Home/product.module.scss";
 import ProductChoresSvg from "../SVGcomponents/ProductChoresSvg";
 import ProductGameSvg from "../SVGcomponents/ProductGameSvg";
@@ -7,6 +7,7 @@ import ProductPeople from "../SVGcomponents/ProductPeople";
 import QuestSvg from "../SVGcomponents/QuestSvg";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { MainContext } from "../../context/Main";
 function ProductSection() {
   const router = useRouter();
   let data = [
@@ -47,8 +48,13 @@ function ProductSection() {
         "Range of book-sets & board games, focused on building modern skills & knowledge, with integrated AR features for families to enjoy together.",
     },
   ];
+  const { theme } = useContext(MainContext);
   return (
-    <section className={styles.productSection}>
+    <section
+      className={`${styles.productSection} ${
+        theme && styles.darkproductSection
+      }`}
+    >
       <div className={styles.heading}>Our Products</div>
       <div className={styles.wrapper}>
         {data.splice(0, 3).map((item, index) => {

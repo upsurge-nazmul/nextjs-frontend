@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MainContext } from "../context/Main";
 import styles from "../styles/GeneralComponents/dropdown.module.scss";
 import DropDownArrow from "./SVGcomponents/DropDownArrow";
 function DropDown({
@@ -14,8 +15,9 @@ function DropDown({
   postsign,
   className,
   shorter,
-  onChange
+  onChange,
 }) {
+  const { theme } = useContext(MainContext);
   const [showoptions, setshowoptions] = useState(false);
   function handleChange(item) {
     setvalue(item);
@@ -41,7 +43,9 @@ function DropDown({
   return (
     <div
       id={keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]}
-      className={`${styles.dropdown} ${className}`}
+      className={`${styles.dropdown} ${className} ${
+        theme === "dark" && styles.darkstyles
+      }`}
       style={{ margin: margin ? margin : "0" }}
     >
       <div

@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Dashboard/dashboardleftpanel.module.scss";
 import BlogSvg from "../SVGcomponents/BlogSvg";
 import ChoresSvg from "../SVGcomponents/ChoresSvg";
@@ -25,8 +25,10 @@ import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import GroupsIcon from "@mui/icons-material/Groups";
+import { MainContext } from "../../context/Main";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
+  const { theme } = useContext(MainContext);
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
   const [showterm, setshowterm] = useState(false);
@@ -45,11 +47,16 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   return (
-    <div className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed}`}>
+    <div
+      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
+        theme === "dark" && styles.dashboardDark
+      }`}
+    >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
         <Logo
+          dark={theme === "dark"}
           className={styles.dashboardLogo}
           onClick={() => {
             router.push("/");
@@ -60,6 +67,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         />
       ) : (
         <MiniLogo
+          dark={theme === "dark"}
           className={styles.miniLogo}
           onClick={() => {
             router.push("/");

@@ -1,3 +1,4 @@
+@use "../variables/colors.scss" as *;
 .faqpage {
   width: 100%;
   height: fit-content;
@@ -11,7 +12,11 @@
     margin-bottom: 40px;
   }
 }
-
+.darkstyles{
+  .heading {
+    color: $d-text1;
+  }
+}
 @media only screen and (max-width: 860px) {
   .faqpage {
     padding-top: 40px;

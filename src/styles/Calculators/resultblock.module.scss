@@ -1,3 +1,4 @@
+@use "../variables/colors.scss" as *;
 .resultBox {
   display: flex;
   flex-direction: column;
@@ -90,7 +91,58 @@
     }
   }
 }
-
+.darkstyles{
+  .topflex {
+    .container {
+      .heading {
+        color: $d-text2;
+       
+      }
+      .result,
+      input {
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        color:$d-text2;
+      }
+      .onlytext{
+        color:$d-text2;
+        background-color:$d-main;
+      }
+      .bsign {
+        background-color: $d-main;
+        color: $d-text2;
+      }
+      .inputbox {
+        background-color: $d-main;
+        color: $d-text2;
+      }
+    }
+  }
+  .bottomContainer {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .heading {
+      color: #808080;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      min-width: fit-content;
+      width: 50%;
+    }
+    .result {
+      font-family: "Roboto", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .resultBox {
     display: flex;

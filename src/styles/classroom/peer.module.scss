@@ -1,0 +1,13 @@
+@use  "../variables/colors.scss" as *;
+
+.main{
+    .name{
+        margin-top: 20px;
+    }
+}
+
+.darkmain{
+    .name{
+        color: $d-text2;
+    }
+}

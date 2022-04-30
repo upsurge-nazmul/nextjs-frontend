@@ -137,6 +137,7 @@ export default function HomeCalc({ data, seterror, error }) {
   const [currentquestion, setcurrentquestion] = useState(questions[0]);
   const [showresult, setshowresult] = useState(false);
   const [editedata, setediteddata] = useState(null);
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     seterror("");
     setcurrentquestion(questions[current]);
@@ -367,6 +368,7 @@ export default function HomeCalc({ data, seterror, error }) {
         style={{
           fontSize: "clamp(14px,1vw,16px)",
           fontWeight: 600,
+          fill: theme === "dark" ? "gray" : "black",
         }}
       >
         {"Total : ₹" + resultdata.result4}
@@ -376,7 +378,11 @@ export default function HomeCalc({ data, seterror, error }) {
 
   return (
     <>
-      <div className={styles.calculatorComponent}>
+      <div
+        className={`${styles.calculatorComponent} ${
+          theme === "dark" && styles.darkcalculatorComponent
+        }`}
+      >
         {/* <div className="leftsec">
         <ProgressVerticle
           questions={questions.length}
@@ -530,14 +536,19 @@ export default function HomeCalc({ data, seterror, error }) {
                 }
                 borderColor={{ from: "color", modifiers: [["opacity", 0.2]] }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#000000"
+                arcLinkLabelsTextColor={
+                  theme === "dark" ? "rgb(211, 211, 211)" : "#000000"
+                }
                 arcLinkLabelsThickness={5}
-                theme={{ fontSize: "15px", color: "black" }}
+                theme={{
+                  fontSize: "15px",
+                  color: theme === "dark" ? "rgb(211, 211, 211)" : "black",
+                }}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
                 enableArcLinkLabels={false}
                 arcLabelsTextColor={{
-                  from: "data.tcolor",
+                  from: theme === "dark" ? "rgb(211, 211, 211)" : "data.tcolor",
                 }}
                 layers={[
                   "arcs",
@@ -556,7 +567,8 @@ export default function HomeCalc({ data, seterror, error }) {
                     itemsSpacing: 0,
                     itemWidth: 100,
                     itemHeight: 18,
-                    itemTextColor: "#000000",
+                    itemTextColor:
+                      theme === "dark" ? "rgb(211, 211, 211)" : "#000000",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
                     symbolSize: 18,
@@ -565,7 +577,8 @@ export default function HomeCalc({ data, seterror, error }) {
                       {
                         on: "hover",
                         style: {
-                          itemTextColor: "#000",
+                          itemTextColor:
+                            theme === "dark" ? "rgb(211, 211, 211)" : "#000",
                         },
                       },
                     ],

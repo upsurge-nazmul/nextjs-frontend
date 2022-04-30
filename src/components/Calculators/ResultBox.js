@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MainContext } from "../../context/Main";
 import changetoint from "../../helpers/currency";
 import styles from "../../styles/Calculators/resultblock.module.scss";
 
@@ -9,8 +10,9 @@ function ResultBox({
   setediteddata,
   onlyText,
 }) {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.resultBox}>
+    <div className={`${styles.resultBox} ${theme=== "dark" && styles.darkstyles}`}>
       <div className={styles.topflex}>
         {resultdata.editable1 ? (
           <div className={styles.container}>

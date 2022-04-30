@@ -22,7 +22,7 @@ function AuthComponent({
   setshowpopup,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
-  const { setfirstName, setlastName } = useContext(MainContext);
+  const { setfirstName, setlastName, theme } = useContext(MainContext);
   const [userdata, setuserdata] = useState(null);
   const [mode, setmode] = useState("login");
   const [phone, setphone] = useState("");
@@ -69,7 +69,7 @@ function AuthComponent({
   }
 
   return (
-    <div className={styles.auth}>
+    <div className={`${styles.auth} ${theme === "dark" && styles.darkauth}`}>
       <Toast data={toastdata} />
       <AnimatePresence>
         {showauth ? (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/Home/footer.module.scss";
 import { useRouter } from "next/dist/client/router";
 import Logo from "../SVGcomponents/Logo";
@@ -9,6 +9,7 @@ import Terms from "./Terms";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
+import { MainContext } from "../../context/Main";
 function Footer() {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
@@ -17,10 +18,13 @@ function Footer() {
   const [showmore, setshowmore] = useState(false);
   const [showproducts, setshowproducts] = useState(false);
   const [termmode, settermmode] = useState("terms");
+  const { theme } = useContext(MainContext);
   const router = useRouter();
   return (
     <div
-      className={styles.footerSection}
+      className={`${styles.footerSection} ${
+        theme === "dark" && styles.darkfooterSection
+      }`}
       style={{ zIndex: showterm ? 500 : 99 }}
     >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
@@ -32,7 +36,11 @@ function Footer() {
       </div>
       <div className={styles.top}>
         <div className={styles.left}>
-          <Logo className={styles.logo} onClick={() => router.push("/")} />
+          <Logo
+            className={styles.logo}
+            onClick={() => router.push("/")}
+            dark={theme === "dark"}
+          />
           <div className={styles.brandtext}>
             <a
               className={styles.whatsapp}
@@ -249,7 +257,11 @@ function Footer() {
         </div>
       </div>
       <div className={styles.mobiletop}>
-        <Logo className={styles.logo} onClick={() => router.push("/")} />
+        <Logo
+          className={styles.logo}
+          onClick={() => router.push("/")}
+          dark={theme === "dark"}
+        />
         <div className={styles.column}>
           <p
             className={styles.heading}

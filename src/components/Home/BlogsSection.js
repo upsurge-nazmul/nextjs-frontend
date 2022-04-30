@@ -1,13 +1,15 @@
 import draftToHtml from "draftjs-to-html";
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import xss from "xss";
 import BlogApis from "../../actions/apis/BlogApis";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Home/blogs.module.scss";
 
 export default function BlogsSection() {
   const router = useRouter();
   const [blogs, setblogs] = useState([]);
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     async function x() {
       let res = await BlogApis.gethomeblogs();
@@ -55,7 +57,11 @@ export default function BlogsSection() {
     },
   ];
   return (
-    <section className={styles.blogSection}>
+    <section
+      className={`${styles.blogSection} ${
+        theme === "dark" && styles.darkblogSection
+      }`}
+    >
       <div className={styles.heading} onClick={() => router.push("/blogs")}>
         Blogs
       </div>

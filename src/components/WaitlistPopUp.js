@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/waitlistpopup.module.scss";
 import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
@@ -9,6 +9,7 @@ import Spinner from "./Spinner";
 import { onlyText } from "../helpers/validationHelpers";
 import CircleTick from "./SVGcomponents/CircleTick";
 import CircleWarning from "./SVGcomponents/CircleWarning";
+import { MainContext } from "../context/Main";
 export default function WaitlistPopUp({
   email,
   setemail,
@@ -31,6 +32,7 @@ export default function WaitlistPopUp({
   const [mode, setmode] = useState("data"); // data and otp
   const [resetotp, setresetotp] = useState(0);
   const router = useRouter();
+  const { theme } = useContext(MainContext);
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -199,7 +201,9 @@ export default function WaitlistPopUp({
   }
   return (
     <div
-      className={styles.waitlistpopup}
+      className={`${styles.waitlistpopup} ${
+        theme === "dark" && styles.darkwaitlistpopup
+      }`}
       onKeyPress={(e) => {
         if (e.key === "Enter") {
           if (mode !== "otp") genotp();

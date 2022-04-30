@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 @keyframes rotate {
   to {
     transform: rotate(360deg);
@@ -134,7 +136,124 @@
     }
   }
 }
+.darkstyles {
+  .dashboardHeading {
+    font-size: 30px;
+    font-weight: 400;
+    color: $d-text2;
+    span {
+      align-items: center;
+      font-weight: 500;
+      text-transform: capitalize;
+      color: $d-text2;
+    }
+    .addflex {
+      svg {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      display: flex;
+    }
+  }
+  .rightWrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    .rewardBlock {
+      width: 20px;
+      height: 20px;
+      margin-right: 50px;
+      display: flex;
+      align-items: center;
+      .svg {
+        min-width: 20px;
+        min-height: 20px;
+        margin-right: 5px;
+        path {
+          fill: rgb(41, 41, 41);
+        }
+      }
+      .number {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .settings {
+      svg {
+        width: 22px;
+      }
+      &:hover {
+        svg {
+          transition: all 0.3s ease;
+          color: rgb(80, 80, 80);
+          path {
+          }
+        }
+      }
+    }
+    .rotate {
+      animation: rotate 1s ease infinite;
+    }
+    .bell {
+      animation: bell 0.5s ease infinite;
+    }
+    .notification {
+      position: relative;
+      margin-left: 20px;
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background-color: rgba(255, 122, 0, 1);
+        border: 2px solid #e5e5e5;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+      &:hover {
+        svg {
+          path {
+            transition: all 0.3s ease;
+            fill: rgb(80, 80, 80);
+          }
+        }
+      }
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline-color: rgb(214, 214, 214);
+      img {
+        width: 100%;
+        border-radius: 50px;
+        height: 100%;
+        transition: all 0.3s ease;
+        object-fit: cover;
+      }
+      &:hover {
+        outline: 1px solid rgb(214, 214, 214);
 
+        img {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
 @media only screen and (min-width: 860px) and (max-height: 800px) {
   .kiddashboardHeader {
     padding: 46px 46px 46px 20px;

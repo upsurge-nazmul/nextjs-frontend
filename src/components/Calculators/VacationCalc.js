@@ -4,7 +4,6 @@ import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
 import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 function VacationCalc() {
   const [years, setyear] = useState(1);
