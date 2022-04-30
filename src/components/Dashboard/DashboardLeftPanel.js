@@ -24,6 +24,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
+import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import GroupsIcon from "@mui/icons-material/Groups";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const router = useRouter();
@@ -32,6 +33,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
   useEffect(() => {
+    console.log("router", router);
     setcurrenttab(router.pathname);
   }, [router]);
   useEffect(() => {
@@ -213,6 +215,17 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Money Quotient</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/stocksimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/stocksimulator/home")}
+          >
+            <StockSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Stock Simulator</p>
           </div>
           <div
             className={`${styles.tab} ${
