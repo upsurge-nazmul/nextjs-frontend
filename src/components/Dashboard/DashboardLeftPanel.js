@@ -33,7 +33,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
   useEffect(() => {
-    console.log("router", router);
     setcurrenttab(router.pathname);
   }, [router]);
   useEffect(() => {

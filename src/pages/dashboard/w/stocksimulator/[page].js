@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import SimulatorApis from "../../../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
@@ -36,6 +37,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
     type: "success",
     msg: "",
   });
+  const { setuserdata } = useContext(MainContext);
 
   useEffect(() => {
     setMode(router.query.page);
@@ -107,6 +109,10 @@ export default function StockSimulator({ userdatafromserver, token }) {
     }
     fetchWatchlist();
   }, [token]);
+
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, []);
 
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
