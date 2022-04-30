@@ -22,7 +22,11 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
     useContext(MainContext);
 
   return (
-    <div className={`${styles.dashboardHeader} ${styles.darkdashboardheader}`}>
+    <div
+      className={`${styles.dashboardHeader} ${
+        theme === "dark" && styles.darkdashboardheader
+      }`}
+    >
       {shownotifications && (
         <NotificationMenu
           setshownotifications={setshownotifications}
