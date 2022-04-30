@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
 
 export default function CompanyInfo({ companyInfo }) {

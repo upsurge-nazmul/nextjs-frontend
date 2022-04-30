@@ -103,11 +103,6 @@ export default function SimulatorDash({
               }}
             />
           </div>
-          {showAddToWatchlistButton && (
-            <div className={styles.buttonArea}>
-              <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
-            </div>
-          )}
           <div className={styles.switchArea}>
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
           </div>
@@ -129,6 +124,11 @@ export default function SimulatorDash({
         )}
       </div>
       <div className={styles.dashRight}>
+        <div className={styles.buttonArea}>
+          {showAddToWatchlistButton && (
+            <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+          )}
+        </div>
         {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
         {selectedCompany && (
           <SimulatorOptions

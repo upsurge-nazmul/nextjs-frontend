@@ -68,7 +68,7 @@ export default function Watchlist({
               <div className={styles.info}>
                 <p className={styles.symbol}>{item.symbol}</p>
                 <p className={styles.value} style={{ color: item.color }}>
-                  {"$" + item.current_value}
+                  {parseFloat(item.current_value).toFixed(2)}
                 </p>
               </div>
             </div>

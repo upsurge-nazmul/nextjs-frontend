@@ -141,7 +141,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
           </div>
           <div className={styles.bottomSection}>
             {mode === MODES[0].value && (
-              <div>
+              <>
                 {simulatorDailyData && (
                   <SimulatorDash
                     token={token}
@@ -154,7 +154,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
                     setWatchlistData={setWatchlistData}
                   />
                 )}
-              </div>
+              </>
             )}
             {mode === MODES[1].value && (
               <Portfolio userData={userdatafromserver} token={token} />
