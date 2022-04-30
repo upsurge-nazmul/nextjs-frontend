@@ -8,8 +8,8 @@ export default function Performance({ performanceData = [] }) {
       </div>
       <div className={styles.container}>
         <div className={styles.headRow}>
-          <div className={styles.rowitem}>Symbol</div>
           <div className={styles.rowitem}>Name</div>
+          <div className={styles.rowitem}>Symbol</div>
           <div className={styles.rowitem}>Current Price</div>
           <div className={styles.rowitem}>Purchase Price</div>
           <div className={styles.rowitem}>QTY</div>
@@ -20,8 +20,8 @@ export default function Performance({ performanceData = [] }) {
           {performanceData.map((row, index) => {
             return (
               <div className={styles.row} key={index}>
-                <div className={styles.rowitem}>{row.symbol}</div>
                 <div className={styles.rowitem}>{row.name}</div>
+                <div className={styles.rowitem}>{row.symbol}</div>
                 <div className={styles.rowitem}>{row.current_price}</div>
                 <div className={styles.rowitem}>{row.buying_price}</div>
                 <div className={styles.rowitem}>{row.quantity}</div>
