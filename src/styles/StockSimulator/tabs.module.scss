@@ -51,3 +51,60 @@ $text-color: #fff;
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .squareNavigation {
+    min-width: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    .squareNav {
+      border: 2px solid $square-main-color;
+      color: $square-main-color;
+      cursor: pointer;
+      height: 40px;
+      width: 100px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: inherit;
+        font-size: 10px;
+        width: fit-content;
+      }
+      &:hover {
+        color: $square-hover-color;
+      }
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-right: none;
+      }
+      &:nth-child(2) {
+        padding-left: 10px;
+      }
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-left: none;
+      }
+    }
+    .activeSqNav {
+      @extend .squareNav;
+      box-shadow: 3px 3px 10px 5px rgb(219, 216, 216);
+      background-color: $square-main-color;
+      color: $text-color;
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+}

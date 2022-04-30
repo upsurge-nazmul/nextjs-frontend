@@ -63,3 +63,283 @@
     width: fit-content;
   }
 }
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .portfolio {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 70vh;
+      overflow-y: auto;
+      .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 20px;
+        .caption {
+          font-size: 20px;
+          font-weight: 700;
+          color: rgb(65, 63, 63);
+        }
+        .left {
+          flex: 1;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          .portfolioChart {
+            width: 100%;
+            height: 300px;
+          }
+        }
+        .right {
+          flex: 1;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          div {
+            text-align: center;
+          }
+          .holdingsArea {
+            padding: 20px 0 10px;
+            .label {
+              font-size: 13px;
+              font-weight: 400;
+              color: #333;
+            }
+            .value {
+              font-size: 16px;
+              font-weight: 700;
+              color: rgb(97, 94, 94);
+              font-style: italic;
+            }
+          }
+          .holdingsChart {
+            width: 100%;
+            height: 300px;
+          }
+        }
+      }
+    }
+    .footerArea {
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .portfolio {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: fit-content;
+      min-height: 60vh;
+      overflow-y: auto;
+      .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 20px;
+        .caption {
+          font-size: 20px;
+          font-weight: 700;
+          color: rgb(65, 63, 63);
+        }
+        .left {
+          height: fit-content;
+          text-align: center;
+          .portfolioChart {
+            width: 100%;
+            height: 300px;
+          }
+        }
+        .right {
+          height: fit-content;
+          text-align: center;
+          div {
+            text-align: center;
+          }
+          .holdingsArea {
+            padding: 20px 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .label {
+              font-size: 13px;
+              font-weight: 400;
+              color: #333;
+            }
+            .value {
+              font-size: 16px;
+              font-weight: 700;
+              color: rgb(97, 94, 94);
+              font-style: italic;
+            }
+          }
+          .holdingsChart {
+            width: 100%;
+            height: 300px;
+          }
+        }
+      }
+    }
+    .footerArea {
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+}
+
+// tabs landscape
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+  .portfolio {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 60vh;
+      overflow-y: hidden;
+      .content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .caption {
+          font-size: 20px;
+          font-weight: 700;
+          color: rgb(65, 63, 63);
+        }
+        .left {
+          flex: 2;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          .portfolioChart {
+            width: 100%;
+            height: 50vh;
+          }
+        }
+        .right {
+          flex: 1;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          div {
+            text-align: center;
+          }
+          .holdingsArea {
+            padding: 20px 0 10px;
+            .label {
+              font-size: 13px;
+              font-weight: 400;
+              color: #333;
+            }
+            .value {
+              font-size: 16px;
+              font-weight: 700;
+              color: rgb(97, 94, 94);
+              font-style: italic;
+            }
+          }
+          .holdingsChart {
+            width: 100%;
+            height: 50vh;
+          }
+        }
+      }
+    }
+    .footerArea {
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+}
+
+// phone landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .portfolio {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      overflow-y: hidden;
+      .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .caption {
+          font-size: 20px;
+          font-weight: 700;
+          color: rgb(65, 63, 63);
+        }
+        .left {
+          flex: 2;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          .portfolioChart {
+            width: 100%;
+            height: 50vh;
+          }
+        }
+        .right {
+          flex: 1;
+          height: fit-content;
+          text-align: center;
+          height: fit-content;
+          div {
+            text-align: center;
+          }
+          .holdingsArea {
+            padding: 20px 0 10px;
+            .label {
+              font-size: 13px;
+              font-weight: 400;
+              color: #333;
+            }
+            .value {
+              font-size: 16px;
+              font-weight: 700;
+              color: rgb(97, 94, 94);
+              font-style: italic;
+            }
+          }
+          .holdingsChart {
+            width: 100%;
+            height: 50vh;
+          }
+        }
+      }
+    }
+    .footerArea {
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+}

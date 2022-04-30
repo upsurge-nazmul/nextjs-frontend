@@ -25,9 +25,15 @@ export default function Performance({ tradesData = [] }) {
                 </div>
                 <div className={styles.rowitem}>{row.symbol}</div>
                 <div className={styles.rowitem}>{row.trade_type}</div>
-                <div className={styles.rowitem}>{row.quantity}</div>
-                <div className={styles.rowitem}>{row.price}</div>
-                <div className={styles.rowitem}>{row.total_value}</div>
+                <div className={styles.rowitem}>
+                  {parseFloat(row.quantity).toFixed(2)}
+                </div>
+                <div className={styles.rowitem}>
+                  {parseFloat(row.price).toFixed(2)}
+                </div>
+                <div className={styles.rowitem}>
+                  {parseFloat(row.total_value).toFixed(2)}
+                </div>
               </div>
             );
           })}

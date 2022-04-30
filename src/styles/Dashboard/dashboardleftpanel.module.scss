@@ -497,7 +497,7 @@
 }
 @media only screen and (orientation: landscape) and (max-width: 900px) {
   .dashboardLeftPanel {
-    height: 100vh;
+    height: auto;
     min-width: 80px;
     width: 80px;
     background-color: white;
