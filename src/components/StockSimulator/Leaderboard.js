@@ -64,7 +64,9 @@ export default function Leaderboard({ userData, token }) {
                     {item.user.first_name + " " + item.user.last_name}
                     {item.user.phone === userData.phone && " (you)"}
                   </p>
-                  <p className={styles.score}>{item.record.total_portfolio}</p>
+                  <p className={styles.score}>
+                    {parseFloat(item.record.total_portfolio).toFixed(2)}
+                  </p>
                 </div>
               );
             })}
