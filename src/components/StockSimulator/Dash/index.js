@@ -103,6 +103,7 @@ export default function SimulatorDash({
               }}
             />
           </div>
+          {/* Hidden in Phone */}
           <div className={styles.switchArea}>
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
           </div>
@@ -124,10 +125,16 @@ export default function SimulatorDash({
         )}
       </div>
       <div className={styles.dashRight}>
-        <div className={styles.buttonArea}>
-          {showAddToWatchlistButton && (
-            <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
-          )}
+        <div className={styles.topArea}>
+          <div className={styles.buttonArea}>
+            {showAddToWatchlistButton && (
+              <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+            )}
+          </div>
+          {/* Chart selection options for phone */}
+          <div className={styles.switchArea}>
+            <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
+          </div>
         </div>
         {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
         {selectedCompany && (

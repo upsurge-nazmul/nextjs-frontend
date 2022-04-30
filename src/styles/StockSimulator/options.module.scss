@@ -70,7 +70,7 @@
     box-shadow: 6px 3px 12px 2px #ccc;
     transition: 0.5s;
     .buttonTitle {
-      flex: 0.5;
+      flex: 0.85;
       height: fit-content;
       display: flex;
       justify-content: center;
@@ -118,5 +118,133 @@
     font-size: 18px;
     font-weight: 600;
     font-family: "Inter", sans-serif;
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .simulatorOptoins {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    font-family: "Inter", sans-serif !important;
+    .optionsTitle {
+      font-size: 16px;
+      color: #676767;
+      font-weight: 600;
+    }
+    .quantityInput {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      input {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 6px;
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-width: 1px;
+        border-color: #333;
+        color: #333;
+        outline: none;
+        flex: 1;
+        box-shadow: 3px 4px 15px 0px #ccc;
+        :focus-visible {
+          border-width: 1px;
+          outline: none;
+        }
+      }
+      .inputButtonArea {
+        display: flex;
+        flex-direction: column;
+        width: 20px;
+        .inputIncrease {
+          border: 1px solid #333;
+          border-left: none;
+          border-top-right-radius: 8px;
+          text-align: center;
+          background-color: rgb(243, 239, 239);
+          color: #333;
+          font-size: 18px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+        .inputDescrease {
+          @extend .inputIncrease !optional;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 8px;
+        }
+      }
+    }
+    .commonButton {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 0;
+      border: none;
+      border-radius: 8px;
+      width: 46%;
+      cursor: pointer;
+      box-shadow: 6px 3px 12px 2px #ccc;
+      transition: 0.5s;
+      .buttonTitle {
+        flex: 0.75;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      .buttonInfo {
+        flex: 1;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 9px;
+        span {
+          span {
+            font-weight: 300;
+            &:last-child {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+    .buyButton {
+      @extend .commonButton;
+      background-color: #27ae60;
+      color: #fff;
+      &:hover {
+        background-color: #1bbe5f;
+        box-shadow: 3px 4px 15px 0px #ccc;
+      }
+    }
+    .sellButton {
+      @extend .commonButton;
+      background-color: #eb5757;
+      color: #fff;
+      &:hover {
+        background-color: #e73c3c;
+        box-shadow: 3px 4px 15px 0px #ccc;
+      }
+    }
+    .popupMessage {
+      font-size: 18px;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+    }
   }
 }

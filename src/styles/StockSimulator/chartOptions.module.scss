@@ -30,3 +30,37 @@ $switch-bg: rgb(92, 93, 104);
     box-shadow: 5px 5px 15px 5px #ccc;
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .chartOptionsArea {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    .button {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $switch-bg;
+      color: $switch-bg;
+      padding: 5px;
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+    .active {
+      @extend .button;
+      background-color: $switch-bg;
+      border: 2px solid $switch-bg;
+      color: #fff;
+      border: 1px solid $switch-bg;
+      box-shadow: 5px 5px 15px 5px #ccc;
+    }
+  }
+}

@@ -61,3 +61,70 @@
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .watchlist {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 0;
+    max-width: 80vw;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    .listItem {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 4px;
+      .closeButton {
+        height: fit-content;
+        width: fit-content;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 10px;
+      }
+      .colorCode {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+      }
+      .info {
+        .symbol {
+          font-size: 10px;
+          font-weight: 600;
+          color: #676767;
+        }
+        .value {
+          font-size: 10px;
+        }
+      }
+    }
+    .activeItem {
+      @extend .listItem;
+      background-color: rgba(52, 52, 250, 0.025);
+      border-bottom: 2px solid rgb(52, 52, 250);
+    }
+    .noWatchlist {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+    }
+    .addButton {
+      button {
+        border: none;
+        background-color: transparent;
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+}

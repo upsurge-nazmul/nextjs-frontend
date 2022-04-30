@@ -25,13 +25,60 @@
         justify-content: space-between;
         padding-bottom: 20px;
         gap: 20px;
-        .stocksimulatorlogo {
-          width: auto;
+        .phoneNavigation {
+          display: none;
+        }
+        .normalNavigation {
+          display: flex;
+          justify-content: center;
         }
       }
       .bottomSection {
         width: 100%;
         height: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .stockSimulator {
+    display: flex;
+    width: 100vw;
+    font-family: "Fira Sans", sans-serif;
+    .contentWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      .mainContent {
+        width: 95%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        .topSection {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-bottom: 20px;
+          gap: 10px;
+          .phoneNavigation {
+            display: flex;
+            justify-content: center;
+          }
+          .normalNavigation {
+            display: none;
+          }
+        }
+        .bottomSection {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

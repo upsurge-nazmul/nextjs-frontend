@@ -126,6 +126,10 @@ export default function StockSimulator({ userdatafromserver, token }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.topSection}>
+            {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
+            <div className={styles.phoneNavigation}>
+              <Navigation options={MODES} action={setMode} active={mode} />
+            </div>
             {selectedSymbol && (
               <Watchlist
                 watchlistData={watchlistData}
@@ -137,7 +141,10 @@ export default function StockSimulator({ userdatafromserver, token }) {
                 settoastdata={settoastdata}
               />
             )}
-            <Navigation options={MODES} action={setMode} active={mode} />
+            {/* This navigation is hidden in mobile and visible in tabs and laptops */}
+            <div className={styles.normalNavigation}>
+              <Navigation options={MODES} action={setMode} active={mode} />
+            </div>
           </div>
           <div className={styles.bottomSection}>
             {mode === MODES[0].value && (

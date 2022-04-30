@@ -7,8 +7,6 @@ function CompanySelection({
   setvalue,
   options = [],
   placeholder,
-  color,
-  fontSize,
   margin,
   className,
 }) {
@@ -66,13 +64,7 @@ function CompanySelection({
         >
           {placeholder}
         </p>
-        <p
-          className={styles.text}
-          style={{
-            color: color ? color : "#6d6d6d",
-            fontSize: fontSize ? fontSize : "16px",
-          }}
-        >
+        <p className={styles.text}>
           {options && options.length
             ? options.find((option) => option.symbol === value).name
             : ""}

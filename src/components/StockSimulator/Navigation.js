@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import styles from "../../styles/StockSimulator/navigations.module.scss";
 
 export default function Navigation({ options = [], active = "" }) {
