@@ -112,4 +112,202 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .tradePopup {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .popupBackground {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+    }
+    .cross {
+      position: fixed;
+      top: 10%;
+      right: 15%;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
+    .popupBody {
+      background-color: white;
+      width: 80vw;
+      height: 60vh;
+      z-index: 10;
+      overflow-y: hidden;
+      padding-bottom: 200px;
+      position: relative;
+      border-radius: 40px;
+      .titleArea {
+        height: fit-content;
+        background-color: #4066eb;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        .title {
+          font-size: 18px;
+          font-weight: 700;
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+      .messageArea {
+        height: 40vh;
+        min-height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .message {
+          font-size: 18px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+      }
+      .tradeActionArea {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        .button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          font-size: 16px;
+          width: 150px;
+          height: 48px;
+          border-radius: 6px;
+          color: white;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        .cancelButton {
+          @extend .button;
+          background: #616161;
+          cursor: pointer;
+          &:hover {
+            background: hsl(0, 0%, 30%);
+          }
+        }
+        .proceedButton {
+          @extend .button;
+          background: #4166eb;
+          &:hover {
+            background: hsl(227, 59%, 51%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// phone landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .tradePopup {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .popupBackground {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+    }
+    .cross {
+      position: fixed;
+      top: 10%;
+      right: 15%;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
+    .popupBody {
+      background-color: white;
+      width: 60vw;
+      height: 80vh;
+      z-index: 10;
+      overflow-y: hidden;
+      padding-bottom: 200px;
+      position: relative;
+      border-radius: 40px;
+      .titleArea {
+        height: fit-content;
+        background-color: #4066eb;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        .title {
+          font-size: 18px;
+          font-weight: 700;
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+      .messageArea {
+        height: 40vh;
+        min-height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .message {
+          font-size: 18px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+      }
+      .tradeActionArea {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+    }
+  }
 }

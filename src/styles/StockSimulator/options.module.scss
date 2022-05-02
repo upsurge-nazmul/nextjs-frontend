@@ -153,6 +153,8 @@
     }
   }
   .tradeResponse {
+    text-align: center;
+    padding: 0 10px;
     .responseIcon {
       width: 100%;
       display: flex;
@@ -303,6 +305,75 @@
       &:hover {
         background-color: #e73c3c;
         box-shadow: 3px 4px 15px 0px #ccc;
+      }
+    }
+    .tradePopupArea {
+      width: 300px;
+      height: fit-content;
+      .tradeInfo {
+        display: flex;
+        flex-direction: row;
+        padding: 20px 0;
+        .tradeType {
+          flex: 0.75;
+          font-size: 34px;
+          font-weight: 700;
+          .buyColor {
+            color: #27ae60;
+          }
+          .sellColor {
+            color: #eb5757;
+          }
+        }
+        .tradeValue {
+          flex: 1;
+        }
+        .price {
+          .label {
+            font-size: 16px;
+            font-weight: 400;
+            color: rgb(107, 104, 104);
+          }
+          .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+          }
+        }
+        .total {
+          @extend .price;
+        }
+      }
+    }
+    .tradeResponse {
+      .responseIcon {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .commonIcon {
+          svg {
+            font-size: 200px;
+            border-radius: 50%;
+          }
+        }
+        .successIcon {
+          @extend .commonIcon;
+          svg {
+            color: rgb(19, 104, 19);
+          }
+        }
+        .failureIcon {
+          @extend .commonIcon;
+          svg {
+            color: rgb(216, 58, 58);
+          }
+        }
+      }
+      .popupMessage {
+        font-size: 24px;
+        color: #999;
       }
     }
   }
