@@ -8,7 +8,7 @@ export default function CompanyInfo({ companyInfo }) {
           <div className={styles.volumeArea}>
             <span className={styles.volumeTitle}>Volume</span>
             <span className={`${styles.volumeValue} ${styles.greenText}`}>
-              {"$" + parseFloat(companyInfo.volume).toFixed(2)}
+              {"₹" + parseFloat(companyInfo.volume).toFixed(2)}
             </span>
           </div>
           <div className={styles.infoItem}>

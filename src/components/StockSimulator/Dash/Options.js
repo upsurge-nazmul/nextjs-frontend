@@ -78,7 +78,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
       <p className={styles.optionsTitle}>Quantity</p>
       <div className={styles.quantityInput}>
         <input
-          type='number'
+          type="number"
           // className={styles.quantityInput}
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
@@ -102,11 +102,11 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
           <span>
-            <span>Price</span> <span>{"$" + price.toFixed(2)}</span>
+            <span>Price</span> <span>{"₹" + price.toFixed(2)}</span>
           </span>
           <span>
             <span>Total</span>{" "}
-            <span>{"$" + (quantity * price).toFixed(2)}</span>
+            <span>{"₹" + (quantity * price).toFixed(2)}</span>
           </span>
         </div>
       </button>
@@ -117,11 +117,11 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         <div className={styles.buttonTitle}>Sell</div>
         <div className={styles.buttonInfo}>
           <span>
-            <span>Price</span> <span>{"$" + price.toFixed(2)}</span>
+            <span>Price</span> <span>{"₹" + price.toFixed(2)}</span>
           </span>
           <span>
             <span>Total</span>{" "}
-            <span>{"$" + (quantity * price).toFixed(2)}</span>
+            <span>{"₹" + (quantity * price).toFixed(2)}</span>
           </span>
         </div>
       </button>
@@ -135,7 +135,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
             isProceed: quantity > 0 && !tradeMsg,
             handleProceed: handleProceed,
           }}
-          title='Confirmation'
+          title="Confirmation"
         >
           {!isLoading && !tradeMsg ? (
             <div>

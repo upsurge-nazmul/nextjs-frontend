@@ -100,7 +100,7 @@ export default function Portfolio({ userData, token }) {
                     <div className={styles.holding}>
                       <span className={styles.label}>Current Holdings </span>
                       <span className={styles.value}>
-                        Rs {parseFloat(holdingsData[0].amount).toFixed(2)}
+                        ₹{parseFloat(holdingsData[0].amount).toFixed(2)}
                       </span>
                     </div>
                   </div>
