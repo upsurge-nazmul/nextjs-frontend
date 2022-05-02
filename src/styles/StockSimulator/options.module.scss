@@ -378,3 +378,21 @@
     }
   }
 }
+
+// phone landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .successIcon {
+    svg {
+      font-size: 100px !important;
+      border-radius: 50%;
+      color: rgb(19, 104, 19);
+    }
+  }
+  .failureIcon {
+    svg {
+      font-size: 100px !important;
+      border-radius: 50%;
+      color: rgb(216, 58, 58);
+    }
+  }
+}
