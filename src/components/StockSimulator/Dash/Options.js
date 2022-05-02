@@ -73,31 +73,35 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
     }
   };
 
+  const quantityInput = (
+    <div className={styles.quantityInput}>
+      <input
+        type="number"
+        // className={styles.quantityInput}
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+      />
+      <div className={styles.inputButtonArea}>
+        <div
+          className={styles.inputIncrease}
+          onClick={() => setQuantity((prev) => prev + 1)}
+        >
+          +
+        </div>
+        <div
+          className={styles.inputDescrease}
+          onClick={() => setQuantity((prev) => prev - 1)}
+        >
+          -
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className={styles.simulatorOptoins}>
       <p className={styles.optionsTitle}>Quantity</p>
-      <div className={styles.quantityInput}>
-        <input
-          type="number"
-          // className={styles.quantityInput}
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
-        <div className={styles.inputButtonArea}>
-          <div
-            className={styles.inputIncrease}
-            onClick={() => setQuantity((prev) => prev + 1)}
-          >
-            +
-          </div>
-          <div
-            className={styles.inputDescrease}
-            onClick={() => setQuantity((prev) => prev - 1)}
-          >
-            -
-          </div>
-        </div>
-      </div>
+      {quantityInput}
       <button className={styles.buyButton} onClick={() => setTradeMode("buy")}>
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
@@ -138,14 +142,26 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
           title="Confirmation"
         >
           {!isLoading && !tradeMsg ? (
-            <div>
-              {quantity > 0 ? (
+            <div className={styles.tradePopupArea}>
+              {quantityInput}
+              <div className={styles.price}>
+                <span className={styles.label}>Price: </span>
+                <span className={styles.value}>{"₹" + price.toFixed(2)}</span>
+              </div>
+              <div className={styles.total}>
+                <span className={styles.label}>Total: </span>
+                <span className={styles.value}>
+                  {"₹" + (quantity * price).toFixed(2)}
+                </span>
+              </div>
+              {/* {quantity > 0 ? (
                 <p className={styles.popupMessage}>
-                  Are you sure, you want to {tradeMode} for {quantity * price} ?
+                  Are you sure, you want to {tradeMode} for{" "}
+                  {(quantity * price).toFixed(2)} ?
                 </p>
               ) : (
                 <p className={styles.popupMessage}>Please add quantity</p>
-              )}
+              )} */}
             </div>
           ) : tradeMsg ? (
             <p className={styles.popupMessage}>{tradeMsg}</p>

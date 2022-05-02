@@ -114,6 +114,35 @@
       box-shadow: 3px 4px 15px 0px #ccc;
     }
   }
+  .tradePopupArea {
+    width: 300px;
+    .price {
+      padding-top: 16px;
+      .label {
+        font-size: 20px;
+        font-weight: 400;
+        color: #333;
+      }
+      .value {
+        font-size: 22px;
+        font-weight: 600;
+        color: rgb(107, 104, 104);
+      }
+    }
+    .total {
+      padding-top: 6px;
+      .label {
+        font-size: 20px;
+        font-weight: 400;
+        color: #333;
+      }
+      .value {
+        font-size: 22px;
+        font-weight: 600;
+        color: rgb(107, 104, 104);
+      }
+    }
+  }
   .popupMessage {
     font-size: 18px;
     font-weight: 600;
