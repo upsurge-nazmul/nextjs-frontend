@@ -15,31 +15,48 @@
     background-color: rgba(0, 0, 0, 0.25);
     z-index: -1;
   }
-  .popupBody {
-    width: fit-content;
-    height: fit-content;
-    min-width: 400px;
-    max-width: 80vw;
-    max-height: 80vh;
-    border-radius: 20px;
-    background-color: #eee;
+  .cross {
+    position: fixed;
+    top: 10%;
+    right: 15%;
+    z-index: 100;
+    background-color: white;
+    border-radius: 100%;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    justify-content: center;
     align-items: center;
-    z-index: 1;
-    padding: 30px 40px;
-    filter: drop-shadow(0px 5px 10px rgb(99, 96, 96));
+    justify-content: center;
+    .icon {
+      font-size: 40px;
+      color: rgb(255, 109, 109);
+      transition: all 0.3s ease;
+      &:hover {
+        color: hsl(0, 75%, 65%);
+        cursor: pointer;
+      }
+    }
+  }
+  .popupBody {
+    background-color: white;
+    width: 60vw;
+    height: 60vh;
+    z-index: 10;
+    padding: 40px 60px;
+    overflow-y: hidden;
+    padding-bottom: 200px;
+    position: relative;
     .titleArea {
       padding: 10px 0;
+      height: fit-content;
       .title {
-        font-size: 20px;
+        font-size: 34px;
         font-weight: 700;
-        color: rgb(117, 115, 115);
+        &:first-child {
+          margin-top: 0;
+        }
       }
     }
     .messageArea {
+      height: 40vh;
       min-height: 200px;
       width: 100%;
       display: flex;
@@ -56,29 +73,35 @@
       height: fit-content;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-evenly;
       align-items: center;
       .button {
-        height: fit-content;
-        width: fit-content;
-        padding: 12px 24px;
-        font-size: 16px;
-        font-weight: 700;
-        border-radius: 8px;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: none;
-        box-shadow: 6px 3px 12px 2px #ccc;
-        transition: 0.5s;
+        font-size: 16px;
+        width: 165px;
+        height: 48px;
+        border-radius: 6px;
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
       .cancelButton {
         @extend .button;
-        background-color: rgb(90, 87, 87);
-        color: #fff;
+        background: #616161;
+        cursor: pointer;
+        &:hover {
+          background: hsl(0, 0%, 30%);
+        }
       }
       .proceedButton {
         @extend .button;
-        background-color: #fdcc03;
-        color: #fff;
+        background: #4166eb;
+        &:hover {
+          background: hsl(227, 59%, 51%);
+        }
       }
     }
   }
@@ -86,89 +109,4 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
-  .tradePopup {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .popupBackground {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.25);
-      z-index: -1;
-    }
-    .popupBody {
-      width: fit-content;
-      height: fit-content;
-      min-width: 80vw;
-      max-width: 90vw;
-      max-height: 80vh;
-      border-radius: 20px;
-      background-color: #eee;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      justify-content: center;
-      align-items: center;
-      z-index: 1;
-      padding: 30px 40px;
-      filter: drop-shadow(0px 5px 10px rgb(99, 96, 96));
-      .titleArea {
-        padding: 10px 0;
-        .title {
-          font-size: 20px;
-          font-weight: 700;
-          color: rgb(117, 115, 115);
-        }
-      }
-      .messageArea {
-        min-height: 200px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .message {
-          font-size: 18px;
-          font-weight: 600;
-          font-family: "Inter", sans-serif;
-        }
-      }
-      .tradeActionArea {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        .button {
-          height: fit-content;
-          width: fit-content;
-          padding: 12px 24px;
-          font-size: 16px;
-          font-weight: 700;
-          border-radius: 8px;
-          cursor: pointer;
-          border: none;
-          box-shadow: 6px 3px 12px 2px #ccc;
-          transition: 0.5s;
-        }
-        .cancelButton {
-          @extend .button;
-          background-color: rgb(90, 87, 87);
-          color: #fff;
-        }
-        .proceedButton {
-          @extend .button;
-          background-color: #fdcc03;
-          color: #fff;
-        }
-      }
-    }
-  }
 }

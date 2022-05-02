@@ -1,4 +1,5 @@
 import styles from "../../styles/StockSimulator/popup.module.scss";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 export default function Popup({
   title = "",
@@ -16,6 +17,9 @@ export default function Popup({
   return (
     <div className={styles.tradePopup}>
       <div className={styles.popupBackground} onClick={onOutsideClick} />
+      <div className={styles.cross} onClick={actions.handleCancel}>
+        <CancelOutlinedIcon className={styles.icon} />
+      </div>
       <div className={styles.popupBody}>
         <div className={styles.titleArea}>
           <p className={styles.title}>{title}</p>

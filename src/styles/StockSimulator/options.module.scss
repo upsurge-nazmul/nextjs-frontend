@@ -116,37 +116,41 @@
   }
   .tradePopupArea {
     width: 300px;
-    .price {
-      padding-top: 16px;
-      .label {
-        font-size: 20px;
-        font-weight: 400;
-        color: #333;
+    height: fit-content;
+    .tradeInfo {
+      display: flex;
+      flex-direction: row;
+      padding: 20px 0;
+      .tradeType {
+        flex: 0.75;
+        font-size: 34px;
+        font-weight: 700;
+        .buyColor {
+          color: #27ae60;
+        }
+        .sellColor {
+          color: #eb5757;
+        }
       }
-      .value {
-        font-size: 22px;
-        font-weight: 600;
-        color: rgb(107, 104, 104);
+      .tradeValue {
+        flex: 1;
+      }
+      .price {
+        .label {
+          font-size: 16px;
+          font-weight: 400;
+          color: rgb(107, 104, 104);
+        }
+        .value {
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+        }
+      }
+      .total {
+        @extend .price;
       }
     }
-    .total {
-      padding-top: 6px;
-      .label {
-        font-size: 20px;
-        font-weight: 400;
-        color: #333;
-      }
-      .value {
-        font-size: 22px;
-        font-weight: 600;
-        color: rgb(107, 104, 104);
-      }
-    }
-  }
-  .popupMessage {
-    font-size: 18px;
-    font-weight: 600;
-    font-family: "Inter", sans-serif;
   }
 }
 
@@ -269,11 +273,6 @@
         background-color: #e73c3c;
         box-shadow: 3px 4px 15px 0px #ccc;
       }
-    }
-    .popupMessage {
-      font-size: 18px;
-      font-weight: 600;
-      font-family: "Inter", sans-serif;
     }
   }
 }

@@ -82,18 +82,18 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         onChange={(e) => setQuantity(e.target.value)}
       />
       <div className={styles.inputButtonArea}>
-        <div
+        <button
           className={styles.inputIncrease}
           onClick={() => setQuantity((prev) => prev + 1)}
         >
           +
-        </div>
-        <div
+        </button>
+        <button
           className={styles.inputDescrease}
           onClick={() => setQuantity((prev) => prev - 1)}
         >
           -
-        </div>
+        </button>
       </div>
     </div>
   );
@@ -139,29 +139,36 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
             isProceed: quantity > 0 && !tradeMsg,
             handleProceed: handleProceed,
           }}
-          title="Confirmation"
+          title={companyDetails.name}
         >
           {!isLoading && !tradeMsg ? (
             <div className={styles.tradePopupArea}>
               {quantityInput}
-              <div className={styles.price}>
-                <span className={styles.label}>Price: </span>
-                <span className={styles.value}>{"₹" + price.toFixed(2)}</span>
+              <div className={styles.tradeInfo}>
+                <div className={styles.tradeType}>
+                  <span
+                    className={
+                      tradeMode === "buy" ? styles.buyColor : styles.sellColor
+                    }
+                  >
+                    {tradeMode.toUpperCase()}
+                  </span>
+                </div>
+                <div className={styles.tradeValue}>
+                  <div className={styles.price}>
+                    <span className={styles.label}>Price </span>
+                    <span className={styles.value}>
+                      {"₹" + price.toFixed(2)}
+                    </span>
+                  </div>
+                  <div className={styles.total}>
+                    <span className={styles.label}>Total </span>
+                    <span className={styles.value}>
+                      {"₹" + (quantity * price).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className={styles.total}>
-                <span className={styles.label}>Total: </span>
-                <span className={styles.value}>
-                  {"₹" + (quantity * price).toFixed(2)}
-                </span>
-              </div>
-              {/* {quantity > 0 ? (
-                <p className={styles.popupMessage}>
-                  Are you sure, you want to {tradeMode} for{" "}
-                  {(quantity * price).toFixed(2)} ?
-                </p>
-              ) : (
-                <p className={styles.popupMessage}>Please add quantity</p>
-              )} */}
             </div>
           ) : tradeMsg ? (
             <p className={styles.popupMessage}>{tradeMsg}</p>
