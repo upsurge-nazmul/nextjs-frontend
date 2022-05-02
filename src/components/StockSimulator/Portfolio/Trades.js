@@ -8,15 +8,15 @@ export default function Performance({ tradesData = [] }) {
         <p className={styles.heading}>Trade History</p>
       </div>
       <div className={styles.container}>
-        <div className={styles.headRow}>
-          <div className={styles.rowitem}>Date</div>
-          <div className={styles.rowitem}>Symbol</div>
-          <div className={styles.rowitem}>Trade Type</div>
-          <div className={styles.rowitem}>QTY</div>
-          <div className={styles.rowitem}>Price</div>
-          <div className={styles.rowitem}>Total Cash Value</div>
-        </div>
         <div className={styles.rows}>
+          <div className={styles.headRow}>
+            <div className={styles.rowitem}>Date</div>
+            <div className={styles.rowitem}>Symbol</div>
+            <div className={styles.rowitem}>Trade Type</div>
+            <div className={styles.rowitem}>QTY</div>
+            <div className={styles.rowitem}>Price</div>
+            <div className={styles.rowitem}>Total Cash Value</div>
+          </div>
           {tradesData.map((row, index) => {
             return (
               <div className={styles.row} key={index}>
