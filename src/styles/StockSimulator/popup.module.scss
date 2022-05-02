@@ -40,15 +40,18 @@
     width: 60vw;
     height: 60vh;
     z-index: 10;
-    padding: 40px 60px;
     overflow-y: hidden;
     padding-bottom: 200px;
     position: relative;
+    border-radius: 40px;
     .titleArea {
-      padding: 10px 0;
       height: fit-content;
+      background-color: #4066eb;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
       .title {
-        font-size: 34px;
+        font-size: 26px;
         font-weight: 700;
         &:first-child {
           margin-top: 0;
