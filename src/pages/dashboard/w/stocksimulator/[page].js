@@ -63,8 +63,12 @@ export default function StockSimulator({ userdatafromserver, token }) {
           },
           token,
         });
-        setCompanyData(allCompanies.data.data.rows);
-        setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+        if (allCompanies.data.success) {
+          setCompanyData(allCompanies.data.data.rows);
+          if (allCompanies.data.data.rows.length) {
+            setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
+          }
+        }
       }
     }
     fetchCompanies();
@@ -105,7 +109,9 @@ export default function StockSimulator({ userdatafromserver, token }) {
         payload: { user_id: userdatafromserver.user_id },
         token,
       });
-      setWatchlistData(watchlist.data.data.rows);
+      if (watchlist.data.success) {
+        setWatchlistData(watchlist.data.data.rows);
+      }
     }
     fetchWatchlist();
   }, [token]);
