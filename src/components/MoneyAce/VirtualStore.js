@@ -10,6 +10,7 @@ export default function VirtualStore({
   setcurrenttab,
   canvassize,
   settoastdata,
+  settasks,
 }) {
   const [storeitems, setstoreitems] = useState(null);
   const [allitems, setallitems] = useState(null);
@@ -59,6 +60,12 @@ export default function VirtualStore({
   async function handlepay() {
     let res = await MoneyAceApis.buystoreitems({ data: cart });
     if (res && res.data && res.data.success) {
+      console.log(res.data.data);
+      if (res.data.data.length > 0) {
+        settasks((prev) =>
+          prev.filter((item) => !res.data.data.includes(item.id))
+        );
+      }
       settoastdata({ show: true, msg: res.data.message, type: "success" });
       setmode("main");
       setcart({});

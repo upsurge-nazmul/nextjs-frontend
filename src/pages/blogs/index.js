@@ -147,7 +147,7 @@ function BlogPage({
           <div className={styles.postsMain}>
             <div
               className={styles.left}
-              onClick={() => router.push(`/blog/${highlightblogs[0].id}`)}
+              onClick={() => router.push(`/blog/${highlightblogs[0].slug}`)}
             >
               <img src={highlightblogs[0]?.img_url} alt="" />
               <div className={styles.categoryWrapper}>
