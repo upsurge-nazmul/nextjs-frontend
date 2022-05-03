@@ -290,6 +290,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                     moneyacedata={moneyaceuserdata}
                     setmoneyacedata={setmoneyaceuserdata}
                     settoastdata={settoastdata}
+                    settasks={settasks}
                     avatarUrl={userdatafromserver.user_img_url}
                     username={userdatafromserver.user_name}
                     fullName={

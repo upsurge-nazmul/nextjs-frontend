@@ -21,6 +21,7 @@ import DailyReward from "./DailyReward";
 import { toIndianFormat } from "../../helpers/currency";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
+import TaskModal from "./TaskModal";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -37,10 +38,12 @@ export default function MoneyAceDashboard({
   moneyacedata,
   setmoneyacedata,
   settoastdata,
+  settasks,
 }) {
   const [currenttab, setcurrenttab] = useState("dashboard");
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
+  const [taskmodal, settaskmodal] = useState(false);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
   const { theme } = useContext(MainContext);
   const router = useRouter();
@@ -136,6 +139,9 @@ export default function MoneyAceDashboard({
             currenttab !== "dashboard" && styles.notdashboardcontainer
           }`}
         >
+          {taskmodal && (
+            <TaskModal data={taskmodal} settaskmodal={settaskmodal} />
+          )}
           <div className={styles.devoptions}>
             <p onClick={handlereset}>Reset All</p>
             <p onClick={handlenextday}>Next Day</p>
@@ -205,9 +211,12 @@ export default function MoneyAceDashboard({
                           key={item.id}
                           data={item}
                           index={index}
+                          settaskmodal={settaskmodal}
                           setstage={setstage}
                           setgamedata={setgamedata}
                           setcurrenttab={setcurrenttab}
+                          moneyacedata={moneyacedata}
+                          settasks={settasks}
                         />
                       );
                     })}
@@ -229,7 +238,20 @@ export default function MoneyAceDashboard({
                     <div
                       key={"link" + link}
                       className={styles.item}
-                      onClick={() => setcurrenttab(link.link)}
+                      onClick={() => {
+                        if (
+                          link.link === "investmenthub" &&
+                          !moneyacedata.investing_course
+                        ) {
+                          settoastdata({
+                            show: true,
+                            type: "error",
+                            msg: "Investing course is required",
+                          });
+                          return;
+                        }
+                        setcurrenttab(link.link);
+                      }}
                     >
                       <img src={link.img} alt="" />
                       <p className={styles.linkname}>{link.name}</p>
@@ -269,6 +291,7 @@ export default function MoneyAceDashboard({
               setcurrenttab={setcurrenttab}
               canvassize={canvassize}
               settoastdata={settoastdata}
+              settasks={settasks}
             />
           ) : currenttab === "upi" ? (
             <Upi

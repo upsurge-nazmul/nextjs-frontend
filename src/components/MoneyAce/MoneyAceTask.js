@@ -13,6 +13,8 @@ export default function MoneyAceTask({
   setstage,
   setgamedata,
   setcurrenttab,
+  moneyacedata,
+  settaskmodal,
 }) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
@@ -55,6 +57,9 @@ export default function MoneyAceTask({
       setstage("game");
     }
   }
+  if (data.id === "task-03" && moneyacedata.is_account_open) {
+    return null;
+  }
   return (
     <div className={styles.task}>
       <div className={styles.bg}>
@@ -65,13 +70,21 @@ export default function MoneyAceTask({
         {index + 1 < 10 ? "0" + (index + 1) : index + 1}
       </p>
       <div className={styles.prallelogram}>
-        <img src={data.image} alt="" />
+        <img
+          src={
+            data.bg ||
+            "https://media.istockphoto.com/photos/powerful-personal-computer-gamer-rig-with-firstperson-shooter-game-on-picture-id1157159213?k=20&m=1157159213&s=612x612&w=0&h=oYVqFen_st-jxHXy3KzZXmbaQlDwo06HJmbZDZJO7KE="
+          }
+          alt=""
+        />
         <div className={styles.text}>
           <p className={styles.name}>{data.name}</p>
           <p className={styles.des}>
-            {data.description.length > 32
-              ? data.description.substring(0, 32) + "..."
-              : data.description}
+            {data.description
+              ? data.description.length > 32
+                ? data.description.substring(0, 32) + "..."
+                : data.description
+              : "Complete " + data.name + " task and get rewards."}
           </p>
         </div>
       </div>
@@ -79,10 +92,18 @@ export default function MoneyAceTask({
         <PlayArrowRoundedIcon
           className={styles.playicon}
           onClick={() => {
-            if (data.type === "game") {
-              handlegamepush(data.link_id);
+            if (data.action === "game") {
+              handlegamepush(data.action_id);
+            } else if (data.action === "bank") {
+              setcurrenttab("Bank");
+            } else if (data.action === "investment") {
+              setcurrenttab("investmenthub");
+            } else if (data.action === "shop") {
+              setcurrenttab("store");
+            } else if (data.action === "modal") {
+              settaskmodal(data);
             } else {
-              setcurrenttab(data.link_id);
+              alert("wip..");
             }
           }}
         />

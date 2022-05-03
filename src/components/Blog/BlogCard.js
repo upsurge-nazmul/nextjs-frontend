@@ -12,9 +12,9 @@ function BlogCard({ data, getdatafromraw, pushto }) {
       }`}
       onClick={() => {
         if (pushto) {
-          router.push(pushto + `${data.id}`);
+          router.push(pushto + `${data.slug}`);
         } else {
-          router.push(`/blog/${data.id}`);
+          router.push(`/blog/${data.slug}`);
         }
       }}
     >
