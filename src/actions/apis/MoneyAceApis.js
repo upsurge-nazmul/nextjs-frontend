@@ -16,7 +16,13 @@ const getassetvalues = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const completetask = (payload) => {
+  return ApiCalls.putResponse(
+    "games/moneyace/completetask",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getMoneyAceData = (payload, token) => {
   return ApiCalls.getResponse(`games/moneyace/getmoneyacedata`, payload, token);
 };
@@ -313,6 +319,7 @@ const MoneyAceApis = {
   investmentrecords,
   resetdata,
   nextday,
+  completetask,
 };
 
 export default MoneyAceApis;

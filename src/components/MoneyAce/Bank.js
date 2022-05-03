@@ -45,6 +45,15 @@ export default function Bank({
     let response = await MoneyAceApis.openBankAccount();
     if (response && response.data && response.data.success) {
       setmoneyacedata((prev) => ({ ...prev, ...response.data.data }));
+      setpassbookdata((prev) => [
+        ...prev,
+        {
+          particulars: "Bonus for opening account",
+          deposit_money: 1000,
+          account_balance: 1000,
+          timestamp: new Date().getTime(),
+        },
+      ]);
       setacoountopened(true);
     }
   }
@@ -68,6 +77,7 @@ export default function Bank({
           btntext={dialogdata.btntext}
           showwhat={showwhat}
           setdialog={setshowwhat}
+          setpassbookdata={setpassbookdata}
         />
       )}
       {showcard && (

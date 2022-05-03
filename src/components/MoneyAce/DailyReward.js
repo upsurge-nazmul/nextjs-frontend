@@ -43,13 +43,22 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
             ) {
               setmoneyacedata((prev) => ({
                 ...prev,
-                account_balance:
-                  Number(prev.account_balance) +
-                  (Number(data.reward) === 0
-                    ? 200
-                    : Number(data.reward) === 5
-                    ? 2000
-                    : 2200),
+                account_balance: prev.is_account_open
+                  ? Number(prev.account_balance) +
+                    (Number(data.reward) === 0
+                      ? 200
+                      : Number(data.reward) === 5
+                      ? 2000
+                      : 2200)
+                  : Number(prev.account_balance),
+                inhand_money: prev.is_account_open
+                  ? Number(prev.inhand_money)
+                  : Number(prev.inhand_money) +
+                    (Number(data.reward) === 0
+                      ? 200
+                      : Number(data.reward) === 5
+                      ? 2000
+                      : 2200),
               }));
             }
             setshowdaily(false);

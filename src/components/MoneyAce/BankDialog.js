@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import { removenonnumber } from "../../helpers/validationHelpers";
 import styles from "../../styles/MoneyAce/bankdialog.module.scss";
-export default function BankDialog({ title, btntext, setdialog, showwhat }) {
+export default function BankDialog({
+  title,
+  btntext,
+  setdialog,
+  showwhat,
+  setpassbookdata,
+}) {
   const [amount, setamount] = useState();
   const [err, seterr] = useState("");
   useEffect(() => {
@@ -11,9 +17,21 @@ export default function BankDialog({ title, btntext, setdialog, showwhat }) {
   async function handleClick() {
     if (showwhat === "deposit") {
       let response = await MoneyAceApis.depositMoney({ amount });
-      console.log(response.data);
       if (response && response.data && response.data.success) {
         setdialog(null);
+        setpassbookdata((prev) => [
+          ...prev,
+          {
+            particulars: "Deposit",
+            account_balance:
+              prev.length > 0
+                ? prev[prev.length - 1].account_balance + Number(amount)
+                : amount,
+            deposit_money: amount,
+            withdraw_money: 0,
+            timestamp: new Date().getTime(),
+          },
+        ]);
       } else {
         seterr(response?.data?.message || "Unable to reach server");
       }
@@ -21,6 +39,16 @@ export default function BankDialog({ title, btntext, setdialog, showwhat }) {
       let response = await MoneyAceApis.withdrawMoney({ amount });
       if (response && response.data && response.data.success) {
         setdialog(null);
+        setpassbookdata((prev) => [
+          ...prev,
+          {
+            particulars: "Withdraw",
+            account_balance: prev[prev.length - 1].account_balance - amount,
+            deposit_money: 0,
+            withdraw_money: amount,
+            timestamp: new Date().getTime(),
+          },
+        ]);
       } else {
         seterr(response?.data?.message || "Unable to reach server");
       }
