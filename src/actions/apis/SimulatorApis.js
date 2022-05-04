@@ -37,7 +37,7 @@ const getStocks = ({ payload, token, type = "stocksimulator" }) => {
 // user apis
 const getUserStocks = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(
-    `${type}/${type === "cryptosimulator" ? "userCrytop" : "userStocks"}`,
+    `${type}/${type === "cryptosimulator" ? "userCryptos" : "userStocks"}`,
     payload,
     token
   );

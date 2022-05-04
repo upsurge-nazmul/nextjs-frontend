@@ -10,7 +10,7 @@ import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
 import Leaderboard from "./Leaderboard";
-import styles from "../../styles/StockSimulator/stocksimulator.module.scss";
+import styles from "../../styles/StockSimulator/simulator.module.scss";
 import { getTodaysDateRange } from "../../helpers/timehelpers";
 
 export default function Simulator({

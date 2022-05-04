@@ -1,12 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { useRouter } from "next/router";
-import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
-import SimulatorApis from "../../../../actions/apis/SimulatorApis";
-import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
-import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-import Toast from "../../../../components/Toast";
-import { getTodaysDateRange } from "../../../../helpers/timehelpers";
 
 import DashboardSvg from "../../../../components/SVGcomponents/StockSimulator/DashboardSvg";
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
