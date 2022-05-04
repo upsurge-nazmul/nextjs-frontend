@@ -121,7 +121,7 @@ export default function Simulator({
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
     if (mode !== modes[0].value) {
-      router.push(`/dashboard/w/stocksimulator/${modes[0].value}`);
+      router.push(`/dashboard/w/${simulatorType}/${modes[0].value}`);
     }
   };
 
