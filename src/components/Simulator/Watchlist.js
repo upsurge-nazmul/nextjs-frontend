@@ -1,5 +1,5 @@
 import { useState } from "react";
-import StockSimulatorApis from "../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../actions/apis/SimulatorApis";
 import styles from "../../styles/StockSimulator/watchlist.module.scss";
 import AddWatchlist from "./AddWatchlist";
 import Popup from "./Popup";
@@ -12,14 +12,16 @@ export default function Watchlist({
   active = "",
   token,
   settoastdata,
+  simulatorType,
 }) {
   const [openList, setOpenList] = useState(false);
   const [deleteItem, setDeleteItem] = useState();
 
   const handleRemoveItem = async () => {
-    let deletedItem = await StockSimulatorApis.removeFromWatchlist({
+    let deletedItem = await SimulatorApis.removeFromWatchlist({
       payload: { id: deleteItem.id },
       token,
+      type: simulatorType,
     });
     if (deletedItem.data.success) {
       setWatchlistData((prev) =>

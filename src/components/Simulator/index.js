@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { MainContext } from "../../context/Main";
-import StockSimulatorApis from "../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
 import SimulatorDash from "./Dash";
@@ -17,7 +17,7 @@ export default function Simulator({
   userData,
   token,
   modes = [],
-  simulatorType = "stock",
+  simulatorType = "stocksimulator",
 }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
@@ -38,23 +38,25 @@ export default function Simulator({
 
   useEffect(() => {
     async function fetchCompanies() {
-      let allCompanies = await StockSimulatorApis.getStocks({
+      let allCompanies = await SimulatorApis.getStocks({
         payload: {
           from: getTodaysDateRange().from,
           to: getTodaysDateRange().to,
         },
         token,
+        type: simulatorType,
       });
       if (allCompanies.data.data.rows.length) {
         setCompanyData(allCompanies.data.data.rows);
         setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
       } else {
-        let allCompanies = await StockSimulatorApis.getStocks({
+        let allCompanies = await SimulatorApis.getStocks({
           payload: {
             from: getTodaysDateRange(true).from,
             to: getTodaysDateRange(true).to,
           },
           token,
+          type: simulatorType,
         });
         if (allCompanies.data.success) {
           setCompanyData(allCompanies.data.data.rows);
@@ -69,24 +71,26 @@ export default function Simulator({
 
   useEffect(() => {
     async function fetchStocks() {
-      let dailyStocks = await StockSimulatorApis.getStocks({
+      let dailyStocks = await SimulatorApis.getStocks({
         payload: {
           from: getTodaysDateRange().from,
           to: getTodaysDateRange().to,
           symbol: selectedSymbol,
         },
         token,
+        type: simulatorType,
       });
       if (dailyStocks.data.data.rows.length) {
         setSimulatorDailyData(dailyStocks.data.data.rows);
       } else {
-        let dailyStocks = await StockSimulatorApis.getStocks({
+        let dailyStocks = await SimulatorApis.getStocks({
           payload: {
             from: getTodaysDateRange(true).from,
             to: getTodaysDateRange(true).to,
             symbol: selectedSymbol,
           },
           token,
+          type: simulatorType,
         });
         setSimulatorDailyData(dailyStocks.data.data.rows);
       }
@@ -98,9 +102,10 @@ export default function Simulator({
 
   useEffect(() => {
     async function fetchWatchlist() {
-      let watchlist = await StockSimulatorApis.getWatchlist({
+      let watchlist = await SimulatorApis.getWatchlist({
         payload: { user_id: userData.user_id },
         token,
+        type: simulatorType,
       });
       if (watchlist.data.success) {
         setWatchlistData(watchlist.data.data.rows);
@@ -144,11 +149,17 @@ export default function Simulator({
                 active={selectedSymbol}
                 token={token}
                 settoastdata={settoastdata}
+                simulatorType={simulatorType}
               />
             )}
             {/* This navigation is hidden in mobile and visible in tabs and laptops */}
             <div className={styles.normalNavigation}>
-              <Navigation options={modes} action={setMode} active={mode} />
+              <Navigation
+                options={modes}
+                action={setMode}
+                active={mode}
+                simulatorType={simulatorType}
+              />
             </div>
           </div>
           <div className={styles.bottomSection}>
@@ -164,15 +175,24 @@ export default function Simulator({
                     userData={userData}
                     watchlistData={watchlistData}
                     setWatchlistData={setWatchlistData}
+                    simulatorType={simulatorType}
                   />
                 )}
               </>
             )}
             {mode === modes[1].value && (
-              <Portfolio userData={userData} token={token} />
+              <Portfolio
+                userData={userData}
+                token={token}
+                simulatorType={simulatorType}
+              />
             )}
             {mode === modes[2].value && (
-              <Leaderboard token={token} userData={userData} />
+              <Leaderboard
+                token={token}
+                userData={userData}
+                simulatorType={simulatorType}
+              />
             )}
           </div>
         </div>

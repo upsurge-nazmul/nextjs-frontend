@@ -1,15 +1,19 @@
 import Link from "next/link";
 import styles from "../../styles/StockSimulator/navigations.module.scss";
 
-export default function Navigation({ options = [], active = "" }) {
+export default function Navigation({
+  options = [],
+  active = "",
+  simulatorType,
+}) {
   return (
     <div className={styles.navigation}>
       {options.length &&
         options.map((item, i) => {
           return (
             <Link
-              href={`/dashboard/w/stocksimulator/[page]`}
-              as={`/dashboard/w/stocksimulator/${item.value}`}
+              href={`/dashboard/w/${simulatorType}/[page]`}
+              as={`/dashboard/w/${simulatorType}/${item.value}`}
               key={i}
             >
               <div

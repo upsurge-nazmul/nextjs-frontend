@@ -1,0 +1,83 @@
+import * as ApiCalls from "../ApiCalls";
+
+// watchlist apis
+const getWatchlist = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/watchlist`, payload, token);
+};
+
+const addToWatchlist = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.postResponse(`${type}/watchlist/add`, payload, token);
+};
+
+const removeFromWatchlist = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.deleteResponse(`${type}/watchlist/delete`, payload, token);
+};
+
+// stock apis
+const getStocks = ({ payload, token, type = "stocksimulator" }) => {
+  if (payload.symbol) {
+    return ApiCalls.getResponse(
+      `${type}/${type === "cryptosimulator" ? "cryptos" : "stocks"}?from=${
+        payload.from
+      }&to=${payload.to}&symbol=${payload.symbol}`,
+      null,
+      token
+    );
+  } else {
+    return ApiCalls.getResponse(
+      `${type}/${type === "cryptosimulator" ? "cryptos" : "stocks"}?from=${
+        payload.from
+      }&to=${payload.to}`,
+      null,
+      token
+    );
+  }
+};
+
+// user apis
+const getUserStocks = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(
+    `${type}/${type === "cryptosimulator" ? "userCrytop" : "userStocks"}`,
+    payload,
+    token
+  );
+};
+
+const getUserTrades = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/userTrades`, payload, token);
+};
+
+const getUserRecords = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/records`, payload, token);
+};
+
+const getUserHoldings = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/holdings`, payload, token);
+};
+
+// buy and sell apis
+const buyStock = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.postResponse(`${type}/buy`, payload, token);
+};
+
+const sellStock = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.postResponse(`${type}/sell`, payload, token);
+};
+
+const getLeaderboard = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/leaderboard`, payload, token);
+};
+
+export default {
+  getWatchlist,
+  addToWatchlist,
+  removeFromWatchlist,
+  getStocks,
+  getUserStocks,
+  getUserRecords,
+  getUserHoldings,
+  getUserTrades,
+  buyStock,
+  sellStock,
+  getLeaderboard,
+};

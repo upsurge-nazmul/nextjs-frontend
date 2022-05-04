@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
-import StockSimulatorApis from "../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../actions/apis/SimulatorApis";
 
-export default function Leaderboard({ userData, token }) {
+export default function Leaderboard({ userData, token, simulatorType }) {
   const [leaderboarddata, setleaderboarddata] = useState();
   // const [selected, setselected] = useState("Overall");
   // const [options, setoptions] = useState(["Overall", "Quiz", "Ludo"]);
@@ -13,9 +13,10 @@ export default function Leaderboard({ userData, token }) {
 
   useEffect(() => {
     async function fetchLeaderboard() {
-      let leaderboard = await StockSimulatorApis.getLeaderboard({
+      let leaderboard = await SimulatorApis.getLeaderboard({
         payload: {},
         token,
+        type: simulatorType,
       });
       if (leaderboard.data.success) {
         setleaderboarddata(leaderboard.data.data);

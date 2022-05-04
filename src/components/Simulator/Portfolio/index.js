@@ -5,7 +5,7 @@ import Holdings from "./Holdings";
 import Performance from "./Performance";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
-import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
@@ -13,7 +13,7 @@ const TABS = [
   { name: "Trades", value: "trades", icon: "Trades History" },
 ];
 
-export default function Portfolio({ userData, token }) {
+export default function Portfolio({ userData, token, simulatorType }) {
   const [tab, setTab] = useState(TABS[0].value);
   const [portfolioChartData, setPortfolioChartData] = useState();
   const [holdingsData, setHoldingsData] = useState();
@@ -23,36 +23,40 @@ export default function Portfolio({ userData, token }) {
 
   useEffect(() => {
     async function fetchUserRecords() {
-      let recs = await StockSimulatorApis.getUserRecords({
+      let recs = await SimulatorApis.getUserRecords({
         payload: { user_id: userData.user_id },
         token,
+        type: simulatorType,
       });
       if (recs.data.success) {
         setRecords(recs.data.data.rows);
       }
     }
     async function fetchUserStocks() {
-      let stcks = await StockSimulatorApis.getUserStocks({
+      let stcks = await SimulatorApis.getUserStocks({
         payload: { user_id: userData.user_id },
         token,
+        type: simulatorType,
       });
       if (stcks.data.success) {
         setPerformanceData(stcks.data.data.rows);
       }
     }
     async function fetchUserTrades() {
-      let trds = await StockSimulatorApis.getUserTrades({
+      let trds = await SimulatorApis.getUserTrades({
         payload: { user_id: userData.user_id },
         token,
+        type: simulatorType,
       });
       if (trds.data.success) {
         setTradeData(trds.data.data.rows);
       }
     }
     async function fetchUserHoldings() {
-      let hlds = await StockSimulatorApis.getUserHoldings({
+      let hlds = await SimulatorApis.getUserHoldings({
         payload: { user_id: userData.user_id },
         token,
+        type: simulatorType,
       });
       if (hlds.data.success) {
         setHoldingsData(hlds.data.data);

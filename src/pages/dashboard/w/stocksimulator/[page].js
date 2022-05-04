@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { MainContext } from "../../../../context/Main";
 import LoginApis from "../../../../actions/apis/LoginApis";
-import SimulatorApis from "../../../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
@@ -27,7 +27,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
         userData: userdatafromserver,
         token,
         modes: MODES,
-        simulatorType: "stock",
+        simulatorType: "stocksimulator",
       }}
     />
   );

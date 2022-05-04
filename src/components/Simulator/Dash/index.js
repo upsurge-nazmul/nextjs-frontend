@@ -7,7 +7,7 @@ import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
 import { getDateRange } from "../../../helpers/timehelpers";
-import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 const ChartModeOptions = ["candlestick", "line"];
 const ChartDurations = [
@@ -27,6 +27,7 @@ export default function SimulatorDash({
   userData,
   watchlistData,
   setWatchlistData,
+  simulatorType,
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedDuration, setSelectedDuration] = useState(
@@ -39,13 +40,14 @@ export default function SimulatorDash({
 
   useEffect(() => {
     async function fetchStocks() {
-      let monthlyStocks = await StockSimulatorApis.getStocks({
+      let monthlyStocks = await SimulatorApis.getStocks({
         payload: {
           from: getDateRange(selectedDuration).from,
           to: getDateRange(selectedDuration).to,
           symbol: selectedSymbol,
         },
         token,
+        type: simulatorType,
       });
       setSimulatorMonthlyData(monthlyStocks.data.data.rows);
     }
@@ -81,9 +83,10 @@ export default function SimulatorDash({
       symbol: selectedCompany.symbol,
       current_value: selectedCompany.close,
     };
-    let addedItem = await StockSimulatorApis.addToWatchlist({
+    let addedItem = await SimulatorApis.addToWatchlist({
       payload: watchlistItem,
       token,
+      type: simulatorType,
     });
     if (addedItem.data.data) {
       setWatchlistData((prev) => [...prev, addedItem.data.data]);
@@ -142,6 +145,7 @@ export default function SimulatorDash({
             companyDetails={selectedCompany}
             userData={userData}
             token={token}
+            simulatorType={simulatorType}
           />
         )}
       </div>

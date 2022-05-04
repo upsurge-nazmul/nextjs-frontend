@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import styles from "../../../styles/StockSimulator/options.module.scss";
 import CircularProgress from "@mui/material/CircularProgress";
 import Popup from "../Popup";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 
-export default function SimulatorOptions({ companyDetails, userData, token }) {
+export default function SimulatorOptions({
+  companyDetails,
+  userData,
+  token,
+  simulatorType,
+}) {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [tradeMode, setTradeMode] = useState("");
@@ -22,7 +27,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
 
   const handleBuy = async () => {
     console.log("buy Rs", quantity * price, companyDetails);
-    const boughtStock = await StockSimulatorApis.buyStock({
+    const boughtStock = await SimulatorApis.buyStock({
       payload: {
         user_id: userData.user_id,
         name: companyDetails.name,
@@ -33,6 +38,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         trade_type: "buy",
       },
       token,
+      type: simulatorType,
     });
     console.log("bought stocks", boughtStock);
     if (boughtStock.data.status === 200) setIsLoading(false);
@@ -43,7 +49,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
   const handleSell = async () => {
     console.log("Sell Rs", quantity * price, companyDetails);
     setIsLoading(true);
-    const soldStock = await StockSimulatorApis.sellStock({
+    const soldStock = await SimulatorApis.sellStock({
       payload: {
         user_id: userData.user_id,
         name: companyDetails.name,
@@ -54,6 +60,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
         trade_type: "sell",
       },
       token,
+      type: simulatorType,
     });
     console.log("sold stocks", soldStock);
     if (soldStock.data.status === 200) setIsLoading(false);
