@@ -13,6 +13,7 @@ const ApexChart = ({ chartData, className }) => {
     setState({
       series: [
         {
+          name: "Amount",
           data: chartData,
         },
       ],

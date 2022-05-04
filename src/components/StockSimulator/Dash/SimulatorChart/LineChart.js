@@ -12,6 +12,7 @@ const ApexChart = ({ chartData, className }) => {
     setState({
       series: [
         {
+          name: "Closing Value",
           data: chartData,
         },
       ],

@@ -14,6 +14,7 @@
       display: flex;
       flex-direction: row;
       width: 100%;
+      overflow-x: hidden;
       .caption {
         font-size: 20px;
         font-weight: 700;

@@ -25,25 +25,6 @@ export default function SimulatorChart({
     }
   }, [simulatorMonthlyData]);
 
-  // useEffect(() => {
-  //   if (simulatorMonthlyData && simulatorMonthlyData.length) {
-  //     let closingValues = [];
-  //     for (let item of simulatorMonthlyData) {
-  //       let xAxisValue = item.date;
-  //       closingValues.push({
-  //         x: xAxisValue,
-  //         y: item.close,
-  //       });
-  //     }
-  //     setLineChartData([
-  //       {
-  //         id: "Close",
-  //         color: "hsl(64, 70%, 50%)",
-  //         data: closingValues,
-  //       },
-  //     ]);
-  //   }
-  // }, [simulatorMonthlyData]);
   useEffect(() => {
     if (simulatorMonthlyData && simulatorMonthlyData.length) {
       let closingValues = [];
