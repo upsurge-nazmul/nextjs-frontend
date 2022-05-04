@@ -15,7 +15,7 @@ const TABS = [
 
 export default function Portfolio({ userData, token, simulatorType }) {
   const [tab, setTab] = useState(TABS[0].value);
-  const [portfolioChartData, setPortfolioChartData] = useState();
+  const [portfolioChartData, setPortfolioChartData] = useState([]);
   const [holdingsData, setHoldingsData] = useState();
   const [records, setRecords] = useState();
   const [performanceData, setPerformanceData] = useState();
@@ -89,12 +89,10 @@ export default function Portfolio({ userData, token, simulatorType }) {
           <div className={styles.content}>
             <div className={styles.left}>
               <p className={styles.caption}>Portfolio</p>
-              {portfolioChartData && portfolioChartData.length && (
-                <PortfolioChart
-                  chartData={portfolioChartData}
-                  className={styles.portfolioChart}
-                />
-              )}
+              <PortfolioChart
+                chartData={portfolioChartData}
+                className={styles.portfolioChart}
+              />
             </div>
             <div className={styles.right}>
               {holdingsData && (

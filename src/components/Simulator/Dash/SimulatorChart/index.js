@@ -8,8 +8,8 @@ export default function SimulatorChart({
   ChartModeOptions,
   className,
 }) {
-  const [candlestickData, setCandlestickData] = useState();
-  const [lineChartData, setLineChartData] = useState();
+  const [candlestickData, setCandlestickData] = useState([]);
+  const [lineChartData, setLineChartData] = useState([]);
 
   useEffect(() => {
     // Format expected in Apexchart Candlestick: [open, heigh, low, close]
@@ -42,20 +42,9 @@ export default function SimulatorChart({
   return (
     <>
       {chartMode === ChartModeOptions[0] ? (
-        <>
-          {candlestickData && (
-            <CandlestickChart
-              chartData={candlestickData}
-              className={className}
-            />
-          )}
-        </>
+        <CandlestickChart chartData={candlestickData} className={className} />
       ) : chartMode === ChartModeOptions[1] ? (
-        <>
-          {lineChartData && (
-            <LineChart chartData={lineChartData} className={className} />
-          )}
-        </>
+        <LineChart chartData={lineChartData} className={className} />
       ) : (
         ""
       )}
