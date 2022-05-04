@@ -5,7 +5,7 @@ import Holdings from "./Holdings";
 import Performance from "./Performance";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
-import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
@@ -23,7 +23,7 @@ export default function Portfolio({ userData, token }) {
 
   useEffect(() => {
     async function fetchUserRecords() {
-      let recs = await SimulatorApis.getUserRecords({
+      let recs = await StockSimulatorApis.getUserRecords({
         payload: { user_id: userData.user_id },
         token,
       });
@@ -32,7 +32,7 @@ export default function Portfolio({ userData, token }) {
       }
     }
     async function fetchUserStocks() {
-      let stcks = await SimulatorApis.getUserStocks({
+      let stcks = await StockSimulatorApis.getUserStocks({
         payload: { user_id: userData.user_id },
         token,
       });
@@ -41,7 +41,7 @@ export default function Portfolio({ userData, token }) {
       }
     }
     async function fetchUserTrades() {
-      let trds = await SimulatorApis.getUserTrades({
+      let trds = await StockSimulatorApis.getUserTrades({
         payload: { user_id: userData.user_id },
         token,
       });
@@ -50,7 +50,7 @@ export default function Portfolio({ userData, token }) {
       }
     }
     async function fetchUserHoldings() {
-      let hlds = await SimulatorApis.getUserHoldings({
+      let hlds = await StockSimulatorApis.getUserHoldings({
         payload: { user_id: userData.user_id },
         token,
       });

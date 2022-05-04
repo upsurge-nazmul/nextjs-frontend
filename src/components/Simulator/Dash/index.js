@@ -7,7 +7,7 @@ import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
 import { getDateRange } from "../../../helpers/timehelpers";
-import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
 
 const ChartModeOptions = ["candlestick", "line"];
 const ChartDurations = [
@@ -39,7 +39,7 @@ export default function SimulatorDash({
 
   useEffect(() => {
     async function fetchStocks() {
-      let monthlyStocks = await SimulatorApis.getStocks({
+      let monthlyStocks = await StockSimulatorApis.getStocks({
         payload: {
           from: getDateRange(selectedDuration).from,
           to: getDateRange(selectedDuration).to,
@@ -81,7 +81,7 @@ export default function SimulatorDash({
       symbol: selectedCompany.symbol,
       current_value: selectedCompany.close,
     };
-    let addedItem = await SimulatorApis.addToWatchlist({
+    let addedItem = await StockSimulatorApis.addToWatchlist({
       payload: watchlistItem,
       token,
     });

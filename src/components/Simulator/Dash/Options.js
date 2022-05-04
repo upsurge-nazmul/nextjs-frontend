@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import StockSimulatorApis from "../../../actions/apis/StockSimulatorApis";
 import styles from "../../../styles/StockSimulator/options.module.scss";
 import CircularProgress from "@mui/material/CircularProgress";
 import Popup from "../Popup";
@@ -22,7 +22,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
 
   const handleBuy = async () => {
     console.log("buy Rs", quantity * price, companyDetails);
-    const boughtStock = await SimulatorApis.buyStock({
+    const boughtStock = await StockSimulatorApis.buyStock({
       payload: {
         user_id: userData.user_id,
         name: companyDetails.name,
@@ -43,7 +43,7 @@ export default function SimulatorOptions({ companyDetails, userData, token }) {
   const handleSell = async () => {
     console.log("Sell Rs", quantity * price, companyDetails);
     setIsLoading(true);
-    const soldStock = await SimulatorApis.sellStock({
+    const soldStock = await StockSimulatorApis.sellStock({
       payload: {
         user_id: userData.user_id,
         name: companyDetails.name,

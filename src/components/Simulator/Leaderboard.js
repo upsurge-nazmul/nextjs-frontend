@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
-import SimulatorApis from "../../actions/apis/SimulatorApis";
+import StockSimulatorApis from "../../actions/apis/StockSimulatorApis";
 
 export default function Leaderboard({ userData, token }) {
   const [leaderboarddata, setleaderboarddata] = useState();
@@ -13,7 +13,7 @@ export default function Leaderboard({ userData, token }) {
 
   useEffect(() => {
     async function fetchLeaderboard() {
-      let leaderboard = await SimulatorApis.getLeaderboard({
+      let leaderboard = await StockSimulatorApis.getLeaderboard({
         payload: {},
         token,
       });

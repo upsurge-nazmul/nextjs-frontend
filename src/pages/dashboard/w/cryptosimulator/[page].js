@@ -20,14 +20,14 @@ const MODES = [
   { name: "Leaderboard", value: "leaderboard", icon: <LeaderboardSvg /> },
 ];
 
-export default function StockSimulator({ userdatafromserver, token }) {
+export default function CryptoSimulator({ userdatafromserver, token }) {
   return (
     <Simulator
       {...{
         userData: userdatafromserver,
         token,
         modes: MODES,
-        simulatorType: "stock",
+        simulatorType: "crypto",
       }}
     />
   );

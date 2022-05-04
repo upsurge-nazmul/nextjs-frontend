@@ -16,6 +16,7 @@ import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
+import CryptoSvg from "../SVGcomponents/CryptoSimulator/CryptoSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
@@ -225,6 +226,17 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <StockSvg className={styles.icon} />
             <p className={styles.tabtitle}>Stock Simulator</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/cryptosimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/cryptosimulator/home")}
+          >
+            <CryptoSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Crypto Simulator</p>
           </div>
           <div
             className={`${styles.tab} ${
