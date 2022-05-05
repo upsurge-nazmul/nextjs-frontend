@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
+import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import styles from "../../styles/MoneyAce/bulletin.module.scss";
 const demodata = [
   "GDP grew at 7.5% during the year",
@@ -17,6 +18,17 @@ const data_international = [
   "Due to increase in GDP growth rates in USA, global crude prices are witnessing an uptick.",
 ];
 export default function Bulletin({ setmode, canvassize }) {
+  const [data, setdata] = useState();
+  useEffect(() => {
+    x();
+    async function x() {
+      let res = await MoneyAceApis.getbulletin();
+      if (res && res.data && res.data.success) {
+        setdata(res.data.data);
+        console.log(res.data.data);
+      }
+    }
+  }, []);
   return (
     <div className={styles.bulletin}>
       <div className={styles.pageholder}>
@@ -41,44 +53,45 @@ export default function Bulletin({ setmode, canvassize }) {
                 <p className={styles.tableheading}>Economic indicator</p>
                 <div className={styles.row}>
                   <p>GDP growth %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.gdp || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Inflation %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.inflation || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Intrest rates %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.gdp || "7"}%</p>
                 </div>
                 <p className={styles.tableheading}>Asset returns</p>
                 <div className={styles.row}>
                   <p>Stock market index</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.sensex_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Real estate price</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.realestate_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Gold price (per 10g)</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.gold_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>FD rate %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.fd_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Retirement funds rate %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.retirementfund_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Savings rate %</p>
-                  <p>7%</p>
+                  <p>{data?.prev_data?.saving_change || "7"}%</p>
                 </div>
               </div>
               <ul className={styles.list}>
-                {demodata.map((item) => {
+                {data?.prev_data?.economic_outlook.split("\n")?.map((item) => {
+                  if (item === " " || !item) return null;
                   return <li key={item}>{item}</li>;
                 })}
               </ul>
@@ -97,49 +110,52 @@ export default function Bulletin({ setmode, canvassize }) {
                 <p className={styles.tableheading}>Economic indicator</p>
                 <div className={styles.row}>
                   <p>GDP growth %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.gdp || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Inflation %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.inflation || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Intrest rates %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.gdp || "7"}%</p>
                 </div>
                 <p className={styles.tableheading}>Asset returns</p>
                 <div className={styles.row}>
                   <p>Stock market index</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.sensex_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Real estate price</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.realestate_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Gold price (per 10g)</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.gold_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>FD rate %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.fd_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Retirement funds rate %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.retirementfund_change || "7"}%</p>
                 </div>
                 <div className={styles.row}>
                   <p>Savings rate %</p>
-                  <p>7%</p>
+                  <p>{data?.current_data?.saving_change || "7"}%</p>
                 </div>
               </div>
               <p className={styles.subheading}>International News</p>
               <div className={styles.news}>
                 <div className={styles.left}>
                   <ul className={styles.list}>
-                    {data_international.map((item) => {
-                      return <li key={item}>{item}</li>;
-                    })}
+                    {data?.current_data?.international_news
+                      .split("\n")
+                      ?.map((item) => {
+                        if (item === " " || !item) return null;
+                        return <li key={item}>{item}</li>;
+                      })}
                   </ul>
                 </div>
                 <div className={styles.right}>
@@ -165,9 +181,12 @@ export default function Bulletin({ setmode, canvassize }) {
               <div className={styles.news}>
                 <div className={styles.left}>
                   <ul className={styles.list}>
-                    {data_international.map((item) => {
-                      return <li key={item}>{item}</li>;
-                    })}
+                    {data?.current_data?.domestic_news
+                      .split("\n")
+                      ?.map((item) => {
+                        if (item === " " || !item) return null;
+                        return <li key={item}>{item}</li>;
+                      })}
                   </ul>
                 </div>
                 <div className={styles.right}>
@@ -182,9 +201,12 @@ export default function Bulletin({ setmode, canvassize }) {
               <div className={styles.news}>
                 <div className={styles.left}>
                   <ul className={styles.list}>
-                    {data_international.map((item) => {
-                      return <li key={item}>{item}</li>;
-                    })}
+                    {data?.current_data?.economic_outlook
+                      .split("\n")
+                      ?.map((item) => {
+                        if (item === " " || !item) return null;
+                        return <li key={item}>{item}</li>;
+                      })}
                   </ul>
                 </div>
                 <div className={styles.right}>
@@ -212,9 +234,12 @@ export default function Bulletin({ setmode, canvassize }) {
               <div className={styles.news}>
                 <div className={styles.left}>
                   <ul className={styles.list}>
-                    {data_international.map((item) => {
-                      return <li key={item}>{item}</li>;
-                    })}
+                    {data?.current_data?.consensus_estimates
+                      .split("\n")
+                      ?.map((item) => {
+                        if (item === " " || !item) return null;
+                        return <li key={item}>{item}</li>;
+                      })}
                   </ul>
                 </div>
                 <div className={styles.right}>

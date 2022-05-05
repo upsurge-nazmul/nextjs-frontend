@@ -25,6 +25,7 @@ export default function StocksDiv({
     async function getdata() {
       let res = await MoneyAceApis.getStockRates();
       if (res && res.data && res.data.success) {
+        console.log(res.data.data);
         setstockdata(res.data.data);
       }
     }
