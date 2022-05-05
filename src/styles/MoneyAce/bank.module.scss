@@ -79,6 +79,13 @@
           rgba(255, 213, 0, 1) 0%,
           rgba(255, 175, 0, 1) 100%
         );
+        .bullettext {
+          color: white;
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          margin-right: 5px;
+          font-weight: 600;
+          font-size: 1rem;
+        }
         .bulletinicon {
           width: 15px;
           color: white;

@@ -280,7 +280,22 @@ const nextday = (payload) => {
   return ApiCalls.getResponse("games/moneyace/gonext?pass=noaccess", payload);
 };
 
+const allowinvesting = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/allowinvesting",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const getbulletin = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/getbulletin",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const MoneyAceApis = {
+  getbulletin,
   getMoneyAceData,
   getBankingDetails,
   getBankPassbook,
@@ -320,6 +335,7 @@ const MoneyAceApis = {
   resetdata,
   nextday,
   completetask,
+  allowinvesting,
 };
 
 export default MoneyAceApis;

@@ -112,6 +112,15 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
+  async function handleallowinvesting() {
+    let res = await MoneyAceApis.allowinvesting();
+    if (res && res.data && res.data.success) {
+      alert("done");
+      router.reload();
+    } else {
+      alert("something went wrong");
+    }
+  }
 
   async function handlereset() {
     let res = await MoneyAceApis.resetdata();
@@ -170,6 +179,7 @@ export default function MoneyAceDashboard({
           <div className={styles.devoptions}>
             <p onClick={handlereset}>Reset All</p>
             <p onClick={handlenextday}>Next Day</p>
+            <p onClick={handleallowinvesting}>Allow investing</p>
           </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>

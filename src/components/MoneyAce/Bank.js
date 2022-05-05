@@ -109,6 +109,7 @@ export default function Bank({
             className={styles.bulletinbtn}
             onClick={() => setmode("bulletin")}
           >
+            <p className={styles.bullettext}>Bulletin</p>
             <NewspaperRoundedIcon className={styles.bulletinicon} />
           </div>
         </p>
