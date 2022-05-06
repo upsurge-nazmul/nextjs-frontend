@@ -116,6 +116,9 @@ export default function NineSlice({
               zIndex: 10,
               padding: "10px 4px",
               boxSizing: "border-box",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             },
             style
           )}
