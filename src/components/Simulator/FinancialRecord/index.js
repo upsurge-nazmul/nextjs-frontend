@@ -29,7 +29,7 @@ export default function FinancialRecord({ company, token, setShowFR }) {
         <button className={styles.backButton} onClick={() => setShowFR(false)}>
           <ArrowBackIcon className={styles.icon} />
         </button>
-        {tab === TABS[0].value && (
+        {/* {tab === TABS[0].value && (
           <p className={styles.heading}>{TABS[0].name}</p>
         )}
         {tab === TABS[1].value && (
@@ -37,7 +37,8 @@ export default function FinancialRecord({ company, token, setShowFR }) {
         )}
         {tab === TABS[2].value && (
           <p className={styles.heading}>{TABS[2].name}</p>
-        )}
+        )} */}
+        <p className={styles.heading}>{company.name}</p>
       </div>
       <div className={styles.bodyArea}>
         {tab === TABS[0].value && <BalanceSheet {...{ token, company }} />}
