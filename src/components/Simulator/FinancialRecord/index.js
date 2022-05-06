@@ -1,9 +1,10 @@
 import { useState } from "react";
-import styles from "../../../styles/StockSimulator/financialData.module.scss";
+import styles from "../../../styles/StockSimulator/financialRecord.module.scss";
 import BalanceSheet from "./BalanceSheet";
 import ABReturns from "./ABReturns";
 import FinancialRatios from "./FinancialRatios";
 import Tabs from "../Tabs";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const TABS = [
   { name: "Balance Sheet", value: "balance_sheet", icon: "Balance Sheet" },
@@ -24,12 +25,22 @@ export default function FinancialRecord({ company, token, setShowFR }) {
 
   return (
     <div className={styles.financialRecord}>
-      <div className={styles.bodyArea}>
+      <div className={styles.headingArea}>
+        <button className={styles.backButton} onClick={() => setShowFR(false)}>
+          <ArrowBackIcon className={styles.icon} />
+        </button>
         {tab === TABS[0].value && (
-          <BalanceSheet
-            {...{ token, company, backAction: () => setShowFR(false) }}
-          />
+          <p className={styles.heading}>{TABS[0].name}</p>
         )}
+        {tab === TABS[1].value && (
+          <p className={styles.heading}>{TABS[1].name}</p>
+        )}
+        {tab === TABS[2].value && (
+          <p className={styles.heading}>{TABS[2].name}</p>
+        )}
+      </div>
+      <div className={styles.bodyArea}>
+        {tab === TABS[0].value && <BalanceSheet {...{ token, company }} />}
         {tab === TABS[1].value && <ABReturns {...{ token, company }} />}
         {tab === TABS[2].value && <FinancialRatios {...{ token, company }} />}
       </div>

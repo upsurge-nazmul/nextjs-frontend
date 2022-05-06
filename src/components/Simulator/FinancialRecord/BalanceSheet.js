@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/balanceSheet.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
-export default function BalanceSheet({ token, company, backAction }) {
+export default function BalanceSheet({ token, company }) {
   const [balanceSheet, setBalanceSheet] = useState([]);
 
   useEffect(() => {
@@ -22,22 +22,14 @@ export default function BalanceSheet({ token, company, backAction }) {
     }
   }, [company]);
 
-  console.log("!!!!!!!!!!", balanceSheet);
-
   return (
     <div className={styles.balanceSheet}>
-      <div className={styles.headingArea}>
-        <button className={styles.backButton} onClick={backAction}>
-          back
-        </button>
-        <p className={styles.heading}>Balance Sheet</p>
-      </div>
       <div className={styles.container}>
         <div className={styles.rows}>
           <div className={styles.headRow}>
-            <div className={styles.rowitem}>Name</div>
-            <div className={styles.rowitem}>Symbol</div>
-            <div className={styles.rowitem}>Date</div>
+            {/* <div className={styles.rowitem}>Name</div> */}
+            {/* <div className={styles.rowitem}>Symbol</div> */}
+            <div className={styles.rowitem}>Year</div>
             <div className={styles.rowitem}>Total Revenue</div>
             <div className={styles.rowitem}>Revenue Growth</div>
             <div className={styles.rowitem}>EBITDA</div>
@@ -63,9 +55,11 @@ export default function BalanceSheet({ token, company, backAction }) {
           {balanceSheet.map((row, index) => {
             return (
               <div className={styles.row} key={index}>
-                <div className={styles.rowitem}>{row.name}</div>
-                <div className={styles.rowitem}>{row.symbol}</div>
-                <div className={styles.rowitem}>{row.date}</div>
+                {/* <div className={styles.rowitem}>{row.name}</div> */}
+                {/* <div className={styles.rowitem}>{row.symbol}</div> */}
+                <div className={styles.rowitem}>
+                  {String(row.date).slice(0, 4)}
+                </div>
                 <div className={styles.rowitem}>
                   {parseFloat(row.total_revenue).toFixed(2)}
                 </div>

@@ -4,9 +4,8 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const ApexChart = ({ chartData, className }) => {
+const ApexChart = ({ chartData, className, colors = ["#17d1bc"] }) => {
   const [state, setState] = useState();
-  const COLORS = ["#17d1bc"];
 
   useEffect(() => {
     setState({
@@ -17,7 +16,7 @@ const ApexChart = ({ chartData, className }) => {
         },
       ],
       options: {
-        colors: COLORS,
+        colors: colors,
         chart: {
           type: "area",
           toolbar: {
@@ -27,13 +26,13 @@ const ApexChart = ({ chartData, className }) => {
         dataLabels: {
           enabled: false,
           style: {
-            colors: COLORS,
+            colors: colors,
           },
         },
         markers: {
           size: 4,
           style: "hollow",
-          colors: COLORS,
+          colors: colors,
         },
         xaxis: {
           type: "datetime",
@@ -51,7 +50,7 @@ const ApexChart = ({ chartData, className }) => {
         },
         fill: {
           type: "gradient",
-          colors: COLORS,
+          colors: colors,
           gradient: {
             shadeIntensity: 1,
             opacityFrom: 0.7,

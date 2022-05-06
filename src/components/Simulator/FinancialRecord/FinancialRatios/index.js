@@ -11,7 +11,7 @@ const Options = [
   { name: "TEV/LTM EBITDA", value: "tevPerLtmEbitda" },
 ];
 
-export default function FinancialRatios({ token, company, backAction }) {
+export default function FinancialRatios({ token, company }) {
   const [finRatios, setFinRatios] = useState([]);
   const [fwdPPerENtm, setFwdPPerENtm] = useState();
   const [fwdPegRatioNtm, setFwdPegRatioNtm] = useState();
@@ -76,53 +76,71 @@ export default function FinancialRatios({ token, company, backAction }) {
     }
   }, [finRatios]);
 
-  console.log("!!!!!!!!!!", finRatios);
-
   return (
     <div className={styles.financialRatios}>
-      <div className={styles.headingArea}>
-        <button className={styles.backButton} onClick={backAction}>
-          back
-        </button>
-        <p className={styles.heading}>Financial Ratios</p>
-      </div>
       <div className={styles.bodyArea}>
         {chartView === Options[0].value && (
-          <div clssName={styles.chartArea}>
-            <p>{Options[0].name}</p>
-            <Chart chartData={fwdPPerENtm} className={styles.chart} />
+          <div className={styles.chartArea}>
+            <p className={styles.chartTitle}>{Options[0].name}</p>
+            <Chart
+              chartData={fwdPPerENtm}
+              className={styles.chart}
+              colors={["#1dd117"]}
+            />
           </div>
         )}
         {chartView === Options[1].value && (
-          <div clssName={styles.chartArea}>
-            <p>{Options[1].name}</p>
-            <Chart chartData={fwdPegRatioNtm} className={styles.chart} />
+          <div className={styles.chartArea}>
+            <p className={styles.chartTitle}>{Options[1].name}</p>
+            <Chart
+              chartData={fwdPegRatioNtm}
+              className={styles.chart}
+              colors={["#c5d117"]}
+            />
           </div>
         )}
         {chartView === Options[2].value && (
-          <div clssName={styles.chartArea}>
-            <p>{Options[2].name}</p>
-            <Chart chartData={pPerE} className={styles.chart} />
+          <div className={styles.chartArea}>
+            <p className={styles.chartTitle}>{Options[2].name}</p>
+            <Chart
+              chartData={pPerE}
+              className={styles.chart}
+              colors={["#d17a17"]}
+            />
           </div>
         )}
         {chartView === Options[3].value && (
-          <div clssName={styles.chartArea}>
-            <p>{Options[3].name}</p>
-            <Chart chartData={tevPerFwdEbitdaNtm} className={styles.chart} />
+          <div className={styles.chartArea}>
+            <p className={styles.chartTitle}>{Options[3].name}</p>
+            <Chart
+              chartData={tevPerFwdEbitdaNtm}
+              className={styles.chart}
+              colors={["#d12317"]}
+            />
           </div>
         )}
         {chartView === Options[4].value && (
-          <div clssName={styles.chartArea}>
-            <p>{Options[4].name}</p>
-            <Chart chartData={tevPerLtmEbitda} className={styles.chart} />
+          <div className={styles.chartArea}>
+            <p className={styles.chartTitle}>{Options[4].name}</p>
+            <Chart
+              chartData={tevPerLtmEbitda}
+              className={styles.chart}
+              colors={["#177dd1"]}
+            />
           </div>
         )}
       </div>
 
-      <div className={styles.footerArea}>
+      <div className={styles.optionsArea}>
         {Options.map((option, i) => {
           return (
-            <button key={i} onClick={() => setChartView(option.value)}>
+            <button
+              key={i}
+              onClick={() => setChartView(option.value)}
+              className={
+                chartView === option.value ? styles.activeOption : styles.option
+              }
+            >
               {option.name}
             </button>
           );
