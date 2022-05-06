@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../../styles/StockSimulator/financialData.module.scss";
+import styles from "../../../styles/StockSimulator/financialRatios.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 export default function FinancialRatios({ token, company }) {
@@ -25,7 +25,7 @@ export default function FinancialRatios({ token, company }) {
   console.log("!!!!!!!!!!", finRatios);
 
   return (
-    <div>
+    <div className={styles.financialRatios}>
       <h1>This is financial ratios page</h1>
     </div>
   );

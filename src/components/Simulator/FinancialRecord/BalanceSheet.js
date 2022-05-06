@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../../styles/StockSimulator/financialData.module.scss";
+import styles from "../../../styles/StockSimulator/balanceSheet.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 export default function BalanceSheet({ token, company }) {
@@ -25,7 +25,7 @@ export default function BalanceSheet({ token, company }) {
   console.log("!!!!!!!!!!", balanceSheet);
 
   return (
-    <div>
+    <div className={styes.balanceSheet}>
       <h1>This is balance sheet page</h1>
     </div>
   );

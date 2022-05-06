@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../../styles/StockSimulator/financialData.module.scss";
+import styles from "../../../styles/StockSimulator/abReturns.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 export default function ABReturns({ token, company }) {
@@ -25,7 +25,7 @@ export default function ABReturns({ token, company }) {
   console.log("!!!!!!!!!!", abReturns);
 
   return (
-    <div>
+    <div className={styles.abReturns}>
       <h1>This is A B Returns page</h1>
     </div>
   );
