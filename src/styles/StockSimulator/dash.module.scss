@@ -8,12 +8,43 @@
     flex: 1;
     .chartOptionArea {
       width: 100%;
+      height: max-content;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       .selectArea {
         flex: 1;
+      }
+      .buttonArea {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        gap: 20px;
+        .commonButton {
+          width: fit-content;
+          height: 100%;
+          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          color: #fff;
+          background-color: #294ed6;
+          padding: 12px;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          box-shadow: 6px 3px 12px 2px #ccc;
+          transition: 0.5s;
+        }
+        .watchlistButton {
+          @extend .commonButton;
+        }
+        .fdButton {
+          @extend .commonButton;
+        }
       }
       .switchArea {
         width: fit-content;
@@ -37,26 +68,7 @@
     align-items: center;
     justify-content: flex-start;
     .topArea {
-      .buttonArea {
-        width: 100%;
-        height: 70px;
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-        button {
-          font-size: 16px;
-          font-family: "Inter", sans-serif;
-          font-weight: 400;
-          color: #fff;
-          background-color: #294ed6;
-          padding: 12px 20px;
-          border: none;
-          border-radius: 12px;
-          cursor: pointer;
-          box-shadow: 6px 3px 12px 2px #ccc;
-          transition: 0.5s;
-        }
-      }
+      height: 10vh;
       .switchArea {
         display: none;
       }
@@ -114,7 +126,7 @@
           display: flex;
           justify-content: center;
           align-items: baseline;
-          button {
+          .watchlistButton {
             font-size: 16px;
             font-family: "Inter", sans-serif;
             font-weight: 400;
@@ -189,7 +201,7 @@
           display: flex;
           justify-content: center;
           align-items: baseline;
-          button {
+          .watchlistButton {
             font-size: 12px;
             font-family: "Inter", sans-serif;
             font-weight: 400;

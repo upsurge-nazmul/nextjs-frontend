@@ -110,17 +110,25 @@ export default function SimulatorDash({
                   }}
                 />
               </div>
-              {simulatorType === "stocksimulator" && (
-                <div className={styles.fdButtonArea}>
+              <div className={styles.buttonArea}>
+                {simulatorType === "stocksimulator" && (
                   <button
                     className={styles.fdButton}
                     onClick={() => setShowFR(true)}
                   >
-                    Financial Data
+                    Financial Record
                   </button>
-                </div>
-              )}
-              {/* Hidden in Phone */}
+                )}
+                {showAddToWatchlistButton && (
+                  <button
+                    className={styles.watchlistButton}
+                    onClick={handleAddToWatchlist}
+                  >
+                    Add to Watchlist
+                  </button>
+                )}
+              </div>
+              {/* Chart selection options for pc and tablet */}
               <div className={styles.switchArea}>
                 <ChartOptions
                   {...{ chartMode, setChartMode, ChartModeOptions }}
@@ -145,13 +153,6 @@ export default function SimulatorDash({
           </div>
           <div className={styles.dashRight}>
             <div className={styles.topArea}>
-              <div className={styles.buttonArea}>
-                {showAddToWatchlistButton && (
-                  <button onClick={handleAddToWatchlist}>
-                    Add to Watchlist
-                  </button>
-                )}
-              </div>
               {/* Chart selection options for phone */}
               <div className={styles.switchArea}>
                 <ChartOptions

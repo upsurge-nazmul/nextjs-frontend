@@ -10,8 +10,6 @@ $row-color: #d2e9e4;
     width: 100%;
     min-width: 900px;
     overflow-y: auto;
-    padding: 10px;
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     .rows {
@@ -70,7 +68,6 @@ $row-color: #d2e9e4;
       .headRow {
         @extend .row;
         background-color: $heading-color !important;
-        box-shadow: 2px 4px 8px 4px rgb(0 0 0 / 30%);
         .rowitem {
           font-weight: 600;
           font-size: 15px;
