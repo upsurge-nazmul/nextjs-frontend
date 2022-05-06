@@ -6,6 +6,8 @@ import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
+import Popup from "../Popup";
+import FinancialRecord from "../FinancialRecord";
 import { getDateRange } from "../../../helpers/timehelpers";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
@@ -37,6 +39,7 @@ export default function SimulatorDash({
   const [simulatorMonthlyData, setSimulatorMonthlyData] = useState();
   const [showAddToWatchlistButton, setShowAddToWatchlistButton] =
     useState(true);
+  const [showFR, setShowFR] = useState(false); // FD = Financial Data
 
   useEffect(() => {
     async function fetchStocks() {
@@ -106,6 +109,16 @@ export default function SimulatorDash({
               }}
             />
           </div>
+          {simulatorType === "stocksimulator" && (
+            <div className={styles.fdButtonArea}>
+              <button
+                className={styles.fdButton}
+                onClick={() => setShowFR(true)}
+              >
+                Financial Data
+              </button>
+            </div>
+          )}
           {/* Hidden in Phone */}
           <div className={styles.switchArea}>
             <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
@@ -149,6 +162,18 @@ export default function SimulatorDash({
           />
         )}
       </div>
+      {showFR && (
+        <Popup
+          title={selectedCompany.name}
+          actions={{
+            isCancel: false,
+            isProceed: false,
+          }}
+          onOutsideClick={() => setShowFR(false)}
+        >
+          <FinancialRecord company={selectedCompany} token={token} />
+        </Popup>
+      )}
     </div>
   );
 }

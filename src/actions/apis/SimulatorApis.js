@@ -68,6 +68,19 @@ const getLeaderboard = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/leaderboard`, payload, token);
 };
 
+// financial record apis
+const getBalanceSheet = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/balanceSheet`, payload, token);
+};
+
+const getAlphaBetaReturns = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/abReturns`, payload, token);
+};
+
+const getFinancialRatios = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/financialRatios`, payload, token);
+};
+
 export default {
   getWatchlist,
   addToWatchlist,
@@ -80,4 +93,7 @@ export default {
   buyStock,
   sellStock,
   getLeaderboard,
+  getBalanceSheet,
+  getAlphaBetaReturns,
+  getFinancialRatios,
 };
