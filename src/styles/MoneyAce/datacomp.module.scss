@@ -1,0 +1,65 @@
+.datacomp {
+  min-width: 8vw;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10px;
+  .heading {
+    color: #ffd56a;
+    font-family: "Fira Sans", sans-serif;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 5px;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.6));
+  }
+  .bg {
+    background: rgba(42, 43, 51, 0.7);
+    height: 32px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(32, 32, 32, 0.459);
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    align-items: center;
+    img {
+      width: 3vw;
+      height: 3vw;
+      position: absolute;
+      object-fit: contain;
+      left: -8%;
+      z-index: 2;
+      bottom: -8%;
+      filter: drop-shadow(5px 1px 5px rgba(0, 0, 0, 0.4));
+    }
+    .range {
+      height: 100%;
+      z-index: 1;
+      position: absolute;
+      border-radius: 20px;
+      left: 0;
+      background: rgb(83, 156, 0);
+      background: linear-gradient(
+        103deg,
+        rgba(83, 156, 0, 1) 0%,
+        rgba(106, 222, 0, 1) 83%,
+        rgba(209, 255, 0, 1) 100%
+      );
+    }
+    .value {
+      margin-right: 1vw;
+      color: #ffffff;
+      font-family: "Fira Sans", sans-serif;
+      z-index: 1;
+      text-transform: capitalize;
+      padding-left: 3vw;
+      font-size: 1rem;
+      font-weight: bold;
+      filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.6));
+    }
+  }
+}

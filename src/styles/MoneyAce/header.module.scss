@@ -24,7 +24,54 @@
   z-index: 20;
   animation: slidefromtop 1s ease forwards;
   position: relative;
-
+  .leveldiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .button {
+      display: flex;
+      position: relative;
+      width: 2.3vw;
+      height: 2.3vw;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+    .levelheadtext {
+      color: #ffd56a;
+      font-family: "Fira Sans", sans-serif;
+      text-transform: capitalize;
+      font-size: 1rem;
+      font-weight: bold;
+      font-style: italic;
+      filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.6));
+    }
+    .leveltext {
+      color: rgb(17, 17, 17);
+      font-family: "Fira Sans", sans-serif;
+      text-transform: capitalize;
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 900;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 4px;
+      padding-right: 2px;
+    }
+  }
+  .moralandstamina {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+  }
   .left {
     display: flex;
     align-items: center;
@@ -100,6 +147,13 @@
         color: rgb(65, 65, 65);
       }
     }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+    margin-right: 10px;
   }
   .gamelogo {
     height: 100%;

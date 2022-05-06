@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import TaskModal from "./TaskModal";
 import MAQuiz from "./MoneyAceQuiz";
 import NineSlice from "../NineSlice";
+import Tasks from "./Tasks";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -41,14 +42,14 @@ export default function MoneyAceDashboard({
   settoastdata,
   settasks,
 }) {
-  const [currenttab, setcurrenttab] = useState("dashboard");
+  const [currenttab, setcurrenttab] = useState("tasks");
   const [currenttask, setcurrenttask] = useState("");
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
   const [taskmodal, settaskmodal] = useState(false);
   const [quiz, setquiz] = useState(false);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
-  const { theme } = useContext(MainContext);
+  const { them, widthHeight } = useContext(MainContext);
   const router = useRouter();
   const ref = useRef();
   useEffect(() => {
@@ -183,59 +184,113 @@ export default function MoneyAceDashboard({
           </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
-              <div className={styles.top}>
-                <div className={styles.left}>
-                  <div className={styles.heading}>
-                    <div className={styles.namewrapper}>
-                      <NineSlice
-                        width={296}
-                        height={89}
-                        border={1}
-                        image="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                        imageSize={{ x: 296, y: 89 }}
-                      ></NineSlice>
-                      {/* <img
-                        src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                        alt=""
-                      /> */}
-                      <p>STATS</p>
-                    </div>
-                  </div>
-                  <div className={styles.col_wrapper}>
-                    <div className={styles.col}>
-                      <p className={styles.head}>INHAND CASH</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.inhand_money || 0)}
-                      </p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>BANK BALANCE</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.account_balance || 0)}
-                      </p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>INVESTMENTS</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.total_investment || 0)}
-                      </p>
-                    </div>
-                  </div>
-                  {/* <div className={styles.col_wrapper}>
-                    <div className={styles.col}>
-                      <p className={styles.head}>BAD EXPENSES</p>
-                      <p className={styles.val}>₹0</p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>GOOD EXPENSES</p>
-                      <p className={styles.val}>₹0</p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>GOLD</p>
-                      <p className={styles.val}>₹{moneyacedata?.inhand_money}</p>
-                    </div>
-                  </div> */}
-                </div>
+              <div className={`${styles.link} ${styles.link1}`}>
+                <p className={styles.title}>EDUCATION HUB</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link2}`}
+                onClick={() => setcurrenttab("Bank")}
+              >
+                <p className={styles.title}>Bank</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link3}`}
+                onClick={() => setcurrenttab("investmenthub")}
+              >
+                <p className={styles.title}>Investment</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link4}`}
+                onClick={() => setcurrenttab("store")}
+              >
+                <p className={styles.title}>Shop</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link5}`}
+                onClick={() => setcurrenttab("store")}
+              >
+                <p className={styles.title}>Jobs</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.taskbtn} `}
+                onClick={() => setcurrenttab("tasks")}
+              >
+                <p className={styles.title}>TASKS</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/tYSFRWk/Task-Panel-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/Wk1xwTs/tasks-1.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              {/*  */}
+              {/* <div className={styles.top}>
                 <div className={styles.right}>
                   <div className={styles.heading}>
                     <div className={styles.namewrapper}>
@@ -304,10 +359,23 @@ export default function MoneyAceDashboard({
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
-          ) : currenttab === "citymap" ? (
-            <CityMap setcurrenttab={setcurrenttab} />
+          ) : currenttab === "tasks" ? (
+            <Tasks
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
+              settaskmodal={settaskmodal}
+              setstage={setstage}
+              setgamedata={setgamedata}
+              moneyacedata={moneyacedata}
+              setquiz={setquiz}
+              setcurrenttask={setcurrenttask}
+              currenttask={currenttask}
+            />
           ) : currenttab === "passbook" ? (
             <PassBook setcurrenttab={setcurrenttab} />
           ) : currenttab === "investmenthub" ? (
