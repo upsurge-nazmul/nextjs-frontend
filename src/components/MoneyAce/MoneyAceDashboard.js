@@ -23,7 +23,7 @@ import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import TaskModal from "./TaskModal";
 import MAQuiz from "./MoneyAceQuiz";
-
+import NineSlice from "../NineSlice";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -187,10 +187,17 @@ export default function MoneyAceDashboard({
                 <div className={styles.left}>
                   <div className={styles.heading}>
                     <div className={styles.namewrapper}>
-                      <img
+                      <NineSlice
+                        width={296}
+                        height={89}
+                        border={1}
+                        image="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
+                        imageSize={{ x: 296, y: 89 }}
+                      ></NineSlice>
+                      {/* <img
                         src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
                         alt=""
-                      />
+                      /> */}
                       <p>STATS</p>
                     </div>
                   </div>
