@@ -6,7 +6,6 @@ import CompanyInfo from "./CompanyInfo";
 import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
-import Popup from "../Popup";
 import FinancialRecord from "../FinancialRecord";
 import { getDateRange } from "../../../helpers/timehelpers";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
@@ -98,81 +97,86 @@ export default function SimulatorDash({
 
   return (
     <div className={styles.simulatorDash}>
-      <div className={styles.dashLeft}>
-        <div className={styles.chartOptionArea}>
-          <div className={styles.selectArea}>
-            <CompanySelection
-              {...{
-                value: selectedSymbol,
-                setvalue: setSelectedSymbol,
-                options: companyData,
-              }}
-            />
-          </div>
-          {simulatorType === "stocksimulator" && (
-            <div className={styles.fdButtonArea}>
-              <button
-                className={styles.fdButton}
-                onClick={() => setShowFR(true)}
-              >
-                Financial Data
-              </button>
+      {!showFR && (
+        <>
+          <div className={styles.dashLeft}>
+            <div className={styles.chartOptionArea}>
+              <div className={styles.selectArea}>
+                <CompanySelection
+                  {...{
+                    value: selectedSymbol,
+                    setvalue: setSelectedSymbol,
+                    options: companyData,
+                  }}
+                />
+              </div>
+              {simulatorType === "stocksimulator" && (
+                <div className={styles.fdButtonArea}>
+                  <button
+                    className={styles.fdButton}
+                    onClick={() => setShowFR(true)}
+                  >
+                    Financial Data
+                  </button>
+                </div>
+              )}
+              {/* Hidden in Phone */}
+              <div className={styles.switchArea}>
+                <ChartOptions
+                  {...{ chartMode, setChartMode, ChartModeOptions }}
+                />
+              </div>
             </div>
-          )}
-          {/* Hidden in Phone */}
-          <div className={styles.switchArea}>
-            <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
-          </div>
-        </div>
-        {simulatorMonthlyData && (
-          <div className={styles.chartArea}>
-            <SimulatorChart
-              simulatorMonthlyData={simulatorMonthlyData}
-              chartMode={chartMode}
-              ChartModeOptions={ChartModeOptions}
-              className={styles.charts}
-            />
-            <ChartDuration
-              value={selectedDuration}
-              action={setSelectedDuration}
-              options={ChartDurations}
-            />
-          </div>
-        )}
-      </div>
-      <div className={styles.dashRight}>
-        <div className={styles.topArea}>
-          <div className={styles.buttonArea}>
-            {showAddToWatchlistButton && (
-              <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+            {simulatorMonthlyData && (
+              <div className={styles.chartArea}>
+                <SimulatorChart
+                  simulatorMonthlyData={simulatorMonthlyData}
+                  chartMode={chartMode}
+                  ChartModeOptions={ChartModeOptions}
+                  className={styles.charts}
+                />
+                <ChartDuration
+                  value={selectedDuration}
+                  action={setSelectedDuration}
+                  options={ChartDurations}
+                />
+              </div>
             )}
           </div>
-          {/* Chart selection options for phone */}
-          <div className={styles.switchArea}>
-            <ChartOptions {...{ chartMode, setChartMode, ChartModeOptions }} />
+          <div className={styles.dashRight}>
+            <div className={styles.topArea}>
+              <div className={styles.buttonArea}>
+                {showAddToWatchlistButton && (
+                  <button onClick={handleAddToWatchlist}>
+                    Add to Watchlist
+                  </button>
+                )}
+              </div>
+              {/* Chart selection options for phone */}
+              <div className={styles.switchArea}>
+                <ChartOptions
+                  {...{ chartMode, setChartMode, ChartModeOptions }}
+                />
+              </div>
+            </div>
+            {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
+            {selectedCompany && (
+              <SimulatorOptions
+                companyDetails={selectedCompany}
+                userData={userData}
+                token={token}
+                simulatorType={simulatorType}
+              />
+            )}
           </div>
-        </div>
-        {selectedCompany && <CompanyInfo companyInfo={selectedCompany} />}
-        {selectedCompany && (
-          <SimulatorOptions
-            companyDetails={selectedCompany}
-            userData={userData}
-            token={token}
-            simulatorType={simulatorType}
-          />
-        )}
-      </div>
+        </>
+      )}
       {showFR && (
-        <Popup
-          title={selectedCompany.name}
-          actions={{
-            isCancel: false,
-            isProceed: false,
-          }}
-          onOutsideClick={() => setShowFR(false)}
-        >
-          <FinancialRecord company={selectedCompany} token={token} />
-        </Popup>
+        <FinancialRecord
+          company={selectedCompany}
+          token={token}
+          setShowFR={setShowFR}
+        />
       )}
     </div>
   );

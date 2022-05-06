@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/financialRatios.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
-export default function FinancialRatios({ token, company }) {
+export default function FinancialRatios({ token, company, backAction }) {
   const [finRatios, setFinRatios] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,12 @@ export default function FinancialRatios({ token, company }) {
 
   return (
     <div className={styles.financialRatios}>
-      <h1>This is financial ratios page</h1>
+      <div className={styles.headingArea}>
+        <button className={styles.backButton} onClick={backAction}>
+          back
+        </button>
+        <p className={styles.heading}>Financial Ratios</p>
+      </div>
     </div>
   );
 }

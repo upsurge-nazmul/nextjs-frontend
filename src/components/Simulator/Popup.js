@@ -24,9 +24,11 @@ export default function Popup({
         <CancelOutlinedIcon className={styles.icon} />
       </div>
       <div className={styles.popupBody}>
-        <div className={styles.titleArea}>
-          <p className={styles.title}>{title}</p>
-        </div>
+        {title && (
+          <div className={styles.titleArea}>
+            <p className={styles.title}>{title}</p>
+          </div>
+        )}
         <div className={styles.messageArea}>{children}</div>
         <div className={styles.tradeActionArea}>
           {actions.isCancel ? (

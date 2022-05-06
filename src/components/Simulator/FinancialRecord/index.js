@@ -19,13 +19,17 @@ const TABS = [
   },
 ];
 
-export default function FinancialRecord({ company, token }) {
+export default function FinancialRecord({ company, token, setShowFR }) {
   const [tab, setTab] = useState(TABS[0].value);
 
   return (
     <div className={styles.financialRecord}>
       <div className={styles.bodyArea}>
-        {tab === TABS[0].value && <BalanceSheet {...{ token, company }} />}
+        {tab === TABS[0].value && (
+          <BalanceSheet
+            {...{ token, company, backAction: () => setShowFR(false) }}
+          />
+        )}
         {tab === TABS[1].value && <ABReturns {...{ token, company }} />}
         {tab === TABS[2].value && <FinancialRatios {...{ token, company }} />}
       </div>
