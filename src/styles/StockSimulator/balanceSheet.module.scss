@@ -37,7 +37,7 @@ $row-color: #e1e5f3;
         flex: 1;
         .rowitem {
           font-weight: 400;
-          font-size: 14px;
+          font-size: 16px;
           color: #333;
           font-family: "Fira Sans", sans-serif;
           text-align: center;
@@ -46,7 +46,7 @@ $row-color: #e1e5f3;
             border-top: 1px solid $row-color;
             background-color: $heading-color !important;
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
           }
           &:nth-child(odd) {

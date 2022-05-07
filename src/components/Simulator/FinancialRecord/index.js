@@ -7,7 +7,11 @@ import Tabs from "../Tabs";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const TABS = [
-  { name: "Balance Sheet", value: "balance_sheet", icon: "Balance Sheet" },
+  {
+    name: "Financial Overview",
+    value: "financial_overview",
+    icon: "Financial Overview",
+  },
   {
     name: "Alpha Beta Returns",
     value: "ab_returns",

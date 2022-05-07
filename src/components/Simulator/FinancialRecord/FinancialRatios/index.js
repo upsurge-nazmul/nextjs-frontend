@@ -81,7 +81,7 @@ export default function FinancialRatios({ token, company }) {
       <div className={styles.bodyArea}>
         {chartView === Options[0].value && (
           <div className={styles.chartArea}>
-            <p className={styles.chartTitle}>{Options[0].name}</p>
+            {/* <p className={styles.chartTitle}>{Options[0].name}</p> */}
             <Chart
               chartData={fwdPPerENtm}
               className={styles.chart}
@@ -91,7 +91,7 @@ export default function FinancialRatios({ token, company }) {
         )}
         {chartView === Options[1].value && (
           <div className={styles.chartArea}>
-            <p className={styles.chartTitle}>{Options[1].name}</p>
+            {/* <p className={styles.chartTitle}>{Options[1].name}</p> */}
             <Chart
               chartData={fwdPegRatioNtm}
               className={styles.chart}
@@ -101,7 +101,7 @@ export default function FinancialRatios({ token, company }) {
         )}
         {chartView === Options[2].value && (
           <div className={styles.chartArea}>
-            <p className={styles.chartTitle}>{Options[2].name}</p>
+            {/* <p className={styles.chartTitle}>{Options[2].name}</p> */}
             <Chart
               chartData={pPerE}
               className={styles.chart}
@@ -111,7 +111,7 @@ export default function FinancialRatios({ token, company }) {
         )}
         {chartView === Options[3].value && (
           <div className={styles.chartArea}>
-            <p className={styles.chartTitle}>{Options[3].name}</p>
+            {/* <p className={styles.chartTitle}>{Options[3].name}</p> */}
             <Chart
               chartData={tevPerFwdEbitdaNtm}
               className={styles.chart}
@@ -121,7 +121,7 @@ export default function FinancialRatios({ token, company }) {
         )}
         {chartView === Options[4].value && (
           <div className={styles.chartArea}>
-            <p className={styles.chartTitle}>{Options[4].name}</p>
+            {/* <p className={styles.chartTitle}>{Options[4].name}</p> */}
             <Chart
               chartData={tevPerLtmEbitda}
               className={styles.chart}
