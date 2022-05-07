@@ -29,7 +29,7 @@ export default function ABReturns({ token, company }) {
           <div className={styles.headRow}>
             {/* <div className={styles.rowitem}>Name</div> */}
             {/* <div className={styles.rowitem}>Symbol</div> */}
-            <div className={styles.rowitem}>Duration</div>
+            <div className={styles.rowitem}>Properties</div>
             <div className={styles.rowitem}>Beta against Nifty</div>
             <div className={styles.rowitem}>Alpha against Nifty</div>
             <div className={styles.rowitem}>Beta against NSE 200</div>

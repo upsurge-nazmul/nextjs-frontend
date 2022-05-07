@@ -29,7 +29,7 @@ export default function BalanceSheet({ token, company }) {
           <div className={styles.headRow}>
             {/* <div className={styles.rowitem}>Name</div> */}
             {/* <div className={styles.rowitem}>Symbol</div> */}
-            <div className={styles.rowitem}>Year</div>
+            <div className={styles.rowitem}>Properties</div>
             <div className={styles.rowitem}>Total Revenue</div>
             <div className={styles.rowitem}>Revenue Growth</div>
             <div className={styles.rowitem}>EBITDA</div>
