@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../../styles/StockSimulator/financialRatios.module.scss";
 import SimulatorApis from "../../../../actions/apis/SimulatorApis";
 import Chart from "./Chart";
+import ButtonGroup from "../../ButtonGroup";
 
 const Options = [
   { name: "FWD PE NTM", value: "fwdPPerENtm" },
@@ -131,7 +132,8 @@ export default function FinancialRatios({ token, company }) {
         )}
       </div>
 
-      <div className={styles.optionsArea}>
+      <ButtonGroup value={chartView} action={setChartView} options={Options} />
+      {/* <div className={styles.optionsArea}>
         {Options.map((option, i) => {
           return (
             <button
@@ -145,7 +147,7 @@ export default function FinancialRatios({ token, company }) {
             </button>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }

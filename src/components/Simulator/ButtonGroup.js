@@ -1,4 +1,4 @@
-import styles from "../../../styles/StockSimulator/chartDuration.module.scss";
+import styles from "../../styles/StockSimulator/buttonGroup.module.scss";
 
 export default function ChartDuration({ value, action, options = [] }) {
   const handleDurationSelection = (value) => {
@@ -6,13 +6,13 @@ export default function ChartDuration({ value, action, options = [] }) {
   };
 
   return (
-    <div className={styles.durationArea}>
+    <div className={styles.groupArea}>
       {options.map((duration, i) => {
         return (
-          <div key={i} className={styles.durationItem}>
+          <div key={i} className={styles.buttonItem}>
             <button
-              onClick={() => handleDurationSelection(duration.name)}
-              className={value === duration.name ? styles.active : ""}
+              onClick={() => handleDurationSelection(duration.value)}
+              className={value === duration.value ? styles.active : ""}
             >
               {duration.name}
             </button>

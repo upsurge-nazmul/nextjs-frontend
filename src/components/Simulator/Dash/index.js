@@ -3,20 +3,20 @@ import SimulatorChart from "./SimulatorChart";
 import styles from "../../../styles/StockSimulator/dash.module.scss";
 import SimulatorOptions from "./Options";
 import CompanyInfo from "./CompanyInfo";
-import ChartDuration from "./ChartDuration";
 import ChartOptions from "./ChartOptions";
 import CompanySelection from "./CompanySelection";
 import FinancialRecord from "../FinancialRecord";
+import ButtonGroup from "../ButtonGroup";
 import { getDateRange } from "../../../helpers/timehelpers";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 const ChartModeOptions = ["candlestick", "line"];
 const ChartDurations = [
-  { name: "1 Month", value: 30 },
-  { name: "3 Months", value: 90 },
-  { name: "6 Months", value: 180 },
-  { name: "1 Year", value: 365 },
-  { name: "5 Years", value: 1825 },
+  { name: "1 Month", value: "1 Month" },
+  { name: "3 Months", value: "3 Months" },
+  { name: "6 Months", value: "6 Months" },
+  { name: "1 Year", value: "1 Year" },
+  { name: "5 Years", value: "5 Years" },
 ];
 
 export default function SimulatorDash({
@@ -32,7 +32,7 @@ export default function SimulatorDash({
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedDuration, setSelectedDuration] = useState(
-    ChartDurations[0].name
+    ChartDurations[0].value
   );
   const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
   const [simulatorMonthlyData, setSimulatorMonthlyData] = useState();
@@ -143,7 +143,7 @@ export default function SimulatorDash({
                   ChartModeOptions={ChartModeOptions}
                   className={styles.charts}
                 />
-                <ChartDuration
+                <ButtonGroup
                   value={selectedDuration}
                   action={setSelectedDuration}
                   options={ChartDurations}
