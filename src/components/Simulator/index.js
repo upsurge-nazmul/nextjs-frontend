@@ -142,7 +142,12 @@ export default function Simulator({
           <div className={styles.topSection}>
             {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
             <div className={styles.phoneNavigation}>
-              <Navigation options={modes} action={setMode} active={mode} />
+              <Navigation
+                options={modes}
+                action={setMode}
+                active={mode}
+                simulatorType={simulatorType}
+              />
             </div>
             {selectedSymbol && (
               <Watchlist
