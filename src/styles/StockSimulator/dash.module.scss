@@ -69,7 +69,7 @@
     justify-content: flex-start;
     .topArea {
       height: 10vh;
-      .switchArea {
+      .buttons {
         display: none;
       }
     }
@@ -286,6 +286,9 @@
     flex-wrap: wrap;
     gap: 10px;
     height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
     .dashLeft {
       flex: 1;
       .chartOptionArea {
@@ -297,6 +300,9 @@
         gap: 10px;
         .selectArea {
           flex: 1;
+        }
+        .buttonArea {
+          display: none;
         }
         .switchArea {
           display: none;
@@ -321,32 +327,33 @@
       justify-content: flex-start;
       gap: 10px;
       .topArea {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .buttonArea {
-          width: fit-content;
-          height: fit-content;
+        display: contents;
+        .buttons {
+          width: 100%;
           display: flex;
-          justify-content: center;
-          align-items: baseline;
-          .watchlistButton {
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 10px;
+          height: 50px;
+          .commonButton3 {
             font-size: 12px;
             font-family: "Inter", sans-serif;
             font-weight: 400;
             color: #fff;
             background-color: #294ed6;
-            padding: 12px 20px;
+            padding: 6px 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             box-shadow: 6px 3px 12px 2px #ccc;
             transition: 0.5s;
           }
-        }
-        .switchArea {
-          display: inline;
+          .fdButton {
+            @extend .commonButton3;
+          }
+          .watchlistButton {
+            @extend .commonButton3;
+          }
         }
       }
     }
