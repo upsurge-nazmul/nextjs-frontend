@@ -133,21 +133,6 @@ export default function FinancialRatios({ token, company }) {
       </div>
 
       <ButtonGroup value={chartView} action={setChartView} options={Options} />
-      {/* <div className={styles.optionsArea}>
-        {Options.map((option, i) => {
-          return (
-            <button
-              key={i}
-              onClick={() => setChartView(option.value)}
-              className={
-                chartView === option.value ? styles.activeOption : styles.option
-              }
-            >
-              {option.name}
-            </button>
-          );
-        })}
-      </div> */}
     </div>
   );
 }

@@ -79,7 +79,7 @@ $active-option-font: #fff;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 0;
+    gap: 5px;
     padding: 10px 0;
     width: 100%;
     .buttonItem {
@@ -88,7 +88,7 @@ $active-option-font: #fff;
         border-style: solid;
         border-color: $option-color;
         padding: 8px;
-        border-radius: 14px;
+        border-radius: 8px;
         background-color: transparent;
         color: $option-color;
         font-size: 12px;

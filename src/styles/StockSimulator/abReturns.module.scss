@@ -98,3 +98,12 @@ $row-color: #dbf8f5;
     overflow-x: auto;
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .abReturns {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+  }
+}

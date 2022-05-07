@@ -58,3 +58,33 @@ $chart-title-color: #333;
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .financialRatios {
+    width: 100%;
+    height: 100%;
+    .bodyArea {
+      width: 100%;
+      height: fit-content;
+      .chartArea {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .chartTitle {
+          width: fit-content;
+          color: rgb(25, 19, 116);
+          font-size: 24px;
+          font-weight: 700;
+        }
+        .chart {
+          width: 100%;
+          height: 48vh;
+        }
+      }
+    }
+  }
+}
