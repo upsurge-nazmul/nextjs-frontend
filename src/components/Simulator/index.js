@@ -131,7 +131,11 @@ export default function Simulator({
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
-          mode={"Stock Simulator"}
+          mode={
+            simulatorType === "cryptosimulator"
+              ? "Crypto Simulator"
+              : "Stock Simulator"
+          }
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
