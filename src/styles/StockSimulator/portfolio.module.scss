@@ -282,18 +282,19 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: block;
     flex-direction: column;
     .main {
-      display: flex;
+      display: block;
       flex-direction: column;
       width: 100%;
-      height: 100%;
+      height: fit-content;
       overflow-y: hidden;
       .content {
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
         .caption {
           font-size: 20px;
           font-weight: 700;
@@ -303,17 +304,15 @@
           flex: 2;
           height: fit-content;
           text-align: center;
-          height: fit-content;
           .portfolioChart {
             width: 100%;
-            height: 50vh;
+            height: 70vh;
           }
         }
         .right {
           flex: 1;
           height: fit-content;
           text-align: center;
-          height: fit-content;
           div {
             text-align: center;
           }
@@ -333,14 +332,18 @@
           }
           .holdingsChart {
             width: 100%;
-            height: 50vh;
+            height: 70vh;
           }
         }
       }
     }
     .footerArea {
-      height: fit-content;
-      width: fit-content;
+      width: 100%;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

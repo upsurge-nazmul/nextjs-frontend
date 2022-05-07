@@ -92,3 +92,46 @@ $info-red: rgb(211, 33, 33);
     }
   }
 }
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .companyInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    min-height: 150px;
+    .volumeArea {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 6px 0;
+      margin: 0;
+      width: 100%;
+      .volumeTitle {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .volumeValue {
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+    .infoArea {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 400px;
+      margin-top: 40px;
+      .infoItem {
+        min-width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+  }
+}

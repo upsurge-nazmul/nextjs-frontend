@@ -359,3 +359,105 @@
     }
   }
 }
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .simulatorDash {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    height: 100%;
+    .dashLeft {
+      flex: 1;
+      .chartOptionArea {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        .selectArea {
+          flex: 1;
+        }
+        .buttonArea {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: baseline;
+          gap: 20px;
+          .commonButton4 {
+            width: fit-content;
+            height: 100%;
+            font-size: 12px;
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            color: #fff;
+            background-color: #294ed6;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 6px 3px 12px 2px #ccc;
+            transition: 0.5s;
+          }
+          .watchlistButton {
+            @extend .commonButton4;
+          }
+          .fdButton {
+            @extend .commonButton4;
+          }
+        }
+        .switchArea {
+          width: fit-content;
+        }
+      }
+      .chartArea {
+        width: 100%;
+        max-width: 100%;
+        .charts {
+          width: 100%;
+          height: 60vh;
+        }
+      }
+    }
+    .dashRight {
+      flex: 1;
+      width: 100%;
+      max-width: 200px;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      .topArea {
+        height: 10vh;
+        .buttonArea {
+          width: 100%;
+          height: 70px;
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          .watchlistButton {
+            font-size: 16px;
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            color: #fff;
+            background-color: #294ed6;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 6px 3px 12px 2px #ccc;
+            transition: 0.5s;
+          }
+        }
+        .switchArea {
+          display: none;
+        }
+      }
+    }
+  }
+}
