@@ -93,14 +93,13 @@
         border-radius: 8px;
         color: #494646;
         font-weight: 600;
-        border: 2px solid #898989;
+        border: 1px solid #898989;
         :focus-visible {
           outline: none;
         }
       }
     }
     .optionArea {
-      border: 2px solid #898989;
       border-radius: 8px;
       margin: 4px;
       overflow-y: auto;
@@ -110,19 +109,11 @@
         display: flex;
         color: #898989;
         text-transform: capitalize;
-        padding: 20px 30px;
+        padding: 12px 30px;
         align-items: center;
         cursor: pointer;
         text-align: center;
         justify-content: center;
-        &:first-child {
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-        }
-        &:last-child {
-          border-bottom-left-radius: 8px;
-          border-bottom-right-radius: 8px;
-        }
         &:hover {
           background-color: #f3f3f3;
         }
@@ -233,14 +224,13 @@
           border-radius: 8px;
           color: #494646;
           font-weight: 600;
-          border: 2px solid #898989;
+          border: 1px solid #898989;
           :focus-visible {
             outline: none;
           }
         }
       }
       .optionArea {
-        border: 2px solid #898989;
         border-radius: 8px;
         margin: 4px;
         overflow-y: auto;
@@ -250,19 +240,11 @@
           display: flex;
           color: #898989;
           text-transform: capitalize;
-          padding: 20px 30px;
+          padding: 12px 30px;
           align-items: center;
           cursor: pointer;
           text-align: center;
           justify-content: center;
-          &:first-child {
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-          }
-          &:last-child {
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-          }
           &:hover {
             background-color: #f3f3f3;
           }
@@ -373,14 +355,13 @@
           border-radius: 8px;
           color: #494646;
           font-weight: 600;
-          border: 2px solid #898989;
+          border: 1px solid #898989;
           :focus-visible {
             outline: none;
           }
         }
       }
       .optionArea {
-        border: 2px solid #898989;
         border-radius: 8px;
         margin: 4px;
         overflow-y: auto;
@@ -390,19 +371,11 @@
           display: flex;
           color: #898989;
           text-transform: capitalize;
-          padding: 20px 30px;
+          padding: 12px 30px;
           align-items: center;
           cursor: pointer;
           text-align: center;
           justify-content: center;
-          &:first-child {
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-          }
-          &:last-child {
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-          }
           &:hover {
             background-color: #f3f3f3;
           }
