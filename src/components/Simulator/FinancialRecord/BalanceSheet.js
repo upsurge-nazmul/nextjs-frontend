@@ -22,6 +22,10 @@ export default function BalanceSheet({ token, company }) {
     }
   }, [company]);
 
+  const formattedFloat = (val) => {
+    return val ? parseFloat(val).toFixed(2) : "-";
+  };
+
   return (
     <div className={styles.balanceSheet}>
       <div className={styles.container}>
@@ -61,67 +65,67 @@ export default function BalanceSheet({ token, company }) {
                   {String(row.date).slice(0, 4)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.total_revenue).toFixed(2)}
+                  {formattedFloat(row.total_revenue)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.revenue_growth).toFixed(2)}
+                  {formattedFloat(row.revenue_growth)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.ebitda).toFixed(2)}
+                  {formattedFloat(row.ebitda)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.ebitda_margin_percentage).toFixed(2)}
+                  {formattedFloat(row.ebitda_margin_percentage)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.net_income).toFixed(2)}
+                  {formattedFloat(row.net_income)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.net_income_growth).toFixed(2)}
+                  {formattedFloat(row.net_income_growth)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.net_income_margin_percentage).toFixed(2)}
+                  {formattedFloat(row.net_income_margin_percentage)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.p_per_ltm_eps).toFixed(2)}
+                  {formattedFloat(row.p_per_ltm_eps)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.p_per_ntm_eps).toFixed(2)}
+                  {formattedFloat(row.p_per_ntm_eps)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.tev_per_ltm_ebidta).toFixed(2)}
+                  {formattedFloat(row.tev_per_ltm_ebidta)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.tev_per_ntm_ebidta).toFixed(2)}
+                  {formattedFloat(row.tev_per_ntm_ebidta)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.peg_ratio).toFixed(2)}
+                  {formattedFloat(row.peg_ratio)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.market_capitalization).toFixed(2)}
+                  {formattedFloat(row.market_capitalization)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.return_on_equity).toFixed(2)}
+                  {formattedFloat(row.return_on_equity)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.return_on_capital).toFixed(2)}
+                  {formattedFloat(row.return_on_capital)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.share_price).toFixed(2)}
+                  {formattedFloat(row.share_price)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.stock_return).toFixed(2)}
+                  {formattedFloat(row.stock_return)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.volume).toFixed(2)}
+                  {formattedFloat(row.volume)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.lt_debt_per_equity).toFixed(2)}
+                  {formattedFloat(row.lt_debt_per_equity)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.ebitda_per_interest_exp).toFixed(2)}
+                  {formattedFloat(row.ebitda_per_interest_exp)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.net_debt_per_ebitda).toFixed(2)}
+                  {formattedFloat(row.net_debt_per_ebitda)}
                 </div>
               </div>
             );

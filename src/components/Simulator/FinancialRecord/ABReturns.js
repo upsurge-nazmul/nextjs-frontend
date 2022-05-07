@@ -22,6 +22,10 @@ export default function ABReturns({ token, company }) {
     }
   }, [company]);
 
+  const formattedFloat = (val) => {
+    return val ? parseFloat(val).toFixed(2) : "-";
+  };
+
   return (
     <div className={styles.abReturns}>
       <div className={styles.container}>
@@ -45,25 +49,25 @@ export default function ABReturns({ token, company }) {
                 {/* <div className={styles.rowitem}>{row.symbol}</div> */}
                 <div className={styles.rowitem}>{row.duration}</div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.beta_against_nifty).toFixed(2)}
+                  {formattedFloat(row.beta_against_nifty)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.alpha_against_nifty).toFixed(2)}
+                  {formattedFloat(row.alpha_against_nifty)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.beta_against_nse_200).toFixed(2)}
+                  {formattedFloat(row.beta_against_nse_200)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.alpha_against_nse_200).toFixed(2)}
+                  {formattedFloat(row.alpha_against_nse_200)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.beta_against_sensex).toFixed(2)}
+                  {formattedFloat(row.beta_against_sensex)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.alpha_against_sensex).toFixed(2)}
+                  {formattedFloat(row.alpha_against_sensex)}
                 </div>
                 <div className={styles.rowitem}>
-                  {parseFloat(row.stock_returns).toFixed(2)}
+                  {formattedFloat(row.stock_returns)}
                 </div>
               </div>
             );
