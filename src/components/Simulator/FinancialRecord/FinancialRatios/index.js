@@ -87,6 +87,7 @@ export default function FinancialRatios({ token, company }) {
               chartData={fwdPPerENtm}
               className={styles.chart}
               colors={["#1dd117"]}
+              seriesName="FWD PE NTM"
             />
           </div>
         )}
@@ -97,6 +98,7 @@ export default function FinancialRatios({ token, company }) {
               chartData={fwdPegRatioNtm}
               className={styles.chart}
               colors={["#c5d117"]}
+              seriesName="Fwd PEG Ratio NTM"
             />
           </div>
         )}
@@ -107,6 +109,7 @@ export default function FinancialRatios({ token, company }) {
               chartData={pPerE}
               className={styles.chart}
               colors={["#d17a17"]}
+              seriesName="P/E"
             />
           </div>
         )}
@@ -117,6 +120,7 @@ export default function FinancialRatios({ token, company }) {
               chartData={tevPerFwdEbitdaNtm}
               className={styles.chart}
               colors={["#d12317"]}
+              seriesName="TEV/Fwd EBITDA NTM"
             />
           </div>
         )}
@@ -127,6 +131,7 @@ export default function FinancialRatios({ token, company }) {
               chartData={tevPerLtmEbitda}
               className={styles.chart}
               colors={["#177dd1"]}
+              seriesName="TEV/LTM EBITDA"
             />
           </div>
         )}

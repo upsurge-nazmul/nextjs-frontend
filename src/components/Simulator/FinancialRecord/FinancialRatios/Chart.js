@@ -4,14 +4,19 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const ApexChart = ({ chartData, className, colors = ["#17d1bc"] }) => {
+const ApexChart = ({
+  chartData,
+  className,
+  colors = ["#17d1bc"],
+  seriesName = "",
+}) => {
   const [state, setState] = useState();
 
   useEffect(() => {
     setState({
       series: [
         {
-          name: "Closing Value",
+          name: seriesName,
           data: chartData,
         },
       ],
