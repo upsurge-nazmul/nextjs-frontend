@@ -85,35 +85,31 @@ export default function SimulatorOptions({
     }
   };
 
-  const quantityInput = (
-    <div className={styles.quantityInput}>
-      <input
-        type="number"
-        // className={styles.quantityInput}
-        value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
-      />
-      <div className={styles.inputButtonArea}>
-        <button
-          className={styles.inputIncrease}
-          onClick={() => setQuantity((prev) => parseFloat(prev) + 1)}
-        >
-          +
-        </button>
-        <button
-          className={styles.inputDescrease}
-          onClick={() => setQuantity((prev) => parseFloat(prev) - 1)}
-        >
-          -
-        </button>
-      </div>
-    </div>
-  );
-
   return (
     <div className={styles.simulatorOptoins}>
       <p className={styles.optionsTitle}>Quantity</p>
-      {quantityInput}
+      <div className={styles.quantityInput}>
+        <input
+          type="number"
+          // className={styles.quantityInput}
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+        <div className={styles.inputButtonArea}>
+          <button
+            className={styles.inputIncrease}
+            onClick={() => setQuantity((prev) => parseFloat(prev) + 1)}
+          >
+            +
+          </button>
+          <button
+            className={styles.inputDescrease}
+            onClick={() => setQuantity((prev) => parseFloat(prev) - 1)}
+          >
+            -
+          </button>
+        </div>
+      </div>
       <button className={styles.buyButton} onClick={() => setTradeMode("buy")}>
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
@@ -155,30 +151,41 @@ export default function SimulatorOptions({
         >
           {!isLoading && !tradeMsg ? (
             <div className={styles.tradePopupArea}>
-              {quantityInput}
-              <div className={styles.tradeInfo}>
-                <div className={styles.tradeType}>
-                  <span
+              <div className={styles.tradeTitle}>
+                <div
+                  className={
+                    tradeMode === "buy" ? styles.buyTitle : styles.sellTitle
+                  }
+                >
+                  {tradeMode.toUpperCase()}
+                </div>
+              </div>
+              <div className={styles.price}>
+                <div className={styles.label}>AT PRICE | INR </div>
+                <div className={styles.value}>
+                  <div>{price.toFixed(2)}</div>
+                  <div
                     className={
-                      tradeMode === "buy" ? styles.buyColor : styles.sellColor
+                      tradeMode === "buy" ? styles.buyHelper : styles.sellHelper
                     }
                   >
-                    {tradeMode.toUpperCase()}
-                  </span>
+                    {tradeMode === "buy" ? "LOWEST PRICE" : "HIGHEST PRICE"}
+                  </div>
                 </div>
-                <div className={styles.tradeValue}>
-                  <div className={styles.price}>
-                    <span className={styles.label}>Price </span>
-                    <span className={styles.value}>
-                      {"₹" + price.toFixed(2)}
-                    </span>
-                  </div>
-                  <div className={styles.total}>
-                    <span className={styles.label}>Total </span>
-                    <span className={styles.value}>
-                      {"₹" + (quantity * price).toFixed(2)}
-                    </span>
-                  </div>
+              </div>
+              <div className={styles.quantity}>
+                <div className={styles.label}>AMOUNT </div>
+                <input
+                  type="number"
+                  className={styles.value}
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+              </div>
+              <div className={styles.total}>
+                <div className={styles.label}>TOTAL | INR </div>
+                <div className={styles.value}>
+                  {(quantity * price).toFixed(2)}
                 </div>
               </div>
             </div>
