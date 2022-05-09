@@ -120,8 +120,8 @@ export default function Simulator({
 
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
-    if (mode !== modes[0].value) {
-      router.push(`/dashboard/w/${simulatorType}/${modes[0].value}`);
+    if (mode !== modes[1].value) {
+      router.push(`/dashboard/w/${simulatorType}/${modes[1].value}`);
     }
   };
 
@@ -173,6 +173,13 @@ export default function Simulator({
           </div>
           <div className={styles.bottomSection}>
             {mode === modes[0].value && (
+              <Portfolio
+                userData={userData}
+                token={token}
+                simulatorType={simulatorType}
+              />
+            )}
+            {mode === modes[1].value && (
               <>
                 {simulatorDailyData && (
                   <SimulatorDash
@@ -188,13 +195,6 @@ export default function Simulator({
                   />
                 )}
               </>
-            )}
-            {mode === modes[1].value && (
-              <Portfolio
-                userData={userData}
-                token={token}
-                simulatorType={simulatorType}
-              />
             )}
             {mode === modes[2].value && (
               <Leaderboard
