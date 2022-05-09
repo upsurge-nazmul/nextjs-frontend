@@ -26,6 +26,9 @@ export default function BankCards({
       <div className={styles.background} onClick={() => setshowcard(null)} />
 
       <div className={styles.main}>
+        <div className={styles.mainbg}>
+          <div className={styles.innerbg}></div>
+        </div>
         <div className={styles.mainheading}>Cards</div>
         {moneyacedata.is_atm_claim ? (
           <div className={styles.card}>
