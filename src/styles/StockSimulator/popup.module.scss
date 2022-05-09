@@ -1,3 +1,6 @@
+$buy-color: #27ae60;
+$sell-color: #eb5757;
+
 .tradePopup {
   height: 100%;
   width: 100%;
@@ -101,10 +104,18 @@
       }
       .proceedButton {
         @extend .button;
-        background: #4166eb;
+        background-color: #4166eb;
         &:hover {
-          background: hsl(227, 59%, 51%);
+          background-color: hsl(227, 59%, 51%);
         }
+      }
+      .buyButton {
+        @extend .button;
+        background-color: $buy-color;
+      }
+      .sellButton {
+        @extend .button;
+        background-color: $sell-color;
       }
     }
   }

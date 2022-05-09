@@ -10,6 +10,7 @@ export default function Popup({
     proceedText: "Proceed",
     isProceed: false,
     handleProceed: () => {},
+    proceedButtonType: "normal",
   },
   onOutsideClick = () => {},
   children,
@@ -43,7 +44,13 @@ export default function Popup({
           )}
           {actions.isProceed ? (
             <button
-              className={styles.proceedButton}
+              className={
+                actions.proceedButtonType === "buy"
+                  ? styles.buyButton
+                  : actions.proceedButtonType === "sell"
+                  ? styles.sellButton
+                  : styles.proceedButton
+              }
               onClick={actions.handleProceed}
             >
               {actions.proceedText}

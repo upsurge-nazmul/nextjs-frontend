@@ -143,9 +143,10 @@ export default function SimulatorOptions({
             cancelText: tradeMsg ? "Close" : "Cancel",
             isCancel: true,
             handleCancel: handleCancel,
-            proceedText: "Proceed",
+            proceedText: tradeMode === "buy" ? "BUY" : "SELL",
             isProceed: quantity > 0 && !tradeMsg,
             handleProceed: handleProceed,
+            proceedButtonType: tradeMode,
           }}
           title={companyDetails.name}
         >
