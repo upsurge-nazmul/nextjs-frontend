@@ -41,8 +41,9 @@ export default function MoneyAceDashboard({
   setmoneyacedata,
   settoastdata,
   settasks,
+  stage,
 }) {
-  const [currenttab, setcurrenttab] = useState("tasks");
+  const [currenttab, setcurrenttab] = useState("dashboard");
   const [currenttask, setcurrenttask] = useState("");
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
@@ -145,6 +146,7 @@ export default function MoneyAceDashboard({
         moneyacedata={moneyacedata}
         setvolume={setvolume}
         volume={volume}
+        inWelcomeScreen={stage === "welcome"}
       />
       <div className={styles.main}>
         {showdaily && (
@@ -184,6 +186,21 @@ export default function MoneyAceDashboard({
           </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
+              <div className={`${styles.link} ${styles.link0}`}>
+                <p className={styles.title}>Home</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/NY9GYFc/home-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
               <div className={`${styles.link} ${styles.link1}`}>
                 <p className={styles.title}>EDUCATION HUB</p>
                 <bg className={styles.bg}>
@@ -212,14 +229,24 @@ export default function MoneyAceDashboard({
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    src="https://i.ibb.co/GHWwgnp/bank-beveled.png"
                     alt=""
                   />
                 </bg>
               </div>
               <div
                 className={`${styles.link} ${styles.link3}`}
-                onClick={() => setcurrenttab("investmenthub")}
+                onClick={() => {
+                  if (!moneyacedata.investing_course) {
+                    settoastdata({
+                      show: true,
+                      type: "error",
+                      msg: "Investing course is required",
+                    });
+                    return;
+                  }
+                  setcurrenttab("investmenthub");
+                }}
               >
                 <p className={styles.title}>Investment</p>
                 <bg className={styles.bg}>
@@ -230,7 +257,7 @@ export default function MoneyAceDashboard({
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    src="https://i.ibb.co/qm57QYQ/invest-beveled.png"
                     alt=""
                   />
                 </bg>
@@ -248,7 +275,7 @@ export default function MoneyAceDashboard({
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    src="https://i.ibb.co/QnD63s0/online-shopping-beveled.png"
                     alt=""
                   />
                 </bg>
@@ -266,7 +293,7 @@ export default function MoneyAceDashboard({
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    src="https://i.ibb.co/VCjSFcp/jobs-beveled.png"
                     alt=""
                   />
                 </bg>
@@ -394,6 +421,7 @@ export default function MoneyAceDashboard({
               canvassize={canvassize}
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
             />
           ) : currenttab === "Games" ? (
             <MoneyAceGamesPage

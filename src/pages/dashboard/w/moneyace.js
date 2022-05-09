@@ -298,6 +298,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                       " " +
                       userdatafromserver.last_name
                     }
+                    stage={stage}
                     setstage={setstage}
                   />
                 ) : stage === "game" ? (

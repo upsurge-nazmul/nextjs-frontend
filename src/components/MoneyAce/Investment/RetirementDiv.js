@@ -76,162 +76,177 @@ export default function RetirementDiv({
   if (mode === "main")
     return (
       <div className={styles.fddiv}>
-        <BackSvg
-          className={styles.back}
+        <div
+          className={styles.background}
           onClick={() => {
             setcurrentmode("main");
           }}
-        />{" "}
-        <p className={styles.heading}>RETIREMENT FUND</p>
-        <div className={styles.wrapper}>
-          <div className={styles.row}>
-            <p>Intrest rate</p>
-            <input type="text" value={fddata?.return_on_investment + " %"} />
+        />
+        <div className={styles.main}>
+          <div className={styles.subbg}>
+            <div className={styles.innerbg}></div>
           </div>
-          <div className={styles.row}>
-            <p>Account balance</p>
-            <input
-              type="text"
-              value={"₹ " + toIndianFormat(moneyacedata?.account_balance)}
-            />
-          </div>
-          <div className={styles.row}>
-            <p>Current value retirement fund</p>
-            <input
-              type="text"
-              value={"₹ " + toIndianFormat(fddata?.total_investment)}
-            />
-          </div>
-          {err && <p className={styles.error}>{err}</p>}
-          <div className={styles.bottom}>
-            <div className={styles.btn} onClick={() => setmode("portfolio")}>
-              <p>Current Investments</p>
+          <p className={styles.heading}>RETIREMENT FUND</p>
+          <div className={styles.wrapper}>
+            <div className={styles.row}>
+              <p>Intrest rate</p>
+              <input type="text" value={fddata?.return_on_investment + " %"} />
             </div>
-            <div className={styles.btn} onClick={() => setmode("buy")}>
-              <p>Invest in Retirement Fund</p>
+            <div className={styles.row}>
+              <p>Account balance</p>
+              <input
+                type="text"
+                value={"₹ " + toIndianFormat(moneyacedata?.account_balance)}
+              />
+            </div>
+            <div className={styles.row}>
+              <p>Current value retirement fund</p>
+              <input
+                type="text"
+                value={"₹ " + toIndianFormat(fddata?.total_investment)}
+              />
+            </div>
+            {err && <p className={styles.error}>{err}</p>}
+            <div className={styles.bottom}>
+              <div
+                className={styles.backbutton}
+                onClick={() => setcurrentmode("main")}
+              >
+                <img
+                  src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                  alt=""
+                />
+              </div>
+              <div className={styles.btn} onClick={() => setmode("portfolio")}>
+                <img
+                  src="https://i.ibb.co/qWP5w1r/btn-icon-book-1.png"
+                  alt=""
+                />
+                <p style={{ textAlign: "center" }}>Current Investments</p>
+              </div>
+              <div className={styles.btn} onClick={() => setmode("buy")}>
+                <img
+                  src="https://i.ibb.co/6BTprr4/icon-circle-plus-0-1.png"
+                  alt=""
+                />
+                <p style={{ textAlign: "center" }}>Invest in Retirement Fund</p>
+              </div>
             </div>
           </div>
         </div>
-        <img
-          className={styles.homebtn}
-          onClick={() => {
-            setcurrentmode("main");
-            setcurrenttab("dashboard");
-          }}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
-          alt=""
-        />
       </div>
     );
   if (mode === "buy")
     return (
       <div className={styles.fddiv}>
-        <BackSvg
-          className={styles.back}
+        <div
+          className={styles.background}
           onClick={() => {
-            setmode("main");
+            setcurrentmode("main");
           }}
-        />{" "}
-        <p className={styles.heading}>NEW RETIREMENT FUND</p>
-        <div className={styles.wrapper}>
-          <div className={styles.row}>
-            <p>Enter amount</p>
+        />
+        <div className={styles.main}>
+          <div className={styles.subbg}>
+            <div className={styles.innerbg}></div>
           </div>
-          <div className={styles.row}>
-            <input
-              type="text"
-              value={"₹ " + amount}
-              onChange={(e) => setamount(removenonnumber(e.target.value))}
-              placeholder="Enter amount.."
-            />
-          </div>
-          <div className={styles.row}>
-            <p>Value at maturity</p>
-          </div>
-          <p className={styles.total}>
-            ₹{" "}
-            {toIndianFormat(
-              Number(amount) +
-                amount * ((1 + fddata?.return_on_investment / 100) * 5 - 1)
-            ) +
-              " at " +
-              fddata?.return_on_investment +
-              " % interest after 5 years"}
-          </p>
-          {err && <p className={styles.error}>{err}</p>}
-          <div className={styles.bottom}>
-            <div className={styles.btn} onClick={handlebuy}>
-              <p>Buy</p>
+          <p className={styles.heading}>NEW RETIREMENT FUND</p>
+          <div className={styles.wrapper}>
+            <div className={styles.row}>
+              <p style={{ textAlign: "center", justifyContent: "center" }}>
+                Enter amount
+              </p>
             </div>
-            <div className={styles.btn} onClick={() => setmode("main")}>
-              <p>Cancel</p>
+            <div className={styles.row}>
+              <input
+                type="text"
+                value={"₹ " + amount}
+                onChange={(e) => setamount(removenonnumber(e.target.value))}
+                placeholder="Enter amount.."
+              />
+            </div>
+            <div className={styles.row}>
+              <p style={{ textAlign: "center", justifyContent: "center" }}>
+                Value at maturity
+              </p>
+            </div>
+            <p className={styles.total}>
+              ₹{" "}
+              {toIndianFormat(
+                Number(amount) +
+                  amount * ((1 + fddata?.return_on_investment / 100) * 5 - 1)
+              ) +
+                " at " +
+                fddata?.return_on_investment +
+                " % interest after 5 years"}
+            </p>
+            {err && <p className={styles.error}>{err}</p>}
+            <div className={styles.bottom}>
+              <div className={styles.btn} onClick={handlebuy}>
+                <p>Buy</p>
+              </div>
+              <div className={styles.btn} onClick={() => setmode("main")}>
+                <p>Cancel</p>
+              </div>
             </div>
           </div>
         </div>
-        <img
-          className={styles.homebtn}
-          onClick={() => {
-            setcurrentmode("main");
-            setcurrenttab("dashboard");
-          }}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
-          alt=""
-        />
       </div>
     );
   if (mode === "portfolio")
     return (
-      <div className={styles.fddiv}>
-        <BackSvg
-          className={styles.back}
-          onClick={() => {
-            setmode("main");
-          }}
-        />
-        <p className={styles.heading}>CURRENT RETIREMENT FUNDS</p>
-        <div className={styles.scrollwrapper}>
-          <div className={styles.headRow}>
-            <div className={styles.rowitem}>#</div>
-            <div className={styles.rowitem}>Date</div>
-            <div className={styles.rowitem}>Principal</div>
-            <div className={styles.rowitem}>Maturity date</div>
-            <div className={styles.rowitem}>Value at maturity</div>
-            <div className={styles.rowitem}>ROI</div>
-          </div>
-          <div className={styles.rows}>
-            {portfoliodata.map((row, index) => {
-              return (
-                <div className={styles.row} key={row.id}>
-                  <div className={styles.rowitem}>{index + 1}</div>
-                  <div className={styles.rowitem}>
-                    {getIndianTime(row.timestamp)}
-                  </div>
-                  <div className={styles.rowitem}>
-                    ₹{toIndianFormat(row.invested_amount)}
-                  </div>
-                  <div className={styles.rowitem}>
-                    {getIndianTime(row.maturity_date)}
-                  </div>
-                  <div className={styles.rowitem}>
-                    ₹{toIndianFormat(row.maturity_value)}
-                  </div>
-                  <div className={styles.rowitem}>
-                    {row.interest_rate * 10}%
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <img
-          className={styles.homebtn}
+      <div className={`${styles.fddiv} ${styles.portfolio}`}>
+        <div
+          className={styles.background}
           onClick={() => {
             setcurrentmode("main");
-            setcurrenttab("dashboard");
           }}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
-          alt=""
         />
+        <div className={styles.main}>
+          <div className={styles.subbg}>
+            <div className={styles.innerbg}></div>
+          </div>
+          <p className={styles.heading}>CURRENT RETIREMENT FUNDS</p>
+          <div className={styles.scrollwrapper}>
+            <div className={styles.headRow}>
+              <div className={styles.rowitem}>#</div>
+              <div className={styles.rowitem}>Date</div>
+              <div className={styles.rowitem}>Principal</div>
+              <div className={styles.rowitem}>Maturity date</div>
+              <div className={styles.rowitem}>Value at maturity</div>
+              <div className={styles.rowitem}>ROI</div>
+            </div>
+            <div className={styles.rows}>
+              {portfoliodata.map((row, index) => {
+                return (
+                  <div className={styles.row} key={row.id}>
+                    <div className={styles.rowitem}>{index + 1}</div>
+                    <div className={styles.rowitem}>
+                      {getIndianTime(row.timestamp)}
+                    </div>
+                    <div className={styles.rowitem}>
+                      ₹{toIndianFormat(row.invested_amount)}
+                    </div>
+                    <div className={styles.rowitem}>
+                      {getIndianTime(row.maturity_date)}
+                    </div>
+                    <div className={styles.rowitem}>
+                      ₹{toIndianFormat(row.maturity_value)}
+                    </div>
+                    <div className={styles.rowitem}>
+                      {row.interest_rate * 10}%
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className={styles.backbutton} onClick={() => setmode("main")}>
+            <img
+              src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     );
   return null;
