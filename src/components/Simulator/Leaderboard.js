@@ -14,7 +14,7 @@ export default function Leaderboard({ userData, token, simulatorType }) {
         token,
         type: simulatorType,
       });
-      if (leaderboard.data.success) {
+      if (leaderboard.data && leaderboard.data.success) {
         setleaderboarddata(leaderboard.data.data);
       }
     }
