@@ -104,7 +104,9 @@ export default function SimulatorOptions({
           </button>
           <button
             className={styles.inputDescrease}
-            onClick={() => setQuantity((prev) => parseFloat(prev) - 1)}
+            onClick={() =>
+              setQuantity((prev) => (prev > 0 ? parseFloat(prev) - 1 : prev))
+            }
           >
             -
           </button>
