@@ -3,12 +3,14 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import CompaniesSvg from "../../../../components/SVGcomponents/StockSimulator/CompaniesSvg";
 import PortfolioSvg from "../../../../components/SVGcomponents/StockSimulator/PortfolioSvg";
 import LeaderboardSvg from "../../../../components/SVGcomponents/StockSimulator/LeaderboardSvg";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 
 import Simulator from "../../../../components/Simulator";
 
 const MODES = [
   { name: "Home", value: "home", icon: <PortfolioSvg /> },
   { name: "Companies", value: "companies", icon: <CompaniesSvg /> },
+  { name: "Competition", value: "competition", icon: <MilitaryTechIcon /> },
   { name: "Leaderboard", value: "leaderboard", icon: <LeaderboardSvg /> },
 ];
 

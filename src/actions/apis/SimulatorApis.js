@@ -64,8 +64,13 @@ const sellStock = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.postResponse(`${type}/sell`, payload, token);
 };
 
+// leaderboard apis
 const getLeaderboard = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/leaderboard`, payload, token);
+};
+
+const getDailyCompetition = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/leaderboard/daily`, payload, token);
 };
 
 // financial record apis
@@ -93,6 +98,7 @@ export default {
   buyStock,
   sellStock,
   getLeaderboard,
+  getDailyCompetition,
   getBalanceSheet,
   getAlphaBetaReturns,
   getFinancialRatios,
