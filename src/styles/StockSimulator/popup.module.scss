@@ -40,7 +40,7 @@ $sell-color: #eb5757;
   }
   .popupBody {
     background-color: white;
-    width: 60vw;
+    width: fit-content;
     height: 60vh;
     z-index: 10;
     overflow-y: hidden;
@@ -51,10 +51,10 @@ $sell-color: #eb5757;
       height: fit-content;
       background-color: #4066eb;
       color: #fff;
-      padding: 20px 0;
+      padding: 20px;
       text-align: center;
       .title {
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 700;
         &:first-child {
           margin-top: 0;
@@ -68,6 +68,7 @@ $sell-color: #eb5757;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0 20px;
       .message {
         font-size: 18px;
         font-weight: 600;
