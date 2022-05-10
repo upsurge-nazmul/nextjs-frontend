@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
+import StarIcon from "@mui/icons-material/Star";
 
 const Options = [
   { name: "Daily", value: "daily" },
@@ -70,9 +71,13 @@ export default function Competition({ userData, token, simulatorType }) {
                     backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
                   }}
                 >
-                  <p className={styles.rank}>{index + 1}</p>
+                  <p className={styles.rank}>
+                    {index < 10 ? index + 1 : <StarIcon />}
+                  </p>
                   <p className={styles.name}>
-                    {item.user.first_name + " " + item.user.last_name}
+                    {`${item.user.first_name ? item.user.first_name : ""} ${
+                      item.user.last_name ? item.user.last_name : ""
+                    }`}
                     {item.user.phone === userData.phone && " (you)"}
                   </p>
                   <p className={styles.score}>
