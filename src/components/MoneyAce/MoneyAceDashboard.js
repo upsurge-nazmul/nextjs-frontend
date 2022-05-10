@@ -25,6 +25,8 @@ import TaskModal from "./TaskModal";
 import MAQuiz from "./MoneyAceQuiz";
 import NineSlice from "../NineSlice";
 import Tasks from "./Tasks";
+import EducationHub from "./EducationHub";
+import JobHub from "./JobHub";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -83,17 +85,8 @@ export default function MoneyAceDashboard({
       }
     }
   }, [currenttab]);
-  const links = [
-    { name: "Bank", link: "Bank", img: "https://i.ibb.co/MsY3sDZ/Bank.png" },
-    {
-      name: "Invest",
-      link: "investmenthub",
-      img: "https://i.ibb.co/vP38sSj/Invest.png",
-    },
-    { name: "UPI", link: "upi", img: "https://i.ibb.co/xMpR0zL/UPI.png" },
-    { name: "Shop", link: "store", img: "https://i.ibb.co/qpX0bqS/Shop.png" },
-    { name: "Games", link: "Games", img: "https://i.ibb.co/7XbdHV8/Games.png" },
-  ];
+  const jobhubtasks = ["task-22", "task-25", "task-30"];
+  const educationhubtasks = ["task-20", "task-31", "task-28", "task-24"];
   useEffect(() => {
     loaddailyreward();
     async function loaddailyreward() {
@@ -133,7 +126,7 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
-
+  console.log(tasks);
   return (
     <div className={styles.dashboard}>
       <audio ref={ref} src="/audio/dashboard.wav" autoPlay loop />
@@ -201,7 +194,13 @@ export default function MoneyAceDashboard({
                   />
                 </bg>
               </div>
-              <div className={`${styles.link} ${styles.link1}`}>
+              <div
+                className={`${styles.link} ${styles.link1}`}
+                onClick={() => setcurrenttab("educationhub")}
+              >
+                {tasks.findIndex((item) =>
+                  educationhubtasks.includes(item.id)
+                ) !== -1 && <div className={styles.alert} />}
                 <p className={styles.title}>EDUCATION HUB</p>
                 <bg className={styles.bg}>
                   <img
@@ -282,8 +281,10 @@ export default function MoneyAceDashboard({
               </div>
               <div
                 className={`${styles.link} ${styles.link5}`}
-                onClick={() => setcurrenttab("store")}
+                onClick={() => setcurrenttab("Games")}
               >
+                {tasks.findIndex((item) => jobhubtasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Jobs</p>
                 <bg className={styles.bg}>
                   <img
@@ -316,77 +317,6 @@ export default function MoneyAceDashboard({
                   />
                 </bg>
               </div>
-              {/*  */}
-              {/* <div className={styles.top}>
-                <div className={styles.right}>
-                  <div className={styles.heading}>
-                    <div className={styles.namewrapper}>
-                      <img
-                        src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                        alt=""
-                      />
-                      <p>TASKS</p>
-                    </div>
-                  </div>
-                  <div className={styles.taskwrapper}>
-                    {tasks?.map((item, index) => {
-                      return (
-                        <MoneyAceTask
-                          key={item.id}
-                          data={item}
-                          index={index}
-                          settaskmodal={settaskmodal}
-                          setstage={setstage}
-                          setgamedata={setgamedata}
-                          setcurrenttab={setcurrenttab}
-                          moneyacedata={moneyacedata}
-                          settasks={settasks}
-                          setquiz={setquiz}
-                          setcurrenttask={setcurrenttask}
-                          settoastdata={settoastdata}
-                          currenttask={currenttask}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.bottom}>
-                <div className={styles.heading}>
-                  <div className={styles.namewrapper}>
-                    <img
-                      src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                      alt=""
-                    />
-                    <p>LINKS</p>
-                  </div>
-                </div>
-                <div className={styles.middle}>
-                  {links.map((link) => (
-                    <div
-                      key={"link" + link}
-                      className={styles.item}
-                      onClick={() => {
-                        if (
-                          link.link === "investmenthub" &&
-                          !moneyacedata.investing_course
-                        ) {
-                          settoastdata({
-                            show: true,
-                            type: "error",
-                            msg: "Investing course is required",
-                          });
-                          return;
-                        }
-                        setcurrenttab(link.link);
-                      }}
-                    >
-                      <img src={link.img} alt="" />
-                      <p className={styles.linkname}>{link.name}</p>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
             </div>
           ) : currenttab === "tasks" ? (
             <Tasks
@@ -403,8 +333,16 @@ export default function MoneyAceDashboard({
               setcurrenttask={setcurrenttask}
               currenttask={currenttask}
             />
-          ) : currenttab === "passbook" ? (
-            <PassBook setcurrenttab={setcurrenttab} />
+          ) : currenttab === "educationhub" ? (
+            <EducationHub
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+              moneyacedata={moneyacedata}
+              setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
+            />
           ) : currenttab === "investmenthub" ? (
             <MoneyAceInvestment
               setcurrenttab={setcurrenttab}
@@ -424,9 +362,14 @@ export default function MoneyAceDashboard({
               settoastdata={settoastdata}
             />
           ) : currenttab === "Games" ? (
-            <MoneyAceGamesPage
+            <JobHub
               setcurrenttab={setcurrenttab}
               canvassize={canvassize}
+              moneyacedata={moneyacedata}
+              setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
             />
           ) : currenttab === "store" ? (
             <VirtualStore

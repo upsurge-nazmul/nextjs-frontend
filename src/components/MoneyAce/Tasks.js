@@ -124,16 +124,13 @@ export default function Tasks({
             );
           })}
         </div>
-      </div>
-
-      {mode === "main" && (
-        <img
-          className={styles.back}
+        <div
+          className={styles.backbutton}
           onClick={() => setcurrenttab("dashboard")}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
-          alt=""
-        />
-      )}
+        >
+          <img src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png" alt="" />
+        </div>
+      </div>
     </div>
   );
 }

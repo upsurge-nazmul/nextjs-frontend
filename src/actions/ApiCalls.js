@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Servers } from "../../config";
 
-const BaseUrl = Servers.LiveServer;
+const BaseUrl = Servers.TestServer;
 const getHeader = async (formData, token) => {
   return {
     Accept: formData ? "multipart/form-data" : "application/json",
@@ -122,4 +122,3 @@ export const postResponseFormData = async (url, payload) => {
       console.log(error);
     });
 };
-
