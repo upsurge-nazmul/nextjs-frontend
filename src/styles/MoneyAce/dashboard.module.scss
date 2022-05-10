@@ -1,3 +1,15 @@
+@keyframes zoominout {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
 .dashboard {
   width: 100%;
   height: auto;
@@ -51,6 +63,17 @@
         padding-bottom: 22%;
         z-index: 1;
       }
+    }
+    .alert {
+      width: 1vw;
+      height: 1vw;
+      background: rgb(255, 65, 65);
+      border-radius: 1vw;
+      position: absolute;
+      z-index: 2;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+      left: -10%;
+      animation: zoominout 1s linear infinite;
     }
   }
   .link0 {

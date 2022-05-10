@@ -328,20 +328,6 @@ export default function MoneyAceInvestment({
                   }
                 }}
               ></div>
-
-              <div className={styles.heading}>
-                <div className={styles.namewrapper}>
-                  <img
-                    src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                    alt=""
-                  />
-                  <p>
-                    {moneyacedata.is_demat_account_open
-                      ? "Account details"
-                      : "upsurge demat form"}
-                  </p>
-                </div>
-              </div>
               <div className={styles.form}>
                 <div className={styles.subbg}>
                   <div className={styles.innerbg}></div>

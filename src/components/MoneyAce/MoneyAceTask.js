@@ -75,14 +75,7 @@ export default function MoneyAceTask({
   }
   return (
     <div className={styles.task}>
-      <div className={styles.bg}>
-        <div className={styles.innerbg}></div>
-      </div>
-
-      <p className={styles.num}>
-        {index + 1 < 10 ? "0" + (index + 1) : index + 1}
-      </p>
-      <div className={styles.prallelogram}>
+      <div className={styles.main}>
         <img
           src={
             data.bg ||
@@ -100,10 +93,8 @@ export default function MoneyAceTask({
               : "Complete " + data.name + " task and get rewards."}
           </p>
         </div>
-      </div>
-      <div className={styles.right}>
-        <PlayArrowRoundedIcon
-          className={styles.playicon}
+        <div
+          className={styles.btn}
           onClick={() => {
             setcurrenttask(data.id);
             if (data.id === "task-08") {
@@ -166,7 +157,12 @@ export default function MoneyAceTask({
               alert("wip..");
             }
           }}
-        />
+        >
+          <div className={styles.btnInside}>START</div>
+        </div>
+        {/* <div className={styles.right}>
+          <PlayArrowRoundedIcon className={styles.playicon} />
+        </div> */}
       </div>
     </div>
   );
