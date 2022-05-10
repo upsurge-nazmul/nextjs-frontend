@@ -2,31 +2,37 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 
-const Options = ["Daily", "Weekly", "Monthly"];
+const Options = [
+  { name: "Daily", value: "daily" },
+  { name: "Weekly", value: "weekly" },
+  { name: "Monthly", value: "monthly" },
+];
 
 export default function Competition({ userData, token, simulatorType }) {
   const [leaderboarddata, setleaderboarddata] = useState();
-  const [selected, setselected] = useState(Options[0]);
+  const [selected, setselected] = useState(Options[0].value);
 
   async function changeleaderboard(type) {
     setselected(type);
   }
 
   useEffect(() => {
-    async function fetchDailyCompetitionData() {
+    async function fetchDailyCompetitionData(duration) {
+      setleaderboarddata(null);
       let leaderboard = await SimulatorApis.getDailyCompetition({
         payload: {
           // max: 10,
         },
         token,
         type: simulatorType,
+        duration,
       });
-      if (leaderboard.data.success) {
+      if (leaderboard.data && leaderboard.data.success) {
         setleaderboarddata(leaderboard.data.data);
-      }
+      } else setleaderboarddata();
     }
-    fetchDailyCompetitionData();
-  }, [token]);
+    fetchDailyCompetitionData(selected);
+  }, [token, selected]);
 
   return (
     <div className={styles.leaderboard}>
@@ -34,14 +40,15 @@ export default function Competition({ userData, token, simulatorType }) {
         {Options.map((item) => (
           <p
             className={`${styles.heading} ${
-              selected === item && styles.selected
+              selected === item.value && styles.selected
             }`}
-            key={item}
+            key={item.value}
             onClick={() => {
-              changeleaderboard(item);
+              setleaderboarddata(null);
+              changeleaderboard(item.value);
             }}
           >
-            {item}
+            {item.name}
           </p>
         ))}
       </div>
@@ -69,7 +76,9 @@ export default function Competition({ userData, token, simulatorType }) {
                     {item.user.phone === userData.phone && " (you)"}
                   </p>
                   <p className={styles.score}>
-                    {parseFloat(item.record.current_return).toFixed(2)}
+                    {selected === Options[0].value
+                      ? parseFloat(item.record.current_return).toFixed(2)
+                      : parseFloat(item.cumulated_return).toFixed(2)}
                   </p>
                 </div>
               );

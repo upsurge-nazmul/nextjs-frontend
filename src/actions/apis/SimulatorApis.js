@@ -69,8 +69,17 @@ const getLeaderboard = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/leaderboard`, payload, token);
 };
 
-const getDailyCompetition = ({ payload, token, type = "stocksimulator" }) => {
-  return ApiCalls.getResponse(`${type}/leaderboard/daily`, payload, token);
+const getDailyCompetition = ({
+  payload,
+  token,
+  type = "stocksimulator",
+  duration = "daily",
+}) => {
+  return ApiCalls.getResponse(
+    `${type}/leaderboard/${duration}`,
+    payload,
+    token
+  );
 };
 
 // financial record apis
