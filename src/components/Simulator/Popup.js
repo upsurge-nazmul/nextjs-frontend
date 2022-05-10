@@ -18,12 +18,6 @@ export default function Popup({
   return (
     <div className={styles.tradePopup}>
       <div className={styles.popupBackground} onClick={onOutsideClick} />
-      <div
-        className={styles.cross}
-        onClick={actions.handleCancel ? actions.handleCancel : onOutsideClick}
-      >
-        <CancelOutlinedIcon className={styles.icon} />
-      </div>
       <div className={styles.popupBody}>
         {title && (
           <div className={styles.titleArea}>

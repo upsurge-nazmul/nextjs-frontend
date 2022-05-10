@@ -18,33 +18,13 @@ $sell-color: #eb5757;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: -1;
   }
-  .cross {
-    position: fixed;
-    top: 10%;
-    right: 15%;
-    z-index: 100;
-    background-color: white;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .icon {
-      font-size: 40px;
-      color: rgb(255, 109, 109);
-      transition: all 0.3s ease;
-      &:hover {
-        color: hsl(0, 75%, 65%);
-        cursor: pointer;
-      }
-    }
-  }
   .popupBody {
     background-color: white;
     width: fit-content;
-    height: 60vh;
+    height: fit-content;
+    min-height: 300px;
     z-index: 10;
     overflow-y: hidden;
-    padding-bottom: 200px;
     position: relative;
     border-radius: 40px;
     .titleArea {
@@ -62,7 +42,7 @@ $sell-color: #eb5757;
       }
     }
     .messageArea {
-      height: 40vh;
+      height: fit-content;
       min-height: 200px;
       width: 100%;
       display: flex;
@@ -78,10 +58,12 @@ $sell-color: #eb5757;
     .tradeActionArea {
       width: 100%;
       height: fit-content;
+      padding: 20px 0;
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
+      gap: 20px;
       .button {
         display: flex;
         align-items: center;
@@ -141,40 +123,19 @@ $sell-color: #eb5757;
       background-color: rgba(0, 0, 0, 0.25);
       z-index: -1;
     }
-    .cross {
-      position: fixed;
-      top: 10%;
-      right: 15%;
-      z-index: 100;
-      background-color: white;
-      border-radius: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .icon {
-        font-size: 40px;
-        color: rgb(255, 109, 109);
-        transition: all 0.3s ease;
-        &:hover {
-          color: hsl(0, 75%, 65%);
-          cursor: pointer;
-        }
-      }
-    }
     .popupBody {
       background-color: white;
-      width: 80vw;
-      height: 60vh;
+      width: fit-content;
+      height: fit-content;
       z-index: 10;
       overflow-y: hidden;
-      padding-bottom: 200px;
       position: relative;
       border-radius: 40px;
       .titleArea {
         height: fit-content;
         background-color: #4066eb;
         color: #fff;
-        padding: 20px 0;
+        padding: 20px;
         text-align: center;
         .title {
           font-size: 18px;
@@ -185,7 +146,7 @@ $sell-color: #eb5757;
         }
       }
       .messageArea {
-        height: 40vh;
+        height: fit-content;
         min-height: 200px;
         width: 100%;
         display: flex;
@@ -202,16 +163,17 @@ $sell-color: #eb5757;
         height: fit-content;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
+        gap: 20px;
         .button {
           display: flex;
           align-items: center;
           justify-content: center;
           border: none;
-          font-size: 16px;
-          width: 150px;
-          height: 48px;
+          font-size: 12px;
+          width: 100px;
+          height: 40px;
           border-radius: 6px;
           color: white;
           transition: all 0.3s ease;
@@ -256,40 +218,19 @@ $sell-color: #eb5757;
       background-color: rgba(0, 0, 0, 0.25);
       z-index: -1;
     }
-    .cross {
-      position: fixed;
-      top: 10%;
-      right: 15%;
-      z-index: 100;
-      background-color: white;
-      border-radius: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .icon {
-        font-size: 40px;
-        color: rgb(255, 109, 109);
-        transition: all 0.3s ease;
-        &:hover {
-          color: hsl(0, 75%, 65%);
-          cursor: pointer;
-        }
-      }
-    }
     .popupBody {
       background-color: white;
-      width: 60vw;
-      height: 80vh;
+      width: fit-content;
+      height: fit-content;
       z-index: 10;
       overflow-y: hidden;
-      padding-bottom: 200px;
       position: relative;
       border-radius: 40px;
       .titleArea {
         height: fit-content;
         background-color: #4066eb;
         color: #fff;
-        padding: 20px 0;
+        padding: 20px;
         text-align: center;
         .title {
           font-size: 18px;
@@ -300,7 +241,7 @@ $sell-color: #eb5757;
         }
       }
       .messageArea {
-        height: 40vh;
+        height: fit-content;
         min-height: 200px;
         width: 100%;
         display: flex;
@@ -317,8 +258,9 @@ $sell-color: #eb5757;
         height: fit-content;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
+        gap: 20px;
       }
     }
   }
