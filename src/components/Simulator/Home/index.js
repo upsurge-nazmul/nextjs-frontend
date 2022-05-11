@@ -1,11 +1,39 @@
+import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/home.module.scss";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import Holdings from "../Portfolio/Holdings";
 
-export default function Home() {
+export default function Home({ userData, token, simulatorType }) {
+  const [holdingsData, setHoldingsData] = useState();
+
+  useEffect(() => {
+    async function fetchUserHoldings() {
+      let hlds = await SimulatorApis.getUserHoldings({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (hlds.data.success) {
+        setHoldingsData(hlds.data.data);
+      }
+    }
+    fetchUserHoldings();
+  }, []);
+
+  console.log("@@@@@@@@", holdingsData);
+
   return (
     <div className={styles.home}>
       <div className={styles.left}>
         <div className={styles.topLeft}>
-          <div className={styles.portfolioHoldings}>Portfolio holdings</div>
+          <div className={styles.portfolioHoldings}>
+            <div className={styles.holdingsTitle}>Portfolio Holdings</div>
+            <Holdings
+              chartData={holdingsData}
+              className={styles.holdingsChart}
+              legendPosition={"right"}
+            />
+          </div>
           <div className={styles.portfolioInfo}>
             <div className={styles.portfolioInfo1}>Info 1</div>
             <div className={styles.portfolioInfo2}>Info 2</div>
