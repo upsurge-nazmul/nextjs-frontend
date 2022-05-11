@@ -1,3 +1,9 @@
+$common-border-radius: 14px;
+$primary-color: #17d1bc;
+$dark-font-color: #464e5f;
+$light-font-color: #b5b5c3;
+$chart-color: #5200ff;
+
 .home {
   width: 100%;
   height: 100%;
@@ -5,28 +11,26 @@
   flex-direction: row;
   gap: 20px;
   .left {
-    flex: 0.75;
+    flex: 0.5;
     display: flex;
     flex-direction: column;
     gap: 20px;
     .topLeft {
       flex: 1;
-      background-color: #fff;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      border-radius: 14px;
+      background-color: $chart-color;
+      border-radius: $common-border-radius;
       .portfolioHoldings {
         border-radius: inherit;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         width: 100%;
-        flex: 1.25;
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #5200ff;
         .holdingsTitle {
           font-size: 16px;
           font-weight: 700;
@@ -40,14 +44,31 @@
         }
       }
       .portfolioInfo {
+        background-color: #fff;
+        border-radius: $common-border-radius;
         flex: 1;
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 20px;
+        padding: 20px 0;
         > * {
           flex: 1;
           min-width: 45%;
+        }
+        .infoItem {
+          padding-left: 30px;
+          .label {
+            font-size: 10px;
+            color: $light-font-color;
+          }
+          .value {
+            font-size: 18px;
+            font-weight: 600;
+            color: $dark-font-color;
+          }
         }
       }
     }
@@ -57,15 +78,18 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      border-radius: $common-border-radius;
       .firstChart {
         flex: 1;
         width: 100%;
         background-color: aqua;
+        border-radius: inherit;
       }
       .secondChart {
         flex: 1;
         width: 100%;
         background-color: aquamarine;
+        border-radius: inherit;
       }
     }
   }
@@ -77,24 +101,68 @@
     .topRight {
       flex: 1;
       background-color: #fff;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      border-radius: $common-border-radius;
       .portfolioHeadingSection {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         .portfolioHeading {
           .heading {
+            font-size: 18px;
+            font-weight: 600;
+            color: $dark-font-color;
+            padding-bottom: 10px;
           }
           .subHeading {
+            font-size: 10px;
+            color: $light-font-color;
           }
         }
         .portfolioOptions {
+          width: fit-content;
+          height: fit-content;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          .option {
+            color: $light-font-color;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 4px;
+          }
+          .activeOption {
+            @extend .option;
+            background-color: $dark-font-color;
+            color: #fff;
+          }
         }
       }
       .myStocks {
-        flex: 0.5;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        .singleStock {
+          height: fit-content;
+          width: fit-content;
+          font-size: 10px;
+          font-weight: 600;
+          color: #333;
+          background-color: #ececec;
+          padding: 6px 12px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        .activeSingleStock {
+          @extend .singleStock;
+          background-color: $primary-color;
+          color: #fff;
+        }
       }
       .topReturns {
         flex: 1;
@@ -103,6 +171,7 @@
     .bottomRight {
       flex: 1;
       background-color: #fff;
+      border-radius: $common-border-radius;
     }
   }
 }
