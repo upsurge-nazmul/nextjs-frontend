@@ -62,7 +62,6 @@ export default function Holdings({
             },
             // width: 100,
             formatter: function (val, opts) {
-              console.log("!!!!!!!!!!!", opts);
               return opts.w.config.labels[opts.seriesIndex];
               // + "₹" +
               // String(

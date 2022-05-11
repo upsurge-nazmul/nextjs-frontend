@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/home.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
-import Holdings from "../Portfolio/Holdings";
+import Holdings from "../Portfolio/Holdings2";
 
 export default function Home({ userData, token, simulatorType }) {
   const [holdingsData, setHoldingsData] = useState();
@@ -14,7 +14,16 @@ export default function Home({ userData, token, simulatorType }) {
         type: simulatorType,
       });
       if (hlds.data.success) {
-        setHoldingsData(hlds.data.data);
+        let chartData = [];
+        let fs = [];
+        for (let item of hlds.data.data) {
+          chartData.push({
+            id: item.symbol,
+            label: item.name,
+            value: item.amount,
+          });
+        }
+        setHoldingsData(chartData);
       }
     }
     fetchUserHoldings();
@@ -28,11 +37,13 @@ export default function Home({ userData, token, simulatorType }) {
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
-            <Holdings
-              chartData={holdingsData}
-              className={styles.holdingsChart}
-              legendPosition={"right"}
-            />
+            {holdingsData && (
+              <Holdings
+                chartData={holdingsData}
+                className={styles.holdingsChart}
+                legendPosition={"right"}
+              />
+            )}
           </div>
           <div className={styles.portfolioInfo}>
             <div className={styles.portfolioInfo1}>Info 1</div>

@@ -4,22 +4,27 @@ export default function Holdings({ chartData }) {
   return (
     <ResponsivePieCanvas
       data={chartData}
-      margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
-      innerRadius={0.5}
-      padAngle={0.7}
-      cornerRadius={3}
+      margin={{ top: 20, right: 40, bottom: 50, left: 20 }}
+      innerRadius={0.55}
       activeOuterRadiusOffset={8}
-      colors={{ scheme: "paired" }}
+      colors={{ scheme: "nivo" }}
       borderColor={{
         from: "color",
-        modifiers: [["darker", 0.6]],
+        modifiers: [["darker", 0.2]],
       }}
       arcLinkLabelsSkipAngle={10}
-      arcLinkLabelsTextColor="#333333"
-      arcLinkLabelsThickness={2}
-      arcLinkLabelsColor={{ from: "color" }}
+      arcLinkLabelsTextOffset={3}
+      arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
+      arcLinkLabelsDiagonalLength={10}
+      arcLinkLabelsStraightLength={12}
+      arcLinkLabelsThickness={3}
+      arcLinkLabelsColor={{ from: "color", modifiers: [] }}
+      enableArcLabels={false}
       arcLabelsSkipAngle={10}
-      arcLabelsTextColor="#333333"
+      arcLabelsTextColor={{
+        from: "color",
+        modifiers: [["darker", 2]],
+      }}
       defs={[
         {
           id: "dots",
@@ -42,6 +47,15 @@ export default function Holdings({ chartData }) {
       ]}
       fill={[]}
       legends={[]}
+      motionConfig={{
+        mass: 1,
+        tension: 170,
+        friction: 26,
+        clamp: true,
+        precision: 0.01,
+        velocity: 0,
+      }}
+      height={300}
     />
   );
 }
