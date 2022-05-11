@@ -4,6 +4,7 @@ import { MainContext } from "../../context/Main";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
+import Home from "./Home";
 import SimulatorDash from "./Dash";
 import Watchlist from "./Watchlist";
 import Toast from "../Toast";
@@ -174,13 +175,20 @@ export default function Simulator({
           </div>
           <div className={styles.bottomSection}>
             {mode === modes[0].value && (
-              <Portfolio
+              <Home
                 userData={userData}
                 token={token}
                 simulatorType={simulatorType}
               />
             )}
             {mode === modes[1].value && (
+              <Portfolio
+                userData={userData}
+                token={token}
+                simulatorType={simulatorType}
+              />
+            )}
+            {mode === modes[2].value && (
               <>
                 {simulatorDailyData && (
                   <SimulatorDash
@@ -197,14 +205,14 @@ export default function Simulator({
                 )}
               </>
             )}
-            {mode === modes[2].value && (
+            {mode === modes[3].value && (
               <Competition
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[3].value && (
+            {mode === modes[4].value && (
               <Leaderboard
                 token={token}
                 userData={userData}
