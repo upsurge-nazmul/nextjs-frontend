@@ -43,9 +43,9 @@
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(244, 245, 247, 1) 50%,
-      rgba(244, 245, 247, 1) 100%
+      rgba(255, 255, 255, 1) 30%,
+      rgba(244, 245, 247, 0) 50%,
+      rgba(244, 245, 247, 0) 100%
     );
     left: 15px;
     top: -8px;
@@ -129,20 +129,19 @@
     color: $d-midlight;
   }
   input {
-    background:$d-moredark;
-    color:$d-text2;
+    background: $d-moredark;
+    color: $d-text2;
   }
   .options {
- 
     background-color: $d-main;
     border: 1px solid $d-light;
-  
+
     .option {
       border-bottom: 1px solid $d-light;
       color: $d-text2;
       &:hover {
-      color: $d-text1;
-      background-color: $d-moredark;
+        color: $d-text1;
+        background-color: $d-moredark;
       }
     }
   }
