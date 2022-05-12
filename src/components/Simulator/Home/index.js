@@ -14,14 +14,12 @@ const StockDurations = [
 ];
 
 export default function Home({ userData, token, simulatorType }) {
-  const [holdingsData, setHoldingsData] = useState();
+  const [holdingsChartData, setHoldingsChartData] = useState();
   const [activeDuration, setActiveDuration] = useState(
     StockDurations[StockDurations.length - 1].value
   );
   const [userStocks, setUserStocks] = useState();
   const [selectedStock, setSelectedStock] = useState("all");
-  const [chart1Data, setChart1Data] = useState();
-  const [chart2Data, setChart2Data] = useState();
   const [chartData, setChartData] = useState();
 
   useEffect(() => {
@@ -33,7 +31,6 @@ export default function Home({ userData, token, simulatorType }) {
       });
       if (hlds.data.success) {
         let chartData = [];
-        let fs = [];
         for (let item of hlds.data.data) {
           chartData.push({
             id: item.symbol,
@@ -41,7 +38,7 @@ export default function Home({ userData, token, simulatorType }) {
             value: item.amount,
           });
         }
-        setHoldingsData(chartData);
+        setHoldingsChartData(chartData);
       }
     }
     fetchUserHoldings();
@@ -80,38 +77,48 @@ export default function Home({ userData, token, simulatorType }) {
     fetchUserStocks();
   }, []);
 
+  console.log("!!!!!!!!!", holdingsChartData);
+
   return (
     <div className={styles.home}>
       <div className={styles.left}>
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
-            {holdingsData && (
+            {holdingsChartData && (
               <Holdings
-                chartData={holdingsData}
+                chartData={holdingsChartData}
                 className={styles.holdingsChart}
                 legendPosition={"right"}
               />
             )}
           </div>
-          <div className={styles.portfolioInfo}>
-            <div className={styles.infoItem}>
-              <div className={styles.label}>Total Assets Value</div>
-              <div className={styles.value}>₹1000</div>
+          {holdingsChartData && (
+            <div className={styles.portfolioInfo}>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>Total Cash Portfolio</div>
+                <div className={styles.value}>{`₹${parseFloat(
+                  holdingsChartData[0].value
+                ).toFixed(2)}`}</div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>Total Number of Stocks</div>
+                <div className={styles.value}>
+                  {("0" + String(holdingsChartData.length - 1)).slice(-2)}
+                </div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>Total Stock Portfolio</div>
+                <div className={styles.value}>{`₹${parseFloat(
+                  holdingsChartData[0].value
+                ).toFixed(2)}`}</div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>Total Assets Value</div>
+                <div className={styles.value}>₹1000</div>
+              </div>
             </div>
-            <div className={styles.infoItem}>
-              <div className={styles.label}>Total Assets Value</div>
-              <div className={styles.value}>₹1000</div>
-            </div>
-            <div className={styles.infoItem}>
-              <div className={styles.label}>Total Assets Value</div>
-              <div className={styles.value}>₹1000</div>
-            </div>
-            <div className={styles.infoItem}>
-              <div className={styles.label}>Total Assets Value</div>
-              <div className={styles.value}>₹1000</div>
-            </div>
-          </div>
+          )}
         </div>
         <div className={styles.bottomLeft}>
           {chartData &&
