@@ -3,6 +3,8 @@ import styles from "../../../styles/StockSimulator/home.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import Holdings from "../Portfolio/Holdings2";
 import UserStocks from "./UserStocks";
+import Chart from "./Chart";
+import { getShortForm } from "../../../helpers/shortForms";
 
 const StockDurations = [
   { name: "Month", value: "month" },
@@ -17,6 +19,9 @@ export default function Home({ userData, token, simulatorType }) {
   );
   const [userStocks, setUserStocks] = useState();
   const [selectedStock, setSelectedStock] = useState("all");
+  const [chart1Data, setChart1Data] = useState();
+  const [chart2Data, setChart2Data] = useState();
+  const [chartData, setChartData] = useState();
 
   useEffect(() => {
     async function fetchUserHoldings() {
@@ -50,12 +55,29 @@ export default function Home({ userData, token, simulatorType }) {
       });
       if (stcks.data.success) {
         setUserStocks(stcks.data.data.rows);
+
+        let chartsData = [];
+        for (let stock of stcks.data.data.rows.slice(0, 2)) {
+          let values = [];
+          for (let item of stock.history) {
+            let xAxisValue = new Date(item.date);
+            values.push({
+              x: xAxisValue,
+              y: parseFloat(item.close),
+            });
+          }
+          chartsData.push({
+            name: stock.name,
+            symbol: stock.symbol,
+            total_value: stock.total_value,
+            data: values,
+          });
+        }
+        setChartData(chartsData);
       }
     }
     fetchUserStocks();
   }, []);
-
-  //   console.log("@@@@@@@@", holdingsData, userStocks);
 
   return (
     <div className={styles.home}>
@@ -91,8 +113,32 @@ export default function Home({ userData, token, simulatorType }) {
           </div>
         </div>
         <div className={styles.bottomLeft}>
-          <div className={styles.firstChart}>Chart 1</div>
-          <div className={styles.secondChart}>Chart 2</div>
+          <div className={styles.chartArea}>
+            {chartData &&
+              chartData.length &&
+              chartData.map((data, i) => {
+                return (
+                  <div key={i}>
+                    <div className={styles.chartInfo}>
+                      <div className={styles.icon}>
+                        {getShortForm(data.name)}
+                      </div>
+                      <div className={styles.nameArea}>
+                        <div className={styles.value}>
+                          {"₹" + parseFloat(data.total_value).toFixed(2)}
+                        </div>
+                        <div className={styles.name}>{data.name}</div>
+                      </div>
+                    </div>
+                    <Chart
+                      chartData={data.data}
+                      className={styles.chart}
+                      colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
+                    />
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
       <div className={styles.right}>
