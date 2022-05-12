@@ -17,7 +17,7 @@ export default function CourseJobCard({ data, isActive }) {
         <div className={styles.benefits}>
           {Object.keys(data.benefits).map((item) => {
             return (
-              <div className={styles.benefit}>
+              <div className={styles.benefit} key={item}>
                 <p className={styles.text}>{item}</p>
                 <img src={images[item]} alt="" />
                 <p className={styles.text}>{data.benefits[item]}</p>
