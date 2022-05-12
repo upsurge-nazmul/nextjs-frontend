@@ -7,6 +7,7 @@ import GameApis from "../../actions/apis/GameApis";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { MainContext } from "../../context/Main";
 import { getCookie } from "../../actions/cookieUtils";
+import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 export default function MoneyAceTask({
   data,
   index,
@@ -15,6 +16,11 @@ export default function MoneyAceTask({
   setcurrenttab,
   moneyacedata,
   settaskmodal,
+  setquiz,
+  setcurrenttask,
+  settasks,
+  currenttask,
+  settoastdata,
 }) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
@@ -57,8 +63,15 @@ export default function MoneyAceTask({
       setstage("game");
     }
   }
-  if (data.id === "task-03" && moneyacedata.is_account_open) {
-    return null;
+  async function completetask() {
+    let res = await MoneyAceApis.completetask({ id: data.id });
+    if (res && res.data && res.data.success) {
+      settasks((prev) => prev.filter((item) => item.id !== currenttask));
+      setcurrenttab("xx");
+      setcurrenttab("dashboard");
+    } else {
+      seterror(res?.data?.message || "Error connecting to server");
+    }
   }
   return (
     <div className={styles.task}>
@@ -92,16 +105,63 @@ export default function MoneyAceTask({
         <PlayArrowRoundedIcon
           className={styles.playicon}
           onClick={() => {
+            setcurrenttask(data.id);
+            if (data.id === "task-08") {
+              completetask();
+              return;
+            }
+            if (data.id === "task-15") {
+              if (!moneyacedata.is_upi_claim) {
+                setcurrenttab("upi");
+              } else {
+                setcurrenttab("Bank");
+              }
+              return;
+            }
+            if (data.id === "task-25") {
+              if (!moneyacedata.fishing_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Fishing Course is required",
+                  type: "error",
+                });
+              } else {
+                handlegamepush(data.action_id);
+              }
+              return;
+            }
+            if (data.id === "task-30") {
+              if (!moneyacedata.driving_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Driving Course is required",
+                  type: "error",
+                });
+              } else {
+                handlegamepush(data.action_id);
+              }
+              return;
+            }
+
             if (data.action === "game") {
               handlegamepush(data.action_id);
             } else if (data.action === "bank") {
               setcurrenttab("Bank");
             } else if (data.action === "investment") {
+              if (!moneyacedata.investing_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Investing Course is required",
+                  type: "error",
+                });
+              }
               setcurrenttab("investmenthub");
             } else if (data.action === "shop") {
               setcurrenttab("store");
             } else if (data.action === "modal") {
               settaskmodal(data);
+            } else if (data.action === "quiz") {
+              setquiz(data.action_id);
             } else {
               alert("wip..");
             }

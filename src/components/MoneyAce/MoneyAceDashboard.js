@@ -22,6 +22,7 @@ import { toIndianFormat } from "../../helpers/currency";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import TaskModal from "./TaskModal";
+import MAQuiz from "./MoneyAceQuiz";
 
 export default function MoneyAceDashboard({
   avatarUrl,
@@ -41,9 +42,11 @@ export default function MoneyAceDashboard({
   settasks,
 }) {
   const [currenttab, setcurrenttab] = useState("dashboard");
+  const [currenttask, setcurrenttask] = useState("");
   const [showdaily, setshowdaily] = useState(false);
   const [dailydata, setdailydata] = useState(null);
   const [taskmodal, settaskmodal] = useState(false);
+  const [quiz, setquiz] = useState(false);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
   const { theme } = useContext(MainContext);
   const router = useRouter();
@@ -66,6 +69,13 @@ export default function MoneyAceDashboard({
         null,
         getCookie("accesstoken")
       );
+      gettasks();
+      async function gettasks() {
+        let res = await MoneyAceApis.getTasks();
+        if (res && res.data && res.data.success) {
+          settasks(res.data.data);
+        }
+      }
       if (res && res.data && res.data.success) {
         if (setmoneyacedata) setmoneyacedata(res.data.data);
       }
@@ -140,7 +150,22 @@ export default function MoneyAceDashboard({
           }`}
         >
           {taskmodal && (
-            <TaskModal data={taskmodal} settaskmodal={settaskmodal} />
+            <TaskModal
+              data={taskmodal}
+              settaskmodal={settaskmodal}
+              currenttask={currenttask}
+              settasks={settasks}
+              setcurrenttab={setcurrenttab}
+            />
+          )}
+          {quiz && (
+            <MAQuiz
+              quiz={quiz}
+              setquiz={setquiz}
+              currenttask={currenttask}
+              setcurrenttab={setcurrenttab}
+              settasks={settasks}
+            />
           )}
           <div className={styles.devoptions}>
             <p onClick={handlereset}>Reset All</p>
@@ -217,6 +242,10 @@ export default function MoneyAceDashboard({
                           setcurrenttab={setcurrenttab}
                           moneyacedata={moneyacedata}
                           settasks={settasks}
+                          setquiz={setquiz}
+                          setcurrenttask={setcurrenttask}
+                          settoastdata={settoastdata}
+                          currenttask={currenttask}
                         />
                       );
                     })}
