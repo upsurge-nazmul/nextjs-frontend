@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/MoneyAce/dailyreward.module.scss";
+import RewardBox from "./RewardBox";
 export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
   const [opened, setopened] = useState(false);
   const arr = [0, 1, 2, 3, 4, 5, 6];
   return (
     <div className={styles.profile}>
       <div className={styles.bg} />
-
       <div className={styles.main}>
         <p className={styles.heading}>Daily Reward</p>
         <div className={styles.divmain}>
@@ -40,30 +40,15 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
               </div>
             )}
           </div>
-          {/* https://i.ibb.co/QmNYGPh/gift-box-png-favpng-AM7-Ti-Mpij-QB62a6s-Pu-WXsdvc-A.jpg
-https://i.ibb.co/jVmpWM4/pngtree-christmas-open-gift-box-png-image-2835863.jpg */}
           <div className={styles.bottombar}>
             {arr.map((item) => {
-              if (item === data?.reward) {
-                console.log(item, data?.reward);
-                console.log("ssss", item === data?.reward && opened);
-                console.log(item > data?.reward);
-              }
-
               return (
-                <div className={styles.day} key={"reward" + item}>
-                  <img
-                    src={
-                      item >= data?.reward
-                        ? item === data?.reward && opened
-                          ? "https://i.ibb.co/C5FqHWd/toppng-com-opened-red-gift-box-600x319.png"
-                          : "https://i.ibb.co/2MgB40Q/toppng-com-ift-box-in-red-png-clipart-gift-box-clipart-2371x2679.png"
-                        : "https://i.ibb.co/C5FqHWd/toppng-com-opened-red-gift-box-600x319.png"
-                    }
-                    alt=""
-                  />
-                  <p>Day {item + 1}</p>
-                </div>
+                <RewardBox
+                  data={data}
+                  key={"reward" + item}
+                  index={item}
+                  opened={opened}
+                />
               );
             })}
           </div>

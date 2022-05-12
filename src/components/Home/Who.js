@@ -41,12 +41,17 @@ function Who() {
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
-            <Image
+            <video className={styles.video} autoplay controls>
+              <source src="/intro.mp4" type="video/mp4"></source>
+              />
+            </video>
+
+            {/* <Image
               src="https://i.ibb.co/LRc6Jsp/shutterstock-1136939339-min.jpg"
               alt=""
               layout="fill"
               objectFit="cover"
-            />
+            /> */}
           </div>
         </div>
       </div>

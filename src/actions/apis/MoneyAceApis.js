@@ -1,6 +1,13 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
+//quiz
 
+const getquestions = (payload, token) => {
+  return ApiCalls.getResponse(`games/moneyace/quizdata`, payload, token);
+};
+const checkanswer = (payload, token) => {
+  return ApiCalls.getResponse(`games/moneyace/checkanswer`, payload, token);
+};
 // bank apis
 const investmentrecords = (payload) => {
   return ApiCalls.getResponse(
@@ -336,6 +343,8 @@ const MoneyAceApis = {
   nextday,
   completetask,
   allowinvesting,
+  getquestions,
+  checkanswer,
 };
 
 export default MoneyAceApis;

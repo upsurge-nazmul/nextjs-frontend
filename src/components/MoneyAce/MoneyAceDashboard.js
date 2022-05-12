@@ -87,6 +87,23 @@ export default function MoneyAceDashboard({
   }, [currenttab]);
   const jobhubtasks = ["task-22", "task-25", "task-30"];
   const educationhubtasks = ["task-20", "task-31", "task-28", "task-24"];
+  const banktasks = ["task-03", "task-04", "task-08", "task-14", "task-15"];
+  const investmenttasks = [
+    "task-34",
+    "task-35",
+    "task-36",
+    "task-37",
+    "task-38",
+  ];
+  const shoptasks = [
+    "task-05",
+    "task-12",
+    "task-13",
+    "task-17",
+    "task-23",
+    "task-27",
+    "task-29",
+  ];
   useEffect(() => {
     loaddailyreward();
     async function loaddailyreward() {
@@ -219,6 +236,8 @@ export default function MoneyAceDashboard({
                 className={`${styles.link} ${styles.link2}`}
                 onClick={() => setcurrenttab("Bank")}
               >
+                {tasks.findIndex((item) => banktasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Bank</p>
                 <bg className={styles.bg}>
                   <img
@@ -247,6 +266,9 @@ export default function MoneyAceDashboard({
                   setcurrenttab("investmenthub");
                 }}
               >
+                {tasks.findIndex((item) =>
+                  investmenttasks.includes(item.id)
+                ) !== -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Investment</p>
                 <bg className={styles.bg}>
                   <img
@@ -265,6 +287,8 @@ export default function MoneyAceDashboard({
                 className={`${styles.link} ${styles.link4}`}
                 onClick={() => setcurrenttab("store")}
               >
+                {tasks.findIndex((item) => shoptasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Shop</p>
                 <bg className={styles.bg}>
                   <img
