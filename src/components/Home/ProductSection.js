@@ -52,7 +52,7 @@ function ProductSection() {
   return (
     <section
       className={`${styles.productSection} ${
-        theme && styles.darkproductSection
+        theme === "dark" && styles.darkproductSection
       }`}
     >
       <div className={styles.heading}>Our Products</div>

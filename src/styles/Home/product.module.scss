@@ -9,6 +9,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 0 10% 0px;
+  z-index: 2;
   .heading {
     margin-bottom: 50px;
     font-size: 46px;
@@ -113,33 +114,31 @@
   }
 }
 .darkproductSection {
-background-color:$d-main;
+  background-color: $d-main;
   .heading {
-    color:$d-text2;
+    color: $d-text2;
   }
   .wrapper {
-z-index: 1;
+    z-index: 1;
     .pillar {
-
       .icon {
         width: 40%;
-color: $d-moredark;
+        color: $d-moredark;
         path: {
           fill: $d-moredark;
         }
       }
-      svg{
-        path{
+      svg {
+        path {
           fill: $d-moredark;
         }
       }
       .title {
-        color:$d-moredark;
+        color: $d-moredark;
       }
       .description {
-        color:$d-moredark;
+        color: $d-moredark;
       }
-
     }
   }
   .wrapper2 {
