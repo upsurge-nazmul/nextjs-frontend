@@ -198,6 +198,16 @@ $chart-color: #5200ff;
       flex: 1;
       background-color: #fff;
       border-radius: $common-border-radius;
+      padding: 20px;
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: $dark-font-color;
+        padding-bottom: 10px;
+      }
+      .cards {
+        padding: 10px 0;
+      }
     }
   }
 }

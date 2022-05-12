@@ -5,6 +5,7 @@ import Holdings from "../Portfolio/Holdings2";
 import UserStocks from "./UserStocks";
 import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
+import ProfitableStocks from "./ProfitableStocks";
 
 const StockDurations = [
   { name: "Month", value: "month" },
@@ -196,11 +197,9 @@ export default function Home({ userData, token, simulatorType }) {
           </div>
         </div>
         <div className={styles.bottomRight}>
-          <div className={styles.follwoingTitle}>People You're following</div>
-          <div className={styles.follwingCards}>
-            <div>Card 1</div>
-            <div>Card 2</div>
-            <div>Card 3</div>
+          <div className={styles.title}>Most Profitable Stocks</div>
+          <div className={styles.cards}>
+            <ProfitableStocks data={userStocks} />
           </div>
         </div>
       </div>
