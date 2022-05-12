@@ -113,32 +113,28 @@ export default function Home({ userData, token, simulatorType }) {
           </div>
         </div>
         <div className={styles.bottomLeft}>
-          <div className={styles.chartArea}>
-            {chartData &&
-              chartData.length &&
-              chartData.map((data, i) => {
-                return (
-                  <div key={i}>
-                    <div className={styles.chartInfo}>
-                      <div className={styles.icon}>
-                        {getShortForm(data.name)}
+          {chartData &&
+            chartData.length &&
+            chartData.map((data, i) => {
+              return (
+                <div key={i} className={styles.chartArea}>
+                  <div className={styles.chartInfo}>
+                    <div className={styles.icon}>{getShortForm(data.name)}</div>
+                    <div className={styles.nameArea}>
+                      <div className={styles.value}>
+                        {"₹" + parseFloat(data.total_value).toFixed(2)}
                       </div>
-                      <div className={styles.nameArea}>
-                        <div className={styles.value}>
-                          {"₹" + parseFloat(data.total_value).toFixed(2)}
-                        </div>
-                        <div className={styles.name}>{data.name}</div>
-                      </div>
+                      <div className={styles.name}>{data.name}</div>
                     </div>
-                    <Chart
-                      chartData={data.data}
-                      className={styles.chart}
-                      colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
-                    />
                   </div>
-                );
-              })}
-          </div>
+                  <Chart
+                    chartData={data.data}
+                    className={styles.chart}
+                    colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
       <div className={styles.right}>
