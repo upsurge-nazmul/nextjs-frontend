@@ -13,7 +13,7 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
       let comps = await SimulatorApis.getTopCompanies({
         payload: {},
         token,
-        simulatorType,
+        type: simulatorType,
         duration,
       });
       if (comps.data && comps.data.success) {

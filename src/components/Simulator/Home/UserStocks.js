@@ -20,7 +20,7 @@ export default function UserStocks({
           user_id: userData.user_id,
         },
         token,
-        simulatorType,
+        type: simulatorType,
         duration: duration,
       });
       if (comps.data && comps.data.success) {
