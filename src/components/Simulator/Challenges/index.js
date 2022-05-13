@@ -5,9 +5,9 @@ export default function Challenges(props) {
   return (
     <>
       {props.simulatorType === "cryptosimulator" ? (
-        <CryptoChallenges {...{ props }} />
+        <CryptoChallenges {...{ ...props }} />
       ) : (
-        <StockChallenges {...{ props }} />
+        <StockChallenges {...{ ...props }} />
       )}
     </>
   );

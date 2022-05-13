@@ -23,7 +23,7 @@ const getStocks = ({ payload, token, type = "stocksimulator" }) => {
       null,
       token
     );
-  } else {
+  } else if (payload.from && payload.to) {
     return ApiCalls.getResponse(
       `${type}/${type === "cryptosimulator" ? "cryptos" : "stocks"}?from=${
         payload.from
@@ -31,7 +31,12 @@ const getStocks = ({ payload, token, type = "stocksimulator" }) => {
       null,
       token
     );
-  }
+  } else
+    return ApiCalls.getResponse(
+      `${type}/${type === "cryptosimulator" ? "cryptos" : "stocks"}`,
+      null,
+      token
+    );
 };
 
 // user apis
