@@ -95,6 +95,29 @@ const getFinancialRatios = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/financialRatios`, payload, token);
 };
 
+// companies apis
+const getTopCompanies = ({
+  payload,
+  token,
+  type = "stocksimulator",
+  duration = "daily",
+}) => {
+  return ApiCalls.getResponse(`${type}/companies/${duration}`, payload, token);
+};
+
+const getTopUserCompanies = ({
+  payload,
+  token,
+  type = "stocksimulator",
+  duration = "daily",
+}) => {
+  return ApiCalls.getResponse(
+    `${type}/companies/user/${duration}`,
+    payload,
+    token
+  );
+};
+
 export default {
   getWatchlist,
   addToWatchlist,
@@ -111,4 +134,6 @@ export default {
   getBalanceSheet,
   getAlphaBetaReturns,
   getFinancialRatios,
+  getTopCompanies,
+  getTopUserCompanies,
 };

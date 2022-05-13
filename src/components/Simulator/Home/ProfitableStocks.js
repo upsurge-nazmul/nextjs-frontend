@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/profitableStocks.module.scss";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getShortForm } from "../../../helpers/shortForms";
 
-export default function ProfitableStocks({ data }) {
+export default function ProfitableStocks({ token, simulatorType, duration }) {
+  const [companies, setCompanies] = useState();
+
+  useEffect(() => {
+    async function fetchTopCompanies() {
+      setCompanies();
+      let comps = await SimulatorApis.getTopCompanies({
+        payload: {},
+        token,
+        simulatorType,
+        duration,
+      });
+      if (comps.data && comps.data.success) {
+        setCompanies(comps.data.data.rows);
+      }
+    }
+    fetchTopCompanies();
+  }, [duration]);
+
   return (
     <>
-      {data &&
-        data.length &&
-        data.map((item, i) => {
+      {companies &&
+        companies.length &&
+        companies.map((item, i) => {
           return (
             <div key={i} className={styles.card}>
               <div className={styles.iconArea}>
@@ -22,7 +42,15 @@ export default function ProfitableStocks({ data }) {
               <div className={styles.valueArea}>
                 <div className={styles.label}>Today's Return</div>
                 <div className={styles.value}>
-                  <div className={styles.gain}>{"₹" + "54"}</div>
+                  <div
+                    className={
+                      parseFloat(item.current_return) > 0
+                        ? styles.gain
+                        : parseFloat(item.current_return) < 0
+                        ? styles.loss
+                        : styles.nutral
+                    }
+                  >{`₹${parseFloat(item.current_return).toFixed(2)}`}</div>
                 </div>
               </div>
               <div className={styles.buttonArea}>

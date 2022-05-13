@@ -1,12 +1,39 @@
+import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/userStocks.module.scss";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getShortForm } from "../../../helpers/shortForms";
 
-export default function UserStocks({ data }) {
+export default function UserStocks({
+  userData,
+  token,
+  simulatorType,
+  duration,
+}) {
+  const [companies, setCompanies] = useState();
+
+  useEffect(() => {
+    async function fetchTopCompanies() {
+      setCompanies();
+      let comps = await SimulatorApis.getTopUserCompanies({
+        payload: {
+          user_id: userData.user_id,
+        },
+        token,
+        simulatorType,
+        duration: duration,
+      });
+      if (comps.data && comps.data.success) {
+        setCompanies(comps.data.data);
+      }
+    }
+    fetchTopCompanies();
+  }, [duration]);
+
   return (
     <>
-      {data &&
-        data.length &&
-        data.map((item, i) => {
+      {companies &&
+        companies.length &&
+        companies.map((item, i) => {
           return (
             <div key={i} className={styles.card}>
               <div className={styles.iconArea}>
@@ -19,11 +46,22 @@ export default function UserStocks({ data }) {
               <div className={styles.valueArea}>
                 <div className={styles.label}>Total Value</div>
                 <div className={styles.value}>
-                  {"₹" + parseFloat(item.total_value).toFixed(2)}
+                  {"₹" +
+                    (
+                      parseFloat(item.current_price) * parseFloat(item.quantity)
+                    ).toFixed(2)}
                 </div>
               </div>
               <div className={styles.gainArea}>
-                <div className={styles.loss}>{`-5%`}</div>
+                <div
+                  className={
+                    parseFloat(item.current_return) > 0
+                      ? styles.gain
+                      : parseFloat(item.current_return) < 0
+                      ? styles.loss
+                      : styles.nutral
+                  }
+                >{`${parseFloat(item.current_return).toFixed(2)}`}</div>
               </div>
               <div className={styles.buttonArea}>
                 <button className={styles.button}>{"->"}</button>

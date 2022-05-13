@@ -8,9 +8,9 @@ import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
 
 const StockDurations = [
-  { name: "Month", value: "month" },
-  { name: "Week", value: "week" },
-  { name: "Day", value: "day" },
+  { name: "Month", value: "monthly" },
+  { name: "Week", value: "weekly" },
+  { name: "Day", value: "daily" },
 ];
 
 export default function Home({ userData, token, simulatorType }) {
@@ -76,8 +76,6 @@ export default function Home({ userData, token, simulatorType }) {
     }
     fetchUserStocks();
   }, []);
-
-  console.log("!!!!!!!!!", holdingsChartData);
 
   return (
     <div className={styles.home}>
@@ -200,13 +198,22 @@ export default function Home({ userData, token, simulatorType }) {
               })}
           </div>
           <div className={styles.topReturns}>
-            <UserStocks data={userStocks} />
+            <UserStocks
+              userData={userData}
+              token={token}
+              simulatorType={simulatorType}
+              duration={activeDuration}
+            />
           </div>
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.title}>Most Profitable Stocks</div>
           <div className={styles.cards}>
-            <ProfitableStocks data={userStocks} />
+            <ProfitableStocks
+              token={token}
+              simulatorType={simulatorType}
+              duration={activeDuration}
+            />
           </div>
         </div>
       </div>
