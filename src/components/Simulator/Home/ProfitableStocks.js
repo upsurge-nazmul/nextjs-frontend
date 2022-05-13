@@ -71,7 +71,7 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
                   </div>
                 )}
                 <div className={styles.valueArea}>
-                  <div className={styles.label}>Today's Return</div>
+                  <div className={styles.label}>Return</div>
                   <div className={styles.value}>
                     <div
                       className={

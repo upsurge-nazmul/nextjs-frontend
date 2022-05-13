@@ -11,9 +11,10 @@ import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
 import Leaderboard from "./Leaderboard";
+import Competition from "./Competition";
+import Challenges from "./Challenges";
 import styles from "../../styles/StockSimulator/simulator.module.scss";
 import { getTodaysDateRange } from "../../helpers/timehelpers";
-import Competition from "./Competition";
 
 export default function Simulator({
   userData,
@@ -182,13 +183,6 @@ export default function Simulator({
               />
             )}
             {mode === modes[1].value && (
-              <Portfolio
-                userData={userData}
-                token={token}
-                simulatorType={simulatorType}
-              />
-            )}
-            {mode === modes[2].value && (
               <>
                 {simulatorDailyData && (
                   <SimulatorDash
@@ -205,14 +199,28 @@ export default function Simulator({
                 )}
               </>
             )}
+            {mode === modes[2].value && (
+              <Portfolio
+                userData={userData}
+                token={token}
+                simulatorType={simulatorType}
+              />
+            )}
             {mode === modes[3].value && (
-              <Competition
+              <Challenges
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
             {mode === modes[4].value && (
+              <Competition
+                token={token}
+                userData={userData}
+                simulatorType={simulatorType}
+              />
+            )}
+            {mode === modes[5].value && (
               <Leaderboard
                 token={token}
                 userData={userData}

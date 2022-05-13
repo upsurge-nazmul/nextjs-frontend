@@ -90,8 +90,6 @@ export default function Home({ userData, token, simulatorType }) {
     return String(((currPer * 100) / 1000000).toFixed(2)) + "%";
   };
 
-  console.log("!!!!!!!!!!!", lastUpdated);
-
   return (
     <div className={styles.home}>
       <div className={styles.left}>
