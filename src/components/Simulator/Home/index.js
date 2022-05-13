@@ -15,7 +15,10 @@ const StockDurations = [
 
 export default function Home({ userData, token, simulatorType }) {
   const [holdingsChartData, setHoldingsChartData] = useState();
-  const [activeDuration, setActiveDuration] = useState(
+  const [activePortfDuration, setActivePortfDuration] = useState(
+    StockDurations[StockDurations.length - 1].value
+  );
+  const [activeProfitableDuration, setActiveProfitableDuration] = useState(
     StockDurations[StockDurations.length - 1].value
   );
   const [userStocks, setUserStocks] = useState();
@@ -155,12 +158,12 @@ export default function Home({ userData, token, simulatorType }) {
                 return (
                   <div
                     className={
-                      duration.value === activeDuration
+                      duration.value === activePortfDuration
                         ? styles.activeOption
                         : styles.option
                     }
                     key={i}
-                    onClick={() => setActiveDuration(duration.value)}
+                    onClick={() => setActivePortfDuration(duration.value)}
                   >
                     {duration.name}
                   </div>
@@ -202,17 +205,37 @@ export default function Home({ userData, token, simulatorType }) {
               userData={userData}
               token={token}
               simulatorType={simulatorType}
-              duration={activeDuration}
+              duration={activePortfDuration}
+              selected={selectedStock}
             />
           </div>
         </div>
         <div className={styles.bottomRight}>
-          <div className={styles.title}>Most Profitable Stocks</div>
+          <div className={styles.headingArea}>
+            <div className={styles.title}>Most Profitable Stocks</div>
+            <div className={styles.profitableStocksOptions}>
+              {StockDurations.map((duration, i) => {
+                return (
+                  <div
+                    className={
+                      duration.value === activeProfitableDuration
+                        ? styles.activeOption
+                        : styles.option
+                    }
+                    key={i}
+                    onClick={() => setActiveProfitableDuration(duration.value)}
+                  >
+                    {duration.name}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
           <div className={styles.cards}>
             <ProfitableStocks
               token={token}
               simulatorType={simulatorType}
-              duration={activeDuration}
+              duration={activeProfitableDuration}
             />
           </div>
         </div>

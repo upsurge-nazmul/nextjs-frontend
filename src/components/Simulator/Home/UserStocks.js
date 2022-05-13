@@ -8,6 +8,7 @@ export default function UserStocks({
   token,
   simulatorType,
   duration,
+  selected = "all",
 }) {
   const [companies, setCompanies] = useState();
 
@@ -23,11 +24,16 @@ export default function UserStocks({
         duration: duration,
       });
       if (comps.data && comps.data.success) {
-        setCompanies(comps.data.data);
+        if (selected === "all") {
+          setCompanies(comps.data.data);
+        } else {
+          let filt = comps.data.data.filter((c) => c.symbol !== selected);
+          setCompanies(filt);
+        }
       }
     }
     fetchTopCompanies();
-  }, [duration]);
+  }, [duration, selected]);
 
   return (
     <>
@@ -52,6 +58,10 @@ export default function UserStocks({
                     ).toFixed(2)}
                 </div>
               </div>
+              <div className={styles.qtArea}>
+                <div className={styles.label}>Quantity</div>
+                <div className={styles.value}>{item.quantity}</div>
+              </div>
               <div className={styles.gainArea}>
                 <div
                   className={
@@ -61,7 +71,7 @@ export default function UserStocks({
                       ? styles.loss
                       : styles.nutral
                   }
-                >{`${parseFloat(item.current_return).toFixed(2)}`}</div>
+                >{`₹${parseFloat(item.current_return).toFixed(2)}`}</div>
               </div>
               <div className={styles.buttonArea}>
                 <button className={styles.button}>{"->"}</button>

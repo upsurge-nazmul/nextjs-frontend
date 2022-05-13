@@ -11,7 +11,7 @@ $chart-color: #5200ff;
   flex-direction: row;
   gap: 20px;
   .left {
-    flex: 0.5;
+    flex: 0.75;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -199,14 +199,39 @@ $chart-color: #5200ff;
       background-color: #fff;
       border-radius: $common-border-radius;
       padding: 20px;
-      .title {
-        font-size: 18px;
-        font-weight: 600;
-        color: $dark-font-color;
-        padding-bottom: 10px;
+      .headingArea {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .title {
+          font-size: 18px;
+          font-weight: 600;
+          color: $dark-font-color;
+          padding-bottom: 10px;
+        }
+        .profitableStocksOptions {
+          width: fit-content;
+          height: fit-content;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          .option {
+            color: $light-font-color;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 4px;
+          }
+          .activeOption {
+            @extend .option;
+            background-color: $dark-font-color;
+            color: #fff;
+          }
+        }
       }
       .cards {
         padding: 10px 0;
+        height: 100%;
       }
     }
   }
