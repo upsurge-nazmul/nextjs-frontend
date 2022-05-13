@@ -25,6 +25,7 @@ export default function Home({ userData, token, simulatorType }) {
   const [selectedStock, setSelectedStock] = useState("all");
   const [chartData, setChartData] = useState();
   const [stockPortfolio, setStockPortfolio] = useState();
+  const [lastUpdated, setLastUpdated] = useState();
 
   useEffect(() => {
     async function fetchUserHoldings() {
@@ -88,6 +89,8 @@ export default function Home({ userData, token, simulatorType }) {
     let currPer = holdingsChartData[0].value;
     return String(((currPer * 100) / 1000000).toFixed(2)) + "%";
   };
+
+  console.log("!!!!!!!!!!!", lastUpdated);
 
   return (
     <div className={styles.home}>
@@ -160,7 +163,9 @@ export default function Home({ userData, token, simulatorType }) {
           <div className={styles.portfolioHeadingSection}>
             <div className={styles.portfolioHeading}>
               <div className={styles.heading}>You Portfolio</div>
-              <div className={styles.subHeading}>Last Updated...</div>
+              <div className={styles.subHeading}>
+                Last Updated at {lastUpdated}
+              </div>
             </div>
             <div className={styles.portfolioOptions}>
               {StockDurations.map((duration, i) => {
@@ -216,6 +221,7 @@ export default function Home({ userData, token, simulatorType }) {
               simulatorType={simulatorType}
               duration={activePortfDuration}
               selected={selectedStock}
+              setLastUpdated={setLastUpdated}
             />
           </div>
         </div>

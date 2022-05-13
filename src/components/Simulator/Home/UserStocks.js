@@ -9,8 +9,17 @@ export default function UserStocks({
   simulatorType,
   duration,
   selected = "all",
+  setLastUpdated = () => {},
 }) {
   const [companies, setCompanies] = useState();
+
+  const convetedDate = (date) => {
+    date = new Date(date);
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
+    return `${d}/${m}/${y}`;
+  };
 
   useEffect(() => {
     async function fetchTopCompanies() {
@@ -27,9 +36,10 @@ export default function UserStocks({
         if (selected === "all") {
           setCompanies(comps.data.data);
         } else {
-          let filt = comps.data.data.filter((c) => c.symbol !== selected);
+          let filt = comps.data.data.filter((c) => c.symbol === selected);
           setCompanies(filt);
         }
+        setLastUpdated(convetedDate(comps.data.data[0].date));
       }
     }
     fetchTopCompanies();
