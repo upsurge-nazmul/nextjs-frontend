@@ -71,11 +71,13 @@ export default function UserStocks({
                       ? styles.loss
                       : styles.nutral
                   }
-                >{`₹${parseFloat(item.current_return).toFixed(2)}`}</div>
+                >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
+                  2
+                )}`}</div>
               </div>
-              <div className={styles.buttonArea}>
+              {/* <div className={styles.buttonArea}>
                 <button className={styles.button}>{"->"}</button>
-              </div>
+              </div> */}
             </div>
           );
         })}

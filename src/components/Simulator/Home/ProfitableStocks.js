@@ -40,6 +40,36 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
                     item.close
                   ).toFixed(2)}`}</div>
                 </div>
+                {duration === "daily" && (
+                  <div className={styles.propertiesArea}>
+                    <div className={styles.properties}>
+                      <div className={styles.propertyItem}>
+                        <div className={styles.label}>O</div>
+                        <div className={styles.value}>
+                          {parseFloat(item.open).toFixed(2)}
+                        </div>
+                      </div>
+                      <div className={styles.propertyItem}>
+                        <div className={styles.label}>C</div>
+                        <div className={styles.value}>
+                          {parseFloat(item.close).toFixed(2)}
+                        </div>
+                      </div>
+                      <div className={styles.propertyItem}>
+                        <div className={styles.label}>H</div>
+                        <div className={styles.value}>
+                          {parseFloat(item.high).toFixed(2)}
+                        </div>
+                      </div>
+                      <div className={styles.propertyItem}>
+                        <div className={styles.label}>L</div>
+                        <div className={styles.value}>
+                          {parseFloat(item.low).toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className={styles.valueArea}>
                   <div className={styles.label}>Today's Return</div>
                   <div className={styles.value}>
@@ -51,12 +81,14 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
                           ? styles.loss
                           : styles.nutral
                       }
-                    >{`₹${parseFloat(item.current_return).toFixed(2)}`}</div>
+                    >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
+                      2
+                    )}`}</div>
                   </div>
                 </div>
-                <div className={styles.buttonArea}>
+                {/* <div className={styles.buttonArea}>
                   <button className={styles.button}>{"->"}</button>
-                </div>
+                </div> */}
               </div>
             );
           })

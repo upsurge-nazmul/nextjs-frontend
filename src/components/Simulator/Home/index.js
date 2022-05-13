@@ -24,6 +24,7 @@ export default function Home({ userData, token, simulatorType }) {
   const [userStocks, setUserStocks] = useState();
   const [selectedStock, setSelectedStock] = useState("all");
   const [chartData, setChartData] = useState();
+  const [stockPortfolio, setStockPortfolio] = useState();
 
   useEffect(() => {
     async function fetchUserHoldings() {
@@ -43,6 +44,9 @@ export default function Home({ userData, token, simulatorType }) {
         }
         setHoldingsChartData(chartData);
       }
+      let otherItems = hlds.data.data.slice(1, hlds.data.data.length);
+      let otherSum = otherItems.reduce((acc, cur) => acc + cur.amount, 0);
+      setStockPortfolio(otherSum);
     }
     fetchUserHoldings();
   }, []);
@@ -80,6 +84,11 @@ export default function Home({ userData, token, simulatorType }) {
     fetchUserStocks();
   }, []);
 
+  const getCashHoldingPercentage = () => {
+    let currPer = holdingsChartData[0].value;
+    return String(((currPer * 100) / 1000000).toFixed(2)) + "%";
+  };
+
   return (
     <div className={styles.home}>
       <div className={styles.left}>
@@ -94,7 +103,7 @@ export default function Home({ userData, token, simulatorType }) {
               />
             )}
           </div>
-          {holdingsChartData && (
+          {holdingsChartData && stockPortfolio && (
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
@@ -103,20 +112,20 @@ export default function Home({ userData, token, simulatorType }) {
                 ).toFixed(2)}`}</div>
               </div>
               <div className={styles.infoItem}>
+                <div className={styles.label}>Total Stock Portfolio</div>
+                <div className={styles.value}>{`₹${stockPortfolio.toFixed(
+                  2
+                )}`}</div>
+              </div>
+              <div className={styles.infoItem}>
                 <div className={styles.label}>Total Number of Stocks</div>
                 <div className={styles.value}>
                   {("0" + String(holdingsChartData.length - 1)).slice(-2)}
                 </div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Total Stock Portfolio</div>
-                <div className={styles.value}>{`₹${parseFloat(
-                  holdingsChartData[0].value
-                ).toFixed(2)}`}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.label}>Total Assets Value</div>
-                <div className={styles.value}>₹1000</div>
+                <div className={styles.label}>Remaining Assets</div>
+                <div className={styles.value}>{getCashHoldingPercentage()}</div>
               </div>
             </div>
           )}
