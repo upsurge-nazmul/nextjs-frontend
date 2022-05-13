@@ -1,7 +1,14 @@
-export default function Challenges({ userData, token, simulatorType }) {
+import CryptoChallenges from "./CryptoChallenges";
+import StockChallenges from "./StockChallenges";
+
+export default function Challenges(props) {
   return (
-    <div>
-      <h1>Challenges</h1>
-    </div>
+    <>
+      {props.simulatorType === "cryptosimulator" ? (
+        <CryptoChallenges {...{ props }} />
+      ) : (
+        <StockChallenges {...{ props }} />
+      )}
+    </>
   );
 }
