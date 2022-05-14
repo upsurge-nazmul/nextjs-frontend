@@ -47,12 +47,19 @@ $sell-color: #eb5757;
       width: 100%;
       height: fit-content;
       padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .option {
         border-radius: $common-border-radius;
         cursor: pointer;
         box-shadow: 1px 1px 8px 4px #d5d0d0;
         padding: 2px;
+        width: 100%;
+        max-width: 400px;
         button {
+          transition: 0.3s;
+          transition-timing-function: ease-in-out;
           cursor: pointer;
           display: flex;
           justify-content: center;
@@ -68,6 +75,10 @@ $sell-color: #eb5757;
           border: none;
           .name {
             flex: 1;
+          }
+          .checkIcon {
+            width: 24px;
+            height: 24px;
           }
           svg {
             font-size: 24px;
@@ -92,7 +103,6 @@ $sell-color: #eb5757;
       }
       .activeOption {
         @extend .option;
-        transition: 0.5;
         box-shadow: none;
       }
       .activeUp {

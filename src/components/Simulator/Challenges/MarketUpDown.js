@@ -31,7 +31,9 @@ export default function MarketUpDown() {
             className={selected === "up" ? styles.activeUp : styles.upOption}
           >
             <button onClick={() => handleSelect("up")}>
-              <CheckCircleIcon />
+              <div className={styles.checkIcon}>
+                {selected === "up" ? <CheckCircleIcon /> : ""}
+              </div>
               <div className={styles.name}>Market will go up</div>
               <ArrowDropUpIcon />
             </button>
@@ -43,7 +45,9 @@ export default function MarketUpDown() {
             }
           >
             <button onClick={() => handleSelect("down")}>
-              <CheckCircleIcon />
+              <div className={styles.checkIcon}>
+                {selected === "down" ? <CheckCircleIcon /> : ""}
+              </div>
               <div className={styles.name}>Market will go down</div>
               <ArrowDropDownIcon />
             </button>
