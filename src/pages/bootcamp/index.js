@@ -126,7 +126,7 @@ export default function SummerBootcamp() {
 `}
         </p>
         <p className={` ${styles.herosubheading} ${styles.subherosubheading}`}>
-          Registrations Close May 27, 2022
+          June 1 to July 3, 2022 | Registrations Close May 27, 2022
         </p>
         <p className={styles.error}>{error}</p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
