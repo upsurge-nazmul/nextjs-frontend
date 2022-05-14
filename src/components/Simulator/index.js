@@ -152,7 +152,7 @@ export default function Simulator({
                 simulatorType={simulatorType}
               />
             </div>
-            {selectedSymbol && (
+            {mode === modes[1].value && selectedSymbol && (
               <Watchlist
                 watchlistData={watchlistData}
                 setWatchlistData={setWatchlistData}
