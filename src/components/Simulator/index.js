@@ -49,7 +49,7 @@ export default function Simulator({
         token,
         type: simulatorType,
       });
-      if (allCompanies.data.data.rows.length) {
+      if (allCompanies.data && allCompanies.data.data.rows.length) {
         setCompanyData(allCompanies.data.data.rows);
         setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
       } else {
@@ -61,7 +61,7 @@ export default function Simulator({
           token,
           type: simulatorType,
         });
-        if (allCompanies.data.success) {
+        if (allCompanies.data && allCompanies.data.success) {
           setCompanyData(allCompanies.data.data.rows);
           if (allCompanies.data.data.rows.length) {
             setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
@@ -110,7 +110,7 @@ export default function Simulator({
         token,
         type: simulatorType,
       });
-      if (watchlist.data.success) {
+      if (watchlist.data && watchlist.data.success) {
         setWatchlistData(watchlist.data.data.rows);
       }
     }

@@ -1,11 +1,17 @@
+$common-border-radius: 14px;
 $primary-color: #17d1bc;
 $dark-font-color: #464e5f;
 $light-font-color: #b5b5c3;
 $chart-color: #5200ff;
+$buy-color: #27ae60;
+$sell-color: #eb5757;
 
 .topgainer {
   height: 100%;
   width: 100%;
+  background-color: #fff;
+  border-radius: $common-border-radius;
+  padding: 20px 40px;
   .topSection {
     .titleArea {
       display: flex;
@@ -37,16 +43,112 @@ $chart-color: #5200ff;
   }
   .bottomSection {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 40px;
     padding: 20px 0;
     .leftside {
       flex: 1;
+      .searchArea {
+        width: 100%;
+      }
+      .companiesTable {
+        padding: 20px 0;
+        .headerRow {
+          display: flex;
+          width: 100%;
+          padding: 4px 0;
+          .item {
+            flex: 1;
+            text-align: right;
+            font-size: 12px;
+            color: $light-font-color;
+            &:first-child {
+              flex: 3;
+              text-align: left;
+            }
+          }
+        }
+        .tableRow {
+          @extend .headerRow;
+          .item {
+            font-size: 14px;
+            color: $dark-font-color;
+          }
+        }
+      }
     }
     .rightside {
       flex: 0.75;
+      .selected {
+        .title {
+          font-size: 14px;
+          font-weight: 500;
+          color: $dark-font-color;
+          padding: 10px 0;
+        }
+        .name {
+          font-size: 20px;
+          font-weight: 700;
+          color: $dark-font-color;
+        }
+        .symbol {
+          font-size: 12px;
+          font-weight: 400;
+          color: $light-font-color;
+        }
+        .close {
+          font-size: 24px;
+          font-weight: 700;
+          padding: 10px 0 0;
+        }
+        .return {
+          font-size: 20px;
+          font-weight: 700;
+          padding: 2px 0;
+          display: flex;
+        }
+        .gain {
+          @extend .return;
+          color: $buy-color;
+        }
+        .loss {
+          @extend .return;
+          color: $sell-color;
+        }
+        .date {
+          font-size: 12px;
+          font-weight: 400;
+          color: $light-font-color;
+        }
+        .actionArea {
+          padding: 20px 0;
+          width: 100%;
+          height: fit-content;
+          .action {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: $primary-color;
+            color: #fff;
+            font-size: 12px;
+            padding: 8px 52px;
+            border-radius: 8px;
+          }
+        }
+      }
+      .noSelected {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dotted $light-font-color;
+        color: $light-font-color;
+        font-size: 18px;
+        font-weight: 600;
+      }
     }
   }
 }

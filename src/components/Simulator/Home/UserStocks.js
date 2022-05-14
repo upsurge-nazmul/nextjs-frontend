@@ -39,7 +39,9 @@ export default function UserStocks({
           let filt = comps.data.data.filter((c) => c.symbol === selected);
           setCompanies(filt);
         }
-        setLastUpdated(convetedDate(comps.data.data[0].date));
+        setLastUpdated(
+          convetedDate(comps.data.data[0] && comps.data.data[0].date)
+        );
       }
     }
     fetchTopCompanies();

@@ -7,6 +7,7 @@ import Topgainer from "./Topgainer";
 
 export default function StockChallenges({ userData, token, simulatorType }) {
   const [stockList, setStockList] = useState();
+  const [topComps, setTopComps] = useState();
 
   useEffect(() => {
     async function fetchStocks() {
@@ -22,10 +23,26 @@ export default function StockChallenges({ userData, token, simulatorType }) {
     fetchStocks();
   }, []);
 
+  useEffect(() => {
+    async function fetchTopCompanies() {
+      setTopComps();
+      let comps = await SimulatorApis.getTopCompanies({
+        payload: {},
+        token,
+        type: simulatorType,
+        duration: "daily",
+      });
+      if (comps.data && comps.data.success) {
+        setTopComps(comps.data.data.rows);
+      }
+    }
+    fetchTopCompanies();
+  }, []);
+
   return (
     <div className={styles.stockChallenges}>
       <div className={styles.topSection}>
-        <Topgainer list={stockList} />
+        <Topgainer list={stockList} currenTops={topComps} />
       </div>
       <div className={styles.bottomSection}>
         <div className={styles.bottomLeft}>

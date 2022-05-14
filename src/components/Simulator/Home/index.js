@@ -34,7 +34,7 @@ export default function Home({ userData, token, simulatorType }) {
         token,
         type: simulatorType,
       });
-      if (hlds.data.success) {
+      if (hlds.data && hlds.data.success) {
         let chartData = [];
         for (let item of hlds.data.data) {
           chartData.push({
@@ -45,8 +45,11 @@ export default function Home({ userData, token, simulatorType }) {
         }
         setHoldingsChartData(chartData);
       }
-      let otherItems = hlds.data.data.slice(1, hlds.data.data.length);
-      let otherSum = otherItems.reduce((acc, cur) => acc + cur.amount, 0);
+      let otherItems =
+        hlds.data && hlds.data.data.slice(1, hlds.data.data.length);
+      let otherSum = otherItems
+        ? otherItems.reduce((acc, cur) => acc + cur.amount, 0)
+        : 0;
       setStockPortfolio(otherSum);
     }
     fetchUserHoldings();
@@ -59,7 +62,7 @@ export default function Home({ userData, token, simulatorType }) {
         token,
         type: simulatorType,
       });
-      if (stcks.data.success) {
+      if (stcks.data && stcks.data.success) {
         setUserStocks(stcks.data.data.rows);
 
         let chartsData = [];
@@ -96,15 +99,17 @@ export default function Home({ userData, token, simulatorType }) {
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
-            {holdingsChartData && (
+            {holdingsChartData ? (
               <Holdings
                 chartData={holdingsChartData}
                 className={styles.holdingsChart}
                 legendPosition={"right"}
               />
+            ) : (
+              ""
             )}
           </div>
-          {holdingsChartData && stockPortfolio && (
+          {holdingsChartData && stockPortfolio ? (
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
@@ -129,6 +134,8 @@ export default function Home({ userData, token, simulatorType }) {
                 <div className={styles.value}>{getCashHoldingPercentage()}</div>
               </div>
             </div>
+          ) : (
+            ""
           )}
         </div>
         <div className={styles.bottomLeft}>
