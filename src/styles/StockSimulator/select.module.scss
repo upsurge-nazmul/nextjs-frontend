@@ -13,8 +13,8 @@
   border-radius: 8px;
   background-color: white;
   position: relative;
-  width: max-content;
-  min-width: 200px;
+  width: 100%;
+  min-width: 300px;
   .selected {
     display: flex;
     height: 45px;
@@ -77,9 +77,9 @@
     margin-top: 10px;
     z-index: 505;
     position: absolute;
-    left: 65%;
+    left: 0;
     top: 49px;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     max-height: 500px;
     overflow: hidden;
     .searchArea {

@@ -66,7 +66,9 @@ function CompanySelection({
         </p>
         <p className={styles.text}>
           {options && options.length
-            ? options.find((option) => option.symbol === value).name
+            ? options.find((option) => option.symbol === value)
+              ? options.find((option) => option.symbol === value).name
+              : "Select..."
             : ""}
         </p>
         <DropDownArrow className={styles.svg} />
