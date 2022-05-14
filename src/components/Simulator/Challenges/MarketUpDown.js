@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../../../styles/StockSimulator/marketUpDown.module.scss";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import UpSvg from "../../SVGcomponents/StockSimulator/UpSvg";
+import DownSvg from "../../SVGcomponents/StockSimulator/DownSvg";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 export default function MarketUpDown() {
@@ -35,7 +35,7 @@ export default function MarketUpDown() {
                 {selected === "up" ? <CheckCircleIcon /> : ""}
               </div>
               <div className={styles.name}>Market will go up</div>
-              <ArrowDropUpIcon />
+              <UpSvg />
             </button>
           </div>
           <div className={styles.or}>OR</div>
@@ -49,7 +49,7 @@ export default function MarketUpDown() {
                 {selected === "down" ? <CheckCircleIcon /> : ""}
               </div>
               <div className={styles.name}>Market will go down</div>
-              <ArrowDropDownIcon />
+              <DownSvg />
             </button>
           </div>
         </div>
