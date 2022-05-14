@@ -126,8 +126,7 @@ export default function SummerBootcamp() {
 `}
         </p>
         <p className={` ${styles.herosubheading} ${styles.subherosubheading}`}>
-          Team-based experiential workshops in small age-appropriate batches for
-          children of ages 10+
+          Registrations Close May 27, 2022
         </p>
         <p className={styles.error}>{error}</p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
