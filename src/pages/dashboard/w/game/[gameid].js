@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
@@ -15,10 +15,13 @@ import { MainContext } from "../../../../context/Main";
 import LeaderboardComponent from "../../../../components/WaitlistDashboard/LeaderboardComponent";
 import Spinner from "../../../../components/Spinner";
 import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
+import { getCookie } from "../../../../actions/cookieUtils";
+let fullscreenenabled = false;
 
 export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
+  const unityref = useRef(unitycontext);
   const [isfullscreen, setisfullscreen] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [widthHeight, setwidthHeight] = useState({
@@ -50,9 +53,24 @@ export default function GamePage({ userdatafromserver, gamedata }) {
     device: "computer",
     orientation: "desktop",
   });
-  function handleOnClickFullscreen() {
-    unitycontext.setFullscreen(true);
+  function handleOnClickFullscreenUnity() {
+    unityref.current?.send(
+      "FullscreenController",
+      "UpdateScreen",
+      fullscreenenabled ? 1 : 0
+    );
   }
+  function handleSendToken() {
+    unitycontext?.send("TokenController", "SetToken", getCookie("accesstoken"));
+  }
+  useEffect(() => {
+    if (progression === 1 && unitycontext) {
+      console.log("calling from frontend");
+      handleSendToken();
+      handleOnClickFullscreenUnity();
+    }
+  }, [progression, unitycontext]);
+
   const gamesWithAuth = ["Ludo", "FinCricket"];
 
   useEffect(() => {
@@ -185,7 +203,15 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         console.log(message);
       });
       unitycontext.on("Fullscreen", function () {
-        movetofull();
+        if (fullscreenenabled) {
+          unitycontext.setFullscreen(false);
+          fullscreenenabled = false;
+          setisfullscreen(false);
+        } else {
+          unitycontext.setFullscreen(true);
+          fullscreenenabled = true;
+          setisfullscreen(true);
+        }
       });
     },
     [unitycontext]
@@ -253,30 +279,27 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         document.msExitFullscreen();
       }
       setisfullscreen(false);
+      fullscreenenabled = false;
+      handleOnClickFullscreenUnity();
     } else {
       let element = document.getElementById("unity-wrapper");
-      console.log(element);
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
+      if (element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+        setisfullscreen(true);
+        fullscreenenabled = true;
+        handleOnClickFullscreenUnity();
       }
-      setisfullscreen(true);
     }
   }
-  useEffect(() => {
-    window.screen.orientation.onchange = function () {
-      if (this.type.startsWith("landscape")) {
-        movetofull();
-      } else {
-        document.webkitExitFullscreen();
-      }
-    };
-  }, []);
+
   useEffect(() => {
     document.addEventListener("fullscreenchange", onFullScreenChange, false);
     document.addEventListener(
@@ -293,8 +316,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         document.webkitFullscreenElement;
 
       if (!fullscreenElement) {
-        router.push("/dashboard/w/games");
         setisfullscreen(false);
+        fullscreenenabled = false;
+        // router.push("/games");
       }
     }
   }, []);
@@ -371,6 +395,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
                 styles.mobilegame
               }
               `}
+              ref={unityref}
               unityContext={unitycontext}
               style={
                 widthHeight.width > 900
