@@ -43,9 +43,9 @@
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 30%,
-      rgba(244, 245, 247, 0) 50%,
-      rgba(244, 245, 247, 0) 100%
+      rgba(255, 255, 255, 1) 50%,
+      rgba(244, 245, 247, 1) 50%,
+      rgba(244, 245, 247, 1) 100%
     );
     left: 15px;
     top: -8px;
@@ -157,6 +157,9 @@
     .placeholderlifted {
       left: 10px;
       top: -6px;
+    }
+    input {
+      padding-left: 14px;
     }
   }
 }

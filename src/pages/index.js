@@ -101,7 +101,7 @@ function Home({ isLogged, userdata }) {
         </Head>
         <div
           className={styles.summerbtn}
-          onClick={() => router.push("/summer-bootcamp")}
+          onClick={() => router.push("/bootcamp")}
         >
           <p className={styles.maintext}>Summer Bootcamp</p>
           <p className={styles.subtext}>Registrations close May 27</p>
