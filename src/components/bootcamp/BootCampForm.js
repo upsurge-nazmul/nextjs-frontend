@@ -10,6 +10,7 @@ import ModernInputBox from "../ModernInputBox";
 import styles from "../../styles/summercamp/form.module.scss";
 import TickSvg from "../SVGcomponents/TickSvg";
 import SummerCampApis from "../../actions/apis/SummerCampApis";
+import Spinner from "../Spinner";
 export default function BootCampForm({
   done,
   setdone,

@@ -9,7 +9,6 @@ import Fb from "../../components/SVGcomponents/Fb";
 import Insta from "../../components/SVGcomponents/Insta";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import LogoWhite from "../../components/SVGcomponents/LogoWhite";
-import Spinner from "../../components/Spinner";
 import styles from "../../styles/summercamp/summercamp.module.scss";
 import WaitlistPopUp from "../../components/WaitlistPopUp";
 import { useRouter } from "next/dist/client/router";
