@@ -29,7 +29,7 @@ import BootCampForm from "../../components/bootcamp/BootCampForm";
 
 export default function SummerBootcamp() {
   const [error, seterror] = useState("");
-  const [done, setdone] = useState(true);
+  const [done, setdone] = useState(false);
   const [email, setemail] = useState("");
   const [showpopup, setshowpopup] = useState(false);
   const [toastdata, settoastdata] = useState({
