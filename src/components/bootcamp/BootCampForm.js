@@ -413,18 +413,20 @@ export default function BootCampForm({
           </div>
         </div>
       ) : (
-        <div className={styles.rewards}>
+        <div className={`${styles.signup} ${done && styles.flexheight}`}>
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Your response has been recorded.
           </p>
-          <p className={`${styles.summary} ${styles.boldsummary}`}>
-            Thank you for showing interest in kickstarting your child’s journey
-            toward their financial freedom!
-          </p>
-          <p className={styles.summary}>
-            You will soon get an email with the next steps & more details on the
-            upsurge Summer Bootcamp
-          </p>
+          <div className={styles.wrapper}>
+            <p className={`${styles.summary} ${styles.boldsummary}`}>
+              Thank you for showing interest in kickstarting your child’s
+              journey toward their financial freedom!
+            </p>
+            <p className={styles.summary}>
+              You will soon get an email with the next steps & more details on
+              the upsurge Summer Bootcamp
+            </p>
+          </div>
         </div>
       )}
     </div>

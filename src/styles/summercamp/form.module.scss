@@ -34,6 +34,24 @@
     border-radius: 12px;
     overflow-y: auto;
     margin-top: 5%;
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      flex: 1;
+      text-align: center;
+      .summary {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: $gen-xl;
+        text-align: center;
+      }
+      .boldsummary {
+        font-weight: bold;
+        margin-top: 2%;
+      }
+    }
     .cross {
       position: fixed;
       top: 15%;
@@ -167,6 +185,10 @@
         }
       }
     }
+  }
+  .flexheight {
+    height: fit-content;
+    padding: 3% 2% 5%;
   }
 }
 
