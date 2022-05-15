@@ -206,3 +206,19 @@
     }
   }
 }
+@media only screen and (max-width: 400px) {
+  .formmain {
+    .signup {
+      margin-top: 40px;
+      min-width: unset;
+      width: 95%;
+      .cross {
+        right: 5%;
+        top: 2%;
+        .icon {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
