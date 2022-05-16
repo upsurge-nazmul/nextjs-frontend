@@ -21,7 +21,6 @@ const ChartDurations = [
 
 export default function SimulatorDash({
   token,
-  simulatorDailyData,
   companyData,
   selectedSymbol,
   setSelectedSymbol,
@@ -34,7 +33,7 @@ export default function SimulatorDash({
   const [selectedDuration, setSelectedDuration] = useState(
     ChartDurations[0].value
   );
-  const [selectedCompany, setSelectedCompany] = useState(simulatorDailyData[0]);
+  const [selectedCompany, setSelectedCompany] = useState();
   const [simulatorMonthlyData, setSimulatorMonthlyData] = useState();
   const [showAddToWatchlistButton, setShowAddToWatchlistButton] =
     useState(true);
@@ -57,13 +56,11 @@ export default function SimulatorDash({
   }, [token, selectedSymbol, selectedDuration]);
 
   useEffect(() => {
-    if (simulatorDailyData.length) {
-      let currentCompany = simulatorDailyData.find(
-        (item) => item.symbol === selectedSymbol
-      );
+    if (simulatorMonthlyData && simulatorMonthlyData.length) {
+      let currentCompany = simulatorMonthlyData[0];
       setSelectedCompany(currentCompany);
     }
-  }, [selectedSymbol, simulatorDailyData]);
+  }, [selectedSymbol, simulatorMonthlyData]);
 
   useEffect(() => {
     if (selectedCompany && watchlistData && watchlistData.length) {

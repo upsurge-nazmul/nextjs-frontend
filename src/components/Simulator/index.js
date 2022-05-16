@@ -26,7 +26,6 @@ export default function Simulator({
   const [mode, setMode] = useState(router.query.page);
   const [companyData, setCompanyData] = useState();
   const [selectedSymbol, setSelectedSymbol] = useState();
-  const [simulatorDailyData, setSimulatorDailyData] = useState();
   const [watchlistData, setWatchlistData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -42,66 +41,17 @@ export default function Simulator({
   useEffect(() => {
     async function fetchCompanies() {
       let allCompanies = await SimulatorApis.getStocks({
-        payload: {
-          from: getTodaysDateRange().from,
-          to: getTodaysDateRange().to,
-        },
+        payload: {},
         token,
         type: simulatorType,
       });
       if (allCompanies.data && allCompanies.data.data.rows.length) {
         setCompanyData(allCompanies.data.data.rows);
         setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
-      } else {
-        let allCompanies = await SimulatorApis.getStocks({
-          payload: {
-            from: getTodaysDateRange(true).from,
-            to: getTodaysDateRange(true).to,
-          },
-          token,
-          type: simulatorType,
-        });
-        if (allCompanies.data && allCompanies.data.success) {
-          setCompanyData(allCompanies.data.data.rows);
-          if (allCompanies.data.data.rows.length) {
-            setSelectedSymbol(allCompanies.data.data.rows[0].symbol);
-          }
-        }
       }
     }
     fetchCompanies();
   }, [token]);
-
-  useEffect(() => {
-    async function fetchStocks() {
-      let dailyStocks = await SimulatorApis.getStocks({
-        payload: {
-          from: getTodaysDateRange().from,
-          to: getTodaysDateRange().to,
-          symbol: selectedSymbol,
-        },
-        token,
-        type: simulatorType,
-      });
-      if (dailyStocks.data.data.rows.length) {
-        setSimulatorDailyData(dailyStocks.data.data.rows);
-      } else {
-        let dailyStocks = await SimulatorApis.getStocks({
-          payload: {
-            from: getTodaysDateRange(true).from,
-            to: getTodaysDateRange(true).to,
-            symbol: selectedSymbol,
-          },
-          token,
-          type: simulatorType,
-        });
-        setSimulatorDailyData(dailyStocks.data.data.rows);
-      }
-    }
-    if (selectedSymbol) {
-      fetchStocks();
-    }
-  }, [token, selectedSymbol]);
 
   useEffect(() => {
     async function fetchWatchlist() {
@@ -183,21 +133,16 @@ export default function Simulator({
               />
             )}
             {mode === modes[1].value && (
-              <>
-                {simulatorDailyData && (
-                  <SimulatorDash
-                    token={token}
-                    simulatorDailyData={simulatorDailyData}
-                    companyData={companyData}
-                    selectedSymbol={selectedSymbol}
-                    setSelectedSymbol={setSelectedSymbol}
-                    userData={userData}
-                    watchlistData={watchlistData}
-                    setWatchlistData={setWatchlistData}
-                    simulatorType={simulatorType}
-                  />
-                )}
-              </>
+              <SimulatorDash
+                token={token}
+                companyData={companyData}
+                selectedSymbol={selectedSymbol}
+                setSelectedSymbol={setSelectedSymbol}
+                userData={userData}
+                watchlistData={watchlistData}
+                setWatchlistData={setWatchlistData}
+                simulatorType={simulatorType}
+              />
             )}
             {mode === modes[2].value && (
               <Portfolio
