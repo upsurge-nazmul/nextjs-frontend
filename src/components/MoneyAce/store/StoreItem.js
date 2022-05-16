@@ -6,8 +6,12 @@ export default function StoreItem({
   setcarttotal,
   data,
   viewonly,
+  setmaincount,
 }) {
-  const [count, setcount] = useState(cart ? cart[data.name] : 0);
+  console.log(cart);
+  const [count, setcount] = useState(
+    cart && cart[data.name] ? cart[data.name] : 0
+  );
   useEffect(() => {
     if (!cart) return;
     setcount(cart[data.name]?.quantity);
@@ -15,6 +19,7 @@ export default function StoreItem({
 
   function additem(type) {
     if (type === "minus") {
+      setmaincount((prev) => (prev - 1 < 0 ? 0 : prev - 1));
       setcarttotal((prev) => (prev - data.price < 0 ? 0 : prev - data.price));
       if (cart[data.name] && cart[data.name].quantity > 0) {
         setcart((prev) => ({
@@ -29,6 +34,7 @@ export default function StoreItem({
         }));
       }
     } else {
+      setmaincount((prev) => prev + 1);
       setcarttotal((prev) => prev + data.price);
       if (cart[data.name]) {
         setcart((prev) => ({
@@ -57,7 +63,11 @@ export default function StoreItem({
             onClick={() => additem("minus")}
           />
         )}
-        <input type="text" value={!viewonly ? count : "x" + data.quantity} />
+        <input
+          type="text"
+          disabled
+          value={!viewonly ? count : "x" + data.quantity}
+        />
         {!viewonly && (
           <img
             src="https://i.ibb.co/W6VgkX8/plus.png"

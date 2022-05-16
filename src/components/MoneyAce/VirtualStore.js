@@ -23,6 +23,7 @@ export default function VirtualStore({
   const [cart, setcart] = useState({});
   const [err, seterr] = useState("");
   const { widthHeight } = useContext(MainContext);
+  const [maincount, setmaincount] = useState(0);
   useEffect(() => {
     const scrollContainer = document.querySelector("#wrapper");
     if (!scrollContainer) return;
@@ -100,7 +101,7 @@ export default function VirtualStore({
               <p className={styles.text}>₹ {carttotal}</p>
               <ShoppingCartOutlinedIcon className={styles.carticon} />
               <div className={styles.bggreen}>
-                <p>1</p>
+                <p>{maincount}</p>
               </div>
             </div>
           </div>
@@ -129,6 +130,7 @@ export default function VirtualStore({
                     setcarttotal={setcarttotal}
                     data={data}
                     key={data.name}
+                    setmaincount={setmaincount}
                   />
                 );
               })}
