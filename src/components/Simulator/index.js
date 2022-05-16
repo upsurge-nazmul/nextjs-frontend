@@ -102,7 +102,10 @@ export default function Simulator({
                 simulatorType={simulatorType}
               />
             </div>
-            {mode === modes[1].value && selectedSymbol && (
+            {mode === modes[1].value &&
+            watchlistData &&
+            watchlistData.length &&
+            selectedSymbol ? (
               <Watchlist
                 watchlistData={watchlistData}
                 setWatchlistData={setWatchlistData}
@@ -113,6 +116,8 @@ export default function Simulator({
                 settoastdata={settoastdata}
                 simulatorType={simulatorType}
               />
+            ) : (
+              ""
             )}
             {/* This navigation is hidden in mobile and visible in tabs and laptops */}
             <div className={styles.normalNavigation}>
