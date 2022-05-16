@@ -129,20 +129,19 @@
     color: $d-midlight;
   }
   input {
-    background:$d-moredark;
-    color:$d-text2;
+    background: $d-moredark;
+    color: $d-text2;
   }
   .options {
- 
     background-color: $d-main;
     border: 1px solid $d-light;
-  
+
     .option {
       border-bottom: 1px solid $d-light;
       color: $d-text2;
       &:hover {
-      color: $d-text1;
-      background-color: $d-moredark;
+        color: $d-text1;
+        background-color: $d-moredark;
       }
     }
   }
@@ -158,6 +157,9 @@
     .placeholderlifted {
       left: 10px;
       top: -6px;
+    }
+    input {
+      padding-left: 14px;
     }
   }
 }

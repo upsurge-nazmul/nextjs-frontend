@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/MoneyAce/vritualstore.module.scss";
 import { useRouter } from "next/dist/client/router";
 import { Game_Data } from "../../static_data/Game_Data";
@@ -6,6 +6,8 @@ import BackSvg from "../SVGcomponents/MoneyAce/ui/BackSvg";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import StoreItem from "./store/StoreItem";
+import NineSlice from "../NineSlice";
+import { MainContext } from "../../context/Main";
 export default function VirtualStore({
   setcurrenttab,
   canvassize,
@@ -20,6 +22,7 @@ export default function VirtualStore({
   const [cats, setcats] = useState([]);
   const [cart, setcart] = useState({});
   const [err, seterr] = useState("");
+  const { widthHeight } = useContext(MainContext);
   useEffect(() => {
     const scrollContainer = document.querySelector("#wrapper");
     if (!scrollContainer) return;
@@ -78,6 +81,20 @@ export default function VirtualStore({
     <div className={styles.virtualstore}>
       {mode === "main" ? (
         <div className={styles.container}>
+          <div className={styles.heading}>
+            <NineSlice
+              width={widthHeight.width * 0.12}
+              height={widthHeight.width * 0.035}
+              border={0}
+              image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+              imageSize={{ x: 702, y: 195 }}
+            >
+              <p className={styles.title}>STORE</p>
+            </NineSlice>
+          </div>
+          <div className={styles.bg}>
+            <div className={styles.innerbg}></div>
+          </div>
           <div className={styles.header}>
             <div className={styles.cart} onClick={() => setmode("invoice")}>
               <p className={styles.text}>₹ {carttotal}</p>
@@ -119,6 +136,20 @@ export default function VirtualStore({
         </div>
       ) : (
         <div className={styles.invoice}>
+          <div className={styles.heading}>
+            <NineSlice
+              width={widthHeight.width * 0.12}
+              height={widthHeight.width * 0.035}
+              border={0}
+              image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+              imageSize={{ x: 702, y: 195 }}
+            >
+              <p className={styles.title}>CHECKOUT</p>
+            </NineSlice>
+          </div>
+          <div className={styles.bg}>
+            <div className={styles.innerbg}></div>
+          </div>
           <div className={styles.headRow}>
             <div className={styles.rowitem}>#</div>
             <div className={styles.rowitem}>Name</div>

@@ -1,5 +1,15 @@
+import validator from "validator";
+
 export function onlyText(data) {
-  return data.replace(/[^a-zA-Z]/g, "");
+  return data?.replace(/[^a-zA-Z]/g, "") || "";
+}
+
+export function vaildatePhone(data) {
+  return validator.isMobilePhone(data, "en-IN");
+}
+
+export function vaildateEmail(data) {
+  return validator.isEmail(data);
 }
 
 export function onlyNum(data) {

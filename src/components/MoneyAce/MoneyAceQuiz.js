@@ -28,8 +28,8 @@ export default function MoneyAceQuiz({
   useEffect(() => {
     getquestions();
     async function getquestions() {
-      let res = await KnowledgeQuestApi.getquestions(
-        { id: "introduction-to-money" },
+      let res = await MoneyAceApis.getquestions(
+        { id: quiz },
         getCookie("accesstoken")
       );
       if (res && res.data && res.data.success) {
@@ -41,8 +41,8 @@ export default function MoneyAceQuiz({
     }
   }, [quiz]);
   async function fetchnextquestion(answer) {
-    let res = await KnowledgeQuestApi.checkanswer(
-      { id: questions[currentquestionindex].id, answer: answer },
+    let res = await MoneyAceApis.checkanswer(
+      { id: questions[currentquestionindex].question_id, answer: answer },
       getCookie("accesstoken")
     );
     if (res && res.data && res.data.success) {

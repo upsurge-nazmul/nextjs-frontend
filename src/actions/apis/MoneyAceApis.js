@@ -1,6 +1,13 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
+//quiz
 
+const getquestions = (payload, token) => {
+  return ApiCalls.getResponse(`games/moneyace/quizdata`, payload, token);
+};
+const checkanswer = (payload, token) => {
+  return ApiCalls.getResponse(`games/moneyace/checkanswer`, payload, token);
+};
 // bank apis
 const investmentrecords = (payload) => {
   return ApiCalls.getResponse(
@@ -280,7 +287,22 @@ const nextday = (payload) => {
   return ApiCalls.getResponse("games/moneyace/gonext?pass=noaccess", payload);
 };
 
+const allowinvesting = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/allowinvesting",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const getbulletin = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/getbulletin",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const MoneyAceApis = {
+  getbulletin,
   getMoneyAceData,
   getBankingDetails,
   getBankPassbook,
@@ -320,6 +342,9 @@ const MoneyAceApis = {
   resetdata,
   nextday,
   completetask,
+  allowinvesting,
+  getquestions,
+  checkanswer,
 };
 
 export default MoneyAceApis;

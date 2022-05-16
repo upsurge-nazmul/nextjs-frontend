@@ -1,0 +1,137 @@
+$info-green: rgb(13, 167, 13);
+$info-red: rgb(211, 33, 33);
+
+.companyInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  min-height: 150px;
+  .volumeArea {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 0;
+    margin: 10px 0;
+    width: 100%;
+    .volumeTitle {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .volumeValue {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+  .infoArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 400px;
+    .infoItem {
+      min-width: 50%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+}
+
+.redText {
+  color: $info-red;
+}
+
+.greenText {
+  color: $info-green;
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .companyInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    min-height: 0;
+    padding: 0;
+    .volumeArea {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 6px 0;
+      margin: 10px 0;
+      width: 100%;
+      .volumeTitle {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .volumeValue {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .infoArea {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 100%;
+      .infoItem {
+        font-size: 12px;
+        font-weight: 400;
+        min-width: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .companyInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    min-height: 150px;
+    .volumeArea {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 6px 0;
+      margin: 0;
+      width: 100%;
+      .volumeTitle {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .volumeValue {
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+    .infoArea {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 400px;
+      margin-top: 40px;
+      .infoItem {
+        min-width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+  }
+}

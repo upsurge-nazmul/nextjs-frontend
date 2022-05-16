@@ -23,7 +23,10 @@ import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import TaskModal from "./TaskModal";
 import MAQuiz from "./MoneyAceQuiz";
-
+import NineSlice from "../NineSlice";
+import Tasks from "./Tasks";
+import EducationHub from "./EducationHub";
+import JobHub from "./JobHub";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -40,6 +43,7 @@ export default function MoneyAceDashboard({
   setmoneyacedata,
   settoastdata,
   settasks,
+  stage,
 }) {
   const [currenttab, setcurrenttab] = useState("dashboard");
   const [currenttask, setcurrenttask] = useState("");
@@ -48,7 +52,7 @@ export default function MoneyAceDashboard({
   const [taskmodal, settaskmodal] = useState(false);
   const [quiz, setquiz] = useState(false);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
-  const { theme } = useContext(MainContext);
+  const { them, widthHeight } = useContext(MainContext);
   const router = useRouter();
   const ref = useRef();
   useEffect(() => {
@@ -81,16 +85,24 @@ export default function MoneyAceDashboard({
       }
     }
   }, [currenttab]);
-  const links = [
-    { name: "Bank", link: "Bank", img: "https://i.ibb.co/MsY3sDZ/Bank.png" },
-    {
-      name: "Invest",
-      link: "investmenthub",
-      img: "https://i.ibb.co/vP38sSj/Invest.png",
-    },
-    { name: "UPI", link: "upi", img: "https://i.ibb.co/xMpR0zL/UPI.png" },
-    { name: "Shop", link: "store", img: "https://i.ibb.co/qpX0bqS/Shop.png" },
-    { name: "Games", link: "Games", img: "https://i.ibb.co/7XbdHV8/Games.png" },
+  const jobhubtasks = ["task-22", "task-25", "task-30"];
+  const educationhubtasks = ["task-20", "task-31", "task-28", "task-24"];
+  const banktasks = ["task-03", "task-04", "task-08", "task-14", "task-15"];
+  const investmenttasks = [
+    "task-34",
+    "task-35",
+    "task-36",
+    "task-37",
+    "task-38",
+  ];
+  const shoptasks = [
+    "task-05",
+    "task-12",
+    "task-13",
+    "task-17",
+    "task-23",
+    "task-27",
+    "task-29",
   ];
   useEffect(() => {
     loaddailyreward();
@@ -112,6 +124,15 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
+  async function handleallowinvesting() {
+    let res = await MoneyAceApis.allowinvesting();
+    if (res && res.data && res.data.success) {
+      alert("done");
+      router.reload();
+    } else {
+      alert("something went wrong");
+    }
+  }
 
   async function handlereset() {
     let res = await MoneyAceApis.resetdata();
@@ -122,7 +143,7 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
-
+  console.log(tasks);
   return (
     <div className={styles.dashboard}>
       <audio ref={ref} src="/audio/dashboard.wav" autoPlay loop />
@@ -135,6 +156,7 @@ export default function MoneyAceDashboard({
         moneyacedata={moneyacedata}
         setvolume={setvolume}
         volume={volume}
+        inWelcomeScreen={stage === "welcome"}
       />
       <div className={styles.main}>
         {showdaily && (
@@ -170,129 +192,181 @@ export default function MoneyAceDashboard({
           <div className={styles.devoptions}>
             <p onClick={handlereset}>Reset All</p>
             <p onClick={handlenextday}>Next Day</p>
+            <p onClick={handleallowinvesting}>Allow investing</p>
           </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
-              <div className={styles.top}>
-                <div className={styles.left}>
-                  <div className={styles.heading}>
-                    <div className={styles.namewrapper}>
-                      <img
-                        src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                        alt=""
-                      />
-                      <p>STATS</p>
-                    </div>
-                  </div>
-                  <div className={styles.col_wrapper}>
-                    <div className={styles.col}>
-                      <p className={styles.head}>INHAND CASH</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.inhand_money || 0)}
-                      </p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>BANK BALANCE</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.account_balance || 0)}
-                      </p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>INVESTMENTS</p>
-                      <p className={styles.val}>
-                        ₹{toIndianFormat(moneyacedata?.total_investment || 0)}
-                      </p>
-                    </div>
-                  </div>
-                  {/* <div className={styles.col_wrapper}>
-                    <div className={styles.col}>
-                      <p className={styles.head}>BAD EXPENSES</p>
-                      <p className={styles.val}>₹0</p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>GOOD EXPENSES</p>
-                      <p className={styles.val}>₹0</p>
-                    </div>{" "}
-                    <div className={styles.col}>
-                      <p className={styles.head}>GOLD</p>
-                      <p className={styles.val}>₹{moneyacedata?.inhand_money}</p>
-                    </div>
-                  </div> */}
-                </div>
-                <div className={styles.right}>
-                  <div className={styles.heading}>
-                    <div className={styles.namewrapper}>
-                      <img
-                        src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                        alt=""
-                      />
-                      <p>TASKS</p>
-                    </div>
-                  </div>
-                  <div className={styles.taskwrapper}>
-                    {tasks?.map((item, index) => {
-                      return (
-                        <MoneyAceTask
-                          key={item.id}
-                          data={item}
-                          index={index}
-                          settaskmodal={settaskmodal}
-                          setstage={setstage}
-                          setgamedata={setgamedata}
-                          setcurrenttab={setcurrenttab}
-                          moneyacedata={moneyacedata}
-                          settasks={settasks}
-                          setquiz={setquiz}
-                          setcurrenttask={setcurrenttask}
-                          settoastdata={settoastdata}
-                          currenttask={currenttask}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
+              <div className={`${styles.link} ${styles.link0}`}>
+                <p className={styles.title}>Home</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/NY9GYFc/home-beveled.png"
+                    alt=""
+                  />
+                </bg>
               </div>
-              <div className={styles.bottom}>
-                <div className={styles.heading}>
-                  <div className={styles.namewrapper}>
-                    <img
-                      src="https://i.ibb.co/yXFLZCQ/Green-Header-Small-BG.png"
-                      alt=""
-                    />
-                    <p>LINKS</p>
-                  </div>
-                </div>
-                <div className={styles.middle}>
-                  {links.map((link) => (
-                    <div
-                      key={"link" + link}
-                      className={styles.item}
-                      onClick={() => {
-                        if (
-                          link.link === "investmenthub" &&
-                          !moneyacedata.investing_course
-                        ) {
-                          settoastdata({
-                            show: true,
-                            type: "error",
-                            msg: "Investing course is required",
-                          });
-                          return;
-                        }
-                        setcurrenttab(link.link);
-                      }}
-                    >
-                      <img src={link.img} alt="" />
-                      <p className={styles.linkname}>{link.name}</p>
-                    </div>
-                  ))}
-                </div>
+              <div
+                className={`${styles.link} ${styles.link1}`}
+                onClick={() => setcurrenttab("educationhub")}
+              >
+                {tasks.findIndex((item) =>
+                  educationhubtasks.includes(item.id)
+                ) !== -1 && <div className={styles.alert} />}
+                <p className={styles.title}>EDUCATION HUB</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link2}`}
+                onClick={() => setcurrenttab("Bank")}
+              >
+                {tasks.findIndex((item) => banktasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
+                <p className={styles.title}>Bank</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/GHWwgnp/bank-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link3}`}
+                onClick={() => {
+                  if (!moneyacedata.investing_course) {
+                    settoastdata({
+                      show: true,
+                      type: "error",
+                      msg: "Investing course is required",
+                    });
+                    return;
+                  }
+                  setcurrenttab("investmenthub");
+                }}
+              >
+                {tasks.findIndex((item) =>
+                  investmenttasks.includes(item.id)
+                ) !== -1 && <div className={styles.alert} />}
+                <p className={styles.title}>Investment</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/qm57QYQ/invest-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link4}`}
+                onClick={() => setcurrenttab("store")}
+              >
+                {tasks.findIndex((item) => shoptasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
+                <p className={styles.title}>Shop</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/QnD63s0/online-shopping-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.link} ${styles.link5}`}
+                onClick={() => setcurrenttab("Games")}
+              >
+                {tasks.findIndex((item) => jobhubtasks.includes(item.id)) !==
+                  -1 && <div className={styles.alert} />}
+                <p className={styles.title}>Jobs</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/VCjSFcp/jobs-beveled.png"
+                    alt=""
+                  />
+                </bg>
+              </div>
+              <div
+                className={`${styles.taskbtn} `}
+                onClick={() => setcurrenttab("tasks")}
+              >
+                <p className={styles.title}>TASKS</p>
+                <bg className={styles.bg}>
+                  <img
+                    className={styles.bgimg}
+                    src="https://i.ibb.co/tYSFRWk/Task-Panel-1.png"
+                    alt=""
+                  />
+                  <img
+                    className={styles.bgicon}
+                    src="https://i.ibb.co/Wk1xwTs/tasks-1.png"
+                    alt=""
+                  />
+                </bg>
               </div>
             </div>
-          ) : currenttab === "citymap" ? (
-            <CityMap setcurrenttab={setcurrenttab} />
-          ) : currenttab === "passbook" ? (
-            <PassBook setcurrenttab={setcurrenttab} />
+          ) : currenttab === "tasks" ? (
+            <Tasks
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
+              settaskmodal={settaskmodal}
+              setstage={setstage}
+              setgamedata={setgamedata}
+              moneyacedata={moneyacedata}
+              setquiz={setquiz}
+              setcurrenttask={setcurrenttask}
+              currenttask={currenttask}
+            />
+          ) : currenttab === "educationhub" ? (
+            <EducationHub
+              setcurrenttab={setcurrenttab}
+              canvassize={canvassize}
+              moneyacedata={moneyacedata}
+              setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
+            />
           ) : currenttab === "investmenthub" ? (
             <MoneyAceInvestment
               setcurrenttab={setcurrenttab}
@@ -309,11 +383,17 @@ export default function MoneyAceDashboard({
               canvassize={canvassize}
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
             />
           ) : currenttab === "Games" ? (
-            <MoneyAceGamesPage
+            <JobHub
               setcurrenttab={setcurrenttab}
               canvassize={canvassize}
+              moneyacedata={moneyacedata}
+              setmoneyacedata={setmoneyacedata}
+              settoastdata={settoastdata}
+              settasks={settasks}
+              tasks={tasks}
             />
           ) : currenttab === "store" ? (
             <VirtualStore

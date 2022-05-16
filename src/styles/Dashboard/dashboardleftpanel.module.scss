@@ -494,6 +494,19 @@
   }
 }
 
+@media only screen and (max-width: 860px) and (max-height: 1000px) {
+  .dashboardLeftPanel {
+    height: auto;
+    min-width: 55px;
+    width: 55px;
+    padding-top: 30px;
+    .dashboardLogo {
+      width: 70%;
+      height: fit-content;
+    }
+  }
+}
+
 @media only screen and (max-width: 374px) {
   .dashboardLeftPanel {
     height: 100vh;
@@ -584,7 +597,7 @@
 }
 @media only screen and (orientation: landscape) and (max-width: 900px) {
   .dashboardLeftPanel {
-    height: 100vh;
+    height: auto;
     min-width: 80px;
     width: 80px;
     display: flex;

@@ -99,6 +99,13 @@ function Home({ isLogged, userdata }) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
+        <div
+          className={styles.summerbtn}
+          onClick={() => router.push("/bootcamp")}
+        >
+          <p className={styles.maintext}>Summer Bootcamp</p>
+          <p className={styles.subtext}>Registrations close May 27</p>
+        </div>
         <Header
           setOpenLeftPanel={setOpenLeftPanel}
           showauth={showauth}

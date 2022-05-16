@@ -43,6 +43,7 @@ export default function Welcome({
         setvolume={setvolume}
         hidelogo
         hidebackground
+        inWelcomeScreen={true}
       />
       <img
         className={styles.logo}
@@ -60,7 +61,7 @@ export default function Welcome({
       </div>
       <img
         className={styles.banner}
-        src="https://i.ibb.co/V99wfCj/Main-Screen-BG.png"
+        src="https://i.ibb.co/WKjx5qK/bg-02.png"
         alt=""
       />
     </div>

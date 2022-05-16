@@ -363,17 +363,6 @@ export default function GamePage({ gamedata, userdata }) {
     }
   }
 
-  // useEffect(() => {
-  //   window.screen.orientation.onchange = function () {
-  //     if (this.type.startsWith("landscape")) {
-  //       movetofull();
-  //     } else {
-  //       fullscreenenabled = false;
-  //       handleOnClickFullscreenUnity();
-  //       document.webkitExitFullscreen();
-  //     }
-  //   };
-  // }, []);
   useEffect(() => {
     document.addEventListener("fullscreenchange", onFullScreenChange, false);
     document.addEventListener(
