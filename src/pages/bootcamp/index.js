@@ -91,7 +91,7 @@ export default function SummerBootcamp() {
   return (
     <div
       className={styles.summercamp}
-      style={{ "overflow-y": showpopup ? "hidden" : "auto" }}
+      style={{ overflowY: showpopup ? "hidden" : "auto" }}
     >
       <div className={styles.banner}>
         <div className={styles.socials}>
