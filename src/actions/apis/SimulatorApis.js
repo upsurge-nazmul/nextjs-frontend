@@ -123,6 +123,23 @@ const getTopUserCompanies = ({
   );
 };
 
+// challenges apis
+const getStockXY = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(
+    `${type}/challenges/stockXstockY`,
+    payload,
+    token
+  );
+};
+
+const getStockXYAnswer = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(
+    `${type}/challenges/stockXstockY/answer`,
+    payload,
+    token
+  );
+};
+
 export default {
   getWatchlist,
   addToWatchlist,
@@ -141,4 +158,6 @@ export default {
   getFinancialRatios,
   getTopCompanies,
   getTopUserCompanies,
+  getStockXY,
+  getStockXYAnswer,
 };

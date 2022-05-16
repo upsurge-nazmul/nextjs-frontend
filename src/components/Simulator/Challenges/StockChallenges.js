@@ -49,7 +49,7 @@ export default function StockChallenges({ userData, token, simulatorType }) {
           <MarketUpDown />
         </div>
         <div className={styles.bottomRight}>
-          <StockXStockY />
+          <StockXStockY {...{ token, simulatorType }} />
         </div>
       </div>
     </div>
