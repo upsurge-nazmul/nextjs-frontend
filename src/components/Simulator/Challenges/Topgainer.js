@@ -3,10 +3,14 @@ import styles from "../../../styles/StockSimulator/topgainer.module.scss";
 import CompanySelection from "../Dash/CompanySelection";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Popup from "../Popup";
+import { CircularProgress } from "@mui/material";
 
 export default function Topgainer({ list, currenTops }) {
   const [selectedSymbol, setSelectedSymbol] = useState();
   const [selectedCompany, setSelectedCompany] = useState();
+  const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (selectedSymbol) {
@@ -15,8 +19,18 @@ export default function Topgainer({ list, currenTops }) {
     }
   }, [selectedSymbol]);
 
-  const handleConfirm = (item) => {
-    console.log("confirmed", item);
+  const handleConfirmButton = () => {
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
+  const handleProceed = () => {
+    setSelectedSymbol();
+    setSelectedCompany();
+    console.log("confirmed", selectedCompany);
   };
 
   return (
@@ -105,7 +119,7 @@ export default function Topgainer({ list, currenTops }) {
               <div className={styles.actionArea}>
                 <button
                   className={styles.action}
-                  onClick={() => handleConfirm(selectedCompany)}
+                  onClick={() => handleConfirmButton(selectedCompany)}
                 >
                   Confirm Selection
                 </button>
@@ -118,6 +132,31 @@ export default function Topgainer({ list, currenTops }) {
           )}
         </div>
       </div>
+      {open && selectedCompany && (
+        <Popup
+          actions={{
+            cancelText: "CANCEL",
+            isCancel: true,
+            handleCancel: handleCancel,
+            proceedText: "YES",
+            isProceed: true,
+            handleProceed: handleProceed,
+          }}
+          title={"Top Gainer"}
+        >
+          <div className={styles.popup}>
+            {!isLoading ? (
+              <div className={styles.message}>
+                Are you sure,
+                <span className={styles.highlight}>{selectedCompany.name}</span>
+                will be the Top Gainer for tomorrow?
+              </div>
+            ) : (
+              <CircularProgress />
+            )}
+          </div>
+        </Popup>
+      )}
     </div>
   );
 }
