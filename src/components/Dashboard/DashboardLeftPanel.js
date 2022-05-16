@@ -16,6 +16,7 @@ import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
+import CryptoSvg from "../SVGcomponents/CryptoSimulator/CryptoSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
@@ -24,6 +25,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
+import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
 function DashboardLeftPanel({ type, hidelogo, fixed }) {
@@ -221,6 +223,28 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Money Quotient</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/stocksimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/stocksimulator/home")}
+          >
+            <StockSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Stock Simulator</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/cryptosimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/cryptosimulator/home")}
+          >
+            <CryptoSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Crypto Simulator</p>
           </div>
           <div
             className={`${styles.tab} ${

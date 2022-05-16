@@ -1,0 +1,39 @@
+$main-color: #ff6263;
+$hover-color: #f10d0d;
+$text-color: #fff;
+
+.navigation {
+  min-width: 100px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  .navItem {
+    border: 2px solid $main-color;
+    padding: 8px;
+    border-radius: 50%;
+    color: $main-color;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px 1px rgb(219, 216, 216);
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      color: inherit;
+    }
+    &:hover {
+      color: $hover-color;
+    }
+  }
+  .activeNav {
+    @extend .navItem;
+    box-shadow: 3px 3px 10px 5px rgb(219, 216, 216);
+    background-color: $main-color;
+    color: $text-color;
+    &:hover {
+      color: $text-color;
+    }
+  }
+}

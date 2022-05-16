@@ -1,0 +1,403 @@
+$buy-color: #27ae60;
+$sell-color: #eb5757;
+
+.simulatorOptoins {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  font-family: "Inter", sans-serif !important;
+  .optionsTitle {
+    font-size: 16px;
+    color: #676767;
+    font-weight: 600;
+  }
+  .quantityInput {
+    display: flex;
+    flex-direction: row;
+    input {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 6px;
+      width: 100%;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-width: 1px;
+      border-color: #333;
+      color: #333;
+      outline: none;
+      flex: 1;
+      box-shadow: 3px 4px 15px 0px #ccc;
+      :focus-visible {
+        border-width: 1px;
+        outline: none;
+      }
+    }
+    .inputButtonArea {
+      display: flex;
+      flex-direction: column;
+      width: 20px;
+      .inputIncrease {
+        border: 1px solid #333;
+        border-left: none;
+        border-top-right-radius: 8px;
+        text-align: center;
+        background-color: rgb(243, 239, 239);
+        color: #333;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .inputDescrease {
+        @extend .inputIncrease !optional;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+  .commonButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 6px 3px 12px 2px #ccc;
+    transition: 0.5s;
+    .buttonTitle {
+      flex: 0.85;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    .buttonInfo {
+      flex: 1;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      font-size: 12px;
+      span {
+        span {
+          font-weight: 300;
+          &:last-child {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+  .buyButton {
+    @extend .commonButton;
+    background-color: $buy-color;
+    color: #fff;
+    &:hover {
+      background-color: $buy-color;
+      box-shadow: 3px 4px 15px 0px #ccc;
+    }
+  }
+  .sellButton {
+    @extend .commonButton;
+    background-color: $sell-color;
+    color: #fff;
+    &:hover {
+      background-color: $sell-color;
+      box-shadow: 3px 4px 15px 0px #ccc;
+    }
+  }
+  .tradePopupArea {
+    width: 400px;
+    height: fit-content;
+    .tradeTitle {
+      font-size: 24px;
+      padding: 8px 0;
+      font-weight: 700;
+    }
+    .buyTitle {
+      @extend .tradeTitle;
+      color: $buy-color;
+    }
+    .sellTitle {
+      @extend .tradeTitle;
+      color: $sell-color;
+    }
+    .commonLabel {
+      padding: 2px 0;
+      font-size: 10px;
+      color: #b5b5c3;
+    }
+    .commonValue {
+      font-size: 16px;
+      font-weight: 600;
+      color: #464e5f;
+      border-bottom: 1px solid #c4c4c4;
+    }
+    .price {
+      width: 100%;
+      padding: 6px 0;
+      .label {
+        @extend .commonLabel;
+      }
+      .value {
+        @extend .commonValue;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .buyHelper {
+          font-size: 12px;
+          color: $buy-color;
+        }
+        .sellHelper {
+          font-size: 12px;
+          color: $sell-color;
+        }
+      }
+    }
+    .quantity {
+      width: 100%;
+      padding: 6px 0;
+      .label {
+        @extend .commonLabel;
+      }
+      .value {
+        @extend .commonValue;
+        width: 100%;
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        outline: none;
+      }
+    }
+    .total {
+      width: 100%;
+      padding: 6px 0;
+      .label {
+        @extend .commonLabel;
+      }
+      .value {
+        @extend .commonValue;
+      }
+    }
+  }
+  .tradeResponse {
+    text-align: center;
+    padding: 0 10px;
+    .responseIcon {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .commonIcon {
+        svg {
+          font-size: 200px;
+          border-radius: 50%;
+        }
+      }
+      .successIcon {
+        @extend .commonIcon;
+        svg {
+          color: rgb(19, 104, 19);
+        }
+      }
+      .failureIcon {
+        @extend .commonIcon;
+        svg {
+          color: rgb(216, 58, 58);
+        }
+      }
+    }
+    .popupMessage {
+      font-size: 24px;
+      color: #999;
+    }
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .simulatorOptoins {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    font-family: "Inter", sans-serif !important;
+    .optionsTitle {
+      font-size: 16px;
+      color: #676767;
+      font-weight: 600;
+    }
+    .quantityInput {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      input {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 6px;
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-width: 1px;
+        border-color: #333;
+        color: #333;
+        outline: none;
+        flex: 1;
+        box-shadow: 3px 4px 15px 0px #ccc;
+        :focus-visible {
+          border-width: 1px;
+          outline: none;
+        }
+      }
+      .inputButtonArea {
+        display: flex;
+        flex-direction: column;
+        width: 20px;
+        .inputIncrease {
+          border: 1px solid #333;
+          border-left: none;
+          border-top-right-radius: 8px;
+          text-align: center;
+          background-color: rgb(243, 239, 239);
+          color: #333;
+          font-size: 18px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+        .inputDescrease {
+          @extend .inputIncrease !optional;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 8px;
+        }
+      }
+    }
+    .commonButton {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 0;
+      border: none;
+      border-radius: 8px;
+      width: 46%;
+      cursor: pointer;
+      box-shadow: 6px 3px 12px 2px #ccc;
+      transition: 0.5s;
+      .buttonTitle {
+        flex: 0.75;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      .buttonInfo {
+        flex: 1;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 9px;
+        span {
+          span {
+            font-weight: 300;
+            &:last-child {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+    .buyButton {
+      @extend .commonButton;
+      background-color: $buy-color;
+      color: #fff;
+      &:hover {
+        background-color: $buy-color;
+        box-shadow: 3px 4px 15px 0px #ccc;
+      }
+    }
+    .sellButton {
+      @extend .commonButton;
+      background-color: $sell-color;
+      color: #fff;
+      &:hover {
+        background-color: $sell-color;
+        box-shadow: 3px 4px 15px 0px #ccc;
+      }
+    }
+    .tradePopupArea {
+      width: 250px;
+      height: fit-content;
+    }
+    .tradeResponse {
+      .responseIcon {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .commonIcon {
+          svg {
+            font-size: 200px;
+            border-radius: 50%;
+          }
+        }
+        .successIcon {
+          @extend .commonIcon;
+          svg {
+            color: rgb(19, 104, 19);
+          }
+        }
+        .failureIcon {
+          @extend .commonIcon;
+          svg {
+            color: rgb(216, 58, 58);
+          }
+        }
+      }
+      .popupMessage {
+        font-size: 24px;
+        color: #999;
+      }
+    }
+  }
+}
+
+// phone landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .successIcon {
+    svg {
+      font-size: 100px !important;
+      border-radius: 50%;
+      color: rgb(19, 104, 19);
+    }
+  }
+  .failureIcon {
+    svg {
+      font-size: 100px !important;
+      border-radius: 50%;
+      color: rgb(216, 58, 58);
+    }
+  }
+}
