@@ -1,5 +1,4 @@
 import styles from "../../styles/StockSimulator/popup.module.scss";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 export default function Popup({
   title = "",
