@@ -24,7 +24,7 @@ export default function Home({ userData, token, simulatorType }) {
   const [userStocks, setUserStocks] = useState();
   const [selectedStock, setSelectedStock] = useState("all");
   const [chartData, setChartData] = useState();
-  const [stockPortfolio, setStockPortfolio] = useState();
+  const [stockPortfolio, setStockPortfolio] = useState(0);
   const [lastUpdated, setLastUpdated] = useState();
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function Home({ userData, token, simulatorType }) {
               ""
             )}
           </div>
-          {holdingsChartData && stockPortfolio ? (
+          {holdingsChartData ? (
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
@@ -139,8 +139,7 @@ export default function Home({ userData, token, simulatorType }) {
           )}
         </div>
         <div className={styles.bottomLeft}>
-          {chartData &&
-            chartData.length &&
+          {chartData && chartData.length ? (
             chartData.map((data, i) => {
               return (
                 <div key={i} className={styles.chartArea}>
@@ -160,7 +159,10 @@ export default function Home({ userData, token, simulatorType }) {
                   />
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className={styles.emptySpace}>You don't have any stock</div>
+          )}
         </div>
       </div>
       <div className={styles.right}>
@@ -201,23 +203,23 @@ export default function Home({ userData, token, simulatorType }) {
             >
               All Stocks
             </div>
-            {userStocks &&
-              userStocks.length &&
-              userStocks.map((stock, i) => {
-                return (
-                  <div
-                    className={
-                      selectedStock === stock.symbol
-                        ? styles.activeSingleStock
-                        : styles.singleStock
-                    }
-                    key={i}
-                    onClick={() => setSelectedStock(stock.symbol)}
-                  >
-                    {stock.symbol}
-                  </div>
-                );
-              })}
+            {userStocks && userStocks.length
+              ? userStocks.map((stock, i) => {
+                  return (
+                    <div
+                      className={
+                        selectedStock === stock.symbol
+                          ? styles.activeSingleStock
+                          : styles.singleStock
+                      }
+                      key={i}
+                      onClick={() => setSelectedStock(stock.symbol)}
+                    >
+                      {stock.symbol}
+                    </div>
+                  );
+                })
+              : ""}
           </div>
           <div className={styles.topReturns}>
             <UserStocks

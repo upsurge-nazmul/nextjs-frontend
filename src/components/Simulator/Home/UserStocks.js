@@ -32,7 +32,12 @@ export default function UserStocks({
         type: simulatorType,
         duration: duration,
       });
-      if (comps.data && comps.data.success) {
+      if (
+        comps.data &&
+        comps.data.success &&
+        comps.data.data &&
+        comps.data.data.length
+      ) {
         if (selected === "all") {
           setCompanies(comps.data.data);
         } else {
@@ -42,6 +47,8 @@ export default function UserStocks({
         setLastUpdated(
           convetedDate(comps.data.data[0] && comps.data.data[0].date)
         );
+      } else {
+        setLastUpdated(convetedDate(new Date()));
       }
     }
     fetchTopCompanies();
@@ -49,50 +56,51 @@ export default function UserStocks({
 
   return (
     <>
-      {companies &&
-        companies.length &&
-        companies.map((item, i) => {
-          return (
-            <div key={i} className={styles.card}>
-              <div className={styles.iconArea}>
-                <div className={styles.icon}>{getShortForm(item.name)}</div>
-              </div>
-              <div className={styles.nameArea}>
-                <div className={styles.name}>{item.name}</div>
-                <div className={styles.symbol}>{item.symbol}</div>
-              </div>
-              <div className={styles.valueArea}>
-                <div className={styles.label}>Total Value</div>
-                <div className={styles.value}>
-                  {"₹" +
-                    (
-                      parseFloat(item.current_price) * parseFloat(item.quantity)
-                    ).toFixed(2)}
+      {companies && companies.length
+        ? companies.map((item, i) => {
+            return (
+              <div key={i} className={styles.card}>
+                <div className={styles.iconArea}>
+                  <div className={styles.icon}>{getShortForm(item.name)}</div>
                 </div>
-              </div>
-              <div className={styles.qtArea}>
-                <div className={styles.label}>Quantity</div>
-                <div className={styles.value}>{item.quantity}</div>
-              </div>
-              <div className={styles.gainArea}>
-                <div
-                  className={
-                    parseFloat(item.current_return) > 0
-                      ? styles.gain
-                      : parseFloat(item.current_return) < 0
-                      ? styles.loss
-                      : styles.nutral
-                  }
-                >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
-                  2
-                )}`}</div>
-              </div>
-              {/* <div className={styles.buttonArea}>
+                <div className={styles.nameArea}>
+                  <div className={styles.name}>{item.name}</div>
+                  <div className={styles.symbol}>{item.symbol}</div>
+                </div>
+                <div className={styles.valueArea}>
+                  <div className={styles.label}>Total Value</div>
+                  <div className={styles.value}>
+                    {"₹" +
+                      (
+                        parseFloat(item.current_price) *
+                        parseFloat(item.quantity)
+                      ).toFixed(2)}
+                  </div>
+                </div>
+                <div className={styles.qtArea}>
+                  <div className={styles.label}>Quantity</div>
+                  <div className={styles.value}>{item.quantity}</div>
+                </div>
+                <div className={styles.gainArea}>
+                  <div
+                    className={
+                      parseFloat(item.current_return) > 0
+                        ? styles.gain
+                        : parseFloat(item.current_return) < 0
+                        ? styles.loss
+                        : styles.nutral
+                    }
+                  >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
+                    2
+                  )}`}</div>
+                </div>
+                {/* <div className={styles.buttonArea}>
                 <button className={styles.button}>{"->"}</button>
               </div> */}
-            </div>
-          );
-        })}
+              </div>
+            );
+          })
+        : ""}
     </>
   );
 }

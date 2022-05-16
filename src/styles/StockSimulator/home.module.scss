@@ -117,6 +117,18 @@ $chart-color: #5200ff;
           width: 100%;
         }
       }
+      .emptySpace {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: $light-font-color;
+        background-color: #fff;
+        border-radius: $common-border-radius;
+      }
     }
   }
   .right {
