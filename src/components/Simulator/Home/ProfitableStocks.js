@@ -93,10 +93,10 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
             );
           })
         ) : (
-          <CircularProgress />
+          ""
         )
       ) : (
-        ""
+        <CircularProgress />
       )}
     </>
   );
