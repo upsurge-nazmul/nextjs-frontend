@@ -28,7 +28,7 @@ export default function Portfolio({ userData, token, simulatorType }) {
         token,
         type: simulatorType,
       });
-      if (recs.data.success) {
+      if (recs.data && recs.data.success) {
         setRecords(recs.data.data.rows);
       }
     }
