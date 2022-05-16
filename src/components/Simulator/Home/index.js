@@ -161,7 +161,7 @@ export default function Home({ userData, token, simulatorType }) {
               );
             })
           ) : (
-            <div className={styles.emptySpace}>You don't have any stock</div>
+            <div className={styles.emptySpace}>You do not have any stock</div>
           )}
         </div>
       </div>
