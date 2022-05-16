@@ -32,7 +32,27 @@
     padding: 50px 100px;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: relative;    
+    .cross {
+      position: absolute;
+      top: 0;
+      right: -100px;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: hsl(0, 75%, 65%);
+          cursor: pointer;
+        }
+      }
+    }
     .curve2 {
       position: absolute;
       width: 100%;
@@ -112,6 +132,26 @@
       position: relative;
       height: 70vh;
       width: 90vw;
+      .cross {
+        position: absolute;
+        top: -40px;
+        right: 10px;
+        z-index: 100;
+        background-color: white;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 30px;
+          color: rgb(255, 109, 109);
+          transition: all 0.3s ease;
+          &:hover {
+            color: hsl(0, 75%, 65%);
+            cursor: pointer;
+          }
+        }
+      }
       .jasper {
         width: fit-content;
         z-index: 2;

@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 @keyframes moveit {
   0% {
@@ -21,7 +22,7 @@
     width: 100vw;
     left: 0;
     top: 60%;
-    z-index: -1;
+    z-index: 1;
     transform: scaleX(-1);
     animation: moveit 5s ease alternate infinite;
     animation-delay: 2s;
@@ -69,7 +70,6 @@
         font-weight: 700;
       }
     }
-
     .checkwaiting {
       width: 26.5vw;
       margin-top: 10px;
@@ -197,6 +197,51 @@
     bottom: 0;
     width: 15vw;
     height: max-content;
+    z-index: 1;
+  }
+}
+.intro_dark{
+  background-color:$d-main;
+  color: $d-text2;
+  .curve{
+    opacity: 0.5;
+    path{
+      stroke:$d-midlight;
+    }
+  }
+  .textContent{
+    .heading,.subheading{
+      color: $d-text2;
+    }
+    .signupBox {
+      input {
+        background:$d-moredark;
+        color:$d-text2;
+        ::placeholder {
+          color: rgba(198, 198, 198, 1);
+        }
+      }
+
+      .button {
+        width: 12vw;
+        min-width: fit-content;
+        font-size: clamp(12px, 1vw, 18px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        padding: 0 20px;
+        color: $d-moredark;
+        background-color: hsl(227, 81%, 59%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: hsl(227, 100%, 59%);
+        }
+      }
+    }
   }
 }
 @media only screen and (min-width: 861px) and (max-width: 1290px) and (max-height: 800px) {
@@ -233,7 +278,6 @@
     min-height: 500px;
     height: calc(100vh - 80px);
     width: 100vw;
-    background-color: white;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -298,7 +342,6 @@
     min-height: 500px;
     height: calc(100vh - 80px);
     width: 100%;
-    background-color: white;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -367,7 +410,6 @@
     position: relative;
     min-height: 500px;
     width: 100%;
-    background-color: white;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -430,7 +472,8 @@
     }
   }
 }
-@media only screen and (max-height: 500px) and (orientation: landscape) {
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -471,7 +514,6 @@
         font-weight: 700;
         margin-bottom: 0;
         line-height: 3.2vw;
-        color: #18191f;
         .fun {
           font-weight: 700;
           position: relative;
@@ -485,7 +527,6 @@
       .subheading {
         font-size: clamp(12px, 1.5vw, 16px);
         font-weight: 400;
-        color: #18191f;
         margin-top: 1vh;
         line-height: 2.5vw;
         width: 36vw;
@@ -513,7 +554,6 @@
         font-weight: 500;
         border-radius: 6px;
         padding: 0 20px;
-        color: white;
         height: 45px;
         background-color: hsl(227, 81%, 59%);
         cursor: pointer;
@@ -547,7 +587,6 @@
           font-size: clamp(12px, 1vw, 18px);
           padding-left: 15px;
           ::placeholder {
-            color: rgba(198, 198, 198, 1);
           }
         }
 
@@ -562,7 +601,6 @@
           border-top-right-radius: 6px;
           border-bottom-right-radius: 6px;
           padding: 0 20px;
-          color: white;
           background-color: hsl(227, 81%, 59%);
           cursor: pointer;
           transition: all 0.3s ease;
@@ -613,8 +651,7 @@
     }
   }
 }
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media only screen and (max-height: 500px) and (orientation: landscape) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -635,7 +672,7 @@
     }
     .textContent {
       margin-top: 6vh;
-      margin-left: 7%;
+      margin-left: 0;
       .knowmore {
         display: flex;
         align-items: center;
@@ -655,7 +692,6 @@
         font-weight: 700;
         margin-bottom: 0;
         line-height: 3.2vw;
-        color: #18191f;
         .fun {
           font-weight: 700;
           position: relative;
@@ -669,7 +705,6 @@
       .subheading {
         font-size: clamp(12px, 1.5vw, 16px);
         font-weight: 400;
-        color: #18191f;
         margin-top: 1vh;
         line-height: 2.5vw;
         width: 36vw;
@@ -697,7 +732,6 @@
         font-weight: 500;
         border-radius: 6px;
         padding: 0 20px;
-        color: white;
         height: 45px;
         background-color: hsl(227, 81%, 59%);
         cursor: pointer;
@@ -730,9 +764,7 @@
           font-weight: 400;
           font-size: clamp(12px, 1vw, 18px);
           padding-left: 15px;
-          ::placeholder {
-            color: rgba(198, 198, 198, 1);
-          }
+         
         }
 
         .button {
@@ -746,7 +778,6 @@
           border-top-right-radius: 6px;
           border-bottom-right-radius: 6px;
           padding: 0 20px;
-          color: white;
           background-color: hsl(227, 81%, 59%);
           cursor: pointer;
           transition: all 0.3s ease;

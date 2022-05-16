@@ -1,17 +1,20 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Blog/blogcard.module.scss";
 function BlogCard({ data, getdatafromraw, pushto }) {
   const router = useRouter();
-
+  const { theme } = useContext(MainContext);
   return (
     <div
-      className={styles.blogcard}
+      className={`${styles.blogcard} ${
+        theme === "dark" && styles.darkblogcard
+      }`}
       onClick={() => {
         if (pushto) {
-          router.push(pushto + `${data.id}`);
+          router.push(pushto + `${data.slug}`);
         } else {
-          router.push(`/blog/${data.id}`);
+          router.push(`/blog/${data.slug}`);
         }
       }}
     >

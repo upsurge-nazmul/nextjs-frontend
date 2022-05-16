@@ -1,9 +1,11 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .testimonial {
   height: 55vh;
   width: 100vw;
   padding: 0 10vw;
+  z-index: 1;
   .heading {
     font-size: 46px;
     font-weight: 700;
@@ -85,7 +87,19 @@
     }
   }
 }
+.darktestimonial {
+  .heading {
+ color:$d-text2;
+  }
+  .wrapper {
+    .left {
+      .quote {
 
+ color:$d-text2;
+      }
+    }
+  }
+}
 @media only screen and (max-height: 900px) and (min-width: 900px) {
   .testimonial {
     height: max-content;

@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Calculators/dropbox.module.scss";
 
 function DropBox({ value, title, setvalue, options }) {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.dropBox}>
+    <div
+      className={`${styles.dropBox} ${theme === "dark" && styles.darkstyles}`}
+    >
       <p className={styles.title}>{title}</p>
       <div className={styles.selectwrapper}>
         <select

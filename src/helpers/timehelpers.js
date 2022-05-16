@@ -72,8 +72,7 @@ export function getRelativeTime(previous) {
 }
 
 export function getIndianTime(timestamp, sign) {
-  const date = new Date(timestamp);
-  console.log(date.getFullYear());
+  const date = new Date(Number(timestamp));
   return `${date.getDate()}${sign ? sign : "/"}${
     date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
   }${sign ? sign : "/"}${date.getFullYear()}`;
@@ -164,3 +163,9 @@ export const getNormalDateFromUtc = (utc, dayBefore = 0) => {
   let d = ("0" + (utc.getDate() - dayBefore)).slice(-2);
   return y + "-" + m + "-" + d;
 };
+export function getMonthYearOnly(timestamp) {
+  const date = new Date(Number(timestamp));
+  return `${
+    date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
+  }/${date.getFullYear().toString().substring(2)}`;
+}

@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 .bigcalcinput {
   display: flex;
   flex-direction: column;
@@ -132,6 +134,39 @@
   }
 }
 
+.darkstyles{
+
+  .heading {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color:$d-text1;
+  }
+  .range {
+    max-width: 600px;
+    margin-top: 40px !important;
+    background:$d-moredark;
+  }
+  .inputwrapper {
+    font-family: "Roboto", sans-serif;
+    font-size: 44px;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    .input {
+      color:$d-text2;
+    }
+    .pretitle,
+    .posttitle {
+      font-size: 44px;
+      font-weight: 400;
+      color: #a5a5a5;
+    }
+  }
+}
 @media only screen and (max-width: 860px) {
   .bigcalcinput {
     .heading {

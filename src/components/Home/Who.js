@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Home/who.module.scss";
 import Image from "next/image";
+import { MainContext } from "../../context/Main";
 function Who() {
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.whoSection}>
+    <div
+      className={`${styles.whoSection} ${
+        theme === "dark" && styles.darkwhoSection
+      }`}
+    >
       <div className={styles.heading}>Who are we ?</div>
       <div className={styles.container}>
         <div className={styles.left}>
@@ -35,6 +41,10 @@ function Who() {
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
+            {/* <video className={styles.video} autoPlay controls>
+              <source src="/intro.mp4" type="video/mp4"></source>
+            </video> */}
+
             <Image
               src="https://i.ibb.co/LRc6Jsp/shutterstock-1136939339-min.jpg"
               alt=""

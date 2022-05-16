@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MainContext } from "../../context/Main";
 import changetoint from "../../helpers/currency";
 import styles from "../../styles/Calculators/bigcalcinput.module.scss";
 export default function BigCalcInput({
@@ -13,6 +14,7 @@ export default function BigCalcInput({
   range,
 }) {
   const [rangevalue, setrangevalue] = useState(changetoint(value));
+  const { theme } = useContext(MainContext);
   useEffect(() => {
     setrangevalue(changetoint(value));
   }, [value]);
@@ -150,7 +152,11 @@ export default function BigCalcInput({
     }
   }
   return (
-    <div className={styles.bigcalcinput}>
+    <div
+      className={`${styles.bigcalcinput} ${
+        theme === "dark" && styles.darkstyles
+      }`}
+    >
       <p className={styles.heading}>{title}</p>
       <div id={title} className={styles.inputwrapper}>
         {pretitle && <p className={styles.pretitle}>{pretitle}</p>}

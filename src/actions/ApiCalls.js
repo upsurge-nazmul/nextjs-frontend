@@ -2,6 +2,7 @@ import axios from "axios";
 import { Servers } from "../../config";
 
 const BaseUrl = Servers.LiveServer;
+
 const getHeader = async (formData, token) => {
   return {
     Accept: formData ? "multipart/form-data" : "application/json",
@@ -50,7 +51,8 @@ export const putResponse = async (url, payload, token) => {
   })
     .then((response) => response)
     .catch((error) => {
-      if (error.response.status === 403 && !error.response.success) {
+      console.log(error);
+      if (error?.response?.status === 403 && !error.response.success) {
         ///     logout()
         window.location.href = "/";
       } else return error;

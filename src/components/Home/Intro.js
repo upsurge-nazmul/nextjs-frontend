@@ -12,7 +12,7 @@ import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
 import InfoIcon from "@mui/icons-material/Info";
 function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, theme } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -41,7 +41,9 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     }
   }
   return (
-    <section className={styles.intro}>
+    <section
+      className={`${styles.intro} ${theme === "dark" && styles.intro_dark}`}
+    >
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
@@ -55,7 +57,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             className={styles.gotobutton}
             onClick={() => {
               if (userdata) {
-                if (userdata.waitlist_active) {
+                if (userdata.is_waiting_active) {
                   router.push("/dashboard/w");
                 } else if (userdata.user_type === "parent") {
                   router.push("/dashboard/p");

@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 .waitlistpopup {
   width: 100vw;
   height: 100vh;
@@ -319,7 +321,191 @@
     }
   }
 }
+.darkwaitlistpopup {
+  .block {
+    background-color: $d-moredark;
+    border: 1px solid  $d-light;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+    .cross {
+      background-color: $d-moredark;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+    border: 1px solid  $d-light;
+    }
+    .heading {
+      color :$d-text2;
+    }
+    .passwordBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 59px;
+      position: relative;
+      margin-bottom: 20px;
+      z-index: 1;
+      .detailPass {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        background-color: $d-main;
+        color: $d-text2;
+        border-radius: 12px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        top: -185px;
+        padding-top: 15px;
+        right: 50%;
+        z-index: 2;
+        transform: translateX(50%);
+        animation: fade 0.3s ease;
+        .arrow {
+          box-shadow: rgba(99, 99, 99, 0.479) 0px 5px 12px ;
+          background-color: $d-main;
+        }
+        .tab {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          background-color: $d-main;
+          padding: 0 20px;
+          padding-bottom: 10px;
+          border-radius: 12px;
+          z-index: 2;
+          &:last-child {
+            padding-bottom: 20px;
+          }
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+          p {
+            margin-left: 6px;
+            font-size: 15px;
+          }
+        }
+        .white {
+          background-color: white;
+          width: 100%;
+          border-radius: 12px;
+          height: 15px;
+        }
+      }
+      input {
+        margin: 0;
+      }
+      .weakpass {
+        border-color: rgb(255, 118, 118);
+      }
+      .show {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 19px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        text-align: right;
+        color: #4166eb;
+        transition: all 0.3s ease;
+        &:hover {
+          color: #2751e9;
+        }
+      }
+    }
 
+    input {
+        background-color: $d-main;
+      border: 1px solid $d-light;
+     color:$d-text2;
+    }
+    .error {
+      font-weight: 500;
+      font-size: 15px;
+      color: #ff6263;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .phoneWrapper {
+      border: 1px solid $d-light;
+      p {
+        border-right: 1px solid $d-light;
+        background-color: $d-main;
+        color:$d-text2;
+      }
+      input {
+      }
+    }
+    .nameWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 22px;
+      input {
+        font-size: 16px;
+        flex: 1;
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
+    .button {
+      color: $d-moredark;
+      &:hover {
+        background-color: $d-moredark;
+      }
+    }
+    .loadin_btn {
+      &:hover {
+        background: #4166eb;
+        color: $d-moredark;
+      }
+    }
+  }
+  .otpblock {
+    background-color: $d-moredark;
+    border: 1px solid  $d-light;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+    .cross {
+      background-color: $d-moredark;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+    border: 1px solid  $d-light;
+    }
+    .cross {
+      background-color: $d-moredark;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+    border: 1px solid  $d-light;
+    }
+    .otpHeadWrapper {
+   color: $d-text2;
+    }
+    .otpWrapper {
+      input {
+        color :$d-text2;
+        background-color:$d-main;
+        border: 1px solid $d-light;
+      }
+    }
+    .resendButton {
+      color: rgba(65, 102, 235, 1);
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .button {
+      color: $d-moredark;
+      &:hover {
+        background-color: $d-moredark;
+      }
+    }
+  }
+}
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .waitlistpopup {
     .background {

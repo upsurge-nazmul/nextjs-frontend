@@ -40,7 +40,7 @@ function BlogPage({
   const [page, setpage] = useState(1);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -114,7 +114,9 @@ function BlogPage({
   }
   return (
     <div
-      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""}`}
+      className={`${styles.blogPage} ${openFull ? styles.disablescroll : ""} ${
+        theme === "dark" && styles.darkblogpage
+      }`}
     >
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
@@ -133,13 +135,7 @@ function BlogPage({
 
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
-      <FullBlog
-        item={selectedBlog}
-        openFull={openFull}
-        setOpenFull={setOpenFull}
-        setSelectedBlog={setSelectedBlog}
-        rest={blogpostsbackup.filter((item) => item.id !== selectedBlog.id)}
-      />
+
       <div className={styles.content}>
         {!userdata && <WaitingListCta />}
 
@@ -147,11 +143,11 @@ function BlogPage({
 
         <CategoryBar selectedCat={selectedCat} sortPosts={sortPosts} />
 
-        {highlightblogs.length > 0 && (
+        {highlightblogs?.length > 0 && (
           <div className={styles.postsMain}>
             <div
               className={styles.left}
-              onClick={() => router.push(`/blog/${highlightblogs[0].id}`)}
+              onClick={() => router.push(`/blog/${highlightblogs[0].slug}`)}
             >
               <img src={highlightblogs[0]?.img_url} alt="" />
               <div className={styles.categoryWrapper}>
@@ -251,9 +247,9 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg || "";
       return {
         props: {
-          blogs: [],
           userdata: null,
-          totalblogs: 0,
+          totalblogs: res?.data?.data?.count,
+          blogs: res?.data?.data?.rows,
           highlightblogs,
         },
       };
@@ -262,15 +258,22 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdata: response?.data?.data || null,
-          blogs: res.data.data.rows,
-          totalblogs: res.data.data.count,
+          totalblogs: res?.data?.data?.count,
+          blogs: res?.data?.data?.rows,
           highlightblogs,
         },
       };
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userdata: null,
+        highlightblogs,
+        totalblogs: res?.data?.data?.count,
+        blogs: res?.data?.data?.rows,
+      },
     };
   }
 }

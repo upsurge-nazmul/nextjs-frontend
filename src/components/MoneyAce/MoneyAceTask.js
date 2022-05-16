@@ -7,12 +7,20 @@ import GameApis from "../../actions/apis/GameApis";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { MainContext } from "../../context/Main";
 import { getCookie } from "../../actions/cookieUtils";
+import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 export default function MoneyAceTask({
   data,
   index,
   setstage,
   setgamedata,
   setcurrenttab,
+  moneyacedata,
+  settaskmodal,
+  setquiz,
+  setcurrenttask,
+  settasks,
+  currenttask,
+  settoastdata,
 }) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
@@ -55,37 +63,106 @@ export default function MoneyAceTask({
       setstage("game");
     }
   }
+  async function completetask() {
+    let res = await MoneyAceApis.completetask({ id: data.id });
+    if (res && res.data && res.data.success) {
+      settasks((prev) => prev.filter((item) => item.id !== currenttask));
+      setcurrenttab("xx");
+      setcurrenttab("dashboard");
+    } else {
+      seterror(res?.data?.message || "Error connecting to server");
+    }
+  }
   return (
     <div className={styles.task}>
-      <div className={styles.bg}>
-        <div className={styles.innerbg}></div>
-      </div>
-
-      <p className={styles.num}>
-        {index + 1 < 10 ? "0" + (index + 1) : index + 1}
-      </p>
-      <div className={styles.prallelogram}>
-        <img src={data.image} alt="" />
+      <div className={styles.main}>
+        <img
+          src={
+            data.bg ||
+            "https://media.istockphoto.com/photos/powerful-personal-computer-gamer-rig-with-firstperson-shooter-game-on-picture-id1157159213?k=20&m=1157159213&s=612x612&w=0&h=oYVqFen_st-jxHXy3KzZXmbaQlDwo06HJmbZDZJO7KE="
+          }
+          alt=""
+        />
         <div className={styles.text}>
           <p className={styles.name}>{data.name}</p>
           <p className={styles.des}>
-            {data.description.length > 32
-              ? data.description.substring(0, 32) + "..."
-              : data.description}
+            {data.description
+              ? data.description.length > 32
+                ? data.description.substring(0, 32) + "..."
+                : data.description
+              : "Complete " + data.name + " task and get rewards."}
           </p>
         </div>
-      </div>
-      <div className={styles.right}>
-        <PlayArrowRoundedIcon
-          className={styles.playicon}
+        <div
+          className={styles.btn}
           onClick={() => {
-            if (data.type === "game") {
-              handlegamepush(data.link_id);
+            setcurrenttask(data.id);
+            if (data.id === "task-08") {
+              completetask();
+              return;
+            }
+            if (data.id === "task-15") {
+              if (!moneyacedata.is_upi_claim) {
+                setcurrenttab("upi");
+              } else {
+                setcurrenttab("Bank");
+              }
+              return;
+            }
+            if (data.id === "task-25") {
+              if (!moneyacedata.fishing_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Fishing Course is required",
+                  type: "error",
+                });
+              } else {
+                handlegamepush(data.action_id);
+              }
+              return;
+            }
+            if (data.id === "task-30") {
+              if (!moneyacedata.driving_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Driving Course is required",
+                  type: "error",
+                });
+              } else {
+                handlegamepush(data.action_id);
+              }
+              return;
+            }
+
+            if (data.action === "game") {
+              handlegamepush(data.action_id);
+            } else if (data.action === "bank") {
+              setcurrenttab("Bank");
+            } else if (data.action === "investment") {
+              if (!moneyacedata.investing_course) {
+                settoastdata({
+                  show: true,
+                  msg: "Investing Course is required",
+                  type: "error",
+                });
+              }
+              setcurrenttab("investmenthub");
+            } else if (data.action === "shop") {
+              setcurrenttab("store");
+            } else if (data.action === "modal") {
+              settaskmodal(data);
+            } else if (data.action === "quiz") {
+              setquiz(data.action_id);
             } else {
-              setcurrenttab(data.link_id);
+              alert("wip..");
             }
           }}
-        />
+        >
+          <div className={styles.btnInside}>START</div>
+        </div>
+        {/* <div className={styles.right}>
+          <PlayArrowRoundedIcon className={styles.playicon} />
+        </div> */}
       </div>
     </div>
   );

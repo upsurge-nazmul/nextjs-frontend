@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
-import Select from "./Select";
-import ProgressVerticle from "../ProgressVerticle";
 import styles from "../../styles/Calculators/calccomponent.module.scss";
-import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
@@ -304,15 +300,7 @@ export default function InvestmentComparison({ seterror, error }) {
 
       {showresult ? (
         <div className={styles.chartSection}>
-          <div className={styles.chartContainer}>
-            <Bar
-              data={chartData}
-              className={styles.chart}
-              width={100}
-              height={100}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
+          <div className={styles.chartContainer}></div>
         </div>
       ) : null}
     </div>

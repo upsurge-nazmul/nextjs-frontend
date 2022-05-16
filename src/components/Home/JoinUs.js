@@ -9,11 +9,15 @@ import { MainContext } from "../../context/Main";
 function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, theme } = useContext(MainContext);
   const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const router = useRouter();
   return (
-    <section className={styles.joinSection}>
+    <section
+      className={`${styles.joinSection} ${
+        theme === "dark" && styles.darkjoinSection
+      }`}
+    >
       {showwaitlistblock && (
         <WaitlistPopUp
           email={email}

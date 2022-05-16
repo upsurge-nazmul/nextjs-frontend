@@ -444,7 +444,7 @@
           position: absolute;
           z-index: -1;
           top: -20vh;
-          width: 150px;
+        width: 150px;
         }
         .background {
           position: absolute;
@@ -1852,7 +1852,7 @@
         max-width: 700px;
         border-radius: 25px;
         max-height: 90%;
-        height: 65vh;
+        max-height: 65vh;
         background-color: white;
         z-index: 5;
         margin-top: 0px;
@@ -1897,8 +1897,10 @@
         .buttons {
           display: flex;
           margin: 2vh 0 3vh;
+          width: 100%;
+          padding: 0 20px;
           .startbutton {
-            width: 30vw;
+            flex:1;
             min-height: 40px;
             margin: 0;
             height: 45px;
@@ -1913,7 +1915,7 @@
             transition: all 0.3s ease;
           }
           .skipbutton {
-            width: 30vw;
+            flex:1;
             height: 45px;
             min-height: 40px;
             margin: 0;
@@ -2075,13 +2077,15 @@
           height: max-content;
           border-radius: 12px;
           min-height: unset;
-          margin-top: 20vh;
+          margin-top: 30vh;
           padding: 40px 10vw;
+          position: relative;
           .jasper {
             position: absolute;
             z-index: -1;
             width: 10vw;
-            top: -25vh;
+            height: 200px;
+            top: -150px;
           }
           .signupBox {
             width: 80vw;
@@ -2118,7 +2122,6 @@
             align-items: center;
             padding: 10px;
             padding-top: 20px;
-
             .heading {
               font-size: 20px;
               margin-bottom: 20px;

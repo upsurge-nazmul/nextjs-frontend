@@ -1,3 +1,5 @@
+@use "../variables/colors.scss" as *;
+
 @keyframes moveit {
   0% {
     transform: translateY(-20%) scaleX(-1);
@@ -367,6 +369,89 @@
         right: -5%;
       }
     }
+  }
+}
+
+.darkaboutPage{
+  .teamheading {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .curve2 {
+   opacity: 0.2;
+  }
+  .curve1 {
+  opacity: 0.2;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .head {
+      height: 50vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .background {
+        background: $d-main;
+        .curvecontainer {
+          .curve2 {
+           opacity: 0.2;
+          }
+          .curve1 {
+          opacity: 0.2;
+          }
+        }
+      }
+
+      .heading {
+      color: $d-text1;
+      }
+      .subheading {
+        color: $d-text2;
+
+      }
+    }
+
+    .secondheading {
+      font-size: 32px;
+      margin: 40px 0;
+      font-weight: 700;
+    }
+    .visionSection {
+      color: $d-moredark;
+      .left {
+        .des {
+          color: $d-main;
+        }
+      }
+    }
+    .missionSection {
+      .left {
+        .heading {
+      color: $d-text1;
+        }
+        .des {
+      color: $d-text2;
+        }
+      }
+    }
+    .thirdSection {
+      background-color: #17d1bc;
+      color: $d-moredark;
+      width: 100vw;
+      padding: 0 0 0 7vw;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+
+    }
+
   }
 }
 @media only screen and (min-width: 860px) and (max-height: 900px) {

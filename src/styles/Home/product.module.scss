@@ -1,4 +1,5 @@
 @use "../variables/fontsizes.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .productSection {
   scroll-snap-align: end;
@@ -8,6 +9,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 0 10% 0px;
+  z-index: 2;
   .heading {
     margin-bottom: 50px;
     font-size: 46px;
@@ -111,7 +113,71 @@
     }
   }
 }
+.darkproductSection {
+  background-color: $d-main;
+  .heading {
+    color: $d-text2;
+  }
+  .wrapper {
+    z-index: 1;
+    .pillar {
+      .icon {
+        width: 40%;
+        color: $d-moredark;
+        path: {
+          fill: $d-moredark;
+        }
+      }
+      svg {
+        path {
+          fill: $d-moredark;
+        }
+      }
+      .title {
+        color: $d-moredark;
+      }
+      .description {
+        color: $d-moredark;
+      }
+    }
+  }
+  .wrapper2 {
+    margin-top: 40px;
+    .pillar {
+      .icon {
+        font-size: 20vw;
+        height: fit-content;
+      }
 
+      &:first-child {
+        color: rgb(255, 255, 255);
+        background-color: rgb(65, 102, 235);
+
+        &:hover {
+          box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+            rgba(65, 102, 235, 0.22) 0px 15px 12px;
+        }
+      }
+      &:nth-child(2) {
+        background-color: rgb(255, 127, 76);
+        color: white;
+        &:hover {
+          box-shadow: rgba(255, 127, 76, 0.781) 0px 19px 38px,
+            rgba(255, 127, 76, 0.432) 0px 15px 12px;
+        }
+      }
+
+      &:last-child {
+        color: rgb(255, 255, 255);
+        background-color: rgb(65, 187, 235);
+        &:hover {
+          box-shadow: rgba(65, 102, 235, 0.3) 0px 19px 38px,
+            rgba(65, 102, 235, 0.22) 0px 15px 12px;
+        }
+      }
+    }
+  }
+}
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .productSection {
     .wrapper {

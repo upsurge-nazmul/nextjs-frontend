@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../styles/GeneralComponents/moderninput.module.scss";
 import CustomDatePicker from "./CustomDatePicker";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -6,6 +6,7 @@ import ReactTooltip from "react-tooltip";
 import { onlyText } from "../helpers/validationHelpers";
 import { useState } from "react";
 import { capitalize } from "../helpers/generalfunctions";
+import { MainContext } from "../context/Main";
 export default function ModernInputBox({
   value,
   setvalue,
@@ -31,11 +32,14 @@ export default function ModernInputBox({
   autoComplete,
 }) {
   const [showsuggestion, setshowsuggestion] = useState(false);
+  const { theme } = useContext(MainContext);
   return (
     <div
       className={`${styles.modernInputBox} ${
         type === "date" && styles.modernInputBoxdate
-      } ${wrapperclassname && wrapperclassname}`}
+      } ${wrapperclassname && wrapperclassname} ${
+        theme === "dark" && styles.darkinputbox
+      }`}
       style={extrastyle}
     >
       <p

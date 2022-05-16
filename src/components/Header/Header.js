@@ -22,7 +22,7 @@ function Header({
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
   const [showticker, setshowticker] = useState(true);
-  const { userdata } = useContext(MainContext);
+  const { userdata, theme } = useContext(MainContext);
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
@@ -50,7 +50,7 @@ function Header({
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""} ${
         showticker && !userdata && styles.stickywithannouncement
-      }`}
+      } ${theme === "dark" && styles.darkheader}`}
       id="home-page-header"
     >
       {showticker && !userdata && (
@@ -94,7 +94,11 @@ function Header({
           <HamSvg />
         </div>
         <div className={styles.logoContainer}>
-          <Logo onClick={clickedHeader} className="logo" />
+          <Logo
+            onClick={clickedHeader}
+            className="logo"
+            dark={theme === "dark" ? true : false}
+          />
         </div>
         <div className={styles.nav}>
           <HeaderTabSection

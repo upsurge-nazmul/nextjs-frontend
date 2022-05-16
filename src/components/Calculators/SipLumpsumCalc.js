@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BarExtendedDatum, ResponsiveBar } from "@nivo/bar";
 import DropBox from "./DropBox";
 import InputBlock from "./InputBlock";
@@ -11,6 +11,7 @@ import SelectInput from "./SelectInput";
 import BigCalcDropdown from "./BigCalcDropdown";
 import BigCalcInput from "./BigCalcInput";
 import changetoint from "../../helpers/currency";
+import { MainContext } from "../../context/Main";
 export default function HomeCalc({ seterror, error }) {
   const [questions, setquestions] = useState([
     {
@@ -309,8 +310,13 @@ export default function HomeCalc({ seterror, error }) {
       ]);
     }
   }
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.calculatorComponent}>
+    <div
+      className={`${styles.calculatorComponent} ${
+        theme === "dark" && styles.darkcalculatorComponent
+      }`}
+    >
       {!showresult && (
         <div className={styles.inputSection}>
           <Progress

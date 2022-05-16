@@ -1,0 +1,40 @@
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: calc(100% / 7);
+  height: 5vw;
+  cursor: pointer;
+  .hoverboard {
+    position: absolute;
+    bottom: 2%;
+    padding: 0.5vw 1vw;
+    border-radius: 0.3vw;
+    background: rgb(255, 242, 224);
+    background: linear-gradient(
+      0deg,
+      rgb(255, 234, 201) 0%,
+      rgb(255, 244, 230) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+  img {
+    height: 60%;
+    width: 100%;
+    object-fit: contain;
+  }
+  p {
+    width: 100%;
+    text-align: center;
+    font-family: "Fira Sans", sans-serif;
+    color: rgb(238, 238, 238);
+    font-weight: 500;
+  }
+}

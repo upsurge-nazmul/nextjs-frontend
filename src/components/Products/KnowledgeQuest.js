@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/Products/quest.module.scss";
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
@@ -6,6 +6,7 @@ import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
 import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
+import { MainContext } from "../../context/Main";
 
 export default function KnowledgeQuest({
   id,
@@ -40,9 +41,13 @@ export default function KnowledgeQuest({
     "Retirement Funds",
     "Career Development",
   ];
-
+  const { theme } = useContext(MainContext);
   return (
-    <div className={styles.questSection}>
+    <div
+      className={`${styles.questSection} ${
+        theme === "dark" && styles.darkquestSection
+      }`}
+    >
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
       {showwaitlistblock && (
