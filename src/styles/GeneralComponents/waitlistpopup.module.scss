@@ -324,15 +324,15 @@
 .darkwaitlistpopup {
   .block {
     background-color: $d-moredark;
-    border: 1px solid  $d-light;
+    border: 1px solid $d-light;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
     .cross {
       background-color: $d-moredark;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
-    border: 1px solid  $d-light;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+      border: 1px solid $d-light;
     }
     .heading {
-      color :$d-text2;
+      color: $d-text2;
     }
     .passwordBox {
       display: flex;
@@ -358,7 +358,7 @@
         transform: translateX(50%);
         animation: fade 0.3s ease;
         .arrow {
-          box-shadow: rgba(99, 99, 99, 0.479) 0px 5px 12px ;
+          box-shadow: rgba(99, 99, 99, 0.479) 0px 5px 12px;
           background-color: $d-main;
         }
         .tab {
@@ -419,9 +419,9 @@
     }
 
     input {
-        background-color: $d-main;
+      background-color: $d-main;
       border: 1px solid $d-light;
-     color:$d-text2;
+      color: $d-text2;
     }
     .error {
       font-weight: 500;
@@ -435,7 +435,7 @@
       p {
         border-right: 1px solid $d-light;
         background-color: $d-main;
-        color:$d-text2;
+        color: $d-text2;
       }
       input {
       }
@@ -468,25 +468,25 @@
   }
   .otpblock {
     background-color: $d-moredark;
-    border: 1px solid  $d-light;
+    border: 1px solid $d-light;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
     .cross {
       background-color: $d-moredark;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
-    border: 1px solid  $d-light;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+      border: 1px solid $d-light;
     }
     .cross {
       background-color: $d-moredark;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
-    border: 1px solid  $d-light;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
+      border: 1px solid $d-light;
     }
     .otpHeadWrapper {
-   color: $d-text2;
+      color: $d-text2;
     }
     .otpWrapper {
       input {
-        color :$d-text2;
-        background-color:$d-main;
+        color: $d-text2;
+        background-color: $d-main;
         border: 1px solid $d-light;
       }
     }
