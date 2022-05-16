@@ -59,14 +59,13 @@ export default function Topgainer({ list, currenTops }) {
                     <div className={styles.tableRow} key={i}>
                       <div className={styles.item}>{item.name}</div>
                       <div className={styles.item}>
-                        {"₹" + String(parseFloat(item.high).toFixed(2))}
+                        {String(parseFloat(item.high).toFixed(2))}
                       </div>
                       <div className={styles.item}>
-                        {"₹" + String(parseFloat(item.low).toFixed(2))}
+                        {String(parseFloat(item.low).toFixed(2))}
                       </div>
                       <div className={styles.item}>
-                        {"₹" +
-                          String(parseFloat(item.current_return).toFixed(2))}
+                        {String(parseFloat(item.current_return).toFixed(2))}
                       </div>
                       {/* <div className={styles.item}>
                       {parseFloat(item.volume).toFixed(2)}

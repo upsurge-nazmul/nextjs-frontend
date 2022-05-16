@@ -6,6 +6,7 @@ import Topgainer from "./Topgainer";
 
 export default function CryptoChallenges({ userData, token, simulatorType }) {
   const [cryptoList, setCryptoList] = useState();
+  const [topComps, setTopComps] = useState();
 
   useEffect(() => {
     async function fetchStocks() {
@@ -21,13 +22,29 @@ export default function CryptoChallenges({ userData, token, simulatorType }) {
     fetchStocks();
   }, []);
 
+  useEffect(() => {
+    async function fetchTopCompanies() {
+      setTopComps();
+      let comps = await SimulatorApis.getTopCompanies({
+        payload: {},
+        token,
+        type: simulatorType,
+        duration: "daily",
+      });
+      if (comps.data && comps.data.success) {
+        setTopComps(comps.data.data.rows);
+      }
+    }
+    fetchTopCompanies();
+  }, []);
+
   return (
     <div className={styles.cryptoChallenges}>
       <div className={styles.topSection}>
-        <Topgainer list={cryptoList} />
+        <Topgainer list={cryptoList} currenTops={topComps} />
       </div>
       <div className={styles.bottomSection}>
-        <BitcoinPriceEst />
+        <BitcoinPriceEst {...{ token, simulatorType }} />
       </div>
     </div>
   );

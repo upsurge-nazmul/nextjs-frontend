@@ -33,7 +33,7 @@ export default function StockXStockY() {
                 {selected === "up" ? <CheckCircleIcon /> : ""}
               </div>
               <div className={styles.name}>First Company Name</div>
-              <div>567.23</div>
+              <div>₹567.23</div>
             </button>
           </div>
           <div className={styles.or}>OR</div>
@@ -47,7 +47,7 @@ export default function StockXStockY() {
                 {selected === "down" ? <CheckCircleIcon /> : ""}
               </div>
               <div className={styles.name}>Second Company Name</div>
-              <div>274.56</div>
+              <div>₹274.56</div>
             </button>
           </div>
         </div>
