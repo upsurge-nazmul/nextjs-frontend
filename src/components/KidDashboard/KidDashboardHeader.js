@@ -12,7 +12,7 @@ import Menu from "../Dashboard/Menu";
 import NotificationMenu from "../Dashboard/NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
-function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
+function KidDashboardHeader({ mode, showback, gobackto, settoastdata, additionalNavigation=null }) {
   const router = useRouter();
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
@@ -48,6 +48,10 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
           </span>
         )}
       </h1>
+      {/* Additional Navigation Component if necessary, not visible in mobile portrait */}
+      {additionalNavigation && (
+        <div className={styles.additionalNavigation}>{additionalNavigation}</div>
+      )}
       <div className={styles.rightWrapper}>
         <div className={styles.rewardBlock}>
           <UniCoinSvg className={styles.svg} />

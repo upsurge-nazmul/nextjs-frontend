@@ -6,8 +6,8 @@ $common-border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow-x: auto;
-  margin: 20px 0;
+  overflow-y: auto;
+  margin: 10px 0;
   .banerArea {
     width: 100%;
     min-height: 80px;

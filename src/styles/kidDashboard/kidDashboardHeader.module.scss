@@ -37,6 +37,9 @@
       display: flex;
     }
   }
+  .additionalNavigation{
+    display: flex;
+  }
   .rightWrapper {
     display: flex;
     align-items: center;
@@ -354,6 +357,9 @@
         }
         display: flex;
       }
+    }
+    .additionalNavigation{
+      display: none;
     }
     .rightWrapper {
       display: flex;

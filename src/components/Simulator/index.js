@@ -90,22 +90,30 @@ export default function Simulator({
               : "Stock Simulator"
           }
           settoastdata={settoastdata}
+          additionalNavigation={
+            <Navigation
+              options={modes}
+              action={setMode}
+              active={mode}
+              simulatorType={simulatorType}
+            />
+          }
         />
         <div className={styles.mainContent}>
-          <div className={styles.topSection}>
-            {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
-            <div className={styles.phoneNavigation}>
-              <Navigation
-                options={modes}
-                action={setMode}
-                active={mode}
-                simulatorType={simulatorType}
-              />
-            </div>
-            {mode === modes[1].value &&
-            watchlistData &&
-            watchlistData.length &&
-            selectedSymbol ? (
+          {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
+          <div className={styles.phoneNavigation}>
+            <Navigation
+              options={modes}
+              action={setMode}
+              active={mode}
+              simulatorType={simulatorType}
+            />
+          </div>
+          {mode === modes[1].value &&
+          watchlistData &&
+          watchlistData.length &&
+          selectedSymbol ? (
+            <div className={styles.topSection}>
               <Watchlist
                 watchlistData={watchlistData}
                 setWatchlistData={setWatchlistData}
@@ -116,19 +124,10 @@ export default function Simulator({
                 settoastdata={settoastdata}
                 simulatorType={simulatorType}
               />
-            ) : (
-              ""
-            )}
-            {/* This navigation is hidden in mobile and visible in tabs and laptops */}
-            <div className={styles.normalNavigation}>
-              <Navigation
-                options={modes}
-                action={setMode}
-                active={mode}
-                simulatorType={simulatorType}
-              />
             </div>
-          </div>
+          ) : (
+            ""
+          )}
           <div className={styles.bottomSection}>
             {mode === modes[0].value && (
               <Home
