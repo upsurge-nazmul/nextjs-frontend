@@ -15,6 +15,7 @@ import MoneyAceDashboard from "../../../components/MoneyAce/MoneyAceDashboard";
 import Spinner from "../../../components/Spinner";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+
 export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -217,7 +218,6 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
         }`}
       >
         <DashboardHeader mode={"Money Ace"} settoastdata={settoastdata} />
-        <FullScreen handle={handlefullscren} style={styles.fullscreen}>
           <div
             className={`${styles.mainContent} ${
               handlefullscren.active && styles.mainContentfull
@@ -348,7 +348,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
               </div>
             )}
           </div>
-        </FullScreen>
+        
       </div>
     </div>
   );

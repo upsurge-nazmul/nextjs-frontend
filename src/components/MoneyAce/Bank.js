@@ -58,7 +58,7 @@ export default function Bank({
     let res = await MoneyAceApis.updateupi({ id: upi, pin: upipin });
     if (res && res.data && res.data.success) {
       settoastdata("Created successfully");
-      setcurrenttab("dashboard");
+      setshowupi(false);
     } else {
       seterr(res?.data?.message || "Error connecting to server");
     }
@@ -91,6 +91,9 @@ export default function Bank({
       }
     }
   }, []);
+  useEffect(() => {
+    seterr("");
+  }, [upi, upipin, confirmupi]);
   return (
     <div className={styles.bank}>
       {mode === "bulletin" && (
@@ -274,7 +277,7 @@ export default function Bank({
                   <p>DATE OF BIRTH</p>
                   <input value={getIndianTime(userdata.dob)} type="text" />
                 </div>
-                <div className={styles.row}>
+                {/* <div className={styles.row}>
                   <div className={styles.chkbx}>
                     {userdata.gender === "male" ? (
                       <img
@@ -305,7 +308,7 @@ export default function Bank({
                     )}
                     <p>Female</p>
                   </div>
-                </div>
+                </div> */}
                 {!moneyacedata?.account_number && (
                   <div
                     className={styles.submit}
@@ -333,7 +336,7 @@ export default function Bank({
                 </div>
                 {moneyacedata?.is_upi_claim ? (
                   <div className={styles.wrapper}>
-                    <div className={styles.row}>
+                    <div className={`${styles.row} `}>
                       <p>UPI Id</p>
                       <input type="text" value={moneyacedata.upi_id} />
                       <p className={styles.upiinput}>@upsurge</p>
@@ -415,13 +418,20 @@ export default function Bank({
             setshowcard={setshowcard}
             moneyacedata={moneyacedata}
             setmoneyacedata={setmoneyacedata}
+            setpassbookdata={setpassbookdata}
           />
         )}
         {moneyacedata?.account_number && (
           <div className={styles.bottomrow}>
             <div
               className={styles.backbutton}
-              onClick={() => setcurrenttab("dashboard")}
+              onClick={() => {
+                if (mode === "passbook") {
+                  setmode("home");
+                  return;
+                }
+                setcurrenttab("dashboard");
+              }}
             >
               <img
                 src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"

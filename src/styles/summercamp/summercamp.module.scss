@@ -103,30 +103,28 @@
       padding-left: 0px;
     }
     .signupBox {
-      width: 23vw;
       min-width: fit-content;
-      height: 50px;
+      height: 55px;
       display: flex;
       overflow: hidden;
       margin-top: 20px;
       z-index: 1;
 
       .button {
-        width: 12vw;
         min-width: fit-content;
-        font-size: clamp(12px, 1vw, 18px);
+        font-size: $gen-xl;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 500;
         border-radius: 6px;
-        padding: 0 20px;
-        color: white;
-        background-color: hsl(227, 56%, 48%);
+        color: $blue !important;
+        padding: 10px 40px;
+        background-color: hsl(0, 0%, 100%);
         cursor: pointer;
         transition: all 0.3s ease;
         &:hover {
-          background-color: hsl(227, 56%, 36%);
+          color: white;
         }
       }
     }
@@ -182,12 +180,14 @@
         }
       }
       .summary {
-        margin-top: 10px;
+        margin-top: 20px;
         font-weight: 400;
-        font-size: $gen-xl;
+        font-size: $gen-midl;
+        line-height: 25px;
         text-align: center;
       }
       .boldsummary {
+        font-size: $gen-xxl;
         font-weight: bold;
         margin-top: 2%;
       }
@@ -311,6 +311,7 @@
       }
       .des2 {
         font-size: clamp(12px, 2vw, 16px);
+
         background: #fdcc03;
         color: rgb(0, 0, 0);
         border-radius: 12px;
@@ -367,6 +368,7 @@
         .text {
           flex: 1;
           margin-top: 40px;
+          font-size: $gen-m;
         }
       }
       .featuresecond {
@@ -384,8 +386,8 @@
     .widesummary {
       margin-top: 10px;
       font-weight: 400;
-      font-size: $gen-l;
-      line-height: 25px;
+      font-size: $gen-xl;
+      line-height: 30px;
       text-align: center;
       padding: 0 17%;
       margin-top: 50px;
@@ -400,7 +402,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 400px;
+        width: 420px;
         border-radius: 12px;
         color: white;
         padding: 40px 20px;
@@ -415,7 +417,7 @@
           font-size: $gen-xl;
         }
         .des {
-          font-size: $gen-s;
+          font-size: $gen-m;
           margin-top: 10px;
         }
         &:first-child {
@@ -440,12 +442,12 @@
         font-weight: 500;
         border-radius: 6px;
         padding: 15px 30px;
+        background: $blue;
         color: white;
-        background-color: hsl(227, 56%, 48%);
         cursor: pointer;
         transition: all 0.3s ease;
         &:hover {
-          background-color: hsl(227, 56%, 36%);
+          background: hsl(227, 59%, 38%);
         }
       }
     }
@@ -541,12 +543,9 @@
           font-weight: 500;
           border-radius: 6px;
           padding: 0 20px;
-          color: white;
-          background-color: hsl(227, 56%, 48%);
           cursor: pointer;
           transition: all 0.3s ease;
           &:hover {
-            background-color: hsl(227, 56%, 36%);
           }
         }
       }
@@ -777,7 +776,6 @@
               border-top-right-radius: 6px;
               border-bottom-right-radius: 6px;
               padding: 0 20px;
-              color: white;
             }
           }
           .errsignbox {
@@ -1079,13 +1077,8 @@
           font-weight: 500;
           border-radius: 6px;
           padding: 0 20px;
-          color: white;
-          background-color: hsl(227, 56%, 48%);
           cursor: pointer;
           transition: all 0.3s ease;
-          &:hover {
-            background-color: hsl(227, 56%, 36%);
-          }
         }
       }
       .errsignbox {
@@ -1715,12 +1708,9 @@
           font-weight: 500;
           border-radius: 6px;
           padding: 0 20px;
-          color: white;
-          background-color: hsl(227, 56%, 48%);
           cursor: pointer;
           transition: all 0.3s ease;
           &:hover {
-            background-color: hsl(227, 56%, 36%);
           }
         }
       }
@@ -1956,11 +1946,10 @@
           border-radius: 6px;
           padding: 15px 30px;
           color: white;
-          background-color: hsl(227, 56%, 48%);
+
           cursor: pointer;
           transition: all 0.3s ease;
           &:hover {
-            background-color: hsl(227, 56%, 36%);
           }
         }
       }
@@ -2038,12 +2027,9 @@
           font-weight: 500;
           border-radius: 6px;
           padding: 0 20px;
-          color: white;
-          background-color: hsl(227, 56%, 48%);
           cursor: pointer;
           transition: all 0.3s ease;
           &:hover {
-            background-color: hsl(227, 56%, 36%);
           }
         }
       }
