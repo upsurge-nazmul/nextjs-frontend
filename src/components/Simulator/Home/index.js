@@ -99,11 +99,15 @@ export default function Home({ userData, token, simulatorType }) {
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
-            {holdingsChartData ? (
-              <Holdings chartData={holdingsChartData} height={250} />
-            ) : (
-              ""
-            )}
+            <div className={styles.holdingsChart}>
+              <div className={styles.chart}>
+                {holdingsChartData ? (
+                  <Holdings chartData={holdingsChartData} />
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
           </div>
           {holdingsChartData ? (
             <div className={styles.portfolioInfo}>
