@@ -42,14 +42,18 @@ export default function StockChallenges({ userData, token, simulatorType }) {
   return (
     <div className={styles.stockChallenges}>
       <div className={styles.topSection}>
-        <Topgainer list={stockList} currenTops={topComps} />
+        <Topgainer
+          list={stockList}
+          currenTops={topComps}
+          {...{ token, simulatorType, userData }}
+        />
       </div>
       <div className={styles.bottomSection}>
         <div className={styles.bottomLeft}>
-          <MarketUpDown />
+          <MarketUpDown {...{ token, simulatorType, userData }} />
         </div>
         <div className={styles.bottomRight}>
-          <StockXStockY {...{ token, simulatorType }} />
+          <StockXStockY {...{ token, simulatorType, userData }} />
         </div>
       </div>
     </div>

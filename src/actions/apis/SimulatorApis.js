@@ -132,9 +132,17 @@ const getStockXY = ({ payload, token, type = "stocksimulator" }) => {
   );
 };
 
-const getStockXYAnswer = ({ payload, token, type = "stocksimulator" }) => {
-  return ApiCalls.getResponse(
-    `${type}/challenges/stockXstockY/answer`,
+const getUserChallenges = ({ payload, token, type = "stocksimulator" }) => {
+  return ApiCalls.getResponse(`${type}/challenges`, payload, token);
+};
+
+const createOrUpdateChallenge = ({
+  payload,
+  token,
+  type = "stocksimulator",
+}) => {
+  return ApiCalls.postResponse(
+    `${type}/challenges/createOrUpdate`,
     payload,
     token
   );
@@ -159,5 +167,6 @@ export default {
   getTopCompanies,
   getTopUserCompanies,
   getStockXY,
-  getStockXYAnswer,
+  getUserChallenges,
+  createOrUpdateChallenge,
 };
