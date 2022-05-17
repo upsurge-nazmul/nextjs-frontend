@@ -1,10 +1,10 @@
 import { ResponsivePieCanvas } from "@nivo/pie";
 
-export default function Holdings({ chartData }) {
+export default function Holdings({ chartData, height = "200" }) {
   return (
     <ResponsivePieCanvas
       data={chartData}
-      margin={{ top: 20, right: 40, bottom: 20, left: 20 }}
+      margin={{ top: 10, right: 0, bottom: 0, left: 0 }}
       innerRadius={0.55}
       activeOuterRadiusOffset={8}
       colors={{ scheme: "nivo" }}
@@ -55,7 +55,7 @@ export default function Holdings({ chartData }) {
         precision: 0.01,
         velocity: 0,
       }}
-      height={200}
+      height={height}
     />
   );
 }
