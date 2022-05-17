@@ -41,10 +41,14 @@ export default function CryptoChallenges({ userData, token, simulatorType }) {
   return (
     <div className={styles.cryptoChallenges}>
       <div className={styles.topSection}>
-        <Topgainer list={cryptoList} currenTops={topComps} />
+        <Topgainer
+          list={cryptoList}
+          currenTops={topComps}
+          {...{ token, simulatorType, userData }}
+        />
       </div>
       <div className={styles.bottomSection}>
-        <BitcoinPriceEst {...{ token, simulatorType }} />
+        <BitcoinPriceEst {...{ token, simulatorType, userData }} />
       </div>
     </div>
   );
