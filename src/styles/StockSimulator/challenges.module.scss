@@ -1,0 +1,68 @@
+$common-border-radius: 14px;
+
+.stockChallenges {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+  .banerArea {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #4166eb;
+    border-radius: $common-border-radius;
+    .banerLeft {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      .banerText {
+        font-size: 18px;
+        font-weight: 500;
+        color: #fff;
+      }
+    }
+    .banerRight {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      .banerImage {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        span {
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+  .topSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .bottomSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    .bottomLeft {
+      flex: 1;
+    }
+    .bottomRight {
+      flex: 1;
+    }
+  }
+}
