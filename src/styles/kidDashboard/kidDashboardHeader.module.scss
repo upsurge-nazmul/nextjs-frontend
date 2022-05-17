@@ -21,6 +21,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   .dashboardHeading {
     font-size: 30px;
     font-weight: 400;
@@ -37,7 +38,7 @@
       display: flex;
     }
   }
-  .additionalNavigation{
+  .additionalNavigation {
     display: flex;
   }
   .rightWrapper {
@@ -358,7 +359,7 @@
         display: flex;
       }
     }
-    .additionalNavigation{
+    .additionalNavigation {
       display: none;
     }
     .rightWrapper {
