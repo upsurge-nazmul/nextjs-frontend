@@ -146,7 +146,7 @@ export default function SummerBootcamp() {
       <div className={styles.rest}>
         <div className={styles.rewards}>
           <p className={styles.heading} style={{ userSelect: "none" }}>
-            About upsurge Summer Bootcamp
+            upsurge Summer Bootcamp
           </p>
           <p className={styles.summary}>
             {`First of it’s kind Summer Bootcamp to make children money-wise & entrepreneurial!
@@ -199,7 +199,7 @@ export default function SummerBootcamp() {
         </p>
         <div className={styles.bottom}>
           <div className={styles.button} onClick={() => setshowpopup(true)}>
-            Register Now
+            Sign up for a Free Demo
           </div>
         </div>
         <div className={styles.questWrapper}>
