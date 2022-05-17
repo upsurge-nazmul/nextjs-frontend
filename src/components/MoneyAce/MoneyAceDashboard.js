@@ -27,6 +27,7 @@ import NineSlice from "../NineSlice";
 import Tasks from "./Tasks";
 import EducationHub from "./EducationHub";
 import JobHub from "./JobHub";
+import Tour from "../Tour/Tour";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -143,6 +144,13 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
+  const story = [
+    {
+      ref: "#demo",
+      text: "Welcome to upsurge!",
+      position: "left",
+    },
+  ];
 
   return (
     <div className={styles.dashboard}>
@@ -166,6 +174,7 @@ export default function MoneyAceDashboard({
             setmoneyacedata={setmoneyacedata}
           />
         )}
+        {!showdaily && <Tour story={story} />}
         <div
           className={`${styles.container} ${
             currenttab !== "dashboard" && styles.notdashboardcontainer
@@ -190,7 +199,9 @@ export default function MoneyAceDashboard({
             />
           )}
           <div className={styles.devoptions}>
-            <p onClick={handlereset}>Reset All</p>
+            <p id="demo" onClick={handlereset}>
+              Reset All
+            </p>
             <p onClick={handlenextday}>Next Day</p>
             <p onClick={handleallowinvesting}>Allow investing</p>
           </div>
