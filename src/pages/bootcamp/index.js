@@ -130,7 +130,7 @@ export default function SummerBootcamp() {
         <p className={styles.error}>{error}</p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
           <div className={`${styles.button}`} onClick={check}>
-            Register Now
+            Sign up for a Free Demo
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default function SummerBootcamp() {
             className={styles.summary}
           >{`Team-based experiential workshops in small age-appropriate batches for children of ages 10+`}</p>
           <p className={`${styles.summary} ${styles.boldsummary}`}>
-            {`Prizes worth ₹50,000`}
+            {`Student teams will compete in challenges and games, & can win prizes upto ₹50,000`}
           </p>
         </div>
         <div className={styles.features}>
