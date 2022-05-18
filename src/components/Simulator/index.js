@@ -76,15 +76,6 @@ export default function Simulator({
           }
         />
         <div className={styles.mainContent}>
-          {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
-          <div className={styles.phoneNavigation}>
-            <Navigation
-              options={MODES}
-              action={setMode}
-              active={mode}
-              simulatorType={simulatorType}
-            />
-          </div>
           <div className={styles.bottomSection}>
             {mode === MODES[0].value && (
               <Home
