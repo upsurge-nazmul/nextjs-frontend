@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styles from "../../../styles/StockSimulator/profitableStocks.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getShortForm } from "../../../helpers/shortForms";
 import { CircularProgress } from "@mui/material";
+import { MODES } from "../constants";
 
-export default function ProfitableStocks({ token, simulatorType, duration }) {
+export default function ProfitableStocks({
+  token,
+  simulatorType,
+  duration,
+  setSelectedSymbol = () => {},
+}) {
   const [companies, setCompanies] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchTopCompanies() {
@@ -86,9 +94,19 @@ export default function ProfitableStocks({ token, simulatorType, duration }) {
                     )}`}</div>
                   </div>
                 </div>
-                {/* <div className={styles.buttonArea}>
-                  <button className={styles.button}>{"->"}</button>
-                </div> */}
+                <div className={styles.buttonArea}>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      router.push(
+                        `/dashboard/w/${simulatorType}/${MODES[1].value}`
+                      );
+                      setSelectedSymbol(item.symbol);
+                    }}
+                  >
+                    {"->"}
+                  </button>
+                </div>
               </div>
             );
           })

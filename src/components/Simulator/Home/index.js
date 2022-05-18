@@ -13,7 +13,12 @@ const StockDurations = [
   { name: "Day", value: "daily" },
 ];
 
-export default function Home({ userData, token, simulatorType }) {
+export default function Home({
+  userData,
+  token,
+  simulatorType,
+  setSelectedSymbol,
+}) {
   const [holdingsChartData, setHoldingsChartData] = useState();
   const [activePortfDuration, setActivePortfDuration] = useState(
     StockDurations[StockDurations.length - 1].value
@@ -229,6 +234,7 @@ export default function Home({ userData, token, simulatorType }) {
               duration={activePortfDuration}
               selected={selectedStock}
               setLastUpdated={setLastUpdated}
+              setSelectedSymbol={setSelectedSymbol}
             />
           </div>
         </div>
@@ -258,6 +264,7 @@ export default function Home({ userData, token, simulatorType }) {
               token={token}
               simulatorType={simulatorType}
               duration={activeProfitableDuration}
+              setSelectedSymbol={setSelectedSymbol}
             />
           </div>
         </div>
