@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { MainContext } from "../../context/Main";
+import { MODES } from "./constants";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
@@ -14,12 +15,10 @@ import Leaderboard from "./Leaderboard";
 import Competition from "./Competition";
 import Challenges from "./Challenges";
 import styles from "../../styles/StockSimulator/simulator.module.scss";
-import { getTodaysDateRange } from "../../helpers/timehelpers";
 
 export default function Simulator({
   userData,
   token,
-  modes = [],
   simulatorType = "stocksimulator",
 }) {
   const router = useRouter();
@@ -73,8 +72,8 @@ export default function Simulator({
 
   const handleWatchlistClick = (value) => {
     setSelectedSymbol(value);
-    if (mode !== modes[1].value) {
-      router.push(`/dashboard/w/${simulatorType}/${modes[1].value}`);
+    if (mode !== MODES[1].value) {
+      router.push(`/dashboard/w/${simulatorType}/${MODES[1].value}`);
     }
   };
 
@@ -92,7 +91,7 @@ export default function Simulator({
           settoastdata={settoastdata}
           additionalNavigation={
             <Navigation
-              options={modes}
+              options={MODES}
               action={setMode}
               active={mode}
               simulatorType={simulatorType}
@@ -103,13 +102,13 @@ export default function Simulator({
           {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
           <div className={styles.phoneNavigation}>
             <Navigation
-              options={modes}
+              options={MODES}
               action={setMode}
               active={mode}
               simulatorType={simulatorType}
             />
           </div>
-          {mode === modes[1].value &&
+          {mode === MODES[1].value &&
           watchlistData &&
           watchlistData.length &&
           selectedSymbol ? (
@@ -129,14 +128,15 @@ export default function Simulator({
             ""
           )}
           <div className={styles.bottomSection}>
-            {mode === modes[0].value && (
+            {mode === MODES[0].value && (
               <Home
                 userData={userData}
                 token={token}
                 simulatorType={simulatorType}
+                setSelectedSymbol={setSelectedSymbol}
               />
             )}
-            {mode === modes[1].value && (
+            {mode === MODES[1].value && (
               <SimulatorDash
                 token={token}
                 companyData={companyData}
@@ -148,28 +148,28 @@ export default function Simulator({
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[2].value && (
+            {mode === MODES[2].value && (
               <Portfolio
                 userData={userData}
                 token={token}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[3].value && (
+            {mode === MODES[3].value && (
               <Challenges
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[4].value && (
+            {mode === MODES[4].value && (
               <Competition
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[5].value && (
+            {mode === MODES[5].value && (
               <Leaderboard
                 token={token}
                 userData={userData}
