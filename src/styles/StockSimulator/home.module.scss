@@ -267,7 +267,7 @@ $chart-color: #5200ff;
     flex-direction: column;
     gap: 20px;
     overflow-y: auto;
-    padding: 10px;
+    padding: 0 10px;
     .top {
       flex: 0.5;
       display: flex;
@@ -510,6 +510,272 @@ $chart-color: #5200ff;
             }
             .activeOption {
               @extend .option;
+              background-color: $dark-font-color;
+              color: #fff;
+            }
+          }
+        }
+        .cards {
+          padding: 10px 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    padding: 10px;
+    .top {
+      flex: 0.5;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 0;
+      flex-wrap: wrap;
+      .topLeft {
+        flex: 1;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: $chart-color;
+        border-radius: $common-border-radius;
+        .portfolioHoldings {
+          min-height: 250px;
+          border-radius: inherit;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 0;
+          .holdingsTitle {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            padding: 10px 0;
+          }
+          .holdingsChart {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .chart {
+              height: 100%;
+              width: 100%;
+              canvas {
+                height: 100% !important;
+                width: 100% !important;
+              }
+            }
+          }
+        }
+        .portfolioInfo {
+          background-color: #fff;
+          border-radius: $common-border-radius;
+          flex: 0.5;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 20px 0;
+          .infoItem {
+            padding-left: 10px;
+            min-width: 45%;
+            .label {
+              font-size: 8px;
+              color: $light-font-color;
+            }
+            .value {
+              font-size: 14px;
+              font-weight: 600;
+              color: $dark-font-color;
+            }
+          }
+        }
+      }
+      .topRight {
+        flex: 1;
+        min-width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: $common-border-radius;
+        .portfolioHeadingSection {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .portfolioHeading {
+            .heading {
+              font-size: 14px;
+              font-weight: 600;
+              color: $dark-font-color;
+              padding-bottom: 5px;
+            }
+            .subHeading {
+              font-size: 8px;
+              color: $light-font-color;
+            }
+          }
+          .portfolioOptions {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            .optionPL {
+              color: $light-font-color;
+              font-size: 10px;
+              cursor: pointer;
+              padding: 4px 8px;
+              border-radius: 4px;
+            }
+            .activeOption {
+              @extend .optionPL;
+              background-color: $dark-font-color;
+              color: #fff;
+            }
+          }
+        }
+        .myStocks {
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          flex-wrap: wrap;
+          .singleStockPL {
+            height: fit-content;
+            width: fit-content;
+            font-size: 10px;
+            font-weight: 600;
+            color: #333;
+            background-color: #ececec;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          .activeSingleStock {
+            @extend .singleStockPL;
+            background-color: $primary-color;
+            color: #fff;
+          }
+        }
+        .topReturns {
+          flex: 1;
+        }
+      }
+    }
+    .bottom {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      flex-wrap: wrap;
+      .bottomLeft {
+        flex: 1;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: $common-border-radius;
+        .chartArea {
+          width: 100%;
+          height: fit-content;
+          border-radius: inherit;
+          background-color: #fff;
+          .chartInfo {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px;
+            .icon {
+              font-size: 16px;
+              font-weight: 700;
+              background-color: $light-font-color;
+              color: $dark-font-color;
+              padding: 8px;
+              border-radius: 4px;
+            }
+            .nameArea {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              .value {
+                font-size: 16px;
+                font-weight: 700;
+                color: $dark-font-color;
+              }
+              .name {
+                font-size: 12px;
+                font-weight: 400;
+                color: $light-font-color;
+              }
+            }
+          }
+          .chart {
+            height: 150px;
+            width: 100%;
+          }
+        }
+        .emptySpace {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          font-weight: 600;
+          color: $light-font-color;
+          background-color: #fff;
+          border-radius: $common-border-radius;
+        }
+      }
+      .bottomRight {
+        flex: 1;
+        min-width: 100%;
+        background-color: #fff;
+        border-radius: $common-border-radius;
+        padding: 10px;
+        height: fit-content;
+        .headingArea {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: $dark-font-color;
+            padding-bottom: 6px;
+          }
+          .profitableStocksOptions {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            .optionPL {
+              color: $light-font-color;
+              font-size: 10px;
+              cursor: pointer;
+              padding: 4px 8px;
+              border-radius: 4px;
+            }
+            .activeOption {
+              @extend .optionPL;
               background-color: $dark-font-color;
               color: #fff;
             }
