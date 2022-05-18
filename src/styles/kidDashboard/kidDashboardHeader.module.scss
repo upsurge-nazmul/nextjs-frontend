@@ -419,3 +419,34 @@
     }
   }
 }
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .kiddashboardHeader {
+    height: fit-content;
+    padding: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .dashboardHeading {
+      font-size: 24px;
+      font-weight: 400;
+      span {
+        align-items: center;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      .addflex {
+        svg {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+        display: flex;
+      }
+    }
+    .additionalNavigation {
+      display: flex;
+    }
+  }
+}
