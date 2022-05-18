@@ -1,3 +1,4 @@
+@use "../variables/fontsizes.scss" as *;
 .bank {
   top: 0;
   left: 0;
@@ -262,6 +263,7 @@
         .form {
           padding: 20px 40px;
           height: 85%;
+          min-height: fit-content;
           width: 50%;
           display: flex;
           flex-direction: column;
@@ -418,8 +420,10 @@
         }
         .form {
           padding: 20px 40px;
-          height: 85%;
+          padding-right: 10px;
           width: 50%;
+          max-height: 85%;
+          min-width: fit-content;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -453,12 +457,15 @@
             text-align: center;
           }
           .wrapper {
+            overflow-y: auto;
             width: 100%;
+            padding-right: 20px;
           }
           .row {
             display: flex;
             align-items: center;
             margin-bottom: 5%;
+            position: relative;
             gap: 20px;
             width: 100%;
             img {
@@ -468,7 +475,7 @@
             p:first-child {
               font-weight: 900;
               font-family: "Fira Sans", sans-serif;
-              font-size: 24px;
+              font-size: $gen-xl;
               color: #ffd500;
               flex: 1;
             }
@@ -479,7 +486,7 @@
               border: 1px solid rgb(119, 119, 119);
               font-family: "Fira Sans", sans-serif;
               text-align: center;
-              font-size: 18px;
+              font-size: $gen-xl;
               font-weight: 800;
               color: white;
               padding: 5px 20px;
@@ -489,18 +496,19 @@
             }
             .upiinput {
               position: absolute;
-              right: 10%;
+              right: 2%;
               font-weight: 700;
               color: white;
               font-family: "Fira Sans", sans-serif;
-              font-size: 14px;
+              font-size: $gen-s;
             }
           }
+
           .bottomrow {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             gap: 10px;
-            margin-top: 5vh;
+            margin: 20px 0 10px;
             .space {
               flex: 1;
             }
@@ -856,10 +864,9 @@
 
           .form {
             padding: 20px;
-            padding-top: 12%;
             .row {
               display: flex;
-              justify-content: space-between;
+              justify-content: flex-start;
               width: 100%;
               align-items: center;
               font-family: "Fira Sans", sans-serif;
@@ -887,30 +894,19 @@
               }
             }
             .submit {
-              margin: 0 auto;
-              background: rgb(255, 213, 0);
               font-weight: 900;
               font-size: 1vw;
-              background: linear-gradient(
-                180deg,
-                rgba(255, 213, 0, 1) 0%,
-                rgba(255, 175, 0, 1) 100%
-              );
               padding: 10px 20px;
               border-radius: 6px;
               color: white;
-              margin-top: 10px;
               transition: all 0.3s ease;
-              margin-bottom: 10px;
+              margin: 0px;
               cursor: pointer;
               p {
                 font-family: "Fira Sans", sans-serif;
                 font-weight: 800;
                 font-size: 1vw;
                 filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
-              }
-              &:hover {
-                background-color: hsl(215, 52%, 50%);
               }
             }
           }
@@ -984,336 +980,6 @@
         p {
           font-size: 1.2vw;
 
-          font-family: "Fira Sans", sans-serif;
-          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
-        }
-      }
-    }
-    .bulletin {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.432);
-      width: 100%;
-      z-index: 20;
-      .page {
-        background: url("https://i.ibb.co/hZjrjqS/Rectangle-53.png");
-        height: 100%;
-        background-size: cover;
-        .pagecontent {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 40px;
-          position: relative;
-          height: 100%;
-          .pageno {
-            font-size: 12px;
-            bottom: 20px;
-            right: 20px;
-            position: absolute;
-          }
-          .heading {
-            font-weight: bold;
-            font-size: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .subheading {
-            font-weight: bold;
-            font-size: 14px;
-            width: 100%;
-            margin-top: 15px;
-          }
-          .lowpdetail {
-            width: 100%;
-            font-size: 12px;
-            font-weight: 400;
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-            margin-top: 10px;
-            padding-left: 20px;
-          }
-          .highpdetail {
-            width: 100%;
-            font-size: 16px;
-            font-weight: 600;
-            border-bottom: 1px solid black;
-            text-align: center;
-            margin-top: 10px;
-          }
-          .table {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 20px;
-            background-color: #fff;
-            font-size: 12px;
-            .tableheading {
-              background-color: #97928d;
-              font-weight: 500;
-              padding: 5px;
-            }
-            .row {
-              display: flex;
-              padding: 2px 5px;
-              justify-content: space-between;
-            }
-          }
-          .news {
-            display: flex;
-            margin-top: 20px;
-            .left,
-            .right {
-              flex: 1;
-            }
-            .right {
-              .img {
-              }
-            }
-          }
-          .list {
-            font-size: 12px;
-            width: 100%;
-            padding: 0 15px;
-            margin-top: 10px;
-            li {
-              margin-top: 5px;
-            }
-          }
-          .img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-top: 10px;
-          }
-        }
-      }
-      .pageholder {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        .close {
-          color: rgb(235, 64, 64);
-          background: white;
-          border-radius: 6px;
-          padding: 5px 10px;
-          margin-bottom: 10px;
-          font-size: 12px;
-          font-weight: 500;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1500px) {
-  .bank {
-    padding-bottom: 2%;
-    .back {
-      width: 3vw;
-      top: 20%;
-    }
-    .main {
-      .heading {
-        font-size: 1.4vw;
-        padding-top: 1vw;
-        .headingicon {
-          width: 3vw;
-        }
-        .name {
-          font-size: 1vw;
-        }
-        .whiteheading {
-          font-size: 1.4vw;
-        }
-        .accno {
-          font-size: 1vw;
-        }
-      }
-      .container {
-        height: 60%;
-
-        .headRow {
-          .rowitem {
-            font-size: 1.2vw;
-          }
-        }
-        .rows {
-          .row {
-            .rowitem {
-              font-size: 1vw;
-            }
-          }
-        }
-      }
-      .openacc {
-        .main {
-          border-radius: 12px;
-          .heading {
-            position: absolute;
-            top: -10%;
-            width: 15vw;
-            height: 5vw;
-            .namewrapper {
-              width: 100%;
-              position: relative;
-              display: flex;
-              align-items: center;
-              height: 100%;
-              justify-content: center;
-              img {
-                width: 100%;
-                height: 100%;
-              }
-              p {
-                position: absolute;
-                top: 15%;
-                color: white;
-                font-weight: 900;
-                filter: drop-shadow(1px 2px 1px #1b5500);
-                font-family: "Fira Sans", sans-serif;
-                letter-spacing: 1px;
-                font-size: 1.2vw;
-              }
-            }
-          }
-
-          .form {
-            padding: 20px;
-            padding-top: 12%;
-            .row {
-              display: flex;
-              justify-content: space-between;
-              width: 100%;
-              align-items: center;
-              font-family: "Fira Sans", sans-serif;
-              margin-bottom: 20px;
-              input {
-                border-radius: 12px;
-                font-size: 1.2vw;
-                padding: 5px 10px;
-                height: 40px;
-              }
-              .chkbx {
-                .Checkbox {
-                  width: 2vw;
-                }
-              }
-              p {
-                font-weight: 900;
-                font-family: "Fira Sans", sans-serif;
-                font-size: 1.4vw;
-                color: #ffd500;
-                letter-spacing: 1px;
-                &:nth-child(2) {
-                  margin-right: 40px;
-                }
-              }
-            }
-            .submit {
-              margin: 0 auto;
-              background: rgb(255, 213, 0);
-              font-weight: 900;
-              font-size: 1vw;
-              background: linear-gradient(
-                180deg,
-                rgba(255, 213, 0, 1) 0%,
-                rgba(255, 175, 0, 1) 100%
-              );
-              padding: 10px 20px;
-              border-radius: 6px;
-              color: white;
-              margin-top: 10px;
-              transition: all 0.3s ease;
-              margin-bottom: 10px;
-              cursor: pointer;
-              p {
-                font-family: "Fira Sans", sans-serif;
-                font-weight: 800;
-                font-size: 1vw;
-                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
-              }
-              &:hover {
-                background-color: hsl(215, 52%, 50%);
-              }
-            }
-          }
-        }
-      }
-      .bg {
-        position: absolute;
-        z-index: -2;
-        border-radius: 100px;
-        top: 10px;
-        overflow: hidden;
-        background-size: cover;
-        border-radius: 12px;
-        padding: 40px;
-        margin: 0 30px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        height: 90%;
-        width: 88%;
-
-        .btnwrapper {
-          display: flex;
-          width: 100%;
-          justify-content: space-around;
-          height: 100%;
-        }
-        .button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          width: 200px;
-          height: 45px;
-          margin-top: 5%;
-          background: linear-gradient(to top, #72a2e7, #233863);
-          color: white;
-          cursor: pointer;
-        }
-      }
-      .bgimage {
-        width: 95%;
-        height: 80%;
-        user-select: none;
-        pointer-events: none;
-      }
-    }
-    .bottomrow {
-      display: flex;
-      gap: 10px;
-      .space {
-        flex: 1;
-      }
-      .btn {
-        background: rgb(255, 213, 0);
-        font-weight: 900;
-        font-size: 16px;
-        color: white;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 213, 0, 1) 0%,
-          rgba(255, 175, 0, 1) 100%
-        );
-        padding: 12px;
-        border-radius: 6px;
-        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
-        width: 6vw;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        p {
           font-family: "Fira Sans", sans-serif;
           filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
         }

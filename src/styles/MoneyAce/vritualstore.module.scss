@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .virtualstore {
   top: 0;
   left: 0;
@@ -338,264 +340,61 @@
   .virtualstore {
     margin-top: 0px;
     .container {
-      height: 90%;
+      height: 80%;
       border-radius: 12px;
       padding: 10px 20px;
       gap: 10px;
-      .header {
-        .cart {
-          color: white;
-          position: relative;
-          cursor: pointer;
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          .text {
-            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-            color: #ffffff;
-            font-family: "Fira Sans", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-          }
-          .carticon {
-            height: 25px;
-            width: 25px;
-          }
-          .bggreen {
-            position: absolute;
-            bottom: -10%;
-            right: -10%;
-            background: rgb(171, 218, 0);
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-            padding: 3px;
-            p {
-              background: #03153a1f;
-              border-radius: 6px;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-              color: #ffffff;
-              font-family: "Fira Sans", sans-serif;
-              font-weight: 500;
-              font-size: 10px;
-            }
-          }
-        }
-      }
+
       .catwrapper {
         gap: 10px;
         .cat {
           border-radius: 4px;
           padding: 3px;
           p {
-            background: #03153aab;
             border-radius: 4px;
             padding: 2.5px 10px;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
             font-size: 14px;
           }
         }
       }
       .wrapper {
         gap: 10px;
-        padding: 0 0 10px;
       }
     }
     .invoice {
-      display: flex;
-      background-color: rgba(0, 0, 0, 0.35);
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 12px;
-      padding: 20px 20px;
-      flex: 1;
-      margin-bottom: 20px;
+      .heading {
+        .title {
+          color: rgb(0, 0, 0);
+          font-family: "Fira Sans", sans-serif;
+          font-weight: 900;
+          letter-spacing: 0.8px;
+          font-size: $gen-xs;
+          padding-bottom: 7%;
+        }
+      }
       .headRow {
-        padding-right: 10px;
+        padding-right: 20px;
+        display: flex;
         .rowitem {
-          font-size: 14px;
-          flex: 0.8;
+          font-size: $gen-s;
         }
       }
       .rows {
         .row {
           .rowitem {
-            font-size: 14px;
+            font-size: $gen-s;
           }
         }
       }
       .error {
-        font-size: 12px;
+        color: rgb(255, 89, 89);
+        text-align: center;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+        font-family: "Fira Sans", sans-serif;
       }
       .btn {
-        margin: 20px auto 0;
-        width: 5vw;
-        background: rgb(255, 213, 0);
-        font-weight: 900;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 213, 0, 1) 0%,
-          rgba(255, 175, 0, 1) 100%
-        );
-        padding: 8px;
-        border-radius: 6px;
-        color: white;
-        transition: all 0.3s ease;
-        cursor: pointer;
         p {
-          font-family: "Fira Sans", sans-serif;
-          font-weight: 800;
-          text-align: center;
-          font-size: 16px;
-          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
-        }
-        &:hover {
-          background-color: hsl(215, 52%, 50%);
-        }
-      }
-      .home {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-        cursor: pointer;
-        margin: auto;
-        margin-top: 20px;
-      }
-    }
-    .back {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      cursor: pointer;
-      margin: auto;
-      margin-top: 20px;
-    }
-  }
-}
-@media only screen and (max-width: 1500px) {
-  .virtualstore {
-    margin-top: 0px;
-    .container {
-      height: 90%;
-      border-radius: 12px;
-      padding: 10px 20px;
-      gap: 10px;
-      .header {
-        .cart {
-          color: white;
-          position: relative;
-          cursor: pointer;
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          .text {
-            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-            color: #ffffff;
-            font-family: "Fira Sans", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-          }
-          .carticon {
-            height: 25px;
-            width: 25px;
-          }
-          .bggreen {
-            position: absolute;
-            bottom: -10%;
-            right: -10%;
-            background: rgb(171, 218, 0);
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-            padding: 3px;
-            p {
-              background: #03153a1f;
-              border-radius: 6px;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-              color: #ffffff;
-              font-family: "Fira Sans", sans-serif;
-              font-weight: 500;
-              font-size: 10px;
-            }
-          }
-        }
-      }
-      .catwrapper {
-        gap: 10px;
-        .cat {
-          border-radius: 4px;
-          padding: 3px;
-          p {
-            background: #03153aab;
-            border-radius: 4px;
-            padding: 2.5px 10px;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
-            font-size: 14px;
-          }
-        }
-      }
-      .wrapper {
-        gap: 10px;
-        padding: 0 0 10px;
-      }
-    }
-    .invoice {
-      display: flex;
-      background-color: rgba(0, 0, 0, 0.35);
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 12px;
-      padding: 20px 20px;
-      flex: 1;
-      margin-bottom: 20px;
-      .headRow {
-        padding-right: 10px;
-        .rowitem {
-          font-size: 14px;
-          flex: 0.8;
-        }
-      }
-      .rows {
-        .row {
-          .rowitem {
-            font-size: 14px;
-          }
-        }
-      }
-      .error {
-        font-size: 12px;
-      }
-      .btn {
-        margin: 20px auto 0;
-        width: 5vw;
-        background: rgb(255, 213, 0);
-        font-weight: 900;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 213, 0, 1) 0%,
-          rgba(255, 175, 0, 1) 100%
-        );
-        padding: 8px;
-        border-radius: 6px;
-        color: white;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        p {
-          font-family: "Fira Sans", sans-serif;
-          font-weight: 800;
-          text-align: center;
-          font-size: 16px;
-          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+          font-size: $gen-s;
         }
         &:hover {
           background-color: hsl(215, 52%, 50%);

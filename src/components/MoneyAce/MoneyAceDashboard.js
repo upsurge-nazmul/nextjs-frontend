@@ -143,7 +143,7 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
-  console.log(tasks);
+
   return (
     <div className={styles.dashboard}>
       <audio ref={ref} src="/audio/dashboard.wav" autoPlay loop />

@@ -29,7 +29,7 @@ export default function JobHub({
       name: "Honey & Money",
       image: "https://i.ibb.co/P6nyLX6/bee.png",
       description:
-        "Be a be and collect honey. \n 100 drops makes 1 bottle of honey.",
+        "Be a bee and collect honey. \n 100 drops makes 1 bottle of honey.",
       type: "game",
       id: "task-22",
       benefits: {

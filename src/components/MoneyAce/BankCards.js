@@ -9,15 +9,24 @@ export default function BankCards({
   setshowcard,
   moneyacedata,
   setmoneyacedata,
+  setpassbookdata,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
-  console.log(userdata);
   const [atmpin, setatmpin] = useState("");
   const [showpin, setshowpin] = useState(false);
   async function activateatm() {
     let response = await MoneyAceApis.activateAtm({ pin: atmpin });
     if (response && response.data && response.data.success) {
+      setpassbookdata((prev) => [
+        ...prev,
+        {
+          account_balance: moneyacedata.account_balance + 1000,
+          deposit_money: 1000,
+          timestamp: new Date().getTime(),
+          particulars: "Bonus for claiming atm card",
+        },
+      ]);
       setmoneyacedata((prev) => ({ ...prev, ...response.data.data }));
     }
   }

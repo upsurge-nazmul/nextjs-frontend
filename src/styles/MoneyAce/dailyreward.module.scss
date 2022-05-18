@@ -56,7 +56,9 @@
       padding: 1.5vw 1vw;
       overflow: hidden;
       position: relative;
+      min-height: fit-content;
       .clickable {
+        margin-top: 5vw;
         .gift {
           display: flex;
           width: 100%;
@@ -72,6 +74,8 @@
           .sunburst {
             position: absolute;
             animation: rotate 10s ease forwards infinite;
+            width: 16vw;
+            height: 16vw;
           }
         }
         .giftopened {
@@ -115,7 +119,7 @@
       }
     }
     .homebtn {
-      width: 60px;
+      width: 3vw;
       margin-top: auto;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -131,8 +135,6 @@
     padding-top: 3%;
     .main {
       z-index: 1;
-      width: 80%;
-      height: 75%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -141,118 +143,61 @@
       }
       .divmain {
         border-radius: 12px;
-        .left {
-          .leftitemswrapper {
-            gap: 10px;
-            .cat {
-              padding: 4px;
-
-              p {
-                border-radius: 6px;
-                padding: 4px 10px;
-                font-size: 1vw;
-                text-align: center;
-              }
-            }
-          }
-        }
-        .right {
-          .row {
+        .clickable {
+          .gift {
             display: flex;
+            width: 90%;
+            cursor: pointer;
+            height: 90%;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 3%;
-            gap: 10px;
-            img {
-              width: 40px;
-              cursor: pointer;
+            .giftimage {
+              z-index: 1;
+              object-fit: contain;
             }
-            p {
-              font-size: 1.3vw;
-            }
-            input {
-              border-radius: 12px;
-              font-size: 1vw;
-              height: 40px;
+            .sunburst {
+              position: absolute;
+              animation: rotate 10s ease forwards infinite;
             }
           }
-
-          .purchasewrapper {
-            width: 100%;
-            overflow-x: auto;
+          .giftopened {
             display: flex;
-            gap: 10px;
-          }
-        }
-      }
-      .homebtn {
-        width: 3vw;
-        margin-top: auto;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 2vw;
-        &:hover {
-          opacity: 0.9;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 1500px) {
-  .profile {
-    padding-top: 3%;
-    .main {
-      z-index: 1;
-      width: 80%;
-      height: 75%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .heading {
-        font-size: 1.4vw;
-      }
-      .divmain {
-        border-radius: 12px;
-        .left {
-          .leftitemswrapper {
-            gap: 10px;
-            .cat {
-              padding: 4px;
-
-              p {
-                border-radius: 6px;
-                padding: 4px 10px;
-                font-size: 1vw;
-                text-align: center;
-              }
-            }
-          }
-        }
-        .right {
-          .row {
-            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 3%;
-            gap: 10px;
-            img {
-              width: 40px;
-              cursor: pointer;
+            .sunburst {
+              position: absolute;
+              animation: rotate 10s ease forwards infinite;
+              z-index: -1;
+              opacity: 0.5;
             }
-            p {
-              font-size: 1.3vw;
+            .head {
+              font-family: "Fira Sans", sans-serif;
+              font-size: 4vw;
+              font-weight: 700;
+              color: #ffd500;
+              text-align: center;
+              filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.637));
             }
-            input {
-              border-radius: 12px;
-              font-size: 1vw;
-              height: 40px;
+            .subhead {
+              color: rgb(255, 255, 255);
+              font-family: "Fira Sans", sans-serif;
+              font-weight: 600;
+              font-size: 1.5vw;
+              filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.637));
             }
           }
-
-          .purchasewrapper {
-            width: 100%;
-            overflow-x: auto;
-            display: flex;
-            gap: 10px;
-          }
+        }
+        .bottombar {
+          width: 100%;
+          height: fit-content;
+          background-color: rgba(175, 175, 175, 0.39);
+          margin-top: 10%;
+          padding: 20px;
+          border-radius: 12px;
+          display: flex;
+          gap: auto;
+          justify-content: space-around;
         }
       }
       .homebtn {

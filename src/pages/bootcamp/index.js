@@ -130,7 +130,7 @@ export default function SummerBootcamp() {
         <p className={styles.error}>{error}</p>
         <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
           <div className={`${styles.button}`} onClick={check}>
-            Register Now
+            Sign up for a Free Demo
           </div>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function SummerBootcamp() {
       <div className={styles.rest}>
         <div className={styles.rewards}>
           <p className={styles.heading} style={{ userSelect: "none" }}>
-            About upsurge Summer Bootcamp
+            upsurge Summer Bootcamp
           </p>
           <p className={styles.summary}>
             {`First of it’s kind Summer Bootcamp to make children money-wise & entrepreneurial!
@@ -156,7 +156,7 @@ export default function SummerBootcamp() {
             className={styles.summary}
           >{`Team-based experiential workshops in small age-appropriate batches for children of ages 10+`}</p>
           <p className={`${styles.summary} ${styles.boldsummary}`}>
-            {`Prizes worth ₹50,000`}
+            {`Student teams will compete in challenges and games, & can win prizes upto ₹50,000`}
           </p>
         </div>
         <div className={styles.features}>
@@ -199,7 +199,7 @@ export default function SummerBootcamp() {
         </p>
         <div className={styles.bottom}>
           <div className={styles.button} onClick={() => setshowpopup(true)}>
-            Register Now
+            Sign up for a Free Demo
           </div>
         </div>
         <div className={styles.questWrapper}>

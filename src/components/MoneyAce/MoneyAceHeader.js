@@ -31,10 +31,11 @@ export default function MoneyAceHeader({
     useContext(MainContext);
   const [showsettings, setshowsettings] = useState(false);
   const [showprofile, setshowprofile] = useState(false);
-  //
+
   return (
     <div
       className={styles.header}
+      id="moneyace-header"
       // style={{ backgroundColor: hidebackground ? "transparent" : "#5ec796" }}
     >
       {showsettings && (
