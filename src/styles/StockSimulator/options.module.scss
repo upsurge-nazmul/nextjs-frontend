@@ -294,7 +294,7 @@ $sell-color: #eb5757;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 8px 0;
+      padding: 12px 0;
       border: none;
       border-radius: 8px;
       width: 46%;
@@ -307,7 +307,7 @@ $sell-color: #eb5757;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 14px;
+        font-size: 16px;
         text-transform: uppercase;
       }
       .buttonInfo {
@@ -317,7 +317,7 @@ $sell-color: #eb5757;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        font-size: 9px;
+        font-size: 12px;
         span {
           span {
             font-weight: 300;
