@@ -146,7 +146,7 @@ export default function Home({
         <div className={styles.topRight}>
           <div className={styles.portfolioHeadingSection}>
             <div className={styles.portfolioHeading}>
-              <div className={styles.heading}>You Portfolio</div>
+              <div className={styles.heading}>Your Portfolio</div>
               <div className={styles.subHeading}>
                 Last Updated at {lastUpdated}
               </div>
