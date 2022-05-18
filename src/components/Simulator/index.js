@@ -7,7 +7,6 @@ import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
 import Home from "./Home";
 import SimulatorDash from "./Dash";
-import Watchlist from "./Watchlist";
 import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
@@ -25,7 +24,6 @@ export default function Simulator({
   const [mode, setMode] = useState(router.query.page);
   const [companyData, setCompanyData] = useState();
   const [selectedSymbol, setSelectedSymbol] = useState();
-  const [watchlistData, setWatchlistData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -53,29 +51,8 @@ export default function Simulator({
   }, [token]);
 
   useEffect(() => {
-    async function fetchWatchlist() {
-      let watchlist = await SimulatorApis.getWatchlist({
-        payload: { user_id: userData.user_id },
-        token,
-        type: simulatorType,
-      });
-      if (watchlist.data && watchlist.data.success) {
-        setWatchlistData(watchlist.data.data.rows);
-      }
-    }
-    fetchWatchlist();
-  }, [token]);
-
-  useEffect(() => {
     setuserdata(userData);
   }, []);
-
-  const handleWatchlistClick = (value) => {
-    setSelectedSymbol(value);
-    if (mode !== MODES[1].value) {
-      router.push(`/dashboard/w/${simulatorType}/${MODES[1].value}`);
-    }
-  };
 
   return (
     <div className={styles.stockSimulator}>
@@ -108,25 +85,6 @@ export default function Simulator({
               simulatorType={simulatorType}
             />
           </div>
-          {mode === MODES[1].value &&
-          watchlistData &&
-          watchlistData.length &&
-          selectedSymbol ? (
-            <div className={styles.topSection}>
-              <Watchlist
-                watchlistData={watchlistData}
-                setWatchlistData={setWatchlistData}
-                companyData={companyData}
-                action={handleWatchlistClick}
-                active={selectedSymbol}
-                token={token}
-                settoastdata={settoastdata}
-                simulatorType={simulatorType}
-              />
-            </div>
-          ) : (
-            ""
-          )}
           <div className={styles.bottomSection}>
             {mode === MODES[0].value && (
               <Home
@@ -143,9 +101,8 @@ export default function Simulator({
                 selectedSymbol={selectedSymbol}
                 setSelectedSymbol={setSelectedSymbol}
                 userData={userData}
-                watchlistData={watchlistData}
-                setWatchlistData={setWatchlistData}
                 simulatorType={simulatorType}
+                settoastdata={settoastdata}
               />
             )}
             {mode === MODES[2].value && (
