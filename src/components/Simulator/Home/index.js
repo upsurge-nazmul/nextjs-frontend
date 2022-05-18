@@ -100,7 +100,7 @@ export default function Home({
 
   return (
     <div className={styles.home}>
-      <div className={styles.left}>
+      <div className={styles.top}>
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
@@ -143,34 +143,6 @@ export default function Home({
             ""
           )}
         </div>
-        <div className={styles.bottomLeft}>
-          {chartData && chartData.length ? (
-            chartData.map((data, i) => {
-              return (
-                <div key={i} className={styles.chartArea}>
-                  <div className={styles.chartInfo}>
-                    <div className={styles.icon}>{getShortForm(data.name)}</div>
-                    <div className={styles.nameArea}>
-                      <div className={styles.value}>
-                        {"₹" + parseFloat(data.total_value).toFixed(2)}
-                      </div>
-                      <div className={styles.name}>{data.name}</div>
-                    </div>
-                  </div>
-                  <Chart
-                    chartData={data.data}
-                    className={styles.chart}
-                    colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
-                  />
-                </div>
-              );
-            })
-          ) : (
-            <div className={styles.emptySpace}>You do not have any stock</div>
-          )}
-        </div>
-      </div>
-      <div className={styles.right}>
         <div className={styles.topRight}>
           <div className={styles.portfolioHeadingSection}>
             <div className={styles.portfolioHeading}>
@@ -237,6 +209,34 @@ export default function Home({
               setSelectedSymbol={setSelectedSymbol}
             />
           </div>
+        </div>
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.bottomLeft}>
+          {chartData && chartData.length ? (
+            chartData.map((data, i) => {
+              return (
+                <div key={i} className={styles.chartArea}>
+                  <div className={styles.chartInfo}>
+                    <div className={styles.icon}>{getShortForm(data.name)}</div>
+                    <div className={styles.nameArea}>
+                      <div className={styles.value}>
+                        {"₹" + parseFloat(data.total_value).toFixed(2)}
+                      </div>
+                      <div className={styles.name}>{data.name}</div>
+                    </div>
+                  </div>
+                  <Chart
+                    chartData={data.data}
+                    className={styles.chart}
+                    colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <div className={styles.emptySpace}>You do not have any stock</div>
+          )}
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.headingArea}>

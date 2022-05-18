@@ -8,16 +8,17 @@ $chart-color: #5200ff;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  .left {
-    flex: 0.75;
+  .top {
+    flex: 0.5;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
     padding: 10px 0;
     .topLeft {
+      flex: 1;
       display: flex;
       flex-direction: row;
       background-color: $chart-color;
@@ -79,72 +80,8 @@ $chart-color: #5200ff;
         }
       }
     }
-    .bottomLeft {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      border-radius: $common-border-radius;
-      .chartArea {
-        width: 100%;
-        height: fit-content;
-        border-radius: inherit;
-        background-color: #fff;
-        .chartInfo {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding: 10px;
-          .icon {
-            font-size: 16px;
-            font-weight: 700;
-            background-color: $light-font-color;
-            color: $dark-font-color;
-            padding: 8px;
-            border-radius: 4px;
-          }
-          .nameArea {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            .value {
-              font-size: 16px;
-              font-weight: 700;
-              color: $dark-font-color;
-            }
-            .name {
-              font-size: 12px;
-              font-weight: 400;
-              color: $light-font-color;
-            }
-          }
-        }
-        .chart {
-          height: 150px;
-          width: 100%;
-        }
-      }
-      .emptySpace {
-        display: flex;
-        height: 100%;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        font-weight: 600;
-        color: $light-font-color;
-        background-color: #fff;
-        border-radius: $common-border-radius;
-      }
-    }
-  }
-  .right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     .topRight {
-      flex: 0.75;
+      flex: 1;
       background-color: #fff;
       padding: 20px;
       display: flex;
@@ -213,10 +150,76 @@ $chart-color: #5200ff;
         flex: 1;
       }
     }
+  }
+  .bottom {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    .bottomLeft {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-radius: $common-border-radius;
+      .chartArea {
+        width: 100%;
+        height: fit-content;
+        border-radius: inherit;
+        background-color: #fff;
+        .chartInfo {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 10px;
+          .icon {
+            font-size: 16px;
+            font-weight: 700;
+            background-color: $light-font-color;
+            color: $dark-font-color;
+            padding: 8px;
+            border-radius: 4px;
+          }
+          .nameArea {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .value {
+              font-size: 16px;
+              font-weight: 700;
+              color: $dark-font-color;
+            }
+            .name {
+              font-size: 12px;
+              font-weight: 400;
+              color: $light-font-color;
+            }
+          }
+        }
+        .chart {
+          height: 150px;
+          width: 100%;
+        }
+      }
+      .emptySpace {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: $light-font-color;
+        background-color: #fff;
+        border-radius: $common-border-radius;
+      }
+    }
     .bottomRight {
       background-color: #fff;
       border-radius: $common-border-radius;
       padding: 20px;
+      flex: 1;
+      height: fit-content;
       .headingArea {
         display: flex;
         flex-direction: row;
