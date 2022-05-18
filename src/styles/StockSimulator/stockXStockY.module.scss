@@ -105,3 +105,14 @@ $stock-button-color: #4166eb;
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .stockXStockY {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border-radius: $common-border-radius;
+    padding: 20px;
+  }
+}
