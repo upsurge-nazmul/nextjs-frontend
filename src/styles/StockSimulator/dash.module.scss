@@ -297,29 +297,29 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    height: 100%;
+    height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 10px;
+    .chartOptionArea {
+      width: 80vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      .selectArea {
+        flex: 1;
+      }
+      .buttonArea {
+        display: none;
+      }
+      .switchArea {
+        display: none;
+      }
+    }
     .dashLeft {
       flex: 1;
-      .chartOptionArea {
-        width: 80vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        .selectArea {
-          flex: 1;
-        }
-        .buttonArea {
-          display: none;
-        }
-        .switchArea {
-          display: none;
-        }
-      }
       .chartArea {
         width: 80vw;
         .charts {
