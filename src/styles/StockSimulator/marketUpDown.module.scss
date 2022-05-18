@@ -132,3 +132,14 @@ $sell-color: #eb5757;
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .marketUpDown {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border-radius: $common-border-radius;
+    padding: 20px;
+  }
+}
