@@ -4,6 +4,7 @@ import CompanySelection from "../Dash/CompanySelection";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 
 export default function Topgainer({
   list,
@@ -134,7 +135,9 @@ export default function Topgainer({
                   2
                 )}
               </div>
-              <div className={styles.date}>{selectedCompany.date}</div>
+              <div className={styles.date}>
+                {convertedUTCToLocal(selectedCompany.date)}
+              </div>
               <div className={styles.actionArea}>
                 <button
                   className={styles.action}

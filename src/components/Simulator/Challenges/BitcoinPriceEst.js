@@ -6,7 +6,7 @@ import Chart from "../Home/Chart";
 
 export default function BitcoinPriceEst({ token, simulatorType, userData }) {
   const [bitcoinData, setBitcoinData] = useState();
-  const [estValue, setEstValue] = useState();
+  const [estValue, setEstValue] = useState("");
 
   useEffect(() => {
     async function fetchUserChallenges() {
