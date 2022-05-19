@@ -110,3 +110,288 @@ $nutral-color: #ffa800;
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .card {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .iconArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 12px;
+        font-weight: 700;
+        background-color: $light-font-color;
+        color: $dark-font-color;
+        padding: 8px;
+        border-radius: 4px;
+      }
+    }
+    .nameArea {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .name {
+        font-size: 12px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+      .symbol {
+        font-size: 8px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+    }
+    .valueArea {
+      display: none;
+    }
+    .qtArea {
+      flex: 0.25;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      .label {
+        font-size: 8px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+      .value {
+        font-size: 12px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+    }
+    .gainArea {
+      flex: 0.25;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      .gain {
+        color: $buy-color;
+      }
+      .loss {
+        color: $sell-color;
+      }
+      .nutral {
+        color: $nutral-color;
+      }
+    }
+    .buttonArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5px;
+      font-size: 12px;
+      font-weight: 600;
+      .button {
+        color: $primary-color;
+        background-color: #f3f6f9;
+        padding: 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+  .card {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .iconArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 12px;
+        font-weight: 700;
+        background-color: $light-font-color;
+        color: $dark-font-color;
+        padding: 8px;
+        border-radius: 4px;
+      }
+    }
+    .nameArea {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .name {
+        font-size: 12px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+      .symbol {
+        font-size: 8px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+    }
+    .valueArea {
+      display: none;
+    }
+    .qtArea {
+      flex: 0.25;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      .label {
+        font-size: 8px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+      .value {
+        font-size: 12px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+    }
+    .gainArea {
+      flex: 0.25;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      .gain {
+        color: $buy-color;
+      }
+      .loss {
+        color: $sell-color;
+      }
+      .nutral {
+        color: $nutral-color;
+      }
+    }
+    .buttonArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5px;
+      font-size: 12px;
+      font-weight: 600;
+      .button {
+        color: $primary-color;
+        background-color: #f3f6f9;
+        padding: 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+// bigger width tabs
+@media only screen and (min-width: 821px) and (max-width: 1024px) {
+  .card {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .iconArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 16px;
+        font-weight: 700;
+        background-color: $light-font-color;
+        color: $dark-font-color;
+        padding: 8px;
+        border-radius: 4px;
+      }
+    }
+    .nameArea {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .name {
+        font-size: 14px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+      .symbol {
+        font-size: 10px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+    }
+    .valueArea {
+      display: none;
+    }
+    .qtArea {
+      flex: 0.25;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      .label {
+        font-size: 10px;
+        font-weight: 400;
+        color: $light-font-color;
+      }
+      .value {
+        font-size: 14px;
+        font-weight: 700;
+        color: $dark-font-color;
+      }
+    }
+    .gainArea {
+      flex: 0.25;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      .gain {
+        color: $buy-color;
+      }
+      .loss {
+        color: $sell-color;
+      }
+      .nutral {
+        color: $nutral-color;
+      }
+    }
+    .buttonArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 12px;
+      font-weight: 600;
+      .button {
+        color: $primary-color;
+        background-color: #f3f6f9;
+        padding: 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}

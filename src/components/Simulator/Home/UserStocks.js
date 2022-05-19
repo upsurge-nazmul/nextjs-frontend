@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styles from "../../../styles/StockSimulator/userStocks.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getShortForm } from "../../../helpers/shortForms";
+import { MODES } from "../constants";
 
 export default function UserStocks({
   userData,
@@ -10,8 +12,10 @@ export default function UserStocks({
   duration,
   selected = "all",
   setLastUpdated = () => {},
+  setSelectedSymbol = () => {},
 }) {
   const [companies, setCompanies] = useState();
+  const router = useRouter();
 
   const convetedDate = (date) => {
     date = new Date(date);
@@ -94,9 +98,19 @@ export default function UserStocks({
                     2
                   )}`}</div>
                 </div>
-                {/* <div className={styles.buttonArea}>
-                <button className={styles.button}>{"->"}</button>
-              </div> */}
+                <div className={styles.buttonArea}>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      router.push(
+                        `/dashboard/w/${simulatorType}/${MODES[1].value}`
+                      );
+                      setSelectedSymbol(item.symbol);
+                    }}
+                  >
+                    {"->"}
+                  </button>
+                </div>
               </div>
             );
           })

@@ -21,119 +21,132 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  .dashboardHeading {
-    font-size: 30px;
-    font-weight: 400;
-    span {
-      align-items: center;
-      font-weight: 500;
-      text-transform: capitalize;
-    }
-    .addflex {
-      svg {
-        margin-right: 10px;
-        cursor: pointer;
+  align-items: center;
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .dashboardHeading {
+      font-size: 30px;
+      font-weight: 400;
+      span {
+        align-items: center;
+        font-weight: 500;
+        text-transform: capitalize;
       }
+      .addflex {
+        svg {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+        display: flex;
+      }
+    }
+    .additionalNavigation {
       display: flex;
+    }
+    .rightWrapper {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      .rewardBlock {
+        width: 20px;
+        height: 20px;
+        margin-right: 50px;
+        display: flex;
+        align-items: center;
+        .svg {
+          min-width: 20px;
+          min-height: 20px;
+          margin-right: 5px;
+          path {
+            fill: rgb(41, 41, 41);
+          }
+        }
+        .number {
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .settings {
+        svg {
+          width: 22px;
+        }
+        &:hover {
+          svg {
+            transition: all 0.3s ease;
+            color: rgb(80, 80, 80);
+            path {
+            }
+          }
+        }
+      }
+      .rotate {
+        animation: rotate 1s ease infinite;
+      }
+      .bell {
+        animation: bell 0.5s ease infinite;
+      }
+      .notification {
+        position: relative;
+        margin-left: 20px;
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50px;
+          background-color: rgba(255, 122, 0, 1);
+          border: 2px solid #e5e5e5;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+        }
+        &:hover {
+          svg {
+            path {
+              transition: all 0.3s ease;
+              fill: rgb(80, 80, 80);
+            }
+          }
+        }
+      }
+      .avatar {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        outline-color: rgb(214, 214, 214);
+        img {
+          width: 100%;
+          border-radius: 50px;
+          height: 100%;
+          transition: all 0.3s ease;
+          object-fit: cover;
+        }
+        &:hover {
+          outline: 1px solid rgb(214, 214, 214);
+
+          img {
+            opacity: 0.8;
+          }
+        }
+      }
     }
   }
-  .rightWrapper {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    .rewardBlock {
-      width: 20px;
-      height: 20px;
-      margin-right: 50px;
-      display: flex;
-      align-items: center;
-      .svg {
-        min-width: 20px;
-        min-height: 20px;
-        margin-right: 5px;
-        path {
-          fill: rgb(41, 41, 41);
-        }
-      }
-      .number {
-        font-size: 12px;
-        font-weight: 500;
-      }
-    }
-    .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      margin-right: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .settings {
-      svg {
-        width: 22px;
-      }
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          color: rgb(80, 80, 80);
-          path {
-          }
-        }
-      }
-    }
-    .rotate {
-      animation: rotate 1s ease infinite;
-    }
-    .bell {
-      animation: bell 0.5s ease infinite;
-    }
-    .notification {
-      position: relative;
-      margin-left: 20px;
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50px;
-        background-color: rgba(255, 122, 0, 1);
-        border: 2px solid #e5e5e5;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-      }
-      &:hover {
-        svg {
-          path {
-            transition: all 0.3s ease;
-            fill: rgb(80, 80, 80);
-          }
-        }
-      }
-    }
-    .avatar {
-      width: 50px;
-      height: 50px;
-      position: relative;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      outline-color: rgb(214, 214, 214);
-      img {
-        width: 100%;
-        border-radius: 50px;
-        height: 100%;
-        transition: all 0.3s ease;
-        object-fit: cover;
-      }
-      &:hover {
-        outline: 1px solid rgb(214, 214, 214);
-
-        img {
-          opacity: 0.8;
-        }
-      }
-    }
+  .phoneAdditionalNav {
+    display: none;
   }
 }
 .darkstyles {
@@ -260,6 +273,7 @@
     align-items: center;
   }
 }
+
 @media only screen and (max-width: 860px) {
   .kiddashboardHeader {
     height: 12vh;
@@ -268,147 +282,210 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    .dashboardHeading {
-      font-size: 25px;
-      font-weight: 400;
-      margin-right: 10px;
-      span {
-        font-weight: 500;
-        text-transform: capitalize;
-      }
-      .addflex {
-        svg {
-          width: 15px;
-          margin-right: 10px;
+    .content {
+      .dashboardHeading {
+        font-size: 25px;
+        font-weight: 400;
+        margin-right: 10px;
+        span {
+          font-weight: 500;
+          text-transform: capitalize;
         }
-        display: flex;
-      }
-    }
-    .rightWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      width: fit-content;
-      .icon {
-        width: 18px;
-        height: 18px;
-      }
-      .settings {
-        svg {
-          width: 16px;
-        }
-      }
-      .notification {
-        position: relative;
-        svg {
-          width: 13px;
-        }
-        .dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50px;
-          background-color: rgba(255, 122, 0, 1);
-          border: 2px solid #e5e5e5;
-          position: absolute;
-          top: 0px;
-          right: 0px;
-        }
-        &:hover {
+        .addflex {
           svg {
-            path {
-              transition: all 0.3s ease;
-              fill: rgb(80, 80, 80);
+            width: 15px;
+            margin-right: 10px;
+          }
+          display: flex;
+        }
+      }
+      .rightWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: fit-content;
+        .icon {
+          width: 18px;
+          height: 18px;
+        }
+        .settings {
+          svg {
+            width: 16px;
+          }
+        }
+        .notification {
+          position: relative;
+          svg {
+            width: 13px;
+          }
+          .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;
+            background-color: rgba(255, 122, 0, 1);
+            border: 2px solid #e5e5e5;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+          }
+          &:hover {
+            svg {
+              path {
+                transition: all 0.3s ease;
+                fill: rgb(80, 80, 80);
+              }
             }
           }
         }
+        .avatar {
+          width: 30px;
+          height: 30px;
+        }
       }
-      .avatar {
-        width: 30px;
-        height: 30px;
-      }
+    }
+    .phoneAdditionalNav {
+      display: none;
     }
   }
 }
 
 @media only screen and (max-width: 500px) {
   .kiddashboardHeader {
-    height: 10vh;
-    padding: 20px;
+    height: fit-content;
+    padding: 10px 10px;
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    .dashboardHeading {
-      font-size: 16px;
-      font-weight: 400;
-      margin-right: 10px;
-      span {
-        font-weight: 500;
-        text-transform: capitalize;
-      }
-      .addflex {
-        svg {
-          width: 12px;
-          margin-right: 5px;
-        }
-        display: flex;
-      }
-    }
-    .rightWrapper {
+    flex-wrap: wrap;
+    .content {
+      flex: 1;
+      min-width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      width: fit-content;
       justify-content: space-between;
-      .rewardBlock {
-        margin-right: 30px;
-        .number {
-          font-size: 10px;
+      padding: 10px 0;
+      .dashboardHeading {
+        font-size: 16px;
+        font-weight: 400;
+        margin-right: 10px;
+        span {
+          font-weight: 500;
+          text-transform: capitalize;
         }
-        img {
+        .addflex {
+          svg {
+            width: 12px;
+            margin-right: 5px;
+          }
+          display: flex;
+        }
+      }
+      .additionalNavigation {
+        display: none;
+      }
+      .rightWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: fit-content;
+        justify-content: space-between;
+        .rewardBlock {
+          margin-right: 30px;
+          .number {
+            font-size: 10px;
+          }
+          img {
+            width: 12px;
+            height: 12px;
+          }
+        }
+        .icon {
           width: 12px;
           height: 12px;
         }
-      }
-      .icon {
-        width: 12px;
-        height: 12px;
-      }
-      .settings {
-        svg {
-          width: 12px;
-        }
-      }
-      .notification {
-        position: relative;
-        svg {
-          width: 12px;
-        }
-        .dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50px;
-          background-color: rgba(255, 122, 0, 1);
-          border: 2px solid #e5e5e5;
-          position: absolute;
-          top: -1px;
-          right: -1px;
-        }
-        &:hover {
+        .settings {
           svg {
-            path {
-              transition: all 0.3s ease;
-              fill: rgb(80, 80, 80);
+            width: 12px;
+          }
+        }
+        .notification {
+          position: relative;
+          svg {
+            width: 12px;
+          }
+          .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50px;
+            background-color: rgba(255, 122, 0, 1);
+            border: 2px solid #e5e5e5;
+            position: absolute;
+            top: -1px;
+            right: -1px;
+          }
+          &:hover {
+            svg {
+              path {
+                transition: all 0.3s ease;
+                fill: rgb(80, 80, 80);
+              }
             }
           }
         }
+        .avatar {
+          width: 30px;
+          height: 30px;
+        }
       }
-      .avatar {
-        width: 30px;
-        height: 30px;
+    }
+    .phoneAdditionalNav {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .kiddashboardHeader {
+    height: fit-content;
+    padding: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .content {
+      flex: 1;
+      min-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      .dashboardHeading {
+        font-size: 24px;
+        font-weight: 400;
+        span {
+          align-items: center;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+        .addflex {
+          svg {
+            margin-right: 10px;
+            cursor: pointer;
+          }
+          display: flex;
+        }
       }
+      .additionalNavigation {
+        display: flex;
+      }
+    }
+    .phoneAdditionalNav {
+      display: none;
     }
   }
 }

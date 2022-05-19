@@ -58,6 +58,7 @@ $info-red: rgb(211, 33, 33);
     height: fit-content;
     min-height: 0;
     padding: 0;
+    width: 100%;
     .volumeArea {
       width: fit-content;
       display: flex;
@@ -67,11 +68,11 @@ $info-red: rgb(211, 33, 33);
       margin: 10px 0;
       width: 100%;
       .volumeTitle {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 600;
       }
       .volumeValue {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 400;
       }
     }
@@ -81,13 +82,15 @@ $info-red: rgb(211, 33, 33);
       flex-wrap: wrap;
       justify-content: space-around;
       max-width: 100%;
+      width: 100%;
       .infoItem {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 400;
         min-width: 0;
         display: flex;
         flex-direction: row;
         gap: 10px;
+        padding: 6px 0;
       }
     }
   }
@@ -100,8 +103,8 @@ $info-red: rgb(211, 33, 33);
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 20%;
-    min-height: 150px;
+    height: fit-content;
+    min-height: 100px;
     .volumeArea {
       width: fit-content;
       display: flex;
@@ -125,7 +128,7 @@ $info-red: rgb(211, 33, 33);
       flex-wrap: wrap;
       justify-content: space-between;
       max-width: 400px;
-      margin-top: 40px;
+      margin-top: 0;
       .infoItem {
         min-width: 50%;
         display: flex;

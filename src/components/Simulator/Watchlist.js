@@ -36,57 +36,42 @@ export default function Watchlist({
     }
   };
 
-  // const handleAdd = () => {
-  //   console.log("Add button clicked");
-  //   setOpenList((prev) => !prev);
-  // };
-
   return (
     <div className={styles.watchlist}>
-      {watchlistData && watchlistData.length ? (
-        watchlistData.map((item) => {
-          return (
-            <div
-              className={
-                item.symbol === active ? styles.activeItem : styles.listItem
-              }
-              key={item.id}
-              onClick={() => {
-                action(item.symbol);
-              }}
-            >
-              <button
-                className={styles.closeButton}
-                onClick={() => setDeleteItem(item)}
-              >
-                x
-              </button>
+      {watchlistData && watchlistData.length
+        ? watchlistData.map((item) => {
+            return (
               <div
-                style={{
-                  backgroundColor: item.color,
+                className={
+                  item.symbol === active ? styles.activeItem : styles.listItem
+                }
+                key={item.id}
+                onClick={() => {
+                  action(item.symbol);
                 }}
-                className={styles.colorCode}
-              />
-              <div className={styles.info}>
-                <p className={styles.symbol}>{item.symbol}</p>
-                <p className={styles.value} style={{ color: item.color }}>
-                  ₹{parseFloat(item.current_value).toFixed(2)}
-                </p>
+              >
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setDeleteItem(item)}
+                >
+                  x
+                </button>
+                <div
+                  style={{
+                    backgroundColor: item.color,
+                  }}
+                  className={styles.colorCode}
+                />
+                <div className={styles.info}>
+                  <p className={styles.symbol}>{item.symbol}</p>
+                  <p className={styles.value} style={{ color: item.color }}>
+                    ₹{parseFloat(item.current_value).toFixed(2)}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <div
-          className={styles.noWatchlist}
-          // onClick={handleAdd}
-        >
-          <p></p>
-        </div>
-      )}
-      {/* <div className={styles.addButton}>
-        <button onClick={handleAdd}>+</button>
-      </div> */}
+            );
+          })
+        : ""}
       {openList && (
         <AddWatchlist
           {...{
