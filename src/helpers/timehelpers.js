@@ -163,6 +163,29 @@ export const getNormalDateFromUtc = (utc, dayBefore = 0) => {
   let d = ("0" + (utc.getDate() - dayBefore)).slice(-2);
   return y + "-" + m + "-" + d;
 };
+
+export const convertedUTCToLocal = (utc) => {
+  let monList = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  utc = new Date(utc);
+  let y = utc.getFullYear();
+  let m = monList[utc.getMonth()];
+  let d = utc.getDate();
+  return `${d} ${m} ${y}`;
+};
+
 export function getMonthYearOnly(timestamp) {
   const date = new Date(Number(timestamp));
   return `${

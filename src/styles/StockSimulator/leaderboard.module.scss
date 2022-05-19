@@ -170,6 +170,7 @@
     }
   }
 }
+
 @media only screen and (orientation: landscape) and (max-width: 900px) {
   .leaderboard {
     background-color: white;
@@ -250,9 +251,9 @@
 @media only screen and (orientation: landscape) and (max-height: 500px) {
   .leaderboard {
     background-color: white;
-    margin-top: 5px;
+    margin: 10px;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     .holder {
       align-items: center;
       gap: 10px;
