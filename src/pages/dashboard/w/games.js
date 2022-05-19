@@ -160,6 +160,9 @@ Here are some of our games that you and your child can play together.
               </h2>
               <div className={styles.wrapper}>
                 {Object.keys(Game_Data).map((item, index) => {
+                  if (item === "SnakeAndLadders" && isIOS) {
+                    return null;
+                  }
                   return (
                     <GameCard
                       onCLick={() =>
