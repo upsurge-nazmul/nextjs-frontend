@@ -10,7 +10,8 @@ import JoinUs from "../../components/Home/JoinUs";
 import { Game_Data } from "../../static_data/Game_Data";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
-import { isMobile } from "react-device-detect";
+import { isMobile, isIOS } from "react-device-detect";
+
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 export default function GamePage({ userdata }) {
   const router = useRouter();
@@ -103,6 +104,9 @@ export default function GamePage({ userdata }) {
 
         <div className={styles.gamelistwrapper}>
           {Object.keys(Game_Data).map((item, index) => {
+            if (item === "SnakeAndLadders" && isIOS) {
+              return null;
+            }
             return (
               <div
                 key={"game" + index}

@@ -29,4 +29,8 @@ function capitalize(string) {
 function getfullname(firstname, lastname) {
   return (firstname + " " + (lastname || "")).trim();
 }
-export { copyToClipboard, capitalize, getfullname };
+
+function checkIphone() {
+  return /iPhone|iPod|iPad/.test(navigator.platforms);
+}
+export { copyToClipboard, capitalize, getfullname, checkIphone };
