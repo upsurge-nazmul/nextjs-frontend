@@ -96,6 +96,7 @@ export default function MoneyAceHeader({
               isRange
             />
             <DataComponent
+              id="stamina"
               title="STAMINA"
               value={
                 (moneyacedata?.battery * 20 > 100
