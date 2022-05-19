@@ -50,11 +50,11 @@ export const Game_Data = {
     description: "Learn to manage expenses on the fly.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
   },
-  SnakeAndLadders: {
-    name: "SnakeAndLadders",
-    description: "Let Financial literacy through snakes and ladders.",
-    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-  },
+  // SnakeAndLadders: {
+  //   name: "SnakeAndLadders",
+  //   description: "Let Financial literacy through snakes and ladders.",
+  //   img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+  // },
 };
 
 export const Game_Unity_Data = {
