@@ -45,32 +45,35 @@ export default function SummerBootcamp() {
 
   const features1 = [
     {
-      image: "https://i.ibb.co/4gzTF1M/512x512.png",
-      text: "Merit certificates",
-      color: "#4166eb",
-    },
-    {
-      image: "https://i.ibb.co/Pxj1M7t/order.png",
-      text: "Goodies for every student!",
-      color: "#fdcc03",
-    },
-    {
       image:
         "https://i.ibb.co/4ZLdNkp/pngkey-com-leadership-icon-png-3030137.png",
       text: "Team-based experiential workshops taken by MBAs, Entrepreneurs, Investors & learning experts",
-      color: "#ff6263",
+      color: "#4166eb",
     },
     {
-      image: "https://i.ibb.co/vktN76P/clipboard.png",
+      color: "#fdcc03",
+      image: "https://i.ibb.co/Pxj1M7t/order.png",
       text: "Engaging & immersive sessions designed to make learning fun & effective - include activities, group discussions, case studies & real-life projects",
+    },
+    {
+      color: "#ff6263",
+      image: "https://i.ibb.co/HBHpLqh/blackboard.png",
+      texthead: "Students will get",
+      text: "- Merit certificates",
+      text2: "- MasterClasses on higher education & career development",
+    },
+
+    {
       color: "#41d1be",
+      image: "https://i.ibb.co/mtvZpm5/upsurgeround.png",
+      text: "Access to upsurge financial literacy games and learning content",
+      text2:
+        "2,500 bonus UniCoins to redeem vouchers from brands such as Zomato & Amazon",
     },
   ];
   const features2 = [
     {
-      image: "https://i.ibb.co/mtvZpm5/upsurgeround.png",
       color: "#ff9900",
-      text: "Access to upsurge - India’s 1st learning-focused gaming platform to learn through play",
     },
     {
       color: "#83eb00",
@@ -168,12 +171,20 @@ export default function SummerBootcamp() {
                 style={{ backgroundColor: item.color }}
               >
                 <img className={styles.image} src={item.image} alt="" />
-                <p className={styles.text}>{item.text}</p>
+                {item.texthead && (
+                  <p className={styles.text}>{item.texthead}</p>
+                )}
+                <p
+                  className={`${styles.text} ${item.texthead && styles.text2}`}
+                >
+                  {item.text}
+                </p>
+                <p className={styles.text2}>{item.text2}</p>
               </div>
             );
           })}
         </div>
-        <div className={`${styles.features} ${styles.featuresecond}`}>
+        {/* <div className={`${styles.features} ${styles.featuresecond}`}>
           {features2.map((item) => {
             return (
               <div
@@ -186,7 +197,7 @@ export default function SummerBootcamp() {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <p
           className={styles.widesummary}
         >{`Our quests span 12 hours of workshops designed & taken by our team of MBAs, Entrepreneurs, and experts in finance, experiential learning & academic pedagogy from prestigious institutions such as IIM, ISB & Harvard. Each session is designed to be experiential, collaborative & fun, and will require children to solve problems in teams by thinking creatively - critical 21st century skills that will help students succeed professionally.`}</p>

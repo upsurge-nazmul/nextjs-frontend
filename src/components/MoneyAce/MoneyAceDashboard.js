@@ -28,6 +28,7 @@ import Tasks from "./Tasks";
 import EducationHub from "./EducationHub";
 import JobHub from "./JobHub";
 import Tour from "../Tour/Tour";
+import Jasper from "../SVGcomponents/Jasper";
 export default function MoneyAceDashboard({
   avatarUrl,
   username,
@@ -53,7 +54,7 @@ export default function MoneyAceDashboard({
   const [taskmodal, settaskmodal] = useState(false);
   const [quiz, setquiz] = useState(false);
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
-  const { them, widthHeight } = useContext(MainContext);
+  const { them, widthHeight, userdata } = useContext(MainContext);
   const router = useRouter();
   const ref = useRef();
   useEffect(() => {
@@ -148,7 +149,56 @@ export default function MoneyAceDashboard({
     {
       ref: "#demo",
       text: "Welcome to upsurge!",
-      position: "left",
+      intro: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>
+            Welcome to Surge City ,{userdata.first_name}
+          </p>
+          <p className={styles.text}>
+            {`You just turned 14 & your parents have given you monthly pocket
+            money of ₹3,000 to spend (or invest) as you deem fit. They have also
+            allowed you to take some side-gigs (part-time jobs) to earn money.`}
+          </p>
+          <p className={styles.text}>
+            {`Our aim here is to help you understand money management, and how to
+            grow your money by investing it across various options. It’s going
+            to be a great journey, and every Sunday, we will have competitions
+            to see who made the most money!!`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#stamina",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: `You can start doing 5 activities every month to earn. This is your Energy Meter and will tell you how many tasks you can do this month. Here in Surge City, 1 month is equal to 24 hours in your world. So your energy refreshes every 24 hours, and increases as you gain experience.`,
+    },
+    {
+      intro: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>
+            Managing money at a young age will make you a financially smart
+            adult.
+          </p>
+          <p className={styles.text}>
+            {`To earn your pocket money, you have to complete some chores that your parents give you every month. Remember, you have to stay up to date with your grades on your homework & quizzes to continue enjoying your working privileges.`}
+          </p>
+          <p className={styles.text}>
+            {`Let’s start you off with your first pocket money. As you can see it’s in cash, with you at the moment. Why don’t we deposit some of it in the bank? `}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#bank",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: `First, we will need a bank account.`,
     },
   ];
 
@@ -245,6 +295,7 @@ export default function MoneyAceDashboard({
               </div>
               <div
                 className={`${styles.link} ${styles.link2}`}
+                id="bank"
                 onClick={() => setcurrenttab("Bank")}
               >
                 {tasks.findIndex((item) => banktasks.includes(item.id)) !==
