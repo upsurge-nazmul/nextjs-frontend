@@ -20,6 +20,27 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  .introdiv {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    .text {
+      font-size: 15px;
+      line-height: 20px;
+    }
+    .heading {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .jasper {
+      width: 10vw;
+      position: absolute;
+      right: -10vw;
+      top: 65%;
+    }
+  }
   .link {
     width: 5vw;
     height: 7vw;

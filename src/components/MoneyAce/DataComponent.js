@@ -6,9 +6,10 @@ export default function DataComponent({
   value,
   isRange,
   customClass,
+  id,
 }) {
   return (
-    <div className={styles.datacomp}>
+    <div className={styles.datacomp} id={id}>
       <p className={styles.heading}>{title}</p>
       <div className={styles.bg}>
         <img src={icon} alt="" />
