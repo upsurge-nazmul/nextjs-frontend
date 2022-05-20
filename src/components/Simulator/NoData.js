@@ -12,7 +12,7 @@ export default function NoData({ message = "There is no data", size = "big" }) {
           : styles.noDataBig
       }
     >
-      <NoDataSvg />
+      <NoDataSvg className={styles.icon} />
       <div className={styles.text}>{message}</div>
     </div>
   );
