@@ -166,12 +166,12 @@ export default function BootCampForm({
     setloading(false);
   }
   const timings = [
-    "Monday, May 23, 11am to 12:30pm",
-    "Monday, May 23, 5pm to 6:30pm",
-    "Tuesday, May 24, 11am to 12:30pm",
-    "Tuesday, May 24, 5pm to 6:30pm ",
     "Wednesday, May 25, 11am to 12:30pm",
-    "Wednesday, May 25, 5pm to 6:30pm ",
+    "Wednesday, May 25, 5pm to 6:30pm",
+    "Thursday, May 26, 11am to 12:30pm",
+    "Thursday, May 26, 5pm to 6:30pm ",
+    "Friday, May 27, 11am to 12:30pm",
+    "Friday, May 27, 5pm to 6:30pm ",
   ];
   return (
     <div className={styles.formmain}>
