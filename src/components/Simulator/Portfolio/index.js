@@ -6,6 +6,7 @@ import Performance from "./Performance";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import NoData from "../NoData";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
@@ -89,10 +90,16 @@ export default function Portfolio({ userData, token, simulatorType }) {
           <div className={styles.content}>
             <div className={styles.left}>
               <p className={styles.caption}>Portfolio</p>
-              <PortfolioChart
-                chartData={portfolioChartData}
-                className={styles.portfolioChart}
-              />
+              {portfolioChartData && portfolioChartData.length ? (
+                <PortfolioChart
+                  chartData={portfolioChartData}
+                  className={styles.portfolioChart}
+                />
+              ) : (
+                <div className={styles.emptyData}>
+                  <NoData size="big" message="Daily portfolio graph" />
+                </div>
+              )}
             </div>
             <div className={styles.right}>
               {holdingsData && (
