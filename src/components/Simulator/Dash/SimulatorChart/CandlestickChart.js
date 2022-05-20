@@ -46,6 +46,36 @@ function ApexChart({ chartData, className }) {
           x: {
             format: "dd MMM yyyy",
           },
+          custom: function ({ seriesIndex, dataPointIndex, w }) {
+            const o = parseFloat(
+              w.globals.seriesCandleO[seriesIndex][dataPointIndex]
+            ).toFixed(2);
+            const h = parseFloat(
+              w.globals.seriesCandleH[seriesIndex][dataPointIndex]
+            ).toFixed(2);
+            const l = parseFloat(
+              w.globals.seriesCandleL[seriesIndex][dataPointIndex]
+            ).toFixed(2);
+            const c = parseFloat(
+              w.globals.seriesCandleC[seriesIndex][dataPointIndex]
+            ).toFixed(2);
+            return (
+              '<div class="apexcharts-tooltip-candlestick" style="padding: 6px 10px">' +
+              '<div>Open: <span class="value">' +
+              o +
+              "</span></div>" +
+              '<div>High: <span class="value">' +
+              h +
+              "</span></div>" +
+              '<div>Low: <span class="value">' +
+              l +
+              "</span></div>" +
+              '<div>Close: <span class="value">' +
+              c +
+              "</span></div>" +
+              "</div>"
+            );
+          },
         },
       },
     });

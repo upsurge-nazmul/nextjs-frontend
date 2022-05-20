@@ -92,6 +92,11 @@ export default function Holdings({
               },
             },
           },
+          tooltip: {
+            y: {
+              formatter: (v) => parseFloat(v).toFixed(2),
+            },
+          },
         },
       });
     }

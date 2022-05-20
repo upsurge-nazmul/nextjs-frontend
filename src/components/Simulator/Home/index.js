@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/home.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
-import Holdings from "../Portfolio/Holdings2";
+import Holdings from "./Holdings";
 import UserStocks from "./UserStocks";
 import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";

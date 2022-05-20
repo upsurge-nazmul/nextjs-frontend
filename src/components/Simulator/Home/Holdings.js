@@ -5,6 +5,7 @@ export default function Holdings({ chartData, height = "200" }) {
     <ResponsivePieCanvas
       data={chartData}
       margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+      valueFormat=" >-0.2f"
       innerRadius={0.55}
       activeOuterRadiusOffset={8}
       colors={{ scheme: "nivo" }}
