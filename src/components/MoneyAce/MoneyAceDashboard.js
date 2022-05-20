@@ -224,7 +224,7 @@ export default function MoneyAceDashboard({
             setmoneyacedata={setmoneyacedata}
           />
         )}
-        {!showdaily && <Tour story={story} />}
+        {/* {!showdaily && <Tour story={story} />} */}
         <div
           className={`${styles.container} ${
             currenttab !== "dashboard" && styles.notdashboardcontainer
