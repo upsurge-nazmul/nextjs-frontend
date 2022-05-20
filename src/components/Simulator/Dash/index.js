@@ -65,7 +65,9 @@ export default function Companies({
         token,
         type: simulatorType,
       });
-      setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      if (monthlyStocks.data.success) {
+        setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      }
     }
     fetchStocks();
   }, [token, selectedSymbol, selectedDuration]);
