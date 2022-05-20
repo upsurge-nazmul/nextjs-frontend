@@ -12,6 +12,7 @@ import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../static_data/Game_Data";
 import VideoModal from "../../../components/VideoModal";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
+import { isIOS } from "react-device-detect";
 function Games({ userdatafromserver, token }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
