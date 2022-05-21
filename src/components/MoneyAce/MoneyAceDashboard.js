@@ -50,9 +50,11 @@ export default function MoneyAceDashboard({
   const [currenttab, setcurrenttab] = useState("dashboard");
   const [currenttask, setcurrenttask] = useState("");
   const [showdaily, setshowdaily] = useState(false);
+  const [showtour, setshowtour] = useState(true);
   const [dailydata, setdailydata] = useState(null);
   const [taskmodal, settaskmodal] = useState(false);
   const [quiz, setquiz] = useState(false);
+  const tourref = useRef();
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
   const { them, widthHeight, userdata } = useContext(MainContext);
   const router = useRouter();
@@ -199,6 +201,66 @@ export default function MoneyAceDashboard({
       position: "bottom",
       text: "Welcome to upsurge!",
       content: `First, we will need a bank account.`,
+      disableBtns: true,
+      isolate: true,
+    },
+    {
+      ref: "#create-acc-btn",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: `Click here to create a bank account.`,
+      superimpose: true,
+      disableBtns: true,
+      disableBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#deposit-btn",
+      position: "top",
+      content: `Let’s deposit ₹1,000 in the bank to start with. Remember, it’s good to keep money in the bank, so keep depositing your cash in hand into the bank often. `,
+      disableBtns: true,
+      superimpose: true,
+      disableBg: true,
+      delay: true,
+    },
+    { blank: true },
+    {
+      intro: true,
+      superimpose: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Why is a bank account good?</p>
+          <p className={styles.text}>
+            {`1. Your money is safe - don’t have to worry about your wallet or purse getting lost or stolen!`}
+          </p>
+          <p className={styles.text}>
+            {`2. Your bank account gives you 3% interest on your balance, so every month you will earn 3% on the balance as interest.`}
+          </p>
+          <p className={styles.text}>
+            {
+              "3. You get cool debit cards and UPI accounts to make cashless transactions."
+            }
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#debit-card",
+      position: "top",
+      content: `Next, let’s get your debit card and UPI set up!`,
+      disableBtns: true,
+      superimpose: true,
+      disableBg: true,
+    },
+    {
+      ref: "#debit-card-main",
+      position: "top",
+      disableBtns: true,
+      superimpose: true,
+      disableBg: true,
+      content:
+        "This is your debit card, go ahead and chose a pin that you will use for ATM Cash withdrawals and transactions. When you use this, the money comes out straight from your account.",
     },
   ];
 
@@ -224,7 +286,15 @@ export default function MoneyAceDashboard({
             setmoneyacedata={setmoneyacedata}
           />
         )}
-        {/* {!showdaily && <Tour story={story} />} */}
+        {!showdaily && showtour && (
+          <Tour
+            story={story}
+            ref={tourref}
+            startfrom={3}
+            showtour={showtour}
+            setshowtour={setshowtour}
+          />
+        )}
         <div
           className={`${styles.container} ${
             currenttab !== "dashboard" && styles.notdashboardcontainer
@@ -296,7 +366,10 @@ export default function MoneyAceDashboard({
               <div
                 className={`${styles.link} ${styles.link2}`}
                 id="bank"
-                onClick={() => setcurrenttab("Bank")}
+                onClick={() => {
+                  tourref?.current?.forcePushNext(3);
+                  setcurrenttab("Bank");
+                }}
               >
                 {tasks.findIndex((item) => banktasks.includes(item.id)) !==
                   -1 && <div className={styles.alert} />}
@@ -446,6 +519,7 @@ export default function MoneyAceDashboard({
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
               settoastdata={settoastdata}
+              tourref={tourref}
             />
           ) : currenttab === "Games" ? (
             <JobHub

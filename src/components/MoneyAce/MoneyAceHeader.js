@@ -57,7 +57,7 @@ export default function MoneyAceHeader({
           onClick={() => setshowprofile(true)}
         >
           <img src={avatarUrl} alt="" className={styles.avatar} />
-          <p className={styles.username}>{userdata?.first_name}</p>
+          <p className={styles.username}>{userdata?.first_name || ""}</p>
 
           {/* <EmailRoundedIcon
             className={styles.icon}
@@ -74,19 +74,8 @@ export default function MoneyAceHeader({
               <img src="https://i.ibb.co/hR4kT8R/slider-handle-1.png" alt="" />
               <p className={styles.leveltext}>{moneyacedata?.level || 0}</p>
             </div>
-            {/* <NineSlice
-            width={widthHeight.width * 0.022}
-            height={widthHeight.width * 0.022}
-            border={1}
-            image="https://i.ibb.co/hR4kT8R/slider-handle-1.png"
-            imageSize={{ x: 210, y: 233 }}
-          ></NineSlice> */}
           </div>
         )}
-        {/* 
-
-
- */}
         {!inWelcomeScreen && (
           <div className={styles.moralandstamina}>
             <DataComponent
@@ -109,8 +98,6 @@ export default function MoneyAceHeader({
           </div>
         )}
       </div>
-      {/*
-       */}
       {!inWelcomeScreen && (
         <div className={styles.right}>
           <DataComponent

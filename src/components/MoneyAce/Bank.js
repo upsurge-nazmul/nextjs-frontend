@@ -26,6 +26,7 @@ export default function Bank({
   moneyacedata,
   setmoneyacedata,
   settoastdata,
+  tourref,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -311,8 +312,10 @@ export default function Bank({
                 </div> */}
                 {!moneyacedata?.account_number && (
                   <div
+                    id="create-acc-btn"
                     className={styles.submit}
                     onClick={() => {
+                      tourref?.current?.forcePushNext(4);
                       handleopenaccount();
                     }}
                   >
@@ -406,6 +409,7 @@ export default function Bank({
           <BankDialog
             title={dialogdata.title}
             btntext={dialogdata.btntext}
+            tourref={tourref}
             showwhat={showwhat}
             setshowwhat={setshowwhat}
             setdialogdata={setdialogdata}
@@ -456,7 +460,9 @@ export default function Bank({
             </div>
             <div
               className={styles.btn}
+              id="deposit-btn"
               onClick={() => {
+                tourref?.current?.forcePushNext(4);
                 setshowwhat("deposit");
                 setdialogdata({
                   title: "Please enter amount to deposit",
@@ -496,7 +502,11 @@ export default function Bank({
               />
               <p>Account</p>
             </div>
-            <div className={styles.btn} onClick={() => setshowcard(true)}>
+            <div
+              id="debit-card"
+              className={styles.btn}
+              onClick={() => setshowcard(true)}
+            >
               <img src="https://i.ibb.co/FbtW5QZ/icon-cards-0-1.png" alt="" />
               <p>Cards</p>
             </div>

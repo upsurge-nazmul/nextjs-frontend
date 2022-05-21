@@ -10,6 +10,7 @@ export default function BankDialog({
   setshowwhat,
   setpassbookdata,
   setmoneyacedata,
+  tourref,
 }) {
   const [amount, setamount] = useState();
   const [err, seterr] = useState("");
@@ -20,6 +21,7 @@ export default function BankDialog({
     if (showwhat === "deposit") {
       let response = await MoneyAceApis.depositMoney({ amount });
       if (response && response.data && response.data.success) {
+        tourref?.current.forcePushNext(5);
         setshowwhat(null);
         setdialogdata(null);
         setpassbookdata((prev) => [

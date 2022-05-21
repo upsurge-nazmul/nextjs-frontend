@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import styles from "../../styles/tour.module.scss";
-export default function Tour({ story }) {
-  const [current, setcurrent] = useState(0);
+const Tour = forwardRef(({ story, startfrom, setshowtour }, ref) => {
+  const [current, setcurrent] = useState(startfrom || 0);
   const [currentHeight, setcurrentHeight] = useState(0);
   const [currentleftOffset, setcurrentleftOffset] = useState(0);
   const [elementdata, setelementdata] = useState(null);
@@ -10,13 +15,28 @@ export default function Tour({ story }) {
     height: 0,
   });
   function getHeight() {
+    if (story[current].blank) return;
     if (story[current].intro) {
       setcurrentleftOffset("50%");
       setcurrentHeight("100%");
       return;
     }
+    if (story[current].delay) {
+      setInterval(() => getHeight(), 300);
+    }
     let currentElement = document.querySelector(story[current].ref);
-    currentElement.style.zIndex = "22";
+    if (!currentElement) {
+      setelementdata({
+        height: 0,
+        width: 0,
+      });
+      setcurrentleftOffset(0);
+      setcurrentHeight(0);
+      return;
+    }
+    if (story[current].isolate) {
+      currentElement.style.zIndex = "22";
+    }
     var rect = currentElement.getBoundingClientRect();
     var elementLeft, elementTop; //x and y
     var scrollTop = document.documentElement.scrollTop
@@ -47,8 +67,8 @@ export default function Tour({ story }) {
   }, [current]);
   useEffect(() => {
     let element = document.querySelector("#tour-board");
-    console.log(element);
-    settourdata({ height: element.clientHeight, width: element.clientWidth });
+    if (element)
+      settourdata({ height: element.clientHeight, width: element.clientWidth });
   }, [current]);
 
   function getstyle() {
@@ -71,9 +91,31 @@ export default function Tour({ story }) {
           : currentleftOffset,
     };
   }
+
+  useImperativeHandle(ref, () => ({
+    forcePushNext(id) {
+      if (id === current) {
+        setcurrent(current + 1);
+      }
+    },
+  }));
+  if (story[current].blank) {
+    return null;
+  }
   return (
-    <div className={styles.tourWrapper}>
-      <div className={styles.bg} />
+    <div
+      className={`${styles.tourWrapper} ${
+        story[current].superimpose && styles.superImposed
+      }`}
+      ref={ref}
+    >
+      {
+        <div
+          className={`${styles.bg} ${
+            story[current].disableBg && styles.disabledBG
+          }`}
+        />
+      }
       <div
         id="tour-board"
         className={`${styles.tour} ${
@@ -86,15 +128,23 @@ export default function Tour({ story }) {
       >
         {story[current].content}
 
-        <div className={styles.buttons}>
-          <div className={styles.btn}>SKIP</div>
-          {current < story.length - 1 && (
-            <div className={styles.btn} onClick={() => setcurrent(current + 1)}>
-              NEXT
+        {
+          <div className={styles.buttons}>
+            <div className={styles.btn} onClick={() => setshowtour(false)}>
+              SKIP
             </div>
-          )}
-        </div>
+            {!story[current].disableBtns && current < story.length - 1 && (
+              <div
+                className={styles.btn}
+                onClick={() => setcurrent(current + 1)}
+              >
+                NEXT
+              </div>
+            )}
+          </div>
+        }
       </div>
     </div>
   );
-}
+});
+export default Tour;
