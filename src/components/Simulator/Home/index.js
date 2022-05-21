@@ -136,7 +136,7 @@ export default function Home({
                 </div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Remaining Assets</div>
+                <div className={styles.label}>Remaining Cash</div>
                 <div className={styles.value}>{getCashHoldingPercentage()}</div>
               </div>
             </div>
