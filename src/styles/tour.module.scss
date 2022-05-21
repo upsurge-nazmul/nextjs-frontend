@@ -18,8 +18,15 @@
     background-color: rgba(0, 0, 0, 0.377);
     z-index: -1;
   }
+  .disabledBG {
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+  }
 }
-
+.superImposed {
+  z-index: 1112;
+  pointer-events: none;
+}
 .tour {
   background-color: white;
   height: fit-content;
@@ -32,7 +39,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: $gen-xs;
   gap: 10px;
+  pointer-events: all;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
   .buttons {
     gap: 10px;
     display: flex;
@@ -57,8 +69,19 @@
     content: "";
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    width: 0;
+    border-top: 10px solid rgb(255, 255, 255);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+}
+.bottomrightarrow {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20px;
     width: 0;
     border-top: 10px solid rgb(255, 255, 255);
     border-left: 10px solid transparent;

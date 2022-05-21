@@ -31,7 +31,6 @@ export default function MoneyAceHeader({
     useContext(MainContext);
   const [showsettings, setshowsettings] = useState(false);
   const [showprofile, setshowprofile] = useState(false);
-
   return (
     <div
       className={styles.header}
@@ -57,39 +56,22 @@ export default function MoneyAceHeader({
           onClick={() => setshowprofile(true)}
         >
           <img src={avatarUrl} alt="" className={styles.avatar} />
-          <p className={styles.username}>{userdata?.first_name}</p>
-
-          {/* <EmailRoundedIcon
-            className={styles.icon}
-            // style={{
-            //   backgroundColor: hidebackground ? "transparent" : "#9DDA9F",
-            // }}
-          />
-          <div className={styles.notificationbox}>2</div> */}
+          <p className={styles.username}>{userdata?.first_name || ""}</p>
         </div>
-        {!inWelcomeScreen && (
+        {!inWelcomeScreen && moneyacedata && (
           <div className={styles.leveldiv}>
             <p className={styles.levelheadtext}>LEVEL</p>
             <div className={styles.button}>
               <img src="https://i.ibb.co/hR4kT8R/slider-handle-1.png" alt="" />
               <p className={styles.leveltext}>{moneyacedata?.level || 0}</p>
             </div>
-            {/* <NineSlice
-            width={widthHeight.width * 0.022}
-            height={widthHeight.width * 0.022}
-            border={1}
-            image="https://i.ibb.co/hR4kT8R/slider-handle-1.png"
-            imageSize={{ x: 210, y: 233 }}
-          ></NineSlice> */}
           </div>
         )}
-        {/* 
 
-
- */}
         {!inWelcomeScreen && (
           <div className={styles.moralandstamina}>
             <DataComponent
+              id="morale"
               title="MORAL"
               value={moneyacedata?.moral || 0}
               icon="https://i.ibb.co/P60SqYw/morale.png"
@@ -109,8 +91,6 @@ export default function MoneyAceHeader({
           </div>
         )}
       </div>
-      {/*
-       */}
       {!inWelcomeScreen && (
         <div className={styles.right}>
           <DataComponent
