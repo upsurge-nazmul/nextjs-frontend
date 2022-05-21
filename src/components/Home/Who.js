@@ -46,7 +46,8 @@ function Who() {
             </video> */}
 
             <Image
-              src="https://i.ibb.co/LRc6Jsp/shutterstock-1136939339-min.jpg"
+              className={styles.image}
+              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/home_who.jpeg"
               alt=""
               layout="fill"
               objectFit="cover"

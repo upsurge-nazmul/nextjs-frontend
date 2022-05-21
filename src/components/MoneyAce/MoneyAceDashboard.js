@@ -50,13 +50,16 @@ export default function MoneyAceDashboard({
   const [currenttab, setcurrenttab] = useState("dashboard");
   const [currenttask, setcurrenttask] = useState("");
   const [showdaily, setshowdaily] = useState(false);
-  const [showtour, setshowtour] = useState(true);
   const [dailydata, setdailydata] = useState(null);
+  const [showupi, setshowupi] = useState(false);
   const [taskmodal, settaskmodal] = useState(false);
   const [quiz, setquiz] = useState(false);
+  const [showcard, setshowcard] = useState(false);
   const tourref = useRef();
   const [investmentcurrentmode, setinvestmentcurrentmode] = useState("main");
   const { them, widthHeight, userdata } = useContext(MainContext);
+  const [showtour, setshowtour] = useState(!moneyacedata.tour_finished);
+  const [currentTourIndex, setcurrentTourIndex] = useState(0);
   const router = useRouter();
   const ref = useRef();
   useEffect(() => {
@@ -246,21 +249,158 @@ export default function MoneyAceDashboard({
       ),
     },
     {
-      ref: "#debit-card",
+      ref: "#debit-card-btn",
       position: "top",
-      content: `Next, let’s get your debit card and UPI set up!`,
+      content: `Next, let’s get your debit card set up!`,
+      disableBtns: true,
+      superimpose: true,
+      disableBg: true,
+    },
+    {
+      blank: true,
+    },
+    {
+      ref: "#debit-card-pin-btn",
+      position: "bottom",
+      content: `Create a pin for your debit card.`,
       disableBtns: true,
       superimpose: true,
       disableBg: true,
     },
     {
       ref: "#debit-card-main",
-      position: "top",
+      position: "bottom",
+      superimpose: true,
+      disableBg: true,
+      delay: true,
+      content:
+        "This is your debit card, when you use this, the money comes out straight from your account.",
+      nextFunction: () => {
+        console.log("function called");
+        setshowcard(false);
+      },
+    },
+    {
+      delay: true,
+      intro: true,
+      superimpose: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Ok, let’s setup the UPI next.</p>
+          <p className={styles.text}>
+            {`UPI is India’s universal payments interface. Which means you can use your ID to instantly transfer money to any other UPI ID from your bank account.`}
+          </p>
+          <p className={styles.text}>
+            {`Why don’t you go on and select a UPI ID next`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#upi-btn",
+      position: "top-left",
       disableBtns: true,
       superimpose: true,
       disableBg: true,
-      content:
-        "This is your debit card, go ahead and chose a pin that you will use for ATM Cash withdrawals and transactions. When you use this, the money comes out straight from your account.",
+      delay: true,
+      content: "Click here to setup UPI.",
+    },
+    {
+      ref: "#upi-btn-confirm",
+      position: "bottom",
+      superimpose: true,
+      disableBtns: true,
+      disableBg: true,
+      delay: true,
+      content: "Click here to finish UPI settup",
+      nextFunction: () => {
+        setshowupi(false);
+      },
+    },
+    {
+      nextFunction: () => {
+        setcurrenttab("dashboard");
+      },
+      delay: true,
+      intro: true,
+      superimpose: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>
+            {"Great, now you’re all set with your bank account!"}
+          </p>
+          <p className={styles.text}>
+            {`We want you to have a balanced time at Surge City, and you must have some fun as well. Head over to Surge City Mall to shop or go out with your friends.`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#morale",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: `This is your morale meter, you must keep this above 75% to ensure you’re leading a balanced and positive life. Each activity will tell you how much morale it will add or reduce. The Mall is a great place to have some fun, grab a bite or watch a movie with your friends.`,
+    },
+    {
+      nextFunction: () => {
+        setcurrenttab("dashboard");
+      },
+      delay: true,
+      intro: true,
+      superimpose: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>
+            {
+              "Also, don’t forget to grab a bite every time you play - you need your fuel! "
+            }
+          </p>
+          <p className={styles.text}>
+            {`Clothes also must be replaced every 6-9 months, as you don’t want to be wearing worn-out clothes!`}
+          </p>
+          <p className={styles.text}>
+            {`At the end of every month, there will also be some random event, that we will help you prepare for. These could be positive or negative!`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#task-btn",
+      position: "top",
+      text: "Welcome to upsurge!",
+      content: `Here, are some activities by doing which you'll get rewards.`,
+    },
+    {
+      ref: "#jobs-btn",
+      position: "top",
+      text: "Welcome to upsurge!",
+      content: `Ok, now let’s explore what jobs there are in the market these days. As you grow, these jobs will change & you might also need to complete courses or certifications for certain jobs. Some courses will increase your earnings from these jobs too!.`,
+    },
+    {
+      ref: "#investment-btn",
+      position: "top-left",
+      text: "Welcome to upsurge!",
+      content: `You can invest some of your money at the Investment Hub.`,
+    },
+    {
+      nextFunction: () => {
+        setshowtour(false);
+      },
+      intro: true,
+      last: true,
+      superimpose: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>{"All right, we’re done."}</p>
+          <p className={styles.text}>
+            {`As you grow & gain more experience with money, you will be able to invest across other asset classes as well!`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
     },
   ];
 
@@ -289,8 +429,8 @@ export default function MoneyAceDashboard({
         {!showdaily && showtour && (
           <Tour
             story={story}
-            ref={tourref}
-            startfrom={3}
+            current={currentTourIndex}
+            setcurrent={setcurrentTourIndex}
             showtour={showtour}
             setshowtour={setshowtour}
           />
@@ -329,7 +469,7 @@ export default function MoneyAceDashboard({
             <div className={styles.wrapper}>
               <div className={`${styles.link} ${styles.link0}`}>
                 <p className={styles.title}>Home</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -340,7 +480,7 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/NY9GYFc/home-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.link} ${styles.link1}`}
@@ -350,7 +490,7 @@ export default function MoneyAceDashboard({
                   educationhubtasks.includes(item.id)
                 ) !== -1 && <div className={styles.alert} />}
                 <p className={styles.title}>EDUCATION HUB</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -361,20 +501,22 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/TK5YZqy/school-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.link} ${styles.link2}`}
                 id="bank"
                 onClick={() => {
-                  tourref?.current?.forcePushNext(3);
+                  if (currentTourIndex === 3) {
+                    setcurrentTourIndex((prev) => prev + 1);
+                  }
                   setcurrenttab("Bank");
                 }}
               >
                 {tasks.findIndex((item) => banktasks.includes(item.id)) !==
                   -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Bank</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -385,10 +527,11 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/GHWwgnp/bank-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.link} ${styles.link3}`}
+                id="investment-btn"
                 onClick={() => {
                   if (!moneyacedata.investing_course) {
                     settoastdata({
@@ -405,7 +548,7 @@ export default function MoneyAceDashboard({
                   investmenttasks.includes(item.id)
                 ) !== -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Investment</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -416,7 +559,7 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/qm57QYQ/invest-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.link} ${styles.link4}`}
@@ -425,7 +568,7 @@ export default function MoneyAceDashboard({
                 {tasks.findIndex((item) => shoptasks.includes(item.id)) !==
                   -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Shop</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -436,16 +579,17 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/QnD63s0/online-shopping-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.link} ${styles.link5}`}
                 onClick={() => setcurrenttab("Games")}
+                id="jobs-btn"
               >
                 {tasks.findIndex((item) => jobhubtasks.includes(item.id)) !==
                   -1 && <div className={styles.alert} />}
                 <p className={styles.title}>Jobs</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
@@ -456,10 +600,11 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/VCjSFcp/jobs-beveled.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
               <div
                 className={`${styles.taskbtn} `}
+                id="task-btn"
                 onClick={() => setcurrenttab("tasks")}
               >
                 <p className={styles.title}>TASKS</p>
@@ -518,8 +663,13 @@ export default function MoneyAceDashboard({
               canvassize={canvassize}
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
+              showcard={showcard}
+              setshowcard={setshowcard}
               settoastdata={settoastdata}
-              tourref={tourref}
+              currentTourIndex={currentTourIndex}
+              setcurrentTourIndex={setcurrentTourIndex}
+              showupi={showupi}
+              setshowupi={setshowupi}
             />
           ) : currenttab === "Games" ? (
             <JobHub

@@ -112,7 +112,7 @@ export default function Upi({
                   <p>Reset</p>
                 </div>
                 <div className={styles.btn} onClick={handleaddupi}>
-                  <p>Save</p>
+                  <p id="upi-btn-confirm">Save</p>
                 </div>
               </div>
             </div>

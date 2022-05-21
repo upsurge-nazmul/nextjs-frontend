@@ -10,7 +10,8 @@ export default function BankDialog({
   setshowwhat,
   setpassbookdata,
   setmoneyacedata,
-  tourref,
+  currentTourIndex,
+  setcurrentTourIndex,
 }) {
   const [amount, setamount] = useState();
   const [err, seterr] = useState("");
@@ -21,7 +22,9 @@ export default function BankDialog({
     if (showwhat === "deposit") {
       let response = await MoneyAceApis.depositMoney({ amount });
       if (response && response.data && response.data.success) {
-        tourref?.current.forcePushNext(5);
+        if (currentTourIndex === 6) {
+          setcurrentTourIndex((prev) => prev + 1);
+        }
         setshowwhat(null);
         setdialogdata(null);
         setpassbookdata((prev) => [
@@ -94,7 +97,11 @@ export default function BankDialog({
           placeholder="Enter amount"
         />
         {err && <p className={styles.err}>{err}</p>}
-        <div className={styles.submit} onClick={handleClick}>
+        <div
+          className={styles.submit}
+          onClick={handleClick}
+          id="deposit-btn-confirm"
+        >
           <p>{btntext || "Continue"}</p>
         </div>
       </div>

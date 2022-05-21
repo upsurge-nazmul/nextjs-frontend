@@ -26,7 +26,12 @@ export default function Bank({
   moneyacedata,
   setmoneyacedata,
   settoastdata,
-  tourref,
+  currentTourIndex,
+  setcurrentTourIndex,
+  showcard,
+  setshowcard,
+  showupi,
+  setshowupi,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -34,9 +39,7 @@ export default function Bank({
   const [accountopened, setacoountopened] = useState(
     moneyacedata?.account_number
   );
-  const [showcard, setshowcard] = useState(false);
   const [showwhat, setshowwhat] = useState("");
-  const [showupi, setshowupi] = useState(false);
   const [upi, setupi] = useState("");
   const [upipin, setupipin] = useState("");
   const [confirmupi, setconfirmupi] = useState("");
@@ -60,6 +63,9 @@ export default function Bank({
     if (res && res.data && res.data.success) {
       settoastdata("Created successfully");
       setshowupi(false);
+      if (currentTourIndex === 14) {
+        setcurrentTourIndex((prev) => prev + 1);
+      }
     } else {
       seterr(res?.data?.message || "Error connecting to server");
     }
@@ -315,7 +321,9 @@ export default function Bank({
                     id="create-acc-btn"
                     className={styles.submit}
                     onClick={() => {
-                      tourref?.current?.forcePushNext(4);
+                      if (currentTourIndex === 4) {
+                        setcurrentTourIndex((prev) => prev + 1);
+                      }
                       handleopenaccount();
                     }}
                   >
@@ -395,7 +403,11 @@ export default function Bank({
                       >
                         <p>Reset</p>
                       </div>
-                      <div className={styles.btn} onClick={handleaddupi}>
+                      <div
+                        className={styles.btn}
+                        onClick={handleaddupi}
+                        id="upi-btn-confirm"
+                      >
                         <p>Save</p>
                       </div>
                     </div>
@@ -409,7 +421,8 @@ export default function Bank({
           <BankDialog
             title={dialogdata.title}
             btntext={dialogdata.btntext}
-            tourref={tourref}
+            currentTourIndex={currentTourIndex}
+            setcurrentTourIndex={setcurrentTourIndex}
             showwhat={showwhat}
             setshowwhat={setshowwhat}
             setdialogdata={setdialogdata}
@@ -423,6 +436,8 @@ export default function Bank({
             moneyacedata={moneyacedata}
             setmoneyacedata={setmoneyacedata}
             setpassbookdata={setpassbookdata}
+            currentTourIndex={currentTourIndex}
+            setcurrentTourIndex={setcurrentTourIndex}
           />
         )}
         {moneyacedata?.account_number && (
@@ -462,7 +477,10 @@ export default function Bank({
               className={styles.btn}
               id="deposit-btn"
               onClick={() => {
-                tourref?.current?.forcePushNext(4);
+                if (currentTourIndex === 5) {
+                  setcurrentTourIndex((prev) => prev + 1);
+                }
+
                 setshowwhat("deposit");
                 setdialogdata({
                   title: "Please enter amount to deposit",
@@ -503,14 +521,28 @@ export default function Bank({
               <p>Account</p>
             </div>
             <div
-              id="debit-card"
+              id="debit-card-btn"
               className={styles.btn}
-              onClick={() => setshowcard(true)}
+              onClick={() => {
+                if (currentTourIndex === 8) {
+                  setcurrentTourIndex((prev) => prev + 1);
+                }
+                setshowcard(true);
+              }}
             >
               <img src="https://i.ibb.co/FbtW5QZ/icon-cards-0-1.png" alt="" />
               <p>Cards</p>
             </div>
-            <div className={styles.btn} onClick={() => setshowupi(true)}>
+            <div
+              className={styles.btn}
+              id="upi-btn"
+              onClick={() => {
+                if (currentTourIndex === 13) {
+                  setcurrentTourIndex((prev) => prev + 1);
+                }
+                setshowupi(true);
+              }}
+            >
               <img
                 src="https://i.ibb.co/cCHvsmB/1024x1024bb-removebg-preview-1.png"
                 alt=""
