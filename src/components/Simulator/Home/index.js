@@ -170,20 +170,20 @@ export default function Home({
               })}
             </div>
           </div>
-          <div className={styles.myStocks}>
-            <div
-              className={
-                selectedStock === "all"
-                  ? styles.activeSingleStock
-                  : styles.singleStock
-              }
-              onClick={() => setSelectedStock("all")}
-            >
-              All Stocks
-            </div>
-            {userStocks && userStocks.length ? (
-              userStocks.map((stock, i) => {
-                return (
+          {userStocks && userStocks.length ? (
+            userStocks.map((stock, i) => {
+              return (
+                <div className={styles.myStocks}>
+                  <div
+                    className={
+                      selectedStock === "all"
+                        ? styles.activeSingleStock
+                        : styles.singleStock
+                    }
+                    onClick={() => setSelectedStock("all")}
+                  >
+                    All Stocks
+                  </div>
                   <div
                     className={
                       selectedStock === stock.symbol
@@ -195,12 +195,12 @@ export default function Home({
                   >
                     {stock.symbol}
                   </div>
-                );
-              })
-            ) : (
-              <NoData size="small" message={"You have no stocks yet"} />
-            )}
-          </div>
+                </div>
+              );
+            })
+          ) : (
+            <NoData size="small" message={"You have no stocks yet"} />
+          )}
           <div className={styles.topReturns}>
             <UserStocks
               userData={userData}
