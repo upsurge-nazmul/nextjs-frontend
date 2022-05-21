@@ -40,7 +40,7 @@ export default function ProfitableStocks({
             return (
               <>
                 {item ? (
-                  <div key={i} className={styles.card}>
+                  <div key={"id" + i} className={styles.card}>
                     <div className={styles.iconArea}>
                       <div className={styles.icon}>
                         {getShortForm(item.name)}
@@ -116,7 +116,7 @@ export default function ProfitableStocks({
                     </div>
                   </div>
                 ) : (
-                  ""
+                  <div key={"id" + i}></div>
                 )}
               </>
             );
