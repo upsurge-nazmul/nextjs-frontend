@@ -173,7 +173,7 @@ export default function Home({
           {userStocks && userStocks.length ? (
             userStocks.map((stock, i) => {
               return (
-                <div className={styles.myStocks}>
+                <div className={styles.myStocks} key={"userStock" + i}>
                   <div
                     className={
                       selectedStock === "all"

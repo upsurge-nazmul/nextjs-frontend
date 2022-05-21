@@ -65,7 +65,7 @@ export default function UserStocks({
             return (
               <>
                 {item ? (
-                  <div key={i} className={styles.card}>
+                  <div key={"companies" + i} className={styles.card}>
                     <div className={styles.iconArea}>
                       <div className={styles.icon}>
                         {getShortForm(item.name)}
@@ -117,7 +117,7 @@ export default function UserStocks({
                     </div>
                   </div>
                 ) : (
-                  ""
+                  <div key={"companies" + i}></div>
                 )}
               </>
             );
