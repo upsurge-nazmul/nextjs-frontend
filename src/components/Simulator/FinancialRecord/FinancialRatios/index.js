@@ -14,11 +14,11 @@ const Options = [
 
 export default function FinancialRatios({ token, company }) {
   const [finRatios, setFinRatios] = useState([]);
-  const [fwdPPerENtm, setFwdPPerENtm] = useState();
-  const [fwdPegRatioNtm, setFwdPegRatioNtm] = useState();
-  const [pPerE, setPPerE] = useState();
-  const [tevPerFwdEbitdaNtm, setTevPerFwdEbitdaNtm] = useState();
-  const [tevPerLtmEbitda, setTevPerLtmEbitda] = useState();
+  const [fwdPPerENtm, setFwdPPerENtm] = useState([]);
+  const [fwdPegRatioNtm, setFwdPegRatioNtm] = useState([]);
+  const [pPerE, setPPerE] = useState([]);
+  const [tevPerFwdEbitdaNtm, setTevPerFwdEbitdaNtm] = useState([]);
+  const [tevPerLtmEbitda, setTevPerLtmEbitda] = useState([]);
   const [chartView, setChartView] = useState(Options[0].value);
 
   useEffect(() => {
@@ -49,23 +49,25 @@ export default function FinancialRatios({ token, company }) {
       for (let item of finRatios) {
         fwdp.push({
           x: item.date,
-          y: parseFloat(item.fwd_p_per_e_ntm),
+          y: item.fwd_p_per_e_ntm ? parseFloat(item.fwd_p_per_e_ntm) : 0,
         });
         fwdPeg.push({
           x: item.date,
-          y: parseFloat(item.fwd_peg_ratio_ntm),
+          y: item.fwd_peg_ratio_ntm ? parseFloat(item.fwd_peg_ratio_ntm) : 0,
         });
         ppe.push({
           x: item.date,
-          y: parseFloat(item.p_per_e),
+          y: item.p_per_e ? parseFloat(item.p_per_e) : 0,
         });
         tevNtm.push({
           x: item.date,
-          y: parseFloat(item.tev_per_fwd_ebitda_ntm),
+          y: item.tev_per_fwd_ebitda_ntm
+            ? parseFloat(item.tev_per_fwd_ebitda_ntm)
+            : 0,
         });
         tevLtm.push({
           x: item.date,
-          y: parseFloat(item.tev_per_ltm_ebitda),
+          y: item.tev_per_ltm_ebitda ? parseFloat(item.tev_per_ltm_ebitda) : 0,
         });
       }
 
@@ -76,6 +78,8 @@ export default function FinancialRatios({ token, company }) {
       setTevPerLtmEbitda(tevLtm);
     }
   }, [finRatios]);
+
+  // console.log("!!!!!!!!!!!!!!!", "fwd", fwdPPerENtm, "p per e", pPerE);
 
   return (
     <div className={styles.financialRatios}>

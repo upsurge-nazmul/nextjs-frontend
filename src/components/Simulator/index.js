@@ -6,7 +6,7 @@ import SimulatorApis from "../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
 import Home from "./Home";
-import SimulatorDash from "./Dash";
+import Companies from "./Dash";
 import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
@@ -86,7 +86,7 @@ export default function Simulator({
               />
             )}
             {mode === MODES[1].value && (
-              <SimulatorDash
+              <Companies
                 token={token}
                 companyData={companyData}
                 selectedSymbol={selectedSymbol}

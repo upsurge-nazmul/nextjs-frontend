@@ -194,6 +194,7 @@ $sell-color: #eb5757;
   .tradeResponse {
     text-align: center;
     padding: 0 10px;
+    min-width: 400px;
     .responseIcon {
       width: 100%;
       display: flex;
@@ -351,6 +352,7 @@ $sell-color: #eb5757;
       height: fit-content;
     }
     .tradeResponse {
+      min-width: 80vw;
       .responseIcon {
         width: 100%;
         display: flex;
