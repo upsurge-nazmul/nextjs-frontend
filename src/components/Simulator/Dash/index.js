@@ -20,7 +20,7 @@ const ChartDurations = [
   { name: "5 Years", value: "5 Years" },
 ];
 
-export default function SimulatorDash({
+export default function Companies({
   token,
   companyData,
   selectedSymbol,
@@ -65,7 +65,9 @@ export default function SimulatorDash({
         token,
         type: simulatorType,
       });
-      setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      if (monthlyStocks.data.success) {
+        setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      }
     }
     fetchStocks();
   }, [token, selectedSymbol, selectedDuration]);

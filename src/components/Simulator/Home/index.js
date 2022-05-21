@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/home.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
-import Holdings from "../Portfolio/Holdings2";
+import Holdings from "./Holdings";
 import UserStocks from "./UserStocks";
 import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
+import NoData from "../NoData";
 
 const StockDurations = [
   { name: "Month", value: "monthly" },
@@ -180,23 +181,25 @@ export default function Home({
             >
               All Stocks
             </div>
-            {userStocks && userStocks.length
-              ? userStocks.map((stock, i) => {
-                  return (
-                    <div
-                      className={
-                        selectedStock === stock.symbol
-                          ? styles.activeSingleStock
-                          : styles.singleStock
-                      }
-                      key={i}
-                      onClick={() => setSelectedStock(stock.symbol)}
-                    >
-                      {stock.symbol}
-                    </div>
-                  );
-                })
-              : ""}
+            {userStocks && userStocks.length ? (
+              userStocks.map((stock, i) => {
+                return (
+                  <div
+                    className={
+                      selectedStock === stock.symbol
+                        ? styles.activeSingleStock
+                        : styles.singleStock
+                    }
+                    key={i}
+                    onClick={() => setSelectedStock(stock.symbol)}
+                  >
+                    {stock.symbol}
+                  </div>
+                );
+              })
+            ) : (
+              <NoData size="small" message={"You have no stocks yet"} />
+            )}
           </div>
           <div className={styles.topReturns}>
             <UserStocks
@@ -235,7 +238,12 @@ export default function Home({
               );
             })
           ) : (
-            <div className={styles.emptySpace}>You do not have any stock</div>
+            <div className={styles.emptySpace}>
+              <NoData
+                size="medium"
+                message={"Please buy stocks to see the charts"}
+              />
+            </div>
           )}
         </div>
         <div className={styles.bottomRight}>

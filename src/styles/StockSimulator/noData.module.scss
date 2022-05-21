@@ -1,0 +1,56 @@
+.noDataBig {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    width: 480px;
+    height: 480px;
+    color: #c0c0c0;
+  }
+  .text {
+    font-size: 48px;
+    font-weight: 700;
+    color: #c0c0c0;
+  }
+}
+
+.noDataMedium {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    width: 240px;
+    height: 240px;
+    color: #c0c0c0;
+  }
+  .text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #c0c0c0;
+  }
+}
+
+.noDataSmall {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    width: 120px;
+    height: 120px;
+    color: #c0c0c0;
+  }
+  .text {
+    font-size: 12;
+    font-weight: 700;
+    color: #c0c0c0;
+  }
+}
