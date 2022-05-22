@@ -60,6 +60,12 @@ $sell-color: #eb5757;
       }
     }
   }
+  .error {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(237, 49, 49);
+    padding: 4px 0;
+  }
   .commonButton {
     display: flex;
     flex-direction: row;
@@ -115,6 +121,18 @@ $sell-color: #eb5757;
     &:hover {
       background-color: $sell-color;
       box-shadow: 3px 4px 15px 0px #ccc;
+    }
+  }
+  .disabledButton {
+    @extend .commonButton;
+    background-color: rgb(139, 139, 139);
+    color: #ddd;
+    cursor: text;
+    .buttonTitle {
+      padding: 4px 0;
+    }
+    .buttonInfo {
+      display: none;
     }
   }
   .tradePopupArea {
@@ -178,6 +196,18 @@ $sell-color: #eb5757;
         border-top: none;
         border-right: none;
         outline: none;
+      }
+      .error {
+        font-size: 10px;
+        font-weight: 600;
+        color: $sell-color;
+        padding: 4px 0;
+      }
+      .helper {
+        font-size: 10px;
+        font-weight: 600;
+        color: $buy-color;
+        padding: 4px 0;
       }
     }
     .total {
