@@ -122,7 +122,10 @@ export default function ProfitableStocks({
             );
           })
         ) : (
-          <NoData />
+          <NoData
+            size="medium"
+            message={"There are no stocks for this time duration"}
+          />
         )
       ) : (
         ""
