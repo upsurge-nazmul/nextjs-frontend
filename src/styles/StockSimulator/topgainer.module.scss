@@ -149,6 +149,13 @@ $sell-color: #eb5757;
         font-size: 18px;
         font-weight: 600;
       }
+      .loadinArea {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
   .popup {
