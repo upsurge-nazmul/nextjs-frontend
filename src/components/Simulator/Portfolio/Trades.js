@@ -26,7 +26,9 @@ export default function Performance({ tradesData = [] }) {
                     {getNormalDateFromUtc(row.date)}
                   </div>
                   <div className={styles.rowitem}>{row.symbol}</div>
-                  <div className={styles.rowitem}>{row.trade_type}</div>
+                  <div className={styles.rowitem}>
+                    {row.trade_type ? row.trade_type.toUpperCase() : ""}
+                  </div>
                   <div className={styles.rowitem}>
                     {parseFloat(row.quantity).toFixed(2)}
                   </div>
