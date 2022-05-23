@@ -94,7 +94,7 @@ export default function Holdings({
           },
           tooltip: {
             y: {
-              formatter: (v) => parseFloat(v).toFixed(2),
+              formatter: (v) => "₹" + String(parseFloat(v).toFixed(2)),
             },
           },
         },

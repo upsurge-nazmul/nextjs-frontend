@@ -7,6 +7,7 @@ import Chart from "../Home/Chart";
 export default function BitcoinPriceEst({ token, simulatorType, userData }) {
   const [bitcoinData, setBitcoinData] = useState();
   const [estValue, setEstValue] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -65,6 +66,7 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
     if (addedChallenge.data && addedChallenge.data.success) {
       setEstValue(addedChallenge.data.data.bitcoin_price_est);
     }
+    setEditMode(false);
   };
 
   return (
@@ -92,16 +94,17 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
           )}
         </div>
         <div className={styles.bottomRight}>
-          <form onSubmit={(e) => handleConfirm(e)} className={styles.estForm}>
-            <div className={styles.label}>Estimated Price</div>
-            <input
-              value={estValue}
-              onChange={(e) => setEstValue(e.target.value)}
-              className={styles.value}
-              type="number"
-              placeholder="eg: 58.34"
-            />
-            <div className={styles.actionArea}>
+          <div className={styles.label}>Estimated Price</div>
+          <input
+            value={estValue}
+            onChange={(e) => setEstValue(e.target.value)}
+            className={styles.value}
+            type="number"
+            placeholder="eg: 58.34"
+            disabled={!editMode}
+          />
+          <div className={styles.actionArea}>
+            {editMode ? (
               <button
                 onClick={(e) => handleConfirm(e)}
                 className={styles.action}
@@ -109,8 +112,16 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
               >
                 Confirm
               </button>
-            </div>
-          </form>
+            ) : (
+              <button
+                onClick={(e) => setEditMode(true)}
+                className={styles.action}
+                type="submit"
+              >
+                Edit
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
