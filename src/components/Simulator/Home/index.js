@@ -41,15 +41,7 @@ export default function Home({
         type: simulatorType,
       });
       if (hlds.data && hlds.data.success) {
-        let chartData = [];
-        for (let item of hlds.data.data) {
-          chartData.push({
-            id: item.symbol,
-            label: item.name,
-            value: item.amount,
-          });
-        }
-        setHoldingsChartData(chartData);
+        setHoldingsChartData(hlds.data.data);
       }
       let otherItems =
         hlds.data && hlds.data.data.slice(1, hlds.data.data.length);
@@ -95,7 +87,7 @@ export default function Home({
   }, []);
 
   const getCashHoldingPercentage = () => {
-    let currPer = holdingsChartData[0].value;
+    let currPer = holdingsChartData[0].amount;
     return String(((currPer * 100) / 1000000).toFixed(2)) + "%";
   };
 
@@ -106,13 +98,14 @@ export default function Home({
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
             <div className={styles.holdingsChart}>
-              <div className={styles.chart}>
-                {holdingsChartData ? (
-                  <Holdings chartData={holdingsChartData} />
-                ) : (
-                  ""
-                )}
-              </div>
+              {holdingsChartData ? (
+                <Holdings
+                  chartData={holdingsChartData}
+                  className={styles.chart}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
           {holdingsChartData ? (
@@ -120,7 +113,7 @@ export default function Home({
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
                 <div className={styles.value}>{`₹${parseFloat(
-                  holdingsChartData[0].value
+                  holdingsChartData[0].amount
                 ).toFixed(2)}`}</div>
               </div>
               <div className={styles.infoItem}>
