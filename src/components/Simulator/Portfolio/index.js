@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
 import Tabs from "../Tabs";
 import Holdings from "./Holdings";
-import Performance from "./Performance";
+import Possessions from "./Possessions";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
@@ -10,7 +10,7 @@ import NoData from "../NoData";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
-  { name: "Performance", value: "performance", icon: "Performance History" },
+  { name: "Possessions", value: "performance", icon: "Possessions History" },
   { name: "Trades", value: "trades", icon: "Trades History" },
 ];
 
@@ -123,7 +123,7 @@ export default function Portfolio({ userData, token, simulatorType }) {
           </div>
         )}
         {tab === TABS[1].value && (
-          <Performance performanceData={performanceData} />
+          <Possessions performanceData={performanceData} />
         )}
         {tab === TABS[2].value && <Trades tradesData={tradeData} />}
       </div>

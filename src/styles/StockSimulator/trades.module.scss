@@ -60,6 +60,9 @@ $row-color: #dceeec;
           font-family: "Fira Sans", sans-serif;
           text-align: left;
           flex: 1;
+          max-width: 13vw;
+          margin-right: 6px;
+          overflow: hidden;
           &:first-child {
             padding-left: 10px;
           }
@@ -155,6 +158,9 @@ $row-color: #dceeec;
             font-family: "Fira Sans", sans-serif;
             text-align: left;
             flex: 1;
+            max-width: 36vw;
+            margin-right: 6px;
+            overflow: hidden;
             &:first-child {
               padding-left: 10px;
             }

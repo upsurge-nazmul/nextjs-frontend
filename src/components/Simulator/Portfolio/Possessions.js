@@ -1,11 +1,11 @@
-import styles from "../../../styles/StockSimulator/performance.module.scss";
+import styles from "../../../styles/StockSimulator/possessions.module.scss";
 import NoData from "../NoData";
 
-export default function Performance({ performanceData = [] }) {
+export default function Possessions({ performanceData = [] }) {
   return (
     <div className={styles.performance}>
       <div className={styles.headingArea}>
-        <p className={styles.heading}>Performance History</p>
+        <p className={styles.heading}>Possessions History</p>
       </div>
       {performanceData && performanceData.length ? (
         <div className={styles.container}>
