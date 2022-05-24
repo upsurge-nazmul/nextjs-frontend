@@ -6,6 +6,7 @@ import { getShortForm } from "../../../helpers/shortForms";
 // import { CircularProgress } from "@mui/material";
 import { MODES } from "../constants";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function ProfitableStocks({
   token,
@@ -49,11 +50,11 @@ export default function ProfitableStocks({
                     <div className={styles.nameArea}>
                       <div className={styles.name}>{item.name}</div>
                       <div className={styles.symbol}>{item.symbol}</div>
-                      <div
+                      {/* <div
                         className={styles.symbol}
                       >{`Closing Value: ₹${parseFloat(item.close).toFixed(
                         2
-                      )}`}</div>
+                      )}`}</div> */}
                     </div>
                     {duration === "daily" && (
                       <div className={styles.propertiesArea}>
@@ -61,25 +62,25 @@ export default function ProfitableStocks({
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>O</div>
                             <div className={styles.value}>
-                              {parseFloat(item.open).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.open))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>C</div>
                             <div className={styles.value}>
-                              {parseFloat(item.close).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.close))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>H</div>
                             <div className={styles.value}>
-                              {parseFloat(item.high).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.high))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>L</div>
                             <div className={styles.value}>
-                              {parseFloat(item.low).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.low))}
                             </div>
                           </div>
                         </div>
@@ -96,8 +97,8 @@ export default function ProfitableStocks({
                               ? styles.loss
                               : styles.nutral
                           }
-                        >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
-                          2
+                        >{`₹${toIndianFormat(
+                          Math.abs(item.current_return)
                         )}`}</div>
                       </div>
                     </div>

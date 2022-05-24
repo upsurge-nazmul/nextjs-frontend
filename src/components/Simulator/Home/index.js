@@ -7,6 +7,7 @@ import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 const StockDurations = [
   { name: "Month", value: "monthly" },
@@ -112,14 +113,14 @@ export default function Home({
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
-                <div className={styles.value}>{`₹${parseFloat(
+                <div className={styles.value}>{`₹${toIndianFormat(
                   holdingsChartData[0].amount
-                ).toFixed(2)}`}</div>
+                )}`}</div>
               </div>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Stock Portfolio</div>
-                <div className={styles.value}>{`₹${stockPortfolio.toFixed(
-                  2
+                <div className={styles.value}>{`₹${toIndianFormat(
+                  stockPortfolio
                 )}`}</div>
               </div>
               <div className={styles.infoItem}>
@@ -217,7 +218,7 @@ export default function Home({
                     <div className={styles.icon}>{getShortForm(data.name)}</div>
                     <div className={styles.nameArea}>
                       <div className={styles.value}>
-                        {"₹" + parseFloat(data.total_value).toFixed(2)}
+                        {"₹" + toIndianFormat(data.total_value)}
                       </div>
                       <div className={styles.name}>{data.name}</div>
                     </div>
