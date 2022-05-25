@@ -104,7 +104,7 @@ function Home({ isLogged, userdata }) {
           onClick={() => router.push("/bootcamp")}
         >
           <p className={styles.maintext}>Summer Bootcamp</p>
-          <p className={styles.subtext}>Registrations close May 27</p>
+          <p className={styles.subtext}>Registrations close June 1</p>
         </div>
         <Header
           setOpenLeftPanel={setOpenLeftPanel}
