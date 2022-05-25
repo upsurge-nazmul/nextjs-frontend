@@ -1,6 +1,7 @@
 import styles from "../../../styles/StockSimulator/trades.module.scss";
 import { getNormalDateFromUtc } from "../../../helpers/timehelpers";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function Performance({ tradesData = [] }) {
   return (
@@ -33,10 +34,10 @@ export default function Performance({ tradesData = [] }) {
                     {parseFloat(row.quantity).toFixed(2)}
                   </div>
                   <div className={styles.rowitem}>
-                    {parseFloat(row.price).toFixed(2)}
+                    {toIndianFormat(parseFloat(row.price))}
                   </div>
                   <div className={styles.rowitem}>
-                    {parseFloat(row.total_value).toFixed(2)}
+                    {toIndianFormat(parseFloat(row.total_value))}
                   </div>
                 </div>
               );

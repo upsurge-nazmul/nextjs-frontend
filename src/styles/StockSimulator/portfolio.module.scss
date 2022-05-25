@@ -2,6 +2,9 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  .phoneFooterArea {
+    display: none;
+  }
   .main {
     display: flex;
     flex-direction: column;
@@ -52,7 +55,6 @@
             font-size: 16px;
             font-weight: 700;
             color: rgb(97, 94, 94);
-            font-style: italic;
           }
         }
         .holdingsChart {
@@ -77,6 +79,9 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    .phoneFooterArea {
+      display: none;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -122,7 +127,6 @@
               font-size: 16px;
               font-weight: 700;
               color: rgb(97, 94, 94);
-              font-style: italic;
             }
           }
           .holdingsChart {
@@ -145,10 +149,17 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .portfolio {
-    height: 100%;
-    display: flex;
+    display: block;
     justify-content: center;
-    height: 85vh;
+    overflow-y: auto;
+    height: 80vh;
+    .phoneFooterArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 10px;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -194,7 +205,6 @@
               font-size: 16px;
               font-weight: 700;
               color: rgb(97, 94, 94);
-              font-style: italic;
             }
           }
           .holdingsChart {
@@ -205,11 +215,7 @@
       }
     }
     .footerArea {
-      position: absolute;
-      bottom: 0;
-      padding: 20px 0;
-      height: fit-content;
-      width: fit-content;
+      display: none;
     }
   }
 }
@@ -220,6 +226,9 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    .phoneFooterArea {
+      display: none;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -265,7 +274,6 @@
               font-size: 16px;
               font-weight: 700;
               color: rgb(97, 94, 94);
-              font-style: italic;
             }
           }
           .holdingsChart {
@@ -293,6 +301,13 @@
     align-items: center;
     display: block;
     flex-direction: column;
+    .phoneFooterArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 10px;
+    }
     .main {
       display: block;
       flex-direction: column;
@@ -337,7 +352,6 @@
               font-size: 16px;
               font-weight: 700;
               color: rgb(97, 94, 94);
-              font-style: italic;
             }
           }
           .holdingsChart {
@@ -348,14 +362,7 @@
       }
     }
     .footerArea {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-45%);
-      padding: 20px 0;
-      height: fit-content;
-      width: fit-content;
-      z-index: 10;
+      display: none;
     }
   }
 }

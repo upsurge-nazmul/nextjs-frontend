@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
+import { toIndianFormat } from "../../../helpers/currency";
 
 const ApexChart = ({ chartData, className }) => {
   const [state, setState] = useState();
@@ -39,12 +40,15 @@ const ApexChart = ({ chartData, className }) => {
         },
         yaxis: {
           labels: {
-            formatter: (value) => value.toFixed(2),
+            formatter: (value) => toIndianFormat(value),
           },
         },
         tooltip: {
           x: {
             format: "dd MMM yyyy",
+          },
+          y: {
+            formatter: (value) => toIndianFormat(value),
           },
         },
         fill: {

@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function Holdings({
   chartData,
@@ -94,7 +95,7 @@ export default function Holdings({
           },
           tooltip: {
             y: {
-              formatter: (v) => "₹" + String(parseFloat(v).toFixed(2)),
+              formatter: (v) => "₹" + toIndianFormat(parseFloat(v)),
             },
           },
         },

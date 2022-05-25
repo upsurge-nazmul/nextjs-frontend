@@ -32,11 +32,11 @@ $info-red: rgb(211, 33, 33);
     justify-content: space-between;
     max-width: 400px;
     .infoItem {
-      min-width: 50%;
+      width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
     }
   }
@@ -91,6 +91,7 @@ $info-red: rgb(211, 33, 33);
         min-width: 0;
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
         gap: 10px;
         padding: 6px 0;
       }
@@ -107,6 +108,7 @@ $info-red: rgb(211, 33, 33);
     align-items: center;
     height: fit-content;
     min-height: 100px;
+    margin-bottom: 10px;
     .volumeArea {
       width: fit-content;
       display: flex;

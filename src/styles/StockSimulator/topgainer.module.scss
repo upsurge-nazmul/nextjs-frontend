@@ -5,6 +5,7 @@ $light-font-color: #b5b5c3;
 $chart-color: #5200ff;
 $buy-color: #27ae60;
 $sell-color: #eb5757;
+$nutral-color: #ffa800;
 
 .topgainer {
   height: 100%;
@@ -116,6 +117,10 @@ $sell-color: #eb5757;
         .loss {
           @extend .return;
           color: $sell-color;
+        }
+        .nutral {
+          @extend .return;
+          color: $nutral-color;
         }
         .date {
           font-size: 12px;

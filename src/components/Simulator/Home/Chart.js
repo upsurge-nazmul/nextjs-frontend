@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
+import { toIndianFormat } from "../../../helpers/currency";
 
 const ApexChart = ({
   chartData,
@@ -60,6 +61,10 @@ const ApexChart = ({
         tooltip: {
           x: {
             format: "dd MMM yyyy",
+          },
+          y: {
+            formatter: (v) =>
+              "Closing Value: ₹" + toIndianFormat(parseFloat(v)),
           },
         },
         grid: {

@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import StarIcon from "@mui/icons-material/Star";
+import { toIndianFormat } from "../../helpers/currency";
 
 const Options = [
-  { name: "Daily", value: "daily" },
-  { name: "Weekly", value: "weekly" },
-  { name: "Monthly", value: "monthly" },
+  { name: "Overall", value: "overall", accessor: "Total Portfolio" },
+  { name: "Daily", value: "daily", accessor: "Daily Return" },
+  { name: "Weekly", value: "weekly", accessor: "Weekly Return" },
+  { name: "Monthly", value: "monthly", accessor: "Monthly Return" },
 ];
 
 export default function Competition({ userData, token, simulatorType }) {
@@ -32,7 +34,23 @@ export default function Competition({ userData, token, simulatorType }) {
         setleaderboarddata(leaderboard.data.data);
       } else setleaderboarddata();
     }
-    fetchDailyCompetitionData(selected);
+    async function fetchLeaderboard() {
+      let leaderboard = await SimulatorApis.getLeaderboard({
+        payload: {
+          // max: 10,
+        },
+        token,
+        type: simulatorType,
+      });
+      if (leaderboard.data && leaderboard.data.success) {
+        setleaderboarddata(leaderboard.data.data);
+      } else setleaderboarddata();
+    }
+    if (selected === Options[0].value) {
+      fetchLeaderboard();
+    } else {
+      fetchDailyCompetitionData(selected);
+    }
   }, [token, selected]);
 
   return (
@@ -58,7 +76,9 @@ export default function Competition({ userData, token, simulatorType }) {
           <div className={styles.row}>
             <p className={styles.rank}>Rank</p>
             <p className={styles.name}>Name</p>
-            <p className={styles.score}>Current Return</p>
+            <p className={styles.score}>
+              {Options.find((item) => item.value === selected).accessor}
+            </p>
           </div>
           {leaderboarddata &&
             leaderboarddata.length &&
@@ -84,6 +104,10 @@ export default function Competition({ userData, token, simulatorType }) {
                       </p>
                       <p className={styles.score}>
                         {selected === Options[0].value
+                          ? toIndianFormat(
+                              parseFloat(item.record.total_portfolio)
+                            )
+                          : selected === Options[1].value
                           ? parseFloat(item.record.current_return).toFixed(2)
                           : parseFloat(item.cumulated_return).toFixed(2)}
                       </p>
