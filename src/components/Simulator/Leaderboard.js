@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/StockSimulator/leaderboard.module.scss";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import StarIcon from "@mui/icons-material/Star";
+import { toIndianFormat } from "../../helpers/currency";
 
 export default function Leaderboard({ userData, token, simulatorType }) {
   const [leaderboarddata, setleaderboarddata] = useState();
@@ -54,7 +55,9 @@ export default function Leaderboard({ userData, token, simulatorType }) {
                         {item.user.phone === userData.phone && " (you)"}
                       </p>
                       <p className={styles.score}>
-                        {parseFloat(item.record.total_portfolio).toFixed(2)}
+                        {toIndianFormat(
+                          parseFloat(item.record.total_portfolio)
+                        )}
                       </p>
                     </div>
                   ) : (

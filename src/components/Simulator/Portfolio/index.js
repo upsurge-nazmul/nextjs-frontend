@@ -11,7 +11,7 @@ import NoData from "../NoData";
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
   { name: "Possessions", value: "performance", icon: "Possessions History" },
-  { name: "Trades", value: "trades", icon: "Trades History" },
+  { name: "Trades", value: "trades", icon: "Trade History" },
 ];
 
 export default function Portfolio({ userData, token, simulatorType }) {

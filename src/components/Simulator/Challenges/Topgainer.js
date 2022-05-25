@@ -6,6 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 import { CircularProgress } from "@mui/material";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function Topgainer({
   list,
@@ -89,8 +90,8 @@ export default function Topgainer({
           <div className={styles.companiesTable}>
             <div className={styles.headerRow}>
               <div className={styles.item}>Company Name</div>
-              <div className={styles.item}>High</div>
-              <div className={styles.item}>Low</div>
+              <div className={styles.item}>Open</div>
+              <div className={styles.item}>Close</div>
               <div className={styles.item}>Gain</div>
               {/* <div className={styles.item}>5 Days Performance</div> */}
             </div>
@@ -100,10 +101,10 @@ export default function Topgainer({
                     <div className={styles.tableRow} key={i}>
                       <div className={styles.item}>{item.name}</div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.high).toFixed(2))}
+                        {toIndianFormat(parseFloat(item.open))}
                       </div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.low).toFixed(2))}
+                        {toIndianFormat(parseFloat(item.close))}
                       </div>
                       <div className={styles.item}>
                         {String(parseFloat(item.current_return).toFixed(2))}
@@ -130,7 +131,7 @@ export default function Topgainer({
                   <div className={styles.name}>{selectedCompany.name}</div>
                   <div className={styles.symbol}>{selectedCompany.symbol}</div>
                   <div className={styles.close}>
-                    {"₹" + String(parseFloat(selectedCompany.close).toFixed(2))}
+                    {"₹" + toIndianFormat(parseFloat(selectedCompany.close))}
                   </div>
                   <div
                     className={
