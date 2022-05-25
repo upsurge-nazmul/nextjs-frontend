@@ -163,7 +163,7 @@ export default function GamePage({ gamedata, userdata }) {
     if (res) {
       if (res.data.success) {
         router.push({
-          pathname: "/games/" + gameid,
+          pathname: "/games/test/" + gameid,
           query: { id: res.data.data },
         });
       }
