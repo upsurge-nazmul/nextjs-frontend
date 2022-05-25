@@ -8,7 +8,7 @@ export default function UblBanner({ className }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_5333_13323)">
+      <g clipPath="url(#clip0_5333_13323)">
         <path
           d="M402.171 151.355L453.768 192.989C442.277 207.231 421.395 209.463 407.153 197.971C392.911 186.479 390.679 165.597 402.171 151.355V151.355Z"
           fill="#F16264"
