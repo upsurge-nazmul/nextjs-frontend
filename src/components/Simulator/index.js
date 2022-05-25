@@ -10,7 +10,6 @@ import Companies from "./Dash";
 import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
-import Leaderboard from "./Leaderboard";
 import Competition from "./Competition";
 import Challenges from "./Challenges";
 import styles from "../../styles/StockSimulator/simulator.module.scss";
@@ -112,13 +111,6 @@ export default function Simulator({
             )}
             {mode === MODES[4].value && (
               <Competition
-                token={token}
-                userData={userData}
-                simulatorType={simulatorType}
-              />
-            )}
-            {mode === MODES[5].value && (
-              <Leaderboard
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
