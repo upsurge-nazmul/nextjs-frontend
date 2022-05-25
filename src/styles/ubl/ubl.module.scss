@@ -1,0 +1,44 @@
+@use "../variables/colors.scss" as *;
+
+.ubl {
+  width: 100vw;
+  height: 100vh;
+  .banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
+    overflow: hidden;
+    s .bannerbg {
+      width: 100%;
+    }
+    .center {
+      position: absolute;
+      transform: rotate(-2deg);
+      .sponsor {
+        display: flex;
+        gap: 20px;
+        transform: rotate(2deg);
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+        .sponsorlogo {
+          width: 100px;
+        }
+      }
+      .herotext,
+      .bluehero {
+        font-size: 5rem;
+        font-weight: 900;
+        text-align: center;
+        line-height: 5rem;
+      }
+      .bluehero {
+        color: $green;
+      }
+    }
+  }
+}
