@@ -87,18 +87,18 @@ export default function ProfitableStocks({
                       </div>
                     )}
                     <div className={styles.valueArea}>
-                      <div className={styles.label}>Return</div>
+                      <div className={styles.label}>%Return</div>
                       <div className={styles.value}>
                         <div
                           className={
-                            parseFloat(item.current_return) > 0
+                            parseFloat(item.current_return_percentage) > 0
                               ? styles.gain
-                              : parseFloat(item.current_return) < 0
+                              : parseFloat(item.current_return_percentage) < 0
                               ? styles.loss
                               : styles.nutral
                           }
-                        >{`₹${toIndianFormat(
-                          Math.abs(item.current_return)
+                        >{`${toIndianFormat(
+                          Math.abs(item.current_return_percentage)
                         )}`}</div>
                       </div>
                     </div>

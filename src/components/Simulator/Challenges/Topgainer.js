@@ -92,7 +92,7 @@ export default function Topgainer({
               <div className={styles.item}>Company Name</div>
               <div className={styles.item}>Open</div>
               <div className={styles.item}>Close</div>
-              <div className={styles.item}>Gain</div>
+              <div className={styles.item}>%Gain</div>
               {/* <div className={styles.item}>5 Days Performance</div> */}
             </div>
             {currenTops && currenTops.length
@@ -107,7 +107,13 @@ export default function Topgainer({
                         {toIndianFormat(parseFloat(item.close))}
                       </div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.current_return).toFixed(2))}
+                        {item.current_return_percentage
+                          ? String(
+                              parseFloat(
+                                item.current_return_percentage
+                              ).toFixed(2)
+                            )
+                          : 0}
                       </div>
                       {/* <div className={styles.item}>
                       {parseFloat(item.volume).toFixed(2)}
@@ -135,18 +141,26 @@ export default function Topgainer({
                   </div>
                   <div
                     className={
-                      parseFloat(selectedCompany.current_return) > 0
+                      parseFloat(selectedCompany.current_return_percentage) > 0
                         ? styles.gain
-                        : styles.loss
+                        : parseFloat(
+                            selectedCompany.current_return_percentage
+                          ) < 0
+                        ? styles.loss
+                        : styles.nutral
                     }
                   >
-                    {parseFloat(selectedCompany.current_return) > 0 ? (
+                    {parseFloat(selectedCompany.current_return_percentage) >
+                    0 ? (
                       <ArrowDropUpIcon />
-                    ) : (
+                    ) : parseFloat(selectedCompany.current_return_percentage) <
+                      0 ? (
                       <ArrowDropDownIcon />
+                    ) : (
+                      ""
                     )}
                     {parseFloat(
-                      Math.abs(selectedCompany.current_return)
+                      Math.abs(selectedCompany.current_return_percentage)
                     ).toFixed(2)}
                   </div>
                   <div className={styles.date}>

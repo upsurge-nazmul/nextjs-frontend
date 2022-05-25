@@ -146,7 +146,7 @@ export default function Home({
                 Last Updated at {lastUpdated}
               </div>
             </div>
-            <div className={styles.portfolioOptions}>
+            {/* <div className={styles.portfolioOptions}>
               {StockDurations.map((duration, i) => {
                 return (
                   <div
@@ -162,7 +162,7 @@ export default function Home({
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
           {userStocks && userStocks.length ? (
             <div className={styles.myStocks}>

@@ -63,7 +63,8 @@ const ApexChart = ({
             format: "dd MMM yyyy",
           },
           y: {
-            formatter: (v) => "₹" + toIndianFormat(parseFloat(v)),
+            formatter: (v) =>
+              "Closing Value: ₹" + toIndianFormat(parseFloat(v)),
           },
         },
         grid: {
