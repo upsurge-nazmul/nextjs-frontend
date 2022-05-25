@@ -29,7 +29,7 @@ const getassetvalues = (payload) => {
   );
 };
 const completetask = (payload) => {
-  return ApiCalls.putResponse(
+  return ApiCalls.postResponse(
     "games/moneyace/completetask",
     payload,
     getCookie("accesstoken")
@@ -253,7 +253,7 @@ const buystoreitems = (payload) => {
   );
 };
 const updateupi = (payload) => {
-  return ApiCalls.putResponse(
+  return ApiCalls.postResponse(
     "games/moneyace/updateupi",
     payload,
     getCookie("accesstoken")
@@ -275,7 +275,7 @@ const getdailyreward = (payload) => {
 };
 
 const updatescore = (payload) => {
-  return ApiCalls.putResponse(
+  return ApiCalls.postResponse(
     "games/moneyace/updategamescore",
     payload,
     getCookie("accesstoken")
