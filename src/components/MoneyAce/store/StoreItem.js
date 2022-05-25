@@ -8,7 +8,6 @@ export default function StoreItem({
   viewonly,
   setmaincount,
 }) {
-  console.log(cart);
   const [count, setcount] = useState(
     cart && cart[data.name] ? cart[data.name] : 0
   );
