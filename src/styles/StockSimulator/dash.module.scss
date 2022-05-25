@@ -309,7 +309,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    height: 85vh;
+    height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 10px;
@@ -471,7 +471,7 @@
       justify-content: flex-start;
       padding: 10px 0;
       .topArea {
-        height: 10%;
+        height: 0;
         .buttons {
           display: none;
         }

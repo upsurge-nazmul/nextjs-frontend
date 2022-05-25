@@ -5,6 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Popup from "../Popup";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
+import { toIndianFormat } from "../../../helpers/currency";
 
 const MAX_VALUE = 100000;
 const MIN_VALUE = 0;
@@ -69,14 +70,22 @@ export default function SimulatorOptions({
       quantity * price > holdingToBuy
     ) {
       setErrorText(
-        `You can buy maximum ${parseInt(
-          holdingToBuy / price
-        )} stocks of this company`
+        `You can buy maximum ${parseInt(holdingToBuy / price)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } of this company`
       );
     } else if (tradeMode === "sell" && !ammountToSell) {
-      setErrorText(`You do not have this stock to sell`);
+      setErrorText(
+        `You do not have this ${
+          simulatorType === "cryptosimulator" ? "coin" : "stock"
+        } to sell`
+      );
     } else if (tradeMode === "sell" && quantity > ammountToSell) {
-      setErrorText(`You can sell maximum ${ammountToSell} stocks`);
+      setErrorText(
+        `You can sell maximum ${parseInt(ammountToSell)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        }`
+      );
     } else {
       setErrorText("");
     }
@@ -85,12 +94,16 @@ export default function SimulatorOptions({
   useEffect(() => {
     if (!errorText && tradeMode === "buy" && holdingToBuy) {
       setHelperText(
-        `You can buy maximum ${parseInt(
-          holdingToBuy / price
-        )} stocks of this company`
+        `You can buy maximum ${parseInt(holdingToBuy / price)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } of this company`
       );
     } else if (!errorText && tradeMode === "sell" && ammountToSell) {
-      setHelperText(`You have ${ammountToSell} stocks to sell`);
+      setHelperText(
+        `You have ${parseInt(ammountToSell)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } to sell`
+      );
     } else {
       setHelperText("");
     }
@@ -195,11 +208,11 @@ export default function SimulatorOptions({
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
           <span>
-            <span>Price</span> <span>{"₹" + price.toFixed(2)}</span>
+            <span>Price</span> <span>{"₹" + toIndianFormat(price)}</span>
           </span>
           <span>
             <span>Total</span>{" "}
-            <span>{"₹" + (quantity * price).toFixed(2)}</span>
+            <span>{"₹" + toIndianFormat(quantity * price)}</span>
           </span>
         </div>
       </button>
@@ -210,11 +223,11 @@ export default function SimulatorOptions({
         <div className={styles.buttonTitle}>Sell</div>
         <div className={styles.buttonInfo}>
           <span>
-            <span>Price</span> <span>{"₹" + price.toFixed(2)}</span>
+            <span>Price</span> <span>{"₹" + toIndianFormat(price)}</span>
           </span>
           <span>
             <span>Total</span>{" "}
-            <span>{"₹" + (quantity * price).toFixed(2)}</span>
+            <span>{"₹" + toIndianFormat(quantity * price)}</span>
           </span>
         </div>
       </button>
@@ -245,13 +258,13 @@ export default function SimulatorOptions({
               <div className={styles.price}>
                 <div className={styles.label}>AT PRICE | INR </div>
                 <div className={styles.value}>
-                  <div>{price.toFixed(2)}</div>
+                  <div>{toIndianFormat(price)}</div>
                   <div
                     className={
                       tradeMode === "buy" ? styles.buyHelper : styles.sellHelper
                     }
                   >
-                    {tradeMode === "buy" ? "LOWEST PRICE" : "HIGHEST PRICE"}
+                    {/* {tradeMode === "buy" ? "LOWEST PRICE" : "HIGHEST PRICE"} */}
                   </div>
                 </div>
               </div>
@@ -274,7 +287,7 @@ export default function SimulatorOptions({
               <div className={styles.total}>
                 <div className={styles.label}>TOTAL | INR </div>
                 <div className={styles.value}>
-                  {(quantity * price).toFixed(2)}
+                  {toIndianFormat(quantity * price)}
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/stockXStockY.module.scss";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function StockXStockY({ token, simulatorType, userData }) {
   const [selected, setSelected] = useState();
@@ -87,7 +88,7 @@ export default function StockXStockY({ token, simulatorType, userData }) {
                   {selected === x.symbol ? <CheckCircleIcon /> : ""}
                 </div>
                 <div className={styles.name}>{x.name}</div>
-                <div>{`₹${parseFloat(x.close).toFixed(2)}`}</div>
+                <div>{`₹${toIndianFormat(parseFloat(x.close))}`}</div>
               </button>
             </div>
             <div className={styles.or}>OR</div>
@@ -101,7 +102,7 @@ export default function StockXStockY({ token, simulatorType, userData }) {
                   {selected === y.symbol ? <CheckCircleIcon /> : ""}
                 </div>
                 <div className={styles.name}>{y.name}</div>
-                <div>{`₹${parseFloat(y.close).toFixed(2)}`}</div>
+                <div>{`₹${toIndianFormat(parseFloat(y.close))}`}</div>
               </button>
             </div>
           </div>

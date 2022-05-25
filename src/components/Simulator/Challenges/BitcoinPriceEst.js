@@ -100,7 +100,7 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
             onChange={(e) => setEstValue(e.target.value)}
             className={styles.value}
             type="number"
-            placeholder="eg: 58.34"
+            placeholder="eg: 0.00"
             disabled={!editMode}
           />
           <div className={styles.actionArea}>

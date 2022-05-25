@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/portfolio.module.scss";
 import Tabs from "../Tabs";
 import Holdings from "./Holdings";
-import Performance from "./Performance";
+import Possessions from "./Possessions";
 import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
@@ -10,8 +10,8 @@ import NoData from "../NoData";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
-  { name: "Performance", value: "performance", icon: "Performance History" },
-  { name: "Trades", value: "trades", icon: "Trades History" },
+  { name: "Portfolio", value: "performance", icon: "Portfolio" },
+  { name: "Trades", value: "trades", icon: "Trade History" },
 ];
 
 export default function Portfolio({ userData, token, simulatorType }) {
@@ -85,11 +85,14 @@ export default function Portfolio({ userData, token, simulatorType }) {
 
   return (
     <div className={styles.portfolio}>
+      <div className={styles.phoneFooterArea}>
+        <Tabs options={TABS} action={setTab} active={tab} shape="square" />
+      </div>
       <div className={styles.main}>
         {tab === TABS[0].value && (
           <div className={styles.content}>
             <div className={styles.left}>
-              <p className={styles.caption}>Portfolio</p>
+              <p className={styles.caption}>Total Portfolio History</p>
               {portfolioChartData && portfolioChartData.length ? (
                 <PortfolioChart
                   chartData={portfolioChartData}
@@ -97,7 +100,10 @@ export default function Portfolio({ userData, token, simulatorType }) {
                 />
               ) : (
                 <div className={styles.emptyData}>
-                  <NoData size="big" message="Daily portfolio graph" />
+                  <NoData
+                    size="big"
+                    message="You will see your portfolio history once you start trading"
+                  />
                 </div>
               )}
             </div>
@@ -123,7 +129,7 @@ export default function Portfolio({ userData, token, simulatorType }) {
           </div>
         )}
         {tab === TABS[1].value && (
-          <Performance performanceData={performanceData} />
+          <Possessions performanceData={performanceData} />
         )}
         {tab === TABS[2].value && <Trades tradesData={tradeData} />}
       </div>

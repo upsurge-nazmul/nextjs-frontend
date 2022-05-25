@@ -60,9 +60,13 @@ $row-color: #e3e7f1;
           font-family: "Fira Sans", sans-serif;
           text-align: left;
           flex: 1;
+          max-width: 10vw;
+          margin-right: 6px;
+          overflow: hidden;
           &:first-child {
             flex: 2;
             padding-left: 10px;
+            max-width: 100%;
           }
           &:nth-child(5) {
             flex: 0.75;
@@ -159,9 +163,13 @@ $row-color: #e3e7f1;
             font-family: "Fira Sans", sans-serif;
             text-align: left;
             flex: 1;
+            max-width: 26vw;
+            margin-right: 6px;
+            overflow: hidden;
             &:first-child {
-              flex: 3;
+              flex: 2;
               padding-left: 10px;
+              max-width: 100%;
             }
             &:nth-child(5) {
               flex: 0.75;

@@ -7,11 +7,12 @@ import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 const StockDurations = [
-  { name: "Month", value: "monthly" },
-  { name: "Week", value: "weekly" },
-  { name: "Day", value: "daily" },
+  { name: "This Month", value: "monthly" },
+  { name: "This Week", value: "weekly" },
+  { name: "Today", value: "daily" },
 ];
 
 export default function Home({
@@ -112,18 +113,25 @@ export default function Home({
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
-                <div className={styles.value}>{`₹${parseFloat(
+                <div className={styles.value}>{`₹${toIndianFormat(
                   holdingsChartData[0].amount
-                ).toFixed(2)}`}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.label}>Total Stock Portfolio</div>
-                <div className={styles.value}>{`₹${stockPortfolio.toFixed(
-                  2
                 )}`}</div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Total Number of Stocks</div>
+                <div className={styles.label}>
+                  Total
+                  {simulatorType === "cryptosimulator" ? " Crypto " : " Stock "}
+                  Portfolio
+                </div>
+                <div className={styles.value}>{`₹${toIndianFormat(
+                  stockPortfolio
+                )}`}</div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>
+                  Total Number of{" "}
+                  {simulatorType === "cryptosimulator" ? " coins " : " stocks "}
+                </div>
                 <div className={styles.value}>
                   {("0" + String(holdingsChartData.length - 1)).slice(-2)}
                 </div>
@@ -145,7 +153,7 @@ export default function Home({
                 Last Updated at {lastUpdated}
               </div>
             </div>
-            <div className={styles.portfolioOptions}>
+            {/* <div className={styles.portfolioOptions}>
               {StockDurations.map((duration, i) => {
                 return (
                   <div
@@ -161,7 +169,7 @@ export default function Home({
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
           {userStocks && userStocks.length ? (
             <div className={styles.myStocks}>
@@ -192,7 +200,12 @@ export default function Home({
               })}
             </div>
           ) : (
-            <NoData size="small" message={"You have no stocks yet"} />
+            <NoData
+              size="small"
+              message={`You have no ${
+                simulatorType === "cryptosimulator" ? "coin" : "stock"
+              } yet`}
+            />
           )}
           <div className={styles.topReturns}>
             <UserStocks
@@ -217,7 +230,7 @@ export default function Home({
                     <div className={styles.icon}>{getShortForm(data.name)}</div>
                     <div className={styles.nameArea}>
                       <div className={styles.value}>
-                        {"₹" + parseFloat(data.total_value).toFixed(2)}
+                        {"₹" + toIndianFormat(data.total_value)}
                       </div>
                       <div className={styles.name}>{data.name}</div>
                     </div>
@@ -234,14 +247,19 @@ export default function Home({
             <div className={styles.emptySpace}>
               <NoData
                 size="medium"
-                message={"Please buy stocks to see the charts"}
+                message={`Please buy ${
+                  simulatorType === "cryptosimulator" ? "coins" : "stocks"
+                } to see history chart`}
               />
             </div>
           )}
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.headingArea}>
-            <div className={styles.title}>Most Profitable Stocks</div>
+            <div className={styles.title}>
+              Most Profitable{" "}
+              {simulatorType === "cryptosimulator" ? "Coins" : "Stocks"}
+            </div>
             <div className={styles.profitableStocksOptions}>
               {StockDurations.map((duration, i) => {
                 return (

@@ -6,6 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 import { CircularProgress } from "@mui/material";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function Topgainer({
   list,
@@ -88,10 +89,15 @@ export default function Topgainer({
           </div>
           <div className={styles.companiesTable}>
             <div className={styles.headerRow}>
-              <div className={styles.item}>Company Name</div>
-              <div className={styles.item}>High</div>
-              <div className={styles.item}>Low</div>
-              <div className={styles.item}>Gain</div>
+              <div className={styles.item}>
+                {simulatorType === "cryptosimulator"
+                  ? "Cryptocurrency "
+                  : "Company "}{" "}
+                Name
+              </div>
+              <div className={styles.item}>Open</div>
+              <div className={styles.item}>Close</div>
+              <div className={styles.item}>%Gain</div>
               {/* <div className={styles.item}>5 Days Performance</div> */}
             </div>
             {currenTops && currenTops.length
@@ -100,13 +106,19 @@ export default function Topgainer({
                     <div className={styles.tableRow} key={i}>
                       <div className={styles.item}>{item.name}</div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.high).toFixed(2))}
+                        {toIndianFormat(parseFloat(item.open))}
                       </div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.low).toFixed(2))}
+                        {toIndianFormat(parseFloat(item.close))}
                       </div>
                       <div className={styles.item}>
-                        {String(parseFloat(item.current_return).toFixed(2))}
+                        {item.current_return_percentage
+                          ? String(
+                              parseFloat(
+                                item.current_return_percentage
+                              ).toFixed(2)
+                            )
+                          : 0}
                       </div>
                       {/* <div className={styles.item}>
                       {parseFloat(item.volume).toFixed(2)}
@@ -126,26 +138,39 @@ export default function Topgainer({
                 </div>
               ) : (
                 <div className={styles.selected}>
-                  <div className={styles.title}>Selected Stock</div>
+                  <div className={styles.title}>
+                    Selected{" "}
+                    {simulatorType === "cryptosimulator"
+                      ? "Cryptocurrency"
+                      : "Stock"}
+                  </div>
                   <div className={styles.name}>{selectedCompany.name}</div>
                   <div className={styles.symbol}>{selectedCompany.symbol}</div>
                   <div className={styles.close}>
-                    {"₹" + String(parseFloat(selectedCompany.close).toFixed(2))}
+                    {"₹" + toIndianFormat(parseFloat(selectedCompany.close))}
                   </div>
                   <div
                     className={
-                      parseFloat(selectedCompany.current_return) > 0
+                      parseFloat(selectedCompany.current_return_percentage) > 0
                         ? styles.gain
-                        : styles.loss
+                        : parseFloat(
+                            selectedCompany.current_return_percentage
+                          ) < 0
+                        ? styles.loss
+                        : styles.nutral
                     }
                   >
-                    {parseFloat(selectedCompany.current_return) > 0 ? (
+                    {parseFloat(selectedCompany.current_return_percentage) >
+                    0 ? (
                       <ArrowDropUpIcon />
-                    ) : (
+                    ) : parseFloat(selectedCompany.current_return_percentage) <
+                      0 ? (
                       <ArrowDropDownIcon />
+                    ) : (
+                      ""
                     )}
                     {parseFloat(
-                      Math.abs(selectedCompany.current_return)
+                      Math.abs(selectedCompany.current_return_percentage)
                     ).toFixed(2)}
                   </div>
                   <div className={styles.date}>
@@ -166,7 +191,9 @@ export default function Topgainer({
             </>
           ) : (
             <div className={styles.noSelected}>
-              Select any stock from the dropdown
+              Select any{" "}
+              {simulatorType === "cryptosimulator" ? "currency" : "stock"} from
+              the dropdown
             </div>
           )}
         </div>

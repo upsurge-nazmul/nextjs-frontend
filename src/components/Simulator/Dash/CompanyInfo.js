@@ -1,4 +1,5 @@
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function CompanyInfo({ companyInfo }) {
   return (
@@ -8,31 +9,31 @@ export default function CompanyInfo({ companyInfo }) {
           <div className={styles.volumeArea}>
             <span className={styles.volumeTitle}>Volume</span>
             <span className={`${styles.volumeValue} ${styles.greenText}`}>
-              {parseFloat(companyInfo.volume).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.volume))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Open</span>
             <span className={styles.greenText}>
-              {parseFloat(companyInfo.open).toFixed(2)}
-            </span>
-          </div>
-          <div className={styles.infoItem}>
-            <span>High</span>
-            <span className={styles.greenText}>
-              {parseFloat(companyInfo.high).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.open))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Close</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.close).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.close))}
+            </span>
+          </div>
+          <div className={styles.infoItem}>
+            <span>High</span>
+            <span className={styles.greenText}>
+              {toIndianFormat(parseFloat(companyInfo.high))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Low</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.low).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.low))}
             </span>
           </div>
         </div>

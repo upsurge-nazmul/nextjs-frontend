@@ -4,6 +4,7 @@ import styles from "../../../styles/StockSimulator/userStocks.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getShortForm } from "../../../helpers/shortForms";
 import { MODES } from "../constants";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function UserStocks({
   userData,
@@ -79,10 +80,10 @@ export default function UserStocks({
                       <div className={styles.label}>Total Value</div>
                       <div className={styles.value}>
                         {"₹" +
-                          (
+                          toIndianFormat(
                             parseFloat(item.current_price) *
-                            parseFloat(item.quantity)
-                          ).toFixed(2)}
+                              parseFloat(item.quantity)
+                          )}
                       </div>
                     </div>
                     <div className={styles.qtArea}>
@@ -92,15 +93,15 @@ export default function UserStocks({
                     <div className={styles.gainArea}>
                       <div
                         className={
-                          parseFloat(item.current_return) > 0
+                          parseFloat(item.current_return_percentage) > 0
                             ? styles.gain
-                            : parseFloat(item.current_return) < 0
+                            : parseFloat(item.current_return_percentage) < 0
                             ? styles.loss
                             : styles.nutral
                         }
-                      >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
-                        2
-                      )}`}</div>
+                      >{`${toIndianFormat(
+                        Math.abs(item.current_return_percentage)
+                      )}%`}</div>
                     </div>
                     <div className={styles.buttonArea}>
                       <button
