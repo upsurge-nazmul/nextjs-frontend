@@ -301,6 +301,13 @@
     align-items: center;
     display: block;
     flex-direction: column;
+    .phoneFooterArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 10px;
+    }
     .main {
       display: block;
       flex-direction: column;
@@ -355,14 +362,7 @@
       }
     }
     .footerArea {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-45%);
-      padding: 20px 0;
-      height: fit-content;
-      width: fit-content;
-      z-index: 10;
+      display: none;
     }
   }
 }
