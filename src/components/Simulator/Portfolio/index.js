@@ -100,7 +100,10 @@ export default function Portfolio({ userData, token, simulatorType }) {
                 />
               ) : (
                 <div className={styles.emptyData}>
-                  <NoData size="big" message="Daily portfolio graph" />
+                  <NoData
+                    size="big"
+                    message="You will see your portfolio history once you start trading"
+                  />
                 </div>
               )}
             </div>

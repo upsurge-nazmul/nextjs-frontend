@@ -70,14 +70,22 @@ export default function SimulatorOptions({
       quantity * price > holdingToBuy
     ) {
       setErrorText(
-        `You can buy maximum ${parseInt(
-          holdingToBuy / price
-        )} stocks of this company`
+        `You can buy maximum ${parseInt(holdingToBuy / price)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } of this company`
       );
     } else if (tradeMode === "sell" && !ammountToSell) {
-      setErrorText(`You do not have this stock to sell`);
+      setErrorText(
+        `You do not have this ${
+          simulatorType === "cryptosimulator" ? "coin" : "stock"
+        } to sell`
+      );
     } else if (tradeMode === "sell" && quantity > ammountToSell) {
-      setErrorText(`You can sell maximum ${parseInt(ammountToSell)} stocks`);
+      setErrorText(
+        `You can sell maximum ${parseInt(ammountToSell)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        }`
+      );
     } else {
       setErrorText("");
     }
@@ -86,12 +94,16 @@ export default function SimulatorOptions({
   useEffect(() => {
     if (!errorText && tradeMode === "buy" && holdingToBuy) {
       setHelperText(
-        `You can buy maximum ${parseInt(
-          holdingToBuy / price
-        )} stocks of this company`
+        `You can buy maximum ${parseInt(holdingToBuy / price)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } of this company`
       );
     } else if (!errorText && tradeMode === "sell" && ammountToSell) {
-      setHelperText(`You have ${parseInt(ammountToSell)} stocks to sell`);
+      setHelperText(
+        `You have ${parseInt(ammountToSell)} ${
+          simulatorType === "cryptosimulator" ? "coins" : "stocks"
+        } to sell`
+      );
     } else {
       setHelperText("");
     }

@@ -89,7 +89,12 @@ export default function Topgainer({
           </div>
           <div className={styles.companiesTable}>
             <div className={styles.headerRow}>
-              <div className={styles.item}>Company Name</div>
+              <div className={styles.item}>
+                {simulatorType === "cryptosimulator"
+                  ? "Cryptocurrency "
+                  : "Company "}{" "}
+                Name
+              </div>
               <div className={styles.item}>Open</div>
               <div className={styles.item}>Close</div>
               <div className={styles.item}>%Gain</div>
@@ -133,7 +138,12 @@ export default function Topgainer({
                 </div>
               ) : (
                 <div className={styles.selected}>
-                  <div className={styles.title}>Selected Stock</div>
+                  <div className={styles.title}>
+                    Selected{" "}
+                    {simulatorType === "cryptosimulator"
+                      ? "Cryptocurrency"
+                      : "Stock"}
+                  </div>
                   <div className={styles.name}>{selectedCompany.name}</div>
                   <div className={styles.symbol}>{selectedCompany.symbol}</div>
                   <div className={styles.close}>
@@ -181,7 +191,9 @@ export default function Topgainer({
             </>
           ) : (
             <div className={styles.noSelected}>
-              Select any stock from the dropdown
+              Select any{" "}
+              {simulatorType === "cryptosimulator" ? "currency" : "stock"} from
+              the dropdown
             </div>
           )}
         </div>

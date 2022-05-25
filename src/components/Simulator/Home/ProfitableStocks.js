@@ -125,7 +125,9 @@ export default function ProfitableStocks({
         ) : (
           <NoData
             size="medium"
-            message={"There are no stocks for this time duration"}
+            message={`There is no ${
+              simulatorType === "cryptosimulator" ? "coin" : "stock"
+            } for this time duration`}
           />
         )
       ) : (

@@ -59,8 +59,6 @@ export default function UserStocks({
     fetchTopCompanies();
   }, [duration, selected]);
 
-  console.log("!!!!!!!!!!!!!", companies);
-
   return (
     <>
       {companies && companies.length

@@ -118,13 +118,20 @@ export default function Home({
                 )}`}</div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Total Stock Portfolio</div>
+                <div className={styles.label}>
+                  Total
+                  {simulatorType === "cryptosimulator" ? " Crypto " : " Stock "}
+                  Portfolio
+                </div>
                 <div className={styles.value}>{`₹${toIndianFormat(
                   stockPortfolio
                 )}`}</div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Total Number of Stocks</div>
+                <div className={styles.label}>
+                  Total Number of{" "}
+                  {simulatorType === "cryptosimulator" ? " coins " : " stocks "}
+                </div>
                 <div className={styles.value}>
                   {("0" + String(holdingsChartData.length - 1)).slice(-2)}
                 </div>
@@ -193,7 +200,12 @@ export default function Home({
               })}
             </div>
           ) : (
-            <NoData size="small" message={"You have no stocks yet"} />
+            <NoData
+              size="small"
+              message={`You have no ${
+                simulatorType === "cryptosimulator" ? "coin" : "stock"
+              } yet`}
+            />
           )}
           <div className={styles.topReturns}>
             <UserStocks
@@ -235,7 +247,9 @@ export default function Home({
             <div className={styles.emptySpace}>
               <NoData
                 size="medium"
-                message={"Please buy stocks to see the charts"}
+                message={`Please buy ${
+                  simulatorType === "cryptosimulator" ? "coins" : "stocks"
+                } to see history chart`}
               />
             </div>
           )}
