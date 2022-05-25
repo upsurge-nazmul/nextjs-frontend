@@ -10,7 +10,7 @@ export default function UblPrize({ type, className }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_5333_14891)">
+      <g clipPath="url(#clip0_5333_14891)">
         <path
           d="M22.7597 75.9812L14.3197 65.1513L0.719727 63.3512L13.4797 44.7812L16.4697 47.1613L28.7697 54.2113L32.3297 55.5812L22.7597 75.9812Z"
           fill={
