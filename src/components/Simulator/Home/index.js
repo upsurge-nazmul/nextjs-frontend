@@ -256,7 +256,10 @@ export default function Home({
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.headingArea}>
-            <div className={styles.title}>Most Profitable Stocks</div>
+            <div className={styles.title}>
+              Most Profitable{" "}
+              {simulatorType === "cryptosimulator" ? "Coins" : "Stocks"}
+            </div>
             <div className={styles.profitableStocksOptions}>
               {StockDurations.map((duration, i) => {
                 return (
