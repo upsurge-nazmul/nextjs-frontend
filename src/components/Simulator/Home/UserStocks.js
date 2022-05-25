@@ -59,6 +59,8 @@ export default function UserStocks({
     fetchTopCompanies();
   }, [duration, selected]);
 
+  console.log("!!!!!!!!!!!!!", companies);
+
   return (
     <>
       {companies && companies.length
@@ -93,15 +95,15 @@ export default function UserStocks({
                     <div className={styles.gainArea}>
                       <div
                         className={
-                          parseFloat(item.current_return) > 0
+                          parseFloat(item.current_return_percentage) > 0
                             ? styles.gain
-                            : parseFloat(item.current_return) < 0
+                            : parseFloat(item.current_return_percentage) < 0
                             ? styles.loss
                             : styles.nutral
                         }
-                      >{`₹${toIndianFormat(
-                        Math.abs(item.current_return)
-                      )}`}</div>
+                      >{`${toIndianFormat(
+                        Math.abs(item.current_return_percentage)
+                      )}%`}</div>
                     </div>
                     <div className={styles.buttonArea}>
                       <button
