@@ -5,6 +5,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { convertedUTCToLocal } from "../../../helpers/timehelpers";
+import { CircularProgress } from "@mui/material";
 
 export default function Topgainer({
   list,
@@ -13,8 +14,10 @@ export default function Topgainer({
   simulatorType,
   userData,
 }) {
-  const [selectedSymbol, setSelectedSymbol] = useState();
+  const [currentSymbol, setCurrentSymbol] = useState(); // comes from API, but not updated in the UI
+  const [selectedSymbol, setSelectedSymbol] = useState(); // comes from API, but updates on UI selection
   const [selectedCompany, setSelectedCompany] = useState();
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -25,7 +28,8 @@ export default function Topgainer({
       });
       if (challenges.data && challenges.data.success) {
         if (challenges.data.data && challenges.data.data.top_gainer)
-          setSelectedSymbol(challenges.data.data.top_gainer);
+          setCurrentSymbol(challenges.data.data.top_gainer);
+        setSelectedSymbol(challenges.data.data.top_gainer);
       }
     }
     fetchUserChallenges();
@@ -39,6 +43,7 @@ export default function Topgainer({
   }, [list, selectedSymbol]);
 
   const handleConfirmButton = async () => {
+    setLoading(true);
     let addedChallenge = await SimulatorApis.createOrUpdateChallenge({
       payload: {
         user_id: userData.user_id,
@@ -50,7 +55,9 @@ export default function Topgainer({
     });
     if (addedChallenge.data && addedChallenge.data.success) {
       setSelectedSymbol(addedChallenge.data.data.top_gainer);
+      setCurrentSymbol(addedChallenge.data.data.top_gainer);
     }
+    setLoading(false);
   };
 
   return (
@@ -112,41 +119,51 @@ export default function Topgainer({
         </div>
         <div className={styles.rightside}>
           {selectedCompany ? (
-            <div className={styles.selected}>
-              <div className={styles.title}>Selected Stock</div>
-              <div className={styles.name}>{selectedCompany.name}</div>
-              <div className={styles.symbol}>{selectedCompany.symbol}</div>
-              <div className={styles.close}>
-                {"₹" + String(parseFloat(selectedCompany.close).toFixed(2))}
-              </div>
-              <div
-                className={
-                  parseFloat(selectedCompany.current_return) > 0
-                    ? styles.gain
-                    : styles.loss
-                }
-              >
-                {parseFloat(selectedCompany.current_return) > 0 ? (
-                  <ArrowDropUpIcon />
-                ) : (
-                  <ArrowDropDownIcon />
-                )}
-                {parseFloat(Math.abs(selectedCompany.current_return)).toFixed(
-                  2
-                )}
-              </div>
-              <div className={styles.date}>
-                {convertedUTCToLocal(selectedCompany.date)}
-              </div>
-              <div className={styles.actionArea}>
-                <button
-                  className={styles.action}
-                  onClick={() => handleConfirmButton(selectedCompany)}
-                >
-                  Confirm Selection
-                </button>
-              </div>
-            </div>
+            <>
+              {isLoading ? (
+                <div className={styles.loadinArea}>
+                  <CircularProgress />
+                </div>
+              ) : (
+                <div className={styles.selected}>
+                  <div className={styles.title}>Selected Stock</div>
+                  <div className={styles.name}>{selectedCompany.name}</div>
+                  <div className={styles.symbol}>{selectedCompany.symbol}</div>
+                  <div className={styles.close}>
+                    {"₹" + String(parseFloat(selectedCompany.close).toFixed(2))}
+                  </div>
+                  <div
+                    className={
+                      parseFloat(selectedCompany.current_return) > 0
+                        ? styles.gain
+                        : styles.loss
+                    }
+                  >
+                    {parseFloat(selectedCompany.current_return) > 0 ? (
+                      <ArrowDropUpIcon />
+                    ) : (
+                      <ArrowDropDownIcon />
+                    )}
+                    {parseFloat(
+                      Math.abs(selectedCompany.current_return)
+                    ).toFixed(2)}
+                  </div>
+                  <div className={styles.date}>
+                    {convertedUTCToLocal(selectedCompany.date)}
+                  </div>
+                  {selectedSymbol !== currentSymbol && (
+                    <div className={styles.actionArea}>
+                      <button
+                        className={styles.action}
+                        onClick={() => handleConfirmButton(selectedCompany)}
+                      >
+                        Confirm Selection
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
           ) : (
             <div className={styles.noSelected}>
               Select any stock from the dropdown

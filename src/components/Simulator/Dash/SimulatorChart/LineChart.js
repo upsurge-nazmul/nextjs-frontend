@@ -48,6 +48,9 @@ const ApexChart = ({ chartData, className }) => {
           x: {
             format: "dd MMM yyyy",
           },
+          y: {
+            formatter: (v) => "₹" + String(parseFloat(v).toFixed(2)),
+          },
         },
         fill: {
           type: "gradient",

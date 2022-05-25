@@ -38,9 +38,9 @@ export default function ProfitableStocks({
         companies.length ? (
           companies.map((item, i) => {
             return (
-              <>
+              <div key={"id" + i}>
                 {item ? (
-                  <div key={"id" + i} className={styles.card}>
+                  <div className={styles.card}>
                     <div className={styles.iconArea}>
                       <div className={styles.icon}>
                         {getShortForm(item.name)}
@@ -116,13 +116,16 @@ export default function ProfitableStocks({
                     </div>
                   </div>
                 ) : (
-                  <div key={"id" + i}></div>
+                  <div></div>
                 )}
-              </>
+              </div>
             );
           })
         ) : (
-          <NoData />
+          <NoData
+            size="medium"
+            message={"There are no stocks for this time duration"}
+          />
         )
       ) : (
         ""

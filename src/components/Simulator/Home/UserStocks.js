@@ -63,9 +63,9 @@ export default function UserStocks({
       {companies && companies.length
         ? companies.map((item, i) => {
             return (
-              <>
+              <div key={"companies" + i}>
                 {item ? (
-                  <div key={"companies" + i} className={styles.card}>
+                  <div className={styles.card}>
                     <div className={styles.iconArea}>
                       <div className={styles.icon}>
                         {getShortForm(item.name)}
@@ -117,9 +117,9 @@ export default function UserStocks({
                     </div>
                   </div>
                 ) : (
-                  <div key={"companies" + i}></div>
+                  <div></div>
                 )}
-              </>
+              </div>
             );
           })
         : ""}
