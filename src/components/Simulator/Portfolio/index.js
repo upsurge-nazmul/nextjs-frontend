@@ -85,6 +85,9 @@ export default function Portfolio({ userData, token, simulatorType }) {
 
   return (
     <div className={styles.portfolio}>
+      <div className={styles.phoneFooterArea}>
+        <Tabs options={TABS} action={setTab} active={tab} shape="square" />
+      </div>
       <div className={styles.main}>
         {tab === TABS[0].value && (
           <div className={styles.content}>

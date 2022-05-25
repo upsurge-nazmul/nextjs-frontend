@@ -2,6 +2,9 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  .phoneFooterArea {
+    display: none;
+  }
   .main {
     display: flex;
     flex-direction: column;
@@ -76,6 +79,9 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    .phoneFooterArea {
+      display: none;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -143,10 +149,17 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .portfolio {
-    height: 100%;
-    display: flex;
+    display: block;
     justify-content: center;
-    height: 85vh;
+    overflow-y: auto;
+    height: 80vh;
+    .phoneFooterArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 10px;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -202,11 +215,7 @@
       }
     }
     .footerArea {
-      position: absolute;
-      bottom: 0;
-      padding: 20px 0;
-      height: fit-content;
-      width: fit-content;
+      display: none;
     }
   }
 }
@@ -217,6 +226,9 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    .phoneFooterArea {
+      display: none;
+    }
     .main {
       display: flex;
       flex-direction: column;
