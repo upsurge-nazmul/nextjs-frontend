@@ -10,7 +10,7 @@ import NoData from "../NoData";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
-  { name: "Possessions", value: "performance", icon: "Possessions History" },
+  { name: "Portfolio", value: "performance", icon: "Portfolio" },
   { name: "Trades", value: "trades", icon: "Trade History" },
 ];
 
@@ -92,7 +92,7 @@ export default function Portfolio({ userData, token, simulatorType }) {
         {tab === TABS[0].value && (
           <div className={styles.content}>
             <div className={styles.left}>
-              <p className={styles.caption}>Portfolio</p>
+              <p className={styles.caption}>Total Portfolio History</p>
               {portfolioChartData && portfolioChartData.length ? (
                 <PortfolioChart
                   chartData={portfolioChartData}

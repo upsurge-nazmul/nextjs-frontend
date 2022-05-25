@@ -6,7 +6,7 @@ export default function Possessions({ performanceData = [] }) {
   return (
     <div className={styles.performance}>
       <div className={styles.headingArea}>
-        <p className={styles.heading}>Possessions History</p>
+        <p className={styles.heading}>Portfolio</p>
       </div>
       {performanceData && performanceData.length ? (
         <div className={styles.container}>

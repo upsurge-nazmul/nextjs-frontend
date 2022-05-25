@@ -10,9 +10,9 @@ import NoData from "../NoData";
 import { toIndianFormat } from "../../../helpers/currency";
 
 const StockDurations = [
-  { name: "Month", value: "monthly" },
-  { name: "Week", value: "weekly" },
-  { name: "Day", value: "daily" },
+  { name: "This Month", value: "monthly" },
+  { name: "This Week", value: "weekly" },
+  { name: "Today", value: "daily" },
 ];
 
 export default function Home({
