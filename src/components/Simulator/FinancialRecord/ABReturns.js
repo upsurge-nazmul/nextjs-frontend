@@ -14,7 +14,8 @@ export default function ABReturns({ token, company }) {
         token,
       });
       if (abReturns.data.success) {
-        setAbReturns(abReturns.data.data.rows);
+        let values = abReturns.data.data.rows.reverse();
+        setAbReturns(values);
       }
     }
     if (company) {

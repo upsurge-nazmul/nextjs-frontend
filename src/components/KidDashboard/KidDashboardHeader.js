@@ -12,7 +12,13 @@ import Menu from "../Dashboard/Menu";
 import NotificationMenu from "../Dashboard/NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
-function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
+function KidDashboardHeader({
+  mode,
+  showback,
+  gobackto,
+  settoastdata,
+  additionalNavigation = null,
+}) {
   const router = useRouter();
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
@@ -27,62 +33,75 @@ function KidDashboardHeader({ mode, showback, gobackto, settoastdata }) {
         theme === "dark" && styles.darkstyles
       }`}
     >
-      {shownotifications && (
-        <NotificationMenu setshownotifications={setshownotifications} />
-      )}
-      <h1 className={styles.dashboardHeading}>
-        {mode === "home" ? (
-          <>
-            Welcome, <span>{userdata?.first_name}</span>
-          </>
-        ) : (
-          <span className={showback ? styles.addflex : ""}>
-            {showback ? (
-              <BigBackArrow
-                onClick={() =>
-                  router.push("/" + (gobackto ? gobackto : "/dashboard/k"))
-                }
-              />
-            ) : null}
-            {mode}
-          </span>
+      <div className={styles.content}>
+        {shownotifications && (
+          <NotificationMenu setshownotifications={setshownotifications} />
         )}
-      </h1>
-      <div className={styles.rightWrapper}>
-        <div className={styles.rewardBlock}>
-          <UniCoinSvg className={styles.svg} />
-          <p className={styles.number}>
-            {userdata?.num_unicoins
-              ? userdata?.num_unicoins > UniCoinValue
-                ? userdata.num_unicoins / UniCoinValue + "K"
-                : userdata.num_unicoins
-              : 0}
-          </p>
-        </div>
-        <div
-          id="notification-btn"
-          className={`${styles.notification} ${styles.icon} ${
-            bell ? styles.bell : ""
-          }`}
-          onClick={() => setshownotifications(!shownotifications)}
-          onMouseEnter={() => setbell(true)}
-          onMouseLeave={() => setbell(false)}
-        >
-          {notifications.length > 0 ? <div className={styles.dot}></div> : null}
-          <NotificationBell />
-        </div>
-        <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
-          {showmenu && <Menu settoastdata={settoastdata} menuType={"child"} />}
-          <img
-            id="avatar-button"
-            src={
-              userdata?.user_img_url ||
-              "https://i.ibb.co/v3vVV8r/default-avatar.png"
-            }
-            alt=""
-          />
+        <h1 className={styles.dashboardHeading}>
+          {mode === "home" ? (
+            <>
+              Welcome, <span>{userdata?.first_name}</span>
+            </>
+          ) : (
+            <span className={showback ? styles.addflex : ""}>
+              {showback ? (
+                <BigBackArrow
+                  onClick={() =>
+                    router.push("/" + (gobackto ? gobackto : "/dashboard/k"))
+                  }
+                />
+              ) : null}
+              {mode}
+            </span>
+          )}
+        </h1>
+        {/* Additional Navigation Component if necessary, not visible in mobile portrait */}
+        {additionalNavigation && (
+          <div className={styles.additionalNavigation}>
+            {additionalNavigation}
+          </div>
+        )}
+        <div className={styles.rightWrapper}>
+          <div className={styles.rewardBlock}>
+            <UniCoinSvg className={styles.svg} />
+            <p className={styles.number}>
+              {userdata?.num_unicoins
+                ? userdata?.num_unicoins > UniCoinValue
+                  ? userdata.num_unicoins / UniCoinValue + "K"
+                  : userdata.num_unicoins
+                : 0}
+            </p>
+          </div>
+          <div
+            id="notification-btn"
+            className={`${styles.notification} ${styles.icon} ${
+              bell ? styles.bell : ""
+            }`}
+            onClick={() => setshownotifications(!shownotifications)}
+            onMouseEnter={() => setbell(true)}
+            onMouseLeave={() => setbell(false)}
+          >
+            {notifications.length > 0 ? (
+              <div className={styles.dot}></div>
+            ) : null}
+            <NotificationBell />
+          </div>
+          <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
+            {showmenu && (
+              <Menu settoastdata={settoastdata} menuType={"child"} />
+            )}
+            <img
+              id="avatar-button"
+              src={
+                userdata?.user_img_url ||
+                "https://i.ibb.co/v3vVV8r/default-avatar.png"
+              }
+              alt=""
+            />
+          </div>
         </div>
       </div>
+      <div className={styles.phoneAdditionalNav}>{additionalNavigation}</div>
     </div>
   );
 }

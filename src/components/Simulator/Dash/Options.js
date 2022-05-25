@@ -6,6 +6,9 @@ import Popup from "../Popup";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 
+const MAX_VALUE = 100000;
+const MIN_VALUE = 0;
+
 export default function SimulatorOptions({
   companyDetails,
   userData,
@@ -18,12 +21,80 @@ export default function SimulatorOptions({
   const [isLoading, setIsLoading] = useState(false);
   const [tradeMsg, setTradeMsg] = useState("");
   const [tradeSuccess, setTradeSuccess] = useState(false);
+  const [holdingToBuy, setHoldingToBuy] = useState();
+  const [ammountToSell, setAmmountToSell] = useState();
+  const [errorText, setErrorText] = useState("");
+  const [helperText, setHelperText] = useState("");
+
+  useEffect(() => {
+    async function fetchUserHoldings() {
+      let hlds = await SimulatorApis.getUserHoldings({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (
+        hlds.data &&
+        hlds.data.success &&
+        hlds.data.data &&
+        hlds.data.data.length
+      ) {
+        setHoldingToBuy(hlds.data.data[0].amount);
+
+        let comp = hlds.data.data.find(
+          (comp) => comp.symbol === companyDetails.symbol
+        );
+        if (comp) {
+          setAmmountToSell(comp.amount);
+        } else {
+          setAmmountToSell();
+        }
+      }
+    }
+    fetchUserHoldings();
+  }, [companyDetails]);
 
   useEffect(() => {
     if (companyDetails) {
       setPrice(parseFloat(companyDetails.close));
     }
   }, [companyDetails]);
+
+  useEffect(() => {
+    if (quantity < MIN_VALUE || quantity > MAX_VALUE) {
+      setErrorText(`Quantity should be ${MIN_VALUE} to ${MAX_VALUE}`);
+    } else if (
+      tradeMode === "buy" &&
+      holdingToBuy &&
+      quantity * price > holdingToBuy
+    ) {
+      setErrorText(
+        `You can buy maximum ${parseInt(
+          holdingToBuy / price
+        )} stocks of this company`
+      );
+    } else if (tradeMode === "sell" && !ammountToSell) {
+      setErrorText(`You do not have this stock to sell`);
+    } else if (tradeMode === "sell" && quantity > ammountToSell) {
+      setErrorText(`You can sell maximum ${ammountToSell} stocks`);
+    } else {
+      setErrorText("");
+    }
+  }, [tradeMode, quantity, holdingToBuy, ammountToSell]);
+
+  useEffect(() => {
+    if (!errorText && tradeMode === "buy" && holdingToBuy) {
+      setHelperText(
+        `You can buy maximum ${parseInt(
+          holdingToBuy / price
+        )} stocks of this company`
+      );
+    } else if (!errorText && tradeMode === "sell" && ammountToSell) {
+      setHelperText(`You have ${ammountToSell} stocks to sell`);
+    } else {
+      setHelperText("");
+    }
+  }, [tradeMode, holdingToBuy, ammountToSell, errorText]);
 
   const handleBuy = async () => {
     console.log("buy Rs", quantity * price, companyDetails);
@@ -94,6 +165,9 @@ export default function SimulatorOptions({
           // className={styles.quantityInput}
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
+          min={MIN_VALUE}
+          max={MAX_VALUE}
+          // onFocus={() => setErrorText("")}
         />
         <div className={styles.inputButtonArea}>
           <button
@@ -112,7 +186,12 @@ export default function SimulatorOptions({
           </button>
         </div>
       </div>
-      <button className={styles.buyButton} onClick={() => setTradeMode("buy")}>
+      {errorText && <div className={styles.error}>{errorText}</div>}
+      {helperText && <div className={styles.helper}>{helperText}</div>}
+      <button
+        className={errorText ? styles.disabledButton : styles.buyButton}
+        onClick={errorText ? () => {} : () => setTradeMode("buy")}
+      >
         <div className={styles.buttonTitle}>Buy</div>
         <div className={styles.buttonInfo}>
           <span>
@@ -125,8 +204,8 @@ export default function SimulatorOptions({
         </div>
       </button>
       <button
-        className={styles.sellButton}
-        onClick={() => setTradeMode("sell")}
+        className={errorText ? styles.disabledButton : styles.sellButton}
+        onClick={errorText ? () => {} : () => setTradeMode("sell")}
       >
         <div className={styles.buttonTitle}>Sell</div>
         <div className={styles.buttonInfo}>
@@ -146,7 +225,7 @@ export default function SimulatorOptions({
             isCancel: true,
             handleCancel: handleCancel,
             proceedText: tradeMode === "buy" ? "BUY" : "SELL",
-            isProceed: quantity > 0 && !tradeMsg,
+            isProceed: !errorText && !tradeMsg,
             handleProceed: handleProceed,
             proceedButtonType: tradeMode,
           }}
@@ -177,13 +256,20 @@ export default function SimulatorOptions({
                 </div>
               </div>
               <div className={styles.quantity}>
-                <div className={styles.label}>AMOUNT </div>
+                <div className={styles.label}>QUANTITY </div>
                 <input
                   type="number"
                   className={styles.value}
                   value={quantity}
+                  min={MIN_VALUE}
+                  max={MAX_VALUE}
                   onChange={(e) => setQuantity(e.target.value)}
+                  // onFocus={() => setErrorText("")}
                 />
+                {errorText && <div className={styles.error}>{errorText}</div>}
+                {helperText && (
+                  <div className={styles.helper}>{helperText}</div>
+                )}
               </div>
               <div className={styles.total}>
                 <div className={styles.label}>TOTAL | INR </div>

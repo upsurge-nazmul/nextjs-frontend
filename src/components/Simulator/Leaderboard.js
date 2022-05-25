@@ -35,26 +35,32 @@ export default function Leaderboard({ userData, token, simulatorType }) {
             leaderboarddata.length &&
             leaderboarddata.map((item, index) => {
               return (
-                <div
-                  className={styles.row}
-                  key={item.user.id}
-                  style={{
-                    backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
-                  }}
-                >
-                  <p className={styles.rank}>
-                    {index < 10 ? index + 1 : <StarIcon />}
-                  </p>
-                  <p className={styles.name}>
-                    {`${item.user.first_name ? item.user.first_name : ""} ${
-                      item.user.last_name ? item.user.last_name : ""
-                    }`}
-                    {item.user.phone === userData.phone && " (you)"}
-                  </p>
-                  <p className={styles.score}>
-                    {parseFloat(item.record.total_portfolio).toFixed(2)}
-                  </p>
-                </div>
+                <>
+                  {item ? (
+                    <div
+                      className={styles.row}
+                      key={item.user.id}
+                      style={{
+                        backgroundColor: index % 2 == 0 ? "#D9F2FF" : "#ffffff",
+                      }}
+                    >
+                      <p className={styles.rank}>
+                        {index < 10 ? index + 1 : <StarIcon />}
+                      </p>
+                      <p className={styles.name}>
+                        {`${item.user.first_name ? item.user.first_name : ""} ${
+                          item.user.last_name ? item.user.last_name : ""
+                        }`}
+                        {item.user.phone === userData.phone && " (you)"}
+                      </p>
+                      <p className={styles.score}>
+                        {parseFloat(item.record.total_portfolio).toFixed(2)}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </>
               );
             })}
         </div>

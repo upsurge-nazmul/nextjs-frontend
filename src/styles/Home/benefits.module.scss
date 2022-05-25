@@ -258,6 +258,7 @@
         .curve {
           position: fixed;
           width: 100vw;
+          pointer-events: none;
           left: 0;
           top: 25%;
           z-index: -1;
@@ -396,14 +397,14 @@
 .darkbenefits {
   background-color: $d-main;
   .main {
-  background-color: $d-main;
-  .mobile{
-    .container{
-      .description{
-        color:$d-text2;
+    background-color: $d-main;
+    .mobile {
+      .container {
+        .description {
+          color: $d-text2;
+        }
       }
     }
-  }
     .left {
       .container {
         background-color: $d-moredark;
@@ -1592,7 +1593,7 @@
             margin-top: 10px;
             font-size: 10px;
             .normal {
-                border-radius: 12px;
+              border-radius: 12px;
               padding: 10px;
             }
             .selected {

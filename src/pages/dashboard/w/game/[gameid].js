@@ -202,6 +202,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       unitycontext.on("error", function (message) {
         console.log(message);
       });
+      unitycontext.on("Score", function (score) {
+        console.log(score);
+      });
       unitycontext.on("Fullscreen", function () {
         if (fullscreenenabled) {
           unitycontext.setFullscreen(false);

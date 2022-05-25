@@ -291,12 +291,12 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                   setmoneyacedata={setmoneyaceuserdata}
                   settoastdata={settoastdata}
                   settasks={settasks}
-                  avatarUrl={userdatafromserver.user_img_url}
-                  username={userdatafromserver.user_name}
+                  avatarUrl={userdatafromserver?.user_img_url}
+                  username={userdatafromserver?.user_name}
                   fullName={
-                    userdatafromserver.first_name +
+                    userdatafromserver?.first_name +
                     " " +
-                    userdatafromserver.last_name
+                    userdatafromserver?.last_name
                   }
                   stage={stage}
                   setstage={setstage}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SimulatorChart from "./SimulatorChart";
 import styles from "../../../styles/StockSimulator/dash.module.scss";
+import Watchlist from "../Watchlist";
 import SimulatorOptions from "./Options";
 import CompanyInfo from "./CompanyInfo";
 import ChartOptions from "./ChartOptions";
@@ -19,15 +20,14 @@ const ChartDurations = [
   { name: "5 Years", value: "5 Years" },
 ];
 
-export default function SimulatorDash({
+export default function Companies({
   token,
   companyData,
   selectedSymbol,
   setSelectedSymbol,
   userData,
-  watchlistData,
-  setWatchlistData,
   simulatorType,
+  settoastdata = () => {},
 }) {
   const [chartMode, setChartMode] = useState(ChartModeOptions[0]);
   const [selectedDuration, setSelectedDuration] = useState(
@@ -38,6 +38,21 @@ export default function SimulatorDash({
   const [showAddToWatchlistButton, setShowAddToWatchlistButton] =
     useState(true);
   const [showFR, setShowFR] = useState(false); // FD = Financial Data
+  const [watchlistData, setWatchlistData] = useState();
+
+  useEffect(() => {
+    async function fetchWatchlist() {
+      let watchlist = await SimulatorApis.getWatchlist({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (watchlist.data && watchlist.data.success) {
+        setWatchlistData(watchlist.data.data.rows);
+      }
+    }
+    fetchWatchlist();
+  }, [token]);
 
   useEffect(() => {
     async function fetchStocks() {
@@ -50,7 +65,9 @@ export default function SimulatorDash({
         token,
         type: simulatorType,
       });
-      setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      if (monthlyStocks.data.success) {
+        setSimulatorMonthlyData(monthlyStocks.data.data.rows);
+      }
     }
     fetchStocks();
   }, [token, selectedSymbol, selectedDuration]);
@@ -92,47 +109,67 @@ export default function SimulatorDash({
     }
   };
 
+  const handleWatchlistClick = (value) => {
+    setSelectedSymbol(value);
+  };
+
   return (
     <div className={styles.simulatorDash}>
       {!showFR && (
         <>
-          <div className={styles.dashLeft}>
-            <div className={styles.chartOptionArea}>
-              <div className={styles.selectArea}>
-                <CompanySelection
-                  {...{
-                    value: selectedSymbol,
-                    setvalue: setSelectedSymbol,
-                    options: companyData,
-                  }}
-                />
-              </div>
-              {/* This buttons are for PC and tabs only */}
-              <div className={styles.buttonArea}>
-                {simulatorType === "stocksimulator" && (
-                  <button
-                    className={styles.fdButton}
-                    onClick={() => setShowFR(true)}
-                  >
-                    Financial Record
-                  </button>
-                )}
-                {showAddToWatchlistButton && (
-                  <button
-                    className={styles.watchlistButton}
-                    onClick={handleAddToWatchlist}
-                  >
-                    Add to Watchlist
-                  </button>
-                )}
-              </div>
-              {/* Chart selection options for pc and tablet */}
-              <div className={styles.switchArea}>
-                <ChartOptions
-                  {...{ chartMode, setChartMode, ChartModeOptions }}
-                />
-              </div>
+          {watchlistData && watchlistData.length ? (
+            <div className={styles.topSection}>
+              <Watchlist
+                watchlistData={watchlistData}
+                setWatchlistData={setWatchlistData}
+                companyData={companyData}
+                action={handleWatchlistClick}
+                active={selectedSymbol}
+                token={token}
+                settoastdata={settoastdata}
+                simulatorType={simulatorType}
+              />
             </div>
+          ) : (
+            ""
+          )}
+          <div className={styles.chartOptionArea}>
+            <div className={styles.selectArea}>
+              <CompanySelection
+                {...{
+                  value: selectedSymbol,
+                  setvalue: setSelectedSymbol,
+                  options: companyData,
+                }}
+              />
+            </div>
+            {/* This buttons are for PC and tabs only */}
+            <div className={styles.buttonArea}>
+              {simulatorType === "stocksimulator" && (
+                <button
+                  className={styles.fdButton}
+                  onClick={() => setShowFR(true)}
+                >
+                  Financial Record
+                </button>
+              )}
+              {showAddToWatchlistButton && (
+                <button
+                  className={styles.watchlistButton}
+                  onClick={handleAddToWatchlist}
+                >
+                  Add to Watchlist
+                </button>
+              )}
+            </div>
+            {/* Chart selection options for pc and tablet */}
+            <div className={styles.switchArea}>
+              <ChartOptions
+                {...{ chartMode, setChartMode, ChartModeOptions }}
+              />
+            </div>
+          </div>
+          <div className={styles.dashLeft}>
             {simulatorMonthlyData && (
               <div className={styles.chartArea}>
                 <SimulatorChart

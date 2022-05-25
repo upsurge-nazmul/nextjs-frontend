@@ -8,31 +8,31 @@ export default function CompanyInfo({ companyInfo }) {
           <div className={styles.volumeArea}>
             <span className={styles.volumeTitle}>Volume</span>
             <span className={`${styles.volumeValue} ${styles.greenText}`}>
-              {"₹" + parseFloat(companyInfo.volume).toFixed(2)}
+              {parseFloat(companyInfo.volume).toFixed(2)}
             </span>
           </div>
           <div className={styles.infoItem}>
-            <span>O</span>
+            <span>Open</span>
             <span className={styles.greenText}>
               {parseFloat(companyInfo.open).toFixed(2)}
             </span>
           </div>
           <div className={styles.infoItem}>
-            <span>H</span>
-            <span className={styles.redText}>
+            <span>High</span>
+            <span className={styles.greenText}>
               {parseFloat(companyInfo.high).toFixed(2)}
             </span>
           </div>
           <div className={styles.infoItem}>
-            <span>L</span>
+            <span>Close</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.low).toFixed(2)}
+              {parseFloat(companyInfo.close).toFixed(2)}
             </span>
           </div>
           <div className={styles.infoItem}>
-            <span>C</span>
+            <span>Low</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.close).toFixed(2)}
+              {parseFloat(companyInfo.low).toFixed(2)}
             </span>
           </div>
         </div>

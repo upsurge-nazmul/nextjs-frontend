@@ -9,6 +9,11 @@ const checkanswer = (payload, token) => {
   return ApiCalls.getResponse(`games/moneyace/checkanswer`, payload, token);
 };
 // bank apis
+
+const marktourfinished = (token) => {
+  return ApiCalls.getResponse(`games/moneyace/marktourfinished`, null, token);
+};
+
 const investmentrecords = (payload) => {
   return ApiCalls.getResponse(
     "games/moneyace/investmentrecords",
@@ -345,6 +350,7 @@ const MoneyAceApis = {
   allowinvesting,
   getquestions,
   checkanswer,
+  marktourfinished,
 };
 
 export default MoneyAceApis;

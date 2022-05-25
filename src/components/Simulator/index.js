@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { MainContext } from "../../context/Main";
+import { MODES } from "./constants";
 import SimulatorApis from "../../actions/apis/SimulatorApis";
 import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
 import Home from "./Home";
-import SimulatorDash from "./Dash";
-import Watchlist from "./Watchlist";
+import Companies from "./Dash";
 import Toast from "../Toast";
 import Portfolio from "./Portfolio";
 import Navigation from "./Navigation";
@@ -14,19 +14,16 @@ import Leaderboard from "./Leaderboard";
 import Competition from "./Competition";
 import Challenges from "./Challenges";
 import styles from "../../styles/StockSimulator/simulator.module.scss";
-import { getTodaysDateRange } from "../../helpers/timehelpers";
 
 export default function Simulator({
   userData,
   token,
-  modes = [],
   simulatorType = "stocksimulator",
 }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
   const [companyData, setCompanyData] = useState();
   const [selectedSymbol, setSelectedSymbol] = useState();
-  const [watchlistData, setWatchlistData] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -54,29 +51,8 @@ export default function Simulator({
   }, [token]);
 
   useEffect(() => {
-    async function fetchWatchlist() {
-      let watchlist = await SimulatorApis.getWatchlist({
-        payload: { user_id: userData.user_id },
-        token,
-        type: simulatorType,
-      });
-      if (watchlist.data && watchlist.data.success) {
-        setWatchlistData(watchlist.data.data.rows);
-      }
-    }
-    fetchWatchlist();
-  }, [token]);
-
-  useEffect(() => {
     setuserdata(userData);
   }, []);
-
-  const handleWatchlistClick = (value) => {
-    setSelectedSymbol(value);
-    if (mode !== modes[1].value) {
-      router.push(`/dashboard/w/${simulatorType}/${modes[1].value}`);
-    }
-  };
 
   return (
     <div className={styles.stockSimulator}>
@@ -90,87 +66,58 @@ export default function Simulator({
               : "Stock Simulator"
           }
           settoastdata={settoastdata}
+          additionalNavigation={
+            <Navigation
+              options={MODES}
+              action={setMode}
+              active={mode}
+              simulatorType={simulatorType}
+            />
+          }
         />
         <div className={styles.mainContent}>
-          <div className={styles.topSection}>
-            {/* This navigation is visible in mobile only and hidden in tabs and laptops */}
-            <div className={styles.phoneNavigation}>
-              <Navigation
-                options={modes}
-                action={setMode}
-                active={mode}
-                simulatorType={simulatorType}
-              />
-            </div>
-            {mode === modes[1].value &&
-            watchlistData &&
-            watchlistData.length &&
-            selectedSymbol ? (
-              <Watchlist
-                watchlistData={watchlistData}
-                setWatchlistData={setWatchlistData}
-                companyData={companyData}
-                action={handleWatchlistClick}
-                active={selectedSymbol}
-                token={token}
-                settoastdata={settoastdata}
-                simulatorType={simulatorType}
-              />
-            ) : (
-              ""
-            )}
-            {/* This navigation is hidden in mobile and visible in tabs and laptops */}
-            <div className={styles.normalNavigation}>
-              <Navigation
-                options={modes}
-                action={setMode}
-                active={mode}
-                simulatorType={simulatorType}
-              />
-            </div>
-          </div>
           <div className={styles.bottomSection}>
-            {mode === modes[0].value && (
+            {mode === MODES[0].value && (
               <Home
                 userData={userData}
                 token={token}
                 simulatorType={simulatorType}
+                setSelectedSymbol={setSelectedSymbol}
               />
             )}
-            {mode === modes[1].value && (
-              <SimulatorDash
+            {mode === MODES[1].value && (
+              <Companies
                 token={token}
                 companyData={companyData}
                 selectedSymbol={selectedSymbol}
                 setSelectedSymbol={setSelectedSymbol}
                 userData={userData}
-                watchlistData={watchlistData}
-                setWatchlistData={setWatchlistData}
                 simulatorType={simulatorType}
+                settoastdata={settoastdata}
               />
             )}
-            {mode === modes[2].value && (
+            {mode === MODES[2].value && (
               <Portfolio
                 userData={userData}
                 token={token}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[3].value && (
+            {mode === MODES[3].value && (
               <Challenges
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[4].value && (
+            {mode === MODES[4].value && (
               <Competition
                 token={token}
                 userData={userData}
                 simulatorType={simulatorType}
               />
             )}
-            {mode === modes[5].value && (
+            {mode === MODES[5].value && (
               <Leaderboard
                 token={token}
                 userData={userData}

@@ -3,34 +3,54 @@ import styles from "../../../styles/StockSimulator/topgainer.module.scss";
 import CompanySelection from "../Dash/CompanySelection";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Popup from "../Popup";
-import { CircularProgress } from "@mui/material";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 
-export default function Topgainer({ list, currenTops }) {
+export default function Topgainer({
+  list,
+  currenTops,
+  token,
+  simulatorType,
+  userData,
+}) {
   const [selectedSymbol, setSelectedSymbol] = useState();
   const [selectedCompany, setSelectedCompany] = useState();
-  const [open, setOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (selectedSymbol) {
+    async function fetchUserChallenges() {
+      let challenges = await SimulatorApis.getUserChallenges({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (challenges.data && challenges.data.success) {
+        if (challenges.data.data && challenges.data.data.top_gainer)
+          setSelectedSymbol(challenges.data.data.top_gainer);
+      }
+    }
+    fetchUserChallenges();
+  }, []);
+
+  useEffect(() => {
+    if (selectedSymbol && list && list.length) {
       let sel = list.find((item) => item.symbol === selectedSymbol);
       setSelectedCompany(sel);
     }
-  }, [selectedSymbol]);
+  }, [list, selectedSymbol]);
 
-  const handleConfirmButton = () => {
-    setOpen(true);
-  };
-
-  const handleCancel = () => {
-    setOpen(false);
-  };
-
-  const handleProceed = () => {
-    setSelectedSymbol();
-    setSelectedCompany();
-    console.log("confirmed", selectedCompany);
+  const handleConfirmButton = async () => {
+    let addedChallenge = await SimulatorApis.createOrUpdateChallenge({
+      payload: {
+        user_id: userData.user_id,
+        top_gainer: selectedCompany.symbol,
+        date: new Date(),
+      },
+      token,
+      type: simulatorType,
+    });
+    if (addedChallenge.data && addedChallenge.data.success) {
+      setSelectedSymbol(addedChallenge.data.data.top_gainer);
+    }
   };
 
   return (
@@ -38,12 +58,12 @@ export default function Topgainer({ list, currenTops }) {
       <div className={styles.topSection}>
         <div className={styles.titleArea}>
           <div className={styles.title}>Top Gainer</div>
-          <button className={styles.infoButton}>i</button>
+          {/* <button className={styles.infoButton}>i</button> */}
         </div>
         <div className={styles.description}>
-          Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
+          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
           porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla.
+          In enim tincidunt nulla. */}
         </div>
       </div>
       <div className={styles.bottomSection}>
@@ -115,7 +135,9 @@ export default function Topgainer({ list, currenTops }) {
                   2
                 )}
               </div>
-              <div className={styles.date}>{selectedCompany.date}</div>
+              <div className={styles.date}>
+                {convertedUTCToLocal(selectedCompany.date)}
+              </div>
               <div className={styles.actionArea}>
                 <button
                   className={styles.action}
@@ -132,31 +154,6 @@ export default function Topgainer({ list, currenTops }) {
           )}
         </div>
       </div>
-      {open && selectedCompany && (
-        <Popup
-          actions={{
-            cancelText: "CANCEL",
-            isCancel: true,
-            handleCancel: handleCancel,
-            proceedText: "YES",
-            isProceed: true,
-            handleProceed: handleProceed,
-          }}
-          title={"Top Gainer"}
-        >
-          <div className={styles.popup}>
-            {!isLoading ? (
-              <div className={styles.message}>
-                Are you sure,
-                <span className={styles.highlight}>{selectedCompany.name}</span>
-                will be the Top Gainer for tomorrow?
-              </div>
-            ) : (
-              <CircularProgress />
-            )}
-          </div>
-        </Popup>
-      )}
     </div>
   );
 }

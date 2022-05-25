@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/StockSimulator/home.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
-import Holdings from "../Portfolio/Holdings2";
+import Holdings from "./Holdings";
 import UserStocks from "./UserStocks";
 import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
+import NoData from "../NoData";
 
 const StockDurations = [
   { name: "Month", value: "monthly" },
@@ -13,7 +14,12 @@ const StockDurations = [
   { name: "Day", value: "daily" },
 ];
 
-export default function Home({ userData, token, simulatorType }) {
+export default function Home({
+  userData,
+  token,
+  simulatorType,
+  setSelectedSymbol,
+}) {
   const [holdingsChartData, setHoldingsChartData] = useState();
   const [activePortfDuration, setActivePortfDuration] = useState(
     StockDurations[StockDurations.length - 1].value
@@ -95,19 +101,19 @@ export default function Home({ userData, token, simulatorType }) {
 
   return (
     <div className={styles.home}>
-      <div className={styles.left}>
+      <div className={styles.top}>
         <div className={styles.topLeft}>
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
-            {holdingsChartData ? (
-              <Holdings
-                chartData={holdingsChartData}
-                className={styles.holdingsChart}
-                legendPosition={"right"}
-              />
-            ) : (
-              ""
-            )}
+            <div className={styles.holdingsChart}>
+              <div className={styles.chart}>
+                {holdingsChartData ? (
+                  <Holdings chartData={holdingsChartData} />
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
           </div>
           {holdingsChartData ? (
             <div className={styles.portfolioInfo}>
@@ -130,7 +136,7 @@ export default function Home({ userData, token, simulatorType }) {
                 </div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Remaining Assets</div>
+                <div className={styles.label}>Remaining Cash</div>
                 <div className={styles.value}>{getCashHoldingPercentage()}</div>
               </div>
             </div>
@@ -138,6 +144,77 @@ export default function Home({ userData, token, simulatorType }) {
             ""
           )}
         </div>
+        <div className={styles.topRight}>
+          <div className={styles.portfolioHeadingSection}>
+            <div className={styles.portfolioHeading}>
+              <div className={styles.heading}>Your Portfolio</div>
+              <div className={styles.subHeading}>
+                Last Updated at {lastUpdated}
+              </div>
+            </div>
+            <div className={styles.portfolioOptions}>
+              {StockDurations.map((duration, i) => {
+                return (
+                  <div
+                    className={
+                      duration.value === activePortfDuration
+                        ? styles.activeOption
+                        : styles.option
+                    }
+                    key={i}
+                    onClick={() => setActivePortfDuration(duration.value)}
+                  >
+                    {duration.name}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {userStocks && userStocks.length ? (
+            userStocks.map((stock, i) => {
+              return (
+                <div className={styles.myStocks} key={"userStock" + i}>
+                  <div
+                    className={
+                      selectedStock === "all"
+                        ? styles.activeSingleStock
+                        : styles.singleStock
+                    }
+                    onClick={() => setSelectedStock("all")}
+                  >
+                    All Stocks
+                  </div>
+                  <div
+                    className={
+                      selectedStock === stock.symbol
+                        ? styles.activeSingleStock
+                        : styles.singleStock
+                    }
+                    key={i}
+                    onClick={() => setSelectedStock(stock.symbol)}
+                  >
+                    {stock.symbol}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <NoData size="small" message={"You have no stocks yet"} />
+          )}
+          <div className={styles.topReturns}>
+            <UserStocks
+              userData={userData}
+              token={token}
+              simulatorType={simulatorType}
+              duration={activePortfDuration}
+              selected={selectedStock}
+              setLastUpdated={setLastUpdated}
+              setSelectedSymbol={setSelectedSymbol}
+            />
+          </div>
+        </div>
+      </div>
+      <div className={styles.bottom}>
         <div className={styles.bottomLeft}>
           {chartData && chartData.length ? (
             chartData.map((data, i) => {
@@ -161,76 +238,13 @@ export default function Home({ userData, token, simulatorType }) {
               );
             })
           ) : (
-            <div className={styles.emptySpace}>You do not have any stock</div>
+            <div className={styles.emptySpace}>
+              <NoData
+                size="medium"
+                message={"Please buy stocks to see the charts"}
+              />
+            </div>
           )}
-        </div>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.topRight}>
-          <div className={styles.portfolioHeadingSection}>
-            <div className={styles.portfolioHeading}>
-              <div className={styles.heading}>You Portfolio</div>
-              <div className={styles.subHeading}>
-                Last Updated at {lastUpdated}
-              </div>
-            </div>
-            <div className={styles.portfolioOptions}>
-              {StockDurations.map((duration, i) => {
-                return (
-                  <div
-                    className={
-                      duration.value === activePortfDuration
-                        ? styles.activeOption
-                        : styles.option
-                    }
-                    key={i}
-                    onClick={() => setActivePortfDuration(duration.value)}
-                  >
-                    {duration.name}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className={styles.myStocks}>
-            <div
-              className={
-                selectedStock === "all"
-                  ? styles.activeSingleStock
-                  : styles.singleStock
-              }
-              onClick={() => setSelectedStock("all")}
-            >
-              All Stocks
-            </div>
-            {userStocks && userStocks.length
-              ? userStocks.map((stock, i) => {
-                  return (
-                    <div
-                      className={
-                        selectedStock === stock.symbol
-                          ? styles.activeSingleStock
-                          : styles.singleStock
-                      }
-                      key={i}
-                      onClick={() => setSelectedStock(stock.symbol)}
-                    >
-                      {stock.symbol}
-                    </div>
-                  );
-                })
-              : ""}
-          </div>
-          <div className={styles.topReturns}>
-            <UserStocks
-              userData={userData}
-              token={token}
-              simulatorType={simulatorType}
-              duration={activePortfDuration}
-              selected={selectedStock}
-              setLastUpdated={setLastUpdated}
-            />
-          </div>
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.headingArea}>
@@ -258,6 +272,7 @@ export default function Home({ userData, token, simulatorType }) {
               token={token}
               simulatorType={simulatorType}
               duration={activeProfitableDuration}
+              setSelectedSymbol={setSelectedSymbol}
             />
           </div>
         </div>

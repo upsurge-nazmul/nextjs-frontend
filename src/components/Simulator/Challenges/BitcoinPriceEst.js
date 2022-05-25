@@ -4,9 +4,24 @@ import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getDateRange } from "../../../helpers/timehelpers";
 import Chart from "../Home/Chart";
 
-export default function BitcoinPriceEst({ token, simulatorType }) {
+export default function BitcoinPriceEst({ token, simulatorType, userData }) {
   const [bitcoinData, setBitcoinData] = useState();
-  const [estValue, setEstValue] = useState();
+  const [estValue, setEstValue] = useState("");
+
+  useEffect(() => {
+    async function fetchUserChallenges() {
+      let challenges = await SimulatorApis.getUserChallenges({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (challenges.data && challenges.data.success) {
+        if (challenges.data.data && challenges.data.data.bitcoin_price_est)
+          setEstValue(challenges.data.data.bitcoin_price_est);
+      }
+    }
+    fetchUserChallenges();
+  }, []);
 
   useEffect(() => {
     async function fetchBitcoinHist() {
@@ -34,9 +49,22 @@ export default function BitcoinPriceEst({ token, simulatorType }) {
     fetchBitcoinHist();
   }, [token]);
 
-  const handleConfirm = (e) => {
+  const handleConfirm = async (e) => {
     e.preventDefault();
     console.log("confirmed estimated value", estValue);
+
+    let addedChallenge = await SimulatorApis.createOrUpdateChallenge({
+      payload: {
+        user_id: userData.user_id,
+        bitcoin_price_est: estValue,
+        date: new Date(),
+      },
+      token,
+      type: simulatorType,
+    });
+    if (addedChallenge.data && addedChallenge.data.success) {
+      setEstValue(addedChallenge.data.data.bitcoin_price_est);
+    }
   };
 
   return (
@@ -44,12 +72,12 @@ export default function BitcoinPriceEst({ token, simulatorType }) {
       <div className={styles.topSection}>
         <div className={styles.titleArea}>
           <div className={styles.title}>Bitcoin Price Estimate</div>
-          <button className={styles.infoButton}>i</button>
+          {/* <button className={styles.infoButton}>i</button> */}
         </div>
         <div className={styles.description}>
-          Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
+          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
           porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla.
+          In enim tincidunt nulla. */}
         </div>
       </div>
       <div className={styles.bottomSection}>

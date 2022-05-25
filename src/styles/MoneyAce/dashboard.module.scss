@@ -1,3 +1,5 @@
+@use "../../styles/variables/fontsizes.scss" as *;
+
 @keyframes zoominout {
   0% {
     transform: scale(0.5);
@@ -27,7 +29,7 @@
     gap: 10px;
     align-items: center;
     .text {
-      font-size: 15px;
+      font-size: $gen-s;
       line-height: 20px;
     }
     .heading {
@@ -661,6 +663,27 @@
 }
 @media only screen and (max-width: 1500px) {
   .dashboard {
+    .introdiv {
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      .text {
+        font-size: $gen-xs;
+        line-height: 20px;
+      }
+      .heading {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .jasper {
+        width: 10vw;
+        position: absolute;
+        right: -10vw;
+        top: 65%;
+      }
+    }
     .main {
       .container {
         padding: 20px;

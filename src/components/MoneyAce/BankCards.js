@@ -10,6 +10,8 @@ export default function BankCards({
   moneyacedata,
   setmoneyacedata,
   setpassbookdata,
+  setcurrentTourIndex,
+  currentTourIndex,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -40,7 +42,7 @@ export default function BankCards({
         </div>
         <div className={styles.mainheading}>Cards</div>
         {moneyacedata.is_atm_claim ? (
-          <div className={styles.card}>
+          <div className={styles.card} id="debit-card-main">
             <div className={styles.logo}>
               <div></div>
               <div></div>
@@ -86,7 +88,22 @@ export default function BankCards({
             )}
             <div
               className={styles.btn}
-              onClick={() => (!showpin ? setshowpin(true) : activateatm())}
+              id={
+                showpin ? "debit-card-pin-btn" : "debit-card-confirm-activate"
+              }
+              onClick={() => {
+                if (!showpin) {
+                  if (currentTourIndex === 9) {
+                    setcurrentTourIndex((prev) => prev + 1);
+                  }
+                  setshowpin(true);
+                } else {
+                  if (currentTourIndex === 10) {
+                    setcurrentTourIndex((prev) => prev + 1);
+                  }
+                  activateatm();
+                }
+              }}
             >
               <p>{showpin ? "Confirm" : "Acitivate ATM card"}</p>
             </div>

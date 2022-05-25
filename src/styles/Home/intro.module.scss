@@ -26,6 +26,7 @@
     transform: scaleX(-1);
     animation: moveit 5s ease alternate infinite;
     animation-delay: 2s;
+    pointer-events: none;
   }
   .textContent {
     margin-top: 16vh;
@@ -200,23 +201,24 @@
     z-index: 1;
   }
 }
-.intro_dark{
-  background-color:$d-main;
+.intro_dark {
+  background-color: $d-main;
   color: $d-text2;
-  .curve{
+  .curve {
     opacity: 0.5;
-    path{
-      stroke:$d-midlight;
+    path {
+      stroke: $d-midlight;
     }
   }
-  .textContent{
-    .heading,.subheading{
+  .textContent {
+    .heading,
+    .subheading {
       color: $d-text2;
     }
     .signupBox {
       input {
-        background:$d-moredark;
-        color:$d-text2;
+        background: $d-moredark;
+        color: $d-text2;
         ::placeholder {
           color: rgba(198, 198, 198, 1);
         }
@@ -764,7 +766,6 @@
           font-weight: 400;
           font-size: clamp(12px, 1vw, 18px);
           padding-left: 15px;
-         
         }
 
         .button {

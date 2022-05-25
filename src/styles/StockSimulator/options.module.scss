@@ -60,6 +60,12 @@ $sell-color: #eb5757;
       }
     }
   }
+  .error {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(237, 49, 49);
+    padding: 4px 0;
+  }
   .commonButton {
     display: flex;
     flex-direction: row;
@@ -115,6 +121,18 @@ $sell-color: #eb5757;
     &:hover {
       background-color: $sell-color;
       box-shadow: 3px 4px 15px 0px #ccc;
+    }
+  }
+  .disabledButton {
+    @extend .commonButton;
+    background-color: rgb(139, 139, 139);
+    color: #ddd;
+    cursor: text;
+    .buttonTitle {
+      padding: 4px 0;
+    }
+    .buttonInfo {
+      display: none;
     }
   }
   .tradePopupArea {
@@ -179,6 +197,18 @@ $sell-color: #eb5757;
         border-right: none;
         outline: none;
       }
+      .error {
+        font-size: 10px;
+        font-weight: 600;
+        color: $sell-color;
+        padding: 4px 0;
+      }
+      .helper {
+        font-size: 10px;
+        font-weight: 600;
+        color: $buy-color;
+        padding: 4px 0;
+      }
     }
     .total {
       width: 100%;
@@ -194,6 +224,7 @@ $sell-color: #eb5757;
   .tradeResponse {
     text-align: center;
     padding: 0 10px;
+    min-width: 400px;
     .responseIcon {
       width: 100%;
       display: flex;
@@ -294,7 +325,7 @@ $sell-color: #eb5757;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 8px 0;
+      padding: 12px 0;
       border: none;
       border-radius: 8px;
       width: 46%;
@@ -307,7 +338,7 @@ $sell-color: #eb5757;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 14px;
+        font-size: 16px;
         text-transform: uppercase;
       }
       .buttonInfo {
@@ -317,7 +348,7 @@ $sell-color: #eb5757;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        font-size: 9px;
+        font-size: 12px;
         span {
           span {
             font-weight: 300;
@@ -351,6 +382,7 @@ $sell-color: #eb5757;
       height: fit-content;
     }
     .tradeResponse {
+      min-width: 80vw;
       .responseIcon {
         width: 100%;
         display: flex;
