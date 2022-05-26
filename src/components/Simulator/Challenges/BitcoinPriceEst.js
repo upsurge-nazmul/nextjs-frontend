@@ -8,12 +8,14 @@ import Popup from "../Popup";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import { toIndianFormat } from "../../../helpers/currency";
 // import InfoIcon from "@mui/icons-material/Info";
+import NoData from "../NoData";
 
 export default function BitcoinPriceEst({ token, simulatorType, userData }) {
   const [bitcoinData, setBitcoinData] = useState();
   const [estValue, setEstValue] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState();
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -55,6 +57,24 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
     }
     fetchBitcoinHist();
   }, [token]);
+
+  useEffect(() => {
+    async function fetchUserChallengesResult() {
+      let results = await SimulatorApis.getUserChallengesResult({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (results.data && results.data.success) {
+        if (results.data.data) {
+          setResult(results.data.data.btc_est);
+        } else {
+          setResult(results.data.message);
+        }
+      }
+    }
+    fetchUserChallengesResult();
+  }, []);
 
   const handleConfirm = async (e) => {
     e.preventDefault();
@@ -144,7 +164,7 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
           </div>
         </div>
       </div>
-      {showResult && (
+      {showResult && result && (
         <Popup
           title="Bitcoin Price Estimate Result"
           actions={{
@@ -164,23 +184,31 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
             setShowResult(false);
           }}
         >
-          <div className={styles.popup}>
-            <div className={styles.wrong}>Your estimation was wrong</div>
-            <div className={styles.submission}>
-              <div className={styles.left}>
-                <div className={styles.title}>You have estimated</div>
-                <div className={styles.name}>
-                  ₹{toIndianFormat(1234.09543343)}
-                </div>
+          {typeof result === "string" ? (
+            <div className={styles.popup}>
+              <NoData message={result} />
+            </div>
+          ) : (
+            <div className={styles.popup}>
+              <div className={result.correct ? styles.correct : styles.wrong}>
+                Your guess was {result.correct ? "right" : "wrong"}
               </div>
-              <div className={styles.right}>
-                <div className={styles.title}>Correct answer is</div>
-                <div className={styles.name}>
-                  ₹{toIndianFormat(8373.0882828289)}
+              <div className={styles.submission}>
+                <div className={styles.left}>
+                  <div className={styles.title}>You have estimated</div>
+                  <div className={styles.name}>
+                    ₹{toIndianFormat(result.submited_ans)}
+                  </div>
+                </div>
+                <div className={styles.right}>
+                  <div className={styles.title}>Correct answer is</div>
+                  <div className={styles.name}>
+                    ₹{toIndianFormat(result.correct_ans)}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </Popup>
       )}
     </div>

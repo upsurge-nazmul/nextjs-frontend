@@ -7,12 +7,14 @@ import Menu from "../Menu";
 import Popup from "../Popup";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 // import InfoIcon from "@mui/icons-material/Info";
+import NoData from "../NoData";
 
 export default function StockXStockY({ token, simulatorType, userData }) {
   const [selected, setSelected] = useState();
   const [x, setX] = useState();
   const [y, setY] = useState();
   const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState();
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -45,6 +47,24 @@ export default function StockXStockY({ token, simulatorType, userData }) {
       }
     }
     fetchStockXY();
+  }, []);
+
+  useEffect(() => {
+    async function fetchUserChallengesResult() {
+      let results = await SimulatorApis.getUserChallengesResult({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (results.data && results.data.success) {
+        if (results.data.data) {
+          setResult(results.data.data.stock_xy);
+        } else {
+          setResult(results.data.message);
+        }
+      }
+    }
+    fetchUserChallengesResult();
   }, []);
 
   const handleSelect = async (value) => {
@@ -129,7 +149,7 @@ export default function StockXStockY({ token, simulatorType, userData }) {
           ""
         )}
       </div>
-      {showResult && (
+      {showResult && result && (
         <Popup
           title="Stock X or Stock Y Result"
           actions={{
@@ -149,23 +169,45 @@ export default function StockXStockY({ token, simulatorType, userData }) {
             setShowResult(false);
           }}
         >
-          <div className={styles.popup}>
-            <div className={styles.wrong}>Your guess was wrong</div>
-            <div className={styles.submission}>
-              <div className={styles.left}>
-                <div className={styles.title}>You have guessed</div>
-                <div className={styles.name}>XYU company Name</div>
-                <div className={styles.symbol}>XYUC</div>
-                <div className={styles.symbol}>$1233232</div>
+          {typeof result === "string" ? (
+            <div className={styles.popup}>
+              <NoData message={result} />
+            </div>
+          ) : (
+            <div className={styles.popup}>
+              <div className={result.correct ? styles.correct : styles.wrong}>
+                Your guess was {result.correct ? "right" : "wrong"}
               </div>
-              <div className={styles.right}>
-                <div className={styles.title}>Correct answer is</div>
-                <div className={styles.name}>XYU company Name</div>
-                <div className={styles.symbol}>XYUC</div>
-                <div className={styles.symbol}>$1233232</div>
+              <div className={styles.submission}>
+                <div className={styles.left}>
+                  <div className={styles.title}>You have guessed</div>
+                  <div className={styles.name}>{result.submited_ans.name}</div>
+                  <div className={styles.symbol}>
+                    {result.submited_ans.symbol}
+                  </div>
+                  <div className={styles.symbol}>
+                    {toIndianFormat(
+                      parseFloat(result.submited_ans.current_return_percentage)
+                    )}
+                    %
+                  </div>
+                </div>
+                <div className={styles.right}>
+                  <div className={styles.title}>Correct answer is</div>
+                  <div className={styles.name}>{result.correct_ans.name}</div>
+                  <div className={styles.symbol}>
+                    {result.correct_ans.symbol}
+                  </div>
+                  <div className={styles.symbol}>
+                    {toIndianFormat(
+                      parseFloat(result.correct_ans.current_return_percentage)
+                    )}
+                    %
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </Popup>
       )}
     </div>
