@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UblBanner from "../../components/SVGcomponents/UBL/UblBanner";
 import UbliPrize from "../../components/SVGcomponents/UBL/UbliPrize";
 import UblGreen from "../../components/SVGcomponents/UBL/UblGreen";
@@ -8,7 +8,20 @@ import UblTug from "../../components/SVGcomponents/UBL/UblTug";
 import styles from "../../styles/ubl/ubl.module.scss";
 import Values from "../../components/Home/Values";
 import UblPrize from "../../components/SVGcomponents/UBL/UblPrize";
+import UblForm from "../../components/Ubl/UblForm";
+import Toast from "../../components/Toast";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
+import Terms from "../../components/Home/Terms";
 export default function UblPage() {
+  const [showform, setshowform] = useState(false);
+  const [showterm, setshowterm] = useState(false);
+  const [toastdata, settoastdata] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
+
   const cosponsors = [
     "https://i.ibb.co/TY6mZjp/GEN.png",
     "https://i.ibb.co/wzYNNKS/MM-logo.png",
@@ -24,8 +37,28 @@ export default function UblPage() {
     `Participating teams will have access to upsurge’s proprietary learning resources to help
     them understand the business concepts and metrics.`,
   ];
+  const imgs = [
+    "https://i.ibb.co/8csQFnJ/nine.png",
+    "https://i.ibb.co/vY325cJ/team-1.png",
+    "https://i.ibb.co/dBx11dM/school.png",
+    "https://i.ibb.co/MBDxzLZ/certificate.png",
+    "https://i.ibb.co/mtvZpm5/upsurgeround.png",
+  ];
   return (
     <div className={styles.ubl}>
+      {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
+      <Toast data={toastdata} />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
+      {showform && (
+        <UblForm
+          setshowform={setshowform}
+          settoastdata={settoastdata}
+          setshowterm={setshowterm}
+          showterm={showterm}
+        />
+      )}
+
       <div className={styles.banner}>
         <UblBanner className={styles.bannerbg} />
 
@@ -42,6 +75,9 @@ export default function UblPage() {
           <p className={styles.herotext}>BUSINESS</p>
           <p className={styles.herotext}>LEAGUE</p>
           <p className={styles.bluehero}>2022</p>
+          <div className={styles.button} onClick={() => setshowform(true)}>
+            Register Now
+          </div>
         </div>
       </div>
       <UbliPrize className={styles.prize} />
@@ -74,17 +110,73 @@ export default function UblPage() {
           })}
         </div>
       </div>
+      <div className={styles.prizes}>
+        <p className={styles.head}>Prizes and rewards</p>
+        <div className={styles.wrapper}>
+          <div className={styles.prizes}>
+            <UblPrize type="gold" className={styles.prizeSvg} />
+            <p className={styles.prizetitle}>First Prize</p>
+            <p className={styles.prizemoney}>₹3,00,000</p>
+          </div>
+          <div className={styles.prizes}>
+            <UblPrize type="silver" className={styles.prizeSvg} />
+            <p className={styles.prizetitle}>second Prize</p>
+            <p className={styles.prizemoney}>₹2,00,000</p>
+          </div>
+          <div className={styles.prizes}>
+            <UblPrize type="bronze" className={styles.prizeSvg} />
+            <p className={styles.prizetitle}>third Prize</p>
+            <p className={styles.prizemoney}>₹1,00,000</p>
+          </div>
+        </div>
+        <div className={styles.challengeDiv}>
+          <div className={styles.challengeItem1}>
+            <UblGreen className={styles.challengeSvg} />
+            <p>
+              Top-25 teams will be given a ₹10,000 grant to develop their
+              business idea for 2 weeks.
+            </p>
+          </div>
+          <div className={styles.challengeItem2}>
+            <UblYellow className={styles.challengeSvg} />
+            <p>
+              Top 3 schools with teams scoring the most points will also receive
+              awards
+            </p>
+          </div>
+        </div>
+        <div className={styles.challengeItem3}>
+          <UblRed className={styles.challengeSvg} />
+          <p>
+            {`In addition, all participants will receive a welcome kit with offers
+            & vouchers from our sponsors & partners, and access to masterclass
+            videos on business plans, marketing strategy & career development.`}
+          </p>
+        </div>
+      </div>
       <Values insidebenefits />
       <div className={styles.participation}>
         <p className={styles.head}>Participation Information</p>
         <div className={styles.participationWrapper}>
-          {participationTexts.map((item) => {
+          {participationTexts.map((item, index) => {
             return (
               <div key={item} className={styles.participationtextwrapper}>
-                <p className={styles.participationtext}>{item}</p>
+                {index === 0 && <UblGreen className={styles.abstract1} />}
+                {index === participationTexts.length - 1 && (
+                  <UblYellow className={styles.abstract2} />
+                )}
+
+                <div className={styles.participationtext}>
+                  <img src={imgs[index]} alt="" />
+
+                  {item}
+                </div>
               </div>
             );
           })}
+        </div>
+        <div className={styles.button} onClick={() => setshowform(true)}>
+          Register
         </div>
       </div>
       <div className={styles.roadmap}>
@@ -139,50 +231,7 @@ export default function UblPage() {
           <UblTug className={styles.tug} />
         </div>
       </div>
-      <div className={styles.prizes}>
-        <p className={styles.head}>Prizes and rewards</p>
-        <div className={styles.wrapper}>
-          <div className={styles.prizes}>
-            <UblPrize type="gold" className={styles.prizeSvg} />
-            <p className={styles.prizetitle}>First Prize</p>
-            <p className={styles.prizemoney}>₹3,00,000</p>
-          </div>
-          <div className={styles.prizes}>
-            <UblPrize type="silver" className={styles.prizeSvg} />
-            <p className={styles.prizetitle}>second Prize</p>
-            <p className={styles.prizemoney}>₹2,00,000</p>
-          </div>
-          <div className={styles.prizes}>
-            <UblPrize type="bronze" className={styles.prizeSvg} />
-            <p className={styles.prizetitle}>third Prize</p>
-            <p className={styles.prizemoney}>₹1,00,000</p>
-          </div>
-        </div>
-        <div className={styles.challengeDiv}>
-          <div className={styles.challengeItem1}>
-            <UblGreen className={styles.challengeSvg} />
-            <p>
-              Top-25 teams will be given a ₹10,000 grant to develop their
-              business idea for 2 weeks.
-            </p>
-          </div>
-          <div className={styles.challengeItem2}>
-            <UblYellow className={styles.challengeSvg} />
-            <p>
-              Top 3 schools with teams scoring the most points will also receive
-              awards
-            </p>
-          </div>
-        </div>
-        <div className={styles.challengeItem3}>
-          <UblRed className={styles.challengeSvg} />
-          <p>
-            {`In addition, all participants will receive a welcome kit with offers
-            & vouchers from our sponsors & partners, and access to masterclass
-            videos on business plans, marketing strategy & career development.`}
-          </p>
-        </div>
-      </div>
+
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
