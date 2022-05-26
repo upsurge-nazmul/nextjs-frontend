@@ -234,6 +234,7 @@ export default function UblForm({
                 {logos.map((item) => {
                   return (
                     <img
+                      key={item}
                       onClick={() =>
                         setformdata((prev) => ({
                           ...prev,
