@@ -8,8 +8,9 @@ import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 import { CircularProgress } from "@mui/material";
 import { toIndianFormat } from "../../../helpers/currency";
 import Menu from "../Menu";
+import Popup from "../Popup";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
-import InfoIcon from "@mui/icons-material/Info";
+// import InfoIcon from "@mui/icons-material/Info";
 
 export default function Topgainer({
   list,
@@ -22,6 +23,7 @@ export default function Topgainer({
   const [selectedSymbol, setSelectedSymbol] = useState(); // comes from API, but updates on UI selection
   const [selectedCompany, setSelectedCompany] = useState();
   const [isLoading, setLoading] = useState(false);
+  const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -75,13 +77,13 @@ export default function Topgainer({
               {
                 name: `Result`,
                 icon: <SmartToyIcon />,
-                onClick: () => {},
+                onClick: () => setShowResult(true),
               },
-              {
-                name: `More Info`,
-                icon: <InfoIcon />,
-                onClick: () => {},
-              },
+              // {
+              //   name: `More Info`,
+              //   icon: <InfoIcon />,
+              //   onClick: () => {},
+              // },
             ]}
           />
         </div>
@@ -215,6 +217,45 @@ export default function Topgainer({
           )}
         </div>
       </div>
+      {showResult && (
+        <Popup
+          title="Top Gainer Result"
+          actions={{
+            cancelText: "Close",
+            isCancel: true,
+            handleCancel: () => {
+              setShowResult(false);
+            },
+            proceedText: "Proceed",
+            isProceed: false,
+            handleProceed: () => {
+              setShowResult(false);
+            },
+            proceedButtonType: "normal",
+          }}
+          onOutsideClick={() => {
+            setShowResult(false);
+          }}
+        >
+          <div className={styles.popup}>
+            <div className={styles.wrong}>Your submission was wrong</div>
+            <div className={styles.submission}>
+              <div className={styles.left}>
+                <div className={styles.title}>You have submitted</div>
+                <div className={styles.name}>XYU company Name</div>
+                <div className={styles.symbol}>XYUC</div>
+                <div className={styles.symbol}>$1233232</div>
+              </div>
+              <div className={styles.right}>
+                <div className={styles.title}>Correct answer is</div>
+                <div className={styles.name}>XYU company Name</div>
+                <div className={styles.symbol}>XYUC</div>
+                <div className={styles.symbol}>$1233232</div>
+              </div>
+            </div>
+          </div>
+        </Popup>
+      )}
     </div>
   );
 }
