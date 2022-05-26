@@ -50,7 +50,7 @@ export default function UblPage() {
     "https://i.ibb.co/pxXfhQZ/7.png",
     "https://i.ibb.co/vY325cJ/team-1.png",
     "https://i.ibb.co/1zxcXM1/competing.png",
-    "https://i.ibb.co/MBDxzLZ/certificate.png",
+    "https://i.ibb.co/SJrF9H0/idea.png",
     "https://i.ibb.co/mtvZpm5/upsurgeround.png",
   ];
   return (
