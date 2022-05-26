@@ -295,6 +295,7 @@ export default function UblForm({
                       }}
                     />
                     <ModernInputBox
+                      maxLength={10}
                       value={formdata[`member_${index + 1}`]?.dob}
                       extraclass={
                         formdata[`member_${index + 1}`]?.dob && styles.input
@@ -305,15 +306,18 @@ export default function UblForm({
                       }
                       placeholder={
                         formdata[`member_${index + 1}`]?.dob
-                          ? "Date Of Birth"
+                          ? "Date Of Birth (DD/MM/YYYY)"
                           : "Date Of Birth (DD/MM/YYYY)"
                       }
                       onChange={(e) => {
+                        let res = e.target.value
+                          .trim()
+                          .replace(/[^0-9./]/g, "");
                         setformdata((prev) => ({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            dob: e.target.value.trim(),
+                            dob: res,
                           },
                         }));
                       }}
@@ -340,6 +344,7 @@ export default function UblForm({
                       }}
                     />
                     <ModernInputBox
+                      maxLength={10}
                       value={formdata[`member_${index + 1}`]?.phone}
                       extraclass={
                         formdata[`member_${index + 1}`]?.phone && styles.input
