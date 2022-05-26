@@ -18,6 +18,8 @@ $nutral-color: #ffa800;
       display: flex;
       gap: 10px;
       padding-top: 10px;
+      width: 100%;
+      justify-content: space-between;
       .title {
         font-size: 24px;
         font-weight: 700;

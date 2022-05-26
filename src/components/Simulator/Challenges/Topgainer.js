@@ -7,6 +7,9 @@ import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { convertedUTCToLocal } from "../../../helpers/timehelpers";
 import { CircularProgress } from "@mui/material";
 import { toIndianFormat } from "../../../helpers/currency";
+import Menu from "../Menu";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import InfoIcon from "@mui/icons-material/Info";
 
 export default function Topgainer({
   list,
@@ -67,6 +70,20 @@ export default function Topgainer({
         <div className={styles.titleArea}>
           <div className={styles.title}>Top Gainer</div>
           {/* <button className={styles.infoButton}>i</button> */}
+          <Menu
+            menuItems={[
+              {
+                name: `Result`,
+                icon: <SmartToyIcon />,
+                onClick: () => {},
+              },
+              {
+                name: `More Info`,
+                icon: <InfoIcon />,
+                onClick: () => {},
+              },
+            ]}
+          />
         </div>
         <div className={styles.description}>
           {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
