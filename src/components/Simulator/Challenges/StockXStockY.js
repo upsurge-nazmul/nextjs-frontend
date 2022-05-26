@@ -131,7 +131,7 @@ export default function StockXStockY({ token, simulatorType, userData }) {
       </div>
       {showResult && (
         <Popup
-          title="Top Gainer Result"
+          title="Stock X or Stock Y Result"
           actions={{
             cancelText: "Close",
             isCancel: true,
@@ -150,10 +150,10 @@ export default function StockXStockY({ token, simulatorType, userData }) {
           }}
         >
           <div className={styles.popup}>
-            <div className={styles.wrong}>Your submission was wrong</div>
+            <div className={styles.wrong}>Your guess was wrong</div>
             <div className={styles.submission}>
               <div className={styles.left}>
-                <div className={styles.title}>You have submitted</div>
+                <div className={styles.title}>You have guessed</div>
                 <div className={styles.name}>XYU company Name</div>
                 <div className={styles.symbol}>XYUC</div>
                 <div className={styles.symbol}>$1233232</div>

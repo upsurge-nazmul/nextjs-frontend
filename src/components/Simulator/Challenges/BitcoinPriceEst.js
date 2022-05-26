@@ -6,6 +6,7 @@ import Chart from "../Home/Chart";
 import Menu from "../Menu";
 import Popup from "../Popup";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
+import { toIndianFormat } from "../../../helpers/currency";
 // import InfoIcon from "@mui/icons-material/Info";
 
 export default function BitcoinPriceEst({ token, simulatorType, userData }) {
@@ -145,7 +146,7 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
       </div>
       {showResult && (
         <Popup
-          title="Top Gainer Result"
+          title="Bitcoin Price Estimate Result"
           actions={{
             cancelText: "Close",
             isCancel: true,
@@ -164,19 +165,19 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
           }}
         >
           <div className={styles.popup}>
-            <div className={styles.wrong}>Your submission was wrong</div>
+            <div className={styles.wrong}>Your estimation was wrong</div>
             <div className={styles.submission}>
               <div className={styles.left}>
-                <div className={styles.title}>You have submitted</div>
-                <div className={styles.name}>XYU company Name</div>
-                <div className={styles.symbol}>XYUC</div>
-                <div className={styles.symbol}>$1233232</div>
+                <div className={styles.title}>You have estimated</div>
+                <div className={styles.name}>
+                  ₹{toIndianFormat(1234.09543343)}
+                </div>
               </div>
               <div className={styles.right}>
                 <div className={styles.title}>Correct answer is</div>
-                <div className={styles.name}>XYU company Name</div>
-                <div className={styles.symbol}>XYUC</div>
-                <div className={styles.symbol}>$1233232</div>
+                <div className={styles.name}>
+                  ₹{toIndianFormat(8373.0882828289)}
+                </div>
               </div>
             </div>
           </div>

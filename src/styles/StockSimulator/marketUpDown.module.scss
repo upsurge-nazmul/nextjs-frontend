@@ -173,13 +173,22 @@ $sell-color: #eb5757;
         }
         .name {
           font-size: 14px;
-          font-weight: 400;
-          color: $dark-font-color;
+          font-weight: 600;
+          svg {
+            color: inherit;
+            font-size: 14px;
+            height: 14px;
+            width: 14px;
+            margin-right: 5px;
+          }
         }
-        .symbol {
-          font-size: 10px;
-          font-weight: 300;
-          color: $light-font-color;
+        .up {
+          @extend .name;
+          color: $buy-color;
+        }
+        .down {
+          @extend .name;
+          color: $sell-color;
         }
       }
       .left {
