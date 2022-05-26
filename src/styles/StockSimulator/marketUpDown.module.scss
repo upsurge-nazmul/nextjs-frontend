@@ -17,6 +17,8 @@ $sell-color: #eb5757;
       display: flex;
       gap: 10px;
       padding-top: 10px;
+      width: 100%;
+      justify-content: space-between;
       .title {
         font-size: 24px;
         font-weight: 700;
@@ -128,6 +130,72 @@ $sell-color: #eb5757;
         padding: 8px;
         font-size: 16px;
         font-weight: 400;
+      }
+    }
+  }
+  .popup {
+    width: 600px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    .result {
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      padding: 6px 0;
+    }
+    .correct {
+      @extend .result;
+      color: $buy-color;
+    }
+    .wrong {
+      @extend .result;
+      color: $sell-color;
+    }
+    .submission {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0 6px;
+      gap: 80px;
+      .common {
+        .title {
+          font-size: 16px;
+          font-weight: 500;
+          color: $light-font-color;
+          padding: 6px 0;
+        }
+        .name {
+          font-size: 14px;
+          font-weight: 600;
+          svg {
+            color: inherit;
+            font-size: 14px;
+            height: 14px;
+            width: 14px;
+            margin-right: 5px;
+          }
+        }
+        .up {
+          @extend .name;
+          color: $buy-color;
+        }
+        .down {
+          @extend .name;
+          color: $sell-color;
+        }
+      }
+      .left {
+        @extend .common;
+      }
+      .right {
+        @extend .common;
       }
     }
   }

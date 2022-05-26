@@ -136,6 +136,14 @@ const getUserChallenges = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/challenges`, payload, token);
 };
 
+const getUserChallengesResult = ({
+  payload,
+  token,
+  type = "stocksimulator",
+}) => {
+  return ApiCalls.getResponse(`${type}/challenges/result`, payload, token);
+};
+
 const createOrUpdateChallenge = ({
   payload,
   token,
@@ -168,5 +176,6 @@ export default {
   getTopUserCompanies,
   getStockXY,
   getUserChallenges,
+  getUserChallengesResult,
   createOrUpdateChallenge,
 };
