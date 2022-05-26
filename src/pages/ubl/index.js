@@ -16,6 +16,7 @@ import Terms from "../../components/Home/Terms";
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
   const [showterm, setshowterm] = useState(false);
+  const [done, setdone] = useState(false);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -56,6 +57,8 @@ export default function UblPage() {
           settoastdata={settoastdata}
           setshowterm={setshowterm}
           showterm={showterm}
+          setdone={setdone}
+          done={done}
         />
       )}
 
