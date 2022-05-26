@@ -3,11 +3,19 @@ import styles from "../../../styles/StockSimulator/bitcoinPriceEst.module.scss";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import { getDateRange } from "../../../helpers/timehelpers";
 import Chart from "../Home/Chart";
+import Menu from "../Menu";
+import Popup from "../Popup";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import { toIndianFormat } from "../../../helpers/currency";
+// import InfoIcon from "@mui/icons-material/Info";
+import NoData from "../NoData";
 
 export default function BitcoinPriceEst({ token, simulatorType, userData }) {
   const [bitcoinData, setBitcoinData] = useState();
   const [estValue, setEstValue] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState();
 
   useEffect(() => {
     async function fetchUserChallenges() {
@@ -50,6 +58,24 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
     fetchBitcoinHist();
   }, [token]);
 
+  useEffect(() => {
+    async function fetchUserChallengesResult() {
+      let results = await SimulatorApis.getUserChallengesResult({
+        payload: { user_id: userData.user_id },
+        token,
+        type: simulatorType,
+      });
+      if (results.data && results.data.success) {
+        if (results.data.data) {
+          setResult(results.data.data.btc_est);
+        } else {
+          setResult(results.data.message);
+        }
+      }
+    }
+    fetchUserChallengesResult();
+  }, []);
+
   const handleConfirm = async (e) => {
     e.preventDefault();
     console.log("confirmed estimated value", estValue);
@@ -75,6 +101,20 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
         <div className={styles.titleArea}>
           <div className={styles.title}>Bitcoin Price Estimate</div>
           {/* <button className={styles.infoButton}>i</button> */}
+          <Menu
+            menuItems={[
+              {
+                name: `Result`,
+                icon: <SmartToyIcon />,
+                onClick: () => setShowResult(true),
+              },
+              // {
+              //   name: `More Info`,
+              //   icon: <InfoIcon />,
+              //   onClick: () => {},
+              // },
+            ]}
+          />
         </div>
         <div className={styles.description}>
           {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
@@ -124,6 +164,53 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
           </div>
         </div>
       </div>
+      {showResult && result && (
+        <Popup
+          title="Bitcoin Price Estimate Result"
+          actions={{
+            cancelText: "Close",
+            isCancel: true,
+            handleCancel: () => {
+              setShowResult(false);
+            },
+            proceedText: "Proceed",
+            isProceed: false,
+            handleProceed: () => {
+              setShowResult(false);
+            },
+            proceedButtonType: "normal",
+          }}
+          onOutsideClick={() => {
+            setShowResult(false);
+          }}
+        >
+          {typeof result === "string" ? (
+            <div className={styles.popup}>
+              <NoData message={result} />
+            </div>
+          ) : (
+            <div className={styles.popup}>
+              <div className={result.correct ? styles.correct : styles.wrong}>
+                Your guess was {result.correct ? "right" : "wrong"}
+              </div>
+              <div className={styles.submission}>
+                <div className={styles.left}>
+                  <div className={styles.title}>You have estimated</div>
+                  <div className={styles.name}>
+                    ₹{toIndianFormat(result.submited_ans)}
+                  </div>
+                </div>
+                <div className={styles.right}>
+                  <div className={styles.title}>Correct answer is</div>
+                  <div className={styles.name}>
+                    ₹{toIndianFormat(result.correct_ans)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </Popup>
+      )}
     </div>
   );
 }
