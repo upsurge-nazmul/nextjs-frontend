@@ -17,27 +17,32 @@ export default function Menu({ menuItems = [] }) {
   return (
     <div className={styles.menu}>
       <div
-        className={styles.menuTitle}
-        onClick={() => setActive((prev) => !prev)}
-      >
-        <MoreHorizIcon />
-      </div>
-      <div
-        className={
-          //   active ? styles.activeContent :
-          styles.menuContent
-        }
-      >
-        {menuItems.length
-          ? menuItems.map((item, i) => {
-              return (
-                <div key={i} onClick={item.onClick} className={styles.item}>
-                  {item.icon}
-                  {item.name}
-                </div>
-              );
-            })
-          : ""}
+        className={active ? styles.menuBackground : styles.deactiveBackground}
+        onClick={() => setActive(false)}
+      />
+      <div className={styles.menuBody}>
+        <div
+          className={styles.menuTitle}
+          onClick={() => setActive((prev) => !prev)}
+        >
+          <MoreHorizIcon />
+        </div>
+        {active ? (
+          <div className={active ? styles.activeContent : styles.menuContent}>
+            {menuItems.length
+              ? menuItems.map((item, i) => {
+                  return (
+                    <div key={i} onClick={item.onClick} className={styles.item}>
+                      {item.icon}
+                      {item.name}
+                    </div>
+                  );
+                })
+              : ""}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
