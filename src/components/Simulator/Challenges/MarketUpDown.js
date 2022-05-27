@@ -88,9 +88,8 @@ export default function MarketUpDown({ token, simulatorType, userData }) {
           />
         </div>
         <div className={styles.description}>
-          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
-          porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla. */}
+          Predict whether the NSE200 index (market) will go up or down in the
+          next trading session
         </div>
       </div>
       <div className={styles.bottomSection}>

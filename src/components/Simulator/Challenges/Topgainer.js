@@ -108,9 +108,10 @@ export default function Topgainer({
           />
         </div>
         <div className={styles.description}>
-          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
-          porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla. */}
+          Choose the company of NSE200 that you think will be the most
+          profitable in the next trading session. (The table is for the 5 most
+          profitable companies in the previous trading session). Search the
+          stock which you think is best and select it!
         </div>
       </div>
       <div className={styles.bottomSection}>
