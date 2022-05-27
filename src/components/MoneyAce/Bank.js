@@ -63,6 +63,7 @@ export default function Bank({
     if (res && res.data && res.data.success) {
       settoastdata("Created successfully");
       setshowupi(false);
+      setmoneyacedata((prev) => ({ ...prev, upi_id: upi }));
       if (currentTourIndex === 14) {
         setcurrentTourIndex((prev) => prev + 1);
       }
@@ -113,6 +114,7 @@ export default function Bank({
             width={widthHeight.width * 0.12}
             height={widthHeight.width * 0.035}
             border={5}
+            s
             image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
@@ -177,8 +179,16 @@ export default function Bank({
               <div className={styles.headcomp}>
                 <div className={styles.headdata}>
                   <NineSlice
-                    width={widthHeight.width * 0.08}
-                    height={widthHeight.width * 0.015}
+                    width={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.06
+                        : widthHeight.width * 0.08
+                    }
+                    height={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.01
+                        : widthHeight.width * 0.015
+                    }
                     border={25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
@@ -190,8 +200,16 @@ export default function Bank({
               <div className={styles.headcomp}>
                 <div className={styles.headdata}>
                   <NineSlice
-                    width={widthHeight.width * 0.08}
-                    height={widthHeight.width * 0.015}
+                    width={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.06
+                        : widthHeight.width * 0.08
+                    }
+                    height={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.01
+                        : widthHeight.width * 0.015
+                    }
                     border={25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
@@ -205,8 +223,16 @@ export default function Bank({
               <div className={styles.headcomp}>
                 <div className={styles.headdata}>
                   <NineSlice
-                    width={widthHeight.width * 0.08}
-                    height={widthHeight.width * 0.015}
+                    width={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.06
+                        : widthHeight.width * 0.08
+                    }
+                    height={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.01
+                        : widthHeight.width * 0.015
+                    }
                     border={25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
@@ -222,8 +248,16 @@ export default function Bank({
               <div className={styles.headcomp}>
                 <div className={styles.headdata}>
                   <NineSlice
-                    width={widthHeight.width * 0.08}
-                    height={widthHeight.width * 0.015}
+                    width={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.06
+                        : widthHeight.width * 0.08
+                    }
+                    height={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.01
+                        : widthHeight.width * 0.015
+                    }
                     border={25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
@@ -237,8 +271,16 @@ export default function Bank({
               <div className={styles.headcomp}>
                 <div className={styles.headdata}>
                   <NineSlice
-                    width={widthHeight.width * 0.08}
-                    height={widthHeight.width * 0.015}
+                    width={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.06
+                        : widthHeight.width * 0.08
+                    }
+                    height={
+                      widthHeight.width < 1200
+                        ? widthHeight.width * 0.01
+                        : widthHeight.width * 0.015
+                    }
                     border={25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}

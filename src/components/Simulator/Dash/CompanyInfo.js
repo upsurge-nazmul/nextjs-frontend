@@ -1,4 +1,6 @@
 import styles from "../../../styles/StockSimulator/companyInfo.module.scss";
+import { toIndianFormat } from "../../../helpers/currency";
+import Info from "../Info";
 
 export default function CompanyInfo({ companyInfo }) {
   return (
@@ -6,33 +8,40 @@ export default function CompanyInfo({ companyInfo }) {
       {companyInfo && (
         <div className={styles.infoArea}>
           <div className={styles.volumeArea}>
-            <span className={styles.volumeTitle}>Volume</span>
+            <span className={styles.volumeTitle}>
+              Volume{" "}
+              <Info
+                text={
+                  "It is the total number of stocks that were traded of a particular company in a trading session (for ex- 200 BPCL stocks were sold from A to B and B sold the same 200 stocks to C and at a later time in the same trading session C sold the 200 stocks back to A. Only these trades happened for BPCL in this session then in that case volume of BPCL stock is 200+200+200 = 600)"
+                }
+              />
+            </span>
             <span className={`${styles.volumeValue} ${styles.greenText}`}>
-              {parseFloat(companyInfo.volume).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.volume))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Open</span>
             <span className={styles.greenText}>
-              {parseFloat(companyInfo.open).toFixed(2)}
-            </span>
-          </div>
-          <div className={styles.infoItem}>
-            <span>High</span>
-            <span className={styles.greenText}>
-              {parseFloat(companyInfo.high).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.open))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Close</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.close).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.close))}
+            </span>
+          </div>
+          <div className={styles.infoItem}>
+            <span>High</span>
+            <span className={styles.greenText}>
+              {toIndianFormat(parseFloat(companyInfo.high))}
             </span>
           </div>
           <div className={styles.infoItem}>
             <span>Low</span>
             <span className={styles.redText}>
-              {parseFloat(companyInfo.low).toFixed(2)}
+              {toIndianFormat(parseFloat(companyInfo.low))}
             </span>
           </div>
         </div>

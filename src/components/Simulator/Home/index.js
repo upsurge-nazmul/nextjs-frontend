@@ -7,11 +7,12 @@ import Chart from "./Chart";
 import { getShortForm } from "../../../helpers/shortForms";
 import ProfitableStocks from "./ProfitableStocks";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 const StockDurations = [
-  { name: "Month", value: "monthly" },
-  { name: "Week", value: "weekly" },
-  { name: "Day", value: "daily" },
+  { name: "This Month", value: "monthly" },
+  { name: "This Week", value: "weekly" },
+  { name: "Today", value: "daily" },
 ];
 
 export default function Home({
@@ -41,15 +42,7 @@ export default function Home({
         type: simulatorType,
       });
       if (hlds.data && hlds.data.success) {
-        let chartData = [];
-        for (let item of hlds.data.data) {
-          chartData.push({
-            id: item.symbol,
-            label: item.name,
-            value: item.amount,
-          });
-        }
-        setHoldingsChartData(chartData);
+        setHoldingsChartData(hlds.data.data);
       }
       let otherItems =
         hlds.data && hlds.data.data.slice(1, hlds.data.data.length);
@@ -95,7 +88,7 @@ export default function Home({
   }, []);
 
   const getCashHoldingPercentage = () => {
-    let currPer = holdingsChartData[0].value;
+    let currPer = holdingsChartData[0].amount;
     return String(((currPer * 100) / 1000000).toFixed(2)) + "%";
   };
 
@@ -106,31 +99,39 @@ export default function Home({
           <div className={styles.portfolioHoldings}>
             <div className={styles.holdingsTitle}>Portfolio Holdings</div>
             <div className={styles.holdingsChart}>
-              <div className={styles.chart}>
-                {holdingsChartData ? (
-                  <Holdings chartData={holdingsChartData} />
-                ) : (
-                  ""
-                )}
-              </div>
+              {holdingsChartData ? (
+                <Holdings
+                  chartData={holdingsChartData}
+                  className={styles.chart}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
           {holdingsChartData ? (
             <div className={styles.portfolioInfo}>
               <div className={styles.infoItem}>
                 <div className={styles.label}>Total Cash Portfolio</div>
-                <div className={styles.value}>{`₹${parseFloat(
-                  holdingsChartData[0].value
-                ).toFixed(2)}`}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.label}>Total Stock Portfolio</div>
-                <div className={styles.value}>{`₹${stockPortfolio.toFixed(
-                  2
+                <div className={styles.value}>{`₹${toIndianFormat(
+                  holdingsChartData[0].amount
                 )}`}</div>
               </div>
               <div className={styles.infoItem}>
-                <div className={styles.label}>Total Number of Stocks</div>
+                <div className={styles.label}>
+                  Total
+                  {simulatorType === "cryptosimulator" ? " Crypto " : " Stock "}
+                  Portfolio
+                </div>
+                <div className={styles.value}>{`₹${toIndianFormat(
+                  stockPortfolio
+                )}`}</div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.label}>
+                  Total Number of{" "}
+                  {simulatorType === "cryptosimulator" ? " coins " : " stocks "}
+                </div>
                 <div className={styles.value}>
                   {("0" + String(holdingsChartData.length - 1)).slice(-2)}
                 </div>
@@ -152,7 +153,7 @@ export default function Home({
                 Last Updated at {lastUpdated}
               </div>
             </div>
-            <div className={styles.portfolioOptions}>
+            {/* <div className={styles.portfolioOptions}>
               {StockDurations.map((duration, i) => {
                 return (
                   <div
@@ -168,22 +169,22 @@ export default function Home({
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
           {userStocks && userStocks.length ? (
-            userStocks.map((stock, i) => {
-              return (
-                <div className={styles.myStocks} key={"userStock" + i}>
-                  <div
-                    className={
-                      selectedStock === "all"
-                        ? styles.activeSingleStock
-                        : styles.singleStock
-                    }
-                    onClick={() => setSelectedStock("all")}
-                  >
-                    All Stocks
-                  </div>
+            <div className={styles.myStocks}>
+              <div
+                className={
+                  selectedStock === "all"
+                    ? styles.activeSingleStock
+                    : styles.singleStock
+                }
+                onClick={() => setSelectedStock("all")}
+              >
+                All Stocks
+              </div>
+              {userStocks.map((stock, i) => {
+                return (
                   <div
                     className={
                       selectedStock === stock.symbol
@@ -195,11 +196,16 @@ export default function Home({
                   >
                     {stock.symbol}
                   </div>
-                </div>
-              );
-            })
+                );
+              })}
+            </div>
           ) : (
-            <NoData size="small" message={"You have no stocks yet"} />
+            <NoData
+              size="small"
+              message={`You have no ${
+                simulatorType === "cryptosimulator" ? "coin" : "stock"
+              } yet`}
+            />
           )}
           <div className={styles.topReturns}>
             <UserStocks
@@ -224,7 +230,7 @@ export default function Home({
                     <div className={styles.icon}>{getShortForm(data.name)}</div>
                     <div className={styles.nameArea}>
                       <div className={styles.value}>
-                        {"₹" + parseFloat(data.total_value).toFixed(2)}
+                        {"₹" + toIndianFormat(data.total_value)}
                       </div>
                       <div className={styles.name}>{data.name}</div>
                     </div>
@@ -241,14 +247,19 @@ export default function Home({
             <div className={styles.emptySpace}>
               <NoData
                 size="medium"
-                message={"Please buy stocks to see the charts"}
+                message={`Please buy ${
+                  simulatorType === "cryptosimulator" ? "coins" : "stocks"
+                } to see history chart`}
               />
             </div>
           )}
         </div>
         <div className={styles.bottomRight}>
           <div className={styles.headingArea}>
-            <div className={styles.title}>Most Profitable Stocks</div>
+            <div className={styles.title}>
+              Most Profitable{" "}
+              {simulatorType === "cryptosimulator" ? "Coins" : "Stocks"}
+            </div>
             <div className={styles.profitableStocksOptions}>
               {StockDurations.map((duration, i) => {
                 return (

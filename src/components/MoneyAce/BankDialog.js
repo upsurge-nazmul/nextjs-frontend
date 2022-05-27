@@ -20,6 +20,9 @@ export default function BankDialog({
   }, [amount]);
   async function handleClick() {
     if (showwhat === "deposit") {
+      if (amount < 100) {
+        return seterr("Minimum amount to deposit is ₹100");
+      }
       let response = await MoneyAceApis.depositMoney({ amount });
       if (response && response.data && response.data.success) {
         if (currentTourIndex === 6) {
@@ -49,6 +52,9 @@ export default function BankDialog({
         seterr(response?.data?.message || "Unable to reach server");
       }
     } else {
+      if (amount < 100) {
+        return seterr("Minimum amount to withdraw is ₹100");
+      }
       let response = await MoneyAceApis.withdrawMoney({ amount });
       if (response && response.data && response.data.success) {
         setshowwhat(null);

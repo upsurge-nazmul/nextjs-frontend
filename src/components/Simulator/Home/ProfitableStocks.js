@@ -6,6 +6,7 @@ import { getShortForm } from "../../../helpers/shortForms";
 // import { CircularProgress } from "@mui/material";
 import { MODES } from "../constants";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 export default function ProfitableStocks({
   token,
@@ -38,9 +39,9 @@ export default function ProfitableStocks({
         companies.length ? (
           companies.map((item, i) => {
             return (
-              <>
+              <div key={"id" + i}>
                 {item ? (
-                  <div key={"id" + i} className={styles.card}>
+                  <div className={styles.card}>
                     <div className={styles.iconArea}>
                       <div className={styles.icon}>
                         {getShortForm(item.name)}
@@ -49,11 +50,11 @@ export default function ProfitableStocks({
                     <div className={styles.nameArea}>
                       <div className={styles.name}>{item.name}</div>
                       <div className={styles.symbol}>{item.symbol}</div>
-                      <div
+                      {/* <div
                         className={styles.symbol}
                       >{`Closing Value: ₹${parseFloat(item.close).toFixed(
                         2
-                      )}`}</div>
+                      )}`}</div> */}
                     </div>
                     {duration === "daily" && (
                       <div className={styles.propertiesArea}>
@@ -61,43 +62,43 @@ export default function ProfitableStocks({
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>O</div>
                             <div className={styles.value}>
-                              {parseFloat(item.open).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.open))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>C</div>
                             <div className={styles.value}>
-                              {parseFloat(item.close).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.close))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>H</div>
                             <div className={styles.value}>
-                              {parseFloat(item.high).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.high))}
                             </div>
                           </div>
                           <div className={styles.propertyItem}>
                             <div className={styles.label}>L</div>
                             <div className={styles.value}>
-                              {parseFloat(item.low).toFixed(2)}
+                              {toIndianFormat(parseFloat(item.low))}
                             </div>
                           </div>
                         </div>
                       </div>
                     )}
                     <div className={styles.valueArea}>
-                      <div className={styles.label}>Return</div>
+                      <div className={styles.label}>%Return</div>
                       <div className={styles.value}>
                         <div
                           className={
-                            parseFloat(item.current_return) > 0
+                            parseFloat(item.current_return_percentage) > 0
                               ? styles.gain
-                              : parseFloat(item.current_return) < 0
+                              : parseFloat(item.current_return_percentage) < 0
                               ? styles.loss
                               : styles.nutral
                           }
-                        >{`₹${parseFloat(Math.abs(item.current_return)).toFixed(
-                          2
+                        >{`${toIndianFormat(
+                          Math.abs(item.current_return_percentage)
                         )}`}</div>
                       </div>
                     </div>
@@ -116,13 +117,18 @@ export default function ProfitableStocks({
                     </div>
                   </div>
                 ) : (
-                  <div key={"id" + i}></div>
+                  <div></div>
                 )}
-              </>
+              </div>
             );
           })
         ) : (
-          <NoData />
+          <NoData
+            size="medium"
+            message={`There is no ${
+              simulatorType === "cryptosimulator" ? "coin" : "stock"
+            } for this time duration`}
+          />
         )
       ) : (
         ""

@@ -6,8 +6,6 @@ import Logo from "../SVGcomponents/Logo";
 import CityMap from "./CityMap";
 import MoneyAceHeader from "./MoneyAceHeader";
 import MoneyAceLeftPanel from "./MoneyAceLeftPanel";
-import PassBook from "./PassBook";
-import InvestmentHub from "./InvestmentHub";
 import Bank from "./Bank";
 import BankDashboard from "./BankDashboard";
 import MoneyAceTask from "./MoneyAceTask";
@@ -644,6 +642,7 @@ export default function MoneyAceDashboard({
               moneyacedata={moneyacedata}
               setmoneyacedata={setmoneyacedata}
               settoastdata={settoastdata}
+              settaskmodal={settaskmodal}
               settasks={settasks}
               tasks={tasks}
             />

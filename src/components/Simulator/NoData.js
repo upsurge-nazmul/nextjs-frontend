@@ -1,19 +1,15 @@
 import styles from "../../styles/StockSimulator/noData.module.scss";
-import NoDataSvg from "../SVGcomponents/StockSimulator/NoDataSvg";
+import Jasper from "../SVGcomponents/Jasper";
+import Curve1 from "../SVGcomponents/Curve1";
+import Curve2 from "../SVGcomponents/Curve2";
 
 export default function NoData({ message = "There is no data", size = "big" }) {
   return (
-    <div
-      className={
-        size === "small"
-          ? styles.noDataSmall
-          : size === "medium"
-          ? styles.noDataMedium
-          : styles.noDataBig
-      }
-    >
-      <NoDataSvg className={styles.icon} />
-      <div className={styles.text}>{message}</div>
+    <div className={styles.fillspace}>
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
+      <Jasper className={styles.mascot} />
+      <p>{message}</p>
     </div>
   );
 }

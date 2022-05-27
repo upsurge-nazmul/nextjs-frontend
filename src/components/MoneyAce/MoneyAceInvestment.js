@@ -347,38 +347,6 @@ export default function MoneyAceInvestment({
                   <p>Your Dob</p>
                   <input value={getIndianTime(userdata.dob)} type="text" />
                 </div>
-                <div className={styles.row}>
-                  <div className={styles.chkbx}>
-                    {userdata.gender === "male" ? (
-                      <img
-                        className={styles.Checkbox}
-                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        className={styles.Checkbox}
-                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
-                        alt=""
-                      />
-                    )}
-                    <p>Male</p>
-                    {userdata.gender === "female" ? (
-                      <img
-                        className={styles.Checkbox}
-                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        className={styles.Checkbox}
-                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
-                        alt=""
-                      />
-                    )}
-                    <p>Female</p>
-                  </div>
-                </div>
                 <div
                   className={styles.submit}
                   onClick={() => {

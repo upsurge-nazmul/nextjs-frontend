@@ -12,6 +12,7 @@ export default function EducationHub({
   setmoneyacedata,
   settoastdata,
   tasks,
+  settaskmodal,
 }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -103,7 +104,16 @@ export default function EducationHub({
       },
     },
   ];
-
+  function handleClick(id) {
+    let task = tasks.filter((item) => item.id === id)[0];
+    settaskmodal(task);
+  }
+  function checkcompleted(id) {
+    if (id === "task-20" && moneyacedata.computer_course) {
+      return true;
+    }
+    return false;
+  }
   return (
     <div className={styles.educationhub}>
       <div className={styles.main}>
@@ -126,10 +136,10 @@ export default function EducationHub({
             return (
               <CourseJobCard
                 data={item}
+                handleClick={handleClick}
                 key={item.id}
-                isActive={
-                  tasks.findIndex((data) => data.id === item.id) !== -1
-                }
+                isCompleted={checkcompleted(item.id)}
+                isActive={tasks.findIndex((data) => data.id === item.id) !== -1}
               />
             );
           })}
