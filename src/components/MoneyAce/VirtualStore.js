@@ -62,7 +62,7 @@ export default function VirtualStore({
     seterr("");
   }, [mode]);
   async function handlepay() {
-    let res = await MoneyAceApis.buystoreitems({ data: cart });
+    let res = await MoneyAceApis.buystoreitems({ data: JSON.stringify(cart) });
     if (res && res.data && res.data.success) {
       console.log(res.data.data);
       if (res.data.data.length > 0) {
@@ -184,9 +184,28 @@ export default function VirtualStore({
             </div>
           </div>
           {err && <p className={styles.error}>{err}</p>}
-          <div className={styles.btn} onClick={handlepay}>
-            <p>Pay</p>
+          <div className={styles.btns}>
+            <div
+              className={styles.backbutton}
+              onClick={() => {
+                if (mode === "passbook") {
+                  setmode("home");
+                  return;
+                }
+                setcurrenttab("dashboard");
+              }}
+            >
+              <img
+                src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                alt=""
+              />
+            </div>
+
+            <div className={styles.btn} onClick={handlepay}>
+              <p>Pay</p>
+            </div>
           </div>
+
           <img
             className={styles.home}
             onClick={() => setcurrenttab("dashboard")}

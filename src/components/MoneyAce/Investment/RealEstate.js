@@ -96,7 +96,6 @@ export default function RealEstate({
           <div className={styles.subbg}>
             <div className={styles.innerbg}></div>
           </div>
-          <p className={styles.heading}>REAL ESTATE</p>
           <div className={styles.wrapper}>
             <div className={styles.row}>
               <p>Real Estate Index</p>
