@@ -7,6 +7,7 @@ import Trades from "./Trades";
 import PortfolioChart from "./PortfolioChart";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import NoData from "../NoData";
+import { toIndianFormat } from "../../../helpers/currency";
 
 const TABS = [
   { name: "Charts", value: "charts", icon: "Charts" },
@@ -76,7 +77,11 @@ export default function Portfolio({ userData, token, simulatorType }) {
         values.push([
           new Date(record.date),
           parseFloat(record.current_cash_portfolio) +
-            parseFloat(record.current_stock_portfolio),
+            parseFloat(
+              record.current_stock_portfolio
+                ? current_stock_portfolio
+                : record.current_crypto_portfolio
+            ),
         ]);
       }
       setPortfolioChartData(values);
@@ -115,7 +120,7 @@ export default function Portfolio({ userData, token, simulatorType }) {
                     <div className={styles.holding}>
                       <span className={styles.label}>Current Holdings </span>
                       <span className={styles.value}>
-                        ₹{parseFloat(holdingsData[0].amount).toFixed(2)}
+                        ₹{toIndianFormat(parseFloat(holdingsData[0].amount))}
                       </span>
                     </div>
                   </div>

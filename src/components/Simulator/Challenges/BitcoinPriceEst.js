@@ -117,9 +117,7 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
           />
         </div>
         <div className={styles.description}>
-          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
-          porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla. */}
+          {`Estimate tomorrow’s price of bitcoin as close as you can to win this game!`}
         </div>
       </div>
       <div className={styles.bottomSection}>
