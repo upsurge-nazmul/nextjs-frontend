@@ -109,9 +109,8 @@ export default function StockXStockY({ token, simulatorType, userData }) {
           />
         </div>
         <div className={styles.description}>
-          {/* Sed morbi pulvinar ornare gravida. Pulvinar turpis pellentesque
-          porttitor nec phasellus justo, viverra. Duis varius risus, in tellus.
-          In enim tincidunt nulla. */}
+          Choose whether stock X or stock Y will perform better in the next
+          trading session.
         </div>
       </div>
       <div className={styles.bottomSection}>
