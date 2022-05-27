@@ -77,7 +77,11 @@ export default function Portfolio({ userData, token, simulatorType }) {
         values.push([
           new Date(record.date),
           parseFloat(record.current_cash_portfolio) +
-            parseFloat(record.current_stock_portfolio),
+            parseFloat(
+              record.current_stock_portfolio
+                ? current_stock_portfolio
+                : record.current_crypto_portfolio
+            ),
         ]);
       }
       setPortfolioChartData(values);
