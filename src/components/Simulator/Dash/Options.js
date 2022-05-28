@@ -27,33 +27,35 @@ export default function SimulatorOptions({
   const [errorText, setErrorText] = useState("");
   const [helperText, setHelperText] = useState("");
 
-  useEffect(() => {
-    async function fetchUserHoldings() {
-      let hlds = await SimulatorApis.getUserHoldings({
-        payload: { user_id: userData.user_id },
-        token,
-        type: simulatorType,
-      });
-      if (
-        hlds.data &&
-        hlds.data.success &&
-        hlds.data.data &&
-        hlds.data.data.length
-      ) {
-        setHoldingToBuy(hlds.data.data[0].amount);
+  async function fetchUserHoldings() {
+    let hlds = await SimulatorApis.getUserHoldings({
+      payload: { user_id: userData.user_id },
+      token,
+      type: simulatorType,
+    });
+    if (
+      hlds.data &&
+      hlds.data.success &&
+      hlds.data.data &&
+      hlds.data.data.length
+    ) {
+      setHoldingToBuy(hlds.data.data[0].amount);
 
-        let comp = hlds.data.data.find(
-          (comp) => comp.symbol === companyDetails.symbol
-        );
-        if (comp) {
-          setAmmountToSell(comp.quantity);
-        } else {
-          setAmmountToSell();
-        }
+      let comp = hlds.data.data.find(
+        (comp) => comp.symbol === companyDetails.symbol
+      );
+      if (comp) {
+        setAmmountToSell(comp.quantity);
+      } else {
+        setAmmountToSell();
       }
     }
+  }
+  useEffect(() => {
     fetchUserHoldings();
   }, [companyDetails]);
+
+  console.log("!!!!!!!!!!", holdingToBuy, ammountToSell);
 
   useEffect(() => {
     if (companyDetails) {
@@ -125,9 +127,12 @@ export default function SimulatorOptions({
       type: simulatorType,
     });
     console.log("bought stocks", boughtStock);
-    if (boughtStock.data.status === 200) setIsLoading(false);
-    if (boughtStock.data.message) setTradeMsg(boughtStock.data.message);
-    if (boughtStock.data.success) setTradeSuccess(boughtStock.data.success);
+    if (boughtStock.data.status === 200) {
+      setIsLoading(false);
+      if (boughtStock.data.message) setTradeMsg(boughtStock.data.message);
+      if (boughtStock.data.success) setTradeSuccess(boughtStock.data.success);
+      fetchUserHoldings();
+    }
   };
 
   const handleSell = async () => {
@@ -147,9 +152,12 @@ export default function SimulatorOptions({
       type: simulatorType,
     });
     console.log("sold stocks", soldStock);
-    if (soldStock.data.status === 200) setIsLoading(false);
-    if (soldStock.data.message) setTradeMsg(soldStock.data.message);
-    if (soldStock.data.success) setTradeSuccess(soldStock.data.success);
+    if (soldStock.data.status === 200) {
+      setIsLoading(false);
+      if (soldStock.data.message) setTradeMsg(soldStock.data.message);
+      if (soldStock.data.success) setTradeSuccess(soldStock.data.success);
+      fetchUserHoldings();
+    }
   };
 
   const handleCancel = () => {
@@ -168,8 +176,6 @@ export default function SimulatorOptions({
       handleSell();
     }
   };
-
-  console.log("!!!!!!!!!!!!!", quantity);
 
   return (
     <div className={styles.simulatorOptoins}>

@@ -32,6 +32,7 @@ export default function UserStocks({
       let comps = await SimulatorApis.getTopUserCompanies({
         payload: {
           user_id: userData.user_id,
+          max: 3,
         },
         token,
         type: simulatorType,

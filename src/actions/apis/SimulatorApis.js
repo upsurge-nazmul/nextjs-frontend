@@ -48,6 +48,20 @@ const getUserStocks = ({ payload, token, type = "stocksimulator" }) => {
   );
 };
 
+const getUserMostValuableStocks = ({
+  payload,
+  token,
+  type = "stocksimulator",
+}) => {
+  return ApiCalls.getResponse(
+    `${type}/${
+      type === "cryptosimulator" ? "userCryptos" : "userStocks"
+    }/mostValueable`,
+    payload,
+    token
+  );
+};
+
 const getUserTrades = ({ payload, token, type = "stocksimulator" }) => {
   return ApiCalls.getResponse(`${type}/userTrades`, payload, token);
 };
@@ -162,6 +176,7 @@ export default {
   removeFromWatchlist,
   getStocks,
   getUserStocks,
+  getUserMostValuableStocks,
   getUserRecords,
   getUserHoldings,
   getUserTrades,
