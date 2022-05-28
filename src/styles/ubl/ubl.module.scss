@@ -876,27 +876,6 @@
               margin-bottom: 20px;
             }
           }
-          &:first-child {
-            background-color: $green;
-            .participationtext {
-              color: rgb(0, 0, 0);
-            }
-          }
-          &:nth-child(2) {
-            background-color: $red;
-          }
-          &:nth-child(3) {
-            background-color: $blue;
-          }
-          &:nth-child(4) {
-            background-color: #9051a0;
-          }
-          &:nth-child(5) {
-            background-color: $yellow;
-            .participationtext {
-              color: rgb(0, 0, 0);
-            }
-          }
         }
       }
     }

@@ -193,14 +193,14 @@ export default function UblForm({
   }
 
   const logos = [
-    "https://i.ibb.co/LtJRkV4/tiger.png",
-    "https://i.ibb.co/71D8L28/laughing.png",
-    "https://i.ibb.co/ChKvfmM/demon.png",
-    "https://i.ibb.co/cTRKfpf/happy.png",
-    "https://i.ibb.co/kJFcB0P/sloth.png",
-    "https://i.ibb.co/rxsFTMk/cool-1.png",
-    "https://i.ibb.co/bWjKnSH/cool.png",
-    "https://i.ibb.co/dW3YkPh/deer.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/tiger.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/laughing.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/demon.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/happy.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/sloth.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool(1).png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/deer.png",
   ];
   useEffect(() => {
     const scrollContainer = document.querySelector("#logowrapper");
