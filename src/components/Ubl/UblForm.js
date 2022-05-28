@@ -233,7 +233,7 @@ export default function UblForm({
               onChange={(e) =>
                 setformdata((prev) => ({
                   ...prev,
-                  team_name: onlyText(e.target.value).trim(),
+                  team_name: onlyText(e.target.value),
                 }))
               }
             />
@@ -245,7 +245,7 @@ export default function UblForm({
               onChange={(e) => {
                 setformdata((prev) => ({
                   ...prev,
-                  school: e.target.value.trim(),
+                  school: e.target.value,
                 }));
               }}
             />
@@ -291,7 +291,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            name: e.target.value.trim(),
+                            name: e.target.value,
                           },
                         }));
                       }}
@@ -311,7 +311,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            school: e.target.value.trim(),
+                            school: e.target.value,
                           },
                         }));
                       }}
