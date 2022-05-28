@@ -281,19 +281,23 @@ export default function Topgainer({
                     %
                   </div>
                 </div>
-                <div className={styles.right}>
-                  <div className={styles.title}>Correct answer is</div>
-                  <div className={styles.name}>{result.correct_ans.name}</div>
-                  <div className={styles.symbol}>
-                    {result.correct_ans.symbol}
+                {result.correct_ans ? (
+                  <div className={styles.right}>
+                    <div className={styles.title}>Correct answer is</div>
+                    <div className={styles.name}>{result.correct_ans.name}</div>
+                    <div className={styles.symbol}>
+                      {result.correct_ans.symbol}
+                    </div>
+                    <div className={styles.symbol}>
+                      {toIndianFormat(
+                        parseFloat(result.correct_ans.current_return_percentage)
+                      )}
+                      %
+                    </div>
                   </div>
-                  <div className={styles.symbol}>
-                    {toIndianFormat(
-                      parseFloat(result.correct_ans.current_return_percentage)
-                    )}
-                    %
-                  </div>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           )}
