@@ -85,7 +85,7 @@ export default function Challenges({ userData, token, simulatorType }) {
           </div>
         </div>
       </div>
-      {!active ? (
+      {active ? (
         <>
           <div className={styles.topSection}>
             <Topgainer
