@@ -46,7 +46,7 @@ export default function SimulatorOptions({
           (comp) => comp.symbol === companyDetails.symbol
         );
         if (comp) {
-          setAmmountToSell(comp.amount);
+          setAmmountToSell(comp.quantity);
         } else {
           setAmmountToSell();
         }
@@ -169,6 +169,8 @@ export default function SimulatorOptions({
     }
   };
 
+  console.log("!!!!!!!!!!!!!", quantity);
+
   return (
     <div className={styles.simulatorOptoins}>
       <p className={styles.optionsTitle}>Quantity</p>
@@ -238,7 +240,7 @@ export default function SimulatorOptions({
             isCancel: true,
             handleCancel: handleCancel,
             proceedText: tradeMode === "buy" ? "BUY" : "SELL",
-            isProceed: !errorText && !tradeMsg,
+            isProceed: !errorText && !tradeMsg && quantity && quantity > 0,
             handleProceed: handleProceed,
             proceedButtonType: tradeMode,
           }}
