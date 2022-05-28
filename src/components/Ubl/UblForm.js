@@ -107,6 +107,27 @@ export default function UblForm({
           msg: "School is required for member " + i,
         });
       }
+      if ((element.dob.match(/\//g) || []).length !== 2) {
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
+      console.log(element.dob.split("/"));
+      if (
+        element.dob.split("/")[0].length !== 2 ||
+        element.dob.split("/")[1].length !== 2 ||
+        element.dob.split("/")[2].length !== 4
+      ) {
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
       if (!vaildatePhone(element.phone)) {
         setloading(false);
         return settoastdata({
@@ -360,7 +381,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            phone: e.target.value.trim(),
+                            phone: removenonnumber(e.target.value.trim()),
                           },
                         }));
                       }}

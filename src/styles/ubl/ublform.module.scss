@@ -34,6 +34,21 @@
     border-radius: 12px;
     overflow-y: auto;
     margin-top: 5%;
+    scrollbar-width: auto;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 25px;
+      background: rgba(234, 238, 248, 1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(204, 214, 240, 1);
+      border-radius: 25px;
+      border: 3px none #ffffff;
+    }
     .wrapper {
       display: flex;
       flex-direction: column;
@@ -41,6 +56,7 @@
       margin-top: 20px;
       flex: 1;
       text-align: center;
+
       .summary {
         margin-top: 10px;
         font-weight: 400;
@@ -85,6 +101,7 @@
       display: flex;
       flex-direction: column;
       padding-bottom: 50px;
+
       .logoWrapper {
         display: flex;
         flex-direction: column;
