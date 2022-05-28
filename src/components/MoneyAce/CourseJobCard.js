@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "../../styles/MoneyAce/coursejobcard.module.scss";
 
-export default function CourseJobCard({ data, isActive }) {
+export default function CourseJobCard({
+  data,
+  isActive,
+  isCompleted,
+  handleClick,
+}) {
   const images = {
     stamina: "https://i.ibb.co/8XPn9kg/energy.png",
     morale: "https://i.ibb.co/G0nJ3Pn/morality.png",
@@ -9,7 +14,11 @@ export default function CourseJobCard({ data, isActive }) {
     cost: "https://i.ibb.co/4ZKjFgG/salary.png",
   };
   return (
-    <div className={`${styles.card} ${!isActive && styles.inactive}`}>
+    <div
+      className={`${styles.card} ${
+        !isActive && !isCompleted && styles.inactive
+      }`}
+    >
       <div className={styles.main}>
         <img className={styles.icon} src={data.image} alt="" />
         <p className={styles.title}>{data.name}</p>
@@ -25,8 +34,16 @@ export default function CourseJobCard({ data, isActive }) {
             );
           })}
         </div>
-        <div className={styles.btn}>
-          <div className={styles.btnInside}>START</div>
+        <div
+          className={styles.btn}
+          onClick={() => {
+            if (isCompleted) return;
+            handleClick(data.id);
+          }}
+        >
+          <div className={styles.btnInside}>
+            {isCompleted ? "Completed" : `START`}
+          </div>
         </div>
       </div>
     </div>
