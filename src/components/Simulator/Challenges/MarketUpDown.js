@@ -171,26 +171,30 @@ export default function MarketUpDown({ token, simulatorType, userData }) {
                     )}
                   </div>
                 </div>
-                <div className={styles.right}>
-                  <div className={styles.title}>Correct answer is</div>
-                  <div
-                    className={
-                      result.correct_ans === "up" ? styles.up : styles.down
-                    }
-                  >
-                    {result.correct_ans === "up" ? (
-                      <>
-                        <UpSvg />
-                        UP
-                      </>
-                    ) : (
-                      <>
-                        <DownSvg />
-                        Down
-                      </>
-                    )}
+                {result.correct_ans ? (
+                  <div className={styles.right}>
+                    <div className={styles.title}>Correct answer is</div>
+                    <div
+                      className={
+                        result.correct_ans === "up" ? styles.up : styles.down
+                      }
+                    >
+                      {result.correct_ans === "up" ? (
+                        <>
+                          <UpSvg />
+                          UP
+                        </>
+                      ) : (
+                        <>
+                          <DownSvg />
+                          Down
+                        </>
+                      )}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           )}

@@ -21,7 +21,17 @@ const ApexChart = ({ chartData, className }) => {
         chart: {
           type: "area",
           toolbar: {
-            show: false,
+            show: true,
+            tools: {
+              download: false,
+              selection: true,
+              zoom: true,
+              zoomin: true,
+              zoomout: true,
+              pan: true,
+              reset: true | '<img src="/static/icons/reset.png" width="20">',
+              customIcons: [],
+            },
           },
         },
         dataLabels: {

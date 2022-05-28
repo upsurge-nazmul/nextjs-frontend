@@ -74,14 +74,15 @@ export default function Portfolio({ userData, token, simulatorType }) {
     if (records && records.length) {
       let values = [];
       for (let record of records) {
+        let portfolioValue =
+          simulatorType === "stocksimulator"
+            ? parseFloat(record.current_stock_portfolio)
+            : simulatorType === "cryptosimulator"
+            ? parseFloat(record.current_crypto_portfolio)
+            : 0;
         values.push([
           new Date(record.date),
-          parseFloat(record.current_cash_portfolio) +
-            parseFloat(
-              record.current_stock_portfolio
-                ? current_stock_portfolio
-                : record.current_crypto_portfolio
-            ),
+          parseFloat(record.current_cash_portfolio) + portfolioValue,
         ]);
       }
       setPortfolioChartData(values);
