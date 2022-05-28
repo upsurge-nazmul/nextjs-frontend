@@ -233,7 +233,7 @@ export default function UblForm({
               onChange={(e) =>
                 setformdata((prev) => ({
                   ...prev,
-                  team_name: onlyText(e.target.value),
+                  team_name: onlyText(e.target.value, true),
                 }))
               }
             />
@@ -291,7 +291,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            name: e.target.value,
+                            name: onlyText(e.target.value, true),
                           },
                         }));
                       }}

@@ -1,6 +1,7 @@
 import validator from "validator";
 
-export function onlyText(data) {
+export function onlyText(data, allowSpace) {
+  if (allowSpace) return data?.replace(/[^a-zA-Z ]/g, "") || "";
   return data?.replace(/[^a-zA-Z]/g, "") || "";
 }
 
