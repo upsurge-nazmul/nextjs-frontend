@@ -32,7 +32,14 @@ export default function Menu({ menuItems = [] }) {
             {menuItems.length
               ? menuItems.map((item, i) => {
                   return (
-                    <div key={i} onClick={item.onClick} className={styles.item}>
+                    <div
+                      key={i}
+                      onClick={() => {
+                        item.onClick();
+                        setActive(false);
+                      }}
+                      className={styles.item}
+                    >
                       {item.icon}
                       {item.name}
                     </div>
