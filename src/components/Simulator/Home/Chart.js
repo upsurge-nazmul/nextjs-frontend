@@ -28,6 +28,9 @@ const ApexChart = ({
           toolbar: {
             show: false,
           },
+          zoom: {
+            enabled: false,
+          },
         },
         stroke: {
           curve: "smooth",
