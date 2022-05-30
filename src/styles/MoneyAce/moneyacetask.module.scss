@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .task {
   position: relative;
   display: flex;
@@ -290,6 +292,48 @@
     }
     .num {
       font-size: 18px;
+    }
+    .main {
+      flex: 1;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        #fdbe24 0%,
+        #fdc025 0.01%,
+        #f69f19 60.99%
+      );
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 2;
+      padding: 0.5vw;
+      display: flex;
+      align-items: center;
+      img {
+        object-fit: cover;
+        width: 5vw;
+        top: 0;
+        height: 100%;
+        opacity: 0.8;
+        z-index: -1;
+        border-radius: 12px;
+      }
+      .text {
+        padding: 0 2%;
+        flex: 1;
+        .name {
+          font-size: $mobile-xsmall;
+        }
+        .des {
+          font-size: 8px;
+          margin-top: 2px;
+        }
+      }
+      .btn {
+        padding: 2px;
+        .btnInside {
+          font-size: 8px;
+        }
+      }
     }
     .prallelogram {
       .text {

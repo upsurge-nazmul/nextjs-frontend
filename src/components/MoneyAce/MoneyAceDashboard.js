@@ -465,7 +465,10 @@ export default function MoneyAceDashboard({
           </div>
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
-              <div className={`${styles.link} ${styles.link0}`}>
+              <div
+                className={`${styles.link} ${styles.link0}`}
+                onClick={() => setcurrenttab("tasks")}
+              >
                 <p className={styles.title}>Home</p>
                 <div className={styles.bg}>
                   <img

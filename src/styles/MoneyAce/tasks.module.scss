@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .virtualstore {
   top: 0;
   left: 0;
@@ -661,6 +663,12 @@
       border-radius: 12px;
       padding: 10px 20px;
       gap: 10px;
+      .heading {
+        .title {
+          font-size: $mobile-xsmall;
+          padding-bottom: 7%;
+        }
+      }
       .header {
         .cart {
           color: white;
