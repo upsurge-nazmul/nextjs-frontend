@@ -19,6 +19,7 @@ import Spinner from "../../../components/Spinner";
 import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
+import { getCookie } from "../../../actions/cookieUtils";
 let fullscreenenabled = false;
 const specialchars = [
   "#",
