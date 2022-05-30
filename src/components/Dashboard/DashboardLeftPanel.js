@@ -146,6 +146,28 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
 
             <p className={styles.tabtitle}>Store</p>
           </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/stocksimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/stocksimulator/home")}
+          >
+            <StockSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Stock Simulator</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/cryptosimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/cryptosimulator/home")}
+          >
+            <CryptoSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Crypto Simulator</p>
+          </div>
           <LeftPannelToggle
             name="Resources"
             currenttab={currenttab}
@@ -224,15 +246,6 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Money Quotient</p>
           </div>
-          {/* <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/moneyace" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/w/moneyace")}
-          >
-            <StockSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Money Ace</p>
-          </div> */}
           {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/stocksimulator/[page]"
