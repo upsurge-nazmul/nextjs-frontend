@@ -6,6 +6,8 @@ export default function CourseJobCard({
   isActive,
   isCompleted,
   handleClick,
+  settoastdata,
+  type,
 }) {
   const images = {
     stamina: "https://i.ibb.co/8XPn9kg/energy.png",
@@ -38,6 +40,13 @@ export default function CourseJobCard({
           className={styles.btn}
           onClick={() => {
             if (isCompleted) return;
+            if (!isActive) {
+              return settoastdata({
+                show: true,
+                type: "error",
+                msg: (type ? type : "Job") + " is not active",
+              });
+            }
             handleClick(data.id);
           }}
         >

@@ -145,6 +145,8 @@ export default function EducationHub({
               <CourseJobCard
                 data={item}
                 handleClick={handleClick}
+                settoastdata={settoastdata}
+                type="Course"
                 key={item.id}
                 isCompleted={checkcompleted(item.id)}
                 isActive={tasks.findIndex((data) => data.id === item.id) !== -1}

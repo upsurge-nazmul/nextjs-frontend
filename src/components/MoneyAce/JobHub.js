@@ -148,6 +148,7 @@ export default function JobHub({
               <CourseJobCard
                 data={item}
                 key={item.id}
+                settoastdata={settoastdata}
                 isActive={tasks.findIndex((data) => data.id === item.id) !== -1}
               />
             );

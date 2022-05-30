@@ -949,6 +949,162 @@
           }
         }
       }
+      .upi {
+        .main {
+          .heading {
+            position: absolute;
+            top: -6%;
+            width: 17vw;
+            height: 75px;
+            .namewrapper {
+              width: 100%;
+              position: relative;
+              display: flex;
+              align-items: center;
+              height: 100%;
+              justify-content: center;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+              p {
+                position: absolute;
+                top: 15%;
+                color: white;
+                font-weight: 900;
+                filter: drop-shadow(1px 2px 1px #1b5500);
+                font-family: "Fira Sans", sans-serif;
+                letter-spacing: 1px;
+                font-size: 18px;
+              }
+            }
+          }
+          .form {
+            padding: 20px 40px;
+            padding-right: 10px;
+            width: 50%;
+            max-height: 100%;
+            min-width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            .err {
+              color: rgb(122, 0, 0);
+              width: 100%;
+              text-align: center;
+            }
+            .wrapper {
+              overflow-y: auto;
+              width: 100%;
+              padding-right: 20px;
+            }
+            .row {
+              display: flex;
+              align-items: center;
+              margin-bottom: 5%;
+              position: relative;
+              gap: 10px;
+              width: 100%;
+              img {
+                width: 40px;
+                cursor: pointer;
+              }
+              p:first-child {
+                font-weight: 900;
+                font-family: "Fira Sans", sans-serif;
+                font-size: $gen-xl;
+                color: #ffd500;
+                flex: 1;
+              }
+              input {
+                border-radius: 20px;
+                outline: none;
+                border: none;
+                border: 1px solid rgb(119, 119, 119);
+                font-family: "Fira Sans", sans-serif;
+                text-align: center;
+                font-size: $gen-xl;
+                font-weight: 800;
+                color: white;
+                padding: 5px 20px;
+                height: 45px;
+                flex: 1;
+                background-color: rgba(0, 0, 0, 0.4);
+              }
+              .upiinput {
+                position: absolute;
+                right: 2%;
+                font-weight: 700;
+                color: white;
+                font-family: "Fira Sans", sans-serif;
+                font-size: $gen-s;
+              }
+            }
+
+            .bottomrow {
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+              margin: 20px 0 10px;
+              .space {
+                flex: 1;
+              }
+              .btn {
+                background: rgb(255, 213, 0);
+                font-weight: 900;
+                font-size: $gen-l;
+                color: white;
+                background: linear-gradient(
+                  180deg,
+                  rgba(255, 213, 0, 1) 0%,
+                  rgba(255, 175, 0, 1) 100%
+                );
+                padding: 12px;
+                border-radius: 6px;
+                filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.466));
+                width: 6vw;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                p {
+                  font-family: "Fira Sans", sans-serif;
+                  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+                }
+              }
+            }
+            .submit {
+              margin: 0 auto;
+              background: rgb(255, 213, 0);
+              font-weight: 900;
+              font-size: 16px;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 213, 0, 1) 0%,
+                rgba(255, 175, 0, 1) 100%
+              );
+              padding: 10px 20px;
+              border-radius: 10px;
+              color: white;
+              margin-top: 10px;
+              transition: all 0.3s ease;
+              margin-bottom: 10px;
+              cursor: pointer;
+              p {
+                font-family: "Fira Sans", sans-serif;
+                font-weight: 800;
+                font-size: $gen-l;
+                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+              }
+              &:hover {
+                background-color: hsl(215, 52%, 50%);
+              }
+            }
+          }
+        }
+      }
       .bg {
         position: absolute;
         z-index: -2;
