@@ -102,7 +102,6 @@ export default function Tasks({
                 : widthHeight.width * 0.035
             }
             border={5}
-            border={0}
             image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
