@@ -18,6 +18,7 @@ export default function Simulator({
   userData,
   token,
   simulatorType = "stocksimulator",
+  type = "waitlist",
 }) {
   const router = useRouter();
   const [mode, setMode] = useState(router.query.page);
@@ -55,7 +56,7 @@ export default function Simulator({
 
   return (
     <div className={styles.stockSimulator}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel type={type} />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
