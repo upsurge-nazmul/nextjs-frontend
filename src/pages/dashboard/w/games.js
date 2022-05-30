@@ -124,7 +124,7 @@ function Games({ userdatafromserver, token }) {
             >{`On upsurge, children (and parents) are encouraged to play games based on topics around entrepreneurship & money management, so that they can learn by doing and making decisions. 
 Here are some of our games that you and your child can play together. 
 `}</p>
-            {/* <MoneyAceBanner type="w" /> */}
+            <MoneyAceBanner type="w" />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>

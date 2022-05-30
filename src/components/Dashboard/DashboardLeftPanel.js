@@ -226,6 +226,15 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           {/* <div
             className={`${styles.tab} ${
+              currenttab === "/dashboard/w/moneyace" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/w/moneyace")}
+          >
+            <StockSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Money Ace</p>
+          </div> */}
+          {/* <div
+            className={`${styles.tab} ${
               currenttab === "/dashboard/w/stocksimulator/[page]"
                 ? styles.activetab
                 : ""
