@@ -206,6 +206,9 @@ export default function GamePage({ gamedata, userdata }) {
         console.log(progression * 100);
       });
       unitycontext.on("Exit", function () {
+        if (router.query.gobackto) {
+          return router.push(router.query.gobackto);
+        }
         router.push("/games");
       });
       unitycontext.on("Fullscreen", function () {
@@ -218,6 +221,10 @@ export default function GamePage({ gamedata, userdata }) {
           fullscreenenabled = true;
           setisfullscreen(true);
         }
+      });
+      unitycontext.on("GameId", function (gameid) {
+        if (!gameid) return;
+        router.push("/games/test/" + gameid + `?gobackto=${router.asPath}`);
       });
     },
     [unitycontext]

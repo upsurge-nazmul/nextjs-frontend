@@ -88,13 +88,28 @@
         .about,
         .content {
           margin-top: 10px;
-          font-family: "Roboto";
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 400;
+          line-height: 24px;
+        }
+        .conceptswrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          margin-top: 20px;
+          .concept {
+            width: fit-content;
+            height: fit-content;
+            padding: 10px 20px;
+            background: #f4f5f7;
+            border: 0.5px solid #9d9d9d;
+            border-radius: 4px;
+            margin: 5px;
+          }
         }
       }
       .right {
-        width: 20vw;
+        width: 0;
         margin-right: 40px;
         padding-top: 20px;
         .buttonwrapper {
@@ -235,7 +250,7 @@
           }
         }
         .right {
-          width: 25vw;
+          width: fit-content;
           margin-right: 20px;
           .buttonwrapper {
             display: flex;

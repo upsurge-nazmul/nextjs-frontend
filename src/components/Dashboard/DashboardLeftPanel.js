@@ -365,7 +365,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/p/quests")}
+            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>

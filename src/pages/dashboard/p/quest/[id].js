@@ -12,75 +12,59 @@ const demodata = [
   {
     sectionno: 1,
     title: "Money",
-    chaptersandweeks: "3 Chapters 1 Week",
+    chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
         title: "What is money?",
         completion: "100%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime:
+          "Children will understand how & why Money was invented, it’s evolution, and uses",
       },
       {
         chapterno: 2,
-        title: "Why is money needed?",
+        title: "Money Quiz",
         completion: "40%",
-        remainingtime: "3 Hrs remaining",
-      },
-      {
-        chapterno: 3,
-        title: "What was there before money?",
-        completion: "50%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime: "",
       },
     ],
   },
   {
     sectionno: 2,
-    title: "Money",
-    chaptersandweeks: "3 Chapters 1 Week",
+    title: "Banking",
+    chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
-        title: "What is money?",
+        title: "Ira's visit to the bank",
         completion: "60%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime:
+          "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
       },
       {
         chapterno: 2,
-        title: "Why is money needed?",
+        title: "Banking Quiz",
         completion: "40%",
-        remainingtime: "3 Hrs remaining",
-      },
-      {
-        chapterno: 3,
-        title: "What was there before money?",
-        completion: "50%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime: "",
       },
     ],
   },
   {
     sectionno: 3,
-    title: "Money",
-    chaptersandweeks: "3 Chapters 1 Week",
+    title: "Payments",
+    chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
-        title: "What is money?",
+        title: "Kiara's Budget Trip",
         completion: "60%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime: "Know about currencies",
       },
       {
         chapterno: 2,
-        title: "Why is money needed?",
+        title: "Digital Banking & payments",
         completion: "40%",
-        remainingtime: "3 Hrs remaining",
-      },
-      {
-        chapterno: 3,
-        title: "What was there before money?",
-        completion: "50%",
-        remainingtime: "3 Hrs remaining",
+        remainingtime: "",
       },
     ],
   },
@@ -94,6 +78,17 @@ const democoncepts = [
   "Saving",
   "Assets",
   "Mutual Funds",
+];
+const availableCourses = [
+  {
+    name: "upsurge Quest",
+    description:
+      "This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.",
+    amount: 3500,
+    img_url:
+      "https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
+    id: "upsurge-quest",
+  },
 ];
 export default function Quests() {
   const [toastdata, settoastdata] = useState({
@@ -111,45 +106,33 @@ export default function Quests() {
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainhead}>
           <img
-            src="https://i.pinimg.com/originals/8f/14/57/8f14578ef69a4c53352955d1e072eda6.png"
+            src="https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
             alt=""
           />
           <div className={styles.right}>
-            <p className={styles.questheading}>
-              Personal Finance & Business 101
-            </p>
+            <p className={styles.questheading}>upsurge Quest</p>
             <p className={styles.age}>Age 10-12</p>
-            <div className={styles.details}>
-              <div className={styles.students}>
-                <PeopleSvg />
-                345 students enrolled
-              </div>
-              <div className={styles.projects}>
-                <ProjectSvg />
-                37 published projects
-              </div>
-            </div>
           </div>
           <div className={styles.creditandweeks}>
-            <p className={styles.weeks}>3 weeks</p>
-            <p className={styles.credits}>430 Credits Required</p>
+            <p className={styles.credits}>1000 UniCoins</p>
           </div>
         </div>
         <div className={styles.maincontent}>
           <div className={styles.left}>
             <p className={styles.heading}>About the Quest</p>
             <p className={styles.about}>
-              {`Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, But also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.`}
+              {`This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.`}
             </p>
+            <p className={styles.heading}>Concepts Covered</p>
+            <div className={styles.conceptswrapper}>
+              {democoncepts.map((concept, index) => {
+                return (
+                  <div className={styles.concept} key={"concept" + index}>
+                    {concept}
+                  </div>
+                );
+              })}
+            </div>
             <p className={styles.heading}>Knowledge Quest Content</p>
             <p className={styles.content}>
               Follow the course content to learn more about Investing.
@@ -161,14 +144,14 @@ export default function Quests() {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.buttonwrapper}>
+            {/* <div className={styles.buttonwrapper}>
               <div className={styles.bookmarkbutton}>
                 <BookMarkSvg />
                 Bookmark
               </div>
               <div className={styles.startbutton}>Start quest</div>
-            </div>
-            <div className={styles.details}>
+            </div> */}
+            {/* <div className={styles.details}>
               <div className={styles.section}>
                 <p className={styles.number}>34</p>
                 <p className={styles.name}>session</p>
@@ -181,17 +164,7 @@ export default function Quests() {
                 <p className={styles.number}>3</p>
                 <p className={styles.name}>challenges</p>
               </div>
-            </div>
-            <p className={styles.heading}>Concepts Covered</p>
-            <div className={styles.conceptswrapper}>
-              {democoncepts.map((concept, index) => {
-                return (
-                  <div className={styles.concept} key={"concept" + index}>
-                    {concept}
-                  </div>
-                );
-              })}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
