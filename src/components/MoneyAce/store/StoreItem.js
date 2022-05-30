@@ -18,9 +18,9 @@ export default function StoreItem({
 
   function additem(type) {
     if (type === "minus") {
-      setmaincount((prev) => (prev - 1 < 0 ? 0 : prev - 1));
-      setcarttotal((prev) => (prev - data.price < 0 ? 0 : prev - data.price));
       if (cart[data.name] && cart[data.name].quantity > 0) {
+        setmaincount((prev) => (prev - 1 < 0 ? 0 : prev - 1));
+        setcarttotal((prev) => (prev - data.price < 0 ? 0 : prev - data.price));
         setcart((prev) => ({
           ...prev,
           [data.name]: {
