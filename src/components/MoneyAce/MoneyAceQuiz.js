@@ -74,6 +74,7 @@ export default function MoneyAceQuiz({
         <div className={styles.divmain}>
           <div className={styles.quiz}>
             <SimpleProgress
+              extrastyle={{ marginBottom: "20px" }}
               clr={
                 colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"
               }
