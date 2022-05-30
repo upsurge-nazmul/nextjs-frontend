@@ -31,6 +31,8 @@ export default function Simulator({
   });
   const { setuserdata } = useContext(MainContext);
 
+  console.log("@@@@@@@", type);
+
   useEffect(() => {
     setMode(router.query.page);
   }, [router.query.page]);

@@ -6,16 +6,17 @@ import Welcome from "../../../components/MoneyAce/Welcome";
 import Unity, { UnityContext } from "react-unity-webgl";
 import { useRouter } from "next/dist/client/router";
 import Toast from "../../../components/Toast";
-import styles from "../../../styles/kidDashboard/newmoneyace.module.scss";
+import styles from "../../../styles/kidDashboard/moneyace.module.scss";
 import { MainContext } from "../../../context/Main";
 import { db } from "../../../db";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import BrokenGameConroller from "../../../components/SVGcomponents/BrokenGameConroller";
 import MoneyAceDashboard from "../../../components/MoneyAce/MoneyAceDashboard";
 import Spinner from "../../../components/Spinner";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
-export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
+let fullscreenenabled = false;
+
+export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
   const [moneyaceuserdata, setmoneyaceuserdata] = useState(moneyacedata);
@@ -34,7 +35,6 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
   const [tasks, settasks] = useState([]);
   const [canvassize, setcanvassize] = useState({ width: 800, height: 800 });
   const router = useRouter();
-  const handlefullscren = useFullScreenHandle();
   useEffect(() => {
     function handleResize() {
       let x = document.getElementById("GameCanvas");
@@ -185,36 +185,59 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
       }
       setisfullscreen(false);
     } else {
-      let element = document.getElementById("unity-wrapper");
-      console.log(element);
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
+      let element = document.getElementById("GameCanvas");
+      if (element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+        setisfullscreen(true);
       }
-      setisfullscreen(true);
     }
   }
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+        // router.push("/games");
+      }
+    }
+  }, []);
   return (
     <div className={styles.moneyAce}>
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div
         className={`${styles.contentWrapper} ${
-          handlefullscren.active && styles.contentWrapperFull
+          isfullscreen && styles.contentWrapperFull
         }`}
       >
         <DashboardHeader mode={"Money Ace"} settoastdata={settoastdata} />
         <div
           className={`${styles.mainContent} ${
-            handlefullscren.active && styles.mainContentfull
+            isfullscreen && styles.mainContentfull
           }`}
+          id="GameCanvas"
         >
-          {widthHeight.width < 860 && !handlefullscren.active ? (
+          {widthHeight.width < 860 && !isfullscreen ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
                 <BrokenGameConroller className={styles.jasper} />
@@ -229,20 +252,11 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
                     : "Please use below button to play game in fullscreen"}
                 </p>
                 {!(widthHeight.width < widthHeight.height) && (
-                  <div
-                    className={styles.button}
-                    onClick={() => {
-                      if (!(widthHeight.width < widthHeight.height)) {
-                        handlefullscren.enter();
-                      }
-                    }}
-                  >
+                  <div className={styles.button} onClick={movetofull}>
                     Enter fullscreen
                   </div>
                 )}
               </div>
-
-              {/* <Jasper className={styles.jasper} /> */}
             </div>
           ) : (
             <div
@@ -250,8 +264,7 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
                 widthHeight.width >= widthHeight.height * 2 &&
                 styles.extralargegaimMain
               }`}
-              style={{ width: handlefullscren.active ? "100%" : "90%" }}
-              id="GameCanvas"
+              style={{ width: isfullscreen ? "100%" : "90%" }}
             >
               {stage === "welcome" ? (
                 <Welcome
@@ -282,13 +295,14 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
                   setmoneyacedata={setmoneyaceuserdata}
                   settoastdata={settoastdata}
                   settasks={settasks}
-                  avatarUrl={userdatafromserver.user_img_url}
-                  username={userdatafromserver.user_name}
+                  avatarUrl={userdatafromserver?.user_img_url}
+                  username={userdatafromserver?.user_name}
                   fullName={
-                    userdatafromserver.first_name +
+                    userdatafromserver?.first_name +
                     " " +
-                    userdatafromserver.last_name
+                    userdatafromserver?.last_name
                   }
+                  stage={stage}
                   setstage={setstage}
                 />
               ) : stage === "game" ? (
@@ -303,7 +317,7 @@ export default function NewMoneyace({ userdatafromserver, moneyacedata }) {
                       <p>Loading {Math.round(progression * 100)}%</p>
                     </div>
                   )}
-                  {widthHeight.width < 860 && !handlefullscren.active ? (
+                  {widthHeight.width < 860 && !isfullscreen ? (
                     <div className={styles.mobileerr}>
                       <div className={styles.box}>
                         <BrokenGameConroller className={styles.jasper} />

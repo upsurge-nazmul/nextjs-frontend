@@ -148,22 +148,22 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           </div>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/w/stocksimulator/[page]"
+              currenttab === "/dashboard/k/stocksimulator/[page]"
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/w/stocksimulator/home")}
+            onClick={() => router.push("/dashboard/k/stocksimulator/home")}
           >
             <StockSvg className={styles.icon} />
             <p className={styles.tabtitle}>Stock Simulator</p>
           </div>
           <div
             className={`${styles.tab} ${
-              currenttab === "/dashboard/w/cryptosimulator/[page]"
+              currenttab === "/dashboard/k/cryptosimulator/[page]"
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/w/cryptosimulator/home")}
+            onClick={() => router.push("/dashboard/k/cryptosimulator/home")}
           >
             <CryptoSvg className={styles.icon} />
             <p className={styles.tabtitle}>Crypto Simulator</p>

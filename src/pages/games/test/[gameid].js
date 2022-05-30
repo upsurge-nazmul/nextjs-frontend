@@ -19,6 +19,7 @@ import Spinner from "../../../components/Spinner";
 import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
+import { getCookie } from "../../../actions/cookieUtils";
 let fullscreenenabled = false;
 const specialchars = [
   "#",
@@ -83,7 +84,6 @@ export default function GamePage({ gamedata, userdata }) {
     }
   }, [userdata]);
 
-  const handlefullscren = useFullScreenHandle();
   function handleOnClickFullscreenUnity() {
     unityref.current?.send(
       "FullscreenController",
@@ -91,6 +91,17 @@ export default function GamePage({ gamedata, userdata }) {
       fullscreenenabled ? 1 : 0
     );
   }
+  function handleSendToken() {
+    unitycontext?.send("TokenController", "SetToken", getCookie("accesstoken"));
+  }
+  useEffect(() => {
+    if (progression === 1 && unitycontext) {
+      console.log("calling from frontend");
+      handleSendToken();
+      handleOnClickFullscreenUnity();
+    }
+  }, [progression, unitycontext]);
+
   useEffect(() => {
     unityref.current = unitycontext;
   }, [unitycontext]);
