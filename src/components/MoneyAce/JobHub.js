@@ -149,6 +149,7 @@ export default function JobHub({
                 data={item}
                 key={item.id}
                 settoastdata={settoastdata}
+                handleClick={() => {}}
                 isActive={tasks.findIndex((data) => data.id === item.id) !== -1}
               />
             );

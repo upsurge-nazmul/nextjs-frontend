@@ -27,6 +27,7 @@ export default function MoneyAceTask({
   async function handlegamepush(gameid) {
     let gamedata = await GameApis.gamedata({ id: gameid });
     if (gamedata && gamedata.data && gamedata.data.data) {
+      console.log(gamedata.data.data);
       setgamedata(gamedata.data.data);
       let res = await FreeGameApis.presign({
         user_name:

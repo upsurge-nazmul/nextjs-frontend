@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
@@ -15,6 +15,7 @@ import Spinner from "../../../components/Spinner";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
+import { getCookie } from "../../../actions/cookieUtils";
 let fullscreenenabled = false;
 
 export default function Moneyace({ userdatafromserver, moneyacedata }) {
@@ -29,6 +30,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const [volume, setvolume] = useState(1);
   const [stage, setstage] = useState("welcome");
   const [unitycontext, setunitycontext] = useState(null);
+  const unityref = useRef(unitycontext);
   const [gamedata, setgamedata] = useState(null);
   const [progression, setProgression] = useState(0);
   const [isfullscreen, setisfullscreen] = useState(false);
@@ -44,7 +46,16 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
     }
     window.addEventListener("resize", handleResize);
   }, []);
-
+  function handleOnClickFullscreenUnity() {
+    unityref.current?.send(
+      "FullscreenController",
+      "UpdateScreen",
+      fullscreenenabled ? 1 : 0
+    );
+  }
+  function handleSendToken() {
+    unitycontext?.send("TokenController", "SetToken", getCookie("accesstoken"));
+  }
   useEffect(() => {
     if (!userdatafromserver) return;
     setuserdata(userdatafromserver);
@@ -145,9 +156,9 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   useEffect(
     function () {
       if (!unitycontext) return;
-      unitycontext.on("GameOver", function (userName, score) {
+      unitycontext.on("Score", function (score) {
         console.log("Game COmpleted", score);
-        MoneyAceApis.updatescore({ score: score, gameId: gamedata.id });
+        // MoneyAceApis.updatescore({ score: score, gameId: gamedata.id });
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
@@ -167,6 +178,12 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
     },
     [unitycontext]
   );
+  useEffect(() => {
+    if (progression === 1 && unitycontext) {
+      handleSendToken();
+      handleOnClickFullscreenUnity();
+    }
+  }, [progression, unitycontext]);
   function movetofull() {
     // if already full screen; exit
     // else go fullscreen
@@ -367,6 +384,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                           progression < 1 ? styles.none : styles.gameMain
                         }`}
                         unityContext={unitycontext}
+                        ref={unityref}
                         matchWebGLToCanvasSize={true}
                       />
                     )

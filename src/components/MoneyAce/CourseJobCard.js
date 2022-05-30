@@ -40,13 +40,13 @@ export default function CourseJobCard({
           className={styles.btn}
           onClick={() => {
             if (isCompleted) return;
-            if (!isActive) {
-              return settoastdata({
-                show: true,
-                type: "error",
-                msg: (type ? type : "Job") + " is not active",
-              });
-            }
+            // if (!isActive) {
+            //   return settoastdata({
+            //     show: true,
+            //     type: "error",
+            //     msg: (type ? type : "Job") + " is not active",
+            //   });
+            // }
             handleClick(data.id);
           }}
         >
