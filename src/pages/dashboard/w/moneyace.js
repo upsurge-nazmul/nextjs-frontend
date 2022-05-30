@@ -14,6 +14,7 @@ import MoneyAceDashboard from "../../../components/MoneyAce/MoneyAceDashboard";
 import Spinner from "../../../components/Spinner";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
 let fullscreenenabled = false;
 
 export default function Moneyace({ userdatafromserver, moneyacedata }) {
@@ -31,6 +32,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const [gamedata, setgamedata] = useState(null);
   const [progression, setProgression] = useState(0);
   const [isfullscreen, setisfullscreen] = useState(false);
+  const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [muted, setmuted] = useState(false);
   const [tasks, settasks] = useState([]);
   const [canvassize, setcanvassize] = useState({ width: 800, height: 800 });
@@ -237,25 +239,46 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
           }`}
           id="GameCanvas"
         >
-          {widthHeight.width < 860 && !isfullscreen ? (
+          {showgamelandscapeinfo && (
+            <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+          )}
+
+          {widthHeight.width <= 900 &&
+          widthHeight.height > widthHeight.width &&
+          !isfullscreen ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
+                <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
                 <p className={styles.heading}>
-                  {widthHeight.width < widthHeight.height
-                    ? "Oops! only landscape supported."
-                    : "Yay! now you can play in fullscreen"}
+                  Please switch to landscape mode
                 </p>
-                <p>
-                  {widthHeight.width < widthHeight.height
-                    ? "Please switch to landscape mode"
-                    : "Please use below button to play game in fullscreen"}
+                <p>{`This game only playable in landscape mode.`}</p>
+                <div
+                  className={styles.button}
+                  onClick={() => setshowgamelandscapeinfo(true)}
+                >
+                  Know more
+                </div>
+              </div>
+            </div>
+          ) : widthHeight.width <= 900 &&
+            widthHeight.height < widthHeight.width &&
+            !isfullscreen ? (
+            <div className={styles.mobileerr}>
+              <div className={styles.box}>
+                <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
+                <p className={styles.heading}>
+                  This game can only be played on fullscreen in your phone.
                 </p>
-                {!(widthHeight.width < widthHeight.height) && (
-                  <div className={styles.button} onClick={movetofull}>
-                    Enter fullscreen
-                  </div>
-                )}
+                <div className={styles.button} onClick={movetofull}>
+                  Go to fullscreen
+                </div>
               </div>
             </div>
           ) : (
@@ -320,18 +343,20 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                   {widthHeight.width < 860 && !isfullscreen ? (
                     <div className={styles.mobileerr}>
                       <div className={styles.box}>
-                        <BrokenGameConroller className={styles.jasper} />
+                        <img
+                          src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                          className={styles.jasper}
+                        />
                         <p className={styles.heading}>
-                          Game can only be played on fullscreen in this device.
+                          This game can only be played on fullscreen in your
+                          phone.
                         </p>
-                        <p>
-                          {`Please use below button to play game in fullscreen`}
-                        </p>
+                        <p>{`This game only playable in landscape mode.`}</p>
                         <div
                           className={styles.button}
-                          onClick={handlefullscren.enter}
+                          onClick={() => setshowgamelandscapeinfo(true)}
                         >
-                          Enter fullscreen
+                          Know more
                         </div>
                       </div>
                     </div>

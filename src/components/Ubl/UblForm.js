@@ -213,7 +213,7 @@ export default function UblForm({
   }, []);
   return (
     <div className={`${styles.formmain} ${showterm && styles.goBack}`}>
-      <div className={styles.bg} onClick={() => setshowform(false)}></div>
+      <div className={styles.bg}></div>
       {!done ? (
         <div className={styles.signup} id="signup">
           {!showterm && (
