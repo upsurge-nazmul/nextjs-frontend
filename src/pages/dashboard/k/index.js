@@ -268,7 +268,7 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       }
-      if (response.data.data.user_type !== "parent")
+      if (response.data.data.user_type !== "child")
         return {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {
