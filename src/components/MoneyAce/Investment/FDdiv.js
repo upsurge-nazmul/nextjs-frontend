@@ -86,7 +86,6 @@ export default function FDdiv({
           <div className={styles.subbg}>
             <div className={styles.innerbg}></div>
           </div>
-          <p className={styles.heading}>FIXED DEPOSIT</p>
           <div className={styles.wrapper}>
             <div className={styles.row}>
               <p>Intrest rate</p>
@@ -149,7 +148,6 @@ export default function FDdiv({
           <div className={styles.subbg}>
             <div className={styles.innerbg}></div>
           </div>
-          <p className={styles.heading}>NEW FIXED DEPOSIT</p>
           <div className={styles.wrapper}>
             <div className={styles.row}>
               <p style={{ textAlign: "center", justifyContent: "center" }}>

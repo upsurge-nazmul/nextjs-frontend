@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .card {
   display: flex;
   align-items: center;
@@ -121,4 +123,45 @@
 }
 .inactive {
   filter: grayscale(100%);
+}
+@media only screen and (max-width: 860px) {
+  .card {
+    padding: 5px;
+    .main {
+      padding: 5px;
+      .icon {
+        width: 4vw;
+        height: 4vw;
+        object-fit: contain;
+      }
+      .title {
+        font-size: 8px;
+      }
+      .description {
+        -webkit-line-clamp: 4;
+        font-size: 6px;
+      }
+      .benefits {
+        padding: 3px 5px;
+        .benefit {
+          .text {
+            font-size: 4px;
+            letter-spacing: 1px;
+            margin-top: 2px;
+          }
+          img {
+            width: 1.5vw;
+            height: 1.5vw;
+            margin: 0.2vw 0;
+          }
+        }
+      }
+      .btn {
+        padding: 2px;
+        .btnInside {
+          font-size: 8px;
+        }
+      }
+    }
+  }
 }

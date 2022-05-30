@@ -40,7 +40,6 @@ export default function BankCards({
         <div className={styles.mainbg}>
           <div className={styles.innerbg}></div>
         </div>
-        <div className={styles.mainheading}>Cards</div>
         {moneyacedata.is_atm_claim ? (
           <div className={styles.card} id="debit-card-main">
             <div className={styles.logo}>

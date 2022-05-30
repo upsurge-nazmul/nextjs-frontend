@@ -84,9 +84,17 @@ export default function VirtualStore({
         <div className={styles.container}>
           <div className={styles.heading}>
             <NineSlice
-              width={widthHeight.width * 0.12}
-              height={widthHeight.width * 0.035}
-              border={0}
+              width={
+                widthHeight.width < 860
+                  ? widthHeight.width * 0.15
+                  : widthHeight.width * 0.12
+              }
+              height={
+                widthHeight.width < 860
+                  ? widthHeight.width * 0.05
+                  : widthHeight.width * 0.035
+              }
+              border={5}
               image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
               imageSize={{ x: 702, y: 195 }}
             >
@@ -140,9 +148,17 @@ export default function VirtualStore({
         <div className={styles.invoice}>
           <div className={styles.heading}>
             <NineSlice
-              width={widthHeight.width * 0.12}
-              height={widthHeight.width * 0.035}
-              border={0}
+              width={
+                widthHeight.width < 860
+                  ? widthHeight.width * 0.15
+                  : widthHeight.width * 0.12
+              }
+              height={
+                widthHeight.width < 860
+                  ? widthHeight.width * 0.05
+                  : widthHeight.width * 0.035
+              }
+              border={5}
               image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
               imageSize={{ x: 702, y: 195 }}
             >
@@ -188,8 +204,8 @@ export default function VirtualStore({
             <div
               className={styles.backbutton}
               onClick={() => {
-                if (mode === "passbook") {
-                  setmode("home");
+                if (mode === "invoice") {
+                  setmode("main");
                   return;
                 }
                 setcurrenttab("dashboard");

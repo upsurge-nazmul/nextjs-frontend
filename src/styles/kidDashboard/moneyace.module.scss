@@ -187,7 +187,7 @@
         flex-direction: column;
         justify-content: center;
         .gameMain {
-          width: 100%;
+          width: unset !important;
           height: 100%;
           aspect-ratio: 16/9 !important;
           background-size: cover;
