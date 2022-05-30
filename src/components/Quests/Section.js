@@ -15,11 +15,7 @@ function Section({ data }) {
               <div className={styles.main}>
                 <p className={styles.chapterno}>CHAPTER {chapter.chapterno}</p>
                 <p className={styles.chaptertitle}>{chapter.title}</p>
-                <p className={styles.chapterno}>
-                  Lorem ipsum is placeholder text commonly used in the graphic,
-                  print, and publishing industries for previewing layouts and
-                  visual mockups.
-                </p>
+                <p className={styles.chapterno}></p>
                 <p className={styles.remainingtime}>{chapter.remainingtime}</p>
               </div>
             </div>

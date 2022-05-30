@@ -26,44 +26,13 @@ function CoursesPage({ liveclassdata }) {
   });
   const availableCourses = [
     {
-      name: "Personal Finance & Business 101",
+      name: "upsurge Quest",
       description:
-        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
+        "This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.",
       amount: 3500,
-      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
-      id: "asd-1",
-    },
-    {
-      name: "Personal Finance & Business 101",
-      description:
-        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
-      amount: 3500,
-      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
-      id: "asd-12",
-    },
-    {
-      name: "Personal Finance & Business 101",
-      description:
-        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
-      amount: 3500,
-      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
-      id: "asd-13",
-    },
-    {
-      name: "Personal Finance & Business 101",
-      description:
-        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
-      amount: 3500,
-      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
-      id: "asd-1",
-    },
-    {
-      name: "Personal Finance & Business 101",
-      description:
-        "This Investments for beginners course teaches you the basics fast. It includes quizzes and assignments too..",
-      amount: 3500,
-      img_url: "https://i.ibb.co/thBPDZ3/creativity-3038628-1280.webp",
-      id: "asd-12",
+      img_url:
+        "https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
+      id: "upsurge-quest",
     },
   ];
   const kiddata = ["", "", ""];
@@ -162,20 +131,23 @@ async function getkidsdata(token) {
   let response = await DashboardApis.getkids(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getchores(token) {
   let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
-  }
+  } else return null;
 }
 async function getgames(token) {
   let response = await DashboardApis.getgames(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }

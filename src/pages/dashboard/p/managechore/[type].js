@@ -383,7 +383,8 @@ export default function ManageChore({
     </div>
   );
 }
-export async function getServerSideProps({ params, req }) {
+export async function getServerSideProps(context) {
+  let { params, req, query } = context;
   let token = req.cookies.accesstoken;
   if (token) {
     let response = await LoginApis.checktoken({
@@ -424,9 +425,9 @@ export async function getServerSideProps({ params, req }) {
           return { props: { choredata: null, childdata: null } };
         }
       } else {
-        if (req.__NEXT_INIT_QUERY.templateid) {
+        if (query.templateid) {
           let res = await ChoreApis.gettemplatedetail(
-            { id: req.__NEXT_INIT_QUERY.templateid },
+            { id: query.templateid },
             token
           );
           return {
