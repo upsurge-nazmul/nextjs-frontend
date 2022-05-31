@@ -56,16 +56,34 @@ export default function Home({
 
   useEffect(() => {
     async function fetchUserStocks() {
-      let stcks = await SimulatorApis.getUserStocks({
-        payload: { user_id: userData.user_id },
+      let comps = await SimulatorApis.getTopUserCompanies({
+        payload: {
+          user_id: userData.user_id,
+          max: 3,
+        },
+        token,
+        type: simulatorType,
+        duration: "daily",
+      });
+      if (
+        comps.data &&
+        comps.data.success &&
+        comps.data.data &&
+        comps.data.data.length
+      ) {
+        let topComps = comps.data.data;
+        setUserStocks(topComps);
+      }
+    }
+    async function fetchMostValuableStocks() {
+      let stcks = await SimulatorApis.getUserMostValuableStocks({
+        payload: { user_id: userData.user_id, max: 2 },
         token,
         type: simulatorType,
       });
       if (stcks.data && stcks.data.success) {
-        setUserStocks(stcks.data.data.rows);
-
         let chartsData = [];
-        for (let stock of stcks.data.data.rows.slice(0, 2)) {
+        for (let stock of stcks.data.data) {
           let values = [];
           for (let item of stock.history) {
             let xAxisValue = new Date(item.date);
@@ -85,6 +103,7 @@ export default function Home({
       }
     }
     fetchUserStocks();
+    fetchMostValuableStocks();
   }, []);
 
   const getCashHoldingPercentage = () => {
@@ -238,7 +257,7 @@ export default function Home({
                   <Chart
                     chartData={data.data}
                     className={styles.chart}
-                    colors={i === 1 ? ["#3699FF"] : ["#F64E60"]}
+                    colors={i === 1 ? ["#4066eb"] : ["#17d1bc"]}
                   />
                 </div>
               );

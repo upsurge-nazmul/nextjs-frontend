@@ -24,9 +24,9 @@ export default function UblPage() {
   });
 
   const cosponsors = [
-    "https://i.ibb.co/TY6mZjp/GEN.png",
-    "https://i.ibb.co/wzYNNKS/MM-logo.png",
-    "https://i.ibb.co/YjbGJ1p/6-Tho-PSEJ-400x400.jpg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/GEN.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/MM-logo.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
@@ -41,17 +41,17 @@ export default function UblPage() {
     `Vouchers & Offers from our partners.`,
   ];
   const student_imgs = [
-    "https://i.ibb.co/MBDxzLZ/certificate.png",
-    "https://i.ibb.co/mtvZpm5/upsurgeround.png",
-    "https://i.ibb.co/HBHpLqh/blackboard.png",
-    "https://i.ibb.co/3Wth2Px/percentage-1.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/certificate.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/blackboard.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/percentage-1.png",
   ];
   const imgs = [
-    "https://i.ibb.co/pxXfhQZ/7.png",
-    "https://i.ibb.co/vY325cJ/team-1.png",
-    "https://i.ibb.co/1zxcXM1/competing.png",
-    "https://i.ibb.co/SJrF9H0/idea.png",
-    "https://i.ibb.co/mtvZpm5/upsurgeround.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/7.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/team-1.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/competing.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/idea.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
   ];
   return (
     <div className={styles.ubl}>
@@ -78,7 +78,7 @@ export default function UblPage() {
             Lead Sponsor
             <img
               className={styles.sponsorlogo}
-              src="https://i.ibb.co/xq11YDB/jcbl-500x500.png"
+              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/jcbl-500x500.png"
               alt=""
             />
           </div>
@@ -136,14 +136,14 @@ export default function UblPage() {
                 <div className={styles.participationtext}>
                   <img src={imgs[index]} alt="" />
 
-                  {item}
+                  <p>{item}</p>
                 </div>
               </div>
             );
           })}
         </div>
         <div className={styles.button} onClick={() => setshowform(true)}>
-          Register
+          Register Now
         </div>
       </div>
       <div className={styles.prizes}>
@@ -193,8 +193,7 @@ export default function UblPage() {
 
                 <div className={styles.participationtext}>
                   <img src={student_imgs[index]} alt="" />
-
-                  {item}
+                  <p>{item}</p>
                 </div>
               </div>
             );

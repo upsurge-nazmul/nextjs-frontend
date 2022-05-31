@@ -107,6 +107,27 @@ export default function UblForm({
           msg: "School is required for member " + i,
         });
       }
+      if ((element.dob.match(/\//g) || []).length !== 2) {
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
+      console.log(element.dob.split("/"));
+      if (
+        element.dob.split("/")[0].length !== 2 ||
+        element.dob.split("/")[1].length !== 2 ||
+        element.dob.split("/")[2].length !== 4
+      ) {
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
       if (!vaildatePhone(element.phone)) {
         setloading(false);
         return settoastdata({
@@ -172,14 +193,14 @@ export default function UblForm({
   }
 
   const logos = [
-    "https://i.ibb.co/LtJRkV4/tiger.png",
-    "https://i.ibb.co/71D8L28/laughing.png",
-    "https://i.ibb.co/ChKvfmM/demon.png",
-    "https://i.ibb.co/cTRKfpf/happy.png",
-    "https://i.ibb.co/kJFcB0P/sloth.png",
-    "https://i.ibb.co/rxsFTMk/cool-1.png",
-    "https://i.ibb.co/bWjKnSH/cool.png",
-    "https://i.ibb.co/dW3YkPh/deer.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/tiger.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/laughing.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/demon.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/happy.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/sloth.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool(1).png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool.png",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/deer.png",
   ];
   useEffect(() => {
     const scrollContainer = document.querySelector("#logowrapper");
@@ -192,7 +213,7 @@ export default function UblForm({
   }, []);
   return (
     <div className={`${styles.formmain} ${showterm && styles.goBack}`}>
-      <div className={styles.bg} onClick={() => setshowform(false)}></div>
+      <div className={styles.bg}></div>
       {!done ? (
         <div className={styles.signup} id="signup">
           {!showterm && (
@@ -212,7 +233,7 @@ export default function UblForm({
               onChange={(e) =>
                 setformdata((prev) => ({
                   ...prev,
-                  team_name: onlyText(e.target.value).trim(),
+                  team_name: onlyText(e.target.value, true),
                 }))
               }
             />
@@ -224,7 +245,7 @@ export default function UblForm({
               onChange={(e) => {
                 setformdata((prev) => ({
                   ...prev,
-                  school: e.target.value.trim(),
+                  school: e.target.value,
                 }));
               }}
             />
@@ -270,7 +291,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            name: e.target.value.trim(),
+                            name: onlyText(e.target.value, true),
                           },
                         }));
                       }}
@@ -290,7 +311,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            school: e.target.value.trim(),
+                            school: e.target.value,
                           },
                         }));
                       }}
@@ -360,7 +381,7 @@ export default function UblForm({
                           ...prev,
                           [`member_${index + 1}`]: {
                             ...prev[`member_${index + 1}`],
-                            phone: e.target.value.trim(),
+                            phone: removenonnumber(e.target.value.trim()),
                           },
                         }));
                       }}

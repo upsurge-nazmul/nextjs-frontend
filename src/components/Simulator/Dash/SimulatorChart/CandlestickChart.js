@@ -26,7 +26,17 @@ function ApexChart({ chartData, className }) {
         chart: {
           type: "candlestick",
           toolbar: {
-            show: false,
+            show: true,
+            tools: {
+              download: false,
+              selection: true,
+              zoom: true,
+              zoomin: true,
+              zoomout: true,
+              pan: true,
+              reset: true | '<img src="/static/icons/reset.png" width="20">',
+              customIcons: [],
+            },
           },
         },
         // title: {

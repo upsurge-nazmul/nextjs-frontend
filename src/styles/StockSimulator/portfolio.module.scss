@@ -10,7 +10,8 @@
     flex-direction: column;
     width: 100%;
     height: fit-content;
-    overflow-y: hidden;
+    max-height: 80vh;
+    overflow-y: auto;
     .content {
       display: flex;
       flex-direction: row;
@@ -70,6 +71,7 @@
     padding: 20px 0;
     height: fit-content;
     width: fit-content;
+    z-index: 1;
   }
 }
 
@@ -234,7 +236,8 @@
       flex-direction: column;
       width: 100%;
       height: fit-content;
-      overflow-y: hidden;
+      max-height: 70vh;
+      overflow-y: auto;
       .content {
         display: flex;
         flex-direction: row;

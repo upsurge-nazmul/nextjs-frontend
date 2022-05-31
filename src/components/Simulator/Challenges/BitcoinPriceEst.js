@@ -198,12 +198,16 @@ export default function BitcoinPriceEst({ token, simulatorType, userData }) {
                     ₹{toIndianFormat(result.submited_ans)}
                   </div>
                 </div>
-                <div className={styles.right}>
-                  <div className={styles.title}>Correct answer is</div>
-                  <div className={styles.name}>
-                    ₹{toIndianFormat(result.correct_ans)}
+                {result.correct_ans ? (
+                  <div className={styles.right}>
+                    <div className={styles.title}>Correct answer is</div>
+                    <div className={styles.name}>
+                      ₹{toIndianFormat(result.correct_ans)}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           )}
