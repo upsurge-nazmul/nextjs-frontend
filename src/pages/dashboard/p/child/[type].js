@@ -21,7 +21,7 @@ import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
-function AddKid({ childdata, userData }) {
+function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
   const type = router.query.type;
   const [toastdata, settoastdata] = useState({
@@ -91,8 +91,8 @@ function AddKid({ childdata, userData }) {
     seterror("");
   }, [password, confirmpassword, firstName, lastName, gender, email, dob]);
   useEffect(() => {
-    setuserdata(userData);
-  }, [userData]);
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   async function addChild() {
     if (!firstName) {
       seterror("First name is required");
@@ -575,13 +575,13 @@ export async function getServerSideProps({ params, req }) {
     return {
       props: {
         childdata,
-        userData:
+        userdatafromserver:
           response && response.data && response.data.data
             ? response.data.data
             : [],
       },
     };
-  } else return { props: { childdata: {}, userData: null } };
+  } else return { props: { childdata: {}, userdatafromserver: null } };
 }
 
 async function getChildData(id, token) {

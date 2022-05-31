@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../context/Main";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
@@ -18,6 +19,8 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import RejectChore from "../../../components/Dashboard/RejectChore";
 
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
+  const { setuserdata } = useContext(MainContext);
+
   const [mode, setmode] = useState("chores");
   const router = useRouter();
   const [dataloaded, setdataloaded] = useState(false);
@@ -79,6 +82,10 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
       );
     }
   }, [choremode]);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
+
   if (!dataloaded) {
     return <Loading />;
   } else

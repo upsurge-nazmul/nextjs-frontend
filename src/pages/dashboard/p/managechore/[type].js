@@ -24,6 +24,7 @@ export default function ManageChore({
   templatedata,
 }) {
   const router = useRouter();
+  const { setuserdata } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
   const templatename = template?.replace(/-/g, " ");
   const [currentcatarray, setcurrentcatarray] = useState(
@@ -88,6 +89,9 @@ export default function ManageChore({
   useEffect(() => {
     console.log(duedate);
   }, [duedate]);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
 
   function startRecord() {
     setrecordState(RecordState.START);
