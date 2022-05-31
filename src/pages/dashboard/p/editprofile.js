@@ -361,7 +361,7 @@ export default function EditProfile({ data, minDate }) {
                 placeholder="Date of birth"
                 value={dob}
                 onChange={(e) => {
-                  if (e.getTime() >= new Date().getTime()) {
+                  if (e && e.getTime() >= new Date().getTime()) {
                     settoastdata({
                       msg: "Invaild date of birth",
                       show: true,
