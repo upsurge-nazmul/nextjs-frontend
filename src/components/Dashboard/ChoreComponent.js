@@ -141,7 +141,6 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       </div>
       <div className={styles.time}>
         <ClockSvg />
-
         <p>{duedate}</p>
       </div>
       <div className={styles.completionIcon}>
