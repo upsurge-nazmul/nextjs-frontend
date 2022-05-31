@@ -293,6 +293,7 @@ export default function ManageChore({
               value={duedate}
               setvalue={setduedate}
               onlydate={interval !== "One Time"}
+              mindate={"today"}
             />
             <DropDown
               placeholder="Household"

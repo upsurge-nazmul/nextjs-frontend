@@ -54,7 +54,12 @@ export default function ModernInputBox({
         {placeholder}
       </p>
       {type === "date" ? (
-        <CustomDatePicker value={value} setvalue={onChange} onlydate={true} />
+        <CustomDatePicker
+          value={value}
+          setvalue={onChange}
+          onlydate={true}
+          maxdate={"today"}
+        />
       ) : (
         <input
           onBlur={onBlur}

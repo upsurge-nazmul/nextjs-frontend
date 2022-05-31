@@ -64,7 +64,11 @@ export default function RejectChore({
           <div className={styles.flexBottom}>
             <div className={styles.top}>
               <p className={styles.title}>Select date :</p>
-              <CustomDatePicker value={duedate} setvalue={setduedate} />
+              <CustomDatePicker
+                value={duedate}
+                setvalue={setduedate}
+                maxdate={"today"}
+              />
             </div>
             <div className={styles.btn} onClick={() => handlereject(true)}>
               Reschedule
