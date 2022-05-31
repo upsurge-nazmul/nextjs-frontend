@@ -42,17 +42,18 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   }, [isLogged]);
   useEffect(() => {
     setdataloaded(true);
+
     setchores(
       choresdata.filter((item) => {
         if (item.is_reoccurring) {
-          return item.latest_chore.completion === "approval";
+          return item?.latest_chore?.completion === "approval";
         } else return item.completion === "approval";
       })
     );
     setallchores(
       choresdata.filter((item) => {
         if (item.is_reoccurring) {
-          return item.latest_chore.completion !== "approval";
+          return item?.latest_chore?.completion !== "approval";
         } else return item.completion !== "approval";
       })
     );
@@ -63,8 +64,8 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
         backupallchores.filter((item) => {
           if (item.is_reoccurring) {
             return (
-              item.latest_chore.completion !== "completed" &&
-              item.latest_chore.completion !== "approval"
+              item?.latest_chore?.completion !== "completed" &&
+              item?.latest_chore?.completion !== "approval"
             );
           } else
             return (

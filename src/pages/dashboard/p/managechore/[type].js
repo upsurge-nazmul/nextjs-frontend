@@ -118,10 +118,10 @@ export default function ManageChore({
   async function handleSave() {
     if (isInEditMode) {
       let response = await ChoreApis.editchore({
-        id: choredata?.data.id,
+        id: choredata?.id,
         message: msg,
         title: choretitle,
-        category: choredata?.data.category,
+        category: choredata?.category,
         assigned_to: "tushar",
         child_id: "test1234",
         due_date: new Date(duedate).getTime(),

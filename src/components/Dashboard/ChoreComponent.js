@@ -21,9 +21,9 @@ function ChoreComponent({ data, settoastdata, setchores }) {
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [notificationtype, setnotificationtype] = useState(
     data.is_reoccurring
-      ? data.latest_chore.completion === "pending"
+      ? data.latest_chore?.completion === "pending"
         ? "Nudge"
-        : data.latest_chore.completion === "started"
+        : data.latest_chore?.completion === "started"
         ? "Cheer"
         : "Applaud"
       : data.completion === "pending"
@@ -34,9 +34,9 @@ function ChoreComponent({ data, settoastdata, setchores }) {
   );
   const [duedate, setduedate] = useState(
     choredata.is_reoccurring
-      ? choredata.latest_chore.completion === "completed"
+      ? choredata.latest_chore?.completion === "completed"
         ? completedtimeDifference(choredata.latest_chore.completed_at)
-        : duetimeDifference(choredata?.latest_chore.due_date)
+        : duetimeDifference(choredata?.latest_chore?.due_date)
       : choredata.completion === "completed"
       ? completedtimeDifference(choredata.completed_at)
       : duetimeDifference(choredata?.due_date)
@@ -130,7 +130,15 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         />
       )}
       <img
-        src={data.is_reoccurring ? data.latest_chore.img_url : data.img_url}
+        src={
+          data.is_reoccurring
+            ? data.latest_chore
+              ? data.latest_chore.img_url
+                ? data.latest_chore.img_url
+                : data.img_url
+              : data.img_url
+            : data.img_url
+        }
         alt=""
       />
       <div className={styles.taskAndTo}>
