@@ -136,14 +136,14 @@ export default function UblPage() {
                 <div className={styles.participationtext}>
                   <img src={imgs[index]} alt="" />
 
-                  {item}
+                  <p>{item}</p>
                 </div>
               </div>
             );
           })}
         </div>
         <div className={styles.button} onClick={() => setshowform(true)}>
-          Register
+          Register Now
         </div>
       </div>
       <div className={styles.prizes}>
@@ -193,8 +193,7 @@ export default function UblPage() {
 
                 <div className={styles.participationtext}>
                   <img src={student_imgs[index]} alt="" />
-
-                  {item}
+                  <p>{item}</p>
                 </div>
               </div>
             );
