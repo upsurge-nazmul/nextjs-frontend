@@ -96,7 +96,6 @@ export default function Golddiv({
           <div className={styles.subbg}>
             <div className={styles.innerbg}></div>
           </div>
-          <p className={styles.heading}>GOLD</p>
           <div className={styles.wrapper}>
             <div className={styles.row}>
               <p>Gold price</p>

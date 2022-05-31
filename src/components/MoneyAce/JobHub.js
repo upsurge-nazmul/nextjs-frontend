@@ -122,8 +122,16 @@ export default function JobHub({
       <div className={styles.main}>
         <div className={styles.heading}>
           <NineSlice
-            width={widthHeight.width * 0.12}
-            height={widthHeight.width * 0.035}
+            width={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.15
+                : widthHeight.width * 0.12
+            }
+            height={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.05
+                : widthHeight.width * 0.035
+            }
             border={5}
             image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
@@ -140,6 +148,8 @@ export default function JobHub({
               <CourseJobCard
                 data={item}
                 key={item.id}
+                settoastdata={settoastdata}
+                handleClick={() => {}}
                 isActive={tasks.findIndex((data) => data.id === item.id) !== -1}
               />
             );

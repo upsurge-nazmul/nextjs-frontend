@@ -51,6 +51,9 @@ export default function MoneyAceDashboard({
   const [dailydata, setdailydata] = useState(null);
   const [showupi, setshowupi] = useState(false);
   const [taskmodal, settaskmodal] = useState(false);
+  const [showdevoptions, setshowdevoptions] = useState(false);
+  const [command, setcommand] = useState("");
+  const [removecommand, setremovecommand] = useState(null);
   const [quiz, setquiz] = useState(false);
   const [showcard, setshowcard] = useState(false);
   const tourref = useRef();
@@ -67,6 +70,29 @@ export default function MoneyAceDashboard({
       ref.current.play();
     }
   }, [muted]);
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      setcommand((prev) => prev + e.key);
+    });
+    return () =>
+      document.addEventListener("keydown", (e) => {
+        setcommand((prev) => prev + e.key);
+      });
+  }, []);
+  useEffect(() => {
+    console.log(command);
+    if (command === "ShiftD") {
+      setshowdevoptions((prev) => !prev);
+      if (removecommand) {
+        clearTimeout(removecommand);
+      }
+      setcommand("");
+    }
+    if (removecommand) {
+      clearTimeout(removecommand);
+    }
+    setremovecommand(setTimeout(() => setcommand(""), 1000));
+  }, [command]);
   useEffect(() => {
     ref.current.volume = volume;
   }, [volume]);
@@ -456,16 +482,21 @@ export default function MoneyAceDashboard({
               settasks={settasks}
             />
           )}
-          <div className={styles.devoptions}>
-            <p id="demo" onClick={handlereset}>
-              Reset All
-            </p>
-            <p onClick={handlenextday}>Next Day</p>
-            <p onClick={handleallowinvesting}>Allow investing</p>
-          </div>
+          {showdevoptions && (
+            <div className={styles.devoptions}>
+              <p id="demo" onClick={handlereset}>
+                Reset All
+              </p>
+              <p onClick={handlenextday}>Next Day</p>
+              <p onClick={handleallowinvesting}>Allow investing</p>
+            </div>
+          )}
           {currenttab === "dashboard" ? (
             <div className={styles.wrapper}>
-              <div className={`${styles.link} ${styles.link0}`}>
+              <div
+                className={`${styles.link} ${styles.link0}`}
+                onClick={() => setcurrenttab("tasks")}
+              >
                 <p className={styles.title}>Home</p>
                 <div className={styles.bg}>
                   <img

@@ -460,28 +460,30 @@
   .virtualstore {
     margin-top: 0px;
     .container {
-      height: 90%;
+      height: 85%;
       border-radius: 12px;
       padding: 10px 20px;
       gap: 10px;
+      .bg {
+        padding: 5px;
+      }
+      .heading {
+        .title {
+          font-size: $mobile-xsmall;
+        }
+      }
       .header {
+        display: flex;
+        justify-content: flex-end;
         .cart {
-          color: white;
-          position: relative;
-          cursor: pointer;
-          display: flex;
           gap: 10px;
-          align-items: center;
           .text {
-            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-            color: #ffffff;
-            font-family: "Fira Sans", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
+            font-size: $mobile-xsmall;
           }
           .carticon {
-            height: 25px;
-            width: 25px;
+            height: 20px;
+            width: 20px;
+            color: black;
           }
           .bggreen {
             position: absolute;
@@ -490,11 +492,11 @@
             background: rgb(171, 218, 0);
             width: 14px;
             height: 14px;
-            border-radius: 4px;
-            padding: 3px;
+            border-radius: 3px;
+            padding: 2px;
             p {
               background: #03153a1f;
-              border-radius: 6px;
+              border-radius: 3px;
               width: 100%;
               height: 100%;
               display: flex;
@@ -504,22 +506,23 @@
               color: #ffffff;
               font-family: "Fira Sans", sans-serif;
               font-weight: 500;
-              font-size: 10px;
+              font-size: 8px;
             }
           }
         }
       }
       .catwrapper {
-        gap: 10px;
+        width: 100%;
+        display: flex;
+        gap: 5px;
         .cat {
-          border-radius: 4px;
-          padding: 3px;
+          cursor: pointer;
+          border-radius: 6px;
+          padding: 5px;
           p {
-            background: #03153aab;
-            border-radius: 4px;
-            padding: 2.5px 10px;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
-            font-size: 14px;
+            border-radius: 6px;
+            padding: 5px;
+            font-size: $mobile-xsmall;
           }
         }
       }
@@ -530,59 +533,60 @@
     }
     .invoice {
       display: flex;
-      background-color: rgba(0, 0, 0, 0.35);
       flex-direction: column;
       justify-content: center;
       border-radius: 12px;
       padding: 20px 20px;
       flex: 1;
       margin-bottom: 20px;
+      .bg {
+        padding: 5px;
+      }
+      .heading {
+        .title {
+          font-size: $mobile-xsmall;
+        }
+      }
       .headRow {
         padding-right: 10px;
         .rowitem {
-          font-size: 14px;
+          font-size: $mobile-xsmall;
           flex: 0.8;
         }
       }
       .rows {
         .row {
           .rowitem {
-            font-size: 14px;
+            font-size: $mobile-xsmall;
           }
         }
       }
       .error {
-        font-size: 12px;
+        font-size: 10px;
       }
-      .btn {
-        margin: 20px auto 0;
-        width: 5vw;
-        background: rgb(255, 213, 0);
-        font-weight: 900;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 213, 0, 1) 0%,
-          rgba(255, 175, 0, 1) 100%
-        );
-        padding: 8px;
-        border-radius: 6px;
-        color: white;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        p {
-          font-family: "Fira Sans", sans-serif;
-          font-weight: 800;
-          text-align: center;
-          font-size: 16px;
-          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
+      .btns {
+        .backbutton {
+          height: 30px;
+          width: 30px;
+          object-fit: contain;
+          cursor: pointer;
         }
-        &:hover {
-          background-color: hsl(215, 52%, 50%);
+        .btn {
+          border-radius: 6px;
+          height: 30px;
+          width: 70px;
+          p {
+            font-size: $mobile-xsmall;
+          }
+          &:hover {
+            background-color: hsl(215, 52%, 50%);
+          }
         }
       }
+
       .home {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         object-fit: contain;
         cursor: pointer;
         margin: auto;
@@ -590,8 +594,8 @@
       }
     }
     .back {
-      width: 3vw;
-      height: 3vw;
+      width: 25px;
+      height: 25px;
       object-fit: contain;
       cursor: pointer;
       margin: auto;

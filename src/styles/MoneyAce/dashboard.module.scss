@@ -860,6 +860,29 @@
 }
 @media only screen and (max-width: 860px) {
   .dashboard {
+    .link0 {
+      transform: scale(1);
+    }
+    .link2 {
+      left: 65%;
+      transform: scale(0.8);
+      top: 16%;
+    }
+    .link3 {
+      transform: scale(0.8);
+      left: 75%;
+      top: 23%;
+    }
+    .link4 {
+      left: 18%;
+      transform: scale(0.8);
+      top: 24%;
+    }
+    .link5 {
+      transform: scale(0.8);
+      left: 8%;
+      top: 34%;
+    }
     .main {
       .container {
         padding: 20px;

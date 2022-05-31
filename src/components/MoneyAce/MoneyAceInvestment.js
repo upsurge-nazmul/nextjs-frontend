@@ -110,8 +110,16 @@ export default function MoneyAceInvestment({
       <div className={styles.main}>
         <div className={styles.heading}>
           <NineSlice
-            width={widthHeight.width * 0.12}
-            height={widthHeight.width * 0.035}
+            width={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.18
+                : widthHeight.width * 0.12
+            }
+            height={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.05
+                : widthHeight.width * 0.035
+            }
             border={5}
             image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
@@ -269,7 +277,8 @@ export default function MoneyAceInvestment({
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("stock")}>
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+              className={styles.blackImage}
+                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/stock.png"
                 alt=""
               />
               <p>Stocks</p>
@@ -279,21 +288,24 @@ export default function MoneyAceInvestment({
               onClick={() => setcurrentmode("realestate")}
             >
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+              className={styles.blackImage}
+                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/home-insurance.png"
                 alt=""
               />
               <p>Real Estate</p>
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("gold")}>
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+              className={styles.blackImage}
+                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/gold-ingots.png"
                 alt=""
               />
               <p>Gold</p>
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("fd")}>
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+              className={styles.blackImage}
+                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/fd.png"
                 alt=""
               />
               <p>FD</p>
@@ -303,14 +315,15 @@ export default function MoneyAceInvestment({
               onClick={() => setcurrentmode("retirement")}
             >
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+              className={styles.blackImage}
+                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/pension.png"
                 alt=""
               />
               <p>Retirement</p>
             </div>{" "}
             <div className={styles.btn} onClick={() => setcurrenttab("Bank")}>
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+                src="https://i.ibb.co/GMnGHP4/icon-moneybag-0-1.png"
                 alt=""
               />
               <p>Savings A/c</p>
