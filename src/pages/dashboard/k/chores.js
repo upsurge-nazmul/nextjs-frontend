@@ -173,13 +173,13 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           choresdata: choresdata || [],
-          gamesdata,
+          gamesdata: gamesdata || null,
           currentLevel:
             currentLevel && currentLevel.data && currentLevel.data.success
               ? currentLevel.data.data
               : 1,
           kiddata,
-          liveclassdata,
+          liveclassdata: liveclassdata || null,
           completedchores,
         },
       };
