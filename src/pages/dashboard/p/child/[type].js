@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../../context/Main";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
+import LoginApis from "../../../../actions/apis/LoginApis";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
@@ -19,7 +21,7 @@ import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
-function AddKid({ childdata }) {
+function AddKid({ childdata, userData }) {
   const router = useRouter();
   const type = router.query.type;
   const [toastdata, settoastdata] = useState({
@@ -27,6 +29,8 @@ function AddKid({ childdata }) {
     type: "success",
     msg: "",
   });
+  const { setuserdata } = useContext(MainContext);
+
   const [mode, setmode] = useState(
     type === "add" ? "Add Child Details" : "Edit Child Details"
   );
@@ -86,6 +90,9 @@ function AddKid({ childdata }) {
   useEffect(() => {
     seterror("");
   }, [password, confirmpassword, firstName, lastName, gender, email, dob]);
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
   async function addChild() {
     if (!firstName) {
       seterror("First name is required");
@@ -557,10 +564,24 @@ export default AddKid;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
-  if (token && params.type !== "add") {
-    let childdata = await getChildData({ id: params.type }, token);
-    return { props: { childdata } };
-  } else return { props: { childdata: {} } };
+  if (token) {
+    let childdata = null;
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (params.type !== "add") {
+      childdata = await getChildData({ id: params.type }, token);
+    }
+    return {
+      props: {
+        childdata,
+        userData:
+          response && response.data && response.data.data
+            ? response.data.data
+            : [],
+      },
+    };
+  } else return { props: { childdata: {}, userData: null } };
 }
 
 async function getChildData(id, token) {
