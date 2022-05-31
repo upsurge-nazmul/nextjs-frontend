@@ -26,7 +26,8 @@ export default function CustomDatePicker({
   setvalue,
   onlytime,
   onlydate,
-  maxdate,
+  maxdate = null,
+  mindate = null,
 }) {
   return (
     <div className={styles.customdate}>
@@ -128,7 +129,8 @@ export default function CustomDatePicker({
           selected={value}
           showFullMonthYearPicker
           allowSameDay={false}
-          maxDate={maxdate ? maxdate : moment().toDate()}
+          maxDate={maxdate === "today" ? moment().toDate() : maxdate}
+          minDate={mindate === "today" ? moment().toDate() : mindate}
           onChange={(date) => {
             setvalue(date);
           }}

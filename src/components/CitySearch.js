@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../styles/GeneralComponents/citysearch.module.scss";
-import CustomDatePicker from "./CustomDatePicker";
 import { onlyText } from "../helpers/validationHelpers";
 import { Cities_Data } from "../static_data/Cities_Data";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
