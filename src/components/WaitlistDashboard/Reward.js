@@ -5,6 +5,8 @@ import DropDown from "../DropDown";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { UniCoinValue } from "../../../config";
 import RequestModal from "../KidStore/RequestModal";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+
 export default function Reward({
   data,
   setuser_balance,
@@ -17,7 +19,7 @@ export default function Reward({
 }) {
   const [prices, setprices] = useState([]);
   const [selectedprice, setselectedprice] = useState(
-    data.valueDenominations?.split(",")[0] * UniCoinValue
+    data.valueDenominations?.split(",")[0]
   );
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
@@ -32,7 +34,7 @@ export default function Reward({
     let values = data.valueDenominations?.split(",");
     let unicoinvalues = [];
     values.forEach((item) => {
-      unicoinvalues.push(Number(item) * UniCoinValue);
+      unicoinvalues.push(Number(item));
     });
     setprices(unicoinvalues);
     setselectedprice(unicoinvalues[0]);
@@ -73,7 +75,7 @@ export default function Reward({
           value={selectedprice}
           shorter={true}
           keyprefix={data.name + "price"}
-          placeholder={"UniCoins"}
+          placeholder={"Reward (₹)"}
           setvalue={(value) => setselectedprice(value)}
         />
         <DropDown
@@ -83,6 +85,12 @@ export default function Reward({
           setvalue={setquantity}
           placeholder={"Quantity"}
         />
+      </div>
+      <div className={styles.valueArea}>
+        <UniCoinSvg className={styles.svg} clr={"#434040"} />
+        <div className={styles.value}>
+          {selectedprice * quantity * UniCoinValue}
+        </div>
       </div>
       <div className={styles.button} onClick={redeem}>
         Redeem

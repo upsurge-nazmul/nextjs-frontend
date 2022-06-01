@@ -34,6 +34,20 @@
     padding: 0 10px;
     justify-content: space-between;
   }
+  .valueArea {
+    padding: 20px 10px 0;
+    display: flex;
+    gap: 10px;
+    .svg {
+      width: 14px;
+      color: #6d6d6d;
+    }
+    .value {
+      font-size: 20px;
+      font-weight: 600;
+      color: #434040;
+    }
+  }
   .button {
     border: 1px solid gray;
     display: flex;
