@@ -11,6 +11,8 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import VideoModal from "../../../components/VideoModal";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
+import { Game_Data } from "../../../static_data/Game_Data";
+
 function Games({ recentgames }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -140,7 +142,7 @@ function Games({ recentgames }) {
 
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <MoneyAceBanner  type="p"  />
+            <MoneyAceBanner type="p" />
             {recentgames?.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
@@ -162,13 +164,13 @@ function Games({ recentgames }) {
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>Available Games</h2>
               <div className={styles.wrapper}>
-                {Object.keys(data).map((item, index) => {
+                {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
                       onCLick={() =>
-                        handlegameclick(data[item].name.replace(/ /g, ""))
+                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
                       }
-                      data={data[item]}
+                      data={Game_Data[item]}
                       key={"chorecomponent" + index}
                     />
                   );
