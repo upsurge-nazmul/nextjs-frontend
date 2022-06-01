@@ -12,7 +12,8 @@ import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import { Game_Data } from "../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
-function Games({ userdatafromserver, token }) {
+import GameApis from "../../../actions/apis/GameApis";
+function Games({ userdatafromserver, token, gameunicoinrewards }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -171,6 +172,9 @@ function Games({ userdatafromserver, token }) {
                             : ""
                         )
                       }
+                      reward={
+                        gameunicoinrewards.includes(item) ? "Completed" : 200
+                      }
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}
                     />
@@ -205,12 +209,18 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let recentgames = await FreeGameApis.getrecentGames(null, token);
-
+      let gameunicoinrewards = await GameApis.getgameunicoinrewards(
+        null,
+        token
+      );
       return {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
           token: token,
+          gameunicoinrewards: gameunicoinrewards?.data?.success
+            ? gameunicoinrewards.data.data
+            : [],
           recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data

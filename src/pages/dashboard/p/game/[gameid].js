@@ -203,7 +203,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       unitycontext.on("error", function (message) {
         console.log(message);
       });
-      unitycontext.on("Score", function (score) {
+      unitycontext.on("Score", async function (score) {
         console.log(score);
       });
       unitycontext.on("Fullscreen", function () {
