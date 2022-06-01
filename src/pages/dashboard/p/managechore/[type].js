@@ -24,6 +24,7 @@ export default function ManageChore({
   templatedata,
 }) {
   const router = useRouter();
+  const { setuserdata } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
   const templatename = template?.replace(/-/g, " ");
   const [currentcatarray, setcurrentcatarray] = useState(
@@ -88,6 +89,9 @@ export default function ManageChore({
   useEffect(() => {
     console.log(duedate);
   }, [duedate]);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
 
   function startRecord() {
     setrecordState(RecordState.START);
@@ -114,12 +118,12 @@ export default function ManageChore({
   async function handleSave() {
     if (isInEditMode) {
       let response = await ChoreApis.editchore({
-        id: choredata?.data.id,
+        id: choredata?.id,
         message: msg,
         title: choretitle,
-        category: choredata?.data.category,
-        assigned_to: "tushar",
-        child_id: "test1234",
+        category: cat,
+        assigned_to: choredata?.assigned_to,
+        child_id: choredata?.child_id,
         due_date: new Date(duedate).getTime(),
         completion: "pending",
         is_reoccurring: interval !== "One Time" ? true : false,
@@ -237,6 +241,7 @@ export default function ManageChore({
       });
     }
   }
+
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
@@ -289,9 +294,10 @@ export default function ManageChore({
               value={duedate}
               setvalue={setduedate}
               onlydate={interval !== "One Time"}
+              mindate={"today"}
             />
             <DropDown
-              placeholder="Household"
+              placeholder="Category"
               options={[
                 "Household",
                 "Hobbies",
@@ -363,7 +369,7 @@ export default function ManageChore({
             </div>
           </div>
           <div className={styles.assignto}>
-            <p className={styles.heading}>Asssigned To</p>
+            <p className={styles.heading}>Assigned To</p>
             <div className={styles.wrapper}>
               {assignees.map((item) => (
                 <Assignees data={item} key={item.id} />

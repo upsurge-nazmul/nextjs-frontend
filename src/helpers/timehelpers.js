@@ -32,17 +32,37 @@ export function duetimeDifference(diff) {
     return "Expired";
   }
   if (elapsed < msPerMinute) {
-    return "Due " + Math.round(elapsed / 1000) + " in seconds";
+    return "Due in " + Math.round(elapsed / 1000) + " seconds";
   } else if (elapsed < msPerHour) {
-    return "Due " + Math.round(elapsed / msPerMinute) + " in minutes";
+    return (
+      "Due in " +
+      Math.round(elapsed / msPerMinute) +
+      `${Math.round(elapsed / msPerMinute) === 1 ? " minute" : " minutes"}`
+    );
   } else if (elapsed < msPerDay) {
-    return "Due " + Math.round(elapsed / msPerHour) + " in hours";
+    return (
+      "Due in " +
+      Math.round(elapsed / msPerHour) +
+      `${Math.round(elapsed / msPerHour) === 1 ? " hour" : " hours"}`
+    );
   } else if (elapsed < msPerMonth) {
-    return "Due " + Math.round(elapsed / msPerDay) + " in days";
+    return (
+      "Due in " +
+      Math.round(elapsed / msPerDay) +
+      `${Math.round(elapsed / msPerDay) === 1 ? " day" : " days"}`
+    );
   } else if (elapsed < msPerYear) {
-    return "Due " + Math.round(elapsed / msPerMonth) + " in months";
+    return (
+      "Due in " +
+      Math.round(elapsed / msPerMonth) +
+      `${Math.round(elapsed / msPerMonth) === 1 ? " month" : " months"}`
+    );
   } else {
-    return "Due " + Math.round(elapsed / msPerYear) + " in years";
+    return (
+      "Due in " +
+      Math.round(elapsed / msPerYear) +
+      `${Math.round(elapsed / msPerYear) === 1 ? " year" : " years"}`
+    );
   }
 }
 
