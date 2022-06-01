@@ -15,338 +15,352 @@
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
       padding-bottom: 20px;
-      .flexLeft {
+      .topSection {
+        padding: 20px 20px 10px;
         display: flex;
-        height: 100%;
-        align-items: stretch;
-        flex-direction: column;
-        width: 60%;
-        max-width: 950px;
-        padding: 0 10px 0 45px;
-        .kidsSection {
+        flex-direction: row;
+        gap: 40px;
+        .flexLeft {
+          display: flex;
+          height: 100%;
+          align-items: stretch;
+          flex-direction: column;
+          width: 50%;
+          max-width: 950px;
+          padding: 0;
+          .kidsSection {
+            display: flex;
+            flex-direction: column;
+            .head {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .heading {
+                font-weight: 500;
+                font-size: 25px;
+                color: rgba(87, 88, 128, 1);
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                cursor: default;
+                svg {
+                  margin-left: 10px;
+                }
+              }
+              .btn {
+                margin-right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 20px;
+                font-weight: 400;
+                font-size: 16px;
+                border-radius: 6px;
+                background-color: #4166eb;
+                color: white;
+                cursor: pointer;
+              }
+            }
+
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 64px;
+              color: rgba(106, 106, 106, 1);
+              font-size: 12px;
+              font-weight: 400;
+              padding: 0 10px;
+              .blacnkhead1 {
+                width: 64px;
+                height: 100%;
+                margin-right: 15px;
+              }
+              .head1 {
+                margin-left: 0;
+                width: 26%;
+                max-width: 300px;
+              }
+              .head2 {
+                flex: 1;
+                text-align: center;
+              }
+              .head3 {
+                width: 28%;
+                margin: 0 15px 0 0;
+              }
+              .blacnkhead2 {
+                max-width: 40px;
+                margin-left: 15px;
+                margin-right: 20px;
+              }
+            }
+
+            .loadallkids {
+              text-align: center;
+              color: #6d6d6d;
+              transition: all 0.3s ease;
+              font-size: 16px;
+              cursor: pointer;
+              font-weight: 500;
+              margin: 10px 0;
+              &:hover {
+                font-size: 18px;
+                color: hsl(0, 0%, 0%);
+              }
+            }
+            .addmorechild {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: rgb(235, 235, 235);
+              cursor: pointer;
+              height: 70px;
+              padding: 10px;
+              border-radius: 12px;
+              margin-bottom: 20px;
+              margin-top: 10px;
+              transition: all 0.3s ease;
+              p {
+                text-align: center;
+                color: #6d6d6d;
+                transition: all 0.3s ease;
+                font-size: 16px;
+                font-weight: 500;
+              }
+              &:hover {
+                p {
+                  font-size: 18px;
+                  color: hsl(0, 0%, 100%);
+                }
+                box-shadow: #4166eb 0px -70px 0px 0px inset;
+              }
+            }
+            .scrollwrapper {
+              height: 300px;
+              overflow-y: auto;
+              scrollbar-width: thin;
+              padding-bottom: 0px;
+              /* Chrome, Edge, and Safari */
+              &::-webkit-scrollbar {
+                width: 19px;
+              }
+
+              &::-webkit-scrollbar-track {
+                background: #eaeef8;
+              }
+
+              &::-webkit-scrollbar-thumb {
+                background-color: #ccd6f0;
+                border-radius: 78px;
+                border: 0px solid #ffffff;
+              }
+            }
+          }
+          .choreSection {
+            margin-top: 15px;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            .subheading {
+              font-weight: 500;
+              color: rgba(87, 88, 128, 1);
+              font-size: 20px;
+              margin-top: 15px;
+              width: 100%;
+              border-bottom: 1px solid rgba(87, 88, 128, 0.418);
+              padding-bottom: 5px;
+              cursor: pointer;
+            }
+            .heading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              cursor: pointer;
+              display: flex;
+              width: fit-content;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
+            .loadall {
+              text-align: center;
+              color: #6d6d6d;
+              transition: all 0.3s ease;
+              font-size: 16px;
+              cursor: pointer;
+              font-weight: 500;
+              margin: 10px 0;
+              &:hover {
+                font-size: 18px;
+                color: hsl(0, 0%, 0%);
+              }
+            }
+            .wrapper {
+              margin-top: 20px;
+              padding: 0 20px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
           display: flex;
           flex-direction: column;
-          .head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+          height: fit-content;
+          width: 50%;
+          padding: 0;
+          .gameSection {
             .heading {
+              cursor: pointer;
               font-weight: 500;
               font-size: 25px;
               color: rgba(87, 88, 128, 1);
               width: fit-content;
               display: flex;
               align-items: center;
-              cursor: default;
               svg {
                 margin-left: 10px;
               }
             }
-            .btn {
-              margin-right: 0;
+            .wrapper {
               display: flex;
-              justify-content: center;
+              height: fit-content;
               align-items: center;
-              padding: 10px 20px;
-              font-weight: 400;
-              font-size: 16px;
-              border-radius: 6px;
-              background-color: #4166eb;
-              color: white;
-              cursor: pointer;
-            }
-          }
+              width: 100%;
+              overflow-x: auto;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              scrollbar-width: thin;
+              scroll-behavior: smooth;
+              .gameitem {
+                background: linear-gradient(
+                    0deg,
+                    rgba(241, 248, 255, 0.2),
+                    rgba(241, 248, 255, 0.2)
+                  ),
+                  #ffffff;
+                border-radius: 12px;
+                cursor: pointer;
+                min-width: 200px;
+                height: 220px;
+                font-family: "Roboto";
+                font-weight: 500;
+                border-radius: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 0;
+                margin-right: 20px;
+                text-align: center;
+                transition: all 0.3s ease;
+                overflow: hidden;
+                .calccardtitle {
+                  font-size: 18px;
+                  font-weight: 500;
+                  width: 100%;
+                  padding: 0 20px;
+                  text-align: left;
+                }
+                .calccardsubtitle {
+                  margin-top: 10px;
+                  font-size: 12px;
+                  font-weight: 400;
+                  width: 100%;
+                  text-align: left;
+                  padding: 0 20px;
+                  overflow: auto;
+                  scrollbar-width: thin;
+                }
+                .date {
+                  font-size: 11.4839px;
+                  margin-top: 6px;
+                  text-align: left;
+                  width: 100%;
+                  color: #848484;
+                }
+                border: 1px solid rgb(255, 255, 255);
 
-          .heads {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            height: 64px;
-            color: rgba(106, 106, 106, 1);
-            font-size: 12px;
-            font-weight: 400;
-            padding: 0 10px;
-            .blacnkhead1 {
-              width: 64px;
-              height: 100%;
-              margin-right: 15px;
-            }
-            .head1 {
-              margin-left: 0;
-              width: 26%;
-              max-width: 300px;
-            }
-            .head2 {
-              flex: 1;
-              text-align: center;
-            }
-            .head3 {
-              width: 28%;
-              margin: 0 15px 0 0;
-            }
-            .blacnkhead2 {
-              max-width: 40px;
-              margin-left: 15px;
-              margin-right: 20px;
-            }
-          }
-
-          .loadallkids {
-            text-align: center;
-            color: #6d6d6d;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: 500;
-            margin: 10px 0;
-            &:hover {
-              font-size: 18px;
-              color: hsl(0, 0%, 0%);
-            }
-          }
-          .addmorechild {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgb(235, 235, 235);
-            cursor: pointer;
-            height: 70px;
-            padding: 10px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-            p {
-              text-align: center;
-              color: #6d6d6d;
-              transition: all 0.3s ease;
-              font-size: 16px;
-              font-weight: 500;
-            }
-            &:hover {
-              p {
-                font-size: 18px;
-                color: hsl(0, 0%, 100%);
+                &:hover {
+                  border: 1px solid rgb(187, 187, 187);
+                }
+                img {
+                  height: 140px;
+                  width: 100%;
+                  margin-bottom: 10px;
+                  object-fit: contain;
+                }
               }
-              box-shadow: #4166eb 0px -70px 0px 0px inset;
             }
           }
-          .scrollwrapper {
-            height: 300px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            padding-bottom: 0px;
-            /* Chrome, Edge, and Safari */
-            &::-webkit-scrollbar {
-              width: 19px;
+          .liveClassSection {
+            flex: 1;
+            margin-top: 20px;
+            .heading {
+              font-weight: 500;
+              cursor: pointer;
+              width: fit-content;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
             }
+            .wrapper {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              margin-top: 20px;
+              overflow: auto;
+            }
+            .scrollwrapper {
+              height: 80%;
+              padding: 0 20px 10px 0px;
+              /* ===== Scrollbar CSS ===== */
+              /* Firefox */
+              scrollbar-width: thin;
+              /* Chrome, Edge, and Safari */
+              &::-webkit-scrollbar {
+                width: 19px;
+              }
 
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
+              &::-webkit-scrollbar-track {
+                background: #eaeef8;
+              }
 
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
-        .choreSection {
-          margin-top: 15px;
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          .subheading {
-            font-weight: 500;
-            color: rgba(87, 88, 128, 1);
-            font-size: 20px;
-            margin-top: 15px;
-            width: 100%;
-            border-bottom: 1px solid rgba(87, 88, 128, 0.418);
-            padding-bottom: 5px;
-            cursor: pointer;
-          }
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            cursor: pointer;
-            display: flex;
-            width: fit-content;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .loadall {
-            text-align: center;
-            color: #6d6d6d;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: 500;
-            margin: 10px 0;
-            &:hover {
-              font-size: 18px;
-              color: hsl(0, 0%, 0%);
+              &::-webkit-scrollbar-thumb {
+                background-color: #ccd6f0;
+                border-radius: 78px;
+                border: 0px solid #ffffff;
+              }
             }
           }
           .wrapper {
-            margin-top: 20px;
-            padding: 0 20px 10px 0px;
+            height: 100%;
+            overflow: auto;
+          }
+          .nokidlivesection {
+            margin-top: 0;
+            .wrapper {
+              height: 83%;
+            }
           }
         }
       }
-      .flexRight {
+      .questionSection {
+        padding: 20px 20px 10px;
         display: flex;
-        flex-direction: column;
-        height: fit-content;
-        width: 40%;
-        padding-right: 50px;
-        padding-left: 10px;
-        .gameSection {
-          .heading {
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            width: fit-content;
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            height: fit-content;
-            align-items: center;
-            width: 100%;
-            overflow-x: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: thin;
-            scroll-behavior: smooth;
-            .gameitem {
-              background: linear-gradient(
-                  0deg,
-                  rgba(241, 248, 255, 0.2),
-                  rgba(241, 248, 255, 0.2)
-                ),
-                #ffffff;
-              border-radius: 12px;
-              cursor: pointer;
-              min-width: 200px;
-              height: 220px;
-              font-family: "Roboto";
-              font-weight: 500;
-              border-radius: 12px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              margin-top: 0;
-              margin-right: 20px;
-              text-align: center;
-              transition: all 0.3s ease;
-              overflow: hidden;
-              .calccardtitle {
-                font-size: 18px;
-                font-weight: 500;
-                width: 100%;
-                padding: 0 20px;
-                text-align: left;
-              }
-              .calccardsubtitle {
-                margin-top: 10px;
-                font-size: 12px;
-                font-weight: 400;
-                width: 100%;
-                text-align: left;
-                padding: 0 20px;
-                overflow: auto;
-                scrollbar-width: thin;
-              }
-              .date {
-                font-size: 11.4839px;
-                margin-top: 6px;
-                text-align: left;
-                width: 100%;
-                color: #848484;
-              }
-              border: 1px solid rgb(255, 255, 255);
-
-              &:hover {
-                border: 1px solid rgb(187, 187, 187);
-              }
-              img {
-                height: 140px;
-                width: 100%;
-                margin-bottom: 10px;
-                object-fit: contain;
-              }
-            }
-          }
-        }
-        .liveClassSection {
-          flex: 1;
-          margin-top: 20px;
-          .heading {
-            font-weight: 500;
-            cursor: pointer;
-            width: fit-content;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 20px;
-            overflow: auto;
-          }
-          .scrollwrapper {
-            height: 80%;
-            padding: 0 20px 10px 0px;
-            /* ===== Scrollbar CSS ===== */
-            /* Firefox */
-            scrollbar-width: thin;
-            /* Chrome, Edge, and Safari */
-            &::-webkit-scrollbar {
-              width: 19px;
-            }
-
-            &::-webkit-scrollbar-track {
-              background: #eaeef8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background-color: #ccd6f0;
-              border-radius: 78px;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
-        .wrapper {
-          height: 100%;
-          overflow: auto;
-        }
-        .nokidlivesection {
-          margin-top: 0;
-          .wrapper {
-            height: 83%;
-          }
-        }
+        flex-direction: row;
+      }
+      .blogsSection {
+        padding: 10px 20px;
       }
     }
     .nokidmaincontent {
@@ -521,33 +535,79 @@
       .mainContent {
         display: flex;
         flex-direction: column;
-        .flexLeft {
-          align-items: center;
-          width: 100%;
-          .kidsSection {
+        .topSection {
+          display: flex;
+          flex-direction: column;
+          .flexLeft {
+            align-items: center;
             width: 100%;
-          }
-          .choreSection {
-            width: 100%;
-          }
-        }
-        .flexRight {
-          width: 100%;
-          margin-top: 15px;
-          padding: 0 10px 0px 45px;
-          .gameSection {
-            width: 100%;
-            padding: 0;
-          }
-          .liveClassSection {
-            width: 100%;
-            margin-top: 15px;
-            .wrapper {
+            .kidsSection {
               width: 100%;
-              height: auto;
-              padding-bottom: 100px;
+              .heads {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                height: 64px;
+                color: rgba(106, 106, 106, 1);
+                font-size: 12px;
+                font-weight: 400;
+                padding: 0;
+                .blacnkhead1 {
+                  width: 34px;
+                  height: 100%;
+                  margin-right: 15px;
+                }
+                .head1 {
+                  flex: 1;
+                  margin-left: 0;
+                  width: 26%;
+                  max-width: 400px;
+                }
+                .head2 {
+                  flex: 0.5;
+                  text-align: center;
+                }
+                .head3 {
+                  width: 28%;
+                  margin: 0;
+                  text-align: right;
+                }
+                .blacnkhead2 {
+                  max-width: 40px;
+                  margin-left: 15px;
+                  margin-right: 20px;
+                }
+              }
+            }
+            .choreSection {
+              width: 100%;
             }
           }
+          .flexRight {
+            width: 100%;
+            margin-top: 0;
+            padding: 0;
+            .gameSection {
+              width: 100%;
+              padding: 0;
+            }
+            .liveClassSection {
+              width: 100%;
+              margin-top: 15px;
+              .wrapper {
+                width: 100%;
+                height: auto;
+                padding-bottom: 100px;
+              }
+            }
+          }
+        }
+        .questionSection {
+          display: flex;
+          flex-direction: column;
+        }
+        .blogsSection {
+          padding: 0;
         }
       }
     }
