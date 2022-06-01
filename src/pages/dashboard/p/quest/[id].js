@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Section from "../../../../components/Quests/Section";
@@ -9,6 +9,7 @@ import Toast from "../../../../components/Toast";
 import styles from "../../../../styles/Quest/quest.module.scss";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import Selection from "../../../../components/Selection";
 
 // const demodata = [
@@ -147,14 +148,14 @@ const demodata = [
       {
         chapterno: 1,
         title: "What is money?",
-        completion: "100%",
+        completion: "0%",
         remainingtime:
           "Children will understand how & why Money was invented, it’s evolution, and uses",
       },
       {
         chapterno: 2,
         title: "Money Quiz",
-        completion: "40%",
+        completion: "0%",
         remainingtime: "",
       },
     ],
@@ -167,14 +168,14 @@ const demodata = [
       {
         chapterno: 1,
         title: "Ira's visit to the bank",
-        completion: "60%",
+        completion: "0%",
         remainingtime:
           "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
       },
       {
         chapterno: 2,
         title: "Banking Quiz",
-        completion: "40%",
+        completion: "0%",
         remainingtime: "",
       },
     ],
@@ -187,13 +188,13 @@ const demodata = [
       {
         chapterno: 1,
         title: "Kiara's Budget Trip",
-        completion: "60%",
+        completion: "0%",
         remainingtime: "Know about currencies",
       },
       {
         chapterno: 2,
         title: "Digital Banking & payments",
-        completion: "40%",
+        completion: "0%",
         remainingtime: "",
       },
     ],
@@ -229,8 +230,42 @@ export default function Quests({ kidsdata }) {
   const [mode, setmode] = useState("Knowledge Quest");
   const [kidsOptions, setKidsOptions] = useState();
   const [selectedkid, setSelectedKid] = useState();
+  const [selectedKidsLevel, setSelectedKidsLevel] = useState();
+  const [sectionData, setSectionData] = useState(demodata);
 
-  useState(() => {
+  const formatSectionData = (data, level) => {
+    if (level === 1) {
+      data[0].chapters[0].completion = "100%";
+    } else if (level === 2) {
+      data[0].chapters[0].completion = "100%";
+      data[0].chapters[1].completion = "100%";
+    } else if (level === 3) {
+      data[0].chapters[0].completion = "100%";
+      data[0].chapters[1].completion = "100%";
+      data[1].chapters[0].completion = "100%";
+    } else if (level === 4) {
+      data[0].chapters[0].completion = "100%";
+      data[0].chapters[1].completion = "100%";
+      data[1].chapters[0].completion = "100%";
+      data[1].chapters[1].completion = "100%";
+    } else if (level === 5) {
+      data[0].chapters[0].completion = "100%";
+      data[0].chapters[1].completion = "100%";
+      data[1].chapters[0].completion = "100%";
+      data[1].chapters[1].completion = "100%";
+      data[2].chapters[0].completion = "100%";
+    } else if (level === 6) {
+      data[0].chapters[0].completion = "100%";
+      data[0].chapters[1].completion = "100%";
+      data[1].chapters[0].completion = "100%";
+      data[1].chapters[1].completion = "100%";
+      data[2].chapters[0].completion = "100%";
+      data[2].chapters[1].completion = "100%";
+    }
+    return data;
+  };
+
+  useEffect(() => {
     if (kidsdata && kidsdata.length) {
       let newData = [];
       for (let kid of kidsdata) {
@@ -243,9 +278,37 @@ export default function Quests({ kidsdata }) {
     }
   }, [kidsdata]);
 
-  // knowledgequest/level
+  useEffect(() => {
+    if (selectedkid) {
+      async function fetchKidsLevel() {
+        let res = await KnowledgeQuestApi.getLevel({
+          userId: selectedkid,
+        });
+        if (res && res.data && res.data.success) {
+          let lev = res.data.data;
+          setSelectedKidsLevel(lev);
+          let formattedData = formatSectionData(demodata, lev);
+          setSectionData(formattedData);
+        } else {
+          setSectionData(demodata);
+        }
+      }
+      fetchKidsLevel();
+    }
+  }, [selectedkid]);
 
-  console.log(kidsdata, kidsOptions, selectedkid);
+  // useEffect(() => {
+  //   if (selectedkid) {
+  //     if (selectedKidsLevel) {
+  //       let formattedData = formatSectionData(demodata, selectedKidsLevel);
+  //       setSectionData(formattedData);
+  //     } else setSectionData(demodata);
+  //   } else {
+  //     setSectionData(demodata);
+  //   }
+  // }, [selectedkid, selectedKidsLevel]);
+
+  console.log(sectionData);
 
   return (
     <div className={styles.quest}>
@@ -297,9 +360,11 @@ export default function Quests({ kidsdata }) {
               )}
             </div>
             <div className={styles.section}>
-              {demodata.map((section, index) => (
-                <Section data={section} key={"section" + index} />
-              ))}
+              {sectionData &&
+                sectionData.length &&
+                sectionData.map((section, index) => (
+                  <Section data={section} key={"section" + index} />
+                ))}
             </div>
           </div>
           <div className={styles.right}>
