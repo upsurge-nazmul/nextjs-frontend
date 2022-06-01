@@ -124,7 +124,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
-          <div
+          {/* <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/tribes" ||
               currenttab.indexOf("/dashboard/k/tribes") !== -1
@@ -135,7 +135,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <PeopleOutlineIcon className={styles.icon} />
             <p className={styles.tabtitle}>Tribes</p>
-          </div>
+          </div> */}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/store" ? styles.activetab : ""
