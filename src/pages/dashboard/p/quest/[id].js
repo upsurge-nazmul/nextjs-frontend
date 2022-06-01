@@ -11,127 +11,189 @@ import DashboardApis from "../../../../actions/apis/DashboardApis";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Selection from "../../../../components/Selection";
 
+// const demodata = [
+//   {
+//     sectionno: 1,
+//     title: "What is Money?",
+//     chaptersandweeks: "",
+//     chapters: [
+//       {
+//         chapterno: 1,
+//         title: "Origins & Barter System",
+//         completion: "97%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 2,
+//         title: "Kiara’s budget trip",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 3,
+//         title: "Quiz",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 4,
+//         title: "Activity",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//     ],
+//   },
+//   {
+//     sectionno: 2,
+//     title: "Banking & Payments",
+//     chaptersandweeks: "",
+//     chapters: [
+//       {
+//         chapterno: 1,
+//         title: "Introduction to Banking",
+//         completion: "100%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 2,
+//         title: "Credit & Debit Cards",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 3,
+//         title: "Digital Payments & UPI",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//     ],
+//   },
+//   {
+//     sectionno: 3,
+//     title: "Introduction to Personal Finance",
+//     chaptersandweeks: "",
+//     chapters: [
+//       {
+//         chapterno: 1,
+//         title: "What is money management?",
+//         completion: "0%",
+//         remainingtime: "Know about currencies",
+//       },
+//       {
+//         chapterno: 2,
+//         title: "Earning",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 3,
+//         title: "Spending & Budgeting",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 4,
+//         title: "Saving & Goal setting",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 5,
+//         title: "Investing & Compounding your wealth",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 6,
+//         title: "Insurance & Taxes",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//     ],
+//   },
+//   {
+//     sectionno: 4,
+//     title: "Entrepreneurship",
+//     chaptersandweeks: "",
+//     chapters: [
+//       {
+//         chapterno: 1,
+//         title: "Starting up",
+//         completion: "55%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 2,
+//         title: "Finding the next big thing",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//       {
+//         chapterno: 3,
+//         title: "Growing your business",
+//         completion: "0%",
+//         remainingtime: "",
+//       },
+//     ],
+//   },
+// ];
+
 const demodata = [
   {
     sectionno: 1,
-    title: "What is Money?",
+    title: "Money",
     chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
-        title: "Origins & Barter System",
-        completion: "97%",
-        remainingtime: "",
+        title: "What is money?",
+        completion: "100%",
+        remainingtime:
+          "Children will understand how & why Money was invented, it’s evolution, and uses",
       },
       {
         chapterno: 2,
-        title: "Kiara’s budget trip",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Quiz",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 4,
-        title: "Activity",
-        completion: "0%",
+        title: "Money Quiz",
+        completion: "40%",
         remainingtime: "",
       },
     ],
   },
   {
     sectionno: 2,
-    title: "Banking & Payments",
+    title: "Banking",
     chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
-        title: "Introduction to Banking",
-        completion: "100%",
-        remainingtime: "",
+        title: "Ira's visit to the bank",
+        completion: "60%",
+        remainingtime:
+          "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
       },
       {
         chapterno: 2,
-        title: "Credit & Debit Cards",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Digital Payments & UPI",
-        completion: "0%",
+        title: "Banking Quiz",
+        completion: "40%",
         remainingtime: "",
       },
     ],
   },
   {
     sectionno: 3,
-    title: "Introduction to Personal Finance",
+    title: "Payments",
     chaptersandweeks: "",
     chapters: [
       {
         chapterno: 1,
-        title: "What is money management?",
-        completion: "0%",
+        title: "Kiara's Budget Trip",
+        completion: "60%",
         remainingtime: "Know about currencies",
       },
       {
         chapterno: 2,
-        title: "Earning",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Spending & Budgeting",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 4,
-        title: "Saving & Goal setting",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 5,
-        title: "Investing & Compounding your wealth",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 6,
-        title: "Insurance & Taxes",
-        completion: "0%",
-        remainingtime: "",
-      },
-    ],
-  },
-  {
-    sectionno: 4,
-    title: "Entrepreneurship",
-    chaptersandweeks: "",
-    chapters: [
-      {
-        chapterno: 1,
-        title: "Starting up",
-        completion: "55%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 2,
-        title: "Finding the next big thing",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Growing your business",
-        completion: "0%",
+        title: "Digital Banking & payments",
+        completion: "40%",
         remainingtime: "",
       },
     ],
