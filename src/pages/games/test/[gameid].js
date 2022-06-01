@@ -195,7 +195,7 @@ export default function GamePage({ gamedata, userdata }) {
     function () {
       if (!unitycontext) return;
       unitycontext.on("Score", function (score) {
-        console.log(score);
+        console.log("this is score", score);
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
