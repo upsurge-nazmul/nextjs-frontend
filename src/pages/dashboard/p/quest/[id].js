@@ -7,6 +7,9 @@ import PeopleSvg from "../../../../components/SVGcomponents/PeopleSvg";
 import ProjectSvg from "../../../../components/SVGcomponents/ProjectSvg";
 import Toast from "../../../../components/Toast";
 import styles from "../../../../styles/Quest/quest.module.scss";
+import DashboardApis from "../../../../actions/apis/DashboardApis";
+import LoginApis from "../../../../actions/apis/LoginApis";
+import Selection from "../../../../components/Selection";
 
 const demodata = [
   {
@@ -155,13 +158,32 @@ const availableCourses = [
     id: "upsurge-quest",
   },
 ];
-export default function Quests() {
+export default function Quests({ kidsdata }) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
   const [mode, setmode] = useState("Knowledge Quest");
+  const [kidsOptions, setKidsOptions] = useState();
+  const [selectedkid, setSelectedKid] = useState();
+
+  useState(() => {
+    if (kidsdata && kidsdata.length) {
+      let newData = [];
+      for (let kid of kidsdata) {
+        newData.push({
+          name: kid.first_name + " " + kid.last_name,
+          value: kid.id,
+        });
+      }
+      setKidsOptions(newData);
+    }
+  }, [kidsdata]);
+
+  // knowledgequest/level
+
+  console.log(kidsdata, kidsOptions, selectedkid);
 
   return (
     <div className={styles.quest}>
@@ -202,6 +224,16 @@ export default function Quests() {
             <p className={styles.content}>
               Follow the course content to learn more about Investing.
             </p>
+            <div className={styles.dropdownArea}>
+              {kidsOptions && kidsOptions.length && (
+                <Selection
+                  value={selectedkid}
+                  setvalue={setSelectedKid}
+                  options={kidsOptions}
+                  placeholder=""
+                />
+              )}
+            </div>
             <div className={styles.section}>
               {demodata.map((section, index) => (
                 <Section data={section} key={"section" + index} />
@@ -235,4 +267,35 @@ export default function Quests() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return { props: { isLogged: false, msg: msg || "Error" } };
+    } else {
+      let kidsdata = await getkidsdata(token);
+      return {
+        props: {
+          isLogged: true,
+          kidsdata,
+        },
+      };
+    }
+  } else {
+    return { props: { isLogged: false, msg: "cannot get token" } };
+  }
+}
+
+async function getkidsdata(token) {
+  let response = await DashboardApis.getkids(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+  else return null;
 }
