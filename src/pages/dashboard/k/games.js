@@ -67,7 +67,7 @@ function Games({ userdatafromserver, token }) {
 
     let res = await FreeGameApis.updateRecentGames({ games: gamestring });
   }
-  async function handlegameclick(title) {
+  async function handlegameclick(title, pushto) {
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);
@@ -80,12 +80,9 @@ function Games({ userdatafromserver, token }) {
           x.push(title);
         }
         setrecent_games(x);
-        updaterecentgames(x);
         localStorage.setItem("recent_games", JSON.stringify(x));
       }
     } else {
-      updaterecentgames([title]);
-
       localStorage.setItem("recent_games", JSON.stringify([title]));
     }
     if (title === "Ludo") {
@@ -103,7 +100,7 @@ function Games({ userdatafromserver, token }) {
       if (res) {
         if (res.data.success) {
           router.push({
-            pathname: "/dashboard/k/game/" + title,
+            pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
             query: { id: res.data.data },
           });
         } else {
@@ -113,7 +110,7 @@ function Games({ userdatafromserver, token }) {
         console.log("error connecting server");
       }
     } else {
-      router.push("/dashboard/k/game/" + title);
+      router.push("/dashboard/k/game/" + (pushto ? pushto : title));
     }
   }
   return (
@@ -139,7 +136,12 @@ function Games({ userdatafromserver, token }) {
                       <GameCard
                         onCLick={() =>
                           handlegameclick(
-                            Game_Data[item].name.replace(/ /g, "")
+                            item,
+                            Game_Data[item].pushto
+                              ? Game_Data[item].pushto.split("/")[
+                                  Game_Data[item].pushto.split("/").length - 1
+                                ]
+                              : ""
                           )
                         }
                         data={Game_Data[item]}
@@ -160,7 +162,14 @@ function Games({ userdatafromserver, token }) {
                   return (
                     <GameCard
                       onCLick={() =>
-                        handlegameclick(Game_Data[item].name.replace(/ /g, ""))
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto
+                            ? Game_Data[item].pushto.split("/")[
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
+                            : ""
+                        )
                       }
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}

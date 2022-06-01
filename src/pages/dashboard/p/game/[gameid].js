@@ -85,6 +85,9 @@ export default function GamePage({ userdatafromserver, gamedata }) {
     }
   }, [gameid]);
   useEffect(() => {
+    if (!gamedata) {
+      return null;
+    }
     if (gameid) {
       checkifcacheexist();
     }
@@ -167,7 +170,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
         }
       }
     }
-  }, [router]);
+  }, [router, gamedata]);
   useEffect(() => {
     function updateSize() {
       let w = window.innerWidth;
@@ -325,59 +328,94 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   }, []);
   return (
     <div className={styles.gamePage}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
+        {showgamelandscapeinfo && (
+          <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+        )}
         <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        <div className={styles.mainContent}>
-          {widthHeight.width < 860 ? (
+        {unitycontext &&
+        progression === 1 &&
+        widthHeight.width <= 900 &&
+        widthHeight.height < widthHeight.width &&
+        !isfullscreen ? (
+          <div className={styles.start}>
+            <div className={styles.box}>
+              <p className={styles.name}>
+                This game can only be played on fullscreen in your phone.
+              </p>
+              <p className={styles.btn} onClick={movetofull}>
+                Go to fullscreen
+              </p>
+            </div>
+          </div>
+        ) : (
+          widthHeight.width <= 900 &&
+          widthHeight.height < widthHeight.width && (
+            <div className={styles.mobilespinner}>
+              <Spinner
+                progress={`${progression * 100}%`}
+                additionalClass={styles.loader}
+                color="#4266EB"
+                topcolor="white"
+              />
+              <p>Loading {Math.round(progression * 100)}%</p>
+            </div>
+          )
+        )}
+        <div className={styles.mainContent} id="unity-wrapper">
+          {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
-                <p className={styles.heading}>Oh no!</p>
-                <p>
-                  {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
+                <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
+                <p className={styles.heading}>
+                  Please switch to landscape mode
                 </p>
-                <div className={styles.button} onClick={() => router.push("/")}>
-                  Go back
+                <p>{`This game only playable in landscape mode.`}</p>
+                <div
+                  className={styles.button}
+                  onClick={() => setshowgamelandscapeinfo(true)}
+                >
+                  Know more
                 </div>
               </div>
-
-              {/* <Jasper className={styles.jasper} /> */}
             </div>
-          ) : (
-            unitycontext && (
-              <Unity
-                className={`${styles.gameMain} ${
-                  stickyheader && styles.sticky
-                } ${removeBorder ? styles.removeborder : ""}
+          ) : gamedata && unitycontext ? (
+            <Unity
+              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+                removeBorder ? styles.removeborder : ""
+              }
               ${
                 widthHeight.width < 900 &&
                 widthHeight.height < widthHeight.width &&
                 styles.mobilegame
               }
               `}
-                ref={unityref}
-                unityContext={unitycontext}
-                style={
-                  widthHeight.width > 900
-                    ? {
-                        visibility: "visible",
-                      }
-                    : {
-                        visibility: isfullscreen ? "visible" : "hidden",
-                        position: !isfullscreen ? "absolute" : "static",
-                        pointerEvents: !isfullscreen ? "none" : "unset",
-                      }
-                }
-                matchWebGLToCanvasSize={true}
-              />
-            )
+              ref={unityref}
+              unityContext={unitycontext}
+              style={
+                widthHeight.width > 900
+                  ? {
+                      visibility: "visible",
+                    }
+                  : {
+                      visibility: isfullscreen ? "visible" : "hidden",
+                      position: !isfullscreen ? "absolute" : "static",
+                      pointerEvents: !isfullscreen ? "none" : "unset",
+                    }
+              }
+              matchWebGLToCanvasSize={true}
+            />
+          ) : (
+            <p>Incorrect url, game not found.</p>
           )}
         </div>
       </div>

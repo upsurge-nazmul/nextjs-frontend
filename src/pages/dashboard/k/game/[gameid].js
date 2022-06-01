@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
@@ -11,111 +11,16 @@ import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPa
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboardHeader";
-const data = {
-  CoinSlide: {
-    dataUrl: "/Games/CoinSlide/Build/CoinSlide.data",
-    frameworkUrl: "/Games/CoinSlide/Build/CoinSlide.framework.js",
-    codeUrl: "/Games/CoinSlide/Build/CoinSlide.wasm",
-    loaderUrl: "/Games/CoinSlide/Build/CoinSlide.loader.js",
-    version: "1.0",
-  },
-  ShoppingBudget: {
-    dataUrl: "/Games/DontOverSpend/Build/Don't_Overspend.data",
-    frameworkUrl: "/Games/DontOverSpend/Build/Don't_Overspend.framework.js",
-    codeUrl: "/Games/DontOverSpend/Build/Don't_Overspend.wasm",
-    loaderUrl: "/Games/DontOverSpend/Build/Don't_Overspend.loader.js",
-    version: "1.0",
-  },
-  BalanceBuilder: {
-    dataUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.data",
-    frameworkUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.framework.js",
-    codeUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.wasm",
-    loaderUrl: "/Games/BalanceBuilder/Build/BalanceBuilder.loader.js",
-    version: "1.0",
-  },
-  HighAndLow: {
-    dataUrl: "/Games/HighAndLow/Build/HighAndLow.data",
-    frameworkUrl: "/Games/HighAndLow/Build/HighAndLow.framework.js",
-    codeUrl: "/Games/HighAndLow/Build/HighAndLow.wasm",
-    loaderUrl: "/Games/HighAndLow/Build/HighAndLow.loader.js",
-    version: "1.0",
-  },
-  MoneyMath: {
-    dataUrl: "/Games/MoneyMath/Build/MoneyMath.data",
-    frameworkUrl: "/Games/MoneyMath/Build/MoneyMath.framework.js",
-    codeUrl: "/Games/MoneyMath/Build/MoneyMath.wasm",
-    loaderUrl: "/Games/MoneyMath/Build/MoneyMath.loader.js",
-    version: "1.0",
-  },
-  MoneyManager: {
-    dataUrl: "/Games/MoneyManager/Build/MoneyManager.data",
-    frameworkUrl: "/Games/MoneyManager/Build/MoneyManager.framework.js",
-    codeUrl: "/Games/MoneyManager/Build/MoneyManager.wasm",
-    loaderUrl: "/Games/MoneyManager/Build/MoneyManager.loader.js",
-    version: "1.0",
-  },
-  MoneySlide: {
-    dataUrl: "/Games/MoneySlide/Build/MoneySlide.data",
-    frameworkUrl: "/Games/MoneySlide/Build/MoneySlide.framework.js",
-    codeUrl: "/Games/MoneySlide/Build/MoneySlide.wasm",
-    loaderUrl: "/Games/MoneySlide/Build/MoneySlide.loader.js",
-    version: "1.0",
-  },
-  NeedOrWant: {
-    dataUrl: "/Games/NeedOrWant/Build/NeedOrWant.data",
-    frameworkUrl: "/Games/NeedOrWant/Build/NeedOrWant.framework.js",
-    codeUrl: "/Games/NeedOrWant/Build/NeedOrWant.wasm",
-    loaderUrl: "/Games/NeedOrWant/Build/NeedOrWant.loader.js",
-    version: "1.0",
-  },
-  // Ludo: {
-  //   dataUrl: "/Games/Ludo/Build/Ludo.data",
-  //   frameworkUrl: "/Games/Ludo/Build/Ludo.framework.js",
-  //   codeUrl: "/Games/Ludo/Build/Ludo.wasm",
-  //   loaderUrl: "/Games/Ludo/Build/Ludo.loader.js",
-  //   version: "1.0",
-  // },
-};
-const specialchars = [
-  "#",
-  "$",
-  "%",
-  "*",
-  "&",
-  "(",
-  "@",
-  "_",
-  ")",
-  "+",
-  "-",
-  "&&",
-  "||",
-  "!",
-  "(",
-  ")",
-  "{",
-  "}",
-  "[",
-  "]",
-  "^",
-  "~",
-  "*",
-  "?",
-  ":",
-  "1",
-  "0",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
-export default function GamePage({ gamedata }) {
+import LoginApis from "../../../../actions/apis/LoginApis";
+import { MainContext } from "../../../../context/Main";
+import { Game_Data } from "../../../../static_data/Game_Data";
+let fullscreenenabled = false;
+
+export default function GamePage({ userdatafromserver, gamedata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
+  const unityref = useRef(unitycontext);
+  const [isfullscreen, setisfullscreen] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [widthHeight, setwidthHeight] = useState({
     width: 1280,
@@ -136,19 +41,41 @@ export default function GamePage({ gamedata }) {
   const [removeBorder, setremoveBorder] = useState(false);
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
+  const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
-  const [mode, setmode] = useState(gameid);
-
+  const [mode, setmode] = useState(Game_Data[gameid]?.name || "");
+  const { userdata, setuserdata } = useContext(MainContext);
   const [info, setinfo] = useState({
     device: "computer",
     orientation: "desktop",
   });
-  function handleOnClickFullscreen() {
-    unitycontext.setFullscreen(true);
+  function handleOnClickFullscreenUnity() {
+    unityref.current?.send(
+      "FullscreenController",
+      "UpdateScreen",
+      fullscreenenabled ? 1 : 0
+    );
   }
+  function handleSendToken() {
+    unitycontext?.send("TokenController", "SetToken", getCookie("accesstoken"));
+  }
+  useEffect(() => {
+    if (progression === 1 && unitycontext) {
+      console.log("calling from frontend");
+      handleSendToken();
+      handleOnClickFullscreenUnity();
+    }
+  }, [progression, unitycontext]);
+
   const gamesWithAuth = ["Ludo", "FinCricket"];
+
+  useEffect(() => {
+    if (userdatafromserver) {
+      setuserdata(userdatafromserver);
+    }
+  }, [userdatafromserver]);
   useEffect(() => {
     if (gameid) {
       logclick();
@@ -158,6 +85,9 @@ export default function GamePage({ gamedata }) {
     }
   }, [gameid]);
   useEffect(() => {
+    if (!gamedata) {
+      return null;
+    }
     if (gameid) {
       checkifcacheexist();
     }
@@ -240,7 +170,7 @@ export default function GamePage({ gamedata }) {
         }
       }
     }
-  }, [router]);
+  }, [router, gamedata]);
   useEffect(() => {
     function updateSize() {
       let w = window.innerWidth;
@@ -256,13 +186,40 @@ export default function GamePage({ gamedata }) {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  useEffect(function () {
-    if (!unitycontext) return;
-    unitycontext.on("progress", function (progression) {
-      setProgression(progression);
-      console.log("progression", progression);
-    });
-  }, []);
+  useEffect(
+    function () {
+      if (!unitycontext) return;
+      unitycontext.on("Exit", function () {
+        router.push("/dashboard/k/games");
+      });
+      unitycontext.on("progress", function (progress) {
+        console.log(progress);
+        setProgression(progress);
+      });
+      unitycontext.on("Error", function (code, url, vendor) {
+        console.log(code, url, vendor);
+        router.push("/dashboard/k/games");
+      });
+      unitycontext.on("error", function (message) {
+        console.log(message);
+      });
+      unitycontext.on("Score", function (score) {
+        console.log(score);
+      });
+      unitycontext.on("Fullscreen", function () {
+        if (fullscreenenabled) {
+          unitycontext.setFullscreen(false);
+          fullscreenenabled = false;
+          setisfullscreen(false);
+        } else {
+          unitycontext.setFullscreen(true);
+          fullscreenenabled = true;
+          setisfullscreen(true);
+        }
+      });
+    },
+    [unitycontext]
+  );
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -278,7 +235,7 @@ export default function GamePage({ gamedata }) {
     if (!gameid) {
       return;
     }
-    if (!errorshown && widthHeight.width < 860) {
+    if (!errorshown && widthHeight.width < 900) {
       logerror();
       seterrorshown(true);
     }
@@ -295,7 +252,6 @@ export default function GamePage({ gamedata }) {
         game_token: id,
       });
       if (res && res.data.success) {
-        console.log("success");
         setshowgame(true);
       } else {
         alert("Id not valid");
@@ -305,46 +261,161 @@ export default function GamePage({ gamedata }) {
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
-
   useEffect(() => {
     setTimeout(() => setremoveBorder(true), 10000);
   }, []);
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+      fullscreenenabled = false;
+      handleOnClickFullscreenUnity();
+    } else {
+      let element = document.getElementById("unity-wrapper");
+      if (element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+        setisfullscreen(true);
+        fullscreenenabled = true;
+        handleOnClickFullscreenUnity();
+      }
+    }
+  }
 
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+        fullscreenenabled = false;
+        // router.push("/games");
+      }
+    }
+  }, []);
   return (
     <div className={styles.gamePage}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
+        {showgamelandscapeinfo && (
+          <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
+        )}
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        <div className={styles.mainContent}>
-          {widthHeight.width < 860 ? (
+        {unitycontext &&
+        progression === 1 &&
+        widthHeight.width <= 900 &&
+        widthHeight.height < widthHeight.width &&
+        !isfullscreen ? (
+          <div className={styles.start}>
+            <div className={styles.box}>
+              <p className={styles.name}>
+                This game can only be played on fullscreen in your phone.
+              </p>
+              <p className={styles.btn} onClick={movetofull}>
+                Go to fullscreen
+              </p>
+            </div>
+          </div>
+        ) : (
+          widthHeight.width <= 900 &&
+          widthHeight.height < widthHeight.width && (
+            <div className={styles.mobilespinner}>
+              <Spinner
+                progress={`${progression * 100}%`}
+                additionalClass={styles.loader}
+                color="#4266EB"
+                topcolor="white"
+              />
+              <p>Loading {Math.round(progression * 100)}%</p>
+            </div>
+          )
+        )}
+        <div className={styles.mainContent} id="unity-wrapper">
+          {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
-                <p className={styles.heading}>Oh no!</p>
-                <p>
-                  {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
+                <img
+                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  className={styles.jasper}
+                />
+                <p className={styles.heading}>
+                  Please switch to landscape mode
                 </p>
-                <div className={styles.button} onClick={() => router.push("/")}>
-                  Go back
+                <p>{`This game only playable in landscape mode.`}</p>
+                <div
+                  className={styles.button}
+                  onClick={() => setshowgamelandscapeinfo(true)}
+                >
+                  Know more
                 </div>
               </div>
             </div>
+          ) : gamedata && unitycontext ? (
+            <Unity
+              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+                removeBorder ? styles.removeborder : ""
+              }
+              ${
+                widthHeight.width < 900 &&
+                widthHeight.height < widthHeight.width &&
+                styles.mobilegame
+              }
+              `}
+              ref={unityref}
+              unityContext={unitycontext}
+              style={
+                widthHeight.width > 900
+                  ? {
+                      visibility: "visible",
+                    }
+                  : {
+                      visibility: isfullscreen ? "visible" : "hidden",
+                      position: !isfullscreen ? "absolute" : "static",
+                      pointerEvents: !isfullscreen ? "none" : "unset",
+                    }
+              }
+              matchWebGLToCanvasSize={true}
+            />
           ) : (
-            unitycontext && (
-              <Unity
-                className={`${styles.gameMain} ${
-                  removeBorder ? styles.removeborder : ""
-                }`}
-                unityContext={unitycontext}
-                matchWebGLToCanvasSize={true}
-              />
-            )
+            <p>Incorrect url, game not found.</p>
           )}
         </div>
       </div>
@@ -352,9 +423,41 @@ export default function GamePage({ gamedata }) {
   );
 }
 export async function getServerSideProps({ params, req }) {
-  let gamedata = await GameApis.gamedata({ id: params.gameid });
-  if (gamedata && gamedata.data && gamedata.data.data) {
-    return { props: { gamedata: gamedata.data.data } };
+  let token = req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      let gamedata = await GameApis.gamedata({ id: params.gameid });
+      return {
+        props: {
+          isLogged: true,
+          userdatafromserver: response.data.data,
+          gamedata:
+            gamedata && gamedata.data && gamedata.data.data
+              ? gamedata.data.data
+              : null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
   }
-  return { props: { gamedata: null } };
 }
