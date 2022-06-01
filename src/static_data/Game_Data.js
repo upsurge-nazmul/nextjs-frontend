@@ -13,6 +13,7 @@ export const Game_Data = {
   },
   HighAndLow: {
     name: "High and low",
+    changedId: "HighAndLow",
     description:
       "Check how much money each column has, and arrange it in ascending or descending order.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
