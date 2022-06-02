@@ -5,8 +5,8 @@ import DropDownArrow from "../SVGcomponents/DropDownArrow";
 function Dropdown({
   value,
   setvalue,
-  options = [],
-  placeholder,
+  options = [], // [{name, value}]
+  placeholder = "Select...",
   margin,
   className,
 }) {
@@ -59,16 +59,16 @@ function Dropdown({
         className={styles.selected}
         onClick={() => setshowoptions(!showoptions)}
       >
-        <p
+        {/* <p
           className={`${value ? styles.placeholderlifted : styles.placeholder}`}
         >
           {placeholder}
-        </p>
+        </p> */}
         <p className={styles.text}>
           {options && options.length
             ? options.find((option) => option.value === value)
               ? options.find((option) => option.value === value).name
-              : "Select..."
+              : placeholder
             : ""}
         </p>
         <DropDownArrow className={styles.svg} />
@@ -77,7 +77,7 @@ function Dropdown({
         <div className={styles.options} id={placeholder + "dropdown"}>
           <div className={styles.searchArea}>
             <input
-              placeholder="Search..."
+              placeholder={"Search..."}
               value={searchParam}
               onChange={(e) => setSearchParam(e.target.value)}
             />

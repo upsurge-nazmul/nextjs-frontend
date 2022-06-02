@@ -355,7 +355,7 @@ export default function Quests({ kidsdata }) {
                   value={selectedkid}
                   setvalue={setSelectedKid}
                   options={kidsOptions}
-                  placeholder=""
+                  placeholder="Select Kid"
                 />
               )}
             </div>
