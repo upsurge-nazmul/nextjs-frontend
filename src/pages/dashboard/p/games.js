@@ -12,7 +12,8 @@ import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import VideoModal from "../../../components/VideoModal";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import { Game_Data } from "../../../static_data/Game_Data";
-function Games({ recentgames }) {
+import GameApis from "../../../actions/apis/GameApis";
+function Games({ recentgames, gameunicoinrewards }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -203,12 +204,19 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let recentgames = await FreeGameApis.getrecentGames(null, token);
+      let gameunicoinrewards = await GameApis.getgameunicoinrewards(
+        null,
+        token
+      );
       return {
         props: {
           recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
+          gameunicoinrewards: gameunicoinrewards?.data?.success
+            ? recentgames.data.data
+            : [],
           isLogged: true,
         },
       };

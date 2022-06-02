@@ -203,8 +203,13 @@ export default function GamePage({ userdatafromserver, gamedata }) {
       unitycontext.on("error", function (message) {
         console.log(message);
       });
-      unitycontext.on("Score", function (score) {
-        console.log(score);
+      unitycontext.on("Score", async function (score) {
+        let res = await GameApis.unicoinreward({ gameId: gameId });
+        if (res?.data?.success) {
+          console.log("Score success rewards alloted");
+        } else {
+          console.log(res?.data?.message || "");
+        }
       });
       unitycontext.on("Fullscreen", function () {
         if (fullscreenenabled) {
