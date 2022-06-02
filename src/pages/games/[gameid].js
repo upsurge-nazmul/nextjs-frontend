@@ -491,23 +491,19 @@ export default function GamePage({ gamedata, userdata, seodata }) {
             ) : (
               <div className={styles.mobileerr}>
                 <div className={styles.box}>
-                  <img
-                    src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
-                    className={styles.jasper}
-                  />
-                  <p className={styles.heading}>
-                    Please switch to landscape mode
+                  <BrokenGameConroller className={styles.jasper} />
+                  <p className={styles.heading}>Oh no!</p>
+                  <p>
+                    {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
                   </p>
-                  <p>{`This game only playable in landscape mode.`}</p>
                   <div
                     className={styles.button}
-                    onClick={() => setshowgamelandscapeinfo(true)}
+                    onClick={() => router.push("/")}
                   >
-                    Know more
+                    Go back
                   </div>
                 </div>
-
-                {/* <Jasper className={styles.jasper} /> */}
               </div>
             )
           ) : progression < 1 ? (
@@ -522,23 +518,16 @@ export default function GamePage({ gamedata, userdata, seodata }) {
           ) : widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <img
-                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
-                  className={styles.jasper}
-                />
-                <p className={styles.heading}>
-                  Please switch to landscape mode
+                <BrokenGameConroller className={styles.jasper} />
+                <p className={styles.heading}>Oh no!</p>
+                <p>
+                  {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
                 </p>
-                <p>{`This game only playable in landscape mode.`}</p>
-                <div
-                  className={styles.button}
-                  onClick={() => setshowgamelandscapeinfo(true)}
-                >
-                  Know more
+                <div className={styles.button} onClick={() => router.push("/")}>
+                  Go back
                 </div>
               </div>
-
-              {/* <Jasper className={styles.jasper} /> */}
             </div>
           ) : (
             <div className={styles.start}>

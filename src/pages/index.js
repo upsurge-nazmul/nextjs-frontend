@@ -141,7 +141,11 @@ function Home({ isLogged, userdata }) {
         <BlogsSection />
         <TestiMonial />
         <FaqSection />
-        <JoinUs />
+        <JoinUs
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+        />
         <Footer />
       </div>
     </IntercomProvider>

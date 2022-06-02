@@ -5,8 +5,8 @@ import DropDownArrow from "../SVGcomponents/DropDownArrow";
 function Dropdown({
   value,
   setvalue,
-  options = [], // [{name, value}]
-  placeholder = "Select...",
+  options = [],
+  placeholder,
   margin,
   className,
 }) {

@@ -5,11 +5,10 @@ import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import Jasper from "./SVGcomponents/Jasper";
 import WaitlistPopUp from "./WaitlistPopUp";
-export default function WaitingListCta() {
+export default function WaitingListCta({ setshowauth }) {
   const router = useRouter();
   const [show, setshow] = useState(false);
   const [error, seterror] = useState("");
-  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const [email, setEmail] = useState("");
   return (
     <div className={styles.waitinglist}>
@@ -19,14 +18,7 @@ export default function WaitingListCta() {
           alt=""
         />
       </div>
-      {showwaitlistblock && (
-        <WaitlistPopUp
-          email={email}
-          setemail={setEmail}
-          showpopup={showwaitlistblock}
-          setshowpopup={setshowwaitlistblock}
-        />
-      )}
+
       <div className={styles.midflex}>
         <p>Want your kids to be financially independent?</p>
         <p>Join the upsurge platform today.</p>
@@ -41,13 +33,13 @@ export default function WaitingListCta() {
           <p>
             <span
               style={{ cursor: "pointer" }}
-              onClick={() => setshowwaitlistblock(true)}
+              onClick={() => setshowauth(true)}
             >
               Click here
             </span>{" "}
             to get
           </p>
-          <p>early access.</p>
+          <p> access.</p>
         </div>
       </div>
     </div>
