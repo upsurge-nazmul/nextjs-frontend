@@ -137,7 +137,7 @@ function BlogPage({
       <Curve2 className={styles.curve2} />
 
       <div className={styles.content}>
-        {!userdata && <WaitingListCta />}
+        {!userdata && <WaitingListCta setshowauth={setshowauth} />}
 
         <p className={styles.heading}>Welcome to upsurge Blog!</p>
 
