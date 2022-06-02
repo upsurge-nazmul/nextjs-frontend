@@ -15,6 +15,7 @@ import Values from "../../components/Home/Values";
 import Skills from "../../components/Benefits/Skills";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import Seo from "../../components/Seo";
 function BenfitsPage({ userdata }) {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
@@ -42,6 +43,7 @@ function BenfitsPage({ userdata }) {
   }, []);
   return (
     <div className={`${styles.main} ${theme === "dark" && styles.darkmain}`}>
+      <Seo title={"upsurge benefits"} desc={"upsurge benefits"} />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

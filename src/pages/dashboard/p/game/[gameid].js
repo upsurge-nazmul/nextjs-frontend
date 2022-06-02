@@ -14,9 +14,14 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { MainContext } from "../../../../context/Main";
 import { getCookie } from "../../../../actions/cookieUtils";
+import Seo from "../../../../components/Seo";
+import { Game_Data } from "../../../../static_data/Game_Data";
+import { getGameTitleandDescription } from "../../../../helpers/seo";
+import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
+import Spinner from "../../../../components/Spinner";
 let fullscreenenabled = false;
 
-export default function GamePage({ userdatafromserver, gamedata }) {
+export default function GamePage({ userdatafromserver, gamedata, seodata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const unityref = useRef(unitycontext);
@@ -45,7 +50,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [nickname, setnickname] = useState("");
-  const [mode, setmode] = useState("Games Arena");
+  const [mode, setmode] = useState(Game_Data[gameid]?.name || "");
   const { userdata, setuserdata } = useContext(MainContext);
   const [info, setinfo] = useState({
     device: "computer",
@@ -328,6 +333,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   }, []);
   return (
     <div className={styles.gamePage}>
+      <Seo title={seodata?.title} desc={seodata?.description} />
       <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
@@ -432,7 +438,11 @@ export async function getServerSideProps({ params, req }) {
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
-        props: { isLogged: false, msg },
+        props: {
+          isLogged: false,
+          msg,
+          seodata: getGameTitleandDescription(params.gameid),
+        },
         redirect: {
           permanent: false,
           destination: "/?err=02",
@@ -443,6 +453,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          seodata: getGameTitleandDescription(params.gameid),
           userdatafromserver: response.data.data,
           gamedata:
             gamedata && gamedata.data && gamedata.data.data
@@ -453,7 +464,11 @@ export async function getServerSideProps({ params, req }) {
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token" },
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        seodata: getGameTitleandDescription(params.gameid),
+      },
       redirect: {
         permanent: false,
         destination: "/?err=01",

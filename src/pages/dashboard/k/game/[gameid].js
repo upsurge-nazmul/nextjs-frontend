@@ -14,9 +14,13 @@ import KidDashboardHeader from "../../../../components/KidDashboard/KidDashboard
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { MainContext } from "../../../../context/Main";
 import { Game_Data } from "../../../../static_data/Game_Data";
+import Seo from "../../../../components/Seo";
+import { getGameTitleandDescription } from "../../../../helpers/seo";
+import Spinner from "../../../../components/Spinner";
+import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
 let fullscreenenabled = false;
 
-export default function GamePage({ userdatafromserver, gamedata }) {
+export default function GamePage({ userdatafromserver, gamedata, seodata }) {
   const [progression, setProgression] = useState(0);
   const [unitycontext, setunitycontext] = useState(null);
   const unityref = useRef(unitycontext);
@@ -334,6 +338,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
   return (
     <div className={styles.gamePage}>
       <DashboardLeftPanel type="waitlist" />
+      <Seo title={seodata?.title} desc={seodata?.description} />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         {showgamelandscapeinfo && (
@@ -448,6 +453,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
+          seodata: getGameTitleandDescription(params.gameid),
           userdatafromserver: response.data.data,
           gamedata:
             gamedata && gamedata.data && gamedata.data.data
@@ -458,7 +464,11 @@ export async function getServerSideProps({ params, req }) {
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token" },
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userdata,
+      },
       redirect: {
         permanent: false,
         destination: "/?err=01",
