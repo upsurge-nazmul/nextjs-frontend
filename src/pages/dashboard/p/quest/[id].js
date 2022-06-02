@@ -9,6 +9,7 @@ import Toast from "../../../../components/Toast";
 import styles from "../../../../styles/Quest/quest.module.scss";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
 import LoginApis from "../../../../actions/apis/LoginApis";
+import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import Selection from "../../../../components/Selection";
 
 // const demodata = [
