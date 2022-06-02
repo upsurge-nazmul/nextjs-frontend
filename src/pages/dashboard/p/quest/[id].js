@@ -230,10 +230,11 @@ export default function Quests({ kidsdata }) {
   const [mode, setmode] = useState("Knowledge Quest");
   const [kidsOptions, setKidsOptions] = useState();
   const [selectedkid, setSelectedKid] = useState();
+  const [sectionData, setSectionData] = useState();
   const [selectedKidsLevel, setSelectedKidsLevel] = useState();
-  const [sectionData, setSectionData] = useState(demodata);
 
-  const formatSectionData = (data, level) => {
+  const formatSectionData = (level = 0) => {
+    let data = JSON.parse(JSON.stringify(demodata));
     if (level === 1) {
       data[0].chapters[0].completion = "100%";
     } else if (level === 2) {
@@ -261,6 +262,8 @@ export default function Quests({ kidsdata }) {
       data[1].chapters[1].completion = "100%";
       data[2].chapters[0].completion = "100%";
       data[2].chapters[1].completion = "100%";
+    } else {
+      data = demodata;
     }
     return data;
   };
@@ -279,36 +282,31 @@ export default function Quests({ kidsdata }) {
   }, [kidsdata]);
 
   useEffect(() => {
+    if (kidsOptions) setSelectedKid(kidsOptions[0].value);
+  }, [kidsOptions]);
+
+  useEffect(() => {
     if (selectedkid) {
       async function fetchKidsLevel() {
         let res = await KnowledgeQuestApi.getLevel({
           userId: selectedkid,
         });
         if (res && res.data && res.data.success) {
-          let lev = res.data.data;
+          let lev = res.data.data ? res.data.data : 0;
           setSelectedKidsLevel(lev);
-          let formattedData = formatSectionData(demodata, lev);
-          setSectionData(formattedData);
-        } else {
-          setSectionData(demodata);
         }
       }
       fetchKidsLevel();
     }
   }, [selectedkid]);
 
-  // useEffect(() => {
-  //   if (selectedkid) {
-  //     if (selectedKidsLevel) {
-  //       let formattedData = formatSectionData(demodata, selectedKidsLevel);
-  //       setSectionData(formattedData);
-  //     } else setSectionData(demodata);
-  //   } else {
-  //     setSectionData(demodata);
-  //   }
-  // }, [selectedkid, selectedKidsLevel]);
-
-  console.log(sectionData);
+  useEffect(() => {
+    if (selectedkid && selectedKidsLevel) {
+      setSectionData();
+      let formattedData = formatSectionData(selectedKidsLevel);
+      setSectionData(formattedData);
+    }
+  }, [selectedkid, selectedKidsLevel]);
 
   return (
     <div className={styles.quest}>
@@ -364,7 +362,9 @@ export default function Quests({ kidsdata }) {
               </div>
             </div>
             <div className={styles.section}>
-              {sectionData &&
+              {selectedkid &&
+                selectedKidsLevel &&
+                sectionData &&
                 sectionData.length &&
                 sectionData.map((section, index) => (
                   <Section data={section} key={"section" + index} />
