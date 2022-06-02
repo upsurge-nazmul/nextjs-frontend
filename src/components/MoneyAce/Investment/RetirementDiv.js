@@ -86,7 +86,6 @@ export default function RetirementDiv({
           <div className={styles.subbg}>
             <div className={styles.innerbg}></div>
           </div>
-          <p className={styles.heading}>RETIREMENT FUND</p>
           <div className={styles.wrapper}>
             <div className={styles.row}>
               <p>Intrest rate</p>
@@ -107,7 +106,7 @@ export default function RetirementDiv({
               />
             </div>
             {err && <p className={styles.error}>{err}</p>}
-            <div className={styles.bottom}>
+            <div className={`${styles.bottom} ${styles.retirementbottom}`}>
               <div
                 className={styles.backbutton}
                 onClick={() => setcurrentmode("main")}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import Toast from "../../../components/Toast";
@@ -13,6 +13,7 @@ import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import ApproveModal from "../../../components/ParentStore/ApproveModal";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import VoucherApis from "../../../actions/apis/VoucherApis";
+import { MainContext } from "../../../context/Main";
 
 export default function ParentStore({
   isLogged,
@@ -26,6 +27,7 @@ export default function ParentStore({
   requests,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
+  const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Store");
   const router = useRouter();
   const [searchresult, setsearchresult] = useState([]);
@@ -43,6 +45,10 @@ export default function ParentStore({
     name: "",
     description: "",
   });
+
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
 
   useEffect(() => {
     if (isLogged === false) {
@@ -122,17 +128,18 @@ export async function getServerSideProps({ params, req }) {
       let choresdata = await getchores(token);
       let vouchers = await getvouchers(token);
       let requests = await getrequests(token);
+      const props = {
+        isLogged: true,
+        choresdata,
+        gamesdata,
+        kidsdata,
+        liveclassdata,
+        vouchers,
+        userdatafromserver: response.data.data,
+        requests,
+      };
       return {
-        props: {
-          isLogged: true,
-          choresdata,
-          gamesdata,
-          kidsdata,
-          liveclassdata,
-          vouchers,
-          userdatafromserver: response.data.data,
-          requests,
-        },
+        props,
       };
     }
   } else {
@@ -149,31 +156,36 @@ async function getkidsdata(token) {
   let response = await DashboardApis.getkids(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getchores(token) {
   let response = await ChoreApis.getpendingchores(null, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
-  }
+  } else return null;
 }
 async function getgames(token) {
   let response = await DashboardApis.getgames(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getvouchers(token) {
-  let response = await DashboardApis.getallvouchers(null, token);
+  let response = await DashboardApis.getallvouchers({}, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 
 async function getrequests(token) {
   let response = await DashboardApis.getchildrequests(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }

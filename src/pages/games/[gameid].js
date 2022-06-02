@@ -13,12 +13,14 @@ import styles from "../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { db } from "../../db";
-import { Game_Unity_Data } from "../../static_data/Game_Data";
+import { Game_Data, Game_Unity_Data } from "../../static_data/Game_Data";
 import Loader from "../../components/Loader";
 import Spinner from "../../components/Spinner";
 import GameLandscapeInfo from "../../components/Home/GameLandscapeInfo";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import Seo from "../../components/Seo";
+import { getGameTitleandDescription } from "../../helpers/seo";
 let fullscreenenabled = false;
 const specialchars = [
   "#",
@@ -57,8 +59,10 @@ const specialchars = [
   "8",
   "9",
 ];
-export default function GamePage({ gamedata, userdata }) {
+export default function GamePage({ gamedata, userdata, seodata }) {
+  const router = useRouter();
   const [progression, setProgression] = useState(0);
+  const { gameid, id } = router.query;
   const [unitycontext, setunitycontext] = useState(null);
   const unityref = useRef(unitycontext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -72,10 +76,9 @@ export default function GamePage({ gamedata, userdata }) {
   const [email, setemail] = useState("");
   const [error, seterror] = useState("");
   const [isfullscreen, setisfullscreen] = useState(false);
-  const router = useRouter();
+  const [gameDetails, setGameDetails] = useState(Game_Data[gameid]);
   const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-  const { gameid, id } = router.query;
   const { setuserdata, mobileMode, widthHeight } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
@@ -104,6 +107,7 @@ export default function GamePage({ gamedata, userdata }) {
     }
   }, [gameid]);
   useEffect(() => {
+    setGameDetails(Game_Data[gameid]);
     if (gameid) {
       checkifcacheexist();
     }
@@ -385,8 +389,10 @@ export default function GamePage({ gamedata, userdata }) {
       }
     }
   }, []);
+
   return (
     <div className={styles.gamePage}>
+      <Seo title={seodata?.title} desc={seodata?.description} />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
@@ -485,23 +491,19 @@ export default function GamePage({ gamedata, userdata }) {
             ) : (
               <div className={styles.mobileerr}>
                 <div className={styles.box}>
-                  <img
-                    src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
-                    className={styles.jasper}
-                  />
-                  <p className={styles.heading}>
-                    Please switch to landscape mode
+                  <BrokenGameConroller className={styles.jasper} />
+                  <p className={styles.heading}>Oh no!</p>
+                  <p>
+                    {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
                   </p>
-                  <p>{`This game only playable in landscape mode.`}</p>
                   <div
                     className={styles.button}
-                    onClick={() => setshowgamelandscapeinfo(true)}
+                    onClick={() => router.push("/")}
                   >
-                    Know more
+                    Go back
                   </div>
                 </div>
-
-                {/* <Jasper className={styles.jasper} /> */}
               </div>
             )
           ) : progression < 1 ? (
@@ -516,23 +518,16 @@ export default function GamePage({ gamedata, userdata }) {
           ) : widthHeight.height > widthHeight.width ? (
             <div className={styles.mobileerr}>
               <div className={styles.box}>
-                <img
-                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
-                  className={styles.jasper}
-                />
-                <p className={styles.heading}>
-                  Please switch to landscape mode
+                <BrokenGameConroller className={styles.jasper} />
+                <p className={styles.heading}>Oh no!</p>
+                <p>
+                  {`This game is not yet available for phones & tablets. Please use
+                a laptop or PC to play it.`}
                 </p>
-                <p>{`This game only playable in landscape mode.`}</p>
-                <div
-                  className={styles.button}
-                  onClick={() => setshowgamelandscapeinfo(true)}
-                >
-                  Know more
+                <div className={styles.button} onClick={() => router.push("/")}>
+                  Go back
                 </div>
               </div>
-
-              {/* <Jasper className={styles.jasper} /> */}
             </div>
           ) : (
             <div className={styles.start}>
@@ -688,6 +683,7 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+          seodata: getGameTitleandDescription(params.gameid),
         },
       };
     } else {
@@ -696,6 +692,7 @@ export async function getServerSideProps({ params, req }) {
           isLogged: true,
           userdata: response?.data?.data || null,
           gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+          seodata: getGameTitleandDescription(params.gameid),
         },
       };
     }
@@ -706,6 +703,7 @@ export async function getServerSideProps({ params, req }) {
         msg: "cannot get token",
         userdata: null,
         gamedata: (gamedata && gamedata.data && gamedata.data.data) || null,
+        seodata: getGameTitleandDescription(params.gameid),
       },
     };
   }

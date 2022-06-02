@@ -158,11 +158,14 @@
         align-items: center;
         height: 100%;
         font-weight: 500;
+        min-width: fit-content;
         padding: 10px 30px;
         cursor: pointer;
       }
       .gotobutton {
         min-width: fit-content;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
       }
       .normalbutton {
         border-radius: 8px;
@@ -175,21 +178,17 @@
   .textContent {
     .heading {
       color: $d-moredark;
-  
     }
     .subheading {
       color: $d-main;
     }
     .error {
-
     }
     .emailwrapper {
-
       .button {
         background: $d-main;
         color: $d-text2;
       }
-  
     }
   }
 }

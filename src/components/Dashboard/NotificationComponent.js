@@ -5,6 +5,7 @@ import { getRelativeTime } from "../../helpers/timehelpers";
 import styles from "../../styles/Dashboard/notificationcomponent.module.scss";
 
 export default function NotificationComponent({ data, settoastdata }) {
+  console.log(data);
   const [read, setread] = useState(data.read || false);
   async function handlemarkread(id) {
     let res = await NotificationApis.markread({ id });

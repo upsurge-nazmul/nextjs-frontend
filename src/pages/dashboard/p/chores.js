@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../context/Main";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
@@ -18,7 +19,9 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import RejectChore from "../../../components/Dashboard/RejectChore";
 
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
-  const [mode, setmode] = useState("chores");
+  const { setuserdata } = useContext(MainContext);
+
+  const [mode, setmode] = useState("Chores");
   const router = useRouter();
   const [dataloaded, setdataloaded] = useState(false);
   const [chores, setchores] = useState([]);
@@ -39,17 +42,18 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   }, [isLogged]);
   useEffect(() => {
     setdataloaded(true);
+
     setchores(
       choresdata.filter((item) => {
         if (item.is_reoccurring) {
-          return item.latest_chore.completion === "approval";
+          return item?.latest_chore?.completion === "approval";
         } else return item.completion === "approval";
       })
     );
     setallchores(
       choresdata.filter((item) => {
         if (item.is_reoccurring) {
-          return item.latest_chore.completion !== "approval";
+          return item?.latest_chore?.completion !== "approval";
         } else return item.completion !== "approval";
       })
     );
@@ -60,8 +64,8 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
         backupallchores.filter((item) => {
           if (item.is_reoccurring) {
             return (
-              item.latest_chore.completion !== "completed" &&
-              item.latest_chore.completion !== "approval"
+              item?.latest_chore?.completion !== "completed" &&
+              item?.latest_chore?.completion !== "approval"
             );
           } else
             return (
@@ -79,6 +83,10 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
       );
     }
   }, [choremode]);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
+
   if (!dataloaded) {
     return <Loading />;
   } else

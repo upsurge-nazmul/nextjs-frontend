@@ -43,7 +43,7 @@ export default function VoucherSection({
         </div>
       </div>
       <div className={styles.wrapper}>
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <Reward
             data={item.data}
             key={item.id}
@@ -54,7 +54,7 @@ export default function VoucherSection({
             kidsdata={kidsdata}
           />
         ))}
-        {items.length === 0 && (
+        {items?.length === 0 && (
           <p className={styles.noreward}>No rewards found</p>
         )}
       </div>

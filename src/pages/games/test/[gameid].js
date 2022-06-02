@@ -19,6 +19,7 @@ import Spinner from "../../../components/Spinner";
 import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
+import { getCookie } from "../../../actions/cookieUtils";
 let fullscreenenabled = false;
 const specialchars = [
   "#",
@@ -194,7 +195,7 @@ export default function GamePage({ gamedata, userdata }) {
     function () {
       if (!unitycontext) return;
       unitycontext.on("Score", function (score) {
-        console.log(score);
+        console.log("this is score", score);
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
@@ -205,6 +206,9 @@ export default function GamePage({ gamedata, userdata }) {
         console.log(progression * 100);
       });
       unitycontext.on("Exit", function () {
+        if (router.query.gobackto) {
+          return router.push(router.query.gobackto);
+        }
         router.push("/games");
       });
       unitycontext.on("Fullscreen", function () {
@@ -217,6 +221,10 @@ export default function GamePage({ gamedata, userdata }) {
           fullscreenenabled = true;
           setisfullscreen(true);
         }
+      });
+      unitycontext.on("GameId", function (gameid) {
+        if (!gameid) return;
+        router.push("/games/test/" + gameid + `?gobackto=${router.asPath}`);
       });
     },
     [unitycontext]

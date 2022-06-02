@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
@@ -18,8 +18,10 @@ import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
+import { MainContext } from "../../../context/Main";
 
 export default function Partners({ userdatafromserver }) {
+  const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
   const [mode, setmode] = useState("Partners");
@@ -38,6 +40,10 @@ export default function Partners({ userdatafromserver }) {
     "https://i.ibb.co/Mpqgh6v/logo.png",
     "https://i.ibb.co/5WL7ZGS/Paytm-Logo-wine.png",
   ];
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
+
   return (
     <div className={styles.partnerpage}>
       <LeftPanel

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../../context/Main";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
+import LoginApis from "../../../../actions/apis/LoginApis";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
@@ -12,14 +14,12 @@ import validator from "validator";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear } from "date-fns";
 import range from "lodash/range";
-
-import CustomDatePicker from "../../../../components/CustomDatePicker";
 import ModernInputBox from "../../../../components/ModernInputBox";
 import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
-function AddKid({ childdata }) {
+function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
   const type = router.query.type;
   const [toastdata, settoastdata] = useState({
@@ -27,6 +27,8 @@ function AddKid({ childdata }) {
     type: "success",
     msg: "",
   });
+  const { setuserdata } = useContext(MainContext);
+
   const [mode, setmode] = useState(
     type === "add" ? "Add Child Details" : "Edit Child Details"
   );
@@ -44,8 +46,16 @@ function AddKid({ childdata }) {
     upper: false,
     number: false,
   });
+  const [confirmPasserror, setConfirmPasserror] = useState({
+    length: false,
+    special: false,
+    lower: false,
+    upper: false,
+    number: false,
+  });
   const [error, seterror] = useState(null);
   const [showdetailpass, setshowdetailpass] = useState(false);
+  const [showConfirmDetailPass, setShowConfirmDetailPass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
   const [userName, setuserName] = useState(childdata?.user_name || "");
@@ -78,6 +88,9 @@ function AddKid({ childdata }) {
   useEffect(() => {
     seterror("");
   }, [password, confirmpassword, firstName, lastName, gender, email, dob]);
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   async function addChild() {
     if (!firstName) {
       seterror("First name is required");
@@ -210,18 +223,32 @@ function AddKid({ childdata }) {
       seterror(response.data.message || "error");
     }
   }
-  function validatePassword(e) {
-    let pass = e.target.value.trim();
-    setpassword(pass);
-    let res = {
-      length: checkLength(pass),
-      lower: checkLower(pass),
-      upper: checkUpper(pass),
-      special: checkSpecial(pass),
-      number: checkNumber(pass),
-    };
-    console.log(res);
-    setpasserror(res);
+  function validatePassword(e, type = "normal") {
+    if (type === "confirm") {
+      let pass = e.target.value.trim();
+      setconfirmpassword(pass);
+      let res = {
+        length: checkLength(pass),
+        lower: checkLower(pass),
+        upper: checkUpper(pass),
+        special: checkSpecial(pass),
+        number: checkNumber(pass),
+      };
+      console.log(res);
+      setConfirmPasserror(res);
+    } else {
+      let pass = e.target.value.trim();
+      setpassword(pass);
+      let res = {
+        length: checkLength(pass),
+        lower: checkLower(pass),
+        upper: checkUpper(pass),
+        special: checkSpecial(pass),
+        number: checkNumber(pass),
+      };
+      console.log(res);
+      setpasserror(res);
+    }
   }
   function checkLength(pass) {
     return pass.length >= 8;
@@ -446,11 +473,76 @@ function AddKid({ childdata }) {
               </p>
             </div>
 
-            <ModernInputBox
-              value={confirmpassword}
-              setvalue={setconfirmpassword}
-              placeholder="Confirm Password"
-            />
+            <div
+              className={`${styles.passwordBox} ${
+                type !== "add" && styles.editpassbox
+              }`}
+            >
+              {showConfirmDetailPass && (
+                <div className={styles.detailPass}>
+                  <div className={styles.arrow}></div>
+                  <div className={styles.tab}>
+                    {confirmPasserror.length ? (
+                      <CircleTick />
+                    ) : (
+                      <CircleWarning />
+                    )}
+                    <p className={styles.text}>8 Characters long</p>
+                  </div>
+                  <div className={styles.tab}>
+                    {confirmPasserror.upper ? (
+                      <CircleTick />
+                    ) : (
+                      <CircleWarning />
+                    )}
+                    <p className={styles.text}>Uppercase letter</p>
+                  </div>
+                  <div className={styles.tab}>
+                    {confirmPasserror.lower ? (
+                      <CircleTick />
+                    ) : (
+                      <CircleWarning />
+                    )}
+                    <p className={styles.text}>Lowercase letter</p>
+                  </div>
+                  <div className={styles.tab}>
+                    {confirmPasserror.special ? (
+                      <CircleTick />
+                    ) : (
+                      <CircleWarning />
+                    )}
+                    <p className={styles.text}>Special Character </p>
+                  </div>
+                  <div className={styles.tab}>
+                    {confirmPasserror.number ? (
+                      <CircleTick />
+                    ) : (
+                      <CircleWarning />
+                    )}
+                    <p className={styles.text}>Number</p>
+                  </div>
+                </div>
+              )}
+              <ModernInputBox
+                value={confirmpassword}
+                onBlur={() => setShowConfirmDetailPass(false)}
+                onChange={(e) => validatePassword(e, "confirm")}
+                onFocus={() => setShowConfirmDetailPass(true)}
+                placeholder="Confirm Password"
+                secure={passhidden}
+                extrastyle={{ marginBottom: "0px" }}
+                extraclass={
+                  confirmpassword !== "" && passisweak ? styles.weakpass : ""
+                }
+              />
+              <p
+                className={styles.show}
+                onClick={() => setpasshidden(!passhidden)}
+              >
+                {passhidden ? "Show" : "Hide"}
+              </p>
+            </div>
+
             {error && <p className={styles.error}>{error}</p>}
 
             <div
@@ -470,10 +562,24 @@ export default AddKid;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
-  if (token && params.type !== "add") {
-    let childdata = await getChildData({ id: params.type }, token);
-    return { props: { childdata } };
-  } else return { props: { childdata: {} } };
+  if (token) {
+    let childdata = null;
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (params.type !== "add") {
+      childdata = await getChildData({ id: params.type }, token);
+    }
+    return {
+      props: {
+        childdata,
+        userdatafromserver:
+          response && response.data && response.data.data
+            ? response.data.data
+            : [],
+      },
+    };
+  } else return { props: { childdata: {}, userdatafromserver: null } };
 }
 
 async function getChildData(id, token) {

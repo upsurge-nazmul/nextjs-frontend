@@ -111,8 +111,16 @@ export default function Bank({
       <div className={styles.main}>
         <div className={styles.heading}>
           <NineSlice
-            width={widthHeight.width * 0.12}
-            height={widthHeight.width * 0.035}
+            width={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.18
+                : widthHeight.width * 0.12
+            }
+            height={
+              widthHeight.width < 860
+                ? widthHeight.width * 0.05
+                : widthHeight.width * 0.035
+            }
             border={5}
             s
             image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
@@ -181,15 +189,19 @@ export default function Bank({
                   <NineSlice
                     width={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.06
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.14
+                          : widthHeight.width * 0.055
                         : widthHeight.width * 0.08
                     }
                     height={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.01
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.055
+                          : widthHeight.width * 0.01
                         : widthHeight.width * 0.015
                     }
-                    border={25}
+                    border={widthHeight.width < 860 ? 5 : 25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
@@ -202,15 +214,19 @@ export default function Bank({
                   <NineSlice
                     width={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.06
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.14
+                          : widthHeight.width * 0.055
                         : widthHeight.width * 0.08
                     }
                     height={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.01
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.055
+                          : widthHeight.width * 0.01
                         : widthHeight.width * 0.015
                     }
-                    border={25}
+                    border={widthHeight.width < 860 ? 5 : 25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
@@ -225,15 +241,19 @@ export default function Bank({
                   <NineSlice
                     width={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.06
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.14
+                          : widthHeight.width * 0.055
                         : widthHeight.width * 0.08
                     }
                     height={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.01
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.055
+                          : widthHeight.width * 0.01
                         : widthHeight.width * 0.015
                     }
-                    border={25}
+                    border={widthHeight.width < 860 ? 5 : 25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
@@ -250,15 +270,19 @@ export default function Bank({
                   <NineSlice
                     width={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.06
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.14
+                          : widthHeight.width * 0.055
                         : widthHeight.width * 0.08
                     }
                     height={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.01
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.055
+                          : widthHeight.width * 0.01
                         : widthHeight.width * 0.015
                     }
-                    border={25}
+                    border={widthHeight.width < 860 ? 5 : 25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
@@ -273,15 +297,19 @@ export default function Bank({
                   <NineSlice
                     width={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.06
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.14
+                          : widthHeight.width * 0.055
                         : widthHeight.width * 0.08
                     }
                     height={
                       widthHeight.width < 1200
-                        ? widthHeight.width * 0.01
+                        ? widthHeight.width < 860
+                          ? widthHeight.width * 0.055
+                          : widthHeight.width * 0.01
                         : widthHeight.width * 0.015
                     }
-                    border={25}
+                    border={widthHeight.width < 860 ? 5 : 25}
                     image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>

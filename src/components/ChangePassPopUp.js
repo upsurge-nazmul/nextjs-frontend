@@ -46,22 +46,43 @@ export default function ChangePassPopUp({
       );
       return;
     }
-    DashboardApis.createVerificationOtp().then((response) => {
-      if (response && response.data && response.data.success) {
-        settoastdata({
-          msg: "Otp sent",
-          show: true,
-          type: "success",
-        });
-        setshowotp(true);
-      } else {
-        settoastdata({
-          msg: response?.data.message || "Error",
-          show: true,
-          type: "error",
-        });
-      }
-    });
+    if (isEmailOtp) {
+      LoginApis.genemailotp({ email: email, type: "Password" }).then(
+        (response) => {
+          if (response && response.data && response.data.success) {
+            setshowotp(true);
+            settoastdata({
+              msg: "Otp sent",
+              show: true,
+              type: "success",
+            });
+          } else {
+            settoastdata({
+              msg: response?.data.message || "Error",
+              show: true,
+              type: "error",
+            });
+          }
+        }
+      );
+    } else {
+      DashboardApis.createVerificationOtp().then((response) => {
+        if (response && response.data && response.data.success) {
+          settoastdata({
+            msg: "Otp sent",
+            show: true,
+            type: "success",
+          });
+          setshowotp(true);
+        } else {
+          settoastdata({
+            msg: response?.data.message || "Error",
+            show: true,
+            type: "error",
+          });
+        }
+      });
+    }
   }
 
   return (

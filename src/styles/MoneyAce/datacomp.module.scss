@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .datacomp {
   min-width: 8vw;
   width: fit-content;
@@ -60,6 +62,34 @@
       font-size: 1rem;
       font-weight: bold;
       filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.6));
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .datacomp {
+    min-width: 8vw;
+    margin-left: 5px;
+    .heading {
+      font-size: $mobile-xsmall;
+      margin-bottom: 2px;
+      filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+    }
+    .bg {
+      height: 6vh;
+      img {
+        width: 2.5vw;
+        height: 2.5vw;
+      }
+      .value {
+        margin-right: 1vw;
+        color: #ffffff;
+        font-family: "Fira Sans", sans-serif;
+        z-index: 1;
+        text-transform: capitalize;
+        padding-left: 2vw;
+        font-size: $mobile-xsmall;
+      }
     }
   }
 }

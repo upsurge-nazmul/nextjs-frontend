@@ -4,28 +4,38 @@ import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
-import WaitlistPopUp from "../WaitlistPopUp";
 import { MainContext } from "../../context/Main";
-function JoinUs() {
+function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
   const { userdata, theme } = useContext(MainContext);
-  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const router = useRouter();
+  async function handleSignup(e) {
+    e.preventDefault();
+    if (!validator.isEmail(email)) {
+      seterror("Enter valid email address");
+    } else {
+      // let response = await LoginApis.addtonewslettersubs({ email: email });
+      // if (response) {
+      //   if (response.data.success) {
+      //     if (response.data.message === "Exists") {
+      //       seterror("Already subscribed");
+      //     } else {
+      //       router.push("/subscribed");
+      //     }
+      //   } else {
+      //     seterror(response.data.message);
+      //   }
+      // } else {
+      //   seterror("Error connecting to server");
+      // }
+      setshowauth(true);
+      setauthmode("parent");
+      setmailfromhome(email);
+    }
+  }
   return (
-    <section
-      className={`${styles.joinSection} ${
-        theme === "dark" && styles.darkjoinSection
-      }`}
-    >
-      {showwaitlistblock && (
-        <WaitlistPopUp
-          email={email}
-          setemail={setemail}
-          showpopup={showwaitlistblock}
-          setshowpopup={setshowwaitlistblock}
-        />
-      )}
+    <section className={styles.joinSection}>
       <div className={`${styles.doodle} ${styles.dl1}`}>
         <Image
           layout="fill"
@@ -60,35 +70,56 @@ function JoinUs() {
       <div className={styles.textContent}>
         <div className={styles.heading}>
           {userdata
-            ? "Thank you for joining early access"
-            : "Sign up for early access"}
+            ? "Thank you for joining upsurge newsletter"
+            : "Subscribe to upsurge Newsletter."}
         </div>
         <p className={styles.subheading}>
           {userdata
             ? `You can head back to dashboard using the button below.`
-            : `We can’t wait to have you onboard and start your child’s journey
-          towards financial freedom.`}
+            : `Get all the information related to Financial Literacy.`}
         </p>
         <div className={styles.emailwrapper}>
-          <div
-            className={`${styles.button} ${userdata && styles.gotobutton}`}
-            onClick={() => {
-              if (userdata) {
-                if (userdata.is_waiting_active) {
-                  router.push("/dashboard/w");
-                } else if (userdata.user_type === "parent") {
-                  router.push("/dashboard/p");
-                } else {
-                  router.push("/dashboard/k");
+          {!userdata ? (
+            <>
+              <form onSubmit={(e) => handleSignup(e)}>
+                <input
+                  className={styles.email}
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) => {
+                    seterror("");
+                    setemail(e.target.value);
+                  }}
+                />
+              </form>
+              <div
+                className={`${styles.button} ${!userdata && styles.gotobutton}`}
+                onClick={handleSignup}
+              >
+                {"Subscribe"}
+              </div>
+            </>
+          ) : (
+            <div
+              className={styles.button}
+              onClick={() => {
+                if (userdata) {
+                  if (userdata.is_waiting_active) {
+                    router.push("/dashboard/w");
+                  } else if (userdata.user_type === "parent") {
+                    router.push("/dashboard/p");
+                  } else {
+                    router.push("/dashboard/k");
+                  }
+                  return;
                 }
-                return;
-              }
-              setshowwaitlistblock(true);
-            }}
-          >
-            {userdata ? "Go to Dashboard" : "Sign up"}
-          </div>
+              }}
+            >
+              Go to dashboard
+            </div>
+          )}
         </div>
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </section>
   );

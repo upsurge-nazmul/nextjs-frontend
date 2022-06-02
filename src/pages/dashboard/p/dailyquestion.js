@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
@@ -22,20 +22,26 @@ import QuizApis from "../../../actions/apis/QuizApis";
 import DashboardBlogs from "../../../components/Dashboard/DashboardBlogs";
 import BlogApis from "../../../actions/apis/BlogApis";
 import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
+import { MainContext } from "../../../context/Main";
 
 export default function DailyQuestion({
   userdatafromserver,
   todaysquestion,
   blogdata,
 }) {
+  const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
-  const [mode, setmode] = useState("Question a day");
+  const [mode, setmode] = useState("Question of the day");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
+
   return (
     <div className={styles.invitepage}>
       <LeftPanel

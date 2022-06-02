@@ -23,6 +23,7 @@ import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import KidChore from "../../../components/KidDashboard/KidChore";
+
 export default function ChildActivity({
   pendingchores,
   childdetail,
@@ -30,6 +31,7 @@ export default function ChildActivity({
   childTribes,
   recentgames,
   currentLevel,
+  userdatafromserver,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -43,6 +45,9 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   useEffect(() => {
     if (choremode === "inprogress") {
       if (pendingchores) {
@@ -268,7 +273,7 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       }
-      if (response.data.data.user_type !== "parent")
+      if (response.data.data.user_type !== "child")
         return {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {
@@ -330,6 +335,7 @@ export async function getServerSideProps({ params, req }) {
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
+          userdatafromserver: response.data.data,
         },
       };
     }

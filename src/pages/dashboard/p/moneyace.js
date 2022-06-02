@@ -9,11 +9,13 @@ import Toast from "../../../components/Toast";
 import styles from "../../../styles/kidDashboard/moneyace.module.scss";
 import { MainContext } from "../../../context/Main";
 import { db } from "../../../db";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import BrokenGameConroller from "../../../components/SVGcomponents/BrokenGameConroller";
 import MoneyAceDashboard from "../../../components/MoneyAce/MoneyAceDashboard";
 import Spinner from "../../../components/Spinner";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
+import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+let fullscreenenabled = false;
+
 export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const { setuser, userdata, setuserdata, widthHeight, setshowmenu } =
     useContext(MainContext);
@@ -28,19 +30,11 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   const [unitycontext, setunitycontext] = useState(null);
   const [gamedata, setgamedata] = useState(null);
   const [progression, setProgression] = useState(0);
+  const [isfullscreen, setisfullscreen] = useState(false);
   const [muted, setmuted] = useState(false);
   const [tasks, settasks] = useState([]);
   const [canvassize, setcanvassize] = useState({ width: 800, height: 800 });
   const router = useRouter();
-  const handlefullscren = useFullScreenHandle();
-  useEffect(() => {
-    if (handlefullscren.active) {
-      return;
-    }
-    if (widthHeight.width < 860 && widthHeight.width > widthHeight.height) {
-      handlefullscren.enter();
-    }
-  }, [widthHeight]);
   useEffect(() => {
     function handleResize() {
       let x = document.getElementById("GameCanvas");
@@ -150,6 +144,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
     function () {
       if (!unitycontext) return;
       unitycontext.on("GameOver", function (userName, score) {
+        console.log("Game COmpleted", score);
         MoneyAceApis.updatescore({ score: score, gameId: gamedata.id });
       });
       unitycontext.on("Error", function (code, url, vendor) {
@@ -164,149 +159,198 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
       unitycontext.on("Exit", function () {
         router.reload();
       });
+      unitycontext.on("Fullscreen", function () {
+        movetofull();
+      });
     },
     [unitycontext]
   );
+  function movetofull() {
+    // if already full screen; exit
+    // else go fullscreen
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setisfullscreen(false);
+    } else {
+      let element = document.getElementById("GameCanvas");
+      if (element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+        setisfullscreen(true);
+      }
+    }
+  }
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener(
+      "webkitfullscreenchange",
+      onFullScreenChange,
+      false
+    );
+    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
+
+    function onFullScreenChange() {
+      var fullscreenElement =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement;
+
+      if (!fullscreenElement) {
+        setisfullscreen(false);
+        // router.push("/games");
+      }
+    }
+  }, []);
   return (
     <div className={styles.moneyAce}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="waitlist" />
       <Toast data={toastdata} />
       <div
         className={`${styles.contentWrapper} ${
-          handlefullscren.active && styles.contentWrapperFull
+          isfullscreen && styles.contentWrapperFull
         }`}
       >
-        <KidDashboardHeader mode={"Money Ace"} settoastdata={settoastdata} />
-        <FullScreen handle={handlefullscren} style={styles.fullscreen}>
-          <div
-            className={`${styles.mainContent} ${
-              handlefullscren.active && styles.mainContentfull
-            }`}
-          >
-            {widthHeight.width < 860 && !handlefullscren.active ? (
-              <div className={styles.mobileerr}>
-                <div className={styles.box}>
-                  <BrokenGameConroller className={styles.jasper} />
-                  <p className={styles.heading}>
-                    {widthHeight.width < widthHeight.height
-                      ? "Oops! only landscape supported."
-                      : "Yay! now you can play in fullscreen"}
-                  </p>
-                  <p>
-                    {widthHeight.width < widthHeight.height
-                      ? "Please switch to landscape mode"
-                      : "Please use below button to play game in fullscreen"}
-                  </p>
-                  {!(widthHeight.width < widthHeight.height) && (
-                    <div
-                      className={styles.button}
-                      onClick={() => {
-                        if (!(widthHeight.width < widthHeight.height)) {
-                          handlefullscren.enter();
-                        }
-                      }}
-                    >
-                      Enter fullscreen
+        <DashboardHeader mode={"Money Ace"} settoastdata={settoastdata} />
+        <div
+          className={`${styles.mainContent} ${
+            isfullscreen && styles.mainContentfull
+          }`}
+          id="GameCanvas"
+        >
+          {widthHeight.width < 860 && !isfullscreen ? (
+            <div className={styles.mobileerr}>
+              <div className={styles.box}>
+                <BrokenGameConroller className={styles.jasper} />
+                <p className={styles.heading}>
+                  {widthHeight.width < widthHeight.height
+                    ? "Oops! only landscape supported."
+                    : "Yay! now you can play in fullscreen"}
+                </p>
+                <p>
+                  {widthHeight.width < widthHeight.height
+                    ? "Please switch to landscape mode"
+                    : "Please use below button to play game in fullscreen"}
+                </p>
+                {!(widthHeight.width < widthHeight.height) && (
+                  <div className={styles.button} onClick={movetofull}>
+                    Enter fullscreen
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div
+              className={`${styles.gameMain} ${
+                widthHeight.width >= widthHeight.height * 2 &&
+                styles.extralargegaimMain
+              }`}
+              style={{ width: isfullscreen ? "100%" : "90%" }}
+            >
+              {stage === "welcome" ? (
+                <Welcome
+                  muted={muted}
+                  setmuted={setmuted}
+                  setvolume={setvolume}
+                  volume={volume}
+                  moneyacedata={moneyacedata}
+                  avatarUrl={userdatafromserver.user_img_url}
+                  username={userdatafromserver.user_name}
+                  fullName={
+                    userdatafromserver.first_name +
+                    " " +
+                    (userdatafromserver.last_name || "")
+                  }
+                  setstage={setstage}
+                />
+              ) : stage === "dashboard" ? (
+                <MoneyAceDashboard
+                  muted={muted}
+                  setmuted={setmuted}
+                  setvolume={setvolume}
+                  volume={volume}
+                  setgamedata={setgamedata}
+                  tasks={tasks}
+                  canvassize={canvassize}
+                  moneyacedata={moneyaceuserdata}
+                  setmoneyacedata={setmoneyaceuserdata}
+                  settoastdata={settoastdata}
+                  settasks={settasks}
+                  avatarUrl={userdatafromserver?.user_img_url}
+                  username={userdatafromserver?.user_name}
+                  fullName={
+                    userdatafromserver?.first_name +
+                    " " +
+                    userdatafromserver?.last_name
+                  }
+                  stage={stage}
+                  setstage={setstage}
+                />
+              ) : stage === "game" ? (
+                <div className={styles.gameDiv}>
+                  {progression < 1 && (
+                    <div className={styles.loaderwrapper}>
+                      <Spinner
+                        progress={`${progression * 100}%`}
+                        additionalClass={styles.loader}
+                        color="#4266EB"
+                      />
+                      <p>Loading {Math.round(progression * 100)}%</p>
                     </div>
                   )}
-                </div>
-
-                {/* <Jasper className={styles.jasper} /> */}
-              </div>
-            ) : (
-              <div
-                className={`${styles.gameMain} ${
-                  widthHeight.width >= widthHeight.height * 2 &&
-                  styles.extralargegaimMain
-                }`}
-                style={{ width: handlefullscren.active ? "100%" : "90%" }}
-                id="GameCanvas"
-              >
-                {stage === "welcome" ? (
-                  <Welcome
-                    muted={muted}
-                    setmuted={setmuted}
-                    setvolume={setvolume}
-                    volume={volume}
-                    moneyacedata={moneyacedata}
-                    avatarUrl={userdatafromserver.user_img_url}
-                    username={userdatafromserver.user_name}
-                    fullName={
-                      userdatafromserver.first_name +
-                      " " +
-                      (userdatafromserver.last_name || "")
-                    }
-                    setstage={setstage}
-                  />
-                ) : stage === "dashboard" ? (
-                  <MoneyAceDashboard
-                    muted={muted}
-                    setmuted={setmuted}
-                    setvolume={setvolume}
-                    volume={volume}
-                    setgamedata={setgamedata}
-                    tasks={tasks}
-                    canvassize={canvassize}
-                    moneyacedata={moneyaceuserdata}
-                    setmoneyacedata={setmoneyaceuserdata}
-                    settoastdata={settoastdata}
-                    avatarUrl={userdatafromserver.user_img_url}
-                    username={userdatafromserver.user_name}
-                    fullName={
-                      userdatafromserver.first_name +
-                      " " +
-                      userdatafromserver.last_name
-                    }
-                    setstage={setstage}
-                  />
-                ) : stage === "game" ? (
-                  <div className={styles.gameDiv}>
-                    {progression < 1 && (
-                      <div className={styles.loaderwrapper}>
-                        <Spinner
-                          progress={`${progression * 100}%`}
-                          additionalClass={styles.loader}
-                          color="#4266EB"
-                        />
-                        <p>Loading {Math.round(progression * 100)}%</p>
-                      </div>
-                    )}
-                    {widthHeight.width < 860 && !handlefullscren.active ? (
-                      <div className={styles.mobileerr}>
-                        <div className={styles.box}>
-                          <BrokenGameConroller className={styles.jasper} />
-                          <p className={styles.heading}>
-                            Game can only be played on fullscreen in this
-                            device.
-                          </p>
-                          <p>
-                            {`Please use below button to play game in fullscreen`}
-                          </p>
-                          <div
-                            className={styles.button}
-                            onClick={handlefullscren.enter}
-                          >
-                            Enter fullscreen
-                          </div>
+                  {widthHeight.width < 860 && !isfullscreen ? (
+                    <div className={styles.mobileerr}>
+                      <div className={styles.box}>
+                        <BrokenGameConroller className={styles.jasper} />
+                        <p className={styles.heading}>
+                          Game can only be played on fullscreen in this device.
+                        </p>
+                        <p>
+                          {`Please use below button to play game in fullscreen`}
+                        </p>
+                        <div
+                          className={styles.button}
+                          onClick={handlefullscren.enter}
+                        >
+                          Enter fullscreen
                         </div>
                       </div>
-                    ) : (
-                      unitycontext && (
-                        <Unity
-                          className={`${
-                            progression < 1 ? styles.none : styles.gameMain
-                          }`}
-                          unityContext={unitycontext}
-                          matchWebGLToCanvasSize={true}
-                        />
-                      )
-                    )}
-                  </div>
-                ) : null}
-              </div>
-            )}
-          </div>
-        </FullScreen>
+                    </div>
+                  ) : (
+                    unitycontext && (
+                      <Unity
+                        className={`${
+                          progression < 1 ? styles.none : styles.gameMain
+                        }`}
+                        unityContext={unitycontext}
+                        matchWebGLToCanvasSize={true}
+                      />
+                    )
+                  )}
+                </div>
+              ) : null}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

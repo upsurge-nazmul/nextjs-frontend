@@ -13,6 +13,7 @@ export const Game_Data = {
   },
   HighAndLow: {
     name: "High and low",
+    changedId: "HighAndLow",
     description:
       "Check how much money each column has, and arrange it in ascending or descending order.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
@@ -46,12 +47,12 @@ export const Game_Data = {
     img: "/images/games/Ludo.jpg",
   },
   MoneyDash: {
-    name: "MoneyDash",
+    name: "Money Dash",
     description: "Learn to manage expenses on the fly.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
   },
   SnakeAndLadders: {
-    name: "SnakeAndLadders",
+    name: "Snake And Ladders",
     description: "Let Financial literacy through snakes and ladders.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
   },

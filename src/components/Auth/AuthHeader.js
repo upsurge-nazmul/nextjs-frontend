@@ -21,8 +21,7 @@ function AuthHeader({ handleBack, setmode, mode, setshowpopup, setshowauth }) {
             No Account?{" "}
             <span
               onClick={() => {
-                setshowauth(false);
-                setshowpopup(true);
+                setmode("selection");
               }}
             >
               Sign up

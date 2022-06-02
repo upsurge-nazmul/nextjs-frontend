@@ -65,7 +65,7 @@ function DropDown({
           }}
         >
           {presign ? presign : ""}
-          {shorter
+          {shorter && value >= 1000
             ? value / 1000 + "K"
             : value?.length > 25
             ? value.substring(0, 25) + "..."
@@ -92,7 +92,7 @@ function DropDown({
                     : "dropdownoption" + index
                 }
               >
-                {shorter ? item / 1000 + "K" : item}
+                {shorter ? (item >= 1000 ? item / 1000 + "K" : item) : item}
               </p>
             );
           })}

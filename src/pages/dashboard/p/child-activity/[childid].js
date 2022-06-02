@@ -24,6 +24,7 @@ export default function ChildActivity({
   highestquizscore,
   childTribes,
   recentgames,
+  userdatafromserver,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState(
@@ -39,6 +40,10 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
+
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
 
   useEffect(() => {
     const scrollContainer = document.querySelector("#tribewrapper");
@@ -257,6 +262,7 @@ export async function getServerSideProps({ params, req }) {
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
+          userdatafromserver: response.data.data,
         },
       };
     }

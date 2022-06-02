@@ -44,7 +44,7 @@ function CategoryBar({ selectedCat, sortPosts, col, pushto }) {
               onClick={() => {
                 if (item === "All Categories") {
                   if (pushto) {
-                    router.push("/dashboard/w/blogs");
+                    router.push(pushto);
                   } else router.push("/blogs");
                 } else {
                   if (pushto) {

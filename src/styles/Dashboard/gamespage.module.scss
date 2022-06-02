@@ -1,62 +1,74 @@
+@use "../variables/fontsizes.scss" as *;
+
 .gamesPage {
   background-color: #f4f5f7;
   height: 100vh;
-  width: 100vw;
   display: flex;
   overflow: hidden;
   .contentWrapper {
     height: 100vh;
-    flex: 1;
     display: flex;
-    width: 100%;
     flex-direction: column;
-    .banner {
-      min-height: 450px;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      background-color: #fff;
-      margin-bottom: 20px;
-      img {
-        height: 100%;
-        width: 70%;
-        object-fit: cover;
-      }
-      .right {
-        flex: 1;
-        display: flex;
-        min-width: 400px;
-        padding: 40px;
-        flex-direction: column;
-        .name {
-          font-size: 32px;
-          font-weight: 600;
-        }
-        .description {
-          font-size: 16px;
-          color: rgb(37, 37, 37);
-          margin-top: 10px;
-        }
-        .play {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 6px;
-          background-color: #4166eb;
-          color: white;
-          padding: 15px 40px;
-          font-size: 18px;
-          margin-top: auto;
-          cursor: pointer;
-        }
-      }
-    }
+    width: 100%;
     .mainContent {
       width: 100%;
       display: flex;
       overflow-y: auto;
       margin-top: 20px;
       scrollbar-width: thin;
+      .gameheading {
+        color: #4166eb;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .description {
+        font-size: 16px;
+        margin-top: 10px;
+        line-height: 24px;
+        margin-bottom: 40px;
+      }
+      .banner {
+        min-height: 450px;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        background-color: #fff;
+        margin-bottom: 20px;
+        img {
+          height: 100%;
+          width: 70%;
+          object-fit: cover;
+        }
+        .right {
+          flex: 1;
+          display: flex;
+          min-width: 400px;
+          padding: 40px;
+          flex-direction: column;
+          .name {
+            font-size: 32px;
+            font-weight: 600;
+          }
+          .description {
+            font-size: 16px;
+            color: rgb(37, 37, 37);
+            margin-top: 10px;
+            line-height: 24px;
+          }
+          .play {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background-color: #4166eb;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            margin-top: auto;
+            cursor: pointer;
+          }
+        }
+      }
       .flexLeft {
         display: flex;
         flex-direction: column;
@@ -84,11 +96,11 @@
             align-items: center;
             width: 100%;
             overflow-x: auto;
+            gap: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
             scrollbar-width: thin;
             scroll-behavior: smooth;
-            gap: 20px;
           }
         }
         .availableSection {
@@ -113,8 +125,8 @@
             overflow-x: auto;
             padding-top: 20px;
             padding-bottom: 20px;
-            scrollbar-width: thin;
             gap: 20px;
+            scrollbar-width: thin;
             scroll-behavior: smooth;
           }
         }
@@ -194,20 +206,22 @@
   }
 }
 
-@media only screen and (min-width: 769px) and (max-height: 900px) {
+@media only screen and (min-width: 900px) and (max-height: 900px) {
   .gamesPage {
     .contentWrapper {
       .mainContent {
         .flexLeft {
           .banner {
-            min-height: 350px;
+            width: 100%;
+            min-height: 380px;
+            height: 35vh;
             border-radius: 12px;
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             background-color: #fff;
             img {
               height: 100%;
-              width: 70%;
+              width: 60%;
               object-fit: cover;
             }
             .right {
@@ -340,7 +354,7 @@
   }
 }
 // for tablets
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 860px) {
   .gamesPage {
     .contentWrapper {
       width: 100%;
@@ -412,10 +426,36 @@
                 width: 15px;
               }
             }
+            .blacnkhead1 {
+            }
+            .heads {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              height: 44px;
+              color: rgba(106, 106, 106, 1);
+              .head1 {
+                font-size: 10px;
+                flex: 1;
+                margin-left: 0;
+                font-weight: 400;
+              }
+              .head2 {
+                font-size: 10px;
+                font-weight: 400;
+                flex: 0.7;
+                margin-right: 0;
+              }
+              .head3 {
+                font-size: 10px;
+                margin-left: 15px;
+                font-weight: 400;
+                width: 26%;
+              }
+            }
             .wrapper {
-              flex-direction: column;
               padding: 0 0px 10px 0px;
-              margin-top: 20px;
+              margin-bottom: 10px;
             }
           }
           .availableSection {
@@ -498,10 +538,22 @@
 }
 
 // for mobile
-@media only screen and (max-width: 500px) {
+@media only screen and (orientation: portrait) and (max-width: 500px) {
   .gamesPage {
     .contentWrapper {
       .mainContent {
+        .gameheading {
+          font-size: 22px;
+          font-weight: 600;
+          text-align: left;
+          width: 100%;
+        }
+        .description {
+          font-size: 12px;
+          line-height: 20px;
+          margin: 0;
+          margin-top: 10px;
+        }
         .flexLeft {
           display: flex;
           flex-direction: column;
@@ -511,7 +563,7 @@
           padding: 0 15px;
           .recentSection {
             width: 100%;
-            margin-top: 15px;
+            margin-top: 20px;
             .heading {
               font-size: 18px;
               svg {
@@ -519,44 +571,16 @@
                 width: 15px;
               }
             }
-            .heads {
-              padding: 0 5px;
-              height: 40px;
-              .blacnkhead1 {
-                width: 50px;
-                height: 100%;
-                margin-right: 5px;
-              }
-              .head1 {
-                margin-left: 0;
-                width: 30%;
-                font-size: 7px;
-                max-width: unset;
-              }
-              .head2 {
-                flex: 1;
-                font-size: 7px;
-                text-align: center;
-              }
-              .head3 {
-                width: 37%;
-                font-size: 7px;
-                margin: 0px;
-              }
-              .blacnkhead2 {
-                margin: 0;
-                flex: 1;
-                max-width: 20px;
-              }
-            }
+
             .wrapper {
               padding: 0 0px 10px 0px;
-              margin-bottom: 10px;
+              margin-top: 20px;
+              flex-direction: column;
             }
           }
           .availableSection {
             width: 100%;
-            margin-top: 0px;
+            margin-top: 20px;
             .heading {
               font-weight: 500;
               font-size: 18px;
@@ -609,6 +633,342 @@
             margin-top: 15px;
             .heading {
               font-size: 18px;
+
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              width: 100%;
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+              align-items: center;
+              &::-webkit-scrollbar {
+                width: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// mobile and tab landscape view
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+  .gamesPage {
+    .contentWrapper {
+      width: 100%;
+      max-width: calc(100vw - 55px);
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .gameheading {
+          color: #4166eb;
+          font-size: $mobile-heading;
+          font-weight: 600;
+          text-align: left;
+          width: 100%;
+        }
+        .description {
+          font-size: $mobile-subheading;
+          line-height: $mobile-subheading-line;
+          margin-bottom: 0px;
+        }
+        .flexLeft {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          padding: 0 20px;
+          .banner {
+            min-height: unset;
+            height: max-content;
+            border-radius: 12px;
+            flex-direction: column;
+            overflow: visible;
+            display: flex;
+            background-color: #fff;
+            margin-bottom: 20px;
+            img {
+              height: 200px;
+              min-height: 200px;
+              width: 100%;
+              object-fit: cover;
+            }
+            .right {
+              flex: 1;
+              display: flex;
+              min-width: unset;
+              min-height: fit-content;
+              padding: 20px;
+              flex-direction: column;
+              .name {
+                font-size: 22px;
+                font-weight: 600;
+              }
+              .description {
+                font-size: 12px;
+                color: rgb(37, 37, 37);
+                margin-top: 5px;
+              }
+              .play {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 6px;
+                background-color: #4166eb;
+                color: white;
+                padding: 12px 20px;
+                font-size: 12px;
+                margin-top: auto;
+                cursor: pointer;
+                margin-top: 10px;
+              }
+            }
+          }
+          .recentSection {
+            width: 100%;
+            margin-top: 20px;
+            .heading {
+              font-size: $mobile-heading;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-top: 20px;
+            }
+          }
+          .availableSection {
+            width: 100%;
+            margin-top: 20px;
+            .heading {
+              font-weight: 500;
+              font-size: clamp(16px, 20px, 26px);
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
+          padding: 0 30px;
+          .familyfunSection {
+            width: 100%;
+            margin-top: 0px;
+            padding: 0;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
+
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              overflow: auto;
+              height: max-content;
+              margin-top: 20px;
+              padding: 0 0px 30px 0px;
+              align-items: center;
+            }
+          }
+          .simulatorsSection {
+            width: 100%;
+            padding: 0 0px 0 0px;
+            margin-top: 15px;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
+
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              width: 100%;
+              overflow: auto;
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+              align-items: center;
+              &::-webkit-scrollbar {
+                width: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 900px) {
+  .gamesPage {
+    .contentWrapper {
+      width: 100%;
+      max-width: calc(100vw - 55px);
+      .mainContent {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .gameheading {
+          color: #4166eb;
+          font-size: $mobile-heading;
+          font-weight: 600;
+          text-align: left;
+          width: 100%;
+        }
+        .description {
+          font-size: $mobile-subheading;
+          line-height: $mobile-subheading-line;
+          margin-bottom: 0px;
+        }
+        .flexLeft {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          padding: 0 20px;
+          .banner {
+            min-height: unset;
+            height: max-content;
+            border-radius: 12px;
+            flex-direction: column;
+            overflow: visible;
+            display: flex;
+            background-color: #fff;
+            margin-bottom: 20px;
+            img {
+              height: 200px;
+              min-height: 200px;
+              width: 100%;
+              object-fit: cover;
+            }
+            .right {
+              flex: 1;
+              display: flex;
+              min-width: unset;
+              min-height: fit-content;
+              padding: 20px;
+              flex-direction: column;
+              .name {
+                font-size: 22px;
+                font-weight: 600;
+              }
+              .description {
+                font-size: 12px;
+                color: rgb(37, 37, 37);
+                margin-top: 5px;
+              }
+              .play {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 6px;
+                background-color: #4166eb;
+                color: white;
+                padding: 12px 20px;
+                font-size: 12px;
+                margin-top: auto;
+                cursor: pointer;
+                margin-top: 10px;
+              }
+            }
+          }
+          .recentSection {
+            width: 100%;
+            margin-top: 20px;
+            .heading {
+              font-size: $mobile-heading;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              padding: 0 0px 10px 0px;
+              margin-top: 20px;
+            }
+          }
+          .availableSection {
+            width: 100%;
+            margin-top: 20px;
+            .heading {
+              font-weight: 500;
+              font-size: clamp(16px, 20px, 26px);
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              height: fit-content;
+              margin-top: 20px;
+              padding: 0 0px 10px 0px;
+            }
+          }
+        }
+        .flexRight {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
+          padding: 0 30px;
+          .familyfunSection {
+            width: 100%;
+            margin-top: 0px;
+            padding: 0;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
+
+              svg {
+                margin-left: 5px;
+                width: 15px;
+              }
+            }
+            .wrapper {
+              display: flex;
+              overflow: auto;
+              height: max-content;
+              margin-top: 20px;
+              padding: 0 0px 30px 0px;
+              align-items: center;
+            }
+          }
+          .simulatorsSection {
+            width: 100%;
+            padding: 0 0px 0 0px;
+            margin-top: 15px;
+            .heading {
+              font-size: clamp(16px, 20px, 26px);
 
               svg {
                 margin-left: 5px;

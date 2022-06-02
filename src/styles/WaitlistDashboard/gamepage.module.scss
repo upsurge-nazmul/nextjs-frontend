@@ -118,7 +118,7 @@
             background-color: #4166eb;
             border-radius: 12px;
           }
-          .broken{
+          .broken {
             padding: 20px;
             width: 80%;
           }
@@ -177,9 +177,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;      
+    flex-direction: column;
 
-    .box{
+    .box {
       background-color: white;
       border-radius: 12px;
       display: flex;
@@ -191,28 +191,27 @@
       width: 60%;
       height: fit-content;
 
-      img{
+      img {
         width: 100%;
         height: 100px;
         object-fit: cover;
-        border-radius:12px;
+        border-radius: 12px;
       }
-      .name{
+      .name {
         text-align: center;
         margin-top: 2vh;
       }
-      .btn{
+      .btn {
         background-color: #4166eb;
-padding: 15px 20px;
-color: white;
+        padding: 15px 20px;
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-          border-radius: 12px;
-          margin-top: 5vh;
+        border-radius: 12px;
+        margin-top: 5vh;
       }
     }
-
   }
   .mobilespinner {
     height: fit-content;

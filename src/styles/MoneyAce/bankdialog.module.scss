@@ -1,3 +1,5 @@
+@use "../variables/fontsizes.scss" as *;
+
 .bankdialog {
   height: 100%;
   width: 100%;
@@ -131,7 +133,7 @@
       justify-content: space-around;
       filter: drop-shadow(0px 5px 10px rgb(29, 29, 29));
       .heading {
-        font-size: 2vw;
+        font-size: $mobile-subheading;
         font-weight: 800;
         margin-top: 10px;
         color: #ffd500;
@@ -140,7 +142,7 @@
         text-align: center;
       }
       .err {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 500;
         color: #ff6969;
         margin-bottom: 3%;
@@ -152,11 +154,12 @@
         border: none;
         border: 1px solid rgb(119, 119, 119);
         font-family: "Fira Sans", sans-serif;
-        font-size: 1.5vw;
+        font-size: $mobile-xsmall;
         font-weight: 800;
         color: white;
         padding: 5px 15px;
         height: 35px;
+        text-align: center;
         width: 50%;
         background-color: rgba(128, 128, 128, 0.288);
         margin-bottom: 3%;
@@ -180,7 +183,8 @@
         p {
           font-family: "Fira Sans", sans-serif;
           font-weight: 800;
-          font-size: 1.2vw;
+          font-size: $mobile-xsmall;
+
           filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
         }
         &:hover {

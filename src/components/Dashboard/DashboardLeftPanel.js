@@ -124,7 +124,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
-          <div
+          {/* <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/tribes" ||
               currenttab.indexOf("/dashboard/k/tribes") !== -1
@@ -135,7 +135,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           >
             <PeopleOutlineIcon className={styles.icon} />
             <p className={styles.tabtitle}>Tribes</p>
-          </div>
+          </div> */}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/store" ? styles.activetab : ""
@@ -145,6 +145,28 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <StoreSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Store</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/stocksimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/stocksimulator/home")}
+          >
+            <StockSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Stock Simulator</p>
+          </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/cryptosimulator/[page]"
+                ? styles.activetab
+                : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/cryptosimulator/home")}
+          >
+            <CryptoSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Crypto Simulator</p>
           </div>
           <LeftPannelToggle
             name="Resources"
@@ -178,7 +200,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 icon: <LeaderboardSvg />,
               },
               {
-                name: "Question a day",
+                name: "Question of the day",
                 pushto: "/dashboard/k/dailyquestion",
                 icon: <QuizIconSvg />,
               },
@@ -356,7 +378,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/p/quests")}
+            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
@@ -425,7 +447,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 icon: <LeaderboardSvg />,
               },
               {
-                name: "Question a day",
+                name: "Question of the day",
                 pushto: "/dashboard/p/dailyquestion",
                 icon: <QuizIconSvg />,
               },

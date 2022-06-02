@@ -11,7 +11,9 @@ import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import VideoModal from "../../../components/VideoModal";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
-function Games({ recentgames }) {
+import { Game_Data } from "../../../static_data/Game_Data";
+import GameApis from "../../../actions/apis/GameApis";
+function Games({ recentgames, gameunicoinrewards }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -47,45 +49,7 @@ function Games({ recentgames }) {
       });
     };
   }, []);
-  const data = {
-    ShoppingBudget: {
-      name: "Shopping Budget",
-      description:
-        "Identify how much is available to spend and making purchase decisions based on that.",
-    },
-    BalanceBuilder: {
-      name: "Balance Builder",
-      description: "Identify what is income and what is expense.",
-    },
-    HighAndLow: {
-      name: "High And Low",
-      description:
-        "Identify currency and arrange in ascending or descending order after adding the money.",
-    },
-    MoneyMath: {
-      name: "Money Math",
-      description:
-        "Choose what you want to buy, earn some money, and calculate  how much you have left.",
-    },
-    MoneyManager: {
-      name: "Money Manager",
-      description:
-        "Know the importance of allocating your earnings between spending, saving and donating.",
-    },
-    MoneySlide: {
-      name: "Money Slide",
-      description:
-        "Identify different types of Money notes and coins and achieve the desired target.",
-    },
-    NeedOrWant: {
-      name: "Need Or Want",
-      description: "Identify the difference between needs and wants.",
-    },
-    Ludo: {
-      name: "Ludo",
-      description: "Financial Ludo for young adults.",
-    },
-  };
+
   useEffect(() => {
     let x = localStorage.getItem("recent_games");
     let gamearr = JSON.parse(x);
@@ -104,7 +68,7 @@ function Games({ recentgames }) {
 
     let res = await FreeGameApis.updateRecentGames({ games: gamestring });
   }
-  function handlegameclick(title) {
+  async function handlegameclick(title, pushto) {
     let x = localStorage.getItem("recent_games");
     if (x) {
       x = JSON.parse(x);
@@ -116,15 +80,39 @@ function Games({ recentgames }) {
         } else {
           x.push(title);
         }
-        updaterecentgames(x);
         setrecent_games(x);
         localStorage.setItem("recent_games", JSON.stringify(x));
       }
     } else {
-      updaterecentgames([title]);
       localStorage.setItem("recent_games", JSON.stringify([title]));
     }
-    router.push("/dashboard/p/game/" + title);
+    if (title === "Ludo") {
+      let res = await FreeGameApis.presign({
+        user_name:
+          userdatafromserver.user_name ||
+          userdatafromserver.first_name ||
+          userdatafromserver.last_name,
+        email: userdatafromserver.email,
+        phone: userdatafromserver.phone,
+        token: token,
+        game: title,
+        postlogin: true,
+      });
+      if (res) {
+        if (res.data.success) {
+          router.push({
+            pathname: "/dashboard/p/game/" + (pushto ? pushto : title),
+            query: { id: res.data.data },
+          });
+        } else {
+          console.log(res.data.message);
+        }
+      } else {
+        console.log("error connecting server");
+      }
+    } else {
+      router.push("/dashboard/p/game/" + (pushto ? pushto : title));
+    }
   }
   return (
     <div className={styles.gamesPage}>
@@ -140,7 +128,7 @@ function Games({ recentgames }) {
 
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <MoneyAceBanner  type="p"  />
+            <MoneyAceBanner type="p" />
             {recentgames?.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
@@ -149,9 +137,16 @@ function Games({ recentgames }) {
                     return (
                       <GameCard
                         onCLick={() =>
-                          handlegameclick(data[item].name.replace(/ /g, ""))
+                          handlegameclick(
+                            item,
+                            Game_Data[item].pushto
+                              ? Game_Data[item].pushto.split("/")[
+                                  Game_Data[item].pushto.split("/").length - 1
+                                ]
+                              : ""
+                          )
                         }
-                        data={data[item]}
+                        data={Game_Data[item]}
                         key={"kidcomponent" + index}
                       />
                     );
@@ -162,13 +157,20 @@ function Games({ recentgames }) {
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>Available Games</h2>
               <div className={styles.wrapper}>
-                {Object.keys(data).map((item, index) => {
+                {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
                       onCLick={() =>
-                        handlegameclick(data[item].name.replace(/ /g, ""))
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto
+                            ? Game_Data[item].pushto.split("/")[
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
+                            : ""
+                        )
                       }
-                      data={data[item]}
+                      data={Game_Data[item]}
                       key={"chorecomponent" + index}
                     />
                   );
@@ -202,12 +204,19 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let recentgames = await FreeGameApis.getrecentGames(null, token);
+      let gameunicoinrewards = await GameApis.getgameunicoinrewards(
+        null,
+        token
+      );
       return {
         props: {
           recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
+          gameunicoinrewards: gameunicoinrewards?.data?.success
+            ? recentgames.data.data
+            : [],
           isLogged: true,
         },
       };

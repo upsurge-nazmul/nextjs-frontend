@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Quest/sections.module.scss";
+
 function Section({ data }) {
   return (
     <div className={styles.section}>
@@ -9,18 +10,46 @@ function Section({ data }) {
         <p className={styles.chaptersandweeks}>{data.chaptersandweeks}</p>
       </div>
       <div className={styles.right}>
+        <div className={styles.numberingArea}>
+          <div className={styles.number}>{data.sectionno}</div>
+          <div
+            className={
+              data.chapters[0].completion === "0%"
+                ? styles.numberLine
+                : styles.completeLine
+            }
+          />
+        </div>
         {data.chapters.map((chapter, index) => {
           return (
-            <div className={styles.chapter} key={"chapter" + index}>
-              <div className={styles.main}>
-                <p className={styles.chapterno}>CHAPTER {chapter.chapterno}</p>
-                <p className={styles.chaptertitle}>{chapter.title}</p>
-                <p className={styles.chapterno}>
-                  Lorem ipsum is placeholder text commonly used in the graphic,
-                  print, and publishing industries for previewing layouts and
-                  visual mockups.
-                </p>
-                <p className={styles.remainingtime}>{chapter.remainingtime}</p>
+            <div className={styles.chapterArea} key={"chapter" + index}>
+              <div className={styles.chapter}>
+                <div className={styles.chapterball} />
+                <div
+                  className={styles.chapterball}
+                  style={{
+                    backgroundColor:
+                      chapter.completion === "100%" ? "#4166EB" : "transparent",
+                  }}
+                />
+                <div className={styles.verticalLine} />
+                <div
+                  className={styles.verticalLine}
+                  style={{
+                    backgroundColor: "#4166EB",
+                    height: chapter.completion,
+                  }}
+                />
+                <div className={styles.main}>
+                  <p className={styles.chapterno}>
+                    CHAPTER {chapter.chapterno}
+                  </p>
+                  <p className={styles.chaptertitle}>{chapter.title}</p>
+                  <p className={styles.chapterno}></p>
+                  <p className={styles.remainingtime}>
+                    {chapter.remainingtime}
+                  </p>
+                </div>
               </div>
             </div>
           );

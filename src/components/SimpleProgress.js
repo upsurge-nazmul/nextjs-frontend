@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../styles/GeneralComponents/simpleProgress.module.scss";
-function SimpleProgress({ questions, current, setcurrent, clr }) {
+function SimpleProgress({ questions, current, setcurrent, clr, extrastyle }) {
   useEffect(() => {
     const root = document.documentElement;
     root?.style.setProperty(
@@ -9,7 +9,10 @@ function SimpleProgress({ questions, current, setcurrent, clr }) {
     );
   }, [current]);
   return (
-    <div className={styles.simpleProgressBarWrapper}>
+    <div
+      className={styles.simpleProgressBarWrapper}
+      style={extrastyle ? extrastyle : {}}
+    >
       <div className={styles.backgroundbar}></div>
       <div
         className={styles.backgroundprogressbar}
