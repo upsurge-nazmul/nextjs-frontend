@@ -12,6 +12,7 @@ import TickSvg from "../SVGcomponents/TickSvg";
 import SummerCampApis from "../../actions/apis/SummerCampApis";
 import Spinner from "../Spinner";
 import UblCampApis from "../../actions/apis/UblCampApis";
+import OTPCustomComponent from "../OTPCustomComponent";
 export default function UblForm({
   done,
   setdone,
@@ -22,39 +23,76 @@ export default function UblForm({
 }) {
   const [loading, setloading] = useState(false);
   const [termsAccepted, settermsAccepted] = useState(false);
+  const [showotp, setshowotp] = useState(false);
+  const [error, seterror] = useState("");
+  const [OTP, setOTP] = useState("");
+  const [resetotp, setresetotp] = useState(0);
   const [membersTOShow, setMembersToShow] = useState(3);
   const [formdata, setformdata] = useState({
-    team_name: "",
-    school: "",
+    team_name: "tushar",
+    school: "tushar",
     logo_url: "",
+    primary_phone: "7987606986",
+    primary_email: "tkushwaha70@gmail.com",
     member_1: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "demo",
+      school: "demo",
+      dob: "05/06/1999",
+      school_id: "demo",
+      phone: "7987606986",
+      email: "tkushwaha70@gmail.com",
     },
     member_2: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "demo",
+      school: "demo",
+      dob: "05/06/1999",
+      school_id: "demo",
+      phone: "7987606986",
+      email: "tkushwaha70@gmail.com",
     },
     member_3: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "demo",
+      school: "demo",
+      dob: "05/06/1999",
+      school_id: "demo",
+      phone: "7987606986",
+      email: "tkushwaha70@gmail.com",
     },
   });
-
+  // {
+  //   team_name: "",
+  //   school: "",
+  //   logo_url: "",
+  //   member_1: {
+  //     name: "",
+  //     school: "",
+  //     dob: "",
+  //     school_id: "",
+  //     phone: "",
+  //     email: "",
+  //   },
+  //   member_2: {
+  //     name: "",
+  //     school: "",
+  //     dob: "",
+  //     school_id: "",
+  //     phone: "",
+  //     email: "",
+  //   },
+  //   member_3: {
+  //     name: "",
+  //     school: "",
+  //     dob: "",
+  //     school_id: "",
+  //     phone: "",
+  //     email: "",
+  //   },
+  useEffect(() => {
+    console.log(OTP);
+  }, [OTP]);
   async function register() {
     setloading(true);
+    setOTP("");
     if (!termsAccepted) {
       setloading(false);
       return settoastdata({
@@ -69,6 +107,38 @@ export default function UblForm({
         show: true,
         type: "error",
         msg: "Team name is required",
+      });
+    }
+    if (!formdata.primary_email) {
+      setloading(false);
+      return settoastdata({
+        show: true,
+        type: "error",
+        msg: "Primary email is required",
+      });
+    }
+    if (!vaildateEmail(formdata.primary_email)) {
+      setloading(false);
+      return settoastdata({
+        show: true,
+        type: "error",
+        msg: "Enter valid primary email",
+      });
+    }
+    if (!formdata.primary_phone) {
+      setloading(false);
+      return settoastdata({
+        show: true,
+        type: "error",
+        msg: "Primary phone is required",
+      });
+    }
+    if (!vaildatePhone(formdata.primary_phone)) {
+      setloading(false);
+      return settoastdata({
+        show: true,
+        type: "error",
+        msg: "Enter valid primary phone number",
       });
     }
     if (!formdata.school) {
@@ -115,7 +185,6 @@ export default function UblForm({
           msg: "Invalid Dob set for member " + i,
         });
       }
-      console.log(element.dob.split("/"));
       if (
         element.dob.split("/")[0].length !== 2 ||
         element.dob.split("/")[1].length !== 2 ||
@@ -138,7 +207,6 @@ export default function UblForm({
       }
       if (!element.dob) {
         setloading(false);
-
         return settoastdata({
           show: true,
           type: "error",
@@ -173,8 +241,28 @@ export default function UblForm({
         });
       }
     }
-
-    let res = await UblCampApis.register({ data: formdata });
+    let res = await UblCampApis.createotp({
+      phone: formdata.primary_phone,
+      email: formdata.primary_email,
+    });
+    if (res?.data?.success) {
+      settoastdata({
+        show: true,
+        type: "success",
+        msg: res?.data?.message || "Error connecting to server",
+      });
+      setshowotp(true);
+    } else {
+      settoastdata({
+        show: true,
+        type: "error",
+        msg: res?.data?.message || "Error connecting to server",
+      });
+    }
+    setloading(false);
+  }
+  async function afterOtp() {
+    let res = await UblCampApis.register({ data: formdata, otp: OTP });
     if (res?.data?.success) {
       settoastdata({
         show: true,
@@ -189,9 +277,7 @@ export default function UblForm({
         msg: res?.data?.message || "Error connecting to server",
       });
     }
-    setloading(false);
   }
-
   const logos = [
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/tiger.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/laughing.png",
@@ -224,235 +310,309 @@ export default function UblForm({
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Register
           </p>
-          <div className={styles.form}>
-            <ModernInputBox
-              value={formdata.team_name}
-              extraclass={formdata.team_name && styles.input}
-              placeholderClass={formdata.team_name && styles.placehholder}
-              placeholder={"Team Name"}
-              onChange={(e) =>
-                setformdata((prev) => ({
-                  ...prev,
-                  team_name: onlyText(e.target.value, true),
-                }))
-              }
-            />
-            <ModernInputBox
-              value={formdata.school}
-              extraclass={formdata.school && styles.input}
-              placeholderClass={formdata.school && styles.placehholder}
-              placeholder={"School"}
-              onChange={(e) => {
-                setformdata((prev) => ({
-                  ...prev,
-                  school: e.target.value,
-                }));
-              }}
-            />
-            <div className={styles.logoWrapper}>
-              <p className={styles.head}>Select team logo</p>
-              <div className={styles.imgwrapper} id="logowrapper">
-                {logos.map((item) => {
-                  return (
-                    <img
-                      key={item}
-                      onClick={() =>
-                        setformdata((prev) => ({
-                          ...prev,
-                          logo_url: item,
-                        }))
-                      }
-                      className={formdata.logo_url === item && styles.selected}
-                      src={item}
-                      alt=""
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            {Array(membersTOShow)
-              .fill("x")
-              .map((item, index) => {
-                return (
-                  <div className={styles.memberDetails} key={"member" + index}>
-                    <p className={styles.head}>Member {index + 1} details</p>
-                    <ModernInputBox
-                      value={formdata[`member_${index + 1}`]?.name}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.name && styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.name &&
-                        styles.placehholder
-                      }
-                      placeholder={"Name"}
-                      onChange={(e) => {
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            name: onlyText(e.target.value, true),
-                          },
-                        }));
-                      }}
-                    />
-                    <ModernInputBox
-                      value={formdata[`member_${index + 1}`]?.school}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.school && styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.school &&
-                        styles.placehholder
-                      }
-                      placeholder={"School"}
-                      onChange={(e) => {
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            school: e.target.value,
-                          },
-                        }));
-                      }}
-                    />
-                    <ModernInputBox
-                      maxLength={10}
-                      value={formdata[`member_${index + 1}`]?.dob}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.dob && styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.dob &&
-                        styles.placehholder
-                      }
-                      placeholder={
-                        formdata[`member_${index + 1}`]?.dob
-                          ? "Date Of Birth (DD/MM/YYYY)"
-                          : "Date Of Birth (DD/MM/YYYY)"
-                      }
-                      onChange={(e) => {
-                        let res = e.target.value
-                          .trim()
-                          .replace(/[^0-9./]/g, "");
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            dob: res,
-                          },
-                        }));
-                      }}
-                    />
-                    <ModernInputBox
-                      value={formdata[`member_${index + 1}`]?.school_id}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.school_id &&
-                        styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.school_id &&
-                        styles.placehholder
-                      }
-                      placeholder={"School ID/Admission no."}
-                      onChange={(e) => {
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            school_id: e.target.value.trim(),
-                          },
-                        }));
-                      }}
-                    />
-                    <ModernInputBox
-                      maxLength={10}
-                      value={formdata[`member_${index + 1}`]?.phone}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.phone && styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.phone &&
-                        styles.placehholder
-                      }
-                      placeholder={"Phone"}
-                      onChange={(e) => {
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            phone: removenonnumber(e.target.value.trim()),
-                          },
-                        }));
-                      }}
-                    />
-                    <ModernInputBox
-                      value={formdata[`member_${index + 1}`]?.email}
-                      extraclass={
-                        formdata[`member_${index + 1}`]?.email && styles.input
-                      }
-                      placeholderClass={
-                        formdata[`member_${index + 1}`]?.email &&
-                        styles.placehholder
-                      }
-                      placeholder={"Email"}
-                      onChange={(e) => {
-                        setformdata((prev) => ({
-                          ...prev,
-                          [`member_${index + 1}`]: {
-                            ...prev[`member_${index + 1}`],
-                            email: e.target.value.trim(),
-                          },
-                        }));
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            {membersTOShow < 5 && (
-              <div
-                className={styles.addmore}
-                onClick={() => {
-                  setMembersToShow(membersTOShow + 1);
-                }}
-              >
-                Add more member
-              </div>
-            )}
-            <div className={styles.customCheckbox}>
-              <input
-                type="checkbox"
-                checked={termsAccepted}
+          {!showotp ? (
+            <div className={styles.form}>
+              <ModernInputBox
+                value={formdata.team_name}
+                extraclass={formdata.team_name && styles.input}
+                placeholderClass={formdata.team_name && styles.placehholder}
+                placeholder={"Team Name"}
+                onChange={(e) =>
+                  setformdata((prev) => ({
+                    ...prev,
+                    team_name: onlyText(e.target.value, true),
+                  }))
+                }
+              />
+              <ModernInputBox
+                value={formdata.primary_email}
+                extraclass={formdata.primary_email && styles.input}
+                placeholderClass={formdata.primary_email && styles.placehholder}
+                placeholder={"Primary email"}
+                onChange={(e) =>
+                  setformdata((prev) => ({
+                    ...prev,
+                    primary_email: e.target.value.trim(),
+                  }))
+                }
+              />
+              <ModernInputBox
+                value={formdata.primary_phone}
+                extraclass={formdata.primary_phone && styles.input}
+                placeholderClass={formdata.primary_phone && styles.placehholder}
+                placeholder={"Primary phone"}
+                maxLength={10}
+                onChange={(e) =>
+                  setformdata((prev) => ({
+                    ...prev,
+                    primary_phone: removenonnumber(e.target.value),
+                  }))
+                }
+              />
+              <ModernInputBox
+                value={formdata.school}
+                extraclass={formdata.school && styles.input}
+                placeholderClass={formdata.school && styles.placehholder}
+                placeholder={"School"}
                 onChange={(e) => {
-                  settermsAccepted(!termsAccepted);
+                  setformdata((prev) => ({
+                    ...prev,
+                    school: e.target.value,
+                  }));
                 }}
               />
-              <p>
-                I accept the{" "}
-                <span
+              <div className={styles.logoWrapper}>
+                <p className={styles.head}>Select team logo</p>
+                <div className={styles.imgwrapper} id="logowrapper">
+                  {logos.map((item) => {
+                    return (
+                      <img
+                        key={item}
+                        onClick={() =>
+                          setformdata((prev) => ({
+                            ...prev,
+                            logo_url: item,
+                          }))
+                        }
+                        className={
+                          formdata.logo_url === item && styles.selected
+                        }
+                        src={item}
+                        alt=""
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+              {Array(membersTOShow)
+                .fill("x")
+                .map((item, index) => {
+                  return (
+                    <div
+                      className={styles.memberDetails}
+                      key={"member" + index}
+                    >
+                      <p className={styles.head}>Member {index + 1} details</p>
+                      <ModernInputBox
+                        value={formdata[`member_${index + 1}`]?.name}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.name && styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.name &&
+                          styles.placehholder
+                        }
+                        placeholder={"Name"}
+                        onChange={(e) => {
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              name: onlyText(e.target.value, true),
+                            },
+                          }));
+                        }}
+                      />
+                      <ModernInputBox
+                        value={formdata[`member_${index + 1}`]?.school}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.school &&
+                          styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.school &&
+                          styles.placehholder
+                        }
+                        placeholder={"School"}
+                        onChange={(e) => {
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              school: e.target.value,
+                            },
+                          }));
+                        }}
+                      />
+                      <ModernInputBox
+                        maxLength={10}
+                        value={formdata[`member_${index + 1}`]?.dob}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.dob && styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.dob &&
+                          styles.placehholder
+                        }
+                        placeholder={
+                          formdata[`member_${index + 1}`]?.dob
+                            ? "Date Of Birth (DD/MM/YYYY)"
+                            : "Date Of Birth (DD/MM/YYYY)"
+                        }
+                        onChange={(e) => {
+                          let res = e.target.value
+                            .trim()
+                            .replace(/[^0-9./]/g, "");
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              dob: res,
+                            },
+                          }));
+                        }}
+                      />
+                      <ModernInputBox
+                        value={formdata[`member_${index + 1}`]?.school_id}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.school_id &&
+                          styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.school_id &&
+                          styles.placehholder
+                        }
+                        placeholder={"School ID/Admission no."}
+                        onChange={(e) => {
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              school_id: e.target.value.trim(),
+                            },
+                          }));
+                        }}
+                      />
+                      <ModernInputBox
+                        maxLength={10}
+                        value={formdata[`member_${index + 1}`]?.phone}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.phone && styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.phone &&
+                          styles.placehholder
+                        }
+                        placeholder={"Phone"}
+                        onChange={(e) => {
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              phone: removenonnumber(e.target.value.trim()),
+                            },
+                          }));
+                        }}
+                      />
+                      <ModernInputBox
+                        value={formdata[`member_${index + 1}`]?.email}
+                        extraclass={
+                          formdata[`member_${index + 1}`]?.email && styles.input
+                        }
+                        placeholderClass={
+                          formdata[`member_${index + 1}`]?.email &&
+                          styles.placehholder
+                        }
+                        placeholder={"Email"}
+                        onChange={(e) => {
+                          setformdata((prev) => ({
+                            ...prev,
+                            [`member_${index + 1}`]: {
+                              ...prev[`member_${index + 1}`],
+                              email: e.target.value.trim(),
+                            },
+                          }));
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              {membersTOShow < 5 && (
+                <div
+                  className={styles.addmore}
                   onClick={() => {
-                    settermsAccepted(true);
-                    setshowterm(true);
+                    setMembersToShow(membersTOShow + 1);
                   }}
                 >
-                  Terms and Conditions
-                </span>
-              </p>
-            </div>
+                  Add more member
+                </div>
+              )}
+              <div className={styles.customCheckbox}>
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => {
+                    settermsAccepted(!termsAccepted);
+                  }}
+                />
+                <p>
+                  I accept the{" "}
+                  <span
+                    onClick={() => {
+                      settermsAccepted(true);
+                      setshowterm(true);
+                    }}
+                  >
+                    Terms and Conditions
+                  </span>
+                </p>
+              </div>
 
-            {!loading ? (
-              <div className={`${styles.button}`} onClick={register}>
-                Submit
+              {!loading ? (
+                <div className={`${styles.button}`} onClick={register}>
+                  Submit
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
+          ) : (
+            <div
+              className={styles.otp}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  afterOtp();
+                }
+              }}
+            >
+              <div className={styles.otpHeadWrapper}>
+                <p className={styles.text}>
+                  Enter the 6-digit code sent to you at
+                </p>
+                <p className={styles.phone}>
+                  {"+91 " + formdata.primary_phone}
+                </p>
               </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
+              <OTPCustomComponent setotp={setOTP} size={6} />
+              {error && <p className={styles.error}>{error}</p>}
+              <div
+                className={styles.resendButton}
+                onClick={() => {
+                  setresetotp((prev) => prev + 1);
+                  register();
+                }}
+              >
+                Resend OTP
               </div>
-            )}
-          </div>
+              {!loading ? (
+                <div className={`${styles.button}`} onClick={afterOtp}>
+                  Continue
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div className={`${styles.signup} ${done && styles.flexheight}`}>
+          <div className={styles.cross} onClick={() => setshowform(false)}>
+            <CancelOutlinedIcon className={styles.icon} />
+          </div>
           <p className={styles.heading} style={{ userSelect: "none" }}>
             Your response has been recorded.
           </p>

@@ -34,7 +34,7 @@ export default function OTPCustomComponent({ resetotp, size, setotp }) {
             autoComplete="off"
             type="number"
             key={"otpinput" + index}
-            maxLength="1"
+            maxLength={1}
             onFocus={() => {
               if (currentfocused !== index) {
                 setcurrentfocused(index);
