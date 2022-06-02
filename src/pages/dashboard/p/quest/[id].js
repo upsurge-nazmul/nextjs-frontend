@@ -282,7 +282,7 @@ export default function Quests({ kidsdata }) {
   }, [kidsdata]);
 
   useEffect(() => {
-    if (kidsOptions) setSelectedKid(kidsOptions[0].value);
+    if (kidsOptions && kidsOptions.length) setSelectedKid(kidsOptions[0].value);
   }, [kidsOptions]);
 
   useEffect(() => {
@@ -301,11 +301,13 @@ export default function Quests({ kidsdata }) {
   }, [selectedkid]);
 
   useEffect(() => {
-    if (selectedkid && (selectedKidsLevel || selectedKidsLevel === 0)) {
-      setSectionData();
-      let formattedData = formatSectionData(selectedKidsLevel);
-      setSectionData(formattedData);
-    }
+    if (kidsOptions && kidsOptions.length) {
+      if (selectedkid && (selectedKidsLevel || selectedKidsLevel === 0)) {
+        setSectionData();
+        let formattedData = formatSectionData(selectedKidsLevel);
+        setSectionData(formattedData);
+      }
+    } else setSectionData(demodata);
   }, [selectedkid, selectedKidsLevel]);
 
   return (
@@ -351,13 +353,15 @@ export default function Quests({ kidsdata }) {
                 </p>
               </div>
               <div className={styles.dropdownArea}>
-                {kidsOptions && kidsOptions.length && (
+                {kidsOptions && kidsOptions.length ? (
                   <Selection
                     value={selectedkid}
                     setvalue={setSelectedKid}
                     options={kidsOptions}
                     placeholder="Select Kid"
                   />
+                ) : (
+                  ""
                 )}
               </div>
             </div>
