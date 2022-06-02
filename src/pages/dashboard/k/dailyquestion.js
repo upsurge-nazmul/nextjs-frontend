@@ -30,7 +30,7 @@ export default function DailyQuestion({
 }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
-  const [mode, setmode] = useState("Question a day");
+  const [mode, setmode] = useState("Question of the day");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",

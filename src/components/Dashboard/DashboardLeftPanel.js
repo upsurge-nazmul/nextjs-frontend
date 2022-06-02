@@ -200,7 +200,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 icon: <LeaderboardSvg />,
               },
               {
-                name: "Question a day",
+                name: "Question of the day",
                 pushto: "/dashboard/k/dailyquestion",
                 icon: <QuizIconSvg />,
               },
@@ -447,7 +447,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 icon: <LeaderboardSvg />,
               },
               {
-                name: "Question a day",
+                name: "Question of the day",
                 pushto: "/dashboard/p/dailyquestion",
                 icon: <QuizIconSvg />,
               },
