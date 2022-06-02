@@ -301,7 +301,7 @@ export default function Quests({ kidsdata }) {
   }, [selectedkid]);
 
   useEffect(() => {
-    if (selectedkid && selectedKidsLevel) {
+    if (selectedkid && (selectedKidsLevel || selectedKidsLevel === 0)) {
       setSectionData();
       let formattedData = formatSectionData(selectedKidsLevel);
       setSectionData(formattedData);
@@ -362,9 +362,7 @@ export default function Quests({ kidsdata }) {
               </div>
             </div>
             <div className={styles.section}>
-              {selectedkid &&
-                selectedKidsLevel &&
-                sectionData &&
+              {sectionData &&
                 sectionData.length &&
                 sectionData.map((section, index) => (
                   <Section data={section} key={"section" + index} />
