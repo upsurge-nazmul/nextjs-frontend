@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import Toast from "../../../components/Toast";
@@ -13,6 +13,7 @@ import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import ApproveModal from "../../../components/ParentStore/ApproveModal";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import VoucherApis from "../../../actions/apis/VoucherApis";
+import { MainContext } from "../../../context/Main";
 
 export default function ParentStore({
   isLogged,
@@ -26,6 +27,7 @@ export default function ParentStore({
   requests,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
+  const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Store");
   const router = useRouter();
   const [searchresult, setsearchresult] = useState([]);
@@ -43,6 +45,10 @@ export default function ParentStore({
     name: "",
     description: "",
   });
+
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
 
   useEffect(() => {
     if (isLogged === false) {
