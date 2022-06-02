@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import { MainContext } from "../../context/Main";
+import Seo from "../../components/Seo";
 export default function Products({ userdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -58,6 +59,10 @@ export default function Products({ userdata }) {
   }
   return (
     <div className={styles.pricingPage}>
+      <Seo
+        title={"Investing and compounding games for indian kids"}
+        desc={"Investing and compounding games for indian kids"}
+      />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

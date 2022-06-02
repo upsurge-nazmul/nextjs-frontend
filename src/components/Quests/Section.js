@@ -22,8 +22,8 @@ function Section({ data }) {
         </div>
         {data.chapters.map((chapter, index) => {
           return (
-            <div className={styles.chapterArea}>
-              <div className={styles.chapter} key={"chapter" + index}>
+            <div className={styles.chapterArea} key={"chapter" + index}>
+              <div className={styles.chapter}>
                 <div className={styles.chapterball} />
                 <div
                   className={styles.chapterball}

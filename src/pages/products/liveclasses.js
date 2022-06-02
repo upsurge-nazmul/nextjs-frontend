@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import { MainContext } from "../../context/Main";
+import Seo from "../../components/Seo";
 export default function Products({ userdata }) {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
@@ -57,6 +58,10 @@ export default function Products({ userdata }) {
   }
   return (
     <div className={styles.pricingPage}>
+      <Seo
+        title={"Financial workshop for kids and teen in india"}
+        desc={"Financial workshop for kids and teen in india"}
+      />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
