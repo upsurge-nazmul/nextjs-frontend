@@ -24,12 +24,20 @@ const updatequizdata = (payload, token) => {
     getCookie("accesstoken")
   );
 };
+const getLevel = (payload, token) => {
+  return ApiCalls.getResponse(
+    `knowledgequest/level`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const KidApis = {
   getquestions,
   checkanswer,
   initiate,
   update,
   updatequizdata,
+  getLevel,
 };
 
 export default KidApis;
