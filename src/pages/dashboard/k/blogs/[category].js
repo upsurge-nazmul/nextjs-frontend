@@ -119,7 +119,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
           <p className={styles.heading}>Welcome to upsurge Blog!</p>
 
           <CategoryBar
-            pushto="/dashboard/p/blogs/"
+            pushto="/dashboard/k/blogs/"
             selectedCat={selectedCat}
             sortPosts={sortPosts}
             col="transparent"
@@ -130,7 +130,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
               <div
                 className={styles.left}
                 onClick={() =>
-                  router.push(`/dashboard/p/blog/${blogposts[0].id}`)
+                  router.push(`/dashboard/k/blog/${blogposts[0].id}`)
                 }
               >
                 <img src={blogposts[0].img_url} alt="" />
@@ -160,7 +160,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
                   return (
                     <BlogCard
                       key={"blogcard" + index}
-                      pushto={"/dashboard/p/blog/"}
+                      pushto={"/dashboard/k/blog/"}
                       data={blog}
                       getdatafromraw={getdatafromraw}
                     />
@@ -178,7 +178,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
                     <MoreCard
                       key={"morecard" + index}
                       data={blog}
-                      pushto="/dashboard/p/blog/"
+                      pushto="/dashboard/k/blog/"
                       getdatafromraw={getdatafromraw}
                     />
                   );

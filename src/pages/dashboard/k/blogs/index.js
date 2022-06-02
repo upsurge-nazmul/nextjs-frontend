@@ -67,7 +67,7 @@ export default function Blogs({
   }
   return (
     <div className={styles.blogs}>
-      <DashboardLeftPanel  />
+      <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
@@ -83,7 +83,7 @@ export default function Blogs({
           <CategoryBar
             selectedCat={selectedCat}
             sortPosts={sortPosts}
-            pushto="/dashboard/p/blogs/"
+            pushto="/dashboard/k/blogs/"
             col="transparent"
           />
 
@@ -92,7 +92,7 @@ export default function Blogs({
               <div
                 className={styles.left}
                 onClick={() =>
-                  router.push(`/dashboard/p/blog/${highlightblogs[0].id}`)
+                  router.push(`/dashboard/k/blog/${highlightblogs[0].id}`)
                 }
               >
                 <img src={highlightblogs[0]?.img_url} alt="" />
@@ -123,7 +123,7 @@ export default function Blogs({
                 {highlightblogs.slice(1, 4).map((blog, index) => {
                   return (
                     <BlogCard
-                      pushto={"/dashboard/p/blog/"}
+                      pushto={"/dashboard/k/blog/"}
                       key={"blogcard" + index}
                       data={blog}
                       getdatafromraw={getdatafromraw}
@@ -148,7 +148,7 @@ export default function Blogs({
                     <MoreCard
                       key={"morecard" + index}
                       data={blog}
-                      pushto="/dashboard/p/blog/"
+                      pushto="/dashboard/k/blog/"
                       getdatafromraw={getdatafromraw}
                     />
                   );
