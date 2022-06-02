@@ -49,25 +49,10 @@ function Header({
   return (
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""} ${
-        showticker && !userdata && styles.stickywithannouncement
-      } ${theme === "dark" && styles.darkheader}`}
+        theme === "dark" && styles.darkheader
+      }`}
       id="home-page-header"
     >
-      {showticker && !userdata && (
-        <div className={styles.ticker}>
-          <p>Join our Early Access program today to win exciting prizes!</p>
-          <div
-            className={styles.btn}
-            onClick={() => router.push("/earlyaccess")}
-          >
-            Explore
-          </div>
-          <CloseRoundedIcon
-            className={styles.cross}
-            onClick={() => setshowticker(false)}
-          />
-        </div>
-      )}
       <AuthPage
         showauth={showauth}
         setshowauth={setshowauth}
@@ -86,7 +71,7 @@ function Header({
       )}
       <div className={styles.container}>
         <div
-          className={`${styles.hamburger} ${showticker && styles.hamticker}`}
+          className={`${styles.hamburger} `}
           onClick={() => {
             setOpenLeftPanel((prev) => !prev);
           }}

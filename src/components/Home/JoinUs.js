@@ -10,7 +10,6 @@ function JoinUs() {
   const [error, seterror] = useState("");
   const [email, setemail] = useState("");
   const { userdata, theme } = useContext(MainContext);
-  const [showwaitlistblock, setshowwaitlistblock] = useState(false);
   const router = useRouter();
   return (
     <section
@@ -18,14 +17,6 @@ function JoinUs() {
         theme === "dark" && styles.darkjoinSection
       }`}
     >
-      {showwaitlistblock && (
-        <WaitlistPopUp
-          email={email}
-          setemail={setemail}
-          showpopup={showwaitlistblock}
-          setshowpopup={setshowwaitlistblock}
-        />
-      )}
       <div className={`${styles.doodle} ${styles.dl1}`}>
         <Image
           layout="fill"
@@ -83,7 +74,6 @@ function JoinUs() {
                 }
                 return;
               }
-              setshowwaitlistblock(true);
             }}
           >
             {userdata ? "Go to Dashboard" : "Sign up"}
