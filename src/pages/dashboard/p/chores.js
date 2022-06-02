@@ -21,7 +21,7 @@ import RejectChore from "../../../components/Dashboard/RejectChore";
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
 
-  const [mode, setmode] = useState("chores");
+  const [mode, setmode] = useState("Chores");
   const router = useRouter();
   const [dataloaded, setdataloaded] = useState(false);
   const [chores, setchores] = useState([]);
