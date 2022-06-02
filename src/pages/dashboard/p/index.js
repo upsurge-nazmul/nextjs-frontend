@@ -141,115 +141,126 @@ function Dashboard({
               }`}
             >
               <div className={styles.topSection}>
-                <div className={styles.flexLeft} id="leftside">
-                  <div className={styles.kidsSection}>
-                    <div className={styles.head}>
-                      <h2 className={styles.heading}>My Kids</h2>
-                      <div
-                        className={styles.btn}
-                        onClick={() => router.push("/dashboard/p/child/add")}
-                      >
-                        + Add child
+                {kids && kids.length ? (
+                  <>
+                    <div className={styles.flexLeft} id="leftside">
+                      <div className={styles.kidsSection}>
+                        <div className={styles.head}>
+                          <h2 className={styles.heading}>My Kids</h2>
+                          <div
+                            className={styles.btn}
+                            onClick={() =>
+                              router.push("/dashboard/p/child/add")
+                            }
+                          >
+                            + Add child
+                          </div>
+                        </div>
+
+                        <div className={styles.heads}>
+                          <p className={styles.blacnkhead1}></p>
+                          <p className={styles.head1}>CHILD INFO</p>
+                          <p className={styles.head2}>PENDING CHORES</p>
+                          <p className={styles.head3}>QUEST PROGRESS</p>
+                          <p className={styles.blacnkhead2}></p>
+                        </div>
+                        <div className={`${styles.wrapper}`}>
+                          {kids.map((item, index) => {
+                            return (
+                              <KidComponent
+                                confirmationgiven={confirmationgiven}
+                                setshowConfirmation={setshowConfirmation}
+                                setkids={setkids}
+                                settoastdata={settoastdata}
+                                data={item}
+                                key={"kidcomponent" + index}
+                              />
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
-
-                    {kids.length > 0 && (
-                      <div className={styles.heads}>
-                        <p className={styles.blacnkhead1}></p>
-                        <p className={styles.head1}>CHILD INFO</p>
-                        <p className={styles.head2}>PENDING CHORES</p>
-                        <p className={styles.head3}>QUEST PROGRESS</p>
-                        <p className={styles.blacnkhead2}></p>
-                      </div>
-                    )}
-                    {kids.length > 0 ? (
-                      <div className={`${styles.wrapper}`}>
-                        {kids.map((item, index) => {
-                          return (
-                            <KidComponent
-                              confirmationgiven={confirmationgiven}
-                              setshowConfirmation={setshowConfirmation}
-                              setkids={setkids}
-                              settoastdata={settoastdata}
-                              data={item}
-                              key={"kidcomponent" + index}
-                            />
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <NoKid setkids={setkids} />
-                    )}
-                  </div>
-                </div>
-                <div className={styles.flexRight} id="rightpanel">
-                  {kids.length > 0 && (
-                    <div className={styles.choreSection}>
-                      <h2
-                        className={styles.heading}
-                        onClick={() => router.push("/dashboard/p/chores")}
-                      >
-                        Approvals
-                        <HeadingArrow />
-                      </h2>
-                      {chores.length > 0 ||
-                      tribeRequestsFromServer.length > 0 ? (
-                        <>
-                          {chores.length > 0 && (
+                    <div className={styles.flexRight} id="rightpanel">
+                      {kids.length > 0 && (
+                        <div className={styles.choreSection}>
+                          <h2
+                            className={styles.heading}
+                            onClick={() => router.push("/dashboard/p/chores")}
+                          >
+                            Approvals
+                            <HeadingArrow />
+                          </h2>
+                          {chores.length > 0 ||
+                          tribeRequestsFromServer.length > 0 ? (
                             <>
-                              <p
-                                className={styles.subheading}
-                                onClick={() =>
-                                  router.push("/dashboard/p/chores")
-                                }
-                              >
-                                Chores
-                              </p>
-                              <div className={styles.wrapper}>
-                                {chores.map((data, index) => {
-                                  return (
-                                    <ChoreComponent
-                                      data={data}
-                                      setchores={setchores}
-                                      settoastdata={settoastdata}
-                                      key={data.id}
-                                    />
-                                  );
-                                })}
-                              </div>
+                              {chores.length > 0 && (
+                                <>
+                                  <p
+                                    className={styles.subheading}
+                                    onClick={() =>
+                                      router.push("/dashboard/p/chores")
+                                    }
+                                  >
+                                    Chores
+                                  </p>
+                                  <div className={styles.wrapper}>
+                                    {chores.map((data, index) => {
+                                      return (
+                                        <ChoreComponent
+                                          data={data}
+                                          setchores={setchores}
+                                          settoastdata={settoastdata}
+                                          key={data.id}
+                                        />
+                                      );
+                                    })}
+                                  </div>
+                                </>
+                              )}
+                              {tribeRequestsFromServer.length > 0 && (
+                                <>
+                                  <p
+                                    className={styles.subheading}
+                                    onClick={() =>
+                                      router.push("/dashboard/p/tribes")
+                                    }
+                                  >
+                                    Tribes
+                                  </p>
+                                  <div className={styles.wrapper}>
+                                    {tribeRequestsFromServer.map(
+                                      (data, index) => {
+                                        return (
+                                          <TribeApproval
+                                            data={data}
+                                            key={
+                                              data.id ||
+                                              "chorecomponent" + index
+                                            }
+                                            settoastdata={settoastdata}
+                                            settribes={
+                                              setTribeRequestsFromServer
+                                            }
+                                          />
+                                        );
+                                      }
+                                    )}
+                                  </div>
+                                </>
+                              )}
                             </>
+                          ) : (
+                            <FillSpace text="Currently there are no Approval pending." />
                           )}
-                          {tribeRequestsFromServer.length > 0 && (
-                            <>
-                              <p
-                                className={styles.subheading}
-                                onClick={() =>
-                                  router.push("/dashboard/p/tribes")
-                                }
-                              >
-                                Tribes
-                              </p>
-                              <div className={styles.wrapper}>
-                                {tribeRequestsFromServer.map((data, index) => {
-                                  return (
-                                    <TribeApproval
-                                      data={data}
-                                      key={data.id || "chorecomponent" + index}
-                                      settoastdata={settoastdata}
-                                      settribes={setTribeRequestsFromServer}
-                                    />
-                                  );
-                                })}
-                              </div>
-                            </>
-                          )}
-                        </>
-                      ) : (
-                        <FillSpace text="Currently there are no Approval pending." />
+                        </div>
                       )}
                     </div>
-                  )}
-                </div>
+                  </>
+                ) : (
+                  <div className={styles.noData}>
+                    <NoKid setkids={setkids} />
+                  </div>
+                )}
               </div>
               <div className={styles.questionSection}>
                 {todaysquestion && <TodaysQuestion data={todaysquestion} />}
