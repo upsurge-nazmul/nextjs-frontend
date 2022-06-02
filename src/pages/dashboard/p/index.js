@@ -285,7 +285,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
-    if (response && !response.data.success) {
+    if (response && !response?.data?.success) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
@@ -298,7 +298,7 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       }
-      if (response.data.data.user_type !== "parent")
+      if (response?.data?.data?.user_type !== "parent")
         return {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {

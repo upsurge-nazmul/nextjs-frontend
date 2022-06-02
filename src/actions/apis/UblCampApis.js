@@ -8,9 +8,17 @@ const register = (payload) => {
     getCookie("accesstoken")
   );
 };
+const createotp = (payload) => {
+  return ApiCalls.postResponse(
+    `ubl/createotp`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 
 const UblCampApis = {
   register,
+  createotp,
 };
 
 export default UblCampApis;
