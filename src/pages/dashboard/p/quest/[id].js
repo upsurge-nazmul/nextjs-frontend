@@ -345,19 +345,23 @@ export default function Quests({ kidsdata }) {
                 );
               })}
             </div>
-            <p className={styles.heading}>Knowledge Quest Content</p>
-            <p className={styles.content}>
-              Follow the course content to learn more about Investing.
-            </p>
-            <div className={styles.dropdownArea}>
-              {kidsOptions && kidsOptions.length && (
-                <Selection
-                  value={selectedkid}
-                  setvalue={setSelectedKid}
-                  options={kidsOptions}
-                  placeholder="Select Kid"
-                />
-              )}
+            <div className={styles.midSection}>
+              <div className={styles.knowledgeSection}>
+                <p className={styles.heading}>Knowledge Quest Content</p>
+                <p className={styles.content}>
+                  Follow the course content to learn more about Investing.
+                </p>
+              </div>
+              <div className={styles.dropdownArea}>
+                {kidsOptions && kidsOptions.length && (
+                  <Selection
+                    value={selectedkid}
+                    setvalue={setSelectedKid}
+                    options={kidsOptions}
+                    placeholder="Select Kid"
+                  />
+                )}
+              </div>
             </div>
             <div className={styles.section}>
               {sectionData &&

@@ -80,12 +80,6 @@
       padding-bottom: 40px;
       .left {
         flex: 1;
-        .heading {
-          color: #4166eb;
-          margin-top: 20px;
-          font-size: 24px;
-          font-weight: 600;
-        }
         .about,
         .content {
           margin-top: 10px;
@@ -106,6 +100,24 @@
             border: 0.5px solid #9d9d9d;
             border-radius: 4px;
             margin: 5px;
+          }
+        }
+        .midSection {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 20px;
+          gap: 20px;
+          .knowledgeSection {
+            flex: 1;
+            .heading {
+              color: #4166eb;
+              font-size: 24px;
+              font-weight: 600;
+            }
+          }
+          .dropdownArea {
+            flex: 1;
           }
         }
       }
@@ -249,6 +261,24 @@
             font-size: 14px;
             font-weight: 400;
           }
+          .midSection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+            gap: 20px;
+            .knowledgeSection {
+              flex: 1;
+              .heading {
+                color: #4166eb;
+                font-size: 20px;
+                font-weight: 600;
+              }
+            }
+            .dropdownArea {
+              flex: 0.5;
+            }
+          }
         }
         .right {
           width: fit-content;
@@ -307,9 +337,6 @@
                 font-size: 12px;
               }
             }
-          }
-          .heading {
-            font-size: 20px;
           }
           .conceptswrapper {
             display: flex;
@@ -396,6 +423,26 @@
             font-size: 12px;
             font-weight: 400;
           }
+          .midSection {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+            gap: 10px;
+            .knowledgeSection {
+              flex: 1;
+              .heading {
+                color: #4166eb;
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+            .dropdownArea {
+              flex: 1;
+              width: 70%;
+            }
+          }
         }
         .right {
           width: 100%;
@@ -456,9 +503,6 @@
                 font-size: 10px;
               }
             }
-          }
-          .heading {
-            font-size: 18px;
           }
           .conceptswrapper {
             display: flex;
