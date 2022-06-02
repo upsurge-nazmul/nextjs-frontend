@@ -31,8 +31,10 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
-        setshowpopup(true);
-        // setauthmode("email");
+        // setshowpopup(true);
+        setshowauth(true);
+        setauthmode("");
+        setauthmode("email");
         setmailfromhome(email);
       } else {
         seterror(checkemail?.data.message || "Error connecting to server");
@@ -85,7 +87,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             </form>
             {!loading ? (
               <div className={`${styles.button}`} onClick={check}>
-                Join early access
+                Sign up
               </div>
             ) : (
               <div className={`${styles.button} ${styles.spinner_btn}`}>
@@ -94,13 +96,13 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             )}
           </div>
         )}
-        <div
+        {/* <div
           className={`${styles.knowmore}`}
           onClick={() => router.push("/earlyaccess")}
         >
           <InfoIcon className={styles.infoicon} />
           Know more about early access
-        </div>
+        </div> */}
       </div>
 
       <IntroSvg className={styles.homesvg} />
