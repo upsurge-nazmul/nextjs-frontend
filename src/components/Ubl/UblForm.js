@@ -59,13 +59,14 @@ export default function UblForm({
   });
 
   useEffect(() => {
-    console.log(OTP);
-  }, [OTP]);
+    seterror("");
+  }, [formdata]);
   async function register() {
     setloading(true);
     setOTP("");
     if (!termsAccepted) {
       setloading(false);
+      seterror("Please accept terms before submitting data.");
       return settoastdata({
         show: true,
         type: "error",
@@ -74,6 +75,7 @@ export default function UblForm({
     }
     if (!formdata.team_name) {
       setloading(false);
+      seterror("Team name is required");
       return settoastdata({
         show: true,
         type: "error",
@@ -82,6 +84,8 @@ export default function UblForm({
     }
     if (!formdata.primary_email) {
       setloading(false);
+      seterror("Primary email is required");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -90,6 +94,8 @@ export default function UblForm({
     }
     if (!vaildateEmail(formdata.primary_email)) {
       setloading(false);
+      seterror("Enter valid primary email");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -98,6 +104,8 @@ export default function UblForm({
     }
     if (!formdata.primary_phone) {
       setloading(false);
+      seterror("Primary phone is required");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -106,6 +114,8 @@ export default function UblForm({
     }
     if (!vaildatePhone(formdata.primary_phone)) {
       setloading(false);
+      seterror("Enter valid primary phone number");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -114,6 +124,8 @@ export default function UblForm({
     }
     if (!formdata.school) {
       setloading(false);
+      seterror("School name is required");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -122,6 +134,8 @@ export default function UblForm({
     }
     if (!formdata.logo_url) {
       setloading(false);
+      seterror("Please select one team logo");
+
       return settoastdata({
         show: true,
         type: "error",
@@ -133,6 +147,8 @@ export default function UblForm({
 
       if (!element.name) {
         setloading(false);
+        seterror("Name is required for member " + i);
+
         return settoastdata({
           show: true,
           type: "error",
@@ -142,6 +158,8 @@ export default function UblForm({
 
       if (!element.school) {
         setloading(false);
+        seterror("School is required for member " + i);
+
         return settoastdata({
           show: true,
           type: "error",
@@ -150,6 +168,8 @@ export default function UblForm({
       }
       if ((element.dob.match(/\//g) || []).length !== 2) {
         setloading(false);
+        seterror("Invalid Dob set for member " + i);
+
         return settoastdata({
           show: true,
           type: "error",
@@ -162,13 +182,70 @@ export default function UblForm({
         element.dob.split("/")[2].length !== 4
       ) {
         setloading(false);
+        seterror("Invalid Dob set for member " + i);
+
         return settoastdata({
           show: true,
           type: "error",
           msg: "Invalid Dob set for member " + i,
         });
       }
+      if (element.dob.split("/")[0] > 31) {
+        setloading(false);
+        seterror("Invalid Dob set for member " + i);
+
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
+      if (element.dob.split("/")[1] > 12) {
+        setloading(false);
+        seterror("Invalid Dob set for member " + i);
+
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
+      if (element.dob.split("/")[2] > 2022) {
+        setloading(false);
+        seterror("Invalid Dob set for member " + i);
+
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Invalid Dob set for member " + i,
+        });
+      }
+      if (element.dob.split("/")[2] == new Date().getFullYear()) {
+        if (element.dob.split("/")[1] > new Date().getMonth() + 1) {
+          console.log(element.dob.split("/")[2]);
+          seterror("Invalid Dob set for member " + i);
+          setloading(false);
+          return settoastdata({
+            show: true,
+            type: "error",
+            msg: "Invalid Dob set for member " + i,
+          });
+        }
+
+        if (Number(element.dob.split("/")[1]) == new Date().getMonth() + 1) {
+          if (element.dob.split("/")[0] > new Date().getDate()) {
+            seterror("Invalid Dob set for member " + i);
+            setloading(false);
+            return settoastdata({
+              show: true,
+              type: "error",
+              msg: "Invalid Dob set for member " + i,
+            });
+          }
+        }
+      }
       if (!vaildatePhone(element.phone)) {
+        seterror("Enter valid phone number of member " + i);
         setloading(false);
         return settoastdata({
           show: true,
@@ -177,6 +254,7 @@ export default function UblForm({
         });
       }
       if (!element.dob) {
+        seterror("DOB is required for member " + i);
         setloading(false);
         return settoastdata({
           show: true,
@@ -186,7 +264,7 @@ export default function UblForm({
       }
       if (!element.school_id) {
         setloading(false);
-
+        seterror("School id/ admission number is required for member " + i);
         return settoastdata({
           show: true,
           type: "error",
@@ -195,6 +273,7 @@ export default function UblForm({
       }
       if (!element.email) {
         setloading(false);
+        seterror("Email is required for member " + i);
 
         return settoastdata({
           show: true,
@@ -204,6 +283,7 @@ export default function UblForm({
       }
       if (!vaildateEmail(element.email)) {
         setloading(false);
+        seterror("Enter valid email of member " + i);
 
         return settoastdata({
           show: true,
@@ -217,6 +297,7 @@ export default function UblForm({
       email: formdata.primary_email,
     });
     if (res?.data?.success) {
+      seterror("");
       settoastdata({
         show: true,
         type: "success",
@@ -224,6 +305,7 @@ export default function UblForm({
       });
       setshowotp(true);
     } else {
+      seterror(res?.data?.message || "Error connecting to server");
       settoastdata({
         show: true,
         type: "error",
@@ -235,6 +317,7 @@ export default function UblForm({
   async function afterOtp() {
     let res = await UblCampApis.register({ data: formdata, otp: OTP });
     if (res?.data?.success) {
+      seterror("");
       settoastdata({
         show: true,
         type: "success",
@@ -242,6 +325,7 @@ export default function UblForm({
       });
       setdone(true);
     } else {
+      seterror(res?.data?.message || "Error connecting to server");
       settoastdata({
         show: true,
         type: "error",
@@ -528,7 +612,7 @@ export default function UblForm({
                   </span>
                 </p>
               </div>
-
+              {error && <p className={styles.error}>{error}</p>}
               {!loading ? (
                 <div className={`${styles.button}`} onClick={register}>
                   Submit
