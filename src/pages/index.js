@@ -99,7 +99,10 @@ function Home({ isLogged, userdata }) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <div className={styles.summerbtn} onClick={() => router.push("/ubl")}>
+        <div
+          className={styles.summerbtn}
+          onClick={() => router.push("/business_league")}
+        >
           <p className={styles.maintext}>upsurge Business League</p>
           <p className={styles.subtext}>Registration closes 20th June</p>
         </div>

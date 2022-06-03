@@ -203,7 +203,7 @@ export default function UblPage() {
           <div className={styles.challengeItem1}>
             <UblGreen className={styles.challengeSvg} />
             <p>
-              Top-25 teams will be given a ₹10,000 grant to develop their
+              Upto 25 top teams will be given a ₹10,000 grant to develop their
               business idea for 2 weeks.
             </p>
           </div>
@@ -238,56 +238,59 @@ export default function UblPage() {
         <p className={styles.head}>Competition Roadmap</p>
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
-          <div className={styles.roundHeading}>Round 1</div>
+          <div className={styles.roundHeading}>
+            Round 1 - Registrations close June 20, 2022
+          </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
-            points based on their performance. The top 25 teams will then
+            points based on their performance. Up to 25 top teams will then
             progress to the next round.
           </div>
           <div className={styles.round}>
-            <span>Business Quiz -</span> live online 30-question quiz to be
-            answered in 10 minutes by teams to test their business knowledge and
-            speed.
+            <p style={{ fontWeight: 600 }}>
+              Knowledge Quest - Live Business & Startup Quiz - June 26, 2022
+            </p>{" "}
+            Live online quiz which will test their business knowledge, speed &
+            problem-solving
           </div>
           <div className={styles.round}>
-            <span>Case Study -</span> Each team would be a startup that is
-            launching an FMCG brand in the Indian market. The team will have to
-            decide the product and brand name, and design the go-to-market
-            strategy for their chosen product.
+            <p style={{ fontWeight: 600 }}>Case Study - July 3, 2022</p>{" "}
+            {
+              "Each team would be a startup that is launching an FMCG brand in the Indian market. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
+            }
           </div>
           <div className={styles.round}>
-            <span>Business Pitch -</span>{" "}
-            {`Teams will be required to come up with
-            a business idea, evaluate & validate it, and submit a preliminary
-            pitch video (maximum 5 minutes) or a presentation on their business
-            plan.`}
+            <p style={{ fontWeight: 600 }}>
+              Business Idea Pitch - July 3, 2022
+            </p>{" "}
+            {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
-          <div className={styles.roundHeading}>Round 2</div>
-          <div className={styles.round}>
-            Top 25 teams will be shortlisted based on their performance in Round
-            1.
+          <div className={styles.roundHeading}>
+            Round 2 - Teams announced on July 10, 2022
           </div>
           <div className={styles.round}>
-            Each shortlisted team to be given the following to develop their
+            Up to 25 top teams will be shortlisted based on their performance in
+            Round 1.
+          </div>
+          <div className={styles.round}>
+            Each shortlisted team will be given the following to develop their
             business idea
             <p>- Access to upsurge’s proprietary learning resources</p>
             <p>- A grant of ₹10,000</p>
             <p>
-              - Free mentorship sessions with professionals working at leading
-              startups
+              - Free mentorship sessions with experts working at leading
+              startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>Finals</div>
+          <div className={styles.roundHeading}>Final - August 8</div>
           <div className={styles.round}>
-            Final pitch will be held on 9th July in front of a jury of 5 judges
-            comprising entrepreneurs, venture capitalists, CXOs and startup
-            leaders.
+            Final pitch will be held in front of a jury of 5 judges comprising
+            entrepreneurs, venture capitalists, CXOs and startup leaders.
           </div>
           <UblTug className={styles.tug} />
         </div>
       </div>
       <Values insidebenefits />
-      <FaqSection customfaq={faqs} />
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
@@ -314,6 +317,7 @@ to start and scale a business.`}</p>
 clean-label and delicious nut butters, dessers & spreads for all.`}</p>
         </div>
       </div>
+      <FaqSection customfaq={faqs} />
     </div>
   );
 }
