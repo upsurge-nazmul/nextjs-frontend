@@ -101,7 +101,7 @@ function Home({ isLogged, userdata }) {
         </Head>
         <div className={styles.summerbtn} onClick={() => router.push("/ubl")}>
           <p className={styles.maintext}>upsurge Business League</p>
-          <p className={styles.subtext}>Registration closes 19th June</p>
+          <p className={styles.subtext}>Registration closes 20th June</p>
         </div>
         <Header
           setOpenLeftPanel={setOpenLeftPanel}
