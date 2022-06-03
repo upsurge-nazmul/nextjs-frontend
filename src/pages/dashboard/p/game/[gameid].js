@@ -19,6 +19,8 @@ import { Game_Data } from "../../../../static_data/Game_Data";
 import { getGameTitleandDescription } from "../../../../helpers/seo";
 import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
 import Spinner from "../../../../components/Spinner";
+import { isMobile } from "react-device-detect";
+import BrokenGame from "../../../../components/Games/BrokenGame";
 let fullscreenenabled = false;
 
 export default function GamePage({ userdatafromserver, gamedata, seodata }) {
@@ -345,55 +347,9 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        {unitycontext &&
-        progression === 1 &&
-        widthHeight.width <= 900 &&
-        widthHeight.height < widthHeight.width &&
-        !isfullscreen ? (
-          <div className={styles.start}>
-            <div className={styles.box}>
-              <p className={styles.name}>
-                This game can only be played on fullscreen in your phone.
-              </p>
-              <p className={styles.btn} onClick={movetofull}>
-                Go to fullscreen
-              </p>
-            </div>
-          </div>
-        ) : (
-          widthHeight.width <= 900 &&
-          widthHeight.height < widthHeight.width && (
-            <div className={styles.mobilespinner}>
-              <Spinner
-                progress={`${progression * 100}%`}
-                additionalClass={styles.loader}
-                color="#4266EB"
-                topcolor="white"
-              />
-              <p>Loading {Math.round(progression * 100)}%</p>
-            </div>
-          )
-        )}
         <div className={styles.mainContent} id="unity-wrapper">
-          {widthHeight.width < 900 && widthHeight.height > widthHeight.width ? (
-            <div className={styles.mobileerr}>
-              <div className={styles.box}>
-                <img
-                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
-                  className={styles.jasper}
-                />
-                <p className={styles.heading}>
-                  Please switch to landscape mode
-                </p>
-                <p>{`This game only playable in landscape mode.`}</p>
-                <div
-                  className={styles.button}
-                  onClick={() => setshowgamelandscapeinfo(true)}
-                >
-                  Know more
-                </div>
-              </div>
-            </div>
+          {isMobile ? (
+            <BrokenGame goBackTo="/p/games" />
           ) : gamedata && unitycontext ? (
             <Unity
               className={`${styles.gameMain} ${stickyheader && styles.sticky} ${

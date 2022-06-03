@@ -408,260 +408,141 @@ export default function GamePage({ gamedata, userdata, seodata }) {
       {showgamelandscapeinfo && (
         <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
       )}
-
-      {
-        // mobile mode
-        mobileMode ? (
-          !showgame ? (
-            widthHeight.height < widthHeight.width ? (
-              <div className={styles.mobilegamedata}>
-                <div className={styles.left}>
-                  <p className={styles.heading}>We need a few more details</p>
-                  <p className={styles.error}>{error}</p>
-                  <input
-                    type="text"
-                    className={styles.input}
-                    value={name}
-                    onChange={(e) => {
-                      if (
-                        e.target.value.length > 1 &&
-                        e.target.value[e.target.value.length - 1] === " "
-                      ) {
-                        setname(e.target.value);
-                      }
-                      if (!e.target.value[e.target.value.length - 1]) {
-                        setname("");
-                        return;
-                      }
-                      if (
-                        specialchars.includes(
-                          e.target.value[e.target.value.length - 1].toString()
-                        )
-                      ) {
-                        return;
-                      }
-                      if (isNaN(e.target.value[e.target.value.length - 1]))
-                        setname(e.target.value);
-                    }}
-                    placeholder="Name*"
-                  />
-                  <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                    className={styles.input}
-                    placeholder="Email*"
-                  />
-                  <input
-                    value={phone}
-                    type="text"
-                    maxLength={10}
-                    onChange={(e) => {
-                      if (!e.target.value[e.target.value.length - 1]) {
-                        setphone("");
-                        return;
-                      }
-                      if (isNaN(e.target.value[e.target.value.length - 1])) {
-                        return;
-                      }
-                      setphone(e.target.value);
-                    }}
-                    className={styles.input}
-                    placeholder="Phone (optional)"
-                  />
-                  <div className={styles.buttons}>
-                    <div
-                      className={styles.startbutton}
-                      onClick={() => startgame(false, true)}
-                    >
-                      Start Playing
-                    </div>
-                    <div
-                      className={styles.skipbutton}
-                      onClick={() => startgame(true, true)}
-                    >
-                      Skip
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.right}>
-                  <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
-                </div>
-              </div>
-            ) : (
-              <div className={styles.mobileerr}>
-                <div className={styles.box}>
-                  <BrokenGameConroller className={styles.jasper} />
-                  <p className={styles.heading}>Oh no!</p>
-                  <p>
-                    {`This game is not yet available for phones & tablets. Please use
+      {isMobile && (
+        <div className={styles.mobileerr}>
+          <div className={styles.box}>
+            <BrokenGameConroller className={styles.jasper} />
+            <p className={styles.heading}>Oh no!</p>
+            <p>
+              {`This game is not yet available for phones & tablets. Please use
                 a laptop or PC to play it.`}
-                  </p>
-                  <div
-                    className={styles.button}
-                    onClick={() => router.push("/")}
-                  >
-                    Go back
-                  </div>
-                </div>
-              </div>
-            )
-          ) : progression < 1 ? (
-            <div className={styles.mobileloaderwrapper}>
-              <Spinner
-                progress={`${progression * 100}%`}
-                additionalClass={styles.loader}
-                color="#4266EB"
-              />
-              <p>Loading {Math.round(progression * 100)}%</p>
+            </p>
+            <div className={styles.button} onClick={() => router.push("/")}>
+              Go back
             </div>
-          ) : widthHeight.height > widthHeight.width ? (
-            <div className={styles.mobileerr}>
-              <div className={styles.box}>
-                <BrokenGameConroller className={styles.jasper} />
-                <p className={styles.heading}>Oh no!</p>
-                <p>
-                  {`This game is not yet available for phones & tablets. Please use
-                a laptop or PC to play it.`}
-                </p>
-                <div className={styles.button} onClick={() => router.push("/")}>
-                  Go back
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className={styles.start}>
-              <div className={styles.box}>
-                <p className={styles.name}>
-                  Game is ready, click the below button to start game.
-                </p>
-                <p className={styles.btn} onClick={movetofull}>
-                  Start game
-                </p>
-              </div>
-            </div>
-          )
-        ) : (
-          <div
-            className={`${styles.gameWrapper} ${
-              widthHeight.width <= 900 && styles.mobilewrapper
-            } ${isfullscreen && styles.nopadding}`}
-            id="unity-wrapper"
-          >
-            {gamedata && !showgame && widthHeight.width > 900 ? (
-              <div className={styles.gamedata}>
-                <div className={styles.left}>
-                  <p className={styles.heading}>We need a few more details</p>
-                  <p className={styles.error}>{error}</p>
-                  <input
-                    type="text"
-                    className={styles.input}
-                    value={name}
-                    onChange={(e) => {
-                      if (
-                        e.target.value.length > 1 &&
-                        e.target.value[e.target.value.length - 1] === " "
-                      ) {
-                        setname(e.target.value);
-                      }
-                      if (!e.target.value[e.target.value.length - 1]) {
-                        setname("");
-                        return;
-                      }
-                      if (
-                        specialchars.includes(
-                          e.target.value[e.target.value.length - 1].toString()
-                        )
-                      ) {
-                        return;
-                      }
-                      if (isNaN(e.target.value[e.target.value.length - 1]))
-                        setname(e.target.value);
-                    }}
-                    placeholder="Name*"
-                  />
-                  <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                    className={styles.input}
-                    placeholder="Email*"
-                  />
-                  <input
-                    value={phone}
-                    type="text"
-                    maxLength={10}
-                    onChange={(e) => {
-                      if (!e.target.value[e.target.value.length - 1]) {
-                        setphone("");
-                        return;
-                      }
-                      if (isNaN(e.target.value[e.target.value.length - 1])) {
-                        return;
-                      }
-                      setphone(e.target.value);
-                    }}
-                    className={styles.input}
-                    placeholder="Phone (optional)"
-                  />
-                  <div className={styles.buttons}>
-                    <div className={styles.startbutton} onClick={startgame}>
-                      Start Playing
-                    </div>
-                    <div
-                      className={styles.skipbutton}
-                      onClick={() => startgame(true)}
-                    >
-                      Skip
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.right}>
-                  <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
-                </div>
-              </div>
-            ) : gamedata && unitycontext ? (
-              <div />
-            ) : (
-              <p>Incorrect url, game not found.</p>
-            )}
           </div>
-        )
-      }
-      <div
-        className={`${styles.gameWrapper} ${
-          widthHeight.width <= 900 && styles.mobilewrapper
-        } ${isfullscreen && styles.nopadding}`}
-        id="unity-wrapper"
-      >
-        {showgame && gamedata && unitycontext && (
-          <Unity
-            id="gameunity"
-            className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
-              removeBorder ? styles.removeborder : ""
-            }
-      ${
-        widthHeight.width < 900 &&
-        widthHeight.height < widthHeight.width &&
-        styles.mobilegame
-      }
-      `}
-            style={
-              widthHeight.width > 900 && !isMobile
-                ? {
-                    visibility: "visible",
-                  }
-                : {
-                    visibility: isfullscreen ? "visible" : "hidden",
-                    position: !isfullscreen ? "absolute" : "static",
-                    pointerEvents: !isfullscreen ? "none" : "unset",
-                  }
-            }
-            unityContext={unitycontext}
-            matchWebGLToCanvasSize={true}
+        </div>
+      )}
+      {!isMobile && !showgame ? (
+        <div className={styles.mobilegamedata}>
+          <div className={styles.left}>
+            <p className={styles.heading}>We need a few more details</p>
+            <p className={styles.error}>{error}</p>
+            <input
+              type="text"
+              className={styles.input}
+              value={name}
+              onChange={(e) => {
+                if (
+                  e.target.value.length > 1 &&
+                  e.target.value[e.target.value.length - 1] === " "
+                ) {
+                  setname(e.target.value);
+                }
+                if (!e.target.value[e.target.value.length - 1]) {
+                  setname("");
+                  return;
+                }
+                if (
+                  specialchars.includes(
+                    e.target.value[e.target.value.length - 1].toString()
+                  )
+                ) {
+                  return;
+                }
+                if (isNaN(e.target.value[e.target.value.length - 1]))
+                  setname(e.target.value);
+              }}
+              placeholder="Name*"
+            />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+              className={styles.input}
+              placeholder="Email*"
+            />
+            <input
+              value={phone}
+              type="text"
+              maxLength={10}
+              onChange={(e) => {
+                if (!e.target.value[e.target.value.length - 1]) {
+                  setphone("");
+                  return;
+                }
+                if (isNaN(e.target.value[e.target.value.length - 1])) {
+                  return;
+                }
+                setphone(e.target.value);
+              }}
+              className={styles.input}
+              placeholder="Phone (optional)"
+            />
+            <div className={styles.buttons}>
+              <div
+                className={styles.startbutton}
+                onClick={() => startgame(false, true)}
+              >
+                Start Playing
+              </div>
+              <div
+                className={styles.skipbutton}
+                onClick={() => startgame(true, true)}
+              >
+                Skip
+              </div>
+            </div>
+          </div>
+          <div className={styles.right}>
+            <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+          </div>
+        </div>
+      ) : !isMobile && progression < 1 ? (
+        <div className={styles.mobileloaderwrapper}>
+          <Spinner
+            progress={`${progression * 100}%`}
+            additionalClass={styles.loader}
+            color="#4266EB"
           />
-        )}
-      </div>
+          <p>Loading {Math.round(progression * 100)}%</p>
+        </div>
+      ) : (
+        <div
+          className={`${styles.gameWrapper} ${
+            widthHeight.width <= 900 && styles.mobilewrapper
+          } ${isfullscreen && styles.nopadding}`}
+          id="unity-wrapper"
+        >
+          {showgame && gamedata && unitycontext && (
+            <Unity
+              id="gameunity"
+              className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
+                removeBorder ? styles.removeborder : ""
+              }
+        ${
+          widthHeight.width < 900 &&
+          widthHeight.height < widthHeight.width &&
+          styles.mobilegame
+        }
+        `}
+              style={
+                widthHeight.width > 900 && !isMobile
+                  ? {
+                      visibility: "visible",
+                    }
+                  : {
+                      visibility: isfullscreen ? "visible" : "hidden",
+                      position: !isfullscreen ? "absolute" : "static",
+                      pointerEvents: !isfullscreen ? "none" : "unset",
+                    }
+              }
+              unityContext={unitycontext}
+              matchWebGLToCanvasSize={true}
+            />
+          )}
+        </div>
+      )}
 
       <JoinUs />
 
