@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Home/faqsection.module.scss";
 import Faq from "../Help/Faq";
-export default function FaqSection() {
+export default function FaqSection({ customfaq }) {
   const faqs = [
     {
       question: "What do we do?",
@@ -78,7 +78,7 @@ export default function FaqSection() {
       </div>
       <div className={styles.mobilehead}>Frequently Asked Questions</div>
       <div className={styles.wrapper}>
-        {faqs.map((item, index) => {
+        {(customfaq ? customfaq : faqs).map((item, index) => {
           return (
             <Faq
               key={"faq" + index}

@@ -13,6 +13,7 @@ import Toast from "../../components/Toast";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
+import FaqSection from "../../components/Home/FaqSection";
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
   const [showterm, setshowterm] = useState(false);
@@ -53,6 +54,7 @@ export default function UblPage() {
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/idea.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
   ];
+  const faqs = [];
   return (
     <div className={styles.ubl}>
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
@@ -254,7 +256,7 @@ export default function UblPage() {
         </div>
       </div>
       <Values insidebenefits />
-
+      <FaqSection customfaq={faqs} />
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
