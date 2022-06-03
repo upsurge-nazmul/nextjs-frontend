@@ -14,6 +14,8 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
 import FaqSection from "../../components/Home/FaqSection";
+import Seo from "../../components/Seo";
+
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
   const [showterm, setshowterm] = useState(false);
@@ -80,12 +82,12 @@ export default function UblPage() {
     },
     {
       question: "How can we know more?",
-      answer: `Please feel free to contact us at hello@upsurge.in or 8287433304.
-      `,
+      answer: `Please feel free to contact us at hello@upsurge.in or 8287433304.`,
     },
   ];
   return (
     <div className={styles.ubl}>
+      <Seo title="upsurge business league" />
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
