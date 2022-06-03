@@ -13,6 +13,9 @@ import Toast from "../../components/Toast";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
+import FaqSection from "../../components/Home/FaqSection";
+import Seo from "../../components/Seo";
+
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
   const [showterm, setshowterm] = useState(false);
@@ -53,8 +56,38 @@ export default function UblPage() {
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/idea.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
   ];
+  const faqs = [
+    {
+      question: "Do you need school approval for UBL? ",
+      answer:
+        "No, while you can register as independent teams, we do need all members to be of the same school. Please feel free speak to your school administrators about the upsurge Business League, and we can speak with them too if needed!",
+    },
+    {
+      question: "How old do members have to be?",
+      answer:
+        "Teams can be made with 3 to 5 members. Members can be between 12 and 18, but should be currently enrolled in the same school. Team can have members of different ages.",
+    },
+    {
+      question: "When can we register till?",
+      answer: "Last date of registrations is June 20, 2022",
+    },
+    {
+      question: "When & how will the competitions be held?",
+      answer:
+        "Knowledge Quests - online team-based quiz- will be held on Zoom/Google Meet on June 26, 2022. The last date to submit the case study & initial business idea will be July 3, 2022",
+    },
+    {
+      question: "How will the teams for Round 2 choosen?",
+      answer: `Teams that score the highest aggregate points from the quiz, case competition & business idea will be selected for Round 2, where we will guide them on developing their business idea for 2-3 weeks.`,
+    },
+    {
+      question: "How can we know more?",
+      answer: `Please feel free to contact us at hello@upsurge.in or 8287433304.`,
+    },
+  ];
   return (
     <div className={styles.ubl}>
+      <Seo title="upsurge business league" />
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
@@ -254,7 +287,7 @@ export default function UblPage() {
         </div>
       </div>
       <Values insidebenefits />
-
+      <FaqSection customfaq={faqs} />
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
