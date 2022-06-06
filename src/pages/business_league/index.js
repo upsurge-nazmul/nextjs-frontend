@@ -15,6 +15,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
 import FaqSection from "../../components/Home/FaqSection";
 import Seo from "../../components/Seo";
+import Link from "next/link";
 
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
@@ -60,7 +61,7 @@ export default function UblPage() {
     {
       question: "Do you need school approval for UBL? ",
       answer:
-        "No, while you can register as independent teams, we do need all members to be of the same school. Please feel free speak to your school administrators about the upsurge Business League, and we can speak with them too if needed!",
+        "No, while you can register as independent teams, we do need all members to be of the same school. Please feel free speak to your school administrators about the Upsurge Summer Bootcamp, and we can speak with them too if needed!",
     },
     {
       question: "How old do members have to be?",
@@ -87,7 +88,7 @@ export default function UblPage() {
   ];
   return (
     <div className={styles.ubl}>
-      <Seo title="upsurge business league" />
+      <Seo title="Upsurge Summer Bootcamp" />
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
@@ -294,7 +295,13 @@ export default function UblPage() {
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
-          <img src="https://i.ibb.co/xq11YDB/jcbl-500x500.png" alt="" />
+          <a
+            target="_blank"
+            href="https://www.jcbl.com/"
+            rel="noopener noreferrer"
+          >
+            <img src="https://i.ibb.co/xq11YDB/jcbl-500x500.png" alt="" />
+          </a>
           <p>
             Incepted in 1989 with a vision to manufacture high-quality mobility
             solutions, today, JCBL Limited is a leading and one of the most
@@ -302,17 +309,37 @@ export default function UblPage() {
           </p>
         </div>
         <div className={styles.sponsor}>
-          <img src={cosponsors[0]} alt="" />
+          <a
+            target="_blank"
+            href="https://www.genglobal.org/"
+            rel="noopener noreferrer"
+          >
+            <img src={cosponsors[0]} alt="" />
+          </a>
+
           <p>{`The Global Entrepreneurship Network operates a platform of projects and
 programs in 180 countries aimed at making it easier for anyone, anywhere
 to start and scale a business.`}</p>
         </div>
         <div className={styles.sponsor}>
-          <img src={cosponsors[1]} alt="" />
+          <a
+            target="_blank"
+            href="https://mentormpact.com/"
+            rel="noopener noreferrer"
+          >
+            <img src={cosponsors[1]} alt="" />
+          </a>
           <p>{`Established in 2019, Mentor Mpact provides expert admissions counseling for top global undergraduate & MBA programs, along with profile-building & career development services to students. They have helped over 1,000 students get 3,000 admits across 20 countries!.`}</p>
         </div>
         <div className={styles.sponsor}>
-          <img src={cosponsors[2]} alt="" />
+          <a
+            target="_blank"
+            href="https://happyjars.com/"
+            rel="noopener noreferrer"
+          >
+            <img src={cosponsors[2]} alt="" />
+          </a>
+
           <p>{`Leading startup in the F&B space which makes delicious range of healthy,
 clean-label and delicious nut butters, dessers & spreads for all.`}</p>
         </div>
