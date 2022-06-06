@@ -192,7 +192,6 @@ export default function GamePage({ gamedata, userdata, seodata }) {
       }
     }
   }, [router]);
-
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -423,81 +422,155 @@ export default function GamePage({ gamedata, userdata, seodata }) {
           </div>
         </div>
       )}
-      {!isMobile && !showgame ? (
-        <div className={styles.mobilegamedata}>
-          <div className={styles.left}>
-            <p className={styles.heading}>We need a few more details</p>
-            <p className={styles.error}>{error}</p>
-            <input
-              type="text"
-              className={styles.input}
-              value={name}
-              onChange={(e) => {
-                if (
-                  e.target.value.length > 1 &&
-                  e.target.value[e.target.value.length - 1] === " "
-                ) {
-                  setname(e.target.value);
-                }
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setname("");
-                  return;
-                }
-                if (
-                  specialchars.includes(
-                    e.target.value[e.target.value.length - 1].toString()
-                  )
-                ) {
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1]))
-                  setname(e.target.value);
-              }}
-              placeholder="Name*"
-            />
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-              className={styles.input}
-              placeholder="Email*"
-            />
-            <input
-              value={phone}
-              type="text"
-              maxLength={10}
-              onChange={(e) => {
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setphone("");
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1])) {
-                  return;
-                }
-                setphone(e.target.value);
-              }}
-              className={styles.input}
-              placeholder="Phone (optional)"
-            />
-            <div className={styles.buttons}>
-              <div
-                className={styles.startbutton}
-                onClick={() => startgame(false, true)}
-              >
-                Start Playing
-              </div>
-              <div
-                className={styles.skipbutton}
-                onClick={() => startgame(true, true)}
-              >
-                Skip
+      {!showgame ? (
+        isMobile ? (
+          <div className={styles.mobilegamedata}>
+            <div className={styles.left}>
+              <p className={styles.heading}>We need a few more details</p>
+              <p className={styles.error}>{error}</p>
+              <input
+                type="text"
+                className={styles.input}
+                value={name}
+                onChange={(e) => {
+                  if (
+                    e.target.value.length > 1 &&
+                    e.target.value[e.target.value.length - 1] === " "
+                  ) {
+                    setname(e.target.value);
+                  }
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setname("");
+                    return;
+                  }
+                  if (
+                    specialchars.includes(
+                      e.target.value[e.target.value.length - 1].toString()
+                    )
+                  ) {
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1]))
+                    setname(e.target.value);
+                }}
+                placeholder="Name*"
+              />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                className={styles.input}
+                placeholder="Email*"
+              />
+              <input
+                value={phone}
+                type="text"
+                maxLength={10}
+                onChange={(e) => {
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setphone("");
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1])) {
+                    return;
+                  }
+                  setphone(e.target.value);
+                }}
+                className={styles.input}
+                placeholder="Phone (optional)"
+              />
+              <div className={styles.buttons}>
+                <div
+                  className={styles.startbutton}
+                  onClick={() => startgame(false, true)}
+                >
+                  Start Playing
+                </div>
+                <div
+                  className={styles.skipbutton}
+                  onClick={() => startgame(true, true)}
+                >
+                  Skip
+                </div>
               </div>
             </div>
+            <div className={styles.right}>
+              <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            </div>
           </div>
-          <div className={styles.right}>
-            <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+        ) : (
+          <div className={styles.gamedata}>
+            <div className={styles.left}>
+              <p className={styles.heading}>We need a few more details</p>
+              <p className={styles.error}>{error}</p>
+              <input
+                type="text"
+                className={styles.input}
+                value={name}
+                onChange={(e) => {
+                  if (
+                    e.target.value.length > 1 &&
+                    e.target.value[e.target.value.length - 1] === " "
+                  ) {
+                    setname(e.target.value);
+                  }
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setname("");
+                    return;
+                  }
+                  if (
+                    specialchars.includes(
+                      e.target.value[e.target.value.length - 1].toString()
+                    )
+                  ) {
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1]))
+                    setname(e.target.value);
+                }}
+                placeholder="Name*"
+              />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                className={styles.input}
+                placeholder="Email*"
+              />
+              <input
+                value={phone}
+                type="text"
+                maxLength={10}
+                onChange={(e) => {
+                  if (!e.target.value[e.target.value.length - 1]) {
+                    setphone("");
+                    return;
+                  }
+                  if (isNaN(e.target.value[e.target.value.length - 1])) {
+                    return;
+                  }
+                  setphone(e.target.value);
+                }}
+                className={styles.input}
+                placeholder="Phone (optional)"
+              />
+              <div className={styles.buttons}>
+                <div className={styles.startbutton} onClick={startgame}>
+                  Start Playing
+                </div>
+                <div
+                  className={styles.skipbutton}
+                  onClick={() => startgame(true)}
+                >
+                  Skip
+                </div>
+              </div>
+            </div>
+            <div className={styles.right}>
+              <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            </div>
           </div>
-        </div>
+        )
       ) : !isMobile && progression < 1 ? (
         <div className={styles.mobileloaderwrapper}>
           <Spinner
