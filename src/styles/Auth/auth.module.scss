@@ -275,6 +275,7 @@
           background: #f4f4f4;
           height: 50%;
           min-height: 162px;
+          align-items: center;
           .left {
             display: flex;
             flex-direction: column;
@@ -294,6 +295,7 @@
             padding-top: 6%;
             padding-right: 20px;
             height: 100%;
+            width: 30%;
           }
         }
         .bottom {
@@ -798,28 +800,28 @@
     }
   }
 }
-.darkauth{
+.darkauth {
   .authContentWrapper {
     .authcontainer {
       background-color: $d-moredark;
-      border: 1px solid  $d-light;
+      border: 1px solid $d-light;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
       .headingflex {
         .heading,
         .forgetheading {
-        color :$d-text2;
+          color: $d-text2;
         }
 
         .changemode {
-        color :$d-text2;
+          color: $d-text2;
         }
       }
       input {
         border: 1px solid $d-light;
-       background-color: $d-main;
-        color :$d-text2;
+        background-color: $d-main;
+        color: $d-text2;
         &::placeholder {
-          color :$d-text2;
+          color: $d-text2;
         }
       }
       .logindetails {
@@ -873,7 +875,7 @@
           }
         }
         .or {
-          color :$d-text2;
+          color: $d-text2;
         }
         .google,
         .apple {
@@ -904,8 +906,8 @@
 
           &:hover {
             background: $d-moredark;
-          color: $d-text1;
-          border: 1px solid $d-light;
+            color: $d-text1;
+            border: 1px solid $d-light;
           }
         }
         .apple {

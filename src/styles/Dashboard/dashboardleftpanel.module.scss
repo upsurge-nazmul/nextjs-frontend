@@ -42,7 +42,7 @@
       align-items: center;
       padding-left: 15%;
       padding-right: 15%;
-      height: 60px;
+      min-height: 60px;
       cursor: pointer;
       transition: all 0.3s ease;
       .icon {
@@ -430,7 +430,7 @@
       margin-bottom: 00px;
       justify-content: center;
       .tab {
-        height: 45px;
+        min-height: 45px;
         .icon {
           width: 35px;
           height: 35px;
@@ -506,7 +506,7 @@
         align-items: center;
         padding-left: 15%;
         padding-right: 15%;
-        height: 60px;
+        min-height: 60px;
         cursor: pointer;
         transition: all 0.3s ease;
         margin-bottom: 20px;
@@ -574,7 +574,7 @@
         align-items: center;
         padding-left: 15%;
         padding-right: 15%;
-        height: 40px;
+        min-height: 40px;
         cursor: pointer;
         transition: all 0.3s ease;
         margin-bottom: 20px;

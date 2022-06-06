@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import FaqSection from "../../components/Home/FaqSection";
-import Footer from "../../components/Home/Footer";
-import JoinUs from "../../components/Home/JoinUs";
-import TestiMonial from "../../components/Home/TestiMonial";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
-import Fb from "../../components/SVGcomponents/Fb";
-import Insta from "../../components/SVGcomponents/Insta";
-import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
-import LogoWhite from "../../components/SVGcomponents/LogoWhite";
+import FaqSection from "../../Home/FaqSection";
+import Footer from "../../Home/Footer";
+import JoinUs from "../../Home/JoinUs";
+import TestiMonial from "../../Home/TestiMonial";
+import Curve1 from "../../SVGcomponents/Curve1";
+import Curve2 from "../../SVGcomponents/Curve2";
+import Fb from "../../SVGcomponents/Fb";
+import Link from "next/link";
+import Insta from "../../SVGcomponents/Insta";
+import LinkedIN from "../../SVGcomponents/LinkedInSvg";
+import LogoWhite from "../../SVGcomponents/LogoWhite";
 import styles from "../../styles/summercamp/summercamp.module.scss";
-import WaitlistPopUp from "../../components/WaitlistPopUp";
+import WaitlistPopUp from "../../WaitlistPopUp";
 import { useRouter } from "next/dist/client/router";
-import ModernInputBox from "../../components/ModernInputBox";
+import ModernInputBox from "../../ModernInputBox";
 import {
   onlyNum,
   onlyText,
   removenonnumber,
   vaildateEmail,
   vaildatePhone,
-} from "../../helpers/validationHelpers";
-import TickSvg from "../../components/SVGcomponents/TickSvg";
-import Jasper from "../../components/SVGcomponents/Jasper";
-import SummerCampApis from "../../actions/apis/SummerCampApis";
-import Toast from "../../components/Toast";
-import SummerSvg from "../../components/SVGcomponents/SummerSvg";
-import BootCampForm from "../../components/bootcamp/BootCampForm";
+} from "../../../helpers/validationHelpers";
+import TickSvg from "../../SVGcomponents/TickSvg";
+import Jasper from "../../SVGcomponents/Jasper";
+import SummerCampApis from "../../../actions/apis/SummerCampApis";
+import Toast from "../../Toast";
+import SummerSvg from "../../SVGcomponents/SummerSvg";
+import BootCampForm from "../../bootcamp/BootCampForm";
 
 export default function SummerBootcamp() {
   const [error, seterror] = useState("");
@@ -149,7 +150,7 @@ export default function SummerBootcamp() {
       <div className={styles.rest}>
         <div className={styles.rewards}>
           <p className={styles.heading} style={{ userSelect: "none" }}>
-            upsurge Summer Bootcamp
+            Upsurge Summer Bootcamp
           </p>
           <p className={styles.summary}>
             {`First of it’s kind Summer Bootcamp to make children money-wise & entrepreneurial!
@@ -201,10 +202,15 @@ export default function SummerBootcamp() {
         <p
           className={styles.widesummary}
         >{`Our quests span 12 hours of workshops designed & taken by our team of MBAs, Entrepreneurs, and experts in finance, experiential learning & academic pedagogy from prestigious institutions such as IIM, ISB & Harvard. Each session is designed to be experiential, collaborative & fun, and will require children to solve problems in teams by thinking creatively - critical 21st century skills that will help students succeed professionally.`}</p>
-        <p
-          className={styles.widesummary}
-          style={{ marginTop: "20px" }}
-        >{`Children will also get free registrations for the 1st upsurge Business League. They can submit their business plans & get up to ₹3,00,000 in investment to grow their business!`}</p>
+        <p className={styles.widesummary} style={{ marginTop: "20px" }}>
+          {`Children will also get free registrations for the 1st `}
+          <span>
+            <Link href="/">
+              <a>upsurge Business League.</a>
+            </Link>
+          </span>
+          {`They can submit their business plans & get up to ₹3,00,000 in investment to grow their business!`}
+        </p>
         <p className={styles.heading} style={{ userSelect: "none" }}>
           Children can choose from one of the two quests or do both!
         </p>

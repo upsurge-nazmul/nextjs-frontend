@@ -5,6 +5,7 @@ import {
   vaildateEmail,
   vaildatePhone,
 } from "../../helpers/validationHelpers";
+import { getAge } from "../../helpers/timehelpers";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import ModernInputBox from "../ModernInputBox";
 import styles from "../../styles/ubl/ublform.module.scss";
@@ -29,32 +30,31 @@ export default function UblForm({
   const [resetotp, setresetotp] = useState(0);
   const [membersTOShow, setMembersToShow] = useState(3);
   const [formdata, setformdata] = useState({
-    team_name: "",
-    school: "",
+    team_name: "ads",
+    school: "sad",
     logo_url: "",
+    primary_email: "dekovi3755@nzaif.com",
+    primary_phone: "7987123987",
     member_1: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "tusahr",
+      dob: "05/06/2005",
+      school_id: "s",
+      phone: "7987606896",
+      email: "tkushwaha70@gmail.com",
     },
     member_2: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "tusahr",
+      dob: "05/06/2005",
+      school_id: "s",
+      phone: "7987606896",
+      email: "falid39606@nzaif.com",
     },
     member_3: {
-      name: "",
-      school: "",
-      dob: "",
-      school_id: "",
-      phone: "",
-      email: "",
+      name: "tusahr",
+      dob: "05/06/2005",
+      school_id: "s",
+      phone: "7987606896",
+      email: "peteme8070@oceore.com",
     },
   });
 
@@ -142,6 +142,7 @@ export default function UblForm({
         msg: "Please select one team logo",
       });
     }
+    let emails = [formdata.primary_email];
     for (let i = 1; i <= membersTOShow; i++) {
       const element = formdata[`member_${i}`];
 
@@ -156,16 +157,6 @@ export default function UblForm({
         });
       }
 
-      if (!element.school) {
-        setloading(false);
-        seterror("School is required for member " + i);
-
-        return settoastdata({
-          show: true,
-          type: "error",
-          msg: "School is required for member " + i,
-        });
-      }
       if ((element.dob.match(/\//g) || []).length !== 2) {
         setloading(false);
         seterror("Invalid Dob set for member " + i);
@@ -244,6 +235,24 @@ export default function UblForm({
           }
         }
       }
+      if (getAge(element.dob) < 12) {
+        seterror("Age of member " + i + " is less than 12");
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Age of member " + i + " is less than 12",
+        });
+      }
+      if (getAge(element.dob) > 18) {
+        seterror("Age of member " + i + " is more than 18");
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Age of member " + i + " is more than 12",
+        });
+      }
       if (!vaildatePhone(element.phone)) {
         seterror("Enter valid phone number of member " + i);
         setloading(false);
@@ -290,6 +299,19 @@ export default function UblForm({
           type: "error",
           msg: "Enter valid email of member " + i,
         });
+      }
+      if (!emails.includes(element.email)) {
+        emails.push(element.email);
+      } else {
+        if (i > 1) {
+          setloading(false);
+          seterror("Email should be unique for member " + i);
+          return settoastdata({
+            show: true,
+            type: "error",
+            msg: "Email should be unique for member " + i,
+          });
+        }
       }
     }
     let res = await UblCampApis.createotp({
@@ -464,27 +486,6 @@ export default function UblForm({
                             [`member_${index + 1}`]: {
                               ...prev[`member_${index + 1}`],
                               name: onlyText(e.target.value, true),
-                            },
-                          }));
-                        }}
-                      />
-                      <ModernInputBox
-                        value={formdata[`member_${index + 1}`]?.school}
-                        extraclass={
-                          formdata[`member_${index + 1}`]?.school &&
-                          styles.input
-                        }
-                        placeholderClass={
-                          formdata[`member_${index + 1}`]?.school &&
-                          styles.placehholder
-                        }
-                        placeholder={"School"}
-                        onChange={(e) => {
-                          setformdata((prev) => ({
-                            ...prev,
-                            [`member_${index + 1}`]: {
-                              ...prev[`member_${index + 1}`],
-                              school: e.target.value,
                             },
                           }));
                         }}

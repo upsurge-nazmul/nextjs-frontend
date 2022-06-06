@@ -225,6 +225,7 @@ export default function GamePage({ gamedata, userdata }) {
       unitycontext.on("GameId", function (gameid) {
         if (!gameid) return;
         router.push("/games/test/" + gameid + `?gobackto=${router.asPath}`);
+        router.reload();
       });
     },
     [unitycontext]
