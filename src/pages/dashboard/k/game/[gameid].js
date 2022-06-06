@@ -343,7 +343,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
   }, []);
   return (
     <div className={styles.gamePage}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel type="kid" />
       <Seo title={seodata?.title} desc={seodata?.description} />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
