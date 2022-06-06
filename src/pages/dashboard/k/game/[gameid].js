@@ -214,7 +214,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
         console.log(message);
       });
       unitycontext.on("Score", async function (score) {
-        let res = await GameApis.unicoinreward({ gameId: gameId });
+        let res = await GameApis.unicoinreward({ gameId: gameid });
         if (res?.data?.success) {
           console.log("Score success rewards alloted");
         } else {

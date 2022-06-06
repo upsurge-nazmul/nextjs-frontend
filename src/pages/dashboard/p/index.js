@@ -146,7 +146,7 @@ function Dashboard({
                     <div className={styles.flexLeft} id="leftside">
                       <div className={styles.kidsSection}>
                         <div className={styles.head}>
-                          <h2 className={styles.heading}>My Kids</h2>
+                          <h2 className={styles.heading}>My Children</h2>
                           <div
                             className={styles.btn}
                             onClick={() =>
