@@ -153,7 +153,87 @@
       }
     }
   }
+  .gamedata {
+    width: 100%;
+    padding: 0 7vw;
+    display: flex;
+    height: 66vh;
+    max-height: 500px;
+    margin: 10vh 0;
 
+    .left {
+      width: 50%;
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 40px;
+      .error {
+        color: rgb(238, 79, 79);
+        font-size: 16px;
+      }
+      .heading {
+        color: black;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      .input {
+        background: #fff;
+        font-size: 16px;
+        border: none;
+        height: 45px;
+        width: 90%;
+        padding: 0 20px;
+        margin-top: 20px;
+        &::placeholder {
+          color: rgb(0, 0, 0);
+        }
+      }
+      .buttons {
+        display: flex;
+        margin-top: 40px;
+
+        .startbutton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 165px;
+          height: 48px;
+          background: #4166eb;
+          border-radius: 6px;
+          color: white;
+          transition: all 0.3s ease;
+          margin-bottom: 20px;
+          cursor: pointer;
+          &:hover {
+            background: hsl(227, 59%, 51%);
+          }
+        }
+        .skipbutton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 165px;
+          height: 48px;
+          background: #616161;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          color: white;
+          transition: all 0.3s ease;
+          margin-left: 30px;
+          cursor: pointer;
+          &:hover {
+            background: hsl(0, 0%, 30%);
+          }
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      img {
+        height: 100%;
+      }
+    }
+  }
   .start {
     background-color: #4166eb;
     height: 70vh;
@@ -422,6 +502,11 @@
     height: auto !important;
     aspect-ratio: 16/9 !important;
     margin: 0 !important;
+  }
+  .disable {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
   }
 }
 @media only screen and (min-width: 1500px) {

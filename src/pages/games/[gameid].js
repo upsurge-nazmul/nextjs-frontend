@@ -192,7 +192,6 @@ export default function GamePage({ gamedata, userdata, seodata }) {
       }
     }
   }, [router]);
-
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -423,8 +422,18 @@ export default function GamePage({ gamedata, userdata, seodata }) {
           </div>
         </div>
       )}
-      {!isMobile && !showgame ? (
-        <div className={styles.mobilegamedata}>
+      {showgame && progression < 1 && (
+        <div className={styles.mobileloaderwrapper}>
+          <Spinner
+            progress={`${progression * 100}%`}
+            additionalClass={styles.loader}
+            color="#4266EB"
+          />
+          <p>Loading {Math.round(progression * 100)}%</p>
+        </div>
+      )}
+      {!showgame && !isMobile ? (
+        <div className={styles.gamedata}>
           <div className={styles.left}>
             <p className={styles.heading}>We need a few more details</p>
             <p className={styles.error}>{error}</p>
@@ -480,15 +489,12 @@ export default function GamePage({ gamedata, userdata, seodata }) {
               placeholder="Phone (optional)"
             />
             <div className={styles.buttons}>
-              <div
-                className={styles.startbutton}
-                onClick={() => startgame(false, true)}
-              >
+              <div className={styles.startbutton} onClick={startgame}>
                 Start Playing
               </div>
               <div
                 className={styles.skipbutton}
-                onClick={() => startgame(true, true)}
+                onClick={() => startgame(true)}
               >
                 Skip
               </div>
@@ -498,20 +504,13 @@ export default function GamePage({ gamedata, userdata, seodata }) {
             <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
           </div>
         </div>
-      ) : !isMobile && progression < 1 ? (
-        <div className={styles.mobileloaderwrapper}>
-          <Spinner
-            progress={`${progression * 100}%`}
-            additionalClass={styles.loader}
-            color="#4266EB"
-          />
-          <p>Loading {Math.round(progression * 100)}%</p>
-        </div>
       ) : (
         <div
           className={`${styles.gameWrapper} ${
             widthHeight.width <= 900 && styles.mobilewrapper
-          } ${isfullscreen && styles.nopadding}`}
+          } ${isfullscreen && styles.nopadding} ${
+            progression < 1 && styles.disable
+          }`}
           id="unity-wrapper"
         >
           {showgame && gamedata && unitycontext && (
