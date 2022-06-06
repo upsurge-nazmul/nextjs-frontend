@@ -20,6 +20,7 @@ import Spinner from "../../../../components/Spinner";
 import GameLandscapeInfo from "../../../../components/Home/GameLandscapeInfo";
 import BrokenGame from "../../../../components/Games/BrokenGame";
 import { isMobile } from "react-device-detect";
+import { getCookie } from "../../../../actions/cookieUtils";
 let fullscreenenabled = false;
 
 export default function GamePage({ userdatafromserver, gamedata, seodata }) {
@@ -130,30 +131,33 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       }
     }
     async function x() {
+      if (!gamedata) {
+        return;
+      }
       let updateData = {
         version: gamedata.version,
         id: gameid,
       };
       console.log("downloading data");
-      let datares = await fetch(gamedata.dataUrl, {
+      let datares = await fetch(gamedata?.dataUrl, {
         method: "GET",
       });
       let datablob = await datares.blob();
       updateData.data = datablob;
       console.log("downloading code");
-      let coderes = await fetch(gamedata.codeUrl, {
+      let coderes = await fetch(gamedata?.codeUrl, {
         method: "GET",
       });
       let codeblob = await coderes.blob();
       updateData.wasm = codeblob;
       console.log("downloading framework");
-      let frameworkres = await fetch(gamedata.frameworkUrl, {
+      let frameworkres = await fetch(gamedata?.frameworkUrl, {
         method: "GET",
       });
       let frameworkblob = await frameworkres.blob();
       updateData.framework = frameworkblob;
       console.log("downloading loader");
-      let loaderres = await fetch(gamedata.loaderUrl, {
+      let loaderres = await fetch(gamedata?.loaderUrl, {
         method: "GET",
       });
       let loaderblob = await loaderres.blob();
