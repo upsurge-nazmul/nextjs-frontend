@@ -9,7 +9,7 @@ export default function MoreKid({ kids }) {
   return (
     <div className={styles.morekid}>
       <div className={styles.morekidtextContent}>
-        <p className={styles.morekidheading}>Add a Kid to explore upsurge.</p>
+        <p className={styles.morekidheading}>Add a Child to explore upsurge.</p>
         <p className={styles.morekidsubheading}>
           Click “Add a child” to create a new account for your child or connect
           to an existing account.

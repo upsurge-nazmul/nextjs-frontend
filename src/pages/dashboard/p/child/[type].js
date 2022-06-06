@@ -406,7 +406,7 @@ function AddKid({ childdata, userdatafromserver }) {
             />
             <ModernInputBox
               value={school}
-              setvalue={setschool}
+              onChange={(e) => setschool(e.target.value)}
               placeholder="School"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
               tooltipid={"school-tooltip"}

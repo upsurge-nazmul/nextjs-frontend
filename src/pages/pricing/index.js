@@ -97,7 +97,7 @@ export default function Pricing({ userdata }) {
       <Curve2 className={styles.curve2} />
       <div className={styles.mainContent}>
         <p className={styles.heading}>
-          Start your kid’s journey in the <br />
+          Start your child's journey in the <br />
           finance world today.
         </p>
         <div className={styles.featurewrapper}>

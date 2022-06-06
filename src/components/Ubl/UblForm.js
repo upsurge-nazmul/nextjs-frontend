@@ -5,6 +5,7 @@ import {
   vaildateEmail,
   vaildatePhone,
 } from "../../helpers/validationHelpers";
+import { getAge } from "../../helpers/timehelpers";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import ModernInputBox from "../ModernInputBox";
 import styles from "../../styles/ubl/ublform.module.scss";
@@ -34,7 +35,6 @@ export default function UblForm({
     logo_url: "",
     member_1: {
       name: "",
-      school: "",
       dob: "",
       school_id: "",
       phone: "",
@@ -42,7 +42,6 @@ export default function UblForm({
     },
     member_2: {
       name: "",
-      school: "",
       dob: "",
       school_id: "",
       phone: "",
@@ -50,7 +49,6 @@ export default function UblForm({
     },
     member_3: {
       name: "",
-      school: "",
       dob: "",
       school_id: "",
       phone: "",
@@ -156,16 +154,6 @@ export default function UblForm({
         });
       }
 
-      if (!element.school) {
-        setloading(false);
-        seterror("School is required for member " + i);
-
-        return settoastdata({
-          show: true,
-          type: "error",
-          msg: "School is required for member " + i,
-        });
-      }
       if ((element.dob.match(/\//g) || []).length !== 2) {
         setloading(false);
         seterror("Invalid Dob set for member " + i);
@@ -243,6 +231,24 @@ export default function UblForm({
             });
           }
         }
+      }
+      if (getAge(element.dob) < 12) {
+        seterror("Age of member " + i + "is less than 12");
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Age of member " + i + "is less than 12",
+        });
+      }
+      if (getAge(element.dob) > 18) {
+        seterror("Age of member " + i + "is more than 18");
+        setloading(false);
+        return settoastdata({
+          show: true,
+          type: "error",
+          msg: "Age of member " + i + "is more than 12",
+        });
       }
       if (!vaildatePhone(element.phone)) {
         seterror("Enter valid phone number of member " + i);
@@ -464,27 +470,6 @@ export default function UblForm({
                             [`member_${index + 1}`]: {
                               ...prev[`member_${index + 1}`],
                               name: onlyText(e.target.value, true),
-                            },
-                          }));
-                        }}
-                      />
-                      <ModernInputBox
-                        value={formdata[`member_${index + 1}`]?.school}
-                        extraclass={
-                          formdata[`member_${index + 1}`]?.school &&
-                          styles.input
-                        }
-                        placeholderClass={
-                          formdata[`member_${index + 1}`]?.school &&
-                          styles.placehholder
-                        }
-                        placeholder={"School"}
-                        onChange={(e) => {
-                          setformdata((prev) => ({
-                            ...prev,
-                            [`member_${index + 1}`]: {
-                              ...prev[`member_${index + 1}`],
-                              school: e.target.value,
                             },
                           }));
                         }}

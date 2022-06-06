@@ -151,17 +151,17 @@ export default function ManageChore({
         });
         return;
       }
-      if (
-        !userdatafromserver.plan_name ||
-        userdatafromserver.plan_name === "Free"
-      ) {
-        settoastdata({
-          show: true,
-          msg: "Please buy a subscription first",
-          type: "error",
-        });
-        return;
-      }
+      // if (
+      //   !userdatafromserver.plan_name ||
+      //   userdatafromserver.plan_name === "Free"
+      // ) {
+      //   settoastdata({
+      //     show: true,
+      //     msg: "Please buy a subscription first",
+      //     type: "error",
+      //   });
+      //   return;
+      // }
       let noerror = true;
       for (let i = 0; i < assignees.length; i++) {
         const assignee = assignees[i];

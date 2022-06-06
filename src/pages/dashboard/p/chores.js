@@ -190,17 +190,18 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
                 <div
                   className={styles.button}
                   onClick={() => {
-                    if (
-                      !userdatafromserver.plan_name ||
-                      userdatafromserver.plan_name === "Free"
-                    ) {
-                      settoastdata({
-                        show: true,
-                        msg: "Please buy a subscription first",
-                        type: "error",
-                      });
-                      return;
-                    } else setshowmodal(true);
+                    // if (
+                    //   !userdatafromserver.plan_name ||
+                    //   userdatafromserver.plan_name === "Free"
+                    // ) {
+                    //   settoastdata({
+                    //     show: true,
+                    //     msg: "Please buy a subscription first",
+                    //     type: "error",
+                    //   });
+                    //   return;
+                    // } else
+                    setshowmodal(true);
                   }}
                 >
                   New Chore

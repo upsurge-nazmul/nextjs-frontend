@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Auth/auth.module.scss";
-import MascotSvg from "../SVGcomponents/MascotSvg";
+import Jasper from "../SVGcomponents/Jasper";
 
 function AuthLearner() {
   return (
@@ -10,7 +10,7 @@ function AuthLearner() {
           <p>Howdy</p>
           <h1>learner</h1>
         </div>
-        <MascotSvg className={styles.mascot} />
+        <Jasper className={styles.mascot} />
       </div>
       <div className={styles.bottom}>
         <p>We currently only allow parents to sign up and add their kids.</p>

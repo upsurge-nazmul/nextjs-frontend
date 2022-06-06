@@ -33,7 +33,7 @@ function Help({ userdata }) {
 
   const faqs = [
     {
-      question: "How old does my kid have to be to join upsurge?",
+      question: "How old does my child have to be to join upsurge?",
       answer: `It’s never too early to build healthy financial habits! As a parent, you’ll have to open an account first and then add your children. At the moment, our knowledge quests and games are relevant for kids over the age of 10.`,
     },
     {

@@ -212,3 +212,20 @@ export function getMonthYearOnly(timestamp) {
     date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0` + (date.getMonth() + 1)
   }/${date.getFullYear().toString().substring(2)}`;
 }
+
+export function getAge(dateString) {
+  var today = new Date();
+  var birthDate = new Date(
+    dateString.split("/")[2] +
+      "-" +
+      dateString.split("/")[1] +
+      "-" +
+      dateString.split("/")[0]
+  );
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
