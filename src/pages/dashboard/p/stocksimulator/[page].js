@@ -8,7 +8,7 @@ export default function StockSimulator({ userdatafromserver, token }) {
         userData: userdatafromserver,
         token,
         simulatorType: "stocksimulator",
-        type: "waitlist",
+        type: "parent",
       }}
     />
   );

@@ -5,6 +5,7 @@ export default function Navigation({
   options = [],
   active = "",
   simulatorType,
+  type = "waitlist",
 }) {
   return (
     <div className={styles.navigation}>
@@ -12,8 +13,12 @@ export default function Navigation({
         options.map((item, i) => {
           return (
             <Link
-              href={`/dashboard/w/${simulatorType}/[page]`}
-              as={`/dashboard/w/${simulatorType}/${item.value}`}
+              href={`/dashboard/${
+                type === "parent" ? "p" : type === "kid" ? "k" : "w"
+              }/${simulatorType}/[page]`}
+              as={`/dashboard/${
+                type === "parent" ? "p" : type === "kid" ? "k" : "w"
+              }/${simulatorType}/${item.value}`}
               key={i}
             >
               <div
