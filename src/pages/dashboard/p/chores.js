@@ -42,17 +42,17 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   }, [isLogged]);
   useEffect(() => {
     setdataloaded(true);
-
+    console.log(choresdata);
     setchores(
       choresdata.filter((item) => {
-        if (item.is_reoccurring) {
+        if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
           return item?.latest_chore?.completion === "approval";
         } else return item.completion === "approval";
       })
     );
     setallchores(
       choresdata.filter((item) => {
-        if (item.is_reoccurring) {
+        if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
           return item?.latest_chore?.completion !== "approval";
         } else return item.completion !== "approval";
       })
@@ -62,7 +62,10 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
     if (choremode === "inprogress") {
       setallchores(
         backupallchores.filter((item) => {
-          if (item.is_reoccurring) {
+          if (
+            item.is_reoccurring &&
+            JSON.stringify(item.latest_chore) !== "{}"
+          ) {
             return (
               item?.latest_chore?.completion !== "completed" &&
               item?.latest_chore?.completion !== "approval"
