@@ -13,7 +13,8 @@ import VideoModal from "../../../components/VideoModal";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import { Game_Data } from "../../../static_data/Game_Data";
 import GameApis from "../../../actions/apis/GameApis";
-function Games({ recentgames, gameunicoinrewards }) {
+import { getCookie } from "../../../actions/cookieUtils";
+function Games({ recentgames, userdatafromserver }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -57,7 +58,9 @@ function Games({ recentgames, gameunicoinrewards }) {
       setrecent_games(gamearr);
     }
   }, []);
-
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   async function updaterecentgames(gamearr) {
     let gamestring = "";
     for (let i = 0; i < gamearr.length; i++) {
@@ -89,12 +92,12 @@ function Games({ recentgames, gameunicoinrewards }) {
     if (title === "Ludo") {
       let res = await FreeGameApis.presign({
         user_name:
-          userdatafromserver.user_name ||
-          userdatafromserver.first_name ||
-          userdatafromserver.last_name,
+          userdatafromserver?.user_name ||
+          userdatafromserver?.first_name ||
+          userdatafromserver?.last_name,
         email: userdatafromserver.email,
         phone: userdatafromserver.phone,
-        token: token,
+        token: getCookie("accesstoken"),
         game: title,
         postlogin: true,
       });
@@ -210,6 +213,7 @@ export async function getServerSideProps({ params, req }) {
       );
       return {
         props: {
+          userdatafromserver: response.data.data,
           recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
