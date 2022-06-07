@@ -32,15 +32,7 @@ function ChoreComponent({ data, settoastdata, setchores }) {
       ? "Cheer"
       : "Applaud"
   );
-  const [duedate, setduedate] = useState(
-    choredata.is_reoccurring
-      ? choredata.latest_chore?.completion === "completed"
-        ? completedtimeDifference(choredata.latest_chore.completed_at)
-        : duetimeDifference(choredata?.latest_chore?.due_date)
-      : choredata.completion === "completed"
-      ? completedtimeDifference(choredata.completed_at)
-      : duetimeDifference(choredata?.due_date)
-  );
+  const [duedate, setduedate] = useState(getDueDate());
   const router = useRouter();
 
   useEffect(() => {
@@ -64,15 +56,7 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         }
         return;
       }
-      setduedate(
-        choredata.is_reoccurring
-          ? choredata.latest_chore.completion === "completed"
-            ? completedtimeDifference(choredata.latest_chore.completed_at)
-            : duetimeDifference(choredata?.latest_chore.due_date)
-          : choredata.completion === "completed"
-          ? completedtimeDifference(choredata.completed_at)
-          : duetimeDifference(choredata?.due_date)
-      );
+      setduedate(getDueDate());
     }, 1000 * 60);
     return () => clearInterval(x);
   }, []);
@@ -117,6 +101,23 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         type: "success",
         msg: res.data.message || "Error connecting to server",
       });
+    }
+  }
+  function getDueDate() {
+    if (choredata.is_reoccurring) {
+      if (JSON.stringify(choredata.latest_chore) !== "{}") {
+        if (choredata.latest_chore.completion === "completed")
+          return completedtimeDifference(choredata.latest_chore.completed_at);
+        else {
+          return duetimeDifference(choredata?.latest_chore?.due_date);
+        }
+      }
+    }
+    console.log("reaching");
+    if (choredata.completion === "completed")
+      return completedtimeDifference(choredata.completed_at);
+    else {
+      return duetimeDifference(choredata.due_date);
     }
   }
   return (
