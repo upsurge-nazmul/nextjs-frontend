@@ -211,7 +211,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
         router.push("/dashboard/k/games");
       });
       unitycontext.on("error", function (message) {
-        console.log(message);
+        console.log("error", message);
       });
       unitycontext.on("Score", async function (score) {
         let res = await GameApis.unicoinreward({ gameId: gameid });

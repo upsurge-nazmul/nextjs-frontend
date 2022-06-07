@@ -31,9 +31,7 @@
         display: flex;
         height: 100%;
         width: 100%;
-        padding-right: 50px;
-        padding-left: 10px;
-        margin-left: 40px;
+        padding: 0 40px 0 45px;
       }
     }
 
@@ -49,6 +47,7 @@
 @media only screen and (min-width: 769px) and (max-height: 900px) {
   .kidStore {
     .contentWrapper {
+      max-width: unset;
       .mainContent {
         .flexLeft {
           .kidsSection {
