@@ -34,9 +34,9 @@ export default function UblPage() {
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
-    `Students must make teams of 3 to 5 students from the same school.`,
+    `Students must compete in teams of 3 to 5 children.`,
     `Students will compete in 3 challenges in Round 1 with the top-25 teams moving on to the next round.`,
-    `Top 25 teams will be mentored as they develop their business ideas, & will pitch to investors & entrepreneurs for raising funds in the finale!`,
+    `Up to the top 25 teams will be mentored as they develop their business ideas, & will pitch to investors & entrepreneurs for raising funds in the finale!`,
   ];
   const studentsWillGet = [
     "Certificates of Recognition.",
