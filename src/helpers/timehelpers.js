@@ -21,6 +21,8 @@ export function completedtimeDifference(diff) {
   }
 }
 export function duetimeDifference(diff) {
+  console.log("xx", diff);
+  diff = Number(diff);
   let current = new Date().getTime();
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;

@@ -72,6 +72,7 @@ export default function Simulator({
               action={setMode}
               active={mode}
               simulatorType={simulatorType}
+              type={type}
             />
           }
         />

@@ -2,9 +2,9 @@
   background-color: white;
   width: fit-content;
   border-radius: 8px;
-  width: 300px;
   margin: 10px;
   position: relative;
+  width: 300px;
   .gray {
     width: 100%;
     height: 100%;
@@ -19,7 +19,7 @@
     border-radius: 8px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    width: 300px;
+    width: 100%;
     height: 300px;
     object-fit: contain;
   }
@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   .valueArea {
@@ -65,9 +66,10 @@
     background-color: white;
     width: fit-content;
     border-radius: 8px;
-    width: 280px;
-    margin: 20px;
+    width: 30%;
+    margin: 0px;
     position: relative;
+    margin-bottom: 10px;
     .gray {
       width: 100%;
       height: 100%;
@@ -82,8 +84,8 @@
       border-radius: 8px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      width: 280px;
-      height: 280px;
+      width: 100%;
+      height: auto;
       object-fit: contain;
     }
     .name {

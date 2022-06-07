@@ -26,7 +26,7 @@ export default function CryptoSimulator({ userdatafromserver, token }) {
         token,
         modes: MODES,
         simulatorType: "cryptosimulator",
-        type: "waitlist",
+        type: "parent",
       }}
     />
   );

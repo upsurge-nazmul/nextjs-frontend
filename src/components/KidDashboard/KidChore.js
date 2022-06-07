@@ -16,15 +16,7 @@ function KidChore({ data, settoastdata }) {
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data);
   const router = useRouter();
-  const [duedate, setduedate] = useState(
-    choredata.is_reoccurring
-      ? choredata.latest_chore.completion === "completed"
-        ? completedtimeDifference(choredata.latest_chore.completed_at)
-        : duetimeDifference(choredata?.latest_chore.due_date)
-      : choredata.completion === "completed"
-      ? completedtimeDifference(choredata.completed_at)
-      : duetimeDifference(choredata?.due_date)
-  );
+  const [duedate, setduedate] = useState(getDueDate());
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -46,15 +38,7 @@ function KidChore({ data, settoastdata }) {
         }
         return;
       }
-      setduedate(
-        choredata.is_reoccurring
-          ? choredata.latest_chore.completion === "completed"
-            ? completedtimeDifference(choredata.latest_chore.completed_at)
-            : duetimeDifference(choredata?.latest_chore.due_date)
-          : choredata.completion === "completed"
-          ? completedtimeDifference(choredata.completed_at)
-          : duetimeDifference(choredata?.due_date)
-      );
+      setduedate(getDueDate());
     }, 1000 * 60);
     return () => clearInterval(x);
   }, []);
@@ -112,7 +96,23 @@ function KidChore({ data, settoastdata }) {
       });
     }
   }
-
+  function getDueDate() {
+    if (choredata.is_reoccurring) {
+      if (JSON.stringify(choredata.latest_chore) !== "{}") {
+        if (choredata.latest_chore.completion === "completed")
+          return completedtimeDifference(choredata.latest_chore.completed_at);
+        else {
+          return duetimeDifference(choredata?.latest_chore?.due_date);
+        }
+      }
+    }
+    console.log("reaching");
+    if (choredata.completion === "completed")
+      return completedtimeDifference(choredata.completed_at);
+    else {
+      return duetimeDifference(choredata.due_date);
+    }
+  }
   return (
     <div className={styles.kidChore}>
       <img
@@ -132,17 +132,10 @@ function KidChore({ data, settoastdata }) {
       <div className={styles.time}>
         <ClockSvg />
 
-        <p>
-          {choredata.is_reoccurring
-            ? choredata.latest_chore.completion === "completed"
-              ? completedtimeDifference(choredata.latest_chore.completed_at)
-              : duetimeDifference(choredata?.latest_chore.due_date)
-            : choredata.completion === "completed"
-            ? completedtimeDifference(choredata.completed_at)
-            : duetimeDifference(choredata?.due_date)}
-        </p>
+        <p>{duedate}</p>
       </div>
-      {choredata.is_reoccurring ? (
+      {choredata.is_reoccurring &&
+      JSON.stringify(choredata.latest_chore) !== "{}" ? (
         choredata.latest_chore.completion === "completed" ? (
           <div className={styles.completed}>Completed</div>
         ) : duetimeDifference(choredata?.latest_chore.due_date) ===
