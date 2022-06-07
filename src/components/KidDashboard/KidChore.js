@@ -106,7 +106,6 @@ function KidChore({ data, settoastdata }) {
         }
       }
     }
-    console.log("reaching");
     if (choredata.completion === "completed")
       return completedtimeDifference(choredata.completed_at);
     else {
@@ -117,7 +116,9 @@ function KidChore({ data, settoastdata }) {
     <div className={styles.kidChore}>
       <img
         src={
-          choredata.img_url || choredata.category === "Bathroom"
+          choredata?.img_url
+            ? choredata.img_url
+            : choredata.category === "Bathroom"
             ? "/images/chores/bathroom.jpg"
             : "/images/chores/kitchen.png"
         }
