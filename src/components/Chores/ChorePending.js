@@ -14,22 +14,40 @@ function ChorePending({ data, settoastdata, setchores, setallchores, setid }) {
       setchores((prev) => prev.filter((item) => item.id !== data.id));
       setallchores((prev) => prev.filter((item) => item.id !== data.id));
     } else {
-      console.log(response);
       settoastdata({
         show: true,
         type: "success",
-        msg: response.data.message || "Cannot reach server",
+        msg: response?.data?.message || "Cannot reach server",
       });
     }
   }
   async function handleReject() {
     setid(data.id);
   }
+  function getDueDate() {
+    if (data.is_reoccurring) {
+      if (JSON.stringify(data.latest_chore) !== "{}") {
+        if (data.latest_chore.completion === "completed")
+          return completedtimeDifference(data.latest_chore.completed_at);
+        else {
+          return duetimeDifference(data?.latest_chore?.due_date);
+        }
+      }
+    }
+    console.log("reaching");
+    if (data.completion === "completed")
+      return completedtimeDifference(data.completed_at);
+    else {
+      return duetimeDifference(data.due_date);
+    }
+  }
   return (
     <div className={styles.chorePending}>
       <img
         src={
-          data.img_url || data.category === "Bathroom"
+          data?.img_url
+            ? data?.img_url
+            : data.category === "Bathroom"
             ? "/images/chores/bathroom.jpg"
             : "/images/chores/kitchen.png"
         }
@@ -43,15 +61,7 @@ function ChorePending({ data, settoastdata, setchores, setallchores, setid }) {
       </div>
       <div className={styles.time}>
         <ClockSvg />
-        <p>
-          {data.is_reoccurring
-            ? data.latest_chore.completion === "completed"
-              ? completedtimeDifference(data.latest_chore.completed_at)
-              : duetimeDifference(data?.latest_chore.due_date)
-            : data.completion === "completed"
-            ? completedtimeDifference(data.completed_at)
-            : duetimeDifference(data?.due_date)}
-        </p>
+        <p>{getDueDate()}</p>
       </div>
 
       <div className={styles.button} onClick={handleApprove}>
