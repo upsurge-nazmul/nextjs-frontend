@@ -33,9 +33,10 @@ export default function KidChoresPage({
   currentLevel,
 }) {
   const [mode, setmode] = useState("chores");
+  console.log(choresdata);
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
-      if (item.is_reoccurring) {
+      if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
         return (
           item.latest_chore.completion !== "complete" &&
           duetimeDifference(item.latest_chore.due_date) !== "Expired"

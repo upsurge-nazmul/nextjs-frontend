@@ -134,7 +134,8 @@ function KidChore({ data, settoastdata }) {
 
         <p>{duedate}</p>
       </div>
-      {choredata.is_reoccurring ? (
+      {choredata.is_reoccurring &&
+      JSON.stringify(choredata.latest_chore) !== "{}" ? (
         choredata.latest_chore.completion === "completed" ? (
           <div className={styles.completed}>Completed</div>
         ) : duetimeDifference(choredata?.latest_chore.due_date) ===
