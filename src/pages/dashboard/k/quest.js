@@ -28,6 +28,7 @@ export default function KidStore({
   gamedata,
   userdatafromserver,
   levelfromserver,
+  questData,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("");
@@ -49,32 +50,6 @@ export default function KidStore({
     name: "",
     price: "",
   });
-  const content = [
-    {
-      name: "Money & Barter System",
-      des: "Children will understand how & why Money was invented, it’s evolution, and uses",
-    },
-    {
-      name: "Money & Barter System - Activity",
-      des: "Children will understand how & why Money was invented, it’s evolution, and uses",
-    },
-    {
-      name: "Ira's visit to the bank",
-      des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
-    },
-    {
-      name: "Banking quiz",
-      des: "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
-    },
-    {
-      name: "Kiara's Budget Trip",
-      des: "Know about currencies",
-    },
-    {
-      name: "How to manage your money - Activity",
-      des: "Children will understand how & why Money was invented, it’s evolution, and uses ",
-    },
-  ];
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -188,10 +163,10 @@ export default function KidStore({
               {questmode !== "map" && (
                 <div className={styles.contentDetails}>
                   <p className={styles.contentheading}>
-                    {content[currentlevel - 1].name}
+                    {questData[currentlevel - 1].heading}
                   </p>
                   <p className={styles.contentdes}>
-                    {content[currentlevel - 1].des}
+                    {questData[currentlevel - 1].des}
                   </p>
                 </div>
               )}
@@ -245,7 +220,7 @@ export default function KidStore({
                             setquestmode("KnowingYourMoney");
                           }}
                         >
-                          {`What is money?`}
+                          {questData[0].title}
                         </p>
                         <p
                           id="kqc2"
@@ -260,7 +235,7 @@ export default function KidStore({
                             setquestmode("quiz");
                           }}
                         >
-                          Money Quiz
+                          {questData[1].title}
                         </p>
                         <p
                           id="kqc3"
@@ -274,7 +249,7 @@ export default function KidStore({
                             setquestmode("bank-visit");
                           }}
                         >
-                          {`Ira's visit to the bank`}
+                          {questData[2].title}
                         </p>
                         <p
                           id="kqc4"
@@ -289,7 +264,7 @@ export default function KidStore({
                             setquestmode("quiz");
                           }}
                         >
-                          Banking Quiz
+                          {questData[3].title}
                         </p>
                         <p
                           id="kqc5"
@@ -303,7 +278,7 @@ export default function KidStore({
                             setquestmode("KiarasBudgetTrip");
                           }}
                         >
-                          {`Kiara's Budget Trip`}
+                          {questData[4].title}
                         </p>
                         <p
                           className={`${styles.kqc} ${styles.kqc6}  ${
@@ -317,7 +292,7 @@ export default function KidStore({
                             setquestmode("game");
                           }}
                         >
-                          Digital Banking & payments
+                          {questData[5].title}
                         </p>
                         <BoatIcon
                           id="boaticon"
@@ -446,7 +421,7 @@ export async function getServerSideProps({ params, req }) {
         { id: "money-quest" },
         token
       );
-      console.log(level.data);
+      let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       let gamedata = await GameApis.gamedata({ id: "NeedOrWant" });
       return {
         props: {
@@ -460,6 +435,13 @@ export async function getServerSideProps({ params, req }) {
             gamedata && gamedata?.data && gamedata?.data.success
               ? gamedata.data.data
               : null,
+          questData: questRes
+            ? questRes.data
+              ? questRes.data.success
+                ? questRes.data.data
+                : null
+              : null
+            : null,
         },
       };
     }
