@@ -53,12 +53,21 @@
     display: flex;
     flex-wrap: wrap;
     flex: 1;
+    padding-top: 20px;
+    gap: 20px;
     justify-content: space-between;
     .noreward {
       margin: auto;
       margin-top: 15%;
       color: rgb(109, 109, 109);
       font-size: 14px;
+    }
+  }
+}
+@media only screen and (min-width: 900px) and (max-height: 900px) {
+  .VoucherSection {
+    .wrapper {
+      justify-content: flex-start;
     }
   }
 }

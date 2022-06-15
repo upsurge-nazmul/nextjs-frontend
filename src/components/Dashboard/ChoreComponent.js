@@ -16,11 +16,12 @@ import PendingSvg from "../SVGcomponents/PendingSvg";
 import ChoreComponentMenu from "./ChoreComponentMenu";
 
 function ChoreComponent({ data, settoastdata, setchores }) {
+  console.log(JSON.stringify(data.latest_chore) !== "{}");
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data || null);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [notificationtype, setnotificationtype] = useState(
-    data.is_reoccurring
+    data.is_reoccurring && JSON.stringify(data.latest_chore) !== "{}"
       ? data.latest_chore?.completion === "pending"
         ? "Nudge"
         : data.latest_chore?.completion === "started"

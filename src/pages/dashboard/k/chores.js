@@ -35,7 +35,7 @@ export default function KidChoresPage({
   const [mode, setmode] = useState("chores");
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
-      if (item.is_reoccurring) {
+      if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
         return (
           item.latest_chore.completion !== "complete" &&
           duetimeDifference(item.latest_chore.due_date) !== "Expired"
@@ -69,7 +69,7 @@ export default function KidChoresPage({
       <Toast data={toastdata} />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
 
-      <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
+      <ChoreModal showmodal={showmodal} kiddata={setshowmodal} />
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
           mode={mode}
@@ -198,22 +198,25 @@ async function getChildDetails(id, token) {
   let response = await DashboardApis.getChildDetails({ id }, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getchores(id, token) {
   let response = await ChoreApis.getchildchores({ id }, token);
   if (response && response.data && response.data.data) {
     return response.data.data;
-  }
+  } else return null;
 }
 async function getgames(token) {
   let response = await DashboardApis.getgames(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
   if (response && response.data && response.data.data)
     return response.data.data;
+  else return null;
 }
 async function getcompletedchores(id, token) {
   let response = await ChoreApis.getchildchores(
@@ -222,5 +225,5 @@ async function getcompletedchores(id, token) {
   );
   if (response && response.data && response.data.data) {
     return response.data.data;
-  }
+  } else return null;
 }
