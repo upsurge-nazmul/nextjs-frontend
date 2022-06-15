@@ -221,7 +221,7 @@ const availableCourses = [
     id: "upsurge-quest",
   },
 ];
-export default function Quests({ kidsdata }) {
+export default function Quests({ kidsdata, questData }) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -234,36 +234,36 @@ export default function Quests({ kidsdata }) {
   const [selectedKidsLevel, setSelectedKidsLevel] = useState();
 
   const formatSectionData = (level = 0) => {
-    let data = JSON.parse(JSON.stringify(demodata));
+    let data = JSON.parse(JSON.stringify(questData));
     if (level === 1) {
-      data[0].chapters[0].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
     } else if (level === 2) {
-      data[0].chapters[0].completion = "100%";
-      data[0].chapters[1].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
     } else if (level === 3) {
-      data[0].chapters[0].completion = "100%";
-      data[0].chapters[1].completion = "100%";
-      data[1].chapters[0].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
     } else if (level === 4) {
-      data[0].chapters[0].completion = "100%";
-      data[0].chapters[1].completion = "100%";
-      data[1].chapters[0].completion = "100%";
-      data[1].chapters[1].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
     } else if (level === 5) {
-      data[0].chapters[0].completion = "100%";
-      data[0].chapters[1].completion = "100%";
-      data[1].chapters[0].completion = "100%";
-      data[1].chapters[1].completion = "100%";
-      data[2].chapters[0].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[2].chapters.length ? (chapters[0].completion = "100%") : "";
     } else if (level === 6) {
-      data[0].chapters[0].completion = "100%";
-      data[0].chapters[1].completion = "100%";
-      data[1].chapters[0].completion = "100%";
-      data[1].chapters[1].completion = "100%";
-      data[2].chapters[0].completion = "100%";
-      data[2].chapters[1].completion = "100%";
+      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[2].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[2].chapters.length ? (chapters[1].completion = "100%") : "";
     } else {
-      data = demodata;
+      data = questData;
     }
     return data;
   };
@@ -307,8 +307,8 @@ export default function Quests({ kidsdata }) {
         let formattedData = formatSectionData(selectedKidsLevel);
         setSectionData(formattedData);
       }
-    } else setSectionData(demodata);
-  }, [selectedkid, selectedKidsLevel]);
+    } else setSectionData(questData);
+  }, [selectedkid, selectedKidsLevel, questData]);
 
   return (
     <div className={styles.quest}>
@@ -369,7 +369,11 @@ export default function Quests({ kidsdata }) {
               {sectionData &&
                 sectionData.length &&
                 sectionData.map((section, index) => (
-                  <Section data={section} key={"section" + index} />
+                  <Section
+                    data={section}
+                    level={selectedKidsLevel}
+                    key={"section" + index}
+                  />
                 ))}
             </div>
           </div>
@@ -414,10 +418,18 @@ export async function getServerSideProps({ params, req }) {
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
       let kidsdata = await getkidsdata(token);
+      let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       return {
         props: {
           isLogged: true,
           kidsdata,
+          questData: questRes
+            ? questRes.data
+              ? questRes.data.success
+                ? questRes.data.data
+                : null
+              : null
+            : null,
         },
       };
     }
