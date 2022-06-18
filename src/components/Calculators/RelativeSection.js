@@ -4,11 +4,13 @@ import { MainContext } from "../../context/Main";
 import { Calc_Data } from "../../static_data/Calc_Data";
 import styles from "../../styles/Calculators/relativesection.module.scss";
 
-export default function RelativeSection({ cards }) {
+export default function RelativeSection({ cards, mobileApp }) {
   const router = useRouter();
   const { theme } = useContext(MainContext);
   function relate(item) {
-    router.push(`/calculators/${item}`);
+    if (mobileApp) {
+      router.push(`/mobilecalcs/${item}`);
+    } else router.push(`/calculators/${item}`);
     let x = document.getElementById("home-page-header");
     x.scrollIntoView();
   }
