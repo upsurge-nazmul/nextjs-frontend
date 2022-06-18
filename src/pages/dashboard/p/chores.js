@@ -42,7 +42,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   }, [isLogged]);
   useEffect(() => {
     setdataloaded(true);
-    console.log(choresdata);
+    console.log("cc", choresdata);
     setchores(
       choresdata.filter((item) => {
         if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
