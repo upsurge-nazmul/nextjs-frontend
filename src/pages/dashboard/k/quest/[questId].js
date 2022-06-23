@@ -4,21 +4,26 @@ import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-import styles from "../../../../styles/knowledgeQuest/Map.module.scss";
+import styles from "../../../../styles/knowledgeQuest/QuestDetails.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-import { positions } from "../../../../components/ChildQuest/positions";
+import QuestMap from "../../../../components/ChildQuest/QuestMap";
+import RecordingView from "../../../../components/ChildQuest/RecordingView";
+import ActivityView from "../../../../components/ChildQuest/ActivityView";
+import QuizView from "../../../../components/ChildQuest/QuizView";
+
+const TYPES = ["recording", "activity", "quiz"];
 
 export default function KnowledgeQuest({ userData, userLevel, questData }) {
   const router = useRouter();
   const { questId } = router.query;
 
-  const [mode, setmode] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
   const [currentQuest, setCurrentQuest] = useState();
+  const [view, setView] = useState();
 
   useEffect(() => {
     if (questData && questId) {
@@ -34,39 +39,21 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
-        {currentQuest && (
-          <div className={styles.mainContent} id="quest-main">
-            <div className={styles.headingSection}>
-              <div className={styles.title}>{currentQuest.title}</div>
-              <div className={styles.description}>
-                {currentQuest.questDescription}
-              </div>
-            </div>
-            <div className={styles.map}>
-              {currentQuest.chapters
-                ? currentQuest.chapters.length
-                  ? currentQuest.chapters.map((chapter) => {
-                      return (
-                        <div
-                          key={chapter.chapterNo}
-                          className={
-                            false ? styles.completedChapter : styles.chapter
-                          }
-                          style={
-                            positions[`quest${currentQuest.questNo}`][
-                              chapter.chapterNo - 1
-                            ]
-                          }
-                        >
-                          <span>{chapter.chapterNo}.</span> {chapter.title}
-                        </div>
-                      );
-                    })
-                  : ""
-                : ""}
-            </div>
+        <DashboardHeader />
+        {view ? (
+          <div className={styles.view}>
+            {view === TYPES[0] ? (
+              <RecordingView />
+            ) : view === TYPES[1] ? (
+              <ActivityView />
+            ) : view === TYPES[2] ? (
+              <QuizView />
+            ) : (
+              ""
+            )}
           </div>
+        ) : (
+          <QuestMap questData={currentQuest} changeView={setView} />
         )}
       </div>
     </div>
