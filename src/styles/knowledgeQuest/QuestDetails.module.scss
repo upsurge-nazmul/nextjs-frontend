@@ -10,5 +10,22 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+    .mainContent {
+      width: 100%;
+      padding: 0 45px;
+      overflow-y: auto;
+      .headingSection {
+        padding-bottom: 20px;
+        .title {
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .description {
+          font-size: 16px;
+          font-weight: 300;
+          color: #333;
+        }
+      }
+    }
   }
 }

@@ -24,6 +24,7 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
   });
   const [currentQuest, setCurrentQuest] = useState();
   const [view, setView] = useState();
+  const [currentChapter, setCurrentChapter] = useState();
 
   useEffect(() => {
     if (questData && questId) {
@@ -31,6 +32,16 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
       setCurrentQuest(curr);
     }
   }, [questId, questData]);
+
+  const handleBack = () => {
+    setView();
+    setCurrentChapter();
+  };
+
+  const handleDone = () => {
+    setView();
+    setCurrentChapter();
+  };
 
   console.log("%%%%%%%%%%", questData, currentQuest);
 
@@ -40,21 +51,45 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <DashboardHeader />
-        {view ? (
-          <div className={styles.view}>
-            {view === TYPES[0] ? (
-              <RecordingView />
-            ) : view === TYPES[1] ? (
-              <ActivityView />
-            ) : view === TYPES[2] ? (
-              <QuizView />
-            ) : (
-              ""
-            )}
-          </div>
-        ) : (
-          <QuestMap questData={currentQuest} changeView={setView} />
-        )}
+        <div className={styles.mainContent}>
+          {currentQuest && (
+            <div className={styles.headingSection}>
+              <div className={styles.title}>{currentQuest.title}</div>
+              <div className={styles.description}>
+                {currentQuest.questDescription}
+              </div>
+            </div>
+          )}
+          {view ? (
+            <>
+              {view === TYPES[0] ? (
+                <RecordingView
+                  {...{
+                    chapterId: currentChapter,
+                    backHandler: handleBack,
+                    doneHandler: handleDone,
+                  }}
+                />
+              ) : view === TYPES[1] ? (
+                <ActivityView
+                  {...{ backHandler: handleBack, doneHandler: handleDone }}
+                />
+              ) : view === TYPES[2] ? (
+                <QuizView
+                  {...{ backHandler: handleBack, doneHandler: handleDone }}
+                />
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <QuestMap
+              questData={currentQuest}
+              changeView={setView}
+              setActiveChapter={setCurrentChapter}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

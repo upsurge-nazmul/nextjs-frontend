@@ -1,17 +1,15 @@
 import styles from "../../styles/knowledgeQuest/Map.module.scss";
 import { positions } from "./positions";
 
-export default function QuestMap({ questData, changeView = () => {} }) {
+export default function QuestMap({
+  questData,
+  changeView = () => {},
+  setActiveChapter = () => {},
+}) {
   return (
     <>
       {questData && (
-        <div className={styles.mainContent} id="quest-main">
-          <div className={styles.headingSection}>
-            <div className={styles.title}>{questData.title}</div>
-            <div className={styles.description}>
-              {questData.questDescription}
-            </div>
-          </div>
+        <div className={styles.mapContent} id="quest-main">
           <div className={styles.map}>
             {questData.chapters
               ? questData.chapters.length
@@ -27,7 +25,10 @@ export default function QuestMap({ questData, changeView = () => {} }) {
                             chapter.chapterNo - 1
                           ]
                         }
-                        onClick={() => changeView(chapter.type)}
+                        onClick={() => {
+                          changeView(chapter.type);
+                          setActiveChapter(chapter.id);
+                        }}
                       >
                         <span>{chapter.chapterNo}.</span> {chapter.title}
                       </div>
