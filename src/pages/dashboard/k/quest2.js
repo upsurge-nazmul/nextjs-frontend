@@ -421,7 +421,7 @@ export async function getServerSideProps({ params, req }) {
         { id: "money-quest" },
         token
       );
-      let questRes = await KnowledgeQuestApi.getQuestData(null, token);
+      let questRes = await KnowledgeQuestApi.getQuestData({ old: true }, token);
       let gamedata = await GameApis.gamedata({ id: "NeedOrWant" });
       return {
         props: {

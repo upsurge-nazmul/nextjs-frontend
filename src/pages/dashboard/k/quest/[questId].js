@@ -6,6 +6,7 @@ import Toast from "../../../../components/Toast";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import styles from "../../../../styles/knowledgeQuest/Map.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
+import { positions } from "../../../../components/ChildQuest/positions";
 
 export default function KnowledgeQuest({ userData, userLevel, questData }) {
   const router = useRouter();
@@ -34,9 +35,39 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        <div className={styles.mainContent} id="quest-main">
-          {questId}
-        </div>
+        {currentQuest && (
+          <div className={styles.mainContent} id="quest-main">
+            <div className={styles.headingSection}>
+              <div className={styles.title}>{currentQuest.title}</div>
+              <div className={styles.description}>
+                {currentQuest.questDescription}
+              </div>
+            </div>
+            <div className={styles.map}>
+              {currentQuest.chapters
+                ? currentQuest.chapters.length
+                  ? currentQuest.chapters.map((chapter) => {
+                      return (
+                        <div
+                          key={chapter.chapterNo}
+                          className={
+                            false ? styles.completedChapter : styles.chapter
+                          }
+                          style={
+                            positions[`quest${currentQuest.questNo}`][
+                              chapter.chapterNo - 1
+                            ]
+                          }
+                        >
+                          <span>{chapter.chapterNo}.</span> {chapter.title}
+                        </div>
+                      );
+                    })
+                  : ""
+                : ""}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
