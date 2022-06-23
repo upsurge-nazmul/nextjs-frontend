@@ -1,0 +1,37 @@
+.mainSection {
+  padding: 20px 0;
+  .accordion {
+    .accordionSummary {
+    }
+    .accordionDetails {
+      .accordionBody {
+        display: flex;
+        flex-direction: row;
+        .chapterNo {
+          margin-right: 10px;
+        }
+        .chapterTitle {
+          margin-right: 20px;
+        }
+        .chapterAction {
+          .chapterButton {
+            cursor: pointer;
+            background-color: #17d1bc;
+            border: none;
+            color: #fff;
+            border-radius: 50%;
+            height: 24px;
+            width: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 7px 5px rgba(211, 211, 211, 0.5);
+            .buttonIcon {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

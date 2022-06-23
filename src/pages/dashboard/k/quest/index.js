@@ -5,8 +5,8 @@ import Toast from "../../../../components/Toast";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import styles from "../../../../styles/knowledgeQuest/quest.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-import HeadArea from "./HeadArea";
-import MainSection from "./MainSection";
+import HeadArea from "../../../../components/ChildQuest/HeadArea";
+import MainSection from "../../../../components/ChildQuest/MainSection";
 
 export default function KnowledgeQuest({ userData, userLevel, questData }) {
   const [mode, setmode] = useState("");

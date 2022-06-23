@@ -1,0 +1,63 @@
+import { useState } from "react";
+import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
+export default function MainSection({ data }) {
+  const [expanded, setExpanded] = useState(1);
+
+  return (
+    <div className={styles.mainSection}>
+      {data &&
+        data.length &&
+        data.map((item) => {
+          return (
+            <Accordion
+              key={item.questNo}
+              expanded={expanded === item.questNo}
+              onChange={() =>
+                expanded === item.questNo
+                  ? setExpanded()
+                  : setExpanded(item.questNo)
+              }
+              className={styles.accordion}
+            >
+              <AccordionSummary className={styles.accordionSummary}>
+                {item.title}
+              </AccordionSummary>
+              <AccordionDetails className={styles.accordionDetails}>
+                {item.chapters
+                  ? item.chapters.length
+                    ? item.chapters.map((chp) => {
+                        return (
+                          <div
+                            key={chp.chapterNo}
+                            className={styles.accordionBody}
+                          >
+                            <div className={styles.chapterNo}>
+                              {chp.chapterNo}
+                            </div>
+                            <div className={styles.chapterTitle}>
+                              {chp.title}
+                            </div>
+                            <div className={styles.chapterAction}>
+                              <button className={styles.chapterButton}>
+                                <ArrowRightAltIcon
+                                  className={styles.buttonIcon}
+                                />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })
+                    : ""
+                  : ""}
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
+    </div>
+  );
+}
