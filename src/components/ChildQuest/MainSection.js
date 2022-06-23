@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -6,6 +7,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 export default function MainSection({ data }) {
+  const router = useRouter();
   const [expanded, setExpanded] = useState(1);
 
   return (
@@ -42,18 +44,22 @@ export default function MainSection({ data }) {
                             <div className={styles.chapterTitle}>
                               {chp.title}
                             </div>
-                            <div className={styles.chapterAction}>
-                              <button className={styles.chapterButton}>
-                                <ArrowRightAltIcon
-                                  className={styles.buttonIcon}
-                                />
-                              </button>
-                            </div>
                           </div>
                         );
                       })
                     : ""
                   : ""}
+                <div className={styles.questAction}>
+                  <button
+                    className={styles.chapterButton}
+                    onClick={() =>
+                      router.push(`/dashboard/k/quest/${item.questId}`)
+                    }
+                  >
+                    Continue
+                    <ArrowRightAltIcon className={styles.buttonIcon} />
+                  </button>
+                </div>
               </AccordionDetails>
             </Accordion>
           );

@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-import styles from "../../../../styles/knowledgeQuest/Quest.module.scss";
+import styles from "../../../../styles/knowledgeQuest/Map.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-import HeadArea from "../../../../components/ChildQuest/HeadArea";
-import MainSection from "../../../../components/ChildQuest/MainSection";
 
 export default function KnowledgeQuest({ userData, userLevel, questData }) {
+  const router = useRouter();
+  const { questId } = router.query;
+
   const [mode, setmode] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+  const [currentQuest, setCurrentQuest] = useState();
+
+  useEffect(() => {
+    if (questData && questId) {
+      let curr = questData.find((q) => q.questId === questId);
+      setCurrentQuest(curr);
+    }
+  }, [questId, questData]);
+
+  console.log("%%%%%%%%%%", questData, currentQuest);
 
   return (
     <div className={styles.questPage}>
@@ -23,8 +35,7 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent} id="quest-main">
-          <HeadArea />
-          <MainSection data={questData} />
+          {questId}
         </div>
       </div>
     </div>
