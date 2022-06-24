@@ -43,8 +43,6 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
     setCurrentChapter();
   };
 
-  console.log("%%%%%%%%%%", questData, currentQuest);
-
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="kid" />
@@ -69,9 +67,17 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
                   }}
                 />
               ) : view === TYPES[1] ? (
-                <ActivityView />
+                <ActivityView
+                  {...{
+                    chapterId: currentChapter,
+                  }}
+                />
               ) : view === TYPES[2] ? (
-                <QuizView />
+                <QuizView
+                  {...{
+                    chapterId: currentChapter,
+                  }}
+                />
               ) : (
                 ""
               )}
