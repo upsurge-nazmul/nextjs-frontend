@@ -1,27 +1,13 @@
 import styles from "../../styles/knowledgeQuest/Views.module.scss";
 
-export default function RecordingView({
-  chapterId,
-  backHandler = () => {},
-  doneHandler = () => {},
-}) {
+export default function RecordingView({ chapterId }) {
   return (
-    <div>
+    <div className={styles.view}>
       <iframe
         id="iframe"
-        className={`${styles.map} ${styles.course}`}
-        src={
-          chapterId === "KnowingYourMoney"
-            ? "/quests/KnowingYourMoney/story.html"
-            : chapterId === "KiarasBudgetTrip"
-            ? "/quests/KiarasBudgetTrip/story.html"
-            : "/quests/bankvisit/story.html"
-        }
+        className={styles.iframe}
+        src={`/KnowledgeQuest/${chapterId}/story.html`}
       ></iframe>
-      <div className={styles.actionArea}>
-        <button onClick={backHandler}>Go Back</button>
-        <button onClick={doneHandler}>Done</button>
-      </div>
     </div>
   );
 }

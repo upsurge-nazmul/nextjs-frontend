@@ -61,7 +61,7 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
             </div>
           )}
           {view ? (
-            <>
+            <div className={styles.views}>
               {view === TYPES[0] ? (
                 <RecordingView
                   {...{
@@ -81,7 +81,15 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
               ) : (
                 ""
               )}
-            </>
+              <div className={styles.actionArea}>
+                <button className={styles.backButton} onClick={handleBack}>
+                  Go Back
+                </button>
+                <button className={styles.doneButton} onClick={handleDone}>
+                  Done
+                </button>
+              </div>
+            </div>
           ) : (
             <QuestMap
               questData={currentQuest}
