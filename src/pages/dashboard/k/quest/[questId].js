@@ -66,18 +66,12 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
                 <RecordingView
                   {...{
                     chapterId: currentChapter,
-                    backHandler: handleBack,
-                    doneHandler: handleDone,
                   }}
                 />
               ) : view === TYPES[1] ? (
-                <ActivityView
-                  {...{ backHandler: handleBack, doneHandler: handleDone }}
-                />
+                <ActivityView />
               ) : view === TYPES[2] ? (
-                <QuizView
-                  {...{ backHandler: handleBack, doneHandler: handleDone }}
-                />
+                <QuizView />
               ) : (
                 ""
               )}
