@@ -22,7 +22,7 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
     getquestions();
     async function getquestions() {
       let res = await KnowledgeQuestApi.getquestions(
-        { id: quizId },
+        { id: quizId, old: true },
         getCookie("accesstoken")
       );
       console.log(res);

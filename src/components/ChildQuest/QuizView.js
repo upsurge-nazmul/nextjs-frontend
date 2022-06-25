@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "../../styles/Quest/questquiz.module.scss";
+import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import SimpleProgress from "../SimpleProgress";
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
@@ -7,6 +7,7 @@ import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { getCookie } from "../../actions/cookieUtils";
 import Jasper from "../SVGcomponents/Jasper";
 import { MainContext } from "../../context/Main";
+import Quiz from "./Quiz";
 
 export default function QuizView({ chapterId, setlevel, setmode, level }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
@@ -27,7 +28,6 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
         { id: chapterId },
         getCookie("accesstoken")
       );
-      console.log(res);
       if (res && res.data && res.data.success) {
         setquestions(res.data.data);
       } else {
@@ -54,115 +54,78 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
   }
 
   return (
-    <div className={styles.quiz}>
-      <SimpleProgress
-        clr={colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"}
-        questions={questions?.length || 0}
-        current={currentQnIndex}
-        setcurrent={setCurrentQnIndex}
-      />
-      <div className={styles.background}>
-        <div className={styles.curvecontainer}>
-          <Curve1 className={styles.curve1} />
-          <Curve2 className={styles.curve2} />
+    <div className={styles.view}>
+      <div className={styles.quizView}>
+        <SimpleProgress
+          clr={colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"}
+          questions={questions?.length || 0}
+          current={currentQnIndex}
+          setcurrent={setCurrentQnIndex}
+        />
+        <div className={styles.questionno}>
+          Question {currentQnIndex + 1}/{questions.length}
         </div>
-      </div>
-      <div className={styles.questionno}>
-        Question {currentQnIndex + 1}/{questions.length}
-      </div>
-      {questions.length > 0 && !completed && (
-        <>
-          <div className={styles.question}>
-            {questions[currentQnIndex].question}
-          </div>
-          <div className={styles.options}>
-            {new Array(4).fill("a").map((option, index) => {
-              if (!questions[currentQnIndex][`option${index + 1}`]) {
-                return null;
-              } else
-                return (
-                  <div
-                    key={"quizoption" + index}
-                    className={`${styles.option + " " + styles.grad}  ${
-                      selectedOption === index + 1 ? styles.selected : ""
-                    }`}
-                    onClick={() => {
-                      setselectedOption(index + 1);
-                      matchAnswer(index + 1);
-                    }}
-                  >
-                    <div className={styles.circle}>
-                      {index === 0
-                        ? "A"
-                        : index === 1
-                        ? "B"
-                        : index === 2
-                        ? "C"
-                        : "D"}
-                    </div>
-                    <p className={styles.text}>
-                      {questions[currentQnIndex][`option${index + 1}`]}
-                    </p>
-                  </div>
-                );
-            })}
-          </div>
-        </>
-      )}
-      {completed && (
-        <div className={`${styles.resultSection}`}>
-          <Jasper className={styles.jasper} />
-          <div className={styles.background}>
-            <div className={styles.curvecontainer}>
-              <Curve1 className={styles.curve1} />
-              <Curve2 className={styles.curve2} />
+        {questions.length > 0 && !completed && (
+          <Quiz
+            data={questions[currentQnIndex]}
+            setCurrentQnIndex={setCurrentQnIndex}
+          />
+        )}
+        {completed && (
+          <div className={`${styles.resultSection}`}>
+            <Jasper className={styles.jasper} />
+            <div className={styles.background}>
+              <div className={styles.curvecontainer}>
+                <Curve1 className={styles.curve1} />
+                <Curve2 className={styles.curve2} />
+              </div>
             </div>
-          </div>
 
-          <div className={styles.points}>
-            You scored : {score}/{questions.length}
-          </div>
+            <div className={styles.points}>
+              You scored : {score}/{questions.length}
+            </div>
 
-          {score === 0 ? (
-            <div
-              className={styles.button}
-              onClick={() => {
-                setScore(0);
-                setCurrentQnIndex(0);
-                setcompleted(false);
-                setselectedOption(null);
-              }}
-            >
-              Retry
-            </div>
-          ) : (
-            <div
-              className={styles.button}
-              onClick={() => {
-                KnowledgeQuestApi.updatequizdata({
-                  id: "money-quest",
-                  score: score / questions.length,
-                });
-                KnowledgeQuestApi.update({
-                  level: Number(level) + 1,
-                  id: "money-quest",
-                });
-                setuserdata((prev) => ({
-                  ...prev,
-                  num_unicoins:
-                    Number(prev.num_unicoins) +
-                    150 +
-                    (score === questions.length ? 25 : 0),
-                }));
-                setlevel(Number(level) + 1);
-                setmode("map");
-              }}
-            >
-              Finish
-            </div>
-          )}
-        </div>
-      )}
+            {score === 0 ? (
+              <div
+                className={styles.button}
+                onClick={() => {
+                  setScore(0);
+                  setCurrentQnIndex(0);
+                  setcompleted(false);
+                  setselectedOption(null);
+                }}
+              >
+                Retry
+              </div>
+            ) : (
+              <div
+                className={styles.button}
+                onClick={() => {
+                  KnowledgeQuestApi.updatequizdata({
+                    id: "money-quest",
+                    score: score / questions.length,
+                  });
+                  KnowledgeQuestApi.update({
+                    level: Number(level) + 1,
+                    id: "money-quest",
+                  });
+                  setuserdata((prev) => ({
+                    ...prev,
+                    num_unicoins:
+                      Number(prev.num_unicoins) +
+                      150 +
+                      (score === questions.length ? 25 : 0),
+                  }));
+                  setlevel(Number(level) + 1);
+                  setmode("map");
+                }}
+              >
+                Finish
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
