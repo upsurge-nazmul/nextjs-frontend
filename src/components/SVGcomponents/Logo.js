@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function Logo({ className, onClick, dark }) {
+export default function Logo({ className, onClick, dark, id }) {
   return (
     <svg
+      id={id}
       width="180"
       height="47"
       onClick={onClick}

@@ -35,6 +35,9 @@ export default function Tour({
       setTimeout(() => getDelayedHeight(), 300);
     }
     let currentElement = document.querySelector(story[current].ref);
+    currentElement.scrollIntoView();
+    let prevElement = document.querySelector(story[current - 1].ref);
+    console.log("pp", prevElement);
     if (!currentElement) {
       setelementdata({
         height: 0,
@@ -44,9 +47,17 @@ export default function Tour({
       setcurrentHeight(0);
       return;
     }
-    if (story[current].isolate) {
-      currentElement.style.zIndex = "22";
+    if (prevElement) {
+      prevElement.classList.remove(styles.elevate);
+      prevElement.classList.remove(styles.highlightBg);
     }
+    if (story[current].isolate) {
+      currentElement.classList.add(styles.elevate);
+    }
+    if (story[current].highlightBg) {
+      currentElement.classList.add(styles.highlightBg);
+    }
+
     var rect = currentElement.getBoundingClientRect();
     var elementLeft, elementTop; //x and y
     var scrollTop = document.documentElement.scrollTop
@@ -84,7 +95,10 @@ export default function Tour({
       return;
     }
     if (story[current].isolate) {
-      currentElement.style.zIndex = "22";
+      currentElement.classList.add(styles.elevate);
+    }
+    if (story[current].border) {
+      currentElement.classList.add(styles.border);
     }
     var rect = currentElement.getBoundingClientRect();
     var elementLeft, elementTop; //x and y
@@ -159,7 +173,9 @@ export default function Tour({
     <div
       className={`${styles.tourWrapper} ${
         story[current].superimpose && styles.superImposed
-      }`}
+      } 
+    `}
+      style={story[current].disableBg ? { pointerEvents: "none" } : {}}
     >
       {
         <div
@@ -183,9 +199,11 @@ export default function Tour({
 
         {
           <div className={styles.buttons}>
-            <div className={styles.btn} onClick={finish}>
-              SKIP
-            </div>
+            {!story[current].required && (
+              <div className={styles.btn} onClick={finish}>
+                SKIP
+              </div>
+            )}
             {story[current].last && (
               <div className={styles.btn} onClick={finish}>
                 FINISH

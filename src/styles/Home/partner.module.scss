@@ -79,6 +79,7 @@
   position: relative;
   flex-direction: column;
   border-radius: 12px;
+  width: 100%;
   .heading {
     font-size: 36px;
     font-weight: 700;
@@ -138,23 +139,23 @@
 }
 .darkpartner {
   .heading {
-  color: $d-moredark;
+    color: $d-moredark;
   }
   .subheading {
-  color: $d-main;
+    color: $d-main;
   }
   .hidecursor {
     cursor: default;
   }
   .leftarrow {
-path{
-  fill: $d-main;
-}
+    path {
+      fill: $d-main;
+    }
   }
   .rightarrow {
-path{
-  fill: $d-main;
-}
+    path {
+      fill: $d-main;
+    }
   }
   .wrapper {
     width: 100%;

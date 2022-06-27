@@ -17,52 +17,16 @@
     flex: 1;
     display: flex;
     width: 100%;
+    max-width: calc(100% - 350px);
     flex-direction: column;
     .mainContent {
-      width: 100%;
       display: flex;
       overflow-y: auto;
       height: fit-content;
       margin-top: 20px;
+      padding: 10px 40px;
       scrollbar-width: thin;
-      .flexLeft {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-        padding: 0 10px 0 45px;
-        .wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-          img {
-            width: 350px;
-            object-fit: contain;
-            background-color: white;
-            border-radius: 12px;
-            border: 1px solid rgb(207, 207, 207);
-            padding: 0 20px;
-            &:first-child {
-              background-color: white;
-            }
-            &:nth-child(2) {
-              background-color: white;
-            }
-            &:nth-child(3) {
-              background-color: rgb(0, 0, 0);
-            }
-            &:nth-child(4) {
-              background-color: white;
-            }
-            &:nth-child(5) {
-              background-color: white;
-            }
-            &:nth-child(6) {
-              background-color: rgb(0, 0, 0);
-            }
-          }
-        }
-      }
+      overflow: hidden;
     }
 
     .container {

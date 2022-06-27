@@ -18,7 +18,7 @@ export default function Refer({ settoastdata, parent }) {
     }
   }
   return (
-    <div className={styles.refer}>
+    <div className={styles.refer} id="refer-div">
       <p className={styles.heading}>Invite your friends</p>
       <p className={styles.subheading}>
         Earn 10 UniCoins for each friend joining our platform.

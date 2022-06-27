@@ -25,7 +25,15 @@
 }
 .superImposed {
   z-index: 1112;
-  pointer-events: none;
+}
+.elevate {
+  position: relative;
+  z-index: 1113;
+  opacity: 0.99;
+}
+.highlightBg {
+  border-radius: 6px;
+  background: white;
 }
 .tour {
   background-color: white;
