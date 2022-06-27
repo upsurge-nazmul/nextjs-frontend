@@ -19,6 +19,7 @@ import CitySearch from "../../../../components/CitySearch";
 import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
+import Tour from "../../../../components/Tour/Tour";
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
   const type = router.query.type;
@@ -143,7 +144,11 @@ function AddKid({ childdata, userdatafromserver }) {
     };
     let response = await DashboardApis.addkids(data);
     if (response && response.data && response.data.success) {
-      router.push("/dashboard/p");
+      if (router.query.showTour) {
+        router.push("/dashboard/p?storyIndex=4");
+      } else {
+        router.push("/dashboard/p");
+      }
       settoastdata({
         type: "success",
         msg: response.data.message,
@@ -298,7 +303,7 @@ function AddKid({ childdata, userdatafromserver }) {
   }
   return (
     <div className={styles.manageChore}>
-      <DashboardLeftPanel />
+      <DashboardLeftPanel disableClicks={router.query.showTour} />
       <Toast data={toastdata} />
       {showavatarmodal && (
         <AvatarSelector
@@ -311,6 +316,7 @@ function AddKid({ childdata, userdatafromserver }) {
       )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
+          disableClicks={router.query.showTour}
           mode={mode}
           setmode={setmode}
           showback={true}
@@ -406,6 +412,7 @@ function AddKid({ childdata, userdatafromserver }) {
             />
             <ModernInputBox
               value={school}
+              setvalue={setschool}
               onChange={(e) => setschool(e.target.value)}
               placeholder="School"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
@@ -547,6 +554,7 @@ function AddKid({ childdata, userdatafromserver }) {
 
             <div
               className={styles.button}
+              id="add-btn"
               onClick={type === "add" ? addChild : updateChild}
             >
               {type === "add" ? "Add Child" : "Save Changes"}
@@ -554,6 +562,22 @@ function AddKid({ childdata, userdatafromserver }) {
           </div>
         </div>
       </div>
+      {router.query.showTour && (
+        <Tour
+          story={[
+            {
+              superimpose: true,
+              ref: "#add-btn",
+              content: "Click here after filling all details",
+              position: "bottom",
+              required: true,
+              disableBg: true,
+            },
+          ]}
+          current={0}
+          showtour={true}
+        />
+      )}
     </div>
   );
 }

@@ -84,7 +84,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           todaysquestion: tq?.data?.success ? tq.data.data : null,
-          blogdata: blogs?.data.data || [],
+          blogdata: blogs?.data?.data || [],
           userdatafromserver: response.data.data,
         },
       };

@@ -13,7 +13,13 @@ import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 
-function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
+function DashboardHeader({
+  mode,
+  showback,
+  gobackto,
+  settoastdata,
+  disableClicks,
+}) {
   const router = useRouter();
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
@@ -26,6 +32,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
       className={`${styles.dashboardHeader} ${
         theme === "dark" && styles.darkdashboardheader
       }`}
+      style={disableClicks ? { pointerEvents: "none" } : {}}
     >
       {shownotifications && (
         <NotificationMenu

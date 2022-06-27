@@ -28,9 +28,9 @@ import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
-function DashboardLeftPanel({ type, hidelogo, fixed }) {
+function DashboardLeftPanel({ type, hidelogo, fixed, disableClicks }) {
   const router = useRouter();
-  const { theme } = useContext(MainContext);
+  const { theme, userdata } = useContext(MainContext);
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
   const [showterm, setshowterm] = useState(false);
@@ -53,15 +53,23 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
       className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
         theme === "dark" && styles.dashboardDark
       }`}
+      style={disableClicks ? { pointerEvents: "none" } : {}}
     >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
         <Logo
+          id="upsurge-logo"
           dark={theme === "dark"}
           className={styles.dashboardLogo}
           onClick={() => {
-            router.push("/");
+            if (!userdata.intro_guide_completed) {
+              router.push(
+                "/?showTour=true&pushTo=/dashboard/" +
+                  (userdata.user_type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
+              );
+            } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
             // else router.push("/dashboard/p");
@@ -69,10 +77,17 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         />
       ) : (
         <MiniLogo
+          id="upsurge-logo"
           dark={theme === "dark"}
           className={styles.miniLogo}
           onClick={() => {
-            router.push("/");
+            if (!userdata.intro_guide_completed) {
+              router.push(
+                "/?showTour=true&pushTo=/dashboard/" +
+                  (userdata.type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
+              );
+            } else router.push("/");
 
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");

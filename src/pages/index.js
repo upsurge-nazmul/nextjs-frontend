@@ -21,6 +21,7 @@ import PartnerSection from "../components/Home/PartnerSection";
 import FaqSection from "../components/Home/FaqSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
+import Tour from "../components/Tour/Tour";
 const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
@@ -86,11 +87,33 @@ function Home({ isLogged, userdata }) {
       }
     }
   }, [router.query]);
+  const story = [
+    {
+      position: "bottom",
+      ref: "#continue-dashboard-btn",
+      isolate: true,
+      superimpose: true,
+      required: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Great, now we're in home page.</p>
+          <p
+            className={styles.text}
+          >{`Press this button to go back to dashboard.`}</p>
+        </div>
+      ),
+      nextFunction: () => {
+        router.push(router.query.pushTo);
+      },
+    },
+  ];
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
       <div
         id="home-page-main"
-        className={`${styles.homePage} ${showauth ? styles.stopscrolling : ""}`}
+        className={`${styles.homePage} ${
+          showauth || router.query.showTour ? styles.stopscrolling : ""
+        }`}
       >
         <Head>
           <title>upsurge | money, made easy.</title>
@@ -99,6 +122,7 @@ function Home({ isLogged, userdata }) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
+
         <div
           className={styles.summerbtn}
           onClick={() => router.push("/business_league")}
@@ -147,6 +171,9 @@ function Home({ isLogged, userdata }) {
           setmailfromhome={setmailfromhome}
         />
         <Footer />
+        {router.query.showTour && (
+          <Tour story={story} current={0} showtour={true} />
+        )}
       </div>
     </IntercomProvider>
   );

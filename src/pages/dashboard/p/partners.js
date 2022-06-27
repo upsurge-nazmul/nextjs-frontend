@@ -8,7 +8,7 @@ import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel
 import KidComponent from "../../../components/Dashboard/KidComponent";
 import NoKid from "../../../components/Dashboard/NoKid";
 import LeftPanel from "../../../components/LeftPanel";
-import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import PartnerSection from "../../../components/Home/PartnerSection";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import styles from "../../../styles/Dashboard/partnerpage.module.scss";
 import Toast from "../../../components/Toast";
@@ -55,13 +55,7 @@ export default function Partners({ userdatafromserver }) {
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
-            <div className={styles.wrapper}>
-              {rewards.map((item) => {
-                return <img key={item} src={item} alt="" />;
-              })}
-            </div>
-          </div>
+          <PartnerSection dashboard />
         </div>
       </div>
     </div>
