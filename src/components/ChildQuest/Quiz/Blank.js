@@ -10,7 +10,8 @@ export default function Blank({ data, value, setValue }) {
               <span className={styles.qnText}>{qn}</span>
               {i < data.question.length - 1 && (
                 <input
-                  value={value}
+                  type="text"
+                  value={value ? value : ""}
                   className={styles.qnInput}
                   onChange={(e) => setValue(e.target.value)}
                 />
