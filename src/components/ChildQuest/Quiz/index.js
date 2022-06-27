@@ -2,8 +2,10 @@ import { useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 import Blank from "./Blank";
 import Enamuration from "./Enamuration";
+import GoodBadDecision from "./GoodBadDecision";
 import Matching from "./Matching";
 import MCQ from "./MCQ";
+import MCQInBlank from "./McqInBlank";
 import OneWordAns from "./OneWorAns";
 import PhotoQn from "./PhotoQn";
 import TrueFalse from "./TrueFalse";
@@ -11,15 +13,17 @@ import VideoQn from "./VideoQn";
 import YesNo from "./YesNo";
 
 const TYPES = [
-  "mcq",
-  "yes-no",
-  "video-qn",
-  "true-false",
-  "fill-in-the-blanks",
-  "matching",
-  "one-word-answer",
-  "photo-qn",
-  "enumeration",
+  "mcq", // 0
+  "yes-no", // 1
+  "video-qn", // 2
+  "true-false", // 3
+  "fill-in-the-blanks", // 4
+  "matching", // 5
+  "one-word-answer", // 6
+  "photo-qn", // 7
+  "enumeration", // 8
+  "good-bad-decision", // 9
+  "mcqInBlank", // 10
 ];
 
 export default function Quiz({ data, setCurrentQnIndex }) {
@@ -47,6 +51,10 @@ export default function Quiz({ data, setCurrentQnIndex }) {
           <PhotoQn {...{ data, value, setValue }} />
         ) : type === TYPES[8] ? (
           <Enamuration {...{ data, value, setValue }} />
+        ) : type === TYPES[9] ? (
+          <GoodBadDecision {...{ data, value, setValue }} />
+        ) : type === TYPES[10] ? (
+          <MCQInBlank {...{ data, value, setValue }} />
         ) : (
           ""
         )}

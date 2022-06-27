@@ -13,7 +13,10 @@ export default function VideoQn({ data, value, setValue }) {
       ></iframe>
       <div className={styles.question}>{data.question}</div>
       <div className={styles.answer}>
-        <input value={value} onChange={(e) => setValue(e.target.value)} />
+        <input
+          value={value ? value : ""}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </div>
     </div>
   );

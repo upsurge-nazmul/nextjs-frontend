@@ -12,6 +12,7 @@ $qn-font-size: 20px;
       padding-top: 20px;
       .blankQnArea {
         padding: 10px 0;
+        text-align: center;
         .blankQn {
           display: inline;
           margin: 10px 0;
@@ -327,6 +328,116 @@ $qn-font-size: 20px;
           border: 1px solid #948f8f;
           padding: 10px;
           border-radius: 14px;
+        }
+      }
+    }
+    .goodBadDecision {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      .question {
+        font-size: $qn-font-size;
+      }
+      .options {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        .option {
+          border: none;
+          padding: 10px 20px;
+          background-color: transparent;
+          font-size: 24px;
+          cursor: pointer;
+          color: #333;
+          margin: 0 10px;
+          &:hover {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            transition-duration: 0.5s;
+          }
+        }
+        .true {
+          @extend .option;
+          &:hover {
+            color: #17d1bc;
+          }
+        }
+        .false {
+          @extend .option;
+          &:hover {
+            color: #17d1bc;
+          }
+        }
+        .selectedOption {
+          border: none;
+          padding: 10px 20px;
+          background-color: transparent;
+          font-size: 24px;
+          cursor: pointer;
+          color: #333;
+          margin: 0 10px;
+        }
+        .selectedTrue {
+          @extend .selectedOption;
+          border: 4px solid #17d1bc;
+          border-radius: 50%;
+        }
+        .selectedFalse {
+          @extend .selectedOption;
+          border: 4px solid #17d1bc;
+          border-radius: 50%;
+        }
+        .separator {
+          border: 1px solid #948f8f;
+          height: 100%;
+          transform: rotate(17deg);
+          height: 60px;
+        }
+      }
+    }
+    .mcqInBlank {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .question {
+        font-size: $qn-font-size;
+        padding: 20px;
+      }
+      .options {
+        display: flex;
+        gap: 5%;
+        flex-wrap: wrap;
+        width: 80%;
+        .option {
+          width: 45%;
+          text-align: center;
+          padding: 10px;
+          margin: 10px 0;
+          cursor: pointer;
+          font-size: 14px;
+          background-color: #f4f4f4;
+          color: #333;
+          border: 1px solid #f4f4f4;
+          box-shadow: 1px 1px 2px 2px #f4f4f4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 14px;
+          font-weight: 300;
+        }
+        .selectedOption {
+          @extend .option;
+          box-shadow: none;
+          font-weight: 500;
+          border: 1px solid #333;
+          background-color: transparent;
         }
       }
     }

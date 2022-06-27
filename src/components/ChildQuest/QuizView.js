@@ -12,7 +12,7 @@ import Quiz from "./Quiz";
 export default function QuizView({ chapterId, setlevel, setmode, level }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [currentQnIndex, setCurrentQnIndex] = useState(0);
+  const [currentQnIndex, setCurrentQnIndex] = useState(5);
   const [loading, setloading] = useState(true);
   const { userdata, setuserdata } = useContext(MainContext);
   const [error, seterror] = useState("");
