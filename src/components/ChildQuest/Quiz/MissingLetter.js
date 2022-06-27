@@ -4,7 +4,22 @@ import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 export default function MissingLetter({ data, value, setValue }) {
   useEffect(() => {
     setValue([]);
-  }, []);
+  }, [data]);
+
+  const handleChange = (e) => {
+    if (e.nativeEvent.data) {
+      // if not 'Backspace' pressed
+      setValue((prev) => [...prev, String(e.target.value).toUpperCase()]);
+    } else {
+      // if 'Backspace' pressed remove the previous one
+      setValue((prev) => {
+        if (prev && prev.length >= 1) {
+          prev.pop();
+          return prev;
+        } else return prev;
+      });
+    }
+  };
 
   return (
     <div className={styles.missingLetter}>
@@ -28,21 +43,10 @@ export default function MissingLetter({ data, value, setValue }) {
               {i < data.options.length - 1 && (
                 <input
                   type={"text"}
+                  value={value ? null : ""}
                   className={styles.input}
                   maxLength={1}
-                  onChange={(e) => {
-                    console.log("######", e.target, e.nativeEvent.data);
-                    if (e.nativeEvent.data) {
-                      // if not 'Backspace' pressed
-                      return setValue((prev) => [...prev, e.target.value]);
-                    } else {
-                      // if 'Backspace' pressed remove the previous one
-                      return setValue((prev) => {
-                        prev.pop();
-                        return prev;
-                      });
-                    }
-                  }}
+                  onChange={handleChange}
                 />
               )}
             </span>
