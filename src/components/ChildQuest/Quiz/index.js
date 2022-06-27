@@ -1,8 +1,11 @@
 import { useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 import Blank from "./Blank";
+import Enamuration from "./Enamuration";
 import Matching from "./Matching";
 import MCQ from "./MCQ";
+import OneWordAns from "./OneWorAns";
+import PhotoQn from "./PhotoQn";
 import TrueFalse from "./TrueFalse";
 import VideoQn from "./VideoQn";
 import YesNo from "./YesNo";
@@ -14,6 +17,9 @@ const TYPES = [
   "true-false",
   "fill-in-the-blanks",
   "matching",
+  "one-word-answer",
+  "photo-qn",
+  "enumeration",
 ];
 
 export default function Quiz({ data, setCurrentQnIndex }) {
@@ -35,6 +41,12 @@ export default function Quiz({ data, setCurrentQnIndex }) {
           <Blank {...{ data, value, setValue }} />
         ) : type === TYPES[5] ? (
           <Matching {...{ data, value, setValue }} />
+        ) : type === TYPES[6] ? (
+          <OneWordAns {...{ data, value, setValue }} />
+        ) : type === TYPES[7] ? (
+          <PhotoQn {...{ data, value, setValue }} />
+        ) : type === TYPES[8] ? (
+          <Enamuration {...{ data, value, setValue }} />
         ) : (
           ""
         )}
