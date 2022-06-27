@@ -6,6 +6,7 @@ import GoodBadDecision from "./GoodBadDecision";
 import Matching from "./Matching";
 import MCQ from "./MCQ";
 import MCQInBlank from "./McqInBlank";
+import MissingLetter from "./MissingLetter";
 import OneWordAns from "./OneWorAns";
 import PhotoQn from "./PhotoQn";
 import TrueFalse from "./TrueFalse";
@@ -23,12 +24,15 @@ const TYPES = [
   "photo-qn", // 7
   "enumeration", // 8
   "good-bad-decision", // 9
-  "mcqInBlank", // 10
+  "mcq-in-blank", // 10
+  "missing-letters", // 11
 ];
 
 export default function Quiz({ data, setCurrentQnIndex }) {
   const { type } = data;
   const [value, setValue] = useState();
+
+  // console.log("********", value);
 
   return (
     <div className={styles.quizSection}>
@@ -55,6 +59,8 @@ export default function Quiz({ data, setCurrentQnIndex }) {
           <GoodBadDecision {...{ data, value, setValue }} />
         ) : type === TYPES[10] ? (
           <MCQInBlank {...{ data, value, setValue }} />
+        ) : type === TYPES[11] ? (
+          <MissingLetter {...{ data, value, setValue }} />
         ) : (
           ""
         )}

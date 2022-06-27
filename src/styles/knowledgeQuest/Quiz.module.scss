@@ -441,6 +441,34 @@ $qn-font-size: 20px;
         }
       }
     }
+    .missingLetter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .question {
+        font-size: $qn-font-size;
+        padding: 20px;
+      }
+      .options {
+        .option {
+          .text {
+            font-size: 20px;
+            margin: 0 5px;
+          }
+          .input {
+            width: 30px;
+            font-size: 20px;
+            margin: 0 5px;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #ccc;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
   }
   .actionArea {
     display: flex;
