@@ -3,6 +3,7 @@ import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 import Blank from "./Blank";
 import Enamuration from "./Enamuration";
 import GoodBadDecision from "./GoodBadDecision";
+import ImageCat from "./ImageCat";
 import Matching from "./Matching";
 import MCQ from "./MCQ";
 import MCQInBlank from "./McqInBlank";
@@ -26,6 +27,7 @@ const TYPES = [
   "good-bad-decision", // 9
   "mcq-in-blank", // 10
   "missing-letters", // 11
+  "image-categorize", // 12
 ];
 
 export default function Quiz({ data, setCurrentQnIndex }) {
@@ -61,6 +63,8 @@ export default function Quiz({ data, setCurrentQnIndex }) {
           <MCQInBlank {...{ data, value, setValue }} />
         ) : type === TYPES[11] ? (
           <MissingLetter {...{ data, value, setValue }} />
+        ) : type === TYPES[12] ? (
+          <ImageCat {...{ data, value, setValue }} />
         ) : (
           ""
         )}

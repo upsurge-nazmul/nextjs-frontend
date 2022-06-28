@@ -469,6 +469,40 @@ $qn-font-size: 20px;
         }
       }
     }
+    .imageCat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .question {
+        font-size: $qn-font-size;
+        padding: 20px;
+      }
+      .images {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        .imageWrap {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          min-width: 50%;
+          justify-content: center;
+          align-items: center;
+          margin: 20px 0;
+          .image {
+            border-radius: 14px;
+          }
+          .options {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
   }
   .actionArea {
     display: flex;
