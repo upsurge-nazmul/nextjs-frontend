@@ -88,7 +88,7 @@ export default function UblPage() {
   ];
   return (
     <div className={styles.ubl}>
-      <Seo title="upsurge business league" />
+      <Seo title="upsurge Business League" />
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
@@ -240,7 +240,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-            Round 1 - Registrations close June 20, 2022
+            Round 1 - Registrations close July 17, 2022
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -249,25 +249,25 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              Knowledge Quest - Live Business & Startup Quiz - June 26, 2022
+              Knowledge Quest - Live Business & Startup Quiz - July 23, 2022
             </p>{" "}
             Live online quiz which will test their business knowledge, speed &
             problem-solving
           </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Case Study - July 3, 2022</p>{" "}
-            {
-              "Each team would be a startup that is launching an FMCG brand in the Indian market. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
-            }
-          </div>
-          <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              Business Idea Pitch - July 3, 2022
+              Business Idea Pitch -July 30, 2022
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Case Study - July 30, 2022</p>{" "}
+            {
+              "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
+            }
+          </div>
           <div className={styles.roundHeading}>
-            Round 2 - Teams announced on July 10, 2022
+            Round 2 - Teams announced by August 3, 2022
           </div>
           <div className={styles.round}>
             Up to 25 top teams will be shortlisted based on their performance in
@@ -283,10 +283,12 @@ export default function UblPage() {
               startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>Final - August 8</div>
+          <div className={styles.roundHeading}>Finals - August 20-21, 2022</div>
           <div className={styles.round}>
-            Final pitch will be held in front of a jury of 5 judges comprising
-            entrepreneurs, venture capitalists, CXOs and startup leaders.
+            {`Final pitch will be held in front of a jury comprising
+            entrepreneurs, venture capitalists, CXOs and startup leaders. Teams
+            will present their plans & progress made, and best teams will
+            receive investments of up to ₹3,00,000 from our incubator.`}
           </div>
           <UblTug className={styles.tug} />
         </div>
