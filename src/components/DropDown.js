@@ -16,6 +16,7 @@ function DropDown({
   className,
   shorter,
   onChange,
+  id,
 }) {
   const { theme } = useContext(MainContext);
   const [showoptions, setshowoptions] = useState(false);
@@ -42,7 +43,9 @@ function DropDown({
 
   return (
     <div
-      id={keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]}
+      id={
+        id ? id : keyprefix ? keyprefix + "dropdown" : "dropdown" + options[0]
+      }
       className={`${styles.dropdown} ${className} ${
         theme === "dark" && styles.darkstyles
       }`}

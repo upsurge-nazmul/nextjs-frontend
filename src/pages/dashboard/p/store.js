@@ -14,6 +14,7 @@ import ApproveModal from "../../../components/ParentStore/ApproveModal";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import VoucherApis from "../../../actions/apis/VoucherApis";
 import { MainContext } from "../../../context/Main";
+import Tour from "../../../components/Tour/Tour";
 
 export default function ParentStore({
   isLogged,
@@ -30,6 +31,7 @@ export default function ParentStore({
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Store");
   const router = useRouter();
+  const [storyIndex, setStoryIndex] = useState(0);
   const [searchresult, setsearchresult] = useState([]);
   const [childRequests, setChildRequests] = useState(requests || []);
   const [toastdata, settoastdata] = useState({
@@ -83,16 +85,22 @@ export default function ParentStore({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <RequestsAndHistorySection
+              id="request-store"
               childRequests={childRequests}
               setChildRequests={setChildRequests}
               setbuydata={setbuydata}
               setshowmodal={setshowmodal}
             />
-            <AvailablePointsSection kidsdata={kidsdata} />
+            <AvailablePointsSection
+              id="available-points-section"
+              kidsdata={kidsdata}
+            />
           </div>
           <div className={styles.flexRight}>
             <VoucherSection
+              id="store-voucher-section"
               vouchers={vouchers}
+              parent={true}
               unicoins={userdatafromserver.num_unicoins}
               email={userdatafromserver.email}
               phone={userdatafromserver.phone}
@@ -101,6 +109,52 @@ export default function ParentStore({
           </div>
         </div>
       </div>
+      {router.query.showTour && (
+        <Tour
+          story={[
+            {
+              ref: "#request-store",
+              position: "top",
+              content: `This is the request section, you'll see all the purchase requests from children here.`,
+              superimpose: true,
+              required: true,
+              highlightBg: true,
+              extraPadding: true,
+              isolate: true,
+            },
+            {
+              ref: "#available-points-section",
+              position: "top",
+              content: `You can see the available UniCoins of your children here.`,
+              highlightBg: true,
+              required: true,
+              extraPadding: true,
+              isolate: true,
+            },
+            {
+              ref: "#store-voucher-section",
+              position: "top",
+              content: `All the vouchers a child can purchase through UniCoins are listed here.`,
+              required: true,
+              extraPadding: true,
+              highlightBg: true,
+              isolate: true,
+            },
+            {
+              ref: "#partners-leftpanel",
+              position: "top",
+              content: `Click here to read notifications.`,
+              required: true,
+              highlightBg: true,
+              disableBtns: true,
+              isolate: true,
+            },
+          ]}
+          current={storyIndex}
+          setcurrent={setStoryIndex}
+          showtour={true}
+        />
+      )}
     </div>
   );
 }

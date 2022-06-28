@@ -65,7 +65,13 @@ const ordervouchers = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const completeintroguide = () => {
+  return ApiCalls.getResponse(
+    "users/completeintroguide",
+    {},
+    getCookie("accesstoken")
+  );
+};
 const getuservouchers = (payload, token) => {
   return ApiCalls.getResponse(
     "voucher/uservouchers",
@@ -148,6 +154,7 @@ const DashboardApis = {
   getoverallleaderboard,
   createVerificationOtp,
   getTodo,
+  completeintroguide,
 };
 
 export default DashboardApis;

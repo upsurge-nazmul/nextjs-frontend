@@ -9,7 +9,7 @@ import { choretemplates } from "../../helpers/choretemplates";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import { getCookie } from "../../actions/cookieUtils";
 
-function ChoreCategorySelection({ setmode }) {
+function ChoreCategorySelection({ setmode, setStoryIndex, tourActive }) {
   const [showtemps, setshowtemps] = useState(false);
   const router = useRouter();
   const [showfull, setshowfull] = useState(false);
@@ -62,7 +62,13 @@ function ChoreCategorySelection({ setmode }) {
             })}
           </div>
 
-          <div className={styles.button} onClick={() => setshowfull(true)}>
+          <div
+            className={styles.button}
+            onClick={() => {
+              setStoryIndex((prev) => prev + 1);
+              setshowfull(true);
+            }}
+          >
             Continue
           </div>
         </div>
@@ -104,7 +110,10 @@ function ChoreCategorySelection({ setmode }) {
                               item.name.replace(/ /g, "-") +
                               "&templatecat=" +
                               selectedcat +
-                              (item.id ? "&templateid=" + item.id : "")
+                              (item.id ? "&templateid=" + item.id : "") +
+                              (tourActive
+                                ? "&showTour=true?pushTo=/dashboard/p/?storyIndex=10"
+                                : "")
                           );
                         }}
                       >
@@ -129,7 +138,10 @@ function ChoreCategorySelection({ setmode }) {
                           item.name.replace(/ /g, "-") +
                           "&templatecat=" +
                           selectedcat +
-                          (item.id ? "&templateid=" + item.id : "")
+                          (item.id ? "&templateid=" + item.id : "") +
+                          (tourActive
+                            ? "&showTour=true?pushTo=/dashboard/p/?storyIndex=10"
+                            : "")
                       );
                     }}
                   >

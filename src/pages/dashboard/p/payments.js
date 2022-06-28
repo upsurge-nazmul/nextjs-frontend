@@ -22,12 +22,15 @@ import {
 } from "../../../helpers/timehelpers";
 import PaymentsApi from "../../../actions/apis/PaymentsApi";
 import { MainContext } from "../../../context/Main";
+import Tour from "../../../components/Tour/Tour";
+import Jasper from "../../../components/SVGcomponents/Jasper";
 export default function Payments({ pricing_details, userdatafromserver }) {
   const [mode, setmode] = useState("Payments");
   const router = useRouter();
   const [current_plan, setcurrent_plan] = useState(
     userdatafromserver.plan_name || "Free"
   );
+  const [storyIndex, setStoryIndex] = useState(0);
   const [history, sethistory] = useState([]);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -190,7 +193,7 @@ export default function Payments({ pricing_details, userdatafromserver }) {
             </div>
           )}
           {current_plan !== "Yearly" && (
-            <div className={styles.pricewrapper}>
+            <div className={styles.pricewrapper} id="prices-wrapper">
               {pricing_details.map((item, index) => {
                 if (current_plan === "Half-Yearly") {
                   if (item.name === "Monthly") return;
@@ -237,6 +240,50 @@ export default function Payments({ pricing_details, userdatafromserver }) {
           )}
           <DashboardFooter />
         </div>
+        {router.query.showTour && (
+          <Tour
+            story={[
+              {
+                ref: "#prices-wrapper",
+                position: "top-center",
+                content: `These are our plans, you can purchase them anytime.`,
+                superimpose: true,
+                required: true,
+                isolate: true,
+              },
+              {
+                ref: "#notification-btn",
+                position: "bottom-left",
+                content: `Click here to expand resources.`,
+                superimpose: true,
+                required: true,
+                isolate: true,
+                highlightBg: true,
+              },
+              {
+                nextFunction: () => {
+                  router.push("/dashboard/p");
+                },
+                intro: true,
+                last: true,
+                introComplete: true,
+                superimpose: true,
+                content: (
+                  <div className={styles.introdiv}>
+                    <p className={styles.heading}>{"All right, we’re done."}</p>
+                    <p className={styles.text}>
+                      {`As you grow & gain more experience with money, you will be able to invest across other asset classes as well!`}
+                    </p>
+                    <Jasper className={styles.jasper} />
+                  </div>
+                ),
+              },
+            ]}
+            current={storyIndex}
+            setcurrent={setStoryIndex}
+            showtour={true}
+          />
+        )}
       </div>
     </div>
   );

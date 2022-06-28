@@ -28,9 +28,10 @@ export default function CustomDatePicker({
   onlydate,
   maxdate = null,
   mindate = null,
+  id,
 }) {
   return (
-    <div className={styles.customdate}>
+    <div className={styles.customdate} id={id}>
       {onlytime ? (
         <DatePicker
           selected={value}

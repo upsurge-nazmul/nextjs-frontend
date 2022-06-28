@@ -16,6 +16,7 @@ export default function Reward({
   kidsdata,
   kid,
   unicoins,
+  parent,
 }) {
   const [prices, setprices] = useState([]);
   const [selectedprice, setselectedprice] = useState(
@@ -78,13 +79,15 @@ export default function Reward({
           placeholder={"Reward (₹)"}
           setvalue={(value) => setselectedprice(value)}
         />
-        <DropDown
-          options={[1, 2, 3, 4, 5]}
-          value={quantity}
-          keyprefix={data.name + "quantity"}
-          setvalue={setquantity}
-          placeholder={"Quantity"}
-        />
+        {
+          <DropDown
+            options={[1, 2, 3, 4, 5]}
+            value={quantity}
+            keyprefix={data.name + "quantity"}
+            setvalue={setquantity}
+            placeholder={"Quantity"}
+          />
+        }
       </div>
       <div className={styles.valueArea}>
         <UniCoinSvg className={styles.svg} clr={"#434040"} />
@@ -92,9 +95,11 @@ export default function Reward({
           {selectedprice * quantity * UniCoinValue}
         </div>
       </div>
-      <div className={styles.button} onClick={redeem}>
-        Redeem
-      </div>
+      {!parent && (
+        <div className={styles.button} onClick={redeem}>
+          Redeem
+        </div>
+      )}
     </div>
   );
 }

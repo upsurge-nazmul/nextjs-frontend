@@ -8,16 +8,30 @@ export default function LeftPannelToggle({
   icon,
   currenttab,
   isActive,
+  id,
+  setStoryIndex,
 }) {
   const [open, setopen] = useState(false);
   const router = useRouter();
   return (
     <div
+      id={id}
       className={`${styles.leftpaneltoggle} ${open ? styles.openedpanel : ""} ${
         isActive && styles.activepanel
       }`}
     >
-      <div className={styles.top} onClick={() => setopen(!open)}>
+      <div
+        className={styles.top}
+        onClick={() => {
+          if (!open && router.query.showTour) {
+            setStoryIndex((prev) => {
+              if (prev === 1) return prev + 1;
+              return prev;
+            });
+          }
+          setopen(!open);
+        }}
+      >
         {icon && icon}
         <div className={styles.tabtitle}>{name}</div>
       </div>

@@ -236,32 +236,33 @@ export default function Quests({ kidsdata, questData }) {
   const formatSectionData = (level = 0) => {
     let data = JSON.parse(JSON.stringify(questData));
     if (level === 1) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
+      console.log(data[0]);
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
     } else if (level === 2) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
     } else if (level === 3) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[1].chapters?.length ? (data[1].chapters[0].completion = "100%") : "";
     } else if (level === 4) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[1].chapters?.length ? (data[1].chapters[0].completion = "100%") : "";
+      data[1].chapters?.length ? (data[1].chapters[1].completion = "100%") : "";
     } else if (level === 5) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[2].chapters.length ? (chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[1].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[1].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[2].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
     } else if (level === 6) {
-      data[0].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[0].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[1].chapters.length ? (chapters[1].completion = "100%") : "";
-      data[2].chapters.length ? (chapters[0].completion = "100%") : "";
-      data[2].chapters.length ? (chapters[1].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[1].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[1].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
+      data[2].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
+      data[2].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
     } else {
       data = questData;
     }
@@ -301,6 +302,7 @@ export default function Quests({ kidsdata, questData }) {
   }, [selectedkid]);
 
   useEffect(() => {
+    if (!questData) return;
     if (kidsOptions && kidsOptions.length) {
       if (selectedkid && (selectedKidsLevel || selectedKidsLevel === 0)) {
         setSectionData();
@@ -423,13 +425,10 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           kidsdata,
-          questData: questRes
-            ? questRes.data
-              ? questRes.data.success
-                ? questRes.data.data
-                : null
-              : null
-            : null,
+          questData:
+            questRes && questRes.data && questRes.data.success
+              ? questRes.data.data
+              : null,
         },
       };
     }
