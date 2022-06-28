@@ -88,7 +88,7 @@ export default function UblPage() {
   ];
   return (
     <div className={styles.ubl}>
-      <Seo title="upsurge Business League" />
+      <Seo title="upsurge business league" />
       {showterm && <Terms termmode="term" setshowterm={setshowterm} />}
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
