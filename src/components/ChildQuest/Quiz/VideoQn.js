@@ -6,9 +6,9 @@ export default function VideoQn({ data, value, setValue }) {
       <iframe
         src="https://www.youtube.com/embed/9xwazD5SyVg"
         title="Dummy Video For YouTube API Test"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
         className={styles.video}
       ></iframe>
       <div className={styles.question}>{data.question}</div>

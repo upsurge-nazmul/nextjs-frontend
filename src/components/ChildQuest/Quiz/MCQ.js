@@ -8,6 +8,7 @@ export default function MCQ({ data, value, setValue }) {
         {data.options.map((option, i) => {
           return (
             <div
+              key={"mcq" + i}
               className={
                 option === value ? styles.selectedOption : styles.option
               }

@@ -6,7 +6,7 @@ export default function Blank({ data, value, setValue }) {
       <div className={styles.blankQnArea}>
         {data.question.map((qn, i) => {
           return (
-            <div className={styles.blankQn}>
+            <div className={styles.blankQn} key={"blank" + i}>
               <span className={styles.qnText}>{qn}</span>
               {i < data.question.length - 1 && (
                 <input
