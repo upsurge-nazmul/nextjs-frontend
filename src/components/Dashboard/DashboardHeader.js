@@ -19,6 +19,7 @@ function DashboardHeader({
   gobackto,
   settoastdata,
   disableClicks,
+  setStoryIndex,
 }) {
   const router = useRouter();
   const [bell, setbell] = useState(false);
@@ -73,8 +74,18 @@ function DashboardHeader({
               bell ? styles.bell : ""
             }`}
             onClick={() => setshownotifications(!shownotifications)}
-            onMouseEnter={() => setbell(true)}
-            onMouseLeave={() => setbell(false)}
+            onMouseEnter={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(true);
+            }}
+            onMouseLeave={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(false);
+            }}
           >
             {notifications.length > 0 ? (
               <div className={styles.dot}></div>
@@ -82,7 +93,16 @@ function DashboardHeader({
             <NotificationBell />
           </div>
         }
-        <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
+        <div
+          className={styles.avatar}
+          id="header-settings"
+          onClick={() => {
+            if (router.query.showTour) {
+              setStoryIndex((prev) => prev + 1);
+            }
+            setshowmenu(!showmenu);
+          }}
+        >
           {showmenu && (
             <Menu
               settoastdata={settoastdata}

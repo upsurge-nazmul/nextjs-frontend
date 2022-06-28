@@ -39,7 +39,11 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
       var menu = document.getElementById("menu-main");
       if (e.target === avbtn) {
         return;
-      } else if (menu !== null && !menu.contains(e.target)) {
+      } else if (
+        menu !== null &&
+        !menu.contains(e.target) &&
+        !router.query.showTour
+      ) {
         setshowmenu(false);
       }
     }
@@ -50,7 +54,10 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className={styles.menu} id="menu-main">
+    <div
+      className={`${styles.menu} ${router.query.showTour && styles.tourMenu}`}
+      id="menu-main"
+    >
       <div className={styles.top}>
         <p className={styles.heading}>
           {getfullname(userdata?.first_name, userdata?.last_name)}
@@ -87,6 +94,7 @@ function Menu({ settoastdata, menuType, waitilistmenu }) {
       {menuType !== "child" && !waitilistmenu && (
         <>
           <p
+            id="menu-main-payments"
             className={styles.tabs}
             onClick={() => {
               setshowmenu(false);

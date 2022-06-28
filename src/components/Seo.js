@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 const Seo = (props) => (
   <Head>
     <title>{props.title}</title>
@@ -10,24 +11,24 @@ const Seo = (props) => (
       property="og:description"
       content={props.desc}
     />
-    <meta property="og:site_name" content="Proper Noun" />
+    <meta property="og:site_name" content="upsurge" />
     <meta property="og:url" content={`${props.canonical}`} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={props.title} />
     <meta name="twitter:description" content={props.desc} />
-    <meta name="twitter:site" content="@propernounco" />
-    <meta name="twitter:creator" content="@propernounco" />
-    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/static/images/favicon.ico" />
+    <meta name="twitter:site" content="@upsurge" />
+    <meta name="twitter:creator" content="@upsurge" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
     {props.css && <link rel="stylesheet" href={`${props.css}`} />}
-    {props.image ? (
+    {/* {props.image ? (
       <meta property="og:image" content={`${props.image}`} />
     ) : (
       <meta
         property="og:image"
-        content="https://www.propernoun.co/static/images/proper-noun-social.png"
+        content="https://www.propernoun.co/images/proper-noun-social.png"
       />
-    )}
+    )} */}
     {props.image && <meta name="twitter:image" content={`${props.image}`} />}
     {props.canonical && <link rel="canonical" href={`${props.canonical}`} />}
   </Head>

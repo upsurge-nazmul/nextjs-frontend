@@ -8,12 +8,13 @@ function RequestsAndHistorySection({
   setbuydata,
   childRequests,
   setChildRequests,
+  id,
 }) {
   console.log(childRequests);
   const [type, settype] = useState("Requests");
   const [history, sethistory] = useState([]);
   return (
-    <div className={styles.requestsAndHistorySection}>
+    <div className={styles.requestsAndHistorySection} id={id}>
       <h2 className={styles.heading}>Requests</h2>
       <div className={styles.wrapper}>
         {childRequests.length > 0 ? (

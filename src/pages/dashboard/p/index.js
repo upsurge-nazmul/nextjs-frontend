@@ -59,6 +59,7 @@ function Dashboard({
     type: "success",
     msg: "",
   });
+  console.log(userdatafromserver);
   const [showtour, setshowtour] = useState(
     !userdatafromserver.intro_guide_completed
   );
@@ -110,6 +111,7 @@ function Dashboard({
       required: true,
       disableBtns: true,
       isolate: true,
+      skip: kids.length > 0,
     },
     {
       ref: "#children-div",
@@ -154,6 +156,43 @@ function Dashboard({
       ref: "#dashboard-blogs",
       position: "bottom",
       content: `You can access blogs from here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#chores-leftpanel",
+      position: "bottom",
+      content: `Now lets start allotting chores.`,
+      disableBtns: true,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#quest-leftpanel",
+      position: "bottom",
+      content: `You can track the knowledge quest progress of your children.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#games-leftpanel",
+      position: "bottom",
+      content: `You can play games here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#store-leftpanel",
+      position: "bottom",
+      content: `Now lets go to store.`,
       superimpose: true,
       required: true,
       highlightBg: true,

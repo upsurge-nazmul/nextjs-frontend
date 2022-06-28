@@ -23,6 +23,7 @@ import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import KidChore from "../../../components/KidDashboard/KidChore";
+import TodoList from "../../../components/WaitlistDashboard/TodoList";
 
 export default function ChildActivity({
   pendingchores,
@@ -32,11 +33,14 @@ export default function ChildActivity({
   recentgames,
   currentLevel,
   userdatafromserver,
+  tododatafromserver,
 }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
+  const [tododata, settododata] = useState(tododatafromserver);
   const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(pendingchores);
+  const [showtodo, setshowtodo] = useState(false);
   const [quests, setquests] = useState([]);
   const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
@@ -91,6 +95,14 @@ export default function ChildActivity({
           setmode={setmode}
           settoastdata={settoastdata}
         />
+        {showtodo && (
+          <TodoList
+            data={tododata.list}
+            total={tododata.total}
+            completed={tododata.completed}
+            hide={() => setshowtodo(!showtodo)}
+          />
+        )}
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
@@ -158,6 +170,28 @@ export default function ChildActivity({
                   </div>
                 </>
               )}
+            </div>
+            <div className={styles.milestonesSection}>
+              <h2
+                className={styles.mainheading}
+                onClick={() => setshowtodo(true)}
+              >
+                Milestones
+                <HeadingArrow />
+              </h2>
+              <div className={styles.quizblock}>
+                <p className={styles.heading}>
+                  {tododata
+                    ? tododata.completed + "/" + tododata.total
+                    : "All clear"}
+                </p>
+                <p
+                  className={styles.subheading}
+                  onClick={() => setshowtodo(true)}
+                >
+                  Complete Milestones
+                </p>
+              </div>
             </div>
             <div className={styles.leaderboardsection}>
               <h2 className={styles.heading}>Leaderboards</h2>
@@ -288,6 +322,7 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
@@ -320,6 +355,7 @@ export async function getServerSideProps({ params, req }) {
             currentLevel && currentLevel.data && currentLevel.data.success
               ? currentLevel.data.data
               : 1,
+          tododatafromserver: tododata?.data?.data || null,
           childdetail:
             response && response.data && response.data.data
               ? response.data.data

@@ -12,6 +12,8 @@ export default function VoucherSection({
   phone,
   kidsdata,
   kid,
+  id,
+  parent,
 }) {
   const [items, setitems] = useState(vouchers);
   const [query, setquery] = useState("");
@@ -29,7 +31,7 @@ export default function VoucherSection({
     }
   }, [query]);
   return (
-    <div className={styles.VoucherSection}>
+    <div className={styles.VoucherSection} id={id}>
       <div className={styles.headwrapper}>
         <h2 className={styles.heading}>Rewards</h2>
 
@@ -50,6 +52,7 @@ export default function VoucherSection({
             kid={kid ? true : false}
             unicoins={unicoins}
             email={email}
+            parent={parent}
             phone={phone}
             kidsdata={kidsdata}
           />

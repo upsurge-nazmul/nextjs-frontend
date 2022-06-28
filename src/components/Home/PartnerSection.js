@@ -27,6 +27,7 @@ export default function PartnerSection({ dashboard }) {
       className={`${dashboard ? styles.dashboard : styles.partner} ${
         theme === "dark" && styles.darkpartner
       }`}
+      id="partner-section"
     >
       <div
         className={`${styles.heading} ${dashboard && styles.hidecursor}`}

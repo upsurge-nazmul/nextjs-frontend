@@ -36,7 +36,6 @@ function ChoreTemplateSelection({ category, setmode }) {
               >
                 Use Template
               </div>
-              
             </div>
           );
         })}

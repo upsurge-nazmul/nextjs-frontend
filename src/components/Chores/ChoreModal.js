@@ -5,7 +5,13 @@ import ChoreCategorySelection from "./ChoreCategorySelection";
 import ChoreTemplateSelection from "./ChoreTemplateSelection";
 import styles from "../../styles/Chores/choremodal.module.scss";
 
-function ChoreModal({ showmodal, setshowmodal }) {
+function ChoreModal({
+  showmodal,
+  setshowmodal,
+  id,
+  tourActive,
+  setStoryIndex,
+}) {
   //modes will be start , category , template, assign
   const [userdata, setuserdata] = useState(null);
   const [mode, setmode] = useState("category");
@@ -18,21 +24,25 @@ function ChoreModal({ showmodal, setshowmodal }) {
   });
 
   return (
-    <div className={styles.choreModal}>
+    <div className={styles.choreModal} style={tourActive ? { zIndex: 22 } : {}}>
       <Toast data={toastdata} />
       <AnimatePresence>
         {showmodal ? (
           <div className={styles.choreModalWrapper}>
-            <div
-              className={styles.background}
-              onClick={() => setshowmodal(false)}
-            ></div>
-            <div className={styles.choreModalcontainer}>
+            {!tourActive && (
+              <div
+                className={styles.background}
+                onClick={() => setshowmodal(false)}
+              ></div>
+            )}
+            <div className={styles.choreModalcontainer} id={id}>
               {mode === "category" ? (
                 <ChoreCategorySelection
+                  tourActive={tourActive}
                   category={category}
                   setcategory={setcategory}
                   setmode={setmode}
+                  setStoryIndex={setStoryIndex}
                 />
               ) : mode === "template" ? (
                 <ChoreTemplateSelection category={category} setmode={setmode} />

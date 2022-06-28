@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, {
   useEffect,
   useState,
@@ -5,6 +6,7 @@ import React, {
   useImperativeHandle,
   useContext,
 } from "react";
+import DashboardApis from "../../actions/apis/DashboardApis";
 import MoneyAceApis from "../../actions/apis/MoneyAceApis";
 import { getCookie } from "../../actions/cookieUtils";
 import { MainContext } from "../../context/Main";
@@ -15,6 +17,7 @@ export default function Tour({
   setcurrent,
   setshowtour,
   nextFunction,
+  customCompletion,
 }) {
   const [currentHeight, setcurrentHeight] = useState(0);
   const [currentleftOffset, setcurrentleftOffset] = useState(0);
@@ -24,20 +27,19 @@ export default function Tour({
     height: 0,
   });
   const { widthHeight } = useContext(MainContext);
+  const router = useRouter();
   function getHeight() {
-    if (story[current].blank) return;
-    if (story[current].intro) {
+    if (story[current]?.blank) return;
+    if (story[current]?.intro) {
       setcurrentleftOffset("50%");
       setcurrentHeight("100%");
       return;
     }
-    if (story[current].delay) {
+    if (story[current]?.delay) {
       setTimeout(() => getDelayedHeight(), 300);
     }
-    let currentElement = document.querySelector(story[current].ref);
-    currentElement.scrollIntoView();
-    let prevElement = document.querySelector(story[current - 1].ref);
-    console.log("pp", prevElement);
+    let currentElement = document.querySelector(story[current]?.ref);
+    currentElement?.scrollIntoView();
     if (!currentElement) {
       setelementdata({
         height: 0,
@@ -47,17 +49,25 @@ export default function Tour({
       setcurrentHeight(0);
       return;
     }
+    let prevElement = document.querySelector(story[current - 1]?.ref);
     if (prevElement) {
       prevElement.classList.remove(styles.elevate);
       prevElement.classList.remove(styles.highlightBg);
+      prevElement.classList.remove(styles.extraPadding);
+      prevElement.classList.remove(styles.absolute);
     }
-    if (story[current].isolate) {
+    if (story[current]?.isolate) {
       currentElement.classList.add(styles.elevate);
     }
-    if (story[current].highlightBg) {
+    if (story[current]?.highlightBg) {
       currentElement.classList.add(styles.highlightBg);
     }
-
+    if (story[current]?.extraPadding) {
+      currentElement.classList.add(styles.extraPadding);
+    }
+    if (story[current]?.absoulte) {
+      currentElement.classList.add(styles.absolute);
+    }
     var rect = currentElement.getBoundingClientRect();
     var elementLeft, elementTop; //x and y
     var scrollTop = document.documentElement.scrollTop
@@ -84,7 +94,7 @@ export default function Tour({
     setcurrentHeight(elementTop);
   }
   function getDelayedHeight() {
-    let currentElement = document.querySelector(story[current].ref);
+    let currentElement = document.querySelector(story[current]?.ref);
     if (!currentElement) {
       setelementdata({
         height: 0,
@@ -94,10 +104,10 @@ export default function Tour({
       setcurrentHeight(0);
       return;
     }
-    if (story[current].isolate) {
+    if (story[current]?.isolate) {
       currentElement.classList.add(styles.elevate);
     }
-    if (story[current].border) {
+    if (story[current]?.border) {
       currentElement.classList.add(styles.border);
     }
     var rect = currentElement.getBoundingClientRect();
@@ -126,6 +136,16 @@ export default function Tour({
     setcurrentHeight(elementTop);
   }
   async function finish() {
+    if (story[current].introComplete) {
+      let res = await DashboardApis.completeintroguide();
+      console.log(res.data);
+      if (res?.data?.success) {
+        router.push("/dashboard/p");
+      } else {
+        console.log("something went wrong");
+      }
+      return;
+    }
     let res = await MoneyAceApis.marktourfinished(getCookie("accesstoken"));
     if (res?.data?.success) {
       setshowtour(false);
@@ -137,84 +157,104 @@ export default function Tour({
     getHeight();
   }, [current, widthHeight]);
   useEffect(() => {
+    if (story[current]?.skip) {
+      let prevElement = document.querySelector(story[current - 1]?.ref);
+      if (prevElement) {
+        prevElement.classList.remove(styles.elevate);
+        prevElement.classList.remove(styles.highlightBg);
+      }
+      setcurrent((prev) => prev + 1);
+      return;
+    }
     let element = document.querySelector("#tour-board");
     if (element)
       settourdata({ height: element.clientHeight, width: element.clientWidth });
   }, [current, widthHeight]);
 
   function getstyle() {
-    if (story[current].intro)
+    if (story[current]?.intro)
       return {
         marginLeft: "15%",
       };
     return {
       top:
-        story[current].position === "top" ||
-        story[current].position === "top-left"
+        story[current]?.position === "top" ||
+        story[current]?.position === "top-left"
           ? currentHeight - 20 - tourdata.height
-          : story[current].position === "bottom"
+          : story[current]?.position === "bottom" ||
+            story[current]?.position === "bottom-left"
           ? elementdata?.height + currentHeight + 20
+          : story[current]?.position === "left"
+          ? elementdata?.height + currentHeight - 40
+          : story[current]?.position === "top-center"
+          ? currentHeight - tourdata.height - 20
           : currentHeight - tourdata.height,
       left:
-        story[current].position === "top-left"
+        story[current]?.position === "top-left" ||
+        story[current]?.position === "bottom-left"
           ? currentleftOffset - tourdata.width + 60
-          : story[current].position === "left"
-          ? currentleftOffset - 20
-          : story[current].position === "right"
+          : story[current]?.position === "left"
+          ? currentleftOffset - tourdata.width - 20
+          : story[current]?.position === "right"
           ? elementdata?.width + currentleftOffset + 20
+          : story[current]?.position === "top-center"
+          ? "52%"
           : currentleftOffset,
     };
   }
 
-  if (story[current].blank) {
+  if (story[current]?.blank) {
     return null;
   }
   return (
     <div
       className={`${styles.tourWrapper} ${
-        story[current].superimpose && styles.superImposed
+        story[current]?.superimpose && styles.superImposed
       } 
     `}
-      style={story[current].disableBg ? { pointerEvents: "none" } : {}}
+      style={story[current]?.disableBg ? { pointerEvents: "none" } : {}}
     >
       {
         <div
           className={`${styles.bg} ${
-            story[current].disableBg && styles.disabledBG
+            story[current]?.disableBg && styles.disabledBG
           }`}
         />
       }
       <div
         id="tour-board"
         className={`${styles.tour} ${
-          story[current].position === "top" && styles.bottomarrow
+          story[current]?.position === "top" && styles.bottomarrow
         }
-        ${story[current].position === "bottom" && styles.toparrow}
-        ${story[current].position === "top-left" && styles.bottomrightarrow}
-        ${story[current].intro && styles.bubblearrow}
+        ${story[current]?.position === "bottom" && styles.toparrow}
+        ${story[current]?.position === "left" && styles.leftarrow}
+        ${story[current]?.position === "top-left" && styles.bottomrightarrow}
+        ${story[current]?.position === "bottom-left" && styles.bottomleftarrow}
+        ${story[current]?.position === "top-center" && styles.topcenterarrow}
+        ${story[current]?.intro && styles.bubblearrow}
         `}
         style={getstyle()}
       >
-        {story[current].content}
+        {story[current]?.content}
 
         {
           <div className={styles.buttons}>
-            {!story[current].required && (
+            {!story[current]?.required && (
               <div className={styles.btn} onClick={finish}>
                 SKIP
               </div>
             )}
-            {story[current].last && (
+            {story[current]?.last && (
               <div className={styles.btn} onClick={finish}>
                 FINISH
               </div>
             )}
-            {!story[current].disableBtns && current < story.length - 1 && (
+            {!story[current]?.disableBtns && current < story.length - 1 && (
               <div
                 className={styles.btn}
                 onClick={() => {
-                  if (story[current].nextFunction) {
-                    story[current].nextFunction();
+                  if (story[current]?.nextFunction) {
+                    story[current]?.nextFunction();
                   }
                   setcurrent(current + 1);
                 }}

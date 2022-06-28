@@ -17,6 +17,7 @@ import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { uploadaudiotos3 } from "../../../../helpers/aws";
+import Tour from "../../../../components/Tour/Tour";
 export default function ManageChore({
   choredata,
   childdata,
@@ -26,6 +27,7 @@ export default function ManageChore({
   const router = useRouter();
   const { setuserdata } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
+  const [storyIndex, setStoryIndex] = useState(0);
   const templatename = template?.replace(/-/g, " ");
   const [currentcatarray, setcurrentcatarray] = useState(
     choretemplates[
@@ -198,7 +200,11 @@ export default function ManageChore({
           msg: "Chores added successfully",
           type: "success",
         });
-        router.push("/dashboard/p/chores");
+        if (router.query.pushTo) {
+          router.push("/dashboard/p/?showTour=true&storyIndex=10");
+        } else {
+          router.push("/dashboard/p/chores");
+        }
       } else {
         settoastdata({
           show: true,
@@ -246,15 +252,7 @@ export default function ManageChore({
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
-      {showaddmodal && (
-        <AddAssigneeModal
-          assignees={assignees}
-          setassignees={setassignees}
-          onConfirm={() => setshowaddmodal(false)}
-          settoastdata={settoastdata}
-          onCancel={() => setshowaddmodal(false)}
-        />
-      )}
+
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
@@ -279,11 +277,13 @@ export default function ManageChore({
           <div className={styles.details}>
             <input
               type="text"
+              id="chore-title"
               value={choretitle}
               onChange={(e) => setchoretitle(e.target.value)}
             />
 
             <DropDown
+              id="chore-inteval-dropdown"
               placeholder="One Time"
               options={["One Time", "Daily"]}
               margin="0 0 20px 0"
@@ -291,12 +291,14 @@ export default function ManageChore({
               setvalue={setinterval}
             />
             <CustomDatePicker
+              id="chore-date"
               value={duedate}
               setvalue={setduedate}
               onlydate={interval !== "One Time"}
               mindate={"today"}
             />
             <DropDown
+              id="chore-cat"
               placeholder="Category"
               options={[
                 "Household",
@@ -310,7 +312,7 @@ export default function ManageChore({
               setvalue={setcat}
             />
 
-            <div className={styles.msgsection}>
+            <div className={styles.msgsection} id="chore-msg">
               <textarea
                 maxLength="200"
                 value={msg}
@@ -353,7 +355,7 @@ export default function ManageChore({
               )
             )}
 
-            <div className={styles.button} onClick={handleSave}>
+            <div className={styles.button} onClick={handleSave} id="save-btn">
               {type !== "new" ? "Save Changes" : "Save & Assign"}
             </div>
             {type !== "new" && (
@@ -364,6 +366,7 @@ export default function ManageChore({
             <div
               className={`${styles.button} ${styles.template}`}
               onClick={handleSaveTemplate}
+              id="template-btn"
             >
               +Save as template
             </div>
@@ -377,8 +380,14 @@ export default function ManageChore({
             </div>
             {type === "new" && (
               <div
+                id="chores-assignee-btn"
                 className={styles.button}
-                onClick={() => setshowaddmodal(true)}
+                onClick={() => {
+                  if (router.query.showTour) {
+                    setStoryIndex((prev) => prev + 1);
+                  }
+                  setshowaddmodal(true);
+                }}
               >
                 +Add Assignees
               </div>
@@ -386,6 +395,106 @@ export default function ManageChore({
           </div>
         </div>
       </div>
+      {showaddmodal && (
+        <AddAssigneeModal
+          tourActive={router.query.showTour}
+          assignees={assignees}
+          setassignees={setassignees}
+          onConfirm={() => setshowaddmodal(false)}
+          settoastdata={settoastdata}
+          onCancel={(checkAssignee) => {
+            if (checkAssignee) {
+              if (assignees.length === 0) {
+                settoastdata({
+                  show: true,
+                  msg: "Add assignees first",
+                  type: "error",
+                });
+                return;
+              }
+            }
+            setStoryIndex((prev) => prev + 1);
+            setshowaddmodal(false);
+          }}
+        />
+      )}
+      {router.query.showTour && (
+        <Tour
+          story={[
+            {
+              ref: "#chores-assignee-btn",
+              position: "bottom",
+              content: `Click here to add assignees for chore.`,
+              superimpose: true,
+              required: true,
+              highlightBg: true,
+              isolate: true,
+              disableBtns: true,
+            },
+            {
+              ref: "#assignee-modal",
+              position: "bottom",
+              delay: true,
+              content: `Select children.`,
+              disableBtns: true,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#chore-title",
+              position: "bottom",
+              content: `Enter chore title here.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#chore-inteval-dropdown",
+              position: "bottom",
+              content: `Select chore interval.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#chore-date",
+              position: "bottom",
+              content: `Set date and time.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#chore-cat",
+              position: "bottom",
+              content: `Select chore category.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#chore-msg",
+              position: "bottom",
+              content: `Enter msg here.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#template-btn",
+              position: "bottom",
+              content: `You can save this chore as an template.`,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#save-btn",
+              position: "bottom",
+              content: `Click on save to assign chore.`,
+              required: true,
+              isolate: true,
+            },
+          ]}
+          current={storyIndex}
+          setcurrent={setStoryIndex}
+          showtour={true}
+        />
+      )}
     </div>
   );
 }
