@@ -3,7 +3,7 @@ import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
-import styles from "../../../../styles/knowledgeQuest/Quest.module.scss";
+import styles from "../../../../styles/knowledgeQuest/quest.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
