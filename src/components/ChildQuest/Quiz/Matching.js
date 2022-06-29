@@ -35,6 +35,7 @@ export default function Matching({ data, value, setValue }) {
         {data.question.map((qn, i) => {
           return (
             <div
+              key={"matchingg" + i}
               className={styles.question}
               id={qn}
               onDrop={(e) => drop(e)}
@@ -49,6 +50,7 @@ export default function Matching({ data, value, setValue }) {
         {data.optins.map((option, i) => {
           return (
             <div
+              key={"matching" + i}
               className={styles.option}
               id={option}
               draggable={true}
