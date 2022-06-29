@@ -13,7 +13,6 @@ export default function MCQ({ data, value, setValue }) {
                 option === value ? styles.selectedOption : styles.option
               }
               onClick={() => setValue(option)}
-              key={i}
             >
               {option}
             </div>

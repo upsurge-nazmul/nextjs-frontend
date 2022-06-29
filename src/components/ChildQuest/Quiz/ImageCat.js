@@ -34,7 +34,7 @@ export default function ImageCat({ data, value, setValue }) {
         {checked &&
           data.images.map((image, i) => {
             return (
-              <div className={styles.imageWrap} key={i}>
+              <div className={styles.imageWrap} key={"image-wrap" + i}>
                 <Image
                   src={image}
                   alt={`Question Image ${i}`}
@@ -45,7 +45,7 @@ export default function ImageCat({ data, value, setValue }) {
                 <div className={styles.options}>
                   {data.options.map((option, j) => {
                     return (
-                      <div>
+                      <div key={"data-opt" + j}>
                         <input
                           type={"checkbox"}
                           value={option}

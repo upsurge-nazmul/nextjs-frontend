@@ -6,7 +6,7 @@ export default function MCQInBlank({ data, value, setValue }) {
       <div className={styles.question}>
         {data.question.map((qn, i) => {
           return (
-            <div className={styles.blankQn} key={i}>
+            <div className={styles.blankQn} key={"data-question" + i}>
               <span className={styles.qnText}>{qn}</span>
               {i < data.question.length - 1 && (
                 <span className={styles.dash}> ... ... </span>
@@ -19,13 +19,14 @@ export default function MCQInBlank({ data, value, setValue }) {
         {data.options.map((option, i) => {
           return (
             <div
+              key={"dataoptions" + i}
               className={
                 option === value ? styles.selectedOption : styles.option
               }
               onClick={() => setValue(option)}
             >
               {option.map((op, i) => (
-                <div key={i}>
+                <div key={"dataoptions-option" + i}>
                   <span>{op}</span>
                   {i < option.length - 1 && (
                     <span style={{ marginRight: "5px" }}>,</span>
