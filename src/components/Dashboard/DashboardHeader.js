@@ -57,16 +57,18 @@ function DashboardHeader({
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        <div className={styles.rewardBlock}>
-          <UniCoinSvg className={styles.svg} />
-          <p className={styles.number}>
-            {userdata?.num_unicoins
-              ? userdata?.num_unicoins > UniCoinValue
-                ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
-                : userdata.num_unicoins
-              : 0}
-          </p>
-        </div>
+        {userdata?.user_type !== "parent" && (
+          <div className={styles.rewardBlock}>
+            <UniCoinSvg className={styles.svg} />
+            <p className={styles.number}>
+              {userdata?.num_unicoins
+                ? userdata?.num_unicoins > UniCoinValue
+                  ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
+                  : userdata.num_unicoins
+                : 0}
+            </p>
+          </div>
+        )}
         {
           <div
             id="notification-btn"

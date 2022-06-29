@@ -155,10 +155,10 @@ function Home({ isLogged, userdata }) {
           setshowpopup={setshowpopup}
         />
         <Values insidebenefits />
-        <Who />
-        {/* <How /> */}
         <Benefits />
+        {/* <How /> */}
         <ProductSection />
+        <Who />
         <PartnerSection />
         <JasperSection />
         <AboutSection />

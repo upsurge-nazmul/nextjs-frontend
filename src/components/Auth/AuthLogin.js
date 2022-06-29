@@ -28,12 +28,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       return;
     }
     if (!email) {
-      seterror("Please enter your email address");
-      setloading(false);
-      return;
-    }
-    if (!validator.isEmail(email)) {
-      seterror("Invalid email address");
+      seterror("Please enter your email address or username");
       setloading(false);
       return;
     }
@@ -98,7 +93,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       }}
     >
       <ModernInputBox
-        placeholder="Email address"
+        placeholder="Email address/username"
         value={email}
         setvalue={setemail}
       />
