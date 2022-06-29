@@ -109,7 +109,7 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("Please select gender");
       return;
     }
-    if (!validator.isEmail(email)) {
+    if (email && !validator.isEmail(email)) {
       seterror("Please enter valid email");
       return;
     }
@@ -348,7 +348,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 maxLength={10}
                 setvalue={setfirstName}
                 textOnly={true}
-                placeholder="First name"
+                placeholder="First name *"
                 extraclass={styles.margin}
               />
               <ModernInputBox
@@ -363,12 +363,12 @@ function AddKid({ childdata, userdatafromserver }) {
               value={userName}
               maxLength={10}
               setvalue={setuserName}
-              placeholder="Username"
+              placeholder="Username *"
               extraclass={styles.margin}
             />
             <ModernInputBox
               type="date"
-              placeholder="Date of birth"
+              placeholder="Date of birth *"
               disabled={true}
               value={dob}
               onChange={(e) => {
@@ -390,13 +390,13 @@ function AddKid({ childdata, userdatafromserver }) {
             />
 
             <DropDown
-              placeholder="Gender"
+              placeholder="Gender *"
               options={["male", "female", "other", "Don't want to disclose"]}
               value={gender}
               setvalue={setgender}
             />
             <CitySearch
-              placeholder="City"
+              placeholder="City *"
               textOnly={true}
               options={Cities_Data}
               value={city}
@@ -414,7 +414,7 @@ function AddKid({ childdata, userdatafromserver }) {
               value={school}
               setvalue={setschool}
               onChange={(e) => setschool(e.target.value)}
-              placeholder="School"
+              placeholder="School *"
               extrastyle={type !== "add" ? { marginBottom: 0 } : null}
               tooltipid={"school-tooltip"}
               tooltip={
@@ -427,7 +427,7 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={email}
                 setvalue={setemail}
-                placeholder="Email"
+                placeholder="Email (optional)"
               />
             )}
             <div
@@ -465,7 +465,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 onBlur={() => setshowdetailpass(false)}
                 onChange={(e) => validatePassword(e)}
                 onFocus={() => setshowdetailpass(true)}
-                placeholder="Password"
+                placeholder="Password *"
                 secure={passhidden}
                 extrastyle={{ marginBottom: "0px" }}
                 extraclass={
@@ -535,7 +535,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 onBlur={() => setShowConfirmDetailPass(false)}
                 onChange={(e) => validatePassword(e, "confirm")}
                 onFocus={() => setShowConfirmDetailPass(true)}
-                placeholder="Confirm Password"
+                placeholder="Confirm Password *"
                 secure={passhidden}
                 extrastyle={{ marginBottom: "0px" }}
                 extraclass={
