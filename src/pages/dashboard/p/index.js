@@ -59,9 +59,8 @@ function Dashboard({
     type: "success",
     msg: "",
   });
-  console.log(userdatafromserver);
   const [showtour, setshowtour] = useState(
-    !userdatafromserver.intro_guide_completed
+    !userdatafromserver?.intro_guide_completed
   );
 
   const [tribeRequestsFromServer, setTribeRequestsFromServer] = useState(
@@ -253,13 +252,14 @@ function Dashboard({
       <div className={styles.dashboard}>
         <DashboardLeftPanel />
         <Toast data={toastdata} />
-        {showtour && (
+        {phoneverified && showtour && (
           <Tour
             story={story}
             current={currentTourIndex}
             setcurrent={setcurrentTourIndex}
             showtour={showtour}
             setshowtour={setshowtour}
+            introComplete={true}
           />
         )}
         {userdatafromserver &&

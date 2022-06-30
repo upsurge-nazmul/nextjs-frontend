@@ -20,6 +20,7 @@ function AuthComponent({
   authmode,
   mailfromhome,
   setshowpopup,
+  onlyLogin,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -96,6 +97,7 @@ function AuthComponent({
                   mode={mode}
                   setshowpopup={setshowpopup}
                   setshowauth={setshowauth}
+                  onlyLogin={onlyLogin}
                 />
               ) : null}
 
@@ -103,8 +105,10 @@ function AuthComponent({
                 <AuthLogin
                   settoastdata={settoastdata}
                   error={error}
+                  setshowauth={setshowauth}
                   seterror={seterror}
                   setmode={setmode}
+                  onlyLogin={onlyLogin}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />

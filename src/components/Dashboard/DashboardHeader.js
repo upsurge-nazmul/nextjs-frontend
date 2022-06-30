@@ -12,6 +12,7 @@ import Menu from "./Menu";
 import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
+import AuthComponent from "../Auth/AuthComponent";
 
 function DashboardHeader({
   mode,
@@ -24,6 +25,7 @@ function DashboardHeader({
   const router = useRouter();
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
+  const [showauth, setshowauth] = useState(false);
   const [shownotifications, setshownotifications] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
@@ -41,6 +43,12 @@ function DashboardHeader({
           settoastdata={settoastdata}
         />
       )}
+      <AuthComponent
+        showauth={showauth}
+        setshowauth={setshowauth}
+        onlyLogin={true}
+      />
+
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -95,24 +103,23 @@ function DashboardHeader({
             <NotificationBell />
           </div>
         }
-        <div
-          className={styles.avatar}
-          id="header-settings"
-          onClick={() => {
-            if (router.query.showTour) {
-              setStoryIndex((prev) => prev + 1);
-            }
-            setshowmenu(!showmenu);
-          }}
-        >
+        <div className={styles.avatar} id="header-settings">
           {showmenu && (
             <Menu
+              showauth={showauth}
+              setshowauth={setshowauth}
               settoastdata={settoastdata}
               waitilistmenu={userdata?.is_waiting_active}
               menuType={userdata?.user_type}
             />
           )}
           <img
+            onClick={() => {
+              if (router.query.showTour) {
+                setStoryIndex((prev) => prev + 1);
+              }
+              setshowmenu(!showmenu);
+            }}
             id="avatar-button"
             src={
               userdata?.user_img_url ||
