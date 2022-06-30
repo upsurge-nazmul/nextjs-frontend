@@ -39,17 +39,18 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
 
   async function matchAnswer(answer) {
     let res = await KnowledgeQuestApi.checkanswer(
-      { id: questions[currentQnIndex].id, answer: answer },
+      { id: questions[currentQnIndex].id, answer: answer, chapterId },
       getCookie("accesstoken")
     );
+
     if (res && res.data && res.data.success) {
       setScore((prev) => prev + 1);
     }
     if (currentQnIndex === questions.length - 1) {
       setcompleted(true);
-      return;
+    } else {
+      setCurrentQnIndex((prev) => prev + 1);
     }
-    setCurrentQnIndex((prev) => prev + 1);
     setselectedOption();
   }
 
@@ -66,10 +67,7 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
           Question {currentQnIndex + 1}/{questions.length}
         </div>
         {questions.length > 0 && !completed && (
-          <Quiz
-            data={questions[currentQnIndex]}
-            setCurrentQnIndex={setCurrentQnIndex}
-          />
+          <Quiz data={questions[currentQnIndex]} matchAnswer={matchAnswer} />
         )}
         {completed && (
           <div className={`${styles.resultSection}`}>

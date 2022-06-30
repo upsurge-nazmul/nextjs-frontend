@@ -85,9 +85,11 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
                 <button className={styles.backButton} onClick={handleBack}>
                   Go Back
                 </button>
-                <button className={styles.doneButton} onClick={handleDone}>
-                  Done
-                </button>
+                {view === TYPES[0] && (
+                  <button className={styles.doneButton} onClick={handleDone}>
+                    Done
+                  </button>
+                )}
               </div>
             </div>
           ) : (
