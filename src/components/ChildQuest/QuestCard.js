@@ -4,8 +4,6 @@ import GameSvg from "../SVGcomponents/GameSvg";
 function QuestCard({ data, handleCardClick }) {
   if (!data) return null;
 
-  console.log("$$$$$$$$$$", data);
-
   return (
     <div
       className={styles.gameCard}

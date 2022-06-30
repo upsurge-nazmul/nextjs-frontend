@@ -13,7 +13,7 @@ import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
 
-const TYPES = ["recording", "activity", "quiz"];
+const LESSON_TYPES = ["recording", "activity", "quiz"];
 
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
@@ -85,19 +85,19 @@ export default function KnowledgeQuest({ userData, questData }) {
           )}
           {view ? (
             <div className={styles.views}>
-              {view === TYPES[0] ? (
+              {view === LESSON_TYPES[0] ? (
                 <RecordingView
                   {...{
                     chapterId: currentChapter,
                   }}
                 />
-              ) : view === TYPES[1] ? (
+              ) : view === LESSON_TYPES[1] ? (
                 <ActivityView
                   {...{
                     chapterId: currentChapter,
                   }}
                 />
-              ) : view === TYPES[2] ? (
+              ) : view === LESSON_TYPES[2] ? (
                 <QuizView
                   {...{
                     chapterId: currentChapter,
@@ -113,7 +113,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                 <button className={styles.backButton} onClick={handleBack}>
                   Go Back
                 </button>
-                {view === TYPES[0] && (
+                {view === LESSON_TYPES[0] && (
                   <button className={styles.doneButton} onClick={handleDone}>
                     Done
                   </button>
