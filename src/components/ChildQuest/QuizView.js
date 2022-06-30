@@ -1,18 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import SimpleProgress from "../SimpleProgress";
 import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { getCookie } from "../../actions/cookieUtils";
-import { MainContext } from "../../context/Main";
 import Quiz from "./Quiz";
 import Completed from "./Quiz/Completed";
 
-export default function QuizView({ chapterId, questId, handleDone }) {
+export default function QuizView({
+  chapterId,
+  questId,
+  handleDone,
+  setuserdata,
+}) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
   const [currentQnIndex, setCurrentQnIndex] = useState(0);
   const [loading, setloading] = useState(true);
-  const { userdata, setuserdata } = useContext(MainContext);
   const [error, seterror] = useState("");
   const [completed, setcompleted] = useState("");
   const [questions, setquestions] = useState([]);
@@ -60,17 +63,18 @@ export default function QuizView({ chapterId, questId, handleDone }) {
   }
 
   function handleFinish() {
-    KnowledgeQuestApi.updatequizdata({
-      quiz_data: {
-        quizId: chapterId,
-        score: score / questions.length,
-      },
-    });
-    setuserdata((prev) => ({
-      ...prev,
-      num_unicoins:
-        Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
-    }));
+    // KnowledgeQuestApi.updatequizdata({
+    //   quiz_data: {
+    //     quizId: chapterId,
+    //     score: score / questions.length,
+    //   },
+    // });
+
+    // setuserdata((prev) => ({
+    //   ...prev,
+    //   num_unicoins:
+    //     Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
+    // }));
     handleDone();
   }
 

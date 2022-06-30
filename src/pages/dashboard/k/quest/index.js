@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../../context/Main";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
@@ -9,12 +10,18 @@ import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 
 export default function KnowledgeQuest({ userData, questData }) {
+  const { userdata, setuserdata } = useContext(MainContext);
+
   const [mode, setmode] = useState("Knowledge Quest");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
+
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
 
   return (
     <div className={styles.questPage}>

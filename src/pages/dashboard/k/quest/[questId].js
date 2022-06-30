@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/dist/client/router";
+import { MainContext } from "../../../../context/Main";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
@@ -16,6 +17,7 @@ const TYPES = ["recording", "activity", "quiz"];
 
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
+  const { userdata, setuserdata } = useContext(MainContext);
   const { questId } = router.query;
 
   const [toastdata, settoastdata] = useState({
@@ -27,6 +29,10 @@ export default function KnowledgeQuest({ userData, questData }) {
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
   const [activeChNo, setActiveChNo] = useState(1);
+
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
 
   useEffect(() => {
     if (questData && questId) {
@@ -54,10 +60,10 @@ export default function KnowledgeQuest({ userData, questData }) {
   };
 
   const handleDone = () => {
-    KnowledgeQuestApi.update({
-      level: activeChNo,
-      id: currentQuest.questId,
-    });
+    // KnowledgeQuestApi.update({
+    //   level: activeChNo,
+    //   id: currentQuest.questId,
+    // });
     setView();
     setCurrentChapter();
   };
@@ -97,6 +103,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                     chapterId: currentChapter,
                     questId: currentQuest.questId,
                     handleDone,
+                    setuserdata,
                   }}
                 />
               ) : (
