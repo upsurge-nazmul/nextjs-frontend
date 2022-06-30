@@ -10,6 +10,7 @@ import QuestMap from "../../../../components/ChildQuest/QuestMap";
 import RecordingView from "../../../../components/ChildQuest/RecordingView";
 import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
+import { getCookie } from "../../../../actions/cookieUtils";
 
 const TYPES = ["recording", "activity", "quiz"];
 
@@ -33,6 +34,19 @@ export default function KnowledgeQuest({ userData, questData }) {
       setCurrentQuest(curr);
     }
   }, [questId, questData]);
+
+  useEffect(() => {
+    async function fetchQuestLevel() {
+      let level = await KnowledgeQuestApi.initiate(
+        { id: "whatIsMoney" },
+        getCookie("accesstoken")
+      );
+      if (level && level.data && level.data.success) {
+        setActiveChNo(level.data.data.level);
+      }
+    }
+    fetchQuestLevel();
+  }, []);
 
   const handleBack = () => {
     setView();
@@ -130,19 +144,11 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let level = await KnowledgeQuestApi.initiate(
-        { id: "whatIsMoney" },
-        token
-      );
       let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       return {
         props: {
           isLogged: true,
           userData: response.data.data,
-          userLevel:
-            level && level.data && level.data.success
-              ? level.data.data.level
-              : 1,
           questData: questRes
             ? questRes.data
               ? questRes.data.success
