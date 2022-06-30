@@ -13,7 +13,7 @@ import QuizView from "../../../../components/ChildQuest/QuizView";
 
 const TYPES = ["recording", "activity", "quiz"];
 
-export default function KnowledgeQuest({ userData, userLevel, questData }) {
+export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
   const { questId } = router.query;
 
@@ -25,6 +25,7 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
   const [currentQuest, setCurrentQuest] = useState();
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
+  const [activeChNo, setActiveChNo] = useState(1);
 
   useEffect(() => {
     if (questData && questId) {
@@ -39,6 +40,10 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
   };
 
   const handleDone = () => {
+    KnowledgeQuestApi.update({
+      level: activeChNo,
+      id: currentQuest.questId,
+    });
     setView();
     setCurrentChapter();
   };
@@ -76,6 +81,8 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
                 <QuizView
                   {...{
                     chapterId: currentChapter,
+                    questId: currentQuest.questId,
+                    handleDone,
                   }}
                 />
               ) : (
@@ -97,6 +104,7 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
               questData={currentQuest}
               changeView={setView}
               setActiveChapter={setCurrentChapter}
+              setActiveChapterNo={setActiveChNo}
             />
           )}
         </div>
@@ -123,7 +131,7 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let level = await KnowledgeQuestApi.initiate(
-        { id: "money-quest" },
+        { id: "whatIsMoney" },
         token
       );
       let questRes = await KnowledgeQuestApi.getQuestData(null, token);

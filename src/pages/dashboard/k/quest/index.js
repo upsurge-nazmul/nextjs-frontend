@@ -8,7 +8,7 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 
-export default function KnowledgeQuest({ userData, userLevel, questData }) {
+export default function KnowledgeQuest({ userData, questData }) {
   const [mode, setmode] = useState("Knowledge Quest");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -48,19 +48,11 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let level = await KnowledgeQuestApi.initiate(
-        { id: "money-quest" },
-        token
-      );
       let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       return {
         props: {
           isLogged: true,
           userData: response.data.data,
-          userLevel:
-            level && level.data && level.data.success
-              ? level.data.data.level
-              : 1,
           questData: questRes
             ? questRes.data
               ? questRes.data.success

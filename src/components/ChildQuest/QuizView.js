@@ -1,15 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import SimpleProgress from "../SimpleProgress";
-import Curve1 from "../SVGcomponents/Curve1";
-import Curve2 from "../SVGcomponents/Curve2";
 import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { getCookie } from "../../actions/cookieUtils";
-import Jasper from "../SVGcomponents/Jasper";
 import { MainContext } from "../../context/Main";
 import Quiz from "./Quiz";
+import Completed from "./Quiz/Completed";
 
-export default function QuizView({ chapterId, setlevel, setmode, level }) {
+export default function QuizView({ chapterId, questId, handleDone }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
   const [currentQnIndex, setCurrentQnIndex] = useState(0);
@@ -54,6 +52,28 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
     setselectedOption();
   }
 
+  function handleRetry() {
+    setScore(0);
+    setCurrentQnIndex(0);
+    setcompleted(false);
+    setselectedOption(null);
+  }
+
+  function handleFinish() {
+    KnowledgeQuestApi.updatequizdata({
+      quiz_data: {
+        quizId: chapterId,
+        score: score / questions.length,
+      },
+    });
+    setuserdata((prev) => ({
+      ...prev,
+      num_unicoins:
+        Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
+    }));
+    handleDone();
+  }
+
   return (
     <div className={styles.view}>
       <div className={styles.quizView}>
@@ -70,58 +90,9 @@ export default function QuizView({ chapterId, setlevel, setmode, level }) {
           <Quiz data={questions[currentQnIndex]} matchAnswer={matchAnswer} />
         )}
         {completed && (
-          <div className={`${styles.resultSection}`}>
-            <Jasper className={styles.jasper} />
-            <div className={styles.background}>
-              <div className={styles.curvecontainer}>
-                <Curve1 className={styles.curve1} />
-                <Curve2 className={styles.curve2} />
-              </div>
-            </div>
-
-            <div className={styles.points}>
-              You scored : {score}/{questions.length}
-            </div>
-
-            {score === 0 ? (
-              <div
-                className={styles.button}
-                onClick={() => {
-                  setScore(0);
-                  setCurrentQnIndex(0);
-                  setcompleted(false);
-                  setselectedOption(null);
-                }}
-              >
-                Retry
-              </div>
-            ) : (
-              <div
-                className={styles.button}
-                onClick={() => {
-                  KnowledgeQuestApi.updatequizdata({
-                    id: "money-quest",
-                    score: score / questions.length,
-                  });
-                  KnowledgeQuestApi.update({
-                    level: Number(level) + 1,
-                    id: "money-quest",
-                  });
-                  setuserdata((prev) => ({
-                    ...prev,
-                    num_unicoins:
-                      Number(prev.num_unicoins) +
-                      150 +
-                      (score === questions.length ? 25 : 0),
-                  }));
-                  setlevel(Number(level) + 1);
-                  setmode("map");
-                }}
-              >
-                Finish
-              </div>
-            )}
-          </div>
+          <Completed
+            {...{ score, scoreOn: questions.length, handleRetry, handleFinish }}
+          />
         )}
       </div>
     </div>
