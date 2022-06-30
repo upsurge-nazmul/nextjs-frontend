@@ -1,18 +1,35 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+// import Accordion from "@mui/material/Accordion";
+// import AccordionSummary from "@mui/material/AccordionSummary";
+// import AccordionDetails from "@mui/material/AccordionDetails";
+// import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import QuestCard from "./QuestCard";
 
 export default function MainSection({ data }) {
   const router = useRouter();
-  const [expanded, setExpanded] = useState(1);
+  // const [expanded, setExpanded] = useState(1);
+
+  const handleCardClick = (id) => {
+    router.push(`/dashboard/k/quest/${id}`);
+  };
 
   return (
     <div className={styles.mainSection}>
       {data &&
+        data.length &&
+        data.map((item) => {
+          return (
+            <QuestCard
+              handleCardClick={handleCardClick}
+              data={item}
+              key={item.questNo}
+            />
+          );
+        })}
+
+      {/* {data &&
         data.length &&
         data.map((item) => {
           return (
@@ -63,7 +80,7 @@ export default function MainSection({ data }) {
               </AccordionDetails>
             </Accordion>
           );
-        })}
+        })} */}
     </div>
   );
 }
