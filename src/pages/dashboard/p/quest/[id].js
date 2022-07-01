@@ -32,44 +32,7 @@ export default function Quests({ kidsdata, questData }) {
   const [mode, setmode] = useState("Knowledge Quest");
   const [kidsOptions, setKidsOptions] = useState();
   const [selectedkid, setSelectedKid] = useState();
-  const [sectionData, setSectionData] = useState();
   const [selectedKidsLevel, setSelectedKidsLevel] = useState();
-
-  const formatSectionData = (level = 0) => {
-    let data = JSON.parse(JSON.stringify(questData));
-    if (level === 1) {
-      console.log(data[0]);
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-    } else if (level === 2) {
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-    } else if (level === 3) {
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[1].chapters?.length ? (data[1].chapters[0].completion = "100%") : "";
-    } else if (level === 4) {
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[1].chapters?.length ? (data[1].chapters[0].completion = "100%") : "";
-      data[1].chapters?.length ? (data[1].chapters[1].completion = "100%") : "";
-    } else if (level === 5) {
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[1].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[1].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[2].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-    } else if (level === 6) {
-      data[0].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[0].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[1].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[1].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-      data[2].chapters?.length ? (data[0].chapters[0].completion = "100%") : "";
-      data[2].chapters?.length ? (data[0].chapters[1].completion = "100%") : "";
-    } else {
-      data = questData;
-    }
-    return data;
-  };
 
   useEffect(() => {
     if (kidsdata && kidsdata.length) {
@@ -102,17 +65,6 @@ export default function Quests({ kidsdata, questData }) {
       fetchKidsLevel();
     }
   }, [selectedkid]);
-
-  useEffect(() => {
-    if (!questData) return;
-    if (kidsOptions && kidsOptions.length) {
-      if (selectedkid && (selectedKidsLevel || selectedKidsLevel === 0)) {
-        setSectionData();
-        let formattedData = formatSectionData(selectedKidsLevel);
-        setSectionData(formattedData);
-      }
-    } else setSectionData(questData);
-  }, [selectedkid, selectedKidsLevel, questData]);
 
   return (
     <div className={styles.quest}>
@@ -173,11 +125,7 @@ export default function Quests({ kidsdata, questData }) {
               {questData &&
                 questData.length &&
                 questData.map((quest, index) => (
-                  <Section
-                    data={quest}
-                    level={selectedKidsLevel}
-                    key={"section" + index}
-                  />
+                  <Section data={quest} level={2} key={"section" + index} />
                 ))}
             </div>
           </div>
