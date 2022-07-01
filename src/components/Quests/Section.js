@@ -1,44 +1,59 @@
 import React from "react";
 import styles from "../../styles/Quest/sections.module.scss";
 
-function Section({ data, level }) {
+function Section({ data }) {
   return (
     <div className={styles.section}>
+      <div className={styles.left}>
+        <p className={styles.sectionno}>Section {data.questNo}</p>
+        <p className={styles.sectiontitle}>{data.title}</p>
+        <p className={styles.chaptersandweeks}>{data.chaptersandweeks}</p>
+      </div>
       <div className={styles.right}>
-        {/* <div className={styles.numberingArea}>
-          {data.sectionno > 1 && (
-            <div
-              className={
-                level >= data.sectionno
-                  ? styles.completeNumberLineLine
-                  : styles.emptyNumberLine
-              }
-            />
-          )}
-          <div className={styles.number}>{data.sectionno}</div>
-        </div> */}
-        <div className={styles.chapterArea}>
-          <div className={styles.chapter}>
-            <div
-              className={
-                level >= data.sectionno ? styles.completeBall : styles.emptyBall
-              }
-            >
-              {data.sectionno}
-            </div>
-            <div
-              className={
-                level >= data.sectionno ? styles.completeLine : styles.emptyLine
-              }
-            />
-            <div className={styles.main}>
-              <p className={styles.chapterno}>SECTION {data.sectionno}</p>
-              <p className={styles.chaptertitle}>{data.title}</p>
-              <p className={styles.chapterno}></p>
-              <p className={styles.remainingtime}>{data.des}</p>
-            </div>
-          </div>
+        <div className={styles.numberingArea}>
+          <div className={styles.number}>{data.questNo}</div>
+          <div
+            className={
+              data.chapters[0] && data.chapters[0].completion === "0%"
+                ? styles.numberLine
+                : styles.completeLine
+            }
+          />
         </div>
+        {data.chapters.map((chapter, index) => {
+          return (
+            <div className={styles.chapterArea}>
+              <div className={styles.chapter} key={"chapter" + index}>
+                <div className={styles.chapterball} />
+                <div
+                  className={styles.chapterball}
+                  style={{
+                    backgroundColor:
+                      chapter.completion === "100%" ? "#4166EB" : "transparent",
+                  }}
+                />
+                <div className={styles.verticalLine} />
+                <div
+                  className={styles.verticalLine}
+                  style={{
+                    backgroundColor: "#4166EB",
+                    height: chapter.completion,
+                  }}
+                />
+                <div className={styles.main}>
+                  <p className={styles.chapterno}>
+                    CHAPTER {chapter.chapterNo}
+                  </p>
+                  <p className={styles.chaptertitle}>{chapter.title}</p>
+                  <p className={styles.chapterNo}></p>
+                  <p className={styles.remainingtime}>
+                    {chapter.remainingtime}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

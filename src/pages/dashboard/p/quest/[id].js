@@ -12,194 +12,6 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import Selection from "../../../../components/Selection";
 
-const demodata = [
-  {
-    sectionno: 1,
-    title: "What is Money?",
-    chaptersandweeks: "",
-    chapters: [
-      {
-        chapterno: 1,
-        title: "Origins & Barter System",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 2,
-        title: "Kiara’s budget trip",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Quiz",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 4,
-        title: "Activity",
-        completion: "0%",
-        remainingtime: "",
-      },
-    ],
-  },
-  {
-    sectionno: 2,
-    title: "Banking & Payments",
-    chaptersandweeks: "",
-    chapters: [
-      {
-        chapterno: 1,
-        title: "Introduction to Banking",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 2,
-        title: "Credit & Debit Cards",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Digital Payments & UPI",
-        completion: "0%",
-        remainingtime: "",
-      },
-    ],
-  },
-  {
-    sectionno: 3,
-    title: "Introduction to Personal Finance",
-    chaptersandweeks: "",
-    chapters: [
-      {
-        chapterno: 1,
-        title: "What is money management?",
-        completion: "0%",
-        remainingtime: "Know about currencies",
-      },
-      {
-        chapterno: 2,
-        title: "Earning",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Spending & Budgeting",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 4,
-        title: "Saving & Goal setting",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 5,
-        title: "Investing & Compounding your wealth",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 6,
-        title: "Insurance & Taxes",
-        completion: "0%",
-        remainingtime: "",
-      },
-    ],
-  },
-  {
-    sectionno: 4,
-    title: "Entrepreneurship",
-    chaptersandweeks: "",
-    chapters: [
-      {
-        chapterno: 1,
-        title: "Starting up",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 2,
-        title: "Finding the next big thing",
-        completion: "0%",
-        remainingtime: "",
-      },
-      {
-        chapterno: 3,
-        title: "Growing your business",
-        completion: "0%",
-        remainingtime: "",
-      },
-    ],
-  },
-];
-
-// const demodata = [
-//   {
-//     sectionno: 1,
-//     title: "Money",
-//     chaptersandweeks: "",
-//     chapters: [
-//       {
-//         chapterno: 1,
-//         title: "What is money?",
-//         completion: "0%",
-//         remainingtime:
-//           "Children will understand how & why Money was invented, it’s evolution, and uses",
-//       },
-//       {
-//         chapterno: 2,
-//         title: "Money Quiz",
-//         completion: "0%",
-//         remainingtime: "",
-//       },
-//     ],
-//   },
-//   {
-//     sectionno: 2,
-//     title: "Banking",
-//     chaptersandweeks: "",
-//     chapters: [
-//       {
-//         chapterno: 1,
-//         title: "Ira's visit to the bank",
-//         completion: "0%",
-//         remainingtime:
-//           "Let’s go with Ira and her father to the bank and understand the benefits of opening bank accounts",
-//       },
-//       {
-//         chapterno: 2,
-//         title: "Banking Quiz",
-//         completion: "0%",
-//         remainingtime: "",
-//       },
-//     ],
-//   },
-//   {
-//     sectionno: 3,
-//     title: "Payments",
-//     chaptersandweeks: "",
-//     chapters: [
-//       {
-//         chapterno: 1,
-//         title: "Kiara's Budget Trip",
-//         completion: "0%",
-//         remainingtime: "Know about currencies",
-//       },
-//       {
-//         chapterno: 2,
-//         title: "Digital Banking & payments",
-//         completion: "0%",
-//         remainingtime: "",
-//       },
-//     ],
-//   },
-// ];
 const democoncepts = [
   "Investing",
   "Saving",
@@ -210,17 +22,7 @@ const democoncepts = [
   "Assets",
   "Mutual Funds",
 ];
-const availableCourses = [
-  {
-    name: "upsurge Quest",
-    description:
-      "This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.",
-    amount: 3500,
-    img_url:
-      "https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
-    id: "upsurge-quest",
-  },
-];
+
 export default function Quests({ kidsdata, questData }) {
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -368,11 +170,11 @@ export default function Quests({ kidsdata, questData }) {
               </div>
             </div>
             <div className={styles.section}>
-              {sectionData &&
-                sectionData.length &&
-                sectionData.map((section, index) => (
+              {questData &&
+                questData.length &&
+                questData.map((quest, index) => (
                   <Section
-                    data={section}
+                    data={quest}
                     level={selectedKidsLevel}
                     key={"section" + index}
                   />
