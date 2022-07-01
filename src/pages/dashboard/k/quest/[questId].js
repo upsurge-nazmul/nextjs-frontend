@@ -15,6 +15,16 @@ import { getCookie } from "../../../../actions/cookieUtils";
 
 const LESSON_TYPES = ["recording", "activity", "quiz"];
 
+const democoncepts = [
+  "Money",
+  "Currency",
+  "Banking",
+  "Payments",
+  "Money Management",
+  "Quiz",
+  "Activity",
+];
+
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
   const { userdata, setuserdata } = useContext(MainContext);
@@ -77,9 +87,17 @@ export default function KnowledgeQuest({ userData, questData }) {
         <div className={styles.mainContent}>
           {currentQuest && (
             <div className={styles.headingSection}>
-              <div className={styles.title}>{currentQuest.title}</div>
-              <div className={styles.description}>
-                {currentQuest.questDescription}
+              <p className={styles.heading}>{currentQuest.title}</p>
+              <p className={styles.about}>{currentQuest.questDescription}</p>
+              <p className={styles.heading}>Concepts Covered</p>
+              <div className={styles.conceptswrapper}>
+                {democoncepts.map((concept, index) => {
+                  return (
+                    <div className={styles.concept} key={"concept" + index}>
+                      {concept}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

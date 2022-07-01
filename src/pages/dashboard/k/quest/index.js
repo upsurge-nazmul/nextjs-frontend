@@ -10,9 +10,8 @@ import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 
 export default function KnowledgeQuest({ userData, questData }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { setuserdata } = useContext(MainContext);
 
-  const [mode, setmode] = useState("Knowledge Quest");
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -28,7 +27,7 @@ export default function KnowledgeQuest({ userData, questData }) {
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} />
+        <DashboardHeader mode={"Knowledge Quest"} />
         <div className={styles.mainContent} id="quest-main">
           <HeadArea />
           <MainSection data={questData} />
