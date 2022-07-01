@@ -3,12 +3,16 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import "../firebase";
 import NotificationApis from "../actions/apis/NotificationApis";
 import { isMobile } from "react-device-detect";
+import LoginApis from "../actions/apis/LoginApis";
+import { useRouter } from "next/router";
+import { setCookie } from "../actions/cookieUtils";
 
 export const MainContext = createContext();
 
 export const MainContextProider = ({ children }) => {
   const [authmode, setauthmode] = useState("selection");
   const [dashboardmode, setdashboardmode] = useState("home");
+  const [savedUsers, setSavedUsers] = useState([]);
   const [accesstoken, setaccesstoken] = useState(null);
   const [user, setuser] = useState(null);
   const [userdata, setuserdata] = useState(null);
@@ -29,6 +33,7 @@ export const MainContextProider = ({ children }) => {
     height: 720,
   });
   const [theme, setTheme] = useState("light");
+  const router = useRouter();
   // useEffect(() => {
   //   setTheme(
   //     window.matchMedia &&
@@ -57,7 +62,42 @@ export const MainContextProider = ({ children }) => {
   //     document.body.style.background = "#ffffff";
   //   }
   // }, [theme]);
+  useEffect(() => {
+    let data = localStorage.getItem("savedUsers");
+    if (!data) return;
+    console.log("saved", data);
 
+    data = JSON.parse(data);
+    // if (!userdata && data.length > 0) {
+    //   changeUser(data);
+    // }
+    setSavedUsers(data);
+  }, []);
+  async function changeUser(data) {
+    let response = await LoginApis.checktoken({
+      token: data.token,
+    });
+    if (response && !response?.data?.success) {
+      let savedUsersData = localStorage.getItem("savedUsers");
+      if (savedUsersData) {
+        savedUsersData = JSON.parse(savedUsersData);
+        const index = savedUsersData.findIndex((item) => item.id === data.id);
+        if (index !== -1) {
+          savedUsersData.splice(index, 1);
+        }
+        localStorage.setItem("savedUsers", JSON.stringify(savedUsersData));
+        setSavedUsers(savedUsersData);
+        if (savedUsersData.length > 0) {
+          return changeUser(data[0]);
+        }
+      }
+    } else {
+      setuserdata(response.data.data);
+      setCookie("accesstoken", data.token);
+      setuser(response.data.data.id);
+      // router.reload();
+    }
+  }
   useEffect(() => {
     setmobileMode(isMobile);
   }, [isMobile]);
@@ -106,6 +146,8 @@ export const MainContextProider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
+        savedUsers,
+        setSavedUsers,
         mobileMode,
         notification,
         setNotification,

@@ -13,19 +13,19 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
 
 import FreeGameApis from "../../actions/apis/FreeGameApis";
-export default function GamePage({ userdata }) {
+export default function GamePage({ userDataFromServer }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { setuserdata, theme } = useContext(MainContext);
+  const { userdata, setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
+    if (userDataFromServer) {
+      setuserdata(userDataFromServer);
     }
-  }, [userdata]);
+  }, [userDataFromServer]);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -39,6 +39,10 @@ export default function GamePage({ userdata }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
   async function handleclick(item) {
+    if (!userdata) {
+      setshowauth(true);
+      return;
+    }
     if (item === "Ludo" && isMobile) {
       let res = await FreeGameApis.presign({
         playername: "Anonymous",
@@ -162,13 +166,17 @@ export async function getServerSideProps({ params, req }) {
       return {
         props: {
           isLogged: true,
-          userdata: response?.data?.data || null,
+          userDataFromServer: response?.data?.data || null,
         },
       };
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
+      props: {
+        isLogged: false,
+        msg: "cannot get token",
+        userDataFromServer: null,
+      },
     };
   }
 }

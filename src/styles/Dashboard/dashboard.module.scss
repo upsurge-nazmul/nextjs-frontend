@@ -101,9 +101,9 @@
               display: flex;
               width: 100%;
               align-items: center;
-              height: 64px;
+              height: 44px;
               color: rgba(106, 106, 106, 1);
-              font-size: 12px;
+              font-size: 10px;
               font-weight: 400;
               padding: 0 10px;
               .blacnkhead1 {
@@ -113,12 +113,13 @@
               }
               .head1 {
                 margin-left: 0;
-                width: 26%;
                 max-width: 300px;
+                width: 26%;
               }
               .head2 {
                 flex: 1;
                 text-align: center;
+                white-space: nowrap;
               }
               .head3 {
                 width: 28%;

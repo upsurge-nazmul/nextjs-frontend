@@ -18,6 +18,7 @@ export default function Tour({
   setshowtour,
   nextFunction,
   customCompletion,
+  introComplete,
 }) {
   const [currentHeight, setcurrentHeight] = useState(0);
   const [currentleftOffset, setcurrentleftOffset] = useState(0);
@@ -136,10 +137,11 @@ export default function Tour({
     setcurrentHeight(elementTop);
   }
   async function finish() {
-    if (story[current].introComplete) {
+    if (introComplete) {
       let res = await DashboardApis.completeintroguide();
       console.log(res.data);
       if (res?.data?.success) {
+        setshowtour(false);
         router.push("/dashboard/p");
       } else {
         console.log("something went wrong");
