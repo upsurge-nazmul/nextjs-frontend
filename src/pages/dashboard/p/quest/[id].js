@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Section from "../../../../components/Quests/Section";
-import BookMarkSvg from "../../../../components/SVGcomponents/BookMarkSvg";
-import PeopleSvg from "../../../../components/SVGcomponents/PeopleSvg";
-import ProjectSvg from "../../../../components/SVGcomponents/ProjectSvg";
 import Toast from "../../../../components/Toast";
 import styles from "../../../../styles/Quest/quest.module.scss";
 import DashboardApis from "../../../../actions/apis/DashboardApis";
@@ -87,20 +84,6 @@ export default function Quests({ kidsdata, questData }) {
         </div>
         <div className={styles.maincontent}>
           <div className={styles.left}>
-            <p className={styles.heading}>About the Quest</p>
-            <p className={styles.about}>
-              {`This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.`}
-            </p>
-            <p className={styles.heading}>Concepts Covered</p>
-            <div className={styles.conceptswrapper}>
-              {democoncepts.map((concept, index) => {
-                return (
-                  <div className={styles.concept} key={"concept" + index}>
-                    {concept}
-                  </div>
-                );
-              })}
-            </div>
             <div className={styles.midSection}>
               <div className={styles.knowledgeSection}>
                 <p className={styles.heading}>Knowledge Quest Content</p>
@@ -125,32 +108,9 @@ export default function Quests({ kidsdata, questData }) {
               {questData &&
                 questData.length &&
                 questData.map((quest, index) => (
-                  <Section data={quest} level={2} key={"section" + index} />
+                  <Section quest={quest} level={2} key={"section" + index} />
                 ))}
             </div>
-          </div>
-          <div className={styles.right}>
-            {/* <div className={styles.buttonwrapper}>
-              <div className={styles.bookmarkbutton}>
-                <BookMarkSvg />
-                Bookmark
-              </div>
-              <div className={styles.startbutton}>Start quest</div>
-            </div> */}
-            {/* <div className={styles.details}>
-              <div className={styles.section}>
-                <p className={styles.number}>34</p>
-                <p className={styles.name}>session</p>
-              </div>
-              <div className={styles.section}>
-                <p className={styles.number}>4</p>
-                <p className={styles.name}>projects</p>
-              </div>
-              <div className={styles.section}>
-                <p className={styles.number}>3</p>
-                <p className={styles.name}>challenges</p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

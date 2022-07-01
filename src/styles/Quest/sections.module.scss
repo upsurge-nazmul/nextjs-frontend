@@ -1,24 +1,12 @@
 .section {
   width: 100%;
   border-radius: 20px;
-  margin-top: 40px;
   display: flex;
   .left {
     width: 25%;
     position: relative;
-    .sectionball {
-      position: absolute;
-      right: -13px;
-      top: 0;
-      width: 26px;
-      height: 26px;
-      border-radius: 100%;
-      border: 2px solid #4166eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-      z-index: 2;
+    .sectionno {
+      color: #0000005c;
       font-size: 12px;
       font-weight: 500;
     }
@@ -26,11 +14,10 @@
       font-size: 22px;
       font-weight: 500;
     }
-    .chaptersandweeks,
-    .sectionno {
-      color: #0000005c;
-      font-size: 10px;
-      font-weight: 500;
+    .sectiondesc {
+      font-size: 12px;
+      font-weight: 300;
+      margin-top: 10px;
     }
   }
   .right {
@@ -82,6 +69,10 @@
           justify-content: center;
           z-index: 0;
         }
+        .completedVerticalLine {
+          @extend .verticalLine;
+          background-color: #4166eb;
+        }
         .chapterball {
           background-color: #cecece;
           position: absolute;
@@ -94,6 +85,10 @@
           align-items: center;
           justify-content: center;
           z-index: 1;
+        }
+        .completedChapterBall {
+          @extend .chapterball;
+          background-color: #4166eb;
         }
         .main {
           display: flex;
@@ -112,130 +107,6 @@
             font-size: 16px;
             margin-top: 5px;
             font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .section {
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 40px;
-    display: flex;
-    .left {
-      width: 25%;
-      position: relative;
-      word-wrap: break-word;
-      .sectionball {
-        position: absolute;
-        right: -13px;
-        top: 0;
-        width: 26px;
-        height: 26px;
-        border-radius: 100%;
-        border: 2px solid #4166eb;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        z-index: 2;
-        font-size: 12px;
-        font-weight: 500;
-      }
-      .sectiontitle {
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .chaptersandweeks,
-      .sectionno {
-        color: #0000005c;
-        font-size: 10px;
-        font-weight: 500;
-      }
-    }
-    .right {
-      flex: 1;
-      padding-top: 0px;
-      .numberingArea {
-        display: flex;
-        flex-direction: column;
-        .number {
-          height: fit-content;
-          width: fit-content;
-          border: 2px solid #4166eb;
-          border-radius: 50%;
-          font-size: 14px;
-          padding: 0 5px;
-          z-index: 3;
-        }
-        .numberLine {
-          margin-left: 9px;
-          background-color: #cecece;
-          width: 2px;
-          height: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 0;
-        }
-        .completeLine {
-          @extend .numberLine;
-          background-color: #4166eb;
-        }
-      }
-      .chapterArea {
-        padding-left: 11px;
-        .chapter {
-          background: #ffffff;
-          width: auto;
-          position: relative;
-          margin-left: 20px;
-          .verticalLine {
-            background-color: #cecece;
-            position: absolute;
-            left: -22px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 0;
-          }
-          .chapterball {
-            background-color: #cecece;
-            position: absolute;
-            left: -27px;
-            top: 43%;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-          }
-          .main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            padding: 20px;
-            .chapterno,
-            .remainingtime {
-              font-family: "Roboto";
-              margin-top: 5px;
-              font-size: 10px;
-              color: #0000004d;
-            }
-            .chaptertitle {
-              font-size: 14px;
-              margin-top: 5px;
-              font-weight: 600;
-            }
           }
         }
       }
