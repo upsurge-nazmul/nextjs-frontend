@@ -24,6 +24,9 @@ import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHea
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import KidChore from "../../../components/KidDashboard/KidChore";
 import TodoList from "../../../components/WaitlistDashboard/TodoList";
+import Tour from "../../../components/Tour/Tour";
+import Jasper from "../../../components/SVGcomponents/Jasper";
+import IntroDiv from "../../../components/Tour/IntroDiv";
 
 export default function ChildActivity({
   pendingchores,
@@ -35,12 +38,16 @@ export default function ChildActivity({
   userdatafromserver,
   tododatafromserver,
 }) {
-  const { setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
+  const [showtour, setshowtour] = useState(
+    !userdatafromserver?.intro_guide_completed
+  );
   const [tododata, settododata] = useState(tododatafromserver);
   const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(pendingchores);
   const [showtodo, setshowtodo] = useState(false);
+  const [currentTourIndex, setcurrentTourIndex] = useState(0);
   const [quests, setquests] = useState([]);
   const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
@@ -84,10 +91,146 @@ export default function ChildActivity({
       scrollContainer.scrollLeft += evt.deltaY * 5;
     });
   }, []);
+  useEffect(() => {
+    if (router.query.storyIndex) {
+      setcurrentTourIndex(Number(router.query.storyIndex));
+    }
+  }, [router.query]);
+  const story = [
+    {
+      intro: true,
+      content: (
+        <IntroDiv
+          name={userdata?.first_name}
+          text={`I am Jasper and i i'll help you get started.`}
+        />
+      ),
+    },
+    {
+      ref: "#upsurge-logo",
+      isolate: true,
+      required: true,
+      highlightBg: true,
+      position: "bottom",
+      content: `You can go back to home page, by clicking upsurge logo.`,
+    },
+    {
+      ref: "#add-child-btn",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Add child</p>
+          <p className={styles.text}>
+            {`Let's start by adding your child details.`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+      required: true,
+      disableBtns: true,
+      isolate: true,
+    },
+    {
+      ref: "#children-div",
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Congratulations!</p>
+          <p className={styles.text}>
+            {`You have successfully added your child.`}
+          </p>
+        </div>
+      ),
+      superimpose: true,
+      position: "bottom",
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#approvals-div",
+      position: "bottom",
+      content: `You'll see approval requests from your children, here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#todays-question",
+      position: "bottom",
+      content: `You can answer questions and get rewards.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#refer-div",
+      position: "bottom",
+      content: `You can refer your friends from here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#dashboard-blogs",
+      position: "bottom",
+      content: `You can access blogs from here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#chores-leftpanel",
+      position: "bottom",
+      content: `Now lets start allotting chores.`,
+      disableBtns: true,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#quest-leftpanel",
+      position: "bottom",
+      content: `You can track the knowledge quest progress of your children.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#games-leftpanel",
+      position: "bottom",
+      content: `You can play games here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#store-leftpanel",
+      position: "bottom",
+      content: `Now lets go to store.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+  ];
   return (
     <div className={styles.childactivity}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
+      {showtour && (
+        <Tour
+          story={story}
+          current={currentTourIndex}
+          setcurrent={setcurrentTourIndex}
+          showtour={showtour}
+          setshowtour={setshowtour}
+          introComplete={true}
+        />
+      )}
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
