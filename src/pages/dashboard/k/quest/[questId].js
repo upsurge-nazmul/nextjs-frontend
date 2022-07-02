@@ -38,7 +38,7 @@ export default function KnowledgeQuest({ userData, questData }) {
   const [currentQuest, setCurrentQuest] = useState();
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
-  const [activeChNo, setActiveChNo] = useState(1);
+  const [activeChNo, setActiveChNo] = useState(0);
 
   useEffect(() => {
     setuserdata(userData);
@@ -54,7 +54,7 @@ export default function KnowledgeQuest({ userData, questData }) {
   useEffect(() => {
     async function fetchQuestLevel() {
       let level = await KnowledgeQuestApi.initiate(
-        { id: "whatIsMoney" },
+        { quest_id: questId },
         getCookie("accesstoken")
       );
       if (level && level.data && level.data.success) {
@@ -62,7 +62,7 @@ export default function KnowledgeQuest({ userData, questData }) {
       }
     }
     fetchQuestLevel();
-  }, []);
+  }, [questId]);
 
   const handleBack = () => {
     setView();
@@ -70,10 +70,11 @@ export default function KnowledgeQuest({ userData, questData }) {
   };
 
   const handleDone = () => {
-    // KnowledgeQuestApi.update({
-    //   level: activeChNo,
-    //   id: currentQuest.questId,
-    // });
+    KnowledgeQuestApi.update({
+      level: activeChNo + 1,
+      quest_id: currentQuest.questId,
+    });
+    setActiveChNo((prev) => prev + 1);
     setView();
     setCurrentChapter();
   };
@@ -131,7 +132,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                 <button className={styles.backButton} onClick={handleBack}>
                   Go Back
                 </button>
-                {view === LESSON_TYPES[0] && (
+                {(view === LESSON_TYPES[0] || view === LESSON_TYPES[1]) && (
                   <button className={styles.doneButton} onClick={handleDone}>
                     Done
                   </button>
@@ -143,7 +144,7 @@ export default function KnowledgeQuest({ userData, questData }) {
               questData={currentQuest}
               changeView={setView}
               setActiveChapter={setCurrentChapter}
-              setActiveChapterNo={setActiveChNo}
+              activeChapterNo={activeChNo}
             />
           )}
         </div>
