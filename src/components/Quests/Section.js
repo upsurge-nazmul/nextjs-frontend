@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Quest/sections.module.scss";
 
-function Section({ quest, level = 1 }) {
+function Section({ quest }) {
   return (
     <div className={styles.section}>
       <div className={styles.left}>
@@ -13,7 +13,9 @@ function Section({ quest, level = 1 }) {
         <div className={styles.numberingArea}>
           <div className={styles.number}>{quest.questNo}</div>
           <div
-            className={level <= 1 ? styles.numberLine : styles.completeLine}
+            className={
+              quest.level <= 1 ? styles.numberLine : styles.completeLine
+            }
           />
         </div>
         {quest.chapters.length ? (
@@ -23,14 +25,14 @@ function Section({ quest, level = 1 }) {
                 <div className={styles.chapter}>
                   <div
                     className={
-                      level >= chapter.chapterNo
+                      quest.level >= chapter.chapterNo
                         ? styles.completedChapterBall
                         : styles.chapterball
                     }
                   />
                   <div
                     className={
-                      level >= chapter.chapterNo
+                      quest.level >= chapter.chapterNo
                         ? styles.completedVerticalLine
                         : styles.verticalLine
                     }

@@ -29,7 +29,7 @@ export default function Quests({ kidsdata, questData }) {
   const [mode, setmode] = useState("Knowledge Quest");
   const [kidsOptions, setKidsOptions] = useState();
   const [selectedkid, setSelectedKid] = useState();
-  const [selectedKidsLevel, setSelectedKidsLevel] = useState();
+  const [levelUpdated, setLevelUpdated] = useState(false);
 
   useEffect(() => {
     if (kidsdata && kidsdata.length) {
@@ -49,19 +49,27 @@ export default function Quests({ kidsdata, questData }) {
   }, [kidsOptions]);
 
   useEffect(() => {
-    if (selectedkid) {
+    if (selectedkid && questData && !levelUpdated) {
       async function fetchKidsLevel() {
-        let res = await KnowledgeQuestApi.getLevel({
-          userId: selectedkid,
-        });
-        if (res && res.data && res.data.success) {
-          let lev = res.data.data ? res.data.data : 0;
-          setSelectedKidsLevel(lev);
+        for (let quest of questData) {
+          let res = await KnowledgeQuestApi.getLevel({
+            userId: selectedkid,
+            quest_id: quest.questId,
+          });
+          if (res && res.data && res.data.success) {
+            quest.level = res.data.data;
+          }
         }
+        setLevelUpdated(true);
       }
       fetchKidsLevel();
     }
-  }, [selectedkid]);
+  }, [selectedkid, questData, levelUpdated]);
+
+  const handleSelection = (val) => {
+    setLevelUpdated(false);
+    setSelectedKid(val);
+  };
 
   return (
     <div className={styles.quest}>
@@ -95,7 +103,7 @@ export default function Quests({ kidsdata, questData }) {
                 {kidsOptions && kidsOptions.length ? (
                   <Selection
                     value={selectedkid}
-                    setvalue={setSelectedKid}
+                    setvalue={handleSelection}
                     options={kidsOptions}
                     placeholder="Select Child"
                   />
@@ -105,10 +113,11 @@ export default function Quests({ kidsdata, questData }) {
               </div>
             </div>
             <div className={styles.section}>
-              {questData &&
+              {levelUpdated &&
+                questData &&
                 questData.length &&
                 questData.map((quest, index) => (
-                  <Section quest={quest} level={2} key={"section" + index} />
+                  <Section quest={quest} key={"section" + index} />
                 ))}
             </div>
           </div>
