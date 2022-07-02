@@ -63,18 +63,16 @@ export default function QuizView({
   }
 
   function handleFinish() {
-    // KnowledgeQuestApi.updatequizdata({
-    //   quiz_data: {
-    //     quizId: chapterId,
-    //     score: score / questions.length,
-    //   },
-    // });
-
-    // setuserdata((prev) => ({
-    //   ...prev,
-    //   num_unicoins:
-    //     Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
-    // }));
+    KnowledgeQuestApi.updatequizdata({
+      quest_id: questId,
+      quiz_id: chapterId,
+      score,
+    });
+    setuserdata((prev) => ({
+      ...prev,
+      num_unicoins:
+        Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
+    }));
     handleDone();
   }
 

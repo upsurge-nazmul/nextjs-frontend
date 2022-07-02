@@ -5,7 +5,8 @@ export default function QuestMap({
   questData,
   changeView = () => {},
   setActiveChapter = () => {},
-  activeChapterNo = 0,
+  setActiveChapterNo = () => {},
+  userLevel = 0,
 }) {
   return (
     <>
@@ -19,7 +20,7 @@ export default function QuestMap({
                       <div
                         key={chapter.chapterNo}
                         className={
-                          activeChapterNo >= chapter.chapterNo
+                          userLevel >= chapter.chapterNo
                             ? styles.completedChapter
                             : styles.chapter
                         }
@@ -31,6 +32,7 @@ export default function QuestMap({
                         onClick={() => {
                           changeView(chapter.type);
                           setActiveChapter(chapter.id);
+                          setActiveChapterNo(chapter.chapterNo);
                         }}
                       >
                         <span>{chapter.chapterNo}.</span> {chapter.title}

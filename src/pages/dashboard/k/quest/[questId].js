@@ -39,6 +39,7 @@ export default function KnowledgeQuest({ userData, questData }) {
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
   const [activeChNo, setActiveChNo] = useState(0);
+  const [userLevel, setUserLevel] = useState(0);
 
   useEffect(() => {
     setuserdata(userData);
@@ -58,7 +59,7 @@ export default function KnowledgeQuest({ userData, questData }) {
         getCookie("accesstoken")
       );
       if (level && level.data && level.data.success) {
-        setActiveChNo(level.data.data.level);
+        setUserLevel(level.data.data.level);
       }
     }
     fetchQuestLevel();
@@ -67,16 +68,18 @@ export default function KnowledgeQuest({ userData, questData }) {
   const handleBack = () => {
     setView();
     setCurrentChapter();
+    setActiveChNo(0);
   };
 
   const handleDone = () => {
     KnowledgeQuestApi.update({
-      level: activeChNo + 1,
+      level: activeChNo,
       quest_id: currentQuest.questId,
     });
-    setActiveChNo((prev) => prev + 1);
+    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
     setView();
     setCurrentChapter();
+    setActiveChNo(0);
   };
 
   return (
@@ -144,7 +147,8 @@ export default function KnowledgeQuest({ userData, questData }) {
               questData={currentQuest}
               changeView={setView}
               setActiveChapter={setCurrentChapter}
-              activeChapterNo={activeChNo}
+              setActiveChapterNo={setActiveChNo}
+              userLevel={userLevel}
             />
           )}
         </div>
