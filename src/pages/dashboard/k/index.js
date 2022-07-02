@@ -107,24 +107,14 @@ export default function ChildActivity({
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
               <div className={styles.topblock}>
-                <img
-                  className={styles.avatar}
-                  src={childdetail.user_img_url}
-                  alt=""
-                />
+                <h2
+                  className={styles.mainheading}
+                  onClick={() => router.push("/dashboard/k/tribes")}
+                >
+                  Level
+                  <HeadingArrow />
+                </h2>
                 <div className={styles.right}>
-                  <div className={styles.rewardblock}>
-                    <UniCoinSvg className={styles.svg} />
-                    <p className={styles.number}>
-                      {childdetail.num_unicoins
-                        ? childdetail.num_unicoins > UniCoinValue
-                          ? childdetail.num_unicoins / UniCoinValue + "K "
-                          : childdetail.num_unicoins
-                        : 0}{" "}
-                      UniCoins
-                    </p>
-                  </div>
-                  <p className={styles.username}>@{childdetail.user_name}</p>
                   <div
                     className={styles.badge}
                     onClick={() => setshowlevels(true)}

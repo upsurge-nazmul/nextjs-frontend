@@ -27,8 +27,21 @@
         width: 50%;
         padding: 0 10px 0 45px;
         .headsection {
+          width: 100%;
           .topblock {
             display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            .mainheading {
+              font-weight: 500;
+              font-size: 25px;
+              color: rgba(87, 88, 128, 1);
+              display: flex;
+              align-items: center;
+              svg {
+                margin-left: 10px;
+              }
+            }
             .avatar {
               width: 250px;
               height: 250px;
@@ -42,7 +55,6 @@
               flex-direction: column;
               justify-content: center;
               width: 100%;
-              margin-right: 60px;
               .username {
                 padding: 5px 20px;
                 background-color: rgb(235, 235, 235);
@@ -149,6 +161,7 @@
           margin-top: 20px;
           min-height: fit-content;
           display: flex;
+          width: 100%;
           flex-direction: column;
           .mainheading {
             cursor: pointer;
@@ -196,6 +209,7 @@
           }
         }
         .leaderboardsection {
+          width: 100%;
           margin-top: 20px;
           .heading {
             font-weight: 500;
@@ -214,18 +228,19 @@
             gap: 10px;
             .element {
               padding: 20px;
-              width: calc(50% - 5px);
-              height: 250px;
+              width: 100%;
+              height: 60px;
               display: flex;
-              flex-direction: column;
+              flex-direction: row-reverse;
               align-items: center;
-              justify-content: center;
+              justify-content: space-between;
               border-radius: 10px;
               .rank {
                 font-weight: 700;
-                font-size: 36px;
+                font-size: 26px;
               }
               .section {
+                font-weight: 500;
                 font-size: 18px;
               }
               &:first-child {
@@ -301,6 +316,7 @@
         .choreSection {
           margin-top: 15px;
           display: flex;
+          width: 100%;
           flex-direction: column;
           .mainheading {
             cursor: pointer;
@@ -498,8 +514,27 @@
         }
         .flexRight {
           width: 100%;
-          padding: 0 40px 0 20px;
-          margin-top: 50px;
+          padding: 0 40px 0 40px;
+          margin-top: 20px;
+          align-items: center;
+          .choreSection {
+            width: 100%;
+            .wrapper {
+              padding: 0;
+            }
+          }
+          .questsection {
+            width: 100%;
+            .wrapper {
+              padding: 0;
+            }
+          }
+          .gamessection {
+            width: 100%;
+            .wrapper {
+              padding: 0;
+            }
+          }
           .templateSection {
             width: 100%;
             margin-top: 40px;
