@@ -86,12 +86,13 @@ function KidDashboardHeader({
             ) : null}
             <NotificationBell />
           </div>
-          <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
+          <div className={styles.avatar}>
             {showmenu && (
               <Menu settoastdata={settoastdata} menuType={"child"} />
             )}
             <img
               id="avatar-button"
+              onClick={() => setshowmenu(!showmenu)}
               src={
                 userdata?.user_img_url ||
                 "https://i.ibb.co/v3vVV8r/default-avatar.png"

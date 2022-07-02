@@ -400,6 +400,8 @@ function DashboardLeftPanel({
                 router.push(
                   "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
                 );
+              } else {
+                router.push("/dashboard/p/chores");
               }
             }}
           >

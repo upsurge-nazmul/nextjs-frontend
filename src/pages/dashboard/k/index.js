@@ -302,7 +302,7 @@ export async function getServerSideProps({ params, req }) {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {
             permanent: false,
-            destination: "/dashboard/k",
+            destination: "/dashboard/p",
           },
         };
       let pendinchores = await ChoreApis.getchildchores(

@@ -19,7 +19,7 @@ function Games({ recentgames, userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [showvideomodal, setshowvideomodal] = useState(false);
-  const [recent_games, setrecent_games] = useState([]);
+  const [recent_games, setrecent_games] = useState(recentgames);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -52,13 +52,6 @@ function Games({ recentgames, userdatafromserver }) {
   }, []);
 
   useEffect(() => {
-    let x = localStorage.getItem("recent_games");
-    let gamearr = JSON.parse(x);
-    if (gamearr) {
-      setrecent_games(gamearr);
-    }
-  }, []);
-  useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
   async function updaterecentgames(gamearr) {
@@ -72,39 +65,38 @@ function Games({ recentgames, userdatafromserver }) {
     let res = await FreeGameApis.updateRecentGames({ games: gamestring });
   }
   async function handlegameclick(title, pushto) {
-    let x = localStorage.getItem("recent_games");
-    if (x) {
-      x = JSON.parse(x);
-      if (!x.includes(title)) {
-        if (x.length === 3) {
-          x[2] = x[1];
-          x[1] = x[0];
-          x[0] = title;
+    if (recentgames.length > 0) {
+      if (!recentgames.includes(title)) {
+        if (recentgames.length === 3) {
+          recentgames[2] = recentgames[1];
+          recentgames[1] = recentgames[0];
+          recentgames[0] = title;
         } else {
-          x.push(title);
+          recentgames.push(title);
         }
-        setrecent_games(x);
-        localStorage.setItem("recent_games", JSON.stringify(x));
+        setrecent_games(recentgames);
+        updaterecentgames(recentgames);
       }
     } else {
-      localStorage.setItem("recent_games", JSON.stringify([title]));
+      setrecent_games([title]);
+      updaterecentgames([title]);
     }
     if (title === "Ludo") {
       let res = await FreeGameApis.presign({
         user_name:
-          userdatafromserver?.user_name ||
-          userdatafromserver?.first_name ||
-          userdatafromserver?.last_name,
+          userdatafromserver.user_name ||
+          userdatafromserver.first_name ||
+          userdatafromserver.last_name,
         email: userdatafromserver.email,
         phone: userdatafromserver.phone,
-        token: getCookie("accesstoken"),
+        token: token,
         game: title,
         postlogin: true,
       });
       if (res) {
         if (res.data.success) {
           router.push({
-            pathname: "/dashboard/p/game/" + (pushto ? pushto : title),
+            pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
             query: { id: res.data.data },
           });
         } else {
@@ -114,7 +106,7 @@ function Games({ recentgames, userdatafromserver }) {
         console.log("error connecting server");
       }
     } else {
-      router.push("/dashboard/p/game/" + (pushto ? pushto : title));
+      router.push("/dashboard/k/game/" + (pushto ? pushto : title));
     }
   }
   return (
@@ -136,7 +128,7 @@ function Games({ recentgames, userdatafromserver }) {
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
-                  {recentgames.map((item, index) => {
+                  {recent_games.map((item, index) => {
                     return (
                       <GameCard
                         onCLick={() =>
