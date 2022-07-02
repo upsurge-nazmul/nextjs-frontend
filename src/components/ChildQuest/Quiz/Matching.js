@@ -26,7 +26,11 @@ export default function Matching({ data, value, setValue }) {
   };
 
   useEffect(() => {
-    if (data.optins.length === matches.length) setValue(matches);
+    if (data.optins.length === matches.length) {
+      let arr = [];
+      matches.map((match) => arr.push(match.ans));
+      setValue(arr);
+    }
   }, [matches]);
 
   return (
@@ -41,7 +45,7 @@ export default function Matching({ data, value, setValue }) {
               onDrop={(e) => drop(e)}
               onDragOver={(e) => allowDrop(e)}
             >
-              {qn}
+              {qn} <div className={styles.answerArea} />
             </div>
           );
         })}
@@ -56,26 +60,30 @@ export default function Matching({ data, value, setValue }) {
               draggable={true}
               onDragStart={(e) => drag(e)}
             >
-              <Image
-                src={
-                  option === "rupee"
-                    ? rupee
-                    : option === "dollar"
-                    ? dollar
-                    : option === "euro"
-                    ? euro
-                    : option === "pound"
-                    ? pound
-                    : option === "franc"
-                    ? franc
-                    : ""
-                }
-                className={styles.optionImage}
-                alt={option}
-                width={60}
-                height={60}
-                draggable={false}
-              />
+              {data.imageOption ? (
+                <Image
+                  src={
+                    option === "rupee"
+                      ? rupee
+                      : option === "dollar"
+                      ? dollar
+                      : option === "euro"
+                      ? euro
+                      : option === "pound"
+                      ? pound
+                      : option === "franc"
+                      ? franc
+                      : ""
+                  }
+                  className={styles.optionImage}
+                  alt={option}
+                  width={60}
+                  height={60}
+                  draggable={false}
+                />
+              ) : (
+                <div className={styles.textOption}>{option}</div>
+              )}
             </div>
           );
         })}
