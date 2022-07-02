@@ -115,74 +115,79 @@ export default function ChildActivity({
       content: `You can go back to home page, by clicking upsurge logo.`,
     },
     {
-      ref: "#add-child-btn",
+      ref: "#milestone",
       position: "bottom",
+      highlightBg: true,
       text: "Welcome to upsurge!",
-      content: (
-        <div className={styles.introdiv}>
-          <p className={styles.heading}>Add child</p>
-          <p className={styles.text}>
-            {`Let's start by adding your child details.`}
-          </p>
-          <Jasper className={styles.jasper} />
-        </div>
-      ),
+      extraPadding: true,
+      content: `you can check your milestones here.`,
       required: true,
       disableBtns: true,
       isolate: true,
     },
     {
-      ref: "#children-div",
+      ref: "#milestone-wrapper",
       content: (
-        <div className={styles.introdiv}>
-          <p className={styles.heading}>Congratulations!</p>
-          <p className={styles.text}>
-            {`You have successfully added your child.`}
-          </p>
-        </div>
+        <IntroDiv
+          hideJasper={true}
+          head={`Here you can see all your milestones!`}
+          text={`You can also directly go to milestones, by clicking on them.`}
+        />
       ),
       superimpose: true,
       position: "bottom",
       required: true,
+      delay: true,
+      isolate: true,
+      absolute: true,
+      disableBg: true,
+      nextFunction: () => {
+        if (currentTourIndex === 3) {
+          setcurrentTourIndex((prev) => prev + 1);
+        }
+        setshowtodo(!showtodo);
+      },
+    },
+    {
+      ref: "#leaderboards",
+      position: "bottom",
+      content: `You can see the leaderboards here.`,
+      extraPadding: true,
+      superimpose: true,
+      highlightBg: true,
+      required: true,
       isolate: true,
     },
     {
-      ref: "#approvals-div",
+      ref: "#chores",
       position: "bottom",
-      content: `You'll see approval requests from your children, here.`,
+      content: `You can see your pending chores here.`,
       superimpose: true,
       required: true,
       isolate: true,
     },
     {
-      ref: "#todays-question",
+      ref: "#quests",
       position: "bottom",
-      content: `You can answer questions and get rewards.`,
+      content: `You can see your quest progress here.`,
       superimpose: true,
       required: true,
       isolate: true,
     },
     {
-      ref: "#refer-div",
-      position: "bottom",
-      content: `You can refer your friends from here.`,
-      superimpose: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#dashboard-blogs",
-      position: "bottom",
-      content: `You can access blogs from here.`,
+      ref: "#recent_games",
+      position: "top",
+      content: `You can access your recent games.`,
       superimpose: true,
       required: true,
       highlightBg: true,
       isolate: true,
+      extraPadding: true,
     },
     {
       ref: "#chores-leftpanel",
       position: "bottom",
-      content: `Now lets start allotting chores.`,
+      content: `Now lets go to chores.`,
       disableBtns: true,
       superimpose: true,
       required: true,
@@ -243,7 +248,12 @@ export default function ChildActivity({
             data={tododata.list}
             total={tododata.total}
             completed={tododata.completed}
-            hide={() => setshowtodo(!showtodo)}
+            hide={() => {
+              if (currentTourIndex === 3) {
+                setcurrentTourIndex((prev) => prev + 1);
+              }
+              setshowtodo(!showtodo);
+            }}
           />
         )}
         <div className={styles.mainContent}>
@@ -304,10 +314,16 @@ export default function ChildActivity({
                 </>
               )}
             </div>
-            <div className={styles.milestonesSection}>
+            <div className={styles.milestonesSection} s>
               <h2
+                id="milestone"
                 className={styles.mainheading}
-                onClick={() => setshowtodo(true)}
+                onClick={() => {
+                  if (currentTourIndex === 2) {
+                    setcurrentTourIndex((prev) => prev + 1);
+                  }
+                  setshowtodo(true);
+                }}
               >
                 Milestones
                 <HeadingArrow />
@@ -326,7 +342,7 @@ export default function ChildActivity({
                 </p>
               </div>
             </div>
-            <div className={styles.leaderboardsection}>
+            <div className={styles.leaderboardsection} id="leaderboards">
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
                 <div className={styles.element}>
@@ -349,7 +365,7 @@ export default function ChildActivity({
             </div>
           </div>
           <div className={styles.flexRight}>
-            <div className={styles.choreSection}>
+            <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
                 onClick={() => router.push("/dashboard/p/chores")}
@@ -376,7 +392,7 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-            <div className={styles.questsection}>
+            <div className={styles.questsection} id="quests">
               <h2
                 className={styles.heading}
                 onClick={() => router.push("/dashboard/p/quests")}
@@ -393,7 +409,7 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-            <div className={styles.gamessection}>
+            <div className={styles.gamessection} id="recent_games">
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
                 {recentgames.map((game) => {

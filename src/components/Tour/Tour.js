@@ -66,7 +66,7 @@ export default function Tour({
     if (story[current]?.extraPadding) {
       currentElement.classList.add(styles.extraPadding);
     }
-    if (story[current]?.absoulte) {
+    if (story[current]?.absolute) {
       currentElement.classList.add(styles.absolute);
     }
     var rect = currentElement.getBoundingClientRect();
