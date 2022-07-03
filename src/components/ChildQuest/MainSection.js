@@ -1,18 +1,56 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+// import Accordion from "@mui/material/Accordion";
+// import AccordionSummary from "@mui/material/AccordionSummary";
+// import AccordionDetails from "@mui/material/AccordionDetails";
+// import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import QuestCard from "./QuestCard";
+import HeadingArrow from "../SVGcomponents/HeadingArrow";
+
+const QUEST_TYPES = [
+  "Financial Literacy",
+  "Entrepreneurship",
+  "Career Quests",
+  "Industry Quests",
+];
 
 export default function MainSection({ data }) {
   const router = useRouter();
-  const [expanded, setExpanded] = useState(1);
+  // const [expanded, setExpanded] = useState(1);
+
+  const handleCardClick = (id) => {
+    router.push(`/dashboard/k/quest/${id}`);
+  };
 
   return (
     <div className={styles.mainSection}>
-      {data &&
+      {QUEST_TYPES.map((QT, i) => {
+        return (
+          <div className={styles.questArea} key={i}>
+            <div className={styles.heading}>
+              {QT} <HeadingArrow />
+            </div>
+            <div className={styles.quests}>
+              {data &&
+                data.length &&
+                data.map((item) => {
+                  if (item.quest_type === QT) {
+                    return (
+                      <QuestCard
+                        handleCardClick={handleCardClick}
+                        data={item}
+                        key={item.questNo}
+                      />
+                    );
+                  }
+                })}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* {data &&
         data.length &&
         data.map((item) => {
           return (
@@ -63,7 +101,7 @@ export default function MainSection({ data }) {
               </AccordionDetails>
             </Accordion>
           );
-        })}
+        })} */}
     </div>
   );
 }

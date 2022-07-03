@@ -30,7 +30,7 @@ const TYPES = [
   "image-categorize", // 12
 ];
 
-export default function Quiz({ data, setCurrentQnIndex }) {
+export default function Quiz({ data, matchAnswer }) {
   const { type } = data;
   const [value, setValue] = useState();
 
@@ -75,7 +75,8 @@ export default function Quiz({ data, setCurrentQnIndex }) {
             <button
               className={styles.blankAction}
               onClick={() => {
-                setCurrentQnIndex((prev) => prev + 1);
+                matchAnswer(value);
+                // setCurrentQnIndex((prev) => prev + 1);
                 setValue();
               }}
             >

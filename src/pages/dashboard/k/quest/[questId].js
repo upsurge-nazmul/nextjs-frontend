@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/dist/client/router";
+import { MainContext } from "../../../../context/Main";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
@@ -10,11 +11,23 @@ import QuestMap from "../../../../components/ChildQuest/QuestMap";
 import RecordingView from "../../../../components/ChildQuest/RecordingView";
 import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
+import { getCookie } from "../../../../actions/cookieUtils";
 
-const TYPES = ["recording", "activity", "quiz"];
+const LESSON_TYPES = ["recording", "activity", "quiz"];
 
-export default function KnowledgeQuest({ userData, userLevel, questData }) {
+const democoncepts = [
+  "Money",
+  "Currency",
+  "Banking",
+  "Payments",
+  "Money Management",
+  "Quiz",
+  "Activity",
+];
+
+export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
+  const { userdata, setuserdata } = useContext(MainContext);
   const { questId } = router.query;
 
   const [toastdata, settoastdata] = useState({
@@ -25,6 +38,12 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
   const [currentQuest, setCurrentQuest] = useState();
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
+  const [activeChNo, setActiveChNo] = useState(0);
+  const [userLevel, setUserLevel] = useState(0);
+
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
 
   useEffect(() => {
     if (questData && questId) {
@@ -33,14 +52,34 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
     }
   }, [questId, questData]);
 
+  useEffect(() => {
+    async function fetchQuestLevel() {
+      let level = await KnowledgeQuestApi.initiate(
+        { quest_id: questId },
+        getCookie("accesstoken")
+      );
+      if (level && level.data && level.data.success) {
+        setUserLevel(level.data.data.level);
+      }
+    }
+    fetchQuestLevel();
+  }, [questId]);
+
   const handleBack = () => {
     setView();
     setCurrentChapter();
+    setActiveChNo(0);
   };
 
   const handleDone = () => {
+    KnowledgeQuestApi.update({
+      level: activeChNo,
+      quest_id: currentQuest.questId,
+    });
+    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
     setView();
     setCurrentChapter();
+    setActiveChNo(0);
   };
 
   return (
@@ -52,30 +91,41 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
         <div className={styles.mainContent}>
           {currentQuest && (
             <div className={styles.headingSection}>
-              <div className={styles.title}>{currentQuest.title}</div>
-              <div className={styles.description}>
-                {currentQuest.questDescription}
+              <p className={styles.heading}>{currentQuest.title}</p>
+              <p className={styles.about}>{currentQuest.questDescription}</p>
+              <p className={styles.heading}>Concepts Covered</p>
+              <div className={styles.conceptswrapper}>
+                {democoncepts.map((concept, index) => {
+                  return (
+                    <div className={styles.concept} key={"concept" + index}>
+                      {concept}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
           {view ? (
             <div className={styles.views}>
-              {view === TYPES[0] ? (
+              {view === LESSON_TYPES[0] ? (
                 <RecordingView
                   {...{
                     chapterId: currentChapter,
                   }}
                 />
-              ) : view === TYPES[1] ? (
+              ) : view === LESSON_TYPES[1] ? (
                 <ActivityView
                   {...{
                     chapterId: currentChapter,
                   }}
                 />
-              ) : view === TYPES[2] ? (
+              ) : view === LESSON_TYPES[2] ? (
                 <QuizView
                   {...{
                     chapterId: currentChapter,
+                    questId: currentQuest.questId,
+                    handleDone,
+                    setuserdata,
                   }}
                 />
               ) : (
@@ -85,9 +135,11 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
                 <button className={styles.backButton} onClick={handleBack}>
                   Go Back
                 </button>
-                <button className={styles.doneButton} onClick={handleDone}>
-                  Done
-                </button>
+                {(view === LESSON_TYPES[0] || view === LESSON_TYPES[1]) && (
+                  <button className={styles.doneButton} onClick={handleDone}>
+                    Done
+                  </button>
+                )}
               </div>
             </div>
           ) : (
@@ -95,6 +147,8 @@ export default function KnowledgeQuest({ userData, userLevel, questData }) {
               questData={currentQuest}
               changeView={setView}
               setActiveChapter={setCurrentChapter}
+              setActiveChapterNo={setActiveChNo}
+              userLevel={userLevel}
             />
           )}
         </div>
@@ -120,19 +174,11 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let level = await KnowledgeQuestApi.initiate(
-        { id: "money-quest" },
-        token
-      );
       let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       return {
         props: {
           isLogged: true,
           userData: response.data.data,
-          userLevel:
-            level && level.data && level.data.success
-              ? level.data.data.level
-              : 1,
           questData: questRes
             ? questRes.data
               ? questRes.data.success

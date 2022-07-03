@@ -1,7 +1,5 @@
 .questPage {
   background-color: #f4f5f7;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   overflow: hidden;
   .contentWrapper {
@@ -14,16 +12,31 @@
       width: 100%;
       padding: 0 45px;
       overflow-y: auto;
+      padding-bottom: 20px;
       .headingSection {
         padding-bottom: 20px;
-        .title {
-          font-size: 20px;
+        .heading {
+          color: #4166eb;
+          font-size: 24px;
           font-weight: 600;
         }
-        .description {
-          font-size: 16px;
-          font-weight: 300;
-          color: #333;
+        .about {
+          margin-bottom: 20px;
+        }
+        .conceptswrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          margin-top: 10px;
+          gap: 20px;
+          .concept {
+            width: fit-content;
+            height: fit-content;
+            padding: 8px 15px;
+            background: #f4f5f7;
+            border: 0.5px solid #9d9d9d;
+            border-radius: 4px;
+          }
         }
       }
       .views {

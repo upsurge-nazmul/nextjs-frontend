@@ -1,38 +1,55 @@
 .mainSection {
   padding: 20px 0;
-  .accordion {
-    .accordionSummary {
+  .questArea {
+    .heading {
+      font-weight: 500;
+      font-size: 25px;
+      color: rgba(87, 88, 128, 1);
+      display: flex;
+      align-items: center;
+      svg {
+        margin-left: 10px;
+      }
     }
-    .accordionDetails {
-      .accordionBody {
-        display: flex;
-        flex-direction: row;
-        .chapterNo {
-          margin-right: 10px;
-        }
-        .chapterTitle {
-          margin-right: 20px;
-        }
-      }
-      .questAction {
-        margin-top: 10px;
-        .chapterButton {
-          cursor: pointer;
-          background-color: #17d1bc;
-          border: none;
-          color: #fff;
-          border-radius: 6px;
-          padding: 6px 24px;
-          box-shadow: 0px 0px 7px 5px rgba(211, 211, 211, 0.5);
-          font-size: 18px;
-          display: flex;
-          align-items: center;
-          .buttonIcon {
-            font-size: 24px;
-            margin-left: 6px;
-          }
-        }
-      }
+    .quests {
+      padding: 20px 0;
+      display: flex;
+      gap: 20px;
     }
   }
+  // .accordion {
+  //   .accordionSummary {
+  //   }
+  //   .accordionDetails {
+  //     .accordionBody {
+  //       display: flex;
+  //       flex-direction: row;
+  //       .chapterNo {
+  //         margin-right: 10px;
+  //       }
+  //       .chapterTitle {
+  //         margin-right: 20px;
+  //       }
+  //     }
+  //     .questAction {
+  //       margin-top: 10px;
+  //       .chapterButton {
+  //         cursor: pointer;
+  //         background-color: #17d1bc;
+  //         border: none;
+  //         color: #fff;
+  //         border-radius: 6px;
+  //         padding: 6px 24px;
+  //         box-shadow: 0px 0px 7px 5px rgba(211, 211, 211, 0.5);
+  //         font-size: 18px;
+  //         display: flex;
+  //         align-items: center;
+  //         .buttonIcon {
+  //           font-size: 24px;
+  //           margin-left: 6px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }

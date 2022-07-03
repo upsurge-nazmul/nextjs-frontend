@@ -27,22 +27,6 @@ export default function HeadArea({}) {
           <p className={styles.credits}>1000 UniCoins</p>
         </div>
       </div>
-      <div className={styles.infoSection}>
-        <p className={styles.heading}>About the Quest</p>
-        <p className={styles.about}>
-          {`This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.`}
-        </p>
-        <p className={styles.heading}>Concepts Covered</p>
-        <div className={styles.conceptswrapper}>
-          {democoncepts.map((concept, index) => {
-            return (
-              <div className={styles.concept} key={"concept" + index}>
-                {concept}
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 }

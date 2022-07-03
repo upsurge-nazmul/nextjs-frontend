@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../../../context/Main";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import Toast from "../../../../components/Toast";
@@ -8,20 +9,25 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 
-export default function KnowledgeQuest({ userData, userLevel, questData }) {
-  const [mode, setmode] = useState("Knowledge Quest");
+export default function KnowledgeQuest({ userData, questData }) {
+  const { setuserdata } = useContext(MainContext);
+
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
 
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
+
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} />
+        <DashboardHeader mode={"Knowledge Quest"} />
         <div className={styles.mainContent} id="quest-main">
           <HeadArea />
           <MainSection data={questData} />
@@ -48,19 +54,11 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let level = await KnowledgeQuestApi.initiate(
-        { id: "money-quest" },
-        token
-      );
       let questRes = await KnowledgeQuestApi.getQuestData(null, token);
       return {
         props: {
           isLogged: true,
           userData: response.data.data,
-          userLevel:
-            level && level.data && level.data.success
-              ? level.data.data.level
-              : 1,
           questData: questRes
             ? questRes.data
               ? questRes.data.success

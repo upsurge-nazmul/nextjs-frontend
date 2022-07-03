@@ -76,7 +76,7 @@
     }
     .maincontent {
       display: flex;
-      margin-left: 40px;
+      margin: 0 40px;
       padding-bottom: 40px;
       .left {
         flex: 1;
@@ -122,80 +122,6 @@
         }
         .section {
           padding-top: 30px;
-        }
-      }
-      .right {
-        width: 0;
-        margin-right: 40px;
-        padding-top: 20px;
-        .buttonwrapper {
-          display: flex;
-          justify-content: center;
-
-          .bookmarkbutton {
-            width: 129px;
-            height: 42px;
-            border: 1px solid #000000;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-right: 20px;
-            svg {
-              margin-right: 5px;
-            }
-          }
-          .startbutton {
-            color: white;
-            background-color: #4166eb;
-            width: 129px;
-            height: 42px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: 500;
-          }
-        }
-        .details {
-          display: flex;
-          justify-content: space-around;
-          font-weight: 500;
-          margin-top: 40px;
-          .section {
-            .number {
-              font-size: 36px;
-            }
-            .name {
-              font-size: 14px;
-            }
-          }
-        }
-        .heading {
-          color: #4166eb;
-          margin-top: 20px;
-          font-size: 24px;
-          font-weight: 600;
-        }
-        .conceptswrapper {
-          display: flex;
-          flex-wrap: wrap;
-          align-content: flex-start;
-          margin-top: 20px;
-          .concept {
-            width: fit-content;
-            height: fit-content;
-            padding: 10px 20px;
-            background: #f4f5f7;
-            border: 0.5px solid #9d9d9d;
-            border-radius: 4px;
-            margin: 5px;
-          }
         }
       }
     }

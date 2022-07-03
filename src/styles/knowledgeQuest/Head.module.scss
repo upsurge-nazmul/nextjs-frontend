@@ -59,28 +59,4 @@
       text-align: right;
     }
   }
-  .infoSection {
-    flex: 1;
-    .heading {
-      color: #4166eb;
-      margin-top: 20px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-    .conceptswrapper {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      margin-top: 20px;
-      gap: 20px;
-      .concept {
-        width: fit-content;
-        height: fit-content;
-        padding: 8px 15px;
-        background: #f4f5f7;
-        border: 0.5px solid #9d9d9d;
-        border-radius: 4px;
-      }
-    }
-  }
 }
