@@ -105,7 +105,7 @@ export default function KnowledgeQuest({ userData, questData }) {
               </div>
             </div>
           )}
-          {view ? (
+          {view && currentQuest ? (
             <div className={styles.views}>
               {view === LESSON_TYPES[0] ? (
                 <RecordingView
