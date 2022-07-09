@@ -10,6 +10,7 @@ import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 
 export default function KnowledgeQuest({ userData, questData }) {
+  console.log(questData);
   const { setuserdata } = useContext(MainContext);
 
   const [toastdata, settoastdata] = useState({

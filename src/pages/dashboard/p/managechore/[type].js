@@ -215,17 +215,17 @@ export default function ManageChore({
     }
   }
   async function handleSaveTemplate() {
-    if (
-      !userdatafromserver.plan_name ||
-      userdatafromserver.plan_name === "Free"
-    ) {
-      settoastdata({
-        show: true,
-        msg: "Please buy a subscription first",
-        type: "error",
-      });
-      return;
-    }
+    // if (
+    //   !userdatafromserver.plan_name ||
+    //   userdatafromserver.plan_name === "Free"
+    // ) {
+    //   settoastdata({
+    //     show: true,
+    //     msg: "Please buy a subscription first",
+    //     type: "error",
+    //   });
+    //   return;
+    // }
     let response = await ChoreApis.addtemplate({
       name: choretitle,
       category: cat,

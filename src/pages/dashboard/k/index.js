@@ -11,6 +11,7 @@ import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import KidApis from "../../../actions/apis/KidApis";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import KnowledgeQuestApi from "../../../actions/apis/KnowledgeQuestApi";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import TribeApis from "../../../actions/apis/TribeApis";
 import { getCookie } from "../../../actions/cookieUtils";
@@ -27,6 +28,7 @@ import TodoList from "../../../components/WaitlistDashboard/TodoList";
 import Tour from "../../../components/Tour/Tour";
 import Jasper from "../../../components/SVGcomponents/Jasper";
 import IntroDiv from "../../../components/Tour/IntroDiv";
+import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 
 export default function ChildActivity({
   pendingchores,
@@ -37,6 +39,8 @@ export default function ChildActivity({
   currentLevel,
   userdatafromserver,
   tododatafromserver,
+  moneyacedata,
+  activeQuests,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -238,7 +242,7 @@ export default function ChildActivity({
       )}
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
@@ -260,10 +264,7 @@ export default function ChildActivity({
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
               <div className={styles.topblock}>
-                <h2
-                  className={styles.mainheading}
-                  onClick={() => router.push("/dashboard/k/tribes")}
-                >
+                <h2 className={styles.mainheading}>
                   Level
                   <HeadingArrow />
                 </h2>
@@ -346,7 +347,9 @@ export default function ChildActivity({
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
                 <div className={styles.element}>
-                  <p className={styles.rank}>250</p>
+                  <p className={styles.rank}>
+                    {moneyacedata.inhand_money + moneyacedata.account_balance}
+                  </p>
                   <p className={styles.section}>Money ace</p>
                 </div>
                 <div className={styles.element}>
@@ -354,7 +357,7 @@ export default function ChildActivity({
                   <p className={styles.section}>Money Quotient</p>
                 </div>
                 <div className={styles.element}>
-                  <p className={styles.rank}>2</p>
+                  <p className={styles.rank}>{activeQuests?.length || 0}</p>
                   <p className={styles.section}>Quests</p>
                 </div>
                 <div className={styles.element}>
@@ -471,6 +474,7 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
       let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
@@ -491,6 +495,10 @@ export async function getServerSideProps({ params, req }) {
         {
           id: response.data.data.user_id,
         },
+        token
+      );
+      let activeQuests = await KnowledgeQuestApi.getActiveQuests(
+        { userId: response.data.data.user_id },
         token
       );
       return {
@@ -521,6 +529,14 @@ export async function getServerSideProps({ params, req }) {
               ? recentgames.data.data
               : [],
           userdatafromserver: response.data.data,
+          moneyacedata:
+            moneyacedata && moneyacedata.data && moneyacedata.data.success
+              ? moneyacedata.data.data
+              : null,
+          activeQuests:
+            activeQuests && activeQuests.data && activeQuests.data.success
+              ? activeQuests.data.data
+              : null,
         },
       };
     }

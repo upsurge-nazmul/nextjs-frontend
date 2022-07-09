@@ -9,7 +9,7 @@ import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
-import { Game_Data } from "../../../static_data/Game_Data";
+import { Game_Data, Simulator_Data } from "../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import GameApis from "../../../actions/apis/GameApis";
@@ -62,7 +62,10 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
     }
     FreeGameApis.updateRecentGames({ games: gamestring });
   }
-  async function handlegameclick(title, pushto) {
+  async function handlegameclick(title, pushto, isSimulator) {
+    if (isSimulator) {
+      return router.push(pushto);
+    }
     if (recentgames.length > 0) {
       if (!recentgames.includes(title)) {
         if (recentgames.length === 3) {
@@ -79,6 +82,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
       setrecent_games([title]);
       updaterecentgames([title]);
     }
+
     if (title === "Ludo") {
       let res = await FreeGameApis.presign({
         user_name:
@@ -146,6 +150,25 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 </div>
               </div>
             )}
+            <div className={styles.availableSection}>
+              <h2 className={styles.heading}>
+                Simulators
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {Object.keys(Simulator_Data).map((item, index) => {
+                  return (
+                    <GameCard
+                      onCLick={() =>
+                        handlegameclick(item, Simulator_Data[item].pushto, true)
+                      }
+                      data={Simulator_Data[item]}
+                      key={"chorecomponent" + index}
+                    />
+                  );
+                })}
+              </div>
+            </div>
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games

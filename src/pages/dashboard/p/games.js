@@ -188,6 +188,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -198,6 +199,14 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      if (response?.data?.data?.user_type !== "parent")
+        return {
+          props: { isLogged: false, msg: msg || "Error" },
+          redirect: {
+            permanent: false,
+            destination: "/dashboard/k/games",
+          },
+        };
       let recentgames = await FreeGameApis.getrecentGames(null, token);
       let gameunicoinrewards = await GameApis.getgameunicoinrewards(
         null,

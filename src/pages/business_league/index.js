@@ -14,6 +14,7 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
 import FaqSection from "../../components/Home/FaqSection";
+import Footer from "../../components/Home/Footer";
 import Seo from "../../components/Seo";
 import Link from "next/link";
 
@@ -347,6 +348,7 @@ clean-label and delicious nut butters, dessers & spreads for all.`}</p>
         </div>
       </div>
       <FaqSection customfaq={faqs} />
+      <Footer />
     </div>
   );
 }

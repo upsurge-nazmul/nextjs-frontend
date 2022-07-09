@@ -44,11 +44,11 @@ export default function Invite({ kidsdata, userdatafromserver }) {
         )}
         <div className={styles.mainContent}>
           <div className={styles.flexTop}>
-            <Refer settoastdata={settoastdata} parent={true} />
+            <Refer settoastdata={settoastdata} parent={true} nomargin={true} />
             {kidsdata && <AvailablePointsSection kidsdata={kidsdata} />}
           </div>
           <div className={styles.flexBottom}>
-            <PartnerSection dashboard={true} />
+            <PartnerSection dashboard={true} nomargin={true} />
           </div>
         </div>
       </div>

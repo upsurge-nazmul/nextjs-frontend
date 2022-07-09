@@ -23,6 +23,7 @@ function KidDashboardHeader({
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
   const [username, setusername] = useState("Tushar");
+  const [showauth, setshowauth] = useState(false);
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);
   const [shownotifications, setshownotifications] = useState(false);
@@ -88,7 +89,11 @@ function KidDashboardHeader({
           </div>
           <div className={styles.avatar}>
             {showmenu && (
-              <Menu settoastdata={settoastdata} menuType={"child"} />
+              <Menu
+                setshowauth={setshowauth}
+                settoastdata={settoastdata}
+                menuType={"child"}
+              />
             )}
             <img
               id="avatar-button"
