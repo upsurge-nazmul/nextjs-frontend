@@ -145,6 +145,11 @@ function AuthFullData({
       setloading(false);
       return;
     }
+    if (!lastName) {
+      seterror("Last name is required");
+      setloading(false);
+      return;
+    }
     let response = await LoginApis.signup({
       email: email,
       signup_method: signupmethod,
