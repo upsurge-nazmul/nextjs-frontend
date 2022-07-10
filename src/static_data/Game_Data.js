@@ -22,7 +22,7 @@ export const Game_Data = {
     name: "Money maths",
     description:
       "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
-    img: "/images/games/MoneyMath.png",
+    img: "https://upsurge.in/images/games/MoneyMath.png",
   },
   MoneyManager: {
     name: "Money manager",
