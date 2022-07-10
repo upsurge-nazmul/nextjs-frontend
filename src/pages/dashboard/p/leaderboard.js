@@ -82,7 +82,7 @@ export async function getServerSideProps({ params, req }) {
           isLogged: true,
           userdatafromserver: response.data.data,
           leaderboard: leaderboard.data.data || [],
-          highestquizscore: highestquizscore.data.success
+          highestquizscore: highestquizscore?.data?.success
             ? highestquizscore.data.data.score
             : 0,
           msg: "",

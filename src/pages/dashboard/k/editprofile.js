@@ -42,8 +42,8 @@ export default function EditProfile({ data, childavatars }) {
   const [phone, setphone] = useState(data?.phone || "");
   const [changephone, setchangephone] = useState("");
   const [confirmphone, setconfirmphone] = useState("");
-  const [password, setpassword] = useState("#Sanji0599");
-  const [confirmpassword, setconfirmpassword] = useState("#Sanji0599");
+  const [password, setpassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
   const [showpassotp, setshowpassotp] = useState(false);
   const [showphoneotp, setshowphoneotp] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
