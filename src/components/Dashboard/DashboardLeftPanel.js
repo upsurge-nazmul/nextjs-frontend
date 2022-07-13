@@ -140,7 +140,9 @@ function DashboardLeftPanel({
           <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/games" ||
-              currenttab.indexOf("/dashboard/k/game") !== -1
+              currenttab.indexOf("/dashboard/k/game") !== -1 ||
+              currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
+              currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
                 ? styles.activetab
                 : ""
             }`}
@@ -173,28 +175,7 @@ function DashboardLeftPanel({
 
             <p className={styles.tabtitle}>Store</p>
           </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/stocksimulator/[page]"
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/stocksimulator/home")}
-          >
-            <StockSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Stock Simulator</p>
-          </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/cryptosimulator/[page]"
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/cryptosimulator/home")}
-          >
-            <CryptoSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Crypto Simulator</p>
-          </div>
+
           <LeftPannelToggle
             name="Resources"
             id="toggle-leftpanel"
@@ -400,6 +381,8 @@ function DashboardLeftPanel({
                 router.push(
                   "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
                 );
+              } else {
+                router.push("/dashboard/p/chores");
               }
             }}
           >

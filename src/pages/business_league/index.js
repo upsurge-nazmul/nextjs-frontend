@@ -14,8 +14,10 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import Terms from "../../components/Home/Terms";
 import FaqSection from "../../components/Home/FaqSection";
+import Footer from "../../components/Home/Footer";
 import Seo from "../../components/Seo";
 import Link from "next/link";
+import Mentors from "../../components/Ubl/Mentors";
 
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
@@ -103,7 +105,6 @@ export default function UblPage() {
           done={done}
         />
       )}
-
       <div className={styles.banner}>
         <UblBanner className={styles.bannerbg} />
 
@@ -130,7 +131,6 @@ export default function UblPage() {
         <p>{`100 teams will compete against each other across 3 challenges, & the top-25 most innovative ideas will be given ₹10,000 to develop their ideas. They will then pitch to real entrepreneurs, investors & CXOs and can win prizes worth ₹10,00,000!`}</p>
       </div>
       <UbliPrize className={styles.prize} />
-
       <div className={styles.challenge}>
         <p className={styles.challengehead}>Challenge your friends across</p>
         <div className={styles.challengeDiv}>
@@ -234,7 +234,6 @@ export default function UblPage() {
           })}
         </div>
       </div>
-
       <div className={styles.roadmap}>
         <p className={styles.head}>Competition Roadmap</p>
         <div className={styles.roadmapWrapper}>
@@ -294,6 +293,7 @@ export default function UblPage() {
         </div>
       </div>
       <Values insidebenefits />
+      <Mentors />
       <div className={styles.sponsors}>
         <p className={styles.head}>Sponsors</p>
         <div className={styles.sponsor}>
@@ -347,6 +347,7 @@ clean-label and delicious nut butters, dessers & spreads for all.`}</p>
         </div>
       </div>
       <FaqSection customfaq={faqs} />
+      <Footer />
     </div>
   );
 }

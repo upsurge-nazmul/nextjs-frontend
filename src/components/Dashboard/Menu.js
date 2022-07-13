@@ -119,7 +119,7 @@ function Menu({
       setCookie("accesstoken", data.token);
       setuserdata(response.data.data);
       setuser(response.data.data.id);
-
+      console.log(router.pathname);
       router.reload();
     }
   }

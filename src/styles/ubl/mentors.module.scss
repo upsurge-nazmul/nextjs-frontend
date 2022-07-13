@@ -1,0 +1,80 @@
+@use "../variables/fontsizes.scss" as *;
+.mentors {
+  width: 100%;
+  margin-top: 50px;
+  .heading {
+    text-align: center;
+    font-size: $gen-midl;
+    font-weight: 600;
+  }
+  .wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    .role,
+    .team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 2vw;
+      max-width: 250px;
+      .name {
+        font-size: 32px;
+        margin-top: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .position {
+        margin-top: 6px;
+        font-size: 18px;
+        text-align: center;
+      }
+      .img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 250px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+          .hover {
+            transition: all 0.3s ease;
+            position: absolute;
+            border-radius: 250px;
+            width: 250px;
+            height: 250px;
+            background-color: rgba(67, 149, 255, 0.39);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .linkedin {
+              color: white;
+              fill: white;
+              width: 60px;
+              height: 60px;
+            }
+          }
+        }
+      }
+    }
+    .team {
+      margin: 0 2vw;
+      margin-bottom: 40px;
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 180px;
+      }
+      .name {
+        font-size: 24px;
+      }
+    }
+  }
+}

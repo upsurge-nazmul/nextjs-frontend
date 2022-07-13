@@ -22,7 +22,7 @@ export const Game_Data = {
     name: "Money maths",
     description:
       "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
-    img: "/images/games/MoneyMath.png",
+    img: "https://upsurge.in/images/games/MoneyMath.png",
   },
   MoneyManager: {
     name: "Money manager",
@@ -172,5 +172,20 @@ export const Game_Unity_Data = {
     codeUrl: "/Games/CleanUp/Build/CleanUp.wasm",
     loaderUrl: "/Games/CleanUp/Build/CleanUp.loader.js",
     version: "1.1",
+  },
+};
+
+export const Simulator_Data = {
+  Stock: {
+    name: "Stock Simulator",
+    description: "Go in a virtual simulator to learn about stock trading.",
+    img: "https://i.ibb.co/jLJLgxS/Pngtree-cartoon-hand-drawn-dollar-trading-3692475.png",
+    pushto: "/dashboard/k/stocksimulator/home",
+  },
+  Crypto: {
+    name: "Crypto Simulator",
+    description: "Go in a virtual simulator to learn about crypto trading.",
+    img: "https://i.ibb.co/85KCRxM/free-bitcoin-icon-2207-thumb.png",
+    pushto: "/dashboard/k/cryptosimulator/home",
   },
 };

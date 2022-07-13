@@ -45,6 +45,7 @@ function Home({ isLogged, userdata }) {
   }, [userdata]);
 
   useEffect(() => {
+    history.scrollRestoration = "manual";
     const handlescroll = () => {
       if (window.scrollY > 0) {
         setstickyheader(true);
@@ -107,6 +108,17 @@ function Home({ isLogged, userdata }) {
       },
     },
   ];
+  useEffect(() => {
+    console.log(document.documentElement.scrollTop);
+    if (router.query.showTour) {
+      let home = document.querySelector("#home-page-main");
+      if (home) {
+        home.scrollTop = 0;
+      }
+      window.scrollY = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  }, [router]);
   return (
     <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
       <div

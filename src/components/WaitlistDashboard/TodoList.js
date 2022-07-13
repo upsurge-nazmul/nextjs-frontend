@@ -6,7 +6,13 @@ import { useRouter } from "next/dist/client/router";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { MainContext } from "../../context/Main";
 import { getCookie } from "../../actions/cookieUtils";
-export default function TodoList({ data, hide, completed, total }) {
+export default function TodoList({
+  data,
+  hide,
+  completed,
+  total,
+  clickDisabled,
+}) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
   async function hanldeludo() {
@@ -34,9 +40,11 @@ export default function TodoList({ data, hide, completed, total }) {
   }
   return (
     <div className={styles.todolist}>
-      <div className={styles.background} onClick={hide}></div>
+      {router.query.storyIndex !== 2 && (
+        <div className={styles.background} onClick={hide}></div>
+      )}
       <Jasper className={styles.jasper} />
-      <div className={styles.main}>
+      <div className={styles.main} id="milestone-wrapper">
         <div className={styles.head}>
           <p className={styles.heading}>Milestones</p>
           <p className={styles.subheading}>

@@ -97,17 +97,17 @@ export default function EditProfile({ data, minDate }) {
         }
         if (!validatePassword(password)) {
           seterror(
-            "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
+            "Password must be of minimum 8 characters and also it must contain minimum 1 number,1 special character,1 uppercase character and 1 lowercase character"
           );
           return;
         }
       }
       if (changephone && changephone !== confirmphone) {
-        seterror("Phone does not match");
+        seterror("Phone number does not match");
         return;
       }
       if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
-        seterror("Invalid Phone");
+        seterror("Invalid phone number");
         return;
       }
       if (changephone) {
@@ -131,7 +131,7 @@ export default function EditProfile({ data, minDate }) {
               setshowpassotp(true);
             }
             settoastdata({
-              msg: "Otp sent",
+              msg: "OTP sent",
               show: true,
               type: "success",
             });
@@ -199,7 +199,7 @@ export default function EditProfile({ data, minDate }) {
     if (dob && new Date(dob) !== data?.dob) {
       if (dob > minDate) {
         console.log(dob, minDate);
-        seterror("Dob of parent cannot be more than childs dob.");
+        seterror("DOB of parent should be before child DOB");
         return;
       }
       updated_data.dob = new Date(dob).getTime();

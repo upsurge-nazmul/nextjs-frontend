@@ -66,47 +66,7 @@ export default function EditProfile({ data, childavatars }) {
   useEffect(() => {
     setuserdata(data);
   }, []);
-  async function saveprofile() {
-    if (!password) {
-      handleSave();
-    } else {
-      if (password) {
-        if (password !== confirmpassword) {
-          seterror("Passwords do not match");
-          return;
-        }
-        if (!validatePassword(password)) {
-          seterror(
-            "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
-          );
-          return;
-        }
-      }
-      LoginApis.genemailotp({ email: data.email, type: "Password" }).then(
-        (response) => {
-          if (response && response.data && response.data.success) {
-            if (changephone) {
-              setshowphoneotp(true);
-            }
-            if (password) {
-              setshowpassotp(true);
-            }
-            settoastdata({
-              msg: "Otp sent",
-              show: true,
-              type: "success",
-            });
-          } else {
-            settoastdata({
-              msg: response?.data.message || "Error",
-              show: true,
-              type: "error",
-            });
-          }
-        }
-      );
-    }
-  }
+
   function validatePassword(pass) {
     if (!checkLength(pass)) {
       return false;
@@ -160,8 +120,10 @@ export default function EditProfile({ data, childavatars }) {
     if (dob && new Date(dob) !== data?.dob) {
       updated_data.dob = new Date(dob).getTime();
     }
-    if (password) {
-      updated_data.password = password;
+    if (OTP) {
+      if (password) {
+        updated_data.password = password;
+      }
     }
     if (state && state !== data?.state) {
       updated_data.state = state;
@@ -172,6 +134,7 @@ export default function EditProfile({ data, childavatars }) {
     if (img && img !== data?.user_img_url) {
       updated_data.user_img_url = img;
     }
+    console.log(updated_data);
     if (
       JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
     ) {
@@ -180,6 +143,7 @@ export default function EditProfile({ data, childavatars }) {
     }
     let response = await DashboardApis.updatechildprofile(updated_data);
     if (response && response.data && response.data.success) {
+      console.log(response.data.data);
       setshowpopup(false);
       setshowphonepopup(false);
       if (changephone) {
@@ -207,25 +171,29 @@ export default function EditProfile({ data, childavatars }) {
       <Toast data={toastdata} />
       {showpopup && (
         <ChangePassPopUp
+          type="child"
           setpassword={setpassword}
           password={password}
           confirmpassword={confirmpassword}
           setconfirmpassword={setconfirmpassword}
           setshowpopup={setshowpopup}
           handleSave={handleSave}
-          saveprofile={saveprofile}
           settoastdata={settoastdata}
           showpassotp={showpassotp}
           setshowpassotp={setshowpassotp}
           phone={phone}
           error={error}
           email={data.email}
-          isEmailOtp={true}
           seterror={seterror}
         />
       )}
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader mode={mode} setmode={setmode} showback={true} />
+        <DashboardHeader
+          mode={mode}
+          setmode={setmode}
+          showback={true}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           {showavatarmodal && (
             <AvatarSelector
@@ -303,12 +271,11 @@ export default function EditProfile({ data, childavatars }) {
                 }}
               />
             </div>
-            {error && <p className={styles.error}>{error}</p>}
             <div className={styles.row}>
               <div
                 className={styles.button}
                 style={{ marginRight: "10px" }}
-                onClick={saveprofile}
+                onClick={() => handleSave()}
               >
                 Save Changes
               </div>

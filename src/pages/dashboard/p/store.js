@@ -81,7 +81,11 @@ export default function ParentStore({
         buydata={buydata}
       />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
+        <DashboardHeader
+          mode={mode}
+          setmode={setmode}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <RequestsAndHistorySection
