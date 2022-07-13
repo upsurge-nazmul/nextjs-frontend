@@ -239,7 +239,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-            Round 1 - Registrations close July 17, 2022
+            Round 1 - Registrations close July 20, 2022
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -249,9 +249,57 @@ export default function UblPage() {
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
               Knowledge Quest - Live Business & Startup Quiz - July 23, 2022
-            </p>{" "}
-            Live online quiz which will test their business knowledge, speed &
-            problem-solving
+            </p>
+            {`90-minute online quiz which will test students on their knowledge of
+            money & entrepreneurship, and their problem-solving skills - but not
+            based on memory or clicking a button quickly. Teams will be given a
+            problem to solve, & will be free to use whatever resources they
+            want, especially google!`}
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>
+              Workshops & Webinars that students will get a chance to attend
+            </p>
+            <ul
+              style={{
+                listStyleType: "none",
+              }}
+            >
+              <li className={styles.wwItem}>
+                <p className={styles.wwTitle}>
+                  Introduction to upsurge & UBL 2022 - July 23
+                </p>
+                <p className={styles.wwDesc}>
+                  Karan Baweja (Founder) & Om (Community Leader)
+                </p>
+              </li>
+              <li className={styles.wwItem}>
+                <p className={styles.wwTitle}>
+                  From 0 to 1 - Making your first business pitch - July 24
+                </p>
+                <p className={styles.wwDesc}>
+                  Karan Baweja - 3x Entrepreneur | ISB | x-Investment Banker
+                </p>
+              </li>
+              <li className={styles.wwItem}>
+                <p className={styles.wwTitle}>
+                  The Case Prep Workshop - July 24
+                </p>
+                <p className={styles.wwDesc}>
+                  Shruti Jolly - Marketing & Consulting veteran | x-McKinsey |
+                  ISB
+                </p>
+              </li>
+              <li className={styles.wwItem}>
+                <p className={styles.wwTitle}>
+                  Building your profile for your dream colleges - July 31
+                </p>
+                <p className={styles.wwDesc}>
+                  Rashi Thakur & Chandni Singh - Seasoned higher education &
+                  career development experts
+                </p>
+              </li>
+            </ul>
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
