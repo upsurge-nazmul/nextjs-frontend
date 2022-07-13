@@ -335,6 +335,16 @@
           font-weight: 600;
         }
       }
+      .wwItem {
+        padding-bottom: 15px;
+        .wwTitle {
+          font-weight: 500;
+        }
+        .wwDesc {
+          font-weight: 300;
+          font-size: 16px;
+        }
+      }
     }
   }
   .prizes {
