@@ -48,7 +48,6 @@ export default function RedeemSection({
   }, [unicointoconvert]);
   return (
     <div className={styles.head}>
-      <Jasper className={styles.jasper} />
       <div className={styles.left}>
         <p className={styles.heading}>You currently have</p>
         <div className={styles.coinflex}>
@@ -103,6 +102,7 @@ export default function RedeemSection({
           </div> */}
         </div>
       </div>
+      <Jasper className={styles.jasper} />
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
     getquestions();
     async function getquestions() {
       let res = await KnowledgeQuestApi.getquestions(
-        { id: quizId },
+        { id: quizId, old: true },
         getCookie("accesstoken")
       );
       console.log(res);
@@ -36,7 +36,7 @@ export default function QuestQuiz({ quizId, setlevel, setmode, level }) {
   }, [quizId]);
   async function fetchnextquestion(answer) {
     let res = await KnowledgeQuestApi.checkanswer(
-      { id: questions[currentquestionindex].id, answer: answer },
+      { id: questions[currentquestionindex].id, answer: answer, old: true },
       getCookie("accesstoken")
     );
     if (res && res.data && res.data.success) {

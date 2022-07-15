@@ -9,15 +9,16 @@ import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
-import { Game_Data } from "../../../static_data/Game_Data";
+import { Game_Data, Simulator_Data } from "../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import GameApis from "../../../actions/apis/GameApis";
-function Games({ userdatafromserver, token, gameunicoinrewards }) {
+function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
+  console.log(recentgames);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
-  const [recent_games, setrecent_games] = useState([]);
+  const [recent_games, setrecent_games] = useState(recentgames);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -52,12 +53,6 @@ function Games({ userdatafromserver, token, gameunicoinrewards }) {
     };
   }, []);
 
-  useEffect(() => {
-    let x = localStorage.getItem("recent_games");
-    if (x) {
-      setrecent_games(JSON.parse(x));
-    }
-  }, []);
   async function updaterecentgames(gamearr) {
     let gamestring = "";
     for (let i = 0; i < gamearr.length; i++) {
@@ -65,27 +60,29 @@ function Games({ userdatafromserver, token, gameunicoinrewards }) {
         gamestring += gamearr[i] + ",";
       } else gamestring += gamearr[i];
     }
-
-    let res = await FreeGameApis.updateRecentGames({ games: gamestring });
+    FreeGameApis.updateRecentGames({ games: gamestring });
   }
-  async function handlegameclick(title, pushto) {
-    let x = localStorage.getItem("recent_games");
-    if (x) {
-      x = JSON.parse(x);
-      if (!x.includes(title)) {
-        if (x.length === 3) {
-          x[2] = x[1];
-          x[1] = x[0];
-          x[0] = title;
+  async function handlegameclick(title, pushto, isSimulator) {
+    if (isSimulator) {
+      return router.push(pushto);
+    }
+    if (recentgames.length > 0) {
+      if (!recentgames.includes(title)) {
+        if (recentgames.length === 3) {
+          recentgames[2] = recentgames[1];
+          recentgames[1] = recentgames[0];
+          recentgames[0] = title;
         } else {
-          x.push(title);
+          recentgames.push(title);
         }
-        setrecent_games(x);
-        localStorage.setItem("recent_games", JSON.stringify(x));
+        setrecent_games(recentgames);
+        updaterecentgames(recentgames);
       }
     } else {
-      localStorage.setItem("recent_games", JSON.stringify([title]));
+      setrecent_games([title]);
+      updaterecentgames([title]);
     }
+
     if (title === "Ludo") {
       let res = await FreeGameApis.presign({
         user_name:
@@ -132,7 +129,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards }) {
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
-                  {recent_games.map((item, index) => {
+                  {recentgames.map((item, index) => {
                     return (
                       <GameCard
                         onCLick={() =>
@@ -153,6 +150,25 @@ function Games({ userdatafromserver, token, gameunicoinrewards }) {
                 </div>
               </div>
             )}
+            <div className={styles.availableSection}>
+              <h2 className={styles.heading}>
+                Simulators
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {Object.keys(Simulator_Data).map((item, index) => {
+                  return (
+                    <GameCard
+                      onCLick={() =>
+                        handlegameclick(item, Simulator_Data[item].pushto, true)
+                      }
+                      data={Simulator_Data[item]}
+                      key={"chorecomponent" + index}
+                    />
+                  );
+                })}
+              </div>
+            </div>
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games

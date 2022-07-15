@@ -10,6 +10,7 @@ export default function AddAssigneeModal({
   setassignees,
   settoastdata,
   onCancel,
+  tourActive,
 }) {
   const [children, setchildren] = useState([]);
   useEffect(() => {
@@ -27,8 +28,10 @@ export default function AddAssigneeModal({
 
   return (
     <div className={styles.addassigneemodal}>
-      <div className={styles.background} onClick={onCancel}></div>
-      <div className={styles.box}>
+      {!tourActive && (
+        <div className={styles.background} onClick={onCancel}></div>
+      )}
+      <div className={styles.box} id="assignee-modal">
         <h2>Add Assignee</h2>
         <div className={styles.assigneewrapper}>
           {children.map((child) => {

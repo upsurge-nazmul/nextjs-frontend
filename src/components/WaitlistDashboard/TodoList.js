@@ -6,7 +6,13 @@ import { useRouter } from "next/dist/client/router";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { MainContext } from "../../context/Main";
 import { getCookie } from "../../actions/cookieUtils";
-export default function TodoList({ data, hide, completed, total }) {
+export default function TodoList({
+  data,
+  hide,
+  completed,
+  total,
+  clickDisabled,
+}) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
   async function hanldeludo() {
@@ -22,7 +28,7 @@ export default function TodoList({ data, hide, completed, total }) {
     if (res) {
       if (res.data.success) {
         router.push({
-          pathname: "/dashboard/w/game/Ludo",
+          pathname: "/dashboard/k/game/Ludo",
           query: { id: res.data.data },
         });
       } else {
@@ -34,9 +40,11 @@ export default function TodoList({ data, hide, completed, total }) {
   }
   return (
     <div className={styles.todolist}>
-      <div className={styles.background} onClick={hide}></div>
+      {router.query.storyIndex !== 2 && (
+        <div className={styles.background} onClick={hide}></div>
+      )}
       <Jasper className={styles.jasper} />
-      <div className={styles.main}>
+      <div className={styles.main} id="milestone-wrapper">
         <div className={styles.head}>
           <p className={styles.heading}>Milestones</p>
           <p className={styles.subheading}>
@@ -59,7 +67,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p onClick={() => router.push("/dashboard/w/quest")}>
+            <p onClick={() => router.push("/dashboard/k/quest")}>
               Go on the upsurge quest
             </p>
           </div>
@@ -74,7 +82,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p onClick={() => router.push("/dashboard/w/quiz")}>
+            <p onClick={() => router.push("/dashboard/k/quiz")}>
               Take the Money Quotient Quiz
             </p>
           </div>
@@ -126,7 +134,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p onClick={() => router.push("/dashboard/w/games")}>
+            <p onClick={() => router.push("/dashboard/k/games")}>
               Play Games in then Arena
             </p>
           </div>
@@ -139,7 +147,7 @@ export default function TodoList({ data, hide, completed, total }) {
                 <CheckRoundedIcon className={styles.checkicon} />
               )}
             </span>
-            <p onClick={() => router.push("/dashboard/w/calculators")}>
+            <p onClick={() => router.push("/dashboard/k/calculators")}>
               Check upsurge calculators
             </p>
           </div>

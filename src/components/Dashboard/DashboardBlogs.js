@@ -19,7 +19,7 @@ export default function DashboardBlogs({ blogs }) {
       .trim();
   }
   return (
-    <div className={styles.dashboardblogs}>
+    <div className={styles.dashboardblogs} id="dashboard-blogs">
       <h2
         className={styles.heading}
         onClick={() => router.push("/dashboard/p/blogs")}

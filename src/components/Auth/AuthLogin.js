@@ -12,8 +12,17 @@ import { apple_client_id, GClientId } from "../../../config";
 import AppleLogin from "react-apple-login";
 import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
-function AuthLogin({ settoastdata, error, seterror, setmode }) {
-  const { setuserdata, setuser } = useContext(MainContext);
+import { getfullname } from "../../helpers/generalfunctions";
+import { setUserInLocalStorage } from "../../helpers/localStorage";
+function AuthLogin({
+  settoastdata,
+  error,
+  seterror,
+  setmode,
+  onlyLogin,
+  setshowauth,
+}) {
+  const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [passhidden, setpasshidden] = useState(true);
@@ -28,18 +37,28 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       return;
     }
     if (!email) {
-      seterror("Please enter your email address");
-      setloading(false);
-      return;
-    }
-    if (!validator.isEmail(email)) {
-      seterror("Invalid email address");
+      seterror("Please enter your email address or username");
       setloading(false);
       return;
     }
     seterror("");
     let response = await LoginApis.login({ email, password });
     if (response && response.data && response.data.success) {
+      setSavedUsers(
+        setUserInLocalStorage({
+          token: response.data.data.token,
+          username: response.data.data.userProfile.user_img_url,
+          image: response.data.data.userProfile.user_img_url,
+          name: getfullname(
+            response.data.data.userProfile.first_name,
+            response.data.data.userProfile.last_name
+          ),
+          timestamp: new Date().getTime(),
+          type: response.data.data.userProfile.user_type,
+          id: response.data.data.userProfile.id,
+        })
+      );
+
       setCookie("accesstoken", response.data.data.token);
       setuserdata(response.data.data.userProfile);
       setuser(response.data.data.userProfile.id);
@@ -55,6 +74,10 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       } else if (response.data.data.userProfile.user_type === "parent")
         router.push("/dashboard/p");
       else router.push("/dashboard/k");
+      if (onlyLogin) {
+        setshowauth(false);
+        router.reload();
+      }
     } else {
       seterror(response?.data.message || "Cannot reach server");
       setloading(false);
@@ -98,7 +121,7 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
       }}
     >
       <ModernInputBox
-        placeholder="Email address"
+        placeholder="Email address/username"
         value={email}
         setvalue={setemail}
       />
@@ -159,9 +182,11 @@ function AuthLogin({ settoastdata, error, seterror, setmode }) {
           );
         }}
       /> */}
-      <div className={styles.reset} onClick={() => setmode("reset")}>
-        <span> Forgot password?</span>
-      </div>
+      {!onlyLogin && (
+        <div className={styles.reset} onClick={() => setmode("reset")}>
+          <span> Forgot password?</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,22 @@
+@use "../variables/fontsizes.scss" as *;
+
+.questPage {
+  background-color: #f4f5f7;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  .contentWrapper {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .mainContent {
+      width: 100%;
+      padding: 0 45px;
+      overflow-y: auto;
+      padding-bottom: 100px;
+    }
+  }
+}

@@ -27,6 +27,7 @@ export default function TodaysQuestion({ data }) {
       className={`${styles.todaysquestion} ${
         !is_correct && answered && styles.wronganswer
       }`}
+      id="todays-question"
     >
       <p className={styles.heading}>{"Today's question"}</p>
       {answered ? (

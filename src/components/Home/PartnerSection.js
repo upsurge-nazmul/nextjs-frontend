@@ -3,7 +3,7 @@ import styles from "../../styles/Home/partner.module.scss";
 import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
-export default function PartnerSection({ dashboard }) {
+export default function PartnerSection({ dashboard, nomargin }) {
   const rewards = [
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpKqn4rb_wjxfwd.jpg",
     "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpyswS28_w9hfz7.jpg",
@@ -27,6 +27,8 @@ export default function PartnerSection({ dashboard }) {
       className={`${dashboard ? styles.dashboard : styles.partner} ${
         theme === "dark" && styles.darkpartner
       }`}
+      style={nomargin ? { margin: 0 } : {}}
+      id="partner-section"
     >
       <div
         className={`${styles.heading} ${dashboard && styles.hidecursor}`}

@@ -9,7 +9,6 @@
   padding: 5vh 10vw 5vh;
   display: flex;
   position: relative;
-  margin-top: 80px;
   flex-direction: column;
   .heading {
     font-size: 46px;
@@ -79,6 +78,7 @@
   position: relative;
   flex-direction: column;
   border-radius: 12px;
+  width: 100%;
   .heading {
     font-size: 36px;
     font-weight: 700;
@@ -138,23 +138,23 @@
 }
 .darkpartner {
   .heading {
-  color: $d-moredark;
+    color: $d-moredark;
   }
   .subheading {
-  color: $d-main;
+    color: $d-main;
   }
   .hidecursor {
     cursor: default;
   }
   .leftarrow {
-path{
-  fill: $d-main;
-}
+    path {
+      fill: $d-main;
+    }
   }
   .rightarrow {
-path{
-  fill: $d-main;
-}
+    path {
+      fill: $d-main;
+    }
   }
   .wrapper {
     width: 100%;
@@ -258,7 +258,6 @@ path{
     padding: 5vh 6vw;
     display: flex;
     position: relative;
-    margin-top: 10px;
     flex-direction: column;
     border-radius: 12px;
     .heading {
@@ -327,7 +326,6 @@ path{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     height: 40vh;
     min-height: 350px;
     .leftarrow {
@@ -442,7 +440,6 @@ path{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     height: fit-content;
     min-height: 350px;
     .leftarrow {
@@ -561,7 +558,6 @@ path{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     height: 30vh;
     min-height: 250px;
     .leftarrow {
@@ -677,7 +673,6 @@ path{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     height: 30vh;
     min-height: 250px;
     .leftarrow {

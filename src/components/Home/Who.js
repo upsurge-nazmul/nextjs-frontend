@@ -12,6 +12,24 @@ function Who() {
     >
       <div className={styles.heading}>Who are we ?</div>
       <div className={styles.container}>
+        <div className={styles.right}>
+          <div className={styles.imageblock}>
+            <div className={styles.green}></div>
+            <div className={styles.white}></div>
+            <div className={styles.yellow}></div>
+            <video className={styles.video} controls>
+              <source src="/intro.mp4" type="video/mp4"></source>
+            </video>
+            {/* 
+            <Image
+              className={styles.image}
+              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/home_who.jpeg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            /> */}
+          </div>
+        </div>
         <div className={styles.left}>
           <p>
             {`upsurge is India’s 1st learning focussed gaming platform that aims
@@ -35,24 +53,6 @@ function Who() {
             is evolving, and the earlier we equip our children with these
             skills, the better!`}
           </p>
-        </div>
-        <div className={styles.right}>
-          <div className={styles.imageblock}>
-            <div className={styles.green}></div>
-            <div className={styles.white}></div>
-            <div className={styles.yellow}></div>
-            {/* <video className={styles.video} autoPlay controls>
-              <source src="/intro.mp4" type="video/mp4"></source>
-            </video> */}
-
-            <Image
-              className={styles.image}
-              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/home_who.jpeg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
         </div>
       </div>
     </div>

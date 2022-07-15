@@ -7,7 +7,6 @@
   position: relative;
   scroll-snap-align: start;
   transition: all 0.3s ease;
-  z-index: 105;
   display: flex;
   flex-direction: column;
   .ticker {
@@ -117,24 +116,25 @@
     }
   }
 }
-.darkheader{
+.darkheader {
   background-color: $d-moredark;
   .ticker {
     color: $d-main;
     .btn {
-      background-color:  $d-moredark;
+      background-color: $d-moredark;
       color: $d-text2;
-      &:hover{
-      background-color:  $d-light;
-      color: $d-text1;
+      &:hover {
+        background-color: $d-light;
+        color: $d-text1;
       }
     }
   }
-  .container{
-    .signin{
-    color: $d-moredark; &:hover{
-      background-color:  $d-main;
-      color: $d-text1;
+  .container {
+    .signin {
+      color: $d-moredark;
+      &:hover {
+        background-color: $d-main;
+        color: $d-text1;
       }
     }
   }
@@ -223,7 +223,6 @@
         padding: 2.5px 5px;
         cursor: pointer;
         transition: all 0.3s ease;
-
       }
     }
     .container {
@@ -255,7 +254,6 @@
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease;
-
       }
     }
   }

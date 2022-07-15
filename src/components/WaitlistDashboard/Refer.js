@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Image from "next/image";
 import styles from "../../styles/WaitlistDashboard/refer.module.scss";
-export default function Refer({ settoastdata, parent }) {
+export default function Refer({ settoastdata, parent, nomargin }) {
   const [email, setemail] = useState("");
   const [err, seterr] = useState("");
   useEffect(() => {
@@ -18,7 +18,11 @@ export default function Refer({ settoastdata, parent }) {
     }
   }
   return (
-    <div className={styles.refer}>
+    <div
+      className={styles.refer}
+      id="refer-div"
+      style={nomargin ? { margin: 0 } : {}}
+    >
       <p className={styles.heading}>Invite your friends</p>
       <p className={styles.subheading}>
         Earn 10 UniCoins for each friend joining our platform.

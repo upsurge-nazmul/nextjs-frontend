@@ -28,6 +28,8 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 import QuizApis from "../../../actions/apis/QuizApis";
+import Tour from "../../../components/Tour/Tour";
+import Jasper from "../../../components/SVGcomponents/Jasper";
 
 function Dashboard({
   isLogged,
@@ -41,7 +43,7 @@ function Dashboard({
   todaysquestion,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata, userdata } = useContext(MainContext);
   const [mode, setmode] = useState("home");
   const router = useRouter();
   const [waitlistNum, setwaitlistNum] = useState(0);
@@ -49,6 +51,7 @@ function Dashboard({
   const [chores, setchores] = useState(choresdata || []);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [confirmationgiven, setconfirmationgiven] = useState(false);
+  const [currentTourIndex, setcurrentTourIndex] = useState(0);
   const [tribes, settribes] = useState([]);
   const [phoneverified, setphoneverified] = useState(phone_verified);
   const [toastdata, settoastdata] = useState({
@@ -56,13 +59,146 @@ function Dashboard({
     type: "success",
     msg: "",
   });
+  const [showtour, setshowtour] = useState(
+    !userdatafromserver?.intro_guide_completed
+  );
+
   const [tribeRequestsFromServer, setTribeRequestsFromServer] = useState(
     triberequests || []
   );
-
   useEffect(() => {
-    console.log(tribeRequestsFromServer);
-  }, [tribeRequestsFromServer]);
+    if (router.query.storyIndex) {
+      setcurrentTourIndex(Number(router.query.storyIndex));
+    }
+  }, [router.query]);
+  const story = [
+    {
+      intro: true,
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>
+            Welcome to your dashboard,{userdata?.first_name}
+          </p>
+          <p className={styles.text}>
+            {`I am Jasper and i i'll help you get started.`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+    },
+    {
+      ref: "#upsurge-logo",
+      isolate: true,
+      required: true,
+      highlightBg: true,
+      position: "bottom",
+      content: `You can go back to home page, by clicking upsurge logo.`,
+    },
+    {
+      ref: "#add-child-btn",
+      position: "bottom",
+      text: "Welcome to upsurge!",
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Add child</p>
+          <p className={styles.text}>
+            {`Let's start by adding your child details.`}
+          </p>
+          <Jasper className={styles.jasper} />
+        </div>
+      ),
+      required: true,
+      disableBtns: true,
+      isolate: true,
+      skip: kids.length > 0,
+    },
+    {
+      ref: "#children-div",
+      content: (
+        <div className={styles.introdiv}>
+          <p className={styles.heading}>Congratulations!</p>
+          <p className={styles.text}>
+            {`You have successfully added your child.`}
+          </p>
+        </div>
+      ),
+      superimpose: true,
+      position: "bottom",
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#approvals-div",
+      position: "bottom",
+      content: `You'll see approval requests from your children, here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#todays-question",
+      position: "bottom",
+      content: `You can answer questions and get rewards.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#refer-div",
+      position: "bottom",
+      content: `You can refer your friends from here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#dashboard-blogs",
+      position: "bottom",
+      content: `You can access blogs from here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#chores-leftpanel",
+      position: "bottom",
+      content: `Now lets start allotting chores.`,
+      disableBtns: true,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#quest-leftpanel",
+      position: "bottom",
+      content: `You can track the knowledge quest progress of your children.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#games-leftpanel",
+      position: "bottom",
+      content: `You can play games here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#store-leftpanel",
+      position: "bottom",
+      content: `Now lets go to store.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+  ];
+
   useEffect(() => {
     const scrollContainer = document.querySelector("#gamecardwrapper");
     if (!scrollContainer) return;
@@ -116,7 +252,16 @@ function Dashboard({
       <div className={styles.dashboard}>
         <DashboardLeftPanel />
         <Toast data={toastdata} />
-
+        {phoneverified && showtour && (
+          <Tour
+            story={story}
+            current={currentTourIndex}
+            setcurrent={setcurrentTourIndex}
+            showtour={showtour}
+            setshowtour={setshowtour}
+            introComplete={true}
+          />
+        )}
         {userdatafromserver &&
           userdatafromserver.user_type !== "child" &&
           !phoneverified && (
@@ -144,7 +289,7 @@ function Dashboard({
                 {kids && kids.length ? (
                   <>
                     <div className={styles.flexLeft} id="leftside">
-                      <div className={styles.kidsSection}>
+                      <div className={styles.kidsSection} id="children-div">
                         <div className={styles.head}>
                           <h2 className={styles.heading}>My Children</h2>
                           <div
@@ -250,7 +395,10 @@ function Dashboard({
                               )}
                             </>
                           ) : (
-                            <FillSpace text="Currently there are no Approval pending." />
+                            <FillSpace
+                              id="approvals-div"
+                              text="Currently there are no Approval pending."
+                            />
                           )}
                         </div>
                       )}

@@ -23,11 +23,9 @@ export async function uploadaudiotos3(userId, file) {
     Key: "audio/" + userId + "/" + uuidv4() + ".ogg",
   };
   const url = "https://" + AWS_BUCKET + ".s3.amazonaws.com/" + params.Key;
-  s3.putObject(params).send((err, data) => {
-    if (err) {
-      err = true;
-    }
-  });
-  if (err) return null;
-  return url;
+  let data = await s3.putObject(params).promise();
+  if (data) {
+    console.log("data", data);
+    return url;
+  } else return null;
 }

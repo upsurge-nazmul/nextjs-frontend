@@ -155,8 +155,13 @@ function Header({
           />
         </div>
         <div
+          id="continue-dashboard-btn"
           className={`${styles.signin} ${styles.dashboardbtn}`}
           onClick={() => {
+            if (router.query.pushTo) {
+              router.push(router.query.pushTo);
+              return;
+            }
             if (userdata) {
               if (userdata.is_waiting_active) {
                 router.push("/dashboard/w");

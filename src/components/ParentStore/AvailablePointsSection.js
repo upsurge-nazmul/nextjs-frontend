@@ -3,9 +3,9 @@ import styles from "../../styles/ParentStore/AvailablePointsSection.module.scss"
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import AvailablePointCard from "./AvailablePointCard";
 
-function AvailablePointsSection({ kidsdata }) {
+function AvailablePointsSection({ kidsdata, id }) {
   return (
-    <div className={styles.AvailablePointsSection}>
+    <div className={styles.AvailablePointsSection} id={id}>
       <h2 className={styles.heading}>Available UniCoins</h2>
       <div className={styles.wrapper}>
         {kidsdata &&

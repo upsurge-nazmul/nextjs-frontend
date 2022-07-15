@@ -17,12 +17,14 @@ import ChoreApis from "../../../actions/apis/ChoreApis";
 import ChorePending from "../../../components/Chores/ChorePending";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import RejectChore from "../../../components/Dashboard/RejectChore";
+import Tour from "../../../components/Tour/Tour";
 
 function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
 
   const [mode, setmode] = useState("Chores");
   const router = useRouter();
+  const [storyIndex, setStoryIndex] = useState(0);
   const [dataloaded, setdataloaded] = useState(false);
   const [chores, setchores] = useState([]);
   const [choremode, setchoremode] = useState("inprogress");
@@ -106,7 +108,13 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
             setallchores={setallchores}
           />
         )}
-        <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
+        <ChoreModal
+          id="chore-modal"
+          showmodal={showmodal}
+          setshowmodal={setshowmodal}
+          setStoryIndex={setStoryIndex}
+          tourActive={router.query.showTour}
+        />
         <div className={styles.contentWrapper}>
           <DashboardHeader
             mode={mode}
@@ -192,6 +200,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
                 <h2 className={styles.heading}>Create Chores</h2>
                 <div
                   className={styles.button}
+                  id="chores-new-btn"
                   onClick={() => {
                     // if (
                     //   !userdatafromserver.plan_name ||
@@ -204,6 +213,9 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
                     //   });
                     //   return;
                     // } else
+                    if (router.query.showTour) {
+                      setStoryIndex((prev) => prev + 1);
+                    }
                     setshowmodal(true);
                   }}
                 >
@@ -230,6 +242,41 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
             </div>
           </div>
         </div>
+        {router.query.showTour && (
+          <Tour
+            story={[
+              {
+                ref: "#chores-new-btn",
+                position: "bottom",
+                content: `Click here to create a new chore.`,
+                superimpose: true,
+                required: true,
+                highlightBg: true,
+                isolate: true,
+                disableBtns: true,
+              },
+              {
+                ref: "#chore-modal",
+                position: "bottom",
+                content: `Select one category and click continue.`,
+                required: true,
+                disableBtns: true,
+                isolate: true,
+              },
+              {
+                ref: "#chore-modal",
+                position: "bottom",
+                content: `Choose any template.`,
+                required: true,
+                disableBtns: true,
+                isolate: true,
+              },
+            ]}
+            current={storyIndex}
+            setcurrent={setStoryIndex}
+            showtour={true}
+          />
+        )}
       </div>
     );
 }

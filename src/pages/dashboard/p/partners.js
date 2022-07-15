@@ -8,7 +8,7 @@ import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel
 import KidComponent from "../../../components/Dashboard/KidComponent";
 import NoKid from "../../../components/Dashboard/NoKid";
 import LeftPanel from "../../../components/LeftPanel";
-import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
+import PartnerSection from "../../../components/Home/PartnerSection";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import styles from "../../../styles/Dashboard/partnerpage.module.scss";
 import Toast from "../../../components/Toast";
@@ -17,12 +17,13 @@ import Image from "next/image";
 import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
-import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
+import Tour from "../../../components/Tour/Tour";
 import { MainContext } from "../../../context/Main";
 
 export default function Partners({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [storyIndex, setStoryIndex] = useState(0);
   const router = useRouter();
   const [mode, setmode] = useState("Partners");
   const [toastdata, settoastdata] = useState({
@@ -51,17 +52,73 @@ export default function Partners({ userdatafromserver }) {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <Toast data={toastdata} />
-      <DashboardLeftPanel />
+      <DashboardLeftPanel
+        setStoryIndex={setStoryIndex}
+        disableClicks={storyIndex === 2}
+      />
+      {router.query.showTour && (
+        <Tour
+          story={[
+            {
+              ref: "#partner-section",
+              position: "top",
+              content: `These are our partners.`,
+              superimpose: true,
+              required: true,
+              isolate: true,
+            },
+            {
+              ref: "#toggle-leftpanel",
+              position: "top",
+              content: `Click here to expand resources.`,
+              superimpose: true,
+              required: true,
+              isolate: true,
+              disableBtns: true,
+              highlightBg: true,
+            },
+            {
+              ref: "#toggle-leftpanel",
+              position: "bottom",
+              content: `You can checkout all the resources later, lets head on to settings.`,
+              superimpose: true,
+              required: true,
+              isolate: true,
+              highlightBg: true,
+            },
+            {
+              ref: "#header-settings",
+              position: "bottom-left",
+              content: `Clicking on your avatar will open settings menu.`,
+              superimpose: true,
+              required: true,
+              disableBtns: true,
+              isolate: true,
+              highlightBg: true,
+            },
+            {
+              ref: "#menu-main-payments",
+              position: "left",
+              content: `Great! now lets checkout payments.`,
+              superimpose: true,
+              isolate: true,
+              required: true,
+              delay: true,
+            },
+          ]}
+          current={storyIndex}
+          setcurrent={setStoryIndex}
+          showtour={true}
+        />
+      )}
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={mode} setmode={setmode} />
+        <DashboardHeader
+          mode={mode}
+          setmode={setmode}
+          setStoryIndex={setStoryIndex}
+        />
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
-            <div className={styles.wrapper}>
-              {rewards.map((item) => {
-                return <img key={item} src={item} alt="" />;
-              })}
-            </div>
-          </div>
+          <PartnerSection dashboard />
         </div>
       </div>
     </div>

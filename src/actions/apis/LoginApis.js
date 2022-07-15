@@ -117,7 +117,13 @@ const genemailotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const createchildotp = (payload) => {
+  return ApiCalls.getResponse(
+    "users/createchildotp",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const LoginApis = {
   signup,
   setphone,
@@ -144,6 +150,7 @@ const LoginApis = {
   getearlyaccess,
   resetpass,
   genemailotp,
+  createchildotp,
 };
 
 export default LoginApis;

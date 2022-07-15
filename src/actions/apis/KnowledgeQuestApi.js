@@ -34,6 +34,9 @@ const getLevel = (payload, token) => {
 const getQuestData = (payload, token) => {
   return ApiCalls.getResponse(`knowledgequest/questData`, payload, token);
 };
+const getActiveQuests = (payload, token) => {
+  return ApiCalls.getResponse("knowledgequest/activequests", payload, token);
+};
 const KidApis = {
   getquestions,
   checkanswer,
@@ -42,6 +45,7 @@ const KidApis = {
   updatequizdata,
   getLevel,
   getQuestData,
+  getActiveQuests,
 };
 
 export default KidApis;

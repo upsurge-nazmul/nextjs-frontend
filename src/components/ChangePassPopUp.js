@@ -24,11 +24,13 @@ export default function ChangePassPopUp({
   saveprofile,
   email,
   isEmailOtp,
+  type,
 }) {
   const [OTP, setOTP] = useState("");
   const [mode, setmode] = useState("data");
   const [error, seterror] = useState("");
   const [showotp, setshowotp] = useState(false);
+  const [parentphone, setparentphone] = useState("");
   useEffect(() => {
     seterror("");
   }, [password, mode, confirmpassword]);
@@ -44,6 +46,27 @@ export default function ChangePassPopUp({
       seterror(
         "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
       );
+      return;
+    }
+    if (type === "child") {
+      LoginApis.createchildotp({}).then((response) => {
+        if (response && response.data && response.data.success) {
+          console.log(response.data.data.phone);
+          setparentphone(response.data.data.phone);
+          setshowotp(true);
+          settoastdata({
+            msg: "OTP sent",
+            show: true,
+            type: "success",
+          });
+        } else {
+          settoastdata({
+            msg: response?.data.message || "Error",
+            show: true,
+            type: "error",
+          });
+        }
+      });
       return;
     }
     if (isEmailOtp) {
@@ -125,9 +148,11 @@ export default function ChangePassPopUp({
             <CancelOutlinedIcon className={styles.icon} />
           </div>
           <div className={styles.otpHeadWrapper}>
-            <p className={styles.text}>Enter the 6-digit code sent to you at</p>
+            <p className={styles.text}>{`Enter the 6-digit code sent to ${
+              type === "child" ? "your parent" : "you"
+            } at`}</p>
             <p className={styles.phone}>
-              {isEmailOtp ? email : +"91 " + phone}
+              {isEmailOtp ? email : `+91 ${parentphone ? parentphone : phone}`}
             </p>
           </div>
           <div className={styles.otpWrapper} id="otpWrapper">

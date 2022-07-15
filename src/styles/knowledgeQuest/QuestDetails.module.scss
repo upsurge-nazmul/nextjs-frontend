@@ -1,0 +1,69 @@
+.questPage {
+  background-color: #f4f5f7;
+  display: flex;
+  overflow: hidden;
+  .contentWrapper {
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .mainContent {
+      width: 100%;
+      padding: 0 45px;
+      overflow-y: auto;
+      padding-bottom: 20px;
+      .headingSection {
+        padding-bottom: 20px;
+        .heading {
+          color: #4166eb;
+          font-size: 24px;
+          font-weight: 600;
+        }
+        .about {
+          margin-bottom: 20px;
+        }
+        .conceptswrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          margin-top: 10px;
+          gap: 20px;
+          .concept {
+            width: fit-content;
+            height: fit-content;
+            padding: 8px 15px;
+            background: #f4f5f7;
+            border: 0.5px solid #9d9d9d;
+            border-radius: 4px;
+          }
+        }
+      }
+      .views {
+        .actionArea {
+          display: flex;
+          justify-content: space-between;
+          margin: 20px 0;
+          .button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 150px;
+          }
+          .backButton {
+            @extend .button;
+            background-color: #4d4d4d;
+          }
+          .doneButton {
+            @extend .button;
+            background-color: #4d5dfb;
+          }
+        }
+      }
+    }
+  }
+}

@@ -28,9 +28,15 @@ import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
-function DashboardLeftPanel({ type, hidelogo, fixed }) {
+function DashboardLeftPanel({
+  type,
+  hidelogo,
+  fixed,
+  disableClicks,
+  setStoryIndex,
+}) {
   const router = useRouter();
-  const { theme } = useContext(MainContext);
+  const { theme, userdata } = useContext(MainContext);
   const [width, setwidth] = useState(1000);
   const [currenttab, setcurrenttab] = useState("");
   const [showterm, setshowterm] = useState(false);
@@ -53,15 +59,25 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
       className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
         theme === "dark" && styles.dashboardDark
       }`}
+      style={
+        disableClicks ? { pointerEvents: "none", cursor: "not-allowed" } : {}
+      }
     >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
         <Logo
+          id="upsurge-logo"
           dark={theme === "dark"}
           className={styles.dashboardLogo}
           onClick={() => {
-            router.push("/");
+            if (!userdata.intro_guide_completed) {
+              router.push(
+                "/?showTour=true&pushTo=/dashboard/" +
+                  (userdata.user_type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
+              );
+            } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
             // else router.push("/dashboard/p");
@@ -69,10 +85,17 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
         />
       ) : (
         <MiniLogo
+          id="upsurge-logo"
           dark={theme === "dark"}
           className={styles.miniLogo}
           onClick={() => {
-            router.push("/");
+            if (!userdata.intro_guide_completed) {
+              router.push(
+                "/?showTour=true&pushTo=/dashboard/" +
+                  (userdata.type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
+              );
+            } else router.push("/");
 
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
@@ -92,6 +115,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
           <div
+            id="chores-leftpanel"
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/chores" ? styles.activetab : ""
             }`}
@@ -107,6 +131,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
+            id="quest-leftpanel"
             onClick={() => router.push("/dashboard/k/quest")}
           >
             <CoursesSvg className={styles.icon} />
@@ -115,10 +140,13 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
           <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/games" ||
-              currenttab.indexOf("/dashboard/k/game") !== -1
+              currenttab.indexOf("/dashboard/k/game") !== -1 ||
+              currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
+              currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
                 ? styles.activetab
                 : ""
             }`}
+            id="games-leftpanel"
             onClick={() => router.push("/dashboard/k/games")}
           >
             <GameSvg className={styles.icon} />
@@ -141,35 +169,16 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               currenttab === "/dashboard/k/store" ? styles.activetab : ""
             }`}
             onClick={() => router.push("/dashboard/k/store")}
+            id="store-leftpanel"
           >
             <StoreSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Store</p>
           </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/stocksimulator/[page]"
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/stocksimulator/home")}
-          >
-            <StockSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Stock Simulator</p>
-          </div>
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/cryptosimulator/[page]"
-                ? styles.activetab
-                : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/cryptosimulator/home")}
-          >
-            <CryptoSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Crypto Simulator</p>
-          </div>
+
           <LeftPannelToggle
             name="Resources"
+            id="toggle-leftpanel"
             currenttab={currenttab}
             isActive={
               currenttab.indexOf("/dashboard/k/blog") !== -1 ||
@@ -366,7 +375,16 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
-            onClick={() => router.push("/dashboard/p/chores")}
+            id="chores-leftpanel"
+            onClick={() => {
+              if (!userdata.intro_guide_completed) {
+                router.push(
+                  "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
+                );
+              } else {
+                router.push("/dashboard/p/chores");
+              }
+            }}
           >
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
@@ -378,6 +396,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
+            id="quest-leftpanel"
             onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
           >
             <CoursesSvg className={styles.icon} />
@@ -391,6 +410,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
                 ? styles.activetab
                 : ""
             }`}
+            id="games-leftpanel"
             onClick={() => router.push("/dashboard/p/games")}
           >
             <GameSvg className={styles.icon} />
@@ -401,6 +421,7 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
               currenttab === "/dashboard/p/store" ? styles.activetab : ""
             }`}
             onClick={() => router.push("/dashboard/p/store")}
+            id="store-leftpanel"
           >
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
@@ -409,13 +430,22 @@ function DashboardLeftPanel({ type, hidelogo, fixed }) {
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/partners" ? styles.activetab : ""
             }`}
-            onClick={() => router.push("/dashboard/p/partners")}
+            onClick={() => {
+              if (router.query.showTour) {
+                router.push("/dashboard/p/partners?showTour=true");
+                return;
+              }
+              router.push("/dashboard/p/partners");
+            }}
+            id="partners-leftpanel"
           >
             <GroupsOutlinedIcon className={styles.partnericon} />
             <p className={styles.tabtitle}>Partners</p>
           </div>
           <LeftPannelToggle
             name="Resources"
+            id="toggle-leftpanel"
+            setStoryIndex={setStoryIndex}
             currenttab={currenttab}
             isActive={
               currenttab.indexOf("/dashboard/p/blog") !== -1 ||

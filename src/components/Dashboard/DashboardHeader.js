@@ -12,11 +12,20 @@ import Menu from "./Menu";
 import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
+import AuthComponent from "../Auth/AuthComponent";
 
-function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
+function DashboardHeader({
+  mode,
+  showback,
+  gobackto,
+  settoastdata,
+  disableClicks,
+  setStoryIndex,
+}) {
   const router = useRouter();
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
+  const [showauth, setshowauth] = useState(false);
   const [shownotifications, setshownotifications] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
@@ -26,6 +35,7 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
       className={`${styles.dashboardHeader} ${
         theme === "dark" && styles.darkdashboardheader
       }`}
+      style={disableClicks ? { pointerEvents: "none" } : {}}
     >
       {shownotifications && (
         <NotificationMenu
@@ -33,6 +43,12 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
           settoastdata={settoastdata}
         />
       )}
+      <AuthComponent
+        showauth={showauth}
+        setshowauth={setshowauth}
+        onlyLogin={true}
+      />
+
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -49,16 +65,18 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        <div className={styles.rewardBlock}>
-          <UniCoinSvg className={styles.svg} />
-          <p className={styles.number}>
-            {userdata?.num_unicoins
-              ? userdata?.num_unicoins > UniCoinValue
-                ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
-                : userdata.num_unicoins
-              : 0}
-          </p>
-        </div>
+        {userdata?.user_type !== "parent" && (
+          <div className={styles.rewardBlock}>
+            <UniCoinSvg className={styles.svg} />
+            <p className={styles.number}>
+              {userdata?.num_unicoins
+                ? userdata?.num_unicoins > UniCoinValue
+                  ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
+                  : userdata.num_unicoins
+                : 0}
+            </p>
+          </div>
+        )}
         {
           <div
             id="notification-btn"
@@ -66,8 +84,18 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
               bell ? styles.bell : ""
             }`}
             onClick={() => setshownotifications(!shownotifications)}
-            onMouseEnter={() => setbell(true)}
-            onMouseLeave={() => setbell(false)}
+            onMouseEnter={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(true);
+            }}
+            onMouseLeave={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(false);
+            }}
           >
             {notifications.length > 0 ? (
               <div className={styles.dot}></div>
@@ -75,15 +103,23 @@ function DashboardHeader({ mode, showback, gobackto, settoastdata }) {
             <NotificationBell />
           </div>
         }
-        <div className={styles.avatar} onClick={() => setshowmenu(!showmenu)}>
+        <div className={styles.avatar} id="header-settings">
           {showmenu && (
             <Menu
+              showauth={showauth}
+              setshowauth={setshowauth}
               settoastdata={settoastdata}
               waitilistmenu={userdata?.is_waiting_active}
               menuType={userdata?.user_type}
             />
           )}
           <img
+            onClick={() => {
+              if (router.query.showTour) {
+                setStoryIndex((prev) => prev + 1);
+              }
+              setshowmenu(!showmenu);
+            }}
             id="avatar-button"
             src={
               userdata?.user_img_url ||

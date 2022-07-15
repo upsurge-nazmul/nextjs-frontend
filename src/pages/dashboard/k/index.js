@@ -11,6 +11,7 @@ import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
 import KidApis from "../../../actions/apis/KidApis";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import KnowledgeQuestApi from "../../../actions/apis/KnowledgeQuestApi";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import TribeApis from "../../../actions/apis/TribeApis";
 import { getCookie } from "../../../actions/cookieUtils";
@@ -23,6 +24,11 @@ import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import KidChore from "../../../components/KidDashboard/KidChore";
+import TodoList from "../../../components/WaitlistDashboard/TodoList";
+import Tour from "../../../components/Tour/Tour";
+import Jasper from "../../../components/SVGcomponents/Jasper";
+import IntroDiv from "../../../components/Tour/IntroDiv";
+import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 
 export default function ChildActivity({
   pendingchores,
@@ -32,11 +38,20 @@ export default function ChildActivity({
   recentgames,
   currentLevel,
   userdatafromserver,
+  tododatafromserver,
+  moneyacedata,
+  activeQuests,
 }) {
-  const { setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
+  const [showtour, setshowtour] = useState(
+    !userdatafromserver?.intro_guide_completed
+  );
+  const [tododata, settododata] = useState(tododatafromserver);
   const [choremode, setchoremode] = useState("inprogress");
   const [chorearray, setchorearray] = useState(pendingchores);
+  const [showtodo, setshowtodo] = useState(false);
+  const [currentTourIndex, setcurrentTourIndex] = useState(0);
   const [quests, setquests] = useState([]);
   const [showlevels, setshowlevels] = useState(false);
   const router = useRouter();
@@ -80,39 +95,180 @@ export default function ChildActivity({
       scrollContainer.scrollLeft += evt.deltaY * 5;
     });
   }, []);
+  useEffect(() => {
+    if (router.query.storyIndex) {
+      setcurrentTourIndex(Number(router.query.storyIndex));
+    }
+  }, [router.query]);
+  const story = [
+    {
+      intro: true,
+      content: (
+        <IntroDiv
+          name={userdata?.first_name}
+          text={`I am Jasper and i i'll help you get started.`}
+        />
+      ),
+    },
+    {
+      ref: "#upsurge-logo",
+      isolate: true,
+      required: true,
+      highlightBg: true,
+      position: "bottom",
+      content: `You can go back to home page, by clicking upsurge logo.`,
+    },
+    {
+      ref: "#milestone",
+      position: "bottom",
+      highlightBg: true,
+      text: "Welcome to upsurge!",
+      extraPadding: true,
+      content: `you can check your milestones here.`,
+      required: true,
+      disableBtns: true,
+      isolate: true,
+    },
+    {
+      ref: "#milestone-wrapper",
+      content: (
+        <IntroDiv
+          hideJasper={true}
+          head={`Here you can see all your milestones!`}
+          text={`You can also directly go to milestones, by clicking on them.`}
+        />
+      ),
+      superimpose: true,
+      position: "bottom",
+      required: true,
+      delay: true,
+      isolate: true,
+      absolute: true,
+      disableBg: true,
+      nextFunction: () => {
+        if (currentTourIndex === 3) {
+          setcurrentTourIndex((prev) => prev + 1);
+        }
+        setshowtodo(!showtodo);
+      },
+    },
+    {
+      ref: "#leaderboards",
+      position: "bottom",
+      content: `You can see the leaderboards here.`,
+      extraPadding: true,
+      superimpose: true,
+      highlightBg: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#chores",
+      position: "bottom",
+      content: `You can see your pending chores here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#quests",
+      position: "bottom",
+      content: `You can see your quest progress here.`,
+      superimpose: true,
+      required: true,
+      isolate: true,
+    },
+    {
+      ref: "#recent_games",
+      position: "top",
+      content: `You can access your recent games.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+      extraPadding: true,
+    },
+    {
+      ref: "#chores-leftpanel",
+      position: "bottom",
+      content: `Now lets go to chores.`,
+      disableBtns: true,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#quest-leftpanel",
+      position: "bottom",
+      content: `You can track the knowledge quest progress of your children.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#games-leftpanel",
+      position: "bottom",
+      content: `You can play games here.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+    {
+      ref: "#store-leftpanel",
+      position: "bottom",
+      content: `Now lets go to store.`,
+      superimpose: true,
+      required: true,
+      highlightBg: true,
+      isolate: true,
+    },
+  ];
   return (
     <div className={styles.childactivity}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
+      {showtour && (
+        <Tour
+          story={story}
+          current={currentTourIndex}
+          setcurrent={setcurrentTourIndex}
+          showtour={showtour}
+          setshowtour={setshowtour}
+          introComplete={true}
+        />
+      )}
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
+        {showtodo && (
+          <TodoList
+            data={tododata.list}
+            total={tododata.total}
+            completed={tododata.completed}
+            hide={() => {
+              if (currentTourIndex === 3) {
+                setcurrentTourIndex((prev) => prev + 1);
+              }
+              setshowtodo(!showtodo);
+            }}
+          />
+        )}
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
               <div className={styles.topblock}>
-                <img
-                  className={styles.avatar}
-                  src={childdetail.user_img_url}
-                  alt=""
-                />
+                <h2 className={styles.mainheading}>
+                  Level
+                  <HeadingArrow />
+                </h2>
                 <div className={styles.right}>
-                  <div className={styles.rewardblock}>
-                    <UniCoinSvg className={styles.svg} />
-                    <p className={styles.number}>
-                      {childdetail.num_unicoins
-                        ? childdetail.num_unicoins > UniCoinValue
-                          ? childdetail.num_unicoins / UniCoinValue + "K "
-                          : childdetail.num_unicoins
-                        : 0}{" "}
-                      UniCoins
-                    </p>
-                  </div>
-                  <p className={styles.username}>@{childdetail.user_name}</p>
                   <div
                     className={styles.badge}
                     onClick={() => setshowlevels(true)}
@@ -159,11 +315,41 @@ export default function ChildActivity({
                 </>
               )}
             </div>
-            <div className={styles.leaderboardsection}>
+            <div className={styles.milestonesSection} s>
+              <h2
+                id="milestone"
+                className={styles.mainheading}
+                onClick={() => {
+                  if (currentTourIndex === 2) {
+                    setcurrentTourIndex((prev) => prev + 1);
+                  }
+                  setshowtodo(true);
+                }}
+              >
+                Milestones
+                <HeadingArrow />
+              </h2>
+              <div className={styles.quizblock}>
+                <p className={styles.heading}>
+                  {tododata
+                    ? tododata.completed + "/" + tododata.total
+                    : "All clear"}
+                </p>
+                <p
+                  className={styles.subheading}
+                  onClick={() => setshowtodo(true)}
+                >
+                  Complete Milestones
+                </p>
+              </div>
+            </div>
+            <div className={styles.leaderboardsection} id="leaderboards">
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
                 <div className={styles.element}>
-                  <p className={styles.rank}>250</p>
+                  <p className={styles.rank}>
+                    {moneyacedata.inhand_money + moneyacedata.account_balance}
+                  </p>
                   <p className={styles.section}>Money ace</p>
                 </div>
                 <div className={styles.element}>
@@ -171,7 +357,7 @@ export default function ChildActivity({
                   <p className={styles.section}>Money Quotient</p>
                 </div>
                 <div className={styles.element}>
-                  <p className={styles.rank}>2</p>
+                  <p className={styles.rank}>{activeQuests?.length || 0}</p>
                   <p className={styles.section}>Quests</p>
                 </div>
                 <div className={styles.element}>
@@ -182,7 +368,7 @@ export default function ChildActivity({
             </div>
           </div>
           <div className={styles.flexRight}>
-            <div className={styles.choreSection}>
+            <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
                 onClick={() => router.push("/dashboard/p/chores")}
@@ -209,7 +395,7 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-            <div className={styles.questsection}>
+            <div className={styles.questsection} id="quests">
               <h2
                 className={styles.heading}
                 onClick={() => router.push("/dashboard/p/quests")}
@@ -226,7 +412,7 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-            <div className={styles.gamessection}>
+            <div className={styles.gamessection} id="recent_games">
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
                 {recentgames.map((game) => {
@@ -278,7 +464,7 @@ export async function getServerSideProps({ params, req }) {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {
             permanent: false,
-            destination: "/dashboard/k",
+            destination: "/dashboard/p",
           },
         };
       let pendinchores = await ChoreApis.getchildchores(
@@ -288,6 +474,8 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
+      let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
@@ -309,6 +497,10 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let activeQuests = await KnowledgeQuestApi.getActiveQuests(
+        { userId: response.data.data.user_id },
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -320,6 +512,7 @@ export async function getServerSideProps({ params, req }) {
             currentLevel && currentLevel.data && currentLevel.data.success
               ? currentLevel.data.data
               : 1,
+          tododatafromserver: tododata?.data?.data || null,
           childdetail:
             response && response.data && response.data.data
               ? response.data.data
@@ -336,6 +529,14 @@ export async function getServerSideProps({ params, req }) {
               ? recentgames.data.data
               : [],
           userdatafromserver: response.data.data,
+          moneyacedata:
+            moneyacedata && moneyacedata.data && moneyacedata.data.success
+              ? moneyacedata.data.data
+              : null,
+          activeQuests:
+            activeQuests && activeQuests.data && activeQuests.data.success
+              ? activeQuests.data.data
+              : null,
         },
       };
     }

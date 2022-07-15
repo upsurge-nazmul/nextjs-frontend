@@ -1,0 +1,62 @@
+.headSection {
+  .mainhead {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 20px;
+    height: 219px;
+    position: relative;
+    padding: 40px;
+    img {
+      object-fit: cover;
+      width: 136px;
+      height: 137px;
+      border-radius: 25px;
+      margin-right: 30px;
+    }
+    .right {
+      .questheading {
+        color: #232323;
+        font-size: 32px;
+        font-weight: 600;
+      }
+      .age {
+        color: #000000cf;
+        font-family: "Roboto";
+        font-size: 14px;
+        margin-top: 10px;
+        font-weight: 500;
+      }
+      .details {
+        display: flex;
+        color: #232323;
+        font-family: "Roboto";
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 10px;
+        svg {
+          margin-right: 5px;
+        }
+        .students {
+          margin-right: 20px;
+          display: flex;
+          align-items: center;
+        }
+        .projects {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    .creditandweeks {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      color: #232323;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: right;
+    }
+  }
+}
