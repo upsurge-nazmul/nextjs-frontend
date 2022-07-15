@@ -265,8 +265,8 @@ function DashboardLeftPanel({
           >
             <StockSvg className={styles.icon} />
             <p className={styles.tabtitle}>Stock Simulator</p>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/cryptosimulator/[page]"
                 ? styles.activetab
