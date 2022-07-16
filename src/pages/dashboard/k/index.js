@@ -371,7 +371,7 @@ export default function ChildActivity({
             <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
-                onClick={() => router.push("/dashboard/p/chores")}
+                onClick={() => router.push("/dashboard/k/chores")}
               >
                 Chores
                 <HeadingArrow />
@@ -398,7 +398,7 @@ export default function ChildActivity({
             <div className={styles.questsection} id="quests">
               <h2
                 className={styles.heading}
-                onClick={() => router.push("/dashboard/p/quests")}
+                onClick={() => router.push("/dashboard/k/quest")}
               >
                 Quests
                 <HeadingArrow />
