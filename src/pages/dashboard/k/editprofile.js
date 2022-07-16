@@ -193,6 +193,7 @@ export default function EditProfile({ data, childavatars }) {
           setmode={setmode}
           showback={true}
           settoastdata={settoastdata}
+          gobackto={`dashboard/k`}
         />
         <div className={styles.mainContent}>
           {showavatarmodal && (
