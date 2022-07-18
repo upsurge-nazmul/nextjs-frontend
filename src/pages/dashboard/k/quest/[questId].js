@@ -84,7 +84,7 @@ export default function KnowledgeQuest({ userData, questData }) {
   };
 
   return (
-    <div className={styles.questPage}>
+    <div className={styles.questDetailPage}>
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
@@ -118,7 +118,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                   <p>{`We recommend changing your display to landscape mode to best enjoy the quest`}</p>
                   <div
                     className={styles.button}
-                    onClick={() => router.push("/dashboard/w")}
+                    onClick={() => router.push("/dashboard/k")}
                   >
                     Go back
                   </div>
