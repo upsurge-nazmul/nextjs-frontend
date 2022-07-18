@@ -513,12 +513,12 @@ function DashboardLeftPanel({
           </div>
           <a
             className={styles.whatsapp}
-            href="https://wa.me/918287433304"
+            href="https://wa.me/918851117926"
             target="_blank"
             rel="noreferrer"
           >
             <WhatsAppIcon className={styles.icon} />
-            Connect on whatsapp
+            Connect on Whatsapp
           </a>
           <div className={styles.terms}>
             <p
