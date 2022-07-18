@@ -1,5 +1,6 @@
 .AvatarSection {
-  width: 100%;
+  // width: 100%;
+  overflow-x: auto;
   .heading {
     font-weight: 500;
     font-size: 25px;
@@ -12,11 +13,13 @@
     }
   }
   .wrapper {
+    width: 73vw;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     overflow-x: auto;
-    width: 100%;
     &::-webkit-scrollbar {
-      height: 10px;
+      height: 6px;
     }
   }
 }

@@ -75,14 +75,14 @@ export default function KidStore({
           <div className={styles.redeem}>
             <RedeemSection />
           </div>
-          <div className={styles.flexLeft}>
+          <div className={styles.avatars}>
             <AvailableAvatarSection
               avatars={avatars}
               setshowmodal={setshowmodal}
               setdata={setdata}
             />
           </div>
-          <div className={styles.flexRight}>
+          <div className={styles.vouchers}>
             <VoucherSection
               vouchers={vouchers}
               kid={true}
