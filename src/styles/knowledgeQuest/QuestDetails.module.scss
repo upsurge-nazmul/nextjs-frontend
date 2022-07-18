@@ -15,11 +15,11 @@
       padding-bottom: 20px;
       .headingSection {
         padding-bottom: 20px;
-        .heading {
-          color: #4166eb;
-          font-size: 24px;
-          font-weight: 600;
-        }
+        // .heading {
+        //   color: #4166eb;
+        //   font-size: 24px;
+        //   font-weight: 600;
+        // }
         .about {
           margin-bottom: 20px;
         }
@@ -36,6 +36,53 @@
             background: #f4f5f7;
             border: 0.5px solid #9d9d9d;
             border-radius: 4px;
+          }
+        }
+      }
+      .mobileerr {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #4166eb;
+        justify-content: center;
+        padding: 40px 0;
+        height: 100%;
+        border-radius: 8px;
+        .box {
+          width: 80%;
+          background-color: white;
+          border-radius: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .jasper {
+            width: 50%;
+            margin-top: 20px;
+          }
+          p {
+            width: 80%;
+            margin-top: 10px;
+            text-align: center;
+            color: #464646;
+          }
+          .heading {
+            font-size: clamp(20px, 2vw, 24px);
+            margin-top: 20px;
+            color: black;
+            font-weight: 600;
+          }
+          .button {
+            background-color: #4166eb;
+            width: 150px;
+            height: 50px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 20px 0;
           }
         }
       }

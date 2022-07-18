@@ -12,6 +12,7 @@ import RecordingView from "../../../../components/ChildQuest/RecordingView";
 import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
+import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 
 const LESSON_TYPES = ["recording", "activity", "quiz"];
 
@@ -27,7 +28,7 @@ const democoncepts = [
 
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, widthHeight } = useContext(MainContext);
   const { questId } = router.query;
 
   const [toastdata, settoastdata] = useState({
@@ -87,11 +88,11 @@ export default function KnowledgeQuest({ userData, questData }) {
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader />
+        {currentQuest ? <DashboardHeader mode={currentQuest.title} /> : ""}
         <div className={styles.mainContent}>
           {currentQuest && (
             <div className={styles.headingSection}>
-              <p className={styles.heading}>{currentQuest.title}</p>
+              {/* <p className={styles.heading}>{currentQuest.title}</p> */}
               <p className={styles.about}>{currentQuest.questDescription}</p>
               <p className={styles.heading}>Concepts Covered</p>
               <div className={styles.conceptswrapper}>
@@ -105,52 +106,82 @@ export default function KnowledgeQuest({ userData, questData }) {
               </div>
             </div>
           )}
-          {view && currentQuest ? (
-            <div className={styles.views}>
-              {view === LESSON_TYPES[0] ? (
-                <RecordingView
-                  {...{
-                    chapterId: currentChapter,
-                  }}
-                />
-              ) : view === LESSON_TYPES[1] ? (
-                <ActivityView
-                  {...{
-                    chapterId: currentChapter,
-                  }}
-                />
-              ) : view === LESSON_TYPES[2] ? (
-                <QuizView
-                  {...{
-                    chapterId: currentChapter,
-                    questId: currentQuest.questId,
-                    handleDone,
-                    setuserdata,
-                  }}
-                />
-              ) : (
-                ""
-              )}
-              <div className={styles.actionArea}>
-                <button className={styles.backButton} onClick={handleBack}>
-                  Go Back
-                </button>
-                {(view === LESSON_TYPES[0] || view === LESSON_TYPES[1]) && (
-                  <button className={styles.doneButton} onClick={handleDone}>
-                    Done
-                  </button>
+          <div>
+            {widthHeight.width < 900 &&
+            widthHeight.height > widthHeight.width ? (
+              <div className={styles.mobileerr}>
+                <div className={styles.box}>
+                  <BrokenGameConroller className={styles.jasper} />
+                  <p className={styles.heading}>
+                    Please switch to landscape mode
+                  </p>
+                  <p>{`We recommend changing your display to landscape mode to best enjoy the quest`}</p>
+                  <div
+                    className={styles.button}
+                    onClick={() => router.push("/dashboard/w")}
+                  >
+                    Go back
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                {view && currentQuest ? (
+                  <div className={styles.views}>
+                    {view === LESSON_TYPES[0] ? (
+                      <RecordingView
+                        {...{
+                          chapterId: currentChapter,
+                        }}
+                      />
+                    ) : view === LESSON_TYPES[1] ? (
+                      <ActivityView
+                        {...{
+                          chapterId: currentChapter,
+                        }}
+                      />
+                    ) : view === LESSON_TYPES[2] ? (
+                      <QuizView
+                        {...{
+                          chapterId: currentChapter,
+                          questId: currentQuest.questId,
+                          handleDone,
+                          setuserdata,
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    <div className={styles.actionArea}>
+                      <button
+                        className={styles.backButton}
+                        onClick={handleBack}
+                      >
+                        Go Back
+                      </button>
+                      {(view === LESSON_TYPES[0] ||
+                        view === LESSON_TYPES[1]) && (
+                        <button
+                          className={styles.doneButton}
+                          onClick={handleDone}
+                        >
+                          Done
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <QuestMap
+                    questData={currentQuest}
+                    changeView={setView}
+                    setActiveChapter={setCurrentChapter}
+                    setActiveChapterNo={setActiveChNo}
+                    userLevel={userLevel}
+                  />
                 )}
               </div>
-            </div>
-          ) : (
-            <QuestMap
-              questData={currentQuest}
-              changeView={setView}
-              setActiveChapter={setCurrentChapter}
-              setActiveChapterNo={setActiveChNo}
-              userLevel={userLevel}
-            />
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
