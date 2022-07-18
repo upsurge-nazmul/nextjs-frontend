@@ -361,7 +361,7 @@ function AddKid({ childdata, userdatafromserver }) {
             </div>
             <ModernInputBox
               value={userName}
-              maxLength={10}
+              // maxLength={10}
               setvalue={setuserName}
               placeholder="Username *"
               extraclass={styles.margin}

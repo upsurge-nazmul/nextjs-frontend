@@ -244,7 +244,7 @@ function AuthFullData({
       <input
         type="text"
         placeholder="Username"
-        maxLength={8}
+        // maxLength={8}
         value={username}
         onChange={(e) => setusername(e.target.value)}
       />
