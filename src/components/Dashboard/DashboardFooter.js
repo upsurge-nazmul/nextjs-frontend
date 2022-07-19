@@ -23,12 +23,12 @@ export default function DashboardFooter() {
           <div className={styles.brandtext}>
             <a
               className={styles.whatsapp}
-              href="https://wa.me/918287433304"
+              href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"
             >
               <WhatsAppIcon className={styles.icon} />
-              Connect on whatsapp
+              Connect on Whatsapp
             </a>
             <div className={styles.bottom}>
               <p
@@ -55,12 +55,12 @@ export default function DashboardFooter() {
         <div className={styles.bottom}>
           <a
             className={styles.whatsapp}
-            href="https://wa.me/918287433304"
+            href="https://wa.me/918851117926"
             target="_blank"
             rel="noreferrer"
           >
             <WhatsAppIcon className={styles.icon} />
-            Connect on whatsapp
+            Connect on Whatsapp
           </a>
           <div className={styles.wrap}>
             <p

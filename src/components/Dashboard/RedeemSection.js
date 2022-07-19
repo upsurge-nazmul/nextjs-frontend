@@ -18,6 +18,7 @@ export default function RedeemSection({
   const [unicointoconvert, setunicointoconvert] = useState("");
   const [err, seterr] = useState("");
   const { userdata } = useContext(MainContext);
+
   async function convert() {
     seterr("");
     if (unicointoconvert > user_unicoin) {
@@ -43,9 +44,11 @@ export default function RedeemSection({
       seterr(response.data.message || "Couldn't connect to server");
     }
   }
+
   useEffect(() => {
     seterr("");
   }, [unicointoconvert]);
+
   return (
     <div className={styles.head}>
       <div className={styles.left}>
@@ -71,8 +74,8 @@ export default function RedeemSection({
             Rupees
           </p> */}
         </div>
-        {err && <p className={styles.converstiondetails}>{err}</p>}
-        <div className={styles.converstiondiv}>
+        {/* {err && <p className={styles.converstiondetails}>{err}</p>} */}
+        {/* <div className={styles.converstiondiv}>
           {showinput && (
             <ModernInputBox
               setvalue={setunicointoconvert}
@@ -87,7 +90,7 @@ export default function RedeemSection({
               placeholder="Unicoins to convert"
             />
           )}
-          {/* <div
+          <div
             className={styles.converbutton}
             style={{ marginLeft: !showinput ? 0 : "15px" }}
             onClick={(e) => {
@@ -99,10 +102,12 @@ export default function RedeemSection({
             }}
           >
             {!showinput ? "Convert unicoins" : "Convert"}
-          </div> */}
-        </div>
+          </div>
+        </div> */}
       </div>
-      <Jasper className={styles.jasper} />
+      <div className={styles.right}>
+        <Jasper className={styles.jasper} />
+      </div>
     </div>
   );
 }

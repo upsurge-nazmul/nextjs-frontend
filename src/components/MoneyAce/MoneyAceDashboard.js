@@ -637,7 +637,7 @@ export default function MoneyAceDashboard({
                 onClick={() => setcurrenttab("tasks")}
               >
                 <p className={styles.title}>TASKS</p>
-                <bg className={styles.bg}>
+                <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
                     src="https://i.ibb.co/tYSFRWk/Task-Panel-1.png"
@@ -648,7 +648,7 @@ export default function MoneyAceDashboard({
                     src="https://i.ibb.co/Wk1xwTs/tasks-1.png"
                     alt=""
                   />
-                </bg>
+                </div>
               </div>
             </div>
           ) : currenttab === "tasks" ? (

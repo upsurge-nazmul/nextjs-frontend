@@ -6,7 +6,7 @@ function QuestCard({ data, handleCardClick }) {
 
   return (
     <div
-      className={styles.gameCard}
+      className={styles.questCard}
       onClick={() => handleCardClick(data.questId)}
     >
       <img
@@ -16,6 +16,7 @@ function QuestCard({ data, handleCardClick }) {
           "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
         }
         alt=""
+        className={styles.img}
       />
       <div className={styles.contentWrapper}>
         <p className={styles.title}>{data?.title || ""}</p>
@@ -24,8 +25,8 @@ function QuestCard({ data, handleCardClick }) {
             ? data?.questDescription.substring(0, 50) + "..."
             : data?.questDescription || ""}
         </p>
-        <div className={styles.chatbtn}>
-          Go
+        <div className={styles.startBtn}>
+          Start
           <GameSvg className={styles.icon} />
         </div>
       </div>

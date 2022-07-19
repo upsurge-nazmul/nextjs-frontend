@@ -117,7 +117,6 @@ export default function KidChoresPage({
           <div className={styles.flexRight}>
             <div className={styles.badgeSection}>
               <h2 className={styles.heading}>Current Badge</h2>
-
               <div className={styles.wrapper}>
                 <div
                   className={styles.badge}
