@@ -338,10 +338,14 @@
       }
       .maincontent {
         display: flex;
-        flex-direction: column-reverse;
-        margin-left: 20px;
+        flex-direction: row;
+        margin-left: 0;
+        margin-right: 0;
+        margin: 0;
+        padding: 0 20px;
         .left {
-          flex: 1;
+          flex: auto;
+          width: 100%;
           .heading {
             font-size: 18px;
           }
@@ -368,8 +372,7 @@
               }
             }
             .dropdownArea {
-              flex: 1;
-              width: 70%;
+              width: 100%;
             }
           }
         }
