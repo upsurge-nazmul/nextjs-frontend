@@ -137,12 +137,14 @@
       display: flex;
       width: 100%;
       flex-direction: column;
+      max-width: fit-content;
       .mainContent {
         width: 100%;
         display: flex;
         overflow-y: auto;
         height: fit-content;
-        margin-top: 20px;
+        margin-top: 0px;
+        padding: 0 20px;
         scrollbar-width: thin;
         .flexLeft {
           display: flex;

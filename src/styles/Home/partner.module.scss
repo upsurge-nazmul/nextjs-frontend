@@ -183,7 +183,7 @@
     }
   }
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) and (min-width: 861px) {
   .dashboard {
     height: fit-content;
     background-color: #ff6263;
@@ -358,8 +358,7 @@
       padding: 0 10vw;
     }
     .wrapper {
-      width: 90%;
-      flex: 1;
+      width: 100%;
       margin-top: 30px;
       .img {
         min-width: 120px;
@@ -383,22 +382,10 @@
     margin-top: 0px;
     min-height: 340px;
     .leftarrow {
-      position: absolute;
-      left: 40px;
-      width: 40px;
-      top: 80%;
-      transform: scaleX(-1);
-      z-index: 2;
-      cursor: pointer;
+      display: none;
     }
     .rightarrow {
-      position: absolute;
-      right: unset;
-      left: 100px;
-      top: 80%;
-      width: 40px;
-      z-index: 2;
-      cursor: pointer;
+      display: none;
     }
     .heading {
       font-size: 24px;
@@ -414,16 +401,20 @@
     }
     .wrapper {
       width: 100%;
-      flex: unset;
       height: fit-content;
       padding: 0 30px;
       margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
       .img {
-        min-width: 120px;
+        min-width: auto;
+        width: 100px;
         z-index: 100;
         max-width: 120px;
         height: 80px;
-        object-fit: contain;
+        object-fit: cover;
         background-color: rgb(255, 255, 255);
         border-radius: 6px;
         margin: 0 8px;
