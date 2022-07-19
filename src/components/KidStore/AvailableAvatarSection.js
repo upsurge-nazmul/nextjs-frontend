@@ -9,7 +9,7 @@ export default function AvailableAvatarSection({
   setdata,
 }) {
   return (
-    <div className={styles.AvatarSection}>
+    <div className={styles.avatarSection}>
       <h2 className={styles.heading}>
         Available Avatars
         <HeadingArrow />

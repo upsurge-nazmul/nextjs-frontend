@@ -1,5 +1,5 @@
-.AvatarSection {
-  // width: 100%;
+.avatarSection {
+  width: 100%;
   overflow-x: auto;
   .heading {
     font-weight: 500;
@@ -16,28 +16,8 @@
     width: 73vw;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
     &::-webkit-scrollbar {
       height: 6px;
-    }
-  }
-}
-
-@media only screen and (max-width: 860px) {
-  .AvatarSection {
-    .heading {
-      font-size: 18px;
-      svg {
-        width: 14px;
-        margin-left: 5px;
-        padding-top: 1px;
-      }
-    }
-    .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-start;
     }
   }
 }
