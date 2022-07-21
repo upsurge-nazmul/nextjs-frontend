@@ -24,27 +24,25 @@ export default function MainSection({ data }) {
     <div className={styles.mainSection}>
       <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
       <div className={styles.questArea}>
-        <div className={styles.quests}>
-          {data &&
-            data.length &&
-            data.map((item) => {
-              if (
-                tab.title === item.quest_type ||
-                tab.title === QUEST_TYPES[0].title
-              ) {
-                return (
-                  <QuestCard
-                    handleCardClick={handleCardClick}
-                    data={item}
-                    typeProps={QUEST_TYPES.find(
-                      (qt) => qt.title === item.quest_type
-                    )}
-                    key={item.questNo}
-                  />
-                );
-              }
-            })}
-        </div>
+        {data &&
+          data.length &&
+          data.map((item) => {
+            if (
+              tab.title === item.quest_type ||
+              tab.title === QUEST_TYPES[0].title
+            ) {
+              return (
+                <QuestCard
+                  handleCardClick={handleCardClick}
+                  data={item}
+                  typeProps={QUEST_TYPES.find(
+                    (qt) => qt.title === item.quest_type
+                  )}
+                  key={item.questNo}
+                />
+              );
+            }
+          })}
       </div>
     </div>
   );
