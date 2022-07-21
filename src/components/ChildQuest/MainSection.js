@@ -1,14 +1,12 @@
-import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
 import QuestCard from "./QuestCard";
 
-export default function MainSection({ data, tab, QUEST_TYPES }) {
-  const router = useRouter();
-
-  const handleCardClick = (id) => {
-    router.push(`/dashboard/k/quest/${id}`);
-  };
-
+export default function MainSection({
+  data,
+  tab,
+  handleCardClick,
+  QUEST_TYPES,
+}) {
   return (
     <div className={styles.mainSection}>
       <div className={styles.questArea}>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../../../context/Main";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import LoginApis from "../../../../actions/apis/LoginApis";
@@ -19,6 +20,7 @@ const QUEST_TYPES = [
 ];
 
 export default function KnowledgeQuest({ userData, questData }) {
+  const router = useRouter();
   const { setuserdata } = useContext(MainContext);
   const [tab, setTab] = useState(QUEST_TYPES[0]);
   const [toastdata, settoastdata] = useState({
@@ -31,6 +33,10 @@ export default function KnowledgeQuest({ userData, questData }) {
     setuserdata(userData);
   }, [userData]);
 
+  const handleCardClick = (id) => {
+    router.push(`/dashboard/k/quest/${id}`);
+  };
+
   return (
     <div className={styles.questPage}>
       <DashboardLeftPanel type="kid" />
@@ -39,8 +45,13 @@ export default function KnowledgeQuest({ userData, questData }) {
         <DashboardHeader mode={"Knowledge Quest"} />
         <div className={styles.mainContent} id="quest-main">
           <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
-          {/* <HeadArea /> */}
-          <MainSection data={questData} QUEST_TYPES={QUEST_TYPES} tab={tab} />
+          <HeadArea data={questData} handleCardClick={handleCardClick} />
+          <MainSection
+            data={questData}
+            handleCardClick={handleCardClick}
+            QUEST_TYPES={QUEST_TYPES}
+            tab={tab}
+          />
         </div>
       </div>
     </div>
