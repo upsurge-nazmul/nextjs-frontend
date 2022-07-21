@@ -1,4 +1,4 @@
-import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
+import styles from "../../styles/knowledgeQuest/Tabs.module.scss";
 
 export default function Tabs({ list, current, setCurrent }) {
   return (

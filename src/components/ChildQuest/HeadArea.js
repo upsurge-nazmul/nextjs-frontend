@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/knowledgeQuest/Head.module.scss";
 
-const democoncepts = [
-  "Money",
-  "Currency",
-  "Banking",
-  "Payments",
-  "Money Management",
-  "Quiz",
-  "Activity",
-];
-
 export default function HeadArea({}) {
   return (
     <div className={styles.headSection}>
