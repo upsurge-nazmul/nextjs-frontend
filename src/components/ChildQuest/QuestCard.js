@@ -1,10 +1,17 @@
 import styles from "../../styles/knowledgeQuest/QuestCard.module.scss";
 import Image from "next/image";
 
-const BG_COLORS = ["#cbc7ea", "#b8dfd8", "#efccb6", "#aad1f6"];
-const TEXT_COLORS = ["#574285", "#1b6556", "#7a3f27", "#1a426d"];
+const BG_COLORS = ["#cbc7ea", "#b8dfd8", "#efccb6", "#aad1f6", "#ddd", "#ddd"];
+const TEXT_COLORS = [
+  "#574285",
+  "#1b6556",
+  "#7a3f27",
+  "#1a426d",
+  "#333",
+  "#333",
+];
 
-function QuestCard({ data, handleCardClick }) {
+function QuestCard({ data, typeProps, handleCardClick }) {
   if (!data) return null;
 
   return (
@@ -28,6 +35,15 @@ function QuestCard({ data, handleCardClick }) {
         </div>
       </div>
       <div className={styles.contentWrapper}>
+        <div
+          className={styles.typeChip}
+          style={{
+            backgroundColor: typeProps.background,
+            color: typeProps.font,
+          }}
+        >
+          <p>{data.quest_type}</p>
+        </div>
         {/* <p className={styles.title}>{data?.title || ""}</p> */}
         <p className={styles.detail}>
           {data?.questDescription.length > 70
