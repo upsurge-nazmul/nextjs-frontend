@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
 import QuestCard from "./QuestCard";
-import HeadingArrow from "../SVGcomponents/HeadingArrow";
+// import HeadingArrow from "../SVGcomponents/HeadingArrow";
 
 const QUEST_TYPES = [
   "Financial Literacy",
@@ -23,7 +23,8 @@ export default function MainSection({ data }) {
         return (
           <div className={styles.questArea} key={i}>
             <div className={styles.heading}>
-              {QT} <HeadingArrow />
+              {QT}
+              {/* <HeadingArrow /> */}
             </div>
             <div className={styles.quests}>
               {data &&

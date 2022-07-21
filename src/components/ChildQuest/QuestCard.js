@@ -1,5 +1,8 @@
 import styles from "../../styles/knowledgeQuest/QuestCard.module.scss";
-import GameSvg from "../SVGcomponents/GameSvg";
+import Image from "next/image";
+
+const BG_COLORS = ["#cbc7ea", "#b8dfd8", "#efccb6", "#aad1f6"];
+const TEXT_COLORS = ["#574285", "#1b6556", "#7a3f27", "#1a426d"];
 
 function QuestCard({ data, handleCardClick }) {
   if (!data) return null;
@@ -9,26 +12,29 @@ function QuestCard({ data, handleCardClick }) {
       className={styles.questCard}
       onClick={() => handleCardClick(data.questId)}
     >
-      <img
-        src={
-          data?.img ||
-          (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
-          "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
-        }
-        alt=""
-        className={styles.img}
-      />
+      <div
+        className={styles.cardHeader}
+        style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
+      >
+        <div className={styles.imageTitle}>
+          <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>{data.title}</p>
+        </div>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
+            alt={data.questId}
+            className={styles.img}
+          />
+        </div>
+      </div>
       <div className={styles.contentWrapper}>
-        <p className={styles.title}>{data?.title || ""}</p>
+        {/* <p className={styles.title}>{data?.title || ""}</p> */}
         <p className={styles.detail}>
-          {data?.questDescription.length > 50
-            ? data?.questDescription.substring(0, 50) + "..."
+          {data?.questDescription.length > 70
+            ? data?.questDescription.substring(0, 70) + "..."
             : data?.questDescription || ""}
         </p>
-        <div className={styles.startBtn}>
-          Start
-          <GameSvg className={styles.icon} />
-        </div>
+        <p className={styles.info}>{`${data.chapters.length} chapters`}</p>
       </div>
     </div>
   );
