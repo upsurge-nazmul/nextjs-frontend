@@ -82,36 +82,42 @@ export default function KidChoresPage({
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
                 {pendingchores?.length > 0 ? (
-                  pendingchores.map((item, index) => {
-                    return (
-                      <KidChore
-                        data={item}
-                        key={"pendingchore" + index}
-                        settoastdata={settoastdata}
-                      />
-                    );
-                  })
+                  <div className={styles.chores}>
+                    {pendingchores.map((item, index) => {
+                      return (
+                        <KidChore
+                          data={item}
+                          key={"pendingchore" + index}
+                          settoastdata={settoastdata}
+                        />
+                      );
+                    })}
+                  </div>
                 ) : (
                   <FillSpace text="Currently there are no Chores pending." />
                 )}
               </div>
             </div>
-            {compchores.length > 0 && (
-              <div className={styles.choreSection}>
-                <h2 className={styles.heading}>Completed Chores</h2>
-                <div className={styles.wrapper}>
-                  {compchores.map((data, index) => {
-                    return (
-                      <KidChore
-                        data={data}
-                        key={data.id}
-                        settoastdata={settoastdata}
-                      />
-                    );
-                  })}
-                </div>
+            <div className={styles.choreSection}>
+              <h2 className={styles.heading}>Completed Chores</h2>
+              <div className={styles.wrapper}>
+                {compchores.length > 0 ? (
+                  <div className={styles.chores}>
+                    {compchores.map((data, index) => {
+                      return (
+                        <KidChore
+                          data={data}
+                          key={data.id}
+                          settoastdata={settoastdata}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <FillSpace text="You have not completed any chore" />
+                )}
               </div>
-            )}
+            </div>
           </div>
 
           <div className={styles.flexRight}>
