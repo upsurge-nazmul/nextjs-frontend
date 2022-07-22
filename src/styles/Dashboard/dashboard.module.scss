@@ -27,7 +27,6 @@
       top: 65%;
     }
   }
-
   .contentWrapper {
     height: 100vh;
     flex: 1;
@@ -552,10 +551,10 @@
         }
         .questionSection {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
         }
         .blogsSection {
-          padding: 0;
+          padding: 0 46px;
         }
       }
     }
@@ -571,129 +570,140 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        .flexLeft {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: unset;
-          margin-bottom: 0;
-          width: 100%;
-          padding: 0 30px;
-          .kidsSection {
+        .topSection {
+          padding: 0 20px;
+          .flexLeft {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: unset;
+            margin-bottom: 0;
             width: 100%;
-            margin-top: 15px;
-            .heading {
-              font-size: clamp(16px, 20px, 26px);
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .blacnkhead1 {
-            }
-            .heads {
-              display: flex;
+            padding: 0;
+            .kidsSection {
               width: 100%;
-              align-items: center;
-              height: 44px;
-              color: rgba(106, 106, 106, 1);
-              .head1 {
-                font-size: 10px;
-                flex: 1;
-                margin-left: 0;
-                font-weight: 400;
+              margin-top: 15px;
+              .heading {
+                font-size: clamp(16px, 20px, 26px);
+                svg {
+                  margin-left: 5px;
+                  width: 15px;
+                }
               }
-              .head2 {
-                font-size: 10px;
-                font-weight: 400;
-                flex: 0.7;
-                margin-right: 0;
+              .blacnkhead1 {
               }
-              .head3 {
-                font-size: 10px;
-                margin-left: 15px;
-                font-weight: 400;
-                width: 26%;
+              .heads {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                height: 44px;
+                color: rgba(106, 106, 106, 1);
+                .head1 {
+                  font-size: 10px;
+                  flex: 1;
+                  margin-left: 0;
+                  font-weight: 400;
+                }
+                .head2 {
+                  font-size: 10px;
+                  font-weight: 400;
+                  flex: 0.7;
+                  margin-right: 0;
+                }
+                .head3 {
+                  font-size: 10px;
+                  margin-left: 15px;
+                  font-weight: 400;
+                  width: 26%;
+                }
+              }
+              .wrapper {
+                padding: 0 0px 10px 0px;
+                margin-bottom: 10px;
               }
             }
-            .wrapper {
-              padding: 0 0px 10px 0px;
-              margin-bottom: 10px;
+            .choreSection {
+              width: 100%;
+              margin-top: 0px;
+              .heading {
+                font-weight: 500;
+                font-size: clamp(16px, 20px, 26px);
+                color: rgba(87, 88, 128, 1);
+                display: flex;
+                align-items: center;
+                svg {
+                  margin-left: 5px;
+                  width: 15px;
+                }
+              }
+              .wrapper {
+                height: fit-content;
+                margin-top: 20px;
+                padding: 0 0px 10px 0px;
+              }
             }
           }
-          .choreSection {
+          .flexRight {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             width: 100%;
-            margin-top: 0px;
-            .heading {
-              font-weight: 500;
-              font-size: clamp(16px, 20px, 26px);
-              color: rgba(87, 88, 128, 1);
-              display: flex;
-              align-items: center;
-              svg {
-                margin-left: 5px;
-                width: 15px;
+            padding: 0;
+            .gameSection {
+              width: 100%;
+              margin-top: 0px;
+              padding: 0;
+              .heading {
+                font-size: clamp(16px, 20px, 26px);
+
+                svg {
+                  margin-left: 5px;
+                  width: 15px;
+                }
+              }
+              .wrapper {
+                display: flex;
+                overflow: auto;
+                height: max-content;
+                margin-top: 20px;
+                padding: 0 0px 30px 0px;
+                align-items: center;
               }
             }
-            .wrapper {
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
+            .liveClassSection {
+              width: 100%;
+              padding: 0 0px 0 0px;
+              margin-top: 15px;
+              .heading {
+                font-size: clamp(16px, 20px, 26px);
+
+                svg {
+                  margin-left: 5px;
+                  width: 15px;
+                }
+              }
+              .wrapper {
+                display: flex;
+                width: 100%;
+                overflow: auto;
+                height: fit-content;
+                margin-top: 20px;
+                padding: 0 0px 10px 0px;
+                align-items: center;
+                &::-webkit-scrollbar {
+                  width: 5px;
+                }
+              }
             }
           }
         }
-        .flexRight {
+        .questionSection {
+          padding: 20px;
           display: flex;
           flex-direction: column;
-          height: 100%;
-          width: 100%;
-          padding: 0 30px;
-          .gameSection {
-            width: 100%;
-            margin-top: 0px;
-            padding: 0;
-            .heading {
-              font-size: clamp(16px, 20px, 26px);
-
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .wrapper {
-              display: flex;
-              overflow: auto;
-              height: max-content;
-              margin-top: 20px;
-              padding: 0 0px 30px 0px;
-              align-items: center;
-            }
-          }
-          .liveClassSection {
-            width: 100%;
-            padding: 0 0px 0 0px;
-            margin-top: 15px;
-            .heading {
-              font-size: clamp(16px, 20px, 26px);
-
-              svg {
-                margin-left: 5px;
-                width: 15px;
-              }
-            }
-            .wrapper {
-              display: flex;
-              width: 100%;
-              overflow: auto;
-              height: fit-content;
-              margin-top: 20px;
-              padding: 0 0px 10px 0px;
-              align-items: center;
-              &::-webkit-scrollbar {
-                width: 5px;
-              }
-            }
-          }
+        }
+        .blogsSection {
+          padding: 0 20px;
         }
       }
     }

@@ -349,13 +349,15 @@ export default function EditProfile({ data, minDate }) {
                 placeholder="Gender"
                 margin="10px 0"
               />
-              <DropDown
-                value={state}
-                options={STATES_ARR}
-                setvalue={setstate}
-                placeholder="State"
-                margin="0px 0 0 10px"
-              />
+              <div className={styles.stateInput}>
+                <DropDown
+                  value={state}
+                  options={STATES_ARR}
+                  setvalue={setstate}
+                  placeholder="State"
+                  margin="0px 0 0 10px"
+                />
+              </div>
               <ModernInputBox
                 type="date"
                 placeholder="Date of birth"

@@ -29,6 +29,7 @@ import Tour from "../../../components/Tour/Tour";
 import Jasper from "../../../components/SVGcomponents/Jasper";
 import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
+import SimulatorApis from "../../../actions/apis/SimulatorApis";
 
 export default function ChildActivity({
   pendingchores,
@@ -41,6 +42,7 @@ export default function ChildActivity({
   tododatafromserver,
   moneyacedata,
   activeQuests,
+  stockHoldings,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -226,6 +228,7 @@ export default function ChildActivity({
       isolate: true,
     },
   ];
+
   return (
     <div className={styles.childactivity}>
       <DashboardLeftPanel type="kid" />
@@ -361,8 +364,10 @@ export default function ChildActivity({
                   <p className={styles.section}>Quests</p>
                 </div>
                 <div className={styles.element}>
-                  <p className={styles.rank}>100</p>
-                  <p className={styles.section}>Stock simulator</p>
+                  <p className={styles.rank}>
+                    {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
+                  </p>
+                  <p className={styles.section}>StockSimulator</p>
                 </div>
               </div>
             </div>
@@ -501,6 +506,10 @@ export async function getServerSideProps({ params, req }) {
         { userId: response.data.data.user_id },
         token
       );
+      let stockHoldings = await SimulatorApis.getUserHoldings({
+        payload: { userId: response.data.data.user_id },
+        token,
+      });
       return {
         props: {
           isLogged: true,
@@ -536,6 +545,10 @@ export async function getServerSideProps({ params, req }) {
           activeQuests:
             activeQuests && activeQuests.data && activeQuests.data.success
               ? activeQuests.data.data
+              : null,
+          stockHoldings:
+            stockHoldings && stockHoldings.data && stockHoldings.data.success
+              ? stockHoldings.data.data
               : null,
         },
       };

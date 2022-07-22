@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../styles/Quest/sections.module.scss";
 
 function Section({ quest }) {
-  console.log("$$$$$$", quest);
   return (
     <div className={styles.section}>
       <div className={styles.left}>

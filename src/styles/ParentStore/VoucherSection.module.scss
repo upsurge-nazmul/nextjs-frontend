@@ -1,25 +1,25 @@
-.VoucherSection {
+.voucherSection {
   margin-top: 20px;
   .headwrapper {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
     .heading {
       font-weight: 500;
       font-size: 25px;
       color: rgba(87, 88, 128, 1);
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
       svg {
         margin-left: 10px;
       }
     }
     .inputwrapper {
+      flex: 0.5;
       background-color: rgb(219, 219, 219);
       border-radius: 6px;
       height: 45px;
       overflow: hidden;
-      width: 50%;
       max-width: 380px;
       display: flex;
       align-items: center;
@@ -29,6 +29,7 @@
         border: none;
         color: rgb(14, 14, 14);
         height: 100%;
+        min-height: 45px;
         padding: 0 15px;
         flex: 1;
         &:focus {
@@ -38,22 +39,10 @@
       }
     }
   }
-  .heading {
-    font-weight: 500;
-    font-size: 25px;
-    color: rgba(87, 88, 128, 1);
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    svg {
-      margin-left: 10px;
-    }
-  }
   .wrapper {
     display: flex;
     flex-wrap: wrap;
     flex: 1;
-    padding-top: 20px;
     gap: 20px;
     justify-content: space-between;
     .noreward {
@@ -64,22 +53,130 @@
     }
   }
 }
-@media only screen and (min-width: 900px) and (max-height: 900px) {
-  .VoucherSection {
-    .wrapper {
-      justify-content: flex-start;
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .voucherSection {
+    margin-top: 20px;
+    .headwrapper {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      .heading {
+        font-weight: 500;
+        font-size: 25px;
+        color: rgba(87, 88, 128, 1);
+        display: flex;
+        align-items: center;
+        svg {
+          margin-left: 10px;
+        }
+      }
+      .inputwrapper {
+        flex: 0.5;
+        background-color: rgb(219, 219, 219);
+        border-radius: 6px;
+        height: 45px;
+        overflow: hidden;
+        max-width: 380px;
+        display: flex;
+        align-items: center;
+        padding-right: 15px;
+        input {
+          background-color: transparent;
+          border: none;
+          color: rgb(14, 14, 14);
+          height: 100%;
+          min-height: 45px;
+          padding: 0 15px;
+          flex: 1;
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+      }
     }
-  }
-}
-@media only screen and (max-width: 860px) {
-  .VoucherSection {
-    .heading {
-      font-size: 18px;
-      svg {
-        width: 14px;
-        margin-left: 5px;
-        padding-top: 1px;
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+      gap: 10px;
+      justify-content: space-between;
+      .noreward {
+        margin: auto;
+        margin-top: 15%;
+        color: rgb(109, 109, 109);
+        font-size: 14px;
       }
     }
   }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .voucherSection {
+    margin-top: 20px;
+    .headwrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      .heading {
+        font-weight: 500;
+        font-size: 25px;
+        color: rgba(87, 88, 128, 1);
+        display: flex;
+        align-items: center;
+        svg {
+          margin-left: 10px;
+        }
+      }
+      .inputwrapper {
+        flex: 0.5;
+        background-color: rgb(219, 219, 219);
+        border-radius: 6px;
+        height: 45px;
+        overflow: hidden;
+        max-width: 380px;
+        display: flex;
+        align-items: center;
+        padding-right: 15px;
+        input {
+          background-color: transparent;
+          border: none;
+          color: rgb(14, 14, 14);
+          height: 100%;
+          min-height: 45px;
+          padding: 0 15px;
+          flex: 1;
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+      gap: 20px;
+      justify-content: space-between;
+      .noreward {
+        margin: auto;
+        margin-top: 15%;
+        color: rgb(109, 109, 109);
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
 }

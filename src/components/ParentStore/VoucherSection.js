@@ -31,10 +31,11 @@ export default function VoucherSection({
     }
   }, [query]);
   return (
-    <div className={styles.VoucherSection} id={id}>
+    <div className={styles.voucherSection} id={id}>
       <div className={styles.headwrapper}>
-        <h2 className={styles.heading}>Rewards</h2>
-
+        <h2 className={styles.heading}>
+          Rewards <HeadingArrow />
+        </h2>
         <div className={styles.inputwrapper}>
           <input
             type="text"

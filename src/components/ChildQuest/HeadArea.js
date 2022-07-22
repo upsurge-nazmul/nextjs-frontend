@@ -1,31 +1,51 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/knowledgeQuest/Head.module.scss";
+import Image from "next/image";
+import HeaderCard from "./HeaderCard";
 
-const democoncepts = [
-  "Money",
-  "Currency",
-  "Banking",
-  "Payments",
-  "Money Management",
-  "Quiz",
-  "Activity",
-];
+export default function HeadArea({ data, handleCardClick }) {
+  const [highlight, setHighlight] = useState(data[0]);
 
-export default function HeadArea({}) {
   return (
     <div className={styles.headSection}>
-      <div className={styles.mainhead}>
-        <img
-          src="https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
-          alt="Knowledge quest header image"
-        />
-        <div className={styles.right}>
-          <p className={styles.questheading}>upsurge Quest</p>
-          <p className={styles.age}>Age 10-16</p>
+      <div
+        className={styles.left}
+        onClick={() => handleCardClick(highlight.questId)}
+      >
+        <div className={styles.banner}>
+          <Image
+            src={require(`../../assets/kqTiles/${highlight.questId}Tile.svg`)}
+            alt={highlight.questId}
+            className={styles.img}
+            height={400}
+            width={300}
+          />
         </div>
-        <div className={styles.creditandweeks}>
-          <p className={styles.credits}>1000 UniCoins</p>
+        <div className={styles.typeChip}>
+          <p>{highlight.quest_type}</p>
         </div>
+        <div>
+          <p className={styles.title}>{highlight.title}</p>
+          <p className={styles.detail}>
+            {highlight?.questDescription.length > 100
+              ? highlight?.questDescription.substring(0, 100) + "..."
+              : highlight?.questDescription || ""}
+          </p>
+          <p
+            className={styles.info}
+          >{`${highlight.chapters.length} chapters`}</p>
+        </div>
+      </div>
+      <div className={styles.right}>
+        {data.slice(1, 4).map((item) => {
+          return (
+            <HeaderCard
+              data={item}
+              key={item.questNo}
+              handleCardClick={handleCardClick}
+            />
+          );
+        })}
       </div>
     </div>
   );
