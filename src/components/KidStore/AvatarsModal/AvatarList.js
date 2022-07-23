@@ -5,7 +5,7 @@ import Avatar from "./Avatar";
 export default function AvatarList({ avatars, handleAvatarClick }) {
   return (
     <div className={styles.avatarsList}>
-      <h2 className={styles.heading}>Available Avatars</h2>
+      <p className={styles.heading}>Available Avatars</p>
       <div className={styles.avatars}>
         {avatars.map((item, index) => (
           <Avatar

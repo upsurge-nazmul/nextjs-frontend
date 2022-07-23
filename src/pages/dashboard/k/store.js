@@ -94,6 +94,7 @@ export default function KidStore({
               avatars={avatars}
               showModal={openAvatars}
               setShowModal={setOpenAvatars}
+              availableUnicoins={userdatafromserver?.num_unicoins || 0}
             />
           )}
           <div className={styles.vouchers}>
