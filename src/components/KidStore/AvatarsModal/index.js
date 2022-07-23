@@ -34,7 +34,11 @@ export default function AvatarsModal({
                 setRequestMode={setRequestMode}
               />
             ) : (
-              <AvatarList avatars={avatars} handleAvatarClick={onAvatarClick} />
+              <AvatarList
+                avatars={avatars}
+                handleAvatarClick={onAvatarClick}
+                setShowModal={setShowModal}
+              />
             )}
           </div>
         ) : (
