@@ -14,6 +14,7 @@ export default function VoucherSection({
   kid,
   id,
   parent,
+  setOpenAvatars,
 }) {
   const [items, setitems] = useState(vouchers);
   const [query, setquery] = useState("");
@@ -36,14 +37,22 @@ export default function VoucherSection({
         <h2 className={styles.heading}>
           Rewards <HeadingArrow />
         </h2>
-        <div className={styles.inputwrapper}>
-          <input
-            type="text"
-            onChange={(e) => setquery(e.target.value)}
-            placeholder="Search rewards"
-          />
-          <SearchIcon className={styles.icon} />
+        <div className={styles.inputArea}>
+          <div className={styles.inputwrapper}>
+            <input
+              type="text"
+              onChange={(e) => setquery(e.target.value)}
+              placeholder="Search rewards"
+            />
+            <SearchIcon className={styles.icon} />
+          </div>
         </div>
+        <button
+          className={styles.rewardButton}
+          onClick={() => setOpenAvatars((prev) => !prev)}
+        >
+          Avatars
+        </button>
       </div>
       <div className={styles.wrapper}>
         {items?.map((item, index) => (
