@@ -73,7 +73,7 @@ export default function KidChoresPage({
 
       <ChoreModal showmodal={showmodal} kiddata={setshowmodal} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader
+        <KidDashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
