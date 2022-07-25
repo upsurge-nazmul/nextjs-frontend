@@ -3,7 +3,6 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import styles from "../../styles/levels.module.scss";
 export default function LevelComponent({ setshow }) {
   const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  const [mode, setmode] = useState("Levels");
   const comp = [1, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000];
   useEffect(() => {
     const scrollContainer = document.querySelector("#levelwrapper");

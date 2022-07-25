@@ -11,6 +11,7 @@ import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
+import LevelComponent from "../Dashboard/LevelComponent";
 
 function DashboardHeader({
   mode,
@@ -26,6 +27,7 @@ function DashboardHeader({
   const [showauth, setshowauth] = useState(false);
   const [shownotifications, setshownotifications] = useState(false);
   const [kidLevel, setKidLevel] = useState();
+  const [showlevels, setshowlevels] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
@@ -43,8 +45,6 @@ function DashboardHeader({
     }
     if (userdata) fetchKidLevel();
   }, [userdata]);
-
-  console.log("$$$$$$$$$$$", kidLevel);
 
   return (
     <div
@@ -64,7 +64,7 @@ function DashboardHeader({
         setshowauth={setshowauth}
         onlyLogin={true}
       />
-
+      {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -82,7 +82,10 @@ function DashboardHeader({
       </h1>
       <div className={styles.rightWrapper}>
         {userdata?.user_type !== "kid" && kidLevel && (
-          <div className={styles.levelSection}>
+          <div
+            className={styles.levelSection}
+            onClick={() => setshowlevels(true)}
+          >
             <img
               src={"/images/badges/badge_" + kidLevel + ".svg"}
               alt="KidLevel"
