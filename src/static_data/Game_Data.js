@@ -53,7 +53,8 @@ export const Game_Data = {
   },
   SnakeAndLadders: {
     name: "Snake And Ladders",
-    description: "Let Financial literacy through snakes and ladders.",
+    description:
+      "Learn about money management with our 3D adaptation of this classic.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
   },
 };
