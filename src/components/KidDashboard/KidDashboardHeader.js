@@ -103,7 +103,9 @@ function KidDashboardHeader({
                 alt="KidLevel"
                 className={styles.levelBadge}
               />
-              <p className={styles.level}>Level {kidLevel}</p>
+              <p className={styles.level}>
+                <span>Level</span> <span>{kidLevel}</span>
+              </p>
             </div>
           )}
           <div className={styles.rewardBlock}>
