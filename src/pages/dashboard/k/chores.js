@@ -32,7 +32,7 @@ export default function KidChoresPage({
   completedchores,
   currentLevel,
 }) {
-  const [mode, setmode] = useState("chores");
+  const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
       if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
@@ -48,7 +48,7 @@ export default function KidChoresPage({
     })
   );
   const [compchores, setcompchores] = useState(completedchores);
-  const { setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata } = useContext(MainContext);
 
   const [choremode, setchoremode] = useState("");
   const [showmodal, setshowmodal] = useState(false);
@@ -60,9 +60,11 @@ export default function KidChoresPage({
     type: "success",
     msg: "",
   });
+
   useEffect(() => {
     setuserdata(kiddata);
   }, []);
+
   return (
     <div className={styles.kidChoresPage}>
       <DashboardLeftPanel type="kid" />
@@ -71,7 +73,7 @@ export default function KidChoresPage({
 
       <ChoreModal showmodal={showmodal} kiddata={setshowmodal} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
@@ -98,6 +100,24 @@ export default function KidChoresPage({
                 )}
               </div>
             </div>
+          </div>
+
+          <div className={styles.flexRight}>
+            {/* <div className={styles.badgeSection}>
+              <h2 className={styles.heading}>Current Badge</h2>
+              <div className={styles.wrapper}>
+                <div
+                  className={styles.badge}
+                  onClick={() => setshowlevels(true)}
+                >
+                  <img
+                    src={"/images/badges/badge_" + currentLevel + ".svg"}
+                    alt=""
+                  />
+                  <p className={styles.level}>Level {currentLevel}</p>
+                </div>
+              </div>
+            </div> */}
             <div className={styles.choreSection}>
               <h2 className={styles.heading}>Completed Chores</h2>
               <div className={styles.wrapper}>
@@ -116,24 +136,6 @@ export default function KidChoresPage({
                 ) : (
                   <FillSpace text="You have not completed any chore" />
                 )}
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.flexRight}>
-            <div className={styles.badgeSection}>
-              <h2 className={styles.heading}>Current Badge</h2>
-              <div className={styles.wrapper}>
-                <div
-                  className={styles.badge}
-                  onClick={() => setshowlevels(true)}
-                >
-                  <img
-                    src={"/images/badges/badge_" + currentLevel + ".svg"}
-                    alt=""
-                  />
-                  <p className={styles.level}>Level {currentLevel}</p>
-                </div>
               </div>
             </div>
           </div>

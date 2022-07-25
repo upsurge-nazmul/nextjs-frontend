@@ -43,7 +43,13 @@ function DashboardHeader({
         setKidLevel(res.data.data);
       } else setKidLevel(1);
     }
-    if (userdata) fetchKidLevel();
+    if (userdata) {
+      if (userdata.user_id) {
+        fetchKidLevel();
+      } else {
+        setKidLevel(userdata.level);
+      }
+    }
   }, [userdata]);
 
   return (
@@ -81,7 +87,7 @@ function DashboardHeader({
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        {userdata?.user_type !== "kid" && kidLevel && (
+        {userdata?.user_type === "child" && kidLevel && (
           <div
             className={styles.levelSection}
             onClick={() => setshowlevels(true)}
