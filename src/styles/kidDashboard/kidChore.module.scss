@@ -93,10 +93,11 @@
     border-radius: 8px;
     color: white;
     height: 65%;
-    width: 15%;
+    width: 17%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -255,7 +256,7 @@
     }
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 790px) {
   .kidChore {
     display: flex;
     width: 100%;
@@ -361,6 +362,11 @@
         color: #4166eb;
         border: 1px solid #4166eb;
       }
+    }
+    .completed {
+      font-size: 8px;
+      height: 45%;
+      width: 20%;
     }
     .more {
       flex: 1;

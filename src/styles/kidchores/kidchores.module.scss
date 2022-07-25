@@ -18,10 +18,10 @@
       margin-top: 20px;
       scrollbar-width: thin;
       .flexLeft {
+        flex: 1;
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 60%;
         padding: 0 10px 0 45px;
         .pendingChoresSection {
           height: fit-content;
@@ -69,6 +69,14 @@
             }
           }
         }
+      }
+      .flexRight {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-right: 50px;
+        padding-left: 10px;
         .choreSection {
           margin-top: 15px;
           display: flex;
@@ -92,14 +100,6 @@
             }
           }
         }
-      }
-      .flexRight {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 40%;
-        padding-right: 50px;
-        padding-left: 10px;
         .badgeSection {
           .heading {
             font-weight: 500;
@@ -174,7 +174,6 @@
         margin-top: 20px;
         scrollbar-width: thin;
         .flexLeft {
-          width: 65%;
           padding: 0 10px 0 25px;
           .pendingChoresSection {
             .heading {
@@ -185,6 +184,9 @@
               margin-bottom: 20px;
             }
           }
+        }
+        .flexRight {
+          padding-right: 0px;
           .choreSection {
             margin-top: 15px;
             display: flex;
@@ -199,10 +201,6 @@
               padding: 0 20px 10px 0px;
             }
           }
-        }
-        .flexRight {
-          width: 35%;
-          padding-right: 0px;
           .badgeSection {
             flex: 4;
             margin-top: 20px;
@@ -252,14 +250,14 @@
           .pendingChoresSection {
             width: 100%;
           }
-          .choreSection {
-            width: 100%;
-          }
         }
         .flexRight {
           width: 100%;
           padding: 0 40px 0 20px;
           margin-top: 50px;
+          .choreSection {
+            width: 100%;
+          }
           .badgeSection {
             width: 100%;
             margin-top: 40px;
@@ -270,36 +268,6 @@
               width: 100%;
               // height: 45vh;
             }
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 900px) {
-  .kidChoresPage {
-    .contentWrapper {
-      .mainContent {
-        .flexLeft {
-          height: 100%;
-          width: 100%;
-          padding: 0 00px 0 20px;
-          .pendingChoresSection {
-            .wrapper {
-              padding: 0 20px 0 0;
-            }
-          }
-        }
-        .flexRight {
-          height: 100%;
-          width: 100%;
-          margin-top: 50px;
-          .gameSection {
-            width: 100%;
-          }
-          .badgeSection {
-            width: 100%;
-            margin-top: 40px;
           }
         }
       }
@@ -325,18 +293,18 @@
               padding: 0 5px 0 0;
             }
           }
-          .choreSection {
-            .heading {
-              font-size: 16px;
-              margin-right: 15px;
-            }
-          }
         }
         .flexRight {
           height: 100%;
           width: 100%;
           margin-top: 0px;
           padding: 0 10px 0 20px;
+          .choreSection {
+            .heading {
+              font-size: 16px;
+              margin-right: 15px;
+            }
+          }
           .badgeSection {
             width: 100%;
             margin-top: 40px;
