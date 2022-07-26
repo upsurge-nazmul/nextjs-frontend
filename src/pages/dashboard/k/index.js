@@ -266,7 +266,7 @@ export default function ChildActivity({
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
-              <div className={styles.topblock}>
+              {/* <div className={styles.topblock}>
                 <h2 className={styles.mainheading}>
                   Level
                   <HeadingArrow />
@@ -283,7 +283,7 @@ export default function ChildActivity({
                     <p className={styles.level}>Level {currentLevel}</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {childTribes.length > 0 && (
                 <>
                   <div className={styles.tribeheading}>

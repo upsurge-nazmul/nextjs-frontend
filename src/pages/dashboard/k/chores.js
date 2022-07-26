@@ -32,7 +32,7 @@ export default function KidChoresPage({
   completedchores,
   currentLevel,
 }) {
-  const [mode, setmode] = useState("chores");
+  const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState(
     choresdata.filter((item) => {
       if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
@@ -48,7 +48,7 @@ export default function KidChoresPage({
     })
   );
   const [compchores, setcompchores] = useState(completedchores);
-  const { setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata } = useContext(MainContext);
 
   const [choremode, setchoremode] = useState("");
   const [showmodal, setshowmodal] = useState(false);
@@ -60,9 +60,11 @@ export default function KidChoresPage({
     type: "success",
     msg: "",
   });
+
   useEffect(() => {
     setuserdata(kiddata);
   }, []);
+
   return (
     <div className={styles.kidChoresPage}>
       <DashboardLeftPanel type="kid" />
@@ -82,40 +84,26 @@ export default function KidChoresPage({
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
                 {pendingchores?.length > 0 ? (
-                  pendingchores.map((item, index) => {
-                    return (
-                      <KidChore
-                        data={item}
-                        key={"pendingchore" + index}
-                        settoastdata={settoastdata}
-                      />
-                    );
-                  })
+                  <div className={styles.chores}>
+                    {pendingchores.map((item, index) => {
+                      return (
+                        <KidChore
+                          data={item}
+                          key={"pendingchore" + index}
+                          settoastdata={settoastdata}
+                        />
+                      );
+                    })}
+                  </div>
                 ) : (
                   <FillSpace text="Currently there are no Chores pending." />
                 )}
               </div>
             </div>
-            {compchores.length > 0 && (
-              <div className={styles.choreSection}>
-                <h2 className={styles.heading}>Completed Chores</h2>
-                <div className={styles.wrapper}>
-                  {compchores.map((data, index) => {
-                    return (
-                      <KidChore
-                        data={data}
-                        key={data.id}
-                        settoastdata={settoastdata}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
 
           <div className={styles.flexRight}>
-            <div className={styles.badgeSection}>
+            {/* <div className={styles.badgeSection}>
               <h2 className={styles.heading}>Current Badge</h2>
               <div className={styles.wrapper}>
                 <div
@@ -128,6 +116,26 @@ export default function KidChoresPage({
                   />
                   <p className={styles.level}>Level {currentLevel}</p>
                 </div>
+              </div>
+            </div> */}
+            <div className={styles.choreSection}>
+              <h2 className={styles.heading}>Completed Chores</h2>
+              <div className={styles.wrapper}>
+                {compchores.length > 0 ? (
+                  <div className={styles.chores}>
+                    {compchores.map((data, index) => {
+                      return (
+                        <KidChore
+                          data={data}
+                          key={data.id}
+                          settoastdata={settoastdata}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <FillSpace text="You have not completed any chore" />
+                )}
               </div>
             </div>
           </div>

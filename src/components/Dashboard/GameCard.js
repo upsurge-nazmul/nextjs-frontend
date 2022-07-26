@@ -24,8 +24,8 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
       <div className={styles.contentWrapper}>
         <p className={styles.title}>{data?.name || ""}</p>
         <p className={styles.detail}>
-          {data?.description.length > 50
-            ? data?.description.substring(0, 50) + "..."
+          {data?.description.length > 40
+            ? data?.description.substring(0, 40) + "..."
             : data?.description || ""}
         </p>
         {reward && (

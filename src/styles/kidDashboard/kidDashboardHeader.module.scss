@@ -50,6 +50,25 @@
       display: flex;
       align-items: center;
       height: 100%;
+      .levelSection {
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+        cursor: pointer;
+        .levelBadge {
+          width: 45px;
+          height: 45px;
+          object-fit: contain;
+          margin-right: 0;
+          padding: 0;
+        }
+        .level {
+          font-size: 18px;
+          font-weight: 500;
+          display: flex;
+          gap: 4px;
+        }
+      }
       .rewardBlock {
         width: 20px;
         height: 20px;
@@ -305,6 +324,24 @@
         justify-content: center;
         height: 100%;
         width: fit-content;
+        .levelSection {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-right: 10px;
+          cursor: pointer;
+          .levelBadge {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            margin-right: 0;
+            padding: 0;
+          }
+          .level {
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
         .icon {
           width: 18px;
           height: 18px;
@@ -391,6 +428,24 @@
         height: 100%;
         width: fit-content;
         justify-content: space-between;
+        .levelSection {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-right: 10px;
+          cursor: pointer;
+          .levelBadge {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            margin-right: 0;
+            padding: 0;
+          }
+          .level {
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
         .rewardBlock {
           margin-right: 30px;
           .number {

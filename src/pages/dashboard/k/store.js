@@ -18,6 +18,7 @@ import { useContext } from "react";
 import { MainContext } from "../../../context/Main";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import RedeemSection from "../../../components/Dashboard/RedeemSection";
+import AvatarsModal from "../../../components/KidStore/AvatarsModal";
 
 export default function KidStore({
   isLogged,
@@ -44,9 +45,12 @@ export default function KidStore({
     name: "",
     price: "",
   });
+  const [openAvatars, setOpenAvatars] = useState(false);
+
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
+
   useEffect(() => {
     if (isLogged === false) {
       console.log(isLogged);
@@ -75,18 +79,27 @@ export default function KidStore({
           <div className={styles.redeem}>
             <RedeemSection />
           </div>
-          <div className={styles.avatars}>
+          {/* <div className={styles.avatars}>
             <AvailableAvatarSection
               avatars={avatars}
               setshowmodal={setshowmodal}
               setdata={setdata}
             />
-          </div>
+          </div> */}
+          {openAvatars && (
+            <AvatarsModal
+              avatars={avatars}
+              showModal={openAvatars}
+              setShowModal={setOpenAvatars}
+              availableUnicoins={userdatafromserver?.num_unicoins || 0}
+            />
+          )}
           <div className={styles.vouchers}>
             <VoucherSection
               vouchers={vouchers}
               kid={true}
               unicoins={userdatafromserver.num_unicoins}
+              setOpenAvatars={setOpenAvatars}
             />
           </div>
         </div>

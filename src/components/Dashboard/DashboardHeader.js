@@ -1,18 +1,17 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useContext, useState } from "react";
-import LoginApis from "../../actions/apis/LoginApis";
-import { eraseCookie } from "../../actions/cookieUtils";
+import React, { useContext, useEffect, useState } from "react";
+import KidApis from "../../actions/apis/KidApis";
+import { getCookie } from "../../actions/cookieUtils";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Dashboard/dashboardheader.module.scss";
-import BackArrow from "../SVGcomponents/BackArrow";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NotificationBell from "../SVGcomponents/NotificationBell";
-import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import Menu from "./Menu";
 import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
+import LevelComponent from "../Dashboard/LevelComponent";
 
 function DashboardHeader({
   mode,
@@ -27,8 +26,31 @@ function DashboardHeader({
   const [notifications, setnotifications] = useState(["s"]);
   const [showauth, setshowauth] = useState(false);
   const [shownotifications, setshownotifications] = useState(false);
+  const [kidLevel, setKidLevel] = useState();
+  const [showlevels, setshowlevels] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
+
+  useEffect(() => {
+    async function fetchKidLevel() {
+      let res = await KidApis.getlevel(
+        {
+          id: userdata.user_id,
+        },
+        getCookie("accesstoken")
+      );
+      if (res && res.data && res.data.success) {
+        setKidLevel(res.data.data);
+      } else setKidLevel(1);
+    }
+    if (userdata) {
+      if (userdata.user_id) {
+        fetchKidLevel();
+      } else {
+        setKidLevel(userdata.level);
+      }
+    }
+  }, [userdata]);
 
   return (
     <div
@@ -48,7 +70,7 @@ function DashboardHeader({
         setshowauth={setshowauth}
         onlyLogin={true}
       />
-
+      {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
           <>
@@ -65,6 +87,21 @@ function DashboardHeader({
         )}
       </h1>
       <div className={styles.rightWrapper}>
+        {userdata?.user_type === "child" && kidLevel && (
+          <div
+            className={styles.levelSection}
+            onClick={() => setshowlevels(true)}
+          >
+            <img
+              src={"/images/badges/badge_" + kidLevel + ".svg"}
+              alt="KidLevel"
+              className={styles.levelBadge}
+            />
+            <p className={styles.level}>
+              <span>Level</span> <span>{kidLevel}</span>
+            </p>
+          </div>
+        )}
         {userdata?.user_type !== "parent" && (
           <div className={styles.rewardBlock}>
             <UniCoinSvg className={styles.svg} />

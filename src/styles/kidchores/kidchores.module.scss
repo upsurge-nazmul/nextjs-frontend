@@ -18,10 +18,10 @@
       margin-top: 20px;
       scrollbar-width: thin;
       .flexLeft {
+        flex: 1;
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 60%;
         padding: 0 10px 0 45px;
         .pendingChoresSection {
           height: fit-content;
@@ -63,10 +63,20 @@
           }
           .wrapper {
             padding-right: 30px;
-            margin-top: 20px;
             flex: 1;
+            .chores {
+              margin-top: 20px;
+            }
           }
         }
+      }
+      .flexRight {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-right: 50px;
+        padding-left: 10px;
         .choreSection {
           margin-top: 15px;
           display: flex;
@@ -78,25 +88,18 @@
             display: flex;
             align-items: center;
             cursor: default;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             svg {
               margin-left: 10px;
             }
           }
-
           .wrapper {
-            margin-top: 20px;
             padding: 0 20px 10px 0px;
+            .chores {
+              margin-top: 20px;
+            }
           }
         }
-      }
-      .flexRight {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 40%;
-        padding-right: 50px;
-        padding-left: 10px;
         .badgeSection {
           .heading {
             font-weight: 500;
@@ -143,13 +146,6 @@
         }
       }
     }
-
-    .container {
-      padding: 20px;
-      overflow-y: auto;
-      height: 80%;
-      width: 80%;
-    }
   }
 }
 
@@ -178,7 +174,6 @@
         margin-top: 20px;
         scrollbar-width: thin;
         .flexLeft {
-          width: 65%;
           padding: 0 10px 0 25px;
           .pendingChoresSection {
             .heading {
@@ -189,27 +184,23 @@
               margin-bottom: 20px;
             }
           }
+        }
+        .flexRight {
+          padding-right: 0px;
           .choreSection {
             margin-top: 15px;
             display: flex;
             flex-direction: column;
-            .headingWrapper {
-              .heading {
-                font-size: 22px;
-                align-items: center;
-                margin-right: 25px;
-              }
+            .heading {
+              font-size: 22px;
+              align-items: center;
+              margin-right: 25px;
             }
-
             .wrapper {
-              margin-top: 20px;
+              margin-top: 0px;
               padding: 0 20px 10px 0px;
             }
           }
-        }
-        .flexRight {
-          width: 35%;
-          padding-right: 0px;
           .badgeSection {
             flex: 4;
             margin-top: 20px;
@@ -259,14 +250,14 @@
           .pendingChoresSection {
             width: 100%;
           }
-          .choreSection {
-            width: 100%;
-          }
         }
         .flexRight {
           width: 100%;
           padding: 0 40px 0 20px;
           margin-top: 50px;
+          .choreSection {
+            width: 100%;
+          }
           .badgeSection {
             width: 100%;
             margin-top: 40px;
@@ -283,43 +274,13 @@
     }
   }
 }
-@media only screen and (max-width: 900px) {
-  .kidChoresPage {
-    .contentWrapper {
-      .mainContent {
-        .flexLeft {
-          height: 100%;
-          width: 100%;
-          padding: 0 00px 0 20px;
-          .pendingChoresSection {
-            .wrapper {
-              padding: 0 20px 0 0;
-            }
-          }
-        }
-        .flexRight {
-          height: 100%;
-          width: 100%;
-          margin-top: 50px;
-          .gameSection {
-            width: 100%;
-          }
-          .badgeSection {
-            width: 100%;
-            margin-top: 40px;
-          }
-        }
-      }
-    }
-  }
-}
 @media only screen and (max-width: 790px) {
   .kidChoresPage {
     padding-right: 0px;
     width: 100vw;
     .contentWrapper {
       .mainContent {
-        margin-top: 50px;
+        margin-top: 0px;
         .flexLeft {
           height: unset !important;
           width: 100%;
@@ -332,20 +293,18 @@
               padding: 0 5px 0 0;
             }
           }
-          .choreSection {
-            .headingWrapper {
-              .heading {
-                font-size: 16px;
-                margin-right: 15px;
-              }
-            }
-          }
         }
         .flexRight {
           height: 100%;
           width: 100%;
           margin-top: 0px;
           padding: 0 10px 0 20px;
+          .choreSection {
+            .heading {
+              font-size: 16px;
+              margin-right: 15px;
+            }
+          }
           .badgeSection {
             width: 100%;
             margin-top: 40px;

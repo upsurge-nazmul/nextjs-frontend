@@ -95,11 +95,14 @@ export default function Reward({
           {selectedprice * quantity * UniCoinValue}
         </div>
       </div>
-      {!parent && (
+      {/* {!parent && (
         <div className={styles.button} onClick={redeem}>
           Redeem
         </div>
-      )}
+      )} */}
+      <div className={styles.disabledButton} onClick={() => {}}>
+        Redeem
+      </div>
     </div>
   );
 }

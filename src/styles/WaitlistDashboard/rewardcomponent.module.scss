@@ -49,6 +49,12 @@
     margin: 20px 10px;
     cursor: pointer;
   }
+  .disabledButton {
+    @extend .button;
+    border: 1px solid #b3b2b2;
+    color: #b3b2b2;
+    cursor: unset;
+  }
 }
 
 // smaller width tabs
