@@ -30,8 +30,6 @@ function AuthLogin({
   const [loading, setloading] = useState(false);
   const router = useRouter();
 
-  console.log("@@@@@@@@@", prefilled);
-
   // login Function
   async function handleSignin() {
     if (userdata.user_id === prefilled.id) {
@@ -59,16 +57,39 @@ function AuthLogin({
         setSavedUsers(savedUsersData);
       }
     } else {
-      settoastdata({
-        show: true,
-        msg: "Account switched",
-        type: "success",
+      let newLogin = await LoginApis.login({
+        email: prefilled.email,
+        password,
       });
-      setCookie("accesstoken", prefilled.token);
-      setuserdata(response.data.data);
-      setuser(response.data.data.id);
-      console.log(router.pathname);
-      router.reload();
+      if (newLogin && newLogin.data && newLogin.data.success) {
+        setSavedUsers(
+          setUserInLocalStorage({
+            token: newLogin.data.data.token,
+            email: newLogin.data.data.userProfile.email,
+            username: newLogin.data.data.userProfile.user_name,
+            image: newLogin.data.data.userProfile.user_img_url,
+            name: getfullname(
+              newLogin.data.data.userProfile.first_name,
+              newLogin.data.data.userProfile.last_name
+            ),
+            timestamp: new Date().getTime(),
+            type: newLogin.data.data.userProfile.user_type,
+            id: newLogin.data.data.userProfile.id,
+          })
+        );
+        setCookie("accesstoken", newLogin.data.data.token);
+        setuserdata(newLogin.data.data.userProfile);
+        setuser(newLogin.data.data.userProfile.id);
+        settoastdata({
+          show: true,
+          msg: newLogin.data.message,
+          type: "success",
+        });
+        console.log(router.pathname);
+        router.reload();
+      } else {
+        seterror(newLogin?.data.message || "Cannot reach server");
+      }
     }
   }
 
