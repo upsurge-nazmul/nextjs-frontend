@@ -16,7 +16,7 @@ import PendingSvg from "../SVGcomponents/PendingSvg";
 import ChoreComponentMenu from "./ChoreComponentMenu";
 
 function ChoreComponent({ data, settoastdata, setchores }) {
-  console.log(JSON.stringify(data.latest_chore) !== "{}");
+  // console.log(JSON.stringify(data.latest_chore) !== "{}");
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data || null);
   const [showConfirmation, setshowConfirmation] = useState(false);
@@ -114,7 +114,6 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         }
       }
     }
-    console.log("reaching");
     if (choredata.completion === "completed")
       return completedtimeDifference(choredata.completed_at);
     else {
