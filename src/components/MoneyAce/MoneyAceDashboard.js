@@ -174,6 +174,16 @@ export default function MoneyAceDashboard({
       alert("something went wrong");
     }
   }
+
+  async function fetchTaskOnDay(day = 0) {
+    let res = await MoneyAceApis.getDaywiseTasks({
+      day,
+    });
+    if (res && res.data && res.data.success) {
+      settasks(res.data.data);
+    }
+  }
+
   const story = [
     {
       ref: "#demo",
@@ -650,6 +660,19 @@ export default function MoneyAceDashboard({
                   />
                 </div>
               </div>
+              {/* <div>
+                {Array.from(Array(14).keys()).map((item) => (
+                  <button
+                    style={{ padding: "10px", margin: "10px" }}
+                    onClick={() => {
+                      fetchTaskOnDay(item);
+                      setcurrenttab("tasks");
+                    }}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div> */}
             </div>
           ) : currenttab === "tasks" ? (
             <Tasks

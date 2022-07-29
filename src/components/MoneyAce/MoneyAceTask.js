@@ -99,10 +99,12 @@ export default function MoneyAceTask({
           onClick={() => {
             setcurrenttask(data.id);
             if (data.id === "task-08") {
+              // Check Bank Account
               completetask();
               return;
             }
             if (data.id === "task-15") {
+              // Make UPI & Debit Card
               if (!moneyacedata.is_upi_claim) {
                 setcurrenttab("upi");
               } else {
@@ -111,6 +113,7 @@ export default function MoneyAceTask({
               return;
             }
             if (data.id === "task-25") {
+              // Fishing Game
               if (!moneyacedata.fishing_course) {
                 settoastdata({
                   show: true,
@@ -123,6 +126,7 @@ export default function MoneyAceTask({
               return;
             }
             if (data.id === "task-30") {
+              // Pizza Delivery
               if (!moneyacedata.driving_course) {
                 settoastdata({
                   show: true,
