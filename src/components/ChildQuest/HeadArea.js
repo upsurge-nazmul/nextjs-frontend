@@ -28,7 +28,10 @@ export default function HeadArea({ data, handleCardClick, tab }) {
             width={300}
           />
         </div>
-        <div className={styles.typeChip}>
+        <div
+          className={styles.typeChip}
+          style={{ backgroundColor: tab.background, color: tab.font }}
+        >
           <p>{highlight.quest_type}</p>
         </div>
         <div>
