@@ -45,7 +45,11 @@ export default function KnowledgeQuest({ userData, questData }) {
         <DashboardHeader mode={"Knowledge Quest"} />
         <div className={styles.mainContent} id="quest-main">
           <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
-          <HeadArea data={questData} handleCardClick={handleCardClick} />
+          <HeadArea
+            data={questData}
+            tab={tab}
+            handleCardClick={handleCardClick}
+          />
           <MainSection
             data={questData}
             handleCardClick={handleCardClick}

@@ -3,8 +3,15 @@ import styles from "../../styles/knowledgeQuest/Head.module.scss";
 import Image from "next/image";
 import HeaderCard from "./HeaderCard";
 
-export default function HeadArea({ data, handleCardClick }) {
+export default function HeadArea({ data, handleCardClick, tab }) {
   const [highlight, setHighlight] = useState(data[0]);
+
+  useEffect(() => {
+    if (data && tab) {
+      let ht = data.find((item) => item.quest_type === tab.title);
+      if (ht) setHighlight(ht);
+    }
+  }, [data, tab]);
 
   return (
     <div className={styles.headSection}>
