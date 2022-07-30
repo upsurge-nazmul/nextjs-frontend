@@ -30,6 +30,7 @@ import Jasper from "../../../components/SVGcomponents/Jasper";
 import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import KidQuest from "../../../components/KidDashboard/KidQuest";
 
 export default function ChildActivity({
   pendingchores,
@@ -102,6 +103,30 @@ export default function ChildActivity({
       setcurrentTourIndex(Number(router.query.storyIndex));
     }
   }, [router.query]);
+  useEffect(() => {
+    async function fetchQuestData() {
+      let questRes = await KnowledgeQuestApi.getQuestData(
+        null,
+        getCookie("accesstoken")
+      );
+      if (questRes && questRes.data && questRes.data.success) {
+        let questList = questRes.data.data;
+        for (let quest of questList) {
+          let levelRes = await KnowledgeQuestApi.initiate(
+            { quest_id: quest.questId },
+            getCookie("accesstoken")
+          );
+          if (levelRes && levelRes.data && levelRes.data.success) {
+            let questLevel = levelRes.data.data.level;
+            quest.level = questLevel;
+          }
+        }
+        setquests(questList);
+      }
+    }
+    fetchQuestData();
+  }, []);
+
   const story = [
     {
       intro: true,
@@ -407,8 +432,15 @@ export default function ChildActivity({
                 Quests
                 <HeadingArrow />
               </h2>
-              <div className="wrapper">
-                {quests.length === 0 && (
+              <div className={styles.wrapper}>
+                {quests.length ? (
+                  <>
+                    {quests.map((quest, i) => {
+                      if (quest.level > 0)
+                        return <KidQuest data={quest} key={i} />;
+                    })}
+                  </>
+                ) : (
                   <FillSpace
                     text={"No quest in progress"}
                     extrastyle={{ margin: 0, minHeight: "220px" }}
