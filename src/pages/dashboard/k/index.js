@@ -381,7 +381,6 @@ export default function ChildActivity({
                 Chores
                 <HeadingArrow />
               </h2>
-
               <div className={styles.wrapper}>
                 {chorearray.map((data, index) => {
                   return (
@@ -395,7 +394,7 @@ export default function ChildActivity({
                 {chorearray.length === 0 && (
                   <FillSpace
                     text={"No chores in progress"}
-                    extrastyle={{ margin: 0 }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -412,7 +411,7 @@ export default function ChildActivity({
                 {quests.length === 0 && (
                   <FillSpace
                     text={"No quest in progress"}
-                    extrastyle={{ margin: 0 }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -426,7 +425,7 @@ export default function ChildActivity({
                 {recentgames.length === 0 && (
                   <FillSpace
                     text={"No recent games"}
-                    extrastyle={{ margin: "0" }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
