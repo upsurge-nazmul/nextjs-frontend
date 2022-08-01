@@ -127,6 +127,11 @@ export default function ChildActivity({
     fetchQuestData();
   }, []);
 
+  function handleGameClick(pushto = null, gameName = null) {
+    pushto = pushto ? pushto.split("/")[pushto.split("/").length - 1] : "";
+    router.push("/dashboard/k/game/" + (pushto ? pushto : gameName));
+  }
+
   const story = [
     {
       intro: true,
@@ -452,7 +457,15 @@ export default function ChildActivity({
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
                 {recentgames.map((game, i) => {
-                  return <GameCard data={Game_Data[game]} key={i} />;
+                  return (
+                    <GameCard
+                      data={Game_Data[game]}
+                      key={i}
+                      onCLick={() =>
+                        handleGameClick(Game_Data[game].pushto, game)
+                      }
+                    />
+                  );
                 })}
                 {recentgames.length === 0 && (
                   <FillSpace
