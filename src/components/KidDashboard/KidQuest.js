@@ -28,9 +28,9 @@ export default function KidQuest({ data }) {
           {data.level > 1 ? "s" : ""} completed
         </div>
       </div>
-      <div className={styles.right}>
+      {/* <div className={styles.right}>
         <CircularPercentage text={getCompletedPercentage()} />
-      </div>
+      </div> */}
     </div>
   );
 }
