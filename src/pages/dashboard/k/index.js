@@ -343,7 +343,7 @@ export default function ChildActivity({
                 </>
               )}
             </div>
-            <div className={styles.milestonesSection} s>
+            <div className={styles.milestonesSection}>
               <h2
                 id="milestone"
                 className={styles.mainheading}
@@ -451,8 +451,8 @@ export default function ChildActivity({
             <div className={styles.gamessection} id="recent_games">
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
-                {recentgames.map((game) => {
-                  return <GameCard data={Game_Data[game]} key={game.id} />;
+                {recentgames.map((game, i) => {
+                  return <GameCard data={Game_Data[game]} key={i} />;
                 })}
                 {recentgames.length === 0 && (
                   <FillSpace
