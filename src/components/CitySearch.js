@@ -86,6 +86,7 @@ export default function CitySearch({
                 setvalue(e.target.value);
               }
         }
+        onBlur={() => {setshowdropdown(false);}}
       />
       <div data-tip data-for="info-city" className={styles.tooltip}>
         <InfoOutlinedIcon className={styles.infoicon} />
