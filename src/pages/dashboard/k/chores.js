@@ -23,6 +23,7 @@ import NoChores from "../../../components/KidDashboard/NoChores";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import LeaderBoard from "../../../components/LeaderBoard";
 
 export default function KidChoresPage({
   choresdata,
@@ -31,6 +32,7 @@ export default function KidChoresPage({
   liveclassdata,
   completedchores,
   currentLevel,
+  choresLeaderboardData
 }) {
   const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState(
@@ -80,6 +82,9 @@ export default function KidChoresPage({
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <div>
+              <LeaderBoard data={choresLeaderboardData} />
+            </div>
             <div className={styles.pendingChoresSection}>
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
@@ -176,6 +181,7 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let choresLeaderboardData = await getLeaderboard(token);
       return {
         props: {
           isLogged: true,
@@ -188,6 +194,7 @@ export async function getServerSideProps({ params, req }) {
           kiddata,
           liveclassdata: liveclassdata || null,
           completedchores,
+          choresLeaderboardData
         },
       };
     }
@@ -233,4 +240,8 @@ async function getcompletedchores(id, token) {
   if (response && response.data && response.data.data) {
     return response.data.data;
   } else return null;
+}
+async function getLeaderboard(token) {
+  let response = await ChoreApis.getLeaderboard({role: "parent"}, token);
+  return response?.data?.data ?? [];
 }
