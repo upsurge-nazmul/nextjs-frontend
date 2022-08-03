@@ -7,6 +7,7 @@ import {
   duetimeDifference,
 } from "../../helpers/timehelpers";
 import styles from "../../styles/kidDashboard/kidChore.module.scss";
+import PhotoUpload from "../PhotoUpload";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
 import PendingSvg from "../SVGcomponents/PendingSvg";
@@ -17,6 +18,7 @@ function KidChore({ data, settoastdata }) {
   const [choredata, setchoredata] = useState(data);
   const router = useRouter();
   const [duedate, setduedate] = useState(getDueDate());
+  const [openPhotoUpload, setOpenPhotoUpload] = useState(false);
   useEffect(() => {
     if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
     else document.removeEventListener("mousedown", getifclickedoutside);
@@ -174,7 +176,8 @@ function KidChore({ data, settoastdata }) {
         ) : (
           <div
             className={styles.markdonebutton}
-            onClick={handleMarkForApproval}
+            // onClick={handleMarkForApproval}
+            onClick={() => setOpenPhotoUpload(true)}
           >
             <RoundedTick />
             Mark as done
@@ -214,7 +217,11 @@ function KidChore({ data, settoastdata }) {
           Start
         </div>
       ) : (
-        <div className={styles.markdonebutton} onClick={handleMarkForApproval}>
+        <div
+          className={styles.markdonebutton}
+          // onClick={handleMarkForApproval}
+          onClick={() => setOpenPhotoUpload(true)}
+        >
           <RoundedTick />
           Mark as done
         </div>
@@ -237,6 +244,11 @@ function KidChore({ data, settoastdata }) {
           </div>
         ) : null}
         <MenuSvg />
+      </div>
+      <div>
+        {choredata.completion &&
+          choredata.completion === "started" &&
+          openPhotoUpload && <PhotoUpload setShowModal={setOpenPhotoUpload} />}
       </div>
     </div>
   );
