@@ -4,8 +4,6 @@ import styles from "../../styles/PhotoUpload/index.module.scss";
 export default function PhotoUpload({ setShowModal }) {
   const [img, setImg] = useState();
 
-  console.log("&&&&&&&&&", img);
-
   return (
     <div className={styles.modal}>
       <div className={styles.modalWrapper}>
