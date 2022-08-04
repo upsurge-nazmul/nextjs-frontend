@@ -1,8 +1,16 @@
 import { useState } from "react";
 import styles from "../../styles/PhotoUpload/index.module.scss";
 
-export default function PhotoUpload({ setShowModal }) {
-  const [img, setImg] = useState();
+export default function PhotoUpload({
+  setShowModal,
+  title = "",
+  defaultImage = null,
+  actionButtonTitle = "Proceed",
+  actionHandler = () => {},
+}) {
+  const [img, setImg] = useState(defaultImage);
+
+  console.log("%%%%%%%%%%", img, typeof img);
 
   return (
     <div className={styles.modal}>
@@ -12,9 +20,7 @@ export default function PhotoUpload({ setShowModal }) {
           onClick={() => setShowModal(false)}
         />
         <div className={styles.modalcontainer}>
-          <div className={styles.header}>
-            Provide an image of your completed chore
-          </div>
+          <div className={styles.header}>{title}</div>
           <div className={styles.imageSection}>
             <div className={styles.imageInputArea}>
               <label>
@@ -25,7 +31,13 @@ export default function PhotoUpload({ setShowModal }) {
                 />
                 {img ? (
                   <img
-                    src={img ? URL.createObjectURL(img) : null}
+                    src={
+                      img
+                        ? typeof img === "string"
+                          ? img
+                          : URL.createObjectURL(img)
+                        : null
+                    }
                     className={styles.preview}
                   />
                 ) : (
@@ -36,7 +48,9 @@ export default function PhotoUpload({ setShowModal }) {
           </div>
           {/* <input type={"file"} accept={"image/*"} capture={"environment"} /> */}
           <div className={styles.actionArea}>
-            <button className={styles.action}>Proceed</button>
+            <button className={styles.action} onClick={actionHandler}>
+              {actionButtonTitle}
+            </button>
           </div>
         </div>
       </div>

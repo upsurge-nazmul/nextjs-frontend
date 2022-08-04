@@ -176,8 +176,8 @@ function KidChore({ data, settoastdata }) {
         ) : (
           <div
             className={styles.markdonebutton}
-            // onClick={handleMarkForApproval}
-            onClick={() => setOpenPhotoUpload(true)}
+            onClick={handleMarkForApproval}
+            // onClick={() => setOpenPhotoUpload(true)}
           >
             <RoundedTick />
             Mark as done
@@ -219,8 +219,8 @@ function KidChore({ data, settoastdata }) {
       ) : (
         <div
           className={styles.markdonebutton}
-          // onClick={handleMarkForApproval}
-          onClick={() => setOpenPhotoUpload(true)}
+          onClick={handleMarkForApproval}
+          // onClick={() => setOpenPhotoUpload(true)}
         >
           <RoundedTick />
           Mark as done
@@ -248,7 +248,14 @@ function KidChore({ data, settoastdata }) {
       <div>
         {choredata.completion &&
           choredata.completion === "started" &&
-          openPhotoUpload && <PhotoUpload setShowModal={setOpenPhotoUpload} />}
+          openPhotoUpload && (
+            <PhotoUpload
+              title={"Provide an image of your completed chore"}
+              setShowModal={setOpenPhotoUpload}
+              actionButtonTitle={"Mark as done"}
+              actionHandler={() => {}}
+            />
+          )}
       </div>
     </div>
   );
