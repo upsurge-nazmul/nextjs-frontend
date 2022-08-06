@@ -138,12 +138,16 @@ function KidChore({ data, settoastdata }) {
           <ClockSvg />
           <p>{duedate}</p>
         </div>
-        <div className={styles.reward}>
-          <span className={styles.rewardLabel}>Reward:</span>
-          <span className={styles.rewardValue}>
-            {data.reward_amount} {data.reward_type}
-          </span>
-        </div>
+        {data.reward_type ? (
+          <div className={styles.reward}>
+            <span className={styles.rewardLabel}>Reward:</span>
+            <span className={styles.rewardValue}>
+              {data.reward_amount} {data.reward_type}
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       {choredata.is_reoccurring &&
       JSON.stringify(choredata.latest_chore) !== "{}" ? (
