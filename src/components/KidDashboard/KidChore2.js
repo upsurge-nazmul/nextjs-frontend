@@ -6,7 +6,7 @@ import {
   completedtimeDifference,
   duetimeDifference,
 } from "../../helpers/timehelpers";
-import styles from "../../styles/kidDashboard/kidChore.module.scss";
+import styles from "../../styles/kidDashboard/kidChore2.module.scss";
 import PhotoUpload from "../PhotoUpload";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
@@ -117,49 +117,133 @@ function KidChore({ data, settoastdata }) {
 
   return (
     <div className={styles.kidChore}>
-      <div className={styles.mainCard}>
-        <div className={styles.firstSection}>
-          <img
-            src={
-              choredata?.img_url
-                ? choredata.img_url
-                : choredata.category === "Bathroom"
-                ? "/images/chores/bathroom.jpg"
-                : "/images/chores/kitchen.png"
+      <img
+        src={
+          choredata?.img_url
+            ? choredata.img_url
+            : choredata.category === "Bathroom"
+            ? "/images/chores/bathroom.jpg"
+            : "/images/chores/kitchen.png"
+        }
+        alt=""
+      />
+      <div className={styles.taskAndTo}>
+        <div className={styles.task}>
+          {choredata.title} {choredata.is_reoccurring && "(Daily)"}
+        </div>
+        <div className={styles.to}>Assigned to Me</div>
+      </div>
+      <div className={styles.midSection}>
+        <div className={styles.time}>
+          <ClockSvg />
+          <p>{duedate}</p>
+        </div>
+        {data.reward_type ? (
+          <div className={styles.reward}>
+            <span className={styles.rewardLabel}>Reward:</span>
+            <span className={styles.rewardValue}>
+              {data.reward_amount} {data.reward_type}
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+      {choredata.is_reoccurring &&
+      JSON.stringify(choredata.latest_chore) !== "{}" ? (
+        choredata.latest_chore.completion === "completed" ? (
+          <div className={styles.completed}>Completed</div>
+        ) : duetimeDifference(choredata?.latest_chore.due_date) ===
+          "Expired" ? (
+          <div
+            className={styles.expiry}
+            onClick={() =>
+              settoastdata({
+                show: true,
+                type: "success",
+                msg: "Oh oh time's up for this chore !",
+              })
             }
-            alt="ChoreImage"
-            className={styles.banner}
-          />
-        </div>
-        <div className={styles.secondSection}>
-          <div className={styles.title}>
-            {choredata.title} {choredata.is_reoccurring && "(Daily)"}
+          >
+            Expired
           </div>
-          {data.reward_type ? (
-            <div className={styles.reward}>
-              <span className={styles.rewardLabel}>Reward:</span>
-              <span className={styles.rewardValue}>
-                {data.reward_amount} {data.reward_type}
-              </span>
-            </div>
-          ) : (
-            ""
-          )}
-          <div className={styles.dueDate}>
-            <div className={styles.dueIcon}>
-              <ClockSvg />
-            </div>
-            <p className={styles.dueText}>{duedate}</p>
+        ) : choredata.latest_chore.completion === "approval" ? (
+          <div
+            className={styles.approval}
+            onClick={() =>
+              settoastdata({
+                show: true,
+                type: "success",
+                msg: "Waiting for approval !",
+              })
+            }
+          >
+            <PendingSvg />
+            Approval
           </div>
-        </div>
-        <div className={styles.thirdSection}>
-          <button className={styles.actinButton}>
+        ) : choredata.latest_chore.completion === "pending" ? (
+          <div className={styles.button} onClick={handleMarkStart}>
+            Start
+          </div>
+        ) : (
+          <div
+            className={styles.markdonebutton}
+            onClick={handleMarkForApproval}
+            // onClick={() => setOpenPhotoUpload(true)}
+          >
             <RoundedTick />
             Mark as done
-          </button>
-          {showmenu ? (
-            <div
-              className={styles.menu}
+          </div>
+        )
+      ) : choredata.completion === "completed" ? (
+        <div className={styles.completed}>Completed</div>
+      ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
+        <div
+          className={styles.expiry}
+          onClick={() =>
+            settoastdata({
+              show: true,
+              type: "success",
+              msg: "Oh oh time's up for this chore !",
+            })
+          }
+        >
+          Expired
+        </div>
+      ) : choredata.completion === "approval" ? (
+        <div
+          className={styles.approval}
+          onClick={() =>
+            settoastdata({
+              show: true,
+              type: "success",
+              msg: "Waiting for approval !",
+            })
+          }
+        >
+          <PendingSvg />
+          Approval
+        </div>
+      ) : choredata.completion === "pending" ? (
+        <div className={styles.button} onClick={handleMarkStart}>
+          Start
+        </div>
+      ) : (
+        <div
+          className={styles.markdonebutton}
+          onClick={handleMarkForApproval}
+          // onClick={() => setOpenPhotoUpload(true)}
+        >
+          <RoundedTick />
+          Mark as done
+        </div>
+      )}
+
+      <div className={styles.more}>
+        {showmenu ? (
+          <div className={styles.menu}>
+            <p
+              className={styles.menutab}
               onClick={() =>
                 router.push("managechore/edit", {
                   choredata: choredata,
@@ -167,12 +251,12 @@ function KidChore({ data, settoastdata }) {
                 })
               }
             >
-              <MenuSvg />
-            </div>
-          ) : null}
-        </div>
+              Edit
+            </p>
+          </div>
+        ) : null}
+        <MenuSvg />
       </div>
-
       <div>
         {choredata.completion &&
           choredata.completion === "started" &&

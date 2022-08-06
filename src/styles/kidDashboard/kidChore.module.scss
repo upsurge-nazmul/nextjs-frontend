@@ -1,461 +1,81 @@
-.kidChore {
-  display: flex;
-  width: 100%;
-  max-width: 950px;
-  align-items: center;
-  background-color: white;
-  padding: 10px;
-  height: 80px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  img {
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 10px;
-  }
-  .taskAndTo {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 26%;
-    .task {
-      font-size: 18px;
-      font-weight: 500;
-    }
-    .to {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      color: #828282;
-    }
-  }
-  .completionIcon {
-    flex: 0.4;
-  }
-  .midSection {
-    margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    .time {
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 400;
-      text-align: center;
-      justify-content: flex-start;
-      svg {
-        margin-right: 5px;
-      }
-    }
-    .reward {
-      font-size: 13px;
-      display: flex;
-      gap: 5px;
-      padding: 5px 0;
-      .rewardLabel {
-        font-weight: 300;
-      }
-      .rewardValue {
-        font-weight: 600;
-      }
-    }
-  }
-  .button {
-    background: #4166eb;
-    border-radius: 8px;
-    color: white;
-    height: 65%;
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    svg {
-      margin-right: 10px;
-    }
-    &:hover {
-      background-color: #ffffff;
-      color: #4166eb;
-      border: 1px solid #4166eb;
-    }
-  }
-  .markdonebutton {
-    background: #4166eb;
-    border-radius: 8px;
-    color: white;
-    height: 65%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: 0 10px;
-    transition: all 0.3s ease;
-    svg {
-      margin-right: 10px;
-    }
-    &:hover {
-      background-color: #ffffff;
-      color: #4166eb;
-      border: 1px solid #4166eb;
-    }
-  }
-  .completed {
-    background: #17d1bc;
-    border-radius: 8px;
-    color: white;
-    height: 65%;
-    width: 17%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .expiry {
-    background: #dbdbdb;
-    border-radius: 8px;
-    color: rgb(116, 116, 116);
-    height: 65%;
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    svg {
-      margin-right: 5px;
-      width: 15px;
-      path {
-        fill: white;
-      }
-    }
-  }
-  .approval {
-    background: #4166eb;
-    border-radius: 8px;
-    color: white;
-    height: 65%;
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    svg {
-      margin-right: 5px;
-      width: 15px;
-      path {
-        fill: white;
-      }
-    }
-  }
-  .more {
-    flex: 1;
-    max-width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    cursor: pointer;
-    position: relative;
-    .menu {
-      position: absolute;
-      right: -30px;
-      top: -40px;
-      width: 100px;
-      height: 40px;
-      background-color: white;
-      border-radius: 8px;
-      border: 1px solid rgb(228, 228, 228);
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      .menutab {
-        width: 100px;
-        height: 40px;
-        color: rgb(8, 8, 8);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-    &:hover {
-      svg {
-        transition: all 0.3s ease;
-        circle {
-          fill: rgb(41, 41, 41);
-        }
-      }
-    }
-  }
-}
+$border-radius: 14px;
+$card-height: 90px;
 
-@media only screen and (min-width: 860px) and (max-height: 900px) {
-  .kidChore {
-    .taskAndTo {
-      height: 100%;
+.kidChore {
+  height: $card-height;
+  background-color: #fff;
+  border-radius: $border-radius;
+  .mainCard {
+    display: flex;
+    gap: 10px;
+    .firstSection {
+      .banner {
+        width: $card-height;
+        height: $card-height;
+        object-fit: cover;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+    }
+    .secondSection {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      margin-left: 10px;
-      margin-right: 10px;
-      min-width: 70px;
-      .task {
-        font-size: 16px;
+      padding: 5px 0 10px;
+      .title {
+        flex: 1;
+        font-size: 20px;
         font-weight: 500;
+        color: #484848;
       }
-      .to {
-        font-style: normal;
-        font-weight: normal;
+      .reward {
         font-size: 12px;
-        color: #828282;
+        display: flex;
+        gap: 5px;
+        padding: 5px 0;
+        .rewardLabel {
+          font-weight: 300;
+        }
+        .rewardValue {
+          font-weight: 600;
+        }
       }
-    }
-    .completionIcon {
-      .compIcon {
-        margin-right: 10px;
-      }
-    }
-    .midSection {
-      .time {
+      .dueDate {
         display: flex;
         align-items: center;
-        font-size: 13px;
-        font-weight: 400;
-        margin-right: 10px;
-        svg {
+        .dueIcon {
+          width: 14px;
+          height: 14px;
           margin-right: 5px;
         }
-      }
-      .reward {
-        font-size: 13px;
-        display: flex;
-        gap: 5px;
-        padding: 5px 0;
-        .rewardLabel {
-          font-weight: 300;
-        }
-        .rewardValue {
-          font-weight: 600;
+        .dueText {
+          word-wrap: break-word;
+          font-size: 12px;
         }
       }
     }
-    .button {
-      svg {
-        width: 15px;
-      }
-      background: #4166eb;
-      border-radius: 8px;
-      color: white;
-      height: 65%;
-      min-width: 150px;
-      max-width: 150px;
-      display: flex;
-      justify-content: center;
-      font-size: 13px;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: #ffffff;
-        color: #4166eb;
-        border: 1px solid #4166eb;
-      }
-    }
-    .more {
-      margin-left: 0px;
-      max-width: 40px;
+    .thirdSection {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
-      cursor: pointer;
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          circle {
-            fill: rgb(41, 41, 41);
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 790px) {
-  .kidChore {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    background-color: white;
-    padding: 0 5px;
-    height: 60px;
-    justify-content: space-between;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .taskAndTo {
-      height: 100%;
-      display: flex;
-      padding: 8px 0;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin-left: 5px;
-      margin-right: 5px;
-      max-width: unset;
-      flex: 1;
-      min-width: 30%;
-      .task {
-        font-size: 10px;
-        font-weight: 500;
-      }
-      .to {
-        margin-top: 1px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 8px;
-        color: #828282;
-      }
-    }
-    .completionIcon {
-      display: flex;
-      align-items: center;
-      .compIcon {
-        width: 15px;
-        margin-right: 5px;
-      }
-    }
-    .midSection {
-      .time {
+      padding-right: 10px;
+      .actinButton {
+        cursor: pointer;
+        width: 130px;
+        height: 40px;
+        border: none;
+        background-color: #333;
+        border-radius: $border-radius;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
         display: flex;
+        justify-content: center;
         align-items: center;
-        font-size: 8px;
-        font-weight: 400;
-        margin-right: 5px;
-        position: absolute;
-        left: 70px;
-        bottom: 3px;
-        p {
-          color: #828282;
-          width: fit-content;
-        }
-        svg {
-          margin-right: 2px;
-          fill: #828282;
-          width: 7px;
-          path {
-            fill: #828282;
-          }
-        }
-      }
-      .reward {
-        font-size: 13px;
-        display: flex;
         gap: 5px;
-        padding: 5px 0;
-        .rewardLabel {
-          font-weight: 300;
-        }
-        .rewardValue {
-          font-weight: 600;
-        }
       }
-    }
-    .button {
-      background: #4166eb;
-      border-radius: 8px;
-      color: white;
-      height: 45%;
-      width: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 8px;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: #ffffff;
-        color: #4166eb;
-        border: 1px solid #4166eb;
-      }
-    }
-    .markdonebutton {
-      background: #4166eb;
-      border-radius: 8px;
-      color: white;
-      height: 45%;
-      width: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 8px;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: #ffffff;
-        color: #4166eb;
-        border: 1px solid #4166eb;
-      }
-    }
-    .completed {
-      font-size: 8px;
-      height: 45%;
-      width: 20%;
-    }
-    .more {
-      flex: 1;
-      max-width: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      cursor: pointer;
-      svg {
-        width: 10px;
-        height: 15px;
-      }
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          circle {
-            fill: rgb(41, 41, 41);
-          }
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 370px) {
-  .kidChore {
-    .taskAndTo {
-      max-width: 35%;
-      min-width: 35%;
-    }
-    .midSection {
-      .time {
-        left: 63px;
-      }
-      .reward {
-        font-size: 13px;
-        display: flex;
-        gap: 5px;
-        padding: 5px 0;
-        .rewardLabel {
-          font-weight: 300;
-        }
-        .rewardValue {
-          font-weight: 600;
-        }
+      .menu {
+        padding: 0 10px;
       }
     }
   }
