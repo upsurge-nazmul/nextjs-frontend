@@ -63,16 +63,73 @@ $card-height: 90px;
         cursor: pointer;
         width: 140px;
         height: 40px;
-        border: none;
-        background-color: #333;
         border-radius: $border-radius;
-        color: #fff;
         font-size: 14px;
         font-weight: 600;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 5px;
+        transition: all 0.3s ease;
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #fff;
+        &:hover {
+          color: #333;
+          background-color: #fff;
+          border: 1px solid #333;
+        }
+      }
+      .startButton {
+        @extend .actinButton;
+        background-color: #4166eb;
+        border: 1px solid #4166eb;
+        &:hover {
+          color: #4166eb;
+          background-color: #fff;
+          border: 1px solid #4166eb;
+        }
+      }
+      .markDoneButton {
+        @extend .actinButton;
+        background-color: #4166eb;
+        border: 1px solid #4166eb;
+        &:hover {
+          color: #4166eb;
+          background-color: #fff;
+          border: 1px solid #4166eb;
+        }
+      }
+      .completedButton {
+        @extend .actinButton;
+        background-color: #17d1bc;
+        border: 1px solid #17d1bc;
+        &:hover {
+          color: #17d1bc;
+          background-color: #fff;
+          border: 1px solid #17d1bc;
+        }
+      }
+      .expiredButton {
+        @extend .actinButton;
+        background-color: #dbdbdb;
+        color: rgb(116, 116, 116);
+        border: 1px solid #dbdbdb;
+        &:hover {
+          color: #dbdbdb;
+          background-color: rgb(116, 116, 116);
+          border: 1px solid #dbdbdb;
+        }
+      }
+      .approvalButton {
+        @extend .actinButton;
+        background-color: #4166eb;
+        border: 1px solid #4166eb;
+        &:hover {
+          color: #4166eb;
+          background-color: #fff;
+          border: 1px solid #4166eb;
+        }
       }
       .menu {
         padding: 0 10px;
