@@ -35,17 +35,33 @@
   .completionIcon {
     flex: 0.4;
   }
-  .time {
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    font-weight: 400;
+  .midSection {
     margin-right: 10px;
-    text-align: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    svg {
-      margin-right: 5px;
+    .time {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 400;
+      text-align: center;
+      justify-content: flex-start;
+      svg {
+        margin-right: 5px;
+      }
+    }
+    .reward {
+      font-size: 13px;
+      display: flex;
+      gap: 5px;
+      padding: 5px 0;
+      .rewardLabel {
+        font-weight: 300;
+      }
+      .rewardValue {
+        font-weight: 600;
+      }
     }
   }
   .button {
@@ -205,14 +221,28 @@
         margin-right: 10px;
       }
     }
-    .time {
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 400;
-      margin-right: 10px;
-      svg {
-        margin-right: 5px;
+    .midSection {
+      .time {
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        font-weight: 400;
+        margin-right: 10px;
+        svg {
+          margin-right: 5px;
+        }
+      }
+      .reward {
+        font-size: 13px;
+        display: flex;
+        gap: 5px;
+        padding: 5px 0;
+        .rewardLabel {
+          font-weight: 300;
+        }
+        .rewardValue {
+          font-weight: 600;
+        }
       }
     }
     .button {
@@ -305,25 +335,39 @@
         margin-right: 5px;
       }
     }
-    .time {
-      display: flex;
-      align-items: center;
-      font-size: 8px;
-      font-weight: 400;
-      margin-right: 5px;
-      position: absolute;
-      left: 70px;
-      bottom: 3px;
-      p {
-        color: #828282;
-        width: fit-content;
-      }
-      svg {
-        margin-right: 2px;
-        fill: #828282;
-        width: 7px;
-        path {
+    .midSection {
+      .time {
+        display: flex;
+        align-items: center;
+        font-size: 8px;
+        font-weight: 400;
+        margin-right: 5px;
+        position: absolute;
+        left: 70px;
+        bottom: 3px;
+        p {
+          color: #828282;
+          width: fit-content;
+        }
+        svg {
+          margin-right: 2px;
           fill: #828282;
+          width: 7px;
+          path {
+            fill: #828282;
+          }
+        }
+      }
+      .reward {
+        font-size: 13px;
+        display: flex;
+        gap: 5px;
+        padding: 5px 0;
+        .rewardLabel {
+          font-weight: 300;
+        }
+        .rewardValue {
+          font-weight: 600;
         }
       }
     }
@@ -397,8 +441,22 @@
       max-width: 35%;
       min-width: 35%;
     }
-    .time {
-      left: 63px;
+    .midSection {
+      .time {
+        left: 63px;
+      }
+      .reward {
+        font-size: 13px;
+        display: flex;
+        gap: 5px;
+        padding: 5px 0;
+        .rewardLabel {
+          font-weight: 300;
+        }
+        .rewardValue {
+          font-weight: 600;
+        }
+      }
     }
   }
 }

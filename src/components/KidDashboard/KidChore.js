@@ -114,6 +114,7 @@ function KidChore({ data, settoastdata }) {
       return duetimeDifference(choredata.due_date);
     }
   }
+
   return (
     <div className={styles.kidChore}>
       <img
@@ -132,10 +133,17 @@ function KidChore({ data, settoastdata }) {
         </div>
         <div className={styles.to}>Assigned to Me</div>
       </div>
-      <div className={styles.time}>
-        <ClockSvg />
-
-        <p>{duedate}</p>
+      <div className={styles.midSection}>
+        <div className={styles.time}>
+          <ClockSvg />
+          <p>{duedate}</p>
+        </div>
+        <div className={styles.reward}>
+          <span className={styles.rewardLabel}>Reward:</span>
+          <span className={styles.rewardValue}>
+            {data.reward_amount} {data.reward_type}
+          </span>
+        </div>
       </div>
       {choredata.is_reoccurring &&
       JSON.stringify(choredata.latest_chore) !== "{}" ? (
