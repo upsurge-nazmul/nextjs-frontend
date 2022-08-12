@@ -37,47 +37,53 @@ const TEXT_COLORS = [
 ];
 
 function QuestCard({ data, typeProps, handleCardClick }) {
-  if (!data) return null;
-
   return (
-    <div
-      className={styles.questCard}
-      onClick={() => handleCardClick(data.questId)}
-    >
-      <div
-        className={styles.cardHeader}
-        style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
-      >
-        <div className={styles.imageTitle}>
-          <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>{data.title}</p>
-        </div>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
-            alt={data.questId}
-            className={styles.img}
-          />
-        </div>
-      </div>
-      <div className={styles.contentWrapper}>
+    <>
+      {data ? (
         <div
-          className={styles.typeChip}
-          style={{
-            backgroundColor: typeProps.background,
-            color: typeProps.font,
-          }}
+          className={styles.questCard}
+          onClick={() => handleCardClick(data.questId)}
         >
-          <p>{data.quest_type}</p>
+          <div
+            className={styles.cardHeader}
+            style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
+          >
+            <div className={styles.imageTitle}>
+              <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>
+                {data.title}
+              </p>
+            </div>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
+                alt={data.questId}
+                className={styles.img}
+              />
+            </div>
+          </div>
+          <div className={styles.contentWrapper}>
+            <div
+              className={styles.typeChip}
+              style={{
+                backgroundColor: typeProps.background,
+                color: typeProps.font,
+              }}
+            >
+              <p>{data.quest_type}</p>
+            </div>
+            {/* <p className={styles.title}>{data?.title || ""}</p> */}
+            <p className={styles.detail}>
+              {data?.questDescription.length > 70
+                ? data?.questDescription.substring(0, 70) + "..."
+                : data?.questDescription || ""}
+            </p>
+            <p className={styles.info}>{`${data.chapters.length} chapters`}</p>
+          </div>
         </div>
-        {/* <p className={styles.title}>{data?.title || ""}</p> */}
-        <p className={styles.detail}>
-          {data?.questDescription.length > 70
-            ? data?.questDescription.substring(0, 70) + "..."
-            : data?.questDescription || ""}
-        </p>
-        <p className={styles.info}>{`${data.chapters.length} chapters`}</p>
-      </div>
-    </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 
