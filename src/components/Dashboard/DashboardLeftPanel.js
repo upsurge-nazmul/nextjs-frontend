@@ -188,21 +188,21 @@ function DashboardLeftPanel({
               currenttab.indexOf("/dashboard/k/leaderboards") !== -1
             }
             items={[
-              {
-                name: "Blogs",
-                pushto: "/dashboard/k/blogs",
-                icon: <BlogSvg />,
-              },
+              // {
+              //   name: "Blogs",
+              //   pushto: "/dashboard/k/blogs",
+              //   icon: <BlogSvg />,
+              // },
               {
                 name: "Calculators",
                 pushto: "/dashboard/k/calculators",
                 icon: <CalcSvg />,
               },
-              {
-                name: "Quiz",
-                pushto: "/dashboard/k/quiz",
-                icon: <QuizIconSvg />,
-              },
+              // {
+              //   name: "Quiz",
+              //   pushto: "/dashboard/k/quiz",
+              //   icon: <QuizIconSvg />,
+              // },
               {
                 name: "Leaderboards",
                 pushto: "/dashboard/k/leaderboards",
