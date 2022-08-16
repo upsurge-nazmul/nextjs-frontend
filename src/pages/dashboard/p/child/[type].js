@@ -350,7 +350,7 @@ function AddKid({ childdata, userdatafromserver }) {
             <div className={styles.nameWrapper}>
               <ModernInputBox
                 value={firstName}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
                 placeholder="First name *"
@@ -359,14 +359,14 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={lastName}
                 textOnly={true}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setlastName}
                 placeholder="Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
-              // maxLength={10}
+              maxLength={100}
               setvalue={setuserName}
               placeholder="Username *"
               extraclass={styles.margin}
