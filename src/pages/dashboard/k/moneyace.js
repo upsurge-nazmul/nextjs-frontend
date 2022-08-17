@@ -223,7 +223,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
   }, []);
   return (
     <div className={styles.moneyAce}>
-      <DashboardLeftPanel type="waitlist" />
+      <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div
         className={`${styles.contentWrapper} ${

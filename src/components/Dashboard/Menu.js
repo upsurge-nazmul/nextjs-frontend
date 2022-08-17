@@ -15,12 +15,14 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
+
 function Menu({
   settoastdata,
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
+  setSavedUser,
 }) {
   const {
     savedUsers,
@@ -166,7 +168,11 @@ function Menu({
               if (user.id === userdata.user_id) return null;
               return (
                 <div
-                  onClick={() => handleChangeUser(user)}
+                  // onClick={() => handleChangeUser(user)}
+                  onClick={() => {
+                    setshowauth(true);
+                    setSavedUser(user);
+                  }}
                   className={`${styles.innerUser} ${
                     user.id === userdata.user_id && styles.selectedUser
                   }`}

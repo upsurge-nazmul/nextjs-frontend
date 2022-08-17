@@ -32,22 +32,10 @@ export default function KidChoresPage({
   completedchores,
   currentLevel,
 }) {
+  console.log("******", choresdata);
+
   const [mode, setmode] = useState("Chores");
-  const [pendingchores, setpendingchores] = useState(
-    choresdata.filter((item) => {
-      if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
-        return (
-          item.latest_chore.completion !== "complete" &&
-          duetimeDifference(item.latest_chore.due_date) !== "Expired"
-        );
-      } else
-        return (
-          item.completion !== "complete" &&
-          duetimeDifference(item.due_date) !== "Expired"
-        );
-    })
-  );
-  const [compchores, setcompchores] = useState(completedchores);
+  const [pendingchores, setpendingchores] = useState();
   const { userdata, setuserdata } = useContext(MainContext);
 
   const [choremode, setchoremode] = useState("");
@@ -64,6 +52,24 @@ export default function KidChoresPage({
   useEffect(() => {
     setuserdata(kiddata);
   }, []);
+
+  useEffect(() => {
+    if (choresdata) {
+      let pcs = choresdata.filter((item) => {
+        if (item.is_reoccurring && JSON.stringify(item.latest_chore) !== "{}") {
+          return (
+            item.latest_chore.completion !== "complete" &&
+            duetimeDifference(item.latest_chore.due_date) !== "Expired"
+          );
+        } else
+          return (
+            item.completion !== "complete" &&
+            duetimeDifference(item.due_date) !== "Expired"
+          );
+      });
+      setpendingchores(pcs);
+    }
+  }, [choresdata]);
 
   return (
     <div className={styles.kidChoresPage}>
@@ -83,7 +89,7 @@ export default function KidChoresPage({
             <div className={styles.pendingChoresSection}>
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
-                {pendingchores?.length > 0 ? (
+                {pendingchores && pendingchores?.length > 0 ? (
                   <div className={styles.chores}>
                     {pendingchores.map((item, index) => {
                       return (
@@ -121,9 +127,9 @@ export default function KidChoresPage({
             <div className={styles.choreSection}>
               <h2 className={styles.heading}>Completed Chores</h2>
               <div className={styles.wrapper}>
-                {compchores.length > 0 ? (
+                {completedchores && completedchores.length > 0 ? (
                   <div className={styles.chores}>
-                    {compchores.map((data, index) => {
+                    {completedchores.map((data, index) => {
                       return (
                         <KidChore
                           data={data}

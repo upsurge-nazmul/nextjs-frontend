@@ -19,41 +19,43 @@ export const positions = {
   ],
   quest2: [
     {
-      bottom: "3%",
+      bottom: "10%",
       right: "47%",
-    },
-    {
-      bottom: "26%",
-      right: "50%",
     },
     {
       bottom: "43%",
       right: "74%",
     },
     {
-      bottom: "64%",
-      right: "68%",
-    },
-    {
-      bottom: "69%",
-      right: "38%",
-    },
-    {
       bottom: "52%",
       right: "35%",
     },
     {
-      bottom: "29%",
-      right: "6%",
+      bottom: "32%",
+      right: "7%",
+    },
+    {
+      bottom: "82%",
+      right: "10%",
     },
   ],
   quest3: [
     {
-      bottom: "4%",
-      right: "42%",
+      bottom: "3%",
+      right: "47%",
     },
     {
-      bottom: "24%",
+      bottom: "43%",
+      right: "74%",
+    },
+    {
+      bottom: "68%",
+      right: "38%",
+    },
+  ],
+  quest4: [
+    {
+      bottom: "12%",
       right: "49%",
     },
     {
@@ -61,70 +63,98 @@ export const positions = {
       right: "77%",
     },
     {
-      bottom: "45%",
-      right: "80%",
-    },
-    {
       bottom: "72%",
       right: "83%",
     },
     {
-      bottom: "66%",
-      right: "68%",
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
+      right: "8%",
+    },
+    {
+      bottom: "82%",
+      right: "14%",
+    },
+  ],
+  quest5: [
+    {
+      bottom: "18%",
+      right: "50%",
+    },
+    {
+      bottom: "31%",
+      right: "77%",
+    },
+    {
+      bottom: "74%",
+      right: "77%",
+    },
+    {
+      bottom: "69%",
+      right: "38%",
+    },
+    {
+      bottom: "32%",
+      right: "8%",
+    },
+    {
+      bottom: "85%",
+      right: "13%",
+    },
+  ],
+  quest10: [
+    {
+      bottom: "13%",
+      right: "51%",
+    },
+    {
+      bottom: "29%",
+      right: "81%",
+    },
+    {
+      bottom: "70%",
+      right: "70%",
     },
     {
       bottom: "70%",
       right: "38%",
     },
     {
-      bottom: "53%",
-      right: "36%",
+      bottom: "26%",
+      right: "8%",
     },
     {
-      bottom: "33%",
-      right: "1%",
-    },
-    {
-      bottom: "65%",
-      right: "1%",
-    },
-    {
-      bottom: "83%",
-      right: "13%",
+      bottom: "82%",
+      right: "14%",
     },
   ],
-  quest4: [
+  quest11: [
     {
-      bottom: "3%",
-      right: "49%",
+      bottom: "13%",
+      right: "51%",
     },
     {
-      bottom: "25%",
-      right: "50%",
-    },
-    {
-      bottom: "45%",
-      right: "76%",
-    },
-    {
-      bottom: "64%",
-      right: "67%",
+      bottom: "29%",
+      right: "81%",
     },
     {
       bottom: "70%",
-      right: "36%",
+      right: "70%",
     },
     {
-      bottom: "52%",
-      right: "35%",
+      bottom: "70%",
+      right: "38%",
     },
     {
-      bottom: "33%",
-      right: "6%",
+      bottom: "26%",
+      right: "8%",
     },
     {
-      bottom: "17%",
-      right: "2%",
+      bottom: "82%",
+      right: "14%",
     },
   ],
 };

@@ -62,7 +62,10 @@ export default function VirtualStore({
     seterr("");
   }, [mode]);
   async function handlepay() {
-    let res = await MoneyAceApis.buystoreitems({ data: JSON.stringify(cart) });
+    let res = await MoneyAceApis.buystoreitems({
+      data: JSON.stringify(cart),
+      payment_type: "cash",
+    });
     if (res && res.data && res.data.success) {
       console.log(res.data.data);
       if (res.data.data.length > 0) {

@@ -35,7 +35,7 @@ export default function QuestMap({
                           setActiveChapterNo(chapter.chapterNo);
                         }}
                       >
-                        <span>{chapter.chapterNo}.</span> {chapter.title}
+                        <span>{chapter.title}</span>
                       </div>
                     );
                   })

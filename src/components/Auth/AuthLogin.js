@@ -47,7 +47,8 @@ function AuthLogin({
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,
-          username: response.data.data.userProfile.user_img_url,
+          email: response.data.data.userProfile.email,
+          username: response.data.data.userProfile.user_name,
           image: response.data.data.userProfile.user_img_url,
           name: getfullname(
             response.data.data.userProfile.first_name,

@@ -13,7 +13,7 @@
 }
 
 .auth {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -104,6 +104,20 @@
         align-items: center;
         transition: all 0.3s ease;
         justify-content: center;
+        .onlyPassHeading {
+          font-family: "Roboto", sans-serif;
+          font-size: 24px;
+          margin-bottom: 30px;
+          color: #898989;
+          font-weight: 400;
+        }
+        .prefilledEmail {
+          font-family: "Roboto", sans-serif;
+          font-size: 20px;
+          font-weight: 600;
+          padding: 10px 0 20px;
+          color: #333;
+        }
         .passwordBox {
           display: flex;
           justify-content: center;

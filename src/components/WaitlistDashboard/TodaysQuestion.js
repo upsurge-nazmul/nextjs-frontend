@@ -8,6 +8,8 @@ export default function TodaysQuestion({ data }) {
   const [loading, setloading] = useState(false);
   const [err, seterr] = useState("");
   const [is_correct, setis_correct] = useState(data.is_correct || false);
+  const [correctAns, setCorrectAns] = useState();
+
   async function submittodaysquestion(option) {
     setloading(true);
     let res = await QuizApis.submittodaysquestion({
@@ -16,7 +18,8 @@ export default function TodaysQuestion({ data }) {
     });
     if (res && res.data && res.data.success) {
       setanswerd(true);
-      setis_correct(res.data.data);
+      setis_correct(res.data.data.is_correct);
+      setCorrectAns(res.data.data.correct_ans);
     } else {
       seterr("Cannot connect to server");
     }
@@ -40,6 +43,12 @@ export default function TodaysQuestion({ data }) {
             <RemoveSvg
               className={`${styles.tick} ${!is_correct && styles.wrongtick}`}
             />
+          )}
+          {!is_correct && correctAns && (
+            <div className={styles.correctAns}>
+              <div className={styles.corrAnsLabel}>Correct Answer</div>
+              <div className={styles.corrAnsValue}>{data[correctAns]}</div>
+            </div>
           )}
           <p className={styles.msg}>
             {is_correct

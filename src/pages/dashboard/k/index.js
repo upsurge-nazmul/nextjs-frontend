@@ -30,6 +30,7 @@ import Jasper from "../../../components/SVGcomponents/Jasper";
 import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import KidQuest from "../../../components/KidDashboard/KidQuest";
 
 export default function ChildActivity({
   pendingchores,
@@ -102,6 +103,35 @@ export default function ChildActivity({
       setcurrentTourIndex(Number(router.query.storyIndex));
     }
   }, [router.query]);
+  useEffect(() => {
+    async function fetchQuestData() {
+      let questRes = await KnowledgeQuestApi.getQuestData(
+        null,
+        getCookie("accesstoken")
+      );
+      if (questRes && questRes.data && questRes.data.success) {
+        let questList = questRes.data.data;
+        for (let quest of questList) {
+          let levelRes = await KnowledgeQuestApi.initiate(
+            { quest_id: quest.questId },
+            getCookie("accesstoken")
+          );
+          if (levelRes && levelRes.data && levelRes.data.success) {
+            let questLevel = levelRes.data.data.level;
+            quest.level = questLevel;
+          }
+        }
+        setquests(questList);
+      }
+    }
+    fetchQuestData();
+  }, []);
+
+  function handleGameClick(pushto = null, gameName = null) {
+    pushto = pushto ? pushto.split("/")[pushto.split("/").length - 1] : "";
+    router.push("/dashboard/k/game/" + (pushto ? pushto : gameName));
+  }
+
   const story = [
     {
       intro: true,
@@ -318,7 +348,7 @@ export default function ChildActivity({
                 </>
               )}
             </div>
-            <div className={styles.milestonesSection} s>
+            <div className={styles.milestonesSection}>
               <h2
                 id="milestone"
                 className={styles.mainheading}
@@ -381,7 +411,6 @@ export default function ChildActivity({
                 Chores
                 <HeadingArrow />
               </h2>
-
               <div className={styles.wrapper}>
                 {chorearray.map((data, index) => {
                   return (
@@ -395,7 +424,7 @@ export default function ChildActivity({
                 {chorearray.length === 0 && (
                   <FillSpace
                     text={"No chores in progress"}
-                    extrastyle={{ margin: 0 }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -408,11 +437,18 @@ export default function ChildActivity({
                 Quests
                 <HeadingArrow />
               </h2>
-              <div className="wrapper">
-                {quests.length === 0 && (
+              <div className={styles.wrapper}>
+                {quests.length ? (
+                  <>
+                    {quests.map((quest, i) => {
+                      if (quest.level > 0)
+                        return <KidQuest data={quest} key={i} />;
+                    })}
+                  </>
+                ) : (
                   <FillSpace
                     text={"No quest in progress"}
-                    extrastyle={{ margin: 0 }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -420,13 +456,21 @@ export default function ChildActivity({
             <div className={styles.gamessection} id="recent_games">
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
-                {recentgames.map((game) => {
-                  return <GameCard data={Game_Data[game]} key={game.id} />;
+                {recentgames.map((game, i) => {
+                  return (
+                    <GameCard
+                      data={Game_Data[game]}
+                      key={i}
+                      onCLick={() =>
+                        handleGameClick(Game_Data[game].pushto, game)
+                      }
+                    />
+                  );
                 })}
                 {recentgames.length === 0 && (
                   <FillSpace
                     text={"No recent games"}
-                    extrastyle={{ margin: "0" }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>

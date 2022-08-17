@@ -12,36 +12,40 @@ const TEXT_COLORS = [
 ];
 
 function HeaderCard({ data, handleCardClick }) {
-  if (!data) return null;
-
   return (
-    <div
-      className={styles.headerCard}
-      onClick={() => handleCardClick(data.questId)}
-    >
-      <div className={styles.cardLeft}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
-            alt={data.questId}
-            className={styles.img}
-            height={114}
-            width={202}
-          />
+    <>
+      {data ? (
+        <div
+          className={styles.headerCard}
+          onClick={() => handleCardClick(data.questId)}
+        >
+          <div className={styles.cardLeft}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
+                alt={data.questId}
+                className={styles.img}
+                height={114}
+                width={202}
+              />
+            </div>
+          </div>
+          <div className={styles.cardRight}>
+            <div className={styles.cardType}>
+              <p>{data.quest_type}</p>
+            </div>
+            <p className={styles.cardTitle}>{data.title}</p>
+            <p className={styles.cardDetail}>
+              {data?.questDescription.length > 100
+                ? data?.questDescription.substring(0, 100) + "..."
+                : data?.questDescription || ""}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className={styles.cardRight}>
-        <div className={styles.cardType}>
-          <p>{data.quest_type}</p>
-        </div>
-        <p className={styles.cardTitle}>{data.title}</p>
-        <p className={styles.cardDetail}>
-          {data?.questDescription.length > 100
-            ? data?.questDescription.substring(0, 100) + "..."
-            : data?.questDescription || ""}
-        </p>
-      </div>
-    </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 
