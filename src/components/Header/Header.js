@@ -145,6 +145,7 @@ function Header({
             title={"More"}
             tabs={[
               { name: "About us", pushTo: "/about" },
+              { name: "Team", pushTo: "/team" },
               { name: "Blogs", pushTo: "/blogs" },
               { name: "Financial calculators", pushTo: "/calculators" },
               { name: "FAQs", pushTo: "/help/faq" },
