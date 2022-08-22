@@ -1,0 +1,28 @@
+.positionsCard {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 20px 0;
+  .left {
+    flex: 1;
+    .position {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .location {
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+  .right {
+    .applyButton {
+      font-size: 16px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      background-color: #4166eb;
+      padding: 10px 30px;
+      border-radius: 4px;
+    }
+  }
+}
