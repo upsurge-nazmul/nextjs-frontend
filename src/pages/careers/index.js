@@ -3,6 +3,9 @@ import JobComponent from "../../components/Careers/JobComponent";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import styles from "../../styles/Careers/careers.module.scss";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
+
 function Careers() {
   const data = [
     {
@@ -38,40 +41,14 @@ function Careers() {
       ],
     },
   ];
+
   return (
     <div className={styles.careerPage}>
       <Header />
-      <div className={styles.container}>
-        <p className={styles.heading}>WHY UPSURGE ?</p>
-        <p className={styles.des}>
-          {`It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).`}
-        </p>
-        <p className={styles.heading}>CURRENT REQUIREMENTS</p>
-        <div className={styles.wrapper}>
-          {data.map((section, index) => {
-            return (
-              <div className={styles.section} key={"Section" + index}>
-                <p className={styles.sectionName}>{section.section}</p>
-                {section.jobs.map((item, jobindex) => {
-                  return (
-                    <JobComponent
-                      data={item}
-                      key={"section" + index + "job" + jobindex}
-                    />
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
+      <div className={styles.mainContent}>
+        <Curve1 className={styles.curve1} />
+        <Curve2 className={styles.curve2} />
+        <div className={styles.content}></div>
       </div>
       <Footer />
     </div>
