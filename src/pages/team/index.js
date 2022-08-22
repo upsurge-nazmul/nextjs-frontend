@@ -32,18 +32,20 @@ function TeamsPage() {
         name: "Ankur Tandon",
         img_url: "/images/mentors/Ankur.jfif",
         position: "Product & Growth",
+        link: "https://www.linkedin.com/in/ankur-tandon-636332a7/",
       },
       {
         name: "Alok Prateek",
-        img_url:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
+        img_url: "/images/mentors/Alok.jpg",
         position: "Product & Growth",
+        link: "https://www.linkedin.com/in/alokprateek/",
       },
       {
         name: "Ritika Dhall",
         img_url:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
         position: "Product & Growth",
+        link: "https://www.linkedin.com/in/ritika-dhall-30a84217a/",
       },
       {
         name: "Parth",
@@ -69,6 +71,7 @@ function TeamsPage() {
         name: "Ujjwal Saini",
         img_url: "/images/mentors/Ujjwal.png",
         position: "Gaming",
+        link: "https://www.linkedin.com/in/ujjwal-saini-a7bb30206/",
       },
       {
         name: "Firoz Khira",
@@ -89,12 +92,14 @@ function TeamsPage() {
         img_url:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
         position: "Learning",
+        link: "https://www.linkedin.com/in/garima-g-b15b221a/",
       },
       {
         name: "Aarti Gadeok",
         img_url:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
         position: "Learning",
+        link: "https://www.linkedin.com/in/aarti-gadeock-49346416",
       },
       {
         name: "Firoz Khira",
@@ -109,6 +114,7 @@ function TeamsPage() {
         img_url:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
         position: "Design",
+        link: "https://www.linkedin.com/in/yash-sharma-522a00217/",
       },
       {
         name: "Sohil Jami",
