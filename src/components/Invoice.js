@@ -22,6 +22,7 @@ export default function Invoice({ handlesave, data }) {
                             width: "auto",
                             maxWidth: "100%",
                           }}
+                          alt=""
                         />
                       </p>
                     </td>

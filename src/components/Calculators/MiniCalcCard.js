@@ -10,7 +10,7 @@ export default function MiniCalcCard({ data, id }) {
       onClick={() => router.push("/dashboard/p/calculator/" + id)}
     >
       <div className={styles.img}>
-        <Image src={data.icon} layout="fill" objectFit="cover" />
+        <Image src={data.icon} layout="fill" objectFit="cover" alt=""/>
       </div>
       <div className={styles.right}>
         <div className={styles.title}>{data.heading}</div>

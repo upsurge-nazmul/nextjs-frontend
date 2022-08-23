@@ -230,6 +230,7 @@ export default function KidStore({
                         <img
                           src="https://i.ibb.co/r21r8V1/mainmap.jpg"
                           className={styles.bg}
+                          alt="Main Map"
                         />
                         <p
                           id="kqc1"

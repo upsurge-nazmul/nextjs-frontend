@@ -36,7 +36,7 @@ export default function DashboardBlogs({ blogs }) {
               onClick={() => router.push("/dashboard/p/blog/" + item.id)}
             >
               <div className={styles.img}>
-                <Image src={item.img_url} layout="fill" objectFit="cover" />
+                <Image src={item.img_url} layout="fill" objectFit="cover" alt=""/>
               </div>
               <div className={styles.right}>
                 <div className={styles.categories}>
