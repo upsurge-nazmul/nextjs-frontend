@@ -150,7 +150,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 </div>
               </div>
             )}
-            <div className={styles.availableSection}>
+            {/* <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Simulators
                 <HeadingArrow />
@@ -168,7 +168,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games
