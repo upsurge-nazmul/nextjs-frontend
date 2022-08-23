@@ -520,27 +520,7 @@ function DashboardLeftPanel({
             <WhatsAppIcon className={styles.icon} />
             Connect on Whatsapp
           </a>
-          <div className={styles.terms}>
-            <p
-              onClick={() => {
-                settermmode("terms");
-                setshowterm(true);
-              }}
-            >
-              Terms & Conditions
-            </p>
-            <p
-              onClick={() => {
-                settermmode("privacy");
-                setshowterm(true);
-              }}
-            >
-              Privacy Policy
-            </p>
-          </div>
-          <div className={styles.copyright}>
-            © Surgeup Technologies Private Limited. {new Date().getFullYear()}
-          </div>
+          
         </div>
       </div>
     </div>
