@@ -62,7 +62,7 @@ export default function ModernInputBox({
         />
       ) : (
         <input
-          onBlur={onBlur}
+          onBlur={() => {setTimeout(() => setshowsuggestion(false), 100)}}
           onFocus={
             onFocus
               ? onFocus

@@ -76,6 +76,7 @@ function Footer() {
               href="https://www.facebook.com/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Facebook"
             >
               <Fb className={styles.social} />
             </a>
@@ -83,6 +84,7 @@ function Footer() {
               href="https://www.instagram.com/upsurge.india/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Instagram"
             >
               <Insta className={styles.social} />
             </a>
@@ -90,6 +92,7 @@ function Footer() {
               href="https://www.linkedin.com/company/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn"
             >
               <LinkedIN className={styles.socialyt} />
             </a>
