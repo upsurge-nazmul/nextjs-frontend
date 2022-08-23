@@ -1,12 +1,16 @@
 import styles from "../../styles/Careers/positionsCard.module.scss";
 import ArrowRight from "../SVGcomponents/ArrowRight";
-import { useRouter } from "next/router";
 
-export default function PositionsCard({ data }) {
-  const router = useRouter();
-
+export default function PositionsCard({
+  data,
+  handleApplyClick,
+  handlePositionClick,
+}) {
   return (
-    <div className={styles.positionsCard}>
+    <div
+      className={styles.positionsCard}
+      onClick={() => handlePositionClick(data.id)}
+    >
       <div className={styles.left}>
         <div className={styles.position}>{data.position}</div>
         <div className={styles.location}>{data.location}</div>
@@ -14,7 +18,7 @@ export default function PositionsCard({ data }) {
       <div className={styles.right}>
         <button
           className={styles.applyButton}
-          onClick={() => router.push(`/careers/${data.id}`)}
+          onClick={() => handleApplyClick(data.id)}
         >
           Apply <ArrowRight clr={"#fff"} />
         </button>
