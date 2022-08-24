@@ -10,13 +10,13 @@ export const PositionData = [
     location: "Delhi, India",
   },
   {
-    id: "reactJsIntern",
-    position: "Reactjs Intern",
+    id: "reactJsDev",
+    position: "Reactjs Developer",
     location: "Delhi, India",
   },
   {
-    id: "reactNativeIntern",
-    position: "React Native Intern",
+    id: "reactNativeDev",
+    position: "React Native Developer",
     location: "Delhi, India",
   },
   {
