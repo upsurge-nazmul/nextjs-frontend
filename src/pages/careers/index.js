@@ -9,34 +9,7 @@ import Banner from "../../assets/careers/banner.png";
 import PositionsCard from "../../components/Careers/PositionsCard";
 import JD from "../../components/Careers/JD";
 import Modal from "../../components/Modal";
-
-const positionData = [
-  {
-    id: "gameProgrammer",
-    position: "Game Programmer",
-    location: "Delhi, India",
-  },
-  {
-    id: "gameArtist2D",
-    position: "Game Artist - 2D",
-    location: "Delhi, India",
-  },
-  {
-    id: "reactJsIntern",
-    position: "Reactjs Intern",
-    location: "Delhi, India",
-  },
-  {
-    id: "reactNativeIntern",
-    position: "React Native Intern",
-    location: "Delhi, India",
-  },
-  {
-    id: "uiUxDesigner",
-    position: "UI/UX designer",
-    location: "Delhi, India",
-  },
-];
+import { PositionData } from "../../components/Careers/staticData";
 
 function Careers() {
   const router = useRouter();
@@ -49,8 +22,6 @@ function Careers() {
   const handlePositionClick = (position) => {
     setOpenJd(position);
   };
-
-  console.log("*******", openJd);
 
   return (
     <div className={styles.careerPage}>
@@ -76,7 +47,7 @@ function Careers() {
           <div className={styles.positionArea}>
             <div className={styles.positionTitle}>Open Positions</div>
             <div className={styles.positions}>
-              {positionData.map((position, i) => {
+              {PositionData.map((position, i) => {
                 return (
                   <PositionsCard
                     data={position}
