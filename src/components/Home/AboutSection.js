@@ -177,31 +177,37 @@ function AboutSection() {
         className={`${styles.doodle} ${styles.dl1}`}
         src={doodleLeft1.src}
         alt="asdd"
+        loading="lazy"
       />
       <img
         className={`${styles.doodle} ${styles.dl2}`}
         src={doodleLeft2.src}
         alt=""
+        loading="lazy"
       />
       <img
         className={`${styles.doodle} ${styles.dl3}`}
         src={doodleLeft3.src}
         alt=""
+        loading="lazy"
       />
       <img
         className={`${styles.doodle} ${styles.dr1}`}
         src={doodleRight1.src}
         alt=""
+        loading="lazy"
       />
       <img
         className={`${styles.doodle} ${styles.dr2}`}
         src={doodleRight2.src}
         alt=""
+        loading="lazy"
       />
       <img
         className={`${styles.doodle} ${styles.dr3}`}
         src={doodleRight3.src}
         alt=""
+        loading="lazy"
       />
       <Carousel
         autoPlay

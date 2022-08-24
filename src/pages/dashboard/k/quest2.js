@@ -202,6 +202,7 @@ export default function KidStore({
                             className={styles.stamp}
                             src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
                             alt=""
+                            loading="lazy"
                           />
                         )}
                         <img 

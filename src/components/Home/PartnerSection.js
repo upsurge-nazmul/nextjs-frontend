@@ -71,7 +71,8 @@ export default function PartnerSection({ dashboard, nomargin }) {
               key={"partner" + index}
               className={`${styles.img} ${dashboard && styles.hidecursor}`}
               src={item}
-              alt=""
+              alt="Reward partner"
+              loading="lazy"
             />
           );
         })}

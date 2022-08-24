@@ -132,6 +132,7 @@ export default function About({ userdata }) {
             <img
               src="https://i.ibb.co/wc7Dh1d/Untitled-design-57-removebg.png"
               alt=""
+              loading="lazy"
             />
           </div>
         </div>
