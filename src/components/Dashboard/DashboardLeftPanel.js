@@ -21,7 +21,6 @@ import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
 import Fb from "../SVGcomponents/Fb";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
@@ -215,8 +214,10 @@ function DashboardLeftPanel({
             ]}
             icon={<AssessmentOutlinedIcon />}
           />
+
         </div>
       ) : type === "waitlist" ? (
+        
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/w" ||
@@ -229,6 +230,7 @@ function DashboardLeftPanel({
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
+
           <div
             className={`${styles.tab}  ${currenttab === "/dashboard/w/quest" ||
                 currenttab.indexOf("/dashboard/w/quest") !== -1
@@ -240,6 +242,7 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quest</p>
           </div>
+
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/w/quiz" ||
                 currenttab.indexOf("/dashboard/w/quiz") !== -1
@@ -251,6 +254,7 @@ function DashboardLeftPanel({
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Money Quotient</p>
           </div>
+
           {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/stocksimulator/[page]"
@@ -273,6 +277,7 @@ function DashboardLeftPanel({
             <CryptoSvg className={styles.icon} />
             <p className={styles.tabtitle}>Crypto Simulator</p>
           </div> */}
+
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/w/games" ||
                 currenttab.indexOf("dashboard/w/game") !== -1 ||
@@ -286,6 +291,7 @@ function DashboardLeftPanel({
 
             <p className={styles.tabtitle}>Games</p>
           </div>
+
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/w/leaderboards" ||
                 currenttab.indexOf("/dashboard/w/leaderboards") !== -1
@@ -379,6 +385,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
+          
           <div
             className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
                 currenttab.indexOf("/dashboard/p/quest") !== -1
@@ -391,6 +398,7 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
           </div>
+          
           <div
             className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
                 currenttab.indexOf("/dashboard/p/game") !== -1 ||
@@ -404,6 +412,7 @@ function DashboardLeftPanel({
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
+
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/store" ? styles.activetab : ""
               }`}
@@ -413,6 +422,7 @@ function DashboardLeftPanel({
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
           </div>
+          
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/partners" ? styles.activetab : ""
               }`}
