@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import styles from "../../styles/Benefits/entrepreneuership.module.scss";
+import styles from "../../styles/Benefits/entrepreneurship.module.scss";
 import Image from "next/image";
 import { MainContext } from "../../context/Main";
 
-export default function Entrepreneuership({ id }) {
+export default function Entrepreneurship({ id }) {
   const { theme } = useContext(MainContext);
   return (
     <div

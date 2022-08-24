@@ -190,9 +190,9 @@ function Footer() {
             </p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/benefits/entrepreneuership")}
+              onClick={() => router.push("/benefits/entrepreneurship")}
             >
-              Entrepreneuership
+              Entrepreneurship
             </p>
             {/* <p className={styles.subheading}>Help Center</p> */}
             <p
@@ -326,9 +326,9 @@ function Footer() {
               </p>
               <p
                 className={styles.subheading}
-                onClick={() => router.push("/benefits/entrepreneuership")}
+                onClick={() => router.push("/benefits/entrepreneurship")}
               >
-                Entrepreneuership
+                Entrepreneurship
               </p>
               {/* <p className={styles.subheading}>Help Center</p> */}
               <p

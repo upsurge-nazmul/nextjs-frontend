@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
-import Entrepreneuership from "../../components/Benefits/Entrepreneuership";
+import Entrepreneurship from "../../components/Benefits/Entrepreneurship";
 import Experimential from "../../components/Benefits/Experimential";
 import Financial from "../../components/Benefits/Financial";
 import Rewards from "../../components/Benefits/RewardsSection";
@@ -43,7 +43,7 @@ function BenfitsPage({ userdata, title }) {
   }
   useEffect(() => {
     const experimential = document.getElementById("experimential");
-    const entrepreneuership = document.getElementById("entrepreneuership");
+    const entrepreneurship = document.getElementById("entrepreneurship");
     const skills = document.getElementById("skills");
     function hanldemove(element, index) {
       var headerOffset = 180;
@@ -59,8 +59,8 @@ function BenfitsPage({ userdata, title }) {
     if (type) {
       if (type === "experimential") {
         hanldemove(experimential);
-      } else if (type === "entrepreneuership") {
-        hanldemove(entrepreneuership);
+      } else if (type === "entrepreneurship") {
+        hanldemove(entrepreneurship);
       } else if (type === "rewards") {
         hanldemove(rewards);
       } else if (type === "skills") {
@@ -99,7 +99,7 @@ function BenfitsPage({ userdata, title }) {
       <Values insidebenefits />
       <Financial id="financialsection" />
       <Experimential id="experimential" />
-      <Entrepreneuership id="entrepreneuership" />
+      <Entrepreneurship id="entrepreneurship" />
       <Rewards id="rewards" />
       <Skills id="skills" />
       <JoinUs />
@@ -116,7 +116,7 @@ export async function getServerSideProps({ params, req }) {
   let title = "upsurge benefits";
   if (params.type === "experimential") {
     title = "Money investment workshop for adults";
-  } else if (params.type === "entrepreneuership") {
+  } else if (params.type === "entrepreneurship") {
     title = "Startup workshop for kids and teen in india";
   }
   if (token) {
