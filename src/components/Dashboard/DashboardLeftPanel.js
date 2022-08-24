@@ -113,27 +113,7 @@ function DashboardLeftPanel({
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
-          <div
-            id="chores-leftpanel"
-            className={`${styles.tab} ${currenttab === "/dashboard/k/chores" ? styles.activetab : ""
-              }`}
-            onClick={() => router.push("/dashboard/k/chores")}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/k/quest" ||
-                currenttab.indexOf("/dashboard/k/quest") !== -1
-                ? styles.activetab
-                : ""
-              }`}
-            id="quest-leftpanel"
-            onClick={() => router.push("/dashboard/k/quest")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Knowledge Quest</p>
-          </div>
+
           <div
             className={`${styles.tab}  ${currenttab === "/dashboard/k/games" ||
                 currenttab.indexOf("/dashboard/k/game") !== -1 ||
@@ -148,6 +128,30 @@ function DashboardLeftPanel({
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
+
+          <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/k/quest" ||
+                currenttab.indexOf("/dashboard/k/quest") !== -1
+                ? styles.activetab
+                : ""
+              }`}
+            id="quest-leftpanel"
+            onClick={() => router.push("/dashboard/k/quest")}
+          >
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Knowledge Quest</p>
+          </div>
+
+          <div
+            id="chores-leftpanel"
+            className={`${styles.tab} ${currenttab === "/dashboard/k/chores" ? styles.activetab : ""
+              }`}
+            onClick={() => router.push("/dashboard/k/chores")}
+          >
+            <ChoresSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Chores</p>
+          </div>
+          
           {/* <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/tribes" ||
