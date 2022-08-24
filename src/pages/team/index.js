@@ -30,7 +30,7 @@ function TeamsPage() {
       },
       {
         name: "Ankur Tandon",
-        img_url: "/images/mentors/Ankur.jfif",
+        img_url: "/images/mentors/Ankur.jpg",
         position: "Product & Growth",
         link: "https://www.linkedin.com/in/ankur-tandon-636332a7/",
       },
@@ -222,9 +222,9 @@ function TeamsPage() {
           become more, you are a leader.
         </div>
         <div className={styles.mainContent}>
-          {Object.keys(data).map((item) => {
+          {Object.keys(data).map((item, ind) => {
             return (
-              <div className={styles.team}>
+              <div className={styles.team} key={ind}>
                 <div className={styles.teamTitle}>
                   {POSITIONS.find((pos) => pos.id === item).name}
                 </div>
@@ -263,7 +263,6 @@ function TeamsPage() {
           })}
         </div>
       </div>
-
       <Footer />
     </div>
   );
