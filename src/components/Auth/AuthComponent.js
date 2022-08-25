@@ -109,6 +109,7 @@ function AuthComponent({
                   seterror={seterror}
                   setmode={setmode}
                   onlyLogin={onlyLogin}
+                  addAccount={mailfromhome === false ? true : false}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
