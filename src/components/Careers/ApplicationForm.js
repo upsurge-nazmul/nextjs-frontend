@@ -1,22 +1,39 @@
 import { useState } from "react";
 import styles from "../../styles/Careers/application.module.scss";
 import Selection from "../Selection";
+import CareerApis from "../../actions/apis/CareerApis";
 
 export default function ApplicationForm({ positionData, selectedPosition }) {
   const [name, setName] = useState("");
   const [position, setPosition] = useState(selectedPosition);
   const [resume, setResume] = useState();
-  const [portfolioLink, setPortfolioLink] = useState();
-  const [age, setAge] = useState();
-  const [lastCompany, setLastCompany] = useState();
-  const [lastDsn, setLastDsn] = useState();
-  const [lastCTC, setLastCTC] = useState();
-  const [whyUpsurge, setWhyUpsurge] = useState();
+  const [portfolioLink, setPortfolioLink] = useState("");
+  const [age, setAge] = useState("");
+  const [lastCompany, setLastCompany] = useState("");
+  const [lastDsn, setLastDsn] = useState("");
+  const [lastCTC, setLastCTC] = useState("");
+  const [whyUpsurge, setWhyUpsurge] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("*********** submit ", resume, whyUpsurge);
+    const formData = new FormData();
+    formData.append("resume", resume);
+    let res = await CareerApis.submitApplication({
+      data: {
+        name,
+        position: positionData.find((item) => item.id === position)["position"],
+        portfolioLink,
+        age,
+        lastCompany,
+        lastDsn,
+        lastCTC,
+        whyUpsurge,
+      },
+    });
+    console.log("*********** submit ", res);
   };
+
+  console.log("#######", resume);
 
   return (
     <div className={styles.application}>
