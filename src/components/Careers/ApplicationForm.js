@@ -5,6 +5,7 @@ import CareerApis from "../../actions/apis/CareerApis";
 
 export default function ApplicationForm({ positionData, selectedPosition }) {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [position, setPosition] = useState(selectedPosition);
   const [resume, setResume] = useState();
   const [portfolioLink, setPortfolioLink] = useState("");
@@ -21,6 +22,7 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
     let res = await CareerApis.submitApplication({
       data: {
         name,
+        email,
         position: positionData.find((item) => item.id === position)["position"],
         portfolioLink,
         age,
@@ -43,6 +45,14 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             maxLength={1000}
             onChange={(e) => setName(e.target.value)}
             placeholder="Name"
+          />
+          <input
+            className={styles.input}
+            type={"email"}
+            value={email}
+            maxLength={1000}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
           <input
             className={styles.input}
