@@ -17,7 +17,7 @@ import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
 
 function Menu({
-  settoastdata,
+  settoastdata = () => {},
   showauth,
   setshowauth,
   menuType,
