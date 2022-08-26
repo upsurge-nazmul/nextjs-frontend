@@ -7,11 +7,8 @@ export default function PositionsCard({
   handlePositionClick,
 }) {
   return (
-    <div
-      className={styles.positionsCard}
-      onClick={() => handlePositionClick(data.id)}
-    >
-      <div className={styles.left}>
+    <div className={styles.positionsCard}>
+      <div className={styles.left} onClick={() => handlePositionClick(data.id)}>
         <div className={styles.position}>{data.position}</div>
         <div className={styles.location}>{data.location}</div>
       </div>

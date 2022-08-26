@@ -30,10 +30,7 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
         whyUpsurge,
       },
     });
-    console.log("*********** submit ", res);
   };
-
-  console.log("#######", resume);
 
   return (
     <div className={styles.application}>
