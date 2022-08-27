@@ -50,5 +50,13 @@
       cursor: pointer;
       padding: 10px 30px;
     }
+    .message {
+      padding: 10px 0;
+      font-size: 12px;
+    }
+    .errorMessage {
+      @extend .message;
+      color: #ff6263;
+    }
   }
 }

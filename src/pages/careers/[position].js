@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import Curve1 from "../../components/SVGcomponents/Curve1";

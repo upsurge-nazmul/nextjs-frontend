@@ -2,8 +2,11 @@ import { useState } from "react";
 import styles from "../../styles/Careers/application.module.scss";
 import Selection from "../Selection";
 import CareerApis from "../../actions/apis/CareerApis";
+import { useRouter } from "next/router";
 
 export default function ApplicationForm({ positionData, selectedPosition }) {
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [position, setPosition] = useState(selectedPosition);
@@ -14,24 +17,49 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
   const [lastDsn, setLastDsn] = useState("");
   const [lastCTC, setLastCTC] = useState("");
   const [whyUpsurge, setWhyUpsurge] = useState("");
+  const [error, setError] = useState(false);
+
+  const errorCheck = () => {
+    return (
+      !name ||
+      !email ||
+      !age ||
+      !position ||
+      !resume ||
+      !lastCompany ||
+      !lastDsn ||
+      !whyUpsurge
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("resume", resume);
-    let res = await CareerApis.submitApplication({
-      data: {
-        name,
-        email,
-        position: positionData.find((item) => item.id === position)["position"],
-        portfolioLink,
-        age,
-        lastCompany,
-        lastDsn,
-        lastCTC,
-        whyUpsurge,
-      },
-    });
+    if (errorCheck()) {
+      setError(true);
+    } else {
+      setError(false);
+      const formData = new FormData();
+      formData.append("resume", resume);
+      let res = await CareerApis.submitApplication({
+        data: {
+          name,
+          email,
+          position: positionData.find((item) => item.id === position)[
+            "position"
+          ],
+          portfolioLink,
+          age,
+          lastCompany,
+          lastDsn,
+          lastCTC,
+          whyUpsurge,
+        },
+      });
+      if (res && res.data && res.data.success) {
+        console.log("*************", res);
+        router.push(`/`);
+      }
+    }
   };
 
   return (
@@ -44,7 +72,8 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={name}
             maxLength={1000}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Name"
+            placeholder="Name *"
+            onFocus={() => (error ? setError(false) : {})}
           />
           <input
             className={styles.input}
@@ -52,7 +81,8 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={email}
             maxLength={1000}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder="Email *"
+            onFocus={() => (error ? setError(false) : {})}
           />
           <input
             className={styles.input}
@@ -60,7 +90,8 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={age}
             maxLength={1000}
             onChange={(e) => setAge(e.target.value)}
-            placeholder="Age"
+            placeholder="Age *"
+            onFocus={() => (error ? setError(false) : {})}
           />
         </div>
         <div className={styles.inputArea}>
@@ -68,7 +99,7 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={position}
             setvalue={setPosition}
             options={positionData}
-            placeholder="Select Child"
+            placeholder="Select position *"
             keyAccessor={"id"}
             valueAccessor={"position"}
           />
@@ -87,8 +118,9 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
               type={"file"}
               onChange={(e) => setResume(e.target.files[0])}
               placeholder="Resume"
+              onFocus={() => (error ? setError(false) : {})}
             />
-            {resume ? resume.name : "Click here to select your resume"}
+            {resume ? resume.name : "Click here to select your resume *"}
           </label>
         </div>
         <div className={styles.inputArea}>
@@ -98,7 +130,8 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={lastCompany}
             maxLength={1000}
             onChange={(e) => setLastCompany(e.target.value)}
-            placeholder="Last Company"
+            placeholder="Last Company *"
+            onFocus={() => (error ? setError(false) : {})}
           />
           <input
             className={styles.input}
@@ -106,7 +139,8 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
             value={lastDsn}
             maxLength={1000}
             onChange={(e) => setLastDsn(e.target.value)}
-            placeholder="Last Designation"
+            placeholder="Last Designation *"
+            onFocus={() => (error ? setError(false) : {})}
           />
           <input
             className={styles.input}
@@ -121,10 +155,16 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
           <textarea
             rows={"10"}
             name={"Why upsurge"}
-            placeholder={"Why upsurge"}
+            placeholder={"Why upsurge *"}
             value={whyUpsurge}
             onChange={(e) => setWhyUpsurge(e.target.value)}
+            onFocus={() => (error ? setError(false) : {})}
           />
+        </div>
+        <div className={styles.inputArea}>
+          <div className={error ? styles.errorMessage : styles.message}>
+            {error ? "Please fill all the * marked fields" : ""}
+          </div>
         </div>
         <div className={styles.inputArea}>
           <button onClick={handleSubmit} className={styles.submitButton}>
