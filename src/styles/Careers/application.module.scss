@@ -59,4 +59,24 @@
       color: #ff6263;
     }
   }
+  .success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 40vh;
+    .icon {
+      height: 200px;
+      width: 200px;
+    }
+    .successMsg {
+      padding: 20px 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .infoMsg {
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
 }

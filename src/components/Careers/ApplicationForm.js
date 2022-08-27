@@ -2,11 +2,12 @@ import { useState } from "react";
 import styles from "../../styles/Careers/application.module.scss";
 import Selection from "../Selection";
 import CareerApis from "../../actions/apis/CareerApis";
-import { useRouter } from "next/router";
 
-export default function ApplicationForm({ positionData, selectedPosition }) {
-  const router = useRouter();
-
+export default function ApplicationForm({
+  positionData,
+  selectedPosition,
+  setApplicationView = () => {},
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [position, setPosition] = useState(selectedPosition);
@@ -56,8 +57,7 @@ export default function ApplicationForm({ positionData, selectedPosition }) {
         },
       });
       if (res && res.data && res.data.success) {
-        console.log("*************", res);
-        router.push(`/`);
+        setApplicationView(false);
       }
     }
   };

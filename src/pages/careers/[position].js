@@ -7,10 +7,12 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Careers/position.module.scss";
 import ApplicationForm from "../../components/Careers/ApplicationForm";
 import { PositionData } from "../../components/Careers/staticData";
+import Success from "../../components/Careers/Success";
 
 export default function Position() {
   const router = useRouter();
   const { position } = router.query;
+  const [applicationView, setApplicationView] = useState(true);
 
   return (
     <div className={styles.position}>
@@ -20,10 +22,17 @@ export default function Position() {
         <Curve2 className={styles.curve2} />
         <div className={styles.content}>
           {position && (
-            <ApplicationForm
-              positionData={PositionData}
-              selectedPosition={position}
-            />
+            <>
+              {applicationView ? (
+                <ApplicationForm
+                  positionData={PositionData}
+                  selectedPosition={position}
+                  setApplicationView={setApplicationView}
+                />
+              ) : (
+                <Success />
+              )}
+            </>
           )}
         </div>
       </div>
