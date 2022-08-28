@@ -51,7 +51,7 @@ export default function AddTribeMemberModal({
           {searchresults.map((item) => {
             return (
               <div className={styles.searchresult} key={item.id}>
-                <img src={item.user_img_url} />
+                <img src={item.user_img_url} alt=""/>
                 <div className={styles.right}>
                   <div className={styles.top}>
                     <p className={styles.name}>{item.first_name}</p>

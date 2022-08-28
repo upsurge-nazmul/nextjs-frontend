@@ -79,6 +79,7 @@ export default function Document() {
           <img
             height="1"
             width="1"
+            alt=""
             src="https://www.facebook.com/tr?id=301023181478444&ev=PageView
 &noscript=1"
           />

@@ -81,7 +81,7 @@ function Footer() {
               <Fb className={styles.social} />
             </a>
             <a
-              href="https://www.instagram.com/upsurge.india/"
+              href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -190,9 +190,9 @@ function Footer() {
             </p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/benefits/entrepreneuership")}
+              onClick={() => router.push("/benefits/entrepreneurship")}
             >
-              Entrepreneuership
+              Entrepreneurship
             </p>
             {/* <p className={styles.subheading}>Help Center</p> */}
             <p
@@ -326,9 +326,9 @@ function Footer() {
               </p>
               <p
                 className={styles.subheading}
-                onClick={() => router.push("/benefits/entrepreneuership")}
+                onClick={() => router.push("/benefits/entrepreneurship")}
               >
-                Entrepreneuership
+                Entrepreneurship
               </p>
               {/* <p className={styles.subheading}>Help Center</p> */}
               <p
@@ -476,7 +476,7 @@ function Footer() {
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
-            href="https://www.instagram.com/upsurge.india/"
+            href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
           >

@@ -21,7 +21,6 @@ import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
 import Fb from "../SVGcomponents/Fb";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
@@ -106,52 +105,52 @@ function DashboardLeftPanel({
       {type === "kid" ? (
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/k" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/k")}
           >
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
+
           <div
-            id="chores-leftpanel"
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/chores" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/chores")}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/k/quest" ||
-              currenttab.indexOf("/dashboard/k/quest") !== -1
+            className={`${styles.tab}  ${currenttab === "/dashboard/k/games" ||
+                currenttab.indexOf("/dashboard/k/game") !== -1 ||
+                currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
+                currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
                 ? styles.activetab
                 : ""
-            }`}
-            id="quest-leftpanel"
-            onClick={() => router.push("/dashboard/k/quest")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Knowledge Quest</p>
-          </div>
-          <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/k/games" ||
-              currenttab.indexOf("/dashboard/k/game") !== -1 ||
-              currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
-              currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
-                ? styles.activetab
-                : ""
-            }`}
+              }`}
             id="games-leftpanel"
             onClick={() => router.push("/dashboard/k/games")}
           >
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
+
+          <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/k/quest" ||
+                currenttab.indexOf("/dashboard/k/quest") !== -1
+                ? styles.activetab
+                : ""
+              }`}
+            id="quest-leftpanel"
+            onClick={() => router.push("/dashboard/k/quest")}
+          >
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Knowledge Quest</p>
+          </div>
+
+          <div
+            id="chores-leftpanel"
+            className={`${styles.tab} ${currenttab === "/dashboard/k/chores" ? styles.activetab : ""
+              }`}
+            onClick={() => router.push("/dashboard/k/chores")}
+          >
+            <ChoresSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Chores</p>
+          </div>
+          
           {/* <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/tribes" ||
@@ -165,9 +164,8 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>Tribes</p>
           </div> */}
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/store" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/k/store" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/k/store")}
             id="store-leftpanel"
           >
@@ -216,45 +214,47 @@ function DashboardLeftPanel({
             ]}
             icon={<AssessmentOutlinedIcon />}
           />
+
         </div>
       ) : type === "waitlist" ? (
+        
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w" ||
-              currenttab === "/dashboard/w/editprofile"
+            className={`${styles.tab} ${currenttab === "/dashboard/w" ||
+                currenttab === "/dashboard/w/editprofile"
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             onClick={() => router.push("/dashboard/w")}
           >
             <HomeSvg className={styles.icon} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
+
           <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/w/quest" ||
-              currenttab.indexOf("/dashboard/w/quest") !== -1
+            className={`${styles.tab}  ${currenttab === "/dashboard/w/quest" ||
+                currenttab.indexOf("/dashboard/w/quest") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             onClick={() => router.push("/dashboard/w/quest")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quest</p>
           </div>
+
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/quiz" ||
-              currenttab.indexOf("/dashboard/w/quiz") !== -1
+            className={`${styles.tab} ${currenttab === "/dashboard/w/quiz" ||
+                currenttab.indexOf("/dashboard/w/quiz") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             onClick={() => router.push("/dashboard/w/quiz")}
           >
             <QuizIconSvg className={styles.icon} />
             <p className={styles.tabtitle}>Money Quotient</p>
           </div>
+
           {/* <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/w/stocksimulator/[page]"
@@ -277,27 +277,27 @@ function DashboardLeftPanel({
             <CryptoSvg className={styles.icon} />
             <p className={styles.tabtitle}>Crypto Simulator</p>
           </div> */}
+
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/games" ||
-              currenttab.indexOf("dashboard/w/game") !== -1 ||
-              currenttab.indexOf("dashboard/w/moneyace") !== -1
+            className={`${styles.tab} ${currenttab === "/dashboard/w/games" ||
+                currenttab.indexOf("dashboard/w/game") !== -1 ||
+                currenttab.indexOf("dashboard/w/moneyace") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             onClick={() => router.push("/dashboard/w/games")}
           >
             <GameSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Games</p>
           </div>
+
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/leaderboards" ||
-              currenttab.indexOf("/dashboard/w/leaderboards") !== -1
+            className={`${styles.tab} ${currenttab === "/dashboard/w/leaderboards" ||
+                currenttab.indexOf("/dashboard/w/leaderboards") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             onClick={() => router.push("/dashboard/w/leaderboards")}
           >
             <LeaderboardSvg className={styles.icon} />
@@ -306,18 +306,16 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/w/rewards")}
           >
             <RewardSvg className={styles.icon} />
             <p className={styles.tabtitle}>Rewards</p>
           </div>
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/w/pricing" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/w/pricing" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/w/pricing")}
           >
             <PricingSvg className={styles.icon} />
@@ -348,9 +346,8 @@ function DashboardLeftPanel({
       ) : (
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/p" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/p" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/p")}
           >
             <HomeSvg className={styles.icon} />
@@ -369,12 +366,11 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>My Kids</p>
           </div> */}
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/p/chores" ||
-              currenttab.indexOf("/dashboard/p/managechore") !== -1
+            className={`${styles.tab} ${currenttab === "/dashboard/p/chores" ||
+                currenttab.indexOf("/dashboard/p/managechore") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             id="chores-leftpanel"
             onClick={() => {
               if (!userdata.intro_guide_completed) {
@@ -389,47 +385,47 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
+          
           <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/p/quests" ||
-              currenttab.indexOf("/dashboard/p/quest") !== -1
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
+                currenttab.indexOf("/dashboard/p/quest") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             id="quest-leftpanel"
             onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
           </div>
+          
           <div
-            className={`${styles.tab}  ${
-              currenttab === "/dashboard/p/games" ||
-              currenttab.indexOf("/dashboard/p/game") !== -1 ||
-              currenttab.indexOf("dashboard/w/moneyace") !== -1
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
+                currenttab.indexOf("/dashboard/p/game") !== -1 ||
+                currenttab.indexOf("dashboard/w/moneyace") !== -1
                 ? styles.activetab
                 : ""
-            }`}
+              }`}
             id="games-leftpanel"
             onClick={() => router.push("/dashboard/p/games")}
           >
             <GameSvg className={styles.icon} />
             <p className={styles.tabtitle}>Games</p>
           </div>
+
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/p/store" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/p/store" ? styles.activetab : ""
+              }`}
             onClick={() => router.push("/dashboard/p/store")}
             id="store-leftpanel"
           >
             <StoreSvg className={styles.icon} />
             <p className={styles.tabtitle}>Store</p>
           </div>
+          
           <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/p/partners" ? styles.activetab : ""
-            }`}
+            className={`${styles.tab} ${currenttab === "/dashboard/p/partners" ? styles.activetab : ""
+              }`}
             onClick={() => {
               if (router.query.showTour) {
                 router.push("/dashboard/p/partners?showTour=true");
@@ -486,6 +482,7 @@ function DashboardLeftPanel({
           />
         </div>
       )}
+
       <div className={styles.bottom}>
         <div className={styles.brandtext}>
           <div className={styles.socials}>
@@ -497,7 +494,7 @@ function DashboardLeftPanel({
               <Fb className={styles.social} />
             </a>
             <a
-              href="https://www.instagram.com/upsurge.india/"
+              href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
             >
@@ -520,27 +517,7 @@ function DashboardLeftPanel({
             <WhatsAppIcon className={styles.icon} />
             Connect on Whatsapp
           </a>
-          <div className={styles.terms}>
-            <p
-              onClick={() => {
-                settermmode("terms");
-                setshowterm(true);
-              }}
-            >
-              Terms & Conditions
-            </p>
-            <p
-              onClick={() => {
-                settermmode("privacy");
-                setshowterm(true);
-              }}
-            >
-              Privacy Policy
-            </p>
-          </div>
-          <div className={styles.copyright}>
-            © Surgeup Technologies Private Limited. {new Date().getFullYear()}
-          </div>
+          
         </div>
       </div>
     </div>

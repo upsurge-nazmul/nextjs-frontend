@@ -39,6 +39,7 @@ export default function PhotoUpload({
                         : null
                     }
                     className={styles.preview}
+                    alt={"Upload"}
                   />
                 ) : (
                   <div>Click here to select an image</div>
