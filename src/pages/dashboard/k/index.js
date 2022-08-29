@@ -397,7 +397,7 @@ export default function ChildActivity({
                   </p>
                   <p className={styles.section}>Money ace</p>
                 </div>
-                <div className={styles.element}>
+                {/* <div className={styles.element}>
                   <p className={styles.rank}>{highestquizscore ?? 0}</p>
                   <p className={styles.section}>Money Quotient</p>
                 </div>
@@ -410,7 +410,7 @@ export default function ChildActivity({
                     {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
                   </p>
                   <p className={styles.section}>StockSimulator</p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className={styles.questionSection}>
@@ -444,6 +444,8 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
+          </div>
+          <div className={styles.flexRight}>
             <div className={styles.questsection} id="quests">
               <h2
                 className={styles.heading}

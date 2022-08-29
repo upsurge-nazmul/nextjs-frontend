@@ -34,8 +34,6 @@ export default function KidChoresPage({
   currentLevel,
   choresLeaderboardData
 }) {
-  console.log("******", choresdata);
-
   const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState();
   const { userdata, setuserdata } = useContext(MainContext);

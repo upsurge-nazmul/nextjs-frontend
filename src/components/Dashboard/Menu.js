@@ -125,6 +125,7 @@ function Menu({
       router.reload();
     }
   }
+  console.log("**********", savedUsers, userdata);
   return (
     <div
       className={`${styles.menu} ${router.query.showTour && styles.tourMenu}`}
@@ -186,15 +187,19 @@ function Menu({
                 </div>
               );
             })}
-            <div
-              className={`${styles.innerUser} `}
-              onClick={() => setshowauth(true)}
-            >
-              <GroupAddIcon className={styles.icon} />
-              <div className={styles.userInfo}>
-                <p>Add new account</p>
+            {userdata.user_type !== "child" ? (
+              <div
+                className={`${styles.innerUser} `}
+                onClick={() => setshowauth(true)}
+              >
+                <GroupAddIcon className={styles.icon} />
+                <div className={styles.userInfo}>
+                  <p>Add new account</p>
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
