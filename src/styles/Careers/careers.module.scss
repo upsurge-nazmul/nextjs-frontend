@@ -72,3 +72,70 @@
     }
   }
 }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .careerPage {
+    height: 100vh;
+    .mainContent {
+      .curve2 {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        top: 60%;
+        z-index: -1;
+        transform: scaleX(-1);
+        animation: moveit 5s ease alternate infinite;
+        animation-delay: 2s;
+      }
+      .curve1 {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        top: 25%;
+        z-index: -1;
+        animation: moveit 5s ease alternate infinite;
+      }
+      .content {
+        min-height: 50vh;
+        .header {
+          padding: 10px 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .title {
+            font-size: 30px;
+            font-weight: 700;
+          }
+          .description {
+            width: auto;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.25;
+            padding: 10px;
+          }
+        }
+        .banner {
+          padding: 10px 0;
+          .bannerImg {
+            object-fit: cover;
+            width: 100vw;
+            height: 200px;
+          }
+        }
+        .positionArea {
+          padding: 40px 7%;
+          .positionTitle {
+            font-size: 30px;
+            font-weight: 700;
+          }
+          .positions {
+            padding: 20px 0;
+          }
+        }
+      }
+    }
+  }
+}
