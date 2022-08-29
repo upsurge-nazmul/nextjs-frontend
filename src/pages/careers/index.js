@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
@@ -10,10 +10,27 @@ import PositionsCard from "../../components/Careers/PositionsCard";
 import JD from "../../components/Careers/JD";
 import Modal from "../../components/Modal";
 import { PositionData } from "../../components/Careers/staticData";
+import LeftPanel from "../../components/LeftPanel";
 
 function Careers() {
   const router = useRouter();
   const [openJd, setOpenJd] = useState();
+  const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [showauth, setshowauth] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
+
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 1) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
 
   const handleApplyClick = (position) => {
     router.push(`/careers/${position}`);
@@ -25,7 +42,18 @@ function Careers() {
 
   return (
     <div className={styles.careerPage}>
-      <Header />
+      <Header
+        showauth={showauth}
+        setshowauth={setshowauth}
+        stickyheader={stickyheader}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
       <div className={styles.mainContent}>
         <Curve1 className={styles.curve1} />
         <Curve2 className={styles.curve2} />
