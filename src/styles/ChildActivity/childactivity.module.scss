@@ -26,6 +26,7 @@
         height: 100%;
         width: 50%;
         padding: 0 10px 0 45px;
+       
         .headsection {
           width: 100%;
           .topblock {
@@ -156,6 +157,12 @@
             text-transform: capitalize;
             font-size: 20px;
           }
+        }
+        .questionSection {
+          width: 100%;
+          padding: 20px 0px 0px 10px;
+          display: flex;
+          flex-direction: row;
         }
         .milestonesSection {
           margin-top: 20px;
@@ -306,6 +313,7 @@
           }
         }
       }
+      
       .flexRight {
         display: flex;
         flex-direction: column;
@@ -510,6 +518,10 @@
           }
           .choreSection {
             width: 100%;
+          }
+          .questionSection {
+            display: flex;
+            flex-direction: row;
           }
         }
         .flexRight {
