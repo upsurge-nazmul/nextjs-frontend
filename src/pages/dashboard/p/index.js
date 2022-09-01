@@ -34,7 +34,7 @@ import Jasper from "../../../components/SVGcomponents/Jasper";
 function Dashboard({
   isLogged,
   msg,
-  blogdata,
+  homeBlogs,
   choresdata,
   kidsdata,
   phone_verified,
@@ -415,7 +415,10 @@ function Dashboard({
                 <Refer settoastdata={settoastdata} />
               </div>
               <div className={styles.blogsSection}>
-                <DashboardBlogs blogs={blogdata} />
+                <DashboardBlogs
+                  homeBlogs={homeBlogs}
+                  highlightblogs={homeBlogs}
+                />
               </div>
             </div>
           )}
@@ -455,7 +458,7 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       let kidsdata = await getkidsdata(token);
-      let blogs = await BlogApis.gethomeblogs();
+      let homeBlogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
       let triberequests = await gettriberequests(token);
       let tq = await QuizApis.todaysquestion(null, token);
@@ -465,7 +468,7 @@ export async function getServerSideProps({ params, req }) {
           phone_verified: response.data.data.phone_verified,
           choresdata,
           kidsdata,
-          blogdata: blogs?.data.data || [],
+          homeBlogs: homeBlogs?.data.data || [],
           triberequests,
           userdatafromserver: response.data.data,
           todaysquestion: tq?.data?.success ? tq.data.data : null,

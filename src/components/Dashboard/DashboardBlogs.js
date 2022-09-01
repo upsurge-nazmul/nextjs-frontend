@@ -5,7 +5,9 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Dashboard/dashboardblogs.module.scss";
 import Image from "next/image";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
-export default function DashboardBlogs({ blogs }) {
+import BlogCard from "../Blog/BlogCard";
+
+export default function DashboardBlogs({ homeBlogs, highlightblogs }) {
   const router = useRouter();
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -28,7 +30,55 @@ export default function DashboardBlogs({ blogs }) {
         <HeadingArrow />
       </h2>
       <div className={styles.wrapper}>
-        {blogs.map((item) => {
+        {highlightblogs.length > 0 && (
+          <div className={styles.postsMain}>
+            <div
+              className={styles.left}
+              onClick={() =>
+                router.push(`/dashboard/p/blog/${highlightblogs[0].id}`)
+              }
+            >
+              <img src={highlightblogs[0]?.img_url} alt="" />
+              <div className={styles.categoryWrapper}>
+                {highlightblogs[0].categories.split(",").map((cat, index) => (
+                  <p className={styles.category} key={"cat" + index}>
+                    {cat}
+                  </p>
+                ))}
+              </div>
+              <p className={styles.blogtitle}>{highlightblogs[0].title}</p>
+              <p className={styles.blogcontent}>
+                {getdatafromraw(highlightblogs[0].content).replace(
+                  /<[^>]+>/g,
+                  ""
+                ).length > 60
+                  ? getdatafromraw(highlightblogs[0].content)
+                      .replace(/<[^>]+>/g, "")
+                      .substring(0, 60) + "..."
+                  : getdatafromraw(highlightblogs[0].content).replace(
+                      /<[^>]+>/g,
+                      ""
+                    )}
+              </p>
+              <p className={styles.time}>5 Minutes Read</p>
+            </div>
+            <div className={styles.right}>
+              {highlightblogs.slice(1, 4).map((blog, index) => {
+                return (
+                  <BlogCard
+                    pushto={"/dashboard/p/blog/"}
+                    key={"blogcard" + index}
+                    data={blog}
+                    getdatafromraw={getdatafromraw}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+      <div className={styles.wrapper}>
+        {homeBlogs.map((item) => {
           return (
             <div
               className={styles.blog}
@@ -36,7 +86,12 @@ export default function DashboardBlogs({ blogs }) {
               onClick={() => router.push("/dashboard/p/blog/" + item.id)}
             >
               <div className={styles.img}>
-                <Image src={item.img_url} layout="fill" objectFit="cover" alt=""/>
+                <Image
+                  src={item.img_url}
+                  layout="fill"
+                  objectFit="cover"
+                  alt=""
+                />
               </div>
               <div className={styles.right}>
                 <div className={styles.categories}>
