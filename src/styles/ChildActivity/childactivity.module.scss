@@ -25,7 +25,6 @@
         height: 100%;
         width: 50%;
         padding: 0 10px 0 45px;
-       
         .headsection {
           width: 100%;
           .topblock {
@@ -156,12 +155,6 @@
             text-transform: capitalize;
             font-size: 20px;
           }
-        }
-        .questionSection {
-          width: 100%;
-          padding: 20px 0px 0px 10px;
-          display: flex;
-          flex-direction: row;
         }
         .milestonesSection {
           margin-top: 20px;
@@ -310,6 +303,9 @@
             padding: 0 20px 10px 0px;
           }
         }
+        .questionSection {
+          margin-top: 20px;
+        }
         .pendingChoresSection {
           height: fit-content;
           display: flex;
@@ -354,7 +350,6 @@
           }
         }
       }
-      
       .flexRight {
         display: flex;
         flex-direction: column;
@@ -550,7 +545,6 @@
         display: flex;
         flex-direction: column;
         .flexLeft {
-          margin-bottom: 300px;
           align-items: center;
           width: 100%;
           padding-right: 40px;
@@ -562,10 +556,6 @@
             .wrapper {
               padding: 0;
             }
-          }
-          .questionSection {
-            display: flex;
-            flex-direction: row;
           }
         }
         .flexRight {
@@ -612,7 +602,6 @@
     .contentWrapper {
       .mainContent {
         .flexLeft {
-          margin-bottom: 300px;
           height: 100%;
           width: 100%;
           padding: 0 00px 0 20px;
@@ -646,7 +635,6 @@
       .mainContent {
         margin-top: 50px;
         .flexLeft {
-          margin-bottom: 0px;
           height: unset !important;
           width: 100%;
           padding: 0 10px 0 20px;

@@ -65,7 +65,6 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
-  
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -387,7 +386,6 @@ export default function ChildActivity({
                 </p>
               </div>
             </div>
-           
             <div className={styles.leaderboardsection} id="leaderboards">
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
@@ -414,10 +412,34 @@ export default function ChildActivity({
               </div>
             </div>
             <div className={styles.questionSection}>
-                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
           </div>
           <div className={styles.flexRight}>
+            <div className={styles.questsection} id="quests">
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/k/quest")}
+              >
+                Quests
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {quests.length && quests.find((quest) => quest.level > 0) ? (
+                  <>
+                    {quests.map((quest, i) => {
+                      if (quest.level > 0)
+                        return <KidQuest data={quest} key={i} />;
+                    })}
+                  </>
+                ) : (
+                  <FillSpace
+                    text={"No quest in progress"}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
+                  />
+                )}
+              </div>
+            </div>
             <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
@@ -439,32 +461,6 @@ export default function ChildActivity({
                 {chorearray.length === 0 && (
                   <FillSpace
                     text={"No chores in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-          <div className={styles.flexRight}>
-            <div className={styles.questsection} id="quests">
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/quest")}
-              >
-                Quests
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {quests.length ? (
-                  <>
-                    {quests.map((quest, i) => {
-                      if (quest.level > 0)
-                        return <KidQuest data={quest} key={i} />;
-                    })}
-                  </>
-                ) : (
-                  <FillSpace
-                    text={"No quest in progress"}
                     extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
@@ -492,7 +488,6 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-        
           </div>
         </div>
       </div>
@@ -503,11 +498,11 @@ export default function ChildActivity({
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";
-  let tq = await QuizApis.todaysquestion(null, token);
   if (token) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    let tq = await QuizApis.todaysquestion(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -541,13 +536,13 @@ export async function getServerSideProps({ params, req }) {
           type: "pending",
         },
         token
-        );
-        let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
-        let tododata = await DashboardApis.getTodo(null, token);
+      );
+      let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
+      let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
-      
+
       let userTribes = await TribeApis.userTribes(
         {
           userId: response.data.data.user_id,
@@ -589,14 +584,14 @@ export async function getServerSideProps({ params, req }) {
             response && response.data && response.data.data
               ? response.data.data
               : [],
-              highestquizscore: highestquizscore?.data.success
-              ? highestquizscore.data.data.score
-              : 0,
+          highestquizscore: highestquizscore?.data.success
+            ? highestquizscore.data.data.score
+            : 0,
           childTribes:
             userTribes && userTribes.data && userTribes.data.success
               ? userTribes.data.data
               : [],
-              recentgames:
+          recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
@@ -614,8 +609,8 @@ export async function getServerSideProps({ params, req }) {
               ? stockHoldings.data.data
               : null,
           todaysquestion: tq?.data?.success ? tq.data.data : null,
-            },
-          };
+        },
+      };
     }
   } else {
     return {
