@@ -30,6 +30,8 @@ import Jasper from "../../../components/SVGcomponents/Jasper";
 import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
+import KidQuest from "../../../components/KidDashboard/KidQuest";
+import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 
 export default function ChildActivity({
   pendingchores,
@@ -43,6 +45,7 @@ export default function ChildActivity({
   moneyacedata,
   activeQuests,
   stockHoldings,
+  todaysquestion,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -102,6 +105,35 @@ export default function ChildActivity({
       setcurrentTourIndex(Number(router.query.storyIndex));
     }
   }, [router.query]);
+  useEffect(() => {
+    async function fetchQuestData() {
+      let questRes = await KnowledgeQuestApi.getQuestData(
+        null,
+        getCookie("accesstoken")
+      );
+      if (questRes && questRes.data && questRes.data.success) {
+        let questList = questRes.data.data;
+        for (let quest of questList) {
+          let levelRes = await KnowledgeQuestApi.initiate(
+            { quest_id: quest.questId },
+            getCookie("accesstoken")
+          );
+          if (levelRes && levelRes.data && levelRes.data.success) {
+            let questLevel = levelRes.data.data.level;
+            quest.level = questLevel;
+          }
+        }
+        setquests(questList);
+      }
+    }
+    fetchQuestData();
+  }, []);
+
+  function handleGameClick(pushto = null, gameName = null) {
+    pushto = pushto ? pushto.split("/")[pushto.split("/").length - 1] : "";
+    router.push("/dashboard/k/game/" + (pushto ? pushto : gameName));
+  }
+
   const story = [
     {
       intro: true,
@@ -189,6 +221,14 @@ export default function ChildActivity({
       highlightBg: true,
       isolate: true,
       extraPadding: true,
+    },
+    {
+      ref: "#todays-question",
+      position: "bottom",
+      content: `You can answer questions and get rewards.`,
+      superimpose: true,
+      required: false,
+      isolate: true,
     },
     {
       ref: "#chores-leftpanel",
@@ -318,7 +358,7 @@ export default function ChildActivity({
                 </>
               )}
             </div>
-            <div className={styles.milestonesSection} s>
+            <div className={styles.milestonesSection}>
               <h2
                 id="milestone"
                 className={styles.mainheading}
@@ -355,7 +395,7 @@ export default function ChildActivity({
                   </p>
                   <p className={styles.section}>Money ace</p>
                 </div>
-                <div className={styles.element}>
+                {/* <div className={styles.element}>
                   <p className={styles.rank}>{highestquizscore ?? 0}</p>
                   <p className={styles.section}>Money Quotient</p>
                 </div>
@@ -368,11 +408,38 @@ export default function ChildActivity({
                     {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
                   </p>
                   <p className={styles.section}>StockSimulator</p>
-                </div>
+                </div> */}
               </div>
+            </div>
+            <div className={styles.questionSection}>
+              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
           </div>
           <div className={styles.flexRight}>
+            <div className={styles.questsection} id="quests">
+              <h2
+                className={styles.heading}
+                onClick={() => router.push("/dashboard/k/quest")}
+              >
+                Quests
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {quests.length && quests.find((quest) => quest.level > 0) ? (
+                  <>
+                    {quests.map((quest, i) => {
+                      if (quest.level > 0)
+                        return <KidQuest data={quest} key={i} />;
+                    })}
+                  </>
+                ) : (
+                  <FillSpace
+                    text={"No quest in progress"}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
+                  />
+                )}
+              </div>
+            </div>
             <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
@@ -381,7 +448,6 @@ export default function ChildActivity({
                 Chores
                 <HeadingArrow />
               </h2>
-
               <div className={styles.wrapper}>
                 {chorearray.map((data, index) => {
                   return (
@@ -395,24 +461,7 @@ export default function ChildActivity({
                 {chorearray.length === 0 && (
                   <FillSpace
                     text={"No chores in progress"}
-                    extrastyle={{ margin: 0 }}
-                  />
-                )}
-              </div>
-            </div>
-            <div className={styles.questsection} id="quests">
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/quest")}
-              >
-                Quests
-                <HeadingArrow />
-              </h2>
-              <div className="wrapper">
-                {quests.length === 0 && (
-                  <FillSpace
-                    text={"No quest in progress"}
-                    extrastyle={{ margin: 0 }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -420,13 +469,21 @@ export default function ChildActivity({
             <div className={styles.gamessection} id="recent_games">
               <h2 className={styles.heading}>Recently played games</h2>
               <div className={styles.wrapper}>
-                {recentgames.map((game) => {
-                  return <GameCard data={Game_Data[game]} key={game.id} />;
+                {recentgames.map((game, i) => {
+                  return (
+                    <GameCard
+                      data={Game_Data[game]}
+                      key={i}
+                      onCLick={() =>
+                        handleGameClick(Game_Data[game].pushto, game)
+                      }
+                    />
+                  );
                 })}
                 {recentgames.length === 0 && (
                   <FillSpace
                     text={"No recent games"}
-                    extrastyle={{ margin: "0" }}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
               </div>
@@ -445,6 +502,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    let tq = await QuizApis.todaysquestion(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -550,6 +608,7 @@ export async function getServerSideProps({ params, req }) {
             stockHoldings && stockHoldings.data && stockHoldings.data.success
               ? stockHoldings.data.data
               : null,
+          todaysquestion: tq?.data?.success ? tq.data.data : null,
         },
       };
     }

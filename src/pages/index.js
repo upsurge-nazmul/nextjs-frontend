@@ -13,7 +13,6 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../styles/Home/home.module.scss";
 import Who from "../components/Home/Who";
 import Values from "../components/Home/Values";
-import { IntercomProvider, useIntercom } from "react-use-intercom";
 import { MainContext } from "../context/Main";
 import Benefits from "../components/Home/Benefits";
 import JasperSection from "../components/Home/JasperSection";
@@ -22,7 +21,8 @@ import FaqSection from "../components/Home/FaqSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
 import Tour from "../components/Tour/Tour";
-const INTERCOM_APP_ID = "tk23vd4p";
+// import { IntercomProvider, useIntercom } from "react-use-intercom";
+// const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -120,7 +120,7 @@ function Home({ isLogged, userdata }) {
     }
   }, [router]);
   return (
-    <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
+    // <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
       <div
         id="home-page-main"
         className={`${styles.homePage} ${
@@ -133,6 +133,7 @@ function Home({ isLogged, userdata }) {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+          <meta name="description" content="upsurge is a platform for financial education for children." />
         </Head>
 
         {/* <div
@@ -187,7 +188,7 @@ function Home({ isLogged, userdata }) {
           <Tour story={story} current={0} showtour={true} />
         )}
       </div>
-    </IntercomProvider>
+    // </IntercomProvider>
   );
 }
 

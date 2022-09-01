@@ -41,8 +41,9 @@ const googlelogin = (payload) => {
   return ApiCalls.postResponse(`users/googlelogin`, payload);
 };
 
-const login = (payload) => {
-  return ApiCalls.postResponse(`users/login`, payload);
+const login = (payload, token=null) => {
+  console.log(token)
+  return ApiCalls.postResponse(`users/login`, payload, token);
 };
 
 const checktoken = (payload) => {

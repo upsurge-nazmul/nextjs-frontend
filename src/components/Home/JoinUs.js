@@ -42,6 +42,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
           objectFit="cover"
           src="https://i.ibb.co/yRsxh0y/Untitled-design-4.png"
           alt=""
+          loading="lazy"
         />
       </div>
       <div className={`${styles.doodle} ${styles.dl2}`} />
@@ -52,6 +53,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
           objectFit="cover"
           src="https://i.ibb.co/GtLBxMY/Untitled-design-7.png"
           alt=""
+          loading="lazy"
         />
       </div>
       <div className={`${styles.doodle} ${styles.dl5}`} />
@@ -62,6 +64,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
           objectFit="cover"
           src="https://i.ibb.co/92nwnTL/Untitled-design-6.png"
           alt=""
+          loading="lazy"
         />
       </div>
       <div className={`${styles.doodle} ${styles.dr2}`} />

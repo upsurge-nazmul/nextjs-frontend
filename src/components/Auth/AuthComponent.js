@@ -13,6 +13,7 @@ import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
+import AuthOnlyPass from "./AuthOnlyPass";
 
 function AuthComponent({
   showauth,
@@ -21,6 +22,7 @@ function AuthComponent({
   mailfromhome,
   setshowpopup,
   onlyLogin,
+  prefilled = null,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -38,6 +40,10 @@ function AuthComponent({
     type: "success",
     msg: "",
   });
+
+  useEffect(() => {
+    if (prefilled) setmode("");
+  }, [prefilled]);
 
   useEffect(() => {
     if (!showauth) {
@@ -90,7 +96,7 @@ function AuthComponent({
                 mode === "parent" ? styles.parentAuth : ""
               }`}
             >
-              {mode !== "privacy" ? (
+              {mode !== "privacy" && mode !== "" ? (
                 <AuthHeader
                   setmode={setmode}
                   handleBack={handleBack}
@@ -109,6 +115,7 @@ function AuthComponent({
                   seterror={seterror}
                   setmode={setmode}
                   onlyLogin={onlyLogin}
+                  addAccount={mailfromhome === false ? true : false}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -169,6 +176,16 @@ function AuthComponent({
                   settoastdata={settoastdata}
                   setemail={setemail}
                   email={email}
+                />
+              ) : mode === "" && prefilled ? (
+                <AuthOnlyPass
+                  prefilled={prefilled}
+                  settoastdata={settoastdata}
+                  error={error}
+                  setshowauth={setshowauth}
+                  seterror={seterror}
+                  setmode={setmode}
+                  onlyLogin={onlyLogin}
                 />
               ) : null}
             </div>

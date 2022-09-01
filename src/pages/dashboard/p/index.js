@@ -34,7 +34,8 @@ import Jasper from "../../../components/SVGcomponents/Jasper";
 function Dashboard({
   isLogged,
   msg,
-  blogdata,
+  homeBlogs,
+  allBlogs,
   choresdata,
   kidsdata,
   phone_verified,
@@ -89,7 +90,7 @@ function Dashboard({
     {
       ref: "#upsurge-logo",
       isolate: true,
-      required: true,
+      required: false,
       highlightBg: true,
       position: "bottom",
       content: `You can go back to home page, by clicking upsurge logo.`,
@@ -107,7 +108,7 @@ function Dashboard({
           <Jasper className={styles.jasper} />
         </div>
       ),
-      required: true,
+      required: false,
       disableBtns: true,
       isolate: true,
       skip: kids.length > 0,
@@ -124,7 +125,7 @@ function Dashboard({
       ),
       superimpose: true,
       position: "bottom",
-      required: true,
+      required: false,
       isolate: true,
     },
     {
@@ -132,7 +133,7 @@ function Dashboard({
       position: "bottom",
       content: `You'll see approval requests from your children, here.`,
       superimpose: true,
-      required: true,
+      required: false,
       isolate: true,
     },
     {
@@ -140,7 +141,7 @@ function Dashboard({
       position: "bottom",
       content: `You can answer questions and get rewards.`,
       superimpose: true,
-      required: true,
+      required: false,
       isolate: true,
     },
     {
@@ -148,7 +149,7 @@ function Dashboard({
       position: "bottom",
       content: `You can refer your friends from here.`,
       superimpose: true,
-      required: true,
+      required: false,
       isolate: true,
     },
     {
@@ -156,7 +157,7 @@ function Dashboard({
       position: "bottom",
       content: `You can access blogs from here.`,
       superimpose: true,
-      required: true,
+      required: false,
       highlightBg: true,
       isolate: true,
     },
@@ -166,7 +167,7 @@ function Dashboard({
       content: `Now lets start allotting chores.`,
       disableBtns: true,
       superimpose: true,
-      required: true,
+      required: false,
       highlightBg: true,
       isolate: true,
     },
@@ -175,7 +176,7 @@ function Dashboard({
       position: "bottom",
       content: `You can track the knowledge quest progress of your children.`,
       superimpose: true,
-      required: true,
+      required: false,
       highlightBg: true,
       isolate: true,
     },
@@ -184,7 +185,7 @@ function Dashboard({
       position: "bottom",
       content: `You can play games here.`,
       superimpose: true,
-      required: true,
+      required: false,
       highlightBg: true,
       isolate: true,
     },
@@ -193,7 +194,7 @@ function Dashboard({
       position: "bottom",
       content: `Now lets go to store.`,
       superimpose: true,
-      required: true,
+      required: false,
       highlightBg: true,
       isolate: true,
     },
@@ -415,7 +416,14 @@ function Dashboard({
                 <Refer settoastdata={settoastdata} />
               </div>
               <div className={styles.blogsSection}>
-                <DashboardBlogs blogs={blogdata} />
+                {allBlogs ? (
+                  <DashboardBlogs
+                    allBlogs={allBlogs.rows}
+                    highlightblogs={homeBlogs}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           )}
@@ -455,7 +463,8 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       let kidsdata = await getkidsdata(token);
-      let blogs = await BlogApis.gethomeblogs();
+      let allBlogs = await BlogApis.getallblogs();
+      let homeBlogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
       let triberequests = await gettriberequests(token);
       let tq = await QuizApis.todaysquestion(null, token);
@@ -465,7 +474,8 @@ export async function getServerSideProps({ params, req }) {
           phone_verified: response.data.data.phone_verified,
           choresdata,
           kidsdata,
-          blogdata: blogs?.data.data || [],
+          homeBlogs: homeBlogs?.data.data || [],
+          allBlogs: allBlogs?.data.data || [],
           triberequests,
           userdatafromserver: response.data.data,
           todaysquestion: tq?.data?.success ? tq.data.data : null,

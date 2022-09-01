@@ -1,11 +1,12 @@
 {
-  "name": "next",
-  "version": "0.1.0",
+  "name": "upsurge-web",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap --config sitemapconfig.js && pm2 reload all",
     "devbuild": "next build",
+    "analbuild": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -60,6 +61,7 @@
     "xss": "^1.0.9"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.2.5",
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "next-sitemap": "^2.5.7"

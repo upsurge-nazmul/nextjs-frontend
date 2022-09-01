@@ -101,6 +101,7 @@ export default function TestiMonial() {
               alt=""
               layout="fill"
               objectFit="cover"
+              loading="lazy"
             />
           </div>
         </div>

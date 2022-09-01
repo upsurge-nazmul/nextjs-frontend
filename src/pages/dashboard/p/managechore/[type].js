@@ -18,6 +18,9 @@ import "react-voice-recorder/dist/index.css";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { uploadaudiotos3 } from "../../../../helpers/aws";
 import Tour from "../../../../components/Tour/Tour";
+
+const REWARD_TYPES = [{ name: "UniCoins", value: "unicoins" }];
+
 export default function ManageChore({
   choredata,
   childdata,
@@ -85,6 +88,9 @@ export default function ManageChore({
   const [audiouploadedurl, setaudiouploadedurl] = useState(
     choredata?.voice_note || ""
   );
+  const [rewardType, setRewardType] = useState(REWARD_TYPES[0]);
+  const [rewardAmount, setRewardAmount] = useState(200);
+
   useEffect(() => {
     setlettercounts(200 - msg.length);
   }, [msg]);
@@ -188,6 +194,8 @@ export default function ManageChore({
           img_url: currentchoretemplate?.img,
           is_reoccurring: interval !== "One Time" ? true : false,
           completion: "pending",
+          reward_type: rewardType.value,
+          reward_amount: rewardAmount,
         });
         if (!response || !response.data || !response.data.success) {
           noerror = false;
@@ -281,7 +289,6 @@ export default function ManageChore({
               value={choretitle}
               onChange={(e) => setchoretitle(e.target.value)}
             />
-
             <DropDown
               id="chore-inteval-dropdown"
               placeholder="One Time"
@@ -392,6 +399,11 @@ export default function ManageChore({
                 +Add Assignees
               </div>
             )}
+            <div className={styles.rewardArea}>
+              <div>
+                Reward for this task is {rewardAmount} {rewardType.name}
+              </div>
+            </div>
           </div>
         </div>
       </div>

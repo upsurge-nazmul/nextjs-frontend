@@ -21,6 +21,7 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
+  addAccount
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -42,12 +43,17 @@ function AuthLogin({
       return;
     }
     seterror("");
-    let response = await LoginApis.login({ email, password });
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${'accesstoken'}=`);
+    let token;
+    if (parts.length === 2) token = parts.pop().split(';').shift();
+    let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,
-          username: response.data.data.userProfile.user_img_url,
+          email: response.data.data.userProfile.email,
+          username: response.data.data.userProfile.user_name,
           image: response.data.data.userProfile.user_img_url,
           name: getfullname(
             response.data.data.userProfile.first_name,

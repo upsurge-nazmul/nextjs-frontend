@@ -268,6 +268,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                 <img
                   src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                   className={styles.jasper}
+                  alt="to-landscape"
                 />
                 <p className={styles.heading}>
                   Please switch to landscape mode
@@ -289,6 +290,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                 <img
                   src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                   className={styles.jasper}
+                  alt="to-landscape"
                 />
                 <p className={styles.heading}>
                   This game can only be played on fullscreen in your phone.
@@ -363,6 +365,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                         <img
                           src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                           className={styles.jasper}
+                          alt="to-landscape"
                         />
                         <p className={styles.heading}>
                           This game can only be played on fullscreen in your

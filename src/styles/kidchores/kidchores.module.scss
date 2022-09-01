@@ -78,7 +78,7 @@
         padding-right: 50px;
         padding-left: 10px;
         .choreSection {
-          margin-top: 15px;
+          margin-top: 0px;
           display: flex;
           flex-direction: column;
           .heading {
@@ -88,7 +88,6 @@
             display: flex;
             align-items: center;
             cursor: default;
-            margin-bottom: 10px;
             svg {
               margin-left: 10px;
             }

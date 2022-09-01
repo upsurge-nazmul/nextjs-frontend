@@ -28,6 +28,7 @@ function DashboardHeader({
   const [shownotifications, setshownotifications] = useState(false);
   const [kidLevel, setKidLevel] = useState();
   const [showlevels, setshowlevels] = useState(false);
+  const [savedUser, setSavedUser] = useState();
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
@@ -69,6 +70,7 @@ function DashboardHeader({
         showauth={showauth}
         setshowauth={setshowauth}
         onlyLogin={true}
+        prefilled={savedUser}
       />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
@@ -148,6 +150,7 @@ function DashboardHeader({
               settoastdata={settoastdata}
               waitilistmenu={userdata?.is_waiting_active}
               menuType={userdata?.user_type}
+              setSavedUser={setSavedUser}
             />
           )}
           <img

@@ -15,12 +15,14 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
+
 function Menu({
   settoastdata,
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
+  setSavedUser,
 }) {
   const {
     savedUsers,
@@ -123,6 +125,7 @@ function Menu({
       router.reload();
     }
   }
+  console.log("**********", savedUsers, userdata);
   return (
     <div
       className={`${styles.menu} ${router.query.showTour && styles.tourMenu}`}
@@ -166,7 +169,11 @@ function Menu({
               if (user.id === userdata.user_id) return null;
               return (
                 <div
-                  onClick={() => handleChangeUser(user)}
+                  // onClick={() => handleChangeUser(user)}
+                  onClick={() => {
+                    setshowauth(true);
+                    setSavedUser(user);
+                  }}
                   className={`${styles.innerUser} ${
                     user.id === userdata.user_id && styles.selectedUser
                   }`}
@@ -180,15 +187,19 @@ function Menu({
                 </div>
               );
             })}
-            <div
-              className={`${styles.innerUser} `}
-              onClick={() => setshowauth(true)}
-            >
-              <GroupAddIcon className={styles.icon} />
-              <div className={styles.userInfo}>
-                <p>Add new account</p>
+            {userdata.user_type !== "child" ? (
+              <div
+                className={`${styles.innerUser} `}
+                onClick={() => setshowauth(true)}
+              >
+                <GroupAddIcon className={styles.icon} />
+                <div className={styles.userInfo}>
+                  <p>Add new account</p>
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>

@@ -54,8 +54,8 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                   pushTo: "/benefits/experimential",
                 },
                 {
-                  name: "Entrepreneuership",
-                  pushTo: "/benefits/entrepreneuership",
+                  name: "Entrepreneurship",
+                  pushTo: "/benefits/entrepreneurship",
                 },
                 { name: "Rewards", pushTo: "/benefits/rewards" },
                 { name: "21st century skills", pushTo: "/benefits/skills" },
@@ -92,6 +92,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               title={"More"}
               tabs={[
                 { name: "About us", pushTo: "/about" },
+                { name: "Team", pushTo: "/team" },
                 { name: "Blogs", pushTo: "/blogs" },
                 { name: "Financial calculators", pushTo: "/calculators" },
                 { name: "FAQs", pushTo: "/help/faq" },

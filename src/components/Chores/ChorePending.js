@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import { duetimeDifference } from "../../helpers/timehelpers";
 import styles from "../../styles/Chores/chorepending.module.scss";
+import PhotoUpload from "../PhotoUpload";
 import ClockSvg from "../SVGcomponents/ClockSvg";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 
 function ChorePending({ data, settoastdata, setchores, setallchores, setid }) {
+  const [chorePhotoModal, setChorePhotoModal] = useState(false);
+  const [choreImage, setChoreImage] = useState(
+    "https://www.myenglishteacher.eu/blog/wp-content/uploads/2017/05/housekeeping-duties.png?ezimgfmt=rs:372x333/rscb38/ng:webp/ngcb38"
+  );
+
   async function handleApprove() {
     let response = await ChoreApis.approvechore({ id: data.id });
     if (response && response.data && response.data.success) {
@@ -64,12 +70,25 @@ function ChorePending({ data, settoastdata, setchores, setallchores, setid }) {
         <p>{getDueDate()}</p>
       </div>
 
-      <div className={styles.button} onClick={handleApprove}>
+      <div
+        className={styles.button}
+        onClick={handleApprove}
+        // onClick={() => setChorePhotoModal(true)}
+      >
         Approve
       </div>
       <div className={styles.removebutton} onClick={handleReject}>
         <RemoveSvg />
       </div>
+      {chorePhotoModal && choreImage && (
+        <PhotoUpload
+          title={"This image is provided for this chore"}
+          setShowModal={setChorePhotoModal}
+          defaultImage={choreImage}
+          actionButtonTitle={"Approve"}
+          actionHandler={() => {}}
+        />
+      )}
     </div>
   );
 }

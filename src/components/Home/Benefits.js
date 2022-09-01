@@ -163,7 +163,7 @@ function Benefits() {
                     } else if (index === 1) {
                       router.push("/benefits/experimential");
                     } else if (index === 2) {
-                      router.push("/benefits/entrepreneuership");
+                      router.push("/benefits/entrepreneurship");
                     } else if (index === 3) {
                       router.push("/benefits/rewards");
                     } else {
@@ -311,7 +311,7 @@ function Benefits() {
               style={{
                 color: "#FF6263",
               }}
-              onClick={() => router.push("/benefits/entrepreneuership")}
+              onClick={() => router.push("/benefits/entrepreneurship")}
             >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>

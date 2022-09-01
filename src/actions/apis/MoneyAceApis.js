@@ -45,6 +45,13 @@ const getTasks = (payload) => {
     getCookie("accesstoken")
   );
 };
+const getDaywiseTasks = (payload) => {
+  return ApiCalls.getResponse(
+    "games/moneyace/daywisetaskdetails",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const getBankingDetails = (payload) => {
   return ApiCalls.getResponse(`games/moneyace/bankingdetails`, payload);
 };
@@ -336,6 +343,7 @@ const MoneyAceApis = {
   buyStock,
   sellStock,
   getTasks,
+  getDaywiseTasks,
   openDematAccount,
   getassetvalues,
   getstoreitems,

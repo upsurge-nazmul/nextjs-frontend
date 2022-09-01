@@ -20,6 +20,7 @@ export default function Navigation({
                 type === "parent" ? "p" : type === "kid" ? "k" : "w"
               }/${simulatorType}/${item.value}`}
               key={i}
+              passHref
             >
               <div
                 key={item.value}

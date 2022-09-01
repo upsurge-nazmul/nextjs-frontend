@@ -20,6 +20,7 @@ import { getCookie } from "../../../../actions/cookieUtils";
 import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
+import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
   const type = router.query.type;
@@ -72,6 +73,7 @@ function AddKid({ childdata, userdatafromserver }) {
   const boy_avatars = ["1", "2", "3", "4", "5"];
   const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
+  const [showSuccess, setShowSuccess] = useState(false);
   useEffect(() => {
     if (gender === "male") {
       setavatars(boy_avatars);
@@ -144,11 +146,12 @@ function AddKid({ childdata, userdatafromserver }) {
     };
     let response = await DashboardApis.addkids(data);
     if (response && response.data && response.data.success) {
-      if (router.query.showTour) {
-        router.push("/dashboard/p?storyIndex=4");
-      } else {
-        router.push("/dashboard/p");
-      }
+      // if (router.query.showTour) {
+      //   router.push("/dashboard/p?storyIndex=4");
+      // } else {
+      //   router.push("/dashboard/p");
+      // }
+      setShowSuccess(true);
       settoastdata({
         type: "success",
         msg: response.data.message,
@@ -156,7 +159,6 @@ function AddKid({ childdata, userdatafromserver }) {
       });
     } else {
       console.log(response.data);
-
       seterror(response.data.message || "error");
     }
   }
@@ -271,21 +273,6 @@ function AddKid({ childdata, userdatafromserver }) {
   function checkSpecial(pass) {
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
-  const years = range(1990, getYear(new Date()) + 5, 1);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   useEffect(() => {
     if (school) searchSchool();
     else setschoolresults([]);
@@ -301,6 +288,14 @@ function AddKid({ childdata, userdatafromserver }) {
       setschoolresults([]);
     }
   }
+  function afterChildAccCreated() {
+    setShowSuccess(false);
+    if (router.query.showTour) {
+      router.push("/dashboard/p?storyIndex=4");
+    } else {
+      router.push("/dashboard/p");
+    }
+  }
   return (
     <div className={styles.manageChore}>
       <DashboardLeftPanel disableClicks={router.query.showTour} />
@@ -313,6 +308,16 @@ function AddKid({ childdata, userdatafromserver }) {
           setvalue={setimg}
           dirlink={"/images/free-child-avatars/"}
         />
+      )}
+      {showSuccess ? (
+        <AddChildSuccess
+          name={firstName + " " + lastName}
+          userName={userName}
+          password={password}
+          clickHandler={afterChildAccCreated}
+        />
+      ) : (
+        <></>
       )}
       <div className={styles.contentWrapper}>
         <DashboardHeader
@@ -345,7 +350,7 @@ function AddKid({ childdata, userdatafromserver }) {
             <div className={styles.nameWrapper}>
               <ModernInputBox
                 value={firstName}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
                 placeholder="First name *"
@@ -354,14 +359,14 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={lastName}
                 textOnly={true}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setlastName}
                 placeholder="Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
-              // maxLength={10}
+              maxLength={100}
               setvalue={setuserName}
               placeholder="Username *"
               extraclass={styles.margin}

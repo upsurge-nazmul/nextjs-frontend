@@ -16,7 +16,7 @@ export default function TransactionVoucher({ data, settoastdata }) {
       )}
 
       <div className={styles.imgwrapper}>
-        <Image src={data?.img_url} layout="fill" objectFit="contain" />
+        <Image src={data?.img_url} layout="fill" objectFit="contain" alt="" />
       </div>
       <div className={styles.data}>
         <p className={styles.name}>{data?.name}</p>
