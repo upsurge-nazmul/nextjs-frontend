@@ -31,6 +31,7 @@ import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
+import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 
 export default function ChildActivity({
   pendingchores,
@@ -44,6 +45,7 @@ export default function ChildActivity({
   moneyacedata,
   activeQuests,
   stockHoldings,
+  todaysquestion,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -219,6 +221,14 @@ export default function ChildActivity({
       highlightBg: true,
       isolate: true,
       extraPadding: true,
+    },
+    {
+      ref: "#todays-question",
+      position: "bottom",
+      content: `You can answer questions and get rewards.`,
+      superimpose: true,
+      required: false,
+      isolate: true,
     },
     {
       ref: "#chores-leftpanel",
@@ -427,6 +437,9 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
+            <div className={styles.questionSection}>
+              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+            </div>
           </div>
           <div className={styles.flexRight}>
             <div className={styles.questsection} id="quests">
@@ -489,6 +502,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    let tq = await QuizApis.todaysquestion(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -594,6 +608,7 @@ export async function getServerSideProps({ params, req }) {
             stockHoldings && stockHoldings.data && stockHoldings.data.success
               ? stockHoldings.data.data
               : null,
+          todaysquestion: tq?.data?.success ? tq.data.data : null,
         },
       };
     }
