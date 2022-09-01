@@ -425,7 +425,7 @@ export default function ChildActivity({
                 <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {quests.length ? (
+                {quests.length && quests.find((quest) => quest.level > 0) ? (
                   <>
                     {quests.map((quest, i) => {
                       if (quest.level > 0)
