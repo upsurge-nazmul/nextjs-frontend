@@ -4,13 +4,7 @@
   align-items: center;
   width: 105px;
   cursor: pointer;
-  &:nth-child(2) {
-    margin: 0 80px;
-  }
-  &:nth-child(5) {
-    margin: 0 80px;
-  }
-  margin-bottom: 30px;
+  margin: 1.5rem;
   .circle {
     width: 105px;
     height: 105px;
