@@ -8,6 +8,7 @@ module.exports = {
       "images.unsplash.com",
       "res.cloudinary.com",
       "upsurgevideoassets.s3.ap-south-1.amazonaws.com",
+      "imgcdn.upsurge.in",
     ],
   },
   swcMinify: true,
