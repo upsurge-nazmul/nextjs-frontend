@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import styles from "../../styles/Team/teamspage.module.scss";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
+import LeftPanel from "../../components/LeftPanel";
 
 const POSITIONS = [
   { id: "productAndGrowth", name: "Product & Growth" },
@@ -14,6 +15,23 @@ const POSITIONS = [
 ];
 
 function TeamsPage() {
+  const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
+  const [showauth, setshowauth] = useState(false);
+
+  useEffect(() => {
+    const handlescroll = () => {
+      if (window.scrollY > 1) {
+        setstickyheader(true);
+      } else {
+        setstickyheader(false);
+      }
+    };
+    window.addEventListener("scroll", handlescroll);
+    return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
+
   let data = {
     productAndGrowth: [
       {
@@ -212,9 +230,21 @@ function TeamsPage() {
       },
     ],
   };
+
   return (
     <div className={styles.teamPage}>
-      <Header />
+      <Header
+        setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
+        stickyheader={stickyheader}
+        setshowauth={setshowauth}
+        setshowpopup={setshowpopup}
+        showpopup={showpopup}
+      />
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
       <div className={styles.container}>
         <div className={styles.heading}>Meet Us</div>
         <div className={styles.quote}>
