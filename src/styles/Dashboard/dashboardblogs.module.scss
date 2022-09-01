@@ -23,6 +23,9 @@
       display: flex;
       width: 100%;
       cursor: pointer;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 12px 20px;
       .left {
         flex: 1;
         img {
@@ -190,7 +193,7 @@
   .dashboardblogs {
     overflow: hidden;
     width: 100%;
-    padding: 20px 20px;
+    padding: 0;
     border-radius: 10px;
     margin-top: 20px;
     .heading {
@@ -199,6 +202,39 @@
       margin-bottom: 20px;
     }
     .wrapper {
+      .postsMain {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 8px;
+        .left {
+          flex: 1;
+          img {
+            height: 200px;
+          }
+          .categoryWrapper {
+            margin-top: 15px;
+            .category {
+              font-size: 10px;
+            }
+          }
+          .blogtitle {
+            font-size: 16px;
+          }
+          .blogcontent {
+            font-size: 12px;
+          }
+          .time {
+            margin-top: 8px;
+            font-size: 10px;
+          }
+        }
+        .right {
+          margin-top: 30px;
+          padding-left: 0px;
+          width: 100%;
+        }
+      }
       .blog {
         display: flex;
         flex-direction: column;
