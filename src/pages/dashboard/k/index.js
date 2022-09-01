@@ -411,32 +411,6 @@ export default function ChildActivity({
                 </div> */}
               </div>
             </div>
-            <div className={styles.choreSection} id="chores">
-              <h2
-                className={styles.mainheading}
-                onClick={() => router.push("/dashboard/k/chores")}
-              >
-                Chores
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {chorearray.map((data, index) => {
-                  return (
-                    <KidChore
-                      data={data}
-                      settoastdata={settoastdata}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-                {chorearray.length === 0 && (
-                  <FillSpace
-                    text={"No chores in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
-            </div>
             <div className={styles.questionSection}>
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
@@ -461,6 +435,32 @@ export default function ChildActivity({
                 ) : (
                   <FillSpace
                     text={"No quest in progress"}
+                    extrastyle={{ margin: 0, minHeight: "220px" }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={styles.choreSection} id="chores">
+              <h2
+                className={styles.mainheading}
+                onClick={() => router.push("/dashboard/k/chores")}
+              >
+                Chores
+                <HeadingArrow />
+              </h2>
+              <div className={styles.wrapper}>
+                {chorearray.map((data, index) => {
+                  return (
+                    <KidChore
+                      data={data}
+                      settoastdata={settoastdata}
+                      key={"chorecomponent" + index}
+                    />
+                  );
+                })}
+                {chorearray.length === 0 && (
+                  <FillSpace
+                    text={"No chores in progress"}
                     extrastyle={{ margin: 0, minHeight: "220px" }}
                   />
                 )}
