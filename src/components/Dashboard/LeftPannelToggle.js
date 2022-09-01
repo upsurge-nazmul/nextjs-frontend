@@ -2,6 +2,8 @@ import React from "react";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import styles from "../../styles/Dashboard/leftpaneltoggle.module.scss";
+import HeaderExpandSvg from "../SVGcomponents/HeaderExpandSvg";
+
 export default function LeftPannelToggle({
   name,
   items,
@@ -33,7 +35,13 @@ export default function LeftPannelToggle({
         }}
       >
         {icon && icon}
-        <div className={styles.tabtitle}>{name}</div>
+        <div className={styles.tabtitle}>
+          {name}
+          <HeaderExpandSvg
+            className={`${open ? styles.reverseexpandicon : styles.expandicon}`}
+            clr={"#6d6d6d"}
+          />
+        </div>
       </div>
 
       {open && (

@@ -45,6 +45,15 @@
         rgb(206, 206, 206) 99%
       );
     }
+    .expandicon {
+      // height: 20px;
+      // width: 20px;
+      padding: 12px;
+    }
+    .reverseexpandicon {
+      @extend .expandicon;
+      transform: rotate(180deg);
+    }
   }
   .wrapper {
     padding-left: 15%;
