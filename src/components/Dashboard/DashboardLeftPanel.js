@@ -170,7 +170,7 @@ function DashboardLeftPanel({
           >
             <StoreSvg className={styles.icon} />
 
-            <p className={styles.tabtitle}>Store</p>
+            <p className={styles.tabtitle}>Rewards</p>
           </div>
 
           <LeftPannelToggle
@@ -363,10 +363,39 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>My Kids</p>
           </div> */}
           <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
+              currenttab.indexOf("/dashboard/p/game") !== -1 ||
+              currenttab.indexOf("dashboard/w/moneyace") !== -1
+              ? styles.activetab
+              : ""
+              }`}
+            id="games-leftpanel"
+            onClick={() => router.push("/dashboard/p/games")}
+          >
+            <GameSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Games</p>
+          </div>
+
+
+
+          <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
+              currenttab.indexOf("/dashboard/p/quest") !== -1
+              ? styles.activetab
+              : ""
+              }`}
+            id="quest-leftpanel"
+            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
+          >
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Quests</p>
+          </div>
+
+          <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/chores" ||
-                currenttab.indexOf("/dashboard/p/managechore") !== -1
-                ? styles.activetab
-                : ""
+              currenttab.indexOf("/dashboard/p/managechore") !== -1
+              ? styles.activetab
+              : ""
               }`}
             id="chores-leftpanel"
             onClick={() => {
@@ -384,40 +413,13 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
-                currenttab.indexOf("/dashboard/p/quest") !== -1
-                ? styles.activetab
-                : ""
-              }`}
-            id="quest-leftpanel"
-            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Quests</p>
-          </div>
-
-          <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
-                currenttab.indexOf("/dashboard/p/game") !== -1 ||
-                currenttab.indexOf("dashboard/w/moneyace") !== -1
-                ? styles.activetab
-                : ""
-              }`}
-            id="games-leftpanel"
-            onClick={() => router.push("/dashboard/p/games")}
-          >
-            <GameSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Games</p>
-          </div>
-
-          <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/store" ? styles.activetab : ""
               }`}
             onClick={() => router.push("/dashboard/p/store")}
             id="store-leftpanel"
           >
             <StoreSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Store</p>
+            <p className={styles.tabtitle}>Rewards</p>
           </div>
 
           <div
@@ -459,16 +461,16 @@ function DashboardLeftPanel({
                 icon: <CalcSvg />,
               },
 
-              {
-                name: "Quiz",
-                pushto: "/dashboard/p/quiz",
-                icon: <QuizIconSvg />,
-              },
-              {
-                name: "Quiz leaderboard",
-                pushto: "/dashboard/p/leaderboard",
-                icon: <LeaderboardSvg />,
-              },
+              //{
+              //  name: "Quiz",
+              //  pushto: "/dashboard/p/quiz",
+              //  icon: <QuizIconSvg />,
+              //},
+              //{
+              //  name: "Quiz leaderboard",
+              //  pushto: "/dashboard/p/leaderboard",
+              //  icon: <LeaderboardSvg />,
+              //},
               {
                 name: "Question of the day",
                 pushto: "/dashboard/p/dailyquestion",
