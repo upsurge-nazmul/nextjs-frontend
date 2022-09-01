@@ -35,6 +35,7 @@ function Dashboard({
   isLogged,
   msg,
   homeBlogs,
+  allBlogs,
   choresdata,
   kidsdata,
   phone_verified,
@@ -415,10 +416,14 @@ function Dashboard({
                 <Refer settoastdata={settoastdata} />
               </div>
               <div className={styles.blogsSection}>
-                <DashboardBlogs
-                  homeBlogs={homeBlogs}
-                  highlightblogs={homeBlogs}
-                />
+                {allBlogs ? (
+                  <DashboardBlogs
+                    allBlogs={allBlogs.rows}
+                    highlightblogs={homeBlogs}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           )}
@@ -458,6 +463,7 @@ export async function getServerSideProps({ params, req }) {
           },
         };
       let kidsdata = await getkidsdata(token);
+      let allBlogs = await BlogApis.getallblogs();
       let homeBlogs = await BlogApis.gethomeblogs();
       let choresdata = await getchores(token);
       let triberequests = await gettriberequests(token);
@@ -469,6 +475,7 @@ export async function getServerSideProps({ params, req }) {
           choresdata,
           kidsdata,
           homeBlogs: homeBlogs?.data.data || [],
+          allBlogs: allBlogs?.data.data || [],
           triberequests,
           userdatafromserver: response.data.data,
           todaysquestion: tq?.data?.success ? tq.data.data : null,

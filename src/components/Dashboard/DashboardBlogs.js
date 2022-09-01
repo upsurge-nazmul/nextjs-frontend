@@ -7,7 +7,7 @@ import Image from "next/image";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import BlogCard from "../Blog/BlogCard";
 
-export default function DashboardBlogs({ homeBlogs, highlightblogs }) {
+export default function DashboardBlogs({ allBlogs, highlightblogs }) {
   const router = useRouter();
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
@@ -78,40 +78,42 @@ export default function DashboardBlogs({ homeBlogs, highlightblogs }) {
         )}
       </div>
       <div className={styles.wrapper}>
-        {homeBlogs.map((item) => {
-          return (
-            <div
-              className={styles.blog}
-              key={item.id}
-              onClick={() => router.push("/dashboard/p/blog/" + item.id)}
-            >
-              <div className={styles.img}>
-                <Image
-                  src={item.img_url}
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
-              </div>
-              <div className={styles.right}>
-                <div className={styles.categories}>
-                  {item.categories?.split(",").map((cat, index) => {
-                    return <p key={"morecat" + index}>{cat}</p>;
-                  })}
+        {allBlogs &&
+          allBlogs.length &&
+          allBlogs.slice(0, 5).map((item) => {
+            return (
+              <div
+                className={styles.blog}
+                key={item.id}
+                onClick={() => router.push("/dashboard/p/blog/" + item.id)}
+              >
+                <div className={styles.img}>
+                  <Image
+                    src={item.img_url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt=""
+                  />
                 </div>
-                <div className={styles.title}>{item.title}</div>
-                <div className={styles.content}>
-                  {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
-                  150
-                    ? getdatafromraw(item.content)
-                        .replace(/<[^>]+>/g, "")
-                        .substring(0, 150) + "..."
-                    : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                <div className={styles.right}>
+                  <div className={styles.categories}>
+                    {item.categories?.split(",").map((cat, index) => {
+                      return <p key={"morecat" + index}>{cat}</p>;
+                    })}
+                  </div>
+                  <div className={styles.title}>{item.title}</div>
+                  <div className={styles.content}>
+                    {getdatafromraw(item.content).replace(/<[^>]+>/g, "")
+                      .length > 150
+                      ? getdatafromraw(item.content)
+                          .replace(/<[^>]+>/g, "")
+                          .substring(0, 150) + "..."
+                      : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </div>
   );
