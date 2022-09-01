@@ -31,7 +31,6 @@ import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
-import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 
 export default function ChildActivity({
   pendingchores,
@@ -45,7 +44,6 @@ export default function ChildActivity({
   moneyacedata,
   activeQuests,
   stockHoldings,
-  todaysquestion,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -65,7 +63,6 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
-  
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -224,14 +221,6 @@ export default function ChildActivity({
       extraPadding: true,
     },
     {
-      ref: "#todays-question",
-      position: "bottom",
-      content: `You can answer questions and get rewards.`,
-      superimpose: true,
-      required: false,
-      isolate: true,
-    },
-    {
       ref: "#chores-leftpanel",
       position: "bottom",
       content: `Now lets go to chores.`,
@@ -387,7 +376,6 @@ export default function ChildActivity({
                 </p>
               </div>
             </div>
-           
             <div className={styles.leaderboardsection} id="leaderboards">
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
@@ -413,11 +401,6 @@ export default function ChildActivity({
                 </div> */}
               </div>
             </div>
-            <div className={styles.questionSection}>
-                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
-            </div>
-          </div>
-          <div className={styles.flexRight}>
             <div className={styles.choreSection} id="chores">
               <h2
                 className={styles.mainheading}
@@ -492,7 +475,6 @@ export default function ChildActivity({
                 )}
               </div>
             </div>
-        
           </div>
         </div>
       </div>
@@ -503,7 +485,6 @@ export default function ChildActivity({
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";
-  let tq = await QuizApis.todaysquestion(null, token);
   if (token) {
     let response = await LoginApis.checktoken({
       token: token,
@@ -541,13 +522,13 @@ export async function getServerSideProps({ params, req }) {
           type: "pending",
         },
         token
-        );
-        let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
-        let tododata = await DashboardApis.getTodo(null, token);
+      );
+      let moneyacedata = await MoneyAceApis.getMoneyAceData(null, token);
+      let tododata = await DashboardApis.getTodo(null, token);
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
-      
+
       let userTribes = await TribeApis.userTribes(
         {
           userId: response.data.data.user_id,
@@ -589,14 +570,14 @@ export async function getServerSideProps({ params, req }) {
             response && response.data && response.data.data
               ? response.data.data
               : [],
-              highestquizscore: highestquizscore?.data.success
-              ? highestquizscore.data.data.score
-              : 0,
+          highestquizscore: highestquizscore?.data.success
+            ? highestquizscore.data.data.score
+            : 0,
           childTribes:
             userTribes && userTribes.data && userTribes.data.success
               ? userTribes.data.data
               : [],
-              recentgames:
+          recentgames:
             recentgames && recentgames.data && recentgames.data.success
               ? recentgames.data.data
               : [],
@@ -613,9 +594,8 @@ export async function getServerSideProps({ params, req }) {
             stockHoldings && stockHoldings.data && stockHoldings.data.success
               ? stockHoldings.data.data
               : null,
-          todaysquestion: tq?.data?.success ? tq.data.data : null,
-            },
-          };
+        },
+      };
     }
   } else {
     return {
