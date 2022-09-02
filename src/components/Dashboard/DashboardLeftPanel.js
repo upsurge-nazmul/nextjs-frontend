@@ -6,7 +6,7 @@ import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
-import KidSvg from "../SVGcomponents/KidsSvg";
+import DiscordSvg from "../SVGcomponents/DiscordSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
@@ -503,6 +503,13 @@ function DashboardLeftPanel({
               rel="noreferrer"
             >
               <LinkedIN className={styles.social} />
+            </a>
+            <a
+              href="https://discord.gg/grqReT3zDm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <DiscordSvg className={styles.social} />
             </a>
             <a
               href="https://wa.me/918851117926"
