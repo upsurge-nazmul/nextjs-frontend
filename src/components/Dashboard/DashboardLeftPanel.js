@@ -171,46 +171,7 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>Rewards</p>
           </div>
 
-          <LeftPannelToggle
-            name="Resources"
-            id="toggle-leftpanel"
-            currenttab={currenttab}
-            isActive={
-              currenttab.indexOf("/dashboard/k/blog") !== -1 ||
-              currenttab.indexOf("/dashboard/k/calculator") !== -1 ||
-              currenttab.indexOf("/dashboard/k/quiz") !== -1 ||
-              currenttab.indexOf("/dashboard/k/dailyquestion") !== -1 ||
-              currenttab.indexOf("/dashboard/k/leaderboards") !== -1
-            }
-            items={[
-              // {
-              //   name: "Blogs",
-              //   pushto: "/dashboard/k/blogs",
-              //   icon: <BlogSvg />,
-              // },
-              {
-                name: "Calculators",
-                pushto: "/dashboard/k/calculators",
-                icon: <CalcSvg />,
-              },
-              // {
-              //   name: "Quiz",
-              //   pushto: "/dashboard/k/quiz",
-              //   icon: <QuizIconSvg />,
-              // },
-              {
-                name: "Leaderboards",
-                pushto: "/dashboard/k/leaderboards",
-                icon: <LeaderboardSvg />,
-              },
-              {
-                name: "Question of the day",
-                pushto: "/dashboard/k/dailyquestion",
-                icon: <QuizIconSvg />,
-              },
-            ]}
-            icon={<AssessmentOutlinedIcon />}
-          />
+          
         </div>
       ) : type === "waitlist" ? (
         <div className={styles.tabContainer}>
