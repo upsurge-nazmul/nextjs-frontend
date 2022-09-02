@@ -35,7 +35,7 @@ export default function UbliPrize({ onClick, className }) {
         d="M51.3548 97.9362L21.1738 107.383L23.0007 113.22L53.1817 103.773L51.3548 97.9362Z"
         fill="#FFCC2D"
         stroke="#635CA8"
-        stroke-width="1.7"
+        strokeWidth="1.7"
       />
       <path
         d="M52.6731 91.3858L46.43 93.3399C45.9131 93.5017 45.6253 94.0518 45.7871 94.5687C45.9488 95.0855 46.499 95.3734 47.0158 95.2116L53.2589 93.2575C53.7757 93.0957 54.0636 92.5456 53.9018 92.0288C53.74 91.5119 53.1899 91.2241 52.6731 91.3858Z"
@@ -69,7 +69,7 @@ export default function UbliPrize({ onClick, className }) {
         d="M752.23 97.9362L782.411 107.383L780.584 113.22L750.403 103.773L752.23 97.9362Z"
         fill="#FFCC2D"
         stroke="#635CA8"
-        stroke-width="1.7"
+        strokeWidth="1.7"
       />
       <path
         d="M750.912 91.3858L757.155 93.3399C757.672 93.5017 757.96 94.0518 757.798 94.5687C757.636 95.0855 757.086 95.3734 756.569 95.2116L750.326 93.2575C749.809 93.0957 749.521 92.5456 749.683 92.0288C749.845 91.5119 750.395 91.2241 750.912 91.3858Z"
@@ -79,7 +79,7 @@ export default function UbliPrize({ onClick, className }) {
         d="M745.932 90.8578C746.094 90.341 746.644 90.0531 747.161 90.2149C747.678 90.3767 747.966 90.9268 747.804 91.4437C747.642 91.9605 747.092 92.2484 746.575 92.0866C746.058 91.9248 745.77 91.3747 745.932 90.8578Z"
         fill="black"
       />
-      <g clip-path="url(#clip0_5383_13012)">
+      <g clipPath="url(#clip0_5383_13012)">
         <path
           d="M180.807 124.999H116.403L52 32.8125H180.807V124.999Z"
           fill="#7D4091"
@@ -95,7 +95,7 @@ export default function UbliPrize({ onClick, className }) {
         <path
           d="M655.644 88.5043H153.453L113.808 48.9895L153.453 9.21484H655.644L691.338 48.9895L655.644 88.5043Z"
           stroke="#A18BC2"
-          stroke-miterlimit="10"
+          strokeMiterlimit="10"
         />
         <path
           d="M141.351 97.7188L180.806 125.001V97.7188H141.351Z"
@@ -119,8 +119,8 @@ export default function UbliPrize({ onClick, className }) {
           y2="68.0656"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFCC2D" />
-          <stop offset="1" stop-color="#FBAE3A" />
+          <stop stopColor="#FFCC2D" />
+          <stop offset="1" stopColor="#FBAE3A" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_5383_13012"
@@ -130,8 +130,8 @@ export default function UbliPrize({ onClick, className }) {
           y2="117.726"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#9B7FBA" />
-          <stop offset="1" stop-color="#6A62AB" />
+          <stop stopColor="#9B7FBA" />
+          <stop offset="1" stopColor="#6A62AB" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_5383_13012"
@@ -141,8 +141,8 @@ export default function UbliPrize({ onClick, className }) {
           y2="68.0656"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFCC2D" />
-          <stop offset="1" stop-color="#FBAE3A" />
+          <stop stopColor="#FFCC2D" />
+          <stop offset="1" stopColor="#FBAE3A" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_5383_13012"
@@ -152,8 +152,8 @@ export default function UbliPrize({ onClick, className }) {
           y2="117.726"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#9B7FBA" />
-          <stop offset="1" stop-color="#6A62AB" />
+          <stop stopColor="#9B7FBA" />
+          <stop offset="1" stopColor="#6A62AB" />
         </linearGradient>
         <clipPath id="clip0_5383_13012">
           <rect
