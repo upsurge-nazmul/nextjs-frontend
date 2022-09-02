@@ -9,14 +9,13 @@ import HomeSvg from "../SVGcomponents/HomeSvg";
 import KidSvg from "../SVGcomponents/KidsSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
-import CryptoSvg from "../SVGcomponents/CryptoSimulator/CryptoSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
@@ -25,7 +24,6 @@ import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
-import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
 function DashboardLeftPanel({
   type,
