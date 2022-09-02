@@ -84,7 +84,7 @@
           }
         }
         .number {
-          font-size: 12px;
+          font-size: 16px;
           font-weight: 500;
         }
       }
@@ -198,15 +198,15 @@
       display: flex;
       align-items: center;
       .svg {
-        min-width: 20px;
-        min-height: 20px;
+        min-width: 30px;
+        min-height: 30px;
         margin-right: 5px;
         path {
           fill: rgb(41, 41, 41);
         }
       }
       .number {
-        font-size: 12px;
+        font-size: 16px;
         font-weight: 500;
       }
     }

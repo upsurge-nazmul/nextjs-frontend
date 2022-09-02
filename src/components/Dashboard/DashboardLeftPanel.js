@@ -6,17 +6,16 @@ import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
-import KidSvg from "../SVGcomponents/KidsSvg";
+import DiscordSvg from "../SVGcomponents/DiscordSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
-import CryptoSvg from "../SVGcomponents/CryptoSimulator/CryptoSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
@@ -25,7 +24,6 @@ import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
-import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
 function DashboardLeftPanel({
   type,
@@ -507,11 +505,19 @@ function DashboardLeftPanel({
               <LinkedIN className={styles.social} />
             </a>
             <a
-              href="https://wa.me/918851117926"
+              href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
             >
-              <WhatsAppIcon className={styles.socialyt} />
+              <DiscordSvg className={styles.social} />
+            </a>
+            <a
+              href="https://wa.me/918851117926"
+              target="_blank"
+              rel="noreferrer"
+              style={{color: "#000000"}}
+            >
+              <WhatsAppIcon className={styles.socialyt} style={{color: "#000000"}} />
             </a>
           </div>
 
