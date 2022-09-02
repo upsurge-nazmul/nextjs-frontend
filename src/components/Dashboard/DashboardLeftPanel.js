@@ -510,8 +510,9 @@ function DashboardLeftPanel({
               href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"
+              style={{color: "#000000"}}
             >
-              <WhatsAppIcon className={styles.socialyt} />
+              <WhatsAppIcon className={styles.socialyt} style={{color: "#000000"}} />
             </a>
           </div>
 
