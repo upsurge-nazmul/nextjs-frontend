@@ -125,6 +125,15 @@ const createchildotp = (payload) => {
     getCookie("accesstoken")
   );
 };
+
+const verifyPassword = (payload) => {
+  return ApiCalls.postResponse(
+    "users/verify-password",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const LoginApis = {
   signup,
   setphone,
@@ -152,6 +161,7 @@ const LoginApis = {
   resetpass,
   genemailotp,
   createchildotp,
+  verifyPassword
 };
 
 export default LoginApis;
