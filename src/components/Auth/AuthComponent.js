@@ -109,6 +109,7 @@ function AuthComponent({
                   seterror={seterror}
                   setmode={setmode}
                   onlyLogin={onlyLogin}
+                  _setemail={setemail}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
