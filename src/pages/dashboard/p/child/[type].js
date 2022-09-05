@@ -402,6 +402,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 options={["male", "female", "other", "Don't want to disclose"]}
                 value={gender}
                 setvalue={setgender}
+                className={styles.gender}
               />
             </div>
             <CitySearch
