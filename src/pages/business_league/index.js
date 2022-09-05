@@ -32,7 +32,7 @@ export default function UblPage() {
   const cosponsors = [
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/GEN.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/MM-logo.png",
-    // "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
+    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
@@ -135,16 +135,16 @@ export default function UblPage() {
         <div className={styles.challengeDiv}>
           <div className={styles.challengeItem1}>
             <UblGreen className={styles.challengeSvg} />
-            <p>{`Knowledge Quiz & Quests`}</p>
+            <p>Knowledge Quest</p>
           </div>
-          {/* <div className={styles.challengeItem2}>
+          <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>Case Challenge</p>
-          </div> */}
-          <div className={styles.challengeItem3}>
-            <UblRed className={styles.challengeSvg} />
-            <p>Business Plan Competition</p>
           </div>
+        </div>
+        <div className={styles.challengeItem3}>
+          <UblRed className={styles.challengeSvg} />
+          <p>Business Plan Competition</p>
         </div>
       </div>
       <div className={styles.cosponsors}>
@@ -185,12 +185,12 @@ export default function UblPage() {
           <div className={styles.prizes}>
             <UblPrize type="gold" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>First Prize</p>
-            <p className={styles.prizemoney}>₹2,00,000</p>
+            <p className={styles.prizemoney}>₹3,00,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="silver" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>second Prize</p>
-            <p className={styles.prizemoney}>₹1,50,000</p>
+            <p className={styles.prizemoney}>₹2,00,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="bronze" className={styles.prizeSvg} />
@@ -210,7 +210,8 @@ export default function UblPage() {
           <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>
-              ₹1,00,000 cash prize for the schools with best performing teams
+              Top 3 schools with teams scoring the most points will also receive
+              awards
             </p>
           </div>
         </div>
@@ -237,7 +238,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-            Registrations closes by October 5, 2022.
+          Registrations closes by October 5, 2022.
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -246,20 +247,19 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              October 9th, 2022- Knowledge Quests- Live Business & Startups Quiz
+            October 9th, 2022- Knowledge Quests- Live Business & Startups Quiz
             </p>
             {`90-minute online quiz which will test students on their knowledge of money & entrepreneurship, and their problem-solving skills - but not based on memory or clicking a button quickly. Teams will be given a problem to solve, & will be free to use whatever resources they want, especially google!`}
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              {`Meanwhile, you’ll also get to participate in interesting webinars
-              & workshops that’ll help you prep for UBL 2022 (details in the
-              section below)`}
+            Meanwhile, you’ll also get to participate in interesting webinars & workshops that’ll help you prep for UBL 2022 (details in the section below)
             </p>
+            
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              October 16th, 2022- Business Idea Pitch
+            October 16th, 2022- Business Idea Pitch
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
@@ -270,31 +270,28 @@ export default function UblPage() {
             }
           </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Workshops & Webinars</p>
-            LIVE interactive sessions with industry experts & leaders to prepare
-            you for your first business plan and go-to-market strategy. Only on
-            our Discord channel.
+          <p style={{ fontWeight: 600 }}>Workshops & Webinars</p>
+          LIVE interactive sessions with industry experts & leaders to prepare you for your first business plan and go-to-market strategy. Only on our Discord channel.
           </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 11</p>
+          <p style={{ fontWeight: 600 }}>Sunday, Aug 14</p>
             How to make your first business plan? Decoding a food business
-          </div>
+            </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 18</p>5 freelancing tips
-            for teens to earn money online
-          </div>
+          <p style={{ fontWeight: 600 }}>Saturday, Aug 20</p>
+            5 freelancing tips for teens to earn money online
+            </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 25</p>
-            Secret tips to build a go-to-market plan for your business REPEATED
-            IN SEPT/OCT
-          </div>
+          <p style={{ fontWeight: 600 }}>Saturday, Aug 27</p>
+            Secret tips to build a go-to-market plan for your business REPEATED IN SEPT/OCT
+            </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Oct 2</p>
+          <p style={{ fontWeight: 600 }}>Saturday, Sept 10</p>
             Go-to-market plan for a ecommerce business
-          </div>
+            </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Oct 9</p>0 to 1: Decoding a
-            food business plan from scratch
+          <p style={{ fontWeight: 600 }}>Saturday, Sept 17</p>
+            0 to 1: Decoding a food business plan from scratch  
           </div>
           <div className={styles.roundHeading}>
             Round 2 - Teams announced by October 22, 2022
@@ -313,9 +310,7 @@ export default function UblPage() {
               startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>
-            Finals - November 19th, 2022
-          </div>
+          <div className={styles.roundHeading}>Finals - November 19th, 2022</div>
           <div className={styles.round}>
             {`Final pitch will be held in front of a jury comprising
             entrepreneurs, venture capitalists, CXOs and startup leaders. Teams

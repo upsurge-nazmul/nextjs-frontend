@@ -9,7 +9,7 @@
     flex: 1;
     display: flex;
     width: 100%;
-    max-width: calc(100vw - 300px);
+    max-width: calc(100vw);
     flex-direction: column;
     .mainContent {
       width: 100%;
@@ -187,7 +187,6 @@
         .flexRight {
           padding-right: 0px;
           .choreSection {
-            margin-top: 15px;
             display: flex;
             flex-direction: column;
             .heading {
