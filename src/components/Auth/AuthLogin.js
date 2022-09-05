@@ -14,6 +14,9 @@ import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
+import app from "../../firebase";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 function AuthLogin({
   settoastdata,
   error,
@@ -21,7 +24,7 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  addAccount
+  _setemail,
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -90,28 +93,36 @@ function AuthLogin({
     }
   }
   async function handlegoogleLogin(data) {
-    if (data.tokenId) {
-      let response = await LoginApis.googlelogin({
-        tokenId: data.tokenId,
-      });
-      if (response && response.data && response.data.success) {
-        setCookie("accesstoken", response.data.data.token);
-        setuserdata(response.data.data.userProfile);
-        setuser(response.data.data.userProfile.id);
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "success",
+    const provider = new GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    provider.addScope("email");
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then(async (data) => {
+        const user = data.user;
+        let response = await LoginApis.googlelogin({
+          email: user.email,
         });
-        if (response.data.data.userProfile.user_type === "parent")
-          router.push("/dashboard/p");
-        else router.push("/dashboard/k");
-      } else {
-        seterror(response?.data.message || "Cannot reach server");
-      }
-    } else {
-      seterror("");
-    }
+        if (response && response.data && response.data.success) {
+          setCookie("accesstoken", response.data.data.token);
+          setuserdata(response.data.data.userProfile);
+          setuser(response.data.data.userProfile.id);
+          settoastdata({
+            show: true,
+            msg: response.data.message,
+            type: "success",
+          });
+          if (response.data.data.userProfile.user_type === "parent")
+            router.push("/dashboard/p");
+          else router.push("/dashboard/k");
+        } else {
+          _setemail(user.email);
+          setmode("email");
+        }
+      })
+      .catch((error) => {
+        seterror("Please try again");
+      });
   }
 
   useEffect(() => {
@@ -154,22 +165,13 @@ function AuthLogin({
         </div>
       )}
       <div className={styles.or}>OR</div>
-      <GoogleLogin
-        clientId={GClientId}
-        render={(renderProps) => (
-          <div
-            onClick={renderProps.onClick}
-            disabled={renderProps.disabled}
-            className={styles.google}
-          >
-            <GoogleSvg />
-            <p style={{ pointerEvents: "none" }}>Continue with Google</p>
-          </div>
-        )}
-        onSuccess={handlegoogleLogin}
-        onFailure={handlegoogleLogin}
-        cookiePolicy={"single_host_origin"}
-      />
+      <div
+        onClick={handlegoogleLogin}
+        className={styles.google}
+      >
+        <GoogleSvg />
+        <p style={{ pointerEvents: "none" }}>Continue with Google</p>
+      </div>
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
