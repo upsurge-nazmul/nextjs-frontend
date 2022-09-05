@@ -237,7 +237,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-            Registrations closes by October 5, 2022.
+            Registrations closes by October 25, 2022.
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -246,7 +246,7 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              October 9th, 2022- Knowledge Quests- Live Business & Startups Quiz
+              October 30, 2022- Knowledge Quests- Live Business & Startups Quiz
             </p>
             {`90-minute online quiz which will test students on their knowledge of money & entrepreneurship, and their problem-solving skills - but not based on memory or clicking a button quickly. Teams will be given a problem to solve, & will be free to use whatever resources they want, especially google!`}
           </div>
@@ -259,12 +259,12 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              October 16th, 2022- Business Idea Pitch
+              November 6, 2022- Business Idea Pitch
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>October 16th, 2022- Case Study</p>{" "}
+            <p style={{ fontWeight: 600 }}>November 6, 2022- Case Study</p>{" "}
             {
               "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
             }
@@ -297,7 +297,7 @@ export default function UblPage() {
             food business plan from scratch
           </div>
           <div className={styles.roundHeading}>
-            Round 2 - Teams announced by October 22, 2022
+            Round 2 - Teams announced by November 13, 2022
           </div>
           <div className={styles.round}>
             Up to 25 top teams will be shortlisted based on their performance in
@@ -313,9 +313,7 @@ export default function UblPage() {
               startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>
-            Finals - November 19th, 2022
-          </div>
+          <div className={styles.roundHeading}>Finals - December 3, 2022</div>
           <div className={styles.round}>
             {`Final pitch will be held in front of a jury comprising
             entrepreneurs, venture capitalists, CXOs and startup leaders. Teams
