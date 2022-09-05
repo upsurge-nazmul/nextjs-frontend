@@ -6,17 +6,16 @@ import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
-import KidSvg from "../SVGcomponents/KidsSvg";
+import DiscordSvg from "../SVGcomponents/DiscordSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
-import CryptoSvg from "../SVGcomponents/CryptoSimulator/CryptoSvg";
 import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
@@ -25,7 +24,6 @@ import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
-import GroupsIcon from "@mui/icons-material/Groups";
 import { MainContext } from "../../context/Main";
 function DashboardLeftPanel({
   type,
@@ -55,9 +53,8 @@ function DashboardLeftPanel({
   }, []);
   return (
     <div
-      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
-        theme === "dark" && styles.dashboardDark
-      }`}
+      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${theme === "dark" && styles.dashboardDark
+        }`}
       style={
         disableClicks ? { pointerEvents: "none", cursor: "not-allowed" } : {}
       }
@@ -73,8 +70,8 @@ function DashboardLeftPanel({
             if (!userdata.intro_guide_completed) {
               router.push(
                 "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.user_type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
+                (userdata.user_type === "parent" ? "p/" : "k/") +
+                "?storyIndex=2"
               );
             } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
@@ -91,8 +88,8 @@ function DashboardLeftPanel({
             if (!userdata.intro_guide_completed) {
               router.push(
                 "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
+                (userdata.type === "parent" ? "p/" : "k/") +
+                "?storyIndex=2"
               );
             } else router.push("/");
 
@@ -150,7 +147,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-          
+
           {/* <div
             className={`${styles.tab}  ${
               currenttab === "/dashboard/k/tribes" ||
@@ -171,53 +168,12 @@ function DashboardLeftPanel({
           >
             <StoreSvg className={styles.icon} />
 
-            <p className={styles.tabtitle}>Store</p>
+            <p className={styles.tabtitle}>Rewards</p>
           </div>
 
-          <LeftPannelToggle
-            name="Resources"
-            id="toggle-leftpanel"
-            currenttab={currenttab}
-            isActive={
-              currenttab.indexOf("/dashboard/k/blog") !== -1 ||
-              currenttab.indexOf("/dashboard/k/calculator") !== -1 ||
-              currenttab.indexOf("/dashboard/k/quiz") !== -1 ||
-              currenttab.indexOf("/dashboard/k/dailyquestion") !== -1 ||
-              currenttab.indexOf("/dashboard/k/leaderboards") !== -1
-            }
-            items={[
-              // {
-              //   name: "Blogs",
-              //   pushto: "/dashboard/k/blogs",
-              //   icon: <BlogSvg />,
-              // },
-              {
-                name: "Calculators",
-                pushto: "/dashboard/k/calculators",
-                icon: <CalcSvg />,
-              },
-              // {
-              //   name: "Quiz",
-              //   pushto: "/dashboard/k/quiz",
-              //   icon: <QuizIconSvg />,
-              // },
-              {
-                name: "Leaderboards",
-                pushto: "/dashboard/k/leaderboards",
-                icon: <LeaderboardSvg />,
-              },
-              {
-                name: "Question of the day",
-                pushto: "/dashboard/k/dailyquestion",
-                icon: <QuizIconSvg />,
-              },
-            ]}
-            icon={<AssessmentOutlinedIcon />}
-          />
-
+          
         </div>
       ) : type === "waitlist" ? (
-        
         <div className={styles.tabContainer}>
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/w" ||
@@ -366,10 +322,39 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>My Kids</p>
           </div> */}
           <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
+              currenttab.indexOf("/dashboard/p/game") !== -1 ||
+              currenttab.indexOf("dashboard/w/moneyace") !== -1
+              ? styles.activetab
+              : ""
+              }`}
+            id="games-leftpanel"
+            onClick={() => router.push("/dashboard/p/games")}
+          >
+            <GameSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Games</p>
+          </div>
+
+
+
+          <div
+            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
+              currenttab.indexOf("/dashboard/p/quest") !== -1
+              ? styles.activetab
+              : ""
+              }`}
+            id="quest-leftpanel"
+            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
+          >
+            <CoursesSvg className={styles.icon} />
+            <p className={styles.tabtitle}>Quests</p>
+          </div>
+
+          <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/chores" ||
-                currenttab.indexOf("/dashboard/p/managechore") !== -1
-                ? styles.activetab
-                : ""
+              currenttab.indexOf("/dashboard/p/managechore") !== -1
+              ? styles.activetab
+              : ""
               }`}
             id="chores-leftpanel"
             onClick={() => {
@@ -385,33 +370,6 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-          
-          <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
-                currenttab.indexOf("/dashboard/p/quest") !== -1
-                ? styles.activetab
-                : ""
-              }`}
-            id="quest-leftpanel"
-            onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
-          >
-            <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Quests</p>
-          </div>
-          
-          <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
-                currenttab.indexOf("/dashboard/p/game") !== -1 ||
-                currenttab.indexOf("dashboard/w/moneyace") !== -1
-                ? styles.activetab
-                : ""
-              }`}
-            id="games-leftpanel"
-            onClick={() => router.push("/dashboard/p/games")}
-          >
-            <GameSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Games</p>
-          </div>
 
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/store" ? styles.activetab : ""
@@ -420,9 +378,9 @@ function DashboardLeftPanel({
             id="store-leftpanel"
           >
             <StoreSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Store</p>
+            <p className={styles.tabtitle}>Rewards</p>
           </div>
-          
+
           <div
             className={`${styles.tab} ${currenttab === "/dashboard/p/partners" ? styles.activetab : ""
               }`}
@@ -462,16 +420,16 @@ function DashboardLeftPanel({
                 icon: <CalcSvg />,
               },
 
-              {
-                name: "Quiz",
-                pushto: "/dashboard/p/quiz",
-                icon: <QuizIconSvg />,
-              },
-              {
-                name: "Quiz leaderboard",
-                pushto: "/dashboard/p/leaderboard",
-                icon: <LeaderboardSvg />,
-              },
+              //{
+              //  name: "Quiz",
+              //  pushto: "/dashboard/p/quiz",
+              //  icon: <QuizIconSvg />,
+              //},
+              //{
+              //  name: "Quiz leaderboard",
+              //  pushto: "/dashboard/p/leaderboard",
+              //  icon: <LeaderboardSvg />,
+              //},
               {
                 name: "Question of the day",
                 pushto: "/dashboard/p/dailyquestion",
@@ -505,19 +463,25 @@ function DashboardLeftPanel({
               target="_blank"
               rel="noreferrer"
             >
-              <LinkedIN className={styles.socialyt} />
+              <LinkedIN className={styles.social} />
+            </a>
+            <a
+              href="https://discord.gg/grqReT3zDm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <DiscordSvg className={styles.social} />
+            </a>
+            <a
+              href="https://wa.me/918851117926"
+              target="_blank"
+              rel="noreferrer"
+              style={{color: "#000000"}}
+            >
+              <WhatsAppIcon className={styles.socialyt} style={{color: "#000000"}} />
             </a>
           </div>
-          <a
-            className={styles.whatsapp}
-            href="https://wa.me/918851117926"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <WhatsAppIcon className={styles.icon} />
-            Connect on Whatsapp
-          </a>
-          
+
         </div>
       </div>
     </div>
