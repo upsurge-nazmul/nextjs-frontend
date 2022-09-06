@@ -18,6 +18,7 @@ import UniCoinSvg from "../../../../components/SVGcomponents/UniCoinSvg";
 import FillSpace from "../../../../components/Dashboard/FillSpace";
 import QuizApis from "../../../../actions/apis/QuizApis";
 import { Game_Data } from "../../../../static_data/Game_Data";
+import BackArrow from "../../../../components/SVGcomponents/BackArrow";
 export default function ChildActivity({
   pendingchores,
   childdetail,
@@ -60,11 +61,15 @@ export default function ChildActivity({
       <Toast data={toastdata} />
 
       <div className={styles.contentWrapper}>
+        <div className={styles.header}>
         <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
-        />
+          showback={true}
+          gobackto={"/dashboard/p/"}
+          />
+          </div>
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>

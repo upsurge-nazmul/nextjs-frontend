@@ -42,6 +42,7 @@ function ChoreModal({
                   category={category}
                   setcategory={setcategory}
                   setmode={setmode}
+                  setshowmodal={setshowmodal}
                   setStoryIndex={setStoryIndex}
                 />
               ) : mode === "template" ? (
