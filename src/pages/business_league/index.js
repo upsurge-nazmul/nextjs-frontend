@@ -269,33 +269,6 @@ export default function UblPage() {
               "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
             }
           </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Workshops & Webinars</p>
-            LIVE interactive sessions with industry experts & leaders to prepare
-            you for your first business plan and go-to-market strategy. Only on
-            our Discord channel.
-          </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 11</p>
-            How to make your first business plan? Decoding a food business
-          </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 18</p>5 freelancing tips
-            for teens to earn money online
-          </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Sep 25</p>
-            Secret tips to build a go-to-market plan for your business REPEATED
-            IN SEPT/OCT
-          </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Oct 2</p>
-            Go-to-market plan for a ecommerce business
-          </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Sunday, Oct 9</p>0 to 1: Decoding a
-            food business plan from scratch
-          </div>
           <div className={styles.roundHeading}>
             Round 2 - Teams announced by November 13, 2022
           </div>
@@ -321,6 +294,38 @@ export default function UblPage() {
             receive investments of up to ₹3,00,000 from our incubator.`}
           </div>
           <UblTug className={styles.tug} />
+        </div>
+      </div>
+      <div className={styles.roadmap}>
+        <div className={styles.roadmapWrapper}>
+          <div className={styles.midline}></div>
+          <div className={styles.roundHeading}>Workshops & Webinars</div>
+          <div className={styles.round}>
+            LIVE interactive sessions with industry experts & leaders to prepare
+            you for your first business plan and go-to-market strategy. Only on
+            our Discord channel.
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 11</p>
+            How to make your first business plan? Decoding a food business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 18</p>5 freelancing tips
+            for teens to earn money online
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 25</p>
+            Secret tips to build a go-to-market plan for your business REPEATED
+            IN SEPT/OCT
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 2</p>
+            Go-to-market plan for a ecommerce business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 9</p>0 to 1: Decoding a
+            food business plan from scratch
+          </div>
         </div>
       </div>
       <Values insidebenefits />
