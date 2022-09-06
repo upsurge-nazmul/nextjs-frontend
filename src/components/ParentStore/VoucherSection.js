@@ -14,7 +14,6 @@ export default function VoucherSection({
   kid,
   id,
   parent,
-  setOpenAvatars,
 }) {
   const [items, setitems] = useState(vouchers);
   const [query, setquery] = useState("");
@@ -47,12 +46,6 @@ export default function VoucherSection({
             <SearchIcon className={styles.icon} />
           </div>
         </div>
-        <button
-          className={styles.rewardButton}
-          onClick={() => setOpenAvatars((prev) => !prev)}
-        >
-          Avatars
-        </button>
       </div>
       <div className={styles.wrapper}>
         {items?.map((item, index) => (

@@ -45,7 +45,7 @@ export default function KidStore({
     name: "",
     price: "",
   });
-  const [openAvatars, setOpenAvatars] = useState(false);
+  const [openAvatars, setOpenAvatars] = useState(true);
 
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -99,7 +99,6 @@ export default function KidStore({
               vouchers={vouchers}
               kid={true}
               unicoins={userdatafromserver.num_unicoins}
-              setOpenAvatars={setOpenAvatars}
             />
           </div>
         </div>
