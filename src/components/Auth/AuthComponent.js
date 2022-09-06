@@ -14,6 +14,7 @@ import styles from "../../styles/Auth/auth.module.scss";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
+import ChangePhoneNo from "./ChangePhoneNo";
 
 function AuthComponent({
   showauth,
@@ -115,7 +116,7 @@ function AuthComponent({
                   seterror={seterror}
                   setmode={setmode}
                   onlyLogin={onlyLogin}
-                  addAccount={mailfromhome === false ? true : false}
+                  _setemail={setemail}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -176,6 +177,16 @@ function AuthComponent({
                   settoastdata={settoastdata}
                   setemail={setemail}
                   email={email}
+                />
+              ) : mode === "changePhone" ? (
+                <ChangePhoneNo
+                  phone={phone}
+                  setphone={setphone}
+                  email={email}
+                  error={error}
+                  seterror={seterror}
+                  settoastdata={settoastdata}
+                  setmode={setmode}
                 />
               ) : mode === "" && prefilled ? (
                 <AuthOnlyPass
