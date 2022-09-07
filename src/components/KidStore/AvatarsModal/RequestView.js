@@ -10,7 +10,6 @@ import { UniCoinValue } from "../../../../config";
 export default function RequestView({
   data,
   availableUnicoins,
-  setShowModal,
   setRequestMode,
 }) {
   const [success, setsuccess] = useState(false);
@@ -64,7 +63,7 @@ export default function RequestView({
             <div className={styles.actionArea}>
               <div
                 className={styles.button}
-                onClick={() => setShowModal(false)}
+                onClick={() => setRequestMode(false)}
               >
                 Done
               </div>

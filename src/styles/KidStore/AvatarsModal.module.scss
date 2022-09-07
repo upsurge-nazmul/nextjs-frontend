@@ -1,57 +1,15 @@
 .avatarsModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .container {
+  width: fit-content;
+  height: fit-content;
+  .heading {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgba(87, 88, 128, 1);
+    display: flex;
     align-items: center;
-    z-index: 99;
-    background-color: #fff;
-    border-radius: 14px;
-    position: relative;
-    left: 10%;
-    transition: all 0.3s ease;
-    height: fit-content;
-    width: fit-content;
-    min-height: 200px;
-    min-width: 100px;
-    width: 50vw;
-    height: 60vh;
-    padding: 20px;
-    overflow: hidden;
-    .avatarsList {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      .heading {
-        font-weight: 500;
-        font-size: 32px;
-        line-height: 38px;
-        padding: 20px 40px;
-        cursor: pointer;
-        p {
-          span {
-            color: #4166eb;
-          }
-        }
-        svg {
-          margin-right: 10px;
-          padding-top: 5px;
-          width: 25px;
-        }
-      }
-      .avatars {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-      }
+    margin-bottom: 20px;
+    svg {
+      margin-left: 10px;
     }
   }
 }
