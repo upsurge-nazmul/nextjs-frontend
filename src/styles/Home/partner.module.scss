@@ -7,74 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  .partner {
-    height: fit-content;
-    background-color: #ff6263;
-    margin-bottom: 0px;
-    color: rgb(255, 255, 255);
-    padding: 5vh 10vw 5vh;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    .heading {
-      font-size: 46px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .subheading {
-      margin-top: 1vh;
-      font-size: 22px;
-      font-weight: 400;
-    }
-    .hidecursor {
-      cursor: default;
-    }
-    .leftarrow {
-      position: absolute;
-      left: 40px;
-      width: 60px;
-      top: 57%;
-      transform: scaleX(-1);
-      z-index: 2;
-      cursor: pointer;
-    }
-    .rightarrow {
-      position: absolute;
-      right: 50px;
-      top: 57%;
-      width: 60px;
-      z-index: 2;
-      cursor: pointer;
-    }
-    .wrapper {
-      width: 100%;
-      display: flex;
-      overflow-x: auto;
-      flex: 1;
-      margin-top: 50px;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      ::-webkit-scrollbar {
-        width: 0; /* Remove scrollbar space */
-        background: transparent; /* Optional: just make scrollbar invisible */
-      }
-      .img {
-        width: 240px;
-        min-width: 240px;
-        height: 160px;
-        object-fit: cover;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 0 20px;
-        user-select: none;
-      }
-    }
-  }
-  .dashboard {
+  .common {
     height: fit-content;
     background-color: #ff6263;
     margin-bottom: 0px;
@@ -85,6 +18,7 @@
     flex-direction: column;
     border-radius: 12px;
     width: 70vw;
+    margin-top: 20px;
     .heading {
       font-size: 36px;
       font-weight: 700;
@@ -142,6 +76,9 @@
       }
     }
   }
+  .dashboard {
+    @extend .common;
+  }
   .darkpartner {
     .heading {
       color: $d-moredark;
@@ -190,208 +127,17 @@
     }
   }
 }
-@media only screen and (max-width: 1200px) and (min-width: 861px) {
+//phones
+@media only screen and (max-width: 711px) {
   .partnerSection {
-    .dashboard {
-      height: fit-content;
-      background-color: #ff6263;
-      margin-bottom: 0px;
-      color: rgb(255, 255, 255);
-      padding: 5vh 6vw;
-      display: flex;
-      position: relative;
-      flex-direction: column;
-      border-radius: 12px;
-      .heading {
-        font-size: 36px;
-        font-weight: 700;
-        cursor: pointer;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: 16px;
-        font-weight: 400;
-      }
-      .leftarrow {
-        position: absolute;
-        left: 15px;
-        width: 40px;
-        top: 57%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .rightarrow {
-        position: absolute;
-        right: 15px;
-        top: 57%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .wrapper {
-        width: 100%;
-        display: flex;
-        overflow-x: auto;
-        flex: 1;
-        margin-top: 30px;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        ::-webkit-scrollbar {
-          width: 0; /* Remove scrollbar space */
-          background: transparent; /* Optional: just make scrollbar invisible */
-        }
-        .img {
-          width: 240px;
-          min-width: 240px;
-          height: 160px;
-          object-fit: cover;
-          border-radius: 10px;
-          cursor: pointer;
-          margin: 0 20px;
-          user-select: none;
-        }
-      }
-    }
-  }
-}
-@media only screen and (min-width: 900px) and (max-height: 900px) {
-  .partnerSection {
-    .dashboard {
-      height: fit-content;
-      background-color: #ff6263;
-      margin-bottom: 0px;
-      color: rgb(255, 255, 255);
-      padding: 5vh 6vw;
-      display: flex;
-      position: relative;
-      flex-direction: column;
-      border-radius: 12px;
-      .heading {
-        font-size: 36px;
-        font-weight: 700;
-        cursor: pointer;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: 16px;
-        font-weight: 400;
-      }
-      .leftarrow {
-        position: absolute;
-        left: 20px;
-        width: 40px;
-        top: 57%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .hidecursor {
-        cursor: default !important;
-      }
-      .rightarrow {
-        position: absolute;
-        right: 20px;
-        top: 57%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .wrapper {
-        width: 100%;
-        display: flex;
-        overflow-x: auto;
-        flex: 1;
-        margin-top: 30px;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        ::-webkit-scrollbar {
-          width: 0; /* Remove scrollbar space */
-          background: transparent; /* Optional: just make scrollbar invisible */
-        }
-        .img {
-          width: 200px;
-          min-width: 200px;
-          height: 120px;
-          object-fit: cover;
-          border-radius: 10px;
-          cursor: pointer;
-          margin: 0 20px;
-          user-select: none;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
-  .partnerSection {
-    .partner {
-      height: fit-content;
-      margin-bottom: 0px;
-      padding: 5vh 0 5vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 40vh;
-      min-height: 350px;
-      .leftarrow {
-        position: absolute;
-        left: 40px;
-        width: 40px;
-        top: 80%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .rightarrow {
-        position: absolute;
-        right: unset;
-        left: 100px;
-        top: 80%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .heading {
-        font-size: 24px;
-        font-weight: 700;
-        padding: 0 10vw;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 0 10vw;
-      }
-      .wrapper {
-        width: 100%;
-        margin-top: 30px;
-        .img {
-          min-width: 120px;
-          z-index: 100;
-          max-width: 120px;
-          height: 80px;
-          object-fit: contain;
-          background-color: rgb(255, 255, 255);
-          border-radius: 6px;
-          margin: 0 8px;
-        }
-      }
-    }
-    .dashboard {
+    .commonPh {
       height: fit-content;
       margin-bottom: 0px;
       padding: 3vh 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 0px;
+      margin-top: 20px;
       min-height: 340px;
       width: 75vw;
       .leftarrow {
@@ -434,71 +180,15 @@
         }
       }
     }
+    .dashboard {
+      @extend .commonPh;
+    }
   }
 }
 //tablets
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 712px) and (max-width: 1024px) {
   .partnerSection {
-    .partner {
-      height: fit-content;
-      margin-bottom: 0px;
-      padding: 3vh 0 4vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: fit-content;
-      min-height: 350px;
-      .leftarrow {
-        position: absolute;
-        left: 7vw;
-        width: 40px;
-        top: 85%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .rightarrow {
-        position: absolute;
-        right: unset;
-        left: 14vw;
-        top: 85%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .heading {
-        font-size: $tablet-smallheading;
-        font-weight: 700;
-        padding: 0 7vw;
-        text-align: left;
-        width: 100%;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: $tablet-subheading;
-        line-height: $tablet-subheading-line;
-        font-weight: 400;
-        padding: 0 7vw;
-      }
-      .wrapper {
-        width: 90%;
-        flex: 1;
-        margin: 3vh 0;
-        .img {
-          min-width: unset;
-          z-index: 100;
-          max-width: unset;
-          height: 10vh;
-          width: auto;
-          aspect-ratio: 13/8.65;
-          object-fit: contain;
-          background-color: rgba(255, 255, 255, 0);
-          border-radius: 6px;
-          margin: 0 8px;
-        }
-      }
-    }
-    .dashboard {
+    .commonTb {
       height: fit-content;
       margin-bottom: 0px;
       padding: 3vh 0;
@@ -556,65 +246,14 @@
         }
       }
     }
+    .dashboard {
+      @extend .commonTb;
+    }
   }
 }
 @media only screen and (max-height: 500px) and (orientation: landscape) {
   .partnerSection {
-    .partner {
-      height: fit-content;
-      margin-bottom: 0px;
-      padding: 5vh 0 5vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 30vh;
-      min-height: 250px;
-      .leftarrow {
-        position: absolute;
-        left: 40px;
-        width: 40px;
-        top: 80%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .rightarrow {
-        position: absolute;
-        right: unset;
-        left: 100px;
-        top: 80%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .heading {
-        font-size: 24px;
-        font-weight: 700;
-        padding: 0 10vw;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 0 10vw;
-      }
-      .wrapper {
-        width: 90%;
-        flex: 1;
-        margin-top: 30px;
-        .img {
-          min-width: 120px;
-          z-index: 100;
-          max-width: 120px;
-          height: 80px;
-          object-fit: contain;
-          background-color: rgb(255, 255, 255);
-          border-radius: 6px;
-          margin: 0 8px;
-        }
-      }
-    }
-    .dashboard {
+    .commonPhL {
       height: fit-content;
       margin-bottom: 0px;
       padding: 3vh 0;
@@ -671,67 +310,16 @@
           margin: 0 8px;
         }
       }
+    }
+    .dashboard {
+      @extend .commonPhL;
     }
   }
 }
 
 @media only screen and (max-width: 860px) and (orientation: landscape) {
   .partnerSection {
-    .partner {
-      height: fit-content;
-      margin-bottom: 0px;
-      padding: 5vh 0 5vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 30vh;
-      min-height: 250px;
-      .leftarrow {
-        position: absolute;
-        left: 40px;
-        width: 40px;
-        top: 80%;
-        transform: scaleX(-1);
-        z-index: 2;
-        cursor: pointer;
-      }
-      .rightarrow {
-        position: absolute;
-        right: unset;
-        left: 100px;
-        top: 80%;
-        width: 40px;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .heading {
-        font-size: 24px;
-        font-weight: 700;
-        padding: 0 10vw;
-      }
-      .subheading {
-        margin-top: 1vh;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 0 10vw;
-      }
-      .wrapper {
-        width: 90%;
-        flex: 1;
-        margin-top: 30px;
-        .img {
-          min-width: 120px;
-          z-index: 100;
-          max-width: 120px;
-          height: 80px;
-          object-fit: contain;
-          background-color: rgb(255, 255, 255);
-          border-radius: 6px;
-          margin: 0 8px;
-        }
-      }
-    }
-    .dashboard {
+    .commonTbL {
       height: fit-content;
       margin-bottom: 0px;
       padding: 3vh 0;
@@ -788,6 +376,9 @@
           margin: 0 8px;
         }
       }
+    }
+    .dashboard {
+      @extend .commonTbL;
     }
   }
 }
