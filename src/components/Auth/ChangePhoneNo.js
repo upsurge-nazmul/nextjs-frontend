@@ -63,7 +63,6 @@ export default function ChangePhoneNo({
 
   return (
     <div className={styles.changePhone}>
-      phone no {email} {phone}{" "}
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
