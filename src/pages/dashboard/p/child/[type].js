@@ -371,35 +371,40 @@ function AddKid({ childdata, userdatafromserver }) {
               placeholder="Username *"
               extraclass={styles.margin}
             />
-            <ModernInputBox
-              type="date"
-              placeholder="Date of birth *"
-              disabled={true}
-              value={dob}
-              onChange={(e) => {
-                console.log(e);
-                if (!e) {
-                  return;
-                }
-                console.log(e);
-                if (e.getTime() >= new Date().getTime()) {
-                  settoastdata({
-                    msg: "Invaild date of birth",
-                    show: true,
-                    type: "error",
-                  });
-                } else {
-                  setdob(e);
-                }
-              }}
-            />
-
-            <DropDown
-              placeholder="Gender *"
-              options={["male", "female", "other", "Don't want to disclose"]}
-              value={gender}
-              setvalue={setgender}
-            />
+            <div className={styles.commonWrapper}>
+              <ModernInputBox
+                type="date"
+                placeholder="Date of birth *"
+                disabled={true}
+                value={dob}
+                onChange={(e) => {
+                  console.log(e);
+                  if (!e) {
+                    return;
+                  }
+                  console.log(e);
+                  if (e.getTime() >= new Date().getTime()) {
+                    settoastdata({
+                      msg: "Invaild date of birth",
+                      show: true,
+                      type: "error",
+                    });
+                  } else {
+                    setdob(e);
+                  }
+                }}
+                extrastyle={{
+                  marginBottom: 0,
+                }}
+              />
+              <DropDown
+                placeholder="Gender *"
+                options={["male", "female", "other", "Don't want to disclose"]}
+                value={gender}
+                setvalue={setgender}
+                className={styles.gender}
+              />
+            </div>
             <CitySearch
               placeholder="City *"
               textOnly={true}
