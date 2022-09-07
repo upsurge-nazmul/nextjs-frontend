@@ -86,17 +86,17 @@
   }
 }
 
-.darkheadertab{
-  .expander{
-    span{
+.darkheadertab {
+  .expander {
+    span {
       color: $d-text2;
     }
   }
   .tabHolder {
     background-color: $d-moredark;
-  box-shadow: rgba(29, 29, 29, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(29, 29, 29, 0.2) 0px 2px 8px 0px;
     .tabs {
-color: $d-text1;
+      color: $d-text1;
       &:hover {
         background-color: $d-main;
       }

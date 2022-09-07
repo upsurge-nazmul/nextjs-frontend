@@ -414,6 +414,7 @@ export default function ManageChore({
           setassignees={setassignees}
           onConfirm={() => setshowaddmodal(false)}
           settoastdata={settoastdata}
+          onClear={()=>{setshowaddmodal(false)}}
           onCancel={(checkAssignee) => {
             if (checkAssignee) {
               if (assignees.length === 0) {

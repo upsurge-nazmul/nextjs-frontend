@@ -4,9 +4,14 @@
   max-height: 50vh;
   .catselection {
     h2 {
+      display: flex;
+      align-items: center;
       font-size: 24px;
       font-weight: 500;
       margin-bottom: 40px;
+      .CancelIcon {
+        margin-left: auto;
+      }
     }
     .select {
       border: 1px solid #898989;
@@ -27,6 +32,13 @@
       display: flex;
       margin-bottom: 20px;
       flex-wrap: wrap;
+      align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
     }
     .button {
       width: 100%;
@@ -171,14 +183,15 @@
       }
       .wrapper {
         width: 100%;
-        height: fit-content;
         display: flex;
         margin-bottom: 20px;
         flex-wrap: wrap;
+        align-content: space-around;
         justify-content: space-around;
         align-items: center;
-        align-content: flex-start;
-        gap: 20;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
       }
     }
     .choreTemplateSelection {

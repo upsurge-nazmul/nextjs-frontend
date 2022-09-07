@@ -107,6 +107,8 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
+          showback={true}
+          gobackto={"/dashboard/p/blogs/"}
         />
 
         <div className={styles.mainContent}>

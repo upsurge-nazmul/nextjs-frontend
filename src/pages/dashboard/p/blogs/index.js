@@ -67,7 +67,7 @@ export default function Blogs({
   }
   return (
     <div className={styles.blogs}>
-      <DashboardLeftPanel  />
+      <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />
