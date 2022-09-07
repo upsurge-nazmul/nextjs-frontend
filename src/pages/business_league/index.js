@@ -238,7 +238,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-          Registrations closes by October 5, 2022.
+            Registrations closes by October 25, 2022.
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -247,54 +247,31 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-            October 9th, 2022- Knowledge Quests- Live Business & Startups Quiz
+              October 30, 2022- Knowledge Quests- Live Business & Startups Quiz
             </p>
             {`90-minute online quiz which will test students on their knowledge of money & entrepreneurship, and their problem-solving skills - but not based on memory or clicking a button quickly. Teams will be given a problem to solve, & will be free to use whatever resources they want, especially google!`}
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-            Meanwhile, you’ll also get to participate in interesting webinars & workshops that’ll help you prep for UBL 2022 (details in the section below)
+              {`Meanwhile, you’ll also get to participate in interesting webinars
+              & workshops that’ll help you prep for UBL 2022 (details in the
+              section below)`}
             </p>
-            
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-            October 16th, 2022- Business Idea Pitch
+              November 6, 2022- Business Idea Pitch
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
           <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>October 16th, 2022- Case Study</p>{" "}
+            <p style={{ fontWeight: 600 }}>November 6, 2022- Case Study</p>{" "}
             {
               "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
             }
           </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Workshops & Webinars</p>
-          LIVE interactive sessions with industry experts & leaders to prepare you for your first business plan and go-to-market strategy. Only on our Discord channel.
-          </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Sunday, Aug 14</p>
-            How to make your first business plan? Decoding a food business
-            </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Saturday, Aug 20</p>
-            5 freelancing tips for teens to earn money online
-            </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Saturday, Aug 27</p>
-            Secret tips to build a go-to-market plan for your business REPEATED IN SEPT/OCT
-            </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Saturday, Sept 10</p>
-            Go-to-market plan for a ecommerce business
-            </div>
-          <div className={styles.round}>
-          <p style={{ fontWeight: 600 }}>Saturday, Sept 17</p>
-            0 to 1: Decoding a food business plan from scratch  
-          </div>
           <div className={styles.roundHeading}>
-            Round 2 - Teams announced by October 22, 2022
+            Round 2 - Teams announced by November 13, 2022
           </div>
           <div className={styles.round}>
             Up to 25 top teams will be shortlisted based on their performance in
@@ -310,7 +287,7 @@ export default function UblPage() {
               startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>Finals - November 19th, 2022</div>
+          <div className={styles.roundHeading}>Finals - December 3, 2022</div>
           <div className={styles.round}>
             {`Final pitch will be held in front of a jury comprising
             entrepreneurs, venture capitalists, CXOs and startup leaders. Teams
@@ -318,6 +295,38 @@ export default function UblPage() {
             receive investments of up to ₹3,00,000 from our incubator.`}
           </div>
           <UblTug className={styles.tug} />
+        </div>
+      </div>
+      <div className={styles.roadmap}>
+        <div className={styles.roadmapWrapper}>
+          <div className={styles.midline}></div>
+          <div className={styles.roundHeading}>Workshops & Webinars</div>
+          <div className={styles.round}>
+            LIVE interactive sessions with industry experts & leaders to prepare
+            you for your first business plan and go-to-market strategy. Only on
+            our Discord channel.
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 11</p>
+            How to make your first business plan? Decoding a food business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 18</p>5 freelancing tips
+            for teens to earn money online
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 25</p>
+            Secret tips to build a go-to-market plan for your business REPEATED
+            IN SEPT/OCT
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 2</p>
+            Go-to-market plan for a ecommerce business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 9</p>0 to 1: Decoding a
+            food business plan from scratch
+          </div>
         </div>
       </div>
       <Values insidebenefits />
