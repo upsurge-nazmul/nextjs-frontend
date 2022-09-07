@@ -1,13 +1,13 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useContext } from "react";
-import DashboardApis from "../../actions/apis/DashboardApis";
 import noKidSvg from "../../assets/nokid.png";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Dashboard/nokid.module.scss";
 
-function NoKid({ setkids }) {
+function NoKid() {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
+
   return (
     <div className={styles.noKidComponent}>
       <div className={styles.noKidtextContent}>
