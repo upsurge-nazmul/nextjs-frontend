@@ -79,6 +79,12 @@
   .dashboard {
     @extend .common;
   }
+  .partner {
+    @extend .common;
+    width: 100vw;
+    margin-top: 0;
+    border-radius: 0;
+  }
   .darkpartner {
     .heading {
       color: $d-moredark;
@@ -183,6 +189,11 @@
     .dashboard {
       @extend .commonPh;
     }
+    .partner {
+      @extend .commonPh;
+      width: 100vw;
+      margin-top: 0;
+    }
   }
 }
 //tablets
@@ -249,6 +260,10 @@
     .dashboard {
       @extend .commonTb;
     }
+    .partner {
+      @extend .commonTb;
+      width: 100vw;
+    }
   }
 }
 @media only screen and (max-height: 500px) and (orientation: landscape) {
@@ -313,6 +328,10 @@
     }
     .dashboard {
       @extend .commonPhL;
+    }
+    .partner {
+      @extend .commonPhL;
+      width: 100vw;
     }
   }
 }
@@ -379,6 +398,10 @@
     }
     .dashboard {
       @extend .commonTbL;
+    }
+    .partner {
+      @extend .commonTbL;
+      width: 100vw;
     }
   }
 }
