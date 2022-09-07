@@ -4,7 +4,7 @@ import noKidSvg from "../../assets/nokid.png";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Dashboard/nokid.module.scss";
 
-function NoKid() {
+function NoKid({ backTo = "/dashboard/p" }) {
   const router = useRouter();
   const { userdata } = useContext(MainContext);
 
@@ -21,11 +21,16 @@ function NoKid() {
           id="add-child-btn"
           onClick={() => {
             if (!userdata.intro_guide_completed) {
-              router.push(
-                "/dashboard/p/child/add?showTour=true?pushTo=/dashboard/p?storyIndex=4"
-              );
+              router.push({
+                pathname:
+                  "/dashboard/p/child/add?showTour=true?pushTo=/dashboard/p?storyIndex=4",
+                query: { backTo },
+              });
             } else {
-              router.push("/dashboard/p/child/add");
+              router.push({
+                pathname: "/dashboard/p/child/add",
+                query: { backTo },
+              });
             }
           }}
         >

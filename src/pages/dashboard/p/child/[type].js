@@ -21,9 +21,10 @@ import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
+
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
-  const type = router.query.type;
+  const { type, backTo = "/dashboard/p" } = router.query;
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -325,7 +326,7 @@ function AddKid({ childdata, userdatafromserver }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={"/dashboard/p"}
+          gobackto={backTo}
         />
         <div className={styles.mainContent}>
           <div

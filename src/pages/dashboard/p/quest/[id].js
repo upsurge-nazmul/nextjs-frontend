@@ -129,7 +129,7 @@ export default function Quests({ kidsdata, questData, userdatafromserver }) {
           </>
         ) : (
           <div className={styles.noData}>
-            <NoKid />
+            <NoKid backTo="/dashboard/p/quest/upsurge-quest" />
           </div>
         )}
       </div>
