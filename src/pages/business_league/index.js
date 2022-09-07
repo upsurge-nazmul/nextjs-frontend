@@ -32,7 +32,7 @@ export default function UblPage() {
   const cosponsors = [
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/GEN.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/MM-logo.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
+    // "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
@@ -135,16 +135,16 @@ export default function UblPage() {
         <div className={styles.challengeDiv}>
           <div className={styles.challengeItem1}>
             <UblGreen className={styles.challengeSvg} />
-            <p>Knowledge Quest</p>
+            <p>{`Knowledge Quiz & Quests`}</p>
           </div>
-          <div className={styles.challengeItem2}>
+          {/* <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>Case Challenge</p>
+          </div> */}
+          <div className={styles.challengeItem3}>
+            <UblRed className={styles.challengeSvg} />
+            <p>Business Plan Competition</p>
           </div>
-        </div>
-        <div className={styles.challengeItem3}>
-          <UblRed className={styles.challengeSvg} />
-          <p>Business Plan Competition</p>
         </div>
       </div>
       <div className={styles.cosponsors}>
@@ -185,12 +185,12 @@ export default function UblPage() {
           <div className={styles.prizes}>
             <UblPrize type="gold" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>First Prize</p>
-            <p className={styles.prizemoney}>₹3,00,000</p>
+            <p className={styles.prizemoney}>₹2,00,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="silver" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>second Prize</p>
-            <p className={styles.prizemoney}>₹2,00,000</p>
+            <p className={styles.prizemoney}>₹1,50,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="bronze" className={styles.prizeSvg} />
@@ -210,8 +210,7 @@ export default function UblPage() {
           <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>
-              Top 3 schools with teams scoring the most points will also receive
-              awards
+              ₹1,00,000 cash prize for the schools with best performing teams
             </p>
           </div>
         </div>
