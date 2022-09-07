@@ -233,7 +233,7 @@ function Footer() {
             <p className={styles.heading}>More</p>
             <p
               className={styles.subheading}
-              onClick={() => router.push("/about")}
+              onClick={() => router.push("/about-us")}
             >
               About us
             </p>
@@ -438,7 +438,7 @@ function Footer() {
             <>
               <p
                 className={styles.subheading}
-                onClick={() => router.push("/about")}
+                onClick={() => router.push("/about-us")}
               >
                 About us
               </p>
