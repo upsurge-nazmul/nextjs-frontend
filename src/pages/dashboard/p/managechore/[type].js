@@ -470,7 +470,7 @@ export default function ManageChore({
             {
               ref: "#chore-date",
               position: "bottom",
-              content: `Set date and time.`,
+              content: `Set date.`,
               required: true,
               isolate: true,
             },
