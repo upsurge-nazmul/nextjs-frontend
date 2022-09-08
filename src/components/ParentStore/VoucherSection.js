@@ -34,7 +34,7 @@ export default function VoucherSection({
     <div className={styles.voucherSection} id={id}>
       <div className={styles.headwrapper}>
         <h2 className={styles.heading}>
-          Rewards <HeadingArrow />
+          Vouchers <HeadingArrow />
         </h2>
         <div className={styles.inputArea}>
           <div className={styles.inputwrapper}>
@@ -61,7 +61,7 @@ export default function VoucherSection({
           />
         ))}
         {items?.length === 0 && (
-          <p className={styles.noreward}>No rewards found</p>
+          <p className={styles.noreward}>No Vouchers found</p>
         )}
       </div>
     </div>
