@@ -23,59 +23,63 @@ export default function PartnerSection({ dashboard, nomargin }) {
     }
   }
   return (
-    <div
-      className={`${dashboard ? styles.dashboard : styles.partner} ${
-        theme === "dark" && styles.darkpartner
-      }`}
-      style={nomargin ? { margin: 0 } : {}}
-      id="partner-section"
-    >
+    <div className={styles.partnerSection}>
       <div
-        className={`${styles.heading} ${dashboard && styles.hidecursor}`}
-        onClick={() => {
-          if (dashboard) {
-            return;
-          }
-          router.push("/benefits/rewards");
-        }}
+        className={`${dashboard ? styles.dashboard : styles.partner} ${
+          theme === "dark" && styles.darkpartner
+        }`}
+        style={nomargin ? { margin: 0 } : {}}
+        id="partner-section"
       >
-        Our UniCoin reward partners
-      </div>
-      <div className={`${styles.subheading} ${dashboard && styles.hidecursor}`}>
-        {dashboard
-          ? "Collect as many UniCoins and redeem them for special gifts and deals with our partner brands in our product"
-          : `Collect UniCoin and redeem them for special gifts and deals with our
+        <div
+          className={`${styles.heading} ${dashboard && styles.hidecursor}`}
+          onClick={() => {
+            if (dashboard) {
+              return;
+            }
+            router.push("/benefits/rewards");
+          }}
+        >
+          Our UniCoin reward partners
+        </div>
+        <div
+          className={`${styles.subheading} ${dashboard && styles.hidecursor}`}
+        >
+          {dashboard
+            ? "Collect as many UniCoins and redeem them for special gifts and deals with our partner brands in our product"
+            : `Collect UniCoin and redeem them for special gifts and deals with our
         partner brands.`}
-      </div>
-      <PlayCircleSvg
-        className={styles.leftarrow}
-        onClick={() => handlemove("left")}
-      />
-      <PlayCircleSvg
-        className={styles.rightarrow}
-        onClick={() => handlemove("right")}
-      />
-      <div
-        className={`${styles.wrapper} ${dashboard && styles.hidecursor}`}
-        id="partnerwrapper"
-      >
-        {rewards.map((item, index) => {
-          return (
-            <img
-              onClick={() => {
-                if (dashboard) {
-                  return;
-                }
-                router.push("/benefits/rewards");
-              }}
-              key={"partner" + index}
-              className={`${styles.img} ${dashboard && styles.hidecursor}`}
-              src={item}
-              alt="Reward partner"
-              loading="lazy"
-            />
-          );
-        })}
+        </div>
+        <PlayCircleSvg
+          className={styles.leftarrow}
+          onClick={() => handlemove("left")}
+        />
+        <PlayCircleSvg
+          className={styles.rightarrow}
+          onClick={() => handlemove("right")}
+        />
+        <div
+          className={`${styles.wrapper} ${dashboard && styles.hidecursor}`}
+          id="partnerwrapper"
+        >
+          {rewards.map((item, index) => {
+            return (
+              <img
+                onClick={() => {
+                  if (dashboard) {
+                    return;
+                  }
+                  router.push("/benefits/rewards");
+                }}
+                key={"partner" + index}
+                className={`${styles.img} ${dashboard && styles.hidecursor}`}
+                src={item}
+                alt="Reward partner"
+                loading="lazy"
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
