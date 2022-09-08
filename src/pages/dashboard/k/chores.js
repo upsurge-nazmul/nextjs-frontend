@@ -246,6 +246,6 @@ async function getcompletedchores(id, token) {
   } else return null;
 }
 async function getLeaderboard(token) {
-  let response = await ChoreApis.getLeaderboard({role: "parent"}, token);
+  let response = await ChoreApis.getLeaderboard({ role: "parent" }, token);
   return response?.data?.data ?? [];
 }
