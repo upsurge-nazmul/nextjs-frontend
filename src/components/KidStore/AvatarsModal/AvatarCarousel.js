@@ -28,7 +28,7 @@ function AvatarCarousel(
         }
       }
   return (
-     <div className={styles.carouselContainer}
+    <div className={styles.carouselContainer}
     style={ { margin: 0 }}
     >
       {requestMode ? (
