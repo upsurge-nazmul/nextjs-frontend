@@ -125,9 +125,9 @@ function ChoresPage({ choresdata, choresLeaderboardData, isLogged, userdatafroms
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
-                <div>
+                {/* <div>
                   <LeaderBoard data={choresLeaderboardData} />
-                </div>
+                </div> */}
                 <h2 className={styles.heading}>Pending For Approval</h2>
                 <div className={styles.wrapper}>
                   {chores.map((item, index) => {
