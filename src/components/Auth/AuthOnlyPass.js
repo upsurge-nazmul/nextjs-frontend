@@ -57,7 +57,7 @@ function AuthLogin({
         setSavedUsers(savedUsersData);
       }
     } else {
-      let newLogin = await LoginApis.verifyPassword({
+      let newLogin = await LoginApis.login({
         email: prefilled.email,
         password,
       });
