@@ -1,0 +1,44 @@
+.pathway {
+  background-color: #fff;
+  border-radius: 14px;
+  //   box-shadow: 1px 1px 8px 1px #d0cbcb;
+  padding: 20px;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    .pathItem {
+      width: 150px;
+      text-align: center;
+      .icon {
+        height: 100px;
+        width: 100%;
+        background-color: aquamarine;
+      }
+      .title {
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+      }
+      .rewardArea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .reward {
+          font-size: 12px;
+          background-color: #fdcc03;
+          color: #fff;
+          border-radius: 14px;
+          padding: 2px 12px;
+          .svg {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            path {
+              fill: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

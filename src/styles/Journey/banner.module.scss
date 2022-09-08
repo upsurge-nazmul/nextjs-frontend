@@ -1,0 +1,43 @@
+.banner {
+  border-radius: 14px;
+  color: #fff;
+  padding: 30px;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    .left {
+      .title {
+        font-size: 36px;
+        font-weight: 400;
+        padding: 20px 0 5px;
+      }
+      .description {
+        font-size: 18px;
+        font-weight: 300;
+      }
+      .buttonArea {
+        padding: 10px 0;
+        .button {
+          background-color: #4066eb;
+          color: #fff;
+          border: none;
+          outline: none;
+          padding: 10px 20px;
+          border-radius: 14px;
+        }
+      }
+    }
+    .right {
+      .reward {
+        .svg {
+          width: 12px;
+          height: 12px;
+          margin-right: 5px;
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+}
