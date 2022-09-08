@@ -86,6 +86,14 @@ function AuthOtpComponent({
       >
         Resend OTP
       </div>
+      <div
+        className={styles.resendButton}
+        onClick={() => {
+          setmode("changePhone");
+        }}
+      >
+        Change Phone Number
+      </div>
       {!loading ? (
         <div className={`${styles.button}`} onClick={verifyOtp}>
           Continue

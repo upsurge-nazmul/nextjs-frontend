@@ -42,6 +42,14 @@ export default function CitySearch({
       } ${wrapperclassname && wrapperclassname}`}
       style={extrastyle}
     >
+      {showdropdown ? (
+        <div
+          className={styles.backgroud}
+          onClick={() => setshowdropdown(false)}
+        />
+      ) : (
+        ""
+      )}
       <p
         className={`${
           value
@@ -86,7 +94,19 @@ export default function CitySearch({
                 setvalue(e.target.value);
               }
         }
-        onBlur={() => {setTimeout(() => setshowdropdown(false), 100);}}
+        // onBlur={(e) => {
+        //   e.preventDefault();
+        //   if (
+        //     e.nativeEvent.explicitOriginalTarget &&
+        //     e.nativeEvent.explicitOriginalTarget ===
+        //       e.nativeEvent.originalTarget
+        //   ) {
+        //     return;
+        //   }
+        //   if (showdropdown) {
+        //     setTimeout(() => setshowdropdown(false), 100);
+        //   }
+        // }}
       />
       <div data-tip data-for="info-city" className={styles.tooltip}>
         <InfoOutlinedIcon className={styles.infoicon} />
@@ -110,7 +130,7 @@ export default function CitySearch({
                     setstate(item.state);
                   }
                 }}
-                key={item}
+                key={index}
               >
                 {item.city}, {item.state}
               </p>

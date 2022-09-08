@@ -1,30 +1,27 @@
 import React, { useState } from "react";
 import styles from "../../../styles/KidStore/AvatarsModal.module.scss";
-import Avatar from "./Avatar";
-import BackButtonSvg from "../../SVGcomponents/BackButtonSvg";
+import AvatarCarousel from "./AvatarCarousel";
+import HeadingArrow from "../../SVGcomponents/HeadingArrow";
+
 
 export default function AvatarList({
   avatars,
-  handleAvatarClick,
-  setShowModal,
 }) {
   return (
     <div className={styles.avatarsList}>
-      <div className={styles.heading} onClick={() => setShowModal(false)}>
+      <>
+      <div className={styles.heading}>
         <p>
-          <BackButtonSvg />
-          Available Avatars
+          Available Avatars 
+          <HeadingArrow />
         </p>
       </div>
       <div className={styles.avatars}>
-        {avatars.map((item, index) => (
-          <Avatar
-            key={"avatatr" + index}
-            data={item}
-            handleAvatarClick={handleAvatarClick}
-          />
-        ))}
+        <AvatarCarousel 
+        avatars={avatars}
+    />
       </div>
+    </>
     </div>
   );
 }

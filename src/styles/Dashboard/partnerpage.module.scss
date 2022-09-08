@@ -17,7 +17,7 @@
     flex: 1;
     display: flex;
     width: 100%;
-    max-width: calc(100% - 280px);
+    // max-width: calc(100% - 350px);
     flex-direction: column;
     .mainContent {
       display: flex;
@@ -137,7 +137,6 @@
       display: flex;
       width: 100%;
       flex-direction: column;
-      max-width: fit-content;
       .mainContent {
         width: 100%;
         display: flex;

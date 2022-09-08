@@ -60,6 +60,8 @@ export default function CalculatorsPage({ userdatafromserver }) {
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
+          showback={true}
+          gobackto={"/dashboard/p/calculators/"}
         />
         <div className={styles.mainContent}>
           <div className={styles.headingSection}>
