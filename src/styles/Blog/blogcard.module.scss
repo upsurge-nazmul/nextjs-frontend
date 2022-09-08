@@ -1,4 +1,4 @@
-@use  "../variables/colors.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .blogcard {
   width: 100%;
@@ -41,7 +41,7 @@
     }
   }
 }
-.darkblogcard{
+.darkblogcard {
   .right {
     .title {
       color: $d-text1;

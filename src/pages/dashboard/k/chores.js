@@ -32,7 +32,7 @@ export default function KidChoresPage({
   liveclassdata,
   completedchores,
   currentLevel,
-  choresLeaderboardData
+  choresLeaderboardData,
 }) {
   const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState();
@@ -198,7 +198,7 @@ export async function getServerSideProps({ params, req }) {
           kiddata,
           liveclassdata: liveclassdata || null,
           completedchores,
-          choresLeaderboardData
+          choresLeaderboardData,
         },
       };
     }

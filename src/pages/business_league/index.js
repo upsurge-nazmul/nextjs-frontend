@@ -369,7 +369,6 @@ to start and scale a business.`}</p>
           </a>
           <p>{`Established in 2019, Mentor Mpact provides expert admissions counseling for top global undergraduate & MBA programs, along with profile-building & career development services to students. They have helped over 1,000 students get 3,000 admits across 20 countries!.`}</p>
         </div>
-        
       </div>
       <FaqSection customfaq={faqs} />
       <Footer />

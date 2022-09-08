@@ -49,7 +49,7 @@ function FaqPage() {
               We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
   ];
-  
+
   return (
     <div className={styles.faqpageWrapper}>
       <Header />

@@ -136,7 +136,7 @@
       transform: translate(-55%);
       font-weight: 700;
       font-size: 24px;
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       width: 150px;
       .main {
         text-align: center;
@@ -164,20 +164,15 @@
 }
 .darkcalculatorComponent {
   background-color: $d-moredark;
-  
+
   .inputSection {
-   
     .buttonWrapper {
-     
       .nextButton,
       .prevButton {
-     
         color: $d-moredark;
-        
       }
       .prevButton {
         color: $d-moredark;
-        
       }
     }
     .buttons {
@@ -188,7 +183,6 @@
       .next,
       .previous {
         color: $d-moredark;
-        
       }
       .next {
         background-color: rgba(65, 102, 235, 1);
@@ -213,7 +207,6 @@
       font-weight: 400;
       font-size: 14px;
       color: $d-text1;
-        
     }
     .result {
       font-size: 18px;
@@ -253,7 +246,7 @@
       transform: translate(-55%);
       font-weight: 700;
       font-size: 24px;
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       width: 150px;
       .main {
         text-align: center;
@@ -336,7 +329,7 @@
         transform: translate(-55%);
         font-weight: 700;
         font-size: 24px;
-        font-family: 'Lexend', sans-serif;
+        font-family: "Lexend", sans-serif;
         width: 150px;
         .main {
           text-align: center;

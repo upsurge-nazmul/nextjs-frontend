@@ -1,6 +1,6 @@
 import { useAVToggle } from "@100mslive/react-sdk";
 
-export default  function ConferenceFooter() {
+export default function ConferenceFooter() {
   const { isLocalAudioEnabled, isLocalVideoEnabled, toggleAudio, toggleVideo } =
     useAVToggle();
   return (
@@ -14,4 +14,3 @@ export default  function ConferenceFooter() {
     </div>
   );
 }
-

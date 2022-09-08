@@ -280,7 +280,7 @@
     color: rgb(59, 59, 59);
   }
 }
-.darkfooterSection{
+.darkfooterSection {
   width: 100%;
   min-height: fit-content;
   scroll-snap-align: center;
@@ -324,7 +324,7 @@
         margin-top: 2vh;
         .heading {
           font-size: 15px;
-          color:$d-text1;
+          color: $d-text1;
         }
         .subheadings {
           font-size: 15px;
@@ -369,8 +369,7 @@
           margin-top: 10px;
           display: flex;
           p {
-          color:$d-text2;
-         
+            color: $d-text2;
           }
         }
       }
@@ -385,7 +384,7 @@
           margin-right: 30px;
           width: 20px;
           path {
-            fill:$d-text1;
+            fill: $d-text1;
           }
           height: 20px;
         }
@@ -393,10 +392,10 @@
           width: 25px;
           cursor: pointer;
           margin-right: 30px;
-          fill:$d-text2;
-          height: 25px;  
+          fill: $d-text2;
+          height: 25px;
           path {
-            fill:$d-text1;
+            fill: $d-text1;
           }
           &:last-child {
             margin-right: 0;
@@ -426,8 +425,8 @@
           margin-bottom: 20px;
           cursor: pointer;
           text-transform: capitalize;
-          font-weight: 400;  
-         color:$d-text2;
+          font-weight: 400;
+          color: $d-text2;
         }
       }
     }
@@ -445,7 +444,7 @@
         margin-bottom: 10px;
         text-transform: capitalize;
         margin-left: 10px;
-        color:$d-text2;
+        color: $d-text2;
         &:nth-child(2) {
           margin-top: 10px;
         }
@@ -455,7 +454,7 @@
         font-size: 18px;
         display: flex;
         justify-content: space-between;
-        color:$d-text2;
+        color: $d-text2;
         padding-bottom: 10px;
       }
     }
@@ -470,16 +469,16 @@
         margin-right: 30px;
         width: 30px;
         height: 30px;
-        path{
-          fill:$d-text1;
+        path {
+          fill: $d-text1;
         }
       }
       .socialyt {
         width: 35px;
         cursor: pointer;
         margin-right: 30px;
-          fill:$d-text1;
-          height: 35px;
+        fill: $d-text1;
+        height: 35px;
         &:last-child {
           margin-right: 0;
         }
@@ -541,7 +540,7 @@
         font-size: 16px;
         .terms {
           margin-right: 10px;
-          color:$d-text2;
+          color: $d-text2;
         }
       }
     }
@@ -634,8 +633,7 @@
     }
   }
   .bottombar {
- 
-         color:$d-text2;
+    color: $d-text2;
   }
 }
 @media only screen and (min-width: 860px) and (max-height: 800px) {

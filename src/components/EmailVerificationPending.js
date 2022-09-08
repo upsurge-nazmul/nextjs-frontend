@@ -30,7 +30,8 @@ function EmailVerificationPending({ settoastdata }) {
         </p>
       ) : (
         <p className={styles.text}>
-          Your are almost there! we have sent a verification email to {userdata?.email}
+          Your are almost there! we have sent a verification email to{" "}
+          {userdata?.email}
         </p>
       )}
       {!mailsentagain && (
