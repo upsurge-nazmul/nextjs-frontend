@@ -1,9 +1,9 @@
 .carouselContainer {
     position: relative;
-    padding: .5rem;
+    padding: 1rem;
     width: 76vw;
     border-radius: 20px;
-    background-color: #ff6263;
+    background-color: #17d1bc;
     display:flex;
     flex-direction: column;
     .wrapper {
@@ -39,7 +39,7 @@
         border:none;
         z-index:4;
         height: 100%;
-        background-color: #ff6263;
+        background-color: #17d1bc;
       }
   
   .leftarrow {

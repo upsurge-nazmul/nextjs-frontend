@@ -42,6 +42,14 @@ export default function ModernInputBox({
       }`}
       style={extrastyle}
     >
+      {showsuggestion ? (
+        <div
+          className={styles.backgroud}
+          onClick={() => setshowsuggestion(false)}
+        />
+      ) : (
+        ""
+      )}
       <p
         className={`${
           value
@@ -62,7 +70,7 @@ export default function ModernInputBox({
         />
       ) : (
         <input
-          onBlur={() => {setTimeout(() => setshowsuggestion(false), 100)}}
+          // onBlur={() => {setTimeout(() => setshowsuggestion(false), 100)}}
           onFocus={
             onFocus
               ? onFocus

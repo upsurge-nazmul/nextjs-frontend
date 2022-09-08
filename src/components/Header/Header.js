@@ -144,7 +144,7 @@ function Header({
           <HeaderTabSection
             title={"More"}
             tabs={[
-              { name: "About us", pushTo: "/about" },
+              { name: "About us", pushTo: "/about-us" },
               { name: "Team", pushTo: "/team" },
               { name: "Blogs", pushTo: "/blogs" },
               { name: "Financial calculators", pushTo: "/calculators" },

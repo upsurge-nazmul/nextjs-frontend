@@ -27,7 +27,7 @@ export const Game_Data = {
   MoneyManager: {
     name: "Money manager",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
-    description: "Ean money, & divide it between Saving, Expenses & Charity.",
+    description: "Earn money, & divide it between Saving, Expenses & Charity.",
   },
   MoneySlide: {
     name: "Money slide",

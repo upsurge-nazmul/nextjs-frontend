@@ -32,7 +32,7 @@ export default function KidStore({
   vouchers,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const [mode, setmode] = useState("Store");
+  const [mode, setmode] = useState("Rewards Store");
   const { userdata, setuserdata } = useContext(MainContext);
   const router = useRouter();
   const [showmodal, setshowmodal] = useState(false);
