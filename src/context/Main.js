@@ -25,8 +25,8 @@ export const MainContextProider = ({ children }) => {
   const [show, setShow] = useState(false);
   const [mobileMode, setmobileMode] = useState(false);
   const [notification, setNotification] = useState({
-    title: "Test",
-    body: "This is body",
+    title: "Notification",
+    body: "Notification Body",
   });
   const [widthHeight, setwidthHeight] = useState({
     width: 1280,
