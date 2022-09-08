@@ -32,6 +32,7 @@ import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import Journey from "../../../components/Journey";
 
 export default function ChildActivity({
   pendingchores,
@@ -303,6 +304,7 @@ export default function ChildActivity({
             }}
           />
         )}
+        <Journey />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>
