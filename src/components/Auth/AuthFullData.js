@@ -117,8 +117,8 @@ function AuthFullData({
       setloading(false);
       return;
     }
-    if (username.length > 8) {
-      seterror("Username cannot contain more than 8 characters");
+    if (username.length > 20) {
+      seterror("Username cannot contain more than 20 characters");
       setloading(false);
       return;
     }
