@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import Pathway from "./Pathway";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import { useState } from "react";
+import Tasks from "./Tasks";
 
 const PATH = [
   {
@@ -61,7 +62,7 @@ const PATH = [
 ];
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState();
+  const [selectedPath, setSelectedPath] = useState(PATH[0]);
 
   return (
     <div className={styles.journey}>
@@ -72,6 +73,7 @@ export default function Journey() {
       </h2>
       <Pathway PATH={PATH} handleClick={setSelectedPath} />
       {selectedPath ? <Banner highlight={selectedPath} /> : ""}
+      {selectedPath ? <Tasks highlight={selectedPath} /> : ""}
     </div>
   );
 }
