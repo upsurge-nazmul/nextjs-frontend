@@ -7,10 +7,9 @@ export default function Pathway({ PATH, handleClick }) {
       <div className={styles.content}>
         {PATH.map((item, i) => {
           return (
-            <div className={styles.path}>
+            <div className={styles.path} key={i}>
               <div
                 className={styles.pathItem}
-                key={i}
                 onClick={() => handleClick(item)}
               >
                 <div className={styles.icon}>
