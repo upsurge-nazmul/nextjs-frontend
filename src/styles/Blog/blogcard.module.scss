@@ -1,4 +1,4 @@
-@use  "../variables/colors.scss" as *;
+@use "../variables/colors.scss" as *;
 
 .blogcard {
   width: 100%;
@@ -23,7 +23,7 @@
         font-size: 14px;
         font-weight: 700;
         color: #4166eb;
-        font-family: "Roboto";
+        font-family: "Lexend", sans-serif;
         margin-right: 10px;
         text-transform: capitalize;
       }
@@ -41,7 +41,7 @@
     }
   }
 }
-.darkblogcard{
+.darkblogcard {
   .right {
     .title {
       color: $d-text1;

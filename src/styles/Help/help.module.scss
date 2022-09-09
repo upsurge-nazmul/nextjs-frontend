@@ -179,30 +179,27 @@
     }
   }
 }
-.darkstyles{
-  
+.darkstyles {
   .curve2 {
-opacity: 0.2;
+    opacity: 0.2;
   }
   .curve1 {
-   opacity: 0.2;
+    opacity: 0.2;
   }
   .frontpage {
-    
     .left {
       .heading {
-        color:$d-text2;
+        color: $d-text2;
       }
       .subheading {
-        color:$d-text2;
+        color: $d-text2;
       }
-
     }
   }
   .faqpage {
     background-color: transparent;
     .heading {
-      color:$d-text2;
+      color: $d-text2;
     }
   }
 }

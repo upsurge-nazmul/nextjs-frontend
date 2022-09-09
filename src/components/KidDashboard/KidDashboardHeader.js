@@ -26,7 +26,7 @@ function KidDashboardHeader({
   const router = useRouter();
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
-  const [username, setusername] = useState("Tushar");
+  const [username, setusername] = useState("User");
   const [showauth, setshowauth] = useState(false);
   const [rotatesetting, setrotatesetting] = useState(false);
   const [bell, setbell] = useState(false);

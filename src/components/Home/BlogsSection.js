@@ -62,9 +62,9 @@ export default function BlogsSection() {
         theme === "dark" && styles.darkblogSection
       }`}
     >
-      <div className={styles.heading} onClick={() => router.push("/blogs")}>
+      <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
         Blogs
-      </div>
+      </h2>
       <div className={styles.wrapper}>
         {blogs.map((item, index) => {
           return (

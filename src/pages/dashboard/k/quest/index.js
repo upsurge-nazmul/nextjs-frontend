@@ -12,7 +12,6 @@ import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
 
 const QUEST_TYPES = [
-  { title: "All Categories", background: "#ccc", font: "#333" },
   { title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
   { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
   { title: "Career Quests", background: "#ccc", font: "#333" },

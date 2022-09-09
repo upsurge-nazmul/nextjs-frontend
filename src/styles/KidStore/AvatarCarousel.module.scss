@@ -1,66 +1,67 @@
 .carouselContainer {
-    position: relative;
-    padding: .5rem;
-    width: 76vw;
+  position: relative;
+  padding: 1rem;
+  width: 76vw;
+  border-radius: 20px;
+  background-color: #17d1bc;
+  display: flex;
+  flex-direction: column;
+  .wrapper {
+    padding: 0 1rem;
+    display: flex;
+    grid-template-rows: 2;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    margin-left: 3rem;
+    margin-right: 4rem;
+    flex: 1;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    .card {
+      display: grid;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    ::-webkit-scrollbar {
+      width: 0; /* Remove scrollbar space */
+      background: transparent; /* Optional: just make scrollbar invisible */
+    }
+  }
+  .leftarrow,
+  .rightarrow {
+    position: absolute;
     border-radius: 20px;
-    background-color: #ff6263;
-    display:flex;
-    flex-direction: column;
-    .wrapper {
-      padding: 0 1rem;
-      display: flex;
-      grid-template-rows: 2;
-      scroll-behavior: smooth;
-      overflow-x: auto;
-      margin-left:3rem;
-      margin-right:4rem;
-      flex: 1;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
-      .card{
-        display:grid;
-      }
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      ::-webkit-scrollbar {
-        width: 0; /* Remove scrollbar space */
-               background: transparent; /* Optional: just make scrollbar invisible */
-              }
-      }
-      .leftarrow,.rightarrow {
-        position: absolute;
-        border-radius: 20px;
-        display: flex;
-        top:0;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        border:none;
-        z-index:4;
-        height: 100%;
-        background-color: #ff6263;
-      }
-  
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    border: none;
+    z-index: 4;
+    height: 100%;
+    background-color: #17d1bc;
+  }
+
   .leftarrow {
     transform: scaleX(-1);
   }
   .rightarrow {
-    right:.5rem;
+    right: 0.5rem;
   }
-  }
+}
 @media only screen and (max-width: 1300px) {
-  .carouselContainer{
+  .carouselContainer {
     max-width: 90vw;
   }
 }
 @media only screen and (min-width: 1800px) and (max-width: 2100px) {
-  .carouselContainer{
+  .carouselContainer {
     max-width: 79vw;
   }
 }
 @media only screen and (min-width: 2100px) {
-  .carouselContainer{
+  .carouselContainer {
     max-width: 90vw;
   }
 }

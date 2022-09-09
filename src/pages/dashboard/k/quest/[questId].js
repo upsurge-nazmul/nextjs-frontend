@@ -88,8 +88,15 @@ export default function KnowledgeQuest({ userData, questData }) {
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        {currentQuest ? <DashboardHeader mode={currentQuest.title} showback={true}
-          gobackto={"/dashboard/k/quest/"} /> : ""}
+        {currentQuest ? (
+          <DashboardHeader
+            mode={currentQuest.title}
+            showback={true}
+            gobackto={"/dashboard/k/quest/"}
+          />
+        ) : (
+          ""
+        )}
         <div className={styles.mainContent}>
           {currentQuest && (
             <div className={styles.headingSection}>

@@ -20,7 +20,12 @@ import RejectChore from "../../../components/Dashboard/RejectChore";
 import Tour from "../../../components/Tour/Tour";
 import LeaderBoard from "../../../components/LeaderBoard";
 
-function ChoresPage({ choresdata, choresLeaderboardData, isLogged, userdatafromserver }) {
+function ChoresPage({
+  choresdata,
+  choresLeaderboardData,
+  isLogged,
+  userdatafromserver,
+}) {
   const { setuserdata } = useContext(MainContext);
 
   const [mode, setmode] = useState("Chores");
@@ -125,9 +130,9 @@ function ChoresPage({ choresdata, choresLeaderboardData, isLogged, userdatafroms
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
-                <div>
+                {/* <div>
                   <LeaderBoard data={choresLeaderboardData} />
-                </div>
+                </div> */}
                 <h2 className={styles.heading}>Pending For Approval</h2>
                 <div className={styles.wrapper}>
                   {chores.map((item, index) => {
@@ -351,6 +356,6 @@ async function getchores(token) {
   }
 }
 async function getLeaderboard(token) {
-  let response = await ChoreApis.getLeaderboard({role: "parent"}, token);
+  let response = await ChoreApis.getLeaderboard({ role: "parent" }, token);
   return response?.data?.data ?? [];
 }

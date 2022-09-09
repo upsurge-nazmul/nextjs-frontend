@@ -97,7 +97,7 @@ function Home({ isLogged, userdata }) {
       required: true,
       content: (
         <div className={styles.introdiv}>
-          <p className={styles.heading}>Great, now we're in home page.</p>
+          <p className={styles.heading}>Great, now we&apos;re in home page.</p>
           <p
             className={styles.text}
           >{`Press this button to go back to dashboard.`}</p>
@@ -128,11 +128,11 @@ function Home({ isLogged, userdata }) {
       }`}
     >
       <Head>
-        <title>upsurge | money, made easy.</title>
+        <title>upsurge | Best Platform of Financial Literacy and Financial Education for School Students in India</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="upsurge is a platform for financial education for children."
+          content="Best platform for promoting financial literacy, entrepreneurship & modern skills for school students in India by upsurge"
         />
       </Head>
 

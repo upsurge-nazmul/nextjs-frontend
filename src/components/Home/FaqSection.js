@@ -71,12 +71,12 @@ export default function FaqSection({ customfaq }) {
       }`}
     >
       <div className={styles.left}>
-        <div className={styles.heading}>
+        <h2 className={styles.heading}>
           Frequently <br /> Asked <br />
           Questions
-        </div>
+        </h2>
       </div>
-      <div className={styles.mobilehead}>Frequently Asked Questions</div>
+      <h2 className={styles.mobilehead}>Frequently Asked Questions</h2>
       <div className={styles.wrapper}>
         {(customfaq ? customfaq : faqs).map((item, index) => {
           return (

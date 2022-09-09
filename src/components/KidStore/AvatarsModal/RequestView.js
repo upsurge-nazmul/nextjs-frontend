@@ -80,6 +80,18 @@ export default function RequestView({
                 {data.type !== "voucher" ? "Avatar" : "Voucher"}
               </p>
             </div>
+            <div className={styles.actionArea}>
+              {error && <p className={styles.error}>{error}</p>}
+              {!loading ? (
+                <div className={styles.button} onClick={() => buyAvatar()}>
+                  Request Parent
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
           </div>
           <div className={styles.body}>
             <div className={styles.details}>
@@ -111,18 +123,6 @@ export default function RequestView({
                 Unicoins
               </div>
             </div>
-          </div>
-          <div className={styles.actionArea}>
-            {error && <p className={styles.error}>{error}</p>}
-            {!loading ? (
-              <div className={styles.button} onClick={() => buyAvatar()}>
-                Request Parent
-              </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
-            )}
           </div>
         </div>
       )}
