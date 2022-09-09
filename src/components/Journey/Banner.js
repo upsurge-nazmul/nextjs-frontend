@@ -1,9 +1,7 @@
 import styles from "../../styles/Journey/banner.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 
-export default function Banner({ PATH }) {
-  const highlight = PATH[0];
-
+export default function Banner({ highlight }) {
   return (
     <div className={styles.banner} style={{ background: highlight.color }}>
       <div className={styles.content}>

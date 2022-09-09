@@ -2,6 +2,7 @@ import styles from "../../styles/Journey/journey.module.scss";
 import Banner from "./Banner";
 import Pathway from "./Pathway";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
+import { useState } from "react";
 
 const PATH = [
   {
@@ -42,14 +43,17 @@ const PATH = [
 ];
 
 export default function Journey() {
+  const [selectedPath, setSelectedPath] = useState();
+
   return (
     <div className={styles.journey}>
-      <Banner PATH={PATH} />
+      {selectedPath ? "" : <Banner highlight={PATH[0]} />}
       <h2 id="milestone" className={styles.mainheading} onClick={() => {}}>
         Journey
         <HeadingArrow />
       </h2>
-      <Pathway PATH={PATH} />
+      <Pathway PATH={PATH} handleClick={setSelectedPath} />
+      {selectedPath ? <Banner highlight={selectedPath} /> : ""}
     </div>
   );
 }
