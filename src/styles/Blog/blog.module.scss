@@ -62,7 +62,7 @@
           margin-top: 17px;
           display: flex;
           .category {
-            font-family: 'Lexend', sans-serif;
+            font-family: "Lexend", sans-serif;
             font-weight: 700;
             font-size: 16px;
             color: #4166eb;
@@ -256,9 +256,9 @@
     }
   }
 }
-.darkblogpage{
+.darkblogpage {
   .curve2 {
-   opacity: 0.2;
+    opacity: 0.2;
   }
   .curve1 {
     opacity: 0.2;
@@ -278,21 +278,21 @@
         .time {
           color: $d-text2;
         }
-      }.right {
-        .blogcard{
-.right{
-  .title {
-    color: $d-text1;
-  }
-  .content {
-    color: $d-text2;
-  }
-  .time {
-    color: $d-text2;
-  }
-}
+      }
+      .right {
+        .blogcard {
+          .right {
+            .title {
+              color: $d-text1;
+            }
+            .content {
+              color: $d-text2;
+            }
+            .time {
+              color: $d-text2;
+            }
+          }
         }
-       
       }
     }
     .more {
@@ -497,7 +497,7 @@
             margin-top: 17px;
             display: flex;
             .category {
-              font-family: 'Lexend', sans-serif;
+              font-family: "Lexend", sans-serif;
               font-weight: 700;
               font-size: 16px;
               color: #4166eb;
@@ -1228,7 +1228,7 @@
             margin-top: 17px;
             display: flex;
             .category {
-              font-family: 'Lexend', sans-serif;
+              font-family: "Lexend", sans-serif;
               font-weight: 700;
               font-size: 16px;
               color: #4166eb;

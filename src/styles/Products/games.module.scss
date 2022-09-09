@@ -267,7 +267,7 @@
     }
   }
 }
-.darkgamepage{
+.darkgamepage {
   .heading {
     color: $d-moredark;
   }
@@ -281,7 +281,6 @@
       }
       .description {
         color: $d-moredark;
-
       }
       .button {
         display: flex;
@@ -290,7 +289,7 @@
         padding: 12px 32px;
         width: 137px;
         height: 48px;
-        background:  $d-moredark;
+        background: $d-moredark;
         border-radius: 6px;
         font-size: 16px;
         font-weight: 500;
@@ -305,16 +304,17 @@
         .arrowl,
         .arrowr {
           width: 50px;
-          cursor: pointer;     path{
-            fill:  $d-moredark;
+          cursor: pointer;
+          path {
+            fill: $d-moredark;
           }
         }
         .arrowl {
           transform: rotateZ(180deg);
-          path{
-            fill:  $d-moredark;
+          path {
+            fill: $d-moredark;
           }
-      }
+        }
         .arrowr {
           margin-left: 30px;
           padding-top: 8px;

@@ -414,7 +414,9 @@ export default function ManageChore({
           setassignees={setassignees}
           onConfirm={() => setshowaddmodal(false)}
           settoastdata={settoastdata}
-          onClear={()=>{setshowaddmodal(false)}}
+          onClear={() => {
+            setshowaddmodal(false);
+          }}
           onCancel={(checkAssignee) => {
             if (checkAssignee) {
               if (assignees.length === 0) {
@@ -470,7 +472,7 @@ export default function ManageChore({
             {
               ref: "#chore-date",
               position: "bottom",
-              content: `Set date and time.`,
+              content: `Set date.`,
               required: true,
               isolate: true,
             },

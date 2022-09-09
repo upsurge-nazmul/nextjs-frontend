@@ -34,14 +34,12 @@
 .darkfaqsection {
   .left {
     .heading {
-      color:$d-text2;
+      color: $d-text2;
     }
-
   }
-  .mobilehead{
-    color:$d-text2;
+  .mobilehead {
+    color: $d-text2;
   }
-  
 }
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .faqsection {

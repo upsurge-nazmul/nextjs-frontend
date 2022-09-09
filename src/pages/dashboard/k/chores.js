@@ -32,7 +32,7 @@ export default function KidChoresPage({
   liveclassdata,
   completedchores,
   currentLevel,
-  choresLeaderboardData
+  choresLeaderboardData,
 }) {
   const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState();
@@ -198,7 +198,7 @@ export async function getServerSideProps({ params, req }) {
           kiddata,
           liveclassdata: liveclassdata || null,
           completedchores,
-          choresLeaderboardData
+          choresLeaderboardData,
         },
       };
     }
@@ -246,6 +246,6 @@ async function getcompletedchores(id, token) {
   } else return null;
 }
 async function getLeaderboard(token) {
-  let response = await ChoreApis.getLeaderboard({role: "parent"}, token);
+  let response = await ChoreApis.getLeaderboard({ role: "parent" }, token);
   return response?.data?.data ?? [];
 }

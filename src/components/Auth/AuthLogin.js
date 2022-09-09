@@ -47,9 +47,9 @@ function AuthLogin({
     }
     seterror("");
     const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${'accesstoken'}=`);
+    const parts = value.split(`; ${"accesstoken"}=`);
     let token;
-    if (parts.length === 2) token = parts.pop().split(';').shift();
+    if (parts.length === 2) token = parts.pop().split(";").shift();
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
       setSavedUsers(
@@ -165,10 +165,7 @@ function AuthLogin({
         </div>
       )}
       <div className={styles.or}>OR</div>
-      <div
-        onClick={handlegoogleLogin}
-        className={styles.google}
-      >
+      <div onClick={handlegoogleLogin} className={styles.google}>
         <GoogleSvg />
         <p style={{ pointerEvents: "none" }}>Continue with Google</p>
       </div>

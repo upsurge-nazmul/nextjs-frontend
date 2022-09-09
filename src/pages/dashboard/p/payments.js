@@ -119,7 +119,7 @@ export default function Payments({ pricing_details, userdatafromserver }) {
         <div className={styles.mainContent}>
           {current_plan === "Free" && (
             <p className={styles.heading}>
-              Start your child's journey in the <br />
+              Start your child&apos;s journey in the <br />
               finance world today.
             </p>
           )}

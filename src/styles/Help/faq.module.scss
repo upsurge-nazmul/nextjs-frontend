@@ -55,10 +55,9 @@
   }
 }
 .darkfaqcomponent {
-
   .top {
     background: $d-moredark;
-  
+
     .question {
       flex: 1;
       font-size: 18px;
@@ -68,7 +67,7 @@
     }
   }
   .faqopened {
-    background-color: $d-moredark ;
+    background-color: $d-moredark;
     transition: all 0.3s ease;
     color: white;
   }
@@ -76,7 +75,7 @@
     height: 0;
     overflow: hidden;
     transition: all 0.3s ease;
-    background-color: $d-moredark ;
+    background-color: $d-moredark;
     padding: 0 40px;
     color: $d-text2;
     font-size: 18px;
