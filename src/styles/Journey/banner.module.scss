@@ -3,6 +3,12 @@
   color: #fff;
   padding: 30px;
   margin-top: 10px;
+  position: relative;
+  .triangle {
+    position: absolute;
+    // top: -20px;
+    // left: 70px;
+  }
   .content {
     display: flex;
     justify-content: space-between;

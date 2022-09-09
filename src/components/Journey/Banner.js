@@ -1,9 +1,15 @@
 import styles from "../../styles/Journey/banner.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import Triangle from "../SVGcomponents/Journey/Triangle";
 
 export default function Banner({ highlight }) {
   return (
     <div className={styles.banner} style={{ background: highlight.color }}>
+      <Triangle
+        className={styles.triangle}
+        clr={highlight.color}
+        style={{ ...highlight.position }}
+      />
       <div className={styles.content}>
         <div className={styles.left}>
           <div className={styles.title}>{highlight.name}</div>
