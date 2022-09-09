@@ -1,4 +1,5 @@
 import styles from "../../styles/Journey/tasks.module.scss";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 
 const TASKS = [
   {
@@ -103,6 +104,17 @@ export default function Tasks({ highlight }) {
             </div>
           );
         })}
+        <div className={styles.tasksFooter}>
+          <img src={"/images/journey/taskEnd.svg"} className={styles.taskEnd} />
+          {highlight.reward && (
+            <div className={styles.footerReward}>
+              <div className={styles.reward}>
+                <UniCoinSvg className={styles.svg} />
+                <span>{highlight.reward}</span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

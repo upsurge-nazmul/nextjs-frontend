@@ -2,7 +2,7 @@
   background-color: #fff;
   margin: 20px 0;
   border-radius: 14px;
-  padding: 20px 30px;
+  padding: 20px 50px;
   .subheading {
     padding: 20px 0;
     font-size: 18px;
@@ -113,6 +113,34 @@
             .disabledButton {
               @extend .commonButton;
               background-color: #837c7c;
+            }
+          }
+        }
+      }
+    }
+    .tasksFooter {
+      display: flex;
+      .taskEnd {
+        position: relative;
+        left: -60px;
+        top: -15px;
+      }
+      .footerReward {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .reward {
+          font-size: 16px;
+          background-color: #fdcc03;
+          color: #fff;
+          border-radius: 14px;
+          padding: 4px 16px;
+          .svg {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            path {
+              fill: #fff;
             }
           }
         }
