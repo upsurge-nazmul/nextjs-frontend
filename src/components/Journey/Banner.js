@@ -8,7 +8,7 @@ export default function Banner({ highlight }) {
       <Triangle
         className={styles.triangle}
         clr={highlight.color}
-        style={{ ...highlight.position }}
+        style={{ ...highlight.pointer }}
       />
       <div className={styles.content}>
         <div className={styles.left}>
@@ -19,11 +19,15 @@ export default function Banner({ highlight }) {
           </div>
         </div>
         <div className={styles.right}>
-          <div className={styles.reward}>
-            Win <UniCoinSvg className={styles.svg} />
-            {highlight.reward}
+          {highlight.reward && (
+            <div className={styles.reward}>
+              Win <UniCoinSvg className={styles.svg} />
+              {highlight.reward}
+            </div>
+          )}
+          <div>
+            <img src={`/images/journey/${highlight.id}.svg`} />
           </div>
-          <div>icon</div>
         </div>
       </div>
     </div>

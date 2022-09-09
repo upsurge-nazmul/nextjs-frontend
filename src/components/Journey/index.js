@@ -6,12 +6,12 @@ import { useState } from "react";
 
 const PATH = [
   {
-    id: "money101",
+    id: "money",
     name: "Money 101",
     description: "What is money? Know all that you need to know about money.",
     reward: 2000,
     color: "#17d1bc",
-    position: { top: -20, left: "5%" },
+    pointer: { top: -20, left: "5%" },
   },
   {
     id: "banking",
@@ -19,7 +19,7 @@ const PATH = [
     description: "What is money? Know all that you need to know about money.",
     reward: 3000,
     color: "#4066eb",
-    position: { top: -20, left: "23%" },
+    pointer: { top: -20, left: "23%" },
   },
   {
     id: "digitalPayments",
@@ -27,7 +27,7 @@ const PATH = [
     description: "What is money? Know all that you need to know about money.",
     reward: 5000,
     color: "#dc517b",
-    position: { top: -20, left: "40%" },
+    pointer: { top: -20, left: "40%" },
   },
   {
     id: "personalFinance",
@@ -35,7 +35,7 @@ const PATH = [
     description: "What is money? Know all that you need to know about money.",
     reward: 8000,
     color: "#55c5d2",
-    position: { top: -20, right: "40%" },
+    pointer: { top: -20, right: "40%" },
   },
   {
     id: "entrepreneurship",
@@ -43,7 +43,7 @@ const PATH = [
     description: "What is money? Know all that you need to know about money.",
     reward: 10000,
     color: "#fdcc03",
-    position: { top: -20, right: "23%" },
+    pointer: { top: -20, right: "23%" },
   },
   {
     id: "reward",
@@ -51,7 +51,7 @@ const PATH = [
     description: "",
     reward: "",
     color: "#ffed8b",
-    position: { top: -20, right: "5%" },
+    pointer: { top: -20, right: "5%" },
   },
 ];
 
