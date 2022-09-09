@@ -97,7 +97,7 @@ function Home({ isLogged, userdata }) {
       required: true,
       content: (
         <div className={styles.introdiv}>
-          <p className={styles.heading}>Great, now we're in home page.</p>
+          <p className={styles.heading}>Great, now we&apos;re in home page.</p>
           <p
             className={styles.text}
           >{`Press this button to go back to dashboard.`}</p>

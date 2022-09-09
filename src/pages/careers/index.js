@@ -66,11 +66,11 @@ function Careers() {
               literacy, and develop critical modern life-skills through
               educational games, gamified learning & real rewards!. <br />
               We are an experiential education company working on novel products
-              to promote development among India's youth.
+              to promote development among India&apos;s youth.
             </div>
           </div>
           <div className={styles.banner}>
-            <img src={Banner.src} className={styles.bannerImg} />
+            <img src={Banner.src} className={styles.bannerImg} alt="Banner" />
           </div>
           <div className={styles.positionArea}>
             <div className={styles.positionTitle}>Open Positions</div>
