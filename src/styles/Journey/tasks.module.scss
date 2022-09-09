@@ -15,29 +15,43 @@
       position: relative;
       margin-left: 20px;
       .ball {
-        background-color: #cecece;
         position: absolute;
-        left: -27px;
+        left: -29px;
         top: 43%;
-        width: 12px;
-        height: 12px;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1;
       }
-      .verticalLine {
+      .emptyBall {
+        @extend .ball;
         background-color: #cecece;
+      }
+      .completedBall {
+        @extend .ball;
+        background-color: #17d1bc;
+      }
+      .verticalLine {
         position: absolute;
         left: -22px;
         top: 0;
-        width: 2px;
+        width: 3px;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 0;
+      }
+      .connectingLine {
+        @extend .verticalLine;
+        background-color: #cecece;
+      }
+      .completedLine {
+        @extend .verticalLine;
+        background-color: #1678e7;
       }
       .task {
         padding-bottom: 20px;

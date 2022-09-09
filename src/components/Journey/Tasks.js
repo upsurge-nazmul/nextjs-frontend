@@ -50,8 +50,20 @@ export default function Tasks({ highlight }) {
         {TASKS.map((task, i) => {
           return (
             <div className={styles.taskArea} key={i}>
-              <div className={styles.ball} />
-              <div className={styles.verticalLine} />
+              <div
+                className={
+                  task.id <= taskCompleted
+                    ? styles.completedBall
+                    : styles.emptyBall
+                }
+              />
+              <div
+                className={
+                  task.id <= taskCompleted + 1
+                    ? styles.completedLine
+                    : styles.connectingLine
+                }
+              />
               <div className={styles.task}>
                 <div className={styles.taskBody}>
                   <div className={styles.iconArea}>
@@ -79,7 +91,11 @@ export default function Tasks({ highlight }) {
                           : styles.disabledButton
                       }
                     >
-                      {task.id <= taskCompleted + 1 ? "BEGIN" : "LOCKED"}
+                      {task.id < taskCompleted + 1
+                        ? "REPLAY"
+                        : task.id === taskCompleted + 1
+                        ? "BEGIN"
+                        : "LOCKED"}
                     </button>
                   </div>
                 </div>
