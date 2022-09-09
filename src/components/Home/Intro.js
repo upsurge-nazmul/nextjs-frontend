@@ -51,9 +51,9 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <div className={styles.textContent}>
         <h1 className={styles.heading}>Money, made easy.</h1>
         <p className={styles.subheading}>
-          {`upsurge is India's 1st financial literacy and financial education gaming platform for children,
+          {`upsurge is India's 1st financial education gaming platform for children,
            focused on promoting entrepreneurship, financial literacy, financial education 
-           and modern skills for school students (6 to 17 yrs Kid)`}
+           and modern skills for school students.`}
         </p>
         <p className={styles.error}>{error}</p>
         {userdata ? (

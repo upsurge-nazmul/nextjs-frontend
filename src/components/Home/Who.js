@@ -42,16 +42,6 @@ function Who() {
             <b>financial literacy education</b>
             {` & entrepreneurship movement in India by equipping and empowering the youth. The world as we know it is evolving, and the earlier we equip our children with these skills, the better!`}
           </p>
-          <p>OR</p>
-          <p>
-            {`upsurge is India's first learning-focused gaming platform that uses games, immersive learning, and tangible rewards to motivate and equip students with contemporary skills and knowledge in a fun and engaging way. `}
-          </p>
-          <p>
-            {`We firmly believe that kids should not become a bookworm rather they should learn by doing. We are here to help elevate the next generation and assist them in achieving their financial success.`}
-          </p>
-          <p>
-            {`We’re on a mission to equip and empower the youth in order to launch a financial literacy and entrepreneurship movement in India. `}
-          </p>
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@
     }
   }
   .summerbtn {
-    background-color: $blue;
+    background-color: $green;
     color: white;
     position: fixed;
     bottom: 2%;
@@ -53,11 +53,11 @@
       background-color: white;
     }
     .maintext {
-      font-size: $gen-s;
+      font-size: clamp(14px,1.4vw,20px);
       font-weight: 600;
     }
     .subtext {
-      font-size: $gen-xs;
+      font-size: clamp(12px,1vw,16px);
       margin-top: 2%;
     }
   }
