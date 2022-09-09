@@ -49,10 +49,12 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <div className={styles.heading}>Money, made easy.</div>
-        <div className={styles.subheading}>
-          {`upsurge is India’s 1st gaming platform for children, focused on promoting entrepreneurship, financial literacy & modern skills`}
-        </div>
+        <h1 className={styles.heading}>Money, made easy.</h1>
+        <p className={styles.subheading}>
+          {`upsurge is India's 1st financial literacy and financial education gaming platform for children,
+           focused on promoting entrepreneurship, financial literacy, financial education 
+           and modern skills for school students (6 to 17 yrs Kid)`}
+        </p>
         <p className={styles.error}>{error}</p>
         {userdata ? (
           <div
