@@ -48,4 +48,21 @@
       }
     }
   }
+  .rewardBanner {
+    margin: -30px;
+    position: relative;
+    .rewardBg {
+      object-fit: contain;
+      width: 100%;
+    }
+    .rewardText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #686869;
+      font-size: 28px;
+      font-weight: 500;
+    }
+  }
 }

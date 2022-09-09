@@ -56,13 +56,13 @@ const PATH = [
     name: "",
     description: "",
     reward: "",
-    color: "#ffed8b",
+    color: "#ffeb5d",
     pointer: { top: -20, right: "5%" },
   },
 ];
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState(PATH[0]);
+  const [selectedPath, setSelectedPath] = useState();
 
   return (
     <div className={styles.journey}>
@@ -72,7 +72,7 @@ export default function Journey() {
         <HeadingArrow />
       </h2>
       <Pathway PATH={PATH} handleClick={setSelectedPath} />
-      {selectedPath ? <Banner highlight={selectedPath} /> : ""}
+      {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
       {selectedPath ? <Tasks highlight={selectedPath} /> : ""}
     </div>
   );
