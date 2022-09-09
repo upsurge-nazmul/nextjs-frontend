@@ -12,7 +12,7 @@ import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
-import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
+import ResourcesSvg from "../SVGcomponents/ResourcesSvg";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
@@ -307,7 +307,7 @@ function DashboardLeftPanel({
                 icon: <CalcSvg />,
               },
             ]}
-            icon={<AssessmentOutlinedIcon />}
+            icon={<ResourcesSvg />}
           />
         </div>
       ) : (
@@ -451,7 +451,7 @@ function DashboardLeftPanel({
                 icon: <QuizIconSvg />,
               },
             ]}
-            icon={<AssessmentOutlinedIcon />}
+            icon={<ResourcesSvg />}
           />
         </div>
       )}
