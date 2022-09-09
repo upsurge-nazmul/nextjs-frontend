@@ -8,7 +8,8 @@ const PATH = [
   {
     id: "money",
     name: "Money 101",
-    description: "What is money? Know all that you need to know about money.",
+    description:
+      "Let's kickstart your first fun journey and learn about what money is! ",
     reward: 2000,
     color: "#17d1bc",
     pointer: { top: -20, left: "5%" },
@@ -16,7 +17,8 @@ const PATH = [
   {
     id: "banking",
     name: "Banking",
-    description: "What is money? Know all that you need to know about money.",
+    description:
+      "Ever wondered why everyone keeps their money in banks? Let's find out!",
     reward: 3000,
     color: "#4066eb",
     pointer: { top: -20, left: "23%" },
@@ -24,15 +26,17 @@ const PATH = [
   {
     id: "digitalPayments",
     name: "Digital Payments",
-    description: "What is money? Know all that you need to know about money.",
+    description: `When was the last time you saw anyone paying with cash? 
+    Let's find out all the fun ways to make payments in today's world.`,
     reward: 5000,
     color: "#dc517b",
     pointer: { top: -20, left: "40%" },
   },
   {
-    id: "personalFinance",
-    name: "Personal Finance",
-    description: "What is money? Know all that you need to know about money.",
+    id: "moneyManagement",
+    name: "Money Management",
+    description: `Now that we know what money is and how we use it, 
+    let's understand how we should manage money to become wealthy..`,
     reward: 8000,
     color: "#55c5d2",
     pointer: { top: -20, right: "40%" },
@@ -40,7 +44,8 @@ const PATH = [
   {
     id: "entrepreneurship",
     name: "Entrepreneurship",
-    description: "What is money? Know all that you need to know about money.",
+    description: `How to manage your money?
+    Let’s learn!`,
     reward: 10000,
     color: "#fdcc03",
     pointer: { top: -20, right: "23%" },
