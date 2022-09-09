@@ -263,12 +263,6 @@ export default function UblPage() {
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>November 6, 2022- Case Study</p>{" "}
-            {
-              "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
-            }
-          </div>
           <div className={styles.roundHeading}>
             Round 2 - Teams announced by November 13, 2022
           </div>
