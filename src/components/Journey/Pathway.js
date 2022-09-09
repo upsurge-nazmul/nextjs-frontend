@@ -14,12 +14,14 @@ export default function Pathway({ PATH, handleClick }) {
             >
               <div className={styles.icon}>icon</div>
               <div className={styles.title}>{item.name}</div>
-              <div className={styles.rewardArea}>
-                <div className={styles.reward}>
-                  <UniCoinSvg className={styles.svg} />
-                  <span>{item.reward}</span>
+              {item.reward && (
+                <div className={styles.rewardArea}>
+                  <div className={styles.reward}>
+                    <UniCoinSvg className={styles.svg} />
+                    <span>{item.reward}</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           );
         })}
