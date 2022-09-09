@@ -6,38 +6,48 @@
   .content {
     display: flex;
     justify-content: space-between;
-    .pathItem {
-      width: 150px;
-      text-align: center;
-      cursor: pointer;
-      .icon {
-        height: 100px;
-        width: 100%;
-      }
-      .title {
-        font-size: 16px;
-        font-weight: 400;
-        color: #333;
-      }
-      .rewardArea {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .reward {
-          font-size: 12px;
-          background-color: #fdcc03;
-          color: #fff;
-          border-radius: 14px;
-          padding: 2px 12px;
-          .svg {
-            width: 10px;
-            height: 10px;
-            margin-right: 5px;
-            path {
-              fill: #fff;
+    .path {
+      display: flex;
+      .pathItem {
+        width: 150px;
+        text-align: center;
+        cursor: pointer;
+        .icon {
+          height: 100px;
+          width: 150px;
+        }
+        .title {
+          font-size: 16px;
+          font-weight: 400;
+          color: #333;
+        }
+        .rewardArea {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .reward {
+            font-size: 12px;
+            background-color: #fdcc03;
+            color: #fff;
+            border-radius: 14px;
+            padding: 2px 12px;
+            .svg {
+              width: 10px;
+              height: 10px;
+              margin-right: 5px;
+              path {
+                fill: #fff;
+              }
             }
           }
         }
+      }
+      .dash {
+        flex: 1;
+        border-bottom: 2px dotted #686869;
+        height: 50%;
+        width: 100%;
+        min-width: 30px;
       }
     }
   }

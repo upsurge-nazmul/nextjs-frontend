@@ -7,23 +7,26 @@ export default function Pathway({ PATH, handleClick }) {
       <div className={styles.content}>
         {PATH.map((item, i) => {
           return (
-            <div
-              className={styles.pathItem}
-              key={i}
-              onClick={() => handleClick(item)}
-            >
-              <div className={styles.icon}>
-                <img src={`/images/journey/${item.id}.svg`} />
-              </div>
-              <div className={styles.title}>{item.name}</div>
-              {item.reward && (
-                <div className={styles.rewardArea}>
-                  <div className={styles.reward}>
-                    <UniCoinSvg className={styles.svg} />
-                    <span>{item.reward}</span>
-                  </div>
+            <div className={styles.path}>
+              <div
+                className={styles.pathItem}
+                key={i}
+                onClick={() => handleClick(item)}
+              >
+                <div className={styles.icon}>
+                  <img src={`/images/journey/${item.id}.svg`} />
                 </div>
-              )}
+                <div className={styles.title}>{item.name}</div>
+                {item.reward && (
+                  <div className={styles.rewardArea}>
+                    <div className={styles.reward}>
+                      <UniCoinSvg className={styles.svg} />
+                      <span>{item.reward}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {i === PATH.length - 1 ? "" : <div className={styles.dash} />}
             </div>
           );
         })}
