@@ -269,6 +269,7 @@ function Dashboard({
             <OtpNotVerfied
               userphone={userdatafromserver?.phone}
               setphoneverified={setphoneverified}
+              email={userdatafromserver?.email}
             />
           )}
         <div className={styles.contentWrapper}>
