@@ -3,7 +3,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import { getCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Chores/addassigneemodal.module.scss";
 import { AddAssignees } from "../ManageChore/AddAssignee";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function AddAssigneeModal({
   assignees,
@@ -35,10 +35,10 @@ export default function AddAssigneeModal({
       )}
       <div className={styles.box} id="assignee-modal">
         <div className={styles.boxheader}>
-        <h2>Add Assignee</h2>
-        <CancelIcon className={styles.cancelIcon} onClick={onClear} />
+          <h2>Add Assignee</h2>
+          <CancelIcon className={styles.cancelIcon} onClick={onClear} />
         </div>
-        
+
         <div className={styles.assigneewrapper}>
           {children.map((child) => {
             return (

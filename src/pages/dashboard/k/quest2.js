@@ -205,7 +205,7 @@ export default function KidStore({
                             loading="lazy"
                           />
                         )}
-                        <img 
+                        <img
                           src="https://i.ibb.co/r21r8V1/mainmap.jpg"
                           className={styles.bg}
                           alt=" "

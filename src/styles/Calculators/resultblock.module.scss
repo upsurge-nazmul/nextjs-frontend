@@ -20,7 +20,7 @@
       align-items: center;
       .heading {
         color: #808080;
-        font-family: 'Lexend', sans-serif;
+        font-family: "Lexend", sans-serif;
         font-size: 14px;
         font-weight: 400;
         width: 50%;
@@ -28,7 +28,7 @@
       }
       .result,
       input {
-        font-family: 'Lexend', sans-serif;
+        font-family: "Lexend", sans-serif;
         font-size: 24px;
         font-weight: 700;
         text-align: center;
@@ -76,14 +76,14 @@
     align-items: center;
     .heading {
       color: #808080;
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       font-size: 14px;
       font-weight: 400;
       min-width: fit-content;
       width: 50%;
     }
     .result {
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       font-size: 24px;
       font-weight: 700;
       flex: 1;
@@ -91,24 +91,23 @@
     }
   }
 }
-.darkstyles{
+.darkstyles {
   .topflex {
     .container {
       .heading {
         color: $d-text2;
-       
       }
       .result,
       input {
-        font-family: 'Lexend', sans-serif;
+        font-family: "Lexend", sans-serif;
         font-size: 24px;
         font-weight: 700;
         text-align: center;
-        color:$d-text2;
+        color: $d-text2;
       }
-      .onlytext{
-        color:$d-text2;
-        background-color:$d-main;
+      .onlytext {
+        color: $d-text2;
+        background-color: $d-main;
       }
       .bsign {
         background-color: $d-main;
@@ -128,14 +127,14 @@
     align-items: center;
     .heading {
       color: #808080;
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       font-size: 14px;
       font-weight: 400;
       min-width: fit-content;
       width: 50%;
     }
     .result {
-      font-family: 'Lexend', sans-serif;
+      font-family: "Lexend", sans-serif;
       font-size: 24px;
       font-weight: 700;
       flex: 1;

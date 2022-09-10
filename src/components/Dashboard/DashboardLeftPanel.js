@@ -6,13 +6,11 @@ import ChoresSvg from "../SVGcomponents/ChoresSvg";
 import CoursesSvg from "../SVGcomponents/CoursesSvg";
 import GameSvg from "../SVGcomponents/GameSvg";
 import HomeSvg from "../SVGcomponents/HomeSvg";
-import DiscordSvg from "../SVGcomponents/DiscordSvg";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LeaderboardSvg from "../SVGcomponents/LeaderboardSvg";
 import GroupsOutlinedIcon from "../SVGcomponents/GroupsOutlined";
 import Logo from "../SVGcomponents/Logo";
 import MiniLogo from "../SVGcomponents/MiniLogo";
-import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
+import ResourcesSvg from "../SVGcomponents/ResourcesSvg";
 import QuizIconSvg from "../SVGcomponents/QuizIconSvg";
 import RewardSvg from "../SVGcomponents/RewardSvg";
 import StoreSvg from "../SVGcomponents/StoreSvg";
@@ -20,6 +18,8 @@ import CalcSvg from "../SVGcomponents/CalcSvg";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Insta from "../SVGcomponents/Insta";
 import Fb from "../SVGcomponents/Fb";
+import DiscordSvg from "../SVGcomponents/DiscordSvg";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Terms from "../Home/Terms";
 import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
@@ -53,8 +53,9 @@ function DashboardLeftPanel({
   }, []);
   return (
     <div
-      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${theme === "dark" && styles.dashboardDark
-        }`}
+      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
+        theme === "dark" && styles.dashboardDark
+      }`}
       style={
         disableClicks ? { pointerEvents: "none", cursor: "not-allowed" } : {}
       }
@@ -70,8 +71,8 @@ function DashboardLeftPanel({
             if (!userdata.intro_guide_completed) {
               router.push(
                 "/?showTour=true&pushTo=/dashboard/" +
-                (userdata.user_type === "parent" ? "p/" : "k/") +
-                "?storyIndex=2"
+                  (userdata.user_type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
               );
             } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
@@ -88,8 +89,8 @@ function DashboardLeftPanel({
             if (!userdata.intro_guide_completed) {
               router.push(
                 "/?showTour=true&pushTo=/dashboard/" +
-                (userdata.type === "parent" ? "p/" : "k/") +
-                "?storyIndex=2"
+                  (userdata.type === "parent" ? "p/" : "k/") +
+                  "?storyIndex=2"
               );
             } else router.push("/");
 
@@ -102,8 +103,9 @@ function DashboardLeftPanel({
       {type === "kid" ? (
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/k" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/k")}
           >
             <HomeSvg className={styles.icon} />
@@ -111,13 +113,14 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/k/games" ||
-                currenttab.indexOf("/dashboard/k/game") !== -1 ||
-                currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
-                currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/games" ||
+              currenttab.indexOf("/dashboard/k/game") !== -1 ||
+              currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
+              currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             id="games-leftpanel"
             onClick={() => router.push("/dashboard/k/games")}
           >
@@ -126,11 +129,12 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/k/quest" ||
-                currenttab.indexOf("/dashboard/k/quest") !== -1
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/k/quest" ||
+              currenttab.indexOf("/dashboard/k/quest") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             id="quest-leftpanel"
             onClick={() => router.push("/dashboard/k/quest")}
           >
@@ -140,8 +144,9 @@ function DashboardLeftPanel({
 
           <div
             id="chores-leftpanel"
-            className={`${styles.tab} ${currenttab === "/dashboard/k/chores" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/chores" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/k/chores")}
           >
             <ChoresSvg className={styles.icon} />
@@ -161,8 +166,9 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>Tribes</p>
           </div> */}
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/k/store" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/store" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/k/store")}
             id="store-leftpanel"
           >
@@ -170,17 +176,16 @@ function DashboardLeftPanel({
 
             <p className={styles.tabtitle}>Rewards</p>
           </div>
-
-          
         </div>
       ) : type === "waitlist" ? (
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w" ||
-                currenttab === "/dashboard/w/editprofile"
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w" ||
+              currenttab === "/dashboard/w/editprofile"
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             onClick={() => router.push("/dashboard/w")}
           >
             <HomeSvg className={styles.icon} />
@@ -188,11 +193,12 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/w/quest" ||
-                currenttab.indexOf("/dashboard/w/quest") !== -1
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/w/quest" ||
+              currenttab.indexOf("/dashboard/w/quest") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             onClick={() => router.push("/dashboard/w/quest")}
           >
             <CoursesSvg className={styles.icon} />
@@ -200,11 +206,12 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w/quiz" ||
-                currenttab.indexOf("/dashboard/w/quiz") !== -1
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/quiz" ||
+              currenttab.indexOf("/dashboard/w/quiz") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             onClick={() => router.push("/dashboard/w/quiz")}
           >
             <QuizIconSvg className={styles.icon} />
@@ -235,12 +242,13 @@ function DashboardLeftPanel({
           </div> */}
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w/games" ||
-                currenttab.indexOf("dashboard/w/game") !== -1 ||
-                currenttab.indexOf("dashboard/w/moneyace") !== -1
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/games" ||
+              currenttab.indexOf("dashboard/w/game") !== -1 ||
+              currenttab.indexOf("dashboard/w/moneyace") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             onClick={() => router.push("/dashboard/w/games")}
           >
             <GameSvg className={styles.icon} />
@@ -249,11 +257,12 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w/leaderboards" ||
-                currenttab.indexOf("/dashboard/w/leaderboards") !== -1
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/leaderboards" ||
+              currenttab.indexOf("/dashboard/w/leaderboards") !== -1
                 ? styles.activetab
                 : ""
-              }`}
+            }`}
             onClick={() => router.push("/dashboard/w/leaderboards")}
           >
             <LeaderboardSvg className={styles.icon} />
@@ -262,16 +271,18 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/rewards" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/w/rewards")}
           >
             <RewardSvg className={styles.icon} />
             <p className={styles.tabtitle}>Rewards</p>
           </div>
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/w/pricing" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/w/pricing" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/w/pricing")}
           >
             <PricingSvg className={styles.icon} />
@@ -296,14 +307,15 @@ function DashboardLeftPanel({
                 icon: <CalcSvg />,
               },
             ]}
-            icon={<AssessmentOutlinedIcon />}
+            icon={<ResourcesSvg />}
           />
         </div>
       ) : (
         <div className={styles.tabContainer}>
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/p" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/p" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/p")}
           >
             <HomeSvg className={styles.icon} />
@@ -322,12 +334,13 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>My Kids</p>
           </div> */}
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/games" ||
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/p/games" ||
               currenttab.indexOf("/dashboard/p/game") !== -1 ||
               currenttab.indexOf("dashboard/w/moneyace") !== -1
-              ? styles.activetab
-              : ""
-              }`}
+                ? styles.activetab
+                : ""
+            }`}
             id="games-leftpanel"
             onClick={() => router.push("/dashboard/p/games")}
           >
@@ -335,14 +348,13 @@ function DashboardLeftPanel({
             <p className={styles.tabtitle}>Games</p>
           </div>
 
-
-
           <div
-            className={`${styles.tab}  ${currenttab === "/dashboard/p/quests" ||
+            className={`${styles.tab}  ${
+              currenttab === "/dashboard/p/quests" ||
               currenttab.indexOf("/dashboard/p/quest") !== -1
-              ? styles.activetab
-              : ""
-              }`}
+                ? styles.activetab
+                : ""
+            }`}
             id="quest-leftpanel"
             onClick={() => router.push("/dashboard/p/quest/upsurge-quest")}
           >
@@ -351,11 +363,12 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/p/chores" ||
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/p/chores" ||
               currenttab.indexOf("/dashboard/p/managechore") !== -1
-              ? styles.activetab
-              : ""
-              }`}
+                ? styles.activetab
+                : ""
+            }`}
             id="chores-leftpanel"
             onClick={() => {
               if (!userdata.intro_guide_completed) {
@@ -372,8 +385,9 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/p/store" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/p/store" ? styles.activetab : ""
+            }`}
             onClick={() => router.push("/dashboard/p/store")}
             id="store-leftpanel"
           >
@@ -382,8 +396,9 @@ function DashboardLeftPanel({
           </div>
 
           <div
-            className={`${styles.tab} ${currenttab === "/dashboard/p/partners" ? styles.activetab : ""
-              }`}
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/p/partners" ? styles.activetab : ""
+            }`}
             onClick={() => {
               if (router.query.showTour) {
                 router.push("/dashboard/p/partners?showTour=true");
@@ -436,7 +451,7 @@ function DashboardLeftPanel({
                 icon: <QuizIconSvg />,
               },
             ]}
-            icon={<AssessmentOutlinedIcon />}
+            icon={<ResourcesSvg />}
           />
         </div>
       )}
@@ -476,12 +491,14 @@ function DashboardLeftPanel({
               href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"
-              style={{color: "#000000"}}
+              style={{ color: "#000000" }}
             >
-              <WhatsAppIcon className={styles.socialyt} style={{color: "#000000"}} />
+              <WhatsAppIcon
+                className={styles.socialyt}
+                style={{ color: "#000000" }}
+              />
             </a>
           </div>
-
         </div>
       </div>
     </div>

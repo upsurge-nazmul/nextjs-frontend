@@ -33,7 +33,10 @@ export default function Levels() {
             {levels.map((item, index) => {
               return (
                 <div className={styles.level} key={"level" + index}>
-                  <img src={"/images/badges/badge_" + item + ".svg"} alt=""></img>
+                  <img
+                    src={"/images/badges/badge_" + item + ".svg"}
+                    alt=""
+                  ></img>
                   <p className={styles.levelName}>Level {item}</p>
                 </div>
               );

@@ -28,7 +28,7 @@ function Faq({ question, answer, current, setcurrent }) {
         <div className={styles.icon}>
           {!(current === question) ? <FaqClosedArrow /> : <FaqOpenArrow />}
         </div>
-        <p className={styles.question}>{question}</p>
+        <h3 className={styles.question}>{question}</h3>
       </div>
       <div
         className={`${styles.answer} ${

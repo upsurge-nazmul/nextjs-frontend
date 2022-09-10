@@ -88,7 +88,7 @@ const getchildchores = (payload, token) => {
 };
 const getLeaderboard = (payload, token) => {
   return ApiCalls.getResponse(`chore/leaderboard`, payload, token);
-}
+};
 //getchores
 const ChoreApis = {
   addchore,
@@ -108,7 +108,7 @@ const ChoreApis = {
   deletetemplate,
   rejectchore,
   getchildchores,
-  getLeaderboard
+  getLeaderboard,
 };
 
 export default ChoreApis;

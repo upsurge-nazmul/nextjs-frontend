@@ -31,7 +31,10 @@ export default function LevelComponent({ setshow }) {
           {levels.map((item, index) => {
             return (
               <div className={styles.level} key={"level" + index}>
-                <img src={"/images/badges/badge_" + item + ".svg"} alt="Badge"></img>
+                <img
+                  src={"/images/badges/badge_" + item + ".svg"}
+                  alt="Badge"
+                ></img>
                 <p className={styles.levelName}>Level {item}</p>
                 <p className={styles.chorecompleted}>{`(completed chores ${
                   index === levels.length - 1 ? ">" : "<="

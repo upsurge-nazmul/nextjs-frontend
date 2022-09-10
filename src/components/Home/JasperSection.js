@@ -8,7 +8,7 @@ export default function JasperSection() {
       <div className={styles.leftpart}>
         <div className={styles.text}>
           <BottomArrowBubble className={styles.bottomarrow} />
-          <p className={styles.heading}>{`Hi there, I'm Jasper.`}</p>
+          <h3 className={styles.heading}>{`Hi there, I'm Jasper.`}</h3>
           <p className={styles.subheading}>
             {`Since I am a Unicorn (no, not the billion $$ kind) and so it only
             makes sense that I am the resident money expert here at upsurge. I
