@@ -41,7 +41,7 @@ export default function KnowledgeQuest({ userData, questData }) {
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={"Knowledge Quest"} />
+        <DashboardHeader mode={"Knowledge Quest"} settoastdata={settoastdata} />
         <div className={styles.mainContent} id="quest-main">
           <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
           <HeadArea
