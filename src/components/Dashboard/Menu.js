@@ -33,9 +33,10 @@ function Menu({
     setuser,
     setuserdata,
   } = useContext(MainContext);
-  console.log("savedUsers", savedUsers);
+
   const router = useRouter();
   const [showUsers, setshowUsers] = useState(false);
+
   async function handleLogout() {
     let res = await LoginApis.logout();
     if (res && res.data && res.data.success) {
@@ -54,7 +55,6 @@ function Menu({
           return handleChangeUser(savedUsersData[0]);
         }
       }
-
       eraseCookie("accesstoken");
       setuser(null);
       setuserdata(null);
@@ -89,7 +89,6 @@ function Menu({
     // eslint-disable-next-line
   }, []);
   async function handleChangeUser(data) {
-    console.log("cakked", data);
     if (userdata.user_id === data.id) {
       return;
     }
@@ -121,11 +120,9 @@ function Menu({
       setCookie("accesstoken", data.token);
       setuserdata(response.data.data);
       setuser(response.data.data.id);
-      console.log(router.pathname);
       router.reload();
     }
   }
-  console.log("**********", savedUsers, userdata);
   return (
     <div
       className={`${styles.menu} ${router.query.showTour && styles.tourMenu}`}
