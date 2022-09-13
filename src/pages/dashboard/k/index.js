@@ -305,7 +305,7 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-          {/* <Journey /> */}
+          <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               <div className={styles.headsection}>
