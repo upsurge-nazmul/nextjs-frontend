@@ -20,7 +20,11 @@ export default function Journey() {
       </h2>
       <Pathway PATH={PathwayData} handleClick={setSelectedPath} />
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
-      {activeTask ? <TaskDisplay task={activeTask} /> : ""}
+      {activeTask ? (
+        <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />
+      ) : (
+        ""
+      )}
       {selectedPath ? (
         <Tasks highlight={selectedPath} handleTaskClick={setActiveTask} />
       ) : (
