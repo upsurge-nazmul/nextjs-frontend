@@ -1,0 +1,148 @@
+export const PATHWAY_TASK_TYPE = [
+    "Knowledge Quest",
+    "Game",
+    "Chore",
+    "Quiz",
+    "Activity",
+];
+export const TASK_IMAGE_BY_TYPE = [
+    "/images/journey/quest.svg",
+    "/images/journey/game.svg",
+    "/images/journey/task.svg",
+    "/images/journey/quiz.svg",
+    "/images/journey/activity.svg",
+];
+export const TASK_TYPE_COLORS = [
+    { id: "Knowledge Quest", color: "#17d1bc" },
+    { id: "Game", color: "#ffcd00" },
+    { id: "Chore", color: "#4066eb" },
+    { id: "Quiz", color: "#ff6163" },
+    { id: "Activity", color: "#ff6163" },
+  ];
+export const PathwayData = [
+    {
+        pathwayNumber: 1,
+        title: "Money 101",
+        pathwayId: "pw-1",
+        pathwayDescription:
+            "Let's kickstart your first fun journey and learn about what money is!",
+        pathwayreward: "4500",
+        pathwayImage: "/images/journey/money.svg",
+        tasks: [
+            {
+                taskNo: 1,
+                taskTitle: "Origins & Barter System",
+                taskDescription: "Did you know how money came to be?",
+                id: "pw-1-task-1",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[0],
+            },
+            {
+                taskNo: 2,
+                taskTitle: "Balance Builder",
+                taskDescription: "Let's earn some money and see if you can keep account.",
+                id: "pw-1-task-2",
+                type: PATHWAY_TASK_TYPE[1],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[1],
+            },
+            {
+                taskNo: 3,
+                taskTitle: "Money around the world",
+                taskDescription: "Do all countries use rupees?",
+                id: "pw-1-task-3",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[1],
+            },
+        ]
+    },
+    {
+        pathwayNumber: 2,
+        title: "Banks",
+        pathwayId: "pw-2",
+        pathwayDescription:
+            "Ever wondered why everyone keeps their money in banks? Let's find out!",
+        pathwayreward: "4500",
+        pathwayImage: "/images/journey/banking.svg",
+        tasks: [
+            {
+                taskNo: 1,
+                taskTitle: "What are banks?",
+                taskDescription: "Banks are great, but what are they?",
+                id: "pw-2-task-1",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[0],
+            },
+        ]
+    },
+    {
+        pathwayNumber: 3,
+        title: "Digital Payments",
+        pathwayId: "pw-3",
+        pathwayDescription:
+            "When was the last time you saw anyone paying with cash? Let's find out all the fun ways to make payments in today's world",
+        pathwayreward: "4500",
+        pathwayImage: "/images/journey/digitalPayments.svg",
+        tasks: [
+            {
+                taskNo: 1,
+                taskTitle: "Plastic Money",
+                taskDescription: "What are these small plastic cards that everyone uses?",
+                id: "pw-3-task-1",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[0],
+            },
+        ]
+    },
+    {
+        pathwayNumber: 4,
+        title: "Money Management",
+        pathwayId: "pw-4",
+        pathwayDescription:
+            "Now that we know what money is and how we use it, let's understand how we should manage money to become wealthy.",
+        pathwayreward: "6500",
+        pathwayImage: "/images/journey/moneyManagement.svg",
+        tasks: [
+            {
+                taskNo: 1,
+                taskTitle: "What is money management?",
+                taskDescription: "Money does make the world go round, so how should you manage it?",
+                id: "pw-4-task-1",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/pathway/1/task/1",
+                taskImage: TASK_IMAGE_BY_TYPE[0],
+            },
+        ]
+    },
+    {
+        pathwayNumber: 5,
+        title: "Entrepreneurship",
+        pathwayId: "pw-5",
+        pathwayDescription:
+            "COMING SOON",
+        pathwayreward: "6500",
+        pathwayImage: "/images/journey/entrepreneurship.svg",
+        tasks: [
+            {
+                taskNo: 1,
+                taskTitle: "COMING SOON",
+                taskDescription: "Wait while we bring you this exciting journey",
+                id: "pw-5-task-1",
+                type: PATHWAY_TASK_TYPE[0],
+                taskReward: "1000",
+                route: "/dasboard/k",
+                taskImage: TASK_IMAGE_BY_TYPE[0],
+            },
+        ]
+    },
+];
