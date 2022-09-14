@@ -1,38 +1,6 @@
 import styles from "../../styles/Journey/tasks.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
-
-const TASKS = [
-  {
-    id: 1,
-    type: "Knowledge Quest",
-    name: "Intro to money",
-    description: "Did you know how money came to be?",
-  },
-  {
-    id: 2,
-    type: "Game",
-    name: "Balance Builder",
-    description: "Did you know how money came to be?",
-  },
-  {
-    id: 3,
-    type: "Knowledge Quest",
-    name: "Money around the world",
-    description: "Did you know how money came to be?",
-  },
-  {
-    id: 4,
-    type: "Game",
-    name: "Money slide",
-    description: "Did you know how money came to be?",
-  },
-  {
-    id: 5,
-    type: "Chore",
-    name: "How many countries use the dollar as  currency?",
-    description: "Did you know how money came to be?",
-  },
-];
+import { TaskData } from "./taskData";
 
 const TASK_TYPE_COLORS = [
   { id: "Knowledge Quest", color: "#17d1bc" },
@@ -48,9 +16,9 @@ export default function Tasks({ highlight }) {
     <div className={styles.tasks}>
       <div className={styles.subheading}>{highlight.description}</div>
       <div className={styles.content}>
-        {TASKS.map((task, i) => {
+        {TaskData.map((task) => {
           return (
-            <div className={styles.taskArea} key={i}>
+            <div className={styles.taskArea} key={task.id}>
               <div
                 className={
                   task.id <= taskCompleted
@@ -75,11 +43,11 @@ export default function Tasks({ highlight }) {
                       className={styles.taskType}
                       style={{
                         backgroundColor: TASK_TYPE_COLORS.find(
-                          (item) => item.id === task.type
+                          (item) => item.id === task.taskType
                         ).color,
                       }}
                     >
-                      {task.type}
+                      {task.taskType}
                     </div>
                     <div className={styles.taskName}>{task.name}</div>
                     <div className={styles.taskDesc}>{task.description}</div>
