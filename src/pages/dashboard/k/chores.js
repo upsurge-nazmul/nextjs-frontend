@@ -29,6 +29,7 @@ export default function KidChoresPage({
   choresdata,
   gamesdata,
   kiddata,
+  userdataFromServer,
   liveclassdata,
   completedchores,
   currentLevel,
@@ -50,7 +51,7 @@ export default function KidChoresPage({
   });
 
   useEffect(() => {
-    setuserdata(kiddata);
+    setuserdata(userdataFromServer);
   }, []);
 
   useEffect(() => {
@@ -76,14 +77,10 @@ export default function KidChoresPage({
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
+      <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
 
-      <ChoreModal showmodal={showmodal} kiddata={setshowmodal} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
-          mode={mode}
-          setmode={setmode}
-          settoastdata={settoastdata}
-        />
+        <DashboardHeader mode={"Chores"} settoastdata={settoastdata} />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div>
@@ -196,6 +193,7 @@ export async function getServerSideProps({ params, req }) {
               ? currentLevel.data.data
               : 1,
           kiddata,
+          userdataFromServer: response.data.data,
           liveclassdata: liveclassdata || null,
           completedchores,
           choresLeaderboardData,

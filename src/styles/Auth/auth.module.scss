@@ -782,63 +782,6 @@
           }
         }
       }
-      .changePhone {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        .phoneWrapper {
-          width: 100%;
-          display: flex;
-          border-radius: 14px;
-          border: 1px solid #898989;
-          overflow: hidden;
-          height: 59px;
-          p {
-            font-size: 20px;
-            border-right: 1px solid #898989;
-            width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: "Lexend", sans-serif;
-          }
-          input {
-            flex: 1;
-            border: none;
-            border-radius: 0;
-            margin-bottom: 0;
-            padding: 15px;
-            max-width: none;
-          }
-        }
-        .button {
-          background: #4166eb;
-          border-radius: 14px;
-          color: white;
-          width: 100%;
-          margin-bottom: 18px;
-          height: 59px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-weight: 500;
-          font-size: 20px;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: #ffffff;
-            color: #4166eb;
-            border: 1px solid #4166eb;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            background: #4166eb;
-            color: white;
-            border: none;
-          }
-        }
-      }
     }
     .signupAuth {
       padding: 40px 70px 70px;
