@@ -28,6 +28,8 @@ export const PathwayData = [
             "Let's kickstart your first fun journey and learn about what money is!",
         pathwayreward: "4500",
         pathwayImage: "/images/journey/money.svg",
+        color: "#17d1bc",
+        pointer: { top: -20, left: "5%" },
         tasks: [
             {
                 taskNo: 1,
@@ -69,6 +71,8 @@ export const PathwayData = [
             "Ever wondered why everyone keeps their money in banks? Let's find out!",
         pathwayreward: "4500",
         pathwayImage: "/images/journey/banking.svg",
+        color: "#4066eb",
+        pointer: { top: -20, left: "23%" },
         tasks: [
             {
                 taskNo: 1,
@@ -90,6 +94,8 @@ export const PathwayData = [
             "When was the last time you saw anyone paying with cash? Let's find out all the fun ways to make payments in today's world",
         pathwayreward: "4500",
         pathwayImage: "/images/journey/digitalPayments.svg",
+        color: "#dc517b",
+        pointer: { top: -20, left: "40%" },
         tasks: [
             {
                 taskNo: 1,
@@ -111,6 +117,8 @@ export const PathwayData = [
             "Now that we know what money is and how we use it, let's understand how we should manage money to become wealthy.",
         pathwayreward: "6500",
         pathwayImage: "/images/journey/moneyManagement.svg",
+        color: "#55c5d2",
+        pointer: { top: -20, right: "40%" },
         tasks: [
             {
                 taskNo: 1,
@@ -132,6 +140,8 @@ export const PathwayData = [
             "COMING SOON",
         pathwayreward: "6500",
         pathwayImage: "/images/journey/entrepreneurship.svg",
+        color: "#fdcc03",
+        pointer: { top: -20, right: "23%" },
         tasks: [
             {
                 taskNo: 1,
