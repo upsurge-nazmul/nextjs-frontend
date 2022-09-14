@@ -13,7 +13,10 @@ export default function Pathway({ PATH, handleClick }) {
                 onClick={() => handleClick(item)}
               >
                 <div className={styles.icon}>
-                  <img src={`/images/journey/${item.id}.svg`} />
+                  <img
+                    src={`/images/journey/${item.id}.svg`}
+                    className={styles.iconImage}
+                  />
                 </div>
                 <div className={styles.title}>{item.name}</div>
                 {item.reward && (
