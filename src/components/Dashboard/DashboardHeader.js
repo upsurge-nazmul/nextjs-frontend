@@ -12,6 +12,7 @@ import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
 import LevelComponent from "../Dashboard/LevelComponent";
+import InviteComponent from "./InviteComponent"
 
 function DashboardHeader({
   mode,
@@ -28,10 +29,10 @@ function DashboardHeader({
   const [shownotifications, setshownotifications] = useState(false);
   const [kidLevel, setKidLevel] = useState();
   const [showlevels, setshowlevels] = useState(false);
+  const [showinvite, setshowinvite] = useState(false);
   const [savedUser, setSavedUser] = useState();
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
-
   useEffect(() => {
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
@@ -72,6 +73,10 @@ function DashboardHeader({
         onlyLogin={true}
         prefilled={savedUser}
       />
+      <InviteComponent
+        showinvite={showinvite}
+        setshowinvite={setshowinvite}
+        />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
         {mode === "home" ? (
@@ -147,6 +152,7 @@ function DashboardHeader({
             <Menu
               showauth={showauth}
               setshowauth={setshowauth}
+              setshowinvite={setshowinvite}
               settoastdata={settoastdata}
               waitilistmenu={userdata?.is_waiting_active}
               menuType={userdata?.user_type}
