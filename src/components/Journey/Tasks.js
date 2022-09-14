@@ -55,17 +55,19 @@ export default function Tasks({ highlight }) {
                   </div>
                   <div className={styles.actionArea}>
                     <button
-                      className={
-                        task.taskNo <= taskCompleted + 1
-                          ? styles.actionButton
-                          : styles.disabledButton
-                      }
+                      // className={
+                      //   task.taskNo <= taskCompleted + 1
+                      //     ? styles.actionButton
+                      //     : styles.disabledButton
+                      // }
+                      className={styles.actionButton}
                     >
-                      {task.taskNo < taskCompleted + 1
+                      {/* {task.taskNo < taskCompleted + 1
                         ? "REPLAY"
                         : task.taskNo === taskCompleted + 1
                         ? "BEGIN"
-                        : "LOCKED"}
+                        : "LOCKED"} */}
+                      BEGIN
                     </button>
                   </div>
                 </div>
