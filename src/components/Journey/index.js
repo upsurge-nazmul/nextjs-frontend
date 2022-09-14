@@ -5,9 +5,11 @@ import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import { useState } from "react";
 import Tasks from "./Tasks";
 import { PathwayData } from "../../static_data/Pathways_Data";
+import TaskDisplay from "./TaskDisplay";
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState();
+  const [selectedPath, setSelectedPath] = useState(PathwayData[0]);
+  const [activeTask, setActiveTask] = useState();
 
   return (
     <div className={styles.journey}>
@@ -18,7 +20,12 @@ export default function Journey() {
       </h2>
       <Pathway PATH={PathwayData} handleClick={setSelectedPath} />
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
-      {selectedPath ? <Tasks highlight={selectedPath} /> : ""}
+      {activeTask ? <TaskDisplay task={activeTask} /> : ""}
+      {selectedPath ? (
+        <Tasks highlight={selectedPath} handleTaskClick={setActiveTask} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

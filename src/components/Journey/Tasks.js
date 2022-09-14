@@ -8,7 +8,7 @@ const TASK_TYPE_COLORS = [
   { id: "Activity", color: "#ff6163" },
 ];
 
-export default function Tasks({ highlight }) {
+export default function Tasks({ highlight, handleTaskClick }) {
   const taskCompleted = 0;
 
   return (
@@ -61,6 +61,7 @@ export default function Tasks({ highlight }) {
                       //     : styles.disabledButton
                       // }
                       className={styles.actionButton}
+                      onClick={() => handleTaskClick(task)}
                     >
                       {/* {task.taskNo < taskCompleted + 1
                         ? "REPLAY"

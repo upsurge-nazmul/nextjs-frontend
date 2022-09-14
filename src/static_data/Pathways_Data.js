@@ -38,7 +38,7 @@ export const PathwayData = [
         id: "pw-1-task-1",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
-        route: "/pathway/1/task/1",
+        route: "/KnowledgeQuest/originAndBarterSystem/story.html",
         taskImage: TASK_IMAGE_BY_TYPE[0],
       },
       {
