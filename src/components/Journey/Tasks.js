@@ -35,7 +35,7 @@ export default function Tasks({ highlight }) {
               <div className={styles.task}>
                 <div className={styles.taskBody}>
                   <div className={styles.iconArea}>
-                    <img src={"/images/journey/task.svg"} />
+                    <img src={`${task.taskImage}`} />
                   </div>
                   <div className={styles.infoArea}>
                     <div
