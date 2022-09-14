@@ -1,6 +1,5 @@
 import styles from "../../styles/Journey/tasks.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
-import { TaskData } from "./taskData";
 
 const TASK_TYPE_COLORS = [
   { id: "Knowledge Quest", color: "#17d1bc" },
@@ -16,19 +15,19 @@ export default function Tasks({ highlight }) {
     <div className={styles.tasks}>
       <div className={styles.subheading}>{highlight.description}</div>
       <div className={styles.content}>
-        {TaskData.map((task) => {
+        {highlight.tasks.map((task) => {
           return (
             <div className={styles.taskArea} key={task.id}>
               <div
                 className={
-                  task.id <= taskCompleted
+                  task.taskNo <= taskCompleted
                     ? styles.completedBall
                     : styles.emptyBall
                 }
               />
               <div
                 className={
-                  task.id <= taskCompleted + 1
+                  task.taskNo <= taskCompleted + 1
                     ? styles.completedLine
                     : styles.connectingLine
                 }
@@ -43,26 +42,28 @@ export default function Tasks({ highlight }) {
                       className={styles.taskType}
                       style={{
                         backgroundColor: TASK_TYPE_COLORS.find(
-                          (item) => item.id === task.taskType
+                          (item) => item.id === task.type
                         ).color,
                       }}
                     >
-                      {task.taskType}
+                      {task.type}
                     </div>
-                    <div className={styles.taskName}>{task.name}</div>
-                    <div className={styles.taskDesc}>{task.description}</div>
+                    <div className={styles.taskName}>{task.taskTitle}</div>
+                    <div className={styles.taskDesc}>
+                      {task.taskDescription}
+                    </div>
                   </div>
                   <div className={styles.actionArea}>
                     <button
                       className={
-                        task.id <= taskCompleted + 1
+                        task.taskNo <= taskCompleted + 1
                           ? styles.actionButton
                           : styles.disabledButton
                       }
                     >
-                      {task.id < taskCompleted + 1
+                      {task.taskNo < taskCompleted + 1
                         ? "REPLAY"
-                        : task.id === taskCompleted + 1
+                        : task.taskNo === taskCompleted + 1
                         ? "BEGIN"
                         : "LOCKED"}
                     </button>
