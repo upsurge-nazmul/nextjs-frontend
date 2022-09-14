@@ -12,6 +12,12 @@
         width: 150px;
         text-align: center;
         cursor: pointer;
+        display: grid;
+        align-content: space-between;
+        grid-gap: 0.75rem;
+        justify-content: space-around;
+        align-items: stretch;
+        justify-items: center;
         .icon {
           height: 100px;
           width: 150px;

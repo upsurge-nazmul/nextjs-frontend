@@ -19,6 +19,7 @@ export default function Banner({ highlight, pointer = false }) {
           <img
             src={"/images/journey/rewardBg.svg"}
             className={styles.rewardBg}
+            alt=""
           />
           <div className={styles.rewardText}>Rewards to win</div>
         </div>
@@ -34,12 +35,12 @@ export default function Banner({ highlight, pointer = false }) {
           <div className={styles.right}>
             {highlight.reward && (
               <div className={styles.reward}>
-                Win <UniCoinSvg className={styles.svg} />
+                Earn <UniCoinSvg className={styles.svg} />
                 {highlight.reward}
               </div>
             )}
             <div>
-              <img src={`/images/journey/${highlight.id}.svg`} />
+              <img src={`/images/journey/${highlight.id}.svg`} alt=""/>
             </div>
           </div>
         </div>
