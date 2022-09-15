@@ -8,7 +8,7 @@ import { PathwayData } from "../../static_data/Pathways_Data";
 import TaskDisplay from "./TaskDisplay";
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState(PathwayData[0]);
+  const [selectedPath, setSelectedPath] = useState();
   const [activeTask, setActiveTask] = useState();
 
   return (
@@ -18,7 +18,7 @@ export default function Journey() {
         Journey
         <HeadingArrow />
       </h2>
-      <Pathway PATH={PathwayData} handleClick={setSelectedPath} />
+      <Pathway handleClick={setSelectedPath} />
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
       {activeTask ? (
         <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />

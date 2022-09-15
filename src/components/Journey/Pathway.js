@@ -1,11 +1,12 @@
 import styles from "../../styles/Journey/pathway.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { PathwayData } from "../../static_data/Pathways_Data";
 
-export default function Pathway({ PATH, handleClick }) {
+export default function Pathway({ handleClick }) {
   return (
     <div className={styles.pathway}>
       <div className={styles.content}>
-        {PATH.map((item, i) => {
+        {PathwayData.map((item, i) => {
           return (
             <div className={styles.path} key={i}>
               <div
@@ -28,7 +29,11 @@ export default function Pathway({ PATH, handleClick }) {
                   </div>
                 )}
               </div>
-              {i === PATH.length - 1 ? "" : <div className={styles.dash} />}
+              {i === PathwayData.length - 1 ? (
+                ""
+              ) : (
+                <div className={styles.dash} />
+              )}
             </div>
           );
         })}
