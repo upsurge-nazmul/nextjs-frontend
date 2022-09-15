@@ -5,6 +5,7 @@ import styles from "../../styles/otpnotverified/otpnotverified.module.scss";
 import OtpInput from "react-otp-input";
 import LoginApis from "../../actions/apis/LoginApis";
 import ChangePhoneNo from "./ChangePhoneNo";
+
 export default function OtpNotVerfied({
   userphone,
   setphoneverified,
@@ -20,6 +21,7 @@ export default function OtpNotVerfied({
   });
   const [error, seterror] = useState(null);
   const [changePhone, setChangePhone] = useState("otp");
+  const [showmodal,setshowmodal] = useState(true);
 
   useEffect(() => {
     seterror("");
@@ -46,6 +48,8 @@ export default function OtpNotVerfied({
     <div className={styles.otpnotverified}>
       <Toast data={toastdata} />
       <AnimatePresence>
+      {showmodal ? (
+      <>
         <div className={styles.authContentWrapper}>
           <div className={styles.background}></div>
           {changePhone === "otp" ? (
@@ -95,10 +99,14 @@ export default function OtpNotVerfied({
                 seterror={seterror}
                 settoastdata={settoastdata}
                 setmode={setChangePhone}
+                setshowmodal={setshowmodal}
               />
             </div>
           )}
         </div>
+        </>
+      ):(
+        null)}
       </AnimatePresence>
     </div>
   );
