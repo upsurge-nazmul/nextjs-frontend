@@ -52,6 +52,15 @@
   }
 }
 
+// bigger width tabs
+@media only screen and (min-width: 821px) and (max-width: 1024px) {
+  .rewardTask {
+    .content {
+      width: 100%;
+    }
+  }
+}
+
 // smaller width tabs
 @media only screen and (min-width: 480px) and (max-width: 820px) {
   .rewardTask {
