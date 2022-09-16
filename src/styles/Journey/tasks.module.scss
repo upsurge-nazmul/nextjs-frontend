@@ -65,6 +65,10 @@
           .iconArea {
             height: 100%;
             width: 150px;
+            .iconImage {
+              height: 100%;
+              width: 100%;
+            }
           }
           .infoArea {
             flex: 1;
@@ -171,7 +175,163 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .tasks {
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 14px;
+    padding: 5px 10px;
     max-width: calc(95vw - 80px);
+    .subheading {
+      padding: 5px 0;
+      font-size: 14px;
+      font-weight: 400;
+      color: #686869;
+    }
+    .content {
+      padding: 10px;
+      .taskArea {
+        width: auto;
+        position: relative;
+        margin-left: 10px;
+        .ball {
+          position: absolute;
+          left: -29px;
+          top: 43%;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+        }
+        .emptyBall {
+          @extend .ball;
+          background-color: #cecece;
+        }
+        .completedBall {
+          @extend .ball;
+          background-color: #17d1bc;
+        }
+        .verticalLine {
+          position: absolute;
+          left: -22px;
+          top: 0;
+          width: 3px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 0;
+        }
+        .connectingLine {
+          @extend .verticalLine;
+          background-color: #cecece;
+        }
+        .completedLine {
+          @extend .verticalLine;
+          background-color: #1678e7;
+        }
+        .task {
+          padding-bottom: 15px;
+          .taskBody {
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+            border-radius: 14px;
+            padding: 5px 10px;
+            box-shadow: 0px 0px 6px 1px #d7d5d5;
+            .iconArea {
+              height: 100%;
+              width: 100%;
+              .iconImage {
+                height: 100%;
+                width: 100%;
+              }
+            }
+            .infoArea {
+              flex: 1;
+              padding: 0px 0 10px;
+              .taskType {
+                background-color: #17d1bc;
+                color: #fff;
+                font-size: 10px;
+                font-weight: 300;
+                border-radius: 28px;
+                width: fit-content;
+                padding: 2px 12px;
+              }
+              .taskName {
+                font-size: 16px;
+                font-weight: 400;
+                color: #686869;
+                padding: 5px 0;
+              }
+              .taskDesc {
+                font-size: 12px;
+                font-weight: 300;
+                color: #686869;
+              }
+            }
+            .actionArea {
+              width: fit-content;
+              display: flex;
+              justify-content: center;
+              align-items: flex-end;
+              .commonButton {
+                border: none;
+                outline: none;
+                cursor: pointer;
+                border-radius: 14px;
+                font-size: 10px;
+                font-weight: 300;
+                color: #fff;
+                width: 100px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              .actionButton {
+                @extend .commonButton;
+                background-color: #4066eb;
+              }
+              .disabledButton {
+                @extend .commonButton;
+                background-color: #837c7c;
+              }
+            }
+          }
+        }
+      }
+      .tasksFooter {
+        display: flex;
+        .taskEnd {
+          position: relative;
+          left: -25px;
+          top: -15px;
+        }
+        .footerReward {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .reward {
+            font-size: 16px;
+            background-color: #fdcc03;
+            color: #fff;
+            border-radius: 14px;
+            padding: 4px 16px;
+            .svg {
+              width: 10px;
+              height: 10px;
+              margin-right: 5px;
+              path {
+                fill: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

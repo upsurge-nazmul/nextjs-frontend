@@ -44,7 +44,11 @@ export default function Tasks({ highlight, handleTaskClick }) {
                   <div className={styles.task}>
                     <div className={styles.taskBody}>
                       <div className={styles.iconArea}>
-                        <img src={`${task.taskImage}`} />
+                        <img
+                          src={`${task.taskImage}`}
+                          alt=""
+                          className={styles.iconImage}
+                        />
                       </div>
                       <div className={styles.infoArea}>
                         <div

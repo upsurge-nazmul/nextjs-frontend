@@ -78,8 +78,57 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .rewardTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .content {
       width: 100%;
+      .header {
+        display: flex;
+        justify-content: space-around;
+        color: #686869;
+      }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f5f5f5;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+        margin: 10px 0;
+        padding: 10px;
+        .image {
+          text-align: center;
+          .icon {
+            height: 40px;
+            width: 40px;
+          }
+          .title {
+            color: #686869;
+            font-weight: 300;
+            font-size: 14px;
+          }
+        }
+        .reward {
+          display: flex;
+          align-items: center;
+          .rewardSvg {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            path {
+              fill: #686869;
+            }
+          }
+          .rewardText {
+            color: #686869;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+        .badges {
+        }
+      }
     }
   }
 }
