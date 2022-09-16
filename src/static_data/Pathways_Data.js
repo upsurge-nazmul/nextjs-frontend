@@ -161,7 +161,7 @@ export const PathwayData = [
     pathwayNumber: 6,
     title: "",
     pathwayId: "reward",
-    pathwayDescription: "COMING SOON",
+    pathwayDescription: "",
     pathwayreward: "",
     pathwayImage: "/images/journey/reward.svg",
     color: "#ffeb5d",

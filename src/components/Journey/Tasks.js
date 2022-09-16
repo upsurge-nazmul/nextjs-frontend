@@ -14,7 +14,11 @@ export default function Tasks({ highlight, handleTaskClick }) {
 
   return (
     <div className={styles.tasks}>
-      <div className={styles.subheading}>{highlight.description}</div>
+      {highlight.pathwayDescription ? (
+        <div className={styles.subheading}>{highlight.pathwayDescription}</div>
+      ) : (
+        ""
+      )}
       <>
         {highlight.pathwayId === "reward" ? (
           <RewardTask />
