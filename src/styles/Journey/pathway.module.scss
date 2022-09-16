@@ -90,6 +90,10 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .pathway {
+    max-width: calc(95vw - 80px);
+    overflow: auto;
+  }
 }
 
 // for phones landscape

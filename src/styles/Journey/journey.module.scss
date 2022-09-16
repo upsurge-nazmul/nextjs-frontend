@@ -37,6 +37,20 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .journey {
+    padding: 10px 20px;
+    .mainheading {
+      font-weight: 500;
+      font-size: 25px;
+      color: rgba(87, 88, 128, 1);
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      svg {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 // for phones landscape

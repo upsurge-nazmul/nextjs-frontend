@@ -95,6 +95,12 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .banner {
+    max-width: calc(95vw - 80px);
+    .triangle {
+      display: none;
+    }
+  }
 }
 
 // for phones landscape

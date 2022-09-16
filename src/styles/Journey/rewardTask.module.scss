@@ -77,6 +77,11 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .rewardTask {
+    .content {
+      width: 100%;
+    }
+  }
 }
 
 // for phones landscape

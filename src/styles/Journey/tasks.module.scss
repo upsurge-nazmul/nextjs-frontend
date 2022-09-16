@@ -170,6 +170,9 @@
 
 // for phones
 @media only screen and (max-width: 480px) {
+  .tasks {
+    max-width: calc(95vw - 80px);
+  }
 }
 
 // for phones landscape
