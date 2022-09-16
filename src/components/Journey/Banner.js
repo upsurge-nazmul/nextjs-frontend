@@ -41,8 +41,12 @@ export default function Banner({ highlight, pointer = false }) {
                 {highlight.pathwayreward}
               </div>
             )}
-            <div>
-              <img src={`/images/journey/${highlight.pathwayId}.svg`} alt="" />
+            <div className={styles.icon}>
+              <img
+                src={`/images/journey/${highlight.pathwayId}.svg`}
+                alt=""
+                className={styles.iconImage}
+              />
             </div>
           </div>
         </div>
