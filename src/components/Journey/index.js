@@ -18,7 +18,7 @@ export default function Journey() {
         Journey
         <HeadingArrow />
       </h2>
-      <Pathway handleClick={setSelectedPath} />
+      <Pathway highlight={selectedPath} handleClick={setSelectedPath} />
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
       {activeTask ? (
         <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />

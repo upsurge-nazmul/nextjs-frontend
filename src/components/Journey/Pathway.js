@@ -2,7 +2,7 @@ import styles from "../../styles/Journey/pathway.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { PathwayData } from "../../static_data/Pathways_Data";
 
-export default function Pathway({ handleClick }) {
+export default function Pathway({ highlight = null, handleClick }) {
   return (
     <div className={styles.pathway}>
       <div className={styles.content}>
@@ -10,7 +10,11 @@ export default function Pathway({ handleClick }) {
           return (
             <div className={styles.path} key={i}>
               <div
-                className={styles.pathItem}
+                className={
+                  highlight && highlight.pathwayId === item.pathwayId
+                    ? styles.selectedPathItem
+                    : styles.pathItem
+                }
                 onClick={() => handleClick(item)}
               >
                 <div className={styles.icon}>

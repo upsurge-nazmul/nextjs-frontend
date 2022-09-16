@@ -14,12 +14,13 @@
         cursor: pointer;
         display: grid;
         align-content: space-between;
-        grid-gap: 0.75rem;
         justify-content: space-around;
         align-items: stretch;
         justify-items: center;
+        border-radius: 30px;
+        padding: 10px 0;
         .icon {
-          height: 100px;
+          height: 80px;
           width: 100%;
           .iconImage {
             width: 100%;
@@ -51,6 +52,10 @@
             }
           }
         }
+      }
+      .selectedPathItem {
+        @extend .pathItem;
+        background-color: #e3e6e6;
       }
       .dash {
         flex: 1;
