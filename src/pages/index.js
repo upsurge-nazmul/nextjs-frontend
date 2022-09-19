@@ -21,6 +21,7 @@ import FaqSection from "../components/Home/FaqSection";
 import TestiMonial from "../components/Home/TestiMonial";
 import Toast from "../components/Toast";
 import Tour from "../components/Tour/Tour";
+import PageTitle from "../components/PageTitle";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 // const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ isLogged, userdata }) {
@@ -127,15 +128,10 @@ function Home({ isLogged, userdata }) {
         showauth || router.query.showTour ? styles.stopscrolling : ""
       }`}
     >
-      <Head>
-        <title>upsurge | Best Platform of Financial Literacy and Financial Education for School Students in India</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="description"
-          content="Best platform for promoting financial literacy, entrepreneurship & modern skills for school students in India by upsurge"
-        />
-      </Head>
-
+      <PageTitle
+        title={`upsurge | Best Platform of Financial Literacy and Financial Education
+          for School Students in India`}
+      />
       <div
         className={styles.summerbtn}
         onClick={() => router.push("/business_league")}
