@@ -14,6 +14,7 @@ import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import KnowledgeQuestMainSection from "../../components/Products/KnowledgeQuestMainSection";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 export default function Products({ userdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -63,6 +64,7 @@ export default function Products({ userdata }) {
         theme === "dark" && styles.darkquest
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

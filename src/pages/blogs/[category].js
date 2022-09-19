@@ -16,6 +16,7 @@ import JoinUs from "../../components/Home/JoinUs";
 import WaitingListCta from "../../components/WaitingListCta";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import PageTitle from "../../components/PageTitle";
 
 function BlogPage({ blogs, totalblogs, porppagination, userdata }) {
   const router = useRouter();
@@ -122,6 +123,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdata }) {
         theme === "dark" && styles.darkblogpage
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

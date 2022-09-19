@@ -128,10 +128,7 @@ function Home({ isLogged, userdata }) {
         showauth || router.query.showTour ? styles.stopscrolling : ""
       }`}
     >
-      <PageTitle
-        title={`upsurge | Best Platform of Financial Literacy and Financial Education
-          for School Students in India`}
-      />
+      <PageTitle />
       <div
         className={styles.summerbtn}
         onClick={() => router.push("/business_league")}

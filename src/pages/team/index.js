@@ -4,6 +4,7 @@ import Footer from "../../components/Home/Footer";
 import styles from "../../styles/Team/teamspage.module.scss";
 import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import LeftPanel from "../../components/LeftPanel";
+import PageTitle from "../../components/PageTitle";
 
 const POSITIONS = [
   { id: "productAndGrowth", name: "Product & Growth" },
@@ -233,6 +234,7 @@ function TeamsPage() {
 
   return (
     <div className={styles.teamPage}>
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

@@ -14,6 +14,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import LogoFullWhte from "../../components/SVGcomponents/LogoFullWhte";
 import { onlyText } from "../../helpers/validationHelpers";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 function Contact({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -87,6 +88,7 @@ function Contact({ userdata }) {
   }
   return (
     <div className={styles.contactPage}>
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

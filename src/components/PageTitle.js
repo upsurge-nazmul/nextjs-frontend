@@ -1,7 +1,8 @@
 import Head from "next/head";
 
 export default function PageTitle({
-  title = "upsurge",
+  title = `upsurge | Best Platform of Financial Literacy and Financial Education
+  for School Students in India`,
   content = `Best platform for promoting financial literacy, entrepreneurship & modern skills for school students in India by upsurge`,
 }) {
   return (

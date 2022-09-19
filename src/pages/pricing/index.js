@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
+import PageTitle from "../../components/PageTitle";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import TickSvg from "../../components/SVGcomponents/TickSvg";
@@ -81,6 +82,7 @@ export default function Pricing({ userdata }) {
         theme === "dark" && styles.darkpricingPage
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 export default function Products({ userdata }) {
   const router = useRouter();
   const type = router.query.type;
@@ -113,6 +114,7 @@ export default function Products({ userdata }) {
 
   return (
     <div className={styles.pricingPage}>
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

@@ -19,6 +19,7 @@ import WaitingListCta from "../../components/WaitingListCta";
 import WaitlistPopUp from "../../components/WaitlistPopUp";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import PageTitle from "../../components/PageTitle";
 
 function BlogPage({
   blogs,
@@ -118,6 +119,7 @@ function BlogPage({
         theme === "dark" && styles.darkblogpage
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}

@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
 
 import FreeGameApis from "../../actions/apis/FreeGameApis";
+import PageTitle from "../../components/PageTitle";
 export default function GamePage({ userDataFromServer }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -75,6 +76,7 @@ export default function GamePage({ userDataFromServer }) {
         theme === "dark" && styles.darkgamelist
       }`}
     >
+      <PageTitle />
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
