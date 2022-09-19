@@ -34,7 +34,7 @@
 }
 
 // smaller tabs landscape mode
-@media only screen and (orientation: landscape) and (max-height: 820px) {
+@media only screen and (orientation: landscape) and (max-height: 820px) and (max-width: 1180px) {
   .questPage {
     .contentWrapper {
       .mainContent {
