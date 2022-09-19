@@ -97,7 +97,7 @@ function Home({ isLogged, userdata }) {
       required: true,
       content: (
         <div className={styles.introdiv}>
-          <p className={styles.heading}>Great, now we're in home page.</p>
+          <p className={styles.heading}>Great, now we&apos;re in home page.</p>
           <p
             className={styles.text}
           >{`Press this button to go back to dashboard.`}</p>
@@ -121,73 +121,73 @@ function Home({ isLogged, userdata }) {
   }, [router]);
   return (
     // <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
+    <div
+      id="home-page-main"
+      className={`${styles.homePage} ${
+        showauth || router.query.showTour ? styles.stopscrolling : ""
+      }`}
+    >
+      <Head>
+        <title>upsurge | Best Platform of Financial Literacy and Financial Education for School Students in India</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Best platform for promoting financial literacy, entrepreneurship & modern skills for school students in India by upsurge"
+        />
+      </Head>
+
       <div
-        id="home-page-main"
-        className={`${styles.homePage} ${
-          showauth || router.query.showTour ? styles.stopscrolling : ""
-        }`}
+        className={styles.summerbtn}
+        onClick={() => router.push("/business_league")}
       >
-        <Head>
-          <title>upsurge | money, made easy.</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-          <meta name="description" content="upsurge is a platform for financial education for children." />
-        </Head>
-
-        {/* <div
-          className={styles.summerbtn}
-          onClick={() => router.push("/business_league")}
-        >
-          <p className={styles.maintext}>upsurge Business League</p>
-          <p className={styles.subtext}>Registration closes 20th July</p>
-        </div> */}
-        <Header
-          setOpenLeftPanel={setOpenLeftPanel}
-          showauth={showauth}
-          setshowauth={setshowauth}
-          authmode={authmode}
-          mailfromhome={mailfromhome}
-          stickyheader={stickyheader}
-          showpopup={showpopup}
-          setshowpopup={setshowpopup}
-          settoastdata={settoastdata}
-        />
-
-        <LeftPanel
-          openLeftPanel={openLeftPanel}
-          setOpenLeftPanel={setOpenLeftPanel}
-        />
-        <Toast data={toastdata} />
-
-        <Intro
-          setshowauth={setshowauth}
-          setauthmode={setauthmode}
-          setmailfromhome={setmailfromhome}
-          setshowpopup={setshowpopup}
-        />
-        <Values insidebenefits />
-        <Benefits />
-        {/* <How /> */}
-        <ProductSection />
-        <Who />
-        <PartnerSection />
-        <JasperSection />
-        <AboutSection />
-        <BlogsSection />
-        <TestiMonial />
-        <FaqSection />
-        <JoinUs
-          setshowauth={setshowauth}
-          setauthmode={setauthmode}
-          setmailfromhome={setmailfromhome}
-        />
-        <Footer />
-        {router.query.showTour && (
-          <Tour story={story} current={0} showtour={true} />
-        )}
+        <p className={styles.maintext}>upsurge Business League</p>
+        <p className={styles.subtext}>Registration closes 5th October</p>
       </div>
+      <Header
+        setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
+        setshowauth={setshowauth}
+        authmode={authmode}
+        mailfromhome={mailfromhome}
+        stickyheader={stickyheader}
+        showpopup={showpopup}
+        setshowpopup={setshowpopup}
+        settoastdata={settoastdata}
+      />
+
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
+      <Toast data={toastdata} />
+
+      <Intro
+        setshowauth={setshowauth}
+        setauthmode={setauthmode}
+        setmailfromhome={setmailfromhome}
+        setshowpopup={setshowpopup}
+      />
+      <Values insidebenefits />
+      <Benefits />
+      {/* <How /> */}
+      <ProductSection />
+      <Who />
+      <PartnerSection />
+      <JasperSection />
+      <AboutSection />
+      <BlogsSection />
+      <TestiMonial />
+      <FaqSection />
+      <JoinUs
+        setshowauth={setshowauth}
+        setauthmode={setauthmode}
+        setmailfromhome={setmailfromhome}
+      />
+      <Footer />
+      {router.query.showTour && (
+        <Tour story={story} current={0} showtour={true} />
+      )}
+    </div>
     // </IntercomProvider>
   );
 }

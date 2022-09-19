@@ -62,14 +62,14 @@ export default function ChildActivity({
 
       <div className={styles.contentWrapper}>
         <div className={styles.header}>
-        <DashboardHeader
-          mode={mode}
-          setmode={setmode}
-          settoastdata={settoastdata}
-          showback={true}
-          gobackto={"/dashboard/p/"}
+          <DashboardHeader
+            mode={mode}
+            setmode={setmode}
+            settoastdata={settoastdata}
+            showback={true}
+            gobackto={"/dashboard/p/"}
           />
-          </div>
+        </div>
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.headsection}>

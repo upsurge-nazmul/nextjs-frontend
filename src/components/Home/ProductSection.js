@@ -55,7 +55,7 @@ function ProductSection() {
         theme === "dark" && styles.darkproductSection
       }`}
     >
-      <div className={styles.heading}>Our Products</div>
+      <h2 className={styles.heading}>Our Products</h2>
       <div className={styles.wrapper}>
         {data.splice(0, 3).map((item, index) => {
           return (
@@ -73,7 +73,7 @@ function ProductSection() {
               ) : (
                 <ProductPeople className={styles.icon} />
               )}
-              <p className={styles.title}>{item.title}</p>
+              <h3 className={styles.title}>{item.title}</h3>
               <p className={styles.description}>{item.description}</p>
             </div>
           );
@@ -96,7 +96,7 @@ function ProductSection() {
               ) : (
                 <ProductPeople className={styles.icon} />
               )}
-              <p className={styles.title}>{item.title}</p>
+              <h3 className={styles.title}>{item.title}</h3>
               <p className={styles.description}>{item.description}</p>
             </div>
           );

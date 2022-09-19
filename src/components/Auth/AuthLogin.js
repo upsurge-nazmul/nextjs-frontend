@@ -14,9 +14,6 @@ import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
-import app from "../../firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
 function AuthLogin({
   settoastdata,
   error,
@@ -24,7 +21,7 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  _setemail,
+  addAccount
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -47,9 +44,9 @@ function AuthLogin({
     }
     seterror("");
     const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${'accesstoken'}=`);
+    const parts = value.split(`; ${"accesstoken"}=`);
     let token;
-    if (parts.length === 2) token = parts.pop().split(';').shift();
+    if (parts.length === 2) token = parts.pop().split(";").shift();
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
       setSavedUsers(
@@ -93,36 +90,28 @@ function AuthLogin({
     }
   }
   async function handlegoogleLogin(data) {
-    const provider = new GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-    provider.addScope("email");
-    const auth = getAuth();
-    signInWithPopup(auth, provider)
-      .then(async (data) => {
-        const user = data.user;
-        let response = await LoginApis.googlelogin({
-          email: user.email,
-        });
-        if (response && response.data && response.data.success) {
-          setCookie("accesstoken", response.data.data.token);
-          setuserdata(response.data.data.userProfile);
-          setuser(response.data.data.userProfile.id);
-          settoastdata({
-            show: true,
-            msg: response.data.message,
-            type: "success",
-          });
-          if (response.data.data.userProfile.user_type === "parent")
-            router.push("/dashboard/p");
-          else router.push("/dashboard/k");
-        } else {
-          _setemail(user.email);
-          setmode("email");
-        }
-      })
-      .catch((error) => {
-        seterror("Please try again");
+    if (data.tokenId) {
+      let response = await LoginApis.googlelogin({
+        tokenId: data.tokenId,
       });
+      if (response && response.data && response.data.success) {
+        setCookie("accesstoken", response.data.data.token);
+        setuserdata(response.data.data.userProfile);
+        setuser(response.data.data.userProfile.id);
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
+        if (response.data.data.userProfile.user_type === "parent")
+          router.push("/dashboard/p");
+        else router.push("/dashboard/k");
+      } else {
+        seterror(response?.data.message || "Cannot reach server");
+      }
+    } else {
+      seterror("");
+    }
   }
 
   useEffect(() => {
@@ -165,13 +154,22 @@ function AuthLogin({
         </div>
       )}
       <div className={styles.or}>OR</div>
-      <div
-        onClick={handlegoogleLogin}
-        className={styles.google}
-      >
-        <GoogleSvg />
-        <p style={{ pointerEvents: "none" }}>Continue with Google</p>
-      </div>
+      <GoogleLogin
+        clientId={GClientId}
+        render={(renderProps) => (
+          <div
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+            className={styles.google}
+          >
+            <GoogleSvg />
+            <p style={{ pointerEvents: "none" }}>Continue with Google</p>
+          </div>
+        )}
+        onSuccess={handlegoogleLogin}
+        onFailure={handlegoogleLogin}
+        cookiePolicy={"single_host_origin"}
+      />
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"

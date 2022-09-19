@@ -33,10 +33,10 @@ export default function Values({ insidebenefits }) {
         insidebenefits && styles.benefitmodifications
       }`}
     >
-      <div className={styles.heading}>
-        Through upsurge, we wish to create a money-wise generation by helping
-        children{" "}
-      </div>
+      <h2 className={styles.heading}>
+        Through upsurge, we wish to create a money-wise generation by providing
+        financial education to students{" "}
+      </h2>
       {widthHeight.width < 860 && insidebenefits ? (
         <div className={styles.mobilesection}>
           <div className={styles.holder}>
@@ -87,21 +87,21 @@ export default function Values({ insidebenefits }) {
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Understand how ‘money’ works in the 21st century</p>
+              <h3>Understand how ‘money’ works in the 21st century</h3>
             </div>
             <div className={styles.holder}>
               <ManageMoney
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Learn to wisely manage money & be fiscally responsible </p>
+              <h3>Learn to wisely manage money & be fiscally responsible </h3>
             </div>
             <div className={styles.holder}>
               <BudgetSvg
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>Practice profitable Investing & multiply their money </p>
+              <h3>Practice profitable Investing & multiply their money </h3>
             </div>
           </div>
           <div className={styles.lowSection}>
@@ -110,14 +110,14 @@ export default function Values({ insidebenefits }) {
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>{`Develop an entrepreneurial & growth mindset `}</p>
+              <h3>{`Develop an entrepreneurial & growth mindset `}</h3>
             </div>
             <div className={styles.holder}>
               <BusinessSvg
                 className={styles.icon}
                 onClick={() => router.push("/benefits")}
               />
-              <p>{`Understand, evaluate & start businesses`}</p>
+              <h3>{`Understand, evaluate & start businesses`}</h3>
             </div>
           </div>
         </>

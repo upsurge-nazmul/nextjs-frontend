@@ -23,16 +23,16 @@
     border-radius: 8px;
     padding: 40px;
     position: relative;
-    .boxheader{
+    .boxheader {
       display: flex;
-      width:100%;
+      width: 100%;
       justify-content: center;
-      .cancelIcon{
+      .cancelIcon {
         width: 30px;
         height: 30px;
         position: absolute;
-        top:40px;
-        right:40px;
+        top: 40px;
+        right: 40px;
       }
     }
     .assigneewrapper {

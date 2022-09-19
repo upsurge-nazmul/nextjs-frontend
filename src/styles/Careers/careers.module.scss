@@ -1,34 +1,139 @@
+@use "../variables/colors.scss" as *;
+
+@keyframes moveit {
+  0% {
+    transform: translateY(-20%) scaleX(-1);
+  }
+  100% {
+    transform: translateY(0) scaleX(-1);
+  }
+}
+
 .careerPage {
   height: 100vh;
-  .container {
-    margin: 0 14% 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .heading {
-      margin-top: 40px;
-      font-size: 40px;
-      font-weight: 500;
-      border-bottom: 2px solid rgb(206, 206, 206);
-      width: 80%;
+  .mainContent {
+    .curve2 {
+      position: fixed;
+      width: 100vw;
+      left: 0;
+      top: 60%;
+      z-index: -1;
+      transform: scaleX(-1);
+      animation: moveit 5s ease alternate infinite;
+      animation-delay: 2s;
     }
-    .des {
-      width: 80%;
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 25px;
-      color: rgb(29, 29, 29);
-      margin-bottom: 20px;
+    .curve1 {
+      position: fixed;
+      width: 100vw;
+      left: 0;
+      top: 25%;
+      z-index: -1;
+      animation: moveit 5s ease alternate infinite;
     }
-    .wrapper {
-      margin-top: 40px;
-      width: 80%;
-      .section {
-        margin: 20px 0;
-        .sectionName {
+    .content {
+      min-height: 50vh;
+      .header {
+        padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .title {
           font-size: 30px;
-          font-weight: 600;
+          font-weight: 700;
+        }
+        .description {
+          width: 600px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 2;
+          padding: 10px 0;
+        }
+      }
+      .banner {
+        padding: 30px 0;
+        .bannerImg {
+          object-fit: cover;
+          width: 100vw;
+          height: 600px;
+        }
+      }
+      .positionArea {
+        padding: 40px 7%;
+        .positionTitle {
+          font-size: 30px;
+          font-weight: 700;
+        }
+        .positions {
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .careerPage {
+    height: 100vh;
+    .mainContent {
+      .curve2 {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        top: 60%;
+        z-index: -1;
+        transform: scaleX(-1);
+        animation: moveit 5s ease alternate infinite;
+        animation-delay: 2s;
+      }
+      .curve1 {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        top: 25%;
+        z-index: -1;
+        animation: moveit 5s ease alternate infinite;
+      }
+      .content {
+        min-height: 50vh;
+        .header {
+          padding: 10px 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .title {
+            font-size: 30px;
+            font-weight: 700;
+          }
+          .description {
+            width: auto;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.25;
+            padding: 10px;
+          }
+        }
+        .banner {
+          padding: 10px 0;
+          .bannerImg {
+            object-fit: cover;
+            width: 100vw;
+            height: 200px;
+          }
+        }
+        .positionArea {
+          padding: 40px 7%;
+          .positionTitle {
+            font-size: 30px;
+            font-weight: 700;
+          }
+          .positions {
+            padding: 20px 0;
+          }
         }
       }
     }

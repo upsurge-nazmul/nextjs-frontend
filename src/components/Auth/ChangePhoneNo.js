@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../../styles/Auth/auth.module.scss";
+import styles from "../../styles/Auth/changePhone.module.scss";
 import Spinner from "../Spinner";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
@@ -63,7 +63,9 @@ export default function ChangePhoneNo({
 
   return (
     <div className={styles.changePhone}>
-      phone no {email} {phone}{" "}
+      <div className={styles.heading}>
+        Please edit your phone number and continue
+      </div>
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input

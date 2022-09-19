@@ -174,7 +174,7 @@
         border-radius: 12px;
         height: 340px;
         width: 260px;
-        font-family: "Roboto";
+        font-family: "Lexend", sans-serif;
         font-weight: 500;
         border-radius: 8px;
         display: flex;
@@ -283,16 +283,16 @@
     }
   }
 }
-.darkgamelist{
+.darkgamelist {
   height: 100vh;
   position: relative;
 
   .contentWrapper {
     .curve2 {
- opacity: 0.2;
+      opacity: 0.2;
     }
     .curve1 {
-  opacity: 0.2;
+      opacity: 0.2;
     }
     .headingSection {
       .heading {
@@ -304,12 +304,12 @@
     }
     .gamelistwrapper {
       .gameCard {
-        background:none;
+        background: none;
         background-color: $d-moredark;
         box-shadow: 0px 13.3978px 24.8817px rgba(0, 31, 110, 0.15);
         border: 1px solid $d-light;
         .title {
-         color: $d-text1;
+          color: $d-text1;
         }
         .detail {
           color: $d-text2;

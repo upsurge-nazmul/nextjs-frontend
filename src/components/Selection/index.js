@@ -9,6 +9,8 @@ function Dropdown({
   placeholder,
   margin,
   className,
+  keyAccessor = "value",
+  valueAccessor = "name",
 }) {
   const [showoptions, setshowoptions] = useState(false);
   const [filteredOptoins, setFilteredOptions] = useState(options);
@@ -34,7 +36,9 @@ function Dropdown({
     if (searchParam && options.length) {
       setFilteredOptions(() =>
         options.filter((item) =>
-          item.name.toLowerCase().startsWith(searchParam.toLowerCase())
+          item[valueAccessor]
+            .toLowerCase()
+            .startsWith(searchParam.toLowerCase())
         )
       );
     } else {
@@ -43,7 +47,7 @@ function Dropdown({
   }, [searchParam, options]);
 
   const handleChange = (item) => {
-    setvalue(item.value);
+    setvalue(item[keyAccessor]);
     setSearchParam("");
     setFilteredOptions(options);
     setshowoptions(false);
@@ -66,8 +70,10 @@ function Dropdown({
         </p> */}
         <p className={styles.text}>
           {options && options.length
-            ? options.find((option) => option.value === value)
-              ? options.find((option) => option.value === value).name
+            ? options.find((option) => option[keyAccessor] === value)
+              ? options.find((option) => option[keyAccessor] === value)[
+                  valueAccessor
+                ]
               : placeholder
             : ""}
         </p>
@@ -95,7 +101,7 @@ function Dropdown({
                     }}
                     key={"CompanySelectionOption" + index}
                   >
-                    {item.name}
+                    {item[valueAccessor]}
                   </p>
                 );
               })

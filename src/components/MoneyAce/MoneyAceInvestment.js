@@ -277,7 +277,7 @@ export default function MoneyAceInvestment({
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("stock")}>
               <img
-              className={styles.blackImage}
+                className={styles.blackImage}
                 src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/stock.png"
                 alt=""
               />
@@ -288,7 +288,7 @@ export default function MoneyAceInvestment({
               onClick={() => setcurrentmode("realestate")}
             >
               <img
-              className={styles.blackImage}
+                className={styles.blackImage}
                 src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/home-insurance.png"
                 alt=""
               />
@@ -296,7 +296,7 @@ export default function MoneyAceInvestment({
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("gold")}>
               <img
-              className={styles.blackImage}
+                className={styles.blackImage}
                 src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/gold-ingots.png"
                 alt=""
               />
@@ -304,7 +304,7 @@ export default function MoneyAceInvestment({
             </div>
             <div className={styles.btn} onClick={() => setcurrentmode("fd")}>
               <img
-              className={styles.blackImage}
+                className={styles.blackImage}
                 src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/fd.png"
                 alt=""
               />
@@ -315,7 +315,7 @@ export default function MoneyAceInvestment({
               onClick={() => setcurrentmode("retirement")}
             >
               <img
-              className={styles.blackImage}
+                className={styles.blackImage}
                 src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/pension.png"
                 alt=""
               />
