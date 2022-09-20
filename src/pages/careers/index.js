@@ -11,6 +11,7 @@ import JD from "../../components/Careers/JD";
 import Modal from "../../components/Modal";
 import { PositionData } from "../../components/Careers/staticData";
 import LeftPanel from "../../components/LeftPanel";
+import PageTitle from "../../components/PageTitle";
 
 function Careers() {
   const router = useRouter();
@@ -42,6 +43,7 @@ function Careers() {
 
   return (
     <div className={styles.careerPage}>
+      <PageTitle />
       <Header
         showauth={showauth}
         setshowauth={setshowauth}

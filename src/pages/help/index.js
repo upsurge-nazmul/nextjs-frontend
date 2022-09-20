@@ -13,6 +13,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 
 function Help({ userdata }) {
   const router = useRouter();
@@ -70,6 +71,7 @@ function Help({ userdata }) {
     <div
       className={`${styles.helpPage} ${theme === "dark" && styles.darkstyles}`}
     >
+      <PageTitle />
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

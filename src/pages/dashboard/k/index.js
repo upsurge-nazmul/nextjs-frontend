@@ -32,6 +32,7 @@ import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
 
 export default function ChildActivity({
@@ -272,6 +273,7 @@ export default function ChildActivity({
 
   return (
     <div className={styles.childactivity}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showtour && (

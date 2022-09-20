@@ -13,6 +13,7 @@ import { Game_Data, Simulator_Data } from "../../../static_data/Game_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import GameApis from "../../../actions/apis/GameApis";
+import PageTitle from "../../../components/PageTitle";
 function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
   console.log(recentgames);
   // modes are different pages like home,kids,store,payments,notifications
@@ -113,9 +114,9 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
   }
   return (
     <div className={styles.gamesPage}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-
       <div className={styles.contentWrapper}>
         <KidDashboardHeader
           mode={mode}

@@ -11,6 +11,7 @@ import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 
 function CalculatorsPage({ userdata }) {
   const router = useRouter();
@@ -37,6 +38,7 @@ function CalculatorsPage({ userdata }) {
         theme === "dark" && styles.darkcalculatorsPage
       }`}
     >
+      <PageTitle />
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

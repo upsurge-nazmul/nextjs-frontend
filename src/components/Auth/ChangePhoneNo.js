@@ -1,9 +1,9 @@
 import { useState } from "react";
-import styles from "../../styles/Auth/auth.module.scss";
+import styles from "../../styles/Auth/changePhone.module.scss";
 import Spinner from "../Spinner";
 import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
-
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 export default function ChangePhoneNo({
   phone,
   email,
@@ -12,6 +12,7 @@ export default function ChangePhoneNo({
   seterror,
   settoastdata,
   setmode,
+  setshowmodal,
 }) {
   const [newPhone, setNewPhone] = useState(phone);
   const [loading, setloading] = useState(false);
@@ -63,9 +64,19 @@ export default function ChangePhoneNo({
 
   return (
     <div className={styles.changePhone}>
+      <div
+      className={styles.cross}
+      onClick={() => setshowmodal(false)}
+      >
+      <CancelOutlinedIcon className={styles.icon} />
+      </div>
+      <div className={styles.heading}>
+        Please edit your phone number and continue
+      </div>
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
+          className={styles.inputText}
           type="text"
           placeholder="Phone"
           value={newPhone}
