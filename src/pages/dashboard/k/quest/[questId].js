@@ -13,6 +13,7 @@ import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
+import PageTitle from "../../../../components/PageTitle";
 
 const LESSON_TYPES = ["recording", "activity", "quiz"];
 
@@ -85,6 +86,7 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questDetailPage}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

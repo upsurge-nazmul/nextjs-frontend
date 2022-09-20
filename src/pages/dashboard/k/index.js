@@ -32,6 +32,7 @@ import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import PageTitle from "../../../components/PageTitle";
 
 export default function ChildActivity({
   pendingchores,
@@ -271,6 +272,7 @@ export default function ChildActivity({
 
   return (
     <div className={styles.childactivity}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showtour && (
