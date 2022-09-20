@@ -56,15 +56,64 @@
     }
     .actionArea {
       padding: 20px;
-      .nextButton {
+      display: flex;
+      gap:5px;
+      align-items: center;
+      margin-left: 40px;
+      .nextButton,.shareButton {
         cursor: pointer;
         font-size: 18px;
         font-weight: 500;
         border: none;
         background-color: #17d1bc;
         color: #fff;
-        border-radius: 14px;
         padding: 10px 30px;
+        border-radius: 14px;
+      }
+      .shareButton{
+        display: flex;
+        gap:10px;
+        padding: 10px 10px 10px 20px;
+      }
+      .textToCopy{
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        width:32px;
+        background-color: #17d1bc;
+        color:#fff;
+        padding:5px;
+        border-radius: 14px;
+        .none{
+          visibility: hidden;
+          position: absolute;
+        }
+        .textToCopyToolTip{
+          font-size: .9rem;
+          position: absolute;
+          width: 120px;
+          text-align: center;
+          background-color: #555;
+          padding: 5px 0;
+          border-radius: 6px;
+          z-index: 6;
+          top:-35px;
+          left:-45px;
+          visibility: hidden;
+        }
+        .textToCopyToolTip::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+      }
+      .textToCopy:hover .textToCopyToolTip{
+        visibility: visible;
       }
     }
   }
