@@ -21,6 +21,7 @@ export default function Pathway({ highlight = null, handleClick }) {
                   <img
                     src={`/images/journey/${item.pathwayId}.svg`}
                     className={styles.iconImage}
+                    alt=""
                   />
                 </div>
                 <div className={styles.title}>{item.title}</div>
