@@ -3,6 +3,26 @@
   flex-direction: column;
   gap: 15px;
   background-color: #fff;
+  .cross {
+    position: absolute;
+    top: 0;
+    right: -100px;
+    z-index: 100;
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      font-size: 40px;
+      color: rgb(255, 109, 109);
+      transition: all 0.3s ease;
+      &:hover {
+        color: hsl(0, 75%, 65%);
+        cursor: pointer;
+      }
+    }
+  }
   .heading {
     font-size: 20px;
     font-weight: 500;
@@ -25,14 +45,14 @@
       justify-content: center;
       font-family: "Lexend", sans-serif;
     }
-    input {
-      flex: 1;
-      border: none !important;
-      border-radius: 0;
-      margin-bottom: 0;
-      padding: 15px;
-      max-width: none;
-    }
+  }
+  .inputText {
+    flex: 1;
+    border: none !important;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 15px;
+    max-width: none;
   }
   .button {
     background: #4166eb;
