@@ -273,7 +273,7 @@ export default function ChildActivity({
 
   return (
     <div className={styles.childactivity}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Dashboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showtour && (

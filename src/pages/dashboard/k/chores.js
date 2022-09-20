@@ -75,7 +75,7 @@ export default function KidChoresPage({
 
   return (
     <div className={styles.kidChoresPage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Chores`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showlevels && <LevelComponent setshow={setshowlevels} />}

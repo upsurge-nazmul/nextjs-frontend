@@ -252,7 +252,7 @@ function Dashboard({
   } else
     return (
       <div className={styles.dashboard}>
-        <PageTitle />
+        <PageTitle title={`upsurge | Dashboard`} />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
         {phoneverified && showtour && (

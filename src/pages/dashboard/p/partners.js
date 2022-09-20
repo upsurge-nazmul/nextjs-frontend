@@ -48,7 +48,7 @@ export default function Partners({ userdatafromserver }) {
 
   return (
     <div className={styles.partnerpage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Partners`} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

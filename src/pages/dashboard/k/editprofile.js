@@ -168,7 +168,7 @@ export default function EditProfile({ data, childavatars }) {
 
   return (
     <div className={styles.manageChore}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Profile`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showpopup && (

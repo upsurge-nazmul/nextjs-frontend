@@ -52,7 +52,7 @@ export default function CalculatorsPage({ userdatafromserver }) {
   }, [calculatorName]);
   return (
     <div className={styles.calcs} id="calc-page">
-      <PageTitle />
+      <PageTitle title={`upsurge | ${heading ? heading : "Calculators"}`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />

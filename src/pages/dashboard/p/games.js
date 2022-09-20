@@ -112,7 +112,7 @@ function Games({ recentgames, userdatafromserver }) {
   }
   return (
     <div className={styles.gamesPage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Games`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

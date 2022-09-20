@@ -104,7 +104,7 @@ function ChoresPage({
   } else
     return (
       <div className={styles.choresPage}>
-        <PageTitle />
+        <PageTitle title={`upsurge | Chores`} />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
         {deleteid && (

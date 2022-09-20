@@ -66,7 +66,7 @@ export default function KidStore({
 
   return (
     <div className={styles.kidStore}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Rewards`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <RequestModal

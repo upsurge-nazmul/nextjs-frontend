@@ -28,7 +28,7 @@ export default function Calculators({ userdatafromserver }) {
   }, []);
   return (
     <div className={styles.calcs}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Calculators`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
@@ -50,7 +50,7 @@ export default function Calculators({ userdatafromserver }) {
                     key={"calccalrd" + index}
                     className={styles.calcCard}
                     onClick={() =>
-                      router.push(`/dashboard/w/calculator/${item}`)
+                      router.push(`/dashboard/p/calculator/${item}`)
                     }
                   >
                     <div className={styles.cardimg}>

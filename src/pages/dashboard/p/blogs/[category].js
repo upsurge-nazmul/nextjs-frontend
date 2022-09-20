@@ -106,7 +106,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   }
   return (
     <div className={`${styles.blogs} ${openFull ? styles.disablescroll : ""}`}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Blogs`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />

@@ -99,7 +99,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
 
   return (
     <div className={styles.blogs}>
-      <PageTitle />
+      {blogdata && <PageTitle title={`${blogdata.title}`} />}
       <DashboardLeftPanel fixed={true} />
       {/* <Toast data={toastdata} /> */}
       <Curve1 className={styles.curve1} />

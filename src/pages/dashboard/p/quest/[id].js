@@ -76,7 +76,7 @@ export default function Quests({ kidsdata, questData, userdatafromserver }) {
 
   return (
     <div className={styles.quest}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Knowledge Quest`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

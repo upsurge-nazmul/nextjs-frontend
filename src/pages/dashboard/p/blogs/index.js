@@ -68,7 +68,7 @@ export default function Blogs({
   }
   return (
     <div className={styles.blogs}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Blogs`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />

@@ -74,7 +74,7 @@ export default function ParentStore({
 
   return (
     <div className={styles.parentStore}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Rewards`} />
       <DashboardLeftPanel type="parent" />
       <Toast data={toastdata} />
       <ApproveModal

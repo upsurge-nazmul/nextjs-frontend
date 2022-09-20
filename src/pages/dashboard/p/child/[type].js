@@ -300,7 +300,11 @@ function AddKid({ childdata, userdatafromserver }) {
   }
   return (
     <div className={styles.manageChore}>
-      <PageTitle />
+      <PageTitle
+        title={`upsurge | ${
+          type ? (type === "edit" ? "Edit" : "Add") : ""
+        } Child`}
+      />
       <DashboardLeftPanel disableClicks={router.query.showTour} />
       <Toast data={toastdata} />
       {showavatarmodal && (

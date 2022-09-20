@@ -249,7 +249,7 @@ export default function EditProfile({ data, minDate }) {
 
   return (
     <div className={styles.manageChore}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Profile`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       {showphonepopup && (

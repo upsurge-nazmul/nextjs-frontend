@@ -45,7 +45,7 @@ export default function DailyQuestion({
 
   return (
     <div className={styles.invitepage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Question of the day`} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
