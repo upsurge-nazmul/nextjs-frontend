@@ -24,7 +24,7 @@ export default function TaskDisplay({ task, handleCancelClick }) {
             src={task.route}
           ></iframe>
         ) : (
-          ""
+          router.push(task.route)
         )}
       </div>
     </Modal>
