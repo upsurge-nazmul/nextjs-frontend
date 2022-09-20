@@ -9,6 +9,7 @@ import ApplicationForm from "../../components/Careers/ApplicationForm";
 import { PositionData } from "../../components/Careers/staticData";
 import Success from "../../components/Careers/Success";
 import LeftPanel from "../../components/LeftPanel";
+import PageTitle from "../../components/PageTitle";
 
 export default function Position() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function Position() {
 
   return (
     <div className={styles.position}>
+      <PageTitle />
       <Header
         showauth={showauth}
         setshowauth={setshowauth}

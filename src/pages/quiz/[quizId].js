@@ -9,6 +9,7 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Quiz/quiz.module.scss";
 import Toast from "../../components/Toast";
 import QuizCardSvg from "../../components/SVGcomponents/QuizCardSvg";
+import PageTitle from "../../components/PageTitle";
 
 function Quiz({ data, quizcards, wrongPath }) {
   const router = useRouter();
@@ -137,6 +138,7 @@ function Quiz({ data, quizcards, wrongPath }) {
     <div
       className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""}`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
