@@ -16,6 +16,7 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
+import PageTitle from "../../../../components/PageTitle";
 
 function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   const router = useRouter();
@@ -105,6 +106,7 @@ function BlogPage({ blogs, totalblogs, porppagination, userdatafromserver }) {
   }
   return (
     <div className={`${styles.blogs} ${openFull ? styles.disablescroll : ""}`}>
+      <PageTitle />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />

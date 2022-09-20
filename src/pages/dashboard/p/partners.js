@@ -19,6 +19,7 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import Tour from "../../../components/Tour/Tour";
 import { MainContext } from "../../../context/Main";
+import PageTitle from "../../../components/PageTitle";
 
 export default function Partners({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
@@ -47,6 +48,7 @@ export default function Partners({ userdatafromserver }) {
 
   return (
     <div className={styles.partnerpage}>
+      <PageTitle />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

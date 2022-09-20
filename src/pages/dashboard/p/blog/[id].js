@@ -12,6 +12,7 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
+import PageTitle from "../../../../components/PageTitle";
 
 export default function BlogPage({ blogdata, related, userdatafromserver }) {
   const router = useRouter();
@@ -98,6 +99,7 @@ export default function BlogPage({ blogdata, related, userdatafromserver }) {
 
   return (
     <div className={styles.blogs}>
+      <PageTitle />
       <DashboardLeftPanel fixed={true} />
       {/* <Toast data={toastdata} /> */}
       <Curve1 className={styles.curve1} />

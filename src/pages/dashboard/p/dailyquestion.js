@@ -23,6 +23,7 @@ import DashboardBlogs from "../../../components/Dashboard/DashboardBlogs";
 import BlogApis from "../../../actions/apis/BlogApis";
 import WaitlistBlogs from "../../../components/WaitlistDashboard/WaitlistBlogs";
 import { MainContext } from "../../../context/Main";
+import PageTitle from "../../../components/PageTitle";
 
 export default function DailyQuestion({
   userdatafromserver,
@@ -44,6 +45,7 @@ export default function DailyQuestion({
 
   return (
     <div className={styles.invitepage}>
+      <PageTitle />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

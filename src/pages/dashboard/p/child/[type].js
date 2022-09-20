@@ -21,6 +21,7 @@ import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
+import PageTitle from "../../../../components/PageTitle";
 
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
@@ -299,6 +300,7 @@ function AddKid({ childdata, userdatafromserver }) {
   }
   return (
     <div className={styles.manageChore}>
+      <PageTitle />
       <DashboardLeftPanel disableClicks={router.query.showTour} />
       <Toast data={toastdata} />
       {showavatarmodal && (

@@ -30,6 +30,7 @@ import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion
 import QuizApis from "../../../actions/apis/QuizApis";
 import Tour from "../../../components/Tour/Tour";
 import Jasper from "../../../components/SVGcomponents/Jasper";
+import PageTitle from "../../../components/PageTitle";
 
 function Dashboard({
   isLogged,
@@ -251,6 +252,7 @@ function Dashboard({
   } else
     return (
       <div className={styles.dashboard}>
+        <PageTitle />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
         {phoneverified && showtour && (

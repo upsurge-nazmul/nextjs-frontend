@@ -19,6 +19,7 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import RejectChore from "../../../components/Dashboard/RejectChore";
 import Tour from "../../../components/Tour/Tour";
 import LeaderBoard from "../../../components/LeaderBoard";
+import PageTitle from "../../../components/PageTitle";
 
 function ChoresPage({
   choresdata,
@@ -103,6 +104,7 @@ function ChoresPage({
   } else
     return (
       <div className={styles.choresPage}>
+        <PageTitle />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
         {deleteid && (

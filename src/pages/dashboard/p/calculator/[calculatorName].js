@@ -17,6 +17,7 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
+import PageTitle from "../../../../components/PageTitle";
 
 export default function CalculatorsPage({ userdatafromserver }) {
   const router = useRouter();
@@ -51,6 +52,7 @@ export default function CalculatorsPage({ userdatafromserver }) {
   }, [calculatorName]);
   return (
     <div className={styles.calcs} id="calc-page">
+      <PageTitle />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
