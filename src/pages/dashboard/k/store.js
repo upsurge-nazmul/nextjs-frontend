@@ -19,6 +19,7 @@ import { MainContext } from "../../../context/Main";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import RedeemSection from "../../../components/Dashboard/RedeemSection";
 import AvatarsModal from "../../../components/KidStore/AvatarsModal";
+import PageTitle from "../../../components/PageTitle";
 
 export default function KidStore({
   isLogged,
@@ -65,6 +66,7 @@ export default function KidStore({
 
   return (
     <div className={styles.kidStore}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <RequestModal

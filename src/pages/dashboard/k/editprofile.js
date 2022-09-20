@@ -18,6 +18,7 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
+import PageTitle from "../../../components/PageTitle";
 export default function EditProfile({ data, childavatars }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -167,6 +168,7 @@ export default function EditProfile({ data, childavatars }) {
 
   return (
     <div className={styles.manageChore}>
+      <PageTitle />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showpopup && (
