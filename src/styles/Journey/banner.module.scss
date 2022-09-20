@@ -1,0 +1,195 @@
+.banner {
+  border-radius: 14px;
+  color: #fff;
+  padding: 30px;
+  margin-top: 10px;
+  position: relative;
+  .triangle {
+    position: absolute;
+    // top: -20px;
+    // left: 70px;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    .left {
+      .title {
+        font-size: 36px;
+        font-weight: 400;
+        padding: 20px 0 5px;
+      }
+      .description {
+        font-size: 18px;
+        font-weight: 300;
+      }
+      .buttonArea {
+        padding: 10px 0;
+        .button {
+          background-color: #4066eb;
+          color: #fff;
+          border: none;
+          outline: none;
+          padding: 10px 20px;
+          border-radius: 14px;
+          box-shadow: 0px 0px 3px 1px #1447f8;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .reward {
+        text-align: center;
+        .svg {
+          width: 12px;
+          height: 12px;
+          margin-right: 5px;
+          path {
+            fill: #fff;
+          }
+        }
+      }
+      .icon {
+        .iconImage {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .rewardBanner {
+    margin: -30px;
+    position: relative;
+    .rewardBg {
+      object-fit: cover;
+      width: 100%;
+      max-height: 209px;
+      border-radius: 14px;
+    }
+    .rewardText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #686869;
+      font-size: 28px;
+      font-weight: 500;
+    }
+  }
+}
+
+// bigger width tabs
+@media only screen and (min-width: 821px) and (max-width: 1024px) {
+  .banner {
+    max-width: calc(95vw - 120px);
+    .triangle {
+      display: none;
+    }
+  }
+}
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .banner {
+    max-width: calc(95vw - 60px);
+    .triangle {
+      display: none;
+    }
+  }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .banner {
+    border-radius: 14px;
+    color: #fff;
+    max-width: calc(95vw - 80px);
+    padding: 10px 15px;
+    margin-top: 10px;
+    position: relative;
+    .triangle {
+      display: none;
+    }
+    .content {
+      display: flex;
+      justify-content: space-between;
+      .left {
+        .title {
+          font-size: 20px;
+          font-weight: 400;
+          padding: 20px 0 5px;
+        }
+        .description {
+          font-size: 12px;
+          font-weight: 300;
+        }
+        .buttonArea {
+          padding: 10px 0;
+          .button {
+            background-color: #4066eb;
+            color: #fff;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 14px;
+            box-shadow: 0px 0px 3px 1px #1447f8;
+            font-size: 10px;
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .reward {
+          text-align: center;
+          font-size: 10px;
+          .svg {
+            width: 8px;
+            height: 8px;
+            margin-right: 5px;
+            path {
+              fill: #fff;
+            }
+          }
+        }
+        .icon {
+          .iconImage {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .rewardBanner {
+      margin: 0;
+      position: relative;
+      .rewardBg {
+        object-fit: cover;
+        width: 100%;
+        max-height: 209px;
+        border-radius: 14px;
+      }
+      .rewardText {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #686869;
+        font-size: 28px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+}

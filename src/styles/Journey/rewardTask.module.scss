@@ -1,0 +1,138 @@
+.rewardTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .content {
+    width: 50vw;
+    .header {
+      display: flex;
+      justify-content: space-around;
+      color: #686869;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f5f5f5;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 30px;
+      margin: 20px 0;
+      padding: 20px;
+      .image {
+        text-align: center;
+        .icon {
+          height: 60px;
+          width: 60px;
+        }
+        .title {
+          color: #686869;
+          font-weight: 300;
+          font-size: 16px;
+        }
+      }
+      .reward {
+        display: flex;
+        align-items: center;
+        .rewardSvg {
+          width: 20px;
+          height: 20px;
+          margin-right: 5px;
+          path {
+            fill: #686869;
+          }
+        }
+        .rewardText {
+          color: #686869;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      .badges {
+      }
+    }
+  }
+}
+
+// bigger width tabs
+@media only screen and (min-width: 821px) and (max-width: 1024px) {
+  .rewardTask {
+    .content {
+      width: 100%;
+    }
+  }
+}
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .rewardTask {
+    .content {
+      width: 100%;
+    }
+  }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .rewardTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .content {
+      width: 100%;
+      .header {
+        display: flex;
+        justify-content: space-around;
+        color: #686869;
+      }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f5f5f5;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+        margin: 10px 0;
+        padding: 10px;
+        .image {
+          text-align: center;
+          .icon {
+            height: 40px;
+            width: 40px;
+          }
+          .title {
+            color: #686869;
+            font-weight: 300;
+            font-size: 14px;
+          }
+        }
+        .reward {
+          display: flex;
+          align-items: center;
+          .rewardSvg {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            path {
+              fill: #686869;
+            }
+          }
+          .rewardText {
+            color: #686869;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+        .badges {
+        }
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+}
