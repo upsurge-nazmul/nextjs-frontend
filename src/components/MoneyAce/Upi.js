@@ -43,7 +43,7 @@ export default function Upi({
         <p className={styles.heading}>
           <img
             className={styles.headingicon}
-            src="https://i.ibb.co/MsY3sDZ/Bank.png"
+            src="https://imgcdn.upsurge.in/images/Bank.png"
             alt=""
           />
           Bank

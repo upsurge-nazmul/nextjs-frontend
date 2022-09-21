@@ -118,7 +118,7 @@ export default function KidStore({
         <div className={styles.mainContent} id="quest-main">
           <div className={styles.mainhead}>
             <img
-              src="https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
+              src="https://imgcdn.upsurge.in/images/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
               alt=""
             />
             <div className={styles.right}>
@@ -200,13 +200,13 @@ export default function KidStore({
                         {currentlevel > 6 && (
                           <img
                             className={styles.stamp}
-                            src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
+                            src="https://imgcdn.upsurge.in/images/Untitled-design-146-removebg-preview.png"
                             alt=""
                             loading="lazy"
                           />
                         )}
                         <img
-                          src="https://i.ibb.co/r21r8V1/mainmap.jpg"
+                          src="https://imgcdn.upsurge.in/images/mainmap.jpg"
                           className={styles.bg}
                           alt=" "
                         />

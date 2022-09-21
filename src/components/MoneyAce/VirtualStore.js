@@ -215,7 +215,7 @@ export default function VirtualStore({
               }}
             >
               <img
-                src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                 alt=""
               />
             </div>
@@ -228,7 +228,7 @@ export default function VirtualStore({
           <img
             className={styles.home}
             onClick={() => setcurrenttab("dashboard")}
-            src="https://i.ibb.co/kmfyw9t/homepng.png"
+            src="https://imgcdn.upsurge.in/images/homepng.png"
             alt=""
           />
         </div>
@@ -237,7 +237,7 @@ export default function VirtualStore({
         <img
           className={styles.back}
           onClick={() => setcurrenttab("dashboard")}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          src="https://imgcdn.upsurge.in/images/homepng.png"
           alt=""
         />
       )}

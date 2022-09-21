@@ -24,9 +24,9 @@ export default function RewardBox({ data, index, opened }) {
         src={
           index >= data?.reward
             ? index === data?.reward && opened
-              ? "https://i.ibb.co/C5FqHWd/toppng-com-opened-red-gift-box-600x319.png"
-              : "https://i.ibb.co/2MgB40Q/toppng-com-ift-box-in-red-png-clipart-gift-box-clipart-2371x2679.png"
-            : "https://i.ibb.co/C5FqHWd/toppng-com-opened-red-gift-box-600x319.png"
+              ? "https://imgcdn.upsurge.in/images/toppng-com-opened-red-gift-box-600x319.png"
+              : "https://imgcdn.upsurge.in/images/toppng-com-ift-box-in-red-png-clipart-gift-box-clipart-2371x2679.png"
+            : "https://imgcdn.upsurge.in/images/toppng-com-opened-red-gift-box-600x319.png"
         }
         alt=""
       />

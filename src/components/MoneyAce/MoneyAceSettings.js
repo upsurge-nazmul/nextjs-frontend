@@ -36,7 +36,7 @@ export default function MoneyAceSettings({
       <img
         className={styles.homebtn}
         onClick={() => setshowsettings(false)}
-        src="https://i.ibb.co/kmfyw9t/homepng.png"
+        src="https://imgcdn.upsurge.in/images/homepng.png"
         alt=""
       />
     </div>

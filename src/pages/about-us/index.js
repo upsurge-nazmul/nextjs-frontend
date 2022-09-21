@@ -100,7 +100,7 @@ export default function About({ userdata }) {
           </div>
           <div className={styles.imgwrapper}>
             <img
-              src="https://i.ibb.co/wc7Dh1d/Untitled-design-57-removebg.png"
+              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
               alt=""
               loading="lazy"
             />

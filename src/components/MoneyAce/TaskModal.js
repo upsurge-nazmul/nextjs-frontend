@@ -59,7 +59,7 @@ export default function TaskModal({
         <img
           className={styles.homebtn}
           onClick={() => settaskmodal("")}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          src="https://imgcdn.upsurge.in/images/homepng.png"
           alt=""
         />
       </div>

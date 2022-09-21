@@ -26,7 +26,7 @@ export default function KnowledgeQuestMainSection({
     {
       name: "Money",
       image:
-        "https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
+        "https://imgcdn.upsurge.in/images/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
       des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
   ]);

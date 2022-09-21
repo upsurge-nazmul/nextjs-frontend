@@ -180,13 +180,13 @@ export const Simulator_Data = {
   Stock: {
     name: "Stock Simulator",
     description: "Go in a virtual simulator to learn about stock trading.",
-    img: "https://i.ibb.co/jLJLgxS/Pngtree-cartoon-hand-drawn-dollar-trading-3692475.png",
+    img: "https://imgcdn.upsurge.in/images/Pngtree-cartoon-hand-drawn-dollar-trading-3692475.png",
     pushto: "/dashboard/k/stocksimulator/home",
   },
   Crypto: {
     name: "Crypto Simulator",
     description: "Go in a virtual simulator to learn about crypto trading.",
-    img: "https://i.ibb.co/85KCRxM/free-bitcoin-icon-2207-thumb.png",
+    img: "https://imgcdn.upsurge.in/images/free-bitcoin-icon-2207-thumb.png",
     pushto: "/dashboard/k/cryptosimulator/home",
   },
 };

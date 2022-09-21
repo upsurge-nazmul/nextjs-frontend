@@ -27,7 +27,7 @@ export default function JobHub({
   const data = [
     {
       name: "Honey & Money",
-      image: "https://i.ibb.co/P6nyLX6/bee.png",
+      image: "https://imgcdn.upsurge.in/images/bee.png",
       description:
         "Be a bee and collect honey. \n 100 drops makes 1 bottle of honey.",
       type: "game",
@@ -40,7 +40,7 @@ export default function JobHub({
     },
     {
       name: "Go Fishing",
-      image: "https://i.ibb.co/q1khNtw/fishing.png",
+      image: "https://imgcdn.upsurge.in/images/fishing.png",
       description:
         "Go fishing and catch as much fishes. \n watchout for shark attacks",
       type: "game",
@@ -54,7 +54,7 @@ export default function JobHub({
     },
     {
       name: "Deliver Pizzas",
-      image: "https://i.ibb.co/JccFQbs/pizza-deliver.png",
+      image: "https://imgcdn.upsurge.in/images/pizza-deliver.png",
       description: "Earn your pocket money delivering pizzas.",
       type: "game",
       id: "task-30",
@@ -66,7 +66,7 @@ export default function JobHub({
     },
     {
       name: "Protect Your Farm",
-      image: "https://i.ibb.co/MBpfYtC/farm.png",
+      image: "https://imgcdn.upsurge.in/images/farm.png",
       description: "Protect your farm from intruders.",
       type: "game",
       id: "farm",
@@ -79,7 +79,7 @@ export default function JobHub({
     },
     {
       name: "Deliver Newspaper",
-      image: "https://i.ibb.co/1LTZRmm/newspaper.png",
+      image: "https://imgcdn.upsurge.in/images/newspaper.png",
       description: "Deliver newspaper to neighbours & earn some money.",
       type: "game",
       id: "news",
@@ -91,7 +91,7 @@ export default function JobHub({
     },
     {
       name: "Fast Food Service",
-      image: "https://i.ibb.co/NTrWPrJ/fast-food.png",
+      image: "https://imgcdn.upsurge.in/images/fast-food.png",
       description: "Sell Fast Foods.",
       type: "game",
       id: "apiary-course",
@@ -104,7 +104,7 @@ export default function JobHub({
     },
     {
       name: "Take Tution",
-      image: "https://i.ibb.co/ZTL1J3R/tution.png",
+      image: "https://imgcdn.upsurge.in/images/tution.png",
       description: "Teach & Earn",
       type: "game",
       id: "tutions",
@@ -159,7 +159,7 @@ export default function JobHub({
           className={styles.backbutton}
           onClick={() => setcurrenttab("dashboard")}
         >
-          <img src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png" alt="" />
+          <img src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png" alt="" />
         </div>
       </div>
     </div>

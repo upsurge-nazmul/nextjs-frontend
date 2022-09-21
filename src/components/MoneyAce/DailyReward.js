@@ -14,13 +14,13 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
             {!opened ? (
               <div className={styles.gift} onClick={() => setopened(true)}>
                 <img
-                  src="https://i.ibb.co/2MgB40Q/toppng-com-ift-box-in-red-png-clipart-gift-box-clipart-2371x2679.png"
+                  src="https://imgcdn.upsurge.in/images/toppng-com-ift-box-in-red-png-clipart-gift-box-clipart-2371x2679.png"
                   alt=""
                   className={styles.giftimage}
                 />
                 <img
                   src={
-                    "https://i.ibb.co/wKpX35C/119-1190624-tck-design-logo-sunburst-black-white-starburst-throw.png"
+                    "https://imgcdn.upsurge.in/images/119-1190624-tck-design-logo-sunburst-black-white-starburst-throw.png"
                   }
                   alt=""
                   className={styles.sunburst}
@@ -32,7 +32,7 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
                 <p className={styles.subhead}>Yay! you have won {data?.text}</p>
                 <img
                   src={
-                    "https://i.ibb.co/wKpX35C/119-1190624-tck-design-logo-sunburst-black-white-starburst-throw.png"
+                    "https://imgcdn.upsurge.in/images/119-1190624-tck-design-logo-sunburst-black-white-starburst-throw.png"
                   }
                   alt=""
                   className={styles.sunburst}
@@ -83,7 +83,7 @@ export default function DailyReward({ setshowdaily, data, setmoneyacedata }) {
             }
             setshowdaily(false);
           }}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          src="https://imgcdn.upsurge.in/images/homepng.png"
           alt=""
         />
       </div>

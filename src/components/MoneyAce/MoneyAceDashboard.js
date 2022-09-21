@@ -511,12 +511,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/NY9GYFc/home-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/home-beveled.png"
                     alt=""
                   />
                 </div>
@@ -532,12 +532,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/TK5YZqy/school-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/school-beveled.png"
                     alt=""
                   />
                 </div>
@@ -558,12 +558,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/GHWwgnp/bank-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/bank-beveled.png"
                     alt=""
                   />
                 </div>
@@ -590,12 +590,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/qm57QYQ/invest-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/invest-beveled.png"
                     alt=""
                   />
                 </div>
@@ -610,12 +610,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/QnD63s0/online-shopping-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/online-shopping-beveled.png"
                     alt=""
                   />
                 </div>
@@ -631,12 +631,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/3FT8Zw1/panel-shield-inside-blue-1-1.png"
+                    src="https://imgcdn.upsurge.in/images/panel-shield-inside-blue-1-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/VCjSFcp/jobs-beveled.png"
+                    src="https://imgcdn.upsurge.in/images/jobs-beveled.png"
                     alt=""
                   />
                 </div>
@@ -650,12 +650,12 @@ export default function MoneyAceDashboard({
                 <div className={styles.bg}>
                   <img
                     className={styles.bgimg}
-                    src="https://i.ibb.co/tYSFRWk/Task-Panel-1.png"
+                    src="https://imgcdn.upsurge.in/images/Task-Panel-1.png"
                     alt=""
                   />
                   <img
                     className={styles.bgicon}
-                    src="https://i.ibb.co/Wk1xwTs/tasks-1.png"
+                    src="https://imgcdn.upsurge.in/images/tasks-1.png"
                     alt=""
                   />
                 </div>

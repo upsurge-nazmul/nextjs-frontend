@@ -73,7 +73,7 @@ export default function Bank({
   }
   //
   //
-  // https://i.ibb.co/qrv1TwZ/icon-info-0-1.png
+  // https://imgcdn.upsurge.in/images/icon-info-0-1.png
   async function handleopenaccount() {
     let response = await MoneyAceApis.openBankAccount();
     if (response && response.data && response.data.success) {
@@ -359,13 +359,13 @@ export default function Bank({
                     {userdata.gender === "male" ? (
                       <img
                         className={styles.Checkbox}
-                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
+                        src="https://imgcdn.upsurge.in/images/checkboxfilled.png"
                         alt=""
                       />
                     ) : (
                       <img
                         className={styles.Checkbox}
-                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
+                        src="https://imgcdn.upsurge.in/images/checkboxemptu.png"
                         alt=""
                       />
                     )}
@@ -373,13 +373,13 @@ export default function Bank({
                     {userdata.gender === "female" ? (
                       <img
                         className={styles.Checkbox}
-                        src="https://i.ibb.co/JjkK9wf/checkboxfilled.png"
+                        src="https://imgcdn.upsurge.in/images/checkboxfilled.png"
                         alt=""
                       />
                     ) : (
                       <img
                         className={styles.Checkbox}
-                        src="https://i.ibb.co/Gk8h9Sc/checkboxemptu.png"
+                        src="https://imgcdn.upsurge.in/images/checkboxemptu.png"
                         alt=""
                       />
                     )}
@@ -523,7 +523,7 @@ export default function Bank({
               }}
             >
               <img
-                src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                 alt=""
               />
             </div>
@@ -537,8 +537,8 @@ export default function Bank({
               <img
                 src={
                   mode === "passbook"
-                    ? "https://i.ibb.co/qrv1TwZ/icon-info-0-1.png"
-                    : "https://i.ibb.co/qWP5w1r/btn-icon-book-1.png"
+                    ? "https://imgcdn.upsurge.in/images/icon-info-0-1.png"
+                    : "https://imgcdn.upsurge.in/images/btn-icon-book-1.png"
                 }
                 alt=""
               />
@@ -559,7 +559,7 @@ export default function Bank({
               }}
             >
               <img
-                src="https://i.ibb.co/6BTprr4/icon-circle-plus-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-circle-plus-0-1.png"
                 alt=""
               />
               <p>Deposit</p>
@@ -575,7 +575,7 @@ export default function Bank({
               }}
             >
               <img
-                src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-circle-minus-0-1.png"
                 alt=""
               />
               <p>Withdraw</p>
@@ -585,7 +585,7 @@ export default function Bank({
 
             <div className={styles.btn} onClick={() => setacoountopened(false)}>
               <img
-                src="https://i.ibb.co/GMnGHP4/icon-moneybag-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-moneybag-0-1.png"
                 alt=""
               />
               <p>Account</p>
@@ -600,7 +600,7 @@ export default function Bank({
                 setshowcard(true);
               }}
             >
-              <img src="https://i.ibb.co/FbtW5QZ/icon-cards-0-1.png" alt="" />
+              <img src="https://imgcdn.upsurge.in/images/icon-cards-0-1.png" alt="" />
               <p>Cards</p>
             </div>
             <div
@@ -614,7 +614,7 @@ export default function Bank({
               }}
             >
               <img
-                src="https://i.ibb.co/cCHvsmB/1024x1024bb-removebg-preview-1.png"
+                src="https://imgcdn.upsurge.in/images/1024x1024bb-removebg-preview-1.png"
                 alt=""
               />
               <p>UPI</p>

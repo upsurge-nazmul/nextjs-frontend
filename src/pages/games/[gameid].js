@@ -501,7 +501,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
             </div>
           </div>
           <div className={styles.right}>
-            <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/>
           </div>
         </div>
       ) : (

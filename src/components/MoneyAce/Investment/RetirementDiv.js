@@ -112,20 +112,20 @@ export default function RetirementDiv({
                 onClick={() => setcurrentmode("main")}
               >
                 <img
-                  src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                   alt=""
                 />
               </div>
               <div className={styles.btn} onClick={() => setmode("portfolio")}>
                 <img
-                  src="https://i.ibb.co/qWP5w1r/btn-icon-book-1.png"
+                  src="https://imgcdn.upsurge.in/images/btn-icon-book-1.png"
                   alt=""
                 />
                 <p style={{ textAlign: "center" }}>Current Investments</p>
               </div>
               <div className={styles.btn} onClick={() => setmode("buy")}>
                 <img
-                  src="https://i.ibb.co/6BTprr4/icon-circle-plus-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-plus-0-1.png"
                   alt=""
                 />
                 <p style={{ textAlign: "center" }}>Invest in Retirement Fund</p>
@@ -241,7 +241,7 @@ export default function RetirementDiv({
           </div>
           <div className={styles.backbutton} onClick={() => setmode("main")}>
             <img
-              src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+              src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
               alt=""
             />
           </div>

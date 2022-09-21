@@ -31,7 +31,7 @@ function CoursesPage({ liveclassdata }) {
         "This introductory quests takes children through the concepts of money, banking, payments and money management. To progress, you have to complete each chapter, and complete all six to earn the completion badge and 1,000 UniCoins.",
       amount: 3500,
       img_url:
-        "https://i.ibb.co/XpQ4TYc/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
+        "https://imgcdn.upsurge.in/images/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png",
       id: "upsurge-quest",
     },
   ];
