@@ -14,7 +14,7 @@ export default function WaitingListCta({ setshowauth }) {
     <div className={styles.waitinglist}>
       <div className={styles.left}>
         <img
-          src="https://i.ibb.co/rstCXKx/rupixen-com-5lw6-CLBZl-Cg-unsplash.png"
+          src="https://imgcdn.upsurge.in/images/rupixen-com-5lw6-CLBZl-Cg-unsplash.png"
           alt=""
         />
       </div>
@@ -26,7 +26,7 @@ export default function WaitingListCta({ setshowauth }) {
       <div className={styles.right}>
         <img
           className={styles.background}
-          src="https://i.ibb.co/94m1jJg/unsplash-ROQz-KIAd-Y78.png"
+          src="https://imgcdn.upsurge.in/images/unsplash-ROQz-KIAd-Y78.png"
           alt=""
         ></img>
         <div className={styles.text}>

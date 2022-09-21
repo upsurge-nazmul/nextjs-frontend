@@ -161,7 +161,7 @@ export default function Bulletin({ setmode, canvassize }) {
                 <div className={styles.right}>
                   <img
                     className={styles.img}
-                    src="https://i.ibb.co/HnqL613/Dark-Green-Modern-Gradient-Wave-Linktree-Background-1-2.png"
+                    src="https://imgcdn.upsurge.in/images/Dark-Green-Modern-Gradient-Wave-Linktree-Background-1-2.png"
                     alt=""
                   ></img>
                 </div>
@@ -192,7 +192,7 @@ export default function Bulletin({ setmode, canvassize }) {
                 <div className={styles.right}>
                   <img
                     className={styles.img}
-                    src="https://i.ibb.co/txm6fXb/Dark-Green-Modern-Gradient-Wave-Linktree-Background-3-4.png"
+                    src="https://imgcdn.upsurge.in/images/Dark-Green-Modern-Gradient-Wave-Linktree-Background-3-4.png"
                     alt=""
                   ></img>
                 </div>
@@ -212,7 +212,7 @@ export default function Bulletin({ setmode, canvassize }) {
                 <div className={styles.right}>
                   <img
                     className={styles.img}
-                    src="https://i.ibb.co/dpL0bjb/Dark-Green-Modern-Gradient-Wave-Linktree-Background-4-1.png"
+                    src="https://imgcdn.upsurge.in/images/Dark-Green-Modern-Gradient-Wave-Linktree-Background-4-1.png"
                     alt=""
                   ></img>
                 </div>
@@ -245,7 +245,7 @@ export default function Bulletin({ setmode, canvassize }) {
                 <div className={styles.right}>
                   <img
                     className={styles.img}
-                    src="https://i.ibb.co/23BXcFC/Dark-Green-Modern-Gradient-Wave-Linktree-Background-2-1.png"
+                    src="https://imgcdn.upsurge.in/images/Dark-Green-Modern-Gradient-Wave-Linktree-Background-2-1.png"
                     alt=""
                   ></img>
                 </div>

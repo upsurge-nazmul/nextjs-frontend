@@ -136,7 +136,7 @@ export default function Tasks({
           className={styles.backbutton}
           onClick={() => setcurrenttab("dashboard")}
         >
-          <img src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png" alt="" />
+          <img src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png" alt="" />
         </div>
       </div>
     </div>

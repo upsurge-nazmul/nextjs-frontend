@@ -59,7 +59,7 @@ function CalculatorsPage({ userdata }) {
           style={{ position: "relative", height: "150px" }}
         >
           <Image
-            src="https://i.ibb.co/KwbW1s2/calcicon.png"
+            src="https://imgcdn.upsurge.in/images/calcicon.png"
             alt=""
             priority
             layout="fill"

@@ -74,7 +74,7 @@ export default function MoneyAceHeader({
               id="morale"
               title="MORAL"
               value={moneyacedata?.moral || 0}
-              icon="https://i.ibb.co/P60SqYw/morale.png"
+              icon="https://imgcdn.upsurge.in/images/morale.png"
               isRange
             />
             <DataComponent
@@ -85,7 +85,7 @@ export default function MoneyAceHeader({
                   ? 100
                   : moneyacedata?.battery * 20) || 0
               }
-              icon="https://i.ibb.co/GJXYBmN/energy-3d.png"
+              icon="https://imgcdn.upsurge.in/images/energy-3d.png"
               isRange
             />
           </div>
@@ -96,17 +96,17 @@ export default function MoneyAceHeader({
           <DataComponent
             title="CASH IN HAND"
             value={"₹" + toIndianFormat(moneyacedata?.inhand_money || 0)}
-            icon="https://i.ibb.co/N6bmJbS/Money.png"
+            icon="https://imgcdn.upsurge.in/images/Money.png"
           />
           <DataComponent
             title="BANK BALANCE"
             value={"₹" + toIndianFormat(moneyacedata?.account_balance || 0)}
-            icon="https://i.ibb.co/sg6CDCK/icon-envelope-1-1.png"
+            icon="https://imgcdn.upsurge.in/images/icon-envelope-1-1.png"
           />
           <DataComponent
             title="INVESTMENTS"
             value={"₹" + toIndianFormat(moneyacedata?.total_investment || 0)}
-            icon="https://i.ibb.co/g9PY4nz/Group-4948.png"
+            icon="https://imgcdn.upsurge.in/images/Group-4948.png"
           />
         </div>
       )}

@@ -57,7 +57,7 @@ export default function Chores({
           <Image
             objectFit="contain"
             layout="fill"
-            src="https://i.ibb.co/RCDhkjY/mobilechore.png"
+            src="https://imgcdn.upsurge.in/images/mobilechore.png"
             alt=""
           />
         </div>
@@ -94,7 +94,7 @@ export default function Chores({
             <Image
               objectFit="contain"
               layout="fill"
-              src="https://i.ibb.co/RCDhkjY/mobilechore.png"
+              src="https://imgcdn.upsurge.in/images/mobilechore.png"
               alt=""
             />
           </div>

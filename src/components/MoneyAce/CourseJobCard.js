@@ -10,10 +10,10 @@ export default function CourseJobCard({
   type,
 }) {
   const images = {
-    stamina: "https://i.ibb.co/8XPn9kg/energy.png",
-    morale: "https://i.ibb.co/G0nJ3Pn/morality.png",
-    salary: "https://i.ibb.co/4ZKjFgG/salary.png",
-    cost: "https://i.ibb.co/4ZKjFgG/salary.png",
+    stamina: "https://imgcdn.upsurge.in/images/energy.png",
+    morale: "https://imgcdn.upsurge.in/images/morality.png",
+    salary: "https://imgcdn.upsurge.in/images/salary.png",
+    cost: "https://imgcdn.upsurge.in/images/salary.png",
   };
   return (
     <div

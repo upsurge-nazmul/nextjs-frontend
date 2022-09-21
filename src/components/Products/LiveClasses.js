@@ -28,7 +28,7 @@ export default function LiveClasses({ id }) {
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/WFBWc53/liveclass.png"
+            src="https://imgcdn.upsurge.in/images/liveclass.png"
             alt=""
           />
         </div>
@@ -36,7 +36,7 @@ export default function LiveClasses({ id }) {
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/LxjRv60/liveclassgirl.png"
+            src="https://imgcdn.upsurge.in/images/liveclassgirl.png"
             alt=""
           />
         </div>

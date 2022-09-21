@@ -28,7 +28,7 @@ export default function EducationHub({
   const data = [
     {
       name: "Computer Skills",
-      image: "https://i.ibb.co/kBRZN5j/computer-skill.png",
+      image: "https://imgcdn.upsurge.in/images/computer-skill.png",
       description: "Take a short course on imporving your computer skills",
       type: "course",
       id: "task-20",
@@ -39,7 +39,7 @@ export default function EducationHub({
     },
     {
       name: "About Investment",
-      image: "https://i.ibb.co/KKpxZN3/investment.png",
+      image: "https://imgcdn.upsurge.in/images/investment.png",
       description: "Take a short course on imporving your investing skills",
       type: "course",
       id: "task-31",
@@ -50,7 +50,7 @@ export default function EducationHub({
     },
     {
       name: "Driving Course",
-      image: "https://i.ibb.co/pP58XXn/driving.png",
+      image: "https://imgcdn.upsurge.in/images/driving.png",
       description: "Take a short course on imporving your driving skills",
       type: "course",
       id: "task-28",
@@ -61,7 +61,7 @@ export default function EducationHub({
     },
     {
       name: "Fishing Course",
-      image: "https://i.ibb.co/q1khNtw/fishing.png",
+      image: "https://imgcdn.upsurge.in/images/fishing.png",
       description: "Take a short course on imporving your fishing skills",
       type: "course",
       id: "task-24",
@@ -72,7 +72,7 @@ export default function EducationHub({
     },
     {
       name: "Agriculture Course",
-      image: "https://i.ibb.co/YLF7B3T/agriculture.png",
+      image: "https://imgcdn.upsurge.in/images/agriculture.png",
       description: "Take a short course on imporving your agriculture skills",
       type: "course",
       id: "agriculture-course",
@@ -83,7 +83,7 @@ export default function EducationHub({
     },
     {
       name: "Apiary Skills",
-      image: "https://i.ibb.co/v4qwfWM/apiary.png",
+      image: "https://imgcdn.upsurge.in/images/apiary.png",
       description: "Learn apiary with ease",
       type: "course",
       id: "apiary-course",
@@ -94,7 +94,7 @@ export default function EducationHub({
     },
     {
       name: "Personal Finance",
-      image: "https://i.ibb.co/9t7x4ym/personal-finance.png",
+      image: "https://imgcdn.upsurge.in/images/personal-finance.png",
       description: "Learn about managing your personal financial",
       type: "course",
       id: "finance-course",
@@ -158,7 +158,7 @@ export default function EducationHub({
           className={styles.backbutton}
           onClick={() => setcurrenttab("dashboard")}
         >
-          <img src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png" alt="" />
+          <img src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png" alt="" />
         </div>
       </div>
     </div>
