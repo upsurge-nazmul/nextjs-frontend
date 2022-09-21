@@ -8,7 +8,7 @@ export default function TribeCard({ data, onClick }) {
       <img
         onClick={onClick}
         src={
-          data.tribe_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+          data.tribe_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
         }
         alt=""
         className={styles.grpimg}

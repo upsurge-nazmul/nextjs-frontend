@@ -30,7 +30,7 @@ export default function EditProfile({ data, minDate }) {
   );
   const [mode, setmode] = useState("Edit Profile");
   const [img, setimg] = useState(
-    data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+    data?.user_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [username, setusername] = useState(data?.user_name || "");

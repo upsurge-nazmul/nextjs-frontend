@@ -9,7 +9,7 @@
 
 .fillspace {
   margin-top: 20px;
-  width: 100%;
+  min-width: 20rem;
   background-color: #ffffff;
   border-radius: 20px;
   display: flex;
@@ -19,6 +19,7 @@
   justify-content: center;
   min-height: 300px;
   position: relative;
+  padding: 2rem;
   .curve1,
   .curve2 {
     position: absolute;

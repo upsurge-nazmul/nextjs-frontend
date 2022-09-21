@@ -41,7 +41,7 @@ function KidComponent({ data, setkids, settoastdata, confirmationgiven }) {
       <img
         onClick={() => router.push("/dashboard/p/child-activity/" + data.id)}
         src={
-          data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+          data?.user_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
         }
         alt=""
         className={styles.kidimg}

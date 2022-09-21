@@ -5,12 +5,12 @@ import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
 export default function PartnerSection({ dashboard, nomargin }) {
   const rewards = [
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpKqn4rb_wjxfwd.jpg",
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpyswS28_w9hfz7.jpg",
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpyYVFl1_lisbnd.png",
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/fl_lossy,f_auto,q_auto,w_auto/gift_vouchers/phpgzwRG4_mwhnz0.png",
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/phpNsJMuh_s3ah3y.png",
-    "https://res.cloudinary.com/dyyjph6kx/image/upload/gift_vouchers/php7Z2XTZ_kfbtfw.png",
+    "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpyYVFl1_lisbnd.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
+    "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
   ];
   const { theme } = useContext(MainContext);
   const router = useRouter();

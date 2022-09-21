@@ -194,7 +194,7 @@ export default function Games({
               <img
                 src={
                   tribedetails.tribe_img_url ||
-                  "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                  "https://imgcdn.upsurge.in/images/default-avatar.png"
                 }
                 alt=""
               />

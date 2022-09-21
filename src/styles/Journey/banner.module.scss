@@ -31,7 +31,6 @@
           outline: none;
           padding: 10px 20px;
           border-radius: 14px;
-          box-shadow: 0px 0px 3px 1px #1447f8;
         }
       }
     }
@@ -40,8 +39,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-width: 8rem;
       .reward {
         text-align: center;
+        border: 2px solid rgba(255, 255, 255, .6);
+        padding: 0.5rem;
+        border-radius: 10px;
         .svg {
           width: 12px;
           height: 12px;

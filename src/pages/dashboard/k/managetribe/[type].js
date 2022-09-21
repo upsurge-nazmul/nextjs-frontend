@@ -31,7 +31,7 @@ export default function ManageTribe({
   );
   const [name, setname] = useState(tribedetails?.name);
   const [img_url, setimg_url] = useState(
-    tribedetails?.tribe_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+    tribedetails?.tribe_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
   );
   const [description, setdescription] = useState(tribedetails?.description);
   const [showtribemodal, setshowtribemodal] = useState(false);
@@ -102,7 +102,7 @@ export default function ManageTribe({
       });
       return;
     }
-    if (img_url === "https://i.ibb.co/v3vVV8r/default-avatar.png") {
+    if (img_url === "https://imgcdn.upsurge.in/images/default-avatar.png") {
       settoastdata({
         show: true,
         msg: "Please choose an avatar",
