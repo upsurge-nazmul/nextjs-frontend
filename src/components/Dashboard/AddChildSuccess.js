@@ -34,7 +34,7 @@ export default function AddChildSuccess({
           <button className={styles.nextButton} onClick={clickHandler}>
             Done
           </button>
-            <Link href = {`${shareWhatsApp}`} >
+            <Link href = {`${shareWhatsApp}`} passHref>
             <div className={styles.shareButton}>
             Share
             <WhatsAppIcon

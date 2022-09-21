@@ -93,6 +93,7 @@ export default function Tasks({ highlight, handleTaskClick }) {
               <img
                 src={"/images/journey/taskEnd.svg"}
                 className={styles.taskEnd}
+                alt=""
               />
               {highlight.reward && (
                 <div className={styles.footerReward}>
