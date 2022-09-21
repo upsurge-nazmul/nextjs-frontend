@@ -95,7 +95,7 @@ export default function GamePage({ userDataFromServer }) {
         <Curve2 className={styles.curve2} />
         <img
           className={styles.icon}
-          src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+          src="https://imgcdn.upsurge.in/images/unsp/photo-1600080972464-8e5f35f63d08.avif"
           alt=""
         />
         <div className={styles.headingSection}>

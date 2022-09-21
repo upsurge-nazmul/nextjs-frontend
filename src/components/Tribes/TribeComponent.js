@@ -5,7 +5,7 @@ import ChatSvg from "../SVGcomponents/ChatSvg";
 export default function TribeComponent({ data }) {
   const demokiddata = {
     image:
-      "https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+      "https://imgcdn.upsurge.in/images/unsp/photo-1509343256512-d77a5cb3791b.avif",
     name: "Mehra Tribe",
     members: "Aadvik, Pihu & 6 others",
   };
