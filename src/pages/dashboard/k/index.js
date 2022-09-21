@@ -311,24 +311,24 @@ export default function ChildActivity({
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               <div className={styles.headsection}>
-                {/* <div className={styles.topblock}>
-                <h2 className={styles.mainheading}>
-                  Level
-                  <HeadingArrow />
-                </h2>
-                <div className={styles.right}>
-                  <div
-                    className={styles.badge}
-                    onClick={() => setshowlevels(true)}
-                  >
-                    <img
-                      src={"/images/badges/badge_" + currentLevel + ".svg"}
-                      alt=""
-                    />
-                    <p className={styles.level}>Level {currentLevel}</p>
-                  </div>
-                </div>
-              </div> */}
+                  {/* <div className={styles.topblock}>
+                      <h2 className={styles.mainheading}>
+                        Level
+                        <HeadingArrow />
+                      </h2>
+                      <div className={styles.right}>
+                        <div
+                          className={styles.badge}
+                          onClick={() => setshowlevels(true)}
+                        >
+                          <img
+                            src={"/images/badges/badge_" + currentLevel + ".svg"}
+                            alt=""
+                          />
+                          <p className={styles.level}>Level {currentLevel}</p>
+                        </div>
+                      </div>
+                    </div> */}
                 {childTribes.length > 0 && (
                   <>
                     <div className={styles.tribeheading}>
@@ -363,7 +363,7 @@ export default function ChildActivity({
                   </>
                 )}
               </div>
-              <div className={styles.milestonesSection}>
+              {/* <div className={styles.milestonesSection}>
                 <h2
                   id="milestone"
                   className={styles.mainheading}
@@ -390,9 +390,11 @@ export default function ChildActivity({
                     Complete Milestones
                   </p>
                 </div>
+              </div> */}              
+              <div className={styles.questionSection}>
+                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
               </div>
               <div className={styles.leaderboardsection} id="leaderboards">
-                <h2 className={styles.heading}>Leaderboards</h2>
                 <div className={styles.wrapper}>
                   <div className={styles.element}>
                     <p className={styles.rank}>
@@ -416,12 +418,9 @@ export default function ChildActivity({
                 </div> */}
                 </div>
               </div>
-              <div className={styles.questionSection}>
-                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
-              </div>
             </div>
             <div className={styles.flexRight}>
-              <div className={styles.questsection} id="quests">
+              {/* <div className={styles.questsection} id="quests">
                 <h2
                   className={styles.heading}
                   onClick={() => router.push("/dashboard/k/quest")}
@@ -444,7 +443,7 @@ export default function ChildActivity({
                     />
                   )}
                 </div>
-              </div>
+              </div> */}
               <div className={styles.choreSection} id="chores">
                 <h2
                   className={styles.mainheading}
@@ -471,8 +470,10 @@ export default function ChildActivity({
                   )}
                 </div>
               </div>
+              
             </div>
           </div>
+          <></>
           <div className={styles.gamessection} id="recent_games">
             <h2 className={styles.heading}>Recently played games</h2>
             <div className={styles.wrapper}>
