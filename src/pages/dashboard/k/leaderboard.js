@@ -10,18 +10,39 @@ import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
 import ChildLeaderboard from "../../../components/ChildLeaderboard";
 
+const TABS = [
+  { key: "daily", name: "Daily" },
+  { key: "monthly", name: "Monthly" },
+];
+
 export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-  const [mode, setmode] = useState("Leaderboard");
   const { setuserdata } = useContext(MainContext);
+  const [mode, setmode] = useState("Leaderboard");
+  const [tab, setTab] = useState(TABS[0]);
+  const [leaderboardData, setLeaderboardData] = useState();
 
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
+
+  useEffect(() => {
+    if (tab) {
+      async function fetchLeaderboardData() {
+        let response = await DashboardApis.getoverallleaderboard();
+        if (response && response.data && response.data.success) {
+          setLeaderboardData(response.data.data);
+        } else {
+          setLeaderboardData([]);
+        }
+      }
+      fetchLeaderboardData();
+    }
+  }, [tab]);
 
   return (
     <div className={styles.leaderboard}>
@@ -36,42 +57,9 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <ChildLeaderboard data={dailyLeaderboard} />
+          <ChildLeaderboard data={leaderboardData} tab={tab} setTab={setTab} />
         </div>
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      return {
-        redirect: {
-          permanent: false,
-          destination: "/?err=02",
-        },
-      };
-    } else {
-      let overallleaderboard = await DashboardApis.getoverallleaderboard(
-        null,
-        token
-      );
-      return {
-        props: {
-          isLogged: true,
-          userdatafromserver: response.data.data,
-          dailyLeaderboard: overallleaderboard.data.data || [],
-          msg: "",
-        },
-      };
-    }
-  } else {
-    return { props: { isLogged: false, msg: "cannot get token" } };
-  }
 }

@@ -7,8 +7,7 @@ const TABS = [
   { key: "monthly", name: "Monthly" },
 ];
 
-export default function ChildLeaderboard({ data }) {
-  const [tab, setTab] = useState(TABS[0]);
+export default function ChildLeaderboard({ data, tab, setTab }) {
   const { userdata } = useContext(MainContext);
 
   return (
@@ -35,6 +34,7 @@ export default function ChildLeaderboard({ data }) {
           <p className={styles.score}>Score</p>
         </div>
         {data &&
+          data.length &&
           data.map((item, index) => {
             return (
               <div className={styles.row} key={item?.id || item.name + index}>
