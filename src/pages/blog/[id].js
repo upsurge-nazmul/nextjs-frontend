@@ -15,6 +15,7 @@ import WaitingListCta from "../../components/WaitingListCta";
 import JoinUs from "../../components/Home/JoinUs";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import PageTitle from "../../components/PageTitle";
 
 export default function BlogPage({ blogdata, related, userdata }) {
   const router = useRouter();
@@ -115,6 +116,7 @@ export default function BlogPage({ blogdata, related, userdata }) {
     <div
       className={`${styles.blogPage} ${theme === "dark" && styles.darkstyles}`}
     >
+      <PageTitle />
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

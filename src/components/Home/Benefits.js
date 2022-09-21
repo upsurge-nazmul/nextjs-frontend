@@ -12,7 +12,7 @@ import { MainContext } from "../../context/Main";
 function Benefits() {
   const data = [
     {
-      title: "Kickstart your child’s financial journey",
+      title: "Kickstart your child’s financial education journey",
       description:
         "Financial literacy is a life-skill and the earlier your children start, the easier it will be for them to achieve their financial goals. Through our games, courses and live classes, all designed by experts, children will understand money, saving, investing and entrepreneurship like never before!",
       img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit1+(1).png",
@@ -128,7 +128,7 @@ function Benefits() {
           {data.map((item, index) => {
             return (
               <div className={styles.container} key={"mobilecontainer" + index}>
-                <p className={styles.title}>{item.title}</p>
+                <h3 className={styles.title}>{item.title}</h3>
                 <div className={styles.imgwrapper}>
                   {index === 0 ? (
                     <>
@@ -163,7 +163,7 @@ function Benefits() {
                     } else if (index === 1) {
                       router.push("/benefits/experimential");
                     } else if (index === 2) {
-                      router.push("/benefits/entrepreneuership");
+                      router.push("/benefits/entrepreneurship");
                     } else if (index === 3) {
                       router.push("/benefits/rewards");
                     } else {
@@ -181,7 +181,7 @@ function Benefits() {
             <div className={styles.prop2} />
             <div className={styles.prop3} />
             <div className={styles.prop4} />
-            <p
+            <h2
               className={styles.title}
               style={{
                 color:
@@ -196,13 +196,13 @@ function Benefits() {
                     : "#4166EB",
               }}
             >
-              Why upsurge?
-            </p>
+              Why upsurge = Financial Literacy for Kids
+            </h2>
 
             <div className={styles.allsections}>
               {data.map((item, index) => {
                 return (
-                  <p
+                  <h3
                     key={"benefitsSection" + index}
                     onClick={() => hanldemove(index)}
                     className={
@@ -224,7 +224,7 @@ function Benefits() {
                     }}
                   >
                     {item.title}
-                  </p>
+                  </h3>
                 );
               })}
             </div>
@@ -311,7 +311,7 @@ function Benefits() {
               style={{
                 color: "#FF6263",
               }}
-              onClick={() => router.push("/benefits/entrepreneuership")}
+              onClick={() => router.push("/benefits/entrepreneurship")}
             >{`LEARN MORE ->`}</p>
           </div>
           <div className={styles.imgwrapper}>

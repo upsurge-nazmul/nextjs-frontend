@@ -1,16 +1,16 @@
-@use  "../variables/colors.scss" as *;
+@use "../variables/colors.scss" as *;
 
-.main{
-    width: 100%;
-    height: 100vh;
-    padding: 40px 7vw;
-    .heading{
-        margin-bottom: 20px;
-    }
+.main {
+  width: 100%;
+  height: 100vh;
+  padding: 40px 7vw;
+  .heading {
+    margin-bottom: 20px;
+  }
 }
 
-.darkmain{
-    .heading{
-        color: $d-text2;
-    }
+.darkmain {
+  .heading {
+    color: $d-text2;
+  }
 }

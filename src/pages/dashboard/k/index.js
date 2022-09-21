@@ -31,6 +31,9 @@ import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
+import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import PageTitle from "../../../components/PageTitle";
+import Journey from "../../../components/Journey";
 
 export default function ChildActivity({
   pendingchores,
@@ -44,6 +47,7 @@ export default function ChildActivity({
   moneyacedata,
   activeQuests,
   stockHoldings,
+  todaysquestion,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -221,6 +225,14 @@ export default function ChildActivity({
       extraPadding: true,
     },
     {
+      ref: "#todays-question",
+      position: "bottom",
+      content: `You can answer questions and get rewards.`,
+      superimpose: true,
+      required: false,
+      isolate: true,
+    },
+    {
       ref: "#chores-leftpanel",
       position: "bottom",
       content: `Now lets go to chores.`,
@@ -261,6 +273,7 @@ export default function ChildActivity({
 
   return (
     <div className={styles.childactivity}>
+      <PageTitle title={`upsurge | Dashboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showtour && (
@@ -294,9 +307,11 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
-            <div className={styles.headsection}>
-              {/* <div className={styles.topblock}>
+          <Journey />
+          <div className={styles.contentArea}>
+            <div className={styles.flexLeft}>
+              <div className={styles.headsection}>
+                {/* <div className={styles.topblock}>
                 <h2 className={styles.mainheading}>
                   Level
                   <HeadingArrow />
@@ -314,78 +329,78 @@ export default function ChildActivity({
                   </div>
                 </div>
               </div> */}
-              {childTribes.length > 0 && (
-                <>
-                  <div className={styles.tribeheading}>
-                    <h2
-                      className={styles.mainheading}
-                      onClick={() => router.push("/dashboard/k/tribes")}
-                    >
-                      Tribes
-                      <HeadingArrow />
-                    </h2>
-                  </div>
-                  <div className={styles.tribes} id="tribewrapper">
-                    {childTribes.map((tribe) => (
-                      <div
-                        className={styles.tribe}
-                        key={tribe.id}
-                        onClick={() =>
-                          router.push("/dashboard/k/tribes/" + tribe.id)
-                        }
+                {childTribes.length > 0 && (
+                  <>
+                    <div className={styles.tribeheading}>
+                      <h2
+                        className={styles.mainheading}
+                        onClick={() => router.push("/dashboard/k/tribes")}
                       >
-                        <img
-                          src={
-                            tribe.tribe_img_url ||
-                            "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                        Tribes
+                        <HeadingArrow />
+                      </h2>
+                    </div>
+                    <div className={styles.tribes} id="tribewrapper">
+                      {childTribes.map((tribe) => (
+                        <div
+                          className={styles.tribe}
+                          key={tribe.id}
+                          onClick={() =>
+                            router.push("/dashboard/k/tribes/" + tribe.id)
                           }
-                          alt=""
-                        />
-                        <p className={styles.name}>{tribe.name}</p>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-            <div className={styles.milestonesSection}>
-              <h2
-                id="milestone"
-                className={styles.mainheading}
-                onClick={() => {
-                  if (currentTourIndex === 2) {
-                    setcurrentTourIndex((prev) => prev + 1);
-                  }
-                  setshowtodo(true);
-                }}
-              >
-                Milestones
-                <HeadingArrow />
-              </h2>
-              <div className={styles.quizblock}>
-                <p className={styles.heading}>
-                  {tododata
-                    ? tododata.completed + "/" + tododata.total
-                    : "All clear"}
-                </p>
-                <p
-                  className={styles.subheading}
-                  onClick={() => setshowtodo(true)}
-                >
-                  Complete Milestones
-                </p>
+                        >
+                          <img
+                            src={
+                              tribe.tribe_img_url ||
+                              "https://i.ibb.co/v3vVV8r/default-avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{tribe.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
-            </div>
-            <div className={styles.leaderboardsection} id="leaderboards">
-              <h2 className={styles.heading}>Leaderboards</h2>
-              <div className={styles.wrapper}>
-                <div className={styles.element}>
-                  <p className={styles.rank}>
-                    {moneyacedata.inhand_money + moneyacedata.account_balance}
+              <div className={styles.milestonesSection}>
+                <h2
+                  id="milestone"
+                  className={styles.mainheading}
+                  onClick={() => {
+                    if (currentTourIndex === 2) {
+                      setcurrentTourIndex((prev) => prev + 1);
+                    }
+                    setshowtodo(true);
+                  }}
+                >
+                  Milestones
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.quizblock}>
+                  <p className={styles.heading}>
+                    {tododata
+                      ? tododata.completed + "/" + tododata.total
+                      : "All clear"}
                   </p>
-                  <p className={styles.section}>Money ace</p>
+                  <p
+                    className={styles.subheading}
+                    onClick={() => setshowtodo(true)}
+                  >
+                    Complete Milestones
+                  </p>
                 </div>
-                <div className={styles.element}>
+              </div>
+              <div className={styles.leaderboardsection} id="leaderboards">
+                <h2 className={styles.heading}>Leaderboards</h2>
+                <div className={styles.wrapper}>
+                  <div className={styles.element}>
+                    <p className={styles.rank}>
+                      {moneyacedata.inhand_money + moneyacedata.account_balance}
+                    </p>
+                    <p className={styles.section}>Money ace</p>
+                  </div>
+                  {/* <div className={styles.element}>
                   <p className={styles.rank}>{highestquizscore ?? 0}</p>
                   <p className={styles.section}>Money Quotient</p>
                 </div>
@@ -398,82 +413,86 @@ export default function ChildActivity({
                     {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
                   </p>
                   <p className={styles.section}>StockSimulator</p>
+                </div> */}
+                </div>
+              </div>
+              <div className={styles.questionSection}>
+                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              </div>
+            </div>
+            <div className={styles.flexRight}>
+              <div className={styles.questsection} id="quests">
+                <h2
+                  className={styles.heading}
+                  onClick={() => router.push("/dashboard/k/quest")}
+                >
+                  Quests
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper}>
+                  {quests.length && quests.find((quest) => quest.level > 0) ? (
+                    <>
+                      {quests.map((quest, i) => {
+                        if (quest.level > 0)
+                          return <KidQuest data={quest} key={i} />;
+                      })}
+                    </>
+                  ) : (
+                    <FillSpace
+                      text={"No quest in progress"}
+                      extrastyle={{ margin: 0, minHeight: "220px" }}
+                    />
+                  )}
+                </div>
+              </div>
+              <div className={styles.choreSection} id="chores">
+                <h2
+                  className={styles.mainheading}
+                  onClick={() => router.push("/dashboard/k/chores")}
+                >
+                  Chores
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper}>
+                  {chorearray.map((data, index) => {
+                    return (
+                      <KidChore
+                        data={data}
+                        settoastdata={settoastdata}
+                        key={"chorecomponent" + index}
+                      />
+                    );
+                  })}
+                  {chorearray.length === 0 && (
+                    <FillSpace
+                      text={"No chores in progress"}
+                      extrastyle={{ margin: 0, minHeight: "220px" }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <div className={styles.flexRight}>
-            <div className={styles.choreSection} id="chores">
-              <h2
-                className={styles.mainheading}
-                onClick={() => router.push("/dashboard/k/chores")}
-              >
-                Chores
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {chorearray.map((data, index) => {
-                  return (
-                    <KidChore
-                      data={data}
-                      settoastdata={settoastdata}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-                {chorearray.length === 0 && (
-                  <FillSpace
-                    text={"No chores in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
+          <div className={styles.gamessection} id="recent_games">
+            <h2 className={styles.heading}>Recently played games</h2>
+            <div className={styles.wrapper}>
+              {recentgames.map((game, i) => {
+                return (
+                  <GameCard
+                    data={Game_Data[game]}
+                    key={i}
+                    onCLick={() =>
+                      handleGameClick(Game_Data[game].pushto, game)
+                    }
                   />
-                )}
-              </div>
-            </div>
-            <div className={styles.questsection} id="quests">
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/quest")}
-              >
-                Quests
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {quests.length ? (
-                  <>
-                    {quests.map((quest, i) => {
-                      if (quest.level > 0)
-                        return <KidQuest data={quest} key={i} />;
-                    })}
-                  </>
-                ) : (
-                  <FillSpace
-                    text={"No quest in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
-            </div>
-            <div className={styles.gamessection} id="recent_games">
-              <h2 className={styles.heading}>Recently played games</h2>
-              <div className={styles.wrapper}>
-                {recentgames.map((game, i) => {
-                  return (
-                    <GameCard
-                      data={Game_Data[game]}
-                      key={i}
-                      onCLick={() =>
-                        handleGameClick(Game_Data[game].pushto, game)
-                      }
-                    />
-                  );
-                })}
-                {recentgames.length === 0 && (
-                  <FillSpace
-                    text={"No recent games"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
+                );
+              })}
+              {recentgames.length === 0 && (
+                <FillSpace
+                  text={"No recent games"}
+                  extrastyle={{ margin: 0, minHeight: "220px" }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -489,6 +508,7 @@ export async function getServerSideProps({ params, req }) {
     let response = await LoginApis.checktoken({
       token: token,
     });
+    let tq = await QuizApis.todaysquestion(null, token);
     if (response && !response.data.success) {
       msg = response.data.msg;
       return {
@@ -594,6 +614,7 @@ export async function getServerSideProps({ params, req }) {
             stockHoldings && stockHoldings.data && stockHoldings.data.success
               ? stockHoldings.data.data
               : null,
+          todaysquestion: tq?.data?.success ? tq.data.data : null,
         },
       };
     }

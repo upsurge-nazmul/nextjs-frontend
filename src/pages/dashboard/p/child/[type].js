@@ -21,9 +21,11 @@ import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
+import PageTitle from "../../../../components/PageTitle";
+
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
-  const type = router.query.type;
+  const { type, backTo = "/dashboard/p" } = router.query;
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -298,6 +300,11 @@ function AddKid({ childdata, userdatafromserver }) {
   }
   return (
     <div className={styles.manageChore}>
+      <PageTitle
+        title={`upsurge | ${
+          type ? (type === "edit" ? "Edit" : "Add") : ""
+        } Child`}
+      />
       <DashboardLeftPanel disableClicks={router.query.showTour} />
       <Toast data={toastdata} />
       {showavatarmodal && (
@@ -325,7 +332,7 @@ function AddKid({ childdata, userdatafromserver }) {
           mode={mode}
           setmode={setmode}
           showback={true}
-          gobackto={"/dashboard/p"}
+          gobackto={backTo}
         />
         <div className={styles.mainContent}>
           <div
@@ -350,7 +357,7 @@ function AddKid({ childdata, userdatafromserver }) {
             <div className={styles.nameWrapper}>
               <ModernInputBox
                 value={firstName}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
                 placeholder="First name *"
@@ -359,47 +366,52 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={lastName}
                 textOnly={true}
-                maxLength={10}
+                maxLength={100}
                 setvalue={setlastName}
                 placeholder="Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
-              // maxLength={10}
+              maxLength={100}
               setvalue={setuserName}
               placeholder="Username *"
               extraclass={styles.margin}
             />
-            <ModernInputBox
-              type="date"
-              placeholder="Date of birth *"
-              disabled={true}
-              value={dob}
-              onChange={(e) => {
-                console.log(e);
-                if (!e) {
-                  return;
-                }
-                console.log(e);
-                if (e.getTime() >= new Date().getTime()) {
-                  settoastdata({
-                    msg: "Invaild date of birth",
-                    show: true,
-                    type: "error",
-                  });
-                } else {
-                  setdob(e);
-                }
-              }}
-            />
-
-            <DropDown
-              placeholder="Gender *"
-              options={["male", "female", "other", "Don't want to disclose"]}
-              value={gender}
-              setvalue={setgender}
-            />
+            <div className={styles.commonWrapper}>
+              <ModernInputBox
+                type="date"
+                placeholder="Date of birth *"
+                disabled={true}
+                value={dob}
+                onChange={(e) => {
+                  console.log(e);
+                  if (!e) {
+                    return;
+                  }
+                  console.log(e);
+                  if (e.getTime() >= new Date().getTime()) {
+                    settoastdata({
+                      msg: "Invaild date of birth",
+                      show: true,
+                      type: "error",
+                    });
+                  } else {
+                    setdob(e);
+                  }
+                }}
+                extrastyle={{
+                  marginBottom: 0,
+                }}
+              />
+              <DropDown
+                placeholder="Gender *"
+                options={["male", "female", "other", "Don't want to disclose"]}
+                value={gender}
+                setvalue={setgender}
+                className={styles.gender}
+              />
+            </div>
             <CitySearch
               placeholder="City *"
               textOnly={true}

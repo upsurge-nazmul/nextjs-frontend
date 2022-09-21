@@ -374,7 +374,7 @@ export default function GamePage({ userdatafromserver, gamedata }) {
                 <img
                   src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
                   className={styles.jasper}
-                  alt ="to-landscape"
+                  alt="to-landscape"
                 />
                 <p className={styles.heading}>
                   Please switch to landscape mode

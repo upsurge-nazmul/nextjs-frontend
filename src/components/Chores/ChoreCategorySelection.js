@@ -8,8 +8,14 @@ import { useRouter } from "next/dist/client/router";
 import { choretemplates } from "../../helpers/choretemplates";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import { getCookie } from "../../actions/cookieUtils";
+import CancelIcon from "@mui/icons-material/Cancel";
 
-function ChoreCategorySelection({ setmode, setStoryIndex, tourActive }) {
+function ChoreCategorySelection({
+  setmode,
+  setStoryIndex,
+  tourActive,
+  setshowmodal,
+}) {
   const [showtemps, setshowtemps] = useState(false);
   const router = useRouter();
   const [showfull, setshowfull] = useState(false);
@@ -46,8 +52,15 @@ function ChoreCategorySelection({ setmode, setStoryIndex, tourActive }) {
     <div className={styles.choreCategorySelection}>
       {!showfull ? (
         <div className={styles.catselection}>
-          <h2>Create chore from template</h2>
-
+          <h2>
+            Create chore from template
+            <CancelIcon
+              className={styles.CancelIcon}
+              onClick={() => {
+                setshowmodal(false);
+              }}
+            />
+          </h2>
           <div className={styles.wrapper}>
             {choretemplates.map((item, index) => {
               return (

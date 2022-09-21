@@ -94,7 +94,7 @@
   }
 
   .heading {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lexend", sans-serif;
     font-size: 24px;
     font-weight: 500;
     text-align: center;
@@ -104,7 +104,7 @@
     margin-top: 40px !important;
   }
   .inputwrapper {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lexend", sans-serif;
     font-size: 44px;
     margin-top: 10px;
     width: 100%;
@@ -134,22 +134,21 @@
   }
 }
 
-.darkstyles{
-
+.darkstyles {
   .heading {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lexend", sans-serif;
     font-size: 24px;
     font-weight: 500;
     text-align: center;
-    color:$d-text1;
+    color: $d-text1;
   }
   .range {
     max-width: 600px;
     margin-top: 40px !important;
-    background:$d-moredark;
+    background: $d-moredark;
   }
   .inputwrapper {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lexend", sans-serif;
     font-size: 44px;
     margin-top: 10px;
     width: 100%;
@@ -157,7 +156,7 @@
     display: flex;
     justify-content: center;
     .input {
-      color:$d-text2;
+      color: $d-text2;
     }
     .pretitle,
     .posttitle {
@@ -173,7 +172,7 @@
       font-size: 18px;
     }
     .inputwrapper {
-      font-family: "Roboto", sans-serif;
+      font-family: "Lexend", sans-serif;
       font-size: 24px;
       margin-top: 10px;
       width: 100%;

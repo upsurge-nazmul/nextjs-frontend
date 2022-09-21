@@ -225,12 +225,14 @@ export default function KidStore({
                             className={styles.stamp}
                             src="https://i.ibb.co/MSnLzRq/Untitled-design-146-removebg-preview.png"
                             alt=""
+                            loading="lazy"
                           />
                         )}
                         <img
                           src="https://i.ibb.co/r21r8V1/mainmap.jpg"
                           className={styles.bg}
                           alt="Main Map"
+                          loading="lazy"
                         />
                         <p
                           id="kqc1"

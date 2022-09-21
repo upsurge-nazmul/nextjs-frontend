@@ -288,7 +288,7 @@
       width: 100%;
       .heading {
         font-size: 24px;
-        font-family: "Roboto", sans-serif;
+        font-family: "Lexend", sans-serif;
         font-weight: 700;
         width: 100%;
         margin-bottom: 20px;
@@ -318,7 +318,7 @@
           flex-direction: column;
           flex: 1;
           font-size: 18px;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           align-items: center;
           .name {
             color: #4166eb;
@@ -651,12 +651,12 @@
     height: 10vh;
   }
 }
-.darkquizPage{
+.darkquizPage {
   .curve2 {
-   opacity: 0.2;
+    opacity: 0.2;
   }
   .curve1 {
-opacity: 0.2;
+    opacity: 0.2;
   }
   .gamedata {
     .left {
@@ -779,9 +779,7 @@ opacity: 0.2;
         .current {
           color: $d-moredark !important;
         }
-       
       }
-
     }
 
     .resultSection {
@@ -789,19 +787,18 @@ opacity: 0.2;
         background-color: $d-moredark;
         .curvecontainer {
           .curve2 {
-          opacity:0.2;
+            opacity: 0.2;
           }
           .curve1 {
-           opacity:0.2;
+            opacity: 0.2;
           }
         }
       }
 
       .signupBox {
-
         .input {
           color: $d-text2;
-         background-color:$d-main;
+          background-color: $d-main;
           ::placeholder {
             color: $d-text2;
           }
@@ -821,12 +818,11 @@ opacity: 0.2;
       }
       .subheading {
         color: $d-text2;
-        
       }
       .points {
         color: $d-text1;
       }
-     
+
       .button {
         color: $d-moredark;
       }
@@ -1776,7 +1772,7 @@ opacity: 0.2;
             flex-direction: column;
             flex: 1;
             font-size: 18px;
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             align-items: center;
             .name {
               color: #4166eb;
@@ -2401,7 +2397,7 @@ opacity: 0.2;
             flex-direction: column;
             flex: 1;
             font-size: 18px;
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             align-items: center;
             .name {
               color: #4166eb;

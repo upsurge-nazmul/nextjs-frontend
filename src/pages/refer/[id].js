@@ -43,8 +43,8 @@ export default function ReferPage() {
       seterror("Username is required");
       return;
     }
-    if (username.length > 8) {
-      seterror("Username cannot contain more than 8 characters");
+    if (username.length > 20) {
+      seterror("Username cannot contain more than 20 characters");
       return;
     }
     if (username.length < 4) {
@@ -154,7 +154,7 @@ export default function ReferPage() {
             <Fb className={styles.social} />
           </a>
           <a
-            href="https://www.instagram.com/upsurge.india/"
+            href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
           >

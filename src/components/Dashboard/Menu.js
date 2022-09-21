@@ -17,12 +17,13 @@ import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
 
 function Menu({
-  settoastdata,
+  settoastdata = () => {},
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
   setSavedUser,
+  setshowinvite,
 }) {
   const {
     savedUsers,
@@ -33,9 +34,10 @@ function Menu({
     setuser,
     setuserdata,
   } = useContext(MainContext);
-  console.log("savedUsers", savedUsers);
+
   const router = useRouter();
   const [showUsers, setshowUsers] = useState(false);
+
   async function handleLogout() {
     let res = await LoginApis.logout();
     if (res && res.data && res.data.success) {
@@ -54,7 +56,6 @@ function Menu({
           return handleChangeUser(savedUsersData[0]);
         }
       }
-
       eraseCookie("accesstoken");
       setuser(null);
       setuserdata(null);
@@ -89,7 +90,6 @@ function Menu({
     // eslint-disable-next-line
   }, []);
   async function handleChangeUser(data) {
-    console.log("cakked", data);
     if (userdata.user_id === data.id) {
       return;
     }
@@ -121,7 +121,6 @@ function Menu({
       setCookie("accesstoken", data.token);
       setuserdata(response.data.data);
       setuser(response.data.data.id);
-      console.log(router.pathname);
       router.reload();
     }
   }
@@ -186,18 +185,35 @@ function Menu({
                 </div>
               );
             })}
-            <div
-              className={`${styles.innerUser} `}
-              onClick={() => setshowauth(true)}
-            >
-              <GroupAddIcon className={styles.icon} />
-              <div className={styles.userInfo}>
-                <p>Add new account</p>
+            {userdata.user_type !== "child" ? (
+              <div
+                className={`${styles.innerUser} `}
+                onClick={() => setshowauth(true)}
+              >
+                <GroupAddIcon className={styles.icon} />
+                <div className={styles.userInfo}>
+                  <p>Add new account</p>
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
+      {menuType === "child" && !waitilistmenu && (
+        <>
+          <p
+            className={styles.tabs}
+            onClick={() => {
+              setshowinvite(true);
+            }}
+          >
+            <GroupAddOutlinedIcon className={styles.editIcon} />
+            Invite
+          </p>
+        </>
+      )}
       {menuType !== "child" && !waitilistmenu && (
         <>
           <p

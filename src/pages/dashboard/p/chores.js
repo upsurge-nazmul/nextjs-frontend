@@ -18,8 +18,15 @@ import ChorePending from "../../../components/Chores/ChorePending";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import RejectChore from "../../../components/Dashboard/RejectChore";
 import Tour from "../../../components/Tour/Tour";
+import LeaderBoard from "../../../components/LeaderBoard";
+import PageTitle from "../../../components/PageTitle";
 
-function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
+function ChoresPage({
+  choresdata,
+  choresLeaderboardData,
+  isLogged,
+  userdatafromserver,
+}) {
   const { setuserdata } = useContext(MainContext);
 
   const [mode, setmode] = useState("Chores");
@@ -97,6 +104,7 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
   } else
     return (
       <div className={styles.choresPage}>
+        <PageTitle title={`upsurge | Chores`} />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
         {deleteid && (
@@ -124,6 +132,9 @@ function ChoresPage({ choresdata, isLogged, userdatafromserver }) {
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
+                {/* <div>
+                  <LeaderBoard data={choresLeaderboardData} />
+                </div> */}
                 <h2 className={styles.heading}>Pending For Approval</h2>
                 <div className={styles.wrapper}>
                   {chores.map((item, index) => {
@@ -312,10 +323,12 @@ export async function getServerSideProps({ params, req }) {
       };
     } else {
       let choresdata = await getchores(token);
+      let choresLeaderboardData = await getLeaderboard(token);
       return {
         props: {
           isLogged: true,
           choresdata,
+          choresLeaderboardData,
           userdatafromserver: response.data.data,
           msg: "",
         },
@@ -343,4 +356,8 @@ async function getchores(token) {
   } else {
     return [];
   }
+}
+async function getLeaderboard(token) {
+  let response = await ChoreApis.getLeaderboard({ role: "parent" }, token);
+  return response?.data?.data ?? [];
 }

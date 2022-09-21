@@ -41,8 +41,9 @@ const googlelogin = (payload) => {
   return ApiCalls.postResponse(`users/googlelogin`, payload);
 };
 
-const login = (payload) => {
-  return ApiCalls.postResponse(`users/login`, payload);
+const login = (payload, token = null) => {
+  console.log(token);
+  return ApiCalls.postResponse(`users/login`, payload, token);
 };
 
 const checktoken = (payload) => {
@@ -124,6 +125,13 @@ const createchildotp = (payload) => {
     getCookie("accesstoken")
   );
 };
+const updatePhoneByEmail = (payload) => {
+  return ApiCalls.putResponse(
+    "users/updatePhoneByEmail",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const LoginApis = {
   signup,
   setphone,
@@ -151,6 +159,7 @@ const LoginApis = {
   resetpass,
   genemailotp,
   createchildotp,
+  updatePhoneByEmail,
 };
 
 export default LoginApis;

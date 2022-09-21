@@ -12,7 +12,9 @@ function ResultBox({
 }) {
   const { theme } = useContext(MainContext);
   return (
-    <div className={`${styles.resultBox} ${theme=== "dark" && styles.darkstyles}`}>
+    <div
+      className={`${styles.resultBox} ${theme === "dark" && styles.darkstyles}`}
+    >
       <div className={styles.topflex}>
         {resultdata.editable1 ? (
           <div className={styles.container}>

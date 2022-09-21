@@ -3,7 +3,6 @@ import React from "react";
 function ProductChoresSvg({ className }) {
   return (
     <svg
-
       className={className}
       viewBox="0 0 31 31"
       fill="none"

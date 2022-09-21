@@ -13,6 +13,7 @@ import ActivityView from "../../../../components/ChildQuest/ActivityView";
 import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
+import PageTitle from "../../../../components/PageTitle";
 
 const LESSON_TYPES = ["recording", "activity", "quiz"];
 
@@ -85,10 +86,19 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questDetailPage}>
+      {currentQuest && <PageTitle title={`upsurge | ${currentQuest.title}`} />}
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        {currentQuest ? <DashboardHeader mode={currentQuest.title} /> : ""}
+        {currentQuest ? (
+          <DashboardHeader
+            mode={currentQuest.title}
+            showback={true}
+            gobackto={"/dashboard/k/quest/"}
+          />
+        ) : (
+          ""
+        )}
         <div className={styles.mainContent}>
           {currentQuest && (
             <div className={styles.headingSection}>

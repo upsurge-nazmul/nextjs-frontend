@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Section from "../../../../components/Quests/Section";
@@ -8,19 +9,13 @@ import DashboardApis from "../../../../actions/apis/DashboardApis";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import Selection from "../../../../components/Selection";
+import NoKid from "../../../../components/Dashboard/NoKid";
+import { MainContext } from "../../../../context/Main";
+import PageTitle from "../../../../components/PageTitle";
 
-const democoncepts = [
-  "Investing",
-  "Saving",
-  "Assets",
-  "Mutual Funds",
-  "Investing",
-  "Saving",
-  "Assets",
-  "Mutual Funds",
-];
-
-export default function Quests({ kidsdata, questData }) {
+export default function Quests({ kidsdata, questData, userdatafromserver }) {
+  const { setuserdata, userdata } = useContext(MainContext);
+  const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -30,6 +25,14 @@ export default function Quests({ kidsdata, questData }) {
   const [kidsOptions, setKidsOptions] = useState();
   const [selectedkid, setSelectedKid] = useState();
   const [levelUpdated, setLevelUpdated] = useState(false);
+
+  useEffect(() => {
+    if (!userdatafromserver) {
+      router.push("/?err=01");
+    } else {
+      setuserdata(userdatafromserver);
+    }
+  }, [userdatafromserver]);
 
   useEffect(() => {
     if (kidsdata && kidsdata.length) {
@@ -73,6 +76,7 @@ export default function Quests({ kidsdata, questData }) {
 
   return (
     <div className={styles.quest}>
+      <PageTitle title={`upsurge | Knowledge Quest`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
@@ -90,38 +94,46 @@ export default function Quests({ kidsdata, questData }) {
             <p className={styles.credits}>1000 UniCoins</p>
           </div>
         </div>
-        <div className={styles.maincontent}>
-          <div className={styles.left}>
-            <div className={styles.midSection}>
-              <div className={styles.knowledgeSection}>
-                <p className={styles.heading}>Knowledge Quest Content</p>
-                <p className={styles.content}>
-                  Follow the course content to learn more about Investing.
-                </p>
-              </div>
-              <div className={styles.dropdownArea}>
-                {kidsOptions && kidsOptions.length ? (
-                  <Selection
-                    value={selectedkid}
-                    setvalue={handleSelection}
-                    options={kidsOptions}
-                    placeholder="Select Child"
-                  />
-                ) : (
-                  ""
-                )}
+        {kidsOptions ? (
+          <>
+            <div className={styles.maincontent}>
+              <div className={styles.left}>
+                <div className={styles.midSection}>
+                  <div className={styles.knowledgeSection}>
+                    <p className={styles.heading}>Knowledge Quest Content</p>
+                    <p className={styles.content}>
+                      Follow the course content to learn more about Investing.
+                    </p>
+                  </div>
+                  <div className={styles.dropdownArea}>
+                    {kidsOptions && kidsOptions.length ? (
+                      <Selection
+                        value={selectedkid}
+                        setvalue={handleSelection}
+                        options={kidsOptions}
+                        placeholder="Select Child"
+                      />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <div className={styles.section}>
+                  {levelUpdated &&
+                    questData &&
+                    questData.length &&
+                    questData.map((quest, index) => (
+                      <Section quest={quest} key={"section" + index} />
+                    ))}
+                </div>
               </div>
             </div>
-            <div className={styles.section}>
-              {levelUpdated &&
-                questData &&
-                questData.length &&
-                questData.map((quest, index) => (
-                  <Section quest={quest} key={"section" + index} />
-                ))}
-            </div>
+          </>
+        ) : (
+          <div className={styles.noData}>
+            <NoKid backTo="/dashboard/p/quest/upsurge-quest" />
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -148,6 +160,7 @@ export async function getServerSideProps({ params, req }) {
             questRes && questRes.data && questRes.data.success
               ? questRes.data.data
               : null,
+          userdatafromserver: response.data.data,
         },
       };
     }

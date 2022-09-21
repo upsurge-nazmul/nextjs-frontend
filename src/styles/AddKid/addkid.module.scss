@@ -21,6 +21,7 @@
         border-radius: 100%;
         width: fit-content;
         height: fit-content;
+        position: relative;
         .imagesetter {
           position: absolute;
           width: 168px;
@@ -51,6 +52,15 @@
         .margin {
           margin-right: 10px !important;
         }
+      }
+      .commonWrapper {
+        display: flex;
+        gap: 10px;
+      }
+      .gender {
+        min-width: 200px;
+        height: 48px;
+        font-size: 18px !important;
       }
       .error {
         font-size: 16px;
@@ -145,7 +155,7 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-family: Roboto;
+            font-family: "Lexend", sans-serif;
             font-style: normal;
             font-weight: 400;
             font-size: 18px;
@@ -167,7 +177,7 @@
           height: 49px;
           margin-bottom: 20px;
           font-size: 18px;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           font-weight: 500;
           border: 1px solid #898989;
           border-radius: 8px;
@@ -176,7 +186,7 @@
         input[type="date"] {
           height: 49px;
           margin-bottom: 20px;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           border: 1px solid #898989;
           border-radius: 8px;
           padding: 0 20px;
@@ -196,14 +206,14 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             font-size: 14px;
             font-weight: 400;
           }
           textarea {
             width: 100%;
             height: 100%;
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             border: 1px solid #898989;
             border-radius: 8px;
             padding: 20px;
@@ -219,7 +229,7 @@
         .voice {
           border: 1px solid #898989;
           border-radius: 8px;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           margin-bottom: 20px;
           width: 100%;
           color: rgba(188, 188, 188, 1);
@@ -288,7 +298,7 @@
       .assignto {
         width: 30%;
         .heading {
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           font-size: 18px;
           font-weight: 500;
         }
@@ -299,7 +309,7 @@
           border-radius: 8px;
           height: 63px;
           width: 100%;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           font-size: 18px;
           font-weight: 500;
           color: #000000;
@@ -465,7 +475,7 @@
           margin-top: 20px;
           padding: 0 20px;
           .heading {
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             font-size: 18px;
             font-weight: 500;
             margin-bottom: 15px;

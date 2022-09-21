@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
-import Entrepreneuership from "../../components/Benefits/Entrepreneuership";
+import Entrepreneurship from "../../components/Benefits/Entrepreneurship";
 import Experimential from "../../components/Benefits/Experimential";
 import Financial from "../../components/Benefits/Financial";
 import Rewards from "../../components/Benefits/RewardsSection";
@@ -61,7 +61,7 @@ function BenfitsPage({ userdata }) {
       <Values insidebenefits />
       <Financial />
       <Experimential />
-      <Entrepreneuership />
+      <Entrepreneurship />
       <Rewards />
       <Skills />
       <JoinUs />

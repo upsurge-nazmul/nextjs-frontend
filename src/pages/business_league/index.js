@@ -32,7 +32,7 @@ export default function UblPage() {
   const cosponsors = [
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/GEN.png",
     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/MM-logo.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
+    // "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
@@ -127,8 +127,7 @@ export default function UblPage() {
         </div>
       </div>
       <div className={styles.des1}>
-        <p>{`India’s 1st Business & Entrepreneurship championship for schoolchildren to promote the next generation of innovators & changemakers.`}</p>
-        <p>{`100 teams will compete against each other across 3 challenges, & the top-25 most innovative ideas will be given ₹10,000 to develop their ideas. They will then pitch to real entrepreneurs, investors & CXOs and can win prizes worth ₹10,00,000!`}</p>
+        <p>{`India’s 1st Business & Entrepreneurship championship for teenagers to promote the next generation of innovators & changemakers.`}</p>
       </div>
       <UbliPrize className={styles.prize} />
       <div className={styles.challenge}>
@@ -136,16 +135,16 @@ export default function UblPage() {
         <div className={styles.challengeDiv}>
           <div className={styles.challengeItem1}>
             <UblGreen className={styles.challengeSvg} />
-            <p>Knowledge Quest</p>
+            <p>{`Knowledge Quiz & Quests`}</p>
           </div>
-          <div className={styles.challengeItem2}>
+          {/* <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>Case Challenge</p>
+          </div> */}
+          <div className={styles.challengeItem3}>
+            <UblRed className={styles.challengeSvg} />
+            <p>Business Plan Competition</p>
           </div>
-        </div>
-        <div className={styles.challengeItem3}>
-          <UblRed className={styles.challengeSvg} />
-          <p>Business Plan Competition</p>
         </div>
       </div>
       <div className={styles.cosponsors}>
@@ -186,12 +185,12 @@ export default function UblPage() {
           <div className={styles.prizes}>
             <UblPrize type="gold" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>First Prize</p>
-            <p className={styles.prizemoney}>₹3,00,000</p>
+            <p className={styles.prizemoney}>₹2,00,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="silver" className={styles.prizeSvg} />
             <p className={styles.prizetitle}>second Prize</p>
-            <p className={styles.prizemoney}>₹2,00,000</p>
+            <p className={styles.prizemoney}>₹1,50,000</p>
           </div>
           <div className={styles.prizes}>
             <UblPrize type="bronze" className={styles.prizeSvg} />
@@ -211,8 +210,7 @@ export default function UblPage() {
           <div className={styles.challengeItem2}>
             <UblYellow className={styles.challengeSvg} />
             <p>
-              Top 3 schools with teams scoring the most points will also receive
-              awards
+              ₹1,00,000 cash prize for the schools with best performing teams
             </p>
           </div>
         </div>
@@ -239,7 +237,7 @@ export default function UblPage() {
         <div className={styles.roadmapWrapper}>
           <div className={styles.midline}></div>
           <div className={styles.roundHeading}>
-            Round 1 - Registrations close July 20, 2022
+            Registrations closes by October 25, 2022.
           </div>
           <div className={styles.round}>
             Each team will participate in 3 challenges and will be awarded
@@ -248,73 +246,25 @@ export default function UblPage() {
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              Knowledge Quest - Live Business & Startup Quiz - July 23, 2022
+              October 30, 2022- Knowledge Quests- Live Business & Startups Quiz
             </p>
-            {`90-minute online quiz which will test students on their knowledge of
-            money & entrepreneurship, and their problem-solving skills - but not
-            based on memory or clicking a button quickly. Teams will be given a
-            problem to solve, & will be free to use whatever resources they
-            want, especially google!`}
+            {`90-minute online quiz which will test students on their knowledge of money & entrepreneurship, and their problem-solving skills - but not based on memory or clicking a button quickly. Teams will be given a problem to solve, & will be free to use whatever resources they want, especially google!`}
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              Workshops & Webinars that students will get a chance to attend
+              {`Meanwhile, you’ll also get to participate in interesting webinars
+              & workshops that’ll help you prep for UBL 2022 (details in the
+              section below)`}
             </p>
-            <ul
-              style={{
-                listStyleType: "none",
-              }}
-            >
-              <li className={styles.wwItem}>
-                <p className={styles.wwTitle}>
-                  Introduction to upsurge & UBL 2022 - July 23
-                </p>
-                <p className={styles.wwDesc}>
-                  Karan Baweja (Founder) & Om (Community Leader)
-                </p>
-              </li>
-              <li className={styles.wwItem}>
-                <p className={styles.wwTitle}>
-                  From 0 to 1 - Making your first business pitch - July 24
-                </p>
-                <p className={styles.wwDesc}>
-                  Karan Baweja - 3x Entrepreneur | ISB | x-Investment Banker
-                </p>
-              </li>
-              <li className={styles.wwItem}>
-                <p className={styles.wwTitle}>
-                  The Case Prep Workshop - July 24
-                </p>
-                <p className={styles.wwDesc}>
-                  Shruti Jolly - Marketing & Consulting veteran | x-McKinsey |
-                  ISB
-                </p>
-              </li>
-              <li className={styles.wwItem}>
-                <p className={styles.wwTitle}>
-                  Building your profile for your dream colleges - July 31
-                </p>
-                <p className={styles.wwDesc}>
-                  Rashi Thakur & Chandni Singh - Seasoned higher education &
-                  career development experts
-                </p>
-              </li>
-            </ul>
           </div>
           <div className={styles.round}>
             <p style={{ fontWeight: 600 }}>
-              Business Idea Pitch -July 30, 2022
+              November 6, 2022- Business Idea Pitch
             </p>{" "}
             {`Teams will be required to come up with a business idea, evaluate & validate it, and submit a preliminary pitch video (maximum 5 minutes) or a presentation on their business plan.`}
           </div>
-          <div className={styles.round}>
-            <p style={{ fontWeight: 600 }}>Case Study - July 30, 2022</p>{" "}
-            {
-              "Each team will have to submit a go-to-market/launch strategy for their selected business idea based on the frameworks we will teach them about. The team will have to decide the product and brand name, and design the go-to-market strategy for their chosen product."
-            }
-          </div>
           <div className={styles.roundHeading}>
-            Round 2 - Teams announced by August 3, 2022
+            Round 2 - Teams announced by November 13, 2022
           </div>
           <div className={styles.round}>
             Up to 25 top teams will be shortlisted based on their performance in
@@ -330,7 +280,7 @@ export default function UblPage() {
               startups to understand business functions
             </p>
           </div>
-          <div className={styles.roundHeading}>Finals - August 20-21, 2022</div>
+          <div className={styles.roundHeading}>Finals - December 3, 2022</div>
           <div className={styles.round}>
             {`Final pitch will be held in front of a jury comprising
             entrepreneurs, venture capitalists, CXOs and startup leaders. Teams
@@ -338,6 +288,38 @@ export default function UblPage() {
             receive investments of up to ₹3,00,000 from our incubator.`}
           </div>
           <UblTug className={styles.tug} />
+        </div>
+      </div>
+      <div className={styles.roadmap}>
+        <div className={styles.roadmapWrapper}>
+          <div className={styles.midline}></div>
+          <div className={styles.roundHeading}>Workshops & Webinars</div>
+          <div className={styles.round}>
+            LIVE interactive sessions with industry experts & leaders to prepare
+            you for your first business plan and go-to-market strategy. Only on
+            our Discord channel.
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 11</p>
+            How to make your first business plan? Decoding a food business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 18</p>5 freelancing tips
+            for teens to earn money online
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Sep 25</p>
+            Secret tips to build a go-to-market plan for your business REPEATED
+            IN SEPT/OCT
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 2</p>
+            Go-to-market plan for a ecommerce business
+          </div>
+          <div className={styles.round}>
+            <p style={{ fontWeight: 600 }}>Sunday, Oct 9</p>0 to 1: Decoding a
+            food business plan from scratch
+          </div>
         </div>
       </div>
       <Values insidebenefits />
@@ -380,18 +362,6 @@ to start and scale a business.`}</p>
             <img src={cosponsors[1]} alt="" />
           </a>
           <p>{`Established in 2019, Mentor Mpact provides expert admissions counseling for top global undergraduate & MBA programs, along with profile-building & career development services to students. They have helped over 1,000 students get 3,000 admits across 20 countries!.`}</p>
-        </div>
-        <div className={styles.sponsor}>
-          <a
-            target="_blank"
-            href="https://happyjars.com/"
-            rel="noopener noreferrer"
-          >
-            <img src={cosponsors[2]} alt="" />
-          </a>
-
-          <p>{`Leading startup in the F&B space which makes delicious range of healthy,
-clean-label and delicious nut butters, dessers & spreads for all.`}</p>
         </div>
       </div>
       <FaqSection customfaq={faqs} />

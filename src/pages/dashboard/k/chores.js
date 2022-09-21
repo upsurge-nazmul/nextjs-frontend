@@ -23,17 +23,19 @@ import NoChores from "../../../components/KidDashboard/NoChores";
 import FillSpace from "../../../components/Dashboard/FillSpace";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import ChoreApis from "../../../actions/apis/ChoreApis";
+import LeaderBoard from "../../../components/LeaderBoard";
+import PageTitle from "../../../components/PageTitle";
 
 export default function KidChoresPage({
   choresdata,
   gamesdata,
   kiddata,
+  userdataFromServer,
   liveclassdata,
   completedchores,
   currentLevel,
+  choresLeaderboardData,
 }) {
-  console.log("******", choresdata);
-
   const [mode, setmode] = useState("Chores");
   const [pendingchores, setpendingchores] = useState();
   const { userdata, setuserdata } = useContext(MainContext);
@@ -50,7 +52,7 @@ export default function KidChoresPage({
   });
 
   useEffect(() => {
-    setuserdata(kiddata);
+    setuserdata(userdataFromServer);
   }, []);
 
   useEffect(() => {
@@ -73,19 +75,19 @@ export default function KidChoresPage({
 
   return (
     <div className={styles.kidChoresPage}>
+      <PageTitle title={`upsurge | Chores`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
+      <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
 
-      <ChoreModal showmodal={showmodal} kiddata={setshowmodal} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
-          mode={mode}
-          setmode={setmode}
-          settoastdata={settoastdata}
-        />
+        <DashboardHeader mode={"Chores"} settoastdata={settoastdata} />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+            <div>
+              <LeaderBoard data={choresLeaderboardData} />
+            </div>
             <div className={styles.pendingChoresSection}>
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>
@@ -182,6 +184,7 @@ export async function getServerSideProps({ params, req }) {
         },
         token
       );
+      let choresLeaderboardData = await getLeaderboard(token);
       return {
         props: {
           isLogged: true,
@@ -192,8 +195,10 @@ export async function getServerSideProps({ params, req }) {
               ? currentLevel.data.data
               : 1,
           kiddata,
+          userdataFromServer: response.data.data,
           liveclassdata: liveclassdata || null,
           completedchores,
+          choresLeaderboardData,
         },
       };
     }
@@ -239,4 +244,8 @@ async function getcompletedchores(id, token) {
   if (response && response.data && response.data.data) {
     return response.data.data;
   } else return null;
+}
+async function getLeaderboard(token) {
+  let response = await ChoreApis.getLeaderboard({ role: "parent" }, token);
+  return response?.data?.data ?? [];
 }

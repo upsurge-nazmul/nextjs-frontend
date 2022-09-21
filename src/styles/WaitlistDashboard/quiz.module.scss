@@ -238,7 +238,7 @@
         width: 100%;
         .heading {
           font-size: 24px;
-          font-family: "Roboto", sans-serif;
+          font-family: "Lexend", sans-serif;
           font-weight: 700;
           width: 100%;
           margin-bottom: 20px;
@@ -268,7 +268,7 @@
             flex-direction: column;
             flex: 1;
             font-size: 18px;
-            font-family: "Roboto", sans-serif;
+            font-family: "Lexend", sans-serif;
             align-items: center;
             .name {
               color: #4166eb;
@@ -444,7 +444,7 @@
           position: absolute;
           z-index: -1;
           top: -20vh;
-        width: 150px;
+          width: 150px;
         }
         .background {
           position: absolute;
@@ -1900,7 +1900,7 @@
           width: 100%;
           padding: 0 20px;
           .startbutton {
-            flex:1;
+            flex: 1;
             min-height: 40px;
             margin: 0;
             height: 45px;
@@ -1915,7 +1915,7 @@
             transition: all 0.3s ease;
           }
           .skipbutton {
-            flex:1;
+            flex: 1;
             height: 45px;
             min-height: 40px;
             margin: 0;

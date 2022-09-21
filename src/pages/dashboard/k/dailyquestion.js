@@ -51,9 +51,9 @@ export default function DailyQuestion({
             {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             <Refer settoastdata={settoastdata} />
           </div>
-          <div className={styles.flexBottom} id="rightpanel">
+          {/* <div className={styles.flexBottom} id="rightpanel">
             <WaitlistBlogs blogs={blogdata} pushTo="/dashboard/p/blog/" />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

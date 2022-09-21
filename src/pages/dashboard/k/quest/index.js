@@ -10,9 +10,9 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
+import PageTitle from "../../../../components/PageTitle";
 
 const QUEST_TYPES = [
-  { title: "All Categories", background: "#ccc", font: "#333" },
   { title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
   { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
   { title: "Career Quests", background: "#ccc", font: "#333" },
@@ -39,10 +39,11 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questPage}>
+      <PageTitle title={`upsurge | Knowledge Quest`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={"Knowledge Quest"} />
+        <DashboardHeader mode={"Knowledge Quest"} settoastdata={settoastdata} />
         <div className={styles.mainContent} id="quest-main">
           <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
           <HeadArea

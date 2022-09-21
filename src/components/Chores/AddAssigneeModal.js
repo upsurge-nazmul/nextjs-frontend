@@ -3,6 +3,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import { getCookie } from "../../actions/cookieUtils";
 import styles from "../../styles/Chores/addassigneemodal.module.scss";
 import { AddAssignees } from "../ManageChore/AddAssignee";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function AddAssigneeModal({
   assignees,
@@ -11,6 +12,7 @@ export default function AddAssigneeModal({
   settoastdata,
   onCancel,
   tourActive,
+  onClear,
 }) {
   const [children, setchildren] = useState([]);
   useEffect(() => {
@@ -32,7 +34,11 @@ export default function AddAssigneeModal({
         <div className={styles.background} onClick={onCancel}></div>
       )}
       <div className={styles.box} id="assignee-modal">
-        <h2>Add Assignee</h2>
+        <div className={styles.boxheader}>
+          <h2>Add Assignee</h2>
+          <CancelIcon className={styles.cancelIcon} onClick={onClear} />
+        </div>
+
         <div className={styles.assigneewrapper}>
           {children.map((child) => {
             return (

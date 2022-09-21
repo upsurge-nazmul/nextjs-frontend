@@ -10,7 +10,6 @@ import { UniCoinValue } from "../../../../config";
 export default function RequestView({
   data,
   availableUnicoins,
-  setShowModal,
   setRequestMode,
 }) {
   const [success, setsuccess] = useState(false);
@@ -64,7 +63,7 @@ export default function RequestView({
             <div className={styles.actionArea}>
               <div
                 className={styles.button}
-                onClick={() => setShowModal(false)}
+                onClick={() => setRequestMode(false)}
               >
                 Done
               </div>
@@ -80,6 +79,18 @@ export default function RequestView({
                 Buy <span>{data.name}</span>{" "}
                 {data.type !== "voucher" ? "Avatar" : "Voucher"}
               </p>
+            </div>
+            <div className={styles.actionArea}>
+              {error && <p className={styles.error}>{error}</p>}
+              {!loading ? (
+                <div className={styles.button} onClick={() => buyAvatar()}>
+                  Request Parent
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.body}>
@@ -112,18 +123,6 @@ export default function RequestView({
                 Unicoins
               </div>
             </div>
-          </div>
-          <div className={styles.actionArea}>
-            {error && <p className={styles.error}>{error}</p>}
-            {!loading ? (
-              <div className={styles.button} onClick={() => buyAvatar()}>
-                Request Parent
-              </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
-            )}
           </div>
         </div>
       )}

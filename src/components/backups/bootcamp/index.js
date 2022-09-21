@@ -107,7 +107,7 @@ export default function SummerBootcamp() {
             <Fb className={styles.social} />
           </a>
           <a
-            href="https://www.instagram.com/upsurge.india/"
+            href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
           >

@@ -17,6 +17,7 @@ import { MainContext } from "../../../../context/Main";
 import Curve1 from "../../../../components/SVGcomponents/Curve1";
 import Curve2 from "../../../../components/SVGcomponents/Curve2";
 import DashboardFooter from "../../../../components/Dashboard/DashboardFooter";
+import PageTitle from "../../../../components/PageTitle";
 export default function Blogs({
   blogs,
   totalblogs,
@@ -67,7 +68,8 @@ export default function Blogs({
   }
   return (
     <div className={styles.blogs}>
-      <DashboardLeftPanel  />
+      <PageTitle title={`upsurge | Blogs`} />
+      <DashboardLeftPanel />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
       <Curve2 className={styles.curve2} />

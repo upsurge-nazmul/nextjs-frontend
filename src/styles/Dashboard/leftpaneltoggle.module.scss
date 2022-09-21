@@ -45,6 +45,15 @@
         rgb(206, 206, 206) 99%
       );
     }
+    .expandicon {
+      // height: 20px;
+      // width: 20px;
+      padding: 12px;
+    }
+    .reverseexpandicon {
+      @extend .expandicon;
+      transform: rotate(180deg);
+    }
   }
   .wrapper {
     padding-left: 15%;
@@ -295,8 +304,8 @@
       height: 45px;
 
       svg {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
       }
       .tabtitle {
         flex: 1;
@@ -304,7 +313,7 @@
         align-items: center;
         margin-left: 15%;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 0.429323px;
         color: #000000;
       }

@@ -9,43 +9,12 @@ import styles from "../../styles/about/about.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
-  const team = [
-    {
-      name: "Karan Baweja",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Rashi Thakur",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Saurabh Dixit",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Amit",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Abhishek",
-      img: "",
-      role: "",
-      link: "",
-    },
-  ];
   const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
@@ -70,6 +39,7 @@ export default function About({ userdata }) {
         theme === "dark" && styles.darkaboutPage
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
@@ -132,6 +102,7 @@ export default function About({ userdata }) {
             <img
               src="https://i.ibb.co/wc7Dh1d/Untitled-design-57-removebg.png"
               alt=""
+              loading="lazy"
             />
           </div>
         </div>
