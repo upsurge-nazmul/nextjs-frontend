@@ -86,7 +86,7 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questDetailPage}>
-      <PageTitle />
+      {currentQuest && <PageTitle title={`upsurge | ${currentQuest.title}`} />}
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

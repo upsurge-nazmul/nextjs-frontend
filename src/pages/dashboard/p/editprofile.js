@@ -16,6 +16,7 @@ import ChangePhonePopUp from "../../../components/ChangePhonePopup";
 import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
+import PageTitle from "../../../components/PageTitle";
 export default function EditProfile({ data, minDate }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -248,6 +249,7 @@ export default function EditProfile({ data, minDate }) {
 
   return (
     <div className={styles.manageChore}>
+      <PageTitle title={`upsurge | Profile`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       {showphonepopup && (

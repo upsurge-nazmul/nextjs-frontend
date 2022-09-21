@@ -11,6 +11,7 @@ import KnowledgeQuestApi from "../../../../actions/apis/KnowledgeQuestApi";
 import Selection from "../../../../components/Selection";
 import NoKid from "../../../../components/Dashboard/NoKid";
 import { MainContext } from "../../../../context/Main";
+import PageTitle from "../../../../components/PageTitle";
 
 export default function Quests({ kidsdata, questData, userdatafromserver }) {
   const { setuserdata, userdata } = useContext(MainContext);
@@ -75,6 +76,7 @@ export default function Quests({ kidsdata, questData, userdatafromserver }) {
 
   return (
     <div className={styles.quest}>
+      <PageTitle title={`upsurge | Knowledge Quest`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

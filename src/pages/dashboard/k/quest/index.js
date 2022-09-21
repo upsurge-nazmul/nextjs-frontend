@@ -39,7 +39,7 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questPage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Knowledge Quest`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>

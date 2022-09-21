@@ -24,6 +24,7 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import LeaderBoard from "../../../components/LeaderBoard";
+import PageTitle from "../../../components/PageTitle";
 
 export default function KidChoresPage({
   choresdata,
@@ -74,6 +75,7 @@ export default function KidChoresPage({
 
   return (
     <div className={styles.kidChoresPage}>
+      <PageTitle title={`upsurge | Chores`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
