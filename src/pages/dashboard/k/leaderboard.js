@@ -10,7 +10,7 @@ import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
 import ChildLeaderboard from "../../../components/ChildLeaderboard";
 
-export default function Leaderboards({ userdatafromserver }) {
+export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -36,7 +36,7 @@ export default function Leaderboards({ userdatafromserver }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <ChildLeaderboard />
+          <ChildLeaderboard data={dailyLeaderboard} />
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@ export async function getServerSideProps({ params, req }) {
         props: {
           isLogged: true,
           userdatafromserver: response.data.data,
-          overallleaderboard: overallleaderboard.data.data || [],
+          dailyLeaderboard: overallleaderboard.data.data || [],
           msg: "",
         },
       };
