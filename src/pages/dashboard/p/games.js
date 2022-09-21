@@ -14,6 +14,7 @@ import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import { Game_Data } from "../../../static_data/Game_Data";
 import GameApis from "../../../actions/apis/GameApis";
 import { getCookie } from "../../../actions/cookieUtils";
+import PageTitle from "../../../components/PageTitle";
 function Games({ recentgames, userdatafromserver }) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
@@ -111,9 +112,9 @@ function Games({ recentgames, userdatafromserver }) {
   }
   return (
     <div className={styles.gamesPage}>
+      <PageTitle title={`upsurge | Games`} />
       <DashboardLeftPanel />
       <Toast data={toastdata} />
-
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}

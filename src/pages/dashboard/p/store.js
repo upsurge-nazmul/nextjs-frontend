@@ -15,6 +15,7 @@ import ChoreApis from "../../../actions/apis/ChoreApis";
 import VoucherApis from "../../../actions/apis/VoucherApis";
 import { MainContext } from "../../../context/Main";
 import Tour from "../../../components/Tour/Tour";
+import PageTitle from "../../../components/PageTitle";
 
 export default function ParentStore({
   isLogged,
@@ -73,6 +74,7 @@ export default function ParentStore({
 
   return (
     <div className={styles.parentStore}>
+      <PageTitle title={`upsurge | Rewards`} />
       <DashboardLeftPanel type="parent" />
       <Toast data={toastdata} />
       <ApproveModal

@@ -114,7 +114,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
   }
   return (
     <div className={styles.gamesPage}>
-      <PageTitle />
+      <PageTitle title={`upsurge | Games`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
