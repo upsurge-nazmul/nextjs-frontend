@@ -47,18 +47,18 @@ export default function SummerBootcamp() {
   const features1 = [
     {
       image:
-        "https://i.ibb.co/4ZLdNkp/pngkey-com-leadership-icon-png-3030137.png",
+        "https://imgcdn.upsurge.in/images/pngkey-com-leadership-icon-png-3030137.png",
       text: "Team-based experiential workshops taken by MBAs, Entrepreneurs, Investors & learning experts",
       color: "#4166eb",
     },
     {
       color: "#fdcc03",
-      image: "https://i.ibb.co/Pxj1M7t/order.png",
+      image: "https://imgcdn.upsurge.in/images/order.png",
       text: "Engaging & immersive sessions designed to make learning fun & effective - include activities, group discussions, case studies & real-life projects",
     },
     {
       color: "#ff6263",
-      image: "https://i.ibb.co/HBHpLqh/blackboard.png",
+      image: "https://imgcdn.upsurge.in/images/blackboard.png",
       texthead: "Students will get",
       text: "- Merit certificates",
       text2: "- MasterClasses on higher education & career development",
@@ -66,7 +66,7 @@ export default function SummerBootcamp() {
 
     {
       color: "#41d1be",
-      image: "https://i.ibb.co/mtvZpm5/upsurgeround.png",
+      image: "https://imgcdn.upsurge.in/images/upsurgeround.png",
       text: "Access to upsurge financial literacy games and learning content",
       text2:
         "2,500 bonus UniCoins to redeem vouchers from brands such as Zomato & Amazon",
@@ -78,16 +78,16 @@ export default function SummerBootcamp() {
     },
     {
       color: "#83eb00",
-      image: "https://i.ibb.co/HBHpLqh/blackboard.png",
+      image: "https://imgcdn.upsurge.in/images/blackboard.png",
       text: "MasterClasses on higher education & career development",
     },
     {
-      image: "https://i.ibb.co/jrNhdZP/videoconference.png",
+      image: "https://imgcdn.upsurge.in/images/videoconference.png",
       color: "#ff5e98",
       text: "Webinar series with entrepreneurs, startup veterans & other experts",
     },
     {
-      image: "https://i.ibb.co/8mHPqJY/win.png",
+      image: "https://imgcdn.upsurge.in/images/win.png",
       color: "#00a7cc",
       text: "2,500 bonus UniCoins to redeem vouchers from brands such as Zomato & Amazon",
     },
@@ -221,7 +221,7 @@ export default function SummerBootcamp() {
         </div>
         <div className={styles.questWrapper}>
           <div className={styles.quest}>
-            <img src="https://i.ibb.co/BsdHtMY/business.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/business.png" alt="" />
             <p className={styles.title}>Entrepreneurship Quest</p>
             <p className={styles.des}>
               {`Let your child embark on their first 0 to 1 journey - from idea to
@@ -238,7 +238,7 @@ export default function SummerBootcamp() {
             </p>
           </div>
           <div className={styles.quest}>
-            <img src="https://i.ibb.co/sW3fYzj/money-bag.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/money-bag.png" alt="" />
             <p className={styles.title}>{`Money & Investing Quest`}</p>
             <p className={styles.des}>
               {`Wished you were taught about money management & investing earlier

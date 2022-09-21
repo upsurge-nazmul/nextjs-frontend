@@ -133,7 +133,7 @@ export default function JobHub({
                 : widthHeight.width * 0.035
             }
             border={5}
-            image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+            image="https://imgcdn.upsurge.in/images/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
             <p className={styles.title}>Jobs</p>

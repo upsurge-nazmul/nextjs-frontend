@@ -28,7 +28,7 @@ export default function Financial({ id }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src="https://i.ibb.co/Sd5LLFV/1920-x-1080-px.png"
+                src="https://imgcdn.upsurge.in/images/1920-x-1080-px.png"
                 alt=""
               />
             </div>

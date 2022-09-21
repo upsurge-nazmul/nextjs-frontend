@@ -123,7 +123,7 @@ export default function Bank({
             }
             border={5}
             s
-            image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+            image="https://imgcdn.upsurge.in/images/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
             <p className={styles.title}>
@@ -202,7 +202,7 @@ export default function Bank({
                         : widthHeight.width * 0.015
                     }
                     border={widthHeight.width < 860 ? 5 : 25}
-                    image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
+                    image="https://imgcdn.upsurge.in/images/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
                   <p className={styles.title}>ACCOUNT NO.</p>
@@ -227,7 +227,7 @@ export default function Bank({
                         : widthHeight.width * 0.015
                     }
                     border={widthHeight.width < 860 ? 5 : 25}
-                    image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
+                    image="https://imgcdn.upsurge.in/images/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
                   <p className={styles.title}>ACCOUNT NAME</p>
@@ -254,7 +254,7 @@ export default function Bank({
                         : widthHeight.width * 0.015
                     }
                     border={widthHeight.width < 860 ? 5 : 25}
-                    image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
+                    image="https://imgcdn.upsurge.in/images/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
                   <p className={styles.title}>BALANCE</p>
@@ -283,7 +283,7 @@ export default function Bank({
                         : widthHeight.width * 0.015
                     }
                     border={widthHeight.width < 860 ? 5 : 25}
-                    image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
+                    image="https://imgcdn.upsurge.in/images/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
                   <p className={styles.title}>DEBIT CARD</p>
@@ -310,7 +310,7 @@ export default function Bank({
                         : widthHeight.width * 0.015
                     }
                     border={widthHeight.width < 860 ? 5 : 25}
-                    image="https://i.ibb.co/cN8KS5Y/tooltip-bg-small-1.png"
+                    image="https://imgcdn.upsurge.in/images/tooltip-bg-small-1.png"
                     imageSize={{ x: 112, y: 82 }}
                   ></NineSlice>
                   <p className={styles.title}>UPI</p>
