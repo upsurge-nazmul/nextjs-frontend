@@ -9,11 +9,7 @@ import Toast from "../../../components/Toast";
 import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
 import ChildLeaderboard from "../../../components/ChildLeaderboard";
-
-const TABS = [
-  { key: "daily", name: "Daily" },
-  { key: "monthly", name: "Monthly" },
-];
+import { TABS } from "../../../static_data/Leaderboard_Data";
 
 export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   const [toastdata, settoastdata] = useState({
