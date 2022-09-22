@@ -1,24 +1,31 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { forwardRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Leaderboard/monthInput.module.scss";
 
-const CustomInput = ({ value, onClick }) => (
-  <div className={styles.customInput} onClick={onClick}>
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  <div className={styles.customInput} onClick={onClick} ref={ref}>
     {value}
   </div>
-);
+));
 
-export default function MonthInput() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+export default function MonthInput({ selectedDate, setSelectedDate }) {
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
 
-  //   console.log("**********", currentDate);
+  useEffect(() => {
+    return () => {
+      setSelectedDate();
+    };
+  }, []);
 
   return (
     <div className={styles.monthInput}>
       <DatePicker
-        selected={currentDate}
-        onChange={(date) => setCurrentDate(date)}
+        selected={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
         dateFormat={"MMMM yyyy"}
         // dateFormatCalendar={"LLLL yyyy"}
         // showMonthDropdown={true}

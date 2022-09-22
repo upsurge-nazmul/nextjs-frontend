@@ -19,8 +19,9 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   });
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Leaderboard");
-  const [tab, setTab] = useState(TABS[1]);
+  const [tab, setTab] = useState(TABS[0]);
   const [leaderboardData, setLeaderboardData] = useState();
+  const [selectedDate, setSelectedDate] = useState();
 
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -53,7 +54,13 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <ChildLeaderboard data={leaderboardData} tab={tab} setTab={setTab} />
+          <ChildLeaderboard
+            data={leaderboardData}
+            tab={tab}
+            setTab={setTab}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
         </div>
       </div>
     </div>
