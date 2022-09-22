@@ -19,7 +19,7 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   });
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Leaderboard");
-  const [tab, setTab] = useState(TABS[0]);
+  const [tab, setTab] = useState(TABS[1]);
   const [leaderboardData, setLeaderboardData] = useState();
 
   useEffect(() => {
