@@ -1,5 +1,6 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
+
 const getschools = (payload, token) => {
   return ApiCalls.getResponse("users/schools", payload, token);
 };
@@ -110,8 +111,12 @@ const markwelcomecomplete = (payload, token) => {
   return ApiCalls.putResponse("users/markwelcomecomplete", payload, token);
 };
 
-const getoverallleaderboard = (payload, token) => {
-  return ApiCalls.getResponse("users/overallleaderboard", payload, token);
+const getoverallleaderboard = (payload) => {
+  return ApiCalls.getResponse(
+    "users/overallleaderboard",
+    payload,
+    getCookie("accesstoken")
+  );
 };
 
 const createVerificationOtp = (payload) => {
