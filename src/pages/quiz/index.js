@@ -464,7 +464,7 @@ function Quiz({ userdata }) {
             </div>
           </div>
           <div className={styles.right}>
-            <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/Artboard-1-1.png" alt="" />
           </div>
         </div>
       ) : (

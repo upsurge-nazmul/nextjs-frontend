@@ -19,7 +19,7 @@ export default function Verification({ emailVerified, msg }) {
           <>
             <img
               className={styles.image}
-              src="https://i.ibb.co/9nb8rpR/43959.jpg"
+              src="https://imgcdn.upsurge.in/images/43959.jpg"
               alt=""
             />
             <p className={styles.heading}>
@@ -33,7 +33,7 @@ export default function Verification({ emailVerified, msg }) {
           <>
             <img
               className={styles.image}
-              src="https://i.ibb.co/HrNxFcj/images.png"
+              src="https://imgcdn.upsurge.in/images/images.png"
               alt=""
             />
             <p className={styles.heading}>{msg}</p>

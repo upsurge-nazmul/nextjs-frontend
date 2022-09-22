@@ -27,7 +27,7 @@ export default function Entrepreneurship({ id }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src="https://i.ibb.co/MhPZK9K/1920-x-1080-px-1.png"
+                src="https://imgcdn.upsurge.in/images/1920-x-1080-px-1.png"
                 alt=""
               />
             </div>

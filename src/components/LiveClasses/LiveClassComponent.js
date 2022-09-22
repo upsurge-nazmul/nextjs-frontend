@@ -23,7 +23,7 @@ export default function LiveClassComponent({ data, setshowmodal, setbuydata }) {
 
       <img
         src={
-          "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
+          "https://imgcdn.upsurge.in/images/unsp/photo-1551739440-5dd934d3a94a.avif"
         }
         alt=""
       ></img>

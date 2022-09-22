@@ -40,7 +40,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
         <Image
           layout="fill"
           objectFit="cover"
-          src="https://i.ibb.co/yRsxh0y/Untitled-design-4.png"
+          src="https://imgcdn.upsurge.in/images/Untitled-design-4.png"
           alt=""
           loading="lazy"
         />
@@ -51,7 +51,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
         <Image
           layout="fill"
           objectFit="cover"
-          src="https://i.ibb.co/GtLBxMY/Untitled-design-7.png"
+          src="https://imgcdn.upsurge.in/images/Untitled-design-7.png"
           alt=""
           loading="lazy"
         />
@@ -62,7 +62,7 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
         <Image
           layout="fill"
           objectFit="cover"
-          src="https://i.ibb.co/92nwnTL/Untitled-design-6.png"
+          src="https://imgcdn.upsurge.in/images/Untitled-design-6.png"
           alt=""
           loading="lazy"
         />

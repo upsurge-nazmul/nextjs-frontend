@@ -63,7 +63,7 @@ export default function KnowledgeQuest({
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/hDZNYyy/Group-232.png"
+            src="https://imgcdn.upsurge.in/images/Group-232.png"
             alt=""
           />
         </div>
@@ -74,7 +74,7 @@ export default function KnowledgeQuest({
           <Image
             layout="fill"
             objectFit="contain"
-            src="https://i.ibb.co/NjsStF8/1280-1280-x-720-px-3.png"
+            src="https://imgcdn.upsurge.in/images/1280-1280-x-720-px-3.png"
             alt=""
           />
         </div>

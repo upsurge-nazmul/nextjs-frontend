@@ -237,6 +237,9 @@ export default function EditProfile({ data, minDate }) {
         setuserdata((prev) => ({ ...prev, user_img_url: img }));
       }
       settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     } else {
       seterror(response.data.message || "Cannot reach server");
       settoastdata({

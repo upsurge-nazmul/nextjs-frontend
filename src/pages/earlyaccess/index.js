@@ -152,7 +152,7 @@ export default function Earlyaccess() {
           </div>
           <img
             className={styles.background}
-            src="https://i.ibb.co/LrJ6yx0/shutterstock-1485962585-1-removebg.png"
+            src="https://imgcdn.upsurge.in/images/shutterstock-1485962585-1-removebg.png"
             alt=""
           />
           <div className={styles.shadow}>
