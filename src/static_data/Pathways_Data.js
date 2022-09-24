@@ -28,7 +28,7 @@ export const PathwayData = [
       "Let's kickstart your first fun journey and learn about what money is!",
     pathwayreward: "4500",
     pathwayImage: "/images/journey/money.svg",
-    color: "#17d1bc",
+    color: "#dc517b",
     pointer: { top: -20, left: "5%" },
     tasks: [
       {
@@ -110,18 +110,17 @@ export const PathwayData = [
       "When was the last time you saw anyone paying with cash? Let's find out all the fun ways to make payments in today's world",
     pathwayreward: "4500",
     pathwayImage: "/images/journey/digitalPayments.svg",
-    color: "#dc517b",
+    color: "#17d1bc",
     pointer: { top: -20, left: "40%" },
     tasks: [
       {
         taskNo: 1,
-        taskTitle: "Plastic Money",
-        taskDescription:
-          "What are these small plastic cards that everyone uses?",
-        id: "pw-3-task-1",
+        taskTitle: "COMING SOON",
+        taskDescription: "Wait while we bring you this exciting journey",
+        id: "pw-5-task-1",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
-        route: "/pathway/1/task/1",
+        route: "/dasboard/k",
         taskImage: TASK_IMAGE_BY_TYPE[0],
         replayable: true,
       },
@@ -140,13 +139,12 @@ export const PathwayData = [
     tasks: [
       {
         taskNo: 1,
-        taskTitle: "What is money management?",
-        taskDescription:
-          "Money does make the world go round, so how should you manage it?",
-        id: "pw-4-task-1",
+        taskTitle: "COMING SOON",
+        taskDescription: "Wait while we bring you this exciting journey",
+        id: "pw-5-task-1",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
-        route: "/KnowledgeQuest/whatIsMoneyManagement/story.html",
+        route: "/dasboard/k",
         taskImage: TASK_IMAGE_BY_TYPE[0],
         replayable: true,
       },
