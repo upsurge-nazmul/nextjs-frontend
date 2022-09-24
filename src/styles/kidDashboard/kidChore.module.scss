@@ -8,10 +8,11 @@ $card-height: auto;
   .mainCard {
     display: flex;
     gap: 10px;
+    margin-bottom: 1rem;
     .firstSection {
       .banner {
         width: 110px;
-        height: $card-height;
+        height: auto;
         object-fit: cover;
         border-top-left-radius: $border-radius;
         border-bottom-left-radius: $border-radius;
