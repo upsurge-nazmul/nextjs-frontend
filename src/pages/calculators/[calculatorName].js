@@ -12,6 +12,7 @@ import { Calc_Data } from "../../static_data/Calc_Data";
 import RelativeSection from "../../components/Calculators/RelativeSection";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
+import PageTitle from "../../components/PageTitle";
 
 function CalculatorsPage({ userdata }) {
   const router = useRouter();
@@ -56,6 +57,7 @@ function CalculatorsPage({ userdata }) {
       }`}
       id="calc-page"
     >
+      <PageTitle />
       <Header
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

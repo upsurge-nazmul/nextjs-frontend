@@ -76,16 +76,16 @@ export default function AvatarSelector({
             className={styles.avatar}
             key={"default-avatar"}
             onClick={() => {
-              setvalue("https://i.ibb.co/v3vVV8r/default-avatar.png");
+              setvalue("https://imgcdn.upsurge.in/images/default-avatar.png");
               setshow(false);
             }}
           >
-            {value === "https://i.ibb.co/v3vVV8r/default-avatar.png" && (
+            {value === "https://imgcdn.upsurge.in/images/default-avatar.png" && (
               <div className={styles.selected}>
                 <TickSvg className={styles.tick} />
               </div>
             )}
-            <img src={"https://i.ibb.co/v3vVV8r/default-avatar.png"} alt="" />
+            <img src={"https://imgcdn.upsurge.in/images/default-avatar.png"} alt="" />
           </div>
         </div>
       </div>

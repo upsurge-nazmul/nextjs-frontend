@@ -121,7 +121,7 @@ export default function MoneyAceInvestment({
                 : widthHeight.width * 0.035
             }
             border={5}
-            image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+            image="https://imgcdn.upsurge.in/images/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
             <p className={styles.title}>
@@ -271,7 +271,7 @@ export default function MoneyAceInvestment({
               onClick={() => setcurrenttab("dashboard")}
             >
               <img
-                src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                 alt=""
               />
             </div>
@@ -323,7 +323,7 @@ export default function MoneyAceInvestment({
             </div>{" "}
             <div className={styles.btn} onClick={() => setcurrenttab("Bank")}>
               <img
-                src="https://i.ibb.co/GMnGHP4/icon-moneybag-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-moneybag-0-1.png"
                 alt=""
               />
               <p>Savings A/c</p>

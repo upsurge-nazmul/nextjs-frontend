@@ -98,7 +98,7 @@ export default function VirtualStore({
                   : widthHeight.width * 0.035
               }
               border={5}
-              image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+              image="https://imgcdn.upsurge.in/images/title-header-1.png"
               imageSize={{ x: 702, y: 195 }}
             >
               <p className={styles.title}>STORE</p>
@@ -162,7 +162,7 @@ export default function VirtualStore({
                   : widthHeight.width * 0.035
               }
               border={5}
-              image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+              image="https://imgcdn.upsurge.in/images/title-header-1.png"
               imageSize={{ x: 702, y: 195 }}
             >
               <p className={styles.title}>CHECKOUT</p>
@@ -215,7 +215,7 @@ export default function VirtualStore({
               }}
             >
               <img
-                src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                 alt=""
               />
             </div>
@@ -228,7 +228,7 @@ export default function VirtualStore({
           <img
             className={styles.home}
             onClick={() => setcurrenttab("dashboard")}
-            src="https://i.ibb.co/kmfyw9t/homepng.png"
+            src="https://imgcdn.upsurge.in/images/homepng.png"
             alt=""
           />
         </div>
@@ -237,7 +237,7 @@ export default function VirtualStore({
         <img
           className={styles.back}
           onClick={() => setcurrenttab("dashboard")}
-          src="https://i.ibb.co/kmfyw9t/homepng.png"
+          src="https://imgcdn.upsurge.in/images/homepng.png"
           alt=""
         />
       )}

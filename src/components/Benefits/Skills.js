@@ -28,7 +28,7 @@ export default function Skills({ id }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src="https://i.ibb.co/X49spvn/1280-1280-x-720-px-5.png"
+                src="https://imgcdn.upsurge.in/images/1280-1280-x-720-px-5.png"
                 alt=""
               />
             </div>

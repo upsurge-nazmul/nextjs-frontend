@@ -21,6 +21,7 @@ import { Cities_Data } from "../../../../static_data/Cities_Data";
 import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
+import PageTitle from "../../../../components/PageTitle";
 
 function AddKid({ childdata, userdatafromserver }) {
   const router = useRouter();
@@ -139,7 +140,7 @@ function AddKid({ childdata, userdatafromserver }) {
       state,
       username: userName,
       dob: new Date(dob).getTime(),
-      image: img || "https://i.ibb.co/v3vVV8r/default-avatar.png",
+      image: img || "https://imgcdn.upsurge.in/images/default-avatar.png",
       email: email,
       password,
       city,
@@ -299,6 +300,11 @@ function AddKid({ childdata, userdatafromserver }) {
   }
   return (
     <div className={styles.manageChore}>
+      <PageTitle
+        title={`upsurge | ${
+          type ? (type === "edit" ? "Edit" : "Add") : ""
+        } Child`}
+      />
       <DashboardLeftPanel disableClicks={router.query.showTour} />
       <Toast data={toastdata} />
       {showavatarmodal && (
@@ -343,7 +349,7 @@ function AddKid({ childdata, userdatafromserver }) {
               </div>
             )}
             <img
-              src={img || "https://i.ibb.co/v3vVV8r/default-avatar.png"}
+              src={img || "https://imgcdn.upsurge.in/images/default-avatar.png"}
               alt=""
             />
           </div>

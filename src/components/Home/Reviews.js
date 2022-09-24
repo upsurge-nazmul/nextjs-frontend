@@ -14,7 +14,7 @@ function Reviews() {
           <div className={styles.video}>
             <img
               className={styles.image}
-              src="https://images.unsplash.com/photo-1609440082470-106df86c0f6c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=omar-lopez-Za03n9MIt4s-unsplash.jpg"
+              src="https://imgcdn.upsurge.in/images/unsp/omar-lopez-Za03n9MIt4s-unsplash.jpg"
               alt=""
             />
             <PlaySvg className={styles.playicon} />
@@ -42,7 +42,7 @@ function Reviews() {
             <div className={styles.image}>
               <PlaySvg className={styles.playicon} />
               <img
-                src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+                src="https://imgcdn.upsurge.in/images/unsp/photo-1566753323558-f4e0952af115.avif"
                 alt=""
                 className={styles.smallimg}
               />
@@ -56,7 +56,7 @@ function Reviews() {
             <div className={styles.image}>
               <PlaySvg className={styles.playicon} />
               <img
-                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
+                src="https://imgcdn.upsurge.in/images/unsp/photo-1570295999919-56ceb5ecca61.avif"
                 alt=""
                 className={styles.smallimg}
               />
@@ -70,7 +70,7 @@ function Reviews() {
             <div className={styles.image}>
               <PlaySvg className={styles.playicon} />
               <img
-                src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+                src="https://imgcdn.upsurge.in/images/unsp/photo-1542190891-2093d38760f2.avif"
                 alt=""
                 className={styles.smallimg}
               />

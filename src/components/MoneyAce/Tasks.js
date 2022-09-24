@@ -102,7 +102,7 @@ export default function Tasks({
                 : widthHeight.width * 0.035
             }
             border={5}
-            image="https://i.ibb.co/8Y5SZQ9/title-header-1.png"
+            image="https://imgcdn.upsurge.in/images/title-header-1.png"
             imageSize={{ x: 702, y: 195 }}
           >
             <p className={styles.title}>TASKS</p>
@@ -136,7 +136,7 @@ export default function Tasks({
           className={styles.backbutton}
           onClick={() => setcurrenttab("dashboard")}
         >
-          <img src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png" alt="" />
+          <img src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png" alt="" />
         </div>
       </div>
     </div>

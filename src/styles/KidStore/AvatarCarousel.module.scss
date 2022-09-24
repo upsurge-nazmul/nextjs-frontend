@@ -1,11 +1,13 @@
 .carouselContainer {
   position: relative;
   padding: 1rem;
-  width: 76vw;
+  min-width: 76vw;
+  max-width: 79vw;
   border-radius: 20px;
   background-color: #17d1bc;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
   .wrapper {
     padding: 0 1rem;
     display: flex;
@@ -55,13 +57,18 @@
     max-width: 90vw;
   }
 }
+@media only screen and (max-width: 1800px) {
+  .carouselContainer {
+    max-width: 80vw;
+  }
+}
 @media only screen and (min-width: 1800px) and (max-width: 2100px) {
   .carouselContainer {
-    max-width: 79vw;
+    max-width: 85vw;
   }
 }
 @media only screen and (min-width: 2100px) {
   .carouselContainer {
-    max-width: 90vw;
+    max-width: 85vw;
   }
 }

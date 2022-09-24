@@ -32,6 +32,8 @@ import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import PageTitle from "../../../components/PageTitle";
+import Journey from "../../../components/Journey";
 
 export default function ChildActivity({
   pendingchores,
@@ -151,126 +153,14 @@ export default function ChildActivity({
       highlightBg: true,
       position: "bottom",
       content: `You can go back to home page, by clicking upsurge logo.`,
-    },
-    {
-      ref: "#milestone",
-      position: "bottom",
-      highlightBg: true,
-      text: "Welcome to upsurge!",
-      extraPadding: true,
-      content: `you can check your milestones here.`,
-      required: true,
-      disableBtns: true,
-      isolate: true,
-    },
-    {
-      ref: "#milestone-wrapper",
-      content: (
-        <IntroDiv
-          hideJasper={true}
-          head={`Here you can see all your milestones!`}
-          text={`You can also directly go to milestones, by clicking on them.`}
-        />
-      ),
-      superimpose: true,
-      position: "bottom",
-      required: true,
-      delay: true,
-      isolate: true,
-      absolute: true,
-      disableBg: true,
-      nextFunction: () => {
-        if (currentTourIndex === 3) {
-          setcurrentTourIndex((prev) => prev + 1);
-        }
-        setshowtodo(!showtodo);
-      },
-    },
-    {
-      ref: "#leaderboards",
-      position: "bottom",
-      content: `You can see the leaderboards here.`,
-      extraPadding: true,
-      superimpose: true,
-      highlightBg: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#chores",
-      position: "bottom",
-      content: `You can see your pending chores here.`,
-      superimpose: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#quests",
-      position: "bottom",
-      content: `You can see your quest progress here.`,
-      superimpose: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#recent_games",
-      position: "top",
-      content: `You can access your recent games.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-      extraPadding: true,
-    },
-    {
-      ref: "#todays-question",
-      position: "bottom",
-      content: `You can answer questions and get rewards.`,
-      superimpose: true,
-      required: false,
-      isolate: true,
-    },
-    {
-      ref: "#chores-leftpanel",
-      position: "bottom",
-      content: `Now lets go to chores.`,
-      disableBtns: true,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#quest-leftpanel",
-      position: "bottom",
-      content: `You can track the knowledge quest progress of your children.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#games-leftpanel",
-      position: "bottom",
-      content: `You can play games here.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#store-leftpanel",
-      position: "bottom",
-      content: `Now lets go to store.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
+    },    
+    
+    
   ];
 
   return (
     <div className={styles.childactivity}>
+      <PageTitle title={`upsurge | Dashboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showtour && (
@@ -304,98 +194,102 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-          <div className={styles.flexLeft}>
-            <div className={styles.headsection}>
-              {/* <div className={styles.topblock}>
-                <h2 className={styles.mainheading}>
-                  Level
+          <Journey />
+          <div className={styles.contentArea}>
+            <div className={styles.flexLeft}>
+              <div className={styles.headsection}>
+                  {/* <div className={styles.topblock}>
+                      <h2 className={styles.mainheading}>
+                        Level
+                        <HeadingArrow />
+                      </h2>
+                      <div className={styles.right}>
+                        <div
+                          className={styles.badge}
+                          onClick={() => setshowlevels(true)}
+                        >
+                          <img
+                            src={"/images/badges/badge_" + currentLevel + ".svg"}
+                            alt=""
+                          />
+                          <p className={styles.level}>Level {currentLevel}</p>
+                        </div>
+                      </div>
+                    </div> */}
+                {childTribes.length > 0 && (
+                  <>
+                    <div className={styles.tribeheading}>
+                      <h2
+                        className={styles.mainheading}
+                        onClick={() => router.push("/dashboard/k/tribes")}
+                      >
+                        Tribes
+                        <HeadingArrow />
+                      </h2>
+                    </div>
+                    <div className={styles.tribes} id="tribewrapper">
+                      {childTribes.map((tribe) => (
+                        <div
+                          className={styles.tribe}
+                          key={tribe.id}
+                          onClick={() =>
+                            router.push("/dashboard/k/tribes/" + tribe.id)
+                          }
+                        >
+                          <img
+                            src={
+                              tribe.tribe_img_url ||
+                              "https://imgcdn.upsurge.in/images/default-avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{tribe.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              {/* <div className={styles.milestonesSection}>
+                <h2
+                  id="milestone"
+                  className={styles.mainheading}
+                  onClick={() => {
+                    if (currentTourIndex === 2) {
+                      setcurrentTourIndex((prev) => prev + 1);
+                    }
+                    setshowtodo(true);
+                  }}
+                >
+                  Milestones
                   <HeadingArrow />
                 </h2>
-                <div className={styles.right}>
-                  <div
-                    className={styles.badge}
-                    onClick={() => setshowlevels(true)}
-                  >
-                    <img
-                      src={"/images/badges/badge_" + currentLevel + ".svg"}
-                      alt=""
-                    />
-                    <p className={styles.level}>Level {currentLevel}</p>
-                  </div>
-                </div>
-              </div> */}
-              {childTribes.length > 0 && (
-                <>
-                  <div className={styles.tribeheading}>
-                    <h2
-                      className={styles.mainheading}
-                      onClick={() => router.push("/dashboard/k/tribes")}
-                    >
-                      Tribes
-                      <HeadingArrow />
-                    </h2>
-                  </div>
-                  <div className={styles.tribes} id="tribewrapper">
-                    {childTribes.map((tribe) => (
-                      <div
-                        className={styles.tribe}
-                        key={tribe.id}
-                        onClick={() =>
-                          router.push("/dashboard/k/tribes/" + tribe.id)
-                        }
-                      >
-                        <img
-                          src={
-                            tribe.tribe_img_url ||
-                            "https://i.ibb.co/v3vVV8r/default-avatar.png"
-                          }
-                          alt=""
-                        />
-                        <p className={styles.name}>{tribe.name}</p>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-            <div className={styles.milestonesSection}>
-              <h2
-                id="milestone"
-                className={styles.mainheading}
-                onClick={() => {
-                  if (currentTourIndex === 2) {
-                    setcurrentTourIndex((prev) => prev + 1);
-                  }
-                  setshowtodo(true);
-                }}
-              >
-                Milestones
-                <HeadingArrow />
-              </h2>
-              <div className={styles.quizblock}>
-                <p className={styles.heading}>
-                  {tododata
-                    ? tododata.completed + "/" + tododata.total
-                    : "All clear"}
-                </p>
-                <p
-                  className={styles.subheading}
-                  onClick={() => setshowtodo(true)}
-                >
-                  Complete Milestones
-                </p>
-              </div>
-            </div>
-            <div className={styles.leaderboardsection} id="leaderboards">
-              <h2 className={styles.heading}>Leaderboards</h2>
-              <div className={styles.wrapper}>
-                <div className={styles.element}>
-                  <p className={styles.rank}>
-                    {moneyacedata.inhand_money + moneyacedata.account_balance}
+                <div className={styles.quizblock}>
+                  <p className={styles.heading}>
+                    {tododata
+                      ? tododata.completed + "/" + tododata.total
+                      : "All clear"}
                   </p>
-                  <p className={styles.section}>Money ace</p>
+                  <p
+                    className={styles.subheading}
+                    onClick={() => setshowtodo(true)}
+                  >
+                    Complete Milestones
+                  </p>
                 </div>
-                {/* <div className={styles.element}>
+              </div> */}              
+              <div className={styles.questionSection}>
+                {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              </div>
+              {/* <div className={styles.leaderboardsection} id="leaderboards">
+                <div className={styles.wrapper}>
+                  <div className={styles.element}>
+                    <p className={styles.rank}>
+                      {moneyacedata.inhand_money + moneyacedata.account_balance}
+                    </p>
+                    <p className={styles.section}>Money ace</p>
+                  </div>
+                  <div className={styles.element}>
                   <p className={styles.rank}>{highestquizscore ?? 0}</p>
                   <p className={styles.section}>Money Quotient</p>
                 </div>
@@ -408,85 +302,85 @@ export default function ChildActivity({
                     {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
                   </p>
                   <p className={styles.section}>StockSimulator</p>
-                </div> */}
-              </div>
+                </div> 
+                </div>
+              </div> */}
             </div>
-            <div className={styles.questionSection}>
-              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+            <div className={styles.flexRight}>
+              {/* <div className={styles.questsection} id="quests">
+                <h2
+                  className={styles.heading}
+                  onClick={() => router.push("/dashboard/k/quest")}
+                >
+                  Quests
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper}>
+                  {quests.length && quests.find((quest) => quest.level > 0) ? (
+                    <>
+                      {quests.map((quest, i) => {
+                        if (quest.level > 0)
+                          return <KidQuest data={quest} key={i} />;
+                      })}
+                    </>
+                  ) : (
+                    <FillSpace
+                      text={"No quest in progress"}
+                      extrastyle={{ margin: 0, minHeight: "220px" }}
+                    />
+                  )}
+                </div>
+              </div> */}
+              <div className={styles.choreSection} id="chores">
+                <h2
+                  className={styles.mainheading}
+                  onClick={() => router.push("/dashboard/k/chores")}
+                >
+                  Chores
+                  <HeadingArrow />
+                </h2>
+                <div className={styles.wrapper}>
+                  {chorearray.map((data, index) => {
+                    return (
+                      <KidChore
+                        data={data}
+                        settoastdata={settoastdata}
+                        key={"chorecomponent" + index}
+                      />
+                    );
+                  })}
+                  {chorearray.length === 0 && (
+                    <FillSpace
+                      text={"No chores in progress"}
+                      extrastyle={{ margin: 0, minHeight: "220px" }}
+                    />
+                  )}
+                </div>
+              </div>
+              
             </div>
           </div>
-          <div className={styles.flexRight}>
-            <div className={styles.questsection} id="quests">
-              <h2
-                className={styles.heading}
-                onClick={() => router.push("/dashboard/k/quest")}
-              >
-                Quests
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {quests.length && quests.find((quest) => quest.level > 0) ? (
-                  <>
-                    {quests.map((quest, i) => {
-                      if (quest.level > 0)
-                        return <KidQuest data={quest} key={i} />;
-                    })}
-                  </>
-                ) : (
-                  <FillSpace
-                    text={"No quest in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
+          <></>
+          <div className={styles.gamessection} id="recent_games">
+            <h2 className={styles.heading}>Recently played games</h2>
+            <div className={styles.wrapper}>
+              {recentgames.map((game, i) => {
+                return (
+                  <GameCard
+                    data={Game_Data[game]}
+                    key={i}
+                    onCLick={() =>
+                      handleGameClick(Game_Data[game].pushto, game)
+                    }
                   />
-                )}
-              </div>
-            </div>
-            <div className={styles.choreSection} id="chores">
-              <h2
-                className={styles.mainheading}
-                onClick={() => router.push("/dashboard/k/chores")}
-              >
-                Chores
-                <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-                {chorearray.map((data, index) => {
-                  return (
-                    <KidChore
-                      data={data}
-                      settoastdata={settoastdata}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-                {chorearray.length === 0 && (
-                  <FillSpace
-                    text={"No chores in progress"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
-            </div>
-            <div className={styles.gamessection} id="recent_games">
-              <h2 className={styles.heading}>Recently played games</h2>
-              <div className={styles.wrapper}>
-                {recentgames.map((game, i) => {
-                  return (
-                    <GameCard
-                      data={Game_Data[game]}
-                      key={i}
-                      onCLick={() =>
-                        handleGameClick(Game_Data[game].pushto, game)
-                      }
-                    />
-                  );
-                })}
-                {recentgames.length === 0 && (
-                  <FillSpace
-                    text={"No recent games"}
-                    extrastyle={{ margin: 0, minHeight: "220px" }}
-                  />
-                )}
-              </div>
+                );
+              })}
+              {recentgames.length === 0 && (
+                <FillSpace
+                  text={"No recent games"}
+                  extrastyle={{ margin: 0, minHeight: "220px" }}
+                />
+              )}
             </div>
           </div>
         </div>

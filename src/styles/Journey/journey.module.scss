@@ -1,0 +1,58 @@
+.journey {
+  padding: 10px 50px;
+  .mainheading {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgba(87, 88, 128, 1);
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    svg {
+      margin-left: 10px;
+    }
+  }
+}
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .journey {
+    padding: 10px 20px;
+    .mainheading {
+      font-weight: 500;
+      font-size: 25px;
+      color: rgba(87, 88, 128, 1);
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      svg {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) {
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .journey {
+    padding: 0 20px;
+    .mainheading {
+      font-weight: 500;
+      font-size: 25px;
+      color: rgba(87, 88, 128, 1);
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      svg {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+}

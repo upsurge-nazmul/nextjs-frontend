@@ -57,7 +57,7 @@ export default function StoreItem({
       <div className={styles.row}>
         {!viewonly && (
           <img
-            src="https://i.ibb.co/TLFq2mS/minus.png"
+            src="https://imgcdn.upsurge.in/images/minus.png"
             alt=""
             onClick={() => additem("minus")}
           />
@@ -69,7 +69,7 @@ export default function StoreItem({
         />
         {!viewonly && (
           <img
-            src="https://i.ibb.co/W6VgkX8/plus.png"
+            src="https://imgcdn.upsurge.in/images/plus.png"
             alt=""
             onClick={() => additem()}
           />

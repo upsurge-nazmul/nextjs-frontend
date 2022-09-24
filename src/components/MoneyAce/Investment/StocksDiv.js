@@ -134,27 +134,27 @@ export default function StocksDiv({
                 onClick={() => setcurrentmode("main")}
               >
                 <img
-                  src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
                   alt=""
                 />
               </div>
               <div className={styles.btn} onClick={() => setmode("buy")}>
                 <img
-                  src="https://i.ibb.co/6BTprr4/icon-circle-plus-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-plus-0-1.png"
                   alt=""
                 />
                 <p>Buy</p>
               </div>
               <div className={styles.btn} onClick={() => setmode("portfolio")}>
                 <img
-                  src="https://i.ibb.co/qWP5w1r/btn-icon-book-1.png"
+                  src="https://imgcdn.upsurge.in/images/btn-icon-book-1.png"
                   alt=""
                 />
                 <p>Portfolio</p>
               </div>
               <div className={styles.btn} onClick={() => setmode("sell")}>
                 <img
-                  src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-minus-0-1.png"
                   alt=""
                 />
                 <p>Sell</p>
@@ -187,7 +187,7 @@ export default function StocksDiv({
             </div>
             <div className={styles.row}>
               <img
-                src="https://i.ibb.co/TLFq2mS/minus.png"
+                src="https://imgcdn.upsurge.in/images/minus.png"
                 alt=""
                 onClick={() =>
                   setamount((prev) =>
@@ -202,7 +202,7 @@ export default function StocksDiv({
                 placeholder="Enter quantity.."
               />
               <img
-                src="https://i.ibb.co/W6VgkX8/plus.png"
+                src="https://imgcdn.upsurge.in/images/plus.png"
                 alt=""
                 onClick={() =>
                   setamount((prev) => (Number(prev) + 0.1).toFixed(1))
@@ -215,14 +215,14 @@ export default function StocksDiv({
             <div className={styles.bottom}>
               <div className={styles.btn} onClick={handlesell}>
                 <img
-                  src="https://i.ibb.co/Fg5t3pB/icon-circle-minus-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-minus-0-1.png"
                   alt=""
                 />
                 <p>Sell</p>
               </div>
               <div className={styles.btn} onClick={() => setmode("main")}>
                 <img
-                  src="https://i.ibb.co/ncfD8MQ/icon-circle-cross-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-cross-0-1.png"
                   alt=""
                 />
                 <p>Cancel</p>
@@ -255,7 +255,7 @@ export default function StocksDiv({
             </div>
             <div className={styles.row}>
               <img
-                src="https://i.ibb.co/TLFq2mS/minus.png"
+                src="https://imgcdn.upsurge.in/images/minus.png"
                 alt=""
                 onClick={() =>
                   setamount((prev) =>
@@ -270,7 +270,7 @@ export default function StocksDiv({
                 placeholder="Enter quantity.."
               />
               <img
-                src="https://i.ibb.co/W6VgkX8/plus.png"
+                src="https://imgcdn.upsurge.in/images/plus.png"
                 alt=""
                 onClick={() =>
                   setamount((prev) => (Number(prev) + 0.1).toFixed(1))
@@ -284,14 +284,14 @@ export default function StocksDiv({
             <div className={styles.bottom}>
               <div className={styles.btn} onClick={handlebuy}>
                 <img
-                  src="https://i.ibb.co/6BTprr4/icon-circle-plus-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-plus-0-1.png"
                   alt=""
                 />
                 <p>Buy</p>
               </div>
               <div className={styles.btn} onClick={() => setmode("main")}>
                 <img
-                  src="https://i.ibb.co/ncfD8MQ/icon-circle-cross-0-1.png"
+                  src="https://imgcdn.upsurge.in/images/icon-circle-cross-0-1.png"
                   alt=""
                 />
                 <p>Cancel</p>
@@ -354,7 +354,7 @@ export default function StocksDiv({
           </div>
           <div className={styles.backbutton} onClick={() => setmode("main")}>
             <img
-              src="https://i.ibb.co/NxvRf9Z/icon-arrow3-left-0-1.png"
+              src="https://imgcdn.upsurge.in/images/icon-arrow3-left-0-1.png"
               alt=""
             />
           </div>

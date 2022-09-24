@@ -27,18 +27,18 @@ function Benefits() {
       title: "Developing entrepreneurial mindsets.",
       description:
         "Equip your children with the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
-      img: "https://i.ibb.co/BCxXFzJ/benefit3.png",
+      img: "https://imgcdn.upsurge.in/images/benefit3.png",
     },
     {
       title: "Earn real rewards",
       description:
         "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
-      img: "https://i.ibb.co/9T7H3sG/Maskz-Group.png",
+      img: "https://imgcdn.upsurge.in/images/Maskz-Group.png",
     },
     {
       title: "Develop 21st century skills & knowledge",
       description: `While jobs & roles change, the skills needed to succeed remain the same. Our offerings help children gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
-      img: "https://i.ibb.co/hf1LDRh/benefit4.png",
+      img: "https://imgcdn.upsurge.in/images/benefit4.png",
     },
   ];
   const [scroll, setscroll] = useState(150);

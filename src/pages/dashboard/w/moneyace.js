@@ -266,7 +266,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
             <div className={styles.mobileerr}>
               <div className={styles.box}>
                 <img
-                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  src="https://imgcdn.upsurge.in/images/to-landscape.gif"
                   className={styles.jasper}
                   alt="to-landscape"
                 />
@@ -288,7 +288,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
             <div className={styles.mobileerr}>
               <div className={styles.box}>
                 <img
-                  src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                  src="https://imgcdn.upsurge.in/images/to-landscape.gif"
                   className={styles.jasper}
                   alt="to-landscape"
                 />
@@ -363,7 +363,7 @@ export default function Moneyace({ userdatafromserver, moneyacedata }) {
                     <div className={styles.mobileerr}>
                       <div className={styles.box}>
                         <img
-                          src="https://i.ibb.co/VBSv3s9/to-landscape.gif"
+                          src="https://imgcdn.upsurge.in/images/to-landscape.gif"
                           className={styles.jasper}
                           alt="to-landscape"
                         />

@@ -47,7 +47,7 @@ export default function Welcome({
       />
       <img
         className={styles.logo}
-        src="https://i.ibb.co/58rg3qk/MA2.png"
+        src="https://imgcdn.upsurge.in/images/MA2.png"
         alt=""
       />
       <div className={styles.start} onClick={() => setstage("dashboard")}>
@@ -61,7 +61,7 @@ export default function Welcome({
       </div>
       <img
         className={styles.banner}
-        src="https://i.ibb.co/WKjx5qK/bg-02.png"
+        src="https://imgcdn.upsurge.in/images/bg-02.png"
         alt=""
       />
     </div>

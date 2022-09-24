@@ -19,6 +19,7 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import Tour from "../../../components/Tour/Tour";
 import { MainContext } from "../../../context/Main";
+import PageTitle from "../../../components/PageTitle";
 
 export default function Partners({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
@@ -32,14 +33,14 @@ export default function Partners({ userdatafromserver }) {
     msg: "",
   });
   const rewards = [
-    "https://i.ibb.co/cvVkBFn/bharatpe-1008905-1626341577.png",
-    "https://i.ibb.co/r487JLR/Phone-Pe-Logo-wine.png",
-    "https://i.ibb.co/hLRfTs6/Cred-logo-0709211000.png",
-    "https://i.ibb.co/Mpqgh6v/logo.png",
-    "https://i.ibb.co/5WL7ZGS/Paytm-Logo-wine.png",
-    "https://i.ibb.co/hLRfTs6/Cred-logo-0709211000.png",
-    "https://i.ibb.co/Mpqgh6v/logo.png",
-    "https://i.ibb.co/5WL7ZGS/Paytm-Logo-wine.png",
+    "https://imgcdn.upsurge.in/images/bharatpe-1008905-1626341577.png",
+    "https://imgcdn.upsurge.in/images/Phone-Pe-Logo-wine.png",
+    "https://imgcdn.upsurge.in/images/Cred-logo-0709211000.png",
+    "https://imgcdn.upsurge.in/images/logo.png",
+    "https://imgcdn.upsurge.in/images/Paytm-Logo-wine.png",
+    "https://imgcdn.upsurge.in/images/Cred-logo-0709211000.png",
+    "https://imgcdn.upsurge.in/images/logo.png",
+    "https://imgcdn.upsurge.in/images/Paytm-Logo-wine.png",
   ];
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -47,6 +48,7 @@ export default function Partners({ userdatafromserver }) {
 
   return (
     <div className={styles.partnerpage}>
+      <PageTitle title={`upsurge | Partners`} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}

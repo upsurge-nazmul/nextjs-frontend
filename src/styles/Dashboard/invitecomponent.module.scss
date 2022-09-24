@@ -1,0 +1,30 @@
+.container{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 5;
+    .inviteContainerWrapper{
+        position: absolute;
+        width: 100vw;
+        padding-top: 7vh;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .inviteBackground{
+            background-color: rgba(0, 0, 0, 0.19);
+            height:100vh;
+            width: 100vw;
+            position: absolute;
+            cursor: pointer;
+            top:0;
+            left:0;
+            z-index: 5;
+        }   
+        .inviteContainer{
+            position: relative;
+            z-index: 8;
+            width: max-content;
+        }
+    }
+}

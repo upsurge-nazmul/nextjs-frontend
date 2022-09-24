@@ -9,43 +9,12 @@ import styles from "../../styles/about/about.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
-  const team = [
-    {
-      name: "Karan Baweja",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Rashi Thakur",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Saurabh Dixit",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Amit",
-      img: "",
-      role: "",
-      link: "",
-    },
-    {
-      name: "Abhishek",
-      img: "",
-      role: "",
-      link: "",
-    },
-  ];
   const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
@@ -70,6 +39,7 @@ export default function About({ userdata }) {
         theme === "dark" && styles.darkaboutPage
       }`}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
@@ -130,7 +100,7 @@ export default function About({ userdata }) {
           </div>
           <div className={styles.imgwrapper}>
             <img
-              src="https://i.ibb.co/wc7Dh1d/Untitled-design-57-removebg.png"
+              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
               alt=""
               loading="lazy"
             />
@@ -153,208 +123,10 @@ export default function About({ userdata }) {
             <Jasper className={styles.jasper} />
           </div>
         </div>
-        {/* <p className={styles.teamheading}>Team Upsurge</p>
-
-        <div className={styles.wrapper}>
-          <div className={styles.role}>
-            <div className={styles.img}>
-              <div className={styles.hover}>
-                <LinkedIN className={styles.linkedin} />
-              </div>
-              <Image
-                src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <p className={styles.name}>Karan Baweja</p>
-            <p className={styles.position}>Founder</p>
-          </div>
-          <div className={styles.role}>
-            <div className={styles.img}>
-              <div className={styles.hover}>
-                <LinkedIN className={styles.linkedin} />
-              </div>
-              <Image
-                src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <p className={styles.name}>Rashi Thakur</p>
-            <p className={styles.position}>{`Learning & Development`}</p>
-          </div>
-          <div className={styles.role}>
-            <div className={styles.img}>
-              <div className={styles.hover}>
-                <LinkedIN className={styles.linkedin} />
-              </div>
-              <Image
-                src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <p className={styles.name}>Saurabh Dixit</p>
-            <p className={styles.position}>{`Product & Technology Leader`}</p>
-          </div>
-          <div className={styles.role}>
-            <div className={styles.img}>
-              <div className={styles.hover}>
-                <LinkedIN className={styles.linkedin} />
-              </div>
-              <Image
-                src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <p className={styles.name}>Amit</p>
-            <p className={styles.position}>{`Game Development Leader`}</p>
-          </div>
-          <div className={styles.role}>
-            <div
-              className={styles.img}
-              onClick={() => window.open("http://google.com", "_blank")}
-            >
-              <div className={styles.hover}>
-                <LinkedIN className={styles.linkedin} />
-              </div>
-              <Image
-                src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <p className={styles.name}>Abhishek</p>
-            <p className={styles.position}>{`Game Development Leader`}</p> 
-          </div>
-        </div>
-        <p className={styles.teamheading}>Our Mentors</p>
-
-        <div className={styles.wrapper}>
-          <div className={styles.role}>
-            <img
-              src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.name}>Varun Jairath</p>
-          </div>
-          <div className={styles.role}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Anoop Jairath</p>
-            <p className={styles.position}>{`Learning & Development`}</p>
-          </div>
-          <div className={styles.role}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Medha Narayanan</p>
-            <p className={styles.position}>{`Product & Technology Leader`}</p>
-          </div>
-          <div className={styles.role}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>{`Akshay Singh (tentative)`}</p>
-          </div>
-        </div> 
-        {/*  */}
+       
         <JoinUs />
 
-        {/* <div className={styles.secondheading} style={{ marginTop: "100px" }}>
-          Mission
-        </div>
-        <p className={styles.des}>
-          Make learning financial literacy and entrepreneurship fun
-        </p> */}
-        {/* <div className={styles.wrapper} style={{ marginBottom: "100px" }}>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUyMGJ1aXNpbmVzc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-          <div className={styles.team}>
-            <img
-              src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80"
-              alt=""
-            />
-            <p className={styles.name}>Temp</p>
-            <p className={styles.position}>Developer</p>
-          </div>
-        </div>
-         
-        {/* <div className={styles.ctc}>
-          <div className={styles.text}>
-            Help us build
-            <br /> extraordinary things.
-          </div>
-          <div className={styles.button}>View Careers</div>
-          <CurveJobSection className={styles.curve} />
-          <YourPhotoSvg className={styles.yourname} />
-          <img className={styles.cover} src="/images/jobs.png" alt="" />
-        </div> */}
+       
       </div>
       <Footer />
     </div>

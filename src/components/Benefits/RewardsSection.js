@@ -15,7 +15,7 @@ export default function RewardsSection({ id }) {
             <Image
               layout="fill"
               objectFit="cover"
-              src="https://i.ibb.co/JQSknVG/coinfalling.png"
+              src="https://imgcdn.upsurge.in/images/coinfalling.png"
               alt=""
             />
           </div>

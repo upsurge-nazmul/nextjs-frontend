@@ -332,7 +332,7 @@ export default function UblPage() {
             href="https://www.jcbl.com/"
             rel="noopener noreferrer"
           >
-            <img src="https://i.ibb.co/xq11YDB/jcbl-500x500.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/jcbl-500x500.png" alt="" />
           </a>
           <p>
             Incepted in 1989 with a vision to manufacture high-quality mobility

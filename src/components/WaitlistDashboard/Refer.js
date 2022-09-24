@@ -39,7 +39,7 @@ export default function Refer({ settoastdata, parent, nomargin }) {
         <Image
           objectFit="cover"
           layout="fill"
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+          src="https://imgcdn.upsurge.in/images/unsp/photo-1529156069898-49953e39b3ac.avif"
           alt=""
         />
       </div>

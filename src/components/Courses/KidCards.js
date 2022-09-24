@@ -6,7 +6,7 @@ function KidCards() {
     <div className={styles.kidCard}>
       <div className={styles.header}>
         <img
-          src="https://images.unsplash.com/photo-1552873816-636e43209957?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGtpZHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+          src="https://imgcdn.upsurge.in/images/unsp/photo-1552873816-636e43209957.avif"
           alt=""
         />
         <div className={styles.text}>

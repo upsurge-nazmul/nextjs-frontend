@@ -17,6 +17,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import JoinUs from "../../components/Home/JoinUs";
 import LeaderBoard from "../../components/LeaderBoard";
 import { MainContext } from "../../context/Main";
+import PageTitle from "../../components/PageTitle";
 const specialchars = [
   "#",
   "$",
@@ -322,6 +323,7 @@ function Quiz({ userdata }) {
           : colorarray[currentcolor],
       }}
     >
+      <PageTitle />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
@@ -462,7 +464,7 @@ function Quiz({ userdata }) {
             </div>
           </div>
           <div className={styles.right}>
-            <img src="https://i.ibb.co/yV2H2FY/Artboard-1-1.png" alt="" />
+            <img src="https://imgcdn.upsurge.in/images/Artboard-1-1.png" alt="" />
           </div>
         </div>
       ) : (

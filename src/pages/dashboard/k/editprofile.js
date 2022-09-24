@@ -18,6 +18,7 @@ import DashboardFooter from "../../../components/Dashboard/DashboardFooter";
 import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
+import PageTitle from "../../../components/PageTitle";
 export default function EditProfile({ data, childavatars }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -31,7 +32,7 @@ export default function EditProfile({ data, childavatars }) {
   );
   const [mode, setmode] = useState("Edit Profile");
   const [img, setimg] = useState(
-    data?.user_img_url || "https://i.ibb.co/v3vVV8r/default-avatar.png"
+    data?.user_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [username, setusername] = useState(data?.user_name || "");
@@ -167,6 +168,7 @@ export default function EditProfile({ data, childavatars }) {
 
   return (
     <div className={styles.manageChore}>
+      <PageTitle title={`upsurge | Profile`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       {showpopup && (
