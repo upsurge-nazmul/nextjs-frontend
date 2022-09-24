@@ -370,6 +370,8 @@
             display: flex;
             flex-direction: row;
             width: 100%;
+            flex-wrap: wrap;
+            gap: 10px;
           }
           .choreSection {
             margin-top: 20px;
