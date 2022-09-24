@@ -13,12 +13,13 @@ export default function Journey() {
 
   return (
     <div className={styles.journey}>
-      {selectedPath ? "" : <Banner highlight={PathwayData[0]} />}
-      <h2 id="milestone" className={styles.mainheading} onClick={() => {}}>
+      
+      <h2 id="milestone" className={styles.mainheading} onClick={() => { }}>
         Journey
         <HeadingArrow />
       </h2>
       <Pathway highlight={selectedPath} handleClick={setSelectedPath} />
+      {selectedPath ? "" : <Banner highlight={PathwayData[0]} />}
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
       {activeTask ? (
         <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />
