@@ -160,9 +160,7 @@ export default function ChildActivity({
       highlightBg: true,
       text: "Welcome to upsurge!",
       extraPadding: true,
-      content: `you can check your milestones here.`,
-      required: true,
-      disableBtns: true,
+      content: `you can check your journey here.`,
       isolate: true,
     },
     {
