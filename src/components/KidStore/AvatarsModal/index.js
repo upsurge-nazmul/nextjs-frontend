@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import styles from "../../../styles/KidStore/AvatarsModal.module.scss";
-import AvatarList from "./AvatarList";
+import AvatarCarousel from "./AvatarCarousel";
+import HeadingArrow from "../../SVGcomponents/HeadingArrow";
 
 export default function AvatarsModal({ avatars }) {
   return (
     <div className={styles.avatarsModal}>
-      <AnimatePresence>
-        <div className={styles.container}>
-          <AvatarList avatars={avatars} />
+      <div className={styles.heading}>
+        Available Avatars
+        <HeadingArrow />
+      </div>
+      <div className={styles.container}>
+        <div className={styles.avatars}>
+          <AvatarCarousel avatars={avatars} />
         </div>
-      </AnimatePresence>
+      </div>
     </div>
   );
 }
