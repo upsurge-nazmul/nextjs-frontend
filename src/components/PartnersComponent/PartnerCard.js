@@ -12,13 +12,22 @@ export default function PartnerCard({
           See more...{" "}
         </div>
       ) : (
-        <img
-          onClick={() => {}}
-          className={styles.banner}
-          src={data}
-          alt="Reward partner"
-          loading="lazy"
-        />
+        <>
+          <img
+            onClick={() => {}}
+            className={styles.banner}
+            src={data.banner}
+            alt={data.name}
+            loading="lazy"
+          />
+          <div className={styles.cardBody}>
+            {data.badge && (
+              <div className={styles.badgeArea}>
+                <div className={styles.badge}>{data.badge}</div>
+              </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
