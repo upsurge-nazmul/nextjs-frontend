@@ -1,0 +1,29 @@
+.partnerPage {
+  .partnerCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+.partnerCard {
+  border-radius: 30px;
+  height: 25vh;
+  width: 20vw;
+  .banner {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+  }
+  .seeMore {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1673c8;
+    font-size: 20px;
+    font-weight: 400;
+  }
+}

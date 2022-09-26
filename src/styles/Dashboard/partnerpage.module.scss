@@ -21,12 +21,10 @@
     flex-direction: column;
     .mainContent {
       display: flex;
-      overflow-y: auto;
       height: fit-content;
-      margin-top: 20px;
       padding: 10px 40px;
       scrollbar-width: thin;
-      overflow: hidden;
+      overflow: auto;
     }
 
     .container {
@@ -64,7 +62,6 @@
         display: flex;
         overflow-y: auto;
         height: fit-content;
-        margin-top: 20px;
         scrollbar-width: thin;
         .flexLeft {
           display: flex;
@@ -142,7 +139,6 @@
         display: flex;
         overflow-y: auto;
         height: fit-content;
-        margin-top: 0px;
         padding: 0 20px;
         scrollbar-width: thin;
         .flexLeft {
