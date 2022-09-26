@@ -1,49 +1,8 @@
 import { useRef } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import styles from "../../styles/Partner/partner.module.scss";
 import PartnerCard from "./PartnerCard";
-
-const PARTNERS = [
-  {
-    sl: 1,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
-    badge: "New",
-    claim: true,
-  },
-  {
-    sl: 2,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
-    badge: "",
-    claim: true,
-  },
-  {
-    sl: 3,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/phpyYVFl1_lisbnd.webp",
-    badge: "",
-  },
-  {
-    sl: 4,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
-    badge: "New",
-  },
-  {
-    sl: 5,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
-    badge: "",
-  },
-  {
-    sl: 6,
-    name: "",
-    banner: "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
-    badge: "New",
-  },
-];
+import { PARTNERS } from "../../static_data/Partners_Data";
 
 export default function PartnersComponent() {
   const partnersRef = useRef();
