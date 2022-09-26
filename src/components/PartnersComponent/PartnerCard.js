@@ -26,6 +26,11 @@ export default function PartnerCard({
                 <div className={styles.badge}>{data.badge}</div>
               </div>
             )}
+            {data.claim && (
+              <div className={styles.claimArea}>
+                <button className={styles.claimButton}>CLAIM NOW</button>
+              </div>
+            )}
           </div>
         </>
       )}

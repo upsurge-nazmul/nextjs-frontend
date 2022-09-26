@@ -10,12 +10,14 @@ const PARTNERS = [
     name: "",
     banner: "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
     badge: "New",
+    claim: true,
   },
   {
     sl: 2,
     name: "",
     banner: "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
     badge: "",
+    claim: true,
   },
   {
     sl: 3,
