@@ -39,38 +39,18 @@ const rewards = [
 
 export default function PartnersComponent() {
   const partnersRef = useRef();
-  const [contentOverflow, setConventOverflow] = useState(true);
-
-  useEffect(() => {
-    console.log(
-      "****** overflow **********",
-      window && window.innerHeight,
-      partnersRef && partnersRef.current && partnersRef.current.offsetHeight,
-      contentOverflow
-    );
-
-    if (
-      partnersRef &&
-      window &&
-      partnersRef.current &&
-      partnersRef.current.offsetHeight > window.innerHeight
-    ) {
-      setConventOverflow(true);
-    }
-  }, []);
+  const [maxContent, setMaxContent] = useState(8);
 
   return (
     <div className={styles.partnerPage}>
       <div className={styles.partnerCards} ref={partnersRef}>
-        {rewards
-          .slice(0, contentOverflow ? 8 : rewards.length)
-          .map((item, i) => {
-            return <PartnerCard data={item} key={i} />;
-          })}
-        {contentOverflow ? (
+        {rewards.slice(0, maxContent).map((item, i) => {
+          return <PartnerCard data={item} key={i} />;
+        })}
+        {rewards.length > maxContent ? (
           <PartnerCard
             seeMoreCard
-            seeMoreClick={() => setConventOverflow(false)}
+            seeMoreClick={() => setMaxContent((prev) => Number(prev) + 3)}
           />
         ) : (
           ""
