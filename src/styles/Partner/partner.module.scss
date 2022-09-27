@@ -1,0 +1,71 @@
+.partnerPage {
+  .partnerCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 20px;
+  }
+}
+
+.partnerCard {
+  border-radius: 30px;
+  height: 25vh;
+  width: 20vw;
+  position: relative;
+  .banner {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+  }
+  .cardBody {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    .badgeArea {
+      display: flex;
+      justify-content: flex-end;
+      .badge {
+        background-color: #ff6163;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 20px;
+        padding: 4px 12px;
+      }
+    }
+    .claimArea {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 20px;
+      .claimButton {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: #1673c8;
+        color: #fff;
+        border-radius: 14px;
+        font-size: 14px;
+        padding: 10px 20px;
+        width: 80%;
+      }
+    }
+  }
+  .seeMore {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1673c8;
+    font-size: 20px;
+    font-weight: 400;
+  }
+}

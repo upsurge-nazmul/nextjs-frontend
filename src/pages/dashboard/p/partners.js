@@ -20,6 +20,7 @@ import Refer from "../../../components/WaitlistDashboard/Refer";
 import Tour from "../../../components/Tour/Tour";
 import { MainContext } from "../../../context/Main";
 import PageTitle from "../../../components/PageTitle";
+import PartnersComponent from "../../../components/PartnersComponent";
 
 export default function Partners({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
@@ -119,8 +120,11 @@ export default function Partners({ userdatafromserver }) {
           setmode={setmode}
           setStoryIndex={setStoryIndex}
         />
-        <div className={styles.mainContent}>
+        {/* <div className={styles.mainContent}>
           <PartnerSection dashboard />
+        </div> */}
+        <div className={styles.mainContent}>
+          <PartnersComponent />
         </div>
       </div>
     </div>
