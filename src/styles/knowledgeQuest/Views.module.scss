@@ -16,8 +16,23 @@
     width: 100%;
     border: none;
   }
+  .doneButton {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 150px;
+    background-color: #4d5dfb;
+    position: fixed;
+    bottom: 0;
+    left: 50;
+    margin: 20px;
+  }
   .fullScreenButton {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     height: fit-content;
@@ -28,10 +43,6 @@
     outline: none;
     background-color: transparent;
     color: #d4d1d1;
-  }
-  .shrinkScreenButton {
-    @extend .fullScreenButton;
-    position: fixed;
   }
 
   .quizView {

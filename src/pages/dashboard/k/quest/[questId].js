@@ -142,6 +142,8 @@ export default function KnowledgeQuest({ userData, questData }) {
                       <RecordingView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[1] ? (

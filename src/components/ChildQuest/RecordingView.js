@@ -3,7 +3,7 @@ import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
 
-export default function RecordingView({ chapterId }) {
+export default function RecordingView({ chapterId, handleBack, handleDone }) {
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
@@ -12,15 +12,6 @@ export default function RecordingView({ chapterId }) {
       setFullScreen(true);
     }
   }, []);
-
-  const manageFullScreen = () => {
-    setFullScreen((prev) => !prev);
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      document.body.requestFullscreen();
-    }
-  };
 
   return (
     <div className={styles.view}>
@@ -31,10 +22,22 @@ export default function RecordingView({ chapterId }) {
         allowFullScreen={true}
       ></iframe>
       <button
-        className={
-          fullScreen ? styles.shrinkScreenButton : styles.fullScreenButton
-        }
-        onClick={manageFullScreen}
+        className={styles.doneButton}
+        onClick={() => {
+          setFullScreen(false);
+          document.exitFullscreen();
+          handleDone();
+        }}
+      >
+        Done
+      </button>
+      <button
+        className={styles.fullScreenButton}
+        onClick={() => {
+          setFullScreen(false);
+          document.exitFullscreen();
+          handleBack();
+        }}
       >
         {fullScreen ? <FullScreenExit /> : <FullScreen />}
       </button>
