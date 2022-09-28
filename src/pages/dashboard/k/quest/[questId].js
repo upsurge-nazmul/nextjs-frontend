@@ -150,6 +150,8 @@ export default function KnowledgeQuest({ userData, questData }) {
                       <ActivityView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[2] ? (
