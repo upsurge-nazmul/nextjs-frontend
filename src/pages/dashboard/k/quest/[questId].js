@@ -173,15 +173,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                       >
                         Go Back
                       </button>
-                      {(view === LESSON_TYPES[0] ||
-                        view === LESSON_TYPES[1]) && (
-                        <button
-                          className={styles.doneButton}
-                          onClick={handleDone}
-                        >
-                          Done
-                        </button>
-                      )}
                     </div>
                   </div>
                 ) : (

@@ -15,32 +15,36 @@ export default function RecordingView({ chapterId, handleBack, handleDone }) {
 
   return (
     <div className={styles.view}>
-      <iframe
-        id="iframe"
-        className={fullScreen ? styles.fullScreenIframe : styles.iframe}
-        src={`/KnowledgeQuest/${chapterId}/story.html`}
-        allowFullScreen={true}
-      ></iframe>
-      <button
-        className={styles.doneButton}
-        onClick={() => {
-          setFullScreen(false);
-          document.exitFullscreen();
-          handleDone();
-        }}
-      >
-        Done
-      </button>
-      <button
-        className={styles.fullScreenButton}
-        onClick={() => {
-          setFullScreen(false);
-          document.exitFullscreen();
-          handleBack();
-        }}
-      >
-        {fullScreen ? <FullScreenExit /> : <FullScreen />}
-      </button>
+      <div className={styles.fullScreenView}>
+        <iframe
+          id="iframe"
+          className={styles.iframe}
+          src={`/KnowledgeQuest/${chapterId}/story.html`}
+          allowFullScreen={true}
+        ></iframe>
+        <div className={styles.actionArea}>
+          <button
+            className={styles.doneButton}
+            onClick={() => {
+              setFullScreen(false);
+              document.exitFullscreen();
+              handleDone();
+            }}
+          >
+            Done
+          </button>
+          <button
+            className={styles.fullScreenButton}
+            onClick={() => {
+              setFullScreen(false);
+              document.exitFullscreen();
+              handleBack();
+            }}
+          >
+            {fullScreen ? <FullScreenExit /> : <FullScreen />}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
