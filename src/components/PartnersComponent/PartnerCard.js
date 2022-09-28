@@ -16,7 +16,9 @@ export default function PartnerCard({
           <img
             onClick={() => {}}
             className={styles.banner}
-            src={data.banner}
+            src={
+              require(`../../assets/partners/${data.banner}.svg`).default.src
+            }
             alt={data.name}
             loading="lazy"
           />
