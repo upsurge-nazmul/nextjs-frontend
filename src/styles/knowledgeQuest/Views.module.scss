@@ -10,11 +10,10 @@
     left: 0;
     .iframe {
       width: 100%;
-      height: 100%;
+      flex: 1;
       display: flex;
       position: relative;
       align-items: flex-start;
-      aspect-ratio: 16/9;
       border: none;
     }
     .actionArea {
