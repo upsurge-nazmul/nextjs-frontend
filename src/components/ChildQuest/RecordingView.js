@@ -6,6 +6,13 @@ import FullScreenExit from "../SVGcomponents/FullScreenExit";
 export default function RecordingView({ chapterId }) {
   const [fullScreen, setFullScreen] = useState(false);
 
+  useEffect(() => {
+    if (document) {
+      document.body.requestFullscreen();
+      setFullScreen(true);
+    }
+  }, []);
+
   const manageFullScreen = () => {
     setFullScreen((prev) => !prev);
     if (document.fullscreenElement) {
