@@ -1,11 +1,46 @@
 .view {
-  .iframe {
+  position: relative;
+  .fullScreenView {
     width: 100%;
-    height: 80%;
+    height: 100%;
     display: flex;
-    position: relative;
-    align-items: flex-start;
-    aspect-ratio: 16/9;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    .iframe {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+    .actionArea {
+      background-color: #000;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      .doneButton {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        min-width: 150px;
+        background-color: #4d5dfb;
+      }
+      .fullScreenButton {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #d4d1d1;
+      }
+    }
   }
 
   .quizView {

@@ -142,12 +142,16 @@ export default function KnowledgeQuest({ userData, questData }) {
                       <RecordingView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[1] ? (
                       <ActivityView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[2] ? (
@@ -169,15 +173,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                       >
                         Go Back
                       </button>
-                      {(view === LESSON_TYPES[0] ||
-                        view === LESSON_TYPES[1]) && (
-                        <button
-                          className={styles.doneButton}
-                          onClick={handleDone}
-                        >
-                          Done
-                        </button>
-                      )}
                     </div>
                   </div>
                 ) : (
