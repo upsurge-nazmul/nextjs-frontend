@@ -16,7 +16,6 @@ export default function RequestModal({
   availableUnicoins,
 }) {
   //modes will be start , category , template, assign
-  console.log(data);
   const [success, setsuccess] = useState(false);
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");

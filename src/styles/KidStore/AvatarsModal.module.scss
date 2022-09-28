@@ -12,6 +12,12 @@
       margin-left: 10px;
     }
   }
+  .container {
+    max-width: calc(70vw);
+    .avatars {
+      width: 100%;
+    }
+  }
 }
 
 .carouselContainerOuter{
