@@ -88,6 +88,8 @@
         }
       }
       .inputArea {
+        flex:1;
+        min-width: fit-content;
         .inputwrapper {
           flex: 0.5;
           background-color: rgb(219, 219, 219);
@@ -95,6 +97,7 @@
           height: 45px;
           overflow: hidden;
           max-width: 380px;
+          min-width: fit-content;
           display: flex;
           align-items: center;
           padding-right: 15px;
@@ -106,6 +109,9 @@
             min-height: 45px;
             padding: 0 15px;
             flex: 1;
+            .icon{
+              min-width: max-content;
+            }
             &:focus {
               border: none;
               outline: none;

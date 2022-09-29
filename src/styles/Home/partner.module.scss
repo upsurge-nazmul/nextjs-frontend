@@ -17,7 +17,7 @@
     position: relative;
     flex-direction: column;
     border-radius: 12px;
-    width: 70vw;
+    min-width: 100%;
     margin-top: 20px;
     .heading {
       font-size: 36px;
