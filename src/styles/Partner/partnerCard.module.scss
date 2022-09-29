@@ -5,14 +5,11 @@ $transition-duration: 1s;
   height: 25vh;
   width: 20vw;
   position: relative;
-  cursor: pointer;
   transition: 1s ease-in-out;
   transform-style: preserve-3d;
-
   &:hover {
     transform: rotateY(0.5turn);
   }
-
   .card__face {
     position: absolute;
     top: 0;
@@ -52,17 +49,6 @@ $transition-duration: 1s;
           }
         }
       }
-    }
-    .seeMore {
-      cursor: pointer;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #1673c8;
-      font-size: 20px;
-      font-weight: 400;
     }
   }
   .card__face__back {
@@ -118,5 +104,25 @@ $transition-duration: 1s;
         }
       }
     }
+  }
+}
+.seeMoreCard {
+  border-radius: 30px;
+  height: 25vh;
+  width: 20vw;
+  position: relative;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+  transform-style: preserve-3d;
+  .seeMore {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1673c8;
+    font-size: 20px;
+    font-weight: 400;
   }
 }
