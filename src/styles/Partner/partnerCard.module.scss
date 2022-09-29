@@ -1,8 +1,9 @@
-.partnerCard {
+.partnerCardFront {
   border-radius: 30px;
   height: 25vh;
   width: 20vw;
   position: relative;
+  cursor: pointer;
   .frontFace {
     height: 100%;
     width: 100%;
@@ -33,6 +34,30 @@
       }
     }
   }
+  .seeMore {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1673c8;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &:active {
+    transform: rotateY(-90deg);
+    -webkit-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+    transition: 0.2s ease-in;
+  }
+}
+.partnerCardBack {
+  border-radius: 30px;
+  height: 25vh;
+  width: 20vw;
+  position: relative;
+  cursor: pointer;
   .backFace {
     height: 100%;
     width: 100%;
@@ -58,15 +83,10 @@
       }
     }
   }
-  .seeMore {
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #1673c8;
-    font-size: 20px;
-    font-weight: 400;
+  &:active {
+    transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    transition: 0.2s ease-out;
   }
 }
