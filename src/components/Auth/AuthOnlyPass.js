@@ -30,12 +30,14 @@ function AuthLogin({
 
   // login Function
   async function handleSignin() {
+    console.log(userdata.user_id, prefilled.id)
     if (userdata.user_id === prefilled.id) {
       return;
     }
     let response = await LoginApis.checktoken({
       token: prefilled.token,
     });
+    console.log(response);
     if (response && !response?.data?.success) {
       settoastdata({
         show: true,
@@ -74,8 +76,8 @@ function AuthLogin({
             type: newLogin.data.data.userProfile.user_type,
             id: newLogin.data.data.userProfile.id,
           })
-        );
-        setCookie("accesstoken", newLogin.data.data.token);
+          );
+          setCookie("accesstoken", response.data.data.token);
         setuserdata(newLogin.data.data.userProfile);
         setuser(newLogin.data.data.userProfile.id);
         settoastdata({
@@ -89,6 +91,7 @@ function AuthLogin({
         seterror(newLogin?.data.message || "Cannot reach server");
       }
     }
+    setCookie("accesstoken", response.data.data.token);
   }
 
   useEffect(() => {
