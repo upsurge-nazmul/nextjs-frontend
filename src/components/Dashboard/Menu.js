@@ -205,7 +205,7 @@ function Menu({
             className={styles.tabs}
             onClick={() => {
               setshowmenu(false);
-              router.push("/dashboard/p/invite");
+              router.push("/dashboard/k/invite");
             }}
           >
             <GroupAddOutlinedIcon className={styles.editIcon} />
