@@ -33,6 +33,7 @@ function KidDashboardHeader({
   const [shownotifications, setshownotifications] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   const [kidLevel, setKidLevel] = useState();
+  const [savedUser, setSavedUser] = useState();
   const [showlevels, setshowlevels] = useState(false);
 
   useEffect(() => {
@@ -137,7 +138,8 @@ function KidDashboardHeader({
               <Menu
                 setshowauth={setshowauth}
                 settoastdata={settoastdata}
-                menuType={"child"}
+                menuType={"not_child"}
+                setSavedUser={setSavedUser}
               />
             )}
             <img
