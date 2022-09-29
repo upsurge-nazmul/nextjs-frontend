@@ -199,6 +199,20 @@ function Menu({
           </div>
         )}
       </div>
+      {menuType === "child" && !waitilistmenu && (
+        <>
+         <p
+            className={styles.tabs}
+            onClick={() => {
+              setshowmenu(false);
+              router.push("/dashboard/p/invite");
+            }}
+          >
+            <GroupAddOutlinedIcon className={styles.editIcon} />
+            Invite
+          </p>
+        </>
+      )}
       {menuType !== "child" && !waitilistmenu && (
         <>
           <p
