@@ -4,6 +4,8 @@
   width: 20vw;
   position: relative;
   cursor: pointer;
+  backface-visibility: hidden;
+  transition: 1s ease-in;
   .frontFace {
     height: 100%;
     width: 100%;
@@ -46,9 +48,9 @@
     font-weight: 400;
   }
   &:active {
-    transform: rotateY(-90deg);
-    -webkit-transform: rotateY(-90deg);
-    -ms-transform: rotateY(-90deg);
+    transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
     transition: 0.2s ease-in;
   }
 }
@@ -58,6 +60,8 @@
   width: 20vw;
   position: relative;
   cursor: pointer;
+  backface-visibility: hidden;
+  transition: 1s ease-out;
   .backFace {
     height: 100%;
     width: 100%;
