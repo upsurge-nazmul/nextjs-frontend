@@ -1,122 +1,122 @@
-.partnerCardFront {
+$transition-duration: 1s;
+
+.partnerCard {
   border-radius: 30px;
   height: 25vh;
   width: 20vw;
   position: relative;
   cursor: pointer;
-  backface-visibility: hidden;
-  transition: 1s ease-in;
-  .frontFace {
-    height: 100%;
+  transition: 1s ease-in-out;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: rotateY(0.5turn);
+  }
+
+  .card__face {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .banner {
-      height: 80px;
-      width: 100%;
-    }
-    .cardBody {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: 1s ease-in-out;
+  }
+  .card__face__front {
+    .frontFace {
       height: 100%;
-      padding: 20px;
-      .badgeArea {
-        display: flex;
-        justify-content: flex-end;
-        .badge {
-          background-color: #ff6163;
-          color: #fff;
-          font-size: 12px;
-          border-radius: 20px;
-          padding: 4px 12px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .banner {
+        height: 80px;
+        width: 100%;
+      }
+      .cardBody {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        .badgeArea {
+          display: flex;
+          justify-content: flex-end;
+          .badge {
+            background-color: #ff6163;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 20px;
+            padding: 4px 12px;
+          }
         }
       }
     }
-  }
-  .seeMore {
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #1673c8;
-    font-size: 20px;
-    font-weight: 400;
-  }
-  &:active {
-    transform: rotateY(90deg);
-    -webkit-transform: rotateY(90deg);
-    -ms-transform: rotateY(90deg);
-    transition: 0.2s ease-in;
-  }
-}
-.partnerCardBack {
-  border-radius: 30px;
-  height: 25vh;
-  width: 20vw;
-  position: relative;
-  cursor: pointer;
-  backface-visibility: hidden;
-  transition: 1s ease-out;
-  .backFace {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .bannerArea {
+    .seeMore {
+      cursor: pointer;
+      height: 100%;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
-      padding: 10px 20px;
-      .smallBanner {
-        height: 40px;
-        width: 40px;
-      }
+      justify-content: center;
+      align-items: center;
+      color: #1673c8;
+      font-size: 20px;
+      font-weight: 400;
     }
-    .cardBody {
-      flex: 1;
+  }
+  .card__face__back {
+    transform: rotateY(0.5turn);
+    .backFace {
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      width: 80%;
-      .details {
-        font-size: 14px;
-        font-weight: 400;
-        padding-bottom: 10px;
-      }
-      .terms {
-        font-size: 8px;
-        font-weight: 300;
-      }
-      .claimArea {
+      align-items: center;
+      .bannerArea {
         width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: auto;
-        padding: 10px 0;
-        .claimButton {
-          cursor: pointer;
-          border: none;
-          outline: none;
-          background-color: #1673c8;
-          color: #fff;
-          border-radius: 14px;
+        justify-content: flex-end;
+        padding: 10px 20px;
+        .smallBanner {
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .cardBody {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        .details {
           font-size: 14px;
-          padding: 10px 20px;
+          font-weight: 400;
+          padding-bottom: 10px;
+        }
+        .terms {
+          font-size: 8px;
+          font-weight: 300;
+        }
+        .claimArea {
           width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: auto;
+          padding: 10px 0;
+          .claimButton {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: #1673c8;
+            color: #fff;
+            border-radius: 14px;
+            font-size: 14px;
+            padding: 10px 20px;
+            width: 100%;
+          }
         }
       }
     }
-  }
-  &:active {
-    transform: rotateY(90deg);
-    -webkit-transform: rotateY(90deg);
-    -ms-transform: rotateY(90deg);
-    transition: 0.2s ease-out;
   }
 }
