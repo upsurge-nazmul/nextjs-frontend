@@ -351,12 +351,14 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 1000px) {
   .parentStore {
     .contentWrapper {
       max-width: calc(100vw - 55px);
       .mainContent {
+        flex-direction: column;
         .flexLeft {
+          flex-direction: column;
           width: 100%;
           padding: 0 20px;
           .gameSection {

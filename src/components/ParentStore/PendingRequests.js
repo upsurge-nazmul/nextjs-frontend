@@ -36,6 +36,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
 
   return (
     <div className={styles.pendingRequest}>
+      <div className={styles.flexTop}>
       <img
         src={
           data.request_type === "avatar"
@@ -68,11 +69,14 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
         </p>
         <p>UniCoins</p>
       </div>
+      </div>
+      <div className={styles.flexBottom}>
       <div className={styles.button} onClick={hanldeapprove}>
         Approve Purchase
       </div>
       <div className={styles.removebutton}>
         <RemoveSvg />
+      </div>
       </div>
     </div>
   );
