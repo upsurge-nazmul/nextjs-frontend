@@ -1,20 +1,26 @@
-import styles from "../../styles/Partner/partner.module.scss";
+import { useState } from "react";
+import styles from "../../styles/Partner/partnerCard.module.scss";
 
 export default function PartnerCard({
   data,
   seeMoreCard = false,
   seeMoreClick = () => {},
 }) {
+  const [flip, setFlip] = useState(false);
+
   return (
-    <div className={styles.partnerCard}>
+    <div
+      className={styles.partnerCard}
+      style={{ backgroundColor: data ? data.color : "transparent" }}
+      onClick={() => setFlip((prev) => !prev)}
+    >
       {seeMoreCard ? (
         <div className={styles.seeMore} onClick={seeMoreClick}>
           See more...{" "}
         </div>
-      ) : (
-        <>
+      ) : !flip ? (
+        <div className={styles.frontFace}>
           <img
-            onClick={() => {}}
             className={styles.banner}
             src={
               require(`../../assets/partners/${data.banner}.svg`).default.src
@@ -28,13 +34,16 @@ export default function PartnerCard({
                 <div className={styles.badge}>{data.badge}</div>
               </div>
             )}
-            {data.claim && (
-              <div className={styles.claimArea}>
-                <button className={styles.claimButton}>CLAIM NOW</button>
-              </div>
-            )}
           </div>
-        </>
+        </div>
+      ) : (
+        <div className={styles.backFace}>
+          <div className={styles.cardBody}>
+            <div className={styles.claimArea}>
+              <button className={styles.claimButton}>CLAIM NOW</button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
