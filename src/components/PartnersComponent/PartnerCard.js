@@ -1,4 +1,5 @@
-import styles from "../../styles/Partner/partner.module.scss";
+import { useState } from "react";
+import styles from "../../styles/Partner/partnerCard.module.scss";
 
 export default function PartnerCard({
   data,
@@ -6,34 +7,75 @@ export default function PartnerCard({
   seeMoreClick = () => {},
 }) {
   return (
-    <div className={styles.partnerCard}>
+    <>
       {seeMoreCard ? (
-        <div className={styles.seeMore} onClick={seeMoreClick}>
-          See more...{" "}
+        <div className={styles.seeMoreCard} onClick={seeMoreClick}>
+          <div className={styles.seeMore}>See more... </div>
         </div>
       ) : (
-        <>
-          <img
-            onClick={() => {}}
-            className={styles.banner}
-            src={data.banner}
-            alt={data.name}
-            loading="lazy"
-          />
-          <div className={styles.cardBody}>
-            {data.badge && (
-              <div className={styles.badgeArea}>
-                <div className={styles.badge}>{data.badge}</div>
+        <div
+          className={styles.partnerCard}
+          style={{
+            backgroundColor: data
+              ? data.color
+                ? data.color
+                : "transparent"
+              : "transparent",
+          }}
+        >
+          <div className={`${styles.card__face} ${styles.card__face__front}`}>
+            <div className={styles.frontFace}>
+              <img
+                className={styles.banner}
+                src={
+                  require(`../../assets/partners/${data.banner}.svg`).default
+                    .src
+                }
+                alt={data.name}
+                loading="lazy"
+              />
+              <div className={styles.cardBody}>
+                {data.badge && (
+                  <div className={styles.badgeArea}>
+                    <div className={styles.badge}>{data.badge}</div>
+                  </div>
+                )}
               </div>
-            )}
-            {data.claim && (
-              <div className={styles.claimArea}>
-                <button className={styles.claimButton}>CLAIM NOW</button>
-              </div>
-            )}
+            </div>
           </div>
-        </>
+          <div className={`${styles.card__face} ${styles.card__face__back}`}>
+            <div className={styles.backFace}>
+              <div className={styles.bannerArea}>
+                <img
+                  className={styles.smallBanner}
+                  src={
+                    require(`../../assets/partners/${data.banner}.svg`).default
+                      .src
+                  }
+                  alt={data.name}
+                  loading="lazy"
+                />
+              </div>
+              <div className={styles.cardBody}>
+                <div className={styles.details}>
+                  {data.details ? data.details : ""}
+                </div>
+                <div className={styles.terms}>
+                  {data.details ? "Terms and Conditions apply." : ""}
+                </div>
+                <div className={styles.claimArea}>
+                  <button
+                    className={styles.claimButton}
+                    onClick={() => console.log("claim clicked")}
+                  >
+                    CLAIM NOW
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }
