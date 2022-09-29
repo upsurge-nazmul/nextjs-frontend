@@ -8,6 +8,18 @@
   justify-content: space-between;
   border-radius: 12px;
   margin-bottom: 20px;
+  .flexTop,.flexBottom{
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .flexTop{
+    flex: 2 0 0;
+  }
+  .flexBottom{
+    flex: 1.1 0 0;
+    justify-content: space-evenly;
+  }
   img {
     width: 64px;
     height: 64px;
@@ -48,11 +60,10 @@
   }
   .button {
     min-width: fit-content;
-    padding: 0 10px;
+    padding: 9px 10px;
     background: #4166eb;
     border-radius: 8px;
     color: white;
-    height: 65%;
     max-width: 91px;
     width: 15%;
     display: flex;
@@ -106,6 +117,7 @@
       margin-left: 10px;
       margin-right: 10px;
       min-width: 70px;
+      
       .task {
         font-size: 16px;
         font-weight: 500;
@@ -257,10 +269,12 @@
 
 @media only screen and (max-width: 860px) {
   .pendingRequest {
-    justify-content: start;
     margin-bottom: 15px;
-    padding: 5px;
-    height: 60px;
+    padding: 8px;
+    flex-direction: column;
+    .flexTop,.flexBottom{
+      justify-content: space-between;
+    }
     img {
       width: 50px;
       height: 50px;
@@ -283,10 +297,7 @@
       }
     }
     .points {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 0.6;
+      width: 100%;
       p {
         font-size: 10px;
         font-weight: 500;
@@ -294,7 +305,8 @@
       }
       .number {
         color: black;
-        margin-right: 0px;
+        margin-right: 5px;
+        margin-left: auto;
       }
     }
     .completionIcon {
@@ -319,13 +331,13 @@
       }
     }
     .button {
-      height: 55%;
+      height: 100%;
       width: 70px;
       margin-right: 5px;
       font-size: 8px;
-      margin: 0 2%;
+      margin: 0 4%;
       border-radius: 5px;
-      padding: 0 5px;
+      padding: 4px 10px;
       &:hover {
         background-color: #ffffff;
         color: #4166eb;
@@ -336,11 +348,9 @@
       background: rgba(255, 98, 99, 1);
       border-radius: 5px;
       color: white;
-      height: 55%;
-      width: 50px;
-      display: flex;
+      height: 100%;
+      width: 40px;
       justify-content: center;
-      margin-right: 0px;
       align-items: center;
       cursor: pointer;
       transition: all 0.3s ease;

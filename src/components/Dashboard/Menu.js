@@ -23,7 +23,6 @@ function Menu({
   menuType,
   waitilistmenu,
   setSavedUser,
-  setshowinvite,
 }) {
   const {
     savedUsers,
@@ -202,10 +201,11 @@ function Menu({
       </div>
       {menuType === "child" && !waitilistmenu && (
         <>
-          <p
+         <p
             className={styles.tabs}
             onClick={() => {
-              setshowinvite(true);
+              setshowmenu(false);
+              router.push("/dashboard/k/invite");
             }}
           >
             <GroupAddOutlinedIcon className={styles.editIcon} />

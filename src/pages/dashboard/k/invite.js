@@ -30,13 +30,9 @@ export default function Invite({ kidsdata, userdatafromserver }) {
       <DashboardLeftPanel />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        {(!kidsdata || kidsdata.length === 0) && (
-          <p className={styles.error}>Please add children before inviting.</p>
-        )}
         <div className={styles.mainContent}>
           <div className={styles.flexTop}>
             <Refer settoastdata={settoastdata} parent={true} nomargin={true} />
-            {kidsdata && <AvailablePointsSection kidsdata={kidsdata} />}
           </div>
           <div className={styles.flexBottom}>
             <PartnerSection dashboard={true} nomargin={true} />
