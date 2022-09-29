@@ -48,7 +48,24 @@ export default function PartnerCard({
           onClick={() => setFlip((prev) => !prev)}
         >
           <div className={styles.backFace}>
+            <div className={styles.bannerArea}>
+              <img
+                className={styles.smallBanner}
+                src={
+                  require(`../../assets/partners/${data.banner}.svg`).default
+                    .src
+                }
+                alt={data.name}
+                loading="lazy"
+              />
+            </div>
             <div className={styles.cardBody}>
+              <div className={styles.details}>
+                {data.details ? data.details : ""}
+              </div>
+              <div className={styles.terms}>
+                {data.details ? "Terms and Conditions apply." : ""}
+              </div>
               <div className={styles.claimArea}>
                 <button className={styles.claimButton}>CLAIM NOW</button>
               </div>
