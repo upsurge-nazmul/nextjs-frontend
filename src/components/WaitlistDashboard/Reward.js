@@ -95,14 +95,22 @@ export default function Reward({
           {selectedprice * quantity * UniCoinValue}
         </div>
       </div>
-      {/* {!parent && (
-        <div className={styles.button} onClick={redeem}>
+      {parent ? (
+        <div className={styles.disabledButton} onClick={() => {}}>
           Redeem
         </div>
-      )} */}
-      <div className={styles.disabledButton} onClick={() => {}}>
-        Redeem
-      </div>
+      ) : (
+        <div
+          className={
+            Number(data.productId) === 24346
+              ? styles.button
+              : styles.disabledButton
+          }
+          onClick={Number(data.productId) === 24346 ? redeem : () => {}}
+        >
+          Redeem
+        </div>
+      )}
     </div>
   );
 }
