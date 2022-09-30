@@ -31,6 +31,24 @@ export default function TaskDisplay({ task, handleCancelClick }) {
       </div>
     </Modal>
   );}
+  else if(task.type === PATHWAY_TASK_TYPE[3]) {
+    <Modal
+      title={task.taskTitle}
+      actions={{
+        cancelText: "Cancel",
+        isCancel: true,
+        handleCancel: () => handleCancelClick(),
+        proceedText: "Done",
+        isProceed: true,
+        handleProceed: () => handleCancelClick(),
+        proceedButtonType: "normal",
+      }}
+    >
+      <div className={styles.taskDisplay}>
+        
+      </div>
+    </Modal>
+  }
   else { 
     router.push(task.route); 
     return null;
