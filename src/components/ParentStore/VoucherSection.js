@@ -61,7 +61,7 @@ export default function VoucherSection({
             kidsdata={kidsdata}
           />
         ))}
-        <SeeMoreCard />
+        {/* <SeeMoreCard /> */}
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}
