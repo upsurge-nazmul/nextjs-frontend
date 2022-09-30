@@ -101,11 +101,11 @@ export default function Reward({
       ) : (
         <div
           className={
-            Number(data.productId) === 24346
+            Number(data.productId) === 999999
               ? styles.button
               : styles.disabledButton
           }
-          onClick={Number(data.productId) === 24346 ? redeem : () => {}}
+          onClick={Number(data.productId) === 999999 ? redeem : () => {}}
         >
           Redeem
         </div>
