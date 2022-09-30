@@ -138,7 +138,7 @@ function KidDashboardHeader({
               <Menu
                 setshowauth={setshowauth}
                 settoastdata={settoastdata}
-                menuType={"not_child"}
+                menuType={"child"}
                 setSavedUser={setSavedUser}
               />
             )}
