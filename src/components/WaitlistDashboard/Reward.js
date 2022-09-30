@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { UniCoinValue } from "../../../config";
 import RequestModal from "../KidStore/RequestModal";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
@@ -95,14 +94,22 @@ export default function Reward({
           {selectedprice * quantity * UniCoinValue}
         </div>
       </div>
-      {/* {!parent && (
-        <div className={styles.button} onClick={redeem}>
+      {parent ? (
+        <div className={styles.disabledButton} onClick={() => {}}>
           Redeem
         </div>
-      )} */}
-      <div className={styles.disabledButton} onClick={() => {}}>
-        Redeem
-      </div>
+      ) : (
+        <div
+          className={
+            Number(data.productId) === 999999
+              ? styles.button
+              : styles.disabledButton
+          }
+          onClick={Number(data.productId) === 999999 ? redeem : () => {}}
+        >
+          Redeem
+        </div>
+      )}
     </div>
   );
 }

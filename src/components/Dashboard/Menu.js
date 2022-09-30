@@ -17,13 +17,12 @@ import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
 
 function Menu({
-  settoastdata = () => {},
+  settoastdata = () => { },
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
   setSavedUser,
-  setshowinvite,
 }) {
   const {
     savedUsers,
@@ -172,9 +171,8 @@ function Menu({
                     setshowauth(true);
                     setSavedUser(user);
                   }}
-                  className={`${styles.innerUser} ${
-                    user.id === userdata.user_id && styles.selectedUser
-                  }`}
+                  className={`${styles.innerUser} ${user.id === userdata.user_id && styles.selectedUser
+                    }`}
                   key={user.id}
                 >
                   <img src={user.image} alt="" />
@@ -203,10 +201,11 @@ function Menu({
       </div>
       {menuType === "child" && !waitilistmenu && (
         <>
-          <p
+         <p
             className={styles.tabs}
             onClick={() => {
-              setshowinvite(true);
+              setshowmenu(false);
+              router.push("/dashboard/k/invite");
             }}
           >
             <GroupAddOutlinedIcon className={styles.editIcon} />

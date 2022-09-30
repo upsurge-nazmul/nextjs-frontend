@@ -5,6 +5,7 @@ import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import Reward from "../WaitlistDashboard/Reward";
 import Voucher from "./Voucher";
 import SearchIcon from "@mui/icons-material/Search";
+import SeeMoreCard from "../WaitlistDashboard/SeeMoreCard";
 export default function VoucherSection({
   vouchers,
   unicoins,
@@ -60,6 +61,7 @@ export default function VoucherSection({
             kidsdata={kidsdata}
           />
         ))}
+        {/* <SeeMoreCard /> */}
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}

@@ -138,8 +138,8 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                             item,
                             Game_Data[item].pushto
                               ? Game_Data[item].pushto.split("/")[
-                                  Game_Data[item].pushto.split("/").length - 1
-                                ]
+                              Game_Data[item].pushto.split("/").length - 1
+                              ]
                               : ""
                           )
                         }
@@ -184,8 +184,8 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                           item,
                           Game_Data[item].pushto
                             ? Game_Data[item].pushto.split("/")[
-                                Game_Data[item].pushto.split("/").length - 1
-                              ]
+                            Game_Data[item].pushto.split("/").length - 1
+                            ]
                             : ""
                         )
                       }

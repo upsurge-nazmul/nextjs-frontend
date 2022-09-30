@@ -36,7 +36,13 @@ const verifyotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const verifyPassword = (payload) => {
+  return ApiCalls.postResponse(
+    "users/verify-password",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const googlelogin = (payload) => {
   return ApiCalls.postResponse(`users/googlelogin`, payload);
 };
@@ -128,13 +134,6 @@ const createchildotp = (payload) => {
 const updatePhoneByEmail = (payload) => {
   return ApiCalls.putResponse(
     "users/updatePhoneByEmail",
-    payload,
-    getCookie("accesstoken")
-  );
-};
-const verifyPassword = (payload) => {
-  return ApiCalls.postResponse(
-    "users/verify-password",
     payload,
     getCookie("accesstoken")
   );
