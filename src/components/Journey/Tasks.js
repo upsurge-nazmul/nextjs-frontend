@@ -6,6 +6,7 @@ const TASK_TYPE_COLORS = [
   { id: "Knowledge Quest", color: "#17d1bc" },
   { id: "Game", color: "#ffcd00" },
   { id: "Chore", color: "#4066eb" },
+  { id: "Quiz", color: "#ff6163" },
   { id: "Activity", color: "#ff6163" },
 ];
 
