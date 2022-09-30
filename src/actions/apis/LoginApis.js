@@ -36,7 +36,13 @@ const verifyotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const verifyPassword = (payload) => {
+  return ApiCalls.postResponse(
+    "users/verify-password",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const googlelogin = (payload) => {
   return ApiCalls.postResponse(`users/googlelogin`, payload);
 };
@@ -160,6 +166,7 @@ const LoginApis = {
   genemailotp,
   createchildotp,
   updatePhoneByEmail,
+  verifyPassword
 };
 
 export default LoginApis;
