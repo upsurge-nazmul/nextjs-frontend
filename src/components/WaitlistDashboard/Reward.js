@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { UniCoinValue } from "../../../config";
 import RequestModal from "../KidStore/RequestModal";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
