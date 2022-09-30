@@ -2,8 +2,11 @@ import React from "react";
 import styles from "../../styles/Journey/taskDisplay.module.scss";
 import Modal from "../Modal";
 import { PATHWAY_TASK_TYPE } from "../../static_data/Pathways_Data";
+import { useRouter } from "next/dist/client/router";
 
 export default function TaskDisplay({ task, handleCancelClick }) {
+  const router = useRouter();
+  if(task.type === PATHWAY_TASK_TYPE[0]) {
   return (
     <Modal
       title={task.taskTitle}
@@ -18,16 +21,18 @@ export default function TaskDisplay({ task, handleCancelClick }) {
       }}
     >
       <div className={styles.taskDisplay}>
-        {task.type === PATHWAY_TASK_TYPE[0] ? (
+        
           <iframe
             id="iframe"
             className={styles.iframe}
             src={task.route}
           ></iframe>
-        ) : (
-          router.push(task.route)
-        )}
+        
       </div>
     </Modal>
-  );
+  );}
+  else { 
+    router.push(task.route); 
+    return null;
+  }
 }
