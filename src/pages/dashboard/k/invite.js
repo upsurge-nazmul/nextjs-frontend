@@ -8,7 +8,6 @@ import LeftPanel from "../../../components/LeftPanel";
 import styles from "../../../styles/Dashboard/invitepage.module.scss";
 import Toast from "../../../components/Toast";
 import Refer from "../../../components/WaitlistDashboard/Refer";
-import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
 import PartnerSection from "../../../components/Home/PartnerSection";
 
 export default function Invite({ kidsdata, userdatafromserver }) {
@@ -27,12 +26,12 @@ export default function Invite({ kidsdata, userdatafromserver }) {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <Toast data={toastdata} />
-      <DashboardLeftPanel />
+      <DashboardLeftPanel type="kid" />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
           <div className={styles.flexTop}>
-            <Refer settoastdata={settoastdata} parent={true} nomargin={true} />
+            <Refer settoastdata={settoastdata} nomargin={true} />
           </div>
           <div className={styles.flexBottom}>
             <PartnerSection dashboard={true} nomargin={true} />
