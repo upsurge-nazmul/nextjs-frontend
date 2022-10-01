@@ -78,8 +78,8 @@ export const PathwayData = [
       },
       {
         taskNo: 5,
-        taskTitle: "How many countries use the dollar as currency?",
-        taskDescription: "Do you know?",
+        taskTitle: "Do you know?",
+        taskDescription: "Let's play a quiz to see how much you know!",
         id: "pw-1-task-5",
         type: PATHWAY_TASK_TYPE[3],
         taskReward: "500",
