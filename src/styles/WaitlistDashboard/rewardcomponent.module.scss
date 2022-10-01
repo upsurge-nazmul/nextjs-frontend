@@ -41,7 +41,9 @@
     }
   }
   .button {
-    border: 1px solid gray;
+    border: none;
+    background-color: #4066eb;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,6 +55,7 @@
   .disabledButton {
     @extend .button;
     border: 1px solid #b3b2b2;
+    background-color: transparent;
     color: #b3b2b2;
     cursor: unset;
   }
