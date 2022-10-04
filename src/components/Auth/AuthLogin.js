@@ -152,22 +152,6 @@ function AuthLogin({
         </div>
       )}
       <div className={styles.or}>OR</div>
-      <GoogleLogin
-        clientId={GClientId}
-        render={(renderProps) => (
-          <div
-            onClick={renderProps.onClick}
-            disabled={renderProps.disabled}
-            className={styles.google}
-          >
-            <GoogleSvg />
-            <p style={{ pointerEvents: "none" }}>Continue with Google</p>
-          </div>
-        )}
-        onSuccess={handlegoogleLogin}
-        onFailure={handlegoogleLogin}
-        cookiePolicy={"single_host_origin"}
-      />
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
