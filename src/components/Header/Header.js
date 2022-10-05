@@ -82,7 +82,9 @@ function Header({
             <HamSvg />
           </div>
         )}
-        <div className={styles.logoContainer}>
+        <div
+          className={showNav ? styles.logoContainer : styles.noNavLogoContainer}
+        >
           <Logo
             onClick={clickedHeader}
             className="logo"

@@ -7,10 +7,7 @@ import JodoIntroSvg from "../SVGcomponents/JodoIntroSvg";
 import BallsSvg from "../SVGcomponents/BallsSvg";
 import { useRouter } from "next/dist/client/router";
 import Curve2 from "../SVGcomponents/Curve2";
-import WaitlistPopUp from "../WaitlistPopUp";
-import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
-import InfoIcon from "@mui/icons-material/Info";
 
 function JodoIntro({
   setshowauth,
