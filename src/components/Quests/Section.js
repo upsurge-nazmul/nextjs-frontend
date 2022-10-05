@@ -7,7 +7,7 @@ function Section({ quest }) {
       <div className={styles.left}>
         <p className={styles.sectionno}>Section {quest.questNo}</p>
         <p className={styles.sectiontitle}>{quest.title}</p>
-        <p className={styles.sectiontotalunicons}>1000 <UniCoinSvg className={styles.svg}/></p>
+        <p className={styles.sectiontotalunicons}>{quest.totalUnicoins} <UniCoinSvg className={styles.svg}/></p>
         <p className={styles.sectiondesc}>{quest.questDescription}</p>
       </div>
       <div className={styles.right}>
@@ -50,7 +50,7 @@ function Section({ quest }) {
                     </p>
                   </div>
                   <div className={styles.chapterunicoins}>
-                    200 <UniCoinSvg className={styles.chaptersvg}/>
+                    {chapter.unicoinsReward} <UniCoinSvg className={styles.chaptersvg}/>
                     </div>
                     </div>
                 </div>
@@ -62,8 +62,10 @@ function Section({ quest }) {
             <div className={styles.chapter}>
               <div className={styles.chapterball} />
               <div className={styles.verticalLine} />
+            <div className={styles.flex}>
               <div className={styles.main}>
                 <p className={styles.chaptertitle}>Coming soon...</p>
+              </div>
               </div>
             </div>
           </div>
