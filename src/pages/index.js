@@ -1,8 +1,8 @@
 import React from "react";
-import LandingPage from "../components/LandingPage";
+import Home from "../components/Home";
 
-function Home() {
-  return <LandingPage />;
+function LandingPage() {
+  return <Home />;
 }
 
-export default Home;
+export default LandingPage;

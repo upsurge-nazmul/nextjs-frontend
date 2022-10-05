@@ -5,26 +5,26 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
-import AboutSection from "../Home/AboutSection";
-import ProductSection from "../Home/ProductSection";
-import BlogsSection from "../Home/BlogsSection";
-import JoinUs from "../Home/JoinUs";
-import Footer from "../Home/Footer";
-import Intro from "../Home/Intro";
-import Who from "../Home/Who";
-import Values from "../Home/Values";
-import Benefits from "../Home/Benefits";
-import JasperSection from "../Home/JasperSection";
-import PartnerSection from "../Home/PartnerSection";
-import FaqSection from "../Home/FaqSection";
-import TestiMonial from "../Home/TestiMonial";
+import AboutSection from "./AboutSection";
+import ProductSection from "./ProductSection";
+import BlogsSection from "./BlogsSection";
+import JoinUs from "./JoinUs";
+import Footer from "./Footer";
+import Intro from "./Intro";
+import Who from "./Who";
+import Values from "./Values";
+import Benefits from "./Benefits";
+import JasperSection from "./JasperSection";
+import PartnerSection from "./PartnerSection";
+import FaqSection from "./FaqSection";
+import TestiMonial from "./TestiMonial";
 import Toast from "../Toast";
 import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
-function LandingPage({ isLogged, userdata }) {
+function Home({ isLogged, userdata }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -185,7 +185,7 @@ function LandingPage({ isLogged, userdata }) {
   );
 }
 
-export default LandingPage;
+export default Home;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
