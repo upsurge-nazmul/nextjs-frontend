@@ -1,0 +1,12 @@
+.seeMore {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  .text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1673c8;
+  }
+}

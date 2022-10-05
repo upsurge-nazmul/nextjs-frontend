@@ -65,6 +65,9 @@ const ordervouchers = (payload) => {
     getCookie("accesstoken")
   );
 };
+const rewardunicoinstochild = (payload, token) => {
+  return ApiCalls.postResponse(`users/rewardunicoins`, payload, token || getCookie("accesstoken"));
+};
 const completeintroguide = () => {
   return ApiCalls.getResponse(
     "users/completeintroguide",
@@ -155,6 +158,7 @@ const DashboardApis = {
   createVerificationOtp,
   getTodo,
   completeintroguide,
+  rewardunicoinstochild
 };
 
 export default DashboardApis;
