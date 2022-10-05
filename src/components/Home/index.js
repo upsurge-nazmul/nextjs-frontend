@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Home/home.module.scss";
-import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
@@ -121,6 +120,7 @@ function Home({ userdata, page = "", showNav = true, backTo = "" }) {
       document.documentElement.scrollTop = 0;
     }
   }, [router]);
+
   return (
     // <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
     <div
@@ -138,6 +138,7 @@ function Home({ userdata, page = "", showNav = true, backTo = "" }) {
         <p className={styles.subtext}>Registration closes 5th October</p>
       </div>
       <Header
+        userdata={userdata}
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
         setshowauth={setshowauth}
@@ -199,28 +200,3 @@ function Home({ userdata, page = "", showNav = true, backTo = "" }) {
 }
 
 export default Home;
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}

@@ -72,14 +72,16 @@ function Header({
         />
       )}
       <div className={styles.container}>
-        <div
-          className={`${styles.hamburger} `}
-          onClick={() => {
-            setOpenLeftPanel((prev) => !prev);
-          }}
-        >
-          <HamSvg />
-        </div>
+        {showNav && (
+          <div
+            className={`${styles.hamburger} `}
+            onClick={() => {
+              setOpenLeftPanel((prev) => !prev);
+            }}
+          >
+            <HamSvg />
+          </div>
+        )}
         <div className={styles.logoContainer}>
           <Logo
             onClick={clickedHeader}
