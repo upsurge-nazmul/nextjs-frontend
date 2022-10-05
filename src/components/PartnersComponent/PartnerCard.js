@@ -66,7 +66,9 @@ export default function PartnerCard({
                 </div>
                 <div className={styles.claimArea}>
                   <button
-                    className={styles.claimButton}
+                    className={
+                      data.link ? styles.claimButton : styles.disabledButton
+                    }
                     onClick={
                       data.link
                         ? () => {
