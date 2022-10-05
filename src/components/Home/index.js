@@ -25,7 +25,7 @@ import JodoIntro from "./JodoIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
-function Home({ userdata, page = "jodo" }) {
+function Home({ userdata, page = "" }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);

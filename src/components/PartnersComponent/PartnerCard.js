@@ -1,11 +1,12 @@
-import { useState } from "react";
 import styles from "../../styles/Partner/partnerCard.module.scss";
+import { useRouter } from "next/dist/client/router";
 
 export default function PartnerCard({
   data,
   seeMoreCard = false,
   seeMoreClick = () => {},
 }) {
+  const router = useRouter();
   return (
     <>
       {seeMoreCard ? (
@@ -66,7 +67,13 @@ export default function PartnerCard({
                 <div className={styles.claimArea}>
                   <button
                     className={styles.claimButton}
-                    onClick={() => console.log("claim clicked")}
+                    onClick={
+                      data.link
+                        ? () => {
+                            router.push(data.link);
+                          }
+                        : () => console.log("claim clicked")
+                    }
                   >
                     CLAIM NOW
                   </button>
