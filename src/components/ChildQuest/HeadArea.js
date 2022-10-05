@@ -33,8 +33,8 @@ export default function HeadArea({ data, handleCardClick, tab }) {
                 src={require(`../../assets/kqTiles/${highlight.questId}Tile.svg`)}
                 alt={highlight.questId}
                 className={styles.img}
-                height={400}
-                width={300}
+                height={150}
+                width={200}
               />
             </div>
             <div
