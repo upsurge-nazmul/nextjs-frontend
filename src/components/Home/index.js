@@ -21,10 +21,11 @@ import TestiMonial from "./TestiMonial";
 import Toast from "../Toast";
 import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
+import JodoIntro from "./JodoIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
-function Home({ isLogged, userdata }) {
+function Home({ userdata, page = "jodo" }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -154,12 +155,22 @@ function Home({ isLogged, userdata }) {
       />
       <Toast data={toastdata} />
 
-      <Intro
-        setshowauth={setshowauth}
-        setauthmode={setauthmode}
-        setmailfromhome={setmailfromhome}
-        setshowpopup={setshowpopup}
-      />
+      {page === "jodo" ? (
+        <JodoIntro
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+          setshowpopup={setshowpopup}
+        />
+      ) : (
+        <Intro
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+          setshowpopup={setshowpopup}
+        />
+      )}
+
       <Values insidebenefits />
       <Benefits />
       {/* <How /> */}
