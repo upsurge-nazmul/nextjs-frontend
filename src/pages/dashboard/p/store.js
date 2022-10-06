@@ -19,12 +19,12 @@ import PageTitle from "../../../components/PageTitle";
 
 export default function ParentStore({
   isLogged,
+  token,
   msg,
   choresdata,
   gamesdata,
   kidsdata,
   liveclassdata,
-  vouchers,
   userdatafromserver,
   requests,
 }) {
@@ -105,7 +105,7 @@ export default function ParentStore({
           <div className={styles.flexRight}>
             <VoucherSection
               id="store-voucher-section"
-              vouchers={vouchers}
+              token={token}
               parent={true}
               unicoins={userdatafromserver.num_unicoins}
               email={userdatafromserver.email}
@@ -186,15 +186,14 @@ export async function getServerSideProps({ params, req }) {
       let gamesdata = await getgames(token);
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
-      let vouchers = await getvouchers(token);
       let requests = await getrequests(token);
       const props = {
         isLogged: true,
+        token,
         choresdata,
         gamesdata,
         kidsdata,
         liveclassdata,
-        vouchers,
         userdatafromserver: response.data.data,
         requests,
       };
@@ -232,12 +231,6 @@ async function getgames(token) {
 }
 async function getliveclasses(token) {
   let response = await DashboardApis.getliveclasses(null, token);
-  if (response && response.data && response.data.data)
-    return response.data.data;
-  else return null;
-}
-async function getvouchers(token) {
-  let response = await DashboardApis.getallvouchers({}, token);
   if (response && response.data && response.data.data)
     return response.data.data;
   else return null;
