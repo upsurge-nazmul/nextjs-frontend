@@ -7,7 +7,7 @@ export const PARTNERS = [
       "Get flat 10% discount* on your next 3 month’s EMI on for the school fee.",
     badge: "New",
     color: "#fff",
-    link: "/dashboard/p/jodo",
+    link: "",
   },
   {
     sl: 2,
