@@ -19,7 +19,7 @@ export default function VoucherSection({
 }) {
   const [items, setitems] = useState();
   const [query, setquery] = useState("");
-  const [voucerLimit, setVoucherLimit] = useState(10);
+  const [voucerLimit, setVoucherLimit] = useState(20);
   const [showSeeMore, setShowSeeMore] = useState(true);
 
   async function SearchVoucher() {
