@@ -30,11 +30,14 @@ const TYPES = [
   "image-categorize", // 12
 ];
 
-export default function Quiz({ data, matchAnswer }) {
+export default function Quiz({
+  data,
+  matchAnswer,
+  correctAns,
+  handleNextClick,
+}) {
   const { type } = data;
   const [value, setValue] = useState();
-
-  // console.log("********", value);
 
   return (
     <div className={styles.quizSection}>
@@ -69,20 +72,34 @@ export default function Quiz({ data, matchAnswer }) {
           ""
         )}
       </div>
-      <div>
-        {value ? (
-          <div className={styles.actionArea}>
-            <button
-              className={styles.blankAction}
-              onClick={() => {
-                matchAnswer(value);
-                // setCurrentQnIndex((prev) => prev + 1);
-                setValue();
-              }}
-            >
+      <div className={styles.actionArea}>
+        <div className={styles.correctAnsArea}>
+          {correctAns ? (
+            <div className={styles.correctAns}>
+              <span className={styles.correctAnsLabel}>Correct answer is</span>
+              <span className={styles.correctAnsValue}>{correctAns}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {correctAns ? (
+            <button className={styles.nextButton} onClick={handleNextClick}>
               Next
             </button>
-          </div>
+          ) : (
+            ""
+          )}
+        </div>
+        {value ? (
+          <button
+            className={styles.submitButton}
+            onClick={() => {
+              matchAnswer(value);
+              setValue();
+            }}
+          >
+            Submit
+          </button>
         ) : (
           ""
         )}
