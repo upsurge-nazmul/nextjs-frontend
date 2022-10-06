@@ -15,7 +15,7 @@
       border-radius: 14px;
       .img {
         object-fit: contain;
-        padding: 10px;
+        padding:10px;
         border-radius: 6px;
       }
     }
@@ -52,12 +52,12 @@
     flex: 1;
     .headerCard {
       display: flex;
-      padding: 5px 0;
+      padding: 0 0 20px 0;
       gap: 10px;
       cursor: pointer;
       .cardLeft {
         .imageWrapper {
-          width: 18vw;
+          width: 12vw;
           height: 12vw;
           height: fit-content;
           display: flex;
@@ -87,6 +87,25 @@
           font-weight: 300;
           color: rgba(130, 130, 130, 1);
           text-align: left;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .headSection{
+    flex-direction: column;
+    .left{
+      margin-right: 20px;
+    }
+    .right{
+      .headerCard{
+        flex-direction: column;
+        .cardLeft{
+          .imageWrapper{
+            margin-right: 20px;
+            width: auto;
+          }
         }
       }
     }

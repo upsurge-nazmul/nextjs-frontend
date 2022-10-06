@@ -25,8 +25,8 @@ function HeaderCard({ data, handleCardClick }) {
                 src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
                 alt={data.questId}
                 className={styles.img}
-                width={160}
-                height={100}
+                height={114}
+                width={202}
               />
             </div>
           </div>
