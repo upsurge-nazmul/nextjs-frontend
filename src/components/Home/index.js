@@ -148,6 +148,7 @@ function Home({ userdata, page = "", showNav = true }) {
         showpopup={showpopup}
         setshowpopup={setshowpopup}
         settoastdata={settoastdata}
+        page={page}
         showNav={showNav}
       />
 

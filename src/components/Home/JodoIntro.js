@@ -65,7 +65,9 @@ function JodoIntro({
           {`More than just a financial literacy course or a school. upsurge is India's 1st gaming platform to enable financial literacy for kids & make them MONEY-smart`}
         </p>
         <p className={styles.error}>{error}</p>
-        <button className={styles.tryButton}>Try for free</button>
+        <button className={styles.tryButton} onClick={() => setshowauth(true)}>
+          Try for free
+        </button>
       </div>
 
       <JodoIntroSvg className={styles.homesvg} />

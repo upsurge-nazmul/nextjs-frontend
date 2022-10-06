@@ -19,6 +19,7 @@ function Header({
   setshowpopup,
   settoastdata,
   showNav = true,
+  page = "",
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -184,7 +185,11 @@ function Header({
             setshowauth(true);
           }}
         >
-          {userdata ? "Go to Dashboard" : "Sign in"}
+          {userdata
+            ? "Go to Dashboard"
+            : page === "jodo"
+            ? "Try for free"
+            : "Sign in"}
         </div>
       </div>
     </div>
