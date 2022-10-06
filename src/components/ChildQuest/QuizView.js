@@ -21,9 +21,8 @@ export default function QuizView({
   const [questions, setquestions] = useState([]);
   const [selectedOption, setselectedOption] = useState();
   const [score, setScore] = useState(0);
-  const [correctAns, setCorrectAns] = useState("");
-
-  console.log("@@@@", correctAns);
+  const [correctAns, setCorrectAns] = useState(false);
+  const [correctAnsValue, setCorrectAnsValue] = useState("");
 
   useEffect(() => {
     getquestions();
@@ -48,14 +47,18 @@ export default function QuizView({
     );
 
     if (res && res.data && res.data.success) {
-      if (res.data.message === "Correct answer") setScore((prev) => prev + 1);
-      setCorrectAns(res.data.data.correct_answer);
+      if (res.data.message === "Correct answer") {
+        setScore((prev) => prev + 1);
+        setCorrectAns(true);
+      }
+      setCorrectAnsValue(res.data.data.correct_answer);
     }
     setselectedOption();
   }
 
   function goNext() {
-    setCorrectAns("");
+    setCorrectAns(false);
+    setCorrectAnsValue("");
     if (currentQnIndex === questions.length - 1) {
       setcompleted(true);
     } else {
@@ -101,6 +104,7 @@ export default function QuizView({
             data={questions[currentQnIndex]}
             matchAnswer={matchAnswer}
             correctAns={correctAns}
+            correctAnsValue={correctAnsValue}
             handleNextClick={goNext}
           />
         )}

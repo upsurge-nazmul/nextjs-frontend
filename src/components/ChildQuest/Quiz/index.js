@@ -34,6 +34,7 @@ export default function Quiz({
   data,
   matchAnswer,
   correctAns,
+  correctAnsValue,
   handleNextClick,
 }) {
   const { type } = data;
@@ -73,35 +74,37 @@ export default function Quiz({
         )}
       </div>
       <div className={styles.actionArea}>
-        <div className={styles.correctAnsArea}>
-          {correctAns ? (
+        {correctAnsValue ? (
+          <div className={styles.correctAnsArea}>
             <div className={styles.correctAns}>
               <span className={styles.correctAnsLabel}>Correct answer is</span>
-              <span className={styles.correctAnsValue}>{correctAns}</span>
+              <span
+                className={
+                  correctAns ? styles.correctAnsValue : styles.wrongAnsValue
+                }
+              >
+                {correctAnsValue}
+              </span>
             </div>
-          ) : (
-            ""
-          )}
-          {correctAns ? (
-            <button className={styles.nextButton} onClick={handleNextClick}>
+            <button
+              className={styles.nextButton}
+              onClick={() => {
+                handleNextClick();
+                setValue();
+              }}
+            >
               Next
             </button>
-          ) : (
-            ""
-          )}
-        </div>
-        {value ? (
+          </div>
+        ) : (
           <button
-            className={styles.submitButton}
+            className={value ? styles.submitButton : styles.disabledButton}
             onClick={() => {
-              matchAnswer(value);
-              setValue();
+              if (value) matchAnswer(value);
             }}
           >
             Submit
           </button>
-        ) : (
-          ""
         )}
       </div>
     </div>

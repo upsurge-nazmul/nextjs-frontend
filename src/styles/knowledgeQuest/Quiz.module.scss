@@ -533,35 +533,47 @@ $qn-font-size: 20px;
       justify-content: space-between;
       align-items: center;
       .correctAns {
-        font-size: 16px;
+        font-size: 20px;
+        font-weight: 600;
         .correctAnsLabel {
           color: #7d7d7d;
+          font-size: 16px;
+          font-weight: 300;
+          margin-right: 10px;
         }
         .correctAnsValue {
           color: #17d1bc;
-          font-size: 20px;
-          font-weight: 600;
-          margin: 0 10px;
+        }
+        .wrongAnsValue {
+          color: #ff6263;
         }
       }
-    }
-    .nextButton {
-      cursor: pointer;
-      border: none;
-      background-color: #4066eb;
-      color: #fff;
-      padding: 10px 40px;
-      font-size: 16px;
-      border-radius: 10px;
+      .nextButton {
+        cursor: pointer;
+        border: none;
+        background-color: #4066eb;
+        color: #fff;
+        padding: 10px 40px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
     }
     .submitButton {
       cursor: pointer;
       border: none;
+      border: 1px solid #4066eb;
       background-color: #4066eb;
       color: #fff;
       padding: 10px 40px;
       font-size: 16px;
       border-radius: 10px;
+    }
+    .disabledButton {
+      @extend .submitButton;
+      cursor: default;
+      border-color: #333;
+      background-color: #fff;
+      color: #333;
     }
   }
 }
