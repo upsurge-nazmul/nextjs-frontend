@@ -19,7 +19,6 @@ function Header({
   setshowpopup,
   settoastdata,
   showNav = true,
-  backTo = "",
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -172,10 +171,6 @@ function Header({
               router.push(router.query.pushTo);
               return;
             }
-            if (backTo) {
-              router.push(backTo);
-              return;
-            }
             if (userdata) {
               if (userdata.is_waiting_active) {
                 router.push("/dashboard/w");
@@ -189,7 +184,7 @@ function Header({
             setshowauth(true);
           }}
         >
-          {backTo ? `Go Back` : userdata ? "Go to Dashboard" : "Sign in"}
+          {userdata ? "Go to Dashboard" : "Sign in"}
         </div>
       </div>
     </div>

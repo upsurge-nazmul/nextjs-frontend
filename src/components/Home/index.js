@@ -24,7 +24,7 @@ import JodoIntro from "./JodoIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
-function Home({ userdata, page = "", showNav = true, backTo = "" }) {
+function Home({ userdata, page = "", showNav = true }) {
   const { setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -149,7 +149,6 @@ function Home({ userdata, page = "", showNav = true, backTo = "" }) {
         setshowpopup={setshowpopup}
         settoastdata={settoastdata}
         showNav={showNav}
-        backTo={backTo}
       />
 
       <LeftPanel

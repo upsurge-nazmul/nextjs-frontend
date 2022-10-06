@@ -3,14 +3,7 @@ import Home from "../components/Home";
 import LoginApis from "../actions/apis/LoginApis";
 
 function Jodo(props) {
-  return (
-    <Home
-      {...props}
-      page={"jodo"}
-      showNav={false}
-      backTo={"/dashboard/p/partners"}
-    />
-  );
+  return <Home {...props} page={"jodo"} showNav={false} />;
 }
 
 export default Jodo;
