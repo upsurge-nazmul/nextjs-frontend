@@ -1,6 +1,6 @@
 import React from "react";
-import Home from "../../../components/Home";
-import LoginApis from "../../../actions/apis/LoginApis";
+import Home from "../components/Home";
+import LoginApis from "../actions/apis/LoginApis";
 
 function Jodo(props) {
   return (
