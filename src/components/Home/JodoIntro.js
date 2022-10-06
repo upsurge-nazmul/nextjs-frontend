@@ -45,6 +45,25 @@ function JodoIntro({
       setloading(false);
     }
   }
+
+  const handleAction = () => {
+    if (router.query.pushTo) {
+      router.push(router.query.pushTo);
+      return;
+    }
+    if (userdata) {
+      if (userdata.is_waiting_active) {
+        router.push("/dashboard/w");
+      } else if (userdata.user_type === "parent") {
+        router.push("/dashboard/p");
+      } else {
+        router.push("/dashboard/k");
+      }
+      return;
+    }
+    setshowauth(true);
+  };
+
   return (
     <section
       className={`${styles.intro} ${theme === "dark" && styles.intro_dark}`}
@@ -65,8 +84,8 @@ function JodoIntro({
           {`More than just a financial literacy course or a school. upsurge is India's 1st gaming platform to enable financial literacy for kids & make them MONEY-smart`}
         </p>
         <p className={styles.error}>{error}</p>
-        <button className={styles.tryButton} onClick={() => setshowauth(true)}>
-          Try for free
+        <button className={styles.tryButton} onClick={handleAction}>
+          {userdata ? "Go to Dashboard" : "Try for free"}
         </button>
       </div>
 
