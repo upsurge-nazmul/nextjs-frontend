@@ -129,13 +129,13 @@ function Home({ isLogged, userdata }) {
       }`}
     >
       <PageTitle />
-      <div
+      {/* <div
         className={styles.summerbtn}
         onClick={() => router.push("/business_league")}
       >
         <p className={styles.maintext}>upsurge Business League</p>
         <p className={styles.subtext}>Registration closes 5th October</p>
-      </div>
+      </div> */}
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
