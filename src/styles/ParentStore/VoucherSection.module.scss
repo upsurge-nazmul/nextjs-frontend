@@ -1,5 +1,6 @@
 .voucherSection {
   margin-top: 20px;
+  width: 100%;
   .headwrapper {
     display: flex;
     width: 100%;
@@ -59,7 +60,6 @@
     flex-wrap: wrap;
     flex: 1;
     gap: 10px;
-    justify-content: space-evenly;
     .noreward {
       margin: auto;
       margin-top: 15%;
@@ -88,7 +88,7 @@
         }
       }
       .inputArea {
-        flex:1;
+        flex: 1;
         min-width: fit-content;
         .inputwrapper {
           flex: 0.5;
@@ -109,7 +109,7 @@
             min-height: 45px;
             padding: 0 15px;
             flex: 1;
-            .icon{
+            .icon {
               min-width: max-content;
             }
             &:focus {
