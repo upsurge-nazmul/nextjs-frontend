@@ -101,7 +101,7 @@ export default function Reward({
           {parent ? (
             ""
           ) : (
-            <div
+            <button
               className={
                 Number(data.productId) === 999999
                   ? styles.button
@@ -110,7 +110,7 @@ export default function Reward({
               onClick={Number(data.productId) === 999999 ? redeem : () => {}}
             >
               Redeem
-            </div>
+            </button>
           )}
         </div>
       </div>
