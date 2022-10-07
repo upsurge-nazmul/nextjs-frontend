@@ -81,29 +81,13 @@ export default function Quests({ kidsdata, questData, userdatafromserver }) {
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={mode} setmode={setmode} />
-        <div className={styles.mainhead}>
-          <img
-            src="https://imgcdn.upsurge.in/images/6-L4pbu-K66d3-80-DX634-DY634-CX494-CY497.png"
-            alt=""
-          />
-          <div className={styles.right}>
-            <p className={styles.questheading}>upsurge Quest</p>
-            <p className={styles.age}>Age 10-12</p>
-          </div>
-          <div className={styles.creditandweeks}>
-            <p className={styles.credits}>1000 UniCoins</p>
-          </div>
-        </div>
         {kidsOptions ? (
           <>
             <div className={styles.maincontent}>
               <div className={styles.left}>
                 <div className={styles.midSection}>
                   <div className={styles.knowledgeSection}>
-                    <p className={styles.heading}>Knowledge Quest Content</p>
-                    <p className={styles.content}>
-                      Follow the course content to learn more about Investing.
-                    </p>
+                    Please select a Child/Student:
                   </div>
                   <div className={styles.dropdownArea}>
                     {kidsOptions && kidsOptions.length ? (
