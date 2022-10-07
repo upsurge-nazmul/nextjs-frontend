@@ -10,7 +10,6 @@ function RequestsAndHistorySection({
   setChildRequests,
   id,
 }) {
-  console.log(childRequests);
   const [type, settype] = useState("Requests");
   const [history, sethistory] = useState([]);
   return (

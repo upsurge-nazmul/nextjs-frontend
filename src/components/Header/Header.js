@@ -18,6 +18,8 @@ function Header({
   showpopup,
   setshowpopup,
   settoastdata,
+  showNav = true,
+  page = "",
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -70,62 +72,67 @@ function Header({
         />
       )}
       <div className={styles.container}>
+        {showNav && (
+          <div
+            className={`${styles.hamburger} `}
+            onClick={() => {
+              setOpenLeftPanel((prev) => !prev);
+            }}
+          >
+            <HamSvg />
+          </div>
+        )}
         <div
-          className={`${styles.hamburger} `}
-          onClick={() => {
-            setOpenLeftPanel((prev) => !prev);
-          }}
+          className={showNav ? styles.logoContainer : styles.noNavLogoContainer}
         >
-          <HamSvg />
-        </div>
-        <div className={styles.logoContainer}>
           <Logo
             onClick={clickedHeader}
             className="logo"
             dark={theme === "dark" ? true : false}
           />
         </div>
-        <div className={styles.nav}>
-          <HeaderTabSection
-            title={"Products"}
-            tabs={[
-              { name: "Knowledge quests", pushTo: "/products/quest" },
-              {
-                name: "Games arena",
-                pushTo: "/products/games",
-              },
-              {
-                name: "Chores",
-                pushTo: "/products/chores",
-              },
-              // { name: "Family Fun", pushTo: "/familyfun" },
-              // { name: "Tribes", pushTo: "/p_tribes" },
-              { name: "Live workshops", pushTo: "/products/liveclasses" },
-            ]}
-            pushTo="/products"
-          />
-          <HeaderTabSection
-            title={"Benefits"}
-            tabs={[
-              { name: "Financial literacy", pushTo: "/benefits" },
-              {
-                name: "Experiential learning",
-                pushTo: "/benefits/experimential",
-              },
-              {
-                name: "Entrepreneurship",
-                pushTo: "/benefits/entrepreneurship",
-              },
-              { name: "Rewards", pushTo: "/benefits/rewards" },
-              { name: "21st century skills", pushTo: "/benefits/skills" },
-              ,
-            ]}
-            pushTo="/benefits"
-          />
-          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
-          <HeaderTabSection title={"Quiz"} tabs={[]} pushTo="/quiz" />
+        {showNav && (
+          <div className={styles.nav}>
+            <HeaderTabSection
+              title={"Products"}
+              tabs={[
+                { name: "Knowledge quests", pushTo: "/products/quest" },
+                {
+                  name: "Games arena",
+                  pushTo: "/products/games",
+                },
+                {
+                  name: "Chores",
+                  pushTo: "/products/chores",
+                },
+                // { name: "Family Fun", pushTo: "/familyfun" },
+                // { name: "Tribes", pushTo: "/p_tribes" },
+                { name: "Live workshops", pushTo: "/products/liveclasses" },
+              ]}
+              pushTo="/products"
+            />
+            <HeaderTabSection
+              title={"Benefits"}
+              tabs={[
+                { name: "Financial literacy", pushTo: "/benefits" },
+                {
+                  name: "Experiential learning",
+                  pushTo: "/benefits/experimential",
+                },
+                {
+                  name: "Entrepreneurship",
+                  pushTo: "/benefits/entrepreneurship",
+                },
+                { name: "Rewards", pushTo: "/benefits/rewards" },
+                { name: "21st century skills", pushTo: "/benefits/skills" },
+                ,
+              ]}
+              pushTo="/benefits"
+            />
+            <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
+            <HeaderTabSection title={"Quiz"} tabs={[]} pushTo="/quiz" />
 
-          {/* <HeaderTabSection
+            {/* <HeaderTabSection
             title={"Resources"}
             tabs={[
               { name: "Goal Wizard", pushTo: "/goalwizard" },
@@ -138,24 +145,25 @@ function Header({
               { name: "Articles", pushTo: "/blogs" },
             ]}
           /> */}
-          <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
-          {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
+            <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
+            {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
 
-          <HeaderTabSection
-            title={"More"}
-            tabs={[
-              { name: "About us", pushTo: "/about-us" },
-              { name: "Team", pushTo: "/team" },
-              { name: "Blogs", pushTo: "/blogs" },
-              { name: "Financial calculators", pushTo: "/calculators" },
-              { name: "Careers", pushTo: "/careers" },
-              { name: "FAQs", pushTo: "/help/faq" },
-              { name: "Contact us", pushTo: "/contact" },
+            <HeaderTabSection
+              title={"More"}
+              tabs={[
+                { name: "About us", pushTo: "/about-us" },
+                { name: "Team", pushTo: "/team" },
+                { name: "Blogs", pushTo: "/blogs" },
+                { name: "Financial calculators", pushTo: "/calculators" },
+                { name: "Careers", pushTo: "/careers" },
+                { name: "FAQs", pushTo: "/help/faq" },
+                { name: "Contact us", pushTo: "/contact" },
 
-              // { name: "Live Classes", pushTo: "/liveclasses" },
-            ]}
-          />
-        </div>
+                // { name: "Live Classes", pushTo: "/liveclasses" },
+              ]}
+            />
+          </div>
+        )}
         <div
           id="continue-dashboard-btn"
           className={`${styles.signin} ${styles.dashboardbtn}`}
@@ -177,7 +185,11 @@ function Header({
             setshowauth(true);
           }}
         >
-          {userdata ? "Go to Dashboard" : "Sign in"}
+          {userdata
+            ? "Go to Dashboard"
+            : page === "jodo"
+            ? "Try for free"
+            : "Sign in"}
         </div>
       </div>
     </div>

@@ -78,8 +78,8 @@ export const PathwayData = [
       },
       {
         taskNo: 5,
-        taskTitle: "How many countries use the dollar as currency?",
-        taskDescription: "Do you know?",
+        taskTitle: "Do you know?",
+        taskDescription: "Let's play a quiz to see how much you know!",
         id: "pw-1-task-5",
         type: PATHWAY_TASK_TYPE[3],
         taskReward: "500",
@@ -136,7 +136,8 @@ export const PathwayData = [
       {
         taskNo: 4,
         taskTitle: "Invite Friends",
-        taskDescription: "Having friends? Let's tell some friends and earn UniCoins!",
+        taskDescription:
+          "Having friends? Let's tell some friends and earn UniCoins!",
         id: "pw-2-task-4",
         type: PATHWAY_TASK_TYPE[4],
         taskReward: "1000",
@@ -147,7 +148,8 @@ export const PathwayData = [
       {
         taskNo: 5,
         taskTitle: "Redeem UniCoins",
-        taskDescription: "Woohoo! You've now earned enough to redeem a gift for yourself or earn even more UniCoins by skipping this time!",
+        taskDescription:
+          "Woohoo! You've now earned enough to redeem a gift for yourself or earn even more UniCoins by skipping this time!",
         id: "pw-2-task-5",
         type: PATHWAY_TASK_TYPE[4],
         taskReward: "1000",
@@ -171,7 +173,8 @@ export const PathwayData = [
       {
         taskNo: 1,
         taskTitle: "Plastic Money",
-        taskDescription: "What are these small plastic cards that everyone uses?",
+        taskDescription:
+          "What are these small plastic cards that everyone uses?",
         id: "pw-5-task-1",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
@@ -182,7 +185,8 @@ export const PathwayData = [
       {
         taskNo: 2,
         taskTitle: "Digital Payments and UPI",
-        taskDescription: "Find out what netbank, bank transfers and online payments are",
+        taskDescription:
+          "Find out what netbank, bank transfers and online payments are",
         id: "pw-5-task-2",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
@@ -193,7 +197,8 @@ export const PathwayData = [
       {
         taskNo: 3,
         taskTitle: "Shopping",
-        taskDescription: "Let's go shop and have some fun! But remember you have to stay in budget",
+        taskDescription:
+          "Let's go shop and have some fun! But remember you have to stay in budget",
         id: "pw-5-task-4",
         type: PATHWAY_TASK_TYPE[1],
         taskReward: "1000",
@@ -217,7 +222,8 @@ export const PathwayData = [
       {
         taskNo: 1,
         taskTitle: "What is money management?",
-        taskDescription: "Money does make the world go round, so how should you manage it?",
+        taskDescription:
+          "Money does make the world go round, so how should you manage it?",
         id: "pw-5-task-1",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",
@@ -228,7 +234,8 @@ export const PathwayData = [
       {
         taskNo: 2,
         taskTitle: "Earning",
-        taskDescription: "You want to buy that latest phone don't you? But how do people earn money?",
+        taskDescription:
+          "You want to buy that latest phone don't you? But how do people earn money?",
         id: "pw-5-task-2",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",

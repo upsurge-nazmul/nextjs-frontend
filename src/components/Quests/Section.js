@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../../styles/Quest/sections.module.scss";
-
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 function Section({ quest }) {
   return (
     <div className={styles.section}>
       <div className={styles.left}>
         <p className={styles.sectionno}>Section {quest.questNo}</p>
         <p className={styles.sectiontitle}>{quest.title}</p>
+        <p className={styles.sectiontotalunicons}>{quest.totalUnicoins} <UniCoinSvg className={styles.svg}/></p>
         <p className={styles.sectiondesc}>{quest.questDescription}</p>
       </div>
       <div className={styles.right}>
@@ -37,6 +38,7 @@ function Section({ quest }) {
                         : styles.verticalLine
                     }
                   />
+                  <div className={styles.flex}>
                   <div className={styles.main}>
                     <p className={styles.chapterno}>
                       CHAPTER {chapter.chapterNo}
@@ -47,6 +49,10 @@ function Section({ quest }) {
                       {chapter.remainingtime}
                     </p>
                   </div>
+                  <div className={styles.chapterunicoins}>
+                    {chapter.unicoinsReward} <UniCoinSvg className={styles.chaptersvg}/>
+                    </div>
+                    </div>
                 </div>
               </div>
             );
@@ -56,8 +62,10 @@ function Section({ quest }) {
             <div className={styles.chapter}>
               <div className={styles.chapterball} />
               <div className={styles.verticalLine} />
+            <div className={styles.flex}>
               <div className={styles.main}>
                 <p className={styles.chaptertitle}>Coming soon...</p>
+              </div>
               </div>
             </div>
           </div>
