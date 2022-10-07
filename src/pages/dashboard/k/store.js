@@ -30,6 +30,7 @@ export default function KidStore({
   liveclassdata,
   userdatafromserver,
   avatars,
+  vouchers,
 }) {
   // modes are different pages like home,kids,store,payments,notifications
   const [mode, setmode] = useState("Rewards Store");
@@ -97,6 +98,7 @@ export default function KidStore({
           )}
           <div className={styles.vouchers}>
             <VoucherSection
+              vouchers={vouchers}
               kid={true}
               unicoins={userdatafromserver.num_unicoins}
             />
@@ -129,6 +131,7 @@ export async function getServerSideProps({ params, req }) {
       let liveclassdata = await getliveclasses(token);
       let choresdata = await getchores(token);
       let avatars = await getavatars(token);
+      let vouchers = await getvouchers(token);
       return {
         props: {
           isLogged: true,
@@ -138,6 +141,7 @@ export async function getServerSideProps({ params, req }) {
           kidsdata,
           liveclassdata,
           avatars,
+          vouchers,
         },
       };
     }
@@ -178,6 +182,12 @@ async function getliveclasses(token) {
 }
 async function getavatars(token) {
   let response = await DashboardApis.getallavatars(null, token);
+  if (response && response.data && response.data.data)
+    return response.data.data;
+  else return null;
+}
+async function getvouchers(token) {
+  let response = await DashboardApis.getallvouchers({}, token);
   if (response && response.data && response.data.data)
     return response.data.data;
   else return null;
