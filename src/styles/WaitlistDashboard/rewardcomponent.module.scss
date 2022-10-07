@@ -1,63 +1,68 @@
 .reward {
-  background-color: white;
+  background-color: #fff;
   width: fit-content;
   border-radius: 8px;
-  margin: 10px;
-  position: relative;
   width: 30%;
   box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
-  img {
+  display: flex;
+  .image {
     border-radius: 8px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    width: 100%;
-    height: 300px;
+    width: 30%;
+    height: 100%;
     object-fit: cover;
   }
-  .name {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 10px;
-  }
-  .quantityandprice {
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .valueArea {
-    padding: 20px 10px 0;
-    display: flex;
-    gap: 10px;
-    .svg {
-      width: 14px;
-      color: #6d6d6d;
+  .right {
+    flex: 1;
+    .nameArea {
+      display: flex;
+      .name {
+        font-size: 20px;
+        font-weight: 500;
+        padding: 10px;
+      }
+      .valueArea {
+        padding: 20px 10px 0;
+        display: flex;
+        gap: 10px;
+        .svg {
+          width: 14px;
+          color: #6d6d6d;
+        }
+        .value {
+          font-size: 20px;
+          font-weight: 600;
+          color: #434040;
+        }
+      }
     }
-    .value {
-      font-size: 20px;
-      font-weight: 600;
-      color: #434040;
+    .quantityandprice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-  }
-  .button {
-    border: none;
-    background-color: #4066eb;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    border-radius: 8px;
-    margin: 20px 10px;
-    cursor: pointer;
-  }
-  .disabledButton {
-    @extend .button;
-    border: 1px solid #b3b2b2;
-    background-color: transparent;
-    color: #b3b2b2;
-    cursor: unset;
+    .actionArea {
+      .button {
+        border: none;
+        background-color: #4066eb;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        border-radius: 8px;
+        margin: 20px 10px;
+        cursor: pointer;
+      }
+      .disabledButton {
+        @extend .button;
+        border: 1px solid #b3b2b2;
+        background-color: transparent;
+        color: #b3b2b2;
+        cursor: unset;
+      }
+    }
   }
 }
 
