@@ -16,21 +16,23 @@ export default function VoucherSection({
   id,
   parent,
 }) {
-  const [items, setitems] = useState(vouchers);
+  const [items, setItems] = useState();
   const [query, setquery] = useState("");
+  const [limit, setLimit] = useState(9);
+
+  useEffect(() => {
+    if (vouchers && vouchers.length) {
+      if (limit) setItems(vouchers.slice(0, limit));
+    }
+  }, [limit]);
+
   async function SearchVoucher() {
     let res = await VoucherApis.searchvoucher({ query });
     if (res && res.data.success) {
-      setitems(res.data.data);
+      setItems(res.data.data);
     }
   }
-  useEffect(() => {
-    if (!query) {
-      setitems(vouchers);
-    } else {
-      SearchVoucher();
-    }
-  }, [query]);
+
   return (
     <div className={styles.voucherSection} id={id}>
       <div className={styles.headwrapper}>
@@ -61,7 +63,7 @@ export default function VoucherSection({
             kidsdata={kidsdata}
           />
         ))}
-        <SeeMoreCard />
+        <SeeMoreCard handleClick={() => setLimit((prev) => Number(prev) + 6)} />
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}
