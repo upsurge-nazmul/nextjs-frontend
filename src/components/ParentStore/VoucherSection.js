@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import VoucherApis from "../../actions/apis/VoucherApis";
 import styles from "../../styles/ParentStore/VoucherSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import Reward from "../WaitlistDashboard/Reward";
 import Voucher from "./Voucher";
 import SearchIcon from "@mui/icons-material/Search";
 import SeeMoreCard from "../WaitlistDashboard/SeeMoreCard";
-import DashboardApis from "../../actions/apis/DashboardApis";
 export default function VoucherSection({
-  token,
+  vouchers,
   unicoins,
   email,
   phone,
@@ -17,36 +15,35 @@ export default function VoucherSection({
   id,
   parent,
 }) {
-  const [items, setitems] = useState();
-  const [query, setquery] = useState("");
-  const [voucerLimit, setVoucherLimit] = useState(20);
-  const [showSeeMore, setShowSeeMore] = useState(true);
+  const [items, setItems] = useState();
+  const [query, setQuery] = useState("");
+  const [limit, setLimit] = useState(10);
 
-  async function SearchVoucher() {
-    let res = await VoucherApis.searchvoucher({ query });
-    if (res && res.data.success) {
-      setitems(res.data.data);
-    }
-  }
+  console.log("@@@@", vouchers);
 
   useEffect(() => {
-    setitems();
-    async function fetchVouchers() {
-      let response = await DashboardApis.getallvouchers(
-        { limit: voucerLimit },
-        token
-      );
-      if (response && response.data && response.data.data) {
-        setitems(response.data.data);
-        if (voucerLimit > response.data.data.length) setShowSeeMore(false);
+    if (vouchers && vouchers.length) {
+      if (limit) setItems(vouchers.slice(0, limit));
+    }
+  }, [limit, vouchers]);
+
+  useEffect(() => {
+    if (vouchers && vouchers.length) {
+      if (query) {
+        setItems(
+          vouchers.filter((voucher) => search(voucher.data.name, query))
+        );
+      } else {
+        setItems(vouchers.slice(0, limit));
       }
     }
-    if (voucerLimit) fetchVouchers();
-  }, [voucerLimit]);
+  }, [query, vouchers]);
 
-  const onSeeMoreClick = () => {
-    setVoucherLimit((prev) => Number(prev) + 10);
+  const search = (str1, str2) => {
+    return str1.toLowerCase().includes(str2.toLowerCase());
   };
+
+  const onSeeMoreClick = () => setLimit((prev) => Number(prev) + 10);
 
   return (
     <div className={styles.voucherSection} id={id}>
@@ -58,7 +55,7 @@ export default function VoucherSection({
           <div className={styles.inputwrapper}>
             <input
               type="text"
-              onChange={(e) => setquery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="Search rewards"
             />
             <SearchIcon className={styles.icon} />
@@ -66,21 +63,19 @@ export default function VoucherSection({
         </div>
       </div>
       <div className={styles.wrapper}>
-        {items &&
-          items.length &&
-          items.map((item, index) => (
-            <Reward
-              data={item.data}
-              key={item.id}
-              kid={kid ? true : false}
-              unicoins={unicoins}
-              email={email}
-              parent={parent}
-              phone={phone}
-              kidsdata={kidsdata}
-            />
-          ))}
-        {showSeeMore && <SeeMoreCard handleClick={onSeeMoreClick} />}
+        {items?.map((item, index) => (
+          <Reward
+            data={item.data}
+            key={item.id}
+            kid={kid ? true : false}
+            unicoins={unicoins}
+            email={email}
+            parent={parent}
+            phone={phone}
+            kidsdata={kidsdata}
+          />
+        ))}
+        {!query && <SeeMoreCard handleClick={onSeeMoreClick} />}
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}
