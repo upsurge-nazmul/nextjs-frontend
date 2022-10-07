@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
 import AboutSection from "./AboutSection";
 import ProductSection from "./ProductSection";
+import TryUpsurge from "./TryUpsurge";
 import BlogsSection from "./BlogsSection";
 import JoinUs from "./JoinUs";
 import Footer from "./Footer";
@@ -130,13 +131,6 @@ function Home({ userdata, page = "", showNav = true }) {
       }`}
     >
       <PageTitle />
-      <div
-        className={styles.summerbtn}
-        onClick={() => router.push("/business_league")}
-      >
-        <p className={styles.maintext}>upsurge Business League</p>
-        <p className={styles.subtext}>Registration closes 5th October</p>
-      </div>
       <Header
         userdata={userdata}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -160,37 +154,68 @@ function Home({ userdata, page = "", showNav = true }) {
 
       {page === "jodo" ? (
         <JodoIntro
+        setshowauth={setshowauth}
+        setauthmode={setauthmode}
+        setmailfromhome={setmailfromhome}
+        setshowpopup={setshowpopup}
+        />
+        ) : (
+          <Intro
           setshowauth={setshowauth}
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
           setshowpopup={setshowpopup}
+          />
+          )}
+          <Who />
+        <TryUpsurge 
+              content={"Try upsurge now"}
+              setauthmode={setauthmode}
+              setshowauth={setshowauth}
         />
-      ) : (
-        <Intro
-          setshowauth={setshowauth}
-          setauthmode={setauthmode}
-          setmailfromhome={setmailfromhome}
-          setshowpopup={setshowpopup}
-        />
-      )}
-
       <Values insidebenefits />
-      <Benefits />
+          <TryUpsurge 
+                content={"Get upsurge free"}
+                setauthmode={setauthmode}
+                setshowauth={setshowauth}
+                />
       {/* <How /> */}
-      <ProductSection />
-      <Who />
+      <ProductSection
+          setauthmode={setauthmode}
+          setshowauth={setshowauth}
+          />
+    <TryUpsurge 
+          content={"Try upsurge free"}
+          setauthmode={setauthmode}
+          setshowauth={setshowauth}
+    />
       <PartnerSection />
+    <TryUpsurge 
+          content={"Try upsurge now"}
+          setauthmode={setauthmode}
+          setshowauth={setshowauth}
+    />
       <JasperSection />
+      <Benefits />
       <AboutSection />
       <BlogsSection />
       <TestiMonial />
+    <TryUpsurge 
+          content={"Try upsurge today!"}
+          setauthmode={setauthmode}
+          setshowauth={setshowauth}
+    />
       <FaqSection />
       <JoinUs
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         setmailfromhome={setmailfromhome}
       />
-      <Footer />
+      <Footer
+      setshowauth={setshowauth}
+      setauthmode={setauthmode}
+      setmailfromhome={setmailfromhome}
+      setshowpopup={setshowpopup} />
       {router.query.showTour && (
         <Tour story={story} current={0} showtour={true} />
       )}

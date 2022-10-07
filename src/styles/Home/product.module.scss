@@ -10,10 +10,13 @@
   overflow: hidden;
   padding: 0 10% 0px;
   z-index: 2;
+  margin: 4rem 0 2rem 0;
   .heading {
     margin-bottom: 50px;
     font-size: 46px;
     font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
   }
   .wrapper {
     display: flex;

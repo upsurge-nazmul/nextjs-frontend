@@ -10,7 +10,7 @@ function Who() {
         theme === "dark" && styles.darkwhoSection
       }`}
     >
-      <h2 className={styles.heading}>More About Upsurge </h2>
+      <h2 className={styles.heading}>Financial Literacy for Students, made super-easy with upsurge</h2>
       <div className={styles.container}>
         <div className={styles.right}>
           <div className={styles.imageblock}>
