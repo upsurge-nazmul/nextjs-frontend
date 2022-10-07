@@ -17,7 +17,7 @@ function Who() {
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
-            <video className={styles.video} controls>
+            <video className={styles.video} controls autoPlay muted loop>
               <source src="/intro.mp4" type="video/mp4"></source>
             </video>
             {/* 
