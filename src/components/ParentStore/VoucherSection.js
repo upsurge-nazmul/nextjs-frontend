@@ -19,6 +19,8 @@ export default function VoucherSection({
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(10);
 
+  console.log("@@@@", vouchers);
+
   useEffect(() => {
     if (vouchers && vouchers.length) {
       if (limit) setItems(vouchers.slice(0, limit));
