@@ -3,12 +3,13 @@ import { useRouter } from "next/dist/client/router";
 import PendingSvg from "../SVGcomponents/PendingSvg";
 import RoundedTick from "../SVGcomponents/RoundedTick";
 import ChoreApis from "../../actions/apis/ChoreApis";
+import styles from "../../styles/kidDashboard/Kidchorepopup.module.scss";
 import KidApis from "../../actions/apis/KidApis";
 import {
     completedtimeDifference,
     duetimeDifference,
   } from "../../helpers/timehelpers";
-import styles from "../../styles/kidDashboard/Kidchorepopup.module.scss";
+
 function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoredata}) {
     const [showmenu, setshowmenu] = useState(false);
     const [choredatas, setchoredatas] = useState(choredata);
