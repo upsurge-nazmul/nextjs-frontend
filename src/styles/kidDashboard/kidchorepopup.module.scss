@@ -1,0 +1,161 @@
+$border-radius: 14px;
+$card-height: auto;
+.chorePopUp {
+    position: absolute;
+    z-index: 5;
+    top:0;
+    left:0;
+    .chorePopUpWrapper {
+        color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 7vh;
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 6;
+        background-color: white;
+        height: fit-content;
+        min-height: 400px;
+        padding: 4rem;
+        border-radius: 3rem;
+        position: relative;
+        transition: all 0.3s ease;
+        max-width: 40vw;
+        .firstSection{
+            width: auto;
+            margin-left: auto;
+            margin-right:20px;
+        }
+        .secondSection{
+            margin-right: auto;
+            .title{
+                display: flex;
+                align-items: center;
+                margin: 1rem 0 1rem 0;
+                font-size: 22px;
+                h3{
+                    margin-right: 5px;
+                }
+            }
+            .message{
+                margin-bottom: 0.5rem;
+                h4{
+                    margin-bottom: 0.5rem;
+                }
+            }
+            .deadline{
+                display: flex;
+                h4{
+                    margin-right: 5px;
+                }
+                
+            }
+        }
+        .thirdSection{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 10px;
+            margin-top: 10px;
+            .left{
+                margin: 0 5px 0 0;
+            }
+            .right{
+                margin:0 5px 0 auto;
+            .actinButton {
+              cursor: pointer;
+              width: 140px;
+              height: 40px;
+              border-radius: $border-radius;
+              font-size: 14px;
+              font-weight: 600;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5px;
+              transition: all 0.3s ease;
+              background-color: #333;
+              color: #fff;
+              border: 1px solid #fff;
+              &:hover {
+                color: #333;
+                background-color: #fff;
+                border: 1px solid #333;
+              }
+            }
+            .startButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .markDoneButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .completedButton {
+              @extend .actinButton;
+              background-color: #17d1bc;
+              border: 1px solid #17d1bc;
+              &:hover {
+                color: #17d1bc;
+                background-color: #fff;
+                border: 1px solid #17d1bc;
+              }
+            }
+            .expiredButton {
+              @extend .actinButton;
+              background-color: #dbdbdb;
+              color: rgb(116, 116, 116);
+              border: 1px solid #dbdbdb;
+              &:hover {
+                color: #dbdbdb;
+                background-color: rgb(116, 116, 116);
+                border: 1px solid #dbdbdb;
+              }
+            }
+            .approvalButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .menu {
+              padding: 0 10px;
+            }
+        }
+    }
+}
+.background {
+    position: absolute;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.19);
+  width: 100vw;
+  cursor: pointer;
+  height: 100vh;
+  top:0;
+  left:0;
+}
+}
+  }
+
