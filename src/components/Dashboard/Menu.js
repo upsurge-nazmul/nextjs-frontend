@@ -170,6 +170,9 @@ function Menu({
                   onClick={() => {
                     setshowauth(true);
                     setSavedUser(user);
+                    if (userdata.user_type !== "child") {
+                      router.push("/dashboard/p");
+                    } else router.push("/dashboard/k");
                   }}
                   className={`${styles.innerUser} ${user.id === userdata.user_id && styles.selectedUser
                     }`}
@@ -194,7 +197,15 @@ function Menu({
                 </div>
               </div>
             ) : (
-              ""
+              <div
+                className={`${styles.innerUser} `}
+                onClick={() => setshowauth(true)}
+              >
+                <GroupAddIcon className={styles.icon} />
+                <div className={styles.userInfo}>
+                  <p>Add new account</p>
+                </div>
+              </div>
             )}
           </div>
         )}

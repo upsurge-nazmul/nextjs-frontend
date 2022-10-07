@@ -94,12 +94,20 @@ $transition-duration: 1s;
             cursor: pointer;
             border: none;
             outline: none;
+            border: 1px solid #1673c8;
             background-color: #1673c8;
             color: #fff;
             border-radius: 14px;
             font-size: 14px;
             padding: 10px 20px;
             width: 100%;
+          }
+          .disabledButton {
+            @extend .claimButton;
+            border: 1px solid #333;
+            color: #333;
+            background-color: transparent;
+            cursor: default;
           }
         }
       }

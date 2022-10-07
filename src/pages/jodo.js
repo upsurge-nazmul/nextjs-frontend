@@ -1,12 +1,12 @@
 import React from "react";
-import LoginApis from "../actions/apis/LoginApis";
 import Home from "../components/Home";
+import LoginApis from "../actions/apis/LoginApis";
 
-function LandingPage(props) {
-  return <Home {...props} />;
+function Jodo(props) {
+  return <Home {...props} page={"jodo"} showNav={false} />;
 }
 
-export default LandingPage;
+export default Jodo;
 
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;

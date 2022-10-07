@@ -196,7 +196,7 @@ function Benefits() {
                     : "#4166EB",
               }}
             >
-              Why upsurge = Financial Literacy for Kids
+              Why upsurge?
             </h2>
 
             <div className={styles.allsections}>
