@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import VoucherApis from "../../actions/apis/VoucherApis";
 import styles from "../../styles/ParentStore/VoucherSection.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import Reward from "../WaitlistDashboard/Reward";
@@ -17,21 +16,30 @@ export default function VoucherSection({
   parent,
 }) {
   const [items, setItems] = useState();
-  const [query, setquery] = useState("");
+  const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(9);
 
   useEffect(() => {
     if (vouchers && vouchers.length) {
       if (limit) setItems(vouchers.slice(0, limit));
     }
-  }, [limit]);
+  }, [limit, vouchers]);
 
-  async function SearchVoucher() {
-    let res = await VoucherApis.searchvoucher({ query });
-    if (res && res.data.success) {
-      setItems(res.data.data);
+  useEffect(() => {
+    if (vouchers && vouchers.length) {
+      if (query) {
+        setItems(
+          vouchers.filter((voucher) => search(voucher.data.name, query))
+        );
+      } else {
+        setItems(vouchers.slice(0, limit));
+      }
     }
-  }
+  }, [query, vouchers]);
+
+  const search = (str1, str2) => {
+    return str1.toLowerCase().includes(str2.toLowerCase());
+  };
 
   return (
     <div className={styles.voucherSection} id={id}>
@@ -43,7 +51,7 @@ export default function VoucherSection({
           <div className={styles.inputwrapper}>
             <input
               type="text"
-              onChange={(e) => setquery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="Search rewards"
             />
             <SearchIcon className={styles.icon} />
@@ -63,7 +71,11 @@ export default function VoucherSection({
             kidsdata={kidsdata}
           />
         ))}
-        <SeeMoreCard handleClick={() => setLimit((prev) => Number(prev) + 6)} />
+        {!query && (
+          <SeeMoreCard
+            handleClick={() => setLimit((prev) => Number(prev) + 6)}
+          />
+        )}
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}
