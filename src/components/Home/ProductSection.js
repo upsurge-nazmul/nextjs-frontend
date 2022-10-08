@@ -55,7 +55,7 @@ function ProductSection() {
         theme === "dark" && styles.darkproductSection
       }`}
     >
-      <h2 className={styles.heading}>Here's How we do it?</h2>
+      <h2 className={styles.heading}>Here&apos;s How we do it?</h2>
       <div className={styles.wrapper}>
         {data.splice(0, 3).map((item, index) => {
           return (
