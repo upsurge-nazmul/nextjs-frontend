@@ -39,11 +39,14 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questPage}>
-      <PageTitle title={`upsurge | Knowledge Quest`} />
+      <PageTitle title={`upsurge | Knowledge Quests`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={"Knowledge Quest"} settoastdata={settoastdata} />
+        <DashboardHeader
+          mode={"Knowledge Quests"}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent} id="quest-main">
           {/* <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> */}
           {/* <HeadArea
