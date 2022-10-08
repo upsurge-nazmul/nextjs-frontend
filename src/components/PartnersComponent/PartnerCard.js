@@ -7,6 +7,14 @@ export default function PartnerCard({
   seeMoreClick = () => {},
 }) {
   const router = useRouter();
+
+  const handleClick = data.link
+    ? () => {
+        // router.push(data.link);
+        window.open(data.link, "_ blank");
+      }
+    : () => console.log("claim clicked");
+
   return (
     <>
       {seeMoreCard ? (
@@ -25,13 +33,14 @@ export default function PartnerCard({
           }}
         >
           <div className={`${styles.card__face} ${styles.card__face__front}`}>
-            <div className={styles.frontFace}>
+            <div className={styles.frontFace} onClick={handleClick}>
               <img
                 className={styles.banner}
-                src={
-                  require(`../../assets/partners/${data.banner}.svg`).default
-                    .src
-                }
+                // src={
+                //   require(`../../assets/partners/${data.banner}.svg`).default
+                //     .src
+                // }
+                src={require(`../../assets/partners/ditto_bg.png`).default.src}
                 alt={data.name}
                 loading="lazy"
               />
@@ -45,7 +54,7 @@ export default function PartnerCard({
             </div>
           </div>
           <div className={`${styles.card__face} ${styles.card__face__back}`}>
-            <div className={styles.backFace}>
+            <div className={styles.backFace} onClick={handleClick}>
               <div className={styles.bannerArea}>
                 <img
                   className={styles.smallBanner}
@@ -69,13 +78,7 @@ export default function PartnerCard({
                     className={
                       data.link ? styles.claimButton : styles.disabledButton
                     }
-                    onClick={
-                      data.link
-                        ? () => {
-                            router.push(data.link);
-                          }
-                        : () => console.log("claim clicked")
-                    }
+                    onClick={handleClick}
                   >
                     CLAIM NOW
                   </button>
