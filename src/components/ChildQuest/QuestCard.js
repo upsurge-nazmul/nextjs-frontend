@@ -1,5 +1,6 @@
 import styles from "../../styles/knowledgeQuest/QuestCard.module.scss";
 import Image from "next/image";
+import LockSvg from "../SVGcomponents/LockSvg";
 
 const BG_COLORS = [
   "#cbc7ea",
@@ -49,14 +50,19 @@ const TEXT_COLORS = [
   "#333",
 ];
 
-function QuestCard({ data, typeProps, handleCardClick }) {
+function QuestCard({ data, typeProps, handleCardClick, locked = false }) {
   return (
     <>
       {data ? (
         <div
           className={styles.questCard}
-          onClick={() => handleCardClick(data.questId)}
+          onClick={locked ? () => {} : () => handleCardClick(data.questId)}
         >
+          {locked && (
+            <div className={styles.locked}>
+              <LockSvg className={styles.lockIcon} />
+            </div>
+          )}
           <div
             className={styles.cardHeader}
             style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
