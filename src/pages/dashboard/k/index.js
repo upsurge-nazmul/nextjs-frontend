@@ -153,122 +153,9 @@ export default function ChildActivity({
       highlightBg: true,
       position: "bottom",
       content: `You can go back to home page, by clicking upsurge logo.`,
-    },
-    {
-      ref: "#milestone",
-      position: "bottom",
-      highlightBg: true,
-      text: "Welcome to upsurge!",
-      extraPadding: true,
-      content: `you can check your milestones here.`,
-      required: true,
-      disableBtns: true,
-      isolate: true,
-    },
-    {
-      ref: "#milestone-wrapper",
-      content: (
-        <IntroDiv
-          hideJasper={true}
-          head={`Here you can see all your milestones!`}
-          text={`You can also directly go to milestones, by clicking on them.`}
-        />
-      ),
-      superimpose: true,
-      position: "bottom",
-      required: true,
-      delay: true,
-      isolate: true,
-      absolute: true,
-      disableBg: true,
-      nextFunction: () => {
-        if (currentTourIndex === 3) {
-          setcurrentTourIndex((prev) => prev + 1);
-        }
-        setshowtodo(!showtodo);
-      },
-    },
-    {
-      ref: "#leaderboards",
-      position: "bottom",
-      content: `You can see the leaderboards here.`,
-      extraPadding: true,
-      superimpose: true,
-      highlightBg: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#chores",
-      position: "bottom",
-      content: `You can see your pending chores here.`,
-      superimpose: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#quests",
-      position: "bottom",
-      content: `You can see your quest progress here.`,
-      superimpose: true,
-      required: true,
-      isolate: true,
-    },
-    {
-      ref: "#recent_games",
-      position: "top",
-      content: `You can access your recent games.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-      extraPadding: true,
-    },
-    {
-      ref: "#todays-question",
-      position: "bottom",
-      content: `You can answer questions and get rewards.`,
-      superimpose: true,
-      required: false,
-      isolate: true,
-    },
-    {
-      ref: "#chores-leftpanel",
-      position: "bottom",
-      content: `Now lets go to chores.`,
-      disableBtns: true,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#quest-leftpanel",
-      position: "bottom",
-      content: `You can track the knowledge quest progress of your children.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#games-leftpanel",
-      position: "bottom",
-      content: `You can play games here.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
-    {
-      ref: "#store-leftpanel",
-      position: "bottom",
-      content: `Now lets go to store.`,
-      superimpose: true,
-      required: true,
-      highlightBg: true,
-      isolate: true,
-    },
+    },    
+    
+    
   ];
 
   return (
@@ -394,7 +281,7 @@ export default function ChildActivity({
               <div className={styles.questionSection}>
                 {todaysquestion && <TodaysQuestion data={todaysquestion} />}
               </div>
-              <div className={styles.leaderboardsection} id="leaderboards">
+              {/* <div className={styles.leaderboardsection} id="leaderboards">
                 <div className={styles.wrapper}>
                   <div className={styles.element}>
                     <p className={styles.rank}>
@@ -402,7 +289,7 @@ export default function ChildActivity({
                     </p>
                     <p className={styles.section}>Money ace</p>
                   </div>
-                  {/* <div className={styles.element}>
+                  <div className={styles.element}>
                   <p className={styles.rank}>{highestquizscore ?? 0}</p>
                   <p className={styles.section}>Money Quotient</p>
                 </div>
@@ -415,9 +302,9 @@ export default function ChildActivity({
                     {stockHoldings ? Math.floor(stockHoldings[0].amount) : 0}
                   </p>
                   <p className={styles.section}>StockSimulator</p>
-                </div> */}
+                </div> 
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={styles.flexRight}>
               {/* <div className={styles.questsection} id="quests">

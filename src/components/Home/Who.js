@@ -10,14 +10,14 @@ function Who() {
         theme === "dark" && styles.darkwhoSection
       }`}
     >
-      <h2 className={styles.heading}>More About Upsurge </h2>
+      <h2 className={styles.heading}>Financial Literacy for Students, made super-easy with upsurge</h2>
       <div className={styles.container}>
         <div className={styles.right}>
           <div className={styles.imageblock}>
             <div className={styles.green}></div>
             <div className={styles.white}></div>
             <div className={styles.yellow}></div>
-            <video className={styles.video} controls>
+            <video className={styles.video} controls autoPlay muted loop>
               <source src="/intro.mp4" type="video/mp4"></source>
             </video>
             {/* 

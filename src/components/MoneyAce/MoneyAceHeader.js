@@ -62,7 +62,7 @@ export default function MoneyAceHeader({
           <div className={styles.leveldiv}>
             <p className={styles.levelheadtext}>LEVEL</p>
             <div className={styles.button}>
-              <img src="https://imgcdn.upsurge.in/images/>
+              <img src="https://imgcdn.upsurge.in/images/slider-handle-1.png" alt="" />
               <p className={styles.leveltext}>{moneyacedata?.level || 0}</p>
             </div>
           </div>

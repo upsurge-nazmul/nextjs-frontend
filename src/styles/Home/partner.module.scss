@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
   .common {
     height: fit-content;
     background-color: #ff6263;
@@ -17,17 +18,21 @@
     position: relative;
     flex-direction: column;
     border-radius: 12px;
-    width: 70vw;
+    min-width: 100%;
     margin-top: 20px;
     .heading {
       font-size: 36px;
       font-weight: 700;
       cursor: pointer;
+      margin-left: auto;
+    margin-right: auto;
     }
     .subheading {
       margin-top: 1vh;
       font-size: 16px;
       font-weight: 400;
+      margin-left: auto;
+    margin-right: auto;
     }
     .leftarrow {
       position: absolute;

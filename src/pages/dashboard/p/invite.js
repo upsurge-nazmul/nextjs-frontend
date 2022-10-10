@@ -2,20 +2,11 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
-import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import KidComponent from "../../../components/Dashboard/KidComponent";
-import NoKid from "../../../components/Dashboard/NoKid";
 import LeftPanel from "../../../components/LeftPanel";
-import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
-import ChoreApis from "../../../actions/apis/ChoreApis";
 import styles from "../../../styles/Dashboard/invitepage.module.scss";
 import Toast from "../../../components/Toast";
-import { Calc_Data } from "../../../static_data/Calc_Data";
-import Image from "next/image";
-import MiniCalcCard from "../../../components/Calculators/MiniCalcCard";
-import FillSpace from "../../../components/Dashboard/FillSpace";
 import Refer from "../../../components/WaitlistDashboard/Refer";
 import AvailablePointsSection from "../../../components/ParentStore/AvailablePointsSection";
 import PartnerSection from "../../../components/Home/PartnerSection";
@@ -50,6 +41,8 @@ export default function Invite({ kidsdata, userdatafromserver }) {
           <div className={styles.flexBottom}>
             <PartnerSection dashboard={true} nomargin={true} />
           </div>
+          <br />
+          <br />
         </div>
       </div>
     </div>

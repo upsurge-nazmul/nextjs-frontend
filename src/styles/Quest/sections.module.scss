@@ -10,6 +10,16 @@
       font-size: 12px;
       font-weight: 500;
     }
+    .sectiontotalunicons{
+      font-weight: 500;
+      margin-top: 10px;
+      display: flex;
+      .svg {
+        margin-left: 5px;
+        width:22px;
+        cursor: pointer;
+       }
+    }
     .sectiontitle {
       font-size: 22px;
       font-weight: 500;
@@ -57,6 +67,7 @@
         width: auto;
         position: relative;
         margin-left: 20px;
+        box-shadow: 0px 13.3978px 24.8817px rgb(8 60 194 / 15%);
         .verticalLine {
           background-color: #cecece;
           position: absolute;
@@ -90,25 +101,40 @@
           @extend .chapterball;
           background-color: #4166eb;
         }
-        .main {
+        .flex{
           display: flex;
-          flex-direction: column;
-          justify-content: center;
-          height: 100%;
-          padding: 20px;
-          .chapterno,
-          .remainingtime {
-            font-family: "Lexend", sans-serif;
-            margin-top: 5px;
-            font-size: 10px;
-            color: #0000004d;
+          align-items: center;
+          .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+            .chapterno,
+            .remainingtime {
+              font-family: "Lexend", sans-serif;
+              margin-top: 5px;
+              font-size: 10px;
+              color: #0000004d;
+            }
+            .chaptertitle {
+              font-size: 16px;
+              margin-top: 5px;
+              font-weight: 600;
+            }
           }
-          .chaptertitle {
-            font-size: 16px;
-            margin-top: 5px;
-            font-weight: 600;
+          .chapterunicoins{
+            margin:10px 30px 0 auto;
+            font-weight: 500;
+            font-size: 18px;
+           display: flex;
+           .chaptersvg {
+            margin-left: 5px;
+            width:22px;
+            cursor: pointer;
+           }
           }
-        }
+          }
       }
     }
   }

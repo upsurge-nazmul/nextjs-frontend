@@ -1,13 +1,7 @@
 import styles from "../../styles/Journey/tasks.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import RewardTask from "./RewardTask";
-
-const TASK_TYPE_COLORS = [
-  { id: "Knowledge Quest", color: "#17d1bc" },
-  { id: "Game", color: "#ffcd00" },
-  { id: "Chore", color: "#4066eb" },
-  { id: "Activity", color: "#ff6163" },
-];
+import { TASK_TYPE_COLORS } from "../../static_data/Pathways_Data";
 
 export default function Tasks({ highlight, handleTaskClick }) {
   const taskCompleted = 0;
@@ -93,6 +87,7 @@ export default function Tasks({ highlight, handleTaskClick }) {
               <img
                 src={"/images/journey/taskEnd.svg"}
                 className={styles.taskEnd}
+                alt=""
               />
               {highlight.reward && (
                 <div className={styles.footerReward}>

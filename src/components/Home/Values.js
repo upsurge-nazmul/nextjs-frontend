@@ -34,8 +34,7 @@ export default function Values({ insidebenefits }) {
       }`}
     >
       <h2 className={styles.heading}>
-        Through upsurge, we wish to create a money-wise generation by providing
-        financial education to students{" "}
+        Through upsurge, we aim to create a money-wise generation by helping children{" "}
       </h2>
       {widthHeight.width < 860 && insidebenefits ? (
         <div className={styles.mobilesection}>

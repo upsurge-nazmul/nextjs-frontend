@@ -85,9 +85,6 @@ export default function KidChoresPage({
         <DashboardHeader mode={"Chores"} settoastdata={settoastdata} />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <div>
-              <LeaderBoard data={choresLeaderboardData} />
-            </div>
             <div className={styles.pendingChoresSection}>
               <h2 className={styles.heading}>In Progress</h2>
               <div className={styles.wrapper}>

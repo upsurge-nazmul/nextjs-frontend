@@ -90,6 +90,7 @@ export default function ManageChore({
   );
   const [rewardType, setRewardType] = useState(REWARD_TYPES[0]);
   const [rewardAmount, setRewardAmount] = useState(200);
+  const [customRewards, setCustomRewards] = useState(choredata?.custom_rewards);
 
   useEffect(() => {
     setlettercounts(200 - msg.length);
@@ -135,6 +136,7 @@ export default function ManageChore({
         due_date: new Date(duedate).getTime(),
         completion: "pending",
         is_reoccurring: interval !== "One Time" ? true : false,
+        custom_rewards: customRewards
       });
       if (response && response.data && response.data.success) {
         settoastdata({
@@ -196,6 +198,7 @@ export default function ManageChore({
           completion: "pending",
           reward_type: rewardType.value,
           reward_amount: rewardAmount,
+          custom_rewards: customRewards,
         });
         if (!response || !response.data || !response.data.success) {
           noerror = false;
@@ -329,6 +332,15 @@ export default function ManageChore({
               <p className={styles.lettersleft}>
                 {lettercounts + " characters left"}
               </p>
+            </div>
+            <div>
+              {/* Please add styles */}
+              <input
+                type="text"
+                value={customRewards}
+                onChange={(e) => setCustomRewards(e.target.value)}
+                placeholder="Custom Reward"
+              />
             </div>
             {audiouploadedurl && (
               <audio controls className={styles.audioc}>
