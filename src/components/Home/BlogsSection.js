@@ -64,7 +64,7 @@ export default function BlogsSection() {
       }`}
       >
       <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
-        Blogs
+      Read our blogs for some MONEY-ful insights
       </h2>
       <div className={styles.wrapper}>
         {blogs.map((item, index) => {

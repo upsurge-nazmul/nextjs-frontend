@@ -125,6 +125,13 @@ function Benefits() {
     >
       <div className={styles.main}>
         <div className={styles.mobile}>
+                 <h2
+                 className={styles.title}
+                 style={{
+                     color:"#4166EB", fontSize:"36px",marginBottom:"15px"
+                 }}
+                 >Why upsurge?
+            </h2>
           {data.map((item, index) => {
             return (
               <div className={styles.container} key={"mobilecontainer" + index}>

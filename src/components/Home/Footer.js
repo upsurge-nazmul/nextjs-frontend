@@ -32,7 +32,7 @@ function Footer({
   const [email, setemail] = useState("");
   const [showproducts, setshowproducts] = useState(false);
   const [termmode, settermmode] = useState("terms");
-  const { theme } = useContext(MainContext);
+  const { theme,userdata } = useContext(MainContext);
   const router = useRouter();
   async function check(e) {
     e?.preventDefault();
@@ -75,6 +75,26 @@ function Footer({
             onClick={() => router.push("/")}
             dark={theme === "dark"}
           />
+           {userdata ? (
+          <div
+            className={styles.gotobutton}
+            onClick={() => {
+              if (userdata) {
+                if (userdata.is_waiting_active) {
+                  router.push("/dashboard/w");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p");
+                } else {
+                  router.push("/dashboard/k");
+                }
+                return;
+              }
+            }}
+          >
+            Go to dashboard
+          </div>
+          ) : (
+          <>
            <p className={styles.error}>{error}</p>
           <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
             <form onSubmit={(e) => check(e)}>
@@ -98,6 +118,8 @@ function Footer({
               </div>
             )}
           </div>
+            </>
+            )}
           <div className={styles.brandtext}>
             <a
               className={styles.whatsapp}

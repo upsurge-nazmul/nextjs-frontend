@@ -167,28 +167,17 @@ function Home({ userdata, page = "", showNav = true }) {
           setshowpopup={setshowpopup}
           />
           )}
+          <Benefits />
           <Who />
-        <TryUpsurge 
-              content={"Try upsurge now"}
-              setauthmode={setauthmode}
-              setshowauth={setshowauth}
-        />
-      <Values insidebenefits />
-          <TryUpsurge 
-                content={"Get upsurge free"}
-                setauthmode={setauthmode}
-                setshowauth={setshowauth}
-                />
+      <Values
+      setshowauth={setshowauth}
+      setauthmode={setauthmode}
+      insidebenefits />
       {/* <How /> */}
       <ProductSection
           setauthmode={setauthmode}
           setshowauth={setshowauth}
           />
-    <TryUpsurge 
-          content={"Try upsurge free"}
-          setauthmode={setauthmode}
-          setshowauth={setshowauth}
-    />
       <PartnerSection />
     <TryUpsurge 
           content={"Try upsurge now"}
@@ -196,7 +185,6 @@ function Home({ userdata, page = "", showNav = true }) {
           setshowauth={setshowauth}
     />
       <JasperSection />
-      <Benefits />
       <AboutSection />
       <BlogsSection />
       <TestiMonial />
