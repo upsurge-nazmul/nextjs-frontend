@@ -17,6 +17,7 @@
   align-items: center;
   transition: all 0.3s ease;
   transition-duration: 500ms;
+  position: relative;
   &:hover {
     box-shadow: 0px 0px 10px 0 rgb(157 166 187 / 15%);
   }
@@ -85,6 +86,33 @@
       font-size: 12px;
       color: rgba(130, 130, 130, 1);
       font-weight: 600;
+    }
+  }
+  .locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 14px;
+    transition: all 0.5s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    .lockIcon {
+      height: 75%;
+      width: 75%;
+      color: rgb(24 24 24 / 75%);
+      visibility: hidden;
+      transition: all 0.5s ease-in;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.25);
+      cursor: default;
+      .lockIcon {
+        visibility: visible;
+      }
     }
   }
 }

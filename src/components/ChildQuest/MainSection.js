@@ -25,6 +25,7 @@ export default function MainSection({
                     (qt) => qt.title === item.quest_type
                   )}
                   key={item.questNo}
+                  locked={!item.open}
                 />
               );
             }
