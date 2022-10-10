@@ -10,6 +10,10 @@ export const positions = {
     },
     {
       bottom: "70%",
+      right: "70%",
+    },
+    {
+      bottom: "70%",
       right: "40%",
     },
     {
