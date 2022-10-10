@@ -16,48 +16,7 @@ export default function Pricing({ userdata }) {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const data = [
-    {
-      name: "Monthly",
-      price: "₹599",
-      description: "per child, per month",
-      benefits: [
-        "Knowledge Quests",
-        "Games Arena",
-        "Chore Management",
-        "Family Fun Games & Activities",
-      ],
-    },
-    {
-      name: "Half-Yearly",
-      price: "₹2999 ",
-      description: "( ₹500/month )",
-      benefits: [
-        "Knowledge Quests",
-        "Games Arena",
-        "Chore Management",
-        "Family Fun Games & Activities",
-        "1,000 UniCoins Bonus - Redeemable for discount vouchers",
-        "Higher Education Counselling Masterclass",
-      ],
-    },
-    {
-      name: "Yearly",
-      price: "₹4799",
-      description: "( ₹400/month )",
-      benefits: [
-        "Knowledge Quests",
-        "Games Arena",
-        "Chore Management",
-        "Family Fun Games & Activities",
-        "2,500 UniCoin Bonus - Redeemable for discount vouchers",
-        "Higher Education Counselling Masterclass",
-        "1 free session with your choice of an expert from our panel",
-        "Rich Dad, Poor Dad - the personal finance bible",
-        "& more fun goodies!",
-      ],
-    },
-  ];
+
   const { setuserdata, theme } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
@@ -102,36 +61,32 @@ export default function Pricing({ userdata }) {
           Start your child&apos;s journey in the <br />
           finance world today.
         </p>
-        <div className={styles.featurewrapper}>
-          <div className={styles.feature}>
-            <TickSvg className={styles.tick} />
-            Free 15-day trial
+        <div className={styles.priceWrapper}>
+          <div className={styles.priceContainer}>
+            <p className={styles.name}>Premium</p>
+            <p className={styles.price}>Free</p>
+            <p className={styles.description}>(for 12 months)</p>
+            <div className={styles.benefitsTitle}>You get access to</div>
+            <ul className={styles.benefitsWrapper}>
+              <li>12 Educational Games</li>
+              <li>6 Knowledge Quests</li>
+              <li>1,000 Bonus UniCoins</li>
+              <li>Learn about financial literacy and entrepreneurship</li>
+              <li>
+                Partner Rewards
+                <span className={styles.subScript}>(limited access)</span>
+              </li>
+              <li>Leaderboard and Prizes</li>
+              <li>
+                Habit Builder
+                <span className={styles.subScript}>(Chores)</span>
+              </li>
+            </ul>
+            <div className={styles.actionArea}>
+              <button className={styles.claimButton}>Claim Now</button>
+              <div className={styles.actionHelper}>(Limited Offer)</div>
+            </div>
           </div>
-          <div className={styles.feature}>
-            <TickSvg className={styles.tick} />
-            Add upto 5 kids
-          </div>
-          <div className={styles.feature}>
-            <TickSvg className={styles.tick} />
-            Cancel Anytime
-          </div>
-        </div>
-        <div className={styles.pricewrapper}>
-          {data.map((item, index) => {
-            return (
-              <div className={styles.pricecontainer} key={"price" + index}>
-                <p className={styles.name}>{item.name}</p>
-                <p className={styles.price}>{item.price}</p>
-                <p className={styles.description}>{item.description}</p>
-                <div className={styles.hr} />
-                <div className={styles.benefitswrapper}>
-                  {item.benefits.map((benefit, index) => {
-                    return <p key={"benefit" + index}>{benefit}</p>;
-                  })}
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
       <JoinUs />
