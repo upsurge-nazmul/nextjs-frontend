@@ -15,6 +15,13 @@ export default function GameView({ game, setGame }) {
   const unityref = useRef(unityContext);
 
   useEffect(() => {
+    if (document) {
+      document.body.requestFullscreen();
+      setFullScreen(true);
+    }
+  }, []);
+
+  useEffect(() => {
     async function fetchGameData() {
       let res = await GameApis.gamedata({ id: game });
       if (res && res.data && res.data.data) {
@@ -127,7 +134,14 @@ export default function GameView({ game, setGame }) {
         <p>There is no Game in this name</p>
       )}
       <div className={styles.actionArea}>
-        <button className={styles.fullScreenButton} onClick={() => setGame()}>
+        <button
+          className={styles.fullScreenButton}
+          onClick={() => {
+            setFullScreen(false);
+            document.exitFullscreen();
+            setGame();
+          }}
+        >
           {fullScreen ? <FullScreenExit /> : <FullScreen />}
         </button>
       </div>
