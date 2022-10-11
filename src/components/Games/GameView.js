@@ -16,8 +16,10 @@ export default function GameView({ game, setGame }) {
 
   useEffect(() => {
     if (document) {
-      document.body.requestFullscreen();
-      setFullScreen(true);
+      if (document.body.requestFullscreen) {
+        document.body.requestFullscreen();
+        setFullScreen(true);
+      }
     }
   }, []);
 
@@ -131,7 +133,9 @@ export default function GameView({ game, setGame }) {
           className={styles.gameScreen}
         />
       ) : (
-        <p>There is no Game in this name</p>
+        <div className={styles.noGame}>
+          <p className={styles.noGameText}>No Game Found!</p>
+        </div>
       )}
       <div className={styles.actionArea}>
         <button
