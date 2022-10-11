@@ -10,6 +10,10 @@
     width: 100%;
     flex: 1;
   }
+  .hiddenGameScreen {
+    @extend .gameScreen;
+    display: none;
+  }
   .noGame {
     width: 100%;
     flex: 1;
@@ -21,6 +25,14 @@
       color: #fff;
       font-size: 2rem;
     }
+  }
+  .loadingArea {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
   }
   .actionArea {
     height: fit-content;

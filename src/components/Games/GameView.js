@@ -7,11 +7,13 @@ import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
+import GameLoading from "./GameLoading";
 
 export default function GameView({ game, setGame }) {
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
+  const [progression, setProgression] = useState(0);
   const unityref = useRef(unityContext);
 
   useEffect(() => {
@@ -121,6 +123,35 @@ export default function GameView({ game, setGame }) {
     }
   }, [gameData]);
 
+  useEffect(
+    function () {
+      if (!unityContext) return;
+      unityContext.on("Exit", function () {
+        router.push("/dashboard/k/games");
+      });
+      unityContext.on("progress", function (progress) {
+        console.log("progress", progress);
+        setProgression(progress);
+      });
+      unityContext.on("Error", function (code, url, vendor) {
+        console.log("code url vendor", code, url, vendor);
+        router.push("/dashboard/k/games");
+      });
+      unityContext.on("error", function (message) {
+        console.log("error", message);
+      });
+      unityContext.on("Score", async function (score) {
+        let res = await GameApis.unicoinreward({ gameId: game });
+        if (res?.data?.success) {
+          console.log("Score success rewards alloted");
+        } else {
+          console.log(res?.data?.message || "");
+        }
+      });
+    },
+    [unityContext]
+  );
+
   return (
     <div className={styles.gameView}>
       {isMobile ? (
@@ -130,12 +161,21 @@ export default function GameView({ game, setGame }) {
           ref={unityref}
           unityContext={unityContext}
           matchWebGLToCanvasSize={true}
-          className={styles.gameScreen}
+          className={
+            progression === 1 ? styles.gameScreen : styles.hiddenGameScreen
+          }
         />
       ) : (
         <div className={styles.noGame}>
           <p className={styles.noGameText}>No Game Found!</p>
         </div>
+      )}
+      {progression > 0 && progression < 1 ? (
+        <div className={styles.loadingArea}>
+          <GameLoading percentage={progression} />
+        </div>
+      ) : (
+        ""
       )}
       <div className={styles.actionArea}>
         <button

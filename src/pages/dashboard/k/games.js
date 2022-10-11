@@ -119,8 +119,6 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
     }
   }
 
-  console.log("@@@@@@@", openGame);
-
   return (
     <div className={styles.gamesPage}>
       <PageTitle title={`upsurge | Games`} />
