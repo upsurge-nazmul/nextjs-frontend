@@ -5,10 +5,13 @@ import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
+import FullScreen from "../SVGcomponents/FullScreen";
+import FullScreenExit from "../SVGcomponents/FullScreenExit";
 
-export default function GameView({ game }) {
+export default function GameView({ game, setGame }) {
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
+  const [fullScreen, setFullScreen] = useState(false);
   const unityref = useRef(unityContext);
 
   useEffect(() => {
@@ -118,10 +121,16 @@ export default function GameView({ game }) {
           ref={unityref}
           unityContext={unityContext}
           matchWebGLToCanvasSize={true}
+          className={styles.gameScreen}
         />
       ) : (
         <p>There is no Game in this name</p>
       )}
+      <div className={styles.actionArea}>
+        <button className={styles.fullScreenButton} onClick={() => setGame()}>
+          {fullScreen ? <FullScreenExit /> : <FullScreen />}
+        </button>
+      </div>
     </div>
   );
 }

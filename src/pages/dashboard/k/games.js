@@ -211,7 +211,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
           </div>
         </div>
       </div>
-      {openGame ? <GameView game={openGame} /> : ""}
+      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
     </div>
   );
 }
