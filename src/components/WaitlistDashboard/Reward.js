@@ -67,49 +67,53 @@ export default function Reward({
           />
         ))}
 
-      <img src={data.imageUrl} alt="" />
-      <p className={styles.name}>{data.name}</p>
-      <div className={styles.quantityandprice}>
-        <DropDown
-          options={prices}
-          value={selectedprice}
-          shorter={true}
-          keyprefix={data.name + "price"}
-          placeholder={"Reward (₹)"}
-          setvalue={(value) => setselectedprice(value)}
-        />
-        {
+      <img className={styles.image} src={data.imageUrl} alt="" />
+      <div className={styles.right}>
+        <div className={styles.nameArea}>
+          <div className={styles.name}>{data.name}</div>
+          <div className={styles.valueArea}>
+            <UniCoinSvg className={styles.svg} clr={"#434040"} />
+            <div className={styles.value}>
+              {selectedprice * quantity * UniCoinValue}
+            </div>
+          </div>
+        </div>
+        <div className={styles.quantityandprice}>
           <DropDown
-            options={[1, 2, 3, 4, 5]}
-            value={quantity}
-            keyprefix={data.name + "quantity"}
-            setvalue={setquantity}
-            placeholder={"Quantity"}
+            options={prices}
+            value={selectedprice}
+            shorter={true}
+            keyprefix={data.name + "price"}
+            placeholder={"Reward (₹)"}
+            setvalue={(value) => setselectedprice(value)}
           />
-        }
-      </div>
-      <div className={styles.valueArea}>
-        <UniCoinSvg className={styles.svg} clr={"#434040"} />
-        <div className={styles.value}>
-          {selectedprice * quantity * UniCoinValue}
-        </div>
-      </div>
-      {parent ? (
-        <div className={styles.disabledButton} onClick={() => {}}>
-          Redeem
-        </div>
-      ) : (
-        <div
-          className={
-            Number(data.productId) === 999999
-              ? styles.button
-              : styles.disabledButton
+          {
+            <DropDown
+              options={[1, 2, 3, 4, 5]}
+              value={quantity}
+              keyprefix={data.name + "quantity"}
+              setvalue={setquantity}
+              placeholder={"Quantity"}
+            />
           }
-          onClick={Number(data.productId) === 999999 ? redeem : () => {}}
-        >
-          Redeem
         </div>
-      )}
+        <div className={styles.actionArea}>
+          {parent ? (
+            ""
+          ) : (
+            <button
+              className={
+                Number(data.productId) === 999999
+                  ? styles.button
+                  : styles.disabledButton
+              }
+              onClick={Number(data.productId) === 999999 ? redeem : () => {}}
+            >
+              Redeem
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

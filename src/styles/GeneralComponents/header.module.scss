@@ -243,6 +243,11 @@
           height: 35px;
         }
       }
+      .noNavLogoContainer {
+        flex: 1;
+        padding-left: 0;
+        justify-content: flex-start;
+      }
       .signin {
         height: 35px;
         padding: 10px 15px;

@@ -139,7 +139,7 @@ function DashboardLeftPanel({
             onClick={() => router.push("/dashboard/k/quest")}
           >
             <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Knowledge Quest</p>
+            <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
 
           <div
@@ -202,7 +202,7 @@ function DashboardLeftPanel({
             onClick={() => router.push("/dashboard/w/quest")}
           >
             <CoursesSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Knowledge Quest</p>
+            <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
 
           <div

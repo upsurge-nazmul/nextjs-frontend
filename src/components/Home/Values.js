@@ -7,11 +7,32 @@ import BusinessSvg from "../../components/SVGcomponents/ValuesPage/BusinessSvg";
 import EntrepreneurSvg from "../../components/SVGcomponents/ValuesPage/EntrepreneurSvg";
 import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
+import TryUpsurge from "./TryUpsurge";
+import Image from "next/image";
 
-export default function Values({ insidebenefits }) {
+export default function Values({ insidebenefits, setauthmode, setshowauth }) {
   const router = useRouter();
   const { widthHeight } = useContext(MainContext);
   const [current, setcurrent] = useState(1);
+  const [showauth1, setshowauth1] = useState(false);
+  const [authmode1, setauthmode1] = useState("");
+  const values = [
+    {
+      a: "1",
+    },
+    {
+      a: "2",
+    },
+    { a: "3" },
+    {
+      a: "4",
+    },
+    { a: "5" },
+  ];
+  useEffect(() => {
+    setauthmode(authmode1);
+    setshowauth(showauth1);
+  }, [authmode1, showauth1]);
   const [interval, setinterval] = useState(null);
   useEffect(() => {
     if (!insidebenefits) {
@@ -34,8 +55,8 @@ export default function Values({ insidebenefits }) {
       }`}
     >
       <h2 className={styles.heading}>
-        Through upsurge, we wish to create a money-wise generation by providing
-        financial education to students{" "}
+        Through upsurge, we aim to create a money-wise generation by helping
+        children{" "}
       </h2>
       {widthHeight.width < 860 && insidebenefits ? (
         <div className={styles.mobilesection}>
@@ -77,6 +98,18 @@ export default function Values({ insidebenefits }) {
                 ? `Develop an entrepreneurial & growth mindset `
                 : `Understand, evaluate & start businesses`}
             </p>
+          </div>
+          <div className={styles.navbar}>
+            {values.map((item, index) => {
+              return (
+                <div
+                  className={`${styles.ball} ${
+                    index === current ? styles.active : null
+                  }`}
+                  key={"values" + index}
+                />
+              );
+            })}
           </div>
         </div>
       ) : (
@@ -122,6 +155,13 @@ export default function Values({ insidebenefits }) {
           </div>
         </>
       )}
+      <div style={{ width: "100%" }}>
+        <TryUpsurge
+          content={"Get upsurge free"}
+          setauthmode={setauthmode1}
+          setshowauth={setshowauth1}
+        />
+      </div>
     </div>
   );
 }

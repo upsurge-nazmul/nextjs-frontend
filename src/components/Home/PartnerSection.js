@@ -40,14 +40,14 @@ export default function PartnerSection({ dashboard, nomargin }) {
             router.push("/benefits/rewards");
           }}
         >
-          Coming Soon - Offers from our UniCoin reward partners
+          Not over yet! You get to earn rewards everyday 
         </div>
         <div
           className={`${styles.subheading} ${dashboard && styles.hidecursor}`}
         >
           {dashboard
             ? "Collect as many UniCoins and redeem them for special gifts and deals with our partner brands."
-            : `Collect UniCoins and redeem them for special gifts and deals with our partner brands.`}
+            : `Earn Unicoins and redeem it against your favourite brands`}
         </div>
         <PlayCircleSvg
           className={styles.leftarrow}

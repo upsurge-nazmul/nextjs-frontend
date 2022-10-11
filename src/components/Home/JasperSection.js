@@ -4,6 +4,8 @@ import BottomArrowBubble from "../SVGcomponents/BottomArrowBubble";
 import Jasper from "../SVGcomponents/Jasper";
 export default function JasperSection() {
   return (
+    <>
+      <h2 className={styles.header}>A message from Jasper, your friend-cum-mentor at upsurge</h2>
     <div className={styles.jasper}>
       <div className={styles.leftpart}>
         <div className={styles.text}>
@@ -28,5 +30,6 @@ export default function JasperSection() {
         <Jasper className={styles.jasperimg} />
       </div>
     </div>
+            </>
   );
 }

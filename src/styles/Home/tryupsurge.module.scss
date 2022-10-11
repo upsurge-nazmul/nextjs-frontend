@@ -1,0 +1,33 @@
+.button {
+    color:#fff;
+    width: 12vw;
+    margin: 2rem auto;
+    min-width: fit-content;
+    height: 6vh;
+    font-size: clamp(12px, 1vw, 18px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0 20px;
+    background-color: hsl(227, 81%, 59%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: hsl(227, 100%, 59%);
+    }
+  }
+  .errsignbox {
+  margin-top: 3vh;
+  }
+  .error {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  width:12vw;
+  font-size: clamp(12px, 1.5vw, 16px);
+  color: hsl(0, 81%, 71%);
+  cursor: pointer;
+  font-weight: 500;
+  }

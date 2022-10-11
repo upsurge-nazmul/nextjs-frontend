@@ -50,15 +50,18 @@
   }
   .right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     .headerCard {
+      position: relative;
       display: flex;
-      padding: 10px 0;
       gap: 10px;
       cursor: pointer;
       .cardLeft {
         .imageWrapper {
-          width: 202px;
-          height: 114px;
+          width: 12vw;
+          height: 12vw;
           height: fit-content;
           display: flex;
           justify-content: center;
@@ -87,6 +90,52 @@
           font-weight: 300;
           color: rgba(130, 130, 130, 1);
           text-align: left;
+        }
+      }
+      .locked {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 14px;
+        transition: all 0.5s ease-in;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        .lockIcon {
+          height: 75%;
+          width: 75%;
+          color: rgb(24 24 24 / 75%);
+          visibility: hidden;
+          transition: all 0.5s ease-in;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.25);
+          cursor: default;
+          .lockIcon {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .headSection {
+    flex-direction: column;
+    .left {
+      margin-right: 20px;
+    }
+    .right {
+      .headerCard {
+        flex-direction: column;
+        .cardLeft {
+          .imageWrapper {
+            margin-right: 20px;
+            width: auto;
+          }
         }
       }
     }

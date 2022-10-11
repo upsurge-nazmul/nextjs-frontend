@@ -54,6 +54,7 @@ function HeaderTabSection({
     >
       <div className={styles.expander}>
         <span
+        style={{width:"max-content"}}
           onClick={() => {
             if (pushTo) {
               router.push(pushTo);

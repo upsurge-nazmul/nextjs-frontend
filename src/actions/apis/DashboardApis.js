@@ -55,7 +55,7 @@ const getallavatars = (payload, token) => {
 const getallbadges = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailablebadges`, payload, token);
 };
-const getallvouchers = (payload, token) => {
+const getallvouchers = (payload, token = getCookie("accesstoken")) => {
   return ApiCalls.postResponse(`voucher/vouchers`, payload, token);
 };
 const ordervouchers = (payload) => {
@@ -66,7 +66,11 @@ const ordervouchers = (payload) => {
   );
 };
 const rewardunicoinstochild = (payload, token) => {
-  return ApiCalls.postResponse(`users/rewardunicoins`, payload, token || getCookie("accesstoken"));
+  return ApiCalls.postResponse(
+    `users/rewardunicoins`,
+    payload,
+    token || getCookie("accesstoken")
+  );
 };
 const completeintroguide = () => {
   return ApiCalls.getResponse(
@@ -158,7 +162,7 @@ const DashboardApis = {
   createVerificationOtp,
   getTodo,
   completeintroguide,
-  rewardunicoinstochild
+  rewardunicoinstochild,
 };
 
 export default DashboardApis;
