@@ -14,8 +14,9 @@ import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHea
 import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
 import GameApis from "../../../actions/apis/GameApis";
 import PageTitle from "../../../components/PageTitle";
+import GameView from "../../../components/Games/GameView";
+
 function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
-  console.log(recentgames);
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -26,9 +27,12 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
     type: "success",
     msg: "",
   });
+  const [openGame, setOpenGame] = useState("");
+
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
+
   useEffect(() => {
     const scrollContainer1 = document.querySelector("#gamecardwrapper1");
     const scrollContainer2 = document.querySelector("#gamecardwrapper2");
@@ -63,6 +67,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
     }
     FreeGameApis.updateRecentGames({ games: gamestring });
   }
+
   async function handlegameclick(title, pushto, isSimulator) {
     if (isSimulator) {
       return router.push(pushto);
@@ -109,9 +114,13 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
         console.log("error connecting server");
       }
     } else {
-      router.push("/dashboard/k/game/" + (pushto ? pushto : title));
+      // router.push("/dashboard/k/game/" + (pushto ? pushto : title));
+      setOpenGame(pushto ? pushto : title);
     }
   }
+
+  console.log("@@@@@@@", openGame);
+
   return (
     <div className={styles.gamesPage}>
       <PageTitle title={`upsurge | Games`} />
@@ -138,8 +147,8 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                             item,
                             Game_Data[item].pushto
                               ? Game_Data[item].pushto.split("/")[
-                              Game_Data[item].pushto.split("/").length - 1
-                              ]
+                                  Game_Data[item].pushto.split("/").length - 1
+                                ]
                               : ""
                           )
                         }
@@ -184,8 +193,8 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                           item,
                           Game_Data[item].pushto
                             ? Game_Data[item].pushto.split("/")[
-                            Game_Data[item].pushto.split("/").length - 1
-                            ]
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
                             : ""
                         )
                       }
@@ -202,6 +211,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
           </div>
         </div>
       </div>
+      {openGame ? <GameView game={openGame} /> : ""}
     </div>
   );
 }
