@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import styles from "../../styles/Games/gameView.module.scss";
-import { isMobile } from "react-device-detect";
+import { isMobileOnly } from "react-device-detect";
 import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
@@ -169,10 +169,12 @@ export default function GameView({ game, setGame, externalId = null }) {
     }
   }, [externalId]);
 
+  console.log("!!!!!!!!!", isMobileOnly);
+
   return (
     <div className={styles.gameView}>
-      {isMobile ? (
-        <BrokenGame goBackTo={"/k/games"} />
+      {isMobileOnly ? (
+        <BrokenGame />
       ) : gameData && unityContext ? (
         <Unity
           ref={unityref}
