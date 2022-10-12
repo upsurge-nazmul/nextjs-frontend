@@ -89,34 +89,34 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
       updaterecentgames([title]);
     }
 
-    if (title === "Ludo") {
-      let res = await FreeGameApis.presign({
-        user_name:
-          userdatafromserver.user_name ||
-          userdatafromserver.first_name ||
-          userdatafromserver.last_name,
-        email: userdatafromserver.email,
-        phone: userdatafromserver.phone,
-        token: token,
-        game: title,
-        postlogin: true,
-      });
-      if (res) {
-        if (res.data.success) {
-          router.push({
-            pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
-            query: { id: res.data.data },
-          });
-        } else {
-          console.log(res.data.message);
-        }
-      } else {
-        console.log("error connecting server");
-      }
-    } else {
-      // router.push("/dashboard/k/game/" + (pushto ? pushto : title));
-      setOpenGame(pushto ? pushto : title);
-    }
+    // if (title === "Ludo") {
+    //   let res = await FreeGameApis.presign({
+    //     user_name:
+    //       userdatafromserver.user_name ||
+    //       userdatafromserver.first_name ||
+    //       userdatafromserver.last_name,
+    //     email: userdatafromserver.email,
+    //     phone: userdatafromserver.phone,
+    //     token: token,
+    //     game: title,
+    //     postlogin: true,
+    //   });
+    //   if (res) {
+    //     if (res.data.success) {
+    //       router.push({
+    //         pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
+    //         query: { id: res.data.data },
+    //       });
+    //     } else {
+    //       console.log(res.data.message);
+    //     }
+    //   } else {
+    //     console.log("error connecting server");
+    //   }
+    // } else {
+    //   router.push("/dashboard/k/game/" + (pushto ? pushto : title));
+    // }
+    setOpenGame(pushto ? pushto : title);
   }
 
   return (

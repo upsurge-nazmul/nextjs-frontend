@@ -8,8 +8,9 @@ import { db } from "../../db";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
 import GameLoading from "./GameLoading";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
 
-export default function GameView({ game, setGame }) {
+export default function GameView({ game, setGame, externalId = null }) {
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
@@ -151,6 +152,22 @@ export default function GameView({ game, setGame }) {
     },
     [unityContext]
   );
+
+  useEffect(() => {
+    if (externalId) {
+      checktoken();
+    }
+    async function checktoken() {
+      let res = await FreeGameApis.usertoken({
+        game_token: externalId,
+      });
+      if (res && res.data.success) {
+        console.log("verified id: ", externalId);
+      } else {
+        alert("Id not valid");
+      }
+    }
+  }, [externalId]);
 
   return (
     <div className={styles.gameView}>
