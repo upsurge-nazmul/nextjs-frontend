@@ -128,6 +128,7 @@ function AuthLogin({
         placeholder="Email address/username"
         value={email}
         setvalue={setemail}
+        emailonFocus = {true}
       />
       <div className={styles.passwordBox}>
         <ModernInputBox
