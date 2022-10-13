@@ -15,7 +15,7 @@ import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import PageTitle from "../../../../components/PageTitle";
 
-const LESSON_TYPES = ["recording", "activity", "quiz"];
+const LESSON_TYPES = ["recording", "activity", "quiz", "game"];
 
 const democoncepts = [
   "Money",
