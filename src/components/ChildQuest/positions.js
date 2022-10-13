@@ -31,8 +31,12 @@ export const positions = {
       right: "47%",
     },
     {
-      bottom: "43%",
-      right: "74%",
+      bottom: "37%",
+      right: "76%",
+    },
+    {
+      bottom: "60%",
+      right: "69%",
     },
     {
       bottom: "52%",
@@ -60,6 +64,10 @@ export const positions = {
       bottom: "68%",
       right: "38%",
     },
+    {
+      bottom: "30%",
+      right: "10%",
+    },
   ],
   quest4: [
     {
@@ -69,6 +77,10 @@ export const positions = {
     {
       bottom: "32%",
       right: "77%",
+    },
+    {
+      bottom: "49%",
+      right: "73%",
     },
     {
       bottom: "72%",
@@ -83,7 +95,11 @@ export const positions = {
       right: "8%",
     },
     {
-      bottom: "82%",
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
       right: "14%",
     },
   ],
