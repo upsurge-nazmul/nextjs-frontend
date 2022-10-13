@@ -498,7 +498,10 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={password}
                 onBlur={() => setshowdetailpass(false)}
                 onChange={(e) => validatePassword(e)}
-                onFocus={() => setshowdetailpass(true)}
+                onFocus={() => {
+                  setShowConfirmDetailPass(false);
+                  setshowdetailpass(true);
+                }}
                 placeholder="Password *"
                 secure={passhidden}
                 extrastyle={{ marginBottom: "0px" }}
@@ -568,7 +571,10 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={confirmpassword}
                 onBlur={() => setShowConfirmDetailPass(false)}
                 onChange={(e) => validatePassword(e, "confirm")}
-                onFocus={() => setShowConfirmDetailPass(true)}
+                onFocus={() => {
+                  setshowdetailpass(false);
+                  setShowConfirmDetailPass(true);
+                }}
                 placeholder="Confirm Password *"
                 secure={confirmPassHidden}
                 extrastyle={{ marginBottom: "0px" }}
