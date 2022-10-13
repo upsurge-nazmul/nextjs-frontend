@@ -64,7 +64,15 @@ export default function Pricing({ userdata }) {
         <div className={styles.priceWrapper}>
           <div className={styles.priceContainer}>
             <p className={styles.name}>Premium</p>
-            <p className={styles.price}>Free</p>
+            <div className={styles.price}>
+              <img
+                src={require("../../assets/pricing/oldPrice.svg").default.src}
+                alt={"Old Price"}
+                loading="lazy"
+                className={styles.oldPrice}
+              />
+              Free
+            </div>
             <p className={styles.description}>(for 12 months)</p>
             <div className={styles.benefitsTitle}>You get access to</div>
             <ul className={styles.benefitsWrapper}>
