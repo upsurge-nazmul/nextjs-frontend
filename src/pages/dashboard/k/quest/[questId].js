@@ -165,7 +165,11 @@ export default function KnowledgeQuest({ userData, questData }) {
                         }}
                       />
                     ) : view === LESSON_TYPES[3] ? (
-                      <GameView game={currentChapter} setGame={handleBack} />
+                      <GameView
+                        game={currentChapter}
+                        setGame={handleBack}
+                        handleDone={handleDone}
+                      />
                     ) : (
                       ""
                     )}
