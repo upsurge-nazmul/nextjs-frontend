@@ -105,6 +105,14 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("User name is required");
       return;
     }
+    if (firstName.length < 2) {
+      seterror("First name should be more than 1 character");
+      return;
+    }
+    if (userName.length < 2) {
+      seterror("Username should be more than 1 character");
+      return;
+    }
     if (!dob) {
       seterror("Please enter date of birth");
       return;
