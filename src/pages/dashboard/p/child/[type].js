@@ -121,16 +121,24 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("Please select gender");
       return;
     }
+    if (!city) {
+      seterror("City is required");
+      return;
+    }
+    if (!school) {
+      seterror("School is required");
+      return;
+    }
     if (email && !validator.isEmail(email)) {
       seterror("Please enter valid email");
       return;
     }
-    if (passisweak) {
-      seterror("Weak password");
-      return;
-    }
     if (!password) {
       seterror("Password is required");
+      return;
+    }
+    if (passisweak) {
+      seterror("Weak password");
       return;
     }
     if (!confirmpassword) {
