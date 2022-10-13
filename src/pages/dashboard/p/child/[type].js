@@ -61,6 +61,7 @@ function AddKid({ childdata, userdatafromserver }) {
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [showConfirmDetailPass, setShowConfirmDetailPass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
+  const [confirmPassHidden, setConfirmPassHidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
   const [userName, setuserName] = useState(childdata?.user_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
@@ -569,7 +570,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 onChange={(e) => validatePassword(e, "confirm")}
                 onFocus={() => setShowConfirmDetailPass(true)}
                 placeholder="Confirm Password *"
-                secure={passhidden}
+                secure={confirmPassHidden}
                 extrastyle={{ marginBottom: "0px" }}
                 extraclass={
                   confirmpassword !== "" && passisweak ? styles.weakpass : ""
@@ -577,9 +578,9 @@ function AddKid({ childdata, userdatafromserver }) {
               />
               <p
                 className={styles.show}
-                onClick={() => setpasshidden(!passhidden)}
+                onClick={() => setConfirmPassHidden(!confirmPassHidden)}
               >
-                {passhidden ? "Show" : "Hide"}
+                {confirmPassHidden ? "Show" : "Hide"}
               </p>
             </div>
 
