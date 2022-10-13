@@ -18,10 +18,12 @@ export default function GameView({ game, setGame, externalId = null }) {
   const unityref = useRef(unityContext);
 
   useEffect(() => {
-    if (document) {
-      if (document.body.requestFullscreen) {
-        document.body.requestFullscreen();
-        setFullScreen(true);
+    if (!isMobileOnly) {
+      if (document) {
+        if (document.body.requestFullscreen) {
+          document.body.requestFullscreen();
+          setFullScreen(true);
+        }
       }
     }
   }, []);
@@ -169,8 +171,6 @@ export default function GameView({ game, setGame, externalId = null }) {
     }
   }, [externalId]);
 
-  console.log("!!!!!!!!!", isMobileOnly);
-
   return (
     <div className={styles.gameView}>
       {isMobileOnly ? (
@@ -201,7 +201,7 @@ export default function GameView({ game, setGame, externalId = null }) {
           className={styles.fullScreenButton}
           onClick={() => {
             setFullScreen(false);
-            document.exitFullscreen();
+            if (!isMobileOnly) document.exitFullscreen();
             setGame();
           }}
         >
