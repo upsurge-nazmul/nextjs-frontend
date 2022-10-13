@@ -89,21 +89,21 @@
           }
           .detailPass {
             display: flex;
-            position: absolute;
             flex-direction: column;
             background-color: white;
             border-radius: 12px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            top: -185px;
             padding-top: 15px;
-            right: 50%;
+            position: absolute;
+            top: 0;
+            left: -13px;
+            transform: translate(-100%, -30%);
             z-index: 2;
-            transform: translateX(50%);
             animation: fade 0.3s ease;
             .arrow {
               position: absolute;
-              bottom: 0;
-              right: 22.5%;
+              bottom: 22.5%;
+              left: 43%;
               transform: rotate(45deg);
               box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
               background-color: white;
