@@ -30,7 +30,7 @@ export const PathwayData = [
     pathwayImage: "/images/journey/money.svg",
     color: "#dc517b",
     pointer: { top: -20, left: "5%" },
-    pathwaykqroute: "",
+    pathwaykqroute: "/dashboard/k/quest/whatIsMoney",
     locked: false,
     tasks: [
       {
@@ -101,7 +101,7 @@ export const PathwayData = [
     pathwayImage: "/images/journey/banking.svg",
     color: "#4066eb",
     pointer: { top: -20, left: "23%" },
-    pathwaykqroute: "",
+    pathwaykqroute: "/dashboard/k/quest/banking",
     locked: false,
     tasks: [
       {
