@@ -145,6 +145,90 @@ $card-height: auto;
             }
         }
     }
+    .fourthsection{
+      width:100%;
+        .msgsection {
+          height: 100px;
+          width: 100%;
+          margin: 20px 0;
+          position: relative;
+          .lettersleft {
+            color: #898989;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-family: "Lexend", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+          }
+          textarea {
+            width: 100%;
+            height: 100%;
+            font-family: "Lexend", sans-serif;
+            border: 1px solid #898989;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            resize: none;
+          }
+        }
+        .uploadedimg{
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          padding:10px;
+          gap:10px;
+          :hover{
+            cursor: pointer;
+          }
+          .preview{
+            position: relative;
+            width:15vw;
+            height: 15vh;
+            .displayimg{
+            }
+            .PreviewIcon,.CloseIcon{
+              position: absolute;
+              z-index: 1;
+              background: #fff;
+              top:4px;
+              font-size: 2rem;
+            }
+            .PreviewIcon{
+              left:4px;
+            }
+            .CloseIcon{
+              top:4px;
+              right:4px;
+            }
+          }
+          .previewActive{
+            position: absolute;
+            top:5%;
+            left:5%;
+            width:90%;
+            height: 90%;
+            z-index:2;
+          } 
+        }
+       .inputImages{
+        input{
+            cursor: pointer;
+            width: fit-content;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            gap: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid #fff;
+            &:hover {
+              color: #333;
+              background-color: #fff;
+              border: 1px solid #333;
+            }
+          }
+       } 
+      }
 }
 .background {
     position: absolute;

@@ -14,8 +14,9 @@ import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import PageTitle from "../../../../components/PageTitle";
+import GameView from "../../../../components/Games/GameView";
 
-const LESSON_TYPES = ["recording", "activity", "quiz"];
+const LESSON_TYPES = ["recording", "activity", "quiz", "game"];
 
 const democoncepts = [
   "Money",
@@ -162,6 +163,12 @@ export default function KnowledgeQuest({ userData, questData }) {
                           handleDone,
                           setuserdata,
                         }}
+                      />
+                    ) : view === LESSON_TYPES[3] ? (
+                      <GameView
+                        game={currentChapter}
+                        setGame={handleBack}
+                        handleDone={handleDone}
                       />
                     ) : (
                       ""

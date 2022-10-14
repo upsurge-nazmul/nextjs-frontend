@@ -6,13 +6,55 @@ import ChoreApis from "../../actions/apis/ChoreApis";
 import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 import KidApis from "../../actions/apis/KidApis";
 import {completedtimeDifference, duetimeDifference } from "../../helpers/timehelpers";
-
+import Image from 'next/image';
 function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoredata}) {
     const [showmenu, setshowmenu] = useState(false);
     const [choredatas, setchoredatas] = useState(choredata);
     const router = useRouter();
     const [duedate, setduedate] = useState(getDueDate());
+    const [lettercounts, setlettercounts] = useState(100);
+    const [imagecounts, setimagecounts] = useState(5);
     const [openPhotoUpload, setOpenPhotoUpload] = useState(false);
+    const [remark, setremark] = useState(choredata?.message || "");
+    const [imageDisplay, setImageDisplay] = useState([]);
+    const [imageInput, setImageInput] = useState([]);
+    const [selectedPreview, setSelectedPreview] = useState(null);
+    const [selectedRemove, setSelectedRemove] = useState(null);
+    const [index, setIndex] = useState(null);
+    
+    const handleImage = async (e)  => {
+      var images = e.target.files;
+      if(images.length === 1)
+          setImageInput ([...imageInput, e.target.files[0]]);
+        if(images.length === 2 )
+        setImageInput ([...imageInput, e.target.files[0],e.target.files[1]]);
+        if(images.length === 3 )
+        setImageInput ([...imageInput, e.target.files[0],e.target.files[1],e.target.files[2]]);
+        if(images.length === 4 )
+        setImageInput ([...imageInput, e.target.files[0],e.target.files[1],e.target.files[2],e.target.files[3]]);
+        if(images.length === 5 )
+        setImageInput ([...imageInput, e.target.files[0],e.target.files[1],e.target.files[2],e.target.files[3],e.target.files[4]]);
+      }
+
+      useEffect(() => {
+       console.log(imageInput);
+        setimagecounts(5 - imageInput.length);
+    }, [imageInput]);
+    useEffect(()=>{
+      setImageDisplay(imageDisplay.filter(function(img){
+        return img !== selectedRemove
+      }))
+      if(imageInput.length === 1)
+      {
+        setImageInput([]);
+      }
+      else{
+        setImageInput(imageInput.splice(index , 1 , null ))
+      }
+    },[selectedRemove])
+    useEffect(() => {
+      setlettercounts(200 - remark.length);
+    }, [remark]);
     useEffect(() => {
       if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
       else document.removeEventListener("mousedown", getifclickedoutside);
@@ -147,6 +189,63 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
             {duedate}
           </div>
           </div>
+          <div className={styles.fourthsection}>
+          {choredata.completion === "started" &&
+          (<>
+            <div className={styles.msgsection} id="chore-msg">
+            Remarks:
+            <textarea
+              maxLength="100"
+              value={remark}
+              onChange={(e) => setremark(e.target.value)}
+              placeholder="remark goes here...."
+              ></textarea>
+            <p className={styles.lettersleft}>
+              {lettercounts + " characters left"}
+            </p>
+            </div>
+            <div className={styles.uploadedimg}>
+               {/* {imageDisplay.map((image, index) => {
+                let previewactive = false;
+                const handlePreview = (index) =>{
+                  setSelectedPreview(index);
+                  if(selectedPreview === index)
+                  {
+                    setSelectedPreview(null);
+                  }
+                }
+                const handleRemove = (image,index) =>  {
+                  setSelectedRemove(image);
+                  setIndex(index);
+                }
+                if(selectedPreview === index)
+                {
+                  previewactive = true;
+                }
+                return (
+                  <div key={index} className={`${styles.preview} ${ previewactive && styles.previewActive }`}>
+                  <Image alt="Image" layout='fill' className={styles.displayimg} src={image} />
+                  <PreviewIcon className={styles.PreviewIcon} onClick={()=>{handlePreview(index)}} />
+                  <CloseIcon className={styles.CloseIcon} onClick={()=>{handleRemove(image,index)}} />
+                  </div>
+              );
+            })} */}
+              </div>
+            <div className={styles.inputImages}>
+            {imagecounts === 0 ? (
+              <button>Max limit Reached</button>
+              )
+              : (
+                <input className={styles.inputImage} type="file" name="uploadedImages" accept='image/*' onChange={handleImage} multiple="multiple" />
+                )
+              }
+            
+            {imagecounts}/5
+            </div>
+              </>
+              )
+            }
+            </div>
               <div className={styles.thirdSection}>
                 <div className={styles.left}>
                     Sound: Click to listen to the message
@@ -232,6 +331,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
               Start
             </button>
           ) : (
+            <>
               <button
               className={styles.markDoneButton}
               onClick={handleMarkForApproval}
@@ -240,9 +340,13 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
               <RoundedTick />
               Mark as done
             </button>
+            
+                </>
           )}
           </div>
           </div>
+
+          
           </div>
           </div>
     </div>

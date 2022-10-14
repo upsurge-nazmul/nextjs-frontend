@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MainContext } from "../../context/Main";
 import styles from "../../styles/Journey/taskDisplay.module.scss";
 import Modal from "../Modal";
+import QuizView from "../../components/ChildQuest/QuizView";
 import { PATHWAY_TASK_TYPE } from "../../static_data/Pathways_Data";
 import { useRouter } from "next/dist/client/router";
 import PathwayQuiz from "./PathwayQuiz";
@@ -23,6 +25,20 @@ async function addcoins(rewardamount) {
 
 export default function TaskDisplay({ task, handleCancelClick }) {
   const router = useRouter();
+  const { userData, setuserdata } = useContext(MainContext);
+  useEffect(() => {
+    setuserdata(userData);
+  }, [userData]);
+  const handleDone = () => {
+    KnowledgeQuestApi.update({
+      level: activeChNo,
+      quest_id: currentQuest.questId,
+    });
+    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
+    setView();
+    setCurrentChapter();
+    setActiveChNo(0);
+  };
   addcoins(task.taskReward);
   if(task.type === PATHWAY_TASK_TYPE[0]) {
   return (
@@ -63,10 +79,17 @@ export default function TaskDisplay({ task, handleCancelClick }) {
         proceedButtonType: "normal",
       }}
     >
-      <div className={styles.taskDisplay}>
-        <br />
-        <PathwayQuiz data={'2ee7908a-2549-4544-9328-238c6a09a013'} />
-      </div>
+        <div className={styles.taskDisplay}>
+          <br />
+          <QuizView
+            {...{
+              questId: 4,
+              chapterId: 1,
+              handleDone,
+              setuserdata,
+            }}
+          />
+        </div>
     </Modal>
   );}
   else { 

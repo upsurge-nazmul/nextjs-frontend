@@ -120,7 +120,9 @@ function Menu({
       setCookie("accesstoken", data.token);
       setuserdata(response.data.data);
       setuser(response.data.data.id);
-      router.reload();
+      if (userdata.user_type !== "child") {
+        router.push("/dashboard/p");
+      } else router.push("/dashboard/k");
     }
   }
   return (
@@ -170,9 +172,7 @@ function Menu({
                   onClick={() => {
                     setshowauth(true);
                     setSavedUser(user);
-                    if (userdata.user_type !== "child") {
-                      router.push("/dashboard/p");
-                    } else router.push("/dashboard/k");
+                    
                   }}
                   className={`${styles.innerUser} ${user.id === userdata.user_id && styles.selectedUser
                     }`}

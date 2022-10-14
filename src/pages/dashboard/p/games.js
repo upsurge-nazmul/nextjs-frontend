@@ -97,7 +97,7 @@ function Games({ recentgames, userdatafromserver }) {
       if (res) {
         if (res.data.success) {
           router.push({
-            pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
+            pathname: "/dashboard/p/game/" + (pushto ? pushto : title),
             query: { id: res.data.data },
           });
         } else {
@@ -107,7 +107,7 @@ function Games({ recentgames, userdatafromserver }) {
         console.log("error connecting server");
       }
     } else {
-      router.push("/dashboard/k/game/" + (pushto ? pushto : title));
+      router.push("/dashboard/p/game/" + (pushto ? pushto : title));
     }
   }
   return (
@@ -205,7 +205,7 @@ export async function getServerSideProps({ params, req }) {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {
             permanent: false,
-            destination: "/dashboard/k/games",
+            destination: "/dashboard/p/games",
           },
         };
       let recentgames = await FreeGameApis.getrecentGames(null, token);
