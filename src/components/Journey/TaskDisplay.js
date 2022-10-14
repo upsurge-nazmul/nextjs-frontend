@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Journey/taskDisplay.module.scss";
 import Modal from "../Modal";
-import QuizView from "../../../../components/ChildQuest/QuizView";
+import QuizView from "../../components/ChildQuest/QuizView";
 import { PATHWAY_TASK_TYPE } from "../../static_data/Pathways_Data";
 import { useRouter } from "next/dist/client/router";
 import PathwayQuiz from "./PathwayQuiz";
