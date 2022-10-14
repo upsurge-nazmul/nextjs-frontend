@@ -61,6 +61,7 @@ function AddKid({ childdata, userdatafromserver }) {
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [showConfirmDetailPass, setShowConfirmDetailPass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
+  const [confirmPassHidden, setConfirmPassHidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
   const [userName, setuserName] = useState(childdata?.user_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
@@ -105,6 +106,14 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("User name is required");
       return;
     }
+    if (firstName.length < 2) {
+      seterror("First name should be more than 1 character");
+      return;
+    }
+    if (userName.length < 2) {
+      seterror("Username should be more than 1 character");
+      return;
+    }
     if (!dob) {
       seterror("Please enter date of birth");
       return;
@@ -113,16 +122,24 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("Please select gender");
       return;
     }
+    if (!city) {
+      seterror("City is required");
+      return;
+    }
+    if (!school) {
+      seterror("School is required");
+      return;
+    }
     if (email && !validator.isEmail(email)) {
       seterror("Please enter valid email");
       return;
     }
-    if (passisweak) {
-      seterror("Weak password");
-      return;
-    }
     if (!password) {
       seterror("Password is required");
+      return;
+    }
+    if (passisweak) {
+      seterror("Weak password");
       return;
     }
     if (!confirmpassword) {
@@ -481,7 +498,10 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={password}
                 onBlur={() => setshowdetailpass(false)}
                 onChange={(e) => validatePassword(e)}
-                onFocus={() => setshowdetailpass(true)}
+                onFocus={() => {
+                  setShowConfirmDetailPass(false);
+                  setshowdetailpass(true);
+                }}
                 placeholder="Password *"
                 secure={passhidden}
                 extrastyle={{ marginBottom: "0px" }}
@@ -551,9 +571,12 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={confirmpassword}
                 onBlur={() => setShowConfirmDetailPass(false)}
                 onChange={(e) => validatePassword(e, "confirm")}
-                onFocus={() => setShowConfirmDetailPass(true)}
+                onFocus={() => {
+                  setshowdetailpass(false);
+                  setShowConfirmDetailPass(true);
+                }}
                 placeholder="Confirm Password *"
-                secure={passhidden}
+                secure={confirmPassHidden}
                 extrastyle={{ marginBottom: "0px" }}
                 extraclass={
                   confirmpassword !== "" && passisweak ? styles.weakpass : ""
@@ -561,9 +584,9 @@ function AddKid({ childdata, userdatafromserver }) {
               />
               <p
                 className={styles.show}
-                onClick={() => setpasshidden(!passhidden)}
+                onClick={() => setConfirmPassHidden(!confirmPassHidden)}
               >
-                {passhidden ? "Show" : "Hide"}
+                {confirmPassHidden ? "Show" : "Hide"}
               </p>
             </div>
 
