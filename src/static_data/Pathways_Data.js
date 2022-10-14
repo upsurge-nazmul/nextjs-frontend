@@ -30,6 +30,8 @@ export const PathwayData = [
     pathwayImage: "/images/journey/money.svg",
     color: "#dc517b",
     pointer: { top: -20, left: "5%" },
+    pathwaykqroute: "",
+    locked: false,
     tasks: [
       {
         taskNo: 1,
@@ -99,6 +101,8 @@ export const PathwayData = [
     pathwayImage: "/images/journey/banking.svg",
     color: "#4066eb",
     pointer: { top: -20, left: "23%" },
+    pathwaykqroute: "",
+    locked: false,
     tasks: [
       {
         taskNo: 1,
@@ -170,6 +174,8 @@ export const PathwayData = [
     pathwayImage: "/images/journey/digitalPayments.svg",
     color: "#17d1bc",
     pointer: { top: -20, left: "40%" },
+    pathwaykqroute: "",
+    locked: true,
     tasks: [
       {
         taskNo: 1,
@@ -219,6 +225,8 @@ export const PathwayData = [
     pathwayImage: "/images/journey/moneyManagement.svg",
     color: "#55c5d2",
     pointer: { top: -20, right: "40%" },
+    pathwaykqroute: "",
+    locked: true,
     tasks: [
       {
         taskNo: 1,
@@ -255,6 +263,8 @@ export const PathwayData = [
     pathwayImage: "/images/journey/entrepreneurship.svg",
     color: "#fdcc03",
     pointer: { top: -20, right: "23%" },
+    pathwaykqroute: "",
+    locked: true,
     tasks: [
       {
         taskNo: 1,

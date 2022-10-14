@@ -31,7 +31,7 @@ export default function Banner({ highlight, pointer = false }) {
               {highlight.pathwayDescription}
             </div>
             <div className={styles.buttonArea}>
-              {/* <button className={styles.button}>BEGIN</button> */}
+              <button className={styles.button} onClick={router.push(highlight.pathwaykqroute)}>BEGIN</button> 
             </div>
           </div>
           <div className={styles.right}>
