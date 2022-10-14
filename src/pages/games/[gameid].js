@@ -310,7 +310,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
         console.log(progression * 100);
       });
       unitycontext.on("Exit", function () {
-        router.push("/games");
+        router.push("/dashboard/k/games");
       });
       unitycontext.on("Fullscreen", function () {
         if (fullscreenenabled) {
