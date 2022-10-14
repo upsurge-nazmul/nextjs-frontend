@@ -37,7 +37,7 @@ export default function Banner({ highlight, pointer = false }) {
             </div>
             <div className={styles.buttonArea}>
               {highlight.locked === false ? (
-                 <button className={styles.button} onClick={()=>handlebannerClick(highlight.pathwaykqroute)}>BEGIN</button>
+                <button className={styles.button} onClick={()=>handlebannerClick(highlight.pathwaykqroute)}>BEGIN</button>
               ) : (
                 <button className={styles.buttonlocked} >LOCKED</button>
               )}
