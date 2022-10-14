@@ -1,8 +1,10 @@
 import styles from "../../styles/Journey/banner.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import Triangle from "../SVGcomponents/Journey/Triangle";
+import { useRouter } from "next/dist/client/router";
 
 export default function Banner({ highlight, pointer = false }) {
+  const router = useRouter();
   return (
     <div className={styles.banner} style={{ background: highlight.color }}>
       {pointer ? (
