@@ -225,7 +225,7 @@ export default function GameView({
             setGame();
           }}
         >
-          {fullScreen ? X : <FullScreen />}
+          {fullScreen ? <span>X</span> : <FullScreen />}
         </button>
       </div>
     </div>
