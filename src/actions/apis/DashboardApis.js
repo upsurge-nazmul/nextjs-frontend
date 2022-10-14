@@ -108,6 +108,13 @@ const completerequest = (payload) => {
     getCookie("accesstoken")
   );
 };
+const deleterequest = (payload) => {
+  return ApiCalls.postResponse(
+    "parent/deleterequest",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 
 const searchuser = (payload, token) => {
   return ApiCalls.getResponse("users/searchuser", payload, token);
@@ -163,6 +170,7 @@ const DashboardApis = {
   getTodo,
   completeintroguide,
   rewardunicoinstochild,
+  deleterequest,
 };
 
 export default DashboardApis;
