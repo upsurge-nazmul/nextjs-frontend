@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/Journey/taskDisplay.module.scss";
 import Modal from "../Modal";
+import QuizView from "../../../../components/ChildQuest/QuizView";
 import { PATHWAY_TASK_TYPE } from "../../static_data/Pathways_Data";
 import { useRouter } from "next/dist/client/router";
 import PathwayQuiz from "./PathwayQuiz";
@@ -63,10 +64,17 @@ export default function TaskDisplay({ task, handleCancelClick }) {
         proceedButtonType: "normal",
       }}
     >
-      <div className={styles.taskDisplay}>
-        <br />
-        <PathwayQuiz data={'2ee7908a-2549-4544-9328-238c6a09a013'} />
-      </div>
+        <div className={styles.taskDisplay}>
+          <br />
+          <QuizView
+            {...{
+              chapterId: 4,
+              questId: 1,
+              handleDone,
+              setuserdata,
+            }}
+          />
+        </div>
     </Modal>
   );}
   else { 
