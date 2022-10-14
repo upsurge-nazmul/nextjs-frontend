@@ -41,13 +41,24 @@
     padding: 10px 20px;
     background-color: #171313;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     .fullScreenButton {
       cursor: pointer;
       border: none;
       outline: none;
       background-color: transparent;
       color: #d4d1d1;
+    }
+    .doneButton {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      min-width: 150px;
+      background-color: #4d5dfb;
     }
   }
 }

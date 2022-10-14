@@ -10,7 +10,12 @@ import FullScreenExit from "../SVGcomponents/FullScreenExit";
 import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 
-export default function GameView({ game, setGame, externalId = null }) {
+export default function GameView({
+  game,
+  setGame,
+  externalId = null,
+  handleDone = null,
+}) {
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
@@ -197,6 +202,21 @@ export default function GameView({ game, setGame, externalId = null }) {
         ""
       )}
       <div className={styles.actionArea}>
+        {handleDone ? (
+          <button
+            className={styles.doneButton}
+            onClick={() => {
+              handleDone();
+              setFullScreen(false);
+              if (!isMobileOnly) document.exitFullscreen();
+              setGame();
+            }}
+          >
+            Done
+          </button>
+        ) : (
+          ""
+        )}
         <button
           className={styles.fullScreenButton}
           onClick={() => {
