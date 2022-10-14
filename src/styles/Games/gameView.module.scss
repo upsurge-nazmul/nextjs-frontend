@@ -44,10 +44,16 @@
     justify-content: space-between;
     .fullScreenButton {
       cursor: pointer;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      color: #d4d1d1;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: #d4d1d1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 0px 10rem 0px 0px;
     }
     .doneButton {
       padding: 10px 20px;
