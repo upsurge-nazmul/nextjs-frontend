@@ -421,6 +421,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 extrastyle={{
                   marginBottom: 0,
                 }}
+                maxDate={new Date(new Date().setDate(new Date().getDate() - 1))}
               />
               <DropDown
                 placeholder="Gender *"

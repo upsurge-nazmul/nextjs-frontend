@@ -30,6 +30,7 @@ export default function ModernInputBox({
   suggestions,
   showincaps,
   autoComplete,
+  maxDate = "today",
 }) {
   const [showsuggestion, setshowsuggestion] = useState(false);
   const { theme } = useContext(MainContext);
@@ -66,7 +67,7 @@ export default function ModernInputBox({
           value={value}
           setvalue={onChange}
           onlydate={true}
-          maxdate={"today"}
+          maxdate={maxDate}
         />
       ) : (
         <input
