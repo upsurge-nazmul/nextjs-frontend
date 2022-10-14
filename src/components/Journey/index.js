@@ -8,7 +8,7 @@ import { PathwayData } from "../../static_data/Pathways_Data";
 import TaskDisplay from "./TaskDisplay";
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState();
+  const [selectedPath, setSelectedPath] = useState(PathwayData[0]);
   const [activeTask, setActiveTask] = useState();
 
   return (
