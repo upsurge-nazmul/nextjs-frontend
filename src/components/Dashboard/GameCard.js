@@ -17,7 +17,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
         src={
           data?.img ||
           (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
-          "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
+          ""
         }
         alt=""
       />
