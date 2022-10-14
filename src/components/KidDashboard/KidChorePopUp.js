@@ -7,7 +7,6 @@ import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 import KidApis from "../../actions/apis/KidApis";
 import {completedtimeDifference, duetimeDifference } from "../../helpers/timehelpers";
 import Image from 'next/image';
-import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoredata}) {
     const [showmenu, setshowmenu] = useState(false);
     const [choredatas, setchoredatas] = useState(choredata);
