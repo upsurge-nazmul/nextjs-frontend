@@ -112,7 +112,7 @@ export default function GameFrame({ gamedata, setmode }) {
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
-        router.push("/games");
+        router.push("/dashboard/k/games");
       });
       unitycontext.on("progress", function (progression) {
         setProgression(progression);

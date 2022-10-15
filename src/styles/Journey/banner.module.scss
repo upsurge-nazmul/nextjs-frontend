@@ -14,6 +14,11 @@
     display: flex;
     justify-content: space-between;
     .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: space-around;
+      align-items: flex-start;
       .title {
         font-size: 36px;
         font-weight: 400;
@@ -28,10 +33,20 @@
         .button {
           background-color: #4066eb;
           color: #fff;
-          border: none;
+          border: 2px solid #ffffff;
           outline: none;
           padding: 10px 20px;
           border-radius: 14px;
+          box-shadow: 0px 0px 3px 1px #1447f8;
+        }
+        .buttonlocked {
+          background-color: #575757;
+          color: #fff;
+          border: 2px solid #ffffff;
+          outline: none;
+          padding: 10px 20px;
+          border-radius: 14px;
+          box-shadow: 0px 0px 3px 1px #1447f8;
         }
       }
     }
@@ -124,6 +139,11 @@
       display: flex;
       justify-content: space-between;
       .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: space-around;
+        align-items: flex-start;
         .title {
           font-size: 20px;
           font-weight: 400;
@@ -138,7 +158,17 @@
           .button {
             background-color: #4066eb;
             color: #fff;
-            border: none;
+            border: 2px solid #ffffff;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 14px;
+            box-shadow: 0px 0px 3px 1px #1447f8;
+            font-size: 10px;
+          }
+          .buttonlocked {
+            background-color: #575757;
+            color: #fff;
+            border: 2px solid #ffffff;
             outline: none;
             padding: 10px 20px;
             border-radius: 14px;

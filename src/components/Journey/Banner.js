@@ -1,8 +1,13 @@
 import styles from "../../styles/Journey/banner.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import Triangle from "../SVGcomponents/Journey/Triangle";
+import { useRouter } from "next/dist/client/router";
 
 export default function Banner({ highlight, pointer = false }) {
+  const router = useRouter();
+  const handlebannerClick = (route) => {
+    router.push(route);
+  };
   return (
     <div className={styles.banner} style={{ background: highlight.color }}>
       {pointer ? (
@@ -31,7 +36,11 @@ export default function Banner({ highlight, pointer = false }) {
               {highlight.pathwayDescription}
             </div>
             <div className={styles.buttonArea}>
-              {/* <button className={styles.button}>BEGIN</button> */}
+              {highlight.locked === false ? (
+                <button className={styles.button} onClick={()=>handlebannerClick(highlight.pathwaykqroute)}>BEGIN</button>
+              ) : (
+                <button className={styles.buttonlocked} >LOCKED</button>
+              )}
             </div>
           </div>
           <div className={styles.right}>

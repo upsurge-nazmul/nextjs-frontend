@@ -84,6 +84,7 @@ function AuthFullData({
       user_type: usertype,
       phone,
       password,
+      username: username,
       first_name: firstName,
       last_name: lastName,
     });
@@ -117,8 +118,8 @@ function AuthFullData({
       setloading(false);
       return;
     }
-    if (username.length > 20) {
-      seterror("Username cannot contain more than 20 characters");
+    if (username.length > 40) {
+      seterror("Username cannot contain more than 40 characters");
       setloading(false);
       return;
     }
@@ -212,7 +213,7 @@ function AuthFullData({
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
-          type="text"
+          type="tel"
           placeholder="Phone"
           value={phone}
           maxLength={10}
@@ -225,27 +226,31 @@ function AuthFullData({
         <input
           type="text"
           placeholder="First Name"
-          maxLength={10}
+          minLength={2}
+          maxLength={50}
           value={firstName}
           onChange={(e) => {
             setfirstName(onlyText(e.target.value));
           }}
         />
         <input
-          maxLength={10}
+          maxLength={50}
+          minLength={2}
           type="text"
           placeholder="Last Name"
           value={lastName}
           onChange={(e) => {
-            setlastName(onlyText(e.target.value));
+            setlastName(onlyText(e.target.value)); 
           }}
         />
       </div>
       <input
         type="text"
         placeholder="Username"
-        // maxLength={8}
+        minLength={4}
+        maxLength={100} //
         value={username}
+        pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
         onChange={(e) => setusername(e.target.value)}
       />
       {password !== "" && passisweak && (
@@ -296,6 +301,7 @@ function AuthFullData({
           value={password}
           className={password !== "" && passisweak ? styles.weakpass : ""}
           onChange={validatePassword}
+          required
         />
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}

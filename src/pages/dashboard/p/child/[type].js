@@ -406,8 +406,9 @@ function AddKid({ childdata, userdatafromserver }) {
                   if (!e) {
                     return;
                   }
-                  console.log(e);
-                  if (e.getTime() >= new Date().getTime()) {
+                  if (
+                    e.getTime() >= new Date().setDate(new Date().getDate() - 1)
+                  ) {
                     settoastdata({
                       msg: "Invaild date of birth",
                       show: true,
@@ -420,6 +421,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 extrastyle={{
                   marginBottom: 0,
                 }}
+                maxDate={new Date(new Date().setDate(new Date().getDate() - 1))}
               />
               <DropDown
                 placeholder="Gender *"
