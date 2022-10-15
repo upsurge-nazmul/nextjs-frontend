@@ -26,7 +26,11 @@ export default function Banner({ highlight, pointer = false }) {
             className={styles.rewardBg}
             alt=""
           />
-          <div className={styles.rewardText}>Rewards to win</div>
+          <div className={styles.rewardText}>
+            <strong>Great Rewards to win</strong>
+            <br />
+            Unicoins | Vouchers | Partner Offers
+          </div>
         </div>
       ) : (
         <div className={styles.content}>
