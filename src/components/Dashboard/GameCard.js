@@ -11,7 +11,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
     <div
       className={styles.gameCard}
       style={cardstyle}
-      onClick={onCLick ? onCLick : () => router.push("/gamepage")}
+      onClick={onCLick ? onCLick : () => router.push("/dashboard/k/games")}
     >
       <img
         src={
