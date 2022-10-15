@@ -30,8 +30,8 @@ export default function Values({ insidebenefits, setauthmode, setshowauth }) {
     { a: "5" },
   ];
   useEffect(() => {
-    setauthmode(authmode1);
-    setshowauth(showauth1);
+    setauthmode1(authmode1);
+    setshowauth1(showauth1);
   }, [authmode1, showauth1]);
   const [interval, setinterval] = useState(null);
   useEffect(() => {
