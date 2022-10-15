@@ -125,12 +125,12 @@ export default function GamePage({ userDataFromServer }) {
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
                 <p className={styles.detail}>{Game_Data[item].description}</p>
-                <p
+                {/* <p
                   className={styles.activebutton}
                   onClick={() => handleclick(item)}
                 >
                   Play
-                </p>
+                </p> */}
 
                 {/* {comingsoongames.includes(item) ? (
                   <p className={styles.button}>Coming Soon....</p>

@@ -186,7 +186,7 @@ function Menu({
                 </div>
               );
             })}
-            {userdata.user_type !== "child" ? (
+            
               <div
                 className={`${styles.innerUser} `}
                 onClick={() => setshowauth(true)}
@@ -196,17 +196,7 @@ function Menu({
                   <p>Add new account</p>
                 </div>
               </div>
-            ) : (
-              <div
-                className={`${styles.innerUser} `}
-                onClick={() => setshowauth(true)}
-              >
-                <GroupAddIcon className={styles.icon} />
-                <div className={styles.userInfo}>
-                  <p>Add new account</p>
-                </div>
-              </div>
-            )}
+            
           </div>
         )}
       </div>
@@ -226,17 +216,6 @@ function Menu({
       )}
       {menuType !== "child" && !waitilistmenu && (
         <>
-          <p
-            id="menu-main-payments"
-            className={styles.tabs}
-            onClick={() => {
-              setshowmenu(false);
-              router.push("/dashboard/p/payments");
-            }}
-          >
-            <PaymentSvg className={styles.paymentIcon} />
-            Payments
-          </p>
           <p
             className={styles.tabs}
             onClick={() => {

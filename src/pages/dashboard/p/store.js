@@ -81,14 +81,15 @@ export default function ParentStore({
         showmodal={showmodal}
         setshowmodal={setshowmodal}
         buydata={buydata}
-      />
+        />
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
-        />
+          />
         <div className={styles.mainContent}>
+            <h4>Rewards make learning even more fun - here are all the rewards your child can earn!</h4>
           <div className={styles.flexLeft}>
             <RequestsAndHistorySection
               id="request-store"
@@ -96,11 +97,11 @@ export default function ParentStore({
               setChildRequests={setChildRequests}
               setbuydata={setbuydata}
               setshowmodal={setshowmodal}
-            />
+              />
             <AvailablePointsSection
               id="available-points-section"
               kidsdata={kidsdata}
-            />
+              />
           </div>
           <div className={styles.flexRight}>
             <VoucherSection
