@@ -120,10 +120,10 @@ function Games({ recentgames, userdatafromserver }) {
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
-        />
-
+          />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+          <h4 className={styles.subheader}>Collection of all the fantastic games we have made for you</h4>
             <MoneyAceBanner type="p" />
             {recentgames?.length > 0 && (
               <div className={styles.recentSection}>

@@ -12,11 +12,13 @@
     width: 100%;
     flex-direction: column;
     overflow-y: auto;
+    h4{
+      padding: 10px 0 10px 25px;
+    }
     .mainContent {
       width: 100%;
       display: flex;
       overflow-y: auto;
-      padding-top: 20px;
       height: 100%;
       scrollbar-width: thin;
       .flexLeft {
@@ -317,6 +319,11 @@
     padding-right: 0px;
     width: 100vw;
     .contentWrapper {
+      h4{
+      padding-left: 20px;
+      font-size: small;
+      font-weight: 500;
+    }
       .mainContent {
         margin-top: 0px;
         padding: 0;
