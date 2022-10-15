@@ -66,6 +66,7 @@ export default function AuthResetPass({
         placeholder="Email address"
         value={email}
         setvalue={setemail}
+        emailonFocus={true}
       />
       {error && <p className={styles.error}>{error}</p>}
       {!loading ? (
