@@ -132,6 +132,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
+          <h4 className={styles.subheader}>Chose from the collection of all the fantastic games we have made for you</h4>
             <MoneyAceBanner type="k" />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
