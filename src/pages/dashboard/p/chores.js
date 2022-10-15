@@ -129,7 +129,7 @@ function ChoresPage({
             setmode={setmode}
             settoastdata={settoastdata}
             />
-            <h4>Assign chores & track your child's progress!</h4>
+            <h4>Assign chores & track your child&apos;s progress!</h4>
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
