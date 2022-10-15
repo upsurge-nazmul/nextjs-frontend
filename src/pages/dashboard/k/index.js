@@ -5,7 +5,7 @@ import ChoreComponent from "../../../components/Dashboard/ChoreComponent";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import GameCard from "../../../components/Dashboard/GameCard";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../../styles/ChildActivity/childactivity.module.scss";
+import styles from "../../../styles/ChildActivity/childDashboard.module.scss";
 import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
 import { MainContext } from "../../../context/Main";
 import LoginApis from "../../../actions/apis/LoginApis";
@@ -153,9 +153,7 @@ export default function ChildActivity({
       highlightBg: true,
       position: "bottom",
       content: `You can go back to home page, by clicking upsurge logo.`,
-    },    
-    
-    
+    },
   ];
 
   return (
@@ -198,7 +196,7 @@ export default function ChildActivity({
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               <div className={styles.headsection}>
-                  {/* <div className={styles.topblock}>
+                {/* <div className={styles.topblock}>
                       <h2 className={styles.mainheading}>
                         Level
                         <HeadingArrow />
@@ -277,7 +275,7 @@ export default function ChildActivity({
                     Complete Milestones
                   </p>
                 </div>
-              </div> */}              
+              </div> */}
               <div className={styles.questionSection}>
                 {todaysquestion && <TodaysQuestion data={todaysquestion} />}
               </div>
@@ -357,7 +355,6 @@ export default function ChildActivity({
                   )}
                 </div>
               </div>
-              
             </div>
           </div>
           <></>
