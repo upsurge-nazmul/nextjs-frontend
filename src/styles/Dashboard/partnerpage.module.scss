@@ -20,13 +20,19 @@
     // max-width: calc(100% - 350px);
     flex-direction: column;
     .mainContent {
+      flex-direction: column;
+      h4{
+        margin-bottom: 20px;
+        padding: 0 26px;
+      }
+    .flexLeft {
       display: flex;
       height: fit-content;
       padding: 10px 40px;
       scrollbar-width: thin;
       overflow: auto;
     }
-
+  }
     .container {
       padding: 20px;
       overflow-y: auto;
@@ -141,6 +147,11 @@
         height: fit-content;
         padding: 0 20px;
         scrollbar-width: thin;
+        h4{
+        font-weight: 500;
+        font-size: small;
+        padding: 0;
+        }
         .flexLeft {
           display: flex;
           flex-direction: column;
