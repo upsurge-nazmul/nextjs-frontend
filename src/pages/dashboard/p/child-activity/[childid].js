@@ -96,7 +96,7 @@ export default function ChildActivity({
                   </div>
                 </div>
               </div>
-              {childTribes.length > 0 && (
+              {/* {childTribes.length > 0 && (
                 <div className={styles.tribeheading}>
                   <h2 className={styles.mainheading}>Tribes</h2>
                 </div>
@@ -116,7 +116,7 @@ export default function ChildActivity({
                 ))}
               </div>
             </div>
-            <div className={styles.leaderboardsection}>
+            <div className={styles.leaderboardsection}> */}
               <h2 className={styles.heading}>Leaderboards</h2>
               <div className={styles.wrapper}>
                 <div className={styles.element}>
