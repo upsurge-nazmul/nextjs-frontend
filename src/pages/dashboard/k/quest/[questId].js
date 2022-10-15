@@ -107,13 +107,17 @@ export default function KnowledgeQuest({ userData, questData }) {
               <p className={styles.about}>{currentQuest.questDescription}</p>
               <p className={styles.heading}>Concepts Covered</p>
               <div className={styles.conceptswrapper}>
-                {democoncepts.map((concept, index) => {
-                  return (
-                    <div className={styles.concept} key={"concept" + index}>
-                      {concept}
-                    </div>
-                  );
-                })}
+                {currentQuest.concepts
+                  ? currentQuest.concepts.map((concept, index) => (
+                      <div className={styles.concept} key={"concept" + index}>
+                        {concept}
+                      </div>
+                    ))
+                  : democoncepts.map((concept, index) => (
+                      <div className={styles.concept} key={"concept" + index}>
+                        {concept}
+                      </div>
+                    ))}
               </div>
             </div>
           )}
