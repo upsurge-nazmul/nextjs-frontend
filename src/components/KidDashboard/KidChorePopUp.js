@@ -3,15 +3,11 @@ import { useRouter } from "next/dist/client/router";
 import PendingSvg from "../SVGcomponents/PendingSvg";
 import RoundedTick from "../SVGcomponents/RoundedTick";
 import ChoreApis from "../../actions/apis/ChoreApis";
-import KidApis from "../../actions/apis/KidApis";
-import Image from 'next/image';
-import {
-  completedtimeDifference,
-  duetimeDifference,
-} from "../../helpers/timehelpers";
 import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
-import PreviewIcon from '@mui/icons-material/Preview';
-import CloseIcon from '@mui/icons-material/Close';
+import KidApis from "../../actions/apis/KidApis";
+import {completedtimeDifference, duetimeDifference } from "../../helpers/timehelpers";
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import Image from 'next/image';
 function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoredata}) {
     const [showmenu, setshowmenu] = useState(false);
     const [choredatas, setchoredatas] = useState(choredata);
@@ -58,7 +54,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
       }
     },[selectedRemove])
     useEffect(() => {
-      setlettercounts(200 - remark.length);
+      setlettercounts(100 - remark.length);
     }, [remark]);
     useEffect(() => {
       if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
@@ -167,15 +163,13 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
               <div className={styles.chorePopUpcontainer}>
               <div className={styles.firstSection}>
               <div className={styles.reward}>
+                <Image src={choredata.img_url} width={"100px"} height={"100px"} alt="ChoreImg" />
               <span className={styles.rewardLabel}>UniCoins to Earn: </span>
-              <span className={styles.rewardValue}> 
-             { choredata.custom_rewards === "" && (
-                <>
-                 {choredata.reward_amount}
-                </>
-                )
-              } 
-            {choredata.custom_rewards}
+              <span className={styles.rewardValue}>
+              {" "}
+              {choredata.reward_amount}
+              {" "}
+              {choredata.reward_type}
               </span>
               </div>
               </div>
@@ -184,21 +178,25 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
           <h3>Chore: </h3>  {choredata.title} {choredata.is_reoccurring && "(Daily)"}
           </div>
           <div className={styles.message}>
-          <h4 style={{marginBottom:"0.5rem"}}>Message</h4>
+          <p>Message</p>
           {choredata.message}
               </div>
           <div className={styles.deadline}>
-            <h4>
+            <p>
                 Deadline: 
-                </h4>
+                </p>
             {duedate}
+          </div>
+          <div className={styles.customReward}>
+            <p>Special Reward:</p>
+            {choredata.custom_rewards}
           </div>
           </div>
           <div className={styles.fourthsection}>
           {choredata.completion === "started" &&
           (<>
             <div className={styles.msgsection} id="chore-msg">
-            Remarks:
+            <p>Remarks:</p>
             <textarea
               maxLength="100"
               value={remark}
@@ -253,7 +251,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
             </div>
               <div className={styles.thirdSection}>
                 <div className={styles.left}>
-                    Sound: Click to listen to the message
+                    <VolumeUpIcon />: Click to listen to the message
                 </div>
                 <div className={styles.right}>
         {choredata.is_reoccurring &&
