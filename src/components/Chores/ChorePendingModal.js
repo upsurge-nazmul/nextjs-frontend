@@ -3,6 +3,7 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 import Image from 'next/image';
 import ChoreApis from "../../actions/apis/ChoreApis";
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata, setchores, setallchores, setid }) {
   console.log(data);
     const [selectedPreview, setSelectedPreview] = useState(null);
@@ -32,36 +33,37 @@ function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata
               <div className={styles.chorePopUpcontainer}>
               <div className={styles.firstSection}>
               <div className={styles.reward}>
+                <Image src={data.img_url} width={"100px"} height={"100px"} alt="ChoreImg"/>
               <span className={styles.rewardLabel}>UniCoins to Earn: </span>
-              <span className={styles.rewardValue}> 
-              { data.custom_rewards === "" && (
-                <>
-                 {data.reward_amount}
-                </>
-                )
-              } 
-              {data.custom_rewards}
+              <span className={styles.rewardValue}>
+              {data.reward_amount}
+              {" "}
               {data.reward_type}
               </span>
               </div>
               </div>
               <div className={styles.secondSection}>
               <div className={styles.title}>
-               <img src={data.img_url} alt="Title" />
-               <h2>
-                {data.title}
-                </h2> 
-              </div>
+          <h3>Chore: </h3>  {data.title} {data.is_reoccurring && "(Daily)"}
+          </div>
           <div className={styles.message}>
-          <h4 style={{marginBottom:"0.5rem"}}>Message</h4>
-              {data.message}
-          <h4> Remarks:</h4>
+          <p>Message</p>
+          {data.message}
+              </div>
+          <div className={styles.deadline}>
+            <p>
+                Deadline: 
+                </p>
+                {getDueDate()}
+          </div>
+          <div className={styles.customReward}>
+            <p>Special Reward:</p>
+            {data.custom_rewards}
           </div>
           </div>
-              <div className={styles.fourthsection}>
-          <>
+                <div className={styles.fourthsection}>
             <div className={styles.msgsection} id="chore-msg">
-
+          <p> Remarks:</p>
             <p className={styles.lettersleft}>
             </p>
             </div>
@@ -87,12 +89,10 @@ function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata
               );
             })}
               </div>
-                  {getDueDate()}
-              </>
             </div>
               <div className={styles.thirdSection}>
                 <div className={styles.left}>
-                    Sound:
+                <VolumeUpIcon />: Click to listen to the message
                 </div>
                 <div className={styles.right}>
                 <div
@@ -100,13 +100,13 @@ function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata
         onClick={handleApprove}
         // onClick={() => setChorePhotoModal(true)}
         >
-        Approval
+        Approve 
       </div>
           </div>
           </div>
           </div>
           </div>
-    </div>
+          </div>
   )
 }
 

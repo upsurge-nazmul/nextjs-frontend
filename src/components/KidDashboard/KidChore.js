@@ -87,14 +87,9 @@ function KidChore({ data, settoastdata }) {
             <div className={styles.reward}>
               <span className={styles.rewardLabel}>Reward:</span>
               <span className={styles.rewardValue}>
-               { data.custom_rewards === "" && (
-                <>
                  {data.reward_amount}
-                </>
-                )
-              } 
-            {data.custom_rewards}
-            {data.reward_type}
+                 {" "}
+                 {data.reward_type}
                 
               </span>
             </div>
