@@ -12,7 +12,7 @@ $card-height: auto;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 7vh;
+      padding-top: 4vh;
       .chorePopUpcontainer {
         display: flex;
         align-items: center;
@@ -21,7 +21,7 @@ $card-height: auto;
         background-color: white;
         height: fit-content;
         min-height: 400px;
-        padding: 4rem;
+        padding: 2rem;
         border-radius: 3rem;
         position: relative;
         transition: all 0.3s ease;
@@ -30,44 +30,71 @@ $card-height: auto;
             width: auto;
             margin-left: auto;
             margin-right:20px;
+            .reward{
+              display: flex;
+              align-items: center;
+              gap:5px;
+            .rewardLabel{
+              margin-left: 20px;
+            }
+            }
         }
         .secondSection{
             margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             .title{
                 display: flex;
                 align-items: center;
                 margin: 1rem 0 1rem 0;
                 font-size: 22px;
                 h3{
+                  margin-left: 0.4rem;
                     margin-right: 5px;
+                  }
                 }
-            }
             .message{
-                margin-bottom: 0.5rem;
-                h4{
+              margin-bottom: 0.5rem;
+              p{
                     margin-bottom: 0.5rem;
-                }
+                    font-size: 20px;
+                    font-weight: bold;
+                  }
             }
             .deadline{
-                display: flex;
-                h4{
-                    margin-right: 5px;
+              margin-bottom: 0.5rem;
+              p{
+                margin-bottom: 0.5rem;
+                margin-right: 10px;
+                font-size: 20px;
+                font-weight: bold;
                 }
-                
+              }
+              .customReward{
+                p{
+                      margin-bottom: 0.5rem;
+                  font-size: 20px;
+                  font-weight: bold;
+                }
+              }
             }
-        }
         .thirdSection{
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             padding-right: 10px;
             margin-top: 10px;
             .left{
-                margin: 0 5px 0 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
             }
             .right{
-                margin:0 5px 0 auto;
+              margin-top: 10px;
             .actinButton {
               cursor: pointer;
               width: 140px;
@@ -152,10 +179,15 @@ $card-height: auto;
           width: 100%;
           margin: 20px 0;
           position: relative;
+          p{
+            margin-bottom: 0.5rem;
+        font-size: 20px;
+        font-weight: bold;
+      }
           .lettersleft {
             color: #898989;
             position: absolute;
-            bottom: 10px;
+            bottom: -40px;
             right: 10px;
             font-family: "Lexend", sans-serif;
             font-size: 14px;
@@ -241,5 +273,112 @@ $card-height: auto;
   left:0;
 }
 }
-  }
-
+}
+@media screen and (max-width:1000px) {
+  .chorePopUp {
+    position: absolute;
+    z-index: 5;
+    top:0;
+    left:0;
+    .chorePopUpWrapper {
+        color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 7vh;
+      .background{
+        height:100vh;
+        width: 100VW;
+      }
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 6;
+        background-color: white;
+        height: fit-content;
+        min-height: 300px;
+        padding: 4rem;
+        border-radius: 3rem;
+        position: relative;
+        transition: all 0.3s ease;
+        max-width: 80vw;
+      }}} 
+}
+@media screen and (max-width:860px) {
+  .chorePopUp {
+    position: absolute;
+    z-index: 9;
+    top:0;
+    left:0;
+    .background{
+      transform: scale(1.5);
+      z-index: 9;
+      width: 60vw;
+    }
+    .chorePopUpWrapper {
+      color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 12;
+        background-color: white;
+        height: fit-content;
+        min-height: 300px;
+        padding: 2rem;
+        border-radius: 3rem;
+        transition: all 0.3s ease;
+        max-width: 80vw;
+        .firstSection{
+          width: auto;
+          margin-left: auto;
+          margin-right:20px;
+          .reward{
+            display: flex;
+            align-items: center;
+            gap:5px;
+          .rewardLabel{
+            margin-left: 20px;
+          }
+          }
+      }
+      .secondSection{
+          .title{
+              font-size: 16px;
+              }
+          .message{
+            p{
+                  font-size: 14px;
+                }
+          }
+          .deadline{
+            p{
+              font-size: 14px;
+              }
+            }
+            .customReward{
+              p{
+                font-size: 14px;
+              }
+            }
+          }
+          .fourthsection{
+              .msgsection {
+                p{
+              font-size: 14px;
+            }
+            .lettersleft {
+              font-size: 8px;
+            }
+                }
+                }
+                }}} 
+}

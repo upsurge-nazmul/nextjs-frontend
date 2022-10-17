@@ -69,16 +69,19 @@ export default function KidStore({
       <PageTitle title={`upsurge | Rewards`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-      <RequestModal
+      {/* <RequestModal
         data={data}
         showmodal={showmodal}
         setshowmodal={setshowmodal}
         availableUnicoins={userdatafromserver?.num_unicoins || 0}
-      />
+      /> */}
       <div className={styles.contentWrapper}>
         <KidDashboardHeader mode={mode} setmode={setmode} />
-        <h4>Rewards make learning even more fun - here are all the rewards you can earn!</h4>
         <div className={styles.mainContent}>
+          <h4>
+            Rewards make learning even more fun - here are all the rewards you
+            can earn!
+          </h4>
           <div className={styles.redeem}>
             <RedeemSection />
           </div>
