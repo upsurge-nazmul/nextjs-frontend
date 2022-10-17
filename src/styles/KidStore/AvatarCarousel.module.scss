@@ -1,27 +1,22 @@
 .carouselContainer {
+  width: 100%;
   position: relative;
   padding: 1rem;
-  min-width: 76vw;
-  max-width: 79vw;
   border-radius: 20px;
   background-color: #17d1bc;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
   .wrapper {
+    width: 60vw;
     padding: 0 1rem;
     display: flex;
-    grid-template-rows: 2;
     scroll-behavior: smooth;
     overflow-x: auto;
-    margin-left: 3rem;
-    margin-right: 4rem;
+    margin: 0 3rem;
     flex: 1;
     scrollbar-width: none;
     scroll-behavior: smooth;
-    .card {
-      display: grid;
-    }
     &::-webkit-scrollbar {
       display: none;
     }
@@ -43,8 +38,8 @@
     z-index: 4;
     height: 100%;
     background-color: #17d1bc;
+    cursor: pointer;
   }
-
   .leftarrow {
     transform: scaleX(-1);
   }
@@ -52,23 +47,17 @@
     right: 0.5rem;
   }
 }
-@media only screen and (max-width: 1300px) {
+
+// for phones
+@media only screen and (max-width: 480px) {
   .carouselContainer {
-    max-width: 90vw;
-  }
-}
-@media only screen and (max-width: 1800px) {
-  .carouselContainer {
-    max-width: 80vw;
-  }
-}
-@media only screen and (min-width: 1800px) and (max-width: 2100px) {
-  .carouselContainer {
-    max-width: 85vw;
-  }
-}
-@media only screen and (min-width: 2100px) {
-  .carouselContainer {
-    max-width: 85vw;
+    .wrapper {
+      width: 40vw;
+      margin: 0 1.5rem;
+    }
+    .leftarrow,
+    .rightarrow {
+      width: 32px;
+    }
   }
 }

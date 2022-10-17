@@ -5,6 +5,7 @@ import Avatar from "./Avatar";
 import RequestView from "./RequestView";
 import { useContext } from "react";
 import { MainContext } from "../../../context/Main";
+
 function AvatarCarousel(avatars) {
   const { userdata } = useContext(MainContext);
   const [avatar, setAvatar] = useState(avatars);

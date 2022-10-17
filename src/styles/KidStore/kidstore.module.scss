@@ -7,10 +7,9 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    h4{
-              padding-left: 26px;
-              margin-bottom: 20px;
-            }
+    h4 {
+      margin-bottom: 20px;
+    }
     .mainContent {
       width: 100%;
       display: flex;
@@ -18,7 +17,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       scrollbar-width: thin;
-      padding: 0 1rem 0 1rem;
+      padding: 10px 50px;
       .redeem {
         margin-bottom: 40px;
       }
