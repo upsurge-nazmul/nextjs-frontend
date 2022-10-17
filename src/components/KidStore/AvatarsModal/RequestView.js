@@ -115,15 +115,20 @@ export default function RequestView({
             </div>
           </div>
           <div className={styles.actionArea}>
-            {error && <p className={styles.error}>{error}</p>}
-            {!loading ? (
-              <div className={styles.button} onClick={() => buyAvatar()}>
-                Request Parent
-              </div>
+            {error ? (
+              <p className={styles.error}>{error}</p>
             ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
+              <>
+                {!loading ? (
+                  <div className={styles.button} onClick={() => buyAvatar()}>
+                    Request Parent
+                  </div>
+                ) : (
+                  <div className={`${styles.button} ${styles.spinner_btn}`}>
+                    <Spinner />
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

@@ -1,5 +1,6 @@
 .requestView {
   height: 100%;
+  width: 100%;
   .requestModalcontainer {
     display: flex;
     align-items: center;
@@ -113,8 +114,10 @@
       padding-top: 0.5rem;
       .error {
         color: rgb(228, 48, 48);
-        font-size: 16px;
-        margin-top: 5px;
+        font-size: 1rem;
+        border: 1px solid rgb(228, 48, 48);
+        border-radius: 24px;
+        padding: 12px 60px;
       }
       .button {
         background: #4166eb;

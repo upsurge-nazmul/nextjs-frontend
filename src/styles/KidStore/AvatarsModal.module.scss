@@ -1,5 +1,5 @@
 .avatarsModal {
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   .heading {
     font-weight: 500;
@@ -13,14 +13,14 @@
     }
   }
   .container {
-    max-width: calc(70vw);
+    width: 100%;
     .avatars {
       width: 100%;
     }
   }
 }
 
-.carouselContainerOuter{
+.carouselContainerOuter {
   display: flex;
   flex-direction: column;
 }
