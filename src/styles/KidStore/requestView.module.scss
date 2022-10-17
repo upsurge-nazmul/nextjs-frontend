@@ -1,6 +1,5 @@
 .requestView {
   height: 100%;
-  padding: 1.5rem;
   .requestModalcontainer {
     display: flex;
     align-items: center;
@@ -13,29 +12,23 @@
       width: 100%;
     }
     .heading {
-      display: flex;
       width: 100%;
-      margin-bottom: 1.5rem;
-      flex-direction: row;
-      align-content: space-between;
-      justify-content: space-between;
-      svg {
+      display: flex;
+      .backIcon {
         margin-right: 10px;
-        width: 25px;
+        width: 30px;
+        cursor: pointer;
         path {
-          fill: #dedede;
+          fill: #fff;
         }
       }
       .text {
         font-weight: 500;
         font-size: 28px;
-        line-height: 20px;
-        cursor: pointer;
-        color: #dedede;
-        align-items: center;
-        align-self: center;
-        text-align-last: center;
-        vertical-align: middle;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 0.5rem;
         .payment {
           font-family: "Lexend", sans-serif;
           font-weight: 400;
@@ -43,26 +36,42 @@
           line-height: 28px;
           color: #dedede;
         }
-        p {
-          span {
-            color: #4166eb;
-          }
+        .name {
+          color: #4166eb;
         }
       }
     }
-    .svgholder {
+    .successArea {
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       position: relative;
       width: 100%;
+      padding: 10px 0;
+      .message {
+        z-index: 1;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #fff;
+      }
       .ticksvg {
-        z-index: 2;
-        width: 100%;
-        margin-bottom: 80px;
+        z-index: 1;
+        width: 150px;
+        height: 120px;
+        fill: #fff;
+        padding: 10px 0;
+      }
+      .payment {
+        z-index: 1;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #fff;
       }
       .backsvg {
-        z-index: 1;
+        z-index: 0;
         width: 100%;
+        height: 100%;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -71,18 +80,24 @@
     .body {
       flex: 1;
       width: 100%;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .details {
         font-family: "Lexend", sans-serif;
         font-size: 20px;
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 80%;
         line-height: 1.4rem;
         margin-top: 0.5rem;
         .label {
-          color: #dedede;
+          color: #fff;
         }
         .value {
+          color: #333;
           font-weight: 700;
         }
         &:nth-child(4) {
@@ -92,6 +107,10 @@
     }
     .actionArea {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0.5rem;
       .error {
         color: rgb(228, 48, 48);
         font-size: 16px;
@@ -104,10 +123,10 @@
         justify-content: center;
         align-items: center;
         font-size: 1rem;
-        color: white;
+        color: #fff;
         font-weight: 500;
         cursor: pointer;
-        padding: 0.75rem;
+        padding: 12px 60px;
       }
     }
   }

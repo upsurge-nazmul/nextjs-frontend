@@ -45,52 +45,42 @@ export default function RequestView({
           <div className={styles.background}></div>
           <div className={styles.requestModalcontainer}>
             <div className={styles.heading}>
+              <BackButtonSvg
+                className={styles.backIcon}
+                onClick={() => setRequestMode(false)}
+              />
               <div
                 className={styles.text}
                 onClick={() => setRequestMode(false)}
               >
-                <p>
-                  <BackButtonSvg />
-                  Yay!
-                </p>
-                <p className={styles.payment}>Request sent to your parent.</p>
+                <div className={styles.text}>
+                  Buy <span className={styles.name}>{data.name}</span>{" "}
+                  {data.type !== "voucher" ? "Avatar" : "Voucher"}
+                </div>
               </div>
             </div>
-            <div className={styles.svgholder}>
-              <PaymentSuccessSvg className={styles.ticksvg} />
-              <PaymentSuccessBackground className={styles.backsvg} />
-            </div>
-            <div className={styles.actionArea}>
-              <div
-                className={styles.button}
-                onClick={() => setRequestMode(false)}
-              >
-                Done
-              </div>
+            <div className={styles.successArea}>
+              <div className={styles.message}>Yay!</div>
+              <PaymentSuccessSvg
+                className={styles.ticksvg}
+                primaryClr={"#FFF"}
+                secondaryClr={"#17D1BC"}
+              />
+              <p className={styles.payment}>Request sent to your parent.</p>
+              {/* <PaymentSuccessBackground className={styles.backsvg} /> */}
             </div>
           </div>
         </div>
       ) : (
         <div className={styles.requestModalcontainer}>
           <div className={styles.heading}>
-            <div className={styles.text} onClick={() => setRequestMode(false)}>
-              <p>
-                <BackButtonSvg />
-                Buy <span>{data.name}</span>{" "}
-                {data.type !== "voucher" ? "Avatar" : "Voucher"}
-              </p>
-            </div>
-            <div className={styles.actionArea}>
-              {error && <p className={styles.error}>{error}</p>}
-              {!loading ? (
-                <div className={styles.button} onClick={() => buyAvatar()}>
-                  Request Parent
-                </div>
-              ) : (
-                <div className={`${styles.button} ${styles.spinner_btn}`}>
-                  <Spinner />
-                </div>
-              )}
+            <BackButtonSvg
+              className={styles.backIcon}
+              onClick={() => setRequestMode(false)}
+            />
+            <div className={styles.text}>
+              Buy <span className={styles.name}>{data.name}</span>{" "}
+              {data.type !== "voucher" ? "Avatar" : "Voucher"}
             </div>
           </div>
           <div className={styles.body}>
@@ -123,6 +113,18 @@ export default function RequestView({
                 Unicoins
               </div>
             </div>
+          </div>
+          <div className={styles.actionArea}>
+            {error && <p className={styles.error}>{error}</p>}
+            {!loading ? (
+              <div className={styles.button} onClick={() => buyAvatar()}>
+                Request Parent
+              </div>
+            ) : (
+              <div className={`${styles.button} ${styles.spinner_btn}`}>
+                <Spinner />
+              </div>
+            )}
           </div>
         </div>
       )}
