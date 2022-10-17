@@ -40,7 +40,6 @@
     background-color: #17d1bc;
     cursor: pointer;
   }
-
   .leftarrow {
     transform: scaleX(-1);
   }
@@ -48,23 +47,17 @@
     right: 0.5rem;
   }
 }
-// @media only screen and (max-width: 1300px) {
-//   .carouselContainer {
-//     max-width: 90vw;
-//   }
-// }
-// @media only screen and (max-width: 1800px) {
-//   .carouselContainer {
-//     max-width: 80vw;
-//   }
-// }
-// @media only screen and (min-width: 1800px) and (max-width: 2100px) {
-//   .carouselContainer {
-//     max-width: 85vw;
-//   }
-// }
-// @media only screen and (min-width: 2100px) {
-//   .carouselContainer {
-//     max-width: 85vw;
-//   }
-// }
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .carouselContainer {
+    .wrapper {
+      width: 40vw;
+      margin: 0 1.5rem;
+    }
+    .leftarrow,
+    .rightarrow {
+      width: 32px;
+    }
+  }
+}
