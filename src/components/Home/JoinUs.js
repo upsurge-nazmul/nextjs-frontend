@@ -15,22 +15,20 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
-      // let response = await LoginApis.addtonewslettersubs({ email: email });
-      // if (response) {
-      //   if (response.data.success) {
-      //     if (response.data.message === "Exists") {
-      //       seterror("Already subscribed");
-      //     } else {
-      //       router.push("/subscribed");
-      //     }
-      //   } else {
-      //     seterror(response.data.message);
-      //   }
-      // } else {
-      //   seterror("Error connecting to server");
-      // }
-      setshowauth(true);
-      setauthmode("parent");
+       let response = await LoginApis.addtonewslettersubs({ email: email });
+       if (response) {
+         if (response.data.success) {
+           if (response.data.message === "Exists") {
+             seterror("Already subscribed");
+           } else {
+             router.push("/subscribed");
+           }
+         } else {
+           seterror(response.data.message);
+         }
+       } else {
+         seterror("Error connecting to server");
+       }
       setmailfromhome(email);
     }
   }
