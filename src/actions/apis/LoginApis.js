@@ -59,7 +59,7 @@ const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
 };
 const addtonewslettersubs = (payload) => {
-  return ApiCalls.postResponse("users/addtonewslettersubs", payload);
+  return ApiCalls.postResponse("users/addnewnewslettersubscriber", payload);
 };
 const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
