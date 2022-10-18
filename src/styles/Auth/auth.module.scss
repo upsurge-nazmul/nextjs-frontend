@@ -677,6 +677,18 @@
             }
           }
         }
+        .refId {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          align-items: baseline;
+          font-size: 1.75rem;
+          color: #4066eb;
+          .refLabel {
+            color: #828282;
+            font-size: 1.25rem;
+          }
+        }
 
         .button {
           background: #4166eb;

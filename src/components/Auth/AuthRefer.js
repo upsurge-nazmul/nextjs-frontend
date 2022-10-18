@@ -321,6 +321,10 @@ function AuthRefer({
           {passhidden ? "Show" : "Hide"}
         </p>
       </div>
+      <div className={styles.refId}>
+        <div className={styles.refLabel}>Referal ID </div>
+        <div>{refId}</div>
+      </div>
 
       {error && <p className={styles.error}>{error}</p>}
 
