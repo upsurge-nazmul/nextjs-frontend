@@ -35,13 +35,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 2px solid #17d1bc;
+      border: 2px solid #4066eb;
       border-radius: 14px;
       padding: 5px 10px;
       margin-bottom: 5vh;
       .refId {
         font-size: 2rem;
-        color: #17d1bc;
+        color: #4066eb;
         .refLabel {
           color: #828282;
           font-size: 1.5rem;
@@ -51,7 +51,7 @@
         cursor: pointer;
         position: relative;
         width: 2rem;
-        color: #17d1bc;
+        color: #4066eb;
         .none {
           visibility: hidden;
           position: absolute;
@@ -61,7 +61,8 @@
           position: absolute;
           width: 120px;
           text-align: center;
-          background-color: #555;
+          background-color: #4066eb;
+          color: #fff;
           padding: 5px 0;
           border-radius: 6px;
           z-index: 6;
