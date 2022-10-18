@@ -13,10 +13,10 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
     const [choredatas, setchoredatas] = useState(choredata);
     const router = useRouter();
     const [duedate, setduedate] = useState(getDueDate());
-    const [lettercounts, setlettercounts] = useState(100);
+    const [lettercounts, setlettercounts] = useState(300);
     const [imagecounts, setimagecounts] = useState(5);
     const [openPhotoUpload, setOpenPhotoUpload] = useState(false);
-    const [remark, setremark] = useState(choredata?.message || "");
+    const [remark, setremark] = useState("");
     const [imageDisplay, setImageDisplay] = useState([]);
     const [imageInput, setImageInput] = useState([]);
     const [selectedPreview, setSelectedPreview] = useState(null);
@@ -54,7 +54,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
       }
     },[selectedRemove])
     useEffect(() => {
-      setlettercounts(100 - remark.length);
+      setlettercounts(300 - remark.length);
     }, [remark]);
     useEffect(() => {
       if (showmenu) document.addEventListener("mousedown", getifclickedoutside);
@@ -116,6 +116,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
       }
       let response = await ChoreApis.markchoreforapproval({
         choreId: choredata.id,
+        child_remark: remark,
       });
       if (response && response.data && response.data.success) {
         settoastdata({ show: true, type: "success", msg: "done" });
@@ -167,7 +168,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
               <span className={styles.rewardLabel}>UniCoins to Earn: </span>
               <span className={styles.rewardValue}>
               {" "}
-              {choredata.reward_amount}
+              {choredata.reward_amount} 
               {" "}
               {choredata.reward_type}
               </span>
@@ -198,7 +199,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
             <div className={styles.msgsection} id="chore-msg">
             <p>Remarks:</p>
             <textarea
-              maxLength="100"
+              maxLength="300"
               value={remark}
               onChange={(e) => setremark(e.target.value)}
               placeholder="remark goes here...."
