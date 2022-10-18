@@ -22,6 +22,8 @@ import Toast from "../Toast";
 import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
+import { HOME_VARIENTS } from "../../static_data/Home_Data";
+import ReferIntro from "./ReferIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
@@ -152,47 +154,52 @@ function Home({ userdata, page = "", showNav = true }) {
       />
       <Toast data={toastdata} />
 
-      {page === "jodo" ? (
+      {page === HOME_VARIENTS[0] ? (
         <JodoIntro
-        setshowauth={setshowauth}
-        setauthmode={setauthmode}
-        setmailfromhome={setmailfromhome}
-        setshowpopup={setshowpopup}
-        />
-        ) : (
-          <Intro
           setshowauth={setshowauth}
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
           setshowpopup={setshowpopup}
-          />
-          )}
-          <Benefits />
-          <Who />
+        />
+      ) : page === HOME_VARIENTS[1] ? (
+        <ReferIntro
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+          setshowpopup={setshowpopup}
+        />
+      ) : (
+        <Intro
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
+          setshowpopup={setshowpopup}
+        />
+      )}
+      <Benefits />
+      <Who />
       <Values
-      setshowauth={setshowauth}
-      setauthmode={setauthmode}
-      insidebenefits />
+        setshowauth={setshowauth}
+        setauthmode={setauthmode}
+        insidebenefits
+      />
       {/* <How /> */}
-      <ProductSection
-          setauthmode={setauthmode}
-          setshowauth={setshowauth}
-          />
+      <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
       <PartnerSection />
-    <TryUpsurge 
-          content={"Try upsurge now"}
-          setauthmode={setauthmode}
-          setshowauth={setshowauth}
-    />
+      <TryUpsurge
+        content={"Try upsurge now"}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+      />
       <JasperSection />
       <AboutSection />
       <BlogsSection />
       <TestiMonial />
-    <TryUpsurge 
-          content={"Try upsurge today!"}
-          setauthmode={setauthmode}
-          setshowauth={setshowauth}
-    />
+      <TryUpsurge
+        content={"Try upsurge today!"}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+      />
       <FaqSection />
       <JoinUs
         setshowauth={setshowauth}
@@ -200,10 +207,11 @@ function Home({ userdata, page = "", showNav = true }) {
         setmailfromhome={setmailfromhome}
       />
       <Footer
-      setshowauth={setshowauth}
-      setauthmode={setauthmode}
-      setmailfromhome={setmailfromhome}
-      setshowpopup={setshowpopup} />
+        setshowauth={setshowauth}
+        setauthmode={setauthmode}
+        setmailfromhome={setmailfromhome}
+        setshowpopup={setshowpopup}
+      />
       {router.query.showTour && (
         <Tour story={story} current={0} showtour={true} />
       )}

@@ -8,6 +8,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderTabSection from "./HeaderTabSection";
 import { MainContext } from "../../context/Main";
 import WaitlistPopUp from "../WaitlistPopUp";
+import { HOME_VARIENTS } from "../../static_data/Home_Data";
 function Header({
   setOpenLeftPanel,
   showauth,
@@ -143,7 +144,11 @@ function Header({
                 // { name: "Live Classes", pushTo: "/liveclasses" },
               ]}
             />
-            <HeaderTabSection title={"Contact Us"} tabs={[]} pushTo="/contact" />
+            <HeaderTabSection
+              title={"Contact Us"}
+              tabs={[]}
+              pushTo="/contact"
+            />
           </div>
         )}
         <div
@@ -169,7 +174,7 @@ function Header({
         >
           {userdata
             ? "Go to Dashboard"
-            : page === "jodo"
+            : page === HOME_VARIENTS[0]
             ? "Try for free"
             : "Sign in"}
         </div>

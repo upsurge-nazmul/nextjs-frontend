@@ -1,9 +1,10 @@
 import React from "react";
 import Home from "../components/Home";
 import LoginApis from "../actions/apis/LoginApis";
+import { HOME_VARIENTS } from "../static_data/Home_Data";
 
 function Jodo(props) {
-  return <Home {...props} page={"jodo"} showNav={false} />;
+  return <Home {...props} page={HOME_VARIENTS[0]} showNav={false} />;
 }
 
 export default Jodo;
