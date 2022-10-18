@@ -21,6 +21,7 @@ function Header({
   settoastdata,
   showNav = true,
   page = "",
+  refId = null,
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -62,6 +63,7 @@ function Header({
         authmode={authmode}
         mailfromhome={mailfromhome}
         setshowpopup={setshowpopup}
+        refId={refId}
       />
       {showpopup && (
         <WaitlistPopUp

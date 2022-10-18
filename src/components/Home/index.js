@@ -41,6 +41,7 @@ function Home({ userdata, page = "", showNav = true }) {
   const [mailfromhome, setmailfromhome] = useState("");
   const [showpopup, setshowpopup] = useState(false);
   const { user } = useContext(MainContext);
+  const [refId, setRefId] = useState();
   const router = useRouter();
   useEffect(() => {
     if (userdata) {
@@ -146,6 +147,7 @@ function Home({ userdata, page = "", showNav = true }) {
         settoastdata={settoastdata}
         page={page}
         showNav={showNav}
+        refId={refId}
       />
 
       <LeftPanel
@@ -167,6 +169,7 @@ function Home({ userdata, page = "", showNav = true }) {
           setauthmode={setauthmode}
           setmailfromhome={setmailfromhome}
           setshowpopup={setshowpopup}
+          setRefId={setRefId}
         />
       ) : (
         <Intro

@@ -9,12 +9,14 @@ import { useRouter } from "next/dist/client/router";
 import Curve2 from "../SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 function ReferIntro({
   setshowauth,
   setauthmode,
   setmailfromhome,
   setshowpopup,
+  setRefId,
 }) {
   const CopyContent = dynamic(
     () => import("../Dashboard/CopyClipboard").then((mod) => mod.CopyClipboard),
@@ -32,6 +34,10 @@ function ReferIntro({
   const [classState, setClassState] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    if (router) setRefId(router.query.id);
+  }, [router.query]);
+
   const handleAction = () => {
     if (router.query.pushTo) {
       router.push(router.query.pushTo);
@@ -48,7 +54,7 @@ function ReferIntro({
       return;
     }
     setshowauth(true);
-    setauthmode("parent");
+    setauthmode("refer");
   };
 
   return (
