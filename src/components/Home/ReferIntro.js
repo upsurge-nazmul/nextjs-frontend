@@ -8,6 +8,7 @@ import BallsSvg from "../SVGcomponents/BallsSvg";
 import { useRouter } from "next/dist/client/router";
 import Curve2 from "../SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
+import dynamic from "next/dynamic";
 
 function ReferIntro({
   setshowauth,
@@ -15,6 +16,10 @@ function ReferIntro({
   setmailfromhome,
   setshowpopup,
 }) {
+  const CopyContent = dynamic(
+    () => import("../Dashboard/CopyClipboard").then((mod) => mod.CopyClipboard),
+    { ssr: false }
+  );
   const { userdata, setuserdata, theme } = useContext(MainContext);
   const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
@@ -24,27 +29,8 @@ function ReferIntro({
     type: "success",
     msg: "",
   });
+  const [classState, setClassState] = useState(false);
   const router = useRouter();
-  async function check(e) {
-    e?.preventDefault();
-    setloading(true);
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-      setloading(false);
-    } else {
-      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
-      if (checkemail && checkemail.data && !checkemail.data.success) {
-        // setshowpopup(true);
-        setshowauth(true);
-        setauthmode("");
-        setauthmode("email");
-        setmailfromhome(email);
-      } else {
-        seterror(checkemail?.data.message || "Error connecting to server");
-      }
-      setloading(false);
-    }
-  }
 
   const handleAction = () => {
     if (router.query.pushTo) {
@@ -62,6 +48,7 @@ function ReferIntro({
       return;
     }
     setshowauth(true);
+    setauthmode("parent");
   };
 
   return (
@@ -71,13 +58,32 @@ function ReferIntro({
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <div className={styles.heading}></div>
+        <div className={styles.heading}>
+          <div className={styles.refId}>
+            <span className={styles.refLabel}>Referal ID:</span>{" "}
+            <span className={styles.refValue}>{router.query.id}</span>
+          </div>
+          <div
+            className={styles.textToCopy}
+            onClick={() => {
+              setClassState(true);
+            }}
+          >
+            <span className={styles.textToCopyToolTip}>Click to Copy</span>
+            <span
+              className={classState ? styles.textToCopyToolTip : styles.none}
+            >
+              Copied
+            </span>
+            <CopyContent content={router.query.id} />
+          </div>
+        </div>
         <p className={styles.subheading}>
           {`More than just a financial literacy course or a school. upsurge is India's 1st gaming platform to enable financial literacy for kids & make them MONEY-smart`}
         </p>
         <p className={styles.error}>{error}</p>
         <button className={styles.tryButton} onClick={handleAction}>
-          {userdata ? "Go to Dashboard" : "Try for free"}
+          {userdata ? "Go to Dashboard" : "Sign up"}
         </button>
       </div>
 

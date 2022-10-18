@@ -29,18 +29,59 @@
     pointer-events: none;
   }
   .textContent {
-    margin-top: 4vh;
+    margin-top: 7%;
     margin-left: 7%;
     .heading {
-      .bannerTitle {
-        font-size: 16px;
-        font-weight: 400;
-        margin-left: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px solid #17d1bc;
+      border-radius: 14px;
+      padding: 5px 10px;
+      margin-bottom: 5vh;
+      .refId {
+        font-size: 2rem;
+        color: #17d1bc;
+        .refLabel {
+          color: #828282;
+          font-size: 1.5rem;
+        }
       }
-      .banner {
-        height: 100px;
-        width: 200px;
-        margin-left: -35px;
+      .textToCopy {
+        cursor: pointer;
+        position: relative;
+        width: 2rem;
+        color: #17d1bc;
+        .none {
+          visibility: hidden;
+          position: absolute;
+        }
+        .textToCopyToolTip {
+          font-size: 0.9rem;
+          position: absolute;
+          width: 120px;
+          text-align: center;
+          background-color: #555;
+          padding: 5px 0;
+          border-radius: 6px;
+          z-index: 6;
+          top: -35px;
+          left: -45px;
+          visibility: hidden;
+        }
+        .textToCopyToolTip::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+      }
+      .textToCopy:hover .textToCopyToolTip {
+        visibility: visible;
       }
     }
     .subheading {

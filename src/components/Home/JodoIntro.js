@@ -62,6 +62,7 @@ function JodoIntro({
       return;
     }
     setshowauth(true);
+    setauthmode("parent");
   };
 
   return (
