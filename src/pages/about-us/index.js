@@ -97,6 +97,7 @@ export default function About({ userdata }) {
               children and young adults, to make them capable of making prudent
               financial decisions and achieving their financial freedom.
             </p>
+            <div className={styles.lineSpace} />
             <p className={styles.des}>
               We believe that understanding personal finance, career
               development, investing and entrepreneurship are critical life
