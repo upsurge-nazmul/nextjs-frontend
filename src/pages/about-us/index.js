@@ -116,7 +116,7 @@ export default function About({ userdata }) {
             />
           </div>
         </div>
-        <div className={styles.thirdSection}>
+        {/* <div className={styles.thirdSection}>
           <div className={styles.left}>
             <p className={styles.heading}>Values</p>
             <p className={styles.des}>
@@ -137,7 +137,7 @@ export default function About({ userdata }) {
           <div className={styles.imgwrapper}>
             <Jasper className={styles.jasper} />
           </div>
-        </div>
+        </div> */}
 
         <JoinUs />
       </div>
