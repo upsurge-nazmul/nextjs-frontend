@@ -97,17 +97,6 @@ export default function About({ userdata }) {
               children and young adults, to make them capable of making prudent
               financial decisions and achieving their financial freedom.
             </p>
-          </div>
-          <div className={styles.imgwrapper}>
-            <img
-              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
-              alt=""
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className={styles.thirdSection}>
-          <div className={styles.left}>
             <p className={styles.des}>
               We believe that understanding personal finance, career
               development, investing and entrepreneurship are critical life
@@ -120,13 +109,37 @@ export default function About({ userdata }) {
             </p>
           </div>
           <div className={styles.imgwrapper}>
+            <img
+              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div className={styles.thirdSection}>
+          <div className={styles.left}>
+            <p className={styles.heading}>Values</p>
+            <p className={styles.des}>
+              {`Integrity – We do the right thing! We say what we mean, and mean
+              what we say. We stick to our commitments, treat everyone
+              equitably, and communicate honestly. Unity - We are one! We
+              support each other & go above and beyond to help each other. Fun –
+              We have fun while working, create fun products & ensure that users
+              have fun! Creativity & Innovation - Think outside the box, &
+              challenge the status-quo Ownership - We own our projects like
+              entrepreneurs & are responsible for their success. Excellence – We
+              pursue excellence to create exceptional products & experiences
+              Passion – We are passionate about creating products that users
+              love & benefit from Drive - Our passion drives us to do more &
+              keep improving!`}
+            </p>
+          </div>
+          <div className={styles.imgwrapper}>
             <Jasper className={styles.jasper} />
           </div>
         </div>
-       
-        <JoinUs />
 
-       
+        <JoinUs />
       </div>
       <Footer />
     </div>

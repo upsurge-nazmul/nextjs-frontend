@@ -228,6 +228,10 @@
         justify-content: center;
         width: 70%;
         flex-direction: column;
+        .heading {
+          font-size: 48px;
+          font-weight: 700;
+        }
         .secondheading {
           font-size: 50px;
         }
