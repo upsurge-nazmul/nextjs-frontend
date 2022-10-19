@@ -15,6 +15,7 @@ import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
 import ChangePhoneNo from "./ChangePhoneNo";
+import AuthRefer from "./AuthRefer";
 
 function AuthComponent({
   showauth,
@@ -24,6 +25,7 @@ function AuthComponent({
   setshowpopup,
   onlyLogin,
   prefilled = null,
+  refId = null,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -187,6 +189,24 @@ function AuthComponent({
                   seterror={seterror}
                   settoastdata={settoastdata}
                   setmode={setmode}
+                />
+              ) : mode === "refer" ? (
+                <AuthRefer
+                  email={email}
+                  setemail={setemail}
+                  settoastdata={settoastdata}
+                  setmode={setmode}
+                  phone={phone}
+                  setphone={setphone}
+                  error={error}
+                  password={password}
+                  seterror={seterror}
+                  setusername={setusername}
+                  username={username}
+                  setpassword={setpassword}
+                  signupmethod={signupmethod}
+                  usertype={usertype}
+                  refId={refId}
                 />
               ) : mode === "" && prefilled ? (
                 <AuthOnlyPass
