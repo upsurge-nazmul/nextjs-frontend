@@ -27,8 +27,8 @@ import ReferIntro from "./ReferIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
-function Home({ userdata, page = "", showNav = true }) {
-  const { setuserdata } = useContext(MainContext);
+function Home({ page = "", showNav = true }) {
+  const { userdata, setuserdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -40,9 +40,9 @@ function Home({ userdata, page = "", showNav = true }) {
   });
   const [mailfromhome, setmailfromhome] = useState("");
   const [showpopup, setshowpopup] = useState(false);
-  const { user } = useContext(MainContext);
   const [refId, setRefId] = useState();
   const router = useRouter();
+
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);

@@ -4,11 +4,12 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/GeneralComponents/header.module.scss";
 import Logo from "../SVGcomponents/Logo";
 import HamSvg from "../SVGcomponents/HamSvg";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderTabSection from "./HeaderTabSection";
 import { MainContext } from "../../context/Main";
 import WaitlistPopUp from "../WaitlistPopUp";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
+import LoginApis from "../../actions/apis/LoginApis";
+
 function Header({
   setOpenLeftPanel,
   showauth,
@@ -25,8 +26,16 @@ function Header({
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
-  const [showticker, setshowticker] = useState(true);
-  const { userdata, theme } = useContext(MainContext);
+  const { userdata, setuserdata, theme } = useContext(MainContext);
+  useEffect(() => {
+    async function fetchAuth() {
+      let response = await LoginApis.checktoken({});
+      if (response && response.data && response.data.success) {
+        setuserdata(response.data.data);
+      }
+    }
+    fetchAuth();
+  }, []);
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
