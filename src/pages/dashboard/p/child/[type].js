@@ -116,11 +116,26 @@ function AddKid({ childdata, userdatafromserver }) {
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [duedate, setduedate] = useState(new Date(new Date(new Date().setHours(new Date().getHours() + 720))).getTime());
-  const [familyid, setfamilyid] = useState();
-  useEffect( async() =>{
+  const fetchfamilyid = async(id) =>{
     let response = await ChoreApis.getfamilyid()
-    setfamilyid(response.data.data.family_id);
-    }),[]
+    assignChores(id,response.data.data.family_id);
+  }
+  const assignChores = (id , familyide) =>{
+   {presetchores.map((data ,key)=>{
+      return(
+         ChoreApis.addchore({
+          message: data.msg,
+          title: data.choretitle,
+          category: data.cat,
+          assigned_to: userName,
+          family_id: familyide,
+          child_id: id,
+          due_date: duedate,
+          img_url: data.img_url,
+          is_reoccurring:false,
+          completion: "pending",
+  }))})}
+}
   useEffect(() => {
     if (gender === "male") {
       setavatars(boy_avatars);
@@ -214,21 +229,7 @@ function AddKid({ childdata, userdatafromserver }) {
       // } else {
       //   router.push("/dashboard/p");
       // }
-
-        {presetchores.map((data ,key)=>{
-          return(
-            ChoreApis.addchore({
-              message: data.msg,
-              title: data.choretitle,
-              category: data.cat,
-              assigned_to: userName,
-              family_id: familyid,
-              child_id: response.data.data.id,
-              due_date: duedate,
-              img_url: data.img_url,
-              is_reoccurring:false,
-              completion: "pending",
-      }))})}
+       await fetchfamilyid(response.data.data.id);
       setShowSuccess(true);
       settoastdata({
         type: "success",
