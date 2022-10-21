@@ -14,7 +14,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import Seo from "../../components/Seo";
 
-function BenfitsPage({ userdata, title }) {
+function BenfitsPage({ title }) {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
@@ -22,12 +22,6 @@ function BenfitsPage({ userdata, title }) {
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
 
   function getheight(el) {
     if (!el) {
@@ -109,40 +103,3 @@ function BenfitsPage({ userdata, title }) {
 }
 
 export default BenfitsPage;
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  let title = "upsurge benefits";
-  if (params.type === "experimential") {
-    title = "Money investment workshop for adults";
-  } else if (params.type === "entrepreneurship") {
-    title = "Startup workshop for kids and teen in india";
-  }
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: { title } };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-          title,
-        },
-      };
-    }
-  } else {
-    return {
-      props: {
-        isLogged: false,
-        msg: "cannot get token",
-        userdata: null,
-        title,
-      },
-    };
-  }
-}

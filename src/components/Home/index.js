@@ -28,7 +28,7 @@ import ReferIntro from "./ReferIntro";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ page = "", showNav = true }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -42,12 +42,6 @@ function Home({ page = "", showNav = true }) {
   const [showpopup, setshowpopup] = useState(false);
   const [refId, setRefId] = useState();
   const router = useRouter();
-
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
 
   useEffect(() => {
     history.scrollRestoration = "manual";
