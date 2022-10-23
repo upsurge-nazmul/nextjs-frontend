@@ -202,6 +202,16 @@ export default function GameView({
         ""
       )}
       <div className={styles.actionArea}>
+        <button
+          className={styles.fullScreenButton}
+          onClick={() => {
+            setFullScreen(false);
+            if (!isMobileOnly) document.exitFullscreen();
+            setGame();
+          }}
+        >
+          {fullScreen ? <span>X</span> : <FullScreen />}
+        </button>
         {handleDone ? (
           <button
             className={styles.doneButton}
@@ -217,16 +227,6 @@ export default function GameView({
         ) : (
           ""
         )}
-        <button
-          className={styles.fullScreenButton}
-          onClick={() => {
-            setFullScreen(false);
-            if (!isMobileOnly) document.exitFullscreen();
-            setGame();
-          }}
-        >
-          {fullScreen ? <span>X</span> : <FullScreen />}
-        </button>
       </div>
     </div>
   );
