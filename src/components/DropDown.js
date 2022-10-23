@@ -64,7 +64,6 @@ function DropDown({
           className={styles.text}
           style={{
             color: color ? color : "#6d6d6d",
-            fontSize: fontSize ? fontSize : "16px",
           }}
         >
           {presign ? presign : ""}

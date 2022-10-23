@@ -39,8 +39,14 @@ export default function ChangePassPopUp({
   }, []);
   async function genotp() {
     if (password !== confirmpassword) {
-      seterror("Passwords do not match");
-      return;
+      if (confirmpassword === "") {
+        seterror("Please enter confirm Password");
+        return;
+      }
+      else{
+        seterror("Passwords do not match");
+        return;
+      }
     }
     if (!validatePassword(password)) {
       seterror(
