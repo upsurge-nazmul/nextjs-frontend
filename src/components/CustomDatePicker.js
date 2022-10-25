@@ -5,7 +5,7 @@ import moment from "moment";
 import range from "lodash/range";
 import styles from "../styles/GeneralComponents/customdate.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
-const years = range(1990, getYear(new Date()) + 5, 1);
+const years = range(1920, getYear(new Date()) + 5, 1);
 const months = [
   "January",
   "February",

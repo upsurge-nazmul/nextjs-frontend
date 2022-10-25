@@ -87,35 +87,40 @@ export default function EditProfile({ data, minDate }) {
       data &&
       data.phone &&
       (!changephone || changephone === data.phone) &&
+      changephone === " " &&
       !password
-    ) {
-      handleSave();
-    } else {
-      if (password) {
-        if (password !== confirmpassword) {
-          seterror("Passwords do not match");
-          return;
-        }
-        if (!validatePassword(password)) {
-          seterror(
-            "Password must be of minimum 8 characters and also it must contain minimum 1 number,1 special character,1 uppercase character and 1 lowercase character"
-          );
-          return;
-        }
-      }
-      if (changephone && changephone !== confirmphone) {
-        seterror("Phone number does not match");
+      ) {
+        handleSave();
+      } else {
+        if (password) {
+          if (password !== confirmpassword) {
+            seterror("Passwords do not match");
+            return;
+          }
+          if (!validatePassword(password)) {
+            seterror(
+              "Password must be of minimum 8 characters and also it must contain minimum 1 number,1 special character,1 uppercase character and 1 lowercase character"
+              );
+              return;
+            }
+          }
+          if (changephone && confirmphone === "") {
+            seterror("Please enter confirm phone number");
         return;
       }
-      if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
-        seterror("Invalid phone number");
+          if (changephone && changephone !== confirmphone) {
+            seterror("Phone number does not match");
         return;
       }
+       if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
+         seterror("Invalid phone number");
+         return;
+       }
       if (changephone) {
-        let checkphone = await LoginApis.checkphone({
-          phone: changephone,
-        });
-        if (checkphone && checkphone.data && checkphone.data.success) {
+    let checkphone = await LoginApis.checkphone({
+      phone: changephone,
+    });
+    if (checkphone && checkphone.data && checkphone.data.success) {
           console.log("phone ok");
         } else {
           seterror(checkphone?.data.message || "Error connecting to server");
@@ -137,11 +142,21 @@ export default function EditProfile({ data, minDate }) {
               type: "success",
             });
           } else {
-            settoastdata({
-              msg: response?.data.message || "Error",
-              show: true,
-              type: "error",
-            });
+            if(changephone !== "")
+            {
+              settoastdata({
+                msg: response?.data.message || "Error",
+                show: true,
+                type: "error",
+              });
+            }
+            else{
+              settoastdata({
+                msg: "Please enter a phone number" || "Error",
+                show: true,
+                type: "error",
+              });
+            }
           }
         }
       );
@@ -347,13 +362,15 @@ export default function EditProfile({ data, minDate }) {
                 placeholder="Phone"
                 numOnly
               />
+              <div className={styles.genderInput}>
               <DropDown
                 value={gender}
                 options={["male", "female", "other", "Don't want to disclose"]}
                 setvalue={setgender}
                 placeholder="Gender"
                 margin="10px 0"
-              />
+                />
+                </div>
               <div className={styles.stateInput}>
                 <DropDown
                   value={state}
@@ -393,7 +410,7 @@ export default function EditProfile({ data, minDate }) {
                 className={styles.changepass}
                 onClick={() => setshowphonepopup(true)}
               >
-                Change phone
+                Change phone number
               </p>
 
               <p

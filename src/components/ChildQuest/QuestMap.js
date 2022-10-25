@@ -22,7 +22,9 @@ export default function QuestMap({
                         className={
                           userLevel >= chapter.chapterNo
                             ? styles.completedChapter
-                            : styles.chapter
+                            : userLevel + 1 === chapter.chapterNo
+                            ? styles.chapter
+                            : styles.disabledChapter
                         }
                         style={
                           positions[`quest${questData.questNo}`][
@@ -30,9 +32,14 @@ export default function QuestMap({
                           ]
                         }
                         onClick={() => {
-                          changeView(chapter.type);
-                          setActiveChapter(chapter.id);
-                          setActiveChapterNo(chapter.chapterNo);
+                          if (
+                            userLevel >= chapter.chapterNo ||
+                            userLevel + 1 === chapter.chapterNo
+                          ) {
+                            changeView(chapter.type);
+                            setActiveChapter(chapter.id);
+                            setActiveChapterNo(chapter.chapterNo);
+                          }
                         }}
                       >
                         <span>{chapter.title}</span>
