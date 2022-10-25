@@ -10,6 +10,8 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
+import AppleSvg from "../../components/SVGcomponents/AppleSvg";
+
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -117,28 +119,53 @@ export default function About({ userdata }) {
             />
           </div>
         </div>
-        {/* <div className={styles.thirdSection}>
-          <div className={styles.left}>
-            <p className={styles.heading}>Values</p>
-            <p className={styles.des}>
-              {`Integrity – We do the right thing! We say what we mean, and mean
-              what we say. We stick to our commitments, treat everyone
-              equitably, and communicate honestly. Unity - We are one! We
-              support each other & go above and beyond to help each other. Fun –
-              We have fun while working, create fun products & ensure that users
-              have fun! Creativity & Innovation - Think outside the box, &
-              challenge the status-quo Ownership - We own our projects like
-              entrepreneurs & are responsible for their success. Excellence – We
-              pursue excellence to create exceptional products & experiences
-              Passion – We are passionate about creating products that users
-              love & benefit from Drive - Our passion drives us to do more &
-              keep improving!`}
-            </p>
+        <div className={styles.thirdSection}>
+          <p className={styles.heading}>Values</p>
+          <div className={styles.valueContainer}>
+            <div className={styles.values}>
+              <div className={styles.valueItem}>
+                <AppleSvg className={styles.valueIcon} />
+                <div className={styles.valueContent}>
+                  {`Integrity – We do the right thing! We say what we mean, and mean
+                what we say. We stick to our commitments, treat everyone
+                equitably, and communicate honestly. Unity - We are one! We
+                support each other & go above and beyond to help each other.`}
+                </div>
+              </div>
+              <div className={styles.valueItem}>
+                <AppleSvg className={styles.valueIcon} />
+                <div className={styles.valueContent}>
+                  {`Fun – We have fun while working, create fun products & ensure
+                that users have fun! Creativity & Innovation - Think outside the
+                box, & challenge the status-quo Ownership - We own our projects
+                like entrepreneurs & are responsible for their success.`}
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.imgwrapper}>
+              <Jasper className={styles.jasper} />
+            </div>
+
+            <div className={styles.values}>
+              <div className={styles.valueItem}>
+                <AppleSvg className={styles.valueIcon} />
+                <div className={styles.valueContent}>
+                  {`Excellence – We pursue excellence to create exceptional products
+                & experiences.`}
+                </div>
+              </div>
+              <div className={styles.valueItem}>
+                <AppleSvg className={styles.valueIcon} />
+                <div className={styles.valueContent}>
+                  {`Passion – We are passionate about creating products that users
+                love & benefit from Drive - Our passion drives us to do more &
+                keep improving!`}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={styles.imgwrapper}>
-            <Jasper className={styles.jasper} />
-          </div>
-        </div> */}
+        </div>
 
         <JoinUs />
       </div>
