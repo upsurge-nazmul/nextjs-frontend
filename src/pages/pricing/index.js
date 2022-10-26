@@ -11,18 +11,13 @@ import TickSvg from "../../components/SVGcomponents/TickSvg";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Pricing/pricing.module.scss";
 
-export default function Pricing({ userdata }) {
+export default function Pricing() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
 
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -101,28 +96,4 @@ export default function Pricing({ userdata }) {
       <Footer />
     </div>
   );
-}
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
 }
