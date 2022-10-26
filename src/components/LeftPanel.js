@@ -67,7 +67,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
                 { name: "Team", pushTo: "/team" },
                 { name: "Blogs", pushTo: "/blogs" },
                 { name: "Financial calculators", pushTo: "/calculators" },
-                { name: "Careers", pushTo: "/careers" },
+                // { name: "Careers", pushTo: "/careers" },
                 { name: "FAQs", pushTo: "/help/faq" },
                 { name: "Contact us", pushTo: "/contact" },
               ]}
