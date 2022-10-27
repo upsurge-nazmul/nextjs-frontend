@@ -138,16 +138,14 @@ export default function About({ userdata }) {
               </div>
               <div className={styles.valueItem}>
                 <img
-                  src={require("../../assets/about/Fun.png").default.src}
-                  alt="Fun"
+                  src={require("../../assets/about/Excellence.png").default.src}
+                  alt="Excellence"
                   loading="lazy"
                   className={styles.valueIcon}
                 />
                 <div className={styles.valueContent}>
-                  {`Fun – We have fun while working, create fun products & ensure
-                that users have fun! Creativity & Innovation - Think outside the
-                box, & challenge the status-quo Ownership - We own our projects
-                like entrepreneurs & are responsible for their success.`}
+                  {`Excellence – We pursue excellence to create exceptional products
+                & experiences.`}
                 </div>
               </div>
             </div>
@@ -159,14 +157,16 @@ export default function About({ userdata }) {
             <div className={styles.values}>
               <div className={styles.valueItem}>
                 <img
-                  src={require("../../assets/about/Excellence.png").default.src}
-                  alt="Excellence"
+                  src={require("../../assets/about/Fun.png").default.src}
+                  alt="Fun"
                   loading="lazy"
                   className={styles.valueIcon}
                 />
                 <div className={styles.valueContent}>
-                  {`Excellence – We pursue excellence to create exceptional products
-                & experiences.`}
+                  {`Fun – We have fun while working, create fun products & ensure
+                that users have fun! Creativity & Innovation - Think outside the
+                box, & challenge the status-quo Ownership - We own our projects
+                like entrepreneurs & are responsible for their success.`}
                 </div>
               </div>
               <div className={styles.valueItem}>
