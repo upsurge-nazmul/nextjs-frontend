@@ -22,3 +22,35 @@
     }
   }
 }
+@media screen and (max-width:720px) {
+  .mainPage{
+    .wrapper{
+      .image{
+        width:100%;
+      }
+      .heading{
+        font-size:30px;
+      }
+      .subheading{
+        text-align: center;
+        font-size:14px;
+
+      }
+    }
+  }
+}
+@media screen and (max-width:500px) {
+  .mainPage{
+    .wrapper{
+      .image{
+        width:50%;
+      }
+      .heading{
+        font-size:22px;
+      }
+      .subheading{
+        font-size:10px;
+      }
+    }
+  }
+}
