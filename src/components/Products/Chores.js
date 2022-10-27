@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/Products/chores.module.scss";
 import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
+import { MainContext } from "../../context/Main";
+import { useRouter } from "next/dist/client/router";
+
 export default function Chores({
   id,
   email,
@@ -16,7 +19,8 @@ export default function Chores({
   setshowauth,
   setshowpopup,
 }) {
-  const [showinput, setshowinput] = useState(false);
+  const { userdata } = useContext(MainContext);
+  const router = useRouter();
 
   return (
     <div className={styles.chores} id={id}>
@@ -37,7 +41,7 @@ export default function Chores({
           fulfill their tasks to earn money.
         </div>
         <div className={styles.signupBox}>
-          {!showinput ? (
+          {!userdata ? (
             <div
               className={styles.joinButton}
               onClick={() => {
@@ -48,8 +52,22 @@ export default function Chores({
               Join early access
             </div>
           ) : (
-            <div className={styles.button} onClick={check}>
-              Join
+            <div
+              className={styles.joinButton}
+              onClick={() => {
+                if (userdata) {
+                  if (userdata.is_waiting_active) {
+                    router.push("/dashboard/w");
+                  } else if (userdata.user_type === "parent") {
+                    router.push("/dashboard/p");
+                  } else {
+                    router.push("/dashboard/k");
+                  }
+                  return;
+                }
+              }}
+            >
+              Go to Dashboard
             </div>
           )}
         </div>
