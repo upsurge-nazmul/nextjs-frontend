@@ -10,10 +10,6 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
-import IntegritySvg from "../../components/SVGcomponents/IntegritySvg";
-import FunSvg from "../../components/SVGcomponents/FunSvg";
-import ExcellenceSvg from "../../components/SVGcomponents/ExcellenceSvg";
-import PassionSvg from "../../components/SVGcomponents/PassionSvg";
 
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -127,7 +123,12 @@ export default function About({ userdata }) {
           <div className={styles.valueContainer}>
             <div className={styles.values}>
               <div className={styles.valueItem}>
-                <IntegritySvg className={styles.valueIcon} />
+                <img
+                  src={require("../../assets/about/Integrity.png").default.src}
+                  alt="Integrity"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
                 <div className={styles.valueContent}>
                   {`Integrity – We do the right thing! We say what we mean, and mean
                 what we say. We stick to our commitments, treat everyone
@@ -136,7 +137,12 @@ export default function About({ userdata }) {
                 </div>
               </div>
               <div className={styles.valueItem}>
-                <FunSvg className={styles.valueIcon} />
+                <img
+                  src={require("../../assets/about/Fun.png").default.src}
+                  alt="Fun"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
                 <div className={styles.valueContent}>
                   {`Fun – We have fun while working, create fun products & ensure
                 that users have fun! Creativity & Innovation - Think outside the
@@ -152,14 +158,24 @@ export default function About({ userdata }) {
 
             <div className={styles.values}>
               <div className={styles.valueItem}>
-                <ExcellenceSvg className={styles.valueIcon} />
+                <img
+                  src={require("../../assets/about/Excellence.png").default.src}
+                  alt="Excellence"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
                 <div className={styles.valueContent}>
                   {`Excellence – We pursue excellence to create exceptional products
                 & experiences.`}
                 </div>
               </div>
               <div className={styles.valueItem}>
-                <PassionSvg className={styles.valueIcon} />
+                <img
+                  src={require("../../assets/about/Passion.png").default.src}
+                  alt="Passion"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
                 <div className={styles.valueContent}>
                   {`Passion – We are passionate about creating products that users
                 love & benefit from Drive - Our passion drives us to do more &
