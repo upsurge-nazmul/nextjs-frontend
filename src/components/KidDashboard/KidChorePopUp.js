@@ -362,5 +362,5 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
     </div>
   )
 }
-
-export default KidChorePopUp
+}
+export default KidChorePopUp;
