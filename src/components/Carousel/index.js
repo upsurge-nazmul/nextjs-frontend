@@ -3,9 +3,14 @@ import NextSvg from "../SVGcomponents/NextSvg";
 
 const CAROUSEL_MOVEMENT = 300;
 
-export default function Carousel({ children }) {
+export default function Carousel({
+  children,
+  carouselId = "carouselItems",
+  themeClr = "#17d1bc",
+  themeBg = "#fff",
+}) {
   function handlemove(direction) {
-    let partnerwrapper = document.getElementById("carouselItems");
+    let partnerwrapper = document.getElementById(carouselId);
     if (direction === "right") {
       partnerwrapper.scrollLeft += CAROUSEL_MOVEMENT;
     } else {
@@ -14,18 +19,35 @@ export default function Carousel({ children }) {
   }
 
   return (
-    <div className={styles.carousel}>
-      <NextSvg
-        className={styles.leftarrow}
-        onClick={() => handlemove("left")}
-      />
-      <div className={styles.mainContent} id={"carouselItems"}>
+    <div
+      className={styles.carousel}
+      style={{
+        backgroundColor: themeBg,
+      }}
+    >
+      <div
+        style={{
+          color: themeClr,
+        }}
+      >
+        <NextSvg
+          className={styles.leftarrow}
+          onClick={() => handlemove("left")}
+        />
+      </div>
+      <div className={styles.mainContent} id={carouselId}>
         {children}
       </div>
-      <NextSvg
-        className={styles.rightarrow}
-        onClick={() => handlemove("right")}
-      />
+      <div
+        style={{
+          color: themeClr,
+        }}
+      >
+        <NextSvg
+          className={styles.rightarrow}
+          onClick={() => handlemove("right")}
+        />
+      </div>
     </div>
   );
 }

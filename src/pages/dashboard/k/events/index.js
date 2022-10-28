@@ -77,15 +77,24 @@ export default function Events({ userData }) {
         <div className={styles.mainContent}>
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
-            <Carousel>
+            <Carousel carouselId={"eventsCarousel"}>
               {data.map((item) => (
-                <Card key={item.id} data={item} />
+                <Card
+                  key={item.id}
+                  data={item}
+                  height={"20vh"}
+                  width={"20vw"}
+                />
               ))}
             </Carousel>
           </div>
           <div className={styles.section}>
             <div className={styles.heading}>Challenges</div>
-            <Carousel>
+            <Carousel
+              carouselId={"challengesCarousel"}
+              themeClr={"#fff"}
+              themeBg={"#4066eb"}
+            >
               {data.map((item) => (
                 <Card key={item.id} data={item} />
               ))}
