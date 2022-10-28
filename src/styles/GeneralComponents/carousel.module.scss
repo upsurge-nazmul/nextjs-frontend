@@ -1,0 +1,48 @@
+.carousel {
+  width: 100%;
+  position: relative;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: #17d1bc;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+  .mainContent {
+    width: 60vw;
+    padding: 0 1rem;
+    display: flex;
+    overflow-x: auto;
+    margin: 0 3rem;
+    flex: 1;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    ::-webkit-scrollbar {
+      width: 0; /* Remove scrollbar space */
+      background: transparent; /* Optional: just make scrollbar invisible */
+    }
+  }
+  .leftarrow,
+  .rightarrow {
+    position: absolute;
+    border-radius: 20px;
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    border: none;
+    z-index: 4;
+    height: 100%;
+    background-color: #17d1bc;
+    cursor: pointer;
+  }
+  .leftarrow {
+    transform: scaleX(-1);
+  }
+  .rightarrow {
+    right: 0.5rem;
+  }
+}
