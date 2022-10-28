@@ -75,11 +75,22 @@ export default function Events({ userData }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <Carousel>
-            {data.map((item) => (
-              <Card key={item.id} data={item} />
-            ))}
-          </Carousel>
+          <div className={styles.section}>
+            <div className={styles.heading}>Upcoming Events</div>
+            <Carousel>
+              {data.map((item) => (
+                <Card key={item.id} data={item} />
+              ))}
+            </Carousel>
+          </div>
+          <div className={styles.section}>
+            <div className={styles.heading}>Challenges</div>
+            <Carousel>
+              {data.map((item) => (
+                <Card key={item.id} data={item} />
+              ))}
+            </Carousel>
+          </div>
         </div>
       </div>
     </div>
