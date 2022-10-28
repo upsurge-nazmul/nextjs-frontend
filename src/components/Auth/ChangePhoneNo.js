@@ -64,12 +64,6 @@ export default function ChangePhoneNo({
 
   return (
     <div className={styles.changePhone}>
-      <div
-      className={styles.cross}
-      onClick={() => setshowmodal(false)}
-      >
-      <CancelOutlinedIcon className={styles.icon} />
-      </div>
       <div className={styles.heading}>
         Please edit your phone number and continue
       </div>
