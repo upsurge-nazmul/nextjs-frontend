@@ -8,52 +8,12 @@ import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import PageTitle from "../../../../components/PageTitle";
 import Carousel from "../../../../components/Carousel";
 import Card from "../../../../components/Card";
-
-const data = [
-  {
-    id: 1,
-    name: "Bones",
-    image: "https://i.scdn.co/image/ab67616d0000b273813713582dcc508e7d5073c4",
-  },
-  {
-    id: 2,
-    name: "Believer",
-    image:
-      "https://i1.sndcdn.com/artworks-s3zOCWcV8XQVtQcv-0emq8A-t500x500.jpg",
-  },
-  {
-    id: 3,
-    name: "Enemy",
-    image:
-      "https://i1.sndcdn.com/artworks-38gNae8qY7Gti4D5-zRbpjw-t500x500.jpg",
-  },
-  {
-    id: 4,
-    name: "Thunder",
-    image:
-      "https://www.pluggedin.com/wp-content/uploads/2020/01/Imagine_Dragons__Thunder__Large.jpg.jpeg",
-  },
-  {
-    id: 5,
-    name: "Demons",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/2/2b/Imagine_Dragons_-_%22Demons%22_%28Official_Single_Cover%29.jpg",
-  },
-  {
-    id: 6,
-    name: "Natural",
-    image: "https://i.scdn.co/image/ab67616d0000b273da6f73a25f4c79d0e6b4a8bd",
-  },
-  {
-    id: 7,
-    name: "Sharks",
-    image:
-      "https://i0.wp.com/themusicuniverse.com/wp-content/uploads/2022/06/imaginedragonssharks.jpg?fit=800%2C450&ssl=1",
-  },
-];
+import EventsApis from "../../../../actions/apis/EventsApis";
 
 export default function Events({ userData }) {
   const { setuserdata } = useContext(MainContext);
+  const [events, setEvents] = useState();
+  const [challenges, setChallenges] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -63,6 +23,21 @@ export default function Events({ userData }) {
   useEffect(() => {
     setuserdata(userData);
   }, [userData]);
+
+  useEffect(() => {
+    async function fetchEventsAndChallenges() {
+      let eventsRes = await EventsApis.getAllEvents();
+      let chalRes = await EventsApis.getAllChallenges();
+
+      if (eventsRes && eventsRes.data && eventsRes.data.success) {
+        setEvents(eventsRes.data.data);
+      }
+      if (chalRes && chalRes.data && chalRes.data.success) {
+        setChallenges(chalRes.data.data);
+      }
+    }
+    fetchEventsAndChallenges();
+  }, []);
 
   return (
     <div className={styles.eventsPage}>
@@ -78,14 +53,15 @@ export default function Events({ userData }) {
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
             <Carousel carouselId={"eventsCarousel"}>
-              {data.map((item) => (
-                <Card
-                  key={item.id}
-                  data={item}
-                  height={"20vh"}
-                  width={"20vw"}
-                />
-              ))}
+              {events &&
+                events.map((item) => (
+                  <Card
+                    key={item.id}
+                    data={item}
+                    height={"20vh"}
+                    width={"20vw"}
+                  />
+                ))}
             </Carousel>
           </div>
           <div className={styles.section}>
@@ -95,9 +71,8 @@ export default function Events({ userData }) {
               themeClr={"#fff"}
               themeBg={"#4066eb"}
             >
-              {data.map((item) => (
-                <Card key={item.id} data={item} />
-              ))}
+              {challenges &&
+                challenges.map((item) => <Card key={item.id} data={item} />)}
             </Carousel>
           </div>
         </div>
