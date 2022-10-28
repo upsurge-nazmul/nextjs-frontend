@@ -71,7 +71,7 @@ function CalculatorsPage({ userdata }) {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <WaitingListCta />
+        <WaitingListCta setshowauth={setshowauth} />
         <div className={styles.headingSection}>
           <h1 className={styles.mainheading}>{heading}</h1>
           <h2 className={styles.heading}>How it works</h2>
