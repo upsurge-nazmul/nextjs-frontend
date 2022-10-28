@@ -1,5 +1,5 @@
 import styles from "../../styles/GeneralComponents/carousel.module.scss";
-import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
+import NextSvg from "../SVGcomponents/NextSvg";
 
 const CAROUSEL_MOVEMENT = 300;
 
@@ -15,14 +15,14 @@ export default function Carousel({ children }) {
 
   return (
     <div className={styles.carousel}>
-      <PlayCircleSvg
+      <NextSvg
         className={styles.leftarrow}
         onClick={() => handlemove("left")}
       />
       <div className={styles.mainContent} id={"carouselItems"}>
         {children}
       </div>
-      <PlayCircleSvg
+      <NextSvg
         className={styles.rightarrow}
         onClick={() => handlemove("right")}
       />
