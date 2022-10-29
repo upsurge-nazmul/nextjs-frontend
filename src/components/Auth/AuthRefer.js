@@ -103,6 +103,8 @@ function AuthRefer({
         msg: response.data.message,
         type: "success",
       });
+      fbq('trackCustom', 'ReferSignUp', {event: 'Refer_Sign_Up_Successful'});
+      dataLayer.push({'event':'refer-signup-success'});
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
       setmode("otp");
@@ -169,10 +171,12 @@ function AuthRefer({
       first_name: firstName,
       last_name: lastName,
     });
-
+    
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
+      fbq('trackCustom', 'ReferSignUp', {event: 'Refer_Sign_Up_Successful'});
+      dataLayer.push({'event':'refer-signup-success'});
       if (mode === "otp") {
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }

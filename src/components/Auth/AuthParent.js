@@ -33,6 +33,8 @@ function AuthParent({
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
+        dataLayer.push({'event':'Email-entered'});
+        fbq('trackCustom', 'SignUp', {event: 'Email_Address_Entered_By_User'});
         setmode("email");
       } else {
         seterror(checkemail?.data.message || "Error connecting to server");
