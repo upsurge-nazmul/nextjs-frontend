@@ -86,7 +86,7 @@ export default function Pricing() {
               </li>
             </ul>
             <div className={styles.actionArea}>
-              <button className={styles.claimButton}>Claim Now</button>
+              <button onClick={()=>{setshowauth(true)}} className={styles.claimButton}>Claim Now</button>
               <div className={styles.actionHelper}>(Limited Offer)</div>
             </div>
           </div>
