@@ -53,7 +53,11 @@ const login = (payload, token = null) => {
 };
 
 const checktoken = (payload) => {
-  return ApiCalls.postResponse(`users/checktoken`, payload, payload.token);
+  return ApiCalls.postResponse(
+    `users/checktoken`,
+    payload,
+    payload.token || getCookie("accesstoken")
+  );
 };
 const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
@@ -166,7 +170,7 @@ const LoginApis = {
   genemailotp,
   createchildotp,
   updatePhoneByEmail,
-  verifyPassword
+  verifyPassword,
 };
 
 export default LoginApis;

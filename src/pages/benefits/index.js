@@ -16,19 +16,14 @@ import Skills from "../../components/Benefits/Skills";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
 import Seo from "../../components/Seo";
-function BenfitsPage({ userdata }) {
+function BenfitsPage() {
   const router = useRouter();
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
 
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -71,27 +66,3 @@ function BenfitsPage({ userdata }) {
 }
 
 export default BenfitsPage;
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}
