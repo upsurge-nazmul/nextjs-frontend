@@ -36,6 +36,8 @@ export default function ChangePhoneNo({
         updatedPhoneRes.data &&
         updatedPhoneRes.data.success
       ) {
+        fbq('trackCustom', 'ChangePhoneno', {event: 'Phone_number_changed'});
+        dataLayer.push({'event':'phoneno-change-successful'});
         let otpRes = await LoginApis.genotp({ phone: newPhone });
         if (otpRes.data.success) {
           settoastdata({
