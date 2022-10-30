@@ -101,6 +101,14 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
             },
           }));
         } else setchoredata((prev) => ({ ...prev, completion: "started" }));
+        if(response.data.data.title === "Invite your friends")
+        router.push("/dashboard/k/invite")
+        else if(response.data.data.title === "Update your Avatar")
+        router.push("/dashboard/k/store")
+        else if(response.data.data.title === "Complete the course Introduction to Banking")
+        router.push("/dashboard/k/quest/banking")
+        else if(response.data.data.title === "Complete Origins and Barter System Course")
+        router.push("/dashboard/k/quest/whatIsMoney")
       } else {
         console.log(response);
         settoastdata({
@@ -109,7 +117,6 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
           msg: response?.data.message || "cannot reach server",
         });
       }
-    }
     async function handleMarkForApproval() {
       if (choredata.completion === "approval") {
         return;
@@ -289,7 +296,7 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
             ) : choredata.latest_chore.completion === "pending" ? (
                 <button className={styles.startButton} onClick={handleMarkStart}>
                 Start
-              </button>
+                </button>
             ) : (
                 <button
                 className={styles.markDoneButton}
@@ -355,5 +362,5 @@ function KidChorePopUp({choredata,showPopUp,setShowPopUp,settoastdata,setchoreda
     </div>
   )
 }
-
-export default KidChorePopUp
+}
+export default KidChorePopUp;

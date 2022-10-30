@@ -15,6 +15,13 @@ const addchore = (payload) => {
     getCookie("accesstoken")
   );
 };
+const getfamilyid = (payload) => {
+  return ApiCalls.postResponse(
+    `chore/getfamilyid`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const editchore = (payload) => {
   return ApiCalls.postResponse(
     `chore/editchore`,
@@ -109,6 +116,7 @@ const ChoreApis = {
   rejectchore,
   getchildchores,
   getLeaderboard,
+  getfamilyid,
 };
 
 export default ChoreApis;
