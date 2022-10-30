@@ -64,6 +64,7 @@ function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata
                 <div className={styles.fourthsection}>
             <div className={styles.msgsection} id="chore-msg">
           <p> Remarks:</p>
+          {data.child_remark}
             <p className={styles.lettersleft}>
             </p>
             </div>

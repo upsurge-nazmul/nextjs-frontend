@@ -199,6 +199,7 @@ export default function ManageChore({
           reward_type: rewardType.value,
           reward_amount: rewardAmount,
           custom_rewards: customRewards,
+          child_remark:"",
         });
         if (!response || !response.data || !response.data.success) {
           noerror = false;
