@@ -1,18 +1,16 @@
-import styles from "../../styles/GeneralComponents/card.module.scss";
+import BasicCard from "./BasicCard";
+import EventsCard from "./EventsCard";
 
-export default function Card({ data, height = "15vh", width = "15vw" }) {
+export default function Card(props) {
+  const { cardType = "basic", data, height = "15vh", width = "15vw" } = props;
+
   return (
-    <div
-      className={styles.card}
-      style={{
-        height: height,
-        minWidth: width,
-      }}
-    >
-      <img src={data.image} alt={data.name} className={styles.banner} />
-      <div className={styles.cardContent}>
-        <div className={styles.cardName}>{data.name}</div>
-      </div>
-    </div>
+    <>
+      {cardType === "eventCard" ? (
+        <EventsCard {...props} />
+      ) : (
+        <BasicCard {...props} />
+      )}
+    </>
   );
 }

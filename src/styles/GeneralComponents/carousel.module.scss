@@ -10,10 +10,10 @@
     width: 60vw;
     display: flex;
     overflow-x: auto;
-    margin: 0 1.5rem;
     scrollbar-width: none;
     scroll-behavior: smooth;
     gap: 2%;
+    padding: 1rem;
     &::-webkit-scrollbar {
       display: none;
     }

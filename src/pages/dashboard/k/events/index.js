@@ -58,8 +58,9 @@ export default function Events({ userData }) {
                   <Card
                     key={item.id}
                     data={item}
-                    height={"20vh"}
+                    height={"40vh"}
                     width={"20vw"}
+                    cardType={"eventCard"}
                   />
                 ))}
             </Carousel>
