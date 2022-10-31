@@ -11,6 +11,7 @@ import Card from "../../../../components/Card";
 import EventsApis from "../../../../actions/apis/EventsApis";
 import Modal from "../../../../components/Modal";
 import EventDetails from "../../../../components/Events/EventDetails";
+import FillSpace from "../../../../components/Dashboard/FillSpace";
 
 export default function Events({ userData }) {
   const { setuserdata } = useContext(MainContext);
@@ -56,9 +57,9 @@ export default function Events({ userData }) {
         <div className={styles.mainContent}>
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
-            <Carousel carouselId={"eventsCarousel"}>
-              {events &&
-                events.map((item) => (
+            {events && events.length ? (
+              <Carousel carouselId={"eventsCarousel"}>
+                {events.map((item) => (
                   <Card
                     key={item.id}
                     data={item}
@@ -68,17 +69,23 @@ export default function Events({ userData }) {
                     handleSelect={() => setSelectedEvent(item)}
                   />
                 ))}
-            </Carousel>
+              </Carousel>
+            ) : (
+              <FillSpace
+                text={"There are no upcoming events"}
+                extrastyle={{ margin: 0, minHeight: "30vh" }}
+              />
+            )}
           </div>
           <div className={styles.section}>
             <div className={styles.heading}>Challenges</div>
-            <Carousel
-              carouselId={"challengesCarousel"}
-              themeClr={"#fff"}
-              themeBg={"#17d1bc"}
-            >
-              {challenges &&
-                challenges.map((item) => (
+            {challenges && challenges.length ? (
+              <Carousel
+                carouselId={"challengesCarousel"}
+                themeClr={"#fff"}
+                themeBg={"#17d1bc"}
+              >
+                {challenges.map((item) => (
                   <Card
                     key={item.id}
                     data={item}
@@ -88,7 +95,13 @@ export default function Events({ userData }) {
                     handleSelect={() => setSelectedChallenge(item)}
                   />
                 ))}
-            </Carousel>
+              </Carousel>
+            ) : (
+              <FillSpace
+                text={"There are no challaenges at this moment"}
+                extrastyle={{ margin: 0, minHeight: "30vh" }}
+              />
+            )}
           </div>
         </div>
       </div>
