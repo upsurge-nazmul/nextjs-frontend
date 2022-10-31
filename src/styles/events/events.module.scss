@@ -14,6 +14,8 @@
     flex-direction: column;
     .mainContent {
       padding: 10px 50px;
+      overflow-y: auto;
+      overflow-x: hidden;
       .section {
         margin-bottom: 40px;
         .heading {

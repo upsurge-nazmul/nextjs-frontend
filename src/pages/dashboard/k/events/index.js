@@ -43,8 +43,6 @@ export default function Events({ userData }) {
     fetchEventsAndChallenges();
   }, []);
 
-  console.log("@@@@@", selectedEvent);
-
   return (
     <div className={styles.eventsPage}>
       <PageTitle title={`upsurge | Events & Challenges`} />
@@ -77,10 +75,19 @@ export default function Events({ userData }) {
             <Carousel
               carouselId={"challengesCarousel"}
               themeClr={"#fff"}
-              themeBg={"#4066eb"}
+              themeBg={"#17d1bc"}
             >
               {challenges &&
-                challenges.map((item) => <Card key={item.id} data={item} />)}
+                challenges.map((item) => (
+                  <Card
+                    key={item.id}
+                    data={item}
+                    height={"40vh"}
+                    width={"20vw"}
+                    cardType={"challengeCard"}
+                    handleSelect={() => setSelectedChallenge(item)}
+                  />
+                ))}
             </Carousel>
           </div>
         </div>
@@ -101,6 +108,24 @@ export default function Events({ userData }) {
           }}
         >
           <EventDetails data={selectedEvent} />
+        </Modal>
+      )}
+      {selectedChallenge && (
+        <Modal
+          onOutsideClick={() => setSelectedChallenge()}
+          title={selectedChallenge.name}
+          actions={{
+            cancelText: "Cancel",
+            isCancel: true,
+            handleCancel: () => setSelectedChallenge(),
+            proceedText: "Register Now",
+            isProceed: true,
+            handleProceed: () => {
+              setSelectedChallenge();
+            },
+          }}
+        >
+          <EventDetails data={selectedChallenge} />
         </Modal>
       )}
     </div>

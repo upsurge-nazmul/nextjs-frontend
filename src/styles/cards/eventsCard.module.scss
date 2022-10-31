@@ -3,6 +3,7 @@
   box-shadow: 0px 6px 7px 0px rgb(148 148 148 / 31%);
   display: flex;
   flex-direction: column;
+  background-color: #fff;
   .banner {
     width: 100%;
     height: 60%;
@@ -51,6 +52,7 @@
       background-color: #fdcc03;
       color: #fff;
       border-bottom-left-radius: 14px;
+      cursor: default;
     }
     .detailsButton {
       @extend .actionButton;
