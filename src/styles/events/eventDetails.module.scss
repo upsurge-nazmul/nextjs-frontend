@@ -7,6 +7,22 @@
     padding-bottom: 20px;
     .contentArea {
       flex: 1;
+      .eventName {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      .eventType {
+        font-size: 1.5rem;
+        color: #999;
+        font-weight: 500;
+      }
+      .eventDate {
+        font-size: 1.5rem;
+        color: #999;
+        font-weight: 500;
+      }
     }
     .bannerArea {
       width: 30vw;
@@ -19,5 +35,8 @@
     }
   }
   .detailsSection {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 400;
   }
 }
