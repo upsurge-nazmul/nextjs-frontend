@@ -1,6 +1,11 @@
 import styles from "../../styles/cards/eventsCard.module.scss";
 
-export default function EventsCard({ data, height = "15vh", width = "15vw" }) {
+export default function EventsCard({
+  data,
+  height = "15vh",
+  width = "15vw",
+  handleSelect = () => {},
+}) {
   return (
     <div
       className={styles.card}
@@ -21,7 +26,9 @@ export default function EventsCard({ data, height = "15vh", width = "15vw" }) {
         ) : (
           <button className={styles.commingButton}>Comming Soon</button>
         )}
-        <button className={styles.detailsButton}>See Details</button>
+        <button className={styles.detailsButton} onClick={handleSelect}>
+          See Details
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,23 @@
+.eventDetails {
+  width: 60vw;
+  height: 70vh;
+  padding: 20px 10px;
+  .topSection {
+    display: flex;
+    padding-bottom: 20px;
+    .contentArea {
+      flex: 1;
+    }
+    .bannerArea {
+      width: 30vw;
+      height: 35vh;
+      .banner {
+        height: 100%;
+        width: 100%;
+        border-radius: 14px;
+      }
+    }
+  }
+  .detailsSection {
+  }
+}

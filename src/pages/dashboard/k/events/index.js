@@ -9,11 +9,15 @@ import PageTitle from "../../../../components/PageTitle";
 import Carousel from "../../../../components/Carousel";
 import Card from "../../../../components/Card";
 import EventsApis from "../../../../actions/apis/EventsApis";
+import Modal from "../../../../components/Modal";
+import EventDetails from "../../../../components/Events/EventDetails";
 
 export default function Events({ userData }) {
   const { setuserdata } = useContext(MainContext);
   const [events, setEvents] = useState();
   const [challenges, setChallenges] = useState();
+  const [selectedEvent, setSelectedEvent] = useState();
+  const [selectedChallenge, setSelectedChallenge] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -39,6 +43,8 @@ export default function Events({ userData }) {
     fetchEventsAndChallenges();
   }, []);
 
+  console.log("@@@@@", selectedEvent);
+
   return (
     <div className={styles.eventsPage}>
       <PageTitle title={`upsurge | Events & Challenges`} />
@@ -61,6 +67,7 @@ export default function Events({ userData }) {
                     height={"40vh"}
                     width={"20vw"}
                     cardType={"eventCard"}
+                    handleSelect={() => setSelectedEvent(item)}
                   />
                 ))}
             </Carousel>
@@ -78,6 +85,24 @@ export default function Events({ userData }) {
           </div>
         </div>
       </div>
+      {selectedEvent && (
+        <Modal
+          onOutsideClick={() => setSelectedEvent()}
+          title={selectedEvent.name}
+          actions={{
+            cancelText: "Cancel",
+            isCancel: true,
+            handleCancel: () => setSelectedEvent(),
+            proceedText: "Register Now",
+            isProceed: true,
+            handleProceed: () => {
+              setSelectedEvent();
+            },
+          }}
+        >
+          <EventDetails data={selectedEvent} />
+        </Modal>
+      )}
     </div>
   );
 }
