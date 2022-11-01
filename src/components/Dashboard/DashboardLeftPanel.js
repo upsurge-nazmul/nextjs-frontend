@@ -25,6 +25,7 @@ import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import { MainContext } from "../../context/Main";
+import EventsSvg from "../SVGcomponents/EventsSvg";
 function DashboardLeftPanel({
   type,
   hidelogo,
@@ -160,7 +161,7 @@ function DashboardLeftPanel({
             }`}
             onClick={() => router.push("/dashboard/k/events")}
           >
-            <ChoresSvg className={styles.icon} />
+            <EventsSvg className={styles.icon} />
             <p className={styles.tabtitle}>Events & Challenges</p>
           </div>
 
