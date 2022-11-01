@@ -12,8 +12,8 @@
     max-width: calc(100vw);
     flex-direction: column;
     h4{
-           padding: 10px 0 10px 40px;
-         }
+          padding: 10px 0 10px 40px;
+      }
     .mainContent {
       width: 100%;
       display: flex;
@@ -68,7 +68,8 @@
             padding-right: 30px;
             flex: 1;
             .chores {
-              margin-top: 20px;
+              margin-top: 1.5rem;
+              margin-bottom: 2rem;
             }
           }
         }
