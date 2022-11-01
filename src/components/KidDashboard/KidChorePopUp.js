@@ -12,7 +12,7 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
   const [showmenu, setshowmenu] = useState(false);
   const [choredatas, setchoredatas] = useState(choredata);
   const router = useRouter();
-  const [duedate, setduedate] = useState(duedate);
+  const [duedate, setduedate] = useState(getDueDate());
   const [lettercounts, setlettercounts] = useState(300);
   const [imagecounts, setimagecounts] = useState(5);
   const [openPhotoUpload, setOpenPhotoUpload] = useState(false);
@@ -85,7 +85,7 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
     }, 1000 * 60);
     return () => clearInterval(x);
   }, []);
-  
+
   async function handleMarkStart() {
     if (choredata.completion === "started") {
       return;
@@ -121,7 +121,9 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
         msg: response?.data.message || "cannot reach server",
       });
     }
-    async function handleMarkForApproval() {
+  }
+    
+  async function handleMarkForApproval() {
       if (choredata.completion === "approval") {
         return;
       }
@@ -148,7 +150,8 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
         });
       }
     }
-    function getDueDate() {
+
+  function getDueDate() {
       if (choredata.is_reoccurring) {
         if (JSON.stringify(choredata.latest_chore) !== "{}") {
           if (choredata.latest_chore.completion === "completed")
@@ -164,8 +167,8 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
         return duetimeDifference(choredata.due_date);
       }
     }
-
-    return (
+  
+  return (
       <div className={styles.chorePopUp}>
         <div className={styles.chorePopUpWrapper}>
           <div
@@ -367,5 +370,5 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
       </div>
     )
   }
-}
+
 export default KidChorePopUp;
