@@ -15,7 +15,8 @@ import Toast from "../../components/Toast";
 import KnowledgeQuestMainSection from "../../components/Products/KnowledgeQuestMainSection";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
-export default function Products({ userdata }) {
+
+export default function Products() {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
@@ -31,12 +32,8 @@ export default function Products({ userdata }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
+
   async function check() {
     e.preventDefault();
     if (!validator.isEmail(email)) {
@@ -115,28 +112,4 @@ export default function Products({ userdata }) {
       <Footer />
     </div>
   );
-}
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
 }

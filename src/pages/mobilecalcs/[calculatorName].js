@@ -13,7 +13,7 @@ import RelativeSection from "../../components/Calculators/RelativeSection";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
 
-function CalculatorsPage({ userdata }) {
+function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [heading, setHeading] = useState("");
@@ -23,12 +23,7 @@ function CalculatorsPage({ userdata }) {
   const [paths, setpaths] = useState(["home", "calculators"]);
   const [showpopup, setshowpopup] = useState(false);
   const [error, seterror] = useState("");
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     seterror("");
@@ -80,28 +75,3 @@ function CalculatorsPage({ userdata }) {
 }
 
 export default CalculatorsPage;
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}

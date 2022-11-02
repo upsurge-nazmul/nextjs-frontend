@@ -61,14 +61,15 @@ export default function ChangePassPopUp({
           <div className={styles.cross} onClick={() => setshowpopup(false)}>
             <CancelOutlinedIcon className={styles.icon} />
           </div>
-          <p className={styles.heading}>Change Phone</p>
+          <p className={styles.heading}>Change Phone Number</p>
           <ModernInputBox
             value={changephone}
             setvalue={setchangephone}
             placeholder="New phone number"
+            emailonFocus={true}
             numOnly
             maxLength={10}
-          />
+            />
           <ModernInputBox
             value={confirmphone}
             setvalue={setconfirmphone}
