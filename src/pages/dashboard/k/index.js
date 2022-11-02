@@ -161,7 +161,7 @@ export default function ChildActivity({
       <PageTitle title={`upsurge | Dashboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-      {showtour && (
+      {/* {showtour && (
         <Tour
           story={story}
           current={currentTourIndex}
@@ -170,7 +170,7 @@ export default function ChildActivity({
           setshowtour={setshowtour}
           introComplete={true}
         />
-      )}
+      )} */}
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <div className={styles.contentWrapper}>
         <DashboardHeader

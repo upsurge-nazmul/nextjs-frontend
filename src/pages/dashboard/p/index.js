@@ -255,7 +255,7 @@ function Dashboard({
         <PageTitle title={`upsurge | Dashboard`} />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
-        {phoneverified && showtour && (
+        {/* {phoneverified && showtour && (
           <Tour
             story={story}
             current={currentTourIndex}
@@ -264,7 +264,7 @@ function Dashboard({
             setshowtour={setshowtour}
             introComplete={true}
           />
-        )}
+        )} */}
         {userdatafromserver &&
           userdatafromserver.user_type !== "child" &&
           !phoneverified && (
