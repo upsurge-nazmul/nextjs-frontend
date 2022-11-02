@@ -47,8 +47,7 @@
     padding: 10px 20px;
     background-color: #171313;
     display: flex;
-    justify-content: space-between;
-
+    justify-content: flex-end;
     .fullScreenButton {
       cursor: pointer;
       border: none;
@@ -64,7 +63,7 @@
       font-size: 4rem;
       text-align: left;
       vertical-align: baseline;
-      span{
+      span {
         padding-left: 1.8rem;
         flex-grow: 1;
       }
