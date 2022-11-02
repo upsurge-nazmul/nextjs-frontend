@@ -101,6 +101,8 @@ function AuthFullData({
         msg: response.data.message,
         type: "success",
       });
+      fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
+      dataLayer.push({'event':'signup-successful'});
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
       setmode("otp");
@@ -161,10 +163,12 @@ function AuthFullData({
       first_name: firstName,
       last_name: lastName,
     });
-
+    
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
+      fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
+      dataLayer.push({'event':'signup-successful'});
       if (mode === "otp") {
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
