@@ -60,26 +60,26 @@ export default function KnowledgeQuest({ userData, questData }) {
       let level = await KnowledgeQuestApi.initiate(
         { quest_id: questId },
         getCookie("accesstoken")
-      );
-      if (level && level.data && level.data.success) {
-        setUserLevel(level.data.data.level);
+        );
+        if (level && level.data && level.data.success) {
+          setUserLevel(level.data.data.level);
+        }
       }
-    }
-    fetchQuestLevel();
-  }, [questId]);
-
-  const handleBack = () => {
-    setView();
-    setCurrentChapter();
-    setActiveChNo(0);
-  };
-
-  const handleDone = () => {
-    KnowledgeQuestApi.update({
-      level: activeChNo,
-      quest_id: currentQuest.questId,
-    });
-    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
+      fetchQuestLevel();
+    }, [questId]);
+    
+    const handleBack = () => {
+      setView();
+      setCurrentChapter();
+      setActiveChNo(0);
+    };
+    
+    const handleDone = () => {
+      KnowledgeQuestApi.update({
+        level: activeChNo,
+        quest_id: currentQuest.questId,
+      });
+      setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
     setView();
     setCurrentChapter();
     setActiveChNo(0);
@@ -167,10 +167,11 @@ export default function KnowledgeQuest({ userData, questData }) {
                           handleDone,
                           setuserdata,
                         }}
-                      />
-                    ) : view === LESSON_TYPES[3] ? (
-                      <GameView
-                        game={currentChapter}
+                        />
+                        ) : view === LESSON_TYPES[3] ? (
+                          <GameView
+                          chapterId = {currentChapter}
+                          game={currentChapter}
                         setGame={handleBack}
                         handleDone={handleDone}
                       />
