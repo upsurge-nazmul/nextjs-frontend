@@ -448,7 +448,7 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
-      if (response.data.data.is_waiting_active) {
+      if (response.data.is_waiting_active) {
         return {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {

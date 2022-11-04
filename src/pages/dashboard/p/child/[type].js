@@ -22,8 +22,46 @@ import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
 import PageTitle from "../../../../components/PageTitle";
+import ChoreApis from "../../../../actions/apis/ChoreApis";
+
 
 function AddKid({ childdata, userdatafromserver }) {
+
+  const presetchores = [
+    {
+      choretitle:"Complete Origins and Barter System Course",
+      msg:"Complete the origins and barter system course to unlock games and activities. You will also earn Unicoins upon completion of this task.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Update your Avatar",
+      msg:"To complete this task, buy one avatar from the store. You will then be able to update your profile picture by going to profile.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Complete the course Introduction to Banking",
+      msg:"Complete this course to unlock more games and activities. You will also earn Unicoins upon completion of this task.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Invite your friends",
+      msg:"Invite your friends to earn unicoins.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    }
+  ]
+
   const router = useRouter();
   const { type, backTo = "/dashboard/p" } = router.query;
   const [toastdata, settoastdata] = useState({
@@ -32,7 +70,7 @@ function AddKid({ childdata, userdatafromserver }) {
     msg: "",
   });
   const { setuserdata } = useContext(MainContext);
-
+  
   const [mode, setmode] = useState(
     type === "add" ? "Add Child Details" : "Edit Child Details"
   );
@@ -77,6 +115,27 @@ function AddKid({ childdata, userdatafromserver }) {
   const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [duedate, setduedate] = useState(new Date(new Date(new Date().setHours(new Date().getHours() + 720))).getTime());
+  const fetchfamilyid = async(id) =>{
+    let response = await ChoreApis.getfamilyid()
+    assignChores(id,response.data.data.family_id);
+  }
+  const assignChores = (id , familyide) =>{
+   {presetchores.map((data ,key)=>{
+      return(
+         ChoreApis.addchore({
+          message: data.msg,
+          title: data.choretitle,
+          category: data.cat,
+          assigned_to: userName,
+          family_id: familyide,
+          child_id: id,
+          due_date: duedate,
+          img_url: data.img_url,
+          is_reoccurring:false,
+          completion: "pending",
+  }))})}
+}
   useEffect(() => {
     if (gender === "male") {
       setavatars(boy_avatars);
@@ -170,6 +229,7 @@ function AddKid({ childdata, userdatafromserver }) {
       // } else {
       //   router.push("/dashboard/p");
       // }
+       await fetchfamilyid(response.data.data.id);
       setShowSuccess(true);
       settoastdata({
         type: "success",
