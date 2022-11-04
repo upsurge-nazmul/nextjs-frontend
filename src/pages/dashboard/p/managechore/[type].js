@@ -28,7 +28,7 @@ export default function ManageChore({
   templatedata,
 }) {
   const router = useRouter();
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata,userdata } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
   const [storyIndex, setStoryIndex] = useState(0);
   const templatename = template?.replace(/-/g, " ");
@@ -207,6 +207,7 @@ export default function ManageChore({
         }
       }
       if (noerror) {
+        mixpanel.track('Chore',{'event':'Chore added successfully','Assgined by':`${userdata.email}`,'Chore title':`${choretitle}`,'Chore category':`${cat}`});
         settoastdata({
           show: true,
           msg: "Chores added successfully",
@@ -246,6 +247,7 @@ export default function ManageChore({
     });
 
     if (response && response.data && response.data.success) {
+      mixpanel.track('Chore',{'event':'Chore Template added successfully','Added by':`${userdata.email}`,'Template title':`${choretitle}`,'Template category':`${cat}`});
       settoastdata({
         show: true,
         msg: "Template added successfully",
