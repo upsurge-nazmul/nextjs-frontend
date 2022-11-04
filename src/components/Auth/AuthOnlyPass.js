@@ -78,17 +78,24 @@ function AuthLogin({
           })
           );
           setCookie("accesstoken", response.data.data.token);
-        setuserdata(newLogin.data.data.userProfile);
-        setuser(newLogin.data.data.userProfile.id);
-        settoastdata({
-          show: true,
-          msg: newLogin.data.message,
-          type: "success",
-        });
-        console.log(router.pathname);
-        router.reload();
-      } else {
-        seterror(newLogin?.data.message || "Cannot reach server");
+          setuserdata(newLogin.data.data.userProfile);
+          setuser(newLogin.data.data.userProfile.id);
+          if(newLogin.data.data.userProfile.user_name === null){
+            mixpanel.track('Switch Account',{'event':`Account Switched to ${newLogin.data.data.userProfile.email}`});
+          }
+          else{
+            mixpanel.track('Switch Account',{'event':`Account Switched to ${newLogin.data.data.userProfile.user_name}`});
+          }
+          settoastdata({
+            show: true,
+            msg: newLogin.data.message,
+            type: "success",
+          });
+          console.log(router.pathname);
+          router.reload();
+        } else {
+          mixpanel.track('Switch Account',{'event':`${newLogin?.data.message || "Cannot reach server"}`});
+          seterror(newLogin?.data.message || "Cannot reach server");
       }
     }
     setCookie("accesstoken", response.data.data.token);
