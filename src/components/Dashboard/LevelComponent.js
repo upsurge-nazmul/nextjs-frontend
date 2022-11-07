@@ -4,17 +4,105 @@ import styles from "../../styles/levels.module.scss";
 import LevelCard from "./LevelCard";
 
 const LEVEL_DATA = [
-  { level: 1 },
-  { level: 2 },
-  { level: 3 },
-  { level: 4 },
-  { level: 5 },
-  { level: 6 },
-  { level: 7 },
-  { level: 8 },
-  { level: 9 },
-  { level: 10 },
-  { level: 11 },
+  {
+    level: 1,
+    unlockedAt: ["Completed chores <= 1", "Game plays 100"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 2,
+    unlockedAt: ["Completed chores <= 5", "Game plays 1000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 3,
+    unlockedAt: ["Completed chores <= 10", "Game plays 10000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 4,
+    unlockedAt: ["Completed chores <= 25", "Game plays 100000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 5,
+    unlockedAt: ["Completed chores <= 50", "Game plays 1000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 6,
+    unlockedAt: ["Completed chores <= 75", "Game plays 10000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 7,
+    unlockedAt: ["Completed chores <= 100", "Game plays 10000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 8,
+    unlockedAt: ["Completed chores <= 250", "Game plays 100000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 9,
+    unlockedAt: ["Completed chores <= 500", "Game plays 100000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 10,
+    unlockedAt: ["Completed chores <= 750", "Game plays 100000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
+  {
+    level: 11,
+    unlockedAt: ["Completed chores > 750", "Game plays 1000000000"],
+    perks: [
+      "More Games unlocked",
+      "More Knowledge Quests unlocked",
+      "More Avatars unlocked",
+    ],
+  },
 ];
 
 export default function LevelComponent({ setshow }) {
