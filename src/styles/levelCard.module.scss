@@ -1,0 +1,20 @@
+.level {
+  width: 350px;
+  height: 380px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 12px;
+  user-select: none;
+  img {
+    width: 300px;
+  }
+  .levelName {
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+  }
+  .chorecompleted {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
