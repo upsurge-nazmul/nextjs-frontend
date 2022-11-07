@@ -1,6 +1,7 @@
 import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
+import Buttons from "../Buttons";
 import GameSvg from "../SVGcomponents/GameSvg";
 import UnicoinSvg from "../SVGcomponents/UniCoinSvg";
 
@@ -34,10 +35,16 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
             {reward}
           </p>
         )}
-        <div className={styles.chatbtn}>
+        <div className={styles.actionArea}>
+          <Buttons>
+            Play
+            <GameSvg className={styles.icon} />
+          </Buttons>
+        </div>
+        {/* <div className={styles.chatbtn}>
           Play
           <GameSvg className={styles.icon} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
