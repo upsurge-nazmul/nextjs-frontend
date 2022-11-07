@@ -1,5 +1,5 @@
 .levelCard {
-  min-width: 350px;
+  min-width: 300px;
   height: 380px;
   background-color: #fff;
   border-radius: 14px;
@@ -12,7 +12,7 @@
     border-top-right-radius: 14px;
     box-shadow: 0px 5px 12px 1px #d5d5d5;
     .badge {
-      width: 200px;
+      width: 180px;
     }
     .levelArea {
       display: flex;
@@ -21,7 +21,7 @@
       align-items: flex-end;
       padding-bottom: 10px;
       .levelName {
-        font-size: 2.25rem;
+        font-size: 1.75rem;
         font-weight: 600;
         color: #fff;
       }
