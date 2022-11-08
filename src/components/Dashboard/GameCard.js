@@ -12,7 +12,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
     <div
       className={styles.gameCard}
       style={cardstyle}
-      onClick={onCLick ? onCLick : () => router.push("/dashboard/k/games")}
+      // onClick={onCLick ? onCLick : () => router.push("/dashboard/k/games")}
     >
       <img
         src={
@@ -36,7 +36,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
           </p>
         )}
         <div className={styles.actionArea}>
-          <Buttons>
+          <Buttons type={"animated"}>
             Play
             <GameSvg className={styles.icon} />
           </Buttons>
