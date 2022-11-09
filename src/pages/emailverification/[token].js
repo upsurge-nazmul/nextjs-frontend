@@ -3,11 +3,15 @@ import { useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import styles from "../../styles/emailverification/emailverification.module.scss";
+import mixpanel from "mixpanel-browser";
 
 export default function Verification({ emailVerified, msg }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  mixpanel.track('Email Verification',{'event':'Email Verification Done'});
+  if(emailVerified === false)
+  {
+    mixpanel.track('Email Verification',{'event':'Email Verification Done'});
+  }
   return (
     <div className={styles.mainPage}>
       <Header
