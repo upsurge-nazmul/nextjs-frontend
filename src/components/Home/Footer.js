@@ -122,6 +122,7 @@ function Footer({
             )}
           <div className={styles.brandtext}>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting WhatApp`})}}
               className={styles.whatsapp}
               href="https://wa.me/918851117926"
               target="_blank"
@@ -152,6 +153,7 @@ function Footer({
 
           <div className={styles.socials}>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Facebook`})}}
               href="https://www.facebook.com/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -160,6 +162,7 @@ function Footer({
               <Fb className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Instagram`})}}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
@@ -168,6 +171,7 @@ function Footer({
               <Insta className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Linkedin`})}}
               href="https://www.linkedin.com/company/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -176,6 +180,7 @@ function Footer({
               <LinkedIN className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -183,6 +188,7 @@ function Footer({
               <DiscordSvg className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -191,6 +197,7 @@ function Footer({
               <PhoneIcon className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
@@ -568,6 +575,7 @@ function Footer({
         </div>
         <div className={styles.socials}>
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Facebook`})}}
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -578,6 +586,7 @@ function Footer({
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Instagram`})}}
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
@@ -588,6 +597,7 @@ function Footer({
             <YtSvg className={styles.socialyt} />
           </a> */}
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting LinkedIn`})}}
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -595,6 +605,7 @@ function Footer({
             <LinkedIN className={styles.social} />
           </a>
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -602,6 +613,7 @@ function Footer({
               <DiscordSvg className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -610,6 +622,7 @@ function Footer({
               <PhoneIcon className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
