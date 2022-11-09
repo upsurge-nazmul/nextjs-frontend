@@ -69,11 +69,11 @@ function DashboardLeftPanel({
           className={styles.dashboardLogo}
           onClick={() => {
             if (!userdata.intro_guide_completed) {
-              router.push(
-                "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.user_type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
-              );
+              router.push("/");
+               // "/?showTour=true&pushTo=/dashboard/" +
+                 // (userdata.user_type === "parent" ? "p/" : "k/") +
+                 // "?storyIndex=2"
+            //  );
             } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
@@ -87,11 +87,11 @@ function DashboardLeftPanel({
           className={styles.miniLogo}
           onClick={() => {
             if (!userdata.intro_guide_completed) {
-              router.push(
-                "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
-              );
+              router.push("/");
+              //  "/?showTour=true&pushTo=/dashboard/" +
+               //   (userdata.type === "parent" ? "p/" : "k/") +
+                //  "?storyIndex=2"
+             // );
             } else router.push("/");
 
             // if (type === "kid") router.push("/dashboard/k");
