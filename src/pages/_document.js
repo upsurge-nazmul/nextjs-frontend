@@ -31,7 +31,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
             j.async = true;
             j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
             f.parentNode.insertBefore(j, f);
-          })(window, document, "script", "dataLayer", "GTM-P32QRH6");`,
+          })(window, document, "script", "dataLayer", "GTM-57HV932");`,
           }}
         ></script>
 
@@ -82,7 +82,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
       <body>
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P32QRH6"
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57HV932"
             height="0" width="0" style="display:none;visibility:hidden">`,
           }}
         ></noscript>
