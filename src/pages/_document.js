@@ -15,11 +15,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
             }}
         ></script>
         {/*<!-- End of Mixpanel --> */}
-        {/* <!-- Google Tag Manager --> */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-10904587599"
-        ></script>
+
         <script
           dangerouslySetInnerHTML={{
             __html: `(function (w, d, s, l, i) {
@@ -31,7 +27,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
             j.async = true;
             j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
             f.parentNode.insertBefore(j, f);
-          })(window, document, "script", "dataLayer", "GTM-P32QRH6");`,
+          })(window, document, "script", "dataLayer", "GTM-57HV932");`,
           }}
         ></script>
 
@@ -80,12 +76,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
         {/* <!-- End Facebook Pixel Code --> */}
       </Head>
       <body>
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P32QRH6"
-            height="0" width="0" style="display:none;visibility:hidden">`,
-          }}
-        ></noscript>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57HV932" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <noscript>
           <img
             height="1"
