@@ -7,10 +7,7 @@ import styles from "../../styles/emailverification/emailverification.module.scss
 export default function Verification({ emailVerified, msg }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  if(emailVerified === false)
-  {
-    mixpanel.track('Email Verification',{'event':'Email Verification Done'});
-  }
+  mixpanel.track('Email Verification',{'event':'Email Verification Done'});
   return (
     <div className={styles.mainPage}>
       <Header
