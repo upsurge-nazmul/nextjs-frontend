@@ -47,6 +47,7 @@ function AuthLogin({
     if (parts.length === 2) token = parts.pop().split(";").shift();
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
+      mixpanel.track('Login',{'event':`${email} logged in`});
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,
@@ -62,7 +63,6 @@ function AuthLogin({
           id: response.data.data.userProfile.id,
         })
       );
-
       setCookie("accesstoken", response.data.data.token);
       setuserdata(response.data.data.userProfile);
       setuser(response.data.data.userProfile.id);
