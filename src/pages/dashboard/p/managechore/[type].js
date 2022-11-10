@@ -18,6 +18,7 @@ import "react-voice-recorder/dist/index.css";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { uploadaudiotos3 } from "../../../../helpers/aws";
 import Tour from "../../../../components/Tour/Tour";
+import FillSpace from "../../../../components/Dashboard/FillSpace";
 
 const REWARD_TYPES = [{ name: "UniCoins", value: "unicoins" }];
 
@@ -28,7 +29,7 @@ export default function ManageChore({
   templatedata,
 }) {
   const router = useRouter();
-  const { setuserdata,userdata } = useContext(MainContext);
+  const { setuserdata, userdata } = useContext(MainContext);
   const { type, template, templatecat } = router.query;
   const [storyIndex, setStoryIndex] = useState(0);
   const templatename = template?.replace(/-/g, " ");
@@ -136,7 +137,7 @@ export default function ManageChore({
         due_date: new Date(duedate).getTime(),
         completion: "pending",
         is_reoccurring: interval !== "One Time" ? true : false,
-        custom_rewards: customRewards
+        custom_rewards: customRewards,
       });
       if (response && response.data && response.data.success) {
         settoastdata({
@@ -199,7 +200,7 @@ export default function ManageChore({
           reward_type: rewardType.value,
           reward_amount: rewardAmount,
           custom_rewards: customRewards,
-          child_remark:"",
+          child_remark: "",
         });
         if (!response || !response.data || !response.data.success) {
           noerror = false;
@@ -207,7 +208,12 @@ export default function ManageChore({
         }
       }
       if (noerror) {
-        mixpanel.track('Chore',{'event':'Chore added successfully','Assgined by':`${userdata.email}`,'Chore title':`${choretitle}`,'Chore category':`${cat}`});
+        mixpanel.track("Chore", {
+          event: "Chore added successfully",
+          "Assgined by": `${userdata.email}`,
+          "Chore title": `${choretitle}`,
+          "Chore category": `${cat}`,
+        });
         settoastdata({
           show: true,
           msg: "Chores added successfully",
@@ -247,7 +253,12 @@ export default function ManageChore({
     });
 
     if (response && response.data && response.data.success) {
-      mixpanel.track('Chore',{'event':'Chore Template added successfully','Added by':`${userdata.email}`,'Template title':`${choretitle}`,'Template category':`${cat}`});
+      mixpanel.track("Chore", {
+        event: "Chore Template added successfully",
+        "Added by": `${userdata.email}`,
+        "Template title": `${choretitle}`,
+        "Template category": `${cat}`,
+      });
       settoastdata({
         show: true,
         msg: "Template added successfully",
@@ -395,10 +406,15 @@ export default function ManageChore({
           </div>
           <div className={styles.assignto}>
             <p className={styles.heading}>Assigned To</p>
-            <div className={styles.wrapper}>
-              {assignees.map((item) => (
-                <Assignees data={item} key={item.id} />
-              ))}
+            <div style={{ width: "100%" }}>
+              {assignees.length ? (
+                assignees.map((item) => <Assignees data={item} key={item.id} />)
+              ) : (
+                <FillSpace
+                  text="No one is assigned yet"
+                  extrastyle={{ width: "100%", minWidth: "100%" }}
+                />
+              )}
             </div>
             {type === "new" && (
               <div
