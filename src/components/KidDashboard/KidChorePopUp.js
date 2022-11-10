@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useRouter } from "next/dist/client/router";
 import PendingSvg from "../SVGcomponents/PendingSvg";
 import RoundedTick from "../SVGcomponents/RoundedTick";
@@ -6,6 +6,7 @@ import ChoreApis from "../../actions/apis/ChoreApis";
 import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 import KidApis from "../../actions/apis/KidApis";
 import { completedtimeDifference, duetimeDifference } from "../../helpers/timehelpers";
+import { MainContext } from "../../context/Main";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import Image from 'next/image';
 function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setchoredata }) {
@@ -22,7 +23,7 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
   const [selectedPreview, setSelectedPreview] = useState(null);
   const [selectedRemove, setSelectedRemove] = useState(null);
   const [index, setIndex] = useState(null);
-
+  const { userdata } = useContext(MainContext);
   const handleImage = async (e) => {
     var images = e.target.files;
     if (images.length === 1)
@@ -95,6 +96,7 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
       is_reoccurring: choredata.is_reoccurring,
     });
     if (response && response.data && response.data.success) {
+      mixpanel.track('Chore',{'event':`Chore started by ${userdata.first_name}`});
       settoastdata({ show: true, type: "success", msg: "done" });
       if (choredata.is_reoccurring) {
         setchoredata((prev) => ({
@@ -132,6 +134,7 @@ function KidChorePopUp({ choredata, showPopUp, setShowPopUp, settoastdata, setch
         child_remark: remark,
       });
       if (response && response.data && response.data.success) {
+        mixpanel.track('Chore',{'event':`Chore Finished by ${userdata.first_name} waiting for approval`});
         settoastdata({ show: true, type: "success", msg: "done" });
         if (choredata.is_reoccurring) {
           setchoredata((prev) => ({

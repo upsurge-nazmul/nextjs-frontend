@@ -460,34 +460,39 @@ function DashboardLeftPanel({
         <div className={styles.brandtext}>
           <div className={styles.socials}>
             <a
-              href="https://www.facebook.com/upsurgeindia/"
-              target="_blank"
-              rel="noreferrer"
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} is visiting Facebook`})}}
+            href="https://www.facebook.com/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
             >
               <Fb className={styles.social} />
             </a>
             <a
+              onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} is visiting Instagram`})}}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
-            >
+              >
               <Insta className={styles.social} />
             </a>
             <a
-              href="https://www.linkedin.com/company/upsurgeindia/"
-              target="_blank"
-              rel="noreferrer"
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} is visiting Linkedin`})}}
+            href="https://www.linkedin.com/company/upsurgeindia/"
+            target="_blank"
+            rel="noreferrer"
             >
               <LinkedIN className={styles.social} />
             </a>
             <a
+              onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} is visiting Discord`})}}
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
-            >
+              >
               <DiscordSvg className={styles.social} />
             </a>
             <a
+              onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} is visiting WhatApp`})}}
               href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"

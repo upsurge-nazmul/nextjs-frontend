@@ -27,6 +27,7 @@ export default function RecordingView({ chapterId, handleBack, handleDone }) {
             className={styles.doneButton}
             onClick={() => {
               setFullScreen(false);
+              mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`});
               document.exitFullscreen();
               handleDone();
             }}

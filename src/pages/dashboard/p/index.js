@@ -307,11 +307,11 @@ function Dashboard({
                         </div>
 
                         <div className={styles.heads}>
-                          <p className={styles.blacnkhead1}></p>
+
                           <p className={styles.head1}>CHILD INFO</p>
                           <p className={styles.head2}>PENDING CHORES</p>
                           <p className={styles.head3}>QUEST PROGRESS</p>
-                          <p className={styles.blacnkhead2}></p>
+                          
                         </div>
                         <div className={`${styles.wrapper}`}>
                           {kids.map((item, index) => {

@@ -33,6 +33,7 @@ function AuthParent({
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
+        mixpanel.track('Sign-Up',{'event':`${email} Email entered`});
         dataLayer.push({'event':'Email-entered'});
         fbq('trackCustom', 'SignUp', {event: 'Email_Address_Entered_By_User'});
         setmode("email");

@@ -36,6 +36,7 @@ export default function ChangePhoneNo({
         updatedPhoneRes.data &&
         updatedPhoneRes.data.success
       ) {
+        mixpanel.track('ChangePhoneno',{'event':'Phone number changed OTP pending'});
         fbq('trackCustom', 'ChangePhoneno', {event: 'Phone_number_changed'});
         dataLayer.push({'event':'phoneno-change-successful'});
         let otpRes = await LoginApis.genotp({ phone: newPhone });
