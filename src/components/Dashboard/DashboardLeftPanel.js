@@ -373,7 +373,8 @@ function DashboardLeftPanel({
             onClick={() => {
               if (!userdata.intro_guide_completed) {
                 router.push(
-                  "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
+                  "/dashboard/p/chores"
+                 // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
                 );
               } else {
                 router.push("/dashboard/p/chores");
@@ -401,7 +402,8 @@ function DashboardLeftPanel({
             }`}
             onClick={() => {
               if (router.query.showTour) {
-                router.push("/dashboard/p/partners?showTour=true");
+                //router.push("/dashboard/p/partners?showTour=true");
+                router.push("/dashboard/p/partners");
                 return;
               }
               router.push("/dashboard/p/partners");
