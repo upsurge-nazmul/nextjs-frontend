@@ -19,6 +19,7 @@ import LoginApis from "../../../../actions/apis/LoginApis";
 import { uploadaudiotos3 } from "../../../../helpers/aws";
 import Tour from "../../../../components/Tour/Tour";
 import FillSpace from "../../../../components/Dashboard/FillSpace";
+import PageTitle from "../../../../components/PageTitle";
 
 const REWARD_TYPES = [{ name: "UniCoins", value: "unicoins" }];
 
@@ -277,6 +278,8 @@ export default function ManageChore({
     <div className={styles.manageChore}>
       <DashboardLeftPanel />
       <Toast data={toastdata} />
+
+      <PageTitle title={"New Chore"} />
 
       <div className={styles.contentWrapper}>
         <DashboardHeader
