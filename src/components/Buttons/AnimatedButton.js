@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 import styles from "../../styles/Buttons/animatedButton.module.scss";
 
@@ -7,15 +7,33 @@ export default function AnimatedButton({ children }) {
   const [canvas, setCanvas] = useState();
   const [disabled, setDisabled] = useState(false);
   const [buttonState, setButtonState] = useState("ready");
+  const [confetti, setConfetti] = useState([]);
+  const [sequins, setSequins] = useState([]);
+  const [renderAnim, setRenderAnim] = useState(false);
+  const [ctx, setCtx] = useState();
+  const canvRef = useRef();
 
   useEffect(() => {
     setButton(document.getElementById("button"));
     setCanvas(document.getElementById("canvas"));
   }, []);
 
+  useEffect(() => {
+    if (canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+  }, [canvas]);
+
+  useEffect(() => {
+    if (canvRef && canvRef.current && canvRef.current.getContext) {
+      setCtx(canvRef.current.getContext("2d"));
+    }
+  }, [canvRef.current]);
+
   // ammount to add on each button press
-  const confettiCount = 20;
-  const sequinCount = 10;
+  const confettiCount = 20; // big ones
+  const sequinCount = 10; // small ones
 
   // "physics" variables
   const gravityConfetti = 0.3;
@@ -23,20 +41,6 @@ export default function AnimatedButton({ children }) {
   const dragConfetti = 0.075;
   const dragSequins = 0.02;
   const terminalVelocity = 3;
-
-  // init other global elements
-  let ctx;
-  if (canvas) {
-    ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let cx = ctx.canvas.width / 2;
-    let cy = ctx.canvas.height / 2;
-  }
-
-  // add Confetto/Sequin objects to arrays to draw them
-  let confetti = [];
-  let sequins = [];
 
   // colors, back side is darker for confetti flipping
   const colors = [
@@ -138,16 +142,23 @@ export default function AnimatedButton({ children }) {
 
   // add elements to arrays to be drawn
   const initBurst = () => {
+    // add Confetto/Sequin objects to arrays to draw them
+    // let confetti = [];
+    // let sequins = [];
     for (let i = 0; i < confettiCount; i++) {
-      confetti.push(new Confetto());
+      // confetti.push(new Confetto());
+      setConfetti((prev) => [...prev, new Confetto()]);
     }
     for (let i = 0; i < sequinCount; i++) {
-      sequins.push(new Sequin());
+      // sequins.push(new Sequin());
+      setSequins((prev) => [...prev, new Sequin()]);
     }
+    setRenderAnim(true);
   };
 
   // draws the elements on the canvas
   const render = () => {
+    console.log("@@@@@@", confetti, sequins);
     if (ctx) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -221,13 +232,21 @@ export default function AnimatedButton({ children }) {
         if (sequin.position.y >= canvas.height) sequins.splice(index, 1);
       });
 
-      window.requestAnimationFrame(render);
+      requestAnimationFrame(render);
     }
   };
 
+  // useEffect(() => {
+  //   if (renderAnim) {
+  //     setCtx(requestAnimationFrame(render));
+  //   } else {
+  //     cancelAnimationFrame(ctx);
+  //     setCtx();
+  //   }
+  // }, [renderAnim]);
+
   // cycle through button states when clicked
   const clickButton = () => {
-    console.log("!!!!!!!! disabled", disabled, button);
     if (!disabled) {
       setDisabled(true);
       // Loading stage
@@ -247,11 +266,18 @@ export default function AnimatedButton({ children }) {
             button.classList.add("ready");
             button.classList.remove("complete");
             setButtonState("ready");
+            setRenderAnim(false);
           }, 4000);
         }, 320);
       }, 1800);
     }
   };
+
+  // useEffect(() => {
+  //   if (renderAnim) {
+  //     window.requestAnimationFrame(render);
+  //   }
+  // }, [renderAnim]);
 
   // re-init canvas if the window size changes
   const resizeCanvas = () => {
@@ -289,8 +315,8 @@ export default function AnimatedButton({ children }) {
     };
 
     // kick off the render loop
-    initBurst();
-    render();
+    // initBurst();
+    // render();
   }, []);
 
   return (
@@ -337,7 +363,7 @@ export default function AnimatedButton({ children }) {
           <span className={styles.buttonText}>Success</span>
         </div>
       </button>
-      <canvas id="canvas" className={styles.canvas}></canvas>
+      <canvas id="canvas" className={styles.canvas} ref={canvRef}></canvas>
     </div>
   );
 }
