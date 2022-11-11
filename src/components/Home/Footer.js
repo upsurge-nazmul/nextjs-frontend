@@ -176,6 +176,7 @@ function Footer({
               <LinkedIN className={styles.social} />
             </a>
             <a
+            aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -183,6 +184,7 @@ function Footer({
               <DiscordSvg className={styles.social} />
             </a>
             <a
+            aria-label="Phone"
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -191,6 +193,7 @@ function Footer({
               <PhoneIcon className={styles.social} />
             </a>
             <a
+            aria-label="Mail"
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
@@ -568,6 +571,7 @@ function Footer({
         </div>
         <div className={styles.socials}>
           <a
+            aria-label="Facebook"
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -578,6 +582,7 @@ function Footer({
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
+            aria-label="Instagram"
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
@@ -588,6 +593,7 @@ function Footer({
             <YtSvg className={styles.socialyt} />
           </a> */}
           <a
+          aria-label="LinkedIn"
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -595,6 +601,7 @@ function Footer({
             <LinkedIN className={styles.social} />
           </a>
           <a
+          aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -602,6 +609,7 @@ function Footer({
               <DiscordSvg className={styles.social} />
             </a>
             <a
+            aria-label="Phone"
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -610,6 +618,7 @@ function Footer({
               <PhoneIcon className={styles.social} />
             </a>
             <a
+            aria-label="Email"
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
