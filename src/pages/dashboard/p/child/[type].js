@@ -678,7 +678,7 @@ function AddKid({ childdata, userdatafromserver }) {
             },
           ]}
           current={0}
-          showtour={true}
+          showtour={false}
         />
       )}
     </div>

@@ -221,7 +221,7 @@ export default function ManageChore({
           type: "success",
         });
         if (router.query.pushTo) {
-          router.push("/dashboard/p/?showTour=true&storyIndex=10");
+          router.push("/dashboard/p/");//?showTour=true&storyIndex=10
         } else {
           router.push("/dashboard/p/chores");
         }
@@ -541,7 +541,7 @@ export default function ManageChore({
           ]}
           current={storyIndex}
           setcurrent={setStoryIndex}
-          showtour={true}
+          showtour={false}
         />
       )}
     </div>

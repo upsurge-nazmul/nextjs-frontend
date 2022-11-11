@@ -209,9 +209,9 @@ function Home({ page = "", showNav = true }) {
         setmailfromhome={setmailfromhome}
         setshowpopup={setshowpopup}
       />
-      {router.query.showTour && (
-        <Tour story={story} current={0} showtour={true} />
-      )}
+      {/* {router.query.showTour && (
+        <Tour story={story} current={0} showtour={false} />
+      )} */}
     </div>
     // </IntercomProvider>
   );

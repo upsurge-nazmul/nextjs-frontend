@@ -286,7 +286,7 @@ function ChoresPage({
             ]}
             current={storyIndex}
             setcurrent={setStoryIndex}
-            showtour={true}
+            showtour={false}
           />
         )}
       </div>
