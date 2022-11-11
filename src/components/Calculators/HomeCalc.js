@@ -4,7 +4,6 @@ import InputBlock from "./InputBlock";
 import Progress from "../Progress";
 import ResultBox from "./ResultBox";
 import { ResponsivePie } from "@nivo/pie";
-
 import styles from "../../styles/Calculators/calccomponent.module.scss";
 import { animated } from "@react-spring/web";
 import BigCalcDropdown from "./BigCalcDropdown";
@@ -12,6 +11,7 @@ import BigCalcInput from "./BigCalcInput";
 import RelativeSection from "./RelativeSection";
 import changetoint from "../../helpers/currency";
 import { MainContext } from "../../context/Main";
+
 export default function HomeCalc({ data, seterror, error }) {
   const { widthHeight } = useContext(MainContext);
   const [questions, setquestions] = useState([
@@ -280,12 +280,10 @@ export default function HomeCalc({ data, seterror, error }) {
     );
     questions[indx].max = loanamount / 5;
     setquestions(questions);
-    console.log(indx);
 
     if (changetoint(calcdata.onetimepayment)) {
       loanamount = loanamount - changetoint(calcdata.onetimepayment);
       if (loanamount < 0) {
-        console.log(questions[3]);
         seterror("down payment cannot be greater than loan amount");
         return;
       } else {
@@ -419,13 +417,17 @@ export default function HomeCalc({ data, seterror, error }) {
                 range={currentquestion.range}
               />
             )}
+            {error && <p className={styles.error}>{error}</p>}
             <div className={styles.buttons}>
               {current !== 0 ? (
                 <p
-                  className={styles.previous}
+                  className={error ? styles.previous : styles.next}
                   onClick={() => {
-                    if (current !== 0) {
-                      setcurrent(current - 1);
+                    if (!error) {
+                      seterror("");
+                      if (current !== 0) {
+                        setcurrent(current - 1);
+                      }
                     }
                   }}
                 >
@@ -484,7 +486,6 @@ export default function HomeCalc({ data, seterror, error }) {
                 );
               }
             })}
-            {error && <p className={styles.error}>{error}</p>}
             {(!error || setediteddata) && (
               <ResultBox
                 setediteddata={setediteddata}
