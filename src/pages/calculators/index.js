@@ -70,7 +70,7 @@ function CalculatorsPage() {
             calculating your Personal Loan EMI, to checking your Home Loan
             affordability, Upsurge gives you a whole set of calculators to help
             you make your informed decision. As you embark on a journey to
-            fulfil your dreams with a new bike/car or a new home, the calculator
+            fulfill your dreams with a new bike/car or a new home, the calculator
             helps you with a better understanding of expenses. Also, before you
             invest in a Fixed Deposit or Recurring Deposit to save and grow your
             money, you can calculate the interest you will earn

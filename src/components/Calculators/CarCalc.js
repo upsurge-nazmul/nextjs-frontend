@@ -151,14 +151,10 @@ export default function CarCalc({ seterror, error }) {
         loanamount = 1000000;
       } else if (calcdata.type === "Sports") {
         loanamount = 8000000;
-        monthlyrate = 7 / 12 / 100;
-        rr = 7;
       } else if (calcdata.type === "SUV") {
         loanamount = 1600000;
       } else if (calcdata.type === "Luxury") {
         loanamount = 4100000;
-        monthlyrate = 7 / 12 / 100;
-        rr = 7;
       } else if (calcdata.type === "Hatchback") {
         loanamount = 700000;
       }

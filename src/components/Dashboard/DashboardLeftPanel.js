@@ -69,11 +69,11 @@ function DashboardLeftPanel({
           className={styles.dashboardLogo}
           onClick={() => {
             if (!userdata.intro_guide_completed) {
-              router.push(
-                "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.user_type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
-              );
+              router.push("/");
+               // "/?showTour=true&pushTo=/dashboard/" +
+                 // (userdata.user_type === "parent" ? "p/" : "k/") +
+                 // "?storyIndex=2"
+            //  );
             } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
@@ -87,11 +87,11 @@ function DashboardLeftPanel({
           className={styles.miniLogo}
           onClick={() => {
             if (!userdata.intro_guide_completed) {
-              router.push(
-                "/?showTour=true&pushTo=/dashboard/" +
-                  (userdata.type === "parent" ? "p/" : "k/") +
-                  "?storyIndex=2"
-              );
+              router.push("/");
+              //  "/?showTour=true&pushTo=/dashboard/" +
+               //   (userdata.type === "parent" ? "p/" : "k/") +
+                //  "?storyIndex=2"
+             // );
             } else router.push("/");
 
             // if (type === "kid") router.push("/dashboard/k");
@@ -373,7 +373,8 @@ function DashboardLeftPanel({
             onClick={() => {
               if (!userdata.intro_guide_completed) {
                 router.push(
-                  "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
+                  "/dashboard/p/chores"
+                 // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
                 );
               } else {
                 router.push("/dashboard/p/chores");
@@ -401,7 +402,8 @@ function DashboardLeftPanel({
             }`}
             onClick={() => {
               if (router.query.showTour) {
-                router.push("/dashboard/p/partners?showTour=true");
+                //router.push("/dashboard/p/partners?showTour=true");
+                router.push("/dashboard/p/partners");
                 return;
               }
               router.push("/dashboard/p/partners");

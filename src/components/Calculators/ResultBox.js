@@ -9,6 +9,7 @@ function ResultBox({
   setchangesfromresult,
   setediteddata,
   onlyText,
+  seterror,
 }) {
   const { theme } = useContext(MainContext);
   return (
@@ -89,17 +90,29 @@ function ResultBox({
                 <p className={styles.bsign}>{resultdata.sign3}</p>
               )}
               <input
-                type="text"
+                type="number"
                 className={styles.inputbox}
+                min="1"
                 value={resultdata.result3 === "NaN" ? 0 : resultdata.result3}
                 onChange={(e) => {
-                  setediteddata((prev) => ({
-                    ...prev,
-                    [resultdata.changecode3]: e.target.value,
-                  }));
-                }}
-              />
-            </div>
+                  if(e.target.value <= 0)
+                  {
+                    setTimeout(() => {
+                      setediteddata((prev) => ({
+                        ...prev,
+                        [resultdata.changecode3]: 1,
+                      }));
+                    }, 0);
+                  }
+                  else{
+                    setediteddata((prev) => ({
+                      ...prev,
+                      [resultdata.changecode3]: e.target.value,
+                    }));
+                  }
+                  }}
+                  />
+                  </div>
           ) : (
             <div className={styles.container}>
               {resultdata.heading3 && (

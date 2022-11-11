@@ -490,6 +490,7 @@ export default function HomeCalc({ data, seterror, error }) {
                 setediteddata={setediteddata}
                 calcfunction={emi}
                 resultdata={resultdata}
+                seterror={seterror}
               />
             )}
           </div>
