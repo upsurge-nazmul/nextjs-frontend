@@ -281,7 +281,7 @@ export default function Payments({ pricing_details, userdatafromserver }) {
             ]}
             current={storyIndex}
             setcurrent={setStoryIndex}
-            showtour={true}
+            showtour={false}
           />
         )}
       </div>
