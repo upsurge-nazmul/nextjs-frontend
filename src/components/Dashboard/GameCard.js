@@ -40,6 +40,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
         </div>
       </div>
     </div>
+    </div>
   );
 }
 
