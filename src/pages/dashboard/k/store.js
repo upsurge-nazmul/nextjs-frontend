@@ -78,10 +78,10 @@ export default function KidStore({
       <div className={styles.contentWrapper}>
         <KidDashboardHeader mode={mode} setmode={setmode} />
         <div className={styles.mainContent}>
-          <h4>
+          <p className={styles.subheader}>
             Rewards make learning even more fun - here are all the rewards you
             can earn!
-          </h4>
+          </p>
           <div className={styles.redeem}>
             <RedeemSection />
           </div>
