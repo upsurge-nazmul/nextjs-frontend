@@ -21,7 +21,7 @@
     flex-direction: column;
     .mainContent {
       flex-direction: column;
-      h4{
+      p{
         margin-bottom: 20px;
         padding: 0 26px;
       }
@@ -147,9 +147,9 @@
         height: fit-content;
         padding: 0 20px;
         scrollbar-width: thin;
-        h4{
-        font-weight: 500;
-        font-size: small;
+        p{
+        font-weight: 600;
+        font-size: medium;
         padding: 0;
         }
         .flexLeft {
