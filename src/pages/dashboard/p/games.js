@@ -1,21 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import Toast from "../../../components/Toast";
-import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
-import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import GameCard from "../../../components/Dashboard/GameCard";
-import { useRouter } from "next/dist/client/router";
-import styles from "../../../styles/Dashboard/gamespage.module.scss";
-import HeadingArrow from "../../../components/SVGcomponents/HeadingArrow";
-import { MainContext } from "../../../context/Main";
+import React from "react";
 import LoginApis from "../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../actions/apis/FreeGameApis";
-import VideoModal from "../../../components/VideoModal";
-import MoneyAceBanner from "../../../components/Dashboard/MoneyAceBanner";
-import { Game_Data } from "../../../static_data/Game_Data";
 import GameApis from "../../../actions/apis/GameApis";
-import { getCookie } from "../../../actions/cookieUtils";
-import PageTitle from "../../../components/PageTitle";
-
 import Games from "../../../components/Games";
 
 function GamesPage({ recentgames, userdatafromserver }) {
