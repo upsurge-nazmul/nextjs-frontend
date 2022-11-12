@@ -132,7 +132,10 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-          <h4 className={styles.subheader}>Chose from the collection of all the fantastic games we have made for you</h4>
+            <h4 className={styles.subheader}>
+              Chose from the collection of all the fantastic games we have made
+              for you
+            </h4>
             <MoneyAceBanner type="k" />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
@@ -141,7 +144,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                   {recentgames.map((item, index) => {
                     return (
                       <GameCard
-                        onCLick={() =>
+                        onClick={() =>
                           handlegameclick(
                             item,
                             Game_Data[item].pushto
@@ -168,7 +171,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 {Object.keys(Simulator_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() =>
+                      onClick={() =>
                         handlegameclick(item, Simulator_Data[item].pushto, true)
                       }
                       data={Simulator_Data[item]}
@@ -187,7 +190,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() =>
+                      onClick={() =>
                         handlegameclick(
                           item,
                           Game_Data[item].pushto

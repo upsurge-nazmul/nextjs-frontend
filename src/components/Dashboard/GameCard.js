@@ -5,15 +5,12 @@ import Buttons from "../Buttons";
 import GameSvg from "../SVGcomponents/GameSvg";
 import UnicoinSvg from "../SVGcomponents/UniCoinSvg";
 
-function GameCard({ data, onCLick, cardstyle, reward }) {
+function GameCard({ data, onClick, cardstyle, reward }) {
   const router = useRouter();
   if (!data) return null;
+
   return (
-    <div
-      className={styles.gameCard}
-      style={cardstyle}
-      // onClick={onCLick ? onCLick : () => router.push("/dashboard/k/games")}
-    >
+    <div className={styles.gameCard} style={cardstyle}>
       <img
         src={
           data?.img ||
@@ -36,7 +33,13 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
           </p>
         )}
         <div className={styles.actionArea}>
-          <Buttons type={"animated"}>
+          <Buttons
+            type={"animated"}
+            handleClick={() => {
+              onClick ? onClick() : () => router.push("/dashboard/k/games");
+              mixpanel.track("Game", { event: `Game Started ${data.name}` });
+            }}
+          >
             Play
             <GameSvg className={styles.icon} />
           </Buttons>

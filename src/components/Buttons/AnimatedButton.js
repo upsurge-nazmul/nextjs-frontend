@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "../../styles/Buttons/animatedButton.module.scss";
 
-export default function AnimatedButton({ children }) {
+export default function AnimatedButton({ children, handleClick }) {
   const [button, setButton] = useState();
   const [disabled, setDisabled] = useState(false);
   const [buttonState, setButtonState] = useState("ready");
@@ -20,12 +20,12 @@ export default function AnimatedButton({ children }) {
       setTimeout(() => {
         // Completed stage
         setButtonState("complete");
+        handleClick();
         setTimeout(() => {
           setTimeout(() => {
             // Reset button so user can select it again
             setDisabled(false);
             setButtonState("ready");
-            setRenderAnim(false);
           }, 4000);
         }, 320);
       }, 1800);
