@@ -140,7 +140,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                   {recentgames.map((item, index) => {
                     return (
                       <GameCard
-                        onCLick={() =>
+                        onClick={() =>
                           handlegameclick(
                             item,
                             Game_Data[item].pushto
@@ -167,7 +167,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 {Object.keys(Simulator_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() =>
+                      onClick={() =>
                         handlegameclick(item, Simulator_Data[item].pushto, true)
                       }
                       data={Simulator_Data[item]}
@@ -186,7 +186,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onCLick={() =>
+                      onClick={() =>
                         handlegameclick(
                           item,
                           Game_Data[item].pushto
