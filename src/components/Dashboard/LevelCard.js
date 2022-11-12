@@ -24,8 +24,10 @@ export default function LevelCard({ data }) {
         </div>
         <div className={`${styles.perks} ${styles.list}`}>
           <div className={styles.listHeading}>Perks</div>
-          {data.perks.map((item) => (
-            <div className={styles.listItem}>- {item}</div>
+          {data.perks.map((item, i) => (
+            <div className={styles.listItem} key={i}>
+              - {item}
+            </div>
           ))}
         </div>
       </div>
