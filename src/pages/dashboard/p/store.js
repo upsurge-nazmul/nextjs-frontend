@@ -159,7 +159,7 @@ export default function ParentStore({
           ]}
           current={storyIndex}
           setcurrent={setStoryIndex}
-          showtour={true}
+          showtour={false}
         />
       )}
     </div>

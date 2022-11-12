@@ -11,6 +11,7 @@ import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 
 export default function GameView({
+  chapterId,
   game,
   setGame,
   externalId = null,
@@ -217,6 +218,7 @@ export default function GameView({
             className={styles.doneButton}
             onClick={() => {
               handleDone();
+              mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`})
               setFullScreen(false);
               if (!isMobileOnly) document.exitFullscreen();
               setGame();

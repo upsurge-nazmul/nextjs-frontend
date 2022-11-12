@@ -1,16 +1,19 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useContext} from 'react'
 import PreviewIcon from '@mui/icons-material/Preview';
 import styles from "../../styles/kidDashboard/kidchorepopup.module.scss";
 import Image from 'next/image';
 import ChoreApis from "../../actions/apis/ChoreApis";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { MainContext } from "../../context/Main";
 function ChorePendingModal({setShowModal,showModal,data,getDueDate, settoastdata, setchores, setallchores, setid }) {
   console.log(data);
+  const { userdata } = useContext(MainContext);
     const [selectedPreview, setSelectedPreview] = useState(null);
   const [image, setImage] = useState([]);
   async function handleApprove() {
     let response = await ChoreApis.approvechore({ id: data.id });
     if (response && response.data && response.data.success) {
+      mixpanel.track('Chore',{'event':`Chore approved by ${userdata.email}`});
       settoastdata({ show: true, type: "success", msg: "done" });
       setchores((prev) => prev.filter((item) => item.id !== data.id));
       setallchores((prev) => prev.filter((item) => item.id !== data.id));

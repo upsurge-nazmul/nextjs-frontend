@@ -111,7 +111,7 @@ export default function Partners({ userdatafromserver }) {
           ]}
           current={storyIndex}
           setcurrent={setStoryIndex}
-          showtour={true}
+          showtour={false}
         />
       )}
       <div className={styles.contentWrapper}>

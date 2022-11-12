@@ -69,7 +69,7 @@ function AddKid({ childdata, userdatafromserver }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata } = useContext(MainContext);
+  const { setuserdata,userdata } = useContext(MainContext);
   
   const [mode, setmode] = useState(
     type === "add" ? "Add Child Details" : "Edit Child Details"
@@ -230,6 +230,7 @@ function AddKid({ childdata, userdatafromserver }) {
       //   router.push("/dashboard/p");
       // }
        await fetchfamilyid(response.data.data.id);
+       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName })
       setShowSuccess(true);
       settoastdata({
         type: "success",
@@ -677,7 +678,7 @@ function AddKid({ childdata, userdatafromserver }) {
             },
           ]}
           current={0}
-          showtour={true}
+          showtour={false}
         />
       )}
     </div>

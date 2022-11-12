@@ -42,6 +42,7 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
           </Buttons>
         </div>
         {/* <div className={styles.chatbtn}>
+        <div onClick={()=>{mixpanel.track('Game',{'event':`Game Started ${data.name}`});}} className={styles.chatbtn}>
           Play
           <GameSvg className={styles.icon} />
         </div> */}

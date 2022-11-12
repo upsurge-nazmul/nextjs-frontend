@@ -29,6 +29,7 @@ export default function OtpNotVerfied({
   async function verifyOtp() {
     let response = await LoginApis.verifyotp({ otp: OTP.toString() });
     if (response.data.success) {
+      mixpanel.track('ChangePhoneno',{'event':'OTP verified'});
       fbq('trackCustom', 'OTP', {event: 'OTP-verified'});
       dataLayer.push({'event':'otp-verified'});
       settoastdata({ show: true, msg: response.data.message, type: "success" });
