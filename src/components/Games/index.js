@@ -7,12 +7,17 @@ import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import styles from "../../styles/WaitlistDashboard/games.module.scss";
 import { MainContext } from "../../context/Main";
 import { Game_Data, Simulator_Data } from "../../static_data/Game_Data";
-import KidDashboardHeader from "../KidDashboard/KidDashboardHeader";
+import DashboardHeader from "../Dashboard/DashboardHeader";
 import MoneyAceBanner from "../Dashboard/MoneyAceBanner";
 import PageTitle from "../PageTitle";
 import GameView from "./GameView";
 
-function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
+function Games({
+  userdatafromserver,
+  gameunicoinrewards = null,
+  recentgames,
+  accountType = "",
+}) {
   // modes are different pages like home,kids,store,payments,notifications
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
@@ -64,7 +69,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
     FreeGameApis.updateRecentGames({ games: gamestring });
   }
 
-  async function handlegameclick(title, pushto, isSimulator) {
+  async function handlegameclick(title, pushto, isSimulator = false) {
     if (isSimulator) {
       return router.push(pushto);
     }
@@ -118,10 +123,10 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
   return (
     <div className={styles.gamesPage}>
       <PageTitle title={`upsurge | Games`} />
-      <DashboardLeftPanel type="kid" />
+      <DashboardLeftPanel type={accountType} />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
@@ -132,7 +137,7 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
               Chose from the collection of all the fantastic games we have made
               for you
             </h4>
-            <MoneyAceBanner type="k" />
+            <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} />
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
@@ -197,7 +202,11 @@ function Games({ userdatafromserver, token, gameunicoinrewards, recentgames }) {
                         )
                       }
                       reward={
-                        gameunicoinrewards.includes(item) ? "Completed" : 200
+                        gameunicoinrewards
+                          ? gameunicoinrewards.includes(item)
+                            ? "Completed"
+                            : 200
+                          : null
                       }
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}

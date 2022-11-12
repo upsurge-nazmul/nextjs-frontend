@@ -4,15 +4,15 @@ import FreeGameApis from "../../../actions/apis/FreeGameApis";
 import GameApis from "../../../actions/apis/GameApis";
 import Games from "../../../components/Games";
 
-function GamesPage({
-  userdatafromserver,
-  token,
-  gameunicoinrewards,
-  recentgames,
-}) {
+function GamesPage({ userdatafromserver, gameunicoinrewards, recentgames }) {
   return (
     <Games
-      {...{ userdatafromserver, token, gameunicoinrewards, recentgames }}
+      {...{
+        userdatafromserver,
+        gameunicoinrewards,
+        recentgames,
+        accountType: "kid",
+      }}
     />
   );
 }
