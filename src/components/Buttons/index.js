@@ -11,7 +11,12 @@ export default function Buttons({
   return (
     <>
       {type === "animated" ? (
-        <AnimatedButton handleClick={handleClick}>{children}</AnimatedButton>
+        <AnimatedButton
+          handleClick={handleClick}
+          style={{ backgroundColor: themeBg, color: themeClr, fill: themeClr }}
+        >
+          {children}
+        </AnimatedButton>
       ) : (
         <button
           className={styles.commonButton}
