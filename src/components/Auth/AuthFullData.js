@@ -168,6 +168,7 @@ function AuthFullData({
       seterror(response.data.message || "Error connecting to server");
     } else {
       mixpanel.track('Sign-Up',{'event':`SignUp of ${email} Successful`, 'user-email': email});
+      mixpanel.add_group('user_group','early_access')
       fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
       dataLayer.push({'event':'signup-successful'});
       if (mode === "otp") {
