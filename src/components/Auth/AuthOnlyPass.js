@@ -80,13 +80,9 @@ function AuthLogin({
           setCookie("accesstoken", response.data.data.token);
           if(newLogin.data.data.userProfile.user_name === null){
             mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`});
-            mixpanel.identify(`${email}`);
-            mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
           }
           else{
             mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`});
-            mixpanel.identify(`${email}`);
-            mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
           }
           setuserdata(newLogin.data.data.userProfile);
           setuser(newLogin.data.data.userProfile.id);
