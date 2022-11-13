@@ -104,6 +104,8 @@ function AuthRefer({
         type: "success",
       });
       mixpanel.track('ReferSignUp',{'event':'Referral Sign Up Successful'});
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
       fbq('trackCustom', 'ReferSignUp', {event: 'Refer_Sign_Up_Successful'});
       dataLayer.push({'event':'refer-signup-success'});
       setuserdata(response.data.data.profile);

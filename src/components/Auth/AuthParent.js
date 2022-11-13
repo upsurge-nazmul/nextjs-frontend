@@ -33,7 +33,10 @@ function AuthParent({
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
+        mixpanel.add_group('user_group','early_access');
         mixpanel.track('Sign-Up',{'event':`${email} Email entered`});
+        mixpanel.identify(`${email}`);
+        mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
         dataLayer.push({'event':'Email-entered'});
         fbq('trackCustom', 'SignUp', {event: 'Email_Address_Entered_By_User'});
         setmode("email");
