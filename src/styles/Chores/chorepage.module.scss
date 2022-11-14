@@ -12,9 +12,13 @@
     width: 100%;
     flex-direction: column;
     overflow-y: auto;
-    h4{
-      padding: 10px 0 10px 25px;
-    }
+     .subheader{
+       align-self: start;
+       margin-bottom: 20px;
+       font-size: large;
+       font-weight: bold;
+       padding: 10px 0 10px 25px;
+       }
     .mainContent {
       width: 100%;
       display: flex;
@@ -319,10 +323,10 @@
     padding-right: 0px;
     width: 100vw;
     .contentWrapper {
-      h4{
+      .subheader{
       padding-left: 20px;
-      font-size: small;
-      font-weight: 500;
+      font-size: medium;
+      font-weight: 600;
     }
       .mainContent {
         margin-top: 0px;

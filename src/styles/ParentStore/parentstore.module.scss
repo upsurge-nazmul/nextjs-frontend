@@ -17,7 +17,9 @@
       overflow-y: auto;
       overflow-x: hidden;
       scrollbar-width: thin;
-      h4{
+      p{
+        font-size: large;
+        font-weight: bold;
         padding-left: 26px;
         margin-bottom: 20px;
       }
@@ -254,7 +256,7 @@
   .parentStore {
     .contentWrapper {
       .mainContent {
-        h4{
+      p{
           font-size: small;
           padding-left: 20px;
         }
@@ -370,7 +372,7 @@
       max-width: calc(100vw - 55px);
       .mainContent {
         flex-direction: column;
-        h4{
+        p{
           padding-left: 20px;
         }
         .flexLeft {

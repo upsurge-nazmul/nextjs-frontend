@@ -48,6 +48,8 @@ function AuthLogin({
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
       mixpanel.track('Login',{'event':`${email} logged in`});
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,

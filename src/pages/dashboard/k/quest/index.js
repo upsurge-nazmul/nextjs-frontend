@@ -48,7 +48,7 @@ export default function KnowledgeQuest({ userData, questData }) {
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent} id="quest-main">
-          <h4>Delightful journeys with games & interactive courses - and rewards!</h4>
+          <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
           {/* <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> */}
           <HeadArea
             data={questData}
