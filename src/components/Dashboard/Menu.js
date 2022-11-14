@@ -12,6 +12,7 @@ import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import GroupIcon from "@mui/icons-material/Group";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
@@ -280,7 +281,7 @@ function Menu({
             setShowOnboarding((prev) => !prev);
           }}
         >
-          <LogoutRoundedIcon className={styles.icon} />
+          <HikingIcon className={styles.icon} />
           Walkthrough
         </div>
       </div>
