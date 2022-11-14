@@ -167,8 +167,10 @@ function AuthFullData({
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
+      mixpanel.add_group('user_group','early_access');
       mixpanel.track('Sign-Up',{'event':`SignUp of ${email} Successful`, 'user-email': email});
-      mixpanel.add_group('user_group','early_access')
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email });
       fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
       dataLayer.push({'event':'signup-successful'});
       if (mode === "otp") {
