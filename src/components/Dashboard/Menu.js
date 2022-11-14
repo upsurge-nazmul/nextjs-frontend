@@ -17,12 +17,13 @@ import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
 
 function Menu({
-  settoastdata = () => { },
+  settoastdata = () => {},
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
   setSavedUser,
+  setShowOnboarding,
 }) {
   const {
     savedUsers,
@@ -172,10 +173,10 @@ function Menu({
                   onClick={() => {
                     setshowauth(true);
                     setSavedUser(user);
-                    
                   }}
-                  className={`${styles.innerUser} ${user.id === userdata.user_id && styles.selectedUser
-                    }`}
+                  className={`${styles.innerUser} ${
+                    user.id === userdata.user_id && styles.selectedUser
+                  }`}
                   key={user.id}
                 >
                   <img src={user.image} alt="" />
@@ -186,23 +187,22 @@ function Menu({
                 </div>
               );
             })}
-            
-              <div
-                className={`${styles.innerUser} `}
-                onClick={() => setshowauth(true)}
-              >
-                <GroupAddIcon className={styles.icon} />
-                <div className={styles.userInfo}>
-                  <p>Add new account</p>
-                </div>
+
+            <div
+              className={`${styles.innerUser} `}
+              onClick={() => setshowauth(true)}
+            >
+              <GroupAddIcon className={styles.icon} />
+              <div className={styles.userInfo}>
+                <p>Add new account</p>
               </div>
-            
+            </div>
           </div>
         )}
       </div>
       {menuType === "child" && !waitilistmenu && (
         <>
-         <p
+          <p
             className={styles.tabs}
             onClick={() => {
               setshowmenu(false);
@@ -272,6 +272,18 @@ function Menu({
           Settings
         </div>
       )} */}
+      <div className={styles.tabgrp}>
+        <div
+          className={styles.button}
+          onClick={() => {
+            setshowmenu(false);
+            setShowOnboarding((prev) => !prev);
+          }}
+        >
+          <LogoutRoundedIcon className={styles.icon} />
+          Walkthrough
+        </div>
+      </div>
       <div className={styles.tabgrp}>
         <div className={styles.button} onClick={handleLogout}>
           <LogoutRoundedIcon className={styles.icon} />
