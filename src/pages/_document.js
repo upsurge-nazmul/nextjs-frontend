@@ -12,7 +12,8 @@ for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".
 MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(new RegExp('^//'))?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
                 mixpanel.init('3788b0aa4b485545ec10ad669528e7d5', {debug: true});
   `,
-            }}
+            }
+          }
         ></script>
         {/*<!-- End of Mixpanel --> */}
         {/* <!-- Google Tag Manager --> */}
