@@ -51,7 +51,6 @@ function GameCard({ data, onClick, cardstyle, reward }) {
         </div> */}
       </div>
     </div>
-    </div>
   );
 }
 
