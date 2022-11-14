@@ -69,20 +69,80 @@ export default function Pricing() {
           </div>
           <div className={styles.section}>
             <div className={styles.sectionLeft}>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/educational_games.svg")
+                      .default.src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                12+ Educational Games
+              </div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/bonus_unicoins.svg").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                1,000 Bonus UniCoins
+              </div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/habit_builder.svg").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                Habit Builder
+              </div>
             </div>
             <div className={styles.sectionRight}>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
-              <div className={styles.sectionItem}>12+ Educational Games</div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/knowledge_quests.png").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                6 Knowledge Quests
+              </div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/partner_rewards.svg").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                Partner Rewards
+              </div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/leaderboard_prizes.svg")
+                      .default.src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                Leaderboard and Prizes
+              </div>
             </div>
           </div>
           <div className={styles.actionArea}>
             <button className={styles.actionButton}>Get Premium</button>
             <div className={styles.pricing}>
-              <div className={styles.current}>Free</div>
+              <div className={styles.current}>Free*</div>
               <div className={styles.old}>₹4799</div>
             </div>
           </div>
