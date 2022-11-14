@@ -85,7 +85,7 @@ export default function Quests({ kidsdata, questData, userdatafromserver }) {
           <>
             <div className={styles.maincontent}>
               <div className={styles.left}>
-              <h4>Delightful journeys with games & interactive courses - and rewards!</h4>
+              <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
                 <div className={styles.midSection}>
                   <div className={styles.knowledgeSection}>
                     Please select a Child/Student:
