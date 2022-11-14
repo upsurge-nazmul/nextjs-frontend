@@ -124,7 +124,7 @@ export default function Partners({ userdatafromserver }) {
           <PartnerSection dashboard />
         </div> */}
         <div className={styles.mainContent}>
-        <h4>Exclusive offers and benefits from the brands you love, curated especially for upsurge Parents.</h4>
+        <p style={{ fontSize: "large" , fontWeight: "bold",}}>Exclusive offers and benefits from the brands you love, curated especially for upsurge Parents.</p>
         <div className={styles.flexLeft}>
           <PartnersComponent />
         </div>

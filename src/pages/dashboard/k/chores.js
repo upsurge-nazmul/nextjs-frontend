@@ -83,7 +83,7 @@ export default function KidChoresPage({
 
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={"Chores"} settoastdata={settoastdata} />
-        <h4>Check & complete the tasks assigned by your parents, and earn UniCoins for doing so </h4>
+        <p className={styles.subheader}>Check & complete the tasks assigned by your parents, and earn UniCoins for doing so </p>
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.pendingChoresSection}>

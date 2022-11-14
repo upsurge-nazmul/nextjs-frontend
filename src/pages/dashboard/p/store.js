@@ -89,7 +89,7 @@ export default function ParentStore({
           settoastdata={settoastdata}
           />
         <div className={styles.mainContent}>
-            <h4>Rewards make learning even more fun - here are all the rewards your child can earn!</h4>
+            <p>Rewards make learning even more fun - here are all the rewards your child can earn!</p>
           <div className={styles.flexLeft}>
             <RequestsAndHistorySection
               id="request-store"

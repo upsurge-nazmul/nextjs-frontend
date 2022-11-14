@@ -181,6 +181,7 @@ function Footer({
             </a>
             <a
             onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
+            aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -189,6 +190,7 @@ function Footer({
             </a>
             <a
             onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
+            aria-label="Phone"
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -198,6 +200,7 @@ function Footer({
             </a>
             <a
             onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
+            aria-label="Mail"
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
@@ -576,6 +579,7 @@ function Footer({
         <div className={styles.socials}>
           <a
           onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Facebook`})}}
+            aria-label="Facebook"
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -587,6 +591,7 @@ function Footer({
           </a> */}
           <a
           onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Instagram`})}}
+            aria-label="Instagram"
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
@@ -598,6 +603,7 @@ function Footer({
           </a> */}
           <a
           onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting LinkedIn`})}}
+          aria-label="LinkedIn"
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -606,6 +612,7 @@ function Footer({
           </a>
           <a
           onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
+          aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -614,6 +621,7 @@ function Footer({
             </a>
             <a
             onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
+            aria-label="Phone"
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -623,6 +631,7 @@ function Footer({
             </a>
             <a
             onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
+            aria-label="Email"
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"

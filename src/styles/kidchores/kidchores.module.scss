@@ -11,8 +11,10 @@
     width: 100%;
     max-width: calc(100vw);
     flex-direction: column;
-    h4{
-          padding: 10px 0 10px 40px;
+    .subheader{
+        font-size: large;
+        font-weight: bold;
+          padding: 10px 0 10px 30px;
       }
     .mainContent {
       width: 100%;
