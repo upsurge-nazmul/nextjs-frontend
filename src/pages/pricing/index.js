@@ -140,7 +140,14 @@ export default function Pricing() {
             </div>
           </div>
           <div className={styles.actionArea}>
-            <button className={styles.actionButton}>Get Premium</button>
+            <button
+              className={styles.actionButton}
+              onClick={() => {
+                setshowauth(true);
+              }}
+            >
+              Get Premium
+            </button>
             <div className={styles.pricing}>
               <div className={styles.current}>Free*</div>
               <div className={styles.old}>₹4799</div>
