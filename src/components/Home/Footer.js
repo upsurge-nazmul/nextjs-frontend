@@ -122,7 +122,7 @@ function Footer({
             )}
           <div className={styles.brandtext}>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting WhatApp`})}}
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited WhatApp`})}}
               className={styles.whatsapp}
               href="https://wa.me/918851117926"
               target="_blank"
@@ -153,7 +153,7 @@ function Footer({
 
           <div className={styles.socials}>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Facebook`})}}
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
               href="https://www.facebook.com/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -162,7 +162,7 @@ function Footer({
               <Fb className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Instagram`})}}
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
@@ -171,7 +171,7 @@ function Footer({
               <Insta className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Linkedin`})}}
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Linkedin`})}}
               href="https://www.linkedin.com/company/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -180,7 +180,7 @@ function Footer({
               <LinkedIN className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
             aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
@@ -578,7 +578,7 @@ function Footer({
         </div>
         <div className={styles.socials}>
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Facebook`})}}
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
             aria-label="Facebook"
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
@@ -590,7 +590,7 @@ function Footer({
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Instagram`})}}
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
             aria-label="Instagram"
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
@@ -602,7 +602,7 @@ function Footer({
             <YtSvg className={styles.socialyt} />
           </a> */}
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting LinkedIn`})}}
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited LinkedIn`})}}
           aria-label="LinkedIn"
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
@@ -611,7 +611,7 @@ function Footer({
             <LinkedIN className={styles.social} />
           </a>
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is visiting Discord`})}}
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
           aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
