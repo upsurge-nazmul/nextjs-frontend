@@ -16,16 +16,16 @@ export default function LevelCard({ data }) {
       <div className={styles.bottomSection}>
         <div className={`${styles.unlockedAt} ${styles.list}`}>
           <div className={styles.listHeading}>Unlocked at</div>
-          {data.unlockedAt.map((item) => (
-            <div className={styles.listItem} key={item} >
+          {data.unlockedAt.map((item, i) => (
+            <div className={styles.listItem} key={i}>
               - {item}
             </div>
           ))}
         </div>
         <div className={`${styles.perks} ${styles.list}`}>
           <div className={styles.listHeading}>Perks</div>
-          {data.perks.map((item) => (
-            <div className={styles.listItem} key={item} >
+          {data.perks.map((item, i) => (
+            <div className={styles.listItem} key={i}>
               - {item}
             </div>
           ))}
