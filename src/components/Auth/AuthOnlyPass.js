@@ -78,7 +78,7 @@ function AuthLogin({
           })
           );
           setCookie("accesstoken", response.data.data.token);
-          if(newLogin.data.data.userProfile.user_name === null){
+          if(newLogin.data.data.userProfile.user_type !== 'child'){
             mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`});
             mixpanel.identify(`${email}`);
             mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
