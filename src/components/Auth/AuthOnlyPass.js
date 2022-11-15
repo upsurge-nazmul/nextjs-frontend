@@ -81,12 +81,12 @@ function AuthLogin({
           if(newLogin.data.data.userProfile.user_type !== 'child'){
             mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`});
             mixpanel.identify(`${email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
+            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email, "$user-id": newLogin.data.data.userProfile.id });
           }
           else{
             mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`});
             mixpanel.identify(`${email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
+            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email, "$user-id": newLogin.data.data.userProfile.id });
           }
           setuserdata(newLogin.data.data.userProfile);
           setuser(newLogin.data.data.userProfile.id);
