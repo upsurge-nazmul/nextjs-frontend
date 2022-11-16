@@ -230,7 +230,7 @@ function AddKid({ childdata, userdatafromserver }) {
       //   router.push("/dashboard/p");
       // }
        await fetchfamilyid(response.data.data.id);
-       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName })
+       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName, 'parent-email': userdata.email, 'gender': gender, 'dob': dob, 'city': city, 'school': school, 'email': email, 'username': userName, 'image': img || "https://imgcdn.upsurge.in/images/default-avatar.png"});
       setShowSuccess(true);
       settoastdata({
         type: "success",
