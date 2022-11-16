@@ -171,7 +171,7 @@ function AuthParent({
       <div className={styles.or}>OR</div> */}
       <input
         type="text"
-        placeholder="Email address"
+        placeholder="Parent's email address"
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />

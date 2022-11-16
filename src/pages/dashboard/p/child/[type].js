@@ -438,7 +438,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
-                placeholder="First name *"
+                placeholder="Child's First name *"
                 extraclass={styles.margin}
               />
               <ModernInputBox
@@ -446,20 +446,20 @@ function AddKid({ childdata, userdatafromserver }) {
                 textOnly={true}
                 maxLength={100}
                 setvalue={setlastName}
-                placeholder="Last name"
+                placeholder="Child's Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
               maxLength={100}
               setvalue={setuserName}
-              placeholder="Username *"
+              placeholder="Child's Username *"
               extraclass={styles.margin}
             />
             <div className={styles.commonWrapper}>
               <ModernInputBox
                 type="date"
-                placeholder="Date of birth *"
+                placeholder="Child's Date of birth *"
                 disabled={true}
                 value={dob}
                 onChange={(e) => {
@@ -524,7 +524,7 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={email}
                 setvalue={setemail}
-                placeholder="Email (optional)"
+                placeholder="Child's Email (optional)"
               />
             )}
             <div
