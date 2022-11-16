@@ -257,7 +257,7 @@ function AuthFullData({
         <p>+91</p>{" "}
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="Parent's phone number"
           value={phone}
           maxLength={10}
           onChange={(e) => {
@@ -268,7 +268,7 @@ function AuthFullData({
       <div className={styles.nameWrapper}>
         <input
           type="text"
-          placeholder="First Name"
+          placeholder="Parent's First Name"
           minLength={2}
           maxLength={50}
           value={firstName}
@@ -280,7 +280,7 @@ function AuthFullData({
           maxLength={50}
           minLength={2}
           type="text"
-          placeholder="Last Name"
+          placeholder="Parent's Last Name"
           value={lastName}
           onChange={(e) => {
             setlastName(onlyText(e.target.value)); 
@@ -289,7 +289,7 @@ function AuthFullData({
       </div>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="Parent's Username"
         minLength={4}
         maxLength={100} //
         value={username}
