@@ -9,8 +9,7 @@ import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
 import GoogleLogin from "react-google-login";
 import { apple_client_id, GClientId } from "../../../config";
-import AppleLogin from "react-apple-login";
-import AppleSvg from "../SVGcomponents/AppleSvg";
+
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
