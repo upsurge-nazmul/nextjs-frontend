@@ -172,7 +172,14 @@ function DashboardHeader({
           />
         </div>
       </div>
-      {showOnboarding ? <Onboarding setOpen={setShowOnboarding} /> : ""}
+      {showOnboarding ? (
+        <Onboarding
+          setOpen={setShowOnboarding}
+          actionHandler={() => setShowOnboarding(false)}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

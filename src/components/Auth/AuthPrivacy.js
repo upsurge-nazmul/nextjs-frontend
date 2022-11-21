@@ -467,7 +467,10 @@ function AuthPrivacy({ setmode }) {
         data-for="continue-button-privacy"
         className={`${styles.button} ${endreached ? "" : styles.disabled}`}
         onClick={() => {
-          if (endreached) router.push("/dashboard/p");
+          if (endreached) {
+            // router.push("/dashboard/p");
+            setmode("onboarding");
+          }
         }}
       >
         I Agree

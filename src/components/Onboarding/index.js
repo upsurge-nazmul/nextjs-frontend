@@ -1,7 +1,10 @@
 import Modal from "../Modal";
 import styles from "../../styles/GeneralComponents/onboarding.module.scss";
 
-export default function Onboarding({ setOpen }) {
+export default function Onboarding({
+  setOpen = () => {},
+  actionHandler = () => {},
+}) {
   return (
     <Modal
       title={"Walkthrough upsurge"}
@@ -11,7 +14,7 @@ export default function Onboarding({ setOpen }) {
         handleCancel: () => {},
         proceedText: "Done",
         isProceed: true,
-        handleProceed: () => setOpen(false),
+        handleProceed: actionHandler,
         proceedButtonType: "normal",
       }}
       onOutsideClick={() => setOpen(false)}
