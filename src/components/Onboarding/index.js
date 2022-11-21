@@ -5,6 +5,10 @@ export default function Onboarding({
   setOpen = () => {},
   actionHandler = () => {},
 }) {
+  /**
+   * <iframe src="https://drive.google.com/file/d/1QzZ9zP2EP97mB-rwn-rgz4n6o081FB2M/preview" width="640" height="480" allow="autoplay"></iframe>
+   */
+
   return (
     <Modal
       title={"Walkthrough upsurge"}
@@ -21,7 +25,7 @@ export default function Onboarding({
     >
       <div className={styles.onboardingScr}>
         <iframe
-          src="https://www.youtube.com/embed/5L4DQfVIcdg"
+          src="https://drive.google.com/file/d/1QzZ9zP2EP97mB-rwn-rgz4n6o081FB2M/preview"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
