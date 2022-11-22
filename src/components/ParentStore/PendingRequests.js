@@ -3,7 +3,7 @@ import styles from "../../styles/ParentStore/pendingreq.module.scss";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
 import { UniCoinValue } from "../../../config";
 import DashbardApis from "../../actions/apis/DashboardApis";
-
+import { useRouter } from "next/router";
 export default function PendingRequests({ setshowmodal, setbuydata, data }) {
   const [removedata, setremovedata] = useState({
     price: 10,
@@ -11,6 +11,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
     name: "",
     description: "",
   });
+  const router = useRouter();
   const [error, seterror] = useState("");
   const [loading, setloading] = useState(false);
   const [success, setsuccess] = useState(false);
@@ -27,6 +28,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
         type: "avatar",
       });
       if (response && response.data && response.data.success) {
+        router.reload();
       } else {
         seterror(response.data.message || "Error connecting to server");
       }
@@ -39,6 +41,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
         type: "voucher",
       });
       if (response && response.data && response.data.success) {
+        router.reload();
       } else {
         seterror(response.data.message || "Error connecting to server");
       }
