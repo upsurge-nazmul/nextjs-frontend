@@ -19,12 +19,6 @@ export const TEAM_DATA = {
       link: "https://www.linkedin.com/in/ankur-tandon-636332a7/",
     },
     {
-      name: "Ritika Dhall",
-      img_url: "/images/team/Ritika.jpeg",
-      position: "Product & Growth",
-      link: "https://www.linkedin.com/in/ritika-dhall-30a84217a/",
-    },
-    {
       name: "Parth Sharma",
       img_url: "/images/team/Parth.jpeg",
       position: "Product & Growth",
