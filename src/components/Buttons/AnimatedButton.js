@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import styles from "../../styles/Buttons/animatedButton.module.scss";
 import Animation from "./Animation";
 
 export default function AnimatedButton({ children, handleClick, style }) {
-  const [button, setButton] = useState();
   const [disabled, setDisabled] = useState(false);
   const [buttonState, setButtonState] = useState("ready");
   const [activeAnimation, setActiveAnimation] = useState(false);
-
-  useEffect(() => {
-    setButton(document.getElementById("button"));
-  }, []);
 
   // cycle through button states when clicked
   const clickButton = () => {
@@ -29,9 +23,9 @@ export default function AnimatedButton({ children, handleClick, style }) {
             // Reset button so user can select it again
             setDisabled(false);
             setButtonState("ready");
-          }, 4000);
-        }, 1000);
-      }, 1800);
+          }, 1000);
+        }, 2500);
+      }, 1000);
     }
   };
 
@@ -72,11 +66,7 @@ export default function AnimatedButton({ children, handleClick, style }) {
           <span className={styles.buttonText}>{children}</span>
         </div>
       </button>
-      <Animation
-        button={button}
-        activate={activeAnimation}
-        setActivate={setActiveAnimation}
-      />
+      <Animation activate={activeAnimation} setActivate={setActiveAnimation} />
     </>
   );
 }

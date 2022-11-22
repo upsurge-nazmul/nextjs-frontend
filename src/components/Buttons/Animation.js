@@ -9,7 +9,7 @@ export default function Animation({
 
   // ammount to add on each button press
   const confettiCount = 20;
-  const sequinCount = 10;
+  const sequinCount = 30;
 
   // colors, back side is darker for confetti flipping
   const colors = [
@@ -19,14 +19,11 @@ export default function Animation({
   ];
 
   // "physics" variables
-  const gravityConfetti = 0.3;
-  const gravitySequins = 0.55;
-  const dragConfetti = 0.075;
-  const dragSequins = 0.02;
+  const gravityConfetti = 0.1;
+  const gravitySequins = 0.1;
+  const dragConfetti = 0.025;
+  const dragSequins = 0.005;
   const terminalVelocity = 3;
-
-  // init other global elements
-  var disabled = false;
 
   let canvas, ctx;
 
@@ -81,8 +78,8 @@ export default function Animation({
     };
     this.rotation = randomRange(0, 2 * Math.PI);
     this.scale = {
-      x: 1,
-      y: 1,
+      x: 3,
+      y: 3,
     };
     this.velocity = initConfettoVelocity([-9, 9], [6, 11]);
   }
@@ -106,7 +103,7 @@ export default function Animation({
   // Sequin Class
   function Sequin() {
     (this.color = colors[Math.floor(randomRange(0, colors.length))].back),
-      (this.radius = randomRange(1, 2)),
+      (this.radius = randomRange(1, 7)),
       (this.position = {
         x: randomRange(
           canvas && canvas.width / 2 - canvas.offsetWidth / 3,
