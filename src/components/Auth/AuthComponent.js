@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import AuthHeader from "./AuthHeader";
@@ -16,6 +17,7 @@ import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
 import ChangePhoneNo from "./ChangePhoneNo";
 import AuthRefer from "./AuthRefer";
+import Onboarding from "../Onboarding";
 
 function AuthComponent({
   showauth,
@@ -43,6 +45,8 @@ function AuthComponent({
     type: "success",
     msg: "",
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     if (prefilled) setmode("");
@@ -207,6 +211,12 @@ function AuthComponent({
                   signupmethod={signupmethod}
                   usertype={usertype}
                   refId={refId}
+                />
+              ) : mode === "onboarding" ? (
+                <Onboarding
+                  actionHandler={() => {
+                    router.push("/dashboard/p");
+                  }}
                 />
               ) : mode === "" && prefilled ? (
                 <AuthOnlyPass
