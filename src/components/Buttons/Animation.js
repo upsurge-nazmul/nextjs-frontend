@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../../styles/Buttons/animation.module.scss";
 
 export default function Animation({
   activate = false,
   setActivate = () => {},
 }) {
+  const canvRef = useRef();
+
   // ammount to add on each button press
   const confettiCount = 20;
   const sequinCount = 10;
@@ -28,8 +30,8 @@ export default function Animation({
 
   let canvas, ctx;
 
-  if (typeof window !== "undefined") {
-    canvas = document.getElementById("canvas");
+  if (canvRef && canvRef.current && canvRef.current) {
+    canvas = canvRef.current;
     ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -227,5 +229,5 @@ export default function Animation({
     return () => setActivate(false);
   }, [activate]);
 
-  return <canvas id="canvas" className={styles.canvas}></canvas>;
+  return <canvas id="canvas" ref={canvRef} className={styles.canvas}></canvas>;
 }
