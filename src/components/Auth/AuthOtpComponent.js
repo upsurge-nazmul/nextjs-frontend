@@ -36,7 +36,7 @@ function AuthOtpComponent({
       setuserdata(response.data.data.user);
       settoastdata({ show: true, msg: response.data.message, type: "success" });
       localStorage.setItem("islogged", true);
-      setmode("privacy");
+      setmode("onboarding");
     } else {
       seterror(response.data.message || "Cannot reach server");
       setloading(false);
