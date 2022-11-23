@@ -1,37 +1,44 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
+import Header from "../../components/Header/Header";
+import LeftPanel from "../../components/LeftPanel";
+import PageTitle from "../../components/PageTitle";
+import Curve1 from "../../components/SVGcomponents/Curve1";
+import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/privacy/privacy.module.scss";
 
-function PrivacyPolicy({ setmode }) {
+function PrivacyPolicy() {
   const router = useRouter();
-  const [endreached, setendreached] = useState(false);
-  useEffect(() => {
-    let privacyDiv = document.getElementById("privacy-main");
-    let removethisonexit = privacyDiv.addEventListener("scroll", (e) => {
-      // console.log(e.target);
-      // console.log(e.target.scrollTop + " " + e.target.scrollHeight);
-      if (
-        e.target.scrollTop + e.target.offsetHeight >=
-        e.target.scrollHeight - 100
-      ) {
-        setendreached(true);
-      }
-    });
-    return () => removethisonexit;
-  }, []);
-  useEffect(() => {
-    let privacyDiv = document.getElementById("privacy-main");
-    if (privacyDiv) {
-      privacyDiv.scrollTop = 0;
-    }
-  }, []);
+  const [endreached, setendreached] = useState(true);
+  const [openLeftPanel, setOpenLeftPanel] = useState(false);
+  const [showauth, setshowauth] = useState(false);
+  const [showpopup, setshowpopup] = useState(false);
+  const [stickyheader, setstickyheader] = useState(false);
+
   return (
-    <div className={styles.privacy}>
-      <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
-      <h1 className={styles.subheading}>Your privacy matters to us.</h1>
-      <div className={styles.details} id="privacy-main">
-        {`Revision Date: July 24, 2020 
+    <div className={styles.privacyPage}>
+      <PageTitle />
+      <Header
+        setOpenLeftPanel={setOpenLeftPanel}
+        showauth={showauth}
+        setshowauth={setshowauth}
+        stickyheader={stickyheader}
+        showpopup={showpopup}
+        setshowpopup={setshowpopup}
+      />
+      <LeftPanel
+        openLeftPanel={openLeftPanel}
+        setOpenLeftPanel={setOpenLeftPanel}
+      />
+      <Curve1 className={styles.curve1} />
+      <Curve2 className={styles.curve2} />
+
+      <div className={styles.mainContent}>
+        <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
+        <h1 className={styles.subheading}>Your privacy matters to us.</h1>
+        <div className={styles.details} id="privacy-main">
+          {`Revision Date: July 24, 2020 
         
         These Terms of Service (these “Terms”) govern your use of the Upsurge website (the “Site”), the Upsurge video platform and associated tools (collectively, the “Service”) made available by Upsurge, Inc. (“Upsurge”, "our", "us", or "we"). Your use of the Site and/or your registration to use the Service indicates that you agree on behalf of yourself or the entity that you represent (collectively, "you") to be bound by these Terms as well as the Upsurge Privacy Policy. Please read these Terms carefully before registering for or otherwise using the Upsurge Service.
         
@@ -456,21 +463,15 @@ function PrivacyPolicy({ setmode }) {
         the Site. Notice will be deemed given one (1) business day after e-mail
         transmission from Upsurge, or two (2) business days after the date of
         posting.`}
-      </div>
-      {!endreached && (
-        <ReactTooltip id="continue-button-privacy" type="dark" effect="solid">
-          <p>Read privacy policy to unlock.</p>
-        </ReactTooltip>
-      )}
-      <div
-        data-tip
-        data-for="continue-button-privacy"
-        className={`${styles.button} ${endreached ? "" : styles.disabled}`}
-        onClick={() => {
-          if (endreached) router.push("/dashboard/p");
-        }}
-      >
-        I Agree
+        </div>
+        <div
+          data-tip
+          data-for="continue-button-privacy"
+          className={`${styles.button}`}
+          onClick={() => router.push("/dashboard/p")}
+        >
+          I Agree
+        </div>
       </div>
     </div>
   );
