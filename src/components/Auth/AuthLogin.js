@@ -19,7 +19,8 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  addAccount
+  addAccount,
+  mode,
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -47,9 +48,12 @@ function AuthLogin({
     if (parts.length === 2) token = parts.pop().split(";").shift();
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
-      mixpanel.track('Login',{'event':`${email} logged in`});
+      mixpanel.track("Login", { event: `${email} logged in` });
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
+      mixpanel.people.set({
+        $name: response.data.data.userProfile.user_name,
+        $email: email,
+      });
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,
@@ -130,7 +134,7 @@ function AuthLogin({
         placeholder="Email address/username"
         value={email}
         setvalue={setemail}
-        emailonFocus = {true}
+        emailonFocus={true}
       />
       <div className={styles.passwordBox}>
         <ModernInputBox
@@ -189,11 +193,11 @@ function AuthLogin({
           );
         }}
       /> */}
-      {!onlyLogin && (
+      {/* {!onlyLogin && (
         <div className={styles.reset} onClick={() => setmode("reset")}>
           <span> Forgot password?</span>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

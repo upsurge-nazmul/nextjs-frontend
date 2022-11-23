@@ -59,20 +59,24 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
           >
             Go to dashboard
           </div>
-        ) : (<>
-          <p className={styles.error}>{error}</p>
-          <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-            {!loading ? (
-              <div className={`${styles.button}`} onClick={signup}>
-                Join our early access
-              </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
-            )}
-          </div>
-            </>
+        ) : (
+          <>
+            <p className={styles.error}>{error}</p>
+            <div
+              className={`${styles.signupBox} ${error && styles.errsignbox}`}
+            >
+              {!loading ? (
+                <div className={`${styles.button}`} onClick={signup}>
+                  {/* Join our early access by signing up */}
+                  Sign Up for join our early access
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
+          </>
         )}
         {/* <div
           className={`${styles.knowmore}`}
