@@ -234,25 +234,27 @@ function AuthComponent({
               <div className={styles.authFooter}>
                 {mode !== "reset" &&
                   (mode === "login" ? (
-                    !onlyLogin && (
+                  !onlyLogin && (
+                    <>
                       <p className={styles.changemode}>
-                        No Account?{" "}
-                        {!loading ? (
-                          <div className={`${styles.button}`} onClick={() => {setmode("selection");}}>
-                            Sign up
-                          </div>
-                        ) : (
-                          <div className={`${styles.button} ${styles.spinner_btn}`}>
-                            <Spinner />
-                          </div>
-                        )}
+                        Don&apos;t have an Account?{" "}
+                        <br />
                       </p>
-                    )
+                      <div className={styles.button} onClick={() => { setmode("selection"); }}>
+                        Sign up
+                      </div>
+                    </>
+                  )
                   ) : (
+                    <>
                     <p className={styles.changemode}>
                       Already have an account?{" "}
-                      <span onClick={() => setmode("login")}>Sign In</span>
+                      <br />
                     </p>
+                    <div className={styles.button} onClick={() => setmode("login")}>
+                        Sign in
+                      </div>
+                    </>
                   ))}
               </div>
             </div>
