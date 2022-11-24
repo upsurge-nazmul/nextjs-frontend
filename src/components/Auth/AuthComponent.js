@@ -232,7 +232,7 @@ function AuthComponent({
               ) : mode === "onboarding" ? (
                 <Onboarding
                   actionHandler={() => {
-                    router.push("/dashboard/p");
+                    router.push("/dashboard/k");
                   }}
                 />
               ) : mode === "" && prefilled ? (
