@@ -29,7 +29,7 @@ function AuthHeader({
               No Account?{" "}
               <span
                 onClick={() => {
-                  setmode("selection");
+                  setmode("parent");
                 }}
               >
                 Sign up
