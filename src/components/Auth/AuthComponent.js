@@ -18,6 +18,7 @@ import AuthOnlyPass from "./AuthOnlyPass";
 import ChangePhoneNo from "./ChangePhoneNo";
 import AuthRefer from "./AuthRefer";
 import Onboarding from "../Onboarding";
+import ParentChildAuth from "./ParentChildAuth";
 
 function AuthComponent({
   showauth,
@@ -138,6 +139,22 @@ function AuthComponent({
                   seterror={seterror}
                   email={email}
                   setsignupmethod={setsignupmethod}
+                />
+              ) : mode === "parentChild" ? (
+                <ParentChildAuth
+                  email={email}
+                  settoastdata={settoastdata}
+                  setmode={setmode}
+                  phone={phone}
+                  setphone={setphone}
+                  error={error}
+                  password={password}
+                  seterror={seterror}
+                  setusername={setusername}
+                  username={username}
+                  setpassword={setpassword}
+                  signupmethod={signupmethod}
+                  usertype={usertype}
                 />
               ) : mode === "email" ? (
                 <AuthFullData
