@@ -793,6 +793,26 @@
             border: none;
           }
         }
+        .agreement {
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1rem;
+          .agreementText {
+            width: 80%;
+            text-align: center;
+            font-weight: 300;
+            .agreementLinks {
+              border: none;
+              outline: none;
+              cursor: pointer;
+              background-color: transparent;
+              font-size: inherit;
+              font-weight: 600;
+            }
+          }
+        }
       }
     }
     .signupAuth {
