@@ -12,6 +12,7 @@ import AuthFullData from "./AuthFullData";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
+import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
@@ -123,6 +124,7 @@ function AuthComponent({
                   setmode={setmode}
                   onlyLogin={onlyLogin}
                   addAccount={mailfromhome === false ? true : false}
+                  mode={mode}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -229,6 +231,30 @@ function AuthComponent({
                   onlyLogin={onlyLogin}
                 />
               ) : null}
+              <div className={styles.authFooter}>
+                {mode !== "reset" &&
+                  (mode === "login" ? (
+                    !onlyLogin && (
+                      <p className={styles.changemode}>
+                        No Account?{" "}
+                        {!loading ? (
+                          <div className={`${styles.button}`} onClick={() => {setmode("selection");}}>
+                            Sign up
+                          </div>
+                        ) : (
+                          <div className={`${styles.button} ${styles.spinner_btn}`}>
+                            <Spinner />
+                          </div>
+                        )}
+                      </p>
+                    )
+                  ) : (
+                    <p className={styles.changemode}>
+                      Already have an account?{" "}
+                      <span onClick={() => setmode("login")}>Sign In</span>
+                    </p>
+                  ))}
+              </div>
             </div>
           </div>
         ) : null}
