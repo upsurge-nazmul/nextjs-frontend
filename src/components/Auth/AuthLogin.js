@@ -49,7 +49,7 @@ function AuthLogin({
     if (response && response.data && response.data.success) {
       mixpanel.track('Login',{'event':`${email} logged in`});
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ "$name":response.data.data.userProfile.user_name , "$email": email });
+      mixpanel.people.set({ "$name":getfullname( response.data.data.userProfile.first_name, response.data.data.userProfile.last_name ) , "$email": email, "$user-id": response.data.data.userProfile.id });
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,

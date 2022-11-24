@@ -37,7 +37,7 @@ function GameCard({ data, onClick, cardstyle, reward }) {
             type={"animated"}
             handleClick={() => {
               onClick ? onClick() : () => router.push("/dashboard/k/games");
-              mixpanel.track("Game", { event: `Game Started ${data.name}` });
+              mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
             }}
           >
             Play

@@ -79,7 +79,7 @@ export default function QuizView({
       quiz_id: chapterId,
       score,
     });
-    mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`});
+    mixpanel.track('Knowledge Quest Quiz',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
     setuserdata((prev) => ({
       ...prev,
       num_unicoins:

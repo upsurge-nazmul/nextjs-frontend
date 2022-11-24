@@ -27,7 +27,7 @@ export default function ActivityView({ chapterId, handleBack, handleDone }) {
             className={styles.doneButton}
             onClick={() => {
               setFullScreen(false);
-              mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`})
+              mixpanel.track('Knowledge Quest finished',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
               document.exitFullscreen();
               handleDone();
             }}

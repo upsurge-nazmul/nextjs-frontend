@@ -36,7 +36,7 @@ export default function QuestMap({
                             userLevel >= chapter.chapterNo ||
                             userLevel + 1 === chapter.chapterNo
                           ) {
-                            mixpanel.track('Knowledge Quest',{'event':`Quest Started ${chapter.id}`})
+                            mixpanel.track('Knowledge Quest started',{'event':`Quest Started ${chapter.id}`, 'chapterId':`${chapter.id}`});
                             changeView(chapter.type);
                             setActiveChapter(chapter.id);
                             setActiveChapterNo(chapter.chapterNo);

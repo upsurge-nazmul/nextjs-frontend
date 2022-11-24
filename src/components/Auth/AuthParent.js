@@ -34,7 +34,7 @@ function AuthParent({
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
         mixpanel.add_group('user_group','early_access');
-        mixpanel.track('Sign-Up',{'event':`${email} Email entered`});
+        mixpanel.track('Email entered for Signup',{'event':`${email} Email entered`, 'email':`${email}`});
         mixpanel.identify(`${email}`);
         mixpanel.people.set({ "$email": email });
         dataLayer.push({'event':'Email-entered'});
@@ -171,7 +171,7 @@ function AuthParent({
       <div className={styles.or}>OR</div> */}
       <input
         type="text"
-        placeholder="Email address"
+        placeholder="Parent's email address"
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />
