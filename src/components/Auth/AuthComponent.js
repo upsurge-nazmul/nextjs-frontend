@@ -123,6 +123,7 @@ function AuthComponent({
                   setmode={setmode}
                   onlyLogin={onlyLogin}
                   addAccount={mailfromhome === false ? true : false}
+                  mode={mode}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -229,6 +230,28 @@ function AuthComponent({
                   onlyLogin={onlyLogin}
                 />
               ) : null}
+              <div className={styles.authFooter}>
+                {mode !== "reset" &&
+                  (mode === "login" ? (
+                    !onlyLogin && (
+                      <p className={styles.changemode}>
+                        No Account?{" "}
+                        <span
+                          onClick={() => {
+                            setmode("selection");
+                          }}
+                        >
+                          Sign up
+                        </span>
+                      </p>
+                    )
+                  ) : (
+                    <p className={styles.changemode}>
+                      Already have an account?{" "}
+                      <span onClick={() => setmode("login")}>Sign In</span>
+                    </p>
+                  ))}
+              </div>
             </div>
           </div>
         ) : null}

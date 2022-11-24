@@ -17,6 +17,20 @@
   z-index: 5;
   top: 0;
   left: 0;
+  .authFooter {
+    .changemode {
+      font-weight: 500;
+      font-size: 16px;
+      span {
+        cursor: pointer;
+        color: rgba(65, 102, 235, 1);
+        &:hover {
+          color: #2751e9;
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
   .authContentWrapper {
     width: 100vw;
     height: 100vh;
@@ -77,6 +91,7 @@
             color: rgba(65, 102, 235, 1);
             &:hover {
               color: #2751e9;
+              text-decoration-line: underline;
             }
           }
         }
