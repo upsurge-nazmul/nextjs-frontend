@@ -22,7 +22,7 @@ function AuthHeader({
             : "Signup"
           : "Login"}
       </p>
-      {/* {mode !== "reset" &&
+      {mode !== "reset" &&
         (mode === "login" ? (
           !onlyLogin && (
             <p className={styles.changemode}>
@@ -41,12 +41,7 @@ function AuthHeader({
             Already have an account?{" "}
             <span onClick={() => setmode("login")}>Sign In</span>
           </p>
-        ))} */}
-      {!onlyLogin & (mode !== "reset") & (mode === "login") ? (
-        <div className={styles.changemode} onClick={() => setmode("reset")}>
-          <span> Forgot password?</span>
-        </div>
-      ) : null}
+        ))}
     </div>
   );
 }

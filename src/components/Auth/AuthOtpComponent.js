@@ -36,7 +36,7 @@ function AuthOtpComponent({
       setuserdata(response.data.data.user);
       settoastdata({ show: true, msg: response.data.message, type: "success" });
       localStorage.setItem("islogged", true);
-      setmode("onboarding");
+      setmode("privacy");
     } else {
       seterror(response.data.message || "Cannot reach server");
       setloading(false);
@@ -103,28 +103,6 @@ function AuthOtpComponent({
           <Spinner />
         </div>
       )}
-      <div className={styles.agreement}>
-        <div className={styles.agreementText}>
-          By continuing you agree to our{" "}
-          <button
-            className={styles.agreementLinks}
-            onClick={() => {
-              router.push("/privacy-policy");
-            }}
-          >
-            Terms of Service
-          </button>{" "}
-          and{" "}
-          <button
-            className={styles.agreementLinks}
-            onClick={() => {
-              router.push("/privacy-policy");
-            }}
-          >
-            Privacy Policy
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

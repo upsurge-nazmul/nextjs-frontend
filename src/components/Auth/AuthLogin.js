@@ -19,8 +19,7 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  addAccount,
-  mode,
+  addAccount
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -48,7 +47,7 @@ function AuthLogin({
     if (parts.length === 2) token = parts.pop().split(";").shift();
     let response = await LoginApis.login({ email, password }, token);
     if (response && response.data && response.data.success) {
-      mixpanel.track("Login", { event: `${email} logged in` });
+      mixpanel.track('Login',{'event':`${email} logged in`});
       mixpanel.identify(`${email}`);
       mixpanel.people.set({ "$name":getfullname( response.data.data.userProfile.first_name, response.data.data.userProfile.last_name ) , "$email": email, "$user-id": response.data.data.userProfile.id });
       setSavedUsers(
@@ -131,7 +130,7 @@ function AuthLogin({
         placeholder="Email address/username"
         value={email}
         setvalue={setemail}
-        emailonFocus={true}
+        emailonFocus = {true}
       />
       <div className={styles.passwordBox}>
         <ModernInputBox
@@ -155,7 +154,7 @@ function AuthLogin({
           <Spinner />
         </div>
       )}
-      
+      <div className={styles.or}>OR</div>
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -172,7 +171,6 @@ function AuthLogin({
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
       />
-      <div className={styles.or}>OR</div>
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
@@ -191,11 +189,11 @@ function AuthLogin({
           );
         }}
       /> */}
-      {/* {!onlyLogin && (
+      {!onlyLogin && (
         <div className={styles.reset} onClick={() => setmode("reset")}>
           <span> Forgot password?</span>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
