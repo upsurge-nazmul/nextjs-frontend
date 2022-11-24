@@ -30,6 +30,27 @@
         }
       }
     }
+    .button {
+      background: #4166eb;
+      border-radius: 14px;
+      color: white;
+      width: 100%;
+      margin-bottom: 18px;
+      height: 3.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      &:hover {
+        background-color: #ffffff;
+        color: #4166eb;
+        border: 1px solid #4166eb;
+      }
+    }
   }
   .authContentWrapper {
     width: 100vw;
