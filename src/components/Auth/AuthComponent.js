@@ -12,6 +12,7 @@ import AuthFullData from "./AuthFullData";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
+import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
@@ -236,13 +237,15 @@ function AuthComponent({
                     !onlyLogin && (
                       <p className={styles.changemode}>
                         No Account?{" "}
-                        <span
-                          onClick={() => {
-                            setmode("selection");
-                          }}
-                        >
-                          Sign up
-                        </span>
+                        {!loading ? (
+                          <div className={`${styles.button}`} onClick={() => {setmode("selection");}}>
+                            Sign up
+                          </div>
+                        ) : (
+                          <div className={`${styles.button} ${styles.spinner_btn}`}>
+                            <Spinner />
+                          </div>
+                        )}
                       </p>
                     )
                   ) : (

@@ -155,7 +155,7 @@ function AuthLogin({
           <Spinner />
         </div>
       )}
-      <div className={styles.or}>OR</div>
+      
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -172,6 +172,7 @@ function AuthLogin({
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
       />
+      <div className={styles.or}>OR</div>
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
