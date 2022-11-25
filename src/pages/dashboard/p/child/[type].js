@@ -230,7 +230,7 @@ function AddKid({ childdata, userdatafromserver }) {
       //   router.push("/dashboard/p");
       // }
        await fetchfamilyid(response.data.data.id);
-       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName })
+       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName, 'parent-email': userdata.email, 'gender': gender, 'dob': dob, 'city': city, 'school': school, 'email': email, 'username': userName, 'image': img || "https://imgcdn.upsurge.in/images/default-avatar.png"});
       setShowSuccess(true);
       settoastdata({
         type: "success",
@@ -438,7 +438,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
-                placeholder="First name *"
+                placeholder="Child's First name *"
                 extraclass={styles.margin}
               />
               <ModernInputBox
@@ -446,20 +446,20 @@ function AddKid({ childdata, userdatafromserver }) {
                 textOnly={true}
                 maxLength={100}
                 setvalue={setlastName}
-                placeholder="Last name"
+                placeholder="Child's Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
               maxLength={100}
               setvalue={setuserName}
-              placeholder="Username *"
+              placeholder="Child's Username *"
               extraclass={styles.margin}
             />
             <div className={styles.commonWrapper}>
               <ModernInputBox
                 type="date"
-                placeholder="Date of birth *"
+                placeholder="Child's Date of birth *"
                 disabled={true}
                 value={dob}
                 onChange={(e) => {
@@ -524,7 +524,7 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={email}
                 setvalue={setemail}
-                placeholder="Email (optional)"
+                placeholder="Child's Email (optional)"
               />
             )}
             <div
