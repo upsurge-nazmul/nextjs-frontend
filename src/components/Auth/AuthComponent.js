@@ -251,24 +251,30 @@ function AuthComponent({
               <div className={styles.authFooter}>
                 {mode !== "reset" &&
                   (mode === "login" ? (
-                  !onlyLogin && (
-                    <>
-                      <p className={styles.changemode}>
-                        Don&apos;t have an Account?{" "}
-                        <br />
-                      </p>
-                      <div className={styles.button} onClick={() => { setmode("selection"); }}>
-                        Sign up
-                      </div>
-                    </>
-                  )
+                    !onlyLogin && (
+                      <>
+                        <p className={styles.changemode}>
+                          Don&apos;t have an Account? <br />
+                        </p>
+                        <div
+                          className={styles.button}
+                          onClick={() => {
+                            setmode("parent");
+                          }}
+                        >
+                          Sign up
+                        </div>
+                      </>
+                    )
                   ) : (
                     <>
-                    <p className={styles.changemode}>
-                      Already have an account?{" "}
-                      <br />
-                    </p>
-                    <div className={styles.button} onClick={() => setmode("login")}>
+                      <p className={styles.changemode}>
+                        Already have an account? <br />
+                      </p>
+                      <div
+                        className={styles.button}
+                        onClick={() => setmode("login")}
+                      >
                         Sign in
                       </div>
                     </>
