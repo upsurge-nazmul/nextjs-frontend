@@ -3,7 +3,7 @@ import styles from "../../styles/Home/benefits.module.scss";
 import ImageDisplay from "../Benefits/ImageDisplay";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
-const data = [
+const DATA = [
   {
     id: 1,
     title: "Kickstart your child’s financial education journey",
@@ -40,6 +40,14 @@ const data = [
   },
 ];
 
+const COLORS = [
+  { id: 1, bg: "#4066eb", shadowClr: "#bac3e4" },
+  { id: 2, bg: "#fdcc03", shadowClr: "#FFF3C3" },
+  { id: 3, bg: "#ff6263", shadowClr: "#f7baba" },
+  { id: 4, bg: "#17d1bc", shadowClr: "#95e0d8" },
+  { id: 5, bg: "#333333", shadowClr: "#9e9e9e" },
+];
+
 function Benefits() {
   const [current, setCurrent] = useState(0);
 
@@ -50,15 +58,31 @@ function Benefits() {
         <div className={styles.collapseables}>
           <div className={styles.line} />
           <div className={styles.benefits}>
-            {data.map((item) => {
+            {DATA.map((item) => {
               return (
                 <div
                   className={styles.benefit}
-                  style={item.id === data.length ? { marginBottom: 0 } : {}}
+                  style={item.id === DATA.length ? { marginBottom: 0 } : {}}
                   onClick={() => setCurrent(item.id - 1)}
                   key={item.id}
                 >
-                  <div className={styles.circle} />
+                  <div
+                    className={
+                      item.id === current + 1
+                        ? styles.activeCircle
+                        : styles.circle
+                    }
+                    style={
+                      item.id === current + 1
+                        ? {
+                            backgroundColor: COLORS[item.id - 1].bg,
+                            boxShadow: `0 0 2px 5px ${
+                              COLORS[item.id - 1].shadowClr
+                            }`,
+                          }
+                        : {}
+                    }
+                  />
                   <div className={styles.title}>{item.title}</div>
                   {item.id === current + 1 ? (
                     <>
@@ -79,7 +103,7 @@ function Benefits() {
         </div>
       </div>
       <div className={styles.right}>
-        <ImageDisplay src={data[current].img} alt={data[current].title} />
+        <ImageDisplay src={DATA[current].img} alt={DATA[current].title} />
       </div>
     </div>
   );
