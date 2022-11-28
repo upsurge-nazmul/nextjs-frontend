@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Home/benefits.module.scss";
 import ImageDisplay from "../Benefits/ImageDisplay";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 const data = [
   {
@@ -46,16 +47,25 @@ function Benefits() {
     <div className={styles.content}>
       <div className={styles.left}>
         <div className={styles.heading}>Why upsurge?</div>
-        <div>
+        <div className={styles.benefits}>
           {data.map((item) => {
             return (
               <div
                 className={styles.benefit}
                 onClick={() => setCurrent(item.id - 1)}
+                key={item.id}
               >
-                <div>{item.title}</div>
-                <div>{item.description}</div>
-                <div>Learn More</div>
+                <div className={styles.title}>{item.title}</div>
+                {item.id === current + 1 ? (
+                  <>
+                    <div className={styles.description}>{item.description}</div>
+                    <div className={styles.action}>
+                      Learn More <ArrowRightAltIcon />
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
             );
           })}
