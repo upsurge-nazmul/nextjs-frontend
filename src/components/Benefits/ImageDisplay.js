@@ -7,7 +7,7 @@ export default function ImageDisplay({
 }) {
   return (
     <div
-      className={styles.layer1}
+      className={styles.displayArea}
       style={
         frameType === "vertical"
           ? {
@@ -25,9 +25,27 @@ export default function ImageDisplay({
             }
       }
     >
-      <div className={styles.layer2}>
-        <div className={styles.layer3}>
-          <img src={src} alt={alt} className={styles.image} />
+      <img
+        src={require("../../assets/whyUpsurge/yellow.svg").default.src}
+        alt={"Yellow Star"}
+      />
+      <img
+        src={require("../../assets/whyUpsurge/blue.svg").default.src}
+        alt={"Blue Circle"}
+      />
+      <img
+        src={require("../../assets/whyUpsurge/red.svg").default.src}
+        alt={"Red Circle"}
+      />
+      <img
+        src={require("../../assets/whyUpsurge/green.svg").default.src}
+        alt={"Green Parabolla"}
+      />
+      <div className={styles.layer1}>
+        <div className={styles.layer2}>
+          <div className={styles.layer3}>
+            <img src={src} alt={alt} className={styles.image} />
+          </div>
         </div>
       </div>
     </div>
