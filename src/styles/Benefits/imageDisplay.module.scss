@@ -11,6 +11,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     .layer2 {
       height: 100%;
       width: 100%;
@@ -29,6 +30,7 @@
           width: 100%;
           background-color: #b3c2f7;
           border-radius: 1000px;
+          z-index: 1;
         }
       }
     }
