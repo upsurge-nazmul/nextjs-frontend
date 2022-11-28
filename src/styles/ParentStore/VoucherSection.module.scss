@@ -60,6 +60,9 @@
     flex-wrap: wrap;
     flex: 1;
     gap: 30px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
     .noreward {
       margin: auto;
       margin-top: 15%;
