@@ -4,7 +4,7 @@ export default function CircularPercentage({
   borderWidth = "3px",
   borderRadius = "10%",
   borderBgColor = "rgb(230 226 226)",
-  borderCompleteColor = "#4066eb",
+  borderCompleteColor = "#4166EB",
 }) {
   return (
     <div
