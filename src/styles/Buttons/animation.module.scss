@@ -1,0 +1,21 @@
+@keyframes loading {
+  0% {
+    cy: 10;
+  }
+  25% {
+    cy: 3;
+  }
+  50% {
+    cy: 10;
+  }
+}
+
+.canvas {
+  position: absolute;
+  top: -280px;
+  left: -15px;
+  width: 250px;
+  height: 340px;
+  pointer-events: none;
+  z-index: 2;
+}
