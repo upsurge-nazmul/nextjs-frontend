@@ -12,7 +12,7 @@
     align-items: center;
     .loadingText {
       font-size: 3rem;
-      color: #4066eb;
+      color: #4166EB;
       margin-right: 5px;
     }
     .percentage {
@@ -28,7 +28,7 @@
     background-color: #ccc;
     .progress {
       @extend .progressBg;
-      background-color: #4066eb;
+      background-color: #4166EB;
     }
   }
 }

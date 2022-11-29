@@ -48,7 +48,7 @@
     .rewardButton {
       cursor: pointer;
       border: none;
-      background-color: #4066eb;
+      background-color: #4166EB;
       color: #fff;
       border-radius: 14px;
       padding: 0 10px;
@@ -60,6 +60,9 @@
     flex-wrap: wrap;
     flex: 1;
     gap: 30px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
     .noreward {
       margin: auto;
       margin-top: 15%;
@@ -122,7 +125,7 @@
       .rewardButton {
         cursor: pointer;
         border: none;
-        background-color: #4066eb;
+        background-color: #4166EB;
         color: #fff;
         border-radius: 14px;
         padding: 0 12px;
@@ -201,7 +204,7 @@
       .rewardButton {
         cursor: pointer;
         border: none;
-        background-color: #4066eb;
+        background-color: #4166EB;
         color: #fff;
         border-radius: 14px;
         padding: 10px 10px;
