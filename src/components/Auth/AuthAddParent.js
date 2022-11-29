@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import validator from "validator";
 import ModernInputBox from '../ModernInputBox';
 import Spinner from '../Spinner';
@@ -6,10 +6,20 @@ import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
 import OtpNotVerfied from './OtpNotVerified';
 import styles from "../../styles/WaitlistDashboard/parentlogin.module.scss";
-function AuthAddParent({}){
+import DashboardApis from '../../actions/apis/DashboardApis';
+import { getfullname } from "../../helpers/generalfunctions";
+import { setCookie } from "../../actions/cookieUtils";
+import { setUserInLocalStorage } from "../../helpers/localStorage";
+import { MainContext } from "../../context/Main";
+import { useRouter } from "next/dist/client/router";
+function AuthAddParent({parentEmail,childId,settoastdata}){
+  const { setSavedUsers, setuserdata, setuser, userdata } =
+    useContext(MainContext);
+    const router = useRouter();
     const [passisweak, setpassisweak] = useState(false);
     const [showdetailpass, setshowdetailpass] = useState(true);
     const [error, seterror] = useState(null);
+    const [verifyAccount,setverifyaccount] = useState(null)
     const [passerror, setpasserror] = useState({
       length: false,
       special: false,
@@ -27,7 +37,6 @@ function AuthAddParent({}){
     const [showConfirmDetailPass, setShowConfirmDetailPass] = useState(false);
     const [confirmPassHidden, setConfirmPassHidden] = useState(true);
     const [confirmpassword, setconfirmpassword] = useState("");
- 
     const [showmodal, setshowModal] = useState(true);
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
@@ -36,6 +45,9 @@ function AuthAddParent({}){
     const [firstName, setfirstName] = useState("");
     const [userName, setuserName] = useState("");
     const [lastName, setlastName] = useState("");
+    useEffect(()=>{
+      setemail(parentEmail);
+    },[])
     useEffect(() => {
         if (!validator.isStrongPassword(password)) setpassisweak(true);
         else setpassisweak(false);
@@ -101,10 +113,6 @@ function AuthAddParent({}){
           seterror("Username should be more than 1 character");
           return;
         }
-        if (!gender) {
-          seterror("Please select gender");
-          return;
-        }
         if (email && !validator.isEmail(email)) {
           seterror("Please enter valid email");
           return;
@@ -128,23 +136,51 @@ function AuthAddParent({}){
         let data = {
           firstName,
           lastName,
-          gender,
           username: userName,
-          image: img || "https://imgcdn.upsurge.in/images/default-avatar.png",
           email: email,
           password,
+          child_id:childId,
         };
-        return null;
-        //let response = await DashboardApis.addparent(data);
-        // if (response && response.data && response.data.success) {
-        //   settoastdata({
-        //     type: "success",
-        //     msg: response.data.message,
-        //     show: true,
-        //   });
-        // } else {
-        //   seterror(response.data.message || "error");
-        // }
+        let response = await DashboardApis.updateparent(data);
+         if (response && response.data && response.data.success) {
+          setSavedUsers(
+            setUserInLocalStorage({
+              token: response.data.data.token,
+              email: email,
+              phone: response.data.data.userProfile.phone,
+              parent_email:response.data.data.userProfile.parent_email,
+              parent_phone:response.data.data.userProfile.parent_phone,
+              parent_first_login:response.data.data.userProfile.parent_first_login,
+              username: response.data.data.userProfile.user_name,
+              image: response.data.data.userProfile.user_img_url,
+              name: getfullname(
+                response.data.data.userProfile.first_name,
+                response.data.data.userProfile.last_name
+              ),
+              timestamp: new Date().getTime(),
+              type: response.data.data.userProfile.user_type,
+              id: response.data.data.userProfile.id,
+            })
+          );
+          setCookie("accesstoken", response.data.data.token);
+          setuserdata(response.data.data.userProfile);
+          setuser(response.data.data.userProfile.id);
+          settoastdata({
+            show: true,
+            msg: response.data.message,
+            type: "success",
+          });
+          if (router.query.next) {
+            router.push(router.query.next);
+          } else if (response.data.data.userProfile.is_waiting_active) {
+            router.push("/dashboard/w");
+          } else if (response.data.data.userProfile.user_type === "parent")
+            router.push("/dashboard/p");
+          else router.push("/dashboard/k");
+        } else {
+          seterror(response?.data.message || "Cannot reach server");
+          setloading(false);
+        }
       }
       return(
         <>
@@ -154,7 +190,7 @@ function AuthAddParent({}){
           className={styles.logindetails}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
-              handleSignin();
+              addParent();
             }
           }}
         >
@@ -180,6 +216,13 @@ function AuthAddParent({}){
                   maxLength={100}
                   setvalue={setuserName}
                   placeholder="Username *"
+                  extraclass={styles.margin}
+                />
+                <ModernInputBox
+                  value={verifyAccount}
+                  maxLength={100}
+                  setvalue={setverifyaccount}
+                  placeholder="Verify Account Code *"
                   extraclass={styles.margin}
                 />
           <div className={styles.passwordBoxes}>

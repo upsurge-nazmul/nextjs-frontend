@@ -19,6 +19,14 @@ const updateprofile = (payload) => {
     getCookie("accesstoken")
   );
 };
+const updateparent = (payload) => {
+  return ApiCalls.postResponse(
+    "users/parent-signup",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const updatechildprofile = (payload) => {
   return ApiCalls.postResponse(
     "users/updatechildprofile",
@@ -171,6 +179,7 @@ const DashboardApis = {
   completeintroguide,
   rewardunicoinstochild,
   deleterequest,
+  updateparent,
 };
 
 export default DashboardApis;

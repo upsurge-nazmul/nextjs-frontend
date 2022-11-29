@@ -54,6 +54,10 @@ function AuthLogin({
         setUserInLocalStorage({
           token: response.data.data.token,
           email: response.data.data.userProfile.email,
+          phone: response.data.data.userProfile.phone,
+          parent_email:response.data.data.userProfile.parent_email,
+          parent_phone:response.data.data.userProfile.parent_phone,
+          parent_first_login:response.data.data.userProfile.parent_first_login,
           username: response.data.data.userProfile.user_name,
           image: response.data.data.userProfile.user_img_url,
           name: getfullname(
