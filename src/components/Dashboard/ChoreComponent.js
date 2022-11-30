@@ -146,12 +146,13 @@ function ChoreComponent({ data, settoastdata, setchores }) {
         <div className={styles.task}>
           {data.title} {data.is_reoccurring && "(Daily)"}
         </div>
-        <div className={styles.to}>{data.assigned_to}</div>
+        <div className={styles.to}>
+          {data.assigned_to} | <ClockSvg />
+          <span>{duedate}</span>
+        </div>
+    
       </div>
-      <div className={styles.time}>
-        <ClockSvg />
-        <p>{duedate}</p>
-      </div>
+      
       <div className={styles.completionIcon}>
         {data.completion === "completed" || data.completion === "approval" ? (
           <CompletedSvg />
