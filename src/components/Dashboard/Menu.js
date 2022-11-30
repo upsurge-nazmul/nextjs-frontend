@@ -25,6 +25,8 @@ function Menu({
   waitilistmenu,
   setSavedUser,
   setShowOnboarding,
+  kidLevel,
+  setshowlevels,
 }) {
   const {
     savedUsers,
@@ -274,6 +276,23 @@ function Menu({
         </div>
       )} */}
       <div className={styles.tabgrp}>
+        {userdata?.user_type === "child" && kidLevel && (
+          <div
+            className={styles.button}
+            onClick={() => {
+              setshowmenu(false);
+              setshowlevels((prev) => !prev);
+            }}
+          >
+            <img
+              src={"/images/badges/badge_" + kidLevel + ".svg"}
+              alt="KidLevel"
+              className={styles.img}
+            />
+            Level {kidLevel}
+          </div>
+        )}
+
         <div
           className={styles.button}
           onClick={() => {
