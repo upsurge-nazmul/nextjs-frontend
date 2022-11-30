@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
-import styles from "../../styles/Auth/auth.module.scss";
+import styles from "../../styles/WaitlistDashboard/authparentlogin.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
 import { MainContext } from "../../context/Main";
 import ModernInputBox from "../ModernInputBox";
@@ -12,14 +12,12 @@ import { GClientId } from "../../../config";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
-function AuthLogin({
+function AuthLoginParent({
   settoastdata,
   error,
   seterror,
-  setmode,
-  onlyLogin,
-  setshowauth,
-  prefilled,
+  parentEmail,
+  token,
 }) {
   const { setSavedUsers, setuserdata, setuser, userdata } =
     useContext(MainContext);
@@ -30,12 +28,8 @@ function AuthLogin({
 
   // login Function
   async function handleSignin() {
-    console.log(userdata.user_id, prefilled.id)
-    if (userdata.user_id === prefilled.id) {
-      return;
-    }
     let response = await LoginApis.checktoken({
-      token: prefilled.token,
+      token: token,
     });
     console.log(response);
     if (response && !response?.data?.success) {
@@ -57,59 +51,56 @@ function AuthLogin({
         setSavedUsers(savedUsersData);
       }
     } else {
-      let newLogin = await LoginApis.verifyPassword({
-        email: prefilled.email,
+      let response = await LoginApis.login({
+        email: parentEmail,
         password,
       });
-      if (newLogin && newLogin.data && newLogin.data.success) {
+      if (response && response.data && response.data.success) {
         setSavedUsers(
-          setUserInLocalStorage({
-            token: newLogin.data.data.token,
-            email: newLogin.data.data.userProfile.email,
-            username: newLogin.data.data.userProfile.user_name,
-            image: newLogin.data.data.userProfile.user_img_url,
-            name: getfullname(
-              newLogin.data.data.userProfile.first_name,
-              newLogin.data.data.userProfile.last_name
-            ),
-            timestamp: new Date().getTime(),
-            type: newLogin.data.data.userProfile.user_type,
-            id: newLogin.data.data.userProfile.id,
-          })
+            setUserInLocalStorage({
+              token: response.data.data.token,
+              email: parentEmail,
+              phone: response.data.data.userProfile.phone,
+              parent_email:response.data.data.userProfile.parent_email,
+              parent_phone:response.data.data.userProfile.parent_phone,
+              parent_first_login:response.data.data.userProfile.parent_first_login,
+              username: response.data.data.userProfile.user_name,
+              image: response.data.data.userProfile.user_img_url,
+              name: getfullname(
+                response.data.data.userProfile.first_name,
+                response.data.data.userProfile.last_name
+              ),
+              timestamp: new Date().getTime(),
+              type: response.data.data.userProfile.user_type,
+              id: response.data.data.userProfile.id,
+            })
           );
           setCookie("accesstoken", response.data.data.token);
-          if(newLogin.data.data.userProfile.user_type !== 'child'){
-            mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`});
-            mixpanel.identify(`${prefilled.email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
-          }
-          else{
-            mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`});
-            mixpanel.identify(`${prefilled.email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
-          }
-          setuserdata(newLogin.data.data.userProfile);
-          setuser(newLogin.data.data.userProfile.id);
+          setuserdata(response.data.data.userProfile);
+          setuser(response.data.data.userProfile.id);
           settoastdata({
             show: true,
-            msg: newLogin.data.message,
+            msg: response.data.message,
             type: "success",
           });
-          console.log(router.pathname);
+          if (router.query.next) {
+            router.push(router.query.next);
+          } else if (response.data.data.userProfile.is_waiting_active) {
+            router.push("/dashboard/w");
+          } else if (response.data.data.userProfile.user_type === "parent")
+            router.push("/dashboard/p");
+          else router.push("/dashboard/k");
         } else {
-          mixpanel.track('Switch Account',{'event':`${newLogin?.data.message || "Cannot reach server"}`});
-          seterror(newLogin?.data.message || "Cannot reach server");
-      }
-      router.reload();
-    }
-    setCookie("accesstoken", response.data.data.token);
-  }
-
+          seterror(response?.data.message || "Cannot reach server");
+          setloading(false);
+        }
+    }}
   useEffect(() => {
     seterror("");
-  }, [prefilled, password]);
+  }, [parentEmail, password]);
 
   return (
+    <div className={styles.loginContainer}>
     <div
       className={styles.logindetails}
       onKeyPress={(e) => {
@@ -121,7 +112,7 @@ function AuthLogin({
       <div className={styles.onlyPassHeading}>
         Please provide password for this account
       </div>
-      <div className={styles.prefilledEmail}>{prefilled.email}</div>
+      <div className={styles.prefilledEmail}>{parentEmail}</div>
       <div className={styles.passwordBox}>
         <ModernInputBox
           placeholder="Password"
@@ -145,7 +136,8 @@ function AuthLogin({
         </div>
       )}
     </div>
+    </div>
   );
 }
 
-export default AuthLogin;
+export default AuthLoginParent;
