@@ -19,7 +19,6 @@ function AuthAddParent({parentEmail,childId,settoastdata}){
     const [passisweak, setpassisweak] = useState(false);
     const [showdetailpass, setshowdetailpass] = useState(true);
     const [error, seterror] = useState(null);
-    const [verifyAccount,setverifyaccount] = useState(null)
     const [passerror, setpasserror] = useState({
       length: false,
       special: false,
@@ -218,13 +217,6 @@ function AuthAddParent({parentEmail,childId,settoastdata}){
                   placeholder="Username *"
                   extraclass={styles.margin}
                 />
-                <ModernInputBox
-                  value={verifyAccount}
-                  maxLength={100}
-                  setvalue={setverifyaccount}
-                  placeholder="Verify Account Code *"
-                  extraclass={styles.margin}
-                />
           <div className={styles.passwordBoxes}>
             <div className={styles.passwordBox}>
             {showdetailpass && (
@@ -276,23 +268,23 @@ function AuthAddParent({parentEmail,childId,settoastdata}){
                 <div className={styles.detailPass}>
                   <div className={styles.arrow}></div>
                   <div className={styles.tab}>
-                    {passerror.length ? <CircleTick /> : <CircleWarning />}
+                    {confirmPasserror.length ? <CircleTick /> : <CircleWarning />}
                     <p className={styles.text}>8 Characters long</p>
                   </div>
                   <div className={styles.tab}>
-                    {passerror.upper ? <CircleTick /> : <CircleWarning />}
+                    {confirmPasserror.upper ? <CircleTick /> : <CircleWarning />}
                     <p className={styles.text}>Uppercase letter</p>
                   </div>
                   <div className={styles.tab}>
-                    {passerror.lower ? <CircleTick /> : <CircleWarning />}
+                    {confirmPasserror.lower ? <CircleTick /> : <CircleWarning />}
                     <p className={styles.text}>Lowercase letter</p>
                   </div>
                   <div className={styles.tab}>
-                    {passerror.special ? <CircleTick /> : <CircleWarning />}
+                    {confirmPasserror.special ? <CircleTick /> : <CircleWarning />}
                     <p className={styles.text}>Special Character </p>
                   </div>
                   <div className={styles.tab}>
-                    {passerror.number ? <CircleTick /> : <CircleWarning />}
+                    {confirmPasserror.number ? <CircleTick /> : <CircleWarning />}
                     <p className={styles.text}>Number</p>
                   </div>
                 </div>
