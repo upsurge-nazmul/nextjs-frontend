@@ -26,6 +26,7 @@ function AuthComponent({
   onlyLogin,
   prefilled = null,
   refId = null,
+  type,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -119,6 +120,7 @@ function AuthComponent({
                   setmode={setmode}
                   onlyLogin={onlyLogin}
                   addAccount={mailfromhome === false ? true : false}
+                  type={type}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />

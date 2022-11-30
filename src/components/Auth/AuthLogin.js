@@ -19,7 +19,8 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  addAccount
+  addAccount,
+  type
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -45,7 +46,7 @@ function AuthLogin({
     const parts = value.split(`; ${"accesstoken"}=`);
     let token;
     if (parts.length === 2) token = parts.pop().split(";").shift();
-    let response = await LoginApis.login({ email, password }, token);
+    let response = await LoginApis.login({ email, password,type }, token);
     if (response && response.data && response.data.success) {
       mixpanel.track('Login',{'event':`${email} logged in`});
       mixpanel.identify(`${email}`);
