@@ -25,7 +25,7 @@ export default function LeaderboardTabs({
           </p>
         ))}
       </div>
-      {tab.key === TABS[1].key ? (
+      {tab.key === TABS[2].key ? (
         <MonthInput {...{ selectedDate, setSelectedDate }} />
       ) : (
         <></>

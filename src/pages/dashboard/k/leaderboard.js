@@ -30,7 +30,9 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   useEffect(() => {
     if (tab) {
       async function fetchLeaderboardData() {
-        let response = await DashboardApis.getoverallleaderboard();
+        let response = await DashboardApis.getoverallleaderboard({
+          type: tab.key,
+        });
         if (response && response.data && response.data.success) {
           setLeaderboardData(response.data.data);
         } else {

@@ -1,4 +1,5 @@
 export const TABS = [
-  { key: "daily", name: "Daily" },
+  { key: "allTime", name: "All Time" },
+  { key: "weekly", name: "Weekly" },
   { key: "monthly", name: "Monthly" },
 ];
