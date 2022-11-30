@@ -10,6 +10,7 @@ import { MainContext } from "../../../context/Main";
 import styles from "../../../styles/WaitlistDashboard/leaderboardspage.module.scss";
 import ChildLeaderboard from "../../../components/ChildLeaderboard";
 import { TABS } from "../../../static_data/Leaderboard_Data";
+import PageTitle from "../../../components/PageTitle";
 
 export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
   const [toastdata, settoastdata] = useState({
@@ -45,6 +46,7 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
 
   return (
     <div className={styles.leaderboard}>
+      <PageTitle title={`upsurge | Leaderboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <Curve1 className={styles.curve1} />
