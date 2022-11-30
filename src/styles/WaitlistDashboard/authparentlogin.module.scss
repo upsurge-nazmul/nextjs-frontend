@@ -1,0 +1,103 @@
+.loginContainer {
+    margin-top: 5rem;
+.logindetails{
+    margin-top: 5rem;
+    width: 40%;
+    margin: auto;
+    .prefilledEmail{
+        margin: 1rem;
+    }
+    .passwordBox {
+        margin-top: 1rem;
+      .detailPass {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding-top: 15px;
+        position: absolute;
+        top: 0;
+        left: -13px;
+        transform: translate(-100%, -30%);
+        z-index: 2;
+        animation: fade 0.3s ease;
+        .arrow {
+          position: absolute;
+          bottom: 22.5%;
+          left: 43%;
+          transform: rotate(45deg);
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background-color: white;
+          z-index: -1;
+          width: 100px;
+          height: 100px;
+        }
+        .tab {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          background-color: white;
+          padding: 0 20px;
+          padding-bottom: 10px;
+          border-radius: 12px;
+          z-index: 2;
+          &:last-child {
+            padding-bottom: 20px;
+          }
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+          p {
+            margin-left: 6px;
+            font-size: 15px;
+          }
+        }
+        .white {
+          background-color: white;
+          width: 100%;
+          border-radius: 12px;
+          height: 15px;
+        }
+      }
+      margin-bottom: 1rem;
+      position: relative;
+      display: flex;
+      .show {
+        position: absolute;
+        right: 1rem;
+        top: 0.8rem;
+        color: #4166eb;
+      }
+    }
+    .error {
+      font-size: 16px;
+      color: #ff6263;
+      font-weight: 500;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .button {
+    background: #4166eb;
+    border-radius: 14px;
+    color: white;
+    width: 100%;
+    margin-bottom: 18px;
+    height: 59px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #ffffff;
+      color: #4166eb;
+      border: 1px solid #4166eb;
+    }
+  }
+}
