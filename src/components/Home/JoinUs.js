@@ -57,10 +57,10 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
       <div className={`${styles.doodle} ${styles.dl5}`} />
 
       <div className={`${styles.doodle} ${styles.dr1}`}>
-        <Image
+      <Image
           layout="fill"
           objectFit="cover"
-          src="https://imgcdn.upsurge.in/images/Untitled-design-6.png"
+          src="https://imgcdn.upsurge.in/images/Untitled-design-7.png"
           alt=""
           loading="lazy"
         />
@@ -72,12 +72,18 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
         <div className={styles.heading}>
           {userdata
             ? "Thank you for joining upsurge newsletter"
-            : "Subscribe to upsurge Newsletter."}
+            : <div>
+            Join the 
+            <b>
+               club
+            </b>
+            </div>
+            }
         </div>
         <p className={styles.subheading}>
           {userdata
             ? `You can head back to dashboard using the button below.`
-            : `Get all the information related to Financial Literacy.`}
+            : `Upsurge is free to use for family of any size. We also offer paid plans with additional features, live classes and priority support.`}
         </p>
         <div className={styles.emailwrapper}>
           {!userdata ? (
