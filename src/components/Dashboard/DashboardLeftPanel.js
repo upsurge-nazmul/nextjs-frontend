@@ -176,6 +176,17 @@ function DashboardLeftPanel({
 
             <p className={styles.tabtitle}>Rewards</p>
           </div>
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/leaderboard" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/leaderboard")}
+            id="leaderboard-leftpanel"
+          >
+            <LeaderboardSvg className={styles.icon} />
+
+            <p className={styles.tabtitle}>Leaderboard</p>
+          </div>
         </div>
       ) : type === "waitlist" ? (
         <div className={styles.tabContainer}>
