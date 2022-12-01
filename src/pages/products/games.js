@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Games from "../../components/Products/Games";
 import KnowledgeQuest from "../../components/Products/KnowledgeQuest";
 import Header from "../../components/Header/Header";
@@ -12,9 +12,9 @@ import validator from "validator";
 import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
-import { MainContext } from "../../context/Main";
 import Seo from "../../components/Seo";
-export default function Products({ userdata }) {
+
+export default function Products() {
   const router = useRouter();
   const type = router.query.type;
   const [stickyheader, setstickyheader] = useState(false);
@@ -30,12 +30,7 @@ export default function Products({ userdata }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+
   async function check() {
     e.preventDefault();
     if (!validator.isEmail(email)) {
@@ -83,28 +78,4 @@ export default function Products({ userdata }) {
       <Footer />
     </div>
   );
-}
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
 }

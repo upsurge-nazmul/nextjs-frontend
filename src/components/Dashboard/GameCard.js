@@ -1,23 +1,21 @@
 import { Router, useRouter } from "next/dist/client/router";
 import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
+import Buttons from "../Buttons";
 import GameSvg from "../SVGcomponents/GameSvg";
 import UnicoinSvg from "../SVGcomponents/UniCoinSvg";
 
-function GameCard({ data, onCLick, cardstyle, reward }) {
+function GameCard({ data, onClick, cardstyle, reward }) {
   const router = useRouter();
   if (!data) return null;
+
   return (
-    <div
-      className={styles.gameCard}
-      style={cardstyle}
-      onClick={onCLick ? onCLick : () => router.push("/gamepage")}
-    >
+    <div className={styles.gameCard} style={cardstyle}>
       <img
         src={
           data?.img ||
           (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
-          "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/76/cb/4b/76cb4bed-4eeb-f452-6ebe-7797c254eb47/source/512x512bb.jpg"
+          ""
         }
         alt=""
       />
@@ -34,10 +32,23 @@ function GameCard({ data, onCLick, cardstyle, reward }) {
             {reward}
           </p>
         )}
-        <div className={styles.chatbtn}>
+        <div className={styles.actionArea}>
+          <Buttons
+            type={"animated"}
+            handleClick={() => {
+              onClick ? onClick() : () => router.push("/dashboard/k/games");
+              mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
+            }}
+          >
+            Play
+            <GameSvg className={styles.icon} />
+          </Buttons>
+        </div>
+        {/* <div className={styles.chatbtn}>
+        <div onClick={()=>{mixpanel.track('Game',{'event':`Game Started ${data.name}`});}} className={styles.chatbtn}>
           Play
           <GameSvg className={styles.icon} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

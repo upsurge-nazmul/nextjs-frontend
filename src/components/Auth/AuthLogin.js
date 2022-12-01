@@ -19,7 +19,9 @@ function AuthLogin({
   setmode,
   onlyLogin,
   setshowauth,
-  addAccount
+  addAccount,
+  mode,
+  type
 }) {
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [email, setemail] = useState("");
@@ -45,12 +47,19 @@ function AuthLogin({
     const parts = value.split(`; ${"accesstoken"}=`);
     let token;
     if (parts.length === 2) token = parts.pop().split(";").shift();
-    let response = await LoginApis.login({ email, password }, token);
+    let response = await LoginApis.login({ email, password,type }, token);
     if (response && response.data && response.data.success) {
+      mixpanel.track("Login", { event: `${email} logged in` });
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ "$name":getfullname( response.data.data.userProfile.first_name, response.data.data.userProfile.last_name ) , "$email": email, "$user-id": response.data.data.userProfile.id });
       setSavedUsers(
         setUserInLocalStorage({
           token: response.data.data.token,
           email: response.data.data.userProfile.email,
+          phone: response.data.data.userProfile.phone,
+          parent_email:response.data.data.userProfile.parent_email,
+          parent_phone:response.data.data.userProfile.parent_phone,
+          parent_first_login:response.data.data.userProfile.parent_first_login,
           username: response.data.data.userProfile.user_name,
           image: response.data.data.userProfile.user_img_url,
           name: getfullname(
@@ -62,7 +71,6 @@ function AuthLogin({
           id: response.data.data.userProfile.id,
         })
       );
-
       setCookie("accesstoken", response.data.data.token);
       setuserdata(response.data.data.userProfile);
       setuser(response.data.data.userProfile.id);
@@ -128,6 +136,7 @@ function AuthLogin({
         placeholder="Email address/username"
         value={email}
         setvalue={setemail}
+        emailonFocus={true}
       />
       <div className={styles.passwordBox}>
         <ModernInputBox
@@ -151,7 +160,7 @@ function AuthLogin({
           <Spinner />
         </div>
       )}
-      <div className={styles.or}>OR</div>
+      
       <GoogleLogin
         clientId={GClientId}
         render={(renderProps) => (
@@ -168,6 +177,7 @@ function AuthLogin({
         onFailure={handlegoogleLogin}
         cookiePolicy={"single_host_origin"}
       />
+      <div className={styles.or}>OR</div>
       {/* <AppleLogin
         clientId={apple_client_id || "asd"}
         redirectURI="https://redirectUrl.com"
@@ -186,11 +196,11 @@ function AuthLogin({
           );
         }}
       /> */}
-      {!onlyLogin && (
+      {/* {!onlyLogin && (
         <div className={styles.reset} onClick={() => setmode("reset")}>
           <span> Forgot password?</span>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

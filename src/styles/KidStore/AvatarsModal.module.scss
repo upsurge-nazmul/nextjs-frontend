@@ -1,5 +1,5 @@
 .avatarsModal {
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   .heading {
     font-weight: 500;
@@ -12,4 +12,15 @@
       margin-left: 10px;
     }
   }
+  .container {
+    width: 100%;
+    .avatars {
+      width: 100%;
+    }
+  }
+}
+
+.carouselContainerOuter {
+  display: flex;
+  flex-direction: column;
 }

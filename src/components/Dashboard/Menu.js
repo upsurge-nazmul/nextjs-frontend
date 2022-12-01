@@ -12,6 +12,7 @@ import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import GroupIcon from "@mui/icons-material/Group";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
@@ -23,7 +24,9 @@ function Menu({
   menuType,
   waitilistmenu,
   setSavedUser,
-  setshowinvite,
+  setShowOnboarding,
+  kidLevel,
+  setshowlevels,
 }) {
   const {
     savedUsers,
@@ -121,7 +124,9 @@ function Menu({
       setCookie("accesstoken", data.token);
       setuserdata(response.data.data);
       setuser(response.data.data.id);
-      router.reload();
+      if (userdata.user_type !== "child") {
+        router.push("/dashboard/p");
+      } else router.push("/dashboard/k");
     }
   }
   return (
@@ -185,19 +190,16 @@ function Menu({
                 </div>
               );
             })}
-            {userdata.user_type !== "child" ? (
-              <div
-                className={`${styles.innerUser} `}
-                onClick={() => setshowauth(true)}
-              >
-                <GroupAddIcon className={styles.icon} />
-                <div className={styles.userInfo}>
-                  <p>Add new account</p>
-                </div>
+
+            <div
+              className={`${styles.innerUser} `}
+              onClick={() => setshowauth(true)}
+            >
+              <GroupAddIcon className={styles.icon} />
+              <div className={styles.userInfo}>
+                <p>Add new account</p>
               </div>
-            ) : (
-              ""
-            )}
+            </div>
           </div>
         )}
       </div>
@@ -206,7 +208,8 @@ function Menu({
           <p
             className={styles.tabs}
             onClick={() => {
-              setshowinvite(true);
+              setshowmenu(false);
+              router.push("/dashboard/k/invite");
             }}
           >
             <GroupAddOutlinedIcon className={styles.editIcon} />
@@ -216,17 +219,6 @@ function Menu({
       )}
       {menuType !== "child" && !waitilistmenu && (
         <>
-          <p
-            id="menu-main-payments"
-            className={styles.tabs}
-            onClick={() => {
-              setshowmenu(false);
-              router.push("/dashboard/p/payments");
-            }}
-          >
-            <PaymentSvg className={styles.paymentIcon} />
-            Payments
-          </p>
           <p
             className={styles.tabs}
             onClick={() => {
@@ -283,6 +275,35 @@ function Menu({
           Settings
         </div>
       )} */}
+      <div className={styles.tabgrp}>
+        {userdata?.user_type === "child" && kidLevel && (
+          <div
+            className={styles.button}
+            onClick={() => {
+              setshowmenu(false);
+              setshowlevels((prev) => !prev);
+            }}
+          >
+            <img
+              src={"/images/badges/badge_" + kidLevel + ".svg"}
+              alt="KidLevel"
+              className={styles.img}
+            />
+            Level {kidLevel}
+          </div>
+        )}
+
+        <div
+          className={styles.button}
+          onClick={() => {
+            setshowmenu(false);
+            setShowOnboarding((prev) => !prev);
+          }}
+        >
+          <HikingIcon className={styles.icon} />
+          Walkthrough
+        </div>
+      </div>
       <div className={styles.tabgrp}>
         <div className={styles.button} onClick={handleLogout}>
           <LogoutRoundedIcon className={styles.icon} />

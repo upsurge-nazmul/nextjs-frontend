@@ -7,13 +7,19 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+    .subheader{
+      font-size: large;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
     .mainContent {
       width: 100%;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
+      overflow-x: hidden;
       scrollbar-width: thin;
-      padding: 0 1rem 0 1rem;
+      padding: 10px 50px;
       .redeem {
         margin-bottom: 40px;
       }

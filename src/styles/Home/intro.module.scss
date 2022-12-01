@@ -93,6 +93,7 @@
     }
     .gotobutton {
       width: 12vw;
+      margin-top: 2rem;
       min-width: fit-content;
       font-size: clamp(12px, 1vw, 18px);
       display: flex;
@@ -147,8 +148,7 @@
         align-items: center;
         justify-content: center;
         font-weight: 500;
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
+        border-radius: 6px;
         padding: 0 20px;
         color: white;
         background-color: hsl(227, 81%, 59%);

@@ -14,8 +14,9 @@ import QuizView from "../../../../components/ChildQuest/QuizView";
 import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import PageTitle from "../../../../components/PageTitle";
+import GameView from "../../../../components/Games/GameView";
 
-const LESSON_TYPES = ["recording", "activity", "quiz"];
+const LESSON_TYPES = ["recording", "activity", "quiz", "game"];
 
 const democoncepts = [
   "Money",
@@ -59,26 +60,26 @@ export default function KnowledgeQuest({ userData, questData }) {
       let level = await KnowledgeQuestApi.initiate(
         { quest_id: questId },
         getCookie("accesstoken")
-      );
-      if (level && level.data && level.data.success) {
-        setUserLevel(level.data.data.level);
+        );
+        if (level && level.data && level.data.success) {
+          setUserLevel(level.data.data.level);
+        }
       }
-    }
-    fetchQuestLevel();
-  }, [questId]);
-
-  const handleBack = () => {
-    setView();
-    setCurrentChapter();
-    setActiveChNo(0);
-  };
-
-  const handleDone = () => {
-    KnowledgeQuestApi.update({
-      level: activeChNo,
-      quest_id: currentQuest.questId,
-    });
-    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
+      fetchQuestLevel();
+    }, [questId]);
+    
+    const handleBack = () => {
+      setView();
+      setCurrentChapter();
+      setActiveChNo(0);
+    };
+    
+    const handleDone = () => {
+      KnowledgeQuestApi.update({
+        level: activeChNo,
+        quest_id: currentQuest.questId,
+      });
+      setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
     setView();
     setCurrentChapter();
     setActiveChNo(0);
@@ -106,13 +107,17 @@ export default function KnowledgeQuest({ userData, questData }) {
               <p className={styles.about}>{currentQuest.questDescription}</p>
               <p className={styles.heading}>Concepts Covered</p>
               <div className={styles.conceptswrapper}>
-                {democoncepts.map((concept, index) => {
-                  return (
-                    <div className={styles.concept} key={"concept" + index}>
-                      {concept}
-                    </div>
-                  );
-                })}
+                {currentQuest.concepts
+                  ? currentQuest.concepts.map((concept, index) => (
+                      <div className={styles.concept} key={"concept" + index}>
+                        {concept}
+                      </div>
+                    ))
+                  : democoncepts.map((concept, index) => (
+                      <div className={styles.concept} key={"concept" + index}>
+                        {concept}
+                      </div>
+                    ))}
               </div>
             </div>
           )}
@@ -142,12 +147,16 @@ export default function KnowledgeQuest({ userData, questData }) {
                       <RecordingView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[1] ? (
                       <ActivityView
                         {...{
                           chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
                         }}
                       />
                     ) : view === LESSON_TYPES[2] ? (
@@ -158,6 +167,13 @@ export default function KnowledgeQuest({ userData, questData }) {
                           handleDone,
                           setuserdata,
                         }}
+                        />
+                        ) : view === LESSON_TYPES[3] ? (
+                          <GameView
+                          chapterId = {currentChapter}
+                          game={currentChapter}
+                        setGame={handleBack}
+                        handleDone={handleDone}
                       />
                     ) : (
                       ""
@@ -169,15 +185,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                       >
                         Go Back
                       </button>
-                      {(view === LESSON_TYPES[0] ||
-                        view === LESSON_TYPES[1]) && (
-                        <button
-                          className={styles.doneButton}
-                          onClick={handleDone}
-                        >
-                          Done
-                        </button>
-                      )}
                     </div>
                   </div>
                 ) : (

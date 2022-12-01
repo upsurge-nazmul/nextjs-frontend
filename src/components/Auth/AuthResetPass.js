@@ -4,11 +4,9 @@ import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
-import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
-import { apple_client_id, GClientId } from "../../../config";
-
+import { GClientId } from "../../../config";
 import { useRouter } from "next/dist/client/router";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
@@ -68,6 +66,7 @@ export default function AuthResetPass({
         placeholder="Email address"
         value={email}
         setvalue={setemail}
+        emailonFocus={true}
       />
       {error && <p className={styles.error}>{error}</p>}
       {!loading ? (

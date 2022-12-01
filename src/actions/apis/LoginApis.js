@@ -36,7 +36,13 @@ const verifyotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+const verifyPassword = (payload) => {
+  return ApiCalls.postResponse(
+    "users/verify-password",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const googlelogin = (payload) => {
   return ApiCalls.postResponse(`users/googlelogin`, payload);
 };
@@ -47,13 +53,17 @@ const login = (payload, token = null) => {
 };
 
 const checktoken = (payload) => {
-  return ApiCalls.postResponse(`users/checktoken`, payload, payload.token);
+  return ApiCalls.postResponse(
+    `users/checktoken`,
+    payload,
+    payload.token || getCookie("accesstoken")
+  );
 };
 const saveemail = (payload) => {
   return ApiCalls.postResponse("users/saveemail", payload);
 };
 const addtonewslettersubs = (payload) => {
-  return ApiCalls.postResponse("users/addtonewslettersubs", payload);
+  return ApiCalls.postResponse("users/addnewnewslettersubscriber", payload);
 };
 const checkemail = (payload) => {
   return ApiCalls.getResponse(`users/findByEmail`, payload);
@@ -160,6 +170,7 @@ const LoginApis = {
   genemailotp,
   createchildotp,
   updatePhoneByEmail,
+  verifyPassword,
 };
 
 export default LoginApis;

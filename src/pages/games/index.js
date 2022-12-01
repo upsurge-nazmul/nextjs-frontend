@@ -11,22 +11,17 @@ import { Game_Data } from "../../static_data/Game_Data";
 import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
-
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
-export default function GamePage({ userDataFromServer }) {
+
+export default function GamePage() {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { userdata, setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userDataFromServer) {
-      setuserdata(userDataFromServer);
-    }
-  }, [userDataFromServer]);
+  const { userdata, theme } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -125,12 +120,12 @@ export default function GamePage({ userDataFromServer }) {
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
                 <p className={styles.detail}>{Game_Data[item].description}</p>
-                <p
+                {/* <p
                   className={styles.activebutton}
                   onClick={() => handleclick(item)}
                 >
                   Play
-                </p>
+                </p> */}
 
                 {/* {comingsoongames.includes(item) ? (
                   <p className={styles.button}>Coming Soon....</p>
@@ -153,32 +148,4 @@ export default function GamePage({ userDataFromServer }) {
       <Footer />
     </div>
   );
-}
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userDataFromServer: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: {
-        isLogged: false,
-        msg: "cannot get token",
-        userDataFromServer: null,
-      },
-    };
-  }
 }

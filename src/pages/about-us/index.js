@@ -10,17 +10,13 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
+
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -33,6 +29,7 @@ export default function About({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
   return (
     <div
       className={`${styles.aboutPage} ${
@@ -97,17 +94,7 @@ export default function About({ userdata }) {
               children and young adults, to make them capable of making prudent
               financial decisions and achieving their financial freedom.
             </p>
-          </div>
-          <div className={styles.imgwrapper}>
-            <img
-              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
-              alt=""
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className={styles.thirdSection}>
-          <div className={styles.left}>
+            <div className={styles.lineSpace} />
             <p className={styles.des}>
               We believe that understanding personal finance, career
               development, investing and entrepreneurship are critical life
@@ -120,39 +107,84 @@ export default function About({ userdata }) {
             </p>
           </div>
           <div className={styles.imgwrapper}>
-            <Jasper className={styles.jasper} />
+            <img
+              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
+              alt=""
+              loading="lazy"
+            />
           </div>
         </div>
-       
-        <JoinUs />
+        <div className={styles.thirdSection}>
+          <p className={styles.heading}>Values</p>
+          <div className={styles.valueContainer}>
+            <div className={styles.values}>
+              <div className={styles.valueItem}>
+                <img
+                  src={require("../../assets/about/Integrity.png").default.src}
+                  alt="Integrity"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
+                <div className={styles.valueContent}>
+                  {`Integrity – We do the right thing! We say what we mean, and mean
+                what we say. We stick to our commitments, treat everyone
+                equitably, and communicate honestly. Unity - We are one! We
+                support each other & go above and beyond to help each other.`}
+                </div>
+              </div>
+              <div className={styles.valueItem}>
+                <img
+                  src={require("../../assets/about/Excellence.png").default.src}
+                  alt="Excellence"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
+                <div className={styles.valueContent}>
+                  {`Excellence – We pursue excellence to create exceptional products
+                & experiences.`}
+                </div>
+              </div>
+            </div>
 
-       
+            <div className={styles.imgwrapper}>
+              <Jasper className={styles.jasper} />
+            </div>
+
+            <div className={styles.values}>
+              <div className={styles.valueItem}>
+                <img
+                  src={require("../../assets/about/Fun.png").default.src}
+                  alt="Fun"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
+                <div className={styles.valueContent}>
+                  {`Fun – We have fun while working, create fun products & ensure
+                that users have fun! Creativity & Innovation - Think outside the
+                box, & challenge the status-quo Ownership - We own our projects
+                like entrepreneurs & are responsible for their success.`}
+                </div>
+              </div>
+              <div className={styles.valueItem}>
+                <img
+                  src={require("../../assets/about/Passion.png").default.src}
+                  alt="Passion"
+                  loading="lazy"
+                  className={styles.valueIcon}
+                />
+                <div className={styles.valueContent}>
+                  {`Passion – We are passionate about creating products that users
+                love & benefit from Drive - Our passion drives us to do more &
+                keep improving!`}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <JoinUs />
       </div>
       <Footer />
     </div>
   );
-}
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
 }

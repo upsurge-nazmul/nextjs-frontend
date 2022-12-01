@@ -128,7 +128,8 @@ function ChoresPage({
             mode={mode}
             setmode={setmode}
             settoastdata={settoastdata}
-          />
+            />
+            <p className={styles.subheader}>Assign chores & track your child&apos;s progress!</p>
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
@@ -285,7 +286,7 @@ function ChoresPage({
             ]}
             current={storyIndex}
             setcurrent={setStoryIndex}
-            showtour={true}
+            showtour={false}
           />
         )}
       </div>

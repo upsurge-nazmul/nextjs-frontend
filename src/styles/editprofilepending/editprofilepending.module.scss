@@ -1,0 +1,53 @@
+.main {
+  background-color: #4066eb;
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-inline: 1rem;
+  border-radius: 14px;
+  .text {
+    font-size: 16px;
+    color: white;
+  }
+  .button {
+    margin-left: 20px;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgb(243, 243, 243);
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .main {
+    background-color: #4066eb;
+    display: flex;
+    min-height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    .text {
+      font-size: 10px;
+    }
+    .button {
+      min-width: max-content;
+      margin-left: 10px;
+      background-color: white;
+      padding: 5px 10px;
+      font-size: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgb(243, 243, 243);
+      }
+    }
+  }
+}

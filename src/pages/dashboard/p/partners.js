@@ -20,6 +20,7 @@ import Refer from "../../../components/WaitlistDashboard/Refer";
 import Tour from "../../../components/Tour/Tour";
 import { MainContext } from "../../../context/Main";
 import PageTitle from "../../../components/PageTitle";
+import PartnersComponent from "../../../components/PartnersComponent";
 
 export default function Partners({ userdatafromserver }) {
   const { setuserdata } = useContext(MainContext);
@@ -110,7 +111,7 @@ export default function Partners({ userdatafromserver }) {
           ]}
           current={storyIndex}
           setcurrent={setStoryIndex}
-          showtour={true}
+          showtour={false}
         />
       )}
       <div className={styles.contentWrapper}>
@@ -119,8 +120,14 @@ export default function Partners({ userdatafromserver }) {
           setmode={setmode}
           setStoryIndex={setStoryIndex}
         />
-        <div className={styles.mainContent}>
+        {/* <div className={styles.mainContent}>
           <PartnerSection dashboard />
+        </div> */}
+        <div className={styles.mainContent}>
+        <p style={{ fontSize: "large" , fontWeight: "bold",}}>Exclusive offers and benefits from the brands you love, curated especially for upsurge Parents.</p>
+        <div className={styles.flexLeft}>
+          <PartnersComponent />
+        </div>
         </div>
       </div>
     </div>

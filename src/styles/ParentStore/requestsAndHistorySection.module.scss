@@ -1,6 +1,5 @@
 .requestsAndHistorySection {
   margin-right: 40px;
-  overflow: hidden;
   border-radius: 12px;
   width: 70%;
   height: 100%;
@@ -35,7 +34,7 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 1000px) {
   .requestsAndHistorySection {
     width: 100%;
     .heading {

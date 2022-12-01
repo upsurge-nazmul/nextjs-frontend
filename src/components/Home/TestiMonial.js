@@ -65,7 +65,7 @@ export default function TestiMonial() {
         theme === "dark" && styles.darktestimonial
       }`}
     >
-      <h2 className={styles.heading}>Testimonials</h2>
+      <h2 className={styles.heading}>We are getting lots of love and we’re loving it!</h2>
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <QuoteSvg className={styles.quotesvg} />

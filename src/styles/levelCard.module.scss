@@ -1,0 +1,76 @@
+.levelCard {
+  min-width: 300px;
+  height: 380px;
+  background-color: #fff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  .topSection {
+    display: flex;
+    background-color: #4166EB;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    box-shadow: 0px 5px 12px 1px #d5d5d5;
+    .badge {
+      width: 180px;
+    }
+    .levelArea {
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      .levelName {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+  }
+  .bottomSection {
+    flex: 1;
+    padding: 20px;
+    border: 3px solid #4166EB;
+    border-top: none;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    .list {
+      border-radius: 14px;
+      padding: 10px;
+      position: relative;
+      box-shadow: 0px 0px 6px 2px #cccbcb;
+      .listHeading {
+        border: 1px solid #fff;
+        position: absolute;
+        top: -10px;
+        left: 12px;
+        background-color: #fff;
+        padding: 2px 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: 4px;
+      }
+      .listItem {
+        font-size: 1rem;
+        font-weight: 300;
+      }
+    }
+    .unlockedAt {
+      background-color: #fdcc03;
+      color: #fff;
+      margin-bottom: 20px;
+      .listHeading {
+        color: #fdcc03;
+        border-color: #fdcc03;
+      }
+    }
+    .perks {
+      background-color: #17d1bc;
+      color: #fff;
+      .listHeading {
+        color: #17d1bc;
+        border-color: #17d1bc;
+      }
+    }
+  }
+}

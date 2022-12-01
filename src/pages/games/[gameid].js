@@ -310,7 +310,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
         console.log(progression * 100);
       });
       unitycontext.on("Exit", function () {
-        router.push("/games");
+        router.push("/dashboard/k/games");
       });
       unitycontext.on("Fullscreen", function () {
         if (fullscreenenabled) {
@@ -501,7 +501,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
             </div>
           </div>
           <div className={styles.right}>
-            <img src="https://imgcdn.upsurge.in/images/>
+            <img src="https://imgcdn.upsurge.in/images/Artboard-1-1.png" alt="" />
           </div>
         </div>
       ) : (

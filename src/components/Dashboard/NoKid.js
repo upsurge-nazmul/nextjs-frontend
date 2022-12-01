@@ -23,7 +23,7 @@ function NoKid({ backTo = "/dashboard/p" }) {
             if (!userdata.intro_guide_completed) {
               router.push({
                 pathname:
-                  "/dashboard/p/child/add?showTour=true?pushTo=/dashboard/p?storyIndex=4",
+                  "/dashboard/p/child/add",
                 query: { backTo },
               });
             } else {

@@ -1,6 +1,5 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
-
 const getschools = (payload, token) => {
   return ApiCalls.getResponse("users/schools", payload, token);
 };
@@ -20,6 +19,14 @@ const updateprofile = (payload) => {
     getCookie("accesstoken")
   );
 };
+const updateparent = (payload) => {
+  return ApiCalls.postResponse(
+    "users/parent-signup",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const updatechildprofile = (payload) => {
   return ApiCalls.postResponse(
     "users/updatechildprofile",
@@ -56,7 +63,7 @@ const getallavatars = (payload, token) => {
 const getallbadges = (payload, token) => {
   return ApiCalls.getResponse(`parent/getavailablebadges`, payload, token);
 };
-const getallvouchers = (payload, token) => {
+const getallvouchers = (payload, token = getCookie("accesstoken")) => {
   return ApiCalls.postResponse(`voucher/vouchers`, payload, token);
 };
 const ordervouchers = (payload) => {
@@ -64,6 +71,13 @@ const ordervouchers = (payload) => {
     "voucher/order",
     payload,
     getCookie("accesstoken")
+  );
+};
+const rewardunicoinstochild = (payload, token) => {
+  return ApiCalls.postResponse(
+    `users/rewardunicoins`,
+    payload,
+    token || getCookie("accesstoken")
   );
 };
 const completeintroguide = () => {
@@ -102,6 +116,13 @@ const completerequest = (payload) => {
     getCookie("accesstoken")
   );
 };
+const deleterequest = (payload) => {
+  return ApiCalls.postResponse(
+    "parent/deleterequest",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 
 const searchuser = (payload, token) => {
   return ApiCalls.getResponse("users/searchuser", payload, token);
@@ -111,12 +132,8 @@ const markwelcomecomplete = (payload, token) => {
   return ApiCalls.putResponse("users/markwelcomecomplete", payload, token);
 };
 
-const getoverallleaderboard = (payload) => {
-  return ApiCalls.getResponse(
-    "users/overallleaderboard",
-    payload,
-    getCookie("accesstoken")
-  );
+const getoverallleaderboard = (payload, token) => {
+  return ApiCalls.getResponse("users/overallleaderboard", payload, token);
 };
 
 const createVerificationOtp = (payload) => {
@@ -160,6 +177,9 @@ const DashboardApis = {
   createVerificationOtp,
   getTodo,
   completeintroguide,
+  rewardunicoinstochild,
+  deleterequest,
+  updateparent,
 };
 
 export default DashboardApis;

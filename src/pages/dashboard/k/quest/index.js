@@ -16,7 +16,7 @@ const QUEST_TYPES = [
   { title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
   { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
   { title: "Career Quests", background: "#ccc", font: "#333" },
-  { title: "Industry Quests", background: "#ccc", font: "#333" },
+  { title: "Life Skills", background: "#ccc", font: "#333" },
 ];
 
 export default function KnowledgeQuest({ userData, questData }) {
@@ -39,24 +39,28 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questPage}>
-      <PageTitle title={`upsurge | Knowledge Quest`} />
+      <PageTitle title={`upsurge | Knowledge Quests`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader mode={"Knowledge Quest"} settoastdata={settoastdata} />
+        <DashboardHeader
+          mode={"Knowledge Quests"}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent} id="quest-main">
-          <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
+          <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
+          {/* <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> */}
           <HeadArea
             data={questData}
             tab={tab}
             handleCardClick={handleCardClick}
           />
-          <MainSection
+          {/* <MainSection
             data={questData}
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
-          />
+          /> */}
         </div>
       </div>
     </div>

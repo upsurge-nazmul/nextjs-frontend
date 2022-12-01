@@ -1,5 +1,6 @@
 import styles from "../../styles/knowledgeQuest/Head.module.scss";
 import Image from "next/image";
+import LockSvg from "../SVGcomponents/LockSvg";
 
 const BG_COLORS = ["#cbc7ea", "#b8dfd8", "#efccb6", "#aad1f6", "#ddd", "#ddd"];
 const TEXT_COLORS = [
@@ -17,8 +18,15 @@ function HeaderCard({ data, handleCardClick }) {
       {data ? (
         <div
           className={styles.headerCard}
-          onClick={() => handleCardClick(data.questId)}
+          onClick={data.open ? () => handleCardClick(data.questId) : () => {}}
         >
+          {!data.open ? (
+            <div className={styles.locked}>
+              <LockSvg className={styles.lockIcon} />
+            </div>
+          ) : (
+            ""
+          )}
           <div className={styles.cardLeft}>
             <div className={styles.imageWrapper}>
               <Image

@@ -43,39 +43,11 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
             />
             <HeaderTabSection
               mobile={true}
-              current={current}
-              setcurrent={setcurrent}
-              setpanel={setOpenLeftPanel}
-              title={"Benefits"}
-              tabs={[
-                { name: "Financial literacy", pushTo: "/benefits" },
-                {
-                  name: "Experiential learning",
-                  pushTo: "/benefits/experimential",
-                },
-                {
-                  name: "Entrepreneurship",
-                  pushTo: "/benefits/entrepreneurship",
-                },
-                { name: "Rewards", pushTo: "/benefits/rewards" },
-                { name: "21st century skills", pushTo: "/benefits/skills" },
-              ]}
-            />
-            <HeaderTabSection
-              mobile={true}
               title={"Games"}
               current={current}
               setcurrent={setcurrent}
               tabs={[]}
               pushTo="/games"
-            />
-            <HeaderTabSection
-              mobile={true}
-              title={"Quiz"}
-              current={current}
-              setcurrent={setcurrent}
-              tabs={[]}
-              pushTo="/quiz"
             />
             <HeaderTabSection
               mobile={true}
@@ -89,18 +61,26 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               mobile={true}
               current={current}
               setcurrent={setcurrent}
-              title={"More"}
+              title={"Resources"}
               tabs={[
                 { name: "About us", pushTo: "/about-us" },
                 { name: "Team", pushTo: "/team" },
                 { name: "Blogs", pushTo: "/blogs" },
                 { name: "Financial calculators", pushTo: "/calculators" },
-                { name: "Careers", pushTo: "/careers" },
+                // { name: "Careers", pushTo: "/careers" },
                 { name: "FAQs", pushTo: "/help/faq" },
                 { name: "Contact us", pushTo: "/contact" },
               ]}
             />
 
+            <HeaderTabSection
+              mobile={true}
+              title={"Contact Us"}
+              current={current}
+              setcurrent={setcurrent}
+              tabs={[]}
+              pushTo="/contact"
+            />
             <div
               className={styles.cancelButton}
               onClick={() => {

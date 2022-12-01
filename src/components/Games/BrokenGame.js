@@ -13,12 +13,14 @@ export default function BrokenGame({ goBackTo }) {
           {`This game is not yet available for phones & tablets. Please use
                 a laptop or PC to play it.`}
         </p>
-        <div
-          className={styles.button}
-          onClick={() => router.push(goBackTo || "/")}
-        >
-          Go back
-        </div>
+        {goBackTo && (
+          <div
+            className={styles.button}
+            onClick={() => router.push(goBackTo || "/")}
+          >
+            Go back
+          </div>
+        )}
       </div>
     </div>
   );

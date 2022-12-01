@@ -30,6 +30,8 @@ export default function ModernInputBox({
   suggestions,
   showincaps,
   autoComplete,
+  maxDate = "today",
+  emailonFocus,
 }) {
   const [showsuggestion, setshowsuggestion] = useState(false);
   const { theme } = useContext(MainContext);
@@ -66,7 +68,7 @@ export default function ModernInputBox({
           value={value}
           setvalue={onChange}
           onlydate={true}
-          maxdate={"today"}
+          maxdate={maxDate}
         />
       ) : (
         <input
@@ -78,6 +80,7 @@ export default function ModernInputBox({
                   if (suggestions) setshowsuggestion(true);
                 }
           }
+          autoFocus = {emailonFocus}
           name="hidden"
           className={`${extraclass ? extraclass : ""}`}
           type={secure ? "password" : "text"}
@@ -87,7 +90,7 @@ export default function ModernInputBox({
           maxLength={maxLength || 32676}
           onChange={
             onChange
-              ? onChange
+            ? onChange
               : (e) => {
                   if (
                     (maxValue || maxValue === 0) &&
@@ -104,8 +107,8 @@ export default function ModernInputBox({
                   }
                   setvalue(e.target.value.trim());
                 }
-          }
-        />
+              }
+              />
       )}
       {tooltip && (
         <div data-tip data-for={tooltipid} className={styles.tooltip}>

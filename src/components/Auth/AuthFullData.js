@@ -84,6 +84,7 @@ function AuthFullData({
       user_type: usertype,
       phone,
       password,
+      username: username,
       first_name: firstName,
       last_name: lastName,
     });
@@ -100,6 +101,8 @@ function AuthFullData({
         msg: response.data.message,
         type: "success",
       });
+      fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
+      dataLayer.push({'event':'signup-successful'});
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
       setmode("otp");
@@ -117,8 +120,8 @@ function AuthFullData({
       setloading(false);
       return;
     }
-    if (username.length > 20) {
-      seterror("Username cannot contain more than 20 characters");
+    if (username.length > 40) {
+      seterror("Username cannot contain more than 40 characters");
       setloading(false);
       return;
     }
@@ -160,10 +163,51 @@ function AuthFullData({
       first_name: firstName,
       last_name: lastName,
     });
-
+    
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
+      mixpanel.add_group('user_group','early_access');
+      mixpanel.track('Sign-Up',{'event':`SignUp of ${email} Successful`, 'user-email': email});
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email, "$phone": phone, "$usertype": usertype, "$username": username, "$signupmethod": signupmethod, "$created": new Date().toISOString() });
+      function getQueryParam(url, param) {
+        // Expects a raw URL
+        param = param.replace(/[[]/, "\[").replace(/[]]/, "\]");
+        var regexS = "[\?&]" + param + "=([^&#]*)",
+            regex = new RegExp( regexS ),
+            results = regex.exec(url);
+        if (results === null || (results && typeof(results[1]) !== 'string' && results[1].length)) {
+          return '';
+          } else {
+          return decodeURIComponent(results[1]).replace(/\W/gi, ' ');
+          }
+        };
+        function campaignParams() {
+        var campaign_keywords = 'utm_source utm_medium utm_campaign utm_content utm_term'.split(' ')
+            , kw = ''
+            , params = {}
+            , first_params = {};
+        var index;
+        for (index = 0; index < campaign_keywords.length; ++index) {
+          kw = getQueryParam(document.URL, campaign_keywords[index]);
+          if (kw.length) {
+            params[campaign_keywords[index] + ' [last touch]'] = kw;
+          }
+        }
+        for (index = 0; index < campaign_keywords.length; ++index) {
+          kw = getQueryParam(document.URL, campaign_keywords[index]);
+          if (kw.length) {
+            first_params[campaign_keywords[index] + ' [first touch]'] = kw;
+          }
+        }
+        mixpanel.people.set(params);
+        mixpanel.people.set_once(first_params);
+        mixpanel.register(params);
+        }
+        campaignParams();
+      fbq('trackCustom', 'SignUp', {event: 'Sign_Up_Successful'});
+      dataLayer.push({'event':'signup-successful'});
       if (mode === "otp") {
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
@@ -212,8 +256,8 @@ function AuthFullData({
       <div className={styles.phoneWrapper}>
         <p>+91</p>{" "}
         <input
-          type="text"
-          placeholder="Phone"
+          type="tel"
+          placeholder="Parent's phone number"
           value={phone}
           maxLength={10}
           onChange={(e) => {
@@ -224,28 +268,32 @@ function AuthFullData({
       <div className={styles.nameWrapper}>
         <input
           type="text"
-          placeholder="First Name"
-          maxLength={10}
+          placeholder="Parent's First Name"
+          minLength={2}
+          maxLength={50}
           value={firstName}
           onChange={(e) => {
             setfirstName(onlyText(e.target.value));
           }}
         />
         <input
-          maxLength={10}
+          maxLength={50}
+          minLength={2}
           type="text"
-          placeholder="Last Name"
+          placeholder="Parent's Last Name"
           value={lastName}
           onChange={(e) => {
-            setlastName(onlyText(e.target.value));
+            setlastName(onlyText(e.target.value)); 
           }}
         />
       </div>
       <input
         type="text"
-        placeholder="Username"
-        // maxLength={8}
+        placeholder="Parent's Username"
+        minLength={4}
+        maxLength={100} //
         value={username}
+        pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
         onChange={(e) => setusername(e.target.value)}
       />
       {password !== "" && passisweak && (
@@ -296,6 +344,7 @@ function AuthFullData({
           value={password}
           className={password !== "" && passisweak ? styles.weakpass : ""}
           onChange={validatePassword}
+          required
         />
         <p className={styles.show} onClick={() => setpasshidden(!passhidden)}>
           {passhidden ? "Show" : "Hide"}

@@ -1,0 +1,176 @@
+@keyframes loading {
+  0% {
+    cy: 10;
+  }
+  25% {
+    cy: 3;
+  }
+  50% {
+    cy: 10;
+  }
+}
+
+.button {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  background: #1f2335;
+  color: #f4f7ff;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  width: 100%;
+  height: 44px;
+  padding: 10px;
+  z-index: 1;
+  position: relative;
+  transition: width 0.2s cubic-bezier(0.39, 1.86, 0.64, 1) 0.3s;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 400;
+
+  .buttonText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    position: relative;
+    color: inherit;
+  }
+
+  .message {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: inherit;
+  }
+
+  .message svg {
+    display: inline-block;
+    fill: none;
+    margin-right: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    color: inherit;
+  }
+
+  .submitMessage {
+    .buttonText {
+      top: 8px;
+      transition: all 0.2s ease var(--d);
+    }
+
+    svg {
+      color: inherit;
+      margin-left: -1px;
+      opacity: 0;
+      position: relative;
+      top: 30px;
+      transition: top 0.4s ease, opacity 0.3s linear;
+      width: 14px;
+    }
+  }
+
+  .loadingMessage {
+    opacity: 0;
+    transition: opacity 0.3s linear 0.3s,
+      top 0.4s cubic-bezier(0.22, 0, 0.41, -0.57);
+
+    svg {
+      fill: inherit;
+      margin: 0;
+      width: 40px;
+    }
+  }
+
+  .successMessage {
+    .buttonText {
+      left: 5px;
+      transition: all 0.2s ease var(--dr);
+    }
+
+    svg {
+      color: inherit;
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      transition: stroke-dashoffset 0.3s ease-in-out;
+      width: 14px;
+    }
+  }
+
+  .loadingCircle:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .loadingCircle:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+}
+
+// READY STATE
+.ready {
+  .submitMessage svg {
+    opacity: 1;
+    top: 1px;
+    transition: top 0.4s ease 600ms, opacity 0.3s linear 600ms;
+  }
+
+  .submitMessage .buttonText {
+    top: 0;
+    opacity: 1;
+    transition: all 0.2s ease calc(var(--dr) + 600ms);
+  }
+}
+
+// LOADING STATE
+.loading {
+  &::before {
+    transition: width 0.3s ease;
+    width: 80%;
+  }
+
+  .loadingMessage {
+    opacity: 1;
+    fill: inherit;
+  }
+
+  .loadingCircle {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: loading;
+    cy: 10;
+    fill: inherit;
+  }
+}
+
+// COMPLETE STATE
+.complete {
+  .submitMessage svg {
+    top: -30px;
+    transition: none;
+  }
+
+  .submitMessage .buttonText {
+    top: -8px;
+    transition: none;
+  }
+
+  .loadingMessage {
+    top: 80px;
+  }
+
+  .successMessage .buttonText {
+    left: 0;
+    opacity: 1;
+    transition: all 0.2s ease calc(var(--d) + 1000ms);
+  }
+
+  .successMessage svg {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.3s ease-in-out 1.4s;
+  }
+}

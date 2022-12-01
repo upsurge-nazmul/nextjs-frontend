@@ -1,0 +1,84 @@
+.gameView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+
+  .gameScreen {
+    width: 100%;
+    flex: 1;
+  }
+
+  .hiddenGameScreen {
+    @extend .gameScreen;
+    display: none;
+  }
+
+  .noGame {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #171313;
+
+    .noGameText {
+      color: #fff;
+      font-size: 2rem;
+    }
+  }
+
+  .loadingArea {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+
+  .actionArea {
+    height: fit-content;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #171313;
+    display: flex;
+    justify-content: flex-end;
+    .fullScreenButton {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background-color: red;
+      color: #d4d1d1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 9rem;
+      height: 9rem;
+      border-radius: 0px 8rem 0px 0px;
+      font-size: 4rem;
+      text-align: left;
+      vertical-align: baseline;
+      span {
+        padding-left: 1.8rem;
+        flex-grow: 1;
+      }
+    }
+
+    .doneButton {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      min-width: 150px;
+      background-color: #4d5dfb;
+    }
+  }
+}

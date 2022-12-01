@@ -45,13 +45,13 @@
       transition: all 0.3s ease;
       padding: 0 5px;
       color: #4f4f4f;
-      background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 50%,
-        rgba(244, 245, 247, 1) 50%,
-        rgba(244, 245, 247, 1) 100%
-      );
+      // background: linear-gradient(
+      //   0deg,
+      //   rgba(255, 255, 255, 1) 0%,
+      //   rgba(255, 255, 255, 1) 50%,
+      //   rgba(244, 245, 247, 1) 50%,
+      //   rgba(244, 245, 247, 1) 100%
+      // );
       left: 8px;
       top: -8px;
       font-family: "Lexend", sans-serif;
@@ -83,6 +83,9 @@
     transform: translateX(-50%);
     max-height: 500px;
     overflow-y: auto;
+    &::-webkit-scrollbar-track {
+      margin: 5px 0;
+    }
     .option {
       width: 100%;
       border-bottom: 1px solid #e9e9e9;
@@ -108,6 +111,7 @@
     }
   }
 }
+
 .darkstyles {
   border: 1px solid $d-light;
   background-color: $d-main !important;
@@ -198,6 +202,7 @@
       min-width: 100px;
       p {
         margin-right: auto;
+        font-size: 14px;
       }
       .svg {
         width: 13px;

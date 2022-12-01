@@ -14,7 +14,7 @@ import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
 import PageTitle from "../../components/PageTitle";
 
-function CalculatorsPage({ userdata }) {
+function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [heading, setHeading] = useState("");
@@ -24,12 +24,7 @@ function CalculatorsPage({ userdata }) {
   const [paths, setpaths] = useState(["home", "calculators"]);
   const [showpopup, setshowpopup] = useState(false);
   const [error, seterror] = useState("");
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     seterror("");
@@ -71,7 +66,7 @@ function CalculatorsPage({ userdata }) {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <WaitingListCta />
+        <WaitingListCta setshowauth={setshowauth} />
         <div className={styles.headingSection}>
           <h1 className={styles.mainheading}>{heading}</h1>
           <h2 className={styles.heading}>How it works</h2>
@@ -95,28 +90,3 @@ function CalculatorsPage({ userdata }) {
 }
 
 export default CalculatorsPage;
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}

@@ -57,24 +57,25 @@ export default function BlogsSection() {
     },
   ];
   return (
+    <>
     <section
       className={`${styles.blogSection} ${
         theme === "dark" && styles.darkblogSection
       }`}
-    >
+      >
       <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
-        Blogs
+      Read our blogs for some MONEY-ful insights
       </h2>
       <div className={styles.wrapper}>
         {blogs.map((item, index) => {
           return (
             <div
-              key={item.id}
+            key={item.id}
               className={styles.moreCard}
               onClick={() => {
                 router.push(`/blog/${item.id}`);
               }}
-            >
+              >
               <img src={item.img_url} alt="" />
               <div className={styles.categories}>
                 {item.categories?.split(",").map((cat, index) => {
@@ -95,7 +96,12 @@ export default function BlogsSection() {
             </div>
           );
         })}
+         <p className={styles.button} onClick={() => router.push("/blogs")}>
+        Read Now
+      </p>
       </div>
     </section>
+
+        </>
   );
 }

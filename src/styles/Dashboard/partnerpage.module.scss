@@ -20,15 +20,19 @@
     // max-width: calc(100% - 350px);
     flex-direction: column;
     .mainContent {
+      flex-direction: column;
+      p{
+        margin-bottom: 20px;
+        padding: 0 26px;
+      }
+    .flexLeft {
       display: flex;
-      overflow-y: auto;
       height: fit-content;
-      margin-top: 20px;
       padding: 10px 40px;
       scrollbar-width: thin;
-      overflow: hidden;
+      overflow: auto;
     }
-
+  }
     .container {
       padding: 20px;
       overflow-y: auto;
@@ -64,7 +68,6 @@
         display: flex;
         overflow-y: auto;
         height: fit-content;
-        margin-top: 20px;
         scrollbar-width: thin;
         .flexLeft {
           display: flex;
@@ -142,9 +145,13 @@
         display: flex;
         overflow-y: auto;
         height: fit-content;
-        margin-top: 0px;
         padding: 0 20px;
         scrollbar-width: thin;
+        p{
+        font-weight: 600;
+        font-size: medium;
+        padding: 0;
+        }
         .flexLeft {
           display: flex;
           flex-direction: column;

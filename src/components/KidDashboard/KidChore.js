@@ -12,10 +12,12 @@ import ClockSvg from "../SVGcomponents/ClockSvg";
 import MenuSvg from "../SVGcomponents/MenuSvg";
 import PendingSvg from "../SVGcomponents/PendingSvg";
 import RoundedTick from "../SVGcomponents/RoundedTick";
+import KidChorePopUp from "./KidChorePopUp";
 
 function KidChore({ data, settoastdata }) {
   const [showmenu, setshowmenu] = useState(false);
   const [choredata, setchoredata] = useState(data);
+  const [showPopUp, setShowPopUp] = useState(false);
   const router = useRouter();
   const [duedate, setduedate] = useState(getDueDate());
   const [openPhotoUpload, setOpenPhotoUpload] = useState(false);
@@ -44,60 +46,6 @@ function KidChore({ data, settoastdata }) {
     }, 1000 * 60);
     return () => clearInterval(x);
   }, []);
-  async function handleMarkStart() {
-    if (choredata.completion === "started") {
-      return;
-    }
-    let response = await ChoreApis.markchorestarted({
-      choreId: choredata.id,
-      is_reoccurring: choredata.is_reoccurring,
-    });
-    if (response && response.data && response.data.success) {
-      settoastdata({ show: true, type: "success", msg: "done" });
-      if (choredata.is_reoccurring) {
-        setchoredata((prev) => ({
-          ...prev,
-          latest_chore: {
-            ...prev.latest_chore,
-            completion: "started",
-          },
-        }));
-      } else setchoredata((prev) => ({ ...prev, completion: "started" }));
-    } else {
-      console.log(response);
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: response?.data.message || "cannot reach server",
-      });
-    }
-  }
-  async function handleMarkForApproval() {
-    if (choredata.completion === "approval") {
-      return;
-    }
-    let response = await ChoreApis.markchoreforapproval({
-      choreId: choredata.id,
-    });
-    if (response && response.data && response.data.success) {
-      settoastdata({ show: true, type: "success", msg: "done" });
-      if (choredata.is_reoccurring) {
-        setchoredata((prev) => ({
-          ...prev,
-          latest_chore: {
-            ...prev.latest_chore,
-            completion: "approval",
-          },
-        }));
-      } else setchoredata((prev) => ({ ...prev, completion: "approval" }));
-    } else {
-      settoastdata({
-        show: true,
-        type: "error",
-        msg: response?.data?.message || "cannot reach server",
-      });
-    }
-  }
   function getDueDate() {
     if (choredata.is_reoccurring) {
       if (JSON.stringify(choredata.latest_chore) !== "{}") {
@@ -122,11 +70,11 @@ function KidChore({ data, settoastdata }) {
           <img
             src={
               choredata?.img_url
-                ? choredata.img_url
+              ? choredata.img_url
                 : choredata.category === "Bathroom"
                 ? "/images/chores/bathroom.jpg"
                 : "/images/chores/kitchen.png"
-            }
+              }
             alt="ChoreImage"
             className={styles.banner}
           />
@@ -139,7 +87,10 @@ function KidChore({ data, settoastdata }) {
             <div className={styles.reward}>
               <span className={styles.rewardLabel}>Reward:</span>
               <span className={styles.rewardValue}>
-                {data.reward_amount} {data.reward_type}
+                 {data.reward_amount}
+                 {" "}
+                 {data.reward_type}
+                
               </span>
             </div>
           ) : (
@@ -152,97 +103,16 @@ function KidChore({ data, settoastdata }) {
             <p className={styles.dueText}>{duedate}</p>
           </div>
         </div>
+        {showPopUp &&
+          <KidChorePopUp choredata={choredata} settoastdata={settoastdata} setchoredata={setchoredata} showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
+        }
         <div className={styles.thirdSection}>
-          {choredata.is_reoccurring &&
-          JSON.stringify(choredata.latest_chore) !== "{}" ? (
-            choredata.latest_chore.completion === "completion" ? (
-              <button className={styles.completedButton}>Completed</button>
-            ) : duetimeDifference(choredata?.latest_chore.due_date) ===
-              "Expired" ? (
-              <button
-                className={styles.expiredButton}
-                onClick={() =>
-                  settoastdata({
-                    show: true,
-                    type: "success",
-                    msg: "Oh oh time's up for this chore !",
-                  })
-                }
-              >
-                Expired
-              </button>
-            ) : choredata.latest_chore.completion === "approval" ? (
-              <button
+        <button
                 className={styles.approvalButton}
-                onClick={() =>
-                  settoastdata({
-                    show: true,
-                    type: "success",
-                    msg: "Waiting for approval !",
-                  })
-                }
+                onClick={() => setShowPopUp(!showPopUp)}
               >
-                <PendingSvg />
-                Approval
-              </button>
-            ) : choredata.latest_chore.completion === "pending" ? (
-              <button className={styles.startButton} onClick={handleMarkStart}>
-                Start
-              </button>
-            ) : (
-              <button
-                className={styles.markDoneButton}
-                onClick={handleMarkForApproval}
-                // onClick={() => setOpenPhotoUpload(true)}
-              >
-                <RoundedTick />
-                Mark as done
-              </button>
-            )
-          ) : choredata.completion === "completed" ? (
-            <button className={styles.completedButton}>Completed</button>
-          ) : duetimeDifference(choredata?.due_date) === "Expired" ? (
-            <button
-              className={styles.expiredButton}
-              onClick={() =>
-                settoastdata({
-                  show: true,
-                  type: "success",
-                  msg: "Oh oh time's up for this chore !",
-                })
-              }
-            >
-              Expired
-            </button>
-          ) : choredata.completion === "approval" ? (
-            <button
-              className={styles.approvalButton}
-              onClick={() =>
-                settoastdata({
-                  show: true,
-                  type: "success",
-                  msg: "Waiting for approval !",
-                })
-              }
-            >
-              <PendingSvg />
-              Approval
-            </button>
-          ) : choredata.completion === "pending" ? (
-            <button className={styles.startButton} onClick={handleMarkStart}>
-              Start
-            </button>
-          ) : (
-            <button
-              className={styles.markDoneButton}
-              onClick={handleMarkForApproval}
-              // onClick={() => setOpenPhotoUpload(true)}
-            >
-              <RoundedTick />
-              Mark as done
-            </button>
-          )}
-
+View
+</button>
           {showmenu ? (
             <div
               className={styles.menu}

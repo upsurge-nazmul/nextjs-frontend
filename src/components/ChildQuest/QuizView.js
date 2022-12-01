@@ -21,6 +21,8 @@ export default function QuizView({
   const [questions, setquestions] = useState([]);
   const [selectedOption, setselectedOption] = useState();
   const [score, setScore] = useState(0);
+  const [correctAns, setCorrectAns] = useState(false);
+  const [correctAnsValue, setCorrectAnsValue] = useState("");
 
   useEffect(() => {
     getquestions();
@@ -45,14 +47,23 @@ export default function QuizView({
     );
 
     if (res && res.data && res.data.success) {
-      setScore((prev) => prev + 1);
+      if (res.data.message === "Correct answer") {
+        setScore((prev) => prev + 1);
+        setCorrectAns(true);
+      }
+      setCorrectAnsValue(res.data.data.correct_answer);
     }
+    setselectedOption();
+  }
+
+  function goNext() {
+    setCorrectAns(false);
+    setCorrectAnsValue("");
     if (currentQnIndex === questions.length - 1) {
       setcompleted(true);
     } else {
       setCurrentQnIndex((prev) => prev + 1);
     }
-    setselectedOption();
   }
 
   function handleRetry() {
@@ -68,6 +79,7 @@ export default function QuizView({
       quiz_id: chapterId,
       score,
     });
+    mixpanel.track('Knowledge Quest Quiz',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
     setuserdata((prev) => ({
       ...prev,
       num_unicoins:
@@ -89,11 +101,17 @@ export default function QuizView({
           Question {currentQnIndex + 1}/{questions.length}
         </div>
         {questions.length > 0 && !completed && (
-          <Quiz data={questions[currentQnIndex]} matchAnswer={matchAnswer} />
+          <Quiz
+            data={questions[currentQnIndex]}
+            matchAnswer={matchAnswer}
+            correctAns={correctAns}
+            correctAnsValue={correctAnsValue}
+            handleNextClick={goNext}
+          />
         )}
         {completed && (
           <Completed
-            {...{ score, scoreOn: questions.length, handleRetry, handleFinish }}
+            {...{ chapterId, score, scoreOn: questions.length, handleRetry, handleFinish }}
           />
         )}
       </div>

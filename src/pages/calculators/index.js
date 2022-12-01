@@ -13,18 +13,13 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
 
-function CalculatorsPage({ userdata }) {
+function CalculatorsPage() {
   const router = useRouter();
   const { calculatorName } = router.query;
   const [showpopup, setshowpopup] = useState(false);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  const { setuserdata, theme } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
+  const { theme } = useContext(MainContext);
 
   useEffect(() => {
     if (calculatorName && !Calc_Data[calculatorName]) {
@@ -75,7 +70,7 @@ function CalculatorsPage({ userdata }) {
             calculating your Personal Loan EMI, to checking your Home Loan
             affordability, Upsurge gives you a whole set of calculators to help
             you make your informed decision. As you embark on a journey to
-            fulfil your dreams with a new bike/car or a new home, the calculator
+            fulfill your dreams with a new bike/car or a new home, the calculator
             helps you with a better understanding of expenses. Also, before you
             invest in a Fixed Deposit or Recurring Deposit to save and grow your
             money, you can calculate the interest you will earn
@@ -121,28 +116,3 @@ function CalculatorsPage({ userdata }) {
 }
 
 export default CalculatorsPage;
-
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}

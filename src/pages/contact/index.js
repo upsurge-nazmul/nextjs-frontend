@@ -15,7 +15,8 @@ import LogoFullWhte from "../../components/SVGcomponents/LogoFullWhte";
 import { onlyText } from "../../helpers/validationHelpers";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
-function Contact({ userdata }) {
+
+function Contact() {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [email, setEmail] = useState("");
@@ -27,12 +28,6 @@ function Contact({ userdata }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata } = useContext(MainContext);
-  useEffect(() => {
-    if (userdata) {
-      setuserdata(userdata);
-    }
-  }, [userdata]);
 
   async function handlesubmit() {
     if (!name) {
@@ -187,27 +182,3 @@ function Contact({ userdata }) {
 }
 
 export default Contact;
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
-    });
-    if (response && !response.data.success) {
-      msg = response.data.msg || "";
-      return { props: {} };
-    } else {
-      return {
-        props: {
-          isLogged: true,
-          userdata: response?.data?.data || null,
-        },
-      };
-    }
-  } else {
-    return {
-      props: { isLogged: false, msg: "cannot get token", userdata: null },
-    };
-  }
-}

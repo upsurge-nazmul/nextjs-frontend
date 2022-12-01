@@ -1,0 +1,384 @@
+$border-radius: 14px;
+$card-height: auto;
+.chorePopUp {
+    position: absolute;
+    z-index: 5;
+    top:0;
+    left:0;
+    .chorePopUpWrapper {
+        color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 4vh;
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 6;
+        background-color: white;
+        height: fit-content;
+        min-height: 400px;
+        padding: 2rem;
+        border-radius: 3rem;
+        position: relative;
+        transition: all 0.3s ease;
+        max-width: 40vw;
+        .firstSection{
+            width: auto;
+            margin-left: auto;
+            margin-right:20px;
+            .reward{
+              display: flex;
+              align-items: center;
+              gap:5px;
+            .rewardLabel{
+              margin-left: 20px;
+            }
+            }
+        }
+        .secondSection{
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .title{
+                display: flex;
+                align-items: center;
+                margin: 1rem 0 1rem 0;
+                font-size: 22px;
+                h3{
+                  margin-left: 0.4rem;
+                    margin-right: 5px;
+                  }
+                }
+            .message{
+              margin-bottom: 0.5rem;
+              p{
+                    margin-bottom: 0.5rem;
+                    font-size: 20px;
+                    font-weight: bold;
+                  }
+            }
+            .deadline{
+              margin-bottom: 0.5rem;
+              p{
+                margin-bottom: 0.5rem;
+                margin-right: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                }
+              }
+              .customReward{
+                p{
+                      margin-bottom: 0.5rem;
+                  font-size: 20px;
+                  font-weight: bold;
+                }
+              }
+            }
+        .thirdSection{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-right: 10px;
+            margin-top: 10px;
+            .left{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
+            }
+            .right{
+              margin-top: 10px;
+            .actinButton {
+              cursor: pointer;
+              width: 140px;
+              height: 40px;
+              border-radius: $border-radius;
+              font-size: 14px;
+              font-weight: 600;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5px;
+              transition: all 0.3s ease;
+              background-color: #333;
+              color: #fff;
+              border: 1px solid #fff;
+              &:hover {
+                color: #333;
+                background-color: #fff;
+                border: 1px solid #333;
+              }
+            }
+            .startButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .markDoneButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .completedButton {
+              @extend .actinButton;
+              background-color: #17d1bc;
+              border: 1px solid #17d1bc;
+              &:hover {
+                color: #17d1bc;
+                background-color: #fff;
+                border: 1px solid #17d1bc;
+              }
+            }
+            .expiredButton {
+              @extend .actinButton;
+              background-color: #dbdbdb;
+              color: rgb(116, 116, 116);
+              border: 1px solid #dbdbdb;
+              &:hover {
+                color: #dbdbdb;
+                background-color: rgb(116, 116, 116);
+                border: 1px solid #dbdbdb;
+              }
+            }
+            .approvalButton {
+              @extend .actinButton;
+              background-color: #4166eb;
+              border: 1px solid #4166eb;
+              &:hover {
+                color: #4166eb;
+                background-color: #fff;
+                border: 1px solid #4166eb;
+              }
+            }
+            .menu {
+              padding: 0 10px;
+            }
+        }
+    }
+    .fourthsection{
+      width:100%;
+        .msgsection {
+          height: 100px;
+          width: 100%;
+          margin: 20px 0;
+          position: relative;
+          p{
+            margin-bottom: 0.5rem;
+        font-size: 20px;
+        font-weight: bold;
+      }
+          .lettersleft {
+            color: #898989;
+            position: absolute;
+            bottom: -40px;
+            right: 10px;
+            font-family: "Lexend", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+          }
+          textarea {
+            width: 100%;
+            height: 100%;
+            font-family: "Lexend", sans-serif;
+            border: 1px solid #898989;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            resize: none;
+          }
+        }
+        .uploadedimg{
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          padding:10px;
+          gap:10px;
+          :hover{
+            cursor: pointer;
+          }
+          .preview{
+            position: relative;
+            width:15vw;
+            height: 15vh;
+            .displayimg{
+            }
+            .PreviewIcon,.CloseIcon{
+              position: absolute;
+              z-index: 1;
+              background: #fff;
+              top:4px;
+              font-size: 2rem;
+            }
+            .PreviewIcon{
+              left:4px;
+            }
+            .CloseIcon{
+              top:4px;
+              right:4px;
+            }
+          }
+          .previewActive{
+            position: absolute;
+            top:5%;
+            left:5%;
+            width:90%;
+            height: 90%;
+            z-index:2;
+          } 
+        }
+       .inputImages{
+        input{
+            cursor: pointer;
+            width: fit-content;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            gap: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid #fff;
+            &:hover {
+              color: #333;
+              background-color: #fff;
+              border: 1px solid #333;
+            }
+          }
+       } 
+      }
+}
+.background {
+    position: absolute;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.19);
+  width: 100vw;
+  cursor: pointer;
+  height: 100vh;
+  top:0;
+  left:0;
+}
+}
+}
+@media screen and (max-width:1000px) {
+  .chorePopUp {
+    position: absolute;
+    z-index: 5;
+    top:0;
+    left:0;
+    .chorePopUpWrapper {
+        color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 7vh;
+      .background{
+        height:100vh;
+        width: 100VW;
+      }
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 6;
+        background-color: white;
+        height: fit-content;
+        min-height: 300px;
+        padding: 4rem;
+        border-radius: 3rem;
+        position: relative;
+        transition: all 0.3s ease;
+        max-width: 80vw;
+      }}} 
+}
+@media screen and (max-width:860px) {
+  .chorePopUp {
+    position: absolute;
+    z-index: 9;
+    top:0;
+    left:0;
+    .background{
+      transform: scale(1.5);
+      z-index: 9;
+      width: 60vw;
+    }
+    .chorePopUpWrapper {
+      color: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .chorePopUpcontainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 12;
+        background-color: white;
+        height: fit-content;
+        min-height: 300px;
+        padding: 2rem;
+        border-radius: 3rem;
+        transition: all 0.3s ease;
+        max-width: 80vw;
+        .firstSection{
+          width: auto;
+          margin-left: auto;
+          margin-right:20px;
+          .reward{
+            display: flex;
+            align-items: center;
+            gap:5px;
+          .rewardLabel{
+            margin-left: 20px;
+          }
+          }
+      }
+      .secondSection{
+          .title{
+              font-size: 16px;
+              }
+          .message{
+            p{
+                  font-size: 14px;
+                }
+          }
+          .deadline{
+            p{
+              font-size: 14px;
+              }
+            }
+            .customReward{
+              p{
+                font-size: 14px;
+              }
+            }
+          }
+          .fourthsection{
+              .msgsection {
+                p{
+              font-size: 14px;
+            }
+            .lettersleft {
+              font-size: 8px;
+            }
+                }
+                }
+                }}} 
+}

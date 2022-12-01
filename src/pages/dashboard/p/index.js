@@ -255,7 +255,7 @@ function Dashboard({
         <PageTitle title={`upsurge | Dashboard`} />
         <DashboardLeftPanel />
         <Toast data={toastdata} />
-        {phoneverified && showtour && (
+        {/* {phoneverified && showtour && (
           <Tour
             story={story}
             current={currentTourIndex}
@@ -264,7 +264,7 @@ function Dashboard({
             setshowtour={setshowtour}
             introComplete={true}
           />
-        )}
+        )} */}
         {userdatafromserver &&
           userdatafromserver.user_type !== "child" &&
           !phoneverified && (
@@ -307,11 +307,9 @@ function Dashboard({
                         </div>
 
                         <div className={styles.heads}>
-                          <p className={styles.blacnkhead1}></p>
                           <p className={styles.head1}>CHILD INFO</p>
                           <p className={styles.head2}>PENDING CHORES</p>
                           <p className={styles.head3}>QUEST PROGRESS</p>
-                          <p className={styles.blacnkhead2}></p>
                         </div>
                         <div className={`${styles.wrapper}`}>
                           {kids.map((item, index) => {
@@ -448,7 +446,7 @@ export async function getServerSideProps({ params, req }) {
       msg = response.data.msg;
       return { props: { isLogged: false, msg: msg || "Error" } };
     } else {
-      if (response.data.data.is_waiting_active) {
+      if (response.data.is_waiting_active) {
         return {
           props: { isLogged: false, msg: msg || "Error" },
           redirect: {

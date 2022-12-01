@@ -1,5 +1,6 @@
 .voucherSection {
   margin-top: 20px;
+  width: 100%;
   .headwrapper {
     display: flex;
     width: 100%;
@@ -47,7 +48,7 @@
     .rewardButton {
       cursor: pointer;
       border: none;
-      background-color: #4066eb;
+      background-color: #4166EB;
       color: #fff;
       border-radius: 14px;
       padding: 0 10px;
@@ -58,7 +59,9 @@
     display: flex;
     flex-wrap: wrap;
     flex: 1;
-    gap: 10px;
+    gap: 30px;
+    flex-direction: row;
+    align-content: center;
     justify-content: space-evenly;
     .noreward {
       margin: auto;
@@ -88,6 +91,8 @@
         }
       }
       .inputArea {
+        flex: 1;
+        min-width: fit-content;
         .inputwrapper {
           flex: 0.5;
           background-color: rgb(219, 219, 219);
@@ -95,6 +100,7 @@
           height: 45px;
           overflow: hidden;
           max-width: 380px;
+          min-width: fit-content;
           display: flex;
           align-items: center;
           padding-right: 15px;
@@ -106,6 +112,9 @@
             min-height: 45px;
             padding: 0 15px;
             flex: 1;
+            .icon {
+              min-width: max-content;
+            }
             &:focus {
               border: none;
               outline: none;
@@ -116,7 +125,7 @@
       .rewardButton {
         cursor: pointer;
         border: none;
-        background-color: #4066eb;
+        background-color: #4166EB;
         color: #fff;
         border-radius: 14px;
         padding: 0 12px;
@@ -195,7 +204,7 @@
       .rewardButton {
         cursor: pointer;
         border: none;
-        background-color: #4066eb;
+        background-color: #4166EB;
         color: #fff;
         border-radius: 14px;
         padding: 10px 10px;

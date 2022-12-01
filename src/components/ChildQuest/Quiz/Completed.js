@@ -4,6 +4,7 @@ import Curve1 from "../../SVGcomponents/Curve1";
 import Curve2 from "../../SVGcomponents/Curve2";
 
 export default function Completed({
+  chapterId,
   score,
   scoreOn,
   handleRetry,

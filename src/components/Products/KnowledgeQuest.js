@@ -7,6 +7,7 @@ import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
 import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
 import { MainContext } from "../../context/Main";
+import { useRouter } from "next/dist/client/router";
 
 export default function KnowledgeQuest({
   id,
@@ -22,7 +23,6 @@ export default function KnowledgeQuest({
   setshowauth,
   setshowpopup,
 }) {
-  const [showinput, setshowinput] = useState(false);
   const democoncepts = [
     "Money",
     "Entrepreneurship",
@@ -41,7 +41,9 @@ export default function KnowledgeQuest({
     "Retirement Funds",
     "Career Development",
   ];
-  const { theme } = useContext(MainContext);
+  const { theme, userdata } = useContext(MainContext);
+  const router = useRouter();
+
   return (
     <div
       className={`${styles.questSection} ${
@@ -119,7 +121,7 @@ export default function KnowledgeQuest({
           })}
         </div>
         <div className={styles.signupBox}>
-          {!showinput ? (
+          {!userdata ? (
             <div
               className={styles.joinButton}
               onClick={() => {
@@ -130,8 +132,22 @@ export default function KnowledgeQuest({
               Join early access
             </div>
           ) : (
-            <div className={styles.button} onClick={check}>
-              Join
+            <div
+              className={styles.joinButton}
+              onClick={() => {
+                if (userdata) {
+                  if (userdata.is_waiting_active) {
+                    router.push("/dashboard/w");
+                  } else if (userdata.user_type === "parent") {
+                    router.push("/dashboard/p");
+                  } else {
+                    router.push("/dashboard/k");
+                  }
+                  return;
+                }
+              }}
+            >
+              Go to Dashboard
             </div>
           )}
         </div>

@@ -36,6 +36,9 @@ export default function ChangePhoneNo({
         updatedPhoneRes.data &&
         updatedPhoneRes.data.success
       ) {
+        mixpanel.track('ChangePhoneno',{'event':'Phone number changed OTP pending'});
+        fbq('trackCustom', 'ChangePhoneno', {event: 'Phone_number_changed'});
+        dataLayer.push({'event':'phoneno-change-successful'});
         let otpRes = await LoginApis.genotp({ phone: newPhone });
         if (otpRes.data.success) {
           settoastdata({
@@ -64,12 +67,6 @@ export default function ChangePhoneNo({
 
   return (
     <div className={styles.changePhone}>
-      <div
-      className={styles.cross}
-      onClick={() => setshowmodal(false)}
-      >
-      <CancelOutlinedIcon className={styles.icon} />
-      </div>
       <div className={styles.heading}>
         Please edit your phone number and continue
       </div>

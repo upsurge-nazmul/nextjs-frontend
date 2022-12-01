@@ -17,9 +17,9 @@ export default function MoneyAceBanner({ type }) {
         {type === "k" && (
           <p
             className={styles.play}
-            onClick={() => router.push("/dashboard/" + type + "/moneyace")}
+            // onClick={() => router.push("/dashboard/" + type + "/moneyace")}
           >
-            Play
+            Coming Soon
           </p>
         )}
       </div>

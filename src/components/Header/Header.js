@@ -4,10 +4,12 @@ import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/GeneralComponents/header.module.scss";
 import Logo from "../SVGcomponents/Logo";
 import HamSvg from "../SVGcomponents/HamSvg";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderTabSection from "./HeaderTabSection";
 import { MainContext } from "../../context/Main";
 import WaitlistPopUp from "../WaitlistPopUp";
+import { HOME_VARIENTS } from "../../static_data/Home_Data";
+import LoginApis from "../../actions/apis/LoginApis";
+
 function Header({
   setOpenLeftPanel,
   showauth,
@@ -18,11 +20,22 @@ function Header({
   showpopup,
   setshowpopup,
   settoastdata,
+  showNav = true,
+  page = "",
+  refId = null,
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
-  const [showticker, setshowticker] = useState(true);
-  const { userdata, theme } = useContext(MainContext);
+  const { userdata, setuserdata, theme } = useContext(MainContext);
+  useEffect(() => {
+    async function fetchAuth() {
+      let response = await LoginApis.checktoken({});
+      if (response && response.data && response.data.success) {
+        setuserdata(response.data.data);
+      }
+    }
+    fetchAuth();
+  }, []);
   // [
   //   { name: "Our Northstar", pushTo: "/northstar" },
   //   { name: "Team", pushTo: "/team" },
@@ -59,6 +72,7 @@ function Header({
         authmode={authmode}
         mailfromhome={mailfromhome}
         setshowpopup={setshowpopup}
+        refId={refId}
       />
       {showpopup && (
         <WaitlistPopUp
@@ -70,62 +84,48 @@ function Header({
         />
       )}
       <div className={styles.container}>
+        {showNav && (
+          <div
+            className={`${styles.hamburger} `}
+            onClick={() => {
+              setOpenLeftPanel((prev) => !prev);
+            }}
+          >
+            <HamSvg />
+          </div>
+        )}
         <div
-          className={`${styles.hamburger} `}
-          onClick={() => {
-            setOpenLeftPanel((prev) => !prev);
-          }}
+          className={showNav ? styles.logoContainer : styles.noNavLogoContainer}
         >
-          <HamSvg />
-        </div>
-        <div className={styles.logoContainer}>
           <Logo
             onClick={clickedHeader}
             className="logo"
             dark={theme === "dark" ? true : false}
           />
         </div>
-        <div className={styles.nav}>
-          <HeaderTabSection
-            title={"Products"}
-            tabs={[
-              { name: "Knowledge quests", pushTo: "/products/quest" },
-              {
-                name: "Games arena",
-                pushTo: "/products/games",
-              },
-              {
-                name: "Chores",
-                pushTo: "/products/chores",
-              },
-              // { name: "Family Fun", pushTo: "/familyfun" },
-              // { name: "Tribes", pushTo: "/p_tribes" },
-              { name: "Live workshops", pushTo: "/products/liveclasses" },
-            ]}
-            pushTo="/products"
-          />
-          <HeaderTabSection
-            title={"Benefits"}
-            tabs={[
-              { name: "Financial literacy", pushTo: "/benefits" },
-              {
-                name: "Experiential learning",
-                pushTo: "/benefits/experimential",
-              },
-              {
-                name: "Entrepreneurship",
-                pushTo: "/benefits/entrepreneurship",
-              },
-              { name: "Rewards", pushTo: "/benefits/rewards" },
-              { name: "21st century skills", pushTo: "/benefits/skills" },
-              ,
-            ]}
-            pushTo="/benefits"
-          />
-          <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
-          <HeaderTabSection title={"Quiz"} tabs={[]} pushTo="/quiz" />
+        {showNav && (
+          <div className={styles.nav}>
+            <HeaderTabSection
+              title={"Products"}
+              tabs={[
+                { name: "Knowledge quests", pushTo: "/products/quest" },
+                {
+                  name: "Games arena",
+                  pushTo: "/products/games",
+                },
+                {
+                  name: "Chores",
+                  pushTo: "/products/chores",
+                },
+                // { name: "Family Fun", pushTo: "/familyfun" },
+                // { name: "Tribes", pushTo: "/p_tribes" },
+                { name: "Live workshops", pushTo: "/products/liveclasses" },
+              ]}
+              pushTo="/products"
+            />
+            <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
 
-          {/* <HeaderTabSection
+            {/* <HeaderTabSection
             title={"Resources"}
             tabs={[
               { name: "Goal Wizard", pushTo: "/goalwizard" },
@@ -138,24 +138,30 @@ function Header({
               { name: "Articles", pushTo: "/blogs" },
             ]}
           /> */}
-          <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
-          {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
+            <HeaderTabSection title={"Pricing"} tabs={[]} pushTo="/pricing" />
+            {/* <HeaderTabSection title={"FAQ’s"} tabs={[]} pushTo="/faq" /> */}
 
-          <HeaderTabSection
-            title={"More"}
-            tabs={[
-              { name: "About us", pushTo: "/about-us" },
-              { name: "Team", pushTo: "/team" },
-              { name: "Blogs", pushTo: "/blogs" },
-              { name: "Financial calculators", pushTo: "/calculators" },
-              { name: "Careers", pushTo: "/careers" },
-              { name: "FAQs", pushTo: "/help/faq" },
-              { name: "Contact us", pushTo: "/contact" },
+            <HeaderTabSection
+              title={"Resources"}
+              tabs={[
+                { name: "About us", pushTo: "/about-us" },
+                { name: "Team", pushTo: "/team" },
+                { name: "Blogs", pushTo: "/blogs" },
+                { name: "Financial calculators", pushTo: "/calculators" },
+                // { name: "Careers", pushTo: "/careers" },
+                { name: "FAQs", pushTo: "/help/faq" },
+                { name: "Contact us", pushTo: "/contact" },
 
-              // { name: "Live Classes", pushTo: "/liveclasses" },
-            ]}
-          />
-        </div>
+                // { name: "Live Classes", pushTo: "/liveclasses" },
+              ]}
+            />
+            <HeaderTabSection
+              title={"Contact Us"}
+              tabs={[]}
+              pushTo="/contact"
+            />
+          </div>
+        )}
         <div
           id="continue-dashboard-btn"
           className={`${styles.signin} ${styles.dashboardbtn}`}
@@ -177,7 +183,11 @@ function Header({
             setshowauth(true);
           }}
         >
-          {userdata ? "Go to Dashboard" : "Sign in"}
+          {userdata
+            ? "Go to Dashboard"
+            : page === HOME_VARIENTS[0]
+            ? "Try for free"
+            : "Sign in"}
         </div>
       </div>
     </div>

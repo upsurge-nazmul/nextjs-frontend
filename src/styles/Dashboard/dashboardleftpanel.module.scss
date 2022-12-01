@@ -21,7 +21,7 @@
   }
   .miniLogo {
     width: 80%;
-    height: 100px;
+    height: 3rem;
     z-index: 1;
     margin-top: 0px;
     cursor: pointer;
@@ -50,6 +50,7 @@
         width: 40px;
         height: 40px;
         object-fit: contain;
+        color: #4f4f4f;
         g {
           path {
             fill: #4f4f4f;

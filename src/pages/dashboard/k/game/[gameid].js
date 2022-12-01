@@ -358,7 +358,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
 
         <div className={styles.mainContent} id="unity-wrapper">
           {isMobile ? (
-            <BrokenGame goBackTo="/k/games" />
+            <BrokenGame goBackTo="dashboard/k/games" />
           ) : gamedata && unitycontext ? (
             <Unity
               className={`${styles.gameMain} ${stickyheader && styles.sticky} ${

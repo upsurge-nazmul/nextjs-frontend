@@ -6,20 +6,54 @@ import Fb from "../SVGcomponents/Fb";
 import Insta from "../SVGcomponents/Insta";
 import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "./Terms";
+import DiscordSvg from "../SVGcomponents/DiscordSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
-function Footer() {
+import Spinner from "../Spinner";
+import LoginApis from "../../actions/apis/LoginApis";
+import validator from "validator";
+function Footer({
+  setshowauth,
+  setauthmode,
+  setmailfromhome,
+  setshowpopup,
+}) {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
   const [showbenefits, setshowbenefits] = useState(false);
+  const [loading, setloading] = useState(false);
   const [showhelp, setshowhelp] = useState(false);
   const [showmore, setshowmore] = useState(false);
+  const [error, seterror] = useState("");
+  const [email, setemail] = useState("");
   const [showproducts, setshowproducts] = useState(false);
   const [termmode, settermmode] = useState("terms");
-  const { theme } = useContext(MainContext);
+  const { theme,userdata } = useContext(MainContext);
   const router = useRouter();
+  async function check(e) {
+    e?.preventDefault();
+    setloading(true);
+    if (!validator.isEmail(email)) {
+      seterror("Enter valid email address");
+      setloading(false);
+    } else {
+      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+      if (checkemail && checkemail.data && !checkemail.data.success) {
+        // setshowpopup(true);
+        setshowauth(true);
+        setauthmode("");
+        setauthmode("email");
+        setmailfromhome(email);
+      } else {
+        seterror(checkemail?.data.message || "Error connecting to server");
+      }
+      setloading(false);
+    }
+  }
   return (
     <div
       className={`${styles.footerSection} ${
@@ -41,8 +75,54 @@ function Footer() {
             onClick={() => router.push("/")}
             dark={theme === "dark"}
           />
+           {userdata ? (
+          <div
+            className={styles.gotobutton}
+            onClick={() => {
+              if (userdata) {
+                if (userdata.is_waiting_active) {
+                  router.push("/dashboard/w");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p");
+                } else {
+                  router.push("/dashboard/k");
+                }
+                return;
+              }
+            }}
+          >
+            Go to dashboard
+          </div>
+          ) : (
+          <>
+           <p className={styles.error}>{error}</p>
+          <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
+            <form onSubmit={(e) => check(e)}>
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => {
+                  seterror("");
+                  setemail(e.target.value.trim());
+                }}
+              />
+            </form>
+            {!loading ? (
+              <div className={`${styles.button}`} onClick={check}>
+                Sign up
+              </div>
+            ) : (
+              <div className={`${styles.button} ${styles.spinner_btn}`}>
+                <Spinner />
+              </div>
+            )}
+          </div>
+            </>
+            )}
           <div className={styles.brandtext}>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited WhatApp`})}}
               className={styles.whatsapp}
               href="https://wa.me/918851117926"
               target="_blank"
@@ -73,6 +153,7 @@ function Footer() {
 
           <div className={styles.socials}>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
               href="https://www.facebook.com/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -81,6 +162,7 @@ function Footer() {
               <Fb className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
@@ -89,12 +171,42 @@ function Footer() {
               <Insta className={styles.social} />
             </a>
             <a
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Linkedin`})}}
               href="https://www.linkedin.com/company/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <LinkedIN className={styles.socialyt} />
+              <LinkedIN className={styles.social} />
+            </a>
+            <a
+            onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
+            aria-label="Discord"
+              href="https://discord.gg/grqReT3zDm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <DiscordSvg className={styles.social} />
+            </a>
+            <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
+            aria-label="Phone"
+              href="tel:+918851117926"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#4f4f4f" }}
+            >
+              <PhoneIcon className={styles.social} />
+            </a>
+            <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
+            aria-label="Mail"
+              href="mailto:hello@upsurge.in"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#4f4f4f" }}
+            >
+              <EmailIcon className={styles.socialyt} />
             </a>
             {/* <a href="">
             <Twitter className={styles.social} alt="" />
@@ -466,6 +578,8 @@ function Footer() {
         </div>
         <div className={styles.socials}>
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
+            aria-label="Facebook"
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -476,6 +590,8 @@ function Footer() {
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
+            aria-label="Instagram"
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
             rel="noreferrer"
@@ -486,12 +602,43 @@ function Footer() {
             <YtSvg className={styles.socialyt} />
           </a> */}
           <a
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited LinkedIn`})}}
+          aria-label="LinkedIn"
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
           >
-            <LinkedIN className={styles.socialyt} />
+            <LinkedIN className={styles.social} />
           </a>
+          <a
+          onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
+          aria-label="Discord"
+              href="https://discord.gg/grqReT3zDm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <DiscordSvg className={styles.social} />
+            </a>
+            <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
+            aria-label="Phone"
+              href="tel:+918851117926"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#4f4f4f" }}
+            >
+              <PhoneIcon className={styles.social} />
+            </a>
+            <a
+            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
+            aria-label="Email"
+              href="mailto:hello@upsurge.in"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#4f4f4f" }}
+            >
+              <EmailIcon className={styles.socialyt} />
+            </a>
         </div>
         <div className={styles.bottom}>
           <a

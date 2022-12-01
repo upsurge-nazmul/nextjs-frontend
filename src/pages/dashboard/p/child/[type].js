@@ -22,8 +22,46 @@ import AvatarSelector from "../../../../components/Dashboard/AvatarSelector";
 import Tour from "../../../../components/Tour/Tour";
 import AddChildSuccess from "../../../../components/Dashboard/AddChildSuccess";
 import PageTitle from "../../../../components/PageTitle";
+import ChoreApis from "../../../../actions/apis/ChoreApis";
+
 
 function AddKid({ childdata, userdatafromserver }) {
+
+  const presetchores = [
+    {
+      choretitle:"Complete Origins and Barter System Course",
+      msg:"Complete the origins and barter system course to unlock games and activities. You will also earn Unicoins upon completion of this task.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Update your Avatar",
+      msg:"To complete this task, buy one avatar from the store. You will then be able to update your profile picture by going to profile.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Complete the course Introduction to Banking",
+      msg:"Complete this course to unlock more games and activities. You will also earn Unicoins upon completion of this task.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    },
+    {
+      choretitle:"Invite your friends",
+      msg:"Invite your friends to earn unicoins.",
+      cat:"Upsurge money matters",
+      value:"unicoins",
+      img_url:"https://imgcdn.upsurge.in/images/Group-4946.png",
+      rewardAmount:200
+    }
+  ]
+
   const router = useRouter();
   const { type, backTo = "/dashboard/p" } = router.query;
   const [toastdata, settoastdata] = useState({
@@ -31,8 +69,8 @@ function AddKid({ childdata, userdatafromserver }) {
     type: "success",
     msg: "",
   });
-  const { setuserdata } = useContext(MainContext);
-
+  const { setuserdata,userdata } = useContext(MainContext);
+  
   const [mode, setmode] = useState(
     type === "add" ? "Add Child Details" : "Edit Child Details"
   );
@@ -61,6 +99,7 @@ function AddKid({ childdata, userdatafromserver }) {
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [showConfirmDetailPass, setShowConfirmDetailPass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
+  const [confirmPassHidden, setConfirmPassHidden] = useState(true);
   const [firstName, setfirstName] = useState(childdata?.first_name || "");
   const [userName, setuserName] = useState(childdata?.user_name || "");
   const [lastName, setlastName] = useState(childdata?.last_name || "");
@@ -76,6 +115,27 @@ function AddKid({ childdata, userdatafromserver }) {
   const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
   const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [duedate, setduedate] = useState(new Date(new Date(new Date().setHours(new Date().getHours() + 720))).getTime());
+  const fetchfamilyid = async(id) =>{
+    let response = await ChoreApis.getfamilyid()
+    assignChores(id,response.data.data.family_id);
+  }
+  const assignChores = (id , familyide) =>{
+   {presetchores.map((data ,key)=>{
+      return(
+         ChoreApis.addchore({
+          message: data.msg,
+          title: data.choretitle,
+          category: data.cat,
+          assigned_to: userName,
+          family_id: familyide,
+          child_id: id,
+          due_date: duedate,
+          img_url: data.img_url,
+          is_reoccurring:false,
+          completion: "pending",
+  }))})}
+}
   useEffect(() => {
     if (gender === "male") {
       setavatars(boy_avatars);
@@ -105,6 +165,14 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("User name is required");
       return;
     }
+    if (firstName.length < 2) {
+      seterror("First name should be more than 1 character");
+      return;
+    }
+    if (userName.length < 2) {
+      seterror("Username should be more than 1 character");
+      return;
+    }
     if (!dob) {
       seterror("Please enter date of birth");
       return;
@@ -113,16 +181,24 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("Please select gender");
       return;
     }
+    if (!city) {
+      seterror("City is required");
+      return;
+    }
+    if (!school) {
+      seterror("School is required");
+      return;
+    }
     if (email && !validator.isEmail(email)) {
       seterror("Please enter valid email");
       return;
     }
-    if (passisweak) {
-      seterror("Weak password");
-      return;
-    }
     if (!password) {
       seterror("Password is required");
+      return;
+    }
+    if (passisweak) {
+      seterror("Weak password");
       return;
     }
     if (!confirmpassword) {
@@ -153,6 +229,8 @@ function AddKid({ childdata, userdatafromserver }) {
       // } else {
       //   router.push("/dashboard/p");
       // }
+       await fetchfamilyid(response.data.data.id);
+       mixpanel.track('Add Child',{'event':`${firstName} ${lastName} Successfully Added By ${userdata.email}`, 'user-first-name': firstName, 'user-last-name': lastName, 'parent-email': userdata.email, 'gender': gender, 'dob': dob, 'city': city, 'school': school, 'email': email, 'username': userName, 'image': img || "https://imgcdn.upsurge.in/images/default-avatar.png"});
       setShowSuccess(true);
       settoastdata({
         type: "success",
@@ -360,7 +438,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
-                placeholder="First name *"
+                placeholder="Child's First name *"
                 extraclass={styles.margin}
               />
               <ModernInputBox
@@ -368,20 +446,20 @@ function AddKid({ childdata, userdatafromserver }) {
                 textOnly={true}
                 maxLength={100}
                 setvalue={setlastName}
-                placeholder="Last name"
+                placeholder="Child's Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
               maxLength={100}
               setvalue={setuserName}
-              placeholder="Username *"
+              placeholder="Child's Username *"
               extraclass={styles.margin}
             />
             <div className={styles.commonWrapper}>
               <ModernInputBox
                 type="date"
-                placeholder="Date of birth *"
+                placeholder="Child's Date of birth *"
                 disabled={true}
                 value={dob}
                 onChange={(e) => {
@@ -389,8 +467,9 @@ function AddKid({ childdata, userdatafromserver }) {
                   if (!e) {
                     return;
                   }
-                  console.log(e);
-                  if (e.getTime() >= new Date().getTime()) {
+                  if (
+                    e.getTime() >= new Date().setDate(new Date().getDate() - 1)
+                  ) {
                     settoastdata({
                       msg: "Invaild date of birth",
                       show: true,
@@ -403,6 +482,7 @@ function AddKid({ childdata, userdatafromserver }) {
                 extrastyle={{
                   marginBottom: 0,
                 }}
+                maxDate={new Date(new Date().setDate(new Date().getDate() - 1))}
               />
               <DropDown
                 placeholder="Gender *"
@@ -444,7 +524,7 @@ function AddKid({ childdata, userdatafromserver }) {
               <ModernInputBox
                 value={email}
                 setvalue={setemail}
-                placeholder="Email (optional)"
+                placeholder="Child's Email (optional)"
               />
             )}
             <div
@@ -481,7 +561,10 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={password}
                 onBlur={() => setshowdetailpass(false)}
                 onChange={(e) => validatePassword(e)}
-                onFocus={() => setshowdetailpass(true)}
+                onFocus={() => {
+                  setShowConfirmDetailPass(false);
+                  setshowdetailpass(true);
+                }}
                 placeholder="Password *"
                 secure={passhidden}
                 extrastyle={{ marginBottom: "0px" }}
@@ -551,9 +634,12 @@ function AddKid({ childdata, userdatafromserver }) {
                 value={confirmpassword}
                 onBlur={() => setShowConfirmDetailPass(false)}
                 onChange={(e) => validatePassword(e, "confirm")}
-                onFocus={() => setShowConfirmDetailPass(true)}
+                onFocus={() => {
+                  setshowdetailpass(false);
+                  setShowConfirmDetailPass(true);
+                }}
                 placeholder="Confirm Password *"
-                secure={passhidden}
+                secure={confirmPassHidden}
                 extrastyle={{ marginBottom: "0px" }}
                 extraclass={
                   confirmpassword !== "" && passisweak ? styles.weakpass : ""
@@ -561,9 +647,9 @@ function AddKid({ childdata, userdatafromserver }) {
               />
               <p
                 className={styles.show}
-                onClick={() => setpasshidden(!passhidden)}
+                onClick={() => setConfirmPassHidden(!confirmPassHidden)}
               >
-                {passhidden ? "Show" : "Hide"}
+                {confirmPassHidden ? "Show" : "Hide"}
               </p>
             </div>
 
@@ -592,7 +678,7 @@ function AddKid({ childdata, userdatafromserver }) {
             },
           ]}
           current={0}
-          showtour={true}
+          showtour={false}
         />
       )}
     </div>

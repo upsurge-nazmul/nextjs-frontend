@@ -55,33 +55,9 @@
     overflow: auto;
     scrollbar-width: thin;
   }
-  .chatbtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
-    width: 100%;
-    border-radius: 6px;
-    background-color: #4166eb;
-    color: white;
+  .actionArea {
     margin-top: auto;
-    cursor: pointer;
-    svg {
-      margin-left: 10px;
-      width: 22px;
-      fill: white;
-      path {
-        fill: white;
-      }
-    }
-    &:hover {
-      svg {
-        transition: all 0.3s ease;
-        circle {
-          fill: rgb(41, 41, 41);
-        }
-      }
-    }
+    position: relative;
   }
   .date {
     font-size: 11.4839px;
@@ -149,33 +125,8 @@
       overflow: auto;
       scrollbar-width: thin;
     }
-    .chatbtn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-      width: 100%;
-      border-radius: 6px;
-      background-color: #4166eb;
-      color: white;
+    .actionArea {
       margin-top: auto;
-      cursor: pointer;
-      svg {
-        margin-left: 10px;
-        width: 22px;
-        fill: white;
-        path {
-          fill: white;
-        }
-      }
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          circle {
-            fill: rgb(41, 41, 41);
-          }
-        }
-      }
     }
     .date {
       font-size: 11.4839px;
@@ -309,33 +260,8 @@
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
     }
-    .chatbtn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-      width: 100%;
-      border-radius: 6px;
-      background-color: #4166eb;
-      color: white;
+    .actionArea {
       margin-top: auto;
-      cursor: pointer;
-      svg {
-        margin-left: 10px;
-        width: 22px;
-        fill: white;
-        path {
-          fill: white;
-        }
-      }
-      &:hover {
-        svg {
-          transition: all 0.3s ease;
-          circle {
-            fill: rgb(41, 41, 41);
-          }
-        }
-      }
     }
     .date {
       font-size: 11.4839px;

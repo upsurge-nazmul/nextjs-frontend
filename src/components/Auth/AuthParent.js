@@ -4,11 +4,9 @@ import validator from "validator";
 import styles from "../../styles/Auth/auth.module.scss";
 import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
-import AppleSvg from "../SVGcomponents/AppleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
-import { apple_client_id, GClientId } from "../../../config";
-
+import { GClientId } from "../../../config";
 import { useRouter } from "next/dist/client/router";
 import Spinner from "../Spinner";
 
@@ -35,7 +33,18 @@ function AuthParent({
     } else {
       let checkemail = await LoginApis.checkemail({ email, waitlist: true });
       if (checkemail && checkemail.data && !checkemail.data.success) {
-        setmode("email");
+        mixpanel.add_group("user_group", "early_access");
+        mixpanel.track("Email entered for Signup", {
+          event: `${email} Email entered`,
+          email: `${email}`,
+        });
+        mixpanel.identify(`${email}`);
+        mixpanel.people.set({ $email: email });
+        dataLayer.push({ event: "Email-entered" });
+        fbq("trackCustom", "SignUp", {
+          event: "Email_Address_Entered_By_User",
+        });
+        setmode("parentChild");
       } else {
         seterror(checkemail?.data.message || "Error connecting to server");
       }
@@ -72,7 +81,7 @@ function AuthParent({
         emailcheckresponse.data &&
         !emailcheckresponse.data.success
       )
-        setmode("email");
+        setmode("parentChild");
       else seterror(emailcheckresponse.data.message || "Cannot reach server");
 
       return;
@@ -88,7 +97,7 @@ function AuthParent({
       seterror(response.data.message || "Cannot reach server");
     } else {
       setCookie("accesstoken", response.data.data.token);
-      setmode("email");
+      setmode("parentChild");
     }
   }
 
@@ -106,7 +115,7 @@ function AuthParent({
         setlastName(data.profileObj.familyName);
         setemail(data.profileObj.email);
         setsignupmethod("google");
-        setmode("email");
+        setmode("parentChild");
       } else seterror(emailcheckresponse.data.message || "Cannot reach server");
       return;
     }
@@ -167,7 +176,7 @@ function AuthParent({
       <div className={styles.or}>OR</div> */}
       <input
         type="text"
-        placeholder="Email address"
+        placeholder="Parent's email address"
         value={email}
         onChange={(e) => setemail(e.target.value)}
       />

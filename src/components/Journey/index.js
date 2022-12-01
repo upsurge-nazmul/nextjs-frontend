@@ -8,19 +8,21 @@ import { PathwayData } from "../../static_data/Pathways_Data";
 import TaskDisplay from "./TaskDisplay";
 
 export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState();
+  const [selectedPath, setSelectedPath] = useState(PathwayData[0]);
   const [activeTask, setActiveTask] = useState();
 
   return (
     <div className={styles.journey}>
-      {selectedPath ? "" : <Banner highlight={PathwayData[0]} />}
-      <h2 id="milestone" className={styles.mainheading} onClick={() => {}}>
+      
+      <h2 id="milestone" className={styles.mainheading} onClick={() => { }}>
         Journey
         <HeadingArrow />
       </h2>
       <Pathway highlight={selectedPath} handleClick={setSelectedPath} />
+      
       {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
-      {activeTask ? (
+
+      {/* {activeTask ? (
         <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />
       ) : (
         ""
@@ -29,7 +31,7 @@ export default function Journey() {
         <Tasks highlight={selectedPath} handleTaskClick={setActiveTask} />
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 }

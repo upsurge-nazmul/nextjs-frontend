@@ -15,12 +15,16 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      margin-top: 20px;
+      overflow-x: hidden;
       scrollbar-width: thin;
+      p{
+        
+        font-weight: bold;
+      }
       .flexLeft {
         display: flex;
         width: 100%;
-        padding: 0 45px 0 45px;
+        padding: 0 25px;
         height: fit-content;
         .gameSection {
           .heading {
@@ -246,6 +250,15 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .parentStore {
+    .contentWrapper {
+      .mainContent {
+      p{
+          font-size: small;
+          padding-left: 20px;
+        }
+      }}}}
 @media only screen and (min-width: 769px) and (max-height: 900px) {
   .parentStore {
     .contentWrapper {
@@ -351,12 +364,17 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 1000px) {
   .parentStore {
     .contentWrapper {
       max-width: calc(100vw - 55px);
       .mainContent {
+        flex-direction: column;
+        p{
+          padding-left: 20px;
+        }
         .flexLeft {
+          flex-direction: column;
           width: 100%;
           padding: 0 20px;
           .gameSection {

@@ -1,4 +1,5 @@
 import styles from "../styles/stories.module.scss";
+import Jasper from "../components/SVGcomponents/Jasper";
 
 export function getParentDashboardStory(userdata) {
   return [

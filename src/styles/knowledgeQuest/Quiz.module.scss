@@ -526,15 +526,54 @@ $qn-font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
-    .blankAction {
+    padding-top: 30px;
+    .correctAnsArea {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .correctAns {
+        font-size: 20px;
+        font-weight: 600;
+        .correctAnsLabel {
+          color: #7d7d7d;
+          font-size: 16px;
+          font-weight: 300;
+          margin-right: 10px;
+        }
+        .correctAnsValue {
+          color: #17d1bc;
+        }
+        .wrongAnsValue {
+          color: #ff6263;
+        }
+      }
+      .nextButton {
+        cursor: pointer;
+        border: none;
+        background-color: #4166EB;
+        color: #fff;
+        padding: 10px 40px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+    }
+    .submitButton {
       cursor: pointer;
       border: none;
-      background-color: #4066eb;
+      border: 1px solid #4166EB;
+      background-color: #4166EB;
       color: #fff;
       padding: 10px 40px;
       font-size: 16px;
       border-radius: 10px;
+    }
+    .disabledButton {
+      @extend .submitButton;
+      cursor: default;
+      border-color: #333;
+      background-color: #fff;
+      color: #333;
     }
   }
 }

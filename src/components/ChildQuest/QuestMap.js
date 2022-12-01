@@ -22,7 +22,9 @@ export default function QuestMap({
                         className={
                           userLevel >= chapter.chapterNo
                             ? styles.completedChapter
-                            : styles.chapter
+                            : userLevel + 1 === chapter.chapterNo
+                            ? styles.chapter
+                            : styles.disabledChapter
                         }
                         style={
                           positions[`quest${questData.questNo}`][
@@ -30,9 +32,15 @@ export default function QuestMap({
                           ]
                         }
                         onClick={() => {
-                          changeView(chapter.type);
-                          setActiveChapter(chapter.id);
-                          setActiveChapterNo(chapter.chapterNo);
+                          if (
+                            userLevel >= chapter.chapterNo ||
+                            userLevel + 1 === chapter.chapterNo
+                          ) {
+                            mixpanel.track('Knowledge Quest started',{'event':`Quest Started ${chapter.id}`, 'chapterId':`${chapter.id}`});
+                            changeView(chapter.type);
+                            setActiveChapter(chapter.id);
+                            setActiveChapterNo(chapter.chapterNo);
+                          }
                         }}
                       >
                         <span>{chapter.title}</span>

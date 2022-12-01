@@ -13,7 +13,6 @@ import { MainContext } from "../../context/Main";
 import InfoIcon from "@mui/icons-material/Info";
 function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const { userdata, setuserdata, theme } = useContext(MainContext);
-  const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -22,25 +21,13 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     msg: "",
   });
   const router = useRouter();
-  async function check(e) {
+  async function signup(e) {
     e?.preventDefault();
     setloading(true);
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-      setloading(false);
-    } else {
-      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
-      if (checkemail && checkemail.data && !checkemail.data.success) {
-        // setshowpopup(true);
-        setshowauth(true);
-        setauthmode("");
-        setauthmode("email");
-        setmailfromhome(email);
-      } else {
-        seterror(checkemail?.data.message || "Error connecting to server");
-      }
-      setloading(false);
-    }
+    // setshowpopup(true);
+    setshowauth(true);
+    setauthmode("parent");
+    setloading(false);
   }
   return (
     <section
@@ -49,13 +36,11 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <h1 className={styles.heading}>Money, made easy.</h1>
+        <h1 className={styles.heading}>Make your child<br />money-smart.</h1>
         <p className={styles.subheading}>
-          {`upsurge is India's 1st financial education gaming platform for children,
-           focused on promoting entrepreneurship, financial literacy, financial education 
-           and modern skills for school students.`}
+          {`More than just a financial literacy course or a school. upsurge is India’s 1st gaming platform to enable financial literacy for kids & make them MONEY-smart.
+`}
         </p>
-        <p className={styles.error}>{error}</p>
         {userdata ? (
           <div
             className={styles.gotobutton}
@@ -75,28 +60,23 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             Go to dashboard
           </div>
         ) : (
-          <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-            <form onSubmit={(e) => check(e)}>
-              <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  seterror("");
-                  setemail(e.target.value.trim());
-                }}
-              />
-            </form>
-            {!loading ? (
-              <div className={`${styles.button}`} onClick={check}>
-                Sign up
-              </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
-            )}
-          </div>
+          <>
+            <p className={styles.error}>{error}</p>
+            <div
+              className={`${styles.signupBox} ${error && styles.errsignbox}`}
+            >
+              {!loading ? (
+                <div className={`${styles.button}`} onClick={signup}>
+                  {/* Join our early access by signing up */}
+                  Sign up for free
+                </div>
+              ) : (
+                <div className={`${styles.button} ${styles.spinner_btn}`}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
+          </>
         )}
         {/* <div
           className={`${styles.knowmore}`}

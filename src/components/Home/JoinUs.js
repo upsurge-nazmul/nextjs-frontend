@@ -15,22 +15,20 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
-      // let response = await LoginApis.addtonewslettersubs({ email: email });
-      // if (response) {
-      //   if (response.data.success) {
-      //     if (response.data.message === "Exists") {
-      //       seterror("Already subscribed");
-      //     } else {
-      //       router.push("/subscribed");
-      //     }
-      //   } else {
-      //     seterror(response.data.message);
-      //   }
-      // } else {
-      //   seterror("Error connecting to server");
-      // }
-      setshowauth(true);
-      setauthmode("parent");
+       let response = await LoginApis.addtonewslettersubs({ email: email });
+       if (response) {
+         if (response.data.success) {
+           if (response.data.message === "Exists") {
+             seterror("Already subscribed");
+           } else {
+             router.push("/subscribed");
+           }
+         } else {
+           seterror(response.data.message);
+         }
+       } else {
+         seterror("Error connecting to server");
+       }
       setmailfromhome(email);
     }
   }
@@ -59,10 +57,10 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
       <div className={`${styles.doodle} ${styles.dl5}`} />
 
       <div className={`${styles.doodle} ${styles.dr1}`}>
-        <Image
+      <Image
           layout="fill"
           objectFit="cover"
-          src="https://imgcdn.upsurge.in/images/Untitled-design-6.png"
+          src="https://imgcdn.upsurge.in/images/Untitled-design-7.png"
           alt=""
           loading="lazy"
         />
@@ -74,12 +72,18 @@ function JoinUs({ setshowauth, setauthmode, setmailfromhome }) {
         <div className={styles.heading}>
           {userdata
             ? "Thank you for joining upsurge newsletter"
-            : "Subscribe to upsurge Newsletter."}
+            : <div>
+            Join the 
+            <b>
+               club
+            </b>
+            </div>
+            }
         </div>
         <p className={styles.subheading}>
           {userdata
             ? `You can head back to dashboard using the button below.`
-            : `Get all the information related to Financial Literacy.`}
+            : `Upsurge is free to use for family of any size. We also offer paid plans with additional features, live classes and priority support.`}
         </p>
         <div className={styles.emailwrapper}>
           {!userdata ? (

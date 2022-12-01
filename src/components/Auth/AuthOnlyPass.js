@@ -8,8 +8,7 @@ import { MainContext } from "../../context/Main";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
 import GoogleLogin from "react-google-login";
-import { apple_client_id, GClientId } from "../../../config";
-
+import { GClientId } from "../../../config";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
@@ -31,12 +30,14 @@ function AuthLogin({
 
   // login Function
   async function handleSignin() {
+    console.log(userdata.user_id, prefilled.id);
     if (userdata.user_id === prefilled.id) {
       return;
     }
     let response = await LoginApis.checktoken({
       token: prefilled.token,
     });
+    console.log(response);
     if (response && !response?.data?.success) {
       settoastdata({
         show: true,
@@ -76,7 +77,32 @@ function AuthLogin({
             id: newLogin.data.data.userProfile.id,
           })
         );
-        setCookie("accesstoken", newLogin.data.data.token);
+        setCookie("accesstoken", response.data.data.token);
+        if (newLogin.data.data.userProfile.user_type !== "child") {
+          mixpanel.track("Switch", {
+            event: `Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`,
+          });
+          mixpanel.identify(`${prefilled.email}`);
+          mixpanel.people.set({
+            $name: getfullname(
+              newLogin.data.data.userProfile.first_name,
+              newLogin.data.data.userProfile.last_name
+            ),
+            $email: newLogin.data.data.userProfile.email,
+          });
+        } else {
+          mixpanel.track("Switch", {
+            event: `Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`,
+          });
+          mixpanel.identify(`${prefilled.email}`);
+          mixpanel.people.set({
+            $name: getfullname(
+              newLogin.data.data.userProfile.first_name,
+              newLogin.data.data.userProfile.last_name
+            ),
+            $email: newLogin.data.data.userProfile.email,
+          });
+        }
         setuserdata(newLogin.data.data.userProfile);
         setuser(newLogin.data.data.userProfile.id);
         settoastdata({
@@ -85,11 +111,15 @@ function AuthLogin({
           type: "success",
         });
         console.log(router.pathname);
-        router.reload();
       } else {
+        mixpanel.track("Switch Account", {
+          event: `${newLogin?.data.message || "Cannot reach server"}`,
+        });
         seterror(newLogin?.data.message || "Cannot reach server");
       }
+      router.reload();
     }
+    setCookie("accesstoken", response.data.data.token);
   }
 
   useEffect(() => {
