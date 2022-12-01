@@ -70,3 +70,25 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
     </div>
   );
 }
+
+export async function getServerSideProps({ params, req }) {
+  let token = req.cookies.accesstoken;
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    return {
+      props: {
+        userdatafromserver: response.data.data,
+      },
+    };
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
+}
