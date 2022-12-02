@@ -73,6 +73,7 @@ function DashboardHeader({
         setshowauth={setshowauth}
         onlyLogin={true}
         prefilled={savedUser}
+        type={userdata?.user_type}
       />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
