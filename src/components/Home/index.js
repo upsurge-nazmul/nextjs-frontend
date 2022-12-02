@@ -134,6 +134,7 @@ function Home({ page = "", showNav = true }) {
         showauth={showauth}
         setshowauth={setshowauth}
         authmode={authmode}
+        setauthmode={setauthmode}
         mailfromhome={mailfromhome}
         stickyheader={stickyheader}
         showpopup={showpopup}

@@ -23,11 +23,8 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const router = useRouter();
   async function signup(e) {
     e?.preventDefault();
-    setloading(true);
-    // setshowpopup(true);
     setshowauth(true);
     setauthmode("parent");
-    setloading(false);
   }
   return (
     <section
@@ -36,7 +33,11 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <h1 className={styles.heading}>Make your child<br />money-smart.</h1>
+        <h1 className={styles.heading}>
+          Make your child
+          <br />
+          money-smart.
+        </h1>
         <p className={styles.subheading}>
           {`upsurge is India’s 1st gaming platform to enable financial literacy for kids & make them MONEY-smart.
 `}

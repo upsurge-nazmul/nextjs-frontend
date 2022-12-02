@@ -57,7 +57,7 @@ function AuthComponent({
 
   useEffect(() => {
     if (!showauth) {
-      setmode("login");
+      setmode(authmode || "login");
       setemail("");
       setpassword("");
       setphone("");

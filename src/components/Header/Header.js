@@ -15,6 +15,7 @@ function Header({
   showauth,
   setshowauth,
   authmode,
+  setauthmode,
   mailfromhome,
   stickyheader,
   showpopup,
@@ -181,6 +182,7 @@ function Header({
               return;
             }
             setshowauth(true);
+            setauthmode("login");
           }}
         >
           {userdata
