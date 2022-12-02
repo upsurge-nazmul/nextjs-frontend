@@ -59,14 +59,14 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
-    let checkphone = await LoginApis.checkphone({ phone });
-    if (checkphone && checkphone.data && checkphone.data.success) {
-      console.log("phone ok");
-    } else {
-      seterror(checkphone?.data.message || "Error connecting to server");
-      setloading(false);
-      return;
-    }
+    // let checkphone = await LoginApis.checkphone({ phone });
+    // if (checkphone && checkphone.data && checkphone.data.success) {
+    //   console.log("phone ok");
+    // } else {
+    //   seterror(checkphone?.data.message || "Error connecting to server");
+    //   setloading(false);
+    //   return;
+    // }
     if (passisweak) {
       seterror(
         "Password must be of length 8 and also must contain minimum 1 number,1 symbol,1 uppercase,1 lowercase"
@@ -136,14 +136,14 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
-    let checkphone = await LoginApis.checkphone({ phone });
-    if (checkphone && checkphone.data && checkphone.data.success) {
-      console.log("phone ok");
-    } else {
-      seterror(checkphone?.data.message || "Error connecting to server");
-      setloading(false);
-      return;
-    }
+    // let checkphone = await LoginApis.checkphone({ phone });
+    // if (checkphone && checkphone.data && checkphone.data.success) {
+    //   console.log("phone ok");
+    // } else {
+    //   seterror(checkphone?.data.message || "Error connecting to server");
+    //   setloading(false);
+    //   return;
+    // }
     if (!firstName) {
       seterror("First name is required");
       setloading(false);
