@@ -15,6 +15,7 @@ export default function Pricing() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [authMode, setAuthMode] = useState("");
 
   const { theme } = useContext(MainContext);
 
@@ -42,6 +43,7 @@ export default function Pricing() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        authmode={authMode}
         setshowpopup={setshowpopup}
         showpopup={showpopup}
       />
@@ -143,6 +145,7 @@ export default function Pricing() {
             <button
               className={styles.actionButton}
               onClick={() => {
+                setAuthMode("parent");
                 setshowauth(true);
               }}
             >
