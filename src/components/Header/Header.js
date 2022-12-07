@@ -15,7 +15,7 @@ function Header({
   showauth,
   setshowauth,
   authmode,
-  setauthmode,
+  setauthmode = () => {},
   mailfromhome,
   stickyheader,
   showpopup,
