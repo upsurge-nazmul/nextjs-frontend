@@ -33,7 +33,7 @@ export default function Refer({ settoastdata, parent, nomargin }) {
         </p>
       )}
       <p className={styles.subheading}>
-        {`For every 5th successful refferal you'll get additional 25 unicoins.`}
+        {`For every 5th successful referral you'll get additional 25 unicoins.`}
       </p>
       <div className={styles.img}>
         <Image
