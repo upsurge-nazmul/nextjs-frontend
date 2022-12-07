@@ -208,6 +208,7 @@ export default function GameView({
           onClick={() => {
             setFullScreen(false);
             if (!isMobileOnly) document.exitFullscreen();
+            mixpanel.track("Game Closed", { event: `Game closed` });
             setGame();
           }}
         >

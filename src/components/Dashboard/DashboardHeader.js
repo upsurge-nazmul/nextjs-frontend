@@ -12,6 +12,7 @@ import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
 import LevelComponent from "../Dashboard/LevelComponent";
+import Onboarding from "../Onboarding";
 
 function DashboardHeader({
   mode,
@@ -29,6 +30,7 @@ function DashboardHeader({
   const [kidLevel, setKidLevel] = useState();
   const [showlevels, setshowlevels] = useState(false);
   const [savedUser, setSavedUser] = useState();
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
@@ -90,7 +92,7 @@ function DashboardHeader({
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        {userdata?.user_type === "child" && kidLevel && (
+        {/* {userdata?.user_type === "child" && kidLevel && (
           <div
             className={styles.levelSection}
             onClick={() => setshowlevels(true)}
@@ -104,7 +106,7 @@ function DashboardHeader({
               <span>Level</span> <span>{kidLevel}</span>
             </p>
           </div>
-        )}
+        )} */}
         {userdata?.user_type !== "parent" && (
           <div className={styles.rewardBlock}>
             <UniCoinSvg className={styles.svg} />
@@ -152,6 +154,9 @@ function DashboardHeader({
               waitilistmenu={userdata?.is_waiting_active}
               menuType={userdata?.user_type}
               setSavedUser={setSavedUser}
+              setShowOnboarding={setShowOnboarding}
+              setshowlevels={setshowlevels}
+              kidLevel={kidLevel}
             />
           )}
           <img
@@ -170,6 +175,14 @@ function DashboardHeader({
           />
         </div>
       </div>
+      {showOnboarding ? (
+        <Onboarding
+          setOpen={setShowOnboarding}
+          actionHandler={() => setShowOnboarding(false)}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

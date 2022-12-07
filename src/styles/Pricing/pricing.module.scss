@@ -31,89 +31,234 @@
   }
   .mainContent {
     width: 100%;
-    padding: 0 40px 60px;
-    margin-top: 20px;
-    .heading {
-      margin: 30px 0;
-      font-size: 64px;
-      font-weight: 900;
-      text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    flex-direction: row;
+    align-content: space-around;
+    align-items: center;
+    .contentLeft {
+      height: 100%;
+      padding: 20px 50px 0;
+      flex: 1;
+      .jasper {
+        height: 100%;
+        max-width: 40vw;
+      }
     }
-    .priceWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-      .priceContainer {
-        width: 40vw;
-        height: fit-content;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 32px;
-        background: #f5ce46;
-        padding: 36px;
-        .name {
-          font-size: 3rem;
-          font-weight: 400;
-          text-align: center;
+    .contentRight {
+      padding-right: 10vw;
+      padding-top: 20px;
+      .heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+      }
+      .sectionTitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+      .section {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+        .sectionLeft {
+          flex: 1;
         }
-        .price {
-          font-size: 2rem;
-          font-weight: 600;
-          color: #ed6c68;
-          text-align: center;
+        .sectionRight {
+          flex: 1;
+        }
+        .sectionItem {
+          padding-bottom: 6px;
+          font-weight: 400;
           display: flex;
-          justify-content: center;
           align-items: center;
-          .oldPrice {
-            margin: 0 5px;
-            height: 40px;
-            width: 100px;
+          .sectionItemImage {
+            height: 24px;
+            width: 24px;
+            margin-right: 10px;
           }
         }
-        .description {
-          font-size: 0.8rem;
-          font-weight: 300;
-          color: #a3925e;
-          text-align: center;
-        }
-        .benefitsTitle {
-          font-size: 1.25rem;
-          font-weight: 300;
-          color: #000;
-          margin-top: 20px;
-        }
-        .benefitsWrapper {
+      }
+      .actionArea {
+        display: flex;
+        padding: 10px 0;
+        gap: 20px;
+        .actionButton {
+          border: none;
+          outline: none;
+          cursor: pointer;
+          background-color: #ff6263;
+          color: #fff;
+          border-radius: 50px;
           font-size: 1.5rem;
-          font-weight: 400;
-          color: #000;
-          padding: 10px 0 10px 50px;
-          .subScript {
-            margin-left: 10px;
-            font-size: 0.8rem;
+          padding: 10px 20px;
+        }
+        .pricing {
+          .current {
+            color: #ff6263;
+            font-size: 1.25rem;
+            font-weight: 400;
+          }
+          .old {
+            color: #8b8b8b;
+            font-size: 1.25rem;
+            text-decoration: line-through;
+            text-decoration-color: #ff6263;
+            text-decoration-thickness: 2px;
+          }
+        }
+      }
+      .helperArea {
+        padding: 0 10px;
+        .helperText {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+// smaller width tabs
+@media only screen and (min-width: 480px) and (max-width: 820px) {
+  .pricingPage {
+    .mainContent {
+      flex-direction: column-reverse;
+      overflow: hidden;
+      .contentLeft {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .contentRight {
+        padding: 1.5rem;
+      }
+    }
+  }
+}
+
+// smaller tabs landscape mode
+@media only screen and (orientation: landscape) and (max-height: 820px) and (max-width: 1180px) {
+  .pricingPage {
+    .mainContent {
+      .contentLeft {
+        width: 50vw;
+        height: 100%;
+        .jasper {
+          height: 100%;
+          width: 40vw;
+        }
+      }
+    }
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .pricingPage {
+    .mainContent {
+      flex-direction: column-reverse;
+      height: 100vh;
+      overflow: hidden;
+      padding: 0;
+      margin-top: 0;
+      .contentLeft {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        .jasper {
+          max-width: 80vw;
+        }
+      }
+      .contentRight {
+        padding: 20px;
+        .heading {
+          font-size: 2rem;
+        }
+        .sectionTitle {
+          font-size: 1rem;
+        }
+        .section {
+          .sectionItem {
+            font-size: 1rem;
+            .sectionItemImage {
+              height: 12px;
+              width: 12px;
+            }
           }
         }
         .actionArea {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          padding: 10px 0;
-          padding-left: 30%;
-          .claimButton {
-            border: none;
-            outline: none;
-            cursor: pointer;
-            background-color: #4a65e3;
-            color: #fff;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1.5rem;
-            font-weight: 300;
+          .actionButton {
+            font-size: 1rem;
           }
-          .actionHelper {
-            margin-left: 10px;
-            font-size: 0.8rem;
-            color: #a3925e;
+          .pricing {
+            .current {
+              font-size: 0.75rem;
+            }
+            .old {
+              font-size: 0.75rem;
+            }
+          }
+        }
+        .helperArea {
+          .helperText {
+            font-size: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .pricingPage {
+    .mainContent {
+      height: auto;
+      .contentLeft {
+        width: 40vw;
+        height: 100%;
+        .jasper {
+          height: 100%;
+          width: 30vw;
+        }
+      }
+      .contentRight {
+        padding: 20px;
+        .heading {
+          font-size: 2rem;
+        }
+        .sectionTitle {
+          font-size: 1rem;
+        }
+        .section {
+          .sectionItem {
+            font-size: 1rem;
+            .sectionItemImage {
+              height: 12px;
+              width: 12px;
+            }
+          }
+        }
+        .actionArea {
+          .actionButton {
+            font-size: 1rem;
+          }
+          .pricing {
+            .current {
+              font-size: 0.75rem;
+            }
+            .old {
+              font-size: 0.75rem;
+            }
+          }
+        }
+        .helperArea {
+          .helperText {
+            font-size: 0.5rem;
           }
         }
       }
@@ -131,7 +276,7 @@
       font-weight: 900;
       text-align: center;
     }
-  .priceWrapper {
+    .priceWrapper {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -209,5 +354,5 @@
         }
       }
     }
-  } 
+  }
 }

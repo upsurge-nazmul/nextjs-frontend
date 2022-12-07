@@ -30,7 +30,7 @@ function AuthLogin({
 
   // login Function
   async function handleSignin() {
-    console.log(userdata.user_id, prefilled.id)
+    console.log(userdata.user_id, prefilled.id);
     if (userdata.user_id === prefilled.id) {
       return;
     }
@@ -76,29 +76,46 @@ function AuthLogin({
             type: newLogin.data.data.userProfile.user_type,
             id: newLogin.data.data.userProfile.id,
           })
-          );
-          setCookie("accesstoken", response.data.data.token);
-          if(newLogin.data.data.userProfile.user_name === null){
-            mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`});
-            mixpanel.identify(`${prefilled.email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
-          }
-          else{
-            mixpanel.track('Switch',{'event':`Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`});
-            mixpanel.identify(`${prefilled.email}`);
-            mixpanel.people.set({ "$name":getfullname( newLogin.data.data.userProfile.first_name, newLogin.data.data.userProfile.last_name ) , "$email":  newLogin.data.data.userProfile.email });
-          }
-          setuserdata(newLogin.data.data.userProfile);
-          setuser(newLogin.data.data.userProfile.id);
-          settoastdata({
-            show: true,
-            msg: newLogin.data.message,
-            type: "success",
+        );
+        setCookie("accesstoken", response.data.data.token);
+        if (newLogin.data.data.userProfile.user_type !== "child") {
+          mixpanel.track("Switch", {
+            event: `Account Switched from ${newLogin.data.data.userProfile.email} to ${response.data.data.user_name}`,
           });
-          console.log(router.pathname);
+          mixpanel.identify(`${prefilled.email}`);
+          mixpanel.people.set({
+            $name: getfullname(
+              newLogin.data.data.userProfile.first_name,
+              newLogin.data.data.userProfile.last_name
+            ),
+            $email: newLogin.data.data.userProfile.email,
+          });
         } else {
-          mixpanel.track('Switch Account',{'event':`${newLogin?.data.message || "Cannot reach server"}`});
-          seterror(newLogin?.data.message || "Cannot reach server");
+          mixpanel.track("Switch", {
+            event: `Account Switched from ${newLogin.data.data.userProfile.user_name} to ${prefilled.email}`,
+          });
+          mixpanel.identify(`${prefilled.email}`);
+          mixpanel.people.set({
+            $name: getfullname(
+              newLogin.data.data.userProfile.first_name,
+              newLogin.data.data.userProfile.last_name
+            ),
+            $email: newLogin.data.data.userProfile.email,
+          });
+        }
+        setuserdata(newLogin.data.data.userProfile);
+        setuser(newLogin.data.data.userProfile.id);
+        settoastdata({
+          show: true,
+          msg: newLogin.data.message,
+          type: "success",
+        });
+        console.log(router.pathname);
+      } else {
+        mixpanel.track("Switch Account", {
+          event: `${newLogin?.data.message || "Cannot reach server"}`,
+        });
+        seterror(newLogin?.data.message || "Cannot reach server");
       }
       router.reload();
     }

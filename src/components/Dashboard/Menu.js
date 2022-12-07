@@ -12,17 +12,21 @@ import PaymentSvg from "../SVGcomponents/PaymentSvg";
 import GroupIcon from "@mui/icons-material/Group";
 import SettingsSvg from "../SVGcomponents/SettingsSvg";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
 
 function Menu({
-  settoastdata = () => { },
+  settoastdata = () => {},
   showauth,
   setshowauth,
   menuType,
   waitilistmenu,
   setSavedUser,
+  setShowOnboarding,
+  kidLevel,
+  setshowlevels,
 }) {
   const {
     savedUsers,
@@ -172,10 +176,10 @@ function Menu({
                   onClick={() => {
                     setshowauth(true);
                     setSavedUser(user);
-                    
                   }}
-                  className={`${styles.innerUser} ${user.id === userdata.user_id && styles.selectedUser
-                    }`}
+                  className={`${styles.innerUser} ${
+                    user.id === userdata.user_id && styles.selectedUser
+                  }`}
                   key={user.id}
                 >
                   <img src={user.image} alt="" />
@@ -186,23 +190,22 @@ function Menu({
                 </div>
               );
             })}
-            
-              <div
-                className={`${styles.innerUser} `}
-                onClick={() => setshowauth(true)}
-              >
-                <GroupAddIcon className={styles.icon} />
-                <div className={styles.userInfo}>
-                  <p>Add new account</p>
-                </div>
+
+            <div
+              className={`${styles.innerUser} `}
+              onClick={() => setshowauth(true)}
+            >
+              <GroupAddIcon className={styles.icon} />
+              <div className={styles.userInfo}>
+                <p>Add new account</p>
               </div>
-            
+            </div>
           </div>
         )}
       </div>
       {menuType === "child" && !waitilistmenu && (
         <>
-         <p
+          <p
             className={styles.tabs}
             onClick={() => {
               setshowmenu(false);
@@ -272,6 +275,35 @@ function Menu({
           Settings
         </div>
       )} */}
+      <div className={styles.tabgrp}>
+        {userdata?.user_type === "child" && kidLevel && (
+          <div
+            className={styles.button}
+            onClick={() => {
+              setshowmenu(false);
+              setshowlevels((prev) => !prev);
+            }}
+          >
+            <img
+              src={"/images/badges/badge_" + kidLevel + ".svg"}
+              alt="KidLevel"
+              className={styles.img}
+            />
+            Level {kidLevel}
+          </div>
+        )}
+
+        <div
+          className={styles.button}
+          onClick={() => {
+            setshowmenu(false);
+            setShowOnboarding((prev) => !prev);
+          }}
+        >
+          <HikingIcon className={styles.icon} />
+          Walkthrough
+        </div>
+      </div>
       <div className={styles.tabgrp}>
         <div className={styles.button} onClick={handleLogout}>
           <LogoutRoundedIcon className={styles.icon} />

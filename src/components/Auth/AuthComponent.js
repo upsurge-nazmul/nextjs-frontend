@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import AuthHeader from "./AuthHeader";
@@ -11,11 +12,14 @@ import AuthFullData from "./AuthFullData";
 import AuthPhone from "./AuthPhone";
 import AuthOtpComponent from "./AuthOtpComponent";
 import styles from "../../styles/Auth/auth.module.scss";
+import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
 import AuthResetPass from "./AuthResetPass";
 import AuthOnlyPass from "./AuthOnlyPass";
 import ChangePhoneNo from "./ChangePhoneNo";
 import AuthRefer from "./AuthRefer";
+import Onboarding from "../Onboarding";
+import ParentChildAuth from "./ParentChildAuth";
 
 function AuthComponent({
   showauth,
@@ -45,6 +49,8 @@ function AuthComponent({
     msg: "",
   });
 
+  const router = useRouter();
+
   useEffect(() => {
     if (prefilled) setmode("");
   }, [prefilled]);
@@ -71,7 +77,7 @@ function AuthComponent({
   //for back button in auth
   function handleBack() {
     if (mode === "learner" || mode === "parent") {
-      setmode("selection");
+      setmode("login");
     } else if (mode === "phone" || mode === "email" || mode === "otp") {
       setmode("parent");
     } else {
@@ -121,6 +127,7 @@ function AuthComponent({
                   onlyLogin={onlyLogin}
                   addAccount={mailfromhome === false ? true : false}
                   type={type}
+                  mode={mode}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
@@ -136,6 +143,22 @@ function AuthComponent({
                   seterror={seterror}
                   email={email}
                   setsignupmethod={setsignupmethod}
+                />
+              ) : mode === "parentChild" ? (
+                <ParentChildAuth
+                  email={email}
+                  settoastdata={settoastdata}
+                  setmode={setmode}
+                  phone={phone}
+                  setphone={setphone}
+                  error={error}
+                  password={password}
+                  seterror={seterror}
+                  setusername={setusername}
+                  username={username}
+                  setpassword={setpassword}
+                  signupmethod={signupmethod}
+                  usertype={usertype}
                 />
               ) : mode === "email" ? (
                 <AuthFullData
@@ -210,6 +233,12 @@ function AuthComponent({
                   usertype={usertype}
                   refId={refId}
                 />
+              ) : mode === "onboarding" ? (
+                <Onboarding
+                  actionHandler={() => {
+                    router.push("/dashboard/k");
+                  }}
+                />
               ) : mode === "" && prefilled ? (
                 <AuthOnlyPass
                   prefilled={prefilled}
@@ -221,6 +250,38 @@ function AuthComponent({
                   onlyLogin={onlyLogin}
                 />
               ) : null}
+              <div className={styles.authFooter}>
+                {mode !== "reset" &&
+                  (mode === "login" ? (
+                    !onlyLogin && (
+                      <>
+                        <p className={styles.changemode}>
+                          Don&apos;t have an Account? <br />
+                        </p>
+                        <div
+                          className={styles.button}
+                          onClick={() => {
+                            setmode("parent");
+                          }}
+                        >
+                          Sign up
+                        </div>
+                      </>
+                    )
+                  ) : (
+                    <>
+                      <p className={styles.changemode}>
+                        Already have an account? <br />
+                      </p>
+                      <div
+                        className={styles.button}
+                        onClick={() => setmode("login")}
+                      >
+                        Sign in
+                      </div>
+                    </>
+                  ))}
+              </div>
             </div>
           </div>
         ) : null}

@@ -4,7 +4,7 @@ import AnimatedButton from "./AnimatedButton";
 export default function Buttons({
   type = "common",
   children,
-  themeBg = "#4066eb",
+  themeBg = "#4166EB",
   themeClr = "#fff",
   handleClick = () => {},
 }) {

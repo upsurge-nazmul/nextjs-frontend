@@ -104,8 +104,8 @@ function AuthRefer({
         type: "success",
       });
       mixpanel.track('ReferSignUp',{'event':'Referral Sign Up Successful'});
-      mixpanel.identify(`${email}`);
-      mixpanel.people.set({ "$email": email });
+      mixpanel.identify(`${email}`);      
+      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email, "$phone": phone, "$usertype": usertype, "$username": username, "$signupmethod": signupmethod, "$created": new Date().toISOString() });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "\[").replace(/[]]/, "\]");

@@ -86,6 +86,8 @@ export default function EditProfile({ data }) {
     }
     let response = await DashboardApis.updateprofile(updated_data);
     if (response && response.data && response.data.success) {
+      
+      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email, "$phone": phone, "$usertype": usertype, "$username": username, "$dob": dob, "$gender": gender });
       settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
     } else {
       settoastdata({ msg: "Error", show: true, type: "error" });

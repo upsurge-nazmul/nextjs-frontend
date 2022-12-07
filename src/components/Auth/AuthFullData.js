@@ -170,7 +170,7 @@ function AuthFullData({
       mixpanel.add_group('user_group','early_access');
       mixpanel.track('Sign-Up',{'event':`SignUp of ${email} Successful`, 'user-email': email});
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email });
+      mixpanel.people.set({ "$name":firstName+' '+lastName , "$email": email, "$phone": phone, "$usertype": usertype, "$username": username, "$signupmethod": signupmethod, "$created": new Date().toISOString() });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "\[").replace(/[]]/, "\]");
@@ -257,7 +257,7 @@ function AuthFullData({
         <p>+91</p>{" "}
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="Parent's phone number"
           value={phone}
           maxLength={10}
           onChange={(e) => {
@@ -268,7 +268,7 @@ function AuthFullData({
       <div className={styles.nameWrapper}>
         <input
           type="text"
-          placeholder="First Name"
+          placeholder="Parent's First Name"
           minLength={2}
           maxLength={50}
           value={firstName}
@@ -280,7 +280,7 @@ function AuthFullData({
           maxLength={50}
           minLength={2}
           type="text"
-          placeholder="Last Name"
+          placeholder="Parent's Last Name"
           value={lastName}
           onChange={(e) => {
             setlastName(onlyText(e.target.value)); 
@@ -289,7 +289,7 @@ function AuthFullData({
       </div>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="Parent's Username"
         minLength={4}
         maxLength={100} //
         value={username}

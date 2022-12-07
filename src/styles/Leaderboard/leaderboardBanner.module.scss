@@ -1,0 +1,57 @@
+.banner {
+  width: 100%;
+  height: fit-content;
+  min-height: 10rem;
+  background-color: #fed85f80;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  margin: 10px 0 20px;
+  position: relative;
+  .backgroundImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1b1b1b;
+    }
+    .description {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #1b1b1b;
+    }
+  }
+  .right {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      height: 7rem;
+      width: 7rem;
+    }
+    .tab1 {
+      @extend .icon;
+      color: #17d1bc;
+      transform: rotate(-15deg);
+    }
+    .tab2 {
+      @extend .icon;
+      color: #4066eb;
+      transform: rotate(15deg);
+    }
+  }
+}
