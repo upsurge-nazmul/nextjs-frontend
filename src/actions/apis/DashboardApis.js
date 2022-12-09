@@ -21,7 +21,7 @@ const updateprofile = (payload) => {
 };
 const updateparent = (payload) => {
   return ApiCalls.postResponse(
-    "users/parent-signup",
+    "users/parent_signup",
     payload,
     getCookie("accesstoken")
   );
