@@ -25,6 +25,7 @@ import PricingSvg from "../SVGcomponents/PricingSvg";
 import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import { MainContext } from "../../context/Main";
+import ParentPanelSvg from "../SVGcomponents/ParentPanelSvg";
 function DashboardLeftPanel({
   type,
   hidelogo,
@@ -70,10 +71,10 @@ function DashboardLeftPanel({
           onClick={() => {
             if (!userdata.intro_guide_completed) {
               router.push("/");
-               // "/?showTour=true&pushTo=/dashboard/" +
-                 // (userdata.user_type === "parent" ? "p/" : "k/") +
-                 // "?storyIndex=2"
-            //  );
+              // "/?showTour=true&pushTo=/dashboard/" +
+              // (userdata.user_type === "parent" ? "p/" : "k/") +
+              // "?storyIndex=2"
+              //  );
             } else router.push("/");
             // if (type === "kid") router.push("/dashboard/k");
             // if (type === "waitlist") router.push("/dashboard/w");
@@ -89,9 +90,9 @@ function DashboardLeftPanel({
             if (!userdata.intro_guide_completed) {
               router.push("/");
               //  "/?showTour=true&pushTo=/dashboard/" +
-               //   (userdata.type === "parent" ? "p/" : "k/") +
-                //  "?storyIndex=2"
-             // );
+              //   (userdata.type === "parent" ? "p/" : "k/") +
+              //  "?storyIndex=2"
+              // );
             } else router.push("/");
 
             // if (type === "kid") router.push("/dashboard/k");
@@ -186,6 +187,18 @@ function DashboardLeftPanel({
             <LeaderboardSvg className={styles.icon} />
 
             <p className={styles.tabtitle}>Leaderboard</p>
+          </div>
+
+          <div
+            className={`${styles.tab} ${
+              currenttab === "/dashboard/k/parentPanel" ? styles.activetab : ""
+            }`}
+            onClick={() => router.push("/dashboard/k/parentPanel")}
+            id="parentPanel-leftpanel"
+          >
+            <ParentPanelSvg className={styles.icon} />
+
+            <p className={styles.tabtitle}>Parent Panel</p>
           </div>
         </div>
       ) : type === "waitlist" ? (
@@ -385,7 +398,7 @@ function DashboardLeftPanel({
               if (!userdata.intro_guide_completed) {
                 router.push(
                   "/dashboard/p/chores"
-                 // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
+                  // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
                 );
               } else {
                 router.push("/dashboard/p/chores");
@@ -473,39 +486,49 @@ function DashboardLeftPanel({
         <div className={styles.brandtext}>
           <div className={styles.socials}>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
-            href="https://www.facebook.com/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Facebook` });
+              }}
+              href="https://www.facebook.com/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
             >
               <Fb className={styles.social} />
             </a>
             <a
-              onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Instagram` });
+              }}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
-              >
+            >
               <Insta className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Linkedin`})}}
-            href="https://www.linkedin.com/company/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Linkedin` });
+              }}
+              href="https://www.linkedin.com/company/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
             >
               <LinkedIN className={styles.social} />
             </a>
             <a
-              onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Discord` });
+              }}
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
-              >
+            >
               <DiscordSvg className={styles.social} />
             </a>
             <a
-              onClick={()=>{mixpanel.track('Social',{'event':`Visited WhatApp`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited WhatApp` });
+              }}
               href="https://wa.me/918851117926"
               target="_blank"
               rel="noreferrer"
