@@ -10,7 +10,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 
 function AuthAddParent({ parentEmail, childId, settoastdata }) {
   const [passisweak, setpassisweak] = useState(false);
-  const [showdetailpass, setshowdetailpass] = useState(true);
+  const [showdetailpass, setshowdetailpass] = useState(false);
   const [error, seterror] = useState(null);
   const [passerror, setpasserror] = useState({
     length: false,
@@ -157,6 +157,12 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
         </div>
       ) : (
         <div className={styles.loginContainer}>
+          <div className={styles.heading}>
+            <div className={styles.title}>Sign Up</div>
+            <div className={styles.subtitle}>
+              Please provide your basic info and set a passowrd for your account
+            </div>
+          </div>
           <div
             className={styles.logindetails}
             onKeyPress={(e) => {
@@ -310,7 +316,7 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
             {error && <p className={styles.error}>{error}</p>}
             {!loading ? (
               <div className={`${styles.button}`} onClick={addParent}>
-                Sign up
+                Confirm
               </div>
             ) : (
               <div className={`${styles.button} ${styles.spinner_btn}`}>

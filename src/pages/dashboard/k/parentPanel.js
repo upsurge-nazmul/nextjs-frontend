@@ -22,13 +22,13 @@ export default function ParentLogin({ userdatafromserver }) {
   }, [userdatafromserver]);
   const [mode, setmode] = useState("Parent Panel");
   const [error, seterror] = useState("");
-  useEffect(() => {
-    if (userdatafromserver.parent_first_login) {
-      setmode("Parent SignUp");
-    } else if (userdatafromserver.parent_first_login) {
-      return null;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (userdatafromserver.parent_first_login) {
+  //     setmode("Parent SignUp");
+  //   } else if (userdatafromserver.parent_first_login) {
+  //     return null;
+  //   }
+  // }, []);
   return (
     <div className={styles.parentlogin}>
       <DashboardLeftPanel type="kid" />
