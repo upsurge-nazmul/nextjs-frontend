@@ -104,9 +104,7 @@ export default function KidStore({
               availableUnicoins={userdatafromserver?.num_unicoins || 0}
             />
           )}
-          <div onClick={()=>{router.push("/dashboard/k/parentlogin")}}>
-           Go to Parent Center
-          </div>
+          
           <div className={styles.vouchers}>
             <VoucherSection
               vouchers={vouchers}
