@@ -93,8 +93,11 @@
     padding: 12px 20px;
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
     .left {
-      flex: 2;
+      flex: 2 1;
+      max-width: 100%;
+      margin: 1rem;
       .heading {
         font-size: 20px;
         font-weight: 600;
