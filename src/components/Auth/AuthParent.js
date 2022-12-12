@@ -39,9 +39,6 @@ function AuthParent({
       mixpanel.identify(`${email}`);
       mixpanel.people.set({ $email: email });
       dataLayer.push({ event: "Email-entered" });
-      fbq("trackCustom", "SignUp", {
-        event: "Email_Address_Entered_By_User",
-      });
       setmode("parentChild");
 
       // let checkemail = await LoginApis.checkemail({ email, waitlist: true });
