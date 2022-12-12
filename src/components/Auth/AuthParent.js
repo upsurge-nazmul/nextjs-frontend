@@ -31,23 +31,25 @@ function AuthParent({
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
     } else {
-      let checkemail = await LoginApis.checkemail({ email, waitlist: true });
-      if (checkemail && checkemail.data && !checkemail.data.success) {
-        mixpanel.add_group("user_group", "early_access");
-        mixpanel.track("Email entered for Signup", {
-          event: `${email} Email entered`,
-          email: `${email}`,
-        });
-        mixpanel.identify(`${email}`);
-        mixpanel.people.set({ $email: email });
-        dataLayer.push({ event: "Email-entered" });
-        fbq("trackCustom", "SignUp", {
-          event: "Email_Address_Entered_By_User",
-        });
-        setmode("parentChild");
-      } else {
-        seterror(checkemail?.data.message || "Error connecting to server");
-      }
+      mixpanel.add_group("user_group", "early_access");
+      mixpanel.track("Email entered for Signup", {
+        event: `${email} Email entered`,
+        email: `${email}`,
+      });
+      mixpanel.identify(`${email}`);
+      mixpanel.people.set({ $email: email });
+      dataLayer.push({ event: "Email-entered" });
+      fbq("trackCustom", "SignUp", {
+        event: "Email_Address_Entered_By_User",
+      });
+      setmode("parentChild");
+
+      // let checkemail = await LoginApis.checkemail({ email, waitlist: true });
+      // if (checkemail && checkemail.data && !checkemail.data.success) {
+      // } else {
+      //   seterror(checkemail?.data.message || "Error connecting to server");
+      // }
+
       // let response = await LoginApis.saveemail({ email: email });
       // if (response) {
       //   if (response.data.success) {

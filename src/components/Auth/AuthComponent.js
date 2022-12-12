@@ -57,7 +57,7 @@ function AuthComponent({
 
   useEffect(() => {
     if (!showauth) {
-      setmode("login");
+      setmode(authmode || "login");
       setemail("");
       setpassword("");
       setphone("");
@@ -126,8 +126,8 @@ function AuthComponent({
                   setmode={setmode}
                   onlyLogin={onlyLogin}
                   addAccount={mailfromhome === false ? true : false}
-                  type={type}
                   mode={mode}
+                  type={type}
                 />
               ) : mode === "selection" ? (
                 <AuthSelection setmode={setmode} setusertype={setusertype} />
