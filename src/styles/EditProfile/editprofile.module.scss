@@ -20,6 +20,7 @@
         border-radius: 100%;
         height: fit-content;
         width: fit-content;
+        position: relative;
         .imagesetter {
           position: absolute;
           width: 168px;
@@ -47,7 +48,7 @@
         .row {
           display: flex;
           align-items: center;
-          .genderInput{
+          .genderInput {
             min-width: fit-content;
           }
           &:first-child {
@@ -415,7 +416,7 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            .genderInput{
+            .genderInput {
               width: 100%;
             }
             &:first-child {
@@ -749,14 +750,18 @@
     .contentWrapper {
       .mainContent {
         .details {
-          .row{
-              min-width: 100px;
-              &:nth-child(2) {
-                div {
-                  max-width: 150px;
-                }
+          .row {
+            min-width: 100px;
+            &:nth-child(2) {
+              div {
+                max-width: 150px;
               }
-          }}}}}
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media only screen and (orientation: landscape) and (max-height: 1024px) and (min-width: 1024px) {
   .manageChore {
@@ -808,7 +813,7 @@
           .row {
             display: flex;
             align-items: center;
-            
+
             &:first-child {
               input {
                 &:nth-child(2) {

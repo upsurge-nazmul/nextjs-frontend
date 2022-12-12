@@ -719,10 +719,13 @@
           justify-content: center;
           align-items: baseline;
           font-size: 1.75rem;
-          color: #4166EB;
+          color: #4166eb;
           .refLabel {
             color: #828282;
             font-size: 1.25rem;
+          }
+          .refValue {
+            word-break: break-all;
           }
         }
 

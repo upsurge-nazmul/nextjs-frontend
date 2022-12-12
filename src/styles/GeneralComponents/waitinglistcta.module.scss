@@ -123,6 +123,7 @@
     overflow: hidden;
     position: relative;
     min-width: 200px;
+    cursor: pointer;
     .background {
       z-index: 1;
       position: absolute;
@@ -226,6 +227,7 @@
       height: 60px;
       overflow: hidden;
       position: relative;
+      cursor: pointer;
       .background {
         z-index: 1;
         position: absolute;

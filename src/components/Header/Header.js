@@ -15,7 +15,7 @@ function Header({
   showauth,
   setshowauth,
   authmode,
-  setauthmode,
+  setauthmode = () => {},
   mailfromhome,
   stickyheader,
   showpopup,
@@ -122,7 +122,7 @@ function Header({
                 // { name: "Tribes", pushTo: "/p_tribes" },
                 { name: "Live workshops", pushTo: "/products/liveclasses" },
               ]}
-              pushTo="/products"
+              // pushTo="/products"
             />
             <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
 
