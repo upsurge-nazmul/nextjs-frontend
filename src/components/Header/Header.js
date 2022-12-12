@@ -189,7 +189,7 @@ function Header({
             ? "Go to Dashboard"
             : page === HOME_VARIENTS[0]
             ? "Try for free"
-            : "Sign in"}
+            : "Sign up for free"}
         </div>
       </div>
     </div>
