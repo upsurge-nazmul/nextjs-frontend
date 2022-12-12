@@ -74,9 +74,13 @@ export default function RedeemSection({
             Rupees
           </p> */}
         </div>
-         <p style={{width:"max-content",marginTop:"1rem"}}>
-          Make a Purchase and ask your parent to go to Parent Center to approve
-         </p>
+        <p style={{ marginTop: "1rem" }}>
+          Make a Purchase and ask your parent to 
+          <span onClick={() => { router.push("/dashboard/k/parentPanel") }}>
+            go to Parent Center
+          </span> to approve
+        </p>
+
         {/* {err && <p className={styles.converstiondetails}>{err}</p>} */}
         {/* <div className={styles.converstiondiv}>
           {showinput && (
