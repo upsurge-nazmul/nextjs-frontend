@@ -293,6 +293,8 @@
             }
       .mainContent {
         margin-top: 0px;
+        gap: 3rem;
+        margin-bottom: 0rem;
         .flexLeft {
           height: unset !important;
           width: 100%;
@@ -310,6 +312,7 @@
           height: 100%;
           width: 100%;
           margin-top: 0px;
+          margin-bottom: 2rem;
           padding: 0 10px 0 20px;
           .choreSection {
             .heading {
