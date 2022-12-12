@@ -4,6 +4,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Leaderboard/monthInput.module.scss";
 
+//7:21  Error: Component definition is missing display name  react/display-name
+//add displayName to the CustomInput component
+CustomInput.displayName = "CustomInput";
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <div className={styles.customInput} onClick={onClick} ref={ref}>
     {value}
