@@ -102,7 +102,6 @@ function ParentChildAuth({
         msg: response.data.message,
         type: "success",
       });
-      fbq("trackCustom", "SignUp", { event: "Sign_Up_Successful" });
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
@@ -216,7 +215,6 @@ function ParentChildAuth({
         mixpanel.register(params);
       }
       campaignParams();
-      fbq("trackCustom", "SignUp", { event: "Sign_Up_Successful" });
       dataLayer.push({ event: "signup-successful" });
       if (mode === "otp") {
         settoastdata({ type: "success", msg: "OTP sent", show: true });
