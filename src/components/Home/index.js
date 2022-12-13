@@ -14,6 +14,7 @@ import Intro from "./Intro";
 import Who from "./Who";
 import Values from "./Values";
 import Benefits from "./Benefits";
+import Benefits2 from "./Benefits2";
 import JasperSection from "./JasperSection";
 import PartnerSection from "./PartnerSection";
 import FaqSection from "./FaqSection";
@@ -175,6 +176,7 @@ function Home({ page = "", showNav = true }) {
         />
       )}
       <Benefits />
+      <Benefits2 />
       <Who />
       <Values
         setshowauth={setshowauth}

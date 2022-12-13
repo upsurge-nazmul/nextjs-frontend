@@ -108,11 +108,16 @@ function Benefits() {
         </div>
       </div>
       <div className={styles.right}>
-        <ImageDisplay
-          src={DATA[current].img}
-          alt={DATA[current].title}
-          frameType={DATA[current].frameType}
-        />
+        {DATA.map((item) => (
+          <div className={styles.imageWrap}>
+            <ImageDisplay
+              key={item.id}
+              src={item.img}
+              alt={item.title}
+              frameType={item.frameType}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
