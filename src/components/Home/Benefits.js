@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Home/benefits.module.scss";
 import ImageDisplay from "../Benefits/ImageDisplay";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
@@ -54,7 +54,23 @@ const COLORS = [
 ];
 
 function Benefits() {
+  const parentRef = useRef();
   const [current, setCurrent] = useState(0);
+  const [paerntHeight, setParentHeight] = useState();
+
+  useEffect(() => {
+    let parentH = parentRef.current.offsetHeight;
+
+    setParentHeight(parentH);
+  }, []);
+
+  const handleScroll = (e) => {
+    let scrollValue = (parentRef.current.scrollTop + 1) / paerntHeight;
+    // if (scrollValue - Math.floor(scrollValue) > 0.7) {
+    //   setCurrent(Math.floor(scrollValue) + 1);
+    // }
+    setCurrent(Math.floor(scrollValue));
+  };
 
   return (
     <div className={styles.content}>
@@ -68,7 +84,6 @@ function Benefits() {
                 <div
                   className={styles.benefit}
                   style={item.id === DATA.length ? { marginBottom: 0 } : {}}
-                  onClick={() => setCurrent(item.id - 1)}
                   key={item.id}
                 >
                   <div
@@ -107,11 +122,14 @@ function Benefits() {
           </div>
         </div>
       </div>
-      <div className={styles.right}>
+      <div
+        className={styles.right}
+        ref={parentRef}
+        onScroll={(e) => handleScroll(e)}
+      >
         {DATA.map((item) => (
-          <div className={styles.imageWrap}>
+          <div className={styles.imageWrap} key={item.id}>
             <ImageDisplay
-              key={item.id}
               src={item.img}
               alt={item.title}
               frameType={item.frameType}
