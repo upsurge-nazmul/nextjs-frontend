@@ -345,13 +345,17 @@ export default function HomeCalc({ seterror, error }) {
               range={currentquestion.range}
             />
           )}
+          {error && <p className={styles.error}>{error}</p>}
           <div className={styles.buttons}>
             {current !== 0 ? (
               <p
                 className={styles.previous}
                 onClick={() => {
-                  if (current !== 0) {
-                    setcurrent(current - 1);
+                  if (!error) {
+                    seterror("");
+                    if (current !== 0) {
+                      setcurrent(current - 1);
+                    }
                   }
                 }}
               >

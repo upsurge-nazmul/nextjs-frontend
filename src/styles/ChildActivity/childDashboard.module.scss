@@ -41,7 +41,7 @@
             display: flex;
             width: 100%;
             flex-direction: column;
-            background-color: #4066eb;
+            background-color: #4166EB;
             color: white;
             border-radius: 12px;
             flex: 1 1;
@@ -212,6 +212,7 @@
             }
             .choreSection {
               padding: 15px;
+              max-width: 80vw;
               .mainheading {
                 font-size: 26px;
                 margin-bottom: 8px;

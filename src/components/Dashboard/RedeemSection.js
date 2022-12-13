@@ -66,14 +66,21 @@ export default function RedeemSection({
           </p>
           {/* <p className={styles.or}>or</p>
           <p className={styles.rupees}>
-            <span>
-              {userdata?.num_unicoins
-                ? (Number(userdata.num_unicoins) / UniCoinValue).toFixed(2)
-                : 0}
+          <span>
+          {userdata?.num_unicoins
+            ? (Number(userdata.num_unicoins) / UniCoinValue).toFixed(2)
+            : 0}
             </span>{" "}
             Rupees
           </p> */}
         </div>
+        <p style={{ marginTop: "1rem" }}>
+          Make a Purchase and ask your parent to 
+          <span onClick={() => { router.push("/dashboard/k/parentPanel") }}>
+            go to Parent Center
+          </span> to approve
+        </p>
+
         {/* {err && <p className={styles.converstiondetails}>{err}</p>} */}
         {/* <div className={styles.converstiondiv}>
           {showinput && (

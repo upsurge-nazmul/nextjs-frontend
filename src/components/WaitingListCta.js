@@ -1,15 +1,10 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
+import React from "react";
 import styles from "../styles/GeneralComponents/waitinglistcta.module.scss";
-import validator from "validator";
-import LoginApis from "../actions/apis/LoginApis";
-import Jasper from "./SVGcomponents/Jasper";
-import WaitlistPopUp from "./WaitlistPopUp";
-export default function WaitingListCta({ setshowauth }) {
+
+export default function WaitingListCta() {
   const router = useRouter();
-  const [show, setshow] = useState(false);
-  const [error, seterror] = useState("");
-  const [email, setEmail] = useState("");
+
   return (
     <div className={styles.waitinglist}>
       <div className={styles.left}>
@@ -23,7 +18,7 @@ export default function WaitingListCta({ setshowauth }) {
         <p>Want your kids to be financially independent?</p>
         <p>Join the upsurge platform today.</p>
       </div>
-      <div className={styles.right}>
+      <div className={styles.right} onClick={() => router.push("/pricing")}>
         <img
           className={styles.background}
           src="https://imgcdn.upsurge.in/images/unsplash-ROQz-KIAd-Y78.png"
@@ -33,7 +28,7 @@ export default function WaitingListCta({ setshowauth }) {
           <p>
             <span
               style={{ cursor: "pointer" }}
-              onClick={() => setshowauth(true)}
+              onClick={() => router.push("/pricing")}
             >
               Click here
             </span>{" "}

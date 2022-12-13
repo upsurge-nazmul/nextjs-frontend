@@ -76,7 +76,11 @@ export default function KidStore({
         availableUnicoins={userdatafromserver?.num_unicoins || 0}
       /> */}
       <div className={styles.contentWrapper}>
-        <KidDashboardHeader mode={mode} setmode={setmode} />
+      <DashboardHeader
+          mode={mode}
+          setmode={setmode}
+          settoastdata={settoastdata}
+        />
         <div className={styles.mainContent}>
           <p className={styles.subheader}>
             Rewards make learning even more fun - here are all the rewards you
@@ -100,6 +104,7 @@ export default function KidStore({
               availableUnicoins={userdatafromserver?.num_unicoins || 0}
             />
           )}
+          
           <div className={styles.vouchers}>
             <VoucherSection
               vouchers={vouchers}

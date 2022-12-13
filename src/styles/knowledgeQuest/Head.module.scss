@@ -126,14 +126,15 @@
   .headSection {
     flex-direction: column;
     .left {
-      margin-right: 20px;
+      margin-right: 2rem;
     }
     .right {
       .headerCard {
         flex-direction: column;
+        margin-right: 2rem;
         .cardLeft {
           .imageWrapper {
-            margin-right: 20px;
+            margin-right: 2rem;
             width: auto;
           }
         }

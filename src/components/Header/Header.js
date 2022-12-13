@@ -15,6 +15,7 @@ function Header({
   showauth,
   setshowauth,
   authmode,
+  setauthmode = () => {},
   mailfromhome,
   stickyheader,
   showpopup,
@@ -121,7 +122,7 @@ function Header({
                 // { name: "Tribes", pushTo: "/p_tribes" },
                 { name: "Live workshops", pushTo: "/products/liveclasses" },
               ]}
-              pushTo="/products"
+              // pushTo="/products"
             />
             <HeaderTabSection title={"Games"} tabs={[]} pushTo="/games" />
 
@@ -181,13 +182,14 @@ function Header({
               return;
             }
             setshowauth(true);
+            setauthmode("login");
           }}
         >
           {userdata
             ? "Go to Dashboard"
             : page === HOME_VARIENTS[0]
             ? "Try for free"
-            : "Sign in"}
+            : "Sign up for free"}
         </div>
       </div>
     </div>

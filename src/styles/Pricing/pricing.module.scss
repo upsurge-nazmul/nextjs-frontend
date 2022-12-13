@@ -31,9 +31,12 @@
   }
   .mainContent {
     width: 100%;
-    height: 60vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    flex-direction: row;
+    align-content: space-around;
+    align-items: center;
     .contentLeft {
       height: 100%;
       padding: 20px 50px 0;
@@ -123,16 +126,14 @@
   .pricingPage {
     .mainContent {
       flex-direction: column-reverse;
-      height: 100vh;
       overflow: hidden;
       .contentLeft {
         width: 100%;
-        height: 50vh;
         display: flex;
         justify-content: center;
       }
       .contentRight {
-        padding: 40px;
+        padding: 1.5rem;
       }
     }
   }
@@ -142,7 +143,6 @@
 @media only screen and (orientation: landscape) and (max-height: 820px) and (max-width: 1180px) {
   .pricingPage {
     .mainContent {
-      height: 100vh;
       .contentLeft {
         width: 50vw;
         height: 100%;

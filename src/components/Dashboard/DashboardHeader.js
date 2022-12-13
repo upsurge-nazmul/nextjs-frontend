@@ -73,6 +73,7 @@ function DashboardHeader({
         setshowauth={setshowauth}
         onlyLogin={true}
         prefilled={savedUser}
+        type={userdata?.user_type}
       />
       {showlevels && <LevelComponent setshow={setshowlevels} />}
       <h1 className={styles.dashboardHeading}>
@@ -91,7 +92,7 @@ function DashboardHeader({
         )}
       </h1>
       <div className={styles.rightWrapper}>
-        {userdata?.user_type === "child" && kidLevel && (
+        {/* {userdata?.user_type === "child" && kidLevel && (
           <div
             className={styles.levelSection}
             onClick={() => setshowlevels(true)}
@@ -105,7 +106,7 @@ function DashboardHeader({
               <span>Level</span> <span>{kidLevel}</span>
             </p>
           </div>
-        )}
+        )} */}
         {userdata?.user_type !== "parent" && (
           <div className={styles.rewardBlock}>
             <UniCoinSvg className={styles.svg} />
@@ -154,6 +155,8 @@ function DashboardHeader({
               menuType={userdata?.user_type}
               setSavedUser={setSavedUser}
               setShowOnboarding={setShowOnboarding}
+              setshowlevels={setshowlevels}
+              kidLevel={kidLevel}
             />
           )}
           <img

@@ -257,7 +257,7 @@ export default function Home({
                   <Chart
                     chartData={data.data}
                     className={styles.chart}
-                    colors={i === 1 ? ["#4066eb"] : ["#17d1bc"]}
+                    colors={i === 1 ? ["#4166EB"] : ["#17d1bc"]}
                   />
                 </div>
               );

@@ -15,7 +15,7 @@ export const TASK_IMAGE_BY_TYPE = [
 export const TASK_TYPE_COLORS = [
   { id: "Knowledge Quest", color: "#17d1bc" },
   { id: "Game", color: "#ffcd00" },
-  { id: "Chore", color: "#4066eb" },
+  { id: "Chore", color: "#4166EB" },
   { id: "Quiz", color: "#ff6163" },
   { id: "Activity", color: "#ff6163" },
 ];
@@ -99,7 +99,7 @@ export const PathwayData = [
       "Ever wondered why everyone keeps their money in banks? Let's find out!",
     pathwayreward: "4500",
     pathwayImage: "/images/journey/banking.svg",
-    color: "#4066eb",
+    color: "#4166EB",
     pointer: { top: -20, left: "23%" },
     pathwaykqroute: "/dashboard/k/quest/banking",
     locked: false,

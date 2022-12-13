@@ -19,6 +19,14 @@ const updateprofile = (payload) => {
     getCookie("accesstoken")
   );
 };
+const updateparent = (payload) => {
+  return ApiCalls.postResponse(
+    "users/parent_signup",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const updatechildprofile = (payload) => {
   return ApiCalls.postResponse(
     "users/updatechildprofile",
@@ -124,8 +132,12 @@ const markwelcomecomplete = (payload, token) => {
   return ApiCalls.putResponse("users/markwelcomecomplete", payload, token);
 };
 
-const getoverallleaderboard = (payload, token) => {
-  return ApiCalls.getResponse("users/overallleaderboard", payload, token);
+const getoverallleaderboard = (payload) => {
+  return ApiCalls.getResponse(
+    "users/overallleaderboard",
+    payload,
+    getCookie("accesstoken")
+  );
 };
 
 const createVerificationOtp = (payload) => {
@@ -171,6 +183,7 @@ const DashboardApis = {
   completeintroguide,
   rewardunicoinstochild,
   deleterequest,
+  updateparent,
 };
 
 export default DashboardApis;

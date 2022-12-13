@@ -35,13 +35,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 2px solid #4066eb;
+      border: 2px solid #4166eb;
       border-radius: 14px;
       padding: 5px 10px;
       margin-bottom: 5vh;
+      max-width: 40vw;
       .refId {
         font-size: 2rem;
-        color: #4066eb;
+        color: #4166eb;
+        overflow: hidden;
+        word-break: break-all;
         .refLabel {
           color: #828282;
           font-size: 1.5rem;
@@ -51,7 +54,7 @@
         cursor: pointer;
         position: relative;
         width: 2rem;
-        color: #4066eb;
+        color: #4166eb;
         .none {
           visibility: hidden;
           position: absolute;
@@ -61,7 +64,7 @@
           position: absolute;
           width: 120px;
           text-align: center;
-          background-color: #4066eb;
+          background-color: #4166eb;
           color: #fff;
           padding: 5px 0;
           border-radius: 6px;
@@ -107,7 +110,7 @@
     }
     .tryButton {
       cursor: pointer;
-      background-color: #4066eb;
+      background-color: #4166eb;
       color: #fff;
       border: none;
       outline: none;
@@ -116,10 +119,10 @@
       font-size: clamp(14px, 1vw, 15px);
       font-weight: 500;
       line-height: 28px;
-      border: 1px solid #4066eb;
+      border: 1px solid #4166eb;
       &:hover {
         background-color: #fff;
-        color: #4066eb;
+        color: #4166eb;
       }
     }
   }

@@ -34,6 +34,8 @@ import KidQuest from "../../../components/KidDashboard/KidQuest";
 import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
 import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
+import EmailVerificationPending from "../../../components/EmailVerificationPending";
+import EditProfilePending from "../../../components/EditProfilePending";
 
 export default function ChildActivity({
   pendingchores,
@@ -178,6 +180,10 @@ export default function ChildActivity({
           setmode={setmode}
           settoastdata={settoastdata}
         />
+        {userdatafromserver && !userdatafromserver.email_verified && (
+          <EmailVerificationPending settoastdata={settoastdata} />
+        )}
+        <EditProfilePending />
         {showtodo && (
           <TodoList
             data={tododata.list}
