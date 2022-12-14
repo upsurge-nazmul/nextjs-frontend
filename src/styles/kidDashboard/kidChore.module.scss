@@ -12,8 +12,9 @@ $card-height: auto;
     display: flex;
     gap: 10px;
     .firstSection {
+      height: 6rem;
       .banner {
-        width: 110px;
+        width: 6rem;
         height: auto;
         object-fit: cover;
         border-top-left-radius: $border-radius;
@@ -67,8 +68,7 @@ $card-height: auto;
       padding-right: 10px;
       .actinButton {
         cursor: pointer;
-        width: 140px;
-        height: 40px;
+        padding: 1rem;
         border-radius: $border-radius;
         font-size: 14px;
         font-weight: 600;
