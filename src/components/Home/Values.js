@@ -33,13 +33,21 @@ export default function Values() {
       <div className={styles.valuesContent}>
         <div className={styles.left}>
           <img
+            src={require("../../assets/home/values/personBg.svg").default.src}
+            alt={"Person"}
+            className={styles.personBg}
+          />
+          <img
             src={require("../../assets/home/values/person.svg").default.src}
             alt={"Person"}
+            className={styles.person}
           />
         </div>
         <div className={styles.right}>
           <div className={styles.rightTop}>
-            Through Upsurge, we aim to help kids with
+            <div className={styles.valuesTitle}>
+              Through Upsurge, we aim to help kids with
+            </div>
           </div>
           <div className={styles.rightBottom}>
             {DATA.map((item) => {

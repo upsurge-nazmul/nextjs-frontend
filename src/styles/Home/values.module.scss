@@ -1,16 +1,41 @@
 .valuesArea {
+  padding: 5rem;
   .valuesContent {
     display: flex;
     .left {
+      padding: 0 2rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 35rem;
+      max-width: 45%;
+      .personBg {
+        width: 100%;
+        height: 100%;
+      }
+      .person {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
     .right {
       flex: 1;
       .rightTop {
+        .valuesTitle {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #000;
+        }
       }
       .rightBottom {
         display: flex;
         flex-wrap: wrap;
         gap: 10%;
+        padding: 2rem 0;
         .valueItem {
           min-width: 40%;
           max-width: 40%;
@@ -25,8 +50,15 @@
             left: 20px;
           }
           .itemTitle {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+            padding-bottom: 0.25rem;
           }
-          .itemDescription {
+          .itemDesctiption {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #9b9b9b;
           }
         }
       }
