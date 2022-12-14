@@ -19,6 +19,9 @@ import { STATES, STATES_ARR } from "../../../static_data/State_Data";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import AvatarSelector from "../../../components/Dashboard/AvatarSelector";
 import PageTitle from "../../../components/PageTitle";
+import CitySearch from "../../../components/CitySearch";
+import { Cities_Data } from "../../../static_data/Cities_Data";
+import { getCookie } from "../../../actions/cookieUtils";
 export default function EditProfile({ data, childavatars }) {
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
@@ -36,7 +39,10 @@ export default function EditProfile({ data, childavatars }) {
   );
   const [firstname, setfirstname] = useState(data?.first_name || "");
   const [username, setusername] = useState(data?.user_name || "");
+  const [city, setcity] = useState(data?.city || "");
   const [state, setstate] = useState(data?.state || "");
+  const [school, setschool] = useState(data?.school || "");
+  const [schoolresults, setschoolresults] = useState([]);
   const [lastname, setlastname] = useState(data?.last_name || "");
   const [dob, setdob] = useState(data?.dob ? new Date(Number(data.dob)) : "");
   const [gender, setgender] = useState(data?.gender || "");
@@ -67,6 +73,21 @@ export default function EditProfile({ data, childavatars }) {
   useEffect(() => {
     setuserdata(data);
   }, []);
+  useEffect(() => {
+    if (school) searchSchool();
+    else setschoolresults([]);
+  }, [school]);
+  async function searchSchool() {
+    let res = await DashboardApis.getschools(
+      { query: school },
+      getCookie("accesstoken")
+    );
+    if (res?.data.success) {
+      setschoolresults(res.data.data);
+    } else {
+      setschoolresults([]);
+    }
+  }
 
   function validatePassword(pass) {
     if (!checkLength(pass)) {
@@ -125,6 +146,13 @@ export default function EditProfile({ data, childavatars }) {
       if (password) {
         updated_data.password = password;
       }
+    }
+    if(city && city !== data?.city){
+      updated_data.city=city;
+      updated_data.state=state;
+    }
+    if(school && school !== data?.school){
+      updated_data.school=school;
     }
     if (state && state !== data?.state) {
       updated_data.state = state;
@@ -242,25 +270,45 @@ export default function EditProfile({ data, childavatars }) {
                 disabled
               />
             </div>
-            <div className={styles.row}>
-              <DropDown
-                value={gender}
-                options={["male", "female", "other", "Don't want to disclose"]}
-                setvalue={setgender}
-                placeholder="Gender"
-                margin="10px 0"
-              />
-              <DropDown
-                value={state}
-                options={STATES_ARR}
-                setvalue={setstate}
-                placeholder="State"
-                margin="0px 0 0 10px"
-              />
+            <ModernInputBox
+                      value={school}
+                      setvalue={setschool}
+                      onChange={(e) => setschool(e.target.value)}
+                      placeholder="School *"
+                      tooltipid={"school-tooltip"}
+                      tooltip={
+                        "School is required to put your child in related circles."
+                      }
+                      suggestions={schoolresults}
+                      />
+                    <div className={styles.row}>
+                      <CitySearch
+                        placeholder="City *"
+                        textOnly={true}
+                        options={Cities_Data}
+                        wrapperclassname={"editprofilecity"}
+                        value={city}
+                        setvalue={setcity}
+                        setstate={setstate}
+                        />
+                        <div className={styles.states}>
+                    <DropDown
+                      value={state}
+                      options={STATES_ARR}
+                      setvalue={setstate}
+                      placeholder="State"
+                      margin="0px 100px 0 0"
+                      />
+                      </div>
+                      </div>
+                      <div className={styles.row}>
               <ModernInputBox
                 type="date"
                 placeholder="Date of birth"
                 value={dob}
+                extrastyle={{
+                  marginLeft: "0rem",
+                }}
                 onChange={(e) => {
                   if (e.getTime() >= new Date().getTime()) {
                     settoastdata({
@@ -272,8 +320,18 @@ export default function EditProfile({ data, childavatars }) {
                     setdob(e);
                   }
                 }}
-              />
-            </div>
+                />
+            <div className={styles.gender}>
+              <DropDown
+                value={gender}
+                options={["male", "female", "other", "Don't want to disclose"]}
+                setvalue={setgender}
+                placeholder="Gender"
+                margin="0 0.5rem 1.2rem 0"
+                className={"gender"}
+                />
+                </div>
+                  </div>
             <div className={styles.row}>
               <div
                 className={styles.button}

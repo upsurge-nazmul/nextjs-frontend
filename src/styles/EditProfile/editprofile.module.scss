@@ -48,6 +48,12 @@
         .row {
           display: flex;
           align-items: center;
+          .states{
+            margin: 0 0 1.4rem 1rem;
+          }
+          .gender{
+            margin-left:1.4rem;
+          }
           .genderInput {
             min-width: fit-content;
           }
@@ -416,8 +422,13 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            .genderInput {
+            .gender{
               width: 100%;
+              margin:0;
+            }
+            .states{
+              width: 100%;
+              margin:0;
             }
             &:first-child {
               input {
