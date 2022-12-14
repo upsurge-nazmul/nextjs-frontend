@@ -1,0 +1,35 @@
+.valuesArea {
+  .valuesContent {
+    display: flex;
+    .left {
+    }
+    .right {
+      flex: 1;
+      .rightTop {
+      }
+      .rightBottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10%;
+        .valueItem {
+          min-width: 40%;
+          max-width: 40%;
+          margin: 5% 0;
+          padding: 60px 20px 20px;
+          background-color: #fafafa;
+          position: relative;
+          border-radius: 30px;
+          .valueBanner {
+            position: absolute;
+            top: -40px;
+            left: 20px;
+          }
+          .itemTitle {
+          }
+          .itemDescription {
+          }
+        }
+      }
+    }
+  }
+}
