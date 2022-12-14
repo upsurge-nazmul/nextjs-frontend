@@ -71,7 +71,7 @@ const checkemail = (payload) => {
 
 const sendverificationemail = (payload) => {
   return ApiCalls.postResponse(
-    "users/sendemail",
+    "users/childsendemail",
     payload,
     getCookie("accesstoken")
   );
