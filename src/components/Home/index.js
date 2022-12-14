@@ -12,6 +12,7 @@ import JoinUs from "./JoinUs";
 import Footer from "./Footer";
 import Intro from "./Intro";
 import Who from "./Who";
+import Values2 from "./Values2";
 import Values from "./Values";
 import Benefits from "./Benefits";
 import JasperSection from "./JasperSection";
@@ -176,7 +177,8 @@ function Home({ page = "", showNav = true }) {
       )}
       <Benefits />
       <Who />
-      <Values
+      <Values />
+      <Values2
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         insidebenefits
