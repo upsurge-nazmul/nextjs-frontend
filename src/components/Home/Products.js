@@ -52,9 +52,13 @@ const DATA = [
   },
 ];
 
-function ProductCard({ product }) {
+function ProductCard({ product, actionHandler }) {
   return (
-    <div className={styles.product}>
+    <div
+      className={styles.product}
+      onMouseEnter={() => actionHandler(product.id)}
+      onMouseLeave={() => actionHandler("default")}
+    >
       <div className={styles.icon}>
         <img
           src={
@@ -82,7 +86,13 @@ export default function Products() {
         <div className={styles.left}>
           {DATA.map((item) => {
             if (item.side === "left") {
-              return <ProductCard product={item} key={item.id} />;
+              return (
+                <ProductCard
+                  product={item}
+                  actionHandler={setCurrentImg}
+                  key={item.id}
+                />
+              );
             }
           })}
         </div>
@@ -109,7 +119,13 @@ export default function Products() {
         <div className={styles.right}>
           {DATA.map((item) => {
             if (item.side === "right") {
-              return <ProductCard product={item} key={item.id} />;
+              return (
+                <ProductCard
+                  product={item}
+                  actionHandler={setCurrentImg}
+                  key={item.id}
+                />
+              );
             }
           })}
         </div>
