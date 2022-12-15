@@ -185,12 +185,7 @@ function Home({ page = "", showNav = true }) {
       />
       {/* <How /> */}
       <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
-      <PartnerSection />
-      <TryUpsurge
-        content={"Try upsurge now"}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
-      />
+      <PartnerSection setauthmode={setauthmode} setshowauth={setshowauth} />
       <JasperSection />
       <AboutSection />
       <BlogsSection />

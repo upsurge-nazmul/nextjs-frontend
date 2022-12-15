@@ -3,7 +3,7 @@ import { MainContext } from "../../context/Main";
 import Spinner from "../Spinner";
 import styles from "../../styles/Home/tryupsurge.module.scss";
 function TryUpsurge({content,setauthmode,
-    setshowauth}) {
+    setshowauth,inSection }) {
     const {userdata} = useContext(MainContext);
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -22,7 +22,7 @@ function TryUpsurge({content,setauthmode,
           <p className={styles.error}>{error}</p>
           <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
             {!loading ? (
-                <div className={`${styles.button}`} onClick={signup}>
+                <div className={`${inSection? styles.inDasButton : styles.button}`} onClick={signup}>
                 {content}
               </div>
             ) : (

@@ -4,19 +4,17 @@
 .partnerSection {
   width: 100%;
   overflow: hidden;
-  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
   .common {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     height: fit-content;
-    background-color: #ff6263;
+    background-image:linear-gradient(to right,#f1f8ff,#fff4f4);
     margin-bottom: 0px;
-    color: rgb(255, 255, 255);
     padding: 5vh 6vw;
-    display: flex;
     position: relative;
-    flex-direction: column;
     border-radius: 12px;
     min-width: 100%;
     margin-top: 20px;
@@ -31,9 +29,8 @@
       margin-top: 1vh;
       font-size: 16px;
       font-weight: 400;
-      margin-left: auto;
-    margin-right: auto;
-    }
+      width:80%;
+  }
     .leftarrow {
       position: absolute;
       left: 40px;
@@ -54,16 +51,36 @@
       z-index: 2;
       cursor: pointer;
     }
+    .imageswrapper{
+      display: flex;
+      height: 40rem;
+    }
+    .imagewrapper1{
+      padding:1rem;
+      position: absolute;
+    }
+    .imagewrapper2{
+      margin-top: 0;
+      overflow-y: hidden;
+      position: absolute;
+      right:10rem;
+      top:-5rem;
+    }
     .wrapper {
       width: 100%;
       display: flex;
-      overflow-x: auto;
+      overflow-y: auto;
+      flex-direction: column;
+      position: relative;
       flex: 1;
       margin-top: 30px;
       scrollbar-width: none;
       scroll-behavior: smooth;
       &::-webkit-scrollbar {
         display: none;
+      }
+      .images1{
+        padding:1rem;
       }
       ::-webkit-scrollbar {
         width: 0; /* Remove scrollbar space */
