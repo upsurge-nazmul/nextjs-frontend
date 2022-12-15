@@ -35,6 +35,7 @@ export default function ParentLogin({ userdatafromserver }) {
       <PageTitle title={`upsurge | Parent Panel`} />
       <Toast data={toastdata} />
       <div className={styles.content}>
+
         <DashboardHeader
           mode={mode}
           setmode={setmode}
@@ -54,7 +55,7 @@ export default function ParentLogin({ userdatafromserver }) {
             seterror={seterror}
           />
         )}
-        {error && <>${error}</>}
+        <div className={styles.errormsg}>{error && <>${error}</>}</div>
       </div>
     </div>
   );
