@@ -7,6 +7,7 @@ function EmailVerificationPending({ settoastdata }) {
   const [mailsentagain, setmailsentagain] = useState(false);
   async function resendemail() {
     let response = await LoginApis.sendverificationemail();
+    console.log("Responsose", response);
     if (!response.data.success) {
       settoastdata({
         show: true,
@@ -26,12 +27,12 @@ function EmailVerificationPending({ settoastdata }) {
     <div className={styles.main}>
       {mailsentagain ? (
         <p className={styles.text}>
-          Verification mail sent to {userdata?.email}.
+          Verification mail sent to {userdata?.parent_email}.
         </p>
       ) : (
         <p className={styles.text}>
           Your are almost there! we have sent a verification email to{" "}
-          {userdata?.email}
+          {userdata?.parent_email}
         </p>
       )}
       {!mailsentagain && (

@@ -180,10 +180,6 @@ export default function ChildActivity({
           setmode={setmode}
           settoastdata={settoastdata}
         />
-        {userdatafromserver && !userdatafromserver.email_verified && (
-          <EmailVerificationPending settoastdata={settoastdata} />
-        )}
-        <EditProfilePending />
         {showtodo && (
           <TodoList
             data={tododata.list}
@@ -198,6 +194,10 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
+          {userdatafromserver && !userdatafromserver.email_verified && (
+            <EmailVerificationPending settoastdata={settoastdata} />
+          )}
+          <EditProfilePending />
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
