@@ -5,14 +5,14 @@ import { MainContext } from "../../context/Main";
 import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
 import AboutSection from "./AboutSection";
-import ProductSection from "./ProductSection";
+// import ProductSection from "./ProductSection";
 import TryUpsurge from "./TryUpsurge";
 import BlogsSection from "./BlogsSection";
 import JoinUs from "./JoinUs";
 import Footer from "./Footer";
 import Intro from "./Intro";
 import Who from "./Who";
-import Values2 from "./Values2";
+// import Values2 from "./Values2";
 import Values from "./Values";
 import Benefits from "./Benefits";
 import JasperSection from "./JasperSection";
@@ -179,14 +179,14 @@ function Home({ page = "", showNav = true }) {
       <Benefits />
       <Who />
       <Values />
-      <Values2
+      {/* <Values2
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         insidebenefits
-      />
+      /> */}
       {/* <How /> */}
       <Products />
-      <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
+      {/* <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} /> */}
       <PartnerSection />
       <TryUpsurge
         content={"Try upsurge now"}
