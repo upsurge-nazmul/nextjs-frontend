@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "../../styles/Home/products.module.scss";
 
 const DATA = [
@@ -60,6 +61,7 @@ function ProductCard({ product }) {
             require(`../../assets/home/products/${product.id}.svg`).default.src
           }
           alt={product.title}
+          className={styles.iconImage}
         />
       </div>
       <div className={styles.content}>
@@ -71,6 +73,8 @@ function ProductCard({ product }) {
 }
 
 export default function Products() {
+  const [currentImg, setCurrentImg] = useState("default");
+
   return (
     <div className={styles.productsSection}>
       <div className={styles.title}>Here’s how we do it.</div>
@@ -82,7 +86,26 @@ export default function Products() {
             }
           })}
         </div>
-        <div className={styles.middle}>middle items</div>
+        <div className={styles.middle}>
+          <div className={styles.screenshots}>
+            <img
+              src={
+                require(`../../assets/home/products/${currentImg}_ss2.png`)
+                  .default.src
+              }
+              alt={"Screenshot 2"}
+              className={styles.ss2}
+            />
+            <img
+              src={
+                require(`../../assets/home/products/${currentImg}_ss1.png`)
+                  .default.src
+              }
+              alt={"Screenshot 1"}
+              className={styles.ss1}
+            />
+          </div>
+        </div>
         <div className={styles.right}>
           {DATA.map((item) => {
             if (item.side === "right") {
