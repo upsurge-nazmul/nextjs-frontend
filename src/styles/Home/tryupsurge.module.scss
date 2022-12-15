@@ -18,6 +18,21 @@
       background-color: hsl(227, 100%, 59%);
     }
   }
+  .inDasButton{
+    color:#fff;
+    background-color: #4066ea;
+    width: 7rem;
+    min-width: fit-content;
+    height: 3rem;
+    font-size: clamp(0.8rem, 1.3rem, 1.8rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:500;
+    border-radius: 33rem;
+    padding: 0 2rem;
+
+  }
   .errsignbox {
   margin-top: 3vh;
   }
