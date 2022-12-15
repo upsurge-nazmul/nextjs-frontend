@@ -18,8 +18,6 @@ const Seo = (props) => (
     <meta name="twitter:description" content={props.desc} />
     <meta name="twitter:site" content="@upsurge" />
     <meta name="twitter:creator" content="@upsurge" />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
     {props.css && <link rel="stylesheet" href={`${props.css}`} />}
     {/* {props.image ? (
       <meta property="og:image" content={`${props.image}`} />
