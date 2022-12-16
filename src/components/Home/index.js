@@ -23,6 +23,7 @@ import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
+import Quote from "./Quote";
 import ReferIntro from "./ReferIntro";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
@@ -183,7 +184,13 @@ function Home({ page = "", showNav = true }) {
       />
       {/* <How /> */}
       <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
-      <PartnerSection setauthmode={setauthmode} setshowauth={setshowauth} />
+      <PartnerSection />
+      <TryUpsurge
+        content={"Try upsurge now"}
+        setauthmode={setauthmode}
+        setshowauth={setshowauth}
+      />
+      <Quote />
       <JasperSection />
       <AboutSection />
       <BlogsSection />

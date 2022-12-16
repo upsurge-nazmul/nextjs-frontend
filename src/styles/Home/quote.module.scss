@@ -1,0 +1,52 @@
+.quote {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .main {
+      padding-left: 12vw;
+      padding-right: 12vw;
+      margin-top: 2vh;
+      padding-bottom: 30vh;
+      .svg{
+          margin-top: 2.5rem;
+    }
+    .header{
+        margin-top: 2.5rem;
+        width: 80%;
+    }
+    .name{
+        margin-top: 1.5rem;
+        color: #17D1BC;
+        font-size: larger;
+    }
+    .shapes{
+        margin-top: 2.5rem;
+        display: flex;
+        gap:1rem;
+    }
+    .circle1{
+        width: 1.2rem;
+        height: 1.2rem;
+        background: #FF6263;
+        border-radius: 99%;
+    }
+    .semicircle1{
+        width: 2.2rem;
+        height: 1.1rem;
+        background: #17D1BC;
+        border-radius: 0 0 15rem 15rem;
+    }
+    .circle2{
+        width: 1.5rem;
+        height: 1.5rem;
+        background: #4166EB;
+        border-radius: 99%;
+        margin-top: -0.3rem;
+    }
+    .rectangle{
+        width:1rem;
+        height: 1rem;
+        background: #FDCC03;
+    }
+    }
+}
