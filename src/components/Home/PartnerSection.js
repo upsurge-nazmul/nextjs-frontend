@@ -7,11 +7,20 @@ import TryUpsurge from "./TryUpsurge";
 export default function PartnerSection({ dashboard, nomargin,setshowauth,setauthmode }) {
   const rewards = [
     "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
+    "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
     "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
     "https://imgcdn.upsurge.in/images/partners/phpyYVFl1_lisbnd.webp",
-    "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
     "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
+  ];
+  const rewards1 = [
+    "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpyYVFl1_lisbnd.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
+    "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
+    "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
     "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
+
   ];
   const { theme } = useContext(MainContext);
   const router = useRouter();
@@ -86,7 +95,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
           })}
             </div>
                 <div className={styles.imagewrapper2}>
-          {rewards.map((item, index) => {
+          {rewards1.map((item, index) => {
             return (
               <div key={"partner" + index} className={styles.images1}>
               <img
