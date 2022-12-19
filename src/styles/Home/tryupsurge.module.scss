@@ -33,6 +33,16 @@
     padding: 0 2rem;
 
   }
+  @media only screen and (max-width: 711px) {
+    .inDasButton{
+      margin-left: 2.5rem;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .inDasButton{
+      margin-left: 1.5rem;
+    }
+  }
   .errsignbox {
   margin-top: 3vh;
   }

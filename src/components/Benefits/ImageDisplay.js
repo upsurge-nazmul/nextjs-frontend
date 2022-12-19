@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import styles from "../../styles/Benefits/imageDisplay.module.scss";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function ImageDisplay({
   src = "",
   alt = "",
   frameType = "default",
 }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div
       className={styles.displayArea}
+      data-aos="zoom-in"
+      data-aos-duration={500}
+      data-aos-delay={200}
+      data-aos-anchor-placement={"top-center"}
       style={
         frameType === "vertical"
           ? {

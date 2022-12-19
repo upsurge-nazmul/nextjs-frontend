@@ -4,27 +4,29 @@ import styles from "../../styles/Home/home.module.scss";
 import { MainContext } from "../../context/Main";
 import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
-import AboutSection from "./AboutSection";
-import ProductSection from "./ProductSection";
+// import AboutSection from "./AboutSection";
+// import ProductSection from "./ProductSection";
 import TryUpsurge from "./TryUpsurge";
 import BlogsSection from "./BlogsSection";
 import JoinUs from "./JoinUs";
 import Footer from "./Footer";
 import Intro from "./Intro";
-import Who from "./Who";
-import Values2 from "./Values2";
+// import Who from "./Who";
+// import Values2 from "./Values2";
 import Values from "./Values";
 import Benefits from "./Benefits";
-import JasperSection from "./JasperSection";
+// import JasperSection from "./JasperSection";
 import PartnerSection from "./PartnerSection";
 import FaqSection from "./FaqSection";
 import TestiMonial from "./TestiMonial";
 import Toast from "../Toast";
-import Tour from "../Tour/Tour";
+// import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
+import Quote from "./Quote";
 import ReferIntro from "./ReferIntro";
+import Products from "./Products";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
@@ -176,18 +178,20 @@ function Home({ page = "", showNav = true }) {
         />
       )}
       <Benefits />
-      <Who />
+      {/* <Who /> */}
       <Values />
-      <Values2
+      {/* <Values2
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         insidebenefits
-      />
+      /> */}
       {/* <How /> */}
-      <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
-      <PartnerSection setauthmode={setauthmode} setshowauth={setshowauth} />
-      <JasperSection />
-      <AboutSection />
+      <Products />
+      {/* <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} /> */}
+      <Quote />
+      <PartnerSection />
+      {/* <JasperSection /> */}
+      {/* <AboutSection /> */}
       <BlogsSection />
       <TestiMonial />
       <TryUpsurge

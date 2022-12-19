@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Home/benefits.module.scss";
 import ImageDisplay from "../Benefits/ImageDisplay";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const DATA = [
   {
@@ -65,7 +67,9 @@ function Benefits() {
   }, []);
 
   const handleScroll = (e) => {
-    let scrollValue = (parentRef.current.scrollTop + 1) / paerntHeight;
+    AOS.init();
+    let scrollValue =
+      (parentRef.current.scrollTop + 1) / parentRef.current.offsetHeight;
     // if (scrollValue - Math.floor(scrollValue) > 0.7) {
     //   setCurrent(Math.floor(scrollValue) + 1);
     // }
@@ -73,7 +77,12 @@ function Benefits() {
   };
 
   return (
-    <div className={styles.content}>
+    <div
+      className={styles.content}
+      ref={parentRef}
+      onScroll={(e) => handleScroll(e)}
+      data-aos="fade-down"
+    >
       <div className={styles.left}>
         <div className={styles.heading}>Why upsurge?</div>
         <div className={styles.collapseables}>
@@ -122,11 +131,7 @@ function Benefits() {
           </div>
         </div>
       </div>
-      <div
-        className={styles.right}
-        ref={parentRef}
-        onScroll={(e) => handleScroll(e)}
-      >
+      <div className={styles.right}>
         {DATA.map((item) => (
           <div className={styles.imageWrap} key={item.id}>
             <ImageDisplay
