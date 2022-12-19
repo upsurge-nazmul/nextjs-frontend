@@ -18,6 +18,31 @@
       background-color: hsl(227, 100%, 59%);
     }
   }
+  .inDasButton{
+    color:#fff;
+    background-color: #4066ea;
+    width: 7rem;
+    min-width: fit-content;
+    height: 3rem;
+    font-size: clamp(0.8rem, 1.3rem, 1.8rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:500;
+    border-radius: 33rem;
+    padding: 0 2rem;
+
+  }
+  @media only screen and (max-width: 711px) {
+    .inDasButton{
+      margin-left: 2.5rem;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .inDasButton{
+      margin-left: 1.5rem;
+    }
+  }
   .errsignbox {
   margin-top: 3vh;
   }
