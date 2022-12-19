@@ -190,3 +190,34 @@ export const Simulator_Data = {
     pushto: "/dashboard/k/cryptosimulator/home",
   },
 };
+
+export const Download_Games_Data = {
+  MoneyDash: {
+    name: "Money Dash",
+    description: "Go in a virtual simulator to learn about stock trading.",
+    logo: "/images/DownloadGames/money_dash_logo.png",
+    images: [
+      "/images/DownloadGames/Money_dash_1.png",
+      "/images/DownloadGames/Money_dash_2.png",
+      "/images/DownloadGames/Money_dash_3.png",
+    ],
+    android_link: "",
+    windows_link: "",
+    playstore: "",
+    miscrosoft: "",
+  },
+  MoneyAce: {
+    name: "Money Ace",
+    description: "Go in a virtual simulator to learn about stock trading.",
+    logo: "/images/DownloadGames/money_ace_logo.png",
+    images: [
+      "/images/DownloadGames/Money_ace_1.png",
+      "/images/DownloadGames/Money_ace_2.png",
+      "/images/DownloadGames/Money_ace_3.png",
+    ],
+    android_link: "",
+    windows_link: "",
+    playstore: "",
+    miscrosoft: "",
+  },
+};
