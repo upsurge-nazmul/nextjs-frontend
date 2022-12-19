@@ -4,23 +4,23 @@ import styles from "../../styles/Home/home.module.scss";
 import { MainContext } from "../../context/Main";
 import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
-import AboutSection from "./AboutSection";
+// import AboutSection from "./AboutSection";
 // import ProductSection from "./ProductSection";
 import TryUpsurge from "./TryUpsurge";
 import BlogsSection from "./BlogsSection";
 import JoinUs from "./JoinUs";
 import Footer from "./Footer";
 import Intro from "./Intro";
-import Who from "./Who";
+// import Who from "./Who";
 // import Values2 from "./Values2";
 import Values from "./Values";
 import Benefits from "./Benefits";
-import JasperSection from "./JasperSection";
+// import JasperSection from "./JasperSection";
 import PartnerSection from "./PartnerSection";
 import FaqSection from "./FaqSection";
 import TestiMonial from "./TestiMonial";
 import Toast from "../Toast";
-import Tour from "../Tour/Tour";
+// import Tour from "../Tour/Tour";
 import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
@@ -178,7 +178,7 @@ function Home({ page = "", showNav = true }) {
         />
       )}
       <Benefits />
-      <Who />
+      {/* <Who /> */}
       <Values />
       {/* <Values2
         setshowauth={setshowauth}
@@ -188,10 +188,10 @@ function Home({ page = "", showNav = true }) {
       {/* <How /> */}
       <Products />
       {/* <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} /> */}
-      <PartnerSection />
       <Quote />
-      <JasperSection />
-      <AboutSection />
+      <PartnerSection />
+      {/* <JasperSection /> */}
+      {/* <AboutSection /> */}
       <BlogsSection />
       <TestiMonial />
       <TryUpsurge
