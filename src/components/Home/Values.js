@@ -1,29 +1,34 @@
 import styles from "../../styles/Home/values.module.scss";
+import IconWithBg from "../SVGcomponents/IconWithBG";
 
 const DATA = [
   {
     id: 1,
     title: "Understanding Money",
     description: `Understand how ‘money’ works in the 21st century`,
-    color: "blue",
+    iconClr: "#4066eb",
+    iconBorder: "#c6d2ff",
   },
   {
     id: 2,
     title: "Managing Money",
     description: "Learn to wisely manage money & be fiscally responsible",
-    color: "green",
+    iconClr: "#17d1bc",
+    iconBorder: "#91fed1",
   },
   {
     id: 3,
     title: "Practice Investing",
     description: "Practice profitable Investing & multiply their money",
-    color: "yellow",
+    iconClr: "#fdcc03",
+    iconBorder: "#feefad",
   },
   {
     id: 4,
     title: "Develop a Growth Mindset",
     description: "Develop an entrepreneurial & growth mindset",
-    color: "red",
+    iconClr: "#ff6263",
+    iconBorder: "#ffc8c8",
   },
 ];
 
@@ -54,13 +59,18 @@ export default function Values() {
               return (
                 <div className={styles.valueItem} key={item.id}>
                   <div className={styles.valueBanner}>
-                    <img
-                      src={
-                        require(`../../assets/home/values/${item.color}.svg`)
-                          .default.src
-                      }
-                      alt={"Person"}
-                    />
+                    <IconWithBg
+                      bgClr={item.iconClr}
+                      borderClr={item.iconBorder}
+                    >
+                      <img
+                        src={
+                          require(`../../assets/home/values/bolt.svg`).default
+                            .src
+                        }
+                        alt={"Person"}
+                      />
+                    </IconWithBg>
                   </div>
                   <div className={styles.itemTitle}>{item.title}</div>
                   <div className={styles.itemDesctiption}>
