@@ -61,7 +61,7 @@
       }
     }
     .subheading {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 400;
       color: #18191f;
       margin-top: 15px;
@@ -74,7 +74,7 @@
     .checkwaiting {
       width: 26.5vw;
       margin-top: 10px;
-      font-size: 14px;
+      font-size: 0.875rem;
       color: hsl(227, 81%, 71%);
       cursor: pointer;
       padding-left: 10px;
@@ -85,7 +85,7 @@
     .error {
       width: 26.5vw;
       margin-top: 12px;
-      font-size: 16px;
+      font-size: 1rem;
       color: hsl(0, 81%, 71%);
       cursor: pointer;
       font-weight: 500;
@@ -133,7 +133,7 @@
         display: flex;
         align-items: center;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 1.25rem;
         padding-left: 15px;
         ::placeholder {
           color: rgba(198, 198, 198, 1);
@@ -296,16 +296,16 @@
         margin-bottom: 5px;
       }
       .subheading {
-        font-size: 14px;
+        font-size: 0.875rem;
         width: 100%;
         line-height: 20px;
       }
       .button {
-        font-size: 16px;
+        font-size: 1rem;
       }
       .checkwaiting {
         width: 100%;
-        font-size: 12px;
+        font-size: 0.75rem;
       }
       .signupBox {
         width: 100%;
@@ -321,7 +321,7 @@
         }
         input {
           flex: 1;
-          font-size: 16px;
+          font-size: 1rem;
         }
       }
     }
@@ -426,7 +426,7 @@
       .error {
         width: fit-content;
         margin-top: 10px;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: hsl(0, 81%, 71%);
         cursor: pointer;
         font-weight: 500;
@@ -440,7 +440,7 @@
         width: 100%;
       }
       .subheading {
-        font-size: 14px;
+        font-size: 0.875rem;
         width: 90%;
         line-height: 24px;
       }
@@ -454,12 +454,12 @@
         input {
           border-top-left-radius: 6px;
           border-bottom-left-radius: 6px;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding-left: 10px;
         }
         .button,
         .joinButton {
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
     }

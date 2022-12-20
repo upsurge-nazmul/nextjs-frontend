@@ -45,7 +45,7 @@
       }
     }
     .heading {
-      font-size: 24px;
+      font-size: 1.5rem;
       margin-bottom: 20px;
       font-weight: 600;
       color: #000;
@@ -101,7 +101,7 @@
           }
           p {
             margin-left: 6px;
-            font-size: 15px;
+            font-size: 0.9375rem;
           }
         }
         .white {
@@ -130,7 +130,7 @@
         font-family: "Lexend", sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: right;
         color: #4166eb;
         transition: all 0.3s ease;
@@ -147,12 +147,12 @@
       margin-bottom: 20px;
       height: 59px;
       width: 100%;
-      font-size: 16px;
+      font-size: 1rem;
       padding: 15px;
     }
     .error {
       font-weight: 500;
-      font-size: 15px;
+      font-size: 0.9375rem;
       color: #ff6263;
       text-align: center;
       margin-bottom: 20px;
@@ -165,7 +165,7 @@
       width: 100%;
       height: 59px;
       p {
-        font-size: 20px;
+        font-size: 1.25rem;
         border-right: 1px solid #898989;
         width: 50px;
         display: flex;
@@ -177,7 +177,7 @@
       input {
         flex: 1;
         border: none;
-        font-size: 16px;
+        font-size: 1rem;
         border-radius: 0;
         margin-bottom: 0;
         padding: 15px;
@@ -189,7 +189,7 @@
       justify-content: space-between;
       margin-top: 22px;
       input {
-        font-size: 16px;
+        font-size: 1rem;
         flex: 1;
         &:first-child {
           margin-right: 20px;
@@ -208,7 +208,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 1.25rem;
       transition: all 0.3s ease;
       margin-top: 10px;
       &:hover {
@@ -259,19 +259,19 @@
       color: #000;
       justify-content: center;
       .text {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 400;
         text-align: center;
       }
       .phone {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 500;
         text-align: center;
       }
     }
     .error {
       font-weight: 500;
-      font-size: 15px;
+      font-size: 0.9375rem;
       color: #ff6263;
       text-align: center;
       margin-bottom: 20px;
@@ -284,7 +284,7 @@
       input {
         width: 60px;
         height: 60px;
-        font-size: 20px;
+        font-size: 1.25rem;
         margin: 0 6px;
         text-align: center;
         border-radius: 8px;
@@ -293,7 +293,7 @@
     }
     .resendButton {
       color: rgba(65, 102, 235, 1);
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
       margin-top: 40px;
       text-align: center;
@@ -310,7 +310,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 1.25rem;
       transition: all 0.3s ease;
       margin-top: 20px;
       &:hover {
@@ -379,7 +379,7 @@
           }
           p {
             margin-left: 6px;
-            font-size: 15px;
+            font-size: 0.9375rem;
           }
         }
         .white {
@@ -408,7 +408,7 @@
         font-family: "Lexend", sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: right;
         color: #4166eb;
         transition: all 0.3s ease;
@@ -425,7 +425,7 @@
     }
     .error {
       font-weight: 500;
-      font-size: 15px;
+      font-size: 0.9375rem;
       color: #ff6263;
       text-align: center;
       margin-bottom: 20px;
@@ -446,7 +446,7 @@
       justify-content: space-between;
       margin-top: 22px;
       input {
-        font-size: 16px;
+        font-size: 1rem;
         flex: 1;
         &:first-child {
           margin-right: 20px;
@@ -492,7 +492,7 @@
     }
     .resendButton {
       color: rgba(65, 102, 235, 1);
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
       margin-top: 40px;
       text-align: center;
@@ -545,7 +545,7 @@
         }
       }
       .heading {
-        font-size: 22px;
+        font-size: 1.375rem;
         margin-bottom: 20px;
         font-weight: 600;
         color: #000;
@@ -557,12 +557,12 @@
         margin-bottom: 20px;
         height: 45px;
         width: 100%;
-        font-size: 16px;
+        font-size: 1rem;
         padding: 15px;
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -575,7 +575,7 @@
         width: 100%;
         height: 45px;
         p {
-          font-size: 20px;
+          font-size: 1.25rem;
           border-right: 1px solid #898989;
           width: 50px;
           display: flex;
@@ -587,7 +587,7 @@
         input {
           flex: 1;
           border: none;
-          font-size: 16px;
+          font-size: 1rem;
           border-radius: 0;
           margin-bottom: 0;
           padding: 15px;
@@ -599,7 +599,7 @@
         justify-content: space-between;
         margin-top: 22px;
         input {
-          font-size: 16px;
+          font-size: 1rem;
           flex: 1;
           &:first-child {
             margin-right: 20px;
@@ -618,7 +618,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 5px;
         &:hover {
@@ -669,19 +669,19 @@
         color: #000;
         justify-content: center;
         .text {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           text-align: center;
         }
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -694,7 +694,7 @@
         input {
           width: 60px;
           height: 60px;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin: 0 6px;
           text-align: center;
           border-radius: 8px;
@@ -703,7 +703,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         margin-top: 40px;
         text-align: center;
@@ -720,7 +720,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 20px;
         &:hover {
@@ -766,7 +766,7 @@
             }
             p {
               margin-left: 6px;
-              font-size: 12px;
+              font-size: 0.75rem;
             }
           }
           .white {
@@ -777,12 +777,12 @@
         }
         input {
           margin: 0;
-          font-size: 14px;
+          font-size: 0.875rem;
           height: 45px;
         }
 
         .show {
-          font-size: 14px;
+          font-size: 0.875rem;
         }
       }
       .cross {
@@ -806,7 +806,7 @@
         }
       }
       .heading {
-        font-size: 18px;
+        font-size: 1.125rem;
         margin-bottom: 20px;
         font-weight: 600;
         color: #000;
@@ -818,12 +818,12 @@
         margin-bottom: 10px;
         height: 45px;
         width: 100%;
-        font-size: 14px;
+        font-size: 0.875rem;
         padding: 10px;
       }
       .error {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 10px;
@@ -836,7 +836,7 @@
         width: 100%;
         height: 45px;
         p {
-          font-size: 14px;
+          font-size: 0.875rem;
           border-right: 1px solid #898989;
           width: 50px;
           display: flex;
@@ -848,7 +848,7 @@
         input {
           flex: 1;
           border: none;
-          font-size: 14px;
+          font-size: 0.875rem;
           border-radius: 0;
           margin-bottom: 0;
           padding: 15px;
@@ -860,7 +860,7 @@
         justify-content: space-between;
         margin-top: 10px;
         input {
-          font-size: 14px;
+          font-size: 0.875rem;
           flex: 1;
           &:first-child {
             margin-right: 10px;
@@ -879,7 +879,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 1rem;
         transition: all 0.3s ease;
         margin-top: 10px;
         &:hover {
@@ -930,19 +930,19 @@
         color: #000;
         justify-content: center;
         .text {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
           text-align: center;
         }
       }
       .error {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 10px;
@@ -955,7 +955,7 @@
         input {
           width: 35px !important;
           height: 45px !important;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin: 0 3px;
           text-align: center;
           border-radius: 10px !important;
@@ -964,7 +964,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 500;
         margin-top: 10px;
         text-align: center;
@@ -981,7 +981,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 1rem;
         transition: all 0.3s ease;
         margin-top: 20px;
         &:hover {
@@ -1044,7 +1044,7 @@
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -1151,19 +1151,19 @@
         color: #000;
         justify-content: center;
         .text {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           text-align: center;
         }
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -1176,7 +1176,7 @@
         input {
           width: 60px;
           height: 60px;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin: 0 6px;
           text-align: center;
           border-radius: 8px;
@@ -1185,7 +1185,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         margin-top: 40px;
         text-align: center;
@@ -1202,7 +1202,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 20px;
         &:hover {
@@ -1265,7 +1265,7 @@
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -1372,19 +1372,19 @@
         color: #000;
         justify-content: center;
         .text {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           text-align: center;
         }
       }
       .error {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         text-align: center;
         margin-bottom: 20px;
@@ -1397,7 +1397,7 @@
         input {
           width: 60px;
           height: 60px;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin: 0 6px;
           text-align: center;
           border-radius: 8px;
@@ -1406,7 +1406,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         margin-top: 40px;
         text-align: center;
@@ -1423,7 +1423,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 20px;
         &:hover {

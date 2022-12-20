@@ -27,7 +27,7 @@
     }
     .question {
       flex: 1;
-      font-size: 18px;
+      font-size: 1.125rem;
       transition: all 0.3s ease;
       font-weight: 400;
     }
@@ -44,7 +44,7 @@
     background-color: white;
     padding: 0 40px;
     color: rgba(109, 109, 109, 1);
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
     line-height: 28px;
   }
@@ -60,7 +60,7 @@
 
     .question {
       flex: 1;
-      font-size: 18px;
+      font-size: 1.125rem;
       transition: all 0.3s ease;
       font-weight: 400;
       color: $d-text2;
@@ -78,7 +78,7 @@
     background-color: $d-moredark;
     padding: 0 40px;
     color: $d-text2;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
     line-height: 28px;
   }
@@ -116,7 +116,7 @@
       }
       .question {
         flex: 1;
-        font-size: 16px;
+        font-size: 1rem;
         transition: all 0.3s ease;
         font-weight: 400;
       }
@@ -133,7 +133,7 @@
       background-color: white;
       padding: 0 40px;
       color: rgba(109, 109, 109, 1);
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 400;
     }
     .showanswer {
@@ -154,13 +154,13 @@
       }
       .question {
         flex: 1;
-        font-size: 14px;
+        font-size: 0.875rem;
         transition: all 0.3s ease;
         font-weight: 400;
       }
     }
     .answer {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 }

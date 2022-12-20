@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Lexend", sans-serif;
   font-weight: 500;
   border: 1px solid #898989;
@@ -33,7 +33,7 @@
     .placeholder {
       position: absolute;
       font-family: "Lexend", sans-serif;
-      font-size: 16px;
+      font-size: 1rem;
       color: #4f4f4f;
       transition: all 0.3s ease;
       width: 100%;
@@ -55,7 +55,7 @@
       left: 8px;
       top: -8px;
       font-family: "Lexend", sans-serif;
-      font-size: 12px;
+      font-size: 0.75rem;
       z-index: 100px;
       border-radius: 12px;
     }
@@ -134,7 +134,7 @@
     .placeholder {
       position: absolute;
       font-family: "Lexend", sans-serif;
-      font-size: 16px;
+      font-size: 1rem;
       color: #4f4f4f;
       transition: all 0.3s ease;
       color: $d-text1;
@@ -157,7 +157,7 @@
       left: 8px;
       top: -8px;
       font-family: "Lexend", sans-serif;
-      font-size: 12px;
+      font-size: 0.75rem;
       z-index: 100px;
       border-radius: 12px;
     }
@@ -181,7 +181,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: "Lexend", sans-serif;
     font-weight: 500;
     border: 1px solid #898989;
@@ -202,7 +202,7 @@
       min-width: 100px;
       p {
         margin-right: auto;
-        font-size: 14px;
+        font-size: 0.875rem;
       }
       .svg {
         width: 13px;
@@ -256,7 +256,7 @@
   .dropdown {
     height: max-content;
     padding: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     border: 1px solid #898989;
     border-radius: 8px;
@@ -305,7 +305,7 @@
         height: max-content;
         width: 100%;
         display: flex;
-        font-size: 12px;
+        font-size: 0.75rem;
         text-align: center;
         justify-content: center;
         text-transform: capitalize;

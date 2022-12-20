@@ -16,11 +16,11 @@
     max-height: 40px;
     justify-content: center;
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
     align-items: center;
     font-weight: 500;
     .btn {
-      font-size: 14px;
+      font-size: 0.875rem;
       border-radius: 5px;
       margin-left: 10px;
       background-color: rgb(255, 255, 255);
@@ -36,7 +36,7 @@
       position: absolute;
       right: 40px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
   .container {
@@ -78,7 +78,7 @@
       margin-right: 40px;
       p {
         margin-right: 1.5vw;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 400;
         cursor: pointer;
         text-transform: capitalize;
@@ -175,7 +175,7 @@
   .header {
     height: 100px;
     .ticker {
-      font-size: 14px;
+      font-size: 0.875rem;
       padding: 8px;
     }
     .container {
@@ -254,7 +254,7 @@
         border-radius: 12px;
         cursor: pointer;
         font-weight: 500;
-        font-size: 12px;
+        font-size: 0.75rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -360,7 +360,7 @@
   .header {
     height: 100px;
     .ticker {
-      font-size: 14px;
+      font-size: 0.875rem;
       padding: 8px;
     }
     .container {

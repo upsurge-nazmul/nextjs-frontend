@@ -1,7 +1,7 @@
 @use "../variables/fontsizes.scss" as *;
 @use "../variables/colors.scss" as *;
 .button {
-  color:#fff;
+  color: #fff;
   width: 12vw;
   margin: 2rem auto;
   min-width: fit-content;
@@ -30,7 +30,7 @@
   padding: 100px 10% 100px;
   .heading {
     margin-bottom: 50px;
-    font-size: 46px;
+    font-size: 2.875rem;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
@@ -79,7 +79,7 @@
         flex-wrap: wrap;
         overflow: hidden;
         p {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 700;
           color: #4166eb;
           margin-right: 10px;
@@ -89,12 +89,12 @@
       .title {
         font-weight: 600;
         margin-top: 5px;
-        font-size: 20px;
+        font-size: 1.25rem;
         text-align: left;
         width: 100%;
       }
       .content {
-        font-size: 16px;
+        font-size: 1rem;
         text-align: left;
         margin-top: 10px;
       }
@@ -103,7 +103,7 @@
         color: hsla(0, 0%, 52%, 1);
         text-align: left;
         width: 100%;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
       }
     }
@@ -138,11 +138,11 @@
         margin-bottom: 20px;
         min-width: 38vw;
         .title {
-          font-size: 20px;
+          font-size: 1.25rem;
           min-height: 50px;
         }
         .description {
-          font-size: 16px;
+          font-size: 1rem;
         }
       }
     }
@@ -153,13 +153,13 @@
   .blogSection {
     .right {
       .heading {
-        font-size: 36px;
+        font-size: 2.25rem;
       }
       .button {
-        font-size: 16px;
+        font-size: 1rem;
       }
       .finance {
-        font-size: 22px;
+        font-size: 1.375rem;
       }
     }
   }
@@ -173,7 +173,7 @@
     height: fit-content;
     .heading {
       margin-bottom: 50px;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 700;
     }
     .wrapper {
@@ -194,11 +194,11 @@
         text-align: center;
         cursor: pointer;
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
           min-height: unset;
         }
         .content {
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: 10px;
         }
       }
@@ -273,11 +273,11 @@
         .title {
         }
         .description {
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: 5px;
         }
         .time {
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
     }

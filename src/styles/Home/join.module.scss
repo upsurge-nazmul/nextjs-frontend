@@ -106,21 +106,21 @@
     align-items: center;
     flex-direction: column;
     .heading {
-      font-size: 46px;
+      font-size: 2.875rem;
       font-weight: 700;
       text-align: center;
     }
     .subheading {
       color: rgb(255, 255, 255);
       margin-top: 2vh;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 400;
       width: 80%;
       text-align: center;
     }
     .error {
       margin-top: 12px;
-      font-size: 16px;
+      font-size: 1rem;
       color: hsl(0, 0%, 100%);
       cursor: pointer;
       font-weight: 500;
@@ -138,7 +138,7 @@
       .email {
         border: none;
         border-radius: 8px;
-        font-size: 20px;
+        font-size: 1.25rem;
         width: 100%;
         max-width: 450px;
         padding: 0 20px;
@@ -150,7 +150,7 @@
         border-radius: 8px;
         background: #ececec;
         color: rgb(34, 34, 34);
-        font-size: 18px;
+        font-size: 1.125rem;
         width: 20%;
         max-width: 200px;
         display: flex;
@@ -215,13 +215,13 @@
     }
     .textContent {
       .heading {
-        font-size: 36px;
+        font-size: 2.25rem;
       }
       .subheading {
-        font-size: 16px;
+        font-size: 1rem;
       }
       .button {
-        font-size: 16px;
+        font-size: 1rem;
       }
     }
   }
@@ -296,7 +296,7 @@
         }
       }
       .subheading {
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
       .emailwrapper {
         display: flex;
@@ -308,7 +308,7 @@
         .email {
           border: none;
           border-radius: 8px;
-          font-size: 16px;
+          font-size: 1rem;
 
           padding: 0 20px;
           flex: 1;
@@ -317,7 +317,7 @@
           border-bottom-right-radius: 0;
         }
         .button {
-          font-size: 16px;
+          font-size: 1rem;
           display: flex;
           align-items: center;
           height: 100%;
@@ -444,7 +444,7 @@
       .subheading {
         color: rgb(255, 255, 255);
         margin-top: 2vh;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-size: $tablet-subheading;
         line-height: $tablet-subheading-line;
         font-weight: 400;
@@ -453,7 +453,7 @@
       }
       .error {
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 1rem;
         color: hsl(0, 0%, 100%);
         cursor: pointer;
         font-weight: 500;
@@ -471,7 +471,7 @@
         .email {
           border: none;
           border-radius: 8px;
-          font-size: 20px;
+          font-size: 1.25rem;
           width: 100%;
           max-width: 450px;
           padding: 0 20px;
@@ -483,7 +483,7 @@
           border-radius: 8px;
           background: #ececec;
           color: rgb(34, 34, 34);
-          font-size: 18px;
+          font-size: 1.125rem;
           width: 20%;
           max-width: 200px;
           display: flex;
@@ -566,7 +566,7 @@
     .textContent {
       z-index: 2;
       .heading {
-        font-size: 24px;
+        font-size: 1.5rem;
         .highlight {
           .underline {
             height: 6px;
@@ -575,7 +575,7 @@
       }
       .subheading {
         margin: 10px;
-        font-size: 12px;
+        font-size: 0.75rem;
         width: 70%;
       }
       .emailwrapper {
@@ -588,7 +588,7 @@
         .email {
           border: none;
           border-radius: 8px;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding: 0 20px;
           flex: 1;
           height: 100%;
@@ -596,7 +596,7 @@
           border-bottom-right-radius: 0;
         }
         .button {
-          font-size: 12px;
+          font-size: 0.75rem;
           display: flex;
           align-items: center;
           height: 100%;
@@ -690,7 +690,7 @@
         .email {
           border: none;
           border-radius: 8px;
-          font-size: 16px;
+          font-size: 1rem;
 
           padding: 0 20px;
           flex: 1;

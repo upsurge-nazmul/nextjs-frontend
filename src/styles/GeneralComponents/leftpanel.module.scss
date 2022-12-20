@@ -23,7 +23,7 @@
     .tab {
       color: rgb(201, 63, 62);
       font-weight: 400;
-      font-size: 16px;
+      font-size: 1rem;
       cursor: pointer;
       margin-bottom: 20px;
       transition: all 0.3s ease;
@@ -52,7 +52,7 @@
     .leftPanelContent {
       padding-left: 30px;
       .tab {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
       .cancelButton {
         cursor: pointer;

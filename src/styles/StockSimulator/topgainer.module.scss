@@ -21,7 +21,7 @@ $nutral-color: #ffa800;
       width: 100%;
       justify-content: space-between;
       .title {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -37,7 +37,7 @@ $nutral-color: #ffa800;
       }
     }
     .description {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
       color: $dark-font-color;
       padding-top: 10px;
@@ -65,7 +65,7 @@ $nutral-color: #ffa800;
           .item {
             flex: 1;
             text-align: right;
-            font-size: 12px;
+            font-size: 0.75rem;
             color: $light-font-color;
             &:first-child {
               flex: 3;
@@ -76,7 +76,7 @@ $nutral-color: #ffa800;
         .tableRow {
           @extend .headerRow;
           .item {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: $dark-font-color;
           }
         }
@@ -86,28 +86,28 @@ $nutral-color: #ffa800;
       flex: 0.75;
       .selected {
         .title {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 500;
           color: $dark-font-color;
           padding: 10px 0;
         }
         .name {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 700;
           color: $dark-font-color;
         }
         .symbol {
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
           color: $light-font-color;
         }
         .close {
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 700;
           padding: 10px 0 0;
         }
         .return {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 700;
           padding: 2px 0;
           display: flex;
@@ -125,7 +125,7 @@ $nutral-color: #ffa800;
           color: $nutral-color;
         }
         .date {
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
           color: $light-font-color;
         }
@@ -139,7 +139,7 @@ $nutral-color: #ffa800;
             cursor: pointer;
             background-color: $primary-color;
             color: #fff;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 8px 52px;
             border-radius: 8px;
           }
@@ -153,7 +153,7 @@ $nutral-color: #ffa800;
         align-items: center;
         border: 1px dotted $light-font-color;
         color: $light-font-color;
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 600;
       }
       .loadinArea {
@@ -176,7 +176,7 @@ $nutral-color: #ffa800;
     .result {
       width: 100%;
       text-align: center;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 700;
       padding: 6px 0;
     }
@@ -198,18 +198,18 @@ $nutral-color: #ffa800;
       gap: 80px;
       .common {
         .title {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           color: $light-font-color;
           padding: 6px 0;
         }
         .name {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 400;
           color: $dark-font-color;
         }
         .symbol {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 300;
           color: $light-font-color;
         }
@@ -238,7 +238,7 @@ $nutral-color: #ffa800;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -254,7 +254,7 @@ $nutral-color: #ffa800;
         }
       }
       .description {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -284,7 +284,7 @@ $nutral-color: #ffa800;
             .item {
               flex: 1;
               text-align: right;
-              font-size: 12px;
+              font-size: 0.75rem;
               color: $light-font-color;
               &:first-child {
                 flex: 3;
@@ -306,28 +306,28 @@ $nutral-color: #ffa800;
         min-width: 100%;
         .selected {
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             color: $dark-font-color;
             padding: 0;
           }
           .name {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 700;
             color: $dark-font-color;
           }
           .symbol {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             color: $light-font-color;
           }
           .close {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
             padding: 10px 0 0;
           }
           .return {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 700;
             padding: 2px 0;
             display: flex;
@@ -341,7 +341,7 @@ $nutral-color: #ffa800;
             color: $sell-color;
           }
           .date {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             color: $light-font-color;
           }
@@ -355,7 +355,7 @@ $nutral-color: #ffa800;
               cursor: pointer;
               background-color: $primary-color;
               color: #fff;
-              font-size: 12px;
+              font-size: 0.75rem;
               padding: 8px 52px;
               border-radius: 8px;
             }
@@ -369,7 +369,7 @@ $nutral-color: #ffa800;
           align-items: center;
           border: 1px dotted $light-font-color;
           color: $light-font-color;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 600;
         }
       }
@@ -382,11 +382,11 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       .message {
-        font-size: 18px;
+        font-size: 1.125rem;
         color: $dark-font-color;
         .highlight {
           color: #000;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           font-style: italic;
           padding: 0 4px;
@@ -410,7 +410,7 @@ $nutral-color: #ffa800;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -426,7 +426,7 @@ $nutral-color: #ffa800;
         }
       }
       .description {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -454,7 +454,7 @@ $nutral-color: #ffa800;
             .item {
               flex: 1;
               text-align: right;
-              font-size: 12px;
+              font-size: 0.75rem;
               color: $light-font-color;
               &:first-child {
                 flex: 3;
@@ -465,7 +465,7 @@ $nutral-color: #ffa800;
           .tableRow {
             @extend .headerRowTP;
             .item {
-              font-size: 14px;
+              font-size: 0.875rem;
               color: $dark-font-color;
             }
           }
@@ -475,28 +475,28 @@ $nutral-color: #ffa800;
         flex: 0.75;
         .selected {
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             color: $dark-font-color;
             padding: 10px 0;
           }
           .name {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 700;
             color: $dark-font-color;
           }
           .symbol {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             color: $light-font-color;
           }
           .close {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
             padding: 10px 0 0;
           }
           .returnTP {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 700;
             padding: 2px 0;
             display: flex;
@@ -510,7 +510,7 @@ $nutral-color: #ffa800;
             color: $sell-color;
           }
           .date {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             color: $light-font-color;
           }
@@ -524,7 +524,7 @@ $nutral-color: #ffa800;
               cursor: pointer;
               background-color: $primary-color;
               color: #fff;
-              font-size: 12px;
+              font-size: 0.75rem;
               padding: 8px 52px;
               border-radius: 8px;
             }
@@ -538,7 +538,7 @@ $nutral-color: #ffa800;
           align-items: center;
           border: 1px dotted $light-font-color;
           color: $light-font-color;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 600;
         }
       }
@@ -551,11 +551,11 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       .message {
-        font-size: 18px;
+        font-size: 1.125rem;
         color: $dark-font-color;
         .highlight {
           color: #000;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           font-style: italic;
           padding: 0 4px;

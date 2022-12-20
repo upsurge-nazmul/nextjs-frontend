@@ -29,7 +29,7 @@
         .badge {
           background-color: #ff6163;
           color: #fff;
-          font-size: 12px;
+          font-size: 0.75rem;
           border-radius: 20px;
           padding: 4px 12px;
         }
@@ -44,7 +44,7 @@
     justify-content: center;
     align-items: center;
     color: #1673c8;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
   }
   &:active {
@@ -84,7 +84,7 @@
       flex-direction: column;
       width: 80%;
       .details {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         padding-bottom: 10px;
       }
@@ -106,7 +106,7 @@
           background-color: #1673c8;
           color: #fff;
           border-radius: 14px;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding: 10px 20px;
           width: 100%;
         }

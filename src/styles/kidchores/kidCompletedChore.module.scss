@@ -26,13 +26,13 @@
     min-width: 20%;
     flex: 1;
     .task {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
     }
     .to {
       font-style: normal;
       font-weight: normal;
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #828282;
     }
   }
@@ -120,13 +120,13 @@
       margin-right: 10px;
       min-width: 70px;
       .task {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 500;
       }
       .to {
         font-style: normal;
         font-weight: normal;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: #828282;
       }
     }

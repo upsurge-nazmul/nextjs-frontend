@@ -44,7 +44,7 @@
             align-items: center;
             height: 64px;
             color: rgba(106, 106, 106, 1);
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             padding: 0 10px;
             .blacnkhead1 {
@@ -81,12 +81,12 @@
             text-align: center;
             color: #6d6d6d;
             transition: all 0.3s ease;
-            font-size: 16px;
+            font-size: 1rem;
             cursor: pointer;
             font-weight: 500;
             margin: 10px 0;
             &:hover {
-              font-size: 18px;
+              font-size: 1.125rem;
               color: hsl(0, 0%, 0%);
             }
           }
@@ -107,12 +107,12 @@
               text-align: center;
               color: #6d6d6d;
               transition: all 0.3s ease;
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 500;
             }
             &:hover {
               p {
-                font-size: 18px;
+                font-size: 1.125rem;
                 color: hsl(0, 0%, 100%);
               }
               box-shadow: #4166eb 0px -70px 0px 0px inset;
@@ -162,17 +162,17 @@
             height: 64px;
             color: rgba(106, 106, 106, 1);
             .head1 {
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
               margin-left: 12%;
             }
             .head2 {
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
               margin-left: 16.5%;
             }
             .head3 {
-              font-size: 12px;
+              font-size: 0.75rem;
               margin-left: 8%;
               font-weight: 400;
             }
@@ -201,7 +201,7 @@
             display: flex;
             .heading {
               font-weight: 400;
-              font-size: 22px;
+              font-size: 1.375rem;
               color: #a7a7a7;
               display: flex;
               align-items: center;
@@ -249,7 +249,7 @@
             background: #17d1bc;
             border-radius: 8px;
             color: white;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             height: 63px;
             margin-right: 40px;
@@ -270,7 +270,7 @@
           }
           .subheading {
             color: rgba(157, 157, 157, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             text-align: center;
             margin-top: 12px;
@@ -323,7 +323,7 @@
             background: #17d1bc;
             border-radius: 8px;
             color: white;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             height: 63px;
             margin-right: 40px;
@@ -344,7 +344,7 @@
           }
           .subheading {
             color: rgba(157, 157, 157, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             text-align: center;
             margin-top: 12px;
@@ -416,7 +416,7 @@
           }
           .pendingChoresSection {
             .heading {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
             .wrapper {
               padding: 0 10px 10px 0px;
@@ -429,7 +429,7 @@
             flex-direction: column;
             .headingWrapper {
               .heading {
-                font-size: 22px;
+                font-size: 1.375rem;
                 align-items: center;
                 margin-right: 25px;
               }
@@ -449,7 +449,7 @@
             margin-top: 20px;
             .heading {
               font-weight: 500;
-              font-size: 22px;
+              font-size: 1.375rem;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -458,7 +458,7 @@
               }
             }
             .button {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 500;
               height: 53px;
             }
@@ -480,7 +480,7 @@
             margin-top: 20px;
             .heading {
               font-weight: 500;
-              font-size: 22px;
+              font-size: 1.375rem;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -496,7 +496,7 @@
               background: #17d1bc;
               border-radius: 8px;
               color: white;
-              font-size: 18px;
+              font-size: 1.125rem;
               font-weight: 500;
               height: 63px;
               margin-right: 40px;
@@ -517,7 +517,7 @@
             }
             .subheading {
               color: rgba(157, 157, 157, 1);
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 500;
               text-align: center;
               margin-top: 12px;
@@ -663,7 +663,7 @@
           padding: 0 10px 0 20px;
           .pendingChoresSection {
             .heading {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .wrapper {
               padding: 0 5px 0 0;
@@ -672,7 +672,7 @@
           .choreSection {
             .headingWrapper {
               .heading {
-                font-size: 16px;
+                font-size: 1rem;
                 margin-right: 15px;
               }
             }
@@ -687,7 +687,7 @@
             width: 100%;
             margin-top: 40px;
             .heading {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .button {
               height: 45px;
@@ -720,7 +720,7 @@
             width: 100%;
             margin-top: 15px;
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
               svg {
                 margin-left: 5px;
                 width: 15px;
@@ -766,7 +766,7 @@
             margin-top: 0px;
             .heading {
               font-weight: 500;
-              font-size: 18px;
+              font-size: 1.125rem;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -784,7 +784,7 @@
           }
           .pendingChoresSection {
             .heading {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .wrapper {
               padding: 0 5px 0 0;
@@ -793,7 +793,7 @@
           .choreSection {
             .headingWrapper {
               .heading {
-                font-size: 16px;
+                font-size: 1rem;
                 margin-right: 15px;
               }
             }
@@ -808,7 +808,7 @@
             width: 100%;
             margin-top: 40px;
             .heading {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .button {
               height: 45px;

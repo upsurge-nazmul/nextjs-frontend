@@ -110,13 +110,13 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 20px;
+          font-size: 1.25rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
           }
         }
-  
+
         .button {
           width: 5vw;
           min-width: fit-content;
@@ -157,10 +157,10 @@
       .brandtext {
         margin-top: 2vh;
         .heading {
-          font-size: 15px;
+          font-size: 0.9375rem;
         }
         .subheadings {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-top: 10px;
           display: flex;
           align-items: center;
@@ -174,7 +174,7 @@
             }
           }
         }
-        
+
         .whatsapp {
           background-color: #25d366;
           padding: 10px;
@@ -187,11 +187,11 @@
           font-weight: 500;
           margin-top: 10px;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-right: 8px;
           }
           &:hover {
@@ -199,7 +199,7 @@
           }
         }
         .bottom {
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: 10px;
           display: flex;
           p {
@@ -248,14 +248,14 @@
         flex-direction: column;
         margin-right: 20px;
         .heading {
-          font-size: 17px;
+          font-size: 1.0625rem;
           margin-bottom: 10px;
           margin-bottom: 25px;
           color: rgba(65, 102, 235, 1);
           font-weight: 400;
         }
         .subheading {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-bottom: 20px;
           cursor: pointer;
           text-transform: capitalize;
@@ -276,10 +276,10 @@
     padding-bottom: 40px;
     .brandtext {
       .heading {
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
       .subheadings {
-        font-size: 15px;
+        font-size: 0.9375rem;
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -305,11 +305,11 @@
         font-weight: 500;
         margin-top: 10px;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         .icon {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-right: 8px;
         }
         &:hover {
@@ -317,7 +317,7 @@
         }
       }
       .bottom {
-        font-size: 14px;
+        font-size: 0.875rem;
         margin-top: 10px;
         display: flex;
         p {
@@ -359,7 +359,7 @@
     display: flex;
     justify-content: center;
     margin: 40px 0 20px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: rgb(59, 59, 59);
   }
 }
@@ -406,11 +406,11 @@
       .brandtext {
         margin-top: 2vh;
         .heading {
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: $d-text1;
         }
         .subheadings {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-top: 10px;
           display: flex;
           align-items: center;
@@ -436,11 +436,11 @@
           font-weight: 500;
           margin-top: 10px;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-right: 8px;
           }
           &:hover {
@@ -448,7 +448,7 @@
           }
         }
         .bottom {
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: 10px;
           display: flex;
           p {
@@ -497,14 +497,14 @@
         flex-direction: column;
         margin-right: 20px;
         .heading {
-          font-size: 17px;
+          font-size: 1.0625rem;
           margin-bottom: 10px;
           margin-bottom: 25px;
           color: rgba(65, 102, 235, 1);
           font-weight: 400;
         }
         .subheading {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-bottom: 20px;
           cursor: pointer;
           text-transform: capitalize;
@@ -534,7 +534,7 @@
       }
       .heading {
         width: 100%;
-        font-size: 18px;
+        font-size: 1.125rem;
         display: flex;
         justify-content: space-between;
         color: $d-text2;
@@ -573,10 +573,10 @@
       flex-direction: column;
       align-items: center;
       margin-top: 30px;
-      font-size: 16px;
+      font-size: 1rem;
       justify-content: space-around;
       p {
-        font-size: 16px;
+        font-size: 1rem;
         margin-bottom: 10px;
       }
       .whatsapp {
@@ -591,11 +591,11 @@
         font-weight: 500;
         margin-bottom: 10px;
         text-decoration: none;
-        font-size: 12px;
+        font-size: 0.75rem;
         cursor: pointer;
         transition: all 0.3s ease;
         .icon {
-          font-size: 18px;
+          font-size: 1.125rem;
           margin-right: 5px;
         }
         &:hover {
@@ -620,7 +620,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 16px;
+        font-size: 1rem;
         .terms {
           margin-right: 10px;
           color: $d-text2;
@@ -637,10 +637,10 @@
     padding-bottom: 40px;
     .brandtext {
       .heading {
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
       .subheadings {
-        font-size: 15px;
+        font-size: 0.9375rem;
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -666,11 +666,11 @@
         font-weight: 500;
         margin-top: 10px;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         .icon {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-right: 8px;
         }
         &:hover {
@@ -678,7 +678,7 @@
         }
       }
       .bottom {
-        font-size: 14px;
+        font-size: 0.875rem;
         margin-top: 10px;
         display: flex;
         p {
@@ -743,7 +743,7 @@
           width: 180px;
         }
         .details {
-          font-size: 18px;
+          font-size: 1.125rem;
           margin-top: auto;
           .heading {
             font-weight: 400;
@@ -772,7 +772,7 @@
           width: 100%;
           p {
             margin-right: 20px;
-            font-size: 15px;
+            font-size: 0.9375rem;
             cursor: pointer;
             font-weight: 400;
           }
@@ -788,14 +788,14 @@
           display: flex;
           flex-direction: column;
           .heading {
-            font-size: 17px;
+            font-size: 1.0625rem;
             margin-bottom: 10px;
             margin-bottom: 25px;
             color: rgba(65, 102, 235, 1);
             font-weight: 400;
           }
           .subheading {
-            font-size: 15px;
+            font-size: 0.9375rem;
             margin-bottom: 20px;
             cursor: pointer;
             font-weight: 400;
@@ -810,10 +810,10 @@
       display: flex;
       width: 100%;
       .heading {
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
       .subheadings {
-        font-size: 15px;
+        font-size: 0.9375rem;
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -875,7 +875,7 @@
         }
         .heading {
           width: 100%;
-          font-size: 18px;
+          font-size: 1.125rem;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -909,10 +909,10 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
-          font-size: 16px;
+          font-size: 1rem;
           margin-bottom: 10px;
         }
         .whatsapp {
@@ -927,11 +927,11 @@
           font-weight: 500;
           margin-bottom: 10px;
           text-decoration: none;
-          font-size: 12px;
+          font-size: 0.75rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-right: 5px;
           }
           &:hover {
@@ -956,7 +956,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
           .terms {
             margin-right: 10px;
           }
@@ -1037,7 +1037,7 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
           font-size: $tablet-subheading;
@@ -1086,7 +1086,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
           .terms {
             margin-right: 10px;
           }
@@ -1111,7 +1111,7 @@
         padding: 0 10px;
         margin-top: 20px;
         .subheading {
-          font-size: 12px;
+          font-size: 0.75rem;
           text-transform: capitalize;
           margin-bottom: 10px;
           &:nth-child(2) {
@@ -1120,7 +1120,7 @@
         }
         .heading {
           width: 100%;
-          font-size: 14px;
+          font-size: 0.875rem;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -1151,10 +1151,10 @@
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
-        font-size: 12px;
+        font-size: 0.75rem;
         justify-content: space-around;
         p {
-          font-size: 12px;
+          font-size: 0.75rem;
           margin-bottom: 10px;
         }
         .subheadings {
@@ -1216,7 +1216,7 @@
         }
         .heading {
           width: 100%;
-          font-size: 18px;
+          font-size: 1.125rem;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -1250,10 +1250,10 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
-          font-size: 16px;
+          font-size: 1rem;
           margin-bottom: 10px;
         }
         .whatsapp {
@@ -1268,11 +1268,11 @@
           font-weight: 500;
           margin-bottom: 10px;
           text-decoration: none;
-          font-size: 12px;
+          font-size: 0.75rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-right: 5px;
           }
           &:hover {
@@ -1297,11 +1297,11 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
           .terms {
             margin: 0;
             margin-right: 10px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }
@@ -1344,7 +1344,7 @@
         }
         .heading {
           width: 100%;
-          font-size: 18px;
+          font-size: 1.125rem;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -1378,10 +1378,10 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
-          font-size: 16px;
+          font-size: 1rem;
           margin-bottom: 10px;
         }
         .whatsapp {
@@ -1396,11 +1396,11 @@
           font-weight: 500;
           margin-bottom: 10px;
           text-decoration: none;
-          font-size: 12px;
+          font-size: 0.75rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-right: 5px;
           }
           &:hover {
@@ -1425,11 +1425,11 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
           .terms {
             margin: 0;
             margin-right: 10px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }
