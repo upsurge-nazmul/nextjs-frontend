@@ -1,4 +1,9 @@
-module.exports = {
+const withPWA = require('next-pwa')({
+  dest: 'public',
+})
+
+
+module.exports = withPWA({
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
@@ -12,4 +17,4 @@ module.exports = {
     ],
   },
   swcMinify: true,
-};
+});

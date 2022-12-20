@@ -157,7 +157,6 @@ export default function ChildActivity({
       content: `You can go back to home page, by clicking upsurge logo.`,
     },
   ];
-
   return (
     <div className={styles.childactivity}>
       <PageTitle title={`upsurge | Dashboard`} />
@@ -183,7 +182,11 @@ export default function ChildActivity({
         {userdatafromserver && !userdatafromserver.email_verified && (
           <EmailVerificationPending settoastdata={settoastdata} />
         )}
-        <EditProfilePending />
+         {userdatafromserver && !userdatafromserver.profile_completed && (
+          <EditProfilePending />
+          )
+        }
+        
         {showtodo && (
           <TodoList
             data={tododata.list}
@@ -198,6 +201,10 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
+          {userdatafromserver && !userdatafromserver.email_verified && (
+            <EmailVerificationPending settoastdata={settoastdata} />
+          )}
+          <EditProfilePending />
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
