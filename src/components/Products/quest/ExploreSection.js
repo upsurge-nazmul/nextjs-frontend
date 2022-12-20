@@ -18,7 +18,7 @@ const ExploreSection = () => {
         </li>
         <li className={styles.listWrap}>
           Receive detailed course information and updates to monitor your
-          child's progress.
+          child&apos;s progress.
         </li>
         <li className={styles.listWrap}>
           Enjoy engaging, collaborative, and amusing activities with your

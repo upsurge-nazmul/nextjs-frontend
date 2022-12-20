@@ -12,6 +12,7 @@ const ExpertsSection = () => {
             src={"/images/quest/HU_logo.png"}
             layout="fill"
             className={styles.logo}
+            alt=" "
           />
         </div>
 
@@ -20,6 +21,7 @@ const ExpertsSection = () => {
             src={"/images/quest/ISB_logo.png"}
             layout="fill"
             className={styles.logo}
+            alt= " "
           />
         </div>
 
@@ -28,6 +30,7 @@ const ExpertsSection = () => {
             src={"/images/quest/IIM_logo.png"}
             layout="fill"
             className={styles.logo}
+            alt=" "
           />
         </div>
       </div>
