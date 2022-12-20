@@ -157,7 +157,6 @@ export default function ChildActivity({
       content: `You can go back to home page, by clicking upsurge logo.`,
     },
   ];
-
   return (
     <div className={styles.childactivity}>
       <PageTitle title={`upsurge | Dashboard`} />
@@ -180,6 +179,14 @@ export default function ChildActivity({
           setmode={setmode}
           settoastdata={settoastdata}
         />
+        {userdatafromserver && !userdatafromserver.email_verified && (
+          <EmailVerificationPending settoastdata={settoastdata} />
+        )}
+         {userdatafromserver && !userdatafromserver.profile_completed && (
+          <EditProfilePending />
+          )
+        }
+        
         {showtodo && (
           <TodoList
             data={tododata.list}
