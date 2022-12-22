@@ -130,119 +130,7 @@
 .stickywithannouncement {
   height: 120px;
 }
-@media only screen and (min-width: 1000px) {
-  .header {
-    .container {
-      padding-left: 7%;
-      padding-right: 7%;
-      .hamburger {
-        display: none;
-      }
-      .nav {
-        display: flex;
-      }
-      .logoContainer {
-        flex: none;
-        padding-left: 0px;
-      }
-    }
-  }
-}
 
-@media only screen and (min-width: 900px) and (max-height: 900px) {
-  .header {
-    height: 100px;
-    .ticker {
-      font-size: 0.875rem;
-      padding: 8px;
-    }
-    .container {
-      padding-left: 7%;
-      padding-right: 7%;
-      .hamburger {
-        left: 7%;
-      }
-      .logoContainer {
-        cursor: pointer;
-        flex: 1;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        img {
-          width: 30vw;
-          max-width: 300px;
-        }
-      }
-    }
-  }
-  .sticky {
-    position: fixed;
-    height: 80px;
-    top: 0;
-    box-shadow: 0px 26px 74px rgba(65, 153, 235, 0.06);
-    z-index: 105;
-  }
-  .stickywithannouncement {
-    height: 110px;
-  }
-}
-
-@media only screen and (max-width: 860px) {
-  .header {
-    scroll-snap-align: start;
-    height: 100px;
-    .ticker {
-      padding-right: 10%;
-      text-align: center;
-      .btn {
-        font-size: 10px;
-        border-radius: 5px;
-        margin-left: 10px;
-        padding: 2.5px 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-    }
-    .container {
-      padding-left: 7%;
-      padding-right: 7%;
-      position: relative;
-      align-items: center;
-      .hamburger {
-        left: 7%;
-        width: 20px;
-      }
-      .logoContainer {
-        flex: 1;
-        padding-left: 38px;
-        svg {
-          width: 40vw;
-          max-width: 200px;
-          height: 35px;
-        }
-      }
-      .noNavLogoContainer {
-        flex: 1;
-        padding-left: 0;
-        justify-content: flex-start;
-      }
-      .signin {
-        height: 35px;
-        padding: 10px 15px;
-        border-radius: 12px;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 0.75rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease;
-      }
-    }
-  }
-  .sticky {
-  }
-}
 @media only screen and (max-width: 500px) {
   .header {
     scroll-snap-align: start;
@@ -259,7 +147,7 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .header {
     height: 100px;
     .ticker {
@@ -303,5 +191,24 @@
   }
   .stickywithannouncement {
     height: 110px;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .header {
+    .container {
+      padding-left: 7%;
+      padding-right: 7%;
+      .hamburger {
+        display: none;
+      }
+      .nav {
+        display: flex;
+      }
+      .logoContainer {
+        flex: none;
+        padding-left: 0px;
+      }
+    }
   }
 }
