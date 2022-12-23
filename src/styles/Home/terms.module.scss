@@ -128,7 +128,7 @@
   }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .terms {
     position: fixed;
     display: flex;
@@ -240,7 +240,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
   .terms {
     position: fixed;
     display: flex;
