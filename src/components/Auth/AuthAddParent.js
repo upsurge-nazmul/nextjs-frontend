@@ -7,6 +7,7 @@ import CircleWarning from "../SVGcomponents/CircleWarning";
 import ParentSignupOtp from "./ParentSignupOtp";
 import styles from "../../styles/WaitlistDashboard/parentlogin.module.scss";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import OnboardingParent from "../OnboardingParent";
 
 function AuthAddParent({ parentEmail, childId, settoastdata }) {
   const [passisweak, setpassisweak] = useState(false);
@@ -149,10 +150,20 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
       setloading(false);
     }
   }
+  const [showOnboarding, setShowOnboarding] = useState(true);
   return (
     <>
       {otpSent ? (
         <div>
+          {showOnboarding ? (
+            <OnboardingParent
+              setOpen={setShowOnboarding}
+              actionHandler={() => {
+                setShowOnboarding(false)
+              }}
+            />
+            ) :("")
+          }
           <ParentSignupOtp parentData={newParentData} />
         </div>
       ) : (
