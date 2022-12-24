@@ -108,7 +108,9 @@ function DashboardHeader({
           </div>
         )} */}
         {userdata?.user_type !== "parent" && (
-          <div className={styles.rewardBlock}>
+          <div className={styles.rewardBlock}
+          onClick={() => router.push("/dashboard/k/store")}
+          >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
               {userdata?.num_unicoins

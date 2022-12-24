@@ -72,6 +72,7 @@
       display: flex;
       align-items: center;
       border-radius: 4rem;
+      cursor: pointer;
       .svg {
         min-width: 1rem;
         max-height: 1rem;
@@ -81,10 +82,10 @@
         }
       }
       .number {
-        cursor: context-menu;
         font-size: 16px;
         font-weight: 500;
         color: white;
+        cursor: pointer;
       }
     }
     .icon {
