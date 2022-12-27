@@ -7,6 +7,7 @@ export default function HamSvg({ className, onClick }) {
       fill="rgb(209, 68, 67)"
       width="40px"
       height="40px"
+      className={className}
       data-ux="IconHamburger"
     >
       <g>
