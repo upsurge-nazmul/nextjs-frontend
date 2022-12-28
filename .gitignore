@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+
 # dependencies
 /node_modules
 /.pnp
@@ -8,6 +9,8 @@
 public/sitemap-0.xml
 public/robots.txt
 public/sitemap.xml
+public/sw.js.map
+public/workbox-327c579b.js.map
 yarn.lock
 # testing
 /coverage
