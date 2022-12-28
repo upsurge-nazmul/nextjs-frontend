@@ -56,6 +56,8 @@ function ParentChildAuth({
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
   const [loading, setloading] = useState(false);
+  //adding coupon code input field
+  const [coupon, setCoupon] = useState("");
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -329,6 +331,14 @@ function ParentChildAuth({
           value={username}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setusername(e.target.value)}
+        />
+        <input
+          type="text"
+          name="coupon"
+          placeholder="Coupon Code"
+          value={coupon}
+          pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
+          onChange={(e) => setCoupon(e.target.value)}
         />
         {password !== "" && passisweak && (
           <>
