@@ -28,12 +28,12 @@ $card-height: auto;
       padding: 5px 0 10px;
       .title {
         flex: 1;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 300;
         color: #484848;
       }
       .reward {
-        font-size: 12px;
+        font-size: 0.75rem;
         display: flex;
         gap: 5px;
         padding: 5px 0;
@@ -56,7 +56,7 @@ $card-height: auto;
         }
         .dueText {
           word-wrap: break-word;
-          font-size: 12px;
+          font-size: 0.75rem;
           color: #666666;
         }
       }
@@ -70,7 +70,7 @@ $card-height: auto;
         cursor: pointer;
         padding: 1rem;
         border-radius: $border-radius;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 600;
         display: flex;
         justify-content: center;

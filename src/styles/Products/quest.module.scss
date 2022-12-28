@@ -114,12 +114,12 @@
     margin-left: 7%;
     margin-top: 5%;
     .heading {
-      font-size: 48px;
+      font-size: 3rem;
       font-weight: 700;
       width: 100%;
     }
     .subheading {
-      font-size: 18px;
+      font-size: 1.125rem;
       line-height: 32px;
       font-weight: 400;
       max-width: 750px;
@@ -138,17 +138,17 @@
         flex-direction: column;
         align-items: center;
         .number {
-          font-size: 36px;
+          font-size: 2.25rem;
         }
         .name {
-          font-size: 14px;
+          font-size: 0.875rem;
         }
       }
     }
     .secondheading {
       margin-top: 34px;
       font-weight: 600;
-      font-size: 24px;
+      font-size: 1.5rem;
       color: #4166eb;
     }
     .conceptswrapper {
@@ -165,7 +165,7 @@
         border: 0.5px solid #9d9d9d;
         border-radius: 4px;
         margin: 5px;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #1f1f1f;
       }
     }
@@ -209,7 +209,7 @@
         display: flex;
         align-items: center;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 1.25rem;
         padding-left: 15px;
         ::placeholder {
           color: rgba(198, 198, 198, 1);
@@ -331,7 +331,7 @@
         font-size: 40px;
       }
       .subheading {
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 28px;
         max-width: 550px;
       }
@@ -343,18 +343,18 @@
             font-size: 26px;
           }
           .name {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }
       .secondheading {
         margin-top: 24px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
       .conceptswrapper {
         margin-top: 10px;
         .concept {
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
     }
@@ -409,10 +409,10 @@
       margin-top: 50px;
       padding-top: 0px;
       .heading {
-        font-size: 36px;
+        font-size: 2.25rem;
       }
       .subheading {
-        font-size: 14px;
+        font-size: 0.875rem;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -428,13 +428,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -469,7 +469,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -498,7 +498,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 14px;
+          font-size: 0.875rem;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -530,15 +530,15 @@
         input {
           border-top-left-radius: 10px;
           border-bottom-left-radius: 10px;
-          font-size: 12px;
+          font-size: 0.75rem;
           padding-left: 10px;
           &::placeholder {
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .button,
         .joinButton {
-          font-size: 14px;
+          font-size: 0.875rem;
         }
       }
     }
@@ -610,7 +610,7 @@
         width: 100%;
       }
       .heading {
-        font-size: 32px;
+        font-size: 2rem;
       }
       .subheading {
         max-width: 80vw;
@@ -758,10 +758,10 @@
       margin-top: 20px;
       padding-top: 0px;
       .heading {
-        font-size: 24px;
+        font-size: 1.5rem;
       }
       .subheading {
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -777,13 +777,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -824,7 +824,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -853,7 +853,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 14px;
+          font-size: 0.875rem;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -928,10 +928,10 @@
       margin-top: 20px;
       padding-top: 0px;
       .heading {
-        font-size: 24px;
+        font-size: 1.5rem;
       }
       .subheading {
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -947,13 +947,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -994,7 +994,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 0.875rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -1023,7 +1023,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 14px;
+          font-size: 0.875rem;
           display: flex;
           align-items: center;
           justify-content: center;

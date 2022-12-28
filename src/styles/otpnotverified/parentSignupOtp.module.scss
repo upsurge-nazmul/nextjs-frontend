@@ -18,7 +18,7 @@
       position: relative;
       transition: all 0.3s ease;
       .error {
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         font-weight: 500;
         margin-bottom: 15px;
@@ -36,7 +36,7 @@
         align-items: center;
         .heading {
           font-weight: 500;
-          font-size: 32px;
+          font-size: 2rem;
           display: flex;
           align-items: center;
           transition: all 0.3s ease;
@@ -56,7 +56,7 @@
         }
         .changemode {
           font-weight: 500;
-          font-size: 16px;
+          font-size: 1rem;
           span {
             cursor: pointer;
             color: rgba(65, 102, 235, 1);
@@ -72,7 +72,7 @@
         box-sizing: border-box;
         border-radius: 14px;
         font-family: "Lexend", sans-serif;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 400;
         width: 100%;
         height: 59px;
@@ -83,7 +83,7 @@
         }
       }
       .notverifiedtext {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 500;
         text-align: center;
         margin-bottom: 30px;
@@ -94,12 +94,12 @@
         justify-content: center;
         margin-bottom: 10px;
         .text {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           text-align: center;
         }
@@ -117,7 +117,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         margin-top: 12px;
         text-align: center;
@@ -135,7 +135,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 22px;
         &:hover {

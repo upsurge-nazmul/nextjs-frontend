@@ -1,58 +1,57 @@
 .button {
-    color:#fff;
-    width: 12vw;
-    margin: 2rem auto;
-    min-width: fit-content;
-    height: 6vh;
-    font-size: clamp(12px, 1vw, 18px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    border-radius: 6px;
-    padding: 0 20px;
-    background-color: hsl(227, 81%, 59%);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    &:hover {
-      background-color: hsl(227, 100%, 59%);
-    }
+  color: #fff;
+  width: 12vw;
+  margin: 2rem auto;
+  min-width: fit-content;
+  height: 6vh;
+  font-size: clamp(12px, 1vw, 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 0 20px;
+  background-color: hsl(227, 81%, 59%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: hsl(227, 100%, 59%);
   }
-  .inDasButton{
-    color:#fff;
-    background-color: #4066ea;
-    width: 7rem;
-    min-width: fit-content;
-    height: 3rem;
-    font-size: clamp(0.8rem, 1.3rem, 1.8rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight:500;
-    border-radius: 33rem;
-    padding: 0 2rem;
-
+}
+.inDasButton {
+  color: #fff;
+  background-color: #4066ea;
+  width: 7rem;
+  min-width: fit-content;
+  height: 3rem;
+  font-size: clamp(0.8rem, 1.3rem, 1.8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 33rem;
+  padding: 0 2rem;
+}
+@media only screen and (max-width: 500px) {
+  .inDasButton {
+    margin-left: 2.5rem;
   }
-  @media only screen and (max-width: 711px) {
-    .inDasButton{
-      margin-left: 2.5rem;
-    }
+}
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .inDasButton {
+    margin-left: 1.5rem;
   }
-  @media only screen and (max-width: 1024px) {
-    .inDasButton{
-      margin-left: 1.5rem;
-    }
-  }
-  .errsignbox {
+}
+.errsignbox {
   margin-top: 3vh;
-  }
-  .error {
+}
+.error {
   display: flex;
   justify-content: center;
   margin: 1rem auto;
-  width:12vw;
+  width: 12vw;
   font-size: clamp(12px, 1.5vw, 16px);
   color: hsl(0, 81%, 71%);
   cursor: pointer;
   font-weight: 500;
-  }
+}

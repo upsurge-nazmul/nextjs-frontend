@@ -10,7 +10,7 @@
     }
     .text {
       margin-left: 10px;
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 500;
       .heading {
         color: rgba(167, 167, 167, 1);
@@ -44,11 +44,11 @@
         flex: 1;
         height: 100%;
         .name {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
         }
         .time {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 400;
           color: rgba(130, 130, 130, 1);
         }
@@ -79,7 +79,7 @@
         width: 15px;
       }
       .text {
-        font-size: 18px;
+        font-size: 1.125rem;
       }
     }
     .wrapper {
@@ -96,7 +96,7 @@
         .text {
           padding-top: 5px;
           .name {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 500;
           }
           .time {

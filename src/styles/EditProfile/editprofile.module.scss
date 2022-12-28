@@ -96,7 +96,7 @@
         }
         .error {
           color: rgb(255, 83, 83);
-          font-size: 14px;
+          font-size: 0.875rem;
           padding-left: 5px;
           margin-bottom: 10px;
         }
@@ -105,7 +105,7 @@
         }
         input {
           height: 49px;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-family: "Lexend", sans-serif;
           font-weight: 500;
           border: 1px solid #898989;
@@ -123,7 +123,7 @@
           border: 1px solid #898989;
           border-radius: 8px;
           padding: 0 20px;
-          font-size: 14px;
+          font-size: 0.875rem;
           width: 100%;
           font-weight: 400;
           background-color: white;
@@ -140,7 +140,7 @@
             bottom: 10px;
             right: 10px;
             font-family: "Lexend", sans-serif;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 400;
           }
           textarea {
@@ -150,7 +150,7 @@
             border: 1px solid #898989;
             border-radius: 8px;
             padding: 20px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 400;
             resize: none;
           }
@@ -168,7 +168,7 @@
           color: rgba(188, 188, 188, 1);
           background-color: white;
           height: 49px;
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 400;
           display: flex;
           align-items: center;
@@ -205,7 +205,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 18px;
+          font-size: 1.125rem;
           transition: all 0.3s ease;
           &:hover {
             background-color: #f4f5f7;
@@ -226,7 +226,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 18px;
+          font-size: 1.125rem;
           transition: all 0.3s ease;
           &:hover {
             background: #5e5e5e;
@@ -252,7 +252,7 @@
         width: 30%;
         .heading {
           font-family: "Lexend", sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
         }
         .button {
@@ -263,7 +263,7 @@
           height: 63px;
           width: 100%;
           font-family: "Lexend", sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
           color: #000000;
           background: #d2d2d2;
@@ -342,7 +342,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 100%;
-            font-size: 12px;
+            font-size: 0.75rem;
             cursor: pointer;
             background-color: rgba(26, 26, 26, 0.527);
             color: white;
@@ -363,7 +363,7 @@
           input {
             height: 45px;
             margin-bottom: 15px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0 10px;
           }
           .msgsection {
@@ -376,13 +376,13 @@
             }
             textarea {
               padding: 10px;
-              font-size: 12px;
+              font-size: 0.75rem;
             }
           }
           .select {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0 10px;
             svg {
               width: 15px;
@@ -391,7 +391,7 @@
           .voice {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0px 10px;
             .icon {
               border-top-right-radius: 8px;
@@ -401,7 +401,7 @@
           .button {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .delete {
             background: #ff6263;
@@ -462,7 +462,7 @@
               }
               .changepass {
                 margin-right: 0px !important;
-                font-size: 14px;
+                font-size: 0.875rem;
                 height: 49px;
                 &:last-child {
                   margin-bottom: 0;
@@ -481,7 +481,7 @@
               }
               .changepass {
                 margin-right: 0px !important;
-                font-size: 14px;
+                font-size: 0.875rem;
                 height: 49px;
               }
             }
@@ -497,14 +497,14 @@
           padding: 0 20px;
           .heading {
             font-family: "Lexend", sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             margin-bottom: 15px;
             width: 100%;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             margin-top: 15px;
           }
@@ -517,7 +517,7 @@
         flex-direction: column;
         align-items: flex-start;
         .heading {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           width: 100%;
           text-align: center;
@@ -571,7 +571,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 100%;
-            font-size: 12px;
+            font-size: 0.75rem;
             cursor: pointer;
             background-color: rgba(26, 26, 26, 0.527);
             color: white;
@@ -592,7 +592,7 @@
           input {
             height: 45px;
             margin-bottom: 15px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0 10px;
           }
           .msgsection {
@@ -605,13 +605,13 @@
             }
             textarea {
               padding: 10px;
-              font-size: 12px;
+              font-size: 0.75rem;
             }
           }
           .select {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0 10px;
             svg {
               width: 15px;
@@ -620,7 +620,7 @@
           .voice {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 0px 10px;
             .icon {
               border-top-right-radius: 8px;
@@ -630,7 +630,7 @@
           .button {
             margin-bottom: 15px;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .delete {
             background: #ff6263;
@@ -683,7 +683,7 @@
               }
               .changepass {
                 margin-right: 0px !important;
-                font-size: 14px;
+                font-size: 0.875rem;
                 height: 49px;
                 &:last-child {
                   margin-bottom: 0;
@@ -702,7 +702,7 @@
               }
               .changepass {
                 margin-right: 0px !important;
-                font-size: 14px;
+                font-size: 0.875rem;
                 height: 49px;
               }
             }
@@ -714,14 +714,14 @@
           padding: 0 20px;
           .heading {
             font-family: "Lexend", sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             margin-bottom: 15px;
             width: 100%;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             margin-top: 15px;
           }
@@ -734,7 +734,7 @@
         flex-direction: column;
         align-items: flex-start;
         .heading {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           width: 100%;
           text-align: center;
@@ -865,7 +865,7 @@
           }
           .error {
             color: rgb(255, 83, 83);
-            font-size: 14px;
+            font-size: 0.875rem;
             padding-left: 5px;
             margin-bottom: 10px;
           }
@@ -874,7 +874,7 @@
           }
           input {
             height: 49px;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-family: "Lexend", sans-serif;
             font-weight: 500;
             border: 1px solid #898989;
@@ -892,7 +892,7 @@
             border: 1px solid #898989;
             border-radius: 8px;
             padding: 0 20px;
-            font-size: 14px;
+            font-size: 0.875rem;
             width: 100%;
             font-weight: 400;
             background-color: white;
@@ -909,7 +909,7 @@
               bottom: 10px;
               right: 10px;
               font-family: "Lexend", sans-serif;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
             }
             textarea {
@@ -919,7 +919,7 @@
               border: 1px solid #898989;
               border-radius: 8px;
               padding: 20px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
               resize: none;
             }
@@ -937,7 +937,7 @@
             color: rgba(188, 188, 188, 1);
             background-color: white;
             height: 49px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 400;
             display: flex;
             align-items: center;
@@ -974,7 +974,7 @@
             align-items: center;
             cursor: pointer;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 0.9375rem;
             transition: all 0.3s ease;
             &:hover {
               background-color: #f4f5f7;
@@ -995,7 +995,7 @@
             align-items: center;
             cursor: pointer;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 0.9375rem;
             transition: all 0.3s ease;
             &:hover {
               background: #5e5e5e;
@@ -1021,7 +1021,7 @@
           width: 30%;
           .heading {
             font-family: "Lexend", sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
           }
           .button {
@@ -1032,7 +1032,7 @@
             height: 63px;
             width: 100%;
             font-family: "Lexend", sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             color: #000000;
             background: #d2d2d2;

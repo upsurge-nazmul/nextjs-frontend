@@ -23,21 +23,21 @@
     flex-direction: column;
     justify-content: space-around;
     .name {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
       color: rgba(27, 26, 87, 1);
     }
     .msg {
       font-style: normal;
       font-weight: normal;
-      font-size: 14px;
+      font-size: 0.875rem;
       color: rgba(79, 94, 123, 1);
     }
   }
   .time {
     display: flex;
     align-items: top;
-    font-size: 14px;
+    font-size: 0.875rem;
     height: 100%;
     font-weight: 400;
     margin-right: 10px;
@@ -74,7 +74,7 @@
       justify-content: flex-start;
       padding: 8px 0;
       .name {
-        font-size: 12px;
+        font-size: 0.75rem;
       }
       .msg {
         font-size: 10px;

@@ -89,13 +89,13 @@
         .right {
           .questheading {
             color: #232323;
-            font-size: 32px;
+            font-size: 2rem;
             font-weight: 600;
           }
           .age {
             color: #000000cf;
             font-family: "Lexend", sans-serif;
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 10px;
             font-weight: 500;
           }
@@ -103,7 +103,7 @@
             display: flex;
             color: #232323;
             font-family: "Lexend", sans-serif;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 400;
             margin-top: 10px;
             svg {
@@ -125,7 +125,7 @@
           bottom: 20px;
           right: 40px;
           color: #232323;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           text-align: right;
         }
@@ -137,7 +137,7 @@
           .heading {
             color: #4166eb;
             margin-top: 20px;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 600;
           }
           .conceptswrapper {
@@ -158,7 +158,7 @@
           .about,
           .content {
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 24px;
           }
@@ -167,12 +167,12 @@
             margin-top: 20px;
             flex-direction: column;
             .contentheading {
-              font-size: 20px;
+              font-size: 1.25rem;
               font-weight: 600;
             }
             .contentdes {
               margin-top: 2px;
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 400;
             }
           }
@@ -194,7 +194,7 @@
               position: absolute;
               font-weight: 500;
               cursor: not-allowed;
-              font-size: 12px;
+              font-size: 0.75rem;
               border-radius: 12px;
               width: fit-content;
               z-index: 2;
@@ -380,7 +380,7 @@
             .button {
               padding: 10px 20px;
               border-radius: 8px;
-              font-size: 16px;
+              font-size: 1rem;
               color: white;
               background-color: #4166eb;
               cursor: pointer;
@@ -415,7 +415,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 500;
               cursor: pointer;
               margin-right: 20px;
@@ -432,7 +432,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 14px;
+              font-size: 0.875rem;
               cursor: pointer;
               font-weight: 500;
               flex: 1;
@@ -449,17 +449,17 @@
               flex-direction: column;
               align-items: center;
               .number {
-                font-size: 36px;
+                font-size: 2.25rem;
               }
               .name {
-                font-size: 14px;
+                font-size: 0.875rem;
               }
             }
           }
           .heading {
             color: #4166eb;
             margin-top: 20px;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 600;
           }
           .conceptswrapper {
@@ -511,13 +511,13 @@
           .right {
             .questheading {
               color: #232323;
-              font-size: 24px;
+              font-size: 1.5rem;
               font-weight: 600;
             }
             .age {
               color: #000000cf;
               font-family: "Lexend", sans-serif;
-              font-size: 12px;
+              font-size: 0.75rem;
               margin-top: 10px;
               font-weight: 500;
             }
@@ -525,7 +525,7 @@
               display: flex;
               color: #232323;
               font-family: "Lexend", sans-serif;
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
               margin-top: 10px;
               svg {
@@ -547,7 +547,7 @@
             bottom: 20px;
             right: 40px;
             color: #232323;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
             text-align: right;
           }
@@ -557,13 +557,13 @@
           .left {
             flex: 1;
             .heading {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .about,
             .content {
               margin-top: 10px;
               font-family: "Lexend", sans-serif;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
             }
           }
@@ -584,7 +584,7 @@
                 margin-bottom: 20px;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 cursor: pointer;
                 margin-right: 0px;
@@ -601,7 +601,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
+                font-size: 0.875rem;
                 cursor: pointer;
                 font-weight: 500;
               }
@@ -621,12 +621,12 @@
                   text-align: center;
                 }
                 .name {
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
             }
             .heading {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .conceptswrapper {
               display: flex;
@@ -641,7 +641,7 @@
                 border: 0.5px solid #9d9d9d;
                 border-radius: 4px;
                 margin: 5px;
-                font-size: 12px;
+                font-size: 0.75rem;
               }
             }
           }
@@ -660,7 +660,7 @@
             background: #f4f5f7;
             border: 0.5px solid #9d9d9d;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }
@@ -694,7 +694,7 @@
             margin-top: 10px;
             width: 100%;
             .questheading {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .age {
               font-size: 10px;
@@ -730,13 +730,13 @@
             flex: 1;
             margin: 0;
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
             }
             .about,
             .content {
               margin-top: 10px;
               font-family: "Lexend", sans-serif;
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
             }
             .map {
@@ -938,7 +938,7 @@
                 margin-bottom: 0px;
                 align-items: center;
                 justify-content: center;
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 500;
                 cursor: pointer;
                 margin-right: 0px;
@@ -956,7 +956,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 12px;
+                font-size: 0.75rem;
                 cursor: pointer;
                 font-weight: 500;
               }
@@ -981,7 +981,7 @@
               }
             }
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
         }
@@ -1017,13 +1017,13 @@
           .right {
             .questheading {
               color: #232323;
-              font-size: 24px;
+              font-size: 1.5rem;
               font-weight: 600;
             }
             .age {
               color: #000000cf;
               font-family: "Lexend", sans-serif;
-              font-size: 12px;
+              font-size: 0.75rem;
               margin-top: 10px;
               font-weight: 500;
             }
@@ -1031,7 +1031,7 @@
               display: flex;
               color: #232323;
               font-family: "Lexend", sans-serif;
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
               margin-top: 10px;
               svg {
@@ -1053,7 +1053,7 @@
             bottom: 20px;
             right: 40px;
             color: #232323;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
             text-align: right;
           }
@@ -1063,13 +1063,13 @@
           .left {
             flex: 1;
             .heading {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .about,
             .content {
               margin-top: 10px;
               font-family: "Lexend", sans-serif;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
             }
           }
@@ -1090,7 +1090,7 @@
                 margin-bottom: 20px;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 cursor: pointer;
                 margin-right: 0px;
@@ -1107,7 +1107,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
+                font-size: 0.875rem;
                 cursor: pointer;
                 font-weight: 500;
               }
@@ -1127,12 +1127,12 @@
                   text-align: center;
                 }
                 .name {
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
             }
             .heading {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .conceptswrapper {
               display: flex;
@@ -1147,7 +1147,7 @@
                 border: 0.5px solid #9d9d9d;
                 border-radius: 4px;
                 margin: 5px;
-                font-size: 12px;
+                font-size: 0.75rem;
               }
             }
           }
@@ -1166,7 +1166,7 @@
             background: #f4f5f7;
             border: 0.5px solid #9d9d9d;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
       }

@@ -1,4 +1,4 @@
-$heading-color: #4166EB;
+$heading-color: #4166eb;
 $row-color: #e3e7f1;
 
 .performance {
@@ -14,7 +14,7 @@ $row-color: #e3e7f1;
     padding: 10px 0;
     .heading {
       color: $heading-color;
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 700;
     }
   }
@@ -55,7 +55,7 @@ $row-color: #e3e7f1;
         border-right: 1px solid $row-color;
         .rowitem {
           font-weight: 400;
-          font-size: 14px;
+          font-size: 0.875rem;
           color: #333;
           font-family: "Fira Sans", sans-serif;
           text-align: left;
@@ -91,7 +91,7 @@ $row-color: #e3e7f1;
         box-shadow: 2px 4px 8px 4px rgb(0 0 0 / 30%);
         .rowitem {
           font-weight: 600;
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: #fff !important;
         }
       }
@@ -117,7 +117,7 @@ $row-color: #e3e7f1;
       padding: 10px 0;
       .heading {
         color: $heading-color;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 700;
       }
     }
@@ -158,7 +158,7 @@ $row-color: #e3e7f1;
           border-right: 1px solid $row-color;
           .rowitem {
             font-weight: 400;
-            font-size: 14px;
+            font-size: 0.875rem;
             color: #333;
             font-family: "Fira Sans", sans-serif;
             text-align: left;
@@ -194,7 +194,7 @@ $row-color: #e3e7f1;
           box-shadow: 2px 4px 8px 4px rgb(0 0 0 / 30%);
           .rowitem {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 0.9375rem;
             color: #fff !important;
           }
         }

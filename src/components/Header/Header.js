@@ -92,7 +92,7 @@ function Header({
               setOpenLeftPanel((prev) => !prev);
             }}
           >
-            <HamSvg />
+            <HamSvg className={styles.hamIcon} />
           </div>
         )}
         <div

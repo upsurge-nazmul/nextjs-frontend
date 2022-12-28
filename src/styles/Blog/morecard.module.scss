@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     overflow: hidden;
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 700;
       color: #4166eb;
       margin-right: 10px;
@@ -39,7 +39,7 @@
   }
   .title {
     margin-top: 3px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
   }
   .content {
@@ -48,7 +48,7 @@
   .time {
     margin-top: 10px;
     color: hsla(0, 0%, 52%, 1);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 400;
   }
 }
@@ -66,7 +66,7 @@
   .time {
     margin-top: 10px;
     color: hsla(0, 0%, 52%, 1);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 400;
   }
 }
@@ -94,10 +94,10 @@
       }
     }
     .title {
-      font-size: 16px;
+      font-size: 1rem;
     }
     .content {
-      font-size: 12px;
+      font-size: 0.75rem;
       margin-top: 3px;
     }
     .time {

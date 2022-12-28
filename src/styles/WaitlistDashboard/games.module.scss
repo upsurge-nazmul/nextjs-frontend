@@ -10,12 +10,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    .subheader{
+    .subheader {
       font-size: large;
       font-weight: bold;
-          align-self: start;
-          margin-bottom: 20px;
-          }
+      align-self: start;
+      margin-bottom: 20px;
+    }
     .mainContent {
       width: 100%;
       display: flex;
@@ -24,11 +24,11 @@
       scrollbar-width: thin;
       .gameheading {
         color: #4166eb;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
       }
       .description {
-        font-size: 16px;
+        font-size: 1rem;
         margin-top: 10px;
         line-height: 24px;
         margin-bottom: 40px;
@@ -52,11 +52,11 @@
           padding: 40px;
           flex-direction: column;
           .name {
-            font-size: 32px;
+            font-size: 2rem;
             font-weight: 600;
           }
           .description {
-            font-size: 16px;
+            font-size: 1rem;
             color: rgb(37, 37, 37);
             margin-top: 10px;
             line-height: 24px;
@@ -69,7 +69,7 @@
             background-color: #4166eb;
             color: white;
             padding: 15px 40px;
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-top: auto;
             cursor: pointer;
           }
@@ -241,7 +241,7 @@
                 font-weight: 600;
               }
               .description {
-                font-size: 14px;
+                font-size: 0.875rem;
                 color: rgb(37, 37, 37);
                 margin-top: 10px;
               }
@@ -253,7 +253,7 @@
                 background-color: #4166eb;
                 color: white;
                 padding: 15px 40px;
-                font-size: 14px;
+                font-size: 0.875rem;
                 margin-top: auto;
                 cursor: pointer;
               }
@@ -261,7 +261,7 @@
           }
           .recentSection {
             .heading {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
             .heads {
               height: 48px;
@@ -279,19 +279,19 @@
           }
           .availableSection {
             .heading {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
           }
         }
         .flexRight {
           .familyfunSection {
             .heading {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
           }
           .simulatorsSection {
             .heading {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
           }
         }
@@ -399,11 +399,11 @@
               padding: 20px;
               flex-direction: column;
               .name {
-                font-size: 22px;
+                font-size: 1.375rem;
                 font-weight: 600;
               }
               .description {
-                font-size: 12px;
+                font-size: 0.75rem;
                 color: rgb(37, 37, 37);
                 margin-top: 5px;
               }
@@ -415,7 +415,7 @@
                 background-color: #4166eb;
                 color: white;
                 padding: 12px 20px;
-                font-size: 12px;
+                font-size: 0.75rem;
                 margin-top: auto;
                 cursor: pointer;
                 margin-top: 10px;
@@ -549,13 +549,13 @@
     .contentWrapper {
       .mainContent {
         .gameheading {
-          font-size: 22px;
+          font-size: 1.375rem;
           font-weight: 600;
           text-align: left;
           width: 100%;
         }
         .description {
-          font-size: 12px;
+          font-size: 0.75rem;
           line-height: 20px;
           margin: 0;
           margin-top: 10px;
@@ -571,7 +571,7 @@
             width: 100%;
             margin-top: 20px;
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
               svg {
                 margin-left: 5px;
                 width: 15px;
@@ -589,7 +589,7 @@
             margin-top: 20px;
             .heading {
               font-weight: 500;
-              font-size: 18px;
+              font-size: 1.125rem;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -617,7 +617,7 @@
             margin-top: 0px;
             padding: 0;
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
 
               svg {
                 margin-left: 5px;
@@ -638,7 +638,7 @@
             padding: 0 0px 0 0px;
             margin-top: 15px;
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
 
               svg {
                 margin-left: 5px;
@@ -716,11 +716,11 @@
               padding: 20px;
               flex-direction: column;
               .name {
-                font-size: 22px;
+                font-size: 1.375rem;
                 font-weight: 600;
               }
               .description {
-                font-size: 12px;
+                font-size: 0.75rem;
                 color: rgb(37, 37, 37);
                 margin-top: 5px;
               }
@@ -732,7 +732,7 @@
                 background-color: #4166eb;
                 color: white;
                 padding: 12px 20px;
-                font-size: 12px;
+                font-size: 0.75rem;
                 margin-top: auto;
                 cursor: pointer;
                 margin-top: 10px;
@@ -883,11 +883,11 @@
               padding: 20px;
               flex-direction: column;
               .name {
-                font-size: 22px;
+                font-size: 1.375rem;
                 font-weight: 600;
               }
               .description {
-                font-size: 12px;
+                font-size: 0.75rem;
                 color: rgb(37, 37, 37);
                 margin-top: 5px;
               }
@@ -899,7 +899,7 @@
                 background-color: #4166eb;
                 color: white;
                 padding: 12px 20px;
-                font-size: 12px;
+                font-size: 0.75rem;
                 margin-top: auto;
                 cursor: pointer;
                 margin-top: 10px;

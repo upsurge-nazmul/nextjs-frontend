@@ -49,10 +49,10 @@
         color: rgb(255, 91, 91);
         margin-bottom: 20px;
         text-align: center;
-        font-size: 16px;
+        font-size: 1rem;
       }
       .heading {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 600;
         z-index: 1;
         text-align: center;
@@ -61,7 +61,7 @@
       input {
         height: 45px;
         padding: 0 20px;
-        font-size: 18px;
+        font-size: 1.125rem;
         border-radius: 8px;
         border: none;
         background-color: rgb(245, 245, 245);
@@ -78,7 +78,7 @@
           align-items: center;
           justify-content: center;
           border-radius: 6px;
-          font-size: 16px;
+          font-size: 1rem;
           color: white;
           height: 40px;
           transition: all 0.3s ease;
@@ -175,21 +175,21 @@
           padding: 20px;
           .error {
             margin-bottom: 15px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .heading {
-            font-size: 16px;
+            font-size: 1rem;
             margin-bottom: 15px;
           }
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             width: 100%;
           }
           .buttons {
             margin-top: 20px;
             .join,
             .skip {
-              font-size: 14px;
+              font-size: 0.875rem;
 
               height: 40px;
             }
@@ -212,7 +212,7 @@
       flex: unset;
       min-width: unset;
       width: 100%;
-      font-size: 12px;
+      font-size: 0.75rem;
       height: 60px;
       color: rgba(255, 255, 255, 1);
       font-weight: 400;
@@ -236,7 +236,7 @@
       .text {
         color: white;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 0.75rem;
         width: 100%;
         padding-right: 5%;
         display: flex;
