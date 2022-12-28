@@ -1,0 +1,100 @@
+.mapContent {
+    width: 100%;
+    overflow-y: auto;
+    .superzoom{
+        transform: scale(3);
+        margin-left: 50rem;
+        transition: 2s;
+    }
+    .Banking{
+       transform: scale(1.8);
+       margin-left: 20rem;
+       transition: 2s;
+    }
+    .finance{
+        transform: scale(1.8);
+        margin-left: 0rem;
+        transition: 2s;
+    }
+    .upi{
+        transform: scale(1.8);
+        margin-left: 0rem;
+        margin-top: 10rem;
+        transition: 2s;
+    }
+    .money{
+        transform: scale(1.8);
+        margin-left: 7rem;
+        margin-top: -20rem;
+        transition: 2s;
+    }
+    .overview{
+        transform: scale(1);
+        transition: 2s;
+    }
+    .map {
+      background-image: url("../../../public/images/knowledgequestmaps/island01-a.png");
+      width: 100%;
+      height: 100%;
+      min-height: 60vw;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+      .heading{
+        cursor: pointer;
+        position: absolute;
+        font-weight: 500;
+        font-size: 12px;
+        border-radius: 12px;
+        width: fit-content;
+        min-width: 150px;
+        z-index: 2;
+        color: rgb(44, 44, 44);
+        text-align: center;
+        filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
+        padding: 10px;
+        background-color: #fff;
+      }
+      .heading::after{
+        content: " ";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 9;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #fff transparent transparent transparent;
+      }
+      .chapter {
+        cursor: pointer;
+        position: absolute;
+        font-weight: 500;
+        font-size: 12px;
+        border-radius: 12px;
+        width: fit-content;
+        min-width: 150px;
+        z-index: 2;
+        color: rgb(44, 44, 44);
+        text-align: center;
+        filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
+        padding: 10px;
+        background-color: #fff;
+      }
+      .completedChapter {
+        @extend .chapter;
+        background-color: #4fe563;
+        color: #333;
+      }
+      .disabledChapter {
+        @extend .chapter;
+        background-color: #bababaf7;
+        color: #595454c4;
+        cursor: default;
+      }
+    }
+  }
+  
