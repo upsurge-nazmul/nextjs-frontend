@@ -18,15 +18,17 @@ function HeaderCard({ data, handleCardClick }) {
       {data ? (
         <div
           className={styles.headerCard}
-          onClick={data.open ? () => handleCardClick(data.questId) : () => {}}
+         // onClick={data.open ? () => handleCardClick(data.questId) : () => {}}
+          onClick={() => handleCardClick(data.questId)}
+        
         >
-          {!data.open ? (
+          {/* {!data.open ? (
             <div className={styles.locked}>
               <LockSvg className={styles.lockIcon} />
             </div>
           ) : (
             ""
-          )}
+          )} */}
           <div className={styles.cardLeft}>
             <div className={styles.imageWrapper}>
               <Image
