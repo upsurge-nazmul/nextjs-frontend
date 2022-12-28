@@ -58,7 +58,6 @@ export default function Events({ userData }) {
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
             {events && events.length ? (
-              <Carousel carouselId={"eventsCarousel"}>
                 {events.map((item) => (
                   <Card
                     key={item.id}
@@ -69,7 +68,7 @@ export default function Events({ userData }) {
                     handleSelect={() => setSelectedEvent(item)}
                   />
                 ))}
-              </Carousel>
+              
             ) : (
               <FillSpace
                 text={"There are no upcoming events"}
@@ -80,11 +79,7 @@ export default function Events({ userData }) {
           <div className={styles.section}>
             <div className={styles.heading}>Challenges</div>
             {challenges && challenges.length ? (
-              <Carousel
-                carouselId={"challengesCarousel"}
-                themeClr={"#fff"}
-                themeBg={"#17d1bc"}
-              >
+              
                 {challenges.map((item) => (
                   <Card
                     key={item.id}
@@ -95,7 +90,7 @@ export default function Events({ userData }) {
                     handleSelect={() => setSelectedChallenge(item)}
                   />
                 ))}
-              </Carousel>
+                
             ) : (
               <FillSpace
                 text={"There are no challaenges at this moment"}
