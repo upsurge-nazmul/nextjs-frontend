@@ -1,10 +1,10 @@
 .mapContent {
     width: 100%;
-    overflow-y: auto;
     .superzoom{
-        transform: scale(3);
-        margin-left: 50rem;
+      transform: scale(3);  
+      margin-left: 40rem;
         transition: 2s;
+        //transform:perspective(50rem) rotateX(15deg) scale(2.8);
     }
     .Banking{
        transform: scale(1.8);
@@ -25,7 +25,7 @@
     .money{
         transform: scale(1.8);
         margin-left: 7rem;
-        margin-top: -20rem;
+        margin-bottom: 20rem;
         transition: 2s;
     }
     .overview{
@@ -37,6 +37,7 @@
       width: 100%;
       height: 100%;
       min-height: 60vw;
+      z-index: 10;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -57,6 +58,23 @@
         filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
         padding: 10px;
         background-color: #fff;
+        span{
+          display: flex;
+        }
+        .rewardBlock{
+          margin-left: 0.5rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: flex;
+    gap:0.2rem;
+    cursor: pointer;
+    .svg{
+      min-width: clamp(14px, 1.6vw, 16px);
+      min-height: clamp(14px, 1.6vw, 16px);
+    }
+        }
       }
       .heading::after{
         content: " ";
