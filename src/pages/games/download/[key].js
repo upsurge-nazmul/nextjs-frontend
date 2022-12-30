@@ -1,4 +1,3 @@
-import { style } from "@mui/system";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Header from "../../../components/Header/Header";
@@ -137,6 +136,24 @@ const DownloadSingleGamePage = ({ gameData }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const downloadFile = (url, fileName) => {
+    fetch(url, {
+      method: "get",
+      mode: "no-cors",
+      referrerPolicy: "no-referrer",
+    })
+      .then((res) => res.blob())
+      .then((res) => {
+        const aElement = document.createElement("a");
+        aElement.setAttribute("download", fileName);
+        const href = URL.createObjectURL(res);
+        aElement.href = href;
+        aElement.setAttribute("target", "_blank");
+        aElement.click();
+        URL.revokeObjectURL(href);
+      });
+  };
+
   return (
     <div className={`${styles.mainContainer}`}>
       <PageTitle />
@@ -159,19 +176,21 @@ const DownloadSingleGamePage = ({ gameData }) => {
         <div className={styles.sectionWrapper}>
           <div className={styles.left}>
             <div className={styles.carouselContainer}>
-              {gameData.images.map((item, index) => (
-                <div
-                  key={index}
-                  id="allSlides"
-                  className={`${styles.mySlides} ${styles.animate}`}
-                >
-                  <img src={item} alt="slide" />
-                  {/* <div className="number">1 / 5</div>
-                <div className="text">
-                  Lorem ipsum dolor sit amet consectetur
-                </div> */}
-                </div>
-              ))}
+              {gameData.images.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    id="allSlides"
+                    className={`${styles.mySlides} ${styles.animate}`}
+                  >
+                    <img src={item} alt="slide" />
+                    {/* <div className="number">1 / 5</div>
+              <div className="text">
+                Lorem ipsum dolor sit amet consectetur
+              </div> */}
+                  </div>
+                );
+              })}
               <button className={styles.prev} onClick={prevSlide}>
                 &#10094;
               </button>
@@ -191,20 +210,32 @@ const DownloadSingleGamePage = ({ gameData }) => {
             <div className={styles.bottomWrapper}>
               <span className={styles.subheading}>Download Options</span>
               <div className={styles.btnContainer}>
-                <img
-                  className={styles.badge}
-                  src="/images/DownloadGames/google-play.png"
-                  alt=""
-                />
-                <img
-                  className={styles.badge}
-                  src="/images/DownloadGames/ms_1.png"
-                  alt=""
-                />
+                <a href={gameData.playstore} target="_blank">
+                  <img
+                    className={styles.badge}
+                    src="/images/DownloadGames/google-play.png"
+                    alt="PlayStore"
+                  />
+                </a>
+                <a href={gameData.microsoft} target="_blank">
+                  <img
+                    className={styles.badge}
+                    src="/images/DownloadGames/ms_1.png"
+                    alt="MicroSoft"
+                  />
+                </a>
               </div>
               <div className={styles.btnContainer}>
-                <button>Download APK</button>
-                <button>Download EXE</button>
+                <button
+                  onClick={() =>
+                    downloadFile(gameData.android_link, gameData.name)
+                  }
+                >
+                  Download APK
+                </button>
+                <button onClick={() => downloadFile(gameData.windows_link)}>
+                  Download EXE
+                </button>
               </div>
             </div>
           </div>
