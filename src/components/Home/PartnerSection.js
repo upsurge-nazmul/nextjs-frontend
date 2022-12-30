@@ -41,6 +41,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
         style={nomargin ? { margin: 0 } : {}}
         id="partner-section"
       >
+        <div className={styles.background}>
         <div className={styles.headingContainer}>
         <div
           className={`${styles.heading} ${dashboard && styles.hidecursor}`}
@@ -97,7 +98,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
                 <div className={styles.imagewrapper2}>
           {rewards1.map((item, index) => {
             return (
-              <div key={"partner" + index} className={styles.images1}>
+              <div key={"partner" + index} className={styles.images2}>
               <img
                 onClick={() => {
                   if (dashboard) {
@@ -118,6 +119,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
