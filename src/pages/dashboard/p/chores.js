@@ -42,6 +42,10 @@ function ChoresPage({
     type: "success",
     msg: "",
   });
+  const [showToolTip, setShowToolTip] = useState({
+    show: false,
+    msg: "",
+  });
   const [allchores, setallchores] = useState(choresdata || []);
   const [backupallchores, setbackupallchores] = useState(choresdata || []);
   useEffect(() => {
@@ -111,7 +115,7 @@ function ChoresPage({
           <RejectChore
             setid={setdeleteid}
             id={deleteid}
-            settoastdata={settoastdata}
+            settoastdata={setShowToolTip}
             setchores={setchores}
             setallchores={setallchores}
           />
@@ -128,8 +132,12 @@ function ChoresPage({
             mode={mode}
             setmode={setmode}
             settoastdata={settoastdata}
-            />
-            <p className={styles.subheader}>Assign chores & track your child&apos;s progress!</p>
+            setShowToolTip={setShowToolTip}
+            showToolTip={showToolTip}
+          />
+          <p className={styles.subheader}>
+            Assign chores & track your child&apos;s progress!
+          </p>
           <div className={styles.mainContent}>
             <div className={styles.flexLeft}>
               <div className={styles.pendingChoresSection}>
@@ -145,7 +153,7 @@ function ChoresPage({
                         setallchores={setallchores}
                         data={item}
                         key={"pendingchore" + index}
-                        settoastdata={settoastdata}
+                        settoastdata={setShowToolTip}
                         setid={setdeleteid}
                       />
                     );
@@ -184,7 +192,7 @@ function ChoresPage({
                       <ChoreComponent
                         setchores={setallchores}
                         data={data}
-                        settoastdata={settoastdata}
+                        settoastdata={setShowToolTip}
                         key={"chorecomponent" + index}
                       />
                     );
