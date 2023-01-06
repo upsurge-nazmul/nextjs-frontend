@@ -80,12 +80,12 @@ export default function MapHeadArea({
       {data && (
         <div className={styles.mapContent} id="quest-main">
           <div className={`
-          ${mapZoom == "Banking" ? styles.Banking : ""}
+          ${mapZoom == "banking" ? styles.Banking : ""}
           ${mapZoom == "Personal Finance 1" ? styles.finance : ""}
           ${mapZoom == "What is Money?" ? styles.money : ""}
           ${mapZoom == "Digital Payments & UPI" ? styles.upi : ""}
           ${mapZoom == "superZoomWhat is Money?" ? styles.superZoomMoney : ""}
-          ${mapZoom == "superZoomBanking" ? styles.superZoomBanking : ""}
+          ${mapZoom == "superZoombanking" ? styles.superZoomBanking : ""}
           ${mapZoom == "superZoomDigital Payments & UPI" ? styles.superZoomUPI : ""}
           ${mapZoom == "superZoomPersonal Finance 1" ? styles.superZoomPF1 : ""}
           ${mapZoom == "" ? styles.overview : ""}
@@ -93,7 +93,7 @@ export default function MapHeadArea({
           ${styles.map}
           `}
           >
-          { mapZoom !== "superZoomBanking" && mapZoom !== "superZoomDigital Payments & UPI" && mapZoom !== "superZoomWhat is Money?" && mapZoom !=="superZoomPersonal Finance 1" && mapZoom !== "questStarted" ?
+          { mapZoom !== "superZoombanking" && mapZoom !== "superZoomDigital Payments & UPI" && mapZoom !== "superZoomWhat is Money?" && mapZoom !=="superZoomPersonal Finance 1" && mapZoom !== "questStarted" ?
 <>
             {data.map((item) => {
               console.log(item)
@@ -101,11 +101,11 @@ export default function MapHeadArea({
                        <div 
                        key={item.questNo} 
                        onClick={() => { //handleCardClick(item.questId); 
-                        console.log("superZoom"+item.title)
+                        console.log("superZoom"+item.questId)
                         setQuestId(item.questId)
-                        setMapZoom("superZoom"+item.title)
+                        setMapZoom("superZoom"+item.questId)
                       }}
-                        onMouseEnter={()=> setMapZoom(item.title)}
+                        onMouseEnter={()=> setMapZoom(item.questId)}
                         onMouseLeave={()=> setMapZoom("")}
                         className={styles.heading} style={positions[`overWorld`][item.questNo-1]}>
         <span>
@@ -157,34 +157,39 @@ export default function MapHeadArea({
                           chapterId: currentChapter,
                           handleBack,
                           handleDone,
-                        }}
-                      />
-                    ) : view === LESSON_TYPES[1] ? (
-                      <ActivityView
-                        {...{
-                          chapterId: currentChapter,
-                          handleBack,
-                          handleDone,
-                        }}
-                      />
-                    ) : view === LESSON_TYPES[2] ? (
-                      <QuizView
-                        {...{
-                          chapterId: currentChapter,
                           questId: currentQuest.questId,
-                          handleDone,
-                          setuserdata,
+                          setMapZoom,
                         }}
                         />
-                        ) : view === LESSON_TYPES[3] ? (
-                          <GameView
-                          chapterId = {currentChapter}
-                          game={currentChapter}
-                        setGame={handleBack}
-                        handleDone={handleDone}
-                      />
-                    ) : (
-                      ""
+                        ) : view === LESSON_TYPES[1] ? (
+                          <ActivityView
+                          {...{
+                            chapterId: currentChapter,
+                            handleBack,
+                            handleDone,
+                            setMapZoom,
+                          }}
+                          />
+                          ) : view === LESSON_TYPES[2] ? (
+                            <QuizView
+                            {...{
+                              chapterId: currentChapter,
+                              questId: currentQuest.questId,
+                              handleDone,
+                              setuserdata,
+                              setMapZoom,
+                            }}
+                            />
+                            ) : view === LESSON_TYPES[3] ? (
+                              <GameView
+                              chapterId = {currentChapter}
+                              game={currentChapter}
+                              setGame={handleBack}
+                              handleDone={handleDone}
+                              setMapZoom={setMapZoom}
+                              />
+                              ) : (
+                                ""
                     )}
                       <div className={styles.actionArea}>
                       <button
