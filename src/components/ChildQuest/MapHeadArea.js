@@ -33,12 +33,12 @@ export default function MapHeadArea({
   const router = useRouter();
   const { userdata, setuserdata, widthHeight } = useContext(MainContext);
   const [mapZoom,setMapZoom] = useState("");
-  const [currentQuest, setCurrentQuest] = useState();
+  const [currentQuest, setCurrentQuest] = useState(data[0]);
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
   const [activeChNo, setActiveChNo] = useState(0);
   const [userLevel, setUserLevel] = useState(0);
-  const [questId,setQuestId] = useState("banking")
+  const [questId,setQuestId] = useState();
   useEffect(() => {
     if (data && questId) {
       let curr = data.find((q) => q.questId === questId);
@@ -81,29 +81,38 @@ export default function MapHeadArea({
         <div className={styles.mapContent} id="quest-main">
           <div className={`
           ${mapZoom == "Banking" ? styles.Banking : ""}
-          ${mapZoom == "superZoom" ? styles.superzoom : ""}
           ${mapZoom == "Personal Finance 1" ? styles.finance : ""}
           ${mapZoom == "What is Money?" ? styles.money : ""}
           ${mapZoom == "Digital Payments & UPI" ? styles.upi : ""}
+          ${mapZoom == "superZoomWhat is Money?" ? styles.superZoomMoney : ""}
+          ${mapZoom == "superZoomBanking" ? styles.superZoomBanking : ""}
+          ${mapZoom == "superZoomDigital Payments & UPI" ? styles.superZoomUPI : ""}
+          ${mapZoom == "superZoomPersonal Finance 1" ? styles.superZoomPF1 : ""}
           ${mapZoom == "" ? styles.overview : ""}
           ${mapZoom == "questStarted" ? styles.overview : ""}
           ${styles.map}
           `}
           >
-          { mapZoom !== "superZoom" && mapZoom !== "questStarted" ?
+          { mapZoom !== "superZoomBanking" && mapZoom !== "superZoomDigital Payments & UPI" && mapZoom !== "superZoomWhat is Money?" && mapZoom !=="superZoomPersonal Finance 1" && mapZoom !== "questStarted" ?
 <>
             {data.map((item) => {
+              console.log(item)
               return (
                        <div 
                        key={item.questNo} 
                        onClick={() => { //handleCardClick(item.questId); 
-                        setMapZoom("superZoom")}}
+                        console.log("superZoom"+item.title)
+                        setQuestId(item.questId)
+                        setMapZoom("superZoom"+item.title)
+                      }}
                         onMouseEnter={()=> setMapZoom(item.title)}
                         onMouseLeave={()=> setMapZoom("")}
                         className={styles.heading} style={positions[`overWorld`][item.questNo-1]}>
-        <span>{item.title} 
+        <span>
+          <div className={styles.chapterlengthBlock}>{item.chapters.length}</div>
+          {item.title}
         <div className={styles.rewardBlock}>
-            <UniCoinSvg className={styles.svg} />
+            <UniCoinSvg className={styles.svg} clr="#fff" />
             <p className={styles.number}>
               {item.totalUnicoins
                 ? item.totalUnicoins > UniCoinValue
@@ -120,7 +129,7 @@ export default function MapHeadArea({
       </>
       :
       <>
-      <div style={{width:5+"rem",zIndex:4,position:"absolute",bottom:"50%",right:"50%"}} onClick={()=>{setMapZoom("")}}>X</div>
+      <div style={{width:5+"rem",zIndex:4,position:"fixed",bottom:"40%",right:"50%"}} className={styles.cancel} onClick={()=>{setMapZoom("")}}>X</div>
       {widthHeight.width < 900 &&
             widthHeight.height > widthHeight.width ? (
               <div className={styles.mobileerr}>
