@@ -36,11 +36,11 @@ const verifyotp = (payload) => {
     getCookie("accesstoken")
   );
 };
-const verifyPassword = (payload) => {
+const verifyPassword = (payload, accessToken) => {
   return ApiCalls.postResponse(
     "users/verify-password",
     payload,
-    getCookie("accesstoken")
+    accessToken ? accessToken : getCookie("accesstoken")
   );
 };
 const googlelogin = (payload) => {

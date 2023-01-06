@@ -37,7 +37,6 @@ function AuthLogin({
     let response = await LoginApis.checktoken({
       token: prefilled.token,
     });
-    console.log(response);
     if (response && !response?.data?.success) {
       settoastdata({
         show: true,
@@ -57,10 +56,13 @@ function AuthLogin({
         setSavedUsers(savedUsersData);
       }
     } else {
-      let newLogin = await LoginApis.verifyPassword({
-        email: prefilled.email,
-        password,
-      });
+      let newLogin = await LoginApis.verifyPassword(
+        {
+          email: prefilled.email,
+          password,
+        },
+        prefilled.token
+      );
       if (newLogin && newLogin.data && newLogin.data.success) {
         setSavedUsers(
           setUserInLocalStorage({
@@ -111,15 +113,16 @@ function AuthLogin({
           type: "success",
         });
         console.log(router.pathname);
+        router.reload();
       } else {
         mixpanel.track("Switch Account", {
           event: `${newLogin?.data.message || "Cannot reach server"}`,
         });
         seterror(newLogin?.data.message || "Cannot reach server");
       }
-      router.reload();
+      // router.reload();
     }
-    setCookie("accesstoken", response.data.data.token);
+    // setCookie("accesstoken", response.data.data.token);
   }
 
   useEffect(() => {
