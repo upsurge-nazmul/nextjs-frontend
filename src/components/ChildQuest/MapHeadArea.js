@@ -33,6 +33,7 @@ export default function MapHeadArea({
   const router = useRouter();
   const { userdata, setuserdata, widthHeight } = useContext(MainContext);
   const [mapZoom,setMapZoom] = useState("");
+  const [mapQuestdisplay,setMapQuestDisplay] = useState("");
   const [currentQuest, setCurrentQuest] = useState(data[0]);
   const [view, setView] = useState();
   const [currentChapter, setCurrentChapter] = useState();
@@ -45,7 +46,7 @@ export default function MapHeadArea({
       setCurrentQuest(curr);
     }
   }, [questId, data]);
-  console.log(currentQuest)
+  console.log("mapZoom",mapZoom)
   useEffect(() => {
     async function fetchQuestLevel() {
       let level = await KnowledgeQuestApi.initiate(
@@ -81,22 +82,25 @@ export default function MapHeadArea({
         <div className={styles.mapContent} id="quest-main">
           <div className={`
           ${mapZoom == "banking" ? styles.Banking : ""}
-          ${mapZoom == "Personal Finance 1" ? styles.finance : ""}
-          ${mapZoom == "What is Money?" ? styles.money : ""}
-          ${mapZoom == "Digital Payments & UPI" ? styles.upi : ""}
-          ${mapZoom == "superZoomWhat is Money?" ? styles.superZoomMoney : ""}
+          ${mapZoom == "personalFinance1" ? styles.finance : ""}
+          ${mapZoom == "whatIsMoney" ? styles.money : ""}
+          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
+          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
+          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
+          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
+          ${mapZoom == "superZoomwhatIsMoney" ? styles.superZoomMoney : ""}
           ${mapZoom == "superZoombanking" ? styles.superZoomBanking : ""}
-          ${mapZoom == "superZoomDigital Payments & UPI" ? styles.superZoomUPI : ""}
-          ${mapZoom == "superZoomPersonal Finance 1" ? styles.superZoomPF1 : ""}
+          ${mapZoom == "superZoomdigitalPaymentsUpi" ? styles.superZoomUPI : ""}
+          ${mapZoom == "superZoompersonalFinance1" ? styles.superZoomPF1 : ""}
           ${mapZoom == "" ? styles.overview : ""}
+          ${mapZoom == "zoomOut" ? styles.zoomOut : ""}
           ${mapZoom == "questStarted" ? styles.overview : ""}
           ${styles.map}
           `}
           >
-          { mapZoom !== "superZoombanking" && mapZoom !== "superZoomDigital Payments & UPI" && mapZoom !== "superZoomWhat is Money?" && mapZoom !=="superZoomPersonal Finance 1" && mapZoom !== "questStarted" ?
+          { mapQuestdisplay !== "superZoombanking" && mapQuestdisplay !== "superZoomdigitalPaymentsUpi" && mapQuestdisplay !== "superZoomwhatIsMoney" && mapQuestdisplay !=="superZoompersonalFinance1" && mapQuestdisplay !== "questStarted" ?
 <>
             {data.map((item) => {
-              console.log(item)
               return (
                        <div 
                        key={item.questNo} 
@@ -104,9 +108,18 @@ export default function MapHeadArea({
                         console.log("superZoom"+item.questId)
                         setQuestId(item.questId)
                         setMapZoom("superZoom"+item.questId)
+                        setTimeout(()=>{
+                          setMapQuestDisplay("superZoom"+item.questId);
+                        },0)
                       }}
-                        onMouseEnter={()=> setMapZoom(item.questId)}
-                        onMouseLeave={()=> setMapZoom("")}
+                      onMouseEnter={()=> {
+                        setMapZoom(item.questId)
+                        }}
+                        onMouseLeave={()=> {
+                        if(mapZoom !== "superZoombanking" && mapZoom !== "superZoomdigitalPaymentsUpi" && mapZoom !== "superZoomwhatIsMoney" && mapZoom !=="superZoompersonalFinance1")    
+                          setMapZoom("")
+                      
+                        }}
                         className={styles.heading} style={positions[`overWorld`][item.questNo-1]}>
         <span>
           <div className={styles.chapterlengthBlock}>{item.chapters.length}</div>
@@ -129,7 +142,15 @@ export default function MapHeadArea({
       </>
       :
       <>
-      <div style={{width:5+"rem",zIndex:4,position:"fixed",bottom:"40%",right:"50%"}} className={styles.cancel} onClick={()=>{setMapZoom("")}}>X</div>
+       {mapQuestdisplay !== "questStarted" ?
+      <div className={styles.cancel} onClick={()=>{
+        setMapZoom("zoomOut")
+        setTimeout(()=>{
+          setMapQuestDisplay("zoomOut");
+        },4000)
+        }}>
+        X
+        </div> : null }
       {widthHeight.width < 900 &&
             widthHeight.height > widthHeight.width ? (
               <div className={styles.mobileerr}>

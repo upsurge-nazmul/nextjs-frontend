@@ -1,20 +1,32 @@
 export const positions = {
   overWorld:[ 
+    {
+      bottom: "47%",
+      right: "70%",
+    },
   {
-    bottom: "23%",
-    right: "50%",
-  },
-  {
-    bottom: "47%",
-    right: "70%",
-  },
-  {
-    bottom: "70%",
-    right: "40%",
+    bottom: "50%",
+    right: "55%",
   },
   {
     bottom: "54%",
-    right: "35%",
+    right: "40%",
+  },
+  {
+    bottom: "62%",
+    right: "60%",
+  },
+  {
+    bottom: "67%",
+    right: "45%",
+  },
+  {
+    bottom: "64%",
+    right: "30%",
+  },
+  {
+    bottom: "80%",
+    right: "20%",
   },
 ],
   quest1: [
