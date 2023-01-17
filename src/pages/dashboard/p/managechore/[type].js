@@ -80,6 +80,12 @@ export default function ManageChore({
     type: "success",
     msg: "",
   });
+
+  const [showToolTip, setShowToolTip] = useState({
+    show: false,
+    msg: "",
+  });
+
   const [showrecorder, setshowrecorder] = useState(false);
   const [audioDetails, setaudioDetails] = useState({
     url: null,
@@ -148,7 +154,7 @@ export default function ManageChore({
         });
         router.push("/dashboard/p/chores");
       } else {
-        settoastdata({
+        setShowToolTip({
           show: true,
           message: response.data.message,
           type: "error",
@@ -156,7 +162,7 @@ export default function ManageChore({
       }
     } else {
       if (assignees.length < 1) {
-        settoastdata({
+        setShowToolTip({
           show: true,
           msg: "Add Assignee",
           type: "error",
@@ -179,7 +185,7 @@ export default function ManageChore({
         const assignee = assignees[i];
         let tt = new Date(duedate).getTime();
         if (tt <= new Date().getTime()) {
-          settoastdata({
+          setShowToolTip({
             show: true,
             msg: "Due date should not be the current date",
             type: "error",
@@ -221,12 +227,12 @@ export default function ManageChore({
           type: "success",
         });
         if (router.query.pushTo) {
-          router.push("/dashboard/p/");//?showTour=true&storyIndex=10
+          router.push("/dashboard/p/"); //?showTour=true&storyIndex=10
         } else {
           router.push("/dashboard/p/chores");
         }
       } else {
-        settoastdata({
+        setShowToolTip({
           show: true,
           msg: "Error saving chores",
           type: "error",
@@ -260,13 +266,13 @@ export default function ManageChore({
         "Template title": `${choretitle}`,
         "Template category": `${cat}`,
       });
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: "Template added successfully",
         type: "success",
       });
     } else {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: response.data.message || "Error saving chore template",
         type: "error",
@@ -287,6 +293,8 @@ export default function ManageChore({
           setmode={setmode}
           showback={true}
           gobackto={"/dashboard/p/chores"}
+          setShowToolTip={setShowToolTip}
+          showToolTip={showToolTip}
         />
         <div className={styles.mainContent}>
           <div className={styles.imagesection}>
