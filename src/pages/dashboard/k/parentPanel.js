@@ -35,6 +35,7 @@ export default function ParentLogin({ userdatafromserver }) {
       <PageTitle title={`upsurge | Parent Panel`} />
       <Toast data={toastdata} />
       <div className={styles.content}>
+
         <DashboardHeader
           mode={mode}
           setmode={setmode}

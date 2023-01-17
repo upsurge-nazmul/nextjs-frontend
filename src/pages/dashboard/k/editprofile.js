@@ -29,10 +29,6 @@ export default function EditProfile({ data, childavatars }) {
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
   const [error, seterror] = useState("");
   const [type, settype] = useState(
     data.is_waiting_active ? "waitlist" : router.query.type || "parent"
@@ -151,12 +147,12 @@ export default function EditProfile({ data, childavatars }) {
         updated_data.password = password;
       }
     }
-    if (city && city !== data?.city) {
-      updated_data.city = city;
-      updated_data.state = state;
+    if(city && city !== data?.city){
+      updated_data.city=city;
+      updated_data.state=state;
     }
-    if (school && school !== data?.school) {
-      updated_data.school = school;
+    if(school && school !== data?.school){
+      updated_data.school=school;
     }
     if (state && state !== data?.state) {
       updated_data.state = state;
@@ -171,11 +167,7 @@ export default function EditProfile({ data, childavatars }) {
     if (
       JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
     ) {
-      setShowToolTip({
-        msg: "No changes were made",
-        show: true,
-        type: "error",
-      });
+      settoastdata({ msg: "No changes were made", show: true, type: "error" });
       return;
     }
     let response = await DashboardApis.updatechildprofile(updated_data);
@@ -191,14 +183,10 @@ export default function EditProfile({ data, childavatars }) {
       if (img) {
         setuserdata((prev) => ({ ...prev, user_img_url: img }));
       }
-      setShowToolTip({
-        msg: "Saved Successfully",
-        show: true,
-        type: "success",
-      });
+      settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
     } else {
       seterror(response.data.message || "Cannot reach server");
-      setShowToolTip({
+      settoastdata({
         msg: response.data.message || "Error",
         show: true,
         type: "error",
@@ -236,8 +224,6 @@ export default function EditProfile({ data, childavatars }) {
           showback={true}
           settoastdata={settoastdata}
           gobackto={`dashboard/k`}
-          setShowToolTip={setShowToolTip}
-          showToolTip={showToolTip}
         />
         <div className={styles.mainContent}>
           {showavatarmodal && (
@@ -285,37 +271,37 @@ export default function EditProfile({ data, childavatars }) {
               />
             </div>
             <ModernInputBox
-              value={school}
-              setvalue={setschool}
-              onChange={(e) => setschool(e.target.value)}
-              placeholder="School *"
-              tooltipid={"school-tooltip"}
-              tooltip={
-                "School is required to put your child in related circles."
-              }
-              suggestions={schoolresults}
-            />
-            <div className={styles.row}>
-              <CitySearch
-                placeholder="City *"
-                textOnly={true}
-                options={Cities_Data}
-                wrapperclassname={"editprofilecity"}
-                value={city}
-                setvalue={setcity}
-                setstate={setstate}
-              />
-              <div className={styles.states}>
-                <DropDown
-                  value={state}
-                  options={STATES_ARR}
-                  setvalue={setstate}
-                  placeholder="State"
-                  margin="0px 100px 0 0"
-                />
-              </div>
-            </div>
-            <div className={styles.row}>
+                      value={school}
+                      setvalue={setschool}
+                      onChange={(e) => setschool(e.target.value)}
+                      placeholder="School *"
+                      tooltipid={"school-tooltip"}
+                      tooltip={
+                        "School is required to put your child in related circles."
+                      }
+                      suggestions={schoolresults}
+                      />
+                    <div className={styles.row}>
+                      <CitySearch
+                        placeholder="City *"
+                        textOnly={true}
+                        options={Cities_Data}
+                        wrapperclassname={"editprofilecity"}
+                        value={city}
+                        setvalue={setcity}
+                        setstate={setstate}
+                        />
+                        <div className={styles.states}>
+                    <DropDown
+                      value={state}
+                      options={STATES_ARR}
+                      setvalue={setstate}
+                      placeholder="State"
+                      margin="0px 100px 0 0"
+                      />
+                      </div>
+                      </div>
+                      <div className={styles.row}>
               <ModernInputBox
                 type="date"
                 placeholder="Date of birth"
@@ -325,7 +311,7 @@ export default function EditProfile({ data, childavatars }) {
                 }}
                 onChange={(e) => {
                   if (e.getTime() >= new Date().getTime()) {
-                    setShowToolTip({
+                    settoastdata({
                       msg: "Invaild date of birth",
                       show: true,
                       type: "error",
@@ -334,23 +320,18 @@ export default function EditProfile({ data, childavatars }) {
                     setdob(e);
                   }
                 }}
-              />
-              <div className={styles.gender}>
-                <DropDown
-                  value={gender}
-                  options={[
-                    "male",
-                    "female",
-                    "other",
-                    "Don't want to disclose",
-                  ]}
-                  setvalue={setgender}
-                  placeholder="Gender"
-                  margin="0 0.5rem 1.2rem 0"
-                  className={"gender"}
                 />
-              </div>
-            </div>
+            <div className={styles.gender}>
+              <DropDown
+                value={gender}
+                options={["male", "female", "other", "Don't want to disclose"]}
+                setvalue={setgender}
+                placeholder="Gender"
+                margin="0 0.5rem 1.2rem 0"
+                className={"gender"}
+                />
+                </div>
+                  </div>
             <div className={styles.row}>
               <div
                 className={styles.button}

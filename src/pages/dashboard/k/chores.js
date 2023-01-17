@@ -50,10 +50,6 @@ export default function KidChoresPage({
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
 
   useEffect(() => {
     setuserdata(userdataFromServer);
@@ -86,16 +82,8 @@ export default function KidChoresPage({
       <ChoreModal showmodal={showmodal} setshowmodal={setshowmodal} />
 
       <div className={styles.contentWrapper}>
-        <DashboardHeader
-          mode={"Chores"}
-          settoastdata={settoastdata}
-          setShowToolTip={setShowToolTip}
-          showToolTip={showToolTip}
-        />
-        <p className={styles.subheader}>
-          Check & complete the tasks assigned by your parents, and earn UniCoins
-          for doing so{" "}
-        </p>
+        <DashboardHeader mode={"Chores"} settoastdata={settoastdata} />
+        <p className={styles.subheader}>Check & complete the tasks assigned by your parents, and earn UniCoins for doing so </p>
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
             <div className={styles.pendingChoresSection}>
@@ -108,7 +96,7 @@ export default function KidChoresPage({
                         <KidChore
                           data={item}
                           key={"pendingchore" + index}
-                          settoastdata={setShowToolTip}
+                          settoastdata={settoastdata}
                         />
                       );
                     })}
@@ -146,7 +134,7 @@ export default function KidChoresPage({
                         <KidChore
                           data={data}
                           key={data.id}
-                          settoastdata={setShowToolTip}
+                          settoastdata={settoastdata}
                         />
                       );
                     })}

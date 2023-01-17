@@ -18,10 +18,6 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
   const { setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Leaderboard");
   const [tab, setTab] = useState(TABS[0]);
@@ -60,8 +56,6 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
-          setShowToolTip={setShowToolTip}
-          showToolTip={showToolTip}
         />
         <div className={styles.mainContent}>
           <ChildLeaderboard

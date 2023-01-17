@@ -36,10 +36,6 @@ export default function DailyQuestion({
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
   return (
     <div className={styles.invitepage}>
       <LeftPanel
@@ -53,7 +49,7 @@ export default function DailyQuestion({
         <div className={styles.mainContent}>
           <div className={styles.flexTop}>
             {todaysquestion && <TodaysQuestion data={todaysquestion} />}
-            <Refer settoastdata={setShowToolTip} />
+            <Refer settoastdata={settoastdata} />
           </div>
           {/* <div className={styles.flexBottom} id="rightpanel">
             <WaitlistBlogs blogs={blogdata} pushTo="/dashboard/p/blog/" />

@@ -61,10 +61,6 @@ function Dashboard({
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
   const [showtour, setshowtour] = useState(
     !userdatafromserver?.intro_guide_completed
   );
@@ -283,11 +279,9 @@ function Dashboard({
             mode={mode}
             setmode={setmode}
             settoastdata={settoastdata}
-            setShowToolTip={setShowToolTip}
-            showToolTip={showToolTip}
           />
           {userdatafromserver && !userdatafromserver.email_verified && (
-            <EmailVerificationPending settoastdata={setShowToolTip} />
+            <EmailVerificationPending settoastdata={settoastdata} />
           )}
           {userdatafromserver && (
             <div
@@ -324,7 +318,7 @@ function Dashboard({
                                 confirmationgiven={confirmationgiven}
                                 setshowConfirmation={setshowConfirmation}
                                 setkids={setkids}
-                                settoastdata={setShowToolTip}
+                                settoastdata={settoastdata}
                                 data={item}
                                 key={"kidcomponent" + index}
                               />
@@ -362,7 +356,7 @@ function Dashboard({
                                         <ChoreComponent
                                           data={data}
                                           setchores={setchores}
-                                          settoastdata={setShowToolTip}
+                                          settoastdata={settoastdata}
                                           key={data.id}
                                         />
                                       );
@@ -390,7 +384,7 @@ function Dashboard({
                                               data.id ||
                                               "chorecomponent" + index
                                             }
-                                            settoastdata={setShowToolTip}
+                                            settoastdata={settoastdata}
                                             settribes={
                                               setTribeRequestsFromServer
                                             }
@@ -420,7 +414,7 @@ function Dashboard({
               </div>
               <div className={styles.questionSection}>
                 {todaysquestion && <TodaysQuestion data={todaysquestion} />}
-                <Refer settoastdata={setShowToolTip} />
+                <Refer settoastdata={settoastdata} />
               </div>
               <div className={styles.blogsSection}>
                 {allBlogs ? (

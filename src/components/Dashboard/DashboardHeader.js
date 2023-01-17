@@ -13,8 +13,6 @@ import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
 import LevelComponent from "../Dashboard/LevelComponent";
 import Onboarding from "../Onboarding";
-import tooltipStyle from "../../styles/GeneralComponents/tooltip.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
 
 function DashboardHeader({
   mode,
@@ -23,11 +21,6 @@ function DashboardHeader({
   settoastdata,
   disableClicks,
   setStoryIndex,
-  setShowToolTip,
-  showToolTip = {
-    show: false,
-    msg: "",
-  },
 }) {
   const router = useRouter();
   const [bell, setbell] = useState(false);
@@ -61,17 +54,6 @@ function DashboardHeader({
       }
     }
   }, [userdata]);
-
-  useEffect(() => {
-    if (!showToolTip.show) return;
-    let timer = setTimeout(
-      () => setShowToolTip((prev) => ({ ...prev, show: false })),
-      2500
-    );
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showToolTip.show]);
 
   return (
     <div
@@ -126,9 +108,8 @@ function DashboardHeader({
           </div>
         )} */}
         {userdata?.user_type !== "parent" && (
-          <div
-            className={styles.rewardBlock}
-            onClick={() => router.push("/dashboard/k/store")}
+          <div className={styles.rewardBlock}
+          onClick={() => router.push("/dashboard/k/store")}
           >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
@@ -141,44 +122,29 @@ function DashboardHeader({
           </div>
         )}
         {
-          <div className={tooltipStyle.tooltip}>
-            <AnimatePresence>
-              {showToolTip.show && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.3 }}
-                  animate={{ opacity: 1, scale: 1, y: 35 }}
-                  exit={{ opacity: 0, y: 20, x: 30, scale: 0.3 }}
-                  transition={{ duration: 0.2 }}
-                  className={`${tooltipStyle.tooltip__content} ${tooltipStyle.tooltip__content_bottom}`}
-                >
-                  {showToolTip.msg}
-                </motion.span>
-              )}
-            </AnimatePresence>
-            <div
-              id="notification-btn"
-              className={`${styles.notification} ${styles.icon} ${
-                bell ? styles.bell : ""
-              }`}
-              onClick={() => setshownotifications(!shownotifications)}
-              onMouseEnter={() => {
-                if (router.query.showTour) {
-                  return;
-                }
-                setbell(true);
-              }}
-              onMouseLeave={() => {
-                if (router.query.showTour) {
-                  return;
-                }
-                setbell(false);
-              }}
-            >
-              {notifications.length > 0 ? (
-                <div className={styles.dot}></div>
-              ) : null}
-              <NotificationBell />
-            </div>
+          <div
+            id="notification-btn"
+            className={`${styles.notification} ${styles.icon} ${
+              bell ? styles.bell : ""
+            }`}
+            onClick={() => setshownotifications(!shownotifications)}
+            onMouseEnter={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(true);
+            }}
+            onMouseLeave={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(false);
+            }}
+          >
+            {notifications.length > 0 ? (
+              <div className={styles.dot}></div>
+            ) : null}
+            <NotificationBell />
           </div>
         }
         <div className={styles.avatar} id="header-settings">

@@ -24,10 +24,6 @@ export default function EditProfile({ data, minDate }) {
     type: "success",
     msg: "",
   });
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
   const [error, seterror] = useState("");
   const [type, settype] = useState(
     data.is_waiting_active ? "waitlist" : router.query.type || "parent"
@@ -93,38 +89,38 @@ export default function EditProfile({ data, minDate }) {
       (!changephone || changephone === data.phone) &&
       changephone === " " &&
       !password
-    ) {
-      handleSave();
-    } else {
-      if (password) {
-        if (password !== confirmpassword) {
-          seterror("Passwords do not match");
-          return;
-        }
-        if (!validatePassword(password)) {
-          seterror(
-            "Password must be of minimum 8 characters and also it must contain minimum 1 number,1 special character,1 uppercase character and 1 lowercase character"
-          );
-          return;
-        }
-      }
-      if (changephone && confirmphone === "") {
-        seterror("Please enter confirm phone number");
+      ) {
+        handleSave();
+      } else {
+        if (password) {
+          if (password !== confirmpassword) {
+            seterror("Passwords do not match");
+            return;
+          }
+          if (!validatePassword(password)) {
+            seterror(
+              "Password must be of minimum 8 characters and also it must contain minimum 1 number,1 special character,1 uppercase character and 1 lowercase character"
+              );
+              return;
+            }
+          }
+          if (changephone && confirmphone === "") {
+            seterror("Please enter confirm phone number");
         return;
       }
-      if (changephone && changephone !== confirmphone) {
-        seterror("Phone number does not match");
+          if (changephone && changephone !== confirmphone) {
+            seterror("Phone number does not match");
         return;
       }
-      if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
-        seterror("Invalid phone number");
-        return;
-      }
+       if (changephone && !validator.isMobilePhone(changephone, "en-IN")) {
+         seterror("Invalid phone number");
+         return;
+       }
       if (changephone) {
-        let checkphone = await LoginApis.checkphone({
-          phone: changephone,
-        });
-        if (checkphone && checkphone.data && checkphone.data.success) {
+    let checkphone = await LoginApis.checkphone({
+      phone: changephone,
+    });
+    if (checkphone && checkphone.data && checkphone.data.success) {
           console.log("phone ok");
         } else {
           seterror(checkphone?.data.message || "Error connecting to server");
@@ -146,13 +142,15 @@ export default function EditProfile({ data, minDate }) {
               type: "success",
             });
           } else {
-            if (changephone !== "") {
+            if(changephone !== "")
+            {
               settoastdata({
                 msg: response?.data.message || "Error",
                 show: true,
                 type: "error",
               });
-            } else {
+            }
+            else{
               settoastdata({
                 msg: "Please enter a phone number" || "Error",
                 show: true,
@@ -238,11 +236,7 @@ export default function EditProfile({ data, minDate }) {
     if (
       JSON.stringify(updated_data) === JSON.stringify({ email: data.email })
     ) {
-      setShowToolTip({
-        msg: "No changes were made",
-        show: true,
-        type: "error",
-      });
+      settoastdata({ msg: "No changes were made", show: true, type: "error" });
       return;
     }
     let response = await DashboardApis.updateprofile(updated_data);
@@ -257,17 +251,13 @@ export default function EditProfile({ data, minDate }) {
       if (img) {
         setuserdata((prev) => ({ ...prev, user_img_url: img }));
       }
-      setShowToolTip({
-        msg: "Saved Successfully",
-        show: true,
-        type: "success",
-      });
+      settoastdata({ msg: "Saved Successfully", show: true, type: "success" });
       setTimeout(() => {
         window.location.reload();
       }, 3000);
     } else {
       seterror(response.data.message || "Cannot reach server");
-      setShowToolTip({
+      settoastdata({
         msg: response.data.message || "Error",
         show: true,
         type: "error",
@@ -319,8 +309,6 @@ export default function EditProfile({ data, minDate }) {
           setmode={setmode}
           showback={true}
           gobackto={"dashboard/p"}
-          setShowToolTip={setShowToolTip}
-          showToolTip={showToolTip}
         />
         <div className={styles.mainContent}>
           {showavatarmodal && (
@@ -375,19 +363,14 @@ export default function EditProfile({ data, minDate }) {
                 numOnly
               />
               <div className={styles.genderInput}>
-                <DropDown
-                  value={gender}
-                  options={[
-                    "male",
-                    "female",
-                    "other",
-                    "Don't want to disclose",
-                  ]}
-                  setvalue={setgender}
-                  placeholder="Gender"
-                  margin="10px 0"
+              <DropDown
+                value={gender}
+                options={["male", "female", "other", "Don't want to disclose"]}
+                setvalue={setgender}
+                placeholder="Gender"
+                margin="10px 0"
                 />
-              </div>
+                </div>
               <div className={styles.stateInput}>
                 <DropDown
                   value={state}
@@ -403,7 +386,7 @@ export default function EditProfile({ data, minDate }) {
                 value={dob}
                 onChange={(e) => {
                   if (e && e.getTime() >= new Date().getTime()) {
-                    setShowToolTip({
+                    settoastdata({
                       msg: "Invaild date of birth",
                       show: true,
                       type: "error",

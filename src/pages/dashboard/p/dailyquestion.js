@@ -34,12 +34,11 @@ export default function DailyQuestion({
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const router = useRouter();
   const [mode, setmode] = useState("Question of the day");
-  const [showToolTip, setShowToolTip] = useState({
+  const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -58,7 +57,7 @@ export default function DailyQuestion({
         <div className={styles.mainContent}>
           <div className={styles.flexTop}>
             {todaysquestion && <TodaysQuestion data={todaysquestion} />}
-            <Refer settoastdata={setShowToolTip} />
+            <Refer settoastdata={settoastdata} />
           </div>
           <div className={styles.flexBottom} id="rightpanel">
             <WaitlistBlogs blogs={blogdata} pushTo="/dashboard/p/blog/" />

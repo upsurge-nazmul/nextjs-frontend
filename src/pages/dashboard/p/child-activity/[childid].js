@@ -42,11 +42,6 @@ export default function ChildActivity({
     msg: "",
   });
 
-  const [showToolTip, setShowToolTip] = useState({
-    show: false,
-    msg: "",
-  });
-
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -73,8 +68,6 @@ export default function ChildActivity({
             settoastdata={settoastdata}
             showback={true}
             gobackto={"/dashboard/p/"}
-            setShowToolTip={setShowToolTip}
-            showToolTip={showToolTip}
           />
         </div>
         <div className={styles.mainContent}>
@@ -103,6 +96,7 @@ export default function ChildActivity({
                   </div>
                 </div>
               </div>
+
             </div>
             <div className={styles.flexRight}>
               <div className={styles.choreSection}>
@@ -119,7 +113,7 @@ export default function ChildActivity({
                     return (
                       <ChoreComponent
                         data={data}
-                        settoastdata={setShowToolTip}
+                        settoastdata={settoastdata}
                         key={"chorecomponent" + index}
                       />
                     );
@@ -168,82 +162,82 @@ export default function ChildActivity({
         </div>
       </div>
     </div>
-  );
+      );
 }
 
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
-  let msg = "";
-  if (token) {
-    let response = await LoginApis.checktoken({
-      token: token,
+      export async function getServerSideProps({params, req}) {
+        let token = req.cookies.accesstoken;
+      let msg = "";
+      if (token) {
+        let response = await LoginApis.checktoken({
+        token: token,
     });
-    if (response && !response.data.success) {
-      msg = response.data.msg;
+      if (response && !response.data.success) {
+        msg = response.data.msg;
       return {
-        props: { isLogged: false, msg },
-        redirect: {
-          permanent: false,
-          destination: "/?err=02",
+        props: {isLogged: false, msg },
+      redirect: {
+        permanent: false,
+      destination: "/?err=02",
         },
       };
     } else {
-      let pendinchores = await ChoreApis.getchildchores(
-        { id: params.childid, type: "pending" },
-        token
+        let pendinchores = await ChoreApis.getchildchores(
+      {id: params.childid, type: "pending" },
+      token
       );
       let childdetail = await DashboardApis.getChildDetails(
-        {
-          id: params.childid,
+      {
+        id: params.childid,
         },
-        token
+      token
       );
       let highestquizscore = await QuizApis.highestscore({
         email: response.data.data.email,
       });
       let userTribes = await TribeApis.userTribes(
-        {
-          userId: params.childid,
+      {
+        userId: params.childid,
         },
-        token
+      token
       );
       let recentgames = await FreeGameApis.getrecentGames(
-        { id: params.childid },
-        token
+      {id: params.childid },
+      token
       );
 
       return {
         props: {
-          isLogged: true,
-          pendingchores:
-            pendinchores && pendinchores.data && pendinchores.data.success
-              ? pendinchores.data.data
-              : [],
-          childdetail:
-            childdetail && childdetail.data && childdetail.data.data
-              ? childdetail.data.data
-              : [],
-          highestquizscore: highestquizscore?.data.success
-            ? highestquizscore.data.data.score
-            : 0,
-          childTribes:
-            userTribes && userTribes.data && userTribes.data.success
-              ? userTribes.data.data
-              : [],
-          recentgames:
-            recentgames && recentgames.data && recentgames.data.success
-              ? recentgames.data.data
-              : [],
-          userdatafromserver: response.data.data,
+        isLogged: true,
+      pendingchores:
+      pendinchores && pendinchores.data && pendinchores.data.success
+      ? pendinchores.data.data
+      : [],
+      childdetail:
+      childdetail && childdetail.data && childdetail.data.data
+      ? childdetail.data.data
+      : [],
+      highestquizscore: highestquizscore?.data.success
+      ? highestquizscore.data.data.score
+      : 0,
+      childTribes:
+      userTribes && userTribes.data && userTribes.data.success
+      ? userTribes.data.data
+      : [],
+      recentgames:
+      recentgames && recentgames.data && recentgames.data.success
+      ? recentgames.data.data
+      : [],
+      userdatafromserver: response.data.data,
         },
       };
     }
   } else {
     return {
-      props: { isLogged: false, msg: "cannot get token" },
+        props: {isLogged: false, msg: "cannot get token" },
       redirect: {
         permanent: false,
-        destination: "/?err=01",
+      destination: "/?err=01",
       },
     };
   }
