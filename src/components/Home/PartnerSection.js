@@ -14,12 +14,12 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
     "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
   ];
   const rewards1 = [
-    "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
+   "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
     "https://imgcdn.upsurge.in/images/partners/phpyYVFl1_lisbnd.webp",
-    "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
-    "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
-    "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
-    "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
+   // "https://imgcdn.upsurge.in/images/partners/phpyswS28_w9hfz7.webp",
+   // "https://imgcdn.upsurge.in/images/partners/phpNsJMuh_s3ah3y.png",
+   // "https://imgcdn.upsurge.in/images/partners/phpgzwRG4_mwhnz0.webp",
+   // "https://imgcdn.upsurge.in/images/partners/php7Z2XTZ_kfbtfw.png",
 
   ];
   const { theme } = useContext(MainContext);
@@ -41,6 +41,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
         style={nomargin ? { margin: 0 } : {}}
         id="partner-section"
       >
+        <div className={styles.background}>
         <div className={styles.headingContainer}>
         <div
           className={`${styles.heading} ${dashboard && styles.hidecursor}`}
@@ -73,51 +74,55 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
         >
           <div className={styles.imageswrapper}>
             <div className={styles.imagewrapper1}>
-
+            </div>
+          <div className={styles.imagewrapper2}>
+          </div>
           {rewards.map((item, index) => {
             return (
-              <div key={"partner" + index} className={styles.images1}>
-              <img
-                onClick={() => {
-                  if (dashboard) {
-                    return;
-                  }
-                  router.push("/benefits/rewards");
-                }}
-                key={"partner" + index}
-                className={`${styles.img} ${dashboard && styles.hidecursor}`}
-                src={item}
-                alt="Reward partner"
-                loading="lazy"
-                />
-              </div>
+              <>  </>
+         //     <div key={"partner" + index} className={styles.images1}>
+         //     <img
+         //       onClick={() => {
+         //         if (dashboard) {
+         //           return;
+         //         }
+         //         router.push("/benefits/rewards");
+         //       }}
+         //       key={"partner" + index}
+         //       className={`${styles.img} ${dashboard && styles.hidecursor}`}
+         //       src={item}
+         //       alt="Reward partner"
+         //       loading="lazy"
+         //       />
+         //     </div>
             );
           })}
-            </div>
-                <div className={styles.imagewrapper2}>
-          {rewards1.map((item, index) => {
-            return (
-              <div key={"partner" + index} className={styles.images1}>
-              <img
-                onClick={() => {
-                  if (dashboard) {
-                    return;
-                  }
-                  router.push("/benefits/rewards");
-                }}
-                key={"partner" + index}
-                className={`${styles.img} ${dashboard && styles.hidecursor}`}
-                src={item}
-                alt="Reward partner"
-                loading="lazy"
-                />
-              </div>
-            );
-          })}
-          </div>
-          </div>
+           
+           {rewards1.map((item, index) => {
+             return (
+              <></>
+             //<div key={"partner" + index} className={styles.images2}>
+             // <img
+             //   onClick={() => {
+               //     if (dashboard) {
+                 //       return;
+                 //     }
+                 //     router.push("/benefits/rewards");
+                 //   }}
+                 //   key={"partner" + index}
+                 //   className={`${styles.img} ${dashboard && styles.hidecursor}`}
+                 //   src={item}
+                 //   alt="Reward partner"
+                 //   loading="lazy"
+                 //   />
+                 // </div>
+                 );
+                })}
+        </div>
         </div>
       </div>
+    </div>
+   
     </div>
   );
 }
