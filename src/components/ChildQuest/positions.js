@@ -45,11 +45,11 @@ export const positions = {
   ],
   quest2: [
     {
-      bottom: "10%",
-      right: "47%",
+      bottom: "41%",
+      right: "61.5%",
     },
     {
-      bottom: "37%",
+      bottom: "50%",
       right: "76%",
     },
     {
@@ -58,7 +58,7 @@ export const positions = {
     },
     {
       bottom: "52%",
-      right: "35%",
+      right: "60%",
     },
     {
       bottom: "32%",
