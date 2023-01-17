@@ -217,6 +217,10 @@ function AddKid({ childdata, userdatafromserver }) {
       seterror("Passwords do not match.");
       return;
     }
+    if (validator.isEmail(userName)) {
+      seterror("Username shouldn't be email");
+      return;
+    }
     let data = {
       firstName,
       lastName,
