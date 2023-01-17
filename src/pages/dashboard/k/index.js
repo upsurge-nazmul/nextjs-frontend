@@ -36,6 +36,7 @@ import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
 import EmailVerificationPending from "../../../components/EmailVerificationPending";
 import EditProfilePending from "../../../components/EditProfilePending";
+import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
 
 export default function ChildActivity({
   pendingchores,
@@ -67,6 +68,10 @@ export default function ChildActivity({
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
+    msg: "",
+  });
+  const [showToolTip, setShowToolTip] = useState({
+    show: false,
     msg: "",
   });
   useEffect(() => {
@@ -178,7 +183,16 @@ export default function ChildActivity({
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
+          setShowToolTip={setShowToolTip}
+          showToolTip={showToolTip}
         />
+        {userdatafromserver && !userdatafromserver.email_verified && (
+          <EmailVerificationPending settoastdata={settoastdata} />
+        )}
+         {userdatafromserver && !userdatafromserver.profile_completed && (
+          <EditProfilePending />
+          )}
+          <PhoneVerificationPending />
         
         {showtodo && (
           <TodoList
@@ -194,13 +208,12 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-        {userdatafromserver && !userdatafromserver.email_verified && (
-          <EmailVerificationPending settoastdata={settoastdata} />
-        )}
-         {userdatafromserver && !userdatafromserver.profile_completed && (
-          <EditProfilePending />
-          )
-        }
+          {userdatafromserver && !userdatafromserver.email_verified && (
+            <EmailVerificationPending settoastdata={setShowToolTip} />
+          )}
+          {userdatafromserver && !userdatafromserver.profile_completed && (
+            <EditProfilePending />
+          )}
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
@@ -220,7 +233,7 @@ export default function ChildActivity({
                     return (
                       <KidChore
                         data={data}
-                        settoastdata={settoastdata}
+                        settoastdata={setShowToolTip}
                         key={"chorecomponent" + index}
                       />
                     );

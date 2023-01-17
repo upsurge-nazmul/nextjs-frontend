@@ -1,0 +1,234 @@
+.mapContent {
+    width: 100%;
+    .superZoomBanking{
+      //transform: scale(3);  
+      margin-left: 40rem;
+      transition: 2s;
+      transform:perspective(100rem) rotateX(15deg) scale(2.8);
+    }
+    .superZoomMoney{
+      margin-top:20rem;
+      transition: 2s;
+      transform:perspective(100rem) rotateX(15deg) scale(2.8);
+    }
+    .superZoomPF1{
+      margin-top:20rem;
+      transition:2s;
+      transform:perspective(100rem) rotateX(15deg) scale(2.8);
+    }
+    .superZoomUPI{
+      margin-top:20rem;
+      transition:2s;
+      transform:perspective(100rem) rotateX(15deg) scale(2.8);
+    }
+    .Banking{
+       transform: scale(1.8);
+       margin-left: 20rem;
+       transition: 2s;
+    }
+    .finance{
+        transform: scale(1.8);
+        margin-left: 0rem;
+        transition: 2s;
+    }
+    .upi{
+        transform: scale(1.8);
+        margin-left: 0rem;
+        margin-top: 10rem;
+        transition: 2s;
+    }
+    .money{
+        transform: scale(1.8);
+        margin-left: 7rem;
+        margin-bottom: 20rem;
+        transition: 2s;
+    }
+    .overview{
+        transform: scale(1);
+        transition: 2s;
+    }
+    .map {
+      background-image: url("../../../public/images/knowledgequestmaps/island01-a.png");
+      width: 100%;
+      height: 100%;
+      min-height: 60vw;
+      z-index: 10;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+      .cancel{
+        cursor: pointer;
+      }
+      .heading{
+        cursor: pointer;
+        position: absolute;
+        font-weight: 500;
+        font-size: 12px;
+        border-radius: 6px;
+        width: fit-content;
+        min-width: 10rem;
+        z-index: 2;
+        color: rgb(44, 44, 44);
+        filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
+        padding: 10px;
+        background-color: #fff;
+        span{
+          display: flex;
+          margin-left: 0.4rem;
+        }
+        .chapterlengthBlock{
+          position: absolute;
+          top:0.4rem;
+          left:-0.8rem;
+          background-color: #ff7f27;
+          border: 0.1rem #01a2e9 solid;
+          border-radius: 1rem;
+          padding:0.2rem 0.4rem;
+        }
+        .rewardBlock{
+         background-color: #128bbe;
+          color:#fff;
+         padding:0.2rem 0.3rem;
+         border-radius: 0.3rem;
+          position: absolute;
+          top:1.5rem;
+          right:0.3rem;
+          margin-left: 0.5rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: flex;
+    gap:0.2rem;
+    cursor: pointer;
+    .svg{
+      min-width: clamp(14px, 1.6vw, 16px);
+      min-height: clamp(14px, 1.6vw, 16px);
+      color:#fff;
+    }
+        }
+      }
+      .heading::after{
+        content: " ";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 9;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #fff transparent transparent transparent;
+      }
+      .chapter {
+        cursor: pointer;
+        position: absolute;
+        transform:perspective(2rem) rotateX(40deg);
+        font-weight: 400;
+        padding: 1rem 1.5rem;
+        font-size: 0.5rem;
+        border-radius: 0.4rem;
+        width: fit-content;
+        min-width: 1rem;
+        z-index: 99;
+        color: rgb(44, 44, 44);
+        text-align: center;
+        padding: 0.4rem 0.7rem;
+        background-color: #fff;
+        animation: floating 1s infinite alternate;
+        border:1px solid black; 
+      }
+      .chapter::before{
+        content:'';
+        z-index: -2;
+        position: absolute;
+        border: 0.001px solid black;
+        background-color: #fff;
+        top:0.1rem;
+        left: 0.1rem;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width:100%;
+        border-radius: 0.4rem;
+      }
+      @keyframes floating {
+        0%{
+          transform: translate(0%,10%);
+          }
+      100%{
+          transform: translate(0%);
+        }
+      }
+      @keyframes floatingshadow {
+        0%{
+          top:1.6rem;
+        }
+        100%{
+          top:2.1rem;
+          left:0.9rem;
+          width:70%;
+          height:70%;
+        }
+      }
+      .chapter::after{
+        animation: floatingshadow 1s infinite alternate;
+        content:'';
+        z-index: 2;
+        position: absolute;
+        top:1.6rem;
+        left: 0.7rem;
+        right: 0;
+        bottom: 0;
+        height: 80%;
+        width:80%;
+        opacity: 0.4;
+        border-radius: 99px;
+        background-color: black;
+      }
+      .completedChapter {
+        @extend .chapter;
+        background-color: #4fe563;
+        color: #333;
+        border:1px solid black; 
+      }
+      .completedChapter::before{
+        content:'';
+        z-index: -2;
+        position: absolute;
+        border: 0.001px solid black;
+        background-color: #4fe563;
+        top:0.1rem;
+        left: 0.1rem;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width:100%;
+        border-radius: 0.4rem;
+      }
+      .disabledChapter {
+        @extend .chapter;
+        border:1px solid black; 
+        background-color: #bababaf7;
+        color: #595454c4;
+        cursor: default;
+      }
+      .disabledChapter::before{
+        content:'';
+        z-index: -2;
+        position: absolute;
+        border: 0.001px solid black;
+        background-color: #bababaf7;
+        top:0.1rem;
+        left: 0.1rem;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width:100%;
+        border-radius: 0.4rem;
+      }
+    }
+  }
+  
