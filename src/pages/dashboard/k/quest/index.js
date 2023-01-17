@@ -55,13 +55,13 @@ export default function KnowledgeQuest({ userData, questData }) {
             data={questData}
             tab={tab}
             handleCardClick={handleCardClick}
-          /> */}
+          /> 
           <MapHeadArea 
           data={questData}
           tab={tab}
           handleCardClick={handleCardClick}
           />
-           <MainSection
+          <MainSection
             data={questData}
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}

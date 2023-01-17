@@ -210,14 +210,14 @@ const DownloadSingleGamePage = ({ gameData }) => {
             <div className={styles.bottomWrapper}>
               <span className={styles.subheading}>Download Options</span>
               <div className={styles.btnContainer}>
-                <a href={gameData.playstore} target="_blank">
+                <a href={gameData.playstore} target="_blank" rel="noreferrer">
                   <img
                     className={styles.badge}
                     src="/images/DownloadGames/google-play.png"
                     alt="PlayStore"
                   />
                 </a>
-                <a href={gameData.microsoft} target="_blank">
+                <a href={gameData.microsoft} target="_blank" rel="noreferrer">
                   <img
                     className={styles.badge}
                     src="/images/DownloadGames/ms_1.png"
