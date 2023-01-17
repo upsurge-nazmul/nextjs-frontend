@@ -51,22 +51,22 @@ export default function KnowledgeQuest({ userData, questData }) {
         <div className={styles.mainContent} id="quest-main">
           <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
            {/* <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> */}
-          <HeadArea
+          {/* <HeadArea
             data={questData}
             tab={tab}
             handleCardClick={handleCardClick}
-          /> 
+          />  */}
           <MapHeadArea 
           data={questData}
           tab={tab}
           handleCardClick={handleCardClick}
           />
-          <MainSection
+          {/* <MainSection
             data={questData}
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
-          />
+          /> */}
         </div>
       </div>
     </div>
