@@ -58,7 +58,8 @@ export default function Events({ userData }) {
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
             {events && events.length ? (
-                {events.map((item) => (
+                 events.map((item) => (
+                  
                   <Card
                     key={item.id}
                     data={item}
@@ -67,7 +68,7 @@ export default function Events({ userData }) {
                     cardType={"eventCard"}
                     handleSelect={() => setSelectedEvent(item)}
                   />
-                ))}
+                ))
               
             ) : (
               <FillSpace
@@ -78,9 +79,10 @@ export default function Events({ userData }) {
           </div>
           <div className={styles.section}>
             <div className={styles.heading}>Challenges</div>
+            
             {challenges && challenges.length ? (
               
-                {challenges.map((item) => (
+                challenges.map((item) => (
                   <Card
                     key={item.id}
                     data={item}
@@ -89,7 +91,7 @@ export default function Events({ userData }) {
                     cardType={"challengeCard"}
                     handleSelect={() => setSelectedChallenge(item)}
                   />
-                ))}
+                ))
                 
             ) : (
               <FillSpace
