@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "../../styles/Home/benefits.module.scss";
+import styles from "../../styles/Home/benefitsScrollAnimation.module.scss";
 import ImageDisplay from "../Benefits/ImageDisplay";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const DATA = [
   {
@@ -54,12 +56,33 @@ const COLORS = [
 ];
 
 function Benefits() {
+  const parentRef = useRef();
   const [current, setCurrent] = useState(0);
-  const [currentImageData, setCurrentImageData] = useState(0);
-  const [changeImage, setChangeImage] = useState(false);
+  const [paerntHeight, setParentHeight] = useState();
+
+  useEffect(() => {
+    let parentH = parentRef.current.offsetHeight;
+
+    setParentHeight(parentH);
+  }, []);
+
+  const handleScroll = (e) => {
+    AOS.init();
+    let scrollValue =
+      (parentRef.current.scrollTop + 1) / parentRef.current.offsetHeight;
+    // if (scrollValue - Math.floor(scrollValue) > 0.7) {
+    //   setCurrent(Math.floor(scrollValue) + 1);
+    // }
+    setCurrent(Math.floor(scrollValue));
+  };
 
   return (
-    <div className={styles.content}>
+    <div
+      className={styles.content}
+      ref={parentRef}
+      onScroll={(e) => handleScroll(e)}
+      data-aos="fade-down"
+    >
       <div className={styles.left}>
         <div className={styles.heading}>Why upsurge?</div>
         <div className={styles.collapseables}>
@@ -71,14 +94,6 @@ function Benefits() {
                   className={styles.benefit}
                   style={item.id === DATA.length ? { marginBottom: 0 } : {}}
                   key={item.id}
-                  onClick={() => {
-                    setChangeImage(true);
-                    setCurrent(item.id - 1);
-                    setTimeout(() => {
-                      setChangeImage(false);
-                      setCurrentImageData(item.id - 1);
-                    }, 1000);
-                  }}
                 >
                   <div
                     className={
@@ -98,18 +113,18 @@ function Benefits() {
                     }
                   />
                   <div className={styles.title}>{item.title}</div>
-                  <div
-                    className={
-                      item.id === current + 1
-                        ? styles.openDrawer
-                        : styles.closeDrawer
-                    }
-                  >
-                    <div className={styles.description}>{item.description}</div>
-                    <div className={styles.action}>
-                      Learn More <ArrowRightAltIcon />
-                    </div>
-                  </div>
+                  {item.id === current + 1 ? (
+                    <>
+                      <div className={styles.description}>
+                        {item.description}
+                      </div>
+                      <div className={styles.action}>
+                        Learn More <ArrowRightAltIcon />
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
               );
             })}
@@ -117,16 +132,15 @@ function Benefits() {
         </div>
       </div>
       <div className={styles.right}>
-        <div
-          className={changeImage ? styles.fadeOutImage : styles.fadeInImage}
-          key={DATA[currentImageData].id}
-        >
-          <ImageDisplay
-            src={DATA[currentImageData].img}
-            alt={DATA[currentImageData].title}
-            frameType={DATA[currentImageData].frameType}
-          />
-        </div>
+        {DATA.map((item) => (
+          <div className={styles.imageWrap} key={item.id}>
+            <ImageDisplay
+              src={item.img}
+              alt={item.title}
+              frameType={item.frameType}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

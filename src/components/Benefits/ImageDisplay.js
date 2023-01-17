@@ -8,17 +8,17 @@ export default function ImageDisplay({
   alt = "",
   frameType = "default",
 }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
 
   return (
     <div
       className={styles.displayArea}
-      data-aos="zoom-in"
-      data-aos-duration={500}
-      data-aos-delay={200}
-      data-aos-anchor-placement={"top-center"}
+      // data-aos="zoom-in"
+      // data-aos-duration={500}
+      // data-aos-delay={200}
+      // data-aos-anchor-placement={"top-center"}
       style={
         frameType === "vertical"
           ? {

@@ -1,10 +1,44 @@
+/** Register your custom effects  **/
+@-webkit-keyframes fadeInEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOutEffect {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOutEffect {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .content {
   height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: auto;
   .left {
     flex: 1;
     height: 100%;
@@ -50,19 +84,30 @@
           font-weight: 600;
           color: #000;
         }
-        .description {
-          font-size: 1rem;
-          font-weight: 300;
-          color: #909090;
-          padding: 0.5rem 0;
+        .drawer {
+          .description {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #909090;
+            padding: 0.5rem 0;
+          }
+          .action {
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            color: #4166eb;
+          }
         }
-        .action {
-          cursor: pointer;
-          font-size: 1rem;
-          font-weight: 400;
-          display: flex;
-          align-items: center;
-          color: #4166eb;
+        .openDrawer {
+          @extend .drawer;
+          display: inline;
+          transition: top 1s cubic-bezier(0.82, 0.085, 0.395, 0.895);
+        }
+        .closeDrawer {
+          display: none;
+          transition: bottom 1s cubic-bezier(0.82, 0.085, 0.395, 0.895);
         }
       }
     }
@@ -77,17 +122,15 @@
       justify-content: center;
       align-items: center;
     }
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .content {
-    height: 85vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
+    .fadeInImage {
+      @extend .imageWrap;
+      -webkit-animation: fadeInEffect 1s;
+      animation: fadeInEffect 1s; /* Fading effect takes 1 second */
+    }
+    .fadeOutImage {
+      @extend .imageWrap;
+      -webkit-animation: fadeOutEffect 1s;
+      animation: fadeOutEffect 1s; /* Fading effect takes 1 second */
+    }
   }
 }
