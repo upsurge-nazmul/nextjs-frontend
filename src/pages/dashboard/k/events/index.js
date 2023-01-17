@@ -58,7 +58,7 @@ export default function Events({ userData }) {
           <div className={styles.section}>
             <div className={styles.heading}>Upcoming Events</div>
             {events && events.length ? (
-                 events.map((item) => (
+                events.map((item) => (
                   
                   <Card
                     key={item.id}
