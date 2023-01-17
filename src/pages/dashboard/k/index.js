@@ -70,6 +70,10 @@ export default function ChildActivity({
     type: "success",
     msg: "",
   });
+  const [showToolTip, setShowToolTip] = useState({
+    show: false,
+    msg: "",
+  });
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -179,6 +183,8 @@ export default function ChildActivity({
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
+          setShowToolTip={setShowToolTip}
+          showToolTip={showToolTip}
         />
         {userdatafromserver && !userdatafromserver.email_verified && (
           <EmailVerificationPending settoastdata={settoastdata} />
@@ -202,13 +208,12 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-        {userdatafromserver && !userdatafromserver.email_verified && (
-          <EmailVerificationPending settoastdata={settoastdata} />
-        )}
-         {userdatafromserver && !userdatafromserver.profile_completed && (
-          <EditProfilePending />
-          )
-        }
+          {userdatafromserver && !userdatafromserver.email_verified && (
+            <EmailVerificationPending settoastdata={setShowToolTip} />
+          )}
+          {userdatafromserver && !userdatafromserver.profile_completed && (
+            <EditProfilePending />
+          )}
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
@@ -228,7 +233,7 @@ export default function ChildActivity({
                     return (
                       <KidChore
                         data={data}
-                        settoastdata={settoastdata}
+                        settoastdata={setShowToolTip}
                         key={"chorecomponent" + index}
                       />
                     );

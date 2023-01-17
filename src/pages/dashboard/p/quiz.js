@@ -34,6 +34,11 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
     type: "success",
     msg: "",
   });
+  const [showToolTip, setShowToolTip] = useState({
+    show: false,
+    type: "success",
+    msg: "",
+  });
   const [correctAnswers, setcorrectAnswers] = useState(0);
   const [email, setEmail] = useState("");
   const [widthHeight, setwidthHeight] = useState({
@@ -112,7 +117,7 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
   }, [phone, email, name, nickname]);
   async function startgame() {
     if (!name) {
-      settoastdata({ type: "error", show: true, msg: "Name is required" });
+      setShowToolTip({ type: "error", show: true, msg: "Name is required" });
       return;
     }
     let response = await QuizApis.startwaitlistquiz({
@@ -250,6 +255,8 @@ export default function TestQuiz({ first_name, userdatafromserver }) {
             mode={mode}
             setmode={setmode}
             settoastdata={settoastdata}
+            setShowToolTip={setShowToolTip}
+            showToolTip={showToolTip}
           />
           <div className={styles.maincontent}>
             <div

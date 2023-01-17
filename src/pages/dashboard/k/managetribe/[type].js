@@ -31,7 +31,8 @@ export default function ManageTribe({
   );
   const [name, setname] = useState(tribedetails?.name);
   const [img_url, setimg_url] = useState(
-    tribedetails?.tribe_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
+    tribedetails?.tribe_img_url ||
+      "https://imgcdn.upsurge.in/images/default-avatar.png"
   );
   const [description, setdescription] = useState(tribedetails?.description);
   const [showtribemodal, setshowtribemodal] = useState(false);
@@ -39,6 +40,10 @@ export default function ManageTribe({
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
+    msg: "",
+  });
+  const [showToolTip, setShowToolTip] = useState({
+    show: true,
     msg: "",
   });
   const [avatars, setavatars] = useState([
@@ -79,7 +84,7 @@ export default function ManageTribe({
   }, []);
   async function handleSave() {
     if (!name) {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: "Name is required",
         type: "error",
@@ -87,7 +92,7 @@ export default function ManageTribe({
       return;
     }
     if (!description.trim()) {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: "Description is required",
         type: "error",
@@ -95,7 +100,7 @@ export default function ManageTribe({
       return;
     }
     if (selectedmembers.length === 0) {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: "Atleast 1 member is required",
         type: "error",
@@ -103,7 +108,7 @@ export default function ManageTribe({
       return;
     }
     if (img_url === "https://imgcdn.upsurge.in/images/default-avatar.png") {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: "Please choose an avatar",
         type: "error",
@@ -119,10 +124,10 @@ export default function ManageTribe({
     };
     const res = await TribeApis.updatetribe(model, getCookie("accesstoken"));
     if (res && res.data && res.data.success) {
-      settoastdata({ show: true, msg: res.data.message, type: "success" });
+      setShowToolTip({ show: true, msg: res.data.message, type: "success" });
       router.push("/dashboard/k/tribes");
     } else {
-      settoastdata({
+      setShowToolTip({
         show: true,
         msg: res.data.message || "Error connecting to server",
         type: "error",
@@ -144,7 +149,7 @@ export default function ManageTribe({
         <KidDashboardHeader
           mode={mode}
           setmode={setmode}
-          settoastdata={settoastdata}
+          settoastdata={setShowToolTip}
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
