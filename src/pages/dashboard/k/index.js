@@ -186,13 +186,7 @@ export default function ChildActivity({
           setShowToolTip={setShowToolTip}
           showToolTip={showToolTip}
         />
-        {userdatafromserver && !userdatafromserver.email_verified && (
-          <EmailVerificationPending settoastdata={settoastdata} />
-        )}
-         {userdatafromserver && !userdatafromserver.profile_completed && (
-          <EditProfilePending />
-          )}
-          <PhoneVerificationPending />
+          
         
         {showtodo && (
           <TodoList
@@ -213,6 +207,9 @@ export default function ChildActivity({
           )}
           {userdatafromserver && !userdatafromserver.profile_completed && (
             <EditProfilePending />
+          )}
+          {userdatafromserver && !userdatafromserver.phone_verified && (
+            <PhoneVerificationPending />
           )}
           <Journey />
           <div className={styles.contentArea}>
