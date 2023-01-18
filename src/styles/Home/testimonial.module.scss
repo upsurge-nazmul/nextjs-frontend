@@ -13,6 +13,7 @@
   }
   .wrapper {
     display: flex;
+    flex-wrap: wrap-reverse;
     .left {
       flex: 1;
       display: flex;

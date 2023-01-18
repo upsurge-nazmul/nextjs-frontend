@@ -366,6 +366,9 @@
 
 @media only screen and (max-width: 500px) {
   .footerSection {
+    .top {
+      display: none;
+    }
     .mobiletop {
       display: flex;
       flex-direction: column;
