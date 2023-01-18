@@ -4,6 +4,7 @@ import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
 import TryUpsurge from "./TryUpsurge";
+
 export default function PartnerSection({ dashboard, nomargin,setshowauth,setauthmode }) {
   const rewards = [
     "https://imgcdn.upsurge.in/images/partners/phpKqn4rb_wjxfwd.webp",
@@ -38,7 +39,7 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
         className={`${dashboard ? styles.dashboard : styles.partner} ${
           theme === "dark" && styles.darkpartner
         }`}
-        style={nomargin ? { margin: 0 } : {}}
+        style={nomargin ? {margin: 0, } : {} + 'align-self:center'}
         id="partner-section"
       >
         <div className={styles.background}>
@@ -63,8 +64,8 @@ export default function PartnerSection({ dashboard, nomargin,setshowauth,setauth
         </div>
         <TryUpsurge
         content={"Try Upsurge Free"}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
+        setauthmode={props.setauthmode}
+        setshowauth={props.setshowauth}
         inSection={true}
       />
             </div>
