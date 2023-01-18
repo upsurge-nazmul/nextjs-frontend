@@ -61,12 +61,12 @@ export default function KnowledgeQuest({ userData, questData }) {
           tab={tab}
           handleCardClick={handleCardClick}
           />
-          {/* <MainSection
+          <MainSection
             data={questData}
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
-          /> */}
+          />
         </div>
       </div>
     </div>
