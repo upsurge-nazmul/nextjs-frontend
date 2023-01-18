@@ -27,14 +27,14 @@
     width: 26%;
     max-width: 300px;
     .name {
-      font-size: 18px;
+      font-size: 1.125rem;
       cursor: pointer;
       text-transform: capitalize;
       font-weight: 500;
       margin-bottom: 5px;
     }
     .points {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
     }
@@ -53,7 +53,7 @@
     justify-content: space-between;
     margin: 0 15px;
     .name {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 400;
     }
     .progressBar {
@@ -126,13 +126,13 @@
       width: 26%;
       max-width: 300px;
       .name {
-        font-size: 18px;
+        font-size: 1.125rem;
         text-transform: capitalize;
         font-weight: 500;
         margin-bottom: 5px;
       }
       .points {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: rgba(130, 130, 130, 1);
       }
@@ -151,7 +151,7 @@
       justify-content: space-around;
       margin: 0 15px;
       .name {
-        font-size: 15px;
+        font-size: 0.9375rem;
         font-weight: 400;
       }
       .progressBar {
@@ -216,7 +216,7 @@
       justify-content: center;
       height: 100%;
       .name {
-        font-size: 12px;
+        font-size: 0.75rem;
         text-transform: capitalize;
         margin-bottom: 5px;
       }
@@ -228,7 +228,7 @@
     }
     .chore {
       flex: 1;
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
     }
     .courseProgression {
@@ -238,7 +238,7 @@
       height: 100%;
       justify-content: center;
       .name {
-        font-size: 12px;
+        font-size: 0.75rem;
         font-weight: 400;
         margin-bottom: 5px;
       }

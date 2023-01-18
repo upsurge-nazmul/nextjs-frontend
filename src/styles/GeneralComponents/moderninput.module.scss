@@ -23,7 +23,7 @@
     right: 10px;
     color: rgb(138, 138, 138);
     .infoicon {
-      font-size: 22px;
+      font-size: 1.375rem;
       cursor: pointer;
     }
   }
@@ -31,7 +31,7 @@
   .placeholder {
     position: absolute;
     font-family: "Lexend", sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #4f4f4f;
     transition: all 0.3s ease;
     padding-left: 20px;
@@ -58,14 +58,14 @@
     left: 15px;
     top: -8px;
     font-family: "Lexend", sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     z-index: 3;
     border-radius: 12px;
   }
   input {
     height: 49px;
     width: 100%;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: "Lexend", sans-serif;
     font-weight: 500;
     border: 1px solid #030303;
@@ -119,47 +119,35 @@
     }
   }
 }
+
 .modernInputBoxdate {
   z-index: 4;
 }
-.darkinputbox {
-  .tooltip {
-    position: absolute;
-    right: 10px;
-    color: rgb(138, 138, 138);
-    .infoicon {
-      font-size: 22px;
-      cursor: pointer;
-    }
-  }
-  .placeholderlifted {
-    background: $d-main;
-    color: $d-midlight;
-  }
-  input {
-    background: $d-moredark;
-    color: $d-text2;
-  }
-  .options {
-    background-color: $d-main;
-    border: 1px solid $d-light;
 
-    .option {
-      border-bottom: 1px solid $d-light;
-      color: $d-text2;
-      &:hover {
-        color: $d-text1;
-        background-color: $d-moredark;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 500px) {
   .modernInputBox {
     margin-bottom: 10px;
     width: 100%;
     .placeholder {
-      font-size: 12px;
+      font-size: 0.75rem;
+      padding: 0 15px;
+    }
+    .placeholderlifted {
+      left: 10px;
+      top: 0;
+    }
+    input {
+      padding-left: 14px;
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .modernInputBox {
+    margin-bottom: 10px;
+    width: 100%;
+    .placeholder {
+      font-size: 0.75rem;
       padding: 0 15px;
     }
     .placeholderlifted {

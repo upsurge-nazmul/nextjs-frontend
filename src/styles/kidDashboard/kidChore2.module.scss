@@ -22,13 +22,13 @@
     justify-content: center;
     width: 26%;
     .task {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
     }
     .to {
       font-style: normal;
       font-weight: normal;
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #828282;
     }
   }
@@ -113,7 +113,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -206,13 +206,13 @@
       margin-right: 10px;
       min-width: 70px;
       .task {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 500;
       }
       .to {
         font-style: normal;
         font-weight: normal;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: #828282;
       }
     }

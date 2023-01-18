@@ -81,7 +81,7 @@
       width: 50%;
     }
     .herosubheading {
-      font-size: 18px;
+      font-size: 1.125rem;
       color: rgb(255, 255, 255);
       font-weight: 500;
       margin-top: 2%;
@@ -95,7 +95,7 @@
     .error {
       width: 26.5vw;
       margin-top: 12px;
-      font-size: 16px;
+      font-size: 1rem;
       filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
       color: hsl(0, 0%, 100%);
       cursor: pointer;
@@ -216,7 +216,7 @@
             font-weight: 700;
             filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.2));
             text-align: center;
-            font-size: 24px;
+            font-size: 1.5rem;
           }
           .price {
             margin-top: 12px;
@@ -226,7 +226,7 @@
           }
           .description {
             margin-top: 6px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-size: 500;
             color: #747474;
             text-align: center;
@@ -243,7 +243,7 @@
             justify-content: center;
             width: 100%;
             color: #4166eb;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 700;
             margin-top: 30px;
             transition: all 0.3s ease;
@@ -265,7 +265,7 @@
             flex-direction: column;
             align-items: center;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 500;
               text-align: center;
               color: #ffffffe3;
@@ -334,13 +334,13 @@
         }
         .description {
           margin-top: 1vh;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 400;
           line-height: 24px;
         }
         .descriptionbold {
           margin-top: 1vh;
-          font-size: 16px;
+          font-size: 1rem;
           line-height: 24px;
           font-weight: 600;
         }
@@ -496,7 +496,7 @@
         width: 100px;
       }
       .heroheading {
-        font-size: 46px;
+        font-size: 2.875rem;
         color: rgb(255, 255, 255);
         font-weight: 700;
         filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
@@ -504,7 +504,7 @@
         width: 70%;
       }
       .herosubheading {
-        font-size: 18px;
+        font-size: 1.125rem;
         color: rgb(255, 255, 255);
         font-weight: 500;
         margin-top: 2%;
@@ -518,7 +518,7 @@
       .error {
         width: 26.5vw;
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 1rem;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
         color: hsl(0, 0%, 100%);
         cursor: pointer;
@@ -548,7 +548,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 20px;
+          font-size: 1.25rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -596,7 +596,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 1.125rem;
             width: 350px;
             justify-content: center;
             text-align: center;
@@ -635,7 +635,7 @@
               font-weight: 700;
               filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.2));
               text-align: center;
-              font-size: 24px;
+              font-size: 1.5rem;
             }
             .price {
               margin-top: 12px;
@@ -645,7 +645,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -662,7 +662,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -684,7 +684,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 text-align: center;
                 color: #ffffffe3;
@@ -896,7 +896,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 1.125rem;
             width: 350px;
             justify-content: center;
             text-align: center;
@@ -932,7 +932,7 @@
             margin-bottom: 40px;
             padding: 26px;
             .name {
-              font-size: 22px;
+              font-size: 1.375rem;
             }
             .price {
               margin-top: 25%;
@@ -941,7 +941,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -958,7 +958,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -980,7 +980,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 text-align: center;
                 color: #ffffffe3;
@@ -1056,11 +1056,11 @@
         width: 100px;
       }
       .heroheading {
-        font-size: 36px;
+        font-size: 2.25rem;
         width: 70%;
       }
       .herosubheading {
-        font-size: 16px;
+        font-size: 1rem;
         color: rgb(255, 255, 255);
         font-weight: 500;
         margin-top: 2%;
@@ -1074,7 +1074,7 @@
       .error {
         width: 26.5vw;
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 1rem;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
         color: hsl(0, 0%, 100%);
         cursor: pointer;
@@ -1092,7 +1092,7 @@
         .button {
           width: fit-content;
           min-width: fit-content;
-          font-size: 14px;
+          font-size: 0.875rem;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1130,7 +1130,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 0.875rem;
             width: 100%;
             justify-content: center;
             text-align: center;
@@ -1167,7 +1167,7 @@
             padding: 36px;
             .name {
               font-weight: 700;
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .price {
               margin-top: 12px;
@@ -1176,7 +1176,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -1192,7 +1192,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -1214,7 +1214,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 color: #ffffffe3;
 
@@ -1287,13 +1287,13 @@
           }
           .description {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 24px;
           }
           .descriptionbold {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 24px;
             font-weight: 600;
           }
@@ -1343,7 +1343,7 @@
             margin-top: 35%;
           }
           .herosubheading {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: rgb(255, 255, 255);
             font-weight: 500;
             margin-top: 2%;
@@ -1353,7 +1353,7 @@
           .error {
             width: 26.5vw;
             margin-top: 12px;
-            font-size: 16px;
+            font-size: 1rem;
             filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
             color: hsl(0, 0%, 100%);
             cursor: pointer;
@@ -1374,7 +1374,7 @@
             }
             input {
               flex: 1;
-              font-size: 16px;
+              font-size: 1rem;
             }
           }
           .errsignbox {
@@ -1492,7 +1492,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 0.875rem;
             width: 100%;
             justify-content: center;
             text-align: center;
@@ -1529,7 +1529,7 @@
             padding: 36px;
             .name {
               font-weight: 700;
-              font-size: 20px;
+              font-size: 1.25rem;
             }
             .price {
               margin-top: 12px;
@@ -1538,7 +1538,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -1554,7 +1554,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -1576,7 +1576,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 color: #ffffffe3;
 
@@ -1649,13 +1649,13 @@
           }
           .description {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 24px;
           }
           .descriptionbold {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 24px;
             font-weight: 600;
           }
@@ -1788,7 +1788,7 @@
             padding: 36px;
             .name {
               font-weight: 700;
-              font-size: 24px;
+              font-size: 1.5rem;
             }
             .price {
               margin-top: 12px;
@@ -1797,7 +1797,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -1813,7 +1813,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -1835,7 +1835,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 500;
                 color: #ffffffe3;
 
@@ -2229,13 +2229,13 @@
           }
           .description {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 24px;
           }
           .descriptionbold {
             margin-top: 1vh;
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 24px;
             font-weight: 600;
           }

@@ -17,7 +17,7 @@
     border: 1px solid #5ec796;
     padding: 10px 20px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: "Fira Sans", sans-serif;
     cursor: pointer;
     margin-bottom: 10px;
@@ -33,7 +33,7 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 12px;
+      font-size: 0.75rem;
     }
     &:hover {
       background-color: hsl(173, 80%, 40%);

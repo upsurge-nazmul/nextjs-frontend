@@ -25,7 +25,7 @@
       cursor: pointer;
       p {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 0.75rem;
       }
       svg {
         width: 20px;
@@ -50,20 +50,20 @@
     flex: 1;
     .question {
       width: 100%;
-      font-size: 22px;
+      font-size: 1.375rem;
       cursor: pointer;
       font-weight: 500;
     }
     .answer {
       width: 100%;
-      font-size: 16px;
+      font-size: 1rem;
       cursor: pointer;
       font-weight: 400;
       color: rgb(211, 211, 211);
     }
     .optionWrapper {
       width: 100%;
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 400;
       transition: all 0.3s ease;
       margin-top: 20px;
@@ -110,7 +110,7 @@
         justify-content: space-between;
         .label {
           font-family: "Lexend", sans-serif;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 500;
         }
         .signAndValue {
@@ -129,7 +129,7 @@
             border: none;
             padding: 5px;
             flex: 1;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-family: "Lexend", sans-serif;
             font-weight: 500;
             &::-webkit-outer-spin-button,
@@ -185,13 +185,13 @@
     .rightblock {
       margin-left: 15px;
       .question {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
       .answer {
-        font-size: 12px;
+        font-size: 0.75rem;
       }
       .optionWrapper {
-        font-size: 12px;
+        font-size: 0.75rem;
         margin-top: 10px;
         margin-bottom: 10px;
         .optionContainer {

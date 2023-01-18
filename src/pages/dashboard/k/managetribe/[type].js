@@ -31,7 +31,8 @@ export default function ManageTribe({
   );
   const [name, setname] = useState(tribedetails?.name);
   const [img_url, setimg_url] = useState(
-    tribedetails?.tribe_img_url || "https://imgcdn.upsurge.in/images/default-avatar.png"
+    tribedetails?.tribe_img_url ||
+      "https://imgcdn.upsurge.in/images/default-avatar.png"
   );
   const [description, setdescription] = useState(tribedetails?.description);
   const [showtribemodal, setshowtribemodal] = useState(false);

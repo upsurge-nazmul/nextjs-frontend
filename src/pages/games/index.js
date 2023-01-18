@@ -13,6 +13,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
+import AvailableGames from "../../components/DownloadGames/AvailableGames";
 
 export default function GamePage() {
   const router = useRouter();
@@ -143,6 +144,7 @@ export default function GamePage() {
             );
           })}
         </div>
+        <AvailableGames />
       </div>
       <JoinUs />
       <Footer />

@@ -22,7 +22,7 @@
       position: relative;
       transition: all 0.3s ease;
       .error {
-        font-size: 15px;
+        font-size: 0.9375rem;
         color: #ff6263;
         font-weight: 500;
         margin-bottom: 15px;
@@ -40,7 +40,7 @@
         align-items: center;
         .heading {
           font-weight: 500;
-          font-size: 32px;
+          font-size: 2rem;
           display: flex;
           align-items: center;
           transition: all 0.3s ease;
@@ -60,7 +60,7 @@
         }
         .changemode {
           font-weight: 500;
-          font-size: 16px;
+          font-size: 1rem;
           span {
             cursor: pointer;
             color: rgba(65, 102, 235, 1);
@@ -76,7 +76,7 @@
         box-sizing: border-box;
         border-radius: 14px;
         font-family: "Lexend", sans-serif;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 400;
         width: 100%;
         height: 59px;
@@ -87,7 +87,7 @@
         }
       }
       .notverifiedtext {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 500;
         text-align: center;
         margin-bottom: 30px;
@@ -98,12 +98,12 @@
         justify-content: center;
         margin-bottom: 10px;
         .text {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 400;
           text-align: center;
         }
         .phone {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           text-align: center;
         }
@@ -121,7 +121,7 @@
       }
       .resendButton {
         color: rgba(65, 102, 235, 1);
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         margin-top: 12px;
         text-align: center;
@@ -139,7 +139,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25rem;
         transition: all 0.3s ease;
         margin-top: 22px;
         &:hover {
@@ -223,9 +223,9 @@
           }
         }
         input {
-          font-size: 20px;
+          font-size: 1.25rem;
           &::placeholder {
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
         .passwordBox {
@@ -244,32 +244,32 @@
             margin-bottom: 15px;
             height: 47px;
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
-            font-size: 16px;
+            font-size: 1rem;
             margin-bottom: 15px;
             height: 47px;
           }
           .or {
             margin-bottom: 15px;
             font-weight: 300;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .google,
           .apple {
             margin-bottom: 15px;
             height: 47px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .apple {
             margin-bottom: 20px;
           }
           .reset {
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .selection {
@@ -293,11 +293,11 @@
             padding: 20px;
             transition: all 0.2s ease-in-out;
             p {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 400;
             }
             h1 {
-              font-size: 20px;
+              font-size: 1.25rem;
               font-weight: 500;
             }
 
@@ -311,13 +311,13 @@
         }
         .parent {
           .button {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 47px;
           }
           .or {
             margin-bottom: 15px;
             font-weight: 300;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .google,
           .apple {
@@ -327,7 +327,7 @@
               padding: 10px;
             }
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
         }
@@ -339,7 +339,7 @@
 
           .heading,
           .subheading {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             text-align: center;
           }
@@ -347,30 +347,30 @@
             margin-bottom: 15px;
           }
           .details {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .button {
             height: 47px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .phone {
           .phoneWrapper {
             height: 47px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             height: 47px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .email {
           .phoneWrapper {
             height: 47px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .nameWrapper {
@@ -395,22 +395,22 @@
               height: 47px;
             }
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             height: 47px;
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
         }
         .otp {
           .otpHeadWrapper {
             .text {
-              font-size: 16px;
+              font-size: 1rem;
             }
             .phone {
-              font-size: 16px;
+              font-size: 1rem;
             }
           }
           .otpWrapper {
@@ -419,7 +419,7 @@
             input {
               height: 47px;
               width: 50px;
-              font-size: 16px;
+              font-size: 1rem;
               margin: 0 6px;
               display: flex;
               align-items: center;
@@ -428,12 +428,12 @@
             }
           }
           .resendButton {
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
           .button {
             height: 47px;
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
         }
@@ -464,7 +464,7 @@
           margin-bottom: 25px;
           padding-left: 6%;
           .heading {
-            font-size: 22px;
+            font-size: 1.375rem;
             padding-left: 0px;
             .svg {
               cursor: pointer;
@@ -490,17 +490,17 @@
         .logindetails {
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .passwordBox {
             height: 45px;
             margin-bottom: 18px;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0;
             }
             .show {
@@ -509,7 +509,7 @@
             }
           }
           .or {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
@@ -517,7 +517,7 @@
             height: 45px;
             padding-right: 40px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .reset {
@@ -532,10 +532,10 @@
           .option {
             height: 10vh;
             p {
-              font-size: 16px;
+              font-size: 1rem;
             }
             h1 {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
           }
         }
@@ -558,7 +558,7 @@
                 font-size: 40px;
               }
               p {
-                font-size: 20px;
+                font-size: 1.25rem;
               }
             }
             .mascot {
@@ -578,12 +578,12 @@
             justify-content: center;
             h1 {
               font-weight: 500;
-              font-size: 14px;
+              font-size: 0.875rem;
               line-height: 16px;
             }
             p {
               color: #6b6b6b;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
               line-height: 16px;
               margin-bottom: 20px;
@@ -592,22 +592,22 @@
         }
         .parent {
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .or {
             margin-bottom: 18px;
             font-weight: 300;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             height: 45px;
             justify-content: center;
@@ -616,7 +616,7 @@
         .privacy {
           .heading,
           .subheading {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 500;
             text-align: center;
           }
@@ -624,12 +624,12 @@
             margin-bottom: 20px;
           }
           .details {
-            font-size: 14px;
+            font-size: 0.875rem;
             padding-right: 10px;
           }
           .button {
             height: 45px;
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
         .phone {
@@ -641,7 +641,7 @@
             overflow: hidden;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               border-right: 1px solid #898989;
               width: 50px;
               display: flex;
@@ -660,13 +660,13 @@
               justify-content: center;
               max-width: none;
               height: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             width: 85%;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .email {
@@ -678,11 +678,11 @@
             width: 100%;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               width: 50px;
             }
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               padding: 0 10px;
             }
@@ -690,7 +690,7 @@
           .nameWrapper {
             margin: 15px 0;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               margin: 0;
             }
@@ -700,44 +700,44 @@
             height: 45px;
             input {
               margin: 0;
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
             }
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             margin: 0;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .otp {
           .otpHeadWrapper {
             .text {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             .phone {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .otpWrapper {
             input {
               width: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0 6px;
               height: 45px;
             }
           }
           .resendButton {
             color: rgba(65, 102, 235, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }
