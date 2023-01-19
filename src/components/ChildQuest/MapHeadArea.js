@@ -97,7 +97,7 @@ export default function MapHeadArea({
           ${mapZoom == "superZoomyourBusiness" ? styles.superZoomyourBusiness : ""}
           ${mapZoom == "" ? styles.overview : ""}
           ${mapZoom == "zoomOut" ? styles.zoomOut : ""}
-          ${mapZoom == "questStarted" ? styles.overview : ""}
+          ${mapZoom == "questStarted" ? "" : ""}
           ${styles.map}
           `}
           >
@@ -122,7 +122,7 @@ export default function MapHeadArea({
                         setMapZoom("superZoom"+item.questId)
                         setTimeout(()=>{
                           setMapQuestDisplay("superZoom"+item.questId);
-                        },1000)
+                        },0)
                       }}
                       className={styles.heading} >
         <span>
@@ -147,7 +147,7 @@ export default function MapHeadArea({
       </>
       :
       <>
-       {mapQuestdisplay !== "questStarted" ?
+       {mapZoom !== "questStarted" ?
       <div className={styles.cancel} onClick={()=>{
         setMapZoom("zoomOut")
         setTimeout(()=>{
@@ -193,6 +193,7 @@ export default function MapHeadArea({
                             chapterId: currentChapter,
                             handleBack,
                             handleDone,
+                            questId: currentQuest.questId,
                             setMapZoom,
                           }}
                           />
@@ -212,6 +213,7 @@ export default function MapHeadArea({
                               game={currentChapter}
                               setGame={handleBack}
                               handleDone={handleDone}
+                              questId={currentQuest.questId}
                               setMapZoom={setMapZoom}
                               />
                               ) : (
@@ -220,7 +222,10 @@ export default function MapHeadArea({
                       <div className={styles.actionArea}>
                       <button
                         className={styles.backButton}
-                        onClick={handleBack}
+                        onClick={()=>{
+                          handleBack()
+                          setMapZoom("superZoom"+currentQuest.questId)
+                        }}
                       >
                         Go Back
                       </button>
@@ -251,10 +256,10 @@ export default function MapHeadArea({
                                       userLevel + 1 === chapter.chapterNo
                                     ) {
                                       mixpanel.track('Knowledge Quest started',{'event':`Quest Started ${chapter.id}`, 'chapterId':`${chapter.id}`});
+                                      setMapZoom("questStarted")
                                       setView(chapter.type);
                                       setCurrentChapter(chapter.id);
                                       setActiveChNo(chapter.chapterNo);
-                                      setMapZoom("questStarted")
                                     }
                                   }}
                                 >

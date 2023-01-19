@@ -155,16 +155,20 @@ export const positions = {
       right: "50%",
     },
     {
-      bottom: "48%",
+      bottom: "45%",
       right: "70%",
     },
     {
-      bottom: "55%",
+      bottom: "54%",
+      right: "55%",
+    },
+    {
+      bottom: "58%",
       right: "45%",
     },
     {
       bottom: "60%",
-      right: "35%",
+      right: "30%",
     },
     {
       bottom: "65%",

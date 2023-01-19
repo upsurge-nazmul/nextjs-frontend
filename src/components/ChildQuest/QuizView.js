@@ -11,6 +11,7 @@ export default function QuizView({
   questId,
   handleDone,
   setuserdata,
+  setMapZoom
 }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
@@ -85,6 +86,7 @@ export default function QuizView({
       num_unicoins:
         Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
     }));
+    setMapZoom("superZoom"+questId)
     handleDone();
   }
 
