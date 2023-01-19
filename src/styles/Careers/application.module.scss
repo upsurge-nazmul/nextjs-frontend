@@ -11,7 +11,7 @@
     .input,
     textarea {
       width: 100%;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
       font-family: "Roboto", sans-serif;
       border-radius: 8px;
@@ -32,7 +32,7 @@
       justify-content: center;
       align-items: center;
       margin: 20px 0;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-weight: 300;
       color: #333;
       text-align: center;
@@ -41,10 +41,10 @@
       }
     }
     .submitButton {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 400;
       color: #f6f6f6;
-      background-color: #4166eb;
+      background-color: #4166EB;
       border: none;
       outline: none;
       border-radius: 8px;
@@ -53,7 +53,7 @@
     }
     .message {
       padding: 10px 0;
-      font-size: 0.75rem;
+      font-size: 12px;
     }
     .errorMessage {
       @extend .message;
@@ -72,11 +72,11 @@
     }
     .successMsg {
       padding: 20px 0;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-weight: 600;
     }
     .infoMsg {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 300;
     }
   }
@@ -98,7 +98,7 @@
       .input,
       textarea {
         width: 100%;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
         font-family: "Roboto", sans-serif;
         border-radius: 8px;
@@ -119,7 +119,7 @@
         justify-content: center;
         align-items: center;
         margin: 20px 0;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 300;
         color: #333;
         text-align: center;
@@ -128,10 +128,10 @@
         }
       }
       .submitButton {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 400;
         color: #f6f6f6;
-        background-color: #4166eb;
+        background-color: #4166EB;
         border: none;
         outline: none;
         border-radius: 8px;
@@ -140,7 +140,7 @@
       }
       .message {
         padding: 10px 0;
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       .errorMessage {
         @extend .message;
@@ -159,11 +159,11 @@
       }
       .successMsg {
         padding: 20px 0;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 600;
       }
       .infoMsg {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 300;
       }
     }

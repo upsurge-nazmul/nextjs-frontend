@@ -80,7 +80,6 @@
       position: relative;
       width: 100%;
       height: 70vh;
-      z-index: 10;
     }
   }
   .kidimg {
@@ -114,12 +113,12 @@
     margin-left: 7%;
     margin-top: 5%;
     .heading {
-      font-size: 3rem;
+      font-size: 48px;
       font-weight: 700;
       width: 100%;
     }
     .subheading {
-      font-size: 1.125rem;
+      font-size: 18px;
       line-height: 32px;
       font-weight: 400;
       max-width: 750px;
@@ -138,17 +137,17 @@
         flex-direction: column;
         align-items: center;
         .number {
-          font-size: 2.25rem;
+          font-size: 36px;
         }
         .name {
-          font-size: 0.875rem;
+          font-size: 14px;
         }
       }
     }
     .secondheading {
       margin-top: 34px;
       font-weight: 600;
-      font-size: 1.5rem;
+      font-size: 24px;
       color: #4166eb;
     }
     .conceptswrapper {
@@ -165,7 +164,7 @@
         border: 0.5px solid #9d9d9d;
         border-radius: 4px;
         margin: 5px;
-        font-size: 0.875rem;
+        font-size: 14px;
         color: #1f1f1f;
       }
     }
@@ -209,7 +208,7 @@
         display: flex;
         align-items: center;
         font-weight: 400;
-        font-size: 1.25rem;
+        font-size: 20px;
         padding-left: 15px;
         ::placeholder {
           color: rgba(198, 198, 198, 1);
@@ -331,7 +330,7 @@
         font-size: 40px;
       }
       .subheading {
-        font-size: 1rem;
+        font-size: 16px;
         line-height: 28px;
         max-width: 550px;
       }
@@ -343,18 +342,18 @@
             font-size: 26px;
           }
           .name {
-            font-size: 0.75rem;
+            font-size: 12px;
           }
         }
       }
       .secondheading {
         margin-top: 24px;
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .conceptswrapper {
         margin-top: 10px;
         .concept {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
       }
     }
@@ -409,10 +408,10 @@
       margin-top: 50px;
       padding-top: 0px;
       .heading {
-        font-size: 2.25rem;
+        font-size: 36px;
       }
       .subheading {
-        font-size: 0.875rem;
+        font-size: 14px;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -428,13 +427,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 0.75rem;
+            font-size: 12px;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -469,7 +468,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 0.875rem;
+          font-size: 14px;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -498,7 +497,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 0.875rem;
+          font-size: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -530,15 +529,15 @@
         input {
           border-top-left-radius: 10px;
           border-bottom-left-radius: 10px;
-          font-size: 0.75rem;
+          font-size: 12px;
           padding-left: 10px;
           &::placeholder {
-            font-size: 0.875rem;
+            font-size: 14px;
           }
         }
         .button,
         .joinButton {
-          font-size: 0.875rem;
+          font-size: 14px;
         }
       }
     }
@@ -610,7 +609,7 @@
         width: 100%;
       }
       .heading {
-        font-size: 2rem;
+        font-size: 32px;
       }
       .subheading {
         max-width: 80vw;
@@ -758,10 +757,10 @@
       margin-top: 20px;
       padding-top: 0px;
       .heading {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
       .subheading {
-        font-size: 0.75rem;
+        font-size: 12px;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -777,13 +776,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 0.75rem;
+            font-size: 12px;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -824,7 +823,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 0.875rem;
+          font-size: 14px;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -853,7 +852,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 0.875rem;
+          font-size: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -928,10 +927,10 @@
       margin-top: 20px;
       padding-top: 0px;
       .heading {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
       .subheading {
-        font-size: 0.75rem;
+        font-size: 12px;
         line-height: 22px;
         max-width: 650px;
         margin: 0;
@@ -947,13 +946,13 @@
             font-size: 26px;
           }
           .name {
-            font-size: 0.75rem;
+            font-size: 12px;
           }
         }
       }
       .secondheading {
         margin-top: 14px;
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .conceptswrapper {
         margin-top: 10px;
@@ -994,7 +993,7 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 0.875rem;
+          font-size: 14px;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
@@ -1023,7 +1022,7 @@
         .joinButton {
           width: 150px;
           min-width: fit-content;
-          font-size: 0.875rem;
+          font-size: 14px;
           display: flex;
           align-items: center;
           justify-content: center;

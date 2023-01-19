@@ -12,7 +12,6 @@ export default function OtpNotVerfied({
   setphoneverified,
   setChangePhoneView,
   email,
-  setshowOTP
 }) {
   const [phone, setphone] = useState(userphone || "");
   const [OTP, setOTP] = useState("");
@@ -57,7 +56,7 @@ export default function OtpNotVerfied({
         {showmodal ? (
           <>
             <div className={styles.authContentWrapper}>
-              <div className={styles.background} onClick={()=>{setshowOTP(false)}}></div>
+              <div className={styles.background}></div>
               {changePhone === "otp" ? (
                 <div className={styles.authcontainer}>
                   <p className={styles.notverifiedtext}>

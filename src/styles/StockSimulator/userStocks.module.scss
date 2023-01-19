@@ -18,7 +18,7 @@ $nutral-color: #ffa800;
     align-items: center;
     .icon {
       width: 40px;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 700;
       background-color: $light-font-color;
       color: $dark-font-color;
@@ -33,12 +33,12 @@ $nutral-color: #ffa800;
     justify-content: center;
     align-items: flex-start;
     .name {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 700;
       color: $dark-font-color;
     }
     .symbol {
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 400;
       color: $light-font-color;
     }
@@ -50,12 +50,12 @@ $nutral-color: #ffa800;
     justify-content: center;
     align-items: flex-end;
     .label {
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 400;
       color: $light-font-color;
     }
     .value {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 700;
       color: $dark-font-color;
     }
@@ -67,12 +67,12 @@ $nutral-color: #ffa800;
     justify-content: center;
     align-items: flex-end;
     .label {
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 400;
       color: $light-font-color;
     }
     .value {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 700;
       color: $dark-font-color;
     }
@@ -82,7 +82,7 @@ $nutral-color: #ffa800;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 600;
     .gain {
       color: $buy-color;
@@ -99,7 +99,7 @@ $nutral-color: #ffa800;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 600;
     .button {
       color: $primary-color;
@@ -126,7 +126,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       .icon {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         background-color: $light-font-color;
         color: $dark-font-color;
@@ -141,7 +141,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: flex-start;
       .name {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -166,7 +166,7 @@ $nutral-color: #ffa800;
         color: $light-font-color;
       }
       .value {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -193,7 +193,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       padding: 0 5px;
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 600;
       .button {
         color: $primary-color;
@@ -221,7 +221,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       .icon {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         background-color: $light-font-color;
         color: $dark-font-color;
@@ -236,7 +236,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: flex-start;
       .name {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -261,7 +261,7 @@ $nutral-color: #ffa800;
         color: $light-font-color;
       }
       .value {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -288,7 +288,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       padding: 0 5px;
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 600;
       .button {
         color: $primary-color;
@@ -316,7 +316,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       .icon {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 700;
         background-color: $light-font-color;
         color: $dark-font-color;
@@ -331,7 +331,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: flex-start;
       .name {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -356,7 +356,7 @@ $nutral-color: #ffa800;
         color: $light-font-color;
       }
       .value {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -366,7 +366,7 @@ $nutral-color: #ffa800;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 600;
       .gain {
         color: $buy-color;
@@ -383,7 +383,7 @@ $nutral-color: #ffa800;
       justify-content: center;
       align-items: center;
       padding: 0 20px;
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 600;
       .button {
         color: $primary-color;

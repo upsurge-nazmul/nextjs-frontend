@@ -55,7 +55,7 @@
         padding: 0;
       }
       .level {
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 500;
         display: flex;
         gap: 4px;
@@ -82,8 +82,7 @@
         }
       }
       .number {
-        cursor: context-menu;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
         color: white;
         cursor: pointer;
@@ -291,7 +290,7 @@
     justify-content: space-between;
     align-items: center;
     .dashboardHeading {
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 400;
       margin-right: 10px;
       span {
@@ -325,7 +324,7 @@
           padding: 0;
         }
         .level {
-          font-size: 0.75rem;
+          font-size: 12px;
           font-weight: 500;
         }
       }
@@ -340,7 +339,7 @@
           min-height: 0.8rem;
         }
         .number {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
       }
       .settings {

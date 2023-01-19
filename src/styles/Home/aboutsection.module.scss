@@ -49,7 +49,7 @@
     flex-direction: column;
     height: 100%;
     .heading {
-      font-size: 2.875rem;
+      font-size: 46px;
       font-weight: 400;
       .highlight {
         position: relative;
@@ -71,7 +71,7 @@
       font-weight: 300;
       display: flex;
       flex-direction: column;
-      font-size: 2rem;
+      font-size: 32px;
       line-height: 42.66px;
       width: 70%;
     }
@@ -79,7 +79,7 @@
       margin-top: 10px;
       font-style: italic;
       font-weight: 500;
-      font-size: 1.125rem;
+      font-size: 18px;
       color: #1f1f1f;
       width: 70%;
     }
@@ -87,7 +87,7 @@
       margin-top: 40px;
       border-radius: 14px;
       background-color: white;
-      font-size: 1.25rem;
+      font-size: 20px;
       font-weight: 500;
       padding: 11px 30px;
       cursor: pointer;
@@ -98,16 +98,16 @@
   .about {
     .textContent {
       .heading {
-        font-size: 2.25rem;
+        font-size: 36px;
       }
       .subheading {
-        font-size: 1.125rem;
+        font-size: 18px;
       }
       .subheading2 {
-        font-size: 1rem;
+        font-size: 16px;
       }
       .button {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -149,10 +149,10 @@
     }
     .textContent {
       .subheading {
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .subheading2 {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -177,7 +177,7 @@
 @media only screen and (max-width: 500px) {
   .about {
     height: 30vh;
-    margin-top: 12vh;
+    margin-top:12vh;
     .textContent {
       .subheading {
         margin-top: 20px;
@@ -227,10 +227,10 @@
     }
     .textContent {
       .subheading {
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .subheading2 {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -273,10 +273,10 @@
     }
     .textContent {
       .subheading {
-        font-size: 1.25rem;
+        font-size: 20px;
       }
       .subheading2 {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }

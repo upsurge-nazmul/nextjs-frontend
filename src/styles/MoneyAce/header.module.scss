@@ -125,7 +125,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
+        font-size: 12px;
         color: white;
         font-family: "Fira Sans", sans-serif;
         cursor: pointer;
@@ -140,12 +140,12 @@
       .fullname {
         font-family: "Fira Sans", sans-serif;
         text-transform: capitalize;
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 500;
       }
       .username {
         font-family: "Fira Sans", sans-serif;
-        font-size: 1rem;
+        font-size: 16px;
         color: rgb(65, 65, 65);
       }
     }

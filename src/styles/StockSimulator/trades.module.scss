@@ -14,7 +14,7 @@ $row-color: #dceeec;
     padding: 10px 0;
     .heading {
       color: $heading-color;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-weight: 700;
     }
   }
@@ -55,7 +55,7 @@ $row-color: #dceeec;
         border-right: 1px solid $row-color;
         .rowitem {
           font-weight: 400;
-          font-size: 0.875rem;
+          font-size: 14px;
           color: #333;
           font-family: "Fira Sans", sans-serif;
           text-align: left;
@@ -86,7 +86,7 @@ $row-color: #dceeec;
         box-shadow: 2px 4px 8px 4px rgb(0 0 0 / 30%);
         .rowitem {
           font-weight: 600;
-          font-size: 0.9375rem;
+          font-size: 15px;
           color: #fff !important;
         }
       }
@@ -112,7 +112,7 @@ $row-color: #dceeec;
       padding: 10px 0;
       .heading {
         color: $heading-color;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
       }
     }
@@ -153,7 +153,7 @@ $row-color: #dceeec;
           border-right: 1px solid $row-color;
           .rowitem {
             font-weight: 400;
-            font-size: 0.875rem;
+            font-size: 14px;
             color: #333;
             font-family: "Fira Sans", sans-serif;
             text-align: left;
@@ -184,7 +184,7 @@ $row-color: #dceeec;
           box-shadow: 2px 4px 8px 4px rgb(0 0 0 / 30%);
           .rowitem {
             font-weight: 600;
-            font-size: 0.9375rem;
+            font-size: 15px;
             color: #fff !important;
           }
         }

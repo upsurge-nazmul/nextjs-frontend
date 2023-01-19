@@ -23,13 +23,13 @@
     justify-content: center;
     height: 100%;
     .name {
-      font-size: 1.125rem;
+      font-size: 18px;
       text-transform: capitalize;
       font-weight: 500;
       margin-bottom: 5px;
     }
     .points {
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
     }
@@ -65,10 +65,10 @@
     }
     .nameandpoints {
       .name {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
       .points {
-        font-size: 0.75rem;
+        font-size: 12px;
       }
     }
     .nudgebutton {
@@ -81,7 +81,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      font-size: 0.75rem;
+      font-size: 12px;
       justify-content: center;
       &:hover {
         background: hsl(227, 91%, 59%);

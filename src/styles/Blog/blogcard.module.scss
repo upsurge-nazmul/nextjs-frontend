@@ -20,7 +20,7 @@
       display: flex;
       overflow-y: auto;
       p {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 700;
         color: #4166eb;
         font-family: "Lexend", sans-serif;
@@ -30,7 +30,7 @@
     }
     .title {
       margin-top: 3px;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
       height: 20px;
       text-overflow: ellipsis;
@@ -71,14 +71,14 @@
       }
       .title {
         margin-top: 3px;
-        font-size: 1rem;
+        font-size: 16px;
         flex-wrap: wrap;
         text-overflow: ellipsis;
         font-weight: 500;
         height: fit-content;
       }
       .content {
-        font-size: 0.75rem;
+        font-size: 12px;
         margin-top: 3px;
       }
     }

@@ -26,7 +26,6 @@ import LeftPannelToggle from "./LeftPannelToggle";
 import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import { MainContext } from "../../context/Main";
 import ParentPanelSvg from "../SVGcomponents/ParentPanelSvg";
-import EventsSvg from "../SVGcomponents/EventsSvg";
 function DashboardLeftPanel({
   type,
   hidelogo,
@@ -153,17 +152,6 @@ function DashboardLeftPanel({
           >
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
-          </div>
-
-          <div
-            id="events-leftpanel"
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/events" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/events")}
-          >
-            <EventsSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Events & Challenges</p>
           </div>
 
           {/* <div

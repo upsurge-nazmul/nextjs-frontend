@@ -33,13 +33,13 @@
       .right {
         .questheading {
           color: #232323;
-          font-size: 2rem;
+          font-size: 32px;
           font-weight: 600;
         }
         .age {
           color: #000000cf;
           font-family: "Lexend", sans-serif;
-          font-size: 0.875rem;
+          font-size: 14px;
           margin-top: 10px;
           font-weight: 500;
         }
@@ -47,7 +47,7 @@
           display: flex;
           color: #232323;
           font-family: "Lexend", sans-serif;
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 400;
           margin-top: 10px;
           svg {
@@ -69,7 +69,7 @@
         bottom: 20px;
         right: 40px;
         color: #232323;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 600;
         text-align: right;
       }
@@ -82,14 +82,14 @@
         .heading {
           color: #4166eb;
           margin-top: 20px;
-          font-size: 1.5rem;
+          font-size: 24px;
           font-weight: 600;
         }
         .about,
         .content {
           margin-top: 10px;
           font-family: "Lexend", sans-serif;
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 400;
         }
         .coursecontentwrapper {
@@ -116,7 +116,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
             margin-right: 20px;
@@ -133,7 +133,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             cursor: pointer;
             font-weight: 500;
           }
@@ -145,17 +145,17 @@
           margin-top: 40px;
           .section {
             .number {
-              font-size: 2.25rem;
+              font-size: 36px;
             }
             .name {
-              font-size: 0.875rem;
+              font-size: 14px;
             }
           }
         }
         .heading {
           color: #4166eb;
           margin-top: 20px;
-          font-size: 1.5rem;
+          font-size: 24px;
           font-weight: 600;
         }
         .conceptswrapper {
@@ -231,13 +231,13 @@
         .left {
           flex: 1;
           .heading {
-            font-size: 1.25rem;
+            font-size: 20px;
           }
           .about,
           .content {
             margin-top: 10px;
             font-family: "Lexend", sans-serif;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
           }
         }
@@ -258,7 +258,7 @@
               margin-bottom: 20px;
               align-items: center;
               justify-content: center;
-              font-size: 0.875rem;
+              font-size: 14px;
               font-weight: 500;
               cursor: pointer;
               margin-right: 0px;
@@ -275,7 +275,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 0.875rem;
+              font-size: 14px;
               cursor: pointer;
               font-weight: 500;
             }
@@ -295,12 +295,12 @@
                 text-align: center;
               }
               .name {
-                font-size: 0.75rem;
+                font-size: 12px;
               }
             }
           }
           .heading {
-            font-size: 1.25rem;
+            font-size: 20px;
           }
           .conceptswrapper {
             display: flex;
@@ -315,7 +315,7 @@
               border: 0.5px solid #9d9d9d;
               border-radius: 4px;
               margin: 5px;
-              font-size: 0.75rem;
+              font-size: 12px;
             }
           }
         }
@@ -344,7 +344,7 @@
           margin-top: 10px;
           width: 100%;
           .questheading {
-            font-size: 1rem;
+            font-size: 16px;
           }
           .age {
             font-size: 10px;
@@ -378,13 +378,13 @@
         .left {
           flex: 1;
           .heading {
-            font-size: 1.125rem;
+            font-size: 18px;
           }
           .about,
           .content {
             margin-top: 10px;
             font-family: "Lexend", sans-serif;
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 400;
           }
         }
@@ -406,7 +406,7 @@
               margin-bottom: 0px;
               align-items: center;
               justify-content: center;
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 500;
               cursor: pointer;
               margin-right: 0px;
@@ -424,7 +424,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 0.75rem;
+              font-size: 12px;
               cursor: pointer;
               font-weight: 500;
             }
@@ -449,7 +449,7 @@
             }
           }
           .heading {
-            font-size: 1.125rem;
+            font-size: 18px;
           }
           .conceptswrapper {
             display: flex;

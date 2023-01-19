@@ -3,7 +3,7 @@ import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
 
-export default function RecordingView({ chapterId, handleBack, handleDone, setMapZoom,questId }) {
+export default function RecordingView({ chapterId, handleBack, handleDone }) {
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,6 @@ export default function RecordingView({ chapterId, handleBack, handleDone, setMa
           <button
             className={styles.doneButton}
             onClick={() => {
-              setMapZoom("superZoom"+questId)
               setFullScreen(false);
               mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
               document.exitFullscreen();

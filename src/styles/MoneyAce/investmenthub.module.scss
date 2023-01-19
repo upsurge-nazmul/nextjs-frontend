@@ -98,7 +98,7 @@
           color: rgb(59, 59, 59);
           font-weight: 900;
           font-family: "Fira Sans", sans-serif;
-          font-size: 1.5rem;
+          font-size: 24px;
           letter-spacing: 1px;
           border-bottom: 1px solid white;
           width: fit-content;
@@ -115,7 +115,7 @@
             align-items: flex-end;
             color: rgb(65, 65, 65) !important;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 16px;
             flex-direction: column;
             p {
               display: flex;
@@ -158,7 +158,7 @@
             border-radius: 6px;
             color: white;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 16px;
             cursor: pointer;
             background: rgb(69, 255, 0);
             background: linear-gradient(
@@ -238,7 +238,7 @@
               filter: drop-shadow(1px 2px 1px #1b5500);
               font-family: "Fira Sans", sans-serif;
               letter-spacing: 1px;
-              font-size: 1.125rem;
+              font-size: 18px;
             }
           }
         }
@@ -288,7 +288,7 @@
               border: none;
               border: 1px solid rgba(105, 105, 105, 1);
               font-family: "Fira Sans", sans-serif;
-              font-size: 1.125rem;
+              font-size: 18px;
               font-weight: 800;
               color: white;
               padding: 5px 20px;
@@ -309,7 +309,7 @@
             p {
               font-weight: 900;
               font-family: "Fira Sans", sans-serif;
-              font-size: 1.5rem;
+              font-size: 24px;
               color: #ffc400;
               letter-spacing: 1px;
               &:nth-child(2) {
@@ -321,7 +321,7 @@
             margin: 0 auto;
             background: rgb(255, 213, 0);
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 16px;
             background: linear-gradient(
               180deg,
               rgba(255, 213, 0, 1) 0%,
@@ -337,7 +337,7 @@
             p {
               font-family: "Fira Sans", sans-serif;
               font-weight: 800;
-              font-size: 1.125rem;
+              font-size: 18px;
               filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
             }
             &:hover {
@@ -481,7 +481,7 @@
         }
         .bulletinbtn {
           cursor: pointer;
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 500;
           display: flex;
           align-items: center;
@@ -494,7 +494,7 @@
           right: 0;
           background: rgb(255, 213, 0);
           font-weight: 900;
-          font-size: 1rem;
+          font-size: 16px;
           background: linear-gradient(
             180deg,
             rgba(255, 213, 0, 1) 0%,
@@ -564,7 +564,7 @@
               border-radius: 6px;
               color: white;
               font-weight: 500;
-              font-size: 1rem;
+              font-size: 16px;
               cursor: pointer;
               background: rgb(69, 255, 0);
               background: linear-gradient(
@@ -853,7 +853,7 @@
               border-radius: 6px;
               color: white;
               font-weight: 500;
-              font-size: 1rem;
+              font-size: 16px;
               cursor: pointer;
               background: rgb(69, 255, 0);
               background: linear-gradient(

@@ -17,7 +17,7 @@
       line-height: 20px;
     }
     .heading {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
     }
     .jasper {
@@ -88,7 +88,7 @@
                 align-items: center;
                 padding: 10px 20px;
                 font-weight: 400;
-                font-size: 1rem;
+                font-size: 16px;
                 border-radius: 6px;
                 background-color: #4166eb;
                 color: white;
@@ -135,12 +135,12 @@
               text-align: center;
               color: #6d6d6d;
               transition: all 0.3s ease;
-              font-size: 1rem;
+              font-size: 16px;
               cursor: pointer;
               font-weight: 500;
               margin: 10px 0;
               &:hover {
-                font-size: 1.125rem;
+                font-size: 18px;
                 color: hsl(0, 0%, 0%);
               }
             }
@@ -161,12 +161,12 @@
                 text-align: center;
                 color: #6d6d6d;
                 transition: all 0.3s ease;
-                font-size: 1rem;
+                font-size: 16px;
                 font-weight: 500;
               }
               &:hover {
                 p {
-                  font-size: 1.125rem;
+                  font-size: 18px;
                   color: hsl(0, 0%, 100%);
                 }
                 box-shadow: #4166eb 0px -70px 0px 0px inset;
@@ -207,7 +207,7 @@
             .subheading {
               font-weight: 500;
               color: rgba(87, 88, 128, 1);
-              font-size: 1.25rem;
+              font-size: 20px;
               margin-top: 15px;
               width: 100%;
               border-bottom: 1px solid rgba(87, 88, 128, 0.418);
@@ -230,12 +230,12 @@
               text-align: center;
               color: #6d6d6d;
               transition: all 0.3s ease;
-              font-size: 1rem;
+              font-size: 16px;
               cursor: pointer;
               font-weight: 500;
               margin: 10px 0;
               &:hover {
-                font-size: 1.125rem;
+                font-size: 18px;
                 color: hsl(0, 0%, 0%);
               }
             }
@@ -339,12 +339,12 @@
           .kidsSection {
             .head {
               .heading {
-                font-size: 1.375rem;
+                font-size: 22px;
               }
               .btn {
                 margin-right: 20px;
                 padding: 8px 15px;
-                font-size: 0.875rem;
+                font-size: 14px;
               }
             }
 
@@ -364,7 +364,7 @@
           }
           .choreSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
           }
         }
@@ -434,7 +434,7 @@
                 transition: all 0.3s ease;
                 overflow: hidden;
                 .calccardtitle {
-                  font-size: 1.125rem;
+                  font-size: 18px;
                   font-weight: 500;
                   width: 100%;
                   padding: 0 20px;
@@ -442,7 +442,7 @@
                 }
                 .calccardsubtitle {
                   margin-top: 10px;
-                  font-size: 0.75rem;
+                  font-size: 12px;
                   font-weight: 400;
                   width: 100%;
                   text-align: left;
@@ -496,7 +496,7 @@
                 align-items: center;
                 height: 64px;
                 color: rgba(106, 106, 106, 1);
-                font-size: 0.75rem;
+                font-size: 12px;
                 font-weight: 400;
                 padding: 0;
                 .blacnkhead1 {
@@ -727,7 +727,7 @@
             width: 100%;
             margin-top: 15px;
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
               svg {
                 margin-left: 5px;
                 width: 15px;
@@ -773,7 +773,7 @@
             margin-top: 0px;
             .heading {
               font-weight: 500;
-              font-size: 1.125rem;
+              font-size: 18px;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -801,7 +801,7 @@
             margin-top: 0px;
             padding: 0;
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
 
               svg {
                 margin-left: 5px;
@@ -822,7 +822,7 @@
             padding: 0 0px 0 0px;
             margin-top: 15px;
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
 
               svg {
                 margin-left: 5px;

@@ -17,7 +17,8 @@
       overflow-y: auto;
       overflow-x: hidden;
       scrollbar-width: thin;
-      p {
+      p{
+        
         font-weight: bold;
       }
       .flexLeft {
@@ -67,7 +68,7 @@
             align-items: center;
             height: 64px;
             color: rgba(106, 106, 106, 1);
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 400;
             .head1 {
               margin-left: 89px;
@@ -129,7 +130,7 @@
               }
               .name {
                 font-weight: 500;
-                font-size: 1rem;
+                font-size: 16px;
                 color: #4166eb;
                 flex: 1;
                 cursor: pointer;
@@ -253,14 +254,11 @@
   .parentStore {
     .contentWrapper {
       .mainContent {
-        p {
+      p{
           font-size: small;
           padding-left: 20px;
         }
-      }
-    }
-  }
-}
+      }}}}
 @media only screen and (min-width: 769px) and (max-height: 900px) {
   .parentStore {
     .contentWrapper {
@@ -268,7 +266,7 @@
         .flexLeft {
           .kidsSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
             .heads {
               height: 48px;
@@ -286,24 +284,24 @@
           }
           .choreSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
           }
           .gameSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
           }
         }
         .flexRight {
           .gameSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
           }
           .liveClassSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
           }
         }
@@ -372,7 +370,7 @@
       max-width: calc(100vw - 55px);
       .mainContent {
         flex-direction: column;
-        p {
+        p{
           padding-left: 20px;
         }
         .flexLeft {
@@ -381,7 +379,7 @@
           padding: 0 20px;
           .gameSection {
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
               svg {
                 width: 14px;
                 margin-left: 5px;
@@ -398,7 +396,7 @@
           }
           .choreSection {
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
               svg {
                 width: 14px;
                 margin-left: 5px;
@@ -411,7 +409,7 @@
           }
           .liveClassSection {
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
               svg {
                 width: 14px;
                 margin-left: 5px;

@@ -24,7 +24,7 @@
       line-height: 20px;
     }
     .heading {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
     }
     .jasper {
@@ -81,7 +81,7 @@
           align-items: center;
           width: 300px;
           font-weight: 600;
-          font-size: 1.125rem;
+          font-size: 18px;
           text-align: center;
           justify-content: center;
           &:nth-child(2) {
@@ -116,7 +116,7 @@
             margin-left: 10px;
             margin-bottom: 10px;
             .text {
-              font-size: 1rem;
+              font-size: 16px;
               font-weight: 600;
             }
             .planheading {
@@ -127,7 +127,7 @@
           }
           .expiry {
             color: rgb(99, 99, 99);
-            font-size: 1rem;
+            font-size: 16px;
             margin-left: auto;
           }
         }
@@ -167,7 +167,7 @@
         }
         .benefitswrapper {
           color: rgb(71, 71, 71);
-          font-size: 0.875rem;
+          font-size: 14px;
           padding-left: 15px;
           margin-top: 10px;
         }
@@ -197,7 +197,7 @@
           padding: 36px;
           .name {
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 24px;
           }
           .price {
             margin-top: 12px;
@@ -206,7 +206,7 @@
           }
           .description {
             margin-top: 6px;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-size: 500;
             color: #ffffff;
 
@@ -223,7 +223,7 @@
             justify-content: center;
             width: 100%;
             color: #ffffff;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 700;
             margin-top: 30px;
             transition: all 0.3s ease;
@@ -263,7 +263,7 @@
             flex-direction: column;
             align-items: center;
             p {
-              font-size: 0.875rem;
+              font-size: 14px;
               font-weight: 500;
               color: #ffffffe7;
 
@@ -309,7 +309,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 14px;
             &:nth-child(2) {
               margin: 0;
             }
@@ -348,7 +348,7 @@
 
             .name {
               font-weight: 700;
-              font-size: 1.5rem;
+              font-size: 24px;
             }
             .price {
               margin-top: 12px;
@@ -357,7 +357,7 @@
             }
             .description {
               margin-top: 6px;
-              font-size: 0.875rem;
+              font-size: 14px;
               font-size: 500;
               color: #747474;
               text-align: center;
@@ -373,7 +373,7 @@
               justify-content: center;
               width: 100%;
               color: #4166eb;
-              font-size: 0.875rem;
+              font-size: 14px;
               font-weight: 700;
               margin-top: 30px;
               transition: all 0.3s ease;
@@ -395,7 +395,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 0.875rem;
+                font-size: 14px;
                 font-weight: 500;
                 color: #747474;
                 margin-bottom: 12px;
@@ -437,12 +437,12 @@
         padding: 0 2vw 5vw;
         .heading {
           margin-top: 30px;
-          font-size: 1.5rem;
+          font-size: 24px;
         }
         .featurewrapper {
           .feature {
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 12px;
             &:nth-child(2) {
               margin: 0;
             }
@@ -462,16 +462,16 @@
             }
             height: fit-content;
             .name {
-              font-size: 1.25rem;
+              font-size: 20px;
             }
             .price {
               font-size: 54px;
             }
             .description {
-              font-size: 0.75rem;
+              font-size: 12px;
             }
             .button {
-              font-size: 0.875rem;
+              font-size: 14px;
               margin-top: 20px;
             }
             .hr {
@@ -483,7 +483,7 @@
               flex-direction: column;
               align-items: center;
               p {
-                font-size: 0.75rem;
+                font-size: 12px;
                 font-weight: 500;
                 color: #747474;
                 margin-bottom: 12px;

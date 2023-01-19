@@ -30,7 +30,7 @@ export default function HeadArea({ data, handleCardClick, tab }) {
           >
             <div className={styles.banner}>
               <Image
-                src={require(`../../assets/kq/${highlight.questId}.png`)}
+                src={require(`../../assets/kqTiles/${highlight.questId}Tile.svg`)}
                 alt={highlight.questId}
                 className={styles.img}
                 height={200}

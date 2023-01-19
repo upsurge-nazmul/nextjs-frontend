@@ -45,7 +45,7 @@
       .heading {
         color: #000000;
         font-weight: 700;
-        font-size: 2rem;
+        font-size: 32px;
         margin-bottom: 60px;
       }
       .post {
@@ -76,7 +76,7 @@
             color: #3d3d3d;
             display: flex;
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 16px;
             letter-spacing: 1px;
             text-align: center;
             margin-top: 20px;
@@ -123,7 +123,7 @@
               }
               span {
                 font-family: "Inter", sans-serif !important;
-                font-size: 1rem !important;
+                font-size: 16px !important;
                 padding-left: 10px;
               }
             }
@@ -144,7 +144,7 @@
           margin-top: 20px;
           display: flex;
           align-items: center;
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 400;
           svg {
             cursor: pointer;
@@ -180,7 +180,7 @@
           p {
             margin-top: 10px;
             font-weight: 400;
-            font-size: 0.9375rem;
+            font-size: 15px;
             cursor: pointer;
             color: #3d3d3d;
           }
@@ -192,7 +192,7 @@
             font-weight: 500;
             margin-top: 0px;
             color: black;
-            font-size: 1.125rem;
+            font-size: 18px;
             margin-bottom: 20px;
           }
         }
@@ -216,7 +216,7 @@
             .category {
               font-family: "Lexend", sans-serif;
               font-weight: 700;
-              font-size: 1rem;
+              font-size: 16px;
               color: #4166eb;
               text-transform: capitalize;
               margin-right: 10px;
@@ -225,17 +225,17 @@
           .blogtitle {
             margin-top: 5px;
             font-weight: 700;
-            font-size: 1.375rem;
+            font-size: 22px;
           }
           .blogcontent {
             margin-top: 5px;
             font-weight: 400;
-            font-size: 1.125rem;
+            font-size: 18px;
           }
           .time {
             margin-top: 20px;
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 16px;
             color: hsla(0, 0%, 49%, 1);
           }
         }
@@ -251,7 +251,7 @@
         .moreHeading {
           color: #000000;
           font-weight: 700;
-          font-size: 2rem;
+          font-size: 32px;
           margin-bottom: 60px;
           width: 100%;
         }
@@ -267,7 +267,7 @@
         height: 53px;
         border-radius: 18px;
         color: hsla(0, 0%, 0%, 1);
-        font-size: 1.25rem;
+        font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -308,7 +308,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 0.9375rem;
+                font-size: 15px;
                 letter-spacing: 1px;
 
                 .space {
@@ -319,7 +319,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 1.375rem;
+                font-size: 22px;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -341,14 +341,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 1.375rem;
+            font-size: 22px;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 1.125rem;
+              font-size: 18px;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -356,7 +356,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 1.125rem;
+              font-size: 18px;
             }
           }
 
@@ -427,7 +427,7 @@
         .heading {
           color: #000000;
           font-weight: 700;
-          font-size: 2rem;
+          font-size: 32px;
           margin-bottom: 60px;
         }
         .post {
@@ -458,7 +458,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 1rem;
+              font-size: 16px;
               letter-spacing: 1px;
               text-align: center;
               margin-top: 20px;
@@ -505,7 +505,7 @@
                 }
                 span {
                   font-family: "Inter", sans-serif !important;
-                  font-size: 1rem !important;
+                  font-size: 16px !important;
                   padding-left: 10px;
                 }
               }
@@ -526,7 +526,7 @@
             margin-top: 20px;
             display: flex;
             align-items: center;
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: 400;
             svg {
               cursor: pointer;
@@ -562,7 +562,7 @@
             p {
               margin-top: 10px;
               font-weight: 400;
-              font-size: 0.9375rem;
+              font-size: 15px;
               cursor: pointer;
               color: #3d3d3d;
             }
@@ -574,7 +574,7 @@
               font-weight: 500;
               margin-top: 0px;
               color: black;
-              font-size: 1.125rem;
+              font-size: 18px;
               margin-bottom: 20px;
             }
           }
@@ -598,7 +598,7 @@
               .category {
                 font-family: "Lexend", sans-serif;
                 font-weight: 700;
-                font-size: 1rem;
+                font-size: 16px;
                 color: #4166eb;
                 text-transform: capitalize;
                 margin-right: 10px;
@@ -607,17 +607,17 @@
             .blogtitle {
               margin-top: 5px;
               font-weight: 700;
-              font-size: 1.375rem;
+              font-size: 22px;
             }
             .blogcontent {
               margin-top: 5px;
               font-weight: 400;
-              font-size: 1.125rem;
+              font-size: 18px;
             }
             .time {
               margin-top: 20px;
               font-weight: 400;
-              font-size: 1rem;
+              font-size: 16px;
               color: hsla(0, 0%, 49%, 1);
             }
           }
@@ -633,7 +633,7 @@
           .moreHeading {
             color: #000000;
             font-weight: 700;
-            font-size: 2rem;
+            font-size: 32px;
             margin-bottom: 60px;
             width: 100%;
           }
@@ -649,7 +649,7 @@
           height: 53px;
           border-radius: 18px;
           color: hsla(0, 0%, 0%, 1);
-          font-size: 1.25rem;
+          font-size: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -690,7 +690,7 @@
                   color: #3d3d3d;
                   display: flex;
                   font-weight: 400;
-                  font-size: 0.9375rem;
+                  font-size: 15px;
                   letter-spacing: 1px;
 
                   .space {
@@ -701,7 +701,7 @@
                 .title {
                   margin-top: 10px;
                   font-weight: 500;
-                  font-size: 1.375rem;
+                  font-size: 22px;
                   letter-spacing: 0.8px;
                 }
                 .preview {
@@ -723,14 +723,14 @@
             .categoryHeading {
               margin-top: 10px;
               font-weight: 500;
-              font-size: 1.375rem;
+              font-size: 22px;
               margin-left: 7%;
               margin-bottom: 20px;
               letter-spacing: 0.8px;
             }
             .categoryScroll {
               .category {
-                font-size: 1.125rem;
+                font-size: 18px;
                 margin-top: 20px;
                 margin-left: 15%;
                 cursor: pointer;
@@ -738,7 +738,7 @@
               .selectedCat {
                 color: #f76160;
                 font-weight: 600;
-                font-size: 1.125rem;
+                font-size: 18px;
               }
             }
 
@@ -775,7 +775,7 @@
         padding: 0 15px;
         margin-top: 0px;
         .heading {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
         .post {
           .textcontent {
@@ -787,7 +787,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 0.75rem;
+              font-size: 12px;
               letter-spacing: 0.8px;
               text-align: center;
               margin-top: 10px;
@@ -802,7 +802,7 @@
             .title {
               margin-top: 10px;
               font-weight: 600;
-              font-size: 1.375rem;
+              font-size: 22px;
               letter-spacing: 0.4px;
             }
             .preview {
@@ -816,13 +816,13 @@
                 span {
                   margin-top: 10px !important;
                   font-weight: 600 !important;
-                  font-size: 1.25rem !important;
+                  font-size: 20px !important;
                   letter-spacing: 0.4px !important;
                   font-family: "Inter", sans-serif !important;
                 }
                 margin-top: 10px !important;
                 font-weight: 600 !important;
-                font-size: 1.25rem !important;
+                font-size: 20px !important;
                 letter-spacing: 0.4px !important;
               }
             }
@@ -835,7 +835,7 @@
                 }
                 span {
                   font-family: "Inter", sans-serif !important;
-                  font-size: 0.75rem !important;
+                  font-size: 12px !important;
                   padding-left: 10px;
                 }
               }
@@ -843,7 +843,7 @@
             p {
               span {
                 font-family: "Inter", sans-serif !important;
-                font-size: 0.75rem !important;
+                font-size: 12px !important;
                 line-height: 12px !important;
               }
             }
@@ -873,7 +873,7 @@
             margin-top: 0px;
             display: flex;
             align-items: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             svg {
               cursor: pointer;
@@ -889,7 +889,7 @@
       .relatedBlogs {
         padding: 0 20px;
         .heading {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 600;
           margin: 20px 0;
         }
@@ -915,7 +915,7 @@
         padding: 0 15px;
         margin-top: 0px;
         .heading {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
         .post {
           .textcontent {
@@ -927,7 +927,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 1rem;
+              font-size: 16px;
               letter-spacing: 1px;
               text-align: center;
               margin-top: 10px;
@@ -975,7 +975,7 @@
             margin-top: 0px;
             display: flex;
             align-items: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             svg {
               cursor: pointer;
@@ -1027,7 +1027,7 @@
         padding: 0 15px;
         margin-top: 0px;
         .heading {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
         .post {
           .textcontent {
@@ -1039,7 +1039,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 0.75rem;
+              font-size: 12px;
               letter-spacing: 0.8px;
               text-align: center;
               margin-top: 10px;
@@ -1054,7 +1054,7 @@
             .title {
               margin-top: 10px;
               font-weight: 600;
-              font-size: 1.375rem;
+              font-size: 22px;
               letter-spacing: 0.4px;
             }
             .preview {
@@ -1068,13 +1068,13 @@
                 span {
                   margin-top: 10px !important;
                   font-weight: 600 !important;
-                  font-size: 1.25rem !important;
+                  font-size: 20px !important;
                   letter-spacing: 0.4px !important;
                   font-family: "Inter", sans-serif !important;
                 }
                 margin-top: 10px !important;
                 font-weight: 600 !important;
-                font-size: 1.25rem !important;
+                font-size: 20px !important;
                 letter-spacing: 0.4px !important;
               }
             }
@@ -1087,7 +1087,7 @@
                 }
                 span {
                   font-family: "Inter", sans-serif !important;
-                  font-size: 0.75rem !important;
+                  font-size: 12px !important;
                   padding-left: 10px;
                 }
               }
@@ -1095,7 +1095,7 @@
             p {
               span {
                 font-family: "Inter", sans-serif !important;
-                font-size: 0.75rem !important;
+                font-size: 12px !important;
                 line-height: 12px !important;
               }
             }
@@ -1125,7 +1125,7 @@
             margin-top: 0px;
             display: flex;
             align-items: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             svg {
               cursor: pointer;
@@ -1141,7 +1141,7 @@
       .relatedBlogs {
         padding: 0 20px;
         .heading {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 600;
           margin: 20px 0;
         }

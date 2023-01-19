@@ -21,7 +21,7 @@ $stock-button-color: #4166eb;
       width: 100%;
       justify-content: space-between;
       .title {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -37,7 +37,7 @@ $stock-button-color: #4166eb;
       }
     }
     .description {
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 400;
       color: $dark-font-color;
       padding-top: 10px;
@@ -76,7 +76,7 @@ $stock-button-color: #4166eb;
           padding: 10px 12px;
           color: #fff;
           border-radius: 12px;
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 400;
           border: none;
           .name {
@@ -101,7 +101,7 @@ $stock-button-color: #4166eb;
       .or {
         text-align: center;
         padding: 8px;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 400;
       }
     }
@@ -117,7 +117,7 @@ $stock-button-color: #4166eb;
     .result {
       width: 100%;
       text-align: center;
-      font-size: 2rem;
+      font-size: 32px;
       font-weight: 700;
       padding: 6px 0;
     }
@@ -139,18 +139,18 @@ $stock-button-color: #4166eb;
       gap: 80px;
       .common {
         .title {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 500;
           color: $light-font-color;
           padding: 6px 0;
         }
         .name {
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 400;
           color: $dark-font-color;
         }
         .symbol {
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 300;
           color: $light-font-color;
         }
@@ -190,7 +190,7 @@ $stock-button-color: #4166eb;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -206,7 +206,7 @@ $stock-button-color: #4166eb;
         }
       }
       .description {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -245,7 +245,7 @@ $stock-button-color: #4166eb;
             padding: 10px 12px;
             color: #fff;
             border-radius: 12px;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             border: none;
             .name {
@@ -271,7 +271,7 @@ $stock-button-color: #4166eb;
         .or {
           text-align: center;
           padding: 8px;
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 400;
         }
       }

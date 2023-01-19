@@ -15,10 +15,6 @@ import Toast from "../../components/Toast";
 import KnowledgeQuestMainSection from "../../components/Products/KnowledgeQuestMainSection";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
-import TravelSection from "../../components/Products/quest/TravelSection";
-import ExpertsSection from "../../components/Products/quest/ExpertsSection";
-import ExploreSection from "../../components/Products/quest/ExploreSection";
-import SmarterMoneySection from "../../components/Products/quest/SmarterMoneySection";
 
 export default function Products() {
   const router = useRouter();
@@ -97,10 +93,6 @@ export default function Products() {
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest"
       />
-      <TravelSection />
-      <ExpertsSection />
-      <ExploreSection />
-      <SmarterMoneySection />
       {/* <KnowledgeQuestMainSection
         email={email}
         setEmail={setEmail}

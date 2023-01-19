@@ -38,386 +38,440 @@ function PrivacyPolicy() {
         <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
         <h1 className={styles.subheading}>Your privacy matters to us.</h1>
         <div className={styles.details} id="privacy-main">
-<p>
-This Privacy Policy (“Privacy Policy/Policy”) discloses the privacy practices for Surgeup
-Technologies Private Limited (“Upsurge”, “We/we” or “Us/us”) with regard to collection
-and use of the Personal Information (defined hereunder) of the customers, vendors,
-employees and the users (“You/you” or “Your/your”) and use of the online platform
-“Upsurge”.  This Privacy Policy along with Terms of Use describes our practices regarding,
-including your choices in relation to how we collect, store, use, share and secure your
-Personal Information across our Website and Mobile application called “Upsurge”-Made in
-India. The website and mobile application are referred to as the “Platform” It also describes
-your choices regarding use, access and correction of your Personal Information and your
-rights in relation to your Personal Information and how to contact us or supervisory
-authorities in the event you have a complaint.</p>
-<p>
-By providing your consent to this Privacy Policy and accepting the Terms of Use, you agree
-to the collection, use and transfer of your Personal Information as set out in this Privacy
-Policy. If you do not agree with the terms of this Privacy Policy, please do not use/access this
-Website or application.
-</p>
-<p>
-We will review this Privacy Policy from time to time to make sure it is up to date. If you are
-just a visitor, then please note that this Privacy Policy is subject to change at any time
-without notice. To make sure you are aware of any changes, please review this Policy
-periodically. If you are our registered user, we will notify you before we make changes to
-this Policy and give you the opportunity to review the revised Policy before you choose to
-continue using our services.</p>
-<p>
-By Personal Information, we mean any information that can either itself identify you as an
-individual (&quot;Personally Identifying Information&quot;) or that can be connected to you indirectly
-by linking it to Personally Identifying Information. Please note that usage of the term
-Personal Information in this Privacy Policy includes sensitive personal data or information,
-wherever appropriate and/or mandated under applicable laws.</p>
-
-<h3>COLLECTION OF INFORMATION</h3>
-<p>
-As a visitor, you can browse our website or application to find out more about our platform.
-You are not required to provide us with any Personal Information as a visitor. When you visit
-the Website or application, we collect and store certain information to improve security,
-analyse trends and administer the Website and application with a view to assist us in
-improving customer experience. We use this information to evaluate traffic patterns on our
-platform so that we can make it more useful to our visitors.</p>
-<p>
-We collect your Personal Information when you register with us, when you express an
-interest in obtaining information about us or our products and services, when you
-participate in activities on our platform or otherwise contact us.</p>
-<p>
-We will only collect your Personal Information if we have a proper reason for doing so, e.g.:
-to comply with our legal and regulatory obligations; for the performance of our contract
-with you or to take steps at your request before entering into a contract; for our legitimate
-interests (where permitted by law) or those of a third party; or where you have given
-consent.</p>
-<p>
-In some cases, we may also have a legal obligation to collect Personal Information from you
-or may otherwise need the Personal Information to protect your vital interests or those of
-another person (for example, to prevent payment fraud or confirm your identity.)</p>
-<p>
-Our primary goal in collecting your Personal Information is to provide you a safe, efficient,
-smooth, and customized experience. This allows us to provide courses, study material,
-tutorials, educational games that most likely meet your needs and to customize our
-Platform to make your experience safer and easier. We also use your Personally Identifiable
-Information together with other information to help us better understand our users and to
-improve the content and functionality of our Platform. The information we learn from you
-helps us personalize and continually improve your experience at our Platform. We do not
-voluntarily make this information available to third parties, nor do we use it for any other
-purpose, except as set out herein.</p>
-<p>
-When you visit our Platform, as part of a purchase of products and services or registering on
-our platform, we may collect a variety of Personal Information that you will voluntarily
-provide to us via one of our contact forms, via a chat or phone session, such as:
-<ul>
-<li> Contact Information, such as name, email address, display picture, mailing address,
-phone number, IP address, geographic location, or phone number.</li>
-<li> Billing Information, such as debit card number, credit card number and billing
-address.</li>
-<li> Unique Identifiers, such as username or password.</li>
-<li> Reviews or ratings, account settings, (including preferences set in the &quot; Account &quot;
-section of our platform); and</li>
-<li> Information provided to us through our service, interaction with our customer
-service, participation in surveys or marketing promotions.</li>
-</ul>
-</p>
-<p>
-We collect information about you and your use of our service, your interactions with us as
-well as information regarding your computer or other device used to access our service. This
-information includes your activity on our platform, details of your interactions with
-customer service , such as the date , time and  reason for contacting us, transcripts of any
-chat conversations, and if you call us , your phone number and call recordings; device  IDs or
-other unique identifiers, device and software characteristics (such as type and
-configuration), connection information,  statistics on page views , referring source (for
-example, referral URLs), IP address (which may tell us your general location),  browser and
-standard web server log information, information collected via the use of cookies, web
-beacons and other  technologies.</p>
-<p>
-If you use a feature that requires payment of a fee options like NEFT, or Card will appear. In
-case of payments via credit or debit card, we will redirect you to registered payment
-gateways such as razorpay and other such registered gateways. You may store and save
-your payment details like card numbers with the gateway. We do not have access to this
-data. All payment transactions are processed through secure payment gateway providers. 
-We do not store any card information (other than the last 4 digits of your card) in our
-servers.</p>
-<p>
-When you use one of our paid products, we track the web pages, and information that has
-been accessed by you, and store it on our servers. This enables us to track items that you
-have completed, and those that you need to see.
-Upsurge can use technologies such as cookies, clear gifs, log files, and flash cookies for
-several purposes, including to help understand how you interact with our platform and
-services, to provide a better experience.</p>
-
-<h3>USAGE AND RETENTON OF INFORMATION</h3>
-<p>
-We use the Personal Information we collect, where it is necessary to deliver the services,
-you have requested, where it is necessary to exercise or comply with legal rights or
-obligations or for normal business purposes of the kind set out in this Policy.</p>
-<p>
-We will use your Personal Information to provide, analyze, administer, and improve our
-services, to provide you with a personalized experience on our Platform (especially, by
-offering you services that is best suited for you), to contact you about your account and our
-services, to provide you customer service, to provide you with personalized marketing and
-to detect, prevent, mitigate and investigate fraudulent or illegal activities.</p>
-<p>
-We further use your Personal Information to determine your general geographic location
-and  recommendations, determine your internet service provider, and  help us quickly and
-efficiently respond to inquiries and requests and enforcing our terms (such as determining
-free trial eligibility)  and communicate with you concerning our service (for example by
-email, push notifications, text messaging ,and online  messaging channels), so that we can
-send you details about new features and content available on the platform, special offers, 
-promotional announcements, surveys, and to assist you with operational requests such as
-password reset requests.</p>
-<p>
-Upsurge is a community. We offer several features that allow members to connect and
-communicate in public or semi-public spaces, such as Forums and Teams. Please be sensible
-and judge before posting in these community spaces or sharing your Personal Information
-with others on Upsurge. Be aware that any Personal Information you submit there can be
-read, collected, or used by others, or could be used to send you unsolicited messages.   
-Upsurge do not retain your Personal Information for longer than is required for the
-purposes for which the information may be lawfully used.
-</p>
-<p>
-SHARING AND DISCLOSING PERSONAL INFORMATION 
-We use other companies, agents, or contractors (&quot;Service Providers&quot;) to perform services on
-our behalf or to assist us with the provision of services to you. We engage Service Providers
-to provide marketing, advertising, communications, infrastructure, and IT services, to
-personalize and optimize our service, to process credit card transactions or other payment
-methods, to provide customer service, to collect debts, to analyze and enhance data
-(including data about users’ interactions with our service), and to process and administer
-consumer surveys. In the course of providing such services, these Service Providers may
-have access to your Personal Information or other information. We do not authorize them
-to use or disclose your Personal Information except in connection with providing their
-services.  
- 
-Note to our customers in Europe: We transfer your Personal Information from the European
-Economic Area a to India. By submitting your data and/or using our services, you consent to
-the transfer, storing, and processing of your Personal Information in India.  
-</p>
-<p>
-SECURITY 
-We shall try to take all precautions to protect the Personal Information both online and
-offline. We will try to protect your information using technical and administrative security
-measures to reduce the risks of loss, misuse, unauthorized access, disclosure, and alteration.
-We have standard SSL certification which basically helps us create a secure connection
-between our server and user to render any information or action. Some of the safeguards
-we use are firewalls and data encryption, physical access controls to our data centers and
-information access authorization controls. Only user passwords are encrypted and stored
-because generally users use the same password on multiple sites, to prevent any kind of
-theft, piracy, or unauthorized access. If you believe your account has been abused or
-hacked, please contact us by sending us an email at hello@upsurge.in.   
-We do not sell, transfer, or rent your Personal Information to third parties for their
-marketing purposes without your explicit consent and we only use your information as
-described in the Privacy Policy. We view protection of your privacy as a very important
-community principle. We understand clearly that you and your Personal Information is one
-of our most important assets.  
- 
-We store and process your Personal Information on computers located in India that are
-protected by physical as well as technological security devices. We use third parties to verify
-and certify our privacy principles. If you object to your Personal Information being
-transferred or used in this way, please do not accept this Privacy Policy.   
- 
-Under no circumstances, we rent, trade, transfer or share your Personal Information that
-we have collected with any other company for their marketing purposes without your
-
-consent. We reserve the right to communicate your Personal Information to any third party
-that makes a legally compliant request for its disclosure.   
-</p>
-<p>
-KEEPING YOUR PERSONAL INFORMATION SECURE 
-We have appropriate security measures to prevent your Personal Information from being
-accidentally lost or used or accessed unlawfully.  Processing your Personal Information will
-be done only in an authorized manner and subject to a duty of confidentiality. We also have
-procedures in place to deal with any suspected data security breach. We will notify you
-about any applicable regulator of a suspected data security breach where we are legally
-required to do so.   
-Notwithstanding anything contained anywhere in this Policy; we cannot assure absolute
-security to your Personal Information and by entering or by logging into our Platform, you
-explicitly agree not to sue us for any data breach.   
- 
-COOKIES 
-We transfer cookies, which are small files containing a string of character, to your IP
-address, giving the browser distinct identification, to keep track of the user’s preferences.
-Furthermore, these files also help in logging-in faster and they act as a mechanism to
-determine user trends. The data thus retrieved from the user’s IP address, enables us to
-enhance our offers, including but not limited to more content in areas of greater interest to
-most users.   
-Our platform uses &quot;Cookies&quot; to identify the areas of our website or mobile application that
-you have visited. A Cookie is a small piece of data stored on your computer or mobile device
-by your web browser. We use Cookies to personalize the Content that you see on our
-platform.  Most web browsers can be set to disable the use of Cookies. However, if you
-disable Cookies, you may not be able to access functionality on our Platform correctly or at
-all. We never place Personally Information in Cookies.   
- 
-THIRD PARTIES AND LINKS 
-We may pass your details to other companies in our group. We may also pass your details to
-our agents and subcontractors to help us with any of our uses of your data set out in our
-Privacy Policy. For example, we may use third parties to assist us with delivering services to
-you, to help us to collect payments from you, to analyse data and to provide us with
-marketing or customer service assistance. 
- 
-We may exchange information with third parties for the purposes of fraud protection and
-credit risk reduction. We may transfer our databases containing your Personal Information if
-we sell our business or part of it. Other than as set out in this Privacy Policy, we shall NOT
-sell or disclose your Personal Information to third parties without obtaining your prior
-consent unless it is necessary for the purposes set out in this Privacy Policy or unless we are
-
-required to do so by law. The platform may contain advertising of third parties and links to
-other sites or frames of other sites. Please be aware that we are not responsible for the
-privacy practices or content of those third parties or other sites, nor for any third party to
-whom we transfer your data in accordance with our Privacy Policy. 
- 
-Our Platform may contain links to other websites that are not under our direct control.
-These websites may have their own policies regarding privacy. We have no control of or
-responsibility for linked websites and provide these links solely for the convenience and
-information of our visitors. You are accessing such linked websites shall be at your own risk.
-These websites are not subject to this Privacy Policy. You should check the privacy policies, if
-any, of those individual websites to see how the operators of those third-party websites will
-utilize your personal information. In addition, these websites may contain a link to websites
-of our affiliates.  The websites of our affiliates are not subject to this Privacy Policy, and you
-should check their individual privacy policies to see how the operators of such websites will
-utilize your personal information.   
- 
-CONSULTING 
-We use third parties to help us provide services to You including the fulfilment of service,
-processing of payments, monitoring site activity, conducting surveys, maintaining our
-database, administering emails, and administering contents, and to provide aggregate,
-comparative information on the performance of our platform to us and a select group.   
-
-CHOICE 
-It is open for you to customize our usage of your personal information to communicate with
-you, to send you marketing information, how we provide you with customized and relevant
-advertising, and whether you want to stay signed into your account.
-   
-If you do not wish to receive marketing communications from us, you can unsubscribe from
-the link in the email you would receive or change your communication preferences or
-indicate your communication preferences. You can also reach us via chat, WhatsApp, call or
-email to block promotional communication to you. Keep in mind, we do not sell or rent your
-personal information to third parties for their marketing purposes without your explicit
-consent. 
- 
-OWNERSHIP OF RIGHTS 
-All rights, including copyright, in this platform are owned by or licensed to us. Any use of this
-Website and mobile application or its contents, including copying or storing it or them in
-whole or part, other than for your own personal, non-commercial use is prohibited without
-our permission. You are prohibited from modifying, copying, distributing, transmitting,
-displaying, printing, publishing, selling, licensing, creating derivative works or using any
-
-content available on or through our platform for commercial or public purposes.  You may
-not modify, distribute or re-post something on this platform for any purpose.   
-The Site contains copyrighted material, trademarks, and other proprietary information,
-including, but not limited to, text, software, photos, video, graphics, music, sound, and the
-entire contents of Upsurge is protected by copyright as a collective work under the
-applicable copyright laws. Upsurge owns a copyright in the selection, coordination,
-arrangement, and enhancement of such content, as well as copyright or license to use in the
-content original to it. You may not modify, publish, transmit, participate in the transfer or
-sale, create derivative works, or in any way exploit, any of the content, in whole or in part.
-You may download / print / save copyrighted material for your personal use only. Except as
-otherwise expressly stated under copyright law, no copying, redistribution, retransmission,
-publication, or commercial exploitation of downloaded material without the express
-permission of Upsurge is permitted. If copying, redistribution, or publication of copyrighted
-material is expressly permitted by Upsurge, then no changes in or deletion of author
-attribution, trademark legend or copyright notice shall be made.   
-You acknowledge that you do not acquire any ownership rights by downloading copyrighted
-material. Trademarks that are located within or on our Website or a website otherwise
-owned or operated in conjunction with Upsurge shall not be deemed to be in the public
-domain but rather the exclusive property of Upsurge, unless such site is under license from
-the trademark owner thereof in which case such license is for the exclusive benefit and use
-of Upsurge, unless otherwise stated.   
-Upsurge does not have any express burden or responsibility to provide you with indications,
-markings, or anything else that may aid you in determining whether the material in question
-is copyrighted or trademarked. You shall be solely liable for any damage resulting from any
-infringement of copyrights, trademarks, proprietary rights or any other harm resulting from
-such a submission.  By submitting material to any public area of the Website, you warrant
-that the owner of such material has expressly granted Upsurge the royalty-free, perpetual,
-irrevocable, non-exclusive right and license to use, reproduce, modify, adapt,
-publish, translate and distribute such material (in whole or in part) worldwide and/or to
-incorporate it in other works in any form, media or technology now known or hereafter
-developed for the full term of any copyright that may exist in such material. You also permit
-any other end user to access, view, store or reproduce the material for that end user&#39;s
-personal use. You hereby grant Upsurge, the right to edit, copy, publish and distribute any
-material made available on the Platform by you. If you come across any abuse or violation of
-these Terms, please report to hello@upsurge.in 
- 
-YOUR RIGHTS IN RELATION TO PERSONAL INFORMATION COLLECTED BY US
-You have the right to withdraw your consent at any time in writing by sending an e-mail to
-us at hello@upsurge.in, in accordance with the terms of this Privacy Policy. However,
-please note that withdrawal of consent will not be retrospective in nature and shall be
-applicable prospectively. 
- 
-
-You may write to us at  hello@upsurge.in to access, review, modify or correct your
-Personal Information or withdraw your consent to provide Personal Information. We are not
-responsible for the authenticity of the information provided by you.
- 
-You agree and acknowledge that Your right to access, modify and/or withdrawing Your
-consent to provide Personal Information as mentioned above may be denied or limited by
-us, as may be required under any applicable law, law enforcement requests or under any
-judicial proceedings. 
-Under Rule 5 (5) of the Rule 5 (5) of the Information Technology (Reasonable Security
-Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (“Rules”)
-any data (personal information and sensitive personal information) collected by us from
-you, shall not be used for any purpose other than what was specified at the time of its
-collection. Under Rule 5(6) of the Rules, you have a right to ask us to review, correct and
-amend the information we collect about you at any point in time. Under Rule 5(7) of the
-Rules, you also have the right to revoke your consent to the collection of your information
-going forward. However, please note that revoking your consent may negatively affect your
-use of the Platform  
-CONDITIONS OF USE 
-Licensee does not warrant that this Website or Mobile application, its servers, or email sent
-by us or on our behalf are virus free. We will not be liable for any damages of any kind
-arising from the use of this platform, including, but not limited to compensatory, direct,
-indirect, incidental, punitive, special, or consequential damages, loss of data, goodwill,
-business opportunity, income or profit, loss of or damage to property and claims of third
-parties.   
-GRIEVANCE OFFICER 
-Any discrepancies and grievances with respect to processing of Personal Information shall
-be informed to the designated Grievance Officer as mentioned below:
-Name:
-Designation: Grievance Officer
-Email ID:
- 
-CONSENT TO THE POLICY 
-The Terms of Use Agreement is incorporated herein by reference in its entirety.   
-
-GENERAL 
-Modification:   
-We may at any time modify the Terms of Use of our Website without any prior notification
-to you. Should you wish to terminate your account due to a modification to the Terms or
-
-the Privacy Policy, you may do so email us at hello@upsurge.in. However, if you
-continue to use the service you shall be deemed to have agreed to accept and abide by the
-modified Terms of this Website.   
-Privileged/Exclusive Service:   
-By having an Upsurge account, you have explicitly given consent for us to capture images
-(followed by analysis), camera/mic permissions to make video calls and record the same.  
-Upsurge May Disclose Information:   
- as required by law, such as to comply with a subpoena, or similar legal process;   
- to enforce applicable ToU (Terms of Use), including investigation of potential
-violations thereof;  
- when we believe in good faith (doctrine of uberrima fides) that the disclosure is
-necessary to protect our rights, protect your safety or the safety of others,
-investigate fraud, address security or technical issues or respond to a government
-request;   
- with our trusted service providers who work on our behalf and do not have an
-independent use of the information we disclose to them and have agreed to and
-adhered to the rules set forth in this 
-Policy:   
- to protect against imminent harm to the rights, property or safety of the
-Application/Website or our users or the public as required or permitted by law;  
- with third party service providers in order to personalize the
-Application/Website/Services/products for a better user experience and to perform
-behavioral analysis;  
- 
-Governing Law and Jurisdiction:
-  
-In the event of any dispute arising between the parties with respect to this Agreement, the
-same shall be referred to the Sole Arbitrator appointed by the company and the arbitration
-shall be in accordance with Arbitration and Conciliation Act of 1996. The language of
-arbitration proceedings shall be English. The seat and place of arbitration shall be Delhi and
-the decision of the Arbitrator shall be final and binding on both parties herein.   
-This contract shall be subject to the exclusive jurisdiction of courts in Delhi, India and shall
-be governed by the Indian laws.
-</p>
+          {`Revision Date: July 24, 2020 
+        
+        These Terms of Service (these “Terms”) govern your use of the Upsurge website (the “Site”), the Upsurge video platform and associated tools (collectively, the “Service”) made available by Upsurge, Inc. (“Upsurge”, "our", "us", or "we"). Your use of the Site and/or your registration to use the Service indicates that you agree on behalf of yourself or the entity that you represent (collectively, "you") to be bound by these Terms as well as the Upsurge Privacy Policy. Please read these Terms carefully before registering for or otherwise using the Upsurge Service.
+        
+         I. Overview
+        
+         Upsurge provides a financial learning platform. Upsurge is
+        offered via the following plans or service offerings.
+        
+         - Basic. For individuals that just need to record and share
+        videos quickly, a basic version of Upsurge is available for free when
+        you register with Upsurge and set up a user account.   -
+        Starter. A new version of our Basic plan (limited availability). This
+        plan is limited to one Creator and unlimited Viewers, 25 videos and a 5
+        minute recording limit.
+          - Starter Unlimited Videos. A new version of our Basic
+        plan (limited availability) which gives users access to Basic features
+        plus unlimited videos in their Workspace.
+          - Pro. For individuals that need advanced recording and
+        editing functions, a Pro plan is available on a paid basis via either a
+        monthly or annual subscription. Upsurge Pro provides enhanced Upsurge
+        features, including higher video quality and access to unlimited number
+        of videos.
+          - Professional. A new version of our Pro plan (limited
+        availability). This plan is limited to one Creator and unlimited
+        Viewers.
+          - Business. Includes the premium features of Upsurge
+        Professional, but with added flexibility for teams that need advanced
+        sharing and reporting functions. This plan allows for as many Creators
+        as needed.
+         - Enterprise. Includes the premium features of Upsurge
+        Business, but with additional features suitable for companies that need
+        advanced administrative and security functions. This plan allows for as
+        many Creators as needed.
+         
+        See our Site for further details on the features of the various Upsurge
+        Service offerings, which Upsurge will endeavor to improve and expand
+        over time.  
+        By registering for a Upsurge Business or Upsurge Enterprise account, you
+        acknowledge that the account administrator of your organization has
+        control of and access to Your Content (as defined below). Furthermore,
+        you (1) agree to comply with your organization’s terms and policies with
+        regard to your use of the Service; (2) acknowledge your organization’s
+        ability to monitor, restrict or terminate your or other users’ access to
+        Your Content; and (3) acknowledge your organization’s ownership of the
+        Upsurge Team or Upsurge Company account.
+          II. Registration Use of the Service requires that you
+        register with Upsurge. When you register with Upsurge, you will be asked
+        to disclose certain personal information, including your name and email
+        address, and to set up a username and password, all of which will be
+        subject to our Privacy Policy. You are responsible for all activities
+        that occur under your account and for keeping your password and log-in
+        information secure. You agree that you (1) will monitor your account,
+        (2) will not share your account or password with anyone, and (3) will
+        notify Upsurge immediately of any unauthorized use of your account or
+        password, or any other breach of security. You agree to provide us with
+        true, accurate and complete information as requested in our registration
+        process. You also agree to update such information promptly as necessary
+        to keep it current and accurate.
+          III. Payment If you register for Upsurge Starter
+        Unlimited, Upsurge Pro, Upsurge Professional, Upsurge Business or
+        Upsurge Enterprise (collectively, “Upsurge Premium”), you agree to pay
+        all fees or charges to your account for the Service in accordance with
+        the fees, charges and billing terms in effect at the time that each fee
+        or charge is due and payable. Unless otherwise indicated in an order
+        form, you must provide Upsurge with a valid credit card (Visa,
+        MasterCard, or any other issuer accepted by us) (“Payment Provider”) as
+        a condition to signing up for the Upsurge Premium. Your Payment Provider
+        agreement governs your use of the designated credit card account, and
+        you must refer to that agreement and not these Terms to determine your
+        rights and liabilities with respect to your Payment Provider. By
+        providing Upsurge with your credit card number and associated payment
+        information, you agree that Upsurge is authorized to verify information
+        immediately, and subsequently invoice your account for all fees and
+        charges due and payable to Upsurge hereunder and that no additional
+        notice or consent is required. You agree to immediately notify Upsurge
+        of any change in your billing address or the credit card used for
+        payment hereunder. Upsurge reserves the right at any time to change its
+        prices and billing methods, either immediately upon posting on our Site
+        or by e-mail delivery to your organization’s administrator(s).
+          Any attorney fees, court costs, or other costs incurred in
+        collection of delinquent undisputed amounts shall be the responsibility
+        of and paid for by you.  
+        All fees for the Service are non-refundable. No contract will exist
+        between you and Upsurge for the Service until Upsurge accepts your order
+        by a confirmatory e-mail, SMS/MMS message, or other appropriate means of
+        communication.
+          You are responsible for any third-party fees that you may
+        incur when using the Service.
+          IV. Changes to and Your Termination of the Service You
+        acknowledge and agree that Upsurge may stop (permanently or temporarily)
+        providing the Service (or any features within the Service) to you or to
+        users generally at Upsurge’s sole discretion, without prior notice to
+        you (except that if you are a Upsurge Premium customer, Upsurge will
+        notify you and not charge you for any Service that you have not
+        received). You may stop using the Service at any time. You do not need
+        to specifically inform Upsurge when you stop using the Service. You
+        acknowledge and agree that if Upsurge disables access to your account,
+        you may be prevented from accessing the Service, your account details or
+        any files or other materials which is contained in your account.
+         
+        V. User Conduct, Commitments and Understandings - You agree not to
+        access (or attempt to access) any of the Service by any means other than
+        through the interface that is provided by Upsurge, unless you have been
+        specifically allowed to do so in a separate agreement with Upsurge.{" "}
+         - You, directly or indirectly, alone or with any other
+        party, may not:  
+        1. modify, change, create derivative works of, disassemble, decompile or
+        otherwise reverse engineer the Service or any software provided in
+        connection with the Service (“Software”), or remove proprietary legends
+        in the Service or Software;  
+        2. distribute, transfer, resell, rent, lease, or loan the Service or
+        Software to any other party, except as described herein;  
+        3. make the Service or Software available to others in a service bureau
+        arrangement or for any similar commercial time-sharing or third party
+        training use;  
+        4. harass, threaten or otherwise cause distress, unwanted attention or
+        discomfort to a person or entity;  
+        5. post or otherwise transmit any unlawful, harmful, threatening,
+        abusive, harassing, defamatory, vulgar, obscene, or hateful content or
+        content which is racially, ethnically or otherwise objectionable, or
+        which infringes upon the rights of any third party;  
+        6. post or otherwise transmit any content that (i) infringes any patent,
+        trademark, trade secret, copyright or other proprietary rights of any
+        party; (ii) you do not have the right to transmit, such as information
+        that is subject to a confidentiality agreement between you and another
+        party; (iii) contains sexually explicit images or other content that is
+        offensive; (iv) is harmful to minors in any way; or (v) promotes or
+        provides instructional information about illegal activities or promotes
+        physical harm or injury against any group or individual;  
+        7. send any unsolicited commercial email, spam, or bulk commercial
+        email;  
+        8. impersonate any person or entity, or falsely state or otherwise
+        misrepresent your affiliation with a person or entity;  
+        9. violate (intentionally or unintentionally) any applicable local,
+        state, national or international law including, but not limited to, any
+        regulations having the force of law; or  
+        10. interfere with or disrupt the Service or Software, or servers or
+        networks connected to the Software, or disobey any requirements,
+        procedures, policies or regulations of networks connected to the Service
+        or Software.  
+        - You agree that you are solely responsible for (and that Upsurge has no
+        responsibility to you or to any third party for) any breach of your
+        obligations under these Terms and for the consequences (including any
+        loss or damage which Upsurge may suffer) of any such breach. To the
+        extent Upsurge incurs any financial penalties or other costs and
+        expenses (including investigation expenses) from Upsurge’s server
+        hosting facility, internet service provider or other vendors because of
+        your use of the Software, you shall be obligated to immediately
+        reimburse Upsurge for any such penalties, costs or expenses. {" "}
+        - You understand that all information (such as data files, written
+        text, computer software, music, audio files or other sounds,
+        photographs, videos or other images) which you may have access to as
+        part of, or through your use of, the Service are the sole responsibility
+        of the person from which such materials originated, which may be you.{" "}
+         - While Upsurge uses reasonable efforts to include accurate
+        and up-to-date information on the Site, Upsurge makes no warranties or
+        representations as to its accuracy. Upsurge assumes no liability or
+        responsibility for any errors or representations in the content
+        available on the Site (the “Content”).  - The Site may
+        contain links to other sites on the Internet which are owned and
+        operated by Third Party Vendors and other third parties (the “External
+        Sites”). You acknowledge that Upsurge is not responsible for the
+        availability of, or the materials located on or through, any External
+        Sites. You should contact the site administrator or webmaster for those
+        External Sites if you have any concerns regarding such links or the
+        materials located on such External Sites.  - You acknowledge
+        that by accessing the Site, you may come into contact with Content that
+        you find harmful, offensive, threatening, indecent or objectionable and
+        you acknowledge that Upsurge shall have no liability to you for the
+        Content including, but not limited to explicit language and other
+        potentially offensive material. You agree not to impersonate any person
+        or communicate under a false name or a name you are not entitled or
+        authorized to use. Upsurge has the right (but not the obligation) to
+        remove, prohibit, edit or discontinue any Content on the Site, including
+        Content that has been posted by users.  - You retain sole
+        ownership of any Content you post or any other material you submit using
+        the Service (“Your Content”). You hereby grant Upsurge and its
+        affiliates a revocable, worldwide, royalty-free, non-exclusive,
+        sublicensable license to use, reproduce and display Your Content solely
+        for the purpose of providing the Service to you. Upsurge will not use
+        Your Content for any other purpose or distribute Your Content to any
+        third party without your permission. You represent and warrant that Your
+        Content will be your original work product and will not be based on, or
+        derived from, the proprietary information or materials of a third party.
+        Furthermore, you represent and warrant that your use of the Service in
+        connection with Your Content or any third party content complies with
+        all laws including, but not limited to, copyright law. You also hereby
+        grant each user of the Service a non-exclusive license to access Your
+        Content through the Service. The licenses granted in Your Content
+        terminate within a commercially reasonable time after you remove or
+        delete Your Content from the Service; however, you understand,
+        acknowledge and agree that Upsurge may retain, but not display, server
+        copies of Your Content that has been removed or deleted. You grant
+        Upsurge and its affiliates a perpetual and irrevocable license to use
+        and display any comments you add via the Service. You will defend,
+        indemnify and hold Upsurge and its affiliates harmless from and against
+        any claims resulting from any of Your Content.  - At your
+        discretion, you may provide feedback to Upsurge concerning the
+        functionality and performance of the Service from time to time,
+        including, without limitation, identifying potential errors,
+        improvements, modifications, bug fixes, or enhancements (“Feedback”). If
+        you, through your evaluation or otherwise, suggests any Feedback, you
+        hereby assign the ownership in all Feedback to Upsurge. In the event
+        ownership in the Feedback cannot be granted to Upsurge, you grant
+        Upsurge at no charge a perpetual, irrevocable, royalty-free, worldwide
+        right and license to use, reproduce, disclose, sublicense, distribute,
+        modify, and otherwise exploit such Feedback without restriction. You
+        agree that Upsurge may disclose that Feedback to any third party in any
+        manner and you agree that Upsurge has the ability to sublicense all
+        Feedback in any form to any third party without restriction. {" "}
+        - The Site may contain areas in which additional terms and
+        conditions apply. For purposes of the use of such areas, in the event of
+        a conflict between the terms and conditions of such other areas and
+        these Terms, the terms and conditions of the other area shall prevail.
+        Upsurge may at any time revise these Terms by updating this posting. You
+        are bound by any such revisions and should therefore periodically visit
+        this page to review the current Terms to which you are bound. {" "}
+        - You shall not transmit to Upsurge or upload to this Site any
+        Harmful Code or use or misappropriate the data on this Site for your own
+        commercial gain. “Harmful Code” shall mean any software (sometimes
+        referred to as “viruses,” “worms,” “trojan horses,” “time bombs,” “time
+        locks,” “drop dead devices,” “traps,” “access codes,” “cancelbots” or
+        “trap door devices”) that: (a) is intentionally designed to damage,
+        disrupt, disable, harm, impair, interfere with, intercept, expropriate
+        or otherwise impede in any manner, any data, storage media, program,
+        system, equipment or communication, based on any event, including for
+        example but not limited to (i) exceeding a number of copies, (ii)
+        exceeding a number of users, (iii) passage of a period of time, (iv)
+        advancement to a particular date or other numeral, or (v) use of a
+        certain feature; or (b) would enable an unauthorized person to cause
+        such result; or (c) would enable an unauthorized person to access
+        another person’s information without such other person’s knowledge and
+        permission.  - You may not use your username and password
+        for any unauthorized purpose.  
+        VI. Monitoring and Enforcement; Termination Upsurge has the right to:{" "}
+         - Remove or refuse to post any of Your Content for any or
+        no reason at our sole discretion.  - Take any action with
+        respect to Your Content that we deem necessary or appropriate in our
+        sole discretion, including if we believe that Your Content violates
+        these Terms, infringes any intellectual property right or other right of
+        any person or entity, threatens the personal safety of users of the
+        Service or the public or could create liability for Upsurge. {" "}
+        - Take appropriate legal action, including without limitation,
+        referral to law enforcement, for any illegal or unauthorized use of the
+        Service or the Site.  - Terminate or suspend your access to
+        all or part of the Service or the Site for any violation of these Terms.{" "}
+         
+        Without limiting the foregoing, we have the right to fully cooperate
+        with any law enforcement authorities or court order requesting or
+        directing us to disclose the identity or other information of anyone
+        posting any materials on or through the Service or the Site. YOU WAIVE
+        AND HOLD HARMLESS UPSURGE AND ITS AFFILIATES, LICENSEES AND SERVICE
+        PROVIDERS FROM ANY CLAIMS RESULTING FROM ANY ACTION TAKEN BY ANY OF THE
+        FOREGOING PARTIES DURING OR AS A RESULT OF ITS INVESTIGATIONS AND FROM
+        ANY ACTIONS TAKEN AS A CONSEQUENCE OF INVESTIGATIONS BY EITHER SUCH
+        PARTIES OR LAW ENFORCEMENT AUTHORITIES.  
+        However, we do not undertake to review Content before it is posted via
+        the Service, and we cannot ensure prompt removal of objectionable
+        material after it has been posted. Accordingly, we assume no liability
+        for any action or inaction regarding transmissions, communications or
+        Content provided by any user or third party. We have no liability or
+        responsibility to anyone for performance or nonperformance of the
+        activities described in this section.  
+        VII. Indemnity
+        
+        You agree to indemnify, defend and hold harmless Upsurge, and its
+        directors, officers, agents, contractors, partners and employees, from
+        and against any loss, liability, claim, demand, damages, costs and
+        expenses (including reasonable attorney's fees) arising out of or in
+        connection with (i) any allegation that any of Your Content infringes or
+        misappropriates any intellectual property or other proprietary right of
+        a third party or violates any applicable law, (ii) your conduct in
+        connection with the Service, and/or (iii) any violation by you of these
+        Terms.
+         
+        VIII. Intellectual Property
+         Rights Upsurge reserves all rights not specifically granted
+        herein. You shall not modify any copyright notices, proprietary legends,
+        any trademark and service mark attributions, any patent markings, and
+        other indicia of ownership on the Content or other materials accessed
+        through the Service. The delivery of, and license to, the Content and/or
+        access to third party materials does not transfer to you any commercial
+        or promotional use rights in the Content or any portion thereof. Any use
+        of Content, or descriptions; any derivative use of this Site or its
+        materials; and any use of data mining, robots, or similar data gathering
+        and extraction tools is strictly prohibited. In no event shall the user
+        frame any portion of the Site or any materials contained therein.
+          As between the parties, Upsurge owns and shall continue to
+        own all right, title and interest in and to all aggregate and
+        statistical information or analyses created and developed by Upsurge
+        from performance and usage data generated through your use of the Site,
+        Service or Software (collectively, “Aggregate Data”). Aggregate Data is
+        de-identified so that you cannot be identified as the source within the
+        Aggregate Data.  
+        IX. Copyright Protection  The U.S. Digital Millennium Copyright
+        Act ("DMCA") provides recourse to copyright owners who believe that
+        their rights under the United States Copyright Act have been infringed
+        by acts of third parties over the Internet. If you believe that any
+        content uploaded or otherwise made available on the Service infringes
+        upon any copyright which you own or control, you may so notify us in
+        accordance with our DMCA process available here.In accordance with the
+        DMCA and other applicable law, we have adopted a policy of terminating,
+        in appropriate circumstances and at our sole discretion, the accounts of
+        users of the Service who are deemed to be repeat infringers. Upsurge may
+        also at its sole discretion limit access to the Service or terminate the
+        account of any user who infringes any intellectual property rights of
+        others, whether or not there is any repeat infringement.
+          X. Data Processing Addendum
+         To the extent that Upsurge processes any personal data on your
+        behalf in providing the Service that is subject to the EU General Data
+        Protection Regulation (“GDPR”), the terms of Upsurge’s data processing
+        addendum, which are hereby incorporated by reference, shall apply and
+        the parties agree to comply with such terms.  
+        XI. Governing Law 
+        Your use of the Service and these Terms shall be governed by, and
+        construed in accordance with, the internal laws of the State of
+        California without reference to the choice of law or conflicts of law
+        principles thereof, and all claims relating to or arising out of your
+        use of the Service or these Terms, or the breach thereof, whether
+        sounding in contract, tort or otherwise, shall likewise be governed by
+        the laws of the State of California without reference to the choice of
+        law or conflicts of law principles thereof. Notwithstanding the
+        foregoing, if you represent an entity or institution subject to state
+        law mandating that such state’s laws govern your use of the Services,
+        Upsurge agrees to such governing state law.  
+        XII.
+         Disclaimer of Warranties THE MATERIALS, CONTENT ON THIS SITE AND
+        SERVICE ARE PROVIDED “AS IS”, “AS AVAILABLE” WITHOUT WARRANTIES OF ANY
+        KIND EITHER EXPRESS OR IMPLIED. UPSURGE SHALL HAVE NO RESPONSIBILITY OR
+        LIABILITY FOR ANY CONTENT, MATERIALS POSTED ON THE SITE OR SERVICES.
+        UPSURGE MAKES NO GUARANTEES AS TO UPTIME OR AVAILABILITY OF THE SERVICE.
+        TO THE FULLEST EXTENT POSSIBLE PURSUANT TO THE APPLICABLE LAW, UPSURGE
+        DISCLAIMS ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT
+        LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+        PARTICULAR PURPOSE, NONINFRINGEMENT OR OTHER VIOLATION OF RIGHTS. THE
+        SERVICE MAY BE SUBJECT TO LIMITATIONS, DELAYS, AND OTHER PROBLEMS
+        INHERENT IN THE USE OF THE INTERNET AND ELECTRONIC COMMUNICATIONS. LOON
+        IS NOT RESPONSIBLE FOR ANY DELAYS, DELIVERY FAILURES, OR OTHER DAMAGE
+        RESULTING FROM SUCH PROBLEMS, INCLUDING INTERNET CONGESTION, VIRUS
+        ATTACKS, AND DENIAL OF SERVICE (DOS) ATTACKS.  
+        XIII. Limitation of Liability
+         UNDER NO CIRCUMSTANCES, INCLUDING, BUT NOT LIMITED TO,
+        NEGLIGENCE, BREACH OF CONTRACT, OR BREACH OF ANY STATUTORY OR OTHER DUTY
+        OF CARE, SHALL UPSURGE OR ITS THIRD PARTY LICENSORS BE LIABLE FOR ANY
+        INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING, BUT
+        NOT LIMITED TO, LOSS OF DATA OR PROFIT, ARISING OUT OF THE USE, OR THE
+        INABILITY TO USE, THE MATERIALS ON THIS SITE OR THE SERVICE, EVEN IF
+        UPSURGE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND
+        NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY.
+          UPSURGE’S AND ITS LICENSORS’ ENTIRE AND AGGREGATE
+        LIABILITY, WHETHER BASED IN CONTRACT, TORT (INCLUDING NEGLIGENCE),
+        STRICT LIABILITY OR OTHERWISE, SHALL NOT EXCEED THE GREATER OF $100 OR
+        THE AMOUNT YOU HAVE PAID TO UPSURGE FOR THE SERVICE DURING THE SIX (6)
+        MONTHS PRECEDING THE DATE THAT A CLAIM OR DEMAND IS FIRST ASSERTED, EVEN
+        IF UPSURGE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND
+        NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY. IF YOUR
+        USE OF MATERIALS FROM THIS SITE OR THE SERVICE RESULTS IN THE NEED FOR
+        SERVICING, REPAIR OR CORRECTION OF EQUIPMENT OR DATA, YOU ASSUME ANY
+        COSTS THEREOF. SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF
+        INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR
+        EXCLUSION MAY NOT APPLY TO YOU. 
+        
+        XIV. Entire Agreement; Modifications  These Terms constitute the
+        entire agreement between the parties regarding the subject matter hereof
+        and supersede all proposals and prior discussions and writings between
+        the parties with respect thereto. No failure or delay in enforcing any
+        right or exercising any remedy will be deemed a waiver of any right or
+        remedy. Each provision of these Terms is a separately enforceable
+        provision. If any provision of these Terms is determined to be or
+        becomes unenforceable or illegal, such provision shall be reformed to
+        the minimum extent necessary in order for these Terms to remain in
+        effect in accordance with its terms as modified by such reformation.
+        These Terms may not be modified, supplemented, amended or interpreted by
+        any trade usage or prior course of dealing unless specifically agreed
+        upon in writing. Reasonable attorneys’ fees and costs will be awarded to
+        the prevailing party in the event of litigation involving the
+        enforcement or interpretation of these Terms.  
+        XV. Force Majeure Upsurge
+        
+        shall not be liable to you for any delay or failure of Upsurge to
+        perform its obligations hereunder if such delay or failure arises from
+        any cause or causes beyond the reasonable control of Upsurge. Such
+        causes shall include, but are not limited to, acts of God, floods,
+        fires, loss of electricity or other utilities, labor strike, or delays
+        by you in performing any requirements hereunder.
+          XVI. Dispute Resolution
+         The state or federal courts sitting in San Francisco County,
+        California shall have exclusive jurisdiction and venue over any dispute
+        arising out of these Terms and sale, and you hereby consent to the
+        jurisdiction of such courts. Any dispute, controversy or claim arising
+        under, out of or relating to these Terms and any subsequent amendments
+        of these Terms, including, without limitation, its formation, validity,
+        binding effect, interpretation, performance, breach or termination, as
+        well as non-contractual claims, shall be submitted to arbitration before
+        the American Arbitration Association (“AAA”) in accordance with the AAA
+        Commercial Arbitration Rules. The place of arbitration shall be San
+        Francisco, California. The language to be used in the arbitral
+        proceedings shall be English. The parties may apply to any court of
+        competent jurisdiction for a temporary restraining order, preliminary
+        injunction, or other interim or conservatory relief as necessary,
+        without breach of this Section and without abridgment of the powers of
+        the arbitrator. The arbitrator may award any form of individual or
+        equitable relief, including injunctive relief. Any award will be final
+        and conclusive to the parties and may be entered in any court of
+        competent jurisdiction. You agree to the entry of injunctive relief to
+        stop any lawsuit or to remove you as a participant in such a suit. These
+        Terms do not constitute a waiver of any of your rights and remedies to
+        pursue a claim individually in binding arbitration, but not as a class
+        action. This provision preventing you from bringing, joining or
+        participating in any class action lawsuits is an independent covenant.
+        You may opt-out of this Section by providing written notice of your
+        decision within thirty (30) days of the date that you first use the Site
+        or Service. Notwithstanding the foregoing, if you represent an entity or
+        institution subject to state law mandating different dispute resolution
+        terms, Upsurge agrees to such state law requirements.  
+        XVII. Questions and Comments
+         If you have any questions regarding these Terms, please contact
+        Upsurge by emailing privacy@Upsurge.com.
+          XVIII. Notices  All notices regarding these Terms
+        and the Service will be provided in writing to you by e-mail using the
+        contact information provided by you upon registration or by posting on
+        the Site. Notice will be deemed given one (1) business day after e-mail
+        transmission from Upsurge, or two (2) business days after the date of
+        posting.`}
         </div>
-       
+        <div
+          data-tip
+          data-for="continue-button-privacy"
+          className={`${styles.button}`}
+          onClick={() => router.push("/dashboard/p")}
+        >
+          I Agree
+        </div>
       </div>
     </div>
   );

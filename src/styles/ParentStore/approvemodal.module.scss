@@ -75,12 +75,12 @@
         }
         .text {
           font-weight: 500;
-          font-size: 2rem;
+          font-size: 32px;
           line-height: 38px;
           .payment {
             font-family: "Lexend", sans-serif;
             font-weight: 400;
-            font-size: 1.5rem;
+            font-size: 24px;
             line-height: 28px;
             color: #747474;
           }
@@ -119,7 +119,7 @@
       }
       .details {
         font-family: "Lexend", sans-serif;
-        font-size: 1.5rem;
+        font-size: 24px;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -140,7 +140,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.25rem;
+        font-size: 20px;
         color: white;
         font-weight: 500;
         cursor: pointer;
@@ -178,10 +178,10 @@
           }
           .text {
             font-weight: 500;
-            font-size: 1.375rem;
+            font-size: 22px;
             line-height: 26px;
             .payment {
-              font-size: 1rem;
+              font-size: 16px;
               line-height: 20px;
             }
           }
@@ -205,13 +205,13 @@
           }
         }
         .details {
-          font-size: 1rem;
+          font-size: 16px;
           line-height: 20px;
         }
         .button {
           border-radius: 12px;
           height: 48px;
-          font-size: 1rem;
+          font-size: 16px;
           margin-top: 35px;
         }
       }

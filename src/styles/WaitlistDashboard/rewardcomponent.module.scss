@@ -25,7 +25,7 @@
       justify-content: space-between;
       padding: 15px 20px 10px;
       .name {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
         max-width: 10vw;
       }
@@ -37,7 +37,7 @@
           color: #6d6d6d;
         }
         .value {
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 600;
           color: #434040;
         }
@@ -54,7 +54,7 @@
       width: 100%;
       .button {
         border: none;
-        background-color: #4166eb;
+        background-color: #4166EB;
         color: #fff;
         display: flex;
         align-items: center;

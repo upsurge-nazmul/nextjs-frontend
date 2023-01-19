@@ -8,7 +8,6 @@ import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/dist/client/router";
-import { motion } from "framer-motion";
 
 export default function KnowledgeQuest({
   id,
@@ -62,19 +61,14 @@ export default function KnowledgeQuest({
         />
       )}
       <div className={styles.lap}>
-        <motion.div
-          initial={{ x: 300 }}
-          animate={{ x: 0 }}
-          transition={{ x: { duration: 0.4 } }}
-          className={styles.wrap}
-        >
+        <div className={styles.wrap}>
           <Image
             layout="fill"
             objectFit="contain"
             src="https://imgcdn.upsurge.in/images/Group-232.png"
             alt=""
           />
-        </motion.div>
+        </div>
       </div>
 
       {/* <div className={styles.kidimg}>
