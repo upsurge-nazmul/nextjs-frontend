@@ -33,7 +33,7 @@
       transform: scale(5);
     }
     100% {
-      margin-top: 0rem;
+      margin-top: -15rem;
       transform: scale(1.2);
       background-image: url("../../../public/images/knowledgequestmaps/islandwhatismoney.png");
     }
@@ -117,7 +117,7 @@
   .superZoomPF1 {
     transition: 2s;
     //transform:perspective(100rem) rotateX(15deg) scale(2.8);
-    animation: loadingPF1 5s forwards 0s 1;
+    animation: loadingPF1 4s forwards 0s 1;
   }
   @keyframes loadingPF1 {
     0% {
@@ -151,7 +151,7 @@
   .superZoomPF2{
     transition: 2s;
     //transform:perspective(100rem) rotateX(15deg) scale(2.8);
-    animation: loadingPF2 5s forwards 0s 1;
+    animation: loadingPF2 4s forwards 0s 1;
   }
   @keyframes loadingPF2 {
     0% {
@@ -188,7 +188,7 @@
   }
   .superZoomwie{
     transition: 2s;
-    animation: loadingwie 5s forwards 0s 1;
+    animation: loadingwie 4s forwards 0s 1;
   }
   @keyframes loadingwie {
     0% {
@@ -226,7 +226,7 @@
   }
   .superZoomyourBusiness{
     transition: 2s;
-    animation: loadingyourBusiness 5s forwards 0s 1;
+    animation: loadingyourBusiness 4s forwards 0s 1;
   }
   @keyframes loadingyourBusiness {
     0% {
@@ -255,25 +255,8 @@
     }
   }
   .zoomOut {
-    animation: loadingOverworld 5s forwards 0s 1; // 5s
     transition: 2s;
-  }
-  @keyframes loadingOverworld {
-    0% {
-      transform: scale(1.2);
-    }
-    40% {
-      transform: scale(5);
-    }
-    41% {
-      margin-left: 40rem;
-      transform: scale(5);
-      background-image: url("../../../public/images/knowledgequestmaps/island01-a.png");
-    }
-    100% {
-      transform: scale(1);
-      background-image: url("../../../public/images/knowledgequestmaps/island01-a.png");
-    }
+    background-image: url("../../../public/images/knowledgequestmaps/island01-a.png");
   }
   .map {
     width: 100%;
@@ -505,6 +488,21 @@
       height: 100%;
       width: 100%;
       border-radius: 0.4rem;
+    }
+    .backButton{
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: 400;
+      font-size: 0.8rem;
+      border-radius: 0.4rem;
+      width: max-content;
+      min-width: 4rem;
+      z-index: 99;
+      color: rgb(44, 44, 44);
+      text-align: center;
+      padding: 0.5rem 0.9rem;
+      background-color: #fff;
+      border: 1px solid black;
     }
   }
 }
