@@ -82,26 +82,38 @@ export default function MapHeadArea({
         <div className={styles.mapContent} id="quest-main">
           <div className={`
           ${mapZoom == "banking" ? styles.Banking : ""}
-          ${mapZoom == "personalFinance1" ? styles.finance : ""}
+          ${mapZoom == "personalFinance1" ? styles.PF1 : ""}
           ${mapZoom == "whatIsMoney" ? styles.money : ""}
           ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
-          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
-          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
-          ${mapZoom == "digitalPaymentsUpi" ? styles.upi : ""}
+          ${mapZoom == "personalFinance2" ? styles.PF2 : ""}
+          ${mapZoom == "whatIsEntrepreneurship" ? styles.wie : ""}
+          ${mapZoom == "yourBusiness" ? styles.yourBusiness : ""}
           ${mapZoom == "superZoomwhatIsMoney" ? styles.superZoomMoney : ""}
           ${mapZoom == "superZoombanking" ? styles.superZoomBanking : ""}
           ${mapZoom == "superZoomdigitalPaymentsUpi" ? styles.superZoomUPI : ""}
           ${mapZoom == "superZoompersonalFinance1" ? styles.superZoomPF1 : ""}
+          ${mapZoom == "superZoompersonalFinance2" ? styles.superZoomPF2 : ""}
+          ${mapZoom == "superZoomwhatIsEntrepreneurship" ? styles.superZoomwie : ""}
+          ${mapZoom == "superZoomyourBusiness" ? styles.superZoomyourBusiness : ""}
           ${mapZoom == "" ? styles.overview : ""}
           ${mapZoom == "zoomOut" ? styles.zoomOut : ""}
           ${mapZoom == "questStarted" ? styles.overview : ""}
           ${styles.map}
           `}
           >
-          { mapQuestdisplay !== "superZoombanking" && mapQuestdisplay !== "superZoomdigitalPaymentsUpi" && mapQuestdisplay !== "superZoomwhatIsMoney" && mapQuestdisplay !=="superZoompersonalFinance1" && mapQuestdisplay !== "questStarted" ?
+          { mapQuestdisplay !== "superZoombanking" && mapQuestdisplay !== "superZoomdigitalPaymentsUpi" && mapQuestdisplay !== "superZoomwhatIsMoney" && mapQuestdisplay !=="superZoompersonalFinance1" && mapQuestdisplay !=="superZoompersonalFinance2" && mapQuestdisplay !=="superZoomwhatIsEntrepreneurship" && mapQuestdisplay !=="superZoomyourBusiness" && mapQuestdisplay !== "questStarted" ?
 <>
             {data.map((item) => {
               return (
+                <div key={item.questNo} className={styles.increasedArea} style={positions[`overWorld`][item.questNo-1]}  onMouseEnter={()=> {
+                  if(mapZoom !== "superZoombanking" && mapZoom !== "superZoomdigitalPaymentsUpi" && mapZoom !== "superZoomwhatIsMoney" && mapZoom !=="superZoompersonalFinance1" && mapZoom !=="superZoompersonalFinance2" && mapQuestdisplay !=="superZoomwhatIsEntrepreneurship" && mapQuestdisplay !=="superZoomyourBusiness")   
+                  {setMapZoom(item.questId)
+                }
+              }}
+                onMouseLeave={()=> {
+                  if(mapZoom !== "superZoombanking" && mapZoom !== "superZoomdigitalPaymentsUpi" && mapZoom !== "superZoomwhatIsMoney" && mapZoom !=="superZoompersonalFinance1" && mapZoom !=="superZoompersonalFinance2" && mapQuestdisplay !=="superZoomwhatIsEntrepreneurship" && mapQuestdisplay !=="superZoomyourBusiness")   
+                  {setMapZoom("")
+                }}} >
                        <div 
                        key={item.questNo} 
                        onClick={() => { //handleCardClick(item.questId); 
@@ -110,17 +122,9 @@ export default function MapHeadArea({
                         setMapZoom("superZoom"+item.questId)
                         setTimeout(()=>{
                           setMapQuestDisplay("superZoom"+item.questId);
-                        },0)
+                        },1000)
                       }}
-                      onMouseEnter={()=> {
-                        setMapZoom(item.questId)
-                        }}
-                        onMouseLeave={()=> {
-                        if(mapZoom !== "superZoombanking" && mapZoom !== "superZoomdigitalPaymentsUpi" && mapZoom !== "superZoomwhatIsMoney" && mapZoom !=="superZoompersonalFinance1")    
-                          setMapZoom("")
-                      
-                        }}
-                        className={styles.heading} style={positions[`overWorld`][item.questNo-1]}>
+                      className={styles.heading} >
         <span>
           <div className={styles.chapterlengthBlock}>{item.chapters.length}</div>
           {item.title}
@@ -129,13 +133,14 @@ export default function MapHeadArea({
             <p className={styles.number}>
               {item.totalUnicoins
                 ? item.totalUnicoins > UniCoinValue
-                  ? (item.totalUnicoins / UniCoinValue).toFixed(2) + "K"
-                  : item.totalUnicoins
+                ? (item.totalUnicoins / UniCoinValue).toFixed(2) + "K"
+                : item.totalUnicoins
                 : 0}
             </p>
           </div>
         </span>
         </div>
+         </div>
         );
       })
     }
@@ -147,7 +152,7 @@ export default function MapHeadArea({
         setMapZoom("zoomOut")
         setTimeout(()=>{
           setMapQuestDisplay("zoomOut");
-        },4000)
+        },0)
         }}>
         X
         </div> : null }
