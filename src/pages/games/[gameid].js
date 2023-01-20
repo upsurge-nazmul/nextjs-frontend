@@ -79,7 +79,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
   const [gameDetails, setGameDetails] = useState(Game_Data[gameid]);
   const [showgamelandscapeinfo, setshowgamelandscapeinfo] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
-  const { setuserdata, mobileMode, widthHeight } = useContext(MainContext);
+  const { setuserdata, mobileMode, widthHeight,skipActive, setskipActive } = useContext(MainContext);
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -492,12 +492,19 @@ export default function GamePage({ gamedata, userdata, seodata }) {
               <div className={styles.startbutton} onClick={startgame}>
                 Start Playing
               </div>
+              {skipActive ? 
               <div
-                className={styles.skipbutton}
-                onClick={() => startgame(true)}
+              className={styles.skipbutton}
+                onClick={() => {
+                setskipActive(false)
+                  startgame(true)
+                }}
               >
                 Skip
               </div>
+              : 
+              null
+              }
             </div>
           </div>
           <div className={styles.right}>
