@@ -126,8 +126,9 @@ function DashboardHeader({
           </div>
         )} */}
         {userdata?.user_type !== "parent" && (
-          <div className={styles.rewardBlock}
-          onClick={() => router.push("/dashboard/k/store")}
+          <div
+            className={styles.rewardBlock}
+            onClick={() => router.push("/dashboard/k/store")}
           >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>

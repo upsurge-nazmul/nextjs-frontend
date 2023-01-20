@@ -493,8 +493,10 @@ export default function GamePage({ gamedata, userdata, seodata }) {
                 Start Playing
               </div>
               <div
-                className={styles.skipbutton}
-                onClick={() => startgame(true)}
+              className={styles.skipbutton}
+                onClick={() => {
+                  startgame(true)
+                }}
               >
                 Skip
               </div>
