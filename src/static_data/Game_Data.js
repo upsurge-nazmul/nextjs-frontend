@@ -1,5 +1,5 @@
 export const Game_Data = {
-  ShoppingBudget: {
+  DontOverspend: {
     name: "Shopping budget",
     description: "Can stay within your budget at the mall?",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
