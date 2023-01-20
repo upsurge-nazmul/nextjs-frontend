@@ -130,15 +130,16 @@ export default function GamePage() {
                 {/* {comingsoongames.includes(item) ? (
                   <p className={styles.button}>Coming Soon....</p>
                 ) : (
+                )} 
+                */}
                   <p
                     className={styles.activebutton}
                     onClick={() => {
                       router.push("/games/" + item);
-                    }}
+                  }}
                   >
                     Play
                   </p>
-                )} */}
               </div>
             );
           })}
