@@ -9,6 +9,7 @@ const TravelSection = () => {
         Travel the world with Kiara to learn about evolution of money and
         currencies.
       </h2>
+      <br />
       <div className={styles.bannerContainer}>
         <Image
           src={"/images/quest/travel-section.png"}
@@ -17,6 +18,7 @@ const TravelSection = () => {
           className={styles.banner}
         />
       </div>
+      <br />
       <span className={styles.text}>Loved it?</span>
       <button className={styles.button}>
         Watch More
