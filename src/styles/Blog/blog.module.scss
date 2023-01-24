@@ -42,7 +42,7 @@
     .heading {
       color: #000000;
       font-weight: 700;
-      font-size: 32px;
+      font-size: 2rem;
       margin-bottom: 60px;
     }
     .postsMain {
@@ -64,7 +64,7 @@
           .category {
             font-family: "Lexend", sans-serif;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 1rem;
             color: #4166eb;
             text-transform: capitalize;
             margin-right: 10px;
@@ -73,17 +73,17 @@
         .blogtitle {
           margin-top: 5px;
           font-weight: 700;
-          font-size: 22px;
+          font-size: 1.375rem;
         }
         .blogcontent {
           margin-top: 5px;
           font-weight: 400;
-          font-size: 18px;
+          font-size: 1.125rem;
         }
         .time {
           margin-top: 20px;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 1rem;
           color: hsla(0, 0%, 49%, 1);
         }
       }
@@ -98,7 +98,7 @@
       .moreHeading {
         color: #000000;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 2rem;
         margin-bottom: 60px;
         width: 100%;
       }
@@ -115,7 +115,7 @@
       height: 53px;
       border-radius: 18px;
       color: hsla(0, 0%, 0%, 1);
-      font-size: 20px;
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -156,7 +156,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 15px;
+              font-size: 0.9375rem;
               letter-spacing: 1px;
 
               .space {
@@ -167,7 +167,7 @@
             .title {
               margin-top: 10px;
               font-weight: 500;
-              font-size: 22px;
+              font-size: 1.375rem;
               letter-spacing: 0.8px;
             }
             .preview {
@@ -189,14 +189,14 @@
         .categoryHeading {
           margin-top: 10px;
           font-weight: 500;
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-left: 7%;
           margin-bottom: 20px;
           letter-spacing: 0.8px;
         }
         .categoryScroll {
           .category {
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-top: 20px;
             margin-left: 15%;
             cursor: pointer;
@@ -204,7 +204,7 @@
           .selectedCat {
             color: #f76160;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 1.125rem;
           }
         }
 
@@ -249,7 +249,7 @@
       p {
         text-align: center;
         color: #0f0f0f;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 400;
         text-transform: uppercase;
       }
@@ -332,7 +332,7 @@
               color: #3d3d3d;
               display: flex;
               font-weight: 400;
-              font-size: 15px;
+              font-size: 0.9375rem;
               letter-spacing: 1px;
 
               .space {
@@ -343,7 +343,7 @@
             .title {
               margin-top: 10px;
               font-weight: 500;
-              font-size: 22px;
+              font-size: 1.375rem;
               letter-spacing: 0.8px;
             }
             .preview {
@@ -365,14 +365,14 @@
         .categoryHeading {
           margin-top: 10px;
           font-weight: 500;
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-left: 7%;
           margin-bottom: 20px;
           letter-spacing: 0.8px;
         }
         .categoryScroll {
           .category {
-            font-size: 18px;
+            font-size: 1.125rem;
             margin-top: 20px;
             margin-left: 15%;
             cursor: pointer;
@@ -380,7 +380,7 @@
           .selectedCat {
             color: #f76160;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 1.125rem;
           }
         }
 
@@ -425,7 +425,7 @@
       p {
         text-align: center;
         color: #0f0f0f;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 400;
         text-transform: uppercase;
       }
@@ -477,7 +477,7 @@
       .heading {
         color: #000000;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 2rem;
         margin-bottom: 60px;
       }
       .postsMain {
@@ -499,7 +499,7 @@
             .category {
               font-family: "Lexend", sans-serif;
               font-weight: 700;
-              font-size: 16px;
+              font-size: 1rem;
               color: #4166eb;
               text-transform: capitalize;
               margin-right: 10px;
@@ -508,17 +508,17 @@
           .blogtitle {
             margin-top: 5px;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 1.375rem;
           }
           .blogcontent {
             margin-top: 5px;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 1.125rem;
           }
           .time {
             margin-top: 20px;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 1rem;
             color: hsla(0, 0%, 49%, 1);
           }
         }
@@ -533,7 +533,7 @@
         .moreHeading {
           color: #000000;
           font-weight: 700;
-          font-size: 32px;
+          font-size: 2rem;
           margin-bottom: 60px;
           width: 100%;
         }
@@ -550,7 +550,7 @@
         height: 53px;
         border-radius: 18px;
         color: hsla(0, 0%, 0%, 1);
-        font-size: 20px;
+        font-size: 1.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -591,7 +591,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 0.9375rem;
                 letter-spacing: 1px;
 
                 .space {
@@ -602,7 +602,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -624,14 +624,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 18px;
+              font-size: 1.125rem;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -639,7 +639,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
@@ -684,7 +684,7 @@
         p {
           text-align: center;
           color: #0f0f0f;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 400;
           text-transform: uppercase;
         }
@@ -731,10 +731,10 @@
             }
           }
           .blogtitle {
-            font-size: 16px;
+            font-size: 1rem;
           }
           .blogcontent {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .time {
             margin-top: 8px;
@@ -750,7 +750,7 @@
       .more {
         margin-top: 10px;
         .moreHeading {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-bottom: 35px;
         }
         .moreWrapper {
@@ -760,7 +760,7 @@
         }
       }
       .loadmorebutton {
-        font-size: 14px;
+        font-size: 0.875rem;
         svg {
           margin-left: 8px;
           width: 10px;
@@ -797,7 +797,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 0.9375rem;
                 letter-spacing: 1px;
 
                 .space {
@@ -808,7 +808,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -830,14 +830,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 18px;
+              font-size: 1.125rem;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -845,7 +845,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
@@ -888,10 +888,10 @@
             }
           }
           .blogtitle {
-            font-size: 16px;
+            font-size: 1rem;
           }
           .blogcontent {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .time {
             margin-top: 8px;
@@ -907,7 +907,7 @@
       .more {
         margin-top: 10px;
         .moreHeading {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-bottom: 35px;
         }
         .moreWrapper {
@@ -918,7 +918,7 @@
         }
       }
       .loadmorebutton {
-        font-size: 14px;
+        font-size: 0.875rem;
         svg {
           margin-left: 8px;
           width: 10px;
@@ -955,7 +955,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 0.9375rem;
                 letter-spacing: 1px;
 
                 .space {
@@ -966,7 +966,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -988,14 +988,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 18px;
+              font-size: 1.125rem;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -1003,7 +1003,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
@@ -1046,10 +1046,10 @@
             }
           }
           .blogtitle {
-            font-size: 16px;
+            font-size: 1rem;
           }
           .blogcontent {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .time {
             margin-top: 8px;
@@ -1065,7 +1065,7 @@
       .more {
         margin-top: 10px;
         .moreHeading {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-bottom: 35px;
         }
         .moreWrapper {
@@ -1076,7 +1076,7 @@
         }
       }
       .loadmorebutton {
-        font-size: 14px;
+        font-size: 0.875rem;
         svg {
           margin-left: 8px;
           width: 10px;
@@ -1113,7 +1113,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 0.9375rem;
                 letter-spacing: 1px;
 
                 .space {
@@ -1124,7 +1124,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -1146,14 +1146,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 18px;
+              font-size: 1.125rem;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -1161,7 +1161,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
@@ -1208,7 +1208,7 @@
       .heading {
         color: #000000;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 2rem;
         margin-bottom: 60px;
       }
       .postsMain {
@@ -1230,7 +1230,7 @@
             .category {
               font-family: "Lexend", sans-serif;
               font-weight: 700;
-              font-size: 16px;
+              font-size: 1rem;
               color: #4166eb;
               text-transform: capitalize;
               margin-right: 10px;
@@ -1239,17 +1239,17 @@
           .blogtitle {
             margin-top: 5px;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 1.375rem;
           }
           .blogcontent {
             margin-top: 5px;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 1.125rem;
           }
           .time {
             margin-top: 20px;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 1rem;
             color: hsla(0, 0%, 49%, 1);
           }
         }
@@ -1265,7 +1265,7 @@
         .moreHeading {
           color: #000000;
           font-weight: 700;
-          font-size: 32px;
+          font-size: 2rem;
           margin-bottom: 60px;
           width: 100%;
         }
@@ -1282,7 +1282,7 @@
         height: 53px;
         border-radius: 18px;
         color: hsla(0, 0%, 0%, 1);
-        font-size: 20px;
+        font-size: 1.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1323,7 +1323,7 @@
                 color: #3d3d3d;
                 display: flex;
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 0.9375rem;
                 letter-spacing: 1px;
 
                 .space {
@@ -1334,7 +1334,7 @@
               .title {
                 margin-top: 10px;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 letter-spacing: 0.8px;
               }
               .preview {
@@ -1356,14 +1356,14 @@
           .categoryHeading {
             margin-top: 10px;
             font-weight: 500;
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-left: 7%;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
           }
           .categoryScroll {
             .category {
-              font-size: 18px;
+              font-size: 1.125rem;
               margin-top: 20px;
               margin-left: 15%;
               cursor: pointer;
@@ -1371,7 +1371,7 @@
             .selectedCat {
               color: #f76160;
               font-weight: 600;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
@@ -1416,7 +1416,7 @@
         p {
           text-align: center;
           color: #0f0f0f;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 400;
           text-transform: uppercase;
         }

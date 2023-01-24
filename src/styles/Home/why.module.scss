@@ -63,7 +63,7 @@
     flex-direction: column;
     color: white;
     .heading {
-      font-size: 46px;
+      font-size: 2.875rem;
       font-weight: 400;
       .highlight {
         position: relative;
@@ -82,7 +82,7 @@
     }
     .subheading {
       margin-top: 40px;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 400;
       width: 80%;
       text-align: center;
@@ -96,10 +96,10 @@
     }
     .textContent {
       .heading {
-        font-size: 36px;
+        font-size: 2.25rem;
       }
       .subheading {
-        font-size: 16px;
+        font-size: 1rem;
       }
     }
   }
@@ -153,7 +153,7 @@
       margin-top: 40px;
 
       .heading {
-        font-size: 36px;
+        font-size: 2.25rem;
         margin-bottom: 15px;
         .highlight {
           position: relative;
@@ -163,7 +163,7 @@
         }
       }
       .subheading {
-        font-size: 16px;
+        font-size: 1rem;
       }
     }
   }

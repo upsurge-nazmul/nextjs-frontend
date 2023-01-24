@@ -19,7 +19,7 @@
     align-items: center;
     .error {
       font-weight: 500;
-      font-size: 15px;
+      font-size: 0.9375rem;
       color: #ff6263;
       text-align: center;
     }
@@ -31,7 +31,7 @@
       width: 100%;
       height: 59px;
       p {
-        font-size: 20px;
+        font-size: 1.25rem;
         border-right: 1px solid #898989;
         width: 50px;
         display: flex;
@@ -59,7 +59,7 @@
     .weakpasstext {
       color: rgb(255, 118, 118);
       margin-bottom: 5px;
-      font-size: 15px;
+      font-size: 0.9375rem;
       width: fit-content;
     }
     .passwordBox {
@@ -113,7 +113,7 @@
           }
           p {
             margin-left: 6px;
-            font-size: 15px;
+            font-size: 0.9375rem;
           }
         }
         .white {
@@ -142,7 +142,7 @@
         font-family: "Lexend", sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: right;
         color: #4166eb;
         transition: all 0.3s ease;
@@ -176,7 +176,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 1.25rem;
       transition: all 0.3s ease;
       margin-top: 22px;
       &:hover {

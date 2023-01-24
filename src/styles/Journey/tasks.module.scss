@@ -5,7 +5,7 @@
   padding: 20px 50px;
   .subheading {
     padding: 20px 0;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
     color: #686869;
   }
@@ -75,19 +75,19 @@
             .taskType {
               background-color: #17d1bc;
               color: #fff;
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 300;
               border-radius: 28px;
               width: fit-content;
               padding: 2px 12px;
             }
             .taskName {
-              font-size: 20px;
+              font-size: 1.25rem;
               font-weight: 400;
               color: #686869;
             }
             .taskDesc {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 300;
               color: #686869;
             }
@@ -102,7 +102,7 @@
               outline: none;
               cursor: pointer;
               border-radius: 14px;
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 300;
               color: #fff;
               width: 100px;
@@ -113,7 +113,7 @@
             }
             .actionButton {
               @extend .commonButton;
-              background-color: #4166EB;
+              background-color: #4166eb;
             }
             .disabledButton {
               @extend .commonButton;
@@ -135,7 +135,7 @@
         justify-content: center;
         align-items: center;
         .reward {
-          font-size: 16px;
+          font-size: 1rem;
           background-color: #fdcc03;
           color: #fff;
           border-radius: 14px;
@@ -182,7 +182,7 @@
     max-width: calc(95vw - 80px);
     .subheading {
       padding: 5px 0;
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
       color: #686869;
     }
@@ -261,13 +261,13 @@
                 padding: 2px 12px;
               }
               .taskName {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 400;
                 color: #686869;
                 padding: 5px 0;
               }
               .taskDesc {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 300;
                 color: #686869;
               }
@@ -293,7 +293,7 @@
               }
               .actionButton {
                 @extend .commonButton;
-                background-color: #4166EB;
+                background-color: #4166eb;
               }
               .disabledButton {
                 @extend .commonButton;
@@ -315,7 +315,7 @@
           justify-content: center;
           align-items: center;
           .reward {
-            font-size: 16px;
+            font-size: 1rem;
             background-color: #fdcc03;
             color: #fff;
             border-radius: 14px;

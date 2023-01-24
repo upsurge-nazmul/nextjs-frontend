@@ -138,14 +138,14 @@
       .heading {
         margin-top: 45px;
         font-weight: 700;
-        font-size: 48px;
+        font-size: 3rem;
         color: #000000;
         text-align: center;
       }
       .subheading {
         margin-top: 1vh;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 1.125rem;
         line-height: 28px;
         text-align: center;
         font-feature-settings: "salt" on, "liga" off;
@@ -189,14 +189,14 @@
           flex-direction: column;
         }
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
           margin-top: 20px;
           width: 100%;
           text-align: center;
         }
         .detail {
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
           color: rgba(130, 130, 130, 1);
           width: 100%;
@@ -214,7 +214,7 @@
           border-radius: 6px;
           background-color: #b4b4b4;
           color: white;
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: auto;
           cursor: pointer;
           svg {
@@ -243,7 +243,7 @@
           border-radius: 6px;
           background-color: #4266eb;
           color: white;
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: auto;
           cursor: pointer;
           svg {
@@ -374,21 +374,21 @@
       padding-top: 15px;
       .pathSection {
         .path {
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
       .headingSection {
         margin-top: 20px;
         .heading {
           font-weight: 700;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin-bottom: 10px;
           width: 100%;
         }
         .subheading {
           margin-top: 0;
           font-weight: 400;
-          font-size: 12px;
+          font-size: 0.75rem;
           width: 100%;
         }
       }
@@ -412,7 +412,7 @@
           img {
           }
           .calccardtitle {
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
       }
