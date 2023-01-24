@@ -5,8 +5,8 @@ export default function BasicCard({ data, height = "15vh", width = "15vw" }) {
     <div
       className={styles.card}
       style={{
-        height: height,
-        minWidth: width,
+        maxHeight: height,
+        maxWidth: width,
       }}
     >
       <img src={data.image} alt={data.name} className={styles.banner} />
