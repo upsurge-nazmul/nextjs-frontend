@@ -29,7 +29,7 @@ export const TEAM_DATA = {
     {
       name: "Valan Costa",
       img_url:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
+        "/images/team/valan.jpeg",
       position: "Gaming",
     },
     {
@@ -78,7 +78,7 @@ export const TEAM_DATA = {
       link: "https://www.linkedin.com/in/garima-g-b15b221a/",
     },
     {
-      name: "Aarti Gadeok",
+      name: "Aarti Gadeock",
       img_url:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
       position: "Learning",
@@ -164,7 +164,7 @@ export const TEAM_DATA = {
       position: "Board of Advisors",
     },
     {
-      name: "Rishi Aggarwa",
+      name: "Rishi Aggarwal",
       img_url:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
       position: "Board of Advisors",
