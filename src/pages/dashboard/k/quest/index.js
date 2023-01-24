@@ -8,6 +8,7 @@ import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPa
 import styles from "../../../../styles/knowledgeQuest/quest.module.scss";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 import HeadArea from "../../../../components/ChildQuest/HeadArea";
+import MapHeadArea from "../../../../components/ChildQuest/MapHeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
 import PageTitle from "../../../../components/PageTitle";
@@ -55,12 +56,17 @@ export default function KnowledgeQuest({ userData, questData }) {
             tab={tab}
             handleCardClick={handleCardClick}
           /> */}
-           <MainSection
+            <MapHeadArea 
+          data={questData}
+          tab={tab}
+          handleCardClick={handleCardClick}
+          />
+           {/* <MainSection
             data={questData}
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
-          /> 
+          />  */}
         </div>
       </div>
     </div>
