@@ -20,7 +20,7 @@
     border-radius: 8px;
     color: white;
     height: 65%;
-    font-size: 1rem;
+    font-size: 16px;
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -50,13 +50,13 @@
     text-align: flex-start;
 
     .heading {
-      font-size: 1rem;
+      font-size: 16px;
       text-transform: capitalize;
       font-weight: 500;
       margin-bottom: 5px;
     }
     .subheading {
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
     }
@@ -75,7 +75,7 @@
     margin-left: auto;
     margin-right: auto;
     .name {
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 400;
     }
     .progressBar {
@@ -138,7 +138,7 @@
       cursor: pointer;
       padding: 0 8px;
       transition: all 0.3s ease;
-      font-size: 0.75rem;
+      font-size: 12px;
       svg {
         margin-right: 10px;
       }
@@ -155,7 +155,7 @@
       margin-left: 10px;
       margin-right: 10px;
       .heading {
-        font-size: 0.75rem;
+        font-size: 12px;
         text-transform: capitalize;
         font-weight: 500;
         margin-bottom: 5px;
@@ -168,7 +168,7 @@
     }
     .courseProgression {
       .name {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 400;
       }
       .progressBar {

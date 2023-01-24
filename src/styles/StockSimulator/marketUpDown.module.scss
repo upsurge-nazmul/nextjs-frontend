@@ -20,7 +20,7 @@ $sell-color: #eb5757;
       width: 100%;
       justify-content: space-between;
       .title {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -36,7 +36,7 @@ $sell-color: #eb5757;
       }
     }
     .description {
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 400;
       color: $dark-font-color;
       padding-top: 10px;
@@ -72,7 +72,7 @@ $sell-color: #eb5757;
           padding: 10px 12px;
           color: #fff;
           border-radius: 12px;
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 400;
           border: none;
           .name {
@@ -83,7 +83,7 @@ $sell-color: #eb5757;
             height: 24px;
           }
           svg {
-            font-size: 1.5rem;
+            font-size: 24px;
           }
         }
       }
@@ -128,7 +128,7 @@ $sell-color: #eb5757;
       .or {
         text-align: center;
         padding: 8px;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 400;
       }
     }
@@ -144,7 +144,7 @@ $sell-color: #eb5757;
     .result {
       width: 100%;
       text-align: center;
-      font-size: 2rem;
+      font-size: 32px;
       font-weight: 700;
       padding: 6px 0;
     }
@@ -166,17 +166,17 @@ $sell-color: #eb5757;
       gap: 80px;
       .common {
         .title {
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 500;
           color: $light-font-color;
           padding: 6px 0;
         }
         .name {
-          font-size: 0.875rem;
+          font-size: 14px;
           font-weight: 600;
           svg {
             color: inherit;
-            font-size: 0.875rem;
+            font-size: 14px;
             height: 14px;
             width: 14px;
             margin-right: 5px;
@@ -226,7 +226,7 @@ $sell-color: #eb5757;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -242,7 +242,7 @@ $sell-color: #eb5757;
         }
       }
       .description {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -278,7 +278,7 @@ $sell-color: #eb5757;
             padding: 10px 12px;
             color: #fff;
             border-radius: 12px;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             border: none;
             .name {
@@ -290,7 +290,7 @@ $sell-color: #eb5757;
               height: 24px;
             }
             svg {
-              font-size: 1.5rem;
+              font-size: 24px;
             }
           }
         }
@@ -335,7 +335,7 @@ $sell-color: #eb5757;
         .or {
           text-align: center;
           padding: 8px;
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 400;
         }
       }

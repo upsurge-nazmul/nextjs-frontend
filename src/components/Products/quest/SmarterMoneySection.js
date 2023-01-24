@@ -23,6 +23,7 @@ const SmarterMoneySection = () => {
   return (
     <div className={styles.container}>
       <h2>Get Smarter About Money</h2>
+      <br /><br />
       <div className={styles.cardWrap}>
         {data.map((item, index) => (
           <div key={index} className={styles.card}>

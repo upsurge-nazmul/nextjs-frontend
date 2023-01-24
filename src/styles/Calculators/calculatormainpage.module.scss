@@ -139,14 +139,14 @@
       .heading {
         margin-top: 45px;
         font-weight: 700;
-        font-size: 3rem;
+        font-size: 48px;
         color: #000000;
         text-align: center;
       }
       .subheading {
         margin-top: 1vh;
         font-weight: 400;
-        font-size: 1.125rem;
+        font-size: 18px;
         line-height: 32px;
         text-align: center;
         font-feature-settings: "salt" on, "liga" off;
@@ -185,14 +185,14 @@
         transition: all 0.3s ease;
         padding: 20px;
         .calccardtitle {
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 500;
           width: 100%;
           text-align: left;
         }
         .calccardsubtitle {
           margin-top: 10px;
-          font-size: 0.75rem;
+          font-size: 12px;
           font-weight: 400;
           width: 100%;
           text-align: left;
@@ -313,14 +313,14 @@
           transition: all 0.3s ease;
           padding: 20px;
           .calccardtitle {
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: 500;
             width: 100%;
             text-align: left;
           }
           .calccardsubtitle {
             margin-top: 10px;
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 400;
             width: 100%;
             text-align: left;
@@ -361,21 +361,21 @@
       padding-top: 15px;
       .pathSection {
         .path {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
       }
       .headingSection {
         margin-top: 20px;
         .heading {
           font-weight: 700;
-          font-size: 1.25rem;
+          font-size: 20px;
           margin-bottom: 10px;
           width: 100%;
         }
         .subheading {
           margin-top: 0;
           font-weight: 400;
-          font-size: 0.75rem;
+          font-size: 12px;
           line-height: 22px;
           width: 100%;
         }
@@ -400,7 +400,7 @@
           img {
           }
           .calccardtitle {
-            font-size: 1rem;
+            font-size: 16px;
           }
         }
       }

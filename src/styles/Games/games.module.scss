@@ -23,7 +23,7 @@
       margin-top: 3vh;
       width: 100%;
       .heading {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-family: "Lexend", sans-serif;
         font-weight: 700;
         width: 100%;
@@ -53,7 +53,7 @@
           display: flex;
           flex-direction: column;
           flex: 1;
-          font-size: 1.125rem;
+          font-size: 18px;
           font-family: "Lexend", sans-serif;
           overflow: hidden;
           align-items: center;
@@ -63,7 +63,7 @@
           }
           .description {
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 16px;
             color: #4a4a4a;
             margin-top: 5px;
             overflow: auto;
@@ -78,7 +78,7 @@
           max-width: 138px;
           min-width: 70px;
           height: 41px;
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 500;
           color: white;
           display: flex;
@@ -98,12 +98,12 @@
         flex: 2;
         .heading {
           font-weight: 600;
-          font-size: 1.375rem;
+          font-size: 22px;
         }
         .details {
           margin-top: 1vh;
           font-weight: 400;
-          font-size: 0.9375rem;
+          font-size: 15px;
         }
         .startButton {
           width: 150px;
@@ -170,14 +170,14 @@
           align-items: center;
           flex-direction: column;
           .timeleft {
-            font-size: 0.9375rem;
+            font-size: 15px;
             font-weight: 600;
             width: 100px;
             text-align: center;
           }
           .timer {
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             width: 100px;
             font-weight: 600;
             color: rgb(255, 94, 94);
@@ -195,7 +195,7 @@
             border-radius: 8px;
             color: rgb(243, 243, 243);
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 500;
             padding: 10px;
           }
@@ -224,7 +224,7 @@
       flex-direction: column;
       .heading {
         color: black;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 500;
         text-align: center;
       }
@@ -235,7 +235,7 @@
         color: #17d1bc;
       }
       .pointsdes {
-        font-size: 2.25rem;
+        font-size: 36px;
         font-weight: 500;
         text-align: center;
       }
@@ -244,7 +244,7 @@
         border-radius: 14px;
         padding: 10px 20px;
         color: white;
-        font-size: 1rem;
+        font-size: 16px;
         width: 244px;
         text-align: center;
         height: 41px;
@@ -277,7 +277,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 500;
     color: white;
   }
@@ -302,10 +302,10 @@
       padding-right: 7%;
       .pathSection {
         .path {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
         .arrow {
-          font-size: 0.75rem;
+          font-size: 12px;
         }
       }
       .gameCardsHolder {
@@ -319,7 +319,7 @@
           .text {
             margin-top: 0px;
             .name {
-              font-size: 0.75rem;
+              font-size: 12px;
             }
             .description {
               font-size: 10px;
@@ -329,7 +329,7 @@
             margin-top: 5px;
             width: 90%;
             border-radius: 8px;
-            font-size: 0.75rem;
+            font-size: 12px;
             max-height: 40px;
             height: 40px;
             min-width: none;
@@ -344,12 +344,12 @@
           width: 100%;
           .heading {
             font-weight: 600;
-            font-size: 0.9375rem;
+            font-size: 15px;
           }
           .details {
             margin-top: 5px;
             font-weight: 400;
-            font-size: 0.75rem;
+            font-size: 12px;
           }
           .startButton {
             width: 100px;
@@ -362,7 +362,7 @@
               width: 100px;
               height: 30px;
               margin-top: 10px;
-              font-size: 0.75rem;
+              font-size: 12px;
             }
           }
         }
@@ -380,11 +380,11 @@
             align-items: flex-start;
             flex-direction: column;
             .timeleft {
-              font-size: 0.75rem;
+              font-size: 12px;
               text-align: left;
             }
             .timer {
-              font-size: 0.875rem;
+              font-size: 14px;
               text-align: left;
               margin-top: 5px;
             }
@@ -393,7 +393,7 @@
           .questionsleft {
             margin-top: 0px;
             .current {
-              font-size: 0.75rem;
+              font-size: 12px;
               width: 90px;
               padding: 7px;
             }
@@ -421,7 +421,7 @@
             }
           }
           .question {
-            font-size: 1rem;
+            font-size: 16px;
             line-height: 25px;
             padding: 10px;
             width: 100%;
@@ -438,7 +438,7 @@
               width: 100%;
               .text {
                 text-align: center;
-                font-size: 0.875rem;
+                font-size: 14px;
                 padding: 10px;
               }
             }
@@ -466,13 +466,13 @@
           padding-top: 20px;
 
           .heading {
-            font-size: 1.25rem;
+            font-size: 20px;
             margin-bottom: 20px;
             font-weight: 500;
             color: rgb(58, 58, 58);
           }
           .data {
-            font-size: 0.875rem;
+            font-size: 14px;
             margin-bottom: 10px;
           }
           .total {

@@ -19,7 +19,7 @@
       color: #4166eb;
       margin: 5px 0;
       font-family: "Lexend", sans-serif;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 700;
       text-align: center;
       width: 100%;
@@ -29,13 +29,13 @@
     flex: 1;
     .text {
       .title {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 700;
         margin-bottom: 10px;
       }
       .msg {
         color: rgba(144, 144, 144, 1);
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
       }
       margin-bottom: 20px;

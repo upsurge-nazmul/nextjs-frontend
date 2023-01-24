@@ -46,17 +46,17 @@
             height: 64px;
             color: rgba(106, 106, 106, 1);
             .head1 {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 400;
               margin-left: 12%;
             }
             .head2 {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 400;
               margin-left: 16.5%;
             }
             .head3 {
-              font-size: 0.75rem;
+              font-size: 12px;
               margin-left: 8%;
               font-weight: 400;
             }
@@ -123,7 +123,7 @@
             background: #17d1bc;
             border-radius: 8px;
             color: white;
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: 500;
             height: 63px;
             margin-right: 40px;
@@ -136,7 +136,7 @@
           }
           .subheading {
             color: rgba(157, 157, 157, 1);
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 500;
             text-align: center;
             margin-top: 12px;
@@ -215,7 +215,7 @@
           padding: 0 10px 0 25px;
           .pendingChoresSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
             .wrapper {
               padding: 0 10px 10px 0px;
@@ -228,7 +228,7 @@
             flex-direction: column;
             .headingWrapper {
               .heading {
-                font-size: 1.375rem;
+                font-size: 22px;
                 align-items: center;
                 margin-right: 25px;
               }
@@ -257,7 +257,7 @@
               }
             }
             .button {
-              font-size: 1rem;
+              font-size: 16px;
               font-weight: 500;
               height: 53px;
             }
@@ -359,7 +359,7 @@
           padding: 0 10px 0 20px;
           .pendingChoresSection {
             .heading {
-              font-size: 1rem;
+              font-size: 16px;
             }
             .wrapper {
               padding: 0 5px 0 0;
@@ -368,7 +368,7 @@
           .choreSection {
             .headingWrapper {
               .heading {
-                font-size: 1rem;
+                font-size: 16px;
                 margin-right: 15px;
               }
             }
@@ -383,7 +383,7 @@
             width: 100%;
             margin-top: 40px;
             .heading {
-              font-size: 1rem;
+              font-size: 16px;
             }
             .button {
               height: 45px;

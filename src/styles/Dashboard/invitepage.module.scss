@@ -7,7 +7,7 @@
   .error {
     margin: 0 40px;
     color: #f4f5f7;
-    font-size: 1rem;
+    font-size: 16px;
     padding: 10px 20px;
     border-radius: 12px;
     background-color: #ff6263;
@@ -56,7 +56,7 @@
   .invitepage {
     .error {
       margin: 0 25px;
-      font-size: 0.875rem;
+      font-size: 14px;
       background-color: #ff6263;
     }
     .contentWrapper {
@@ -72,7 +72,7 @@
           padding: 0 10px 0 25px;
           .pendingChoresSection {
             .heading {
-              font-size: 1.375rem;
+              font-size: 22px;
             }
             .wrapper {
               padding: 0 10px 10px 0px;
@@ -85,7 +85,7 @@
             flex-direction: column;
             .headingWrapper {
               .heading {
-                font-size: 1.375rem;
+                font-size: 22px;
                 align-items: center;
                 margin-right: 25px;
               }
@@ -113,7 +113,7 @@
               }
             }
             .button {
-              font-size: 1rem;
+              font-size: 16px;
               font-weight: 500;
               height: 53px;
             }
@@ -172,7 +172,7 @@
             width: 100%;
             margin-top: 15px;
             .heading {
-              font-size: 1.125rem;
+              font-size: 18px;
               svg {
                 margin-left: 5px;
                 width: 15px;
@@ -218,7 +218,7 @@
             margin-top: 0px;
             .heading {
               font-weight: 500;
-              font-size: 1.125rem;
+              font-size: 18px;
               color: rgba(87, 88, 128, 1);
               display: flex;
               align-items: center;
@@ -236,7 +236,7 @@
           }
           .pendingChoresSection {
             .heading {
-              font-size: 1rem;
+              font-size: 16px;
             }
             .wrapper {
               padding: 0 5px 0 0;
@@ -245,7 +245,7 @@
           .choreSection {
             .headingWrapper {
               .heading {
-                font-size: 1rem;
+                font-size: 16px;
                 margin-right: 15px;
               }
             }
@@ -260,7 +260,7 @@
             width: 100%;
             margin-top: 40px;
             .heading {
-              font-size: 1rem;
+              font-size: 16px;
             }
             .button {
               height: 45px;

@@ -17,7 +17,7 @@
       line-height: 20px;
     }
     .heading {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
     }
     .jasper {
@@ -53,11 +53,11 @@
       background-color: white;
     }
     .maintext {
-      font-size: clamp(14px, 1.4vw, 20px);
+      font-size: clamp(14px,1.4vw,20px);
       font-weight: 600;
     }
     .subtext {
-      font-size: clamp(12px, 1vw, 16px);
+      font-size: clamp(12px,1vw,16px);
       margin-top: 2%;
     }
   }

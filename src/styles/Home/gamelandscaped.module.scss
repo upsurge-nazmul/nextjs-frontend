@@ -31,7 +31,7 @@
   .listelement {
     margin-bottom: 5px;
     margin-left: 20px;
-    font-size: 1rem;
+    font-size: 16px;
   }
   .background {
     background-color: rgba(0, 0, 0, 0.315);
@@ -76,15 +76,15 @@
     }
     .subheading {
       margin-bottom: 5px;
-      font-size: 1rem;
+      font-size: 16px;
     }
     .para {
       margin-bottom: 20px;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 400;
     }
     .details {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 400;
       flex: 1;
       overflow-y: auto;
@@ -105,7 +105,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: 500;
-      font-size: 1.25rem;
+      font-size: 20px;
       transition: all 0.3s ease;
       &:hover {
         background-color: #ffffff;
@@ -140,7 +140,7 @@
       right: 2%;
       top: 15%;
       .icon {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
     }
     .background {
@@ -168,7 +168,7 @@
           color: black;
           margin-bottom: 10px;
           cursor: pointer;
-          font-size: 0.75rem;
+          font-size: 12px;
           &:hover {
             span {
               transition: all 0.3s ease;
@@ -178,7 +178,7 @@
         }
       }
       .heading {
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 700;
         margin: 20px 0;
         &:first-child {
@@ -188,15 +188,15 @@
 
       .subheading {
         margin-bottom: 5px;
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       .para {
         margin-bottom: 20px;
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 400;
       }
       .details {
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
         flex: 1;
         overflow-y: auto;
@@ -218,7 +218,7 @@
         align-items: center;
         cursor: pointer;
         font-weight: 500;
-        font-size: 1.25rem;
+        font-size: 20px;
         transition: all 0.3s ease;
         &:hover {
           background-color: #ffffff;

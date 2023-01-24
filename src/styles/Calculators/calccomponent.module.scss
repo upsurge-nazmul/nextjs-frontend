@@ -15,7 +15,7 @@
   .error {
     margin-top: 1vh;
     font-weight: 400;
-    font-size: 0.9375rem;
+    font-size: 15px;
     color: #ff3a3a;
     line-height: 22px;
   }
@@ -69,7 +69,7 @@
         color: white;
         justify-content: center;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
         height: 48px;
         background: #a6a6a6;
@@ -96,11 +96,11 @@
 
     .heading {
       font-weight: 400;
-      font-size: 0.875rem;
+      font-size: 14px;
       color: #3d3d3d;
     }
     .result {
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 500;
     }
     .submitButton {
@@ -135,7 +135,7 @@
       top: 52%;
       transform: translate(-55%);
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-family: "Lexend", sans-serif;
       width: 150px;
       .main {
@@ -143,7 +143,7 @@
       }
       .se {
         text-align: center;
-        font-size: 1.125rem;
+        font-size: 18px;
       }
     }
     .chartContainer {
@@ -205,11 +205,11 @@
 
     .heading {
       font-weight: 400;
-      font-size: 0.875rem;
+      font-size: 14px;
       color: $d-text1;
     }
     .result {
-      font-size: 1.125rem;
+      font-size: 18px;
       color: $d-text2;
       font-weight: 500;
     }
@@ -245,7 +245,7 @@
       top: 52%;
       transform: translate(-55%);
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-family: "Lexend", sans-serif;
       width: 150px;
       .main {
@@ -253,7 +253,7 @@
       }
       .se {
         text-align: center;
-        font-size: 1.125rem;
+        font-size: 18px;
       }
     }
     .chartContainer {
@@ -280,11 +280,11 @@
 
       .heading {
         font-weight: 400;
-        font-size: 0.875rem;
+        font-size: 14px;
         color: #3d3d3d;
       }
       .result {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
       }
     }
@@ -328,7 +328,7 @@
         top: 52%;
         transform: translate(-55%);
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-family: "Lexend", sans-serif;
         width: 150px;
         .main {
@@ -336,7 +336,7 @@
         }
         .se {
           text-align: center;
-          font-size: 1.125rem;
+          font-size: 18px;
         }
       }
       .chartContainer {
@@ -373,7 +373,7 @@
         width: 120px;
         height: 40px;
         margin: 20px 0;
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 500;
       }
       .inputBlockSip {
@@ -385,7 +385,7 @@
           display: flex;
 
           p {
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 500;
             margin-left: 5px;
           }
@@ -397,11 +397,11 @@
 
       .heading {
         font-weight: 400;
-        font-size: 0.75rem;
+        font-size: 12px;
         color: #3d3d3d;
       }
       .result {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
       }
     }
@@ -442,7 +442,7 @@
         width: 120px;
         height: 40px;
         margin: 20px 0;
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 500;
       }
       .inputBlockSip {
@@ -454,7 +454,7 @@
           display: flex;
 
           p {
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 500;
             margin-left: 5px;
           }
@@ -466,11 +466,11 @@
 
       .heading {
         font-weight: 400;
-        font-size: 0.75rem;
+        font-size: 12px;
         color: #3d3d3d;
       }
       .result {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
       }
     }
@@ -510,7 +510,7 @@
         width: 120px;
         height: 40px;
         margin: 20px 0;
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 500;
       }
       .inputBlockSip {
@@ -522,7 +522,7 @@
           display: flex;
 
           p {
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 500;
             margin-left: 5px;
           }
@@ -534,11 +534,11 @@
 
       .heading {
         font-weight: 400;
-        font-size: 0.75rem;
+        font-size: 12px;
         color: #3d3d3d;
       }
       .result {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
       }
     }
@@ -578,7 +578,7 @@
         width: 120px;
         height: 40px;
         margin: 20px 0;
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 500;
       }
       .inputBlockSip {
@@ -590,7 +590,7 @@
           display: flex;
 
           p {
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 500;
             margin-left: 5px;
           }
@@ -602,11 +602,11 @@
 
       .heading {
         font-weight: 400;
-        font-size: 0.75rem;
+        font-size: 12px;
         color: #3d3d3d;
       }
       .result {
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
       }
     }

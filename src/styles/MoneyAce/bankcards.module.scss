@@ -94,16 +94,16 @@
       }
       .head {
         font-family: "Fira Sans", sans-serif;
-        font-size: 0.875rem;
+        font-size: 14px;
       }
       .balance {
-        font-size: 1.125rem;
+        font-size: 18px;
         margin-top: 10px;
         font-family: "Fira Sans", sans-serif;
         font-weight: 500;
       }
       .number {
-        font-size: 1.125rem;
+        font-size: 18px;
         margin-top: 30px;
         letter-spacing: 4px;
         font-family: "Fira Sans", sans-serif;
@@ -118,12 +118,12 @@
           display: flex;
           flex-direction: column;
           .heading {
-            font-size: 0.75rem;
+            font-size: 12px;
             font-family: "Fira Sans", sans-serif;
             color: rgb(158, 158, 158);
           }
           .value {
-            font-size: 0.75rem;
+            font-size: 12px;
             margin-top: 5px;
             font-family: "Fira Sans", sans-serif;
             text-transform: capitalize;
@@ -144,7 +144,7 @@
       border: none;
       border: 1px solid rgb(119, 119, 119);
       font-family: "Fira Sans", sans-serif;
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 800;
       color: white;
       padding: 5px 20px;
@@ -156,7 +156,7 @@
       margin: 0 auto;
       background: rgb(255, 213, 0);
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 16px;
       background: linear-gradient(
         180deg,
         rgba(255, 213, 0, 1) 0%,
@@ -172,7 +172,7 @@
       p {
         font-family: "Fira Sans", sans-serif;
         font-weight: 800;
-        font-size: 1.125rem;
+        font-size: 18px;
         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
       }
       &:hover {
@@ -202,7 +202,7 @@
       .btn {
         background: rgb(255, 213, 0);
         font-weight: 900;
-        font-size: 1rem;
+        font-size: 16px;
         margin-top: 20px;
         color: white;
         width: 100%;
@@ -257,16 +257,16 @@
         }
         .head {
           font-family: "Fira Sans", sans-serif;
-          font-size: 0.875rem;
+          font-size: 14px;
         }
         .balance {
-          font-size: 1.125rem;
+          font-size: 18px;
           margin-top: 10px;
           font-family: "Fira Sans", sans-serif;
           font-weight: 500;
         }
         .number {
-          font-size: 1.125rem;
+          font-size: 18px;
           margin-top: 30px;
           letter-spacing: 4px;
           font-family: "Fira Sans", sans-serif;
@@ -281,12 +281,12 @@
             display: flex;
             flex-direction: column;
             .heading {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-family: "Fira Sans", sans-serif;
               color: rgb(158, 158, 158);
             }
             .value {
-              font-size: 0.75rem;
+              font-size: 12px;
               margin-top: 5px;
               font-family: "Fira Sans", sans-serif;
               text-transform: capitalize;
@@ -307,7 +307,7 @@
         border: none;
         border: 1px solid rgb(119, 119, 119);
         font-family: "Fira Sans", sans-serif;
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 800;
         color: white;
         padding: 5px 20px;
@@ -319,7 +319,7 @@
         margin: 0 auto;
         background: rgb(255, 213, 0);
         font-weight: 900;
-        font-size: 1rem;
+        font-size: 16px;
         background: linear-gradient(
           180deg,
           rgba(255, 213, 0, 1) 0%,
@@ -335,7 +335,7 @@
         p {
           font-family: "Fira Sans", sans-serif;
           font-weight: 800;
-          font-size: 1.125rem;
+          font-size: 18px;
           filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.514));
         }
         &:hover {

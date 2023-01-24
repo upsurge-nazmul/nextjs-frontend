@@ -56,8 +56,13 @@ function QuestCard({ data, typeProps, handleCardClick, locked = false }) {
       {data ? (
         <div
           className={styles.questCard}
-          onClick={() => handleCardClick(data.questId)}
+          onClick={locked ? () => {} : () => handleCardClick(data.questId)}
         >
+          {locked && (
+            <div className={styles.locked}>
+              <LockSvg className={styles.lockIcon} />
+            </div>
+          )}
           <div
             className={styles.cardHeader}
             style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
@@ -69,7 +74,7 @@ function QuestCard({ data, typeProps, handleCardClick, locked = false }) {
             </div>
             <div className={styles.imageWrapper}>
               <Image
-                src={require(`../../assets/kq/${data.questId}.png`)}
+                src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
                 alt={data.questId}
                 className={styles.img}
               />

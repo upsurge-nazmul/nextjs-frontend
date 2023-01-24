@@ -100,7 +100,7 @@
 
     .label {
       font-family: "Lexend", sans-serif;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 500;
       margin-right: 20px;
     }
@@ -122,7 +122,7 @@
         padding: 5px;
         text-align: center;
         flex: 1;
-        font-size: 0.875rem;
+        font-size: 14px;
         font-family: "Lexend", sans-serif;
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
@@ -254,14 +254,14 @@
       align-items: center;
       justify-content: space-between;
       .label {
-        font-size: 1rem;
+        font-size: 16px;
       }
       .signAndValue {
         width: fit-content;
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        font-size: 0.75rem;
+        font-size: 12px;
         padding: 10px;
         input {
           width: 100%;
@@ -270,7 +270,7 @@
           border-radius: 8px;
           padding: 0px;
           margin-left: 0px;
-          font-size: 0.875rem;
+          font-size: 14px;
           margin-right: 0px;
         }
       }

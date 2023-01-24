@@ -36,7 +36,6 @@ import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
 import EmailVerificationPending from "../../../components/EmailVerificationPending";
 import EditProfilePending from "../../../components/EditProfilePending";
-import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
 
 export default function ChildActivity({
   pendingchores,
@@ -186,8 +185,7 @@ export default function ChildActivity({
           setShowToolTip={setShowToolTip}
           showToolTip={showToolTip}
         />
-          
-        
+
         {showtodo && (
           <TodoList
             data={tododata.list}
@@ -207,9 +205,6 @@ export default function ChildActivity({
           )}
           {userdatafromserver && !userdatafromserver.profile_completed && (
             <EditProfilePending />
-          )}
-          {userdatafromserver && !userdatafromserver.phone_verified && (
-            <PhoneVerificationPending />
           )}
           <Journey />
           <div className={styles.contentArea}>

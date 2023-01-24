@@ -33,6 +33,7 @@ export const MainContextProider = ({ children }) => {
     height: 720,
   });
   const [theme, setTheme] = useState("light");
+  const [skipActive,setskipActive] = useState(true);
   const router = useRouter();
   // useEffect(() => {
   //   setTheme(
@@ -177,6 +178,8 @@ export const MainContextProider = ({ children }) => {
         setwidthHeight,
         theme,
         setTheme,
+        skipActive,
+        setskipActive,
       }}
     >
       {children}

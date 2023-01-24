@@ -20,18 +20,18 @@
       align-content: space-around;
       align-items: flex-start;
       .title {
-        font-size: 2.25rem;
+        font-size: 36px;
         font-weight: 400;
         padding: 20px 0 5px;
       }
       .description {
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 300;
       }
       .buttonArea {
         padding: 10px 0;
         .button {
-          background-color: #4166eb;
+          background-color: #4166EB;
           color: #fff;
           border: 2px solid #ffffff;
           outline: none;
@@ -58,7 +58,7 @@
       min-width: 8rem;
       .reward {
         text-align: center;
-        border: 2px solid rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(255, 255, 255, .6);
         padding: 0.5rem;
         border-radius: 10px;
         .svg {
@@ -145,18 +145,18 @@
         align-content: space-around;
         align-items: flex-start;
         .title {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 400;
           padding: 20px 0 5px;
         }
         .description {
-          font-size: 0.75rem;
+          font-size: 12px;
           font-weight: 300;
         }
         .buttonArea {
           padding: 10px 0;
           .button {
-            background-color: #4166eb;
+            background-color: #4166EB;
             color: #fff;
             border: 2px solid #ffffff;
             outline: none;

@@ -47,14 +47,14 @@
       font-weight: 600;
     }
     .subheading {
-      font-size: 1rem;
+      font-size: 16px;
       margin-top: 10px;
     }
     .err {
       color: hsl(0, 75%, 65%);
       width: 100%;
       margin-top: 10px;
-      font-size: 0.875rem;
+      font-size: 14px;
     }
     .flexTop {
       display: flex;
@@ -75,7 +75,7 @@
         justify-content: center;
         border-radius: 8px;
         color: white;
-        font-size: 0.875rem;
+        font-size: 14px;
         cursor: pointer;
       }
       .reschedule {
@@ -103,11 +103,11 @@
           height: 100%;
           display: flex;
           align-items: center;
-          font-size: 1rem;
+          font-size: 16px;
         }
         input {
           height: 49px;
-          font-size: 1.125rem;
+          font-size: 18px;
           font-family: "Lexend", sans-serif;
           font-weight: 500;
           border: 1px solid #898989;
@@ -130,7 +130,7 @@
         justify-content: center;
         border-radius: 8px;
         color: white;
-        font-size: 0.875rem;
+        font-size: 14px;
         cursor: pointer;
       }
     }

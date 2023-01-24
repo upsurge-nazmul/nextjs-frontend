@@ -139,7 +139,7 @@
                 font-weight: 500;
                 margin-top: 0px;
                 text-transform: capitalize;
-                font-size: 1rem;
+                font-size: 16px;
                 margin-left: 10px;
               }
             }
@@ -148,7 +148,7 @@
             font-weight: 500;
             margin-top: 20px;
             text-transform: capitalize;
-            font-size: 1.25rem;
+            font-size: 20px;
           }
         }
         .milestonesSection {
@@ -188,7 +188,7 @@
               font-weight: 800;
             }
             .subheading {
-              font-size: 1.125rem;
+              font-size: 18px;
               padding: 10px 20px;
               line-height: 22px;
               margin-top: 31px;
@@ -235,7 +235,7 @@
               }
               .section {
                 font-weight: 500;
-                font-size: 1.125rem;
+                font-size: 18px;
               }
               &:first-child {
                 background-color: #4166eb;
@@ -324,17 +324,17 @@
             height: 64px;
             color: rgba(106, 106, 106, 1);
             .head1 {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 400;
               margin-left: 12%;
             }
             .head2 {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 400;
               margin-left: 16.5%;
             }
             .head3 {
-              font-size: 0.75rem;
+              font-size: 12px;
               margin-left: 8%;
               font-weight: 400;
             }
@@ -365,7 +365,7 @@
           width: 100%;
           flex-direction: column;
 
-          background-color: #4166eb;
+          background-color: #4166EB;
           color: white;
           border-radius: 12px;
           flex: 1 1;
@@ -508,13 +508,13 @@
             padding: 0 10px 0 20px;
             .pendingChoresSection {
               .heading {
-                font-size: 1rem;
+                font-size: 16px;
               }
             }
             .choreSection {
               .headingWrapper {
                 .heading {
-                  font-size: 1rem;
+                  font-size: 16px;
                   margin-right: 15px;
                 }
               }
@@ -532,7 +532,7 @@
               width: 100%;
               margin-top: 40px;
               .heading {
-                font-size: 1rem;
+                font-size: 16px;
               }
               .button {
                 height: 45px;

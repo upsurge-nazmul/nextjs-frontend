@@ -1,4 +1,4 @@
-$qn-font-size: 1.25rem;
+$qn-font-size: 20px;
 
 .quizSection {
   padding: 30px 20px;
@@ -49,7 +49,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -75,7 +75,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -119,7 +119,7 @@ $qn-font-size: 1.25rem;
           padding: 10px;
           margin: 10px 0;
           cursor: pointer;
-          font-size: 0.875rem;
+          font-size: 14px;
           background-color: #f4f4f4;
           color: #333;
           border: 1px solid #f4f4f4;
@@ -159,7 +159,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -185,7 +185,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -275,7 +275,7 @@ $qn-font-size: 1.25rem;
           }
         }
         .textOption {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 700;
           background-color: #f4f4f4;
           color: #333;
@@ -369,7 +369,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -395,7 +395,7 @@ $qn-font-size: 1.25rem;
           border: none;
           padding: 10px 20px;
           background-color: transparent;
-          font-size: 1.5rem;
+          font-size: 24px;
           cursor: pointer;
           color: #333;
           margin: 0 10px;
@@ -439,7 +439,7 @@ $qn-font-size: 1.25rem;
           padding: 10px;
           margin: 10px 0;
           cursor: pointer;
-          font-size: 0.875rem;
+          font-size: 14px;
           background-color: #f4f4f4;
           color: #333;
           border: 1px solid #f4f4f4;
@@ -472,12 +472,12 @@ $qn-font-size: 1.25rem;
       .options {
         .option {
           .text {
-            font-size: 1.25rem;
+            font-size: 20px;
             margin: 0 5px;
           }
           .input {
             width: 30px;
-            font-size: 1.25rem;
+            font-size: 20px;
             margin: 0 5px;
             border: none;
             outline: none;
@@ -533,11 +533,11 @@ $qn-font-size: 1.25rem;
       justify-content: space-between;
       align-items: center;
       .correctAns {
-        font-size: 1.25rem;
+        font-size: 20px;
         font-weight: 600;
         .correctAnsLabel {
           color: #7d7d7d;
-          font-size: 1rem;
+          font-size: 16px;
           font-weight: 300;
           margin-right: 10px;
         }
@@ -551,21 +551,21 @@ $qn-font-size: 1.25rem;
       .nextButton {
         cursor: pointer;
         border: none;
-        background-color: #4166eb;
+        background-color: #4166EB;
         color: #fff;
         padding: 10px 40px;
-        font-size: 1rem;
+        font-size: 16px;
         border-radius: 10px;
       }
     }
     .submitButton {
       cursor: pointer;
       border: none;
-      border: 1px solid #4166eb;
-      background-color: #4166eb;
+      border: 1px solid #4166EB;
+      background-color: #4166EB;
       color: #fff;
       padding: 10px 40px;
-      font-size: 1rem;
+      font-size: 16px;
       border-radius: 10px;
     }
     .disabledButton {

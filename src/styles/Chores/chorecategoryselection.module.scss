@@ -6,7 +6,7 @@
     h2 {
       display: flex;
       align-items: center;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-weight: 500;
       margin-bottom: 40px;
       .CancelIcon {
@@ -20,7 +20,7 @@
       width: 100%;
       color: rgba(188, 188, 188, 1);
       height: 45px;
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 400;
       display: flex;
       align-items: center;
@@ -48,7 +48,7 @@
       color: white;
       background: hsl(227, 81%, 59%);
       border-radius: 8px;
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -73,7 +73,7 @@
       }
       .text {
         margin-left: 10px;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 500;
         .heading {
           color: rgba(167, 167, 167, 1);
@@ -112,11 +112,11 @@
           height: 100%;
           margin-right: 10px;
           .name {
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: 500;
           }
           .time {
-            font-size: 0.875rem;
+            font-size: 14px;
             font-weight: 400;
             color: rgba(130, 130, 130, 1);
           }
@@ -145,10 +145,10 @@
           width: fit-content;
           padding: 5px 10px;
           border-radius: 6px;
-          font-size: 0.875rem;
+          font-size: 14px;
           .deleteicon {
             color: #000000;
-            font-size: 1.125rem;
+            font-size: 18px;
             margin-left: 5px;
           }
         }
@@ -166,16 +166,16 @@
 
     .catselection {
       h2 {
-        font-size: 1.25rem;
+        font-size: 20px;
         text-align: center;
       }
       .button {
         height: 40px;
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       .select {
         height: 40px;
-        font-size: 0.75rem;
+        font-size: 12px;
         padding: 10px 10px;
         svg {
           width: 10px;
@@ -209,7 +209,7 @@
         }
         .text {
           margin-left: 10px;
-          font-size: 1.125rem;
+          font-size: 18px;
           font-weight: 500;
           .heading {
             color: rgba(167, 167, 167, 1);
@@ -246,11 +246,11 @@
             flex: 1;
             height: 100%;
             .name {
-              font-size: 0.875rem;
+              font-size: 14px;
               font-weight: 500;
             }
             .time {
-              font-size: 0.75rem;
+              font-size: 12px;
               font-weight: 400;
               color: rgba(130, 130, 130, 1);
             }
@@ -265,7 +265,7 @@
             padding: 0 10px;
             height: 36px;
             color: white;
-            font-size: 0.75rem;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             &:hover {
@@ -281,10 +281,10 @@
             width: fit-content;
             padding: 5px 10px;
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 12px;
             .deleteicon {
               color: #000000;
-              font-size: 0.875rem;
+              font-size: 14px;
               margin-left: 5px;
             }
           }
@@ -302,7 +302,7 @@
               padding: 5px 10px;
               height: 30px;
               color: white;
-              font-size: 0.75rem;
+              font-size: 12px;
               cursor: pointer;
               transition: all 0.3s ease;
               &:hover {
@@ -318,12 +318,12 @@
               padding: 5px 10px;
               height: 30px;
               border-radius: 6px;
-              font-size: 0.75rem;
+              font-size: 12px;
               margin: 0;
               margin-right: 10px;
               .deleteicon {
                 color: #000000;
-                font-size: 0.875rem;
+                font-size: 14px;
                 margin-left: 5px;
               }
             }

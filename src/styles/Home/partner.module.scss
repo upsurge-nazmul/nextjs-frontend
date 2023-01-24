@@ -4,40 +4,35 @@
 .partnerSection {
   width: 100%;
   overflow: hidden;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
   .common {
     height: fit-content;
-    background-image: linear-gradient(to right, #f1f8ff, #fff4f4);
+    background-color: #ff6263;
     margin-bottom: 0px;
+    color: rgb(255, 255, 255);
+    padding: 5vh 6vw;
+    display: flex;
     position: relative;
-    padding: 2.5vh 2.5vw;
+    flex-direction: column;
     border-radius: 12px;
     min-width: 100%;
     margin-top: 20px;
-    .background{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      width:100%;
-      background-image:linear-gradient(to right,#f1f8ff,#fff4f4);
-      padding: 2.5vh 2.5vw;
-      border-radius: 3rem;
-      border:1.5rem solid white;
-      box-shadow: 0 0 20px grey;
-    }
     .heading {
-      font-size: 2.25rem;
+      font-size: 36px;
       font-weight: 700;
       cursor: pointer;
       margin-left: auto;
-      margin-right: auto;
+    margin-right: auto;
     }
     .subheading {
       margin-top: 1vh;
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 400;
-      width: 80%;
+      margin-left: auto;
+    margin-right: auto;
     }
     .leftarrow {
       position: absolute;
@@ -59,41 +54,34 @@
       z-index: 2;
       cursor: pointer;
     }
-    .imageswrapper {
+    .wrapper {
+      width: 100%;
       display: flex;
-    }
-    .imagewrapper2{
-      background-image: url('/fullframe.png');
-      background-attachment: fixed;
-      background-position: 90% bottom;
-      background-size: 12.5rem;
-      background-repeat: no-repeat;
-      width: 25rem;
-      min-width: 10rem;
-      height: 28rem;
-      object-fit: cover;
-      cursor: pointer;
-      user-select: none;
-    }
-    .imagewrapper1{
-      background-image: url('/fullframe.png');
-      background-attachment: fixed;
-      background-position: 65% top;
-      background-size: 12.5rem;
-      background-repeat: no-repeat;
-      width: 25rem;
-      min-width: 10rem;
-      height: 28rem;
-      object-fit: cover;
-      cursor: pointer;
-      user-select: none;
-    }
+      overflow-x: auto;
+      flex: 1;
+      margin-top: 30px;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       ::-webkit-scrollbar {
         width: 0; /* Remove scrollbar space */
         background: transparent; /* Optional: just make scrollbar invisible */
       }
+      .img {
+        width: 240px;
+        min-width: 240px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 0 20px;
+        user-select: none;
+      }
     }
-      .dashboard {
+  }
+  .dashboard {
     @extend .common;
   }
   .partner {
@@ -122,15 +110,36 @@
         fill: $d-main;
       }
     }
+    .wrapper {
+      width: 100%;
+      display: flex;
+      overflow-x: auto;
+      flex: 1;
+      margin-top: 50px;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       ::-webkit-scrollbar {
         width: 0; /* Remove scrollbar space */
         background: transparent; /* Optional: just make scrollbar invisible */
       }
+      .img {
+        width: 240px;
+        min-width: 240px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 0 20px;
+        user-select: none;
+      }
+    }
   }
 }
-
 //phones
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 711px) {
   .partnerSection {
     .commonPh {
       height: fit-content;
@@ -149,24 +158,16 @@
         display: none;
       }
       .heading {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
         padding: 0 30px;
         width: 100%;
-        margin-left: 1rem;
       }
       .subheading {
         margin-top: 1vh;
-        margin-left: 1rem;
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
         padding: 0 30px;
-      }
-      .imagewrapper2 {
-        display: none;
-      }
-      .imagewrapper1 {
-        display: flex;
       }
       .wrapper {
         width: 100%;
@@ -177,7 +178,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 2rem;
         .img {
           min-width: auto;
           width: 100px;
@@ -201,9 +201,8 @@
     }
   }
 }
-
 //tablets
-@media only screen and (min-width: 501px) and (max-width: 990px) {
+@media (min-width: 712px) and (max-width: 1024px) {
   .partnerSection {
     .commonTb {
       height: fit-content;
@@ -211,7 +210,10 @@
       padding: 3vh 0;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      margin-top: 0px;
       min-height: 340px;
+      width: 80vw;
       .leftarrow {
         position: absolute;
         left: 40px;
@@ -231,15 +233,14 @@
         cursor: pointer;
       }
       .heading {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
         padding: 0 30px;
         width: 100%;
-        margin-left: 0;
       }
       .subheading {
         margin-top: 1vh;
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: 400;
         padding: 0 30px;
       }
@@ -250,23 +251,15 @@
         padding: 0 30px;
         margin-top: 20px;
         .img {
-          min-width: 240px;
+          min-width: 120px;
           z-index: 100;
-          max-width: 240px;
-          height: 160px;
+          max-width: 120px;
+          height: 80px;
           object-fit: contain;
           background-color: rgb(255, 255, 255);
           border-radius: 6px;
           margin: 0 8px;
         }
-      }
-      .imagewrapper2{
-        height: 15rem;
-        background-size: 10rem;
-      }
-      .imagewrapper1{
-        height: 15rem;
-        background-size: 10rem;
       }
     }
     .dashboard {
@@ -274,6 +267,75 @@
     }
     .partner {
       @extend .commonTb;
+      width: 100vw;
+    }
+  }
+}
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+  .partnerSection {
+    .commonPhL {
+      height: fit-content;
+      margin-bottom: 0px;
+      padding: 3vh 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0px;
+      height: 30vh;
+      min-height: 250px;
+      .leftarrow {
+        position: absolute;
+        left: 40px;
+        width: 40px;
+        top: 80%;
+        transform: scaleX(-1);
+        z-index: 2;
+        cursor: pointer;
+      }
+      .rightarrow {
+        position: absolute;
+        right: unset;
+        left: 100px;
+        top: 80%;
+        width: 40px;
+        z-index: 2;
+        cursor: pointer;
+      }
+      .heading {
+        font-size: 24px;
+        font-weight: 700;
+        padding: 0 30px;
+        width: 100%;
+      }
+      .subheading {
+        margin-top: 1vh;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 0 30px;
+      }
+      .wrapper {
+        width: 100%;
+        flex: unset;
+        height: fit-content;
+        padding: 0 30px;
+        margin-top: 20px;
+        .img {
+          min-width: 120px;
+          z-index: 100;
+          max-width: 120px;
+          height: 80px;
+          object-fit: contain;
+          background-color: rgb(255, 255, 255);
+          border-radius: 6px;
+          margin: 0 8px;
+        }
+      }
+    }
+    .dashboard {
+      @extend .commonPhL;
+    }
+    .partner {
+      @extend .commonPhL;
       width: 100vw;
     }
   }
@@ -345,44 +407,6 @@
     .partner {
       @extend .commonTbL;
       width: 100vw;
-    }
-  }
-}
-@media only screen and (min-width: 1160px) and (max-width: 1280px) {
-  .partnerSection {
-    .common {
-      padding: 1.25vh 1.5vw;
-      .imageswrapper{
-        display: flex;
-        height: 30vw;
-        gap:0rem;
-      }
-      .imagewrapper1 {
-        height: 22rem;
-      }
-      .imagewrapper2{
-        height: 22rem;
-      }
-    } 
-  }
-}
-@media only screen and (min-width: 1024px) and (max-width: 1160px) {
-  .partnerSection {
-    .common {
-      padding: 0.5vh 1vw;
-      .imageswrapper{
-        display: flex;
-        height: 30vw;
-        gap: 0rem;
-      }
-      .imagewrapper1 {
-        height: 20rem;
-        background-size: 11.5rem;
-      }
-      .imagewrapper2{
-        height: 20rem;
-        background-size: 11.5rem;
-      }
     }
   }
 }

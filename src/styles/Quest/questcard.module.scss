@@ -25,7 +25,7 @@
     flex-direction: column;
   }
   .title {
-    font-size: 1.125rem;
+    font-size: 18px;
     text-transform: capitalize;
     font-weight: 500;
     margin-top: 20px;
@@ -33,7 +33,7 @@
     text-align: left;
   }
   .detail {
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 400;
     color: rgba(130, 130, 130, 1);
     width: 100%;
@@ -118,7 +118,7 @@
       flex-direction: column;
     }
     .title {
-      font-size: 1rem;
+      font-size: 16px;
       text-transform: capitalize;
       font-weight: 500;
       margin-top: 20px;
@@ -126,7 +126,7 @@
       text-align: left;
     }
     .detail {
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 400;
       color: rgba(130, 130, 130, 1);
       width: 100%;
@@ -207,7 +207,7 @@
     transition: all 0.3s ease;
     padding: 10px;
     .title {
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: 500;
       width: 100%;
       text-align: left;

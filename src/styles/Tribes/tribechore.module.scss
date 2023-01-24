@@ -18,19 +18,19 @@
     flex-direction: column;
     flex: 1;
     .name {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 600;
       text-transform: capitalize;
     }
     .data {
-      font-size: 0.875rem;
+      font-size: 14px;
       margin-top: 2px;
       display: flex;
     }
   }
 
   .time {
-    font-size: 0.75rem;
+    font-size: 12px;
     margin-top: 10px;
   }
 }

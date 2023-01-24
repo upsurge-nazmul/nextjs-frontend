@@ -119,7 +119,7 @@
       display: flex;
       justify-content: space-around;
       .star {
-        font-size: 1.25rem;
+        font-size: 20px;
         text-shadow: -1px -1px 0 rgb(255, 255, 255),
           1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255),
           1px 1px 0 rgb(255, 255, 255);
@@ -146,21 +146,21 @@
       left: 0;
     }
     .num {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
     .prallelogram {
       .text {
         .name {
           font-weight: 900;
           font-family: "Fira Sans", sans-serif;
-          font-size: 1rem;
+          font-size: 16px;
           color: #ffd500;
           filter: drop-shadow(2px 2px 5px rgb(29, 29, 29));
           margin-top: 2%;
         }
         .des {
           font-weight: 600;
-          font-size: 0.75rem;
+          font-size: 12px;
           font-family: "Fira Sans", sans-serif;
           font-style: italic;
           color: #ffffff;
@@ -189,7 +189,7 @@
         display: flex;
         justify-content: space-around;
         .star {
-          font-size: 1.25rem;
+          font-size: 20px;
           text-shadow: -1px -1px 0 rgb(255, 255, 255),
             1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255),
             1px 1px 0 rgb(255, 255, 255);
@@ -217,7 +217,7 @@
       left: 0;
     }
     .num {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
     .prallelogram {
       .text {
@@ -264,7 +264,7 @@
         display: flex;
         justify-content: space-around;
         .star {
-          font-size: 1.25rem;
+          font-size: 20px;
           text-shadow: -1px -1px 0 rgb(255, 255, 255),
             1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255),
             1px 1px 0 rgb(255, 255, 255);
@@ -291,7 +291,7 @@
       left: 0;
     }
     .num {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
     .main {
       flex: 1;
@@ -340,14 +340,14 @@
         .name {
           font-weight: 900;
           font-family: "Fira Sans", sans-serif;
-          font-size: 1rem;
+          font-size: 16px;
           color: #ffd500;
           filter: drop-shadow(2px 2px 5px rgb(29, 29, 29));
           margin-top: 2%;
         }
         .des {
           font-weight: 600;
-          font-size: 0.75rem;
+          font-size: 12px;
           font-family: "Fira Sans", sans-serif;
           font-style: italic;
           color: #ffffff;
@@ -375,7 +375,7 @@
         display: flex;
         justify-content: space-around;
         .star {
-          font-size: 1.25rem;
+          font-size: 20px;
           text-shadow: -1px -1px 0 rgb(255, 255, 255),
             1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255),
             1px 1px 0 rgb(255, 255, 255);

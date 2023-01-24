@@ -20,20 +20,20 @@
     .title {
       font-weight: 500;
       cursor: pointer;
-      font-size: 1.125rem;
+      font-size: 18px;
     }
     .date {
-      font-size: 0.875rem;
+      font-size: 14px;
       color: #828282;
     }
     .assign {
       font-weight: 500;
-      font-size: 0.875rem;
+      font-size: 14px;
       color: #4166eb;
       cursor: pointer;
       margin-top: 5px;
       font-weight: 500;
-      font-size: 0.875rem;
+      font-size: 14px;
       transition: all 0.3s ease;
       &:hover {
         color: #1b45df;
@@ -48,7 +48,7 @@
     }
     .classContent {
       .title {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -76,7 +76,7 @@
       flex-direction: column;
       .title {
         font-weight: 500;
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       .date {
         font-size: 10px;

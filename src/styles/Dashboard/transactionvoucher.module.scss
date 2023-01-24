@@ -19,14 +19,14 @@
     flex-direction: column;
     flex: 1;
     .name {
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 500;
     }
     .vendor,
     .time,
     .status {
       color: rgb(70, 70, 70);
-      font-size: 0.875rem;
+      font-size: 14px;
       margin-top: 5px;
     }
   }

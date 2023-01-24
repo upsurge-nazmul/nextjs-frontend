@@ -32,7 +32,7 @@ function HeaderCard({ data, handleCardClick }) {
           <div className={styles.cardLeft}>
             <div className={styles.imageWrapper}>
               <Image
-                src={require(`../../assets/kq/${data.questId}.png`)}
+                src={require(`../../assets/kqTiles/${data.questId}Tile.svg`)}
                 alt={data.questId}
                 className={styles.img}
                 height={114}

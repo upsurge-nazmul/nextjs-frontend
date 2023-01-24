@@ -13,16 +13,16 @@ import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
-import AvailableGames from "../../components/DownloadGames/AvailableGames";
 
 export default function GamePage() {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
+  const [authmode, setauthmode] = useState("");
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { userdata, theme } = useContext(MainContext);
+  const { userdata, theme,skipActive, setskipActive } = useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -79,6 +79,8 @@ export default function GamePage() {
         showauth={showauth}
         stickyheader={stickyheader}
         setshowauth={setshowauth}
+        authmode={authmode}
+        setauthmode={setauthmode}
         showpopup={showpopup}
         setshowpopup={setshowpopup}
       />
@@ -131,20 +133,34 @@ export default function GamePage() {
                 {/* {comingsoongames.includes(item) ? (
                   <p className={styles.button}>Coming Soon....</p>
                 ) : (
+                )} 
+                */}
+                {skipActive ?
                   <p
                     className={styles.activebutton}
                     onClick={() => {
+                      setskipActive(false);
                       router.push("/games/" + item);
-                    }}
+                  }}
                   >
                     Play
                   </p>
-                )} */}
+                  :
+                  <p
+                    className={styles.activebutton}
+                    onClick={() => {
+                      setshowauth(true)
+                      setauthmode("parent");
+                    }}
+                  
+                  >
+                    Play
+                  </p> 
+                  }
               </div>
             );
           })}
         </div>
-        <AvailableGames />
       </div>
       <JoinUs />
       <Footer />

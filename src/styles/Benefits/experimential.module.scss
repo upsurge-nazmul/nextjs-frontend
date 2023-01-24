@@ -48,7 +48,7 @@
       width: 100%;
       padding-top: 11%;
       .heading {
-        font-size: 2.25rem;
+        font-size: 36px;
         font-weight: 700;
         color: rgb(0, 0, 0);
         text-align: left;
@@ -56,7 +56,7 @@
         margin-bottom: 20px;
       }
       .subheading {
-        font-size: 1.375rem;
+        font-size: 22px;
         line-height: 32px;
         /* or 200% */
         width: 90%;
@@ -116,7 +116,7 @@
         justify-content: center;
         height: 100%;
         .text {
-          font-size: 2rem;
+          font-size: 32px;
           font-weight: 300;
           padding-right: 50px;
           color: rgb(255, 255, 255);
@@ -134,7 +134,7 @@
         padding-top: 0%;
         justify-content: center;
         .heading {
-          font-size: 2rem;
+          font-size: 32px;
           font-weight: 700;
           color: rgb(0, 0, 0);
           text-align: left;
@@ -142,7 +142,7 @@
           margin-bottom: 20px;
         }
         .subheading {
-          font-size: 1.125rem;
+          font-size: 18px;
           line-height: 28px;
           /* or 200% */
 
@@ -161,13 +161,13 @@
       .left {
         padding-right: 40px;
         .text {
-          font-size: 2rem;
+          font-size: 32px;
           padding-right: 0px;
         }
       }
       .right {
         .subheading {
-          font-size: 1.125rem;
+          font-size: 18px;
           width: 90%;
           line-height: 22px;
         }
@@ -209,7 +209,7 @@
         justify-content: center;
         height: 100%;
         .text {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 300;
           padding-right: 50px;
           color: rgb(255, 255, 255);
@@ -227,11 +227,11 @@
         padding-top: 0%;
         justify-content: center;
         .heading {
-          font-size: 1.25rem;
+          font-size: 20px;
           margin-bottom: 10px;
         }
         .subheading {
-          font-size: 0.75rem;
+          font-size: 12px;
           line-height: 18px;
           /* or 200% */
 
@@ -282,7 +282,7 @@
         justify-content: center;
         height: fit-content;
         .text {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 300;
           padding-right: 0;
           color: rgb(255, 255, 255);
@@ -305,7 +305,7 @@
           text-align: center;
         }
         .subheading {
-          font-size: 0.75rem;
+          font-size: 12px;
           line-height: 22px;
           /* or 200% */
 
@@ -354,7 +354,7 @@
         justify-content: center;
         height: fit-content;
         .text {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: 300;
           padding-right: 0px;
           color: rgb(255, 255, 255);
@@ -374,7 +374,7 @@
         justify-content: center;
         margin-top: 3vh;
         .subheading {
-          font-size: 0.75rem;
+          font-size: 12px;
           line-height: 22px;
           /* or 200% */
 
