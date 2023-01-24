@@ -16,6 +16,8 @@ export default function GameView({
   setGame,
   externalId = null,
   handleDone = null,
+  questId,
+  setMapZoom
 }) {
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
@@ -206,6 +208,7 @@ export default function GameView({
         <button
           className={styles.fullScreenButton}
           onClick={() => {
+            setMapZoom("superZoom"+questId);
             setFullScreen(false);
             if (!isMobileOnly) document.exitFullscreen();
             mixpanel.track("Game Closed", { event: `Game closed` });
@@ -219,6 +222,7 @@ export default function GameView({
             className={styles.doneButton}
             onClick={() => {
               handleDone();
+              setMapZoom("superZoom"+questId);
               mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`})
               setFullScreen(false);
               if (!isMobileOnly) document.exitFullscreen();

@@ -31,13 +31,14 @@ export default function RecordingView({ chapterId, handleBack, handleDone }) {
               document.exitFullscreen();
               handleDone();
             }}
-          >
+            >
             Done
           </button>
           <button
             className={styles.fullScreenButton}
             onClick={() => {
               setFullScreen(false);
+              setMapZoom("superZoom"+questId)
               document.exitFullscreen();
               handleBack();
             }}

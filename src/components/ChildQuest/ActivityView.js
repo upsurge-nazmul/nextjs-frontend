@@ -3,7 +3,7 @@ import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
 
-export default function ActivityView({ chapterId, handleBack, handleDone }) {
+export default function ActivityView({ chapterId, handleBack, handleDone, questId, setMapZoom }) {
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
@@ -29,9 +29,10 @@ export default function ActivityView({ chapterId, handleBack, handleDone }) {
               setFullScreen(false);
               mixpanel.track('Knowledge Quest finished',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
               document.exitFullscreen();
+              setMapZoom("superZoom"+questId)
               handleDone();
             }}
-          >
+            >
             Done
           </button>
           <button
@@ -39,6 +40,7 @@ export default function ActivityView({ chapterId, handleBack, handleDone }) {
             onClick={() => {
               setFullScreen(false);
               document.exitFullscreen();
+              setMapZoom("superZoom"+questId)
               handleBack();
             }}
           >
