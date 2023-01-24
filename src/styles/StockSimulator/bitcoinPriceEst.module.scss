@@ -20,7 +20,7 @@ $sell-color: #eb5757;
       width: 100%;
       justify-content: space-between;
       .title {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 700;
         color: $dark-font-color;
       }
@@ -36,7 +36,7 @@ $sell-color: #eb5757;
       }
     }
     .description {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
       color: $dark-font-color;
       padding-top: 10px;
@@ -57,12 +57,12 @@ $sell-color: #eb5757;
       flex-direction: column;
       gap: 10px;
       .label {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: $light-font-color;
       }
       .value {
-        font-size: 18px;
+        font-size: 1.125rem;
         outline: none;
         border-radius: $common-border-radius;
         border-width: 0.5px;
@@ -79,7 +79,7 @@ $sell-color: #eb5757;
           cursor: pointer;
           background-color: $primary-color;
           color: #fff;
-          font-size: 16px;
+          font-size: 1rem;
           padding: 8px 52px;
           border-radius: 8px;
         }
@@ -97,7 +97,7 @@ $sell-color: #eb5757;
     .result {
       width: 100%;
       text-align: center;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 700;
       padding: 6px 0;
     }
@@ -119,13 +119,13 @@ $sell-color: #eb5757;
       gap: 80px;
       .common {
         .title {
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 500;
           color: $light-font-color;
           padding: 6px 0;
         }
         .name {
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -154,7 +154,7 @@ $sell-color: #eb5757;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -170,7 +170,7 @@ $sell-color: #eb5757;
         }
       }
       .description {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -196,12 +196,12 @@ $sell-color: #eb5757;
         flex-direction: column;
         gap: 10px;
         .label {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 400;
           color: $light-font-color;
         }
         .value {
-          font-size: 18px;
+          font-size: 1.125rem;
           outline: none;
           border-radius: $common-border-radius;
           border-width: 0.5px;
@@ -218,7 +218,7 @@ $sell-color: #eb5757;
             cursor: pointer;
             background-color: $primary-color;
             color: #fff;
-            font-size: 16px;
+            font-size: 1rem;
             padding: 8px 52px;
             border-radius: 8px;
           }
@@ -242,7 +242,7 @@ $sell-color: #eb5757;
         gap: 10px;
         padding-top: 10px;
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 700;
           color: $dark-font-color;
         }
@@ -258,7 +258,7 @@ $sell-color: #eb5757;
         }
       }
       .description {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 400;
         color: $dark-font-color;
         padding-top: 10px;
@@ -279,12 +279,12 @@ $sell-color: #eb5757;
         flex-direction: column;
         gap: 10px;
         .label {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 400;
           color: $light-font-color;
         }
         .value {
-          font-size: 18px;
+          font-size: 1.125rem;
           outline: none;
           border-radius: $common-border-radius;
           border-width: 0.5px;
@@ -301,7 +301,7 @@ $sell-color: #eb5757;
             cursor: pointer;
             background-color: $primary-color;
             color: #fff;
-            font-size: 16px;
+            font-size: 1rem;
             padding: 8px 52px;
             border-radius: 8px;
           }

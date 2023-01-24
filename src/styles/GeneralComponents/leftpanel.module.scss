@@ -23,7 +23,7 @@
     .tab {
       color: rgb(201, 63, 62);
       font-weight: 400;
-      font-size: 16px;
+      font-size: 1rem;
       cursor: pointer;
       margin-bottom: 20px;
       transition: all 0.3s ease;
@@ -47,12 +47,12 @@
     flex: 1;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .leftPanel {
     .leftPanelContent {
       padding-left: 30px;
       .tab {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
       .cancelButton {
         cursor: pointer;
@@ -73,7 +73,7 @@
   }
 }
 
-@media screen and (max-width: 340px) {
+@media only screen and (max-width: 500px) {
   .leftPanel {
     width: 100%;
     .leftPanelContent {

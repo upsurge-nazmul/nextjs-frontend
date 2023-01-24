@@ -7,7 +7,7 @@
   .error {
     margin: 0 40px;
     color: #f4f5f7;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 10px 20px;
     border-radius: 12px;
     background-color: #ff6263;
@@ -21,18 +21,18 @@
     flex-direction: column;
     .mainContent {
       flex-direction: column;
-      p{
+      p {
         margin-bottom: 20px;
         padding: 0 26px;
       }
-    .flexLeft {
-      display: flex;
-      height: fit-content;
-      padding: 10px 40px;
-      scrollbar-width: thin;
-      overflow: auto;
+      .flexLeft {
+        display: flex;
+        height: fit-content;
+        padding: 10px 40px;
+        scrollbar-width: thin;
+        overflow: auto;
+      }
     }
-  }
     .container {
       padding: 20px;
       overflow-y: auto;
@@ -52,7 +52,7 @@
     .error {
       margin: 0 40px;
       color: #f4f5f7;
-      font-size: 16px;
+      font-size: 1rem;
       padding: 10px 20px;
       border-radius: 12px;
       background-color: #ff6263;
@@ -129,7 +129,7 @@
     .error {
       margin: 0 40px;
       color: #f4f5f7;
-      font-size: 16px;
+      font-size: 1rem;
       padding: 10px 20px;
       border-radius: 12px;
       background-color: #ff6263;
@@ -147,10 +147,10 @@
         height: fit-content;
         padding: 0 20px;
         scrollbar-width: thin;
-        p{
-        font-weight: 600;
-        font-size: medium;
-        padding: 0;
+        p {
+          font-weight: 600;
+          font-size: medium;
+          padding: 0;
         }
         .flexLeft {
           display: flex;

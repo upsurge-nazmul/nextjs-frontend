@@ -20,7 +20,7 @@
   .authFooter {
     .changemode {
       font-weight: 500;
-      font-size: 16px;
+      font-size: 1rem;
       span {
         cursor: pointer;
         color: rgba(65, 102, 235, 1);
@@ -42,7 +42,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 1.125rem;
       transition: all 0.3s ease;
       margin-top: 1rem;
       &:hover {
@@ -84,7 +84,7 @@
         .heading,
         .forgetheading {
           font-weight: 500;
-          font-size: 32px;
+          font-size: 2rem;
           display: flex;
           align-items: center;
           transition: all 0.3s ease;
@@ -106,7 +106,7 @@
 
         .changemode {
           font-weight: 500;
-          font-size: 16px;
+          font-size: 1rem;
           span {
             cursor: pointer;
             color: rgba(65, 102, 235, 1);
@@ -123,7 +123,7 @@
         box-sizing: border-box;
         border-radius: 14px;
         font-family: "Lexend", sans-serif;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 400;
         width: 100%;
         height: 59px;
@@ -142,14 +142,14 @@
         justify-content: center;
         .onlyPassHeading {
           font-family: "Lexend", sans-serif;
-          font-size: 24px;
+          font-size: 1.5rem;
           margin-bottom: 30px;
           color: #898989;
           font-weight: 400;
         }
         .prefilledEmail {
           font-family: "Lexend", sans-serif;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           padding: 10px 0 20px;
           color: #333;
@@ -177,7 +177,7 @@
             font-family: "Lexend", sans-serif;
             font-style: normal;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 1.125rem;
             text-align: right;
             color: #4166eb;
             transition: all 0.3s ease;
@@ -198,7 +198,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           &:hover {
             background-color: #ffffff;
@@ -216,7 +216,7 @@
         .or {
           margin-bottom: 18px;
           font-weight: 300;
-          font-size: 16px;
+          font-size: 1rem;
         }
         .google,
         .apple {
@@ -233,7 +233,7 @@
           p {
             flex: 1;
             text-align: center;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
           }
           img {
@@ -257,7 +257,7 @@
           }
         }
         .error {
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: #ff6263;
           font-weight: 500;
           margin-bottom: 20px;
@@ -266,7 +266,7 @@
         }
         .reset {
           font-weight: 500;
-          font-size: 18px;
+          font-size: 1.125rem;
           span {
             cursor: pointer;
             color: rgba(65, 102, 235, 1);
@@ -299,7 +299,7 @@
           padding: 18px 20px;
           transition: all 0.2s ease-in-out;
           p {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
             color: #727272;
           }
@@ -358,11 +358,11 @@
           justify-content: space-around;
           h1 {
             font-weight: 500;
-            font-size: 20px;
+            font-size: 1.25rem;
           }
           p {
             color: #6b6b6b;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
             margin-bottom: 20px;
           }
@@ -376,7 +376,7 @@
         transition: all 0.3s ease;
         justify-content: center;
         .error {
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: #ff6263;
           font-weight: 500;
           margin-bottom: 20px;
@@ -395,7 +395,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           &:hover {
             background-color: #ffffff;
@@ -413,7 +413,7 @@
         .or {
           margin-bottom: 18px;
           font-weight: 300;
-          font-size: 16px;
+          font-size: 1rem;
         }
         .google,
         .apple {
@@ -428,7 +428,7 @@
           p {
             flex: 1;
             text-align: center;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
             padding-right: 10%;
           }
@@ -469,7 +469,7 @@
 
         .heading,
         .subheading {
-          font-size: 32px;
+          font-size: 2rem;
           font-weight: 500;
           text-align: center;
         }
@@ -477,7 +477,7 @@
           margin-bottom: 20px;
         }
         .details {
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 400;
           flex: 1;
           overflow-y: auto;
@@ -498,7 +498,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           &:hover {
             background-color: #ffffff;
@@ -529,7 +529,7 @@
           overflow: hidden;
           height: 59px;
           p {
-            font-size: 20px;
+            font-size: 1.25rem;
             border-right: 1px solid #898989;
             width: 50px;
             display: flex;
@@ -558,7 +558,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           margin-top: 22px;
           &:hover {
@@ -581,7 +581,7 @@
         align-items: center;
         .error {
           font-weight: 500;
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: #ff6263;
           text-align: center;
         }
@@ -593,7 +593,7 @@
           width: 100%;
           height: 59px;
           p {
-            font-size: 20px;
+            font-size: 1.25rem;
             border-right: 1px solid #898989;
             width: 50px;
             display: flex;
@@ -621,7 +621,7 @@
         .weakpasstext {
           color: rgb(255, 118, 118);
           margin-bottom: 5px;
-          font-size: 15px;
+          font-size: 0.9375rem;
           width: fit-content;
         }
         .passwordBox {
@@ -675,7 +675,7 @@
               }
               p {
                 margin-left: 6px;
-                font-size: 15px;
+                font-size: 0.9375rem;
               }
             }
             .white {
@@ -704,7 +704,7 @@
             font-family: "Lexend", sans-serif;
             font-style: normal;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 1.125rem;
             text-align: right;
             color: #4166eb;
             transition: all 0.3s ease;
@@ -741,7 +741,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           margin-top: 22px;
           &:hover {
@@ -763,7 +763,7 @@
         flex-direction: column;
         align-items: center;
         .error {
-          font-size: 15px;
+          font-size: 0.9375rem;
           color: #ff6263;
           font-weight: 500;
           margin-bottom: 20px;
@@ -775,12 +775,12 @@
           flex-direction: column;
           justify-content: center;
           .text {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
             text-align: center;
           }
           .phone {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 500;
             text-align: center;
           }
@@ -798,7 +798,7 @@
         }
         .resendButton {
           color: rgba(65, 102, 235, 1);
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
           margin-top: 12px;
           text-align: center;
@@ -816,7 +816,7 @@
           align-items: center;
           cursor: pointer;
           font-weight: 500;
-          font-size: 20px;
+          font-size: 1.25rem;
           transition: all 0.3s ease;
           margin-top: 22px;
           &:hover {
@@ -887,953 +887,8 @@
     }
   }
 }
-.darkauth {
-  .authContentWrapper {
-    .authcontainer {
-      background-color: $d-moredark;
-      border: 1px solid $d-light;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.541);
-      .headingflex {
-        .heading,
-        .forgetheading {
-          color: $d-text2;
-        }
 
-        .changemode {
-          color: $d-text2;
-        }
-      }
-      input {
-        border: 1px solid $d-light;
-        background-color: $d-main;
-        color: $d-text2;
-        &::placeholder {
-          color: $d-text2;
-        }
-      }
-      .logindetails {
-        width: 100%;
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        transition: all 0.3s ease;
-        justify-content: center;
-        .passwordBox {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          position: relative;
-          margin-bottom: 20px;
-          input {
-            margin: 0;
-          }
-          .show {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 19px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-family: "Lexend", sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 18px;
-            text-align: right;
-            color: #4166eb;
-            transition: all 0.3s ease;
-            &:hover {
-              color: #2751e9;
-            }
-          }
-        }
-        .button {
-          color: $d-moredark;
-          &:hover {
-            background-color: $d-moredark;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            color: $d-moredark;
-          }
-        }
-        .or {
-          color: $d-text2;
-        }
-        .google,
-        .apple {
-          border-radius: 14px;
-          width: 70%;
-          display: flex;
-          align-items: center;
-          height: 59px;
-          padding: 0 20px 0 20px;
-          margin-bottom: 18px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          max-width: 326px;
-          p {
-            flex: 1;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 400;
-          }
-          img {
-            margin-right: 20px;
-          }
-        }
-        .google {
-          background: $d-main;
-          color: $d-text2;
-          border: 1px solid $d-light;
-
-          &:hover {
-            background: $d-moredark;
-            color: $d-text1;
-            border: 1px solid $d-light;
-          }
-        }
-        .apple {
-          color: white;
-          background: #404040;
-          margin-bottom: 24px;
-          &:hover {
-            background: #292929;
-          }
-        }
-        .error {
-          font-size: 15px;
-          color: #ff6263;
-          font-weight: 500;
-          margin-bottom: 20px;
-          width: 100%;
-          text-align: center;
-        }
-        .reset {
-          font-weight: 500;
-          font-size: 18px;
-          span {
-            cursor: pointer;
-            color: rgba(65, 102, 235, 1);
-            &:hover {
-              color: #2751e9;
-            }
-          }
-        }
-      }
-      .selection {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        transition: all 0.3s ease;
-
-        .option {
-          width: 100%;
-          height: 12vh;
-          max-height: 103px;
-          min-height: 80px;
-          position: relative;
-          border-radius: 24px;
-          -moz-outline-radius: 24px;
-          border: 1px solid #6b6b6b;
-          background-color: white;
-          margin-bottom: 18px;
-          display: flex;
-          flex-direction: column;
-          cursor: pointer;
-          padding: 18px 20px;
-          transition: all 0.2s ease-in-out;
-          p {
-            font-size: 20px;
-            font-weight: 400;
-            color: #727272;
-          }
-          h1 {
-            font-size: 30px;
-            font-weight: 500;
-          }
-
-          &:hover {
-            box-shadow: 0 0 0 2pt #4166eb;
-            h1 {
-              color: #4166eb;
-            }
-          }
-        }
-      }
-      .learner {
-        height: fit-content;
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        border: 1px solid #6b6b6b;
-        .top {
-          display: flex;
-          background: #f4f4f4;
-          height: 50%;
-          min-height: 162px;
-          .left {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            flex: 1;
-            h1 {
-              font-weight: 500;
-              color: #4166eb;
-              font-size: 50px;
-            }
-            p {
-              font-size: 30px;
-              font-weight: 400;
-            }
-          }
-          .mascot {
-            padding-top: 6%;
-            padding-right: 20px;
-            height: 100%;
-          }
-        }
-        .bottom {
-          padding: 20px;
-          height: 162px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          h1 {
-            font-weight: 500;
-            font-size: 20px;
-          }
-          p {
-            color: #6b6b6b;
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 20px;
-          }
-        }
-      }
-      .parent {
-        width: 100%;
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        transition: all 0.3s ease;
-        justify-content: center;
-        .error {
-          font-size: 15px;
-          color: #ff6263;
-          font-weight: 500;
-          margin-bottom: 20px;
-          width: 100%;
-          text-align: center;
-        }
-        .button {
-          color: $d-moredark;
-          &:hover {
-            background-color: $d-moredark;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            color: $d-moredark;
-          }
-        }
-        .or {
-          margin-bottom: 18px;
-          font-weight: 300;
-          font-size: 16px;
-        }
-        .google,
-        .apple {
-          border-radius: 12px;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          height: 63px;
-          margin-bottom: 18px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          p {
-            flex: 1;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 400;
-            padding-right: 10%;
-          }
-          svg {
-            width: 80px;
-            padding: 15px;
-            height: 100%;
-            border-right: 1px solid rgba(248, 248, 248, 0.541);
-          }
-        }
-        .google {
-          background: #ffffff;
-          border: 1px solid #bfbfbf;
-          img {
-            border-color: rgba(255, 255, 255, 0.31);
-          }
-          &:hover {
-            background: #f5f5f5;
-            border: 1px solid #a0a0a0;
-          }
-        }
-        .apple {
-          color: white;
-          background: #404040;
-          img {
-            border-color: #6d6d6d;
-          }
-          &:hover {
-            background: #292929;
-          }
-        }
-      }
-      .privacy {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-
-        .heading,
-        .subheading {
-          font-size: 32px;
-          font-weight: 500;
-          text-align: center;
-        }
-        .subheading {
-          margin-bottom: 20px;
-        }
-        .details {
-          font-size: 16px;
-          font-weight: 400;
-          flex: 1;
-          overflow-y: auto;
-          max-width: 1099px;
-          margin-bottom: 40px;
-          padding-right: 20px;
-          white-space: pre-line;
-        }
-        .button {
-          background: #4166eb;
-          border-radius: 14px;
-          color: white;
-          width: 100%;
-          max-width: 480px;
-          height: 63px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-weight: 500;
-          font-size: 20px;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: #ffffff;
-            color: #4166eb;
-            border: 1px solid #4166eb;
-          }
-        }
-        .disabled {
-          background: #a3a3a3;
-          &:hover {
-            transition: all 0.3s ease;
-            background: #a3a3a3;
-            color: #ffffff;
-            border: 0px solid #ffffff;
-          }
-        }
-      }
-      .phone {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .phoneWrapper {
-          width: 100%;
-          display: flex;
-          border-radius: 14px;
-          border: 1px solid #898989;
-          overflow: hidden;
-          height: 59px;
-          p {
-            font-size: 20px;
-            border-right: 1px solid #898989;
-            width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: "Lexend", sans-serif;
-          }
-          input {
-            flex: 1;
-            border: none;
-            border-radius: 0;
-            margin-bottom: 0;
-            padding: 15px;
-            max-width: none;
-          }
-        }
-        .button {
-          background: #4166eb;
-          border-radius: 14px;
-          color: white;
-          width: 100%;
-          max-width: 480px;
-          height: 63px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-weight: 500;
-          font-size: 20px;
-          transition: all 0.3s ease;
-          margin-top: 22px;
-          &:hover {
-            background-color: #ffffff;
-            color: #4166eb;
-            border: 1px solid #4166eb;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            background: #4166eb;
-            color: white;
-            border: none;
-          }
-        }
-      }
-      .email {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        .error {
-          font-weight: 500;
-          font-size: 15px;
-          color: #ff6263;
-          text-align: center;
-        }
-        .phoneWrapper {
-          display: flex;
-          border-radius: 14px;
-          border: 1px solid #898989;
-          overflow: hidden;
-          width: 100%;
-          height: 59px;
-          p {
-            font-size: 20px;
-            border-right: 1px solid #898989;
-            width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: "Lexend", sans-serif;
-          }
-          input {
-            flex: 1;
-            border: none;
-            border-radius: 0;
-            margin-bottom: 0;
-            padding: 15px;
-          }
-        }
-        .nameWrapper {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 22px;
-          input {
-            width: 48%;
-          }
-        }
-        .weakpasstext {
-          color: rgb(255, 118, 118);
-          margin-bottom: 5px;
-          font-size: 15px;
-          width: fit-content;
-        }
-        .passwordBox {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          height: 59px;
-          position: relative;
-          margin-bottom: 20px;
-          z-index: 1;
-          .detailPass {
-            display: flex;
-            position: absolute;
-            flex-direction: column;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            top: -185px;
-            padding-top: 15px;
-            right: 50%;
-            z-index: 2;
-            transform: translateX(50%);
-            animation: fade 0.3s ease;
-            .arrow {
-              position: absolute;
-              bottom: 0;
-              right: 22.5%;
-              transform: rotate(45deg);
-              box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-              background-color: white;
-              z-index: -1;
-              width: 100px;
-              height: 100px;
-            }
-            .tab {
-              display: flex;
-              width: 100%;
-              align-items: center;
-              background-color: white;
-              padding: 0 20px;
-              padding-bottom: 10px;
-              border-radius: 12px;
-              z-index: 2;
-              &:last-child {
-                padding-bottom: 20px;
-              }
-              svg {
-                width: 15px;
-                height: 15px;
-              }
-              p {
-                margin-left: 6px;
-                font-size: 15px;
-              }
-            }
-            .white {
-              background-color: white;
-              width: 100%;
-              border-radius: 12px;
-              height: 15px;
-            }
-          }
-          input {
-            margin: 0;
-          }
-          .weakpass {
-            border-color: rgb(255, 118, 118);
-          }
-          .show {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 19px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-family: "Lexend", sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 18px;
-            text-align: right;
-            color: #4166eb;
-            transition: all 0.3s ease;
-            &:hover {
-              color: #2751e9;
-            }
-          }
-        }
-
-        .button {
-          background: #4166eb;
-          border-radius: 14px;
-          color: white;
-          width: 100%;
-          max-width: 480px;
-          height: 63px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-weight: 500;
-          font-size: 20px;
-          transition: all 0.3s ease;
-          margin-top: 22px;
-          &:hover {
-            background-color: #ffffff;
-            color: #4166eb;
-            border: 1px solid #4166eb;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            background: #4166eb;
-            color: white;
-            border: none;
-          }
-        }
-      }
-      .otp {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        .error {
-          font-size: 15px;
-          color: #ff6263;
-          font-weight: 500;
-          margin-bottom: 20px;
-          width: 100%;
-          text-align: center;
-        }
-        .otpHeadWrapper {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          .text {
-            font-size: 20px;
-            font-weight: 400;
-            text-align: center;
-          }
-          .phone {
-            font-size: 20px;
-            font-weight: 500;
-            text-align: center;
-          }
-        }
-        .otpWrapper {
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          margin-top: 22px;
-          input {
-            width: 60px;
-            margin: 0 6px;
-            text-align: center;
-          }
-        }
-        .resendButton {
-          color: rgba(65, 102, 235, 1);
-          font-size: 18px;
-          font-weight: 500;
-          margin-top: 12px;
-          text-align: center;
-          cursor: pointer;
-        }
-        .button {
-          background: #4166eb;
-          border-radius: 14px;
-          color: white;
-          width: 100%;
-          max-width: 480px;
-          height: 63px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-weight: 500;
-          font-size: 20px;
-          transition: all 0.3s ease;
-          margin-top: 22px;
-          &:hover {
-            background-color: #ffffff;
-            color: #4166eb;
-            border: 1px solid #4166eb;
-          }
-        }
-        .spinner_btn {
-          &:hover {
-            background: #4166eb;
-            color: white;
-            border: none;
-          }
-        }
-      }
-    }
-    .signupAuth {
-      padding: 40px 70px 70px;
-      .headingflex {
-        margin-bottom: 60px;
-      }
-    }
-    .parentAuth {
-      padding: 40px 70px 40px;
-      .headingflex {
-      }
-    }
-    .learnerAuth {
-      padding: 40px 70px 75px;
-      .headingflex {
-        margin-bottom: 45px;
-      }
-    }
-    .privacyAuth {
-      max-width: 800px;
-      height: 80vh;
-    }
-    .background {
-      position: absolute;
-      z-index: 4;
-      background-color: rgba(0, 0, 0, 0.19);
-      width: 100vw;
-      cursor: pointer;
-      height: 100vh;
-      top: 0;
-      left: 0;
-    }
-  }
-}
-@media only screen and (min-width: 860px) and (max-height: 800px) {
-  .auth {
-    .authContentWrapper {
-      .authcontainer {
-        padding: 30px 45px;
-        width: 55%;
-        max-width: 450px;
-        border-radius: 20px;
-        .headingflex {
-          margin-bottom: 35px;
-          padding-left: 4%;
-          .heading {
-            font-size: 23px;
-          }
-          .changemode {
-            font-size: 13px;
-            font-weight: 500;
-          }
-        }
-        input {
-          font-size: 16px;
-          margin-bottom: 15px;
-          height: 47px;
-          &::placeholder {
-            font-size: 16px;
-          }
-        }
-        .passwordBox {
-          margin-bottom: 15px;
-          height: 47px;
-          input {
-            margin: 0;
-            height: 47px;
-          }
-          .show {
-            height: 100%;
-          }
-        }
-        .logindetails {
-          .passwordBox {
-            margin-bottom: 15px;
-            height: 47px;
-            .show {
-              font-size: 14px;
-            }
-          }
-          .button {
-            font-size: 16px;
-            margin-bottom: 15px;
-            height: 47px;
-          }
-          .or {
-            margin-bottom: 15px;
-            font-weight: 300;
-            font-size: 14px;
-          }
-          .google,
-          .apple {
-            margin-bottom: 15px;
-            height: 47px;
-            p {
-              font-size: 14px;
-            }
-          }
-          .apple {
-            margin-bottom: 20px;
-          }
-          .reset {
-            font-size: 14px;
-          }
-        }
-        .selection {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          transition: all 0.3s ease;
-
-          .option {
-            width: 100%;
-            height: 12vh;
-            position: relative;
-            border-radius: 20px;
-            border: 1px solid #6b6b6b;
-            background-color: white;
-            margin-bottom: 18px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 20px;
-            transition: all 0.2s ease-in-out;
-            p {
-              font-size: 16px;
-              font-weight: 400;
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: 500;
-            }
-
-            &:hover {
-              outline: 3px solid #4166eb;
-              h1 {
-                color: #4166eb;
-              }
-            }
-          }
-        }
-        .parent {
-          .button {
-            font-size: 14px;
-            height: 47px;
-          }
-          .or {
-            margin-bottom: 15px;
-            font-weight: 300;
-            font-size: 14px;
-          }
-          .google,
-          .apple {
-            height: 47px;
-            img {
-              width: 60px;
-              padding: 10px;
-            }
-            p {
-              font-size: 14px;
-            }
-          }
-        }
-        .privacy {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 100%;
-
-          .heading,
-          .subheading {
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-          }
-          .subheading {
-            margin-bottom: 15px;
-          }
-          .details {
-            font-size: 12px;
-          }
-          .button {
-            height: 47px;
-            font-size: 14px;
-          }
-        }
-        .phone {
-          .phoneWrapper {
-            height: 47px;
-            p {
-              font-size: 14px;
-            }
-          }
-          .button {
-            height: 47px;
-            font-size: 14px;
-          }
-        }
-        .email {
-          .phoneWrapper {
-            height: 47px;
-            p {
-              font-size: 14px;
-            }
-          }
-          .nameWrapper {
-            margin: 15px 0;
-            height: 47px;
-            input {
-              width: 48%;
-              height: 47px;
-              margin: 0;
-            }
-          }
-          .passwordBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 47px;
-            position: relative;
-            margin-bottom: 15px;
-            input {
-              margin: 0;
-              height: 47px;
-            }
-            .show {
-              font-size: 14px;
-            }
-          }
-          .button {
-            height: 47px;
-            font-size: 14px;
-            margin-top: 15px;
-          }
-        }
-        .otp {
-          .otpHeadWrapper {
-            .text {
-              font-size: 16px;
-            }
-            .phone {
-              font-size: 16px;
-            }
-          }
-          .otpWrapper {
-            margin-top: 15px;
-            height: 47px;
-            input {
-              height: 47px;
-              width: 50px;
-              font-size: 16px;
-              margin: 0 6px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-            }
-          }
-          .resendButton {
-            font-size: 14px;
-            margin-top: 15px;
-          }
-          .button {
-            height: 47px;
-            font-size: 14px;
-            margin-top: 15px;
-          }
-        }
-      }
-      .loginAuth {
-        .headingflex {
-          padding-left: 0;
-        }
-      }
-      .privacyAuth {
-        max-width: 600px;
-        width: 70%;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 500px) {
   .auth {
     .authContentWrapper {
       .authcontainer {
@@ -1846,7 +901,7 @@
           margin-bottom: 25px;
           padding-left: 6%;
           .heading {
-            font-size: 22px;
+            font-size: 1.375rem;
             padding-left: 0px;
             .svg {
               cursor: pointer;
@@ -1872,17 +927,17 @@
         .logindetails {
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .passwordBox {
             height: 45px;
             margin-bottom: 18px;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0;
             }
             .show {
@@ -1891,7 +946,7 @@
             }
           }
           .or {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
@@ -1899,7 +954,7 @@
             height: 45px;
             padding-right: 40px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .reset {
@@ -1914,10 +969,10 @@
           .option {
             height: 10vh;
             p {
-              font-size: 16px;
+              font-size: 1rem;
             }
             h1 {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
           }
         }
@@ -1940,7 +995,7 @@
                 font-size: 40px;
               }
               p {
-                font-size: 20px;
+                font-size: 1.25rem;
               }
             }
             .mascot {
@@ -1960,12 +1015,12 @@
             justify-content: center;
             h1 {
               font-weight: 500;
-              font-size: 14px;
+              font-size: 0.875rem;
               line-height: 16px;
             }
             p {
               color: #6b6b6b;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
               line-height: 16px;
               margin-bottom: 20px;
@@ -1974,22 +1029,22 @@
         }
         .parent {
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .or {
             margin-bottom: 18px;
             font-weight: 300;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             height: 45px;
             justify-content: center;
@@ -1998,7 +1053,7 @@
         .privacy {
           .heading,
           .subheading {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 500;
             text-align: center;
           }
@@ -2006,12 +1061,12 @@
             margin-bottom: 20px;
           }
           .details {
-            font-size: 14px;
+            font-size: 0.875rem;
             padding-right: 10px;
           }
           .button {
             height: 45px;
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
         .phone {
@@ -2023,7 +1078,7 @@
             overflow: hidden;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               border-right: 1px solid #898989;
               width: 50px;
               display: flex;
@@ -2042,13 +1097,13 @@
               justify-content: center;
               max-width: none;
               height: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             width: 85%;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .email {
@@ -2060,11 +1115,11 @@
             width: 100%;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               width: 50px;
             }
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               padding: 0 10px;
             }
@@ -2072,7 +1127,7 @@
           .nameWrapper {
             margin: 15px 0;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               margin: 0;
             }
@@ -2102,7 +1157,7 @@
                 }
                 p {
                   margin-left: 6px;
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
               .white {
@@ -2113,48 +1168,48 @@
             }
             input {
               margin: 0;
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
             }
 
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .weakpasstext {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .button {
             margin: 0;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .otp {
           .otpHeadWrapper {
             .text {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             .phone {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .otpWrapper {
             input {
               width: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0 6px;
               height: 45px;
             }
           }
           .resendButton {
             color: rgba(65, 102, 235, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }
@@ -2192,1590 +1247,7 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  .auth {
-    position: absolute;
-    z-index: 5;
-    .authContentWrapper {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 7vh;
-      .authcontainer {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        z-index: 6;
-        background-color: white;
-        height: fit-content;
-        width: 50vw;
-        min-width: 300px;
-        max-width: 589px;
-        padding: 20px;
-        border-radius: 12px;
-        position: relative;
-        transition: all 0.3s ease;
-        height: 80vh;
-        overflow-y: auto;
-        .headingflex {
-          font-family: Rubik;
-          font-style: normal;
-          transition: all 0.3s ease;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 5vh;
-          align-items: center;
-          .heading,
-          .forgetheading {
-            font-weight: 500;
-            font-size: $mobile-heading;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            justify-content: center;
-            .svg {
-              cursor: pointer;
-              position: absolute;
-              left: 0;
-              margin-left: 20px;
-              width: 24px;
-              transition: all 0.3s ease;
-              &:hover {
-                path {
-                  fill: #4166eb;
-                }
-              }
-            }
-          }
-
-          .changemode {
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            span {
-              cursor: pointer;
-              color: rgba(65, 102, 235, 1);
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-        }
-        input {
-          outline: none;
-          border: 1px solid #898989;
-          box-sizing: border-box;
-          border-radius: 14px;
-          font-family: "Lexend", sans-serif;
-          font-size: clamp(12px, 1.5vw, 14px);
-          font-weight: 400;
-          width: 100%;
-          height: 45px;
-          margin-bottom: 18px;
-          padding: 15px;
-          &::placeholder {
-            color: #bcbcbc;
-          }
-        }
-        .logindetails {
-          width: 100%;
-          flex-direction: column;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s ease;
-          justify-content: center;
-          .passwordBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            position: relative;
-            margin-bottom: 20px;
-            input {
-              margin: 0;
-            }
-            .show {
-              position: absolute;
-              top: 0;
-              right: 0;
-              padding: 19px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              font-family: "Lexend", sans-serif;
-              font-style: normal;
-              font-weight: 400;
-              font-size: clamp(12px, 1.5vw, 14px);
-              text-align: right;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            margin-bottom: 10px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-          .or {
-            margin-bottom: 18px;
-            font-weight: 300;
-            font-size: clamp(12px, 1.5vw, 14px);
-          }
-          .google,
-          .apple {
-            border-radius: 14px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            height: 45px;
-            padding: 0 20px 0 20px;
-            margin-bottom: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            max-width: 326px;
-            p {
-              flex: 1;
-              text-align: center;
-              font-size: clamp(12px, 1.5vw, 14px);
-              font-weight: 400;
-            }
-            img {
-              margin-right: 20px;
-            }
-          }
-          .google {
-            background: #ffffff;
-            border: 1px solid #bfbfbf;
-            &:hover {
-              background: #f5f5f5;
-              border: 1px solid #a0a0a0;
-            }
-          }
-          .apple {
-            color: white;
-            background: #404040;
-            margin-bottom: 24px;
-            &:hover {
-              background: #292929;
-            }
-          }
-          .error {
-            font-size: clamp(12px, 1.5vw, 14px);
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .reset {
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            span {
-              cursor: pointer;
-              color: rgba(65, 102, 235, 1);
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-        }
-        .selection {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          transition: all 0.3s ease;
-
-          .option {
-            width: 100%;
-            height: 12vh;
-            max-height: 103px;
-            min-height: 80px;
-            position: relative;
-            border-radius: 24px;
-            -moz-outline-radius: 24px;
-            border: 1px solid #6b6b6b;
-            background-color: white;
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 18px 20px;
-            transition: all 0.2s ease-in-out;
-            p {
-              font-size: 20px;
-              font-weight: 400;
-              color: #727272;
-            }
-            h1 {
-              font-size: 30px;
-              font-weight: 500;
-            }
-
-            &:hover {
-              box-shadow: 0 0 0 2pt #4166eb;
-              h1 {
-                color: #4166eb;
-              }
-            }
-          }
-        }
-        .learner {
-          height: fit-content;
-          border-radius: 20px;
-          overflow: hidden;
-          transition: all 0.3s ease;
-          border: 1px solid #6b6b6b;
-          .top {
-            display: flex;
-            background: #f4f4f4;
-            height: 50%;
-            min-height: 162px;
-            .left {
-              display: flex;
-              flex-direction: column;
-              padding: 20px;
-              flex: 1;
-              h1 {
-                font-weight: 500;
-                color: #4166eb;
-                font-size: 50px;
-              }
-              p {
-                font-size: 30px;
-                font-weight: 400;
-              }
-            }
-            .mascot {
-              padding-top: 6%;
-              padding-right: 20px;
-              height: 100%;
-            }
-          }
-          .bottom {
-            padding: 20px;
-            height: 162px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            h1 {
-              font-weight: 500;
-              font-size: 20px;
-            }
-            p {
-              color: #6b6b6b;
-              font-size: 20px;
-              font-weight: 400;
-              margin-bottom: 20px;
-            }
-          }
-        }
-        .parent {
-          width: 100%;
-          flex-direction: column;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s ease;
-          justify-content: center;
-          .error {
-            font-size: 15px;
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            margin-bottom: 18px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-          .or {
-            margin-bottom: 18px;
-            font-weight: 300;
-            font-size: 16px;
-          }
-          .google,
-          .apple {
-            border-radius: 12px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            height: 63px;
-            margin-bottom: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            p {
-              flex: 1;
-              text-align: center;
-              font-size: 20px;
-              font-weight: 400;
-              padding-right: 10%;
-            }
-            svg {
-              width: 80px;
-              padding: 15px;
-              height: 100%;
-              border-right: 1px solid rgba(248, 248, 248, 0.541);
-            }
-          }
-          .google {
-            background: #ffffff;
-            border: 1px solid #bfbfbf;
-            img {
-              border-color: rgba(255, 255, 255, 0.31);
-            }
-            &:hover {
-              background: #f5f5f5;
-              border: 1px solid #a0a0a0;
-            }
-          }
-          .apple {
-            color: white;
-            background: #404040;
-            img {
-              border-color: #6d6d6d;
-            }
-            &:hover {
-              background: #292929;
-            }
-          }
-        }
-        .privacy {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 100%;
-
-          .heading,
-          .subheading {
-            font-size: 32px;
-            font-weight: 500;
-            text-align: center;
-          }
-          .subheading {
-            margin-bottom: 20px;
-          }
-          .details {
-            font-size: 16px;
-            font-weight: 400;
-            flex: 1;
-            overflow-y: auto;
-            max-width: 1099px;
-            margin-bottom: 40px;
-            padding-right: 20px;
-            white-space: pre-line;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .disabled {
-            background: #a3a3a3;
-            &:hover {
-              transition: all 0.3s ease;
-              background: #a3a3a3;
-              color: #ffffff;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
-        .phone {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .phoneWrapper {
-            width: 100%;
-            display: flex;
-            border-radius: 14px;
-            border: 1px solid #898989;
-            overflow: hidden;
-            height: 59px;
-            p {
-              font-size: 20px;
-              border-right: 1px solid #898989;
-              width: 50px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: "Lexend", sans-serif;
-            }
-            input {
-              flex: 1;
-              border: none;
-              border-radius: 0;
-              margin-bottom: 0;
-              padding: 15px;
-              max-width: none;
-            }
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-        .email {
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          .error {
-            font-weight: 500;
-            font-size: 15px;
-            color: #ff6263;
-            text-align: center;
-          }
-          .phoneWrapper {
-            display: flex;
-            border-radius: 14px;
-            border: 1px solid #898989;
-            overflow: hidden;
-            width: 100%;
-            height: 59px;
-            p {
-              font-size: 20px;
-              border-right: 1px solid #898989;
-              width: 50px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: "Lexend", sans-serif;
-            }
-            input {
-              flex: 1;
-              border: none;
-              border-radius: 0;
-              margin-bottom: 0;
-              padding: 15px;
-            }
-          }
-          .nameWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 22px;
-            input {
-              width: 48%;
-            }
-          }
-          .weakpasstext {
-            color: rgb(255, 118, 118);
-            margin-bottom: 5px;
-            font-size: 15px;
-            width: fit-content;
-          }
-          .passwordBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 59px;
-            position: relative;
-            margin-bottom: 20px;
-            z-index: 1;
-            .detailPass {
-              display: flex;
-              position: absolute;
-              flex-direction: column;
-              background-color: white;
-              border-radius: 12px;
-              box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-              top: -185px;
-              padding-top: 15px;
-              right: 50%;
-              z-index: 2;
-              transform: translateX(50%);
-              animation: fade 0.3s ease;
-              .arrow {
-                position: absolute;
-                bottom: 0;
-                right: 22.5%;
-                transform: rotate(45deg);
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                background-color: white;
-                z-index: -1;
-                width: 100px;
-                height: 100px;
-              }
-              .tab {
-                display: flex;
-                width: 100%;
-                align-items: center;
-                background-color: white;
-                padding: 0 20px;
-                padding-bottom: 10px;
-                border-radius: 12px;
-                z-index: 2;
-                &:last-child {
-                  padding-bottom: 20px;
-                }
-                svg {
-                  width: 15px;
-                  height: 15px;
-                }
-                p {
-                  margin-left: 6px;
-                  font-size: 15px;
-                }
-              }
-              .white {
-                background-color: white;
-                width: 100%;
-                border-radius: 12px;
-                height: 15px;
-              }
-            }
-            input {
-              margin: 0;
-            }
-            .weakpass {
-              border-color: rgb(255, 118, 118);
-            }
-            .show {
-              position: absolute;
-              top: 0;
-              right: 0;
-              padding: 19px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              font-family: "Lexend", sans-serif;
-              font-style: normal;
-              font-weight: 400;
-              font-size: 18px;
-              text-align: right;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-        .otp {
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          .error {
-            font-size: 15px;
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .otpHeadWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            .text {
-              font-size: 20px;
-              font-weight: 400;
-              text-align: center;
-            }
-            .phone {
-              font-size: 20px;
-              font-weight: 500;
-              text-align: center;
-            }
-          }
-          .otpWrapper {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            margin-top: 22px;
-            input {
-              width: 60px;
-              margin: 0 6px;
-              text-align: center;
-            }
-          }
-          .resendButton {
-            color: rgba(65, 102, 235, 1);
-            font-size: 18px;
-            font-weight: 500;
-            margin-top: 12px;
-            text-align: center;
-            cursor: pointer;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-      }
-      .signupAuth {
-        padding: 40px 70px 70px;
-        .headingflex {
-          margin-bottom: 60px;
-        }
-      }
-      .parentAuth {
-        padding: 40px 70px 40px;
-        .headingflex {
-        }
-      }
-      .learnerAuth {
-        padding: 40px 70px 75px;
-        .headingflex {
-          margin-bottom: 45px;
-        }
-      }
-      .privacyAuth {
-        max-width: 800px;
-        height: 80vh;
-      }
-      .background {
-        position: absolute;
-        z-index: 4;
-        background-color: rgba(0, 0, 0, 0.19);
-        width: 100vw;
-        cursor: pointer;
-        height: 100vh;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-}
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
-  .auth {
-    position: absolute;
-    z-index: 5;
-    .authContentWrapper {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 7vh;
-      .authcontainer {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        z-index: 6;
-        background-color: white;
-        height: fit-content;
-        width: 50vw;
-        max-width: 589px;
-        min-width: 300px;
-        padding: 20px;
-        border-radius: 12px;
-        position: relative;
-        transition: all 0.3s ease;
-        height: 80vh;
-        overflow-y: auto;
-        .headingflex {
-          font-family: Rubik;
-          font-style: normal;
-          transition: all 0.3s ease;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 5vh;
-          align-items: center;
-          .heading,
-          .forgetheading {
-            font-weight: 500;
-            font-size: $mobile-heading;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            justify-content: center;
-            .svg {
-              cursor: pointer;
-              position: absolute;
-              left: 0;
-              margin-left: 20px;
-              width: 24px;
-              transition: all 0.3s ease;
-              &:hover {
-                path {
-                  fill: #4166eb;
-                }
-              }
-            }
-          }
-
-          .changemode {
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            span {
-              cursor: pointer;
-              color: rgba(65, 102, 235, 1);
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-        }
-        input {
-          outline: none;
-          border: 1px solid #898989;
-          box-sizing: border-box;
-          border-radius: 14px;
-          font-family: "Lexend", sans-serif;
-          font-size: clamp(12px, 1.5vw, 14px);
-          font-weight: 400;
-          width: 100%;
-          height: 45px;
-          margin-bottom: 18px;
-          padding: 15px;
-          &::placeholder {
-            color: #bcbcbc;
-          }
-        }
-        .logindetails {
-          width: 100%;
-          flex-direction: column;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s ease;
-          justify-content: center;
-          .passwordBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            position: relative;
-            margin-bottom: 20px;
-            input {
-              margin: 0;
-            }
-            .show {
-              position: absolute;
-              top: 0;
-              right: 0;
-              padding: 19px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              font-family: "Lexend", sans-serif;
-              font-style: normal;
-              font-weight: 400;
-              font-size: clamp(12px, 1.5vw, 14px);
-              text-align: right;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            margin-bottom: 10px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-          .or {
-            margin-bottom: 18px;
-            font-weight: 300;
-            font-size: clamp(12px, 1.5vw, 14px);
-          }
-          .google,
-          .apple {
-            border-radius: 14px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            height: 45px;
-            padding: 0 20px 0 20px;
-            margin-bottom: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            max-width: 326px;
-            p {
-              flex: 1;
-              text-align: center;
-              font-size: clamp(12px, 1.5vw, 14px);
-              font-weight: 400;
-            }
-            img {
-              margin-right: 20px;
-            }
-          }
-          .google {
-            background: #ffffff;
-            border: 1px solid #bfbfbf;
-            &:hover {
-              background: #f5f5f5;
-              border: 1px solid #a0a0a0;
-            }
-          }
-          .apple {
-            color: white;
-            background: #404040;
-            margin-bottom: 24px;
-            &:hover {
-              background: #292929;
-            }
-          }
-          .error {
-            font-size: clamp(12px, 1.5vw, 14px);
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .reset {
-            font-weight: 500;
-            font-size: clamp(12px, 1.5vw, 14px);
-            span {
-              cursor: pointer;
-              color: rgba(65, 102, 235, 1);
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-        }
-        .selection {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          transition: all 0.3s ease;
-
-          .option {
-            width: 100%;
-            height: 12vh;
-            max-height: 103px;
-            min-height: 80px;
-            position: relative;
-            border-radius: 24px;
-            -moz-outline-radius: 24px;
-            border: 1px solid #6b6b6b;
-            background-color: white;
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 18px 20px;
-            transition: all 0.2s ease-in-out;
-            p {
-              font-size: 20px;
-              font-weight: 400;
-              color: #727272;
-            }
-            h1 {
-              font-size: 30px;
-              font-weight: 500;
-            }
-
-            &:hover {
-              box-shadow: 0 0 0 2pt #4166eb;
-              h1 {
-                color: #4166eb;
-              }
-            }
-          }
-        }
-        .learner {
-          height: fit-content;
-          border-radius: 20px;
-          overflow: hidden;
-          transition: all 0.3s ease;
-          border: 1px solid #6b6b6b;
-          .top {
-            display: flex;
-            background: #f4f4f4;
-            height: 50%;
-            min-height: 162px;
-            .left {
-              display: flex;
-              flex-direction: column;
-              padding: 20px;
-              flex: 1;
-              h1 {
-                font-weight: 500;
-                color: #4166eb;
-                font-size: 50px;
-              }
-              p {
-                font-size: 30px;
-                font-weight: 400;
-              }
-            }
-            .mascot {
-              padding-top: 6%;
-              padding-right: 20px;
-              height: 100%;
-            }
-          }
-          .bottom {
-            padding: 20px;
-            height: 162px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            h1 {
-              font-weight: 500;
-              font-size: 20px;
-            }
-            p {
-              color: #6b6b6b;
-              font-size: 20px;
-              font-weight: 400;
-              margin-bottom: 20px;
-            }
-          }
-        }
-        .parent {
-          width: 100%;
-          flex-direction: column;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s ease;
-          justify-content: center;
-          .error {
-            font-size: 15px;
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            margin-bottom: 18px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-          .or {
-            margin-bottom: 18px;
-            font-weight: 300;
-            font-size: 16px;
-          }
-          .google,
-          .apple {
-            border-radius: 12px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            height: 63px;
-            margin-bottom: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            p {
-              flex: 1;
-              text-align: center;
-              font-size: 20px;
-              font-weight: 400;
-              padding-right: 10%;
-            }
-            svg {
-              width: 80px;
-              padding: 15px;
-              height: 100%;
-              border-right: 1px solid rgba(248, 248, 248, 0.541);
-            }
-          }
-          .google {
-            background: #ffffff;
-            border: 1px solid #bfbfbf;
-            img {
-              border-color: rgba(255, 255, 255, 0.31);
-            }
-            &:hover {
-              background: #f5f5f5;
-              border: 1px solid #a0a0a0;
-            }
-          }
-          .apple {
-            color: white;
-            background: #404040;
-            img {
-              border-color: #6d6d6d;
-            }
-            &:hover {
-              background: #292929;
-            }
-          }
-        }
-        .privacy {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 100%;
-
-          .heading,
-          .subheading {
-            font-size: 32px;
-            font-weight: 500;
-            text-align: center;
-          }
-          .subheading {
-            margin-bottom: 20px;
-          }
-          .details {
-            font-size: 16px;
-            font-weight: 400;
-            flex: 1;
-            overflow-y: auto;
-            max-width: 1099px;
-            margin-bottom: 40px;
-            padding-right: 20px;
-            white-space: pre-line;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .disabled {
-            background: #a3a3a3;
-            &:hover {
-              transition: all 0.3s ease;
-              background: #a3a3a3;
-              color: #ffffff;
-              border: 0px solid #ffffff;
-            }
-          }
-        }
-        .phone {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .phoneWrapper {
-            width: 100%;
-            display: flex;
-            border-radius: 14px;
-            border: 1px solid #898989;
-            overflow: hidden;
-            height: 59px;
-            p {
-              font-size: 20px;
-              border-right: 1px solid #898989;
-              width: 50px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: "Lexend", sans-serif;
-            }
-            input {
-              flex: 1;
-              border: none;
-              border-radius: 0;
-              margin-bottom: 0;
-              padding: 15px;
-              max-width: none;
-            }
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-        .email {
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          .error {
-            font-weight: 500;
-            font-size: 15px;
-            color: #ff6263;
-            text-align: center;
-          }
-          .phoneWrapper {
-            display: flex;
-            border-radius: 14px;
-            border: 1px solid #898989;
-            overflow: hidden;
-            width: 100%;
-            height: 59px;
-            p {
-              font-size: 20px;
-              border-right: 1px solid #898989;
-              width: 50px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: "Lexend", sans-serif;
-            }
-            input {
-              flex: 1;
-              border: none;
-              border-radius: 0;
-              margin-bottom: 0;
-              padding: 15px;
-            }
-          }
-          .nameWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 22px;
-            input {
-              width: 48%;
-            }
-          }
-          .weakpasstext {
-            color: rgb(255, 118, 118);
-            margin-bottom: 5px;
-            font-size: 15px;
-            width: fit-content;
-          }
-          .passwordBox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 59px;
-            position: relative;
-            margin-bottom: 20px;
-            z-index: 1;
-            .detailPass {
-              display: flex;
-              position: absolute;
-              flex-direction: column;
-              background-color: white;
-              border-radius: 12px;
-              box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-              top: -185px;
-              padding-top: 15px;
-              right: 50%;
-              z-index: 2;
-              transform: translateX(50%);
-              animation: fade 0.3s ease;
-              .arrow {
-                position: absolute;
-                bottom: 0;
-                right: 22.5%;
-                transform: rotate(45deg);
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                background-color: white;
-                z-index: -1;
-                width: 100px;
-                height: 100px;
-              }
-              .tab {
-                display: flex;
-                width: 100%;
-                align-items: center;
-                background-color: white;
-                padding: 0 20px;
-                padding-bottom: 10px;
-                border-radius: 12px;
-                z-index: 2;
-                &:last-child {
-                  padding-bottom: 20px;
-                }
-                svg {
-                  width: 15px;
-                  height: 15px;
-                }
-                p {
-                  margin-left: 6px;
-                  font-size: 15px;
-                }
-              }
-              .white {
-                background-color: white;
-                width: 100%;
-                border-radius: 12px;
-                height: 15px;
-              }
-            }
-            input {
-              margin: 0;
-            }
-            .weakpass {
-              border-color: rgb(255, 118, 118);
-            }
-            .show {
-              position: absolute;
-              top: 0;
-              right: 0;
-              padding: 19px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              font-family: "Lexend", sans-serif;
-              font-style: normal;
-              font-weight: 400;
-              font-size: 18px;
-              text-align: right;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:hover {
-                color: #2751e9;
-              }
-            }
-          }
-
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-        .otp {
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          .error {
-            font-size: 15px;
-            color: #ff6263;
-            font-weight: 500;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
-          }
-          .otpHeadWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            .text {
-              font-size: 20px;
-              font-weight: 400;
-              text-align: center;
-            }
-            .phone {
-              font-size: 20px;
-              font-weight: 500;
-              text-align: center;
-            }
-          }
-          .otpWrapper {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            margin-top: 22px;
-            input {
-              width: 60px;
-              margin: 0 6px;
-              text-align: center;
-            }
-          }
-          .resendButton {
-            color: rgba(65, 102, 235, 1);
-            font-size: 18px;
-            font-weight: 500;
-            margin-top: 12px;
-            text-align: center;
-            cursor: pointer;
-          }
-          .button {
-            background: #4166eb;
-            border-radius: 14px;
-            color: white;
-            width: 100%;
-            max-width: 480px;
-            height: 63px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            margin-top: 22px;
-            &:hover {
-              background-color: #ffffff;
-              color: #4166eb;
-              border: 1px solid #4166eb;
-            }
-          }
-          .spinner_btn {
-            &:hover {
-              background: #4166eb;
-              color: white;
-              border: none;
-            }
-          }
-        }
-      }
-      .signupAuth {
-        padding: 40px 70px 70px;
-        .headingflex {
-          margin-bottom: 60px;
-        }
-      }
-      .parentAuth {
-        padding: 40px 70px 40px;
-        .headingflex {
-        }
-      }
-      .learnerAuth {
-        padding: 40px 70px 75px;
-        .headingflex {
-          margin-bottom: 45px;
-        }
-      }
-      .privacyAuth {
-        max-width: 800px;
-        height: 80vh;
-      }
-      .background {
-        position: absolute;
-        z-index: 4;
-        background-color: rgba(0, 0, 0, 0.19);
-        width: 100vw;
-        cursor: pointer;
-        height: 100vh;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .auth {
     .authContentWrapper {
       .authcontainer {
@@ -3788,7 +1260,7 @@
           margin-bottom: 25px;
           padding-left: 6%;
           .heading {
-            font-size: 22px;
+            font-size: 1.375rem;
             padding-left: 0px;
             .svg {
               cursor: pointer;
@@ -3814,17 +1286,17 @@
         .logindetails {
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .passwordBox {
             height: 45px;
             margin-bottom: 18px;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0;
             }
             .show {
@@ -3833,7 +1305,7 @@
             }
           }
           .or {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
@@ -3841,7 +1313,7 @@
             height: 45px;
             padding-right: 40px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .reset {
@@ -3856,10 +1328,10 @@
           .option {
             height: 10vh;
             p {
-              font-size: 16px;
+              font-size: 1rem;
             }
             h1 {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
           }
         }
@@ -3882,7 +1354,7 @@
                 font-size: 40px;
               }
               p {
-                font-size: 20px;
+                font-size: 1.25rem;
               }
             }
             .mascot {
@@ -3902,12 +1374,12 @@
             justify-content: center;
             h1 {
               font-weight: 500;
-              font-size: 14px;
+              font-size: 0.875rem;
               line-height: 16px;
             }
             p {
               color: #6b6b6b;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
               line-height: 16px;
               margin-bottom: 20px;
@@ -3916,22 +1388,22 @@
         }
         .parent {
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .or {
             margin-bottom: 18px;
             font-weight: 300;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             height: 45px;
             justify-content: center;
@@ -3940,7 +1412,7 @@
         .privacy {
           .heading,
           .subheading {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 500;
             text-align: center;
           }
@@ -3948,12 +1420,12 @@
             margin-bottom: 20px;
           }
           .details {
-            font-size: 14px;
+            font-size: 0.875rem;
             padding-right: 10px;
           }
           .button {
             height: 45px;
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
         .phone {
@@ -3965,7 +1437,7 @@
             overflow: hidden;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               border-right: 1px solid #898989;
               width: 50px;
               display: flex;
@@ -3984,13 +1456,13 @@
               justify-content: center;
               max-width: none;
               height: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             width: 85%;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .email {
@@ -4002,11 +1474,11 @@
             width: 100%;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               width: 50px;
             }
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               padding: 0 10px;
             }
@@ -4014,7 +1486,7 @@
           .nameWrapper {
             margin: 15px 0;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               margin: 0;
             }
@@ -4044,7 +1516,7 @@
                 }
                 p {
                   margin-left: 6px;
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
               .white {
@@ -4055,48 +1527,48 @@
             }
             input {
               margin: 0;
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
             }
 
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .weakpasstext {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .button {
             margin: 0;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .otp {
           .otpHeadWrapper {
             .text {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             .phone {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .otpWrapper {
             input {
               width: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0 6px;
               height: 45px;
             }
           }
           .resendButton {
             color: rgba(65, 102, 235, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }
@@ -4134,7 +1606,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
   .auth {
     .authContentWrapper {
       .authcontainer {
@@ -4195,7 +1667,7 @@
             }
           }
           .or {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
@@ -4218,10 +1690,10 @@
           .option {
             height: 10vh;
             p {
-              font-size: 16px;
+              font-size: 1rem;
             }
             h1 {
-              font-size: 20px;
+              font-size: 1.25rem;
             }
           }
         }
@@ -4244,7 +1716,7 @@
                 font-size: 40px;
               }
               p {
-                font-size: 20px;
+                font-size: 1.25rem;
               }
             }
             .mascot {
@@ -4264,12 +1736,12 @@
             justify-content: center;
             h1 {
               font-weight: 500;
-              font-size: 14px;
+              font-size: 0.875rem;
               line-height: 16px;
             }
             p {
               color: #6b6b6b;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 400;
               line-height: 16px;
               margin-bottom: 20px;
@@ -4278,22 +1750,22 @@
         }
         .parent {
           input {
-            font-size: 14px;
+            font-size: 0.875rem;
             height: 45px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
           .or {
             margin-bottom: 18px;
             font-weight: 300;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .google,
           .apple {
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             height: 45px;
             justify-content: center;
@@ -4302,7 +1774,7 @@
         .privacy {
           .heading,
           .subheading {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 500;
             text-align: center;
           }
@@ -4310,12 +1782,12 @@
             margin-bottom: 20px;
           }
           .details {
-            font-size: 14px;
+            font-size: 0.875rem;
             padding-right: 10px;
           }
           .button {
             height: 45px;
-            font-size: 16px;
+            font-size: 1rem;
           }
         }
         .phone {
@@ -4327,7 +1799,7 @@
             overflow: hidden;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               border-right: 1px solid #898989;
               width: 50px;
               display: flex;
@@ -4346,13 +1818,13 @@
               justify-content: center;
               max-width: none;
               height: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .button {
             width: 85%;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .email {
@@ -4364,11 +1836,11 @@
             width: 100%;
             height: 45px;
             p {
-              font-size: 14px;
+              font-size: 0.875rem;
               width: 50px;
             }
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               padding: 0 10px;
             }
@@ -4376,7 +1848,7 @@
           .nameWrapper {
             margin: 15px 0;
             input {
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
               margin: 0;
             }
@@ -4406,7 +1878,7 @@
                 }
                 p {
                   margin-left: 6px;
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
               .white {
@@ -4417,48 +1889,48 @@
             }
             input {
               margin: 0;
-              font-size: 14px;
+              font-size: 0.875rem;
               height: 45px;
             }
 
             .show {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .weakpasstext {
-            font-size: 12px;
+            font-size: 0.75rem;
           }
           .button {
             margin: 0;
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
         .otp {
           .otpHeadWrapper {
             .text {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
             .phone {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
           .otpWrapper {
             input {
               width: 45px;
-              font-size: 14px;
+              font-size: 0.875rem;
               margin: 0 6px;
               height: 45px;
             }
           }
           .resendButton {
             color: rgba(65, 102, 235, 1);
-            font-size: 14px;
+            font-size: 0.875rem;
             margin-top: 15px;
           }
           .button {
             height: 45px;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
       }

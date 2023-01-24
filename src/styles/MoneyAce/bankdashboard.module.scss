@@ -42,7 +42,7 @@
           padding: 15px 20px;
           border-bottom: 1px solid #72a2e7;
           color: #72a2e7;
-          font-size: 20px;
+          font-size: 1.25rem;
         }
         .form {
           padding: 20px 40px;
@@ -115,7 +115,7 @@
       height: 90%;
       width: 88%;
       .heading {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 500;
         display: flex;
         align-items: center;
@@ -126,7 +126,7 @@
         }
         .bulletinbtn {
           cursor: pointer;
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 500;
           display: flex;
           align-items: center;
@@ -189,26 +189,26 @@
         position: relative;
         height: 100%;
         .pageno {
-          font-size: 12px;
+          font-size: 0.75rem;
           bottom: 20px;
           right: 20px;
           position: absolute;
         }
         .heading {
           font-weight: bold;
-          font-size: 20px;
+          font-size: 1.25rem;
           width: 100%;
           text-align: center;
         }
         .subheading {
           font-weight: bold;
-          font-size: 14px;
+          font-size: 0.875rem;
           width: 100%;
           margin-top: 15px;
         }
         .lowpdetail {
           width: 100%;
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
           border-top: 1px solid black;
           border-bottom: 1px solid black;
@@ -217,7 +217,7 @@
         }
         .highpdetail {
           width: 100%;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 600;
           border-bottom: 1px solid black;
           text-align: center;
@@ -229,7 +229,7 @@
           width: 100%;
           margin-top: 20px;
           background-color: #fff;
-          font-size: 12px;
+          font-size: 0.75rem;
           .tableheading {
             background-color: #97928d;
             font-weight: 500;
@@ -254,7 +254,7 @@
           }
         }
         .list {
-          font-size: 12px;
+          font-size: 0.75rem;
           width: 100%;
           padding: 0 15px;
           margin-top: 10px;
@@ -285,7 +285,7 @@
         border-radius: 6px;
         padding: 5px 10px;
         margin-bottom: 10px;
-        font-size: 12px;
+        font-size: 0.75rem;
         font-weight: 500;
         cursor: pointer;
       }
@@ -338,7 +338,7 @@
             padding: 15px 20px;
             border-bottom: 1px solid #72a2e7;
             color: #72a2e7;
-            font-size: 20px;
+            font-size: 1.25rem;
           }
           .form {
             padding: 20px 40px;
@@ -411,7 +411,7 @@
         height: 90%;
         width: 88%;
         .heading {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           display: flex;
           align-items: center;
@@ -422,7 +422,7 @@
           }
           .bulletinbtn {
             cursor: pointer;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             display: flex;
             align-items: center;
