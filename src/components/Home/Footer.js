@@ -134,16 +134,14 @@ function Footer({
             <div className={styles.bottom}>
               <p
                 onClick={() => {
-                  settermmode("terms");
-                  setshowterm(true);
+                  router.push("/terms");
                 }}
               >
                 Terms & conditions
               </p>
               <p
                 onClick={() => {
-                  settermmode("privacy");
-                  setshowterm(true);
+                  router.push("/privacy-policy");
                 }}
               >
                 Privacy policy
