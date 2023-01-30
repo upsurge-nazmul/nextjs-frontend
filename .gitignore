@@ -9,7 +9,9 @@
 public/sitemap-0.xml
 public/robots.txt
 public/sitemap.xml
+public/sw.js
 public/sw.js.map
+public/workbox-327c579b.js
 public/workbox-327c579b.js.map
 yarn.lock
 # testing
