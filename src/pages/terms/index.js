@@ -36,7 +36,6 @@ function PrivacyPolicy() {
 
       <div className={styles.mainContent}>
         <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
-        <h1 className={styles.subheading}>Your privacy matters to us.</h1>
         <div className={styles.details} id="privacy-main">
           <h1>Delivery and Shipping policy</h1>
           <p> We provide digatal products only. The product is acessible to you instantly after payment.</p>

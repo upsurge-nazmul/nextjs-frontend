@@ -135,7 +135,7 @@ function PrivacyPolicy() {
 
 
 
-          <h2 id="upsurge-children-s-privacy-policy-">Upsurge <strong>Children’s Privacy Policy</strong></h1>
+          <h2 id="upsurge-children-s-privacy-policy-">Upsurge <strong>Children’s Privacy Policy</strong></h2>
           <h3 id="overview">Overview</h3>
           <p>Upsurge is dedicated to making learning awesome and we take the privacy of our users seriously. Keeping Children&#39;s personal information safe is a priority at Upsurge. This Children Privacy Policy explains how we use the personal information we collect from and about Children’s when they engage with Upsurge. As set forth below, we use such personal information solely as a service provider.</p>
           <p>To learn about our practices with respect to other users, who sign up for Upsurge and student accountholders who use Upsurge, please read our Privacy Policy.</p>
