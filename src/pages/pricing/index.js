@@ -164,7 +164,7 @@ export default function Pricing() {
           </div>
           <div className={styles.contentPlan}>
           <div className={styles.sectionTitle}>
-            Supercharge your child's financial literacy and entrepreneurship journey with
+            Supercharge your child`&apos;s financial literacy and entrepreneurship journey with
           </div>
           <div className={styles.section}>
             <div className={styles.sectionLeft}>
