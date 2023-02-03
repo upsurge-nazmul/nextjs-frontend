@@ -202,6 +202,8 @@
           font-size: 0.875rem;
           margin-top: 10px;
           display: flex;
+          flex-flow: wrap;
+          gap: 1rem;
           p {
             text-transform: capitalize;
             cursor: pointer;
@@ -574,6 +576,8 @@
           justify-content: center;
           align-items: center;
           font-size: 1rem;
+          flex-wrap: 1rem;
+          gap: 1rem;
           .terms {
             margin-right: 10px;
           }
