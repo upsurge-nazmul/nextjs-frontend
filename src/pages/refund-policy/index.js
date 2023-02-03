@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import PageTitle from "../../components/PageTitle";
 import Curve1 from "../../components/SVGcomponents/Curve1";
@@ -35,13 +36,13 @@ function PrivacyPolicy() {
       <Curve2 className={styles.curve2} />
 
           <div className={styles.mainContent}>
-              <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
+              <h1 className={styles.heading}>Return/Refund Policy</h1>
               <div className={styles.details} id="privacy-main">\
-
-                  <h2 id="return-refund-policy">Return/Refund Policy</h2>
-                  <p>i. Our platform provides free limited access to the App and some content after logging in. You can decide based on this whether to subscribe or not. We stand by the quality and depth of the content we provide and Customer may make the refund request within 7 days from subscription. Further, all payments on this platform will be irrevocable, non-refundable, non-transferable and non-creditable, if request made beyond the aforesaid period of 7 days. </p>
-                  <p>ii. At <strong>Upsurge</strong> (hereinafter referred as <strong>platform</strong>), we can decide the process for crediting the applicable refund against the various acceptable conditions, If the payment for subscription was done from your side, then a refund for such payment will be processed to your original payment method. </p>
-                  <p>iii. Following are the conditions applicable on the refund process: </p>
+                  <ol className={styles.list}>  
+                  <li> Our platform provides free limited access to the App and some content after logging in. You can decide based on this whether to subscribe or not. We stand by the quality and depth of the content we provide and Customer may make the refund request within 7 days from subscription. Further, all payments on this platform will be irrevocable, non-refundable, non-transferable and non-creditable, if request made beyond the aforesaid period of 7 days. </li>
+                  <li>ii. At <strong>Upsurge</strong> (hereinafter referred as <strong>platform</strong>), we can decide the process for crediting the applicable refund against the various acceptable conditions, If the payment for subscription was done from your side, then a refund for such payment will be processed to your original payment method. </li>
+                  <li>iii. Following are the conditions applicable on the refund process: </li>
+                  </ol>
                   <table>
                       <thead>
                           <tr>
@@ -93,6 +94,7 @@ function PrivacyPolicy() {
               </div>
 
           </div>
+          <Footer />
     </div>
   );
 }

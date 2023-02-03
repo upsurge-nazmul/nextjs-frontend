@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import PageTitle from "../../components/PageTitle";
 import Curve1 from "../../components/SVGcomponents/Curve1";
@@ -35,7 +36,7 @@ function PrivacyPolicy() {
       <Curve2 className={styles.curve2} />
 
       <div className={styles.mainContent}>
-        <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
+        <h1 className={styles.heading}>Terms and conditions.</h1>
         <div className={styles.details} id="privacy-main">
           <h1>Delivery and Shipping policy</h1>
           <p> We provide digatal products only. The product is acessible to you instantly after payment.</p>
@@ -94,6 +95,7 @@ function PrivacyPolicy() {
         </div>
 
       </div>
+      <Footer />
     </div>
   );
 }

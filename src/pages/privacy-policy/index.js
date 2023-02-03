@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import PageTitle from "../../components/PageTitle";
 import Curve1 from "../../components/SVGcomponents/Curve1";
@@ -35,10 +36,10 @@ function PrivacyPolicy() {
       <Curve2 className={styles.curve2} />
 
       <div className={styles.mainContent}>
-        <h1 className={styles.heading}>Hi, welcome to Upsurge.</h1>
+        <h1 className={styles.heading}>PRIVACY POLICY</h1>
         <h1 className={styles.subheading}>Your privacy matters to us.</h1>
         <div className={styles.details} id="privacy-main">
-          <h1 id="privacy-policy">PRIVACY POLICY</h1>
+          
           <p>This Privacy Policy (“Privacy Policy/Policy”) discloses the privacy practices for <strong>Surgeup Technologies Private Limited</strong> (“Upsurge”, “We/we” or “Us/us”) with regard to collection and use of the Personal Information (defined hereunder) of the customers, vendors, employees and the users (“You/you” or “Your/your”) and use of the online platform “<strong>Upsurge</strong>”.  This Privacy Policy along with Terms of Use describes our practices regarding, including your choices in relation to how we collect, store, use, share and secure your Personal Information across our Website and Mobile application called “<strong>Upsurge”-Made in India</strong>. The website and mobile application are referred to as the “<strong>Platform</strong>” It also describes your choices regarding use, access and correction of your Personal Information and your rights in relation to your Personal Information and how to contact us or supervisory authorities in the event you have a complaint.</p>
           <p>By providing your consent to this Privacy Policy and accepting the Terms of Use, you agree to the collection, use and transfer of your Personal Information as set out in this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not use/access this Website or application.</p>
           <p>We will review this Privacy Policy from time to time to make sure it is up to date. If you are just a visitor, then please note that this Privacy Policy is subject to change at any time without notice. To make sure you are aware of any changes, please review this Policy periodically. If you are our registered user, we will notify you before we make changes to this Policy and give you the opportunity to review the revised Policy before you choose to continue using our services.  </p>
@@ -176,6 +177,7 @@ function PrivacyPolicy() {
 
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
