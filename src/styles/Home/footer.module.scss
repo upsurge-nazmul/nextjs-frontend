@@ -110,13 +110,13 @@
           display: flex;
           align-items: center;
           font-weight: 400;
-          font-size: 20px;
+          font-size: 1.25rem;
           padding-left: 15px;
           ::placeholder {
             color: rgba(198, 198, 198, 1);
           }
         }
-  
+
         .button {
           width: 5vw;
           min-width: fit-content;
@@ -157,10 +157,10 @@
       .brandtext {
         margin-top: 2vh;
         .heading {
-          font-size: 15px;
+          font-size: 0.9375rem;
         }
         .subheadings {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-top: 10px;
           display: flex;
           align-items: center;
@@ -174,7 +174,7 @@
             }
           }
         }
-        
+
         .whatsapp {
           background-color: #25d366;
           padding: 10px;
@@ -187,11 +187,11 @@
           font-weight: 500;
           margin-top: 10px;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-right: 8px;
           }
           &:hover {
@@ -199,9 +199,11 @@
           }
         }
         .bottom {
-          font-size: 14px;
+          font-size: 0.875rem;
           margin-top: 10px;
           display: flex;
+          flex-flow: wrap;
+          gap: 1rem;
           p {
             text-transform: capitalize;
             cursor: pointer;
@@ -248,14 +250,14 @@
         flex-direction: column;
         margin-right: 20px;
         .heading {
-          font-size: 17px;
+          font-size: 1.0625rem;
           margin-bottom: 10px;
           margin-bottom: 25px;
           color: rgba(65, 102, 235, 1);
           font-weight: 400;
         }
         .subheading {
-          font-size: 15px;
+          font-size: 0.9375rem;
           margin-bottom: 20px;
           cursor: pointer;
           text-transform: capitalize;
@@ -276,10 +278,10 @@
     padding-bottom: 40px;
     .brandtext {
       .heading {
-        font-size: 15px;
+        font-size: 0.9375rem;
       }
       .subheadings {
-        font-size: 15px;
+        font-size: 0.9375rem;
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -305,11 +307,11 @@
         font-weight: 500;
         margin-top: 10px;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         .icon {
-          font-size: 22px;
+          font-size: 1.375rem;
           margin-right: 8px;
         }
         &:hover {
@@ -317,7 +319,7 @@
         }
       }
       .bottom {
-        font-size: 14px;
+        font-size: 0.875rem;
         margin-top: 10px;
         display: flex;
         p {
@@ -359,498 +361,14 @@
     display: flex;
     justify-content: center;
     margin: 40px 0 20px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: rgb(59, 59, 59);
   }
 }
-.darkfooterSection {
-  width: 100%;
-  min-height: fit-content;
-  scroll-snap-align: center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-  padding: 4% 7% 10px;
-  z-index: 99;
-  .background {
-    background: $d-moredark;
-    .curvecontainer {
-      .curve2 {
-        opacity: 0.2;
-      }
-      .curve1 {
-        opacity: 0.2;
-      }
-    }
-  }
 
-  .top {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    height: 100%;
-    .left {
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      .logo {
-        width: 180px;
-        cursor: pointer;
-        height: fit-content;
-      }
-      .brandtext {
-        margin-top: 2vh;
-        .heading {
-          font-size: 15px;
-          color: $d-text1;
-        }
-        .subheadings {
-          font-size: 15px;
-          margin-top: 10px;
-          display: flex;
-          align-items: center;
-          a {
-            text-decoration: none;
-            color: #4166eb;
-            margin-right: 5px;
-            &:last-child {
-              margin: 0;
-              margin-left: 5px;
-            }
-          }
-        }
-        .whatsapp {
-          background-color: #25d366;
-          padding: 15px;
-          width: fit-content;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 12px;
-          color: white;
-          font-weight: 500;
-          margin-top: 10px;
-          text-decoration: none;
-          font-size: 16px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          .icon {
-            font-size: 22px;
-            margin-right: 8px;
-          }
-          &:hover {
-            background-color: #075e54;
-          }
-        }
-        .bottom {
-          font-size: 14px;
-          margin-top: 10px;
-          display: flex;
-          p {
-            color: $d-text2;
-          }
-        }
-      }
-      .socials {
-        display: flex;
-        height: fit-content;
-        overflow: auto;
-        align-items: center;
-        margin-top: 20px;
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 20px;
-          path {
-            fill: $d-text1;
-          }
-          height: 20px;
-        }
-        .socialyt {
-          width: 25px;
-          cursor: pointer;
-          margin-right: 30px;
-          fill: $d-text2;
-          height: 25px;
-          path {
-            fill: $d-text1;
-          }
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-      }
-    }
-    .right {
-      flex: 1;
-      display: flex;
-      justify-content: space-evenly;
-      height: 100%;
-      position: relative;
-      .column {
-        display: flex;
-        flex-direction: column;
-        margin-right: 20px;
-        .heading {
-          font-size: 17px;
-          margin-bottom: 10px;
-          margin-bottom: 25px;
-          color: rgba(65, 102, 235, 1);
-          font-weight: 400;
-        }
-        .subheading {
-          font-size: 15px;
-          margin-bottom: 20px;
-          cursor: pointer;
-          text-transform: capitalize;
-          font-weight: 400;
-          color: $d-text2;
-        }
-      }
-    }
-  }
-  .mobiletop {
-    .logo {
-      margin-bottom: 40px;
-    }
-    .column {
-      width: 100%;
-      border-bottom: 1px solid $d-text2;
-      padding: 0 10px;
-      margin-top: 20px;
-      .subheading {
-        margin-bottom: 10px;
-        text-transform: capitalize;
-        margin-left: 10px;
-        color: $d-text2;
-        &:nth-child(2) {
-          margin-top: 10px;
-        }
-      }
-      .heading {
-        width: 100%;
-        font-size: 18px;
-        display: flex;
-        justify-content: space-between;
-        color: $d-text2;
-        padding-bottom: 10px;
-      }
-    }
-    .socials {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-around;
-      margin-top: 40px;
-      .social {
-        cursor: pointer;
-        margin-right: 30px;
-        width: 30px;
-        height: 30px;
-        path {
-          fill: $d-text1;
-        }
-      }
-      .socialyt {
-        width: 35px;
-        cursor: pointer;
-        margin-right: 30px;
-        fill: $d-text1;
-        height: 35px;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-    .bottom {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-      font-size: 16px;
-      justify-content: space-around;
-      p {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-      .whatsapp {
-        background-color: #25d366;
-        padding: 10px 15px;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        margin-bottom: 10px;
-        text-decoration: none;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        .icon {
-          font-size: 18px;
-          margin-right: 5px;
-        }
-        &:hover {
-          background-color: #075e54;
-        }
-      }
-      .subheadings {
-        font-size: clamp(12px, 3vw, 16px);
-        display: flex;
-        align-items: center;
-        a {
-          text-decoration: none;
-          color: #4166eb;
-          margin-right: 5px;
-          &:last-child {
-            margin: 0;
-            margin-left: 5px;
-          }
-        }
-      }
-      .wrap {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        .terms {
-          margin-right: 10px;
-          color: $d-text2;
-        }
-      }
-    }
-  }
-  .brand {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 40px;
-    .brandtext {
-      .heading {
-        font-size: 15px;
-      }
-      .subheadings {
-        font-size: 15px;
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        a {
-          text-decoration: none;
-          color: #4166eb;
-          margin-right: 5px;
-          &:last-child {
-            margin: 0;
-            margin-left: 5px;
-          }
-        }
-      }
-      .whatsapp {
-        background-color: #25d366;
-        padding: 15px;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        color: white;
-        font-weight: 500;
-        margin-top: 10px;
-        text-decoration: none;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        .icon {
-          font-size: 22px;
-          margin-right: 8px;
-        }
-        &:hover {
-          background-color: #075e54;
-        }
-      }
-      .bottom {
-        font-size: 14px;
-        margin-top: 10px;
-        display: flex;
-        p {
-          cursor: pointer;
-          &:first-child {
-            margin-right: 10px;
-          }
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-
-    .socials {
-      display: flex;
-      height: fit-content;
-      overflow: auto;
-      align-items: center;
-      .social {
-        cursor: pointer;
-        margin-right: 30px;
-        width: 20px;
-        height: 20px;
-      }
-      .socialyt {
-        width: 25px;
-        cursor: pointer;
-        margin-right: 30px;
-        height: 25px;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-  }
-  .bottombar {
-    color: $d-text2;
-  }
-}
-@media only screen and (min-width: 860px) and (max-height: 800px) {
+@media only screen and (max-width: 500px) {
   .footerSection {
-    width: 100%;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    background: #f4f5f7;
-    position: relative;
-    overflow: hidden;
     .top {
-      display: flex;
-      width: 100%;
-      align-items: center;
-
-      .left {
-        width: 30%;
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        justify-content: space-between;
-        .logo {
-          width: 180px;
-        }
-        .details {
-          font-size: 18px;
-          margin-top: auto;
-          .heading {
-            font-weight: 400;
-          }
-          .subheadings {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 25px;
-            a {
-              text-decoration: none;
-              color: #4166eb;
-              transition: all 0.3s ease;
-              &:first-child {
-                margin-right: 5px;
-              }
-              &:hover {
-                color: hsl(227, 57%, 49%);
-              }
-            }
-          }
-        }
-        .bottom {
-          margin-top: auto;
-          display: flex;
-          width: 100%;
-          p {
-            margin-right: 20px;
-            font-size: 15px;
-            cursor: pointer;
-            font-weight: 400;
-          }
-        }
-      }
-      .right {
-        flex: 1;
-        display: flex;
-        justify-content: space-evenly;
-        height: 100%;
-        position: relative;
-        .column {
-          display: flex;
-          flex-direction: column;
-          .heading {
-            font-size: 17px;
-            margin-bottom: 10px;
-            margin-bottom: 25px;
-            color: rgba(65, 102, 235, 1);
-            font-weight: 400;
-          }
-          .subheading {
-            font-size: 15px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            font-weight: 400;
-          }
-        }
-      }
-    }
-    .mobiletop {
-      display: none;
-    }
-    .brand {
-      display: flex;
-      width: 100%;
-      .heading {
-        font-size: 15px;
-      }
-      .subheadings {
-        font-size: 15px;
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        a {
-          text-decoration: none;
-          color: #4166eb;
-          margin-right: 5px;
-          &:last-child {
-            margin: 0;
-            margin-left: 5px;
-          }
-        }
-      }
-      .socials {
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 20px;
-          height: 20px;
-        }
-        .socialyt {
-          width: 25px;
-          cursor: pointer;
-          margin-right: 30px;
-          height: 25px;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
-  .footerSection {
-    height: max-content;
-    .top {
-      display: none;
-    }
-    .brand {
       display: none;
     }
     .mobiletop {
@@ -858,24 +376,22 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      .logo {
-        margin-bottom: 40px;
-      }
+
       .column {
         width: 100%;
         padding: 0 10px;
         margin-top: 20px;
         .subheading {
-          margin-bottom: 10px;
+          font-size: 0.75rem;
           text-transform: capitalize;
-          margin-left: 10px;
+          margin-bottom: 10px;
           &:nth-child(2) {
             margin-top: 10px;
           }
         }
         .heading {
           width: 100%;
-          font-size: 18px;
+          font-size: 0.875rem;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -890,17 +406,14 @@
         .social {
           cursor: pointer;
           margin-right: 30px;
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
         }
         .socialyt {
-          width: 35px;
+          width: 25px;
           cursor: pointer;
           margin-right: 30px;
-          height: 35px;
-          &:last-child {
-            margin-right: 0;
-          }
+          height: 25px;
         }
       }
       .bottom {
@@ -908,42 +421,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 30px;
-        font-size: 16px;
+        margin-top: 20px;
+        font-size: 0.75rem;
         justify-content: space-around;
         p {
-          font-size: 16px;
+          font-size: 0.75rem;
           margin-bottom: 10px;
-        }
-        .whatsapp {
-          background-color: #25d366;
-          padding: 10px 15px;
-          width: fit-content;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          color: white;
-          font-weight: 500;
-          margin-bottom: 10px;
-          text-decoration: none;
-          font-size: 12px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          .icon {
-            font-size: 18px;
-            margin-right: 5px;
-          }
-          &:hover {
-            background-color: #075e54;
-          }
         }
         .subheadings {
-          font-size: clamp(12px, 3vw, 16px);
+          font-size: 10px;
           display: flex;
           align-items: center;
           a {
             text-decoration: none;
+            font-size: 10px;
             color: #4166eb;
             margin-right: 5px;
             &:last-child {
@@ -956,19 +447,17 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 10px;
           .terms {
             margin-right: 10px;
           }
         }
       }
     }
-    .bottombar {
-      margin: 10px 0;
-    }
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .footerSection {
     height: max-content;
     .top {
@@ -1037,7 +526,7 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
           font-size: $tablet-subheading;
@@ -1086,7 +575,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
+          flex-wrap: 1rem;
+          gap: 1rem;
           .terms {
             margin-right: 10px;
           }
@@ -1098,94 +589,8 @@
     }
   }
 }
-@media only screen and (max-width: 400px) {
-  .footerSection {
-    .mobiletop {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
 
-      .column {
-        width: 100%;
-        padding: 0 10px;
-        margin-top: 20px;
-        .subheading {
-          font-size: 12px;
-          text-transform: capitalize;
-          margin-bottom: 10px;
-          &:nth-child(2) {
-            margin-top: 10px;
-          }
-        }
-        .heading {
-          width: 100%;
-          font-size: 14px;
-          display: flex;
-          justify-content: space-between;
-          padding-bottom: 10px;
-        }
-      }
-      .socials {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-        margin-top: 40px;
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 20px;
-          height: 20px;
-        }
-        .socialyt {
-          width: 25px;
-          cursor: pointer;
-          margin-right: 30px;
-          height: 25px;
-        }
-      }
-      .bottom {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-        font-size: 12px;
-        justify-content: space-around;
-        p {
-          font-size: 12px;
-          margin-bottom: 10px;
-        }
-        .subheadings {
-          font-size: 10px;
-          display: flex;
-          align-items: center;
-          a {
-            text-decoration: none;
-            font-size: 10px;
-            color: #4166eb;
-            margin-right: 5px;
-            &:last-child {
-              margin: 0;
-              margin-left: 5px;
-            }
-          }
-        }
-        .wrap {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 10px;
-          .terms {
-            margin-right: 10px;
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (orientation: landscape) and (max-height: 500px) {
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
   .footerSection {
     height: max-content;
     .top {
@@ -1200,134 +605,7 @@
       align-items: center;
       width: 100%;
       .logo {
-        margin-bottom: 40px;
-      }
-      .column {
-        width: 100%;
-        padding: 0 10px;
-        margin-top: 20px;
-        .subheading {
-          margin-bottom: 10px;
-          text-transform: capitalize;
-          margin-left: 10px;
-          &:nth-child(2) {
-            margin-top: 10px;
-          }
-        }
-        .heading {
-          width: 100%;
-          font-size: 18px;
-          display: flex;
-          justify-content: space-between;
-          padding-bottom: 10px;
-        }
-      }
-      .socials {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-        margin-top: 40px;
-        .social {
-          cursor: pointer;
-          margin-right: 30px;
-          width: 30px;
-          height: 30px;
-        }
-        .socialyt {
-          width: 35px;
-          cursor: pointer;
-          margin-right: 30px;
-          height: 35px;
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-      }
-      .bottom {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 30px;
-        font-size: 16px;
-        justify-content: space-around;
-        p {
-          font-size: 16px;
-          margin-bottom: 10px;
-        }
-        .whatsapp {
-          background-color: #25d366;
-          padding: 10px 15px;
-          width: fit-content;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          color: white;
-          font-weight: 500;
-          margin-bottom: 10px;
-          text-decoration: none;
-          font-size: 12px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          .icon {
-            font-size: 18px;
-            margin-right: 5px;
-          }
-          &:hover {
-            background-color: #075e54;
-          }
-        }
-        .subheadings {
-          font-size: clamp(12px, 3vw, 16px);
-          display: flex;
-          align-items: center;
-          a {
-            text-decoration: none;
-            color: #4166eb;
-            margin-right: 5px;
-            &:last-child {
-              margin: 0;
-              margin-left: 5px;
-            }
-          }
-        }
-        .wrap {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 16px;
-          .terms {
-            margin: 0;
-            margin-right: 10px;
-            font-size: 14px;
-          }
-        }
-      }
-    }
-    .bottombar {
-      margin: 10px 0;
-    }
-  }
-}
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
-  .footerSection {
-    height: max-content;
-    .top {
-      display: none;
-    }
-    .brand {
-      display: none;
-    }
-    .mobiletop {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      .logo {
-        margin-bottom: 40px;
+        margin-bottom: 3vh;
       }
       .column {
         width: 100%;
@@ -1338,13 +616,16 @@
           margin-bottom: 10px;
           text-transform: capitalize;
           margin-left: 10px;
+          font-size: $tablet-smallsubheading;
+          list-style: $tablet-smallsubheading-line;
           &:nth-child(2) {
             margin-top: 10px;
           }
         }
         .heading {
           width: 100%;
-          font-size: 18px;
+          font-size: $tablet-subheading;
+          list-style: $tablet-subheading-line;
           display: flex;
           justify-content: space-between;
           padding-bottom: 10px;
@@ -1378,15 +659,16 @@
         flex-direction: column;
         align-items: center;
         margin-top: 30px;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-around;
         p {
-          font-size: 16px;
+          font-size: $tablet-subheading;
+          list-style: $tablet-subheading-line;
           margin-bottom: 10px;
         }
         .whatsapp {
           background-color: #25d366;
-          padding: 10px 15px;
+          padding: 2vw;
           width: fit-content;
           display: flex;
           align-items: center;
@@ -1396,11 +678,12 @@
           font-weight: 500;
           margin-bottom: 10px;
           text-decoration: none;
-          font-size: 12px;
+          font-size: $tablet-smallsubheading;
+          list-style: $tablet-smallsubheading-line;
           cursor: pointer;
           transition: all 0.3s ease;
           .icon {
-            font-size: 18px;
+            font-size: $tablet-subheading;
             margin-right: 5px;
           }
           &:hover {
@@ -1425,11 +708,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 1rem;
           .terms {
-            margin: 0;
             margin-right: 10px;
-            font-size: 14px;
           }
         }
       }

@@ -17,7 +17,7 @@
       position: sticky;
       font-weight: bold;
       top: 100px;
-      font-size: 56px;
+      font-size: 3.5rem;
     }
   }
 
@@ -31,44 +31,8 @@
     display: none;
   }
 }
-.darkfaqsection {
-  .left {
-    .heading {
-      color: $d-text2;
-    }
-  }
-  .mobilehead {
-    color: $d-text2;
-  }
-}
-@media only screen and (min-width: 900px) and (max-height: 900px) {
-  .faqsection {
-    display: flex;
-    padding: 5vh 7vw;
-    height: fit-content;
-    height: 90vh;
-    min-height: max-content;
-    align-items: center;
-    margin: 100px 0;
-    justify-content: space-between;
-    .left {
-      flex: 1;
-      height: 100%;
-      position: relative;
-      padding: 0;
-      .heading {
-        font-weight: bold;
-        font-size: 46px;
-        flex: 1;
-      }
-    }
 
-    .wrapper {
-      width: 65%;
-    }
-  }
-}
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 500px) {
   .faqsection {
     display: flex;
     padding: 0 10vw;
@@ -79,7 +43,7 @@
 
     .heading {
       font-weight: bold;
-      font-size: 56px;
+      font-size: 3.5rem;
       flex: 1;
       display: none;
     }
@@ -97,7 +61,8 @@
     }
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .faqsection {
     display: flex;
     padding: 0 7vw;
@@ -118,64 +83,6 @@
     .mobilehead {
       font-weight: bold;
       font-size: $tablet-heading;
-      display: block;
-      margin: 40px 0;
-    }
-    .wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-}
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-  .faqsection {
-    display: flex;
-    padding: 0 7vw;
-    height: fit-content;
-    min-height: fit-content;
-    align-items: center;
-    flex-direction: column;
-    margin: 5vh 0;
-    .heading {
-      font-weight: bold;
-      font-size: 2.5vw;
-      flex: 1;
-      display: none;
-    }
-    .mobilehead {
-      font-weight: bold;
-      font-size: 2.5vw;
-      display: block;
-      margin: 40px 0;
-    }
-    .wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-}
-@media only screen and (max-width: 900px) and (orientation: landscape) {
-  .faqsection {
-    display: flex;
-    padding: 0 7vw;
-    height: fit-content;
-    min-height: fit-content;
-    align-items: center;
-    flex-direction: column;
-    margin: 5vh 0;
-    .heading {
-      font-weight: bold;
-      font-size: 2.5vw;
-      flex: 1;
-      display: none;
-    }
-    .mobilehead {
-      font-weight: bold;
-      font-size: 2.5vw;
       display: block;
       margin: 40px 0;
     }

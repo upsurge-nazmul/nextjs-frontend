@@ -32,12 +32,12 @@
     }
     .info {
       .symbol {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 600;
         color: #676767;
       }
       .value {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
     }
   }
@@ -47,7 +47,7 @@
     border-bottom: 2px solid rgb(52, 52, 250);
   }
   .noWatchlist {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     color: #333;
   }
@@ -55,7 +55,7 @@
     button {
       border: none;
       background-color: transparent;
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 700;
       cursor: pointer;
     }
@@ -113,7 +113,7 @@
       border-bottom: 2px solid rgb(52, 52, 250);
     }
     .noWatchlist {
-      font-size: 15px;
+      font-size: 0.9375rem;
       font-weight: 500;
       color: #333;
     }
@@ -121,7 +121,7 @@
       button {
         border: none;
         background-color: transparent;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 700;
         cursor: pointer;
       }

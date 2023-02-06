@@ -84,7 +84,7 @@
                 }
                 p {
                   margin-left: 6px;
-                  font-size: 15px;
+                  font-size: 0.9375rem;
                 }
               }
               .white {
@@ -106,7 +106,7 @@
           }
         }
         .error {
-          font-size: 16px;
+          font-size: 1rem;
           color: #ff6263;
           font-weight: 500;
           margin-bottom: 20px;
@@ -137,7 +137,7 @@
   align-items: center;
   cursor: pointer;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.25rem;
   transition: all 0.3s ease;
   &:hover {
     background-color: #ffffff;
