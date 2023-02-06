@@ -10,8 +10,8 @@ export default function ChallengesCard({
     <div
       className={styles.card}
       style={{
-        height: height,
-        minWidth: width,
+        maxHeight: height,
+        maxWidth: width,
       }}
     >
       <img src={data.image} alt={data.name} className={styles.banner} />

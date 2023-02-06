@@ -134,19 +134,31 @@ function Footer({
             <div className={styles.bottom}>
               <p
                 onClick={() => {
-                  settermmode("terms");
-                  setshowterm(true);
+                  router.push("/terms");
                 }}
               >
                 Terms & conditions
               </p>
               <p
                 onClick={() => {
-                  settermmode("privacy");
-                  setshowterm(true);
+                  router.push("/privacy-policy");
                 }}
               >
                 Privacy policy
+              </p>
+              <p
+                onClick={() => {
+                  router.push("/shipping-and-delivery-policy");
+                }}
+              >
+                Shipping and Delivery Policy
+              </p>
+              <p
+                onClick={() => {
+                  router.push("/refund-policy");
+                }}
+              >
+                Refund and Cancellation policy
               </p>
             </div>
           </div>
@@ -651,24 +663,35 @@ function Footer({
             Connect on WhatsApp
           </a>
           <div className={styles.wrap}>
-            <p
-              className={styles.terms}
-              onClick={() => {
-                settermmode("terms");
-                setshowterm(true);
-              }}
-            >
-              Terms & conditions
-            </p>
-            <p
-              className={styles.terms}
-              onClick={() => {
-                settermmode("privacy");
-                setshowterm(true);
-              }}
-            >
-              Privacy policy
-            </p>
+            
+            <p className={styles.terms}
+                onClick={() => {
+                  router.push("/terms");
+                }}
+              >
+                Terms & conditions
+              </p>
+              <p className={styles.terms}
+                onClick={() => {
+                  router.push("/privacy-policy");
+                }}
+              >
+                Privacy policy
+              </p>
+              <p className={styles.terms}
+                onClick={() => {
+                  router.push("/shipping-and-delivery-policy");
+                }}
+              >
+                Shipping and Delivery Policy
+              </p>
+              <p className={styles.terms}
+                onClick={() => {
+                  router.push("/refund-policy");
+                }}
+              >
+                Refund and Cancellation policy
+              </p>
           </div>
         </div>
       </div>

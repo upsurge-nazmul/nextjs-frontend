@@ -34,7 +34,7 @@ $chart-color: #5200ff;
         align-items: center;
         padding: 10px 0;
         .holdingsTitle {
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 700;
           color: #fff;
           padding: 10px 0;
@@ -69,7 +69,7 @@ $chart-color: #5200ff;
             color: $light-font-color;
           }
           .value {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 600;
             color: $dark-font-color;
           }
@@ -90,7 +90,7 @@ $chart-color: #5200ff;
         justify-content: space-between;
         .portfolioHeading {
           .heading {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 10px;
@@ -108,7 +108,7 @@ $chart-color: #5200ff;
           gap: 10px;
           .option {
             color: $light-font-color;
-            font-size: 12px;
+            font-size: 0.75rem;
             cursor: pointer;
             padding: 6px 12px;
             border-radius: 4px;
@@ -169,7 +169,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           padding: 10px;
           .icon {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             background-color: $light-font-color;
             color: $dark-font-color;
@@ -181,12 +181,12 @@ $chart-color: #5200ff;
             flex-direction: column;
             align-items: flex-end;
             .value {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               color: $dark-font-color;
             }
             .name {
-              font-size: 12px;
+              font-size: 0.75rem;
               font-weight: 400;
               color: $light-font-color;
             }
@@ -203,7 +203,7 @@ $chart-color: #5200ff;
         width: 100%;
         justify-content: center;
         align-items: center;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
         color: $light-font-color;
         background-color: #fff;
@@ -221,7 +221,7 @@ $chart-color: #5200ff;
         flex-direction: row;
         justify-content: space-between;
         .title {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 600;
           color: $dark-font-color;
           padding-bottom: 10px;
@@ -234,7 +234,7 @@ $chart-color: #5200ff;
           gap: 10px;
           .option {
             color: $light-font-color;
-            font-size: 12px;
+            font-size: 0.75rem;
             cursor: pointer;
             padding: 6px 12px;
             border-radius: 4px;
@@ -291,7 +291,7 @@ $chart-color: #5200ff;
           align-items: center;
           padding: 10px 0;
           .holdingsTitle {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             padding: 10px 0;
@@ -327,7 +327,7 @@ $chart-color: #5200ff;
               color: $light-font-color;
             }
             .value {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
             }
@@ -349,7 +349,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           .portfolioHeading {
             .heading {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
               padding-bottom: 5px;
@@ -430,7 +430,7 @@ $chart-color: #5200ff;
             justify-content: space-between;
             padding: 10px;
             .icon {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               background-color: $light-font-color;
               color: $dark-font-color;
@@ -442,12 +442,12 @@ $chart-color: #5200ff;
               flex-direction: column;
               align-items: flex-end;
               .value {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $dark-font-color;
               }
               .name {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: $light-font-color;
               }
@@ -464,7 +464,7 @@ $chart-color: #5200ff;
           width: 100%;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           color: $light-font-color;
           background-color: #fff;
@@ -483,7 +483,7 @@ $chart-color: #5200ff;
           flex-direction: row;
           justify-content: space-between;
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 6px;
@@ -553,7 +553,7 @@ $chart-color: #5200ff;
           align-items: center;
           padding: 10px 0;
           .holdingsTitle {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             padding: 10px 0;
@@ -589,7 +589,7 @@ $chart-color: #5200ff;
               color: $light-font-color;
             }
             .value {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
             }
@@ -611,7 +611,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           .portfolioHeading {
             .heading {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
               padding-bottom: 5px;
@@ -692,7 +692,7 @@ $chart-color: #5200ff;
             justify-content: space-between;
             padding: 10px;
             .icon {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               background-color: $light-font-color;
               color: $dark-font-color;
@@ -704,12 +704,12 @@ $chart-color: #5200ff;
               flex-direction: column;
               align-items: flex-end;
               .value {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $dark-font-color;
               }
               .name {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: $light-font-color;
               }
@@ -726,7 +726,7 @@ $chart-color: #5200ff;
           width: 100%;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           color: $light-font-color;
           background-color: #fff;
@@ -745,7 +745,7 @@ $chart-color: #5200ff;
           flex-direction: row;
           justify-content: space-between;
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 6px;
@@ -815,7 +815,7 @@ $chart-color: #5200ff;
           align-items: center;
           padding: 10px 0;
           .holdingsTitle {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             padding: 10px 0;
@@ -851,7 +851,7 @@ $chart-color: #5200ff;
               color: $light-font-color;
             }
             .value {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
             }
@@ -873,7 +873,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           .portfolioHeading {
             .heading {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
               padding-bottom: 5px;
@@ -954,7 +954,7 @@ $chart-color: #5200ff;
             justify-content: space-between;
             padding: 10px;
             .icon {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               background-color: $light-font-color;
               color: $dark-font-color;
@@ -966,12 +966,12 @@ $chart-color: #5200ff;
               flex-direction: column;
               align-items: flex-end;
               .value {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $dark-font-color;
               }
               .name {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: $light-font-color;
               }
@@ -988,7 +988,7 @@ $chart-color: #5200ff;
           width: 100%;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           color: $light-font-color;
           background-color: #fff;
@@ -1007,7 +1007,7 @@ $chart-color: #5200ff;
           flex-direction: row;
           justify-content: space-between;
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 6px;
@@ -1076,7 +1076,7 @@ $chart-color: #5200ff;
           align-items: center;
           padding: 10px 0;
           .holdingsTitle {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             padding: 10px 0;
@@ -1112,7 +1112,7 @@ $chart-color: #5200ff;
               color: $light-font-color;
             }
             .value {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
             }
@@ -1133,7 +1133,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           .portfolioHeading {
             .heading {
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 600;
               color: $dark-font-color;
               padding-bottom: 5px;
@@ -1213,7 +1213,7 @@ $chart-color: #5200ff;
             justify-content: space-between;
             padding: 10px;
             .icon {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               background-color: $light-font-color;
               color: $dark-font-color;
@@ -1225,12 +1225,12 @@ $chart-color: #5200ff;
               flex-direction: column;
               align-items: flex-end;
               .value {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $dark-font-color;
               }
               .name {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: $light-font-color;
               }
@@ -1247,7 +1247,7 @@ $chart-color: #5200ff;
           width: 100%;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           color: $light-font-color;
           background-color: #fff;
@@ -1265,7 +1265,7 @@ $chart-color: #5200ff;
           flex-direction: row;
           justify-content: space-between;
           .title {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 6px;
@@ -1331,7 +1331,7 @@ $chart-color: #5200ff;
           align-items: center;
           padding: 10px 0;
           .holdingsTitle {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             padding: 10px 0;
@@ -1366,7 +1366,7 @@ $chart-color: #5200ff;
               color: $light-font-color;
             }
             .value {
-              font-size: 18px;
+              font-size: 1.125rem;
               font-weight: 600;
               color: $dark-font-color;
             }
@@ -1387,7 +1387,7 @@ $chart-color: #5200ff;
           justify-content: space-between;
           .portfolioHeading {
             .heading {
-              font-size: 18px;
+              font-size: 1.125rem;
               font-weight: 600;
               color: $dark-font-color;
               padding-bottom: 10px;
@@ -1405,7 +1405,7 @@ $chart-color: #5200ff;
             gap: 10px;
             .optionBTP {
               color: $light-font-color;
-              font-size: 12px;
+              font-size: 0.75rem;
               cursor: pointer;
               padding: 6px 12px;
               border-radius: 4px;
@@ -1466,7 +1466,7 @@ $chart-color: #5200ff;
             justify-content: space-between;
             padding: 10px;
             .icon {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 700;
               background-color: $light-font-color;
               color: $dark-font-color;
@@ -1478,12 +1478,12 @@ $chart-color: #5200ff;
               flex-direction: column;
               align-items: flex-end;
               .value {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $dark-font-color;
               }
               .name {
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 400;
                 color: $light-font-color;
               }
@@ -1500,7 +1500,7 @@ $chart-color: #5200ff;
           width: 100%;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 600;
           color: $light-font-color;
           background-color: #fff;
@@ -1518,7 +1518,7 @@ $chart-color: #5200ff;
           flex-direction: row;
           justify-content: space-between;
           .title {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 600;
             color: $dark-font-color;
             padding-bottom: 10px;
@@ -1531,7 +1531,7 @@ $chart-color: #5200ff;
             gap: 10px;
             .optionBTP {
               color: $light-font-color;
-              font-size: 12px;
+              font-size: 0.75rem;
               cursor: pointer;
               padding: 6px 12px;
               border-radius: 4px;

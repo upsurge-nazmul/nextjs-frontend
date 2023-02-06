@@ -15,7 +15,7 @@
       overflow-y: auto;
       .category {
         margin-right: 2px;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 700;
         color: #4166eb;
         font-family: "Lexend", sans-serif;
@@ -29,14 +29,14 @@
     }
     .time {
       margin-top: 5px;
-      font-size: 15px;
+      font-size: 0.9375rem;
       font-weight: 400;
       color: rgb(85, 85, 85);
     }
     .description {
       color: rgb(146, 146, 146);
       margin-top: 10px;
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 400;
     }
   }
@@ -63,7 +63,7 @@
         overflow-y: auto;
         .category {
           margin-right: 2px;
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 700;
           color: #4166eb;
           font-family: "Lexend", sans-serif;
@@ -77,14 +77,14 @@
       }
       .time {
         margin-top: 5px;
-        font-size: 15px;
+        font-size: 0.9375rem;
         font-weight: 400;
         color: rgb(85, 85, 85);
       }
       .description {
         color: rgb(146, 146, 146);
         margin-top: 10px;
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 400;
       }
     }
@@ -118,7 +118,7 @@
       }
       .title {
         margin-top: 5px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
       .time {
         margin-top: 5px;
@@ -126,7 +126,7 @@
       }
       .description {
         margin-top: 5px;
-        font-size: 12px;
+        font-size: 0.75rem;
       }
     }
     &:hover {

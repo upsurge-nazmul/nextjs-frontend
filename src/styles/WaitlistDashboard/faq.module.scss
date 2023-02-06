@@ -46,13 +46,13 @@
       align-items: center;
       margin-top: 80px;
       .heading {
-        font-size: 48px;
+        font-size: 3rem;
         font-weight: 700;
         margin-bottom: 20px;
       }
       .subheading {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 1.125rem;
         line-height: 32px;
         color: #000000c7;
         width: 582px;
@@ -109,7 +109,7 @@
               }
             }
             .text {
-              font-size: 16px;
+              font-size: 1rem;
               font-weight: 400;
               display: flex;
               flex-direction: column;
@@ -120,7 +120,7 @@
               .top {
                 color: #4166eb;
                 margin-bottom: 10px;
-                font-size: 20px;
+                font-size: 1.25rem;
                 font-weight: 500;
               }
             }
@@ -139,14 +139,14 @@
           max-width: 521px;
           margin-left: 40px;
           .title {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 500;
           }
           input {
             height: 45px;
             outline: none;
             border: none;
-            font-size: 16px;
+            font-size: 1rem;
             padding: 0 20px;
             background: #ffffff;
             margin-top: 20px;
@@ -171,7 +171,7 @@
             background: #4166eb;
             border-radius: 6px;
             color: white;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 500;
             margin-top: auto;
             cursor: pointer;
@@ -197,7 +197,7 @@
           margin-bottom: 5px;
         }
         .subheading {
-          font-size: 16px;
+          font-size: 1rem;
         }
         flex: 1;
         .wrapper {
@@ -247,7 +247,7 @@
                 }
               }
               .text {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 400;
                 display: flex;
                 flex-direction: column;
@@ -258,7 +258,7 @@
                 .top {
                   color: #4166eb;
                   margin-bottom: 10px;
-                  font-size: 16px;
+                  font-size: 1rem;
                   font-weight: 500;
                 }
               }
@@ -275,14 +275,14 @@
             margin-left: 40px;
             height: 501px;
             .title {
-              font-size: 24px;
+              font-size: 1.5rem;
               font-weight: 500;
             }
             input {
               height: 45px;
               outline: none;
               border: none;
-              font-size: 16px;
+              font-size: 1rem;
               padding: 0 20px;
               background: #ffffff;
               margin-top: 20px;
@@ -307,7 +307,7 @@
               background: #4166eb;
               border-radius: 6px;
               color: white;
-              font-size: 14px;
+              font-size: 0.875rem;
               font-weight: 500;
               margin-top: auto;
               cursor: pointer;
@@ -335,7 +335,7 @@
           text-align: center;
         }
         .subheading {
-          font-size: 16px;
+          font-size: 1rem;
           text-align: center;
           width: 80%;
         }
@@ -386,7 +386,7 @@
                 }
               }
               .text {
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 400;
                 display: flex;
                 flex-direction: column;
@@ -397,7 +397,7 @@
                 .top {
                   color: #4166eb;
                   margin-bottom: 10px;
-                  font-size: 16px;
+                  font-size: 1rem;
                   font-weight: 500;
                 }
               }
@@ -415,14 +415,14 @@
             margin-left: 0px;
             height: 501px;
             .title {
-              font-size: 24px;
+              font-size: 1.5rem;
               font-weight: 500;
             }
             input {
               height: 45px;
               outline: none;
               border: none;
-              font-size: 16px;
+              font-size: 1rem;
               padding: 0 20px;
               background: #ffffff;
               margin-top: 20px;
