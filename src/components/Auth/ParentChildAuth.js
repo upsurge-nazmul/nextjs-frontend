@@ -21,6 +21,7 @@ function ParentChildAuth({
   mode,
   setmode,
   email,
+  setemail,
   signupmethod,
   usertype,
   username,
@@ -28,28 +29,30 @@ function ParentChildAuth({
   seterror,
   error,
 }) {
-  const fetchfamilyid = async(id) =>{
-    let response = await ChoreApis.getfamilyid({userId:id})
+  const fetchfamilyid = async (id) => {
+    let response = await ChoreApis.getfamilyid({ userId: id });
     console.log(response);
-    assignChores(id,response.data.data.family_id);
- }
-  const assignChores = (id , familyide) =>{
-    console.log("assigning Chores")
-    {presetchores.map((data ,key)=>{
-       return(
-          ChoreApis.addchore({
-           message: data.msg,
-           title: data.choretitle,
-           category: data.cat,
-           assigned_to: userName,
-           family_id: familyide,
-           child_id: id,
-           due_date: duedate,
-           img_url: data.img_url,
-           is_reoccurring:false,
-           completion: "pending",
-   }))})}
- }
+    assignChores(id, response.data.data.family_id);
+  };
+  const assignChores = (id, familyide) => {
+    console.log("assigning Chores");
+    {
+      presetchores.map((data, key) => {
+        return ChoreApis.addchore({
+          message: data.msg,
+          title: data.choretitle,
+          category: data.cat,
+          assigned_to: userName,
+          family_id: familyide,
+          child_id: id,
+          due_date: duedate,
+          img_url: data.img_url,
+          is_reoccurring: false,
+          completion: "pending",
+        });
+      });
+    }
+  };
   const { firstName, setfirstName, lastName, setlastName, setuserdata } =
     useContext(MainContext);
   const [passisweak, setpassisweak] = useState(false);
@@ -131,7 +134,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
     }
   }
   async function genotp() {
@@ -189,7 +192,7 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
     });
-    
+
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
@@ -204,39 +207,39 @@ function ParentChildAuth({
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
         var regexS = "[?&]" + param + "=([^&#]*)",
-        regex = new RegExp(regexS),
-        results = regex.exec(url);
+          regex = new RegExp(regexS),
+          results = regex.exec(url);
         if (
           results === null ||
           (results && typeof results[1] !== "string" && results[1].length)
-          ) {
-            return "";
-          } else {
-            return decodeURIComponent(results[1]).replace(/\W/gi, " ");
+        ) {
+          return "";
+        } else {
+          return decodeURIComponent(results[1]).replace(/\W/gi, " ");
+        }
+      }
+      function campaignParams() {
+        var campaign_keywords =
+            "utm_source utm_medium utm_campaign utm_content utm_term".split(
+              " "
+            ),
+          kw = "",
+          params = {},
+          first_params = {};
+        var index;
+        for (index = 0; index < campaign_keywords.length; ++index) {
+          kw = getQueryParam(document.URL, campaign_keywords[index]);
+          if (kw.length) {
+            params[campaign_keywords[index] + " [last touch]"] = kw;
           }
         }
-        function campaignParams() {
-          var campaign_keywords =
-          "utm_source utm_medium utm_campaign utm_content utm_term".split(
-            " "
-            ),
-            kw = "",
-            params = {},
-            first_params = {};
-            var index;
-            for (index = 0; index < campaign_keywords.length; ++index) {
-              kw = getQueryParam(document.URL, campaign_keywords[index]);
-              if (kw.length) {
-                params[campaign_keywords[index] + " [last touch]"] = kw;
-              }
-            }
-            for (index = 0; index < campaign_keywords.length; ++index) {
-              kw = getQueryParam(document.URL, campaign_keywords[index]);
-              if (kw.length) {
-                first_params[campaign_keywords[index] + " [first touch]"] = kw;
-              }
-            }
-            mixpanel.people.set(params);
+        for (index = 0; index < campaign_keywords.length; ++index) {
+          kw = getQueryParam(document.URL, campaign_keywords[index]);
+          if (kw.length) {
+            first_params[campaign_keywords[index] + " [first touch]"] = kw;
+          }
+        }
+        mixpanel.people.set(params);
         mixpanel.people.set_once(first_params);
         mixpanel.register(params);
       }
@@ -246,7 +249,7 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
