@@ -134,7 +134,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
     }
   }
   async function genotp() {
@@ -255,7 +255,7 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
