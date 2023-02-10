@@ -21,6 +21,7 @@ function ParentChildAuth({
   mode,
   setmode,
   email,
+  setemail,
   signupmethod,
   usertype,
   username,
@@ -297,6 +298,13 @@ function ParentChildAuth({
           }
         }}
       >
+        <input
+          type="text"
+          placeholder="Parent's email address"
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
+        />
+
         <div className={styles.phoneWrapper}>
           <p>+91</p>{" "}
           <input
