@@ -21,6 +21,7 @@ function ParentChildAuth({
   mode,
   setmode,
   email,
+  setemail,
   signupmethod,
   usertype,
   username,
@@ -67,6 +68,7 @@ function ParentChildAuth({
     upper: false,
     number: false,
   });
+  let couponInput;
   const router = useRouter();
   useEffect(() => {
     seterror("");
@@ -77,6 +79,14 @@ function ParentChildAuth({
   useEffect(() => {
     seterror("");
   }, [password, username, firstName, phone, mode]);
+
+  useEffect(() => {
+    couponInput = document.getElementById("coupon");
+
+    couponInput.addEventListener("focus", () => {
+      couponInput.removeAttribute("readonly");
+    });
+  }, []);
 
   async function handleUpdateData() {
     setloading(true);
@@ -133,7 +143,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
     }
   }
   async function genotp() {
@@ -254,7 +264,7 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("otp");
+      setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
@@ -297,6 +307,13 @@ function ParentChildAuth({
           }
         }}
       >
+        <input
+          type="text"
+          placeholder="Parent's email address"
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
+        />
+
         <div className={styles.phoneWrapper}>
           <p>+91</p>{" "}
           <input
@@ -343,10 +360,12 @@ function ParentChildAuth({
         <input
           type="text"
           name="coupon"
+          id="coupon"
           placeholder="Coupon Code"
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
+          readOnly
         />
         {password !== "" && passisweak && (
           <>
