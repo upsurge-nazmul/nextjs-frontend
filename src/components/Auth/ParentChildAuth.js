@@ -68,6 +68,7 @@ function ParentChildAuth({
     upper: false,
     number: false,
   });
+  let couponInput;
   const router = useRouter();
   useEffect(() => {
     seterror("");
@@ -78,6 +79,14 @@ function ParentChildAuth({
   useEffect(() => {
     seterror("");
   }, [password, username, firstName, phone, mode]);
+
+  useEffect(() => {
+    couponInput = document.getElementById("coupon");
+
+    couponInput.addEventListener("focus", () => {
+      couponInput.removeAttribute("readonly");
+    });
+  }, []);
 
   async function handleUpdateData() {
     setloading(true);
@@ -351,10 +360,12 @@ function ParentChildAuth({
         <input
           type="text"
           name="coupon"
+          id="coupon"
           placeholder="Coupon Code"
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
+          readOnly
         />
         {password !== "" && passisweak && (
           <>
