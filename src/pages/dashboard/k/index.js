@@ -36,6 +36,7 @@ import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
 import EmailVerificationPending from "../../../components/EmailVerificationPending";
 import EditProfilePending from "../../../components/EditProfilePending";
+import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
 
 export default function ChildActivity({
   pendingchores,
@@ -206,6 +207,7 @@ export default function ChildActivity({
           {userdatafromserver && !userdatafromserver.profile_completed && (
             <EditProfilePending />
           )}
+          <PhoneVerificationPending />
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
