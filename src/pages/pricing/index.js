@@ -64,20 +64,23 @@ export default function Pricing() {
         </div>
         <div className={styles.contentRight}>
           <div className={styles.heading}>
-            Power up your child’s journey in the finance world with upsurge
-            Premium.
+            Power up your child’s journey in the 
+            finance world with upsurge
+            <u className={styles.heading_underline}>
+              Premium.
+              </u>
           </div>
-          <div className={styles.contentPlan}>
-          <div className={styles.sectionTitle}>
-            Learn about financial literacy and entrepreneurship with
-          </div>
-          <div className={styles.section}>
-            <div className={styles.sectionLeft}>
+          <div className={styles.sectionContainer}>
+          <div className={styles.contentPlanFreemium}>
+            <div className={styles.contentTagFreemium}>
+              Free
+            </div>
+            <div className={styles.section}>
               <div className={styles.sectionItem}>
                 <img
                   src={
                     require("../../assets/pricing/educational_games.svg")
-                      .default.src
+                    .default.src
                   }
                   alt="Education Games"
                   className={styles.sectionItemImage}
@@ -93,7 +96,9 @@ export default function Pricing() {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 />
-                1 Flagship Game (Limited Access)
+                1 Flagship Game <p className={styles.small_fontsize}>
+                  (Limited Access)
+                  </p>
               </div>
               <div className={styles.sectionItem}>
                 <img
@@ -104,10 +109,11 @@ export default function Pricing() {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 />
-                1 Workshop Invite (worth ₹1000)
+                1 Workshop Invite 
+                <p className={styles.small_fontsize}>
+                (worth ₹1000)
+                </p>
               </div>
-            </div>
-            <div className={styles.sectionRight}>
               <div className={styles.sectionItem}>
                 <img
                   src={
@@ -139,9 +145,19 @@ export default function Pricing() {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 />
-                Leaderboard Access - Win rewards worth ₹10,000 every month
+                Leaderboard Access
               </div>
-            </div>
+              <div className={styles.sectionItem}>
+                <img
+                  src={
+                    require("../../assets/pricing/partner_rewards.svg").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                />
+                 Win rewards worth ₹10,000 every month
+              </div>
           </div>
           <div className={styles.actionArea}>
             <button
@@ -151,21 +167,21 @@ export default function Pricing() {
                 setshowauth(true);
               }}
             >
-              Get Freemium
+              Join for 
+              <div className={styles.pricing}>
+              <div className={styles.old}>₹1799</div>
+              <div className={styles.current}>Free</div>
+              </div>
             </button>
-            <div className={styles.pricing}>
-              <div className={styles.current}>Free*</div>
-              <div className={styles.old}>₹1799/year*</div>
-            </div>
           </div>
           <div className={styles.helperArea}>
-            <div className={styles.helperText}>*Free users might be required to register to participate in certain events and challenges.</div>
+            <div className={styles.helperText}>*Limited time offer</div>
           </div>
           </div>
-          <div className={styles.contentPlan}>
-          <div className={styles.sectionTitle}>
-            Supercharge your child`&apos;s financial literacy and entrepreneurship journey with
-          </div>
+          <div className={styles.contentPlanPremium}>
+          <div className={styles.contentTagPremium}>
+              Premium
+            </div>
           <div className={styles.section}>
             <div className={styles.sectionLeft}>
               <div className={styles.sectionItem}>
@@ -176,7 +192,7 @@ export default function Pricing() {
                   }
                   alt="Education Games"
                   className={styles.sectionItemImage}
-                />
+                  />
                 12+ Educational Games
               </div>
               <div className={styles.sectionItem}>
@@ -199,17 +215,20 @@ export default function Pricing() {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 />
-               5 Workshop Invites (Worth ₹5000)
+               5 Workshop Invites 
+               <p className={styles.small_fontsize}>
+               (Worth ₹5000)
+               </p>
               </div>
               <div className={styles.sectionItem}>
                 <img
                   src={
                     require("../../assets/pricing/partner_rewards.svg").default
-                      .src
+                    .src
                   }
                   alt="Avatar Sets"
                   className={styles.sectionItemImage}
-                />
+                  />
                 Avatar Sets
               </div>
               <div className={styles.sectionItem}>
@@ -229,7 +248,7 @@ export default function Pricing() {
                 <img
                   src={
                     require("../../assets/pricing/knowledge_quests.png").default
-                      .src
+                    .src
                   }
                   alt="Education Games"
                   className={styles.sectionItemImage}
@@ -240,11 +259,11 @@ export default function Pricing() {
                 <img
                   src={
                     require("../../assets/pricing/partner_rewards.svg").default
-                      .src
+                    .src
                   }
                   alt="Education Games"
                   className={styles.sectionItemImage}
-                />
+                  />
                 Unlimited Voucher Redemption and 10000 Bonus Unicoins.
               </div>
               <div className={styles.sectionItem}>
@@ -263,7 +282,7 @@ export default function Pricing() {
                   src={
                     require("../../assets/pricing/partner_rewards.svg").default
                       .src
-                  }
+                    }
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 />
@@ -273,22 +292,18 @@ export default function Pricing() {
           </div>
           <div className={styles.actionArea}>
             <button
-              className={styles.actionButton}
+              className={styles.actionButtonPremium}
               onClick={() => {
                 setAuthMode("parent");
                 setshowauth(true);
               }}
-            >
-              Get Premium
+              disabled
+              >
+              Coming Soon
             </button>
-            <div className={styles.pricing}>
-              <div className={styles.current}>Coming Soon</div>
-              <div className={styles.old}>₹4799/year*</div>
-            </div>
           </div>
-          <div className={styles.helperArea}>
-            <div className={styles.helperText}>*Limited time offer</div>
-          </div>
+         
+              </div>
           </div>
         </div>
       </div>
