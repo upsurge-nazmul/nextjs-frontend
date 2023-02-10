@@ -207,7 +207,9 @@ export default function ChildActivity({
           {userdatafromserver && !userdatafromserver.profile_completed && (
             <EditProfilePending />
           )}
-          <PhoneVerificationPending />
+          {userdatafromserver && !userdatafromserver.phone_verified && (
+            <PhoneVerificationPending />
+          )}
           <Journey />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
