@@ -66,7 +66,7 @@ export default function RequestView({
                 primaryClr={"#FFF"}
                 secondaryClr={"#17D1BC"}
               />
-              <p className={styles.payment}>Request sent to your parent.</p>
+              <p className={styles.payment}>Avatar now available in your profile.</p>
               {/* <PaymentSuccessBackground className={styles.backsvg} /> */}
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function RequestView({
               <>
                 {!loading ? (
                   <div className={styles.button} onClick={() => buyAvatar()}>
-                    Request Parent
+                    Buy Avatar
                   </div>
                 ) : (
                   <div className={`${styles.button} ${styles.spinner_btn}`}>
