@@ -122,6 +122,7 @@ function ParentChildAuth({
       user_type: usertype,
       phone,
       password,
+      coupon,
       username: username,
       first_name: firstName,
       last_name: lastName,
@@ -204,6 +205,7 @@ function ParentChildAuth({
       phone,
       password,
       username,
+      coupon,
       first_name: firstName,
       last_name: lastName,
     });
@@ -365,7 +367,6 @@ function ParentChildAuth({
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
-          readOnly
         />
         {password !== "" && passisweak && (
           <>
