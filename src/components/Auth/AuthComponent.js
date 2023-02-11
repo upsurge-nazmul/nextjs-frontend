@@ -146,6 +146,7 @@ function AuthComponent({
                 />
               ) : mode === "parentChild" ? (
                 <ParentChildAuth
+                  setemail={setemail}
                   email={email}
                   settoastdata={settoastdata}
                   setmode={setmode}
@@ -261,7 +262,7 @@ function AuthComponent({
                         <div
                           className={styles.button}
                           onClick={() => {
-                            setmode("parent");
+                            setmode("parentChild");
                           }}
                         >
                           Sign up

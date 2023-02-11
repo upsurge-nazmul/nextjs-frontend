@@ -102,12 +102,8 @@ export default function Reward({
             ""
           ) : (
             <button
-              className={
-                Number(data.productId) === 999999
-                  ? styles.button
-                  : styles.disabledButton
-              }
-              onClick={Number(data.productId) === 999999 ? redeem : () => {}}
+              className={ styles.button}
+              onClick={redeem}
             >
               Redeem
             </button>

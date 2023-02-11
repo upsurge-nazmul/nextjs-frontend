@@ -40,7 +40,6 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
   });
   const router = useRouter();
   const { gameid, id } = router.query;
-
   const [stickyheader, setstickyheader] = useState(false);
   const [errorshown, seterrorshown] = useState(false);
   const [showgame, setshowgame] = useState(false);
@@ -83,6 +82,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       setuserdata(userdatafromserver);
     }
   }, [userdatafromserver]);
+  
   useEffect(() => {
     if (gameid) {
       logclick();
@@ -91,6 +91,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       let res = await GameApis.loggameclick({ id: gameid });
     }
   }, [gameid]);
+  
   useEffect(() => {
     if (!gamedata) {
       return null;
@@ -181,6 +182,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       }
     }
   }, [router, gamedata]);
+  
   useEffect(() => {
     function updateSize() {
       let w = window.innerWidth;
@@ -196,6 +198,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+  
   useEffect(
     function () {
       if (!unitycontext) return;
@@ -235,6 +238,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
     },
     [unitycontext]
   );
+  
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -246,18 +250,20 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  
   useEffect(() => {
     if (!gameid) {
       return;
     }
     if (!errorshown && widthHeight.width < 900) {
       logerror();
-      seterrorshown(true);
+      seterrorshown(false);
     }
     async function logerror() {
       await GameApis.loggameerror({ id: gameid });
     }
   }, [widthHeight, gameid]);
+  
   useEffect(() => {
     if (id) {
       checktoken();
@@ -273,12 +279,15 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       }
     }
   }, [id]);
+  
   useEffect(() => {
     seterror("");
   }, [phone, email, name, nickname]);
+  
   useEffect(() => {
     setTimeout(() => setremoveBorder(true), 10000);
   }, []);
+  
   function movetofull() {
     // if already full screen; exit
     // else go fullscreen
@@ -341,15 +350,17 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
       }
     }
   }, []);
+
   return (
     <div className={styles.gamePage}>
       <DashboardLeftPanel type="kid" />
       <Seo title={seodata?.title} desc={seodata?.description} />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        {showgamelandscapeinfo && (
+
+        {/* {showgamelandscapeinfo && (
           <GameLandscapeInfo setshow={setshowgamelandscapeinfo} />
-        )}
+        )} */}
         <DashboardHeader
           mode={mode}
           setmode={setmode}
@@ -357,9 +368,11 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
         />
 
         <div className={styles.mainContent} id="unity-wrapper">
-          {isMobile ? (
+
+          {/* {isMobile ? (
             <BrokenGame goBackTo="dashboard/k/games" />
-          ) : gamedata && unitycontext ? (
+          ) :  */}
+          {gamedata && unitycontext ? (
             <Unity
               className={`${styles.gameMain} ${stickyheader && styles.sticky} ${
                 removeBorder ? styles.removeborder : ""
@@ -373,15 +386,16 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
               ref={unityref}
               unityContext={unitycontext}
               style={
-                widthHeight.width > 900
-                  ? {
+                //widthHeight.width > 900
+                 // ? 
+                  {
                       visibility: "visible",
                     }
-                  : {
-                      visibility: isfullscreen ? "visible" : "hidden",
-                      position: !isfullscreen ? "absolute" : "static",
-                      pointerEvents: !isfullscreen ? "none" : "unset",
-                    }
+                 // : {
+                //      visibility: isfullscreen ? "visible" : "hidden",
+                //      position: !isfullscreen ? "absolute" : "static",
+                 //     pointerEvents: !isfullscreen ? "none" : "unset",
+                //    }
               }
               matchWebGLToCanvasSize={true}
             />
@@ -393,6 +407,7 @@ export default function GamePage({ userdatafromserver, gamedata, seodata }) {
     </div>
   );
 }
+
 export async function getServerSideProps({ params, req }) {
   let token = req.cookies.accesstoken;
   let msg = "";

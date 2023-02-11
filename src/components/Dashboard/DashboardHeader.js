@@ -140,6 +140,11 @@ function DashboardHeader({
             </p>
           </div>
         )}
+        {userdata?.plan_name == "Premium3m" && (
+          <div className={styles.premiumBadge}>
+            <span className={styles.text}>Premium</span>
+          </div>
+        )}
         {
           <div className={tooltipStyle.tooltip}>
             <AnimatePresence>

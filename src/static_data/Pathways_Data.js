@@ -175,7 +175,7 @@ export const PathwayData = [
     color: "#17d1bc",
     pointer: { top: -20, left: "40%" },
     pathwaykqroute: "",
-    locked: true,
+    locked: false,
     tasks: [
       {
         taskNo: 1,
@@ -226,7 +226,7 @@ export const PathwayData = [
     color: "#55c5d2",
     pointer: { top: -20, right: "40%" },
     pathwaykqroute: "",
-    locked: true,
+    locked: false,
     tasks: [
       {
         taskNo: 1,
@@ -264,7 +264,7 @@ export const PathwayData = [
     color: "#fdcc03",
     pointer: { top: -20, right: "23%" },
     pathwaykqroute: "",
-    locked: true,
+    locked: false,
     tasks: [
       {
         taskNo: 1,
