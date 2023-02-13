@@ -192,20 +192,6 @@ export const Simulator_Data = {
 };
 
 export const Download_Games_Data = {
-  // MoneyDash: {
-  //   name: "Money Dash",
-  //   description: "Go in a virtual simulator to learn about stock trading.",
-  //   logo: "/images/DownloadGames/money_dash_logo.png",
-  //   images: [
-  //     "/images/DownloadGames/Money_dash_1.png",
-  //     "/images/DownloadGames/Money_dash_2.png",
-  //     "/images/DownloadGames/Money_dash_3.png",
-  //   ],
-  //   android_link: "",
-  //   windows_link: "",
-  //   playstore: "",
-  //   microsoft: "",
-  // },
   MoneyAce: {
     name: "Money Ace",
     description: "Go in a virtual simulator to learn about stock trading.",

@@ -68,7 +68,7 @@
       padding-bottom: 0.5rem;
       width: fit-content;
       height: fit-content;
-      margin-right: 2rem;
+      margin-right: 0.5rem;
       display: flex;
       align-items: center;
       border-radius: 4rem;
@@ -87,6 +87,40 @@
         font-weight: 500;
         color: white;
         cursor: pointer;
+      }
+    }
+    .premiumBadge {
+      background-color: $red;
+      padding-inline: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      width: fit-content;
+      height: fit-content;
+      margin-right: 0.5rem;
+      display: flex;
+      align-items: center;
+      border-radius: 4rem;
+      .text {
+        cursor: context-menu;
+        font-size: 1rem;
+        font-weight: 500;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .freeBadge {
+      padding: 0.4rem 0.6rem;
+      background-color: $blue;
+      border-radius: 360px;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      .text {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 0.8rem;
+        color: #ffffffe1;
       }
     }
     .icon {
@@ -334,12 +368,18 @@
         height: 18px;
       }
       .rewardBlock {
-        margin-right: 1rem;
+        margin-right: 0.4rem;
         .svg {
           min-width: 0.8rem;
           min-height: 0.8rem;
         }
         .number {
+          font-size: 0.75rem;
+        }
+      }
+      .premiumBadge {
+        margin-right: 0.4rem;
+        .text {
           font-size: 0.75rem;
         }
       }

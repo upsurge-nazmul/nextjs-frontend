@@ -6,6 +6,7 @@ import { MainContext } from "../context/Main";
 import styles from "../styles/emailverificationpending/emailverificationpending.module.scss";
 function PhoneVerificationPending({ settoastdata }) {
   const { userdata } = useContext(MainContext);
+  const [phoneverified, setphoneverified] = useState(false);
   const [show,setshowOTP] = useState(false);
   return (
     <div className={styles.main}>
@@ -15,7 +16,7 @@ function PhoneVerificationPending({ settoastdata }) {
         <div className={styles.button} onClick={()=>{setshowOTP(true)}}>Enter Now!</div>
         {show ?
         <div className={styles.otpnotverified}>
-            <OtpNotVerfied setshowOTP={setshowOTP} userphone={userdata?.parent_phone} />
+            <OtpNotVerfied setshowOTP={setshowOTP} userphone={userdata?.parent_phone} setphoneverified={setphoneverified} />
         </div>
 :<>
 </>
