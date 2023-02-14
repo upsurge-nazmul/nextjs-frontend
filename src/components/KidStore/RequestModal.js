@@ -15,9 +15,12 @@ export default function RequestModal({
   data,
   availableUnicoins,
   quantity,
+  userdatafromserver,
+  setshowOTP
 }) {
   //modes will be start , category , template, assign
   const [success, setsuccess] = useState(false);
+
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -40,28 +43,45 @@ export default function RequestModal({
       setloading(false);
       return;
     }
-    if (data.type && data.type === "voucher") {
-      let response = await KidApis.buyvoucher({
-        voucher_id: data.id,
-        price: data.price,
-        quantity: quantity,
-      });
-      if (response && response.data && response.data.success) {
-        setsuccess(true);
+     if(userdatafromserver.phone_verified === false || userdatafromserver.phone_verified === null)
+     {
+       seterror("Phone number not verified");
+       setloading(false);  
+     }
+     else if(userdatafromserver.email_verified === false || userdatafromserver.email_verified === null )
+     {
+       seterror("Email not verified");
+       setloading(false);  
+     }
+     else if(userdatafromserver.profile_completed === false)
+     {
+       seterror("profile not completed");
+       setloading(false);  
+     }
+     else{
+      if (data.type && data.type === "voucher") {
+        let response = await KidApis.buyvoucher({
+          voucher_id: data.id,
+          price: data.price,
+          quantity: quantity,
+        });
+        if (response && response.data && response.data.success) {
+          setsuccess(true);
+        } else {
+          seterror(response?.data.message || "Error connecting to server");
+          setloading(false);
+        }
       } else {
-        seterror(response?.data.message || "Error connecting to server");
-        setloading(false);
-      }
-    } else {
-      let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
-      if (response && response.data && response.data.success) {
-        setsuccess(true);
-      } else {
-        seterror(response?.data.message || "Error connecting to server");
-        setloading(false);
+        let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
+        if (response && response.data && response.data.success) {
+          setsuccess(true);
+        } else {
+          seterror(response?.data.message || "Error connecting to server");
+          setloading(false);
+        }
       }
     }
-  }
+    }
   return (
     <div className={styles.requestModal}>
       <Toast data={toastdata} />
@@ -71,7 +91,7 @@ export default function RequestModal({
             <div
               className={styles.background}
               onClick={() => setshowmodal(false)}
-            ></div>
+              ></div>
             <div className={styles.requestModalcontainer}>
               <div className={styles.heading}>
                 <BackButtonSvg />
@@ -111,7 +131,17 @@ export default function RequestModal({
                   Unicoins
                 </div>
               </div>
-              {error && <p className={styles.error}>{error}</p>}
+              {error && 
+              <p className={styles.error}>
+                {error}
+                </p>
+                }
+              {error === "Phone number not verified" && 
+                <div className={styles.continue} onClick={()=>{setshowOTP(true)}}>
+                  Enter Now to Continue
+                </div>
+                }
+               
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
                   Request Parent

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
 import { UniCoinValue } from "../../../config";
 import RequestModal from "../KidStore/RequestModal";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { MainContext } from "../../context/Main";
+import OtpNotVerfied from "../Auth/OtpNotVerified";
 
 export default function Reward({
   data,
@@ -16,8 +18,11 @@ export default function Reward({
   kid,
   unicoins,
   parent,
+  userdatafromserver,
 }) {
   const [prices, setprices] = useState([]);
+  const [showOTP, setshowOTP] = useState(false);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [selectedprice, setselectedprice] = useState(
     data.valueDenominations?.split(",")[0]
   );
@@ -63,10 +68,17 @@ export default function Reward({
               price: selectedprice*1000,
               id: data.productId,
             }}
+            userdatafromserver={userdatafromserver}
             quantity={quantity}
             availableUnicoins={unicoins}
+            setshowOTP={setshowOTP}
           />
         ))}
+        {showOTP &&
+              <div className={styles.showOTP}>
+              <OtpNotVerfied userphone={userdata?.parent_phone} setshowOTP={setshowOTP} />
+              </div>
+             } 
 
       <img className={styles.image} src={data.imageUrl} alt="" />
       <div className={styles.right}>
