@@ -60,9 +60,10 @@ export default function Reward({
             data={{
               name: data.name,
               type: "voucher",
-              price: selectedprice,
+              price: selectedprice*1000,
               id: data.productId,
             }}
+            quantity={quantity}
             availableUnicoins={unicoins}
           />
         ))}

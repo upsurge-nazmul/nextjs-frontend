@@ -14,6 +14,7 @@ export default function RequestModal({
   setshowmodal,
   data,
   availableUnicoins,
+  quantity,
 }) {
   //modes will be start , category , template, assign
   const [success, setsuccess] = useState(false);
@@ -43,6 +44,7 @@ export default function RequestModal({
       let response = await KidApis.buyvoucher({
         voucher_id: data.id,
         price: data.price,
+        quantity: quantity,
       });
       if (response && response.data && response.data.success) {
         setsuccess(true);
@@ -92,9 +94,9 @@ export default function RequestModal({
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
                 <div className={styles.value}>
-                  {data.price > 1000
-                    ? data.price / UniCoinValue + "K "
-                    : data.price}{" "}
+                  {data.price*quantity > 1000
+                    ? data.price*quantity / UniCoinValue + "K "
+                    : data.price*quantity}{" "}
                   Unicoins
                 </div>
               </div>
@@ -103,9 +105,9 @@ export default function RequestModal({
                   Available Unicoins post purchase
                 </div>
                 <div className={styles.value}>
-                  {availableUnicoins - data.price > 1000
-                    ? (availableUnicoins - data.price) / UniCoinValue + "K "
-                    : availableUnicoins - data.price}{" "}
+                  {availableUnicoins - (data.price*quantity) > 1000
+                    ? (availableUnicoins - (data.price*quantity)) / UniCoinValue + "K "
+                    : availableUnicoins - data.price*quantity}{" "}
                   Unicoins
                 </div>
               </div>
