@@ -9,6 +9,7 @@ import KidApis from "../../actions/apis/KidApis";
 import Spinner from "../Spinner";
 import { UniCoinValue } from "../../../config";
 import LoginApis from "../../actions/apis/LoginApis";
+import { useRouter } from "next/router";
 
 export default function RequestModal({
   showmodal,
@@ -20,6 +21,7 @@ export default function RequestModal({
   setshowOTP,
 }) {
   //modes will be start , category , template, assign
+  const router = useRouter();
   const [success, setsuccess] = useState(false);
   const [ verificationEmail, setVerificationEmail ] = useState(false);
   async function sendVerificationEmail() {
@@ -54,17 +56,17 @@ export default function RequestModal({
     }
      if(userdatafromserver.phone_verified === false || userdatafromserver.phone_verified === null)
      {
-       seterror("Phone number not verified");
+       seterror("Phone number not verified.");
        setloading(false);  
      }
      else if(userdatafromserver.email_verified === false || userdatafromserver.email_verified === null )
      {
-       seterror("Email not verified");
+       seterror("Email not verified.");
        setloading(false);  
      }
      else if(userdatafromserver.profile_completed === false)
      {
-       seterror("profile not completed");
+       seterror("Profile not completed.");
        setloading(false);  
      }
      else{
@@ -140,26 +142,37 @@ export default function RequestModal({
                   Unicoins
                 </div>
               </div>
+              <div className={styles.errors}>
               {error && 
               <p className={styles.error}>
                 {error}
                 </p>
                 }
-              {error === "Phone number not verified" && 
+              {error === "Phone number not verified." && 
                 <div className={styles.continue} onClick={()=>{setshowOTP(true)}}>
                   Enter Now to Continue
                 </div>
                 }
-              {error === "Email not verified" && verificationEmail === false && 
+              {error === "Email not verified." && verificationEmail === false && 
                 <div className={styles.continue} onClick={()=>{sendVerificationEmail()}}>
-                  Click Here to send again.
+                  Click Here to send again
                 </div>
               }
-              {error === "Email not verified" && verificationEmail && 
+              {error === "Email not verified." && verificationEmail && 
                 <div className={styles.continue}>
                       Verification Email sent.
                   </div>
                }
+              {error === "Profile not completed." && 
+                <div className={styles.continue} 
+                onClick={() => router.push("/dashboard/k/editprofile")}
+                >
+                  <u>
+                      Click Here to Complete
+                  </u>
+                  </div>
+               }
+               </div>
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
                   Request Parent
