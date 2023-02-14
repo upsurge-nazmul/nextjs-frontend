@@ -7,13 +7,7 @@ export default function ChallengesCard({
   handleSelect = () => {},
 }) {
   return (
-    <div
-      className={styles.card}
-      style={{
-        maxHeight: height,
-        maxWidth: width,
-      }}
-    >
+    <div className={styles.card}>
       <img src={data.image} alt={data.name} className={styles.banner} />
       <div className={styles.cardContent}>
         <div className={styles.cardName}>{data.name}</div>
@@ -24,7 +18,7 @@ export default function ChallengesCard({
         {data.eventOpen ? (
           <button className={styles.registerButton}>Register Now</button>
         ) : (
-          <button className={styles.commingButton}>Comming Soon</button>
+          <button className={styles.comingButton}>Coming Soon</button>
         )}
         <button className={styles.detailsButton} onClick={handleSelect}>
           See Details
