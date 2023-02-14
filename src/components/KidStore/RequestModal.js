@@ -8,6 +8,7 @@ import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import KidApis from "../../actions/apis/KidApis";
 import Spinner from "../Spinner";
 import { UniCoinValue } from "../../../config";
+import LoginApis from "../../actions/apis/LoginApis";
 
 export default function RequestModal({
   showmodal,
@@ -16,11 +17,19 @@ export default function RequestModal({
   availableUnicoins,
   quantity,
   userdatafromserver,
-  setshowOTP
+  setshowOTP,
 }) {
   //modes will be start , category , template, assign
   const [success, setsuccess] = useState(false);
-
+  const [ verificationEmail, setVerificationEmail ] = useState(false);
+  async function sendVerificationEmail() {
+    let response = await LoginApis.sendverificationemail();
+    if (!response.data.success) {
+      setVerificationEmail(false);
+    } else {
+      setVerificationEmail(true);
+      };
+  }
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -141,7 +150,16 @@ export default function RequestModal({
                   Enter Now to Continue
                 </div>
                 }
-               
+              {error === "Email not verified" && verificationEmail === false && 
+                <div className={styles.continue} onClick={()=>{sendVerificationEmail()}}>
+                  Click Here to send again.
+                </div>
+              }
+              {error === "Email not verified" && verificationEmail && 
+                <div className={styles.continue}>
+                      Verification Email sent.
+                  </div>
+               }
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
                   Request Parent
