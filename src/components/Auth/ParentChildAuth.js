@@ -359,7 +359,7 @@ function ParentChildAuth({
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setusername(e.target.value)}
         />
-        <input
+        {/* <input
           type="text"
           name="coupon"
           id="coupon"
@@ -367,7 +367,7 @@ function ParentChildAuth({
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
-        />
+        /> */}
         {password !== "" && passisweak && (
           <>
             <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
@@ -412,7 +412,7 @@ function ParentChildAuth({
             type={passhidden ? "password" : "text"}
             onFocus={() => setshowdetailpass(true)}
             onBlur={() => setshowdetailpass(false)}
-            placeholder="Password"
+            placeholder="New Password"
             value={password}
             className={password !== "" && passisweak ? styles.weakpass : ""}
             onChange={validatePassword}
