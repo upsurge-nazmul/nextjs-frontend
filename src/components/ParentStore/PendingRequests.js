@@ -148,8 +148,8 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
       <div className={styles.button} onClick={hanldeapprove}>
         Approve Purchase
       </div>
-      <div className={styles.removebutton}>
-        <RemoveSvg onClick={handlerejection} />
+      <div className={styles.removebutton} onClick={handlerejection}>
+        <RemoveSvg />
       </div>
       </div>
     </div>
