@@ -246,7 +246,7 @@
     }
   }
 }
-@media only screen and (min-width: 861px) and (max-width: 1290px) and (max-height: 800px) {
+@media only screen and (min-width: 861px) and (max-width: 1300px) and (max-height: 800px) {
   .intro {
     .homesvg {
       position: absolute;
@@ -268,70 +268,6 @@
         border-radius: 100%;
         left: 50%;
         transform: translate(-50%, -50%);
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 860px) {
-  .intro {
-    scroll-snap-align: end;
-    position: relative;
-    min-height: 500px;
-    height: calc(100vh - 80px);
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    .textContent {
-      margin-top: 11%;
-      width: 80%;
-      margin-left: 7%;
-      .heading {
-        font-size: 42px;
-        font-weight: 700;
-        line-height: 50px;
-        margin-bottom: 5px;
-      }
-      .subheading {
-        font-size: 14px;
-        width: 100%;
-        line-height: 20px;
-      }
-      .button {
-        font-size: 16px;
-      }
-      .checkwaiting {
-        width: 100%;
-        font-size: 12px;
-      }
-      .signupBox {
-        width: 100%;
-        min-width: fit-content;
-        height: 50px;
-        display: flex;
-        overflow: hidden;
-        margin-top: 20px;
-        form {
-          display: flex;
-          width: 55%;
-          flex: 1;
-        }
-        input {
-          flex: 1;
-          font-size: 16px;
-        }
-      }
-    }
-
-    .ballsvg {
-      width: 25vw;
-      bottom: 30px;
-      left: 7%;
-      svg {
-        width: 100px;
       }
     }
   }
@@ -363,7 +299,6 @@
       }
       .subheading {
         font-size: $tablet-subheading;
-        width: 100%;
         line-height: $tablet-subheading-line;
       }
       .button {
