@@ -132,6 +132,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
         <div className={styles.to}>Requested by {data.child_name}</div>
       </div>
       <div className={styles.points}>
+          <p className={styles.number}>{data.quantity}*</p>
         <p className={styles.number}>
           {data.request_type === "avatar"
             ? data.avatar_data.points
