@@ -25,7 +25,7 @@ export default function Onboarding({
     >
       <div className={styles.onboardingScr}>
         <iframe
-          src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/video/onboarding+video.mp4"
+          src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/video/kids+onboarding_3.mp4"
           title="Onboarding video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

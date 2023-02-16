@@ -29,9 +29,10 @@
       border: 1px solid #898989;
       overflow: hidden;
       width: 100%;
-      height: 59px;
+      height: 3rem;
+      margin-bottom: 0.5rem;
       p {
-        font-size: 1.25rem;
+        font-size: 1rem;
         border-right: 1px solid #898989;
         width: 50px;
         display: flex;
@@ -44,14 +45,12 @@
         border: none;
         border-radius: 0;
         margin-bottom: 0;
-        padding: 15px;
       }
     }
     .nameWrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 22px;
       input {
         width: 48%;
       }
@@ -170,7 +169,7 @@
       color: white;
       width: 100%;
       max-width: 480px;
-      height: 63px;
+      height: 3.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -178,7 +177,7 @@
       font-weight: 500;
       font-size: 1.25rem;
       transition: all 0.3s ease;
-      margin-top: 22px;
+      margin-top: 1.5rem;
       &:hover {
         background-color: #ffffff;
         color: #4166eb;

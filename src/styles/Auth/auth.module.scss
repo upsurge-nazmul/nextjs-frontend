@@ -35,7 +35,7 @@
       border-radius: 14px;
       color: white;
       width: 100%;
-      margin-bottom: 18px;
+      margin-bottom: 1rem;
       height: 3.5rem;
       display: flex;
       justify-content: center;
@@ -68,7 +68,7 @@
       height: fit-content;
       width: 70vw;
       max-width: 589px;
-      padding: 40px 55px 40px;
+      padding: 2rem 3rem 2rem;
       border-radius: 37px;
       position: relative;
       transition: all 0.3s ease;
@@ -79,7 +79,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 49px;
+        margin-bottom: 1.5rem;
         align-items: center;
         .heading,
         .forgetheading {
@@ -123,12 +123,12 @@
         box-sizing: border-box;
         border-radius: 14px;
         font-family: "Lexend", sans-serif;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 400;
         width: 100%;
-        height: 59px;
-        margin-bottom: 18px;
-        padding: 15px;
+        height: 3rem;
+        margin-bottom: 0.5rem;
+        padding: 0.75rem;
         &::placeholder {
           color: #bcbcbc;
         }
@@ -168,7 +168,7 @@
             position: absolute;
             top: 0;
             right: 0;
-            padding: 19px;
+            padding: 1rem;
             height: 100%;
             display: flex;
             justify-content: center;

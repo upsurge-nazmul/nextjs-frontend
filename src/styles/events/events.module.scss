@@ -26,7 +26,33 @@
           align-items: center;
           margin-bottom: 20px;
         }
+        .cardsContainer {
+          display: flex;
+          gap: 1rem;
+        }
       }
     }
+  }
+}
+
+// for phones
+@media only screen and (max-width: 480px) {
+  .mainContent {
+    padding: 10px 25px !important;
+    .section {
+      .cardsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+// for phones landscape
+@media only screen and (orientation: landscape) and (max-height: 480px) {
+  .cardsContainer {
+    display: flex;
+    gap: 1rem;
   }
 }

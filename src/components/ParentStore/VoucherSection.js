@@ -14,6 +14,7 @@ export default function VoucherSection({
   kid,
   id,
   parent,
+  userdatafromserver
 }) {
   const [items, setItems] = useState();
   const [query, setQuery] = useState("");
@@ -73,6 +74,7 @@ export default function VoucherSection({
             parent={parent}
             phone={phone}
             kidsdata={kidsdata}
+            userdatafromserver={userdatafromserver}
           />
         ))}
         {!query && <SeeMoreCard handleClick={onSeeMoreClick} />}
