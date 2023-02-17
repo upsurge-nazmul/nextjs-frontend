@@ -89,10 +89,19 @@
           margin-bottom: 20px;
         }
       }
-      .error {
-        color: rgb(228, 48, 48);
-        font-size: 1rem;
+      .errors{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:.4rem;
         margin-top: 5px;
+        font-size: 1rem;
+        .error {
+          color: rgb(228, 48, 48);
+        }
+        .continue{
+          cursor: pointer;
+        }
       }
       .button {
         background: #4166eb;

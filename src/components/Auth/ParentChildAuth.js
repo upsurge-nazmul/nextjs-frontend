@@ -122,6 +122,7 @@ function ParentChildAuth({
       user_type: usertype,
       phone,
       password,
+      coupon,
       username: username,
       first_name: firstName,
       last_name: lastName,
@@ -204,6 +205,7 @@ function ParentChildAuth({
       phone,
       password,
       username,
+      coupon,
       first_name: firstName,
       last_name: lastName,
     });
@@ -358,14 +360,13 @@ function ParentChildAuth({
           onChange={(e) => setusername(e.target.value)}
         />
         <input
-          type="text"
+          type="hidden"
           name="coupon"
           id="coupon"
           placeholder="Coupon Code"
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
-          readOnly
         />
         {password !== "" && passisweak && (
           <>
@@ -411,7 +412,7 @@ function ParentChildAuth({
             type={passhidden ? "password" : "text"}
             onFocus={() => setshowdetailpass(true)}
             onBlur={() => setshowdetailpass(false)}
-            placeholder="Password"
+            placeholder="New Password"
             value={password}
             className={password !== "" && passisweak ? styles.weakpass : ""}
             onChange={validatePassword}

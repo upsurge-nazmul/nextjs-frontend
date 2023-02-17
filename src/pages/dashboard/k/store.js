@@ -110,6 +110,7 @@ export default function KidStore({
               vouchers={vouchers}
               kid={true}
               unicoins={userdatafromserver.num_unicoins}
+              userdatafromserver={userdatafromserver}
             />
           </div>
         </div>
