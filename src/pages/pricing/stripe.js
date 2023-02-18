@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/stripe/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentsApi from "../../actions/apis/PaymentsApi";
+import styles from "../../styles/Pricing/payment.module.scss";
 
 function Payment() {
   const router = useRouter();
@@ -32,14 +33,13 @@ function Payment() {
   }, []);
 
   return (
-    <>
-      <h1>React Stripe and the Payment Element</h1>
+    <div className={styles.paymentPage}>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckoutForm />
         </Elements>
       )}
-    </>
+    </div>
   );
 }
 
