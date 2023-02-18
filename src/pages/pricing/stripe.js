@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/stripe/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
-import { Servers } from "../../../config";
-
-const BaseUrl = Servers.LiveServer;
+import PaymentsApi from "../../actions/apis/PaymentsApi";
 
 function Payment() {
+  const router = useRouter();
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(() => {
-    fetch(`${BaseUrl}payments/stripe/config`).then(async (r) => {
-      const { publishableKey } = await r.json();
-      setStripePromise(loadStripe(publishableKey));
+  async function fetchStripeConfig() {
+    const res = await PaymentsApi.getStripeConfig();
+    if (res && res.statusText === "OK") {
+      setStripePromise(loadStripe(res.data.publishableKey));
+    }
+  }
+
+  async function fetchCreatePaymentIntent() {
+    const res = await PaymentsApi.createStripePaymentIntent({
+      amount: router.query.amount,
     });
-  }, []);
+    if (res && res.statusText === "OK") {
+      setClientSecret(res.data.clientSecret);
+    }
+  }
 
   useEffect(() => {
-    fetch(`${BaseUrl}payments/stripe/create-payment-intent`, {
-      method: "POST",
-      body: JSON.stringify({}),
-    }).then(async (result) => {
-      var { clientSecret } = await result.json();
-      setClientSecret(clientSecret);
-    });
+    fetchStripeConfig();
+    fetchCreatePaymentIntent();
   }, []);
 
   return (

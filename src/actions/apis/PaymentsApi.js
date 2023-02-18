@@ -38,7 +38,7 @@ const getStripeConfig = (payload) => {
 };
 const createStripePaymentIntent = (payload) => {
   return ApiCalls.postResponse(
-    "payments/stripe/config",
+    "payments/stripe/create-payment-intent",
     payload,
     getCookie("accesstoken")
   );

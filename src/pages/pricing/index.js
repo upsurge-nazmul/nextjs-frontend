@@ -7,9 +7,10 @@ import LeftPanel from "../../components/LeftPanel";
 import PageTitle from "../../components/PageTitle";
 import Curve1 from "../../components/SVGcomponents/Curve1";
 import Curve2 from "../../components/SVGcomponents/Curve2";
-import TickSvg from "../../components/SVGcomponents/TickSvg";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Pricing/pricing.module.scss";
+
+const PREMIUM_PRICE = 1799;
 
 export default function Pricing() {
   const router = useRouter();
@@ -35,7 +36,12 @@ export default function Pricing() {
 
   const handleBuyPremium = () => {
     console.log("buy premium");
-    router.push("pricing/stripe");
+    router.push({
+      pathname: "pricing/stripe",
+      query: {
+        amount: PREMIUM_PRICE,
+      },
+    });
   };
 
   return (
@@ -296,7 +302,7 @@ export default function Pricing() {
                   }}
                   // disabled
                 >
-                  Join for ₹1799
+                  {`Join for ₹${PREMIUM_PRICE}`}
                 </button>
               </div>
             </div>
