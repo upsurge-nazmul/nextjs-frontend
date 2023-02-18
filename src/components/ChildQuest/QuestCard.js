@@ -50,13 +50,20 @@ const TEXT_COLORS = [
   "#333",
 ];
 
-function QuestCard({ data, typeProps, handleCardClick, locked = false }) {
+function QuestCard({ data, typeProps, handleCardClick,userPlanType }) 
+{
   return (
     <>
       {data ? (
         <div
           className={styles.questCard}
-          onClick={() => handleCardClick(data.questId)}
+          onClick={() => { 
+            console.log(userPlanType, data.premium_plan)
+            if(userPlanType >= data.premium_plan) {handleCardClick(data.questId)}
+          else{
+            console.log("Buy a premium plan");
+          }
+        }}
         >
           <div
             className={styles.cardHeader}
