@@ -6,7 +6,8 @@ export default function MainSection({
   tab,
   handleCardClick,
   QUEST_TYPES,
-  userData
+  userData,
+  setShowSubToPremium,
 }) {
 const userPlanType = userData.premium_plan;
   return (
@@ -28,6 +29,7 @@ const userPlanType = userData.premium_plan;
                   )}
                   key={item.questNo}
                   userPlanType={userPlanType}
+                  setShowSubToPremium={setShowSubToPremium}
                 />
               );
             }

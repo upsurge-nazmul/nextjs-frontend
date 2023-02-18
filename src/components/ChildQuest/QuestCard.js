@@ -50,7 +50,7 @@ const TEXT_COLORS = [
   "#333",
 ];
 
-function QuestCard({ data, typeProps, handleCardClick,userPlanType }) 
+function QuestCard({ data, typeProps, handleCardClick,userPlanType,setShowSubToPremium }) 
 {
   return (
     <>
@@ -61,6 +61,7 @@ function QuestCard({ data, typeProps, handleCardClick,userPlanType })
             console.log(userPlanType, data.premium_plan)
             if(userPlanType >= data.premium_plan) {handleCardClick(data.questId)}
           else{
+            setShowSubToPremium(true);
             console.log("Buy a premium plan");
           }
         }}
