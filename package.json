@@ -21,6 +21,8 @@
     "@nivo/core": "^0.74.1",
     "@nivo/line": "^0.74.1",
     "@nivo/pie": "^0.74.1",
+    "@stripe/react-stripe-js": "^1.16.4",
+    "@stripe/stripe-js": "^1.46.0",
     "apexcharts": "^3.35.0",
     "aws-sdk": "^2.1075.0",
     "axios": "^0.21.1",

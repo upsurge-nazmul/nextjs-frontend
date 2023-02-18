@@ -29,6 +29,20 @@ const getpricing = (payload) => {
 const getinvoice = (payload, token) => {
   return ApiCalls.getResponse("payments/invoice", payload, token);
 };
+const getStripeConfig = (payload) => {
+  return ApiCalls.getResponse(
+    "payments/stripe/config",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+const createStripePaymentIntent = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/stripe/config",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 
 const PaymentsApi = {
   createorder,
@@ -36,6 +50,8 @@ const PaymentsApi = {
   subscribe,
   getpricing,
   getinvoice,
+  getStripeConfig,
+  createStripePaymentIntent,
 };
 
 export default PaymentsApi;
