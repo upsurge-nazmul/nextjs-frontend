@@ -60,6 +60,7 @@ export default function KnowledgeQuest({ userData, questData }) {
             handleCardClick={handleCardClick}
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
+            userData={userData}
           />
         </div>
       </div>
