@@ -12,13 +12,14 @@
 
 .waitlist {
   .container {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #4166eb;
     color: #fff;
     align-items: center;
+    padding: 6rem 0;
     .green {
       background-color: #17d1bc;
       width: 10vw;
@@ -77,11 +78,17 @@
       font-weight: 600;
       text-align: center;
     }
+    .msg {
+      margin-top: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
     .heading3 {
       font-size: 60px;
       color: #fff;
       font-weight: 700;
       margin-bottom: 5px;
+      text-align: center;
     }
     .subheading2 {
       margin-top: 10px;
@@ -128,6 +135,36 @@
         }
       }
     }
+    .invoiceContainer {
+      .invoiceWrapper {
+        overflow: auto;
+        overscroll-behavior-x: auto;
+        // width: 100vw;
+      }
+      .btnContainer {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        margin: 10px 0;
+        .btn {
+          border: none;
+          border-radius: 8px;
+          background-color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #4166eb;
+          font-weight: 600;
+          padding: 10px 20px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: hsl(0, 0%, 94%);
+          }
+        }
+      }
+    }
     .goback {
       border-radius: 8px;
       background-color: #fff;
@@ -151,7 +188,7 @@
 @media only screen and (max-width: 860px) {
   .waitlist {
     .container {
-      height: 80vh;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -186,6 +223,7 @@
         color: #fff;
         font-weight: 700;
         margin-bottom: 5px;
+        text-align: center;
       }
       .subheading {
         margin-top: 40px;
@@ -222,6 +260,36 @@
           }
           &:last-child {
             margin-right: 0;
+          }
+        }
+      }
+      .invoiceContainer {
+        .invoiceWrapper {
+          overflow: auto;
+          overscroll-behavior-x: auto;
+          width: 95vw;
+        }
+        .btnContainer {
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          margin: 10px 0;
+          .btn {
+            border: none;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4166eb;
+            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: hsl(0, 0%, 94%);
+            }
           }
         }
       }
@@ -231,7 +299,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .waitlist {
     .container {
-      height: 80vh;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -302,6 +370,36 @@
           }
           &:last-child {
             margin-right: 0;
+          }
+        }
+      }
+      .invoiceContainer {
+        .invoiceWrapper {
+          overflow: auto;
+          overscroll-behavior-x: auto;
+          width: 95vw;
+        }
+        .btnContainer {
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          margin: 10px 0;
+          .btn {
+            border: none;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4166eb;
+            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: hsl(0, 0%, 94%);
+            }
           }
         }
       }
