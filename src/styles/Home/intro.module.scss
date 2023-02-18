@@ -246,7 +246,7 @@
     }
   }
 }
-@media only screen and (min-width: 861px) and (max-width: 1290px) and (max-height: 800px) {
+@media only screen and (min-width: 861px) and (max-width: 1300px) and (max-height: 800px) {
   .intro {
     .homesvg {
       position: absolute;
@@ -272,72 +272,8 @@
     }
   }
 }
-
-@media only screen and (max-width: 860px) {
-  .intro {
-    scroll-snap-align: end;
-    position: relative;
-    min-height: 500px;
-    height: calc(100vh - 80px);
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    .textContent {
-      margin-top: 11%;
-      width: 80%;
-      margin-left: 7%;
-      .heading {
-        font-size: 42px;
-        font-weight: 700;
-        line-height: 50px;
-        margin-bottom: 5px;
-      }
-      .subheading {
-        font-size: 14px;
-        width: 100%;
-        line-height: 20px;
-      }
-      .button {
-        font-size: 16px;
-      }
-      .checkwaiting {
-        width: 100%;
-        font-size: 12px;
-      }
-      .signupBox {
-        width: 100%;
-        min-width: fit-content;
-        height: 50px;
-        display: flex;
-        overflow: hidden;
-        margin-top: 20px;
-        form {
-          display: flex;
-          width: 55%;
-          flex: 1;
-        }
-        input {
-          flex: 1;
-          font-size: 16px;
-        }
-      }
-    }
-
-    .ballsvg {
-      width: 25vw;
-      bottom: 30px;
-      left: 7%;
-      svg {
-        width: 100px;
-      }
-    }
-  }
-}
 //tablets
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 500px) and (max-width: 990px) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -360,11 +296,12 @@
         font-weight: 700;
         line-height: 50px;
         margin-bottom: 5px;
+        width: auto;
       }
       .subheading {
         font-size: $tablet-subheading;
-        width: 100%;
         line-height: $tablet-subheading-line;
+        width: auto;
       }
       .button {
         font-size: $tablet-subheading;
@@ -406,7 +343,7 @@
     }
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .intro {
     scroll-snap-align: end;
     position: relative;
@@ -414,7 +351,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
     z-index: 2;
     overflow: hidden;
     .error {
@@ -471,361 +407,6 @@
       svg {
         width: 100px;
       }
-    }
-  }
-}
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
-  .intro {
-    scroll-snap-align: end;
-    position: relative;
-    height: calc(100vh - 70px);
-    min-height: unset;
-    width: 100vw;
-    display: flex;
-    overflow: hidden;
-    .curve {
-      position: fixed;
-      width: 100vw;
-      left: 0;
-      top: 60%;
-      z-index: -1;
-      transform: scaleX(-1);
-      animation: moveit 5s ease alternate infinite;
-      animation-delay: 2s;
-    }
-    .textContent {
-      margin-top: 6vh;
-      margin-left: 7%;
-      .knowmore {
-        display: flex;
-        align-items: center;
-        margin-top: 3vh;
-        text-decoration: underline;
-        color: #4166eb;
-        cursor: pointer;
-        font-size: clamp(12px, 1vw, 16px);
-        .infoicon {
-          width: 2vw;
-          height: 2vw;
-          margin-right: 5px;
-        }
-      }
-      .heading {
-        font-size: 3vw;
-        font-weight: 700;
-        margin-bottom: 0;
-        line-height: 3.2vw;
-        .fun {
-          font-weight: 700;
-          position: relative;
-          display: inline-flex;
-          flex-wrap: wrap;
-          margin-left: 10px;
-          letter-spacing: 0.01px;
-          border-bottom: 6px solid #fdcc03;
-        }
-      }
-      .subheading {
-        font-size: clamp(12px, 1.5vw, 16px);
-        font-weight: 400;
-        margin-top: 1vh;
-        line-height: 2.5vw;
-        width: 36vw;
-        .ed {
-          font-weight: 700;
-        }
-      }
-
-      .error {
-        width: 26.5vw;
-        margin-top: 2vh;
-        font-size: clamp(12px, 1.5vw, 16px);
-        color: hsl(0, 81%, 71%);
-        cursor: pointer;
-        font-weight: 500;
-        padding-left: 0px;
-      }
-      .gotobutton {
-        width: 12vw;
-        min-width: fit-content;
-        font-size: clamp(12px, 1vw, 18px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-        border-radius: 6px;
-        padding: 0 20px;
-        height: 45px;
-        background-color: hsl(227, 81%, 59%);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        &:hover {
-          background-color: hsl(227, 100%, 59%);
-        }
-      }
-      .signupBox {
-        width: 23vw;
-        min-width: fit-content;
-        height: 10vh;
-        display: flex;
-        overflow: hidden;
-        margin-top: 5vh;
-        form {
-          display: flex;
-          width: 55%;
-          flex: 1;
-        }
-        input {
-          outline: none;
-          border: none;
-          border-top-left-radius: 6px;
-          border-bottom-left-radius: 6px;
-          border: 1px solid #4166eb;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          font-weight: 400;
-          font-size: clamp(12px, 1vw, 18px);
-          padding-left: 15px;
-          ::placeholder {
-          }
-        }
-
-        .button {
-          width: 12vw;
-          min-width: fit-content;
-          font-size: clamp(12px, 1vw, 18px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 500;
-          border-top-right-radius: 6px;
-          border-bottom-right-radius: 6px;
-          padding: 0 20px;
-          background-color: hsl(227, 81%, 59%);
-          cursor: pointer;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: hsl(227, 100%, 59%);
-          }
-        }
-      }
-      .errsignbox {
-        margin-top: 3vh;
-      }
-    }
-    .homesvg {
-      position: absolute;
-      right: 10%;
-      top: 1px;
-      width: fit-content;
-      height: 90%;
-      width: 35%;
-      div {
-        background-color: #5352ed;
-        height: 35vw;
-        width: 35vw;
-        position: absolute;
-        top: 50%;
-        z-index: 1;
-        border-radius: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      img {
-        height: fit-content;
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        object-fit: contain;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-      }
-    }
-    .ballsvg {
-      left: 30%;
-      position: absolute;
-      bottom: 0;
-      width: 15vw;
-      height: max-content;
-    }
-  }
-}
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-  .intro {
-    scroll-snap-align: end;
-    position: relative;
-    height: calc(100vh - 70px);
-    min-height: unset;
-    width: 100vw;
-    display: flex;
-    overflow: hidden;
-    .curve {
-      position: fixed;
-      width: 100vw;
-      left: 0;
-      top: 60%;
-      z-index: -1;
-      transform: scaleX(-1);
-      animation: moveit 5s ease alternate infinite;
-      animation-delay: 2s;
-    }
-    .textContent {
-      margin-top: 6vh;
-      margin-left: 0;
-      .knowmore {
-        display: flex;
-        align-items: center;
-        margin-top: 3vh;
-        text-decoration: underline;
-        color: #4166eb;
-        cursor: pointer;
-        font-size: clamp(12px, 1vw, 16px);
-        .infoicon {
-          width: 2vw;
-          height: 2vw;
-          margin-right: 5px;
-        }
-      }
-      .heading {
-        font-size: 3vw;
-        font-weight: 700;
-        margin-bottom: 0;
-        line-height: 3.2vw;
-        .fun {
-          font-weight: 700;
-          position: relative;
-          display: inline-flex;
-          flex-wrap: wrap;
-          margin-left: 10px;
-          letter-spacing: 0.01px;
-          border-bottom: 6px solid #fdcc03;
-        }
-      }
-      .subheading {
-        font-size: clamp(12px, 1.5vw, 16px);
-        font-weight: 400;
-        margin-top: 1vh;
-        line-height: 2.5vw;
-        width: 36vw;
-        .ed {
-          font-weight: 700;
-        }
-      }
-
-      .error {
-        width: 26.5vw;
-        margin-top: 2vh;
-        font-size: clamp(12px, 1.5vw, 16px);
-        color: hsl(0, 81%, 71%);
-        cursor: pointer;
-        font-weight: 500;
-        padding-left: 0px;
-      }
-      .gotobutton {
-        width: 12vw;
-        min-width: fit-content;
-        font-size: clamp(12px, 1vw, 18px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-        border-radius: 6px;
-        padding: 0 20px;
-        height: 45px;
-        background-color: hsl(227, 81%, 59%);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        &:hover {
-          background-color: hsl(227, 100%, 59%);
-        }
-      }
-      .signupBox {
-        width: 23vw;
-        min-width: fit-content;
-        height: 10vh;
-        display: flex;
-        overflow: hidden;
-        margin-top: 5vh;
-        form {
-          display: flex;
-          width: 55%;
-          flex: 1;
-        }
-        input {
-          outline: none;
-          border: none;
-          border-top-left-radius: 6px;
-          border-bottom-left-radius: 6px;
-          border: 1px solid #4166eb;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          font-weight: 400;
-          font-size: clamp(12px, 1vw, 18px);
-          padding-left: 15px;
-        }
-
-        .button {
-          width: 12vw;
-          min-width: fit-content;
-          font-size: clamp(12px, 1vw, 18px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 500;
-          border-top-right-radius: 6px;
-          border-bottom-right-radius: 6px;
-          padding: 0 20px;
-          background-color: hsl(227, 81%, 59%);
-          cursor: pointer;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: hsl(227, 100%, 59%);
-          }
-        }
-      }
-      .errsignbox {
-        margin-top: 3vh;
-      }
-    }
-    .homesvg {
-      position: absolute;
-      right: 10%;
-      top: 1px;
-      width: fit-content;
-      height: 90%;
-      width: 35%;
-      div {
-        background-color: #5352ed;
-        height: 35vw;
-        width: 35vw;
-        position: absolute;
-        top: 50%;
-        z-index: 1;
-        border-radius: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      img {
-        height: fit-content;
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        object-fit: contain;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-      }
-    }
-    .ballsvg {
-      left: 30%;
-      position: absolute;
-      bottom: 0;
-      width: 15vw;
-      height: max-content;
     }
   }
 }
