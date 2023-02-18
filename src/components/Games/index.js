@@ -11,6 +11,7 @@ import DashboardHeader from "../Dashboard/DashboardHeader";
 import MoneyAceBanner from "../Dashboard/MoneyAceBanner";
 import PageTitle from "../PageTitle";
 import GameView from "./GameView";
+import FreeGameApis from "../../actions/apis/FreeGameApis";
 
 function Games({
   userdatafromserver,
@@ -19,7 +20,7 @@ function Games({
   accountType = "",
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { setuserdata } = useContext(MainContext);
+  const { userdata ,setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
   const router = useRouter();
@@ -29,7 +30,7 @@ function Games({
     msg: "",
   });
   const [openGame, setOpenGame] = useState("");
-
+  console.log(userdata.premium_plan);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
@@ -68,26 +69,34 @@ function Games({
     }
     FreeGameApis.updateRecentGames({ games: gamestring });
   }
-
-  async function handlegameclick(title, pushto, isSimulator = false) {
-    if (isSimulator) {
-      return router.push(pushto);
-    }
-    if (recentgames.length > 0) {
-      if (!recentgames.includes(title)) {
-        if (recentgames.length === 3) {
-          recentgames[2] = recentgames[1];
-          recentgames[1] = recentgames[0];
-          recentgames[0] = title;
-        } else {
-          recentgames.push(title);
-        }
-        setrecent_games(recentgames);
-        updaterecentgames(recentgames);
+  
+  async function handlegameclick(title, pushto , premium_plan , userPlan , isSimulator = false  ) {
+    if(userPlan >= premium_plan)
+    {
+      console.log("Going forward");
+      if (isSimulator) {
+        return router.push(pushto);
       }
-    } else {
-      setrecent_games([title]);
-      updaterecentgames([title]);
+      if (recentgames.length > 0) {
+        if (!recentgames.includes(title)) {
+          if (recentgames.length === 3) {
+            recentgames[2] = recentgames[1];
+            recentgames[1] = recentgames[0];
+            recentgames[0] = title;
+          } else {
+            recentgames.push(title);
+          }
+          setrecent_games(recentgames);
+          updaterecentgames(recentgames);
+        }
+      } else {
+        setrecent_games([title]);
+        updaterecentgames([title]);
+      }
+      setOpenGame(pushto ? pushto : title);
+    }
+    else{
+      console.log("Buy a premium Subscription");
     }
 
     // if (title === "Ludo") {
@@ -117,7 +126,6 @@ function Games({
     // } else {
     //   router.push("/dashboard/k/game/" + (pushto ? pushto : title));
     // }
-    setOpenGame(pushto ? pushto : title);
   }
 
   return (
@@ -152,36 +160,38 @@ function Games({
                               ? Game_Data[item].pushto.split("/")[
                                   Game_Data[item].pushto.split("/").length - 1
                                 ]
-                              : ""
-                          )
-                        }
-                        data={Game_Data[item]}
-                        key={"kidcomponent" + index}
-                      />
-                    );
-                  })}
+                              : "",
+                            Game_Data[item].premium_plan,
+                            userdata.premium_plan,
+                            )
+                          }
+                          data={Game_Data[item]}
+                          key={"kidcomponent" + index}
+                          />
+                          );
+                        })}
                 </div>
               </div>
             )}
             {/* <div className={styles.availableSection}>
               <h2 className={styles.heading}>
-                Simulators
-                <HeadingArrow />
+              Simulators
+              <HeadingArrow />
               </h2>
               <div className={styles.wrapper}>
-                {Object.keys(Simulator_Data).map((item, index) => {
-                  return (
-                    <GameCard
-                      onClick={() =>
-                        handlegameclick(item, Simulator_Data[item].pushto, true)
-                      }
-                      data={Simulator_Data[item]}
-                      key={"chorecomponent" + index}
-                    />
+              {Object.keys(Simulator_Data).map((item, index) => {
+                return (
+                  <GameCard
+                  onClick={() =>
+                    handlegameclick(item, Simulator_Data[item].pushto, true)
+                  }
+                  data={Simulator_Data[item]}
+                  key={"chorecomponent" + index}
+                  />
                   );
                 })}
-              </div>
-            </div> */}
+                </div>
+              </div> */}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games
@@ -191,28 +201,30 @@ function Games({
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                      onClick={() =>
-                        handlegameclick(
-                          item,
-                          Game_Data[item].pushto
-                            ? Game_Data[item].pushto.split("/")[
-                                Game_Data[item].pushto.split("/").length - 1
-                              ]
-                            : ""
+                    onClick={() =>
+                      handlegameclick(
+                        item,
+                        Game_Data[item].pushto
+                        ? Game_Data[item].pushto.split("/")[
+                          Game_Data[item].pushto.split("/").length - 1
+                        ]
+                        : "",
+                        Game_Data[item].premium_plan,
+                        userdata.premium_plan
                         )
                       }
                       reward={
                         gameunicoinrewards
-                          ? gameunicoinrewards.includes(item)
-                            ? "Completed"
-                            : 200
-                          : null
+                        ? gameunicoinrewards.includes(item)
+                        ? "Completed"
+                        : 200
+                        : null
                       }
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}
-                    />
-                  );
-                })}
+                      />
+                      );
+                    })}
               </div>
             </div>
           </div>
