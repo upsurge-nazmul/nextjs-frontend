@@ -182,7 +182,7 @@ export default function Pricing() {
           <div className={styles.contentTagPremium}>
               Premium
             </div>
-          <div className={styles.section}>
+            <div className={styles.section}>
             <div className={styles.sectionLeft}>
               <div className={styles.sectionItem}>
                 <img
@@ -198,7 +198,7 @@ export default function Pricing() {
               <div className={styles.sectionItem}>
                 <img
                   src={
-                    require("../../assets/pricing/bonus_unicoins.svg").default
+                    require("../../assets/pricing/bonus_unicoins_red.svg").default
                       .src
                   }
                   alt="Education Games"
@@ -223,7 +223,7 @@ export default function Pricing() {
               <div className={styles.sectionItem}>
                 <img
                   src={
-                    require("../../assets/pricing/partner_rewards.svg").default
+                    require("../../assets/pricing/bonus_unicoins_red.svg").default
                     .src
                   }
                   alt="Avatar Sets"
@@ -247,7 +247,7 @@ export default function Pricing() {
               <div className={styles.sectionItem}>
                 <img
                   src={
-                    require("../../assets/pricing/knowledge_quests.png").default
+                    require("../../assets/pricing/kq_red.png").default
                     .src
                   }
                   alt="Education Games"
@@ -269,7 +269,7 @@ export default function Pricing() {
               <div className={styles.sectionItem}>
                 <img
                   src={
-                    require("../../assets/pricing/leaderboard_prizes.svg")
+                    require("../../assets/pricing/bonus_unicoins_red.svg")
                       .default.src
                   }
                   alt="Education Games"
@@ -280,7 +280,7 @@ export default function Pricing() {
               <div className={styles.sectionItem}>
                 <img
                   src={
-                    require("../../assets/pricing/partner_rewards.svg").default
+                    require("../../assets/pricing/upsurge_goodie.svg").default
                       .src
                     }
                   alt="Education Games"
