@@ -150,17 +150,23 @@ export default function RequestModal({
                 }
               {error === "Phone number not verified." && 
                 <div className={styles.continue} onClick={()=>{setshowOTP(true)}}>
+                  <u>
                   Enter Now to Continue
+                  </u>
                 </div>
                 }
               {error === "Email not verified." && verificationEmail === false && 
                 <div className={styles.continue} onClick={()=>{sendVerificationEmail()}}>
+                  <u>
                   Click Here to send again
+                  </u>
                 </div>
               }
               {error === "Email not verified." && verificationEmail && 
                 <div className={styles.continue}>
-                      Verification Email sent.
+                    <u>
+                    Verification Email sent.
+                    </u>
                   </div>
                }
               {error === "Profile not completed." && 
