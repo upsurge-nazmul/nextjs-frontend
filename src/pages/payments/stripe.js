@@ -38,7 +38,9 @@ function Payment() {
     <div className={styles.paymentPage}>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm />
+          <CheckoutForm
+            {...{ amount: amount, bundle: "Premium", subscription: "Yearly" }} // Subscription= 'Yearly'/ 'Half-Yearly' / 'Monthly
+          />
         </Elements>
       )}
     </div>
