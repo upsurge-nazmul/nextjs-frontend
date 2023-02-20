@@ -12,6 +12,7 @@ import MoneyAceBanner from "../Dashboard/MoneyAceBanner";
 import PageTitle from "../PageTitle";
 import GameView from "./GameView";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
+import SubToPremiumPopUp from "../SubToPremiumPopUp";
 
 function Games({
   userdatafromserver,
@@ -23,6 +24,7 @@ function Games({
   const { userdata ,setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
+  const [showSubToPremium, setShowSubToPremium] = useState(true);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -30,7 +32,6 @@ function Games({
     msg: "",
   });
   const [openGame, setOpenGame] = useState("");
-  console.log(userdata.premium_plan);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
@@ -96,7 +97,7 @@ function Games({
       setOpenGame(pushto ? pushto : title);
     }
     else{
-      console.log("Buy a premium Subscription");
+      setShowSubToPremium(true);
     }
 
     // if (title === "Ludo") {
@@ -146,6 +147,11 @@ function Games({
               for you
             </h4>
             <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} />
+            {showSubToPremium &&
+            (
+              <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+              )
+            }
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>

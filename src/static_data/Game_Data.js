@@ -38,27 +38,27 @@ export const Game_Data = {
     name: "Money slide",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
     description: "Fill each piggy-bank with the right amount of money.",
-    premium_plan: 1,
+    premium_plan: 0,
   },
   NeedOrWant: {
     name: "Need and want",
     description:
     "What is the difference between a need & a want? Let’s play to find out.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
-    premium_plan: 1,
+    premium_plan: 0,
   },
   Ludo: {
     name: "Ludo",
     description:
     "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
     img: "/images/games/Ludo.jpg",
-    premium_plan: 1,
+    premium_plan: 0,
   },
   MoneyDash: {
     name: "Money Dash",
     description: "Learn to manage expenses on the fly.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
-    premium_plan: 1,
+    premium_plan: 0,
   },
   SnakeAndLadders: {
     name: "Snake And Ladders",

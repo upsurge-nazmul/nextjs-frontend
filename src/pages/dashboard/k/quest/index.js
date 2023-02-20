@@ -11,7 +11,7 @@ import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
 import PageTitle from "../../../../components/PageTitle";
-
+import SubToPremiumPopUp from "../../../../components/SubToPremiumPopUp";
 const QUEST_TYPES = [
   { title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
   { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
@@ -28,7 +28,7 @@ export default function KnowledgeQuest({ userData, questData }) {
     type: "success",
     msg: "",
   });
-
+  const [showSubToPremium, setShowSubToPremium] = useState(false);
   useEffect(() => {
     setuserdata(userData);
   }, [userData]);
@@ -47,6 +47,10 @@ export default function KnowledgeQuest({ userData, questData }) {
           mode={"Knowledge Quests"}
           settoastdata={settoastdata}
         />
+        {showSubToPremium && (
+          <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+        )
+        }
         <div className={styles.mainContent} id="quest-main">
           <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
           <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> 
@@ -61,6 +65,7 @@ export default function KnowledgeQuest({ userData, questData }) {
             QUEST_TYPES={QUEST_TYPES}
             tab={tab}
             userData={userData}
+            setShowSubToPremium={setShowSubToPremium}
           />
         </div>
       </div>
