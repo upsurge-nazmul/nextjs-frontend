@@ -10,7 +10,7 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Pricing/pricing.module.scss";
 
-const PREMIUM_PRICE = 1799;
+//const PREMIUM_PRICE = 1799;
 
 export default function Pricing() {
   const router = useRouter();
