@@ -24,6 +24,7 @@ function Header({
   showNav = true,
   page = "",
   refId = null,
+  premiumPrice,
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -74,6 +75,7 @@ function Header({
         mailfromhome={mailfromhome}
         setshowpopup={setshowpopup}
         refId={refId}
+        premiumPrice={premiumPrice}
       />
       {showpopup && (
         <WaitlistPopUp

@@ -19,6 +19,7 @@ export default function Pricing() {
   const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [authMode, setAuthMode] = useState("");
+  const [PREMIUM_PRICE,setPREMIUM_PRICE] = useState(null);
 
   const { theme } = useContext(MainContext);
 
@@ -59,6 +60,7 @@ export default function Pricing() {
         authmode={authMode}
         setshowpopup={setshowpopup}
         showpopup={showpopup}
+        premiumPrice={PREMIUM_PRICE}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
@@ -170,8 +172,9 @@ export default function Pricing() {
                   onClick={() => {
                     setAuthMode("parent");
                     setshowauth(true);
+                    setPREMIUM_PRICE(null);
                   }}
-                >
+                  >
                   Join for
                   <div className={styles.pricing}>
                     <div className={styles.old}>₹1799</div>
@@ -191,33 +194,33 @@ export default function Pricing() {
                     <img
                       src={
                         require("../../assets/pricing/educational_games.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     12+ Educational Games
                   </div>
                   <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/bonus_unicoins.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     5 Flagship Games
                   </div>
                   <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/habit_builder.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     5 Workshop Invites
                     <p className={styles.small_fontsize}>(Worth ₹5000)</p>
                   </div>
@@ -225,22 +228,22 @@ export default function Pricing() {
                     <img
                       src={
                         require("../../assets/pricing/partner_rewards.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Avatar Sets"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     Avatar Sets
                   </div>
                   <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/partner_rewards.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Certificate Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     Certificates
                   </div>
                 </div>
@@ -249,33 +252,33 @@ export default function Pricing() {
                     <img
                       src={
                         require("../../assets/pricing/knowledge_quests.png")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     20 Knowledge Quests
                   </div>
                   <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/partner_rewards.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     Unlimited Voucher Redemption and 10000 Bonus Unicoins.
                   </div>
                   <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/leaderboard_prizes.svg")
-                          .default.src
+                        .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
-                    />
+                      />
                     Free Access to events and Challenges - Win rewards worth
                     ₹25,000 every month
                   </div>
@@ -284,10 +287,10 @@ export default function Pricing() {
                       src={
                         require("../../assets/pricing/partner_rewards.svg")
                           .default.src
-                      }
-                      alt="Education Games"
-                      className={styles.sectionItemImage}
-                    />
+                        }
+                        alt="Education Games"
+                        className={styles.sectionItemImage}
+                        />
                     upsurge Goodie Bag
                   </div>
                 </div>
@@ -296,13 +299,14 @@ export default function Pricing() {
                 <button
                   className={styles.actionButtonPremium}
                   onClick={() => {
-                    // setAuthMode("parent");
-                    // setshowauth(true);
-                    handleBuyPremium();
+                     setAuthMode("parent");
+                     setshowauth(true);
+                    // handleBuyPremium();
+                     setPREMIUM_PRICE(1799); // change the premium price
                   }}
                   // disabled
-                >
-                  {`Join for ₹${PREMIUM_PRICE}`}
+                  >
+                  {`Join for ₹1799`} 
                 </button>
               </div>
             </div>
