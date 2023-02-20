@@ -1,0 +1,104 @@
+.subToPremium {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 501;
+    .clickable{
+        cursor: pointer;
+    }
+    .background {
+        background-color: rgba(0, 0, 0, 0.322);
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -1;
+    }
+    .block {
+        background-color: white;
+        width: 40rem;
+        border-radius: 14px;
+        z-index: 2;
+        padding: 40px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:1rem;
+        .cross {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            z-index: 100;
+            background-color: white;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .icon {
+            font-size: 40px;
+            color: rgb(255, 109, 109);
+            transition: all 0.3s ease;
+            &:hover {
+              color: hsl(0, 75%, 65%);
+              cursor: pointer;
+            }
+          }
+        }
+    }
+    .section {
+        display: flex;
+        flex-direction: column;
+      padding: 30px 1rem 30px 0;
+      font-size: 1rem;
+      font-weight: 300;
+      .sectionLeft {
+        flex: 1;
+      }
+      .sectionRight {
+        flex: 1;
+      }
+      .sectionItem {
+        padding-bottom: 6px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        .small_fontsize{
+          margin-left: 0.2rem;
+          font-size: 0.8rem;
+        }
+        .sectionItemImage {
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .button {
+        background: #4166eb;
+        border-radius: 14px;
+        color: white;
+        width: 100%;
+        max-width: 480px;
+        height: 63px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        &:hover {
+          background-color: #ffffff;
+          color: #4166eb;
+          border: 1px solid #4166eb;
+        }
+      }
+}
