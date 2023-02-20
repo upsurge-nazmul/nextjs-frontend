@@ -3,6 +3,8 @@ import React from "react";
 import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
+const PREMIUM_PRICE = 1799;
+
 function ChosePremiumPopUp({ setChoseToPremium }) {
   const router = useRouter();
   console.log("Showing");
@@ -20,23 +22,23 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
         </div>
         <h2>Upsurge Premium</h2>
         <p>
-            Get Access to premium Quests and Games {/* Change the premium family to something more catchy*/}
+          Get Access to premium Quests and Games{" "}
+          {/* Change the premium family to something more catchy*/}
         </p>
         <div className={styles.section}>
-            <div className={styles.sectionLeft}>
-              <div className={styles.sectionItem}>
-                <img
-                  src={
-                    require("../assets/pricing/educational_games.svg")
-                      .default.src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                  />
-                12+ Educational Games
-              </div>
-              <div className={styles.sectionItem}>
-                {/* <img
+          <div className={styles.sectionLeft}>
+            <div className={styles.sectionItem}>
+              <img
+                src={
+                  require("../assets/pricing/educational_games.svg").default.src
+                }
+                alt="Education Games"
+                className={styles.sectionItemImage}
+              />
+              12+ Educational Games
+            </div>
+            <div className={styles.sectionItem}>
+              {/* <img
                   src={
                     require("../assets/pricing/bonus_unicoins_red.svg").default
                       .src
@@ -44,24 +46,19 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-                5 Flagship Games
-              </div>
-              <div className={styles.sectionItem}>
-                <img
-                  src={
-                    require("../assets/pricing/habit_builder.svg").default
-                      .src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                />
-               5 Workshop Invites 
-               <p className={styles.small_fontsize}>
-               (Worth ₹5000)
-               </p>
-              </div>
-              <div className={styles.sectionItem}>
-                {/* <img
+              5 Flagship Games
+            </div>
+            <div className={styles.sectionItem}>
+              <img
+                src={require("../assets/pricing/habit_builder.svg").default.src}
+                alt="Education Games"
+                className={styles.sectionItemImage}
+              />
+              5 Workshop Invites
+              <p className={styles.small_fontsize}>(Worth ₹5000)</p>
+            </div>
+            <div className={styles.sectionItem}>
+              {/* <img
                   src={
                     require("../assets/pricing/bonus_unicoins_red.svg").default
                     .src
@@ -69,23 +66,22 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Avatar Sets"
                   className={styles.sectionItemImage}
                   /> */}
-                Avatar Sets
-              </div>
-              <div className={styles.sectionItem}>
-                <img
-                  src={
-                    require("../assets/pricing/partner_rewards.svg").default
-                      .src
-                  }
-                  alt="Certificate Games"
-                  className={styles.sectionItemImage}
-                />
-                Certificates
-              </div>
+              Avatar Sets
             </div>
-            <div className={styles.sectionRight}>
-              <div className={styles.sectionItem}>
-                {/* <img
+            <div className={styles.sectionItem}>
+              <img
+                src={
+                  require("../assets/pricing/partner_rewards.svg").default.src
+                }
+                alt="Certificate Games"
+                className={styles.sectionItemImage}
+              />
+              Certificates
+            </div>
+          </div>
+          <div className={styles.sectionRight}>
+            <div className={styles.sectionItem}>
+              {/* <img
                   src={
                     require("../assets/pricing/kq_red.png").default
                     .src
@@ -93,21 +89,20 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-                20 Knowledge Quests
-              </div>
-              <div className={styles.sectionItem}>
-                <img
-                  src={
-                    require("../assets/pricing/partner_rewards.svg").default
-                    .src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                  />
-                Unlimited Voucher Redemption and 10000 Bonus Unicoins.
-              </div>
-              <div className={styles.sectionItem}>
-                {/* <img
+              20 Knowledge Quests
+            </div>
+            <div className={styles.sectionItem}>
+              <img
+                src={
+                  require("../assets/pricing/partner_rewards.svg").default.src
+                }
+                alt="Education Games"
+                className={styles.sectionItemImage}
+              />
+              Unlimited Voucher Redemption and 10000 Bonus Unicoins.
+            </div>
+            <div className={styles.sectionItem}>
+              {/* <img
                   src={
                     require("../assets/pricing/bonus_unicoins_red.svg")
                       .default.src
@@ -115,10 +110,11 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-                Free Access to events and Challenges - Win rewards worth ₹25,000 every month
-              </div>
-              <div className={styles.sectionItem}>
-                {/* <img
+              Free Access to events and Challenges - Win rewards worth ₹25,000
+              every month
+            </div>
+            <div className={styles.sectionItem}>
+              {/* <img
                   src={
                     require("../assets/pricing/upsurge_goodie.svg").default
                       .src
@@ -126,19 +122,21 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-                upsurge Goodie Bag
-              </div>
+              upsurge Goodie Bag
             </div>
           </div>
+        </div>
         <div
-        className={styles.button}
+          className={styles.button}
           onClick={() => {
-            router.push("/pricing");
+            router.push(`/payments/stripe?amount=${PREMIUM_PRICE}`);
           }}
         >
-          Subscribe to Premium at Just ₹1799
+          {`Subscribe to Premium at Just ₹${PREMIUM_PRICE}`}
         </div>
-      <p className={styles.clickable}><u>Continue with the free version</u></p>
+        <p className={styles.clickable}>
+          <u>Continue with the free version</u>
+        </p>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { getIndianTime } from "../helpers/timehelpers";
 import styles from "../styles/GeneralComponents/confirmInvoice.module.scss";
 
-const ConfirmInvoice = React.forwardRef(({ data }, ref) => {
+const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
   return (
     <div ref={ref} className={styles.invoiceBox}>
       <table cellSpacing="0" cellPadding="0">
@@ -64,11 +64,11 @@ const ConfirmInvoice = React.forwardRef(({ data }, ref) => {
                         <strong>Recipient details:</strong>
                       </p>
                       <p className="innumright">
-                        {data.recipient_name}
+                        {userData.first_name} {userData.last_name}
                         <br />
-                        {data.recipient_email}
+                        {userData.email}
                         <br />
-                        {data.recipient_address}
+                        {userData.phone}
                         <br />
                         <br />
                       </p>
@@ -92,7 +92,7 @@ const ConfirmInvoice = React.forwardRef(({ data }, ref) => {
           <tr className="item">
             <td style={{ maxWidth: "180px" }}>{data.description}</td>
             <td style={{ textAlign: "right" }}>{data.hsn}</td>
-            <td style={{ textAlign: "right" }}>{data.quantity}</td>
+            <td style={{ textAlign: "right" }}>{data.subscription}</td>
             <td style={{ textAlign: "right" }}>{data.taxable_value}</td>
             <td style={{ textAlign: "right" }}>{data.cgst}</td>
             <td style={{ textAlign: "right" }}>{data.sgst}</td>
@@ -103,7 +103,7 @@ const ConfirmInvoice = React.forwardRef(({ data }, ref) => {
           <tr className="heading">
             <td style={{ maxWidth: "180px" }}>Total</td>
             <td style={{ textAlign: "right" }}></td>
-            <td style={{ textAlign: "right" }}>{data.quantity}</td>
+            <td style={{ textAlign: "right" }}>{data.subscription}</td>
             <td style={{ textAlign: "right" }}>{data.taxable_value}</td>
             <td style={{ textAlign: "right" }}>{data.cgst}</td>
             <td style={{ textAlign: "right" }}>{data.sgst}</td>

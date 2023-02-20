@@ -27,6 +27,7 @@ function Menu({
   setShowOnboarding,
   kidLevel,
   setshowlevels,
+  setShowPremiumPopup,
 }) {
   const {
     savedUsers,
@@ -292,6 +293,16 @@ function Menu({
             Level {kidLevel}
           </div>
         )}
+        <div
+          className={styles.button}
+          onClick={() => {
+            setshowmenu(false);
+            setShowPremiumPopup((prev) => !prev);
+          }}
+        >
+          <HikingIcon className={styles.icon} />
+          Subscription
+        </div>
 
         <div
           className={styles.button}

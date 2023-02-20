@@ -12,14 +12,14 @@ import ConfirmInvoice from "../../components/ConfirmInvoice";
 import { useReactToPrint } from "react-to-print";
 import PageTitle from "../../components/PageTitle";
 
-export default function Subscribed({ invoice_data, userdatafromserver }) {
+export default function Subscribed({ userdatafromserver }) {
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [invoiceData, setInvoiceData] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { amount, bundle, subscription } = router.query;
+  const { amount, bundle, subscription, payment_intent } = router.query;
 
   async function fetchUpdateSubscription(model) {
     const res = await PaymentsApi.updateSubscription(model);
@@ -30,6 +30,7 @@ export default function Subscribed({ invoice_data, userdatafromserver }) {
 
   useEffect(() => {
     const invoiceModel = {
+      paymentIntent: payment_intent,
       timestamp: new Date().getTime(),
       recipient_name: userdatafromserver.user_name,
       recipient_email: userdatafromserver.email,
@@ -84,7 +85,13 @@ export default function Subscribed({ invoice_data, userdatafromserver }) {
 
         <div className={styles.invoiceContainer}>
           <div className={styles.invoiceWrapper}>
-            {invoiceData && <ConfirmInvoice data={invoiceData} ref={pdfRef} />}
+            {invoiceData && (
+              <ConfirmInvoice
+                data={invoiceData}
+                userData={userdatafromserver}
+                ref={pdfRef}
+              />
+            )}
           </div>
           <div className={styles.btnContainer}>
             <button onClick={() => handlerSave()} className={styles.btn}>
@@ -127,7 +134,7 @@ export default function Subscribed({ invoice_data, userdatafromserver }) {
           <LinkedIN className={styles.socialyt} /> */}
         </div>
         <div className={styles.goback} onClick={() => router.push("/")}>
-          Go Back
+          Go To Home
         </div>
       </div>
       <Footer />
