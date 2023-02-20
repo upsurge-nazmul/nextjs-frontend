@@ -1,7 +1,7 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
-import styles from "../../styles/Pricing/payment.module.scss";
+import styles from "../../styles/payments/payment.module.scss";
 
 export default function CheckoutForm() {
   const stripe = useStripe();

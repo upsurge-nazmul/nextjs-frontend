@@ -36,12 +36,6 @@ export default function Pricing() {
 
   const handleBuyPremium = () => {
     console.log("buy premium");
-    router.push({
-      pathname: "pricing/stripe",
-      query: {
-        amount: PREMIUM_PRICE,
-      },
-    });
   };
 
   return (
@@ -296,11 +290,11 @@ export default function Pricing() {
                 <button
                   className={styles.actionButtonPremium}
                   onClick={() => {
-                    // setAuthMode("parent");
-                    // setshowauth(true);
-                    handleBuyPremium();
+                    setAuthMode("parent");
+                    setshowauth(true);
+                    // handleBuyPremium();
                   }}
-                  // disabled
+                  disabled
                 >
                   {`Join for ₹${PREMIUM_PRICE}`}
                 </button>
