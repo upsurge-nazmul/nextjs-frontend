@@ -19,20 +19,27 @@ export default function Subscribed({ invoice_data, userdatafromserver }) {
   const [invoiceData, setInvoiceData] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { amount, bundle } = router.query;
+  const { amount, bundle, subscription } = router.query;
+
+  async function fetchUpdateSubscription(model) {
+    const res = await PaymentsApi.updateSubscription(model);
+    if (res && res.data && res.data.success) {
+      setInvoiceData(res.data.data);
+    }
+  }
 
   useEffect(() => {
     const invoiceModel = {
-      id: `INV-${Math.random * 1000000}`,
-      timestamp: new Date(),
+      timestamp: new Date().getTime(),
       recipient_name: userdatafromserver.user_name,
       recipient_email: userdatafromserver.email,
       recipient_address: userdatafromserver.address,
       description: bundle,
-      quantity: 1,
+      quantity: subscription,
       amount: amount,
+      subscription: subscription,
     };
-    setInvoiceData(invoiceModel);
+    fetchUpdateSubscription(invoiceModel);
   }, []);
 
   useEffect(() => {
@@ -50,8 +57,6 @@ export default function Subscribed({ invoice_data, userdatafromserver }) {
   const handlerSave = useReactToPrint({
     content: () => pdfRef.current,
   });
-
-  console.log("%%%%%%%%%%%", userdatafromserver, router.query);
 
   return (
     <div className={styles.waitlist}>
