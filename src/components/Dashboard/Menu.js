@@ -16,6 +16,7 @@ import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
+import PaymentIcon from "@mui/icons-material/Payment";
 
 function Menu({
   settoastdata = () => {},
@@ -300,7 +301,7 @@ function Menu({
             setShowPremiumPopup((prev) => !prev);
           }}
         >
-          <HikingIcon className={styles.icon} />
+          <PaymentIcon className={styles.icon} />
           Subscription
         </div>
 
