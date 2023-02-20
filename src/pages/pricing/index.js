@@ -19,6 +19,7 @@ export default function Pricing() {
   const [showpopup, setshowpopup] = useState(false);
   const [showauth, setshowauth] = useState(false);
   const [authMode, setAuthMode] = useState("");
+  const [premiumPrice, setPremiumPrice] = useState();
 
   const { theme } = useContext(MainContext);
 
@@ -34,9 +35,10 @@ export default function Pricing() {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
 
-  const handleBuyPremium = () => {
-    console.log("buy premium");
-  };
+  // const handleBuyPremium = () => {
+  //   console.log("buy premium");
+  //   setPremiumPrice(PREMIUM_PRICE);
+  // };
 
   return (
     <div
@@ -53,6 +55,7 @@ export default function Pricing() {
         authmode={authMode}
         setshowpopup={setshowpopup}
         showpopup={showpopup}
+        premiumPrice={premiumPrice}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
@@ -164,6 +167,7 @@ export default function Pricing() {
                   onClick={() => {
                     setAuthMode("parent");
                     setshowauth(true);
+                    setPremiumPrice(null);
                   }}
                 >
                   Join for
@@ -292,9 +296,10 @@ export default function Pricing() {
                   onClick={() => {
                     setAuthMode("parent");
                     setshowauth(true);
+                    setPremiumPrice(PREMIUM_PRICE);
                     // handleBuyPremium();
                   }}
-                  disabled
+                  // disabled
                 >
                   {`Join for ₹${PREMIUM_PRICE}`}
                 </button>

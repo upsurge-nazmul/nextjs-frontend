@@ -24,6 +24,7 @@ function Header({
   showNav = true,
   page = "",
   refId = null,
+  premiumPrice,
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -60,6 +61,7 @@ function Header({
       setemail(mailfromhome);
     }
   }, [mailfromhome]);
+
   return (
     <div
       className={`${styles.header} ${stickyheader ? styles.sticky : ""} ${
@@ -74,6 +76,7 @@ function Header({
         mailfromhome={mailfromhome}
         setshowpopup={setshowpopup}
         refId={refId}
+        premiumPrice={premiumPrice}
       />
       {showpopup && (
         <WaitlistPopUp
