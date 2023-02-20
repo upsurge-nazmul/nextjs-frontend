@@ -11,6 +11,7 @@ import { useRouter } from "next/dist/client/router";
 import Spinner from "../Spinner";
 import { onlyText } from "../../helpers/validationHelpers";
 import ChoreApis from "../../actions/apis/ChoreApis";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 
 function ParentChildAuth({
   setphone,
@@ -28,6 +29,8 @@ function ParentChildAuth({
   setusername,
   seterror,
   error,
+  premiumprice,
+  setpremiumrice,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -61,6 +64,7 @@ function ParentChildAuth({
   const [loading, setloading] = useState(false);
   //adding coupon code input field
   const [coupon, setCoupon] = useState("");
+  const [choseToPremium,setChoseToPremium] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -426,7 +430,13 @@ function ParentChildAuth({
         {error && <p className={styles.error}>{error}</p>}
 
         {!loading ? (
-          <div className={`${styles.button}`} onClick={genotp}>
+          <div className={`${styles.button}`} onClick={ //genotp
+          ()=>{if(premiumprice === null) 
+          {
+            console.log("true");
+            setChoseToPremium(true);
+          }
+          }}>
             Continue
           </div>
         ) : (
@@ -434,6 +444,10 @@ function ParentChildAuth({
             <Spinner />
           </div>
         )}
+        {choseToPremium && (
+        <ChosePremiumPopUp setChoseToPremium={setChoseToPremium} />
+        )
+        }
       </div>
     </div>
   );
