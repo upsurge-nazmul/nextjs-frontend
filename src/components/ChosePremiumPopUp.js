@@ -7,7 +7,6 @@ const PREMIUM_PRICE = 1799;
 
 function ChosePremiumPopUp({ setChoseToPremium }) {
   const router = useRouter();
-  console.log("Showing");
   return (
     <div className={styles.subToPremium}>
       <div
