@@ -294,12 +294,12 @@ export default function Pricing() {
                 <button
                   className={styles.actionButtonPremium}
                   onClick={() => {
-                    setAuthMode("parent");
-                    setshowauth(true);
-                    setPremiumPrice(PREMIUM_PRICE);
+                    // setAuthMode("parent");
+                    // setshowauth(true);
+                    // setPremiumPrice(PREMIUM_PRICE);
                     // handleBuyPremium();
                   }}
-                  // disabled
+                  disabled
                 >
                   {`Join for ₹${PREMIUM_PRICE}`}
                 </button>
