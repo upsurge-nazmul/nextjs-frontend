@@ -32,9 +32,6 @@ export default function Subscribed({ userdatafromserver }) {
     const invoiceModel = {
       paymentIntent: payment_intent,
       timestamp: new Date().getTime(),
-      recipient_name: userdatafromserver.user_name,
-      recipient_email: userdatafromserver.email,
-      recipient_address: userdatafromserver.address,
       description: bundle,
       quantity: subscription,
       amount: amount,

@@ -22,7 +22,7 @@ function Payment() {
 
   async function fetchCreatePaymentIntent(amount) {
     const res = await PaymentsApi.createStripePaymentIntent({
-      amount: amount,
+      amount: amount * 100, // Amount should be in 'Cents'
     });
     if (res && res.statusText === "OK") {
       setClientSecret(res.data.clientSecret);
