@@ -232,7 +232,10 @@ function DashboardHeader({
       {showSubscription ? (
         <>
           {userdata && userdata.premium_plan === 1 ? (
-            <SubscriptionDetails setShowSubscription={setShowSubscription} />
+            <SubscriptionDetails
+              setShowSubscription={setShowSubscription}
+              userdata={userdata}
+            />
           ) : (
             <ChosePremiumPopUp setChoseToPremium={setShowSubscription} />
           )}
