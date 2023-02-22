@@ -384,7 +384,9 @@ export default function Pricing() {
                 <div className={styles.helperText}>*Limited time offer</div>
               </div>
             </div>
-            <div className={styles.contentPlanPremium}>
+           
+          </div>
+          <div className={styles.contentPlanPremium}>
               <div className={styles.contentTagPremium}>Premium</div>
               <div className={styles.section}>
                 <div className={styles.sectionLeft}>
@@ -508,7 +510,6 @@ export default function Pricing() {
                 </button>
               </div>
             </div>
-          </div>
         </div>
       </div>
       <JoinUs />
