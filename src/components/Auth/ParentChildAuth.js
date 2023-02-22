@@ -64,7 +64,7 @@ function ParentChildAuth({
   const [loading, setloading] = useState(false);
   //adding coupon code input field
   const [coupon, setCoupon] = useState("");
-  const [choseToPremium,setChoseToPremium] = useState(false);
+  const [choseToPremium, setChoseToPremium] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -430,13 +430,18 @@ function ParentChildAuth({
         {error && <p className={styles.error}>{error}</p>}
 
         {!loading ? (
-          <div className={`${styles.button}`} onClick={ //genotp
-          ()=>{if(premiumprice === null) 
-          {
-            console.log("true");
-            setChoseToPremium(true);
-          }
-          }}>
+          <div
+            className={`${styles.button}`}
+            onClick={
+              //genotp
+              () => {
+                if (premiumprice === null) {
+                  console.log("true");
+                  setChoseToPremium(true);
+                }
+              }
+            }
+          >
             Continue
           </div>
         ) : (
@@ -445,9 +450,8 @@ function ParentChildAuth({
           </div>
         )}
         {choseToPremium && (
-        <ChosePremiumPopUp setChoseToPremium={setChoseToPremium} />
-        )
-        }
+          <ChosePremiumPopUp setChoseToPremium={setChoseToPremium} />
+        )}
       </div>
     </div>
   );

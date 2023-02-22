@@ -16,6 +16,7 @@ import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { getfullname } from "../../helpers/generalfunctions";
 import AuthComponent from "../Auth/AuthComponent";
+import PaymentIcon from "@mui/icons-material/Payment";
 
 function Menu({
   settoastdata = () => {},
@@ -27,6 +28,7 @@ function Menu({
   setShowOnboarding,
   kidLevel,
   setshowlevels,
+  setShowPremiumPopup,
 }) {
   const {
     savedUsers,
@@ -292,6 +294,16 @@ function Menu({
             Level {kidLevel}
           </div>
         )}
+        <div
+          className={styles.button}
+          onClick={() => {
+            setshowmenu(false);
+            setShowPremiumPopup((prev) => !prev);
+          }}
+        >
+          <PaymentIcon className={styles.icon} />
+          Subscription
+        </div>
 
         <div
           className={styles.button}

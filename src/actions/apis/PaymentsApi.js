@@ -44,6 +44,22 @@ const createStripePaymentIntent = (payload) => {
   );
 };
 
+const updateSubscription = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/addsubscription",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const getSubscriptionDetails = () => {
+  return ApiCalls.getResponse(
+    "payments/subscriptionDetails",
+    null,
+    getCookie("accesstoken")
+  );
+};
+
 const PaymentsApi = {
   createorder,
   savereceipt,
@@ -52,6 +68,8 @@ const PaymentsApi = {
   getinvoice,
   getStripeConfig,
   createStripePaymentIntent,
+  updateSubscription,
+  getSubscriptionDetails,
 };
 
 export default PaymentsApi;

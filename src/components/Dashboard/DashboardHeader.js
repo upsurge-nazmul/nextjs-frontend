@@ -15,6 +15,8 @@ import LevelComponent from "../Dashboard/LevelComponent";
 import Onboarding from "../Onboarding";
 import tooltipStyle from "../../styles/GeneralComponents/tooltip.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
+import SubscriptionDetails from "./SubscriptionDetails";
 
 function DashboardHeader({
   mode,
@@ -38,6 +40,7 @@ function DashboardHeader({
   const [showlevels, setshowlevels] = useState(false);
   const [savedUser, setSavedUser] = useState();
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showSubscription, setShowSubscription] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
@@ -198,6 +201,8 @@ function DashboardHeader({
               setShowOnboarding={setShowOnboarding}
               setshowlevels={setshowlevels}
               kidLevel={kidLevel}
+              showPremiumPopup={showSubscription}
+              setShowPremiumPopup={setShowSubscription}
             />
           )}
           <img
@@ -221,6 +226,20 @@ function DashboardHeader({
           setOpen={setShowOnboarding}
           actionHandler={() => setShowOnboarding(false)}
         />
+      ) : (
+        ""
+      )}
+      {showSubscription ? (
+        <>
+          {userdata && userdata.premium_plan === 1 ? (
+            <SubscriptionDetails
+              setShowSubscription={setShowSubscription}
+              userdata={userdata}
+            />
+          ) : (
+            <ChosePremiumPopUp setChoseToPremium={setShowSubscription} />
+          )}
+        </>
       ) : (
         ""
       )}

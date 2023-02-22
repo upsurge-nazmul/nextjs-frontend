@@ -140,8 +140,6 @@
           padding: 10px 20px;
         }
         .actionButtonPremium {
-          // filter: blur(1px);
-          // opacity:0.9;
           justify-content: center;
           width: 100%;
           padding: 0 auto;
@@ -154,6 +152,11 @@
           font-size: 1rem;
           padding: 10px 20px;
           background: #ff6263;
+        }
+        .actionButtonPremium:disabled {
+          filter: blur(1px);
+          opacity: 0.9;
+          cursor: default;
         }
         .pricing {
           display: flex;
