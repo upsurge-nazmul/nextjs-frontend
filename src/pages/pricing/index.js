@@ -514,5 +514,6 @@ export default function Pricing() {
       <JoinUs />
       <Footer />
     </div>
+    </div>
   );
 }
