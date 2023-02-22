@@ -1,0 +1,26 @@
+.paymentPage {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .paymentForm {
+    border: 1px solid #bcbcbc;
+    padding: 20px;
+    border-radius: 14px;
+    .actionArea {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      .paymentButton {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: #4066eb;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 14px;
+        padding: 10px 30px;
+      }
+    }
+  }
+}
