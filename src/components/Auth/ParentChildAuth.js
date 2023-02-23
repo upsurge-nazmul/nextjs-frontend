@@ -221,9 +221,10 @@ function ParentChildAuth({
       mixpanel.track("Sign-Up", {
         event: `SignUp of ${email} Successful`,
         "user-email": email,
+        "phone": phone,
       });
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email });
+      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email, $phone: phone });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
