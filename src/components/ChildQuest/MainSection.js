@@ -6,7 +6,10 @@ export default function MainSection({
   tab,
   handleCardClick,
   QUEST_TYPES,
+  userData,
+  setShowSubToPremium,
 }) {
+const userPlanType = userData.premium_plan;
   return (
     <div className={styles.mainSection}>
       <div className={styles.questArea}>
@@ -25,7 +28,8 @@ export default function MainSection({
                     (qt) => qt.title === item.quest_type
                   )}
                   key={item.questNo}
-                  locked={!item.open}
+                  userPlanType={userPlanType}
+                  setShowSubToPremium={setShowSubToPremium}
                 />
               );
             }

@@ -11,6 +11,7 @@ import { useRouter } from "next/dist/client/router";
 import Spinner from "../Spinner";
 import { onlyText } from "../../helpers/validationHelpers";
 import ChoreApis from "../../actions/apis/ChoreApis";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 
 function ParentChildAuth({
   setphone,
@@ -28,6 +29,8 @@ function ParentChildAuth({
   setusername,
   seterror,
   error,
+  premiumprice,
+  setpremiumrice,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -61,6 +64,7 @@ function ParentChildAuth({
   const [loading, setloading] = useState(false);
   //adding coupon code input field
   const [coupon, setCoupon] = useState("");
+  const [choseToPremium, setChoseToPremium] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
     special: false,
@@ -217,9 +221,10 @@ function ParentChildAuth({
       mixpanel.track("Sign-Up", {
         event: `SignUp of ${email} Successful`,
         "user-email": email,
+        "phone": phone,
       });
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email });
+      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email, $phone: phone });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
@@ -426,13 +431,27 @@ function ParentChildAuth({
         {error && <p className={styles.error}>{error}</p>}
 
         {!loading ? (
-          <div className={`${styles.button}`} onClick={genotp}>
-            Continue
+          <div
+            className={`${styles.button}`}
+            onClick={
+              //genotp
+              () => {
+                if (premiumprice === null) {
+                  console.log("true");
+                  setChoseToPremium(true);
+                }
+              }
+            }
+          >
+            Sign Up
           </div>
         ) : (
           <div className={`${styles.button} ${styles.spinner_btn}`}>
             <Spinner />
           </div>
+        )}
+        {choseToPremium && (
+          <ChosePremiumPopUp setChoseToPremium={setChoseToPremium} />
         )}
       </div>
     </div>

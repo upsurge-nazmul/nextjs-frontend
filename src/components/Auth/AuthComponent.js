@@ -31,6 +31,7 @@ function AuthComponent({
   prefilled = null,
   refId = null,
   type,
+  premiumPrice,
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -42,6 +43,7 @@ function AuthComponent({
   const [username, setusername] = useState("");
   const [usertype, setusertype] = useState("parent");
   const [signupmethod, setsignupmethod] = useState("email");
+  const [premium_price, setPremium_price] = useState(premiumPrice || null);
   const [error, seterror] = useState(null);
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -160,6 +162,8 @@ function AuthComponent({
                   setpassword={setpassword}
                   signupmethod={signupmethod}
                   usertype={usertype}
+                  premiumprice={premium_price}
+                  setpremiumrice={setPremium_price}
                 />
               ) : mode === "email" ? (
                 <AuthFullData

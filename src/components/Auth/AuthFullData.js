@@ -355,7 +355,7 @@ function AuthFullData({
 
       {!loading ? (
         <div className={`${styles.button}`} onClick={genotp}>
-          Continue
+          Sign Up
         </div>
       ) : (
         <div className={`${styles.button} ${styles.spinner_btn}`}>
