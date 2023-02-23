@@ -201,7 +201,7 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
-
+    
     let response = await LoginApis.signup({
       email: email,
       signup_method: signupmethod,
@@ -213,7 +213,7 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
     });
-
+    
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
@@ -271,7 +271,7 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("onboarding");
+      setmode("premiumSub");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
@@ -434,11 +434,10 @@ function ParentChildAuth({
           <div
             className={`${styles.button}`}
             onClick={
-              //genotp
-              () => {
+              async() => {
                 if (premiumprice === null) {
                   console.log("true");
-                  setChoseToPremium(true);
+                  await genotp();
                 }
               }
             }

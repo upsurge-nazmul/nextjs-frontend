@@ -20,6 +20,7 @@ import ChangePhoneNo from "./ChangePhoneNo";
 import AuthRefer from "./AuthRefer";
 import Onboarding from "../Onboarding";
 import ParentChildAuth from "./ParentChildAuth";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 
 function AuthComponent({
   showauth,
@@ -238,13 +239,18 @@ function AuthComponent({
                   usertype={usertype}
                   refId={refId}
                 />
-              ) : mode === "onboarding" ? (
+              ) 
+              : mode === "premiumSub" ? (
+                <ChosePremiumPopUp setmode={setmode} />
+              ) 
+              : mode === "onboarding" ? (
                 <Onboarding
                   actionHandler={() => {
                     router.push("/dashboard/k");
                   }}
                 />
-              ) : mode === "" && prefilled ? (
+              ) 
+              : mode === "" && prefilled ? (
                 <AuthOnlyPass
                   prefilled={prefilled}
                   settoastdata={settoastdata}
