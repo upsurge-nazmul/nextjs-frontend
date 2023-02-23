@@ -442,7 +442,7 @@ function ParentChildAuth({
               }
             }
           >
-            Continue
+            Sign Up
           </div>
         ) : (
           <div className={`${styles.button} ${styles.spinner_btn}`}>

@@ -18,8 +18,8 @@ function AuthHeader({
         ) : null}
         {mode !== "login"
           ? mode === "reset"
-            ? "Forgot password"
-            : "Signup"
+            ? "Forgot Password"
+            : "Sign Up"
           : "Login"}
       </p>
       {/* {mode !== "reset" &&
