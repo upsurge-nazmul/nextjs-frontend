@@ -10,7 +10,7 @@ function Payment() {
   const router = useRouter();
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
-
+  const [subscriptionDuration,setSubscriptionDuration] = useState("Half-Yearly");
   const { amount } = router.query;
 
   async function fetchStripeConfig() {
@@ -30,6 +30,9 @@ function Payment() {
   }
 
   useEffect(() => {
+    if(amount == 2499){
+      setSubscriptionDuration("Yearly");
+    }
     fetchStripeConfig();
     fetchCreatePaymentIntent(amount);
   }, [amount]);
@@ -39,7 +42,7 @@ function Payment() {
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckoutForm
-            {...{ amount: amount, bundle: "Premium", subscription: "Yearly" }} // Subscription= 'Yearly'/ 'Half-Yearly' / 'Monthly
+            {...{ amount: amount, bundle: "Premium", subscription: subscriptionDuration }} // Subscription= 'Yearly'/ 'Half-Yearly' / 'Monthly
           />
         </Elements>
       )}
