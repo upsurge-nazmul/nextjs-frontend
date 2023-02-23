@@ -24,7 +24,9 @@ export default function Subscribed({ userdatafromserver }) {
   async function fetchUpdateSubscription(model) {
     const res = await PaymentsApi.updateSubscription(model);
     if (res && res.data && res.data.success) {
-      setInvoiceData(res.data.data);
+      let info = res.data.data;
+      info.description = bundle;
+      setInvoiceData(info);
     }
   }
 
