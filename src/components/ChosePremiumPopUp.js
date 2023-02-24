@@ -3,9 +3,7 @@ import React from "react";
 import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
-const PREMIUM_PRICE = 1799;
-
-function ChosePremiumPopUp({ setChoseToPremium }) {
+function ChosePremiumPopUp({ setChoseToPremium,setmode }) {
   const router = useRouter();
   return (
     <div className={styles.subToPremium}>
@@ -19,68 +17,16 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
         <div className={styles.cross} onClick={() => setChoseToPremium(false)}>
           <CancelOutlinedIcon className={styles.icon} />
         </div>
-        <h2>Upsurge Premium</h2>
-        <p>
-          Get Access to premium Quests and Games{" "}
-          {/* Change the premium family to something more catchy*/}
-        </p>
         <div className={styles.section}>
           <div className={styles.sectionLeft}>
-            <div className={styles.sectionItem}>
-              <img
-                src={
-                  require("../assets/pricing/educational_games.svg").default.src
-                }
-                alt="Education Games"
-                className={styles.sectionItemImage}
-              />
-              12+ Educational Games
-            </div>
-            <div className={styles.sectionItem}>
-              {/* <img
-                  src={
-                    require("../assets/pricing/bonus_unicoins_red.svg").default
-                      .src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                /> */}
-              5 Flagship Games
-            </div>
-            <div className={styles.sectionItem}>
-              <img
-                src={require("../assets/pricing/habit_builder.svg").default.src}
-                alt="Education Games"
-                className={styles.sectionItemImage}
-              />
-              5 Workshop Invites
-              <p className={styles.small_fontsize}>(Worth ₹5000)</p>
-            </div>
-            <div className={styles.sectionItem}>
-              {/* <img
-                  src={
-                    require("../assets/pricing/bonus_unicoins_red.svg").default
-                    .src
-                  }
-                  alt="Avatar Sets"
-                  className={styles.sectionItemImage}
-                  /> */}
-              Avatar Sets
-            </div>
-            <div className={styles.sectionItem}>
-              <img
-                src={
-                  require("../assets/pricing/partner_rewards.svg").default.src
-                }
-                alt="Certificate Games"
-                className={styles.sectionItemImage}
-              />
-              Certificates
-            </div>
-          </div>
-          <div className={styles.sectionRight}>
-            <div className={styles.sectionItem}>
-              {/* <img
+            <h3 className={styles.header}>Upsurge Premium</h3>
+            <p className={styles.subheading}>
+              Get access to premium quests and games
+            </p>
+            {/* Change the premium family to something more catchy*/}
+            <ul>
+              <li className={styles.sectionItem}>
+                {/* <img
                   src={
                     require("../assets/pricing/kq_red.png").default
                     .src
@@ -88,52 +34,139 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-              20 Knowledge Quests
-            </div>
-            <div className={styles.sectionItem}>
-              <img
+                20 Knowledge Quests
+              </li>
+              <li className={styles.sectionItem}>
+                {/* <img
                 src={
-                  require("../assets/pricing/partner_rewards.svg").default.src
+                  require("../assets/pricing/educational_games.svg").default.src
                 }
                 alt="Education Games"
                 className={styles.sectionItemImage}
-              />
-              Unlimited Voucher Redemption and 10000 Bonus Unicoins.
-            </div>
-            <div className={styles.sectionItem}>
-              {/* <img
+              /> */}
+                16 Educational Games
+              </li>
+              <li className={styles.sectionItem}>
+                {/* <img
                   src={
-                    require("../assets/pricing/bonus_unicoins_red.svg")
-                      .default.src
+                    require("../assets/pricing/bonus_unicoins_red.svg").default
+                      .src
                   }
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-              Free Access to events and Challenges - Win rewards worth ₹25,000
-              every month
+                5 Flagship Games (1000 hours)
+              </li>
+              <li className={styles.sectionItem}>Events and Challenges</li>
+              <li className={styles.sectionItem}>10,000 Bonus Unicoins</li>
+              <li className={styles.sectionItem}>Redeem Vouchers</li>
+              <li className={styles.sectionItem}>
+                Win monthly rewards worth ₹25,000/-
+              </li>
+            </ul>
+            <div className={styles.pricing}>
+              <div className={styles.bottom}></div>
+              <div className={styles.pricingSectionTop}>
+                <p className={styles.slashedPrice}>₹2499</p>{" "}
+                <p className={styles.actualPrice}>₹499</p>{" "}
+                <p className={styles.smallfont}> for 6 months </p>
+              </div>
+              <div className={styles.pricingSectionBottom}>
+                <p className={styles.smallfont}>(limited period offer)</p>
+              </div>
             </div>
-            <div className={styles.sectionItem}>
-              {/* <img
+
+            <div
+              className={styles.button}
+              onClick={() => {
+                router.push(`/payments/stripe?amount=${499}`);
+              }}
+            >
+              {`Subscribe to Premium`}
+            </div>
+          </div>
+          <div className={styles.verticleLine}></div>
+          <div className={styles.sectionRight}>
+            <div className={styles.bestValue}>Best Value</div>
+            <h3 className={styles.header}>Upsurge Premium</h3>
+            <p className={styles.subheading}>
+              Get access to premium quests and games
+            </p>
+            <ul>
+              <li className={styles.sectionItem}>
+                {/* <img
                   src={
-                    require("../assets/pricing/upsurge_goodie.svg").default
-                      .src
-                    }
+                    require("../assets/pricing/kq_red.png").default
+                    .src
+                  }
                   alt="Education Games"
                   className={styles.sectionItemImage}
                 /> */}
-              upsurge Goodie Bag
+                20 Knowledge Quests
+              </li>
+              <li className={styles.sectionItem}>
+                {/* <img
+                src={
+                  require("../assets/pricing/educational_games.svg").default.src
+                }
+                alt="Education Games"
+                className={styles.sectionItemImage}
+              /> */}
+                16 Educational Games
+              </li>
+              <li className={styles.sectionItem}>
+                {/* <img
+                  src={
+                    require("../assets/pricing/bonus_unicoins_red.svg").default
+                      .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                /> */}
+                5 Flagship Games (1000 hours)
+              </li>
+              <li className={styles.sectionItem}>Events and Challenges</li>
+              <li className={styles.sectionItem}>20,000 Bonus Unicoins</li>
+              <li className={styles.sectionItem}>Redeem Vouchers</li>
+              <li className={styles.sectionItem}>
+                Win monthly rewards worth ₹1,00,000/-
+              </li>
+              <li className={styles.sectionItem}>
+                Invites to Online Workshops.
+              </li>
+              <li className={styles.sectionItemGolden}>
+                {/* <img
+                  src={
+                    require("../assets/pricing/upsurge_goodie.svg").default
+                    .src
+                  }
+                  alt="Education Games"
+                  className={styles.sectionItemImage}
+                /> */}
+                <p>upsurge branded goodies</p>
+              </li>
+            </ul>
+            <div className={styles.pricing}>
+              <div className={styles.pricingSectionTop}>
+                <p className={styles.slashedPrice}>₹4799</p>{" "}
+                <p className={styles.actualPriceGolden}>₹2499</p>{" "}
+                <p className={styles.smallfont}> for 12 months </p>
+              </div>
+              <div className={styles.pricingSectionBottom}>
+                <p className={styles.smallfont}>(limited period offer)</p>
+              </div>
+            </div>
+            <div
+              className={styles.button}
+              onClick={() => {
+                router.push(`/payments/stripe?amount=${2499}`);
+              }}
+            >
+              {`Subscribe to Premium`}
             </div>
           </div>
         </div>
-        <div
-          className={styles.button}
-          onClick={() => {
-            router.push(`/payments/stripe?amount=${PREMIUM_PRICE}`);
-          }}
-        >
-          {`Subscribe to Premium at Just ₹${PREMIUM_PRICE}`}
-        </div>
-        <p className={styles.clickable}>
+        <p className={styles.clickable} onClick={()=>setmode('onboarding')}>
           <u>Continue with the free version</u>
         </p>
       </div>
