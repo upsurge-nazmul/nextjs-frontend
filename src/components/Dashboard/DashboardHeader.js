@@ -231,7 +231,7 @@ function DashboardHeader({
       )}
       {showSubscription ? (
         <>
-          {userdata && userdata.premium_plan === 1 ? (
+          {userdata && userdata.premium_plan ? (
             <SubscriptionDetails
               setShowSubscription={setShowSubscription}
               userdata={userdata}

@@ -60,6 +60,14 @@ const getSubscriptionDetails = () => {
   );
 };
 
+const getPlans = (payload) => {
+  return ApiCalls.getResponse(
+    "payments/plans",
+    payload,
+    getCookie("accesstoken")
+  )
+}
+
 const PaymentsApi = {
   createorder,
   savereceipt,
@@ -70,6 +78,7 @@ const PaymentsApi = {
   createStripePaymentIntent,
   updateSubscription,
   getSubscriptionDetails,
+  getPlans
 };
 
 export default PaymentsApi;

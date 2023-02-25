@@ -80,17 +80,17 @@ const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
           </tr>
 
           <tr className="heading">
-            <td style={{ maxWidth: "180px" }}>Description</td>
+            <td style={{ maxWidth: "180px" }}>Plan Name</td>
             <td style={{ textAlign: "right" }}>HSN Code</td>
-            <td style={{ textAlign: "right" }}>Quantity</td>
+            <td style={{ textAlign: "right" }}>Duration</td>
             <td style={{ textAlign: "right" }}>Taxable Value</td>
             <td style={{ textAlign: "right" }}>CGST ({data.h_cgst}%)</td>
             <td style={{ textAlign: "right" }}>SGST/UGST ({data.h_sgst}%)</td>
             <td style={{ textAlign: "right" }}>IGST ({data.h_igst}%)</td>
-            <td style={{ textAlign: "right" }}>Total Amount</td>
+            <td style={{ textAlign: "right" }}>Amount</td>
           </tr>
           <tr className="item">
-            <td style={{ maxWidth: "180px" }}>{data.description}</td>
+            <td style={{ maxWidth: "180px" }}>{data.name}</td>
             <td style={{ textAlign: "right" }}>{data.hsn}</td>
             <td style={{ textAlign: "right" }}>{data.subscription}</td>
             <td style={{ textAlign: "right" }}>{data.taxable_value}</td>

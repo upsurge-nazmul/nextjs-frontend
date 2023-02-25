@@ -1,13 +1,9 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import styles from "../../styles/payments/payment.module.scss";
 
-export default function CheckoutForm({
-  amount,
-  bundle = "",
-  subscription = "",
-}) {
+export default function CheckoutForm({ plan_id }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -29,7 +25,7 @@ export default function CheckoutForm({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${window.location.origin}/payments/invoice?amount=${amount}&bundle=${bundle}&subscription=${subscription}`,
+        return_url: `${window.location.origin}/payments/invoice?plan_id=${plan_id}`,
       },
     });
 
