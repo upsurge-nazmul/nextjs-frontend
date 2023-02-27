@@ -37,6 +37,7 @@ import Journey from "../../../components/Journey";
 import EmailVerificationPending from "../../../components/EmailVerificationPending";
 import EditProfilePending from "../../../components/EditProfilePending";
 import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
+import FlashSaleOffer from "../../../components/FlashSaleOffer";
 
 export default function ChildActivity({
   pendingchores,
@@ -201,6 +202,9 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
+        {userdatafromserver && userdatafromserver.premium_plan == 0 && (
+            <FlashSaleOffer />
+            )}
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={setShowToolTip} />
           )}
