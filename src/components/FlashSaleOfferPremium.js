@@ -1,10 +1,23 @@
-import styles from "../styles/flashsaleoffer/flashsaleoffer.module.scss";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import styles from "../styles/flashsaleoffer/flashsaleoffer.module.scss";
 import LoginApis from "../actions/apis/LoginApis";
-import { useState } from "react";
+import PaymentsApi from "../actions/apis/PaymentsApi";
 function FlashSaleOfferPremium() {
 const router = useRouter();
 const [show, setShow] = useState(true);
+const [plans, setPlans] = useState();
+
+async function fetchPlans() {
+  const res = await PaymentsApi.getPlans();
+  if (res && res.data && res.data.success) {
+    setPlans(res.data.data);
+  }
+}
+
+useEffect(() => {
+  fetchPlans();
+}, []);
 async function closePremiumSaleOffer() {
     let response = await LoginApis.closePremiumSaleOffer();
     if (!response.data.success) {
@@ -23,7 +36,7 @@ async function closePremiumSaleOffer() {
           FLASH SALE!!! upgrade to 12 month plan and get upsurge goodies 
         </p>
         <div className={styles.button}  onClick={() => {
-            router.push(`/payments/stripe?amount=${2000}`);
+            router.push(`/payments/stripe?plan_id=${plans[2].id}`);
         }}>CLAIM NOW</div>
         </div>
     ) : (
