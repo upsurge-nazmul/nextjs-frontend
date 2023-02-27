@@ -1,6 +1,29 @@
 @use "../variables/fontsizes.scss" as *;
 @use "../variables/colors.scss" as *;
 
+@keyframes rotatecrown {
+  0%{
+    right:-0.5rem;
+    top:-0.2rem;
+  }
+  29%{
+    top:-0.8rem;
+  }
+  30%{
+    top:-0.9rem;
+    transform: rotate(15deg);
+  }
+  70%{
+    top:-0.9rem;
+    transform: rotate(375deg);
+  }
+  100%{
+    transform: rotate(375deg);
+    right:-0.5rem;
+    top:-0.2rem;
+  }
+}
+
 .dashboardLeftPanel {
   height: 100vh;
   min-width: 350px;
@@ -19,6 +42,31 @@
   .dashboardLogo {
     cursor: pointer;
   }
+    .logoBox{
+      display: flex;
+      position: relative;
+      .logo{
+        z-index: 2;
+      }
+      .crown{
+        position: absolute;
+        width:2rem;
+        right:-0.5rem;
+        top:-0.2rem;
+        transform: rotate(15deg);
+        animation: rotatecrown 1.2s linear 0s infinite alternate;
+        z-index: 2;
+      }
+      .tossCrown{
+        position: absolute;
+        width:2rem;
+        right:-0.5rem;
+        top:-0.2rem;
+        transform: rotate(15deg);
+        animation: rotatecrown 1.2s linear 0s infinite alternate;
+        z-index: 2;
+      }
+    }
   .miniLogo {
     width: 80%;
     height: 3rem;
