@@ -142,6 +142,9 @@ const updatePhoneByEmail = (payload) => {
     getCookie("accesstoken")
   );
 };
+const closePremiumSaleOffer = (payload) => {
+  return ApiCalls.postResponse("users/closePremiumSaleOffer", payload , getCookie("accesstoken"));
+}
 const LoginApis = {
   signup,
   setphone,
@@ -171,6 +174,7 @@ const LoginApis = {
   createchildotp,
   updatePhoneByEmail,
   verifyPassword,
+  closePremiumSaleOffer,
 };
 
 export default LoginApis;
