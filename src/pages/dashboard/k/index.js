@@ -38,6 +38,7 @@ import EmailVerificationPending from "../../../components/EmailVerificationPendi
 import EditProfilePending from "../../../components/EditProfilePending";
 import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
 import FlashSaleOffer from "../../../components/FlashSaleOffer";
+import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
 
 export default function ChildActivity({
   pendingchores,
@@ -202,6 +203,9 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
+        {userdatafromserver && userdatafromserver.premium_plan == 1 && userdatafromserver.premium_flash_sale === true && (
+            <FlashSaleOfferPremium />
+            )}
         {userdatafromserver && userdatafromserver.premium_plan == 0 && (
             <FlashSaleOffer />
             )}

@@ -1,21 +1,65 @@
 .main {
+  background-color: #fc6262;
+  position: relative;
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-inline: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 14px;
+  .text {
+    font-size: 1rem;
+  }
+  .button {
+    margin-left: 20px;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgb(243, 243, 243);
+    }
+  }
+  .closeButton {
+    position: absolute;
+    left: 1rem;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgb(243, 243, 243);
+    }
+  }
+}
+.otpnotverified {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media only screen and (max-width: 860px) {
+  .main {
     background-color: #fc6262;
     display: flex;
-    min-height: 50px;
+    min-height: fit-content;
     align-items: center;
     justify-content: center;
-    margin-top: 0.5rem;
-    margin-inline: 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 14px;
+    padding: 10px 15px;
     .text {
-      font-size: 1rem;
+      font-size: 10px;
     }
     .button {
-      margin-left: 20px;
+      min-width: max-content;
+      margin-left: 10px;
       background-color: white;
       padding: 5px 10px;
-      font-size: 0.875rem;
+      font-size: 10px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -24,35 +68,4 @@
       }
     }
   }
-  .otpnotverified{
-    position: absolute;
-    top:0;
-    left:0;
-  }
-  @media only screen and (max-width: 860px) {
-    .main {
-      background-color: #fc6262;
-      display: flex;
-      min-height: fit-content;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 15px;
-      .text {
-        font-size: 10px;
-      }
-      .button {
-        min-width: max-content;
-        margin-left: 10px;
-        background-color: white;
-        padding: 5px 10px;
-        font-size: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        &:hover {
-          background-color: rgb(243, 243, 243);
-        }
-      }
-    }
-  }
-  
+}
