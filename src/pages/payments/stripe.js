@@ -30,9 +30,6 @@ function Payment() {
   }
 
   useEffect(() => {
-    if(amount == 2499){
-      setSubscriptionDuration("Yearly");
-    }
     fetchStripeConfig();
     fetchCreatePaymentIntent();
   }, [plan_id]);
