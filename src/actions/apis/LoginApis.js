@@ -143,7 +143,10 @@ const updatePhoneByEmail = (payload) => {
   );
 };
 const closePremiumSaleOffer = (payload) => {
-  return ApiCalls.postResponse("users/closePremiumSaleOffer", payload , getCookie("accesstoken"));
+  return ApiCalls.postResponse("users/closepremiumsaleoffer", payload , getCookie("accesstoken"));
+}
+const closeOnBoardingVideo = (payload) => {
+  return ApiCalls.postResponse("users/closeonboardingvideo", payload , getCookie("accesstoken"));
 }
 const LoginApis = {
   signup,
@@ -175,6 +178,7 @@ const LoginApis = {
   updatePhoneByEmail,
   verifyPassword,
   closePremiumSaleOffer,
+  closeOnBoardingVideo,
 };
 
 export default LoginApis;
