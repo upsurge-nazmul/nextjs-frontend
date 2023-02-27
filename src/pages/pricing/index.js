@@ -79,8 +79,19 @@ export default function Pricing() {
           </div>
           <div className={styles.sectionContainer}>
             <div className={styles.contentPlanFreemium}>
-              <div className={styles.contentTagFreemium}>Free</div>
+              <div className={styles.contentTagFreemium}>Premium</div>
               <div className={styles.section}>
+              <div className={styles.sectionItem}>
+                  <img
+                    src={
+                      require("../../assets/pricing/knowledge_quests.png")
+                        .default.src
+                    }
+                    alt="Education Games"
+                    className={styles.sectionItemImage}
+                  />
+                  20 Knowledge Quests
+                </div>
                 <div className={styles.sectionItem}>
                   <img
                     src={
@@ -90,7 +101,7 @@ export default function Pricing() {
                     alt="Education Games"
                     className={styles.sectionItemImage}
                   />
-                  10+ Educational Games
+                  16 Educational Games
                 </div>
                 <div className={styles.sectionItem}>
                   <img
@@ -101,8 +112,8 @@ export default function Pricing() {
                     alt="Education Games"
                     className={styles.sectionItemImage}
                   />
-                  1 Flagship Game{" "}
-                  <p className={styles.small_fontsize}>(Limited Access)</p>
+                  5 Flagship Game{" "}
+                  <p className={styles.small_fontsize}>(1000 hours)</p>
                 </div>
                 <div className={styles.sectionItem}>
                   <img
@@ -113,20 +124,19 @@ export default function Pricing() {
                     alt="Education Games"
                     className={styles.sectionItemImage}
                   />
-                  1 Workshop Invite
-                  <p className={styles.small_fontsize}>(worth ₹1000)</p>
+                  Events and Challenges
                 </div>
                 <div className={styles.sectionItem}>
-                  <img
-                    src={
-                      require("../../assets/pricing/knowledge_quests.png")
-                        .default.src
-                    }
-                    alt="Education Games"
-                    className={styles.sectionItemImage}
-                  />
-                  4 Knowledge Quests
-                </div>
+                    <img
+                      src={
+                        require("../../assets/pricing/partner_rewards.svg")
+                          .default.src
+                      }
+                      alt="Avatar Sets"
+                      className={styles.sectionItemImage}
+                    />
+                    10,000 Bonus Unicoins
+                  </div>
                 <div className={styles.sectionItem}>
                   <img
                     src={
@@ -136,7 +146,7 @@ export default function Pricing() {
                     alt="Education Games"
                     className={styles.sectionItemImage}
                   />
-                  Limited Voucher Redemption
+                  Redeem Vouchers
                 </div>
                 <div className={styles.sectionItem}>
                   <img
@@ -158,10 +168,20 @@ export default function Pricing() {
                     alt="Education Games"
                     className={styles.sectionItemImage}
                   />
-                  Win rewards worth ₹10,000 every month
+                  Win monthly rewards worth <div className={styles.small_fontsize}><u><b>₹25,000/-</b></u></div>
                 </div>
               </div>
               <div className={styles.actionArea}>
+              <div className={styles.pricing}>
+              <div className={styles.bottom}></div>
+              <div className={styles.pricingSectionTop}>
+                <p className={styles.slashedPrice}>₹2499</p>{" "}
+                <p className={styles.actualPrice}>₹499</p>{" "}
+              </div>
+              <div className={styles.pricingSectionBottom}>
+                <p className={styles.smallfont}>(limited period offer)</p>
+              </div>
+            </div>
                 <button
                   className={styles.actionButton}
                   onClick={() => {
@@ -170,80 +190,15 @@ export default function Pricing() {
                     setPremiumPrice(null);
                   }}
                 >
-                  Join for
-                  <div className={styles.pricing}>
-                    <div className={styles.old}>₹1799</div>
-                    <div className={styles.current}>Free</div>
-                  </div>
+                  Subscribe to Premium
                 </button>
-              </div>
-              <div className={styles.helperArea}>
-                <div className={styles.helperText}>*Limited time offer</div>
               </div>
             </div>
             <div className={styles.contentPlanPremium}>
-              <div className={styles.contentTagPremium}>Premium</div>
+              <div className={styles.contentTagPremium}>Best Value</div>
               <div className={styles.section}>
                 <div className={styles.sectionLeft}>
-                  <div className={styles.sectionItem}>
-                    <img
-                      src={
-                        require("../../assets/pricing/educational_games.svg")
-                          .default.src
-                      }
-                      alt="Education Games"
-                      className={styles.sectionItemImage}
-                    />
-                    12+ Educational Games
-                  </div>
-                  <div className={styles.sectionItem}>
-                    <img
-                      src={
-                        require("../../assets/pricing/bonus_unicoins.svg")
-                          .default.src
-                      }
-                      alt="Education Games"
-                      className={styles.sectionItemImage}
-                    />
-                    5 Flagship Games
-                  </div>
-                  <div className={styles.sectionItem}>
-                    <img
-                      src={
-                        require("../../assets/pricing/habit_builder.svg")
-                          .default.src
-                      }
-                      alt="Education Games"
-                      className={styles.sectionItemImage}
-                    />
-                    5 Workshop Invites
-                    <p className={styles.small_fontsize}>(Worth ₹5000)</p>
-                  </div>
-                  <div className={styles.sectionItem}>
-                    <img
-                      src={
-                        require("../../assets/pricing/partner_rewards.svg")
-                          .default.src
-                      }
-                      alt="Avatar Sets"
-                      className={styles.sectionItemImage}
-                    />
-                    Avatar Sets
-                  </div>
-                  <div className={styles.sectionItem}>
-                    <img
-                      src={
-                        require("../../assets/pricing/partner_rewards.svg")
-                          .default.src
-                      }
-                      alt="Certificate Games"
-                      className={styles.sectionItemImage}
-                    />
-                    Certificates
-                  </div>
-                </div>
-                <div className={styles.sectionRight}>
-                  <div className={styles.sectionItem}>
+                <div className={styles.sectionItem}>
                     <img
                       src={
                         require("../../assets/pricing/knowledge_quests.png")
@@ -257,14 +212,60 @@ export default function Pricing() {
                   <div className={styles.sectionItem}>
                     <img
                       src={
-                        require("../../assets/pricing/partner_rewards.svg")
+                        require("../../assets/pricing/educational_games.svg")
                           .default.src
                       }
                       alt="Education Games"
                       className={styles.sectionItemImage}
                     />
-                    Unlimited Voucher Redemption and 10000 Bonus Unicoins.
+                    16 Educational Games
                   </div>
+                  <div className={styles.sectionItem}>
+                    <img
+                      src={
+                        require("../../assets/pricing/bonus_unicoins.svg")
+                          .default.src
+                      }
+                      alt="Education Games"
+                      className={styles.sectionItemImage}
+                    />
+                    5 Flagship Games <p className={styles.small_fontsize}>(1000 hours)</p>
+                  </div>
+                  <div className={styles.sectionItem}>
+                    <img
+                      src={
+                        require("../../assets/pricing/habit_builder.svg")
+                          .default.src
+                      }
+                      alt="Education Games"
+                      className={styles.sectionItemImage}
+                    />
+                    Events and Challenges
+                  </div>
+                  <div className={styles.sectionItem}>
+                    <img
+                      src={
+                        require("../../assets/pricing/partner_rewards.svg")
+                          .default.src
+                      }
+                      alt="Unicoins"
+                      className={styles.sectionItemImage}
+                    />
+                    20,000 Bonus Unicoins
+                  </div>
+                  <div className={styles.sectionItem}>
+                    <img
+                      src={
+                        require("../../assets/pricing/partner_rewards.svg")
+                          .default.src
+                      }
+                      alt=""
+                      className={styles.sectionItemImage}
+                    />
+                    Redeem Vouchers
+                  </div>
+                </div>
+                <div className={styles.sectionRight}>
                   <div className={styles.sectionItem}>
                     <img
                       src={
@@ -274,8 +275,7 @@ export default function Pricing() {
                       alt="Education Games"
                       className={styles.sectionItemImage}
                     />
-                    Free Access to events and Challenges - Win rewards worth
-                    ₹25,000 every month
+                   Win monthly rewards worth <div className={styles.small_fontsize}><u><b>₹1,00,000/-</b></u></div>
                   </div>
                   <div className={styles.sectionItem}>
                     <img
@@ -286,11 +286,31 @@ export default function Pricing() {
                       alt="Education Games"
                       className={styles.sectionItemImage}
                     />
-                    upsurge Goodie Bag
+                  Invitation to Online Workshops
+                  </div>
+                  <div className={styles.sectionItem}>
+                    <img
+                      src={
+                        require("../../assets/pricing/partner_rewards.svg")
+                          .default.src
+                      }
+                      alt="Education Games"
+                      className={styles.sectionItemImage}
+                    />
+                    <div className={styles.sectionItemGolden}>Upsurge branded goodies(worth ₹2,500)</div>
                   </div>
                 </div>
               </div>
               <div className={styles.actionArea}>
+              <div className={styles.pricing}>
+              <div className={styles.pricingSectionTop}>
+                <p className={styles.slashedPrice}>₹4799</p>{" "}
+                <p className={styles.actualPrice}>₹2499</p>{" "}
+              </div>
+              <div className={styles.pricingSectionBottom}>
+                <p className={styles.smallfont}>(limited period offer)</p>
+              </div>
+            </div>
                 <button
                   className={styles.actionButtonPremium}
                   onClick={() => {
@@ -299,9 +319,8 @@ export default function Pricing() {
                     // setPremiumPrice(PREMIUM_PRICE);
                     // handleBuyPremium();
                   }}
-                  disabled
                 >
-                  {`Join for ₹${PREMIUM_PRICE}`}
+                  Subscribe to Premium
                 </button>
               </div>
             </div>
