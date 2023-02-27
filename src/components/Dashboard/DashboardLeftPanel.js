@@ -40,6 +40,8 @@ function DashboardLeftPanel({
   const [currenttab, setcurrenttab] = useState("");
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
+  const [crownClass, setCrownClass] = useState(true);
+  console.log(userdata);
   useEffect(() => {
     setcurrenttab(router.pathname);
   }, [router]);
@@ -65,6 +67,8 @@ function DashboardLeftPanel({
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
+        <div className={styles.logoBox} onMouseEnter={()=>{setCrownClass(false)}} onMouseLeave={()=>{setCrownClass(true)}}>
+        <div className={styles.logo}>
         <Logo
           id="upsurge-logo"
           dark={theme === "dark"}
@@ -82,6 +86,18 @@ function DashboardLeftPanel({
             // else router.push("/dashboard/p");
           }}
         />
+          </div>
+            {userdata.premium_plan == 0 && userdata.premium_flash_sale === true &&(
+              <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
+              )
+            }
+        {userdata.premium_plan >= 1 &&(
+          <>
+          <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
+          </>
+          )
+        }
+        </div>
       ) : (
         <MiniLogo
           id="upsurge-logo"
