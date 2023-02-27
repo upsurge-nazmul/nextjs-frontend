@@ -17,15 +17,26 @@ export default function Subscribed({ userdatafromserver }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [invoiceData, setInvoiceData] = useState();
+  const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { amount, bundle, subscription, payment_intent } = router.query;
+  const { payment_intent, plan_id } = router.query;
+
+  async function fetchPlan() {
+    const res = await PaymentsApi.getPlans({ plan_id });
+    if (res && res.data && res.data.success) {
+      setPlan(res.data.data);
+    }
+  }
+
+  useEffect(() => {
+    fetchPlan();
+  }, []);
 
   async function fetchUpdateSubscription(model) {
     const res = await PaymentsApi.updateSubscription(model);
     if (res && res.data && res.data.success) {
       let info = res.data.data;
-      info.description = bundle;
       setInvoiceData(info);
     }
   }
@@ -33,11 +44,7 @@ export default function Subscribed({ userdatafromserver }) {
   useEffect(() => {
     const invoiceModel = {
       paymentIntent: payment_intent,
-      timestamp: new Date().getTime(),
-      description: bundle,
-      quantity: subscription,
-      amount: amount,
-      subscription: subscription,
+      plan_id,
     };
     fetchUpdateSubscription(invoiceModel);
   }, []);
@@ -68,74 +75,76 @@ export default function Subscribed({ userdatafromserver }) {
         setshowpopup={setshowpopup}
         showpopup={showpopup}
       />
-      <div className={styles.container}>
-        <div className={styles.green}></div>
-        <div className={styles.white}></div>
-        <div className={styles.ball4}></div>
-        <div className={styles.yellow}></div>
-        <p className={styles.heading3}>Subscription Confirmed </p>
-        <div className={styles.line}></div>
+      {plan && (
+        <div className={styles.container}>
+          <div className={styles.green}></div>
+          <div className={styles.white}></div>
+          <div className={styles.ball4}></div>
+          <div className={styles.yellow}></div>
+          <p className={styles.heading3}>Subscription Confirmed </p>
+          <div className={styles.line}></div>
 
-        <p className={styles.heading2}>Thank you for subscribing!</p>
-        <p className={styles.msg}>
-          Your payment is successful you can check the invoice and download or
-          print the invoice.
-        </p>
+          <p className={styles.heading2}>Thank you for subscribing!</p>
+          <p className={styles.msg}>
+            Your payment is successful you can check the invoice and download or
+            print the invoice.
+          </p>
 
-        <div className={styles.invoiceContainer}>
-          <div className={styles.invoiceWrapper}>
-            {invoiceData && (
-              <ConfirmInvoice
-                data={invoiceData}
-                userData={userdatafromserver}
-                ref={pdfRef}
-              />
-            )}
-          </div>
-          <div className={styles.btnContainer}>
-            <button onClick={() => handlerSave()} className={styles.btn}>
-              Print Invoice
-            </button>
-            {/* <button onClick={() => handlerSave()} className={styles.btn}>
+          <div className={styles.invoiceContainer}>
+            <div className={styles.invoiceWrapper}>
+              {invoiceData && (
+                <ConfirmInvoice
+                  data={invoiceData}
+                  userData={userdatafromserver}
+                  ref={pdfRef}
+                />
+              )}
+            </div>
+            <div className={styles.btnContainer}>
+              <button onClick={() => handlerSave()} className={styles.btn}>
+                Print Invoice
+              </button>
+              {/* <button onClick={() => handlerSave()} className={styles.btn}>
               Download Invoice
             </button> */}
+            </div>
           </div>
-        </div>
-        <p className={styles.subheading}>
-          To stay up to date at all times, follow us on.
-        </p>
-        <div className={styles.socials}>
-          <a
-            href="https://www.facebook.com/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Fb className={styles.social} />
-          </a>
-          <a
-            href="https://www.instagram.com/upsurge.in/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Insta className={styles.social} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/upsurgeindia/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LinkedIN className={styles.socialyt} />
-          </a>
-          {/* <Fb className={styles.social} />
+          <p className={styles.subheading}>
+            To stay up to date at all times, follow us on.
+          </p>
+          <div className={styles.socials}>
+            <a
+              href="https://www.facebook.com/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Fb className={styles.social} />
+            </a>
+            <a
+              href="https://www.instagram.com/upsurge.in/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Insta className={styles.social} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/upsurgeindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedIN className={styles.socialyt} />
+            </a>
+            {/* <Fb className={styles.social} />
           <Twitter className={styles.social} alt="" />
           <Insta className={styles.social} />
           <YtSvg className={styles.socialyt} />
           <LinkedIN className={styles.socialyt} /> */}
+          </div>
+          <div className={styles.goback} onClick={() => router.push("/")}>
+            Go To Home
+          </div>
         </div>
-        <div className={styles.goback} onClick={() => router.push("/")}>
-          Go To Home
-        </div>
-      </div>
+      )}
       <Footer />
     </div>
   );

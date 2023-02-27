@@ -10,8 +10,8 @@ function Payment() {
   const router = useRouter();
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
-  const [subscriptionDuration,setSubscriptionDuration] = useState("Half-Yearly");
-  const { amount } = router.query;
+
+  const { plan_id } = router.query;
 
   async function fetchStripeConfig() {
     const res = await PaymentsApi.getStripeConfig();
@@ -20,9 +20,9 @@ function Payment() {
     }
   }
 
-  async function fetchCreatePaymentIntent(amount) {
+  async function fetchCreatePaymentIntent() {
     const res = await PaymentsApi.createStripePaymentIntent({
-      amount: amount * 100, // Amount should be in 'Cents'
+      plan_id,
     });
     if (res && res.statusText === "OK") {
       setClientSecret(res.data.clientSecret);
@@ -34,16 +34,14 @@ function Payment() {
       setSubscriptionDuration("Yearly");
     }
     fetchStripeConfig();
-    fetchCreatePaymentIntent(amount);
-  }, [amount]);
+    fetchCreatePaymentIntent();
+  }, [plan_id]);
 
   return (
     <div className={styles.paymentPage}>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm
-            {...{ amount: amount, bundle: "Premium", subscription: subscriptionDuration }} // Subscription= 'Yearly'/ 'Half-Yearly' / 'Monthly
-          />
+          <CheckoutForm {...{ plan_id }} />
         </Elements>
       )}
     </div>

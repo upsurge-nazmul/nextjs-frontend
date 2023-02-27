@@ -1,14 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import PaymentsApi from "../../actions/apis/PaymentsApi";
 import Modal from "../Modal";
-
-import { useRouter } from "next/dist/client/router";
-import LoginApis from "../../actions/apis/LoginApis";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Home/Footer";
-import Fb from "../../components/SVGcomponents/Fb";
-import Insta from "../../components/SVGcomponents/Insta";
-import LinkedIN from "../../components/SVGcomponents/LinkedInSvg";
 import styles from "../../styles/payments/subscriptionDetails.module.scss";
 import ConfirmInvoice from "../../components/ConfirmInvoice";
 import { useReactToPrint } from "react-to-print";
@@ -21,7 +13,6 @@ export default function SubscriptionDetails({ setShowSubscription, userdata }) {
     const res = await PaymentsApi.getSubscriptionDetails();
     if (res && res.data && res.data.success) {
       let info = res.data.data;
-      info.description = "Premium";
       setSubsData(info);
     }
   }
