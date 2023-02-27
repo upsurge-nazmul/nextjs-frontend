@@ -21,6 +21,7 @@ import { MainContext } from "../../context/Main";
 import LoginApis from "../../actions/apis/LoginApis";
 import Seo from "../../components/Seo";
 import { getGameTitleandDescription } from "../../helpers/seo";
+import localforage from "localforage";
 let fullscreenenabled = false;
 const specialchars = [
   "#",
@@ -298,8 +299,12 @@ export default function GamePage({ gamedata, userdata, seodata }) {
   useEffect(
     function () {
       if (!unitycontext) return;
+      console.log("Pratham", unitycontext);
       unitycontext.on("Score", function (score) {
-        console.log(score);
+        localforage.setItem(
+          "playedGame",
+          JSON.stringify({ gameid, score, unicoins: 300 })
+        );
       });
       unitycontext.on("Error", function (code, url, vendor) {
         console.log("debug");
@@ -493,9 +498,9 @@ export default function GamePage({ gamedata, userdata, seodata }) {
                 Start Playing
               </div>
               <div
-              className={styles.skipbutton}
+                className={styles.skipbutton}
                 onClick={() => {
-                  startgame(true)
+                  startgame(true);
                 }}
               >
                 Skip
@@ -503,7 +508,10 @@ export default function GamePage({ gamedata, userdata, seodata }) {
             </div>
           </div>
           <div className={styles.right}>
-            <img src="https://imgcdn.upsurge.in/images/Artboard-1-1.png" alt="" />
+            <img
+              src="https://imgcdn.upsurge.in/images/Artboard-1-1.png"
+              alt=""
+            />
           </div>
         </div>
       ) : (

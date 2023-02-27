@@ -12,6 +12,7 @@ import Spinner from "../Spinner";
 import { onlyText } from "../../helpers/validationHelpers";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
+import localforage from "localforage";
 
 function ParentChildAuth({
   setphone,
@@ -64,6 +65,7 @@ function ParentChildAuth({
   const [loading, setloading] = useState(false);
   //adding coupon code input field
   const [coupon, setCoupon] = useState("");
+  const [unicoins, setUnicoins] = useState(null);
   const [choseToPremium, setChoseToPremium] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
@@ -130,6 +132,7 @@ function ParentChildAuth({
       username: username,
       first_name: firstName,
       last_name: lastName,
+      num_unicoins: unicoins ? unicoins : 0,
     });
 
     if (!response || !response.data.success) {
@@ -212,6 +215,7 @@ function ParentChildAuth({
       coupon,
       first_name: firstName,
       last_name: lastName,
+      num_unicoins: unicoins ? unicoins : 0,
     });
     
     if (!response || !response.data.success) {
@@ -304,6 +308,14 @@ function ParentChildAuth({
   function checkSpecial(pass) {
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
+
+  useEffect(() => {
+    localforage.getItem("playedGame", function (err, value) {
+      if (value) {
+        setUnicoins(JSON.parse(value).unicoins);
+      }
+    });
+  }, []);
   return (
     <div className={styles.parentChildAuth}>
       <div
