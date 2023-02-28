@@ -141,10 +141,6 @@
           transform:rotate(-15deg);
         }
     }
-    .smallfont{
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
     .actualPrice{
       font-size: 1.6rem;
       color:#426BD9;
@@ -158,6 +154,12 @@
       color:#eac356;
     }
   }
+}
+.smallfont{
+  text-align: center;
+  margin-top: 0.2rem;  
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 .pricingSectionBottom{
   .smallfont{

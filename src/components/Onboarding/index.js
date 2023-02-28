@@ -1,10 +1,19 @@
 import Modal from "../Modal";
 import styles from "../../styles/GeneralComponents/onboarding.module.scss";
+import LoginApis from "../../actions/apis/LoginApis";
 
 export default function Onboarding({
   setOpen = () => {},
   actionHandler = () => {},
 }) {
+  async function closeOnBoardingVideo() {
+    let response = await LoginApis.closeOnBoardingVideo();
+    if (!response.data.success) {
+        setOpen(false);
+    } else {
+        setOpen(false);
+    }
+  }
   /**
    * <iframe src="https://drive.google.com/file/d/1QzZ9zP2EP97mB-rwn-rgz4n6o081FB2M/preview" width="640" height="480" allow="autoplay"></iframe>
    */
@@ -18,7 +27,7 @@ export default function Onboarding({
         handleCancel: () => {},
         proceedText: "Done",
         isProceed: true,
-        handleProceed: actionHandler,
+        handleProceed: closeOnBoardingVideo,
         proceedButtonType: "normal",
       }}
       onOutsideClick={() => setOpen(false)}
