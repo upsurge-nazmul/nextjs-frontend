@@ -87,11 +87,11 @@ function DashboardLeftPanel({
           }}
         />
           </div>
-            {userdata.premium_plan == 0 && userdata.premium_flash_sale === true &&(
+            {userdata && userdata.premium_plan == 0 && userdata.premium_flash_sale === true &&(
               <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
               )
             }
-        {userdata.premium_plan >= 1 &&(
+        {userdata && userdata.premium_plan >= 1 &&(
           <>
           <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
           </>
