@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentsApi from "../actions/apis/PaymentsApi";
 
-function ChosePremiumPopUp({ setChoseToPremium, setmode }) {
+function ChosePremiumPopUp({ setChoseToPremium }) {
   const router = useRouter();
-    const [plans, setPlans] = useState();
+  const [plans, setPlans] = useState();
 
   async function fetchPlans() {
     const res = await PaymentsApi.getPlans();
@@ -18,6 +18,7 @@ function ChosePremiumPopUp({ setChoseToPremium, setmode }) {
   useEffect(() => {
     fetchPlans();
   }, []);
+
   return (
     <div className={styles.subToPremium}>
       <div
@@ -173,14 +174,21 @@ function ChosePremiumPopUp({ setChoseToPremium, setmode }) {
               onClick={() => {
                 router.push(`/payments/stripe?plan_id=${plans[0].id}`);
               }}
-              >
+            >
               {`Subscribe to Premium`}
             </div>
           </div>
         </div>
-        <p className={styles.clickable} onClick={() => 
-        router.push(`/dashboard/k`)
-        }>
+        <p
+          className={styles.clickable}
+          onClick={() => {
+            if (router.pathname === "/dashboard/k") {
+              setChoseToPremium(false);
+            } else {
+              router.push(`/dashboard/k`);
+            }
+          }}
+        >
           <u>Continue with the free version</u>
         </p>
       </div>

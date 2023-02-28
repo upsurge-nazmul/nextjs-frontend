@@ -294,17 +294,20 @@ function Menu({
             Level {kidLevel}
           </div>
         )}
-        <div
-          className={styles.button}
-          onClick={() => {
-            setshowmenu(false);
-            setShowPremiumPopup((prev) => !prev);
-          }}
-        >
-          <PaymentIcon className={styles.icon} />
-          Subscription
-        </div>
-
+        {menuType === "child" ? (
+          <div
+            className={styles.button}
+            onClick={() => {
+              setshowmenu(false);
+              setShowPremiumPopup((prev) => !prev);
+            }}
+          >
+            <PaymentIcon className={styles.icon} />
+            Subscription
+          </div>
+        ) : (
+          <></>
+        )}
         <div
           className={styles.button}
           onClick={() => {
