@@ -27,6 +27,7 @@ import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import { MainContext } from "../../context/Main";
 import ParentPanelSvg from "../SVGcomponents/ParentPanelSvg";
 import EventsSvg from "../SVGcomponents/EventsSvg";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 function DashboardLeftPanel({
   type,
   hidelogo,
@@ -41,6 +42,7 @@ function DashboardLeftPanel({
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
   const [crownClass, setCrownClass] = useState(true);
+  const [showSubscribe,setShowSubscribe] = useState(false);
   console.log(userdata);
   useEffect(() => {
     setcurrenttab(router.pathname);
@@ -87,8 +89,17 @@ function DashboardLeftPanel({
           }}
         />
           </div>
-            {userdata && userdata.premium_plan == 0 && userdata.premium_flash_sale === true &&(
+            {userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+              <>
               <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
+              <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>
+                Upgrade to upsurge Premium available <div className={styles.premiumButton} onClick={()=>{setShowSubscribe(true); setCrownClass(true)}}>Claim Now!</div>
+              </div>
+              {showSubscribe &&(
+                <ChosePremiumPopUp setChoseToPremium={setShowSubscribe} />
+              )
+              }
+              </>
               )
             }
         {userdata && userdata.premium_plan >= 1 &&(
