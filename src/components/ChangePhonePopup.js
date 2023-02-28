@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/changepass.module.scss";
-import validator from "validator";
 import LoginApis from "../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import OTPCustomComponent from "./OTPCustomComponent";

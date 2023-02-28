@@ -4,7 +4,6 @@ import styles from "../../styles/MoneyAce/investmenthub.module.scss";
 import BigBackArrow from "../SVGcomponents/BigBackArrow";
 import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
 import { Checkbox, Slider } from "@mui/material";
-import HTMLFlipBook from "react-pageflip";
 import BackSvg from "../SVGcomponents/MoneyAce/ui/BackSvg";
 import BankDialog from "./BankDialog";
 import { onlyNum, removenonnumber } from "../../helpers/validationHelpers";

@@ -29,7 +29,6 @@ import localforage from "localforage";
 import PRCoverage from "./PRCoverage";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
-// const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ page = "", showNav = true }) {
   const { userdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -136,7 +135,6 @@ function Home({ page = "", showNav = true }) {
   }, [router]);
 
   return (
-    // <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
     <div
       id="home-page-main"
       className={`${styles.homePage} ${
@@ -243,7 +241,6 @@ function Home({ page = "", showNav = true }) {
         <Tour story={story} current={0} showtour={false} />
       )} */}
     </div>
-    // </IntercomProvider>
   );
 }
 
