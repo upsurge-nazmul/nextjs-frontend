@@ -68,7 +68,7 @@ const SignupPopup = ({
           >
             <motion.div variants={item} className={styles.contentWrapper}>
               <motion.div variants={innerItem} className={styles.giftBox}>
-                <Image src={GiftBox} width={160} height={160} />
+                <Image src={GiftBox} width={160} height={160} alt="" />
               </motion.div>
               <div className={styles.contentContainer}>
                 <h3 className={styles.heading}>3000 Unicoins earned!</h3>
