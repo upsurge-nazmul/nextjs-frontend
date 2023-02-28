@@ -48,6 +48,29 @@
       .logo{
         z-index: 2;
       }
+      .premiumContainerNone{
+        display: none;
+      }
+      .premiumContainer{
+          position: absolute;
+          display: flex;
+          width: max-content;
+          font-size: 0.9rem;
+          top:3rem;
+          left:5rem;
+          background: #fdcc03;
+          padding:0.5rem 2rem;
+          border-radius: 1rem;
+          z-index: 9999;
+          box-shadow: 0 4px 10px black;
+          .premiumButton{
+            background: #4166EB;
+            padding:0 2rem;
+            border-radius: 1rem;
+            margin-left: 1rem;
+            cursor: pointer;
+          }
+      }
       .crown{
         position: absolute;
         width:2rem;
