@@ -30,7 +30,6 @@ export default function Onboarding({
         handleProceed: closeOnBoardingVideo,
         proceedButtonType: "normal",
       }}
-      onOutsideClick={() => {}}
     >
       <div className={styles.onboardingScr}>
         <iframe
