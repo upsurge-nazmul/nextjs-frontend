@@ -65,7 +65,7 @@ export const Game_Data = {
     description:
     "Learn about money management with our 3D adaptation of this classic.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1,
+    premium_plan: 1001,
   },
 };
 
