@@ -16,7 +16,6 @@ import { choretemplates } from "../../../../helpers/choretemplates";
 import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
 import LoginApis from "../../../../actions/apis/LoginApis";
-import { uploadaudiotos3 } from "../../../../helpers/aws";
 import Tour from "../../../../components/Tour/Tour";
 import FillSpace from "../../../../components/Dashboard/FillSpace";
 import PageTitle from "../../../../components/PageTitle";
@@ -126,8 +125,6 @@ export default function ManageChore({
   }
   async function handleAudioUpload(file) {
     if (!file) return;
-    let url = await uploadaudiotos3(userdatafromserver.user_id, file);
-    setaudiouploadedurl(url);
   }
   function onStop(audioData) {
     console.log("audioData", audioData);
