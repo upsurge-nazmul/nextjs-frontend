@@ -1,4 +1,3 @@
-import { PI } from "aws-sdk";
 import React, { useContext, useState } from "react";
 import LoginApis from "../actions/apis/LoginApis";
 import OtpNotVerfied from "./Auth/OtpNotVerified"
