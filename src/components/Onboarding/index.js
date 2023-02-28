@@ -9,9 +9,9 @@ export default function Onboarding({
   async function closeOnBoardingVideo() {
     let response = await LoginApis.closeOnBoardingVideo();
     if (!response.data.success) {
-        setOpen(false);
+      setOpen(false);
     } else {
-        setOpen(false);
+      setOpen(false);
     }
   }
   /**
@@ -30,7 +30,7 @@ export default function Onboarding({
         handleProceed: closeOnBoardingVideo,
         proceedButtonType: "normal",
       }}
-      onOutsideClick={() => setOpen(false)}
+      onOutsideClick={() => {}}
     >
       <div className={styles.onboardingScr}>
         <iframe
