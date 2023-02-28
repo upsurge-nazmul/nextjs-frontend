@@ -178,7 +178,9 @@ function ChosePremiumPopUp({ setChoseToPremium, setmode }) {
             </div>
           </div>
         </div>
-        <p className={styles.clickable} onClick={() => setmode("onboarding")}>
+        <p className={styles.clickable} onClick={() => 
+        router.push(`/dashboard/k`)
+        }>
           <u>Continue with the free version</u>
         </p>
       </div>
