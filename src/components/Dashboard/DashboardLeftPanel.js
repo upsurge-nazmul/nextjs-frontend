@@ -42,8 +42,6 @@ function DashboardLeftPanel({
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
   const [crownClass, setCrownClass] = useState(true);
-  const [showSubscribe,setShowSubscribe] = useState(false);
-  console.log(userdata);
   useEffect(() => {
     setcurrenttab(router.pathname);
   }, [router]);
@@ -89,16 +87,14 @@ function DashboardLeftPanel({
           }}
         />
           </div>
-            {userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+            {userdata.premium_plan == 0 && userdata.premium_flash_sale === true &&(
               <>
               <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
               <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>
-                Upgrade to upsurge Premium available <div className={styles.premiumButton} onClick={()=>{setShowSubscribe(true); setCrownClass(true)}}>Claim Now!</div>
+                Upgrade to upsurge Premium available <div className={styles.premiumButton} onClick={()=>{setCrownClass(true);
+                router.push(`/payments/stripe?plan_id=${1002}`);
+                }}>Claim Now!</div>
               </div>
-              {showSubscribe &&(
-                <ChosePremiumPopUp setChoseToPremium={setShowSubscribe} />
-              )
-              }
               </>
               )
             }
