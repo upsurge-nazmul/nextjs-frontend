@@ -9,7 +9,6 @@ import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
 import { Game_Data } from "../../static_data/Game_Data";
 import { MainContext } from "../../context/Main";
-import LoginApis from "../../actions/apis/LoginApis";
 import { isMobile, isIOS } from "react-device-detect";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
@@ -23,7 +22,8 @@ export default function GamePage() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { userdata, theme,skipActive, setskipActive } = useContext(MainContext);
+  const { userdata, theme, skipActive, setskipActive } =
+    useContext(MainContext);
 
   useEffect(() => {
     const handlescroll = () => {
@@ -136,28 +136,33 @@ export default function GamePage() {
                 ) : (
                 )} 
                 */}
-                {skipActive ?
+                {skipActive ? (
                   <p
                     className={styles.activebutton}
                     onClick={() => {
                       setskipActive(false);
                       router.push("/games/" + item);
-                  }}
+                    }}
                   >
                     Play
                   </p>
-                  :
+                ) : (
                   <p
                     className={styles.activebutton}
                     onClick={() => {
-                      setshowauth(true)
-                      setauthmode("parent");
+                      if (!userdata) {
+                        setshowauth(true);
+                        setauthmode("parentChild");
+                      } else if (userdata.user_type === "child") {
+                        router.push("/dashboard/k/games");
+                      } else if (userdata.user_type === "parent") {
+                        router.push("/dashboard/p/games");
+                      }
                     }}
-                  
                   >
                     Play
-                  </p> 
-                  }
+                  </p>
+                )}
               </div>
             );
           })}
