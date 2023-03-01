@@ -146,6 +146,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
+      localforage.removeItem("playedGame");
       setmode("onboarding");
     }
   }
@@ -268,6 +269,7 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
+      localforage.removeItem("playedGame");
       setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
