@@ -203,9 +203,9 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-        {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
+        {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />
-            )}
+            )} */}
         {userdatafromserver && userdatafromserver.premium_plan == 0 && (
             <FlashSaleOffer />
             )}
