@@ -52,6 +52,182 @@
       .contentPlan {
         margin-bottom: 2rem;
       }
+      .subToPremium {
+        .clickable{
+            cursor: pointer;
+            color:#A09E9E;
+        }
+        .block {
+            background-color: white;
+            width: 55rem;
+            border-radius: 2rem;
+            z-index: 2;
+            padding: 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:1rem;
+            .cross {
+                position: absolute;
+                top: 0;
+                right: -100px;
+                z-index: 100;
+                background-color: white;
+              border-radius: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .icon {
+                font-size: 40px;
+                color: rgb(255, 109, 109);
+                transition: all 0.3s ease;
+                &:hover {
+                  color: hsl(0, 75%, 65%);
+                  cursor: pointer;
+                }
+              }
+            }
+        }
+        .section {
+            display: flex;
+          padding: 1rem 1rem 1rem 0;
+          font-size: 1rem;
+          gap:1rem;
+          h3{
+            text-align: center;
+          }
+          .sectionLeft {
+            flex: 1;
+            .header{
+              margin-top: 2.5rem;
+            }
+            .subheading{
+              margin: 2.5rem 0 1.5rem 0;
+              font-weight: 600;
+            }
+          }
+          .verticleLine{
+            border-left: 0.2rem solid #A09E9E;
+            margin-right: 1rem;
+          }
+          .sectionRight {
+            flex: 1;
+            .bestValue{
+              width: max-content;
+              padding: 0.1rem 0.8rem;
+              font-size: 0.8rem;
+              color:#eac356;
+              background: #efeceb;
+              font-weight: 700;
+              border-radius: 1rem;
+              box-shadow: 0 0.3rem 0.5rem rgb(158, 158, 158);
+            }
+            .header{
+              margin-top: 1.35rem;
+            }
+            .subheading{
+              margin: 2.5rem 0 1.5rem 0;
+              font-weight: 600;
+            }
+          }
+          .sectionItem {
+            padding-bottom: 6px;
+            font-weight: 400;
+            margin-left: 1rem;
+            width: 100%;
+            .sectionItemImage {
+              height: 24px;
+              width: 24px;
+              margin-right: 10px;
+            }
+          }
+          .sectionItemGolden{
+            padding-bottom: 6px;
+            font-weight: 400;
+            margin-left: 1rem;
+          }
+          .sectionItemGolden p{
+            color:#eac356;
+            font-weight: 600;
+          }
+        .pricing{
+          margin-top: 0.3rem;
+          .bottom{
+            margin-top: 3.6rem;
+          }
+          .pricingSectionTop{
+          display: flex;
+          gap:0.5rem;
+          justify-content: center;
+          align-items: center;
+          color:#6d6c6d;
+          .slashedPrice{
+            position: relative;
+            font-size: 1.3rem;
+            &.slashedPrice::before {
+              position: absolute;
+              content: "";
+              right: 0;
+              left: 0;
+              top: 50%;
+              width: 120%;
+              border-top: 2px solid;
+              border-color: red;
+              transform:rotate(-15deg);
+            }
+        }
+        .actualPrice{
+          font-size: 1.6rem;
+          color:#426BD9;
+          font-weight: 700;
+          margin-left: 0.5rem;
+        }
+        .actualPriceGolden{
+          font-size: 1.6rem;
+          font-weight: 700;
+          margin-left: 0.5rem;
+          color:#eac356;
+        }
+      }
+    }
+    .smallfont{
+      text-align: center;
+      margin-top: 0.2rem;  
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pricingSectionBottom{
+      .smallfont{
+        font-size: 0.8rem;
+        text-align: center;
+        font-weight: 500;
+      }
+        }
+        }
+        .button {
+            background: #4166eb;
+            border-radius: 14px;
+            color: white;
+            width: 100%;
+            max-width: 480px;
+            height: 63px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            &:hover {
+              background-color: #ffffff;
+              color: #4166eb;
+              border: 1px solid #4166eb;
+            }
+          }
+    }
       .heading {
         font-size: 2rem;
         font-weight: 600;

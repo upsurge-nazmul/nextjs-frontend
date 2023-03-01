@@ -275,7 +275,15 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("premiumSub");
+      if(premiumprice === null){
+        router.push("dashboard/k")
+      }
+      else if(premiumprice === undefined){
+        setmode("premiumSub");
+      }
+      else if(premiumprice !== null && premiumprice !== 0){
+        router.push(`/payments/stripe?plan_id=${premiumprice}`);
+      }
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
@@ -447,10 +455,7 @@ function ParentChildAuth({
             className={`${styles.button}`}
             onClick={
               async() => {
-                if (premiumprice === null) {
-                  console.log("true");
                   await genotp();
-                }
               }
             }
           >

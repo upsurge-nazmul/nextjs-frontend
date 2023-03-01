@@ -44,20 +44,23 @@ function AuthComponent({
   const [username, setusername] = useState("");
   const [usertype, setusertype] = useState("parent");
   const [signupmethod, setsignupmethod] = useState("email");
-  const [premium_price, setPremium_price] = useState(premiumPrice || null);
+  const [premium_price, setPremium_price] = useState(null);
   const [error, seterror] = useState(null);
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
     msg: "",
   });
-
+  
   const router = useRouter();
-
+  
+  useEffect(() => {
+  setPremium_price(premiumPrice);
+}, [premiumPrice]);
   useEffect(() => {
     if (prefilled) setmode("");
   }, [prefilled]);
-
+  
   useEffect(() => {
     if (!showauth) {
       setmode(authmode || "login");
@@ -69,7 +72,7 @@ function AuthComponent({
       setsignupmethod("email");
     }
   }, [showauth]);
-
+  
   useEffect(() => {
     if (!authmode) return;
     setmode(authmode);
