@@ -24,7 +24,7 @@ function Games({
   const { userdata ,setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
-  const [showSubToPremium, setShowSubToPremium] = useState(true);
+  const [showSubToPremium, setShowSubToPremium] = useState(false);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
