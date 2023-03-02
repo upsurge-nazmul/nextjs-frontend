@@ -28,10 +28,6 @@ export default function AuthResetPass({
   async function ResetPass(e) {
     e?.preventDefault();
     setloading(true);
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-      setloading(false);
-    } else {
       let response = await LoginApis.resetpass({ email: email });
       if (response) {
         if (response.data.success) {
@@ -47,9 +43,7 @@ export default function AuthResetPass({
         seterror("Error connecting to server");
       }
       setloading(false);
-    }
-  }
-
+}
   useEffect(() => {
     seterror("");
   }, [email]);
@@ -63,7 +57,7 @@ export default function AuthResetPass({
       }}
     >
       <ModernInputBox
-        placeholder="Email address"
+        placeholder="Username/Email address"
         value={email}
         setvalue={setemail}
         emailonFocus={true}
