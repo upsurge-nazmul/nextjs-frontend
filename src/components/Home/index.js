@@ -24,6 +24,7 @@ import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
 import ReferIntro from "./ReferIntro";
+import HighlightsCounter from "./HighlightsCounter";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 // const INTERCOM_APP_ID = "tk23vd4p";
@@ -175,6 +176,7 @@ function Home({ page = "", showNav = true }) {
         />
       )}
       <Benefits />
+      <HighlightsCounter setshowauth={setshowauth} setauthmode={setauthmode} />
       <Who />
       <Values
         setshowauth={setshowauth}
