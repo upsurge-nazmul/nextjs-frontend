@@ -179,22 +179,25 @@ export default function GameView({
 
   return (
     <div className={styles.gameView}>
-      {isMobileOnly ? (
-        <BrokenGame />
-      ) : gameData && unityContext ? (
-        <Unity
-          ref={unityref}
-          unityContext={unityContext}
-          matchWebGLToCanvasSize={true}
-          className={
-            progression === 1 ? styles.gameScreen : styles.hiddenGameScreen
-          }
-        />
-      ) : (
-        <div className={styles.noGame}>
-          <p className={styles.noGameText}>No Game Found!</p>
-        </div>
-      )}
+      {
+        // isMobileOnly ? (
+        //   <BrokenGame />
+        // ) :
+        gameData && unityContext ? (
+          <Unity
+            ref={unityref}
+            unityContext={unityContext}
+            matchWebGLToCanvasSize={true}
+            className={
+              progression === 1 ? styles.gameScreen : styles.hiddenGameScreen
+            }
+          />
+        ) : (
+          <div className={styles.noGame}>
+            <p className={styles.noGameText}>No Game Found!</p>
+          </div>
+        )
+      }
       {progression > 0 && progression < 1 ? (
         <div className={styles.loadingArea}>
           <GameLoading percentage={progression} />
@@ -219,7 +222,9 @@ export default function GameView({
             className={styles.doneButton}
             onClick={() => {
               handleDone();
-              mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`})
+              mixpanel.track("Knowledge Quest", {
+                event: `Quest Finished ${chapterId}`,
+              });
               setFullScreen(false);
               if (!isMobileOnly) document.exitFullscreen();
               setGame();
