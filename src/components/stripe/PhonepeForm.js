@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PaymentsApi from "../../actions/apis/PaymentsApi";
 import axios from "axios";
+import crypto from "crypto";
 
 export default function PhonepeForm({ planId }) {
   const [plan, setPlan] = useState();
@@ -12,33 +13,50 @@ export default function PhonepeForm({ planId }) {
     }
   }
 
-  useEffect(() => {
-    fetchPlan();
-  }, []);
+  function computeSHA256(lines) {
+    const hash = crypto.createHash("sha256");
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim(); // remove leading/trailing whitespace
+      if (line === "") continue; // skip empty lines
+      hash.write(line); // write a single line to the buffer
+    }
 
-  useEffect(() => {
-    const data = btoa(
-      JSON.stringify({
-        merchantId: "UPSURGEUAT",
-        merchantTransactionId: "ef310c0a-b984-11ed-afa1-0242ac120002",
-        merchantUserId: "d780c37f-55e2-4aff-aaae-1d1ba93e0440",
-        amount: 10000,
-        redirectUrl: "https://webhook.site/redirect-url",
-        redirectMode: "POST",
-        callbackUrl: "https://webhook.site/callback-url",
-        mobileNumber: "9999999999",
-        paymentInstrument: {
-          type: "PAY_PAGE",
-        },
-      })
-    );
+    return hash.digest("base64"); // returns hash as string
+  }
+
+  async function paymentInit() {
+    const data = Buffer.from(
+      `{
+      "merchantId": "UPSURGEUAT",
+      "merchantTransactionId": "ef310ggkgkjjkjhjkc0a-b984-11ed-afa1-0242ac120002PRATHAM",
+      "merchantUserId": "d780c37f-55e2-4aff-ghjgfjsgsjjsjaaae-1d1ba93e0440PRATHAM",
+      "amount": 10000,
+      "redirectUrl": "http://localhost:3000/test",
+      "redirectMode": "POST",
+      "callbackUrl": "http://localhost:3000/callback-url",
+      "mobileNumber": "9999999999",
+      "paymentInstrument": {
+        "type": "TOKEN"
+      }
+    }`
+    ).toString("base64");
+
+    const hash = crypto
+      .createHash("sha256")
+      .update(data + "/pg/v1/pay89efe538-f358-4a7f-959f-1d6edf953bde")
+      .digest("hex");
+
     const options = {
       method: "POST",
       url: "https://api-preprod.phonepe.com/apis/merchant-simulator/pg/v1/pay",
+      data: {
+        request: data,
+      },
+      mode: "no-cors",
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",
-        "X-VERIFY": `SHA256 (${data}/pg/v1/pay89efe538-f358-4a7f-959f-1d6edf953bde) + ### + 1`,
+        "X-VERIFY": `${hash}###1`,
       },
     };
 
@@ -50,15 +68,29 @@ export default function PhonepeForm({ planId }) {
       .catch(function (error) {
         console.error(error);
       });
+  }
+
+  useEffect(() => {
+    fetchPlan();
+    paymentInit();
   }, []);
 
   useEffect(() => {
+    const xVerify =
+      crypto
+        .createHash("sha256")
+        .update(
+          "/pg/v1/status/UPSURGEUAT/OD620471739210623pay89efe538-f358-4a7f-959f-1d6edf953bde"
+        )
+        .digest("hex") + "###1";
     const options = {
       method: "GET",
-      url: "https://api-preprod.phonepe.com/apis/merchant-simulator/pg/v1/status/UPSURGEUAT/OD620471739210623",
+      url: "https://cors-anywhere.herokuapp.com/https://api-preprod.phonepe.com/apis/merchant-simulator/pg/v1/status/UPSURGEUAT/OD620471739210623",
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",
+        "X-VERIFY": xVerify,
+        "X-MERCHANT-ID": "UPSURGEUAT",
       },
     };
 
