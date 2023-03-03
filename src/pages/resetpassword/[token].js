@@ -9,6 +9,7 @@ import CircleWarning from "../../components/SVGcomponents/CircleWarning";
 import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import BallsSvg from "../../components/SVGcomponents/BallsSvg";
+import Footer from "../../components/Home/Footer";
 export default function ResetPassword({ resetPassEmailVerified, msg, email,token }) {
     const router = useRouter();
     const [openLeftPanel,setOpenLeftPanel] = useState(false);
@@ -86,7 +87,6 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
       />
       <div className={styles.curve}>
          <svg
-      width="250"
       viewBox="0 0 365 190"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,6 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
         </div>
       <div className={styles.circle}>
          <svg
-      width="600"
       viewBox="0 0 365 190"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +108,6 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
         </div>
       <div className={styles.circle2}>
          <svg
-      width="200"
       viewBox="0 0 365 190"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +117,6 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
         </div>
       <div className={styles.circle3}>
          <svg
-      width="350"
       viewBox="0 0 365 190"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -295,7 +292,7 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
             
         )
         }
-       
+       <Footer />
       </div>
   );
 }
