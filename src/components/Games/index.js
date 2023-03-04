@@ -13,6 +13,7 @@ import PageTitle from "../PageTitle";
 import GameView from "./GameView";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import SubToPremiumPopUp from "../SubToPremiumPopUp";
+import WebglView from "../WebglView";
 
 function Games({
   userdatafromserver,
@@ -21,7 +22,7 @@ function Games({
   accountType = "",
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { userdata ,setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
   const [showSubToPremium, setShowSubToPremium] = useState(false);
@@ -70,10 +71,15 @@ function Games({
     }
     FreeGameApis.updateRecentGames({ games: gamestring });
   }
-  
-  async function handlegameclick(title, pushto , premium_plan , userPlan , isSimulator = false  ) {
-    if(userPlan >= premium_plan)
-    {
+
+  async function handlegameclick(
+    title,
+    pushto,
+    premium_plan,
+    userPlan,
+    isSimulator = false
+  ) {
+    if (userPlan >= premium_plan) {
       console.log("Going forward");
       if (isSimulator) {
         return router.push(pushto);
@@ -95,8 +101,7 @@ function Games({
         updaterecentgames([title]);
       }
       setOpenGame(pushto ? pushto : title);
-    }
-    else{
+    } else {
       setShowSubToPremium(true);
     }
 
@@ -147,11 +152,9 @@ function Games({
               for you
             </h4>
             <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} />
-            {showSubToPremium &&
-            (
+            {showSubToPremium && (
               <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
-              )
-            }
+            )}
             {recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
@@ -168,14 +171,14 @@ function Games({
                                 ]
                               : "",
                             Game_Data[item].premium_plan,
-                            userdata.premium_plan,
-                            )
-                          }
-                          data={Game_Data[item]}
-                          key={"kidcomponent" + index}
-                          />
-                          );
-                        })}
+                            userdata.premium_plan
+                          )
+                        }
+                        data={Game_Data[item]}
+                        key={"kidcomponent" + index}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -207,36 +210,37 @@ function Games({
                 {Object.keys(Game_Data).map((item, index) => {
                   return (
                     <GameCard
-                    onClick={() =>
-                      handlegameclick(
-                        item,
-                        Game_Data[item].pushto
-                        ? Game_Data[item].pushto.split("/")[
-                          Game_Data[item].pushto.split("/").length - 1
-                        ]
-                        : "",
-                        Game_Data[item].premium_plan,
-                        userdata.premium_plan
+                      onClick={() =>
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto
+                            ? Game_Data[item].pushto.split("/")[
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
+                            : "",
+                          Game_Data[item].premium_plan,
+                          userdata.premium_plan
                         )
                       }
                       reward={
                         gameunicoinrewards
-                        ? gameunicoinrewards.includes(item)
-                        ? "Completed"
-                        : 200
-                        : null
+                          ? gameunicoinrewards.includes(item)
+                            ? "Completed"
+                            : 200
+                          : null
                       }
                       data={Game_Data[item]}
                       key={"chorecomponent" + index}
-                      />
-                      );
-                    })}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </div>
-      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
+      {/* {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""} */}
+      {openGame ? <WebglView /> : ""}
     </div>
   );
 }
