@@ -7,7 +7,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function WebglView({
-  key = "HignAndLow_WebGL",
+  gameKey = "",
   setView = () => {},
   handleDone = null,
 }) {
@@ -27,12 +27,14 @@ export default function WebglView({
   return (
     <div className={styles.view}>
       <div className={styles.fullScreenView}>
-        <iframe
-          id="iframe"
-          className={styles.iframe}
-          src={`${WEBGL_BASE_URL}/games/prod/${key}/index.html`}
-          allowFullScreen={true}
-        ></iframe>
+        {gameKey && (
+          <iframe
+            id="iframe"
+            className={styles.iframe}
+            src={`${WEBGL_BASE_URL}/games/prod/${gameKey}/index.html`}
+            allowFullScreen={true}
+          ></iframe>
+        )}
         <div className={styles.actionArea}>
           <button
             className={styles.fullScreenButton}

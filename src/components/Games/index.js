@@ -215,7 +215,7 @@ function Games({
         </div>
       </div>
       {/* {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""} */}
-      {openGame ? <WebglView key={openGame} setView={setOpenGame} /> : ""}
+      {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""}
     </div>
   );
 }
