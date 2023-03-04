@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { WEBGL_BASE_URL } from "../../../config";
 import styles from "./style.module.scss";
 import { isMobileOnly } from "react-device-detect";
-import FullScreen from "../SVGcomponents/FullScreen";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -46,7 +46,7 @@ export default function WebglView({
             {fullScreen ? (
               <CloseIcon style={{ height: "80px", width: "80px" }} />
             ) : (
-              <FullScreen />
+              <FullscreenIcon style={{ height: "80px", width: "80px" }} />
             )}
           </button>
           {handleDone ? (
