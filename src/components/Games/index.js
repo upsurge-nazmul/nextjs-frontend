@@ -75,6 +75,7 @@ function Games({
   async function handlegameclick(
     title,
     pushto,
+    webgl_key,
     premium_plan,
     userPlan,
     isSimulator = false
@@ -100,38 +101,10 @@ function Games({
         setrecent_games([title]);
         updaterecentgames([title]);
       }
-      setOpenGame(pushto ? pushto : title);
+      setOpenGame(webgl_key);
     } else {
       setShowSubToPremium(true);
     }
-
-    // if (title === "Ludo") {
-    //   let res = await FreeGameApis.presign({
-    //     user_name:
-    //       userdatafromserver.user_name ||
-    //       userdatafromserver.first_name ||
-    //       userdatafromserver.last_name,
-    //     email: userdatafromserver.email,
-    //     phone: userdatafromserver.phone,
-    //     token: token,
-    //     game: title,
-    //     postlogin: true,
-    //   });
-    //   if (res) {
-    //     if (res.data.success) {
-    //       router.push({
-    //         pathname: "/dashboard/k/game/" + (pushto ? pushto : title),
-    //         query: { id: res.data.data },
-    //       });
-    //     } else {
-    //       console.log(res.data.message);
-    //     }
-    //   } else {
-    //     console.log("error connecting server");
-    //   }
-    // } else {
-    //   router.push("/dashboard/k/game/" + (pushto ? pushto : title));
-    // }
   }
 
   return (
@@ -170,6 +143,7 @@ function Games({
                                   Game_Data[item].pushto.split("/").length - 1
                                 ]
                               : "",
+                            Game_Data[item].webgl_key,
                             Game_Data[item].premium_plan,
                             userdata.premium_plan
                           )
@@ -218,6 +192,7 @@ function Games({
                                 Game_Data[item].pushto.split("/").length - 1
                               ]
                             : "",
+                          Game_Data[item].webgl_key,
                           Game_Data[item].premium_plan,
                           userdata.premium_plan
                         )
@@ -240,7 +215,7 @@ function Games({
         </div>
       </div>
       {/* {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""} */}
-      {openGame ? <WebglView /> : ""}
+      {openGame ? <WebglView key={openGame} setView={setOpenGame} /> : ""}
     </div>
   );
 }
