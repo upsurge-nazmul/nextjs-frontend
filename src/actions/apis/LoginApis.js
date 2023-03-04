@@ -80,6 +80,9 @@ const sendverificationemail = (payload) => {
 const verifyemailtoken = (payload) => {
   return ApiCalls.postResponse("users/verifyemailtoken", payload);
 };
+const verifyresetpasstoken = (payload) => {
+  return ApiCalls.getResponse("users/verifyresetpasstoken" ,payload, payload.token);
+};
 
 const genotp = (payload) => {
   return ApiCalls.postResponse(
@@ -119,6 +122,9 @@ const getearlyaccess = (payload) => {
 
 const resetpass = (payload) => {
   return ApiCalls.postResponse("users/resetpassword", payload);
+};
+const changepassword = (payload) => {
+  return ApiCalls.postResponse("users/resetforgottenpassword", payload );
 };
 
 const genemailotp = (payload) => {
@@ -179,6 +185,8 @@ const LoginApis = {
   verifyPassword,
   closePremiumSaleOffer,
   closeOnBoardingVideo,
+  verifyresetpasstoken,
+  changepassword,
 };
 
 export default LoginApis;
