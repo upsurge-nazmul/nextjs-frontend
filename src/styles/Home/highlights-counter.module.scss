@@ -148,3 +148,157 @@
     }
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 4rem 2rem;
+    .contentWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      .content {
+        text-align: center;
+        padding: 1rem 3rem;
+        .number {
+          font-size: 1.4rem;
+          font-weight: 300;
+        }
+        .heading {
+          font-size: 1.4rem;
+          font-weight: 300;
+          padding: 0.5rem 0.5rem;
+        }
+      }
+      .students {
+        .number {
+          color: $green;
+        }
+        .heading {
+          border: $green solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .learning {
+        .number {
+          color: $red;
+        }
+        .heading {
+          border: $red solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .schools {
+        .number {
+          color: $yellow;
+        }
+        .heading {
+          border: $yellow solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .unicoins {
+        .number {
+          color: $blue;
+        }
+        .heading {
+          border: $blue solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+    }
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      .signupButton {
+        margin: 2rem auto 0;
+        background-color: $blue;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1.7rem;
+        font-size: 1.3rem;
+        font-weight: 300;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    padding: 4rem 2rem;
+    .contentWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      .content {
+        text-align: center;
+        padding: 1rem 3rem;
+        .number {
+          font-size: 1.4rem;
+          font-weight: 300;
+        }
+        .heading {
+          font-size: 1.4rem;
+          font-weight: 300;
+          padding: 0.5rem 0.5rem;
+        }
+      }
+      .students {
+        .number {
+          color: $green;
+        }
+        .heading {
+          border: $green solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .learning {
+        .number {
+          color: $red;
+        }
+        .heading {
+          border: $red solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .schools {
+        .number {
+          color: $yellow;
+        }
+        .heading {
+          border: $yellow solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+      .unicoins {
+        .number {
+          color: $blue;
+        }
+        .heading {
+          border: $blue solid;
+          border-width: 0 0 2px 0;
+        }
+      }
+    }
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      .signupButton {
+        margin: 2rem auto 0;
+        background-color: $blue;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1.7rem;
+        font-size: 1.3rem;
+        font-weight: 300;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
