@@ -5,10 +5,11 @@ import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
-import FullScreen from "../SVGcomponents/FullScreen";
-import FullScreenExit from "../SVGcomponents/FullScreenExit";
 import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function GameView({
   chapterId,
@@ -215,7 +216,11 @@ export default function GameView({
             setGame();
           }}
         >
-          {fullScreen ? <span>X</span> : <FullScreen />}
+          {fullScreen ? (
+            <CloseIcon style={{ height: "80px", width: "80px" }} />
+          ) : (
+            <FullscreenIcon style={{ height: "80px", width: "80px" }} />
+          )}{" "}
         </button>
         {handleDone ? (
           <button
@@ -230,7 +235,7 @@ export default function GameView({
               setGame();
             }}
           >
-            Done
+            <DoneIcon style={{ height: "80px", width: "80px" }} />
           </button>
         ) : (
           ""
