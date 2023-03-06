@@ -10,6 +10,7 @@ export default function WebglView({
   gameKey = "",
   setView = () => {},
   handleDone = null,
+  type = "games",
 }) {
   const [fullScreen, setFullScreen] = useState(false);
 
@@ -31,7 +32,7 @@ export default function WebglView({
           <iframe
             id="iframe"
             className={styles.iframe}
-            src={`${WEBGL_BASE_URL}/games/prod/${gameKey}/index.html`}
+            src={`${WEBGL_BASE_URL}/${type}/prod/${gameKey}/index.html`}
             allowFullScreen={true}
           ></iframe>
         )}

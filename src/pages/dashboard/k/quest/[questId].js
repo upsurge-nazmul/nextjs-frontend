@@ -15,8 +15,9 @@ import { getCookie } from "../../../../actions/cookieUtils";
 import BrokenGameConroller from "../../../../components/SVGcomponents/BrokenGameConroller";
 import PageTitle from "../../../../components/PageTitle";
 import GameView from "../../../../components/Games/GameView";
+import WebglView from "../../../../components/WebglView";
 
-const LESSON_TYPES = ["recording", "activity", "quiz", "game"];
+const LESSON_TYPES = ["recording", "activity", "quiz", "game", "webgl"];
 
 const democoncepts = [
   "Money",
@@ -169,11 +170,22 @@ export default function KnowledgeQuest({ userData, questData }) {
                       }}
                     />
                   ) : view === LESSON_TYPES[3] ? (
-                    <GameView
-                      chapterId={currentChapter}
-                      game={currentChapter}
-                      setGame={handleBack}
-                      handleDone={handleDone}
+                    <WebglView
+                      {...{
+                        gameKey: currentChapter,
+                        setView: handleBack,
+                        handleDone,
+                        type: "games",
+                      }}
+                    />
+                  ) : view === LESSON_TYPES[4] ? (
+                    <WebglView
+                      {...{
+                        gameKey: currentChapter,
+                        setView: handleBack,
+                        handleDone,
+                        type: "kq",
+                      }}
                     />
                   ) : (
                     ""
