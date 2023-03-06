@@ -101,7 +101,8 @@ function Games({
         setrecent_games([title]);
         updaterecentgames([title]);
       }
-      setOpenGame(webgl_key);
+      setOpenGame(pushto ? pushto : title);
+      // setOpenGame(webgl_key);
     } else {
       setShowSubToPremium(true);
     }
@@ -156,25 +157,6 @@ function Games({
                 </div>
               </div>
             )}
-            {/* <div className={styles.availableSection}>
-              <h2 className={styles.heading}>
-              Simulators
-              <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper}>
-              {Object.keys(Simulator_Data).map((item, index) => {
-                return (
-                  <GameCard
-                  onClick={() =>
-                    handlegameclick(item, Simulator_Data[item].pushto, true)
-                  }
-                  data={Simulator_Data[item]}
-                  key={"chorecomponent" + index}
-                  />
-                  );
-                })}
-                </div>
-              </div> */}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
                 Available Games
@@ -214,8 +196,8 @@ function Games({
           </div>
         </div>
       </div>
-      {/* {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""} */}
-      {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""}
+      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
+      {/* {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""} */}
     </div>
   );
 }
