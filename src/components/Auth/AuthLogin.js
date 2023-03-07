@@ -3,7 +3,7 @@ import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Auth/auth.module.scss";
-import { setCookie } from "../../actions/cookieUtils";
+import { setCookie,eraseCookie,getCookie } from "../../actions/cookieUtils";
 import { MainContext } from "../../context/Main";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
@@ -90,8 +90,12 @@ function AuthLogin({
         setshowauth(false);
         router.reload();
       }
-    } else {
-      seterror(response?.data.message || "Cannot reach server");
+    } else if(getCookie("accesstoken")){
+        eraseCookie("accesstoken");
+        handleSignin();
+    }
+    else{
+    seterror(response?.data.message || "Cannot reach server");
       setloading(false);
     }
   }
