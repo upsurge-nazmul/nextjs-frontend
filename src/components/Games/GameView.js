@@ -5,10 +5,11 @@ import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
-import FullScreen from "../SVGcomponents/FullScreen";
-import FullScreenExit from "../SVGcomponents/FullScreenExit";
 import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function GameView({
   chapterId,
@@ -84,50 +85,57 @@ export default function GameView({
       }
     }
     async function x() {
-      if (!gameData) {
-        return;
-      }
-      let updateData = {
-        version: gameData.version,
-        id: game,
-      };
-      console.log("downloading data");
-      let datares = await fetch(gameData?.dataUrl, {
-        method: "GET",
-      });
-      let datablob = await datares.blob();
-      updateData.data = datablob;
-      console.log("downloading code");
-      let coderes = await fetch(gameData?.codeUrl, {
-        method: "GET",
-      });
-      let codeblob = await coderes.blob();
-      updateData.wasm = codeblob;
-      console.log("downloading framework");
-      let frameworkres = await fetch(gameData?.frameworkUrl, {
-        method: "GET",
-      });
-      let frameworkblob = await frameworkres.blob();
-      updateData.framework = frameworkblob;
-      console.log("downloading loader");
-      let loaderres = await fetch(gameData?.loaderUrl, {
-        method: "GET",
-      });
-      let loaderblob = await loaderres.blob();
-      updateData.loader = loaderblob;
-
-      let previos_game_data = await db.games.where("id").equals(game).toArray();
-      if (previos_game_data.length > 0) {
-        console.log("updating game in indexedDb");
-        await db.games.update(game, updateData);
-      } else {
-        console.log("adding game in indexedDb");
-
-        try {
-          await db.games.add(updateData);
-        } catch (err) {
-          console.log(err);
+      try {
+        if (!gameData) {
+          return;
         }
+        let updateData = {
+          version: gameData.version,
+          id: game,
+        };
+        console.log("downloading data");
+        let datares = await fetch(gameData?.dataUrl, {
+          method: "GET",
+        });
+        let datablob = await datares.blob();
+        updateData.data = datablob;
+        console.log("downloading code");
+        let coderes = await fetch(gameData?.codeUrl, {
+          method: "GET",
+        });
+        let codeblob = await coderes.blob();
+        updateData.wasm = codeblob;
+        console.log("downloading framework");
+        let frameworkres = await fetch(gameData?.frameworkUrl, {
+          method: "GET",
+        });
+        let frameworkblob = await frameworkres.blob();
+        updateData.framework = frameworkblob;
+        console.log("downloading loader");
+        let loaderres = await fetch(gameData?.loaderUrl, {
+          method: "GET",
+        });
+        let loaderblob = await loaderres.blob();
+        updateData.loader = loaderblob;
+
+        let previos_game_data = await db.games
+          .where("id")
+          .equals(game)
+          .toArray();
+        if (previos_game_data.length > 0) {
+          console.log("updating game in indexedDb");
+          await db.games.update(game, updateData);
+        } else {
+          console.log("adding game in indexedDb");
+
+          try {
+            await db.games.add(updateData);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      } catch (e) {
+        console.error(e);
       }
     }
   }, [gameData]);
@@ -215,7 +223,7 @@ export default function GameView({
             setGame();
           }}
         >
-          {fullScreen ? <span>X</span> : <FullScreen />}
+          {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
         </button>
         {handleDone ? (
           <button
@@ -230,7 +238,7 @@ export default function GameView({
               setGame();
             }}
           >
-            Done
+            <DoneIcon />
           </button>
         ) : (
           ""
