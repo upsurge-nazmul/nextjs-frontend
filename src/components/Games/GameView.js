@@ -223,11 +223,7 @@ export default function GameView({
             setGame();
           }}
         >
-          {fullScreen ? (
-            <CloseIcon style={{ height: "80px", width: "80px" }} />
-          ) : (
-            <FullscreenIcon style={{ height: "80px", width: "80px" }} />
-          )}{" "}
+          {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
         </button>
         {handleDone ? (
           <button
@@ -242,7 +238,7 @@ export default function GameView({
               setGame();
             }}
           >
-            <DoneIcon style={{ height: "80px", width: "80px" }} />
+            <DoneIcon />
           </button>
         ) : (
           ""

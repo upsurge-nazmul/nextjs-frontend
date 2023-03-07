@@ -1,3 +1,5 @@
+@use "../../styles/variables/fontsizes.scss" as *;
+
 .gameView {
   position: fixed;
   top: 0;
@@ -57,10 +59,13 @@
       border: none;
       outline: none;
       color: #d4d1d1;
-      width: 9rem;
-      height: 9rem;
-      font-size: 4rem;
+      width: $gen-superxxl;
+      height: $gen-superxxl;
       vertical-align: baseline;
+      svg {
+        height: $gen-superxl;
+        width: $gen-superxl;
+      }
     }
     .fullScreenButton {
       @extend .commonButton;
@@ -68,8 +73,8 @@
       background-color: red;
       svg {
         position: absolute;
-        bottom: 15px;
-        left: 15px;
+        bottom: $gen-xs;
+        left: $gen-xs;
       }
     }
     .doneButton {
@@ -78,8 +83,8 @@
       background-color: green;
       svg {
         position: absolute;
-        bottom: 15px;
-        right: 15px;
+        bottom: $gen-xs;
+        right: $gen-xs;
       }
     }
   }
