@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
 import BrokenGame from "../Games/BrokenGame";
@@ -22,7 +22,6 @@ export default function GameView({
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
-  const unityref = useRef(unityContext);
 
   useEffect(() => {
     if (!isMobileOnly) {
@@ -193,7 +192,6 @@ export default function GameView({
         // ) :
         gameData && unityContext ? (
           <Unity
-            ref={unityref}
             unityContext={unityContext}
             matchWebGLToCanvasSize={true}
             className={
@@ -221,6 +219,7 @@ export default function GameView({
             if (!isMobileOnly) document.exitFullscreen();
             mixpanel.track("Game Closed", { event: `Game closed` });
             setGame();
+            setUnityContext(null);
           }}
         >
           {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
