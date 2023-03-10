@@ -224,6 +224,7 @@ export default function ChildActivity({
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
             <div className={styles.flexRight}>
+                {userdata && userdata.chores_opted ?
               <div className={styles.choreSection} id="chores">
                 <h2
                   className={styles.mainheading}
@@ -250,6 +251,7 @@ export default function ChildActivity({
                   )}
                 </div>
               </div>
+                :null}
             </div>
           </div>
           <></>
