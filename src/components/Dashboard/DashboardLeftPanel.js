@@ -170,8 +170,9 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
-
-          <div
+            
+          {userdata && userdata.chores_opted ?
+            <div
             id="chores-leftpanel"
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/chores" ? styles.activetab : ""
@@ -181,7 +182,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-
+:null}
           <div
             id="events-leftpanel"
             className={`${styles.tab} ${
@@ -424,7 +425,7 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
           </div>
-
+{userdata && userdata.chores_opted ?
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/chores" ||
@@ -447,7 +448,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-
+:null}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/store" ? styles.activetab : ""
