@@ -10,6 +10,15 @@
   flex-direction: column;
   z-index: 99;
 
+  .loadingScreen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #939393cc;
+  }
+
   .gameScreen {
     width: 100%;
     flex: 1;
