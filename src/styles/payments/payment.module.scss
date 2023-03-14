@@ -1,25 +1,57 @@
 .paymentPage {
   min-height: 80vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  .paymentForm {
+  .content {
     border: 1px solid #bcbcbc;
-    padding: 20px;
     border-radius: 14px;
-    .actionArea {
+    padding: 20px;
+    .paymentDetails {
+      width: 20rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      padding: 10px 0;
-      .paymentButton {
-        border: none;
-        outline: none;
-        cursor: pointer;
-        background-color: #4066eb;
-        color: #fff;
-        font-size: 18px;
-        border-radius: 14px;
-        padding: 10px 30px;
+      align-items: center;
+      margin-bottom: 1rem;
+      .title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #b0afb4;
+      }
+      .subtitle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.25rem 0;
+        .paymentLabel {
+          color: #b0afb4;
+          margin-right: 6px;
+          font-weight: 300;
+        }
+        .paymentValue {
+          color: #4066eb;
+          font-size: 1.25rem;
+        }
+      }
+    }
+    .paymentForm {
+      .actionArea {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        .paymentButton {
+          border: none;
+          outline: none;
+          cursor: pointer;
+          background-color: #4066eb;
+          color: #fff;
+          font-size: 18px;
+          border-radius: 14px;
+          padding: 10px 30px;
+        }
       }
     }
   }
