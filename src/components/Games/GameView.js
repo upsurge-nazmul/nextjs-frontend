@@ -10,6 +10,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import { CircularProgress } from "@mui/material";
 
 export default function GameView({
   chapterId,
@@ -22,6 +23,7 @@ export default function GameView({
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!isMobileOnly) {
@@ -36,10 +38,12 @@ export default function GameView({
 
   useEffect(() => {
     async function fetchGameData() {
+      setLoading(true);
       let res = await GameApis.gamedata({ id: game });
       if (res && res.data && res.data.data) {
         setGameData(res.data.data);
       }
+      setLoading(false);
     }
     fetchGameData();
   }, []);
@@ -186,63 +190,75 @@ export default function GameView({
 
   return (
     <div className={styles.gameView}>
-      {
-        // isMobileOnly ? (
-        //   <BrokenGame />
-        // ) :
-        gameData && unityContext ? (
-          <Unity
-            unityContext={unityContext}
-            matchWebGLToCanvasSize={true}
-            className={
-              progression === 1 ? styles.gameScreen : styles.hiddenGameScreen
-            }
-          />
-        ) : (
-          <div className={styles.noGame}>
-            <p className={styles.noGameText}>No Game Found!</p>
-          </div>
-        )
-      }
-      {progression > 0 && progression < 1 ? (
-        <div className={styles.loadingArea}>
-          <GameLoading percentage={progression} />
+      {loading ? (
+        <div className={styles.loadingScreen}>
+          <CircularProgress />
         </div>
       ) : (
-        ""
+        <>
+          {
+            // isMobileOnly ? (
+            //   <BrokenGame />
+            // ) :
+            gameData && unityContext ? (
+              <Unity
+                unityContext={unityContext}
+                matchWebGLToCanvasSize={true}
+                className={
+                  progression === 1
+                    ? styles.gameScreen
+                    : styles.hiddenGameScreen
+                }
+              />
+            ) : (
+              <div className={styles.noGame}>
+                <p className={styles.noGameText}>No Game Found!</p>
+              </div>
+            )
+          }
+          {progression > 0 && progression < 1 ? (
+            <div className={styles.loadingArea}>
+              <GameLoading percentage={progression} />
+            </div>
+          ) : (
+            ""
+          )}
+        </>
       )}
-      <div className={styles.actionArea}>
-        <button
-          className={styles.fullScreenButton}
-          onClick={() => {
-            setFullScreen(false);
-            if (!isMobileOnly) document.exitFullscreen();
-            mixpanel.track("Game Closed", { event: `Game closed` });
-            setGame();
-            setUnityContext(null);
-          }}
-        >
-          {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
-        </button>
-        {handleDone ? (
+      {!loading && (
+        <div className={styles.actionArea}>
           <button
-            className={styles.doneButton}
+            className={styles.fullScreenButton}
             onClick={() => {
-              handleDone();
-              mixpanel.track("Knowledge Quest", {
-                event: `Quest Finished ${chapterId}`,
-              });
               setFullScreen(false);
               if (!isMobileOnly) document.exitFullscreen();
+              mixpanel.track("Game Closed", { event: `Game closed` });
               setGame();
+              setUnityContext(null);
             }}
           >
-            <DoneIcon />
+            {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
           </button>
-        ) : (
-          ""
-        )}
-      </div>
+          {handleDone ? (
+            <button
+              className={styles.doneButton}
+              onClick={() => {
+                handleDone();
+                mixpanel.track("Knowledge Quest", {
+                  event: `Quest Finished ${chapterId}`,
+                });
+                setFullScreen(false);
+                if (!isMobileOnly) document.exitFullscreen();
+                setGame();
+              }}
+            >
+              <DoneIcon />
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </div>
   );
 }
