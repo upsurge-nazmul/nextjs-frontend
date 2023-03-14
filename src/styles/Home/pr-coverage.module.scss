@@ -19,11 +19,12 @@
       align-items: center;
       gap: 2rem;
       margin: 0px 0;
-      .logo {
-        width: calc(100% / 8);
-        aspect-ratio: 1;
-        object-fit: contain;
-        animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+      .logoContainer{
+        .logo {
+          aspect-ratio: 1;
+          object-fit: contain;
+          animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+        }
       }
     }
   }
@@ -65,10 +66,10 @@
 
 @keyframes slidein {
   from {
-    transform: translate3d(5%, 0, 0);
+    transform: translate3d(15%, 0, 0);
   }
   to {
-    transform: translate3d(-35%, 0, 0);
+    transform: translate3d(-15%, 0, 0);
   }
 }
 

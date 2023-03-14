@@ -130,11 +130,18 @@ function SubToPremiumPopUp({ setShowSubToPremium }) {
                 upsurge Goodie Bag
               </div>
             </div>
+            <div className={styles.pricingSectionTop}>
+                <p className={styles.slashedPrice}>₹2499</p>{" "}
+                <p className={styles.actualPrice}>₹499</p>{" "}
+              </div>
+              <div className={styles.pricingSectionBottom}>
+                <p className={styles.smallfont}>(limited period offer)</p>
+              </div>
           </div>
         <div
         className={styles.button}
           onClick={() => {
-            router.push("/pricing");
+            router.push(`/payments/stripe?plan_id=${1002}`);
           }}
         >
           Upgrade Now!

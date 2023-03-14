@@ -89,7 +89,7 @@ function DashboardLeftPanel({
           }}
         />
           </div>
-            {userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+            {userdata && userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
               <>
               <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
               <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>

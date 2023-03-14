@@ -78,7 +78,8 @@ export default function RequestModal({
         });
         if (response && response.data && response.data.success) {
           setsuccess(true);
-        } else {
+        }
+         else {
           seterror(response?.data.message || "Error connecting to server");
           setloading(false);
         }
@@ -181,7 +182,7 @@ export default function RequestModal({
                </div>
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
-                  Request Parent
+                Redeem Now
                 </div>
               ) : (
                 <div className={`${styles.button} ${styles.spinner_btn}`}>
@@ -201,7 +202,7 @@ export default function RequestModal({
                 <BackButtonSvg />
                 <div className={styles.text}>
                   <p>Yay!</p>
-                  <p className={styles.payment}>Request sent to your parent.</p>
+                  <p className={styles.payment}>Purchase was successful.</p>
                 </div>
               </div>
 
