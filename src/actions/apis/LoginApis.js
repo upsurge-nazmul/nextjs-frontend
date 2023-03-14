@@ -142,6 +142,12 @@ const updatePhoneByEmail = (payload) => {
     getCookie("accesstoken")
   );
 };
+const closePremiumSaleOffer = (payload) => {
+  return ApiCalls.postResponse("users/closepremiumsaleoffer", payload , getCookie("accesstoken"));
+}
+const closeOnBoardingVideo = (payload) => {
+  return ApiCalls.postResponse("users/closeonboardingvideo", payload , getCookie("accesstoken"));
+}
 const LoginApis = {
   signup,
   setphone,
@@ -171,6 +177,8 @@ const LoginApis = {
   createchildotp,
   updatePhoneByEmail,
   verifyPassword,
+  closePremiumSaleOffer,
+  closeOnBoardingVideo,
 };
 
 export default LoginApis;

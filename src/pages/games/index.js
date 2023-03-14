@@ -162,7 +162,7 @@ export default function GamePage() {
             );
           })}
         </div>
-        <AvailableGames />
+        {/* <AvailableGames /> */}
       </div>
       <JoinUs />
       <Footer />

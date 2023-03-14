@@ -135,7 +135,7 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                   />
                 )}
               <div className={styles.details}>
-                <div className={styles.label}>Price</div>
+                <div className={styles.label}>Price Paid</div>
                 {buydata.total && (
                   <div className={styles.value}>
                     ₹

@@ -12,6 +12,7 @@ import Spinner from "../Spinner";
 import { onlyText } from "../../helpers/validationHelpers";
 import ChoreApis from "../../actions/apis/ChoreApis";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
+import localforage from "localforage";
 
 function ParentChildAuth({
   setphone,
@@ -64,6 +65,7 @@ function ParentChildAuth({
   const [loading, setloading] = useState(false);
   //adding coupon code input field
   const [coupon, setCoupon] = useState("");
+  const [unicoins, setUnicoins] = useState(null);
   const [choseToPremium, setChoseToPremium] = useState(false);
   const [passerror, setpasserror] = useState({
     length: false,
@@ -130,6 +132,7 @@ function ParentChildAuth({
       username: username,
       first_name: firstName,
       last_name: lastName,
+      num_unicoins: unicoins ? unicoins : 0,
     });
 
     if (!response || !response.data.success) {
@@ -201,7 +204,7 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
-
+    
     let response = await LoginApis.signup({
       email: email,
       signup_method: signupmethod,
@@ -212,8 +215,9 @@ function ParentChildAuth({
       coupon,
       first_name: firstName,
       last_name: lastName,
+      num_unicoins: unicoins ? unicoins : 0,
     });
-
+    
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
@@ -221,9 +225,10 @@ function ParentChildAuth({
       mixpanel.track("Sign-Up", {
         event: `SignUp of ${email} Successful`,
         "user-email": email,
+        "phone": phone,
       });
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email });
+      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email, $phone: phone });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
@@ -270,7 +275,15 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      setmode("onboarding");
+      if(premiumprice === null){
+        router.push("dashboard/k")
+      }
+      else if(premiumprice === undefined){
+        setmode("premiumSub");
+      }
+      else if(premiumprice !== null && premiumprice !== 0){
+        router.push(`/payments/stripe?plan_id=${premiumprice}`);
+      }
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
@@ -303,6 +316,14 @@ function ParentChildAuth({
   function checkSpecial(pass) {
     return !(pass.search(/[!@#$%^&*]/) < 0);
   }
+
+  useEffect(() => {
+    localforage.getItem("playedGame", function (err, value) {
+      if (value) {
+        setUnicoins(JSON.parse(value).unicoins);
+      }
+    });
+  }, []);
   return (
     <div className={styles.parentChildAuth}>
       <div
@@ -433,16 +454,12 @@ function ParentChildAuth({
           <div
             className={`${styles.button}`}
             onClick={
-              //genotp
-              () => {
-                if (premiumprice === null) {
-                  console.log("true");
-                  setChoseToPremium(true);
-                }
+              async() => {
+                  await genotp();
               }
             }
           >
-            Continue
+            Sign Up
           </div>
         ) : (
           <div className={`${styles.button} ${styles.spinner_btn}`}>

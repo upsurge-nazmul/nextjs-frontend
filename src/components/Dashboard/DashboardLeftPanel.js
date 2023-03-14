@@ -27,6 +27,7 @@ import StockSvg from "../SVGcomponents/StockSimulator/StockSvg";
 import { MainContext } from "../../context/Main";
 import ParentPanelSvg from "../SVGcomponents/ParentPanelSvg";
 import EventsSvg from "../SVGcomponents/EventsSvg";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 function DashboardLeftPanel({
   type,
   hidelogo,
@@ -40,6 +41,9 @@ function DashboardLeftPanel({
   const [currenttab, setcurrenttab] = useState("");
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
+  const [crownClass, setCrownClass] = useState(true);
+  const [showSubscribe,setShowSubscribe] = useState(false);
+  console.log(userdata);
   useEffect(() => {
     setcurrenttab(router.pathname);
   }, [router]);
@@ -65,6 +69,8 @@ function DashboardLeftPanel({
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
+        <div className={styles.logoBox} onMouseEnter={()=>{setCrownClass(false)}} onMouseLeave={()=>{setCrownClass(true)}}>
+        <div className={styles.logo}>
         <Logo
           id="upsurge-logo"
           dark={theme === "dark"}
@@ -82,6 +88,27 @@ function DashboardLeftPanel({
             // else router.push("/dashboard/p");
           }}
         />
+          </div>
+            {userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+              <>
+              <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
+              <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>
+                Upgrade to upsurge Premium available <div className={styles.premiumButton} onClick={()=>{setShowSubscribe(true); setCrownClass(true)}}>Claim Now!</div>
+              </div>
+              {showSubscribe &&(
+                <ChosePremiumPopUp setChoseToPremium={setShowSubscribe} />
+              )
+              }
+              </>
+              )
+            }
+        {userdata && userdata.premium_plan >= 1 &&(
+          <>
+          <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
+          </>
+          )
+        }
+        </div>
       ) : (
         <MiniLogo
           id="upsurge-logo"

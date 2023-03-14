@@ -2,6 +2,7 @@ import React from "react";
 import { getIndianTime } from "../helpers/timehelpers";
 import styles from "../styles/GeneralComponents/confirmInvoice.module.scss";
 
+
 const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
   return (
     <div ref={ref} className={styles.invoiceBox}>
@@ -126,5 +127,5 @@ const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
     </div>
   );
 });
-
+ConfirmInvoice.displayName = "ConfirmInvoice";
 export default ConfirmInvoice;

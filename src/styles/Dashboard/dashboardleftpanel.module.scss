@@ -1,6 +1,29 @@
 @use "../variables/fontsizes.scss" as *;
 @use "../variables/colors.scss" as *;
 
+@keyframes rotatecrown {
+  0%{
+    right:-0.5rem;
+    top:-0.2rem;
+  }
+  29%{
+    top:-0.8rem;
+  }
+  30%{
+    top:-0.9rem;
+    transform: rotate(15deg);
+  }
+  70%{
+    top:-0.9rem;
+    transform: rotate(375deg);
+  }
+  100%{
+    transform: rotate(375deg);
+    right:-0.5rem;
+    top:-0.2rem;
+  }
+}
+
 .dashboardLeftPanel {
   height: 100vh;
   min-width: 350px;
@@ -19,6 +42,54 @@
   .dashboardLogo {
     cursor: pointer;
   }
+    .logoBox{
+      display: flex;
+      position: relative;
+      .logo{
+        z-index: 2;
+      }
+      .premiumContainerNone{
+        display: none;
+      }
+      .premiumContainer{
+          position: absolute;
+          display: flex;
+          width: max-content;
+          font-size: 0.9rem;
+          top:3rem;
+          left:5rem;
+          background: #fdcc03;
+          padding:0.5rem 2rem;
+          border-radius: 1rem;
+          z-index: 9999;
+          box-shadow: 0 4px 10px black;
+          .premiumButton{
+            background: #4166EB;
+            padding:0 2rem;
+            border-radius: 1rem;
+            margin-left: 1rem;
+            cursor: pointer;
+          }
+      }
+      .crown{
+        position: absolute;
+        width:2rem;
+        right:-0.5rem;
+        top:-0.2rem;
+        transform: rotate(15deg);
+        animation: rotatecrown 1.2s linear 0s infinite alternate;
+        z-index: 2;
+      }
+      .tossCrown{
+        position: absolute;
+        width:2rem;
+        right:-0.5rem;
+        top:-0.2rem;
+        transform: rotate(15deg);
+        animation: rotatecrown 1.2s linear 0s infinite alternate;
+        z-index: 2;
+      }
+    }
   .miniLogo {
     width: 80%;
     height: 3rem;

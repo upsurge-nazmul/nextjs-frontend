@@ -24,9 +24,11 @@ import PageTitle from "../PageTitle";
 import JodoIntro from "./JodoIntro";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
 import ReferIntro from "./ReferIntro";
+import SignupPopup from "../SignupPopup";
+import localforage from "localforage";
+import PRCoverage from "./PRCoverage";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
-// const INTERCOM_APP_ID = "tk23vd4p";
 function Home({ page = "", showNav = true }) {
   const { userdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -40,6 +42,7 @@ function Home({ page = "", showNav = true }) {
   });
   const [mailfromhome, setmailfromhome] = useState("");
   const [showpopup, setshowpopup] = useState(false);
+  const [showSignupPopup, setShowSignupPopup] = useState(false);
   const [refId, setRefId] = useState();
   const router = useRouter();
 
@@ -87,6 +90,18 @@ function Home({ page = "", showNav = true }) {
       }
     }
   }, [router.query]);
+
+  useEffect(() => {
+    // if (showauth) setShowSignupPopup(false);
+    localforage.getItem("playedGame", function (err, value) {
+      if (value) {
+        if (!userdata) {
+          setShowSignupPopup(true);
+        }
+      }
+    });
+  }, []);
+
   const story = [
     {
       position: "bottom",
@@ -120,7 +135,6 @@ function Home({ page = "", showNav = true }) {
   }, [router]);
 
   return (
-    // <IntercomProvider autoBoot appId={INTERCOM_APP_ID}>
     <div
       id="home-page-main"
       className={`${styles.homePage} ${
@@ -149,6 +163,18 @@ function Home({ page = "", showNav = true }) {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
+      <SignupPopup
+        showauth={showauth}
+        setshowauth={setshowauth}
+        authmode={authmode}
+        mailfromhome={mailfromhome}
+        setshowpopup={setshowpopup}
+        refId={refId}
+        setauthmode={setauthmode}
+        setShowSignupPopup={setShowSignupPopup}
+        showSignupPopup={showSignupPopup}
+      />
+
       <Toast data={toastdata} />
 
       {page === HOME_VARIENTS[0] ? (
@@ -176,6 +202,7 @@ function Home({ page = "", showNav = true }) {
       )}
       <Benefits />
       <Who />
+      <PRCoverage />
       <Values
         setshowauth={setshowauth}
         setauthmode={setauthmode}
@@ -214,7 +241,6 @@ function Home({ page = "", showNav = true }) {
         <Tour story={story} current={0} showtour={false} />
       )} */}
     </div>
-    // </IntercomProvider>
   );
 }
 

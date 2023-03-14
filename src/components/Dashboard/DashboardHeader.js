@@ -51,13 +51,16 @@ function DashboardHeader({
           id: userdata.user_id,
         },
         getCookie("accesstoken")
-      );
-      if (res && res.data && res.data.success) {
-        setKidLevel(res.data.data);
-      } else setKidLevel(1);
-    }
-    if (userdata) {
-      if (userdata.user_id) {
+        );
+        if (res && res.data && res.data.success) {
+          setKidLevel(res.data.data);
+        } else setKidLevel(1);
+      }
+      if (userdata) {
+        if(userdata.child_first_login === true){
+          setShowOnboarding(true);
+        }
+        if (userdata.user_id) {
         fetchKidLevel();
       } else {
         setKidLevel(userdata.level);
