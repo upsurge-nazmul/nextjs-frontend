@@ -42,6 +42,7 @@ function AuthComponent({
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [username, setusername] = useState("");
+  const [childAge, setChildAge] = useState();
   const [usertype, setusertype] = useState("parent");
   const [signupmethod, setsignupmethod] = useState("email");
   const [premium_price, setPremium_price] = useState(null);
@@ -168,14 +169,16 @@ function AuthComponent({
                   usertype={usertype}
                   premiumprice={premium_price}
                   setpremiumrice={setPremium_price}
-                />
-              ) : mode === "email" ? (
+                  setChildAge={setChildAge}
+                  childAge={childAge}
+                  />
+                  ) : mode === "email" ? (
                 <AuthFullData
-                  email={email}
-                  settoastdata={settoastdata}
-                  setmode={setmode}
-                  phone={phone}
-                  setphone={setphone}
+                email={email}
+                settoastdata={settoastdata}
+                setmode={setmode}
+                phone={phone}
+                setphone={setphone}
                   error={error}
                   password={password}
                   seterror={seterror}
