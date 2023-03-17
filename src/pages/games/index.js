@@ -12,6 +12,7 @@ import { MainContext } from "../../context/Main";
 import { isMobile, isIOS } from "react-device-detect";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
+import CarouselGames from "../../components/Carousel/CarouselGames/index";
 import AvailableGames from "../../components/DownloadGames/AvailableGames";
 
 export default function GamePage() {
@@ -92,7 +93,7 @@ export default function GamePage() {
       <div className={styles.contentWrapper}>
         <Curve1 className={styles.curve1} />
         <Curve2 className={styles.curve2} />
-        <img
+        {/* <img
           className={styles.icon}
           src="https://imgcdn.upsurge.in/images/unsp/photo-1600080972464-8e5f35f63d08.avif"
           alt=""
@@ -104,9 +105,13 @@ export default function GamePage() {
             based on topics around entrepreneurship & money management, so that
             they can learn by doing and making decisions. Here are some of our
             games that you and your child can play together.`}
-          </h3>
+          </h3> 
         </div>
-
+          */}
+        <CarouselGames userdata={userdata} setshowauth={setshowauth} setauthmode={setauthmode} />
+        <div className={styles.moreGames}>
+          More Games
+        </div>
         <div className={styles.gamelistwrapper}>
           {Object.keys(Game_Data).map((item, index) => {
             if (item === "SnakeAndLadders" && isIOS) {
