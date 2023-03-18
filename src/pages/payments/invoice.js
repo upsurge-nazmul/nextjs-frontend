@@ -12,7 +12,7 @@ import ConfirmInvoice from "../../components/ConfirmInvoice";
 import { useReactToPrint } from "react-to-print";
 import PageTitle from "../../components/PageTitle";
 
-export default function Subscribed({ userdatafromserver }) {
+export default function Subscribed({ userdatafromserver, req }) {
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -20,7 +20,7 @@ export default function Subscribed({ userdatafromserver }) {
   const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { payment_intent, plan_id } = router.query;
+  const { payment_intent, plan_id, transactionId } = router.query;
 
   async function fetchPlan() {
     const res = await PaymentsApi.getPlans({ plan_id });
@@ -41,13 +41,36 @@ export default function Subscribed({ userdatafromserver }) {
     }
   }
 
-  useEffect(() => {
-    const invoiceModel = {
-      paymentIntent: payment_intent,
-      plan_id,
-    };
-    fetchUpdateSubscription(invoiceModel);
-  }, []);
+  async function checkPhonepeStatus(transactionId) {
+    const res = await PaymentsApi.checkPhonepeStatus({
+      transactionId,
+    });
+    console.log({ res });
+    if (res && res.data && res.data.response.success) {
+      if (res.data.response.code === "PAYMENT_SUCCESS") {
+        return true;
+      }
+      return false;
+    }
+  }
+
+  useEffect(async () => {
+    if (payment_intent) {
+      const invoiceModel = {
+        paymentIntent: payment_intent,
+        plan_id,
+      };
+      fetchUpdateSubscription(invoiceModel);
+    } else if (transactionId) {
+      if (await checkPhonepeStatus(transactionId)) {
+        const invoiceModel = {
+          paymentIntent: transactionId,
+          plan_id,
+        };
+        fetchUpdateSubscription(invoiceModel);
+      }
+    }
+  }, [transactionId, payment_intent, plan_id]);
 
   useEffect(() => {
     const handlescroll = () => {
