@@ -1,16 +1,50 @@
+import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
-import { useContext, useEffect } from "react";
-import PhonepeForm from "../../components/stripe/PhonepeForm";
-import { MainContext } from "../../context/Main";
+import { useState, useEffect } from "react";
+import PaymentsApi from "../../actions/apis/PaymentsApi";
 
 export default function PhonepePage() {
+  const [plan, setPlan] = useState();
   const router = useRouter();
-  const { userdata } = useContext(MainContext);
   const { plan_id } = router.query;
 
-  useEffect(() => {
-    console.log({ plan_id, userdata });
-  }, [userdata, plan_id]);
+  async function fetchPlan() {
+    const res = await PaymentsApi.getPlans({ plan_id });
+    if (res && res.data && res.data.success) {
+      setPlan(res.data.data);
+    }
+  }
 
-  return <>{plan_id && <PhonepeForm planId={plan_id} userdata={userdata} />}</>;
+  async function paymentInit() {
+    const result = await PaymentsApi.getPhonePe({
+      plan_id,
+      hostURL: window.location.origin,
+    });
+    console.log({ result });
+    // if (result && result.data) {
+    //   router.push(
+    //     result.data.redirectURL.data.instrumentResponse.redirectInfo.url
+    //   );
+    // }
+  }
+
+  useEffect(() => {
+    fetchPlan();
+    paymentInit();
+  }, []);
+
+  return (
+    <div
+      style={{
+        height: "100%",
+        minHeight: "80vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <CircularProgress size={100} />
+    </div>
+  );
 }
