@@ -42,17 +42,32 @@ function ChoresPage({
     type: "success",
     msg: "",
   });
+  const [isChecked, setIsChecked] = useState(false);
+  const handleToggle = () => {
+    let response =  DashboardApis.toggleChores({id:userdatafromserver.user_id,state:!isChecked});
+    setIsChecked(!isChecked);
+  };
   const [showToolTip, setShowToolTip] = useState({
     show: false,
     msg: "",
   });
   const [allchores, setallchores] = useState(choresdata || []);
   const [backupallchores, setbackupallchores] = useState(choresdata || []);
+  const checkToggle = async() =>{
+   let response = await DashboardApis.checkChoresToggle({id:userdatafromserver.user_id})
+  setIsChecked(response.data.data);
+  }
+  useEffect(() => {
+    setuserdata(userdatafromserver);
+  }, [userdatafromserver]);
   useEffect(() => {
     if (!isLogged) {
       router.push("/");
     }
   }, [isLogged]);
+  useEffect(()=>{
+    checkToggle();
+  },[])
   useEffect(() => {
     setdataloaded(true);
     console.log("cc", choresdata);
@@ -99,9 +114,7 @@ function ChoresPage({
       );
     }
   }, [choremode]);
-  useEffect(() => {
-    setuserdata(userdatafromserver);
-  }, [userdatafromserver]);
+  
 
   if (!dataloaded) {
     return <Loading />;
@@ -254,10 +267,16 @@ function ChoresPage({
                           name={item.name}
                           title={item.time}
                           cat={[choretemplates[0].name]}
-                        />
-                      );
-                    })}
+                          />
+                          );
+                        })}
                 </div>
+        <div className={styles.toggleContainer}>
+                        Toggle Chores   <label className={styles.toggle}>
+      <input type="checkbox" checked={isChecked ? true : false} onChange={()=>{handleToggle()}} />
+      <span className={styles.slider} />
+    </label>
+      </div>
               </div>
             </div>
           </div>

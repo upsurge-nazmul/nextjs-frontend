@@ -145,14 +145,28 @@ const createVerificationOtp = (payload) => {
     "users/createVerificationOtp",
     payload,
     getCookie("accesstoken")
-  );
-};
+    );
+  };
 const getTodo = (payload, token) => {
   return ApiCalls.getResponse(
     "users/todo",
     payload,
     token || getCookie("accesstoken")
   );
+};
+const toggleChores = (payload) => {
+  return ApiCalls.postResponse(
+    `users/togglechores`,
+    payload,
+    getCookie("accesstoken")
+);
+};
+const checkChoresToggle = (payload) => {
+  return ApiCalls.postResponse(
+    `users/checkchorestoggle`,
+    payload,
+    getCookie("accesstoken")
+);
 };
 //getchores
 const DashboardApis = {
@@ -184,6 +198,8 @@ const DashboardApis = {
   rewardunicoinstochild,
   deleterequest,
   updateparent,
+  toggleChores,
+  checkChoresToggle,
 };
 
 export default DashboardApis;

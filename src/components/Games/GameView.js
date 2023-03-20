@@ -1,14 +1,16 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
 import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
-import FullScreen from "../SVGcomponents/FullScreen";
-import FullScreenExit from "../SVGcomponents/FullScreenExit";
 import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
+import { CircularProgress } from "@mui/material";
 
 export default function GameView({
   chapterId,
@@ -21,7 +23,7 @@ export default function GameView({
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
-  const unityref = useRef(unityContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!isMobileOnly) {
@@ -36,10 +38,12 @@ export default function GameView({
 
   useEffect(() => {
     async function fetchGameData() {
+      setLoading(true);
       let res = await GameApis.gamedata({ id: game });
       if (res && res.data && res.data.data) {
         setGameData(res.data.data);
       }
+      setLoading(false);
     }
     fetchGameData();
   }, []);
@@ -84,50 +88,57 @@ export default function GameView({
       }
     }
     async function x() {
-      if (!gameData) {
-        return;
-      }
-      let updateData = {
-        version: gameData.version,
-        id: game,
-      };
-      console.log("downloading data");
-      let datares = await fetch(gameData?.dataUrl, {
-        method: "GET",
-      });
-      let datablob = await datares.blob();
-      updateData.data = datablob;
-      console.log("downloading code");
-      let coderes = await fetch(gameData?.codeUrl, {
-        method: "GET",
-      });
-      let codeblob = await coderes.blob();
-      updateData.wasm = codeblob;
-      console.log("downloading framework");
-      let frameworkres = await fetch(gameData?.frameworkUrl, {
-        method: "GET",
-      });
-      let frameworkblob = await frameworkres.blob();
-      updateData.framework = frameworkblob;
-      console.log("downloading loader");
-      let loaderres = await fetch(gameData?.loaderUrl, {
-        method: "GET",
-      });
-      let loaderblob = await loaderres.blob();
-      updateData.loader = loaderblob;
-
-      let previos_game_data = await db.games.where("id").equals(game).toArray();
-      if (previos_game_data.length > 0) {
-        console.log("updating game in indexedDb");
-        await db.games.update(game, updateData);
-      } else {
-        console.log("adding game in indexedDb");
-
-        try {
-          await db.games.add(updateData);
-        } catch (err) {
-          console.log(err);
+      try {
+        if (!gameData) {
+          return;
         }
+        let updateData = {
+          version: gameData.version,
+          id: game,
+        };
+        console.log("downloading data");
+        let datares = await fetch(gameData?.dataUrl, {
+          method: "GET",
+        });
+        let datablob = await datares.blob();
+        updateData.data = datablob;
+        console.log("downloading code");
+        let coderes = await fetch(gameData?.codeUrl, {
+          method: "GET",
+        });
+        let codeblob = await coderes.blob();
+        updateData.wasm = codeblob;
+        console.log("downloading framework");
+        let frameworkres = await fetch(gameData?.frameworkUrl, {
+          method: "GET",
+        });
+        let frameworkblob = await frameworkres.blob();
+        updateData.framework = frameworkblob;
+        console.log("downloading loader");
+        let loaderres = await fetch(gameData?.loaderUrl, {
+          method: "GET",
+        });
+        let loaderblob = await loaderres.blob();
+        updateData.loader = loaderblob;
+
+        let previos_game_data = await db.games
+          .where("id")
+          .equals(game)
+          .toArray();
+        if (previos_game_data.length > 0) {
+          console.log("updating game in indexedDb");
+          await db.games.update(game, updateData);
+        } else {
+          console.log("adding game in indexedDb");
+
+          try {
+            await db.games.add(updateData);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      } catch (e) {
+        console.error(e);
       }
     }
   }, [gameData]);
@@ -179,58 +190,75 @@ export default function GameView({
 
   return (
     <div className={styles.gameView}>
-      {isMobileOnly ? (
-        <BrokenGame />
-      ) : gameData && unityContext ? (
-        <Unity
-          ref={unityref}
-          unityContext={unityContext}
-          matchWebGLToCanvasSize={true}
-          className={
-            progression === 1 ? styles.gameScreen : styles.hiddenGameScreen
+      {loading ? (
+        <div className={styles.loadingScreen}>
+          <CircularProgress />
+        </div>
+      ) : (
+        <>
+          {
+            // isMobileOnly ? (
+            //   <BrokenGame />
+            // ) :
+            gameData && unityContext ? (
+              <Unity
+                unityContext={unityContext}
+                matchWebGLToCanvasSize={true}
+                className={
+                  progression === 1
+                    ? styles.gameScreen
+                    : styles.hiddenGameScreen
+                }
+              />
+            ) : (
+              <div className={styles.noGame}>
+                <p className={styles.noGameText}>No Game Found!</p>
+              </div>
+            )
           }
-        />
-      ) : (
-        <div className={styles.noGame}>
-          <p className={styles.noGameText}>No Game Found!</p>
-        </div>
+          {progression > 0 && progression < 1 ? (
+            <div className={styles.loadingArea}>
+              <GameLoading percentage={progression} />
+            </div>
+          ) : (
+            ""
+          )}
+        </>
       )}
-      {progression > 0 && progression < 1 ? (
-        <div className={styles.loadingArea}>
-          <GameLoading percentage={progression} />
-        </div>
-      ) : (
-        ""
-      )}
-      <div className={styles.actionArea}>
-        <button
-          className={styles.fullScreenButton}
-          onClick={() => {
-            setFullScreen(false);
-            if (!isMobileOnly) document.exitFullscreen();
-            mixpanel.track("Game Closed", { event: `Game closed` });
-            setGame();
-          }}
-        >
-          {fullScreen ? <span>X</span> : <FullScreen />}
-        </button>
-        {handleDone ? (
+      {!loading && (
+        <div className={styles.actionArea}>
           <button
-            className={styles.doneButton}
+            className={styles.fullScreenButton}
             onClick={() => {
-              handleDone();
-              mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`})
               setFullScreen(false);
               if (!isMobileOnly) document.exitFullscreen();
+              mixpanel.track("Game Closed", { event: `Game closed` });
               setGame();
+              setUnityContext(null);
             }}
           >
-            Done
+            {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
           </button>
-        ) : (
-          ""
-        )}
-      </div>
+          {handleDone ? (
+            <button
+              className={styles.doneButton}
+              onClick={() => {
+                handleDone();
+                mixpanel.track("Knowledge Quest", {
+                  event: `Quest Finished ${chapterId}`,
+                });
+                setFullScreen(false);
+                if (!isMobileOnly) document.exitFullscreen();
+                setGame();
+              }}
+            >
+              <DoneIcon />
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </div>
   );
 }

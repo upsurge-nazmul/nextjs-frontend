@@ -27,6 +27,7 @@ import ReferIntro from "./ReferIntro";
 import SignupPopup from "../SignupPopup";
 import localforage from "localforage";
 import PRCoverage from "./PRCoverage";
+import HighlightsCounter from "./HighlightsCounter";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true }) {
@@ -201,6 +202,7 @@ function Home({ page = "", showNav = true }) {
         />
       )}
       <Benefits />
+      <HighlightsCounter setshowauth={setshowauth} setauthmode={setauthmode} />
       <Who />
       <PRCoverage />
       <Values

@@ -6,66 +6,76 @@ export const Game_Data = {
     pushto: "/games/DontOverspend",
     changedId: "DontOverspend",
     premium_plan: 0,
+    webgl_key: "ShoppingBudget_WebGL",
   },
   BalanceBuilder: {
     name: "Balance builder",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/BalanceBuilder.png",
     description: "How does your bank balance change with different events?",
     premium_plan: 0,
+    webgl_key: "BalanceBuilder_WebGL",
   },
   HighAndLow: {
     name: "High and low",
     changedId: "HighAndLow",
     description:
-    "Check how much money each column has, and arrange it in ascending or descending order.",
+      "Check how much money each column has, and arrange it in ascending or descending order.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
     premium_plan: 0,
+    webgl_key: "HignAndLow_WebGL",
   },
   MoneyMath: {
     name: "Money maths",
     description:
-    "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
+      "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
     img: "https://upsurge.in/images/games/MoneyMath.png",
     premium_plan: 0,
+    webgl_key: "MoneyMaths_WebGL",
   },
   MoneyManager: {
     name: "Money manager",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
     description: "Earn money, & divide it between Saving, Expenses & Charity.",
     premium_plan: 0,
+    webgl_key: "MoneyManager_WebGL",
   },
   MoneySlide: {
     name: "Money slide",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
     description: "Fill each piggy-bank with the right amount of money.",
     premium_plan: 0,
+    webgl_key: "MoneySlide_WebGL",
   },
   NeedOrWant: {
     name: "Need and want",
     description:
-    "What is the difference between a need & a want? Let’s play to find out.",
+      "What is the difference between a need & a want? Let’s play to find out.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
     premium_plan: 0,
+    webgl_key: "NeedsAndWants_WebGL",
   },
   Ludo: {
     name: "Ludo",
     description:
-    "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
+      "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
     img: "/images/games/Ludo.jpg",
     premium_plan: 0,
+    webgl_key: "Ludo_WebGL",
   },
   MoneyDash: {
     name: "Money Dash",
     description: "Learn to manage expenses on the fly.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
     premium_plan: 0,
+    webgl_key: "MoneyDash_WebGL",
   },
   SnakeAndLadders: {
     name: "Snake And Ladders",
     description:
-    "Learn about money management with our 3D adaptation of this classic.",
+      "Learn about money management with our 3D adaptation of this classic.",
     img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
     premium_plan: 1001,
+    webgl_key: "SnakesAndLadder_WebGL",
   },
 };
 

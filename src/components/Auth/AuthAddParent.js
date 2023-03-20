@@ -169,9 +169,9 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
       ) : (
         <div className={styles.loginContainer}>
           <div className={styles.heading}>
-            <div className={styles.title}>Sign Up</div>
+            <div className={styles.title}>Parent Account Setup</div>
             <div className={styles.subtitle}>
-              Please provide your basic info and set a passowrd for your account
+              Please provide your basic info and set a password for your parent account
             </div>
           </div>
           <div
@@ -188,7 +188,7 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
                 maxLength={100}
                 setvalue={setfirstName}
                 textOnly={true}
-                placeholder="First name *"
+                placeholder="Parent's First name *"
                 extraclass={styles.margin}
               />
               <ModernInputBox
@@ -196,14 +196,14 @@ function AuthAddParent({ parentEmail, childId, settoastdata }) {
                 textOnly={true}
                 maxLength={100}
                 setvalue={setlastName}
-                placeholder="Last name"
+                placeholder="Parent's Last name"
               />
             </div>
             <ModernInputBox
               value={userName}
               maxLength={100}
               setvalue={setuserName}
-              placeholder="Username *"
+              placeholder="Parent's Username *"
               extraclass={styles.margin}
             />
             <div className={styles.passwordBoxes}>

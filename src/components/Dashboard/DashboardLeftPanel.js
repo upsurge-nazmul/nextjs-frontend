@@ -89,7 +89,7 @@ function DashboardLeftPanel({
           }}
         />
           </div>
-            {userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+            {userdata && userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
               <>
               <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
               <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>
@@ -170,8 +170,9 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
-
-          <div
+            
+          {userdata && userdata.chores_opted ?
+            <div
             id="chores-leftpanel"
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/chores" ? styles.activetab : ""
@@ -181,7 +182,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-
+:null}
           <div
             id="events-leftpanel"
             className={`${styles.tab} ${
@@ -424,7 +425,7 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
           </div>
-
+{userdata && userdata.chores_opted ?
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/chores" ||
@@ -447,7 +448,7 @@ function DashboardLeftPanel({
             <ChoresSvg className={styles.icon} />
             <p className={styles.tabtitle}>Chores</p>
           </div>
-
+:null}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/store" ? styles.activetab : ""
