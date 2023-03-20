@@ -2,8 +2,8 @@ import React from "react";
 import { getIndianTime } from "../helpers/timehelpers";
 import styles from "../styles/GeneralComponents/confirmInvoice.module.scss";
 
-
 const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
+  console.log("**************", data);
   return (
     <div ref={ref} className={styles.invoiceBox}>
       <table cellSpacing="0" cellPadding="0">
@@ -94,23 +94,23 @@ const ConfirmInvoice = React.forwardRef(({ data, userData }, ref) => {
             <td style={{ maxWidth: "180px" }}>{data.name}</td>
             <td style={{ textAlign: "right" }}>{data.hsn}</td>
             <td style={{ textAlign: "right" }}>{data.subscription}</td>
-            <td style={{ textAlign: "right" }}>{data.taxable_value}</td>
-            <td style={{ textAlign: "right" }}>{data.cgst}</td>
-            <td style={{ textAlign: "right" }}>{data.sgst}</td>
-            <td style={{ textAlign: "right" }}>{data.igst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.taxable_value}</td>
+            <td style={{ textAlign: "right" }}>₹{data.cgst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.sgst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.igst}</td>
             <td style={{ textAlign: "right" }}>₹{data.amount}</td>
           </tr>
 
-          <tr className="heading">
+          {/* <tr className="heading">
             <td style={{ maxWidth: "180px" }}>Total</td>
             <td style={{ textAlign: "right" }}></td>
             <td style={{ textAlign: "right" }}>{data.subscription}</td>
-            <td style={{ textAlign: "right" }}>{data.taxable_value}</td>
-            <td style={{ textAlign: "right" }}>{data.cgst}</td>
-            <td style={{ textAlign: "right" }}>{data.sgst}</td>
-            <td style={{ textAlign: "right" }}>{data.igst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.taxable_value}</td>
+            <td style={{ textAlign: "right" }}>₹{data.cgst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.sgst}</td>
+            <td style={{ textAlign: "right" }}>₹{data.igst}</td>
             <td style={{ textAlign: "right" }}>₹{data.amount}</td>
-          </tr>
+          </tr> */}
 
           <tr>
             <td colSpan="8" className="sig-container" align="right">

@@ -37,6 +37,13 @@ export default function Subscribed({ userdatafromserver }) {
     const res = await PaymentsApi.updateSubscription(model);
     if (res && res.data && res.data.success) {
       let info = res.data.data;
+      info.h_cgst = 9;
+      info.cgst = (info.amount * 9) / 100;
+      info.h_sgst = 9;
+      info.sgst = (info.amount * 9) / 100;
+      info.h_igst = 18;
+      info.igst = (info.amount * 18) / 100;
+      info.taxable_value = info.amount - (info.amount * 18) / 100;
       setInvoiceData(info);
     }
   }
