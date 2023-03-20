@@ -21,11 +21,11 @@ export default function PhonepePage() {
       hostURL: window.location.origin,
     });
     console.log({ result });
-    // if (result && result.data) {
-    //   router.push(
-    //     result.data.redirectURL.data.instrumentResponse.redirectInfo.url
-    //   );
-    // }
+    if (result && result.data) {
+      router.push(
+        result.data.redirectURL.data.instrumentResponse.redirectInfo.url
+      );
+    }
   }
 
   useEffect(() => {
