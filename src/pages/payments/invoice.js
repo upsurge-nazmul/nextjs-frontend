@@ -17,6 +17,7 @@ export default function Subscribed({ userdatafromserver, req }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [invoiceData, setInvoiceData] = useState();
+  const [status, setStatus] = useState("pending");
   const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function Subscribed({ userdatafromserver, req }) {
       info.igst = (info.amount * 18) / 100;
       info.taxable_value = info.amount - (info.amount * 18) / 100;
       setInvoiceData(info);
+      setStatus("success");
     }
   }
 
@@ -75,6 +77,8 @@ export default function Subscribed({ userdatafromserver, req }) {
           plan_id,
         };
         fetchUpdateSubscription(invoiceModel);
+      } else {
+        setStatus("failed");
       }
     }
   }, [transactionId, payment_intent, plan_id]);
@@ -105,40 +109,59 @@ export default function Subscribed({ userdatafromserver, req }) {
         setshowpopup={setshowpopup}
         showpopup={showpopup}
       />
+
       {plan && (
         <div className={styles.container}>
           <div className={styles.green}></div>
           <div className={styles.white}></div>
           <div className={styles.ball4}></div>
           <div className={styles.yellow}></div>
-          <p className={styles.heading3}>Subscription Confirmed </p>
+          <p className={styles.heading3}>
+            {status === "pending"
+              ? "Please wait"
+              : status === "success"
+              ? "Subscription Confirmed"
+              : "Payment Failed"}
+          </p>
           <div className={styles.line}></div>
 
-          <p className={styles.heading2}>Thank you for subscribing!</p>
-          <p className={styles.msg}>
-            Your payment is successful you can check the invoice and download or
-            print the invoice.
-          </p>
+          {status !== "pending" && (
+            <>
+              <p className={styles.heading2}>
+                {status === "success"
+                  ? "Thank you for subscribing!"
+                  : "Sorry! something went wrong your payment failed."}
+              </p>
+              <p className={styles.msg}>
+                {status === "success"
+                  ? "Your payment is successful you can check the invoice and download or print the invoice."
+                  : "Your payment is unsuccessful you can try again later or use another payment method."}
+              </p>
+            </>
+          )}
 
-          <div className={styles.invoiceContainer}>
-            <div className={styles.invoiceWrapper}>
-              {invoiceData && (
-                <ConfirmInvoice
-                  data={invoiceData}
-                  userData={userdatafromserver}
-                  ref={pdfRef}
-                />
-              )}
-            </div>
-            <div className={styles.btnContainer}>
-              <button onClick={() => handlerSave()} className={styles.btn}>
-                Print Invoice
-              </button>
-              {/* <button onClick={() => handlerSave()} className={styles.btn}>
+          {status === "success" && (
+            <div className={styles.invoiceContainer}>
+              <div className={styles.invoiceWrapper}>
+                {invoiceData && (
+                  <ConfirmInvoice
+                    data={invoiceData}
+                    userData={userdatafromserver}
+                    ref={pdfRef}
+                  />
+                )}
+              </div>
+              <div className={styles.btnContainer}>
+                <button onClick={() => handlerSave()} className={styles.btn}>
+                  Print Invoice
+                </button>
+                {/* <button onClick={() => handlerSave()} className={styles.btn}>
               Download Invoice
             </button> */}
+              </div>
             </div>
-          </div>
+          )}
+
           <p className={styles.subheading}>
             To stay up to date at all times, follow us on.
           </p>
