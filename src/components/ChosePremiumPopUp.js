@@ -4,9 +4,15 @@ import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentsApi from "../actions/apis/PaymentsApi";
 
+const METHODS = [
+  { name: "Stripe", id: "stripe" },
+  { name: "PhonePe", id: "phonepe" },
+];
+
 function ChosePremiumPopUp({ setChoseToPremium }) {
   const router = useRouter();
   const [plans, setPlans] = useState();
+  const [method, setMethod] = useState(METHODS[0].id);
 
   async function fetchPlans() {
     const res = await PaymentsApi.getPlans();
@@ -92,7 +98,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             <div
               className={styles.button}
               onClick={() => {
-                router.push(`/payments/stripe?plan_id=${plans[1].id}`);
+                router.push(`/payments/${method}?plan_id=${plans[1].id}`);
               }}
             >
               {`Subscribe to Premium`}
@@ -172,12 +178,30 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             <div
               className={styles.button}
               onClick={() => {
-                router.push(`/payments/stripe?plan_id=${plans[0].id}`);
+                router.push(`/payments/${method}?plan_id=${plans[0].id}`);
               }}
             >
               {`Subscribe to Premium`}
             </div>
           </div>
+        </div>
+        <div className={styles.section}>
+          <div>Prefered payment method</div>
+          {METHODS.map((m) => {
+            return (
+              <>
+                <input
+                  type="checkbox"
+                  id={m.id}
+                  name={m.name}
+                  value={m.id}
+                  onChange={(e) => setMethod(e.target.value)}
+                  checked={m.id === method}
+                />
+                <label for={m.name}> {m.name}</label>
+              </>
+            );
+          })}
         </div>
         <p
           className={styles.clickable}

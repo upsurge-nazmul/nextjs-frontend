@@ -1,5 +1,12 @@
-
 module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://upsurge.in/:path*",
+      },
+    ];
+  },
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
