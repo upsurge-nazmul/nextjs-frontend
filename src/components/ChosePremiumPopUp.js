@@ -198,7 +198,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   onChange={(e) => setMethod(e.target.value)}
                   checked={m.id === method}
                 />
-                <label for={m.name}> {m.name}</label>
+                <label htmlFor={m.name}> {m.name}</label>
               </>
             );
           })}
