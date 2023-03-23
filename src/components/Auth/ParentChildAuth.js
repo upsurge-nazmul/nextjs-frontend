@@ -154,6 +154,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
+      localforage.removeItem("playedGame");
       setmode("onboarding");
     }
   }
@@ -288,6 +289,8 @@ function ParentChildAuth({
       else if(premiumprice !== null && premiumprice !== 0){
         router.push(`/payments/stripe?plan_id=${premiumprice}`);
       }
+      localforage.removeItem("playedGame");
+      setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
