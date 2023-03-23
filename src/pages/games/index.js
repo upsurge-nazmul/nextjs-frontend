@@ -14,6 +14,8 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
 import CarouselGames from "../../components/Carousel/CarouselGames/index";
 import AvailableGames from "../../components/DownloadGames/AvailableGames";
+import GameCard from "../../components/Dashboard/GameCard";
+import GameView from "../../components/Games/GameView";
 
 export default function GamePage() {
   const router = useRouter();
@@ -22,6 +24,7 @@ export default function GamePage() {
   const [authmode, setauthmode] = useState("");
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
+  const [openGame, setOpenGame] = useState("");
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
   const { userdata, theme, skipActive, setskipActive } =
     useContext(MainContext);
@@ -37,36 +40,15 @@ export default function GamePage() {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
-  async function handleclick(item) {
-    if (!userdata) {
-      setshowauth(true);
-      return;
-    }
-    if (item === "Ludo" && isMobile) {
-      let res = await FreeGameApis.presign({
-        playername: "Anonymous",
-        playeremail: "tempuser@upsurge.in",
-        number: "",
-        game: item,
-      });
-      if (res) {
-        if (res.data.success) {
-          router.push({
-            pathname: "/games/Ludo",
-            query: { id: res.data.data },
-          });
-        } else {
-          console.log(res.data.message);
-        }
-      } else {
-        console.log("error connecting server");
-      }
-    } else {
-      if (Game_Data[item]?.pushto) {
-        return router.push(Game_Data[item].pushto);
-      }
-      router.push("/games/" + item);
-    }
+  async function handlegameclick(
+    title,
+    pushto,
+    webgl_key,
+    premium_plan,
+    userPlan,
+    isSimulator = false
+  ) {
+    setOpenGame(pushto ? pushto : title);
   }
   return (
     <div
@@ -114,61 +96,24 @@ export default function GamePage() {
         </div>
         <div className={styles.gamelistwrapper}>
           {Object.keys(Game_Data).map((item, index) => {
-            if (item === "SnakeAndLadders" && isIOS) {
-              return null;
-            }
             return (
-              <div
+              <GameCard
+                onClick={() =>
+                  handlegameclick(
+                    item,
+                    Game_Data[item].pushto
+                      ? Game_Data[item].pushto.split("/")[
+                          Game_Data[item].pushto.split("/").length - 1
+                        ]
+                      : "",
+                    Game_Data[item].webgl_key,
+                    Game_Data[item].premium_plan,
+                    null
+                  )
+                }
+                data={Game_Data[item]}
                 key={"game" + index}
-                className={styles.gameCard}
-                // onClick={() => router.push(`/games/${item}`)}
-              >
-                <img
-                  src={Game_Data[item].img || `/images/games/${item}.png`}
-                  alt=""
-                />
-                <p className={styles.title}>{Game_Data[item].name}</p>
-                <p className={styles.detail}>{Game_Data[item].description}</p>
-                {/* <p
-                  className={styles.activebutton}
-                  onClick={() => handleclick(item)}
-                >
-                  Play
-                </p> */}
-
-                {/* {comingsoongames.includes(item) ? (
-                  <p className={styles.button}>Coming Soon....</p>
-                ) : (
-                )} 
-                */}
-                {skipActive ? (
-                  <p
-                    className={styles.activebutton}
-                    onClick={() => {
-                      setskipActive(false);
-                      router.push("/games/" + item);
-                    }}
-                  >
-                    Play
-                  </p>
-                ) : (
-                  <p
-                    className={styles.activebutton}
-                    onClick={() => {
-                      if (!userdata) {
-                        setshowauth(true);
-                        setauthmode("parentChild");
-                      } else if (userdata.user_type === "child") {
-                        router.push("/dashboard/k/games");
-                      } else if (userdata.user_type === "parent") {
-                        router.push("/dashboard/p/games");
-                      }
-                    }}
-                  >
-                    Play
-                  </p>
-                )}
-              </div>
+              />
             );
           })}
         </div>
@@ -176,6 +121,7 @@ export default function GamePage() {
       </div>
       <JoinUs />
       <Footer />
+      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
     </div>
   );
 }
