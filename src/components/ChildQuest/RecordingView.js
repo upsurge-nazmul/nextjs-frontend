@@ -26,7 +26,7 @@ export default function RecordingView({ chapterId, handleBack, handleDone, setMa
           <button
             className={styles.doneButton}
             onClick={() => {
-              setMapZoom("superZoom"+questId)
+              //setMapZoom("superZoom"+questId)
               setFullScreen(false);
               mixpanel.track('Knowledge Quest',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
               document.exitFullscreen();
