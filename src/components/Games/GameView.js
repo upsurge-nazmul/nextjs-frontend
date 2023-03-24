@@ -30,6 +30,7 @@ export default function GameView({
     if (gameRef && gameRef.current) {
       if (gameRef.current.requestFullscreen) {
         gameRef.current.requestFullscreen();
+        setFullScreen(true);
         if (isMobileOnly) {
           if (window.screen.orientation.lock) {
             window.screen.orientation
@@ -241,7 +242,6 @@ export default function GameView({
             className={styles.fullScreenButton}
             onClick={() => {
               setFullScreen(false);
-              // if (!isMobileOnly)
               document.exitFullscreen();
               mixpanel.track("Game Closed", { event: `Game closed` });
               setGame();
@@ -259,7 +259,6 @@ export default function GameView({
                   event: `Quest Finished ${chapterId}`,
                 });
                 setFullScreen(false);
-                // if (!isMobileOnly)
                 document.exitFullscreen();
                 setGame();
               }}

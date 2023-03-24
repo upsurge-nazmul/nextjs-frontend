@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import styles from "../../styles/knowledgeQuest/Views.module.scss";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
@@ -10,17 +11,30 @@ export default function RecordingView({
   setMapZoom = () => {},
   questId,
 }) {
+  const contentRef = useRef();
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    if (document) {
-      document.body.requestFullscreen();
-      setFullScreen(true);
+    if (contentRef && contentRef.current) {
+      if (contentRef.current.requestFullscreen) {
+        contentRef.current.requestFullscreen();
+        setFullScreen(true);
+        if (isMobileOnly) {
+          if (window.screen.orientation.lock) {
+            window.screen.orientation
+              .lock("landscape")
+              .then(() => console.log("orientation landscape"))
+              .catch((e) => console.log(e.message));
+          } else {
+            console.log("Screen rotation is not supported");
+          }
+        }
+      }
     }
-  }, []);
+  }, [contentRef]);
 
   return (
-    <div className={styles.view}>
+    <div className={styles.view} ref={contentRef}>
       <div className={styles.fullScreenView}>
         <iframe
           id="iframe"

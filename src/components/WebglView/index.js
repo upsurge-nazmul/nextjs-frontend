@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { WEBGL_BASE_URL } from "../../../config";
 import styles from "./style.module.scss";
-import { isMobileOnly } from "react-device-detect";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,21 +12,30 @@ export default function WebglView({
   handleDone = null,
   type = "games",
 }) {
+  const contentRef = useRef();
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    if (!isMobileOnly) {
-      if (document) {
-        if (document.body.requestFullscreen) {
-          document.body.requestFullscreen();
-          setFullScreen(true);
+    if (contentRef && contentRef.current) {
+      if (contentRef.current.requestFullscreen) {
+        contentRef.current.requestFullscreen();
+        setFullScreen(true);
+        if (isMobileOnly) {
+          if (window.screen.orientation.lock) {
+            window.screen.orientation
+              .lock("landscape")
+              .then(() => console.log("orientation landscape"))
+              .catch((e) => console.log(e.message));
+          } else {
+            console.log("Screen rotation is not supported");
+          }
         }
       }
     }
-  }, []);
+  }, [contentRef]);
 
   return (
-    <div className={styles.view}>
+    <div className={styles.view} ref={contentRef}>
       <div className={styles.fullScreenView}>
         {gameKey && (
           <iframe
@@ -41,7 +50,7 @@ export default function WebglView({
             className={styles.fullScreenButton}
             onClick={() => {
               setFullScreen(false);
-              if (!isMobileOnly) document.exitFullscreen();
+              document.exitFullscreen();
               mixpanel.track("Game Closed", { event: `Game closed` });
               setView();
             }}
@@ -61,7 +70,7 @@ export default function WebglView({
                   event: `Quest Finished ${chapterId}`,
                 });
                 setFullScreen(false);
-                if (!isMobileOnly) document.exitFullscreen();
+                document.exitFullscreen();
                 setView();
               }}
             >
