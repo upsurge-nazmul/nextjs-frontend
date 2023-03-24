@@ -67,7 +67,7 @@ export default function WebglView({
               onClick={() => {
                 handleDone();
                 mixpanel.track("Knowledge Quest", {
-                  event: `Quest Finished ${chapterId}`,
+                  event: `Quest Finished ${gameKey}`,
                 });
                 setFullScreen(false);
                 document.exitFullscreen();
