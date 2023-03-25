@@ -79,7 +79,10 @@ export default function QuizView({
       quiz_id: chapterId,
       score,
     });
-    mixpanel.track('Knowledge Quest Quiz',{'event':`Quest Finished ${chapterId}`, 'chapterId':`${chapterId}`});
+    mixpanel.track("Knowledge Quest Quiz", {
+      event: `Quest Finished ${chapterId}`,
+      chapterId: `${chapterId}`,
+    });
     setuserdata((prev) => ({
       ...prev,
       num_unicoins:
@@ -111,7 +114,13 @@ export default function QuizView({
         )}
         {completed && (
           <Completed
-            {...{ chapterId, score, scoreOn: questions.length, handleRetry, handleFinish }}
+            {...{
+              chapterId,
+              score,
+              scoreOn: questions.length,
+              handleRetry,
+              handleFinish,
+            }}
           />
         )}
       </div>
