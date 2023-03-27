@@ -238,7 +238,7 @@ export default function GameView({
       )}
       {!loading && (
         <div className={styles.actionArea}>
-          <button
+          {/* <button
             className={styles.fullScreenButton}
             onClick={() => {
               setFullScreen(false);
@@ -247,7 +247,7 @@ export default function GameView({
               setGame();
               setUnityContext(null);
             }}
-          >
+          > */}
             {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
           </button>
           {handleDone ? (
