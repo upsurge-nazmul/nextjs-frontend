@@ -247,9 +247,9 @@ export default function GameView({
               setGame();
               setUnityContext(null);
             }}
-          > */}
+          >
             {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
-          </button>
+          </button> */}
           {handleDone ? (
             <button
               className={styles.doneButton}
