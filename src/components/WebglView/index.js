@@ -5,6 +5,7 @@ import styles from "./style.module.scss";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import ActionArea from "../Games/ActionArea";
 
 export default function WebglView({
   gameKey = "",
@@ -45,41 +46,25 @@ export default function WebglView({
             allowFullScreen={true}
           ></iframe>
         )}
-        <div className={styles.actionArea}>
-          <button
-            className={styles.fullScreenButton}
-            onClick={() => {
-              setFullScreen(false);
-              document.exitFullscreen();
-              mixpanel.track("Game Closed", { event: `Game closed` });
-              setView();
-            }}
-          >
-            {fullScreen ? (
-              <CloseIcon style={{ height: "80px", width: "80px" }} />
-            ) : (
-              <FullscreenIcon style={{ height: "80px", width: "80px" }} />
-            )}
-          </button>
-          {handleDone ? (
-            <button
-              className={styles.doneButton}
-              onClick={() => {
-                handleDone();
-                mixpanel.track("Knowledge Quest", {
-                  event: `Quest Finished ${gameKey}`,
-                });
-                setFullScreen(false);
-                document.exitFullscreen();
-                setView();
-              }}
-            >
-              <DoneIcon style={{ height: "80px", width: "80px" }} />
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
+        <ActionArea
+          onClose={() => {
+            setFullScreen(false);
+            document.exitFullscreen();
+            mixpanel.track("Game Closed", { event: `Game closed` });
+            setView();
+          }}
+          onDone={() => {
+            handleDone();
+            mixpanel.track("Knowledge Quest", {
+              event: `Quest Finished ${gameKey}`,
+            });
+            setFullScreen(false);
+            document.exitFullscreen();
+            setView();
+          }}
+          fullScreen={fullScreen}
+          showDone={handleDone}
+        />
       </div>
     </div>
   );

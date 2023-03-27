@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import styles from "../../styles/knowledgeQuest/Views.module.scss";
+import ActionArea from "../Games/ActionArea";
 import FullScreen from "../SVGcomponents/FullScreen";
 import FullScreenExit from "../SVGcomponents/FullScreenExit";
 
@@ -36,32 +37,24 @@ export default function ActivityView({ chapterId, handleBack, handleDone }) {
           src={`/KnowledgeQuest/${chapterId}/story.html`}
           allowFullScreen={true}
         ></iframe>
-        <div className={styles.actionArea}>
-          <button
-            className={styles.doneButton}
-            onClick={() => {
-              setFullScreen(false);
-              mixpanel.track("Knowledge Quest finished", {
-                event: `Quest Finished ${chapterId}`,
-                chapterId: `${chapterId}`,
-              });
-              document.exitFullscreen();
-              handleDone();
-            }}
-          >
-            Done
-          </button>
-          <button
-            className={styles.fullScreenButton}
-            onClick={() => {
-              setFullScreen(false);
-              document.exitFullscreen();
-              handleBack();
-            }}
-          >
-            {fullScreen ? <FullScreenExit /> : <FullScreen />}
-          </button>
-        </div>
+        <ActionArea
+          onClose={() => {
+            setFullScreen(false);
+            document.exitFullscreen();
+            handleBack();
+          }}
+          onDone={() => {
+            setFullScreen(false);
+            mixpanel.track("Knowledge Quest finished", {
+              event: `Quest Finished ${chapterId}`,
+              chapterId: `${chapterId}`,
+            });
+            document.exitFullscreen();
+            handleDone();
+          }}
+          fullScreen={fullScreen}
+          showDone={handleDone}
+        />
       </div>
     </div>
   );

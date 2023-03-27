@@ -11,6 +11,7 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import { CircularProgress } from "@mui/material";
+import ActionArea from "./ActionArea";
 
 export default function GameView({
   chapterId,
@@ -237,38 +238,26 @@ export default function GameView({
         </>
       )}
       {!loading && (
-        <div className={styles.actionArea}>
-          <button
-            className={styles.fullScreenButton}
-            onClick={() => {
-              setFullScreen(false);
-              document.exitFullscreen();
-              mixpanel.track("Game Closed", { event: `Game closed` });
-              setGame();
-              setUnityContext(null);
-            }}
-          >
-            {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
-          </button>
-          {handleDone ? (
-            <button
-              className={styles.doneButton}
-              onClick={() => {
-                handleDone();
-                mixpanel.track("Knowledge Quest", {
-                  event: `Quest Finished ${chapterId}`,
-                });
-                setFullScreen(false);
-                document.exitFullscreen();
-                setGame();
-              }}
-            >
-              <DoneIcon />
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
+        <ActionArea
+          onClose={() => {
+            setFullScreen(false);
+            document.exitFullscreen();
+            mixpanel.track("Game Closed", { event: `Game closed` });
+            setGame();
+            setUnityContext(null);
+          }}
+          onDone={() => {
+            handleDone();
+            mixpanel.track("Knowledge Quest", {
+              event: `Quest Finished ${chapterId}`,
+            });
+            setFullScreen(false);
+            document.exitFullscreen();
+            setGame();
+          }}
+          fullScreen={fullScreen}
+          showDone={handleDone}
+        />
       )}
     </div>
   );

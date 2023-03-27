@@ -16,30 +16,6 @@
       align-items: flex-start;
       border: none;
     }
-    .actionArea {
-      background-color: #000;
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 20px;
-      .doneButton {
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-size: 1rem;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        min-width: 150px;
-        background-color: #4d5dfb;
-      }
-      .fullScreenButton {
-        cursor: pointer;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        color: #d4d1d1;
-      }
-    }
   }
 
   .quizView {
