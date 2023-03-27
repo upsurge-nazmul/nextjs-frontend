@@ -31,11 +31,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap:1rem;
         .cross {
             position: absolute;
-            top: 0;
-            right: -100px;
+            top: 25px;
+            right: 25px;
             z-index: 100;
             background-color: white;
           border-radius: 100%;
@@ -43,7 +42,7 @@
           align-items: center;
           justify-content: center;
           .icon {
-            font-size: 40px;
+            font-size: 3rem;
             color: rgb(255, 109, 109);
             transition: all 0.3s ease;
             &:hover {
@@ -63,11 +62,15 @@
       }
       .sectionLeft {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+        justify-content: space-between;
         .header{
           margin-top: 2.5rem;
         }
         .subheading{
-          margin: 2.5rem 0 1.5rem 0;
+          margin: 1.5rem 0 1.5rem 0;
           font-weight: 600;
         }
       }
@@ -77,6 +80,10 @@
       }
       .sectionRight {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+        justify-content: space-between;
         .bestValue{
           width: max-content;
           padding: 0.1rem 0.8rem;
@@ -91,29 +98,33 @@
           margin-top: 1.35rem;
         }
         .subheading{
-          margin: 2.5rem 0 1.5rem 0;
+          margin: 1.5rem 0 1.5rem 0;
           font-weight: 600;
         }
       }
       .sectionItem {
-        padding-bottom: 6px;
+        padding-bottom: 0.25rem;
         font-weight: 400;
         margin-left: 1rem;
         width: 100%;
         .sectionItemImage {
-          height: 24px;
-          width: 24px;
-          margin-right: 10px;
+          height: 1.5rem;
+          width: 1.5rem;
+          margin-right: 0.5rem;
         }
       }
       .sectionItemGolden{
-        padding-bottom: 6px;
+        padding-bottom: 0.25rem;
         font-weight: 400;
         margin-left: 1rem;
       }
       .sectionItemGolden p{
         color:#eac356;
         font-weight: 600;
+      }
+      input[type="checkbox"] {
+        width: 1.5rem;
+        height: 1.5rem;
       }
     .pricing{
       margin-top: 0.3rem;
@@ -171,11 +182,11 @@
     }
     .button {
         background: #4166eb;
-        border-radius: 14px;
+        border-radius: 1rem;
         color: white;
         width: 100%;
-        max-width: 480px;
-        height: 63px;
+        max-width: 30rem;
+        height: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -183,7 +194,7 @@
         font-weight: 500;
         font-size: 1.25rem;
         transition: all 0.3s ease;
-        margin-top: 10px;
+        margin-top: 0.5rem;
         &:hover {
           background-color: #ffffff;
           color: #4166eb;
