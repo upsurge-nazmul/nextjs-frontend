@@ -11,6 +11,7 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
 
 export default function GameView({
   chapterId,
@@ -25,6 +26,7 @@ export default function GameView({
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (gameRef && gameRef.current) {
