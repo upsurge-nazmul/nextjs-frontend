@@ -287,7 +287,7 @@ function ParentChildAuth({
         setmode("premiumSub");
       }
       else if(premiumprice !== null && premiumprice !== 0){
-        router.push(`/payments/stripe?plan_id=${premiumprice}`);
+        router.push(`/payments/phonepe?plan_id=${premiumprice}`);
       }
       localforage.removeItem("playedGame");
       setmode("onboarding");

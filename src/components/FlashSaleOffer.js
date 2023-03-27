@@ -22,7 +22,7 @@ useEffect(() => {
           FLASH SALE!!! Grab Upsurge Premium at <s>₹4799</s>₹499 
         </p>
         <div className={styles.button}  onClick={() => {
-                router.push(`/payments/stripe?plan_id=${plans[1].id}`);
+                router.push(`/payments/phonepe?plan_id=${plans[1].id}`);
               }}>CLAIM NOW</div>
     </div>
   );

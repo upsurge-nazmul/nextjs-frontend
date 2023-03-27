@@ -141,7 +141,7 @@ function SubToPremiumPopUp({ setShowSubToPremium }) {
         <div
         className={styles.button}
           onClick={() => {
-            router.push(`/payments/stripe?plan_id=${1002}`);
+            router.push(`/payments/phonepe?plan_id=${1002}`);
           }}
         >
           Upgrade Now!

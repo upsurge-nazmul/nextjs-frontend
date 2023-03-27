@@ -36,7 +36,7 @@ async function closePremiumSaleOffer() {
           FLASH SALE!!! upgrade to 12 month plan and get upsurge goodies 
         </p>
         <div className={styles.button}  onClick={() => {
-            router.push(`/payments/stripe?plan_id=${plans[2].id}`);
+            router.push(`/payments/phonepe?plan_id=${plans[2].id}`);
         }}>CLAIM NOW</div>
         </div>
     ) : (
