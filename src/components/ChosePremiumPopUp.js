@@ -5,8 +5,8 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentsApi from "../actions/apis/PaymentsApi";
 
 const METHODS = [
-  { name: "Stripe", id: "stripe" },
-  { name: "PhonePe", id: "phonepe" },
+  { name: "PhonePe", id: "phonepe", key:"phonypay" },
+  { name: "Stripe", id: "stripe", key:"stripy" },
 ];
 
 function ChosePremiumPopUp({ setChoseToPremium }) {
@@ -194,6 +194,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   type="checkbox"
                   id={m.id}
                   name={m.name}
+                  key={m.key}
                   value={m.id}
                   onChange={(e) => setMethod(e.target.value)}
                   checked={m.id === method}
