@@ -124,7 +124,10 @@ export default function GamePage() {
                 // onClick={() => router.push(`/games/${item}`)}
               >
                 <img
-                  src={Game_Data[item].img || `/images/games/${item}.png`}
+                  src={
+                    Game_Data[item].img_ludo ||
+                     `/images/games/${item}.png`
+                    }
                   alt=""
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
