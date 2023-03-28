@@ -50,7 +50,7 @@ export default function RecordingView({
             handleBack();
           }}
           onDone={() => {
-            setMapZoom("superZoom" + questId);
+            //setMapZoom("superZoom" + questId);
             setFullScreen(false);
             mixpanel.track("Knowledge Quest", {
               event: `Quest Finished ${chapterId}`,
