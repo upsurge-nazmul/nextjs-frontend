@@ -2,6 +2,7 @@
   "name": "upsurge-web",
   "version": "1.0.0",
   "private": true,
+  "proxy": "https://upsurge.in",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap --config sitemapconfig.js && pm2 reload all",

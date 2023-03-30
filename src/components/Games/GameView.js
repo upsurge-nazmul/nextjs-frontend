@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
-import BrokenGame from "../Games/BrokenGame";
 import Unity, { UnityContext } from "react-unity-webgl";
 import GameApis from "../../actions/apis/GameApis";
 import { db } from "../../db";
 import GameLoading from "./GameLoading";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import DoneIcon from "@mui/icons-material/Done";
-import CloseIcon from "@mui/icons-material/Close";
 import { CircularProgress } from "@mui/material";
+import ActionArea from "./ActionArea";
+import { useRouter } from "next/router";
 
 export default function GameView({
   chapterId,
@@ -19,6 +17,8 @@ export default function GameView({
   externalId = null,
   handleDone = null,
 }) {
+  const gameRef = useRef();
+  const router = useRouter();
   const [unityContext, setUnityContext] = useState(null);
   const [gameData, setGameData] = useState();
   const [fullScreen, setFullScreen] = useState(false);
@@ -26,15 +26,25 @@ export default function GameView({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!isMobileOnly) {
-      if (document) {
-        if (document.body.requestFullscreen) {
-          document.body.requestFullscreen();
-          setFullScreen(true);
+    if (gameRef && gameRef.current) {
+      if (gameRef.current.requestFullscreen) {
+        gameRef.current.requestFullscreen();
+        setFullScreen(true);
+        if (isMobileOnly) {
+          if (window.screen.orientation.lock) {
+            window.screen.orientation
+              .lock("landscape")
+              .then(() => console.log("orientaion landscape"))
+              .catch((e) => console.log(e.message));
+          } else {
+            console.log("Screen rotation is not supported");
+          }
         }
       }
+      if (gameRef.current.webkitRequestFullScreen)
+        gameRef.current.webkitRequestFullScreen();
     }
-  }, []);
+  }, [gameRef]);
 
   useEffect(() => {
     async function fetchGameData() {
@@ -189,7 +199,7 @@ export default function GameView({
   }, [externalId]);
 
   return (
-    <div className={styles.gameView}>
+    <div className={styles.gameView} ref={gameRef}>
       {loading ? (
         <div className={styles.loadingScreen}>
           <CircularProgress />
@@ -226,38 +236,26 @@ export default function GameView({
         </>
       )}
       {!loading && (
-        <div className={styles.actionArea}>
-          <button
-            className={styles.fullScreenButton}
-            onClick={() => {
-              setFullScreen(false);
-              if (!isMobileOnly) document.exitFullscreen();
-              mixpanel.track("Game Closed", { event: `Game closed` });
-              setGame();
-              setUnityContext(null);
-            }}
-          >
-            {fullScreen ? <CloseIcon /> : <FullscreenIcon />}
-          </button>
-          {handleDone ? (
-            <button
-              className={styles.doneButton}
-              onClick={() => {
-                handleDone();
-                mixpanel.track("Knowledge Quest", {
-                  event: `Quest Finished ${chapterId}`,
-                });
-                setFullScreen(false);
-                if (!isMobileOnly) document.exitFullscreen();
-                setGame();
-              }}
-            >
-              <DoneIcon />
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
+        <ActionArea
+          onClose={() => {
+            setFullScreen(false);
+            document.exitFullscreen();
+            mixpanel.track("Game Closed", { event: `Game closed` });
+            setGame();
+            setUnityContext(null);
+          }}
+          onDone={() => {
+            handleDone();
+            mixpanel.track("Knowledge Quest", {
+              event: `Quest Finished ${chapterId}`,
+            });
+            setFullScreen(false);
+            document.exitFullscreen();
+            setGame();
+          }}
+          fullScreen={fullScreen}
+          showDone={handleDone}
+        />
       )}
     </div>
   );

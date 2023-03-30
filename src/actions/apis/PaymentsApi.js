@@ -65,8 +65,24 @@ const getPlans = (payload) => {
     "payments/plans",
     payload,
     getCookie("accesstoken")
-  )
-}
+  );
+};
+
+const getPhonePe = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/phonepe",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const checkPhonepeStatus = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/phonepe/check-payment-status",
+    payload,
+    getCookie("accesstoken")
+  );
+};
 
 const PaymentsApi = {
   createorder,
@@ -78,7 +94,9 @@ const PaymentsApi = {
   createStripePaymentIntent,
   updateSubscription,
   getSubscriptionDetails,
-  getPlans
+  getPlans,
+  getPhonePe,
+  checkPhonepeStatus,
 };
 
 export default PaymentsApi;

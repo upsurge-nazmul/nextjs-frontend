@@ -32,6 +32,8 @@ function ParentChildAuth({
   error,
   premiumprice,
   setpremiumrice,
+  setChildAge,
+  childAge,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -133,6 +135,7 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
       num_unicoins: unicoins ? unicoins : 0,
+      age:childAge
     });
 
     if (!response || !response.data.success) {
@@ -151,6 +154,7 @@ function ParentChildAuth({
       dataLayer.push({ event: "signup-successful" });
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
+      localforage.removeItem("playedGame");
       setmode("onboarding");
     }
   }
@@ -216,6 +220,7 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
       num_unicoins: unicoins ? unicoins : 0,
+      age:childAge,
     });
     
     if (!response || !response.data.success) {
@@ -282,8 +287,10 @@ function ParentChildAuth({
         setmode("premiumSub");
       }
       else if(premiumprice !== null && premiumprice !== 0){
-        router.push(`/payments/stripe?plan_id=${premiumprice}`);
+        router.push(`/payments/phonepe?plan_id=${premiumprice}`);
       }
+      localforage.removeItem("playedGame");
+      setmode("onboarding");
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
@@ -340,7 +347,7 @@ function ParentChildAuth({
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />
-
+      
         <div className={styles.phoneWrapper}>
           <p>+91</p>{" "}
           <input
@@ -351,7 +358,7 @@ function ParentChildAuth({
             onChange={(e) => {
               if (!isNaN(e.target.value)) setphone(e.target.value);
             }}
-          />
+            />
         </div>
         <div className={styles.nameWrapper}>
           <input
@@ -375,6 +382,7 @@ function ParentChildAuth({
             }}
           />
         </div>
+        <div className={styles.usernameWrapper}>
         <input
           type="text"
           placeholder="Child Username"
@@ -383,7 +391,17 @@ function ParentChildAuth({
           value={username}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setusername(e.target.value)}
-        />
+          />
+          <input
+          className={styles.age}
+            type="integer"
+            placeholder="Child's Age"
+            value={childAge}
+            maxLength={2}
+            onChange={(e) => {
+              if (!isNaN(e.target.value)) setChildAge(e.target.value);
+            }}
+            />
         <input
           type="hidden"
           name="coupon"
@@ -392,7 +410,8 @@ function ParentChildAuth({
           value={coupon}
           pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
           onChange={(e) => setCoupon(e.target.value)}
-        />
+          />
+          </div>
         {password !== "" && passisweak && (
           <>
             <p data-tip data-for="weak-pass" className={styles.weakpasstext}>

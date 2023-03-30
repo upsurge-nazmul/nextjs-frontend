@@ -42,8 +42,8 @@ function DashboardLeftPanel({
   const [showterm, setshowterm] = useState(false);
   const [termmode, settermmode] = useState("terms");
   const [crownClass, setCrownClass] = useState(true);
-  const [showSubscribe,setShowSubscribe] = useState(false);
-  console.log(userdata);
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  // console.log(userdata);
   useEffect(() => {
     setcurrenttab(router.pathname);
   }, [router]);
@@ -69,45 +69,75 @@ function DashboardLeftPanel({
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
 
       {hidelogo ? null : width > 1300 ? (
-        <div className={styles.logoBox} onMouseEnter={()=>{setCrownClass(false)}} onMouseLeave={()=>{setCrownClass(true)}}>
-        <div className={styles.logo}>
-        <Logo
-          id="upsurge-logo"
-          dark={theme === "dark"}
-          className={styles.dashboardLogo}
-          onClick={() => {
-            if (!userdata.intro_guide_completed) {
-              router.push("/");
-              // "/?showTour=true&pushTo=/dashboard/" +
-              // (userdata.user_type === "parent" ? "p/" : "k/") +
-              // "?storyIndex=2"
-              //  );
-            } else router.push("/");
-            // if (type === "kid") router.push("/dashboard/k");
-            // if (type === "waitlist") router.push("/dashboard/w");
-            // else router.push("/dashboard/p");
+        <div
+          className={styles.logoBox}
+          onMouseEnter={() => {
+            setCrownClass(false);
           }}
-        />
+          onMouseLeave={() => {
+            setCrownClass(true);
+          }}
+        >
+          <div className={styles.logo}>
+            <Logo
+              id="upsurge-logo"
+              dark={theme === "dark"}
+              className={styles.dashboardLogo}
+              onClick={() => {
+                if (!userdata.intro_guide_completed) {
+                  router.push("/");
+                  // "/?showTour=true&pushTo=/dashboard/" +
+                  // (userdata.user_type === "parent" ? "p/" : "k/") +
+                  // "?storyIndex=2"
+                  //  );
+                } else router.push("/");
+                // if (type === "kid") router.push("/dashboard/k");
+                // if (type === "waitlist") router.push("/dashboard/w");
+                // else router.push("/dashboard/p");
+              }}
+            />
           </div>
-            {userdata && userdata.premium_plan == 0 && userdata.premium_flash_sale === false &&(
+          {userdata &&
+            userdata.premium_plan == 0 &&
+            userdata.premium_flash_sale === false && (
               <>
-              <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
-              <div className={`${crownClass ? styles.premiumContainerNone : styles.premiumContainer}`}>
-                Upgrade to upsurge Premium available <div className={styles.premiumButton} onClick={()=>{setShowSubscribe(true); setCrownClass(true)}}>Claim Now!</div>
-              </div>
-              {showSubscribe &&(
-                <ChosePremiumPopUp setChoseToPremium={setShowSubscribe} />
-              )
-              }
+                <img
+                  className={`${crownClass ? styles.crown : styles.tossCrown}`}
+                  src="/crown.png"
+                  alt="Crown"
+                />
+                <div
+                  className={`${
+                    crownClass
+                      ? styles.premiumContainerNone
+                      : styles.premiumContainer
+                  }`}
+                >
+                  Upgrade to upsurge Premium available{" "}
+                  <div
+                    className={styles.premiumButton}
+                    onClick={() => {
+                      setShowSubscribe(true);
+                      setCrownClass(true);
+                    }}
+                  >
+                    Claim Now!
+                  </div>
+                </div>
+                {showSubscribe && (
+                  <ChosePremiumPopUp setChoseToPremium={setShowSubscribe} />
+                )}
               </>
-              )
-            }
-        {userdata && userdata.premium_plan >= 1 &&(
-          <>
-          <img className={`${crownClass ? styles.crown : styles.tossCrown}`} src="/crown.png" alt="Crown" />
-          </>
-          )
-        }
+            )}
+          {userdata && userdata.premium_plan >= 1 && (
+            <>
+              <img
+                className={`${crownClass ? styles.crown : styles.tossCrown}`}
+                src="/crown.png"
+                alt="Crown"
+              />
+            </>
+          )}
         </div>
       ) : (
         <MiniLogo
@@ -170,19 +200,19 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
-            
-          {userdata && userdata.chores_opted ?
+
+          {userdata && userdata.chores_opted ? (
             <div
-            id="chores-leftpanel"
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/k/chores" ? styles.activetab : ""
-            }`}
-            onClick={() => router.push("/dashboard/k/chores")}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
-          </div>
-:null}
+              id="chores-leftpanel"
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/k/chores" ? styles.activetab : ""
+              }`}
+              onClick={() => router.push("/dashboard/k/chores")}
+            >
+              <ChoresSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Chores</p>
+            </div>
+          ) : null}
           <div
             id="events-leftpanel"
             className={`${styles.tab} ${
@@ -425,30 +455,30 @@ function DashboardLeftPanel({
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Quests</p>
           </div>
-{userdata && userdata.chores_opted ?
-          <div
-            className={`${styles.tab} ${
-              currenttab === "/dashboard/p/chores" ||
-              currenttab.indexOf("/dashboard/p/managechore") !== -1
-                ? styles.activetab
-                : ""
-            }`}
-            id="chores-leftpanel"
-            onClick={() => {
-              if (!userdata.intro_guide_completed) {
-                router.push(
-                  "/dashboard/p/chores"
-                  // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
-                );
-              } else {
-                router.push("/dashboard/p/chores");
-              }
-            }}
-          >
-            <ChoresSvg className={styles.icon} />
-            <p className={styles.tabtitle}>Chores</p>
-          </div>
-:null}
+          {userdata && userdata.chores_opted ? (
+            <div
+              className={`${styles.tab} ${
+                currenttab === "/dashboard/p/chores" ||
+                currenttab.indexOf("/dashboard/p/managechore") !== -1
+                  ? styles.activetab
+                  : ""
+              }`}
+              id="chores-leftpanel"
+              onClick={() => {
+                if (!userdata.intro_guide_completed) {
+                  router.push(
+                    "/dashboard/p/chores"
+                    // "/dashboard/p/chores?showTour=true&pushTo=/dashboard/p/?storyIndex=10"
+                  );
+                } else {
+                  router.push("/dashboard/p/chores");
+                }
+              }}
+            >
+              <ChoresSvg className={styles.icon} />
+              <p className={styles.tabtitle}>Chores</p>
+            </div>
+          ) : null}
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/p/store" ? styles.activetab : ""

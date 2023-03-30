@@ -212,7 +212,7 @@ export default function GenPass() {
 
         {!success && (
           <div className={styles.join} onClick={checkrefer}>
-            {reset ? "Reset" : "Join"}
+            {reset ? "Reset" : "Submit"}
           </div>
         )}
         <p className={styles.subheading}>
