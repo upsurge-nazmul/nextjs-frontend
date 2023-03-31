@@ -86,6 +86,24 @@ export const Game_Data = {
     premium_plan: 1001,
     webgl_key: "SnakesAndLadder_WebGL",
   },
+  PriceIsRight: {
+    name: "Price Is Right",
+    description:
+    "Learn about money management with our budget simulator.",
+    img: "/images/games/FarmProtection.jpg",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    premium_plan: 1001,
+    webgl_key: "PriceIsRight_WebGL",
+  },
+  WorldBank: {
+    name: "World Bank",
+    description:
+    "Get behind a bank counter and learn about banking and credit economy.",
+    img: "/images/games/world-bank.png",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    premium_plan: 1001,
+    webgl_key: "WorldBank_WebGL",
+  },
 };
 
 export const Game_Unity_Data = {
