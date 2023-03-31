@@ -113,7 +113,58 @@ export default function GamePage() {
                 }
                 data={Game_Data[item]}
                 key={"game" + index}
-              />
+                className={styles.gameCard}
+                // onClick={() => router.push(`/games/${item}`)}
+              >
+                <img
+                  src={
+                    Game_Data[item].img_ludo ||
+                     `/images/games/${item}.png`
+                    }
+                  alt=""
+                />
+                <p className={styles.title}>{Game_Data[item].name}</p>
+                <p className={styles.detail}>{Game_Data[item].description}</p>
+                {/* <p
+                  className={styles.activebutton}
+                  onClick={() => handleclick(item)}
+                >
+                  Play
+                </p> */}
+
+                {/* {comingsoongames.includes(item) ? (
+                  <p className={styles.button}>Coming Soon....</p>
+                ) : (
+                )} 
+                */}
+                {skipActive ? (
+                  <p
+                    className={styles.activebutton}
+                    onClick={() => {
+                      setskipActive(false);
+                      router.push("/games/" + item);
+                    }}
+                  >
+                    Play
+                  </p>
+                ) : (
+                  <p
+                    className={styles.activebutton}
+                    onClick={() => {
+                      if (!userdata) {
+                        setshowauth(true);
+                        setauthmode("parentChild");
+                      } else if (userdata.user_type === "child") {
+                        router.push("/dashboard/k/games");
+                      } else if (userdata.user_type === "parent") {
+                        router.push("/dashboard/p/games");
+                      }
+                    }}
+                  >
+                    Play
+                  </p>
+                )}
+            </GameCard>
             );
           })}
         </div>
