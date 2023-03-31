@@ -65,7 +65,7 @@ export const Game_Data = {
     name: "Ludo",
     description:
       "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
-    img: "/images/games/ludo.png",
+    img: "/images/games/ludo-game.png",
     premium_plan: 0,
     webgl_key: "Ludo_WebGL",
   },
