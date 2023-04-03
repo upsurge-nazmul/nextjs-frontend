@@ -170,13 +170,11 @@ export default function KnowledgeQuest({ userData, questData }) {
                       }}
                     />
                   ) : view === LESSON_TYPES[3] ? (
-                    <WebglView
-                      {...{
-                        gameKey: currentChapter,
-                        setView: handleBack,
-                        handleDone,
-                        type: "games",
-                      }}
+                    <GameView
+                      chapterId={currentChapter}
+                      game={currentChapter}
+                      setGame={handleBack}
+                      handleDone={handleDone}
                     />
                   ) : view === LESSON_TYPES[4] ? (
                     <WebglView
