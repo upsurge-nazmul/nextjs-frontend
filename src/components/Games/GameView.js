@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState,useContext} from "react";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
 import Unity, { UnityContext } from "react-unity-webgl";
@@ -9,7 +9,8 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { CircularProgress } from "@mui/material";
 import ActionArea from "./ActionArea";
 import { useRouter } from "next/router";
-import { userdata } from "../../context/Main";
+import { MainContext } from "../../context/Main";
+
 
 
 export default function GameView({
@@ -26,7 +27,7 @@ export default function GameView({
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
   const [loading, setLoading] = useState(false);
-
+  const { userdata } = useContext(MainContext);
   useEffect(() => {
     if (gameRef && gameRef.current) {
       if (gameRef.current.requestFullscreen) {
