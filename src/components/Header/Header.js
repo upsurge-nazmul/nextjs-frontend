@@ -117,10 +117,10 @@ function Header({
                   name: "Games arena",
                   pushTo: "/products/games",
                 },
-                {
-                  name: "Chores",
-                  pushTo: "/products/chores",
-                },
+                //{
+                //  name: "Chores",
+                //  pushTo: "/products/chores",
+                //},
                 // { name: "Family Fun", pushTo: "/familyfun" },
                 // { name: "Tribes", pushTo: "/p_tribes" },
                 { name: "Live workshops", pushTo: "/products/liveclasses" },

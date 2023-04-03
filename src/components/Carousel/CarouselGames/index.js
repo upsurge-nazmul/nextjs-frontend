@@ -8,7 +8,7 @@ const slidesData = [
     image: "./images/downloadGames/Money_dash_1.png",
     title: "Money Dash",
     description:
-      "A game that lets you buy and sell virtual stocks. Learn concepts like investing mutual funds and more.",
+      "A runner game where you have to earn coins without balance dropping to zero. Learn concepts like profit, loss and taxes.",
   },
   {
     id: 1,
@@ -22,7 +22,7 @@ const slidesData = [
     image: "./images/downloadGames/Money_dash_3.png",
     title: "Snakes and Ladders",
     description:
-      "A game that lets you buy and sell virtual stocks. Learn concepts like investing mutual funds and more.",
+      "A version of cult classic. Learn concepts like saving and investing while enjoying the chance based thrill.",
   },
 ];
 

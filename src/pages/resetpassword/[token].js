@@ -134,12 +134,12 @@ export default function ResetPassword({ resetPassEmailVerified, msg, email,token
             <div className={styles.resetpasswordContainer}>
                 <div className={styles.resetpass}>
                 <input 
-             placeholder="Password"
-             value={password}
-             setvalue={setpassword}
-             type={passhidden ? "password" : "text"}
-             onChange={validatePassword}
-             />
+              placeholder="Password"
+              value={password}
+              setvalue={setpassword}
+              type={passhidden ? "password" : "text"}
+              onChange={validatePassword}
+              />
                 <div className={styles.show} onClick={()=>{setpasshidden(!passhidden)}}>
                 Show
                 </div>

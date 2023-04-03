@@ -101,8 +101,7 @@ function Games({
         setrecent_games([title]);
         updaterecentgames([title]);
       }
-      setOpenGame(pushto ? pushto : title);
-      // setOpenGame(webgl_key);
+      setOpenGame(webgl_key);
     } else {
       setShowSubToPremium(true);
     }
@@ -196,8 +195,8 @@ function Games({
           </div>
         </div>
       </div>
-      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
-      {/* {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""} */}
+      {/* {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""} */}
+      {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""}
     </div>
   );
 }
