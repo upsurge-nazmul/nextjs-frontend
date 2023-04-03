@@ -9,6 +9,8 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { CircularProgress } from "@mui/material";
 import ActionArea from "./ActionArea";
 import { useRouter } from "next/router";
+import { userdata } from "../../context/Main";
+
 
 export default function GameView({
   chapterId,
@@ -162,6 +164,12 @@ export default function GameView({
       unityContext.on("progress", function (progress) {
         console.log("progress", progress);
         setProgression(progress);
+
+      unityContext.on("OnSeceneLoaded", function () 
+      {
+      unityContext.send("Game Data", "SetUserID", userdata?.id); 
+      });
+      
       });
       unityContext.on("Error", function (code, url, vendor) {
         console.log("code url vendor", code, url, vendor);
