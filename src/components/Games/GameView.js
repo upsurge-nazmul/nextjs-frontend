@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState,useContext} from "react";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
 import Unity, { UnityContext } from "react-unity-webgl";
@@ -9,6 +9,9 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import { CircularProgress } from "@mui/material";
 import ActionArea from "./ActionArea";
 import { useRouter } from "next/router";
+import { MainContext } from "../../context/Main";
+
+
 
 export default function GameView({
   chapterId,
@@ -24,7 +27,7 @@ export default function GameView({
   const [fullScreen, setFullScreen] = useState(false);
   const [progression, setProgression] = useState(0);
   const [loading, setLoading] = useState(false);
-
+  const { userdata } = useContext(MainContext);
   useEffect(() => {
     if (gameRef && gameRef.current) {
       if (gameRef.current.requestFullscreen) {
@@ -162,6 +165,12 @@ export default function GameView({
       unityContext.on("progress", function (progress) {
         console.log("progress", progress);
         setProgression(progress);
+
+      unityContext.on("OnSeceneLoaded", function () 
+      {
+      unityContext.send("Game Data", "SetUserID", userdata?.id); 
+      });
+      
       });
       unityContext.on("Error", function (code, url, vendor) {
         console.log("code url vendor", code, url, vendor);
