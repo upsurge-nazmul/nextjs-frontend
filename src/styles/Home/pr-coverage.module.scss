@@ -47,10 +47,14 @@
       animation: slideintwo 15s linear forwards infinite alternate;
       white-space: nowrap;
       .logos {
-        width: 100%;
-        display: flex;
+        width: 650%;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-around;
         margin: 0px 0;
         .logo {
           width: calc(100% / 2);
