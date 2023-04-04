@@ -90,7 +90,7 @@ export const Game_Data = {
     name: "Price Is Right",
     description:
     "Learn about money management with our budget simulator.",
-    img: "/images/games/FarmProtection.jpg",
+    img: "/images/games/price-is-right.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
     premium_plan: 1001,
     webgl_key: "PriceIsRight_WebGL",

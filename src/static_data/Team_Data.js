@@ -72,8 +72,7 @@ export const TEAM_DATA = {
     },
     {
       name: "Garima Gaur",
-      img_url:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
+      img_url: "/images/team/garima.jpeg",
       position: "Learning",
       link: "https://www.linkedin.com/in/garima-g-b15b221a/",
     },
@@ -110,6 +109,13 @@ export const TEAM_DATA = {
       position: "Engineering",
       link: "https://www.linkedin.com/in/aaryansh-b-5b98b41b3",
     },
+    {
+      name: "Pratham Sharma",
+      img_url:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Djw-ESwGJhydwzAcfHgJ0LDE0ab7m5lp9Q&usqp=CAU",
+      position: "Engineering",
+      link: "",
+    }
   ],
   design: [
     {
