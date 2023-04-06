@@ -8,9 +8,28 @@
     height: 40px;
     font-size: 1.125rem;
     padding: 0 40px;
+    .ranklabel {
+      width: 100px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .namelabel {
+      width: 60%;
+      text-transform: capitalize;
+      font-weight: 700;
+    }
+    .scorelabel {
+      width: 30%;
+      text-align: right;
+      font-weight: 700;
+    }
     .rank {
       width: 100px;
       text-align: left;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      gap:0.5rem;
     }
     .name {
       width: 60%;
@@ -38,28 +57,13 @@
         font-weight: 700;
       }
     }
-    &:first-child {
-      margin-bottom: 10px;
+    &:nth-child(odd) {
+      background-color: #d9f2ff !important;
+      margin:0.4rem;
     }
-    &:nth-child(2) {
-      background-color: #17d1bc !important;
-      border-top-left-radius: 14px;
-      border-top-right-radius: 14px;
-    }
-    &:nth-child(3) {
-      background-color: #ff6263 !important;
-      color: white;
-    }
-    &:nth-child(4) {
-      background-color: #fdcc03 !important;
-    }
-    &:nth-child(5) {
-      background-color: #4166eb !important;
-      color: white;
-    }
-    &:last-child {
-      border-bottom-left-radius: 14px;
-      border-bottom-right-radius: 14px;
+    &:nth-child(even) {
+      background-color: white !important;
+      margin:0.4rem;
     }
   }
 }
