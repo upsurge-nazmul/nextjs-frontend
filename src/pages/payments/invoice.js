@@ -95,6 +95,13 @@ export default function Subscribed({ userdatafromserver, req }) {
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
 
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", () => {
+      window.history.pushState(null, "", window.location.href);
+    });
+  }, []);
+
   const handlerSave = useReactToPrint({
     content: () => pdfRef.current,
   });
