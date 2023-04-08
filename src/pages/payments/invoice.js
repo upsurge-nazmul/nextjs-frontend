@@ -55,11 +55,18 @@ export default function Subscribed({ userdatafromserver, req }) {
       transactionId,
     });
     console.log({ res });
-    if (res && res.data && res.data.response.success) {
+    if (res && res.data) {
       if (res.data.response.code === "PAYMENT_SUCCESS") {
-        return true;
+        return "success";
+      } else if (
+        res.data.response.code === "PAYMENT_ERROR" ||
+        res.data.response.data.state === "FAILED"
+      ) {
+        return "failed";
+      } else if (res.data.response.code === "PAYMENT_PENDING") {
+        return "pending";
       }
-      return false;
+      // return false;
     }
   }
 
@@ -71,14 +78,20 @@ export default function Subscribed({ userdatafromserver, req }) {
       };
       fetchUpdateSubscription(invoiceModel);
     } else if (transactionId) {
-      if (await checkPhonepeStatus(transactionId)) {
+      const check = await checkPhonepeStatus(transactionId);
+      if (check === "success") {
         const invoiceModel = {
           paymentIntent: transactionId,
           plan_id,
         };
         fetchUpdateSubscription(invoiceModel);
       } else {
-        setStatus("failed");
+        console.log(check);
+        PaymentsApi.addTransactionRecord({
+          transactionId,
+          status: check,
+        });
+        setStatus(check);
       }
     }
   }, [transactionId, payment_intent, plan_id]);
@@ -125,7 +138,7 @@ export default function Subscribed({ userdatafromserver, req }) {
           <div className={styles.yellow}></div>
           <p className={styles.heading3}>
             {status === "pending"
-              ? "Please wait"
+              ? "Pending please wait"
               : status === "success"
               ? "Subscription Confirmed"
               : "Payment Failed"}
