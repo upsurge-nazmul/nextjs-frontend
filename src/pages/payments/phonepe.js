@@ -20,8 +20,11 @@ export default function PhonepePage() {
       plan_id,
       hostURL: window.location.origin,
     });
-    console.log({ result });
-    if (result && result.data) {
+    if (!result) {
+      router.push(window.history.go(-1) ?? "/");
+    } else if (result && result.status === 400) {
+      router.push(window.history.go(-1) ?? "/");
+    } else if (result && result.data) {
       router.push(
         result.data.redirectURL.data.instrumentResponse.redirectInfo.url
       );
@@ -31,6 +34,14 @@ export default function PhonepePage() {
   useEffect(() => {
     fetchPlan();
     paymentInit();
+    window.addEventListener("beforeunload", () => {
+      return "Reload Disable";
+    });
+    return () => {
+      window.removeEventListener("beforeunload", () => {
+        return "Reload Disable";
+      });
+    };
   }, []);
 
   return (

@@ -84,6 +84,30 @@ const checkPhonepeStatus = (payload) => {
   );
 };
 
+const addTransactionRecord = (payload) => {
+  return ApiCalls.postResponse(
+    "payments/addTransactionRecord",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const checkTransactionRecord = (payload) => {
+  return ApiCalls.getResponse(
+    "payments/checkTransactionRecord",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
+const deleteTransactionRecord = (payload) => {
+  return ApiCalls.getResponse(
+    "payments/deleteTransactionRecord",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 const PaymentsApi = {
   createorder,
   savereceipt,
@@ -97,6 +121,9 @@ const PaymentsApi = {
   getPlans,
   getPhonePe,
   checkPhonepeStatus,
+  addTransactionRecord,
+  checkTransactionRecord,
+  deleteTransactionRecord,
 };
 
 export default PaymentsApi;

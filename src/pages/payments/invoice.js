@@ -17,7 +17,7 @@ export default function Subscribed({ userdatafromserver, req }) {
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
   const [invoiceData, setInvoiceData] = useState();
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState("none");
   const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
@@ -55,12 +55,31 @@ export default function Subscribed({ userdatafromserver, req }) {
       transactionId,
     });
     console.log({ res });
-    if (res && res.data && res.data.response.success) {
+    if (res && res.data) {
       if (res.data.response.code === "PAYMENT_SUCCESS") {
+        return "success";
+      } else if (
+        res.data.response.code === "PAYMENT_ERROR" ||
+        res.data.response.data.state === "FAILED"
+      ) {
+        return "failed";
+      } else if (res.data.response.code === "PAYMENT_PENDING") {
+        return "pending";
+      }
+    }
+  }
+
+  async function checkTransactionRecord(transactionId) {
+    const checkResponse = await PaymentsApi.checkTransactionRecord({
+      transactionId,
+    });
+    if (checkResponse && checkResponse.data) {
+      if (checkResponse.data.success) {
         return true;
       }
       return false;
     }
+    return false;
   }
 
   useEffect(async () => {
@@ -71,14 +90,23 @@ export default function Subscribed({ userdatafromserver, req }) {
       };
       fetchUpdateSubscription(invoiceModel);
     } else if (transactionId) {
-      if (await checkPhonepeStatus(transactionId)) {
+      const check = await checkPhonepeStatus(transactionId);
+      if (check === "success") {
+        if (await checkTransactionRecord(transactionId)) {
+          PaymentsApi.deleteTransactionRecord({ transactionId });
+        }
         const invoiceModel = {
           paymentIntent: transactionId,
           plan_id,
         };
         fetchUpdateSubscription(invoiceModel);
       } else {
-        setStatus("failed");
+        PaymentsApi.addTransactionRecord({
+          transactionId,
+          status: check,
+          plan_id,
+        });
+        setStatus(check);
       }
     }
   }, [transactionId, payment_intent, plan_id]);
@@ -93,6 +121,13 @@ export default function Subscribed({ userdatafromserver, req }) {
     };
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
+  }, []);
+
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", () => {
+      window.history.pushState(null, "", window.location.href);
+    });
   }, []);
 
   const handlerSave = useReactToPrint({
@@ -117,24 +152,30 @@ export default function Subscribed({ userdatafromserver, req }) {
           <div className={styles.ball4}></div>
           <div className={styles.yellow}></div>
           <p className={styles.heading3}>
-            {status === "pending"
-              ? "Please wait"
+            {status === "none"
+              ? "please wait"
               : status === "success"
               ? "Subscription Confirmed"
+              : status === "pending"
+              ? "Payment Pending"
               : "Payment Failed"}
           </p>
           <div className={styles.line}></div>
 
-          {status !== "pending" && (
+          {status !== "none" && (
             <>
               <p className={styles.heading2}>
                 {status === "success"
                   ? "Thank you for subscribing!"
+                  : status === "pending"
+                  ? ""
                   : "Sorry! something went wrong your payment failed."}
               </p>
               <p className={styles.msg}>
                 {status === "success"
                   ? "Your payment is successful you can check the invoice and download or print the invoice."
+                  : status === "pending"
+                  ? "If your payment is pending, try to refresh the page for update or contact our support team."
                   : "Your payment is unsuccessful you can try again later or use another payment method."}
               </p>
             </>
