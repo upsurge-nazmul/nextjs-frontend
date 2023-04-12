@@ -8,7 +8,6 @@ import { db } from "../../../../db";
 import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../../components/Toast";
 import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
-import { Game_Unity_Data } from "../../../../static_data/Game_Data";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import { useContext } from "react";
 import { MainContext } from "../../../../context/Main";

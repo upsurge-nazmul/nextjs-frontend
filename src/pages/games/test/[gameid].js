@@ -13,7 +13,6 @@ import styles from "../../../styles/GamePage/gamepage.module.scss";
 import validator from "validator";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { db } from "../../../db";
-import { Game_Unity_Data } from "../../../static_data/Game_Data";
 import Loader from "../../../components/Loader";
 import Spinner from "../../../components/Spinner";
 import GameLandscapeInfo from "../../../components/Home/GameLandscapeInfo";
