@@ -1,6 +1,4 @@
 import styles from "../../styles/schools/schoolHero.module.scss";
-import childImg from "../../assets/schools/school-hero-img.png";
-import heroBg from "../../assets/schools/school-hero-bg.png";
 
 const SchoolHeroSection = () => {
   return (
