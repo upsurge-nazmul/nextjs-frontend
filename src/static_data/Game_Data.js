@@ -104,6 +104,15 @@ export const Game_Data = {
     premium_plan: 1001,
     webgl_key: "WorldBank_WebGL",
   },
+  MiniMiner: {
+    name: "Mini Miner",
+    description:
+    "Get behind a mine and earn as much as you can.",
+    img: "/images/games/mini-miner.png",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    premium_plan: 1001,
+    webgl_key: "MiniMiner_WebGL",
+  },
 };
 
 export const Simulator_Data = {
