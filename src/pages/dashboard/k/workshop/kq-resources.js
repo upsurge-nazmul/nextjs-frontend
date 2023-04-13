@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import styles from "../../../styles/WaitlistDashboard/parentlogin.module.scss";
-import Toast from "../../../components/Toast";
-import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
-import { MainContext } from "../../../context/Main";
-import PageTitle from "../../../components/PageTitle";
-import LoginApis from "../../../actions/apis/LoginApis";
-import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
+import styles from "../../../../styles/WaitlistDashboard/parentlogin.module.scss";
+import Toast from "../../../../components/Toast";
+import DashboardLeftPanel from "../../../../components/Dashboard/DashboardLeftPanel";
+import { MainContext } from "../../../../context/Main";
+import PageTitle from "../../../../components/PageTitle";
+import LoginApis from "../../../../actions/apis/LoginApis";
+import DashboardHeader from "../../../../components/Dashboard/DashboardHeader";
 
 export default function ParentLogin({ userdatafromserver }) {
   console.log(userdatafromserver);
