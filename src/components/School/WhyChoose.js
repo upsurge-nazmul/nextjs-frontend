@@ -98,9 +98,9 @@ const WhyChoose = () => {
             <div key={"slide-card" + index} className={styles.card}>
               <div className={styles.cardWrapper}>
                 <div className={styles.imageContainer}>
-                  <img src={data.childImage} className={styles.image} />
-                  <img src={data.bgImages[1]} className={styles.ellipse1} />
-                  <img src={data.bgImages[0]} className={styles.ellipse1} />
+                  <img src={data.childImage} className={styles.image} alt=" " />
+                  <img src={data.bgImages[1]} className={styles.ellipse1} alt=" " />
+                  <img src={data.bgImages[0]} className={styles.ellipse1} alt=" " />
                 </div>
                 <div className={styles.textContainer}>
                   <ul>

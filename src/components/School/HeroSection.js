@@ -10,6 +10,7 @@ const SchoolHeroSection = () => {
       <img
         src={"https://imgcdn.upsurge.in/images/schools/school-hero-bg.png"}
         className={styles.bgImage}
+        alt=" "
       />
       <div className={styles.left}>
         <p>

@@ -11,7 +11,7 @@ const ProgramSection = () => {
     <div className={styles.container}>
       <div className={styles.leftContainer}>
         <h2 className={styles.heading}>
-          India's first <br />
+          India&apos;s first <br />
           financial program
         </h2>
         <div className={styles.button}>
@@ -34,19 +34,19 @@ const ProgramSection = () => {
       </div>
       <div className={styles.rightContainer}>
         <div className={styles.card}>
-          <Image src={EntrepreneurshipImg} width={80} height={80} />
+          <Image src={EntrepreneurshipImg} width={80} height={80} alt=" " />
           <p>Entrepreneurship</p>
         </div>
         <div className={styles.card}>
-          <Image src={BudgetImg} width={80} height={80} />
+          <Image src={BudgetImg} width={80} height={80} alt=" " />
           <p>Financial literacy</p>
         </div>
         <div className={styles.card}>
-          <Image src={SkillsImg} width={80} height={80} />
+          <Image src={SkillsImg} width={80} height={80} alt=" " />
           <p>Life skills</p>
         </div>
         <div className={styles.card}>
-          <Image src={GoalsImg} width={80} height={80} />
+          <Image src={GoalsImg} width={80} height={80} alt=" " />
           <p>Goals</p>
         </div>
       </div>

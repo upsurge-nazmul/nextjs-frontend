@@ -11,6 +11,7 @@ const ReadMoreSection = () => {
         <img
           src={"https://imgcdn.upsurge.in/images/schools/schools-child-two.png"}
           className={styles.childImage}
+          alt=" " 
         />
       </div>
       <div className={styles.rightContainer}>
@@ -26,7 +27,7 @@ const ReadMoreSection = () => {
             Workshops are practical, real life, engaging and experiential
             keeping in mind that students enjoy learning. They are conducted by
             experienced trainers who have expertise in financial literacy and
-            entrepreneurship. If you're interested in providing your students
+            entrepreneurship. If you&apos;re interested in providing your students
             with the knowledge and skills they need to succeed in the real
             world, we encourage you to consider our financial literacy and
             entrepreneurship workshops.
