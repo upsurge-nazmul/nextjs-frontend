@@ -1,10 +1,10 @@
 .mainSection {
-  padding: 20px 0;
+  padding: 1.2rem 0;
   .questArea {
-    padding: 20px 0;
+    padding: 1.2rem 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1.2rem;
   }
 }
 
@@ -19,13 +19,13 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .mainSection {
-    padding: 20px 0;
+    padding: 1rem 0;
     .questArea {
-      padding: 20px 0;
+      padding: 1rem 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: space-around;
+      gap: 1rem;
     }
   }
 }
