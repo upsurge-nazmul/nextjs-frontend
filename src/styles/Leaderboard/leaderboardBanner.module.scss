@@ -4,9 +4,9 @@
   min-height: 10rem;
   background-color: #fed85f80;
   border-radius: 14px;
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
-  margin: 10px 0 20px;
+  margin: 0.625rem 0 1.25rem;
   position: relative;
   .backgroundImg {
     position: absolute;
@@ -58,6 +58,14 @@
 
 @media only screen and (max-width: 500px) {
   .banner{
+    .left {
+      .title {
+        font-size: 1.5rem;
+      }
+      .description {
+        font-size: 0.85rem;
+      }
+    }
     .right{
       .icon{
         height: 7rem;

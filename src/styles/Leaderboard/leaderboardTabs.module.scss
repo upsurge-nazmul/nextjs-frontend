@@ -31,3 +31,20 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .leaderboardTabs {
+   
+    .holder {
+      display: flex;
+      .heading {
+        font-size: 1rem;
+        
+      }
+      .selected {
+        padding-bottom: 0px;
+        font-size: 1.25rem;
+        }
+      }
+    }
+  }

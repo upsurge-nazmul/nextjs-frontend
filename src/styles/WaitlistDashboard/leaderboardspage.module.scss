@@ -59,7 +59,7 @@
   .leaderboard {
     .contentWrapper {
       .mainContent {
-        padding: 0 20px;
+        padding: 0 0.75rem;
         .headline {
           background-color: #4166eb;
           color: white;
@@ -90,7 +90,7 @@
     }
   }
 }
-@media only screen and (orientation: landscape) and (max-height: 500px) {
+@media only screen and (orientation: portrait) and (max-height: 500px) {
   .leaderboard {
     .contentWrapper {
       .mainContent {
