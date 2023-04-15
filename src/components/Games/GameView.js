@@ -19,6 +19,8 @@ export default function GameView({
   setGame,
   externalId = null,
   handleDone = null,
+  setUnicoins,
+  setShowUnicoinsAwards
 }) {
   const gameRef = useRef();
   const router = useRouter();
@@ -252,6 +254,8 @@ export default function GameView({
             mixpanel.track("Game Closed", { event: `Game closed` });
             setGame();
             setUnityContext(null);
+            setShowUnicoinsAwards(true);
+            setUnicoins(4000);
           }}
           onDone={() => {
             handleDone();
