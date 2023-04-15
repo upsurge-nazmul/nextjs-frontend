@@ -28,6 +28,10 @@ import SignupPopup from "../SignupPopup";
 import localforage from "localforage";
 import PRCoverage from "./PRCoverage";
 import HighlightsCounter from "./HighlightsCounter";
+import TrendingGamesPopUp from "../TrendingGamesPopUp";
+import BecomeFinanciallySmartPopUp from "../BecomeFinanciallySmartPopUp";
+import UnicoinsAwards from "../UnicoinsAwards";
+import GameView from "../Games/GameView";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true }) {
@@ -46,6 +50,36 @@ function Home({ page = "", showNav = true }) {
   const [showSignupPopup, setShowSignupPopup] = useState(false);
   const [refId, setRefId] = useState();
   const router = useRouter();
+  const [showTrendingGames, setShowTrendingGames] = useState(false);
+  const [showUnicoinsAwards, setShowUnicoinsAwards] = useState(false);
+  const [trendingGamesShow, setTrendingGamesShow] = useState(false);
+  const [becomeFinanciallySmartShown, setBecomeFinanciallySmartShown] =
+    useState(false);
+  const [showBecomeFinanciallySmart, setShowBecomeFinanciallySmart] =
+    useState(false);
+  const [unicoins, setUnicoins] = useState(null);
+  const [openGame, setOpenGame] = useState("");
+  const [gameOpened, setGameOpened] = useState(null);
+  useEffect(() => {
+    function handleScroll() {
+      const isEnd =
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight;
+      if (!trendingGamesShow && !becomeFinanciallySmartShown) {
+        setTrendingGamesShow(isEnd);
+        setShowTrendingGames(isEnd);
+      } else if (
+        trendingGamesShow &&
+        !becomeFinanciallySmartShown &&
+        !showUnicoinsAwards
+      ) {
+        setShowBecomeFinanciallySmart(isEnd);
+        setBecomeFinanciallySmartShown(isEnd);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [trendingGamesShow, becomeFinanciallySmartShown]);
 
   useEffect(() => {
     history.scrollRestoration = "manual";
@@ -158,6 +192,7 @@ function Home({ page = "", showNav = true }) {
         page={page}
         showNav={showNav}
         refId={refId}
+        gameOpened={gameOpened}
       />
 
       <LeftPanel
@@ -233,6 +268,38 @@ function Home({ page = "", showNav = true }) {
         setauthmode={setauthmode}
         setmailfromhome={setmailfromhome}
       />
+      {!userdata && showTrendingGames ? (
+        <TrendingGamesPopUp
+          setShowTrendingGames={setShowTrendingGames}
+          setOpenGame={setOpenGame}
+          setGameOpened={setGameOpened}
+        />
+      ) : null}
+      {!userdata && showBecomeFinanciallySmart ? (
+        <BecomeFinanciallySmartPopUp
+          setShowBecomeFinanciallySmart={setShowBecomeFinanciallySmart}
+          setUnicoins={setUnicoins}
+        />
+      ) : null}
+      {!userdata && showUnicoinsAwards ? (
+        <UnicoinsAwards
+          source={gameOpened}
+          setShowUnicoinsAwards={setShowUnicoinsAwards}
+          unicoins={unicoins}
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+        />
+      ) : null}
+      {!userdata && openGame ? (
+        <GameView
+          game={openGame}
+          setGame={setOpenGame}
+          setShowUnicoinsAwards={setShowUnicoinsAwards}
+          setUnicoins={setUnicoins}
+        />
+      ) : (
+        ""
+      )}
       <Footer
         setshowauth={setshowauth}
         setauthmode={setauthmode}
