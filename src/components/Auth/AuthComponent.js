@@ -33,6 +33,7 @@ function AuthComponent({
   refId = null,
   type,
   premiumPrice,
+  gameOpened
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -171,6 +172,7 @@ function AuthComponent({
                   setpremiumrice={setPremium_price}
                   setChildAge={setChildAge}
                   childAge={childAge}
+                  gameOpened={gameOpened}
                   />
                   ) : mode === "email" ? (
                 <AuthFullData
