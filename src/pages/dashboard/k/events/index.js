@@ -101,40 +101,16 @@ export default function Events({ userData }) {
         </div>
       </div>
       {selectedEvent && (
-        <Modal
+        <EventDetails
+          data={selectedEvent}
           onOutsideClick={() => setSelectedEvent()}
-          title={selectedEvent.name}
-          actions={{
-            cancelText: "Cancel",
-            isCancel: true,
-            handleCancel: () => setSelectedEvent(),
-            proceedText: "Register Now",
-            isProceed: true,
-            handleProceed: () => {
-              setSelectedEvent();
-            },
-          }}
-        >
-          <EventDetails data={selectedEvent} />
-        </Modal>
+        />
       )}
       {selectedChallenge && (
-        <Modal
+        <EventDetails
+          data={selectedChallenge}
           onOutsideClick={() => setSelectedChallenge()}
-          title={selectedChallenge.name}
-          actions={{
-            cancelText: "Cancel",
-            isCancel: true,
-            handleCancel: () => setSelectedChallenge(),
-            proceedText: "Register Now",
-            isProceed: true,
-            handleProceed: () => {
-              setSelectedChallenge();
-            },
-          }}
-        >
-          <EventDetails data={selectedChallenge} />
-        </Modal>
+        />
       )}
     </div>
   );
