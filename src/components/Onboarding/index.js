@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "../Modal";
 import LoginApis from "../../actions/apis/LoginApis";
-import VideoPlayer from "./videoPlayer";
+import VideoPlayer from "./VideoPlayer";
 
 export default function Onboarding({
   setOpen = () => {},
