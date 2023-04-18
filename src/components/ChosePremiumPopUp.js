@@ -185,8 +185,8 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             </div>
           </div>
         </div>
-        <div className={styles.section}>
-          <div>Prefered payment method</div>
+        <div>Prefered payment method</div>
+          <div className={styles.inputContainer}> 
           {METHODS.map((m) => {
             return (
               <>
@@ -198,7 +198,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                   value={m.id}
                   onChange={(e) => setMethod(e.target.value)}
                   checked={m.id === method}
-                />
+                  />
                 <label htmlFor={m.name}> {m.name}</label>
               </>
             );
@@ -216,7 +216,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
         >
           <u>Continue with the free version</u>
         </p>
-      </div>
+        </div>
     </div>
   );
 }

@@ -401,7 +401,7 @@ function ParentChildAuth({
           <input
             className={styles.age}
             type="integer"
-            placeholder="Child's Age"
+            placeholder="Age"
             value={childAge}
             maxLength={2}
             onChange={(e) => {
