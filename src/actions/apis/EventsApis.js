@@ -17,7 +17,16 @@ const getAllChallenges = (payload) => {
   );
 };
 
+const registerFormClick = (payload) => {
+  return ApiCalls.getResponse(
+    "events/event-register",
+    payload,
+    getCookie("accesstoken")
+  );
+};
+
 export default {
   getAllEvents,
   getAllChallenges,
+  registerFormClick,
 };
