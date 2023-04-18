@@ -66,12 +66,12 @@ function Home({ page = "", showNav = true }) {
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight;
       if (!trendingGamesShow && !becomeFinanciallySmartShown) {
-        setTrendingGamesShow(isEnd);
         setShowTrendingGames(isEnd);
       } else if (
         trendingGamesShow &&
         !becomeFinanciallySmartShown &&
-        !showUnicoinsAwards
+        !showUnicoinsAwards &&
+        !showauth
       ) {
         setShowBecomeFinanciallySmart(isEnd);
         setBecomeFinanciallySmartShown(isEnd);
@@ -273,6 +273,7 @@ function Home({ page = "", showNav = true }) {
           setShowTrendingGames={setShowTrendingGames}
           setOpenGame={setOpenGame}
           setGameOpened={setGameOpened}
+          setTrendingGamesShow={setTrendingGamesShow}
         />
       ) : null}
       {!userdata && showBecomeFinanciallySmart ? (

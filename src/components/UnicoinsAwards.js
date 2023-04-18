@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/GeneralComponents/trendingGames.module.scss";
+import styles from "../styles/GeneralComponents/unicoinsAwards.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import UniCoinSvg from "./SVGcomponents/UniCoinSvg";
 import LoginApis from "../actions/apis/LoginApis";
