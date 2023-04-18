@@ -1,18 +1,19 @@
+import EventsApis from "../../actions/apis/EventsApis";
 import styles from "../../styles/cards/eventsCard.module.scss";
 
 const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
   "May",
   "June",
   "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 export default function EventsCard({
@@ -35,7 +36,17 @@ export default function EventsCard({
           <div className={styles.cardName}>{data.name}</div>
           <div className={styles.actionArea}>
             {data.eventOpen ? (
-              <button className={styles.registerButton}>Register Now</button>
+              <button
+                onClick={() => {
+                  EventsApis.registerFormClick({
+                    eventId: data.id,
+                  });
+                  window.open(data.formLink, "_ blank");
+                }}
+                className={styles.registerButton}
+              >
+                Register Now
+              </button>
             ) : (
               <button className={styles.comingButton}>Coming Soon</button>
             )}
