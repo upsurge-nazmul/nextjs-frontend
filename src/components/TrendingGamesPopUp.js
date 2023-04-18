@@ -3,11 +3,12 @@ import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 
-function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened  }) {
+function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTrendingGamesShow  }) {
   async function handlegameclick(title) {
     setOpenGame(title);
     setGameOpened(title);
     setShowTrendingGames(false);
+    setTrendingGamesShow(true);
   }
   return (
     <div className={styles.trendingGames}>
@@ -15,6 +16,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened  })
         className={styles.background}
         onClick={() => {
           setShowTrendingGames(false);
+          setTrendingGamesShow(true);
         }}
       ></div>
       <div className={styles.block}>
@@ -22,6 +24,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened  })
           className={styles.cross}
           onClick={() => {
             setShowTrendingGames(false);
+            setTrendingGamesShow(true);
           }}
         >
           <CancelOutlinedIcon className={styles.icon} />
@@ -53,7 +56,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened  })
               />
             <button 
               onClick={() => {
-                handlegameclick("DontOverspend");
+                handlegameclick("BalanceBuilder");
               }}
               className={styles.playButton}>Play</button>
           </div>
@@ -65,7 +68,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened  })
               />
             <button
               onClick={() => {
-                handlegameclick("DontOverspend");
+                handlegameclick("HighAndLow");
               }}
              className={styles.playButton}>Play</button>
           </div>
