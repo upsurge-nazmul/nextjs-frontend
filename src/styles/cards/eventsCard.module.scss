@@ -4,9 +4,9 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  width: 250px;
-  height: 250px;
-  border-radius: 40px;
+  width: 18rem;
+  height: 19rem;
+  border-radius: 2.5rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.56s ease-in-out;
@@ -33,7 +33,7 @@
       right: 0;
       padding: 0.6rem 0.8rem;
       background: rgba(143, 130, 135, 0.5);
-      backdrop-filter: saturate(180%) blur(10px);
+      backdrop-filter: saturate(180%) blur(0.625rem);
       .cardName {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -48,11 +48,11 @@
         justify-content: space-between;
         padding: 0.2rem 0.4rem;
         .registerButton {
-          padding: 0.3rem 0.6rem;
+          padding: 0.5rem 0.8rem;
           background-color: $blue;
           color: #fff;
           border: none;
-          border-radius: 14px;
+          border-radius: 0.8rem;
           cursor: pointer;
           transition: all;
           transition-duration: 300ms;
@@ -63,11 +63,11 @@
           }
         }
         .detailsButton {
-          padding: 0.3rem 0.6rem;
+          padding: 0.5rem 0.8rem;
           color: #fff;
           background-color: #4d4d4d53;
           border: none;
-          border-radius: 14px;
+          border-radius: 0.8rem;
           cursor: pointer;
           transition: all;
           transition-duration: 300ms;
@@ -80,8 +80,8 @@
     }
     .dataContainer {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 0.625rem;
+      right: 0.625rem;
       background-color: $blue;
       padding: 0.6rem;
       display: flex;
@@ -91,12 +91,12 @@
       border-radius: 100%;
       p {
         color: #fff;
-        font-size: 8px;
+        font-size: 0.625rem;
         text-align: center;
       }
       .month {
         color: #fff;
-        font-size: 6px;
+        font-size: 0.4rem;
         text-align: center;
       }
     }
@@ -106,8 +106,8 @@
 // smaller width tabs
 @media only screen and (min-width: 480px) and (max-width: 820px) {
   .card {
-    width: 180px;
-    height: 180px;
+    width: 15rem;
+    height: 16rem;
     .cardThumbnail {
       .cardContent {
         .cardName {
@@ -117,12 +117,12 @@
         .actionArea {
           padding: 0.2rem 0.4rem;
           .registerButton {
-            padding: 0.2rem 0.4rem;
-            font-size: 0.65em;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.75em;
           }
           .detailsButton {
-            padding: 0.2rem 0.4rem;
-            font-size: 0.65em;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.75em;
           }
         }
       }
@@ -137,8 +137,8 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .card {
-    width: 190px;
-    height: 190px;
+    width: 15rem;
+    height: 16rem;
     .cardThumbnail {
       .cardContent {
         .cardName {
@@ -148,12 +148,12 @@
         .actionArea {
           padding: 0.2rem 0.4rem;
           .registerButton {
-            padding: 0.2rem 0.4rem;
-            font-size: 0.65em;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.75em;
           }
           .detailsButton {
-            padding: 0.2rem 0.4rem;
-            font-size: 0.65em;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.75em;
           }
         }
       }
