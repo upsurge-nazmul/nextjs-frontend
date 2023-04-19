@@ -103,3 +103,20 @@
     }
   }
 }
+@media screen and (max-width:500px) {
+  .trendingGames {
+    .block{
+      .images{
+        .gameImg {
+          width: 100%;
+          height: 100%;
+        }
+        .image{
+          .playButton{
+            padding: 0.3rem;
+          }
+        }
+      }
+    }
+  } 
+}
