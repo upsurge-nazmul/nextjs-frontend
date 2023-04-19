@@ -3,12 +3,12 @@ import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 
-function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTrendingGamesShow  }) {
+function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTendingGamesManuallyClosed  }) {
   async function handlegameclick(title) {
     setOpenGame(title);
     setGameOpened(title);
     setShowTrendingGames(false);
-    setTrendingGamesShow(true);
+    setTendingGamesManuallyClosed(true);
   }
   return (
     <div className={styles.trendingGames}>
@@ -24,7 +24,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           className={styles.cross}
           onClick={() => {
             setShowTrendingGames(false);
-            setTrendingGamesShow(true);
+            setTendingGamesManuallyClosed(true);
           }}
         >
           <CancelOutlinedIcon className={styles.icon} />
