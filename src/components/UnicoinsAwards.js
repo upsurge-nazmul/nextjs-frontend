@@ -50,7 +50,7 @@ function UnicoinsAwards({
         </div>
         <div className={styles.flexBox}>
           <div>
-            <h2 style={{ display: "flex" }}>
+            <h2 className={styles.heading} style={{ display: "flex" }}>
               <UniCoinSvg className={styles.unicoin} clr="purple" />
               {unicoins} Unicoins Awarded!
             </h2>
