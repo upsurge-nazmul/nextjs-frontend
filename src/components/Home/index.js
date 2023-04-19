@@ -51,12 +51,13 @@ function Home({ page = "", showNav = true }) {
   const [refId, setRefId] = useState();
   const router = useRouter();
   const [showTrendingGames, setShowTrendingGames] = useState(false);
+  const [trendingGamesManuallyClosed, setTendingGamesManuallyClosed] = useState(false);
   const [showUnicoinsAwards, setShowUnicoinsAwards] = useState(false);
   const [trendingGamesShow, setTrendingGamesShow] = useState(false);
   const [becomeFinanciallySmartShown, setBecomeFinanciallySmartShown] =
     useState(false);
   const [showBecomeFinanciallySmart, setShowBecomeFinanciallySmart] =
-    useState(false);
+    useState(true);
   const [unicoins, setUnicoins] = useState(null);
   const [openGame, setOpenGame] = useState("");
   const [gameOpened, setGameOpened] = useState(null);
@@ -67,14 +68,16 @@ function Home({ page = "", showNav = true }) {
         document.documentElement.offsetHeight;
       if (!trendingGamesShow && !becomeFinanciallySmartShown) {
         setShowTrendingGames(isEnd);
+        setTrendingGamesShow(isEnd);
       } else if (
         trendingGamesShow &&
+        trendingGamesManuallyClosed &&
         !becomeFinanciallySmartShown &&
         !showUnicoinsAwards &&
         !showauth
-      ) {
-        setShowBecomeFinanciallySmart(isEnd);
-        setBecomeFinanciallySmartShown(isEnd);
+        ) {
+          setShowBecomeFinanciallySmart(isEnd);
+          setBecomeFinanciallySmartShown(isEnd);
       }
     }
     window.addEventListener("scroll", handleScroll);
@@ -273,7 +276,7 @@ function Home({ page = "", showNav = true }) {
           setShowTrendingGames={setShowTrendingGames}
           setOpenGame={setOpenGame}
           setGameOpened={setGameOpened}
-          setTrendingGamesShow={setTrendingGamesShow}
+          setTendingGamesManuallyClosed={setTendingGamesManuallyClosed}
         />
       ) : null}
       {!userdata && showBecomeFinanciallySmart ? (
