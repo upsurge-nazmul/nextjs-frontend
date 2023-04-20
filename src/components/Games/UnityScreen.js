@@ -38,9 +38,18 @@ export default function UnityScreen({ data }) {
     addEventListener("Exit", () => {
       router.push("/dashboard/k/games");
     });
+    addEventListener("Score", async function (score) {
+      let res = await GameApis.unicoinreward({ gameId: game });
+      if (res?.data?.success) {
+        console.log("Score success rewards alloted");
+      } else {
+        console.log(res?.data?.message || "");
+      }
+    });
     return () => {
       removeEventListener("OnSeceneLoaded", () => {});
       removeEventListener("Exit", () => {});
+      removeEventListener("Score", () => {});
     };
   }, [addEventListener, removeEventListener]);
 
