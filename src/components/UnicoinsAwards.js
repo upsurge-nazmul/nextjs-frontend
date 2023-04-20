@@ -8,11 +8,7 @@ function UnicoinsAwards({
   setShowUnicoinsAwards,
   setshowauth,
   setauthmode,
-  setUnicoinsRewards,
-  unicoinsRewards,
-  source,
 }) {
-  console.log(`source`,source);
   async function signup(e) {
     e?.preventDefault();
     setshowauth(true);
