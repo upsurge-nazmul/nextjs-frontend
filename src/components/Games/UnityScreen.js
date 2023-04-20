@@ -28,7 +28,7 @@ export default function UnityScreen({ data }) {
     if (isLoaded) 
     {
       console.log("Game Loaded");
-      sendMessage("GameData", "SetUserID",userdata?.user_id);
+      sendMessage("Game Data", "SetUserID",userdata?.user_id);
     }
   }, [isLoaded]);
 
@@ -36,9 +36,19 @@ export default function UnityScreen({ data }) {
     
       addEventListener("OnSeceneLoaded", () => {console.log("Scene Loaded Event called")});
       addEventListener("Exit", () => {router.push("/dashboard/k/games")});
+      addEventListener("Score",async function (score) 
+      {
+        let res = await GameApis.unicoinreward({ gameId: game });
+        if (res?.data?.success) {
+          console.log("Score success rewards alloted");
+        } else {
+          console.log(res?.data?.message || "");
+        }
+      });
     return () => {
       removeEventListener("OnSeceneLoaded", () => {});
       removeEventListener("Exit", () => {});
+      removeEventListener("Score", () => {});
 
     };
   }, [addEventListener, removeEventListener]);
