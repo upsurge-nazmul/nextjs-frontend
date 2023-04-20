@@ -34,6 +34,9 @@ const getLevel = (payload, token) => {
 const getQuestData = (payload, token) => {
   return ApiCalls.getResponse(`knowledgequest/questData`, payload, token);
 };
+const getQuestDataPreSignUp = (payload) => {
+  return ApiCalls.getResponse(`knowledgequest/questDataPreSignUp`, payload);
+};
 const getActiveQuests = (payload, token) => {
   return ApiCalls.getResponse("knowledgequest/activequests", payload, token);
 };
@@ -45,6 +48,7 @@ const KidApis = {
   updatequizdata,
   getLevel,
   getQuestData,
+  getQuestDataPreSignUp,
   getActiveQuests,
 };
 
