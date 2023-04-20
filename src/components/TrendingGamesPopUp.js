@@ -1,0 +1,81 @@
+import React, { useState } from "react";
+import styles from "../styles/GeneralComponents/trendingGames.module.scss";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+
+
+function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTrendingGamesShow  }) {
+  async function handlegameclick(title) {
+    setOpenGame(title);
+    setGameOpened(title);
+    setShowTrendingGames(false);
+    setTrendingGamesShow(true);
+  }
+  return (
+    <div className={styles.trendingGames}>
+      <div
+        className={styles.background}
+        onClick={() => {
+          setShowTrendingGames(false);
+          setTrendingGamesShow(true);
+        }}
+      ></div>
+      <div className={styles.block}>
+        <div
+          className={styles.cross}
+          onClick={() => {
+            setShowTrendingGames(false);
+            setTrendingGamesShow(true);
+          }}
+        >
+          <CancelOutlinedIcon className={styles.icon} />
+        </div>
+     
+        <h2>Trending Games...</h2>
+        <p className={styles.subheading}>Play games and earn prizes</p>
+        <div className={styles.images}>
+          <div className={styles.image}>
+            <img
+              className={styles.gameImg}
+              src="/trendingGames.png"
+              alt="trendingGame"
+            />
+            <button
+              onClick={() => {
+                handlegameclick("DontOverspend");
+              }}
+              className={styles.playButton}
+              >
+              Play
+            </button>
+          </div>
+          <div className={styles.image}>
+            <img
+              className={styles.gameImg}
+              src="/trendingGames.png"
+              alt="trendingGame"
+              />
+            <button 
+              onClick={() => {
+                handlegameclick("BalanceBuilder");
+              }}
+              className={styles.playButton}>Play</button>
+          </div>
+          <div className={styles.image}>
+            <img
+              className={styles.gameImg}
+              src="/trendingGames.png"
+              alt="trendingGame"
+              />
+            <button
+              onClick={() => {
+                handlegameclick("HighAndLow");
+              }}
+             className={styles.playButton}>Play</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default TrendingGamesPopUp;

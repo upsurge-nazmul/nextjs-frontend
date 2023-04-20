@@ -12,6 +12,8 @@ export default function GameView({
   setGame,
   externalId = null,
   handleDone = null,
+  setUnicoins = () => {},
+  setShowUnicoinsAwards = () => {},
 }) {
   const gameRef = useRef();
   const [gameData, setGameData] = useState();
@@ -61,6 +63,8 @@ export default function GameView({
             document.exitFullscreen();
             mixpanel.track("Game Closed", { event: `Game closed` });
             setGame();
+            setShowUnicoinsAwards(true);
+            setUnicoins(4000);
           }}
           onDone={() => {
             handleDone();

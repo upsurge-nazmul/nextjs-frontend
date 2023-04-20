@@ -34,6 +34,7 @@ function ParentChildAuth({
   setpremiumrice,
   setChildAge,
   childAge,
+  gameOpened,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -135,7 +136,8 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
       num_unicoins: unicoins ? unicoins : 0,
-      age:childAge
+      age: childAge,
+      game_opened: gameOpened ? gameOpened : null,
     });
 
     if (!response || !response.data.success) {
@@ -208,7 +210,7 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
-    
+
     let response = await LoginApis.signup({
       email: email,
       signup_method: signupmethod,
@@ -220,9 +222,11 @@ function ParentChildAuth({
       first_name: firstName,
       last_name: lastName,
       num_unicoins: unicoins ? unicoins : 0,
-      age:childAge,
+      age: childAge,
+      game_opened: gameOpened ? gameOpened : null,
+      
     });
-    
+
     if (!response || !response.data.success) {
       seterror(response.data.message || "Error connecting to server");
     } else {
@@ -230,10 +234,14 @@ function ParentChildAuth({
       mixpanel.track("Sign-Up", {
         event: `SignUp of ${email} Successful`,
         "user-email": email,
-        "phone": phone,
+        phone: phone,
       });
       mixpanel.identify(`${email}`);
-      mixpanel.people.set({ $name: firstName + " " + lastName, $email: email, $phone: phone });
+      mixpanel.people.set({
+        $name: firstName + " " + lastName,
+        $email: email,
+        $phone: phone,
+      });
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
@@ -280,13 +288,11 @@ function ParentChildAuth({
         settoastdata({ type: "success", msg: "OTP sent", show: true });
       }
       setCookie("accesstoken", response.data.data.token);
-      if(premiumprice === null){
-        router.push("dashboard/k")
-      }
-      else if(premiumprice === undefined){
+      if (premiumprice === null) {
+        router.push("dashboard/k");
+      } else if (premiumprice === undefined) {
         setmode("premiumSub");
-      }
-      else if(premiumprice !== null && premiumprice !== 0){
+      } else if (premiumprice !== null && premiumprice !== 0) {
         router.push(`/payments/phonepe?plan_id=${premiumprice}`);
       }
       localforage.removeItem("playedGame");
@@ -347,7 +353,7 @@ function ParentChildAuth({
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />
-      
+
         <div className={styles.phoneWrapper}>
           <p>+91</p>{" "}
           <input
@@ -358,7 +364,7 @@ function ParentChildAuth({
             onChange={(e) => {
               if (!isNaN(e.target.value)) setphone(e.target.value);
             }}
-            />
+          />
         </div>
         <div className={styles.nameWrapper}>
           <input
@@ -383,35 +389,35 @@ function ParentChildAuth({
           />
         </div>
         <div className={styles.usernameWrapper}>
-        <input
-          type="text"
-          placeholder="Child Username"
-          minLength={4}
-          maxLength={100} //
-          value={username}
-          pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
-          onChange={(e) => setusername(e.target.value)}
+          <input
+            type="text"
+            placeholder="Child Username"
+            minLength={4}
+            maxLength={100} //
+            value={username}
+            pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
+            onChange={(e) => setusername(e.target.value)}
           />
           <input
-          className={styles.age}
+            className={styles.age}
             type="integer"
-            placeholder="Child's Age"
+            placeholder="Age"
             value={childAge}
             maxLength={2}
             onChange={(e) => {
               if (!isNaN(e.target.value)) setChildAge(e.target.value);
             }}
-            />
-        <input
-          type="hidden"
-          name="coupon"
-          id="coupon"
-          placeholder="Coupon Code"
-          value={coupon}
-          pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
-          onChange={(e) => setCoupon(e.target.value)}
           />
-          </div>
+          <input
+            type="hidden"
+            name="coupon"
+            id="coupon"
+            placeholder="Coupon Code"
+            value={coupon}
+            pattern="^[a-zA-Z0-9_]*$" //only letters, numbers and underscore
+            onChange={(e) => setCoupon(e.target.value)}
+          />
+        </div>
         {password !== "" && passisweak && (
           <>
             <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
@@ -472,11 +478,9 @@ function ParentChildAuth({
         {!loading ? (
           <div
             className={`${styles.button}`}
-            onClick={
-              async() => {
-                  await genotp();
-              }
-            }
+            onClick={async () => {
+              await genotp();
+            }}
           >
             Sign Up
           </div>

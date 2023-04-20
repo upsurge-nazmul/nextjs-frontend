@@ -1,19 +1,38 @@
 import styles from "../../styles/events/eventDetails.module.scss";
 
-export default function EventDetails({ data }) {
+export default function EventDetails({ data, onOutsideClick }) {
+  const RawHTML = ({ children, className = "" }) => (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, "<br />") }}
+    />
+  );
   return (
-    <div className={styles.eventDetails}>
-      <div className={styles.topSection}>
-        <div className={styles.contentArea}>
-          <div className={styles.eventName}>{data.name}</div>
-          <div className={styles.eventType}>{data.eventType}</div>
-          <div className={styles.eventDate}>{data.eventDate}</div>
-        </div>
-        <div className={styles.bannerArea}>
-          <img src={data.image} alt={data.name} className={styles.banner} />
+    <div className={styles.tradePopup}>
+      <div className={styles.popupBackground} onClick={onOutsideClick} />
+      <div className={styles.popupBody}>
+        <div className={styles.eventDetails}>
+          <div className={styles.eventHeader}>
+            <img src={data.image} alt={data.name} className={styles.banner} />
+            <div className={styles.textContainer}>
+              <h3>{data.name}</h3>
+            </div>
+          </div>
+          <div className={styles.eventBody}>
+            <article className={styles.detailsSection}>
+              {RawHTML({ children: data.description })}
+            </article>
+          </div>
+          <div className={styles.eventFooter}>
+            <button onClick={onOutsideClick} className={styles.cancel}>
+              Cancel
+            </button>
+            <button onClick={() => {}} className={styles.register}>
+              Apply
+            </button>
+          </div>
         </div>
       </div>
-      <div className={styles.detailsSection}>{data.description}</div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useCallback,useContext,useEffect} from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import styles from "../../styles/Games/gameView.module.scss";
 import GameLoading from "./GameLoading";
@@ -25,21 +25,22 @@ export default function UnityScreen({ data }) {
   //This is called when the game is loaded and ready to receive messages
   //Sends the user id to the game
   useEffect(() => {
-    if (isLoaded) 
-    {
+    if (isLoaded) {
       console.log("Game Loaded");
-      sendMessage("GameData", "SetUserID",userdata?.user_id);
+      sendMessage("GameData", "SetUserID", userdata?.user_id);
     }
   }, [isLoaded]);
 
   useEffect(() => {
-    
-      addEventListener("OnSeceneLoaded", () => {console.log("Scene Loaded Event called")});
-      addEventListener("Exit", () => {router.push("/dashboard/k/games")});
+    addEventListener("OnSeceneLoaded", () => {
+      console.log("Scene Loaded Event called");
+    });
+    addEventListener("Exit", () => {
+      router.push("/dashboard/k/games");
+    });
     return () => {
       removeEventListener("OnSeceneLoaded", () => {});
       removeEventListener("Exit", () => {});
-
     };
   }, [addEventListener, removeEventListener]);
 
