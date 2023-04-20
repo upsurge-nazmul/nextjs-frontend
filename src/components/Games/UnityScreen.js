@@ -5,7 +5,7 @@ import GameLoading from "./GameLoading";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 
-export default function UnityScreen({ data }) {
+export default function UnityScreen({ data = {}, handleGameExit = () => {} }) {
   const {
     unityProvider,
     isLoaded,
@@ -36,7 +36,8 @@ export default function UnityScreen({ data }) {
       console.log("Scene Loaded Event called");
     });
     addEventListener("Exit", () => {
-      router.push("/dashboard/k/games");
+      console.log("Exiting Game");
+      handleGameExit();
     });
     addEventListener("Score", async function (score) {
       let res = await GameApis.unicoinreward({ gameId: game });

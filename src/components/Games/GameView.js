@@ -53,28 +53,25 @@ export default function GameView({
     fetchGameData();
   }, []);
 
+  const handleGameClose = () => {
+    handleDone ? handleDone() : () => {};
+    mixpanel.track("Game Closed", { event: `Game closed` });
+    setFullScreen(false);
+    document.exitFullscreen();
+    setGame();
+    setShowUnicoinsAwards(true);
+    setUnicoins(4000);
+  };
+
   return (
     <div className={styles.gameView} ref={gameRef}>
-      {gameData && <UnityScreen data={gameData} />}
+      {gameData && (
+        <UnityScreen data={gameData} handleGameExit={handleGameClose} />
+      )}
       {!loading && (
         <ActionArea
-          onClose={() => {
-            setFullScreen(false);
-            document.exitFullscreen();
-            mixpanel.track("Game Closed", { event: `Game closed` });
-            setGame();
-            setShowUnicoinsAwards(true);
-            setUnicoins(4000);
-          }}
-          onDone={() => {
-            handleDone();
-            mixpanel.track("Knowledge Quest", {
-              event: `Quest Finished ${chapterId}`,
-            });
-            setFullScreen(false);
-            document.exitFullscreen();
-            setGame();
-          }}
+          onClose={handleGameClose}
+          onDone={handleGameClose}
           fullScreen={fullScreen}
           showDone={handleDone}
         />
