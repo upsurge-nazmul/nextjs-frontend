@@ -28,28 +28,28 @@
     flex-direction: column;
     gap: 1rem;
     .cross {
-        position: absolute;
-        top: 0.5rem;
-        right: 0rem;
-        z-index: 100;
-        background-color: white;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .icon {
-          font-size: 40px;
-          color: rgb(255, 109, 109);
-          transition: all 0.3s ease;
-          &:hover {
-            color: #fff;
-            background: hsl(0, 75%, 65%);
-            //color:hsl(0, 75%, 65%);
-            border-radius: 99%;
-            cursor: pointer;
-          }
+      position: absolute;
+      top: 0.5rem;
+      right: 0rem;
+      z-index: 100;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        font-size: 40px;
+        color: rgb(255, 109, 109);
+        transition: all 0.3s ease;
+        &:hover {
+          color: #fff;
+          background: hsl(0, 75%, 65%);
+          //color:hsl(0, 75%, 65%);
+          border-radius: 99%;
+          cursor: pointer;
         }
       }
+    }
     .flexBox {
       display: flex;
       justify-content: center;
@@ -107,6 +107,56 @@
           width: 8rem;
           height: 6rem;
           margin: 0.5rem 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:500px) {
+  .trendingGames {
+    .blockLarger {
+      width: 40rem;
+      .flexBox {
+        flex-direction: column;
+        .heading{
+          width: 100%;
+          font-size: 1.4rem;
+        }
+        .redeemParagraph {
+          margin-left: 2.5rem;
+          width: 100%;
+        }
+        .playButton{
+          width: 70vw;
+          margin: 2rem auto 1rem auto;
+        }
+        .imagesFlexBox {
+          width: 70vw;
+          height: 10rem;
+          .rewards{
+            display: flex;
+            gap:1rem; 
+            overflow: auto;
+          }
+          .rewards1 {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width:501px) and (max-width:1000px) {
+  .trendingGames {
+    .blockLarger {
+      .flexBox {
+        .imagesFlexBox {
+          width: 12rem;
+          .rewards1 {
+            display: none;
+          }
         }
       }
     }
