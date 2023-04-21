@@ -67,7 +67,7 @@ export default function FaqSection({ customfaq }) {
     >
       <div className={styles.left}>
         <h2 className={styles.heading}>
-          FAQ's of <br />
+          FAQ&#39;s of <br />
           Financial Literacy
         </h2>
       </div>
