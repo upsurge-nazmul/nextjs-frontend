@@ -41,7 +41,7 @@ function Header({ setOpenLeftPanel }) {
           </p>
         </div>
         <div className={styles.signin} onClick={() => router.push("/")}>
-          Back to Upsurge
+          Back to upsurge
         </div>
       </div>
     </div>

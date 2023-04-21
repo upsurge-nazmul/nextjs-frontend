@@ -7,46 +7,46 @@ import styles from "../../styles/Faq/faq.module.scss";
 function FaqPage() {
   const faqs = [
     {
-      question: "How old does my kid have to be to join Upsurge?",
+      question: "How old does my kid have to be to join upsurge?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
       question: "Are there any free courses I can take?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
-      question: "Is Upsurge comliant with GDPR?",
+      question: "Is upsurge comliant with GDPR?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
-      question: "Are my kids personal details safe with Upsurge?",
+      question: "Are my kids personal details safe with upsurge?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
-      question: "How old does my kid have to be to join Upsurge?",
+      question: "How old does my kid have to be to join upsurge?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
       question: "Are there any free courses I can take?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
     {
-      question: "Is Upsurge comliant with GDPR?",
+      question: "Is upsurge comliant with GDPR?",
       answer: `We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. 
     
-              We can offer to add your address to an Upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
+              We can offer to add your address to an upsurge mailing list or list server if you request it. In this last case, you may at any time ask us to remove your name from such lists.`,
     },
   ];
 

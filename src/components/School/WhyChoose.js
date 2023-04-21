@@ -67,7 +67,7 @@ const WhyChoose = () => {
         <div className={`${styles.doodle} ${styles.dl2}`} />
         <div className={`${styles.hc1}`} />
         <div className={`${styles.hc2}`} />
-        <h2 className={styles.heading}>Why choose Upsurge</h2>
+        <h2 className={styles.heading}>Why choose upsurge</h2>
       </div>
       <div className={styles.sliderWrapper}>
         <div className={styles.c1}></div>

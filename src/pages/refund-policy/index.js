@@ -40,7 +40,7 @@ function PrivacyPolicy() {
               <div className={styles.details} id="privacy-main">
                   <ol className={styles.list}>  
                   <li> Our platform provides free limited access to the App and some content after logging in. You can decide based on this whether to subscribe or not. We stand by the quality and depth of the content we provide and Customer may make the refund request within 7 days from subscription. Further, all payments on this platform will be irrevocable, non-refundable, non-transferable and non-creditable, if request made beyond the aforesaid period of 7 days. </li>
-                  <li>ii. At <strong>Upsurge</strong> (hereinafter referred as <strong>platform</strong>), we can decide the process for crediting the applicable refund against the various acceptable conditions, If the payment for subscription was done from your side, then a refund for such payment will be processed to your original payment method. </li>
+                  <li>ii. At <strong>upsurge</strong> (hereinafter referred as <strong>platform</strong>), we can decide the process for crediting the applicable refund against the various acceptable conditions, If the payment for subscription was done from your side, then a refund for such payment will be processed to your original payment method. </li>
                   <li>iii. Following are the conditions applicable on the refund process: </li>
                   </ol>
                   <table>

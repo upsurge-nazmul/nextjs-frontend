@@ -72,7 +72,7 @@ function PrivacyPolicy() {
               <p><strong>Service</strong> refers to the Application or the Website or both.</p>
             </li>
             <li>
-              <p><strong>Website</strong> refers to Upsurge, accessible from <a href="https://upsurge.in" rel="external nofollow noreferrer" target="_blank">https://upsurge.in</a></p>
+              <p><strong>Website</strong> refers to upsurge, accessible from <a href="https://upsurge.in" rel="external nofollow noreferrer" target="_blank">https://upsurge.in</a></p>
             </li>
             <li>
               <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>

@@ -204,7 +204,7 @@ export const choretemplates = [
     ],
   },
   {
-    name: "Upsurge Money Matters",
+    name: "upsurge Money Matters",
     image: "https://imgcdn.upsurge.in/images/Group-4946.png",
     templates: [
       {

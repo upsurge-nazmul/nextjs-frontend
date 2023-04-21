@@ -21,7 +21,7 @@ function Reviews() {
           </div>
           <div className={styles.textsection}>
             <p className={styles.comment}>
-              “Upsurge really is this magical place where students can go and
+              “upsurge really is this magical place where students can go and
               everything they need is just one click away.”
             </p>
             <p className={styles.name}>Ashish Sharma</p>
@@ -31,7 +31,7 @@ function Reviews() {
       </div>
       <div className={styles.right}>
         <div className={styles.heading}>
-          Listen to how parents are using Upsurge to supercharge their child’s
+          Listen to how parents are using upsurge to supercharge their child’s
           financial literacy.
         </div>
         <div className={styles.subheading}>

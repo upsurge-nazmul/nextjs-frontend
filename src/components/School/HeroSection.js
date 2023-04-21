@@ -14,7 +14,7 @@ const SchoolHeroSection = () => {
       />
       <div className={styles.left}>
         <p>
-          Upsurge offers financial literacy and entrepreneurship workshops for
+          upsurge offers financial literacy and entrepreneurship workshops for
           schools! Our workshops aim to equip students with the knowledge and
           skills they need to succeed in the real world.
         </p>
