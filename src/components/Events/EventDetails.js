@@ -1,3 +1,4 @@
+import EventsApis from "../../actions/apis/EventsApis";
 import styles from "../../styles/events/eventDetails.module.scss";
 
 export default function EventDetails({ data, onOutsideClick }) {
@@ -27,7 +28,15 @@ export default function EventDetails({ data, onOutsideClick }) {
             <button onClick={onOutsideClick} className={styles.cancel}>
               Cancel
             </button>
-            <button onClick={() => {}} className={styles.register}>
+            <button
+              onClick={() => {
+                EventsApis.registerFormClick({
+                  eventId: data.id,
+                });
+                window.open(data.formLink, "_ blank");
+              }}
+              className={styles.register}
+            >
               Apply
             </button>
           </div>

@@ -35,7 +35,13 @@ export default function Events({ userData }) {
       let chalRes = await EventsApis.getAllChallenges();
 
       if (eventsRes && eventsRes.data && eventsRes.data.success) {
-        setEvents(eventsRes.data.data);
+        setEvents(
+          eventsRes.data.data.filter(
+            (f) =>
+              new Date(f.expiry).getTime() + 60 * 60 * 24 * 1000 >
+              new Date().getTime()
+          )
+        );
       }
       if (chalRes && chalRes.data && chalRes.data.success) {
         setChallenges(chalRes.data.data);
