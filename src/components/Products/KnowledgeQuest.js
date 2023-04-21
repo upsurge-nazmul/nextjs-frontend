@@ -92,7 +92,10 @@ export default function KnowledgeQuest({
       <PetalSvgQuest className={styles.petal} />
       <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
-        <div className={styles.heading}>Knowledge quests</div>
+        <h1 className={styles.heading}>
+          Financial Literacy <br />
+          Courses for Kids
+        </h1>
         <div className={styles.subheading}>
           {`Interactive courses that cover fundamentals of finance, including
           earning, budgeting, saving, investing, and entrepreneurship.`}

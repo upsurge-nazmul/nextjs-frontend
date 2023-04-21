@@ -6,7 +6,7 @@ export default function FaqSection({ customfaq }) {
   const faqs = [
     {
       question: "What do we do?",
-      answer: `We teach money management and Entrepreneurship skills to students of age 8 to 18 yrs`,
+      answer: `We teach money management and Financial Literacy for Students of age 8 to 18 yrs`,
     },
     {
       question: "How old does my child have to be to join upsurge?",
@@ -26,12 +26,7 @@ export default function FaqSection({ customfaq }) {
     },
     {
       question: `What will children learn?`,
-      answer: `We aim to empower students with the life skills such as
-      Functioning of money in 21st Century
-      Money Management
-      Investing and growing money
-      Build and execute a Business
-      `,
+      answer: `We aim to empower Financial Literacy for students with the life skills such as Functioning of money in 21st Century, Money Management, Investing and growing money, Building and executing a Business`,
     },
     {
       question: "What skills will the children gain?",
@@ -72,8 +67,8 @@ export default function FaqSection({ customfaq }) {
     >
       <div className={styles.left}>
         <h2 className={styles.heading}>
-          Frequently <br /> Asked <br />
-          Questions
+          FAQ&#39;s of <br />
+          Financial Literacy
         </h2>
       </div>
       <h2 className={styles.mobilehead}>Frequently Asked Questions</h2>

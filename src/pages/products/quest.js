@@ -65,7 +65,10 @@ export default function Products() {
         theme === "dark" && styles.darkquest
       }`}
     >
-      <PageTitle />
+      <PageTitle
+        title="Best Financial Literacy and Entrepreneurship Course and Classes for Kids in India | upsurge Courses"
+        content="upsurge is the Best Platform for children to start building wealth through Financial Literacy Courses and Classes in India, also providing Entrepreneurship Course for Kids in India"
+      />
       <Header
         setOpenLeftPanel={setOpenLeftPanel}
         showauth={showauth}
