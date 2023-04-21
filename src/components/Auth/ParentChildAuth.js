@@ -35,6 +35,7 @@ function ParentChildAuth({
   setChildAge,
   childAge,
   gameOpened,
+  kqOpened
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -138,6 +139,7 @@ function ParentChildAuth({
       num_unicoins: unicoins ? unicoins : 0,
       age: childAge,
       game_opened: gameOpened ? gameOpened : null,
+      knowledge_quest_opened: kqOpened ? kqOpened : null,
     });
 
     if (!response || !response.data.success) {
@@ -224,7 +226,7 @@ function ParentChildAuth({
       num_unicoins: unicoins ? unicoins : 0,
       age: childAge,
       game_opened: gameOpened ? gameOpened : null,
-      
+      knowledge_quest_opened: kqOpened ? kqOpened : null,
     });
 
     if (!response || !response.data.success) {

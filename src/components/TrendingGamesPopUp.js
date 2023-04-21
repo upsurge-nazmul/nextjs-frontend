@@ -36,8 +36,8 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
-              alt="trendingGame"
+              src="/images/games/dont-overspend.png"
+              alt="Don't Overspend"
             />
             <button
               onClick={() => {
@@ -51,7 +51,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
+              src="/images/games/balance-builder.png"
               alt="trendingGame"
               />
             <button 
@@ -63,7 +63,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
+              src="/images/games/high-and-low.png"
               alt="trendingGame"
               />
             <button

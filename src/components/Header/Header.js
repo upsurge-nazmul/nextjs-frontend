@@ -25,7 +25,8 @@ function Header({
   page = "",
   refId = null,
   premiumPrice,
-  gameOpened
+  gameOpened,
+  kqOpened
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -79,6 +80,7 @@ function Header({
         refId={refId}
         premiumPrice={premiumPrice}
         gameOpened={gameOpened}
+        kqOpened={kqOpened}
       />
       {showpopup && (
         <WaitlistPopUp

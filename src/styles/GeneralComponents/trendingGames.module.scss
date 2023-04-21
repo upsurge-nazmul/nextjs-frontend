@@ -55,21 +55,28 @@
     .images {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:1rem;
       .coverName {
         background-color: rgba(0, 0, 0, 0.322);
         color: #fff;
         position: absolute;
         z-index: 12;
-        width: 80%;
-        height: 80%;
-        border-radius: 2.2rem;
+        width: 90%;
+        height: 90%;
+        border-radius: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
       }
       .gameImg {
-        width: 85%;
-        height: 85%;
+        width: 90%;
+        height: 10rem;
+        border-radius: 2rem;
+      }
+      .KQImg{
+        width: 80%;
+        height: 10rem;
+        border-radius: 2rem;
       }
       .image {
         position: relative;

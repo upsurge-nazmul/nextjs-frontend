@@ -32,6 +32,7 @@ import TrendingGamesPopUp from "../TrendingGamesPopUp";
 import BecomeFinanciallySmartPopUp from "../BecomeFinanciallySmartPopUp";
 import UnicoinsAwards from "../UnicoinsAwards";
 import GameView from "../Games/GameView";
+import WebglView from "../WebglView";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true }) {
@@ -57,10 +58,12 @@ function Home({ page = "", showNav = true }) {
   const [becomeFinanciallySmartShown, setBecomeFinanciallySmartShown] =
     useState(false);
   const [showBecomeFinanciallySmart, setShowBecomeFinanciallySmart] =
-    useState(true);
+    useState(false);
   const [unicoins, setUnicoins] = useState(null);
   const [openGame, setOpenGame] = useState("");
+  const [currentChapter, setCurrentChapter] = useState("");
   const [gameOpened, setGameOpened] = useState(null);
+  const [kqOpened, setKqOpened] = useState(null);
   useEffect(() => {
     function handleScroll() {
       const isEnd =
@@ -82,7 +85,18 @@ function Home({ page = "", showNav = true }) {
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [trendingGamesShow, becomeFinanciallySmartShown]);
+  }, [trendingGamesShow,trendingGamesManuallyClosed, becomeFinanciallySmartShown]);
+
+  const handleback = () => {
+    setCurrentChapter();
+  };
+
+  const handleDone = () => {
+    setCurrentChapter();
+    setShowUnicoinsAwards(true);
+    setBecomeFinanciallySmartShown(true);
+    setShowBecomeFinanciallySmart(false);
+  };
 
   useEffect(() => {
     history.scrollRestoration = "manual";
@@ -196,6 +210,7 @@ function Home({ page = "", showNav = true }) {
         showNav={showNav}
         refId={refId}
         gameOpened={gameOpened}
+        kqOpened={kqOpened}
       />
 
       <LeftPanel
@@ -283,11 +298,12 @@ function Home({ page = "", showNav = true }) {
         <BecomeFinanciallySmartPopUp
           setShowBecomeFinanciallySmart={setShowBecomeFinanciallySmart}
           setUnicoins={setUnicoins}
+          setCurrentChapter={setCurrentChapter}
+          setKqOpened={setKqOpened}
         />
       ) : null}
       {!userdata && showUnicoinsAwards ? (
         <UnicoinsAwards
-          source={gameOpened}
           setShowUnicoinsAwards={setShowUnicoinsAwards}
           unicoins={unicoins}
           setshowauth={setshowauth}
@@ -301,6 +317,18 @@ function Home({ page = "", showNav = true }) {
           setShowUnicoinsAwards={setShowUnicoinsAwards}
           setUnicoins={setUnicoins}
         />
+      ) : (
+        ""
+      )}
+      {!userdata && currentChapter ? (
+       <WebglView
+       {...{  
+         gameKey:currentChapter,
+         setView:handleback,
+         handleDone,
+         type:"kq"
+       }}
+         />
       ) : (
         ""
       )}

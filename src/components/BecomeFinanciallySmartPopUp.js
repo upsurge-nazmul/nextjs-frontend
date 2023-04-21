@@ -1,11 +1,26 @@
-import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import KidApis from "../actions/apis/KnowledgeQuestApi";
 
-function BecomeFinanciallySmartPopUp({ setShowBecomeFinanciallySmart }) {
-  const router = useRouter();
-  console.log("Showing");
+function BecomeFinanciallySmartPopUp({
+  setShowBecomeFinanciallySmart,
+  setCurrentChapter,
+  setUnicoins,
+  setKqOpened,
+}) {
+  const [questData, setQuestData] = useState();
+  useEffect(async () => {
+    let response = await KidApis.getQuestDataPreSignUp();
+    if (response) {
+      setQuestData(response.data.data);
+    }
+  }, []);
+  const setData = async (selection) => {
+    setCurrentChapter(questData[selection].chapters.id);
+    setKqOpened(questData[selection].chapters.title);
+    setUnicoins(3000);
+  };
   return (
     <div className={styles.trendingGames}>
       <div
@@ -28,29 +43,35 @@ function BecomeFinanciallySmartPopUp({ setShowBecomeFinanciallySmart }) {
           <div className={styles.image}>
             <div className={styles.coverName}>Money 101</div>
             <img
-              className={styles.gameImg}
-              src="/trendingGames.png"
+              className={styles.KQImg}
+              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/6Y2N5mHl6Wd.png"
               alt="trendingGame"
             />
-            <button className={styles.playButton}>Try Now</button>
+            <button onClick={() => setData(0)} className={styles.playButton}>
+              Try Now
+            </button>
           </div>
           <div className={styles.image}>
-            <div className={styles.coverName}>Money 101</div>
+            <div className={styles.coverName}>Digital Payments and UPI</div>
             <img
-              className={styles.gameImg}
-              src="/trendingGames.png"
+              className={styles.KQImg}
+              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/6n9JllU6s75.png"
               alt="trendingGame"
             />
-            <button className={styles.playButton}>Try Now</button>
+            <button onClick={() => setData(1)} className={styles.playButton}>
+              Try Now
+            </button>
           </div>
           <div className={styles.image}>
-            <div className={styles.coverName}>Money 101</div>
+            <div className={styles.coverName}>Personal Finance</div>
             <img
-              className={styles.gameImg}
-              src="/trendingGames.png"
-              alt="trendingGame"
+              className={styles.KQImg}
+              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/69Q0KfHYmjw.png"
+              alt="Personal Finance"
             />
-            <button className={styles.playButton}>Try Now</button>
+            <button onClick={() => setData(2)} className={styles.playButton}>
+              Try Now
+            </button>
           </div>
         </div>
       </div>
