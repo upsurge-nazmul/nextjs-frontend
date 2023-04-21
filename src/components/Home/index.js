@@ -52,7 +52,8 @@ function Home({ page = "", showNav = true }) {
   const [refId, setRefId] = useState();
   const router = useRouter();
   const [showTrendingGames, setShowTrendingGames] = useState(false);
-  const [trendingGamesManuallyClosed, setTendingGamesManuallyClosed] = useState(false);
+  const [trendingGamesManuallyClosed, setTendingGamesManuallyClosed] =
+    useState(false);
   const [showUnicoinsAwards, setShowUnicoinsAwards] = useState(false);
   const [trendingGamesShow, setTrendingGamesShow] = useState(false);
   const [becomeFinanciallySmartShown, setBecomeFinanciallySmartShown] =
@@ -78,14 +79,18 @@ function Home({ page = "", showNav = true }) {
         !becomeFinanciallySmartShown &&
         !showUnicoinsAwards &&
         !showauth
-        ) {
-          setShowBecomeFinanciallySmart(isEnd);
-          setBecomeFinanciallySmartShown(isEnd);
+      ) {
+        setShowBecomeFinanciallySmart(isEnd);
+        setBecomeFinanciallySmartShown(isEnd);
       }
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [trendingGamesShow,trendingGamesManuallyClosed, becomeFinanciallySmartShown]);
+  }, [
+    trendingGamesShow,
+    trendingGamesManuallyClosed,
+    becomeFinanciallySmartShown,
+  ]);
 
   const handleback = () => {
     setCurrentChapter();
@@ -272,7 +277,7 @@ function Home({ page = "", showNav = true }) {
         setshowauth={setshowauth}
       />
       <JasperSection />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <BlogsSection />
       <TestiMonial />
       <TryUpsurge
@@ -321,14 +326,14 @@ function Home({ page = "", showNav = true }) {
         ""
       )}
       {!userdata && currentChapter ? (
-       <WebglView
-       {...{  
-         gameKey:currentChapter,
-         setView:handleback,
-         handleDone,
-         type:"kq"
-       }}
-         />
+        <WebglView
+          {...{
+            gameKey: currentChapter,
+            setView: handleback,
+            handleDone,
+            type: "kq",
+          }}
+        />
       ) : (
         ""
       )}
