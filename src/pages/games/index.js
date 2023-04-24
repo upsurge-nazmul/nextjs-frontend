@@ -16,6 +16,7 @@ import CarouselGames from "../../components/Carousel/CarouselGames/index";
 import AvailableGames from "../../components/DownloadGames/AvailableGames";
 import GameCard from "../../components/Dashboard/GameCard";
 import GameView from "../../components/Games/GameView";
+import UnicoinsAwards from "../../components/UnicoinsAwards";
 
 export default function GamePage() {
   const router = useRouter();
@@ -25,10 +26,13 @@ export default function GamePage() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [openGame, setOpenGame] = useState("");
+  const [showUnicoinsAwards, setShowUnicoinsAwards] = useState(false);
+  const [updateTimesPlayed,setUpdateTimesPlayed] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { userdata, theme, skipActive, setskipActive } =
+  const [unicoins,setUnicoins] = useState(null);
+  const { userdata, theme, skipActive, setskipActive,timesPlayed,setTimesPlayed } =
     useContext(MainContext);
-
+  const [gameOpened, setGameOpened] = useState(null);
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -40,6 +44,17 @@ export default function GamePage() {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  useEffect(()=>{
+    if(!userdata){
+      if(timesPlayed > 0){
+        setShowUnicoinsAwards(true);
+        setUnicoins(4000);
+        let game = localStorage.getItem("gameOpened");
+        console.log(`game`,game);
+        setGameOpened(JSON.parse(game));
+      }
+    }
+  },[updateTimesPlayed]);
   async function handlegameclick(
     title,
     pushto,
@@ -47,7 +62,8 @@ export default function GamePage() {
     premium_plan,
     userPlan,
     isSimulator = false
-  ) {
+    ) {
+    localStorage.setItem("gameOpened",JSON.stringify(title));
     setOpenGame(pushto ? pushto : title);
   }
   return (
@@ -67,6 +83,7 @@ export default function GamePage() {
         setauthmode={setauthmode}
         showpopup={showpopup}
         setshowpopup={setshowpopup}
+        gameOpened={gameOpened}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
@@ -98,18 +115,24 @@ export default function GamePage() {
           {Object.keys(Game_Data).map((item, index) => {
             return (
               <GameCard
-                onClick={() =>
-                  handlegameclick(
-                    item,
-                    Game_Data[item].pushto
+                onClick={() =>{
+                  if(timesPlayed === 0){
+                    handlegameclick(
+                      item,
+                      Game_Data[item].pushto
                       ? Game_Data[item].pushto.split("/")[
-                          Game_Data[item].pushto.split("/").length - 1
-                        ]
-                      : "",
+                        Game_Data[item].pushto.split("/").length - 1
+                      ]
+                    : "",
                     Game_Data[item].webgl_key,
                     Game_Data[item].premium_plan,
                     null
-                  )
+                    )
+                  }
+                  else{
+                    setUpdateTimesPlayed(true);
+                  }
+                }
                 }
                 data={Game_Data[item]}
                 key={"game" + index}
@@ -172,7 +195,13 @@ export default function GamePage() {
       </div>
       <JoinUs />
       <Footer />
-      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
+      {openGame ? <GameView game={openGame} setGame={setOpenGame} timesPlayed={timesPlayed} setTimesPlayed={setTimesPlayed} setShowUnicoinsAwards={setShowUnicoinsAwards} setUnicoins={setUnicoins} /> : ""}
+      {!userdata && showUnicoinsAwards ? 
+        <UnicoinsAwards 
+         setShowUnicoinsAwards={setShowUnicoinsAwards}
+         unicoins={unicoins}
+         setshowauth={setshowauth}
+         setauthmode={setauthmode} /> :"" }
     </div>
   );
 }
