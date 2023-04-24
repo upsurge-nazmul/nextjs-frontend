@@ -61,7 +61,7 @@ function ParentChildAuth({
       });
     }
   };
-  const { firstName, setfirstName, lastName, setlastName, setuserdata } =
+  const { firstName, setfirstName, lastName, setlastName, setuserdata,setTimesPlayed } =
     useContext(MainContext);
   const [passisweak, setpassisweak] = useState(false);
   const [showdetailpass, setshowdetailpass] = useState(false);
@@ -160,6 +160,7 @@ function ParentChildAuth({
       setCookie("accesstoken", response.data.data.token);
       localforage.removeItem("playedGame");
       setmode("onboarding");
+      setTimesPlayed(0);
     }
   }
   async function genotp() {
@@ -223,7 +224,7 @@ function ParentChildAuth({
       coupon,
       first_name: firstName,
       last_name: lastName,
-      num_unicoins: unicoins ? unicoins : 0,
+      num_unicoins: 0,
       age: childAge,
       game_opened: gameOpened ? gameOpened : null,
       knowledge_quest_opened: kqOpened ? kqOpened : null,
@@ -244,6 +245,7 @@ function ParentChildAuth({
         $email: email,
         $phone: phone,
       });
+      setTimesPlayed(0);
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
