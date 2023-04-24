@@ -303,7 +303,7 @@ export default function GamePage({ gamedata, userdata, seodata }) {
       unitycontext.on("Score", function (score) {
         localforage.setItem(
           "playedGame",
-          JSON.stringify({ gameid, score, unicoins: 300 })
+          JSON.stringify({ gameid, score })
         );
       });
       unitycontext.on("Error", function (code, url, vendor) {
