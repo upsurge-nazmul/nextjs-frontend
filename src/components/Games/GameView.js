@@ -19,8 +19,10 @@ export default function GameView({
   setGame,
   externalId = null,
   handleDone = null,
+  timesPlayed,
+  setTimesPlayed,
   setUnicoins,
-  setShowUnicoinsAwards
+  setShowUnicoinsAwards,
 }) {
   const gameRef = useRef();
   const router = useRouter();
@@ -254,6 +256,7 @@ export default function GameView({
             mixpanel.track("Game Closed", { event: `Game closed` });
             setGame();
             setUnityContext(null);
+            setTimesPlayed(timesPlayed + 1);
             setShowUnicoinsAwards(true);
             setUnicoins(4000);
           }}
@@ -265,6 +268,7 @@ export default function GameView({
             setFullScreen(false);
             document.exitFullscreen();
             setGame();
+            setTimesPlayed(timesPlayed + 1);
           }}
           fullScreen={fullScreen}
           showDone={handleDone}
