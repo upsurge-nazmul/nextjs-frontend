@@ -44,7 +44,7 @@ function BecomeFinanciallySmartPopUp({
             <div className={styles.coverName}>Money 101</div>
             <img
               className={styles.KQImg}
-              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/6Y2N5mHl6Wd.png"
+              src="/whatismoneythumbnail.png"
               alt="trendingGame"
             />
             <button onClick={() => setData(0)} className={styles.playButton}>
@@ -55,7 +55,7 @@ function BecomeFinanciallySmartPopUp({
             <div className={styles.coverName}>Digital Payments and UPI</div>
             <img
               className={styles.KQImg}
-              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/6n9JllU6s75.png"
+              src="/digitalpaymentthumbnail.png"
               alt="trendingGame"
             />
             <button onClick={() => setData(1)} className={styles.playButton}>
@@ -66,7 +66,7 @@ function BecomeFinanciallySmartPopUp({
             <div className={styles.coverName}>Personal Finance</div>
             <img
               className={styles.KQImg}
-              src="/KnowledgeQuest/digitalPaymentsAndUpi/mobile/69Q0KfHYmjw.png"
+              src="/bankingthumbnail.png"
               alt="Personal Finance"
             />
             <button onClick={() => setData(2)} className={styles.playButton}>
