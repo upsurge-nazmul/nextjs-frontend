@@ -6,7 +6,7 @@ import EventsApis from "../../actions/apis/EventsApis";
 const EventsSection = () => {
   const [data, setData] = useState([]);
   const fetchAllEvents = async () => {
-    const res = await EventsApis.getAllInternShip();
+    const res = await EventsApis.getAllEvents({ category: "internship" });
     console.log(res);
     if (res && res.data && res.data.data) {
       setData(res.data.data);
