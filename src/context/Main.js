@@ -34,6 +34,7 @@ export const MainContextProider = ({ children }) => {
   });
   const [theme, setTheme] = useState("light");
   const [skipActive,setskipActive] = useState(true);
+  const [timesPlayed, setTimesPlayed] = useState(0);
   const router = useRouter();
   // useEffect(() => {
   //   setTheme(
@@ -144,23 +145,32 @@ export const MainContextProider = ({ children }) => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+  useEffect(()=>{
+    let timesAlreadyPlayed = localStorage.getItem("timesPlayed");
+    if(timesAlreadyPlayed > 0){
+      setTimesPlayed(timesAlreadyPlayed);
+    }
+    else if(timesPlayed > 0){
+      localStorage.setItem("timesPlayed", JSON.stringify(timesPlayed));
+    }
+  },[timesPlayed])
   return (
     <MainContext.Provider
-      value={{
-        savedUsers,
-        setSavedUsers,
-        mobileMode,
-        notification,
-        setNotification,
-        user,
-        setuser,
-        authmode,
-        setauthmode,
-        dashboardmode,
-        setdashboardmode,
-        accesstoken,
-        setaccesstoken,
-        userSignupMethod,
+    value={{
+      savedUsers,
+      setSavedUsers,
+      mobileMode,
+      notification,
+      setNotification,
+      user,
+      setuser,
+      authmode,
+      setauthmode,
+      dashboardmode,
+      setdashboardmode,
+      accesstoken,
+      setaccesstoken,
+      userSignupMethod,
         setuserSignupMethod,
         email,
         setemail,
@@ -180,6 +190,8 @@ export const MainContextProider = ({ children }) => {
         setTheme,
         skipActive,
         setskipActive,
+        setTimesPlayed,
+        timesPlayed
       }}
     >
       {children}
