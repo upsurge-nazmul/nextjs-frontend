@@ -80,7 +80,7 @@ function ParentChildAuth({
   });
   let couponInput;
   const router = useRouter();
-  const { utm_source } = router.query;
+  const { utm_source, utm_campaign } = router.query;
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -129,7 +129,7 @@ function ParentChildAuth({
     }
     let response = await LoginApis.signup({
       email: email,
-      signup_method: utm_source? utm_source : "organic" ,
+      signup_method: utm_source? utm_source : utm_campaign ? utm_campaign: "organic" ,
       user_type: usertype,
       phone,
       password,
