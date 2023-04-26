@@ -80,7 +80,7 @@ function ParentChildAuth({
   });
   let couponInput;
   const router = useRouter();
-  const { utm_source, utm_campaign } = router.query;
+  const { utm_source, utm_campaign, utm_medium } = router.query;
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -127,9 +127,32 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
+    let utm_params = "organic";
+    if (utm_source && utm_campaign && utm_medium) {
+      utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign + "-" + "um:" + utm_medium;
+    }
+    else if (utm_source && utm_campaign) {
+      utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign;
+    }
+    else if (utm_source && utm_medium) {
+      utm_params = "us:" + utm_source + "-" + "um:" + utm_medium;
+    }
+    else if (utm_campaign && utm_medium) {
+      utm_params = "uc:" + utm_campaign + "-" + "um:" + utm_medium;
+    }
+    else if (utm_source) {
+      utm_params = "us:" + utm_source;
+    }
+    else if (utm_campaign) {
+      utm_params = "uc:" + utm_campaign;
+    }
+    else if (utm_medium) {
+      utm_params = "um:" + utm_medium;
+    }
+
     let response = await LoginApis.signup({
       email: email,
-      signup_method: utm_source? utm_source : utm_campaign ? utm_campaign: "organic" ,
+      signup_method: utm_params,
       user_type: usertype,
       phone,
       password,
