@@ -28,7 +28,7 @@ const EventsSection = () => {
                 </div>
               )}
               <div className={styles.imgContainer}>
-                <img src={card.img} />
+                <img src={card.img} alt=" " />
               </div>
               <div className={styles.content}>
                 <h3 className={`${styles.title} ${styles.cutoffText}`}>

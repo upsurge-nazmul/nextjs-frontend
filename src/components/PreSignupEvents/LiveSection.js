@@ -24,7 +24,7 @@ const LiveSection = () => {
       <div className={styles.right}>
         <div>
           {/* image is pending*/}
-          <img src="" />
+          <img src="" alt=" " />
         </div>
       </div>
     </div>
