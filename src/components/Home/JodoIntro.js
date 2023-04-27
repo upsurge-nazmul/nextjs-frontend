@@ -82,7 +82,7 @@ function JodoIntro({
           />
         </div>
         <p className={styles.subheading}>
-          {`upsurge is India’s most loved platform to enable financial literacy for children & make them MONEY-smart`}
+          {`upsurge is India’s most loved platform to enable financial literacy for kids & make them MONEY-smart`}
         </p>
         <p className={styles.error}>{error}</p>
         <button className={styles.tryButton} onClick={handleAction}>
