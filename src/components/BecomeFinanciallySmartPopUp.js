@@ -44,7 +44,7 @@ function BecomeFinanciallySmartPopUp({
             <img
               className={styles.KQImg}
               src="/knowyourmoneythumbnail.png"
-              alt="trendingGame"
+              alt="Money 101"
             />
             <button onClick={() => setData(0)} className={styles.playButton}>
               Try Now
@@ -53,9 +53,9 @@ function BecomeFinanciallySmartPopUp({
           <div className={styles.image}>
             <img
               className={styles.KQImg}
-              src="/digitalpaymentthumbnail.png"
-              alt="trendingGame"
-            />
+              src="/bankingthumbnail.png"
+              alt="Introducing to Banking"
+              />
             <button onClick={() => setData(1)} className={styles.playButton}>
               Try Now
             </button>
@@ -63,8 +63,8 @@ function BecomeFinanciallySmartPopUp({
           <div className={styles.image}>
             <img
               className={styles.KQImg}
-              src="/bankingthumbnail.png"
-              alt="Personal Finance"
+              src="/digitalpaymentthumbnail.png"
+              alt="Digital Payemnt"
             />
             <button onClick={() => setData(2)} className={styles.playButton}>
               Try Now
