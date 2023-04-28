@@ -19,18 +19,19 @@
   .blockLarger {
     width: 55rem;
     border-radius: 2rem;
-    background: linear-gradient(to right, rgb(217, 217, 217), white);
-    border: #fff solid 0.5rem;
+    background: #f4f4f4;
+    border: #fff solid 1rem;
     z-index: 2;
-    padding: 40px;
+    padding: 2rem;
     position: relative;
     display: flex;
     flex-direction: column;
+    border-radius: 3rem;
     gap: 1rem;
     .cross {
       position: absolute;
       top: 0.5rem;
-      right: 0rem;
+      right: 0.5rem;
       z-index: 100;
       background-color: white;
       border-radius: 100%;
