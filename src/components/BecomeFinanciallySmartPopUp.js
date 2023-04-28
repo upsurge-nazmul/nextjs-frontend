@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import KidApis from "../actions/apis/KnowledgeQuestApi";
+import { useRouter } from "next/router";
 
 function BecomeFinanciallySmartPopUp({
   setShowBecomeFinanciallySmart,
   setCurrentChapter,
   setUnicoins,
   setKqOpened,
+  userdata,
 }) {
+  const router = useRouter();
   const [questData, setQuestData] = useState();
   useEffect(async () => {
     let response = await KidApis.getQuestDataPreSignUp();
@@ -46,7 +49,16 @@ function BecomeFinanciallySmartPopUp({
               src="/knowyourmoneythumbnail.png"
               alt="Money 101"
             />
-            <button onClick={() => setData(0)} className={styles.playButton}>
+            <button onClick={() =>{
+              if(!userdata){
+                setData(0);
+              }
+              else{
+                console.log(` questData[0].id`, questData[0].questId);
+                router.push("/dashboard/k/quest/" + questData[0].questId);
+              }
+            }
+            } className={styles.playButton}>
               Try Now
             </button>
           </div>
@@ -55,7 +67,7 @@ function BecomeFinanciallySmartPopUp({
               className={styles.KQImg}
               src="/bankingthumbnail.png"
               alt="Introducing to Banking"
-              />
+            />
             <button onClick={() => setData(1)} className={styles.playButton}>
               Try Now
             </button>
