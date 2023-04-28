@@ -24,24 +24,24 @@ export default function KnowledgeQuest({
   setshowauth,
   setshowpopup,
 }) {
-  const democoncepts = [
-    "Money",
-    "Entrepreneurship",
-    "Earning",
-    "Saving",
-    "Spending",
-    "Budgeting",
-    "Investing",
-    "Borrowing",
-    "Insurance",
-    "Banking",
-    "Payments",
-    "Stock Markets",
-    "Real Estate",
-    "Gold",
-    "Retirement Funds",
-    "Career Development",
-  ];
+  // const democoncepts = [
+  //   "Money",
+  //   "Entrepreneurship",
+  //   "Earning",
+  //   "Saving",
+  //   "Spending",
+  //   "Budgeting",
+  //   "Investing",
+  //   "Borrowing",
+  //   "Insurance",
+  //   "Banking",
+  //   "Payments",
+  //   "Stock Markets",
+  //   "Real Estate",
+  //   "Gold",
+  //   "Retirement Funds",
+  //   "Career Development",
+  // ];
   const { theme, userdata } = useContext(MainContext);
   const router = useRouter();
 
@@ -119,8 +119,8 @@ export default function KnowledgeQuest({
             <p className={styles.name}>challenges</p>
           </div>
         </div>
-        <p className={styles.secondheading}>Concepts Covered</p>
-        <div className={styles.conceptswrapper}>
+        {/*<p className={styles.secondheading}>Concepts Covered</p>
+          <div className={styles.conceptswrapper}>
           {democoncepts.map((concept, index) => {
             return (
               <div className={styles.concept} key={"concept" + index}>
@@ -128,7 +128,7 @@ export default function KnowledgeQuest({
               </div>
             );
           })}
-        </div>
+        </div> */}
         <div className={styles.signupBox}>
           {!userdata ? (
             <div
@@ -138,7 +138,7 @@ export default function KnowledgeQuest({
                 setshowpopup(true);
               }}
             >
-              Join early access
+              Sign up for FREE
             </div>
           ) : (
             <div
