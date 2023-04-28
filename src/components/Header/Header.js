@@ -196,7 +196,7 @@ function Header({
             ? "Go to Dashboard"
             : page === HOME_VARIENTS[0]
             ? "Try for free"
-            : router.asPath === "/pricing" ? "Pay now" : "Sign up for free"}
+            : router.asPath === "/pricing" ? "Buy now" : "Sign up for FREE"}
         </div>
       </div>
     </div>

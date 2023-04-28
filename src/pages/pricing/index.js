@@ -168,7 +168,7 @@ export default function Pricing() {
                       //router.push(`/payments/stripe?plan_id=${plans[1].id}`);
                     }}
                   >
-                    {`Pay now`}
+                    {`Buy now`}
                   </div>
                 </div>
               </div>
@@ -203,7 +203,7 @@ export default function Pricing() {
           }}
           className={styles.button}
         >
-          Pay now
+          Buy now
         </button>
       </div>
       <JoinUs />
