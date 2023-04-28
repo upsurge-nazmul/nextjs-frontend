@@ -37,9 +37,9 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
           Make your child
           <br />
             <div className={styles.slidingVertical}>
-              <span className={styles.fun}>money-smart.</span>
-              <span className={styles.fun}>entrepreneurial.</span>
-              <span className={styles.fun}>future-ready.</span>
+              <span className={styles.funBrandCol1}>money-smart.</span>
+              <span className={styles.funBrandCol2}>entrepreneurial.</span>
+              <span className={styles.funBrandCol3}>future-ready.</span>
             </div>
         </h1>
         <p className={styles.subheading}>
