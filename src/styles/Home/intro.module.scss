@@ -48,7 +48,7 @@
     .heading {
       font-size: 3.5vw;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 4.5rem;
       color: #18191f;
       .fun {
         font-weight: 700;
@@ -350,10 +350,10 @@
       padding-left: 7%;
       padding-right: 7%;
       .heading {
-        font-size: clamp(20px, 6vw, 45px);
+        font-size: 2.75rem;
         font-weight: 700;
-        line-height: 50px;
-        margin-bottom: 5px;
+        line-height: 3rem;
+        margin-bottom: 4.5rem;
         width: auto;
       }
       .subheading {
@@ -411,8 +411,7 @@
     flex-direction: column;
     z-index: 2;
     overflow: hidden;
-    .error {
-    }
+    
     .textContent {
       margin-top: 11%;
       width: 90%;
