@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/Home/home.module.scss";
 import { MainContext } from "../../context/Main";
@@ -36,6 +36,8 @@ import WebglView from "../WebglView";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true }) {
+  const gamesRef = useRef();
+  const kqRef = useRef();
   const { userdata } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
@@ -65,32 +67,31 @@ function Home({ page = "", showNav = true }) {
   const [currentChapter, setCurrentChapter] = useState("");
   const [gameOpened, setGameOpened] = useState(null);
   const [kqOpened, setKqOpened] = useState(null);
-  useEffect(() => {
+  useEffect(()=>{
     function handleScroll() {
-      const isEnd =
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight;
-      if (!trendingGamesShow && !becomeFinanciallySmartShown) {
-        setShowTrendingGames(isEnd);
-        setTrendingGamesShow(isEnd);
-      } else if (
-        trendingGamesShow &&
-        trendingGamesManuallyClosed &&
-        !becomeFinanciallySmartShown &&
-        !showUnicoinsAwards &&
-        !showauth
-      ) {
-        setShowBecomeFinanciallySmart(isEnd);
-        setBecomeFinanciallySmartShown(isEnd);
-      }
-    }
+      const showGamesPopUp = gamesRef.current.offsetTop <= (window.scrollY + 250); 
+      const showKQPopUp = kqRef.current.offsetTop <= (window.scrollY + 250); 
+      if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
+           setShowTrendingGames(showGamesPopUp);
+           setTrendingGamesShow(showGamesPopUp);
+         } 
+      else if (
+           trendingGamesShow &&
+           trendingGamesManuallyClosed &&
+           !becomeFinanciallySmartShown &&
+           !showUnicoinsAwards &&
+           !showauth &&
+           showKQPopUp
+           ) {
+             setShowBecomeFinanciallySmart(showKQPopUp);
+             setBecomeFinanciallySmartShown(showKQPopUp);
+         }
+       }
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [
-    trendingGamesShow,
-    trendingGamesManuallyClosed,
-    becomeFinanciallySmartShown,
-  ]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[trendingGamesShow,trendingGamesManuallyClosed, becomeFinanciallySmartShown]);
 
   const handleback = () => {
     setCurrentChapter();
@@ -190,13 +191,22 @@ function Home({ page = "", showNav = true }) {
       document.documentElement.scrollTop = 0;
     }
   }, [router]);
-
+  useEffect(()=>{
+    if (showTrendingGames || showBecomeFinanciallySmart ) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+    return () => (document.body.style.overflowY = "auto");
+  },[showTrendingGames,showBecomeFinanciallySmart])
+  
   return (
     <div
       id="home-page-main"
       className={`${styles.homePage} ${
-        showauth || router.query.showTour ? styles.stopscrolling : ""
-      }`}
+        showauth || router.query.showTour || showTrendingGames || showBecomeFinanciallySmart ? styles.stopscrolling : ""
+      }
+      `}
     >
       <PageTitle />
       <Header
@@ -270,7 +280,9 @@ function Home({ page = "", showNav = true }) {
       />
       {/* <How /> */}
       <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
+      <div ref={gamesRef}>
       <PartnerSection />
+      </div>
       <TryUpsurge
         content={"Try upsurge now"}
         setauthmode={setauthmode}
@@ -286,11 +298,13 @@ function Home({ page = "", showNav = true }) {
         setshowauth={setshowauth}
       />
       <FaqSection />
+      <div ref={kqRef}>
       <JoinUs
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         setmailfromhome={setmailfromhome}
-      />
+        />
+        </div>
       {!userdata && showTrendingGames ? (
         <TrendingGamesPopUp
           setShowTrendingGames={setShowTrendingGames}
