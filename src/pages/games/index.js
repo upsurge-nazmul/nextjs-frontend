@@ -97,20 +97,18 @@ export default function GamePage() {
           src="https://imgcdn.upsurge.in/images/unsp/photo-1600080972464-8e5f35f63d08.avif"
           alt=""
         />
-        <div className={styles.headingSection}>
-          <h2 className={styles.heading}>Games</h2>
-          <h3 className={styles.subheading}>
-            {`On upsurge, children (and parents) are encouraged to play games
-            based on topics around entrepreneurship & money management, so that
-            they can learn by doing and making decisions. Here are some of our
-            games that you and your child can play together.`}
-          </h3> 
-        </div>
+        
           */}
         <CarouselGames userdata={userdata} setshowauth={setshowauth} setauthmode={setauthmode} />
-        <div className={styles.moreGames}>
-          More Games
+        <div className={styles.headingSection}>
+          <h2 className={styles.heading}>Kids see fun. Parents see progress!</h2>
+          <h3 className={styles.subheading}>
+            Get access to the most fun educational financial literacy & entrepreneurial games for kids.
+            <br />
+            <br />
+          </h3> 
         </div>
+        
         <div className={styles.gamelistwrapper}>
           {Object.keys(Game_Data).map((item, index) => {
             return (
@@ -140,10 +138,7 @@ export default function GamePage() {
                 // onClick={() => router.push(`/games/${item}`)}
               >
                 <img
-                  src={
-                    Game_Data[item].img_ludo ||
-                     `/images/games/${item}.png`
-                    }
+                  src={ Game_Data[item].img_ludo || `/images/games/${item}.png` }
                   alt=""
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
@@ -168,7 +163,7 @@ export default function GamePage() {
                       router.push("/games/" + item);
                     }}
                   >
-                    Play
+                    Play Now
                   </p>
                 ) : (
                   <p
@@ -184,7 +179,7 @@ export default function GamePage() {
                       }
                     }}
                   >
-                    Play
+                    Play Now
                   </p>
                 )}
             </GameCard>
