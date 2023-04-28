@@ -1,6 +1,5 @@
 .slider {
-  padding: 1rem;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +11,7 @@
       scrollbar-width: none;
       scroll-behavior: smooth;
       gap: 2%;
-      padding: 1rem;
+      padding: 2rem;
       &::-webkit-scrollbar {
           display: none;
         }
@@ -37,14 +36,16 @@
             padding: 1rem;
             flex: 0 0 100%;
             width: 20vw;
+            min-height: 30rem;
         }
         .imageContainer {
-    border-radius: 5rem;
+    border-radius: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 1rem;
     .slideImage {
-        border-radius: 5rem;
+        border-radius: 3rem;
         width: 100%;
         height: 80%;
         object-fit: cover;
@@ -57,6 +58,10 @@
     transition: 1s;
     font-size: large;
     padding:2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-between;
     .description{
       font-weight: 300;
     }
@@ -64,18 +69,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 45px;
+      height: 3rem;
       width: fit-content;
       padding:0 2rem;
       margin: 2rem 0;
-      border-radius: 6px;
+      border-radius: 0.5rem;
       background-color: #4266eb;
       color: white;
       font-size: 0.875rem;
       cursor: pointer;
       svg {
-        margin-left: 10px;
-        width: 22px;
+        margin-left: 0.625rem;
+        width: 1.4rem;
         fill: white;
         path {
           fill: white;
