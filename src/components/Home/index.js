@@ -72,21 +72,21 @@ function Home({ page = "", showNav = true }) {
       const showGamesPopUp = gamesRef.current.offsetTop <= (window.scrollY + 250); 
       const showKQPopUp = kqRef.current.offsetTop <= (window.scrollY + 250); 
       if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
-           setShowTrendingGames(showGamesPopUp);
-           setTrendingGamesShow(showGamesPopUp);
-         } 
+          setShowTrendingGames(showGamesPopUp);
+          setTrendingGamesShow(showGamesPopUp);
+        } 
       else if (
-           trendingGamesShow &&
-           trendingGamesManuallyClosed &&
-           !becomeFinanciallySmartShown &&
-           !showUnicoinsAwards &&
-           !showauth &&
-           showKQPopUp
-           ) {
-             setShowBecomeFinanciallySmart(showKQPopUp);
-             setBecomeFinanciallySmartShown(showKQPopUp);
-         }
-       }
+          trendingGamesShow &&
+          trendingGamesManuallyClosed &&
+          !becomeFinanciallySmartShown &&
+          !showUnicoinsAwards &&
+          !showauth &&
+          showKQPopUp
+          ) {
+            setShowBecomeFinanciallySmart(showKQPopUp);
+            setBecomeFinanciallySmartShown(showKQPopUp);
+        }
+      }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
