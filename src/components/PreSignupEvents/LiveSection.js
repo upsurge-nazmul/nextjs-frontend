@@ -22,9 +22,11 @@ const LiveSection = () => {
         </p>
       </div>
       <div className={styles.right}>
-        <div>
-          {/* image is pending*/}
-          <img src="" />
+        <div className={styles.imgContainer}>
+          <img
+            src="https://imgcdn.upsurge.in/images/events/live-workshop.png"
+            className={styles.img}
+          />
         </div>
       </div>
     </div>
