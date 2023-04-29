@@ -26,6 +26,7 @@ const LiveSection = () => {
           <img
             src="https://imgcdn.upsurge.in/images/events/live-workshop.png"
             className={styles.img}
+            alt="Live Workshop"
           />
         </div>
       </div>
