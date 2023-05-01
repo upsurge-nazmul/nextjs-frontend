@@ -311,6 +311,7 @@ function Home({ page = "", showNav = true }) {
           setOpenGame={setOpenGame}
           setGameOpened={setGameOpened}
           setTendingGamesManuallyClosed={setTendingGamesManuallyClosed}
+          userdata={userdata}
         />
       ) : null}
       {!userdata && showBecomeFinanciallySmart ? (
@@ -319,6 +320,7 @@ function Home({ page = "", showNav = true }) {
           setUnicoins={setUnicoins}
           setCurrentChapter={setCurrentChapter}
           setKqOpened={setKqOpened}
+          userdata={userdata}
         />
       ) : null}
       {!userdata && showUnicoinsAwards ? (

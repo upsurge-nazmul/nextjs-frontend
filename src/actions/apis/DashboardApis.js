@@ -168,6 +168,14 @@ const checkChoresToggle = (payload) => {
     getCookie("accesstoken")
 );
 };
+const updateDashboardPopup = (payload) => {
+  return ApiCalls.postResponse(
+    `users/updatedashboardpopup`,
+    payload,
+    getCookie("accesstoken")
+);
+};
+
 //getchores
 const DashboardApis = {
   addkids,
@@ -200,6 +208,7 @@ const DashboardApis = {
   updateparent,
   toggleChores,
   checkChoresToggle,
+  updateDashboardPopup,
 };
 
 export default DashboardApis;
