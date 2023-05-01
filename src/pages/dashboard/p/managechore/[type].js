@@ -337,7 +337,7 @@ export default function ManageChore({
                 "Hobbies",
                 "School Work",
                 "Fitness",
-                "Upsurge Money Matters",
+                "upsurge Money Matters",
                 "Personal",
               ]}
               value={cat}

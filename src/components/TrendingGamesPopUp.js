@@ -3,12 +3,12 @@ import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 
-function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTrendingGamesShow  }) {
+function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTendingGamesManuallyClosed  }) {
   async function handlegameclick(title) {
     setOpenGame(title);
     setGameOpened(title);
     setShowTrendingGames(false);
-    setTrendingGamesShow(true);
+    setTendingGamesManuallyClosed(true);
   }
   return (
     <div className={styles.trendingGames}>
@@ -24,7 +24,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           className={styles.cross}
           onClick={() => {
             setShowTrendingGames(false);
-            setTrendingGamesShow(true);
+            setTendingGamesManuallyClosed(true);
           }}
         >
           <CancelOutlinedIcon className={styles.icon} />
@@ -36,8 +36,8 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
-              alt="trendingGame"
+              src="/images/games/dont-overspend.png"
+              alt="Don't Overspend"
             />
             <button
               onClick={() => {
@@ -51,7 +51,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
+              src="/images/games/balance-builder.png"
               alt="trendingGame"
               />
             <button 
@@ -63,7 +63,7 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
           <div className={styles.image}>
             <img
               className={styles.gameImg}
-              src="/trendingGames.png"
+              src="/images/games/high-and-low.png"
               alt="trendingGame"
               />
             <button

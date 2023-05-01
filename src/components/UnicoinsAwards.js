@@ -8,11 +8,7 @@ function UnicoinsAwards({
   setShowUnicoinsAwards,
   setshowauth,
   setauthmode,
-  setUnicoinsRewards,
-  unicoinsRewards,
-  source,
 }) {
-  console.log(`source`,source);
   async function signup(e) {
     e?.preventDefault();
     setshowauth(true);
@@ -50,7 +46,7 @@ function UnicoinsAwards({
         </div>
         <div className={styles.flexBox}>
           <div>
-            <h2 style={{ display: "flex" }}>
+            <h2 className={styles.heading} style={{ display: "flex" }}>
               <UniCoinSvg className={styles.unicoin} clr="purple" />
               {unicoins} Unicoins Awarded!
             </h2>

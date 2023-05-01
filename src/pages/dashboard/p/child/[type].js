@@ -29,7 +29,7 @@ function AddKid({ childdata, userdatafromserver }) {
     {
       choretitle: "Complete Origins and Barter System Course",
       msg: "Complete the origins and barter system course to unlock games and activities. You will also earn Unicoins upon completion of this task.",
-      cat: "Upsurge money matters",
+      cat: "upsurge money matters",
       value: "unicoins",
       img_url: "https://imgcdn.upsurge.in/images/Group-4946.png",
       rewardAmount: 200,
@@ -37,7 +37,7 @@ function AddKid({ childdata, userdatafromserver }) {
     {
       choretitle: "Update your Avatar",
       msg: "To complete this task, buy one avatar from the store. You will then be able to update your profile picture by going to profile.",
-      cat: "Upsurge money matters",
+      cat: "upsurge money matters",
       value: "unicoins",
       img_url: "https://imgcdn.upsurge.in/images/Group-4946.png",
       rewardAmount: 200,
@@ -45,7 +45,7 @@ function AddKid({ childdata, userdatafromserver }) {
     {
       choretitle: "Complete the course Introduction to Banking",
       msg: "Complete this course to unlock more games and activities. You will also earn Unicoins upon completion of this task.",
-      cat: "Upsurge money matters",
+      cat: "upsurge money matters",
       value: "unicoins",
       img_url: "https://imgcdn.upsurge.in/images/Group-4946.png",
       rewardAmount: 200,
@@ -53,7 +53,7 @@ function AddKid({ childdata, userdatafromserver }) {
     {
       choretitle: "Invite your friends",
       msg: "Invite your friends to earn unicoins.",
-      cat: "Upsurge money matters",
+      cat: "upsurge money matters",
       value: "unicoins",
       img_url: "https://imgcdn.upsurge.in/images/Group-4946.png",
       rewardAmount: 200,

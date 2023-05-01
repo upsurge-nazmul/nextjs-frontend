@@ -52,9 +52,9 @@ function CalculatorsPage() {
         <div className={styles.headingSection}>
           <h2 className={styles.heading}>Calculators</h2>
           <h3 className={styles.subheading}>
-            Upsurge provides a range of calculators from Loans to Deposits. From
+            upsurge provides a range of calculators from Loans to Deposits. From
             calculating your Personal Loan EMI, to checking your Home Loan
-            affordability, Upsurge gives you a whole set of calculators to help
+            affordability, upsurge gives you a whole set of calculators to help
             you make your informed decision. As you embark on a journey to
             fulfil your dreams with a new bike/car or a new home, the calculator
             helps you with a better understanding of expenses. Also, before you
@@ -96,7 +96,7 @@ function CalculatorsPage() {
                   <p className={styles.calccardsubtitle}>
                     {Calc_Data[item].subheading}
                   </p>
-                  <p className={styles.date}>By Upsurge Team, 5th Aug, 2021</p>
+                  <p className={styles.date}>By upsurge Team, 5th Aug, 2021</p>
                 </div>
               );
             }

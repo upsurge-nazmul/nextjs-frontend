@@ -21,7 +21,7 @@ const TravelSection = () => {
       <br />
       <span className={styles.text}>Loved it?</span>
       <button className={styles.button}>
-        Watch More
+          Loved it?&nbsp; Explore more!
         <PlayArrowIcon />
       </button>
     </div>

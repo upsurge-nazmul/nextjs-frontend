@@ -150,7 +150,7 @@ export default function SummerBootcamp() {
       <div className={styles.rest}>
         <div className={styles.rewards}>
           <p className={styles.heading} style={{ userSelect: "none" }}>
-            Upsurge Summer Bootcamp
+            upsurge Summer Bootcamp
           </p>
           <p className={styles.summary}>
             {`First of it’s kind Summer Bootcamp to make children money-wise & entrepreneurial!

@@ -42,25 +42,27 @@ const HighlightsCounter = ({ setshowauth, setauthmode }) => {
         ))}
       </div>
       <div className={styles.buttonContainer}>
-        <button
-          onClick={() => {
-            if (userdata) {
-              if (userdata.is_waiting_active) {
-                router.push("/dashboard/w");
-              } else if (userdata.user_type === "parent") {
-                router.push("/dashboard/p");
+        {router.asPath !== "/pricing" && (
+          <button
+            onClick={() => {
+              if (userdata) {
+                if (userdata.is_waiting_active) {
+                  router.push("/dashboard/w");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p");
+                } else {
+                  router.push("/dashboard/k");
+                }
               } else {
-                router.push("/dashboard/k");
+                setshowauth(true);
+                setauthmode("parentChild");
               }
-            } else {
-              setshowauth(true);
-              setauthmode("parentChild");
-            }
-          }}
-          className={styles.signupButton}
-        >
-          {userdata ? "Go to dashboard" : "Sign up"}
-        </button>
+            }}
+            className={styles.signupButton}
+          >
+            {userdata ? "Go to dashboard" : "Sign up"}
+          </button>
+        )}
       </div>
     </div>
   );

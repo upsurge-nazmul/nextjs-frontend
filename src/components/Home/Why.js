@@ -15,7 +15,7 @@ function Why() {
           <span className={styles.highlight}>
             Why <div className={styles.underline}></div>
           </span>{" "}
-          Upsurge?
+          upsurge?
         </p>
         <p className={styles.subheading}>
           Most people start their adult life without knowing a lot about basic
@@ -23,7 +23,7 @@ function Why() {
           planning for retirement.
         </p>
         <div className={styles.subheading}>
-          With Upsurge, we aim to change that by teaching these concepts at a
+          With upsurge, we aim to change that by teaching these concepts at a
           young age through games and challenges the whole family can do
           together.
         </div>

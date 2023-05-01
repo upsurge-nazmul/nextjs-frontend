@@ -24,24 +24,24 @@ export default function KnowledgeQuest({
   setshowauth,
   setshowpopup,
 }) {
-  const democoncepts = [
-    "Money",
-    "Entrepreneurship",
-    "Earning",
-    "Saving",
-    "Spending",
-    "Budgeting",
-    "Investing",
-    "Borrowing",
-    "Insurance",
-    "Banking",
-    "Payments",
-    "Stock Markets",
-    "Real Estate",
-    "Gold",
-    "Retirement Funds",
-    "Career Development",
-  ];
+  // const democoncepts = [
+  //   "Money",
+  //   "Entrepreneurship",
+  //   "Earning",
+  //   "Saving",
+  //   "Spending",
+  //   "Budgeting",
+  //   "Investing",
+  //   "Borrowing",
+  //   "Insurance",
+  //   "Banking",
+  //   "Payments",
+  //   "Stock Markets",
+  //   "Real Estate",
+  //   "Gold",
+  //   "Retirement Funds",
+  //   "Career Development",
+  // ];
   const { theme, userdata } = useContext(MainContext);
   const router = useRouter();
 
@@ -92,7 +92,10 @@ export default function KnowledgeQuest({
       <PetalSvgQuest className={styles.petal} />
       <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
-        <div className={styles.heading}>Knowledge quests</div>
+        <h1 className={styles.heading}>
+          Financial Literacy <br />
+          Courses for Kids
+        </h1>
         <div className={styles.subheading}>
           {`Interactive courses that cover fundamentals of finance, including
           earning, budgeting, saving, investing, and entrepreneurship.`}
@@ -116,8 +119,8 @@ export default function KnowledgeQuest({
             <p className={styles.name}>challenges</p>
           </div>
         </div>
-        <p className={styles.secondheading}>Concepts Covered</p>
-        <div className={styles.conceptswrapper}>
+        {/*<p className={styles.secondheading}>Concepts Covered</p>
+          <div className={styles.conceptswrapper}>
           {democoncepts.map((concept, index) => {
             return (
               <div className={styles.concept} key={"concept" + index}>
@@ -125,7 +128,7 @@ export default function KnowledgeQuest({
               </div>
             );
           })}
-        </div>
+        </div> */}
         <div className={styles.signupBox}>
           {!userdata ? (
             <div
@@ -135,7 +138,7 @@ export default function KnowledgeQuest({
                 setshowpopup(true);
               }}
             >
-              Join early access
+              Sign up for FREE
             </div>
           ) : (
             <div

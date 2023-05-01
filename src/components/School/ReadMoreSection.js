@@ -17,7 +17,7 @@ const ReadMoreSection = () => {
       <div className={styles.rightContainer}>
         <div className={styles.textContainer}>
           <p>
-            Upsurge understands the importance of financial literacy and
+            upsurge understands the importance of financial literacy and
             entrepreneurship today. As such we offer financial literacy and
             entrepreneurship workshops for schools! Our workshops equip students
             with the knowledge and skills they need to succeed in the real

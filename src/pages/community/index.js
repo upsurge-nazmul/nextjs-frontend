@@ -150,7 +150,7 @@ function Community({ topusersdata, announcementsdata, postsdata }) {
               <div className={`${styles.communitycard} ${styles.quickstart}`}>
                 <ThunderSvg />
                 <div className={styles.text}>
-                  <p className={styles.heading}>Upsurge</p>
+                  <p className={styles.heading}>upsurge</p>
                   <p className={styles.heading}>Quickstart Guide</p>
                   <p className={styles.go}>
                     Get the guide

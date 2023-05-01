@@ -39,7 +39,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
         </div>
         <div className={styles.section}>
           <div className={styles.sectionLeft}>
-            <h3 className={styles.header}>Upsurge Premium</h3>
+            <h3 className={styles.header}>upsurge Premium</h3>
             <p className={styles.smallfont}> for 6 months </p>
             <p className={styles.subheading}>
               Get access to premium quests and games
@@ -107,7 +107,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
           <div className={styles.verticleLine}></div>
           <div className={styles.sectionRight}>
             <div className={styles.bestValue}>Best Value</div>
-            <h3 className={styles.header}>Upsurge Premium</h3>
+            <h3 className={styles.header}>upsurge Premium</h3>
             <p className={styles.smallfont}> for 12 months </p>
             <p className={styles.subheading}>
               Get access to premium quests and games

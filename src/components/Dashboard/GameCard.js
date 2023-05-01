@@ -40,7 +40,7 @@ function GameCard({ data, onClick, cardstyle, reward }) {
               mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
             }}
           >
-            Play
+            Play Now
             <GameSvg className={styles.icon} />
           </Buttons>
         </div>

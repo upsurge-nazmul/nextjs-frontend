@@ -63,7 +63,7 @@ export default function UblPage() {
     {
       question: "Do you need school approval for UBL? ",
       answer:
-        "No, while you can register as independent teams, we do need all members to be of the same school. Please feel free speak to your school administrators about the Upsurge Summer Bootcamp, and we can speak with them too if needed!",
+        "No, while you can register as independent teams, we do need all members to be of the same school. Please feel free speak to your school administrators about the upsurge Summer Bootcamp, and we can speak with them too if needed!",
     },
     {
       question: "How old do members have to be?",

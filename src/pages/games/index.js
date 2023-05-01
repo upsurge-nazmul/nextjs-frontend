@@ -16,6 +16,7 @@ import CarouselGames from "../../components/Carousel/CarouselGames/index";
 import AvailableGames from "../../components/DownloadGames/AvailableGames";
 import GameCard from "../../components/Dashboard/GameCard";
 import GameView from "../../components/Games/GameView";
+import UnicoinsAwards from "../../components/UnicoinsAwards";
 
 export default function GamePage() {
   const router = useRouter();
@@ -25,10 +26,13 @@ export default function GamePage() {
   const [stickyheader, setstickyheader] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [openGame, setOpenGame] = useState("");
+  const [showUnicoinsAwards, setShowUnicoinsAwards] = useState(false);
+  const [updateTimesPlayed,setUpdateTimesPlayed] = useState(false);
   const comingsoongames = ["Ludo", "HighAndLow", "MoneyMath"];
-  const { userdata, theme, skipActive, setskipActive } =
+  const [unicoins,setUnicoins] = useState(null);
+  const { userdata, theme, skipActive, setskipActive,timesPlayed,setTimesPlayed } =
     useContext(MainContext);
-
+  const [gameOpened, setGameOpened] = useState(null);
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -40,6 +44,17 @@ export default function GamePage() {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  useEffect(()=>{
+    if(!userdata){
+      if(timesPlayed > 0){
+        setShowUnicoinsAwards(true);
+        setUnicoins(4000);
+        let game = localStorage.getItem("gameOpened");
+        console.log(`game`,game);
+        setGameOpened(JSON.parse(game));
+      }
+    }
+  },[updateTimesPlayed]);
   async function handlegameclick(
     title,
     pushto,
@@ -47,7 +62,8 @@ export default function GamePage() {
     premium_plan,
     userPlan,
     isSimulator = false
-  ) {
+    ) {
+    localStorage.setItem("gameOpened",JSON.stringify(title));
     setOpenGame(pushto ? pushto : title);
   }
   return (
@@ -67,6 +83,7 @@ export default function GamePage() {
         setauthmode={setauthmode}
         showpopup={showpopup}
         setshowpopup={setshowpopup}
+        gameOpened={gameOpened}
       />
       <LeftPanel
         openLeftPanel={openLeftPanel}
@@ -80,36 +97,40 @@ export default function GamePage() {
           src="https://imgcdn.upsurge.in/images/unsp/photo-1600080972464-8e5f35f63d08.avif"
           alt=""
         />
-        <div className={styles.headingSection}>
-          <h2 className={styles.heading}>Games</h2>
-          <h3 className={styles.subheading}>
-            {`On upsurge, children (and parents) are encouraged to play games
-            based on topics around entrepreneurship & money management, so that
-            they can learn by doing and making decisions. Here are some of our
-            games that you and your child can play together.`}
-          </h3> 
-        </div>
+        
           */}
         <CarouselGames userdata={userdata} setshowauth={setshowauth} setauthmode={setauthmode} />
-        <div className={styles.moreGames}>
-          More Games
+        <div className={styles.headingSection}>
+          <h2 className={styles.heading}>Kids see fun. Parents see progress!</h2>
+          <h3 className={styles.subheading}>
+            Get access to the most fun educational financial literacy & entrepreneurial games for kids.
+            <br />
+            <br />
+          </h3> 
         </div>
+        
         <div className={styles.gamelistwrapper}>
           {Object.keys(Game_Data).map((item, index) => {
             return (
               <GameCard
-                onClick={() =>
-                  handlegameclick(
-                    item,
-                    Game_Data[item].pushto
+                onClick={() =>{
+                  if(timesPlayed === 0){
+                    handlegameclick(
+                      item,
+                      Game_Data[item].pushto
                       ? Game_Data[item].pushto.split("/")[
-                          Game_Data[item].pushto.split("/").length - 1
-                        ]
-                      : "",
+                        Game_Data[item].pushto.split("/").length - 1
+                      ]
+                    : "",
                     Game_Data[item].webgl_key,
                     Game_Data[item].premium_plan,
                     null
-                  )
+                    )
+                  }
+                  else{
+                    setUpdateTimesPlayed(true);
+                  }
+                }
                 }
                 data={Game_Data[item]}
                 key={"game" + index}
@@ -117,10 +138,7 @@ export default function GamePage() {
                 // onClick={() => router.push(`/games/${item}`)}
               >
                 <img
-                  src={
-                    Game_Data[item].img_ludo ||
-                     `/images/games/${item}.png`
-                    }
+                  src={ Game_Data[item].img_ludo || `/images/games/${item}.png` }
                   alt=""
                 />
                 <p className={styles.title}>{Game_Data[item].name}</p>
@@ -145,7 +163,7 @@ export default function GamePage() {
                       router.push("/games/" + item);
                     }}
                   >
-                    Play
+                    Play Now
                   </p>
                 ) : (
                   <p
@@ -161,7 +179,7 @@ export default function GamePage() {
                       }
                     }}
                   >
-                    Play
+                    Play Now
                   </p>
                 )}
             </GameCard>
@@ -172,7 +190,13 @@ export default function GamePage() {
       </div>
       <JoinUs />
       <Footer />
-      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
+      {openGame ? <GameView game={openGame} setGame={setOpenGame} timesPlayed={timesPlayed} setTimesPlayed={setTimesPlayed} setShowUnicoinsAwards={setShowUnicoinsAwards} setUnicoins={setUnicoins} /> : ""}
+      {!userdata && showUnicoinsAwards ? 
+        <UnicoinsAwards 
+         setShowUnicoinsAwards={setShowUnicoinsAwards}
+         unicoins={unicoins}
+         setshowauth={setshowauth}
+         setauthmode={setauthmode} /> :"" }
     </div>
   );
 }

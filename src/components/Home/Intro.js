@@ -36,11 +36,14 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
         <h1 className={styles.heading}>
           Make your child
           <br />
-          money-smart.
+            <div className={styles.slidingVertical}>
+              <span className={styles.funBrandCol1}>money-smart.</span>
+              <span className={styles.funBrandCol2}>entrepreneurial.</span>
+              <span className={styles.funBrandCol3}>future-ready.</span>
+            </div>
         </h1>
         <p className={styles.subheading}>
-          {`upsurge is India’s 1st gaming platform to enable financial literacy for kids & make them MONEY-smart.
-`}
+          {`upsurge is India’s most loved platform to enable financial literacy for kids & make them MONEY-smart`}
         </p>
         {userdata ? (
           <div

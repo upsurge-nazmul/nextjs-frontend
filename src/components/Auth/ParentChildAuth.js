@@ -35,6 +35,7 @@ function ParentChildAuth({
   setChildAge,
   childAge,
   gameOpened,
+  kqOpened
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -60,7 +61,7 @@ function ParentChildAuth({
       });
     }
   };
-  const { firstName, setfirstName, lastName, setlastName, setuserdata } =
+  const { firstName, setfirstName, lastName, setlastName, setuserdata,setTimesPlayed } =
     useContext(MainContext);
   const [passisweak, setpassisweak] = useState(false);
   const [showdetailpass, setshowdetailpass] = useState(false);
@@ -79,6 +80,7 @@ function ParentChildAuth({
   });
   let couponInput;
   const router = useRouter();
+  const { utm_source, utm_campaign, utm_medium } = router.query;
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -125,9 +127,32 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
+    let utm_params = "organic";
+    if (utm_source && utm_campaign && utm_medium) {
+      utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign + "-" + "um:" + utm_medium;
+    }
+    else if (utm_source && utm_campaign) {
+      utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign;
+    }
+    else if (utm_source && utm_medium) {
+      utm_params = "us:" + utm_source + "-" + "um:" + utm_medium;
+    }
+    else if (utm_campaign && utm_medium) {
+      utm_params = "uc:" + utm_campaign + "-" + "um:" + utm_medium;
+    }
+    else if (utm_source) {
+      utm_params = "us:" + utm_source;
+    }
+    else if (utm_campaign) {
+      utm_params = "uc:" + utm_campaign;
+    }
+    else if (utm_medium) {
+      utm_params = "um:" + utm_medium;
+    }
+
     let response = await LoginApis.signup({
       email: email,
-      signup_method: signupmethod,
+      signup_method: utm_params,
       user_type: usertype,
       phone,
       password,
@@ -138,6 +163,7 @@ function ParentChildAuth({
       num_unicoins: unicoins ? unicoins : 0,
       age: childAge,
       game_opened: gameOpened ? gameOpened : null,
+      knowledge_quest_opened: kqOpened ? kqOpened : null,
     });
 
     if (!response || !response.data.success) {
@@ -158,6 +184,7 @@ function ParentChildAuth({
       setCookie("accesstoken", response.data.data.token);
       localforage.removeItem("playedGame");
       setmode("onboarding");
+      setTimesPlayed(0);
     }
   }
   async function genotp() {
@@ -221,10 +248,10 @@ function ParentChildAuth({
       coupon,
       first_name: firstName,
       last_name: lastName,
-      num_unicoins: unicoins ? unicoins : 0,
+      num_unicoins: 0,
       age: childAge,
       game_opened: gameOpened ? gameOpened : null,
-      
+      knowledge_quest_opened: kqOpened ? kqOpened : null,
     });
 
     if (!response || !response.data.success) {
@@ -242,6 +269,7 @@ function ParentChildAuth({
         $email: email,
         $phone: phone,
       });
+      setTimesPlayed(0);
       function getQueryParam(url, param) {
         // Expects a raw URL
         param = param.replace(/[[]/, "[").replace(/[]]/, "]");
