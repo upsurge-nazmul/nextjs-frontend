@@ -123,42 +123,23 @@ export default function KnowledgeQuest({ userData, questData }) {
             </div>
           )}
           <div>
-            {/* {widthHeight.width < 900 &&
-            widthHeight.height > widthHeight.width ? (
-              <div className={styles.mobileerr}>
-                <div className={styles.box}>
-                  <BrokenGameConroller className={styles.jasper} />
-                  <p className={styles.heading}>
-                    Please switch to landscape mode
-                  </p>
-                  <p>{`We recommend changing your display to landscape mode to best enjoy the quest`}</p>
-                  <div
-                    className={styles.button}
-                    onClick={() => router.push("/dashboard/k")}
-                  >
-                    Go back
-                  </div>
-                </div>
-              </div>
-            ) : ( */}
             <div>
               {view && currentQuest ? (
                 <div className={styles.views}>
-                  {view === LESSON_TYPES[0] ? (
-                    <RecordingView
-                      {...{
-                        chapterId: currentChapter,
-                        handleBack,
-                        handleDone,
-                      }}
+                  {view === LESSON_TYPES[0] ||
+                  view === LESSON_TYPES[1] ||
+                  view === LESSON_TYPES[4] ? (
+                    <GameView
+                      game={currentChapter}
+                      setGame={handleBack}
+                      handleDone={handleDone}
+                      isKq={true}
                     />
-                  ) : view === LESSON_TYPES[1] ? (
-                    <ActivityView
-                      {...{
-                        chapterId: currentChapter,
-                        handleBack,
-                        handleDone,
-                      }}
+                  ) : view === LESSON_TYPES[3] ? (
+                    <GameView
+                      game={currentChapter}
+                      setGame={handleBack}
+                      handleDone={handleDone}
                     />
                   ) : view === LESSON_TYPES[2] ? (
                     <QuizView
@@ -167,22 +148,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                         questId: currentQuest.questId,
                         handleDone,
                         setuserdata,
-                      }}
-                    />
-                  ) : view === LESSON_TYPES[3] ? (
-                    <GameView
-                      chapterId={currentChapter}
-                      game={currentChapter}
-                      setGame={handleBack}
-                      handleDone={handleDone}
-                    />
-                  ) : view === LESSON_TYPES[4] ? (
-                    <WebglView
-                      {...{
-                        gameKey: currentChapter,
-                        setView: handleBack,
-                        handleDone,
-                        type: "kq",
                       }}
                     />
                   ) : (

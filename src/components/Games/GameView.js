@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import GameApis from "../../actions/apis/GameApis";
+import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { useState } from "react";
 import UnityScreen from "./UnityScreen";
 import styles from "../../styles/Games/gameView.module.scss";
@@ -7,13 +8,12 @@ import { isMobileOnly } from "react-device-detect";
 import ActionArea from "./ActionArea";
 
 export default function GameView({
-  chapterId,
   game,
   setGame,
-  externalId = null,
   handleDone = null,
   setUnicoins = () => {},
   setShowUnicoinsAwards = () => {},
+  isKq = false,
 }) {
   const gameRef = useRef();
   const [gameData, setGameData] = useState();
@@ -44,7 +44,12 @@ export default function GameView({
   useEffect(() => {
     async function fetchGameData() {
       setLoading(true);
-      let res = await GameApis.gamedata({ id: game });
+      let res;
+      if (isKq) {
+        res = await KnowledgeQuestApi.getQuestFiles({ id: game });
+      } else {
+        res = await GameApis.gamedata({ id: game });
+      }
       if (res && res.data && res.data.data) {
         setGameData(res.data.data);
       }
