@@ -26,7 +26,7 @@ const slidesData = [
   },
 ];
 
-export default function CarouselGames({userdata, setshowauth, setauthmode}) {
+export default function CarouselGames({ userdata, setshowauth, setauthmode }) {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [title, setTitle] = useState(slidesData[0].title);
@@ -36,28 +36,27 @@ export default function CarouselGames({userdata, setshowauth, setauthmode}) {
   const [stopSlide, setStopSlide] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
   useEffect(() => {
-    if(!stopSlide){
+    if (!stopSlide) {
       const newTimeoutId = setTimeout(() => {
         nextSlide();
         setChangeSlide(!changeSlide);
       }, 5000);
-      setTimeoutId(newTimeoutId); 
+      setTimeoutId(newTimeoutId);
     }
-    }, [changeSlide,stopSlide]);
-    const nextSlide = () => {
-      if(stopSlide){
-      }
-      else{
-          const lastIndex = slidesData.length - 1;
-          const shouldResetIndex = currentSlide === lastIndex;
-          const index = shouldResetIndex ? 0 : currentSlide + 1;
-          const prevIndex = shouldResetIndex ? -1 : currentSlide;
-          console.log("index",index);
-          setCurrentSlide(index);
-          setTitle(slidesData[index]?.title);
-          setImageUrl(slidesData[index]?.image);
-          setDescription(slidesData[index]?.description);
-      }
+  }, [changeSlide, stopSlide]);
+  const nextSlide = () => {
+    if (stopSlide) {
+    } else {
+      const lastIndex = slidesData.length - 1;
+      const shouldResetIndex = currentSlide === lastIndex;
+      const index = shouldResetIndex ? 0 : currentSlide + 1;
+      const prevIndex = shouldResetIndex ? -1 : currentSlide;
+      // console.log("index",index);
+      setCurrentSlide(index);
+      setTitle(slidesData[index]?.title);
+      setImageUrl(slidesData[index]?.image);
+      setDescription(slidesData[index]?.description);
+    }
   };
   const Slide = (id) => {
     if (timeoutId) {
@@ -78,20 +77,20 @@ export default function CarouselGames({userdata, setshowauth, setauthmode}) {
             <h1>{title}</h1>
             <p className={styles.description}>{description}</p>
             <p
-                    className={styles.activebutton}
-                    onClick={() => {
-                      if (!userdata) {
-                        setshowauth(true);
-                        setauthmode("parentChild");
-                      } else if (userdata.user_type === "child") {
-                        router.push("/dashboard/k/games");
-                      } else if (userdata.user_type === "parent") {
-                        router.push("/dashboard/p/games");
-                      }
-                    }}
-                  >
-                    Play Now!
-                  </p>
+              className={styles.activebutton}
+              onClick={() => {
+                if (!userdata) {
+                  setshowauth(true);
+                  setauthmode("parentChild");
+                } else if (userdata.user_type === "child") {
+                  router.push("/dashboard/k/games");
+                } else if (userdata.user_type === "parent") {
+                  router.push("/dashboard/p/games");
+                }
+              }}
+            >
+              Play Now!
+            </p>
             <div className={styles.sliderDots}>
               {slidesData.map((slide) => (
                 <div
@@ -101,7 +100,7 @@ export default function CarouselGames({userdata, setshowauth, setauthmode}) {
                   }`}
                   onClick={() => {
                     Slide(slide.id);
-                }}
+                  }}
                 >
                   a
                 </div>

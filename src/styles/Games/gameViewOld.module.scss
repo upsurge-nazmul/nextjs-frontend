@@ -1,0 +1,59 @@
+@use "../../styles/variables/fontsizes.scss" as *;
+
+.gameView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+
+  .gameView:fullscreen {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loadingScreen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #939393cc;
+  }
+
+  .gameScreen {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hiddenGameScreen {
+    @extend .gameScreen;
+    display: none;
+  }
+
+  .noGame {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #171313;
+
+    .noGameText {
+      color: #fff;
+      font-size: 2rem;
+    }
+  }
+
+  .loadingArea {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+}
