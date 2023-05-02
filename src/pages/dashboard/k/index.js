@@ -39,6 +39,8 @@ import EditProfilePending from "../../../components/EditProfilePending";
 import PhoneVerificationPending from "../../../components/PhoneVerificationPending";
 import FlashSaleOffer from "../../../components/FlashSaleOffer";
 import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
+import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
+import BecomeFinanciallySmartPopUp from "../../../components/BecomeFinanciallySmartPopUp";
 
 export default function ChildActivity({
   pendingchores,
@@ -54,6 +56,7 @@ export default function ChildActivity({
   stockHoldings,
   todaysquestion,
 }) {
+  console.log(`user`, userdatafromserver);
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
   const [showtour, setshowtour] = useState(
@@ -76,6 +79,69 @@ export default function ChildActivity({
     show: false,
     msg: "",
   });
+  const [showTrendingGames, setShowTrendingGames] = useState(false);
+  const [trendingGamesShown, setTrendingGamesShown] = useState(
+    parseInt(userdatafromserver.gamePopUpShown)
+  );
+  const [showBecomeFinanciallySmart, setShowBecomeFinanciallySmart] =
+    useState(false);
+  const [shownBecomeFinanciallySmart, setShownShowBecomeFinanciallySmart] =
+    useState(parseInt(userdatafromserver.kqPopUpShown));
+  const [openGame, setOpenGame] = useState("");
+  const [currentChapter, setCurrentChapter] = useState("");
+  const [lastActivity, setLastActivity] = useState(Date.now());
+  useEffect(() => {
+    setLastActivity(Date.now());
+  }, []);
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      if (Date.now() - lastActivity >= 20000) {
+        if (trendingGamesShown < 1) {
+          if (userdatafromserver.gamePopUpShown == 0) {
+            let response = await DashboardApis.updateDashboardPopup({
+              games_shown: parseInt(userdatafromserver.gamePopUpShown) + 1,
+              kq_shown: parseInt(userdatafromserver.kqPopUpShown),
+            });
+            if (response && response.data && response.data.success) {
+              setShowTrendingGames(true);
+              setTrendingGamesShown(
+                parseInt(userdatafromserver.gamePopUpShown) + 1
+              );
+            }
+          }
+        } else if (
+          shownBecomeFinanciallySmart < 1 &&
+          trendingGamesShown > 0 &&
+          showTrendingGames === false
+        ) {
+          if (userdatafromserver.kqPopUpShown == 0) {
+            let response = await DashboardApis.updateDashboardPopup({
+              games_shown: parseInt(userdatafromserver.gamePopUpShown),
+              kq_shown: parseInt(userdatafromserver.kqPopUpShown) + 1,
+            });
+            if (response && response.data && response.data.success) {
+              setShowBecomeFinanciallySmart(true);
+              setShownShowBecomeFinanciallySmart(
+                parseInt(userdatafromserver.kqPopUpShown) + 1
+              );
+            }
+          }
+        }
+      }
+    }, 20000);
+    return () => clearTimeout(timeoutId);
+  }, [lastActivity]);
+  useEffect(() => {
+    function handleActivity() {
+      setLastActivity(Date.now());
+    }
+    window.addEventListener("mousemove", handleActivity);
+    window.addEventListener("keydown", handleActivity);
+    return () => {
+      window.removeEventListener("mousemove", handleActivity);
+      window.removeEventListener("keydown", handleActivity);
+    };
+  }, []);
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
@@ -203,12 +269,12 @@ export default function ChildActivity({
           />
         )}
         <div className={styles.mainContent}>
-        {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
+          {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />
             )} */}
-        {userdatafromserver && userdatafromserver.premium_plan == 0 && (
+          {userdatafromserver && userdatafromserver.premium_plan == 0 && (
             <FlashSaleOffer />
-            )}
+          )}
           {userdatafromserver && !userdatafromserver.email_verified && (
             <EmailVerificationPending settoastdata={setShowToolTip} />
           )}
@@ -224,34 +290,34 @@ export default function ChildActivity({
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
             <div className={styles.flexRight}>
-                {userdata && userdata.chores_opted ?
-              <div className={styles.choreSection} id="chores">
-                <h2
-                  className={styles.mainheading}
-                  onClick={() => router.push("/dashboard/k/chores")}
-                >
-                  Chores
-                  <HeadingArrow />
-                </h2>
-                <div className={styles.wrapper}>
-                  {chorearray.map((data, index) => {
-                    return (
-                      <KidChore
-                        data={data}
-                        settoastdata={setShowToolTip}
-                        key={"chorecomponent" + index}
+              {userdata && userdata.chores_opted ?
+                <div className={styles.choreSection} id="chores">
+                  <h2
+                    className={styles.mainheading}
+                    onClick={() => router.push("/dashboard/k/chores")}
+                  >
+                    Chores
+                    <HeadingArrow />
+                  </h2>
+                  <div className={styles.wrapper}>
+                    {chorearray.map((data, index) => {
+                      return (
+                        <KidChore
+                          data={data}
+                          settoastdata={setShowToolTip}
+                          key={"chorecomponent" + index}
+                        />
+                      );
+                    })}
+                    {chorearray.length === 0 && (
+                      <FillSpace
+                        text={"No chores in progress"}
+                        extrastyle={{ margin: 0, minHeight: "220px" }}
                       />
-                    );
-                  })}
-                  {chorearray.length === 0 && (
-                    <FillSpace
-                      text={"No chores in progress"}
-                      extrastyle={{ margin: 0, minHeight: "220px" }}
-                    />
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
-                :null}
+               :null}
             </div>
           </div>
           <></>
@@ -279,6 +345,19 @@ export default function ChildActivity({
           </div>
         </div>
       </div>
+      {showTrendingGames ? (
+        <TrendingGamesPopUp
+          setShowTrendingGames={setShowTrendingGames}
+          setOpenGame={setOpenGame}
+          userdata={userdata}
+        />
+      ) : null}
+      {showBecomeFinanciallySmart ? (
+        <BecomeFinanciallySmartPopUp
+          setShowBecomeFinanciallySmart={setShowBecomeFinanciallySmart}
+          userdata={userdata}
+        />
+      ) : null}
     </div>
   );
 }

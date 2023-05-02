@@ -1,30 +1,43 @@
 import React, { useState } from "react";
 import styles from "../styles/GeneralComponents/trendingGames.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { Game_Data } from "../static_data/Game_Data";
+import { useRouter } from "next/router";
 
 
-function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTendingGamesManuallyClosed  }) {
+function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,setTendingGamesManuallyClosed,userdata }) {
+  const router = useRouter();
   async function handlegameclick(title) {
     setOpenGame(title);
     setGameOpened(title);
     setShowTrendingGames(false);
     setTendingGamesManuallyClosed(true);
   }
+  async function handleGameClickPostSignUp(pushto = null, gameName = null) {
+    await setShowTrendingGames(false);
+    pushto = pushto ? pushto.split("/")[pushto.split("/").length - 1] : "";
+    router.push("/dashboard/k/game/" + (pushto ? pushto : gameName));
+  }
   return (
     <div className={styles.trendingGames}>
       <div
         className={styles.background}
         onClick={() => {
+          
           setShowTrendingGames(false);
-          setTrendingGamesShow(true);
+          if(!userdata){
+            setTendingGamesManuallyClosed(true);
+          }
         }}
-      ></div>
+        ></div>
       <div className={styles.block}>
         <div
           className={styles.cross}
           onClick={() => {
             setShowTrendingGames(false);
-            setTendingGamesManuallyClosed(true);
+            if(!userdata){
+              setTendingGamesManuallyClosed(true);
+            }
           }}
         >
           <CancelOutlinedIcon className={styles.icon} />
@@ -41,7 +54,12 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
             />
             <button
               onClick={() => {
-                handlegameclick("DontOverspend");
+                if(!userdata){
+                  handlegameclick("DontOverspend");
+                }
+                else{
+                  handleGameClickPostSignUp(Game_Data["DontOverspend"].pushto,"DontOverspend");
+                }
               }}
               className={styles.playButton}
               >
@@ -56,7 +74,12 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
               />
             <button 
               onClick={() => {
-                handlegameclick("BalanceBuilder");
+                if(!userdata){
+                  handlegameclick("BalanceBuilder");
+                }
+                else{
+                  handleGameClickPostSignUp(Game_Data["BalanceBuilder"].pushto,"BalanceBuilder");
+                }
               }}
               className={styles.playButton}>Play</button>
           </div>
@@ -68,9 +91,14 @@ function TrendingGamesPopUp({ setShowTrendingGames,setOpenGame,setGameOpened,set
               />
             <button
               onClick={() => {
-                handlegameclick("HighAndLow");
+                if(!userdata){
+                  handlegameclick("HighAndLow");
+                }
+                else{
+                  handleGameClickPostSignUp(Game_Data["HighAndLow"].pushto,"HighAndLow");
+                }
               }}
-             className={styles.playButton}>Play</button>
+              className={styles.playButton}>Play</button>
           </div>
         </div>
       </div>
