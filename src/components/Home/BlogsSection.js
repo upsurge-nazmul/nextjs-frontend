@@ -6,19 +6,36 @@ import BlogApis from "../../actions/apis/BlogApis";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Home/blogs.module.scss";
 
-export default function BlogsSection() {
+export async function getStaticProps() {
+  let res = await BlogApis.gethomeblogs();
+  if (res && res.data && res.data.success) {
+    blog_data = res;
+  }
+  // By returning { props: { blog_data } }, the Blog component
+  // will receive `blog_data` as a prop at build time
+  return {
+    props: {
+      blog_data,
+    },
+  }
+}
+
+
+function BlogsSection(blog_data) {
   const router = useRouter();
-  const [blogs, setblogs] = useState([]);
   const { theme } = useContext(MainContext);
+  const [blogs, setblogs] = useState([]);
   useEffect(() => {
     async function x() {
-      let res = await BlogApis.gethomeblogs();
+      let res = blog_data;
       if (res && res.data && res.data.success) {
         setblogs(res.data.data);
       }
     }
     x();
   }, []);
+
+
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
@@ -105,3 +122,5 @@ export default function BlogsSection() {
         </>
   );
 }
+
+export default BlogsSection;
