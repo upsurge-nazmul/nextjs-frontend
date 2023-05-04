@@ -83,6 +83,12 @@ export default function Pricing() {
 
       <div className={styles.mainContent}>
         <div className={styles.contentLeft}>
+          <video className={styles.video} controls autoPlay muted loop>
+            <source
+              src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-CompanyIntro.mkv"
+              type="video/mp4"
+            ></source>
+          </video>
           <img
             src={require("../../assets/Jasper/10.png").default.src}
             alt={"jasper"}
@@ -95,18 +101,18 @@ export default function Pricing() {
             <u className={styles.heading_underline}>Premium.</u>
           </div>
           <div className={styles.subToPremium}>
-      <div className={styles.block}>
-        <div className={styles.section}>
-          <div className={styles.sectionLeft}>
-            <h3 className={styles.header}>upsurge Premium</h3>
-            <p className={styles.smallfont}> for 6 months </p>
-            <p className={styles.subheading}>
-              Get access to premium quests and games
-            </p>
-            {/* Change the premium family to something more catchy*/}
-            <ul>
-              <li className={styles.sectionItem}>
-                {/* <img
+            <div className={styles.block}>
+              <div className={styles.section}>
+                <div className={styles.sectionLeft}>
+                  <h3 className={styles.header}>Yearly Plan</h3>
+                  <p className={styles.smallfont}> for 6 months </p>
+                  <p className={styles.subheading}>
+                    Get access to premium quests and games
+                  </p>
+                  {/* Change the premium family to something more catchy*/}
+                  <ul>
+                    <li className={styles.sectionItem}>
+                      {/* <img
                   src={
                     require("../assets/pricing/kq_red.png").default
                     .src
@@ -155,7 +161,7 @@ export default function Pricing() {
                       <p className={styles.actualPrice}>₹499</p>{" "}
                     </div>
                     <div className={styles.pricingSectionBottom}>
-                      <p className={styles.smallfont}>(limited period offer)</p>
+                      <p className={styles.smallfont}>(₹40/month)</p>
                     </div>
                   </div>
                   <div
