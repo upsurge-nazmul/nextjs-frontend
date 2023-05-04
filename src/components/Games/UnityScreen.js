@@ -13,6 +13,7 @@ export default function UnityScreen({ data = {}, handleGameExit = () => {} }) {
     sendMessage, // (gameObjectName: string, methodName: string, parameter)
     addEventListener, // (eventNamme: string, callback: (..params))
     removeEventListener, // (eventNamme: string, callback: (..params))
+    unload,
   } = useUnityContext({
     loaderUrl: data.loaderUrl,
     dataUrl: data.dataUrl,
@@ -35,8 +36,9 @@ export default function UnityScreen({ data = {}, handleGameExit = () => {} }) {
     addEventListener("OnSeceneLoaded", () => {
       console.log("Scene Loaded Event called");
     });
-    addEventListener("Exit", () => {
+    addEventListener("Exit", async () => {
       console.log("Exiting Game");
+      await unload();
       handleGameExit();
     });
     addEventListener("Score", async function (score) {

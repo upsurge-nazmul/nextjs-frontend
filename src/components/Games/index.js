@@ -14,11 +14,12 @@ import GameView from "./GameView";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import SubToPremiumPopUp from "../SubToPremiumPopUp";
 import WebglView from "../WebglView";
+import GameList from "./GameList";
 
 function Games({
-  userdatafromserver,
+  userdatafromserver = null,
   gameunicoinrewards = null,
-  recentgames,
+  recentgames = null,
   accountType = "",
 }) {
   // modes are different pages like home,kids,store,payments,notifications
@@ -129,7 +130,7 @@ function Games({
             {showSubToPremium && (
               <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
             )}
-            {recent_games.length > 0 && (
+            {recent_games && recent_games.length > 0 && (
               <div className={styles.recentSection}>
                 <h2 className={styles.heading}>Recently Played</h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
@@ -162,36 +163,12 @@ function Games({
                 Available Games
                 <HeadingArrow />
               </h2>
-              <div className={styles.wrapper}>
-                {Object.keys(Game_Data).map((item, index) => {
-                  return (
-                    <GameCard
-                      onClick={() =>
-                        handlegameclick(
-                          item,
-                          Game_Data[item].pushto
-                            ? Game_Data[item].pushto.split("/")[
-                                Game_Data[item].pushto.split("/").length - 1
-                              ]
-                            : "",
-                          Game_Data[item].webgl_key,
-                          Game_Data[item].premium_plan,
-                          userdata.premium_plan
-                        )
-                      }
-                      reward={
-                        gameunicoinrewards
-                          ? gameunicoinrewards.includes(item)
-                            ? "Completed"
-                            : 200
-                          : null
-                      }
-                      data={Game_Data[item]}
-                      key={"chorecomponent" + index}
-                    />
-                  );
-                })}
-              </div>
+              <GameList
+                data={Game_Data}
+                handlegameclick={handlegameclick}
+                gameunicoinrewards={gameunicoinrewards}
+                userdata={userdata}
+              />
             </div>
           </div>
         </div>
