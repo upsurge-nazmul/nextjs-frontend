@@ -5,7 +5,7 @@
   align-items: center;
   transition: 1s;
   .sliderWrapper {
-      width: 80vw;
+      width: 100vw;
       display: flex;
       overflow-x: auto;
       scrollbar-width: none;
@@ -43,18 +43,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
     .slideImage {
         border-radius: 3rem;
         width: 100%;
-        height: 80%;
         object-fit: cover;
     }
 }
 
 .slideContent {
     margin-top: 3rem;
-    width: 30rem;
+    width: 40%;
     transition: 1s;
     font-size: large;
     padding:2rem;
@@ -111,6 +109,238 @@
         width: 5rem;
         background: #4166eb;
         color: transparent;
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 990px){
+  .slider {
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    .sliderWrapper {
+        width: 100vw;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        gap: 2%;
+        padding: 2rem;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+          ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+          }
+      }
+      .slide {
+          background: linear-gradient(
+              0deg,
+              rgba(241, 248, 255, 0.2),
+              rgba(241, 248, 255, 0.2)
+              ),
+              #ffffff;
+              box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+              border-radius: 3rem;
+              font-family: "Lexend", sans-serif;
+              font-weight: 500;
+              display: flex;
+              transition: all 0.3s ease;
+              padding: 1rem;
+              flex: 0 0 100%;
+              width: 20vw;
+              min-height: 30rem;
+              flex-direction: column-reverse;
+          }
+          .imageContainer {
+      border-radius: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .slideImage {
+          border-radius: 3rem;
+          width: 100%;
+          object-fit: cover;
+      }
+  }
+  
+  .slideContent {
+      margin-top: 3rem;
+      width: 100%;
+      transition: 1s;
+      font-size: large;
+      padding:2rem;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      .description{
+        font-weight: 300;
+      }
+      .activebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        width: fit-content;
+        padding:0 2rem;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        background-color: #4266eb;
+        color: white;
+        font-size: 0.875rem;
+        cursor: pointer;
+        svg {
+          margin-left: 0.625rem;
+          width: 1.4rem;
+          fill: white;
+          path {
+            fill: white;
+          }
+        }
+        &:hover {
+          svg {
+            transition: all 0.3s ease;
+            circle {
+              fill: rgb(41, 41, 41);
+            }
+          }
+        }
+      }
+      .sliderDots {
+          z-index: 99;
+          display: flex;
+          gap: 2rem;
+        .sliderDot {
+          width: 1rem;
+          height: 1rem;
+          background: #e7e4e4;
+          color: transparent;
+          border-radius: 2rem;
+        }
+        .active {
+          transition: 1s;
+          width: 5rem;
+          background: #4166eb;
+          color: transparent;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 500px){
+  .slider {
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    .sliderWrapper {
+        width: 100vw;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        gap: 2%;
+        padding: 2rem;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+          ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+          }
+      }
+      .slide {
+              box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+              border-radius: 3rem;
+              font-family: "Lexend", sans-serif;
+              font-weight: 500;
+              display: flex;
+              transition: all 0.3s ease;
+              padding: 1rem;
+              flex: 0 0 100%;
+              width: 20vw;
+              min-height: 30rem;
+              flex-direction: column-reverse;
+          }
+          .imageContainer {
+      border-radius: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .slideImage {
+          border-radius: 3rem;
+          width: 100%;
+          object-fit: cover;
+      }
+  }
+  
+  .slideContent {
+      margin-top: 3rem;
+      width: 100%;
+      transition: 1s;
+      font-size: large;
+      padding:2rem;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      .description{
+        font-weight: 300;
+      }
+      .activebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        width: fit-content;
+        padding:0 2rem;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        background-color: #4266eb;
+        color: white;
+        font-size: 0.875rem;
+        cursor: pointer;
+        svg {
+          margin-left: 0.625rem;
+          width: 1.4rem;
+          fill: white;
+          path {
+            fill: white;
+          }
+        }
+        &:hover {
+          svg {
+            transition: all 0.3s ease;
+            circle {
+              fill: rgb(41, 41, 41);
+            }
+          }
+        }
+      }
+      .sliderDots {
+          z-index: 99;
+          display: flex;
+          gap: 2rem;
+        .sliderDot {
+          width: 1rem;
+          height: 1rem;
+          background: #e7e4e4;
+          color: transparent;
+          border-radius: 2rem;
+        }
+        .active {
+          transition: 1s;
+          width: 5rem;
+          background: #4166eb;
+          color: transparent;
+        }
       }
     }
   }
