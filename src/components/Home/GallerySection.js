@@ -18,8 +18,18 @@ const GallerySection = () => {
         ))}
       </div>
       <div className={styles.videoContainer}>
-        <video className={styles.video} controls autoPlay="false" muted loop>
-          <source src="/images/home/upsurge.mp4" type="video/mp4"></source>
+        <video
+          className={styles.video}
+          controls
+          muted
+          loop
+          preload="none"
+          poster="https://imgcdn.upsurge.in/images/gallery-img2.jpg"
+        >
+          <source
+            src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-workshops.mp4"
+            type="video/mp4"
+          ></source>
         </video>
       </div>
     </div>
