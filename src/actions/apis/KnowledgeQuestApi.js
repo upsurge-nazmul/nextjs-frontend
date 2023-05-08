@@ -40,11 +40,11 @@ const getQuestDataPreSignUp = (payload) => {
 const getActiveQuests = (payload, token) => {
   return ApiCalls.getResponse("knowledgequest/activequests", payload, token);
 };
-const getQuestFiles = (payload) => {
+const getQuestFiles = (payload, token = null) => {
   return ApiCalls.getResponse(
     "knowledgequest/questfiles",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 const KidApis = {
