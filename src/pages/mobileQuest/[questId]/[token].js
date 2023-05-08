@@ -17,30 +17,10 @@ export default function GameView({
   const { questId, token } = router.query;
   const [gameData, setGameData] = useState();
   const [loading, setLoading] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
 
-  // console.log("#######", router);
-
-  // useEffect(() => {
-  //   if (gameRef && gameRef.current) {
-  //     if (gameRef.current.requestFullscreen) {
-  //       gameRef.current.requestFullscreen();
-  //       setFullScreen(true);
-  //       if (isMobileOnly) {
-  //         if (window.screen.orientation.lock) {
-  //           window.screen.orientation
-  //             .lock("landscape")
-  //             .then(() => console.log("orientaion landscape"))
-  //             .catch((e) => console.log(e.message));
-  //         } else {
-  //           console.log("Screen rotation is not supported");
-  //         }
-  //       }
-  //     }
-  //     if (gameRef.current.webkitRequestFullScreen)
-  //       gameRef.current.webkitRequestFullScreen();
-  //   }
-  // }, [gameRef]);
+  const sendDataToReactNativeApp = async () => {
+    window.ReactNativeWebView.postMessage("Done");
+  };
 
   useEffect(() => {
     async function fetchGameData() {
@@ -55,10 +35,8 @@ export default function GameView({
   }, []);
 
   const handleGameClose = () => {
-    handleDone ? handleDone() : () => {};
+    sendDataToReactNativeApp();
     mixpanel.track("Game Closed", { event: `Game closed` });
-    setFullScreen(false);
-    document.exitFullscreen();
     setGame();
     setShowUnicoinsAwards(true);
     setUnicoins(4000);
@@ -75,7 +53,7 @@ export default function GameView({
         <ActionArea
           onClose={handleGameClose}
           onDone={handleGameClose}
-          fullScreen={fullScreen}
+          fullScreen={false}
           showDone={handleDone}
         />
       )}
