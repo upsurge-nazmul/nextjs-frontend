@@ -151,6 +151,13 @@
       .loginContainer {
         .logindetails {
           width: 70%;
+          .nameWrapper{
+            display: flex;
+            flex-direction: column;
+            .margin {
+              margin-right: 0rem !important;
+            }
+          }
         }
       }
     }

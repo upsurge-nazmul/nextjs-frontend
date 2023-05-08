@@ -110,13 +110,33 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
   .loginContainer {
     margin-top: 5rem;
     .logindetails {
       margin-top: 5rem;
       width: 80%;
       margin: auto;
+      .onlyPassHeading {
+        font-size: 1rem;
+      }
+      .prefilledEmail{
+        font-size: 1.2rem;
+      }
     }
   }
+}
+@media only screen and (min-width: 501px) and (max-width: 990px){
+  .loginContainer {
+    .logindetails {
+      .onlyPassHeading {
+        font-size: 1.5rem;
+      }
+      .prefilledEmail{
+        font-size: 1.8rem;
+        margin-left: -1rem;
+      }
+    }
+  }
+  
 }
