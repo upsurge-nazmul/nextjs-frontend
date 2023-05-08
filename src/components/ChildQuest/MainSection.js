@@ -17,8 +17,7 @@ const userPlanType = userData.premium_plan;
           data.length &&
           data.map((item) => {
             if (
-              tab.title === item.quest_type ||
-              tab.title === QUEST_TYPES[0].title
+              tab.title === item.quest_type
             ) {
               return (
                 <QuestCard
