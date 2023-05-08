@@ -1,0 +1,139 @@
+.card {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+    width: 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    .icon {
+      color: #fff;
+      border-radius: 50%;
+      height: 60px;
+      width: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      svg {
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .cardContent {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      .titleArea {
+        flex: 1;
+        .title {
+          font-size: 1.25rem;
+          font-weight: 400;
+          color: #333;
+        }
+        .transactionId {
+          font-size: 0.75rem;
+          font-weight: 300;
+          color: #ccc;
+        }
+      }
+      .dateArea {
+        flex: 0.75;
+        .type {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+        .date {
+          font-size: 0.75rem;
+          font-weight: 300;
+          color: #ccc;
+        }
+      }
+      .amount {
+        font-size: 1.25rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        width: 80px;
+        .coinIcon {
+          min-width: 20px;
+          max-height: 20px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  
+  // for phones
+  @media only screen and (max-width: 480px) {
+    .card {
+      display: flex;
+      align-items: center;
+      margin: 0 0 20px;
+      width: 100%;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 14px;
+      .icon {
+        color: #fff;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        margin-left: 10px;
+        svg {
+          height: 1rem;
+          width: 1rem;
+        }
+      }
+      .cardContent {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        .titleArea {
+          flex: 1;
+          .title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #333;
+          }
+          .transactionId {
+            font-size: 0.5rem;
+            font-weight: 300;
+            color: #ccc;
+          }
+        }
+        .dateArea {
+          flex: 0.75;
+          .type {
+            font-size: 0.75rem;
+            font-weight: 600;
+          }
+          .date {
+            font-size: 0.5rem;
+            font-weight: 300;
+            color: #ccc;
+          }
+        }
+        .amount {
+          font-size: 1rem;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          width: 80px;
+          .coinIcon {
+            min-width: 15px;
+            max-height: 15px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+  
