@@ -375,6 +375,12 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        .gender {
+          min-width: 6rem;
+          width: 10rem;
+          height: 48px;
+          font-size: 1.125rem !important;
+        }
         .imagesection {
           border-radius: 100%;
           margin: 0 auto 20px;
