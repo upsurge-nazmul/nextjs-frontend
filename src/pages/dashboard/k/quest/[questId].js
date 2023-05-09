@@ -80,6 +80,9 @@ export default function KnowledgeQuest({ userData, questData }) {
       level: activeChNo,
       quest_id: currentQuest.questId,
     });
+    mixpanel.track("Knowledge Quest", {
+      event: `Quest Finished ${currentQuest.questId}`,
+    });
     setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
     setView();
     setCurrentChapter();
