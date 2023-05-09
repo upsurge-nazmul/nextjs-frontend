@@ -89,7 +89,7 @@ function ParentChildAuth({
   const { utm_source, utm_campaign, utm_medium } = router.query;
 
   const isValidUsername = (val) => {
-    const usernameRegex = /^[a-zA-Z0-9_.]+$/;
+    const usernameRegex = /^[a-zA-Z0-9]+$/;
     return usernameRegex.test(val);
   };
 
