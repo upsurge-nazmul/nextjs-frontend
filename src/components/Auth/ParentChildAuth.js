@@ -35,7 +35,7 @@ function ParentChildAuth({
   setChildAge,
   childAge,
   gameOpened,
-  kqOpened
+  kqOpened,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -61,8 +61,14 @@ function ParentChildAuth({
       });
     }
   };
-  const { firstName, setfirstName, lastName, setlastName, setuserdata,setTimesPlayed } =
-    useContext(MainContext);
+  const {
+    firstName,
+    setfirstName,
+    lastName,
+    setlastName,
+    setuserdata,
+    setTimesPlayed,
+  } = useContext(MainContext);
   const [passisweak, setpassisweak] = useState(false);
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
@@ -81,6 +87,12 @@ function ParentChildAuth({
   let couponInput;
   const router = useRouter();
   const { utm_source, utm_campaign, utm_medium } = router.query;
+
+  const isValidUsername = (val) => {
+    const usernameRegex = /^[a-zA-Z0-9]+$/;
+    return usernameRegex.test(val);
+  };
+
   useEffect(() => {
     seterror("");
     if (!validator.isStrongPassword(password)) setpassisweak(true);
@@ -129,24 +141,26 @@ function ParentChildAuth({
     }
     let utm_params = "organic";
     if (utm_source && utm_campaign && utm_medium) {
-      utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign + "-" + "um:" + utm_medium;
-    }
-    else if (utm_source && utm_campaign) {
+      utm_params =
+        "us:" +
+        utm_source +
+        "-" +
+        "uc:" +
+        utm_campaign +
+        "-" +
+        "um:" +
+        utm_medium;
+    } else if (utm_source && utm_campaign) {
       utm_params = "us:" + utm_source + "-" + "uc:" + utm_campaign;
-    }
-    else if (utm_source && utm_medium) {
+    } else if (utm_source && utm_medium) {
       utm_params = "us:" + utm_source + "-" + "um:" + utm_medium;
-    }
-    else if (utm_campaign && utm_medium) {
+    } else if (utm_campaign && utm_medium) {
       utm_params = "uc:" + utm_campaign + "-" + "um:" + utm_medium;
-    }
-    else if (utm_source) {
+    } else if (utm_source) {
       utm_params = "us:" + utm_source;
-    }
-    else if (utm_campaign) {
+    } else if (utm_campaign) {
       utm_params = "uc:" + utm_campaign;
-    }
-    else if (utm_medium) {
+    } else if (utm_medium) {
       utm_params = "um:" + utm_medium;
     }
 
@@ -237,6 +251,11 @@ function ParentChildAuth({
       setloading(false);
       return;
     }
+    if (!isValidUsername(username)) {
+      seterror("username can't contained special characters and space");
+      setloading(false);
+      return;
+    }
 
     let response = await LoginApis.signup({
       email: email,
@@ -244,7 +263,7 @@ function ParentChildAuth({
       user_type: usertype,
       phone,
       password,
-      username,
+      username: username.toLowerCase(),
       coupon,
       first_name: firstName,
       last_name: lastName,
