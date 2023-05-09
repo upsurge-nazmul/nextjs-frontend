@@ -1,0 +1,70 @@
+.badgeupdate {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 501;
+    .background {
+      background-color: rgba(0, 0, 0, 0.322);
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      z-index: -1;
+    }
+    .content{
+      background-color: white;
+      border-radius: 8px;
+      width: 40vw;
+      height: min-content;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      .prevBadge{
+        animation: badgefade 1s linear forwards;
+        scale:0.8;
+      } 
+    .newBadge{
+        margin-top: 2rem;
+        position: absolute;
+        animation: fadein 1.5s linear .5s forwards;
+        width: 25rem;
+        opacity: 0;
+      }
+    .congratulations{
+      margin-top: -120px;
+      margin-bottom: 120px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .confettiContainer{
+      position: relative;
+    }
+}
+    
+  @keyframes badgefade {
+    from{
+      opacity: 1;
+      scale:0.8;
+    }
+    to{
+      opacity: 0;
+      scale:0.5;
+    }
+  }
+  @keyframes fadein {
+    from{
+      opacity: 0;
+      scale:0.6;
+    }
+    to{
+      opacity: 1;
+      scale:0.9;
+    }
+} 

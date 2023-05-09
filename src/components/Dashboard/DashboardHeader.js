@@ -17,6 +17,7 @@ import tooltipStyle from "../../styles/GeneralComponents/tooltip.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
 import SubscriptionDetails from "./SubscriptionDetails";
+import TransactionHistory from "../Unicoin/TransactionHistory";
 
 function DashboardHeader({
   mode,
@@ -41,6 +42,7 @@ function DashboardHeader({
   const [savedUser, setSavedUser] = useState();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
+  const [openUnicoinHistory, setOpenUnicoinHistory] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
 
@@ -134,7 +136,7 @@ function DashboardHeader({
         {userdata?.user_type !== "parent" && (
           <div
             className={styles.rewardBlock}
-            onClick={() => router.push("/dashboard/k/store")}
+            onClick={() => setOpenUnicoinHistory((prev) => !prev)}
           >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
@@ -243,6 +245,14 @@ function DashboardHeader({
             <ChosePremiumPopUp setChoseToPremium={setShowSubscription} />
           )}
         </>
+      ) : (
+        ""
+      )}
+        {openUnicoinHistory ? (
+        <TransactionHistory
+          open={openUnicoinHistory}
+          setOpen={setOpenUnicoinHistory}
+        />
       ) : (
         ""
       )}

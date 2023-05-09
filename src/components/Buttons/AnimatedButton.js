@@ -6,7 +6,13 @@ export default function AnimatedButton({ children, handleClick, style }) {
   const [disabled, setDisabled] = useState(false);
   const [buttonState, setButtonState] = useState("ready");
   const [activeAnimation, setActiveAnimation] = useState(false);
-
+  const colors = [
+    { front: "#7b5cff", back: "#6245e0" }, // Purple
+    { front: "#b3c7ff", back: "#8fa5e5" }, // Light Blue
+    { front: "#5c86ff", back: "#345dd1" }, // Darker Blue
+  ];
+  const confettiCount = 20;
+  const sequinCount = 30;
   // cycle through button states when clicked
   const clickButton = () => {
     if (!disabled) {
@@ -66,7 +72,7 @@ export default function AnimatedButton({ children, handleClick, style }) {
           <span className={styles.buttonText}>{children}</span>
         </div>
       </button>
-      <Animation activate={activeAnimation} setActivate={setActiveAnimation} />
+      <Animation activate={activeAnimation} setActivate={setActiveAnimation} colors={colors} classActive={true} confettiCount={confettiCount} sequinCount={sequinCount} />
     </>
   );
 }
