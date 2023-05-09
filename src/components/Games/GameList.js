@@ -6,7 +6,6 @@ export default function GameList({
   data,
   handlegameclick = () => {},
   gameunicoinrewards = null,
-  userdata = null,
 }) {
   return (
     <div className={styles.wrapper}>
@@ -20,10 +19,7 @@ export default function GameList({
                   ? Game_Data[item].pushto.split("/")[
                       Game_Data[item].pushto.split("/").length - 1
                     ]
-                  : "",
-                Game_Data[item].webgl_key,
-                Game_Data[item].premium_plan,
-                userdata.premium_plan
+                  : ""
               )
             }
             reward={
