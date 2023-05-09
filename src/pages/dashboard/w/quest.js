@@ -336,7 +336,7 @@ export default function KidStore({
                       />
                     ) : showgame ? (
                       // <GameFrame gamedata={gamedata} setmode={setquestmode} />
-                      <View />
+                      <div />
                     ) : (
                       <iframe
                         id="iframe"
