@@ -17,7 +17,6 @@ const QUEST_TYPES = [
   { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
   { title: "Career Quests", background: "#ccc", font: "#333" },
   { title: "Life Skills", background: "#ccc", font: "#333" },
-  { title: "Coming Soon", background: "#ccc", font: "#333" },
 ];
 
 export default function KnowledgeQuest({ userData, questData }) {
