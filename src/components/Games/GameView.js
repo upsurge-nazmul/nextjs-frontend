@@ -5,7 +5,6 @@ import { useState } from "react";
 import UnityScreen from "./UnityScreen";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
-import ActionArea from "./ActionArea";
 
 export default function GameView({
   game,
@@ -62,7 +61,7 @@ export default function GameView({
     handleDone ? handleDone() : () => {};
     mixpanel.track("Game Closed", { event: `Game closed` });
     setFullScreen(false);
-    document.exitFullscreen();
+    if (document && document.fullscreenElement) document.exitFullscreen();
     setGame();
     setShowUnicoinsAwards(true);
     setUnicoins(4000);
@@ -71,14 +70,12 @@ export default function GameView({
   return (
     <div className={styles.gameView} ref={gameRef}>
       {gameData && (
-        <UnityScreen data={gameData} handleGameExit={handleGameClose} />
-      )}
-      {!loading && (
-        <ActionArea
-          onClose={handleGameClose}
-          onDone={handleGameClose}
+        <UnityScreen
+          data={gameData}
+          handleGameExit={handleGameClose}
           fullScreen={fullScreen}
           showDone={handleDone}
+          loading={loading}
         />
       )}
     </div>
