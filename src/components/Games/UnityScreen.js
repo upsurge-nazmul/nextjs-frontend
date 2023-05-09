@@ -4,8 +4,15 @@ import styles from "../../styles/Games/gameView.module.scss";
 import GameLoading from "./GameLoading";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
+import ActionArea from "./ActionArea";
 
-export default function UnityScreen({ data = {}, handleGameExit = () => {} }) {
+export default function UnityScreen({
+  data = {},
+  handleGameExit = () => {},
+  fullScreen = false,
+  showDone = false,
+  loading = false,
+}) {
   const {
     unityProvider,
     isLoaded,
@@ -66,6 +73,20 @@ export default function UnityScreen({ data = {}, handleGameExit = () => {} }) {
       <div className={!isLoaded ? styles.loadingArea : styles.hidden}>
         <GameLoading percentage={loadingProgression} />
       </div>
+      {!loading && (
+        <ActionArea
+          onClose={async () => {
+            await unload();
+            handleGameExit();
+          }}
+          onDone={async () => {
+            await unload();
+            handleGameExit();
+          }}
+          fullScreen={fullScreen}
+          showDone={showDone}
+        />
+      )}
     </>
   );
 }
