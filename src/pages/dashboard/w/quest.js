@@ -13,7 +13,7 @@ import BoatIcon from "../../../components/SVGcomponents/BoatIcon";
 import QuestQuiz from "../../../components/Quests/QuestQuiz";
 import { scrollParentToChild } from "../../../helpers/domHelpers";
 import GameApis from "../../../actions/apis/GameApis";
-import GameFrame from "../../../components/Quests/GameFrame";
+// import GameFrame from "../../../components/Quests/GameFrame";
 import BrokenGameConroller from "../../../components/SVGcomponents/BrokenGameConroller";
 const democoncepts = [
   "Money",
@@ -335,7 +335,8 @@ export default function KidStore({
                         level={currentlevel}
                       />
                     ) : showgame ? (
-                      <GameFrame gamedata={gamedata} setmode={setquestmode} />
+                      // <GameFrame gamedata={gamedata} setmode={setquestmode} />
+                      <View />
                     ) : (
                       <iframe
                         id="iframe"
