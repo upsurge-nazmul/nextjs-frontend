@@ -24,7 +24,7 @@ const registerFormClick = (payload) => {
     getCookie("accesstoken")
   );
 };
-
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   getAllEvents,
   getAllChallenges,
