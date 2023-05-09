@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
 import QuestCard from "./QuestCard";
 
@@ -9,7 +10,31 @@ export default function MainSection({
   userData,
   setShowSubToPremium,
 }) {
-const userPlanType = userData.premium_plan;
+  const [newData, setNewData] = useState("");
+  const [checkData, setCheckData] = useState(true);
+  const userPlanType = userData.premium_plan;
+  useEffect(() => {
+    setNewData(
+      data.map((item) => {
+        if (tab.title === item.quest_type) {
+          return item;
+        } else {
+          return null;
+        }
+      })
+      );
+  }, [tab]);
+  function areAllElementsNull(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== null) {
+        return true;
+      }
+    }
+    return false;
+  }
+  useEffect(()=>{
+    setCheckData(areAllElementsNull(newData));
+  },[newData]);
   return (
     <div className={styles.mainSection}>
       <div className={styles.questArea}>
@@ -18,7 +43,7 @@ const userPlanType = userData.premium_plan;
           data.map((item) => {
             if (
               tab.title === item.quest_type
-            ) {
+              ) {
               return (
                 <QuestCard
                   handleCardClick={handleCardClick}
@@ -34,6 +59,11 @@ const userPlanType = userData.premium_plan;
             }
           })}
       </div>
+        {!checkData && 
+        <div className={styles.comingSoon}>
+          Coming Soon
+        </div>
+        }
     </div>
   );
 }
