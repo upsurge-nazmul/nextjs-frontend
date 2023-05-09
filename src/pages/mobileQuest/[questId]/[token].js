@@ -3,12 +3,8 @@ import { useRouter } from "next/dist/client/router";
 import KnowledgeQuestApi from "../../../actions/apis/KnowledgeQuestApi";
 import UnityScreen from "../../../components/Games/UnityScreen";
 import styles from "../../../styles/Games/gameView.module.scss";
-import ActionArea from "../../../components/Games//ActionArea";
 
 export default function GameView({
-  game,
-  setGame,
-  handleDone = null,
   setUnicoins = () => {},
   setShowUnicoinsAwards = () => {},
 }) {
@@ -19,7 +15,9 @@ export default function GameView({
   const [loading, setLoading] = useState(false);
 
   const sendDataToReactNativeApp = async () => {
-    window.ReactNativeWebView.postMessage("Done");
+    window &&
+      window.ReactNativeWebView &&
+      window.ReactNativeWebView.postMessage("Done");
   };
 
   useEffect(() => {
@@ -37,24 +35,17 @@ export default function GameView({
   const handleGameClose = () => {
     sendDataToReactNativeApp();
     mixpanel.track("Game Closed", { event: `Game closed` });
-    setGame();
     setShowUnicoinsAwards(true);
     setUnicoins(4000);
   };
 
-  // console.log("**********", gameData);
-
   return (
     <div className={styles.gameView} ref={gameRef}>
       {gameData && (
-        <UnityScreen data={gameData} handleGameExit={handleGameClose} />
-      )}
-      {!loading && (
-        <ActionArea
-          onClose={handleGameClose}
-          onDone={handleGameClose}
-          fullScreen={false}
-          showDone={handleDone}
+        <UnityScreen
+          data={gameData}
+          handleGameExit={handleGameClose}
+          loading={loading}
         />
       )}
     </div>
