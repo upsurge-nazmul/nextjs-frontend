@@ -104,29 +104,29 @@ const DATA = [
   },
 ];
 
-export default function TransactionHistory({ open, setOpen }) {
-  const [displayData, setDisplayData] = useState(DATA);
+export default function TransactionHistory({ open, setOpen,data }) {
+  const [displayData, setDisplayData] = useState(data);
   const [selectedSource, setSelectedSource] = useState(SOURCES[0].key);
   const [selectedType, setSelectedType] = useState(TRANSACTION_TYPE[0].key);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (displayData) {
       if (selectedSource === SOURCES[0].key) {
         if (selectedType === TRANSACTION_TYPE[0].key) {
-          setDisplayData(DATA);
+          setDisplayData(data);
         } else {
           setDisplayData(
-            DATA.filter((item) => item.transaction_type === selectedType)
+            data.filter((item) => item.status === selectedType)
           );
         }
       } else {
         setDisplayData(() =>
-          DATA.filter((item) => {
-            if (item.source_id === selectedSource) {
+          data.filter((item) => {
+            if (item.source === selectedSource) {
               if (selectedType === TRANSACTION_TYPE[0].key) {
                 return item;
               } else {
-                return item.transaction_type === selectedType;
+                return item.status === selectedType;
               }
             }
           })
@@ -176,9 +176,9 @@ export default function TransactionHistory({ open, setOpen }) {
           </div>
         </div>
         <div className={styles.historyArea}>
-          {displayData.map((item) => (
-            <TransactionCard data={item} key={item.id} />
-          ))}
+          {displayData.map((item) =>
+           <TransactionCard data={item} key={item.id} />
+              )}
         </div>
       </div>
     </Modal>
