@@ -21,6 +21,7 @@ import TransactionHistory from "../Unicoin/TransactionHistory";
 import UnicoinsEarned from "./UnicoinsEarned";
 import unicoinsStyle from "../../styles/Dashboard/increaseUnicoins.module.scss";
 import Animation from "../Buttons/Animation";
+import DashboardApis from "../../actions/apis/DashboardApis";
 
 function DashboardHeader({
   mode,
@@ -51,6 +52,9 @@ function DashboardHeader({
   useContext(MainContext);
   const [displayingUnicoins, setDisplayingUnicoins] = useState(userdata?.num_unicoins);
   const [activeAnimation, setActiveAnimation] = useState(false);
+  const [unicoinsTransactionData, setUnicoinsTransactionData] = useState("");
+  const [unAwardedTransaction, setUnAwardedTransaction] = useState(false);
+  const [closingBalance, setClosingBalance] = useState(0);
   console.log(kidLevel);
   const colors = [
     { front: "#a864fd", back: "#345dd1" },
@@ -63,41 +67,51 @@ function DashboardHeader({
   const confettiCount = 50;
   const sequinCount = 20;
   const [updateUnicoins,setUpdateUnicoins] = useState(false);
-   useEffect(()=>{
-     if(updateUnicoinsAnimation === true){
-       setTimeout(()=>{
-         setUpdateUnicoinsAnimation(false);
-     },3000);
-     setTimeout(()=>{
-      setUpdateUnicoins(true);
-     },3500)
-     setTimeout(()=>{
-       setActiveAnimation(true);
-     },4000)
-   }
-   },[updateUnicoinsAnimation]);
-   useEffect(() => {
-    if(updateUnicoins){
-      const interval = setInterval(() => {
-        const targetNumber = displayingUnicoins + unicoins;
-        setDisplayingUnicoins((prevNumber) => {
-          if (prevNumber + 1 >= targetNumber) {
-            clearInterval(interval);
-            setUnicoins(0);
-            return targetNumber;
-          } else {
-            return prevNumber + 1;
-          }
-        });
-      }, 1); // Change this interval as per your requirement
-      
-      return () => {
-        clearInterval(interval);
-      };
+  useEffect(async()=>{
+    if(updateUnicoinsAnimation === true){
+      setTimeout(()=>{
+        setUpdateUnicoinsAnimation(false);
+      },3000);
+      setTimeout(()=>{
+        setUpdateUnicoins(!updateUnicoins);
+      },3500)
+      setTimeout(()=>{
+        setActiveAnimation(true);
+      },4000)
+      let response = await DashboardApis.unicoinsTransactionShown();
     }
-  }, [updateUnicoins]);
-  useEffect(() => {
+  },[updateUnicoinsAnimation]);
+
+  useEffect(()=>{
+    setDisplayingUnicoins(closingBalance - unicoins);
+    if(parseInt(unicoins) > 0){
+      setUnicoinsEarnedPopUp(true);
+    }
+  },[unAwardedTransaction,unicoins]);
+  useEffect(async() => {
     setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
+    let unAwardedUnicoins = 0;
+    let response = await DashboardApis.getUnicoinsTransactionHistory();
+    setUnicoinsTransactionData(response.data.data);
+    const sortedResponse = response.data.data.sort((a, b) => a.timestamp - b.timestamp);
+    sortedResponse.map((item,key)=>{
+      if(item.animation_shown === false){
+        if(item.status === "credit"){
+          unAwardedUnicoins = parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
+        }
+        else if (item.status === "debit"){
+          unAwardedUnicoins = parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
+        }
+      }
+      if(response.data.data.length === (key+1)){
+        if(item.animation_shown === false)
+        {
+          setClosingBalance(parseInt(item.closing_balance));
+          setUnicoins(unAwardedUnicoins);
+          setUnAwardedTransaction(true);
+        }
+      }
+    })
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
         {
@@ -131,7 +145,25 @@ function DashboardHeader({
       clearTimeout(timer);
     };
   }, [showToolTip.show]);
-
+  useEffect(() => {
+    if(unAwardedTransaction){
+      const interval = setInterval(() => {
+        setDisplayingUnicoins((prevNumber) => {
+           if (prevNumber + 1 >= closingBalance) {
+             clearInterval(interval);
+             setUnicoins(0);
+             return closingBalance;
+            } else {
+              return prevNumber + 1;
+            }
+          });
+        }, 1);
+        
+        return () => {
+          clearInterval(interval);
+      };
+    }
+  }, [updateUnicoins]);
   return (
     <div
       className={`${styles.dashboardHeader} ${
@@ -210,10 +242,10 @@ function DashboardHeader({
           >
             <UniCoinSvg className={unicoinsStyle.svg} />
             <p className={unicoinsStyle.number}>
-              {userdata?.num_unicoins
-                ? userdata?.num_unicoins > UniCoinValue
-                ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
-                : userdata.num_unicoins
+              {displayingUnicoins
+                ? displayingUnicoins > UniCoinValue
+                  ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                  : displayingUnicoins
                 : 0}
             </p>
           </div>
@@ -335,6 +367,7 @@ function DashboardHeader({
         <TransactionHistory
           open={openUnicoinHistory}
           setOpen={setOpenUnicoinHistory}
+          data={unicoinsTransactionData}
         />
       ) : (
         ""
