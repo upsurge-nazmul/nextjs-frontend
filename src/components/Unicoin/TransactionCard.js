@@ -23,9 +23,9 @@ export default function TransactionCard({ data }) {
       className={styles.card}
       style={{
         borderColor:
-          data.transaction_type === "credit"
+          data.status === "credit"
             ? "#17d1bc"
-            : data.transaction_type === "debit"
+            : data.status === "debit"
             ? "#ff6263"
             : "#333",
       }}
@@ -34,16 +34,16 @@ export default function TransactionCard({ data }) {
         className={styles.icon}
         style={{
           backgroundColor:
-            data.transaction_type === "credit"
+            data.status === "credit"
               ? "#17d1bc"
-              : data.transaction_type === "debit"
+              : data.status === "debit"
               ? "#ff6263"
               : "#333",
         }}
       >
-        {data.transaction_type === "credit" ? (
+        {data.status === "credit" ? (
           <SouthIcon />
-        ) : data.transaction_type === "debit" ? (
+        ) : data.status === "debit" ? (
           <NorthIcon />
         ) : (
           ""
@@ -52,7 +52,7 @@ export default function TransactionCard({ data }) {
       <div className={styles.cardContent}>
         <div className={styles.titleArea}>
           <div className={styles.title}>
-            {SOURCES.find((source) => source.key === data.source_id).value}
+            {data.source}
           </div>
           <div className={styles.transactionId}>{data.transaction_id}</div>
         </div>
@@ -61,16 +61,16 @@ export default function TransactionCard({ data }) {
             className={styles.type}
             style={{
               color:
-                data.transaction_type === "credit"
+                data.status === "credit"
                   ? "#17d1bc"
-                  : data.transaction_type === "debit"
+                  : data.status === "debit"
                   ? "#ff6263"
                   : "#333",
             }}
           >
             {
               TRANSACTION_TYPE.find(
-                (trnc) => trnc.key === data.transaction_type
+                (trnc) => trnc.key === data.status
               ).value
             }
           </div>
@@ -80,9 +80,9 @@ export default function TransactionCard({ data }) {
           className={styles.amount}
           style={{
             color:
-              data.transaction_type === "credit"
+              data.status === "credit"
                 ? "#17d1bc"
-                : data.transaction_type === "debit"
+                : data.status === "debit"
                 ? "#ff6263"
                 : "#333",
           }}
@@ -90,14 +90,14 @@ export default function TransactionCard({ data }) {
           <UniCoinSvg
             className={styles.coinIcon}
             clr={
-              data.transaction_type === "credit"
+              data.status === "credit"
                 ? "#17d1bc"
-                : data.transaction_type === "debit"
+                : data.status === "debit"
                 ? "#ff6263"
                 : "#333"
             }
           />
-          {data.transaction_amount}
+          {data.unicoins}
         </div>
       </div>
     </div>
