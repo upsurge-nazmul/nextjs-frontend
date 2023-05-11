@@ -40,7 +40,7 @@ import PhoneVerificationPending from "../../../components/PhoneVerificationPendi
 import FlashSaleOffer from "../../../components/FlashSaleOffer";
 import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
 import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
-import BecomeFinanciallySmartPopUp from "../../../components/BecomeFinanciallySmartPopUp";
+import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
 
 export default function ChildActivity({
   pendingchores,
@@ -353,7 +353,7 @@ export default function ChildActivity({
         />
       ) : null}
       {showBecomeFinanciallySmart ? (
-        <BecomeFinanciallySmartPopUp
+        <KqPopUpPostSignUp
           setShowBecomeFinanciallySmart={setShowBecomeFinanciallySmart}
           userdata={userdata}
         />
