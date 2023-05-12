@@ -9,3 +9,6 @@
 ### Large screen
 
 @media only screen and (min-width: 991px) and (max-width: 1300px)
+
+
+![Visualization of this repo](./diagram.svg)
