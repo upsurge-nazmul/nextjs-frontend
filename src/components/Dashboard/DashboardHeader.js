@@ -17,6 +17,7 @@ import tooltipStyle from "../../styles/GeneralComponents/tooltip.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
 import SubscriptionDetails from "./SubscriptionDetails";
+import RedeemNowPopUp from "../../components/RedeemNowPopUp";
 
 function DashboardHeader({
   mode,
@@ -32,6 +33,7 @@ function DashboardHeader({
   },
 }) {
   const router = useRouter();
+  const { pathname } = router;
   const [bell, setbell] = useState(false);
   const [notifications, setnotifications] = useState(["s"]);
   const [showauth, setshowauth] = useState(false);
@@ -41,26 +43,38 @@ function DashboardHeader({
   const [savedUser, setSavedUser] = useState();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
+  const [closingBalance, setClosingBalance] = useState(10000); // Need to Change this when the Front-End branch is merged
+  const [showRedeemNow, setShowRedeemNow] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
+    console.log(`userdata`, userdata);
 
   useEffect(() => {
+    if(userdata){
+      if(closingBalance >= 5000 && userdata.reached_5k === false && pathname !== '/dashboard/k/store' ){
+        console.log(`show`);
+        setShowRedeemNow(true);
+      }
+      else if(closingBalance >= 10000 && userdata.reached_5k === true && userdata.reached_10k === false && pathname !== '/dashboard/k/store'){      
+        setShowRedeemNow(true);
+      }
+    }
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
         {
           id: userdata.user_id,
         },
         getCookie("accesstoken")
-        );
-        if (res && res.data && res.data.success) {
-          setKidLevel(res.data.data);
-        } else setKidLevel(1);
+      );
+      if (res && res.data && res.data.success) {
+        setKidLevel(res.data.data);
+      } else setKidLevel(1);
+    }
+    if (userdata) {
+      if(userdata.child_first_login === true){
+        setShowOnboarding(true);
       }
-      if (userdata) {
-        if(userdata.child_first_login === true){
-          setShowOnboarding(true);
-        }
-        if (userdata.user_id) {
+      if (userdata.user_id) {
         fetchKidLevel();
       } else {
         setKidLevel(userdata.level);
@@ -246,6 +260,9 @@ function DashboardHeader({
       ) : (
         ""
       )}
+      {showRedeemNow ? (
+        <RedeemNowPopUp unicoins={closingBalance} setShowRedeemNow={setShowRedeemNow} />
+      ) : null}
     </div>
   );
 }

@@ -175,6 +175,13 @@ const updateDashboardPopup = (payload) => {
     getCookie("accesstoken")
 );
 };
+const updateUserJourneyData = (payload) => {
+  return ApiCalls.postResponse(
+    `users/updateuserjourneydata`,
+    payload,
+    getCookie("accesstoken")
+);
+};
 
 //getchores
 const DashboardApis = {
@@ -209,6 +216,7 @@ const DashboardApis = {
   toggleChores,
   checkChoresToggle,
   updateDashboardPopup,
+  updateUserJourneyData
 };
 
 export default DashboardApis;
