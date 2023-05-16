@@ -8,12 +8,12 @@ const HighlightsCounter = ({ setshowauth, setauthmode }) => {
   const router = useRouter();
   const data = [
     {
-      number: "15000+",
+      number: "21000+",
       heading: "Students",
       class: "students",
     },
     {
-      number: "7700+",
+      number: "9600+",
       heading: "hours of learning",
       class: "learning",
     },
@@ -23,7 +23,7 @@ const HighlightsCounter = ({ setshowauth, setauthmode }) => {
       class: "schools",
     },
     {
-      number: "4,59,00,000+",
+      number: "6,30,00,000+",
       heading: "Unicoins Earned",
       class: "unicoins",
     },
