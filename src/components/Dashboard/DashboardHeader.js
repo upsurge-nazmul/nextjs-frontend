@@ -47,15 +47,21 @@ function DashboardHeader({
   const [showRedeemNow, setShowRedeemNow] = useState(false);
   const { setuser, userdata, theme, showmenu, setshowmenu } =
     useContext(MainContext);
-    console.log(`userdata`, userdata);
 
   useEffect(() => {
-    if(userdata){
-      if(closingBalance >= 5000 && userdata.reached_5k === false && pathname !== '/dashboard/k/store' ){
-        console.log(`show`);
+    if (userdata) {
+      if (
+        closingBalance >= 5000 &&
+        userdata.reached_5k === false &&
+        pathname !== "/dashboard/k/store"
+      ) {
         setShowRedeemNow(true);
-      }
-      else if(closingBalance >= 10000 && userdata.reached_5k === true && userdata.reached_10k === false && pathname !== '/dashboard/k/store'){      
+      } else if (
+        closingBalance >= 10000 &&
+        userdata.reached_5k === true &&
+        userdata.reached_10k === false &&
+        pathname !== "/dashboard/k/store"
+      ) {
         setShowRedeemNow(true);
       }
     }
@@ -71,7 +77,7 @@ function DashboardHeader({
       } else setKidLevel(1);
     }
     if (userdata) {
-      if(userdata.child_first_login === true){
+      if (userdata.child_first_login === true) {
         setShowOnboarding(true);
       }
       if (userdata.user_id) {
@@ -261,7 +267,10 @@ function DashboardHeader({
         ""
       )}
       {showRedeemNow ? (
-        <RedeemNowPopUp unicoins={closingBalance} setShowRedeemNow={setShowRedeemNow} />
+        <RedeemNowPopUp
+          unicoins={closingBalance}
+          setShowRedeemNow={setShowRedeemNow}
+        />
       ) : null}
     </div>
   );

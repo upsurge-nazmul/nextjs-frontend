@@ -18,9 +18,8 @@ function HeaderCard({ data, handleCardClick }) {
       {data ? (
         <div
           className={styles.headerCard}
-         // onClick={data.open ? () => handleCardClick(data.questId) : () => {}}
+          // onClick={data.open ? () => handleCardClick(data.questId) : () => {}}
           onClick={() => handleCardClick(data.questId)}
-        
         >
           {/* {!data.open ? (
             <div className={styles.locked}>
@@ -32,7 +31,7 @@ function HeaderCard({ data, handleCardClick }) {
           <div className={styles.cardLeft}>
             <div className={styles.imageWrapper}>
               <Image
-                src={require(`../../assets/kq/${data.questId}.png`)}
+                src={`/images/kq/${data.questId}.png`}
                 alt={data.questId}
                 className={styles.img}
                 height={114}

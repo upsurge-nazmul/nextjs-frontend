@@ -49,11 +49,12 @@ export default function KnowledgeQuest({ userData, questData }) {
         />
         {showSubToPremium && (
           <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
-        )
-        }
+        )}
         <div className={styles.mainContent} id="quest-main">
-          <p style={{fontSize:"large",fontWeight:"bold"}}>Delightful journeys with games & interactive courses - and rewards!</p>
-          <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} /> 
+          <p style={{ fontSize: "large", fontWeight: "bold" }}>
+            Delightful journeys with games & interactive courses - and rewards!
+          </p>
+          <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
           {/* <HeadArea
             data={questData}
             tab={tab}

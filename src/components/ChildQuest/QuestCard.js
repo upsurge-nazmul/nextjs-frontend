@@ -50,21 +50,27 @@ const TEXT_COLORS = [
   "#333",
 ];
 
-function QuestCard({ data, typeProps, handleCardClick,userPlanType,setShowSubToPremium }) 
-{
+function QuestCard({
+  data,
+  typeProps,
+  handleCardClick,
+  userPlanType,
+  setShowSubToPremium,
+}) {
   return (
     <>
       {data ? (
         <div
           className={styles.questCard}
-          onClick={() => { 
-            console.log(userPlanType, data.premium_plan)
-            if(userPlanType >= data.premium_plan) {handleCardClick(data.questId)}
-          else{
-            setShowSubToPremium(true);
-            console.log("Buy a premium plan");
-          }
-        }}
+          onClick={() => {
+            console.log(userPlanType, data.premium_plan);
+            if (userPlanType >= data.premium_plan) {
+              handleCardClick(data.questId);
+            } else {
+              setShowSubToPremium(true);
+              console.log("Buy a premium plan");
+            }
+          }}
         >
           <div
             className={styles.cardHeader}
@@ -77,7 +83,9 @@ function QuestCard({ data, typeProps, handleCardClick,userPlanType,setShowSubToP
             </div>
             <div className={styles.imageWrapper}>
               <Image
-                src={require(`../../assets/kq/${data.questId}.png`)}
+                src={`/images/kq/${data.questId}.png`}
+                height={"100%"}
+                width={"100%"}
                 alt={data.questId}
                 className={styles.img}
               />

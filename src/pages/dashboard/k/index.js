@@ -56,7 +56,6 @@ export default function ChildActivity({
   stockHoldings,
   todaysquestion,
 }) {
-  console.log(`user`, userdatafromserver);
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
   const [showtour, setshowtour] = useState(
@@ -290,7 +289,7 @@ export default function ChildActivity({
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
             <div className={styles.flexRight}>
-              {userdata && userdata.chores_opted ?
+              {userdata && userdata.chores_opted ? (
                 <div className={styles.choreSection} id="chores">
                   <h2
                     className={styles.mainheading}
@@ -317,7 +316,7 @@ export default function ChildActivity({
                     )}
                   </div>
                 </div>
-               :null}
+              ) : null}
             </div>
           </div>
           <></>
