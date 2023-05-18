@@ -92,9 +92,11 @@ function DashboardHeader({
   useEffect(async() => {
     setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
     let unAwardedUnicoins = 0;
+    if(userdata)
+    {
     let response = await DashboardApis.getUnicoinsTransactionHistory();
-    setUnicoinsTransactionData(response.data.data);
-    const sortedResponse = response.data.data.sort((a, b) => a.timestamp - b.timestamp);
+    setUnicoinsTransactionData(response?.data?.data);
+    const sortedResponse = response?.data?.data.sort((a, b) => a.timestamp - b.timestamp);
     sortedResponse.map((item,key)=>{
       if(item.animation_shown === false){
         if(item.status === "credit"){
@@ -112,7 +114,7 @@ function DashboardHeader({
           setUnAwardedTransaction(true);
         }
       }
-    })
+    })}
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
         {
@@ -224,9 +226,9 @@ function DashboardHeader({
           >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
-            <div className={styles.confettiContainer}>
+            <span className={styles.confettiContainer}>
                 <Animation activate={activeAnimation} setActivate={setActiveAnimation} colors={colors} classActive={true} confettiCount={confettiCount} sequinCount={sequinCount} />
-                </div>
+                </span>
               {displayingUnicoins
                 ? displayingUnicoins > UniCoinValue
                   ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
