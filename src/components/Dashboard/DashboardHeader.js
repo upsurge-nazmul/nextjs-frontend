@@ -17,7 +17,11 @@ import tooltipStyle from "../../styles/GeneralComponents/tooltip.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
 import SubscriptionDetails from "./SubscriptionDetails";
-import RedeemNowPopUp from "../../components/RedeemNowPopUp";
+import TransactionHistory from "../Unicoin/TransactionHistory";
+import UnicoinsEarned from "./UnicoinsEarned";
+import unicoinsStyle from "../../styles/Dashboard/increaseUnicoins.module.scss";
+import Animation from "../Buttons/Animation";
+import DashboardApis from "../../actions/apis/DashboardApis";
 
 function DashboardHeader({
   mode,
@@ -43,28 +47,72 @@ function DashboardHeader({
   const [savedUser, setSavedUser] = useState();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
-  const [closingBalance, setClosingBalance] = useState(10000); // Need to Change this when the Front-End branch is merged
-  const [showRedeemNow, setShowRedeemNow] = useState(false);
-  const { setuser, userdata, theme, showmenu, setshowmenu } =
-    useContext(MainContext);
-
-  useEffect(() => {
-    if (userdata) {
-      if (
-        closingBalance >= 5000 &&
-        userdata.reached_5k === false &&
-        pathname !== "/dashboard/k/store"
-      ) {
-        setShowRedeemNow(true);
-      } else if (
-        closingBalance >= 10000 &&
-        userdata.reached_5k === true &&
-        userdata.reached_10k === false &&
-        pathname !== "/dashboard/k/store"
-      ) {
-        setShowRedeemNow(true);
-      }
+  const [openUnicoinHistory, setOpenUnicoinHistory] = useState(false);
+  const [updateUnicoinsAnimation,setUpdateUnicoinsAnimation] = useState(false);
+  const { setuser, userdata, theme, showmenu, setshowmenu, unicoins, setUnicoins, setUnicoinsEarnedPopUp, unicoinsEarnedPopUp} =
+  useContext(MainContext);
+  const [displayingUnicoins, setDisplayingUnicoins] = useState(userdata?.num_unicoins);
+  const [activeAnimation, setActiveAnimation] = useState(false);
+  const [unicoinsTransactionData, setUnicoinsTransactionData] = useState("");
+  const [unAwardedTransaction, setUnAwardedTransaction] = useState(false);
+  const [closingBalance, setClosingBalance] = useState(0);
+  console.log(kidLevel);
+  const colors = [
+    { front: "#a864fd", back: "#345dd1" },
+    { front: "#29cdff", back: "#a864fd" },
+    { front: "#78ff44", back: "#ff718d" },
+    { front: "#5c86ff", back: "#78ff44" },
+    { front: "#ff718d", back: "#fdff6a" },
+    { front: "#fdff6a", back: "#fdff6a" },
+  ];
+  const confettiCount = 50;
+  const sequinCount = 20;
+  const [updateUnicoins,setUpdateUnicoins] = useState(false);
+  useEffect(async()=>{
+    if(updateUnicoinsAnimation === true){
+      setTimeout(()=>{
+        setUpdateUnicoinsAnimation(false);
+      },3000);
+      setTimeout(()=>{
+        setUpdateUnicoins(!updateUnicoins);
+      },3500)
+      setTimeout(()=>{
+        setActiveAnimation(true);
+      },4000)
+      let response = await DashboardApis.unicoinsTransactionShown();
     }
+  },[updateUnicoinsAnimation]);
+
+  useEffect(()=>{
+    setDisplayingUnicoins(closingBalance - unicoins);
+    if(parseInt(unicoins) > 0){
+      setUnicoinsEarnedPopUp(true);
+    }
+  },[unAwardedTransaction,unicoins]);
+  useEffect(async() => {
+    setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
+    let unAwardedUnicoins = 0;
+    let response = await DashboardApis.getUnicoinsTransactionHistory();
+    setUnicoinsTransactionData(response.data.data);
+    const sortedResponse = response.data.data.sort((a, b) => a.timestamp - b.timestamp);
+    sortedResponse.map((item,key)=>{
+      if(item.animation_shown === false){
+        if(item.status === "credit"){
+          unAwardedUnicoins = parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
+        }
+        else if (item.status === "debit"){
+          unAwardedUnicoins = parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
+        }
+      }
+      if(response.data.data.length === (key+1)){
+        if(item.animation_shown === false)
+        {
+          setClosingBalance(parseInt(item.closing_balance));
+          setUnicoins(unAwardedUnicoins);
+          setUnAwardedTransaction(true);
+        }
+      }
+    })
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
         {
@@ -98,7 +146,25 @@ function DashboardHeader({
       clearTimeout(timer);
     };
   }, [showToolTip.show]);
-
+  useEffect(() => {
+    if(unAwardedTransaction){
+      const interval = setInterval(() => {
+        setDisplayingUnicoins((prevNumber) => {
+           if (prevNumber + 1 >= closingBalance) {
+             clearInterval(interval);
+             setUnicoins(0);
+             return closingBalance;
+            } else {
+              return prevNumber + 1;
+            }
+          });
+        }, 1);
+        
+        return () => {
+          clearInterval(interval);
+      };
+    }
+  }, [updateUnicoins]);
   return (
     <div
       className={`${styles.dashboardHeader} ${
@@ -140,32 +206,64 @@ function DashboardHeader({
           <div
             className={styles.levelSection}
             onClick={() => setshowlevels(true)}
-          >
+            >
             <img
-              src={"/images/badges/badge_" + kidLevel + ".svg"}
-              alt="KidLevel"
-              className={styles.levelBadge}
+            src={"/images/badges/badge_" + kidLevel + ".svg"}
+            alt="KidLevel"
+            className={styles.levelBadge}
             />
             <p className={styles.level}>
-              <span>Level</span> <span>{kidLevel}</span>
+            <span>Level</span> <span>{kidLevel}</span>
             </p>
-          </div>
-        )} */}
-        {userdata?.user_type !== "parent" && (
+            </div>
+          )} */}
+        {userdata?.user_type !== "parent" && updateUnicoinsAnimation === false &&  (
           <div
-            className={styles.rewardBlock}
-            onClick={() => router.push("/dashboard/k/store")}
+          className={styles.rewardBlock}
+          onClick={() => setOpenUnicoinHistory((prev) => !prev)}
           >
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
-              {userdata?.num_unicoins
-                ? userdata?.num_unicoins > UniCoinValue
-                  ? (userdata.num_unicoins / UniCoinValue).toFixed(2) + "K"
-                  : userdata.num_unicoins
+            <div className={styles.confettiContainer}>
+                <Animation activate={activeAnimation} setActivate={setActiveAnimation} colors={colors} classActive={true} confettiCount={confettiCount} sequinCount={sequinCount} />
+                </div>
+              {displayingUnicoins
+                ? displayingUnicoins > UniCoinValue
+                  ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                  : displayingUnicoins
                 : 0}
             </p>
           </div>
         )}
+        {userdata && updateUnicoinsAnimation === true && (
+          <div className={unicoinsStyle.animationBlock}>
+          <div
+            className={unicoinsStyle.rewardBlock}
+            onClick={() => setOpenUnicoinHistory((prev) => !prev)}
+          >
+            <UniCoinSvg className={unicoinsStyle.svg} />
+            <p className={unicoinsStyle.number}>
+              {displayingUnicoins
+                ? displayingUnicoins > UniCoinValue
+                  ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                  : displayingUnicoins
+                : 0}
+            </p>
+          </div>
+          <div className={unicoinsStyle.awardedRewardBlock}>
+            +
+            <UniCoinSvg className={unicoinsStyle.svg} />
+            <p className={unicoinsStyle.number}>
+              {unicoins
+                ? unicoins > UniCoinValue
+                  ? (unicoins / UniCoinValue).toFixed(2) + "K"
+                  : unicoins
+                : 0}
+            </p>
+          </div>
+          </div>
+        )
+        }
         {userdata?.plan_name == "Premium3m" && (
           <div className={styles.premiumBadge}>
             <span className={styles.text}>Premium</span>
@@ -266,12 +364,24 @@ function DashboardHeader({
       ) : (
         ""
       )}
-      {showRedeemNow ? (
-        <RedeemNowPopUp
-          unicoins={closingBalance}
-          setShowRedeemNow={setShowRedeemNow}
+        {openUnicoinHistory ? (
+        <TransactionHistory
+          open={openUnicoinHistory}
+          setOpen={setOpenUnicoinHistory}
+          data={unicoinsTransactionData}
         />
-      ) : null}
+      ) : (
+        ""
+      )}
+        {unicoinsEarnedPopUp ? (
+          <UnicoinsEarned
+          setUnicoinsEarnedPopUp={setUnicoinsEarnedPopUp}
+          setUpdateUnicoinsAnimation={setUpdateUnicoinsAnimation}
+          unicoins={unicoins}
+          />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

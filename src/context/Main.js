@@ -35,6 +35,8 @@ export const MainContextProider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   const [skipActive,setskipActive] = useState(true);
   const [timesPlayed, setTimesPlayed] = useState(0);
+  const [unicoins, setUnicoins] = useState(0);
+  const [unicoinsEarnedPopUp, setUnicoinsEarnedPopUp] = useState(false);
   const router = useRouter();
   // useEffect(() => {
   //   setTheme(
@@ -191,7 +193,11 @@ export const MainContextProider = ({ children }) => {
         skipActive,
         setskipActive,
         setTimesPlayed,
-        timesPlayed
+        timesPlayed,
+        setUnicoins,
+        unicoins,
+        setUnicoinsEarnedPopUp,
+        unicoinsEarnedPopUp
       }}
     >
       {children}

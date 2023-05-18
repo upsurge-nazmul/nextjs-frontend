@@ -4,19 +4,16 @@ import styles from "../../styles/Buttons/animation.module.scss";
 export default function Animation({
   activate = false,
   setActivate = () => {},
+  colors,
+  classActive,
+  confettiCount,
+  sequinCount
 }) {
   const canvRef = useRef();
 
   // ammount to add on each button press
-  const confettiCount = 20;
-  const sequinCount = 30;
 
   // colors, back side is darker for confetti flipping
-  const colors = [
-    { front: "#7b5cff", back: "#6245e0" }, // Purple
-    { front: "#b3c7ff", back: "#8fa5e5" }, // Light Blue
-    { front: "#5c86ff", back: "#345dd1" }, // Darker Blue
-  ];
 
   // "physics" variables
   const gravityConfetti = 0.1;
@@ -226,5 +223,5 @@ export default function Animation({
     return () => setActivate(false);
   }, [activate]);
 
-  return <canvas id="canvas" ref={canvRef} className={styles.canvas}></canvas>;
+  return <canvas id="canvas" ref={canvRef} className={`${classActive ? styles.canvas : styles.BadgeCanvas }`}></canvas>;
 }

@@ -183,6 +183,21 @@ const updateUserJourneyData = (payload) => {
 );
 };
 
+const getUnicoinsTransactionHistory = (payload) => {
+  return ApiCalls.getResponse(
+    "users/transactionhistory",
+    payload,
+    getCookie("accesstoken")
+    );
+  };
+  
+  const unicoinsTransactionShown = (payload) => {
+    return ApiCalls.postResponse(
+      `users/unicoinstransactionshown`,
+      payload,
+      getCookie("accesstoken")
+  );
+  };
 //getchores
 const DashboardApis = {
   addkids,
@@ -216,6 +231,8 @@ const DashboardApis = {
   toggleChores,
   checkChoresToggle,
   updateDashboardPopup,
+  getUnicoinsTransactionHistory,
+  unicoinsTransactionShown,
   updateUserJourneyData
 };
 
