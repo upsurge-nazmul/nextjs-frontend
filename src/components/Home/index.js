@@ -68,9 +68,9 @@ function Home({ page = "", showNav = true }) {
   const [gameOpened, setGameOpened] = useState(null);
   const [kqOpened, setKqOpened] = useState(null);
   useEffect(()=>{
-    function handleScroll() {
-      const showGamesPopUp = gamesRef.current.offsetTop <= (window.scrollY + 250); 
-      const showKQPopUp = kqRef.current.offsetTop <= (window.scrollY + 250); 
+   function handleScroll() {
+      const showGamesPopUp = gamesRef?.current?.offsetTop <= (window.scrollY + 250); 
+      const showKQPopUp = kqRef?.current?.offsetTop <= (window.scrollY + 250); 
       if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
           setShowTrendingGames(showGamesPopUp);
           setTrendingGamesShow(showGamesPopUp);
