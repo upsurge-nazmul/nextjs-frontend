@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 501;
+    z-index: 20;
     .clickable {
         cursor: pointer;
         color: #A09E9E;
@@ -25,7 +25,7 @@
         background-color: white;
         width: 45rem;
         border-radius: 2rem;
-        z-index: 2;
+        z-index: 20;
         padding: 1.5rem;
         position: relative;
         display: flex;
