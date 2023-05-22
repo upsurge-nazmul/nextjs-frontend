@@ -4,9 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
   .onboardingVideo {
     height: 90%;
     width: 90%;
     border-radius: 14px;
+    z-index: 999;
   }
 }

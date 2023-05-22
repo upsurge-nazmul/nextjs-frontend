@@ -197,7 +197,7 @@ function ParentChildAuth({
       setuserdata(response.data.data.profile);
       setCookie("accesstoken", response.data.data.token);
       localforage.removeItem("playedGame");
-      setmode("onboarding");
+      setChoseToPremium(true);
       setTimesPlayed(0);
     }
   }
@@ -343,7 +343,7 @@ function ParentChildAuth({
         router.push(`/payments/phonepe?plan_id=${premiumprice}`);
       }
       localforage.removeItem("playedGame");
-      setmode("onboarding");
+      setChoseToPremium(true);
       //await fetchfamilyid(response.data.data.profile.id);
     }
     setloading(false);
