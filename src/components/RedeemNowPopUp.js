@@ -3,9 +3,10 @@ import styles from "../styles/GeneralComponents/redeemNow.module.scss";
 import UniCoinSvg from "./SVGcomponents/UniCoinSvg";
 import { useRouter } from "next/dist/client/router";
 import DashboardApis from "../actions/apis/DashboardApis";
-function RedeemNowPopUp({
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+function RedeemNowPopUp({ 
   unicoins,
-  setShowRedeemNow,
+  setShowRedeemNow
 }) {
   const router = useRouter();
   const rewards = [
@@ -26,8 +27,21 @@ function RedeemNowPopUp({
   ];
   return (
     <div className={styles.redeemNow}>
-      <div className={styles.background}></div>
+      <div
+        className={styles.background}
+        onClick={() => {
+          setShowRedeemNow(false);
+        }}
+      ></div>
       <div className={`${styles.block} ${styles.blockLarger}`}>
+        <div
+          className={styles.cross}
+          onClick={() => {
+            setShowRedeemNow(false);
+          }}
+        >
+          <CancelOutlinedIcon className={styles.icon} />
+        </div>
         <div className={styles.flexBox}>
           <div className={styles.flexChild1}>
             <h2 className={styles.heading} style={{ display: "flex" }}>
@@ -40,8 +54,8 @@ function RedeemNowPopUp({
               treat yourself with some amazing vouchers!
             </p>
             <button
-              onClick={async() => {
-                await DashboardApis.updateUserJourneyData({shown:true});
+              onClick={async () => {
+                await DashboardApis.updateUserJourneyData({ shown: true });
                 setShowRedeemNow(false);
                 router.push("k/store");
               }}
