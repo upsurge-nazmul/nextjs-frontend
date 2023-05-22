@@ -46,6 +46,7 @@ export default function TestiMonial() {
   const [mouseon, setmouseon] = useState(false);
   const [timeout, settimeout] = useState(null);
   const { theme } = useContext(MainContext);
+
   useEffect(() => {
     if (mouseon && timeout) {
       clearTimeout(timeout);
@@ -56,8 +57,10 @@ export default function TestiMonial() {
         }, 3000)
       );
     }
-    return () => clearTimeout(timeout);
-  }, [currenttestimonial, mouseon]);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [currenttestimonial, mouseon, timeout, setcurrenttestimonial, testimonials.length]);
 
   return (
     <div
