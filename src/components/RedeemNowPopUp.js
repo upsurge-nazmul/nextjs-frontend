@@ -6,7 +6,9 @@ import DashboardApis from "../actions/apis/DashboardApis";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 function RedeemNowPopUp({ 
   unicoins,
-  setShowRedeemNow
+  setShowRedeemNow,
+  reached_5k,
+  reached_10k,
 }) {
   const router = useRouter();
   const rewards = [
@@ -29,14 +31,22 @@ function RedeemNowPopUp({
     <div className={styles.redeemNow}>
       <div
         className={styles.background}
-        onClick={() => {
+        onClick={async () => {
+          if(unicoins>=10000 && reached_5k == false){
+            await DashboardApis.updateUserJourneyData({ shown: true, reached_5k: true });
+          }
+          await DashboardApis.updateUserJourneyData({ shown: true });
           setShowRedeemNow(false);
         }}
       ></div>
       <div className={`${styles.block} ${styles.blockLarger}`}>
         <div
           className={styles.cross}
-          onClick={() => {
+          onClick={async () => {
+            if(unicoins>=10000 && reached_5k == false){
+              await DashboardApis.updateUserJourneyData({ shown: true, reached_5k: true });
+            }
+            await DashboardApis.updateUserJourneyData({ shown: true });
             setShowRedeemNow(false);
           }}
         >
@@ -55,6 +65,9 @@ function RedeemNowPopUp({
             </p>
             <button
               onClick={async () => {
+                if(unicoins>=10000 && reached_5k == false){
+                  await DashboardApis.updateUserJourneyData({ shown: true, reached_5k: true });
+                }
                 await DashboardApis.updateUserJourneyData({ shown: true });
                 setShowRedeemNow(false);
                 router.push("k/store");
