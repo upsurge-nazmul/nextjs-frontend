@@ -69,22 +69,24 @@ function Home({ page = "", showNav = true }) {
   const [kqOpened, setKqOpened] = useState(null);
   useEffect(()=>{
    function handleScroll() {
-      const showGamesPopUp = gamesRef?.current?.offsetTop <= (window.scrollY + 250); 
-      const showKQPopUp = kqRef?.current?.offsetTop <= (window.scrollY + 250); 
-      if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
+      const showGamesPopUp = userdata ? false : gamesRef?.current?.offsetTop <= (window.scrollY + 250); 
+      const showKQPopUp = userdata ? false : kqRef?.current?.offsetTop <= (window.scrollY + 250); 
+      if(!userdata){
+        if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
           setShowTrendingGames(showGamesPopUp);
           setTrendingGamesShow(showGamesPopUp);
-        } 
+      } 
       else if (
-          trendingGamesShow &&
-          trendingGamesManuallyClosed &&
-          !becomeFinanciallySmartShown &&
-          !showUnicoinsAwards &&
-          !showauth &&
-          showKQPopUp
-          ) {
+        trendingGamesShow &&
+        trendingGamesManuallyClosed &&
+        !becomeFinanciallySmartShown &&
+        !showUnicoinsAwards &&
+        !showauth &&
+        showKQPopUp
+        ) {
             setShowBecomeFinanciallySmart(showKQPopUp);
             setBecomeFinanciallySmartShown(showKQPopUp);
+          }
         }
       }
     window.addEventListener("scroll", handleScroll);
@@ -192,7 +194,7 @@ function Home({ page = "", showNav = true }) {
     }
   }, [router]);
   useEffect(()=>{
-    if (showTrendingGames || showBecomeFinanciallySmart ) {
+    if (showTrendingGames  && !userdata || showBecomeFinanciallySmart  && !userdata) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflowY = "auto";
