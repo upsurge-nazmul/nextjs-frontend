@@ -90,9 +90,6 @@ function DashboardHeader({
 
   useEffect(()=>{
     setDisplayingUnicoins(closingBalance - unicoins);
-    if(parseInt(unicoins) > 0){
-      setUnicoinsEarnedPopUp(true);
-    }
   },[unAwardedTransaction,unicoins]);
   useEffect(async() => {
     setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
@@ -101,8 +98,8 @@ function DashboardHeader({
     {
     let response = await DashboardApis.getUnicoinsTransactionHistory();
     setUnicoinsTransactionData(response?.data?.data);
-    const sortedResponse = response?.data?.data.sort((a, b) => a.timestamp - b.timestamp);
-    sortedResponse.map((item,key)=>{
+    const sortedResponse = await response?.data?.data.sort((a, b) => a.timestamp - b.timestamp);
+    const updatedResponse = await sortedResponse?.map((item,key)=>{
       if(item.animation_shown === false){
         if(item.status === "credit"){
           unAwardedUnicoins = parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
@@ -117,6 +114,8 @@ function DashboardHeader({
           setClosingBalance(parseInt(item.closing_balance));
           setUnicoins(unAwardedUnicoins);
           setUnAwardedTransaction(true);
+          setUnicoinsEarnedPopUp(true);
+          return { ...item, animation_shown: true };
         }
       }
     })}
@@ -429,6 +428,7 @@ function DashboardHeader({
           setUnicoinsEarnedPopUp={setUnicoinsEarnedPopUp}
           setUpdateUnicoinsAnimation={setUpdateUnicoinsAnimation}
           unicoins={unicoins}
+          setUnicoins={setUnicoins}
           />
       ) : (
         ""
