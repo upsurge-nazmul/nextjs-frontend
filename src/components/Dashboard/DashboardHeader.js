@@ -60,6 +60,7 @@ function DashboardHeader({
   const [closingBalance, setClosingBalance] = useState(0);
   const [achievementPopUp , setAchievementPopUp] = useState(false);
   const [showRedeemNow, setShowRedeemNow] = useState(false);
+  const [shownRedeemNow, setShownRedeemNow] = useState(false);
   const [showAchievement, setShowAchievement] = useState("");
   console.log(kidLevel);
   const colors = [
@@ -143,48 +144,53 @@ function DashboardHeader({
   }, [userdata]);
 
   useEffect(() => {
+    let shouldShowRedeemNow = false;
     if (userdata) {
-      if (
+        if (
         displayingUnicoins >= 5000 &&
         userdata.reached_5k === false &&
-        pathname !== "/dashboard/k/store"
-      ) {
-        setShowRedeemNow(true);
-        setShowAchievement({
-          achievementTitle: "Rookie Earner",
-          percentage: 10,
-          achievementDescription: "Collect 5000 unicoins",
-        });
-        setAchievementPopUp(true);
-        if (displayingUnicoins >= 10000) {
-          setTimeout(() => {
-            setShowAchievement((prevState) => {
-              return {
-                ...prevState,
-                achievementTitle: "Junior Earner",
-                percentage: 5,
-                achievementDescription: "Collect 10000 unicoins",
-              };
+        pathname !== "/dashboard/k/store" &&
+        shownRedeemNow === false
+        ) {
+          setShowAchievement({
+            achievementTitle: "Rookie Earner",
+            percentage: 10,
+            achievementDescription: "Collect 5000 unicoins",
+          });
+          setAchievementPopUp(true);
+          shouldShowRedeemNow = true;
+          if (displayingUnicoins >= 10000) {
+            setTimeout(() => {
+              if (shownRedeemNow === false) {
+                setShowAchievement((prevState) => ({
+                  ...prevState,
+                  achievementTitle: "Junior Earner",
+                  percentage: 5,
+                  achievementDescription: "Collect 10000 unicoins",
+                }));
+                setAchievementPopUp(true);
+              }
+            }, 6000);
+          }
+        } else if (
+          displayingUnicoins >= 10000 &&
+          userdata.reached_5k === true &&
+          userdata.reached_10k === false &&
+          pathname !== "/dashboard/k/store" &&
+          shownRedeemNow === false
+          ) {
+            shouldShowRedeemNow = true;
+            setShowAchievement({
+              achievementTitle: "Junior Earner",
+              percentage: 5,
+              achievementDescription: "Collect 10000 unicoins",
             });
-            setAchievementPopUp(true);
-          }, 6000);
+          }
         }
-      } else if (
-        displayingUnicoins >= 10000 &&
-        userdata.reached_5k === true &&
-        userdata.reached_10k === false &&
-        pathname !== "/dashboard/k/store"
-      ) {
-        setShowRedeemNow(true);
-        setShowAchievement({
-          achievementTitle: "Junior Earner",
-          percentage: 5,
-          achievementDescription: "Collect 10000 unicoins",
-        });
-        setAchievementPopUp(true);
-      }
-    }
-  },[displayingUnicoins,userdata]);
+    setShowRedeemNow(shouldShowRedeemNow);
+    setShownRedeemNow(shouldShowRedeemNow);
+    setAchievementPopUp(shouldShowRedeemNow);
+  }, [displayingUnicoins, userdata]);
   
   useEffect(() => {
     if (!showToolTip.show) return;
