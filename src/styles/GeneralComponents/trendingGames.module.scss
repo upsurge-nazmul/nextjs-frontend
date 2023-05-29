@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
   transition: 1s;
   .background {
     background-color: rgba(0, 0, 0, 0.322);
@@ -17,7 +16,7 @@
     position: absolute;
     z-index: -1;
     transition: 1s;
-    animation: backgroundslide 1.5s forwards;
+    animation: backgroundslide 0.5s forwards;
   }
   .block {
     background-color: #f4f4f4;
@@ -32,7 +31,6 @@
     gap: 1rem;
     border-radius: 3rem;
     transition: 1s;
-    animation: popup 3s forwards;
     .cross {
       position: absolute;
       top: 1rem;
@@ -144,35 +142,5 @@
   }
   to{
     opacity: 1;
-  }
-}
-@keyframes popup {
-  0%{
-    opacity: 0;
-    top:-100vw;
-  }
-  40%{
-    top:-90vw;
-  }
-  50%{
-    opacity: 1;
-  }
-  52%{
-    top:2vw;
-  }
-  57%{
-    top:-5vw;
-  }
-  62%{
-    top:1vw;
-  }
-  68%{
-    top:-2vw;
-  }
-  72%{
-    top:0;
-  }
-  100%{
-    top:0;
   }
 }
