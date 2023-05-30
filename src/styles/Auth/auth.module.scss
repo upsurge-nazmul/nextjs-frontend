@@ -12,6 +12,24 @@
   }
 }
 
+.schoolAuth{
+  .schoolAuthContainer{
+    .authcontainer{
+      display: flex;
+      flex-direction: column;
+      z-index: 6;
+      background-color: white;
+      height: fit-content;
+      width: 100%;
+      max-width: 589px;
+      padding: 4rem 3rem 4rem;
+      border-radius: 37px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
 .auth {
   position: fixed;
   z-index: 5;
@@ -1607,6 +1625,14 @@
 }
 
 @media only screen and (min-width: 991px) and (max-width: 1300px) {
+  
+.schoolAuth{
+  .schoolAuthContainer{
+    .authcontainer{
+      padding: 2rem 3rem 2rem;
+    }
+  }
+}
   .auth {
     .authContentWrapper {
       .authcontainer {
