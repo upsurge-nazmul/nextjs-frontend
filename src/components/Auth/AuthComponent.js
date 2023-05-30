@@ -21,6 +21,7 @@ import AuthRefer from "./AuthRefer";
 import Onboarding from "../Onboarding";
 import ParentChildAuth from "./ParentChildAuth";
 import ChosePremiumPopUp from "../ChosePremiumPopUp";
+import AuthSchool from "./AuthSchool";
 
 function AuthComponent({
   showauth,
@@ -95,13 +96,13 @@ function AuthComponent({
   }
 
   return (
-    <div className={`${styles.auth} ${theme === "dark" && styles.darkauth}`}>
+    <div className={`${mode !== "school" ? styles.auth : styles.schoolAuth} ${theme === "dark" && styles.darkauth}`}>
       <Toast data={toastdata} />
       <AnimatePresence>
         {showauth ? (
-          <div className={styles.authContentWrapper}>
+          <div className={mode !== "school" ? styles.authContentWrapper : styles.schoolAuthContainer}>
             <div
-              className={styles.background}
+              className={mode !== "school" ? styles.background : ""}
               onClick={() => {
                 if (mode !== "privacy") setshowauth(false);
               }}
@@ -115,7 +116,7 @@ function AuthComponent({
                 mode === "parent" ? styles.parentAuth : ""
               }`}
             >
-              {mode !== "privacy" && mode !== "" ? (
+              {mode !== "privacy" && mode !== "" && mode !== "school" ? (
                 <AuthHeader
                   setmode={setmode}
                   handleBack={handleBack}
@@ -253,6 +254,29 @@ function AuthComponent({
               : mode === "premiumSub" ? (
                 <ChosePremiumPopUp setmode={setmode} />
               ) 
+              : mode === "school" ? (
+                <AuthSchool
+                setemail={setemail}
+                  email={email}
+                  settoastdata={settoastdata}
+                  setmode={setmode}
+                  phone={phone}
+                  setphone={setphone}
+                  error={error}
+                  password={password}
+                  seterror={seterror}
+                  setusername={setusername}
+                  username={username}
+                  setpassword={setpassword}
+                  signupmethod={signupmethod}
+                  usertype={usertype}
+                  premiumprice={premium_price}
+                  setpremiumrice={setPremium_price}
+                  setChildAge={setChildAge}
+                  childAge={childAge}
+                  gameOpened={gameOpened}
+                  kqOpened={kqOpened} />
+              ) 
               : mode === "onboarding" ? (
                 <Onboarding
                   actionHandler={() => {
@@ -272,7 +296,8 @@ function AuthComponent({
                 />
               ) : null}
               <div className={styles.authFooter}>
-                {mode !== "reset" &&
+                {mode !== "school" &&
+                mode !== "reset" &&
                   (mode === "login" ? (
                     !onlyLogin && (
                       <>
