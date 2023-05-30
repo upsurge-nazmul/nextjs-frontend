@@ -30,7 +30,11 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
       <div
         className={styles.background}
         onClick={() => {
-          setChoseToPremium(false);
+          if (router.pathname === "/dashboard/k") {
+            setChoseToPremium(false);
+          } else {
+            router.push(`/dashboard/k`);
+          }
         }}
       ></div>
       <div className={styles.block}>
