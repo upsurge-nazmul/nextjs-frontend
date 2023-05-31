@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import Toast from "../../components/Toast";
 import LeftPanel from "../../components/LeftPanel";
 import Footer from "../../components/Home/Footer";
-import styles from "../../styles/School/school.module.scss";
+import styles from "../../styles/school/school.module.scss";
 import Logo from "../../components/SVGcomponents/Logo";
 import AuthComponent from "../../components/Auth/AuthComponent";
 import GamesBar from "../../components/GamesBar";
