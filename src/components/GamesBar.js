@@ -34,7 +34,7 @@ function GamesBar() {
                   setshowauth(true);
                   setauthmode("parentChild");
                 } else if(timesGameOpened === 0 || timesGameOpened === 1) {
-                  handlegameclick("BalanceBuilder");
+                  handlegameclick("MoneyDash");
                   settimesGameOpened(timesGameOpened + 1);
                 }
               }}
@@ -67,8 +67,8 @@ function GamesBar() {
           <div className={styles.game}>
             <img
               className={styles.gameImg}
-              src="/images/games/ludo-game.png"
-              alt="Ludo"
+              src="/images/games/snake-and-ladders.png"
+              alt="Snake And Ladders"
             />
             <button
               onClick={() => {
@@ -76,8 +76,9 @@ function GamesBar() {
                   setshowauth(true);
                   setauthmode("parentChild");
                 } else if(timesGameOpened === 0 || timesGameOpened === 1) {
-                  handlegameclick("Ludo");
+                  handlegameclick("SnakeAndLadders");
                   settimesGameOpened(timesGameOpened + 1);
+                  
                 }
               }}
               className={styles.playButton}
