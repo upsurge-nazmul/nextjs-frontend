@@ -23,7 +23,7 @@ export default function GameList({
                   : "",
                 Game_Data[item].webgl_key,
                 Game_Data[item].premium_plan,
-                userdata.premium_plan
+                userdata?.premium_plan
               )
             }
             reward={
