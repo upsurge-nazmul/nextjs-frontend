@@ -11,6 +11,7 @@ function GamesBar() {
   }
   const [showauth, setshowauth] = useState(false);
   const [authmode, setauthmode] = useState("");
+  const school = "Venkateshwara Global School";
   return (
     <div className={styles.GameBarContainer}>
       <h1>Try 45-days FREE and exclusive learning experiences</h1>
@@ -25,7 +26,7 @@ function GamesBar() {
           <div className={styles.game}>
             <img
               className={styles.gameImg}
-              src="/images/games/money-dash.png"
+              src="/images/games/512/money-dash-512.png"
               alt="Money Dash"
             />
             <button
@@ -46,7 +47,7 @@ function GamesBar() {
           <div className={styles.game}>
             <img
               className={styles.gameImg}
-              src="/images/games/need-and-want.png"
+              src="/images/games/512/need&wants-512.png"
               alt="Need and Want"
             />
             <button
@@ -67,8 +68,8 @@ function GamesBar() {
           <div className={styles.game}>
             <img
               className={styles.gameImg}
-              src="/images/games/ludo-game.png"
-              alt="Ludo"
+              src="/images/games/512/snake&ladders-512.png"
+              alt="Snakes And Ladder"
             />
             <button
               onClick={() => {
@@ -76,7 +77,7 @@ function GamesBar() {
                   setshowauth(true);
                   setauthmode("parentChild");
                 } else if(timesGameOpened === 0 || timesGameOpened === 1) {
-                  handlegameclick("Ludo");
+                  handlegameclick("Snake");
                   settimesGameOpened(timesGameOpened + 1);
                 }
               }}
@@ -93,6 +94,7 @@ function GamesBar() {
         setshowauth={setshowauth}
         authmode={authmode}
         setauthmode={setauthmode}
+        school={school}
         />
         </div>
       {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
