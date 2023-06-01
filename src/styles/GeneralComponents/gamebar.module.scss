@@ -1,7 +1,6 @@
 .GameBarContainer {
     background: #FF6263;
     color: #fff;
-    z-index: 50;
     padding:2rem;
     margin:1rem;
     border-radius: 2rem;
@@ -47,7 +46,7 @@
             font-weight: 500;
             font-size: 1.25rem;
             transition: all 0.3s ease;
-            z-index: 15;
+            z-index: 5;
             border: 0;
             &:hover {
                 background-color: #ffffff;
