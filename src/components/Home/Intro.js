@@ -1,16 +1,10 @@
 import React, { useContext, useState } from "react";
-import validator from "validator";
 import Toast from "../Toast";
 import styles from "../../styles/Home/intro.module.scss";
-import LoginApis from "../../actions/apis/LoginApis";
 import IntroSvg from "../SVGcomponents/IntroSvg";
-import BallsSvg from "../SVGcomponents/BallsSvg";
 import { useRouter } from "next/dist/client/router";
-import Curve2 from "../SVGcomponents/Curve2";
-import WaitlistPopUp from "../WaitlistPopUp";
 import Spinner from "../Spinner";
 import { MainContext } from "../../context/Main";
-import InfoIcon from "@mui/icons-material/Info";
 function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const { userdata, setuserdata, theme } = useContext(MainContext);
   const [loading, setloading] = useState(false);
@@ -30,17 +24,16 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     <section
       className={`${styles.intro} ${theme === "dark" && styles.intro_dark}`}
     >
-      <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
         <h1 className={styles.heading}>
           Make your child
           <br />
-            <div className={styles.slidingVertical}>
-              <span className={styles.funBrandCol1}>money-smart.</span>
-              <span className={styles.funBrandCol2}>entrepreneurial.</span>
-              <span className={styles.funBrandCol3}>future-ready.</span>
-            </div>
+          <div className={styles.slidingVertical}>
+            <span className={styles.funBrandCol1}>money-smart.</span>
+            <span className={styles.funBrandCol2}>entrepreneurial.</span>
+            <span className={styles.funBrandCol3}>future-ready.</span>
+          </div>
         </h1>
         <p className={styles.subheading}>
           {`upsurge is India’s most loved platform to enable financial literacy for kids & make them MONEY-smart`}
@@ -92,7 +85,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       </div>
 
       <IntroSvg className={styles.homesvg} />
-      <BallsSvg className={styles.ballsvg} />
+      {/* <BallsSvg className={styles.ballsvg} /> */}
     </section>
   );
 }
