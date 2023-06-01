@@ -1,7 +1,9 @@
 @use "../variables/colors.scss" as *;
 
 .container {
-  padding: 4rem 6rem;
+  margin: 3rem 0;
+  background-color: #fbfbfb;
+  padding: 2rem 6rem;
   .contentWrapper {
     display: flex;
     flex-direction: row;
