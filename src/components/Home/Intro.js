@@ -33,7 +33,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <Curve2 className={styles.curve} />
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <h1 className={styles.heading}>
+        <h2 className={styles.heading}>
           Make your child
           <br />
             <div className={styles.slidingVertical}>
@@ -41,10 +41,10 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
               <span className={styles.funBrandCol2}>entrepreneurial.</span>
               <span className={styles.funBrandCol3}>future-ready.</span>
             </div>
-        </h1>
-        <p className={styles.subheading}>
+        </h2>
+        <h1 className={styles.subheading}>
           {`upsurge is India’s most loved platform to enable financial literacy for kids & make them MONEY-smart`}
-        </p>
+        </h1>
         {userdata ? (
           <div
             className={styles.gotobutton}
