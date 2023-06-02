@@ -8,20 +8,15 @@ import LinkedIN from "../SVGcomponents/LinkedInSvg";
 import Terms from "./Terms";
 import DiscordSvg from "../SVGcomponents/DiscordSvg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 import Curve1 from "../SVGcomponents/Curve1";
 import Curve2 from "../SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
 import Spinner from "../Spinner";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
-function Footer({
-  setshowauth,
-  setauthmode,
-  setmailfromhome,
-  setshowpopup,
-}) {
+function Footer({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
   const [showbenefits, setshowbenefits] = useState(false);
@@ -32,7 +27,7 @@ function Footer({
   const [email, setemail] = useState("");
   const [showproducts, setshowproducts] = useState(false);
   const [termmode, settermmode] = useState("terms");
-  const { theme,userdata } = useContext(MainContext);
+  const { theme, userdata } = useContext(MainContext);
   const router = useRouter();
   async function check(e) {
     e?.preventDefault();
@@ -63,10 +58,10 @@ function Footer({
     >
       {showterm && <Terms setshowterm={setshowterm} termmode={termmode} />}
       <div className={styles.background}>
-        <div className={styles.curvecontainer}>
+        {/* <div className={styles.curvecontainer}>
           <Curve1 className={styles.curve1} />
           <Curve2 className={styles.curve2} />
-        </div>
+        </div> */}
       </div>
       <div className={styles.top}>
         <div className={styles.left}>
@@ -75,54 +70,58 @@ function Footer({
             onClick={() => router.push("/")}
             dark={theme === "dark"}
           />
-           {userdata ? (
-          <div
-            className={styles.gotobutton}
-            onClick={() => {
-              if (userdata) {
-                if (userdata.is_waiting_active) {
-                  router.push("/dashboard/w");
-                } else if (userdata.user_type === "parent") {
-                  router.push("/dashboard/p");
-                } else {
-                  router.push("/dashboard/k");
+          {userdata ? (
+            <div
+              className={styles.gotobutton}
+              onClick={() => {
+                if (userdata) {
+                  if (userdata.is_waiting_active) {
+                    router.push("/dashboard/w");
+                  } else if (userdata.user_type === "parent") {
+                    router.push("/dashboard/p");
+                  } else {
+                    router.push("/dashboard/k");
+                  }
+                  return;
                 }
-                return;
-              }
-            }}
-          >
-            Go to dashboard
-          </div>
+              }}
+            >
+              Go to dashboard
+            </div>
           ) : (
-          <>
-           <p className={styles.error}>{error}</p>
-          <div className={`${styles.signupBox} ${error && styles.errsignbox}`}>
-            <form onSubmit={(e) => check(e)}>
-              <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  seterror("");
-                  setemail(e.target.value.trim());
-                }}
-              />
-            </form>
-            {!loading ? (
-              <div className={`${styles.button}`} onClick={check}>
-                Sign up
+            <>
+              <p className={styles.error}>{error}</p>
+              <div
+                className={`${styles.signupBox} ${error && styles.errsignbox}`}
+              >
+                <form onSubmit={(e) => check(e)}>
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                      seterror("");
+                      setemail(e.target.value.trim());
+                    }}
+                  />
+                </form>
+                {!loading ? (
+                  <div className={`${styles.button}`} onClick={check}>
+                    Sign up
+                  </div>
+                ) : (
+                  <div className={`${styles.button} ${styles.spinner_btn}`}>
+                    <Spinner />
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className={`${styles.button} ${styles.spinner_btn}`}>
-                <Spinner />
-              </div>
-            )}
-          </div>
             </>
-            )}
+          )}
           <div className={styles.brandtext}>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited WhatApp`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited WhatApp` });
+              }}
               className={styles.whatsapp}
               href="https://wa.me/918851117926"
               target="_blank"
@@ -165,7 +164,9 @@ function Footer({
 
           <div className={styles.socials}>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Facebook` });
+              }}
               href="https://www.facebook.com/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -174,7 +175,9 @@ function Footer({
               <Fb className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Instagram` });
+              }}
               href="https://www.instagram.com/upsurge.in/"
               target="_blank"
               rel="noreferrer"
@@ -183,7 +186,9 @@ function Footer({
               <Insta className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Linkedin`})}}
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Linkedin` });
+              }}
               href="https://www.linkedin.com/company/upsurgeindia/"
               target="_blank"
               rel="noreferrer"
@@ -192,8 +197,10 @@ function Footer({
               <LinkedIN className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
-            aria-label="Discord"
+              onClick={() => {
+                mixpanel.track("Social", { event: `Visited Discord` });
+              }}
+              aria-label="Discord"
               href="https://discord.gg/grqReT3zDm"
               target="_blank"
               rel="noreferrer"
@@ -201,8 +208,12 @@ function Footer({
               <DiscordSvg className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
-            aria-label="Phone"
+              onClick={() => {
+                mixpanel.track("Social", {
+                  event: `${userdata.email} or Guest is calling on Phone`,
+                });
+              }}
+              aria-label="Phone"
               href="tel:+918851117926"
               target="_blank"
               rel="noreferrer"
@@ -211,8 +222,12 @@ function Footer({
               <PhoneIcon className={styles.social} />
             </a>
             <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
-            aria-label="Mail"
+              onClick={() => {
+                mixpanel.track("Social", {
+                  event: `${userdata.email} or Guest is Emailing`,
+                });
+              }}
+              aria-label="Mail"
               href="mailto:hello@upsurge.in"
               target="_blank"
               rel="noreferrer"
@@ -590,7 +605,9 @@ function Footer({
         </div>
         <div className={styles.socials}>
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`Visited Facebook`})}}
+            onClick={() => {
+              mixpanel.track("Social", { event: `Visited Facebook` });
+            }}
             aria-label="Facebook"
             href="https://www.facebook.com/upsurgeindia/"
             target="_blank"
@@ -602,7 +619,9 @@ function Footer({
             <Twitter className={styles.social} alt="" />
           </a> */}
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`Visited Instagram`})}}
+            onClick={() => {
+              mixpanel.track("Social", { event: `Visited Instagram` });
+            }}
             aria-label="Instagram"
             href="https://www.instagram.com/upsurge.in/"
             target="_blank"
@@ -614,8 +633,10 @@ function Footer({
             <YtSvg className={styles.socialyt} />
           </a> */}
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`Visited LinkedIn`})}}
-          aria-label="LinkedIn"
+            onClick={() => {
+              mixpanel.track("Social", { event: `Visited LinkedIn` });
+            }}
+            aria-label="LinkedIn"
             href="https://www.linkedin.com/company/upsurgeindia/"
             target="_blank"
             rel="noreferrer"
@@ -623,34 +644,44 @@ function Footer({
             <LinkedIN className={styles.social} />
           </a>
           <a
-          onClick={()=>{mixpanel.track('Social',{'event':`Visited Discord`})}}
-          aria-label="Discord"
-              href="https://discord.gg/grqReT3zDm"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <DiscordSvg className={styles.social} />
-            </a>
-            <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is calling on Phone`})}}
+            onClick={() => {
+              mixpanel.track("Social", { event: `Visited Discord` });
+            }}
+            aria-label="Discord"
+            href="https://discord.gg/grqReT3zDm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <DiscordSvg className={styles.social} />
+          </a>
+          <a
+            onClick={() => {
+              mixpanel.track("Social", {
+                event: `${userdata.email} or Guest is calling on Phone`,
+              });
+            }}
             aria-label="Phone"
-              href="tel:+918851117926"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#4f4f4f" }}
-            >
-              <PhoneIcon className={styles.social} />
-            </a>
-            <a
-            onClick={()=>{mixpanel.track('Social',{'event':`${userdata.email} or Guest is Emailing`})}}
+            href="tel:+918851117926"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "#4f4f4f" }}
+          >
+            <PhoneIcon className={styles.social} />
+          </a>
+          <a
+            onClick={() => {
+              mixpanel.track("Social", {
+                event: `${userdata.email} or Guest is Emailing`,
+              });
+            }}
             aria-label="Email"
-              href="mailto:hello@upsurge.in"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#4f4f4f" }}
-            >
-              <EmailIcon className={styles.socialyt} />
-            </a>
+            href="mailto:hello@upsurge.in"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "#4f4f4f" }}
+          >
+            <EmailIcon className={styles.socialyt} />
+          </a>
         </div>
         <div className={styles.bottom}>
           <a
@@ -663,35 +694,38 @@ function Footer({
             Connect on WhatsApp
           </a>
           <div className={styles.wrap}>
-            
-            <p className={styles.terms}
-                onClick={() => {
-                  router.push("/terms");
-                }}
-              >
-                Terms & conditions
-              </p>
-              <p className={styles.terms}
-                onClick={() => {
-                  router.push("/privacy-policy");
-                }}
-              >
-                Privacy policy
-              </p>
-              <p className={styles.terms}
-                onClick={() => {
-                  router.push("/shipping-and-delivery-policy");
-                }}
-              >
-                Shipping and Delivery Policy
-              </p>
-              <p className={styles.terms}
-                onClick={() => {
-                  router.push("/refund-policy");
-                }}
-              >
-                Refund and Cancellation policy
-              </p>
+            <p
+              className={styles.terms}
+              onClick={() => {
+                router.push("/terms");
+              }}
+            >
+              Terms & conditions
+            </p>
+            <p
+              className={styles.terms}
+              onClick={() => {
+                router.push("/privacy-policy");
+              }}
+            >
+              Privacy policy
+            </p>
+            <p
+              className={styles.terms}
+              onClick={() => {
+                router.push("/shipping-and-delivery-policy");
+              }}
+            >
+              Shipping and Delivery Policy
+            </p>
+            <p
+              className={styles.terms}
+              onClick={() => {
+                router.push("/refund-policy");
+              }}
+            >
+              Refund and Cancellation policy
+            </p>
           </div>
         </div>
       </div>
