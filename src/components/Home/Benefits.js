@@ -297,8 +297,6 @@ function Benefits() {
                 >{`LEARN MORE ->`}</p>
               </>
             }
-
-            <Curve1 className={styles.curve} />
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>
