@@ -1,12 +1,12 @@
 @use "../variables/fontsizes.scss" as *;
 
-.header{
+.header {
   padding: 4rem 2rem;
-margin: 0 auto;
+  margin: 0 auto;
 }
 .jasper {
   width: 100vw;
-  height: 55vh;
+  height: 65vh;
   position: relative;
   display: flex;
   justify-content: center;
@@ -201,6 +201,7 @@ margin: 0 auto;
         }
 
         .heading {
+          display: none;
           font-size: 1rem;
           font-weight: 700;
           margin-bottom: 5px;
