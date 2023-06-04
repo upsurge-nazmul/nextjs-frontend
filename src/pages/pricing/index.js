@@ -54,6 +54,47 @@ export default function Pricing() {
   //   setPremiumPrice(PREMIUM_PRICE);
   // };
 
+  useEffect(() => {
+    const video = document.getElementById("video");
+    const jasperImage = document.getElementById("jasperVideo");
+
+    function togglePlay() {
+      if (video.paused || video.ended) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    video.addEventListener("pause", function () {
+      jasperImage.animate(
+        {
+          left: "0",
+          rotate: "0deg",
+        },
+        {
+          duration: 800,
+          fill: "forwards",
+        }
+      );
+    });
+
+    video.addEventListener("playing", function () {
+      jasperImage.animate(
+        {
+          left: "-50%",
+          rotate: "-45deg",
+        },
+        {
+          duration: 800,
+          fill: "forwards",
+        }
+      );
+    });
+
+    return () => {};
+  }, []);
+
   return (
     <div
       className={`${styles.pricingPage} ${
@@ -78,116 +119,93 @@ export default function Pricing() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
-
+      <h1 className={styles.heading}>
+        Power up your child&#39;s financial education with upsurge
+        <u className={styles.heading_underline}>Premium.</u>
+      </h1>
       <div className={styles.mainContent}>
         <div className={styles.contentLeft}>
-          <video className={styles.video} controls autoPlay muted loop>
-            <source
-              src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-CompanyIntro.mkv"
-              type="video/mp4"
-            ></source>
-          </video>
+          <div className={styles.videoContainer}>
+            <video
+              id="video"
+              className={styles.video}
+              controls
+              autoPlay
+              muted
+              loop
+            >
+              <source
+                src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-CompanyIntro.mkv"
+                type="video/mp4"
+              ></source>
+            </video>
+          </div>
           <img
             src={require("../../assets/Jasper/10.png").default.src}
             alt={"jasper"}
             className={styles.jasper}
+            id="jasperVideo"
           />
         </div>
         <div className={styles.contentRight}>
-          <div className={styles.heading}>
-            Power up your child&#39;s financial education with upsurge
-            <u className={styles.heading_underline}>Premium.</u>
-          </div>
-          <div className={styles.subToPremium}>
-            <div className={styles.block}>
-              <div className={styles.section}>
-                <div className={styles.sectionLeft}>
-                  <h3 className={styles.header}>Yearly Plan</h3>
-                  <p className={styles.smallfont}> for 6 months </p>
-                  <p className={styles.subheading}>
-                    Get access to premium quests and games
-                  </p>
-                  {/* Change the premium family to something more catchy*/}
-                  <ul>
-                    <li className={styles.sectionItem}>
-                      {/* <img
-                  src={
-                    require("../assets/pricing/kq_red.png").default
-                    .src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                /> */}
-                      20 Knowledge Quests
-                    </li>
-                    <li className={styles.sectionItem}>
-                      {/* <img
-                src={
-                  require("../assets/pricing/educational_games.svg").default.src
-                }
-                alt="Education Games"
-                className={styles.sectionItemImage}
-              /> */}
-                      16 Educational Games
-                    </li>
-                    <li className={styles.sectionItem}>
-                      {/* <img
-                  src={
-                    require("../assets/pricing/bonus_unicoins_red.svg").default
-                      .src
-                  }
-                  alt="Education Games"
-                  className={styles.sectionItemImage}
-                /> */}
-                      5 Flagship Games (1000 hours)
-                    </li>
-                    <li className={styles.sectionItem}>
-                      Events and Challenges
-                    </li>
-                    <li className={styles.sectionItem}>
-                      10,000 Bonus Unicoins
-                    </li>
-                    <li className={styles.sectionItem}>Redeem Vouchers</li>
-                    <li className={styles.sectionItem}>
-                      Win monthly rewards worth ₹25,000/-
-                    </li>
-                  </ul>
-                  <div className={styles.pricing}>
-                    <div className={styles.bottom}></div>
-                    <div className={styles.pricingSectionTop}>
-                      <p className={styles.slashedPrice}>₹2499</p>{" "}
-                      <p className={styles.actualPrice}>₹499</p>{" "}
-                    </div>
-                    <div className={styles.pricingSectionBottom}>
-                      <p className={styles.smallfont}>(₹40/month)</p>
-                    </div>
-                  </div>
-                  <div
-                    className={styles.button}
-                    onClick={() => {
-                      console.log(plans[1].id);
-                      setPremiumPrice(plans[1].id);
-                      setAuthMode("parentChild");
-                      setshowauth(true);
-                      //router.push(`/payments/stripe?plan_id=${plans[1].id}`);
-                    }}
-                  >
-                    {`Buy now`}
-                  </div>
-                </div>
+          <div className={styles.section}>
+            <div className={styles.sectionContent}>
+              <p className={styles.subheading}>
+                Get access to premium quests and games
+              </p>
+              <div className={styles.listContainer}>
+                <ul>
+                  <li className={styles.sectionItem}>20 Knowledge Quests</li>
+                  <li className={styles.sectionItem}>16 Educational Games</li>
+                  <li className={styles.sectionItem}>
+                    5 Flagship Games (1000 hours)
+                  </li>
+                  <li className={styles.sectionItem}>Events and Challenges</li>
+                  <li className={styles.sectionItem}>10,000 Bonus Unicoins</li>
+                  <li className={styles.sectionItem}>Redeem Vouchers</li>
+                  <li className={styles.sectionItem}>
+                    Win monthly rewards worth ₹25,000/-
+                  </li>
+                </ul>
               </div>
-              <p
-                className={styles.clickable}
+            </div>
+            <div className={styles.sectionBottomContent}>
+              <p>New quests and games added every month!</p>
+            </div>
+          </div>
+          {/* <div className={styles.subToPremium}>
+            <div className={styles.block}>
+            <p
+            className={styles.clickable}
+            onClick={() => {
+              setPremiumPrice(null);
+              setAuthMode("parentChild");
+              setshowauth(true);
+            }}
+            >
+            <u>Try free version</u>
+            </p>
+            </div>
+          </div> */}
+          <div className={styles.pricing}>
+            <div className={styles.pricingLeft}>
+              <h3>&#8377;208/ Month</h3>
+              <p>&#8377;2499/ billed annually</p>
+            </div>
+            <div className={styles.pricingRight}>
+              <button
+                className={styles.button}
                 onClick={() => {
-                  setPremiumPrice(null);
+                  console.log(plans[1].id);
+                  setPremiumPrice(plans[1].id);
                   setAuthMode("parentChild");
                   setshowauth(true);
+                  //router.push(`/payments/stripe?plan_id=${plans[1].id}`);
                 }}
               >
-                <u>Try free version</u>
-              </p>
+                {`Buy now`}
+              </button>
+              <p className={styles.try}>Try free Version</p>
             </div>
           </div>
         </div>
@@ -200,7 +218,7 @@ export default function Pricing() {
       </div>
       <div className={styles.sectionSpacing}>
         <PRCoverage />
-        <button
+        {/* <button
           onClick={() => {
             console.log(plans[1].id);
             setPremiumPrice(plans[1].id);
@@ -210,9 +228,8 @@ export default function Pricing() {
           className={styles.button}
         >
           Buy now
-        </button>
+        </button> */}
       </div>
-      <JoinUs />
       <Footer />
     </div>
   );
