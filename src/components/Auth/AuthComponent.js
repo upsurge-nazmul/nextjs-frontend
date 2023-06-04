@@ -35,7 +35,8 @@ function AuthComponent({
   type,
   premiumPrice,
   gameOpened,
-  kqOpened
+  kqOpened,
+  school
 }) {
   //there will be 4 modes -> login, selection, parent,learner,email,phone,otp
   const { setfirstName, setlastName, theme } = useContext(MainContext);
@@ -176,6 +177,7 @@ function AuthComponent({
                   childAge={childAge}
                   gameOpened={gameOpened}
                   kqOpened={kqOpened}
+                  school={school}
                   />
                   ) : mode === "email" ? (
                 <AuthFullData

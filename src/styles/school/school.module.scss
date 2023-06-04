@@ -1,6 +1,6 @@
 .schoolPage {
     margin: 1rem;
-    z-index: 8;
+    z-index: 5;
     position: relative;
     .signUpContainer {
         background: #4166eb;
@@ -59,7 +59,7 @@
 }
 .schoolPageGames {
     position: relative;
-    z-index: 50;
+    z-index: 5;
 }
 
 @media only screen and (min-width: 991px) and (max-width: 1300px) {
