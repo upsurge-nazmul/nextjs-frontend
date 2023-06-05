@@ -13,10 +13,20 @@ const testimonials = [
     img: "https://imgcdn.upsurge.in/images/Untitled-design-73.png",
   },
   {
-    video: "/intro.mp4",
-    picture: "https://imgcdn.upsurge.in/images/Untitled-design-73.png",
-    name: "Test Divya",
-    img: "https://imgcdn.upsurge.in/images/Untitled-design-73.png",
+    video:
+      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+    picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+    name: "Veema Gaur",
+    img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+    // des: "Principal at Vibgyor High School Gurugram",
+  },
+  {
+    video:
+      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-child.mov",
+    picture: "https://imgcdn.upsurge.in/images/student-testimonial.png",
+    name: "Upsurge Intern",
+    img: "https://imgcdn.upsurge.in/images/student-testimonial.png",
+    // des: "Principal at Vibgyor High School Gurugram",
   },
   {
     quote:
