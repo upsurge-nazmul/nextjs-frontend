@@ -4,20 +4,16 @@ import Header from "../../components/Header/Header";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/GamePage/gamelist.module.scss";
 import Footer from "../../components/Home/Footer";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
 import JoinUs from "../../components/Home/JoinUs";
 import { Game_Data } from "../../static_data/Game_Data";
 import { MainContext } from "../../context/Main";
-import { isMobile, isIOS } from "react-device-detect";
-import FreeGameApis from "../../actions/apis/FreeGameApis";
 import PageTitle from "../../components/PageTitle";
 import CarouselGames from "../../components/Carousel/CarouselGames/index";
-import AvailableGames from "../../components/DownloadGames/AvailableGames";
-import GameCard from "../../components/Dashboard/GameCard";
 import GameView from "../../components/Games/GameView";
 import UnicoinsAwards from "../../components/UnicoinsAwards";
-import GameList from "../../components/Games/GameList";
+import GameSvg from "../../components/SVGcomponents/GameSvg";
+import UniCoinSvg from "../../components/SVGcomponents/UniCoinSvg";
+import Buttons from "../../components/Buttons";
 
 export default function GamePage() {
   const router = useRouter();
@@ -40,6 +36,7 @@ export default function GamePage() {
     setTimesPlayed,
   } = useContext(MainContext);
   const [gameOpened, setGameOpened] = useState(null);
+  let gameunicoinrewards = null;
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 0) {
@@ -97,8 +94,6 @@ export default function GamePage() {
         setOpenLeftPanel={setOpenLeftPanel}
       />
       <div className={styles.contentWrapper}>
-        <Curve1 className={styles.curve1} />
-        <Curve2 className={styles.curve2} />
         {/* <img
           className={styles.icon}
           src="https://imgcdn.upsurge.in/images/unsp/photo-1600080972464-8e5f35f63d08.avif"
@@ -124,14 +119,88 @@ export default function GamePage() {
         </div>
 
         <div className={styles.gamelistwrapper}>
-          <GameList
-            data={Game_Data}
-            handlegameclick={handlegameclick}
-            userdata={userdata}
-          />
+          <div className={styles.wrapper}>
+            {Object.keys(Game_Data).map((item, index) => {
+              let reward = gameunicoinrewards
+                ? gameunicoinrewards.includes(item)
+                  ? "Completed"
+                  : 200
+                : null;
+              return (
+                <div className={styles.gameCardContainer}>
+                  <div className={styles.gameCard}>
+                    <img
+                      src={
+                        Game_Data[item]?.img ||
+                        (Game_Data[item]?.name &&
+                          `/images/games/${Game_Data[item]?.name.replace(
+                            / /g,
+                            ""
+                          )}.png`) ||
+                        ""
+                      }
+                      alt=""
+                    />
+                    <div className={styles.contentWrapper}>
+                      <p className={styles.title}>
+                        {Game_Data[item]?.name || ""}
+                      </p>
+                      <p className={styles.detail}>
+                        {Game_Data[item]?.description.length > 40
+                          ? Game_Data[item]?.description.substring(0, 40) +
+                            "..."
+                          : Game_Data[item]?.description || ""}
+                      </p>
+                      {reward && (
+                        <p className={styles.reward}>
+                          <UniCoinSvg className={styles.icon} />
+                          {reward}
+                        </p>
+                      )}
+                      {/* <div className={styles.chatbtn}>
+        <div onClick={()=>{mixpanel.track('Game',{'event':`Game Started ${Game_Data[item].name}`});}} className={styles.chatbtn}>
+          Play
+          <GameSvg className={styles.icon} />
+        </div> */}
+                    </div>
+                  </div>
+                  <div className={styles.actionArea}>
+                    <Buttons
+                      type={"animated"}
+                      handleClick={() =>
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto
+                            ? Game_Data[item].pushto.split("/")[
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
+                            : "",
+                          Game_Data[item].webgl_key,
+                          Game_Data[item].premium_plan,
+                          userdata.premium_plan
+                        )
+                      }
+                      // handleClick={() => {
+
+                      //   onClick
+                      //     ?
+                      //     : () => router.push("/dashboard/k/games");
+                      //   mixpanel.track("Game started", {
+                      //     event: `Game Started ${Game_Data[item].name}`,
+                      //     gameName: `${Game_Data[item].id}`,
+                      //   });
+                      // }}
+                    >
+                      <GameSvg className={styles.icon} />
+                      Play Now
+                    </Buttons>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-      <JoinUs />
       <Footer />
       {openGame ? (
         <GameView

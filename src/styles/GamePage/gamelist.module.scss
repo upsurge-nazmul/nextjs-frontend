@@ -101,29 +101,11 @@
   }
 
   .contentWrapper {
-    padding-top: 5vh;
-    min-height: 100vh;
+    padding-top: 0;
+    padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .curve2 {
-      position: fixed;
-      width: 100vw;
-      left: 0;
-      top: 60%;
-      z-index: -1;
-      transform: scaleX(-1);
-      animation: moveit 5s ease alternate infinite;
-      animation-delay: 2s;
-    }
-    .curve1 {
-      position: fixed;
-      width: 100vw;
-      left: 0;
-      top: 25%;
-      z-index: -1;
-      animation: moveit 5s ease alternate infinite;
-    }
     .moreGames {
       font-size: 2rem;
       margin: 2rem;
@@ -140,7 +122,7 @@
       flex-direction: column;
       align-items: center;
       .heading {
-        margin-top: 45px;
+        margin-top: 2rem;
         font-weight: 700;
         font-size: 3rem;
         color: #000000;
@@ -162,12 +144,61 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 4rem;
+        column-gap: 4rem;
+        .gameCardContainer {
+          flex: 0 0 calc(25.66% - 3rem);
+          .gameCard {
+            position: relative;
+            width: 80%;
+            height: fit-content;
+            border-radius: 16px;
+            box-shadow: #4166eb22 0px 2px 8px 0px;
+            overflow: hidden;
+            img {
+              height: 16rem;
+              width: 100%;
+              object-fit: fill;
+              object-position: center;
+            }
+            .contentWrapper {
+              padding: 0.6rem;
+              .title {
+                font-size: 1.3em;
+                font-weight: 600;
+                text-align: center;
+              }
+              .detail {
+                color: #18191fd1;
+                font-size: 1em;
+                font-weight: 400;
+                padding: 0.5rem;
+              }
+            }
+          }
+          .actionArea {
+            width: 80%;
+            box-shadow: #4166eb22 0px 2px 8px 0px;
+            margin: 1rem 0;
+            border-radius: 10px;
+            .icon {
+              width: 2rem;
+              height: fit-content;
+            }
+          }
+        }
+      }
     }
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1360px) {
   .gamelist {
+    background-color: #4166eb;
     .contentWrapper {
       margin-top: 4vh;
       padding-left: 7%;
@@ -175,7 +206,7 @@
     }
   }
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (orientation: portrait) and (max-width: 500px) {
   .gamelist {
     height: 100%;
     .contentWrapper {
@@ -201,6 +232,84 @@
           font-weight: 400;
           font-size: 0.75rem;
           width: 100%;
+        }
+      }
+      .wrapper {
+        column-gap: 0.5rem !important;
+        .gameCardContainer {
+          flex: 0 0 calc(62% - 3rem) !important;
+          flex-basis: calc(62% - 3rem) !important;
+          .gameCard {
+            width: 100% !important;
+            height: 100% !important;
+            img {
+              height: 10rem !important;
+            }
+            .detail {
+              margin-bottom: auto !important;
+            }
+          }
+          .actionArea {
+            width: 100% !important;
+            margin-top: auto !important;
+            padding-top: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 860px) {
+  .gamelist {
+    height: 100%;
+    .contentWrapper {
+      margin-top: 0px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 15px;
+      .pathSection {
+        .path {
+          font-size: 0.75rem;
+        }
+      }
+      .headingSection {
+        margin-top: 20px;
+        .heading {
+          font-weight: 700;
+          font-size: 1.25rem;
+          margin-bottom: 10px;
+          width: 100%;
+        }
+        .subheading {
+          margin-top: 0;
+          font-weight: 400;
+          font-size: 0.75rem;
+          width: 100%;
+        }
+      }
+      .wrapper {
+        column-gap: 0.6rem !important;
+        row-gap: 0.5rem !important;
+        .gameCardContainer {
+          flex: 0 0 calc(45% - 3rem) !important;
+          flex-basis: calc(50% - 3rem) !important;
+          padding-bottom: 4rem;
+          .gameCard {
+            width: 100% !important;
+            height: 100% !important;
+            img {
+              height: 10rem !important;
+            }
+            .detail {
+              margin-bottom: auto !important;
+            }
+          }
+          .actionArea {
+            width: 100% !important;
+            margin-top: auto !important;
+            padding-top: 0.6rem;
+          }
         }
       }
     }
