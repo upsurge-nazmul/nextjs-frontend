@@ -9,6 +9,7 @@ import { MainContext } from "../../context/Main";
 import WaitlistPopUp from "../WaitlistPopUp";
 import { HOME_VARIENTS } from "../../static_data/Home_Data";
 import LoginApis from "../../actions/apis/LoginApis";
+import MiniLogo from "../SVGcomponents/MiniLogo";
 
 function Header({
   setOpenLeftPanel,
@@ -26,7 +27,7 @@ function Header({
   refId = null,
   premiumPrice,
   gameOpened,
-  kqOpened
+  kqOpened,
 }) {
   const router = useRouter();
   const [email, setemail] = useState(mailfromhome || "");
@@ -92,24 +93,34 @@ function Header({
         />
       )}
       <div className={styles.container}>
-        {showNav && (
+        <div className={styles.innerContainer}>
+          {showNav && (
+            <div
+              className={`${styles.hamburger} `}
+              onClick={() => {
+                setOpenLeftPanel((prev) => !prev);
+              }}
+            >
+              <HamSvg className={styles.hamIcon} />
+            </div>
+          )}
+
           <div
-            className={`${styles.hamburger} `}
-            onClick={() => {
-              setOpenLeftPanel((prev) => !prev);
-            }}
+            className={
+              showNav ? styles.logoContainer : styles.noNavLogoContainer
+            }
           >
-            <HamSvg className={styles.hamIcon} />
+            <Logo
+              onClick={clickedHeader}
+              className="logo"
+              dark={theme === "dark" ? true : false}
+            />
+            <MiniLogo
+              onClick={clickedHeader}
+              className={styles.miniIcon}
+              dark={theme === "dark" ? true : false}
+            />
           </div>
-        )}
-        <div
-          className={showNav ? styles.logoContainer : styles.noNavLogoContainer}
-        >
-          <Logo
-            onClick={clickedHeader}
-            className="logo"
-            dark={theme === "dark" ? true : false}
-          />
         </div>
         {showNav && (
           <div className={styles.nav}>
@@ -196,7 +207,9 @@ function Header({
             ? "Go to Dashboard"
             : page === HOME_VARIENTS[0]
             ? "Try for free"
-            : router.asPath === "/pricing" ? "Buy now" : "Sign up for FREE"}
+            : router.asPath === "/pricing"
+            ? "Buy now"
+            : "Sign up for FREE"}
         </div>
       </div>
     </div>
