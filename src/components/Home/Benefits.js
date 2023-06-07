@@ -201,6 +201,7 @@ function Benefits() {
             <div className={styles.dotContainer}>
               {data.map((_, i) => (
                 <div
+                  key={"dot-" + i}
                   onClick={() => setIndex(i)}
                   className={`${
                     index === i ? styles.active : styles.inactive
