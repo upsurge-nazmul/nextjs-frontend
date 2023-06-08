@@ -20,7 +20,10 @@ function Who() {
             </video>
 
             <video className={styles.mobileVideo} controls autoPlay muted loop>
-              <source src="/mobile-intro.mp4" type="video/mp4"></source>
+              <source
+                src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge+-+Intro.mp4"
+                type="video/mp4"
+              ></source>
             </video>
 
             {/* 
