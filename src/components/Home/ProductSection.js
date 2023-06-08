@@ -20,7 +20,7 @@ const data = [
     icon: <QuestSvg className={styles.icon} />,
     cta: "Explore Now",
     color: "#17d1bc",
-    image: "/images/home/product-image-1.png",
+    image: "https://imgcdn.upsurge.in/images/product-image-1.png",
   },
   {
     pushTo: "/products/games",
@@ -30,7 +30,7 @@ const data = [
     icon: <ProductGameSvg className={styles.icon} />,
     cta: "Play Now",
     color: "#ff6263",
-    image: "/images/home/product-image-1.png",
+    image: "https://imgcdn.upsurge.in/images/product-image-2.png",
   },
   {
     pushTo: "/products/liveclasses",
@@ -40,7 +40,7 @@ const data = [
     icon: <ProductPeople className={styles.icon} />,
     cta: "Register Now",
     color: "#4166eb",
-    image: "/images/home/product-image-1.png",
+    image: "https://imgcdn.upsurge.in/images/product-image-3.png",
   },
   {
     pushTo: "",
@@ -50,7 +50,7 @@ const data = [
     icon: <EmojiEventsIcon className={styles.icon} />,
     cta: "Register Now",
     color: "#fdcc03",
-    image: "/images/home/product-image-1.png",
+    image: "https://imgcdn.upsurge.in/images/product-image-4.png",
   },
 ];
 
