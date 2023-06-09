@@ -59,12 +59,13 @@
               -ms-transform: rotate(45deg);
               -o-transform: rotate(45deg);
               -webkit-transform: rotate(45deg);
-              box-shadow: #4166eb58 4px -3px 4px;
+              box-shadow: #4166eb1b 4px -3px 4px;
               border-width: 10px;
               border-style: solid;
               border-color: transparent #fff #fff transparent;
             }
             .quote {
+              color: #555555;
               font-size: 1.375rem;
               line-height: 32px;
               font-weight: 400;
@@ -206,6 +207,7 @@
     padding: 0 4rem;
     .heading {
       text-align: center;
+      font-size: 2em;
     }
     .mainContain {
       min-height: 80vh;
@@ -263,6 +265,7 @@
               }
 
               .quote {
+                color: #555555;
                 font-size: 1.2rem;
                 line-height: 1.4;
                 font-weight: 400;
