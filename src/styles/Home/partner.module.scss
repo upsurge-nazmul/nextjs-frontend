@@ -174,12 +174,14 @@
         font-weight: 700;
         padding: 0 30px;
         width: 100%;
+        text-align: center;
       }
       .subheading {
         margin-top: 1vh;
         font-size: 14px;
         font-weight: 400;
         padding: 0 30px;
+        text-align: center;
       }
       .wrapper {
         display: none;
@@ -197,7 +199,7 @@
           display: inline;
           min-width: auto;
           width: 100px;
-          z-index: 100;
+          // z-index: 100;
           max-width: 120px;
           height: 80px;
           object-fit: cover;
@@ -294,7 +296,7 @@
         margin-top: 20px;
         .img {
           min-width: 120px;
-          z-index: 100;
+          // z-index: 100;
           max-width: 120px;
           height: 80px;
           object-fit: contain;
@@ -366,7 +368,7 @@
         margin-top: 20px;
         .img {
           min-width: 120px;
-          z-index: 100;
+          // z-index: 100;
           max-width: 120px;
           height: 80px;
           object-fit: contain;
@@ -439,7 +441,7 @@
         margin-top: 20px;
         .img {
           min-width: 120px;
-          z-index: 100;
+          // z-index: 100;
           max-width: 120px;
           height: 80px;
           object-fit: contain;
