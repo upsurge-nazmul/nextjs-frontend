@@ -141,9 +141,16 @@
     }
     .gamelistwrapper {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      row-gap: 1rem;
       width: 100%;
+      .gameHeading {
+        display: none;
+        text-align: start;
+        width: 100%;
+      }
       .wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -330,9 +337,16 @@
       }
       .gamelistwrapper {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        row-gap: 1rem;
         width: 100%;
+        .gameHeading {
+          display: none;
+          text-align: start;
+          width: 100%;
+        }
         .wrapper {
           display: flex;
           flex-wrap: wrap;
@@ -424,26 +438,33 @@
           width: 100%;
         }
       }
-      .wrapper {
-        column-gap: 0.5rem !important;
-        .gameCardContainer {
-          flex: 1 0 calc(60% - 3rem) !important;
-          flex-basis: calc(60% - 3rem) !important;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          .gameCard {
-            width: 100% !important;
-            height: 100% !important;
-            img {
-              height: 10rem !important;
+      .gamelistwrapper {
+        .gameHeading {
+          display: block;
+          text-align: start;
+          width: 100%;
+        }
+        .wrapper {
+          column-gap: 0.5rem !important;
+          .gameCardContainer {
+            flex: 1 0 calc(60% - 3rem) !important;
+            flex-basis: calc(60% - 3rem) !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .gameCard {
+              width: 100% !important;
+              height: 100% !important;
+              img {
+                height: 10rem !important;
+              }
+              .detail {
+              }
             }
-            .detail {
+            .actionArea {
+              width: 100% !important;
+              margin-top: 0.6rem;
             }
-          }
-          .actionArea {
-            width: 100% !important;
-            margin-top: 0.6rem;
           }
         }
       }
@@ -464,6 +485,7 @@
           font-size: 0.75rem;
         }
       }
+
       .headingSection {
         margin-top: 20px;
         .heading {

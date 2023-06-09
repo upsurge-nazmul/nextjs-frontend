@@ -119,6 +119,7 @@ export default function GamePage() {
         </div>
 
         <div className={styles.gamelistwrapper}>
+          <h2 className={styles.gameHeading}>More Games</h2>
           <div className={styles.wrapper}>
             {Object.keys(Game_Data).map((item, index) => {
               let reward = gameunicoinrewards
