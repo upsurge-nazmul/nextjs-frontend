@@ -44,23 +44,20 @@ export default function TestiMonial() {
   ];
   const [currenttestimonial, setcurrenttestimonial] = useState(0);
   const [mouseon, setmouseon] = useState(false);
-  const [timeout, settimeout] = useState(null);
   const { theme } = useContext(MainContext);
 
   useEffect(() => {
-    if (mouseon && timeout) {
-      clearTimeout(timeout);
-    } else {
-      settimeout(
-        setTimeout(() => {
-          setcurrenttestimonial((currenttestimonial + 1) % testimonials.length);
-        }, 3000)
-      );
-    }
+    let time = 0;
+    const interval = setInterval(() => {
+      if (!mouseon) {
+        time++;
+        setcurrenttestimonial((prev) => (prev + 1) % testimonials.length);
+      }
+    }, 3000);
     return () => {
-      clearTimeout(timeout);
+      clearInterval(interval);
     };
-  }, [currenttestimonial, mouseon, timeout, setcurrenttestimonial, testimonials.length]);
+  }, [mouseon]);
 
   return (
     <div
@@ -68,7 +65,9 @@ export default function TestiMonial() {
         theme === "dark" && styles.darktestimonial
       }`}
     >
-      <h2 className={styles.heading}>We are getting lots of love and we’re loving it!</h2>
+      <h2 className={styles.heading}>
+        We are getting lots of love and we’re loving it!
+      </h2>
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <QuoteSvg className={styles.quotesvg} />
