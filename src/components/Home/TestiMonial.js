@@ -18,7 +18,7 @@ const testimonials = [
     picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
     name: "Veema Gaur",
     img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
-    // des: "Principal at Vibgyor High School Gurugram",
+    des: "Principal, VIBGYOR High School Gurugram",
   },
   {
     video:

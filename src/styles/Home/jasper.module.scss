@@ -32,7 +32,7 @@
         display: block;
         width: 50px;
         position: absolute;
-        bottom: 18vh;
+        bottom: 20vh;
         right: -60px;
         z-index: 1;
         transform: rotate(270deg);
@@ -92,7 +92,7 @@
           display: block;
           width: 50px;
           position: absolute;
-          bottom: 18vh;
+          bottom: 20vh;
           right: -60px;
           z-index: 1;
           transform: rotate(270deg);
@@ -169,7 +169,7 @@
     height: max-content;
     min-height: max-content;
     max-height: unset;
-    padding: 60px 7vw;
+    padding: 4rem 7vw 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,7 +238,7 @@
     height: max-content;
     min-height: max-content;
     max-height: unset;
-    padding: 60px 7vw;
+    padding: 8rem 7vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,7 +309,7 @@
     height: max-content;
     min-height: max-content;
     max-height: unset;
-    padding: 8rem 7vw;
+    padding: 4rem 7vw 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
