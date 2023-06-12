@@ -6,7 +6,7 @@
   transition: 1s;
   .sliderWrapper {
     height: 60vh;
-    width: 80vw;
+    width: 100vw;
     display: flex;
     // overflow-x: hidden;
     overflow-x: clip;
@@ -156,124 +156,164 @@
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 990px) {
-  // .slider {
-  //   background-color: red;
-  //   border-radius: 1.25rem;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   transition: 1s;
-  //   .sliderWrapper {
-  //     width: 100vw;
-  //     display: flex;
-  //     overflow-x: auto;
-  //     scrollbar-width: none;
-  //     scroll-behavior: smooth;
-  //     gap: 2%;
-  //     padding: 2rem;
-  //     &::-webkit-scrollbar {
-  //       display: none;
-  //     }
-  //     ::-webkit-scrollbar {
-  //       width: 0; /* Remove scrollbar space */
-  //       background: transparent; /* Optional: just make scrollbar invisible */
-  //     }
-  //   }
-  //   .slide {
-  //     background: linear-gradient(
-  //         0deg,
-  //         rgba(241, 248, 255, 0.2),
-  //         rgba(241, 248, 255, 0.2)
-  //       ),
-  //       #ffffff;
-  //     box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
-  //     border-radius: 3rem;
-  //     font-family: "Lexend", sans-serif;
-  //     font-weight: 500;
-  //     display: flex;
-  //     transition: all 0.3s ease;
-  //     padding: 1rem;
-  //     flex: 0 0 100%;
-  //     width: 20vw;
-  //     min-height: 30rem;
-  //     flex-direction: column-reverse;
-  //   }
-  //   .imageContainer {
-  //     border-radius: 3rem;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     .slideImage {
-  //       border-radius: 3rem;
-  //       width: 100%;
-  //       object-fit: cover;
-  //     }
-  //   }
-
-  //   .slideContent {
-  //     margin-top: 3rem;
-  //     width: 100%;
-  //     transition: 1s;
-  //     font-size: large;
-  //     padding: 2rem;
-  //     display: flex;
-  //     flex-direction: column;
-  //     align-content: space-around;
-  //     justify-content: space-between;
-  //     .description {
-  //       font-weight: 300;
-  //     }
-  //     .activebutton {
-  //       display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-  //       height: 3rem;
-  //       width: fit-content;
-  //       padding: 0 2rem;
-  //       margin: 2rem 0;
-  //       border-radius: 0.5rem;
-  //       background-color: #4266eb;
-  //       color: white;
-  //       font-size: 0.875rem;
-  //       cursor: pointer;
-  //       svg {
-  //         margin-left: 0.625rem;
-  //         width: 1.4rem;
-  //         fill: white;
-  //         path {
-  //           fill: white;
-  //         }
-  //       }
-  //       &:hover {
-  //         svg {
-  //           transition: all 0.3s ease;
-  //           circle {
-  //             fill: rgb(41, 41, 41);
-  //           }
-  //         }
-  //       }
-  //     }
-  //     .sliderDots {
-  //       z-index: 99;
-  //       display: flex;
-  //       gap: 2rem;
-  //       .sliderDot {
-  //         width: 1rem;
-  //         height: 1rem;
-  //         background: #e7e4e4;
-  //         color: transparent;
-  //         border-radius: 2rem;
-  //       }
-  //       .active {
-  //         transition: 1s;
-  //         width: 5rem;
-  //         background: #4166eb;
-  //         color: transparent;
-  //       }
-  //     }
-  //   }
-  // }
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    .sliderWrapper {
+      height: 70vh;
+      width: 100vw;
+      display: flex;
+      // overflow-x: hidden;
+      overflow-x: clip;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      position: relative;
+      gap: 1rem;
+      padding: 0 2rem;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ::-webkit-scrollbar {
+        width: 0; /* Remove scrollbar space */
+        background: transparent; /* Optional: just make scrollbar invisible */
+      }
+      .slide {
+        position: absolute;
+        // min-width: 33.33vw;
+        font-family: "Lexend", sans-serif;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        width: 45vw;
+        min-width: 45vw;
+        max-width: 45vw;
+        // min-height: 30rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        .slideContent {
+          width: 70%;
+          position: relative;
+          overflow: hidden;
+          background: linear-gradient(
+              0deg,
+              rgba(241, 248, 255, 0.2),
+              rgba(241, 248, 255, 0.2)
+            ),
+            #ffffff;
+          box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+          border-radius: 3rem;
+          padding: 0;
+          .image {
+            width: 100%;
+            height: 10rem;
+            object-fit: fill;
+            object-position: center;
+          }
+          .slideBottomContent {
+            padding: 0.8rem 1rem;
+            h1 {
+              font-size: 1.6em;
+              font-weight: 600;
+            }
+            .description {
+              font-size: 0.9em;
+              font-weight: 300;
+              color: #838383;
+              line-height: 1.35;
+            }
+          }
+          .activeButtonContainer {
+            margin: 0.8rem 2rem 2.4rem;
+            .actionButton {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              column-gap: 0.6rem;
+              border: none;
+              border-radius: 16px;
+              background-color: #4166eb;
+              color: #ffffff;
+              padding: 0.6rem 0;
+              width: 100%;
+              cursor: pointer;
+              font-size: 0.9em;
+              .icon {
+                display: none;
+                width: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .sliderDots {
+      margin-top: 1.2rem;
+      display: flex;
+      gap: 1.4rem;
+      .sliderDot {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: #e7e4e4;
+        color: transparent;
+        border-radius: 2rem;
+        cursor: pointer;
+      }
+      .active {
+        transition: 1s;
+        width: 2rem;
+        background: #4166eb;
+        color: transparent;
+      }
+    }
+    .slideContent {
+      margin-top: 3rem;
+      width: 40%;
+      transition: 1s;
+      font-size: large;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      .description {
+        font-weight: 300;
+      }
+      .activebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        width: fit-content;
+        padding: 0 2rem;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        background-color: #4266eb;
+        color: white;
+        font-size: 0.875rem;
+        cursor: pointer;
+        svg {
+          margin-left: 0.625rem;
+          width: 1.4rem;
+          fill: white;
+          path {
+            fill: white;
+          }
+        }
+        &:hover {
+          svg {
+            transition: all 0.3s ease;
+            circle {
+              fill: rgb(41, 41, 41);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (orientation: portrait) and (max-width: 500px) {
@@ -438,9 +478,164 @@
   }
 }
 
-/* Small Devices, Tablets */
-@media only screen and (min-width: 768px) {
-  // .slider {
-  //   background-color: gray;
-  // }
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    .sliderWrapper {
+      height: 40vh;
+      width: 100vw;
+      display: flex;
+      // overflow-x: hidden;
+      overflow-x: clip;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      position: relative;
+      gap: 1rem;
+      padding: 0 2rem;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ::-webkit-scrollbar {
+        width: 0; /* Remove scrollbar space */
+        background: transparent; /* Optional: just make scrollbar invisible */
+      }
+      .slide {
+        background-color: transparent;
+        box-shadow: none;
+        position: absolute;
+        // min-width: 33.33vw;
+        font-family: "Lexend", sans-serif;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        width: 90vw;
+        min-width: 90vw;
+        max-width: 90vw;
+        // min-height: 30rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        .slideContent {
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+          background: linear-gradient(
+              0deg,
+              rgba(241, 248, 255, 0.2),
+              rgba(241, 248, 255, 0.2)
+            ),
+            #ffffff;
+          box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+          border-radius: 1.4rem;
+          padding: 0;
+          .image {
+            width: 100%;
+            height: 10rem;
+            object-fit: fill;
+            object-position: center;
+          }
+          .slideBottomContent {
+            padding: 1rem 1.2rem;
+            h1 {
+              font-size: 1.6em;
+              font-weight: 600;
+            }
+            .description {
+              font-size: 0.9em;
+              font-weight: 300;
+              color: #838383;
+              line-height: 1.35;
+            }
+          }
+          .activeButtonContainer {
+            margin: 0.8rem 0 0 0;
+            .actionButton {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              column-gap: 0.6rem;
+              border: none;
+              border-radius: 0;
+              background-color: #4166eb;
+              color: #ffffff;
+              padding: 1rem 0;
+              width: 100%;
+              cursor: pointer;
+              font-size: 0.9em;
+              .icon {
+                display: block;
+                width: 1.4rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .sliderDots {
+      margin-top: 1.2rem;
+      display: flex;
+      gap: 1.4rem;
+      .sliderDot {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: #e7e4e4;
+        color: transparent;
+        border-radius: 2rem;
+        cursor: pointer;
+      }
+      .active {
+        transition: 1s;
+        width: 2rem;
+        background: #4166eb;
+        color: transparent;
+      }
+    }
+    .slideContent {
+      margin-top: 3rem;
+      width: 40%;
+      transition: 1s;
+      font-size: large;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      .description {
+        font-weight: 300;
+      }
+      .activebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        width: fit-content;
+        padding: 0 2rem;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        background-color: #4266eb;
+        color: white;
+        font-size: 0.875rem;
+        cursor: pointer;
+        svg {
+          margin-left: 0.625rem;
+          width: 1.4rem;
+          fill: white;
+          path {
+            fill: white;
+          }
+        }
+        &:hover {
+          svg {
+            transition: all 0.3s ease;
+            circle {
+              fill: rgb(41, 41, 41);
+            }
+          }
+        }
+      }
+    }
+  }
 }

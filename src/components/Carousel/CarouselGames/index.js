@@ -77,7 +77,7 @@ export default function CarouselGames({ userdata, setshowauth, setauthmode }) {
               left: `${
                 isMobile
                   ? (index - currentSlide) * 90 + 5
-                  : (index - currentSlide) * 34 + 25
+                  : (index - currentSlide) * 34 + 35
               }vw`,
               scale: index === currentSlide ? 1 : 0.8,
             }}
