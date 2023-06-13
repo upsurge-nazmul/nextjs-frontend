@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Toast from "../Toast";
 import styles from "../../styles/KidStore/requestmodal.module.scss";
 import BackButtonSvg from "../SVGcomponents/BackButtonSvg";
@@ -10,6 +10,7 @@ import Spinner from "../Spinner";
 import { UniCoinValue } from "../../../config";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/router";
+import { MainContext } from "../../context/Main";
 
 export default function RequestModal({
   showmodal,
@@ -23,9 +24,14 @@ export default function RequestModal({
   //modes will be start , category , template, assign
   const router = useRouter();
   const [success, setsuccess] = useState(false);
+  const { userdata } = useContext(MainContext);
   const [ verificationEmail, setVerificationEmail ] = useState(false);
   async function sendVerificationEmail() {
-    let response = await LoginApis.sendverificationemail();
+    let verifypayload = {
+      userid: userdata?.user_id,
+      email: userdata?.parent_email,
+    };
+    let response = await LoginApis.sendverificationemail(verifypayload);
     if (!response.data.success) {
       setVerificationEmail(false);
     } else {

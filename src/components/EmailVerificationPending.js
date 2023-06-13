@@ -4,10 +4,14 @@ import { MainContext } from "../context/Main";
 import styles from "../styles/emailverificationpending/emailverificationpending.module.scss";
 function EmailVerificationPending({ settoastdata }) {
   const { userdata } = useContext(MainContext);
-  const [mailsentagain, setmailsentagain] = useState(false);
+  const [mailsentagain, setmailsentagain] = useState(false);``
   async function resendemail() {
-    let response = await LoginApis.sendverificationemail();
-    console.log("Responsose", response);
+    let verifypayload = {
+      userid: userdata?.user_id,
+      email: userdata?.parent_email,
+    };
+    let response = await LoginApis.sendverificationemail(verifypayload);
+    console.log("VerificationResponse", response);
     if (!response.data.success) {
       settoastdata({
         show: true,

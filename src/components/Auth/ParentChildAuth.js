@@ -186,8 +186,11 @@ function ParentChildAuth({
       setloading(false);
       seterror(response.data.message || "Error connecting to server");
     } else {
-      if (signupmethod === "email") {
-        LoginApis.sendverificationemail();
+      if (signupmethod === "organic" || signupmethod) {
+        let payload = {
+          email: email
+        };
+        LoginApis.sendverificationemail(payload);
       }
       settoastdata({
         show: true,
