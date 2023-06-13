@@ -67,33 +67,44 @@ function Home({ page = "", showNav = true }) {
   const [currentChapter, setCurrentChapter] = useState("");
   const [gameOpened, setGameOpened] = useState(null);
   const [kqOpened, setKqOpened] = useState(null);
-  useEffect(()=>{
-   function handleScroll() {
-      const showGamesPopUp = userdata ? false : gamesRef?.current?.offsetTop <= (window.scrollY + 250); 
-      const showKQPopUp = userdata ? false : kqRef?.current?.offsetTop <= (window.scrollY + 250); 
-      if(!userdata){
-        if (!trendingGamesShow && !becomeFinanciallySmartShown && showGamesPopUp) {
+  useEffect(() => {
+    function handleScroll() {
+      const showGamesPopUp = userdata
+        ? false
+        : gamesRef?.current?.offsetTop <= window.scrollY + 250;
+      const showKQPopUp = userdata
+        ? false
+        : kqRef?.current?.offsetTop <= window.scrollY + 250;
+      if (!userdata) {
+        if (
+          !trendingGamesShow &&
+          !becomeFinanciallySmartShown &&
+          showGamesPopUp
+        ) {
           setShowTrendingGames(showGamesPopUp);
           setTrendingGamesShow(showGamesPopUp);
-      } 
-      else if (
-        trendingGamesShow &&
-        trendingGamesManuallyClosed &&
-        !becomeFinanciallySmartShown &&
-        !showUnicoinsAwards &&
-        !showauth &&
-        showKQPopUp
+        } else if (
+          trendingGamesShow &&
+          trendingGamesManuallyClosed &&
+          !becomeFinanciallySmartShown &&
+          !showUnicoinsAwards &&
+          !showauth &&
+          showKQPopUp
         ) {
-            setShowBecomeFinanciallySmart(showKQPopUp);
-            setBecomeFinanciallySmartShown(showKQPopUp);
-          }
+          setShowBecomeFinanciallySmart(showKQPopUp);
+          setBecomeFinanciallySmartShown(showKQPopUp);
         }
       }
+    }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  },[trendingGamesShow,trendingGamesManuallyClosed, becomeFinanciallySmartShown]);
+  }, [
+    trendingGamesShow,
+    trendingGamesManuallyClosed,
+    becomeFinanciallySmartShown,
+  ]);
 
   const handleback = () => {
     setCurrentChapter();
@@ -193,20 +204,28 @@ function Home({ page = "", showNav = true }) {
       document.documentElement.scrollTop = 0;
     }
   }, [router]);
-  useEffect(()=>{
-    if (showTrendingGames  && !userdata || showBecomeFinanciallySmart  && !userdata) {
+  useEffect(() => {
+    if (
+      (showTrendingGames && !userdata) ||
+      (showBecomeFinanciallySmart && !userdata)
+    ) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflowY = "auto";
     }
     return () => (document.body.style.overflowY = "auto");
-  },[showTrendingGames,showBecomeFinanciallySmart])
-  
+  }, [showTrendingGames, showBecomeFinanciallySmart]);
+
   return (
     <div
       id="home-page-main"
       className={`${styles.homePage} ${
-        showauth || router.query.showTour || showTrendingGames || showBecomeFinanciallySmart ? styles.stopscrolling : ""
+        showauth ||
+        router.query.showTour ||
+        showTrendingGames ||
+        showBecomeFinanciallySmart
+          ? styles.stopscrolling
+          : ""
       }
       `}
     >
@@ -283,7 +302,7 @@ function Home({ page = "", showNav = true }) {
       {/* <How /> */}
       <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
       <div ref={gamesRef}>
-      <PartnerSection />
+        <PartnerSection />
       </div>
       <TryUpsurge
         content={"Try upsurge now"}
@@ -301,12 +320,12 @@ function Home({ page = "", showNav = true }) {
       />
       <FaqSection />
       <div ref={kqRef}>
-      <JoinUs
-        setshowauth={setshowauth}
-        setauthmode={setauthmode}
-        setmailfromhome={setmailfromhome}
+        <JoinUs
+          setshowauth={setshowauth}
+          setauthmode={setauthmode}
+          setmailfromhome={setmailfromhome}
         />
-        </div>
+      </div>
       {!userdata && showTrendingGames ? (
         <TrendingGamesPopUp
           setShowTrendingGames={setShowTrendingGames}

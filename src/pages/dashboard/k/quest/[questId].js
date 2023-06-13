@@ -129,14 +129,20 @@ export default function KnowledgeQuest({ userData, questData }) {
             <div>
               {view && currentQuest ? (
                 <div className={styles.views}>
-                  {view === LESSON_TYPES[0] ||
-                  view === LESSON_TYPES[1] ||
-                  view === LESSON_TYPES[4] ? (
+                  {view === LESSON_TYPES[0] || view === LESSON_TYPES[4] ? (
                     <GameView
                       game={currentChapter}
                       setGame={handleBack}
                       handleDone={handleDone}
                       isKq={true}
+                    />
+                  ) : view === LESSON_TYPES[1] ? (
+                    <ActivityView
+                      {...{
+                        chapterId: currentChapter,
+                        handleBack,
+                        handleDone,
+                      }}
                     />
                   ) : view === LESSON_TYPES[3] ? (
                     <GameView
