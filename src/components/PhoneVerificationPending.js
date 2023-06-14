@@ -15,7 +15,7 @@ function PhoneVerificationPending({ settoastdata }) {
         <div className={styles.button} onClick={()=>{setshowOTP(true)}}>Enter Now!</div>
         {show ?
         <div className={styles.otpnotverified}>
-            <OtpNotVerfied setshowOTP={setshowOTP} userphone={userdata?.parent_phone} setphoneverified={setphoneverified} />
+            <OtpNotVerfied setshowOTP={setshowOTP} userphone={userdata?.parent_phone} email={userdata?.parent_email} setphoneverified={setphoneverified} />
         </div>
 :<>
 </>

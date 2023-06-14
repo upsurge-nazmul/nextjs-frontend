@@ -76,7 +76,7 @@ export default function Reward({
         ))}
         {showOTP &&
               <div className={styles.showOTP}>
-              <OtpNotVerfied userphone={userdata?.parent_phone} setshowOTP={setshowOTP} />
+              <OtpNotVerfied userphone={userdata?.parent_phone} setshowOTP={setshowOTP} email={userdatafromserver?.parent_email}/>
               </div>
              } 
 

@@ -31,12 +31,13 @@ export default function OtpNotVerfied({
   }, [OTP]);
   async function verifyOtp() {
     let response = await LoginApis.verifyotp({ phone:phone, otp: OTP.toString() });
-    if (response.data.success) {
+    if (response.data.message === "OTP correct") {
       mixpanel.track("ChangePhoneno", { event: "OTP verified" });
       fbq("trackCustom", "OTP", { event: "OTP-verified" });
       dataLayer.push({ event: "otp-verified" });
       settoastdata({ show: true, msg: response.data.message, type: "success" });
       setphoneverified(true);
+      setshowmodal(false);
     } else {
       seterror(response.data.message || "Cannot connect to server");
     }
