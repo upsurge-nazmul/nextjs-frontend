@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
@@ -65,7 +65,7 @@ export default function Reward({
             data={{
               name: data.name,
               type: "voucher",
-              price: selectedprice*1000,
+              price: selectedprice * 1000,
               id: data.productId,
             }}
             userdatafromserver={userdatafromserver}
@@ -74,11 +74,15 @@ export default function Reward({
             setshowOTP={setshowOTP}
           />
         ))}
-        {showOTP &&
-              <div className={styles.showOTP}>
-              <OtpNotVerfied userphone={userdata?.parent_phone} setshowOTP={setshowOTP} email={userdatafromserver?.parent_email}/>
-              </div>
-             } 
+      {showOTP && (
+        <div className={styles.showOTP}>
+          <OtpNotVerfied
+            userphone={userdata?.parent_phone}
+            setshowOTP={setshowOTP}
+            email={userdatafromserver?.parent_email}
+          />
+        </div>
+      )}
 
       <img className={styles.image} src={data.imageUrl} alt="" />
       <div className={styles.right}>
@@ -114,13 +118,13 @@ export default function Reward({
           {parent ? (
             ""
           ) : (
-            <button
-              className={ styles.button}
-              onClick={redeem}
-            >
+            <button className={styles.redeemButton} onClick={redeem}>
               Redeem
             </button>
           )}
+          <button className={styles.detailsButton} onClick={redeem}>
+            Details
+          </button>
         </div>
       </div>
     </div>

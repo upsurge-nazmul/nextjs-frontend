@@ -5,6 +5,7 @@ import Reward from "../WaitlistDashboard/Reward";
 import Voucher from "./Voucher";
 import SearchIcon from "@mui/icons-material/Search";
 import SeeMoreCard from "../WaitlistDashboard/SeeMoreCard";
+
 export default function VoucherSection({
   vouchers,
   unicoins,
@@ -14,13 +15,13 @@ export default function VoucherSection({
   kid,
   id,
   parent,
-  userdatafromserver
+  userdatafromserver,
 }) {
   const [items, setItems] = useState();
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(10);
 
-  // console.log("@@@@", vouchers);
+  console.log("@@@@", vouchers);
 
   useEffect(() => {
     if (vouchers && vouchers.length) {
