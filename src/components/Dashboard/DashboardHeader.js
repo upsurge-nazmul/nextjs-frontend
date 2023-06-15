@@ -50,19 +50,30 @@ function DashboardHeader({
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
   const [openUnicoinHistory, setOpenUnicoinHistory] = useState(false);
-  const [updateUnicoinsAnimation,setUpdateUnicoinsAnimation] = useState(false);
-  const { setuser, userdata, theme, showmenu, setshowmenu, unicoins, setUnicoins, setUnicoinsEarnedPopUp, unicoinsEarnedPopUp} =
-  useContext(MainContext);
-  const [displayingUnicoins, setDisplayingUnicoins] = useState(userdata?.num_unicoins);
+  const [updateUnicoinsAnimation, setUpdateUnicoinsAnimation] = useState(false);
+  const {
+    setuser,
+    userdata,
+    theme,
+    showmenu,
+    setshowmenu,
+    unicoins,
+    setUnicoins,
+    setUnicoinsEarnedPopUp,
+    unicoinsEarnedPopUp,
+  } = useContext(MainContext);
+  const [displayingUnicoins, setDisplayingUnicoins] = useState(
+    userdata?.num_unicoins
+  );
   const [activeAnimation, setActiveAnimation] = useState(false);
   const [unicoinsTransactionData, setUnicoinsTransactionData] = useState("");
   const [unAwardedTransaction, setUnAwardedTransaction] = useState(false);
   const [closingBalance, setClosingBalance] = useState(0);
-  const [achievementPopUp , setAchievementPopUp] = useState(false);
+  const [achievementPopUp, setAchievementPopUp] = useState(false);
   const [showRedeemNow, setShowRedeemNow] = useState(false);
   const [shownRedeemNow, setShownRedeemNow] = useState(false);
   const [showAchievement, setShowAchievement] = useState("");
-  console.log(kidLevel);
+
   const colors = [
     { front: "#a864fd", back: "#345dd1" },
     { front: "#29cdff", back: "#a864fd" },
@@ -73,53 +84,59 @@ function DashboardHeader({
   ];
   const confettiCount = 50;
   const sequinCount = 20;
-  const [updateUnicoins,setUpdateUnicoins] = useState(false);
-  useEffect(async()=>{
-    if(updateUnicoinsAnimation === true){
-      setTimeout(()=>{
+  const [updateUnicoins, setUpdateUnicoins] = useState(false);
+  useEffect(async () => {
+    if (updateUnicoinsAnimation === true) {
+      setTimeout(() => {
         setUpdateUnicoinsAnimation(false);
-      },3000);
-      setTimeout(()=>{
+      }, 3000);
+      setTimeout(() => {
         setUpdateUnicoins(!updateUnicoins);
-      },3500)
-      setTimeout(()=>{
+      }, 3500);
+      setTimeout(() => {
         setActiveAnimation(true);
-      },4000)
-  let response = await DashboardApis.unicoinsTransactionShown();
-}
-  },[updateUnicoinsAnimation]);
+      }, 4000);
+      let response = await DashboardApis.unicoinsTransactionShown();
+    }
+  }, [updateUnicoinsAnimation]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setDisplayingUnicoins(closingBalance - unicoins);
-  },[unAwardedTransaction,unicoins]);
-  useEffect(async() => {
+  }, [unAwardedTransaction, unicoins]);
+
+  useEffect(async () => {
     setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
     let unAwardedUnicoins = 0;
-    if(userdata)
-    {
-    let response = await DashboardApis.getUnicoinsTransactionHistory();
-    setUnicoinsTransactionData(response?.data?.data);
-    const sortedResponse = await response?.data?.data.sort((a, b) => a.timestamp - b.timestamp);
-    const updatedResponse = await sortedResponse?.map((item,key)=>{
-      if(item.animation_shown === false){
-        if(item.status === "credit"){
-          unAwardedUnicoins = parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
+    if (userdata) {
+      let response = await DashboardApis.getUnicoinsTransactionHistory();
+      setUnicoinsTransactionData(response?.data?.data);
+      const sortedResponse = await response?.data?.data.sort(
+        (a, b) => a.timestamp - b.timestamp
+      );
+      const updatedResponse = await sortedResponse?.map((item, key) => {
+        if (item.animation_shown === false) {
+          if (item.status === "credit") {
+            unAwardedUnicoins =
+              parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
+          } else if (item.status === "debit") {
+            unAwardedUnicoins =
+              parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
+          }
         }
-        else if (item.status === "debit"){
-          unAwardedUnicoins = parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
+        if (response.data.data.length === key + 1) {
+          if (item.animation_shown === false) {
+            setClosingBalance(parseInt(item.closing_balance));
+            setUnicoins(unAwardedUnicoins);
+            setUnAwardedTransaction(true);
+            setUnicoinsEarnedPopUp(true);
+            return { ...item, animation_shown: true };
+          }
         }
-      }
-      if(response.data.data.length === (key+1)){
-        if(item.animation_shown === false)
-        {
-          setClosingBalance(parseInt(item.closing_balance));
-          setUnicoins(unAwardedUnicoins);
-          setUnAwardedTransaction(true);
-          setUnicoinsEarnedPopUp(true);
-          return { ...item, animation_shown: true };
-        }
-      }
-    })}
+      });
+    }
+  }, [userdata]);
+
+  useEffect(() => {
     async function fetchKidLevel() {
       let res = await KidApis.getlevel(
         {
@@ -146,52 +163,52 @@ function DashboardHeader({
   useEffect(() => {
     let shouldShowRedeemNow = false;
     if (userdata) {
-        if (
+      if (
         displayingUnicoins >= 5000 &&
         userdata.reached_5k === false &&
         pathname !== "/dashboard/k/store" &&
         shownRedeemNow === false
-        ) {
-          setShowAchievement({
-            achievementTitle: "Rookie Earner",
-            percentage: 10,
-            achievementDescription: "Collect 5000 unicoins",
-          });
-          setAchievementPopUp(true);
-          shouldShowRedeemNow = true;
-          if (displayingUnicoins >= 10000) {
-            setTimeout(() => {
-              if (shownRedeemNow === false) {
-                setShowAchievement((prevState) => ({
-                  ...prevState,
-                  achievementTitle: "Junior Earner",
-                  percentage: 5,
-                  achievementDescription: "Collect 10000 unicoins",
-                }));
-                setAchievementPopUp(true);
-              }
-            }, 6000);
-          }
-        } else if (
-          displayingUnicoins >= 10000 &&
-          userdata.reached_5k === true &&
-          userdata.reached_10k === false &&
-          pathname !== "/dashboard/k/store" &&
-          shownRedeemNow === false
-          ) {
-            shouldShowRedeemNow = true;
-            setShowAchievement({
-              achievementTitle: "Junior Earner",
-              percentage: 5,
-              achievementDescription: "Collect 10000 unicoins",
-            });
-          }
+      ) {
+        setShowAchievement({
+          achievementTitle: "Rookie Earner",
+          percentage: 10,
+          achievementDescription: "Collect 5000 unicoins",
+        });
+        setAchievementPopUp(true);
+        shouldShowRedeemNow = true;
+        if (displayingUnicoins >= 10000) {
+          setTimeout(() => {
+            if (shownRedeemNow === false) {
+              setShowAchievement((prevState) => ({
+                ...prevState,
+                achievementTitle: "Junior Earner",
+                percentage: 5,
+                achievementDescription: "Collect 10000 unicoins",
+              }));
+              setAchievementPopUp(true);
+            }
+          }, 6000);
         }
+      } else if (
+        displayingUnicoins >= 10000 &&
+        userdata.reached_5k === true &&
+        userdata.reached_10k === false &&
+        pathname !== "/dashboard/k/store" &&
+        shownRedeemNow === false
+      ) {
+        shouldShowRedeemNow = true;
+        setShowAchievement({
+          achievementTitle: "Junior Earner",
+          percentage: 5,
+          achievementDescription: "Collect 10000 unicoins",
+        });
+      }
+    }
     setShowRedeemNow(shouldShowRedeemNow);
     setShownRedeemNow(shouldShowRedeemNow);
     setAchievementPopUp(shouldShowRedeemNow);
   }, [displayingUnicoins, userdata]);
-  
+
   useEffect(() => {
     if (!showToolTip.show) return;
     let timer = setTimeout(
@@ -203,21 +220,21 @@ function DashboardHeader({
     };
   }, [showToolTip.show]);
   useEffect(() => {
-    if(unAwardedTransaction){
+    if (unAwardedTransaction) {
       const interval = setInterval(() => {
         setDisplayingUnicoins((prevNumber) => {
-           if (prevNumber + 1 >= closingBalance) {
-             clearInterval(interval);
-             setUnicoins(0);
-             return closingBalance;
-            } else {
-              return prevNumber + 1;
-            }
-          });
-        }, 1);
-        
-        return () => {
-          clearInterval(interval);
+          if (prevNumber + 1 >= closingBalance) {
+            clearInterval(interval);
+            setUnicoins(0);
+            return closingBalance;
+          } else {
+            return prevNumber + 1;
+          }
+        });
+      }, 1);
+
+      return () => {
+        clearInterval(interval);
       };
     }
   }, [updateUnicoins]);
@@ -273,53 +290,60 @@ function DashboardHeader({
             </p>
             </div>
           )} */}
-        {userdata?.user_type !== "parent" && updateUnicoinsAnimation === false &&  (
-          <div
-          className={styles.rewardBlock}
-          onClick={() => setOpenUnicoinHistory((prev) => !prev)}
-          >
-            <UniCoinSvg className={styles.svg} />
-            <p className={styles.number}>
-            <span className={styles.confettiContainer}>
-                <Animation activate={activeAnimation} setActivate={setActiveAnimation} colors={colors} classActive={true} confettiCount={confettiCount} sequinCount={sequinCount} />
+        {userdata?.user_type !== "parent" &&
+          updateUnicoinsAnimation === false && (
+            <div
+              className={styles.rewardBlock}
+              onClick={() => setOpenUnicoinHistory((prev) => !prev)}
+            >
+              <UniCoinSvg className={styles.svg} />
+              <p className={styles.number}>
+                <span className={styles.confettiContainer}>
+                  <Animation
+                    activate={activeAnimation}
+                    setActivate={setActiveAnimation}
+                    colors={colors}
+                    classActive={true}
+                    confettiCount={confettiCount}
+                    sequinCount={sequinCount}
+                  />
                 </span>
-              {displayingUnicoins
-                ? displayingUnicoins > UniCoinValue
-                  ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
-                  : displayingUnicoins
-                : 0}
-            </p>
-          </div>
-        )}
+                {displayingUnicoins
+                  ? displayingUnicoins > UniCoinValue
+                    ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                    : displayingUnicoins
+                  : 0}
+              </p>
+            </div>
+          )}
         {userdata && updateUnicoinsAnimation === true && (
           <div className={unicoinsStyle.animationBlock}>
-          <div
-            className={unicoinsStyle.rewardBlock}
-            onClick={() => setOpenUnicoinHistory((prev) => !prev)}
-          >
-            <UniCoinSvg className={unicoinsStyle.svg} />
-            <p className={unicoinsStyle.number}>
-              {displayingUnicoins
-                ? displayingUnicoins > UniCoinValue
-                  ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
-                  : displayingUnicoins
-                : 0}
-            </p>
+            <div
+              className={unicoinsStyle.rewardBlock}
+              onClick={() => setOpenUnicoinHistory((prev) => !prev)}
+            >
+              <UniCoinSvg className={unicoinsStyle.svg} />
+              <p className={unicoinsStyle.number}>
+                {displayingUnicoins
+                  ? displayingUnicoins > UniCoinValue
+                    ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                    : displayingUnicoins
+                  : 0}
+              </p>
+            </div>
+            <div className={unicoinsStyle.awardedRewardBlock}>
+              +
+              <UniCoinSvg className={unicoinsStyle.svg} />
+              <p className={unicoinsStyle.number}>
+                {unicoins
+                  ? unicoins > UniCoinValue
+                    ? (unicoins / UniCoinValue).toFixed(2) + "K"
+                    : unicoins
+                  : 0}
+              </p>
+            </div>
           </div>
-          <div className={unicoinsStyle.awardedRewardBlock}>
-            +
-            <UniCoinSvg className={unicoinsStyle.svg} />
-            <p className={unicoinsStyle.number}>
-              {unicoins
-                ? unicoins > UniCoinValue
-                  ? (unicoins / UniCoinValue).toFixed(2) + "K"
-                  : unicoins
-                : 0}
-            </p>
-          </div>
-          </div>
-        )
-        }
+        )}
         {userdata?.plan_name == "Premium3m" && (
           <div className={styles.premiumBadge}>
             <span className={styles.text}>Premium</span>
@@ -420,7 +444,7 @@ function DashboardHeader({
       ) : (
         ""
       )}
-        {openUnicoinHistory ? (
+      {openUnicoinHistory ? (
         <TransactionHistory
           open={openUnicoinHistory}
           setOpen={setOpenUnicoinHistory}
@@ -429,23 +453,30 @@ function DashboardHeader({
       ) : (
         ""
       )}
-        {unicoinsEarnedPopUp ? (
-          <UnicoinsEarned
+      {unicoinsEarnedPopUp ? (
+        <UnicoinsEarned
           setUnicoinsEarnedPopUp={setUnicoinsEarnedPopUp}
           setUpdateUnicoinsAnimation={setUpdateUnicoinsAnimation}
           unicoins={unicoins}
           setUnicoins={setUnicoins}
-          />
+        />
       ) : (
         ""
       )}
       {showRedeemNow ? (
-        <RedeemNowPopUp unicoins={displayingUnicoins} setShowRedeemNow={setShowRedeemNow} reached_5k={userdata.reached_5k} reached_10k={userdata.reached_10k} />
+        <RedeemNowPopUp
+          unicoins={displayingUnicoins}
+          setShowRedeemNow={setShowRedeemNow}
+          reached_5k={userdata.reached_5k}
+          reached_10k={userdata.reached_10k}
+        />
       ) : null}
       {achievementPopUp ? (
-        <AchievementPopUp setAchievementPopUp={setAchievementPopUp} showAchievement={showAchievement} />
-      )
-      : null}
+        <AchievementPopUp
+          setAchievementPopUp={setAchievementPopUp}
+          showAchievement={showAchievement}
+        />
+      ) : null}
     </div>
   );
 }
