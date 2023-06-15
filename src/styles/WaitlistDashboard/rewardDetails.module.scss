@@ -1,0 +1,47 @@
+.container {
+  width: 70vw;
+  max-height: 80vh;
+  overflow: auto;
+  .item {
+    padding: 10px 0;
+    .itemLabel {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgb(127, 125, 125);
+      display: flex;
+
+      .labelButton {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .itemValue {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: #333;
+    }
+    .overflowContent {
+      width: 95%;
+      max-height: 50vh;
+      overflow-y: auto;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      padding: 1rem;
+      box-shadow: inset 1px 1px 8px 4px #cfcfcf;
+      border-radius: 8px;
+      ul {
+        padding-left: 30px;
+      }
+    }
+    .overflowContent::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+.container::-webkit-scrollbar {
+  width: 6px;
+}

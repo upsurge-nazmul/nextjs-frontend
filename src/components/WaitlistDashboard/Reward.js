@@ -7,6 +7,8 @@ import RequestModal from "../KidStore/RequestModal";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { MainContext } from "../../context/Main";
 import OtpNotVerfied from "../Auth/OtpNotVerified";
+import Modal from "../Modal";
+import RewardDetails from "./RewardDetails";
 
 export default function Reward({
   data,
@@ -28,6 +30,8 @@ export default function Reward({
   );
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
+  const [showDetails, setShowDetails] = useState();
+
   async function redeem() {
     if (quantity < 1) {
       alert("Please select a quantity to redeem");
@@ -35,6 +39,7 @@ export default function Reward({
     }
     setshowpopup(true);
   }
+
   useEffect(() => {
     let values = data.valueDenominations?.split(",");
     let unicoinvalues = [];
@@ -44,6 +49,7 @@ export default function Reward({
     setprices(unicoinvalues);
     setselectedprice(unicoinvalues[0]);
   }, []);
+
   return (
     <div className={styles.reward}>
       {showpopup &&
@@ -84,6 +90,20 @@ export default function Reward({
         </div>
       )}
 
+      {showDetails && (
+        <Modal
+          title={data.name}
+          actions={{
+            cancelText: "Close",
+            isCancel: true,
+            handleCancel: () => setShowDetails(),
+          }}
+          onOutsideClick={() => setShowDetails()}
+        >
+          <RewardDetails data={data} />
+        </Modal>
+      )}
+
       <img className={styles.image} src={data.imageUrl} alt="" />
       <div className={styles.right}>
         <div className={styles.nameArea}>
@@ -122,7 +142,10 @@ export default function Reward({
               Redeem
             </button>
           )}
-          <button className={styles.detailsButton} onClick={redeem}>
+          <button
+            className={styles.detailsButton}
+            onClick={() => setShowDetails(true)}
+          >
             Details
           </button>
         </div>
