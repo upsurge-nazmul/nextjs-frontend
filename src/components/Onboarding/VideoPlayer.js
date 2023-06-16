@@ -4,7 +4,8 @@ export default function VideoPlayer({ setwatched }) {
   function handleTimeUpdate(e) {
     const video = e.target;
     const progress = video.currentTime / video.duration;
-    if (progress > 0.9) {
+    console.log(progress);
+    if (progress > 0.7) {
       setwatched(true);
     } else {
       setwatched(false);
