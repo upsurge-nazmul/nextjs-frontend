@@ -104,7 +104,7 @@ export default function Pricing() {
             <div className={styles.block}>
               <div className={styles.section}>
                 <div className={styles.sectionLeft}>
-                  <h3 className={styles.header}>Yearly Plan</h3>
+                  <h3 className={styles.header}>Half-Yearly Plan</h3>
                   <p className={styles.smallfont}> for 6 months </p>
                   <p className={styles.subheading}>
                     Get access to premium quests and games
