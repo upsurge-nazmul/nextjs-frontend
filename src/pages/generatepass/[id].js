@@ -74,7 +74,7 @@ export default function GenPass() {
     const res = await LoginApis.generatepass({
       id: router.query.id,
       password: password,
-      reset: reset ? true : false,
+      reset: reset ? false : true,
     });
     if (res && res.data && res.data.success) {
       setsuccess(true);
