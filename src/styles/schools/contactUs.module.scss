@@ -2,17 +2,18 @@
 
 .container {
   display: flex;
-  padding: 4rem 6rem;
+  padding: 3rem 6rem;
   .leftContainer {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     p {
-      max-width: 60%;
+      max-width: 80%;
       font-size: 2.2em;
       line-height: 1.4;
-      font-weight: 300;
+      font-weight: 400;
+      color: #555;
     }
   }
   .rightContainer {
@@ -26,8 +27,8 @@
       position: absolute;
     }
     .dl1 {
-      right: 10%;
-      top: 0%;
+      right: 25%;
+      top: 10%;
       width: 57px;
       height: 57px;
       background: $green;
@@ -35,7 +36,7 @@
     .hc1 {
       position: absolute;
       border-radius: 200px 200px 0 0;
-      left: 35%;
+      left: 18%;
       top: 0%;
       width: 100px;
       height: 50px;
@@ -48,35 +49,36 @@
       height: 500px;
       object-fit: contain;
       z-index: 3;
-      margin-right: -4rem;
+      margin-right: 3rem;
     }
     .childBG {
       width: 80%;
       height: 400px;
       position: absolute;
       bottom: 0;
-      right: 0;
+      right: 15%;
       z-index: 0;
     }
   }
 }
 
-@media only screen and (max-width: 711px) {
+@media only screen and (max-width: 500px) {
   .container {
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-    padding: 2rem 1.2rem;
+    padding: 0 2rem;
     .leftContainer {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       p {
-        max-width: 90%;
+        max-width: 100%;
         font-size: 1.8em;
-        line-height: 1.4;
-        font-weight: 300;
+        line-height: 1.2;
+        font-weight: 400;
+        color: #555;
       }
     }
     .rightContainer {
@@ -91,7 +93,139 @@
       }
       .dl1 {
         right: 10%;
+        top: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: $green;
+      }
+      .hc1 {
+        position: absolute;
+        border-radius: 99999999999999999px 99999999999999999px 0 0;
+        left: 20%;
         top: 0%;
+        width: 4.5rem;
+        height: 2.2rem;
+        background: $red;
+        rotate: -35deg;
+      }
+      .childImage {
+        position: relative;
+        width: 90%;
+        height: 20rem;
+        object-fit: fill;
+        z-index: 3;
+        margin-right: 0;
+        // margin-bottom: -5%;
+      }
+      .childBG {
+        width: 100%;
+        height: 18rem;
+        position: absolute;
+        bottom: 0;
+        right: auto;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 0 2rem;
+    .leftContainer {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        max-width: 100%;
+        font-size: 2.2em;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #555;
+      }
+    }
+    .rightContainer {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      .doodle {
+        border-radius: 100%;
+        position: absolute;
+      }
+      .dl1 {
+        right: 8%;
+        top: 0;
+        width: 3.5rem;
+        height: 3.5rem;
+        background: $green;
+      }
+      .hc1 {
+        position: absolute;
+        border-radius: 99999999999999999px 99999999999999999px 0 0;
+        left: 50%;
+        top: 0%;
+        width: 4.5rem;
+        height: 2.2rem;
+        background: $red;
+        rotate: -35deg;
+      }
+      .childImage {
+        position: relative;
+        width: 60%;
+        height: 24rem;
+        object-fit: fill;
+        z-index: 3;
+        margin-right: 0;
+        // margin-bottom: -5%;
+      }
+      .childBG {
+        width: 70%;
+        height: 20rem;
+        position: absolute;
+        bottom: 0;
+        right: auto;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    display: flex;
+    padding: 3rem 1rem;
+    .leftContainer {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        max-width: 80%;
+        font-size: 2.2em;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #555;
+      }
+    }
+    .rightContainer {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      .doodle {
+        border-radius: 100%;
+        position: absolute;
+      }
+      .dl1 {
+        right: 25%;
+        top: 10%;
         width: 57px;
         height: 57px;
         background: $green;
@@ -108,83 +242,18 @@
       }
       .childImage {
         position: relative;
-        width: 100%;
-        height: 400px;
-        object-fit: contain;
-        z-index: 3;
-        margin-right: 0;
-        margin-bottom: -2.2rem;
-      }
-      .childBG {
-        width: 100%;
-        height: 300px;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 0;
-      }
-    }
-  }
-}
-@media (min-width: 712px) and (max-width: 1024px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 3rem;
-    .leftContainer {
-      margin-bottom: 2rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      p {
-        max-width: 60%;
-        font-size: 2.2em;
-        line-height: 1.4;
-        font-weight: 300;
-      }
-    }
-    .rightContainer {
-      width: 100%;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      .doodle {
-        border-radius: 100%;
-        position: absolute;
-      }
-      .dl1 {
-        right: 10%;
-        top: 0%;
-        width: 57px;
-        height: 57px;
-        background: $green;
-      }
-      .hc1 {
-        position: absolute;
-        border-radius: 200px 200px 0 0;
-        left: 35%;
-        top: 0%;
-        width: 100px;
-        height: 50px;
-        background: $red;
-        rotate: -30deg;
-      }
-      .childImage {
-        position: relative;
         width: 90%;
         height: 500px;
         object-fit: contain;
         z-index: 3;
-        margin-right: -4rem;
+        margin-right: 3rem;
       }
       .childBG {
         width: 80%;
         height: 400px;
         position: absolute;
         bottom: 0;
-        right: 0;
+        right: 15%;
         z-index: 0;
       }
     }
