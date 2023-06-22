@@ -3,12 +3,12 @@ import styles from "../../styles/WaitlistDashboard/rewardDetails.module.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
-export default function RewardDetails({ data }) {
+export default function RewardDetails({ data, isMobile = false }) {
   const [showRedm, setShowRedm] = useState(false);
   const [showTrms, setShowTrms] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <div className={isMobile ? styles.mobileContainer : styles.container}>
       <div className={styles.item}>
         <div className={styles.itemLabel}>Description</div>
         <div

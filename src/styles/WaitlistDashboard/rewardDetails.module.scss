@@ -42,6 +42,12 @@
     }
   }
 }
+.mobileContainer {
+  @extend .container;
+  width: 100vw;
+  max-height: none;
+}
+
 .container::-webkit-scrollbar {
   width: 6px;
 }
