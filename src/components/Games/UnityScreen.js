@@ -36,17 +36,17 @@ export default function UnityScreen({
   useEffect(() => {
     if (isLoaded) {
       console.log("Game Loaded");
-      sendMessage("GameData", "SetUserID", userdata?.user_id);
-      const miniminerfirebaseApp = initializeApp({
-        apiKey: "AIzaSyB0H7oe_1PNd_csJnYjswwnh198NQ_SG3s",
-        authDomain: "fir-test-90675.firebaseapp.com",
-        databaseURL: "https://fir-test-90675-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "fir-test-90675",
-        storageBucket: "fir-test-90675.appspot.com",
-        messagingSenderId: "822460102042",
-        appId: "1:822460102042:web:4553a0d5be919829e37623"
-    });
-    const db = miniminerfirebaseApp.firestore();
+    // sendMessage("GameData", "SetUserID", userdata?.user_id);
+    //   const miniminerfirebaseApp = initializeApp({
+    //     apiKey: "AIzaSyB0H7oe_1PNd_csJnYjswwnh198NQ_SG3s",
+    //     authDomain: "fir-test-90675.firebaseapp.com",
+    //     databaseURL: "https://fir-test-90675-default-rtdb.asia-southeast1.firebasedatabase.app",
+    //     projectId: "fir-test-90675",
+    //     storageBucket: "fir-test-90675.appspot.com",
+    //     messagingSenderId: "822460102042",
+    //     appId: "1:822460102042:web:4553a0d5be919829e37623"
+    // });
+    // const db = miniminerfirebaseApp.firestore();
     }
   }, [isLoaded]);
 
@@ -58,13 +58,10 @@ export default function UnityScreen({
    
     addEventListener("Exit", async () => {
       console.log("Exiting Game");
-      try {
         await unload();
         console.log("Unload success");
         handleGameExit();
-      } catch (error) {
-        console.error(`Unable to unload: ${error}`);
-      }
+     
     });
 
     addEventListener("Score", async function (score) {
@@ -76,25 +73,19 @@ export default function UnityScreen({
       }
     });
 
-    addEventListener("KQ_done", async () => {
+    addEventListener("KQ_done", async (gameid,status) => {
       console.log("KQ_done");
-      if(status === "success")
-    {
-      try {
+      if(status === "1")
+    {   console.log("KQ_done success", gameid);
         await unload();
         handleGameExit();
-        } catch (error) {
-          console.error(`Unable to unload: ${error}`);
-        }
-    }
+      }
     else
-    {
-      try {
+    {   
+        console.log("KQ_done failed", gameid);  
         await unload();
         handleGameExit();
-        } catch (error) {
-          console.error(`Unable to unload: ${error}`);
-          }
+     
     }
       
           });
