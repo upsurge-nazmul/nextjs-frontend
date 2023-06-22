@@ -5,7 +5,7 @@ import GameLoading from "./GameLoading";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import ActionArea from "./ActionArea";
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
 
 export default function UnityScreen({
   data = {},
@@ -37,7 +37,7 @@ export default function UnityScreen({
     if (isLoaded) {
       console.log("Game Loaded");
       sendMessage("GameData", "SetUserID", userdata?.user_id);
-      const firebaseApp = firebase.initializeApp({
+      const miniminerfirebaseApp = initializeApp({
         apiKey: "AIzaSyB0H7oe_1PNd_csJnYjswwnh198NQ_SG3s",
         authDomain: "fir-test-90675.firebaseapp.com",
         databaseURL: "https://fir-test-90675-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -46,7 +46,7 @@ export default function UnityScreen({
         messagingSenderId: "822460102042",
         appId: "1:822460102042:web:4553a0d5be919829e37623"
     });
-    const db = firebaseApp.firestore();
+    const db = miniminerfirebaseApp.firestore();
     }
   }, [isLoaded]);
 
