@@ -128,7 +128,10 @@ export default function GamePage() {
                   : 200
                 : null;
               return (
-                <div className={styles.gameCardContainer}>
+                <div
+                  key={"game-card-" + index}
+                  className={styles.gameCardContainer}
+                >
                   <div className={styles.gameCard}>
                     <img
                       src={
