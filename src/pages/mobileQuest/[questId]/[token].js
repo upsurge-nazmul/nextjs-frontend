@@ -51,9 +51,3 @@ export default function GameView({
     </div>
   );
 }
-
-export async function getServerSideProps({ params, req }) {
-  return {
-    props: {},
-  };
-}
