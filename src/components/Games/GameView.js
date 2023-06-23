@@ -58,8 +58,9 @@ export default function GameView({
   }, []);
 
   const handleGameClose = () => {
-    handleDone ? handleDone() : () => {};
-    mixpanel.track("Game Closed", { event: `Game closed` });
+    mixpanel.track(`${isKq ? "Knowledge Quest" : "Game"} Closed`, {
+      event: `Game closed`,
+    });
     setFullScreen(false);
     if (document && document.fullscreenElement) document.exitFullscreen();
     setGame();
@@ -73,9 +74,10 @@ export default function GameView({
         <UnityScreen
           data={gameData}
           handleGameExit={handleGameClose}
-          fullScreen={fullScreen}
-          showDone={handleDone}
-          loading={loading}
+          handleGameDone={handleDone}
+          // fullScreen={fullScreen}
+          // showDone={handleDone}
+          // loading={loading}
         />
       )}
     </div>
