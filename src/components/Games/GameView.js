@@ -9,7 +9,7 @@ import { isMobileOnly } from "react-device-detect";
 export default function GameView({
   game,
   setGame,
-  handleDone = null,
+  handleDone = () => {},
   setUnicoins = () => {},
   setShowUnicoinsAwards = () => {},
   isKq = false,
