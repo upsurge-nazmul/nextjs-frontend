@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
@@ -21,6 +21,9 @@ export default function Pricing() {
   const [showauth, setshowauth] = useState(false);
   const [authMode, setAuthMode] = useState("");
   const [premiumPrice, setPremiumPrice] = useState();
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const videoOverlayRef = useRef(null);
 
   const { theme } = useContext(MainContext);
   const [plans, setPlans] = useState();
@@ -32,6 +35,82 @@ export default function Pricing() {
       setPlans(res.data.data);
     }
   }
+
+  const getResponsiveSizeHide = () => {
+    if (typeof window !== "undefined") {
+      let mediaQuerySmall = window.matchMedia("(max-width: 500px)");
+      let mediaQueryMedium = window.matchMedia(
+        " (min-width: 501px) and (max-width: 990px)"
+      );
+      let mediaQueryLarge = window.matchMedia(
+        "(min-width: 991px) and (max-width: 1300px)"
+      );
+      if (mediaQuerySmall.matches) {
+        return {
+          left: "-100%",
+          rotate: "0deg",
+        };
+      } else if (mediaQueryMedium.matches) {
+        return {
+          left: "-100%",
+          rotate: "0deg",
+        };
+      } else if (mediaQueryLarge.matches) {
+        return {
+          left: "-100%",
+          rotate: "-45deg",
+        };
+      } else {
+        return {
+          left: "-50%",
+          rotate: "-45deg",
+        };
+      }
+    } else {
+      return {
+        left: "-50%",
+        rotate: "-45deg",
+      };
+    }
+  };
+
+  const getResponsiveSizeShow = () => {
+    if (typeof window !== "undefined") {
+      let mediaQuerySmall = window.matchMedia("(max-width: 500px)");
+      let mediaQueryMedium = window.matchMedia(
+        " (min-width: 501px) and (max-width: 990px)"
+      );
+      let mediaQueryLarge = window.matchMedia(
+        "(min-width: 991px) and (max-width: 1300px)"
+      );
+      if (mediaQuerySmall.matches) {
+        return {
+          left: "-30%",
+          rotate: "30deg",
+        };
+      } else if (mediaQueryMedium.matches) {
+        return {
+          left: "-18%",
+          rotate: "30deg",
+        };
+      } else if (mediaQueryLarge.matches) {
+        return {
+          left: "-14%",
+          rotate: "0deg",
+        };
+      } else {
+        return {
+          left: "0%",
+          rotate: "0deg",
+        };
+      }
+    } else {
+      return {
+        left: "0%",
+        rotate: "0deg",
+      };
+    }
+  };
 
   useEffect(() => {
     fetchPlans();
@@ -67,35 +146,38 @@ export default function Pricing() {
       })(navigator.userAgent || navigator.vendor || window.opera);
       return check;
     };
-    const video = document.getElementById("video");
     const jasperImage = document.getElementById("jasperVideo");
 
     function togglePlay() {
-      if (video.paused || video.ended) {
-        video.play();
+      if (videoRef.current.paused || videoRef.current.ended) {
+        videoRef.current.play();
       } else {
-        video.pause();
+        videoRef.current.pause();
       }
     }
 
-    video.addEventListener("pause", () => {
+    videoRef.current.addEventListener("pause", () => {
       jasperImage.animate(
         {
-          left: mobileAndTabletCheck() ? "-30%" : "0",
-          rotate: mobileAndTabletCheck() ? "30deg" : "0deg",
+          left: getResponsiveSizeShow().left,
+          rotate: getResponsiveSizeShow().rotate,
         },
         {
           duration: 800,
           fill: "forwards",
         }
       );
+      videoOverlayRef.current.style.display = "flex";
+      setVideoPlaying(false);
     });
 
-    video.addEventListener("playing", () => {
+    videoRef.current.addEventListener("playing", () => {
+      videoOverlayRef.current.style.display = "none";
+      setVideoPlaying(true);
       jasperImage.animate(
         {
-          left: mobileAndTabletCheck() ? "-100%" : "-50%",
-          rotate: mobileAndTabletCheck() ? "0deg" : "-45deg",
+          left: getResponsiveSizeHide().left,
+          rotate: getResponsiveSizeHide().rotate,
         },
         {
           duration: 800,
@@ -137,24 +219,43 @@ export default function Pricing() {
       />
       <h1 className={styles.heading}>
         Power up your child&#39;s financial education with upsurge
-        <u className={styles.heading_underline}>Premium.</u>
+        <span className={styles.heading_underline}>Premium.</span>
       </h1>
       <div className={styles.mainContent}>
         <div className={styles.contentLeft}>
           <div className={styles.videoContainer}>
             <video
-              id="video"
+              ref={videoRef}
               className={styles.video}
-              controls
-              autoPlay
-              muted
               loop
+              controls={videoPlaying}
+              poster="https://imgcdn.upsurge.in/images/pricing-video-picture.png"
             >
               <source
                 src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-CompanyIntro.mkv"
                 type="video/mp4"
               ></source>
             </video>
+            <div ref={videoOverlayRef} className={styles.playButtonContainer}>
+              <button
+                onClick={() => {
+                  if (videoRef.current.paused || videoRef.current.ended) {
+                    videoRef.current.play();
+                  } else {
+                    videoRef.current.pause();
+                  }
+                }}
+                className={styles.playButton}
+              >
+                <svg
+                  id="svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 80 80"
+                >
+                  <path d="M40 0a40 40 0 1040 40A40 40 0 0040 0zM26 61.56V18.44L64 40z" />
+                </svg>
+              </button>
+            </div>
           </div>
           <img
             src={require("../../assets/Jasper/10.png").default.src}
