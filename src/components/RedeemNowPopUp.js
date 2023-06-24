@@ -70,7 +70,7 @@ function RedeemNowPopUp({
                 }
                 await DashboardApis.updateUserJourneyData({ shown: true });
                 setShowRedeemNow(false);
-                router.push("k/store");
+                router.push("/dashboard/k/store");
               }}
               className={styles.playButton}
             >
