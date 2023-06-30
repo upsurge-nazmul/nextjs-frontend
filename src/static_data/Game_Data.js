@@ -13,7 +13,7 @@ export const Game_Data = {
     "Learn about money management with our budget simulator.",
     img: "/images/games/price-is-right.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
+    premium_plan: 0,
     webgl_key: "PriceIsRight_WebGL",
   },
   BalanceBuilder: {
@@ -57,7 +57,7 @@ export const Game_Data = {
     "Learn about money management with our 3D adaptation of this classic.",
     img: "/images/games/snake-and-ladders.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
+    premium_plan: 0,
     webgl_key: "SnakesAndLadder_WebGL",
   },
   Ludo: {
@@ -74,7 +74,7 @@ export const Game_Data = {
     "Get behind a bank counter and learn about banking and credit economy.",
     img: "/images/games/world-bank.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
+    premium_plan: 0,
     webgl_key: "WorldBank_WebGL",
   },
   DontOverspend: {
@@ -105,15 +105,15 @@ export const Game_Data = {
     webgl_key: "MoneyManager_WebGL",
   },  
     
-  MiniMiner: {
-    name: "Mini Miner",
-    description:
-    "Get behind a mine and earn as much as you can.",
-    img: "/images/games/mini-miner.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
-    webgl_key: "MiniMiner_WebGL",
-  },
+  // MiniMiner: {
+  //   name: "Mini Miner",
+  //   description:
+  //   "Get behind a mine and earn as much as you can.",
+  //   img: "/images/games/mini-miner.png",
+  //   //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+  //   premium_plan: 1001,
+  //   webgl_key: "MiniMiner_WebGL",
+  // },
 };
 
 export const Simulator_Data = {
