@@ -30,7 +30,7 @@ export default function GameList({
               gameunicoinrewards
                 ? gameunicoinrewards.includes(item)
                   ? "Completed"
-                  : 200
+                  : 1500
                 : null
             }
             data={Game_Data[item]}
