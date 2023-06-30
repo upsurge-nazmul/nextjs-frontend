@@ -1,13 +1,20 @@
 export const Game_Data = {
-  DontOverspend: {
-    name: "Shopping budget",
-    description: "Can stay within your budget at the mall?",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
-    img: "/images/games/dont-overspend.png",
-    pushto: "/games/DontOverspend",
-    changedId: "DontOverspend",
+  MoneyDash: {
+    name: "Money Dash",
+    description: "Learn to manage expenses on the fly.",
+    img: "/images/games/money-dash.png",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
     premium_plan: 0,
-    webgl_key: "ShoppingBudget_WebGL",
+    webgl_key: "MoneyDash_WebGL",
+  },
+  MiniMiner: {
+    name: "Mini Miner",
+    description:
+    "Get behind a mine and earn as much as you can.",
+    img: "/images/games/mini-miner.png",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    premium_plan: 1001,
+    webgl_key: "MiniMiner_WebGL",
   },
   BalanceBuilder: {
     name: "Balance builder",
@@ -16,6 +23,23 @@ export const Game_Data = {
     description: "How does your bank balance change with different events?",
     premium_plan: 0,
     webgl_key: "BalanceBuilder_WebGL",
+  },
+  MoneySlide: {
+    name: "Money slide",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
+    img: "/images/games/money-slide.png",
+    description: "Fill each piggy-bank with the right amount of money.",
+    premium_plan: 0,
+    webgl_key: "MoneySlide_WebGL",
+  },
+  MoneyMath: {
+    name: "Money maths",
+    description:
+    "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
+    //img: "https://upsurge.in/images/games/MoneyMath.png",
+    img: "/images/games/money-math.png",
+    premium_plan: 0,
+    webgl_key: "MoneyMaths_WebGL",
   },
   HighAndLow: {
     name: "High and low",
@@ -27,56 +51,6 @@ export const Game_Data = {
     premium_plan: 0,
     webgl_key: "HignAndLow_WebGL",
   },
-  MoneyMath: {
-    name: "Money maths",
-    description:
-    "Let’s earn some money to buy what you want! Make sure you have enough before checking out.",
-    //img: "https://upsurge.in/images/games/MoneyMath.png",
-    img: "/images/games/money-math.png",
-    premium_plan: 0,
-    webgl_key: "MoneyMaths_WebGL",
-  },
-  MoneyManager: {
-    name: "Money manager",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
-    img: "/images/games/money-manager.png",
-    description: "Earn money, & divide it between Saving, Expenses & Charity.",
-    premium_plan: 0,
-    webgl_key: "MoneyManager_WebGL",
-  },
-  MoneySlide: {
-    name: "Money slide",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
-    img: "/images/games/money-slide.png",
-    description: "Fill each piggy-bank with the right amount of money.",
-    premium_plan: 0,
-    webgl_key: "MoneySlide_WebGL",
-  },
-  NeedOrWant: {
-    name: "Need and want",
-    description:
-    "What is the difference between a need & a want? Let’s play to find out.",
-    img: "/images/games/need-and-want.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
-    premium_plan: 0,
-    webgl_key: "NeedsAndWants_WebGL",
-  },
-  Ludo: {
-    name: "Ludo",
-    description:
-      "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
-    img: "/images/games/ludo-game.png",
-    premium_plan: 0,
-    webgl_key: "Ludo_WebGL",
-  },
-  MoneyDash: {
-    name: "Money Dash",
-    description: "Learn to manage expenses on the fly.",
-    img: "/images/games/money-dash.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
-    premium_plan: 0,
-    webgl_key: "MoneyDash_WebGL",
-  },
   SnakeAndLadders: {
     name: "Snake And Ladders",
     description:
@@ -86,14 +60,13 @@ export const Game_Data = {
     premium_plan: 1001,
     webgl_key: "SnakesAndLadder_WebGL",
   },
-  PriceIsRight: {
-    name: "Price Is Right",
+  Ludo: {
+    name: "Ludo",
     description:
-    "Learn about money management with our budget simulator.",
-    img: "/images/games/price-is-right.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
-    webgl_key: "PriceIsRight_WebGL",
+      "Our adaptation of the age-old classic! Answer financial questions & get bonus moves. Let’s see how fast you can finish this 2-pawn version.",
+    img: "/images/games/ludo-game.png",
+    premium_plan: 0,
+    webgl_key: "Ludo_WebGL",
   },
   WorldBank: {
     name: "World Bank",
@@ -104,15 +77,43 @@ export const Game_Data = {
     premium_plan: 1001,
     webgl_key: "WorldBank_WebGL",
   },
-  MiniMiner: {
-    name: "Mini Miner",
+  DontOverspend: {
+    name: "Shopping budget",
+    description: "Can stay within your budget at the mall?",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
+    img: "/images/games/dont-overspend.png",
+    pushto: "/games/DontOverspend",
+    changedId: "DontOverspend",
+    premium_plan: 0,
+    webgl_key: "ShoppingBudget_WebGL",
+  },
+  NeedOrWant: {
+    name: "Need and want",
     description:
-    "Get behind a mine and earn as much as you can.",
-    img: "/images/games/mini-miner.png",
+    "What is the difference between a need & a want? Let’s play to find out.",
+    img: "/images/games/need-and-want.png",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
+    premium_plan: 0,
+    webgl_key: "NeedsAndWants_WebGL",
+  },  
+  MoneyManager: {
+    name: "Money manager",
+    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
+    img: "/images/games/money-manager.png",
+    description: "Earn money, & divide it between Saving, Expenses & Charity.",
+    premium_plan: 0,
+    webgl_key: "MoneyManager_WebGL",
+  },  
+  PriceIsRight: {
+    name: "Price Is Right",
+    description:
+    "Learn about money management with our budget simulator.",
+    img: "/images/games/price-is-right.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
     premium_plan: 1001,
-    webgl_key: "MiniMiner_WebGL",
-  },
+    webgl_key: "PriceIsRight_WebGL",
+  },  
+  
 };
 
 export const Simulator_Data = {
