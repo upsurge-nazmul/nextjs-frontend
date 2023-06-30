@@ -7,14 +7,14 @@ export const Game_Data = {
     premium_plan: 0,
     webgl_key: "MoneyDash_WebGL",
   },
-  MiniMiner: {
-    name: "Mini Miner",
+  PriceIsRight: {
+    name: "Price Is Right",
     description:
-    "Get behind a mine and earn as much as you can.",
-    img: "/images/games/mini-miner.png",
+    "Learn about money management with our budget simulator.",
+    img: "/images/games/price-is-right.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
     premium_plan: 1001,
-    webgl_key: "MiniMiner_WebGL",
+    webgl_key: "PriceIsRight_WebGL",
   },
   BalanceBuilder: {
     name: "Balance builder",
@@ -104,16 +104,16 @@ export const Game_Data = {
     premium_plan: 0,
     webgl_key: "MoneyManager_WebGL",
   },  
-  PriceIsRight: {
-    name: "Price Is Right",
+    
+  MiniMiner: {
+    name: "Mini Miner",
     description:
-    "Learn about money management with our budget simulator.",
-    img: "/images/games/price-is-right.png",
+    "Get behind a mine and earn as much as you can.",
+    img: "/images/games/mini-miner.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
     premium_plan: 1001,
-    webgl_key: "PriceIsRight_WebGL",
-  },  
-  
+    webgl_key: "MiniMiner_WebGL",
+  },
 };
 
 export const Simulator_Data = {
