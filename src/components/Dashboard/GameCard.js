@@ -21,11 +21,11 @@ function GameCard({ data, onClick, cardstyle, reward }) {
       />
       <div className={styles.contentWrapper}>
         <p className={styles.title}>{data?.name || ""}</p>
-        <p className={styles.detail}>
+        {/* <p className={styles.detail}>
           {data?.description.length > 40
             ? data?.description.substring(0, 40) + "..."
             : data?.description || ""}
-        </p>
+        </p> */}
         {reward && (
           <p className={styles.reward}>
             <UnicoinSvg className={styles.icon} />
