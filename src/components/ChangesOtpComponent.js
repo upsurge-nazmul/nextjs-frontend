@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import OtpInput from "react-otp-input";
+import OtpInput from "./Auth/OtpInput";
 import LoginApis from "../actions/apis/LoginApis";
 import styles from "../styles/GeneralComponents/changesotpcomponent.module.scss";
 import BackButtonSvg from "./SVGcomponents/BackButtonSvg";

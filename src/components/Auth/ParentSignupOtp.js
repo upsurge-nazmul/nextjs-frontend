@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import styles from "../../styles/otpnotverified/parentSignupOtp.module.scss";
-import OtpInput from "react-otp-input";
+import OtpInput from "./OtpInput";
 import LoginApis from "../../actions/apis/LoginApis";
 import ChangePhoneNo from "./ChangePhoneNo";
 import { useRouter } from "next/dist/client/router";
