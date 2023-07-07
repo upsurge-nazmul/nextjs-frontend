@@ -26,7 +26,10 @@ export default function LeaderboardTable({ data, userdata }) {
                 {item.id === userdata?.user_id && "(you)"}
               </p>
               <p className={styles.score}>
-                {item.score ??
+                
+                {(item.total_unicoins > 1000
+                    ? item.total_unicoins / 1000 + "K "
+                    : item.total_unicoins) ??
                   (item.num_unicoins > 1000
                     ? item.num_unicoins / 1000 + "K "
                     : item.num_unicoins)}
