@@ -39,6 +39,7 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
           type: tab.key,
         });
         if (response && response.data && response.data.success) {
+          setLeaderboardData([]);
           setLeaderboardData(response.data.data);
         } else {
           setLeaderboardData([]);
