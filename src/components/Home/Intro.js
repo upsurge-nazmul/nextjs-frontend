@@ -26,7 +26,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
     >
       <Toast data={toastdata} />
       <div className={styles.textContent}>
-        <h2 className={styles.heading}>
+        <h1 className={styles.heading}>
           Make your child
           <br />
           <div className={styles.slidingVertical}>
@@ -35,7 +35,7 @@ function Intro({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
             <span className={styles.funBrandCol3}>future-ready.</span>
           </div>
         </h1>
-        <p className={styles.subheading}>
+        <h1 className={styles.subheading}>
           {`upsurge is India’s most loved platform to enable financial literacy for kids & make them MONEY-smart`}
         </h1>
         {userdata ? (

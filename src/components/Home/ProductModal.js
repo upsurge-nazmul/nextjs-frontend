@@ -50,7 +50,7 @@ const ProductModal = ({ data, setModal }) => {
               <h4 className={styles.heading}>{data.title}</h4>
             </div>
           </div>
-          <img src={data.image} className={styles.headerImage} />
+          <img src={data.image} className={styles.headerImage} alt=" " />
         </div>
         <div className={styles.cardFooter}>
           <p className={styles.description}>{data.description}</p>

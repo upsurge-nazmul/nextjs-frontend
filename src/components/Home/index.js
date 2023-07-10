@@ -13,6 +13,7 @@ import Who from "./Who";
 import Benefits from "./Benefits";
 import JasperSection from "./JasperSection";
 import PartnerSection from "./PartnerSection";
+import JoinUs from "./JoinUs";
 import FaqSection from "./FaqSection";
 import TestiMonial from "./TestiMonial";
 import Toast from "../Toast";
