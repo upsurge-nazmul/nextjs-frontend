@@ -47,22 +47,32 @@
     height: 100%;
     padding-left: 7vw;
     padding-right: 7vw;
-    .hamburger {
-      cursor: pointer;
-      display: none;
-      .hamIcon {
-        height: 100%;
-        width: 100%;
-      }
-    }
-    .logoContainer {
-      cursor: pointer;
+    .innerContainer {
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding-bottom: 5px;
-      svg {
-        width: 9rem;
+      column-gap: 1rem;
+      .hamburger {
+        cursor: pointer;
+        display: none;
+        .hamIcon {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .logoContainer {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5px;
+        svg {
+          width: 9rem;
+        }
+        .miniIcon {
+          display: none;
+          width: 2.2rem;
+          height: 2.2rem;
+        }
       }
     }
     .nav {
@@ -140,13 +150,31 @@
     .container {
       padding-left: 4vw;
       padding-right: 4vw;
-      .hamburger {
-        display: inline;
-        height: 1.5rem;
-        width: 1.5rem;
+      .innerContainer {
+        .logoContainer {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          svg {
+            display: none;
+          }
+          .miniIcon {
+            display: block;
+            width: 1.8rem;
+            height: 1.8rem;
+          }
+        }
+        .hamburger {
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
       }
       .nav {
         display: none;
+      }
+      .signin {
+        border-radius: 50px;
       }
     }
   }

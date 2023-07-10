@@ -4,7 +4,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 3.5rem 0;
+  background-color: #fbfbfb;
+  padding: 3rem 0;
+  margin: 3rem 0;
   .heading {
     font-size: 2rem;
     font-weight: 700;
@@ -19,11 +21,12 @@
       align-items: center;
       gap: 2rem;
       margin: 0px 0;
-      .logoContainer{
+      .logoContainer {
         .logo {
           aspect-ratio: 1;
           object-fit: contain;
-          animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+          animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+            forwards;
         }
       }
     }
@@ -51,10 +54,10 @@
         align-items: center;
         gap: 1rem;
         display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: space-around;
-    justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: space-around;
+        justify-content: space-around;
         margin: 0px 0;
         .logo {
           width: calc(100% / 2);

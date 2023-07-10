@@ -2,40 +2,23 @@ import draftToHtml from "draftjs-to-html";
 import { useRouter } from "next/dist/client/router";
 import React, { useContext, useEffect, useState } from "react";
 import xss from "xss";
-import BlogApis from "../../actions/apis/BlogApis";
 import { MainContext } from "../../context/Main";
 import styles from "../../styles/Home/blogs.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 
-export async function getStaticProps() {
-  let res = await BlogApis.gethomeblogs();
-  if (res && res.data && res.data.success) {
-    blog_data = res;
-  }
-  // By returning { props: { blog_data } }, the Blog component
-  // will receive `blog_data` as a prop at build time
-  return {
-    props: {
-      blog_data,
-    },
-  }
+function readingTime(text) {
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  return time;
 }
 
-
-function BlogsSection(blog_data) {
+function BlogsSection({ blogData }) {
   const router = useRouter();
   const { theme } = useContext(MainContext);
-  const [blogs, setblogs] = useState([]);
-  useEffect(() => {
-    async function x() {
-      let res = blog_data;
-      if (res && res.data && res.data.success) {
-        setblogs(res.data.data);
-      }
-    }
-    x();
-  }, []);
-
-
+  const [blogs, setblogs] = useState(blogData);
+  const [index, setIndex] = useState(0);
+  const [height, setHeight] = useState(0);
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
@@ -47,6 +30,24 @@ function BlogsSection(blog_data) {
       .replace(/\n/g, " ")
       .trim();
   }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIndex((prev) => {
+        if (prev === data.length - 1) {
+          return 0;
+        }
+        return ++prev;
+      });
+    }, 4000);
+    return () => clearInterval(intervalId);
+  }, [index]);
+
+  useEffect(() => {
+    const card = document.getElementById("blogCard");
+    setHeight(card.clientHeight);
+  }, [index]);
+
   let data = [
     {
       title: "Knowledge Quest",
@@ -75,51 +76,92 @@ function BlogsSection(blog_data) {
   ];
   return (
     <>
-    <section
-      className={`${styles.blogSection} ${
-        theme === "dark" && styles.darkblogSection
-      }`}
+      <section
+        className={`${styles.blogSection} ${
+          theme === "dark" && styles.darkblogSection
+        }`}
       >
-      <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
-      Read our blogs for some MONEY-ful insights
-      </h2>
-      <div className={styles.wrapper}>
-        {blogs.map((item, index) => {
-          return (
-            <div
-            key={item.id}
-              className={styles.moreCard}
-              onClick={() => {
-                router.push(`/blog/${item.id}`);
-              }}
+        <h2 className={styles.heading}>
+          Read our blogs for some MONEY-ful insights
+        </h2>
+        <div className={styles.wrapper}>
+          {blogs.map((item, index) => {
+            return (
+              <div
+                key={item.id}
+                className={styles.moreCard}
+                onClick={() => {
+                  router.push(`/blog/${item.id}`);
+                }}
               >
-              <img src={item.img_url} alt="" />
-              <div className={styles.categories}>
-                {item.categories?.split(",").map((cat, index) => {
-                  return <p key={"morecat" + index}>{cat}</p>;
-                })}
-              </div>
+                <img src={item.img_url} alt="" />
+                <div className={styles.categories}>
+                  {item.categories?.split(",").map((cat, index) => {
+                    return <p key={"morecat" + index}>{cat}</p>;
+                  })}
+                </div>
 
-              <div className={styles.title}>{item.title}</div>
-              <div className={styles.content}>
-                {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
-                100
-                  ? getdatafromraw(item.content)
-                      .replace(/<[^>]+>/g, "")
-                      .substring(0, 100) + "..."
-                  : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                <div className={styles.title}>{item.title}</div>
+                {/* <div className={styles.content}>
+                  {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
+                  100
+                    ? getdatafromraw(item.content)
+                        .replace(/<[^>]+>/g, "")
+                        .substring(0, 100) + "..."
+                    : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                </div> */}
+                <div className={styles.time}>
+                  {readingTime(getdatafromraw(item.content))} Minutes Read
+                </div>
               </div>
-              <div className={styles.time}>5 Minutes Read</div>
-            </div>
-          );
-        })}
-         <p className={styles.button} onClick={() => router.push("/blogs")}>
-        Read Now
-      </p>
-      </div>
-    </section>
-
-        </>
+            );
+          })}
+        </div>
+        <div className={styles.mobileWrapper}>
+          <div className={styles.container} style={{ height: height + 20 }}>
+            <AnimatePresence>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={styles.moreCard}
+                onClick={() => {
+                  router.push(`/blog/${blogs[index].id}`);
+                }}
+                id="blogCard"
+              >
+                <img src={blogs[index].img_url} alt="" />
+                <div className={styles.itemContainer}>
+                  <div className={styles.categories}>
+                    {blogs[index].categories?.split(",").map((cat, ind) => {
+                      return <p key={"morecat" + ind}>{cat}</p>;
+                    })}
+                  </div>
+                  <div className={styles.time}>
+                    {readingTime(getdatafromraw(blogs[index].content))} Minutes
+                    Read
+                  </div>
+                </div>
+                <div className={styles.title}>{blogs[index].title}</div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <div className={styles.navbar}>
+            {blogs.map((n, i) => (
+              <div
+                key={"blog-dot-" + i}
+                onClick={() => setIndex(i)}
+                className={`${styles.dot} ${i === index && styles.active}`}
+              ></div>
+            ))}
+          </div>
+        </div>
+        <button className={styles.button} onClick={() => router.push("/blogs")}>
+          Read Now
+        </button>
+      </section>
+    </>
   );
 }
 

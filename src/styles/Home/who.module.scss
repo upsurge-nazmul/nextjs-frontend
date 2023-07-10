@@ -58,17 +58,18 @@
         display: flex;
         align-items: center;
         width: 100%;
-        // min-height: 30vw;
-        // min-width: 30vw;
         border-radius: 100%;
-        // background: white;
         height: 100%;
         margin-bottom: 40px;
         .video {
+          display: block;
           width: 100%;
           min-height: 100px;
           border-radius: 12px;
           height: 40vh;
+        }
+        .mobileVideo {
+          display: none;
         }
         .image {
           width: 100%;
@@ -295,7 +296,15 @@
           z-index: 2;
           margin-bottom: 40px;
           .video {
+            display: none;
             height: 25vh;
+          }
+          .mobileVideo {
+            display: block;
+            width: 100%;
+            min-height: 100px;
+            border-radius: 12px;
+            height: 50vh;
           }
           img {
             width: 100%;
@@ -380,6 +389,12 @@
           z-index: 2;
           height: 65vw;
           margin-bottom: 40px;
+          .video {
+            display: block;
+          }
+          .mobileVideo {
+            display: none;
+          }
           img {
             width: 100%;
             height: 100%;

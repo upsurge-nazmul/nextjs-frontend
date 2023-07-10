@@ -921,13 +921,13 @@
             }
           }
           .title {
-            font-size: 25px;
-            line-height: 35px;
-            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            font-weight: 500;
             transition: all 0.3s ease;
-            color: #4166eb;
             animation: popouttext 0.3s ease;
             text-align: center;
+            color: #505050;
           }
           .description {
             font-weight: 400;
@@ -938,14 +938,15 @@
             margin-top: 10px;
           }
           .more {
-            font-weight: 700;
-            font-size: 12px;
+            font-weight: 400;
+            font-size: 0.9rem;
             line-height: 15px;
             letter-spacing: 0.1em;
-            color: #4166eb;
+            color: #50505090;
             margin-top: 15px;
             text-align: center;
             cursor: pointer;
+            text-transform: capitalize;
           }
           .allsections {
             font-weight: 400;
@@ -978,6 +979,26 @@
             .more {
               color: #17d1bc;
             }
+          }
+        }
+        .dotContainer {
+          width: 100%;
+          margin-top: 1.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: 0.8rem;
+          .dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 100%;
+            cursor: pointer;
+          }
+          .active {
+            background-color: #4166eb;
+          }
+          .inactive {
+            background-color: #50505080;
           }
         }
       }

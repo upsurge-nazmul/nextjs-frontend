@@ -41,7 +41,7 @@ const HighlightsCounter = ({ setshowauth, setauthmode }) => {
           </div>
         ))}
       </div>
-      <div className={styles.buttonContainer}>
+      {/* <div className={styles.buttonContainer}>
         {router.asPath !== "/pricing" && (
           <button
             onClick={() => {
@@ -63,7 +63,7 @@ const HighlightsCounter = ({ setshowauth, setauthmode }) => {
             {userdata ? "Go to dashboard" : "Sign up"}
           </button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

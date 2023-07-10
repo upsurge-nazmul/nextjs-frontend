@@ -1,184 +1,190 @@
 @use "../../styles/variables/colors.scss" as *;
 
 .container {
-  background: $blue;
+  background: #4166ebd4;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 4rem 6rem;
   margin-bottom: 3rem;
-  .leftContainer {
-    width: 35%;
-    .heading {
-      color: #fff;
-      font-size: 2.2em;
-      line-height: 1.4;
-      font-weight: 400;
-    }
-    .button {
-      width: 50%;
-      cursor: pointer;
-      margin-top: 1rem;
-      padding: 0.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      border-radius: 360px;
-      border: 3px solid $green;
-      p {
-        margin-left: 1rem;
-        font-size: 1.2em;
-        font-weight: 500;
-      }
-      svg {
-        padding: 5px;
-        width: 40px;
-        height: 40px;
-        color: #fff;
-        background: $green;
-        border-radius: 360px;
-      }
-    }
+  .heading {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2.2em;
+    line-height: 1.4;
+    font-weight: 600;
   }
-  .rightContainer {
-    width: 65%;
+  .innerContainer {
+    width: 100%;
     display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 3rem;
+    padding: 0 4rem;
+    justify-content: space-between;
     .card {
-      background: #fff;
-      border-radius: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0;
+      .imageContainer {
+        background: #fff;
+        padding: 0.6rem 2.5rem;
+        border-radius: 999999999999999px;
+      }
       p {
         margin-top: 20px;
+        font-size: 1.1em;
+        font-weight: 500;
+        color: #fff;
       }
     }
   }
 }
 
-@media only screen and (max-width: 711px) {
+@media only screen and (max-width: 500px) {
   .container {
-    background: $blue;
+    background: #4166ebd4;
     display: flex;
     flex-direction: column;
-    padding: 2rem 1.2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
     margin-bottom: 3rem;
-    .leftContainer {
-      margin-bottom: 1rem;
+    .heading {
       width: 100%;
-      .heading {
-        color: #fff;
-        font-size: 2.2em;
-        line-height: 1.4;
-        font-weight: 400;
-      }
-      .button {
-        width: 80%;
-        cursor: pointer;
-        margin-top: 1rem;
-        padding: 0.2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #fff;
-        border-radius: 360px;
-        border: 3px solid $green;
-        p {
-          margin-left: 1rem;
-          font-size: 1.2em;
-          font-weight: 500;
-        }
-        svg {
-          padding: 5px;
-          width: 40px;
-          height: 40px;
-          color: #fff;
-          background: $green;
-          border-radius: 360px;
-        }
-      }
+      text-align: center;
+      color: #fff;
+      font-size: 2.2em;
+      line-height: 1.4;
+      font-weight: 600;
     }
-    .rightContainer {
+    .innerContainer {
       width: 100%;
-      display: grid;
-      gap: 10px;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 0;
+      justify-content: center;
+      gap: 1rem;
       .card {
-        background: #fff;
-        border-radius: 20px;
+        width: 45%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 0;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .imageContainer {
+          background: #fff;
+          padding: 0.4rem 2rem;
+          border-radius: 999999999999999px;
+        }
         p {
+          width: 100%;
+          text-align: center;
           margin-top: 20px;
+          font-size: 1.1em;
+          font-weight: 500;
+          color: #fff;
         }
       }
     }
   }
 }
 
-@media (min-width: 712px) and (max-width: 1024px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .container {
-    background: $blue;
+    background: #4166ebd4;
     display: flex;
     flex-direction: column;
-    padding: 4rem 6rem;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
     margin-bottom: 3rem;
-    .leftContainer {
+    .heading {
       width: 100%;
-      .heading {
-        color: #fff;
-        font-size: 2.2em;
-        line-height: 1.4;
-        font-weight: 400;
-      }
-      .button {
-        width: 40%;
-        cursor: pointer;
-        margin-top: 1rem;
-        padding: 0.2rem;
+      text-align: center;
+      color: #fff;
+      font-size: 2.2em;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    .innerContainer {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 0;
+      justify-content: center;
+      row-gap: 2rem;
+      column-gap: 1rem;
+      .card {
+        width: 30%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
-        background: #fff;
-        border-radius: 360px;
-        border: 3px solid $green;
-        p {
-          margin-left: 1rem;
-          font-size: 1.2em;
-          font-weight: 500;
+        .imageContainer {
+          background: #fff;
+          padding: 0.4rem 2rem;
+          border-radius: 999999999999999px;
         }
-        svg {
-          padding: 5px;
-          width: 40px;
-          height: 40px;
+        p {
+          width: 100%;
+          text-align: center;
+          margin-top: 20px;
+          font-size: 1.1em;
+          font-weight: 500;
           color: #fff;
-          background: $green;
-          border-radius: 360px;
         }
       }
     }
-    .rightContainer {
-      margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    background: #4166ebd4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    .heading {
       width: 100%;
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      text-align: center;
+      color: #fff;
+      font-size: 2.2em;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    .innerContainer {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 0;
+      justify-content: center;
+      gap: 1rem;
       .card {
-        background: #fff;
-        border-radius: 20px;
+        width: 30%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        padding: 2rem 0;
+        .imageContainer {
+          background: #fff;
+          padding: 0.4rem 2rem;
+          border-radius: 999999999999999px;
+        }
         p {
+          width: 100%;
+          text-align: center;
           margin-top: 20px;
+          font-size: 1.1em;
+          font-weight: 500;
+          color: #fff;
         }
       }
     }

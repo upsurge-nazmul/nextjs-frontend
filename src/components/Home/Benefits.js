@@ -9,43 +9,60 @@ import StarSvg from "../SVGcomponents/StarSvg";
 import BlubSvg from "../SVGcomponents/BulbSvg";
 import Image from "next/image";
 import { MainContext } from "../../context/Main";
+
+const data = [
+  {
+    title: "Kickstart your child’s financial education journey",
+    description:
+      "Financial literacy is a life-skill and the earlier your children start, the easier it will be for them to achieve their financial goals. Through our games, courses and live classes, all designed by experts, children will understand money, saving, investing and entrepreneurship like never before!",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit1+(1).png",
+  },
+  {
+    title: "Learning by doing",
+    description:
+      "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
+    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit2+(1).png",
+  },
+  {
+    title: "Developing entrepreneurial mindsets.",
+    description:
+      "Equip your children with the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
+    img: "https://imgcdn.upsurge.in/images/benefit3.png",
+  },
+  {
+    title: "Earn real rewards",
+    description:
+      "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
+    img: "https://imgcdn.upsurge.in/images/Maskz-Group.png",
+  },
+  {
+    title: "Develop 21st century skills & knowledge",
+    description: `While jobs & roles change, the skills needed to succeed remain the same. Our offerings help children gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
+    img: "https://imgcdn.upsurge.in/images/benefit4.png",
+  },
+];
+
 function Benefits() {
-  const data = [
-    {
-      title: "Kickstart your child’s financial education journey",
-      description:
-        "Financial literacy is a life-skill and the earlier your children start, the easier it will be for them to achieve their financial goals. Through our games, courses and live classes, all designed by experts, children will understand money, saving, investing and entrepreneurship like never before!",
-      img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit1+(1).png",
-    },
-    {
-      title: "Learning by doing",
-      description:
-        "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
-      img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit2+(1).png",
-    },
-    {
-      title: "Developing entrepreneurial mindsets.",
-      description:
-        "Equip your children with the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
-      img: "https://imgcdn.upsurge.in/images/benefit3.png",
-    },
-    {
-      title: "Earn real rewards",
-      description:
-        "As adults, when we do any job well, we get rewarded. Then why should it be any different for children? Students get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
-      img: "https://imgcdn.upsurge.in/images/Maskz-Group.png",
-    },
-    {
-      title: "Develop 21st century skills & knowledge",
-      description: `While jobs & roles change, the skills needed to succeed remain the same. Our offerings help children gain confidence & excel by developing their critical & analytical thinking and problem-solving skills.`,
-      img: "https://imgcdn.upsurge.in/images/benefit4.png",
-    },
-  ];
   const [scroll, setscroll] = useState(150);
   const [currentSection, setcurrentSection] = useState(0);
+  const [timeout, settimeout] = useState(true);
   const [sections, setsections] = useState([]);
+  const [index, setIndex] = useState(0);
   const router = useRouter();
   const { theme } = useContext(MainContext);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIndex((prev) => {
+        if (prev === data.length - 1) {
+          return 0;
+        }
+        return ++prev;
+      });
+    }, 4000);
+    return () => clearInterval(intervalId);
+  }, [index]);
+
   useEffect(() => {
     let sections = document.getElementsByClassName("imgsections");
     if (sections.length > 0) {
@@ -54,6 +71,7 @@ function Benefits() {
       console.log(Array.from(sections));
     }
   }, []);
+
   function isInViewport(el) {
     var top = el.offsetTop;
     var left = el.offsetLeft;
@@ -125,69 +143,80 @@ function Benefits() {
     >
       <div className={styles.main}>
         <div className={styles.mobile}>
-                 <h2
-                 className={styles.title}
-                 style={{
-                     color:"#4166EB", fontSize:"36px",marginBottom:"15px"
-                 }}
-                 >Why upsurge?
-            </h2>
-          {data.map((item, index) => {
-            return (
-              <div className={styles.container} key={"mobilecontainer" + index}>
-                <h3 className={styles.title}>{item.title}</h3>
-                <div className={styles.imgwrapper}>
-                  {index === 0 ? (
-                    <>
-                      <IntroThunderSvg className={styles.thunder} />
-                      <Dollar className={styles.dollar} />
-                    </>
-                  ) : index === 1 || index === 3 ? (
-                    <StarSvg className={styles.thunder} />
-                  ) : (
-                    <BlubSvg className={styles.thunder} />
-                  )}
-                  <div className={styles.lb1}></div>
-                  <div className={styles.lb2}></div>
-                  <div className={styles.lb3}></div>
-                  <div className={styles.lb4}></div>
-                  <div className={styles.wrap}>
-                    <Image
-                      src={item.img}
-                      alt=""
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
+          <h2
+            className={styles.title}
+            style={{
+              color: "#000000",
+              fontSize: "36px",
+              marginBottom: "15px",
+            }}
+          >
+            Why upsurge?
+          </h2>
+          <div className={styles.mobileContainer}>
+            <div key={index} className={styles.container} id="benefit">
+              <div className={styles.imgwrapper}>
+                {index === 0 ? (
+                  <>
+                    <IntroThunderSvg className={styles.thunder} />
+                    <Dollar className={styles.dollar} />
+                  </>
+                ) : index === 1 || index === 3 ? (
+                  <StarSvg className={styles.thunder} />
+                ) : (
+                  <BlubSvg className={styles.thunder} />
+                )}
+                <div className={styles.lb1}></div>
+                <div className={styles.lb2}></div>
+                <div className={styles.lb3}></div>
+                <div className={styles.lb4}></div>
+                <div className={styles.wrap}>
+                  <Image
+                    src={data[index].img}
+                    alt=""
+                    layout="fill"
+                    objectFit="contain"
+                  />
                 </div>
-
-                <p className={styles.description}>{item.description}</p>
-                <p
-                  className={styles.more}
-                  onClick={() => {
-                    if (index === 0) {
-                      router.push("/benefits/financial");
-                    } else if (index === 1) {
-                      router.push("/benefits/experimential");
-                    } else if (index === 2) {
-                      router.push("/benefits/entrepreneurship");
-                    } else if (index === 3) {
-                      router.push("/benefits/rewards");
-                    } else {
-                      router.push("/benefits/rewards");
-                    }
-                  }}
-                >{`LEARN MORE ->`}</p>
               </div>
-            );
-          })}
+
+              <h3 className={styles.title}>{data[index].title}</h3>
+              <p
+                className={styles.more}
+                onClick={() => {
+                  if (index === 0) {
+                    router.push("/benefits/financial");
+                  } else if (index === 1) {
+                    router.push("/benefits/experimential");
+                  } else if (index === 2) {
+                    router.push("/benefits/entrepreneurship");
+                  } else if (index === 3) {
+                    router.push("/benefits/rewards");
+                  } else {
+                    router.push("/benefits/rewards");
+                  }
+                }}
+              >{`Learn More`}</p>
+            </div>
+            <div className={styles.dotContainer}>
+              {data.map((_, i) => (
+                <div
+                  key={"dot-" + i}
+                  onClick={() => setIndex(i)}
+                  className={`${
+                    index === i ? styles.active : styles.inactive
+                  } ${styles.dot}`}
+                ></div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className={styles.left}>
           <div id="movingcontainer" className={styles.container}>
-            <div className={styles.prop1} />
+            {/* <div className={styles.prop1} />
             <div className={styles.prop2} />
             <div className={styles.prop3} />
-            <div className={styles.prop4} />
+            <div className={styles.prop4} /> */}
             <h2
               className={styles.title}
               style={{
@@ -269,8 +298,6 @@ function Benefits() {
                 >{`LEARN MORE ->`}</p>
               </>
             }
-
-            <Curve1 className={styles.curve} />
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>

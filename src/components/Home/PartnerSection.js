@@ -40,7 +40,7 @@ export default function PartnerSection({ dashboard, nomargin }) {
             router.push("/benefits/rewards");
           }}
         >
-          Not over yet! You get to earn rewards everyday 
+          Not over yet! You get to earn rewards everyday
         </div>
         <div
           className={`${styles.subheading} ${dashboard && styles.hidecursor}`}
@@ -78,6 +78,46 @@ export default function PartnerSection({ dashboard, nomargin }) {
               />
             );
           })}
+        </div>
+        <div className={styles.marqueeWrapper}>
+          <div className={styles.marquee}>
+            {rewards.map((item, index) => {
+              return (
+                <img
+                  onClick={() => {
+                    if (dashboard) {
+                      return;
+                    }
+                    router.push("/benefits/rewards");
+                  }}
+                  key={"partner" + index}
+                  className={`${styles.img} ${dashboard && styles.hidecursor}`}
+                  src={item}
+                  alt="Reward partner"
+                  loading="lazy"
+                />
+              );
+            })}
+          </div>
+          <div className={styles.marquee}>
+            {rewards.map((item, index) => {
+              return (
+                <img
+                  onClick={() => {
+                    if (dashboard) {
+                      return;
+                    }
+                    router.push("/benefits/rewards");
+                  }}
+                  key={"partner" + index}
+                  className={`${styles.img} ${dashboard && styles.hidecursor}`}
+                  src={item}
+                  alt="Reward partner"
+                  loading="lazy"
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

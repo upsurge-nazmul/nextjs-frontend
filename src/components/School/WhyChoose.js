@@ -1,14 +1,14 @@
-import { useEffect } from "react";
 import styles from "../../styles/schools/whyChoose.module.scss";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
+import EllipseOne from "./EllipseOne";
+import EllipseTwo from "./EllipseTwo";
+import { AnimatePresence, motion } from "framer-motion";
 
 const sliderData = [
   {
     childImage: "https://imgcdn.upsurge.in/images/schools/c1.png",
-    bgImages: [
-      "https://imgcdn.upsurge.in/images/schools/c1-ellipse-1.png",
-      "https://imgcdn.upsurge.in/images/schools/c1-ellipse-2.png",
-    ],
+    // childImage: "/images/school/school-child-1.png",
+    color: "#FDCC03",
     points: [
       "500+ topics",
       "School level customization",
@@ -17,10 +17,8 @@ const sliderData = [
   },
   {
     childImage: "https://imgcdn.upsurge.in/images/schools/c2.png",
-    bgImages: [
-      "https://imgcdn.upsurge.in/images/schools/c2-ellipse-1.png",
-      "https://imgcdn.upsurge.in/images/schools/c2-ellipse-2.png",
-    ],
+    // childImage: "/images/school/school-child-2.png",
+    color: "#17D1BC",
     points: [
       "Structured curriculum",
       "Age appropriate from elementary to high school",
@@ -28,11 +26,9 @@ const sliderData = [
     ],
   },
   {
-    childImage: "https://imgcdn.upsurge.in/images/schools/c3.png",
-    bgImages: [
-      "https://imgcdn.upsurge.in/images/schools/c3-ellipse-1.png",
-      "https://imgcdn.upsurge.in/images/schools/c3-ellipse-2.png",
-    ],
+    childImage: "https://imgcdn.upsurge.in/images/schools/c4.png",
+    // childImage: "/images/school/school-child-3.png",
+    color: "#4166EB",
     points: [
       "Learning made fun",
       "Hands on activity based workshops",
@@ -40,11 +36,9 @@ const sliderData = [
     ],
   },
   {
-    childImage: "https://imgcdn.upsurge.in/images/schools/c4.png",
-    bgImages: [
-      "https://imgcdn.upsurge.in/images/schools/c4-ellipse-1.png",
-      "https://imgcdn.upsurge.in/images/schools/c4-ellipse-2.png",
-    ],
+    childImage: "https://imgcdn.upsurge.in/images/schools/c3.png",
+    // childImage: "/images/school/school-child-4.png",
+    color: "#FF6263",
     points: [
       "NEP Inclusive",
       "NEP mandates FL and Entrepreneurship",
@@ -52,88 +46,79 @@ const sliderData = [
       "Competitions and Quests",
       "Teacher training workshops",
       "Workshop on hands on training to the students",
-      "Easy learning sessions",
+      // "Easy learning sessions",
     ],
   },
 ];
 
 const WhyChoose = () => {
-  const imgList = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(2);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (currentSlide === sliderData.length - 1) {
+        setCurrentSlide(0);
+      } else {
+        setCurrentSlide(currentSlide + 1);
+      }
+    }, 5000);
+    return () => clearInterval(id);
+  }, [currentSlide]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.headingContainer}>
-        <div className={`${styles.doodle} ${styles.dl1}`} />
-        <div className={`${styles.doodle} ${styles.dl2}`} />
-        <div className={`${styles.hc1}`} />
-        <div className={`${styles.hc2}`} />
-        <h2 className={styles.heading}>Why choose upsurge</h2>
-      </div>
+      <h2 className={styles.heading}>Why choose upsurge</h2>
       <div className={styles.sliderWrapper}>
-        <div className={styles.c1}></div>
-        <div className={styles.c2}></div>
-        <button
-          onClick={() => {
-            imgList.current.scrollBy(-600, 0);
-          }}
-          className={`${styles.button} ${styles.scrollLeftButton}`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+        <AnimatePresence>
+          <motion.div
+            key={currentSlide}
+            className={`${styles.sliderContainer}`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-        </button>
-        <div ref={imgList} className={`${styles.sliderContainer}`}>
-          {sliderData.map((data, index) => (
-            <div key={"slide-card" + index} className={styles.card}>
+            <div className={styles.card}>
               <div className={styles.cardWrapper}>
+                {sliderData[currentSlide].points.reverse().map((item, ind) => (
+                  <motion.div
+                    initial={{ scale: 0.2 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0.2 }}
+                    duration={{ duration: 1.5 }}
+                    key={"points-" + ind}
+                    className={styles.cloud}
+                  >
+                    <p>{item}</p>
+                  </motion.div>
+                ))}
                 <div className={styles.imageContainer}>
-                  <img src={data.childImage} className={styles.image} alt=" " />
-                  <img src={data.bgImages[1]} className={styles.ellipse1} alt=" " />
-                  <img src={data.bgImages[0]} className={styles.ellipse1} alt=" " />
-                </div>
-                <div className={styles.textContainer}>
-                  <ul>
-                    {data.points.map((point, i) => (
-                      <li key={"point" + index + i}>{point}</li>
-                    ))}
-                  </ul>
+                  <motion.img
+                    inherit={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    src={sliderData[currentSlide].childImage}
+                    className={styles.image}
+                    alt=""
+                  />
+                  <EllipseOne
+                    color={sliderData[currentSlide].color}
+                    className={styles.ellipse}
+                  />
+                  <EllipseTwo
+                    color={sliderData[currentSlide].color + "70"}
+                    className={`${styles.ellipse} ${styles.secondEllipse}`}
+                  />
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        <button
-          onClick={() => {
-            imgList.current.scrollBy(600, 0);
-          }}
-          className={`${styles.button} ${styles.scrollRightButton}`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className={styles.nav}>
+        {sliderData.map((_, i) => (
+          <div
+            key={"nav-dot-" + i}
+            onClick={() => setCurrentSlide(i)}
+            className={`${styles.dot} ${i === currentSlide && styles.active}`}
+          ></div>
+        ))}
       </div>
     </div>
   );

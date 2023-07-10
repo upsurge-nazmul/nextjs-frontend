@@ -5,26 +5,18 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  margin-top: 6rem;
   margin-bottom: 3rem;
-  .headerContainer {
-    width: 100%;
-    border-radius: 20px;
-    background-color: $red;
-    .heading {
-      color: #fff;
-      font-size: 2.2em;
-      line-height: 1.4;
-      font-weight: 400;
-      margin: 0 auto;
-      padding: 0.4rem 0;
-      text-align: center;
-    }
+  .heading {
+    font-size: 2.8em;
+    line-height: 1.5;
+    font-weight: 700;
+    text-align: center;
   }
   .contentWrapper {
+    --blur-size: 36px;
     position: relative;
-    margin: 1rem 0;
-    padding: 4rem 0;
-    background: #364643;
+    padding: 3rem 0;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -37,10 +29,12 @@
     }
     .dl1 {
       left: 10%;
-      top: 1rem;
-      width: 400px;
-      height: 400px;
+      top: -2rem;
+      width: 300px;
+      height: 300px;
       background: $red;
+      opacity: 0.6;
+      filter: blur(var(--blur-size));
     }
     .dl2 {
       right: 10%;
@@ -48,55 +42,124 @@
       width: 400px;
       height: 400px;
       background: $green;
+      opacity: 0.6;
+      filter: blur(var(--blur-size));
     }
 
     .dl3 {
       left: 10%;
-      bottom: 30%;
-      width: 400px;
-      height: 400px;
+      bottom: 40%;
+      width: 300px;
+      height: 300px;
+      opacity: 0.6;
       background: $yellow;
+      filter: blur(var(--blur-size));
     }
     .dl4 {
       right: 5%;
-      bottom: 2rem;
-      width: 300px;
-      height: 300px;
+      bottom: -2rem;
+      width: 220px;
+      height: 220px;
       background: $blue;
+      opacity: 0.6;
+      filter: blur(var(--blur-size));
     }
     .teacherWrapper {
       padding: 1.5rem;
-      width: 95%;
+      width: 100%;
+      box-shadow: #4166eb30 0px 2px 10px 0px;
       background-color: #fff;
-      border-radius: 20px;
       position: relative;
       overflow: hidden;
       .subHeading {
         font-size: 1.8em;
         line-height: 1.2;
-        font-weight: 400;
+        font-weight: 500;
         width: 100%;
         text-align: center;
-        margin: 0.6rem auto;
+        margin: 0.8rem auto;
+        color: #555;
       }
       .carouselContainer {
         position: relative;
-        overflow: hidden;
+        padding: 1rem 12rem;
+        .button {
+          padding: 0.6rem;
+          border-radius: 99999999999999px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          border: #fff;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          cursor: pointer;
+          svg {
+            width: 2rem;
+            height: 2rem;
+            color: $blue;
+          }
+        }
+        .leftButton {
+          position: absolute;
+          top: 50%;
+          left: 10rem;
+          transform: translateY(-50%);
+          display: none;
+        }
+        .rightButton {
+          position: absolute;
+          top: 50%;
+          right: 10rem;
+          transform: translateY(-50%);
+        }
         .carousel {
-          height: 60vh;
-          width: 100%;
-          cursor: grab;
-          .innerCarousel {
-            display: flex;
-
-            .imageWrapper {
-              min-height: 40rem;
-              min-width: 30rem;
-              padding: 10px;
-              pointer-events: none;
-              .image {
+          display: flex;
+          align-items: center;
+          column-gap: 4rem;
+          overflow-x: auto;
+          scrollbar-width: none;
+          scroll-behavior: smooth;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          ::-webkit-scrollbar {
+            width: 0; /* Remove scrollbar space */
+            background: transparent; /* Optional: just make scrollbar invisible */
+          }
+          .videoWrapper {
+            width: fit-content;
+            padding: 0;
+            .videoContainer {
+              position: relative;
+              overflow: hidden;
+              border-radius: 20px;
+              video {
+                height: 20rem;
+                object-fit: fill;
+              }
+              .playButtonWrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
+                background-color: #00000030;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .name {
+                  position: absolute;
+                  bottom: 0.5rem;
+                  right: 0.5rem;
+                  color: #fff;
+                  font-size: 1em;
+                }
+                .playGif {
+                  fill: #fff;
+                  color: #fff;
+                  width: 3rem;
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -106,35 +169,100 @@
     .studentWrapper {
       margin-top: 4rem;
       padding: 1.5rem;
-      width: 95%;
+      width: 100%;
+      box-shadow: #4166eb30 0px 2px 10px 0px;
       background-color: #fff;
-      border-radius: 20px;
       position: relative;
       overflow: hidden;
       .subHeading {
         font-size: 1.8em;
         line-height: 1.2;
-        font-weight: 400;
+        font-weight: 500;
         width: 100%;
         text-align: center;
-        margin: 0.6rem auto;
+        margin: 0.8rem auto;
+        color: #555;
       }
       .carouselContainer {
         position: relative;
-        overflow: hidden;
+        padding: 1rem 12rem;
+        .button {
+          padding: 0.6rem;
+          border-radius: 99999999999999px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          border: #fff;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          cursor: pointer;
+          svg {
+            width: 2rem;
+            height: 2rem;
+            color: $blue;
+          }
+        }
+        .leftButton {
+          position: absolute;
+          top: 50%;
+          left: 10rem;
+          transform: translateY(-50%);
+          display: none;
+        }
+        .rightButton {
+          position: absolute;
+          top: 50%;
+          right: 10rem;
+          transform: translateY(-50%);
+        }
         .carousel {
-          width: 100%;
-          cursor: grab;
-          .innerCarousel {
-            display: flex;
-            .imageWrapper {
-              min-height: 40rem;
-              min-width: 30rem;
-              padding: 10px;
-              pointer-events: none;
-              .image {
+          display: flex;
+          align-items: center;
+          column-gap: 4rem;
+          overflow-x: auto;
+          scrollbar-width: none;
+          scroll-behavior: smooth;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          ::-webkit-scrollbar {
+            width: 0; /* Remove scrollbar space */
+            background: transparent; /* Optional: just make scrollbar invisible */
+          }
+          .videoWrapper {
+            width: fit-content;
+            padding: 0;
+            .videoContainer {
+              position: relative;
+              overflow: hidden;
+              border-radius: 20px;
+              video {
+                height: 20rem;
+                object-fit: fill;
+              }
+              .playButtonWrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
+                background-color: #00000030;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .name {
+                  position: absolute;
+                  bottom: 0.5rem;
+                  right: 0.5rem;
+                  color: #fff;
+                  font-size: 1em;
+                }
+                .playGif {
+                  fill: #fff;
+                  color: #fff;
+                  width: 3rem;
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -144,32 +272,568 @@
   }
 }
 
-@media only screen and (max-width: 711px) {
+@media only screen and (max-width: 500px) {
   .container {
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
+    margin-top: 6rem;
     margin-bottom: 3rem;
-    .headerContainer {
-      width: 100%;
-      border-radius: 20px;
-      background-color: $red;
-      .heading {
-        color: #fff;
-        font-size: 2.2em;
-        line-height: 1.4;
-        font-weight: 400;
-        margin: 0 auto;
-        padding: 0.4rem 0;
-        text-align: center;
-      }
+    .heading {
+      font-size: 2.8em;
+      line-height: 1.5;
+      font-weight: 700;
+      text-align: center;
     }
     .contentWrapper {
+      --blur-size: 36px;
       position: relative;
-      margin: 1rem 0;
-      padding: 4rem 0;
-      background: #364643;
+      padding: 3rem 0;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .doodle {
+        border-radius: 100%;
+        position: absolute;
+      }
+      .dl1 {
+        left: 10%;
+        top: -2rem;
+        width: 300px;
+        height: 300px;
+        background: $red;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .dl2 {
+        right: 10%;
+        bottom: 50%;
+        width: 400px;
+        height: 400px;
+        background: $green;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .dl3 {
+        left: 10%;
+        bottom: 40%;
+        width: 300px;
+        height: 300px;
+        opacity: 0.6;
+        background: $yellow;
+        filter: blur(var(--blur-size));
+      }
+      .dl4 {
+        right: 5%;
+        bottom: -2rem;
+        width: 220px;
+        height: 220px;
+        background: $blue;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .teacherWrapper {
+        padding: 1.5rem;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        .subHeading {
+          font-size: 1.8em;
+          line-height: 1.2;
+          font-weight: 500;
+          width: 100%;
+          text-align: center;
+          margin: 0.8rem auto;
+          color: #555;
+        }
+        .carouselContainer {
+          position: relative;
+          padding: 1rem;
+          .button {
+            padding: 0.4rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+          .carousel {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .studentWrapper {
+        margin-top: 4rem;
+        padding: 1.5rem;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        .subHeading {
+          font-size: 1.8em;
+          line-height: 1.2;
+          font-weight: 500;
+          width: 100%;
+          text-align: center;
+          margin: 0.8rem auto;
+          color: #555;
+        }
+        .carouselContainer {
+          position: relative;
+          padding: 1rem;
+          .button {
+            padding: 0.4rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+          .carousel {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    .heading {
+      font-size: 2.8em;
+      line-height: 1.5;
+      font-weight: 700;
+      text-align: center;
+    }
+    .contentWrapper {
+      --blur-size: 36px;
+      position: relative;
+      padding: 3rem 0;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .doodle {
+        border-radius: 100%;
+        position: absolute;
+      }
+      .dl1 {
+        left: 10%;
+        top: -2rem;
+        width: 300px;
+        height: 300px;
+        background: $red;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .dl2 {
+        right: 10%;
+        bottom: 50%;
+        width: 400px;
+        height: 400px;
+        background: $green;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .dl3 {
+        left: 10%;
+        bottom: 40%;
+        width: 300px;
+        height: 300px;
+        opacity: 0.6;
+        background: $yellow;
+        filter: blur(var(--blur-size));
+      }
+      .dl4 {
+        right: 5%;
+        bottom: -2rem;
+        width: 220px;
+        height: 220px;
+        background: $blue;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
+      }
+      .teacherWrapper {
+        padding: 1.5rem;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        .subHeading {
+          font-size: 1.8em;
+          line-height: 1.2;
+          font-weight: 500;
+          width: 100%;
+          text-align: center;
+          margin: 0.8rem auto;
+          color: #555;
+        }
+        .carouselContainer {
+          position: relative;
+          padding: 1rem;
+          .button {
+            padding: 0.4rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+          .carousel {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .studentWrapper {
+        margin-top: 4rem;
+        padding: 1.5rem;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        .subHeading {
+          font-size: 1.8em;
+          line-height: 1.2;
+          font-weight: 500;
+          width: 100%;
+          text-align: center;
+          margin: 0.8rem auto;
+          color: #555;
+        }
+        .carouselContainer {
+          position: relative;
+          padding: 1rem;
+          .button {
+            padding: 0.4rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+          .carousel {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    .heading {
+      font-size: 2.8em;
+      line-height: 1.5;
+      font-weight: 700;
+      text-align: center;
+    }
+    .contentWrapper {
+      --blur-size: 36px;
+      position: relative;
+      padding: 3rem 0;
       border-radius: 20px;
       display: flex;
       flex-direction: column;
@@ -182,65 +846,137 @@
       }
       .dl1 {
         left: 10%;
-        top: 1rem;
-        width: 250px;
-        height: 250px;
+        top: -2rem;
+        width: 300px;
+        height: 300px;
         background: $red;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
       }
       .dl2 {
         right: 10%;
-        bottom: 55%;
-        width: 250px;
-        height: 250px;
+        bottom: 50%;
+        width: 400px;
+        height: 400px;
         background: $green;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
       }
 
       .dl3 {
-        left: 5%;
+        left: 10%;
         bottom: 40%;
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
+        opacity: 0.6;
         background: $yellow;
+        filter: blur(var(--blur-size));
       }
       .dl4 {
         right: 5%;
-        bottom: 2rem;
-        width: 300px;
-        height: 300px;
+        bottom: -2rem;
+        width: 220px;
+        height: 220px;
         background: $blue;
+        opacity: 0.6;
+        filter: blur(var(--blur-size));
       }
       .teacherWrapper {
         padding: 1.5rem;
-        width: 95%;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
         background-color: #fff;
-        border-radius: 20px;
         position: relative;
         overflow: hidden;
         .subHeading {
           font-size: 1.8em;
           line-height: 1.2;
-          font-weight: 400;
+          font-weight: 500;
           width: 100%;
           text-align: center;
-          margin: 0.6rem auto;
+          margin: 0.8rem auto;
+          color: #555;
         }
         .carouselContainer {
           position: relative;
-          overflow: hidden;
+          padding: 1rem 12rem;
+          .button {
+            padding: 0.6rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 2rem;
+              height: 2rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 10rem;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 10rem;
+            transform: translateY(-50%);
+          }
           .carousel {
-            height: 60vh;
-            width: 100%;
-            cursor: grab;
-            .innerCarousel {
-              display: flex;
-              .imageWrapper {
-                min-height: 40rem;
-                min-width: 30rem;
-                padding: 5px;
-                pointer-events: none;
-                .image {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
                   width: 100%;
                   height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
                 }
               }
             }
@@ -250,35 +986,100 @@
       .studentWrapper {
         margin-top: 4rem;
         padding: 1.5rem;
-        width: 95%;
+        width: 100%;
+        box-shadow: #4166eb30 0px 2px 10px 0px;
         background-color: #fff;
-        border-radius: 20px;
         position: relative;
         overflow: hidden;
         .subHeading {
           font-size: 1.8em;
           line-height: 1.2;
-          font-weight: 400;
+          font-weight: 500;
           width: 100%;
           text-align: center;
-          margin: 0.6rem auto;
+          margin: 0.8rem auto;
+          color: #555;
         }
         .carouselContainer {
           position: relative;
-          overflow: hidden;
+          padding: 1rem 12rem;
+          .button {
+            padding: 0.6rem;
+            border-radius: 99999999999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            cursor: pointer;
+            svg {
+              width: 2rem;
+              height: 2rem;
+              color: $blue;
+            }
+          }
+          .leftButton {
+            position: absolute;
+            top: 50%;
+            left: 10rem;
+            transform: translateY(-50%);
+            display: none;
+          }
+          .rightButton {
+            position: absolute;
+            top: 50%;
+            right: 10rem;
+            transform: translateY(-50%);
+          }
           .carousel {
-            width: 100%;
-            cursor: grab;
-            .innerCarousel {
-              display: flex;
-              .imageWrapper {
-                min-height: 40rem;
-                min-width: 30rem;
-                padding: 5px;
-                pointer-events: none;
-                .image {
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-webkit-scrollbar {
+              width: 0; /* Remove scrollbar space */
+              background: transparent; /* Optional: just make scrollbar invisible */
+            }
+            .videoWrapper {
+              width: fit-content;
+              padding: 0;
+              .videoContainer {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                video {
+                  height: 20rem;
+                  object-fit: fill;
+                }
+                .playButtonWrapper {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
                   width: 100%;
                   height: 100%;
+                  background-color: #00000030;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  .name {
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    color: #fff;
+                    font-size: 1em;
+                  }
+                  .playGif {
+                    fill: #fff;
+                    color: #fff;
+                    width: 3rem;
+                    cursor: pointer;
+                  }
                 }
               }
             }
@@ -287,7 +1088,4 @@
       }
     }
   }
-}
-
-@media (min-width: 712px) and (max-width: 1024px) {
 }

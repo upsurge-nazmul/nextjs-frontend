@@ -57,6 +57,7 @@ const PartnerSchoolSection = () => {
           </div>
         ))}
       </div>
+      <button className={styles.button}>Register Now</button>
     </div>
   );
 };

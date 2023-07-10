@@ -6,13 +6,10 @@ import Header from "../Header/Header";
 import LeftPanel from "../LeftPanel";
 import AboutSection from "./AboutSection";
 import ProductSection from "./ProductSection";
-import TryUpsurge from "./TryUpsurge";
 import BlogsSection from "./BlogsSection";
-import JoinUs from "./JoinUs";
 import Footer from "./Footer";
 import Intro from "./Intro";
 import Who from "./Who";
-import Values from "./Values";
 import Benefits from "./Benefits";
 import JasperSection from "./JasperSection";
 import PartnerSection from "./PartnerSection";
@@ -35,7 +32,7 @@ import GameView from "../Games/GameView";
 import WebglView from "../WebglView";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
-function Home({ page = "", showNav = true }) {
+function Home({ page = "", showNav = true, blog_data }) {
   const gamesRef = useRef();
   const kqRef = useRef();
   const { userdata } = useContext(MainContext);
@@ -290,34 +287,24 @@ function Home({ page = "", showNav = true }) {
           setshowpopup={setshowpopup}
         />
       )}
-      <Benefits />
       <HighlightsCounter setshowauth={setshowauth} setauthmode={setauthmode} />
+      <Benefits />
       <Who />
-      <PRCoverage />
-      <Values
+      {/* <Values
         setshowauth={setshowauth}
         setauthmode={setauthmode}
         insidebenefits
-      />
+      /> */}
       {/* <How /> */}
       <ProductSection setauthmode={setauthmode} setshowauth={setshowauth} />
+      <PRCoverage />
+      <TestiMonial />
       <div ref={gamesRef}>
         <PartnerSection />
       </div>
-      <TryUpsurge
-        content={"Try upsurge now"}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
-      />
       <JasperSection />
       {/* <AboutSection /> */}
-      <BlogsSection />
-      <TestiMonial />
-      <TryUpsurge
-        content={"Try upsurge today!"}
-        setauthmode={setauthmode}
-        setshowauth={setshowauth}
-      />
+      <BlogsSection blogData={blog_data} />
       <FaqSection />
       <div ref={kqRef}>
         <JoinUs
