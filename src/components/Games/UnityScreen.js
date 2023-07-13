@@ -66,8 +66,8 @@ export default function UnityScreen({
   const handleOnSceneLoaded = () => {
     if(isLoaded)
     {
-      console.log("Scene Loaded");
-      sendMessage("GameData", "SetUserID", userdata?.user_id);
+      const json = JSON.stringify({ userid: userdata?.user_id, token: userdata?.token });
+      sendMessage("GameData", "SetUserID",json);
     }
     
   };
