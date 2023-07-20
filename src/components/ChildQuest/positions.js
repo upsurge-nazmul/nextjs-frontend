@@ -17,6 +17,7 @@ export const positions = {
       right: "35%",
     },
   ],
+  // 6 positions for quest
   quest1: [
     {
       bottom: "23%",
@@ -43,6 +44,7 @@ export const positions = {
       right: "10%",
     },
   ],
+  // 6 positions for quest
   quest2: [
     {
       bottom: "10%",
@@ -69,6 +71,7 @@ export const positions = {
       right: "10%",
     },
   ],
+  // 4 positions for quest
   quest3: [
     {
       bottom: "3%",
@@ -87,6 +90,7 @@ export const positions = {
       right: "10%",
     },
   ],
+  // 8 positions for quest
   quest4: [
     {
       bottom: "12%",
@@ -121,32 +125,151 @@ export const positions = {
       right: "14%",
     },
   ],
+  // 6 positions for quest
   quest5: [
     {
-      bottom: "18%",
-      right: "50%",
-    },
-    {
-      bottom: "31%",
-      right: "77%",
-    },
-    {
-      bottom: "74%",
-      right: "77%",
-    },
-    {
-      bottom: "69%",
-      right: "38%",
+      bottom: "12%",
+      right: "49%",
     },
     {
       bottom: "32%",
+      right: "77%",
+    },
+    {
+      bottom: "49%",
+      right: "73%",
+    },
+    {
+      bottom: "72%",
+      right: "83%",
+    },
+    {
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
       right: "8%",
     },
     {
-      bottom: "85%",
-      right: "13%",
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
+      right: "14%",
     },
   ],
+  // 6 positions for quest
+  quest6: [
+    {
+      bottom: "12%",
+      right: "49%",
+    },
+    {
+      bottom: "32%",
+      right: "77%",
+    },
+    {
+      bottom: "49%",
+      right: "73%",
+    },
+    {
+      bottom: "72%",
+      right: "83%",
+    },
+    {
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
+      right: "8%",
+    },
+    {
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
+      right: "14%",
+    },
+  ],
+  // 6 positions for quest
+  quest7: [
+    {
+      bottom: "12%",
+      right: "49%",
+    },
+    {
+      bottom: "32%",
+      right: "77%",
+    },
+    {
+      bottom: "49%",
+      right: "73%",
+    },
+    {
+      bottom: "72%",
+      right: "83%",
+    },
+    {
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
+      right: "8%",
+    },
+    {
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
+      right: "14%",
+    },
+  ],
+  // 4 positions for quest
+  quest8: [
+    {
+      bottom: "3%",
+      right: "47%",
+    },
+    {
+      bottom: "43%",
+      right: "74%",
+    },
+    {
+      bottom: "68%",
+      right: "38%",
+    },
+    {
+      bottom: "30%",
+      right: "10%",
+    },
+  ],
+  // 4 positions for quest
+  quest9: [
+    {
+      bottom: "3%",
+      right: "47%",
+    },
+    {
+      bottom: "43%",
+      right: "74%",
+    },
+    {
+      bottom: "68%",
+      right: "38%",
+    },
+    {
+      bottom: "30%",
+      right: "10%",
+    },
+  ],
+    
+    
   quest10: [
     {
       bottom: "13%",
