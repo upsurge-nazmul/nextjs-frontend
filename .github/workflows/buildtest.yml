@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install --legacy-peer-deps
+      - run: npm ci
       - run: echo "${{ secrets.FRONTEND_DEVBUILD_CONFIG }}" | base64 -d > config.js | npm run devbuild
       - run: npm run lint
       - name: Update diagram
