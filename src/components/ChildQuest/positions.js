@@ -269,57 +269,116 @@ export const positions = {
     },
   ],
     
-    
+  // 8 positions for quest  
   quest10: [
     {
-      bottom: "13%",
-      right: "51%",
+      bottom: "12%",
+      right: "49%",
     },
     {
-      bottom: "29%",
-      right: "81%",
+      bottom: "32%",
+      right: "77%",
     },
     {
-      bottom: "70%",
-      right: "70%",
+      bottom: "49%",
+      right: "73%",
     },
     {
-      bottom: "70%",
-      right: "38%",
+      bottom: "72%",
+      right: "83%",
     },
     {
-      bottom: "26%",
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
       right: "8%",
     },
     {
-      bottom: "82%",
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
       right: "14%",
     },
   ],
+  // 8 positions for quest
   quest11: [
     {
-      bottom: "13%",
-      right: "51%",
+      bottom: "12%",
+      right: "49%",
     },
     {
-      bottom: "29%",
-      right: "81%",
+      bottom: "32%",
+      right: "77%",
     },
     {
-      bottom: "70%",
-      right: "70%",
+      bottom: "49%",
+      right: "73%",
     },
     {
-      bottom: "70%",
-      right: "38%",
+      bottom: "72%",
+      right: "83%",
     },
     {
-      bottom: "26%",
+      bottom: "68%",
+      right: "39%",
+    },
+    {
+      bottom: "30%",
       right: "8%",
     },
     {
-      bottom: "82%",
+      bottom: "68%",
+      right: "0%",
+    },
+    {
+      bottom: "84%",
       right: "14%",
     },
   ],
+  // 4 positions for quest
+  quest12: [
+    {
+      bottom: "3%",
+      right: "47%",
+    },
+    {
+      bottom: "43%",
+      right: "74%",
+    },
+    {
+      bottom: "68%",
+      right: "38%",
+    },
+    {
+      bottom: "30%",
+      right: "10%",
+    },
+  ],
+  // 4 positions for quest
+  quest13: [
+    {
+      bottom: "3%",
+      right: "47%",
+    },
+    {
+      bottom: "43%",
+      right: "74%",
+    },
+    {
+      bottom: "68%",
+      right: "38%",
+    },
+    {
+      bottom: "30%",
+      right: "10%",
+    },
+  ],
+    
+    
+    
+
 };
