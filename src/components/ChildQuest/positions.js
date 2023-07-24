@@ -125,7 +125,7 @@ export const positions = {
       right: "14%",
     },
   ],
-  // 6 positions for quest
+  // 8 positions for quest
   quest5: [
     {
       bottom: "12%",
@@ -160,7 +160,7 @@ export const positions = {
       right: "14%",
     },
   ],
-  // 6 positions for quest
+  // 8 positions for quest
   quest6: [
     {
       bottom: "12%",
@@ -195,7 +195,7 @@ export const positions = {
       right: "14%",
     },
   ],
-  // 6 positions for quest
+  // 8 positions for quest
   quest7: [
     {
       bottom: "12%",
