@@ -21,7 +21,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - run: echo "${{ secrets.FRONTEND_DEVBUILD_CONFIG }}" | base64 -d > config.js | echo "${{ secrets.FRONTEND_DEVBUILD_FIREBASE }}" | base64 -d > src/firebase.js | npm run devbuild
       - run: npm run lint
-      - name: Update diagram
-        uses: githubocto/repo-visualizer@main
-        with:
-          excluded_paths: "ignore,.github,public,.next,node_modules"
+      ## - name: Update diagram
+      ##  uses: githubocto/repo-visualizer@main
+      ##  with:
+      ##    excluded_paths: "ignore,.github,public,.next,node_modules"
