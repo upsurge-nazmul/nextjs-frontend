@@ -76,16 +76,12 @@ function QuestCard({
             className={styles.cardHeader}
             style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
           >
-            <div className={styles.imageTitle}>
-              <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>
-                {data.title}
-              </p>
-            </div>
+            
             <div className={styles.imageWrapper}>
               <Image
                 src={`/images/kq/${data.questId}.png`}
-                height={"100%"}
-                width={"100%"}
+                height={"200"}
+                width={"200"}
                 alt={data.questId}
                 className={styles.img}
               />
@@ -101,12 +97,19 @@ function QuestCard({
             >
               <p>{data.quest_type}</p>
             </div>
+            <div className={styles.imageTitle}>
+              <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>
+                {data.title}
+              </p>
+            </div>
             {/* <p className={styles.title}>{data?.title || ""}</p> */}
+            
             <p className={styles.detail}>
               {data?.questDescription.length > 70
                 ? data?.questDescription.substring(0, 70) + "..."
                 : data?.questDescription || ""}
             </p>
+
             <p className={styles.info}>{`${data.chapters.length} chapters`}</p>
           </div>
         </div>
