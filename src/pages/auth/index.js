@@ -17,7 +17,6 @@ import styles from "../../styles/privacy/privacy.module.scss";
 
 function MagicAuthPage() {
   const router = useRouter();
-
   const { setSavedUsers, setuserdata, setuser } = useContext(MainContext);
   const [endreached, setendreached] = useState(true);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -27,22 +26,18 @@ function MagicAuthPage() {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
   
-  async function handleSignin( ) {
-    setloading(true);
-    const loginstring_org = router.query.o;
-    const loginstring_hash = router.query.q;
-    const loginstring_id = router.query.i;  
-    console.log("loginstring_org", loginstring_org);
-    console.log("loginstring_hash", loginstring_hash);
-    console.log("loginstring_id", loginstring_id);
+  
+
+  async function handleSignin() {
+    setloading(true); 
     seterror("");
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${"accesstoken"}=`);
     let token;
     if (parts.length === 2) token = parts.pop().split(";").shift();
-    
+   
     let response = await LoginApis.magicauth(
-      { org_id: loginstring_org, hash: loginstring_hash, user_id: loginstring_id },
+      { org_id: router.query.o, hash: router.query.q, user_id: router.query.i },
       token
     );
     if (response && response.data && response.data.success) {
@@ -88,7 +83,7 @@ function MagicAuthPage() {
       else router.push("/dashboard/k");
       
         setshowauth(false);
-        router.reload();
+
       
     } else if (getCookie("accesstoken")) {
       eraseCookie("accesstoken");
@@ -100,8 +95,9 @@ function MagicAuthPage() {
   }
 
   useEffect(() => {
+    
     handleSignin();
-  }, []);
+  }, [router.isReady]);
 
   return (
     <div className={styles.privacyPage} onLoad={handleSignin}>
