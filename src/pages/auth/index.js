@@ -86,10 +86,10 @@ function MagicAuthPage() {
       } else if (response.data.data.userProfile.user_type === "parent")
         router.push("/dashboard/p");
       else router.push("/dashboard/k");
-      if (onlyLogin != undefined) {
+      
         setshowauth(false);
         router.reload();
-      }
+      
     } else if (getCookie("accesstoken")) {
       eraseCookie("accesstoken");
       handleSignin();
