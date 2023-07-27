@@ -52,6 +52,11 @@ const login = (payload, token = null) => {
   return ApiCalls.postResponse(`users/login`, payload, token);
 };
 
+const magicauth = (payload, token = null) => {
+  console.log(token);
+  return ApiCalls.postResponse(`users/magicauth`, payload, token);
+};
+
 const checktoken = (payload) => {
   return ApiCalls.postResponse(
     `users/checktoken`,
@@ -159,6 +164,7 @@ const LoginApis = {
   setphone,
   verifyotp,
   login,
+  magicauth,
   checktoken,
   saveemail,
   checkemail,
