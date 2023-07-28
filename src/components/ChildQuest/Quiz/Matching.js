@@ -35,58 +35,61 @@ export default function Matching({ data, value, setValue }) {
 
   return (
     <div className={styles.matching}>
-      <div className={styles.left}>
-        {data.question.map((qn, i) => {
-          return (
-            <div
-              key={"matchingg" + i}
-              className={styles.question}
-              id={qn}
-              onDrop={(e) => drop(e)}
-              onDragOver={(e) => allowDrop(e)}
-            >
-              {qn} <div className={styles.answerArea} />
-            </div>
-          );
-        })}
-      </div>
-      <div className={styles.right}>
-        {data.optins.map((option, i) => {
-          return (
-            <div
-              key={"matching" + i}
-              className={styles.option}
-              id={option}
-              draggable={true}
-              onDragStart={(e) => drag(e)}
-            >
-              {data.imageOption ? (
-                <Image
-                  src={
-                    option === "rupee"
-                      ? rupee
-                      : option === "dollar"
-                      ? dollar
-                      : option === "euro"
-                      ? euro
-                      : option === "pound"
-                      ? pound
-                      : option === "franc"
-                      ? franc
-                      : ""
-                  }
-                  className={styles.optionImage}
-                  alt={option}
-                  width={60}
-                  height={60}
-                  draggable={false}
-                />
-              ) : (
-                <div className={styles.textOption}>{option}</div>
-              )}
-            </div>
-          );
-        })}
+      <div className={styles.questionText}>{data.instruction}</div>
+      <div className={styles.options}>
+        <div className={styles.left}>
+          {data.question.map((qn, i) => {
+            return (
+              <div
+                key={"matchingg" + i}
+                className={styles.question}
+                id={qn}
+                onDrop={(e) => drop(e)}
+                onDragOver={(e) => allowDrop(e)}
+              >
+                {qn} <div className={styles.answerArea} />
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.right}>
+          {data.optins.map((option, i) => {
+            return (
+              <div
+                key={"matching" + i}
+                className={styles.option}
+                id={option}
+                draggable={true}
+                onDragStart={(e) => drag(e)}
+              >
+                {data.imageOption ? (
+                  <Image
+                    src={
+                      option === "rupee"
+                        ? rupee
+                        : option === "dollar"
+                        ? dollar
+                        : option === "euro"
+                        ? euro
+                        : option === "pound"
+                        ? pound
+                        : option === "franc"
+                        ? franc
+                        : ""
+                    }
+                    className={styles.optionImage}
+                    alt={option}
+                    width={60}
+                    height={60}
+                    draggable={false}
+                  />
+                ) : (
+                  <div className={styles.textOption}>{option}</div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

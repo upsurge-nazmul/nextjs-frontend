@@ -14,7 +14,7 @@ export default function QuizView({
 }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [currentQnIndex, setCurrentQnIndex] = useState(0);
+  const [currentQnIndex, setCurrentQnIndex] = useState(11);
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState("");
   const [completed, setcompleted] = useState("");
