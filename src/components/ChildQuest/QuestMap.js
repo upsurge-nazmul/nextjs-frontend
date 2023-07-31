@@ -9,8 +9,8 @@ export default function QuestMap({
   setActiveChapterNo = () => {},
   userLevel = 0,
 }) {
-  const isMobile = useMediaQuery("(max-width: 700px)");
-  const isTablet = useMediaQuery("(min-width: 701px) and (max-width: 912px)");
+  const isMobile = useMediaQuery("(max-width: 500px)");
+  const isTablet = useMediaQuery("(min-width: 501px) and (max-width: 990px)");
   
   const positions = getPositions({isMobile, isTablet});
 

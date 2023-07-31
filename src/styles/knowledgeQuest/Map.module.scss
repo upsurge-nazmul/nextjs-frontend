@@ -53,7 +53,7 @@
 }
 
 // tab screen portrait
-@media only screen and (orientation: portrait) and (max-width: 912px) {
+@media only screen and (orientation: portrait) and (min-width: 501px) and (max-width: 990px) {
   .mapContent {
     .map {
       @include map(
@@ -67,7 +67,7 @@
 }
 
 // mobile screen portrait
-@media only screen and (orientation: portrait) and (max-width: 700px) {
+@media only screen and (orientation: portrait) and (max-width: 500px) {
   .mapContent {
     .map {
       @include map(
