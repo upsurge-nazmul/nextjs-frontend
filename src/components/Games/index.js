@@ -171,7 +171,7 @@ function Games({
                 userdata={userdata}
               />
             </div>
-            <AvailableGames />
+            {/* <AvailableGames /> */}
           </div>
         </div>
       </div>
