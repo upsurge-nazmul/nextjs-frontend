@@ -40,8 +40,6 @@ export default function QuizView({
     }
   }, [chapterId]);
 
-  console.log("!!!!!!!!!!!!!!", questions);
-
   async function matchAnswer(answer) {
     let res = await KnowledgeQuestApi.checkanswer(
       { id: questions[currentQnIndex].id, answer: answer, chapterId },
