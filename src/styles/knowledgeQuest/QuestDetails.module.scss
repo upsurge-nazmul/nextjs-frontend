@@ -10,9 +10,7 @@
     flex-direction: column;
     .mainContent {
       width: 100%;
-      padding: 0 45px;
       overflow-y: auto;
-      padding-bottom: 20px;
       .headingSection {
         padding-bottom: 20px;
         .heading {
@@ -22,6 +20,7 @@
         }
         .about {
           margin-bottom: 20px;
+          padding: 0 2rem;
         }
         .conceptswrapper {
           display: flex;
@@ -129,9 +128,7 @@
       flex-direction: column;
       .mainContent {
         width: 100%;
-        padding: 0 20px;
         overflow-y: auto;
-        padding-bottom: 20px;
         .headingSection {
           padding-bottom: 20px;
           .heading {
@@ -183,9 +180,7 @@
       flex-direction: column;
       .mainContent {
         width: 100%;
-        padding: 0 20px;
         overflow-y: auto;
-        padding-bottom: 20px;
         .headingSection {
           padding-bottom: 20px;
           .heading {
