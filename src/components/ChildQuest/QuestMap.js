@@ -1,5 +1,6 @@
 import styles from "../../styles/knowledgeQuest/Map.module.scss";
-import { positions } from "./positions";
+import { useMediaQuery } from '@mui/material';
+import { getPositions } from "./positions";
 
 export default function QuestMap({
   questData,
@@ -8,6 +9,11 @@ export default function QuestMap({
   setActiveChapterNo = () => {},
   userLevel = 0,
 }) {
+  const isMobile = useMediaQuery("(max-width: 700px)");
+  const isTablet = useMediaQuery("(min-width: 701px) and (max-width: 912px)");
+  
+  const positions = getPositions({isMobile, isTablet});
+
   return (
     <>
       {questData && (
