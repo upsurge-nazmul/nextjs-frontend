@@ -1,5 +1,6 @@
 import styles from "../../styles/knowledgeQuest/Map.module.scss";
-import { positions } from "./positions";
+import { useMediaQuery } from '@mui/material';
+import { getPositions } from "./positions";
 
 export default function QuestMap({
   questData,
@@ -8,6 +9,11 @@ export default function QuestMap({
   setActiveChapterNo = () => {},
   userLevel = 0,
 }) {
+  const isMobile = useMediaQuery("(max-width: 500px)");
+  const isTablet = useMediaQuery("(min-width: 501px) and (max-width: 990px)");
+  
+  const positions = getPositions({isMobile, isTablet});
+
   return (
     <>
       {questData && (
@@ -25,6 +31,7 @@ export default function QuestMap({
                             : userLevel + 1 === chapter.chapterNo
                             ? styles.chapter
                             : styles.disabledChapter
+                          //  styles.chapter
                         }
                         style={
                           positions[`quest${questData.questNo}`][
@@ -36,7 +43,10 @@ export default function QuestMap({
                             userLevel >= chapter.chapterNo ||
                             userLevel + 1 === chapter.chapterNo
                           ) {
-                            mixpanel.track('Knowledge Quest started',{'event':`Quest Started ${chapter.id}`, 'chapterId':`${chapter.id}`});
+                            mixpanel.track("Knowledge Quest started", {
+                              event: `Quest Started ${chapter.id}`,
+                              chapterId: `${chapter.id}`,
+                            });
                             changeView(chapter.type);
                             setActiveChapter(chapter.id);
                             setActiveChapterNo(chapter.chapterNo);

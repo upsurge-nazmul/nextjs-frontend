@@ -14,7 +14,7 @@ export default function QuizView({
 }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [currentQnIndex, setCurrentQnIndex] = useState(11);
+  const [currentQnIndex, setCurrentQnIndex] = useState(0);
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState("");
   const [completed, setcompleted] = useState("");
@@ -66,6 +66,14 @@ export default function QuizView({
     }
   }
 
+  function handleSkip() {
+    if (currentQnIndex === questions.length - 1) {
+      setcompleted(true);
+    } else {
+      setCurrentQnIndex((prev) => prev + 1);
+    }
+  }
+
   function handleRetry() {
     setScore(0);
     setCurrentQnIndex(0);
@@ -110,6 +118,7 @@ export default function QuizView({
             correctAns={correctAns}
             correctAnsValue={correctAnsValue}
             handleNextClick={goNext}
+            handleSkip={handleSkip}
           />
         )}
         {completed && (
