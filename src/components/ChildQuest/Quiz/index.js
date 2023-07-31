@@ -36,6 +36,7 @@ export default function Quiz({
   correctAns,
   correctAnsValue,
   handleNextClick,
+  handleSkip, // for temporary 'Skip' button
 }) {
   const { type } = data;
   const [value, setValue] = useState();
@@ -106,6 +107,17 @@ export default function Quiz({
             Submit
           </button>
         )}
+        <button
+          style={{
+            marginLeft: "10px",
+            backgroundColor: "red",
+            borderColor: "red",
+          }}
+          className={styles.submitButton}
+          onClick={handleSkip}
+        >
+          Skip
+        </button>
       </div>
     </div>
   );

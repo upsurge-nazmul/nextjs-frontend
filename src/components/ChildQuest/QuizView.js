@@ -40,6 +40,8 @@ export default function QuizView({
     }
   }, [chapterId]);
 
+  console.log("!!!!!!!!!!!!!!", questions);
+
   async function matchAnswer(answer) {
     let res = await KnowledgeQuestApi.checkanswer(
       { id: questions[currentQnIndex].id, answer: answer, chapterId },
@@ -59,6 +61,14 @@ export default function QuizView({
   function goNext() {
     setCorrectAns(false);
     setCorrectAnsValue("");
+    if (currentQnIndex === questions.length - 1) {
+      setcompleted(true);
+    } else {
+      setCurrentQnIndex((prev) => prev + 1);
+    }
+  }
+
+  function handleSkip() {
     if (currentQnIndex === questions.length - 1) {
       setcompleted(true);
     } else {
@@ -110,6 +120,7 @@ export default function QuizView({
             correctAns={correctAns}
             correctAnsValue={correctAnsValue}
             handleNextClick={goNext}
+            handleSkip={handleSkip}
           />
         )}
         {completed && (
