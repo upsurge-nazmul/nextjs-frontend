@@ -36,7 +36,7 @@ export default function Quiz({
   correctAns,
   correctAnsValue,
   handleNextClick,
-  // handleSkip, // for temporary 'Skip' button
+  handleSkip, // for temporary 'Skip' button
 }) {
   const { type } = data;
   const [value, setValue] = useState();
@@ -84,7 +84,9 @@ export default function Quiz({
                   correctAns ? styles.correctAnsValue : styles.wrongAnsValue
                 }
               >
-                {correctAnsValue}
+                {
+                  Array.isArray(correctAnsValue) ? correctAnsValue.join(", ") : correctAnsValue
+                }
               </span>
             </div>
             <button
