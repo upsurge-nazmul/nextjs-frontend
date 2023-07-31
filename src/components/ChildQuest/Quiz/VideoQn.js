@@ -12,6 +12,23 @@ export default function VideoQn({ data, value, setValue }) {
         className={styles.video}
       ></iframe>
       <div className={styles.question}>{data.question}</div>
+      {data.options && data.options.length && (
+        <div className={styles.options}>
+          {data.options.map((option, i) => {
+            return (
+              <div
+                key={"videoQn" + i}
+                className={
+                  option === value ? styles.selectedOption : styles.option
+                }
+                onClick={() => setValue(option)}
+              >
+                {option}
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className={styles.answer}>
         <input
           value={value ? value : ""}

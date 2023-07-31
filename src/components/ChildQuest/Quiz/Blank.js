@@ -20,6 +20,23 @@ export default function Blank({ data, value, setValue }) {
           );
         })}
       </div>
+      {data.options && data.options.length && (
+        <div className={styles.options}>
+          {data.options.map((option, i) => {
+            return (
+              <div
+                key={"blank" + i}
+                className={
+                  option === value ? styles.selectedOption : styles.option
+                }
+                onClick={() => setValue(option)}
+              >
+                {option}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
