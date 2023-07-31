@@ -13,7 +13,7 @@
 .intro {
   scroll-snap-align: end;
   position: relative;
-  height: calc(100vh - 120px);
+
   width: 100vw;
   display: flex;
   overflow: hidden;
@@ -119,11 +119,11 @@
     }
     }
     .subheading {
-      font-size: 18px;
+      font-size: calc(1.25rem + 0.5vw) ;
       font-weight: 400;
       color: #18191f;
-      margin-top: 15px;
-      line-height: 26px;
+      margin-top: calc(1rem + 1vw);
+      line-height: calc(1.5rem + 0.7vw);
       width: 36vw;
       .ed {
         font-weight: 700;
@@ -336,7 +336,7 @@
     scroll-snap-align: end;
     position: relative;
     min-height: 500px;
-    height: calc(100vh - 80px);
+
     width: 100%;
     display: flex;
     flex-direction: column;
