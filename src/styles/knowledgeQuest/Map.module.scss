@@ -1,42 +1,81 @@
+@mixin map(
+  $bgUrl:
+    "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapDesktop.png"
+) {
+  background-image: url($bgUrl);
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+}
+
+%chapter {
+  cursor: pointer;
+  position: absolute;
+  font-weight: 500;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  width: fit-content;
+  min-width: 150px;
+  z-index: 2;
+  color: rgb(44, 44, 44);
+  text-align: center;
+  filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
+  padding: 10px;
+  background-color: #fff;
+}
+
 .mapContent {
   width: 100%;
   overflow-y: auto;
   .map {
-    background-image: url("https://imgcdn.upsurge.in/images/mainmap.jpg");
-    width: 100%;
-    height: 100%;
-    min-height: 700px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    position: relative;
-    align-items: flex-start;
+    @include map;
     .chapter {
-      cursor: pointer;
-      position: absolute;
-      font-weight: 500;
-      font-size: 0.75rem;
-      border-radius: 12px;
-      width: fit-content;
-      min-width: 150px;
-      z-index: 2;
-      color: rgb(44, 44, 44);
-      text-align: center;
-      filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
-      padding: 10px;
-      background-color: #fff;
+      @extend %chapter;
     }
     .completedChapter {
-      @extend .chapter;
+      @extend %chapter;
       background-color: #4fe563;
       color: #333;
     }
     .disabledChapter {
-      @extend .chapter;
+      @extend %chapter;
       background-color: #bababaf7;
       color: #595454c4;
       cursor: default;
+    }
+  }
+}
+
+// tab screen portrait
+@media only screen and (orientation: portrait) and (max-width: 912px) {
+  .mapContent {
+    .map {
+      @include map(
+        "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapDesktop.png"
+      );
+      .chapter{
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
+
+// mobile screen portrait
+@media only screen and (orientation: portrait) and (max-width: 700px) {
+  .mapContent {
+    .map {
+      @include map(
+        "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapMobile.png"
+      );
+      .chapter{
+        font-size: 0.5rem;
+      }
     }
   }
 }
