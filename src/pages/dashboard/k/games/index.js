@@ -1,8 +1,8 @@
 import React from "react";
-import LoginApis from "../../../actions/apis/LoginApis";
-import FreeGameApis from "../../../actions/apis/FreeGameApis";
-import GameApis from "../../../actions/apis/GameApis";
-import Games from "../../../components/Games";
+import LoginApis from "../../../../actions/apis/LoginApis";
+import FreeGameApis from "../../../../actions/apis/FreeGameApis";
+import GameApis from "../../../../actions/apis/GameApis";
+import Games from "../../../../components/Games";
 
 function GamesPage({ userdatafromserver, gameunicoinrewards, recentgames }) {
   return (

@@ -5,6 +5,17 @@
   width: fit-content;
   height: 90%;
   width: 35%;
+  .video{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    max-width: 50vw;
+    position: relative;
+    top: -10rem;
+    right: 17rem;
+  }
   .background {
     background-color: #d9f1ff;
     height: 30vw;

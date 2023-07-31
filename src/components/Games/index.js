@@ -15,6 +15,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import SubToPremiumPopUp from "../SubToPremiumPopUp";
 import WebglView from "../WebglView";
 import GameList from "./GameList";
+import AvailableGames from "../DownloadGames/AvailableGames";
 
 function Games({
   userdatafromserver = null,
@@ -126,7 +127,7 @@ function Games({
               Chose from the collection of all the fantastic games we have made
               for you
             </h4>
-            <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} />
+            {/* <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} /> */}
             {showSubToPremium && (
               <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
             )}
@@ -170,6 +171,7 @@ function Games({
                 userdata={userdata}
               />
             </div>
+            <AvailableGames />
           </div>
         </div>
       </div>
