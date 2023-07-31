@@ -109,7 +109,7 @@ export default function KnowledgeQuest({ userData, questData }) {
             <div className={styles.headingSection}>
               {/* <p className={styles.heading}>{currentQuest.title}</p> */}
               <p className={styles.about}>{currentQuest.questDescription}</p>
-              <p className={styles.heading}>Concepts Covered</p>
+              {/* <p className={styles.heading}>Concepts Covered</p>
               <div className={styles.conceptswrapper}>
                 {currentQuest.concepts
                   ? currentQuest.concepts.map((concept, index) => (
@@ -122,7 +122,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                         {concept}
                       </div>
                     ))}
-              </div>
+              </div> */}
             </div>
           )}
           <div>
