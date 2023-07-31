@@ -24,8 +24,8 @@ export default function QuestMap({
                             ? styles.completedChapter
                             : userLevel + 1 === chapter.chapterNo
                             ? styles.chapter
-                            : // : styles.disabledChapter
-                              styles.chapter
+                            : styles.disabledChapter
+                          //  styles.chapter
                         }
                         style={
                           positions[`quest${questData.questNo}`][
@@ -33,18 +33,18 @@ export default function QuestMap({
                           ]
                         }
                         onClick={() => {
-                          // if (
-                          //   userLevel >= chapter.chapterNo ||
-                          //   userLevel + 1 === chapter.chapterNo
-                          // ) {
-                          mixpanel.track("Knowledge Quest started", {
-                            event: `Quest Started ${chapter.id}`,
-                            chapterId: `${chapter.id}`,
-                          });
-                          changeView(chapter.type);
-                          setActiveChapter(chapter.id);
-                          setActiveChapterNo(chapter.chapterNo);
-                          // }
+                          if (
+                            userLevel >= chapter.chapterNo ||
+                            userLevel + 1 === chapter.chapterNo
+                          ) {
+                            mixpanel.track("Knowledge Quest started", {
+                              event: `Quest Started ${chapter.id}`,
+                              chapterId: `${chapter.id}`,
+                            });
+                            changeView(chapter.type);
+                            setActiveChapter(chapter.id);
+                            setActiveChapterNo(chapter.chapterNo);
+                          }
                         }}
                       >
                         <span>{chapter.title}</span>
