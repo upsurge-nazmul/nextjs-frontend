@@ -4,11 +4,14 @@ import Image from "next/image";
 export default function IntroSvg({ className, onClick, clr }) {
   return (
     <div className={styles.introvid}>
-      <video autoPlay loop controls={false} className={styles.video}>
+      <video autoPlay loop muted playsInline className={styles.video}>
         <source src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/intro0001-0340.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {/* <div className={styles.dashboard}>
+
+      {/* 
+
+      <div className={styles.dashboard}>
         <div className={styles.wrapper}>
           <Image
             priority
