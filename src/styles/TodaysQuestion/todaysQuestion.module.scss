@@ -82,5 +82,15 @@
       background-color: #c1c1c1;
       cursor: not-allowed;
     }
+    .correctAns{
+      font-size: 1rem;
+      font-weight: 600;
+      color: #8be2d5;
+    }
+    .incorrectAns{
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ff6263;
+    }
   }
 }

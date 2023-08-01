@@ -22,8 +22,6 @@ const TodaysQuestion = ({ data }) => {
     }
   }, [data]);
 
-  console.log("!!!!!!!!!!", data);
-
   const isSubmitDisabled = () => {
     if (answer === "") return true;
     if (alredyAnswered) return true;
@@ -79,15 +77,21 @@ const TodaysQuestion = ({ data }) => {
         </div>
       )}
       <div className={styles.actionContainer}>
-        <button
-          className={
-            isSubmitDisabled() ? styles.disabledButton : styles.actionButton
-          }
-          disabled={isSubmitDisabled()}
-          onClick={handleAnsSubmit}
-        >
-          Submit
-        </button>
+        {alredyAnswered && isCorrect ? (
+          <div className={styles.correctAns}>Your answer is correct</div>
+        ) : alredyAnswered && !isCorrect ? (
+          <div className={styles.incorrectAns}>Your answer is incorrect</div>
+        ) : (
+          <button
+            className={
+              isSubmitDisabled() ? styles.disabledButton : styles.actionButton
+            }
+            disabled={isSubmitDisabled()}
+            onClick={handleAnsSubmit}
+          >
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );
