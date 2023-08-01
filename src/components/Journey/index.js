@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import styles from "../../styles/Journey/journey.module.scss";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import JourneyCard from "./JourneyCard";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Journey({ data }) {
   const journeyRef = useRef(null);
@@ -28,9 +29,22 @@ export default function Journey({ data }) {
         <HeadingArrow />
       </h2>
       <div ref={journeyRef} className={styles.journeyLayout}>
-        {data &&
+        {data ? (
           data.length &&
-          data.map((item) => <JourneyCard key={item.questNo} data={item} />)}
+          data.map((item) => <JourneyCard key={item.questNo} data={item} />)
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              minHeight: "144px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress style={{ color: "#4066eb" }} />
+          </div>
+        )}
       </div>
     </div>
   );
