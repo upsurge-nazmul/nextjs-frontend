@@ -79,7 +79,7 @@ function QuestCard({
             
             <div className={styles.imageWrapper}>
               <Image
-                src={`/images/kq/${data.questId}.png`}
+                src={`/images/kq/${data.questId}.webp`}
                 height={"200"}
                 width={"200"}
                 alt={data.questId}
