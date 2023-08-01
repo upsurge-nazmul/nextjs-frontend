@@ -3,7 +3,6 @@ import styles from "../../styles/Journey/journeyCard.module.scss";
 import Image from "../Image";
 
 export default function JourneyCard({ data }) {
-  console.log("!!!!!!!!", data);
   const router = useRouter();
 
   const handleActionClick = (journey) => {

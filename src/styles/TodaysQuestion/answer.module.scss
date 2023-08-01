@@ -1,39 +1,52 @@
-.answer {
+%answer {
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  border: 1px solid;
-  border-color: gray;
+  display: flex;
+  border-radius: 1.875rem;
+  border: 2px solid #ededed;
+  margin-bottom: 0.5rem;
   .answerText {
-    color: gray;
+    color: #888;
     font-weight: 300;
+    flex-grow: 1;
   }
   .ansCircle {
     height: 1.5rem;
     width: 1.5rem;
     border: 1px solid;
-    border-color: gray;
+    border-color: #c1c1c1;
     background-color: #fafafa;
+    border-radius: 50%;
   }
-  .ansCircleSelected {
-    @extend .ansCircle;
-    border-color: blue;
-    background-color: blue;
+}
+
+.answer {
+  @extend %answer;
+}
+.answerSelected {
+  @extend .answer;
+  cursor: not-allowed;
+  border-color: #4066eb;
+  .ansCircle {
+    border-color: #4066eb !important;
+    background-color: #4066eb !important;
   }
 }
 .answerRed {
   @extend .answer;
   cursor: not-allowed;
-  border-color: red;
+  border-color: #ff6263;
   .ansCircle {
-    border-color: red !important;
-    background-color: red !important;
+    border-color: #ff6263 !important;
+    background-color: #ff6263 !important;
   }
 }
 .answerGreen {
   @extend .answer;
   cursor: not-allowed;
-  border-color: green;
+  border-color: #8be2d5;
   .ansCircle {
-    border-color: green !important;
-    background-color: green !important;
+    border-color: #8be2d5 !important;
+    background-color: #8be2d5 !important;
   }
 }

@@ -4,7 +4,7 @@ import Answer from "./Answer";
 import styles from "../../styles/TodaysQuestion/todaysQuestion.module.scss";
 import QuizApis from "../../actions/apis/QuizApis";
 
-const TodaysQuestion = ({data}) => {
+const TodaysQuestion = ({ data }) => {
   const [todaysQuestion, setTodaysQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState(""); // a, b, c, d as current selected answer, if not selected already in that day
@@ -21,6 +21,8 @@ const TodaysQuestion = ({data}) => {
       setLoading(false);
     }
   }, [data]);
+
+  console.log("!!!!!!!!!!", data);
 
   const isSubmitDisabled = () => {
     if (answer === "") return true;
@@ -47,27 +49,19 @@ const TodaysQuestion = ({data}) => {
         </div>
         <div className={styles.headerRight}>
           <div className={styles.unicoinChip}>
-            <div className={styles.unicoinIconWrapper}>
-              <UniCoinSvg className={styles.unicoinIcon} />
-              <div className={styles.unicoins}>100</div>
-            </div>
+            <UniCoinSvg className={styles.unicoinIcon} />
+            <div className={styles.unicoins}>100</div>
           </div>
         </div>
       </div>
       {todaysQuestion && (
-        <div className="row px-4 pt-3 pb-0">
+        <div className={styles.questionContainer}>
           {loading ? (
-            <div style={{ minHeight: "11rem" }}>
-             Loading...
-            </div>
+            <div className={styles.loadingArea}>Loading...</div>
           ) : (
             <>
-              <div className="col-12">
-                <div className={styles.question}>
-                  {todaysQuestion?.question}
-                </div>
-              </div>
-              <div className="row px-4 py-3">
+              <div className={styles.question}>{todaysQuestion?.question}</div>
+              <div className={styles.answer}>
                 {["a", "b", "c", "d"].map((item) => (
                   <Answer
                     data={todaysQuestion[item]}
@@ -84,8 +78,14 @@ const TodaysQuestion = ({data}) => {
           )}
         </div>
       )}
-      <div className="row px-4 pb-3">
-        <button disabled={isSubmitDisabled()} onClick={handleAnsSubmit}>
+      <div className={styles.actionContainer}>
+        <button
+          className={
+            isSubmitDisabled() ? styles.disabledButton : styles.actionButton
+          }
+          disabled={isSubmitDisabled()}
+          onClick={handleAnsSubmit}
+        >
           Submit
         </button>
       </div>
