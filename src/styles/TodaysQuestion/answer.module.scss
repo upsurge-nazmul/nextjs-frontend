@@ -1,0 +1,39 @@
+.answer {
+  cursor: pointer;
+  border: 1px solid;
+  border-color: gray;
+  .answerText {
+    color: gray;
+    font-weight: 300;
+  }
+  .ansCircle {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid;
+    border-color: gray;
+    background-color: #fafafa;
+  }
+  .ansCircleSelected {
+    @extend .ansCircle;
+    border-color: blue;
+    background-color: blue;
+  }
+}
+.answerRed {
+  @extend .answer;
+  cursor: not-allowed;
+  border-color: red;
+  .ansCircle {
+    border-color: red !important;
+    background-color: red !important;
+  }
+}
+.answerGreen {
+  @extend .answer;
+  cursor: not-allowed;
+  border-color: green;
+  .ansCircle {
+    border-color: green !important;
+    background-color: green !important;
+  }
+}

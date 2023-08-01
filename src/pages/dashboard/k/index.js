@@ -31,7 +31,7 @@ import IntroDiv from "../../../components/Tour/IntroDiv";
 import MoneyAceApis from "../../../actions/apis/MoneyAceApis";
 import SimulatorApis from "../../../actions/apis/SimulatorApis";
 import KidQuest from "../../../components/KidDashboard/KidQuest";
-import TodaysQuestion from "../../../components/WaitlistDashboard/TodaysQuestion";
+import TodaysQuestion2 from "../../../components/WaitlistDashboard/TodaysQuestion";
 import PageTitle from "../../../components/PageTitle";
 import Journey from "../../../components/Journey";
 import EmailVerificationPending from "../../../components/EmailVerificationPending";
@@ -41,6 +41,7 @@ import FlashSaleOffer from "../../../components/FlashSaleOffer";
 import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
 import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
 import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
+import TodaysQuestion from "../../../components/TodaysQuestion";
 
 export default function ChildActivity({
   pendingchores,
@@ -290,6 +291,7 @@ export default function ChildActivity({
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              {todaysquestion && <TodaysQuestion2 data={todaysquestion} />}
             </div>
             <div className={styles.flexRight}>
               {userdata && userdata.chores_opted ? (
