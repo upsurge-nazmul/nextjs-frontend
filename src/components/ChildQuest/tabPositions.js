@@ -1,4 +1,4 @@
-export default {
+const tabPositions = {
     overWorld: [
       {
         bottom: "23%",
@@ -383,3 +383,4 @@ export default {
   
   };
   
+  export default tabPositions;

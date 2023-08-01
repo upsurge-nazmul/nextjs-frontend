@@ -1,4 +1,4 @@
-export default {
+const desktopPositions =  {
     overWorld: [
       {
         bottom: "23%",
@@ -382,4 +382,5 @@ export default {
       
   
   };
-  
+
+  export default  desktopPositions;

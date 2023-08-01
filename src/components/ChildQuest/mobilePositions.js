@@ -1,4 +1,4 @@
-export default {
+const mobilePositions = {
     overWorld: [
       {
         bottom: "23%",
@@ -382,4 +382,5 @@ export default {
       
   
   };
-  
+
+  export default mobilePositions;
