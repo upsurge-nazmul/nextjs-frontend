@@ -1,37 +1,37 @@
+import { useEffect, useRef } from "react";
 import styles from "../../styles/Journey/journey.module.scss";
-import Banner from "./Banner";
-import Pathway from "./Pathway";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
-import { useState } from "react";
-import Tasks from "./Tasks";
-import { PathwayData } from "../../static_data/Pathways_Data";
-import TaskDisplay from "./TaskDisplay";
+import JourneyCard from "./JourneyCard";
 
-export default function Journey() {
-  const [selectedPath, setSelectedPath] = useState(PathwayData[0]);
-  const [activeTask, setActiveTask] = useState();
+export default function Journey({ data }) {
+  const journeyRef = useRef(null);
+
+  useEffect(() => {
+    if (journeyRef?.current) {
+      const container = journeyRef.current;
+
+      container.addEventListener("wheel", (event) => {
+        event.preventDefault();
+
+        const scrollAmount = event.deltaY;
+        const scrollDirection = Math.sign(scrollAmount);
+
+        container.scrollLeft += scrollDirection * 50;
+      });
+    }
+  }, [journeyRef]);
 
   return (
     <div className={styles.journey}>
-      
-      <h2 id="milestone" className={styles.mainheading} onClick={() => { }}>
+      <h2 className={styles.mainheading} onClick={() => {}}>
         Journey
         <HeadingArrow />
       </h2>
-      <Pathway highlight={selectedPath} handleClick={setSelectedPath} />
-      
-      {selectedPath ? <Banner highlight={selectedPath} pointer={true} /> : ""}
-
-      {/* {activeTask ? (
-        <TaskDisplay task={activeTask} handleCancelClick={setActiveTask} />
-      ) : (
-        ""
-      )}
-      {selectedPath ? (
-        <Tasks highlight={selectedPath} handleTaskClick={setActiveTask} />
-      ) : (
-        ""
-      )} */}
+      <div ref={journeyRef} className={styles.journeyLayout}>
+        {data &&
+          data.length &&
+          data.map((item) => <JourneyCard key={item.questNo} data={item} />)}
+      </div>
     </div>
   );
 }

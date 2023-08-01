@@ -89,6 +89,8 @@ export default function ChildActivity({
   const [openGame, setOpenGame] = useState("");
   const [currentChapter, setCurrentChapter] = useState("");
   const [lastActivity, setLastActivity] = useState(Date.now());
+  const [questData, setQuestData] = useState();
+
   useEffect(() => {
     setLastActivity(Date.now());
   }, []);
@@ -189,6 +191,7 @@ export default function ChildActivity({
       );
       if (questRes && questRes.data && questRes.data.success) {
         let questList = questRes.data.data;
+        setQuestData(questList);
         for (let quest of questList) {
           let levelRes = await KnowledgeQuestApi.initiate(
             { quest_id: quest.questId },
@@ -283,7 +286,7 @@ export default function ChildActivity({
           {userdatafromserver && !userdatafromserver.phone_verified && (
             <PhoneVerificationPending />
           )}
-          <Journey />
+          <Journey {...{ data: questData }} />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               {todaysquestion && <TodaysQuestion data={todaysquestion} />}
