@@ -3,6 +3,7 @@ import UniCoinSvg from "../../components/SVGcomponents/UniCoinSvg";
 import Answer from "./Answer";
 import styles from "../../styles/TodaysQuestion/todaysQuestion.module.scss";
 import QuizApis from "../../actions/apis/QuizApis";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const TodaysQuestion = ({ data }) => {
   const [todaysQuestion, setTodaysQuestion] = useState(null);
@@ -34,9 +35,9 @@ const TodaysQuestion = ({ data }) => {
       selected_option: answer,
     });
     console.log("todays qn res", response);
+    setAlredyAnswered(response.data.data.correct_ans);
+    setIsCorrect(response.data.data.is_correct);
     setLoading(false);
-    setAlredyAnswered(response.data.correct_ans);
-    setIsCorrect(response.data.is_correct);
   };
 
   return (
@@ -55,7 +56,9 @@ const TodaysQuestion = ({ data }) => {
       {todaysQuestion && (
         <div className={styles.questionContainer}>
           {loading ? (
-            <div className={styles.loadingArea}>Loading...</div>
+            <div className={styles.loadingArea}>
+              <CircularProgress style={{ color: "#4066eb" }} />
+            </div>
           ) : (
             <>
               <div className={styles.question}>{todaysQuestion?.question}</div>
@@ -72,27 +75,33 @@ const TodaysQuestion = ({ data }) => {
                   />
                 ))}
               </div>
+              <div className={styles.actionContainer}>
+                {alredyAnswered && isCorrect ? (
+                  <div className={styles.correctAns}>
+                    Your answer is correct
+                  </div>
+                ) : alredyAnswered && !isCorrect ? (
+                  <div className={styles.incorrectAns}>
+                    Your answer is incorrect
+                  </div>
+                ) : (
+                  <button
+                    className={
+                      isSubmitDisabled()
+                        ? styles.disabledButton
+                        : styles.actionButton
+                    }
+                    disabled={isSubmitDisabled()}
+                    onClick={handleAnsSubmit}
+                  >
+                    Submit
+                  </button>
+                )}
+              </div>
             </>
           )}
         </div>
       )}
-      <div className={styles.actionContainer}>
-        {alredyAnswered && isCorrect ? (
-          <div className={styles.correctAns}>Your answer is correct</div>
-        ) : alredyAnswered && !isCorrect ? (
-          <div className={styles.incorrectAns}>Your answer is incorrect</div>
-        ) : (
-          <button
-            className={
-              isSubmitDisabled() ? styles.disabledButton : styles.actionButton
-            }
-            disabled={isSubmitDisabled()}
-            onClick={handleAnsSubmit}
-          >
-            Submit
-          </button>
-        )}
-      </div>
     </div>
   );
 };
