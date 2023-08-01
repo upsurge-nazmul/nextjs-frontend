@@ -75,10 +75,7 @@ export default function RedeemSection({
           </p> */}
         </div>
         <p style={{ marginTop: "1rem" }}>
-          Make a Purchase and ask your parent to 
-          <span onClick={() => { router.push("/dashboard/k/parentPanel") }}>
-            go to Parent Center
-          </span> to approve
+        Rewards make learning even more fun - here are all the rewards you can earn!
         </p>
 
         {/* {err && <p className={styles.converstiondetails}>{err}</p>} */}
