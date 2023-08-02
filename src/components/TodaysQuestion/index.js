@@ -44,7 +44,7 @@ const TodaysQuestion = ({ data }) => {
     <div className={styles.todaysQn}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <div className={styles.headerText}>Today's Question</div>
+          <div className={styles.headerText}>{`Today's Question`}</div>
         </div>
         <div className={styles.headerRight}>
           <div className={styles.unicoinChip}>
