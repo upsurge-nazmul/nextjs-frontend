@@ -79,9 +79,9 @@ function QuestCard({
             
             <div className={styles.imageWrapper}>
               <Image
-                src={`/images/kq/${data.questId}.png`}
-                height={"200"}
-                width={"200"}
+                src={`/images/kq/${data.questId}.webp`}
+                height={"216"}
+                width={"384"}
                 alt={data.questId}
                 className={styles.img}
               />
