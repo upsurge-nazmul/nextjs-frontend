@@ -1,5 +1,5 @@
-.journey {
-  padding: 10px 50px;
+@mixin journeyFullPage($paddingY: 10px, $paddingX: 50px) {
+  padding: $paddingY $paddingX;
   .mainheading {
     font-weight: 500;
     font-size: 25px;
@@ -22,5 +22,21 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+}
+
+.journey {
+  @include journeyFullPage();
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .journey {
+    @include journeyFullPage(20px, 20px);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .journey {
+    @include journeyFullPage(10px, 20px);
   }
 }
