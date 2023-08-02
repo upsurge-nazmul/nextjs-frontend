@@ -232,6 +232,9 @@ export default function ChildActivity({
       content: `You can go back to home page, by clicking upsurge logo.`,
     },
   ];
+
+  console.log("!!!!!!!", userdata)
+
   return (
     <div className={styles.childactivity}>
       <PageTitle title={`upsurge | Dashboard`} />
@@ -289,7 +292,7 @@ export default function ChildActivity({
           <Journey {...{ data: questData }} />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
-              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
+              {todaysquestion && <TodaysQuestion data={todaysquestion} unicoins={userdata?.num_unicoins} />}
             </div>
             <div className={styles.flexRight}>
               {userdata && userdata.chores_opted ? (

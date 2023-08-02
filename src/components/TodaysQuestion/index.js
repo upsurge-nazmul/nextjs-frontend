@@ -5,7 +5,7 @@ import styles from "../../styles/TodaysQuestion/todaysQuestion.module.scss";
 import QuizApis from "../../actions/apis/QuizApis";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const TodaysQuestion = ({ data }) => {
+const TodaysQuestion = ({ data, unicoins = 0 }) => {
   const [todaysQuestion, setTodaysQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState(""); // a, b, c, d as current selected answer, if not selected already in that day
@@ -49,7 +49,13 @@ const TodaysQuestion = ({ data }) => {
         <div className={styles.headerRight}>
           <div className={styles.unicoinChip}>
             <UniCoinSvg className={styles.unicoinIcon} />
-            <div className={styles.unicoins}>100</div>
+            <div className={styles.unicoins}>
+              {unicoins
+                ? parseInt(unicoins) > 1000
+                  ? `${parseFloat(unicoins / 1000)}k`
+                  : unicoins
+                : 0}
+            </div>
           </div>
         </div>
       </div>
