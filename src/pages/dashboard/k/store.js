@@ -82,10 +82,7 @@ export default function KidStore({
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          <p className={styles.subheader}>
-            Rewards make learning even more fun - here are all the rewards you
-            can earn!
-          </p>
+          
           <div className={styles.redeem}>
             <RedeemSection />
           </div>

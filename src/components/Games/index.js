@@ -123,10 +123,7 @@ function Games({
         />
         <div className={styles.mainContent}>
           <div className={styles.flexLeft}>
-            <h4 className={styles.subheader}>
-              Chose from the collection of all the fantastic games we have made
-              for you
-            </h4>
+            
             {/* <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} /> */}
             {showSubToPremium && (
               <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
