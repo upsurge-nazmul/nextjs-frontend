@@ -233,8 +233,6 @@ export default function ChildActivity({
     },
   ];
 
-  console.log("!!!!!!!", userdata)
-
   return (
     <div className={styles.childactivity}>
       <PageTitle title={`upsurge | Dashboard`} />
