@@ -120,7 +120,7 @@ function MagicAuthPage() {
         <div className={styles.content}>
           <PageTitle title="Magic Authentication" />
           {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
+          {error && <p>Loading...</p>}
         </div>
       </div>
       <Footer />
