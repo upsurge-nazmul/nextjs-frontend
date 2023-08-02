@@ -41,6 +41,7 @@ import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
 import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
 import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
 import TodaysQuestion from "../../../components/TodaysQuestion";
+import SubToPremiumPopUp from "../../../components/SubToPremiumPopUp";
 
 export default function ChildActivity({
   pendingchores,
@@ -90,6 +91,7 @@ export default function ChildActivity({
   const [currentChapter, setCurrentChapter] = useState("");
   const [lastActivity, setLastActivity] = useState(Date.now());
   const [questData, setQuestData] = useState();
+  const [showSubToPremium, setShowSubToPremium] = useState(false);
 
   useEffect(() => {
     setLastActivity(Date.now());
@@ -271,6 +273,9 @@ export default function ChildActivity({
             }}
           />
         )}
+        {showSubToPremium && (
+          <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+        )}
         <div className={styles.mainContent}>
           {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />
@@ -287,10 +292,19 @@ export default function ChildActivity({
           {userdatafromserver && !userdatafromserver.phone_verified && (
             <PhoneVerificationPending />
           )}
-          <Journey {...{ data: questData }} />
+          <Journey
+            data={questData}
+            userPlanType={userdata?.premium_plan}
+            setShowSubToPremium={setShowSubToPremium}
+          />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
-              {todaysquestion && <TodaysQuestion data={todaysquestion} unicoins={userdata?.num_unicoins} />}
+              {todaysquestion && (
+                <TodaysQuestion
+                  data={todaysquestion}
+                  unicoins={userdata?.num_unicoins}
+                />
+              )}
             </div>
             <div className={styles.flexRight}>
               {userdata && userdata.chores_opted ? (

@@ -4,7 +4,7 @@ import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import JourneyCard from "./JourneyCard";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export default function Journey({ data }) {
+export default function Journey({ data, userPlanType, setShowSubToPremium }) {
   const journeyRef = useRef(null);
 
   useEffect(() => {
@@ -31,7 +31,14 @@ export default function Journey({ data }) {
       <div ref={journeyRef} className={styles.journeyLayout}>
         {data ? (
           data.length &&
-          data.map((item) => <JourneyCard key={item.questNo} data={item} />)
+          data.map((item) => (
+            <JourneyCard
+              key={item.questNo}
+              data={item}
+              userPlanType={userPlanType}
+              setShowSubToPremium={setShowSubToPremium}
+            />
+          ))
         ) : (
           <div
             style={{

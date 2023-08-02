@@ -2,11 +2,19 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Journey/journeyCard.module.scss";
 import Image from "../Image";
 
-export default function JourneyCard({ data }) {
+export default function JourneyCard({
+  data,
+  userPlanType,
+  setShowSubToPremium,
+}) {
   const router = useRouter();
 
   const handleActionClick = (journey) => {
-    router.push(`/dashboard/k/quest/${journey}`);
+    if (userPlanType >= data.premium_plan) {
+      router.push(`/dashboard/k/quest/${journey}`);
+    } else {
+      setShowSubToPremium(true);
+    }
   };
 
   return (
