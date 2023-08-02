@@ -1,13 +1,15 @@
 .seeMore {
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #1673c8;
+  border-radius: 0.625rem;
   cursor: pointer;
   padding: 20px 0;
   .text {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     font-weight: 500;
-    color: #1673c8;
+    color: #FFF;
   }
 }
