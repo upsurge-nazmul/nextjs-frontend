@@ -14,7 +14,7 @@ export default function JourneyCard({ data }) {
       <div className={styles.cardLeft}>
         <div className={styles.cardImage}>
           <Image
-            imageUrl={`/images/kq/${data.questId}.png`}
+            imageUrl={`/images/kq/${data.questId}.webp`}
             alt={data.title}
             placeholderText={data.title}
           />
