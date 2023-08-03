@@ -13,6 +13,7 @@ import PhotoQn from "./PhotoQn";
 import TrueFalse from "./TrueFalse";
 import VideoQn from "./VideoQn";
 import YesNo from "./YesNo";
+import PhotoOptions from "./PhotoOptions";
 
 const TYPES = [
   "mcq", // 0
@@ -28,6 +29,7 @@ const TYPES = [
   "mcq-in-blank", // 10
   "missing-letters", // 11
   "image-categorize", // 12
+  "photo-options", // 13
 ];
 
 export default function Quiz({
@@ -70,6 +72,8 @@ export default function Quiz({
           <MissingLetter {...{ data, value, setValue }} />
         ) : type === TYPES[12] ? (
           <ImageCat {...{ data, value, setValue }} />
+        ) : type === TYPES[13] ? (
+          <PhotoOptions {...{ data, value, setValue }} />
         ) : (
           ""
         )}
@@ -84,9 +88,9 @@ export default function Quiz({
                   correctAns ? styles.correctAnsValue : styles.wrongAnsValue
                 }
               >
-                {
-                  Array.isArray(correctAnsValue) ? correctAnsValue.join(", ") : correctAnsValue
-                }
+                {Array.isArray(correctAnsValue)
+                  ? correctAnsValue.join(", ")
+                  : correctAnsValue}
               </span>
             </div>
             <button
