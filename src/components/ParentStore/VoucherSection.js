@@ -19,7 +19,7 @@ export default function VoucherSection({
 }) {
   const [items, setItems] = useState();
   const [query, setQuery] = useState("");
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(9);
 
   // console.log("@@@@", vouchers);
 
@@ -45,7 +45,7 @@ export default function VoucherSection({
     return str1.toLowerCase().includes(str2.toLowerCase());
   };
 
-  const onSeeMoreClick = () => setLimit((prev) => Number(prev) + 10);
+  const onSeeMoreClick = () => setLimit((prev) => Number(prev) + 9);
 
   return (
     <div className={styles.voucherSection} id={id}>
@@ -78,11 +78,12 @@ export default function VoucherSection({
             userdatafromserver={userdatafromserver}
           />
         ))}
-        {!query && <SeeMoreCard handleClick={onSeeMoreClick} />}
+        
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}
       </div>
+      {!query && <SeeMoreCard handleClick={onSeeMoreClick} />}
     </div>
   );
 }
