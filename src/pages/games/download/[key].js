@@ -56,37 +56,7 @@ const DownloadSingleGamePage = ({ gameData }) => {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
-  async function handleclick(item) {
-    if (!userdata) {
-      setshowauth(true);
-      return;
-    }
-    if (item === "Ludo" && isMobile) {
-      let res = await FreeGameApis.presign({
-        playername: "Anonymous",
-        playeremail: "tempuser@upsurge.in",
-        number: "",
-        game: item,
-      });
-      if (res) {
-        if (res.data.success) {
-          router.push({
-            pathname: "/games/Ludo",
-            query: { id: res.data.data },
-          });
-        } else {
-          console.log(res.data.message);
-        }
-      } else {
-        console.log("error connecting server");
-      }
-    } else {
-      if (Game_Data[item]?.pushto) {
-        return router.push(Game_Data[item].pushto);
-      }
-      router.push("/games/" + item);
-    }
-  }
+
 
   let slideIndex = 0;
   let slides;
