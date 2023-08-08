@@ -1,5 +1,5 @@
-.journey {
-  padding: 10px 50px;
+@mixin journeyFullPage($paddingY: 10px, $paddingX: 50px) {
+  padding: $paddingY $paddingX;
   .mainheading {
     font-weight: 500;
     font-size: 25px;
@@ -11,48 +11,32 @@
       margin-left: 10px;
     }
   }
-}
-
-// smaller width tabs
-@media only screen and (min-width: 480px) and (max-width: 820px) {
-  .journey {
-    padding: 10px 20px;
-    .mainheading {
-      font-weight: 500;
-      font-size: 25px;
-      color: rgba(87, 88, 128, 1);
-      display: flex;
-      align-items: center;
-      padding: 20px 0;
-      svg {
-        margin-left: 10px;
-      }
+  .journeyLayout {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }
 
-// smaller tabs landscape mode
-@media only screen and (orientation: landscape) and (max-height: 820px) {
+.journey {
+  @include journeyFullPage();
 }
 
-// for phones
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 501px) and (max-width: 990px) {
   .journey {
-    padding: 0 20px;
-    .mainheading {
-      font-weight: 500;
-      font-size: 25px;
-      color: rgba(87, 88, 128, 1);
-      display: flex;
-      align-items: center;
-      padding: 20px 0;
-      svg {
-        margin-left: 10px;
-      }
-    }
+    @include journeyFullPage(20px, 20px);
   }
 }
 
-// for phones landscape
-@media only screen and (orientation: landscape) and (max-height: 480px) {
+@media only screen and (max-width: 500px) {
+  .journey {
+    @include journeyFullPage(10px, 20px);
+  }
 }

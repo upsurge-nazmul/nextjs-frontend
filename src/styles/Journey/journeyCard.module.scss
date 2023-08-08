@@ -1,0 +1,41 @@
+.journeyCard {
+  min-width: 20rem;
+  height: fit-content;
+  border-radius: 1.25rem;
+  box-shadow: 0px 2.4900662899017334px 12.450331687927246px 0px
+    rgba(65, 102, 235, 0.15);
+  padding: 1rem;
+  background-color: #fafafa;
+  display: flex;
+  gap: 1rem;
+  .cardLeft {
+    .cardImage {
+      height: 6rem;
+      width: 6rem;
+    }
+  }
+  .cardRight {
+    .questType {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #4066eb;
+      margin: 0.5rem 0;
+    }
+    .title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 0.75rem;
+    }
+    .actionButton {
+      background-color: #4066eb;
+      color: #fafafa;
+      font-weight: 300;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 25rem;
+      padding: 0.25rem 0.75rem;
+      text-align: center;
+    }
+  }
+}

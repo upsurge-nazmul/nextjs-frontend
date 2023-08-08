@@ -10,7 +10,7 @@
     height: 100vh;
     flex: 1;
     display: flex;
-    width: 100%;
+    width: calc(100vw - 30vw);
     // max-width: calc(100vw - 300px);
     flex-direction: column;
     .mainContent {
