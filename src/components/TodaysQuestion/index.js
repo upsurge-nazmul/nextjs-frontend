@@ -50,11 +50,12 @@ const TodaysQuestion = ({ data, unicoins = 0 }) => {
           <div className={styles.unicoinChip}>
             <UniCoinSvg className={styles.unicoinIcon} />
             <div className={styles.unicoins}>
-              {unicoins
+              {/* {unicoins
                 ? parseInt(unicoins) > 1000
                   ? `${parseFloat(unicoins / 1000)}k`
                   : unicoins
-                : 0}
+                : 0} */}
+                1000
             </div>
           </div>
         </div>
