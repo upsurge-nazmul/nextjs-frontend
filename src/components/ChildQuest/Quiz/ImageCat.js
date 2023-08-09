@@ -35,7 +35,7 @@ export default function ImageCat({ data, value, setValue }) {
           data.images.map((image, i) => {
             return (
               <div className={styles.imageWrap} key={"image-wrap" + i}>
-                <Image
+                <img
                   src={image}
                   alt={`Question Image ${i}`}
                   width={300}
