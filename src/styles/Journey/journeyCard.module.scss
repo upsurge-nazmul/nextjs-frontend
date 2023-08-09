@@ -1,5 +1,5 @@
 .journeyCard {
-  min-width: 20rem;
+  min-width: 25rem;
   height: fit-content;
   border-radius: 1.25rem;
   box-shadow: 0px 2.4900662899017334px 12.450331687927246px 0px
@@ -15,6 +15,7 @@
     }
   }
   .cardRight {
+    overflow: hidden;
     .questType {
       font-size: 0.55rem;
       font-weight: 600;
@@ -22,10 +23,11 @@
       margin: 0.5rem 0;
     }
     .title {
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 500;
       color: #333;
       margin-bottom: 0.75rem;
+      white-space: pre-line;
     }
     .actionButton {
       background-color: #4066eb;

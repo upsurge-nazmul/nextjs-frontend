@@ -14,10 +14,15 @@ export default function Journey({ data, userPlanType, setShowSubToPremium }) {
       container.addEventListener("wheel", (event) => {
         event.preventDefault();
 
-        const scrollAmount = event.deltaY;
-        const scrollDirection = Math.sign(scrollAmount);
+        const scrollAmountX = event.deltaX;
+        const scrollDirectionX = Math.sign(scrollAmountX);
 
-        container.scrollLeft += scrollDirection * 50;
+        container.scrollLeft += scrollDirectionX * 50;
+
+        const scrollAmountY = event.deltaY;
+        const scrollDirectionY = Math.sign(scrollAmountY);
+
+        container.scrollLeft += scrollDirectionY * 50;
       });
     }
   }, [journeyRef]);
