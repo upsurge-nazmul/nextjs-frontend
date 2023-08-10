@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
-import Image from "next/image";
 import rupee from "../../../assets/currencies/rupee.png";
 import dollar from "../../../assets/currencies/dollar.png";
 import euro from "../../../assets/currencies/euro.png";
@@ -20,13 +19,16 @@ export default function Matching({ data, value, setValue }) {
 
   const drop = (ev) => {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    setMatches((prev) => [...prev, { qn: ev.target.id, ans: data }]);
+    var transfered = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(transfered));
+    const selected = data.optins.find(
+      (item) => item.id === parseInt(transfered)
+    );
+    setMatches((prev) => [...prev, { qn: ev.target.id, ans: selected.value }]);
   };
 
   useEffect(() => {
-    if (data.optins.length === matches.length) {
+    if (data.question.length === matches.length) {
       let arr = [];
       matches.map((match) => arr.push(match.ans));
       setValue(arr);
@@ -58,33 +60,21 @@ export default function Matching({ data, value, setValue }) {
               <div
                 key={"matching" + i}
                 className={styles.option}
-                id={option}
+                id={option.id}
                 draggable={true}
                 onDragStart={(e) => drag(e)}
               >
                 {data.imageOption ? (
-                  <Image
-                    src={
-                      option === "rupee"
-                        ? rupee
-                        : option === "dollar"
-                        ? dollar
-                        : option === "euro"
-                        ? euro
-                        : option === "pound"
-                        ? pound
-                        : option === "franc"
-                        ? franc
-                        : ""
-                    }
+                  <img
+                    src={option.imageUrl}
                     className={styles.optionImage}
-                    alt={option}
+                    alt={option.id}
                     width={60}
                     height={60}
                     draggable={false}
                   />
                 ) : (
-                  <div className={styles.textOption}>{option}</div>
+                  <div className={styles.textOption}>{option.value}</div>
                 )}
               </div>
             );
