@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
-import rupee from "../../../assets/currencies/rupee.png";
-import dollar from "../../../assets/currencies/dollar.png";
-import euro from "../../../assets/currencies/euro.png";
-import franc from "../../../assets/currencies/franc.png";
-import pound from "../../../assets/currencies/pound.png";
 
 export default function Matching({ data, value, setValue }) {
   const [matches, setMatches] = useState([]);
 
   const allowDrop = (ev) => {
     ev.preventDefault();
+    // if an element is already dropped in the area, don't allow another element to be dropped
+    // check in the matches array if the element is already dropped
+    if (matches.find((item) => item.qn === ev.target.id)) {
+      ev.dataTransfer.dropEffect = "none";
+      return;
+    }
   };
 
   const drag = (ev) => {
@@ -19,8 +20,32 @@ export default function Matching({ data, value, setValue }) {
 
   const drop = (ev) => {
     ev.preventDefault();
-    var transfered = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(transfered));
+    const transfered = ev.dataTransfer.getData("text");
+    const transferedElement = document.getElementById(transfered);
+
+    // set draggable to false before adding the transfer element
+    transferedElement.draggable = false;
+
+    // adding a cross button to remove the element
+    const cross = document.createElement("div");
+    cross.innerHTML = "X";
+    cross.className = styles.cross;
+    transferedElement.appendChild(cross);
+
+    cross.onclick = () => {
+      // set draggable to true again on clicking the cross
+      transferedElement.draggable = true;
+
+      // remove the cross button
+      cross.remove();
+      // get the element back to the options tray
+      const option = document.getElementById("Options-Tray");
+      option.appendChild(transferedElement);
+      // remove the item from matches
+      setMatches((prev) => prev.filter((item) => item.qn !== ev.target.id));
+    };
+
+    ev.target.appendChild(transferedElement);
     const selected = data.optins.find(
       (item) => item.id === parseInt(transfered)
     );
@@ -54,7 +79,7 @@ export default function Matching({ data, value, setValue }) {
             );
           })}
         </div>
-        <div className={styles.right}>
+        <div className={styles.right} id={"Options-Tray"}>
           {data.optins.map((option, i) => {
             return (
               <div

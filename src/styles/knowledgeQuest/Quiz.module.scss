@@ -330,26 +330,30 @@ $qn-font-size: 1.25rem;
           display: flex;
           justify-content: flex-end;
           flex-direction: column;
-          .option {
-            margin: 10px 0;
-            display: flex;
-            flex-direction: column;
-            .optionImage {
-              border-radius: 50%;
-              background-color: #f4f4f4;
-              box-shadow: 1px 1px 2px 2px #f4f4f4;
-              cursor: grab;
-            }
-          }
-          .textOption {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 5px 20px;
-            border-radius: 14px;
-          }
         }
+      }
+      .option {
+        margin: 10px 0;
+        display: flex;
+        .optionImage {
+          border-radius: 50%;
+          background-color: #f4f4f4;
+          box-shadow: 1px 1px 2px 2px #f4f4f4;
+          cursor: grab;
+        }
+        .cross {
+          cursor: pointer !important;
+          font-size: 1rem !important;
+          color: #ff6263 !important;
+        }
+      }
+      .textOption {
+        font-size: 1.25rem;
+        font-weight: 700;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 5px 20px;
+        border-radius: 14px;
       }
     }
     .oneWord {
