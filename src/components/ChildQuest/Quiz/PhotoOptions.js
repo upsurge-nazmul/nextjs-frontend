@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 
-const ImageOption = ({ src }) => {
-  return <img src={src} className={styles.optionImage} />;
+const ImageOption = ({ src, alt = "" }) => {
+  return <img src={src} alt={alt} className={styles.optionImage} />;
 };
 
 export default function PhotoOptions({ data, value, setValue }) {
@@ -25,7 +25,14 @@ export default function PhotoOptions({ data, value, setValue }) {
               {i < data.question.length - 1 && (
                 <span className={styles.selectedOption}>
                   {value ? (
-                    <>{selected && <ImageOption src={selected.image} />}</>
+                    <>
+                      {selected && (
+                        <ImageOption
+                          src={selected.image}
+                          alt={"selected-image"}
+                        />
+                      )}
+                    </>
                   ) : (
                     <span className={styles.emptyInput}></span>
                   )}
@@ -46,7 +53,7 @@ export default function PhotoOptions({ data, value, setValue }) {
                 }
                 onClick={() => setValue(option.name)}
               >
-                <ImageOption src={option.image} />
+                <ImageOption src={option.image} alt={option.name} />
               </div>
             );
           })}
