@@ -130,7 +130,7 @@ function Games({
             )}
             {recent_games && recent_games.length > 0 && (
               <div className={styles.recentSection}>
-                <h2 className={styles.heading}>Recently Played</h2>
+                <h2 className={styles.heading}>Recently Played <HeadingArrow /></h2>
                 <div className={styles.wrapper} id="gamecardwrapper2">
                   {recentgames.map((item, index) => {
                     return (
@@ -158,7 +158,7 @@ function Games({
             )}
             <div className={styles.availableSection}>
               <h2 className={styles.heading}>
-                Available Games
+                Online Games
                 <HeadingArrow />
               </h2>
               <GameList
@@ -168,7 +168,7 @@ function Games({
                 userdata={userdata}
               />
             </div>
-            {/* <AvailableGames /> */}
+            <AvailableGames /> 
           </div>
         </div>
       </div>
