@@ -1,161 +1,177 @@
 .reward {
   background-color: #fff;
-  width: fit-content;
-  border-radius: 8px;
-  max-width: 48%;
-  box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
-  display: flex;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 1rem 1.5rem rgba(8, 60, 194, 0.15);
+  border-radius: 1rem;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr 1fr;  
+  grid-template-areas: 
+    "left"
+    "right"
+    "right"; 
+  justify-content: space-evenly; 
+  align-content: space-evenly; 
+  justify-items: stretch; 
+  align-items: stretch; 
+  
   .showOTP {
     position: absolute !important;
     top: 0;
     left: 0;
   }
-  .image {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    width: 30%;
-    height: 100%;
-    object-fit: cover;
-    box-shadow: 1px 0px 11px 1px rgb(184 184 184);
-  }
-  .right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
+  
+  .left{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    grid-template-areas: 
+      "image vname"; 
+    grid-area: left; 
+    .image {
+      object-fit: cover;
+      grid-area: image; 
+      max-width: 10rem;
+      margin: 1rem 1rem 0rem 1rem;
+    }  
     .nameArea {
-      display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 20px 10px;
+      align-self: center;
+      grid-area: vname; 
+      margin-right: 1rem;
       .name {
-        font-size: 1rem;
+        font-size: calc(1rem + 0.5vh);
         font-weight: 500;
-        max-width: 10vw;
       }
-      .valueArea {
-        display: flex;
-        gap: 10px;
-        .svg {
-          width: 14px;
-          color: #6d6d6d;
-        }
-        .value {
-          font-size: 1rem;
-          font-weight: 600;
-          color: #434040;
-        }
-      }
-    }
-    .quantityandprice {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 10px 20px;
-    }
-    .description {
-      padding: 1rem;
-      background-color: beige;
       
     }
-    .actionArea {
-      width: 100%;
-      display: flex;
-      .button {
-        border: none;
-        color: #fff;
-        display: flex;
+  }
+    .right {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas:
+        "quantandprice"
+        "description"
+        "actionarea";
+      grid-area: right;
+      
+  
+      .quantityandprice {
+        grid-area: quantandprice;
         align-items: center;
-        justify-content: center;
-        height: 45px;
-        cursor: pointer;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 1rem;  
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        
+        .valueArea {
+          gap: 0.5rem;
+          display: flex;
+          flex-direction: row;
+          
+          .svg {
+            width: calc(1rem + 0.5vh);
+            color: #6d6d6d;
+          }
+    
+          .value {
+            font-size: calc(1rem + 0.5vh);
+            font-weight: 600;
+            color: #434040;
+          }
+        }
+      }
+  
+      
+  
+      .description {
+        padding: 1rem;
+        background-color: beige;
+        grid-area: description;
+        font-size: calc(0.7rem + 0.5vh);;
+      }
+  
+      .actionArea {
         width: 100%;
-      }
-      .redeemButton {
-        @extend .button;
-        background-color: #4166eb;
-      }
-      .disabledButton {
-        @extend .button;
-        border: 1px solid #b3b2b2;
-        background-color: transparent;
-        color: #b3b2b2;
-        cursor: unset;
-      }
-      .detailsButton {
-        @extend .button;
-        background-color: #5a5959;
-        border-bottom-right-radius: 8px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+          "details redeem";
+        grid-area: actionarea;
+        gap: 1rem;
+        padding: 0.5rem;
+  
+        .button {
+          border: none;
+          color: #fff;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+          cursor: pointer;
+          width: 100%;
+          font-size: calc(0.8rem + 0.5vh);
+          border-radius: 1rem;
+        }
+  
+        .redeemButton {
+          grid-area: redeem;
+          @extend .button;
+          background-color: #4166eb;
+        }
+  
+        .disabledButton {
+          @extend .button;
+          border: 1px solid #b3b2b2;
+          background-color: transparent;
+          color: #b3b2b2;
+          cursor: unset;
+        }
+  
+        .detailsButton {
+          grid-area: details;
+          @extend .button;
+          background-color: #5a5959;
+        }
       }
     }
-  }
 }
 
 // smaller width tabs
-@media only screen and (min-width: 480px) and (max-width: 820px) {
+@media only screen and (min-width: 480px) and (max-width: 990px) {
   .reward {
-    width: 100%;
     .image {
-      width: 30vw;
     }
     .right {
       .nameArea {
         .name {
-          max-width: 30vw;
         }
       }
     }
   }
 }
 
-// smaller tabs landscape mode
-@media only screen and (orientation: landscape) and (max-height: 820px) {
-}
 
 // for phones
 @media only screen and (max-width: 480px) {
   .reward {
-    width: 100%;
-    flex-direction: column;
+    .left{
     .image {
-      width: 75%;
-      object-fit: fill;
-      border-radius: 8px;
-      align-self: center;
-      margin-top: 1rem;
-    }
-    .right {
-      .nameArea {
-        flex-direction: column;
-        padding: 10px;
-        align-items: flex-start;
-        .name {
-          max-width: 100%;
-          padding-bottom: 10px;
-        }
-      }
-      .quantityandprice {
-        flex-direction: column;
-      }
+      max-width: 7rem;
     }
   }
-}
 
-// for phones landscape
-@media only screen and (orientation: landscape) and (max-height: 480px) {
-  .reward {
-    width: 95%;
-    .image {
-      width: 20vw;
+  .right{
+    .description{
+      font-size: calc(0.5rem + 0.5vh);
+      padding: 0.5rem;
     }
-    .right {
-      .nameArea {
-        .name {
-          max-width: 30vw;
-        }
-      }
-    }
+  }
+    
   }
 }

@@ -103,18 +103,16 @@ export default function Reward({
           <RewardDetails data={data} />
         </Modal>
       )}
-
+      <div className={styles.left}>
       <img className={styles.image} src={data.imageUrl} alt="" />
-      <div className={styles.right}>
-        <div className={styles.nameArea}>
+      <div className={styles.nameArea}>
           <div className={styles.name}>{data.name}</div>
-          <div className={styles.valueArea}>
-            <UniCoinSvg className={styles.svg} clr={"#434040"} />
-            <div className={styles.value}>
-              {selectedprice * quantity * UniCoinValue}
-            </div>
-          </div>
+          
         </div>
+      </div>  
+      
+      <div className={styles.right}>
+        
         <div className={styles.quantityandprice}>
           <DropDown
             options={prices}
@@ -124,21 +122,37 @@ export default function Reward({
             placeholder={"Reward (₹)"}
             setvalue={(value) => setselectedprice(value)}
           />
-          {
+
+          {/* {
             <DropDown
-              options={[1, 2, 3, 4, 5]}
+              options={[1]}
               value={quantity}
               keyprefix={data.name + "quantity"}
               setvalue={setquantity}
               placeholder={"Quantity"}
+              className={styles.quantity}
             />
-          }
+          } */}
+         <div className={styles.valueArea}>
+            <UniCoinSvg className={styles.svg} clr={"#434040"} />
+            <div className={styles.value}>
+              {selectedprice * quantity * UniCoinValue}
+            </div>
+          </div>
         </div>
+        
         {(data.productId === 31057 ? (<div className={styles.description}>
         Phone number registered with us should have full wallet KYC with Paytm to succesfully redeem this voucher.
         </div>) : "")}
         
         <div className={styles.actionArea}>
+        <button
+            className={styles.detailsButton}
+            onClick={() => setShowDetails(true)}
+          >
+            Details
+          </button>
+
           {parent ? (
             ""
           ) : (
@@ -146,12 +160,7 @@ export default function Reward({
               Redeem
             </button>
           )}
-          <button
-            className={styles.detailsButton}
-            onClick={() => setShowDetails(true)}
-          >
-            Details
-          </button>
+          
         </div>
       </div>
     </div>
