@@ -14,6 +14,7 @@ import TrueFalse from "./TrueFalse";
 import VideoQn from "./VideoQn";
 import YesNo from "./YesNo";
 import PhotoOptions from "./PhotoOptions";
+import ImageSelection from "./ImageSelection";
 
 const TYPES = [
   "mcq", // 0
@@ -30,6 +31,7 @@ const TYPES = [
   "missing-letters", // 11
   "image-categorize", // 12
   "photo-options", // 13
+  "image-selection", // 14
 ];
 
 export default function Quiz({
@@ -74,6 +76,8 @@ export default function Quiz({
           <ImageCat {...{ data, value, setValue }} />
         ) : type === TYPES[13] ? (
           <PhotoOptions {...{ data, value, setValue }} />
+        ) : type === TYPES[14] ? (
+          <ImageSelection {...{ data, value, setValue }} />
         ) : (
           ""
         )}

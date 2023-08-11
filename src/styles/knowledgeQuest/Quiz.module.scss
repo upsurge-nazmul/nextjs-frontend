@@ -681,7 +681,7 @@ $photo-question-image-size: 40px;
             border-bottom: 1px solid #ccc;
             margin: 0 10px;
           }
-          .emptyInput{
+          .emptyInput {
             width: $photo-question-image-size;
             height: $photo-question-image-size;
           }
@@ -714,6 +714,50 @@ $photo-question-image-size: 40px;
           font-weight: 500;
           background-color: transparent;
         }
+      }
+    }
+    .imageSelection {
+      padding: 0 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .questionText {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #333;
+        padding: 0.5rem 0;
+      }
+      .optoinsArea {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 70vw;
+      }
+      .option {
+        cursor: pointer;
+        width: 16rem;
+        height: 10rem;
+        padding: 1rem 0.5rem;
+        text-align: center;
+        margin: 1rem;
+        border: 3px solid #fff;
+        border-radius: 1rem;
+        .optionImage {
+          max-width: 100%;
+          height: 80%;
+        }
+        .optionText {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #7b7a7a;
+          padding: 0.5rem 0;
+        }
+      }
+      .selectedOption {
+        @extend .option;
+        border: 3px solid #17d1bc;
+        border-radius: 1rem;
+        // box-shadow: inset 0px 0px 8px 0px #bbbbbb;
       }
     }
   }
