@@ -4,11 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 3rem 2rem;
+
   .heading {
-    text-align: center;
-    font-size: 32px;
-    color: $yellow;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgba(87, 88, 128, 1);
+    display: flex;
+    align-items: center;
+    svg {
+      margin-left: 0.625rem;
+    }
   }
   .gamelistwrapper {
     margin-top: 5vh;
@@ -16,10 +21,9 @@
     min-height: 70vh;
     overflow: auto;
     flex-wrap: wrap;
-    justify-content: center;
     max-width: 1200px;
-    gap: 40px;
-    padding-bottom: 100px;
+    gap: 2.5rem;
+    padding-bottom: 4rem;
     .gameCard {
       background: linear-gradient(
           0deg,
@@ -27,18 +31,18 @@
           rgba(241, 248, 255, 0.2)
         ),
         #ffffff;
-      box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
-      border-radius: 12px;
-      height: 340px;
-      width: 260px;
+      box-shadow: 0rem 0.75rem 1.5rem rgba(8, 60, 194, 0.15);
+      border-radius: 0.75rem;
+      min-width: 22rem;
       font-family: "Lexend", sans-serif;
       font-weight: 500;
-      border-radius: 8px;
+      border-radius: 0.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: all 0.3s ease;
-      padding: 15px;
+      padding: 1rem;
+      justify-content: space-evenly;
       .contentWrapper {
         width: 100%;
         height: 100%;
@@ -46,37 +50,38 @@
         flex-direction: column;
       }
       .title {
-        font-size: 18px;
+        font-size: calc(1rem + 0.5vw);
         font-weight: 500;
-        margin-top: 20px;
+        margin-top: 1.25rem;
         width: 100%;
         text-align: center;
       }
       .detail {
-        font-size: 12px;
+        font-size: 0.75rem;
         font-weight: 400;
         color: rgba(130, 130, 130, 1);
         width: 100%;
         text-align: center;
         overflow: auto;
         scrollbar-width: thin;
-        margin-top: 6px;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
       }
       .button {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 45px;
+        height: 3rem;
         width: 100%;
-        border-radius: 6px;
+        border-radius: 0.5rem;
         background-color: #b4b4b4;
         color: white;
-        font-size: 14px;
+        font-size: calc(0.75rem + 0.5vh);
         margin-top: auto;
         cursor: pointer;
         svg {
-          margin-left: 10px;
-          width: 22px;
+          margin-left: 0.625rem;
+          width: 1.5rem;
           fill: white;
           path {
             fill: white;
@@ -95,18 +100,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 45px;
+        height: 3rem;
         width: 100%;
         border-width: 0;
-        border-radius: 6px;
+        border-radius: 0.5rem;
         background-color: #4266eb;
         color: white;
-        font-size: 14px;
+        font-size: 1rem;
         margin-top: auto;
         cursor: pointer;
         svg {
-          margin-left: 10px;
-          width: 22px;
+          margin-left: 0.625rem;
+          width: 1.5rem;
           fill: white;
           path {
             fill: white;
@@ -121,9 +126,40 @@
           }
         }
       }
+      .btnContainer {
+        display: flex;
+        row-gap: 0.5rem;
+        align-items: center;
+        margin-top: 0.5rem;
+        width: 100%;
+        justify-content: space-evenly;
+        button {
+          margin-top: 0.5rem;
+          margin-inline: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          background-color: $blue;
+          border: none;
+          border-radius: 0.5rem;
+          font-weight: 500;
+          font-size: 1rem;
+          color: #fff;
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0px 13.3978px 24.8817px rgba(8, 60, 194, 0.15);
+          }
+        }
+        .badge {
+          width: 9rem;
+          height: 2.5rem;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 0.5rem;
+          cursor: pointer;
+        }
+      }
       .date {
-        font-size: 11.4839px;
-        margin-top: 6px;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
         text-align: left;
         width: 100%;
         color: #848484;
@@ -132,9 +168,9 @@
 
       img {
         width: 100%;
-        height: 146px;
+        height: 9rem;
         object-fit: contain;
-        border-radius: 6px;
+        border-radius: 0.5rem;
         background-color: rgb(255, 255, 255);
       }
     }
