@@ -12,17 +12,18 @@ import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
 import PageTitle from "../../../../components/PageTitle";
 import SubToPremiumPopUp from "../../../../components/SubToPremiumPopUp";
+
 const QUEST_TYPES = [
-  { title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
-  { title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
-  { title: "Career Quests", background: "#ccc", font: "#333" },
-  { title: "Life Skills", background: "#ccc", font: "#333" },
+  { questId: "FL", title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
+  { questId: "ER", title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
+  { questId: "CQ", title: "Career Quests", background: "#ccc", font: "#333" },
+  { questId: "LS", title: "Life Skills", background: "#ccc", font: "#333" },
 ];
 
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
   const { setuserdata } = useContext(MainContext);
-  const [tab, setTab] = useState(QUEST_TYPES[0]);
+  const [tab, setTab] = useState();
   const [toastdata, settoastdata] = useState({
     show: false,
     type: "success",
@@ -36,6 +37,29 @@ export default function KnowledgeQuest({ userData, questData }) {
   const handleCardClick = (id) => {
     router.push(`/dashboard/k/quest/${id}`);
   };
+
+  const handleTabClick = (tab) => {
+    router.push({
+      pathname: router.pathname,
+      query: { questId: tab.questId },
+    });
+    setTab(tab);
+  };
+
+  useEffect(() => {
+    // set tab from query params
+    if (router.isReady) {
+      let currentTab = router.query.questId;
+      if (currentTab) {
+        let tab = QUEST_TYPES.find((qt) => qt.questId === currentTab);
+        if (tab) {
+          setTab(tab);
+        } else handleTabClick(QUEST_TYPES[0]);
+      } else handleTabClick(QUEST_TYPES[0]);
+    }
+  }, [router.query]);
+
+  console.log("router", router.isReady, router.query)
 
   return (
     <div className={styles.questPage}>
@@ -51,21 +75,28 @@ export default function KnowledgeQuest({ userData, questData }) {
           <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
         )}
         <div className={styles.mainContent} id="quest-main">
-         
-          <Tabs list={QUEST_TYPES} current={tab} setCurrent={setTab} />
-          {/* <HeadArea
-            data={questData}
-            tab={tab}
-            handleCardClick={handleCardClick}
-          /> */}
-          <MainSection
-            data={questData}
-            handleCardClick={handleCardClick}
-            QUEST_TYPES={QUEST_TYPES}
-            tab={tab}
-            userData={userData}
-            setShowSubToPremium={setShowSubToPremium}
-          />
+          {tab && (
+            <>
+              <Tabs
+                list={QUEST_TYPES}
+                current={tab}
+                setCurrent={handleTabClick}
+              />
+              {/* <HeadArea
+              data={questData}
+              tab={tab}
+              handleCardClick={handleCardClick}
+            /> */}
+              <MainSection
+                data={questData}
+                handleCardClick={handleCardClick}
+                QUEST_TYPES={QUEST_TYPES}
+                tab={tab}
+                userData={userData}
+                setShowSubToPremium={setShowSubToPremium}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

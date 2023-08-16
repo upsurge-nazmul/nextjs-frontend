@@ -195,7 +195,7 @@ function DashboardLeftPanel({
                 : ""
             }`}
             id="quest-leftpanel"
-            onClick={() => router.push("/dashboard/k/quest")}
+            onClick={() => router.push("/dashboard/k/quest?questId=FL")}
           >
             <CoursesSvg className={styles.icon} />
             <p className={styles.tabtitle}>Knowledge Quests</p>
