@@ -80,7 +80,7 @@ export default function Matching({ data, value, setValue }) {
           })}
         </div>
         <div className={styles.right} id={"Options-Tray"}>
-          {data.optins.map((option, i) => {
+          {data.options.map((option, i) => {
             return (
               <div
                 key={"matching" + i}
