@@ -32,7 +32,7 @@ const democoncepts = [
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
   const { userdata, setuserdata, widthHeight } = useContext(MainContext);
-  const { questId } = router.query;
+  const { questId, questTypeId } = router.query;
 
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -99,7 +99,7 @@ export default function KnowledgeQuest({ userData, questData }) {
           <DashboardHeader
             mode={currentQuest.title}
             showback={true}
-            gobackto={"/dashboard/k/quest/"}
+            gobackto={"/dashboard/k/quest?questTypeId=" + questTypeId}
           />
         ) : (
           ""

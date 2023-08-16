@@ -14,10 +14,10 @@ import PageTitle from "../../../../components/PageTitle";
 import SubToPremiumPopUp from "../../../../components/SubToPremiumPopUp";
 
 const QUEST_TYPES = [
-  { questId: "FL", title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
-  { questId: "ER", title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
-  { questId: "CQ", title: "Career Quests", background: "#ccc", font: "#333" },
-  { questId: "LS", title: "Life Skills", background: "#ccc", font: "#333" },
+  { questTypeId: "FL", title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
+  { questTypeId: "ER", title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
+  { questTypeId: "CQ", title: "Career Quests", background: "#ccc", font: "#333" },
+  { questTypeId: "LS", title: "Life Skills", background: "#ccc", font: "#333" },
 ];
 
 export default function KnowledgeQuest({ userData, questData }) {
@@ -35,13 +35,13 @@ export default function KnowledgeQuest({ userData, questData }) {
   }, [userData]);
 
   const handleCardClick = (id) => {
-    router.push(`/dashboard/k/quest/${id}`);
+    router.push(`/dashboard/k/quest/${id}?questTypeId=${tab.questTypeId}`);
   };
 
   const handleTabClick = (tab) => {
     router.push({
       pathname: router.pathname,
-      query: { questId: tab.questId },
+      query: { questTypeId: tab.questTypeId },
     });
     setTab(tab);
   };
@@ -49,17 +49,15 @@ export default function KnowledgeQuest({ userData, questData }) {
   useEffect(() => {
     // set tab from query params
     if (router.isReady) {
-      let currentTab = router.query.questId;
+      let currentTab = router.query.questTypeId;
       if (currentTab) {
-        let tab = QUEST_TYPES.find((qt) => qt.questId === currentTab);
+        let tab = QUEST_TYPES.find((qt) => qt.questTypeId === currentTab);
         if (tab) {
           setTab(tab);
         } else handleTabClick(QUEST_TYPES[0]);
       } else handleTabClick(QUEST_TYPES[0]);
     }
   }, [router.query]);
-
-  console.log("router", router.isReady, router.query)
 
   return (
     <div className={styles.questPage}>
