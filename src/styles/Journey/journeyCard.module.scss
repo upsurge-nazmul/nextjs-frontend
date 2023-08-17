@@ -1,43 +1,98 @@
+// .journeyCard {
+//   min-width: 25rem;
+//   height: fit-content;
+//   border-radius: 1.25rem;
+//   box-shadow: 0px 2.4900662899017334px 12.450331687927246px 0px
+//     rgba(65, 102, 235, 0.15);
+//   padding: 1rem;
+//   background-color: #fafafa;
+//   display: flex;
+//   gap: 1rem;
+//   .cardLeft {
+//     .cardImage {
+//       height: 6rem;
+//       width: 6rem;
+//     }
+//   }
+//   .cardRight {
+//     overflow: hidden;
+//     .questType {
+//       font-size: 0.55rem;
+//       font-weight: 600;
+//       color: #4066eb;
+//       margin: 0.5rem 0;
+//     }
+//     .title {
+//       font-size: 1rem;
+//       font-weight: 500;
+//       color: #333;
+//       margin-bottom: 0.75rem;
+//       white-space: pre-line;
+//     }
+//     .actionButton {
+//       background-color: #4066eb;
+//       color: #fafafa;
+//       font-weight: 300;
+//       font-size: 0.85rem;
+//       cursor: pointer;
+//       border-radius: 25rem;
+//       padding: 0.25rem 0.75rem;
+//       text-align: center;
+//     }
+//   }
+// }
 .journeyCard {
-  min-width: 25rem;
-  height: fit-content;
-  border-radius: 1.25rem;
-  box-shadow: 0px 2.4900662899017334px 12.450331687927246px 0px
-    rgba(65, 102, 235, 0.15);
-  padding: 1rem;
-  background-color: #fafafa;
-  display: flex;
-  gap: 1rem;
-  .cardLeft {
-    .cardImage {
-      height: 6rem;
-      width: 6rem;
-    }
+  background-clip: content-box;
+  background-position: center;
+  min-width: 16rem;
+  min-height: 14rem;
+  background-size: cover;
+  box-shadow: 0px 2.4900662899017334px 12.450331687927246px 0px rgba(65, 102, 235, 0.15);
+  border-radius: 1rem;
+
+  .questType {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: #4066eb;
+    background-color: #ddd;
+    max-width: 6rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    position: relative;
+    top: -1rem;
   }
-  .cardRight {
-    overflow: hidden;
-    .questType {
-      font-size: 0.55rem;
-      font-weight: 600;
-      color: #4066eb;
-      margin: 0.5rem 0;
-    }
-    .title {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 0.75rem;
-      white-space: pre-line;
-    }
-    .actionButton {
-      background-color: #4066eb;
-      color: #fafafa;
-      font-weight: 300;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border-radius: 25rem;
-      padding: 0.25rem 0.75rem;
-      text-align: center;
-    }
+
+  .cardBottom{
+    border-radius: 1rem;
+    position: relative;
+    bottom: -10rem;
+
+  .title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    white-space: pre-line;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    position: relative;
+    background-color: #ddd;
+    max-height: 3rem;
   }
+
+  .actionButton {
+    background-color: #4066eb;
+    color: #fafafa;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    max-width: 8rem;
+    position: relative;
+    bottom: 0.5rem;
+    right: -9rem;
+  }
+}
+
 }

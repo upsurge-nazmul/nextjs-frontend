@@ -18,18 +18,11 @@ export default function JourneyCard({
   };
 
   return (
-    <div className={styles.journeyCard}>
-      <div className={styles.cardLeft}>
-        <div className={styles.cardImage}>
-          <Image
-            imageUrl={`/images/kq/${data.questId}.webp`}
-            alt={data.title}
-            placeholderText={data.title}
-          />
-        </div>
-      </div>
-      <div className={styles.cardRight}>
+    <div className={styles.journeyCard} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)` }}>
+      
+      
         <div className={`${styles.questType} mt-2`}>{data?.quest_type}</div>
+        <div className={styles.cardBottom}>
         <div className={`${styles.title} mb-3`}>{data?.title}</div>
         <div
           onClick={() => handleActionClick(data?.questId)}
@@ -37,7 +30,31 @@ export default function JourneyCard({
         >
           Start Learning
         </div>
-      </div>
+        </div>
+      
     </div>
   );
+  // return (
+  //   <div className={styles.journeyCard}>
+  //     <div className={styles.cardLeft}>
+  //       <div className={styles.cardImage}>
+  //         <Image
+  //           imageUrl={`/images/kq/${data.questId}.webp`}
+  //           alt={data.title}
+  //           placeholderText={data.title}
+  //         />
+  //       </div>
+  //     </div>
+  //     <div className={styles.cardRight}>
+  //       <div className={`${styles.questType} mt-2`}>{data?.quest_type}</div>
+  //       <div className={`${styles.title} mb-3`}>{data?.title}</div>
+  //       <div
+  //         onClick={() => handleActionClick(data?.questId)}
+  //         className={`${styles.actionButton} rounded-pill text-center py-1`}
+  //       >
+  //         Start Learning
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
