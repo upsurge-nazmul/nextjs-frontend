@@ -46,7 +46,7 @@ export default function Matching({ data, value, setValue }) {
     };
 
     ev.target.appendChild(transferedElement);
-    const selected = data.optins.find(
+    const selected = data.options.find(
       (item) => item.id === parseInt(transfered)
     );
     setMatches((prev) => [...prev, { qn: ev.target.id, ans: selected.value }]);

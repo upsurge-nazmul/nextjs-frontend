@@ -54,6 +54,7 @@ export default function PhotoOptions({ data, value, setValue }) {
                 onClick={() => setValue(option.name)}
               >
                 <ImageOption src={option.image} alt={option.name} />
+                <div>{option.name}</div>
               </div>
             );
           })}

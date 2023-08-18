@@ -703,6 +703,7 @@ $photo-question-image-size: 40px;
           font-size: 0.875rem;
           color: #333;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           border-radius: 14px;

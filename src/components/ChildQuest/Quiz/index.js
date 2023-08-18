@@ -45,6 +45,8 @@ export default function Quiz({
   const { type } = data;
   const [value, setValue] = useState();
 
+  console.log("Quiz data:", data)
+
   return (
     <div className={styles.quizSection}>
       <div className={styles.quizContent}>
