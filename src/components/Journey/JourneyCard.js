@@ -18,17 +18,14 @@ export default function JourneyCard({
   };
 
   return (
-    <div className={styles.journeyCard} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)` }}>
+    <div className={styles.journeyCard} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)`}}  onClick={() => handleActionClick(data?.questId)}>
       
       
-        <div className={`${styles.questType} mt-2`}>{data?.quest_type}</div>
+        {/* <div className={`${styles.questType} mt-2`}>{data?.title}</div> */}
         <div className={styles.cardBottom}>
         <div className={`${styles.title} mb-3`}>{data?.title}</div>
-        <div
-          onClick={() => handleActionClick(data?.questId)}
-          className={`${styles.actionButton} rounded-pill text-center py-1`}
-        >
-          Start Learning
+        <div className={`${styles.actionButton} rounded-pill text-center py-1`}     >
+          &#9658; 
         </div>
         </div>
       

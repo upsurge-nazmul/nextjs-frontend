@@ -1,12 +1,11 @@
-@mixin journeyFullPage($paddingY: 10px, $paddingX: 50px) {
-  padding: $paddingY $paddingX;
+.journey {  
   .mainheading {
     font-weight: 500;
     font-size: 25px;
     color: rgba(87, 88, 128, 1);
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 1.25rem 3rem;
     svg {
       margin-left: 10px;
     }
@@ -18,25 +17,35 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 2.5rem 0;
+    padding: 2rem 3rem 6rem 3rem;
     &::-webkit-scrollbar {
       display: none;
     }
   }
 }
 
-.journey {
-  @include journeyFullPage();
-}
+
+
 
 @media only screen and (min-width: 501px) and (max-width: 990px) {
   .journey {
-    @include journeyFullPage(20px, 20px);
+    .mainheading{
+      padding: 1.25rem 1.25rem;
+    }
+    .journeyLayout{
+      padding: 2rem 1.25rem 6rem 1.25rem;
+    }
   }
 }
 
 @media only screen and (max-width: 500px) {
   .journey {
-    @include journeyFullPage(10px, 20px);
+    
+    .mainheading{
+      padding: 1.25rem 1.25rem;
+    }
+    .journeyLayout{
+      padding: 2rem 1.25rem 6rem 1.25rem;
+    }
   }
 }
