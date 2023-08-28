@@ -70,8 +70,9 @@ const TodaysQuestion = ({ data, unicoins = 0 }) => {
             <>
               <div className={styles.question}>{todaysQuestion?.question}</div>
               <div className={styles.answer}>
-                {["a", "b", "c", "d"].map((item) => (
+                {["a", "b", "c", "d"].map((item, index) => (
                   <Answer
+                    key={index}
                     data={todaysQuestion[item]}
                     onClick={() => setAnswer(item)}
                     selected={answer === item}
