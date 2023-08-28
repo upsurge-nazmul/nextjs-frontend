@@ -1,6 +1,7 @@
 import styles from "../../styles/knowledgeQuest/QuestCard.module.scss";
 import Image from "next/image";
 import LockSvg from "../SVGcomponents/LockSvg";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 
 const BG_COLORS = [
   "#cbc7ea",
@@ -60,59 +61,38 @@ function QuestCard({
   return (
     <>
       {data ? (
-        <div
-          className={styles.questCard}
-          onClick={() => {
-            console.log(userPlanType, data.premium_plan);
-            if (userPlanType >= data.premium_plan) {
-              handleCardClick(data.questId);
-            } else {
-              setShowSubToPremium(true);
-              console.log("Buy a premium plan");
-            }
-          }}
-        >
-          <div
-            className={styles.cardHeader}
-            style={{ backgroundColor: BG_COLORS[data.questNo - 1] }}
-          >
-            
-            <div className={styles.imageWrapper}>
-              <Image
-                src={`/images/kq/${data.questId}.webp`}
-                height={"216"}
-                width={"384"}
-                alt={data.questId}
-                className={styles.img}
-              />
-            </div>
-          </div>
-          <div className={styles.contentWrapper}>
-            <div
-              className={styles.typeChip}
-              style={{
-                backgroundColor: typeProps.background,
-                color: typeProps.font,
-              }}
-            >
-              <p>{data.quest_type}</p>
-            </div>
-            <div className={styles.imageTitle}>
-              <p style={{ color: TEXT_COLORS[data.questNo - 1] }}>
-                {data.title}
-              </p>
-            </div>
-            {/* <p className={styles.title}>{data?.title || ""}</p> */}
-            
-            <p className={styles.detail}>
-              {data?.questDescription.length > 70
-                ? data?.questDescription.substring(0, 70) + "..."
-                : data?.questDescription || ""}
-            </p>
+        <div className={styles.questCard}
 
-            <p className={styles.info}>{`${data.chapters.length} chapters`}</p>
+        onClick={() => {
+          console.log(userPlanType, data.premium_plan);
+          if (userPlanType >= data.premium_plan) {
+            handleCardClick(data.questId);
+          } else {
+            setShowSubToPremium(true);
+            console.log("Buy a premium plan");
+          }
+        }}
+        >
+        <div className={styles.cardTop} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)`}}>
+        </div>
+        <div className={styles.cardBottom}>
+        <div className={`${styles.content} mb-3`} style={userPlanType >= data.premium_plan ? {borderTopColor: '#FDCC03'} : {borderTopColor: '#FF4E4E'} }>
+          <p className={styles.title}>{data?.title}</p>
+          {/* <p className={styles.desc}>{data?.questDescription}</p> */}
+          <div className={styles.info}>
+            <div className={styles.chapters}>{`${data.chapters.length} chapters`}   </div>
+            <div className={styles.unicoins}>
+              <div className={styles.coin}><UniCoinSvg className={styles.svg} /></div>
+              {`${data.totalUnicoins}`}
+            </div>
           </div>
         </div>
+        <div className={`${styles.actionButton} rounded-pill text-center py-1`} style={userPlanType >= data.premium_plan ? {backgroundColor: '#FDCC03'} : {backgroundColor: '#FF4E4E'} }>
+          {userPlanType >= data.premium_plan ? <span className={styles.open}>&#9658;</span> : <LockSvg className={styles.lock} />}
+        </div>
+        </div>
+      
+    </div>
       ) : (
         ""
       )}
