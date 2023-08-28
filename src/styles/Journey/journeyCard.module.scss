@@ -56,12 +56,13 @@
     9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
     14px 21px 41px rgba(0, 0, 0, 0.07)
     ;
-    border-top: solid 3px yellow;
+    border-top: solid 0.25rem #FDCC03;
+
   }
 
   .actionButton {
-    background-color: #c0eb40;
-    color: #444;
+    background-color: #FDCC03;
+    color: #eee;
     font-weight: 500;
     font-size: 1.5rem;
     cursor: pointer;
