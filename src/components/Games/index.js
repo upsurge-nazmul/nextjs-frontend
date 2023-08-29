@@ -8,12 +8,10 @@ import styles from "../../styles/WaitlistDashboard/games.module.scss";
 import { MainContext } from "../../context/Main";
 import { Game_Data, Simulator_Data } from "../../static_data/Game_Data";
 import DashboardHeader from "../Dashboard/DashboardHeader";
-import MoneyAceBanner from "../Dashboard/MoneyAceBanner";
 import PageTitle from "../PageTitle";
 import GameView from "./GameView";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import SubToPremiumPopUp from "../SubToPremiumPopUp";
-import WebglView from "../WebglView";
 import GameList from "./GameList";
 import AvailableGames from "../DownloadGames/AvailableGames";
 
