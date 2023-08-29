@@ -1,223 +1,40 @@
 .gameCard {
-  background: linear-gradient(
-      0deg,
-      rgba(241, 248, 255, 0.2),
-      rgba(241, 248, 255, 0.2)
-    ),
-    #ffffff;
-  box-shadow: 0px 0.8rem 1.5rem rgba(8, 60, 194, 0.15);
-  border-radius: 12px;
+  border-radius: 1rem;
   cursor: pointer;
-  width: 16rem;
   font-family: "Lexend", sans-serif;
   font-weight: 500;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  justify-content: space-between;
   transition: all 0.3s ease;
-  padding: 1rem;
-  .reward {
+  padding: 0rem;
+  background-clip: content-box;
+  background-position: center;
+  background-size: cover;
+  min-width: 15rem;
+  min-height: 14rem;
+  box-shadow:
+  3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+  4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+  5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+  7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+  9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
+  14px 21px 41px rgba(0, 0, 0, 0.07)
+;
+
+  .unicoins{
     display: flex;
-    align-items: center;
-    margin: 10px 0;
-    background: rgb(231, 231, 231);
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.2rem;
     width: fit-content;
-    padding: 2px 10px;
-    border-radius: 5px;
-    .icon {
-      width: 14px;
-      margin-right: 5px;
-    }
-    font-size: 0.875rem;
-  }
-  .contentWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .title {
-    font-size: 1.125rem;
-    text-transform: capitalize;
-    font-weight: 500;
-    margin-top: 20px;
-    width: 100%;
-    text-align: left;
-  }
-  .detail {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: rgba(130, 130, 130, 1);
-    width: 100%;
-    text-align: left;
-    overflow: auto;
-    scrollbar-width: thin;
-  }
-  .actionArea {
-    margin-top: auto;
+    font-size: 0.75rem;
+    align-items: center;
     position: relative;
-  }
-  .date {
-    font-size: 11.4839px;
-    margin-top: 6px;
-    text-align: left;
-    width: 100%;
-    color: #848484;
-  }
-  border: 1px solid rgb(255, 255, 255);
-
-  &:hover {
-    border: 1px solid rgb(187, 187, 187);
-  }
-  img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-    background-color: rgb(228, 228, 228);
-  }
-}
-
-@media only screen and (orientation: portrait) and (max-width: 860px) {
-  .gameCard {
-    background: linear-gradient(
-        0deg,
-        rgba(241, 248, 255, 0.2),
-        rgba(241, 248, 255, 0.2)
-      ),
-      #ffffff;
-    box-shadow: 0px 0.8rem 1.5rem rgba(8, 60, 194, 0.15);
-    border-radius: 12px;
-    cursor: pointer;
-    height: fit-content;
-    width: 210px;
-    font-family: "Lexend", sans-serif;
-    font-weight: 500;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    padding: 1rem;
-    .contentWrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .title {
-      font-size: 1rem;
-      text-transform: capitalize;
-      font-weight: 500;
-      margin-top: 20px;
-      width: 100%;
-      text-align: left;
-    }
-    .detail {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: rgba(130, 130, 130, 1);
-      width: 100%;
-      text-align: left;
-      overflow: auto;
-      scrollbar-width: thin;
-    }
-    .actionArea {
-      margin-top: auto;
-    }
-    .date {
-      font-size: 11.4839px;
-      margin-top: 6px;
-      text-align: left;
-      width: 100%;
-      color: #848484;
-    }
-    border: 1px solid rgb(255, 255, 255);
-
-    &:hover {
-      border: 1px solid rgb(187, 187, 187);
-    }
-    img {
-      width: 100%;
-      object-fit: contain;
-      border-radius: 6px;
-      background-color: rgb(228, 228, 228);
-    }
-  }
-}
-
-@media only screen and (orientation: portrait) and (max-width: 500px) {
-  .gameCard {
-    background: linear-gradient(
-        0deg,
-        rgba(241, 248, 255, 0.2),
-        rgba(241, 248, 255, 0.2)
-      ),
-      #ffffff;
-    box-shadow: 0px 0.8rem 1.5rem rgba(8, 60, 194, 0.15);
-    border-radius: 12px;
-    cursor: pointer;
-    min-width: 170px;
-    width: 100%;
-    height: fit-content;
-    font-family: "Lexend", sans-serif;
-    font-weight: 500;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-    padding: 10px;
-    .title {
-      font-size: 0.875rem;
-      font-weight: 500;
-      width: 100%;
-      text-align: left;
-      margin-top: 0px;
-    }
-    .detail {
-      margin-top: 5px;
-      margin-bottom: 10px;
-      font-size: 10px;
-      font-weight: 400;
-      width: 100%;
-      text-align: left;
-      overflow: auto;
-      scrollbar-width: thin;
-    }
-    .date {
-      font-size: 11.4839px;
-      margin-top: 6px;
-      text-align: left;
-      width: 100%;
-      color: #848484;
-    }
-    border: 1px solid rgb(255, 255, 255);
-
-    &:hover {
-      border: 1px solid rgb(187, 187, 187);
-    }
-    img {
-      min-width: 8.5rem;
-      width: 100%;
-      margin-bottom: 10px;
-      object-fit: contain;
-      border-radius: 12px;
-      background-color: rgb(240, 240, 240);
-    }
-  }
-}
-
-@media only screen and (orientation: landscape) and (max-height: 900px) {
-  .gameCard {
-    background: linear-gradient(
-        0deg,
-        rgba(241, 248, 255, 0.2),
-        rgba(241, 248, 255, 0.2)
-      ),
-      #ffffff;
+    bottom: 0.5rem;
+    left: 0.5rem;
     box-shadow:
   3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
   4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
@@ -226,63 +43,84 @@
   9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
   14px 21px 41px rgba(0, 0, 0, 0.07)
 ;
-    border-radius: 12px;
-    cursor: pointer;
-    height: fit-content;
-    width: 210px;
-    font-family: "Lexend", sans-serif;
-    font-weight: 500;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    padding: 1rem;
-    .contentWrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .title {
-      font-size: 1rem;
-      text-transform: capitalize;
-      font-weight: 500;
-      margin-top: 20px;
-      width: 100%;
-      text-align: left;
-    }
-    .detail {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: rgba(130, 130, 130, 1);
-      width: 100%;
-      text-align: left;
-      overflow: auto;
-      scrollbar-width: thin;
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-    }
-    .actionArea {
-      margin-top: auto;
-    }
-    .date {
-      font-size: 11.4839px;
-      margin-top: 6px;
-      text-align: left;
-      width: 100%;
-      color: #848484;
-    }
-    border: 1px solid rgb(255, 255, 255);
-
-    &:hover {
-      border: 1px solid rgb(187, 187, 187);
-    }
-    img {
-      width: 100%;
-      object-fit: contain;
-      border-radius: 6px;
-      background-color: rgb(228, 228, 228);
+    .coin{
+      background-color: #FDCC03;
+      padding: 0.25rem;
+      margin-right: 0.25rem;
+      border-radius: 50%;
+      width: 1.5rem;
+      position: relative;
+      .svg{
+        position: relative;
+        top: 0.05rem;
+        right: -0.1rem;
+        width: 0.8rem;
+        color: #eee;  
+      }
     }
   }
+
+  .title {
+    font-size: 1.125rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    top: -1.5rem;
+    z-index: 0;
+    background-color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+    box-shadow:
+  3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+  4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+  5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+  7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+  9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
+  14px 21px 41px rgba(0, 0, 0, 0.07)
+;
+  }
+  .actionArea {
+    position: relative;
+    width: fit-content;
+    border-radius: 50%;
+    position: relative;
+    left: 75%;
+    top: 50%;
+    box-shadow:
+  3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+  4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+  5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+  7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+  9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
+  14px 21px 41px rgba(0, 0, 0, 0.07)
+;
+    .icon{
+      width: 1.5rem;
+      position: relative;
+      left: 0.15rem;
+    }
+  }
+  
+  &:hover {
+    border: 1px solid rgb(187, 187, 187);
+  }
+  
+}
+
+@media only screen and (orientation: portrait) and (max-width: 860px) {
+  .gameCard {
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 500px) {
+  .gameCard {
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 900px) {
+  .gameCard {
+}
 }

@@ -1,48 +1,33 @@
 .wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   width: 100%;
-  padding: 1.5rem 0;
-  gap: 2.5rem;
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
-  align-content: space-around;
-  align-items: flex-start;
-  margin-bottom: 4rem;
+  gap: 4rem 1.5rem;
+  margin: 2rem 0rem 3rem 0rem;
 }
 // for tablets
 @media only screen and (orientation: portrait) and (max-width: 860px) {
   .wrapper {
-    height: fit-content;
     margin-top: 1.5rem;
-    padding: 0 0px 10px 0px;
   }
 }
 
 // for mobile
 @media only screen and (orientation: portrait) and (max-width: 500px) {
   .wrapper {
-    overflow: auto;
-    height: fit-content;
     margin-top: 1.5rem;
-    padding: 0 0px 10px 0px;
   }
 }
 
 // mobile and tab landscape view
 @media only screen and (orientation: landscape) and (max-height: 500px) {
   .wrapper {
-    height: fit-content;
     margin-top: 1.5rem;
-    padding: 0 0px 10px 0px;
   }
 }
 
 @media only screen and (orientation: landscape) and (max-width: 900px) {
   .wrapper {
-    height: fit-content;
     margin-top: 1.5rem;
-    padding: 0 0px 10px 0px;
   }
 }

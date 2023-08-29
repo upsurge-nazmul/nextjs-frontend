@@ -3,53 +3,38 @@ import React from "react";
 import styles from "../../styles/Dashboard/gamecard.module.scss";
 import Buttons from "../Buttons";
 import GameSvg from "../SVGcomponents/GameSvg";
-import UnicoinSvg from "../SVGcomponents/UniCoinSvg";
+import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 
-function GameCard({ data, onClick, cardstyle, reward }) {
+function GameCard({ data, onClick, reward }) {
   const router = useRouter();
   if (!data) return null;
 
   return (
-    <div className={styles.gameCard} style={cardstyle}>
-      <img
-        src={
-          data?.img ||
-          (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
-          ""
-        }
-        alt=""
-      />
-      <div className={styles.contentWrapper}>
-        <p className={styles.title}>{data?.name || ""}</p>
-        {/* <p className={styles.detail}>
-          {data?.description.length > 40
-            ? data?.description.substring(0, 40) + "..."
-            : data?.description || ""}
-        </p> */}
-        {reward && (
-          <p className={styles.reward}>
-            <UnicoinSvg className={styles.icon} />
-            {reward}
-          </p>
-        )}
-        <div className={styles.actionArea}>
-          <Buttons
-            type={"animated"}
-            handleClick={() => {
-              onClick ? onClick() : () => router.push("/dashboard/k/games");
-              mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
-            }}
-          >
-            Play Now
-            <GameSvg className={styles.icon} />
-          </Buttons>
-        </div>
-        {/* <div className={styles.chatbtn}>
-        <div onClick={()=>{mixpanel.track('Game',{'event':`Game Started ${data.name}`});}} className={styles.chatbtn}>
-          Play
+    <div className={styles.gameCard} style={{
+      backgroundImage: 'url(' + (data?.img ||
+        (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
+        "") + ')'
+    }} >
+      <p className={styles.title}>{data?.name || ""}</p>
+
+
+      <div className={styles.actionArea}>
+        <Buttons type={"animated"}
+          handleClick={() => {
+            onClick ? onClick() : () => router.push("/dashboard/k/games");
+            mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
+          }}>
           <GameSvg className={styles.icon} />
-        </div> */}
+        </Buttons>
       </div>
+
+      {reward && (
+        <div className={styles.unicoins}>
+          <div className={styles.coin}><UniCoinSvg className={styles.svg} /></div>
+          {reward}
+        </div>
+      )}
+
     </div>
   );
 }
