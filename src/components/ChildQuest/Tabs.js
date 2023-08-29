@@ -10,7 +10,6 @@ export default function Tabs({ list, current, setCurrent }) {
             className={
               item.title === current.title ? styles.selectedTab : styles.tab
             }
-            style={item.title === current.title ? { color: current.font } : {}}
             onClick={() => setCurrent(item)}
           >
             {item.title}

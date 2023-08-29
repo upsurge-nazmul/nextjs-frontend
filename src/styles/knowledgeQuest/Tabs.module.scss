@@ -1,26 +1,30 @@
 .tabs {
-  display: flex;
-  justify-content: space-between;
-  background-color: #4166EB;
-  padding: 0.5rem 2rem;
-  border-radius: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-auto-rows: minmax(3rem, auto);
+  gap: 1rem;
   .commonTab {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-    font-family: "Lexend", sans-serif;
-    padding: 0.5rem 0.625rem;
-    hyphens: manual;
+    display: flex;
+    padding: 1rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    background-color: #ededed;
+    border-radius: 0.75rem;
+    color: #777;
+    font-weight: 400;
+    line-height: 1.6875rem; /* 135% */
   }
   .tab {
     @extend .commonTab;
   }
   .selectedTab {
     @extend .commonTab;
-    font-weight: 700;
-    background-color: #FDCC03;
+    font-weight: 500;
+    background-color:#4166EB;
     border-radius: 0.75rem;
+    color: #fff;
   }
 }
 
@@ -46,24 +50,16 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .tabs {
-    display: flex;
-    justify-content: space-between;
     max-width: 100%;
     padding: 0.5rem 0.5rem;
     .commonTab {
       font-size: 0.75rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: "Lexend", sans-serif;
-      text-align: center;
     }
     .tab {
       @extend .commonTab;
     }
     .selectedTab {
       @extend .commonTab;
-      color: #333;
-      font-weight: 700;
       border-bottom: none;
     }
   }
