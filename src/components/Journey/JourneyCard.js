@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styles from "../../styles/Journey/journeyCard.module.scss";
+import LockSvg from "../SVGcomponents/LockSvg";
 
 export default function JourneyCard({
   data,
@@ -20,9 +21,9 @@ export default function JourneyCard({
     <div className={styles.journeyCard} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)`}}  onClick={() => handleActionClick(data?.questId)}>
       
         <div className={styles.cardBottom}>
-        <div className={`${styles.title} mb-3`}>{data?.title}</div>
-        <div className={`${styles.actionButton} rounded-pill text-center py-1`} >
-          &#9658; 
+        <div className={`${styles.title} mb-3`} style={userPlanType >= data.premium_plan ? {borderTopColor: '#FDCC03'} : {borderTopColor: '#FF4E4E'} }>{data?.title}</div>
+        <div className={`${styles.actionButton} rounded-pill text-center py-1`} style={userPlanType >= data.premium_plan ? {backgroundColor: '#FDCC03'} : {backgroundColor: '#FF4E4E'} }>
+        {userPlanType >= data.premium_plan ? <span className={styles.open}>&#9658;</span> : <LockSvg className={styles.lock} />}
         </div>
         </div>
       
