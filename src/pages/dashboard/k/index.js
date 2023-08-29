@@ -338,7 +338,7 @@ export default function ChildActivity({
             </div>
           </div>
           <></>
-          <div className={styles.gamessection} id="recent_games">
+          {/* <div className={styles.gamessection} id="recent_games">
             <h2 className={styles.heading}>Recently played games</h2>
             <div className={styles.wrapper}>
               {recentgames.map((game, i) => {
@@ -359,7 +359,7 @@ export default function ChildActivity({
                 />
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {showTrendingGames ? (
