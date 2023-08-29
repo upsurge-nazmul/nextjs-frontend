@@ -61,7 +61,9 @@ export default function MainSection({
       </div>
         {!checkData && 
         <div className={styles.comingSoon}>
-          Coming Soon
+          <video autoPlay loop muted playsInline className={styles.video}>
+            <source src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/static/coming_soon.mp4" type="video/mp4" />
+          </video>
         </div>
         }
     </div>
