@@ -8,7 +8,7 @@ function PhoneVerificationPending({ settoastdata }) {
   const [phoneverified, setphoneverified] = useState(false);
   const [show,setshowOTP] = useState(false);
   return (
-    <div className={styles.main}>
+    <div className={styles.main} style={{backgroundColor: "#17d1bc"}}>
         <p className={styles.text}>
           Your are almost there! we have sent a OTP to your Phone no. {userdata?.parent_phone} 
         </p>
