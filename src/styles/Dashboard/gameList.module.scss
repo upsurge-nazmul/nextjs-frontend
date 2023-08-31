@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  width: 100%;
+  gap: 4rem 1.5rem;
+  margin: 2rem 0rem 3rem 0rem;
+}
+// for tablets
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .wrapper {
+    margin-top: 1.5rem;
+  }
+}
+
+// for mobile
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    margin-top: 1.5rem;
+  }
+}
+

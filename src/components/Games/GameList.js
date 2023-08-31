@@ -1,5 +1,5 @@
 import GameCard from "../Dashboard/GameCard";
-import styles from "../../styles/WaitlistDashboard/gameList.module.scss";
+import styles from "../../styles/Dashboard/gameList.module.scss";
 import { Game_Data } from "../../static_data/Game_Data";
 
 export default function GameList({
