@@ -334,7 +334,43 @@ export default function ChildActivity({
                     )}
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <div className={styles.choreSection} id="chores">
+                  <h3
+                    className={styles.mainheading}
+                  >
+                    Download our app now
+                    <HeadingArrow />
+                  </h3>
+                  <div className={styles.wrapper}>
+                      <div className={styles.downloadAppLeft}>
+                        <Jasper className={styles.jaspersvg} />
+                      </div>
+                      <div className={styles.downloadAppRight}>
+                        {/* <h3>Download our app now</h3>
+                        <p>
+                          Download our app to get started with your chores and
+                          quests.
+                        </p> */}
+                        <div className={styles.downloadAppButtons}>
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.upsurgefi.app"
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.downloadAppButton}
+                          >
+                            <img
+                              src="/images/DownloadGames/google-play.png"
+                              alt="PlayStore"
+                            />
+                          </a>
+                         
+                          </div>
+                       </div>
+                   </div>
+                </div>
+              )
+              }
             </div>
           </div>
           <></>
