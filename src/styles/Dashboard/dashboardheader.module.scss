@@ -207,7 +207,7 @@
   9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
   14px 21px 41px rgba(0, 0, 0, 0.07)
 ;
-      img {
+      .avatarImg {
         width: 100%;
         border-radius: 50px;
         height: 100%;
@@ -217,56 +217,14 @@
       &:hover {
         outline: 1px solid rgb(214, 214, 214);
 
-        img {
+        .avatarImg {
           opacity: 0.8;
         }
       }
     }
   }
 }
-.darkdashboardheader {
-  .dashboardHeading {
-    color: $d-text2;
-    span {
-      color: $d-text2;
-    }
-  }
-  .rightWrapper {
-    .rewardBlock {
-      .svg {
-        path {
-          fill: $d-text2;
-        }
-      }
-      .number {
-        color: $d-text2;
-      }
-    }
 
-    .notification {
-      .dot {
-        border: 2px solid $d-main;
-      }
-      svg {
-        path {
-          fill: $d-text2;
-        }
-      }
-      &:hover {
-        svg {
-          display: inherit;
-        }
-      }
-    }
-    .avatar {
-      outline-color: $d-light;
-
-      &:hover {
-        outline: 1px solid $d-light;
-      }
-    }
-  }
-}
 @media only screen and (min-width: 900px) and (max-height: 900px) {
   .dashboardHeader {
     padding: 46px 26px 46px 26px;

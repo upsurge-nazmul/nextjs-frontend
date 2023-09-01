@@ -419,6 +419,7 @@ function DashboardHeader({
               "https://imgcdn.upsurge.in/images/default-avatar.png"
             }
             alt=""
+            className={styles.avatarImg}
           />
         </div>
       </div>

@@ -1,0 +1,158 @@
+.menu {
+  animation: bringdown 0.3s ease;
+  position: absolute;
+  right: -1.25rem;
+  top: 4.5rem;
+  z-index: 999;
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  display: flex;
+  width: 35rem;
+  height: 28rem;
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    filter: drop-shadow(0 -2px 0px rgb(233, 233, 233));
+    border-bottom: 12px solid rgb(248, 248, 248);
+    margin-right: 10%;
+    position: absolute;
+    z-index: 999;
+    right: -1.5rem;
+    top: -0.75rem;
+  }
+  .leftSide {
+    flex: 1;
+    background-color: #5955e5;
+    border-top-left-radius: 1.25rem;
+    border-bottom-left-radius: 1.25rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    .info {
+      display: flex;
+      .infoLeft {
+        flex: auto;
+        .name {
+          color: #fff;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        .userName {
+          color: #fff;
+          font-size: 0.85rem;
+          font-weight: 300;
+        }
+      }
+      .infoRight {
+        padding: 0.5rem 0.25rem;
+        .level {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          border-radius: 1.25rem;
+          padding: 0.15rem 0.5rem;
+          cursor: pointer;
+          .badge {
+            height: 2.0625rem;
+            width: 2.0625rem;
+          }
+        }
+      }
+    }
+    .avatarArea {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .menuAvatar {
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+    }
+    .avatarActionArea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .editAvatarButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border-radius: 0.625rem;
+        padding: 0.625rem 2rem;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid #fff;
+        &:hover {
+          background-color: #fff;
+          color: #5955e5;
+        }
+        svg {
+          font-size: 1.125rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .rightSide {
+    flex: 0.75;
+    padding: 1.25rem;
+    .menuItems {
+      border-bottom: 1px solid #dddddd;
+      .menuItem {
+        padding: 1rem 0 1rem 0.5rem;
+        color: #555;
+        font-size: 1.125rem;
+        font-weight: 300;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          color: #5955e5;
+        }
+        svg {
+          font-size: 1.125rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+    .actionArea {
+      padding: 1rem 0.25rem;
+      .logoutButton {
+        width: 100%;
+        padding: 0.625rem 0;
+        border-radius: 0.625rem;
+        border: none;
+        background-color: #dc5656;
+        border: 1px solid #dc5656;
+        color: #fff;
+        font-size: 1.125rem;
+        font-weight: 300;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: #fff;
+          color: #dc5656;
+        }
+        svg {
+          font-size: 1.125rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
