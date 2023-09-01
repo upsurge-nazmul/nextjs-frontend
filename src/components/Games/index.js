@@ -166,7 +166,7 @@ function Games({
               userdata={userdata}
             />
           </div>
-          <AvailableGames />
+          {/* <AvailableGames /> */}
         </div>
       </div>
       {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
