@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import styles from "../../styles/Dashboard/dashboardGames.module.scss";
 import { Game_Data } from "../../static_data/Game_Data";
 import GameCard from "./GameCard";
@@ -12,13 +12,34 @@ export default function Games({
   recentgames = null,
   setShowSubToPremium = () => {},
 }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const gamesRef = useRef(null);
+  const { userdata } = useContext(MainContext);
   const [data, setData] = useState();
   const [openGame, setOpenGame] = useState("");
 
   useEffect(() => {
     setData(Game_Data);
   }, []);
+
+  useEffect(() => {
+    if (gamesRef?.current) {
+      const container = gamesRef.current;
+
+      container.addEventListener("wheel", (event) => {
+        event.preventDefault();
+
+        const scrollAmountX = event.deltaX;
+        const scrollDirectionX = Math.sign(scrollAmountX);
+
+        container.scrollLeft += scrollDirectionX * 50;
+
+        const scrollAmountY = event.deltaY;
+        const scrollDirectionY = Math.sign(scrollAmountY);
+
+        container.scrollLeft += scrollDirectionY * 50;
+      });
+    }
+  }, [gamesRef]);
 
   async function updaterecentgames(gamearr) {
     let gamestring = "";
@@ -72,7 +93,7 @@ export default function Games({
         Games
         <HeadingArrow />
       </h2>
-      <div className={styles.container}>
+      <div className={styles.container} ref={gamesRef}>
         {data &&
           Object.keys(data).map((item, index) => {
             return (
