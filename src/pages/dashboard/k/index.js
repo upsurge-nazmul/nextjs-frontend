@@ -42,6 +42,8 @@ import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
 import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
 import TodaysQuestion from "../../../components/TodaysQuestion";
 import SubToPremiumPopUp from "../../../components/SubToPremiumPopUp";
+import Games from "../../../components/Dashboard/Games";
+import GameApis from "../../../actions/apis/GameApis";
 
 export default function ChildActivity({
   pendingchores,
@@ -56,6 +58,7 @@ export default function ChildActivity({
   activeQuests,
   stockHoldings,
   todaysquestion,
+  gameunicoinrewards,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -297,6 +300,11 @@ export default function ChildActivity({
             userPlanType={userdata?.premium_plan}
             setShowSubToPremium={setShowSubToPremium}
           />
+          <Games
+            gameunicoinrewards={gameunicoinrewards}
+            recentgames={recentgames}
+            setShowSubToPremium={setShowSubToPremium}
+          />
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               {todaysquestion && (
@@ -470,10 +478,7 @@ export async function getServerSideProps({ params, req }) {
         token
       );
 
-      let recentgames = await FreeGameApis.getrecentGames(
-        { id: response.data.data.user_id },
-        token
-      );
+      let recentgames = await FreeGameApis.getrecentGames(null, token);
       let currentLevel = await KidApis.getlevel(
         {
           id: response.data.data.user_id,
@@ -488,6 +493,10 @@ export async function getServerSideProps({ params, req }) {
         payload: { userId: response.data.data.user_id },
         token,
       });
+      let gameunicoinrewards = await GameApis.getgameunicoinrewards(
+        null,
+        token
+      );
       return {
         props: {
           isLogged: true,
@@ -529,6 +538,9 @@ export async function getServerSideProps({ params, req }) {
               ? stockHoldings.data.data
               : null,
           todaysquestion: tq?.data?.success ? tq.data.data : null,
+          gameunicoinrewards: gameunicoinrewards?.data?.success
+            ? gameunicoinrewards.data.data
+            : [],
         },
       };
     }
