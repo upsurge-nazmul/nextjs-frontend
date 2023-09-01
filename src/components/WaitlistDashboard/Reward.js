@@ -31,6 +31,7 @@ export default function Reward({
   const [quantity, setquantity] = useState(1);
   const [showpopup, setshowpopup] = useState(false);
   const [showDetails, setShowDetails] = useState();
+  const [phoneverified, setphoneverified] = useState(false);
 
   async function redeem() {
     if (quantity < 1) {
@@ -84,6 +85,7 @@ export default function Reward({
         <div className={styles.showOTP}>
           <OtpNotVerfied
             userphone={userdata?.parent_phone}
+            setphoneverified={setphoneverified}
             setshowOTP={setshowOTP}
             email={userdatafromserver?.parent_email}
           />
