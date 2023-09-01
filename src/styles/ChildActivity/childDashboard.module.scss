@@ -32,12 +32,11 @@
           flex-direction: column;
           height: 100%;
           flex: 1; 
-
         }
         .flexRight {
           display: flex;
           flex-direction: column;
-          height: 100%;
+          min-height: 26.25rem;
           flex: 1;
           flex-grow: 1;
           .choreSection {
@@ -101,7 +100,7 @@
                       border-radius: 0.5rem;
                       cursor: pointer;
                       img{
-                        width: clamp(10rem, 15vw, 25rem);
+                        width: clamp(10rem, 18vw, 25rem);
                       }
                     }
                   }
@@ -142,13 +141,37 @@
 // for tabs
 @media only screen and (min-width: 501px) and (max-width: 990px) {
   .childactivity {
-    @include fullPage(20px, column);
+    @include fullPage(1.25rem, column);
+    .contentWrapper {
+      .mainContent {
+        .contentArea {
+          .flexLeft {
+            min-width: 100%;
+          }
+          .flexRight {
+            min-width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 
 // for phones
 @media only screen and (max-width: 500px) {
   .childactivity {
-    @include fullPage(20px, column);
+    @include fullPage(1.25rem, column);
+    .contentWrapper {
+      .mainContent {
+        .contentArea {
+          .flexLeft {
+            min-width: 100%;
+          }
+          .flexRight {
+            min-width: 100%;
+          }
+        }
+      }
+    }
   }
 }
