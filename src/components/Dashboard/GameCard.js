@@ -14,16 +14,18 @@ function GameCard({ data, onClick, reward }) {
       backgroundImage: 'url(' + (data?.img ||
         (data?.name && `/images/games/${data?.name.replace(/ /g, "")}.png`) ||
         "") + ')'
-    }} >
+    }} 
+    onClick={() => {
+      onClick ? onClick() : () => router.push("/dashboard/k/games");
+      mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
+    }}
+    >
       <p className={styles.title}>{data?.name || ""}</p>
 
 
       <div className={styles.actionArea}>
         <Buttons type={"animated"}
-          handleClick={() => {
-            onClick ? onClick() : () => router.push("/dashboard/k/games");
-            mixpanel.track("Game started", { event: `Game Started ${data.name}`, gameName: `${data.id}` });
-          }}>
+          >
           <GameSvg className={styles.icon} />
         </Buttons>
       </div>
