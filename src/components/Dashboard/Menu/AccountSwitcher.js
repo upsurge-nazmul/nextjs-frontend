@@ -6,6 +6,7 @@ export default function AccountSwitcher({
   setshowauth,
   setSavedUser,
   userdata,
+  setShowLoggedInUsers,
 }) {
   return (
     <div className={styles.userWrapper}>
@@ -16,6 +17,7 @@ export default function AccountSwitcher({
           return (
             <div
               onClick={() => {
+                setShowLoggedInUsers(false);
                 setshowauth(true);
                 setSavedUser(user);
               }}
@@ -38,13 +40,12 @@ export default function AccountSwitcher({
             </div>
           );
         })}
-
-      <div className={`${styles.innerUser} `} onClick={() => setshowauth(true)}>
+      {/* <div className={`${styles.innerUser} `} onClick={() => setshowauth(true)}>
         <GroupAddIcon className={styles.icon} />
         <div className={styles.userInfo}>
           <p>Add new account</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

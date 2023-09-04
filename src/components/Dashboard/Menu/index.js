@@ -1,47 +1,30 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../../../styles/Menu/menu.module.scss";
 import { MainContext } from "../../../context/Main";
 import { getfullname } from "../../../helpers/generalfunctions";
-import LiveHelpRoundedIcon from "@mui/icons-material/LiveHelpRounded";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import EmailIcon from "@mui/icons-material/Email";
 import GroupIcon from "@mui/icons-material/Group";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import HikingIcon from "@mui/icons-material/Hiking";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import PaymentIcon from "@mui/icons-material/Payment";
 import EditIcon from "@mui/icons-material/Edit";
-import EditSvg from "../../SVGcomponents/EditSvg";
-import PaymentSvg from "../../SVGcomponents/PaymentSvg";
-import SettingsSvg from "../../SVGcomponents/SettingsSvg";
 import { eraseCookie, setCookie } from "../../../actions/cookieUtils";
 import LoginApis from "../../../actions/apis/LoginApis";
-import AccountSwitcher from "./AccountSwitcher";
 
 export default function Menu({
   settoastdata = () => {},
-  showauth,
-  setshowauth,
   menuType,
   waitilistmenu,
-  setSavedUser,
   setShowOnboarding,
   kidLevel,
   setshowlevels,
   setShowPremiumPopup,
+  setShowLoggedInUsers,
 }) {
   const router = useRouter();
-  const {
-    savedUsers,
-    setSavedUsers,
-    userdata,
-    showmenu,
-    setshowmenu,
-    setuser,
-    setuserdata,
-  } = useContext(MainContext);
-  const [showUsers, setshowUsers] = useState(false);
+  const { setSavedUsers, userdata, setshowmenu, setuser, setuserdata } =
+    useContext(MainContext);
 
   async function handleLogout() {
     let res = await LoginApis.logout();
@@ -179,22 +162,13 @@ export default function Menu({
           <div
             className={styles.menuItem}
             onClick={() => {
-              setshowUsers(!showUsers);
+              setShowLoggedInUsers(true);
+              setshowmenu(false);
             }}
           >
             <GroupIcon />
             <span>Switch Account</span>
           </div>
-          {showUsers && (
-            <AccountSwitcher
-              {...{
-                savedUsers,
-                setshowauth,
-                setSavedUser,
-                userdata,
-              }}
-            />
-          )}
           <div
             className={styles.menuItem}
             onClick={() => {

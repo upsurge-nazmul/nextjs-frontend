@@ -1,28 +1,30 @@
 .userWrapper {
+  min-width: 30vw;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5rem;
   .innerUser {
     display: flex;
-    padding: 8px 8px;
+    padding: 8px;
     align-items: center;
     border-radius: 4px;
     transition: all 0.3s ease;
+    cursor: pointer;
     .icon {
-      width: 35px;
-      color: rgb(73, 73, 73);
-      height: 35px;
-      padding: 6px;
+      width: 2rem;
+      height: 2rem;
       margin-right: 10px;
+      color: rgb(73, 73, 73);
     }
     img {
-      width: 35px !important;
-      height: 35px !important;
+      width: 5rem !important;
+      height: 5rem !important;
       margin-right: 10px;
       border-radius: 50%;
     }
     .userInfo {
-      font-size: 0.75rem;
+      font-size: 1.25rem;
       color: rgb(73, 73, 73);
       p {
         text-transform: capitalize;
