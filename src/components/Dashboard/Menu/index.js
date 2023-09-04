@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import styles from "../../../styles/Menu/menu.module.scss";
 import { MainContext } from "../../../context/Main";
 import { getfullname } from "../../../helpers/generalfunctions";
@@ -14,9 +15,103 @@ import EditIcon from "@mui/icons-material/Edit";
 import EditSvg from "../../SVGcomponents/EditSvg";
 import PaymentSvg from "../../SVGcomponents/PaymentSvg";
 import SettingsSvg from "../../SVGcomponents/SettingsSvg";
+import { eraseCookie, setCookie } from "../../../actions/cookieUtils";
+import LoginApis from "../../../actions/apis/LoginApis";
+import AccountSwitcher from "./AccountSwitcher";
 
-export default function Menu({ kidLevel }) {
-  const { userdata } = useContext(MainContext);
+export default function Menu({
+  settoastdata = () => {},
+  showauth,
+  setshowauth,
+  menuType,
+  waitilistmenu,
+  setSavedUser,
+  setShowOnboarding,
+  kidLevel,
+  setshowlevels,
+  setShowPremiumPopup,
+}) {
+  const router = useRouter();
+  const {
+    savedUsers,
+    setSavedUsers,
+    userdata,
+    showmenu,
+    setshowmenu,
+    setuser,
+    setuserdata,
+  } = useContext(MainContext);
+  const [showUsers, setshowUsers] = useState(false);
+
+  async function handleLogout() {
+    let res = await LoginApis.logout();
+    if (res && res.data && res.data.success) {
+      let savedUsersData = localStorage.getItem("savedUsers");
+      if (savedUsersData) {
+        savedUsersData = JSON.parse(savedUsersData);
+        const index = savedUsersData.findIndex(
+          (item) => item.id === userdata.user_id
+        );
+        if (index !== -1) {
+          savedUsersData.splice(index, 1);
+        }
+        localStorage.setItem("savedUsers", JSON.stringify(savedUsersData));
+        setSavedUsers(savedUsersData);
+        if (savedUsersData.length > 0) {
+          return handleChangeUser(savedUsersData[0]);
+        }
+      }
+      eraseCookie("accesstoken");
+      setuser(null);
+      setuserdata(null);
+      router.push("/");
+    } else {
+      settoastdata({
+        show: true,
+        msg: "Error logging out try again later or clear cache",
+        type: "error",
+      });
+    }
+  }
+
+  async function handleChangeUser(data) {
+    if (userdata.user_id === data.id) {
+      return;
+    }
+    let response = await LoginApis.checktoken({
+      token: data.token,
+    });
+    if (response && !response?.data?.success) {
+      settoastdata({
+        show: true,
+        msg: "Token expired",
+        type: "error",
+      });
+      let savedUsersData = localStorage.getItem("savedUsers");
+      if (savedUsersData) {
+        savedUsersData = JSON.parse(savedUsersData);
+        const index = savedUsersData.findIndex((item) => item.id === data.id);
+        if (index !== -1) {
+          savedUsersData.splice(index, 1);
+        }
+        localStorage.setItem("savedUsers", JSON.stringify(savedUsersData));
+        setSavedUsers(savedUsersData);
+      }
+    } else {
+      settoastdata({
+        show: true,
+        msg: "Account switched",
+        type: "success",
+      });
+      setCookie("accesstoken", data.token);
+      setuserdata(response.data.data);
+      setuser(response.data.data.id);
+      if (userdata.user_type !== "child") {
+        router.push("/dashboard/p");
+      } else router.push("/dashboard/k");
+    }
+  }
+
   return (
     <div className={styles.menu}>
       <div className={styles.arrow}></div>
@@ -33,8 +128,8 @@ export default function Menu({ kidLevel }) {
               <div
                 className={styles.level}
                 onClick={() => {
-                  // setshowmenu(false);
-                  // setshowlevels((prev) => !prev);
+                  setshowmenu(false);
+                  setshowlevels((prev) => !prev);
                 }}
               >
                 <img
@@ -67,31 +162,74 @@ export default function Menu({ kidLevel }) {
       </div>
       <div className={styles.rightSide}>
         <div className={styles.menuItems}>
-          <div className={styles.menuItem}>
+          <div
+            className={styles.menuItem}
+            onClick={() => {
+              setshowmenu(false);
+              if (waitilistmenu) {
+                router.push("/dashboard/w/editprofile");
+              } else if (menuType === "child") {
+                router.push("/dashboard/k/editprofile");
+              } else router.push("/dashboard/p/editprofile");
+            }}
+          >
             <EditIcon />
             <span>Edit Profile</span>
           </div>
-          <div className={styles.menuItem}>
+          <div
+            className={styles.menuItem}
+            onClick={() => {
+              setshowUsers(!showUsers);
+            }}
+          >
             <GroupIcon />
             <span>Switch Account</span>
           </div>
-          <div className={styles.menuItem}>
+          {showUsers && (
+            <AccountSwitcher
+              {...{
+                savedUsers,
+                setshowauth,
+                setSavedUser,
+                userdata,
+              }}
+            />
+          )}
+          <div
+            className={styles.menuItem}
+            onClick={() => {
+              setshowmenu(false);
+              router.push("/dashboard/k/invite");
+            }}
+          >
             <GroupAddOutlinedIcon />
             <span>Invite</span>
           </div>
         </div>
         <div className={styles.menuItems}>
-          <div className={styles.menuItem}>
+          <div
+            className={styles.menuItem}
+            onClick={() => {
+              setshowmenu(false);
+              setShowPremiumPopup((prev) => !prev);
+            }}
+          >
             <PaymentIcon />
             <span>Subscription</span>
           </div>
-          <div className={styles.menuItem}>
+          <div
+            className={styles.menuItem}
+            onClick={() => {
+              setshowmenu(false);
+              setShowOnboarding((prev) => !prev);
+            }}
+          >
             <HikingIcon />
             <span>Walkthrough</span>
           </div>
         </div>
         <div className={styles.actionArea}>
-          <button className={styles.logoutButton}>
+          <button className={styles.logoutButton} onClick={handleLogout}>
             <LogoutRoundedIcon />
             Logout
           </button>
