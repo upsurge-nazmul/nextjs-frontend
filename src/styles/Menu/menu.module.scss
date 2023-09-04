@@ -26,6 +26,14 @@
     5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
     7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
     9px 13.5px 20.5px rgba(0, 0, 0, 0.05), 14px 21px 41px rgba(0, 0, 0, 0.07);
+  .menuBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
   .arrow {
     width: 0;
     height: 0;

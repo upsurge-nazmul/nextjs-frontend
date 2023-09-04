@@ -97,6 +97,7 @@ export default function Menu({
 
   return (
     <div className={styles.menu}>
+      <div className={styles.menuBg} onClick={() => setshowmenu(false)}></div>
       <div className={styles.arrow}></div>
       <div className={styles.leftSide}>
         <div className={styles.info}>
