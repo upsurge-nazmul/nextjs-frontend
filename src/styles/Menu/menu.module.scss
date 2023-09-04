@@ -1,15 +1,31 @@
-.menu {
+@mixin fullMenu(
+  $full-width: 35rem,
+  $full-flex-direction: row,
+  $full-position-right: -1.25rem,
+  $full-position-top: 4.5rem,
+  $full-border-radius: 1.25rem,
+  $full-padding-y: 1.25rem,
+  $full-padding-x: 1.25rem,
+  $arrow-position-right: 2rem,
+  $info-border-radius-left: 1.25rem,
+  $info-border-radius-right: 0
+) {
   animation: bringdown 0.3s ease;
   position: absolute;
-  right: -1.25rem;
-  top: 4.5rem;
-  z-index: 999;
+  right: $full-position-right;
+  top: $full-position-top;
+  z-index: 9999;
   background-color: #ffffff;
-  border-radius: 1.25rem;
-  padding: 1.25rem;
+  border-radius: $full-border-radius;
+  padding: $full-padding-y $full-padding-x;
   display: flex;
-  width: 35rem;
-  height: 28rem;
+  flex-direction: $full-flex-direction;
+  width: $full-width;
+  box-shadow: 3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+    4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+    5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+    7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+    9px 13.5px 20.5px rgba(0, 0, 0, 0.05), 14px 21px 41px rgba(0, 0, 0, 0.07);
   .arrow {
     width: 0;
     height: 0;
@@ -17,17 +33,17 @@
     border-right: 12px solid transparent;
     filter: drop-shadow(0 -2px 0px rgb(233, 233, 233));
     border-bottom: 12px solid rgb(248, 248, 248);
-    margin-right: 10%;
     position: absolute;
-    z-index: 999;
-    right: -1.5rem;
+    z-index: 9999;
+    right: $arrow-position-right;
     top: -0.75rem;
+    box-shadow: 3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02);
   }
   .leftSide {
     flex: 1;
     background-color: #5955e5;
-    border-top-left-radius: 1.25rem;
-    border-bottom-left-radius: 1.25rem;
+    border-radius: $info-border-radius-left $info-border-radius-right
+      $info-border-radius-right $info-border-radius-left; // top-left, top-right, bottom-right, bottom-left
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -68,6 +84,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 1rem 0;
       .menuAvatar {
         height: 10rem;
         width: 10rem;
@@ -154,5 +171,26 @@
         }
       }
     }
+  }
+}
+
+.menu {
+  @include fullMenu();
+}
+
+@media only screen and (max-width: 500px) {
+  .menu {
+    @include fullMenu(
+      90vw, // full-width
+      column, // full-flex-direction
+      -0.5rem, // full-position-right
+      3rem, // full-position-top
+      0.625rem, // full-border-radius
+      0.5rem, // full-padding-y
+      0.5rem, // full-padding-x
+      0.75rem, // arrow-position-right
+      0.625rem, // info-border-radius-left
+      0.625rem, // info-border-radius-right
+    );
   }
 }
