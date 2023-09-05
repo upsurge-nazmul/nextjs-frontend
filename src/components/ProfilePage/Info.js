@@ -116,7 +116,12 @@ export default function Info({ data }) {
         />
       </SingleItemArea>
       <SingleItemArea>
-        <SchoolInput value={school} setValue={setschool} />
+        <SchoolInput
+          value={school}
+          setValue={setschool}
+          tooltipId={"school-tooltip"}
+          tooltip={"School is required to put your child in related circles."}
+        />
       </SingleItemArea>
       <DoubleItemArea>
         <div className={styles.cityInput}>

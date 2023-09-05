@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import Input from "../Input";
 import DashboardApis from "../../actions/apis/DashboardApis";
 
-export default function SchoolInput({ value, setValue }) {
+export default function SchoolInput({ value, setValue, tooltipId, tooltip }) {
   const [schoolOptions, setSchoolOptions] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function SchoolInput({ value, setValue }) {
   }
 
   return (
-    <div>
+    <>
       <Input
         label={"School"}
         value={value}
@@ -28,7 +28,9 @@ export default function SchoolInput({ value, setValue }) {
         onFocus={() => searchSchool(value)}
         suggestions={schoolOptions}
         selectSuggestion={setValue}
+        tooltip={tooltip}
+        tooltipId={tooltipId}
       />
-    </div>
+    </>
   );
 }

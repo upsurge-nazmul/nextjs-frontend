@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/GeneralComponents/customInput.module.scss";
-import { useEffect } from "react";
+import ReactTooltip from "react-tooltip";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 export default function Input({
   label = "",
   suggestions = null,
   selectSuggestion = () => {},
+  tooltip = "",
+  tooltipId = "",
   ...props
 }) {
   const [showSuggestions, setShowsuggestions] = useState(false);
@@ -43,6 +46,14 @@ export default function Input({
         </div>
       ) : (
         ""
+      )}
+      {tooltip && (
+        <div data-tip data-for={tooltipId} className={styles.tooltip}>
+          <InfoOutlinedIcon className={styles.infoIcon} />
+          <ReactTooltip id={tooltipId} type="dark" effect="solid">
+            <p>{tooltip}</p>
+          </ReactTooltip>
+        </div>
       )}
     </div>
   );
