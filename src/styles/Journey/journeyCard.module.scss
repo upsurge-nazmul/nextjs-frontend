@@ -71,9 +71,8 @@
     text-align: center;
     width: fit-content;
     position: relative;
-    bottom: 6rem;
+    bottom: 5.5rem;
     right: -12.5rem;
-    border: solid 3px #eee;
     box-shadow:
     3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
     4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
@@ -84,7 +83,7 @@
   ;
   .open{
     position: relative;
-    left: 0.15rem;
+    top: 0.2rem;
   }
   .lock{
     position: relative;
