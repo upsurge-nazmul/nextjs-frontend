@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/EditProfile/profilePage.module.scss";
 import ModernInputBox from "../ModernInputBox";
 import CitySearch from "../CitySearch";
@@ -7,6 +7,8 @@ import DropDown from "../DropDown";
 import { STATES_ARR } from "../../static_data/State_Data";
 import Input from "../Input";
 import { onlyText } from "../../helpers/validationHelpers";
+import SchoolInput from "./SchoolInput";
+import DashboardApis from "../../actions/apis/DashboardApis";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -55,6 +57,19 @@ export default function Info({ data }) {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (school) searchSchool();
+    else setschoolresults([]);
+  }, [school]);
+  async function searchSchool() {
+    let res = await DashboardApis.getschools({ query: school });
+    if (res?.data.success) {
+      setschoolresults(res.data.data);
+    } else {
+      setschoolresults([]);
+    }
+  }
+
   async function handleSave() {}
 
   console.log("profile info: ", data, infoData);
@@ -99,6 +114,9 @@ export default function Info({ data }) {
           tooltip={"School is required to put your child in related circles."}
           suggestions={schoolresults}
         />
+      </SingleItemArea>
+      <SingleItemArea>
+        <SchoolInput value={school} setValue={setschool} />
       </SingleItemArea>
       <DoubleItemArea>
         <div className={styles.cityInput}>

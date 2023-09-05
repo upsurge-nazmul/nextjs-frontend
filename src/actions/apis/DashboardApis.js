@@ -1,7 +1,11 @@
 import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 const getschools = (payload, token) => {
-  return ApiCalls.getResponse("users/schools", payload, token);
+  return ApiCalls.getResponse(
+    "users/schools",
+    payload,
+    getCookie("accesstoken")
+  );
 };
 const getuserdata = (payload, token) => {
   return ApiCalls.getResponse(`users/getprofile`, payload, token);
