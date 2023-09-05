@@ -116,17 +116,17 @@ function MagicAuthPage() {
       />
       <div className={styles.container}>
         <Curve1 />
-        <Curve2 />
         <div className={styles.content}>
           <PageTitle title="Magic Authentication" />
-          {loading && <p>Loading...</p>}
-          {error && <p>Loading...</p>}
+          {loading && <div className={styles.loader}></div>} 
+          {error && <div className={styles.loader}></div>}
         </div>
+        
+        <Curve2 />
       </div>
       <Footer />
          
     </div>
   );
 }
-
 export default MagicAuthPage;
