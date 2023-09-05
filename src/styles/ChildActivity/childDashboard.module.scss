@@ -1,6 +1,6 @@
 @use "../variables/colors.scss" as *;
 
-@mixin fullPage($contentPaddingX: 50px, $contentAreaFlexDirection: row) {
+@mixin fullPage($contentPaddingX: 3rem, $contentAreaFlexDirection: row) {
   background-color: #f4f5f7;
   height: 100vh;
   width: 100vw;
@@ -25,7 +25,7 @@
         align-content: stretch;
         justify-content: space-between;
         align-items: flex-start;
-        padding: 10px $contentPaddingX;
+        padding: 1.5rem $contentPaddingX;
         gap: 1.5rem;
         height: 30rem;
         .flexLeft {
@@ -45,7 +45,7 @@
             flex-direction: column;
             background-color: #27BDAB;
             color: white;
-            border-radius: 12px;
+            border-radius: 1rem;
             flex: 1 1;
             padding: 1rem 2rem 1rem 2rem;
             
