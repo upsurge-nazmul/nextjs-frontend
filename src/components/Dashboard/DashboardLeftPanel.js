@@ -59,9 +59,7 @@ function DashboardLeftPanel({
   }, []);
   return (
     <div
-      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} ${
-        theme === "dark" && styles.dashboardDark
-      }`}
+      className={`${styles.dashboardLeftPanel} ${fixed && styles.fixed} `}
       style={
         disableClicks ? { pointerEvents: "none", cursor: "not-allowed" } : {}
       }
@@ -159,6 +157,7 @@ function DashboardLeftPanel({
           }}
         />
       )}
+      
       {type === "kid" ? (
         <div className={styles.tabContainer}>
           <div
