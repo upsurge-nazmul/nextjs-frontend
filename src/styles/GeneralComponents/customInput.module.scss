@@ -1,0 +1,28 @@
+.customInput {
+  padding: 1rem 0;
+  display: grid;
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-left: 0.25rem;
+    color: #797979;
+  }
+  input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #797979;
+    outline: none;
+    font-size: 1.25rem;
+    color: #333;
+    outline: none;
+    &:focus {
+      border-color: #333;
+    }
+    &:disabled {
+      background-color: #f4f4f4;
+      color: #999;
+      border-color: #999;
+    }
+  }
+}
