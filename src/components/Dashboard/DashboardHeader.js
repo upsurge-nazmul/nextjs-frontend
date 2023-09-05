@@ -24,6 +24,8 @@ import Animation from "../Buttons/Animation";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import RedeemNowPopUp from "../../components/RedeemNowPopUp";
 import AchievementPopUp from "../AchievementPopUp";
+import Modal from "../Modal";
+import AccountSwitcher from "./Menu/AccountSwitcher";
 
 function DashboardHeader({
   mode,
@@ -61,6 +63,7 @@ function DashboardHeader({
     setUnicoins,
     setUnicoinsEarnedPopUp,
     unicoinsEarnedPopUp,
+    savedUsers,
   } = useContext(MainContext);
   const [displayingUnicoins, setDisplayingUnicoins] = useState(
     userdata?.num_unicoins
@@ -73,6 +76,8 @@ function DashboardHeader({
   const [showRedeemNow, setShowRedeemNow] = useState(false);
   const [shownRedeemNow, setShownRedeemNow] = useState(false);
   const [showAchievement, setShowAchievement] = useState("");
+  const [updateUnicoins, setUpdateUnicoins] = useState(false);
+  const [showLoggedInUsers, setShowLoggedInUsers] = useState(false);
 
   const colors = [
     { front: "#a864fd", back: "#345dd1" },
@@ -84,7 +89,7 @@ function DashboardHeader({
   ];
   const confettiCount = 50;
   const sequinCount = 20;
-  const [updateUnicoins, setUpdateUnicoins] = useState(false);
+
   useEffect(async () => {
     if (updateUnicoinsAnimation === true) {
       setTimeout(() => {
@@ -238,6 +243,7 @@ function DashboardHeader({
       };
     }
   }, [updateUnicoins]);
+
   return (
     <div
       className={`${styles.dashboardHeader} ${
@@ -404,6 +410,7 @@ function DashboardHeader({
               kidLevel={kidLevel}
               showPremiumPopup={showSubscription}
               setShowPremiumPopup={setShowSubscription}
+              setShowLoggedInUsers={setShowLoggedInUsers}
             />
           )}
           <img
@@ -419,6 +426,7 @@ function DashboardHeader({
               "https://imgcdn.upsurge.in/images/default-avatar.png"
             }
             alt=""
+            className={styles.avatarImg}
           />
         </div>
       </div>
@@ -477,6 +485,35 @@ function DashboardHeader({
           showAchievement={showAchievement}
         />
       ) : null}
+      {showLoggedInUsers && (
+        <Modal
+          title="Logged In Accounts"
+          actions={{
+            isCancel: true,
+            isProceed: true,
+            cancelText: "Close",
+            proceedText: "Add New Account",
+            handleCancel: () => {
+              setShowLoggedInUsers(false);
+            },
+            handleProceed: () => {
+              setshowauth(true);
+              setShowLoggedInUsers(false);
+            },
+          }}
+          onOutsideClick={() => setShowLoggedInUsers(false)}
+        >
+          <AccountSwitcher
+            {...{
+              savedUsers,
+              setshowauth,
+              setSavedUser,
+              userdata,
+              setShowLoggedInUsers,
+            }}
+          />
+        </Modal>
+      )}
     </div>
   );
 }
