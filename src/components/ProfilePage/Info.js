@@ -105,20 +105,12 @@ export default function Info({ data }) {
         />
       </DoubleItemArea>
       <SingleItemArea>
-        <ModernInputBox
-          value={school}
-          setvalue={setschool}
-          onChange={(e) => setschool(e.target.value)}
-          placeholder="School *"
-          tooltipid={"school-tooltip"}
-          tooltip={"School is required to put your child in related circles."}
-          suggestions={schoolresults}
-        />
-      </SingleItemArea>
-      <SingleItemArea>
         <SchoolInput
-          value={school}
-          setValue={setschool}
+          value={infoData.school}
+          setValue={(value) => {
+            setInfoData((prev) => ({ ...prev, school: value }));
+          }}
+          disabled={false}
           tooltipId={"school-tooltip"}
           tooltip={"School is required to put your child in related circles."}
         />
