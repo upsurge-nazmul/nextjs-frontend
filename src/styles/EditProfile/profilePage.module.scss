@@ -1,0 +1,44 @@
+.mainContent {
+  display: flex;
+  gap: 2.5%;
+  width: 95%;
+  .leftContent{
+    background-color: #fff;
+    flex: 1;
+    border-radius: 1.25rem;
+    padding: 2rem 3rem;
+    .doubleItemArea {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+      .firstItem {
+        flex: 0.7;
+      }
+      .secondItem {
+        flex: 0.3;
+      }
+    }
+    .singleItemArea {
+      display: flex;
+      width: 100%;
+    }
+    .saveButton {
+      width: 100%;
+      border-radius: 0.625rem;
+      background-color: #4166EB;
+      color: #FFF;
+      font-weight: 500;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      padding: 1rem 0;
+      cursor: pointer;
+    }
+  }
+  .rightContent{
+    flex: 0.5;
+    background-color: #fff;
+    border-radius: 1.25rem;
+    padding: 2rem 3rem;
+  }
+}
