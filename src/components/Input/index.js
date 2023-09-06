@@ -12,16 +12,13 @@ export default function Input({
   ...props
 }) {
   const [showSuggestions, setShowsuggestions] = useState(false);
+  const [valueSelected, setValueSelected] = useState(false);
 
   useEffect(() => {
     if (suggestions && suggestions.length) {
-      if (suggestions.length == 1 && suggestions[0].name === props.value) {
-        setShowsuggestions(false);
-      } else {
-        setShowsuggestions(true);
-      }
+      if (!valueSelected) setShowsuggestions(true);
     } else setShowsuggestions(false);
-  }, [suggestions]);
+  }, [suggestions, valueSelected]);
 
   return (
     <div className={styles.customInput}>
@@ -35,7 +32,8 @@ export default function Input({
                 className={styles.suggestion}
                 key={item.id}
                 onClick={() => {
-                  selectSuggestion(item.name);
+                  selectSuggestion(item);
+                  setValueSelected(true);
                   setShowsuggestions(false);
                 }}
               >

@@ -10,14 +10,14 @@ export default function CityStateInput({
 }) {
   const [cityOptions, setCityOptions] = useState([]);
 
-  useEffect(() => {}, [value]);
-
   function formattedCities() {
     let id = 0;
     return Cities_Data.map((city) => {
       id++;
       return {
-        name: city.city,
+        name: city.city + ", " + city.state,
+        city: city.city,
+        state: city.state,
         id: id,
       };
     });
@@ -42,9 +42,8 @@ export default function CityStateInput({
   }, [value]);
 
   function handleSelectOption(city) {
-    setValue(city);
-    let selectedData = Cities_Data.filter((item) => item.city === city)[0];
-    setState(selectedData.state);
+    setValue(city.city);
+    setState(city.state);
   }
 
   return (

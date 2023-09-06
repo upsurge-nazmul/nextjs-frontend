@@ -27,7 +27,7 @@ export default function SchoolInput({ value, setValue, ...props }) {
         onChange={(e) => setValue(e.target.value)}
         onFocus={() => searchSchool(value)}
         suggestions={schoolOptions}
-        selectSuggestion={setValue}
+        selectSuggestion={(option) => setValue(option.name)}
         {...props}
       />
     </>
