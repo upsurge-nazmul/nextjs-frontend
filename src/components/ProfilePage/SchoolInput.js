@@ -1,14 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Input from "../Input";
 import DashboardApis from "../../actions/apis/DashboardApis";
 
-export default function SchoolInput({
-  value,
-  setValue,
-  tooltipId,
-  tooltip,
-  ...props
-}) {
+export default function SchoolInput({ value, setValue, ...props }) {
   const [schoolOptions, setSchoolOptions] = useState([]);
 
   useEffect(() => {

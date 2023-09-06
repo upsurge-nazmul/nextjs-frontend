@@ -9,6 +9,7 @@ import Input from "../Input";
 import { onlyText } from "../../helpers/validationHelpers";
 import SchoolInput from "./SchoolInput";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import CityStateInput from "./CityStateInput";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -116,25 +117,43 @@ export default function Info({ data }) {
         />
       </SingleItemArea>
       <DoubleItemArea>
-        <div className={styles.cityInput}>
-          <CitySearch
-            placeholder="City *"
-            textOnly={true}
-            options={Cities_Data}
-            wrapperclassname={"editprofilecity"}
-            value={city}
-            setvalue={setcity}
-            setstate={setstate}
-          />
-        </div>
-        <div className={styles.stateInput}>
-          <DropDown
-            value={state}
-            options={STATES_ARR}
-            setvalue={setstate}
-            placeholder="State"
-          />
-        </div>
+        <CitySearch
+          placeholder="City *"
+          textOnly={true}
+          options={Cities_Data}
+          wrapperclassname={"editprofilecity"}
+          value={city}
+          setvalue={setcity}
+          setstate={setstate}
+        />
+        <DropDown
+          value={state}
+          options={STATES_ARR}
+          setvalue={setstate}
+          placeholder="State"
+        />
+      </DoubleItemArea>
+      <DoubleItemArea>
+        <CityStateInput
+          value={infoData.city}
+          setValue={(value) => {
+            setInfoData((prev) => ({ ...prev, city: value }));
+          }}
+          setState={(value) => {
+            setInfoData((prev) => ({ ...prev, state: value }));
+          }}
+          disabled={false}
+          tooltipId={"city-tooltip"}
+          tooltip={"City is required to put your child in related circles."}
+        />
+        <DropDown
+          value={infoData.state}
+          options={STATES_ARR}
+          setvalue={(value) => {
+            setInfoData((prev) => ({ ...prev, state: value }));
+          }}
+          placeholder="State"
+        />
       </DoubleItemArea>
       <DoubleItemArea>
         <div className={styles.dobInput}>
