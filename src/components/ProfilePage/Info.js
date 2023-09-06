@@ -11,6 +11,7 @@ import SchoolInput from "./SchoolInput";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import CityStateInput from "./CityStateInput";
 import StateName from "./StateName";
+import DateInput from "../Input/DateInput";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -118,23 +119,6 @@ export default function Info({ data }) {
         />
       </SingleItemArea>
       <DoubleItemArea>
-        <CitySearch
-          placeholder="City *"
-          textOnly={true}
-          options={Cities_Data}
-          wrapperclassname={"editprofilecity"}
-          value={city}
-          setvalue={setcity}
-          setstate={setstate}
-        />
-        <DropDown
-          value={state}
-          options={STATES_ARR}
-          setvalue={setstate}
-          placeholder="State"
-        />
-      </DoubleItemArea>
-      <DoubleItemArea>
         <CityStateInput
           value={infoData.city}
           setValue={(value) => {
@@ -151,7 +135,7 @@ export default function Info({ data }) {
       </DoubleItemArea>
       <DoubleItemArea>
         <div className={styles.dobInput}>
-          <ModernInputBox
+          <DateInput
             type="date"
             placeholder="Date of birth"
             value={dob}
