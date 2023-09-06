@@ -7,6 +7,7 @@ import range from "lodash/range";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function DateInput({
+  label = "",
   value,
   onChange,
   maxDate = "",
@@ -14,8 +15,6 @@ export default function DateInput({
   onlyDate = true,
   onlyTime = false,
 }) {
-  const [startDate, setStartDate] = useState(new Date());
-
   const years = range(1990, getYear(new Date()) + 1, 1);
   const months = [
     "January",
@@ -34,15 +33,21 @@ export default function DateInput({
 
   return (
     <div className={styles.dateInput}>
+      {label && (
+        <label for={label} className={styles.dateLabel}>
+          {label}
+        </label>
+      )}
       {onlyTime ? (
         <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={value}
+          onChange={(date) => onChange(date)}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={30}
           timeCaption="Time"
           dateFormat="h:mm aa"
+          className={styles.datePicker}
         />
       ) : (
         <DatePicker
@@ -102,8 +107,8 @@ export default function DateInput({
               </button>
             </div>
           )}
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={value}
+          onChange={(date) => onChange(date)}
           showFullMonthYearPicker
           allowSameDay={false}
           maxDate={maxDate === "today" ? moment().toDate() : maxDate}

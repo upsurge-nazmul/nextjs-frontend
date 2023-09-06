@@ -2,6 +2,15 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/GeneralComponents/customInput.module.scss";
 import ReactTooltip from "react-tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
+/**
+ *
+ * @SuggestionsFormat: [
+ *    {id: 1, name: "Option 1", ...},
+ *    {id: 2, name: "Option 2", ...},
+ *  ]
+ */
 
 export default function Input({
   label = "",
@@ -9,6 +18,7 @@ export default function Input({
   selectSuggestion = () => {},
   tooltip = "",
   tooltipId = "",
+  dropdown = false,
   ...props
 }) {
   const [showSuggestions, setShowsuggestions] = useState(false);
@@ -45,14 +55,21 @@ export default function Input({
       ) : (
         ""
       )}
-      {tooltip && (
-        <div data-tip data-for={tooltipId} className={styles.tooltip}>
-          <InfoOutlinedIcon className={styles.infoIcon} />
-          <ReactTooltip id={tooltipId} type="dark" effect="solid">
-            <p>{tooltip}</p>
-          </ReactTooltip>
-        </div>
-      )}
+      <div className={styles.iconArea}>
+        {dropdown && (
+          <div className={styles.dropdownIcon}>
+            <ArrowDropDownIcon className={styles.icon} />
+          </div>
+        )}
+        {tooltip && (
+          <div data-tip data-for={tooltipId} className={styles.tooltip}>
+            <InfoOutlinedIcon className={styles.icon} />
+            <ReactTooltip id={tooltipId} type="dark" effect="solid">
+              <p>{tooltip}</p>
+            </ReactTooltip>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -66,14 +66,23 @@
       }
     }
   }
-  .tooltip {
+  .iconArea{
     position: absolute;
     right: 2%;
     top: 50%;
-    color: rgb(138, 138, 138);
-    .infoicon {
-      font-size: 1.375rem;
+    display: flex;
+    .tooltip {
+      color:#999;
+      .icon {
+        font-size: 1.75rem;
+      }
+    }
+    .dropdownIcon {
+      color:#999;
       cursor: pointer;
+      .icon {
+        font-size: 1.75rem;
+      }
     }
   }
 }

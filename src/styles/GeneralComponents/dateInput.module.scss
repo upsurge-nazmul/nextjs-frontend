@@ -1,7 +1,17 @@
 .dateInput {
-  z-index: 2;
+  padding: 1rem 0;
+  display: grid;
+  position: relative;
   width: 100%;
+  .dateLabel{
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    color: #797979;
+  }
   .datePicker {
+    width: 100%;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     border: 1px solid #797979;
