@@ -10,6 +10,7 @@ import { onlyText } from "../../helpers/validationHelpers";
 import SchoolInput from "./SchoolInput";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import CityStateInput from "./CityStateInput";
+import StateName from "./StateName";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -76,7 +77,7 @@ export default function Info({ data }) {
   console.log("profile info: ", data, infoData);
 
   return (
-    <div className={styles.leftContent}>
+    <div className={styles.info}>
       <DoubleItemArea>
         <Input
           label={"First Name"}
@@ -146,14 +147,7 @@ export default function Info({ data }) {
           tooltipId={"city-tooltip"}
           tooltip={"City is required to put your child in related circles."}
         />
-        <DropDown
-          value={infoData.state}
-          options={STATES_ARR}
-          setvalue={(value) => {
-            setInfoData((prev) => ({ ...prev, state: value }));
-          }}
-          placeholder="State"
-        />
+        <StateName data={infoData.state} />
       </DoubleItemArea>
       <DoubleItemArea>
         <div className={styles.dobInput}>
