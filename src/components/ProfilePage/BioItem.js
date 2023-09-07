@@ -1,0 +1,72 @@
+import { useState } from "react";
+import styles from "../../styles/EditProfile/profilePage.module.scss";
+import EditIcon from "@mui/icons-material/Edit";
+import SaveIcon from "@mui/icons-material/Save";
+import ClearIcon from "@mui/icons-material/Clear";
+
+export default function BioItem({
+  label = "",
+  value = "",
+  editActionHandler = () => {},
+  additionalAction = {
+    icon: "",
+    label: "",
+    actionHandler: () => {},
+  },
+}) {
+  const [editMode, setEditMode] = useState(false);
+
+  return (
+    <div className={styles.bioItem}>
+      <div className={styles.bioItemContainer}>
+        <div className={styles.itemBody}>
+          <div className={styles.itemLabel}>{label}</div>
+          <div className={styles.itemValue}>{value}</div>
+        </div>
+        <div className={styles.itemAction}>
+          {editMode ? (
+            <>
+              <button
+                onClick={() => {
+                  setEditMode(false);
+                  editActionHandler();
+                }}
+                style={{ color: "#7bd0bc" }}
+                className={styles.actionButton}
+              >
+                <SaveIcon /> Save
+              </button>
+              <button
+                onClick={() => {
+                  setEditMode(false);
+                  editActionHandler();
+                }}
+                style={{ color: "#de6869" }}
+                className={styles.actionButton}
+              >
+                <ClearIcon /> Cancel
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setEditMode(true)}
+              style={{ color: "#5955e5" }}
+              className={styles.actionButton}
+            >
+              <EditIcon /> Edit
+            </button>
+          )}
+        </div>
+      </div>
+      <div
+        className={styles.itemAdditionalAction}
+        style={{
+          cursor: additionalAction.actionHandler ? "pointer" : "default",
+        }}
+        onClick={additionalAction.actionHandler}
+      >
+        {additionalAction.icon} {additionalAction.label}
+      </div>
+    </div>
+  );
+}

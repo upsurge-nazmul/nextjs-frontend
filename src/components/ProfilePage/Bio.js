@@ -1,49 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/EditProfile/profilePage.module.scss";
-import EditIcon from "@mui/icons-material/Edit";
 import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import VerifiedIcon from "@mui/icons-material/Verified";
-
-const BioItem = ({
-  label = "",
-  value = "",
-  editActionHandler = () => {},
-  additionalAction = {
-    icon: "",
-    label: "",
-    actionHandler: () => {},
-  },
-}) => {
-  return (
-    <div className={styles.bioItem}>
-      <div className={styles.itemBody}>
-        <div className={styles.itemLabel}>{label}</div>
-        <div className={styles.itemValue}>{value}</div>
-        <div
-          className={styles.itemAdditionalAction}
-          style={{
-            cursor: additionalAction.actionHandler ? "pointer" : "default",
-          }}
-          onClick={additionalAction.actionHandler}
-        >
-          {additionalAction.icon} {additionalAction.label}
-        </div>
-      </div>
-      <div className={styles.itemAction}>
-        <button onClick={editActionHandler} className={styles.actionButton}>
-          <EditIcon /> Edit
-        </button>
-      </div>
-    </div>
-  );
-};
+import BioItem from "./BioItem";
 
 export default function Bio({ data }) {
-  const [bioData, setbioData] = useState({
+  const [bioData, setBioData] = useState({
     userName: "",
     email: "",
+    parentEmail: "",
     phone: "",
+    parentPhone: "",
   });
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [phoneVerified, setPhoneVerified] = useState(false);
+
+  useEffect(() => {
+    if (data) {
+      setBioData({
+        userName: data.user_name || "",
+        email: data.email || "",
+        parentEmail: data.parent_email || "",
+        phone: data.phone || "",
+        parentPhone: data.parent_phone || "",
+      });
+      setEmailVerified(data.email_verified);
+      setPhoneVerified(data.phone_verified);
+    }
+  }, [data]);
 
   console.log("data", data);
 
@@ -61,31 +45,45 @@ export default function Bio({ data }) {
           className={styles.avatarImg}
         />
       </div>
-      <BioItem label={"Username"} value={data.user_name} />
-      {data.email ? (
-        <BioItem label={"Email"} value={data.email} />
+      <BioItem label={"Username"} value={bioData.userName} />
+      {bioData.email ? (
+        <BioItem label={"Email"} value={bioData.email} />
       ) : (
         <BioItem
           label={"Parent Email"}
-          value={data.parent_email}
-          additionalAction={{
-            icon: <GppMaybeIcon style={{ color: "#de6869" }} />, // just pass color with the icon
-            label: "Click here to Verify your email address",
-            action: () => {},
-          }}
+          value={bioData.parentEmail}
+          additionalAction={
+            emailVerified
+              ? {
+                  icon: <VerifiedIcon style={{ color: "#5955e5" }} />,
+                  label: "Email Verified",
+                }
+              : {
+                  icon: <GppMaybeIcon style={{ color: "#de6869" }} />,
+                  label: "Click here to Verify your email address",
+                  action: () => {},
+                }
+          }
         />
       )}
-      {data.phone ? (
-        <BioItem label={"Phone"} value={data.phone} />
+      {bioData.phone ? (
+        <BioItem label={"Phone"} value={bioData.phone} />
       ) : (
         <BioItem
           label={"Parent Phone"}
-          value={data.parent_phone}
-          additionalAction={{
-            icon: <VerifiedIcon style={{ color: "#5955e5" }} />, // just pass color with the icon
-            label: "Verified",
-            action: () => {},
-          }}
+          value={bioData.parentPhone}
+          additionalAction={
+            phoneVerified
+              ? {
+                  icon: <VerifiedIcon style={{ color: "#5955e5" }} />,
+                  label: "Phone Verified",
+                }
+              : {
+                  icon: <GppMaybeIcon style={{ color: "#de6869" }} />,
+                  label: "Click here to Verify your phone number",
+                  action: () => {},
+                }
+          }
         />
       )}
       <div className={styles.passwordArea}>
