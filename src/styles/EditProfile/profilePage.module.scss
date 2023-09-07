@@ -2,6 +2,8 @@
   display: flex;
   gap: 2.5%;
   width: 95%;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Lexend;
   .info {
     background-color: #fff;
     flex: 1;
@@ -47,22 +49,126 @@
       }
     }
     .saveButton {
+      cursor: pointer;
       width: 100%;
+      padding: 1rem 0;
       border-radius: 0.625rem;
       background-color: #4166eb;
       color: #fff;
-      font-weight: 500;
-      font-size: 1rem;
       border: none;
       outline: none;
-      padding: 1rem 0;
-      cursor: pointer;
+      font-family: Lexend;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5rem;
     }
   }
-  .rightContent {
+  .bio {
     flex: 0.5;
     background-color: #fff;
     border-radius: 1.25rem;
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
+    .avatarArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+      .avatarImg {
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+      }
+    }
+    .bioItem {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      .itemBody {
+        flex: 1;
+        .itemLabel {
+          color: #333;
+          font-feature-settings: "clig" off, "liga" off;
+          font-family: Lexend;
+          font-size: 0.75rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.5rem;
+        }
+        .itemValue {
+          color: #555;
+          font-feature-settings: "clig" off, "liga" off;
+          font-family: Lexend;
+          font-size: 1rem;
+          font-style: italic;
+          font-weight: 300;
+          line-height: 1.5rem;
+        }
+        .itemAdditionalAction {
+          color: #777;
+          font-feature-settings: "clig" off, "liga" off;
+          font-family: Lexend;
+          font-size: 0.75rem;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 1.5rem;
+          display: flex;
+          align-items: center;
+          svg {
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-right: 0.05rem;
+          }
+        }
+      }
+      .itemAction {
+        .actionButton {
+          cursor: pointer;
+          border: none;
+          outline: none;
+          background-color: transparent;
+          color: #4166eb;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-feature-settings: "clig" off, "liga" off;
+          font-family: Lexend;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.5rem;
+          svg {
+            height: 0.875rem;
+            width: 0.875rem;
+            margin-right: 0.15rem;
+          }
+        }
+      }
+    }
+    .passwordArea {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+      .changePasswordButton {
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem 0;
+        border-radius: 0.625rem;
+        background-color: #de6869;
+        color: #fff;
+        border: none;
+        outline: none;
+        text-align: center;
+        font-family: Lexend;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+    }
   }
 }
