@@ -8,7 +8,7 @@
     background-color: #fff;
     flex: 1;
     border-radius: 1.25rem;
-    padding: 2rem 3rem;
+    padding: 4rem 3rem;
     .doubleItemArea {
       display: flex;
       align-items: center;
@@ -68,13 +68,13 @@
     flex: 0.5;
     background-color: #fff;
     border-radius: 1.25rem;
-    padding: 2rem 2rem;
+    padding: 1rem 1.5rem;
     .avatarArea {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0;
+      // padding: 1rem 0;
       .avatarImg {
         height: 10rem;
         width: 10rem;
@@ -88,6 +88,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        gap: 1rem;
         .itemBody {
           flex: 1;
           .itemLabel {

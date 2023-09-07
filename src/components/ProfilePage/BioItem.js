@@ -3,6 +3,7 @@ import styles from "../../styles/EditProfile/profilePage.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import ClearIcon from "@mui/icons-material/Clear";
+import Input from "../Input";
 
 export default function BioItem({
   label = "",
@@ -21,7 +22,7 @@ export default function BioItem({
       <div className={styles.bioItemContainer}>
         <div className={styles.itemBody}>
           <div className={styles.itemLabel}>{label}</div>
-          <div className={styles.itemValue}>{value}</div>
+          <div className={styles.itemValue}>{editMode ? <Input /> : value}</div>
         </div>
         <div className={styles.itemAction}>
           {editMode ? (
