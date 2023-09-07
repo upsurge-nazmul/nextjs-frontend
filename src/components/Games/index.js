@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Toast from "../Toast";
 import DashboardLeftPanel from "../Dashboard/DashboardLeftPanel";
-import GameCard from "../Dashboard/GameCard";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import styles from "../../styles/Dashboard/games.module.scss";
 import { MainContext } from "../../context/Main";
@@ -124,36 +123,18 @@ function Games({
           {showSubToPremium && (
             <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
           )}
-          {recent_games && recent_games.length > 0 && (
-            <div className={styles.recentSection}>
-              <h2 className={styles.heading}>
-                Recently Played <HeadingArrow />
-              </h2>
-              <div className={styles.wrapper} id="gamecardwrapper2">
-                {recentgames.map((item, index) => {
-                  return (
-                    <GameCard
-                      onClick={() =>
-                        handlegameclick(
-                          item,
-                          Game_Data[item].pushto
-                            ? Game_Data[item].pushto.split("/")[
-                                Game_Data[item].pushto.split("/").length - 1
-                              ]
-                            : "",
-                          Game_Data[item].webgl_key,
-                          Game_Data[item].premium_plan,
-                          userdata.premium_plan
-                        )
-                      }
-                      data={Game_Data[item]}
-                      key={"kidcomponent" + index}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          <div className={styles.availableSection}>
+            <h2 className={styles.heading}>
+              Recently Played
+              <HeadingArrow />
+            </h2>
+            <GameList
+              data={recent_games}
+              handlegameclick={handlegameclick}
+              gameunicoinrewards={gameunicoinrewards}
+              userdata={userdata}
+            />
+          </div>
           <div className={styles.availableSection}>
             <h2 className={styles.heading}>
               Online Games
