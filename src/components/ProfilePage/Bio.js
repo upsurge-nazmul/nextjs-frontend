@@ -29,7 +29,7 @@ export default function Bio({ data }) {
     }
   }, [data]);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   return (
     <div className={styles.bio}>

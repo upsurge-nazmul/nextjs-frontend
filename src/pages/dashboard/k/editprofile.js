@@ -29,7 +29,7 @@ export default function EditProfile({ userData, childavatars }) {
       <Toast data={toastdata} />
       <div className={styles.contentArea}>
         <DashboardHeader
-          mode={`Welcome, ${"User Name"}`}
+          mode={`Welcome, ${userData?.first_name}`}
           settoastdata={settoastdata}
         />
         {userdata && (
