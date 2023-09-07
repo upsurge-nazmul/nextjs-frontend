@@ -16,13 +16,25 @@ export default function BioItem({
   },
 }) {
   const [editMode, setEditMode] = useState(false);
+  const [itemValue, setItemValue] = useState(value);
 
   return (
     <div className={styles.bioItem}>
       <div className={styles.bioItemContainer}>
         <div className={styles.itemBody}>
           <div className={styles.itemLabel}>{label}</div>
-          <div className={styles.itemValue}>{editMode ? <Input /> : value}</div>
+          <div className={styles.itemValue}>
+            {editMode ? (
+              <Input
+                value={itemValue}
+                onChange={(e) => setItemValue(e.target.value)}
+                designType="underline"
+                style={{ fontSize: "1rem", marginBottom: "1px" }}
+              />
+            ) : (
+              <p style={{ padding: "3px 0" }}>{value}</p>
+            )}
+          </div>
         </div>
         <div className={styles.itemAction}>
           {editMode ? (
