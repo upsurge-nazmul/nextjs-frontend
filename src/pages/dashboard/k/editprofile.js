@@ -57,22 +57,11 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
-      let childavatars = await KidApis.getavatars(null, token);
-      if (childavatars && childavatars.data && childavatars.data.success) {
-        return {
-          props: {
-            userData: response.data.data,
-            childavatars: childavatars.data.data,
-          },
-        };
-      } else {
-        return {
-          props: {
-            userData: response.data.data,
-            childavatars: [],
-          },
-        };
-      }
+      return {
+        props: {
+          userData: response.data.data,
+        },
+      };
     }
   } else {
     return {

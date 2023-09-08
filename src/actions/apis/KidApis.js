@@ -2,7 +2,11 @@ import * as ApiCalls from "../ApiCalls";
 import { getCookie } from "../cookieUtils";
 
 const getavatars = (payload, token) => {
-  return ApiCalls.getResponse(`kid/getavatars`, payload, token);
+  return ApiCalls.getResponse(
+    `kid/getavatars`,
+    payload,
+    getCookie("accesstoken")
+  );
 };
 
 const buyavatar = (payload, token) => {

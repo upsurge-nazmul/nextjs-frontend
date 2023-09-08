@@ -21,6 +21,7 @@ export default function Menu({
   setshowlevels,
   setShowPremiumPopup,
   setShowLoggedInUsers,
+  setShowAvatarModal,
 }) {
   const router = useRouter();
   const { setSavedUsers, userdata, setshowmenu, setuser, setuserdata } =
@@ -138,7 +139,13 @@ export default function Menu({
           />
         </div>
         <div className={styles.avatarActionArea}>
-          <button className={styles.editAvatarButton}>
+          <button
+            className={styles.editAvatarButton}
+            onClick={() => {
+              setshowmenu(false);
+              setShowAvatarModal(true);
+            }}
+          >
             <EditIcon />
             <span>Edit Avatar</span>
           </button>
