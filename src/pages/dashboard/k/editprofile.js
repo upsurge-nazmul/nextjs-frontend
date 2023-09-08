@@ -4,27 +4,12 @@ import PageTitle from "../../../components/PageTitle";
 import Toast from "../../../components/Toast";
 import styles from "../../../styles/EditProfile/editprofile.module.scss";
 import DashboardHeader from "../../../components/Dashboard/DashboardHeader";
-import ModernInputBox from "../../../components/ModernInputBox";
 import { MainContext } from "../../../context/Main";
 import KidApis from "../../../actions/apis/KidApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import ProfilePage from "../../../components/ProfilePage";
 
-const DoubleItemArea = ({ children }) => {
-  console.log("double item", children);
-  return (
-    <div className={styles.doubleItemArea}>
-      <div className={styles.firstItem}>{children[0]}</div>
-      <div className={styles.secondItem}>{children[1]}</div>
-    </div>
-  );
-};
-
-const SingleItemArea = ({ children }) => {
-  return <div className={styles.singleItemArea}>{children}</div>;
-};
-
-export default function EditProfile({ data, childavatars }) {
+export default function EditProfile({ userData, childavatars }) {
   const { userdata, setuserdata } = useContext(MainContext);
 
   const [toastdata, settoastdata] = useState({
@@ -32,11 +17,9 @@ export default function EditProfile({ data, childavatars }) {
     type: "success",
     msg: "",
   });
-  const [firstname, setfirstname] = useState(data?.first_name || "");
-  const [lastname, setlastname] = useState(data?.last_name || "");
 
   useEffect(() => {
-    setuserdata(data);
+    setuserdata(userData);
   }, []);
 
   return (
@@ -46,10 +29,12 @@ export default function EditProfile({ data, childavatars }) {
       <Toast data={toastdata} />
       <div className={styles.contentArea}>
         <DashboardHeader
-          mode={`Welcome, ${"User Name"}`}
+          mode={`Welcome, ${userData?.first_name}`}
           settoastdata={settoastdata}
         />
-        <ProfilePage data={data} childavatars={childavatars} />
+        {userdata && (
+          <ProfilePage data={userdata} childavatars={childavatars} />
+        )}
       </div>
     </div>
   );
@@ -76,14 +61,14 @@ export async function getServerSideProps({ params, req }) {
       if (childavatars && childavatars.data && childavatars.data.success) {
         return {
           props: {
-            data: response.data.data,
+            userData: response.data.data,
             childavatars: childavatars.data.data,
           },
         };
       } else {
         return {
           props: {
-            data: response.data.data,
+            userData: response.data.data,
             childavatars: [],
           },
         };

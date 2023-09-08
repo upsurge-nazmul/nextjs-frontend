@@ -1,5 +1,4 @@
 .customInput {
-  padding: 1rem 0;
   display: grid;
   position: relative;
   width: 100%;
@@ -10,10 +9,8 @@
     margin-left: 0.5rem;
     color: #797979;
   }
-  input {
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px solid #797979;
+  .input {
+    width: 100%;
     outline: none;
     font-size: 1.25rem;
     color: #333;
@@ -26,6 +23,18 @@
       border-color: #999;
     }
   }
+  .boundayInput {
+    @extend .input;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #797979;
+  }
+  .underlineInput {
+    @extend .input;
+    padding: 0.25rem;
+    border: none;
+    border-bottom: 1px solid #797979;
+  }
   .suggestions {
     z-index: 505;
     position: absolute;
@@ -35,7 +44,7 @@
     flex-direction: column;
     background-color: white;
     width: 100%;
-    min-width: 250px;
+    min-width: 20px;
     border-radius: 8px;
     border: 1px solid #898989;
     margin-top: 10px;

@@ -19,6 +19,7 @@ export default function Input({
   tooltip = "",
   tooltipId = "",
   dropdown = false,
+  designType = "boundary", // or 'underline'
   ...props
 }) {
   const [showSuggestions, setShowsuggestions] = useState(false);
@@ -33,7 +34,16 @@ export default function Input({
   return (
     <div className={styles.customInput}>
       {label && <label for={label}>{label}</label>}
-      <input id={label} name={label} {...props} />
+      <input
+        className={
+          designType === "underline"
+            ? styles.underlineInput
+            : styles.boundayInput
+        }
+        id={label}
+        name={label}
+        {...props}
+      />
       {showSuggestions ? (
         <div className={styles.suggestions}>
           {suggestions.map((item) => {

@@ -48,7 +48,7 @@ export default function Info({ data }) {
 
   async function handleSave() {}
 
-  console.log("profile info: ", data, infoData);
+  // console.log("profile info: ", data, infoData);
 
   return (
     <div className={styles.info}>
