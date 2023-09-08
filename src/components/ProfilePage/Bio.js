@@ -4,7 +4,11 @@ import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import BioItem from "./BioItem";
 
-export default function Bio({ data }) {
+export default function Bio({
+  data = null,
+  emailVerificationHandler = () => {},
+  phoneVerificationHandler = () => {},
+}) {
   const [bioData, setBioData] = useState({
     userName: "",
     email: "",
@@ -60,8 +64,8 @@ export default function Bio({ data }) {
                 }
               : {
                   icon: <GppMaybeIcon style={{ color: "#de6869" }} />,
-                  label: "Click here to Verify your email address",
-                  action: () => {},
+                  label: "Click here to Resend verification email",
+                  actionHandler: emailVerificationHandler,
                 }
           }
         />
@@ -81,7 +85,7 @@ export default function Bio({ data }) {
               : {
                   icon: <GppMaybeIcon style={{ color: "#de6869" }} />,
                   label: "Click here to Verify your phone number",
-                  action: () => {},
+                  actionHandler: phoneVerificationHandler,
                 }
           }
         />

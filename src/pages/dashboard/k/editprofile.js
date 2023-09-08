@@ -33,7 +33,11 @@ export default function EditProfile({ userData, childavatars }) {
           settoastdata={settoastdata}
         />
         {userdata && (
-          <ProfilePage data={userdata} childavatars={childavatars} />
+          <ProfilePage
+            data={userdata}
+            settoastdata={settoastdata}
+            childavatars={childavatars}
+          />
         )}
       </div>
     </div>
