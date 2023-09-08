@@ -26,6 +26,7 @@ import RedeemNowPopUp from "../../components/RedeemNowPopUp";
 import AchievementPopUp from "../AchievementPopUp";
 import Modal from "../Modal";
 import AccountSwitcher from "./Menu/AccountSwitcher";
+import AvatarSelector from "./AvatarSelector";
 
 function DashboardHeader({
   mode,
@@ -56,6 +57,7 @@ function DashboardHeader({
   const {
     setuser,
     userdata,
+    setuserdata,
     theme,
     showmenu,
     setshowmenu,
@@ -78,6 +80,10 @@ function DashboardHeader({
   const [showAchievement, setShowAchievement] = useState("");
   const [updateUnicoins, setUpdateUnicoins] = useState(false);
   const [showLoggedInUsers, setShowLoggedInUsers] = useState(false);
+  const boy_avatars = ["1", "2", "3", "4", "5"];
+  const girl_avatars = ["6", "7", "8", "9", "10", "11", "12", "13", "14"];
+  const [avatars, setavatars] = useState([...boy_avatars, ...girl_avatars]);
+  const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   const colors = [
     { front: "#a864fd", back: "#345dd1" },
@@ -411,6 +417,7 @@ function DashboardHeader({
               showPremiumPopup={showSubscription}
               setShowPremiumPopup={setShowSubscription}
               setShowLoggedInUsers={setShowLoggedInUsers}
+              setShowAvatarModal={setShowAvatarModal}
             />
           )}
           <img
@@ -513,6 +520,24 @@ function DashboardHeader({
             }}
           />
         </Modal>
+      )}
+      {showAvatarModal && (
+        <AvatarSelector
+          avatars={avatars}
+          setshow={setShowAvatarModal}
+          value={
+            userdata?.user_img_url ||
+            "https://imgcdn.upsurge.in/images/default-avatar.png"
+          }
+          dirlink={"/images/free-child-avatars/"}
+          purchasedAvatars={null}
+          setvalue={(img) => {
+            /**
+             * TODO: Update the user avatar in the database
+             */
+            setuserdata((prev) => ({ ...prev, user_img_url: img }));
+          }}
+        />
       )}
     </div>
   );

@@ -1,16 +1,29 @@
 import React from "react";
 import styles from "../../styles/GeneralComponents/avatarselector.module.scss";
 import TickSvg from "../SVGcomponents/TickSvg";
+import KidApis from "../../actions/apis/KidApis";
 export default function AvatarSelector({
   avatars,
   setvalue,
   value,
   setshow,
   dirlink,
-  purchasedAvatars,
   extension,
   tribe,
 }) {
+  const [purchasedAvatars, setPurchasedAvatars] = React.useState([]);
+
+  async function fetchPurchasedAvatars() {
+    const res = await KidApis.getavatars(null);
+    if (res && res.data && res.data.success) {
+      setPurchasedAvatars(res.data.data);
+    }
+  }
+
+  React.useEffect(() => {
+    fetchPurchasedAvatars();
+  }, []);
+
   return (
     <div className={styles.avatarselector}>
       <div className={styles.background} onClick={() => setshow(false)} />
@@ -80,12 +93,16 @@ export default function AvatarSelector({
               setshow(false);
             }}
           >
-            {value === "https://imgcdn.upsurge.in/images/default-avatar.png" && (
+            {value ===
+              "https://imgcdn.upsurge.in/images/default-avatar.png" && (
               <div className={styles.selected}>
                 <TickSvg className={styles.tick} />
               </div>
             )}
-            <img src={"https://imgcdn.upsurge.in/images/default-avatar.png"} alt="" />
+            <img
+              src={"https://imgcdn.upsurge.in/images/default-avatar.png"}
+              alt=""
+            />
           </div>
         </div>
       </div>
