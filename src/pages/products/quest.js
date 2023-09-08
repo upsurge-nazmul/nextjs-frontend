@@ -19,6 +19,9 @@ import TravelSection from "../../components/Products/quest/TravelSection";
 import ExpertsSection from "../../components/Products/quest/ExpertsSection";
 import ExploreSection from "../../components/Products/quest/ExploreSection";
 import SmarterMoneySection from "../../components/Products/quest/SmarterMoneySection";
+import TestiMonial from "../../components/Home/TestiMonial";
+import HighlightsCounter from "../../components/Home/HighlightsCounter";
+import KidProgress from "../../components/Products/quest/KidProgress";
 
 export default function Products() {
   const router = useRouter();
@@ -101,9 +104,12 @@ export default function Products() {
         id="knowledge-quest"
       />
       <TravelSection />
+      <TestiMonial />
+      <HighlightsCounter />
+      <KidProgress />
       <ExpertsSection />
-      <ExploreSection />
-      <SmarterMoneySection />
+      {/* <ExploreSection /> */}
+      {/* <SmarterMoneySection /> */}
       {/* <KnowledgeQuestMainSection
         email={email}
         setEmail={setEmail}
@@ -119,7 +125,7 @@ export default function Products() {
         setshowwaitlistblock={setshowwaitlistblock}
         id="knowledge-quest-main"
       /> */}
-      <JoinUs />
+      {/* <JoinUs /> */}
       <Footer />
     </div>
   );

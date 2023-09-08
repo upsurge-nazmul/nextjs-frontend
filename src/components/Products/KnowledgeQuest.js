@@ -1,14 +1,8 @@
 import React, { useContext, useState } from "react";
 import styles from "../../styles/Products/quest.module.scss";
-import Curve1 from "../SVGcomponents/Curve1";
-import Curve2 from "../SVGcomponents/Curve2";
-import Petal2SvgQuest from "../SVGcomponents/Petal2SvgQuest";
-import PetalSvgQuest from "../SVGcomponents/PetalSvgQuest";
-import Image from "next/image";
 import WaitlistPopUp from "../WaitlistPopUp";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/dist/client/router";
-import { motion } from "framer-motion";
 
 export default function KnowledgeQuest({
   id,
@@ -51,8 +45,6 @@ export default function KnowledgeQuest({
         theme === "dark" && styles.darkquestSection
       }`}
     >
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
       {showwaitlistblock && (
         <WaitlistPopUp
           email={email}
@@ -61,49 +53,37 @@ export default function KnowledgeQuest({
           setshowpopup={setshowwaitlistblock}
         />
       )}
-      <div className={styles.lap}>
-        <motion.div
-          initial={{ x: 300 }}
-          animate={{ x: 0 }}
-          transition={{ x: { duration: 0.4 } }}
-          className={styles.wrap}
-        >
-          <Image
-            layout="fill"
-            objectFit="contain"
-            src="https://imgcdn.upsurge.in/images/Group-232.png"
-            alt=""
-          />
-        </motion.div>
-      </div>
 
-      {/* <div className={styles.kidimg}>
-        <div className={styles.wrap}>
-          <Image
-            layout="fill"
-            objectFit="contain"
-            src="https://imgcdn.upsurge.in/images/1280-1280-x-720-px-3.png"
-            alt=""
-          />
-        </div>
-      </div> */}
-      <div className={styles.green} />
-      <div className={styles.yellow} />
-      <PetalSvgQuest className={styles.petal} />
-      <Petal2SvgQuest className={styles.petal2} />
       <div className={styles.textcontainer}>
         <h1 className={styles.heading}>
           Financial Literacy <br />
           Courses for Kids
         </h1>
         <div className={styles.subheading}>
-          {`Interactive courses that cover fundamentals of finance, including
-          earning, budgeting, saving, investing, and entrepreneurship.`}
+          <b>Interactive courses</b> that cover fundamentals of{" "}
+          <b>
+            finance, including earning, budgeting, saving, investing, and
+            entrepreneurship
+          </b>
+          .
         </div>
         <div className={styles.subheading}>
-          {`These bite-sized courses are about 10 minutes each and include
-          exercises, real-life examples and short quizzes to make sure that the
-          child understands the concepts.`}
+          These bite-sized courses are about 10 minutes each and include
+          exercises, <b>real-life examples</b> and short <b>quizzes</b> to make
+          sure that the child understands the concepts.
+        </div>
+        <div className={styles.mobileVideo}>
+          <div className={styles.wrap}>
+            <video
+              className={styles.video}
+              controls
+              muted
+              loop
+              poster="https://imgcdn.upsurge.in/images/pricing-video-picture.png"
+            >
+              <source src="/intro.mp4" type="video/mp4"></source>
+            </video>
+          </div>
         </div>
         <div className={styles.details}>
           <div className={styles.section}>
@@ -119,16 +99,6 @@ export default function KnowledgeQuest({
             <p className={styles.name}>challenges</p>
           </div>
         </div>
-        {/*<p className={styles.secondheading}>Concepts Covered</p>
-          <div className={styles.conceptswrapper}>
-          {democoncepts.map((concept, index) => {
-            return (
-              <div className={styles.concept} key={"concept" + index}>
-                {concept}
-              </div>
-            );
-          })}
-        </div> */}
         <div className={styles.signupBox}>
           {!userdata ? (
             <div
@@ -138,7 +108,7 @@ export default function KnowledgeQuest({
                 setshowpopup(true);
               }}
             >
-              Sign up for FREE
+              Start FREE trial
             </div>
           ) : (
             <div
@@ -159,6 +129,20 @@ export default function KnowledgeQuest({
               Go to Dashboard
             </div>
           )}
+        </div>
+      </div>
+
+      <div className={styles.lap}>
+        <div className={styles.wrap}>
+          <video
+            className={styles.video}
+            controls
+            muted
+            loop
+            poster="https://imgcdn.upsurge.in/images/pricing-video-picture.png"
+          >
+            <source src="/intro.mp4" type="video/mp4"></source>
+          </video>
         </div>
       </div>
     </div>
