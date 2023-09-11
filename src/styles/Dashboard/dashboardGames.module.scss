@@ -1,12 +1,11 @@
 .dashboardGames {
-  margin: 2rem 0rem 3rem 0rem;
+  margin: 2rem 0;
   .mainheading {
     font-weight: 500;
     font-size: 25px;
     color: rgba(87, 88, 128, 1);
     display: flex;
     align-items: center;
-    padding: 1.25rem 3rem;
     svg {
       margin-left: 10px;
     }
@@ -18,7 +17,7 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 2rem 3rem 4rem 3rem;
+    padding: 3rem 0;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -28,11 +27,8 @@
 @media only screen and (min-width: 501px) and (max-width: 990px) {
   .dashboardGames {
     margin-top: 1.5rem;
-    .mainheading{
-      padding: 1.25rem 1.25rem;
-    }
     .container{
-      padding: 2rem 1.25rem 4rem 1.25rem
+      padding: 2rem 0
     }
   }
 }
@@ -41,11 +37,8 @@
 @media only screen and (max-width: 500px) {
   .dashboardGames {
     margin-top: 1.5rem;
-    .mainheading{
-      padding: 1.25rem 1.25rem;
-    }
     .container{
-      padding: 2rem 1.25rem 4rem 1.25rem
+      padding: 2rem 0
     }
   }
 }

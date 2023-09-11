@@ -13,6 +13,7 @@ import FreeGameApis from "../../actions/apis/FreeGameApis";
 import SubToPremiumPopUp from "../SubToPremiumPopUp";
 import GameList from "./GameList";
 import AvailableGames from "../DownloadGames/AvailableGames";
+import DashboardGames from "../Dashboard/Games";
 
 function Games({
   userdatafromserver = null,
@@ -123,7 +124,7 @@ function Games({
           {showSubToPremium && (
             <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
           )}
-          <div className={styles.availableSection}>
+          {/* <div className={styles.availableSection}>
             <h2 className={styles.heading}>
               Recently Played
               <HeadingArrow />
@@ -134,7 +135,14 @@ function Games({
               gameunicoinrewards={gameunicoinrewards}
               userdata={userdata}
             />
-          </div>
+          </div> */}
+          <DashboardGames
+            title={"Recently Played"}
+            gameunicoinrewards={gameunicoinrewards}
+            recentgames={recent_games}
+            setShowSubToPremium={setShowSubToPremium}
+            gameData={"recent_games"}
+          />
           <div className={styles.availableSection}>
             <h2 className={styles.heading}>
               Online Games

@@ -16,34 +16,6 @@
       overflow-x: hidden;
       scrollbar-width: thin;
       padding: $content-padding-y $conent-padding-x;
-        .recentSection {
-          height: fit-content;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          .heading {
-            font-weight: 500;
-            font-size: 25px;
-            color: rgba(87, 88, 128, 1);
-            display: flex;
-            align-items: center;
-            svg {
-              margin-left: 10px;
-            }
-          }
-          .wrapper {
-            display: flex;
-            height: fit-content;
-            align-items: center;
-            width: 100%;
-            overflow-x: auto;
-            gap: 1.5rem;
-            padding-top: 2.25rem;
-            padding-bottom: 2.25rem;
-            scrollbar-width: thin;
-            scroll-behavior: smooth;
-          }
-        }
         .availableSection {
           margin-top: 15px;
           display: flex;

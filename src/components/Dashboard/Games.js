@@ -1,16 +1,19 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import styles from "../../styles/Dashboard/dashboardGames.module.scss";
 import { Game_Data } from "../../static_data/Game_Data";
-import GameCard from "./GameCard";
+// import GameCard from "./GameCard";
+import GameCard from "../Games/GameCard";
 import { MainContext } from "../../context/Main";
 import HeadingArrow from "../SVGcomponents/HeadingArrow";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
 import GameView from "../Games/GameView";
 
-export default function Games({
+export default function DashboardGames({
+  title = "Games",
   gameunicoinrewards = null,
   recentgames = null,
   setShowSubToPremium = () => {},
+  gameData = "default", // or 'recent_games'
 }) {
   const gamesRef = useRef(null);
   const { userdata } = useContext(MainContext);
@@ -18,7 +21,9 @@ export default function Games({
   const [openGame, setOpenGame] = useState("");
 
   useEffect(() => {
-    setData(Game_Data);
+    if (gameData === "recent_games") {
+      setData(recentgames);
+    } else setData(Game_Data);
   }, []);
 
   useEffect(() => {
@@ -90,39 +95,64 @@ export default function Games({
   return (
     <div className={styles.dashboardGames}>
       <h2 className={styles.mainheading} onClick={() => {}}>
-        Games
+        {title}
         <HeadingArrow />
       </h2>
       <div className={styles.container} ref={gamesRef}>
-        {data &&
-          Object.keys(data).map((item, index) => {
-            return (
-              <GameCard
-                onClick={() =>
-                  handlegameclick(
-                    item,
-                    Game_Data[item].pushto
-                      ? Game_Data[item].pushto.split("/")[
-                          Game_Data[item].pushto.split("/").length - 1
-                        ]
-                      : "",
-                    Game_Data[item].webgl_key,
-                    Game_Data[item].premium_plan,
-                    userdata?.premium_plan
-                  )
-                }
-                reward={
-                  gameunicoinrewards
-                    ? gameunicoinrewards.includes(item)
-                      ? "Completed"
-                      : 1500
-                    : null
-                }
-                data={Game_Data[item]}
-                key={"chorecomponent" + index}
-              />
-            );
-          })}
+        {data ? (
+          <>
+            {Array.isArray(data)
+              ? data.map((item, index) => (
+                  <GameCard
+                    onClick={() =>
+                      handlegameclick(
+                        item,
+                        Game_Data[item].pushto
+                          ? Game_Data[item].pushto.split("/")[
+                              Game_Data[item].pushto.split("/").length - 1
+                            ]
+                          : "",
+                        Game_Data[item].webgl_key,
+                        Game_Data[item].premium_plan,
+                        userdata.premium_plan
+                      )
+                    }
+                    data={Game_Data[item]}
+                    key={"game_array" + index}
+                  />
+                ))
+              : Object.keys(data).map((item, index) => {
+                  return (
+                    <GameCard
+                      onClick={() =>
+                        handlegameclick(
+                          item,
+                          Game_Data[item].pushto
+                            ? Game_Data[item].pushto.split("/")[
+                                Game_Data[item].pushto.split("/").length - 1
+                              ]
+                            : "",
+                          Game_Data[item].webgl_key,
+                          Game_Data[item].premium_plan,
+                          userdata?.premium_plan
+                        )
+                      }
+                      reward={
+                        gameunicoinrewards
+                          ? gameunicoinrewards.includes(item)
+                            ? "Completed"
+                            : 1500
+                          : null
+                      }
+                      data={Game_Data[item]}
+                      key={"games" + index}
+                    />
+                  );
+                })}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
       {/* {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""} */}

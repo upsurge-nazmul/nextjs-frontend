@@ -42,7 +42,7 @@ import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
 import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
 import TodaysQuestion from "../../../components/TodaysQuestion";
 import SubToPremiumPopUp from "../../../components/SubToPremiumPopUp";
-import Games from "../../../components/Dashboard/Games";
+import DashboardGames from "../../../components/Dashboard/Games";
 import GameApis from "../../../actions/apis/GameApis";
 
 export default function ChildActivity({
@@ -300,11 +300,13 @@ export default function ChildActivity({
             userPlanType={userdata?.premium_plan}
             setShowSubToPremium={setShowSubToPremium}
           />
-          <Games
-            gameunicoinrewards={gameunicoinrewards}
-            recentgames={recentgames}
-            setShowSubToPremium={setShowSubToPremium}
-          />
+          <div className={styles.gamesArea}>
+            <DashboardGames
+              gameunicoinrewards={gameunicoinrewards}
+              recentgames={recentgames}
+              setShowSubToPremium={setShowSubToPremium}
+            />
+          </div>
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               {todaysquestion && (
@@ -344,41 +346,37 @@ export default function ChildActivity({
                 </div>
               ) : (
                 <div className={styles.choreSection} id="chores">
-                  <h3
-                    className={styles.mainheading}
-                  >
+                  <h3 className={styles.mainheading}>
                     Download our app now
                     <HeadingArrow />
                   </h3>
                   <div className={styles.wrapper}>
-                      <div className={styles.downloadAppLeft}>
-                        <Jasper className={styles.jaspersvg} />
-                      </div>
-                      <div className={styles.downloadAppRight}>
-                        {/* <h3>Download our app now</h3>
+                    <div className={styles.downloadAppLeft}>
+                      <Jasper className={styles.jaspersvg} />
+                    </div>
+                    <div className={styles.downloadAppRight}>
+                      {/* <h3>Download our app now</h3>
                         <p>
                           Download our app to get started with your chores and
                           quests.
                         </p> */}
-                        <div className={styles.downloadAppButtons}>
-                          <a
-                            href="https://play.google.com/store/apps/details?id=com.upsurgefi.app"
-                            target="_blank"
-                            rel="noreferrer"
-                            className={styles.downloadAppButton}
-                          >
-                            <img
-                              src="/images/DownloadGames/google-play.png"
-                              alt="PlayStore"
-                            />
-                          </a>
-                         
-                          </div>
-                       </div>
-                   </div>
+                      <div className={styles.downloadAppButtons}>
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.upsurgefi.app"
+                          target="_blank"
+                          rel="noreferrer"
+                          className={styles.downloadAppButton}
+                        >
+                          <img
+                            src="/images/DownloadGames/google-play.png"
+                            alt="PlayStore"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              )
-              }
+              )}
             </div>
           </div>
           <></>

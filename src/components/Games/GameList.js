@@ -28,7 +28,7 @@ export default function GameList({
                 )
               }
               data={Game_Data[item]}
-              key={"kidcomponent" + index}
+              key={"game_array" + index}
             />
           ))
         : Object.keys(data).map((item, index) => (
@@ -54,7 +54,7 @@ export default function GameList({
                   : null
               }
               data={Game_Data[item]}
-              key={"chorecomponent" + index}
+              key={"games" + index}
             />
           ))}
     </div>
