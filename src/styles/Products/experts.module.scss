@@ -1,0 +1,136 @@
+.container {
+  padding: 2rem 0;
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  .heading {
+    font-size: 2em;
+    color: #2f2f2f;
+    margin-bottom: 1rem;
+  }
+  .logoContainer {
+    width: 65%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logoWrap {
+      position: relative;
+      width: 14rem;
+      aspect-ratio: 3/2;
+      .logo {
+        aspect-ratio: 3/2;
+        position: absolute;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    padding: 2rem 0;
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    .heading {
+      font-size: 1.2em;
+      color: #2f2f2f;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .logoContainer {
+      width: 90%;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logoWrap {
+        position: relative;
+        width: 14rem;
+        aspect-ratio: 3/2;
+        .logo {
+          aspect-ratio: 3/2;
+          position: absolute;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    padding: 2rem 0;
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    .heading {
+      font-size: 2em;
+      color: #2f2f2f;
+      margin-bottom: 1rem;
+    }
+    .logoContainer {
+      width: 65%;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logoWrap {
+        position: relative;
+        width: 14rem;
+        aspect-ratio: 3/2;
+        .logo {
+          aspect-ratio: 3/2;
+          position: absolute;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .container {
+    padding: 2rem 0;
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    .heading {
+      font-size: 2em;
+      color: #2f2f2f;
+      margin-bottom: 1rem;
+    }
+    .logoContainer {
+      width: 65%;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logoWrap {
+        position: relative;
+        width: 14rem;
+        aspect-ratio: 3/2;
+        .logo {
+          aspect-ratio: 3/2;
+          position: absolute;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}
