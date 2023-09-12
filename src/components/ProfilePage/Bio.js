@@ -8,6 +8,7 @@ export default function Bio({
   data = null,
   emailVerificationHandler = () => {},
   phoneVerificationHandler = () => {},
+  settoastdata = () => {},
 }) {
   const [bioData, setBioData] = useState({
     userName: "",
