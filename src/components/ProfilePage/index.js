@@ -42,13 +42,14 @@ export default function ProfilePage({ data, settoastdata, childavatars }) {
 
   return (
     <div className={styles.mainContent}>
-      <Info {...{ data }} />
+      <Info {...{ data, settoastdata }} />
       <Bio
         {...{
           data,
           emailVerificationHandler: resendVerificationEmail,
           phoneVerificationHandler: resendPhoneOtp,
           childavatars,
+          settoastdata,
         }}
       />
       {openPhoneVerification && (

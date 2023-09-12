@@ -7,6 +7,7 @@ import CityStateInput from "./CityStateInput";
 import StateName from "./StateName";
 import DateInput from "../Input/DateInput";
 import GenderInput from "./GenderInput";
+import DashboardApis from "../../actions/apis/DashboardApis";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -21,7 +22,7 @@ const SingleItemArea = ({ children }) => {
   return <div className={styles.singleItemArea}>{children}</div>;
 };
 
-export default function Info({ data }) {
+export default function Info({ data, settoastdata = () => {} }) {
   const [infoData, setInfoData] = useState({
     firstName: "",
     lastName: "",
@@ -46,7 +47,36 @@ export default function Info({ data }) {
     }
   }, [data]);
 
-  async function handleSave() {}
+  const checkData = (data) => {
+    return data;
+  };
+
+  async function handleSave() {
+    const dataPayload = checkData(infoData);
+    if (dataPayload) {
+      let response = await DashboardApis.updatechildprofile(dataPayload);
+      console.log("updated user profile", response.data.data);
+      if (response && response.data && response.data.success) {
+        const responseData = response.data.data;
+        setInfoData({
+          firstName: responseData.first_name,
+          lastName: responseData.last_name,
+          school: responseData.school,
+          city: responseData.city,
+          state: responseData.state,
+          dob: responseData.dob,
+          gender: responseData.gender,
+        });
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
+      } else {
+        settoastdata({ show: true, msg: response.data.message, type: "error" });
+      }
+    }
+  }
 
   // console.log("profile info: ", data, infoData);
 
