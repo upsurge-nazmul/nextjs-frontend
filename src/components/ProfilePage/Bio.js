@@ -56,6 +56,24 @@ export default function Bio({
 
   const handleEditEmail = async (item) => {
     console.log("!!!!!!!!!", item);
+    const response = await DashboardApis.updatechildprofile({
+      parent_email: item,
+    });
+    console.log("updated user profile", response.data);
+    if (response && response.data && response.data.success) {
+      const responseData = response.data.data;
+      setBioData((prev) => ({
+        ...prev,
+        parentEmail: responseData.parent_email,
+      }));
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+    } else {
+      settoastdata({ show: true, msg: response.data.message, type: "error" });
+    }
   };
 
   const handleEditPhone = async (item) => {
