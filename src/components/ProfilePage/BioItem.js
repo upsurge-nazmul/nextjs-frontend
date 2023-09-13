@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/EditProfile/profilePage.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
@@ -16,7 +16,11 @@ export default function BioItem({
   },
 }) {
   const [editMode, setEditMode] = useState(false);
-  const [itemValue, setItemValue] = useState(value);
+  const [itemValue, setItemValue] = useState();
+
+  useEffect(() => {
+    setItemValue(value);
+  }, [value]);
 
   return (
     <div className={styles.bioItem}>
@@ -41,8 +45,8 @@ export default function BioItem({
             <>
               <button
                 onClick={() => {
+                  editActionHandler(itemValue);
                   setEditMode(false);
-                  editActionHandler();
                 }}
                 style={{ color: "#7bd0bc" }}
                 className={styles.actionButton}
@@ -51,8 +55,8 @@ export default function BioItem({
               </button>
               <button
                 onClick={() => {
+                  setItemValue(value);
                   setEditMode(false);
-                  editActionHandler();
                 }}
                 style={{ color: "#de6869" }}
                 className={styles.actionButton}

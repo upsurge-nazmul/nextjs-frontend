@@ -3,6 +3,7 @@ import styles from "../../styles/EditProfile/profilePage.module.scss";
 import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import BioItem from "./BioItem";
+import DashboardApis from "../../actions/apis/DashboardApis";
 
 export default function Bio({
   data = null,
@@ -34,6 +35,33 @@ export default function Bio({
     }
   }, [data]);
 
+  const handleEditUser = async (item) => {
+    console.log("!!!!!!!!!", item);
+    const response = await DashboardApis.updatechildprofile({
+      user_name: item,
+    });
+    console.log("updated user profile", response.data);
+    if (response && response.data && response.data.success) {
+      const responseData = response.data.data;
+      setBioData((prev) => ({ ...prev, userName: responseData.user_name }));
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+    } else {
+      settoastdata({ show: true, msg: response.data.message, type: "error" });
+    }
+  };
+
+  const handleEditEmail = async (item) => {
+    console.log("!!!!!!!!!", item);
+  };
+
+  const handleEditPhone = async (item) => {
+    console.log("!!!!!!!!!", item);
+  };
+
   // console.log("data", data);
 
   return (
@@ -50,9 +78,17 @@ export default function Bio({
           className={styles.avatarImg}
         />
       </div>
-      <BioItem label={"Username"} value={bioData.userName} />
+      <BioItem
+        label={"Username"}
+        value={bioData.userName}
+        editActionHandler={handleEditUser}
+      />
       {bioData.email ? (
-        <BioItem label={"Email"} value={bioData.email} />
+        <BioItem
+          label={"Email"}
+          value={bioData.email}
+          editActionHandler={handleEditEmail}
+        />
       ) : (
         <BioItem
           label={"Parent Email"}
@@ -69,10 +105,15 @@ export default function Bio({
                   actionHandler: emailVerificationHandler,
                 }
           }
+          editActionHandler={handleEditEmail}
         />
       )}
       {bioData.phone ? (
-        <BioItem label={"Phone"} value={bioData.phone} />
+        <BioItem
+          label={"Phone"}
+          value={bioData.phone}
+          editActionHandler={handleEditPhone}
+        />
       ) : (
         <BioItem
           label={"Parent Phone"}
@@ -89,6 +130,7 @@ export default function Bio({
                   actionHandler: phoneVerificationHandler,
                 }
           }
+          editActionHandler={handleEditPhone}
         />
       )}
       <div className={styles.passwordArea}>
