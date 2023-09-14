@@ -4,6 +4,7 @@ import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import BioItem from "./BioItem";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import EmailOTP from "../Auth/EmailOTP";
 
 export default function Bio({
   data = null,
@@ -20,6 +21,7 @@ export default function Bio({
   });
   const [emailVerified, setEmailVerified] = useState(false);
   const [phoneVerified, setPhoneVerified] = useState(false);
+  const [showEmailOTP, setShowEmailOTP] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -62,10 +64,18 @@ export default function Bio({
     console.log("updated user profile", response.data);
     if (response && response.data && response.data.success) {
       const responseData = response.data.data;
-      setBioData((prev) => ({
-        ...prev,
-        parentEmail: responseData.parent_email,
-      }));
+      if (response.data.message === "OTP sent to parent email address") {
+        setShowEmailOTP(true);
+        setBioData((prev) => ({
+          ...prev,
+          parentEmail: responseData.requested_parent_email,
+        }));
+      } else {
+        setBioData((prev) => ({
+          ...prev,
+          parentEmail: responseData.parent_email,
+        }));
+      }
       settoastdata({
         show: true,
         msg: response.data.message,
@@ -154,6 +164,17 @@ export default function Bio({
       <div className={styles.passwordArea}>
         <button className={styles.changePasswordButton}>Change Password</button>
       </div>
+      {showEmailOTP && (
+        <div>
+          <EmailOTP
+            setshowOTP={setShowEmailOTP}
+            userphone={bioData.parentEmail}
+            setEmail={(data) =>
+              setBioData((prev) => ({ ...prev, email: data }))
+            }
+          />
+        </div>
+      )}
     </div>
   );
 }
