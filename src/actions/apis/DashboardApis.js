@@ -202,42 +202,52 @@ const getUnicoinsTransactionHistory = (payload) => {
       getCookie("accesstoken")
   );
   };
-//getchores
-const DashboardApis = {
-  addkids,
-  getkids,
-  getgames,
-  getliveclasses,
-  getuserdata,
-  updateprofile,
-  getallavatars,
-  getallbadges,
-  getallvouchers,
-  editkids,
-  deletechild,
-  getChildDetails,
-  ordervouchers,
-  getuservouchers,
-  convertUnicoins,
-  getchildrequests,
-  completerequest,
-  updatechildprofile,
-  searchuser,
-  getschools,
-  markwelcomecomplete,
-  getoverallleaderboard,
-  createVerificationOtp,
-  getTodo,
-  completeintroguide,
-  rewardunicoinstochild,
-  deleterequest,
-  updateparent,
-  toggleChores,
-  checkChoresToggle,
-  updateDashboardPopup,
-  getUnicoinsTransactionHistory,
-  unicoinsTransactionShown,
-  updateUserJourneyData
-};
+
+  const changeChildFamily = (payload) => {
+    return ApiCalls.postResponse(
+      `users/changechildfamily`,
+      payload,
+      getCookie("accesstoken")
+    );
+  };
+
+  //getchores
+  const DashboardApis = {
+    addkids,
+    getkids,
+    getgames,
+    getliveclasses,
+    getuserdata,
+    updateprofile,
+    getallavatars,
+    getallbadges,
+    getallvouchers,
+    editkids,
+    deletechild,
+    getChildDetails,
+    ordervouchers,
+    getuservouchers,
+    convertUnicoins,
+    getchildrequests,
+    completerequest,
+    updatechildprofile,
+    searchuser,
+    getschools,
+    markwelcomecomplete,
+    getoverallleaderboard,
+    createVerificationOtp,
+    getTodo,
+    completeintroguide,
+    rewardunicoinstochild,
+    deleterequest,
+    updateparent,
+    toggleChores,
+    checkChoresToggle,
+    updateDashboardPopup,
+    getUnicoinsTransactionHistory,
+    unicoinsTransactionShown,
+    updateUserJourneyData,
+    changeChildFamily,
+  };
 
 export default DashboardApis;
