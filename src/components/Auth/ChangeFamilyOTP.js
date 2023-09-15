@@ -76,7 +76,9 @@ export default function ChangeFamilyOTP({
                   <p className={styles.text}>
                     {`Please enter the OTP sent to`}
                   </p>
-                  <p className={styles.phone}>{userPhone || userEmail}</p>
+                  <p className={styles.phone}>
+                    {userPhone ? "+91" + userPhone : userEmail}
+                  </p>
                 </div>
                 {error && <p className={styles.error}>{error}</p>}
 
