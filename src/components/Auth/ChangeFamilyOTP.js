@@ -3,14 +3,15 @@ import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import styles from "../../styles/otpnotverified/emailOtp.module.scss";
 import OtpInput from "./OtpInput";
-import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/dist/client/router";
 import DashboardApis from "../../actions/apis/DashboardApis";
 
-export default function EmailOTP({
-  userphone,
-  setshowOTP,
+export default function ChangeFamilyOTP({
+  userPhone = null,
+  userEmail = null,
+  setShowOTP = () => {},
   setEmail = () => {},
+  setPhone = () => {},
 }) {
   const [OTP, setOTP] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -27,14 +28,17 @@ export default function EmailOTP({
   }, [OTP]);
 
   async function verifyOtp() {
-    let response = await DashboardApis.changeChildFamily({
-      parent_email: userphone,
-      otp: OTP.toString(),
-    });
+    let data = userEmail
+      ? { parent_email: userEmail, otp: OTP.toString() }
+      : { parent_phone: userPhone, otp: OTP.toString() };
+    let response = await DashboardApis.changeChildFamily(data);
     console.log("response", response);
     if (response && response.data && response.data.success) {
-      if (response.data.message === "Email OTP verified") {
-        mixpanel.track("ChangePhoneno", { event: "Email OTP verified" });
+      let responseMessage = userEmail
+        ? "Email OTP verified"
+        : "Phone OTP verified";
+      if (response.data.message === responseMessage) {
+        mixpanel.track("ChangePhoneno", { event: responseMessage });
         fbq("trackCustom", "OTP", { event: "OTP-verified" });
         dataLayer.push({ event: "otp-verified" });
         settoastdata({
@@ -42,7 +46,8 @@ export default function EmailOTP({
           msg: response.data.message,
           type: "success",
         });
-        setEmail(response.data.data.parent_email);
+        if (userEmail) setEmail(response.data.data.parent_email);
+        if (userPhone) setPhone(response.data.data.parent_phone);
         setshowmodal(false);
       } else {
         seterror(response.data.message || "Cannot connect to server");
@@ -52,14 +57,6 @@ export default function EmailOTP({
     }
   }
 
-  async function resendOtp() {
-    let response = await LoginApis.genotp({ phone: userphone });
-    if (response.data.success) {
-      settoastdata({ show: true, msg: response.data.message, type: "success" });
-    } else {
-      seterror(response.data.message || "Cannot connect to server");
-    }
-  }
   return (
     <div className={styles.otpnotverified}>
       <Toast data={toastdata} />
@@ -69,9 +66,7 @@ export default function EmailOTP({
             <div className={styles.authContentWrapper}>
               <div
                 className={styles.background}
-                onClick={() => {
-                  setshowOTP(false);
-                }}
+                onClick={() => setShowOTP(false)}
               ></div>
               <div className={styles.authcontainer}>
                 <p className={styles.notverifiedtext}>
@@ -81,7 +76,7 @@ export default function EmailOTP({
                   <p className={styles.text}>
                     {`Please enter the OTP sent to`}
                   </p>
-                  <p className={styles.phone}>{userphone}</p>
+                  <p className={styles.phone}>{userPhone || userEmail}</p>
                 </div>
                 {error && <p className={styles.error}>{error}</p>}
 
@@ -93,13 +88,6 @@ export default function EmailOTP({
                   }}
                   numInputs={6}
                 />
-
-                <div
-                  className={styles.resendButton}
-                  onClick={() => resendOtp()}
-                >
-                  Resend OTP
-                </div>
 
                 <div className={styles.button} onClick={() => verifyOtp()}>
                   Continue
