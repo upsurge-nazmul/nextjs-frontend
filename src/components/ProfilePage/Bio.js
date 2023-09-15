@@ -5,6 +5,7 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import BioItem from "./BioItem";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import ChangeFamilyOTP from "../Auth/ChangeFamilyOTP";
+import ChangePasswordOTP from "../Auth/ChangePasswordOTP";
 
 export default function Bio({
   data = null,
@@ -23,6 +24,7 @@ export default function Bio({
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [showEmailOTP, setShowEmailOTP] = useState(false);
   const [showPhoneOTP, setShowPhoneOTP] = useState(false);
+  const [showPassOTP, setShowPassOTP] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -189,7 +191,12 @@ export default function Bio({
         />
       )}
       <div className={styles.passwordArea}>
-        <button className={styles.changePasswordButton}>Change Password</button>
+        <button
+          className={styles.changePasswordButton}
+          onClick={() => setShowPassOTP(true)}
+        >
+          Change Password
+        </button>
       </div>
       {showEmailOTP && (
         <div>
@@ -212,6 +219,15 @@ export default function Bio({
             }
           />
         </div>
+      )}
+      {showPassOTP && (
+        <ChangePasswordOTP
+          setShowOTP={setShowPhoneOTP}
+          userPhone={bioData.parentPhone}
+          setPhone={(data) =>
+            setBioData((prev) => ({ ...prev, parentPhone: data }))
+          }
+        />
       )}
     </div>
   );
