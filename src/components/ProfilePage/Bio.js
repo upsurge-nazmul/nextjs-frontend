@@ -4,7 +4,7 @@ import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import BioItem from "./BioItem";
 import DashboardApis from "../../actions/apis/DashboardApis";
-import EmailOTP from "../Auth/EmailOTP";
+import ChangeFamilyOTP from "../Auth/ChangeFamilyOTP";
 
 export default function Bio({
   data = null,
@@ -22,6 +22,7 @@ export default function Bio({
   const [emailVerified, setEmailVerified] = useState(false);
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [showEmailOTP, setShowEmailOTP] = useState(false);
+  const [showPhoneOTP, setShowPhoneOTP] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -88,6 +89,32 @@ export default function Bio({
 
   const handleEditPhone = async (item) => {
     console.log("!!!!!!!!!", item);
+    const response = await DashboardApis.updatechildprofile({
+      parent_phone: item,
+    });
+    console.log("updated user profile", response.data);
+    if (response && response.data && response.data.success) {
+      const responseData = response.data.data;
+      if (response.data.message === "OTP sent to parent phone number") {
+        setShowPhoneOTP(true);
+        setBioData((prev) => ({
+          ...prev,
+          parentPhone: responseData.requested_parent_phone,
+        }));
+      } else {
+        setBioData((prev) => ({
+          ...prev,
+          parentPhone: responseData.parent_phone,
+        }));
+      }
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+    } else {
+      settoastdata({ show: true, msg: response.data.message, type: "error" });
+    }
   };
 
   // console.log("data", data);
@@ -166,11 +193,22 @@ export default function Bio({
       </div>
       {showEmailOTP && (
         <div>
-          <EmailOTP
-            setshowOTP={setShowEmailOTP}
-            userphone={bioData.parentEmail}
+          <ChangeFamilyOTP
+            setShowOTP={setShowEmailOTP}
+            userEmail={bioData.parentEmail}
             setEmail={(data) =>
-              setBioData((prev) => ({ ...prev, email: data }))
+              setBioData((prev) => ({ ...prev, parentEmail: data }))
+            }
+          />
+        </div>
+      )}
+      {showPhoneOTP && (
+        <div>
+          <ChangeFamilyOTP
+            setShowOTP={setShowPhoneOTP}
+            userPhone={bioData.parentPhone}
+            setPhone={(data) =>
+              setBioData((prev) => ({ ...prev, parentPhone: data }))
             }
           />
         </div>
