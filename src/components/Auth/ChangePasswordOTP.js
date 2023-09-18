@@ -8,6 +8,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import ReactTooltip from "react-tooltip";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
+import validator from "validator";
 
 export default function ChangePasswordOTP({
   userPhone = null,
@@ -40,24 +41,34 @@ export default function ChangePasswordOTP({
     seterror("");
   }, [OTP]);
 
+  useEffect(() => {
+    seterror("");
+    if (!validator.isStrongPassword(password)) setpassisweak(true);
+    else setpassisweak(false);
+  }, [password]);
+
   async function updatePassword() {
-    const response = await DashboardApis.updatechildprofile({
-      password: password,
-      otp: OTP,
-    });
-    console.log("response", response);
-    if (response && response.data && response.data.success) {
-      mixpanel.track("ChangePhoneno", { event: response.data.message });
-      fbq("trackCustom", "OTP", { event: "OTP-verified" });
-      dataLayer.push({ event: "otp-verified" });
-      settoastdata({
-        show: true,
-        msg: response.data.message,
-        type: "success",
+    if (!passisweak) {
+      const response = await DashboardApis.updatechildprofile({
+        password: password,
+        otp: OTP,
       });
-      setshowmodal(false);
+      console.log("response", response);
+      if (response && response.data && response.data.success) {
+        mixpanel.track("ChangePhoneno", { event: response.data.message });
+        fbq("trackCustom", "OTP", { event: "OTP-verified" });
+        dataLayer.push({ event: "otp-verified" });
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
+        setshowmodal(false);
+      } else {
+        seterror(response.data.message || "Cannot connect to server");
+      }
     } else {
-      seterror(response.data.message || "Cannot connect to server");
+      seterror("Please use a strong password");
     }
   }
 
@@ -205,7 +216,7 @@ export default function ChangePasswordOTP({
                   </div>
                 </div>
 
-                <div className={styles.button} onClick={() => updatePassword()}>
+                <div className={styles.button} onClick={updatePassword}>
                   Continue
                 </div>
                 <div className={styles.agreement}>
