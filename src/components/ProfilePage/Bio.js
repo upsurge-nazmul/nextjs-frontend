@@ -6,6 +6,7 @@ import BioItem from "./BioItem";
 import DashboardApis from "../../actions/apis/DashboardApis";
 import ChangeFamilyOTP from "../Auth/ChangeFamilyOTP";
 import ChangePasswordOTP from "../Auth/ChangePasswordOTP";
+import LoginApis from "../../actions/apis/LoginApis";
 
 export default function Bio({
   data = null,
@@ -119,6 +120,23 @@ export default function Bio({
     }
   };
 
+  const handleChangePassword = async () => {
+    let response = await LoginApis.genotp({ phone: bioData.parentPhone });
+    if (response && response.data && response.data.success) {
+      console.log(response.data.message);
+      settoastdata({ show: true, msg: response.data.message, type: "success" });
+      setShowPassOTP(true);
+    } else {
+      console.log(response.data.message || "Cannot connect to server");
+      settoastdata({ show: true, msg: response.data.message, type: "error" });
+    }
+  };
+
+  const handlePassBoxOutsideClick = async () => {
+    await LoginApis.removeOTP({ phone: bioData.parentPhone }); // remove unnecessary OTP from Database
+    setShowPassOTP(false);
+  };
+
   // console.log("data", data);
 
   return (
@@ -193,7 +211,7 @@ export default function Bio({
       <div className={styles.passwordArea}>
         <button
           className={styles.changePasswordButton}
-          onClick={() => setShowPassOTP(true)}
+          onClick={handleChangePassword}
         >
           Change Password
         </button>
@@ -222,7 +240,7 @@ export default function Bio({
       )}
       {showPassOTP && (
         <ChangePasswordOTP
-          setShowOTP={setShowPhoneOTP}
+          handleOutsideClick={handlePassBoxOutsideClick}
           userPhone={bioData.parentPhone}
           setPhone={(data) =>
             setBioData((prev) => ({ ...prev, parentPhone: data }))

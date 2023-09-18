@@ -12,9 +12,7 @@ import CircleWarning from "../SVGcomponents/CircleWarning";
 export default function ChangePasswordOTP({
   userPhone = null,
   userEmail = null,
-  setShowOTP = () => {},
-  setEmail = () => {},
-  setPhone = () => {},
+  handleOutsideClick = () => {},
 }) {
   const [OTP, setOTP] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +23,6 @@ export default function ChangePasswordOTP({
   });
   const [error, seterror] = useState(null);
   const [showmodal, setshowmodal] = useState(true);
-
   const [passisweak, setpassisweak] = useState(false);
   const [showdetailpass, setshowdetailpass] = useState(false);
   const [passhidden, setpasshidden] = useState(true);
@@ -43,31 +40,22 @@ export default function ChangePasswordOTP({
     seterror("");
   }, [OTP]);
 
-  async function verifyOtp() {
-    let data = userEmail
-      ? { parent_email: userEmail, otp: OTP.toString() }
-      : { parent_phone: userPhone, otp: OTP.toString() };
-    let response = await DashboardApis.changeChildFamily(data);
+  async function updatePassword() {
+    const response = await DashboardApis.updatechildprofile({
+      password: password,
+      otp: OTP,
+    });
     console.log("response", response);
     if (response && response.data && response.data.success) {
-      let responseMessage = userEmail
-        ? "Email OTP verified"
-        : "Phone OTP verified";
-      if (response.data.message === responseMessage) {
-        mixpanel.track("ChangePhoneno", { event: responseMessage });
-        fbq("trackCustom", "OTP", { event: "OTP-verified" });
-        dataLayer.push({ event: "otp-verified" });
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "success",
-        });
-        if (userEmail) setEmail(response.data.data.parent_email);
-        if (userPhone) setPhone(response.data.data.parent_phone);
-        setshowmodal(false);
-      } else {
-        seterror(response.data.message || "Cannot connect to server");
-      }
+      mixpanel.track("ChangePhoneno", { event: response.data.message });
+      fbq("trackCustom", "OTP", { event: "OTP-verified" });
+      dataLayer.push({ event: "otp-verified" });
+      settoastdata({
+        show: true,
+        msg: response.data.message,
+        type: "success",
+      });
+      setshowmodal(false);
     } else {
       seterror(response.data.message || "Cannot connect to server");
     }
@@ -112,7 +100,7 @@ export default function ChangePasswordOTP({
             <div className={styles.authContentWrapper}>
               <div
                 className={styles.background}
-                onClick={() => setShowOTP(false)}
+                onClick={handleOutsideClick}
               ></div>
               <div className={styles.authcontainer}>
                 <p className={styles.notverifiedtext}>
@@ -217,7 +205,7 @@ export default function ChangePasswordOTP({
                   </div>
                 </div>
 
-                <div className={styles.button} onClick={() => verifyOtp()}>
+                <div className={styles.button} onClick={() => updatePassword()}>
                   Continue
                 </div>
                 <div className={styles.agreement}>
