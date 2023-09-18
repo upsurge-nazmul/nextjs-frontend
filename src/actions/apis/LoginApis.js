@@ -159,6 +159,13 @@ const closePremiumSaleOffer = (payload) => {
 const closeOnBoardingVideo = (payload) => {
   return ApiCalls.postResponse("users/closeonboardingvideo", payload , getCookie("accesstoken"));
 }
+const removeOTP = (payload) => {
+  return ApiCalls.postResponse(
+    `users/removeotp`,
+    payload,
+    getCookie("accesstoken")
+  );
+};
 const LoginApis = {
   signup,
   setphone,
@@ -193,6 +200,7 @@ const LoginApis = {
   closeOnBoardingVideo,
   verifyresetpasstoken,
   changepassword,
+  removeOTP,
 };
 
 export default LoginApis;
