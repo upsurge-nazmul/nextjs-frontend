@@ -55,7 +55,6 @@ export default function Info({ data, settoastdata = () => {} }) {
     const dataPayload = checkData(infoData);
     if (dataPayload) {
       let response = await DashboardApis.updatechildprofile(dataPayload);
-      console.log("updated user profile", response.data.data);
       if (response && response.data && response.data.success) {
         const responseData = response.data.data;
         setInfoData({
@@ -78,15 +77,15 @@ export default function Info({ data, settoastdata = () => {} }) {
     }
   }
 
-  // console.log("profile info: ", data, infoData);
-
   return (
     <div className={styles.info}>
       <DoubleItemArea>
         <Input
+          type={"text"}
           label={"First Name"}
           value={infoData.firstName}
-          maxLength={10}
+          minLength={2}
+          maxLength={50}
           onChange={(e) =>
             setInfoData((prev) => ({
               ...prev,
@@ -97,9 +96,11 @@ export default function Info({ data, settoastdata = () => {} }) {
           textOnly={true}
         />
         <Input
+          type={"text"}
           label={"Last Name"}
           value={infoData.lastName}
-          maxLength={10}
+          minLength={2}
+          maxLength={50}
           onChange={(e) =>
             setInfoData((prev) => ({
               ...prev,

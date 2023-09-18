@@ -14,6 +14,7 @@ export default function BioItem({
     label: "",
     actionHandler: () => {},
   },
+  inputProps = {},
 }) {
   const [editMode, setEditMode] = useState(false);
   const [itemValue, setItemValue] = useState();
@@ -34,6 +35,7 @@ export default function BioItem({
                 onChange={(e) => setItemValue(e.target.value)}
                 designType="underline"
                 style={{ fontSize: "1rem", marginBottom: "1px" }}
+                {...inputProps}
               />
             ) : (
               <p style={{ padding: "3px 0" }}>{value}</p>
@@ -46,6 +48,7 @@ export default function BioItem({
               <button
                 onClick={() => {
                   editActionHandler(itemValue);
+                  setItemValue(value);
                   setEditMode(false);
                 }}
                 style={{ color: "#7bd0bc" }}

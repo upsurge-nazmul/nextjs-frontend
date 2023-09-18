@@ -13,6 +13,11 @@ export function vaildateEmail(data) {
   return validator.isEmail(data);
 }
 
+export function validUsername (val) {
+  const usernameRegex = /^[a-zA-Z0-9]+$/;
+  return usernameRegex.test(val);
+};
+
 export function onlyNum(data) {
   return !isNaN(data);
 }

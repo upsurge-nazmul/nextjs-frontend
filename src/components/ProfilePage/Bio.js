@@ -7,6 +7,8 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 import ChangeFamilyOTP from "../Auth/ChangeFamilyOTP";
 import ChangePasswordOTP from "../Auth/ChangePasswordOTP";
 import LoginApis from "../../actions/apis/LoginApis";
+import { validUsername } from "../../helpers/validationHelpers";
+import validator from "validator";
 
 export default function Bio({
   data = null,
@@ -41,82 +43,103 @@ export default function Bio({
     }
   }, [data]);
 
-  const handleEditUser = async (item) => {
-    console.log("!!!!!!!!!", item);
-    const response = await DashboardApis.updatechildprofile({
-      user_name: item,
-    });
-    console.log("updated user profile", response.data);
-    if (response && response.data && response.data.success) {
-      const responseData = response.data.data;
-      setBioData((prev) => ({ ...prev, userName: responseData.user_name }));
+  const handleEditUserName = async (item) => {
+    if (validUsername(item)) {
+      const response = await DashboardApis.updatechildprofile({
+        user_name: item,
+      });
+      console.log("updated user profile", response.data);
+      if (response && response.data && response.data.success) {
+        const responseData = response.data.data;
+        setBioData((prev) => ({ ...prev, userName: responseData.user_name }));
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
+      } else {
+        settoastdata({ show: true, msg: response.data.message, type: "error" });
+      }
+    } else {
       settoastdata({
         show: true,
-        msg: response.data.message,
-        type: "success",
+        msg: "Username can not contained special characters or space",
+        type: "error",
       });
-    } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
     }
   };
 
   const handleEditEmail = async (item) => {
-    console.log("!!!!!!!!!", item);
-    const response = await DashboardApis.updatechildprofile({
-      parent_email: item,
-    });
-    console.log("updated user profile", response.data);
-    if (response && response.data && response.data.success) {
-      const responseData = response.data.data;
-      if (response.data.message === "OTP sent to parent email address") {
-        setShowEmailOTP(true);
-        setBioData((prev) => ({
-          ...prev,
-          parentEmail: responseData.requested_parent_email,
-        }));
+    if (validator.isEmail(item)) {
+      const response = await DashboardApis.updatechildprofile({
+        parent_email: item,
+      });
+      console.log("updated user profile", response.data);
+      if (response && response.data && response.data.success) {
+        const responseData = response.data.data;
+        if (response.data.message === "OTP sent to parent email address") {
+          setShowEmailOTP(true);
+          setBioData((prev) => ({
+            ...prev,
+            parentEmail: responseData.requested_parent_email,
+          }));
+        } else {
+          setBioData((prev) => ({
+            ...prev,
+            parentEmail: responseData.parent_email,
+          }));
+        }
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
       } else {
-        setBioData((prev) => ({
-          ...prev,
-          parentEmail: responseData.parent_email,
-        }));
+        settoastdata({ show: true, msg: response.data.message, type: "error" });
       }
+    } else {
       settoastdata({
         show: true,
-        msg: response.data.message,
-        type: "success",
+        msg: "Please enter a valid email address",
+        type: "error",
       });
-    } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
     }
   };
 
   const handleEditPhone = async (item) => {
-    console.log("!!!!!!!!!", item);
-    const response = await DashboardApis.updatechildprofile({
-      parent_phone: item,
-    });
-    console.log("updated user profile", response.data);
-    if (response && response.data && response.data.success) {
-      const responseData = response.data.data;
-      if (response.data.message === "OTP sent to parent phone number") {
-        setShowPhoneOTP(true);
-        setBioData((prev) => ({
-          ...prev,
-          parentPhone: responseData.requested_parent_phone,
-        }));
+    if (validator.isMobilePhone(item, "en-IN")) {
+      const response = await DashboardApis.updatechildprofile({
+        parent_phone: item,
+      });
+      console.log("updated user profile", response.data);
+      if (response && response.data && response.data.success) {
+        const responseData = response.data.data;
+        if (response.data.message === "OTP sent to parent phone number") {
+          setShowPhoneOTP(true);
+          setBioData((prev) => ({
+            ...prev,
+            parentPhone: responseData.requested_parent_phone,
+          }));
+        } else {
+          setBioData((prev) => ({
+            ...prev,
+            parentPhone: responseData.parent_phone,
+          }));
+        }
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
       } else {
-        setBioData((prev) => ({
-          ...prev,
-          parentPhone: responseData.parent_phone,
-        }));
+        settoastdata({ show: true, msg: response.data.message, type: "error" });
       }
+    } else {
       settoastdata({
         show: true,
-        msg: response.data.message,
-        type: "success",
+        msg: "Please enter a valid phone number",
+        type: "error",
       });
-    } else {
-      settoastdata({ show: true, msg: response.data.message, type: "error" });
     }
   };
 
@@ -137,8 +160,6 @@ export default function Bio({
     setShowPassOTP(false);
   };
 
-  // console.log("data", data);
-
   return (
     <div className={styles.bio}>
       <div className={styles.avatarArea}>
@@ -156,7 +177,13 @@ export default function Bio({
       <BioItem
         label={"Username"}
         value={bioData.userName}
-        editActionHandler={handleEditUser}
+        editActionHandler={handleEditUserName}
+        inputProps={{
+          type: "text",
+          minLength: 4,
+          maxLength: 100,
+          pattern: "^[a-zA-Z0-9_]*$", //only letters, numbers and underscore
+        }}
       />
       {bioData.email ? (
         <BioItem
