@@ -13,6 +13,11 @@ import LoginApis from "../../actions/apis/LoginApis";
 import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import Seo from "../../components/Seo";
+import GameArena from "../../components/Products/GameArena";
+import HighlightsCounter from "../../components/Home/HighlightsCounter";
+import KidProgress from "../../components/Products/quest/KidProgress";
+import ExpertsSection from "../../components/Products/quest/ExpertsSection";
+import AllGamesCarousel from "../../components/Products/AllGamesCarousel";
 
 export default function Products() {
   const router = useRouter();
@@ -73,8 +78,12 @@ export default function Products() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <Games id="gamessection" />
-      <JoinUs />
+      <GameArena setshowpopup={setshowpopup} />
+      {/* <Games id="gamessection" /> */}
+      <AllGamesCarousel />
+      <HighlightsCounter />
+      <KidProgress />
+      <ExpertsSection />
       <Footer />
     </div>
   );
