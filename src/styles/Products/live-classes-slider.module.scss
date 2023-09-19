@@ -1,0 +1,367 @@
+.container {
+  padding: 2rem 0;
+  background-color: #17d1bc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .heading {
+    font-size: 2em;
+    color: #000;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 70%;
+  }
+  .sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sliderWrapper {
+      // background-color: #4166eb;
+      height: 45vh;
+      width: 80vw;
+      display: flex;
+      // overflow-x: hidden;
+      overflow-x: clip;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      position: relative;
+      // gap: 1rem;
+      padding: 0 2rem;
+      // align-items: stretch;
+      justify-content: flex-start;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ::-webkit-scrollbar {
+        width: 0; /* Remove scrollbar space */
+        background: transparent; /* Optional: just make scrollbar invisible */
+      }
+      .slide {
+        position: absolute;
+        background-color: transparent;
+        // min-width: 33.33vw;
+        font-family: "Lexend", sans-serif;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        width: 25vw;
+        min-width: 25vw;
+        max-width: 25vw;
+        height: 45vh;
+        // min-height: 30rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .slideContent {
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+          height: 40vh;
+          background: linear-gradient(
+              0deg,
+              rgba(241, 248, 255, 0.2),
+              rgba(241, 248, 255, 0.2)
+            ),
+            #dedbdb;
+        }
+      }
+    }
+    .icon {
+      cursor: pointer;
+      svg {
+        path {
+          fill: #ff6263;
+        }
+      }
+    }
+    .leftIcon {
+      margin-right: 1rem;
+    }
+    .rightIcon {
+      margin-left: 1rem;
+    }
+  }
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 1rem;
+    .button {
+      padding: 0.6rem 2rem;
+      border-radius: 18px;
+      border: 2px solid #4166eb;
+      background-color: #fff;
+      color: #4166eb;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .heading {
+      font-size: 1.2em;
+      margin-bottom: 1rem;
+      text-align: left;
+      width: 85%;
+    }
+    .sliderContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .sliderWrapper {
+        // background-color: #4166eb;
+        height: 45vh;
+        width: 85vw;
+        display: flex;
+        // overflow-x: hidden;
+        overflow-x: clip;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        position: relative;
+        // gap: 1rem;
+        padding: 0 1rem;
+        // align-items: stretch;
+        justify-content: flex-start;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        ::-webkit-scrollbar {
+          width: 0; /* Remove scrollbar space */
+          background: transparent; /* Optional: just make scrollbar invisible */
+        }
+        .slide {
+          position: absolute;
+          // min-width: 33.33vw;
+          font-family: "Lexend", sans-serif;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          width: 85vw;
+          min-width: 85vw;
+          max-width: 85vw;
+          height: 45vh;
+          // min-height: 30rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .slideContent {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+          }
+        }
+      }
+      .icon {
+        cursor: pointer;
+        z-index: 2;
+        svg {
+          path {
+            fill: #ff6263;
+          }
+        }
+      }
+      .leftIcon {
+        margin-right: -1.5rem;
+      }
+      .rightIcon {
+        margin-left: -1.5rem;
+      }
+    }
+    .buttonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-top: 1rem;
+      .button {
+        padding: 0.6rem 2rem;
+        border-radius: 18px;
+        border: 2px solid #4166eb;
+        background-color: #fff;
+        color: #4166eb;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .sliderContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.6rem 0;
+      .sliderWrapper {
+        // background-color: #4166eb;
+        height: 45vh;
+        width: 80vw;
+        display: flex;
+        // overflow-x: hidden;
+        overflow-x: clip;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        position: relative;
+        // gap: 1rem;
+        padding: 0 2rem;
+        // align-items: stretch;
+        justify-content: flex-start;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        ::-webkit-scrollbar {
+          width: 0; /* Remove scrollbar space */
+          background: transparent; /* Optional: just make scrollbar invisible */
+        }
+        .slide {
+          position: absolute;
+          // min-width: 33.33vw;
+          font-family: "Lexend", sans-serif;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          width: 35vw;
+          min-width: 35vw;
+          max-width: 35vw;
+          height: 45vh;
+          // min-height: 30rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .slideContent {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+          }
+        }
+      }
+      .icon {
+        cursor: pointer;
+        svg {
+          path {
+            fill: #ff6263;
+          }
+        }
+      }
+      .leftIcon {
+        margin-right: 1rem;
+      }
+      .rightIcon {
+        margin-left: 1rem;
+      }
+    }
+    .buttonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-top: 1rem;
+      .button {
+        padding: 0.6rem 2rem;
+        border-radius: 18px;
+        border: 2px solid #4166eb;
+        background-color: #fff;
+        color: #4166eb;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .sliderContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .sliderWrapper {
+        // background-color: #4166eb;
+        height: 45vh;
+        width: 85vw;
+        display: flex;
+        // overflow-x: hidden;
+        overflow-x: clip;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        position: relative;
+        // gap: 1rem;
+        padding: 0 1rem;
+        // align-items: stretch;
+        justify-content: flex-start;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        ::-webkit-scrollbar {
+          width: 0; /* Remove scrollbar space */
+          background: transparent; /* Optional: just make scrollbar invisible */
+        }
+        .slide {
+          position: absolute;
+          // min-width: 33.33vw;
+          font-family: "Lexend", sans-serif;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          width: 85vw;
+          min-width: 85vw;
+          max-width: 85vw;
+          height: 45vh;
+          // min-height: 30rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .slideContent {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+          }
+        }
+      }
+      .icon {
+        cursor: pointer;
+        z-index: 2;
+        svg {
+          path {
+            fill: #ff6263;
+          }
+        }
+      }
+      .leftIcon {
+        margin-right: -0.8rem;
+      }
+      .rightIcon {
+        margin-left: -0.8rem;
+      }
+    }
+    .buttonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-top: 1rem;
+      .button {
+        padding: 0.6rem 2rem;
+        border-radius: 18px;
+        border: 2px solid #4166eb;
+        background-color: #fff;
+        color: #4166eb;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
