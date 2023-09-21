@@ -1,18 +1,19 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
-import Games from "../../components/Products/Games";
-import KnowledgeQuest from "../../components/Products/KnowledgeQuest";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "../../styles/Pricing/pricing.module.scss";
-import Chores from "../../components/Products/Chores";
 import LiveClasses from "../../components/Products/LiveClasses";
 import validator from "validator";
-import LoginApis from "../../actions/apis/LoginApis";
-import JoinUs from "../../components/Home/JoinUs";
 import Toast from "../../components/Toast";
 import Seo from "../../components/Seo";
+import ExpertsSection from "../../components/Products/quest/ExpertsSection";
+import KidProgress from "../../components/Products/quest/KidProgress";
+import HighlightsCounter from "../../components/Home/HighlightsCounter";
+import { useContext } from "react";
+import { MainContext } from "../../context/Main";
+import LiveClassesSlider from "../../components/Products/LiveClassesSlider";
 
 export default function Products() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function Products() {
     type: "success",
     msg: "",
   });
-
+  const { userdata } = useContext(MainContext);
   async function check() {
     e.preventDefault();
     if (!validator.isEmail(email)) {
@@ -72,8 +73,15 @@ export default function Products() {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <LiveClasses id="classessection" />
-      <JoinUs />
+      <LiveClasses
+        id="classessection"
+        setshowpopup={setshowpopup}
+        userdata={userdata}
+      />
+      <LiveClassesSlider />
+      <HighlightsCounter />
+      <KidProgress />
+      <ExpertsSection />
       <Footer />
     </div>
   );

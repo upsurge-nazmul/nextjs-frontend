@@ -1,15 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Home/Footer";
-import JoinUs from "../../components/Home/JoinUs";
 import LeftPanel from "../../components/LeftPanel";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
 import styles from "../../styles/about/about.module.scss";
-import Jasper from "../../components/SVGcomponents/Jasper";
-import LoginApis from "../../actions/apis/LoginApis";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
+import Image from "next/image";
+
+const cards = [
+  {
+    img: "https://imgcdn.upsurge.in/images/games/integrity.png",
+    title: "Integrity",
+  },
+  {
+    img: "https://imgcdn.upsurge.in/images/games/excellence.png",
+    title: "Excellence",
+  },
+  {
+    img: "https://imgcdn.upsurge.in/images/games/fun.png",
+    title: "Fun",
+  },
+  {
+    img: "https://imgcdn.upsurge.in/images/games/passion.png",
+    title: "Passion",
+  },
+];
 
 export default function About({ userdata }) {
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -49,30 +64,20 @@ export default function About({ userdata }) {
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
       />
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
       <div className={styles.container}>
         <div className={styles.head}>
-          <div className={styles.background}>
-            <div className={styles.curvecontainer}>
-              <Curve1 className={styles.curve1} />
-              <Curve2 className={styles.curve2} />
-            </div>
-          </div>
-          <div className={styles.ball1} />
-          <div className={styles.ball2} />
-          <div className={styles.ball3} />
-          <div className={styles.ball4} />
           <p className={styles.heading}>About us</p>
           <p className={styles.subheading}>
-            We are a family-focused financial platform that offers financial
-            education for children through interactive educational content,
-            games, and gamified real-life responsibility management.
+            We are a family-focused financial platform that offers{" "}
+            <b>financial education</b> for children through interactive
+            educational content, games, and gamified real-life responsibility
+            management.
           </p>
         </div>
+
         <div className={styles.visionSection}>
           <div className={styles.left}>
-            <p className={styles.heading}>Our goal = financial freedom</p>
+            <p className={styles.heading}>Our goal= Financial Freedom</p>
             <p className={styles.des}>
               Financial Freedom is not being very rich or having 5 cars.
               Financial Freedom put simply is when you do not HAVE to work to
@@ -80,12 +85,30 @@ export default function About({ userdata }) {
               saved up to cover your living expenses for the rest of your life!
             </p>
           </div>
-          <div className={styles.imgwrapper}>
-            <img src="/images/home/girlvision.png" alt="" />
+          <div className={styles.right}>
+            <div className={styles.imgwrapper}>
+              <Image
+                src="https://imgcdn.upsurge.in/images/games/about-us-vision.png"
+                layout="fill"
+                objectFit="contain"
+                alt="About Us"
+              />
+            </div>
           </div>
         </div>
+
         <div className={styles.missionSection}>
           <div className={styles.left}>
+            <div className={styles.imgwrapper}>
+              <Image
+                src="https://imgcdn.upsurge.in/images/games/about-us-mission.png"
+                alt="About Us"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+          </div>
+          <div className={styles.right}>
             <p className={styles.heading}>Mission upsurge</p>
 
             <p className={styles.des}>
@@ -106,83 +129,26 @@ export default function About({ userdata }) {
               learning.
             </p>
           </div>
-          <div className={styles.imgwrapper}>
-            <img
-              src="https://imgcdn.upsurge.in/images/Untitled-design-57-removebg.png"
-              alt=""
-              loading="lazy"
-            />
-          </div>
         </div>
+
         <div className={styles.thirdSection}>
           <p className={styles.heading}>Values</p>
-          <div className={styles.valueContainer}>
-            <div className={styles.values}>
-              <div className={styles.valueItem}>
-                <img
-                  src={require("../../assets/about/Integrity.png").default.src}
-                  alt="Integrity"
-                  loading="lazy"
-                  className={styles.valueIcon}
-                />
-                <div className={styles.valueContent}>
-                  {`Integrity – We do the right thing! We say what we mean, and mean
-                what we say. We stick to our commitments, treat everyone
-                equitably, and communicate honestly. Unity - We are one! We
-                support each other & go above and beyond to help each other.`}
+          <div className={styles.cardsContainer}>
+            {cards.map((item, i) => (
+              <div key={"card-" + i} className={styles.card}>
+                <div className={styles.cardImage}>
+                  <Image
+                    src={item.img}
+                    layout="fill"
+                    objectFit="contain"
+                    alt={item.title}
+                  />
                 </div>
+                <h3 className={styles.title}>{item.title}</h3>
               </div>
-              <div className={styles.valueItem}>
-                <img
-                  src={require("../../assets/about/Excellence.png").default.src}
-                  alt="Excellence"
-                  loading="lazy"
-                  className={styles.valueIcon}
-                />
-                <div className={styles.valueContent}>
-                  {`Excellence – We pursue excellence to create exceptional products
-                & experiences.`}
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.imgwrapper}>
-              <Jasper className={styles.jasper} />
-            </div>
-
-            <div className={styles.values}>
-              <div className={styles.valueItem}>
-                <img
-                  src={require("../../assets/about/Fun.png").default.src}
-                  alt="Fun"
-                  loading="lazy"
-                  className={styles.valueIcon}
-                />
-                <div className={styles.valueContent}>
-                  {`Fun – We have fun while working, create fun products & ensure
-                that users have fun! Creativity & Innovation - Think outside the
-                box, & challenge the status-quo Ownership - We own our projects
-                like entrepreneurs & are responsible for their success.`}
-                </div>
-              </div>
-              <div className={styles.valueItem}>
-                <img
-                  src={require("../../assets/about/Passion.png").default.src}
-                  alt="Passion"
-                  loading="lazy"
-                  className={styles.valueIcon}
-                />
-                <div className={styles.valueContent}>
-                  {`Passion – We are passionate about creating products that users
-                love & benefit from Drive - Our passion drives us to do more &
-                keep improving!`}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-
-        <JoinUs />
       </div>
       <Footer />
     </div>
