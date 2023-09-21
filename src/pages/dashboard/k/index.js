@@ -276,9 +276,9 @@ export default function ChildActivity({
             }}
           />
         )}
-        {showSubToPremium && (
+        {/* {showSubToPremium && (
           <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
-        )}
+        )} */}
         <div className={styles.mainContent}>
           {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />

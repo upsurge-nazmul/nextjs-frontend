@@ -161,7 +161,7 @@ function DashboardHeader({
     }
     if (userdata) {
       if (userdata.child_first_login === true) {
-        setShowOnboarding(true);
+        setShowOnboarding(false);
       }
       if (userdata.user_id) {
         fetchKidLevel();
