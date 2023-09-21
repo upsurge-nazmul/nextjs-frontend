@@ -40,7 +40,7 @@ $common-box-shadow: 3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
   }
   .actionArea {
     position: absolute;
-    left: 80%;
+    left: 75%;
     bottom: -10%;
     width: fit-content;
     border-radius: 50%;
@@ -53,8 +53,8 @@ $common-box-shadow: 3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
   }
   .unicoins{
     position: absolute;
-    left: 5%;
-    bottom: -10%;
+    left: 0.5rem;
+    bottom: 0.5rem;
     padding: 0.25rem 0.5rem;
     display: flex;
     align-items: center;
