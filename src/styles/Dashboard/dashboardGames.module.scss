@@ -1,11 +1,12 @@
 .dashboardGames {
-  margin: 2rem 0;
+
   .mainheading {
     font-weight: 500;
     font-size: 25px;
     color: rgba(87, 88, 128, 1);
     display: flex;
     align-items: center;
+    padding-left: 3rem;
     svg {
       margin-left: 10px;
     }
@@ -17,7 +18,7 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 3rem 0;
+    padding: 3.5rem 0;
     &::-webkit-scrollbar {
       display: none;
     }
