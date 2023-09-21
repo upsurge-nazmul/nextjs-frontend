@@ -157,7 +157,7 @@ function DashboardLeftPanel({
           }}
         />
       )}
-      
+
       {type === "kid" ? (
         <div className={styles.tabContainer}>
           <div
@@ -166,7 +166,7 @@ function DashboardLeftPanel({
             }`}
             onClick={() => router.push("/dashboard/k")}
           >
-            <HomeSvg className={styles.icon} />
+            <HomeSvg className={`${styles.icon} ${currenttab === "/dashboard/k" ? styles.iconblue : ""}`} />
             <p className={styles.tabtitle}>Dashboard</p>
           </div>
 
@@ -182,21 +182,31 @@ function DashboardLeftPanel({
             id="games-leftpanel"
             onClick={() => router.push("/dashboard/k/games")}
           >
-            <GameSvg className={styles.icon} />
+            <GameSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/games" ||
+              currenttab.indexOf("/dashboard/k/game") !== -1 ||
+              currenttab.indexOf("/dashboard/k/stocksimulator") !== -1 ||
+              currenttab.indexOf("/dashboard/k/cryptosimulator") !== -1
+                ? styles.icongreen
+                : ""
+            }`} />
             <p className={styles.tabtitle}>Games</p>
           </div>
 
           <div
             className={`${styles.tab}  ${
-              currenttab === "/dashboard/k/quest" ||
-              currenttab.indexOf("/dashboard/k/quest") !== -1
+              currenttab === "/dashboard/k/quest" || currenttab.indexOf("/dashboard/k/quest") !== -1
                 ? styles.activetab
                 : ""
             }`}
             id="quest-leftpanel"
             onClick={() => router.push("/dashboard/k/quest?questTypeId=FL")}
           >
-            <CoursesSvg className={styles.icon} />
+            <CoursesSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/quest" || currenttab.indexOf("/dashboard/k/quest") !== -1
+              ? styles.iconred
+              : ""
+              }`} />
             <p className={styles.tabtitle}>Knowledge Quests</p>
           </div>
 
@@ -208,10 +218,11 @@ function DashboardLeftPanel({
               }`}
               onClick={() => router.push("/dashboard/k/chores")}
             >
-              <ChoresSvg className={styles.icon} />
+              <ChoresSvg className={`${styles.icon} ${currenttab === "/dashboard/k/chores" ? styles.iconblue : ""}`} />
               <p className={styles.tabtitle}>Chores</p>
             </div>
           ) : null}
+
           <div
             id="events-leftpanel"
             className={`${styles.tab} ${
@@ -219,7 +230,11 @@ function DashboardLeftPanel({
             }`}
             onClick={() => router.push("/dashboard/k/events")}
           >
-            <EventsSvg className={styles.icon} />
+            <EventsSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/events"
+              ? styles.iconyellow
+              : ""
+              }`} />
             <p className={styles.tabtitle}>Events & Challenges</p>
           </div>
 
@@ -235,6 +250,7 @@ function DashboardLeftPanel({
             <PeopleOutlineIcon className={styles.icon} />
             <p className={styles.tabtitle}>Tribes</p>
           </div> */}
+
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/store" ? styles.activetab : ""
@@ -242,10 +258,15 @@ function DashboardLeftPanel({
             onClick={() => router.push("/dashboard/k/store")}
             id="store-leftpanel"
           >
-            <StoreSvg className={styles.icon} />
+            <StoreSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/store"
+              ? styles.icongreen
+              : ""
+              }`} />
 
             <p className={styles.tabtitle}>Rewards</p>
           </div>
+
           <div
             className={`${styles.tab} ${
               currenttab === "/dashboard/k/leaderboard" ? styles.activetab : ""
@@ -253,7 +274,11 @@ function DashboardLeftPanel({
             onClick={() => router.push("/dashboard/k/leaderboard")}
             id="leaderboard-leftpanel"
           >
-            <LeaderboardSvg className={styles.icon} />
+            <LeaderboardSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/leaderboard"
+              ? styles.iconyellow
+              : ""
+              }`} />
 
             <p className={styles.tabtitle}>Leaderboard</p>
           </div>
@@ -265,7 +290,11 @@ function DashboardLeftPanel({
             onClick={() => router.push("/dashboard/k/parentPanel")}
             id="parentPanel-leftpanel"
           >
-            <ParentPanelSvg className={styles.icon} />
+            <ParentPanelSvg className={`${styles.icon} ${
+              currenttab === "/dashboard/k/parentPanel"
+              ? styles.iconred
+              : ""
+              }`} />
 
             <p className={styles.tabtitle}>Parent Panel</p>
           </div>
