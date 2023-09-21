@@ -151,6 +151,7 @@ export default function ChildActivity({
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
+  
   useEffect(() => {
     if (choremode === "inprogress") {
       if (pendingchores) {
@@ -174,6 +175,7 @@ export default function ChildActivity({
       }
     }
   }, [choremode]);
+  
   useEffect(() => {
     const scrollContainer = document.querySelector("#tribewrapper");
     if (!scrollContainer) return;
@@ -183,11 +185,13 @@ export default function ChildActivity({
       scrollContainer.scrollLeft += evt.deltaY * 5;
     });
   }, []);
+  
   useEffect(() => {
     if (router.query.storyIndex) {
       setcurrentTourIndex(Number(router.query.storyIndex));
     }
   }, [router.query]);
+
   useEffect(() => {
     async function fetchQuestData() {
       let questRes = await KnowledgeQuestApi.getQuestData(
@@ -276,9 +280,9 @@ export default function ChildActivity({
             }}
           />
         )}
-        {/* {showSubToPremium && (
+        {showSubToPremium && (
           <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
-        )} */}
+        )}
         <div className={styles.mainContent}>
           {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />

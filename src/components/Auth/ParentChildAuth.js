@@ -344,7 +344,8 @@ function ParentChildAuth({
       if (premiumprice === null) {
         router.push("dashboard/k");
       } else if (premiumprice === undefined) {
-        setmode("premiumSub");
+        //setmode("premiumSub");
+        router.push("dashboard/k");
       } else if (premiumprice !== null && premiumprice !== 0) {
         router.push(`/payments/phonepe?plan_id=${premiumprice}`);
       }
