@@ -47,13 +47,29 @@ export default function Info({ data, settoastdata = () => {} }) {
     }
   }, [data]);
 
-  const checkData = (data) => {
-    return data;
+  const checkData = (changedData) => {
+    let returnData = {};
+    if (changedData.firstItem && data.first_name !== changedData.firstName)
+      returnData.first_name = changedData.firstName;
+    if (changedData.lastName && data.last_name !== changedData.lastName)
+      returnData.last_name = changedData.lastName;
+    if (changedData.school && data.school !== changedData.school)
+      returnData.school = changedData.school;
+    if (changedData.city && data.city !== changedData.city)
+      returnData.city = changedData.city;
+    if (changedData.state && data.state !== changedData.state)
+      returnData.state = changedData.state;
+    if (changedData.dob && data.dob !== changedData.dob)
+      returnData.dob = changedData.dob;
+    if (changedData.gender && data.gender !== changedData.gender)
+      returnData.gender = changedData.gender;
+    console.log("checkData: ", data, changedData, returnData);
+    return returnData;
   };
 
   async function handleSave() {
     const dataPayload = checkData(infoData);
-    if (dataPayload) {
+    if (dataPayload && Object.keys(dataPayload).length !== 0) {
       let response = await DashboardApis.updatechildprofile(dataPayload);
       if (response && response.data && response.data.success) {
         const responseData = response.data.data;
