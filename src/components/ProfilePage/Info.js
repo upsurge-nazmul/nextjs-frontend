@@ -63,7 +63,6 @@ export default function Info({ data, settoastdata = () => {} }) {
       returnData.dob = changedData.dob;
     if (changedData.gender && data.gender !== changedData.gender)
       returnData.gender = changedData.gender;
-    console.log("checkData: ", data, changedData, returnData);
     return returnData;
   };
 

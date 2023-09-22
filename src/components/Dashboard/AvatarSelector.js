@@ -12,7 +12,6 @@ export default function AvatarSelector({ setshow, tribe = null }) {
 
   async function fetchAvailableAvatars() {
     const res = await DashboardApis.getallavatars(null);
-    console.log("fetchAvailableAvatars: ", res);
     if (res && res.data && res.data.success) {
       setAvailableAvatars((prev) => [...prev, ...res.data.data]);
     }
@@ -20,18 +19,15 @@ export default function AvatarSelector({ setshow, tribe = null }) {
 
   async function fetchPurchasedAvatars() {
     const res = await KidApis.getavatars(null);
-    console.log("fetchPurchasedAvatars: ", res);
     if (res && res.data && res.data.success) {
       setAvailableAvatars((prev) => [...prev, ...res.data.data]);
     }
   }
 
   async function setAvatar(img) {
-    console.log("set avatar: ", img);
     let response = await DashboardApis.updatechildprofile({
       user_img_url: img,
     });
-    console.log("set avatar response: ", response);
     if (response && response.data && response.data.success) {
       setuserdata((prev) => ({ ...prev, user_img_url: img }));
     }
