@@ -521,24 +521,7 @@ function DashboardHeader({
           />
         </Modal>
       )}
-      {showAvatarModal && (
-        <AvatarSelector
-          avatars={avatars}
-          setshow={setShowAvatarModal}
-          value={
-            userdata?.user_img_url ||
-            "https://imgcdn.upsurge.in/images/default-avatar.png"
-          }
-          dirlink={"/images/free-child-avatars/"}
-          purchasedAvatars={null}
-          setvalue={(img) => {
-            /**
-             * TODO: Update the user avatar in the database
-             */
-            setuserdata((prev) => ({ ...prev, user_img_url: img }));
-          }}
-        />
-      )}
+      {showAvatarModal && <AvatarSelector setshow={setShowAvatarModal} />}
     </div>
   );
 }

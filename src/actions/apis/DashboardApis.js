@@ -61,7 +61,7 @@ const getgames = (payload, token) => {
 const getliveclasses = (payload, token) => {
   return ApiCalls.getResponse(`parent/getliveclasses`, payload, token);
 };
-const getallavatars = (payload, token) => {
+const getallavatars = (payload, token = getCookie("accesstoken")) => {
   return ApiCalls.getResponse(`parent/getavailableavatars`, payload, token);
 };
 const getallbadges = (payload, token) => {
