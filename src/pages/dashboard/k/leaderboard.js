@@ -54,8 +54,7 @@ export default function Leaderboards({ userdatafromserver, dailyLeaderboard }) {
       <PageTitle title={`upsurge | Leaderboard`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
+    
       <div className={styles.contentWrapper}>
         <DashboardHeader
           mode={mode}
