@@ -144,19 +144,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      row-gap: 1rem;
       width: 100%;
       .gameHeading {
         display: none;
         text-align: start;
         width: 100%;
       }
-      .wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        row-gap: 4rem;
-        column-gap: 4rem;
+      .wrapper {//TBD
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        row-gap: 3rem;
+        padding: 1rem 3rem 6rem 3rem;
+        width: 100%;
+        align-content: space-evenly;
+        justify-content: space-around;
+        align-items: center;
         .gameCardContainer {
           flex: 0 0 calc(25.66% - 3rem);
           min-width: 20rem;
@@ -172,9 +174,8 @@
             box-shadow: #4166eb22 0px 2px 8px 0px;
             overflow: hidden;
             img {
-              height: 16rem;
               width: 100%;
-              object-fit: fill;
+              object-fit: cover;
               object-position: center;
             }
             .contentWrapper {
@@ -354,11 +355,6 @@
           width: 100%;
         }
         .wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          row-gap: 4rem;
-          column-gap: 4rem;
           .gameCardContainer {
             flex: 0 0 calc(25.66% - 3rem);
             .gameCard {
@@ -369,9 +365,9 @@
               box-shadow: #4166eb22 0px 2px 8px 0px;
               overflow: hidden;
               img {
-                height: 16rem;
+                
                 width: 100%;
-                object-fit: fill;
+                object-fit: cover;
                 object-position: center;
               }
               .contentWrapper {
@@ -451,7 +447,6 @@
           width: 100%;
         }
         .wrapper {
-          column-gap: 0.5rem !important;
           .gameCardContainer {
             flex: 1 0 calc(60% - 3rem) !important;
             flex-basis: calc(60% - 3rem) !important;
@@ -462,11 +457,7 @@
             .gameCard {
               width: 100% !important;
               height: 100% !important;
-              img {
-                height: 10rem !important;
-              }
-              .detail {
-              }
+              
             }
             .actionArea {
               width: 100% !important;
@@ -509,8 +500,6 @@
         }
       }
       .wrapper {
-        column-gap: 0.6rem !important;
-        row-gap: 0.5rem !important;
         .gameCardContainer {
           flex: 0 0 calc(45% - 3rem) !important;
           flex-basis: calc(45% - 3rem) !important;
@@ -521,9 +510,7 @@
           .gameCard {
             width: 100% !important;
             height: 100% !important;
-            img {
-              height: 10rem !important;
-            }
+            
             .detail {
               margin-bottom: auto !important;
             }
