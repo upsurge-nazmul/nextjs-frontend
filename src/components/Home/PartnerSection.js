@@ -40,7 +40,7 @@ export default function PartnerSection({ dashboard, nomargin }) {
             router.push("/benefits/rewards");
           }}
         >
-          Not over yet! You get to earn rewards everyday
+          The more you play the more rewards you earn!
         </div>
         <div
           className={`${styles.subheading} ${dashboard && styles.hidecursor}`}

@@ -34,7 +34,7 @@ const data = [
   },
   {
     pushTo: "/products/liveclasses",
-    title: "Live Workshops",
+    title: "Workshops & School Programs",
     description:
       "Live online & offline workshops, designed and delivered by our experts, on entrepreneurship and personal finance.",
     icon: <ProductPeople className={styles.icon} />,
@@ -44,7 +44,7 @@ const data = [
   },
   {
     pushTo: "",
-    title: "Competition & Challenges",
+    title: "Competition & Internships",
     description:
       "Offline games & competitions to give children the opportunities to gain recognition, build their profiles for higher studies & gain competitive capital.",
     icon: <EmojiEventsIcon className={styles.icon} />,

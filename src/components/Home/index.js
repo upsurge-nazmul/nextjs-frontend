@@ -65,6 +65,7 @@ function Home({ page = "", showNav = true, blog_data }) {
   const [currentChapter, setCurrentChapter] = useState("");
   const [gameOpened, setGameOpened] = useState(null);
   const [kqOpened, setKqOpened] = useState(null);
+
   useEffect(() => {
     function handleScroll() {
       const showGamesPopUp = userdata
@@ -127,6 +128,7 @@ function Home({ page = "", showNav = true, blog_data }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
   useEffect(() => {
     if (router.query.err) {
       if (router.query.err === "01") {
@@ -191,6 +193,7 @@ function Home({ page = "", showNav = true, blog_data }) {
       },
     },
   ];
+
   useEffect(() => {
     console.log(document.documentElement.scrollTop);
     if (router.query.showTour) {
@@ -202,6 +205,7 @@ function Home({ page = "", showNav = true, blog_data }) {
       document.documentElement.scrollTop = 0;
     }
   }, [router]);
+  
   useEffect(() => {
     if (
       (showTrendingGames && !userdata) ||
@@ -305,7 +309,7 @@ function Home({ page = "", showNav = true, blog_data }) {
       </div>
       <JasperSection />
       {/* <AboutSection /> */}
-      <BlogsSection blogData={blog_data} />
+      {/* <BlogsSection blogData={blog_data} /> */}
       <FaqSection />
       <div ref={kqRef}>
         <JoinUs
