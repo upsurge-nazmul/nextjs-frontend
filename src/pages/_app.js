@@ -1,10 +1,11 @@
-import { MainContextProider } from "../context/Main";
-import "../styles/globals.scss";
-import { useEffect } from "react";
-import { useRouter } from "next/dist/client/router";
-import NextNprogress from "nextjs-progressbar";
-import NotificationComponent from "../components/NotificationComponent";
-// import { HMSRoomProvider } from "@100mslive/react-sdk";
+// import { HMSRoomProvider } from '@100mslive/react-sdk';
+import { useRouter } from 'next/dist/client/router';
+import NextNprogress from 'nextjs-progressbar';
+import { useEffect } from 'react';
+import FadePageTransition from '../components/Animations/PageFadeTransition';
+import NotificationComponent from '../components/NotificationComponent';
+import { MainContextProider } from '../context/Main';
+import '../styles/globals.scss';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
@@ -21,13 +22,15 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-      <MainContextProider>
-        {/* <HMSRoomProvider> */}
-          <NextNprogress color="#4166EB" />
+    <MainContextProider>
+      {/* <HMSRoomProvider> */}
+        <NextNprogress color="#4166EB" />
+        <FadePageTransition durationInSec={0.5} key={router.asPath}>
           <Component {...pageProps} />
-          <NotificationComponent />
-        {/* </HMSRoomProvider> */}
-      </MainContextProider>
+        </FadePageTransition>
+        <NotificationComponent />
+      {/* </HMSRoomProvider> */}
+    </MainContextProider>
   );
 }
 
