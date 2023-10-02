@@ -37,7 +37,7 @@
       align-items: center;
       transition: all 0.3s ease;
       padding: 1rem;
-      justify-content: space-evenly;
+      justify-content: space-between;
       box-shadow:
       3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
       4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
@@ -61,7 +61,7 @@
         text-align: center;
       }
       .detail {
-        font-size: 0.75rem;
+        font-size: 0.95rem;
         font-weight: 400;
         color: rgba(130, 130, 130, 1);
         width: 100%;
@@ -160,8 +160,7 @@
           }
         }
         .badge {
-          width: 9rem;
-          height: 2.5rem;
+          height: 5rem;
           object-fit: cover;
           object-position: center;
           border-radius: 0.5rem;

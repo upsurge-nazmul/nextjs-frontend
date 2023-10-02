@@ -49,33 +49,44 @@ const AvailableGames = () => {
               >
                 Download <DownloadIcon fontSize="small" />
               </button> */}
-
+              <div>
               <span className={styles.subheading}>Download Options</span>
 
               <div className={styles.btnContainer}>
                 <a href={Download_Games_Data[item].playstore} target="_blank" rel="noreferrer">
                   <img
                     className={styles.badge}
-                    src="/images/DownloadGames/google-play.png"
+                    src="/images/DownloadGames/playstore.png"
                     alt="PlayStore"
                   />
                 </a>
-                <a href={Download_Games_Data[item].microsoft} target="_blank" rel="noreferrer">
+                {/* <a href={Download_Games_Data[item].microsoft} target="_blank" rel="noreferrer">
                   <img
                     className={styles.badge}
                     src="/images/DownloadGames/ms_1.png"
                     alt="MicroSoft"
                   />
-                </a>
+                </a> */}
               </div>
               <div className={styles.btnContainer}>
+                
+                <a href={Download_Games_Data[item].apple} target="_blank" rel="noreferrer">
+                  <img
+                    className={styles.badge}
+                    src="/images/DownloadGames/apple.png"
+                    alt="Apple store"
+                  />
+                </a>
+              </div>
+              </div>
+              {/* <div className={styles.btnContainer}>
                 <button onClick={() => downloadFile(Download_Games_Data[item].android_link, Download_Games_Data[item].name)} >
                   Download APK
                 </button>
                 <button onClick={() => downloadFile(Download_Games_Data[item].windows_link)}>
                   Download EXE
                 </button>
-              </div>
+              </div> */}
 
 
             </div>
