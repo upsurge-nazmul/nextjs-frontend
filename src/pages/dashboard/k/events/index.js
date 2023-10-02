@@ -62,47 +62,49 @@ export default function Events({ userData }) {
         />
         <div className={styles.mainContent}>
           <div className={styles.section}>
-            <div className={styles.heading}>Upcoming Events</div>
             <div className={styles.cardsContainer}>
-              {events && events.length ? (
-                events.map((item) => (
+              {
+              (events && events.length || challenges && challenges.length) ? 
+              (
+                <>
+                {events && events.length ? (
+                  events.map((item) => (
+                    <Card
+                      key={item.id}
+                      data={item}
+                      height={"40vh"}
+                      width={"20vw"}
+                      cardType={"eventCard"}
+                      handleSelect={() => setSelectedEvent(item)}
+                    />
+                  ))
+                  ) : ( "" )}
+  
+                {challenges && challenges.length ? (
+                challenges.map((item) => (
                   <Card
                     key={item.id}
                     data={item}
                     height={"40vh"}
                     width={"20vw"}
-                    cardType={"eventCard"}
-                    handleSelect={() => setSelectedEvent(item)}
+                    cardType={"challengeCard"}
+                    handleSelect={() => setSelectedChallenge(item)}
                   />
                 ))
-              ) : (
+                ) : ( "" )}
+                </>
+              ) 
+              : (
                 <FillSpace
-                  text={"There are no upcoming events"}
-                  extrastyle={{ margin: 0, minHeight: "30vh" }}
-                />
-              )}
-            </div>
-          </div>
-          <div className={styles.section}>
-            <div className={styles.heading}>Challenges</div>
-
-            {challenges && challenges.length ? (
-              challenges.map((item) => (
-                <Card
-                  key={item.id}
-                  data={item}
-                  height={"40vh"}
-                  width={"20vw"}
-                  cardType={"challengeCard"}
-                  handleSelect={() => setSelectedChallenge(item)}
-                />
-              ))
-            ) : (
-              <FillSpace
-                text={"There are no challaenges at this moment"}
+                text={"There are no challenges at this moment"}
                 extrastyle={{ margin: 0, minHeight: "30vh" }}
               />
-            )}
+              )
+              }
+              
+
+            
+            </div>
           </div>
         </div>
       </div>
