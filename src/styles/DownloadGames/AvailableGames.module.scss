@@ -207,7 +207,14 @@
     
       .gameCard{
         flex-direction: column;
+        .flexleft{
+          min-width: 100%;
+        }
+        .flexright{
+          max-width: 100%;
+        }
       }
+
     }
   }
   
