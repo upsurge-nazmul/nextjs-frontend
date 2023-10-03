@@ -17,9 +17,10 @@
       scrollbar-width: thin;
       padding: $content-padding-y $conent-padding-x;
         .availableSection {
-          margin-top: 15px;
+          margin-top: 1rem;
           display: flex;
           flex-direction: column;
+          max-width: 90vw;
           .heading {
             font-weight: 500;
             font-size: 25px;

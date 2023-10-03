@@ -43,6 +43,7 @@
   .row {
     @extend .tableHead;
     background-color: #d9f2ff;
+    border-radius: 0.7rem;
     &:first-child,
     &:nth-child(2),
     &:nth-child(3),
@@ -57,12 +58,8 @@
         font-weight: 700;
       }
     }
-    &:nth-child(odd) {
-      background-color: #d9f2ff !important;
-      margin:0.4rem;
-    }
     &:nth-child(even) {
-      background-color: white !important;
+      background-color: white;
       margin:0.4rem;
     }
   }
