@@ -28,57 +28,64 @@ const AvailableGames = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Downloadable Games <HeadingArrow /></h2>
+      <h2 className={styles.heading}>Flagship Games <HeadingArrow /></h2>
       <div className={styles.gamelistwrapper}>
         {Object.keys(Download_Games_Data).map((item, index) => {
           return (
             <div
               key={"game" + index}
               className={styles.gameCard}
-              // onClick={() => router.push(`/games/${item}`)}
+            // onClick={() => router.push(`/games/${item}`)}
             >
-              <img src={Download_Games_Data[item].logo} alt="" />
-              <p className={styles.title}>{Download_Games_Data[item].name}</p>
-              <p className={styles.detail}>
-                {Download_Games_Data[item].description}
-              </p>
-             
-              {/* <button
-                onClick={() => router.push(`/games/download/${item}`)}
-                className={styles.activebutton}
-              >
-                Download <DownloadIcon fontSize="small" />
-              </button> */}
-              <div>
-              <span className={styles.subheading}>Download Options</span>
+              <div className={styles.flexleft}>
+                <img src={Download_Games_Data[item].logo} alt="" />
+                <div>
+                  {/* <span className={styles.subheading}>Download Options</span> */}
 
-              <div className={styles.btnContainer}>
-                <a href={Download_Games_Data[item].playstore} target="_blank" rel="noreferrer">
-                  <img
-                    className={styles.badge}
-                    src="/images/DownloadGames/playstore.png"
-                    alt="PlayStore"
-                  />
-                </a>
-                {/* <a href={Download_Games_Data[item].microsoft} target="_blank" rel="noreferrer">
+                  <div className={styles.btnContainer}>
+                    <a href={Download_Games_Data[item].playstore} target="_blank" rel="noreferrer">
+                      <img
+                        className={styles.badge}
+                        src="/images/DownloadGames/playstore.png"
+                        alt="PlayStore"
+                      />
+                    </a>
+
+                  </div>
+                  <div className={styles.btnContainer}>
+                    <a href={Download_Games_Data[item].apple} target="_blank" rel="noreferrer">
+                      <img
+                        className={styles.badge}
+                        src="/images/DownloadGames/apple.png"
+                        alt="Apple store"
+                      />
+                    </a>
+
+                  </div>
+                  
+                </div>
+              </div>
+              <div className={styles.flexright}>
+                <p className={styles.title}>{Download_Games_Data[item].name}</p>
+                <p className={styles.detail}>
+                  {Download_Games_Data[item].description}
+                </p>
+
+              </div>
+
+
+
+
+
+
+
+              {/* <a href={Download_Games_Data[item].microsoft} target="_blank" rel="noreferrer">
                   <img
                     className={styles.badge}
                     src="/images/DownloadGames/ms_1.png"
                     alt="MicroSoft"
                   />
                 </a> */}
-              </div>
-              <div className={styles.btnContainer}>
-                
-                <a href={Download_Games_Data[item].apple} target="_blank" rel="noreferrer">
-                  <img
-                    className={styles.badge}
-                    src="/images/DownloadGames/apple.png"
-                    alt="Apple store"
-                  />
-                </a>
-              </div>
-              </div>
               {/* <div className={styles.btnContainer}>
                 <button onClick={() => downloadFile(Download_Games_Data[item].android_link, Download_Games_Data[item].name)} >
                   Download APK
@@ -87,8 +94,6 @@ const AvailableGames = () => {
                   Download EXE
                 </button>
               </div> */}
-
-
             </div>
           );
         })}
