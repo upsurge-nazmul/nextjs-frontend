@@ -136,13 +136,13 @@ function Games({
               userdata={userdata}
             />
           </div> */}
-          <DashboardGames
+          {/* <DashboardGames
             title={"Recently Played"}
             gameunicoinrewards={gameunicoinrewards}
             recentgames={recent_games}
             setShowSubToPremium={setShowSubToPremium}
             gameData={"recent_games"}
-          />
+          /> */}
           <div className={styles.availableSection}>
             <h2 className={styles.heading}>
               Online Games
