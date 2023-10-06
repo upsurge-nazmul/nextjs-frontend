@@ -16,6 +16,7 @@ export default function Input({
   suggestions = null,
   selectSuggestion = () => {},
   showSuggestions = false,
+  setShowsuggestions = () => {},
   tooltip = "",
   tooltipId = "",
   dropdown = false,
@@ -24,6 +25,12 @@ export default function Input({
 }) {
   return (
     <div className={styles.customInput}>
+      {showSuggestions && (
+        <div
+          className={styles.inputBg}
+          onClick={() => setShowsuggestions(false)}
+        />
+      )}
       {label && <label for={label}>{label}</label>}
       <input
         className={

@@ -33,6 +33,7 @@ export default function SchoolInput({ value, setValue, ...props }) {
           setShowsuggestions(false);
         }}
         showSuggestions={showSuggestions}
+        setShowsuggestions={setShowsuggestions}
         {...props}
       />
     </>

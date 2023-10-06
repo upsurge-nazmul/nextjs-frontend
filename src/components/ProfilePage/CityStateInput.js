@@ -59,6 +59,7 @@ export default function CityStateInput({
         suggestions={cityOptions}
         selectSuggestion={handleSelectOption}
         showSuggestions={showSuggestions}
+        setShowsuggestions={setShowsuggestions}
         {...props}
       />
     </>

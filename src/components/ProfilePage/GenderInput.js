@@ -38,6 +38,7 @@ export default function GenderInput({ value, setValue, ...props }) {
       }}
       dropdown={false}
       showSuggestions={showSuggestions}
+      setShowsuggestions={setShowsuggestions}
       {...props}
     />
   );
