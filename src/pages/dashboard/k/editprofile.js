@@ -12,7 +12,7 @@ import ProfilePage from "../../../components/ProfilePage";
 export default function EditProfile({ userData, childavatars }) {
   const { userdata, setuserdata } = useContext(MainContext);
 
-  console.log("edit profile: ", userData);
+  // console.log("edit profile: ", userData);
 
   const [toastdata, settoastdata] = useState({
     show: false,
