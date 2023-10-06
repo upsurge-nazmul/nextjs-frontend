@@ -284,21 +284,7 @@ export default function ChildActivity({
           <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
         )}
         <div className={styles.mainContent}>
-          {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
-            <FlashSaleOfferPremium />
-            )} */}
-          {userdatafromserver && userdatafromserver.premium_plan == 0 && (
-            <FlashSaleOffer />
-          )}
-          {userdatafromserver && !userdatafromserver.email_verified && (
-            <EmailVerificationPending settoastdata={setShowToolTip} />
-          )}
-          {userdatafromserver && !userdatafromserver.profile_completed && (
-            <EditProfilePending />
-          )}
-          {userdatafromserver && !userdatafromserver.phone_verified && (
-            <PhoneVerificationPending />
-          )}
+          
           <Journey
             data={questData}
             userPlanType={userdata?.premium_plan}
@@ -311,6 +297,7 @@ export default function ChildActivity({
               setShowSubToPremium={setShowSubToPremium}
             />
           </div>
+
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
               {todaysquestion && (
@@ -321,6 +308,7 @@ export default function ChildActivity({
               )}
             </div>
             <div className={styles.flexRight}>
+
               {userdata && userdata.chores_opted ? (
                 <div className={styles.choreSection} id="chores">
                   <h2
@@ -383,29 +371,25 @@ export default function ChildActivity({
               )}
             </div>
           </div>
-          <></>
-          {/* <div className={styles.gamessection} id="recent_games">
-            <h2 className={styles.heading}>Recently played games</h2>
-            <div className={styles.wrapper}>
-              {recentgames.map((game, i) => {
-                return (
-                  <GameCard
-                    data={Game_Data[game]}
-                    key={i}
-                    onCLick={() =>
-                      handleGameClick(Game_Data[game].pushto, game)
-                    }
-                  />
-                );
-              })}
-              {recentgames.length === 0 && (
-                <FillSpace
-                  text={"No recent games"}
-                  extrastyle={{ margin: 0, minHeight: "220px" }}
-                />
-              )}
-            </div>
-          </div> */}
+
+          <div className={styles.notifCardArea}>
+          {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
+            <FlashSaleOfferPremium />
+            )} */}
+          {userdatafromserver && userdatafromserver.premium_plan == 0 && (
+            <FlashSaleOffer />
+          )}
+          {userdatafromserver && !userdatafromserver.email_verified && (
+            <EmailVerificationPending settoastdata={setShowToolTip} />
+          )}
+          {userdatafromserver && !userdatafromserver.profile_completed && (
+            <EditProfilePending />
+          )}
+          {userdatafromserver && !userdatafromserver.phone_verified && (
+            <PhoneVerificationPending />
+          )}
+          </div>
+         
         </div>
       </div>
       {showTrendingGames ? (
