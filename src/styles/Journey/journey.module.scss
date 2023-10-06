@@ -1,7 +1,7 @@
 .journey {  
   .mainheading {
     font-weight: 500;
-    font-size: 25px;
+    font-size: 1.5rem;
     color: rgba(87, 88, 128, 1);
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
   .journeyLayout {
     display: flex;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: 1.25rem;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
