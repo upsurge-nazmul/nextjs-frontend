@@ -10,10 +10,11 @@ const GENDER_DATA = [
 
 export default function GenderInput({ value, setValue, ...props }) {
   const [genderOptions, setGenderOptions] = useState([]);
+  const [showSuggestions, setShowsuggestions] = useState(false);
 
   useEffect(() => {
     if (value) searchGender(value);
-    else setGenderOptions([]);
+    else setGenderOptions(GENDER_DATA);
   }, [value]);
 
   function searchGender(query) {
@@ -29,10 +30,14 @@ export default function GenderInput({ value, setValue, ...props }) {
       label={"Gender"}
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      onFocus={() => setGenderOptions(GENDER_DATA)}
+      onFocus={() => setShowsuggestions(true)}
       suggestions={genderOptions}
-      selectSuggestion={(option) => setValue(option.name)}
-      dropdown={true}
+      selectSuggestion={(option) => {
+        setValue(option.name);
+        setShowsuggestions(false);
+      }}
+      dropdown={false}
+      showSuggestions={showSuggestions}
       {...props}
     />
   );

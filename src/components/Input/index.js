@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styles from "../../styles/GeneralComponents/customInput.module.scss";
 import ReactTooltip from "react-tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -16,21 +15,13 @@ export default function Input({
   label = "",
   suggestions = null,
   selectSuggestion = () => {},
+  showSuggestions = false,
   tooltip = "",
   tooltipId = "",
   dropdown = false,
   designType = "boundary", // or 'underline'
   ...props
 }) {
-  const [showSuggestions, setShowsuggestions] = useState(false);
-  const [valueSelected, setValueSelected] = useState(false);
-
-  useEffect(() => {
-    if (suggestions && suggestions.length) {
-      if (!valueSelected) setShowsuggestions(true);
-    } else setShowsuggestions(false);
-  }, [suggestions, valueSelected]);
-
   return (
     <div className={styles.customInput}>
       {label && <label for={label}>{label}</label>}
@@ -44,18 +35,14 @@ export default function Input({
         name={label}
         {...props}
       />
-      {showSuggestions ? (
+      {showSuggestions && suggestions.length ? (
         <div className={styles.suggestions}>
           {suggestions.map((item) => {
             return (
               <div
                 className={styles.suggestion}
                 key={item.id}
-                onClick={() => {
-                  selectSuggestion(item);
-                  setValueSelected(true);
-                  setShowsuggestions(false);
-                }}
+                onClick={() => selectSuggestion(item)}
               >
                 {item.name}
               </div>

@@ -9,6 +9,7 @@ export default function CityStateInput({
   ...props
 }) {
   const [cityOptions, setCityOptions] = useState([]);
+  const [showSuggestions, setShowsuggestions] = useState(false);
 
   function formattedCities() {
     let id = 0;
@@ -44,6 +45,7 @@ export default function CityStateInput({
   function handleSelectOption(city) {
     setValue(city.city);
     setState(city.state);
+    setShowsuggestions(false);
   }
 
   return (
@@ -52,9 +54,11 @@ export default function CityStateInput({
         label={"City"}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onFocus={() => searchCities(value)}
+        onFocus={() => setShowsuggestions(true)}
+        // onBlur={() => setShowsuggestions(false)}
         suggestions={cityOptions}
         selectSuggestion={handleSelectOption}
+        showSuggestions={showSuggestions}
         {...props}
       />
     </>

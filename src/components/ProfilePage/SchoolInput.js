@@ -4,6 +4,7 @@ import DashboardApis from "../../actions/apis/DashboardApis";
 
 export default function SchoolInput({ value, setValue, ...props }) {
   const [schoolOptions, setSchoolOptions] = useState([]);
+  const [showSuggestions, setShowsuggestions] = useState(false);
 
   useEffect(() => {
     if (value) searchSchool(value);
@@ -25,9 +26,13 @@ export default function SchoolInput({ value, setValue, ...props }) {
         label={"School"}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onFocus={() => searchSchool(value)}
+        onFocus={() => setShowsuggestions(true)}
         suggestions={schoolOptions}
-        selectSuggestion={(option) => setValue(option.name)}
+        selectSuggestion={(option) => {
+          setValue(option.name);
+          setShowsuggestions(false);
+        }}
+        showSuggestions={showSuggestions}
         {...props}
       />
     </>
