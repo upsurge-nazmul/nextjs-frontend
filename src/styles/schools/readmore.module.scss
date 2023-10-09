@@ -14,14 +14,14 @@
       position: absolute;
     }
     .dl1 {
-      left: 30%;
+      left: 28%;
       top: 15%;
       width: 50px;
       height: 50px;
       background: $yellow;
     }
     .dl2 {
-      left: 7%;
+      left: 9%;
       bottom: 30%;
       width: 90px;
       height: 90px;
@@ -31,7 +31,7 @@
       position: absolute;
       border-radius: 200px 200px 0 0;
       left: 6%;
-      top: 8%;
+      top: 9%;
       width: 100px;
       height: 50px;
       background: $red;
@@ -40,8 +40,8 @@
     .childImage {
       position: absolute;
       bottom: 0;
-      height: 90%;
-      left: 10%;
+      height: 95%;
+      left: 3%;
     }
   }
   .rightContainer {
@@ -80,25 +80,25 @@
         position: absolute;
       }
       .dl1 {
-        right: 10%;
+        right: 12%;
         left: auto;
         top: 10%;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background: $yellow;
       }
       .dl2 {
-        left: 3%;
-        bottom: 30%;
-        width: 90px;
-        height: 90px;
+        left: 12%;
+        bottom: 28%;
+        width: 80px;
+        height: 80px;
         background: $green;
         z-index: 0;
       }
       .hc1 {
         position: absolute;
         border-radius: 200px 200px 0 0;
-        left: 0;
+        left: 5%;
         top: 0;
         width: 80px;
         height: 40px;
@@ -108,7 +108,7 @@
       .childImage {
         position: static;
         bottom: 0;
-        width: 80%;
+        width: 90%;
         z-index: 1;
         // height: 70%;
         // left: 10%;
@@ -123,7 +123,7 @@
       padding: 0;
       p {
         margin: 1rem 0;
-        font-size: 1.2em;
+        font-size: 1.05em;
         line-height: 1.4;
         font-weight: 400;
         color: #555555;
@@ -152,7 +152,7 @@
         position: absolute;
       }
       .dl1 {
-        right: 10%;
+        right: 20%;
         left: auto;
         top: 10%;
         width: 5rem;
@@ -160,17 +160,17 @@
         background: $yellow;
       }
       .dl2 {
-        left: 20%;
-        bottom: 20%;
-        width: 9rem;
-        height: 9rem;
+        left: 25%;
+        bottom: 25%;
+        width: 8rem;
+        height: 8rem;
         background: $green;
         z-index: 0;
       }
       .hc1 {
         position: absolute;
         border-radius: 200px 200px 0 0;
-        left: 18%;
+        left: 25%;
         top: 0;
         width: 6rem;
         height: 3rem;
@@ -180,7 +180,7 @@
       .childImage {
         position: static;
         bottom: 0;
-        width: 50%;
+        width: 55%;
         z-index: 1;
         // height: 70%;
         // left: 10%;
@@ -205,4 +205,63 @@
 }
 
 @media only screen and (min-width: 991px) and (max-width: 1300px) {
+  .container {
+    background: #e5fffc;
+    display: flex;
+    padding: 4rem 6rem;
+    height: 80vh;
+    position: relative;
+    margin-bottom: 3rem;
+    .leftContainer {
+      width: 35%;
+      .doodle {
+        border-radius: 100%;
+        position: absolute;
+      }
+      .dl1 {
+        left: 30%;
+        top: 13%;
+        width: 50px;
+        height: 50px;
+        background: $yellow;
+      }
+      .dl2 {
+        left: 7%;
+        bottom: 30%;
+        width: 90px;
+        height: 90px;
+        background: $green;
+      }
+      .hc1 {
+        position: absolute;
+        border-radius: 200px 200px 0 0;
+        left: 4%;
+        top: 9%;
+        width: 100px;
+        height: 50px;
+        background: $red;
+        rotate: -30deg;
+      }
+      .childImage {
+        position: absolute;
+        bottom: 0;
+        height: 95%;
+        left: 0%;
+      }
+    }
+    .rightContainer {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 2rem;
+      p {
+        margin: 1rem 0;
+        font-size: 1.5em;
+        line-height: 1.7;
+        font-weight: 350;
+        color: #555555;
+      }
+    }
+  }
 }
