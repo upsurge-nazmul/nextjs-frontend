@@ -8,8 +8,8 @@ const SchoolHeroSection = () => {
       <div className={`${styles.hc1}`} />
       <div className={`${styles.hc2}`} /> */}
       <img
-        // src={"https://imgcdn.upsurge.in/images/schools/school-hero-bg.png"}
-        src="/images/school-bg.svg"
+        src={"https://imgcdn.upsurge.in/images/schools/school-hero-bg.png"}
+        // src="/images/school-bg.svg"
         className={styles.bgImage}
         alt=" "
       />
@@ -43,7 +43,7 @@ const SchoolHeroSection = () => {
       </div>
       <div className={styles.right}>
         <img
-          src="https://imgcdn.upsurge.in/images/schools/new/proud-little-boy-with-glasses-graduation-cap.png"
+          src="https://imgcdn.upsurge.in/images/schools/hero-child.png"
           alt="Child Image"
         />
       </div>
