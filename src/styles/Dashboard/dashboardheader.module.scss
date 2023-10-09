@@ -63,12 +63,12 @@
     }
     .rewardBlock {
       background-color: $green;
-      padding-inline: 1rem;
+      padding-inline: 0.5rem;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       width: fit-content;
       height: fit-content;
-      margin-right: 0.5rem;
+      margin-right: 0.75rem;
       display: flex;
       align-items: center;
       border-radius: 4rem;
@@ -84,14 +84,15 @@
 ;
       .svg {
         min-width: 1rem;
-        max-height: 1rem;
-        margin-right: 5px;
-        path {
-          fill: rgb(255, 255, 255);
-        }
+        max-height: 1.6rem;
+        margin-right: 0.5rem;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 75%;
       }
       .number {
         cursor: context-menu;
+        margin-left: 2rem;
         font-size: 1rem;
         font-weight: 500;
         color: white;
