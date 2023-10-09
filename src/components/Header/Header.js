@@ -145,10 +145,10 @@ function Header({
                   name: "Live workshops", 
                   pushTo: "/products/liveclasses" 
                 },
-                { 
-                  name: "School Programs", 
-                  pushTo: "/schools" 
-                },
+                // { 
+                //   name: "School Programs", 
+                //   pushTo: "/schools" 
+                // },
               ]}
               // pushTo="/products"
             />
