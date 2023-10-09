@@ -77,14 +77,15 @@ const TestimonialsSection = () => {
     let teacherCarousal = document.getElementById("teacherCarousal");
     let teacherCard = document.querySelector(".teacherCard");
     if (direction === "right") {
+      console.log(teacherCard.offsetWidth);
       teacherCarousal.scrollLeft += teacherCard.offsetWidth;
       setEventData({
-        left: (teacherCarousal.scrollLeft += teacherCard.offsetWidth),
+        left: (teacherCarousal.scrollLeft += teacherCard.offsetWidth + 68),
       });
     } else {
       teacherCarousal.scrollLeft -= teacherCard.offsetWidth;
       setEventData({
-        left: (teacherCarousal.scrollLeft -= teacherCard.offsetWidth),
+        left: (teacherCarousal.scrollLeft -= teacherCard.offsetWidth + 68),
       });
     }
   }
@@ -95,12 +96,12 @@ const TestimonialsSection = () => {
     if (direction === "right") {
       studentCarousal.scrollLeft += studentCard.offsetWidth;
       setStudentData({
-        left: (studentCarousal.scrollLeft += studentCard.offsetWidth),
+        left: (studentCarousal.scrollLeft += studentCard.offsetWidth + 68),
       });
     } else {
       studentCarousal.scrollLeft -= studentCard.offsetWidth;
       setStudentData({
-        left: (studentCarousal.scrollLeft -= studentCard.offsetWidth),
+        left: (studentCarousal.scrollLeft -= studentCard.offsetWidth + 68),
       });
     }
   }
@@ -133,10 +134,10 @@ const TestimonialsSection = () => {
     <div className={styles.container}>
       <h2 className={styles.heading}>Testimonials</h2>
       <div className={styles.contentWrapper}>
-        <div className={`${styles.doodle} ${styles.dl1}`} />
+        {/* <div className={`${styles.doodle} ${styles.dl1}`} />
         <div className={`${styles.doodle} ${styles.dl2}`} />
         <div className={`${styles.doodle} ${styles.dl3}`} />
-        <div className={`${styles.doodle} ${styles.dl4}`} />
+        <div className={`${styles.doodle} ${styles.dl4}`} /> */}
         <div className={styles.teacherWrapper}>
           <h3 className={styles.subHeading}>Principals & Teachers</h3>
           <div className={styles.carouselContainer}>
