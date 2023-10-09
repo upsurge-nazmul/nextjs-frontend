@@ -142,11 +142,11 @@ export default function Reward({
             </div>
           </div>
         </div>
-        
+{/*         
         {(data.productId === 31057 ? (<div className={styles.description}>
         Phone number registered with us should have full wallet KYC with Paytm to succesfully redeem this voucher.
         </div>) : "")}
-        
+         */}
         <div className={styles.actionArea}>
         <button
             className={styles.detailsButton}
