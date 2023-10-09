@@ -134,7 +134,7 @@ export const Simulator_Data = {
 export const Download_Games_Data = {
   MoneyAce: {
     name: "Money Ace",
-    description: "Our flagship game, Money Ace is India’s first game to give children the chance to understand life, personal finance & investing in an age-relevant manner. Do your chores, take-up side gigs, save money, upskill & invest across 5 FDs, Stock Markets, Gold, Real Estate & Crypto! The users who create the most wealth every week get great rewards!",
+    description: "Our flagship game, Money Ace is India’s first game to give children the chance to understand life, personal finance & investing in an age-relevant manner. Do your chores, take-up side gigs, save money, upskill & invest across FDs, Stock Markets, Gold, Real Estate & Crypto! The users who create the most wealth every week get great rewards!",
     logo: "/images/DownloadGames/money_ace_logo.png",
     images: [
       "/images/DownloadGames/money_ace/Money_ace_1.png",
@@ -166,7 +166,7 @@ export const Download_Games_Data = {
   
   GourmetEmpire: {
     name: "Gourmet Empire",
-    description: "Welcome to Gourmet Empire! In this thrilling tycoon game, you'll embark on a culinary journey to build and manage your very own restaurant empire. Build restaurants, hire talented chefs, and serve from a diverse range of cuisines to satisfy the taste buds of your discerning customers. Balance resources wisely, upgrade your establishment and challenge yourself in a number of mini-games to manage your restaurant. Can you handle the heat of the kitchen and rise to culinary stardom?",
+    description: "Welcome to Gourmet Empire! In this thrilling tycoon game, you'll embark on a culinary journey to build and manage your very own restaurant empire. Build restaurants, hire talented chefs, and serve from a diverse range of cuisines to satisfy the taste buds of your discerning customers. Can you handle the heat of the kitchen and rise to culinary stardom?",
     logo: "/images/DownloadGames/gourmet_empire.png",
     images: [
       "/images/DownloadGames/gourmet_empire/Image_1.png",
