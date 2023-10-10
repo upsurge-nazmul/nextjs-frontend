@@ -18,7 +18,7 @@ const ContactUsSection = () => {
           alt=" "
         />
         <img
-          src="https://imgcdn.upsurge.in/images/schools/c5.png"
+          src="https://imgcdn.upsurge.in/images/schools/conatct-child.png"
           className={styles.childImage}
           alt=" "
         />

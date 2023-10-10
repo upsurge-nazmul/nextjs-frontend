@@ -101,8 +101,8 @@
       .hc1 {
         position: absolute;
         border-radius: 99999999999999999px 99999999999999999px 0 0;
-        left: 20%;
-        top: 0%;
+        left: 18%;
+        top: 8%;
         width: 4.5rem;
         height: 2.2rem;
         background: $red;
@@ -110,8 +110,8 @@
       }
       .childImage {
         position: relative;
-        width: 90%;
-        height: 20rem;
+        width: 92%;
+        height: 23rem;
         object-fit: fill;
         z-index: 3;
         margin-right: 0;
@@ -119,7 +119,7 @@
       }
       .childBG {
         width: 100%;
-        height: 18rem;
+        height: 17rem;
         position: absolute;
         bottom: 0;
         right: auto;
@@ -177,16 +177,16 @@
       }
       .childImage {
         position: relative;
-        width: 60%;
-        height: 24rem;
+        width: 55%;
+        height: 25rem;
         object-fit: fill;
         z-index: 3;
         margin-right: 0;
         // margin-bottom: -5%;
       }
       .childBG {
-        width: 70%;
-        height: 20rem;
+        width: 65%;
+        height: 18rem;
         position: absolute;
         bottom: 0;
         right: auto;
@@ -243,14 +243,14 @@
       .childImage {
         position: relative;
         width: 90%;
-        height: 500px;
+        height: 400px;
         object-fit: contain;
         z-index: 3;
         margin-right: 3rem;
       }
       .childBG {
-        width: 80%;
-        height: 400px;
+        width: 90%;
+        height: 300px;
         position: absolute;
         bottom: 0;
         right: 15%;

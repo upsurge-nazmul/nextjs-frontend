@@ -16,6 +16,7 @@ import PartnerSchoolSection from "../../components/School/PartnerSchoolSection";
 import TestimonialsSection from "../../components/School/TestimonialsSection";
 import ContactUsSection from "../../components/School/ContactUsSection";
 import ContactForm from "../../components/School/ContactForm";
+import ExpertsSection from "../../components/Products/quest/ExpertsSection";
 
 function SchoolsPage() {
   const [stickyheader, setstickyheader] = useState(false);
@@ -69,6 +70,7 @@ function SchoolsPage() {
       {/* <EntrepreneurshipSection /> */}
       {/* <SkillsSection /> */}
       <WhyChoose />
+      <ExpertsSection />
       <PartnerSchoolSection />
       <TestimonialsSection />
       <ContactUsSection />

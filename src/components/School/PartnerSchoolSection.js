@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "../../styles/schools/partnerSchool.module.scss";
 
 const partnerSchoolData = [
@@ -29,36 +30,66 @@ const partnerSchoolData = [
 
 const PartnerSchoolSection = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.timelineSec}>
       <h2 className={styles.heading}>
-        Become a partner school in four easy steps:
+        Become a money-smart school in four easy steps:
       </h2>
-      <div className={styles.gridContainer}>
-        {partnerSchoolData.map((data) => (
-          <div key={data.id} className={styles.card}>
-            <div className={styles.numberWrapper}>
-              <div className={styles.numberContainer}>
-                <div
-                  className={styles.hc}
-                  style={{ backgroundColor: data.color }}
-                ></div>
-                <span>{data.id}</span>
+      <div className={styles.container}>
+        <ol className={styles.timeline}>
+          {partnerSchoolData.map((item, index) => (
+            <li key={"step-" + index}>
+              <div
+                className={`${(index + 1) % 2 ? styles.bottom : styles.top} ${
+                  styles.innerCard
+                }`}
+              >
+                <div className={styles.imageContainer}>
+                  <Image
+                    src={item.image}
+                    layout="fill"
+                    alt={"Upsurge"}
+                    className={styles.image}
+                  />
+                </div>
+                <div className={styles.divider}></div>
+                <p>{item.text}</p>
               </div>
-              <img
-                src={data.image}
-                alt="Partner School"
-                className={styles.image}
-              />
+              <span
+                className={`${styles.number} ${
+                  (index + 1) % 2 ? styles.spBot : styles.spTop
+                }`}
+              >
+                0{index + 1}
+              </span>
+            </li>
+          ))}
+          {/* <li>
+            <div className={styles.top}>
+              <p>
+                Have you tried Physiotherapy, Chiropractor or your GP without
+                the pain free results?
+              </p>
             </div>
-            <div className={styles.divider}></div>
-            <div className={styles.textWrapper}>
-              <p>{data.text}</p>
+            <span className={`${styles.number} ${styles.spTop}`}>02</span>
+          </li>
+          <li>
+            <div className={styles.bottom}>
+              <p>
+                Let Physology assess and treat your pain with our trusted
+                revolusionary approach.
+              </p>
             </div>
-          </div>
-        ))}
+            <span className={`${styles.number} ${styles.spBot}`}>03</span>
+          </li>
+          <li>
+            <div className={styles.top}>
+              <p>Join our happy family of pain free clients.</p>
+            </div>
+            <span className={`${styles.number} ${styles.spTop}`}>04</span>
+          </li> */}
+        </ol>
       </div>
-      <button className={styles.button}>Register Now</button>
-    </div>
+    </section>
   );
 };
 

@@ -9,8 +9,8 @@ const ReadMoreSection = () => {
         <div className={`${styles.hc1}`} />
         {/* <Image src={childImg} width={400} height={600} /> */}
         <img
-          // src={"https://imgcdn.upsurge.in/images/schools/schools-child-two.png"}
-          src="https://imgcdn.upsurge.in/images/schools/new/excited-hispanic-schoolgirl-having-idea.svg"
+          src={"https://imgcdn.upsurge.in/images/schools/read-child.png"}
+          // src="https://imgcdn.upsurge.in/images/schools/new/excited-hispanic-schoolgirl-having-idea.svg"
           className={styles.childImage}
           alt=" "
         />
