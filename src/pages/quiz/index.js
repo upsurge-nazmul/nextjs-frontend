@@ -11,13 +11,10 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import Footer from "../../components/Home/Footer";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
-import FreeGameApis from "../../actions/apis/FreeGameApis";
 import JoinUs from "../../components/Home/JoinUs";
-import LeaderBoard from "../../components/LeaderBoard";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
+
 const specialchars = [
   "#",
   "$",
@@ -55,6 +52,7 @@ const specialchars = [
   "8",
   "9",
 ];
+
 function Quiz({ userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -190,21 +188,7 @@ function Quiz({ userdata }) {
       settask(setInterval(() => settimer((prev) => prev - 1000), 1000));
     }
   }, [showQuiz, started]);
-  function secondsToTime(secs) {
-    let hours = Math.floor(secs / (60 * 60));
 
-    let divisor_for_minutes = secs % (60 * 60);
-    let minutes = Math.floor(divisor_for_minutes / 60);
-
-    let divisor_for_seconds = divisor_for_minutes % 60;
-    let seconds = Math.ceil(divisor_for_seconds);
-    return (
-      (hours !== 0 ? hours + " hr : " : "") +
-      (minutes !== 0 ? minutes + " min : " : "") +
-      seconds +
-      " s"
-    );
-  }
   async function handleSignup() {
     if (!validator.isEmail(email)) {
       seterror("Enter valid email address");
@@ -288,6 +272,19 @@ function Quiz({ userdata }) {
       seterror(response.data?.message || "Error connecting to server");
     }
   }
+  // async function startgame(e, n_name, n_email) {
+  //   let response = await QuizApis.startquiz({
+  //     name: "test",
+  //     // phone: "",
+  //     email: "test@em.com",
+  //   });
+  //   if (response && response.data && response.data.success) {
+  //     setshowmain(true);
+  //     setdata(response.data.data);
+  //   } else {
+  //     seterror(response.data?.message || "Error connecting to server");
+  //   }
+  // }
 
   function checkLength(name) {
     return name.length <= 2;
@@ -310,6 +307,7 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  
   return (
     <div
       className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""} ${
@@ -324,23 +322,18 @@ function Quiz({ userdata }) {
       }}
     >
       <PageTitle />
-      <Header
-        setOpenLeftPanel={setOpenLeftPanel}
-        showauth={showauth}
-        stickyheader={stickyheader}
-        setshowpopup={setshowpopup}
-        showpopup={showpopup}
-        setshowauth={setshowauth}
-        mailfromhome={email}
-      />
-      <Toast data={toastdata} />
-      {/* {quizId !== "main" && !email ? (
-        <PopUp
-          heading="Enter your email"
-          saveinput={setemail}
-          settoastdata={settoastdata}
+      {!showmain && (
+        <Header
+          setOpenLeftPanel={setOpenLeftPanel}
+          showauth={showauth}
+          stickyheader={stickyheader}
+          setshowpopup={setshowpopup}
+          showpopup={showpopup}
+          setshowauth={setshowauth}
+          mailfromhome={email}
         />
-      ) : null} */}
+      )}
+      <Toast data={toastdata} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -351,12 +344,10 @@ function Quiz({ userdata }) {
         setOpenFull={setopenFull}
         answersheet={answersheet}
       />
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
       {showmain && !started && (
         <div className={styles.startscreen}>
           <div className={styles.right}>
-            <Jasper className={styles.jasper} />
+            {/* <Jasper className={styles.jasper} /> */}
 
             <div className={styles.heading}>
               How to calculate your Money Quotient
@@ -469,104 +460,20 @@ function Quiz({ userdata }) {
         </div>
       ) : (
         <div className={styles.contentWrapper}>
-          <div
-            className={styles.prop1}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
-            }}
-          />
-          <div
-            className={styles.prop2}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
-            }}
-          />
-          <div
-            className={styles.prop3}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
-            }}
-          />
-          <div className={styles.prop4} />
           <div className={styles.quizContainer}>
-            <div className={styles.leftSection}>
-              {!quizfinished && (
-                <>
-                  <p
-                    className={styles.heading}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Money Quotient Quiz
-                  </p>
-                  <p
-                    className={styles.details}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    You will be asked 15 questions and have to choose the option
-                    which you think is correct.This is a dynamic quiz that
-                    adapts the difficulty level according to your answers. The
-                    tougher questions you get right, the more points you will
-                    get.
-                  </p>
-                  <p
-                    className={styles.current}
-                    style={{
-                      backgroundColor:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#4166EB",
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#000000"
-                          : "#ffffff",
-                    }}
-                  >
-                    {`${currentquestionindex + 1} / ${15}`}
-                  </p>
-                </>
-              )}
-            </div>
-            {showQuiz && !quizfinished ? (
-              <div className={styles.rightSection}>
-                <div className={styles.timerSection}>
-                  <p
-                    className={styles.timeleft}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Time Left
-                  </p>
-                  <p
-                    className={styles.timer}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    {secondsToTime(timer / 1000)}
-                  </p>
-                </div>
+            {!quizfinished && (
+              <div
+                className={styles.heading}
+                style={{
+                  color:
+                    colorarray[currentcolor] === "#4166EB"
+                      ? "#ffffff"
+                      : "#000000",
+                }}
+              >
+                Money Quotient Quiz
               </div>
-            ) : null}
+            )}
           </div>
           {showQuiz && !quizfinished ? (
             <div className={styles.quizWrapper}>
@@ -586,6 +493,7 @@ function Quiz({ userdata }) {
                 currentcolor={currentcolor}
                 setcurrentcolor={setcurrentcolor}
                 colorarray={colorarray}
+                timer={timer}
               />
             </div>
           ) : null}
@@ -597,10 +505,6 @@ function Quiz({ userdata }) {
             >
               <Jasper className={styles.jasper} />
               <div className={styles.background}>
-                <div className={styles.curvecontainer}>
-                  <Curve1 className={styles.curve1} />
-                  <Curve2 className={styles.curve2} />
-                </div>
               </div>
 
               <p
@@ -651,8 +555,6 @@ function Quiz({ userdata }) {
           ) : null}
         </div>
       )}
-      <div className={styles.whitespace}></div>
-
       <JoinUs />
       <Footer />
     </div>
