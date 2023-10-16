@@ -5,6 +5,8 @@ import validator from "validator";
 import ReactTooltip from "react-tooltip";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
+import { QUIZ_CATAGORIES } from "../../pages/quiz";
+import DoneIcon from '@mui/icons-material/Done';
 
 export default function QuizForm({ 
   error,
@@ -21,6 +23,8 @@ export default function QuizForm({
   setphone,
   password,
   setpassword,
+  quizCat,
+  setQuizCat,
   startgame
  }) {
   const [passerror, setpasserror] = useState({
@@ -210,6 +214,25 @@ export default function QuizForm({
               </ReactTooltip>
             </>
           )}
+          <div className={styles.categories}>
+            <label className={styles.catLabel}>Quiz For</label>
+            <div className={styles.catOptions}>
+              {QUIZ_CATAGORIES.map((cat) => {
+                return (
+                  <div 
+                    key={cat.id} 
+                    className={quizCat === cat.type ? styles.selectedCat: styles.singleCat} 
+                    onClick={() => setQuizCat(cat.type)}
+                  >
+                    <div className={styles.catName}>{cat.name}</div>
+                    <div className={styles.selectedIcon}>
+                      <DoneIcon />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </form>
         <div className={styles.buttons}>
           <div className={styles.startbutton} onClick={startgame}>

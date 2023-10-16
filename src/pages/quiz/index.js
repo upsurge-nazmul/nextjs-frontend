@@ -19,7 +19,24 @@ import QuizForm from "../../components/Quiz/QuizForm";
 import { setCookie } from "../../actions/cookieUtils";
 import QuizFinished from "../../components/Quiz/QuizFinished";
 
-const QUIZ_DURATION_IN_MIN = 15;
+const QUIZ_DURATION_IN_MIN = 150;
+export const QUIZ_CATAGORIES = [
+  {
+    id: 1,
+    type: "class35",
+    name: "Class 3-5",
+  },
+  {
+    id: 2,
+    type: "class68",
+    name: "Class 6-8",
+  },
+  {
+    id: 3,
+    type: "class910",
+    name: "Class 9-10",
+  }
+]
 
 function Quiz({ userdata }) {
   const router = useRouter();
@@ -37,12 +54,13 @@ function Quiz({ userdata }) {
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
   const [name, setname] = useState(router.query.name || "");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [username, setusername] = useState("");
-  const [phone, setphone] = useState("");
-  const [email, setEmail] = useState(router.query.email || "");
-  const [password, setpassword] = useState("");
+  const [firstName, setFirstName] = useState("quiz");
+  const [lastName, setLastName] = useState("one");
+  const [username, setusername] = useState("quizone");
+  const [phone, setphone] = useState("9087878787");
+  const [email, setEmail] = useState(router.query.email || "quiz@test.com");
+  const [password, setpassword] = useState("N@s12345");
+  const [quizCat, setQuizCat] = useState();
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -139,6 +157,7 @@ function Quiz({ userdata }) {
         name: router.query.name,
         phone: phone,
         email: router.query.email,
+        catagory: quizCat,
       });
       if (response && response.data && response.data.success) {
         setdata(response.data.data);
@@ -172,7 +191,8 @@ function Quiz({ userdata }) {
     return usernameRegex.test(val);
   };
 
-  function validate(name, email, username, phone) {
+  function validate() {
+    const name = firstName + " " + lastName;
     if (!name) {
       seterror("Name is required");
       return;
@@ -221,6 +241,10 @@ function Quiz({ userdata }) {
       seterror("Please enter valid phone number");
       return;
     }
+    if (!quizCat) {
+      seterror("Which class is this quiz for?");
+      return;
+    }
     return true;
   }
 
@@ -229,6 +253,7 @@ function Quiz({ userdata }) {
       name: profile.first_name + " " + profile.last_name,
       phone: profile.parent_phone,
       email: profile.parent_email,
+      catagory: quizCat,
     });
     if (response && response.data && response.data.success) {
       setshowmain(true);
@@ -240,8 +265,8 @@ function Quiz({ userdata }) {
   
   async function startgame(e) {
     e?.preventDefault();
-    let validated = validate(firstName + " " + lastName, email, username, phone);
-
+    let validated = validate();
+    if (!validated) return;
     if (validated) {
       let signupResponse = await LoginApis.signup({
         email: email,
@@ -289,6 +314,8 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
+  console.log("@@@@@@@@@@@", quizCat);
   
   return (
     <div
@@ -346,6 +373,8 @@ function Quiz({ userdata }) {
           setphone,
           password,
           setpassword,
+          quizCat,
+          setQuizCat,
           startgame
         }} />
       ) : (
