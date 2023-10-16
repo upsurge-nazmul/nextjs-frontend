@@ -60,6 +60,7 @@ function Quiz({ userdata }) {
   const [phone, setphone] = useState("9087878787");
   const [email, setEmail] = useState(router.query.email || "quiz@test.com");
   const [password, setpassword] = useState("N@s12345");
+  const [school, setSchool] = useState(router.query.school || "");
   const [quizCat, setQuizCat] = useState();
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -278,6 +279,7 @@ function Quiz({ userdata }) {
         first_name: firstName,
         last_name: lastName,
         num_unicoins: 0,
+        school
       });
       if (signupResponse && signupResponse.data && signupResponse.data.success) {
         const profile = signupResponse.data.data.profile;
@@ -314,8 +316,6 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
-
-  console.log("@@@@@@@@@@@", quizCat);
   
   return (
     <div
@@ -390,7 +390,7 @@ function Quiz({ userdata }) {
                       : "#000000",
                 }}
               >
-                Money Quotient Quiz
+                {`Money Quotient Championship ${school ? " - " + school: ""}`}
               </div>
             )}
           </div>
