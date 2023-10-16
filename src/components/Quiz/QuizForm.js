@@ -61,63 +61,66 @@ export default function QuizForm({
           onKeyPress={(e) => {
             if (e.key === "Enter") startgame(e);
           }}
+          className={styles.inputForm}
         >
-          <input
-            type="text"
-            className={styles.input}
-            value={firstName}
-            onChange={(e) => {
-              if (
-                e.target.value.length > 1 &&
-                e.target.value[e.target.value.length - 1] === " "
-              ) {
-                setFirstName(e.target.value);
-              }
-              if (!e.target.value[e.target.value.length - 1]) {
-                setFirstName("");
-                return;
-              }
-              if (
-                specialCharactersAndNumbers.includes(
-                  e.target.value[e.target.value.length - 1].toString()
-                )
-              ) {
-                return;
-              }
-              if (isNaN(e.target.value[e.target.value.length - 1]))
-                setFirstName(e.target.value);
-            }}
-            placeholder="Child First Name*"
-            required
-          />
-          <input
-            type="text"
-            className={styles.input}
-            value={lastName}
-            onChange={(e) => {
-              if (
-                e.target.value.length > 1 &&
-                e.target.value[e.target.value.length - 1] === " "
-              ) {
-                setLastName(e.target.value);
-              }
-              if (!e.target.value[e.target.value.length - 1]) {
-                setLastName("");
-                return;
-              }
-              if (
-                specialCharactersAndNumbers.includes(
-                  e.target.value[e.target.value.length - 1].toString()
-                )
-              ) {
-                return;
-              }
-              if (isNaN(e.target.value[e.target.value.length - 1]))
-                setLastName(e.target.value);
-            }}
-            placeholder="Child Last Name*"
-            required
-          />
+          <div className={styles.nameArea}>
+            <input
+              type="text"
+              className={styles.input}
+              value={firstName}
+              onChange={(e) => {
+                if (
+                  e.target.value.length > 1 &&
+                  e.target.value[e.target.value.length - 1] === " "
+                ) {
+                  setFirstName(e.target.value);
+                }
+                if (!e.target.value[e.target.value.length - 1]) {
+                  setFirstName("");
+                  return;
+                }
+                if (
+                  specialCharactersAndNumbers.includes(
+                    e.target.value[e.target.value.length - 1].toString()
+                  )
+                ) {
+                  return;
+                }
+                if (isNaN(e.target.value[e.target.value.length - 1]))
+                  setFirstName(e.target.value);
+              }}
+              placeholder="Child First Name*"
+              required
+            />
+            <input
+              type="text"
+              className={styles.input}
+              value={lastName}
+              onChange={(e) => {
+                if (
+                  e.target.value.length > 1 &&
+                  e.target.value[e.target.value.length - 1] === " "
+                ) {
+                  setLastName(e.target.value);
+                }
+                if (!e.target.value[e.target.value.length - 1]) {
+                  setLastName("");
+                  return;
+                }
+                if (
+                  specialCharactersAndNumbers.includes(
+                    e.target.value[e.target.value.length - 1].toString()
+                  )
+                ) {
+                  return;
+                }
+                if (isNaN(e.target.value[e.target.value.length - 1]))
+                  setLastName(e.target.value);
+              }}
+              placeholder="Child Last Name*"
+              required
+            />
+          </div>
           <input
             type="text"
             value={username}
