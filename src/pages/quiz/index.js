@@ -19,6 +19,8 @@ import QuizForm from "../../components/Quiz/QuizForm";
 import { setCookie } from "../../actions/cookieUtils";
 import QuizFinished from "../../components/Quiz/QuizFinished";
 
+const QUIZ_DURATION_IN_MIN = 15;
+
 function Quiz({ userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -26,7 +28,7 @@ function Quiz({ userdata }) {
   const [data, setdata] = useState(null);
   const [currentquiz, setcurrentquiz] = useState(data);
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
-  const [timer, settimer] = useState(1000 * 60 * 15);
+  const [timer, settimer] = useState(1000 * 60 * QUIZ_DURATION_IN_MIN);
   const [task, settask] = useState("");
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -72,7 +74,7 @@ function Quiz({ userdata }) {
         router.push("/quiz");
         setcurrentquestionindex(0);
         setquizfinished(false);
-        settimer(1000 * 60 * 5);
+        settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
         setcorrectAnswers(0);
         clearInterval(task);
         setshowQuiz(false);
@@ -115,13 +117,14 @@ function Quiz({ userdata }) {
 
   useEffect(() => {
     if (timer <= 0) {
-      alert("Time over,try again");
+      settoastdata({ type: "error", msg: "Time Over", show: true });
       setcurrentquestionindex(0);
       setquizfinished(false);
-      settimer(1000 * 60 * 5);
+      settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
       setcorrectAnswers(0);
       clearInterval(task);
       setshowQuiz(false);
+      router.push("/quiz");
     } else if (quizfinished || !showQuiz) {
       clearInterval(task);
     }
@@ -141,7 +144,7 @@ function Quiz({ userdata }) {
         setdata(response.data.data);
         setcurrentquestionindex(0);
         setquizfinished(false);
-        settimer(1000 * 60 * 5);
+        settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
         setcorrectAnswers(0);
         clearInterval(task);
         setshowQuiz(true);
