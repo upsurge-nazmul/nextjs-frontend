@@ -1,15 +1,57 @@
 import styles from "../../styles/Quiz/quizForm.module.scss";
+import { specialCharactersAndNumbers, specialCharacters } from "../../helpers/string";
+import { useState } from "react";
 
 export default function QuizForm({ 
   error,
-  name,
+  firstName,
+  setFirstName,
+  lastName,
+  setLastName,
   setname,
+  username,
+  setusername,
   email,
   setEmail,
   phone,
-  setphone, 
+  setphone,
+  password,
+  setpassword,
   startgame
  }) {
+  const [passError, setPassError] = useState();
+
+  function checkLength(pass) {
+    return pass.length >= 8;
+  }
+  function checkLower(pass) {
+    return !(pass.search(/[a-z]/) < 0);
+  }
+  function checkUpper(pass) {
+    // password.search(/.*[A-Z].*/) > 0)
+    return !(pass.search(/[A-Z]/) < 0);
+  }
+  function checkNumber(pass) {
+    return !(pass.search(/[0-9]/) < 0);
+  }
+  function checkSpecial(pass) {
+    return !(pass.search(/[!@#$%^&*]/) < 0);
+  }
+  function validatePassword(e) {
+    let pass = e.target.value.trim();
+    setpassword(pass);
+    let res = {
+      length: checkLength(pass),
+      lower: checkLower(pass),
+      upper: checkUpper(pass),
+      special: checkSpecial(pass),
+      number: checkNumber(pass),
+    };
+    setPassError(res);
+  }
+
+  // console.log("$$$$$$$$$$", passError)
+
   return (
     <div className={styles.formSection}>
       <div className={styles.left}>
@@ -23,36 +65,82 @@ export default function QuizForm({
           <input
             type="text"
             className={styles.input}
-            value={name}
+            value={firstName}
             onChange={(e) => {
               if (
                 e.target.value.length > 1 &&
                 e.target.value[e.target.value.length - 1] === " "
               ) {
-                setname(e.target.value);
+                setFirstName(e.target.value);
               }
               if (!e.target.value[e.target.value.length - 1]) {
-                setname("");
+                setFirstName("");
                 return;
               }
               if (
-                specialchars.includes(
+                specialCharactersAndNumbers.includes(
                   e.target.value[e.target.value.length - 1].toString()
                 )
               ) {
                 return;
               }
               if (isNaN(e.target.value[e.target.value.length - 1]))
-                setname(e.target.value);
+                setFirstName(e.target.value);
             }}
-            placeholder="Name*"
+            placeholder="Child First Name*"
+            required
+          />
+          <input
+            type="text"
+            className={styles.input}
+            value={lastName}
+            onChange={(e) => {
+              if (
+                e.target.value.length > 1 &&
+                e.target.value[e.target.value.length - 1] === " "
+              ) {
+                setLastName(e.target.value);
+              }
+              if (!e.target.value[e.target.value.length - 1]) {
+                setLastName("");
+                return;
+              }
+              if (
+                specialCharactersAndNumbers.includes(
+                  e.target.value[e.target.value.length - 1].toString()
+                )
+              ) {
+                return;
+              }
+              if (isNaN(e.target.value[e.target.value.length - 1]))
+                setLastName(e.target.value);
+            }}
+            placeholder="Child Last Name*"
+            required
+          />
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => {
+              if (specialCharacters.includes(
+                e.target.value[e.target.value.length -1].toString()
+              )) {
+                return;
+              } else {
+                setusername(e.target.value);
+              }
+            }}
+            className={styles.input}
+            placeholder="Child Username*"
+            required
           />
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={styles.input}
-            placeholder="Email*"
+            placeholder="Parent Email*"
+            required
           />
           <input
             value={phone}
@@ -69,16 +157,21 @@ export default function QuizForm({
               setphone(e.target.value);
             }}
             className={styles.input}
-            placeholder="Phone (optional)"
+            placeholder="Parent Phone*"
+          />
+          <input
+            type={"password"}
+            placeholder="New Password*"
+            value={password}
+            className={styles.input}
+            onChange={validatePassword}
+            required
           />
         </form>
         <div className={styles.buttons}>
           <div className={styles.startbutton} onClick={startgame}>
             Start Playing
           </div>
-          {/* <div className={styles.skipbutton} onClick={skipgame}>
-                Skip
-              </div> */}
         </div>
       </div>
       <div className={styles.right}>

@@ -16,44 +16,7 @@ import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
 import QuizManual from "../../components/Quiz/QuizManual";
 import QuizForm from "../../components/Quiz/QuizForm";
-
-const specialchars = [
-  "#",
-  "$",
-  "%",
-  "*",
-  "&",
-  "(",
-  "@",
-  "_",
-  ")",
-  "+",
-  "-",
-  "&&",
-  "||",
-  "!",
-  "(",
-  ")",
-  "{",
-  "}",
-  "[",
-  "]",
-  "^",
-  "~",
-  "*",
-  "?",
-  ":",
-  "1",
-  "0",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
+import { setCookie } from "../../actions/cookieUtils";
 
 function Quiz({ userdata }) {
   const router = useRouter();
@@ -70,10 +33,13 @@ function Quiz({ userdata }) {
   const [showauth, setshowauth] = useState(false);
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState(router.query.name || "");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setusername] = useState("");
   const [phone, setphone] = useState("");
+  const [email, setEmail] = useState(router.query.email || "");
+  const [password, setpassword] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -81,7 +47,6 @@ function Quiz({ userdata }) {
     msg: "",
   });
   const [correctAnswers, setcorrectAnswers] = useState(0);
-  const [email, setEmail] = useState(router.query.email || "");
   const [widthHeight, setwidthHeight] = useState({
     width: 0,
     height: 0,
@@ -191,111 +156,105 @@ function Quiz({ userdata }) {
     }
   }, [showQuiz, started]);
 
-  async function handleSignup() {
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-    } else {
-      let response = await LoginApis.saveemail({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          seterror(response.data.message);
-        }
-      } else {
-        seterror("Error connecting to server");
-      }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
-    }
-  }
   useEffect(() => {
     seterror("");
   }, [phone, email, name]);
-  async function startgame(e, n_name, n_email) {
-    e?.preventDefault();
-    if (n_name && n_email) {
-      if (checkLength(n_name)) {
-        seterror("Name should contain atleast 3 characters");
-        return;
-      }
-      if (checkSpecial(n_name)) {
-        seterror("Name should not contain any special characters");
-        return;
-      }
-      if (checkNumber(n_name)) {
-        seterror("Name should not contain any number");
-        return;
-      }
-      if (!validator.isEmail(n_email)) {
-        seterror("Please enter valid email address");
-        return;
-      }
-    } else {
-      if (!name) {
-        seterror("Name is required");
-        return;
-      }
-      if (checkLength(name)) {
-        seterror("Name should contain atleast 3 characters");
-        return;
-      }
-      if (checkSpecial(name)) {
-        seterror("Name should not contain any special characters");
-        return;
-      }
-      if (checkNumber(name)) {
-        seterror("Name should not contain any number");
-        return;
-      }
-      if (!email) {
-        seterror("Email is required");
-        return;
-      }
-      if (!validator.isEmail(email)) {
-        seterror("Please enter valid email address");
-        return;
-      }
-      if (phone && !validator.isMobilePhone(phone, "en-IN")) {
-        seterror("Please enter valid phone number");
-        return;
-      }
-    }
-    let response = await QuizApis.startquiz({
-      name: n_name || name,
-      phone: phone,
-      email: n_email || email,
-    });
-    if (response && response.data && response.data.success) {
-      setshowmain(true);
-      setdata(response.data.data);
-    } else {
-      seterror(response.data?.message || "Error connecting to server");
-    }
-  }
-  // async function startgame(e, n_name, n_email) {
-  //   let response = await QuizApis.startquiz({
-  //     name: "test",
-  //     // phone: "",
-  //     email: "test@em.com",
-  //   });
-  //   if (response && response.data && response.data.success) {
-  //     setshowmain(true);
-  //     setdata(response.data.data);
-  //   } else {
-  //     seterror(response.data?.message || "Error connecting to server");
-  //   }
-  // }
 
-  function checkLength(name) {
-    return name.length <= 2;
+  const isValidUsername = (val) => {
+    const usernameRegex = /^[a-zA-Z0-9]+$/;
+    return usernameRegex.test(val);
+  };
+
+  function validate(name, email, username, phone) {
+    if (!name) {
+      seterror("Name is required");
+      return;
+    }
+    if (name.length <= 2) {
+      seterror("Name should contain atleast 3 characters");
+      return;
+    }
+    if (name.search(/[!@#$%^&*]/) > 0) {
+      seterror("Name should not contain any special characters");
+      return;
+    }
+    if (name.search(/[0-9]/) > 0) {
+      seterror("Name should not contain any number");
+      return;
+    }
+    if (!email) {
+      seterror("Email is required");
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      seterror("Please enter valid email address");
+      return;
+    }
+    if (!username) {
+      seterror("Username is required");
+      return;
+    }
+    if (username.length > 40) {
+      seterror("Username cannot contain more than 40 characters");
+      return;
+    }
+    if (username.length < 4) {
+      seterror("Username cannot contain less than 4 characters");
+      return;
+    }
+    if (!isValidUsername(username)) {
+      seterror("username can't contained special characters and space");
+      return;
+    }
+    if (!phone) {
+      seterror("Phone is required");
+      return;
+    }
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      seterror("Please enter valid phone number");
+      return;
+    }
+    return true;
   }
-  function checkNumber(name) {
-    return name.search(/[0-9]/) > 0;
-  }
-  function checkSpecial(name) {
-    return name.search(/[!@#$%^&*]/) > 0;
+  
+  async function startgame(e,) {
+    e?.preventDefault();
+    let validated = validate(firstName + " " + lastName, email, username, phone);
+
+    if (validated) {
+      let signupResponse = await LoginApis.signup({
+        email: email,
+        signup_method: "email",
+        user_type: "child",
+        phone,
+        password,
+        username: username.toLowerCase(),
+        first_name: firstName,
+        last_name: lastName,
+        num_unicoins: 0,
+      });
+      if (signupResponse && signupResponse.data && signupResponse.data.success) {
+        const profile = signupResponse.data.data.profile;
+        setCookie("accesstoken", signupResponse.data.data.token);
+        settoastdata({ type: "success", msg: "New Account Created", show: true });
+        // console.log("@@@@@@@@@ signup response: ", signupResponse.data.data);
+        
+        let response = await QuizApis.startquiz({
+          name: profile.first_name + " " + profile.last_name,
+          phone: profile.parent_phone,
+          email: profile.parent_email,
+        });
+        if (response && response.data && response.data.success) {
+          // console.log("@@@@@@@@@ start response: ", response.data.data);
+          setshowmain(true);
+          setdata(response.data.data);
+        } else {
+          seterror(response.data?.message || "Error connecting to server");
+        }
+      } else {
+        seterror(signupResponse.data?.message || "Error connecting to server");
+      }
+    }
   }
 
   useEffect(() => {
@@ -309,6 +268,8 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
+  // console.log('!!!!!!!!!!', name, username, email, phone, password)
   
   return (
     <div
@@ -353,12 +314,19 @@ function Quiz({ userdata }) {
       {!showmain ? (
         <QuizForm {...{
           error,
-          name,
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
           setname,
+          username,
+          setusername,
           email,
           setEmail,
           phone,
           setphone,
+          password,
+          setpassword,
           startgame
         }} />
       ) : (
