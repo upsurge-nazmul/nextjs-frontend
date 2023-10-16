@@ -52,6 +52,98 @@
           @extend .input;
         }
       }
+      .passwordBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        .detailPass {
+          display: flex;
+          position: absolute;
+          flex-direction: column;
+          background-color: white;
+          border-radius: 12px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          top: -185px;
+          padding-top: 15px;
+          right: 50%;
+          z-index: 2;
+          transform: translateX(50%);
+          animation: fade 0.3s ease;
+          .arrow {
+            position: absolute;
+            bottom: 0;
+            right: 22.5%;
+            transform: rotate(45deg);
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-color: white;
+            z-index: -1;
+            width: 100px;
+            height: 100px;
+          }
+          .tab {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            background-color: white;
+            padding: 0 20px;
+            padding-bottom: 10px;
+            border-radius: 12px;
+            z-index: 2;
+            &:last-child {
+              padding-bottom: 20px;
+            }
+            svg {
+              width: 15px;
+              height: 15px;
+            }
+            p {
+              margin-left: 6px;
+              font-size: 0.9375rem;
+            }
+          }
+          .white {
+            background-color: white;
+            width: 100%;
+            border-radius: 12px;
+            height: 15px;
+          }
+        }
+        input {
+          margin: 0;
+        }
+        .weakpass {
+          border-color: rgb(255, 118, 118);
+        }
+        .show {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 19px;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-family: "Lexend", sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 1.125rem;
+          text-align: right;
+          color: #4166eb;
+          transition: all 0.3s ease;
+          &:hover {
+            color: #2751e9;
+          }
+        }
+      }
+      .weakpasstext {
+        color: rgb(255, 118, 118);
+        font-size: 0.9375rem;
+        width: fit-content;
+      }
     }
     .buttons {
       display: flex;

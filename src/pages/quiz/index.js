@@ -231,7 +231,6 @@ function Quiz({ userdata }) {
       email: profile.parent_email,
     });
     if (response && response.data && response.data.success) {
-      // console.log("@@@@@@@@@ start response: ", response.data.data);
       setshowmain(true);
       setdata(response.data.data);
     } else {
@@ -259,7 +258,6 @@ function Quiz({ userdata }) {
         const profile = signupResponse.data.data.profile;
         setCookie("accesstoken", signupResponse.data.data.token);
         settoastdata({ type: "success", msg: "New Account Created", show: true });
-        // console.log("@@@@@@@@@ signup response: ", signupResponse.data.data);
         startQuiz(profile);
       } else if (signupResponse && signupResponse.data && signupResponse && signupResponse.data.message === "Username already taken") {
         let loginResponse = await LoginApis.login({ 
@@ -272,7 +270,6 @@ function Quiz({ userdata }) {
           setCookie("accesstoken", loginResponse.data.data.token);
           setuserdata(profile);
           settoastdata({ type: "success", msg: "Child Account Found", show: true });
-          // console.log("@@@@@@@@@ login response: ", loginResponse.data.data);
           startQuiz(profile);
         }
       } else {
@@ -292,8 +289,6 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
-
-  // console.log('!!!!!!!!!!', name, username, email, phone, password)
   
   return (
     <div
@@ -338,11 +333,11 @@ function Quiz({ userdata }) {
       {!showmain ? (
         <QuizForm {...{
           error,
+          seterror,
           firstName,
           setFirstName,
           lastName,
           setLastName,
-          setname,
           username,
           setusername,
           email,

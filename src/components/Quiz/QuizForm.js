@@ -1,14 +1,18 @@
+import { useState, useEffect } from "react";
 import styles from "../../styles/Quiz/quizForm.module.scss";
 import { specialCharactersAndNumbers, specialCharacters } from "../../helpers/string";
-import { useState } from "react";
+import validator from "validator";
+import ReactTooltip from "react-tooltip";
+import CircleTick from "../SVGcomponents/CircleTick";
+import CircleWarning from "../SVGcomponents/CircleWarning";
 
 export default function QuizForm({ 
   error,
+  seterror,
   firstName,
   setFirstName,
   lastName,
   setLastName,
-  setname,
   username,
   setusername,
   email,
@@ -19,7 +23,15 @@ export default function QuizForm({
   setpassword,
   startgame
  }) {
-  const [passError, setPassError] = useState();
+  const [passerror, setpasserror] = useState({
+    length: false,
+    special: false,
+    lower: false,
+    upper: false,
+    number: false,
+  });  
+  const [passisweak, setpassisweak] = useState(false);
+  const [showdetailpass, setshowdetailpass] = useState(false);
 
   function checkLength(pass) {
     return pass.length >= 8;
@@ -47,10 +59,14 @@ export default function QuizForm({
       special: checkSpecial(pass),
       number: checkNumber(pass),
     };
-    setPassError(res);
+    setpasserror(res);
   }
 
-  // console.log("$$$$$$$$$$", passError)
+  useEffect(() => {
+    seterror("");
+    if (!validator.isStrongPassword(password)) setpassisweak(true);
+    else setpassisweak(false);
+  }, [password]);
 
   return (
     <div className={styles.formSection}>
@@ -162,14 +178,57 @@ export default function QuizForm({
             className={styles.input}
             placeholder="Parent Phone*"
           />
-          <input
-            type={"password"}
-            placeholder="New Password*"
-            value={password}
-            className={styles.input}
-            onChange={validatePassword}
-            required
-          />
+          <div className={styles.passwordBox}>
+            {showdetailpass && (
+              <div className={styles.detailPass}>
+                <div className={styles.arrow}></div>
+                <div className={styles.tab}>
+                  {passerror.length ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>8 Characters long</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.upper ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Uppercase letter</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.lower ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Lowercase letter</p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.special ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Special Character </p>
+                </div>
+                <div className={styles.tab}>
+                  {passerror.number ? <CircleTick /> : <CircleWarning />}
+                  <p className={styles.text}>Number</p>
+                </div>
+              </div>
+            )}
+            <input
+              type={"password"}
+              onFocus={() => setshowdetailpass(true)}
+              onBlur={() => setshowdetailpass(false)}
+              placeholder="New Password*"
+              value={password}
+              className={styles.input}
+              onChange={validatePassword}
+              required
+            />
+          </div>
+          {password !== "" && passisweak && (
+            <>
+              <p data-tip data-for="weak-pass" className={styles.weakpasstext}>
+                Weak password
+              </p>
+              <ReactTooltip id="weak-pass" type="dark" effect="solid">
+                <p>A strong pass is :</p>
+                <p>- At least 8 characters</p>
+                <p>- A mixture of letters and numbers</p>
+                <p>- A mixture of both uppercase and lowercase letters</p>
+                <p>- Inclusion of at least one special character</p>
+              </ReactTooltip>
+            </>
+          )}
         </form>
         <div className={styles.buttons}>
           <div className={styles.startbutton} onClick={startgame}>
