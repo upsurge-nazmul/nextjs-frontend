@@ -61,6 +61,27 @@ export default function QuizForm({
     };
     setpasserror(res);
   }
+  function handleNameChange(e, setter) {
+    if (
+      e.target.value.length > 1 &&
+      e.target.value[e.target.value.length - 1] === " "
+    ) {
+      setter(e.target.value);
+    }
+    if (!e.target.value[e.target.value.length - 1]) {
+      setter("");
+      return;
+    }
+    if (e.target.value[e.target.value.length - 1] && 
+      specialCharactersAndNumbers.includes(
+        e.target.value[e.target.value.length - 1].toString()
+      )
+    ) {
+      return;
+    }
+    if (isNaN(e.target.value[e.target.value.length - 1]))
+    setter(e.target.value);
+  }
 
   useEffect(() => {
     seterror("");
@@ -84,27 +105,7 @@ export default function QuizForm({
               type="text"
               className={styles.input}
               value={firstName}
-              onChange={(e) => {
-                if (
-                  e.target.value.length > 1 &&
-                  e.target.value[e.target.value.length - 1] === " "
-                ) {
-                  setFirstName(e.target.value);
-                }
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setFirstName("");
-                  return;
-                }
-                if (
-                  specialCharactersAndNumbers.includes(
-                    e.target.value[e.target.value.length - 1].toString()
-                  )
-                ) {
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1]))
-                  setFirstName(e.target.value);
-              }}
+              onChange={(e) => handleNameChange(e, setFirstName)}
               placeholder="Child First Name*"
               required
             />
@@ -112,27 +113,7 @@ export default function QuizForm({
               type="text"
               className={styles.input}
               value={lastName}
-              onChange={(e) => {
-                if (
-                  e.target.value.length > 1 &&
-                  e.target.value[e.target.value.length - 1] === " "
-                ) {
-                  setLastName(e.target.value);
-                }
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setLastName("");
-                  return;
-                }
-                if (
-                  specialCharactersAndNumbers.includes(
-                    e.target.value[e.target.value.length - 1].toString()
-                  )
-                ) {
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1]))
-                  setLastName(e.target.value);
-              }}
+              onChange={(e) => handleNameChange(e, setLastName)}
               placeholder="Child Last Name*"
               required
             />
@@ -141,7 +122,7 @@ export default function QuizForm({
             type="text"
             value={username}
             onChange={(e) => {
-              if (specialCharacters.includes(
+              if (e.target.value[e.target.value.length -1] && specialCharacters.includes(
                 e.target.value[e.target.value.length -1].toString()
               )) {
                 return;
