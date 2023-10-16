@@ -216,8 +216,23 @@ function Quiz({ userdata }) {
     }
     return true;
   }
+
+  async function startQuiz(profile) {
+    let response = await QuizApis.startquiz({
+      name: profile.first_name + " " + profile.last_name,
+      phone: profile.parent_phone,
+      email: profile.parent_email,
+    });
+    if (response && response.data && response.data.success) {
+      // console.log("@@@@@@@@@ start response: ", response.data.data);
+      setshowmain(true);
+      setdata(response.data.data);
+    } else {
+      seterror(response.data?.message || "Error connecting to server");
+    }
+  }
   
-  async function startgame(e,) {
+  async function startgame(e) {
     e?.preventDefault();
     let validated = validate(firstName + " " + lastName, email, username, phone);
 
@@ -238,18 +253,20 @@ function Quiz({ userdata }) {
         setCookie("accesstoken", signupResponse.data.data.token);
         settoastdata({ type: "success", msg: "New Account Created", show: true });
         // console.log("@@@@@@@@@ signup response: ", signupResponse.data.data);
-        
-        let response = await QuizApis.startquiz({
-          name: profile.first_name + " " + profile.last_name,
-          phone: profile.parent_phone,
-          email: profile.parent_email,
+        startQuiz(profile);
+      } else if (signupResponse && signupResponse.data && signupResponse && signupResponse.data.message === "Username already taken") {
+        let loginResponse = await LoginApis.login({ 
+          email: username.toLowerCase(), 
+          password, 
+          type: "child",
         });
-        if (response && response.data && response.data.success) {
-          // console.log("@@@@@@@@@ start response: ", response.data.data);
-          setshowmain(true);
-          setdata(response.data.data);
-        } else {
-          seterror(response.data?.message || "Error connecting to server");
+        if (loginResponse && loginResponse.data && loginResponse.data.success) {
+          const profile = loginResponse.data.data.userProfile;
+          setCookie("accesstoken", loginResponse.data.data.token);
+          setuserdata(profile);
+          settoastdata({ type: "success", msg: "Child Account Found", show: true });
+          // console.log("@@@@@@@@@ login response: ", loginResponse.data.data);
+          startQuiz(profile);
         }
       } else {
         seterror(signupResponse.data?.message || "Error connecting to server");
