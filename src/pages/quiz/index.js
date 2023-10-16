@@ -19,7 +19,7 @@ import QuizForm from "../../components/Quiz/QuizForm";
 import { setCookie } from "../../actions/cookieUtils";
 import QuizFinished from "../../components/Quiz/QuizFinished";
 
-const QUIZ_DURATION_IN_MIN = 150;
+const QUIZ_DURATION_IN_MIN = 15;
 export const QUIZ_CATAGORIES = [
   {
     id: 1,
@@ -56,12 +56,12 @@ function Quiz({ userdata }) {
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
   const [name, setname] = useState(router.query.name || "");
-  const [firstName, setFirstName] = useState("quiz");
-  const [lastName, setLastName] = useState("one");
-  const [username, setusername] = useState("quizone");
-  const [phone, setphone] = useState("9087878787");
-  const [email, setEmail] = useState(router.query.email || "quiz@test.com");
-  const [password, setpassword] = useState("N@s12345");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setusername] = useState("");
+  const [phone, setphone] = useState("");
+  const [email, setEmail] = useState(router.query.email || "");
+  const [password, setpassword] = useState("");
   const [school, setSchool] = useState(router.query.school || "");
   const [quizCat, setQuizCat] = useState();
   const [error, seterror] = useState("");
