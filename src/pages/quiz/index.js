@@ -40,6 +40,8 @@ export const QUIZ_CATAGORIES = [
 
 function Quiz({ userdata }) {
   const router = useRouter();
+  const { setuserdata, theme } = useContext(MainContext);
+
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showQuiz, setshowQuiz] = useState(false);
   const [data, setdata] = useState(null);
@@ -79,8 +81,9 @@ function Quiz({ userdata }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [started, setstarted] = useState(false);
   const [showmain, setshowmain] = useState(false);
-  const [quiztoken, setquiztoken] = useState("");
-  const { setuserdata, theme } = useContext(MainContext);
+  const [currentUser, setCurrentUser] = useState();
+  const [finishedData, setFinishedData] = useState();
+  
   useEffect(() => {
     if (userdata) {
       setuserdata(userdata);
@@ -246,6 +249,10 @@ function Quiz({ userdata }) {
       seterror("Which class is this quiz for?");
       return;
     }
+    // if (!school) {
+    //   seterror("School name is not provided");
+    //   return;
+    // }
     return true;
   }
 
@@ -284,6 +291,8 @@ function Quiz({ userdata }) {
       if (signupResponse && signupResponse.data && signupResponse.data.success) {
         const profile = signupResponse.data.data.profile;
         setCookie("accesstoken", signupResponse.data.data.token);
+        setuserdata(profile);
+        setCurrentUser(profile);
         settoastdata({ type: "success", msg: "New Account Created", show: true });
         startQuiz(profile);
       } else if (signupResponse && signupResponse.data && signupResponse && signupResponse.data.message === "Username already taken") {
@@ -296,6 +305,7 @@ function Quiz({ userdata }) {
           const profile = loginResponse.data.data.userProfile;
           setCookie("accesstoken", loginResponse.data.data.token);
           setuserdata(profile);
+          setCurrentUser(profile);
           settoastdata({ type: "success", msg: "Child Account Found", show: true });
           startQuiz(profile);
         }
@@ -412,7 +422,9 @@ function Quiz({ userdata }) {
                 currentcolor={currentcolor}
                 setcurrentcolor={setcurrentcolor}
                 colorarray={colorarray}
+                userId={currentUser?.id || userdata?.id || ""}
                 timer={timer}
+                setFinishedData={setFinishedData}
               />
             </div>
           ) : null}
@@ -421,7 +433,8 @@ function Quiz({ userdata }) {
               openFull,
               score,
               reload,
-              router
+              router,
+              finishedData
             }} />
           ) : null}
         </div>
