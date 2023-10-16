@@ -41,26 +41,30 @@ export default function QuizFinished({
             ? `You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. `
             : `You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter.`}
       </p> */}
-      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0.5rem 0'}}>
-        <div style={{ width: '50%'}}>
-          <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
-            <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>School Name: </div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.school}</div>
+      {
+        finishedData && (
+          <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0.5rem 0'}}>
+            <div style={{ width: '50%'}}>
+              <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
+                <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>School Name: </div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.school}</div>
+              </div>
+              <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
+                <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>Name: </div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.fullName}</div>
+              </div>
+              <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
+                <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>Username: </div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.userName}</div>
+              </div>
+              <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
+                <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>UserId: </div>
+                <div style={{ fontSize: '1rem', fontWeight: 600 }}>{finishedData.userId}</div>
+              </div>
+            </div>
           </div>
-          <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
-            <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>Name: </div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.fullName}</div>
-          </div>
-          <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
-            <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>Username: </div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{finishedData.userName}</div>
-          </div>
-          <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.35rem 0'}}>
-            <div style={{ color: "#b3b3b3", fontSize: '1rem' }}>UserId: </div>
-            <div style={{ fontSize: '1rem', fontWeight: 600 }}>{finishedData.userId}</div>
-          </div>
-        </div>
-      </div>
+        )
+      }
       <div className={styles.points}>You scored : {score}%</div>
       <div style={{ display: 'flex', gap: '1rem' }}>
         {/* <div className={styles.button} onClick={reload}>
