@@ -11,50 +11,16 @@ import Jasper from "../../components/SVGcomponents/Jasper";
 import Footer from "../../components/Home/Footer";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
-import Curve1 from "../../components/SVGcomponents/Curve1";
-import Curve2 from "../../components/SVGcomponents/Curve2";
-import FreeGameApis from "../../actions/apis/FreeGameApis";
 import JoinUs from "../../components/Home/JoinUs";
-import LeaderBoard from "../../components/LeaderBoard";
 import { MainContext } from "../../context/Main";
 import PageTitle from "../../components/PageTitle";
-const specialchars = [
-  "#",
-  "$",
-  "%",
-  "*",
-  "&",
-  "(",
-  "@",
-  "_",
-  ")",
-  "+",
-  "-",
-  "&&",
-  "||",
-  "!",
-  "(",
-  ")",
-  "{",
-  "}",
-  "[",
-  "]",
-  "^",
-  "~",
-  "*",
-  "?",
-  ":",
-  "1",
-  "0",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
+import QuizManual from "../../components/Quiz/QuizManual";
+import QuizForm from "../../components/Quiz/QuizForm";
+import { setCookie } from "../../actions/cookieUtils";
+import QuizFinished from "../../components/Quiz/QuizFinished";
+
+const QUIZ_DURATION_IN_MIN = 15;
+
 function Quiz({ userdata }) {
   const router = useRouter();
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
@@ -62,7 +28,7 @@ function Quiz({ userdata }) {
   const [data, setdata] = useState(null);
   const [currentquiz, setcurrentquiz] = useState(data);
   const [currentquestion, setcurrentquestion] = useState(data?.next_question);
-  const [timer, settimer] = useState(1000 * 60 * 15);
+  const [timer, settimer] = useState(1000 * 60 * QUIZ_DURATION_IN_MIN);
   const [task, settask] = useState("");
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -70,10 +36,13 @@ function Quiz({ userdata }) {
   const [showauth, setshowauth] = useState(false);
   const [score, setscore] = useState(0);
   const [currentcolor, setcurrentcolor] = useState(0);
-  const [showgame, setshowgame] = useState(false);
   const [name, setname] = useState(router.query.name || "");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setusername] = useState("");
   const [phone, setphone] = useState("");
+  const [email, setEmail] = useState(router.query.email || "");
+  const [password, setpassword] = useState("");
   const [error, seterror] = useState("");
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -81,7 +50,6 @@ function Quiz({ userdata }) {
     msg: "",
   });
   const [correctAnswers, setcorrectAnswers] = useState(0);
-  const [email, setEmail] = useState(router.query.email || "");
   const [widthHeight, setwidthHeight] = useState({
     width: 0,
     height: 0,
@@ -106,7 +74,7 @@ function Quiz({ userdata }) {
         router.push("/quiz");
         setcurrentquestionindex(0);
         setquizfinished(false);
-        settimer(1000 * 60 * 5);
+        settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
         setcorrectAnswers(0);
         clearInterval(task);
         setshowQuiz(false);
@@ -124,7 +92,7 @@ function Quiz({ userdata }) {
     };
   }, [router]);
   function reload() {
-    router.push("/quiz?email=" + email + "&name=" + name);
+    router.push("/quiz?email=" + email + "&name=" + firstName + " " + lastName);
   }
   useEffect(() => {
     setshowQuiz(data ? true : false);
@@ -149,13 +117,14 @@ function Quiz({ userdata }) {
 
   useEffect(() => {
     if (timer <= 0) {
-      alert("Time over,try again");
+      settoastdata({ type: "error", msg: "Time Over", show: true });
       setcurrentquestionindex(0);
       setquizfinished(false);
-      settimer(1000 * 60 * 5);
+      settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
       setcorrectAnswers(0);
       clearInterval(task);
       setshowQuiz(false);
+      router.push("/quiz");
     } else if (quizfinished || !showQuiz) {
       clearInterval(task);
     }
@@ -163,6 +132,9 @@ function Quiz({ userdata }) {
 
   useEffect(async () => {
     if (router.query.name && router.query.email) {
+      const [fName, lName] = router.query.name.split(" ");
+      setFirstName(fName);
+      setLastName(lName);
       let response = await QuizApis.startquiz({
         name: router.query.name,
         phone: phone,
@@ -172,7 +144,7 @@ function Quiz({ userdata }) {
         setdata(response.data.data);
         setcurrentquestionindex(0);
         setquizfinished(false);
-        settimer(1000 * 60 * 5);
+        settimer(1000 * 60 * QUIZ_DURATION_IN_MIN);
         setcorrectAnswers(0);
         clearInterval(task);
         setshowQuiz(true);
@@ -190,96 +162,73 @@ function Quiz({ userdata }) {
       settask(setInterval(() => settimer((prev) => prev - 1000), 1000));
     }
   }, [showQuiz, started]);
-  function secondsToTime(secs) {
-    let hours = Math.floor(secs / (60 * 60));
 
-    let divisor_for_minutes = secs % (60 * 60);
-    let minutes = Math.floor(divisor_for_minutes / 60);
-
-    let divisor_for_seconds = divisor_for_minutes % 60;
-    let seconds = Math.ceil(divisor_for_seconds);
-    return (
-      (hours !== 0 ? hours + " hr : " : "") +
-      (minutes !== 0 ? minutes + " min : " : "") +
-      seconds +
-      " s"
-    );
-  }
-  async function handleSignup() {
-    if (!validator.isEmail(email)) {
-      seterror("Enter valid email address");
-    } else {
-      let response = await LoginApis.saveemail({ email: email });
-      if (response) {
-        if (response.data.success) {
-          router.push("/waitlist/" + email);
-        } else {
-          seterror(response.data.message);
-        }
-      } else {
-        seterror("Error connecting to server");
-      }
-      // setshowauth(true);
-      // setauthmode("parent");
-      // setmailfromhome(email);
-    }
-  }
   useEffect(() => {
     seterror("");
   }, [phone, email, name]);
-  async function startgame(e, n_name, n_email) {
-    e?.preventDefault();
-    if (n_name && n_email) {
-      if (checkLength(n_name)) {
-        seterror("Name should contain atleast 3 characters");
-        return;
-      }
-      if (checkSpecial(n_name)) {
-        seterror("Name should not contain any special characters");
-        return;
-      }
-      if (checkNumber(n_name)) {
-        seterror("Name should not contain any number");
-        return;
-      }
-      if (!validator.isEmail(n_email)) {
-        seterror("Please enter valid email address");
-        return;
-      }
-    } else {
-      if (!name) {
-        seterror("Name is required");
-        return;
-      }
-      if (checkLength(name)) {
-        seterror("Name should contain atleast 3 characters");
-        return;
-      }
-      if (checkSpecial(name)) {
-        seterror("Name should not contain any special characters");
-        return;
-      }
-      if (checkNumber(name)) {
-        seterror("Name should not contain any number");
-        return;
-      }
-      if (!email) {
-        seterror("Email is required");
-        return;
-      }
-      if (!validator.isEmail(email)) {
-        seterror("Please enter valid email address");
-        return;
-      }
-      if (phone && !validator.isMobilePhone(phone, "en-IN")) {
-        seterror("Please enter valid phone number");
-        return;
-      }
+
+  const isValidUsername = (val) => {
+    const usernameRegex = /^[a-zA-Z0-9]+$/;
+    return usernameRegex.test(val);
+  };
+
+  function validate(name, email, username, phone) {
+    if (!name) {
+      seterror("Name is required");
+      return;
     }
+    if (name.length <= 2) {
+      seterror("Name should contain atleast 3 characters");
+      return;
+    }
+    if (name.search(/[!@#$%^&*]/) > 0) {
+      seterror("Name should not contain any special characters");
+      return;
+    }
+    if (name.search(/[0-9]/) > 0) {
+      seterror("Name should not contain any number");
+      return;
+    }
+    if (!email) {
+      seterror("Email is required");
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      seterror("Please enter valid email address");
+      return;
+    }
+    if (!username) {
+      seterror("Username is required");
+      return;
+    }
+    if (username.length > 40) {
+      seterror("Username cannot contain more than 40 characters");
+      return;
+    }
+    if (username.length < 4) {
+      seterror("Username cannot contain less than 4 characters");
+      return;
+    }
+    if (!isValidUsername(username)) {
+      seterror("username can't contained special characters and space");
+      return;
+    }
+    if (!phone) {
+      seterror("Phone is required");
+      return;
+    }
+    if (!validator.isMobilePhone(phone, "en-IN")) {
+      seterror("Please enter valid phone number");
+      return;
+    }
+    return true;
+  }
+
+  async function startQuiz(profile) {
     let response = await QuizApis.startquiz({
-      name: n_name || name,
-      phone: phone,
-      email: n_email || email,
+      name: profile.first_name + " " + profile.last_name,
+      phone: profile.parent_phone,
+      email: profile.parent_email,
     });
     if (response && response.data && response.data.success) {
       setshowmain(true);
@@ -288,15 +237,45 @@ function Quiz({ userdata }) {
       seterror(response.data?.message || "Error connecting to server");
     }
   }
+  
+  async function startgame(e) {
+    e?.preventDefault();
+    let validated = validate(firstName + " " + lastName, email, username, phone);
 
-  function checkLength(name) {
-    return name.length <= 2;
-  }
-  function checkNumber(name) {
-    return name.search(/[0-9]/) > 0;
-  }
-  function checkSpecial(name) {
-    return name.search(/[!@#$%^&*]/) > 0;
+    if (validated) {
+      let signupResponse = await LoginApis.signup({
+        email: email,
+        signup_method: "email",
+        user_type: "child",
+        phone,
+        password,
+        username: username.toLowerCase(),
+        first_name: firstName,
+        last_name: lastName,
+        num_unicoins: 0,
+      });
+      if (signupResponse && signupResponse.data && signupResponse.data.success) {
+        const profile = signupResponse.data.data.profile;
+        setCookie("accesstoken", signupResponse.data.data.token);
+        settoastdata({ type: "success", msg: "New Account Created", show: true });
+        startQuiz(profile);
+      } else if (signupResponse && signupResponse.data && signupResponse && signupResponse.data.message === "Username already taken") {
+        let loginResponse = await LoginApis.login({ 
+          email: username.toLowerCase(), 
+          password, 
+          type: "child",
+        });
+        if (loginResponse && loginResponse.data && loginResponse.data.success) {
+          const profile = loginResponse.data.data.userProfile;
+          setCookie("accesstoken", loginResponse.data.data.token);
+          setuserdata(profile);
+          settoastdata({ type: "success", msg: "Child Account Found", show: true });
+          startQuiz(profile);
+        }
+      } else {
+        seterror(signupResponse.data?.message || "Error connecting to server");
+      }
+    }
   }
 
   useEffect(() => {
@@ -310,6 +289,7 @@ function Quiz({ userdata }) {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+  
   return (
     <div
       className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""} ${
@@ -324,23 +304,18 @@ function Quiz({ userdata }) {
       }}
     >
       <PageTitle />
-      <Header
-        setOpenLeftPanel={setOpenLeftPanel}
-        showauth={showauth}
-        stickyheader={stickyheader}
-        setshowpopup={setshowpopup}
-        showpopup={showpopup}
-        setshowauth={setshowauth}
-        mailfromhome={email}
-      />
-      <Toast data={toastdata} />
-      {/* {quizId !== "main" && !email ? (
-        <PopUp
-          heading="Enter your email"
-          saveinput={setemail}
-          settoastdata={settoastdata}
+      {!showmain && (
+        <Header
+          setOpenLeftPanel={setOpenLeftPanel}
+          showauth={showauth}
+          stickyheader={stickyheader}
+          setshowpopup={setshowpopup}
+          showpopup={showpopup}
+          setshowauth={setshowauth}
+          mailfromhome={email}
         />
-      ) : null} */}
+      )}
+      <Toast data={toastdata} />
       <LeftPanel
         openLeftPanel={openLeftPanel}
         setOpenLeftPanel={setOpenLeftPanel}
@@ -351,222 +326,44 @@ function Quiz({ userdata }) {
         setOpenFull={setopenFull}
         answersheet={answersheet}
       />
-      <Curve1 className={styles.curve1} />
-      <Curve2 className={styles.curve2} />
       {showmain && !started && (
-        <div className={styles.startscreen}>
-          <div className={styles.right}>
-            <Jasper className={styles.jasper} />
-
-            <div className={styles.heading}>
-              How to calculate your Money Quotient
-            </div>
-            <ul>
-              <li className={styles.text} style={{ paddingTop: "40px" }}>
-                You will be asked 15 questions and have to choose the option
-                which you think is correct.
-              </li>
-              <li className={styles.text}>
-                The aim of this quiz is to help you see where you stand when it
-                comes to understanding your personal finances, banking, saving,
-                investments, and money!{" "}
-              </li>
-              <li className={styles.text}>
-                This is a dynamic quiz that adapts the difficulty level
-                according to your answers. The tougher questions you get right,
-                the more points you will get.{" "}
-              </li>
-              <li className={styles.text}>
-                {`Let's start and see how you do on our Money Quotient Don't forget
-              to enjoy and learn ;)`}
-              </li>
-              <li className={styles.text}>
-                {` Alright, let's see what your money quotient is. Good luck!`}
-              </li>
-            </ul>
-
-            <div className={styles.button} onClick={() => setstarted(true)}>
-              Start
-            </div>
-          </div>
-        </div>
+        <QuizManual setstarted={setstarted} />
       )}
 
       {!showmain ? (
-        <div className={styles.gamedata}>
-          <div className={styles.left}>
-            <p className={styles.headingmain}>We need a few more details</p>
-            <p className={styles.error}>{error}</p>
-            <form
-              onKeyPress={(e) => {
-                if (e.key === "Enter") startgame(e);
-              }}
-            >
-              <input
-                type="text"
-                className={styles.input}
-                value={name}
-                onChange={(e) => {
-                  if (
-                    e.target.value.length > 1 &&
-                    e.target.value[e.target.value.length - 1] === " "
-                  ) {
-                    setname(e.target.value);
-                  }
-                  if (!e.target.value[e.target.value.length - 1]) {
-                    setname("");
-                    return;
-                  }
-                  if (
-                    specialchars.includes(
-                      e.target.value[e.target.value.length - 1].toString()
-                    )
-                  ) {
-                    return;
-                  }
-                  if (isNaN(e.target.value[e.target.value.length - 1]))
-                    setname(e.target.value);
-                }}
-                placeholder="Name*"
-              />
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={styles.input}
-                placeholder="Email*"
-              />
-              <input
-                value={phone}
-                type="text"
-                maxLength={10}
-                onChange={(e) => {
-                  if (!e.target.value[e.target.value.length - 1]) {
-                    setphone("");
-                    return;
-                  }
-                  if (isNaN(e.target.value[e.target.value.length - 1])) {
-                    return;
-                  }
-                  setphone(e.target.value);
-                }}
-                className={styles.input}
-                placeholder="Phone (optional)"
-              />
-            </form>
-            <div className={styles.buttons}>
-              <div className={styles.startbutton} onClick={startgame}>
-                Start Playing
-              </div>
-              {/* <div className={styles.skipbutton} onClick={skipgame}>
-                Skip
-              </div> */}
-            </div>
-          </div>
-          <div className={styles.right}>
-            <img src="https://imgcdn.upsurge.in/images/Artboard-1-1.png" alt="" />
-          </div>
-        </div>
+        <QuizForm {...{
+          error,
+          seterror,
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          username,
+          setusername,
+          email,
+          setEmail,
+          phone,
+          setphone,
+          password,
+          setpassword,
+          startgame
+        }} />
       ) : (
         <div className={styles.contentWrapper}>
-          <div
-            className={styles.prop1}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#17D1BC" ? "#FDCC03" : "#17D1BC",
-            }}
-          />
-          <div
-            className={styles.prop2}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#FF6263" ? "#FDCC03" : "#FF6263",
-            }}
-          />
-          <div
-            className={styles.prop3}
-            style={{
-              backgroundColor:
-                colorarray[currentcolor] === "#4166EB" ? "#FDCC03" : "#4166EB",
-            }}
-          />
-          <div className={styles.prop4} />
           <div className={styles.quizContainer}>
-            <div className={styles.leftSection}>
-              {!quizfinished && (
-                <>
-                  <p
-                    className={styles.heading}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Money Quotient Quiz
-                  </p>
-                  <p
-                    className={styles.details}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    You will be asked 15 questions and have to choose the option
-                    which you think is correct.This is a dynamic quiz that
-                    adapts the difficulty level according to your answers. The
-                    tougher questions you get right, the more points you will
-                    get.
-                  </p>
-                  <p
-                    className={styles.current}
-                    style={{
-                      backgroundColor:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#4166EB",
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#000000"
-                          : "#ffffff",
-                    }}
-                  >
-                    {`${currentquestionindex + 1} / ${15}`}
-                  </p>
-                </>
-              )}
-            </div>
-            {showQuiz && !quizfinished ? (
-              <div className={styles.rightSection}>
-                <div className={styles.timerSection}>
-                  <p
-                    className={styles.timeleft}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    Time Left
-                  </p>
-                  <p
-                    className={styles.timer}
-                    style={{
-                      color:
-                        colorarray[currentcolor] === "#4166EB"
-                          ? "#ffffff"
-                          : "#000000",
-                    }}
-                  >
-                    {secondsToTime(timer / 1000)}
-                  </p>
-                </div>
+            {!quizfinished && (
+              <div
+                className={styles.heading}
+                style={{
+                  color:
+                    colorarray[currentcolor] === "#4166EB"
+                      ? "#ffffff"
+                      : "#000000",
+                }}
+              >
+                Money Quotient Quiz
               </div>
-            ) : null}
+            )}
           </div>
           {showQuiz && !quizfinished ? (
             <div className={styles.quizWrapper}>
@@ -586,73 +383,20 @@ function Quiz({ userdata }) {
                 currentcolor={currentcolor}
                 setcurrentcolor={setcurrentcolor}
                 colorarray={colorarray}
+                timer={timer}
               />
             </div>
           ) : null}
           {quizfinished ? (
-            <div
-              className={`${styles.resultSection}  ${
-                openFull ? styles.hideOverFlow : ""
-              }`}
-            >
-              <Jasper className={styles.jasper} />
-              <div className={styles.background}>
-                <div className={styles.curvecontainer}>
-                  <Curve1 className={styles.curve1} />
-                  <Curve2 className={styles.curve2} />
-                </div>
-              </div>
-
-              <p
-                className={styles.heading}
-                style={{
-                  color:
-                    score <= 40
-                      ? "#4166EB"
-                      : score <= 80
-                      ? "#FDCC03"
-                      : "#17D1BC",
-                }}
-              >
-                {score <= 40
-                  ? "Money Rookie"
-                  : score <= 80
-                  ? "Money Ninja"
-                  : "Money Master"}
-              </p>
-              <p className={styles.subheading}>
-                {score <= 40
-                  ? "Looks like you are a Money Rookie! Don’t worry, that’s what we’re here for! Join upsurge’s waiting list and subscribe to our newsletter to start your journey towards financial freedom today."
-                  : score <= 80
-                  ? "You have substantial knowledge of Financial Literacy but there is a lot of scope of improvement. Join upsurge’s waiting list and subscribe to our newsletter. "
-                  : "You have substantial Personal Finance knowledge. But there is no end to learning. Join upsurge’s waiting list and subscribe to our newsletter."}
-              </p>
-              <div className={styles.points}>You scored : {score}%</div>
-              {/* <div className={styles.pointsdes}>XP Points</div> */}
-              <div className={styles.signupBox}>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <div
-                  className={styles.normalbutton}
-                  onClick={() => setshowpopup(true)}
-                >
-                  Join the waitlist
-                </div>
-              </div>
-              <div className={styles.button} onClick={reload}>
-                Play Again
-              </div>
-            </div>
+            <QuizFinished {...{
+              openFull,
+              score,
+              reload,
+              router
+            }} />
           ) : null}
         </div>
       )}
-      <div className={styles.whitespace}></div>
-
       <JoinUs />
       <Footer />
     </div>

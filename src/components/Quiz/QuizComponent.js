@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Quiz/quizcomponent.module.scss";
-import SimpleProgress from "../SimpleProgress";
 import QuizApis from "../../actions/apis/QuizApis";
-import Curve1 from "../SVGcomponents/Curve1";
-import Curve2 from "../SVGcomponents/Curve2";
 import { MainContext } from "../../context/Main";
+import QuizProgress from "../QuizProgress";
+
 function QuizComponent({
   currentquestionindex,
   setcurrentquestionindex,
@@ -17,6 +16,7 @@ function QuizComponent({
   currentcolor,
   colorarray,
   userlogged,
+  timer,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
@@ -26,6 +26,23 @@ function QuizComponent({
   const [currentquestion, setcurrentquestion] = useState(question);
   const [loading, setloading] = useState(false);
   const { theme } = useContext(MainContext);
+
+  function secondsToTime(secs) {
+    let hours = Math.floor(secs / (60 * 60));
+
+    let divisor_for_minutes = secs % (60 * 60);
+    let minutes = Math.floor(divisor_for_minutes / 60);
+
+    let divisor_for_seconds = divisor_for_minutes % 60;
+    let seconds = Math.ceil(divisor_for_seconds);
+    return (
+      (hours !== 0 ? hours + " hr : " : "") +
+      (minutes !== 0 ? minutes + " min : " : "") +
+      seconds +
+      " s"
+    );
+  }
+
   useEffect(() => {
     if (answered) {
       clearTimeout(timeoutf);
@@ -77,69 +94,58 @@ function QuizComponent({
   // }, [showResult]);
   return (
     <div className={`${styles.quiz} ${theme === "dark" && styles.darkquiz}`}>
-      <SimpleProgress
-        clr={colorarray[currentcolor] === "#4166EB" ? "#17D1BC" : "#4166EB"}
-        questions={15}
-        current={currentquestionindex}
-        setcurrent={setcurrentquestionindex}
-      />
       <div className={styles.background}>
-        <div className={styles.curvecontainer}>
-          <Curve1 className={styles.curve1} />
-          <Curve2 className={styles.curve2} />
+      </div>
+      <div className={styles.quizInfo}>
+        <div className={styles.infoItem}>
+          <div className={styles.infoValue}>
+            {currentquestionindex + 1} / {totalQuestions}
+          </div>
+        </div>
+        <div className={styles.infoItem}>
+          <div className={styles.infoLabel}>Time Left</div>
+          <div className={styles.infoValue}>
+            {secondsToTime(timer / 1000)}
+          </div>
         </div>
       </div>
-      {/* {currentquestionindex !== 0 ? (
-        <div
-          className={styles.leftbutton}
-          onClick={() => setcurrentquestionindex(currentquestionindex - 1)}
-        >
-          <LeftArrowRound />
+      <QuizProgress totalQn={15} currentQn={currentquestionindex + 1} />
+      <div className={styles.quizBody}>
+        <div className={styles.questionArea}>
+          <div className={styles.questionNo}>{currentquestionindex + 1}</div>
+          <div className={styles.question}>{currentquestion.question}</div>
         </div>
-      ) : null} */}
-      {/* {currentquestionindex + 1 < totalQuestions ? (
-        <div
-          className={styles.rightbutton}
-          onClick={() => setcurrentquestionindex(currentquestionindex + 1)}
-        >
-          <RightArrowRound />
-        </div>
-      ) : null} */}
-
-      <div className={styles.questionno}>
-        Question {currentquestionindex + 1}/{totalQuestions}
-      </div>
-      <div className={styles.question}>{currentquestion.question}</div>
-      <div className={styles.options}>
-        {new Array(4).fill("a").map((option, index) => {
-          if (!currentquestion[`option${index + 1}`]) {
-            return null;
-          } else
-            return (
-              <div
-                key={"quizoption" + index}
-                className={`${styles.option + " " + styles.grad}  ${
-                  selectedOption === index + 1 ? styles.selected : ""
-                }`}
-                onClick={() => {
-                  fetchnextquestion(index + 1);
-                }}
-              >
-                <div className={styles.circle}>
-                  {index === 0
-                    ? "A"
-                    : index === 1
-                    ? "B"
-                    : index === 2
-                    ? "C"
-                    : "D"}
+        <div className={styles.options}>
+          {new Array(4).fill("a").map((option, index) => {
+            if (!currentquestion[`option${index + 1}`]) {
+              return null;
+            } else
+              return (
+                <div
+                  key={"quizoption" + index}
+                  className={`${styles.option + " " + styles.grad}  ${
+                    selectedOption === index + 1 ? styles.selected : ""
+                  }`}
+                  onClick={() => {
+                    fetchnextquestion(index + 1);
+                  }}
+                >
+                  <div className={styles.circle}>
+                    {index === 0
+                      ? "A"
+                      : index === 1
+                      ? "B"
+                      : index === 2
+                      ? "C"
+                      : "D"}
+                  </div>
+                  <p className={styles.text}>
+                    {currentquestion[`option${index + 1}`]}
+                  </p>
                 </div>
-                <p className={styles.text}>
-                  {currentquestion[`option${index + 1}`]}
-                </p>
-              </div>
-            );
-        })}
+              );
+          })}
+        </div>
       </div>
     </div>
   );

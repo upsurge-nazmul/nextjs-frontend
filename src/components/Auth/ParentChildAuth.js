@@ -51,7 +51,7 @@ function ParentChildAuth({
           message: data.msg,
           title: data.choretitle,
           category: data.cat,
-          assigned_to: userName,
+          assigned_to: username,
           family_id: familyide,
           child_id: id,
           due_date: duedate,
