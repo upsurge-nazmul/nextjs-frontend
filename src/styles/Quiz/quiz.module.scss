@@ -1,7 +1,9 @@
 @use "../variables/fontsizes.scss" as *;
 @use "../variables/colors.scss" as *;
 
-@mixin fullPage() {
+@mixin fullPage(
+  $contentPaddingX: 15%,
+) {
   min-height: fit-content;
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
     }
   }
   .contentWrapper {
-    padding: 1rem 15%;
+    padding: 1rem $contentPaddingX;
     position: relative;
     .quizContainer {
       display: flex;
@@ -42,6 +44,7 @@
       transition: all 0.3s ease;
       padding: 0;
       border-radius: 8px;
+      overflow: hidden;
     }
     .hideOverFlow {
       overflow: hidden;
@@ -66,6 +69,8 @@
 
 @media only screen and (max-width: 500px) {
   .quizPage {
-    @include fullPage();
+    @include fullPage(
+      1rem
+    );
   }
 }
