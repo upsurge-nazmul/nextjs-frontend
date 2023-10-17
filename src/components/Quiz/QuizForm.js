@@ -5,6 +5,8 @@ import validator from "validator";
 import ReactTooltip from "react-tooltip";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
+import { QUIZ_CATAGORIES } from "../../pages/quiz";
+import DoneIcon from '@mui/icons-material/Done';
 
 export default function QuizForm({ 
   error,
@@ -21,6 +23,8 @@ export default function QuizForm({
   setphone,
   password,
   setpassword,
+  quizCat,
+  setQuizCat,
   startgame
  }) {
   const [passerror, setpasserror] = useState({
@@ -61,6 +65,27 @@ export default function QuizForm({
     };
     setpasserror(res);
   }
+  function handleNameChange(e, setter) {
+    if (
+      e.target.value.length > 1 &&
+      e.target.value[e.target.value.length - 1] === " "
+    ) {
+      setter(e.target.value);
+    }
+    if (!e.target.value[e.target.value.length - 1]) {
+      setter("");
+      return;
+    }
+    if (e.target.value[e.target.value.length - 1] && 
+      specialCharactersAndNumbers.includes(
+        e.target.value[e.target.value.length - 1].toString()
+      )
+    ) {
+      return;
+    }
+    if (isNaN(e.target.value[e.target.value.length - 1]))
+    setter(e.target.value);
+  }
 
   useEffect(() => {
     seterror("");
@@ -84,27 +109,7 @@ export default function QuizForm({
               type="text"
               className={styles.input}
               value={firstName}
-              onChange={(e) => {
-                if (
-                  e.target.value.length > 1 &&
-                  e.target.value[e.target.value.length - 1] === " "
-                ) {
-                  setFirstName(e.target.value);
-                }
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setFirstName("");
-                  return;
-                }
-                if (
-                  specialCharactersAndNumbers.includes(
-                    e.target.value[e.target.value.length - 1].toString()
-                  )
-                ) {
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1]))
-                  setFirstName(e.target.value);
-              }}
+              onChange={(e) => handleNameChange(e, setFirstName)}
               placeholder="Child First Name*"
               required
             />
@@ -112,27 +117,7 @@ export default function QuizForm({
               type="text"
               className={styles.input}
               value={lastName}
-              onChange={(e) => {
-                if (
-                  e.target.value.length > 1 &&
-                  e.target.value[e.target.value.length - 1] === " "
-                ) {
-                  setLastName(e.target.value);
-                }
-                if (!e.target.value[e.target.value.length - 1]) {
-                  setLastName("");
-                  return;
-                }
-                if (
-                  specialCharactersAndNumbers.includes(
-                    e.target.value[e.target.value.length - 1].toString()
-                  )
-                ) {
-                  return;
-                }
-                if (isNaN(e.target.value[e.target.value.length - 1]))
-                  setLastName(e.target.value);
-              }}
+              onChange={(e) => handleNameChange(e, setLastName)}
               placeholder="Child Last Name*"
               required
             />
@@ -141,7 +126,7 @@ export default function QuizForm({
             type="text"
             value={username}
             onChange={(e) => {
-              if (specialCharacters.includes(
+              if (e.target.value[e.target.value.length -1] && specialCharacters.includes(
                 e.target.value[e.target.value.length -1].toString()
               )) {
                 return;
@@ -229,6 +214,25 @@ export default function QuizForm({
               </ReactTooltip>
             </>
           )}
+          <div className={styles.categories}>
+            <label className={styles.catLabel}>Quiz For</label>
+            <div className={styles.catOptions}>
+              {QUIZ_CATAGORIES.map((cat) => {
+                return (
+                  <div 
+                    key={cat.id} 
+                    className={quizCat === cat.type ? styles.selectedCat: styles.singleCat} 
+                    onClick={() => setQuizCat(cat.type)}
+                  >
+                    <div className={styles.catName}>{cat.name}</div>
+                    <div className={styles.selectedIcon}>
+                      <DoneIcon />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </form>
         <div className={styles.buttons}>
           <div className={styles.startbutton} onClick={startgame}>

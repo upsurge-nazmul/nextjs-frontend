@@ -7,9 +7,9 @@
   margin: 10vh 0;
   .left {
     width: 50%;
-    background: #f9f9f96e;
+    background-color: #f9f9f96e;
     border-radius: 12px;
-    padding: 40px;
+    padding: 1rem;
     min-width: 550px;
     .error {
       color: rgb(238, 79, 79);
@@ -144,11 +144,70 @@
         font-size: 0.9375rem;
         width: fit-content;
       }
+      .categories {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+        .catLabel {
+          font-size: 1.25rem;
+          color: #979797;
+          font-weight: 600;
+        }
+        .catOptions {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          .singleCat {
+            cursor: pointer;
+            height: 4rem;
+            width: 7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1rem;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 1px 1px 7px 1px #ddd;
+            position: relative;
+            &:hover {
+              box-shadow: inset 1px 1px 7px 1px #ddd;
+            }
+            .catName {
+              font-size: 1rem;
+              font-weight: 300;
+            }
+            .selectedIcon {
+              visibility: hidden;
+              position: absolute;
+              top: 8%;
+              left: 25%;
+              color: #aed69d;
+              border-radius: 50%;
+              height: 3rem;
+              width: 3rem;
+              svg {
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+          .selectedCat {
+            @extend .singleCat;
+            box-shadow: inset 1px 1px 7px 1px #ddd;
+            .selectedIcon {
+              visibility: visible;
+            }
+          }
+        }
+      }
     }
     .buttons {
       display: flex;
-      margin-top: 40px;
-
+      margin-top: 1rem;
       .startbutton {
         display: flex;
         align-items: center;

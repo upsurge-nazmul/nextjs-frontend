@@ -15,8 +15,9 @@ function QuizComponent({
   setcurrentcolor,
   currentcolor,
   colorarray,
-  userlogged,
+  userId,
   timer,
+  setFinishedData,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [answered, setanswered] = useState(false);
@@ -74,12 +75,22 @@ function QuizComponent({
       answer,
       question_id: currentquestion.question_id,
       id: data.session_id,
-      user_logged: userlogged,
+      user_logged: userId,
     });
     if (res && res.data.success) {
       if (res.data.data.quizcompleted) {
+        const sessionData = res.data.data.sessiondata;
+        const userData = res.data.data.user;
         setquizfinished(true);
         setscore(res.data.data.score);
+        setFinishedData({
+          // score: sessionData.score,
+          score: res.data.data.score,
+          school: userData.school,
+          userName: userData.user_name,
+          userId: userData.id,
+          fullName: userData.first_name + " " + userData.last_name,
+        })
       }
       setcurrentquestion(res.data.data.next_question);
       setcurrentcolor((currentcolor + 1) % colorarray.length);
