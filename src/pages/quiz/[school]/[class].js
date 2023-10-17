@@ -24,18 +24,18 @@ export const NUMBER_OF_QUESTIONS = 80;
 export const QUIZ_CATAGORIES = [
   {
     id: 1,
-    type: "class35",
-    name: "Class 3-5",
-  },
-  {
-    id: 2,
     type: "class68",
     name: "Class 6-8",
   },
   {
-    id: 3,
+    id: 2,
     type: "class910",
     name: "Class 9-10",
+  },
+  {
+    id: 3,
+    type: "class1112",
+    name: "Class 11-12",
   }
 ]
 

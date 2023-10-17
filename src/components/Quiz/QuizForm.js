@@ -5,8 +5,8 @@ import validator from "validator";
 import ReactTooltip from "react-tooltip";
 import CircleTick from "../SVGcomponents/CircleTick";
 import CircleWarning from "../SVGcomponents/CircleWarning";
-import { QUIZ_CATAGORIES } from "../../pages/quiz";
 import DoneIcon from '@mui/icons-material/Done';
+import { QUIZ_CATAGORIES } from "../../pages/quiz/[school]/[class]";
 
 export default function QuizForm({ 
   error,
@@ -222,7 +222,7 @@ export default function QuizForm({
                   <div 
                     key={cat.id} 
                     className={quizCat === cat.type ? styles.selectedCat: styles.singleCat} 
-                    onClick={() => setQuizCat(cat.type)}
+                    // onClick={() => setQuizCat(cat.type)}
                   >
                     <div className={styles.catName}>{cat.name}</div>
                     <div className={styles.selectedIcon}>
