@@ -2,7 +2,7 @@ export const Quiz_School_Data = [
   {
     id: 1,
     urlSlug: "mother-teacher-school",
-    fullName: "Mother Teacher School",
+    fullName: "Mother Teacher School, Barnala",
   },
   {
     id: 2,
