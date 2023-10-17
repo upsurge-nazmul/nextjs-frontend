@@ -110,7 +110,7 @@ export default function QuizForm({
               className={styles.input}
               value={firstName}
               onChange={(e) => handleNameChange(e, setFirstName)}
-              placeholder="Child First Name*"
+              placeholder="First Name*"
               required
             />
             <input
@@ -118,7 +118,7 @@ export default function QuizForm({
               className={styles.input}
               value={lastName}
               onChange={(e) => handleNameChange(e, setLastName)}
-              placeholder="Child Last Name*"
+              placeholder="Last Name*"
               required
             />
           </div>
@@ -135,7 +135,7 @@ export default function QuizForm({
               }
             }}
             className={styles.input}
-            placeholder="Child Username*"
+            placeholder="Username*"
             required
           />
           <input
@@ -143,7 +143,7 @@ export default function QuizForm({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={styles.input}
-            placeholder="Parent Email*"
+            placeholder="Email*"
             required
           />
           <input
@@ -161,7 +161,7 @@ export default function QuizForm({
               setphone(e.target.value);
             }}
             className={styles.input}
-            placeholder="Parent Phone*"
+            placeholder="Phone*"
           />
           <div className={styles.passwordBox}>
             {showdetailpass && (
