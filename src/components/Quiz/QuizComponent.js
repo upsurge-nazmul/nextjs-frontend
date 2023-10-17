@@ -3,6 +3,7 @@ import styles from "../../styles/Quiz/quizcomponent.module.scss";
 import QuizApis from "../../actions/apis/QuizApis";
 import { MainContext } from "../../context/Main";
 import QuizProgress from "../QuizProgress";
+import { NUMBER_OF_QUESTIONS } from "../../pages/quiz/[school]/[class]";
 
 function QuizComponent({
   currentquestionindex,
@@ -120,7 +121,7 @@ function QuizComponent({
           </div>
         </div>
       </div>
-      <QuizProgress totalQn={15} currentQn={currentquestionindex + 1} />
+      <QuizProgress totalQn={NUMBER_OF_QUESTIONS} currentQn={currentquestionindex + 1} />
       <div className={styles.quizBody}>
         <div className={styles.questionArea}>
           <div className={styles.questionNo}>{currentquestionindex + 1}</div>

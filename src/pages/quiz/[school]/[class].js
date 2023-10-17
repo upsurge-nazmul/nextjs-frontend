@@ -19,7 +19,8 @@ import { setCookie } from "../../../actions/cookieUtils";
 import QuizFinished from "../../../components/Quiz/QuizFinished";
 import { Quiz_School_Data } from "../../../static_data/School_Data";
 
-const QUIZ_DURATION_IN_MIN = 15;
+export const QUIZ_DURATION_IN_MIN = 45;
+export const NUMBER_OF_QUESTIONS = 80;
 export const QUIZ_CATAGORIES = [
   {
     id: 1,
@@ -371,14 +372,18 @@ function Quiz({ userdata }) {
       {showmain && !started && (
         <QuizManual setstarted={setstarted} />
       )}
-      <div className={styles.titleArea}>
-        <span className={styles.title}>Money Quotient Championship</span>
-        {
-          getSchoolFullName() 
-            ? <span className={styles.schoolName}>{getSchoolFullName()}</span> 
-            : <span/>
-        }
-      </div>
+      {
+        !showmain && (
+          <div className={styles.titleArea}>
+            <span className={styles.title}>Money Quotient Championship</span>
+            {
+              getSchoolFullName() 
+                ? <span className={styles.schoolName}>{getSchoolFullName()}</span> 
+                : <span/>
+            }
+          </div>
+        )
+      }
 
       {!showmain ? (
         <QuizForm {...{
@@ -424,7 +429,7 @@ function Quiz({ userdata }) {
                 widthHeight={widthHeight}
                 setcorrectAnswers={setcorrectAnswers}
                 question={currentquestion}
-                totalQuestions={15}
+                totalQuestions={NUMBER_OF_QUESTIONS}
                 currentquestionindex={currentquestionindex}
                 setcurrentquestionindex={setcurrentquestionindex}
                 setquizfinished={setquizfinished}
