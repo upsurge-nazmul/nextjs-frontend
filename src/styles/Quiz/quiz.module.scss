@@ -10,6 +10,18 @@
   position: relative;
   background: #fdcc03;
   z-index: 2;
+  .titleArea {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    .schoolName {
+      margin-left: 0.5rem;
+      font-size: 2.25rem;
+      color: #7bd0bc;
+    }
+  }
   .contentWrapper {
     padding: 1rem 15%;
     position: relative;
