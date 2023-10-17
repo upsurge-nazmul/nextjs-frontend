@@ -17,6 +17,7 @@ import QuizManual from "../../../components/Quiz/QuizManual";
 import QuizForm from "../../../components/Quiz/QuizForm";
 import { setCookie } from "../../../actions/cookieUtils";
 import QuizFinished from "../../../components/Quiz/QuizFinished";
+import { Quiz_School_Data } from "../../../static_data/School_Data";
 
 const QUIZ_DURATION_IN_MIN = 15;
 export const QUIZ_CATAGORIES = [
@@ -254,6 +255,11 @@ function Quiz({ userdata }) {
     // }
     return true;
   }
+  
+  function getSchoolFullName() {
+    let data = Quiz_School_Data.find(item => item.urlSlug === school);
+    return data ? data.fullName: "";
+  }
 
   async function startQuiz(profile) {
     let response = await QuizApis.startquiz({
@@ -285,7 +291,7 @@ function Quiz({ userdata }) {
         first_name: firstName,
         last_name: lastName,
         num_unicoins: 0,
-        school
+        school: getSchoolFullName(),
       });
       if (signupResponse && signupResponse.data && signupResponse.data.success) {
         const profile = signupResponse.data.data.profile;
@@ -365,6 +371,14 @@ function Quiz({ userdata }) {
       {showmain && !started && (
         <QuizManual setstarted={setstarted} />
       )}
+      <div className={styles.titleArea}>
+        <span className={styles.title}>Money Quotient Championship</span>
+        {
+          getSchoolFullName() 
+            ? <span className={styles.schoolName}>{getSchoolFullName()}</span> 
+            : <span/>
+        }
+      </div>
 
       {!showmain ? (
         <QuizForm {...{
@@ -399,7 +413,7 @@ function Quiz({ userdata }) {
                       : "#000000",
                 }}
               >
-                {`Money Quotient Championship ${school ? " - " + school: ""}`}
+                {`Money Quotient Championship`}
               </div>
             )}
           </div>

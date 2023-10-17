@@ -1,0 +1,12 @@
+export const Quiz_School_Data = [
+  {
+    id: 1,
+    urlSlug: "mother-teacher-school",
+    fullName: "Mother Teacher School",
+  },
+  {
+    id: 2,
+    urlSlug: "test-school",
+    fullName: "Test School",
+  },
+]
