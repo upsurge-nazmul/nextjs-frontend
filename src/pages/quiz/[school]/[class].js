@@ -335,9 +335,7 @@ function Quiz({ userdata }) {
   
   return (
     <div
-      className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""} ${
-        theme === "dark" && styles.darkquizPage
-      }`}
+      className={`${styles.quizPage} ${openFull ? styles.hideOverFlow : ""}`}
       style={{
         backgroundColor: !showmain
           ? theme === "dark"
