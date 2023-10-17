@@ -1,4 +1,11 @@
-.resultSection {
+@mixin fullPage(
+  $headingFontSize: 3.5rem,
+  $tableLabelFontSize: 1rem,
+  $tableValueFontSize: 1.25rem,
+  $scoreFontSize: 2rem,
+  $actionPadding: 1rem 2rem,
+  $actionFontSize: 1rem,
+) {
   margin-top: 5vh;
   display: flex;
   align-items: center;
@@ -15,148 +22,106 @@
     top: -20vh;
     width: 150px;
   }
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    overflow: hidden;
-    z-index: -1;
-    .curvecontainer {
-      position: relative;
+  .content {
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    .heading {
+      font-size: $headingFontSize;
+      font-weight: 800;
+      text-align: center;
+      color: #17d1bc;
+    }
+    .subheading {
+      color: black;
+      margin: 10px 0;
+      font-size: 1.375rem;
+      font-weight: 400;
+      text-align: center;
+      width: 80%;
+    }
+    .table {
       width: 100%;
-      height: 100%;
-      .curve2 {
-        position: absolute;
-        width: 100vw;
-        left: 0;
-        top: 60%;
-        z-index: 1;
-        transform: scaleX(-1);
-        animation: moveit 5s ease alternate infinite;
-        animation-delay: 2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .tableContent {
+        width: 90%;
       }
-      .curve1 {
-        position: absolute;
-        width: 100vw;
-        left: 0;
-        top: 25%;
-        z-index: 1;
-        animation: moveit 5s ease alternate infinite;
+      .row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.35rem 0;
+        .label {
+          color: #b3b3b3;
+          font-size: $tableLabelFontSize;
+        }
+        .value {
+          font-size: $tableValueFontSize;
+          font-weight: 600;
+        }
+      }
+    }
+    .points {
+      font-size: $scoreFontSize;
+      font-weight: 600;
+      text-align: center;
+      color: #131313;
+    }
+    .actionArea {
+      display: flex;
+      gap: 1rem;
+      .button {
+        background: #5955e5;
+        border-radius: 14px;
+        padding: $actionPadding;
+        color: white;
+        font-size: $actionFontSize;
+        text-align: center;;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          background-color: hsl(227, 56%, 38%);
+        }
       }
     }
   }
+}
 
-  .signupBox {
-    width: 23vw;
-    min-width: fit-content;
-    min-height: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    .input {
-      outline: none;
-      border: none;
-      border-top-left-radius: 12px;
-      border-bottom-left-radius: 12px;
-      border: 1px solid #4166eb5e;
-      width: 55%;
-      height: 100%;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      font-size: 1.25rem;
-      padding-left: 15px;
-      border-right: 0;
-      ::placeholder {
-        color: rgba(198, 198, 198, 1);
-      }
-    }
-    .normalbutton {
-      width: 45%;
-      min-width: fit-content;
-      font-size: clamp(16px, 1vw, 1vw);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 400;
-      height: 100%;
-      padding: 0 20px;
-      background-color: #5955e5;
-      color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border: 1px solid #4166eb5e;
-      border-left: 0;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: hsl(227, 57%, 47%);
-      }
-    }
-    .joinButton {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 32px;
-      width: 186px;
-      height: 48px;
-      background: #ffffff;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      margin-top: 20px;
-    }
+.resultSection {
+  @include fullPage();
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .resultSection {
+    @include fullPage(
+      2rem,
+      0.75rem,
+      1rem,
+      1.5rem,
+      0.75rem 1rem,
+      0.75rem,
+    );
   }
-  .heading {
-    font-size: 3.5rem;
-    font-weight: 800;
-    text-align: center;
-    color: #17d1bc;
-  }
-  .subheading {
-    color: black;
-    margin: 10px 0;
-    font-size: 1.375rem;
-    font-weight: 400;
-    text-align: center;
-    width: 80%;
-  }
-  .points {
-    font-size: 26px;
-    font-weight: 600;
-    text-align: center;
-    color: #131313;
-    margin-top: 20px;
-  }
-  .pointsdes {
-    font-size: 2.25rem;
-    font-weight: 500;
-    text-align: center;
-  }
-  .button {
-    background: #5955e5;
-    border-radius: 14px;
-    padding: 10px 20px;
-    color: white;
-    font-size: 1rem;
-    width: 220px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    margin-top: 40px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    &:hover {
-      background-color: hsl(227, 56%, 38%);
-    }
+}
+
+@media only screen and (max-width: 500px) {
+  .resultSection {
+    @include fullPage(
+      2rem,
+      0.75rem,
+      1rem,
+      1.5rem,
+      0.75rem 1rem,
+      0.75rem,
+    );
   }
 }
