@@ -19,7 +19,7 @@ import QuizForm from "../../components/Quiz/QuizForm";
 import { setCookie } from "../../actions/cookieUtils";
 import QuizFinished from "../../components/Quiz/QuizFinished";
 
-const QUIZ_DURATION_IN_MIN = 15;
+const QUIZ_DURATION_IN_MIN = 45;
 export const QUIZ_CATAGORIES = [
   {
     id: 1,
@@ -439,8 +439,7 @@ function Quiz({ userdata }) {
           ) : null}
         </div>
       )}
-      <JoinUs />
-      <Footer />
+  
     </div>
   );
 }
