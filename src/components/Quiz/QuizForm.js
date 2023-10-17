@@ -96,7 +96,7 @@ export default function QuizForm({
   return (
     <div className={styles.formSection}>
       <div className={styles.left}>
-        <p className={styles.headingmain}>We need a few more details</p>
+        <div className={styles.headingmain}>We need a few more details</div>
         <p className={styles.error}>{error}</p>
         <form
           onKeyPress={(e) => {
