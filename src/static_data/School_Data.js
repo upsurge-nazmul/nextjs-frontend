@@ -6,7 +6,7 @@ export const Quiz_School_Data = [
   },
   {
     id: 2,
-    urlSlug: "test-school",
-    fullName: "Test School",
+    urlSlug: "vikas-mantra-school",
+    fullName: "Vikas Mantra School",
   },
 ]
