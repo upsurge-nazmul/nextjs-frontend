@@ -111,7 +111,7 @@ export const Game_Data = {
     "Get behind a mine and earn as much as you can.",
     img: "/images/games/mini-miner.png",
     //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
-    premium_plan: 1001,
+    premium_plan: 0,
     webgl_key: "MiniMiner_WebGL",
   },
 };
