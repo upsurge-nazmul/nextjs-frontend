@@ -18,6 +18,7 @@ import { getCookie } from "../../../actions/cookieUtils";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import UniCoinSvg from "../../../components/SVGcomponents/UniCoinSvg";
 import FillSpace from "../../../components/Dashboard/FillSpace";
+import AppDownload from "../../../components/Dashboard/AppDownload";
 import QuizApis from "../../../actions/apis/QuizApis";
 import { Game_Data } from "../../../static_data/Game_Data";
 import { UniCoinValue } from "../../../../config";
@@ -309,66 +310,7 @@ export default function ChildActivity({
             </div>
             <div className={styles.flexRight}>
 
-              {userdata && userdata.chores_opted ? (
-                <div className={styles.choreSection} id="chores">
-                  <h2
-                    className={styles.mainheading}
-                    onClick={() => router.push("/dashboard/k/chores")}
-                  >
-                    Chores
-                    <HeadingArrow />
-                  </h2>
-                  <div className={styles.wrapper}>
-                    {chorearray.map((data, index) => {
-                      return (
-                        <KidChore
-                          data={data}
-                          settoastdata={setShowToolTip}
-                          key={"chorecomponent" + index}
-                        />
-                      );
-                    })}
-                    {chorearray.length === 0 && (
-                      <FillSpace
-                        text={"No chores in progress"}
-                        extrastyle={{ margin: 0, minHeight: "220px" }}
-                      />
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className={styles.choreSection} id="chores">
-                  <h3 className={styles.mainheading}>
-                    Download our app now
-                    <HeadingArrow />
-                  </h3>
-                  <div className={styles.wrapper}>
-                    <div className={styles.downloadAppLeft}>
-                      <Jasper className={styles.jaspersvg} />
-                    </div>
-                    <div className={styles.downloadAppRight}>
-                      {/* <h3>Download our app now</h3>
-                        <p>
-                          Download our app to get started with your chores and
-                          quests.
-                        </p> */}
-                      <div className={styles.downloadAppButtons}>
-                        <a
-                          href="https://play.google.com/store/apps/details?id=com.upsurgefi.app"
-                          target="_blank"
-                          rel="noreferrer"
-                          className={styles.downloadAppButton}
-                        >
-                          <img
-                            src="/images/DownloadGames/google-play.png"
-                            alt="PlayStore"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+              <AppDownload />
             </div>
           </div>
 
