@@ -13,7 +13,7 @@ const TravelSection = () => {
         <div className={styles.innerBanner}>
           <img
             src={"/images/quest/travel-section.png"}
-            // alt="Travel"
+            alt="Travel"
             // layout="fill"
             // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, (max-width: 900px) 300vw,33vw"
             className={styles.banner}

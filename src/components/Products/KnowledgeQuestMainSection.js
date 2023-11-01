@@ -43,7 +43,7 @@ export default function KnowledgeQuestMainSection({
                 onClick={() => router.push("/quest/dd")}
                 key={"quest" + index}
               >
-                <img src={item.image} alt="" />
+                <img src={item.image} alt=" " />
                 <p className={styles.title}>{item.name}</p>
                 <p className={styles.des}>{item.des}</p>
               </div>

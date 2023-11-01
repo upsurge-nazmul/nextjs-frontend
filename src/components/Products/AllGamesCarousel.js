@@ -211,7 +211,7 @@ const AllGamesCarousel = () => {
               <div className={styles.slideContent}>
                 <img src={data.img} alt={data.name} className={styles.image} />
                 <div className={styles.slideBottomContent}>
-                  <img src={data.img} className={styles.gameLogo} />
+                  <img src={data.img} className={styles.gameLogo} alt=" " />
                   <div className={styles.nameContainer}>
                     <h1>{data.name}</h1>
                     <div className={styles.activeButtonContainer}>

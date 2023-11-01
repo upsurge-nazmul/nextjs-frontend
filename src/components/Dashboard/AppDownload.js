@@ -27,20 +27,14 @@ const AppDownload = () => {
         </div>
       </div>
       
-        <div className={styles.questionContainer}>
-
-            <div className={styles.question}>
-
-            <a href="" target="_blank" rel="noreferrer" className={styles.button}>
-                      <PlayStoreSvg />
-                      Get it on Google Play
-              </a>
-            </div>
-            
-             
-          
+      <div className={styles.questionContainer}>
+        <div className={styles.question}>
+          <a href="https://play.google.com/store/apps/details?id=com.upsurgefi.app" target="_blank" rel="noreferrer" className={styles.button}>
+            <PlayStoreSvg />
+            Get it on Google Play
+          </a>
         </div>
-      
+      </div>
     </div>
   );
 };
