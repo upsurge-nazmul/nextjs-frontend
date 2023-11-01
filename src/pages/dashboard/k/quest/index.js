@@ -11,7 +11,7 @@ import HeadArea from "../../../../components/ChildQuest/HeadArea";
 import MainSection from "../../../../components/ChildQuest/MainSection";
 import Tabs from "../../../../components/ChildQuest/Tabs";
 import PageTitle from "../../../../components/PageTitle";
-import SubToPremiumPopUp from "../../../../components/SubToPremiumPopUp";
+import ChosePremiumPopUp from "../../../../components/ChosePremiumPopUp";
 
 const QUEST_TYPES = [
   { questTypeId: "FL", title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
@@ -70,7 +70,7 @@ export default function KnowledgeQuest({ userData, questData }) {
           settoastdata={settoastdata}
         />
         {showSubToPremium && (
-          <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+          <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
         )}
         <div className={styles.mainContent} id="quest-main">
           {tab && (

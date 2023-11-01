@@ -240,6 +240,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     cursor: pointer;
     font-weight: 500;
     font-size: 1rem;
@@ -266,26 +267,44 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .subToPremium {
     height: calc(100vh - 1px);
     overflow-y: scroll;
     top: 0.1rem;
 
     .block {
-      margin-left: -1rem;
-      margin-top: -1rem;
+      
       width: 100vw;
 
       .cross {
-        top: 3rem;
+        top: 1.5rem;
       }
     }
 
     .section {
       flex-direction: column;
       overflow-y: scroll;
-      height: calc(100vh - 5rem);
+      width: 100%;
+      .pricing{
+        .bottom{
+          margin-top: 0rem;
+        }
+      }
+      .sectionLeft {
+        .bestValue{
+          opacity: 0;
+          display: none;
+        }
+        .header {
+          margin-top: 0rem;
+        }
+        .subheading {
+          margin: 0rem 0 0rem 0;
+        }
+      }
+
+
 
       .verticleLine {
         border-bottom: 0.2rem solid #A09E9E;

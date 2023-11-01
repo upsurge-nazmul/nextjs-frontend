@@ -10,7 +10,7 @@ import DashboardHeader from "../Dashboard/DashboardHeader";
 import PageTitle from "../PageTitle";
 import GameView from "./GameView";
 import FreeGameApis from "../../actions/apis/FreeGameApis";
-import SubToPremiumPopUp from "../SubToPremiumPopUp";
+import ChosePremiumPopUp from "../ChosePremiumPopUp";
 import GameList from "./GameList";
 import AvailableGames from "../DownloadGames/AvailableGames";
 import DashboardGames from "../Dashboard/Games";
@@ -122,7 +122,7 @@ function Games({
         <div className={styles.mainContent}>
           {/* <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} /> */}
           {showSubToPremium && (
-            <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+            <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
           )}
           {/* <div className={styles.availableSection}>
             <h2 className={styles.heading}>

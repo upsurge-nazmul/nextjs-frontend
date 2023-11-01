@@ -42,7 +42,7 @@ import FlashSaleOfferPremium from "../../../components/FlashSaleOfferPremium";
 import TrendingGamesPopUp from "../../../components/TrendingGamesPopUp";
 import KqPopUpPostSignUp from "../../../components/KqPopUpPostSignUp";
 import TodaysQuestion from "../../../components/TodaysQuestion";
-import SubToPremiumPopUp from "../../../components/SubToPremiumPopUp";
+import ChosePremiumPopUp from "../../../components/ChosePremiumPopUp";
 import DashboardGames from "../../../components/Dashboard/Games";
 import GameApis from "../../../actions/apis/GameApis";
 
@@ -282,7 +282,7 @@ export default function ChildActivity({
           />
         )}
         {showSubToPremium && (
-          <SubToPremiumPopUp setShowSubToPremium={setShowSubToPremium} />
+          <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
         )}
         <div className={styles.mainContent}>
           
