@@ -180,8 +180,7 @@ export default function GamePage() {
                               ]
                             : "",
                           Game_Data[item].webgl_key,
-                          Game_Data[item].premium_plan,
-                          userdata.premium_plan
+                          Game_Data[item].premium_plan
                         )
                       }
                       // handleClick={() => {
