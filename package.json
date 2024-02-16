@@ -5,7 +5,7 @@
   "proxy": "https://upsurge.in",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap --config sitemapconfig.js && pm2 reload all",
+    "build": "next build && next-sitemap --config sitemapconfig.js",
     "devbuild": "next build",
     "analbuild": "ANALYZE=true next build",
     "start": "next start",
