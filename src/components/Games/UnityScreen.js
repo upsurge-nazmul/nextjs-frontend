@@ -6,6 +6,7 @@ import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import ActionArea from "./ActionArea";
 import { initializeApp } from "firebase/app";
+import { gameUrl } from '../../utils/utils'
 
 export default function UnityScreen({
   data = {},
@@ -24,10 +25,10 @@ export default function UnityScreen({
     removeEventListener, // (eventNamme: string, callback: (..params))
     unload,
   } = useUnityContext({
-    loaderUrl: data.loaderUrl,
-    dataUrl: data.dataUrl,
-    frameworkUrl: data.frameworkUrl,
-    codeUrl: data.codeUrl,
+    loaderUrl: gameUrl(data.loaderUrl),
+    dataUrl: gameUrl(data.dataUrl),
+    frameworkUrl: gameUrl(data.frameworkUrl),
+    codeUrl: gameUrl(data.codeUrl)
   });
   const router = useRouter();
   const { userdata } = useContext(MainContext);
@@ -69,7 +70,7 @@ export default function UnityScreen({
       const json = JSON.stringify({ userid: userdata?.user_id, token: userdata?.token });
       sendMessage("GameData", "SetUserID",json);
     }
-    
+
   };
 
 
@@ -77,9 +78,9 @@ export default function UnityScreen({
 
       console.log("Unload called");
       if (isLoaded === false) {
-  
+
         console.log("Is Loaded is false");
-  
+
         return;
       }
       try {
@@ -99,22 +100,22 @@ export default function UnityScreen({
         console.log(res?.data?.message || "");
       }
     };
-  
+
     const handleKQdone = async (gameid,status) => {
-     
+
       console.log("KQ_done success", gameid);
-      try 
+      try
       {
-        if (status === "1") 
-        {   
+        if (status === "1")
+        {
           handleGameDone();
         }
-      } 
-      catch (e) 
+      }
+      catch (e)
       {
         console.log("KQ_done error", e);
       }
-  
+
     };
 
     useEffect(() => {
@@ -123,12 +124,12 @@ export default function UnityScreen({
       addEventListener("Score",handleScoreupdate);
       addEventListener("KQ_done",handleKQdone);
       return () => {
-  
+
         removeEventListener("OnSeceneLoaded",handleOnSceneLoaded);
         removeEventListener("Exit",handleExit);
         removeEventListener("Score",handleScoreupdate);
         removeEventListener("KQ_done",handleKQdone);
-  
+
       };
     }, [handleKQdone,handleOnSceneLoaded,handleScoreupdate,handleExit]);
 
