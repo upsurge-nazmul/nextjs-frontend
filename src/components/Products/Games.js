@@ -6,6 +6,7 @@ import PlayCircleSvg from "../SVGcomponents/PlayCircleSvg";
 import { useRouter } from "next/dist/client/router";
 import PauseSvg from "../SVGcomponents/PauseSvg";
 import { MainContext } from "../../context/Main";
+import { assetsVideo } from "../../utils/utils";
 
 export default function Games({ id }) {
   const router = useRouter();
@@ -20,15 +21,15 @@ export default function Games({ id }) {
         "Identify how much is available to spend and making purchase decisions based on that.",
       link: "/gamepage/ShoppingBudget",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
-      img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
+        assetsVideo('ShoppingBudget.mp4'),
+      img: assetsVideo('images/SB.png'),
     },
     {
       name: "Balance Builder",
       description: "Identify what is income and what is expense.",
       link: "/gamepage/BalanceBuilder",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/BalanceBuilder.mp4",
+        assetsVideo('BalanceBuilder.mp4'),
       img: "/images/games/BalanceBuilder.png",
     },
 
@@ -38,7 +39,7 @@ export default function Games({ id }) {
         "Identify currency and arrange in ascending or descending order after adding the money.",
       link: "/gamepage/HighAndLow",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/HighAndLow.mp4",
+        assetsVideo('HighAndLow.mp4'),
       img: "/images/games/HighandLow.png",
     },
     {
@@ -47,7 +48,7 @@ export default function Games({ id }) {
         "Choose what you want to buy, earn some money, and calculate  how much you have left.",
       link: "/gamepage/MoneyMath",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyMath.mp4",
+        assetsVideo('MoneyMath.mp4'),
       img: "/images/games/MoneyMath.png",
     },
     {
@@ -56,7 +57,7 @@ export default function Games({ id }) {
         "Know the importance of allocating your earnings between spending, saving and donating.",
       link: "/gamepage/MoneyManager",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyManager.mp4",
+        assetsVideo('MoneyManager.mp4'),
       img: "/images/games/MoneyManager.png",
     },
     {
@@ -71,14 +72,14 @@ export default function Games({ id }) {
     //     "This is demo description, will be replaced with content later.",
     //   link: "/gamepage/CoinSlide",
     //   video:
-    //     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/CoinSlide.mp4",
+    //     assetsVideo('CoinSlide.mp4'),
     // },
     {
       name: "Need or Want",
       description: "Identify the difference between needs and wants.",
       link: "/gamepage/NeedOrWant",
       video:
-        "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/NeedOrWant.mp4",
+        assetsVideo('NeedOrWant.mp4'),
       img: "/images/games/NeedorWant.png",
     },
     {
@@ -89,11 +90,11 @@ export default function Games({ id }) {
   ];
   const moneyacess = [
     "/images/games/MoneyAce.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_1.jpeg",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_2.jpeg",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_3.jpeg",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_4.jpeg",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ma_5.jpeg",
+    assetsVideo('images/ma_1.jpeg'),
+    assetsVideo('images/ma_2.jpeg'),
+    assetsVideo('images/ma_3.jpeg'),
+    assetsVideo('images/ma_4.jpeg'),
+    assetsVideo('images/ma_5.jpeg'),
   ];
   const { theme } = useContext(MainContext);
   useEffect(() => {

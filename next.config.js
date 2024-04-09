@@ -17,6 +17,7 @@ module.exports = {
       "res.cloudinary.com",
       "upsurgevideoassets.s3.ap-south-1.amazonaws.com",
       "imgcdn.upsurge.in",
+      "storage.googleapis.com"
     ],
   },
   swcMinify: true,

@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/schools/testimonials.module.scss";
+import { assetsCdn } from "../../utils/utils";
 
 const teacherData = [
   {
     name: "Veena Gaur",
-    video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+    video: assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-teacher-4.png",
   },
   {
     name: "Veena Gaur",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-teacher-1.png",
   },
   {
     name: "Veena Gaur",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-teacher-2.png",
   },
   {
     name: "Veena Gaur",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-teacher-3.png",
   },
 ];
@@ -32,31 +32,31 @@ const studentData = [
   {
     name: "Random Name",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-student-1.png",
   },
   {
     name: "Random Name",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-student-2.png",
   },
   {
     name: "Random Name",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-student-3.png",
   },
   {
     name: "Random Name",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-student-4.png",
   },
   {
     name: "Random Name",
     video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+      assetsCdn('video/testimonial-princi.mp4'),
     image: "https://imgcdn.upsurge.in/images/schools/new/school-student-5.png",
   },
 ];

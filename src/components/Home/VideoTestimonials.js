@@ -1,8 +1,9 @@
 import styles from "../../styles/Home/video-testimonials.module.scss";
+import { assetsCdn } from "../../utils/utils";
 
 const videos = [
-  "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
-  "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-child.mov",
+  assetsCdn('video/testimonial-princi.mp4'),
+  assetsCdn('video/testimonial-child.mov')
 ];
 
 const VideoTestimonials = () => {

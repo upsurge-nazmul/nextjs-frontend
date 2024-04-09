@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import styles from "../../styles/Home/who.module.scss";
 import { MainContext } from "../../context/Main";
+import { assetsCdn, assetsVideo } from "../../utils/utils";
+
 function Who() {
   const { theme } = useContext(MainContext);
   return (
@@ -21,15 +23,15 @@ function Who() {
 
             <video className={styles.mobileVideo} controls autoPlay muted loop>
               <source
-                src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge+-+Intro.mp4"
+                src={assetsCdn("video/upsurge+-+Intro.mp4")}
                 type="video/mp4"
               ></source>
             </video>
 
-            {/* 
+            {/*
             <Image
               className={styles.image}
-              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/home_who.jpeg"
+              src=assetsVideo('images/home_who.jpeg')
               alt=""
               layout="fill"
               objectFit="cover"

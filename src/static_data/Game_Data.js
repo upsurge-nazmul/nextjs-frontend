@@ -1,9 +1,11 @@
+import { assetsVideo } from "../utils/utils";
+
 export const Game_Data = {
   MoneyDash: {
     name: "Money Dash",
     description: "Learn to manage expenses on the fly.",
     img: "/images/games/money-dash.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyDash.png",
+    //img: assetsVideo('images/MoneyDash.png'),
     premium_plan: 0,
     webgl_key: "MoneyDash_WebGL",
   },
@@ -12,13 +14,13 @@ export const Game_Data = {
     description:
     "Learn about money management with our budget simulator.",
     img: "/images/games/price-is-right.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    //img: assetsVideo('images/Snake%26Ladders.png'),
     premium_plan: 0,
     webgl_key: "PriceIsRight_WebGL",
   },
   BalanceBuilder: {
     name: "Balance builder",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/BalanceBuilder.png",
+    //img: assetsVideo('images/BalanceBuilder.png'),
     img: "/images/games/balance-builder.png",
     description: "How does your bank balance change with different events?",
     premium_plan: 0,
@@ -26,7 +28,7 @@ export const Game_Data = {
   },
   MoneySlide: {
     name: "Money slide",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneySlide.png",
+    //img: assetsVideo('images/MoneySlide.png'),
     img: "/images/games/money-slide.png",
     description: "Fill each piggy-bank with the right amount of money.",
     premium_plan: 0,
@@ -47,7 +49,7 @@ export const Game_Data = {
     description:
     "Check how much money each column has, and arrange it in ascending or descending order.",
     img: "/images/games/high-and-low.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/HighandLow.png",
+    //img: assetsVideo('images/HighandLow.png",
     premium_plan: 0,
     webgl_key: "HignAndLow_WebGL",
   },
@@ -56,7 +58,7 @@ export const Game_Data = {
     description:
     "Learn about money management with our 3D adaptation of this classic.",
     img: "/images/games/snake-and-ladders.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    //img: assetsVideo('images/Snake%26Ladders.png'),
     premium_plan: 0,
     webgl_key: "SnakesAndLadder_WebGL",
   },
@@ -73,14 +75,14 @@ export const Game_Data = {
     description:
     "Get behind a bank counter and learn about banking and credit economy.",
     img: "/images/games/world-bank.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    //img: assetsVideo('images/Snake%26Ladders.png'),
     premium_plan: 0,
     webgl_key: "WorldBank_WebGL",
   },
   DontOverspend: {
     name: "Shopping budget",
     description: "Can stay within your budget at the mall?",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
+    //img: assetsVideo('images/SB.png'),
     img: "/images/games/dont-overspend.png",
     pushto: "/games/DontOverspend",
     changedId: "DontOverspend",
@@ -92,25 +94,25 @@ export const Game_Data = {
     description:
     "What is the difference between a need & a want? Let’s play to find out.",
     img: "/images/games/need-and-want.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/NeedorWant.png",
+    //img: assetsVideo('images/NeedorWant.png'),
     premium_plan: 0,
     webgl_key: "NeedsAndWants_WebGL",
-  },  
+  },
   MoneyManager: {
     name: "Money manager",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/MoneyManager.png",
+    //img: assetsVideo('images/MoneyManager.png'),
     img: "/images/games/money-manager.png",
     description: "Earn money, & divide it between Saving, Expenses & Charity.",
     premium_plan: 0,
     webgl_key: "MoneyManager_WebGL",
-  },  
-    
+  },
+
   MiniMiner: {
     name: "Mini Miner",
     description:
     "Get behind a mine and earn as much as you can.",
     img: "/images/games/mini-miner.png",
-    //img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/Snake%26Ladders.png",
+    //img: assetsVideo('images/Snake%26Ladders.png'),
     premium_plan: 0,
     webgl_key: "MiniMiner_WebGL",
   },
@@ -163,7 +165,7 @@ export const Download_Games_Data = {
     apple: "https://apps.apple.com/us/app/upsurge-games-hub/id6462859836",
     microsoft: "",
   },
-  
+
   GourmetEmpire: {
     name: "Gourmet Empire",
     description: "Welcome to Gourmet Empire! In this thrilling tycoon game, you'll embark on a culinary journey to build and manage your very own restaurant empire. Build restaurants, hire talented chefs, and serve from a diverse range of cuisines to satisfy the taste buds of your discerning customers. Can you handle the heat of the kitchen and rise to culinary stardom?",

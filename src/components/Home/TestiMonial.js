@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../../styles/Home/testimonial.module.scss";
 import { MainContext } from "../../context/Main";
 import { AnimatePresence, motion } from "framer-motion";
+import { assetsCdn } from "../../utils/utils";
 
 const testimonials = [
   {
@@ -13,16 +14,14 @@ const testimonials = [
     img: "https://imgcdn.upsurge.in/images/Untitled-design-73.png",
   },
   {
-    video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-princi.mp4",
+    video: assetsCdn('video/testimonial-princi.mp4'),
     picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
     name: "Veema Gaur",
     img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
     des: "Principal, VIBGYOR High School Gurugram",
   },
   {
-    video:
-      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/testimonial-child.mov",
+    video: assetsCdn('video/testimonial-child.mov'),
     picture: "https://imgcdn.upsurge.in/images/student-testimonial.png",
     name: "Upsurge Intern",
     img: "https://imgcdn.upsurge.in/images/student-testimonial.png",

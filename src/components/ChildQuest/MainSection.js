@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/knowledgeQuest/MainSection.module.scss";
 import QuestCard from "./QuestCard";
+import { assetsCdn } from "../../utils/utils";
 
 export default function MainSection({
   data,
@@ -59,10 +60,10 @@ export default function MainSection({
             }
           })}
       </div>
-        {!checkData && 
+        {!checkData &&
         <div className={styles.comingSoon}>
           <video autoPlay loop muted playsInline className={styles.video}>
-            <source src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/static/coming_soon.mp4" type="video/mp4" />
+            <source src={assetsCdn('static/coming_soon.mp4')} type="video/mp4" />
           </video>
         </div>
         }

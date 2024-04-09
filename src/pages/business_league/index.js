@@ -18,6 +18,7 @@ import Footer from "../../components/Home/Footer";
 import Seo from "../../components/Seo";
 import Link from "next/link";
 import Mentors from "../../components/Ubl/Mentors";
+import { assetsVideo } from "../../utils/utils";
 
 export default function UblPage() {
   const [showform, setshowform] = useState(false);
@@ -30,9 +31,9 @@ export default function UblPage() {
   });
 
   const cosponsors = [
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/GEN.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/MM-logo.png",
-    // "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg",
+    assetsVideo('images/ubl_sponsor_logos/GEN.png'),
+    assetsVideo('images/ubl_sponsor_logos/MM-logo.png'),
+    // assetsVideo('images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg'),
   ];
   const participationTexts = [
     "Open to all students over the age of 12 - from Class 7 to 12.",
@@ -47,17 +48,17 @@ export default function UblPage() {
     `Vouchers & Offers from our partners.`,
   ];
   const student_imgs = [
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/certificate.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/blackboard.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/percentage-1.png",
+    assetsVideo('images/ubl_students/certificate.png'),
+    assetsVideo('images/ubl_students/upsurgeround.png'),
+    assetsVideo('images/ubl_students/blackboard.png'),
+    assetsVideo('images/ubl_students/percentage-1.png'),
   ];
   const imgs = [
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/7.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/team-1.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/competing.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_des_imgs/idea.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_students/upsurgeround.png",
+    assetsVideo('images/ubl_des_imgs/7.png'),
+    assetsVideo('images/ubl_des_imgs/team-1.png'),
+    assetsVideo('images/ubl_des_imgs/competing.png'),
+    assetsVideo('images/ubl_des_imgs/idea.png'),
+    assetsVideo('images/ubl_students/upsurgeround.png'),
   ];
   const faqs = [
     {
@@ -113,7 +114,7 @@ export default function UblPage() {
             Lead Sponsor
             <img
               className={styles.sponsorlogo}
-              src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ubl_sponsor_logos/jcbl-500x500.png"
+              src={assetsVideo('images/ubl_sponsor_logos/jcbl-500x500.png')}
               alt=""
             />
           </div>
