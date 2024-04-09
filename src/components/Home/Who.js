@@ -23,7 +23,7 @@ function Who() {
 
             <video className={styles.mobileVideo} controls autoPlay muted loop>
               <source
-                src={assetsCdn("video/upsurge+-+Intro.mp4")}
+                src={assetsCdn("video/upsurge - Intro.mp4")}
                 type="video/mp4"
               ></source>
             </video>
