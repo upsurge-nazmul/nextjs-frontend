@@ -3,7 +3,7 @@ export default function Document() {
   return (
     <Html lang="en-IN">
       <Head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+        {/* <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta> */}
         {/*<!-- Mixpanel --> */}
         <script
             dangerouslySetInnerHTML={{

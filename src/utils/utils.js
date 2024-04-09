@@ -1,5 +1,8 @@
-const gameUrl = (url) => {
-    return url.replace("https://upsurge-public-games.s3.ap-south-1.amazonaws.com", process.env.NEXT_PUBLIC_GAME_BUCKET)
+const gameUrl = (url, buc='upsurge-public-games') => {
+    // return url.replace("https://upsurge-public-games.s3.ap-south-1.amazonaws.com", process.env.NEXT_PUBLIC_GAME_BUCKET)
+    let main_url = `${process.env.NEXT_PUBLIC_GAME_BUCKET}/${buc}`
+    console.log(main_url)
+    return url.replace("https://upsurge-public-games.s3.ap-south-1.amazonaws.com", main_url)
 }
 
 const assetsCdn = (url, buc='upsurge-assets-cdn') => {
