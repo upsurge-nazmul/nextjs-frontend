@@ -3,6 +3,7 @@ export default function Document() {
   return (
     <Html lang="en-IN">
       <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
         {/*<!-- Mixpanel --> */}
         <script
             dangerouslySetInnerHTML={{
@@ -72,7 +73,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mix
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-   fbq('init', '301023181478444'); 
+   fbq('init', '301023181478444');
   fbq('track', 'PageView');
 `,
           }}
