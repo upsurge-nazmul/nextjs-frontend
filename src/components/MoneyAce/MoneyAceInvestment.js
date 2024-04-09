@@ -19,6 +19,8 @@ import Golddiv from "./Investment/Golddiv";
 import RetirementDiv from "./Investment/RetirementDiv";
 import Bulletin from "./Bulletin";
 import NineSlice from "../NineSlice";
+import { assetsVideo } from "../../utils/utils";
+
 export default function MoneyAceInvestment({
   setcurrenttab,
   canvassize,
@@ -277,7 +279,7 @@ export default function MoneyAceInvestment({
             <div className={styles.btn} onClick={() => setcurrentmode("stock")}>
               <img
                 className={styles.blackImage}
-                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/stock.png"
+                src={assetsVideo('images/moneyace_investment_icons/stock.png')}
                 alt=""
               />
               <p>Stocks</p>
@@ -288,7 +290,7 @@ export default function MoneyAceInvestment({
             >
               <img
                 className={styles.blackImage}
-                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/home-insurance.png"
+                src={assetsVideo('images/moneyace_investment_icons/home-insurance.png')}
                 alt=""
               />
               <p>Real Estate</p>
@@ -296,7 +298,7 @@ export default function MoneyAceInvestment({
             <div className={styles.btn} onClick={() => setcurrentmode("gold")}>
               <img
                 className={styles.blackImage}
-                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/gold-ingots.png"
+                src={assetsVideo('images/moneyace_investment_icons/gold-ingots.png')}
                 alt=""
               />
               <p>Gold</p>
@@ -304,7 +306,7 @@ export default function MoneyAceInvestment({
             <div className={styles.btn} onClick={() => setcurrentmode("fd")}>
               <img
                 className={styles.blackImage}
-                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/fd.png"
+                src={assetsVideo('images/moneyace_investment_icons/fd.png')}
                 alt=""
               />
               <p>FD</p>
@@ -315,7 +317,7 @@ export default function MoneyAceInvestment({
             >
               <img
                 className={styles.blackImage}
-                src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/moneyace_investment_icons/pension.png"
+                src={assetsVideo('images/moneyace_investment_icons/pension.png')}
                 alt=""
               />
               <p>Retirement</p>

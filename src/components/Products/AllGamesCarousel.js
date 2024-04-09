@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import GameSvg from "../SVGcomponents/GameSvg";
 import LeftArrowRound from "../SVGcomponents/LeftArrowRound";
 import RightArrowRound from "../SVGcomponents/RightArrowRound";
+import { assetsVideo } from "../../utils/utils";
 
 const slidesData = [
   {
@@ -58,8 +59,8 @@ const games = [
       "Identify how much is available to spend and making purchase decisions based on that.",
     link: "/gamepage/ShoppingBudget",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/ShoppingBudget.mp4",
-    // img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/SB.png",
+      assetsVideo('ShoppingBudget.mp4'),
+    // img: assetsVideo('images/SB.png'),
     img: "https://imgcdn.upsurge.in/images/games/shopping-budget.png",
   },
   {
@@ -67,7 +68,7 @@ const games = [
     description: "Identify what is income and what is expense.",
     link: "/gamepage/BalanceBuilder",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/BalanceBuilder.mp4",
+      assetsVideo('BalanceBuilder.mp4'),
     img: "https://imgcdn.upsurge.in/images/games/balance-builder.png",
   },
   {
@@ -76,7 +77,7 @@ const games = [
       "Identify currency and arrange in ascending or descending order after adding the money.",
     link: "/gamepage/HighAndLow",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/HighAndLow.mp4",
+      assetsVideo('HighAndLow.mp4'),
     img: "https://imgcdn.upsurge.in/images/games/high-low.png",
   },
   {
@@ -85,7 +86,7 @@ const games = [
       "Choose what you want to buy, earn some money, and calculate  how much you have left.",
     link: "/gamepage/MoneyMath",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyMath.mp4",
+      assetsVideo('MoneyMath.mp4'),
     img: "https://imgcdn.upsurge.in/images/games/money-maath.png",
   },
   {
@@ -94,7 +95,7 @@ const games = [
       "Know the importance of allocating your earnings between spending, saving and donating.",
     link: "/gamepage/MoneyManager",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/MoneyManager.mp4",
+      assetsVideo('MoneyManager.mp4'),
     img: "https://imgcdn.upsurge.in/images/games/money-manager.png",
   },
   {
@@ -109,14 +110,14 @@ const games = [
   //     "This is demo description, will be replaced with content later.",
   //   link: "/gamepage/CoinSlide",
   //   video:
-  //     "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/CoinSlide.mp4",
+  //     assetsVideo('CoinSlide.mp4'),
   // },
   {
     name: "Need or Want",
     description: "Identify the difference between needs and wants.",
     link: "/gamepage/NeedOrWant",
     video:
-      "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/NeedOrWant.mp4",
+      assetsVideo('NeedOrWant.mp4'),
     img: "https://imgcdn.upsurge.in/images/games/need-wants.png",
   },
   {

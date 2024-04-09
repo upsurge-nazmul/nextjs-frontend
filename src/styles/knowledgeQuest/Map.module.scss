@@ -1,6 +1,6 @@
 @mixin map(
   $bgUrl:
-    "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapDesktop.png"
+    "https://storage.googleapis.com/upsurge-assets-cdn/map/mapDesktop.png"
 ) {
   background-image: url($bgUrl);
   width: 100%;
@@ -20,7 +20,7 @@
   font-weight: 500;
   font-size: 0.75rem;
   border-radius: 12px;
-  width: fit-content;
+  width: fitContent;
   min-width: 150px;
   z-index: 2;
   color: rgb(44, 44, 44);
@@ -57,7 +57,7 @@
   .mapContent {
     .map {
       @include map(
-        "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapDesktop.png"
+        "https://storage.googleapis.com/upsurge-assets-cdn/map/mapDesktop.png"
       );
       .chapter{
         font-size: 0.75rem;
@@ -71,7 +71,7 @@
   .mapContent {
     .map {
       @include map(
-        "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/map/mapMobile.png"
+        "https://storage.googleapis.com/upsurge-assets-cdn/map/mapMobile.png"
       );
       .chapter{
         font-size: 0.75rem;

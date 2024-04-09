@@ -1,4 +1,5 @@
 import styles from "../../styles/GeneralComponents/onboarding.module.scss";
+import { assetsVideo } from "../../utils/utils";
 
 export default function VideoPlayer({ setwatched }) {
   function handleTimeUpdate(e) {
@@ -19,7 +20,7 @@ export default function VideoPlayer({ setwatched }) {
         controls
       >
         <source
-          src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/video/kids+onboarding_3.mp4"
+          src={assetsVideo('video/kids+onboarding_3.mp4')}
         />
       </video>
     </div>

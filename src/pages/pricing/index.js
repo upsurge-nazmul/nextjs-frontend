@@ -10,6 +10,7 @@ import PaymentsApi from "../../actions/apis/PaymentsApi";
 import HighlightsCounter from "../../components/Home/HighlightsCounter";
 import TestiMonial from "../../components/Home/TestiMonial";
 import PRCoverage from "../../components/Home/PRCoverage";
+import { assetsCdn } from "../../utils/utils";
 
 const PREMIUM_PRICE = 1799;
 
@@ -232,7 +233,7 @@ export default function Pricing() {
               poster="https://imgcdn.upsurge.in/images/pricing-video-picture.png"
             >
               <source
-                src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-CompanyIntro.mkv"
+                src={assetsCdn('video/upsurge-CompanyIntro.mkv')}
                 type="video/mp4"
               ></source>
             </video>

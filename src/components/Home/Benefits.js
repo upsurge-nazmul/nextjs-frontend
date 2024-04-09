@@ -9,19 +9,20 @@ import StarSvg from "../SVGcomponents/StarSvg";
 import BlubSvg from "../SVGcomponents/BulbSvg";
 import Image from "next/image";
 import { MainContext } from "../../context/Main";
+import { assetsVideo } from "../../utils/utils";
 
 const data = [
   {
     title: "Kickstart your financial journey",
     description:
       "Financial literacy is a life-skill and the earlier you start, the easier it will be to achieve your financial goals. Through our games, courses and workshops, all designed by experts, you will understand money, saving, investing and entrepreneurship like never before!",
-    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit1+(1).png",
+    img: assetsVideo('images/benefit1 (1).png'),
   },
   {
     title: "Learning by doing",
     description:
       "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
-    img: "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/benefit2+(1).png",
+    img: assetsVideo('images/benefit2 (1).png'),
   },
   {
     title: "Develop an entrepreneurial mindset.",

@@ -1,5 +1,6 @@
 import Modal from "../Modal";
 import styles from "../../styles/GeneralComponents/onboarding.module.scss";
+import { assetsVideo } from "../../utils/utils";
 
 export default function OnboardingParent({
   setOpen = () => {},
@@ -25,7 +26,7 @@ export default function OnboardingParent({
     >
       <div className={styles.onboardingScr}>
         <iframe
-          src="https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/video/onboarding+video.mp4"
+          src={assetsVideo('video/onboarding+video.mp4')}
           title="Onboarding video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

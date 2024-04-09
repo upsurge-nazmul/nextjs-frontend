@@ -1,4 +1,5 @@
 import styles from "../../styles/Home/gallery.module.scss";
+import { assetsCdn } from "../../utils/utils";
 
 const images = [
   "https://imgcdn.upsurge.in/images/gallery-img1.jpg",
@@ -27,7 +28,7 @@ const GallerySection = () => {
           poster="https://imgcdn.upsurge.in/images/gallery-img2.jpg"
         >
           <source
-            src="https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com/video/upsurge-workshops.mp4"
+            src={assetsCdn('video/upsurge-workshops.mp4')}
             type="video/mp4"
           ></source>
         </video>

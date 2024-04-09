@@ -14,6 +14,8 @@ import SummerCampApis from "../../actions/apis/SummerCampApis";
 import Spinner from "../Spinner";
 import UblCampApis from "../../actions/apis/UblCampApis";
 import OTPCustomComponent from "../OTPCustomComponent";
+import { assetsVideo } from "../../utils/utils";
+
 export default function UblForm({
   done,
   setdone,
@@ -356,14 +358,14 @@ export default function UblForm({
     }
   }
   const logos = [
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/tiger.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/laughing.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/demon.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/happy.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/sloth.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool(1).png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/cool.png",
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com/images/ublavatars/deer.png",
+    assetsVideo('images/ublavatars/tiger.png'),
+    assetsVideo('images/ublavatars/laughing.png'),
+    assetsVideo('images/ublavatars/demon.png'),
+    assetsVideo('images/ublavatars/happy.png'),
+    assetsVideo('images/ublavatars/sloth.png'),
+    assetsVideo('images/ublavatars/cool(1).png'),
+    assetsVideo('images/ublavatars/cool.png'),
+    assetsVideo('images/ublavatars/deer.png'),
   ];
   useEffect(() => {
     const scrollContainer = document.querySelector("#logowrapper");
