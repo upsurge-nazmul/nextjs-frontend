@@ -36,7 +36,7 @@ function ParentChildAuth({
   childAge,
   gameOpened,
   kqOpened,
-  school
+  school,
 }) {
   const fetchfamilyid = async (id) => {
     let response = await ChoreApis.getfamilyid({ userId: id });
@@ -188,7 +188,7 @@ function ParentChildAuth({
     } else {
       if (signupmethod === "organic" || signupmethod) {
         let payload = {
-          email: email
+          email: email,
         };
         LoginApis.sendverificationemail(payload);
       }
