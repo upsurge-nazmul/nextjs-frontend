@@ -31,6 +31,7 @@ import BecomeFinanciallySmartPopUp from "../BecomeFinanciallySmartPopUp";
 import UnicoinsAwards from "../UnicoinsAwards";
 import GameView from "../Games/GameView";
 import WebglView from "../WebglView";
+import RecognizedBy from "./RecognizedBy";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true, blog_data }) {
@@ -205,7 +206,7 @@ function Home({ page = "", showNav = true, blog_data }) {
       document.documentElement.scrollTop = 0;
     }
   }, [router]);
-  
+
   useEffect(() => {
     if (
       (showTrendingGames && !userdata) ||
@@ -293,6 +294,7 @@ function Home({ page = "", showNav = true, blog_data }) {
         />
       )}
       <HighlightsCounter setshowauth={setshowauth} setauthmode={setauthmode} />
+      <RecognizedBy />
       <Benefits />
       <Who />
       {/* <Values

@@ -55,16 +55,13 @@ const PRCoverage = () => {
       <div className={styles.slider}>
         <div className={styles.logos}>
           {data.map((item, index) => (
-           <a
-           className={styles.logoContainer}
-           key={index}
-           href={item.link}
-           >
-           <img
-              src={item.image}
-              alt={item.alt}
-              className={styles.logo}
-              />
+            <a
+              className={styles.logoContainer}
+              key={index}
+              href={item.link}
+              target="_blank"
+            >
+              <img src={item.image} alt={item.alt} className={styles.logo} />
             </a>
           ))}
         </div>
