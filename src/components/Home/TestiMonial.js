@@ -14,14 +14,14 @@ const testimonials = [
     img: "https://imgcdn.upsurge.in/images/Untitled-design-73.png",
   },
   {
-    video: assetsCdn('video/testimonial-princi.mp4'),
+    video: assetsCdn("video/testimonial-princi.mp4"),
     picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
     name: "Veema Gaur",
     img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
     des: "Principal, VIBGYOR High School Gurugram",
   },
   {
-    video: assetsCdn('video/testimonial-child.mov'),
+    video: assetsCdn("video/testimonial-child.mov"),
     picture: "https://imgcdn.upsurge.in/images/student-testimonial.png",
     name: "Upsurge Intern",
     img: "https://imgcdn.upsurge.in/images/student-testimonial.png",
@@ -57,6 +57,27 @@ const testimonials = [
     name: "Mayur",
     img: "https://imgcdn.upsurge.in/images/Untitled-design-75.png",
   },
+  // {
+  //   video: assetsCdn("video/aarti-testimonial.mp4"),
+  //   picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+  //   name: "Aarti",
+  //   img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+  //   des: "Principal, VIBGYOR High School Gurugram",
+  // },
+  // {
+  //   video: assetsCdn("video/bluebells-testimonial.mov"),
+  //   picture: "  images/teacher-testimonial.png",
+  //   name: "Bluebells",
+  //   img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+  //   des: "Principal, VIBGYOR High School Gurugram",
+  // },
+  // {
+  //   video: assetsCdn("video/teen-testimonial.mp4"),
+  //   picture: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+  //   name: "Akhilesh",
+  //   img: "https://imgcdn.upsurge.in/images/teacher-testimonial.png",
+  //   des: "Principal, VIBGYOR High School Gurugram",
+  // },
 ];
 
 export default function TestiMonial() {
