@@ -251,7 +251,7 @@ function Footer({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
               className={styles.subheading}
               onClick={() => router.push("/products/quest")}
             >
-              Knowledge quests
+              Quests
             </p>
             <p
               className={styles.subheading}
@@ -417,7 +417,7 @@ function Footer({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
                 className={styles.subheading}
                 onClick={() => router.push("/products/quest")}
               >
-                Knowledge quests
+                Quests
               </p>
               <p
                 className={styles.subheading}

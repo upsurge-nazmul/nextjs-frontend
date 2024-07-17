@@ -127,9 +127,9 @@ function Header({
             <HeaderTabSection
               title={"Products"}
               tabs={[
-                { 
-                  name: "Knowledge quests", 
-                  pushTo: "/products/quest" 
+                {
+                  name: "Quests",
+                  pushTo: "/products/quest",
                 },
                 {
                   name: "Games arena",
@@ -141,13 +141,13 @@ function Header({
                 //},
                 // { name: "Family Fun", pushTo: "/familyfun" },
                 // { name: "Tribes", pushTo: "/p_tribes" },
-                { 
-                  name: "Live workshops", 
-                  pushTo: "/products/liveclasses" 
+                {
+                  name: "Live workshops",
+                  pushTo: "/products/liveclasses",
                 },
-                // { 
-                //   name: "School Programs", 
-                //   pushTo: "/schools" 
+                // {
+                //   name: "School Programs",
+                //   pushTo: "/schools"
                 // },
               ]}
               // pushTo="/products"
@@ -174,7 +174,7 @@ function Header({
               title={"Resources"}
               tabs={[
                 { name: "About us", pushTo: "/about-us" },
-                { name: "Team", pushTo: "/team" },
+                // { name: "Team", pushTo: "/team" },
                 { name: "Blogs", pushTo: "/blogs" },
                 { name: "Financial calculators", pushTo: "/calculators" },
                 // { name: "Careers", pushTo: "/careers" },
