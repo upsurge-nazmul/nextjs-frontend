@@ -60,6 +60,7 @@ const PRCoverage = () => {
               key={index}
               href={item.link}
               target="_blank"
+              rel="noreferrer"
             >
               <img src={item.image} alt={item.alt} className={styles.logo} />
             </a>
