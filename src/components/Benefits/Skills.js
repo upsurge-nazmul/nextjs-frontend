@@ -19,7 +19,7 @@ export default function Skills({ id }) {
             Develop critical 21st-century skills & knowledge
           </p>
           <p className={styles.subheading}>
-            {`While jobs & roles change with time, the skills needed to succeed remain the same. Our knowledge quests & games aim to not only help students understand money management and entrepreneurship, but also help inculcate skills that are critical to their success as adults. Our learning methodology helps develop real-world problem-solving, critical thinking, and analytical abilities while giving students the confidence to step out of their comfort zone `}
+            {`While jobs & roles change with time, the skills needed to succeed remain the same. Our quests & games aim to not only help students understand money management and entrepreneurship, but also help inculcate skills that are critical to their success as adults. Our learning methodology helps develop real-world problem-solving, critical thinking, and analytical abilities while giving students the confidence to step out of their comfort zone `}
           </p>
         </div>
         <div className={styles.right}>

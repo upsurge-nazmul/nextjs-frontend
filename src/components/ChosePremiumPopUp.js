@@ -47,34 +47,33 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
           <CancelOutlinedIcon className={styles.icon} />
         </div>
 
-
-
         <div className={`${styles.section} ${styles.topsectionheader}`}>
-        <div className={styles.sectionLeft}>
-          <h2 className={styles.header}>upsurge Premium</h2>
-          <p className={styles.subheading}>
-            Get access to premium quests and games
-          </p>
+          <div className={styles.sectionLeft}>
+            <h2 className={styles.header}>upsurge Premium</h2>
+            <p className={styles.subheading}>
+              Get access to premium quests and games
+            </p>
           </div>
           <div className={styles.sectionRight}>
-          <ul>
-            <li className={styles.sectionItem}>20 Knowledge Quests </li>
-            <li className={styles.sectionItem}>16 Educational Games</li>
-            <li className={styles.sectionItem}>5 Flagship Games (1000 hours)</li>
-            <li className={styles.sectionItem}>Events and Challenges</li>
-            <li className={styles.sectionItem}>10,000 Bonus Unicoins</li>
-            <li className={styles.sectionItem}>Redeem Vouchers</li>
-            <li className={styles.sectionItem}>Win monthly rewards worth ₹25,000 </li>
-          </ul>
+            <ul>
+              <li className={styles.sectionItem}>20 Quests </li>
+              <li className={styles.sectionItem}>16 Educational Games</li>
+              <li className={styles.sectionItem}>
+                5 Flagship Games (1000 hours)
+              </li>
+              <li className={styles.sectionItem}>Events and Challenges</li>
+              <li className={styles.sectionItem}>10,000 Bonus Unicoins</li>
+              <li className={styles.sectionItem}>Redeem Vouchers</li>
+              <li className={styles.sectionItem}>
+                Win monthly rewards worth ₹25,000{" "}
+              </li>
+            </ul>
           </div>
-          </div>
-
-
+        </div>
 
         <div className={styles.section}>
-
           <div className={styles.sectionLeft}>
-          <div className={styles.bestValue}>&nbsp;</div>
+            <div className={styles.bestValue}>&nbsp;</div>
             <div className={styles.pricing}>
               <div className={styles.bottom}>
                 <h3 className={styles.header}>{plans[2]?.name}</h3>
@@ -98,11 +97,10 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             </div>
           </div>
 
-
           <div className={styles.verticleLine}></div>
 
           <div className={styles.sectionLeft}>
-          <div className={styles.bestValue}>&nbsp;</div>
+            <div className={styles.bestValue}>&nbsp;</div>
             <div className={styles.pricing}>
               <div className={styles.bottom}>
                 <h3 className={styles.header}>{plans[1].name}</h3>
@@ -126,9 +124,7 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             </div>
           </div>
 
-
           <div className={styles.verticleLine}></div>
-
 
           <div className={styles.sectionRight}>
             <div className={styles.bestValue}>Best Value</div>
@@ -138,9 +134,10 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
                 <h3 className={styles.header}>{plans[0].name}</h3>
               </div>
               <div className={styles.pricingSectionTop}>
-
                 <p className={styles.slashedPrice}>₹{plans[0].slashPrice}</p>
-                <p className={styles.actualPriceGolden}>₹{plans[0].amount}&nbsp;</p>
+                <p className={styles.actualPriceGolden}>
+                  ₹{plans[0].amount}&nbsp;
+                </p>
               </div>
               <div className={styles.pricingSectionBottom}>
                 <p className={styles.smallfont}>(limited period offer)</p>
@@ -156,7 +153,6 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
             </div>
           </div>
         </div>
-
 
         {/* <div>Prefered payment method</div>
         <div className={styles.inputContainer}>
@@ -178,7 +174,6 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
           })}
         </div> */}
 
-
         <p
           className={styles.clickable}
           onClick={() => {
@@ -191,7 +186,6 @@ function ChosePremiumPopUp({ setChoseToPremium }) {
         >
           Continue using the free version
         </p>
-
       </div>
     </div>
   );

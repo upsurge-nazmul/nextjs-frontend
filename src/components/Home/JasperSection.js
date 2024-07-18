@@ -21,7 +21,7 @@ export default function JasperSection() {
             before.`}
             </p>
             <p className={styles.subheading}>
-              {`They can go on knowledge quests, play one of the many games
+              {`They can go on quests, play one of the many games
             in the Arena, or earn UniCoins by completing chores. They can then
             redeem the UniCoins they've earned for real prizes from brands they
             (and you) love!`}

@@ -31,8 +31,8 @@ export default function UblPage() {
   });
 
   const cosponsors = [
-    assetsVideo('images/ubl_sponsor_logos/GEN.png'),
-    assetsVideo('images/ubl_sponsor_logos/MM-logo.png'),
+    assetsVideo("images/ubl_sponsor_logos/GEN.png"),
+    assetsVideo("images/ubl_sponsor_logos/MM-logo.png"),
     // assetsVideo('images/ubl_sponsor_logos/6-Tho-PSEJ-400x400.jpg'),
   ];
   const participationTexts = [
@@ -48,17 +48,17 @@ export default function UblPage() {
     `Vouchers & Offers from our partners.`,
   ];
   const student_imgs = [
-    assetsVideo('images/ubl_students/certificate.png'),
-    assetsVideo('images/ubl_students/upsurgeround.png'),
-    assetsVideo('images/ubl_students/blackboard.png'),
-    assetsVideo('images/ubl_students/percentage-1.png'),
+    assetsVideo("images/ubl_students/certificate.png"),
+    assetsVideo("images/ubl_students/upsurgeround.png"),
+    assetsVideo("images/ubl_students/blackboard.png"),
+    assetsVideo("images/ubl_students/percentage-1.png"),
   ];
   const imgs = [
-    assetsVideo('images/ubl_des_imgs/7.png'),
-    assetsVideo('images/ubl_des_imgs/team-1.png'),
-    assetsVideo('images/ubl_des_imgs/competing.png'),
-    assetsVideo('images/ubl_des_imgs/idea.png'),
-    assetsVideo('images/ubl_students/upsurgeround.png'),
+    assetsVideo("images/ubl_des_imgs/7.png"),
+    assetsVideo("images/ubl_des_imgs/team-1.png"),
+    assetsVideo("images/ubl_des_imgs/competing.png"),
+    assetsVideo("images/ubl_des_imgs/idea.png"),
+    assetsVideo("images/ubl_students/upsurgeround.png"),
   ];
   const faqs = [
     {
@@ -78,7 +78,7 @@ export default function UblPage() {
     {
       question: "When & how will the competitions be held?",
       answer:
-        "Knowledge Quests - online team-based quiz- will be held on Zoom/Google Meet on June 26, 2022. The last date to submit the case study & initial business idea will be July 3, 2022",
+        "Quests - online team-based quiz- will be held on Zoom/Google Meet on June 26, 2022. The last date to submit the case study & initial business idea will be July 3, 2022",
     },
     {
       question: "How will the teams for Round 2 choosen?",
@@ -114,7 +114,7 @@ export default function UblPage() {
             Lead Sponsor
             <img
               className={styles.sponsorlogo}
-              src={assetsVideo('images/ubl_sponsor_logos/jcbl-500x500.png')}
+              src={assetsVideo("images/ubl_sponsor_logos/jcbl-500x500.png")}
               alt=""
             />
           </div>
@@ -333,7 +333,10 @@ export default function UblPage() {
             href="https://www.jcbl.com/"
             rel="noopener noreferrer"
           >
-            <img src="https://imgcdn.upsurge.in/images/jcbl-500x500.png" alt="" />
+            <img
+              src="https://imgcdn.upsurge.in/images/jcbl-500x500.png"
+              alt=""
+            />
           </a>
           <p>
             Incepted in 1989 with a vision to manufacture high-quality mobility

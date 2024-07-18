@@ -21,7 +21,7 @@ export default function Pricing({ userdatafromserver }) {
       price: "₹599",
       description: "per child, per month",
       benefits: [
-        "Knowledge Quests",
+        "Quests",
         "Games Arena",
         "Chore Management",
         "Family Fun Games & Activities",
@@ -32,7 +32,7 @@ export default function Pricing({ userdatafromserver }) {
       price: "₹499",
       description: "per child, per month (billed every 6 months)",
       benefits: [
-        "Knowledge Quests",
+        "Quests",
         "Games Arena",
         "Chore Management",
         "Family Fun Games & Activities",
@@ -46,7 +46,7 @@ export default function Pricing({ userdatafromserver }) {
       price: "₹399",
       description: "per child, per month (billed annually)",
       benefits: [
-        "Knowledge Quests",
+        "Quests",
         "Games Arena",
         "Chore Management",
         "Family Fun Games & Activities",

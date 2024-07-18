@@ -14,9 +14,24 @@ import PageTitle from "../../../../components/PageTitle";
 import ChosePremiumPopUp from "../../../../components/ChosePremiumPopUp";
 
 const QUEST_TYPES = [
-  { questTypeId: "FL", title: "Financial Literacy", background: "#fcd9d9", font: "#850606" },
-  { questTypeId: "ER", title: "Entrepreneurship", background: "#e8cae8", font: "#931393" },
-  { questTypeId: "CQ", title: "Career Quests", background: "#ccc", font: "#333" },
+  {
+    questTypeId: "FL",
+    title: "Financial Literacy",
+    background: "#fcd9d9",
+    font: "#850606",
+  },
+  {
+    questTypeId: "ER",
+    title: "Entrepreneurship",
+    background: "#e8cae8",
+    font: "#931393",
+  },
+  {
+    questTypeId: "CQ",
+    title: "Career Quests",
+    background: "#ccc",
+    font: "#333",
+  },
   { questTypeId: "LS", title: "Life Skills", background: "#ccc", font: "#333" },
 ];
 
@@ -61,14 +76,11 @@ export default function KnowledgeQuest({ userData, questData }) {
 
   return (
     <div className={styles.questPage}>
-      <PageTitle title={`upsurge | Knowledge Quests`} />
+      <PageTitle title={`upsurge | Quests`} />
       <DashboardLeftPanel type="kid" />
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
-        <DashboardHeader
-          mode={"Knowledge Quests"}
-          settoastdata={settoastdata}
-        />
+        <DashboardHeader mode={"Quests"} settoastdata={settoastdata} />
         {showSubToPremium && (
           <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
         )}

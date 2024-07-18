@@ -5,7 +5,7 @@ import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 
 const SOURCES = [
   { id: 1, key: "all", value: "All Sources" },
-  { id: 2, key: "kq", value: "Knowledge Quests" },
+  { id: 2, key: "kq", value: "Quests" },
   { id: 3, key: "chores", value: "Chores" },
   { id: 4, key: "games", value: "Games" },
   { id: 5, key: "reward", value: "Reward" },
@@ -51,9 +51,7 @@ export default function TransactionCard({ data }) {
       </div>
       <div className={styles.cardContent}>
         <div className={styles.titleArea}>
-          <div className={styles.title}>
-            {data.source}
-          </div>
+          <div className={styles.title}>{data.source}</div>
           <div className={styles.transactionId}>{data.transaction_id}</div>
         </div>
         <div className={styles.dateArea}>
@@ -68,11 +66,7 @@ export default function TransactionCard({ data }) {
                   : "#333",
             }}
           >
-            {
-              TRANSACTION_TYPE.find(
-                (trnc) => trnc.key === data.status
-              ).value
-            }
+            {TRANSACTION_TYPE.find((trnc) => trnc.key === data.status).value}
           </div>
           <div className={styles.date}>{data.date}</div>
         </div>

@@ -63,7 +63,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
     },
   ];
   const annualpricing = [
-    "Knowledge Quests",
+    "Quests",
     "Games Arena",
     "Chore Management",
     "Family Fun Games & Activities",
@@ -159,7 +159,10 @@ Explore our platform and collect as many UniCoins by playing the games, taking t
           </div>
           <div className={styles.des3}>
             <div className={styles.coinbg}>
-              <img src="https://imgcdn.upsurge.in/images/coinfalling.png" alt="" />
+              <img
+                src="https://imgcdn.upsurge.in/images/coinfalling.png"
+                alt=""
+              />
             </div>
             <p className={styles.desheading}>
               UniCoins

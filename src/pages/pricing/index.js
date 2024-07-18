@@ -233,7 +233,7 @@ export default function Pricing() {
               poster="https://imgcdn.upsurge.in/images/pricing-video-picture.png"
             >
               <source
-                src={assetsCdn('video/upsurge-CompanyIntro.mkv')}
+                src={assetsCdn("video/upsurge-CompanyIntro.mkv")}
                 type="video/mp4"
               ></source>
             </video>

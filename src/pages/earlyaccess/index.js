@@ -72,7 +72,7 @@ export default function Earlyaccess() {
     },
   ];
   const annualpricing = [
-    "Knowledge Quests",
+    "Quests",
     "Games Arena",
     "Chore Management",
     "Family Fun Games & Activities",

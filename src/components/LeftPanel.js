@@ -27,7 +27,7 @@ function LeftPanel({ openLeftPanel, setOpenLeftPanel }) {
               title={"Products"}
               tabs={[
                 {
-                  name: "Knowledge quests",
+                  name: "Quests",
                   pushTo: "/products/quest",
                 },
                 {

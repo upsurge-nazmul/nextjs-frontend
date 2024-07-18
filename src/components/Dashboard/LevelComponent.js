@@ -9,7 +9,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 1", "Game plays 100"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -18,7 +18,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 5", "Game plays 1000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -27,7 +27,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 10", "Game plays 10000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -36,7 +36,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 25", "Game plays 100000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -45,7 +45,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 50", "Game plays 1000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -54,7 +54,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 75", "Game plays 10000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -63,7 +63,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 100", "Game plays 10000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -72,7 +72,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 250", "Game plays 100000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -81,7 +81,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 500", "Game plays 100000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -90,7 +90,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores <= 750", "Game plays 100000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },
@@ -99,7 +99,7 @@ const LEVEL_DATA = [
     unlockedAt: ["Completed chores > 750", "Game plays 1000000000"],
     perks: [
       "More Games unlocked",
-      "More Knowledge Quests unlocked",
+      "More Quests unlocked",
       "More Avatars unlocked",
     ],
   },

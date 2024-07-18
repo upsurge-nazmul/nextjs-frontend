@@ -9,7 +9,7 @@ import SwapVertIcon from "@mui/icons-material/SwapVert";
 
 const SOURCES = [
   { id: 1, key: "all", value: "All Sources" },
-  { id: 2, key: "kq", value: "Knowledge Quests" },
+  { id: 2, key: "kq", value: "Quests" },
   { id: 3, key: "chores", value: "Chores" },
   { id: 4, key: "games", value: "Games" },
   { id: 5, key: "reward", value: "Reward" },
@@ -104,7 +104,7 @@ const DATA = [
   },
 ];
 
-export default function TransactionHistory({ open, setOpen,data }) {
+export default function TransactionHistory({ open, setOpen, data }) {
   const [displayData, setDisplayData] = useState(data);
   const [selectedSource, setSelectedSource] = useState(SOURCES[0].key);
   const [selectedType, setSelectedType] = useState(TRANSACTION_TYPE[0].key);
@@ -115,9 +115,7 @@ export default function TransactionHistory({ open, setOpen,data }) {
         if (selectedType === TRANSACTION_TYPE[0].key) {
           setDisplayData(data);
         } else {
-          setDisplayData(
-            data.filter((item) => item.status === selectedType)
-          );
+          setDisplayData(data.filter((item) => item.status === selectedType));
         }
       } else {
         setDisplayData(() =>
@@ -176,9 +174,9 @@ export default function TransactionHistory({ open, setOpen,data }) {
           </div>
         </div>
         <div className={styles.historyArea}>
-          {displayData.map((item) =>
-           <TransactionCard data={item} key={item.id} />
-              )}
+          {displayData.map((item) => (
+            <TransactionCard data={item} key={item.id} />
+          ))}
         </div>
       </div>
     </Modal>

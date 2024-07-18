@@ -6,7 +6,7 @@ export default function FaqSection({ customfaq }) {
   const faqs = [
     {
       question: "What ages are upsurge games good for?",
-      answer: `It’s never too early to build skills and healthy financial habits! At the moment, our knowledge quests and games are relevant for kids over the age of 10. `,
+      answer: `It’s never too early to build skills and healthy financial habits! At the moment, our quests and games are relevant for kids over the age of 10. `,
     },
     {
       question: "What topics are covered by the games?",
@@ -42,9 +42,7 @@ export default function FaqSection({ customfaq }) {
       }`}
     >
       <div className={styles.left}>
-        <h2 className={styles.heading}>
-          FAQ&#39;s
-        </h2>
+        <h2 className={styles.heading}>FAQ&#39;s</h2>
       </div>
       <h2 className={styles.mobilehead}>FAQ&#39;s</h2>
       <div className={styles.wrapper}>
