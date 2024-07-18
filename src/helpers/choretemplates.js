@@ -220,7 +220,7 @@ export const choretemplates = [
         img: "https://imgcdn.upsurge.in/images/Untitled-design-133.png",
       },
       {
-        name: "Complete Knowledge Quest ",
+        name: "Complete a Quest ",
         img: "https://imgcdn.upsurge.in/images/Untitled-design-134.png",
       },
       {

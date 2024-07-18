@@ -179,7 +179,7 @@ function Dashboard({
     {
       ref: "#quest-leftpanel",
       position: "bottom",
-      content: `You can track the knowledge quest progress of your children.`,
+      content: `You can track the quest progress of your children.`,
       superimpose: true,
       required: false,
       highlightBg: true,

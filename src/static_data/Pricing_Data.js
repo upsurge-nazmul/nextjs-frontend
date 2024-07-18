@@ -5,7 +5,7 @@ export const pricing_data = [
     total: 599,
     gstprice: 706.82,
     description: "per child, per month",
-    benefits: ["Knowledge Quest", "Games Arena", "Family Fun"],
+    benefits: ["Quest", "Games Arena", "Family Fun"],
   },
   {
     name: "Half-Yearly",
@@ -16,7 +16,7 @@ export const pricing_data = [
     benefits: [
       "1000 UniCoins bonus",
       "Masterclass videos",
-      "Knowledge Quest",
+      "Quest",
       "Games Arena",
       "Family Fun",
     ],
@@ -31,7 +31,7 @@ export const pricing_data = [
       "2500 UniCoins bonus",
       "Masterclass sessions and videos",
       "Career development session",
-      "Knowledge Quest",
+      "Quest",
       "Games Arena",
       "Family Fun",
     ],

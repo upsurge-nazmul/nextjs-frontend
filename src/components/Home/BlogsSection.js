@@ -17,9 +17,8 @@ export async function getStaticProps() {
     props: {
       blog_data,
     },
-  }
+  };
 }
-
 
 function BlogsSection(blog_data) {
   const router = useRouter();
@@ -35,7 +34,6 @@ function BlogsSection(blog_data) {
     x();
   }, []);
 
-
   function getdatafromraw(rawdata) {
     if (!rawdata) return "";
     let sanitized = xss(rawdata, {
@@ -49,14 +47,14 @@ function BlogsSection(blog_data) {
   }
   let data = [
     {
-      title: "Knowledge Quest",
+      title: "Quest",
       pushTo: "/products/quests",
       description:
-        "Knowledge Quest comprises byte sized interactive videos which include exercises, real life examples and a short quiz.",
+        "Quest comprises byte sized interactive videos which include exercises, real life examples and a short quiz.",
     },
     {
       pushTo: "/products/games",
-      title: "Games Arena",
+      title: "Games",
       description:
         "Challenge your friends over multiple games that are fun and experiential",
     },
@@ -75,51 +73,50 @@ function BlogsSection(blog_data) {
   ];
   return (
     <>
-    <section
-      className={`${styles.blogSection} ${
-        theme === "dark" && styles.darkblogSection
-      }`}
+      <section
+        className={`${styles.blogSection} ${
+          theme === "dark" && styles.darkblogSection
+        }`}
       >
-      <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
-      Read our blogs for some MONEY-ful insights
-      </h2>
-      <div className={styles.wrapper}>
-        {blogs.map((item, index) => {
-          return (
-            <div
-            key={item.id}
-              className={styles.moreCard}
-              onClick={() => {
-                router.push(`/blog/${item.id}`);
-              }}
+        <h2 className={styles.heading} onClick={() => router.push("/blogs")}>
+          Read our blogs for some MONEY-ful insights
+        </h2>
+        <div className={styles.wrapper}>
+          {blogs.map((item, index) => {
+            return (
+              <div
+                key={item.id}
+                className={styles.moreCard}
+                onClick={() => {
+                  router.push(`/blog/${item.id}`);
+                }}
               >
-              <img src={item.img_url} alt="" />
-              <div className={styles.categories}>
-                {item.categories?.split(",").map((cat, index) => {
-                  return <p key={"morecat" + index}>{cat}</p>;
-                })}
-              </div>
+                <img src={item.img_url} alt="" />
+                <div className={styles.categories}>
+                  {item.categories?.split(",").map((cat, index) => {
+                    return <p key={"morecat" + index}>{cat}</p>;
+                  })}
+                </div>
 
-              <div className={styles.title}>{item.title}</div>
-              <div className={styles.content}>
-                {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
-                100
-                  ? getdatafromraw(item.content)
-                      .replace(/<[^>]+>/g, "")
-                      .substring(0, 100) + "..."
-                  : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                <div className={styles.title}>{item.title}</div>
+                <div className={styles.content}>
+                  {getdatafromraw(item.content).replace(/<[^>]+>/g, "").length >
+                  100
+                    ? getdatafromraw(item.content)
+                        .replace(/<[^>]+>/g, "")
+                        .substring(0, 100) + "..."
+                    : getdatafromraw(item.content).replace(/<[^>]+>/g, "")}
+                </div>
+                <div className={styles.time}>5 Minutes Read</div>
               </div>
-              <div className={styles.time}>5 Minutes Read</div>
-            </div>
-          );
-        })}
-         <p className={styles.button} onClick={() => router.push("/blogs")}>
-        Read Now
-      </p>
-      </div>
-    </section>
-
-        </>
+            );
+          })}
+          <p className={styles.button} onClick={() => router.push("/blogs")}>
+            Read Now
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 

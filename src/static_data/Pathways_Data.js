@@ -1,10 +1,4 @@
-export const PATHWAY_TASK_TYPE = [
-  "Knowledge Quest",
-  "Game",
-  "Chore",
-  "Quiz",
-  "Activity",
-];
+export const PATHWAY_TASK_TYPE = ["Quest", "Game", "Chore", "Quiz", "Activity"];
 export const TASK_IMAGE_BY_TYPE = [
   "/images/journey/quest.svg",
   "/images/journey/game.svg",
@@ -13,7 +7,7 @@ export const TASK_IMAGE_BY_TYPE = [
   "/images/journey/activity.svg",
 ];
 export const TASK_TYPE_COLORS = [
-  { id: "Knowledge Quest", color: "#17d1bc" },
+  { id: "Quest", color: "#17d1bc" },
   { id: "Game", color: "#ffcd00" },
   { id: "Chore", color: "#4166EB" },
   { id: "Quiz", color: "#ff6163" },
@@ -118,7 +112,8 @@ export const PathwayData = [
       {
         taskNo: 2,
         taskTitle: "Plastic Money",
-        taskDescription: "What are these small plastic cards that everyone uses?",
+        taskDescription:
+          "What are these small plastic cards that everyone uses?",
         id: "pw-2-task-2",
         type: PATHWAY_TASK_TYPE[0],
         taskReward: "1000",

@@ -22,7 +22,7 @@ export default function HowEarlyAccess() {
           </div>
           <div className={styles.stepsubhead}>
             <QuestSvg className={styles.icon} />
-            <p>Completing a knowledge quest</p>
+            <p>Completing a quest</p>
           </div>
           <div className={styles.stepsubhead}>
             <QuizIcon className={styles.fonticon} />

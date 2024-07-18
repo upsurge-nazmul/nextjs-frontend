@@ -41,7 +41,7 @@ const testimonials = [
   },
   {
     quote:
-      "My 17-year-old daughter, after going through the knowledge quests and playing the investment games has started investing Rs. 2,500 a month in mutual funds! I couldn’t have imagined this a few months ago!",
+      "My 17-year-old daughter, after going through the quests and playing the investment games has started investing Rs. 2,500 a month in mutual funds! I couldn’t have imagined this a few months ago!",
     name: "Radha",
     img: "https://imgcdn.upsurge.in/images/Untitled-design-69.png",
   },
@@ -53,7 +53,7 @@ const testimonials = [
   },
   {
     quote:
-      "The Knowledge Quests are designed really well - easy to understand concepts, real examples and fun activities make sure that my daughter is learning and having fun.",
+      "The Quests are designed really well - easy to understand concepts, real examples and fun activities make sure that my daughter is learning and having fun.",
     name: "Mayur",
     img: "https://imgcdn.upsurge.in/images/Untitled-design-75.png",
   },

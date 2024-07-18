@@ -101,7 +101,7 @@ export default function Rewards({ userdatafromserver, vouchers }) {
             <p className={styles.desheading}>upsurge reward program</p>
             <p className={styles.description}>
               {`At upsurge, everything is a game and you can win rewards everywhere!
-Explore our platform and collect as many UniCoins by playing the games, taking the money quotient quiz, completing the knowledge quest & inviting your friends.
+Explore our platform and collect as many UniCoins by playing the games, taking the money quotient quiz, completing the quest & inviting your friends.
 `}
             </p>
             <p className={styles.description}>
@@ -109,7 +109,7 @@ Explore our platform and collect as many UniCoins by playing the games, taking t
 `}
             </p>
             {/* <p className={styles.descriptionbold}>
-              {`* You can increase your rank by playing games, completing knowledge quests, playing money quotient, reading blogs, inviting friends etc.`}
+              {`* You can increase your rank by playing games, completing quests, playing money quotient, reading blogs, inviting friends etc.`}
             </p>
             <p className={styles.descriptionbold}>
               {`* All the UniCoins collected during earlyaccess, will be given as bonus on joining upsurge.`}

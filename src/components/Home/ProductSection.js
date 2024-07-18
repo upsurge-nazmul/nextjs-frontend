@@ -13,7 +13,7 @@ import ProductModal from "./ProductModal";
 
 const data = [
   {
-    title: "Knowledge Quest",
+    title: "Quest",
     pushTo: "/products/quest",
     description:
       "Interactive gamified lessons that cover fundamentals of entrepreneurship & personal finance, and include activities, games, stories and quizzes.",
@@ -24,7 +24,7 @@ const data = [
   },
   {
     pushTo: "/products/games",
-    title: "Games Arena",
+    title: "Games",
     description:
       "A platform of our proprietary games where children can get hands-on experience in applying concepts to games and competing with other students.",
     icon: <ProductGameSvg className={styles.icon} />,
