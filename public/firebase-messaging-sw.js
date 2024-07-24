@@ -3,22 +3,31 @@ importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
 
 // Initialize the Firebase app in the service worker by passing the generated config
 var firebaseConfig = {
-  projectId: "upsurge-cb149",
-  apiKey: "AIzaSyAPyGeHvgBufxeLPCRYYPRKKrnt8Ro8Jec",
-  appId: "1:347544578973:web:a4d5722b4638d9bd951d74",
-  messagingSenderId: "347544578973",
+  apiKey: "AIzaSyAAwWmI0lkLmQYFylZBabcEowtfkazvcCs",
+  authDomain: "upsurge-demo.firebaseapp.com",
+  projectId: "upsurge-demo",
+  storageBucket: "upsurge-demo.appspot.com",
+  messagingSenderId: "812410598050",
+  appId: "1:812410598050:web:d0c745420caed195279dfb",
+  measurementId: "G-55GVLYMBPP",
 };
 
 firebase.initializeApp(firebaseConfig);
 
-// Retrieve firebase messaging
-const messaging = firebase.messaging();
+// Check if messaging is supported
+if (firebase.messaging.isSupported()) {
+  // Retrieve firebase messaging
+  const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function (payload) {
-  const notificationTitle = payload.data?.title || payload.body.title;
-  const notificationOptions = {
-    body: payload.data.body,
-  };
+  messaging.onBackgroundMessage(function (payload) {
+    const notificationTitle =
+      payload.data?.title || payload.notification?.title;
+    const notificationOptions = {
+      body: payload.data?.body || payload.notification?.body,
+    };
 
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
+    self.registration.showNotification(notificationTitle, notificationOptions);
+  });
+} else {
+  console.warn("Firebase Messaging is not supported in this environment.");
+}
