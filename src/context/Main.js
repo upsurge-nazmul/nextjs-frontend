@@ -33,7 +33,7 @@ export const MainContextProider = ({ children }) => {
     height: 720,
   });
   const [theme, setTheme] = useState("light");
-  const [skipActive,setskipActive] = useState(true);
+  const [skipActive, setskipActive] = useState(true);
   const [timesPlayed, setTimesPlayed] = useState(0);
   const [unicoins, setUnicoins] = useState(0);
   const [unicoinsEarnedPopUp, setUnicoinsEarnedPopUp] = useState(false);
@@ -106,32 +106,36 @@ export const MainContextProider = ({ children }) => {
     setmobileMode(isMobile);
   }, [isMobile]);
   useEffect(() => {
-    try {
-      let messaging = getMessaging();
-      onMessage(messaging, (payload) => {
-        setShow(true);
-        setNotification({
-          title: payload.data?.title,
-          body: payload.data?.body,
-          data: payload.data,
-          show: true,
-        });
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-  useEffect(() => {
-    saveNotificationToken();
-    async function saveNotificationToken() {
-      let token = "";
+    if ("serviceWorker" in navigator && "PushManager" in window) {
       try {
         let messaging = getMessaging();
-        token = await getToken(messaging);
-        await NotificationApis.addToken({ type: "web", token });
+        onMessage(messaging, (payload) => {
+          setShow(true);
+          setNotification({
+            title: payload.data?.title,
+            body: payload.data?.body,
+            data: payload.data,
+            show: true,
+          });
+        });
       } catch (err) {
-        console.log("notifications blocked");
+        console.log(err);
       }
+
+      saveNotificationToken();
+
+      async function saveNotificationToken() {
+        let token = "";
+        try {
+          let messaging = getMessaging();
+          token = await getToken(messaging);
+          await NotificationApis.addToken({ type: "web", token });
+        } catch (err) {
+          console.log("notifications blocked");
+        }
+      }
+    } else {
+      console.log("This browser does not support notifications.");
     }
   }, []);
   useEffect(() => {
@@ -147,32 +151,31 @@ export const MainContextProider = ({ children }) => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     let timesAlreadyPlayed = localStorage.getItem("timesPlayed");
-    if(timesAlreadyPlayed > 0){
+    if (timesAlreadyPlayed > 0) {
       setTimesPlayed(timesAlreadyPlayed);
-    }
-    else if(timesPlayed > 0){
+    } else if (timesPlayed > 0) {
       localStorage.setItem("timesPlayed", JSON.stringify(timesPlayed));
     }
-  },[timesPlayed])
+  }, [timesPlayed]);
   return (
     <MainContext.Provider
-    value={{
-      savedUsers,
-      setSavedUsers,
-      mobileMode,
-      notification,
-      setNotification,
-      user,
-      setuser,
-      authmode,
-      setauthmode,
-      dashboardmode,
-      setdashboardmode,
-      accesstoken,
-      setaccesstoken,
-      userSignupMethod,
+      value={{
+        savedUsers,
+        setSavedUsers,
+        mobileMode,
+        notification,
+        setNotification,
+        user,
+        setuser,
+        authmode,
+        setauthmode,
+        dashboardmode,
+        setdashboardmode,
+        accesstoken,
+        setaccesstoken,
+        userSignupMethod,
         setuserSignupMethod,
         email,
         setemail,
@@ -197,7 +200,7 @@ export const MainContextProider = ({ children }) => {
         setUnicoins,
         unicoins,
         setUnicoinsEarnedPopUp,
-        unicoinsEarnedPopUp
+        unicoinsEarnedPopUp,
       }}
     >
       {children}
