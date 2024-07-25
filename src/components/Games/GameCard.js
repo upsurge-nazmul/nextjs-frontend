@@ -7,6 +7,7 @@ export default function GameCard({
   data = null,
   onClick = () => {},
   reward = "",
+  rewardReceived = false,
 }) {
   const getBackgroundImage = (data) => {
     return (
@@ -34,12 +35,12 @@ export default function GameCard({
           <GameSvg className={styles.icon} />
         </Buttons>
       </div>
-      {reward && (
+      {!rewardReceived && (
         <div className={styles.unicoins}>
           <div className={styles.coin}>
             <UniCoinSvg />
           </div>
-          {reward}
+          {data.unicoinsReward}
         </div>
       )}
     </div>

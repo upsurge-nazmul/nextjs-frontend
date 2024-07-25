@@ -33,9 +33,25 @@ export default function GameView({
     if (gameId && token) fetchGameData();
   }, [gameId, token]);
 
+  const handleGameScoreupdate = async () => {
+    let res = await GameApis.unicoinreward(
+      {
+        gameId: gameData.id,
+        unicoins: gameData.unicoinsReward,
+      },
+      token
+    );
+    if (res?.data?.success) {
+      console.log("Score success rewards alloted");
+    } else {
+      console.log(res?.data?.message || "");
+    }
+  };
+
   const handleGameClose = () => {
     sendDataToReactNativeApp();
     mixpanel.track("Game Closed", { event: `Game closed` });
+    handleGameScoreupdate();
     setShowUnicoinsAwards(true);
     setUnicoins(4000);
   };

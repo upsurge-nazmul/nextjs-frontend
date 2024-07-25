@@ -60,6 +60,7 @@ export default function ChildActivity({
   stockHoldings,
   todaysquestion,
   gameunicoinrewards,
+  allGames,
 }) {
   const { userdata, setuserdata } = useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
@@ -152,7 +153,7 @@ export default function ChildActivity({
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, [userdatafromserver]);
-  
+
   useEffect(() => {
     if (choremode === "inprogress") {
       if (pendingchores) {
@@ -176,7 +177,7 @@ export default function ChildActivity({
       }
     }
   }, [choremode]);
-  
+
   useEffect(() => {
     const scrollContainer = document.querySelector("#tribewrapper");
     if (!scrollContainer) return;
@@ -186,7 +187,7 @@ export default function ChildActivity({
       scrollContainer.scrollLeft += evt.deltaY * 5;
     });
   }, []);
-  
+
   useEffect(() => {
     if (router.query.storyIndex) {
       setcurrentTourIndex(Number(router.query.storyIndex));
@@ -285,7 +286,6 @@ export default function ChildActivity({
           <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
         )}
         <div className={styles.mainContent}>
-          
           <Journey
             data={questData}
             userPlanType={userdata?.premium_plan}
@@ -295,6 +295,7 @@ export default function ChildActivity({
             <DashboardGames
               gameunicoinrewards={gameunicoinrewards}
               recentgames={recentgames}
+              allGames={allGames}
               setShowSubToPremium={setShowSubToPremium}
             />
           </div>
@@ -309,29 +310,27 @@ export default function ChildActivity({
               )}
             </div>
             <div className={styles.flexRight}>
-
               <AppDownload />
             </div>
           </div>
 
           <div className={styles.notifCardArea}>
-          {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
+            {/* {userdatafromserver && userdatafromserver.premium_plan >= 1001 && userdatafromserver.premium_flash_sale === true && (
             <FlashSaleOfferPremium />
             )} */}
-          {userdatafromserver && userdatafromserver.premium_plan == 0 && (
-            <FlashSaleOffer />
-          )}
-          {userdatafromserver && !userdatafromserver.email_verified && (
-            <EmailVerificationPending settoastdata={setShowToolTip} />
-          )}
-          {userdatafromserver && !userdatafromserver.profile_completed && (
-            <EditProfilePending />
-          )}
-          {userdatafromserver && !userdatafromserver.phone_verified && (
-            <PhoneVerificationPending />
-          )}
+            {userdatafromserver && userdatafromserver.premium_plan == 0 && (
+              <FlashSaleOffer />
+            )}
+            {userdatafromserver && !userdatafromserver.email_verified && (
+              <EmailVerificationPending settoastdata={setShowToolTip} />
+            )}
+            {userdatafromserver && !userdatafromserver.profile_completed && (
+              <EditProfilePending />
+            )}
+            {userdatafromserver && !userdatafromserver.phone_verified && (
+              <PhoneVerificationPending />
+            )}
           </div>
-         
         </div>
       </div>
       {showTrendingGames ? (
@@ -425,6 +424,7 @@ export async function getServerSideProps({ params, req }) {
         null,
         token
       );
+      let allGames = await GameApis.gamesList();
       return {
         props: {
           isLogged: true,
@@ -469,6 +469,7 @@ export async function getServerSideProps({ params, req }) {
           gameunicoinrewards: gameunicoinrewards?.data?.success
             ? gameunicoinrewards.data.data
             : [],
+          allGames: allGames?.data?.success ? allGames.data.data : [],
         },
       };
     }

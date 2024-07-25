@@ -4,12 +4,18 @@ import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
 import Games from "../../../../components/Games";
 
-function GamesPage({ userdatafromserver, gameunicoinrewards, recentgames }) {
+function GamesPage({
+  userdatafromserver,
+  gameunicoinrewards,
+  allGames,
+  recentgames,
+}) {
   return (
     <Games
       {...{
         userdatafromserver,
         gameunicoinrewards,
+        allGames,
         recentgames,
         accountType: "kid",
       }}
@@ -36,6 +42,7 @@ export async function getServerSideProps({ params, req }) {
         },
       };
     } else {
+      let allGames = await GameApis.gamesList();
       let recentgames = await FreeGameApis.getrecentGames(null, token);
       let gameunicoinrewards = await GameApis.getgameunicoinrewards(
         null,
@@ -46,6 +53,7 @@ export async function getServerSideProps({ params, req }) {
           isLogged: true,
           userdatafromserver: response.data.data,
           token: token,
+          allGames: allGames?.data?.success ? allGames.data.data : [],
           gameunicoinrewards: gameunicoinrewards?.data?.success
             ? gameunicoinrewards.data.data
             : [],

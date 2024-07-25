@@ -10,23 +10,27 @@ const loggameerror = (payload) => {
 const gamedata = (payload) => {
   return ApiCalls.getResponse("games/gamedata", payload);
 };
-const unicoinreward = (payload) => {
+const unicoinreward = (payload, token) => {
   return ApiCalls.postResponse(
     "games/gameunicoins",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 const getgameunicoinrewards = (payload, token) => {
   return ApiCalls.getResponse("games/gameunicoins", payload, token);
 };
-//getchores
+const gamesList = (payload) => {
+  return ApiCalls.getResponse("games/list", payload);
+};
+
 const GameApis = {
   loggameclick,
   loggameerror,
   gamedata,
   unicoinreward,
   getgameunicoinrewards,
+  gamesList,
 };
 
 export default GameApis;

@@ -9,7 +9,7 @@ import { isMobileOnly } from "react-device-detect";
 export default function GameView({
   game,
   setGame,
-  handleDone = () => {},
+  handleQuestDone = () => {},
   setUnicoins = () => {},
   setShowUnicoinsAwards = () => {},
   isKq = false,
@@ -57,6 +57,18 @@ export default function GameView({
     fetchGameData();
   }, []);
 
+  const handleGameScoreupdate = async (score) => {
+    let res = await GameApis.unicoinreward({
+      gameId: gameData.id,
+      unicoins: gameData.unicoinsReward,
+    });
+    if (res?.data?.success) {
+      console.log("Score success rewards alloted");
+    } else {
+      console.log(res?.data?.message || "");
+    }
+  };
+
   const handleGameClose = () => {
     mixpanel.track(`${isKq ? "Knowledge Quest" : "Game"} Closed`, {
       event: `Game closed`,
@@ -64,6 +76,7 @@ export default function GameView({
     setFullScreen(false);
     if (document && document.fullscreenElement) document.exitFullscreen();
     setGame();
+    if (!isKq) handleGameScoreupdate();
     setShowUnicoinsAwards(true);
     setUnicoins(4000);
   };
@@ -74,7 +87,7 @@ export default function GameView({
         <UnityScreen
           data={gameData}
           handleGameExit={handleGameClose}
-          handleGameDone={handleDone}
+          handleQuestDone={handleQuestDone}
           // fullScreen={fullScreen}
           // showDone={handleDone}
           // loading={loading}

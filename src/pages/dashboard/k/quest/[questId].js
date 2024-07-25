@@ -133,7 +133,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                     <GameView
                       game={currentChapter}
                       setGame={handleBack}
-                      handleDone={handleDone}
+                      handleQuestDone={handleDone}
                       isKq={true}
                     />
                   ) : view === LESSON_TYPES[1] ? (
@@ -148,7 +148,7 @@ export default function KnowledgeQuest({ userData, questData }) {
                     <GameView
                       game={currentChapter}
                       setGame={handleBack}
-                      handleDone={handleDone}
+                      handleQuestDone={handleDone}
                     />
                   ) : view === LESSON_TYPES[2] ? (
                     <QuizView

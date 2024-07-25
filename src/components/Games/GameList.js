@@ -15,19 +15,23 @@ export default function GameList({
         ? data.map((item, index) => (
             <GameCard
               onClick={() =>
-                handlegameclick(
-                  item,
-                  Game_Data[item].pushto
-                    ? Game_Data[item].pushto.split("/")[
-                        Game_Data[item].pushto.split("/").length - 1
-                      ]
-                    : "",
-                  Game_Data[item].webgl_key,
-                  Game_Data[item].premium_plan,
-                  userdata.premium_plan
-                )
+                // handlegameclick(
+                //   item,
+                //   item.pushto
+                //     ? item.pushto.split("/")[item.pushto.split("/").length - 1]
+                //     : "",
+                //   item.webgl_key,
+                //   item.premium_plan,
+                //   userdata.premium_plan
+                // )
+                handlegameclick(item)
               }
-              data={Game_Data[item]}
+              data={item}
+              rewardReceived={
+                gameunicoinrewards
+                  ? gameunicoinrewards.includes(item.id)
+                  : false
+              }
               key={"game_array" + index}
             />
           ))
