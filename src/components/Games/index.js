@@ -167,7 +167,11 @@ function Games({
           <AvailableGames />
         </div>
       </div>
-      {openGame ? <GameView game={openGame} setGame={setOpenGame} /> : ""}
+      {openGame ? (
+        <GameView allGames={allGames} game={openGame} setGame={setOpenGame} />
+      ) : (
+        ""
+      )}
       {/* {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""} */}
     </div>
   );

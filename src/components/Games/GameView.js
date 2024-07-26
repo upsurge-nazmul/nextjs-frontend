@@ -7,6 +7,7 @@ import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
 
 export default function GameView({
+  allGames,
   game,
   setGame,
   handleQuestDone = () => {},
@@ -57,10 +58,11 @@ export default function GameView({
     fetchGameData();
   }, []);
 
-  const handleGameScoreupdate = async (score) => {
+  const handleGameScoreupdate = async () => {
+    const game = allGames.filter((item) => item.id === gameData.id)[0];
     let res = await GameApis.unicoinreward({
       gameId: gameData.id,
-      unicoins: gameData.unicoinsReward,
+      unicoins: game.unicoinsReward,
     });
     if (res?.data?.success) {
       console.log("Score success rewards alloted");
