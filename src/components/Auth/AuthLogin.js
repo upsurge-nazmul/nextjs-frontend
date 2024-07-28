@@ -7,7 +7,6 @@ import { MainContext } from "../../context/Main";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
 import GoogleLogin from "react-google-login";
-import { GClientId } from "../../../config";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";
@@ -228,7 +227,7 @@ function AuthLogin({
             <div className={styles.dash} />
           </div>
           <GoogleLogin
-            clientId={GClientId}
+            clientId={process.env.NEXT_PUBLIC_GC_CLIENT_ID}
             render={(renderProps) => (
               <div
                 onClick={renderProps.onClick}

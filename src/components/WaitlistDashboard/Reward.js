@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import VoucherRedeem from "../Dashboard/VoucherRedeem";
 import styles from "../../styles/WaitlistDashboard/rewardcomponent.module.scss";
 import DropDown from "../DropDown";
-import { UniCoinValue } from "../../../config";
 import RequestModal from "../KidStore/RequestModal";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
 import { MainContext } from "../../context/Main";
@@ -106,15 +105,13 @@ export default function Reward({
         </Modal>
       )}
       <div className={styles.left}>
-      <img className={styles.image} src={data.imageUrl} alt="" />
-      <div className={styles.nameArea}>
+        <img className={styles.image} src={data.imageUrl} alt="" />
+        <div className={styles.nameArea}>
           <div className={styles.name}>{data.name}</div>
-          
         </div>
-      </div>  
-      
+      </div>
+
       <div className={styles.right}>
-        
         <div className={styles.quantityandprice}>
           <DropDown
             options={prices}
@@ -135,20 +132,20 @@ export default function Reward({
               className={styles.quantity}
             />
           } */}
-         <div className={styles.valueArea}>
+          <div className={styles.valueArea}>
             <UniCoinSvg className={styles.svg} clr={"#434040"} />
             <div className={styles.value}>
-              {selectedprice * quantity * UniCoinValue}
+              {selectedprice * quantity * process.env.NEXT_PUBLIC_UNICOIN_VALUE}
             </div>
           </div>
         </div>
-{/*         
+        {/*         
         {(data.productId === 31057 ? (<div className={styles.description}>
         Phone number registered with us should have full wallet KYC with Paytm to succesfully redeem this voucher.
         </div>) : "")}
          */}
         <div className={styles.actionArea}>
-        <button
+          <button
             className={styles.detailsButton}
             onClick={() => setShowDetails(true)}
           >
@@ -162,10 +159,8 @@ export default function Reward({
               Redeem
             </button>
           )}
-          
         </div>
       </div>
     </div>
   );
 }
-

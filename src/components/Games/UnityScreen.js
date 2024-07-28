@@ -5,7 +5,6 @@ import GameLoading from "./GameLoading";
 import { MainContext } from "../../context/Main";
 import { useRouter } from "next/router";
 import ActionArea from "./ActionArea";
-import { initializeApp } from "firebase/app";
 import { gameUrl } from "../../utils/utils";
 
 export default function UnityScreen({

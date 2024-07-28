@@ -6,7 +6,6 @@ import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
-import { GClientId } from "../../../config";
 import { useRouter } from "next/dist/client/router";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
@@ -28,22 +27,22 @@ export default function AuthResetPass({
   async function ResetPass(e) {
     e?.preventDefault();
     setloading(true);
-      let response = await LoginApis.resetpass({ email: email });
-      if (response) {
-        if (response.data.success) {
-          settoastdata({
-            show: true,
-            msg: response.data.message,
-            type: "success",
-          });
-        } else {
-          seterror(response.data.message);
-        }
+    let response = await LoginApis.resetpass({ email: email });
+    if (response) {
+      if (response.data.success) {
+        settoastdata({
+          show: true,
+          msg: response.data.message,
+          type: "success",
+        });
       } else {
-        seterror("Error connecting to server");
+        seterror(response.data.message);
       }
-      setloading(false);
-}
+    } else {
+      seterror("Error connecting to server");
+    }
+    setloading(false);
+  }
   useEffect(() => {
     seterror("");
   }, [email]);

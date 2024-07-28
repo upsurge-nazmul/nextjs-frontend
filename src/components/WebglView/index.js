@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { isMobileOnly } from "react-device-detect";
-import { WEBGL_BASE_URL } from "../../../config";
 import styles from "./style.module.scss";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import DoneIcon from "@mui/icons-material/Done";
@@ -42,7 +41,7 @@ export default function WebglView({
           <iframe
             id="iframe"
             className={styles.iframe}
-            src={`${WEBGL_BASE_URL}/${type}/prod/${gameKey}/index.html`}
+            src={`${process.env.NEXT_PUBLIC_WEBGL_BASE_URL}/${type}/prod/${gameKey}/index.html`}
             allowFullScreen={true}
           ></iframe>
         )}

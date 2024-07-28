@@ -7,7 +7,6 @@ import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground"
 import PaymentSuccessSvg from "../SVGcomponents/PaymentSuccessSvg";
 import KidApis from "../../actions/apis/KidApis";
 import Spinner from "../Spinner";
-import { UniCoinValue } from "../../../config";
 import LoginApis from "../../actions/apis/LoginApis";
 import { useRouter } from "next/router";
 import { MainContext } from "../../context/Main";
@@ -25,7 +24,7 @@ export default function RequestModal({
   const router = useRouter();
   const [success, setsuccess] = useState(false);
   const { userdata } = useContext(MainContext);
-  const [ verificationEmail, setVerificationEmail ] = useState(false);
+  const [verificationEmail, setVerificationEmail] = useState(false);
   async function sendVerificationEmail() {
     let verifypayload = {
       userid: userdata?.user_id,
@@ -36,7 +35,7 @@ export default function RequestModal({
       setVerificationEmail(false);
     } else {
       setVerificationEmail(true);
-      };
+    }
   }
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState("");
@@ -60,22 +59,22 @@ export default function RequestModal({
       setloading(false);
       return;
     }
-     if(userdatafromserver.phone_verified === false || userdatafromserver.phone_verified === null)
-     {
-       seterror("Phone number not verified.");
-       setloading(false);  
-     }
-     else if(userdatafromserver.email_verified === false || userdatafromserver.email_verified === null )
-     {
-       seterror("Email not verified.");
-       setloading(false);  
-     }
-     else if(userdatafromserver.profile_completed === false)
-     {
-       seterror("Profile not completed.");
-       setloading(false);  
-     }
-     else{
+    if (
+      userdatafromserver.phone_verified === false ||
+      userdatafromserver.phone_verified === null
+    ) {
+      seterror("Phone number not verified.");
+      setloading(false);
+    } else if (
+      userdatafromserver.email_verified === false ||
+      userdatafromserver.email_verified === null
+    ) {
+      seterror("Email not verified.");
+      setloading(false);
+    } else if (userdatafromserver.profile_completed === false) {
+      seterror("Profile not completed.");
+      setloading(false);
+    } else {
       if (data.type && data.type === "voucher") {
         let response = await KidApis.buyvoucher({
           voucher_id: data.id,
@@ -84,8 +83,7 @@ export default function RequestModal({
         });
         if (response && response.data && response.data.success) {
           setsuccess(true);
-        }
-         else {
+        } else {
           seterror(response?.data.message || "Error connecting to server");
           setloading(false);
         }
@@ -99,7 +97,7 @@ export default function RequestModal({
         }
       }
     }
-    }
+  }
   return (
     <div className={styles.requestModal}>
       <Toast data={toastdata} />
@@ -109,7 +107,7 @@ export default function RequestModal({
             <div
               className={styles.background}
               onClick={() => setshowmodal(false)}
-              ></div>
+            ></div>
             <div className={styles.requestModalcontainer}>
               <div className={styles.heading}>
                 <BackButtonSvg />
@@ -124,7 +122,9 @@ export default function RequestModal({
                 <div className={styles.label}>Available Unicoins</div>
                 <div className={styles.value}>
                   {availableUnicoins > 1000
-                    ? availableUnicoins / UniCoinValue + "K "
+                    ? availableUnicoins /
+                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                      "K "
                     : availableUnicoins}{" "}
                   Unicoins
                 </div>
@@ -132,9 +132,11 @@ export default function RequestModal({
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
                 <div className={styles.value}>
-                  {data.price*quantity > 1000
-                    ? data.price*quantity / UniCoinValue + "K "
-                    : data.price*quantity}{" "}
+                  {data.price * quantity > 1000
+                    ? (data.price * quantity) /
+                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                      "K "
+                    : data.price * quantity}{" "}
                   Unicoins
                 </div>
               </div>
@@ -143,52 +145,54 @@ export default function RequestModal({
                   Available Unicoins post purchase
                 </div>
                 <div className={styles.value}>
-                  {availableUnicoins - (data.price*quantity) > 1000
-                    ? (availableUnicoins - (data.price*quantity)) / UniCoinValue + "K "
-                    : availableUnicoins - data.price*quantity}{" "}
+                  {availableUnicoins - data.price * quantity > 1000
+                    ? (availableUnicoins - data.price * quantity) /
+                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                      "K "
+                    : availableUnicoins - data.price * quantity}{" "}
                   Unicoins
                 </div>
               </div>
               <div className={styles.errors}>
-              {error && 
-              <p className={styles.error}>
-                {error}
-                </p>
-                }
-              {error === "Phone number not verified." && 
-                <div className={styles.continue} onClick={()=>{setshowOTP(true)}}>
-                  <u>
-                  Enter Now to Continue
-                  </u>
-                </div>
-                }
-              {error === "Email not verified." && verificationEmail === false && 
-                <div className={styles.continue} onClick={()=>{sendVerificationEmail()}}>
-                  <u>
-                  Click Here to send again
-                  </u>
-                </div>
-              }
-              {error === "Email not verified." && verificationEmail && 
-                <div className={styles.continue}>
-                    <u>
-                    Verification Email sent.
-                    </u>
+                {error && <p className={styles.error}>{error}</p>}
+                {error === "Phone number not verified." && (
+                  <div
+                    className={styles.continue}
+                    onClick={() => {
+                      setshowOTP(true);
+                    }}
+                  >
+                    <u>Enter Now to Continue</u>
                   </div>
-               }
-              {error === "Profile not completed." && 
-                <div className={styles.continue} 
-                onClick={() => router.push("/dashboard/k/editprofile")}
-                >
-                  <u>
-                      Click Here to Complete
-                  </u>
+                )}
+                {error === "Email not verified." &&
+                  verificationEmail === false && (
+                    <div
+                      className={styles.continue}
+                      onClick={() => {
+                        sendVerificationEmail();
+                      }}
+                    >
+                      <u>Click Here to send again</u>
+                    </div>
+                  )}
+                {error === "Email not verified." && verificationEmail && (
+                  <div className={styles.continue}>
+                    <u>Verification Email sent.</u>
                   </div>
-               }
-               </div>
+                )}
+                {error === "Profile not completed." && (
+                  <div
+                    className={styles.continue}
+                    onClick={() => router.push("/dashboard/k/editprofile")}
+                  >
+                    <u>Click Here to Complete</u>
+                  </div>
+                )}
+              </div>
               {!loading ? (
                 <div className={styles.button} onClick={() => buyAvatar()}>
-                Redeem Now
+                  Redeem Now
                 </div>
               ) : (
                 <div className={`${styles.button} ${styles.spinner_btn}`}>

@@ -12,7 +12,6 @@ import { useRouter } from "next/dist/client/router";
 import { MainContext } from "../../context/Main";
 import DashbardApis from "../../actions/apis/DashboardApis";
 import Spinner from "../Spinner";
-import { UniCoinValue } from "../../../config";
 export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
   //modes will be start , category , template, assign
   const { userdata } = useContext(MainContext);
@@ -197,8 +196,11 @@ export default function ApproveModal({ showmodal, setshowmodal, buydata }) {
                 <div className={styles.details}>
                   <div className={styles.label}>Available UniCoins</div>
                   <div className={styles.value}>
-                    {buydata.available_points > UniCoinValue
-                      ? buydata.available_points / UniCoinValue + "K "
+                    {buydata.available_points >
+                    process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                      ? buydata.available_points /
+                          process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                        "K "
                       : buydata.available_points}{" "}
                     UniCoins
                   </div>

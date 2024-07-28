@@ -8,7 +8,6 @@ import { MainContext } from "../../context/Main";
 import ModernInputBox from "../ModernInputBox";
 import Spinner from "../Spinner";
 import GoogleLogin from "react-google-login";
-import { GClientId } from "../../../config";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import { getfullname } from "../../helpers/generalfunctions";
 import { setUserInLocalStorage } from "../../helpers/localStorage";

@@ -1,7 +1,6 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/ParentStore/pendingreq.module.scss";
 import RemoveSvg from "../SVGcomponents/RemoveSvg";
-import { UniCoinValue } from "../../../config";
 import DashbardApis from "../../actions/apis/DashboardApis";
 import { useRouter } from "next/router";
 export default function PendingRequests({ setshowmodal, setbuydata, data }) {
@@ -20,7 +19,7 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
     type: "success",
     msg: "",
   });
-  useEffect(async()=>{
+  useEffect(async () => {
     if (removedata.item === "avatar") {
       setloading(true);
       let response = await DashbardApis.deleterequest({
@@ -47,35 +46,34 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
       }
       return;
     }
-  
-  },[removedata])
-  async function handlerejection(){ 
+  }, [removedata]);
+  async function handlerejection() {
     setremovedata({
       request_id: data.id,
       item:
-      data.request_type === "avatar"
-      ? "avatar"
-      : data.request_type === "voucher"
-      ? "voucher_request"
-        : "else",
-    available_points: data.child_unicoins,
-    name:
-    data.request_type === "avatar"
-    ? data.avatar_data.name + " Avatar"
-    : data.request_type === "voucher"
-    ? data.voucher_data.name
-    : "",
-    description: `Requested by ${data.child_name}`,
-    price:
-    data.request_type === "avatar"
-    ? data.avatar_data.points
-    : data.request_type === "voucher"
-    ? Number(data.price) > 1000
-    ? Number(data.price) / UniCoinValue + "K "
-    : data.price
-    : "",
-    type: "points",
-  });
+        data.request_type === "avatar"
+          ? "avatar"
+          : data.request_type === "voucher"
+          ? "voucher_request"
+          : "else",
+      available_points: data.child_unicoins,
+      name:
+        data.request_type === "avatar"
+          ? data.avatar_data.name + " Avatar"
+          : data.request_type === "voucher"
+          ? data.voucher_data.name
+          : "",
+      description: `Requested by ${data.child_name}`,
+      price:
+        data.request_type === "avatar"
+          ? data.avatar_data.points
+          : data.request_type === "voucher"
+          ? Number(data.price) > 1000
+            ? Number(data.price) / process.env.NEXT_PUBLIC_UNICOIN_VALUE + "K "
+            : data.price
+          : "",
+      type: "points",
+    });
   }
   function hanldeapprove() {
     setbuydata({
@@ -99,59 +97,59 @@ export default function PendingRequests({ setshowmodal, setbuydata, data }) {
           ? data.avatar_data.points
           : data.request_type === "voucher"
           ? Number(data.price) > 1000
-            ? Number(data.price) / UniCoinValue + "K "
+            ? Number(data.price) / process.env.NEXT_PUBLIC_UNICOIN_VALUE + "K "
             : data.price
           : "",
       type: "points",
     });
     setshowmodal(true);
   }
-  
 
   return (
     <div className={styles.pendingRequest}>
       <div className={styles.flexTop}>
-      <img
-        src={
-          data.request_type === "avatar"
-            ? data.avatar_data.img_url
-            : data.request_type === "voucher"
-            ? data.voucher_data.img_url
-            : ""
-        }
-        alt=""
-      />
-      <div className={styles.taskAndTo}>
-        <div className={styles.task}>
-          {data.request_type === "avatar"
-            ? data.avatar_data.name + " Avatar"
-            : data.request_type === "voucher"
-            ? data.voucher_data.name
-            : ""}
+        <img
+          src={
+            data.request_type === "avatar"
+              ? data.avatar_data.img_url
+              : data.request_type === "voucher"
+              ? data.voucher_data.img_url
+              : ""
+          }
+          alt=""
+        />
+        <div className={styles.taskAndTo}>
+          <div className={styles.task}>
+            {data.request_type === "avatar"
+              ? data.avatar_data.name + " Avatar"
+              : data.request_type === "voucher"
+              ? data.voucher_data.name
+              : ""}
+          </div>
+          <div className={styles.to}>Requested by {data.child_name}</div>
         </div>
-        <div className={styles.to}>Requested by {data.child_name}</div>
-      </div>
-      <div className={styles.points}>
+        <div className={styles.points}>
           <p className={styles.number}>{data.quantity}*</p>
-        <p className={styles.number}>
-          {data.request_type === "avatar"
-            ? data.avatar_data.points
-            : data.request_type === "voucher"
-            ? Number(data.price) > 1000
-              ? Number(data.price) / UniCoinValue + "K "
-              : data.price
-            : ""}
-        </p>
-        <p>UniCoins</p>
-      </div>
+          <p className={styles.number}>
+            {data.request_type === "avatar"
+              ? data.avatar_data.points
+              : data.request_type === "voucher"
+              ? Number(data.price) > 1000
+                ? Number(data.price) / process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                  "K "
+                : data.price
+              : ""}
+          </p>
+          <p>UniCoins</p>
+        </div>
       </div>
       <div className={styles.flexBottom}>
-      <div className={styles.button} onClick={hanldeapprove}>
-        Approve Purchase
-      </div>
-      <div className={styles.removebutton} onClick={handlerejection}>
-        <RemoveSvg />
-      </div>
+        <div className={styles.button} onClick={hanldeapprove}>
+          Approve Purchase
+        </div>
+        <div className={styles.removebutton} onClick={handlerejection}>
+          <RemoveSvg />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UniCoinValue } from "../../../../config";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import LoginApis from "../../../actions/apis/LoginApis";
 import XoxoApis from "../../../actions/apis/XoxoApis";

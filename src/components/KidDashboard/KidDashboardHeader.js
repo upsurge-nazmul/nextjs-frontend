@@ -12,7 +12,6 @@ import { MainContext } from "../../context/Main";
 import Menu from "../Dashboard/Menu";
 import NotificationMenu from "../Dashboard/NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
-import { UniCoinValue } from "../../../config";
 import LevelComponent from "../Dashboard/LevelComponent";
 import { getCookie } from "../../actions/cookieUtils";
 
@@ -113,8 +112,10 @@ function KidDashboardHeader({
             <UniCoinSvg className={styles.svg} />
             <p className={styles.number}>
               {userdata?.num_unicoins
-                ? userdata?.num_unicoins > UniCoinValue
-                  ? userdata.num_unicoins / UniCoinValue + "K"
+                ? userdata?.num_unicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                  ? userdata.num_unicoins /
+                      process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                    "K"
                   : userdata.num_unicoins
                 : 0}
             </p>

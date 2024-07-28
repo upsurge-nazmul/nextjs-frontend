@@ -8,7 +8,6 @@ import PaymentSuccessBackground from "../SVGcomponents/PaymentSuccessBackground"
 import Loader from "../Loader";
 import DropDown from "../DropDown";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { UniCoinValue } from "../../../config";
 import Spinner from "../Spinner";
 export default function VoucherRedeem({
   userdata_email,
@@ -72,7 +71,7 @@ export default function VoucherRedeem({
     setloading(true);
     let res = await DashboardApis.ordervouchers({
       productId: data.productId,
-      denomination: prices / UniCoinValue,
+      denomination: prices / process.env.NEXT_PUBLIC_UNICOIN_VALUE,
       quantity,
       vendor: "xoxo",
       name: data.name,

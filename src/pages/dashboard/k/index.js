@@ -21,7 +21,6 @@ import FillSpace from "../../../components/Dashboard/FillSpace";
 import AppDownload from "../../../components/Dashboard/AppDownload";
 import QuizApis from "../../../actions/apis/QuizApis";
 import { Game_Data } from "../../../static_data/Game_Data";
-import { UniCoinValue } from "../../../../config";
 import KidDashboardHeader from "../../../components/KidDashboard/KidDashboardHeader";
 import LevelComponent from "../../../components/Dashboard/LevelComponent";
 import KidChore from "../../../components/KidDashboard/KidChore";

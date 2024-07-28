@@ -6,7 +6,6 @@ import { setCookie } from "../../actions/cookieUtils";
 import GoogleSvg from "../SVGcomponents/GoogleSvg";
 import GoogleLogin from "react-google-login";
 import { MainContext } from "../../context/Main";
-import { GClientId } from "../../../config";
 import { useRouter } from "next/dist/client/router";
 import Spinner from "../Spinner";
 
@@ -135,7 +134,7 @@ function AuthParent({
       }}
     >
       {/* <GoogleLogin
-        clientId={GClientId}
+        clientId={process.env.NEXT_PUBLIC_GC_CLIENT_ID}
         render={(renderProps) => (
           <div
             onClick={renderProps.onClick}
@@ -157,7 +156,7 @@ function AuthParent({
         cookiePolicy={"single_host_origin"}
       />
       <AppleLogin
-        clientId={apple_client_id || "asd"}
+        clientId={NEXT_PUBLIC_APPLE_CLIENT_ID || "asd"}
         redirectURI="https://redirectUrl.com"
         usePopup
         scope="name email"

@@ -5,7 +5,6 @@ import PaymentSuccessBackground from "../../SVGcomponents/PaymentSuccessBackgrou
 import PaymentSuccessSvg from "../../SVGcomponents/PaymentSuccessSvg";
 import KidApis from "../../../actions/apis/KidApis";
 import Spinner from "../../Spinner";
-import { UniCoinValue } from "../../../../config";
 
 export default function RequestView({
   data,
@@ -66,7 +65,9 @@ export default function RequestView({
                 primaryClr={"#FFF"}
                 secondaryClr={"#17D1BC"}
               />
-              <p className={styles.payment}>Avatar now available in your profile.</p>
+              <p className={styles.payment}>
+                Avatar now available in your profile.
+              </p>
               {/* <PaymentSuccessBackground className={styles.backsvg} /> */}
             </div>
           </div>
@@ -88,7 +89,8 @@ export default function RequestView({
               <div className={styles.label}>Available Unicoins</div>
               <div className={styles.value}>
                 {availableUnicoins > 1000
-                  ? availableUnicoins / UniCoinValue + "K "
+                  ? availableUnicoins / process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                    "K "
                   : availableUnicoins}{" "}
                 Unicoins
               </div>
@@ -97,7 +99,7 @@ export default function RequestView({
               <div className={styles.label}>Price</div>
               <div className={styles.value}>
                 {data.price > 1000
-                  ? data.price / UniCoinValue + "K "
+                  ? data.price / process.env.NEXT_PUBLIC_UNICOIN_VALUE + "K "
                   : data.price}{" "}
                 Unicoins
               </div>
@@ -108,7 +110,9 @@ export default function RequestView({
               </div>
               <div className={styles.value}>
                 {availableUnicoins - data.price > 1000
-                  ? (availableUnicoins - data.price) / UniCoinValue + "K "
+                  ? (availableUnicoins - data.price) /
+                      process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                    "K "
                   : availableUnicoins - data.price}{" "}
                 Unicoins
               </div>

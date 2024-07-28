@@ -1,5 +1,4 @@
 import React from "react";
-import { UniCoinValue } from "../../../config";
 import styles from "../../styles/ParentStore/availablePointCard.module.scss";
 
 export default function AvailablePointCard({ data }) {
@@ -10,7 +9,7 @@ export default function AvailablePointCard({ data }) {
         <p className={styles.name}>{data?.first_name}</p>
         <p className={styles.points}>
           {data?.num_unicoins > 1000
-            ? data?.num_unicoins / UniCoinValue + "K "
+            ? data?.num_unicoins / process.env.NEXT_PUBLIC_UNICOIN_VALUE + "K "
             : data?.num_unicoins + " "}
           UniCoins
         </p>

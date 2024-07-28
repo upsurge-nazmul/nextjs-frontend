@@ -1,5 +1,4 @@
 import React from "react";
-import { UniCoinValue } from "../../../config";
 import styles from "../../styles/Tribes/tribelpendingsection.module.scss";
 
 export default function TribePendingSection({ data }) {

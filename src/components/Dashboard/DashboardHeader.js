@@ -9,7 +9,6 @@ import NotificationBell from "../SVGcomponents/NotificationBell";
 import Menu from "./Menu";
 import NotificationMenu from "./NotificationMenu";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
-import { UniCoinValue } from "../../../config";
 import AuthComponent from "../Auth/AuthComponent";
 import LevelComponent from "../Dashboard/LevelComponent";
 import Onboarding from "../Onboarding";
@@ -321,8 +320,11 @@ function DashboardHeader({
                   />
                 </span>
                 {displayingUnicoins
-                  ? displayingUnicoins > UniCoinValue
-                    ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                  ? displayingUnicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                    ? (
+                        displayingUnicoins /
+                        process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                      ).toFixed(2) + "K"
                     : displayingUnicoins
                   : 0}
               </p>
@@ -337,8 +339,11 @@ function DashboardHeader({
               <UniCoinSvg className={unicoinsStyle.svg} />
               <p className={unicoinsStyle.number}>
                 {displayingUnicoins
-                  ? displayingUnicoins > UniCoinValue
-                    ? (displayingUnicoins / UniCoinValue).toFixed(2) + "K"
+                  ? displayingUnicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                    ? (
+                        displayingUnicoins /
+                        process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                      ).toFixed(2) + "K"
                     : displayingUnicoins
                   : 0}
               </p>
@@ -348,8 +353,10 @@ function DashboardHeader({
               <UniCoinSvg className={unicoinsStyle.svg} />
               <p className={unicoinsStyle.number}>
                 {unicoins
-                  ? unicoins > UniCoinValue
-                    ? (unicoins / UniCoinValue).toFixed(2) + "K"
+                  ? unicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                    ? (
+                        unicoins / process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                      ).toFixed(2) + "K"
                     : unicoins
                   : 0}
               </p>

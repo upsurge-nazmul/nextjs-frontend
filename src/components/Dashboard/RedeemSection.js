@@ -3,7 +3,6 @@ import styles from "../../styles/Dashboard/redeemsection.module.scss";
 import Jasper from "../../components/SVGcomponents/Jasper";
 import ModernInputBox from "../../components/ModernInputBox";
 import DashboardApis from "../../actions/apis/DashboardApis";
-import { UniCoinValue } from "../../../config";
 import { MainContext } from "../../context/Main";
 export default function RedeemSection({
   unicoins,
@@ -58,7 +57,9 @@ export default function RedeemSection({
             <span>
               {userdata
                 ? userdata.num_unicoins > 1000
-                  ? userdata?.num_unicoins / UniCoinValue + "K "
+                  ? userdata?.num_unicoins /
+                      process.env.NEXT_PUBLIC_UNICOIN_VALUE +
+                    "K "
                   : userdata.num_unicoins
                 : 0}
             </span>{" "}
@@ -68,14 +69,15 @@ export default function RedeemSection({
           <p className={styles.rupees}>
           <span>
           {userdata?.num_unicoins
-            ? (Number(userdata.num_unicoins) / UniCoinValue).toFixed(2)
+            ? (Number(userdata.num_unicoins) / process.env.NEXT_PUBLIC_UNICOIN_VALUE).toFixed(2)
             : 0}
             </span>{" "}
             Rupees
           </p> */}
         </div>
         <p style={{ marginTop: "1rem" }}>
-        Rewards make learning even more fun - here are all the rewards you can earn!
+          Rewards make learning even more fun - here are all the rewards you can
+          earn!
         </p>
 
         {/* {err && <p className={styles.converstiondetails}>{err}</p>} */}

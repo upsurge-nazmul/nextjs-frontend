@@ -1,6 +1,5 @@
 import * as ApiCalls from "../ApiCalls";
 import axios from "axios";
-import { xoxotoken } from "../../../config";
 async function getvouchers(payload) {
   let config = {
     query: "plumProAPI.mutation.getVouchers",
@@ -24,7 +23,7 @@ async function getvouchers(payload) {
     config,
     {
       headers: {
-        Authorization: `Bearer ${xoxotoken}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_XOXO_TOKEN}`,
       },
     }
   );

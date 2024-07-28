@@ -6,7 +6,6 @@ import TribeApis from "../../../actions/apis/TribeApis";
 import DashboardApis from "../../../actions/apis/DashboardApis";
 import ChoreApis from "../../../actions/apis/ChoreApis";
 import { MainContext } from "../../../context/Main";
-import { getMessaging, getToken } from "@firebase/messaging";
 import DashboardLeftPanel from "../../../components/Dashboard/DashboardLeftPanel";
 import Toast from "../../../components/Toast";
 import OtpNotVerfied from "../../../components/Auth/OtpNotVerified";
