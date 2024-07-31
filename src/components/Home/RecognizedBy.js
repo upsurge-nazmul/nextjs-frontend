@@ -46,7 +46,12 @@ const RecognizedBy = () => {
       <div className={styles.slider}>
         <div className={styles.logos}>
           {data.map((item, index) => (
-            <img src={item.image} alt={item.alt} className={styles.logo} />
+            <img
+              key={index}
+              src={item.image}
+              alt={item.alt}
+              className={styles.logo}
+            />
           ))}
         </div>
       </div>
