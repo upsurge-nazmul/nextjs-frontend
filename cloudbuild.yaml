@@ -1,6 +1,9 @@
 steps:
+  # Step 1: Install dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install", "--legacy-peer-deps"]
+
+  # Step 2: Build the Next.js application
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
     env:
@@ -8,15 +11,8 @@ steps:
       - "NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER}"
       - "NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET}"
       - "NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}"
-  - name: "gcr.io/buildpacks/builder"
-    args:
-      [
-        "pack",
-        "build",
-        "gcr.io/upsurge-cloud/frontend",
-        "--builder",
-        "gcr.io/buildpacks/builder:v1",
-      ]
+
+  # Step 3: Deploy the image to Google Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -28,12 +24,14 @@ steps:
         "--region",
         "us-central1",
         "--image",
-        "gcr.io/upsurge-cloud/frontend",
+        "us-central1-docker.pkg.dev/upsurge-cloud/cloud-run-source-deploy/frontend/frontend:72e2e77e425d88bd9aa465fedfbf472d3ab186f4",
         "--allow-unauthenticated",
         "--update-env-vars",
         "NEXT_PUBLIC_LIVE_SERVER=${_NEXT_PUBLIC_LIVE_SERVER},NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER},NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET},NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}",
       ]
+
 images:
-  - "gcr.io/upsurge-cloud/frontend"
+  - "us-central1-docker.pkg.dev/upsurge-cloud/cloud-run-source-deploy/frontend/frontend:72e2e77e425d88bd9aa465fedfbf472d3ab186f4"
+
 options:
   logging: CLOUD_LOGGING_ONLY
