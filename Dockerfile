@@ -4,6 +4,12 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install --legacy-peer-deps
 
+ENV NODE_ENV production
+ENV NEXT_PUBLIC_LIVE_SERVER=$NEXT_PUBLIC_LIVE_SERVER
+ENV NEXT_PUBLIC_TEST_SERVER=$NEXT_PUBLIC_TEST_SERVER
+ENV NEXT_PUBLIC_MEDIA_BUCKET=$NEXT_PUBLIC_MEDIA_BUCKET
+ENV NEXT_PUBLIC_GAME_BUCKET=$NEXT_PUBLIC_GAME_BUCKET
+
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
 WORKDIR /app
@@ -14,12 +20,6 @@ RUN npm run build
 # Production image, copy all the files and run next
 FROM node:16-alpine AS runner
 WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_PUBLIC_LIVE_SERVER=$NEXT_PUBLIC_LIVE_SERVER
-ENV NEXT_PUBLIC_TEST_SERVER=$NEXT_PUBLIC_TEST_SERVER
-ENV NEXT_PUBLIC_MEDIA_BUCKET=$NEXT_PUBLIC_MEDIA_BUCKET
-ENV NEXT_PUBLIC_GAME_BUCKET=$NEXT_PUBLIC_GAME_BUCKET
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
