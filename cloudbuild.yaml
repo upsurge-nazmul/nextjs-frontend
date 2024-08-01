@@ -21,3 +21,6 @@ steps:
 
 images:
   - "gcr.io/upsurge-cloud/frontend"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
