@@ -8,10 +8,15 @@ steps:
       - "NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER}"
       - "NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET}"
       - "NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}"
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/upsurge-cloud/frontend:latest", "."]
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/upsurge-cloud/frontend:latest"]
+  - name: "gcr.io/buildpacks/builder"
+    args:
+      [
+        "pack",
+        "build",
+        "gcr.io/upsurge-cloud/frontend",
+        "--builder",
+        "gcr.io/buildpacks/builder:v1",
+      ]
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -23,12 +28,12 @@ steps:
         "--region",
         "us-central1",
         "--image",
-        "gcr.io/upsurge-cloud/frontend:latest",
+        "gcr.io/upsurge-cloud/frontend",
         "--allow-unauthenticated",
         "--update-env-vars",
         "NEXT_PUBLIC_LIVE_SERVER=${_NEXT_PUBLIC_LIVE_SERVER},NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER},NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET},NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}",
       ]
 images:
-  - "gcr.io/upsurge-cloud/frontend:latest"
+  - "gcr.io/upsurge-cloud/frontend"
 options:
   logging: CLOUD_LOGGING_ONLY
