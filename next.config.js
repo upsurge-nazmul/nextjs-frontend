@@ -17,8 +17,14 @@ module.exports = {
       "res.cloudinary.com",
       "upsurgevideoassets.s3.ap-south-1.amazonaws.com",
       "imgcdn.upsurge.in",
-      "storage.googleapis.com"
+      "storage.googleapis.com",
     ],
   },
   swcMinify: true,
+  env: {
+    NEXT_PUBLIC_LIVE_SERVER: process.env.NEXT_PUBLIC_LIVE_SERVER,
+    NEXT_PUBLIC_TEST_SERVER: process.env.NEXT_PUBLIC_TEST_SERVER,
+    NEXT_PUBLIC_MEDIA_BUCKET: process.env.NEXT_PUBLIC_MEDIA_BUCKET,
+    NEXT_PUBLIC_GAME_BUCKET: process.env.NEXT_PUBLIC_GAME_BUCKET,
+  },
 };

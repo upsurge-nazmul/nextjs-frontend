@@ -249,6 +249,8 @@ function DashboardHeader({
     }
   }, [updateUnicoins]);
 
+  console.log("Unicoin value: ", process.env.NEXT_PUBLIC_UNICOIN_VALUE);
+
   return (
     <div
       className={`${styles.dashboardHeader} ${

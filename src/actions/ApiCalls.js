@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const NEXT_PUBLIC_LIVE_SERVER = "https://server-g5bprkvzla-uc.a.run.app/";
-const BaseUrl = NEXT_PUBLIC_LIVE_SERVER;
+const BaseUrl = process.env.NEXT_PUBLIC_LIVE_SERVER;
 
 const getHeader = async (formData, token) => {
   return {
