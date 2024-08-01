@@ -22,10 +22,9 @@ steps:
         "gcr.io/upsurge-cloud/frontend",
         "--allow-unauthenticated",
         "--update-env-vars",
-        "NEXT_PUBLIC_LIVE_SERVER=${_NEXT_PUBLIC_LIVE_SERVER}",
-        "NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER}",
-        "NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET}",
-        "NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}",
+        "NEXT_PUBLIC_LIVE_SERVER=${_NEXT_PUBLIC_LIVE_SERVER}, NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER}, NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET}, NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}",
       ]
 images:
   - "gcr.io/upsurge-cloud/frontend"
+options:
+  logging: CLOUD_LOGGING_ONLY
