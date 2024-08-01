@@ -22,9 +22,9 @@ module.exports = {
   },
   swcMinify: true,
   env: {
-    NEXT_PUBLIC_LIVE_SERVER: process.env.NEXT_PUBLIC_LIVE_SERVER,
-    NEXT_PUBLIC_TEST_SERVER: process.env.NEXT_PUBLIC_TEST_SERVER,
-    NEXT_PUBLIC_MEDIA_BUCKET: process.env.NEXT_PUBLIC_MEDIA_BUCKET,
-    NEXT_PUBLIC_GAME_BUCKET: process.env.NEXT_PUBLIC_GAME_BUCKET,
+    NEXT_PUBLIC_LIVE_SERVER: "https://server-g5bprkvzla-uc.a.run.app/",
+    NEXT_PUBLIC_TEST_SERVER: "https://server-g5bprkvzla-uc.a.run.app/",
+    NEXT_PUBLIC_MEDIA_BUCKET: "https://storage.googleapis.com",
+    NEXT_PUBLIC_GAME_BUCKET: "https://storage.googleapis.com",
   },
 };
