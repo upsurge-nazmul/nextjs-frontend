@@ -5,10 +5,10 @@ COPY package.json package-lock.json ./
 RUN npm install --legacy-peer-deps
 
 ENV NODE_ENV production
-ENV NEXT_PUBLIC_LIVE_SERVER=$NEXT_PUBLIC_LIVE_SERVER
-ENV NEXT_PUBLIC_TEST_SERVER=$NEXT_PUBLIC_TEST_SERVER
-ENV NEXT_PUBLIC_MEDIA_BUCKET=$NEXT_PUBLIC_MEDIA_BUCKET
-ENV NEXT_PUBLIC_GAME_BUCKET=$NEXT_PUBLIC_GAME_BUCKET
+ENV NEXT_PUBLIC_LIVE_SERVER='https://server-g5bprkvzla-uc.a.run.app/'
+ENV NEXT_PUBLIC_TEST_SERVER='https://server-g5bprkvzla-uc.a.run.app/'
+ENV NEXT_PUBLIC_MEDIA_BUCKET='https://storage.googleapis.com'
+ENV NEXT_PUBLIC_GAME_BUCKET='https://storage.googleapis.com'
 
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
