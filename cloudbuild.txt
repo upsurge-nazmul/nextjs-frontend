@@ -1,0 +1,23 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/upsurge-cloud/frontend", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/upsurge-cloud/frontend"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "frontend",
+        "--image",
+        "gcr.io/upsurge-cloud/frontend",
+        "--platform",
+        "managed",
+        "--region",
+        "us-central1",
+        "--set-env-vars",
+        "NEXT_PUBLIC_MEDIA_BUCKET=https://storage.googleapis.com,NEXT_PUBLIC_GAME_BUCKET=https://storage.googleapis.com,NEXT_PUBLIC_LIVE_SERVER=https://server-g5bprkvzla-uc.a.run.app/,NEXT_PUBLIC_TEST_SERVER=https://server-g5bprkvzla-uc.a.run.app/",
+      ]
+
+images:
+  - "gcr.io/upsurge-cloud/frontend"
