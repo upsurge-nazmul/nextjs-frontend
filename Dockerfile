@@ -16,9 +16,11 @@ FROM node:16-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+ENV NEXT_PUBLIC_LIVE_SERVER=$NEXT_PUBLIC_LIVE_SERVER
+ENV NEXT_PUBLIC_TEST_SERVER=$NEXT_PUBLIC_TEST_SERVER
+ENV NEXT_PUBLIC_MEDIA_BUCKET=$NEXT_PUBLIC_MEDIA_BUCKET
+ENV NEXT_PUBLIC_GAME_BUCKET=$NEXT_PUBLIC_GAME_BUCKET
 
-# You only need to copy next.config.js if you are NOT using the default configuration
-# COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
