@@ -12,6 +12,11 @@ steps:
       - "NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET}"
       - "NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}"
 
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/upsurge-cloud/frontend:$COMMIT_SHA", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/upsurge-cloud/frontend:$COMMIT_SHA"]
+
   # Step 3: Deploy the image to Google Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     args:
@@ -24,14 +29,14 @@ steps:
         "--region",
         "us-central1",
         "--image",
-        "us-central1-docker.pkg.dev/upsurge-cloud/cloud-run-source-deploy/frontend/frontend:72e2e77e425d88bd9aa465fedfbf472d3ab186f4",
+        "gcr.io/upsurge-cloud/frontend:$COMMIT_SHA",
         "--allow-unauthenticated",
         "--update-env-vars",
         "NEXT_PUBLIC_LIVE_SERVER=${_NEXT_PUBLIC_LIVE_SERVER},NEXT_PUBLIC_TEST_SERVER=${_NEXT_PUBLIC_TEST_SERVER},NEXT_PUBLIC_MEDIA_BUCKET=${_NEXT_PUBLIC_MEDIA_BUCKET},NEXT_PUBLIC_GAME_BUCKET=${_NEXT_PUBLIC_GAME_BUCKET}",
       ]
 
 images:
-  - "us-central1-docker.pkg.dev/upsurge-cloud/cloud-run-source-deploy/frontend/frontend:72e2e77e425d88bd9aa465fedfbf472d3ab186f4"
+  - "gcr.io/upsurge-cloud/frontend:$COMMIT_SHA"
 
 options:
   logging: CLOUD_LOGGING_ONLY
