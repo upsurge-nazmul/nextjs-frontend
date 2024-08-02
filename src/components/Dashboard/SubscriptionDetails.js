@@ -5,7 +5,10 @@ import styles from "../../styles/payments/subscriptionDetails.module.scss";
 import ConfirmInvoice from "../../components/ConfirmInvoice";
 import { useReactToPrint } from "react-to-print";
 
-export default function SubscriptionDetails({ setShowSubscription, userdata }) {
+export default function SubscriptionDetails({
+  setShowSubscription = () => {},
+  userdata,
+}) {
   const pdfRef = useRef(null);
   const [subsData, setSubsData] = useState();
 

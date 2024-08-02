@@ -9,7 +9,7 @@ const METHODS = [
   { name: "Stripe", id: "stripe", key: "stripy" },
 ];
 
-function ChosePremiumPopUp({ setChoseToPremium }) {
+function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
   const router = useRouter();
   const [plans, setPlans] = useState();
   const [loading, setLoading] = useState(true);
