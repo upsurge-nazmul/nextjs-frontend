@@ -270,13 +270,6 @@ function Home({ page = "", showNav = true, blog_data }) {
 
       <Toast data={toastdata} />
 
-      <div>
-        <p>Live Server: {process.env.NEXT_PUBLIC_LIVE_SERVER}</p>
-        <p>Test Server: {process.env.NEXT_PUBLIC_TEST_SERVER}</p>
-        <p>Media Bucket: {process.env.NEXT_PUBLIC_MEDIA_BUCKET}</p>
-        <p>Game Bucket: {process.env.NEXT_PUBLIC_GAME_BUCKET}</p>
-      </div>
-
       {page === HOME_VARIENTS[0] ? (
         <JodoIntro
           setshowauth={setshowauth}
