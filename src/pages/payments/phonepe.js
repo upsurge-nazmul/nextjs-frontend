@@ -20,11 +20,13 @@ export default function PhonepePage() {
       plan_id,
       hostURL: window.location.origin,
     });
+    console.log("phonepe result: ", result);
     if (!result) {
       router.push(window.history.go(-1) ?? "/");
     } else if (result && result.status === 400) {
       router.push(window.history.go(-1) ?? "/");
     } else if (result && result.data) {
+      // result.data.success === true
       router.push(
         result.data.redirectURL.data.instrumentResponse.redirectInfo.url
       );

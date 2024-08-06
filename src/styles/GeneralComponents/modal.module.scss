@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   .popupBackground {
     width: 100%;
     height: 100%;
@@ -15,6 +16,7 @@
     background-color: rgba(0, 0, 0, 0.25);
     z-index: -1;
   }
+
   .popupBody {
     background-color: white;
     width: fit-content;
@@ -24,20 +26,24 @@
     overflow-y: hidden;
     position: relative;
     border-radius: 40px;
+
     .titleArea {
       height: fit-content;
       background-color: #4166eb;
       color: #fff;
       padding: 20px;
       text-align: center;
+
       .title {
         font-size: 1.375rem;
         font-weight: 700;
+
         &:first-child {
           margin-top: 0;
         }
       }
     }
+
     .messageArea {
       height: fit-content;
       min-height: 200px;
@@ -46,12 +52,14 @@
       justify-content: center;
       align-items: center;
       padding: 0 20px;
+
       .message {
         font-size: 1.125rem;
         font-weight: 600;
         font-family: "Inter", sans-serif;
       }
     }
+
     .tradeActionArea {
       width: 100%;
       height: fit-content;
@@ -61,6 +69,7 @@
       justify-content: center;
       align-items: center;
       gap: 20px;
+
       .button {
         display: flex;
         align-items: center;
@@ -74,17 +83,21 @@
         transition: all 0.3s ease;
         cursor: pointer;
       }
+
       .cancelButton {
         @extend .button;
         background: #616161;
         cursor: pointer;
+
         &:hover {
           background: hsl(0, 0%, 30%);
         }
       }
+
       .proceedButton {
         @extend .button;
         background-color: #4166eb;
+
         &:hover {
           background-color: hsl(227, 59%, 51%);
         }
@@ -105,6 +118,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .popupBackground {
       width: 100%;
       height: 100%;
@@ -112,49 +126,61 @@
       background-color: rgba(0, 0, 0, 0.25);
       z-index: -1;
     }
+
     .popupBody {
       background-color: white;
       width: fit-content;
-      height: fit-content;
-      z-index: 10;
+      max-width: 95vw;
+      max-height: 95vh;
       overflow-y: hidden;
+      z-index: 10;
       position: relative;
       border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
       .titleArea {
         height: fit-content;
         background-color: #4166eb;
         color: #fff;
         padding: 20px;
         text-align: center;
+
         .title {
           font-size: 1.125rem;
           font-weight: 700;
+
           &:first-child {
             margin-top: 0;
           }
         }
       }
+
       .messageArea {
-        height: fit-content;
         min-height: 200px;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow-y: auto;
+
         .message {
           font-size: 1.125rem;
           font-weight: 600;
           font-family: "Inter", sans-serif;
         }
       }
+
       .tradeActionArea {
         width: 100%;
-        height: fit-content;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 20px;
+
+
         .button {
           display: flex;
           align-items: center;
@@ -168,17 +194,21 @@
           transition: all 0.3s ease;
           cursor: pointer;
         }
+
         .cancelButton {
           @extend .button;
           background: #616161;
           cursor: pointer;
+
           &:hover {
             background: hsl(0, 0%, 30%);
           }
         }
+
         .proceedButton {
           @extend .button;
           background: #4166eb;
+
           &:hover {
             background: hsl(227, 59%, 51%);
           }

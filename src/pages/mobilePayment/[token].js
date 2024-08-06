@@ -23,8 +23,6 @@ export default function MobilePayment({}) {
     }
   }, [token]);
 
-  console.log("!!!!!!", user);
-
   return (
     <div className={styles.mainView}>
       {user && user.premium_plan ? (

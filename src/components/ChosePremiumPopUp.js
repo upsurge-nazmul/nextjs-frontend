@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentsApi from "../actions/apis/PaymentsApi";
+import { CircularProgress } from "@mui/material";
 
 const METHODS = [
   { name: "PhonePe", id: "phonepe", key: "phonypay" },
@@ -28,7 +29,20 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
     console.log(plans);
   }, []);
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          height: "100%",
+          minHeight: "80vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress size={100} />
+      </div>
+    );
   }
   return (
     <div className={styles.subToPremium}>
