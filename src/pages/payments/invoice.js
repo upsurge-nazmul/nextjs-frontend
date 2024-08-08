@@ -12,7 +12,7 @@ import ConfirmInvoice from "../../components/ConfirmInvoice";
 import { useReactToPrint } from "react-to-print";
 import PageTitle from "../../components/PageTitle";
 
-export default function Subscribed({ userdatafromserver, req }) {
+export default function Subscribed({ userdatafromserver, token }) {
   const [showauth, setshowauth] = useState(false);
   const [showpopup, setshowpopup] = useState(false);
   const [stickyheader, setstickyheader] = useState(false);
@@ -21,7 +21,7 @@ export default function Subscribed({ userdatafromserver, req }) {
   const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { payment_intent, plan_id, transactionId, token } = router.query;
+  const { payment_intent, plan_id, transactionId } = router.query;
 
   async function fetchPlan() {
     const res = await PaymentsApi.getPlans({ plan_id }, token);
@@ -253,8 +253,8 @@ export default function Subscribed({ userdatafromserver, req }) {
   );
 }
 
-export async function getServerSideProps({ params, req }) {
-  let token = req.cookies.accesstoken;
+export async function getServerSideProps({ params, query, req }) {
+  let token = query.token || req.cookies.accesstoken;
   let msg = "";
   if (token) {
     let response = await LoginApis.checktoken({
