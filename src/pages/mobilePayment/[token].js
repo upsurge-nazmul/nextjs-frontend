@@ -26,9 +26,9 @@ export default function MobilePayment({}) {
   return (
     <div className={styles.mainView}>
       {user && user.premium_plan ? (
-        <SubscriptionDetails userdata={user} />
+        <SubscriptionDetails userdata={user} token={token} />
       ) : (
-        <ChosePremiumPopUp />
+        <ChosePremiumPopUp token={token} />
       )}
     </div>
   );

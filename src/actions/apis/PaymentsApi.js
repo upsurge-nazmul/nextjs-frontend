@@ -44,67 +44,67 @@ const createStripePaymentIntent = (payload) => {
   );
 };
 
-const updateSubscription = (payload) => {
+const updateSubscription = (payload, token = "") => {
   return ApiCalls.postResponse(
     "payments/addsubscription",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const getSubscriptionDetails = () => {
+const getSubscriptionDetails = (token = "") => {
   return ApiCalls.getResponse(
     "payments/subscriptionDetails",
     null,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const getPlans = (payload) => {
+const getPlans = (payload, token) => {
   return ApiCalls.getResponse(
     "payments/plans",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const getPhonePe = (payload) => {
+const getPhonePe = (payload, token = "") => {
   return ApiCalls.postResponse(
     "payments/phonepe",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const checkPhonepeStatus = (payload) => {
+const checkPhonepeStatus = (payload, token = "") => {
   return ApiCalls.postResponse(
     "payments/phonepe/check-payment-status",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const addTransactionRecord = (payload) => {
+const addTransactionRecord = (payload, token = "") => {
   return ApiCalls.postResponse(
     "payments/addTransactionRecord",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const checkTransactionRecord = (payload) => {
+const checkTransactionRecord = (payload, token = "") => {
   return ApiCalls.getResponse(
     "payments/checkTransactionRecord",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 
-const deleteTransactionRecord = (payload) => {
+const deleteTransactionRecord = (payload, token) => {
   return ApiCalls.getResponse(
     "payments/deleteTransactionRecord",
     payload,
-    getCookie("accesstoken")
+    token || getCookie("accesstoken")
   );
 };
 

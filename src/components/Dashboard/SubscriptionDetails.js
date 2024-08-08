@@ -8,12 +8,13 @@ import { useReactToPrint } from "react-to-print";
 export default function SubscriptionDetails({
   setShowSubscription = () => {},
   userdata,
+  token = "",
 }) {
   const pdfRef = useRef(null);
   const [subsData, setSubsData] = useState();
 
   async function fetchSubscriptionDetails() {
-    const res = await PaymentsApi.getSubscriptionDetails();
+    const res = await PaymentsApi.getSubscriptionDetails(token);
     if (res && res.data && res.data.success) {
       let info = res.data.data;
       info.h_cgst = 9;

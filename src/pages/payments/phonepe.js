@@ -6,7 +6,7 @@ import PaymentsApi from "../../actions/apis/PaymentsApi";
 export default function PhonepePage() {
   const [plan, setPlan] = useState();
   const router = useRouter();
-  const { plan_id } = router.query;
+  const { plan_id, token = "" } = router.query;
 
   async function fetchPlan() {
     const res = await PaymentsApi.getPlans({ plan_id });
@@ -16,10 +16,13 @@ export default function PhonepePage() {
   }
 
   async function paymentInit() {
-    const result = await PaymentsApi.getPhonePe({
-      plan_id,
-      hostURL: window.location.origin,
-    });
+    const result = await PaymentsApi.getPhonePe(
+      {
+        plan_id,
+        hostURL: window.location.origin,
+      },
+      token
+    );
     console.log("phonepe result: ", result);
     if (!result) {
       router.push(window.history.go(-1) ?? "/");

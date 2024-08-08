@@ -10,7 +10,7 @@ const METHODS = [
   { name: "Stripe", id: "stripe", key: "stripy" },
 ];
 
-function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
+function ChosePremiumPopUp({ setChoseToPremium = () => {}, token = "" }) {
   const router = useRouter();
   const [plans, setPlans] = useState();
   const [loading, setLoading] = useState(true);
@@ -104,7 +104,11 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
             <div
               className={styles.button}
               onClick={() => {
-                router.push(`/payments/${method}?plan_id=${plans[2].id}`);
+                router.push(
+                  `/payments/${method}?plan_id=${plans[2].id}${
+                    token ? `&token=${token}` : ""
+                  }`
+                );
               }}
             >
               {`Subscribe to Premium`}
@@ -131,7 +135,11 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
             <div
               className={styles.button}
               onClick={() => {
-                router.push(`/payments/${method}?plan_id=${plans[1].id}`);
+                router.push(
+                  `/payments/${method}?plan_id=${plans[1].id}${
+                    token ? `&token=${token}` : ""
+                  }`
+                );
               }}
             >
               {`Subscribe to Premium`}
@@ -160,7 +168,11 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {} }) {
             <div
               className={styles.button}
               onClick={() => {
-                router.push(`/payments/${method}?plan_id=${plans[0].id}`);
+                router.push(
+                  `/payments/${method}?plan_id=${plans[0].id}${
+                    token ? `&token=${token}` : ""
+                  }`
+                );
               }}
             >
               {`Subscribe to Premium`}

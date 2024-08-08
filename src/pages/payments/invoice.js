@@ -21,10 +21,10 @@ export default function Subscribed({ userdatafromserver, req }) {
   const [plan, setPlan] = useState();
   const pdfRef = useRef(null);
   const router = useRouter();
-  const { payment_intent, plan_id, transactionId } = router.query;
+  const { payment_intent, plan_id, transactionId, token } = router.query;
 
   async function fetchPlan() {
-    const res = await PaymentsApi.getPlans({ plan_id });
+    const res = await PaymentsApi.getPlans({ plan_id }, token);
     if (res && res.data && res.data.success) {
       setPlan(res.data.data);
     }
@@ -35,7 +35,7 @@ export default function Subscribed({ userdatafromserver, req }) {
   }, []);
 
   async function fetchUpdateSubscription(model) {
-    const res = await PaymentsApi.updateSubscription(model);
+    const res = await PaymentsApi.updateSubscription(model, token);
     if (res && res.data && res.data.success) {
       let info = res.data.data;
       info.h_cgst = 9;
@@ -51,9 +51,12 @@ export default function Subscribed({ userdatafromserver, req }) {
   }
 
   async function checkPhonepeStatus(transactionId) {
-    const res = await PaymentsApi.checkPhonepeStatus({
-      transactionId,
-    });
+    const res = await PaymentsApi.checkPhonepeStatus(
+      {
+        transactionId,
+      },
+      token
+    );
     console.log({ res });
     if (res && res.data) {
       if (res.data.response.code === "PAYMENT_SUCCESS") {
@@ -70,9 +73,12 @@ export default function Subscribed({ userdatafromserver, req }) {
   }
 
   async function checkTransactionRecord(transactionId) {
-    const checkResponse = await PaymentsApi.checkTransactionRecord({
-      transactionId,
-    });
+    const checkResponse = await PaymentsApi.checkTransactionRecord(
+      {
+        transactionId,
+      },
+      token
+    );
     if (checkResponse && checkResponse.data) {
       if (checkResponse.data.success) {
         return true;
@@ -93,7 +99,7 @@ export default function Subscribed({ userdatafromserver, req }) {
       const check = await checkPhonepeStatus(transactionId);
       if (check === "success") {
         if (await checkTransactionRecord(transactionId)) {
-          PaymentsApi.deleteTransactionRecord({ transactionId });
+          PaymentsApi.deleteTransactionRecord({ transactionId }, token);
         }
         const invoiceModel = {
           paymentIntent: transactionId,
@@ -101,11 +107,14 @@ export default function Subscribed({ userdatafromserver, req }) {
         };
         fetchUpdateSubscription(invoiceModel);
       } else {
-        PaymentsApi.addTransactionRecord({
-          transactionId,
-          status: check,
-          plan_id,
-        });
+        PaymentsApi.addTransactionRecord(
+          {
+            transactionId,
+            status: check,
+            plan_id,
+          },
+          token
+        );
         setStatus(check);
       }
     }
