@@ -18,7 +18,6 @@ export default function MobilePayment({}) {
   }
 
   const sendDataToReactNativeApp = async () => {
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", window);
     if (window && window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage("goBack");
     } else {

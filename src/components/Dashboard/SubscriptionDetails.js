@@ -37,6 +37,19 @@ export default function SubscriptionDetails({
     content: () => pdfRef.current,
   });
 
+  const sendPrintMessageToReactNative = async () => {
+    const htmlContent = pdfRef.current.innerHTML;
+    if (window && window.ReactNativeWebView) {
+      const message = JSON.stringify({
+        type: "print",
+        content: htmlContent,
+      });
+      window.ReactNativeWebView.postMessage(message);
+    } else {
+      console.log("Not in WebView, or ReactNativeWebView is not available");
+    }
+  };
+
   return (
     <Modal
       title={"Subscription Details"}
@@ -49,7 +62,10 @@ export default function SubscriptionDetails({
         },
         isProceed: true,
         proceedText: "Print Invoice",
-        handleProceed: handlerSave,
+        handleProceed: () => {
+          handlerSave();
+          sendPrintMessageToReactNative();
+        },
       }}
     >
       {subsData && (
