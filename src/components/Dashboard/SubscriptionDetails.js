@@ -9,6 +9,7 @@ export default function SubscriptionDetails({
   setShowSubscription = () => {},
   userdata,
   token = "",
+  sendDataToReactNativeApp = () => {},
 }) {
   const pdfRef = useRef(null);
   const [subsData, setSubsData] = useState();
@@ -42,7 +43,10 @@ export default function SubscriptionDetails({
       actions={{
         cancelText: "Close",
         isCancel: true,
-        handleCancel: () => setShowSubscription(false),
+        handleCancel: () => {
+          setShowSubscription(false);
+          sendDataToReactNativeApp();
+        },
         isProceed: true,
         proceedText: "Print Invoice",
         handleProceed: handlerSave,

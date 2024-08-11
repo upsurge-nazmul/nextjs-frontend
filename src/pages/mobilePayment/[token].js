@@ -17,6 +17,15 @@ export default function MobilePayment({}) {
     }
   }
 
+  const sendDataToReactNativeApp = async () => {
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", window);
+    if (window && window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage("goBack");
+    } else {
+      console.log("Not in WebView, or ReactNativeWebView is not available");
+    }
+  };
+
   useEffect(() => {
     if (token) {
       fetchUser();
@@ -26,9 +35,18 @@ export default function MobilePayment({}) {
   return (
     <div className={styles.mainView}>
       {user && user.premium_plan ? (
-        <SubscriptionDetails userdata={user} token={token} />
+        <SubscriptionDetails
+          isApp={true}
+          userdata={user}
+          token={token}
+          sendDataToReactNativeApp={sendDataToReactNativeApp}
+        />
       ) : (
-        <ChosePremiumPopUp token={token} />
+        <ChosePremiumPopUp
+          isApp={true}
+          token={token}
+          sendDataToReactNativeApp={sendDataToReactNativeApp}
+        />
       )}
     </div>
   );

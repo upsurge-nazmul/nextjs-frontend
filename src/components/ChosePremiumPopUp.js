@@ -10,7 +10,11 @@ const METHODS = [
   { name: "Stripe", id: "stripe", key: "stripy" },
 ];
 
-function ChosePremiumPopUp({ setChoseToPremium = () => {}, token = "" }) {
+function ChosePremiumPopUp({
+  setChoseToPremium = () => {},
+  token = "",
+  sendDataToReactNativeApp = () => {},
+}) {
   const router = useRouter();
   const [plans, setPlans] = useState();
   const [loading, setLoading] = useState(true);
@@ -57,7 +61,13 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {}, token = "" }) {
         }}
       ></div>
       <div className={styles.block}>
-        <div className={styles.cross} onClick={() => setChoseToPremium(false)}>
+        <div
+          className={styles.cross}
+          onClick={() => {
+            setChoseToPremium(false);
+            sendDataToReactNativeApp();
+          }}
+        >
           <CancelOutlinedIcon className={styles.icon} />
         </div>
 
@@ -203,11 +213,12 @@ function ChosePremiumPopUp({ setChoseToPremium = () => {}, token = "" }) {
         <p
           className={styles.clickable}
           onClick={() => {
-            if (router.pathname === "/dashboard/k") {
-              setChoseToPremium(false);
-            } else {
-              router.push(`/dashboard/k`);
-            }
+            sendDataToReactNativeApp();
+            // if (router.pathname === "/dashboard/k") {
+            //   setChoseToPremium(false);
+            // } else {
+            //   router.push(`/dashboard/k`);
+            // }
           }}
         >
           Continue using the free version
