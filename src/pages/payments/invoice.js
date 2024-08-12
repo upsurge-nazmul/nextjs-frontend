@@ -143,6 +143,19 @@ export default function Subscribed({ userdatafromserver, token }) {
     content: () => pdfRef.current,
   });
 
+  const sendPrintMessageToReactNative = async () => {
+    const htmlContent = pdfRef.current.innerHTML;
+    if (window && window.ReactNativeWebView) {
+      const message = JSON.stringify({
+        type: "print",
+        content: htmlContent,
+      });
+      window.ReactNativeWebView.postMessage(message);
+    } else {
+      console.log("Not in WebView, or ReactNativeWebView is not available");
+    }
+  };
+
   return (
     <div className={styles.waitlist}>
       <PageTitle />
@@ -202,7 +215,13 @@ export default function Subscribed({ userdatafromserver, token }) {
                 )}
               </div>
               <div className={styles.btnContainer}>
-                <button onClick={() => handlerSave()} className={styles.btn}>
+                <button
+                  onClick={() => {
+                    handlerSave();
+                    sendPrintMessageToReactNative();
+                  }}
+                  className={styles.btn}
+                >
                   Print Invoice
                 </button>
                 {/* <button onClick={() => handlerSave()} className={styles.btn}>

@@ -96,7 +96,61 @@ function ChosePremiumPopUp({
         </div>
 
         <div className={styles.section}>
-          <div className={styles.sectionLeft}>
+          {plans &&
+            plans.length &&
+            plans.map((plan, i) => {
+              return (
+                <>
+                  <div className={styles.sectionLeft} key={plan.id}>
+                    <div
+                      className={
+                        plan.id === 1001
+                          ? styles.bestValue
+                          : styles.bestValueHidden
+                      }
+                    >
+                      Best Value
+                    </div>
+                    <div className={styles.pricing}>
+                      <div className={styles.bottom}>
+                        <h3 className={styles.header}>{plan?.name}</h3>
+                      </div>
+                      <div className={styles.pricingSectionTop}>
+                        <p className={styles.slashedPrice}>
+                          ₹{plan.slashPrice}
+                        </p>{" "}
+                        <p className={styles.actualPrice}>
+                          ₹{plan.amount}&nbsp;
+                        </p>{" "}
+                      </div>
+                      <div className={styles.pricingSectionBottom}>
+                        <p className={styles.smallfont}>
+                          (limited period offer)
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      className={styles.button}
+                      onClick={() => {
+                        router.push(
+                          `/payments/${method}?plan_id=${plan.id}${
+                            token ? `&token=${token}` : ""
+                          }`
+                        );
+                      }}
+                    >
+                      {`Subscribe to Premium`}
+                    </div>
+                  </div>
+                  {i < plans.length - 1 && (
+                    <div className={styles.verticleLine}></div>
+                  )}
+                </>
+              );
+            })}
+
+          {/* <div className={styles.sectionLeft}>
             <div className={styles.bestValue}>&nbsp;</div>
             <div className={styles.pricing}>
               <div className={styles.bottom}>
@@ -187,7 +241,7 @@ function ChosePremiumPopUp({
             >
               {`Subscribe to Premium`}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* <div>Prefered payment method</div>

@@ -81,6 +81,17 @@
       justify-content: space-between;
 
       .bestValue {
+        width: max-content;
+        padding: 0.1rem 0.8rem;
+        font-size: 0.8rem;
+        color: #eac356;
+        background: #efeceb;
+        font-weight: 700;
+        border-radius: 1rem;
+        box-shadow: 0 0.3rem 0.5rem rgb(158, 158, 158);
+      }
+
+      .bestValueHidden {
         opacity: 0;
       }
 
@@ -249,11 +260,11 @@
     transition: all 0.3s ease;
     margin-top: 0.5rem;
     padding: 1rem;
+    border: 1px solid #4166eb;
 
     &:hover {
       background-color: #ffffff;
       color: #4166eb;
-      border: 1px solid #4166eb;
     }
   }
 
