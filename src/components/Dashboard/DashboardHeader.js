@@ -321,14 +321,10 @@ function DashboardHeader({
                     sequinCount={sequinCount}
                   />
                 </span>
-                {displayingUnicoins
-                  ? displayingUnicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
-                    ? (
-                        displayingUnicoins /
-                        process.env.NEXT_PUBLIC_UNICOIN_VALUE
-                      ).toFixed(2) + "K"
-                    : displayingUnicoins
-                  : 0}
+                {/* {displayingUnicoins  || 0} */}
+                {Math.round(displayingUnicoins).toLocaleString("en-IN", {
+                  currency: "INR",
+                })}
               </p>
             </div>
           )}
@@ -355,11 +351,9 @@ function DashboardHeader({
               <UniCoinSvg className={unicoinsStyle.svg} />
               <p className={unicoinsStyle.number}>
                 {unicoins
-                  ? unicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
-                    ? (
-                        unicoins / process.env.NEXT_PUBLIC_UNICOIN_VALUE
-                      ).toFixed(2) + "K"
-                    : unicoins
+                  ? Math.round(unicoins).toLocaleString("en-IN", {
+                      currency: "INR",
+                    })
                   : 0}
               </p>
             </div>

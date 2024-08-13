@@ -40,7 +40,9 @@ export default function GameCard({
           <div className={styles.coin}>
             <UniCoinSvg />
           </div>
-          {data.unicoinsReward}
+          {Math.round(data.unicoinsReward).toLocaleString("en-IN", {
+            currency: "INR",
+          })}
         </div>
       )}
     </div>

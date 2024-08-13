@@ -61,38 +61,64 @@ function QuestCard({
   return (
     <>
       {data ? (
-        <div className={styles.questCard}
-
-        onClick={() => {
-          console.log(userPlanType, data.premium_plan);
-          if (userPlanType >= data.premium_plan) {
-            handleCardClick(data.questId);
-          } else {
-            setShowSubToPremium(true);
-            console.log("Buy a premium plan");
-          }
-        }}
+        <div
+          className={styles.questCard}
+          onClick={() => {
+            console.log(userPlanType, data.premium_plan);
+            if (userPlanType >= data.premium_plan) {
+              handleCardClick(data.questId);
+            } else {
+              setShowSubToPremium(true);
+              console.log("Buy a premium plan");
+            }
+          }}
         >
-        <div className={styles.cardTop} style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)`}}>
-        </div>
-        <div className={styles.cardBottom}>
-        <div className={`${styles.content} mb-3`} style={userPlanType >= data.premium_plan ? {borderTopColor: '#FDCC03'} : {borderTopColor: '#FF4E4E'} }>
-          <p className={styles.title}>{data?.title}</p>
-          {/* <p className={styles.desc}>{data?.questDescription}</p> */}
-          <div className={styles.info}>
-            <div className={styles.chapters}>{`${data.chapters.length} chapters`}   </div>
-            <div className={styles.unicoins}>
-              <div className={styles.coin}><UniCoinSvg className={styles.svg} /></div>
-              {`${data.totalUnicoins}`}
+          <div
+            className={styles.cardTop}
+            style={{ backgroundImage: `url(/images/kq/${data.questId}.webp)` }}
+          ></div>
+          <div className={styles.cardBottom}>
+            <div
+              className={`${styles.content} mb-3`}
+              style={
+                userPlanType >= data.premium_plan
+                  ? { borderTopColor: "#FDCC03" }
+                  : { borderTopColor: "#FF4E4E" }
+              }
+            >
+              <p className={styles.title}>{data?.title}</p>
+              {/* <p className={styles.desc}>{data?.questDescription}</p> */}
+              <div className={styles.info}>
+                <div className={styles.chapters}>
+                  {`${data.chapters.length} chapters`}{" "}
+                </div>
+                <div className={styles.unicoins}>
+                  <div className={styles.coin}>
+                    <UniCoinSvg className={styles.svg} />
+                  </div>
+                  {/* {`${data.totalUnicoins}`} */}
+                  {Math.round(data.totalUnicoins).toLocaleString("en-IN", {
+                    currency: "INR",
+                  })}
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles.actionButton} rounded-pill text-center py-1`}
+              style={
+                userPlanType >= data.premium_plan
+                  ? { backgroundColor: "#FDCC03" }
+                  : { backgroundColor: "#FF4E4E" }
+              }
+            >
+              {userPlanType >= data.premium_plan ? (
+                <span className={styles.open}>&#9658;</span>
+              ) : (
+                <LockSvg className={styles.lock} />
+              )}
             </div>
           </div>
         </div>
-        <div className={`${styles.actionButton} rounded-pill text-center py-1`} style={userPlanType >= data.premium_plan ? {backgroundColor: '#FDCC03'} : {backgroundColor: '#FF4E4E'} }>
-          {userPlanType >= data.premium_plan ? <span className={styles.open}>&#9658;</span> : <LockSvg className={styles.lock} />}
-        </div>
-        </div>
-      
-    </div>
       ) : (
         ""
       )}
