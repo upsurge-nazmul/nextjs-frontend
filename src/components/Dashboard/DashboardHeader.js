@@ -26,6 +26,7 @@ import AchievementPopUp from "../AchievementPopUp";
 import Modal from "../Modal";
 import AccountSwitcher from "./Menu/AccountSwitcher";
 import AvatarSelector from "./AvatarSelector";
+import { modifiedImageURL } from "../../utils/utils";
 
 function DashboardHeader({
   mode,
@@ -249,8 +250,6 @@ function DashboardHeader({
     }
   }, [updateUnicoins]);
 
-  console.log("Unicoin value: ", process.env.NEXT_PUBLIC_UNICOIN_VALUE);
-
   return (
     <div
       className={`${styles.dashboardHeader} ${
@@ -432,8 +431,9 @@ function DashboardHeader({
             }}
             id="avatar-button"
             src={
-              userdata?.user_img_url ||
-              "https://imgcdn.upsurge.in/images/default-avatar.png"
+              userdata?.user_img_url
+                ? modifiedImageURL(userdata.user_img_url)
+                : "https://imgcdn.upsurge.in/images/default-avatar.png"
             }
             alt=""
             className={styles.avatarImg}

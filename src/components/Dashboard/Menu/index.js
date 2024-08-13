@@ -11,6 +11,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import EditIcon from "@mui/icons-material/Edit";
 import { eraseCookie, setCookie } from "../../../actions/cookieUtils";
 import LoginApis from "../../../actions/apis/LoginApis";
+import { modifiedImageURL } from "../../../utils/utils";
 
 export default function Menu({
   settoastdata = () => {},
@@ -131,8 +132,9 @@ export default function Menu({
           <img
             id="avatar-button"
             src={
-              userdata?.user_img_url ||
-              "https://imgcdn.upsurge.in/images/default-avatar.png"
+              userdata?.user_img_url
+                ? modifiedImageURL(userdata.user_img_url)
+                : "https://imgcdn.upsurge.in/images/default-avatar.png"
             }
             alt="Avatar"
             className={styles.menuAvatar}
