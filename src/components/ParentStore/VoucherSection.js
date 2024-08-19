@@ -21,8 +21,6 @@ export default function VoucherSection({
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(9);
 
-  // console.log("@@@@", vouchers);
-
   useEffect(() => {
     if (vouchers && vouchers.length) {
       if (limit) setItems(vouchers.slice(0, limit));
@@ -78,7 +76,7 @@ export default function VoucherSection({
             userdatafromserver={userdatafromserver}
           />
         ))}
-        
+
         {items?.length === 0 && (
           <p className={styles.noreward}>No Vouchers found</p>
         )}

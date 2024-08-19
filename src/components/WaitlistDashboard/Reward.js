@@ -135,7 +135,11 @@ export default function Reward({
           <div className={styles.valueArea}>
             <UniCoinSvg className={styles.svg} clr={"#434040"} />
             <div className={styles.value}>
-              {selectedprice * quantity * process.env.NEXT_PUBLIC_UNICOIN_VALUE}
+              {Math.round(
+                selectedprice * quantity * process.env.NEXT_PUBLIC_UNICOIN_VALUE
+              ).toLocaleString("en-IN", {
+                currency: "INR",
+              })}
             </div>
           </div>
         </div>

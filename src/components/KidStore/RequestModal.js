@@ -25,6 +25,7 @@ export default function RequestModal({
   const [success, setsuccess] = useState(false);
   const { userdata } = useContext(MainContext);
   const [verificationEmail, setVerificationEmail] = useState(false);
+
   async function sendVerificationEmail() {
     let verifypayload = {
       userid: userdata?.user_id,
@@ -44,6 +45,7 @@ export default function RequestModal({
     type: "success",
     msg: "",
   });
+
   useEffect(() => {
     if (!showmodal) {
       seterror("");
@@ -51,50 +53,51 @@ export default function RequestModal({
       setsuccess(false);
     }
   }, [showmodal]);
+
   async function buyAvatar() {
     setloading(true);
     seterror("");
-    if (data.price > availableUnicoins) {
-      seterror("Insufficient unicoins");
-      setloading(false);
-      return;
-    }
-    if (
-      userdatafromserver.phone_verified === false ||
-      userdatafromserver.phone_verified === null
-    ) {
-      seterror("Phone number not verified.");
-      setloading(false);
-    } else if (
-      userdatafromserver.email_verified === false ||
-      userdatafromserver.email_verified === null
-    ) {
-      seterror("Email not verified.");
-      setloading(false);
-    } else if (userdatafromserver.profile_completed === false) {
-      seterror("Profile not completed.");
-      setloading(false);
-    } else {
-      if (data.type && data.type === "voucher") {
-        let response = await KidApis.buyvoucher({
-          voucher_id: data.id,
-          price: data.price,
-          quantity: quantity,
-        });
-        if (response && response.data && response.data.success) {
-          setsuccess(true);
-        } else {
-          seterror(response?.data.message || "Error connecting to server");
-          setloading(false);
-        }
+    // if (data.price > availableUnicoins) {
+    //   seterror("Insufficient unicoins");
+    //   setloading(false);
+    //   return;
+    // }
+    // if (
+    //   userdatafromserver.phone_verified === false ||
+    //   userdatafromserver.phone_verified === null
+    // ) {
+    //   seterror("Phone number not verified.");
+    //   setloading(false);
+    // } else if (
+    //   userdatafromserver.email_verified === false ||
+    //   userdatafromserver.email_verified === null
+    // ) {
+    //   seterror("Email not verified.");
+    //   setloading(false);
+    // } else if (userdatafromserver.profile_completed === false) {
+    //   seterror("Profile not completed.");
+    //   setloading(false);
+    // } else {
+
+    if (data.type && data.type === "voucher") {
+      let response = await KidApis.buyvoucher({
+        voucher_id: data.id,
+        price: data.price,
+        quantity: quantity,
+      });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
       } else {
-        let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
-        if (response && response.data && response.data.success) {
-          setsuccess(true);
-        } else {
-          seterror(response?.data.message || "Error connecting to server");
-          setloading(false);
-        }
+        seterror(response?.data.message || "Error connecting to server");
+        setloading(false);
+      }
+    } else {
+      let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
+      if (response && response.data && response.data.success) {
+        setsuccess(true);
+      } else {
+        seterror(response?.data.message || "Error connecting to server");
+        setloading(false);
       }
     }
   }
@@ -121,22 +124,20 @@ export default function RequestModal({
               <div className={styles.details}>
                 <div className={styles.label}>Available Unicoins</div>
                 <div className={styles.value}>
-                  {availableUnicoins > 1000
-                    ? availableUnicoins /
-                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
-                      "K "
-                    : availableUnicoins}{" "}
+                  {Math.round(availableUnicoins).toLocaleString("en-IN", {
+                    currency: "INR",
+                  })}
+                  {"  "}
                   Unicoins
                 </div>
               </div>
               <div className={styles.details}>
                 <div className={styles.label}>Price</div>
                 <div className={styles.value}>
-                  {data.price * quantity > 1000
-                    ? (data.price * quantity) /
-                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
-                      "K "
-                    : data.price * quantity}{" "}
+                  {Math.round(data.price * quantity).toLocaleString("en-IN", {
+                    currency: "INR",
+                  })}
+                  {"  "}
                   Unicoins
                 </div>
               </div>
@@ -145,11 +146,12 @@ export default function RequestModal({
                   Available Unicoins post purchase
                 </div>
                 <div className={styles.value}>
-                  {availableUnicoins - data.price * quantity > 1000
-                    ? (availableUnicoins - data.price * quantity) /
-                        process.env.NEXT_PUBLIC_UNICOIN_VALUE +
-                      "K "
-                    : availableUnicoins - data.price * quantity}{" "}
+                  {Math.round(
+                    availableUnicoins - data.price * quantity
+                  ).toLocaleString("en-IN", {
+                    currency: "INR",
+                  })}
+                  {"  "}
                   Unicoins
                 </div>
               </div>
