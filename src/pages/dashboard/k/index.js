@@ -301,12 +301,7 @@ export default function ChildActivity({
 
           <div className={styles.contentArea}>
             <div className={styles.flexLeft}>
-              {todaysquestion && (
-                <TodaysQuestion
-                  data={todaysquestion}
-                  unicoins={userdata?.num_unicoins}
-                />
-              )}
+              {todaysquestion && <TodaysQuestion data={todaysquestion} />}
             </div>
             <div className={styles.flexRight}>
               <AppDownload />

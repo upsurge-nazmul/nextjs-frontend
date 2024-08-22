@@ -4,10 +4,7 @@ import KnowledgeQuestApi from "../../../actions/apis/KnowledgeQuestApi";
 import UnityScreen from "../../../components/Games/UnityScreen";
 import styles from "../../../styles/Games/gameView.module.scss";
 
-export default function GameView({
-  setUnicoins = () => {},
-  setShowUnicoinsAwards = () => {},
-}) {
+export default function GameView() {
   const gameRef = useRef();
   const router = useRouter();
   // console.log("router", router);
@@ -36,8 +33,6 @@ export default function GameView({
   const handleGameClose = () => {
     sendDataToReactNativeApp();
     mixpanel.track("Quest Closed", { event: `Quest closed` });
-    setShowUnicoinsAwards(true);
-    setUnicoins(4000);
   };
 
   return (

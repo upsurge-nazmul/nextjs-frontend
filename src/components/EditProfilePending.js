@@ -8,12 +8,14 @@ function EditProfilePending() {
   return (
     <div className={styles.main}>
       <div className={styles.unicoins}>
-          <div className={styles.coin}>
-            <UniCoinSvg />
-          </div>
-          Earn 2500
+        <div className={styles.coin}>
+          <UniCoinSvg />
         </div>
-      <p className={styles.text}>Tell us more about you and earn bonus Unicoins!</p>
+        Earn 2500
+      </div>
+      <p className={styles.text}>
+        Tell us more about you and earn bonus Unicoins!
+      </p>
       <div
         className={styles.button}
         onClick={() => router.push("/dashboard/k/editprofile")}

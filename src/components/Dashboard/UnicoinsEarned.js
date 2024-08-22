@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../../styles/Dashboard/unicoinsEarned.module.scss";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { MainContext } from "../../context/Main";
 
-function UnicoinsEarned({
-  setUnicoinsEarnedPopUp,
-  setUpdateUnicoinsAnimation,
-  unicoins,
-}) {
+function UnicoinsEarned() {
+  const { setUnicoinsEarnedPopUp, unicoins, setUnicoins, setTotalUnicoins } =
+    useContext(MainContext);
+
   return (
     <div className={styles.unicoinsEarned}>
       <div
         className={styles.background}
         onClick={() => {
-          setUpdateUnicoinsAnimation(true);
+          setTotalUnicoins((prev) => prev + unicoins);
           setUnicoinsEarnedPopUp(false);
+          setUnicoins(0);
         }}
       ></div>
       <div className={styles.block}>
@@ -24,8 +25,9 @@ function UnicoinsEarned({
         <div
           className={styles.button}
           onClick={() => {
-            setUpdateUnicoinsAnimation(true);
+            setTotalUnicoins((prev) => prev + unicoins);
             setUnicoinsEarnedPopUp(false);
+            setUnicoins(0);
           }}
         >
           Collect

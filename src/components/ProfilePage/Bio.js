@@ -9,6 +9,7 @@ import ChangePasswordOTP from "../Auth/ChangePasswordOTP";
 import LoginApis from "../../actions/apis/LoginApis";
 import { validUsername } from "../../helpers/validationHelpers";
 import validator from "validator";
+import { modifiedImageURL } from "../../utils/utils";
 
 export default function Bio({
   data = null,
@@ -167,8 +168,9 @@ export default function Bio({
           onClick={() => {}}
           id="avatar"
           src={
-            data?.user_img_url ||
-            "https://imgcdn.upsurge.in/images/default-avatar.png"
+            data?.user_img_url
+              ? modifiedImageURL(data.user_img_url)
+              : "https://imgcdn.upsurge.in/images/default-avatar.png"
           }
           alt="User Avatar"
           className={styles.avatarImg}

@@ -13,10 +13,9 @@ export default function RedeemSection({
   user_balance,
   setuser_balance,
 }) {
-  const [showinput, setshowinput] = useState(false);
   const [unicointoconvert, setunicointoconvert] = useState("");
   const [err, seterr] = useState("");
-  const { userdata } = useContext(MainContext);
+  const { userdata, totalUnicoins } = useContext(MainContext);
 
   async function convert() {
     seterr("");
@@ -55,13 +54,9 @@ export default function RedeemSection({
         <div className={styles.coinflex}>
           <p className={styles.unicoins}>
             <span>
-              {userdata
-                ? userdata.num_unicoins > 1000
-                  ? userdata?.num_unicoins /
-                      process.env.NEXT_PUBLIC_UNICOIN_VALUE +
-                    "K "
-                  : userdata.num_unicoins
-                : 0}
+              {Math.round(totalUnicoins).toLocaleString("en-IN", {
+                currency: "INR",
+              })}
             </span>{" "}
             Unicoins
           </p>

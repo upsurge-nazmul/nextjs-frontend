@@ -34,6 +34,7 @@ export const MainContextProider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   const [skipActive, setskipActive] = useState(true);
   const [timesPlayed, setTimesPlayed] = useState(0);
+  const [totalUnicoins, setTotalUnicoins] = useState(0);
   const [unicoins, setUnicoins] = useState(0);
   const [unicoinsEarnedPopUp, setUnicoinsEarnedPopUp] = useState(false);
   const router = useRouter();
@@ -96,6 +97,7 @@ export const MainContextProider = ({ children }) => {
       }
     } else {
       setuserdata(response.data.data);
+      setTotalUnicoins(response.data.data.num_unicoins);
       setCookie("accesstoken", data.token);
       setuser(response.data.data.id);
       // router.reload();
@@ -196,6 +198,8 @@ export const MainContextProider = ({ children }) => {
         setskipActive,
         setTimesPlayed,
         timesPlayed,
+        totalUnicoins,
+        setTotalUnicoins,
         setUnicoins,
         unicoins,
         setUnicoinsEarnedPopUp,

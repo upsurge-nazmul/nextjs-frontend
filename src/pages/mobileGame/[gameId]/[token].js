@@ -4,10 +4,7 @@ import UnityScreen from "../../../components/Games/UnityScreen";
 import styles from "../../../styles/Games/gameView.module.scss";
 import GameApis from "../../../actions/apis/GameApis";
 
-export default function GameView({
-  setUnicoins = () => {},
-  setShowUnicoinsAwards = () => {},
-}) {
+export default function GameView() {
   const gameRef = useRef();
   const router = useRouter();
   //   console.log("router", router);
@@ -55,8 +52,6 @@ export default function GameView({
     sendDataToReactNativeApp();
     mixpanel.track("Game Closed", { event: `Game closed` });
     handleGameScoreupdate();
-    setShowUnicoinsAwards(true);
-    setUnicoins(4000);
   };
 
   return (

@@ -61,6 +61,8 @@ function DashboardHeader({
     theme,
     showmenu,
     setshowmenu,
+    totalUnicoins,
+    setTotalUnicoins,
     unicoins,
     setUnicoins,
     setUnicoinsEarnedPopUp,
@@ -96,54 +98,55 @@ function DashboardHeader({
   const confettiCount = 50;
   const sequinCount = 20;
 
-  useEffect(async () => {
-    if (updateUnicoinsAnimation === true) {
-      setTimeout(() => {
-        setUpdateUnicoinsAnimation(false);
-      }, 3000);
-      setTimeout(() => {
-        setUpdateUnicoins(!updateUnicoins);
-      }, 3500);
-      setTimeout(() => {
-        setActiveAnimation(true);
-      }, 4000);
-      let response = await DashboardApis.unicoinsTransactionShown();
-    }
-  }, [updateUnicoinsAnimation]);
+  // useEffect(async () => {
+  //   if (updateUnicoinsAnimation === true) {
+  //     setTimeout(() => {
+  //       setUpdateUnicoinsAnimation(false);
+  //     }, 3000);
+  //     setTimeout(() => {
+  //       setUpdateUnicoins(!updateUnicoins);
+  //     }, 3500);
+  //     setTimeout(() => {
+  //       setActiveAnimation(true);
+  //     }, 4000);
+  //     let response = await DashboardApis.unicoinsTransactionShown();
+  //   }
+  // }, [updateUnicoinsAnimation]);
 
-  useEffect(() => {
-    setDisplayingUnicoins(closingBalance - unicoins);
-  }, [unAwardedTransaction, unicoins]);
+  // useEffect(() => {
+  //   setDisplayingUnicoins(closingBalance - unicoins);
+  // }, [unAwardedTransaction, unicoins]);
 
   useEffect(async () => {
-    setDisplayingUnicoins(parseInt(userdata?.num_unicoins));
-    let unAwardedUnicoins = 0;
+    setTotalUnicoins(parseInt(userdata?.num_unicoins));
     if (userdata) {
       let response = await DashboardApis.getUnicoinsTransactionHistory();
       setUnicoinsTransactionData(response?.data?.data);
-      const sortedResponse = await response?.data?.data.sort(
-        (a, b) => a.timestamp - b.timestamp
-      );
-      const updatedResponse = await sortedResponse?.map((item, key) => {
-        if (item.animation_shown === false) {
-          if (item.status === "credit") {
-            unAwardedUnicoins =
-              parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
-          } else if (item.status === "debit") {
-            unAwardedUnicoins =
-              parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
-          }
-        }
-        if (response.data.data.length === key + 1) {
-          if (item.animation_shown === false) {
-            setClosingBalance(parseInt(item.closing_balance));
-            setUnicoins(unAwardedUnicoins);
-            setUnAwardedTransaction(true);
-            setUnicoinsEarnedPopUp(true);
-            return { ...item, animation_shown: true };
-          }
-        }
-      });
+
+      // let unAwardedUnicoins = 0;
+      // const sortedResponse = await response?.data?.data.sort(
+      //   (a, b) => a.timestamp - b.timestamp
+      // );
+      // const updatedResponse = await sortedResponse?.map((item, key) => {
+      //   if (item.animation_shown === false) {
+      //     if (item.status === "credit") {
+      //       unAwardedUnicoins =
+      //         parseInt(unAwardedUnicoins) + parseInt(item.unicoins);
+      //     } else if (item.status === "debit") {
+      //       unAwardedUnicoins =
+      //         parseInt(unAwardedUnicoins) - parseInt(item.unicoins);
+      //     }
+      //   }
+      //   if (response.data.data.length === key + 1) {
+      //     if (item.animation_shown === false) {
+      //       setClosingBalance(parseInt(item.closing_balance));
+      //       setUnicoins(unAwardedUnicoins);
+      //       setUnAwardedTransaction(true);
+      //       setUnicoinsEarnedPopUp(true);
+      //       return { ...item, animation_shown: true };
+      //     }
+      //   }
+      // });
     }
   }, [userdata]);
 
@@ -175,7 +178,7 @@ function DashboardHeader({
     let shouldShowRedeemNow = false;
     if (userdata) {
       if (
-        displayingUnicoins >= 5000 &&
+        totalUnicoins >= 5000 &&
         userdata.reached_5k === false &&
         pathname !== "/dashboard/k/store" &&
         shownRedeemNow === false
@@ -187,7 +190,7 @@ function DashboardHeader({
         });
         setAchievementPopUp(true);
         shouldShowRedeemNow = true;
-        if (displayingUnicoins >= 10000) {
+        if (totalUnicoins >= 10000) {
           setTimeout(() => {
             if (shownRedeemNow === false) {
               setShowAchievement((prevState) => ({
@@ -201,7 +204,7 @@ function DashboardHeader({
           }, 6000);
         }
       } else if (
-        displayingUnicoins >= 10000 &&
+        totalUnicoins >= 10000 &&
         userdata.reached_5k === true &&
         userdata.reached_10k === false &&
         pathname !== "/dashboard/k/store" &&
@@ -218,7 +221,7 @@ function DashboardHeader({
     setShowRedeemNow(shouldShowRedeemNow);
     setShownRedeemNow(shouldShowRedeemNow);
     setAchievementPopUp(shouldShowRedeemNow);
-  }, [displayingUnicoins, userdata]);
+  }, [totalUnicoins, userdata]);
 
   useEffect(() => {
     if (!showToolTip.show) return;
@@ -230,25 +233,27 @@ function DashboardHeader({
       clearTimeout(timer);
     };
   }, [showToolTip.show]);
-  useEffect(() => {
-    if (unAwardedTransaction) {
-      const interval = setInterval(() => {
-        setDisplayingUnicoins((prevNumber) => {
-          if (prevNumber + 1 >= closingBalance) {
-            clearInterval(interval);
-            setUnicoins(0);
-            return closingBalance;
-          } else {
-            return prevNumber + 1;
-          }
-        });
-      }, 1);
 
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [updateUnicoins]);
+  // useEffect(() => {
+  //   if (unAwardedTransaction) {
+  //     const interval = setInterval(() => {
+  //       setDisplayingUnicoins((prevNumber) => {
+  //         if (prevNumber + 1 >= closingBalance) {
+  //           clearInterval(interval);
+  //           setUnicoins(0);
+  //           return closingBalance;
+  //         } else {
+  //           return prevNumber + 1;
+  //         }
+  //       });
+  //     }, 1);
+  //     return () => {
+  //       clearInterval(interval);
+  //     };
+  //   }
+  // }, [updateUnicoins]);
+
+  console.log("!!!!!!!!!!!!", totalUnicoins, unicoins);
 
   return (
     <div
@@ -320,14 +325,14 @@ function DashboardHeader({
                     sequinCount={sequinCount}
                   />
                 </span>
-                {/* {displayingUnicoins  || 0} */}
-                {Math.round(displayingUnicoins).toLocaleString("en-IN", {
+                {/* {totalUnicoins  || 0} */}
+                {Math.round(totalUnicoins).toLocaleString("en-IN", {
                   currency: "INR",
                 })}
               </p>
             </div>
           )}
-        {userdata && updateUnicoinsAnimation === true && (
+        {/* {userdata && updateUnicoinsAnimation === true && (
           <div className={unicoinsStyle.animationBlock}>
             <div
               className={unicoinsStyle.rewardBlock}
@@ -335,13 +340,13 @@ function DashboardHeader({
             >
               <UniCoinSvg className={unicoinsStyle.svg} />
               <p className={unicoinsStyle.number}>
-                {displayingUnicoins
-                  ? displayingUnicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
+                {totalUnicoins
+                  ? totalUnicoins > process.env.NEXT_PUBLIC_UNICOIN_VALUE
                     ? (
-                        displayingUnicoins /
+                        totalUnicoins /
                         process.env.NEXT_PUBLIC_UNICOIN_VALUE
                       ).toFixed(2) + "K"
-                    : displayingUnicoins
+                    : totalUnicoins
                   : 0}
               </p>
             </div>
@@ -357,53 +362,53 @@ function DashboardHeader({
               </p>
             </div>
           </div>
-        )}
+        )} */}
         {userdata?.plan_name == "Premium3m" && (
           <div className={styles.premiumBadge}>
             <span className={styles.text}>Premium</span>
           </div>
         )}
-        {
-          <div className={tooltipStyle.tooltip}>
-            <AnimatePresence>
-              {showToolTip.show && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.3 }}
-                  animate={{ opacity: 1, scale: 1, y: 35 }}
-                  exit={{ opacity: 0, y: 20, x: 30, scale: 0.3 }}
-                  transition={{ duration: 0.2 }}
-                  className={`${tooltipStyle.tooltip__content} ${tooltipStyle.tooltip__content_bottom}`}
-                >
-                  {showToolTip.msg}
-                </motion.span>
-              )}
-            </AnimatePresence>
-            <div
-              id="notification-btn"
-              className={`${styles.notification} ${styles.icon} ${
-                bell ? styles.bell : ""
-              }`}
-              onClick={() => setshownotifications(!shownotifications)}
-              onMouseEnter={() => {
-                if (router.query.showTour) {
-                  return;
-                }
-                setbell(true);
-              }}
-              onMouseLeave={() => {
-                if (router.query.showTour) {
-                  return;
-                }
-                setbell(false);
-              }}
-            >
-              {notifications.length > 0 ? (
-                <div className={styles.dot}></div>
-              ) : null}
-              <NotificationBell />
-            </div>
+
+        <div className={tooltipStyle.tooltip}>
+          <AnimatePresence>
+            {showToolTip.show && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.3 }}
+                animate={{ opacity: 1, scale: 1, y: 35 }}
+                exit={{ opacity: 0, y: 20, x: 30, scale: 0.3 }}
+                transition={{ duration: 0.2 }}
+                className={`${tooltipStyle.tooltip__content} ${tooltipStyle.tooltip__content_bottom}`}
+              >
+                {showToolTip.msg}
+              </motion.span>
+            )}
+          </AnimatePresence>
+          <div
+            id="notification-btn"
+            className={`${styles.notification} ${styles.icon} ${
+              bell ? styles.bell : ""
+            }`}
+            onClick={() => setshownotifications(!shownotifications)}
+            onMouseEnter={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(true);
+            }}
+            onMouseLeave={() => {
+              if (router.query.showTour) {
+                return;
+              }
+              setbell(false);
+            }}
+          >
+            {notifications.length > 0 ? (
+              <div className={styles.dot}></div>
+            ) : null}
+            <NotificationBell />
           </div>
-        }
+        </div>
+
         <div className={styles.avatar} id="header-settings">
           {showmenu && (
             <Menu
@@ -471,19 +476,10 @@ function DashboardHeader({
       ) : (
         ""
       )}
-      {unicoinsEarnedPopUp ? (
-        <UnicoinsEarned
-          setUnicoinsEarnedPopUp={setUnicoinsEarnedPopUp}
-          setUpdateUnicoinsAnimation={setUpdateUnicoinsAnimation}
-          unicoins={unicoins}
-          setUnicoins={setUnicoins}
-        />
-      ) : (
-        ""
-      )}
+      {unicoinsEarnedPopUp ? <UnicoinsEarned /> : ""}
       {showRedeemNow ? (
         <RedeemNowPopUp
-          unicoins={displayingUnicoins}
+          unicoins={totalUnicoins}
           setShowRedeemNow={setShowRedeemNow}
           reached_5k={userdata.reached_5k}
           reached_10k={userdata.reached_10k}

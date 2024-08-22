@@ -1,20 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import GameApis from "../../actions/apis/GameApis";
 import KnowledgeQuestApi from "../../actions/apis/KnowledgeQuestApi";
 import { useState } from "react";
 import UnityScreen from "./UnityScreen";
 import styles from "../../styles/Games/gameView.module.scss";
 import { isMobileOnly } from "react-device-detect";
+import { MainContext } from "../../context/Main";
 
 export default function GameView({
   allGames,
   game,
   setGame,
   handleQuestDone = () => {},
-  setUnicoins = () => {},
-  setShowUnicoinsAwards = () => {},
   isKq = false,
 }) {
+  const { setUnicoinsEarnedPopUp, setUnicoins } = useContext(MainContext);
+
   const gameRef = useRef();
   const [gameData, setGameData] = useState();
   const [loading, setLoading] = useState(false);
@@ -65,6 +66,8 @@ export default function GameView({
       unicoins: game.unicoinsReward,
     });
     if (res?.data?.success) {
+      setUnicoinsEarnedPopUp(true);
+      setUnicoins(game.unicoinsReward);
       console.log("Score success rewards alloted");
     } else {
       console.log(res?.data?.message || "");
@@ -79,8 +82,6 @@ export default function GameView({
     if (document && document.fullscreenElement) document.exitFullscreen();
     setGame();
     if (!isKq) handleGameScoreupdate();
-    setShowUnicoinsAwards(true);
-    setUnicoins(4000);
   };
 
   return (

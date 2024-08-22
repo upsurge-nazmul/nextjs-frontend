@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import LoginApis from "../../actions/apis/LoginApis";
 import Header from "../../components/Header/Header";
 import styles from "../../styles/emailverification/emailverification.module.scss";
+import { MainContext } from "../../context/Main";
 
 export default function Verification({ emailVerified, msg }) {
+  const { setTotalUnicoins } = useContext(MainContext);
   const [openLeftPanel, setOpenLeftPanel] = useState(false);
   const [showauth, setshowauth] = useState(false);
-  
+
+  useEffect(() => {
+    if (emailVerified) {
+      setTotalUnicoins((prev) => prev + 1000);
+    }
+  }, [emailVerified]);
+
   return (
     <div className={styles.mainPage}>
       <Header

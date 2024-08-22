@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UniCoinSvg from "../../components/SVGcomponents/UniCoinSvg";
 import Answer from "./Answer";
 import styles from "../../styles/TodaysQuestion/todaysQuestion.module.scss";
 import QuizApis from "../../actions/apis/QuizApis";
 import CircularProgress from "@mui/material/CircularProgress";
+import { MainContext } from "../../context/Main";
 
-const TodaysQuestion = ({ data, unicoins = 0 }) => {
+const UNICOINS_FOR_QUESTION = 1000;
+
+const TodaysQuestion = ({ data }) => {
+  const { setUnicoinsEarnedPopUp, setUnicoins } = useContext(MainContext);
   const [todaysQuestion, setTodaysQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState(""); // a, b, c, d as current selected answer, if not selected already in that day
@@ -33,10 +37,17 @@ const TodaysQuestion = ({ data, unicoins = 0 }) => {
     const response = await QuizApis.submittodaysquestion({
       q_id: todaysQuestion.id,
       selected_option: answer,
+      unicoins: UNICOINS_FOR_QUESTION,
     });
     console.log("todays qn res", response);
-    setAlredyAnswered(response.data.data.correct_ans);
-    setIsCorrect(response.data.data.is_correct);
+    if (response && response.data && response.data.success) {
+      setAlredyAnswered(response.data.data.correct_ans);
+      setIsCorrect(response.data.data.is_correct);
+      if (response.data.data.is_correct) {
+        setUnicoinsEarnedPopUp(true);
+        setUnicoins(UNICOINS_FOR_QUESTION);
+      }
+    }
     setLoading(false);
   };
 
@@ -50,12 +61,9 @@ const TodaysQuestion = ({ data, unicoins = 0 }) => {
           <div className={styles.unicoinChip}>
             <UniCoinSvg className={styles.unicoinIcon} />
             <div className={styles.unicoins}>
-              {/* {unicoins
-                ? parseInt(unicoins) > 1000
-                  ? `${parseFloat(unicoins / 1000)}k`
-                  : unicoins
-                : 0} */}
-                1000
+              {UNICOINS_FOR_QUESTION.toLocaleString("en-IN", {
+                currency: "INR",
+              })}
             </div>
           </div>
         </div>

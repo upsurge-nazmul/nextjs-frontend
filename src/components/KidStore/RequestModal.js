@@ -21,9 +21,9 @@ export default function RequestModal({
   setshowOTP,
 }) {
   //modes will be start , category , template, assign
+  const { userdata, setTotalUnicoins } = useContext(MainContext);
   const router = useRouter();
   const [success, setsuccess] = useState(false);
-  const { userdata } = useContext(MainContext);
   const [verificationEmail, setVerificationEmail] = useState(false);
 
   async function sendVerificationEmail() {
@@ -86,6 +86,7 @@ export default function RequestModal({
         quantity: quantity,
       });
       if (response && response.data && response.data.success) {
+        setTotalUnicoins((prev) => prev - data.price);
         setsuccess(true);
       } else {
         seterror(response?.data.message || "Error connecting to server");
@@ -94,6 +95,7 @@ export default function RequestModal({
     } else {
       let response = await KidApis.buyavatar({ avatar_id: data.avatar_id });
       if (response && response.data && response.data.success) {
+        setTotalUnicoins((prev) => prev - 20);
         setsuccess(true);
       } else {
         seterror(response?.data.message || "Error connecting to server");

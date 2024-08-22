@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "../../styles/EditProfile/profilePage.module.scss";
 import Input from "../Input";
 import { onlyText } from "../../helpers/validationHelpers";
@@ -8,6 +8,7 @@ import StateName from "./StateName";
 import DateInput from "../Input/DateInput";
 import GenderInput from "./GenderInput";
 import DashboardApis from "../../actions/apis/DashboardApis";
+import { MainContext } from "../../context/Main";
 
 const DoubleItemArea = ({ children }) => {
   return (
@@ -23,6 +24,8 @@ const SingleItemArea = ({ children }) => {
 };
 
 export default function Info({ data, settoastdata = () => {} }) {
+  const { setUnicoinsEarnedPopUp, setUnicoins } = useContext(MainContext);
+
   const [infoData, setInfoData] = useState({
     firstName: "",
     lastName: "",
@@ -81,11 +84,16 @@ export default function Info({ data, settoastdata = () => {} }) {
           dob: responseData.dob,
           gender: responseData.gender,
         });
-        settoastdata({
-          show: true,
-          msg: response.data.message,
-          type: "success",
-        });
+        if (response.data.message === "Profile Completed") {
+          setUnicoinsEarnedPopUp(true);
+          setUnicoins(2500);
+        } else {
+          settoastdata({
+            show: true,
+            msg: response.data.message,
+            type: "success",
+          });
+        }
       } else {
         settoastdata({ show: true, msg: response.data.message, type: "error" });
       }

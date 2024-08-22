@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Toast from "../Toast";
 import styles from "../../styles/otpnotverified/otpnotverified.module.scss";
@@ -6,14 +6,16 @@ import OtpInput from "./OtpInput";
 import LoginApis from "../../actions/apis/LoginApis";
 import ChangePhoneNo from "./ChangePhoneNo";
 import { useRouter } from "next/dist/client/router";
+import { MainContext } from "../../context/Main";
 
 export default function OtpNotVerfied({
   userphone,
   setphoneverified,
   setChangePhoneView,
   email,
-  setshowOTP
+  setshowOTP,
 }) {
+  const { setUnicoinsEarnedPopUp, setUnicoins } = useContext(MainContext);
   const [phone, setphone] = useState(userphone || "");
   const [OTP, setOTP] = useState("");
   const [toastdata, settoastdata] = useState({
@@ -30,7 +32,10 @@ export default function OtpNotVerfied({
     seterror("");
   }, [OTP]);
   async function verifyOtp() {
-    let response = await LoginApis.verifyotp({ phone:phone, otp: OTP.toString() });
+    let response = await LoginApis.verifyotp({
+      phone: phone,
+      otp: OTP.toString(),
+    });
     if (response.data.message === "OTP correct") {
       mixpanel.track("ChangePhoneno", { event: "OTP verified" });
       fbq("trackCustom", "OTP", { event: "OTP-verified" });
@@ -38,6 +43,8 @@ export default function OtpNotVerfied({
       settoastdata({ show: true, msg: response.data.message, type: "success" });
       setphoneverified(true);
       setshowmodal(false);
+      setUnicoinsEarnedPopUp(true);
+      setUnicoins(1000);
     } else {
       seterror(response.data.message || "Cannot connect to server");
     }
@@ -58,13 +65,18 @@ export default function OtpNotVerfied({
         {showmodal ? (
           <>
             <div className={styles.authContentWrapper}>
-              <div className={styles.background} onClick={()=>{setshowOTP(false)}}></div>
+              <div
+                className={styles.background}
+                onClick={() => {
+                  setshowOTP(false);
+                }}
+              ></div>
               {changePhone === "otp" ? (
                 <div className={styles.authcontainer}>
-                  <p className={styles.notverifiedtext}>
+                  <div className={styles.notverifiedtext}>
                     Your phone is not yet verified, please enter the otp to
                     continue.
-                  </p>
+                  </div>
                   <div className={styles.otpHeadWrapper}>
                     <p className={styles.text}>
                       Enter the 6-digit code sent to you at

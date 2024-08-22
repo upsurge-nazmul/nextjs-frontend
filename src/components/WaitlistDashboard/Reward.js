@@ -21,9 +21,9 @@ export default function Reward({
   parent,
   userdatafromserver,
 }) {
+  const { userdata, setuserdata } = useContext(MainContext);
   const [prices, setprices] = useState([]);
   const [showOTP, setshowOTP] = useState(false);
-  const { userdata, setuserdata } = useContext(MainContext);
   const [selectedprice, setselectedprice] = useState(
     data.valueDenominations?.split(",")[0]
   );
