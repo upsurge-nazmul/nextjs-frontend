@@ -253,8 +253,6 @@ function DashboardHeader({
   //   }
   // }, [updateUnicoins]);
 
-  console.log("!!!!!!!!!!!!", totalUnicoins, unicoins);
-
   return (
     <div
       className={`${styles.dashboardHeader} ${

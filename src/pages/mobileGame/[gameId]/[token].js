@@ -43,15 +43,18 @@ export default function GameView() {
     );
     if (res?.data?.success) {
       console.log("Score success rewards alloted");
+      window &&
+        window.ReactNativeWebView &&
+        window.ReactNativeWebView.postMessage("score_update");
     } else {
       console.log(res?.data?.message || "");
     }
   };
 
   const handleGameClose = () => {
+    handleGameScoreupdate();
     sendDataToReactNativeApp();
     mixpanel.track("Game Closed", { event: `Game closed` });
-    handleGameScoreupdate();
   };
 
   return (

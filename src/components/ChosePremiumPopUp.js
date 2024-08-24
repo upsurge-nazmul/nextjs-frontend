@@ -100,8 +100,8 @@ function ChosePremiumPopUp({
             plans.length &&
             plans.map((plan, i) => {
               return (
-                <>
-                  <div className={styles.sectionLeft} key={plan.id}>
+                <React.Fragment key={plan.id}>
+                  <div className={styles.sectionLeft}>
                     <div
                       className={
                         plan.id === 1001
@@ -146,7 +146,7 @@ function ChosePremiumPopUp({
                   {i < plans.length - 1 && (
                     <div className={styles.verticleLine}></div>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
 

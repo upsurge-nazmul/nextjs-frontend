@@ -37,7 +37,6 @@ const TodaysQuestion = ({ data }) => {
     const response = await QuizApis.submittodaysquestion({
       q_id: todaysQuestion.id,
       selected_option: answer,
-      unicoins: UNICOINS_FOR_QUESTION,
     });
     console.log("todays qn res", response);
     if (response && response.data && response.data.success) {
