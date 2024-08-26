@@ -6,7 +6,6 @@ import { Game_Data } from "../../static_data/Game_Data";
 export default function GameList({
   data,
   handlegameclick = () => {},
-  gameunicoinrewards = null,
   userdata = null,
 }) {
   return (
@@ -27,11 +26,6 @@ export default function GameList({
                 handlegameclick(item)
               }
               data={item}
-              rewardReceived={
-                gameunicoinrewards
-                  ? gameunicoinrewards.includes(item.id)
-                  : false
-              }
               key={"game_array" + index}
             />
           ))
@@ -49,13 +43,6 @@ export default function GameList({
                   Game_Data[item].premium_plan,
                   userdata?.premium_plan
                 )
-              }
-              reward={
-                gameunicoinrewards
-                  ? gameunicoinrewards.includes(item)
-                    ? "Completed"
-                    : 1500
-                  : null
               }
               data={Game_Data[item]}
               key={"games" + index}

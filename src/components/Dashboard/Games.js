@@ -10,14 +10,13 @@ import GameView from "../Games/GameView";
 
 export default function DashboardGames({
   title = "Games",
-  gameunicoinrewards = null,
   recentgames = null,
   allGames = null,
   setShowSubToPremium = () => {},
   gameData = "default", // or 'recent_games'
 }) {
   const gamesRef = useRef(null);
-  const { userdata } = useContext(MainContext);
+  const { userdata, setGameUnicoinRewards } = useContext(MainContext);
   const [data, setData] = useState();
   const [openGame, setOpenGame] = useState("");
 
@@ -96,6 +95,11 @@ export default function DashboardGames({
   async function handlegameclick(game) {
     if (userdata.premium_plan >= game.premium_plan) {
       setOpenGame(game.id);
+      setGameUnicoinRewards((prev) => {
+        const uniqueItems = new Set(prev);
+        uniqueItems.add(game.id);
+        return Array.from(uniqueItems);
+      });
     } else {
       setShowSubToPremium(true);
     }
@@ -128,11 +132,6 @@ export default function DashboardGames({
                       handlegameclick(item)
                     }
                     data={item}
-                    rewardReceived={
-                      gameunicoinrewards
-                        ? gameunicoinrewards.includes(item.id)
-                        : false
-                    }
                     key={"game_array" + index}
                   />
                 ))
@@ -151,13 +150,6 @@ export default function DashboardGames({
                           Game_Data[item].premium_plan,
                           userdata?.premium_plan
                         )
-                      }
-                      reward={
-                        gameunicoinrewards
-                          ? gameunicoinrewards.includes(item)
-                            ? "Completed"
-                            : 1500
-                          : null
                       }
                       data={Game_Data[item]}
                       key={"games" + index}

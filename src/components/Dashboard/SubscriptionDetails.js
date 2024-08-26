@@ -38,7 +38,7 @@ export default function SubscriptionDetails({
   });
 
   const sendPrintMessageToReactNative = async () => {
-    const htmlContent = pdfRef.current.innerHTML;
+    const htmlContent = pdfRef.current && pdfRef.current.innerHTML;
     if (window && window.ReactNativeWebView) {
       const message = JSON.stringify({
         type: "print",

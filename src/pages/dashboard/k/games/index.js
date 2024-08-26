@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import LoginApis from "../../../../actions/apis/LoginApis";
 import FreeGameApis from "../../../../actions/apis/FreeGameApis";
 import GameApis from "../../../../actions/apis/GameApis";
 import Games from "../../../../components/Games";
+import { MainContext } from "../../../../context/Main";
 
 function GamesPage({
   userdatafromserver,
@@ -10,11 +11,18 @@ function GamesPage({
   allGames,
   recentgames,
 }) {
+  const { setGameUnicoinRewards } = useContext(MainContext);
+
+  useEffect(() => {
+    if (gameunicoinrewards) {
+      setGameUnicoinRewards(gameunicoinrewards);
+    }
+  }, [gameunicoinrewards]);
+
   return (
     <Games
       {...{
         userdatafromserver,
-        gameunicoinrewards,
         allGames,
         recentgames,
         accountType: "kid",

@@ -61,7 +61,8 @@ export default function ChildActivity({
   gameunicoinrewards,
   allGames,
 }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, setGameUnicoinRewards } =
+    useContext(MainContext);
   const [mode, setmode] = useState("Welcome, " + childdetail.first_name);
   const [showtour, setshowtour] = useState(
     !userdatafromserver?.intro_guide_completed
@@ -218,10 +219,11 @@ export default function ChildActivity({
     fetchQuestData();
   }, []);
 
-  function handleGameClick(pushto = null, gameName = null) {
-    pushto = pushto ? pushto.split("/")[pushto.split("/").length - 1] : "";
-    router.push("/dashboard/k/game/" + (pushto ? pushto : gameName));
-  }
+  useEffect(() => {
+    if (gameunicoinrewards) {
+      setGameUnicoinRewards(gameunicoinrewards);
+    }
+  }, [gameunicoinrewards]);
 
   const story = [
     {
@@ -292,7 +294,6 @@ export default function ChildActivity({
           />
           <div className={styles.gamesArea}>
             <DashboardGames
-              gameunicoinrewards={gameunicoinrewards}
               recentgames={recentgames}
               allGames={allGames}
               setShowSubToPremium={setShowSubToPremium}

@@ -17,13 +17,13 @@ import DashboardGames from "../Dashboard/Games";
 
 function Games({
   userdatafromserver = null,
-  gameunicoinrewards = null,
   allGames = null,
   recentgames = null,
   accountType = "",
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, setGameUnicoinRewards } =
+    useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
   const [showSubToPremium, setShowSubToPremium] = useState(false);
@@ -112,6 +112,11 @@ function Games({
   async function handlegameclick(game) {
     if (userdata.premium_plan >= game.premium_plan) {
       setOpenGame(game.id);
+      setGameUnicoinRewards((prev) => {
+        const uniqueItems = new Set(prev);
+        uniqueItems.add(game.id);
+        return Array.from(uniqueItems);
+      });
     } else {
       setShowSubToPremium(true);
     }
@@ -141,13 +146,11 @@ function Games({
             <GameList
               data={recent_games}
               handlegameclick={handlegameclick}
-              gameunicoinrewards={gameunicoinrewards}
               userdata={userdata}
             />
           </div> */}
           {/* <DashboardGames
             title={"Recently Played"}
-            gameunicoinrewards={gameunicoinrewards}
             recentgames={recent_games}
             setShowSubToPremium={setShowSubToPremium}
             gameData={"recent_games"}
@@ -160,7 +163,6 @@ function Games({
             <GameList
               data={allGames}
               handlegameclick={handlegameclick}
-              gameunicoinrewards={gameunicoinrewards}
               userdata={userdata}
             />
           </div>
