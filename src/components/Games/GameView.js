@@ -60,7 +60,7 @@ export default function GameView({
   }, []);
 
   const handleGameScoreupdate = async () => {
-    const game = allGames.filter((item) => item.id === gameData.id)[0];
+    const game = allGames?.filter((item) => item.id === gameData.id)[0];
     let res = await GameApis.unicoinreward({
       gameId: gameData.id,
       unicoins: game.unicoinsReward,

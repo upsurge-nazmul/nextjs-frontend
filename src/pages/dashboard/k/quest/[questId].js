@@ -31,7 +31,13 @@ const democoncepts = [
 
 export default function KnowledgeQuest({ userData, questData }) {
   const router = useRouter();
-  const { userdata, setuserdata, widthHeight } = useContext(MainContext);
+  const {
+    userdata,
+    setuserdata,
+    widthHeight,
+    setUnicoinsEarnedPopUp,
+    setUnicoins,
+  } = useContext(MainContext);
   const { questId, questTypeId } = router.query;
 
   const [toastdata, settoastdata] = useState({
@@ -75,18 +81,25 @@ export default function KnowledgeQuest({ userData, questData }) {
     setActiveChNo(0);
   };
 
-  const handleDone = () => {
-    KnowledgeQuestApi.update({
+  const handleDone = async () => {
+    const response = await KnowledgeQuestApi.update({
       level: activeChNo,
       quest_id: currentQuest.questId,
     });
-    mixpanel.track("Knowledge Quest", {
-      event: `Quest Finished ${currentQuest.questId}`,
-    });
-    setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
-    setView();
-    setCurrentChapter();
-    setActiveChNo(0);
+    if (response?.data?.success) {
+      mixpanel.track("Knowledge Quest", {
+        event: `Quest Finished ${currentQuest.questId}`,
+      });
+      const unicoinsAwarded = response?.data?.data.unicoinsAwarded;
+      if (unicoinsAwarded > 0) {
+        setUnicoinsEarnedPopUp(true);
+        setUnicoins(response?.data?.data?.unicoinsAwarded);
+      }
+      setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
+      setView();
+      setCurrentChapter();
+      setActiveChNo(0);
+    }
   };
 
   return (
