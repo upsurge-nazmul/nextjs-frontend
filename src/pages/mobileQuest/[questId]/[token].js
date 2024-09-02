@@ -30,18 +30,21 @@ export default function GameView() {
     if (questId && token) fetchGameData();
   }, [questId, token]);
 
-  const handleGameClose = () => {
+  const handleQuestDone = () => {
     sendDataToReactNativeApp();
     mixpanel.track("Quest Closed", { event: `Quest closed` });
   };
+
+  const handleQuestExit = () => {};
 
   return (
     <div className={styles.gameView} ref={gameRef}>
       {gameData && (
         <UnityScreen
           data={gameData}
-          handleGameExit={handleGameClose}
-          loading={loading}
+          handleGameExit={handleQuestExit}
+          handleQuestDone={handleQuestDone}
+          // loading={loading}
         />
       )}
     </div>
