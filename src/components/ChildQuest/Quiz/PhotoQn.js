@@ -1,12 +1,15 @@
-import Image from "next/image";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
+import { modifiedImageURL } from "../../../utils/utils";
 
 export default function PhotoQn({ data, value, setValue }) {
   return (
     <div className={styles.photoQN}>
       <div className={styles.imageWraper}>
         <img
-          src={data.photoUrl}
+          src={modifiedImageURL(
+            data.photoUrl,
+            "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+          )}
           alt="Picture of the question"
           width={600}
           height={300}

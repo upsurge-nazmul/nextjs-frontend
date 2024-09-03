@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
+import { modifiedImageURL } from "../../../utils/utils";
 
 export default function Matching({ data, value, setValue }) {
   const [matches, setMatches] = useState([]);
@@ -91,7 +92,10 @@ export default function Matching({ data, value, setValue }) {
               >
                 {data.imageOption ? (
                   <img
-                    src={option.imageUrl}
+                    src={modifiedImageURL(
+                      option.imageUrl,
+                      "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+                    )}
                     className={styles.optionImage}
                     alt={option.id}
                     width={60}

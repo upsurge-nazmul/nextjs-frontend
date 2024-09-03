@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
+import { modifiedImageURL } from "../../../utils/utils";
 
 const ImageOption = ({ src, alt = "" }) => {
-  return <img src={src} alt={alt} className={styles.optionImage} />;
+  return (
+    <img
+      src={modifiedImageURL(
+        src,
+        "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+      )}
+      alt={alt}
+      className={styles.optionImage}
+    />
+  );
 };
 
 export default function PhotoOptions({ data, value, setValue }) {

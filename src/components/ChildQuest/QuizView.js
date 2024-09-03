@@ -6,12 +6,7 @@ import { getCookie } from "../../actions/cookieUtils";
 import Quiz from "./Quiz";
 import Completed from "./Quiz/Completed";
 
-export default function QuizView({
-  chapterId,
-  questId,
-  handleDone,
-  setuserdata,
-}) {
+export default function QuizView({ chapterId, questId, handleDone }) {
   const colorarray = ["#FDCC03", "#17D1BC", "#FF6263", "#4166EB"];
   const [currentcolor, setcurrentcolor] = useState(0);
   const [currentQnIndex, setCurrentQnIndex] = useState(0);
@@ -81,8 +76,8 @@ export default function QuizView({
     setselectedOption(null);
   }
 
-  function handleFinish() {
-    KnowledgeQuestApi.updatequizdata({
+  async function handleFinish() {
+    await KnowledgeQuestApi.updatequizdata({
       quest_id: questId,
       quiz_id: chapterId,
       score,
@@ -91,12 +86,9 @@ export default function QuizView({
       event: `Quest Finished ${chapterId}`,
       chapterId: `${chapterId}`,
     });
-    setuserdata((prev) => ({
-      ...prev,
-      num_unicoins:
-        Number(prev.num_unicoins) + 150 + (score === questions.length ? 25 : 0),
-    }));
-    handleDone();
+    if (score > 0) {
+      handleDone();
+    }
   }
 
   return (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
 import Image from "next/image";
+import { modifiedImageURL } from "../../../utils/utils";
 
 export default function ImageCat({ data, value, setValue }) {
   const [checked, setChecked] = useState();
@@ -36,7 +37,10 @@ export default function ImageCat({ data, value, setValue }) {
             return (
               <div className={styles.imageWrap} key={"image-wrap" + i}>
                 <img
-                  src={image}
+                  src={modifiedImageURL(
+                    image,
+                    "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+                  )}
                   alt={`Question Image ${i}`}
                   width={300}
                   height={200}

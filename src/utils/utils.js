@@ -8,12 +8,13 @@ const gameUrl = (url, buc = "upsurge-public-games") => {
   );
 };
 
-const modifiedImageURL = (url, buc = "upsurge-assets-cdn") => {
+const modifiedImageURL = (
+  url,
+  replace_url = "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com",
+  buc = "upsurge-assets-cdn"
+) => {
   let main_url = `${process.env.NEXT_PUBLIC_MEDIA_BUCKET}/${buc}`;
-  return url.replace(
-    "https://upsurgevideoassets.s3.ap-south-1.amazonaws.com",
-    main_url
-  );
+  return url.replace(replace_url, main_url);
 };
 
 const assetsCdn = (url, buc = "upsurge-assets-cdn") => {

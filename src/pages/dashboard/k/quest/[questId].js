@@ -169,7 +169,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                         chapterId: currentChapter,
                         questId: currentQuest.questId,
                         handleDone,
-                        setuserdata,
                       }}
                     />
                   ) : (

@@ -1,10 +1,14 @@
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
+import { modifiedImageURL } from "../../../utils/utils";
 
 export default function VideoQn({ data, value, setValue }) {
   return (
     <div className={styles.videoQn}>
       <iframe
-        src={data.videoUrl}
+        src={modifiedImageURL(
+          data.videoUrl,
+          "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+        )}
         title="Video For YouTube API"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

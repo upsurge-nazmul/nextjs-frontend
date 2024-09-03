@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/knowledgeQuest/Quiz.module.scss";
+import { modifiedImageURL } from "../../../utils/utils";
 
 const ImageSelection = ({ data, setValue }) => {
   const [selected, setSelected] = useState([]);
@@ -38,7 +39,10 @@ const ImageSelection = ({ data, setValue }) => {
                 onClick={() => handleSelect(option.value)}
               >
                 <img
-                  src={option.imageUrl}
+                  src={modifiedImageURL(
+                    option.imageUrl,
+                    "https://upsurge-assets-cdn.s3.ap-south-1.amazonaws.com"
+                  )}
                   alt={option.value}
                   className={styles.optionImage}
                 />
