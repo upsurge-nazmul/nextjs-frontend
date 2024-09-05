@@ -15,6 +15,7 @@ import VideoQn from "./VideoQn";
 import YesNo from "./YesNo";
 import PhotoOptions from "./PhotoOptions";
 import ImageSelection from "./ImageSelection";
+import { objectValuesToFormattedString } from "../../../helpers/generalfunctions";
 
 const TYPES = [
   "mcq", // 0
@@ -45,7 +46,7 @@ export default function Quiz({
   const { type } = data;
   const [value, setValue] = useState();
 
-  console.log("Quiz data:", data)
+  console.log("Quiz data:", data);
 
   return (
     <div className={styles.quizSection}>
@@ -96,6 +97,10 @@ export default function Quiz({
               >
                 {Array.isArray(correctAnsValue)
                   ? correctAnsValue.join(", ")
+                  : typeof correctAnsValue === "object" &&
+                    correctAnsValue !== null &&
+                    !Array.isArray(correctAnsValue)
+                  ? objectValuesToFormattedString(correctAnsValue)
                   : correctAnsValue}
               </span>
             </div>

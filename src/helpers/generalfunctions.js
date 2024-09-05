@@ -33,4 +33,17 @@ function getfullname(firstname, lastname) {
 function checkIphone() {
   return /iPhone|iPod|iPad/.test(navigator.platforms);
 }
-export { copyToClipboard, capitalize, getfullname, checkIphone };
+
+const objectValuesToFormattedString = (obj) => {
+  return Object.values(obj)
+    .map((value, index) => `${index + 1}) ${value}`) // Adding serial number before each value
+    .join(", "); // Joining them with a comma and space
+};
+
+export {
+  copyToClipboard,
+  capitalize,
+  getfullname,
+  checkIphone,
+  objectValuesToFormattedString,
+};

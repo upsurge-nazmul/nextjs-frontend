@@ -36,6 +36,7 @@ export default function ImageCat({ data, value, setValue }) {
           data.images.map((image, i) => {
             return (
               <div className={styles.imageWrap} key={"image-wrap" + i}>
+                <div>{i + 1}</div>
                 <img
                   src={modifiedImageURL(
                     image,
