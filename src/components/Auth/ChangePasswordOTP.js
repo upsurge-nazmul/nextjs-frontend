@@ -115,7 +115,7 @@ export default function ChangePasswordOTP({
               ></div>
               <div className={styles.authcontainer}>
                 <p className={styles.notverifiedtext}>
-                  {`We have sent OTP to your parent's email`}
+                  {`We have sent OTP to your parent's phone`}
                 </p>
                 <div className={styles.otpHeadWrapper}>
                   <p className={styles.text}>
