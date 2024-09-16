@@ -18,6 +18,12 @@ export default function GameView() {
       window.ReactNativeWebView.postMessage("Done");
   };
 
+  const sendExistMessageToReactNative = async () => {
+    window &&
+      window.ReactNativeWebView &&
+      window.ReactNativeWebView.postMessage("Exit");
+  };
+
   useEffect(() => {
     async function fetchGameData() {
       setLoading(true);
@@ -35,7 +41,9 @@ export default function GameView() {
     mixpanel.track("Quest Closed", { event: `Quest closed` });
   };
 
-  const handleQuestExit = () => {};
+  const handleQuestExit = () => {
+    sendExistMessageToReactNative();
+  };
 
   return (
     <div className={styles.gameView} ref={gameRef}>

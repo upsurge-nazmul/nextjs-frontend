@@ -81,6 +81,12 @@ export default function KnowledgeQuest({ userData, questData }) {
     setActiveChNo(0);
   };
 
+  const handleQuestExit = () => {
+    if (currentQuest?.chapters?.length === 1) {
+      router.push("/dashboard/k/quest?questTypeId=" + questTypeId);
+    } // else don't do anything; just closing the Game view would be enough
+  };
+
   const handleDone = async () => {
     const response = await KnowledgeQuestApi.update({
       level: activeChNo,
@@ -95,12 +101,25 @@ export default function KnowledgeQuest({ userData, questData }) {
         setUnicoinsEarnedPopUp(true);
         setUnicoins(response?.data?.data?.unicoinsAwarded);
       }
-      setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
-      setView();
-      setCurrentChapter();
-      setActiveChNo(0);
+      if (currentQuest?.chapters?.length === 1) {
+        router.push("/dashboard/k/quest?questTypeId=" + questTypeId);
+      } else {
+        setUserLevel((prev) => (prev > activeChNo ? prev : activeChNo));
+        setView();
+        setCurrentChapter();
+        setActiveChNo(0);
+      }
     }
   };
+
+  useEffect(() => {
+    if (currentQuest?.chapters?.length === 1) {
+      let chapter = currentQuest.chapters[0];
+      setView(chapter.type);
+      setCurrentChapter(chapter.id);
+      setActiveChNo(chapter.chapterNo);
+    }
+  }, [currentQuest]);
 
   return (
     <div className={styles.questDetailPage}>
@@ -139,58 +158,69 @@ export default function KnowledgeQuest({ userData, questData }) {
             </div>
           )}
           <div>
-            <div>
-              {view && currentQuest ? (
-                <div className={styles.views}>
-                  {view === LESSON_TYPES[0] || view === LESSON_TYPES[4] ? (
-                    <GameView
-                      game={currentChapter}
-                      setGame={handleBack}
-                      handleQuestDone={handleDone}
-                      isKq={true}
-                    />
-                  ) : view === LESSON_TYPES[1] ? (
-                    <ActivityView
-                      {...{
-                        chapterId: currentChapter,
-                        handleBack,
-                        handleDone,
-                      }}
-                    />
-                  ) : view === LESSON_TYPES[3] ? (
-                    <GameView
-                      game={currentChapter}
-                      setGame={handleBack}
-                      handleQuestDone={handleDone}
-                    />
-                  ) : view === LESSON_TYPES[2] ? (
-                    <QuizView
-                      {...{
-                        chapterId: currentChapter,
-                        questId: currentQuest.questId,
-                        handleDone,
-                      }}
-                    />
-                  ) : (
-                    ""
-                  )}
-                  <div className={styles.actionArea}>
-                    <button className={styles.backButton} onClick={handleBack}>
-                      Go Back
-                    </button>
+            {currentQuest?.chapters?.length ? (
+              <div>
+                {view ? (
+                  <div className={styles.views}>
+                    {view === LESSON_TYPES[0] || view === LESSON_TYPES[4] ? (
+                      <GameView
+                        game={currentChapter}
+                        setGame={handleBack}
+                        handleQuestExit={handleQuestExit}
+                        handleQuestDone={handleDone}
+                        isKq={true}
+                      />
+                    ) : view === LESSON_TYPES[1] ? (
+                      <ActivityView
+                        {...{
+                          chapterId: currentChapter,
+                          handleBack,
+                          handleDone,
+                        }}
+                      />
+                    ) : view === LESSON_TYPES[3] ? (
+                      <GameView
+                        game={currentChapter}
+                        setGame={handleBack}
+                        handleQuestDone={handleDone}
+                      />
+                    ) : view === LESSON_TYPES[2] ? (
+                      <QuizView
+                        {...{
+                          chapterId: currentChapter,
+                          questId: currentQuest.questId,
+                          handleDone,
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    <div className={styles.actionArea}>
+                      <button
+                        className={styles.backButton}
+                        onClick={handleBack}
+                      >
+                        Go Back
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <QuestMap
-                  questData={currentQuest}
-                  changeView={setView}
-                  setActiveChapter={setCurrentChapter}
-                  setActiveChapterNo={setActiveChNo}
-                  userLevel={userLevel}
-                />
-              )}
-            </div>
-            {/* )} */}
+                ) : (
+                  <>
+                    {currentQuest?.chapters?.length > 1 && (
+                      <QuestMap
+                        questData={currentQuest}
+                        changeView={setView}
+                        setActiveChapter={setCurrentChapter}
+                        setActiveChapterNo={setActiveChNo}
+                        userLevel={userLevel}
+                      />
+                    )}
+                  </>
+                )}
+              </div>
+            ) : (
+              <div />
+            )}
           </div>
         </div>
       </div>

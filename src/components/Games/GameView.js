@@ -11,6 +11,7 @@ export default function GameView({
   allGames,
   game,
   setGame,
+  handleQuestExit = () => {},
   handleQuestDone = () => {},
   isKq = false,
 }) {
@@ -81,7 +82,11 @@ export default function GameView({
     setFullScreen(false);
     if (document && document.fullscreenElement) document.exitFullscreen();
     setGame();
-    if (!isKq) handleGameScoreupdate();
+    if (isKq) {
+      handleQuestExit();
+    } else {
+      handleGameScoreupdate();
+    }
   };
 
   return (
